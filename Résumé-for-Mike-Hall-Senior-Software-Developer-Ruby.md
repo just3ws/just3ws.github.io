@@ -29,7 +29,7 @@ Ruby-oriented developer with experience spanning public facing sites like Coderw
 
 * Environments
   : Managed application promotion and deployment using Heroku Pipelines
-  : Built Vagrant environments to for development and testing
+  : Built Vagrant environments for development and testing
   : Configured Linux production systems using Debian
   : Moderate production experience managing AWS services
 
