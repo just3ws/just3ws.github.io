@@ -1,6 +1,24 @@
 # Mike Hall
 ## Senior Software Developer
 
+Hello. Finding a software developer to hire is not easy but let me ask you a few questions to see if I can help you out.
+
+Are you looking for a software developer to enhance your team or can work independantly?
+
+How about a developer that can build a solid and maintainable software foundation for your business?
+
+Maybe you'd like to know that they will be able to help with defining the goals and tradeoffs required to fulfill your business's needs?
+
+Do Ruby, JavaScript, PostgreSQL, and Linux sound like some of the technologies you need the developer to have experience working with?
+
+"_Full-stack_" get's thrown around a lot but you might possibly need a developer who can work from the backend setting up and managing servers as well as being able to build out the API and frontend UI (although isn't a graphic designer)?
+
+Would you like to know that developer has solid experience working for companies like Groupon and Coderwall?
+
+If you answered "**yes**" to the above questions then this might be a great time for us to chat. Shoot an email to [mike@just3ws.com](mike@just3ws.com) and we can chat about your needs are and how I can help you.
+
+Thanks!
+
 ### Resume
  - [HTML](http://www.just3ws.com/resume.html)
  - [Markdown](http://www.just3ws.com/resume.md)
