@@ -1,5 +1,5 @@
 # Mike Hall
-## Senior Software Developer, Rubyist
+## Senior Software Developer
 
 > [mike@just3ws.com](mailto:mike@just3ws.com)<br>
 > 847.877.3825<br>
