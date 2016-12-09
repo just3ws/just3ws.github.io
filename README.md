@@ -21,7 +21,6 @@ Thanks!
 
 ### Resume
  - [HTML](http://www.just3ws.com/resume.html)
- - [Markdown](http://www.just3ws.com/resume.md)
 
 ### Contact
  - [mike@just3ws.com](mailto:mike@just3ws.com)
