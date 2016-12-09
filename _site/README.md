@@ -1,7 +1,7 @@
 # Mike Hall
 ## Senior Software Developer
 
-Hello. Finding a software developer to hire is not easy but let me ask you a few questions to see if I can help you out.
+**Hello. Finding a software developer to hire is not easy but let me ask you a few questions to see if I can help you out.**
 
 Are you looking for a software developer to enhance your team or can work independantly?
 
