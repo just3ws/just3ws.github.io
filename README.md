@@ -9,6 +9,5 @@
  - [Twitter](https://www.twitter.com/just3ws)
 
 ### Résumé
- - [HTML](http://www.just3ws.com/R%C3%A9sum%C3%A9-for-Mike-Hall-Senior-Software-Developer-Ruby.html)
- - [PDF](http://www.just3ws.com/R%C3%A9sum%C3%A9-for-Mike-Hall-Senior-Software-Developer-Ruby.pdf)
- - [Markdown](http://www.just3ws.com/R%C3%A9sum%C3%A9-for-Mike-Hall-Senior-Software-Developer-Ruby.md)
+ - [HTML](http://www.just3ws.com/resume.html)
+ - [Markdown](http://www.just3ws.com/resume.md)
