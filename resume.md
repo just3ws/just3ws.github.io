@@ -7,13 +7,13 @@
 
 ------
 
-### Profile {#profile}
+### Profile
 
 Ruby-oriented developer with experience spanning public facing sites like Coderwall and Groupon through to building internal systems for aggregating and managing data for critical business systems.
 
 ------
 
-### Tools {#tools}
+### Tools
 
 * Languages
   : Strong Ruby, Shell scripting, and JavaScript experience
@@ -35,7 +35,7 @@ Ruby-oriented developer with experience spanning public facing sites like Coderw
 
 ------
 
-### Experience {#experience}
+### Experience
 
 * Full-stack RoR
   : Experience building up from "rails new" to "cap production deploy" as well as diving in to long established legacy codebases.
@@ -48,7 +48,7 @@ Ruby-oriented developer with experience spanning public facing sites like Coderw
 
 ------
 
-### History {#history}
+### History
 
 ReachLocal
 : *Web Developer, full-time remote*
@@ -98,7 +98,7 @@ Previous experience upon request
 
 ------
 
-### Footer {#footer}
+### Footer
 
 Mike Hall -- [mike@just3ws.com](mike@just3ws.com) -- 847.877.3825
 
