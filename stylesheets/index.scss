@@ -258,12 +258,18 @@ h1:before {
   position: relative;
   top: -0.4em;
 }
+
 .container {
   margin: 0 auto;
   padding: 0;
-  border: solid #666;
-  border-width: 8px 0 2px 0;
   text-align: left;
+}
+
+@media screen {
+  .container {
+    border: solid #666;
+    border-width: 8px 0 2px 0;
+  }
 }
 
 @media screen and (min-width: 57em) {
