@@ -432,6 +432,7 @@ h1:before {
   padding: 0;
   text-align: left;
 }
+
 @media screen {
   .container {
     background: whiteSmoke;
@@ -744,4 +745,12 @@ ul li dt {
     font-size: 130%;
     font-style: normal;
   }
+}
+
+ul.role-details li {
+  list-style-type: square;
+}
+
+ul.role-details li:nth-child(1) {
+  margin-top: 0.67em;
 }
