@@ -97,7 +97,7 @@ strong {
   font-weight: bold;
 }
 
-blockquote {
+blockquote#contact {
   margin: 1em 40px;
 }
 
@@ -343,7 +343,7 @@ a[href$='.pdf'] {
   text-decoration: none;
 }
 
-blockquote {
+blockquote#contact {
   margin: 0;
   padding: 0;
   line-height: 1.4em;
@@ -498,12 +498,6 @@ h3 + dl dt:first-child {
   padding-top: 0;
 }
 
-dl dd p:first-child {
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1.2em;
-}
-
 ul li dt {
   border: 0;
   padding-top: 0;
@@ -523,7 +517,7 @@ ul li dt {
     padding: 2em 0;
   }
 
-  blockquote {
+  blockquote#contact {
     top: 10px;
     right: 50px;
     position: absolute;
@@ -558,7 +552,7 @@ ul li dt {
     padding: 40px 50px;
   }
 
-  blockquote {
+  blockquote#contact {
     top: 40px;
     right: 50px;
     position: absolute;
@@ -638,4 +632,12 @@ ul.role-details li {
 
 ul.role-details li:nth-child(1) {
   margin-top: 0.67em;
+}
+
+img.recommendation {
+  width: 100%;
+}
+
+h3#recommendations {
+  font-size: 0.8em;
 }
