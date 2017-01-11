@@ -1,10 +1,20 @@
 timezone: America/Chicago
 gems:
-  - jekyll-mentions
-  - jemoji
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-feed
 sass:
   sass_dir: _sass
   style: compressed
+exclude:
+  - '.bundle'
+  - '.gitignore'
+  - '.jsbeautifyrc'
+  - '.ruby-gemset'
+  - '.ruby-version'
+  - '.travis.yml'
+  - 'Gemfile'
+  - 'Gemfile.lock'
+  - 'bin'
+  - 'config.ru'
+  - 'vendor'
