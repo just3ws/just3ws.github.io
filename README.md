@@ -20,12 +20,16 @@ If you answered "**yes**" to the above questions then this might be a great time
 Thanks!
 
 ### Resume
- - [HTML](http://www.just3ws.com/resume)
- - [PDF](http://www.just3ws.com/resume/Mike Hall - Senior Software Developer - Resume.pdf)
+  - [HTML](http://www.just3ws.com/resume)
+  - [PDF](http://www.just3ws.com/resume/Mike Hall - Senior Software Developer - Resume.pdf)
 
 ### Contact
- - [mike@just3ws.com](mailto:mike@just3ws.com)
- - [847.877.3825](tel:+18478773825)
- - [LinkedIn](https://www.linkedin.com/in/just3ws)
- - [GitHub](https://www.github.com/just3ws)
- - [Twitter](https://www.twitter.com/just3ws)
+  - [mike@just3ws.com](mailto:mike@just3ws.com)
+  - [847.877.3825](tel:+18478773825)
+  - [LinkedIn](https://www.linkedin.com/in/just3ws)
+  - [GitHub](https://www.github.com/just3ws)
+  - [Twitter](https://www.twitter.com/just3ws)
+
+### Site
+
+[![Build Status](https://travis-ci.org/just3ws/just3ws.github.io.svg?branch=master)](https://travis-ci.org/just3ws/just3ws.github.io)
