@@ -29,6 +29,7 @@ Thanks!
   - [LinkedIn](https://www.linkedin.com/in/just3ws)
   - [GitHub](https://www.github.com/just3ws)
   - [Twitter](https://www.twitter.com/just3ws)
+  - [About.me](https://about.me/just3ws)
 
 ### Site
 
