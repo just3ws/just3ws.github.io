@@ -30,6 +30,7 @@ Thanks!
   - [GitHub](https://www.github.com/just3ws)
   - [Twitter](https://www.twitter.com/just3ws)
   - [About.me](https://about.me/just3ws)
+  - [Coderwall](https://coderwall.com/just3ws)
 
 ### Site
 
