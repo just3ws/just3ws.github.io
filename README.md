@@ -20,7 +20,8 @@ If you answered "**yes**" to the above questions then this might be a great time
 Thanks!
 
 ### Resume
- - [HTML](http://www.just3ws.com/resume.html)
+ - [HTML](http://www.just3ws.com/resume)
+ - [PDF](http://www.just3ws.com/resume/Mike Hall - Senior Software Developer - Resume.pdf)
 
 ### Contact
  - [mike@just3ws.com](mailto:mike@just3ws.com)
