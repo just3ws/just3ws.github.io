@@ -4,8 +4,16 @@ engines:
     enabled: true
   fixme:
     enabled: true
+  csslint:
+    enabled: true
+  scsslint:
+    enabled: true
+
 ratings:
   paths:
   - Gemfile.lock
+	- "**.css"
+	- "**.scss"
+
 exclude_paths:
 - script/
