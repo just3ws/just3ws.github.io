@@ -32,6 +32,6 @@ Thanks!
   - [About.me](https://about.me/just3ws)
   - [Coderwall](https://coderwall.com/just3ws)
 
-### Site
+### Status
 
 [![Build Status](https://travis-ci.org/just3ws/just3ws.github.io.svg?branch=master)](https://travis-ci.org/just3ws/just3ws.github.io)
