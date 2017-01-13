@@ -8,12 +8,22 @@ engines:
     enabled: true
   scsslint:
     enabled: true
+  stylelint:
+    enabled: true
+    channel: 'beta'
+  duplication:
+    enabled: true
+    config:
+      languages:
+        ruby:
+        javascript:
 
 ratings:
   paths:
   - Gemfile.lock
   - "**.css"
-  - "**.scss"
+  - "assets/stylesheets/**.scss"
+  - "_sass/**.scss"
 
 exclude_paths:
-- script/
+  - script/
