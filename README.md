@@ -35,3 +35,4 @@ Thanks!
 ### Status
 
 [![Build Status](https://travis-ci.org/just3ws/just3ws.github.io.svg?branch=master)](https://travis-ci.org/just3ws/just3ws.github.io)
+[![Code Climate](https://codeclimate.com/github/just3ws/just3ws.github.io/badges/gpa.svg)](https://codeclimate.com/github/just3ws/just3ws.github.io)
