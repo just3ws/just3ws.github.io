@@ -56,6 +56,12 @@ title: Mike Hall | Senior Software Developer
       <li><a href="https://coderwall.com/just3ws">Coderwall</a></li>
       <li><a href="http://www.pechakucha.org/users/mike-hall">Pecha Kucha</a></li>
     </ul>
+    <h3 id="posts">Posts</h3>
+    <ul>
+      {% for post in site.posts %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
   </div>
 </body>
 </html>
