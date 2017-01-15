@@ -1,13 +1,49 @@
 ---
 ---
 
-<html>
-  <head>
-    <title>{{ page.title }}</title>
-    <lin rel=stylesheet type="text/css" href="/assets/stylesheets/pygments.css" media="screen">
-    <link rel=stylesheet type="text/css" href="/assets/stylesheets/posts/screen.css" media="screen">
-  </head>
-  <body>
-    {{ content }}
-  </body>
+<!DOCTYPE html>
+<html lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<head itemscope itemtype="http://schema.org/WebSite">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<title>{{ page.title }}</title>
+
+	<!-- Author -->
+	<meta name="author" content="Mike Hall">
+	<title itemprop="name">{{ page.title }}</title>
+	<meta name="description" content="{{ page.excerpt | strip_html | truncatewords: 50 }}">
+
+	<meta name="keywords" content="{{ page.keywords }}">
+
+	<link rel="stylesheet" type="text/css" href="/assets/stylesheets/pygments.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/assets/stylesheets/posts/screen.css" media="screen">
+
+	{% if page.stylesheets %}
+		{% for stylesheet in page.stylesheets %}
+			<link rel="stylesheet" href="/assets/stylesheets/{{ stylesheet }}.css" media="screen,print" type="text/css">
+		{% endfor %}
+	{% endif %}
+
+	{% if page.javascripts %}
+		{% for javascript in page.javascripts %}
+			<script src='/assets/javascripts/{{ javascript }}.js' type="text/javascript"></script>
+		{% endfor %}
+	{% endif %}
+</head>
+
+<body>
+	<article vocab="http://schema.org/" typeof="Article">
+		<header>
+			<h2  property="name">{{ page.title }}</h2>
+			<p property="datePublished"><time datetime="{{ page.date | date_to_xmlschema }}" pubdate>{{ page.date | date: "%Y-%m-%d" }}</time></p>
+		</header>
+		<div property="articleBody">
+			{{ content }}
+		</div>
+		<footer></footer>
+	</article>
+</body>
+
 </html>
