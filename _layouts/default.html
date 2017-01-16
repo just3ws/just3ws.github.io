@@ -2,7 +2,7 @@
 layout: compress
 ---
 
-<!DOCTYPE html>
+<!DOCTYPE amp html>
 <html lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <head itemscope itemtype="http://schema.org/WebSite">
@@ -28,6 +28,35 @@ layout: compress
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@just3ws">
   <meta name="twitter:creator" content="@just3ws">
+  <meta name="twitter:title" content="{{ page.title }}" />
+  <meta name="twitter:description" content="{{ page.description }}" />
+  <meta name="twitter:image" content="{{ site.url }}/assets/images/avatar.png" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "url": "http://www.just3ws.com",
+      "givenName": "Mike",
+      "familyName": "Hall",
+      "alternateName": "just3ws",
+      "email": "mike@just3ws.com",
+      "telephone": "+18478773825",
+      "homeLocation": {
+        "@type": "Residence",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "32 Bryant Court",
+          "addressLocality": "Crystal Lake",
+          "addressRegion": "IL",
+          "postalCode": "60014",
+          "addressCountry": "US"
+        }
+      }
+    }
+  </script>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
 
   <link rel="manifest" href="/manifest.json">
 
