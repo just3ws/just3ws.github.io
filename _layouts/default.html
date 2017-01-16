@@ -9,9 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
   <title itemprop="name">{{ page.title }}</title>
-
-  <!-- Author -->
-  <meta property="author" content="Mike Hall">
   <meta name="description" content="{{ page.description }}">
   <meta name="keywords" content="{{ page.keywords }}">
 
@@ -19,11 +16,15 @@
   <meta property="og:type" content="website">
   <meta property="fb:app_id" content="226843561097282">
   <meta property="og:title" content="{{ page.title }}">
-  <meta property="og:image" content="{{ site.url }}/assets/images/avatar.png">
   <meta property="og:url" content="{{ site.url}}{{ page.canonical_path }}">
   <meta property="og:description" content="{{ page.description }}">
   <meta property="og:locale" content="en_US">
   <meta property="og:updated_time" content="{{ site.time | date_to_xmlschema }}">
+  <meta property="og:image" content="{{ site.url }}/assets/images/avatar.png">
+  <meta property="og:image:width" content="432">
+  <meta property="og:image:height" content="432">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:site_name" content="Mike Hall" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
