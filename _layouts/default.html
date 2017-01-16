@@ -1,13 +1,12 @@
 ---
-layout: compress
 ---
 
-<!DOCTYPE amp html>
+<!DOCTYPE html>
 <html lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <head itemscope itemtype="http://schema.org/WebSite">
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
   <!-- Author -->
@@ -21,8 +20,10 @@ layout: compress
   <meta property="og:app_id" content="226843561097282">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:image" content="{{ site.url }}/assets/images/avatar.png">
-  <meta property="og:url" content="{{ site.url }}{{ page.canonical_path }}">
+  <meta property="og:url" content="{{ site.url}}{{ page.canonical_path }}">
   <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:updated_time" content="{{ site.time | date_to_xmlschema }}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
