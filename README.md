@@ -15,7 +15,7 @@ Do `Ruby`, `JavaScript`, `SQL`, and `Linux` sound like some of the technologies 
 
 Would you like to know that developer has solid experience working for companies like Groupon and Coderwall?
 
-If you answered "**yes**" to the above questions then this might be a great time for us to chat. Shoot an email to [mike@just3ws.com](mike@just3ws.com) and we can chat about your needs are and how I can help you.
+If you answered "**yes**" to the above questions then this might be a great time for us to chat. Shoot me an [email](mike@just3ws.com) and we can chat about your needs are and how I can help you.
 
 Thanks!
 
@@ -25,12 +25,18 @@ Thanks!
 
 ### Contact
   - [mike@just3ws.com](mailto:mike@just3ws.com)
-  - [847.877.3825](tel:+18478773825)
+  - [(847) 877-3825](tel:+18478773825)
+
+### Social Media
   - [LinkedIn](https://www.linkedin.com/in/just3ws)
   - [GitHub](https://www.github.com/just3ws)
+  - [StackOverflow](http://stackoverflow.com/story/just3ws)
   - [Twitter](https://www.twitter.com/just3ws)
   - [About.me](https://about.me/just3ws)
   - [Coderwall](https://coderwall.com/just3ws)
+
+### Presentations
+  - [Teach Yourself Beginning Community in 24 Months](http://www.pechakucha.org/presentations/teach-yourself-beginning-community-in-24-months-2)
 
 ### Status
 
