@@ -1,0 +1,80 @@
+---
+layout: semantic
+---
+
+<p>Postgres is my database of choice when choosing an RDBMS. Not just because it’s officially supported and integrated with Heroku but because it is also a very powerful tool. One of the unique features of Postgres is it’s powerful index engine. Using Postgres you can get much more fine grained control over how your data is indexed. For example indexes on expressions which allow you to create indexes on fields that have have <code class="highlighter-rouge">UPPER</code> or <code class="highlighter-rouge">LOWER</code> functions applied to them.</p>
+
+<p>Typically a <code class="highlighter-rouge">VARCHAR</code> field is treated as case-sensitive in Postgres. Meaning that <code class="highlighter-rouge">fieldname = 'FOO'</code> and <code class="highlighter-rouge">fieldname = 'foo'</code> won’t find any matches when the actual value is "FOO". A common technique is to normalize the field value like <code class="highlighter-rouge">lower(fieldname) = lower('FOO')</code> to coerce the fields to match using their lower-case form. The problem is that this will completely ignore indexes and cause Postgres to use a Sequential Scan to find the match. Every single row will be evaluated looking for a match. This is obviously expensive and non-ideal for large and frequently queried tables.</p>
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+  postgresql=&gt; explain select username from users where lower(username) = lower('just3ws');
+                              QUERY PLAN
+      -----------------------------------------------------------
+       Seq Scan on users  (cost=0.00..13327.36 rows=558 width=9)
+         Filter: (lower((username)::text) = 'just3ws'::text)
+      (2 rows)
+
+  **Seq Scan on users  (cost=0.00..13327.36 rows=558 width=9)**
+</code>
+</pre>
+</div>
+
+<p>Compare that to the query with no expression and a simple index on the username field.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+  postgresql=&gt; explain select username from users where username = lower('just3ws');
+                                           QUERY PLAN
+      -------------------------------------------------------------------------------------
+       Index Scan using index_users_on_username on users  (cost=0.00..4.07 rows=1 width=9)
+         Index Cond: ((username)::text = 'just3ws'::text)
+      (2 rows)
+
+  **Index Scan using index\_users\_on\_username on users  (cost=0.00..4.07 rows=1 width=9)**
+</code>
+</pre>
+</div>
+
+<p>There’s an obviously huge cost to pay when querying against expressions. But all is not lost. Postgres will let you build <a href="https://www.postgresql.org/docs/current/static/indexes-expressional.html">indexes against expression</a>.</p>
+
+<p>In this case we’ll apply a index that will take the <code class="highlighter-rouge">lower()</code> expression into account.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+  create index ix_users_username_lower on users (lower(username) varchar_pattern_ops);
+</code>
+</pre>
+</div>
+
+Now when we query for <code class="highlighter-rouge">lower(usernames)</code> we'll be able to take advantage of the index to avoid full table scanning.
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+  postgresql=&gt; explain select username from users where lower(username) = lower('just3ws');
+                                           QUERY PLAN
+    ----------------------------------------------------------------------------------------
+     Bitmap Heap Scan on users  (cost=4.92..988.43 rows=558 width=9)
+       Recheck Cond: (lower((username)::text) = 'just3ws'::text)
+       -&gt;  Bitmap Index Scan on ix_users_username_lower  (cost=0.00..4.90 rows=558 width=0)
+             Index Cond: (lower((username)::text) = 'just3ws'::text)
+    (4 rows)
+
+  **Bitmap Heap Scan on users  (cost=4.92..988.43 rows=558 width=9)**
+</code></pre>
+</div>
+
+<p>It’s much better than the Sequential Scan now although still a little bit slower than just querying against the simple index.</p>
+
+<p>The Bitmap Heap Scan is useful when there is a lot of variety in the data and Postgres is able to intelligently segregate the data. Basically the data is chunked into smaller sets that Postgres can filter though and more intelligently decide which sets to scan and which to skip. Where the Sequential Scan will touch every single row in the table.</p>
+
+<p>Read more about the Postgres <a href="http://www.postgresql.org/docs/9.1/static/indexes-expressional.html">Index on Expressions</a> in the official documentation and this explanation by the author of the <a href="http://www.postgresql.org/message-id/12553.1135634231@sss.pgh.pa.us">Postgres Bitmap Heap Scan algorithm</a> Tom Lane.</p>
+
+<p>For a full explanation of what the <code class="highlighter-rouge">cost</code>, <code class="highlighter-rouge">rows</code>, and <code class="highlighter-rouge">width</code> values mean please check out <a href="http://www.postgresql.org/docs/9.2/static/using-explain.html">Using Explain</a> from the Postgres documentation.</p>
+
+<p><code class="highlighter-rouge">varchar_pattern_ops</code> is explained in Postgres <a href="http://www.postgresql.org/docs/current/static/indexes-opclass.html">Index</a> documentation.</p>
