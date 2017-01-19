@@ -1,5 +1,6 @@
 ---
 layout: semantic
+title: Improve Case-Insensitive Queries in PostgreSQL Using Smarter Indexes
 published_on: February 25, 2016
 tags: Database, Indexes, PostgreSQL, Postgres, RDBMS, RegEx, Ruby on Rails, SQL
 ---
@@ -55,6 +56,7 @@ account.
 ```postgres-console
 create index ix_users_username_lower on users (lower(username) varchar_pattern_ops);
 ```
+
 Now when we query for `lower(usernames)` we'll be able to take advantage of the
 index to avoid full table scanning.
 
@@ -80,14 +82,18 @@ chunked into smaller sets that Postgres can filter though and more
 intelligently decide which sets to scan and which to skip. Where the Sequential
 Scan will touch every single row in the table.
 
-Read more about the Postgres [Index on Expressions](http://www.postgresql.org/docs/9.1/static/indexes-expressional.html)
+Read more about the Postgres [Index on
+Expressions](http://www.postgresql.org/docs/9.1/static/indexes-expressional.html)
 in the official documentation and this explanation by the author of the
-[Postgres Bitmap Heap Scan algorithm](http://www.postgresql.org/message-id/12553.1135634231@sss.pgh.pa.us)
+[Postgres Bitmap Heap Scan
+algorithm](http://www.postgresql.org/message-id/12553.1135634231@sss.pgh.pa.us)
 Tom Lane.
 
 For a full explanation of what the `cost`, `rows`, and `width` values mean
-please check out [Using Explain](http://www.postgresql.org/docs/9.2/static/using-explain.html) from the
+please check out [Using
+Explain](http://www.postgresql.org/docs/9.2/static/using-explain.html) from the
 Postgres documentation.
 
-`varchar_pattern_ops` is explained in Postgres [Index](http://www.postgresql.org/docs/current/static/indexes-opclass.html)
+`varchar_pattern_ops` is explained in Postgres
+[Index](http://www.postgresql.org/docs/current/static/indexes-opclass.html)
 documentation.

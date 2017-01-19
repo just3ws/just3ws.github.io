@@ -1,7 +1,7 @@
 ---
 layout: semantic
 title: Leverage the "J" in JRuby for Powerful Concurrency
-tags: Ruby, JRuby, Java, Concurrency
+tags: Ruby, JRuby, Java, Concurrency, JVM
 ---
 
 I was working on a project that required some heavy-weight processing of links
@@ -12,12 +12,10 @@ pure Ruby problem and each record was processed independantly of each other this
 was a good opportunity to use JRuby and it's Java interoperability to get some
 real concurrency power.
 
-Using the `ruby-concurrent` library and JRuby interop I first load in the Java
+Using the `ruby-concurrent` library and JRuby Interop I first load in the Java
 Futures libraries.
 
 ```ruby
-require 'thread_safe'
-
 java_import java.util.concurrent.Callable
 java_import java.util.concurrent.Executors
 java_import java.util.concurrent.FutureTask

@@ -1,6 +1,6 @@
 ---
 layout: semantic
-title: Using Postgres RegEx Expressions To Find Very Specific Matches
+title: Using Postgres RegEx Expressions to Find Very Specific Matches
 tags: Database, Indexes, PostgreSQL, Postgres, RDBMS, RegEx, Ruby on Rails, SQL
 published_on: February 25, 2016
 ---
@@ -11,7 +11,7 @@ open while you were browsing but there were a little over 25% of our Twitter
 avatars that weren't rendering properly due to trying to connect via HTTP
 instead of HTTPS. (*And other changes to how Twitter resolves it's profile
 images but that's a bigger issue.*)  Fortunately with the power of Ruby and
-Postgres Regex selectors it's relatively trivial to find and transform the HTTP
+Postgres RegEx selectors it's relatively trivial to find and transform the HTTP
 urls to use HTTPS.
 
 ```ruby
@@ -36,7 +36,7 @@ Next I want to filter by users who have `thumbnail_url`'s that are not already
 using HTTPS. That number was near-zero after some poking I did to verify the
 issue, but better to be safe than sorry and it also helps with re-running the
 script, no sense in selecting a record that's already been updated. I used the
-Postgres Regex matcher `thumbnail_url ~ '^http:'` but could very well have used
+Postgres RegEx matcher `thumbnail_url ~ '^http:'` but could very well have used
 `thumbnail_url ilike 'http:%'` which can still utilize some indexes if
 available. The `ilike` vs `like` is also preferable in this case because it is
 case-insensitive
@@ -58,7 +58,7 @@ the URI instance and then update the attribute on the model. The `puts` and `ap`
 (awesome_print) statements are just there to help me as I watch the process run.
 
 While the query could have further been simplified via `ilike` wildcard
-statements the Postgres Regex expressions are very useful for matching data
+statements the Postgres RegEx expressions are very useful for matching data
 inside a Postgres instance and let you have extremely fine grained control over
 the your results without having to pull more than you absolutely must from the
 database. They come at a cost of being rather non-index friendly but they are a
