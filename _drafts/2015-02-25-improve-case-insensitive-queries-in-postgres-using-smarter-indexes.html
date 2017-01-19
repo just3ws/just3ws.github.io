@@ -1,5 +1,7 @@
 ---
 layout: semantic
+published_on: February 25, 2016
+tags: Database, Indexes, PostgreSQL, Postgres, RDBMS, RegEx, Ruby on Rails, SQL
 ---
 
 <p>Postgres is my database of choice when choosing an RDBMS. Not just because it’s officially supported and integrated with Heroku but because it is also a very powerful tool. One of the unique features of Postgres is it’s powerful index engine. Using Postgres you can get much more fine grained control over how your data is indexed. For example indexes on expressions which allow you to create indexes on fields that have have <code class="highlighter-rouge">UPPER</code> or <code class="highlighter-rouge">LOWER</code> functions applied to them.</p>
@@ -11,11 +13,11 @@ layout: semantic
 <pre class="highlight">
 <code>
   postgresql=&gt; explain select username from users where lower(username) = lower('just3ws');
-                              QUERY PLAN
-      -----------------------------------------------------------
-       Seq Scan on users  (cost=0.00..13327.36 rows=558 width=9)
-         Filter: (lower((username)::text) = 'just3ws'::text)
-      (2 rows)
+                          QUERY PLAN
+  -----------------------------------------------------------
+   Seq Scan on users  (cost=0.00..13327.36 rows=558 width=9)
+     Filter: (lower((username)::text) = 'just3ws'::text)
+  (2 rows)
 
   **Seq Scan on users  (cost=0.00..13327.36 rows=558 width=9)**
 </code>
@@ -28,11 +30,11 @@ layout: semantic
 <pre class="highlight">
 <code>
   postgresql=&gt; explain select username from users where username = lower('just3ws');
-                                           QUERY PLAN
-      -------------------------------------------------------------------------------------
-       Index Scan using index_users_on_username on users  (cost=0.00..4.07 rows=1 width=9)
-         Index Cond: ((username)::text = 'just3ws'::text)
-      (2 rows)
+                                       QUERY PLAN
+  -------------------------------------------------------------------------------------
+   Index Scan using index_users_on_username on users  (cost=0.00..4.07 rows=1 width=9)
+     Index Cond: ((username)::text = 'just3ws'::text)
+  (2 rows)
 
   **Index Scan using index\_users\_on\_username on users  (cost=0.00..4.07 rows=1 width=9)**
 </code>
@@ -57,13 +59,13 @@ Now when we query for <code class="highlighter-rouge">lower(usernames)</code> we
 <pre class="highlight">
 <code>
   postgresql=&gt; explain select username from users where lower(username) = lower('just3ws');
-                                           QUERY PLAN
-    ----------------------------------------------------------------------------------------
-     Bitmap Heap Scan on users  (cost=4.92..988.43 rows=558 width=9)
-       Recheck Cond: (lower((username)::text) = 'just3ws'::text)
-       -&gt;  Bitmap Index Scan on ix_users_username_lower  (cost=0.00..4.90 rows=558 width=0)
-             Index Cond: (lower((username)::text) = 'just3ws'::text)
-    (4 rows)
+                                         QUERY PLAN
+  ----------------------------------------------------------------------------------------
+   Bitmap Heap Scan on users  (cost=4.92..988.43 rows=558 width=9)
+     Recheck Cond: (lower((username)::text) = 'just3ws'::text)
+     -&gt;  Bitmap Index Scan on ix_users_username_lower  (cost=0.00..4.90 rows=558 width=0)
+           Index Cond: (lower((username)::text) = 'just3ws'::text)
+  (4 rows)
 
   **Bitmap Heap Scan on users  (cost=4.92..988.43 rows=558 width=9)**
 </code></pre>
