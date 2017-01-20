@@ -13,6 +13,8 @@ engines:
   stylelint:
     enabled: true
     channel: 'beta'
+  shellcheck:
+    enabled: true
   duplication:
     enabled: true
     config:
@@ -27,6 +29,7 @@ ratings:
   - "**.md"
   - "assets/stylesheets/**.scss"
   - "_sass/**.scss"
+  - "bin/**"
 
 exclude_paths:
   - vendor/
