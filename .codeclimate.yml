@@ -24,12 +24,13 @@ engines:
 
 ratings:
   paths:
-  - Gemfile.lock
-  - "**.css"
   - "**.md"
-  - "assets/stylesheets/**.scss"
   - "_sass/**.scss"
+  - "assets/stylesheets/**.css"
+  - "assets/stylesheets/**.scss"
   - "bin/**"
+  - Gemfile.lock
 
 exclude_paths:
-  - vendor/
+  - "vendor/"
+  - "assets/stylesheets/semantic/"
