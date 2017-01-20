@@ -8,6 +8,8 @@ engines:
     enabled: true
   scsslint:
     enabled: true
+  markdownlint:
+    enabled: true
   stylelint:
     enabled: true
     channel: 'beta'
@@ -22,8 +24,9 @@ ratings:
   paths:
   - Gemfile.lock
   - "**.css"
+  - "**.md"
   - "assets/stylesheets/**.scss"
   - "_sass/**.scss"
 
 exclude_paths:
-  - script/
+  - vendor/
