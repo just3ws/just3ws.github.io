@@ -35,11 +35,11 @@ prefetch: /resume.html
     <li><a href="http://www.pechakucha.org/presentations/teach-yourself-beginning-community-in-24-months-2">Teach Yourself Beginning Community in 24 Months</a></li>
   </ul>
   {% if site.posts.size > 0 %}
-  <h3 id="posts">Posts</h3>
-  <ul>
-    {% for post in site.posts %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+    <h3 id="posts">Posts</h3>
+    <ul>
+      {% for post in site.posts %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
   {% endif %}
 </div>

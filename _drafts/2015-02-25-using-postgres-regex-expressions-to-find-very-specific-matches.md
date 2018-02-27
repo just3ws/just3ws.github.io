@@ -1,7 +1,7 @@
 ---
 layout: semantic
 title: Using Postgres RegEx Expressions to Find Very Specific Matches
-tags: Database, Indexes, PostgreSQL, Postgres, RDBMS, RegEx, Ruby on Rails, SQL
+tags: Database,Indexes,PostgreSQL,Postgres,RDBMS,RegEx,Ruby on Rails,SQL
 published_on: February 25, 2016
 ---
 
