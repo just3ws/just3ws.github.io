@@ -12,52 +12,13 @@
   <meta name="description" content="{{ page.description }}">
   <meta name="keywords" content="{{ page.keywords }}">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="fb:app_id" content="226843561097282">
-  <meta property="og:title" content="{{ page.title }}">
-  <meta property="og:url" content="{{ site.url}}{{ page.canonical_path }}">
-  <meta property="og:description" content="{{ page.description }}">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:updated_time" content="{{ site.time | date_to_xmlschema }}">
-  <meta property="og:image" content="{{ site.url }}/assets/images/avatar.png">
-  <meta property="og:image:width" content="432">
-  <meta property="og:image:height" content="432">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:site_name" content="Mike Hall" />
+  {% include open_graph.html %}
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@just3ws">
-  <meta name="twitter:creator" content="@just3ws">
-  <meta name="twitter:title" content="{{ page.title }}" />
-  <meta name="twitter:description" content="{{ page.description }}" />
-  <meta name="twitter:image" content="{{ site.url }}/assets/images/avatar.png" />
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Person",
-      "url": "http://www.just3ws.com",
-      "givenName": "Mike",
-      "familyName": "Hall",
-      "alternateName": "just3ws",
-      "email": "mike@just3ws.com",
-      "telephone": "+18478773825",
-      "homeLocation": {
-        "@type": "Residence",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "32 Bryant Court",
-          "addressLocality": "Crystal Lake",
-          "addressRegion": "IL",
-          "postalCode": "60014",
-          "addressCountry": "US"
-        }
-      }
-    }
-  </script>
+  {% include twitter_card.html %}
+
+  {% include json-ld.html %}
+
   <script async src="https://cdn.ampproject.org/v0.js"></script>
 
   <link rel="manifest" href="/manifest.json">
@@ -71,7 +32,6 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <!-- Analytics -->
   {% include google_analytics.html %}
 
 	{% if page.canonical_path %}
