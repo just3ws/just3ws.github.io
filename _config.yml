@@ -1,17 +1,30 @@
+---
 timezone: America/Chicago
+
 plugins:
+  - jekyll-analytics
   - jekyll-feed
+  - jekyll-font-awesome-sass
+  - jekyll-octicons
+  - jekyll-optional-front-matter
   - jekyll-redirect-from
+  - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-timeago
+  - jekyll-titles-from-headings
+  - jekyll-youtube
+
 sass:
   sass_dir: _sass
   style: compressed
+
 compress_html:
   clippings: all
   comments: all
   endings: all
   profile: false
   startings: [head, body]
+
 exclude:
   - '.bundle'
   - '.gitignore'
