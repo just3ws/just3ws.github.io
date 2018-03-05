@@ -7,6 +7,7 @@ ruby '2.5.0'
 group :jekyll_plugins do
   gem 'github-linguist'
   gem 'github-pages'
+
   gem 'jekyll-analytics'
   gem 'jekyll-font-awesome-sass'
   gem 'jekyll-github-metadata'
