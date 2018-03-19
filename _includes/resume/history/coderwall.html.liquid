@@ -4,6 +4,7 @@
     <strong>January 2014 - December 2014</strong>Re-launched Coderwall as an open-source
     project and led the community development efforts.
 
+    {% if resume_format == 'long' %}
     <ul class="role-details">
         <li>Scrubbed codebase in preparation for releasing Coderwall as an open-source
             website.
@@ -25,4 +26,5 @@
         <li>Converted asynchronous jobs to use Sidekiq instead of Resque to save on
             Heroku dyno costs.</li>
     </ul>
+    {% endif %}
 </dd>
