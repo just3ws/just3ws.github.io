@@ -21,6 +21,9 @@ group :jekyll_plugins do
 end
 
 group :development do
+  gem 'bundler-audit', require: false
+  gem 'erb_lint', require: false
   gem 'html-proofer', require: false
   gem 'mdl', require: false
+  gem 'scss_lint', require: false
 end
