@@ -4,23 +4,26 @@ title: Mike Hall | Software Developer
 description: Do you want an experienced developer on your team who is skilled in building HTTP APIs and backend systems with strong Ruby skills? Then hire me today!
 keywords: Software Developer,Ruby,Ruby on Rails,PostgreSQL,HTML,API,REST,Linux,Rails,Postgres,HTTP,RESTful,WebDev,CSS,RSpec,TDD,BDD,AOP,JavaScript,HTML5
 stylesheets: index
-prefetch: /resume.html
+prefetch: /resume-long.html
 ---
 
 <div>
   <h1 itemprop="name" id="name">Mike Hall</h1>
-  <p>
-  </p>
+  <p></p>
+
   <h3 id="resume">Resume</h3>
   <ul>
-    <li><a href="/resume.html">Software Developer Resume (HTML)</a></li>
-    <li><a href="/Mike Hall - Software Developer - Resume.pdf" target="_blank">Software Developer Resume (PDF)</a></li>
+    <li><a href="/resume-long.html">Software Developer Resume (HTML/Long)</a></li>
+    <li><a href="/resume-short.html">Software Developer Resume (HTML/Short)</a></li>
+    <li><a href="/Mike Hall - Software Developer - Resume.pdf" target="_blank">Software Developer Resume (PDF/Long)</a></li>
   </ul>
+
   <h3 id="contact">Contact</h3>
   <ul>
     <li><a itemprop="email" id="email" href="mailto:mike@just3ws.com">mike@just3ws.com</a></li>
     <li><a itemprop="telephone" id="telephone" href="tel:+18478773825">(847) 877-3825</a></li>
   </ul>
+
   <h3 id="social-media">Social Media</h3>
   <ul>
     <li><a href="https://www.linkedin.com/in/just3ws" data-proofer-ignore>LinkedIn</a></li>
@@ -30,16 +33,19 @@ prefetch: /resume.html
     <li><a href="https://about.me/just3ws">About.me</a></li>
     <li><a href="https://coderwall.com/just3ws">Coderwall</a></li>
   </ul>
+
   <h3 id="presentations">Presentations</h3>
   <ul>
     <li><a href="http://www.pechakucha.org/presentations/teach-yourself-beginning-community-in-24-months-2">Teach Yourself Beginning Community in 24 Months</a></li>
   </ul>
+
   {% if site.posts.size > 0 %}
-    <h3 id="posts">Posts</h3>
-    <ul>
-      {% for post in site.posts %}
-        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
+  <h3 id="posts">Posts</h3>
+  <ul>
+    {% for post in site.posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
   {% endif %}
 </div>
+
