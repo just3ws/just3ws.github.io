@@ -14,9 +14,12 @@
 
   {% include resume/history.html.liquid %}
 
+
+  {% if resume_format == 'long' %}
   <hr>
 
   {% include resume/projects.html.liquid %}
+  {% endif %}
 
   <hr class="hidden-print">
 
