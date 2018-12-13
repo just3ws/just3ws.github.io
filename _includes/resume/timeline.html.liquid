@@ -1,0 +1,3 @@
+{% for timeline_item in site.data.resume.timeline.items %}
+  {% include resume/timeline/item.html.liquid timeline_item=timeline_item %}
+{% endfor %}

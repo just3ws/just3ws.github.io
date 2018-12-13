@@ -1,0 +1,32 @@
+<div class="resume" itemscope itemtype="http://schema.org/Person">
+
+  {% include resume/header.html.liquid %}
+
+  <hr>
+
+  {% include resume/skills.html.liquid %}
+
+  <hr>
+
+  {% include resume/tools.html.liquid %}
+
+  <hr>
+
+  {% include resume/history.html.liquid %}
+
+
+  {% if resume_format == 'long' %}
+  <hr>
+
+  {% include resume/projects.html.liquid %}
+  {% endif %}
+
+  <hr class="hidden-print">
+
+  {% include resume/footer.html.liquid %}
+
+  <hr class="hidden-print">
+
+  <div class="fb-like hidden-print" data-href="http://www.just3ws.com/resume" data-layout="button"
+    data-action="recommend" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
