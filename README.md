@@ -1,6 +1,5 @@
 # Mike Hall
 
-
 ### Social Media
 
 - [LinkedIn](https://www.linkedin.com/in/just3ws)
