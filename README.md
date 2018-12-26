@@ -15,8 +15,7 @@
 
 ### Resume
 
-- [HTML](http://www.just3ws.com/resume)
-- [PDF](http://www.just3ws.com/resume/Mike Hall - Senior Software Developer - Resume.pdf)
+- [HTML](http://www.just3ws.com)
 
 ### Contact
 
