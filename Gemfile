@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.6.0'
+ruby '2.7.2'
 
 group :jekyll_plugins do
   # gem 'github-linguist'
