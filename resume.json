@@ -1,0 +1,34 @@
+---
+title: Mike Hall | Senior Software Developer
+description: Senior Software Developer skilled in building backend systems and integrations with strong Ruby and SQL skills.
+keywords: Senior Software Developer,Ruby,Ruby on Rails,PostgreSQL,HTML,API,REST,Linux,Rails,Postgres,HTTP,RESTful,WebDev,CSS,RSpec,TDD,BDD,AOP,JavaScript,HTML5
+---
+
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Mike Hall",
+    "label": "Senior Software Developer",
+    "picture": "",
+    "email": "mike@just3ws.com",
+    "phone": "(847) 877-3825",
+    "website": "http://www.just3ws.com",
+    "summary": "Senior Software Developer skilled in building backend systems and integrations with strong Ruby and SQL skills.",
+    "location": {
+      "address": "32 Bryant Court",
+      "postalCode": "IL 60014",
+      "city": "Crystal Lake",
+      "countryCode": "US",
+      "region": "Illinois"
+    },
+    "profiles": [{
+      "network": "LinkedIn",
+      "username": "just3ws",
+      "url": "https://www.linkedin.com/in/just3ws/"
+    }]
+  },
+
+  "work": [
+    {% include resume/timeline.json.liquid %}
+  ]
+}
