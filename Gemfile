@@ -35,4 +35,5 @@ group :development do
   gem 'html-proofer', require: false
   gem 'mdl', require: false
   gem 'scss_lint', require: false
+  gem 'webrick', require: false
 end
