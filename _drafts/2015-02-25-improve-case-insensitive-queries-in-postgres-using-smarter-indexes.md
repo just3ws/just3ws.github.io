@@ -82,17 +82,17 @@ and more intelligently decide which sets to scan and which to skip.
 Where the Sequential Scan will touch every single row in the table.
 
 Read more about the Postgres [Index on
-Expressions](http://www.postgresql.org/docs/9.1/static/indexes-expressional.html)
+Expressions](https://www.postgresql.org/docs/9.1/static/indexes-expressional.html)
 in the official documentation and this explanation by the author of the
 [Postgres Bitmap Heap Scan
-algorithm](http://www.postgresql.org/message-id/12553.1135634231@sss.pgh.pa.us)
+algorithm](https://www.postgresql.org/message-id/12553.1135634231@sss.pgh.pa.us)
 Tom Lane.
 
 For a full explanation of what the `cost`, `rows`, and `width` values
 mean please check out [Using
-Explain](http://www.postgresql.org/docs/9.2/static/using-explain.html)
+Explain](https://www.postgresql.org/docs/9.2/static/using-explain.html)
 from the Postgres documentation.
 
 `varchar_pattern_ops` is explained in Postgres
-[Index](http://www.postgresql.org/docs/current/static/indexes-opclass.html)
+[Index](https://www.postgresql.org/docs/current/static/indexes-opclass.html)
 documentation.

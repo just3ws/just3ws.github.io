@@ -9,13 +9,13 @@ Coderwall has been having issues with certain avatars generating 403 errors in
 the browser console. You probably wouldn't notice unless you had your dev tools
 open while you were browsing but there were a little over 25% of our Twitter
 avatars that weren't rendering properly due to trying to connect via HTTP
-instead of HTTPS. (*And other changes to how Twitter resolves it's profile
-images but that's a bigger issue.*)  Fortunately with the power of Ruby and
+instead of HTTPS. (_And other changes to how Twitter resolves it's profile
+images but that's a bigger issue._) Fortunately with the power of Ruby and
 Postgres RegEx selectors it's relatively trivial to find and transform the HTTP
 urls to use HTTPS.
 
 ```ruby
-User.where("twitter_token is not null AND thumbnail_url ~ '^http:' AND thumbnail_url ~ 'twimg\.com'").find_each(batch_size: 500) do |user|
+User.where("twitter_token is not null AND thumbnail_url ~ '^https:' AND thumbnail_url ~ 'twimg\.com'").find_each(batch_size: 500) do |user|
 	begin
 		url = URI.parse(user.profile_url)
 		puts "Update #{user.username} because #{user.profile_url} appears to be HTTP."
@@ -27,6 +27,7 @@ User.where("twitter_token is not null AND thumbnail_url ~ '^http:' AND thumbnail
 	end
 end
 ```
+
 Our `User` model has a field `thumbnail_url` which holds the URL for users who
 log into Coderwall via OAuth. Since the issue was currently a problem
 predominantly for Twitter logins, and LinkedIn doesn't allow for fetching the
@@ -36,8 +37,8 @@ Next I want to filter by users who have `thumbnail_url`'s that are not already
 using HTTPS. That number was near-zero after some poking I did to verify the
 issue, but better to be safe than sorry and it also helps with re-running the
 script, no sense in selecting a record that's already been updated. I used the
-Postgres RegEx matcher `thumbnail_url ~ '^http:'` but could very well have used
-`thumbnail_url ilike 'http:%'` which can still utilize some indexes if
+Postgres RegEx matcher `thumbnail_url ~ '^https:'` but could very well have used
+`thumbnail_url ilike 'https:%'` which can still utilize some indexes if
 available. The `ilike` vs `like` is also preferable in this case because it is
 case-insensitive
 

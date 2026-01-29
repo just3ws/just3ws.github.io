@@ -10,11 +10,11 @@
 
 ### Presentations
 
-- [Teach Yourself Beginning Community in 24 Months](http://www.pechakucha.org/presentations/teach-yourself-beginning-community-in-24-months-2)
+- [Teach Yourself Beginning Community in 24 Months](https://www.pechakucha.org/presentations/teach-yourself-beginning-community-in-24-months-2)
 
 ### Resume
 
-- [HTML](http://www.just3ws.com)
+- [HTML](https://www.just3ws.com)
 
 ### Contact
 
