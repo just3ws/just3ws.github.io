@@ -1,6 +1,9 @@
 ---
 timezone: America/Chicago
-url: https://just3ws.github.io
+
+# Canonical host (used by jekyll-sitemap, jekyll-seo-tag, feeds, etc.)
+url: https://www.just3ws.com
+baseurl: ""
 
 plugins:
   - jekyll-analytics
@@ -28,17 +31,28 @@ compress_html:
   startings: [head, body]
 
 exclude:
-  - '.bundle'
-  - '.codeclimate.yml'
-  - '.gitignore'
-  - '.ruby-gemset'
-  - '.ruby-version'
-  - '.stylelintrc.json'
-  - '.travis.yml'
-  - 'Gemfile'
-  - 'Gemfile.lock'
-  - 'bin'
-  - 'nginx.conf'
-  - 'node_modules'
-  - 'semantic.json'
-  - 'vendor'
+  # Ruby / build tooling
+  - ".bundle"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - ".ruby-version"
+  - ".ruby-gemset"
+
+  # Repo / CI metadata
+  - ".gitignore"
+  - ".travis.yml"
+  - ".stylelintrc.json"
+  - ".codeclimate.yml"
+  - ".github"
+  - "README.md"
+  - "LICENSE"
+
+  # Local / runtime config
+  - "bin"
+  - "node_modules"
+  - "vendor"
+  - "semantic.json"
+  - "nginx.conf"
+
+  # Vendor test artifacts – must never be published or indexed
+  - "assets/scss/bootstrap/js/tests"
