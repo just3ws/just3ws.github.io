@@ -1,4 +1,7 @@
 #!/usr/bin/env zsh
+set -e
+
+source .env
 
 echo Pinging Google
 curl -s "https://www.google.com/webmasters/sitemaps/ping?sitemap=https://www.just3ws.com/sitemap.xml"
