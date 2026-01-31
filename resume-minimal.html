@@ -1,0 +1,106 @@
+---
+layout: minimal
+title: Mike Hall - Staff Software Engineer
+description: Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and building scalable backend systems.
+---
+
+<article itemscope itemtype="https://schema.org/Person">
+  <header class="resume-header">
+    <h1 itemprop="name">Mike Hall</h1>
+    <p class="title" itemprop="jobTitle">Staff Software Engineer</p>
+    <ul class="contact-info">
+      <li><a href="mailto:mike@just3ws.com" itemprop="email">mike@just3ws.com</a></li>
+      <li><a href="tel:+18478773825" itemprop="telephone">(847) 877-3825</a></li>
+      <li><a href="https://www.just3ws.com" itemprop="url">just3ws.com</a></li>
+      <li><a href="https://www.linkedin.com/in/just3ws/">LinkedIn</a></li>
+      <li><a href="https://github.com/just3ws">GitHub</a></li>
+    </ul>
+  </header>
+
+  <section id="summary">
+    <h2>Summary</h2>
+    <p>
+      Experienced software engineer with 20+ years building robust, maintainable systems.
+      Specialized in Ruby, Rails, and PostgreSQL with a track record of leading technical
+      initiatives, mentoring teams, and delivering scalable solutions for companies including
+      Groupon, ActiveCampaign, and BenchPrep.
+    </p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    {% for item in site.data.resume.timeline.items %}
+      {% assign position = site.data.resume.positions[item] %}
+      {% if position %}
+      <article class="position" itemprop="workExperience" itemscope itemtype="https://schema.org/OrganizationRole">
+        <header class="position-header">
+          <h3 class="position-title">
+            <span itemprop="roleName">{{ position.title }}</span>
+            <span class="position-company" itemprop="memberOf" itemscope itemtype="https://schema.org/Organization">
+              — <span itemprop="name">{{ position.company.name }}</span>
+            </span>
+          </h3>
+          <p class="position-meta">
+            <span class="position-dates">
+              <time itemprop="startDate">{{ position.start_date }}</time> –
+              <time itemprop="endDate">{{ position.end_date | default: "Present" }}</time>
+            </span>
+            {% if position.company.location %}
+              | <span itemprop="location">{{ position.company.location }}</span>
+            {% endif %}
+          </p>
+        </header>
+
+        {% if position.description %}
+        <p>{{ position.description }}</p>
+        {% endif %}
+
+        {% if position.achievements.highlights %}
+        <ul>
+          {% for achievement in position.achievements.highlights %}
+          <li>{{ achievement }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if position.technologies %}
+        <p><strong>Technologies:</strong> {{ position.technologies | join: ", " }}</p>
+        {% endif %}
+      </article>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+
+    <h3>Languages</h3>
+    <ul class="skills-list">
+      <li>Ruby</li>
+      <li>SQL</li>
+      <li>JavaScript</li>
+      <li>HTML/CSS</li>
+      <li>Bash/Zsh</li>
+    </ul>
+
+    <h3>Frameworks & Tools</h3>
+    <ul class="skills-list">
+      <li>Ruby on Rails</li>
+      <li>PostgreSQL</li>
+      <li>MySQL</li>
+      <li>Redis</li>
+      <li>Git</li>
+      <li>Linux</li>
+    </ul>
+
+    <h3>Practices</h3>
+    <ul class="skills-list">
+      <li>Test-Driven Development</li>
+      <li>Agile/Scrum</li>
+      <li>Code Review</li>
+      <li>Mentoring</li>
+      <li>Technical Leadership</li>
+    </ul>
+  </section>
+
+</article>
