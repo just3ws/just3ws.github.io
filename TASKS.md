@@ -7,39 +7,39 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 ## Phase 1: Critical A11y & HTML Fixes
 
 ### 1.1 Fix Icon Link Accessibility
-- [ ] Add `aria-label` to email icon link (`_includes/resume/header.html.liquid:10`)
-- [ ] Add `aria-label` to phone icon link (`_includes/resume/header.html.liquid:13`)
-- [ ] Add `aria-label` to all social media icon links in header
-- [ ] Add `aria-hidden="true"` to decorative FontAwesome icons
+- [x] ~~Add `aria-label` to email icon link~~ (not needed - visible text present)
+- [x] ~~Add `aria-label` to phone icon link~~ (not needed - visible text present)
+- [x] ~~Add `aria-label` to all social media icon links~~ (not needed - visible text present)
+- [x] Add `aria-hidden="true"` to decorative FontAwesome icons
 
 ### 1.2 Fix Placeholder Links
-- [ ] Replace `href="#"` with actual `mailto:` link for email
-- [ ] Replace `href="#"` with actual `tel:` link for phone
-- [ ] Verify all links have proper destinations
+- [x] Replace `href="#"` with actual `mailto:` link for email
+- [x] Replace `href="#"` with actual `tel:` link for phone
+- [x] Verify all links have proper destinations
 
 ### 1.3 Fix Heading Hierarchy
-- [ ] Audit current heading structure (h1 → h2 → h3 → h4)
-- [ ] Ensure single `<h1>` (name) at top
-- [ ] Section titles should be `<h2>` (Experience, Skills, Education)
-- [ ] Subsections should be `<h3>` (individual jobs, skill categories)
-- [ ] Fix footer `<h3>` to appropriate level or remove
+- [x] Audit current heading structure (h1 → h2 → h3 → h4)
+- [x] Ensure single `<h1>` (name) at top
+- [x] Section titles are `<h2>` (Experience, Skills, Education)
+- [x] Changed skill categories from `<h4>` to `<h3>` (proper hierarchy)
+- [x] Removed footer `<h3>` (changed to `<div>`)
 
 ### 1.4 Fix Invalid HTML Structure
-- [ ] Fix `<dl>` misuse in `_includes/resume/history.html.liquid:2`
-- [ ] Fix orphaned `<dd>` in `_includes/resume/recommendations.html.liquid:4`
-- [ ] Remove invalid `alt` attribute from `<a>` tags in footer (`_includes/resume/footer.html.liquid:3,5`)
-- [ ] Run `bundle exec rake htmlproofer` to verify fixes
+- [x] ~~Fix `<dl>` in history.html.liquid~~ (already valid - uses proper dt/dd pairs)
+- [x] Fixed orphaned `<dd>` in recommendations.html.liquid (changed to `<div>`)
+- [x] Removed invalid `alt` attributes from `<a>` tags in footer
+- [x] Ran `./bin/cibuild` - HTML validates (network errors on external GA link only)
 
 ### 1.5 Add Navigation Landmarks
-- [ ] Add skip link to main content at top of page
-- [ ] Add `role="main"` or `<main>` element wrapper
-- [ ] Add `role="navigation"` to any nav sections
-- [ ] Add `role="contentinfo"` to footer or use `<footer>` semantically
+- [x] Add skip link to main content at top of page
+- [x] Add `<main>` element wrapper
+- [x] ~~Add `role="navigation"`~~ (no nav sections present)
+- [x] Add `role="contentinfo"` to footer
 
 ### 1.6 Keyboard Navigation
-- [ ] Add visible focus styles (`:focus-visible`) in SCSS
-- [ ] Ensure all interactive elements are keyboard accessible
-- [ ] Test tab order flows logically
+- [x] Add visible focus styles (`:focus-visible`) in SCSS
+- [x] All interactive elements are keyboard accessible
+- [ ] Test tab order flows logically (manual testing needed)
 
 ---
 
@@ -172,7 +172,7 @@ Key files to modify:
 
 | Phase | Status | Started | Completed |
 |-------|--------|---------|-----------|
-| Phase 1: A11y & HTML | Not Started | | |
+| Phase 1: A11y & HTML | In Progress | 2026-01-30 | |
 | Phase 2: ATS Compliance | Not Started | | |
 | Phase 3: Theme Modernization | Not Started | | |
 | Phase 4: Staff+ Content | Not Started | | |

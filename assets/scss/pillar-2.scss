@@ -244,6 +244,40 @@ a.theme-btn-on-bg, .theme-btn-on-bg {
 	}
 }
 
+// Accessibility: Skip link
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background: $theme-color-primary;
+	color: white;
+	padding: 8px 16px;
+	z-index: 100;
+	text-decoration: none;
+	font-weight: 500;
+
+	&:focus {
+		top: 0;
+	}
+}
+
+// Accessibility: Focus styles
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+	outline: 3px solid $theme-color-primary;
+	outline-offset: 2px;
+}
+
+// Remove default focus outline when focus-visible is supported
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767.98px) {
     .resume-wrapper {
