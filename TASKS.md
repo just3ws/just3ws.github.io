@@ -101,10 +101,11 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 ### 4.1 Add Job Context
 Add `context` field to position YAML files to frame the business/company situation:
 - [x] OneMain Financial - consumer lending scale, regulatory environment, revenue-critical systems
-- [ ] SK Holdings - company context
-- [ ] ActiveCampaign - company context
-- [ ] BenchPrep - company context
-- [ ] Other recent roles as needed
+- [x] SK Holdings - digital media/affiliate marketing, campaign scale
+- [x] ActiveCampaign - marketing automation platform, 180K+ customers
+- [x] BenchPrep - ed-tech/LMS, high-stakes certification platforms
+- [x] ReachLocal - digital marketing for SMBs, acquired by Gannett
+- [x] KloboMedia - startup, CTO/technical co-founder role
 
 ### 4.2 Achievement Restructuring
 - [ ] Audit each position for impact-first language
