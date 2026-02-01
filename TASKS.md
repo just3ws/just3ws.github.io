@@ -39,7 +39,7 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 ### 1.6 Keyboard Navigation
 - [x] Add visible focus styles (`:focus-visible`) in SCSS
 - [x] All interactive elements are keyboard accessible
-- [ ] Test tab order flows logically (manual testing needed)
+- [x] Test tab order flows logically (pa11y WCAG2AA pass, manual keyboard test)
 
 ---
 
@@ -172,7 +172,7 @@ Key files to modify:
 
 | Phase | Status | Started | Completed |
 |-------|--------|---------|-----------|
-| Phase 1: A11y & HTML | In Progress | 2026-01-30 | |
+| Phase 1: A11y & HTML | Complete | 2026-01-30 | 2026-02-01 |
 | Phase 2: ATS Compliance | Not Started | | |
 | Phase 3: Theme Modernization | Not Started | | |
 | Phase 4: Staff+ Content | Not Started | | |
