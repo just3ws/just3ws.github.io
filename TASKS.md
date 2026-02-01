@@ -58,8 +58,8 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 
 ### 2.3 Improve Structured Data
 - [ ] Audit existing JSON-LD in `_includes/json-ld.html`
-- [ ] Add `JobPosting` schema for positions
-- [ ] Enhance `Person` schema with `hasOccupation` properties
+- [ ] Enhance `Person` schema with `hasOccupation` for work history
+- [ ] Add `Occupation` schema for each role (not `JobPosting` - that's for job listings)
 - [ ] Add `knowsAbout` for skills/technologies
 - [ ] Validate with Google Rich Results Test
 
@@ -73,6 +73,8 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 ## Phase 3: Theme Modernization
 
 ### 3.1 Bootstrap Upgrade (4 → 5)
+> **Note:** This is a large change - consider a dedicated feature branch and PR.
+
 - [ ] Review Bootstrap 5 migration guide
 - [ ] Update `assets/scss/bootstrap/` vendor files
 - [ ] Fix breaking changes (jQuery removal, class renames)
@@ -82,7 +84,8 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 ### 3.2 Color Contrast & WCAG Compliance
 - [ ] Audit primary color `#22A162` against backgrounds
 - [ ] Check text colors meet WCAG AA (4.5:1 for normal text)
-- [ ] Check link colors meet WCAG AA
+- [ ] Fix link color contrast (currently 5.57:1 - passes AA, fails AAA)
+  - pa11y recommends: change to `#0057af` or darker for AAA
 - [ ] Document color palette with contrast ratios
 - [ ] Fix any failing contrasts in SCSS variables
 
@@ -102,6 +105,8 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 ---
 
 ## Phase 4: Staff+ Content Strategy
+
+> **Note:** Content work is independent of technical phases 2-3 and can run in parallel.
 
 ### 4.1 Achievement Restructuring
 - [ ] Audit each position for impact-first language
@@ -151,6 +156,8 @@ bundle exec rake htmlproofer
 ---
 
 ## Files Reference
+
+**Target page:** `resume-minimal.html` (passes WCAG AA as of 2026-02-01)
 
 Key files to modify:
 
