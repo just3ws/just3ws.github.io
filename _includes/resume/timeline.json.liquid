@@ -1,4 +1,0 @@
-{% for timeline_item in site.data.resume.timeline.items %}
-  {% include resume/timeline/item.json.liquid timeline_item=timeline_item %}
-  {% unless forloop.last %},{% endunless %}
-{% endfor %}
