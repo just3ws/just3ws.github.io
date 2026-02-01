@@ -1,24 +1,57 @@
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
+<!-- JSON-LD Structured Data for ATS and Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mike Hall",
+  "givenName": "Mike",
+  "familyName": "Hall",
+  "alternateName": "just3ws",
+  "url": "https://www.just3ws.com",
+  "email": "mike@just3ws.com",
+  "telephone": "+18478773825",
+  "jobTitle": "Staff Software Engineer",
+  "sameAs": [
+    "https://www.linkedin.com/in/just3ws/",
+    "https://github.com/just3ws"
+  ],
+  "knowsAbout": [
+    "Ruby",
+    "Ruby on Rails",
+    "PostgreSQL",
+    "MySQL",
+    "Redis",
+    "SQL",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "Git",
+    "Linux",
+    "Test-Driven Development",
+    "Agile",
+    "Technical Leadership"
+  ],
+  "hasOccupation": [
+    {% for item in site.data.resume.timeline.items %}
+    {% assign position = site.data.resume.positions[item] %}
+    {% if position %}
     {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "url": "https://www.just3ws.com",
-      "givenName": "Mike",
-      "familyName": "Hall",
-      "alternateName": "just3ws",
-      "email": "mike@just3ws.com",
-      "telephone": "+18478773825",
-      "homeLocation": {
-        "@type": "Residence",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "32 Bryant Court",
-          "addressLocality": "Crystal Lake",
-          "addressRegion": "IL",
-          "postalCode": "60014",
-          "addressCountry": "US"
-        }
+      "@type": "Occupation",
+      "name": "{{ position.title }}",
+      {% if position.description %}"description": {{ position.description | jsonify }},{% endif %}
+      {% if position.technologies %}"skills": "{{ position.technologies | join: ', ' }}",{% endif %}
+      "occupationLocation": {
+        "@type": "City",
+        "name": "{{ position.company.location | default: 'Remote' }}"
+      },
+      "estimatedSalary": [],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.just3ws.com/resume-minimal.html"
       }
-    }
-  </script>
+    }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+    {% endfor %}
+  ]
+}
+</script>

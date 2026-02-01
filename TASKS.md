@@ -46,27 +46,30 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 ## Phase 2: ATS Compliance
 
 ### 2.1 Simplify HTML for ATS Parsing
-- [ ] Ensure job titles are in `<h3>` or similar parseable tags
-- [ ] Ensure company names are clearly labeled
-- [ ] Ensure dates are in consistent, parseable format
-- [ ] Remove or provide text alternatives for progress bar skills
+- [x] Ensure job titles are in `<h3>` or similar parseable tags (already done in `resume-minimal.html`)
+- [x] Ensure company names are clearly labeled (uses Schema.org microdata)
+- [x] Ensure dates are in consistent, parseable format (uses `<time>` elements)
+- [x] Remove or provide text alternatives for progress bar skills (plain `<li>` in minimal version)
 
 ### 2.2 Create Plain Text Resume
-- [ ] Create `resume.txt` with clean text formatting
-- [ ] Add link to plain text version in footer
-- [ ] Consider auto-generating from YAML data
+- [x] Create `resume.txt` with clean text formatting
+- [x] Add link to plain text version (in resume-actions nav bar)
+- [x] Auto-generated from YAML data via Jekyll template
 
 ### 2.3 Improve Structured Data
-- [ ] Audit existing JSON-LD in `_includes/json-ld.html`
-- [ ] Enhance `Person` schema with `hasOccupation` for work history
-- [ ] Add `Occupation` schema for each role (not `JobPosting` - that's for job listings)
-- [ ] Add `knowsAbout` for skills/technologies
-- [ ] Validate with Google Rich Results Test
+- [x] Added JSON-LD include to `_layouts/minimal.html`
+- [x] Enhanced `Person` schema with `hasOccupation` for work history
+- [x] Added `Occupation` schema for each role (generated from timeline data)
+- [x] Added `knowsAbout` for skills/technologies
+- [x] Removed home address from JSON-LD for privacy
+- [x] Added `sameAs` for LinkedIn and GitHub
+- [ ] Validate with Google Rich Results Test (after deploy)
 
 ### 2.4 PDF Export Option
-- [ ] Research Jekyll PDF generation options
-- [ ] Create print-friendly CSS (`@media print`)
-- [ ] Add "Download PDF" link to header/footer
+- [x] Enhanced print CSS with page-break rules
+- [x] Added `.no-print` class for hiding elements in print
+- [x] Added "Print / Save as PDF" button to `resume-minimal.html`
+- [x] Compact skills list styling for print
 
 ---
 
@@ -180,6 +183,6 @@ Key files to modify:
 | Phase | Status | Started | Completed |
 |-------|--------|---------|-----------|
 | Phase 1: A11y & HTML | Complete | 2026-01-30 | 2026-02-01 |
-| Phase 2: ATS Compliance | Not Started | | |
+| Phase 2: ATS Compliance | Complete | 2026-02-01 | 2026-02-01 |
 | Phase 3: Theme Modernization | Not Started | | |
 | Phase 4: Staff+ Content | Not Started | | |

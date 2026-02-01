@@ -1,0 +1,65 @@
+---
+layout: null
+permalink: /resume.txt
+---
+MIKE HALL
+Staff Software Engineer
+
+Email: mike@just3ws.com
+Phone: (847) 877-3825
+Website: https://www.just3ws.com
+LinkedIn: https://www.linkedin.com/in/just3ws/
+GitHub: https://github.com/just3ws
+
+================================================================================
+SUMMARY
+================================================================================
+
+Experienced software engineer with 20+ years building robust, maintainable
+systems. Specialized in Ruby, Rails, and PostgreSQL with a track record of
+leading technical initiatives, mentoring teams, and delivering scalable
+solutions for companies including Groupon, ActiveCampaign, and BenchPrep.
+
+================================================================================
+EXPERIENCE
+================================================================================
+{% for item in site.data.resume.timeline.items %}
+{% assign position = site.data.resume.positions[item] %}
+{% if position %}
+--------------------------------------------------------------------------------
+{{ position.title | upcase }}
+{{ position.company.name }}{% if position.company.location %} | {{ position.company.location }}{% endif %}
+
+{{ position.start_date }} - {{ position.end_date | default: "Present" }}
+{% if position.description %}
+
+{{ position.description | strip | wordwrap: 80 }}
+{% endif %}
+{% if position.achievements.highlights %}
+
+Key Achievements:
+{% for achievement in position.achievements.highlights %}
+* {{ achievement | strip | wordwrap: 76 | replace: "
+", "
+  " }}
+{% endfor %}
+{% endif %}
+{% if position.technologies %}
+
+Technologies: {{ position.technologies | join: ", " }}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+================================================================================
+SKILLS
+================================================================================
+
+Languages: Ruby, SQL, JavaScript, HTML/CSS, Bash/Zsh
+
+Frameworks & Tools: Ruby on Rails, PostgreSQL, MySQL, Redis, Git, Linux
+
+Practices: Test-Driven Development, Agile/Scrum, Code Review, Mentoring,
+           Technical Leadership
+
+================================================================================
