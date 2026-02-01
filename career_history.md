@@ -144,3 +144,73 @@ When generating resume bullets:
 - Quantify blast radius, duration, or risk reduction where possible
 - Emphasize second-order effects (teams unblocked, systems stabilized)
 - Collapse pre-2015 experience into a single “Selected Earlier Experience” section
+
+---
+
+## Job Context
+
+---
+
+## Job Context — OneMain Financial (Acquisition Lane)
+
+**Company:** OneMain Financial
+**Title:** Associate Director, Staff Engineer
+**Former Title:** Software Architect (title rebranded; role unchanged)
+**Tenure:** January 2021 – February 2026
+**Role Type:** Senior Individual Contributor (Staff / early Principal scope)
+**Domain:** Customer Acquisition, Affiliate Integrations, Rails Platform
+**Environment:** Large, regulated financial institution; legacy-heavy Ruby on Rails systems
+
+### Role Summary
+
+Held formal Associate Director / Staff Engineer responsibility for the **Acquisition Lane**, with lane-level ownership of architecture, delivery health, and systemic risk. Operated as a senior individual contributor, not a people manager. Scope, authority, and responsibilities remained consistent throughout tenure despite internal title rebranding.
+
+### Initial Conditions
+
+- Acquisition engineering split across two incomplete, unstable teams
+- Significant Rails platform end-of-life, cyber, and operational risk
+- Degraded system and process understanding limiting safe change
+- Fragmented, vendor-specific observability with limited diagnostic value
+- No established cross-lane technical coordination mechanisms
+
+### Core Ownership Areas
+
+- Lane-level architecture and technical direction
+- System resilience and risk remediation
+- Platform modernization under continuous delivery constraints
+- Cross-team technical enablement and standards
+- Recovery of system and business domain understanding
+
+### Key Contributions and Outcomes
+
+- Re-architected Acquisition engineering from two incomplete teams into one functioning team with clear ownership boundaries and delivery accountability
+- Founded **ACQ Enablement** to isolate and address cross-cutting work not suitable for feature teams, including:
+  - Ruby platform EOL upgrades
+  - Critical cyber remediation
+  - Systemic risk reduction and stabilization
+
+- Designed and delivered DynamoDB/CookieOverflow remediation, eliminating a long-standing failure mode affecting session integrity and customer tracking
+- Led Rails platform modernization while maintaining uninterrupted production operation in a regulated environment
+- Founded and led the **OpenTelemetry initiative** from inception through stabilization:
+  - Defined observability standards and instrumentation practices
+  - Onboarded teams across lanes
+  - Established durable, vendor-agnostic observability foundations
+  - Transitioned ownership once the practice was fully staffed
+
+- Led **ACQ Process Mapping** and SME (Subject Matter Experts) initiatives to reconstruct lost system and business understanding and enable safer change
+- Helped found early engineering Communities of Practice and ensured Acquisition Lane representation to prevent architectural drift
+
+### Operating Model
+
+- Influence-driven leadership without reliance on formal authority
+- Concurrent stabilization and modernization (no “stop-the-world” rewrites)
+- Emphasis on durable structures and practices over one-off projects
+- Translation of technical risk into business and regulatory impact
+
+### Resume Framing Guidance
+
+- Treat as a **single continuous Staff-level role**
+- Do not split by internal title changes
+- Emphasize lane-level ownership, systems thinking, and durability of impact
+- Avoid managerial framing; position as senior IC leadership
+- This role should anchor Staff / Principal positioning

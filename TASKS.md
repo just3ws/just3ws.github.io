@@ -75,61 +75,56 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 
 ## Phase 3: Theme Modernization
 
-### 3.1 Bootstrap Upgrade (4 → 5)
-> **Note:** This is a large change - consider a dedicated feature branch and PR.
+> **Status: SKIPPED** - Pillar theme removed entirely. Site now uses minimal theme only.
 
-- [ ] Review Bootstrap 5 migration guide
-- [ ] Update `assets/scss/bootstrap/` vendor files
-- [ ] Fix breaking changes (jQuery removal, class renames)
-- [ ] Update utility classes (`ml-*` → `ms-*`, `mr-*` → `me-*`, etc.)
-- [ ] Test responsive behavior
+### 3.1-3.4 All Skipped
+- [x] ~~Bootstrap upgrade~~ - Bootstrap removed, not needed
+- [x] ~~Color contrast~~ - Minimal theme uses system defaults
+- [x] ~~Modern CSS~~ - Minimal.css is already clean
+- [x] ~~Visual refresh~~ - Completed by adopting minimal theme
 
-### 3.2 Color Contrast & WCAG Compliance
-- [ ] Audit primary color `#22A162` against backgrounds
-- [ ] Check text colors meet WCAG AA (4.5:1 for normal text)
-- [ ] Fix link color contrast (currently 5.57:1 - passes AA, fails AAA)
-  - pa11y recommends: change to `#0057af` or darker for AAA
-- [ ] Document color palette with contrast ratios
-- [ ] Fix any failing contrasts in SCSS variables
-
-### 3.3 Modern CSS Improvements
-- [ ] Add CSS custom properties (variables) for theming
-- [ ] Implement `prefers-reduced-motion` media query
-- [ ] Implement `prefers-color-scheme` for dark mode (optional)
-- [ ] Add `font-display: swap` for web fonts
-- [ ] Optimize critical CSS path
-
-### 3.4 Visual Refresh (Optional)
-- [ ] Evaluate keeping Pillar theme vs. new theme
-- [ ] If new theme: select modern, minimal, ATS-friendly design
-- [ ] Preserve YAML data structure compatibility
-- [ ] Maintain 6 color variant system or simplify
+### 3.5 Theme Cleanup (Completed 2026-02-01)
+- [x] Removed Pillar theme (12 SCSS/CSS files)
+- [x] Removed Bootstrap vendor directory (146 files, ~1.4 MB)
+- [x] Removed old resume Liquid templates (29 files)
+- [x] Removed unused includes (facebook.html, open_graph.html)
+- [x] Removed unused assets (profile.jpg)
+- [x] Promoted `resume-minimal.html` to `index.html`
+- [x] Added redirect from `/resume-minimal.html` to `/`
 
 ---
 
 ## Phase 4: Staff+ Content Strategy
 
-> **Note:** Content work is independent of technical phases 2-3 and can run in parallel.
+> **Note:** Content work is independent of technical phases and is the primary remaining work.
 
-### 4.1 Achievement Restructuring
+### 4.1 Add Job Context
+Add `context` field to position YAML files to frame the business/company situation:
+- [x] OneMain Financial - consumer lending scale, regulatory environment, revenue-critical systems
+- [ ] SK Holdings - company context
+- [ ] ActiveCampaign - company context
+- [ ] BenchPrep - company context
+- [ ] Other recent roles as needed
+
+### 4.2 Achievement Restructuring
 - [ ] Audit each position for impact-first language
 - [ ] Add quantified results where possible (%, $, scale)
 - [ ] Lead bullets with action verbs + business outcome
 - [ ] Remove generic responsibility descriptions
 
-### 4.2 Add Scope Indicators
+### 4.3 Add Scope Indicators
 - [ ] Add team size to leadership roles
 - [ ] Add user/revenue scale where applicable
 - [ ] Highlight cross-functional influence
 - [ ] Note architectural decisions and their impact
 
-### 4.3 Technical Leadership Highlights
+### 4.4 Technical Leadership Highlights
 - [ ] Add "Architecture & Technical Leadership" section or integrate
 - [ ] Highlight mentorship and team growth
 - [ ] Document technical strategy contributions
 - [ ] Add speaking/writing/open source if applicable
 
-### 4.4 Content Review
+### 4.5 Content Review
 - [ ] Review all 24 positions in `_data/resume/positions/`
 - [ ] Prioritize recent/relevant roles with detailed achievements
 - [ ] Consider condensing older roles (pre-2015)
@@ -160,20 +155,18 @@ bundle exec rake htmlproofer
 
 ## Files Reference
 
-**Target page:** `resume-minimal.html` (passes WCAG AA as of 2026-02-01)
+**Main page:** `index.html` (was resume-minimal.html, passes WCAG AA)
 
-Key files to modify:
+Key files:
 
 | File | Purpose |
 |------|---------|
-| `_includes/resume/header.html.liquid` | Header with contact links |
-| `_includes/resume/footer.html.liquid` | Footer with invalid `alt` attrs |
-| `_includes/resume/timeline/item.html.liquid` | Job entry template |
-| `_includes/resume/skills-tools-item-percentile.html.liquid` | Progress bar skills |
-| `_includes/resume/recommendations.html.liquid` | Invalid `<dl>` structure |
-| `_includes/resume/history.html.liquid` | Invalid `<dl>` structure |
-| `_layouts/default.html` | Main layout, landmarks |
-| `assets/scss/pillar-*.scss` | Theme styles (6 variants) |
+| `index.html` | Main resume page |
+| `resume.txt` | Plain text version (auto-generated) |
+| `_layouts/minimal.html` | Layout template |
+| `_includes/json-ld.html` | Structured data for SEO/ATS |
+| `assets/css/minimal.css` | Styles (screen + print) |
+| `_data/resume/timeline.yml` | Position order |
 | `_data/resume/positions/*.yml` | Position content (24 files) |
 
 ---
@@ -184,5 +177,5 @@ Key files to modify:
 |-------|--------|---------|-----------|
 | Phase 1: A11y & HTML | Complete | 2026-01-30 | 2026-02-01 |
 | Phase 2: ATS Compliance | Complete | 2026-02-01 | 2026-02-01 |
-| Phase 3: Theme Modernization | Not Started | | |
-| Phase 4: Staff+ Content | Not Started | | |
+| Phase 3: Theme Modernization | Skipped | 2026-02-01 | 2026-02-01 |
+| Phase 4: Staff+ Content | In Progress | 2026-02-01 | |
