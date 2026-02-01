@@ -108,10 +108,14 @@ Add `context` field to position YAML files to frame the business/company situati
 - [x] KloboMedia - startup, CTO/technical co-founder role
 
 ### 4.2 Achievement Restructuring
-- [ ] Audit each position for impact-first language
-- [ ] Add quantified results where possible (%, $, scale)
-- [ ] Lead bullets with action verbs + business outcome
-- [ ] Remove generic responsibility descriptions
+Recent positions restructured with impact-first language:
+- [x] OneMain Financial - already strong, minor refinements
+- [x] SK Holdings - consolidated 15→7 achievements, outcome-focused
+- [x] ActiveCampaign - consolidated 4→3 achievements, UX/performance emphasis
+- [x] BenchPrep - rewritten with security/reliability emphasis
+- [x] ReachLocal - consolidated, payment migration highlighted
+- [x] KloboMedia - leadership/ownership emphasis
+- [ ] Older positions (pre-2015) - consider condensing per career_history.md guidance
 
 ### 4.3 Add Scope Indicators
 - [ ] Add team size to leadership roles

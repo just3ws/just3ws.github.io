@@ -11,22 +11,26 @@ context: >-
   certification bodies. The platform handles high-stakes assessments where data
   integrity and calculation accuracy are critical for certification outcomes.
 description: >-
-  Optimized heavyweight queries and improved accuracy of calculations using
-  Postgres advanced query and diagnostic tools. Improved security of email
-  and integrations by using JSON Web Tokens and Web API for communications.
-  Introduced team communication practices such as daily stand and
-  acceptance criteria on feature and support request cards.
+  Improved platform reliability and security for high-stakes certification
+  assessments. Resolved performance bottlenecks affecting user experience
+  and implemented tamper-prevention for assessment responses.
+
 achievements:
   highlights:
-    - Built API for securte bi-directional communication between host and client
-      apps embedded within IFRAMES using Web API.
-    - Identified and optimized bottle-neck queries causing poor user
-      experience decreasing response time, reducing load, and increasing the
-      correctness of calculations.
-    - Implemented API for verifying responses from users were not tampered
-      with and only processed once using JSON Web Token protocol.
-    - Presented learning sessions on how to use Postgres analysis tools and a
-      session introducing Clojure.
+    - >-
+      Eliminated assessment calculation errors and improved response times by
+      diagnosing and optimizing bottleneck PostgreSQL queries using EXPLAIN
+      ANALYZE and query planning tools.
+    - >-
+      Secured assessment integrity by implementing JWT-based response
+      verification, preventing tampering and ensuring once-only processing
+      of certification exam submissions.
+    - >-
+      Built secure cross-origin communication API enabling embedded assessment
+      widgets to safely exchange data with host applications.
+    - >-
+      Elevated team capabilities through learning sessions on PostgreSQL
+      performance analysis and functional programming concepts.
 technologies:
   - AWS S3
   - Airbrake
