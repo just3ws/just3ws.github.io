@@ -161,6 +161,37 @@ When generating resume bullets:
 **Domain:** Customer Acquisition, Affiliate Integrations, Rails Platform
 **Environment:** Large, regulated financial institution; legacy-heavy Ruby on Rails systems
 
+### LinkedIn Experience 
+
+The LinkedIn resume text.
+
+```
+Owned lane-level architecture for the Acquisition platform, spanning customer funnels, affiliate integrations, and the core Ruby on Rails stack in a regulated financial environment.
+
+- Re-architected Acquisition engineering from two incomplete teams into a single functioning organization with clear ownership boundaries and delivery accountability.
+- Founded ACQ Enablement to isolate and resolve cross-cutting work not suitable for feature teams, including Ruby platform EOL upgrades, critical cyber remediation, and systemic risk reduction.
+- Designed and delivered the DynamoDB/CookieOverflow remediation, eliminating a long-standing failure mode affecting session integrity and customer tracking.
+- Led Rails platform modernization and lifecycle remediation while maintaining uninterrupted production operation.
+- Founded and led the OpenTelemetry initiative from inception through organizational adoption, establishing durable, vendor-agnostic observability standards and transitioning ownership once stabilized.
+- Led Acquisition Process Mapping and SME initiatives to reconstruct lost system and business understanding and enable safer, incremental change.
+- Helped found early engineering Communities of Practice and ensured Acquisition Lane representation to prevent architectural drift.
+```
+
+#### LinkedIn Skills
+
+Skills listed for this job's context.
+
+- Platform Architecture
+- System Resilience
+- Observability
+- Legacy System Modernization
+- System Design
+- Distributed Systems
+- Ruby on Rails
+- PostgreSQL
+- OpenTelemetry
+- AWS
+
 ### Role Summary
 
 Held formal Associate Director / Staff Engineer responsibility for the **Acquisition Lane**, with lane-level ownership of architecture, delivery health, and systemic risk. Operated as a senior individual contributor, not a people manager. Scope, authority, and responsibilities remained consistent throughout tenure despite internal title rebranding.
