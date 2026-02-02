@@ -44,9 +44,9 @@ Key Achievements:
   " }}
 {% endfor %}
 {% endif %}
-{% if position.technologies %}
+{% if position.skills %}
 
-Technologies: {{ position.technologies | join: ", " }}
+Skills: {{ position.skills | join: ", " }}
 {% endif %}
 {% endif %}
 {% endfor %}

@@ -39,7 +39,7 @@
       "@type": "Occupation",
       "name": "{{ position.title }}",
       {% if position.description %}"description": {{ position.description | jsonify }},{% endif %}
-      {% if position.technologies %}"skills": "{{ position.technologies | join: ', ' }}",{% endif %}
+      {% if position.skills %}"skills": "{{ position.skills | join: ', ' }}",{% endif %}
       "occupationLocation": {
         "@type": "City",
         "name": "{{ position.company.location | default: 'Remote' }}"
