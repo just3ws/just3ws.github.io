@@ -25,14 +25,10 @@ redirect_from:
     </ul>
   </header>
 
+  {% assign summary = site.data.resume.summary %}
   <section id="summary">
-    <h2>Summary</h2>
-    <p>
-    Experienced software engineer with 20+ years building robust, maintainable systems.
-    Specialized in Ruby, Rails, and PostgreSQL with a track record of leading technical
-    initiatives, mentoring teams, and delivering scalable solutions for companies including
-    Groupon, ActiveCampaign, and BenchPrep.
-    </p>
+    <h2>{{ summary.title }}</h2>
+    <p>{{ summary.text }}</p>
   </section>
 
   <section id="experience">
