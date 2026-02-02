@@ -161,7 +161,7 @@ When generating resume bullets:
 **Domain:** Customer Acquisition, Affiliate Integrations, Rails Platform
 **Environment:** Large, regulated financial institution; legacy-heavy Ruby on Rails systems
 
-### LinkedIn Experience 
+### LinkedIn Experience
 
 The LinkedIn resume text.
 

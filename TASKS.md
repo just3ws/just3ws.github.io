@@ -118,10 +118,13 @@ Recent positions restructured with impact-first language:
 - [ ] Older positions (pre-2015) - consider condensing per career_history.md guidance
 
 ### 4.3 Add Scope Indicators
-- [ ] Add team size to leadership roles
-- [ ] Add user/revenue scale where applicable
-- [ ] Highlight cross-functional influence
-- [ ] Note architectural decisions and their impact
+Added `scope` field to recent positions with scale, ownership, and influence:
+- [x] OneMain Financial - millions of customers, lane-level ownership, cross-functional influence
+- [x] SK Holdings - millions of contacts, platform ownership
+- [x] ActiveCampaign - 180K+ customers, high-traffic systems
+- [x] BenchPrep - enterprise clients (ACT, HRCI), assessment integrity
+- [x] ReachLocal - thousands of SMB clients, cross-team influence
+- [x] KloboMedia - full technical ownership as CTO/co-founder
 
 ### 4.4 Technical Leadership Highlights
 - [ ] Add "Architecture & Technical Leadership" section or integrate
