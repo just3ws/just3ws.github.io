@@ -127,10 +127,12 @@ Added `scope` field to recent positions with scale, ownership, and influence:
 - [x] KloboMedia - full technical ownership as CTO/co-founder
 
 ### 4.4 Technical Leadership Highlights
-- [ ] Add "Architecture & Technical Leadership" section or integrate
-- [ ] Highlight mentorship and team growth
-- [ ] Document technical strategy contributions
-- [ ] Add speaking/writing/open source if applicable
+- [x] Added "Technical Leadership" section to index.html and resume.txt
+- [x] Highlighted OpenTelemetry initiative (enterprise-wide observability)
+- [x] Highlighted Groupon onboarding/training programs
+- [x] Highlighted Communities of Practice founding
+- [x] Highlighted WHOIS Tech Community / UGtastic
+- [x] Highlighted team enablement functions
 
 ### 4.5 Content Review
 - [ ] Review all 24 positions in `_data/resume/positions/`
