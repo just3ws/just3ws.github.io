@@ -1,62 +1,91 @@
----
 company:
   name: SK Holdings, Inc.
-  location: 'Chicago, IL'
+  location: "Chicago, IL"
 
 title: Senior Backend Developer
 
-start_date: Jan, 2019
-end_date: Dec, 2020
+start_date: January 2019
+end_date: December 2020
 
 context: >-
-  SK Holdings operated multiple digital media and affiliate marketing properties,
-  including Good Parts Media. The business managed complex offer packages,
-  cross-sells, and affiliate bundles serving marketing campaigns at scale.
-  Systems processed millions of contacts and required tight integration with
-  third-party services like SendGrid for campaign delivery.
+  SK Holdings operated multiple digital media and subscription-oriented
+  businesses supported by a shared Ruby on Rails backend platform. The platform
+  handled content delivery, account and subscription management, billing, and
+  high-volume campaign operations. Systems processed millions of users and
+  contacts and evolved under ongoing business change, partnerships, and asset
+  transitions.
+
 scope:
-  scale: Millions of contacts, multi-property digital media platform
-  ownership: Platform modernization, ETL pipelines, database optimization
-  influence: Cross-team (engineering, operations, product stakeholders)
+  scale: Millions of users and contacts across multi-property platforms
+  ownership: Core Rails platform modernization, data pipelines, and system performance
+  influence: Cross-functional across engineering, operations, product, and external vendors
+
 description: >-
-  Stabilized and modernized legacy systems while leading platform upgrades
-  across the Ruby/Rails stack. Reduced operational burden through performance
-  optimization, Redis migration, and improved observability. Drove process
-  improvements for developer onboarding and delivery practices.
+  Took broad ownership of stabilizing and modernizing a shared Ruby on Rails
+  platform supporting multiple business lines. Operated as a high-leverage
+  individual contributor addressing architectural complexity, operational blind
+  spots, and performance constraints while expanding observability, improving
+  delivery reliability, and increasing insight into system and business behavior.
+  Portions of this work supported preparation of platform-backed assets for
+  external transition, alongside ongoing operational demands.
 
 achievements:
   highlights:
     - >-
-      Built ETL pipeline synchronizing millions of contacts between SendGrid
-      and internal systems, enabling reliable campaign delivery at scale.
+      Modernized and upgraded large portions of the Ruby and Rails stack across
+      multiple applications, reducing technical debt, addressing security
+      vulnerabilities, and improving long-term maintainability.
     - >-
-      Eliminated database bottlenecks by converting expensive dynamic queries
-      to Materialized Views, reducing load on high-traffic reporting systems.
+      Expanded operational visibility by introducing centralized logging and
+      monitoring, working with hosting providers to interpret metrics and
+      establish actionable insight into system behavior and capacity.
     - >-
-      Led Ruby and Rails platform upgrades across all applications, addressing
-      security vulnerabilities and technical debt.
+      Designed and built data pipelines synchronizing millions of records
+      between internal systems and third-party services, enabling reliable
+      high-volume operations and new business initiatives.
     - >-
-      Migrated session and cache stores from MySQL to Redis, improving response
-      times and reducing database load.
+      Led data-layer remediation efforts by replacing expensive dynamic queries
+      with Materialized Views, materially reducing load on high-traffic reporting
+      and analytics workloads.
     - >-
-      Established centralized logging and alerting, enabling proactive
-      identification of unused components and system health issues.
+      Migrated session and cache workloads from MySQL to Redis, isolating
+      transactional databases from non-critical load and improving response
+      times under peak traffic.
     - >-
-      Built self-service admin tools for managing offer packages and affiliate
-      bundles, eliminating developer intervention for routine business operations.
+      Collaborated with engineering teams to reason about existing architecture,
+      optimize deployment workflows, and improve runtime characteristics without
+      disrupting production traffic.
     - >-
-      Improved developer effectiveness through structured onboarding, mentorship
-      programs, and standardized code review practices.
+      Optimized CI pipelines by reordering and parallelizing test execution,
+      materially reducing feedback cycle time and improving delivery throughput.
+    - >-
+      Built self-service administrative tooling to support evolving business
+      configurations, reducing operational dependency on engineering and
+      improving business agility.
+    - >-
+      Replaced legacy search infrastructure with PostgreSQL full-text and NLP
+      search to simplify system dependencies and improve maintainability.
+    - >-
+      Designed and executed analytics and segmentation queries to surface
+      high-interest usage and content patterns, increasing insight into audience
+      behavior and informing downstream business decisions.
+    - >-
+      Mapped and documented platform workflows to restore shared understanding
+      of system behavior and enable safer, more predictable change.
 
 technologies:
-  - ETL
-  - Gitlab
-  - Memcached
-  - MySQL
-  - OpenStack
+  - Platform Modernization
+  - Backend System Architecture
+  - Ruby on Rails
+  - System Observability and Monitoring
+  - CI/CD Optimization
+  - Data Pipelines (ETL)
+  - Data Analytics
+  - Database Performance Optimization
+  - Full-Text Search (PostgreSQL)
+  - Cache Layer Design (Redis)
   - PostgreSQL
-  - Puppet
-  - RSpec
-  - Redis
-  - Ruby
-  - SendGrid API
+  - MySQL
+  - Prometheus
+  - Logentries
+  - SendGrid
