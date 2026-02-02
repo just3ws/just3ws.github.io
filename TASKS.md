@@ -63,7 +63,7 @@ Track progress on upgrading the site to current HTML/CSS A11y standards and ATS 
 - [x] Added `knowsAbout` for skills/technologies
 - [x] Removed home address from JSON-LD for privacy
 - [x] Added `sameAs` for LinkedIn and GitHub
-- [ ] Validate with Google Rich Results Test (after deploy)
+- [x] Validated with Google Rich Results Test
 
 ### 2.4 PDF Export Option
 - [x] Enhanced print CSS with page-break rules
