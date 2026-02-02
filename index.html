@@ -78,68 +78,44 @@ redirect_from:
     {% endif %}
     {% endfor %}
 
+    {% assign earlier = site.data.resume.earlier_experience %}
     <article class="position">
       <header class="position-header">
-        <h3 class="position-title">Earlier Experience</h3>
+        <h3 class="position-title">{{ earlier.title }}</h3>
         <p class="position-meta">
-        <span class="position-dates">1999 – 2014</span>
+        <span class="position-dates">{{ earlier.dates }}</span>
         </p>
       </header>
-      <p>
-      Progressive roles in software development across enterprise, consulting, and startup environments.
-      Built revenue-critical systems, introduced CI/CD practices, and established foundational
-      technical skills in .NET, Java, and early Ruby/Rails adoption.
-      </p>
+      <p>{{ earlier.description }}</p>
       <ul>
-        <li>Obtiva (Software Craftsman) — Ruby/Rails consultancy; client delivery and mentorship</li>
-        <li>Coderwall / UpCity / Viewpoints — Startup experience; full-stack development</li>
-        <li>TicketsNow — Revenue systems generating $2M+/year; acquired by Ticketmaster</li>
-        <li>BrightStar / Motorola / BP — Enterprise .NET development; system integration</li>
+        {% for item in earlier.items %}
+        <li>{{ item.company }}{% if item.role %} ({{ item.role }}){% endif %} — {{ item.summary }}</li>
+        {% endfor %}
       </ul>
     </article>
   </section>
 
+  {% assign leadership = site.data.resume.leadership %}
   <section id="leadership">
-    <h2>Technical Leadership</h2>
+    <h2>{{ leadership.title }}</h2>
     <ul>
-      <li>Founded and led enterprise-wide OpenTelemetry initiative, establishing durable observability standards across multiple engineering teams</li>
-      <li>Built and ran global engineering onboarding and training programs at Groupon during hypergrowth</li>
-      <li>Founded engineering Communities of Practice to prevent architectural drift and share knowledge across lanes</li>
-      <li>Founded WHOIS Tech Community (UGtastic), interviewing industry leaders on software craftsmanship</li>
-      <li>Established team enablement functions to separate platform concerns from product delivery</li>
+      {% for item in leadership.items %}
+      <li>{{ item }}</li>
+      {% endfor %}
     </ul>
   </section>
 
+  {% assign skills = site.data.resume.skills %}
   <section id="skills">
-    <h2>Skills</h2>
-
-    <h3>Languages</h3>
+    <h2>{{ skills.title }}</h2>
+    {% for category in skills.categories %}
+    <h3>{{ category.name }}</h3>
     <ul class="skills-list">
-      <li>Ruby</li>
-      <li>SQL</li>
-      <li>JavaScript</li>
-      <li>HTML/CSS</li>
-      <li>Bash/Zsh</li>
+      {% for item in category.items %}
+      <li>{{ item }}</li>
+      {% endfor %}
     </ul>
-
-    <h3>Frameworks & Tools</h3>
-    <ul class="skills-list">
-      <li>Ruby on Rails</li>
-      <li>PostgreSQL</li>
-      <li>MySQL</li>
-      <li>Redis</li>
-      <li>Git</li>
-      <li>Linux</li>
-    </ul>
-
-    <h3>Practices</h3>
-    <ul class="skills-list">
-      <li>Test-Driven Development</li>
-      <li>Agile/Scrum</li>
-      <li>Code Review</li>
-      <li>Mentoring</li>
-      <li>Technical Leadership</li>
-    </ul>
+    {% endfor %}
   </section>
 
 </article>
