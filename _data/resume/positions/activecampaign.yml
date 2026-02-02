@@ -1,4 +1,3 @@
----
 company:
   name: ActiveCampaign
   location: Chicago, IL
@@ -6,49 +5,58 @@ company:
 title: Senior Software Developer
 type: Contract
 
-start_date: Sep, 2018
-end_date: Dec, 2018
+start_date: September 2018
+end_date: December 2018
 
 context: >-
-  ActiveCampaign is a leading marketing automation and CRM platform serving
-  over 180,000 businesses worldwide. The Contacts team owns the core contact
-  management functionality—a high-traffic, data-intensive area of the product
-  where performance and UX directly impact customer retention.
+  ActiveCampaign is a large-scale marketing automation and CRM platform serving
+  a global customer base. The system included a mature PHP backend with a highly
+  coupled core responsible for contact management, business rules, and data
+  access, alongside a modernizing frontend stack.
+
 scope:
-  scale: 180,000+ business customers, high-traffic contact management
-  ownership: Frontend modernization, API performance optimization
+  scale: Large, high-traffic CRM platform with complex legacy core
+  ownership: Testability, performance, and change safety within core systems
+  influence: Engineering teams responsible for backend and frontend reliability
+
 description: >-
-  Modernized the Contacts interface from legacy PHP to Ember.js while improving
-  API performance on the high-traffic contact management system.
+  Engaged as a short-term senior contributor to address deep structural
+  complexity in the core backend systems. Focused on improving testability,
+  performance, and change safety within a tightly coupled legacy PHP codebase,
+  while making targeted frontend enhancements to stabilize and extend the
+  existing test suite.
 
 achievements:
   highlights:
     - >-
-      Delivered modern infinite-scroll contact list with drag-and-drop
-      reordering, replacing paginated PHP interface and improving UX for
-      large contact databases.
+      Conducted a deep dive into the core backend subsystem responsible for
+      contact management and business rules, identifying structural constraints
+      that limited testability and safe iteration.
     - >-
-      Improved API response times by introducing cached queries and testable
-      Query patterns, replacing ad-hoc global functions.
+      Introduced testable query patterns and caching strategies to replace
+      ad-hoc global data access, improving performance and enabling more reliable
+      automated testing.
     - >-
-      Reduced code duplication by extracting pagination logic into reusable
-      Ember.js Mixins adopted across the Contacts team.
+      Reduced risk in a highly coupled legacy codebase by isolating critical
+      behaviors behind clearer boundaries, enabling incremental change without
+      large-scale rewrites.
+    - >-
+      Learned Ember.js sufficiently to extend and harden the existing frontend
+      test suite, improving reliability and confidence in UI-driven workflows.
+    - >-
+      Refactored shared pagination and interaction logic into reusable Ember
+      constructs, reducing duplication and improving long-term maintainability.
+    - >-
+      Improved developer feedback loops by making previously opaque behavior
+      observable through tests rather than runtime debugging.
 
 technologies:
-  - Bash
-  - CSS
-  - Docker
-  - Ember.js
-  - Git
-  - GitHub
-  - HTML5
-  - JavaScript
-  - MySQL
+  - Legacy System Modernization
+  - Backend System Architecture
+  - Testability and Change Safety
+  - Performance Optimization
   - PHP
-  - PHPUnit
-  - QUnit
-  - Sass
-  - Vim
-  - Z shell (Zsh)
-  - jQuery
-  - lodash
+  - MySQL
+  - Ember.js
+  - JavaScript
+  - Automated Testing
