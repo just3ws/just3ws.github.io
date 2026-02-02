@@ -1,68 +1,73 @@
----
 company:
   name: ReachLocal
   location: Remote
+
 title: Senior Software Developer
-start_date: Mar, 2015
-end_date: Nov, 2016
+type: Full-time
+start_date: March 2015
+end_date: November 2016
+
 context: >-
-  ReachLocal (acquired by Gannett/USA TODAY Network) provided digital marketing
-  services to local businesses across North America, serving thousands of SMB
-  clients. The platform handled lead generation, campaign management, and
-  payment processing for subscription-based marketing services.
+  ReachLocal provided a large-scale digital marketing platform supporting
+  thousands of small and mid-sized businesses. The system combined lead
+  management, campaign execution, subscription billing, and reporting, and
+  included a long-lived legacy codebase with significant data volume and
+  historical complexity.
+
 scope:
-  scale: Thousands of SMB clients, subscription payment processing
-  ownership: API gateway, legacy modernization, payment migration
-  influence: Cross-team (customer support, product management, engineering)
+  scale: Thousands of customers, high-volume transactional and reporting data
+  ownership: API design, legacy system modernization strategy, integration boundaries
+  influence: Cross-team across engineering, product, and customer-facing functions
+
 description: >-
-  Built APIs and modernized legacy systems for a distributed marketing platform
-  serving thousands of SMB clients. Reduced operational complexity through
-  strategic payment gateway migration and improved developer tooling.
+  Contributed to platform modernization efforts during a period of organizational
+  transition and acquisition. Designed and implemented new API layers to safely
+  expose internal capabilities, while working with the Customer Funnel team to
+  evaluate and de-risk a planned rewrite of a large legacy system. Identified
+  fundamental data and system knowledge gaps that informed a shift toward
+  incremental modernization rather than wholesale replacement.
 
 achievements:
   highlights:
     - >-
-      Reduced payment processing complexity by migrating from Stripe to
-      Chargify, eliminating custom subscription management code and reducing
-      operational overhead.
+      Designed and built an API Gateway to expose selected internal services
+      through well-defined, secure interfaces, enabling controlled integration
+      with internal and external consumers.
     - >-
-      Built API Gateway providing external partners secure access to internal
-      services, enabling new integration opportunities.
+      Evaluated the feasibility of a full rewrite of a legacy customer-facing
+      system and demonstrated that unclear data lineage and billions of existing
+      records made a big-bang migration impractical and high risk.
     - >-
-      Modernized legacy lead generation system by wrapping it in a Rails API
-      and building a React-based client, extending platform lifespan.
+      Proposed and validated an incremental modernization strategy in which a
+      new API layer operated alongside the legacy system, allowing new features
+      to be developed independently while legacy functionality was migrated
+      selectively.
     - >-
-      Improved code quality and security by introducing static analysis tools
-      (RuboCop, Bundler Audit, Code Climate) into the development workflow.
+      Designed a two-tier frontend architecture that separated user experience
+      iteration from backend system constraints, enabling faster experimentation
+      without destabilizing core systems.
     - >-
-      Bridged communication gaps between customer support and engineering,
-      improving prioritization of customer-impacting issues.
+      Modernized critical integration points by wrapping legacy functionality in
+      Rails APIs, extending the useful life of the existing platform while
+      enabling gradual transition to newer components.
+    - >-
+      Reduced operational and maintenance risk by introducing code quality and
+      security tooling, improving visibility into system health and failure modes.
+    - >-
+      Collaborated closely with customer-facing teams to surface systemic issues
+      affecting the customer funnel, improving prioritization of high-impact
+      remediation work.
+
 technologies:
-  - Bash
-  - CSS
-  - Capistrano
-  - Chargify
-  - CircleCI
-  - Git
-  - GitHub
-  - HTML
-  - JavaScript
-  - Jira
-  - PostgreSQL
-  - RSpec
-  - React
-  - Redis
-  - Redux
+  - Platform Architecture
+  - API Gateway Design
+  - Legacy System Modernization
+  - Incremental Migration Strategies
+  - Secure API Design
+  - Data Migration Strategy
   - Ruby
   - Ruby on Rails
-  - Sass
-  - Semaphore CI
-  - Sidekiq
-  - Stripe
-  - Sumo Logic
-  - Trello
-  - Ubuntu
-  - Vagrant
-  - Vim
-  - Z shell (Zsh)
-  - jQuery
+  - PostgreSQL
+  - React
+  - Redis
+  - CI/CD and Code Quality Tooling
