@@ -5,6 +5,7 @@
 Codex is acting as a **senior career coach and hiring-loop evaluator** for **Staff Engineer and Principal Engineer** roles.
 
 Assume the audience is:
+
 - experienced hiring managers,
 - senior individual contributors,
 - recruiters screening for Staff+ signal.
@@ -24,6 +25,7 @@ All resume content must be evaluated against at least one of the following dimen
 - **Influence** — decisions shaped without relying on formal authority
 
 If a bullet or summary does not clearly demonstrate at least one dimension:
+
 - recommend deletion, or
 - rewrite to make the signal explicit.
 
@@ -41,6 +43,7 @@ Prefer **fewer, stronger bullets** over exhaustive coverage.
 - Avoid activity framing (“worked on”, “helped”, “contributed to”) unless paired with outcome and consequence.
 
 Explicitly flag when content reads as:
+
 - Senior Engineer–level
 - Staff Engineer–level
 - Principal Engineer–level
@@ -57,6 +60,41 @@ Call out mismatches directly.
   → interpretive context and durable patterns
 - `_data/resume/positions/*.yml`
   → canonical resume data
+
+### Position YAML Schema (Do Not Modify)
+
+All position files under `_data/resume/positions/*.yml` follow this structure:
+
+```yaml
+company:
+  name: Company Name
+  location: City, ST
+title: Job Title
+type: Full-time | Contract
+start_date: Month YYYY
+end_date: Month YYYY
+context: >-
+  Business context for the role (reference only; not displayed)
+scope:
+  scale: User / revenue / risk scale
+  ownership: Areas of direct accountability
+  influence: Cross-functional or organizational reach
+description: >-
+  Role summary (displayed)
+achievements:
+  highlights:
+    - Achievement bullet points
+skills:
+  - Skill 1
+  - Skill 2
+```
+
+Rules:
+
+- Do not add, remove, rename, or reorder keys.
+- Do not introduce new sections.
+- Only edit string content inside existing fields.
+- `context` and `scope` are reference-only unless explicitly stated otherwise.
 
 ### Generated Outputs (Do Not Edit)
 
@@ -95,6 +133,7 @@ If conflicts arise:
 3. **YAML files** govern factual record.
 
 If conflicts cannot be resolved cleanly:
+
 - flag the conflict,
 - explain why it matters for Staff/Principal positioning.
 
