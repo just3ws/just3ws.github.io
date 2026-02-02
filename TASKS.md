@@ -135,10 +135,10 @@ Added `scope` field to recent positions with scale, ownership, and influence:
 - [x] Highlighted team enablement functions
 
 ### 4.5 Content Review
-- [ ] Review all 24 positions in `_data/resume/positions/`
-- [ ] Prioritize recent/relevant roles with detailed achievements
-- [ ] Consider condensing older roles (pre-2015)
-- [ ] Ensure consistent voice and formatting
+- [x] Reviewed all 24 positions in `_data/resume/positions/`
+- [x] Timeline reduced to 7 recent/relevant roles (2011+)
+- [x] Pre-2014 roles collapsed into "Earlier Experience" summary
+- [x] Consistent voice and formatting across all sections
 
 ---
 
@@ -188,4 +188,4 @@ Key files:
 | Phase 1: A11y & HTML | Complete | 2026-01-30 | 2026-02-01 |
 | Phase 2: ATS Compliance | Complete | 2026-02-01 | 2026-02-01 |
 | Phase 3: Theme Modernization | Skipped | 2026-02-01 | 2026-02-01 |
-| Phase 4: Staff+ Content | In Progress | 2026-02-01 | |
+| Phase 4: Staff+ Content | Complete | 2026-02-01 | 2026-02-02 |
