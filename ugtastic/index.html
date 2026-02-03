@@ -1,0 +1,38 @@
+---
+layout: minimal
+title: UGtastic — Vimeo Originals
+description: UGtastic interview archive (original Vimeo uploads).
+---
+
+<article class="page">
+  <header>
+    <h1>UGtastic — Vimeo Originals</h1>
+    <p>Original UGtastic interviews as published on Vimeo. Listed in original release order.</p>
+  </header>
+
+  {% assign prev_year = "" %}
+  {% for item in site.data.ugtastic.items %}
+    {% assign year = item.created | date: "%Y" %}
+    {% if year != prev_year %}
+      <h2 class="year">{{ year }}</h2>
+      {% assign prev_year = year %}
+    {% endif %}
+
+    <div class="video">
+      <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
+      <div class="video-meta">
+        {% if item.duration_hms %}{{ item.duration_hms }} · {% endif %}{{ item.created | date: "%b %d, %Y" }}
+      </div>
+      {% if item.tags and item.tags.size > 0 %}
+        <div class="video-tags">
+          {% for tag in item.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if item.description %}
+        <div class="video-description">{{ item.description }}</div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</article>
