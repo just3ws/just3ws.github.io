@@ -13,56 +13,91 @@ context: >-
   United States, serving millions of customers through ~1,400 branches and
   digital channels. The company specializes in personal loans for non-prime
   borrowers, operating in a heavily regulated financial services environment
-  with strict compliance requirements. The Acquisitions Lane owns the
+  with strict compliance requirements. The Acquisitions platform owns the
   customer-facing loan application flow—a revenue-critical system processing
-  high volumes of applications daily under strict availability, audit, and
-  data-integrity constraints.
+  high volumes of applications daily under strict availability, auditability,
+  and data-integrity constraints.
+
 scope:
   scale: Millions of customers, ~1,400 branches, revenue-critical loan acquisition
-  ownership: End-to-end lane-level architecture and systemic risk for Acquisitions
+  ownership: End-to-end lane-level architecture, production health, and systemic risk
   influence: Cross-functional across engineering, product, cybersecurity, and executive leadership
-  initiatives: Enterprise observability adoption, platform remediation, engineering communities
+  initiatives: Enterprise observability adoption, platform remediation, incident leadership, engineering communities
+
 description: >-
   Owned lane-level architecture for the Acquisitions platform, spanning customer
-  funnels, affiliate integrations, and the core Ruby on Rails stack in a
-  regulated financial environment. Made system behavior legible across teams to
-  ground delivery plans in reality and reduce systemic risk, operating as a
-  senior individual contributor accountable for architectural integrity,
-  delivery health, and cross-team execution without formal authority.
+  application flows, partner integrations, and a large legacy application estate
+  in a regulated financial environment. Operated as a senior individual
+  contributor accountable for architectural integrity, production stability,
+  and cross-team execution, with authority established through incident
+  leadership, deep system knowledge, and cross-team trust. Focused on making
+  system behavior observable and understandable across teams to enable
+  data-driven decisions, reduce systemic risk, and support reliable change in
+  long-lived systems.
+
 achievements:
   summary: >-
     Delivered durable reductions in systemic risk and incident recurrence by
-    re-establishing architectural ownership, stabilizing legacy platforms, and
-    embedding observability as a foundational organizational capability.
+    restoring architectural legibility in a complex, legacy-heavy environment.
+    Served as the final escalation point for production incidents and embedded
+    shared understanding, observability, and operational discipline as enduring
+    organizational capabilities.
+
   highlights:
     - >-
-      Re-architected Acquisition engineering from two partially formed teams
-      into a single accountable organization with clear ownership boundaries,
-      reducing delivery friction and eliminating recurring coordination failures.
+      Acted as the final escalation point for high-severity production incidents,
+      taking ownership of live diagnosis during large cross-functional calls,
+      coordinating investigation across teams, establishing a shared
+      understanding of system behavior, and driving concrete action plans with
+      clear follow-up ownership.
+
     - >-
-      Founded ACQ Enablement to isolate cross-cutting platform and risk work
-      unsuitable for feature teams, enabling sustained progress on Ruby EOL
-      upgrades, cyber remediation, and long-horizon stability initiatives.
+      Transformed incident response into institutional learning by ensuring
+      every major failure resulted in improved monitoring, clarified ownership,
+      updated documentation, refined operational processes, and corrected
+      cross-team touchpoints across systems with decades of accumulated history.
+
     - >-
-      Designed and delivered DynamoDB/CookieOverflow remediation, eliminating a
-      long-standing session integrity failure mode that degraded customer
-      tracking and incident recovery.
+      Reconstructed end-to-end customer acquisition flows by mapping execution
+      context from the customer’s browser through application layers,
+      enterprise service middleware, and downstream business systems, creating
+      an authoritative operational model to ground incident response, risk
+      review, and change planning in observed reality.
+
     - >-
-      Led Rails platform modernization and lifecycle remediation while
-      maintaining uninterrupted production operation and regulatory compliance.
+      Designed and delivered a re-architecture of session state handling across
+      complex, multi-step user workflows, eliminating a persistent integrity
+      failure mode that impaired customer tracking, diagnosis, and incident
+      recovery under real production conditions.
+
     - >-
-      Founded the OpenTelemetry Working Group and led weekly adoption and
-      enablement, creating a rotating leadership model and mentoring new
-      presenters; established durable observability standards and transitioned
-      ownership once stable.
+      Founded and led the OpenTelemetry Working Group, establishing shared
+      observability standards and training engineering and cybersecurity teams
+      to reason about system behavior using common telemetry; transitioned
+      ownership once practices were institutionalized and adoption became
+      self-sustaining.
+
     - >-
-      Reconstructed end-to-end acquisition flows by correlating HAR, Nginx,
-      Rails, and Mulesoft logs into an authoritative process map; added
-      transition instrumentation to expose drop-offs and error paths, grounding
-      change plans in real system behavior.
+      Led platform modernization and lifecycle remediation under continuous
+      production load, maintaining regulatory compliance while reducing
+      operational risk and restoring the ability to safely evolve legacy
+      systems.
+
+    - >-
+      Re-architected fragmented engineering ownership into a single accountable
+      operating model, clarifying architectural responsibility and escalation
+      paths as a necessary consequence of observed production realities.
+
+    - >-
+      Founded an enablement function to isolate cross-cutting platform, risk,
+      and remediation work from feature delivery, enabling sustained progress
+      on long-horizon stability initiatives without disrupting customer-facing
+      teams.
+
 skills:
   - Platform Architecture
   - System Resilience
+  - Incident Leadership
   - Observability
   - Legacy System Modernization
   - Distributed Systems
@@ -70,4 +105,3 @@ skills:
   - PostgreSQL
   - OpenTelemetry
   - AWS
-  - DynamoDB
