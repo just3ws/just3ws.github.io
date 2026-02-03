@@ -1,0 +1,232 @@
+---
+layout: minimal
+title: LinkedIn Export
+description: Export resume data formatted for LinkedIn profiles.
+permalink: /linkedin/
+---
+
+<style>
+/* LinkedIn Export Page Styles */
+.linkedin-export {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.linkedin-export h1 {
+  margin-bottom: 0.5rem;
+}
+
+.linkedin-export .intro {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.role-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background: #fafafa;
+}
+
+.role-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.role-card-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.role-card-header .dates {
+  color: #666;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  background: #0073b1;
+  color: white;
+  border: none;
+  padding: 0.375rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: #005a8c;
+}
+
+.copy-btn.copied {
+  background: #2e7d32;
+}
+
+.role-textarea {
+  width: 100%;
+  min-height: 200px;
+  font-family: monospace;
+  font-size: 0.875rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+}
+
+.skill-pill {
+  background: #e8e8e8;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.all-skills-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #ddd;
+}
+
+.all-skills-section h2 {
+  margin-bottom: 1rem;
+}
+
+.skills-textarea {
+  width: 100%;
+  min-height: 150px;
+  font-family: monospace;
+  font-size: 0.875rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+@media print {
+  .linkedin-export { display: none; }
+}
+</style>
+
+<div class="linkedin-export">
+  <a href="/" class="back-link">&larr; Back to Resume</a>
+
+  <h1>LinkedIn Export</h1>
+  <p class="intro">Copy these pre-formatted text blocks to paste into LinkedIn Experience sections.</p>
+
+  {%- comment -%}
+  Uses site.data.resume.timeline.history for ordering (most recent first).
+  Position data comes from site.data.resume.positions[key].
+  {%- endcomment -%}
+
+  {%- assign all_skills = "" | split: "" -%}
+
+  {% for item in site.data.resume.timeline.history %}
+    {% assign position = site.data.resume.positions[item] %}
+    {% if position %}
+      {%- comment -%} Collect skills for aggregation {%- endcomment -%}
+      {%- if position.skills -%}
+        {%- for skill in position.skills -%}
+          {%- assign all_skills = all_skills | push: skill -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      <div class="role-card">
+        <div class="role-card-header">
+          <h3>{{ position.title }} &mdash; {{ position.company.name }}</h3>
+          <span class="dates">{{ position.start_date }} - {{ position.end_date | default: "Present" }}</span>
+        </div>
+        <button class="copy-btn" onclick="copyToClipboard(this, 'textarea-{{ forloop.index }}')">Copy</button>
+        <textarea id="textarea-{{ forloop.index }}" class="role-textarea" readonly>{{ position.title }} — {{ position.company.name }}
+{{ position.start_date }} - {{ position.end_date | default: "Present" }} | {{ position.company.location }}
+{%- if position.description %}
+
+{{ position.description | strip }}
+{%- endif -%}
+{%- if position.achievements.highlights %}
+{% for achievement in position.achievements.highlights %}
+• {{ achievement | strip }}
+{%- endfor -%}
+{%- endif %}</textarea>
+
+        {% if position.skills %}
+        <div class="skills-pills">
+          {% for skill in position.skills %}
+          <span class="skill-pill">{{ skill }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  <div class="all-skills-section">
+    <h2>All Skills (de-duplicated)</h2>
+    <p>Copy this newline-separated list for LinkedIn Skills section.</p>
+    <button class="copy-btn" onclick="copyToClipboard(this, 'all-skills-textarea')">Copy All Skills</button>
+    {%- assign unique_skills = all_skills | uniq | sort -%}
+    {%- assign newline = "
+" -%}
+    <textarea id="all-skills-textarea" class="skills-textarea" readonly>{{ unique_skills | join: newline }}</textarea>
+  </div>
+</div>
+
+<script>
+function copyToClipboard(button, textareaId) {
+  var textarea = document.getElementById(textareaId);
+  var text = textarea.value;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      showCopied(button);
+    }).catch(function() {
+      fallbackCopy(textarea, button);
+    });
+  } else {
+    fallbackCopy(textarea, button);
+  }
+}
+
+function fallbackCopy(textarea, button) {
+  textarea.select();
+  textarea.setSelectionRange(0, 99999);
+  try {
+    document.execCommand('copy');
+    showCopied(button);
+  } catch (err) {
+    console.error('Copy failed:', err);
+  }
+  window.getSelection().removeAllRanges();
+}
+
+function showCopied(button) {
+  var originalText = button.textContent;
+  button.textContent = 'Copied';
+  button.classList.add('copied');
+  setTimeout(function() {
+    button.textContent = originalText;
+    button.classList.remove('copied');
+  }, 900);
+}
+</script>
