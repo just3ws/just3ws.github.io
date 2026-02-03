@@ -29,6 +29,22 @@ breadcrumb_parent_url: /ugtastic/communities/general/
           <div class=\"video-subtitle\">{% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ', ' }}</div>
         {% endif %}
         <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
+        <div class="video-meta">
+          {% if item.conference %}
+            {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
+            {% if conf %}<a href="/ugtastic/conferences/{{ conf.slug }}/">{{ conf.name }}</a>{% endif %}
+          {% elsif item.community %}
+            {% assign comm = site.data.ugtastic_communities.communities | where: "slug", item.community | first %}
+            {% if comm %}<a href="/ugtastic/communities/{{ comm.slug }}/">{{ comm.name }}</a>{% endif %}
+          {% endif %}
+          {% if item.interviewers and item.interviewers.size > 0 %}
+            {% if item.conference or item.community %} · {% endif %}
+            {% if item.interviewers.size == 1 %}Interviewer{% else %}Interviewers{% endif %}: {{ item.interviewers | join: ', ' }}
+          {% endif %}
+          {% if item.interviewees and item.interviewees.size > 0 %}
+            · {% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ', ' }}
+          {% endif %}
+        </div>
         <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
         {% if item.tags and item.tags.size > 0 %}
           <div class="video-tags">

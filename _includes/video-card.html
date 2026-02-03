@@ -19,6 +19,11 @@
     <div class="video-title">
       <a href="{{ detail_url }}">{{ title_text }}</a>
     </div>
+    {% if conf %}
+      <div class="video-subtitle">Conference: <a href="/ugtastic/conferences/{{ item.conference }}/">{{ conf.name }}</a></div>
+    {% elsif comm %}
+      <div class="video-subtitle">Community: <a href="/ugtastic/communities/{{ item.community }}/">{{ comm.name }}</a></div>
+    {% endif %}
     {% if item.interviewees and item.interviewees.size > 0 %}
       <div class="video-subtitle">
         {% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ", " }}
@@ -26,13 +31,9 @@
     {% endif %}
     <div class="video-meta">
       {% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}
-      {% if conf %}
-        · <a class="video-kind" href="/ugtastic/conferences/{{ item.conference }}/">{{ conf.name }}</a>
-      {% elsif comm %}
-        · <a class="video-kind" href="/ugtastic/communities/{{ item.community }}/">{{ comm.name }}</a>
-      {% endif %}
     </div>
     <div class="video-actions">
+      <a class="video-button primary" href="{{ detail_url }}">Watch Here</a>
       <a class="video-button" href="{{ item.link }}">Watch on Vimeo</a>
     </div>
     {% if item.tags and item.tags.size > 0 %}
