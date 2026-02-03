@@ -39,7 +39,11 @@ breadcrumb_parent_url: /ugtastic/conferences/windycityrails-2012/
           {% endif %}
           {% if item.interviewers and item.interviewers.size > 0 %}
             {% if item.conference or item.community %} · {% endif %}
-            {% if item.interviewers.size == 1 %}Interviewer{% else %}Interviewers{% endif %}: {{ item.interviewers | join: ', ' }}
+            {% if item.interviewers.size == 1 %}Interviewer{% else %}Interviewers{% endif %}:
+            {% for interviewer in item.interviewers %}
+              {% if forloop.index > 1 %}, {% endif %}
+              {% if interviewer == 'Mike Hall' %}<a href="/home/">Mike Hall</a>{% else %}{{ interviewer }}{% endif %}
+            {% endfor %}
           {% endif %}
           {% if item.interviewees and item.interviewees.size > 0 %}
             · {% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ', ' }}
