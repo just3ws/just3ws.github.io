@@ -9,6 +9,7 @@ breadcrumb_parent_url: /ugtastic/conferences/windycityrails-2012/
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "49282611" | first %}
   {% assign asset = site.data.interview_assets.items | where: "source", "ugtastic" | where: "asset_id", "49282611" | first %}
   {% assign interview = asset and site.data.interviews.items | where: "id", asset.interview_id | first %}
   <header>

@@ -47,6 +47,7 @@ ugtastic['items'].each do |item|
     f.puts ""
     f.puts "<article class=\"page\">"
     f.puts "  {% include breadcrumbs.html %}"
+    f.puts "  {% assign item = site.data.ugtastic.items | where: \"id\", \"#{id}\" | first %}"
     f.puts "  {% assign asset = site.data.interview_assets.items | where: \"source\", \"ugtastic\" | where: \"asset_id\", \"#{id}\" | first %}"
     f.puts "  {% assign interview = asset and site.data.interviews.items | where: \"id\", asset.interview_id | first %}"
     f.puts "  <header>"
