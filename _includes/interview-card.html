@@ -1,0 +1,42 @@
+{% assign assets = site.data.interview_assets.items | where: "interview_id", interview.id %}
+{% assign primary_asset = assets | where: "source", "ugtastic" | first %}
+{% if primary_asset == nil %}
+  {% assign primary_asset = assets | where: "platform", "youtube" | first %}
+{% endif %}
+{% if primary_asset == nil %}
+  {% assign primary_asset = assets | where: "platform", "vimeo" | first %}
+{% endif %}
+{% assign primary_url = "/interviews/" | append: interview.id | append: "/" %}
+{% if primary_asset %}
+  {% if primary_asset.source == "ugtastic" %}
+    {% assign primary_url = "/ugtastic/videos/" | append: primary_asset.asset_id | append: "/" %}
+  {% elsif primary_asset.platform == "youtube" %}
+    {% assign primary_url = "/youtube/videos/" | append: primary_asset.asset_id | append: "/" %}
+  {% elsif primary_asset.platform == "vimeo" %}
+    {% assign primary_url = "/vimeo/videos/" | append: primary_asset.asset_id | append: "/" %}
+  {% endif %}
+{% endif %}
+
+<div class="video">
+  <div class="video-body">
+    <div class="video-title"><a href="{{ primary_url }}">{{ interview.title }}</a></div>
+    {% if interview.interviewees and interview.interviewees.size > 0 %}
+      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {{ interview.interviewees | join: ", " }}</div>
+    {% endif %}
+    {% if interview.topic %}
+      <div class="video-subtitle">Topic: {{ interview.topic }}</div>
+    {% endif %}
+    <div class="video-meta">
+      {% if interview.conference %}Conference: {{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}{% endif %}
+      {% if interview.community %}{% if interview.conference %} · {% endif %}Community: {{ interview.community }}{% endif %}
+    </div>
+    <div class="video-actions">
+      <a class="video-button primary" href="{{ primary_url }}">View Interview</a>
+      {% if assets.size > 0 %}
+        {% for asset in assets %}
+          <a class="video-button" href="{{ asset.url }}">{{ asset.platform | capitalize }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
