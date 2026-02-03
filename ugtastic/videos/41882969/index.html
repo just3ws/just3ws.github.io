@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — chicago-software-craftsmanship / Chicago Software Craftsmanship w/Steve Kim and Jim Suchy
 description: UGtastic interview with Chicago Software Craftsmanship w/Steve Kim and Jim Suchy.
-breadcrumb: chicago-software-craftsmanship / Chicago Software Craftsmanship w/Steve Kim and Jim Suchy
+breadcrumb: Chicago Software Craftsmanship
+breadcrumb_parent_name: chicago-software-craftsmanship
+breadcrumb_parent_url: /ugtastic/communities/chicago-software-craftsmanship/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "41882969" | first %}
   <header>
-    <h1>chicago-software-craftsmanship / Chicago Software Craftsmanship w/Steve Kim and Jim Suchy</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "41882969" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

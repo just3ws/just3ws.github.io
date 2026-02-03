@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — general / Avdi Grimm
 description: UGtastic interview with Avdi Grimm.
-breadcrumb: general / Avdi Grimm
+breadcrumb: Avdi Grimm
+breadcrumb_parent_name: general
+breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "62609424" | first %}
   <header>
-    <h1>general / Avdi Grimm</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "62609424" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

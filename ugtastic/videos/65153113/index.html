@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — general / Ashe Dryden
 description: UGtastic interview with Ashe Dryden.
-breadcrumb: general / Ashe Dryden
+breadcrumb: Ashe Dryden
+breadcrumb_parent_name: general
+breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "65153113" | first %}
   <header>
-    <h1>general / Ashe Dryden</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "65153113" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — Software Craftsmanship North America 2011 / Houston Adobe User Group w/Drew Shefman
 description: UGtastic interview with Houston Adobe User Group w/Drew Shefman.
-breadcrumb: Software Craftsmanship North America 2011 / Houston Adobe User Group w/Drew Shefman
+breadcrumb: Houston Adobe User Group
+breadcrumb_parent_name: Software Craftsmanship North America 2011
+breadcrumb_parent_url: /ugtastic/conferences/scna-2011/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "32390353" | first %}
   <header>
-    <h1>Software Craftsmanship North America 2011 / Houston Adobe User Group w/Drew Shefman</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "32390353" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

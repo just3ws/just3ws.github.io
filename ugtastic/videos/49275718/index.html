@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — WindyCityRails 2012 / Adam Grandy
 description: UGtastic interview with Adam Grandy.
-breadcrumb: WindyCityRails 2012 / Adam Grandy
+breadcrumb: Adam Grandy
+breadcrumb_parent_name: WindyCityRails 2012
+breadcrumb_parent_url: /ugtastic/conferences/windycityrails-2012/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "49275718" | first %}
   <header>
-    <h1>WindyCityRails 2012 / Adam Grandy</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "49275718" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

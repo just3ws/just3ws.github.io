@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — refresh-chicago / Refresh Chicago w/John, Shay & Tony
 description: UGtastic interview with Refresh Chicago w/John, Shay & Tony.
-breadcrumb: refresh-chicago / Refresh Chicago w/John, Shay & Tony
+breadcrumb: Refresh Chicago
+breadcrumb_parent_name: refresh-chicago
+breadcrumb_parent_url: /ugtastic/communities/refresh-chicago/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "41046897" | first %}
   <header>
-    <h1>refresh-chicago / Refresh Chicago w/John, Shay & Tony</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "41046897" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

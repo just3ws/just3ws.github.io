@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — general / Sam Serpoosh
 description: UGtastic interview with Sam Serpoosh.
-breadcrumb: general / Sam Serpoosh
+breadcrumb: Sam Serpoosh
+breadcrumb_parent_name: general
+breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "64913673" | first %}
   <header>
-    <h1>general / Sam Serpoosh</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "64913673" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

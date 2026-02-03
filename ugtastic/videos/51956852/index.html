@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — general / Aaron Bedra
 description: UGtastic interview with Aaron Bedra.
-breadcrumb: general / Aaron Bedra
+breadcrumb: Aaron Bedra
+breadcrumb_parent_name: general
+breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "51956852" | first %}
   <header>
-    <h1>general / Aaron Bedra</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "51956852" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

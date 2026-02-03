@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — Software Craftsmanship North America 2014 / Adewale Oshineye
 description: UGtastic interview with Adewale Oshineye.
-breadcrumb: Software Craftsmanship North America 2014 / Adewale Oshineye
+breadcrumb: Adewale Oshineye
+breadcrumb_parent_name: Software Craftsmanship North America 2014
+breadcrumb_parent_url: /ugtastic/conferences/scna-2014/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "90550217" | first %}
   <header>
-    <h1>Software Craftsmanship North America 2014 / Adewale Oshineye</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "90550217" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

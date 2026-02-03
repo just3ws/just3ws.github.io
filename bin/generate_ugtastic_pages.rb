@@ -17,8 +17,18 @@ FileUtils.mkdir_p(base_dir)
 ugtastic['items'].each do |item|
   id = item['id'].to_s
   title = item['title'] || 'UGtastic Interview'
+  topic = item['topic'] || title
   conf = item['conference'] ? conf_map[item['conference']] : nil
   prefix = conf ? conf['name'] : (item['community'] || nil)
+  parent_name = nil
+  parent_url = nil
+  if conf
+    parent_name = conf['name']
+    parent_url = "/ugtastic/conferences/#{conf['slug']}/"
+  elsif item['community']
+    parent_name = item['community']
+    parent_url = "/ugtastic/communities/#{item['community_slug'] || item['community'].downcase.gsub(/[^a-z0-9]+/, '-').gsub(/(^-|-$)/, '')}/"
+  end
   display_title = prefix ? "#{prefix} / #{title}" : title
 
   dir = File.join(base_dir, id)
@@ -30,16 +40,18 @@ ugtastic['items'].each do |item|
     f.puts "layout: minimal"
     f.puts "title: UGtastic — #{display_title}"
     f.puts "description: UGtastic interview with #{title}."
-    f.puts "breadcrumb: #{display_title}"
+    f.puts "breadcrumb: #{topic}"
+    f.puts "breadcrumb_parent_name: #{parent_name}" if parent_name
+    f.puts "breadcrumb_parent_url: #{parent_url}" if parent_url
     f.puts "---"
     f.puts ""
     f.puts "<article class=\"page\">"
     f.puts "  {% include breadcrumbs.html %}"
+    f.puts "  {% assign item = site.data.ugtastic.items | where: \"id\", \"#{id}\" | first %}"
     f.puts "  <header>"
-    f.puts "    <h1>#{display_title}</h1>"
+    f.puts "    <h1>{{ item.topic | default: item.title }}</h1>"
     f.puts "  </header>"
     f.puts ""
-    f.puts "  {% assign item = site.data.ugtastic.items | where: \"id\", \"#{id}\" | first %}"
     f.puts "  {% if item %}"
     f.puts "    <div class=\"video video-detail\">"
     f.puts "      {% assign thumb = item.thumbnail_local | default: item.thumbnail %}"

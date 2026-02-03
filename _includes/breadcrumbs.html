@@ -1,5 +1,12 @@
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <a href="/home/">Home</a>
   <span class="breadcrumbs-separator">/</span>
+  {% if page.breadcrumb_parent_name and page.breadcrumb_parent_url %}
+    <a href="{{ page.breadcrumb_parent_url }}">{{ page.breadcrumb_parent_name }}</a>
+    <span class="breadcrumbs-separator">/</span>
+  {% elsif page.breadcrumb_parent_name %}
+    <span class="breadcrumbs-current">{{ page.breadcrumb_parent_name }}</span>
+    <span class="breadcrumbs-separator">/</span>
+  {% endif %}
   <span class="breadcrumbs-current">{{ page.breadcrumb | default: page.title }}</span>
 </nav>

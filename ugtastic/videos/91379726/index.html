@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — Software Craftsmanship North America 2014 / Sandro Mancuso
 description: UGtastic interview with Sandro Mancuso.
-breadcrumb: Software Craftsmanship North America 2014 / Sandro Mancuso
+breadcrumb: Sandro Mancuso
+breadcrumb_parent_name: Software Craftsmanship North America 2014
+breadcrumb_parent_url: /ugtastic/conferences/scna-2014/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "91379726" | first %}
   <header>
-    <h1>Software Craftsmanship North America 2014 / Sandro Mancuso</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "91379726" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

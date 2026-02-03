@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — WindyCityRails 2012 / Jim Remsik
 description: UGtastic interview with Jim Remsik.
-breadcrumb: WindyCityRails 2012 / Jim Remsik
+breadcrumb: Jim Remsik
+breadcrumb_parent_name: WindyCityRails 2012
+breadcrumb_parent_url: /ugtastic/conferences/windycityrails-2012/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "49265041" | first %}
   <header>
-    <h1>WindyCityRails 2012 / Jim Remsik</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "49265041" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — lake-county-net-user-group-lcnug / Lake County .NET User Group (LCNUG) w/Scott Seely
 description: UGtastic interview with Lake County .NET User Group (LCNUG) w/Scott Seely.
-breadcrumb: lake-county-net-user-group-lcnug / Lake County .NET User Group (LCNUG) w/Scott Seely
+breadcrumb: Lake County .NET User Group (LCNUG)
+breadcrumb_parent_name: lake-county-net-user-group-lcnug
+breadcrumb_parent_url: /ugtastic/communities/lake-county-net-user-group-lcnug/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "38713714" | first %}
   <header>
-    <h1>lake-county-net-user-group-lcnug / Lake County .NET User Group (LCNUG) w/Scott Seely</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "38713714" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

@@ -2,7 +2,9 @@
 layout: minimal
 title: Vimeo — Enough C To Get Started In F/OSS w/Andy Lester (Part 1 of 2)
 description: Vimeo video Enough C To Get Started In F/OSS w/Andy Lester (Part 1 of 2).
-breadcrumb: Enough C To Get Started In F/OSS w/Andy Lester (Part 1 of 2)
+breadcrumb: Enough C To Get Started In F/OSS
+breadcrumb_parent_name: SCMC
+breadcrumb_parent_url: /vimeo/scmc/
 ---
 
 <article class="page">
@@ -20,9 +22,9 @@ breadcrumb: Enough C To Get Started In F/OSS w/Andy Lester (Part 1 of 2)
       <div class="video-body">
         <div class="video-title">{{ item.topic | default: item.title }}</div>
         {% if item.speakers and item.speakers.size > 0 %}
-          <div class="video-subtitle">Speaker: {{ item.speakers | join: ", " }}</div>
+          <div class="video-subtitle">{% if item.speakers.size == 1 %}Speaker{% else %}Speakers{% endif %}: {{ item.speakers | join: ", " }}</div>
         {% elsif item.people and item.people.size > 0 %}
-          <div class="video-subtitle">People: {{ item.people | join: ", " }}</div>
+          <div class="video-subtitle">{% if item.people.size == 1 %}Person{% else %}People{% endif %}: {{ item.people | join: ", " }}</div>
         {% endif %}
         <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
         <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>

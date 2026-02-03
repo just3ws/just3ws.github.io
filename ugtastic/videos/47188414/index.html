@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — gathers-us-and-chicagodb / Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones
 description: UGtastic interview with Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones.
-breadcrumb: gathers-us-and-chicagodb / Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones
+breadcrumb: Gathers.us and ChicagoDB
+breadcrumb_parent_name: gathers-us-and-chicagodb
+breadcrumb_parent_url: /ugtastic/communities/gathers-us-and-chicagodb/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "47188414" | first %}
   <header>
-    <h1>gathers-us-and-chicagodb / Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "47188414" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

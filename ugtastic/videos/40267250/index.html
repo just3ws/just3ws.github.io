@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — chipy / ChiPy w/Brian Ray
 description: UGtastic interview with ChiPy w/Brian Ray.
-breadcrumb: chipy / ChiPy w/Brian Ray
+breadcrumb: ChiPy
+breadcrumb_parent_name: chipy
+breadcrumb_parent_url: /ugtastic/communities/chipy/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "40267250" | first %}
   <header>
-    <h1>chipy / ChiPy w/Brian Ray</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "40267250" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

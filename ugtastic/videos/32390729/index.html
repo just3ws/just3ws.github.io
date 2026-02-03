@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — Software Craftsmanship North America 2011 / South Bend Software Craftsmanship w/Ross
 description: UGtastic interview with South Bend Software Craftsmanship w/Ross.
-breadcrumb: Software Craftsmanship North America 2011 / South Bend Software Craftsmanship w/Ross
+breadcrumb: South Bend Software Craftsmanship
+breadcrumb_parent_name: Software Craftsmanship North America 2011
+breadcrumb_parent_url: /ugtastic/conferences/scna-2011/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "32390729" | first %}
   <header>
-    <h1>Software Craftsmanship North America 2011 / South Bend Software Craftsmanship w/Ross</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "32390729" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

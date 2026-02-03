@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — Software Craftsmanship North America 2012 / Justin Searls
 description: UGtastic interview with Justin Searls.
-breadcrumb: Software Craftsmanship North America 2012 / Justin Searls
+breadcrumb: Justin Searls
+breadcrumb_parent_name: Software Craftsmanship North America 2012
+breadcrumb_parent_url: /ugtastic/conferences/scna-2012/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "57935124" | first %}
   <header>
-    <h1>Software Craftsmanship North America 2012 / Justin Searls</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "57935124" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

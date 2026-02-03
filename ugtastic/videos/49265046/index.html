@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — WindyCityRails 2012 / Ryan Singer
 description: UGtastic interview with Ryan Singer.
-breadcrumb: WindyCityRails 2012 / Ryan Singer
+breadcrumb: Ryan Singer
+breadcrumb_parent_name: WindyCityRails 2012
+breadcrumb_parent_url: /ugtastic/conferences/windycityrails-2012/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "49265046" | first %}
   <header>
-    <h1>WindyCityRails 2012 / Ryan Singer</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "49265046" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

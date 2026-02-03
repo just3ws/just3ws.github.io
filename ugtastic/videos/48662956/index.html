@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — general / How to say "UGtastic".
 description: UGtastic interview with How to say "UGtastic"..
-breadcrumb: general / How to say "UGtastic".
+breadcrumb: How to say "UGtastic".
+breadcrumb_parent_name: general
+breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "48662956" | first %}
   <header>
-    <h1>general / How to say "UGtastic".</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "48662956" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

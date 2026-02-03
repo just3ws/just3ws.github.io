@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — Software Craftsmanship North America 2011 / ChicagoRuby w/Ray Hightower
 description: UGtastic interview with ChicagoRuby w/Ray Hightower.
-breadcrumb: Software Craftsmanship North America 2011 / ChicagoRuby w/Ray Hightower
+breadcrumb: ChicagoRuby
+breadcrumb_parent_name: Software Craftsmanship North America 2011
+breadcrumb_parent_url: /ugtastic/conferences/scna-2011/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "32390600" | first %}
   <header>
-    <h1>Software Craftsmanship North America 2011 / ChicagoRuby w/Ray Hightower</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "32390600" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

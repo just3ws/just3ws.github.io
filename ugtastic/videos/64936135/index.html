@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — general / Michael Eaton
 description: UGtastic interview with Michael Eaton.
-breadcrumb: general / Michael Eaton
+breadcrumb: Michael Eaton
+breadcrumb_parent_name: general
+breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "64936135" | first %}
   <header>
-    <h1>general / Michael Eaton</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "64936135" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

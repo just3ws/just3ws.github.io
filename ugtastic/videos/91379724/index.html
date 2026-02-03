@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — Software Craftsmanship North America 2014 / Micah Martin
 description: UGtastic interview with Micah Martin.
-breadcrumb: Software Craftsmanship North America 2014 / Micah Martin
+breadcrumb: Micah Martin
+breadcrumb_parent_name: Software Craftsmanship North America 2014
+breadcrumb_parent_url: /ugtastic/conferences/scna-2014/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "91379724" | first %}
   <header>
-    <h1>Software Craftsmanship North America 2014 / Micah Martin</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "91379724" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

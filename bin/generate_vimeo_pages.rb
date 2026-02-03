@@ -15,6 +15,16 @@ FileUtils.mkdir_p(base_dir)
 items.each do |item|
   id = item['id'].to_s
   title = item['title'] || 'Vimeo Video'
+  topic = item['topic'] || title
+  parent_name = nil
+  parent_url = nil
+  if item['category'] == 'scmc'
+    parent_name = 'SCMC'
+    parent_url = '/vimeo/scmc/'
+  elsif item['category']
+    parent_name = 'Vimeo'
+    parent_url = '/vimeo/'
+  end
   dir = File.join(base_dir, id)
   FileUtils.mkdir_p(dir)
   page = File.join(dir, 'index.html')
@@ -24,7 +34,9 @@ items.each do |item|
     f.puts 'layout: minimal'
     f.puts "title: Vimeo — #{title}"
     f.puts "description: Vimeo video #{title}."
-    f.puts "breadcrumb: #{title}"
+    f.puts "breadcrumb: #{topic}"
+    f.puts "breadcrumb_parent_name: #{parent_name}" if parent_name
+    f.puts "breadcrumb_parent_url: #{parent_url}" if parent_url
     f.puts '---'
     f.puts ''
     f.puts '<article class="page">'
@@ -42,9 +54,9 @@ items.each do |item|
     f.puts '      <div class="video-body">'
     f.puts '        <div class="video-title">{{ item.topic | default: item.title }}</div>'
     f.puts '        {% if item.speakers and item.speakers.size > 0 %}'
-    f.puts '          <div class="video-subtitle">Speaker: {{ item.speakers | join: ", " }}</div>'
+    f.puts '          <div class="video-subtitle">{% if item.speakers.size == 1 %}Speaker{% else %}Speakers{% endif %}: {{ item.speakers | join: ", " }}</div>'
     f.puts '        {% elsif item.people and item.people.size > 0 %}'
-    f.puts '          <div class="video-subtitle">People: {{ item.people | join: ", " }}</div>'
+    f.puts '          <div class="video-subtitle">{% if item.people.size == 1 %}Person{% else %}People{% endif %}: {{ item.people | join: ", " }}</div>'
     f.puts '        {% endif %}'
     f.puts '        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>'
     f.puts '        <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>'

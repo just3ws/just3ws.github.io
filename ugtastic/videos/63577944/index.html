@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — general / Joel Clermont
 description: UGtastic interview with Joel Clermont.
-breadcrumb: general / Joel Clermont
+breadcrumb: Joel Clermont
+breadcrumb_parent_name: general
+breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "63577944" | first %}
   <header>
-    <h1>general / Joel Clermont</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "63577944" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

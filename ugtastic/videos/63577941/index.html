@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — general / Charles Oliver Nutter
 description: UGtastic interview with Charles Oliver Nutter.
-breadcrumb: general / Charles Oliver Nutter
+breadcrumb: Charles Oliver Nutter
+breadcrumb_parent_name: general
+breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "63577941" | first %}
   <header>
-    <h1>general / Charles Oliver Nutter</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "63577941" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

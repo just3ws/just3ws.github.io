@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — geekfest / Geekfest w/Dave Hoover
 description: UGtastic interview with Geekfest w/Dave Hoover.
-breadcrumb: geekfest / Geekfest w/Dave Hoover
+breadcrumb: Geekfest
+breadcrumb_parent_name: geekfest
+breadcrumb_parent_url: /ugtastic/communities/geekfest/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "41101410" | first %}
   <header>
-    <h1>geekfest / Geekfest w/Dave Hoover</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "41101410" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — WindyCityRails 2012 / Justin Love
 description: UGtastic interview with Justin Love.
-breadcrumb: WindyCityRails 2012 / Justin Love
+breadcrumb: Justin Love
+breadcrumb_parent_name: WindyCityRails 2012
+breadcrumb_parent_url: /ugtastic/conferences/windycityrails-2012/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "48999117" | first %}
   <header>
-    <h1>WindyCityRails 2012 / Justin Love</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "48999117" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}

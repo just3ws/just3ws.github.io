@@ -2,16 +2,18 @@
 layout: minimal
 title: UGtastic — ChicagoWebConf 2012 / JC Grubbs
 description: UGtastic interview with JC Grubbs.
-breadcrumb: ChicagoWebConf 2012 / JC Grubbs
+breadcrumb: JC Grubbs
+breadcrumb_parent_name: ChicagoWebConf 2012
+breadcrumb_parent_url: /ugtastic/conferences/chicagowebconf-2012/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
+  {% assign item = site.data.ugtastic.items | where: "id", "50904089" | first %}
   <header>
-    <h1>ChicagoWebConf 2012 / JC Grubbs</h1>
+    <h1>{{ item.topic | default: item.title }}</h1>
   </header>
 
-  {% assign item = site.data.ugtastic.items | where: "id", "50904089" | first %}
   {% if item %}
     <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}
