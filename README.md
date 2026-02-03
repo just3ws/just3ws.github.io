@@ -9,6 +9,28 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - [Plain Text](https://www.just3ws.com/resume.txt)
 - [Markdown](https://www.just3ws.com/resume.md)
 
+## Archives & Media
+
+- [Home](https://www.just3ws.com/home/) - Navigation hub and context
+- [Writing](https://www.just3ws.com/writing) - Technical posts
+- [UGtastic](https://www.just3ws.com/ugtastic/) - Vimeo original interview archive
+- [UGtastic Conferences](https://www.just3ws.com/ugtastic/conferences/) - Grouped by event
+- [UGtastic Communities](https://www.just3ws.com/ugtastic/communities/) - Grouped by meetup or group
+- [Vimeo Videos](https://www.just3ws.com/vimeo/) - One-off talks and recordings
+- [SCMC Videos](https://www.just3ws.com/vimeo/scmc/) - Software Craftsmanship McHenry County archive
+
+## Data & Automation
+
+- UGtastic canonical data lives in `_data/ugtastic.yml`
+- UGtastic community metadata lives in `_data/ugtastic_communities.yml`
+- Vimeo one-off metadata lives in `_data/vimeo_videos.yml`
+- Generated pages:
+  - `bin/generate_ugtastic_pages.rb`
+  - `bin/generate_ugtastic_community_pages.rb`
+  - `bin/generate_vimeo_pages.rb`
+- Validation:
+  - `bin/validate_ugtastic.rb` (runs in CI)
+
 ## Contact
 
 - [mike@just3ws.com](mailto:mike@just3ws.com)
