@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — Trying to edit a posting on Posterous OR an exercise in  futility and frustration? You decide.
+description: Vimeo video Trying to edit a posting on Posterous OR an exercise in  futility and frustration? You decide..
+breadcrumb: Trying to edit a posting on Posterous OR an exercise in  futility and frustration? You decide.
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>Trying to edit a posting on Posterous OR an exercise in  futility and frustration? You decide.</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "47012507" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>
