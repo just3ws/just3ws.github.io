@@ -278,7 +278,10 @@ section {
 }
 
 .video-embed {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  background: #0f172a;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
 }
 
 .video-embed iframe {
@@ -286,7 +289,17 @@ section {
   aspect-ratio: 16 / 9;
   height: auto;
   border-radius: 0.375rem;
-  border: 1px solid #e2e8f0;
+  border: none;
+}
+
+.video.video-detail {
+  display: block;
+  border-bottom: none;
+  padding: 0;
+}
+
+.video.video-detail .video-body {
+  padding-top: 0.5rem;
 }
 
 @media (max-width: 640px) {

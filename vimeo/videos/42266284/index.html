@@ -11,7 +11,7 @@ breadcrumb: Simplest Thing w/Ralph Iden
 
   {% assign item = site.data.vimeo_videos.items | where: "id", "42266284" | first %}
   {% if item %}
-    <div class="video">
+    <div class="video video-detail">
       {% if item.embed_url %}
         <div class="video-embed">
           <iframe src="{{ item.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ item.title }}"></iframe>

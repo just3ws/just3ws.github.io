@@ -33,7 +33,7 @@ items.each do |item|
     f.puts ''
     f.puts "  {% assign item = site.data.vimeo_videos.items | where: \"id\", \"#{id}\" | first %}"
     f.puts '  {% if item %}'
-    f.puts '    <div class="video">'
+    f.puts '    <div class="video video-detail">'
     f.puts '      {% if item.embed_url %}'
     f.puts '        <div class="video-embed">'
     f.puts '          <iframe src="{{ item.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ item.title }}"></iframe>'

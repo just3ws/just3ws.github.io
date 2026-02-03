@@ -13,15 +13,16 @@ breadcrumb: general / Corey Haines
 
   {% assign item = site.data.ugtastic.items | where: "id", "50863074" | first %}
   {% if item %}
-    <div class="video">
+    <div class="video video-detail">
       {% assign thumb = item.thumbnail_local | default: item.thumbnail %}
-      {% if thumb %}
-        <a class="video-thumb" href="{{ item.link }}">
-          <img src="{{ thumb }}" alt="Thumbnail for {{ item.title }}">
-        </a>
+      {% assign embed = item.embed_url | default: 'https://player.vimeo.com/video/' | append: item.id %}
+      {% if embed %}
+        <div class="video-embed">
+          <iframe src="{{ embed }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ item.title }}"></iframe>
+        </div>
       {% endif %}
       <div class="video-body">
-        <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
+        <div class="video-title">{{ item.title }}</div>
         <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
         <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
         {% if item.tags and item.tags.size > 0 %}
