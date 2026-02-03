@@ -1,17 +1,36 @@
 ---
 layout: minimal
-title: Vimeo — Chicago Code Camp 2009 -- Introduction to AOP with PostSharp
-description: Vimeo video Chicago Code Camp 2009 -- Introduction to AOP with PostSharp.
-breadcrumb: Chicago Code Camp 2009 -- Introduction to AOP with PostSharp
+title: Vimeo — Introduction to AOP with PostSharp w/Mike Hall
+description: Vimeo video Introduction to AOP with PostSharp w/Mike Hall.
+breadcrumb: Introduction to AOP with PostSharp w/Mike Hall
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
-  <header><h1>Chicago Code Camp 2009 -- Introduction to AOP with PostSharp</h1></header>
+  <header><h1>Introduction to AOP with PostSharp w/Mike Hall</h1></header>
 
   {% assign item = site.data.vimeo_videos.items | where: "id", "6495498" | first %}
   {% if item %}
-    {% include vimeo-card.html item=item %}
+    <div class="video">
+      {% if item.embed_url %}
+        <div class="video-embed">
+          <iframe src="{{ item.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ item.title }}"></iframe>
+        </div>
+      {% endif %}
+      <div class="video-body">
+        <div class="video-title">{{ item.title }}</div>
+        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
+        <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
+        {% if item.tags and item.tags.size > 0 %}
+          <div class="video-tags">
+            {% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+        {% endif %}
+        {% if item.description %}
+          <div class="video-description"><span class="video-description-label">Vimeo description:</span> {{ item.description }}</div>
+        {% endif %}
+      </div>
+    </div>
     <section class="transcript">
       <h2>Transcript</h2>
       {% if item.transcript %}

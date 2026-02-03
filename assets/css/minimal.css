@@ -277,6 +277,18 @@ section {
   white-space: pre-wrap;
 }
 
+.video-embed {
+  margin-bottom: 0.75rem;
+}
+
+.video-embed iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 0.375rem;
+  border: 1px solid #e2e8f0;
+}
+
 @media (max-width: 640px) {
   .video {
     grid-template-columns: 1fr;
