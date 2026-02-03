@@ -24,7 +24,7 @@ breadcrumb: WindyCityRails 2012 / Eric MacAdie
       <div class="video-body">
         <div class="video-title">{{ item.topic | default: item.title }}</div>
         {% if item.interviewees and item.interviewees.size > 0 %}
-          <div class=\"video-subtitle\">Interviewees: {{ item.interviewees | join: ', ' }}</div>
+          <div class=\"video-subtitle\">{% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ', ' }}</div>
         {% endif %}
         <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
         <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>

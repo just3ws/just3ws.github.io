@@ -50,16 +50,8 @@ ugt_items = ugtastic['items'] || []
 
 ugt_items.each do |item|
   topic, people = parse_title(item['title'])
-  # For UGtastic, topic is the community/conference name; interviewees are the people
-  if item['community'] && comm_map[item['community']]
-    item['topic'] = comm_map[item['community']]
-    item['topic_slug'] = item['community']
-  elsif item['conference'] && conf_map[item['conference']]
-    item['topic'] = conf_map[item['conference']]
-    item['topic_slug'] = item['conference']
-  else
-    item['topic'] = topic
-  end
+  # For UGtastic, topic is the interview subject (prefix before w/)
+  item['topic'] = topic
   item['interviewees'] = people if people.any?
   item.delete('people')
 end

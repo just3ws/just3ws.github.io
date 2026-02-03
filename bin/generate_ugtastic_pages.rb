@@ -52,7 +52,7 @@ ugtastic['items'].each do |item|
     f.puts "      <div class=\"video-body\">"
     f.puts "        <div class=\"video-title\">{{ item.topic | default: item.title }}</div>"
     f.puts "        {% if item.interviewees and item.interviewees.size > 0 %}"
-    f.puts "          <div class=\\\"video-subtitle\\\">Interviewees: {{ item.interviewees | join: ', ' }}</div>"
+    f.puts "          <div class=\\\"video-subtitle\\\">{% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ', ' }}</div>"
     f.puts "        {% endif %}"
     f.puts "        <div class=\"video-meta\">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: \"%b %d, %Y\" }}</div>"
     f.puts "        <div class=\"video-actions\"><a class=\"video-button\" href=\"{{ item.link }}\">Watch on Vimeo</a></div>"
