@@ -49,7 +49,7 @@ communities = community_map.map do |slug, name|
     'name' => name,
     'description' => "UGtastic community interviews from #{name}."
   }
-end.sort_by { |c| c['name'].downcase }
+end.sort_by { |c| c['name'].downcase == 'general' ? 'zzzz' : c['name'].downcase }
 
 File.open(communities_path, 'w') do |f|
   f.puts '---'
