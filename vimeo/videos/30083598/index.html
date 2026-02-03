@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — SCMC October 2011: The "A" word. A discussion about architecture. w/"Uncle" Bob Martin (@unclebobmartin)
+description: Vimeo video SCMC October 2011: The "A" word. A discussion about architecture. w/"Uncle" Bob Martin (@unclebobmartin).
+breadcrumb: SCMC October 2011: The "A" word. A discussion about architecture. w/"Uncle" Bob Martin (@unclebobmartin)
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>SCMC October 2011: The "A" word. A discussion about architecture. w/"Uncle" Bob Martin (@unclebobmartin)</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "30083598" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — Dynamic HTML 5 using jQuery for Perl Programmers w/Peter Krawczyk
+description: Vimeo video Dynamic HTML 5 using jQuery for Perl Programmers w/Peter Krawczyk.
+breadcrumb: Dynamic HTML 5 using jQuery for Perl Programmers w/Peter Krawczyk
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>Dynamic HTML 5 using jQuery for Perl Programmers w/Peter Krawczyk</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "42282153" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

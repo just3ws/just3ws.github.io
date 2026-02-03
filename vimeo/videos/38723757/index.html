@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — Beginner C++ for Expert Programmers w/Scott Seely
+description: Vimeo video Beginner C++ for Expert Programmers w/Scott Seely.
+breadcrumb: Beginner C++ for Expert Programmers w/Scott Seely
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>Beginner C++ for Expert Programmers w/Scott Seely</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "38723757" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — Simplest Thing w/Ralph Iden
+description: Vimeo video Simplest Thing w/Ralph Iden.
+breadcrumb: Simplest Thing w/Ralph Iden
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>Simplest Thing w/Ralph Iden</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "42266284" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

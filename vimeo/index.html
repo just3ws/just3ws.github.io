@@ -10,9 +10,11 @@ breadcrumb: Vimeo
   <header>
     <h1>Vimeo Videos</h1>
     <p>One-off talks and recordings hosted on Vimeo.</p>
+    <p>For SCMC user-group recordings, see <a href="/vimeo/scmc/">SCMC Videos</a>.</p>
   </header>
 
-  {% for item in site.data.vimeo_videos.items %}
+  {% assign items = site.data.vimeo_videos.items | where: "category", "oneoff" %}
+  {% for item in items %}
     {% include vimeo-card.html item=item %}
   {% endfor %}
 </article>

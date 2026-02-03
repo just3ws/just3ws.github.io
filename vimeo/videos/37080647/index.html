@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — TDD Your JavaScript With Backbone.js w/Mike Jansen
+description: Vimeo video TDD Your JavaScript With Backbone.js w/Mike Jansen.
+breadcrumb: TDD Your JavaScript With Backbone.js w/Mike Jansen
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>TDD Your JavaScript With Backbone.js w/Mike Jansen</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "37080647" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

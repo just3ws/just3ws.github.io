@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — SCMC August 2011- Blind SQL Injection by Michael Buselli
+description: Vimeo video SCMC August 2011- Blind SQL Injection by Michael Buselli.
+breadcrumb: SCMC August 2011- Blind SQL Injection by Michael Buselli
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>SCMC August 2011- Blind SQL Injection by Michael Buselli</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "27889917" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

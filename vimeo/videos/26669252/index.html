@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — SCMC July 2011 - Enough C To Get Started In F/OSS by Andy Lester - Part 2 of 2
+description: Vimeo video SCMC July 2011 - Enough C To Get Started In F/OSS by Andy Lester - Part 2 of 2.
+breadcrumb: SCMC July 2011 - Enough C To Get Started In F/OSS by Andy Lester - Part 2 of 2
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>SCMC July 2011 - Enough C To Get Started In F/OSS by Andy Lester - Part 2 of 2</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "26669252" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

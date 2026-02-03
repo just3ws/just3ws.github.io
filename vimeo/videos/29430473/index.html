@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — SCMC September 2011 - HTML5 and JavaScript Game Development by Eric Smith
+description: Vimeo video SCMC September 2011 - HTML5 and JavaScript Game Development by Eric Smith.
+breadcrumb: SCMC September 2011 - HTML5 and JavaScript Game Development by Eric Smith
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>SCMC September 2011 - HTML5 and JavaScript Game Development by Eric Smith</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "29430473" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

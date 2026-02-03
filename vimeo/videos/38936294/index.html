@@ -1,0 +1,24 @@
+---
+layout: minimal
+title: Vimeo — ActiveJDBC & ActiveWeb for Java w/Igor Polevoy
+description: Vimeo video ActiveJDBC & ActiveWeb for Java w/Igor Polevoy.
+breadcrumb: ActiveJDBC & ActiveWeb for Java w/Igor Polevoy
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header><h1>ActiveJDBC & ActiveWeb for Java w/Igor Polevoy</h1></header>
+
+  {% assign item = site.data.vimeo_videos.items | where: "id", "38936294" | first %}
+  {% if item %}
+    {% include vimeo-card.html item=item %}
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>
