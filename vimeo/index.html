@@ -1,0 +1,18 @@
+---
+layout: minimal
+title: Vimeo Videos
+description: One-off Vimeo videos and talks.
+breadcrumb: Vimeo
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>Vimeo Videos</h1>
+    <p>One-off talks and recordings hosted on Vimeo.</p>
+  </header>
+
+  {% for item in site.data.vimeo_videos.items %}
+    {% include vimeo-card.html item=item %}
+  {% endfor %}
+</article>
