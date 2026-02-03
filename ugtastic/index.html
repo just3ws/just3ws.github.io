@@ -13,14 +13,17 @@ breadcrumb: UGtastic
     <p class="intro">A snapshot of the early software craftsmanship and community conversations, preserved in their first public release.</p>
   </header>
 
+  {% assign assets = site.data.interview_assets.items | where: "source", "ugtastic" | sort: "published_date" | reverse %}
   {% assign prev_year = "" %}
-  {% for item in site.data.ugtastic.items %}
-    {% assign year = item.created | date: "%Y" %}
+  {% for asset in assets %}
+    {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}
+    {% if interview == nil %}{% continue %}{% endif %}
+    {% assign year = asset.published_date | date: "%Y" %}
     {% if year != prev_year %}
       <h2 class="year">{{ year }}</h2>
       {% assign prev_year = year %}
     {% endif %}
 
-    {% include video-card.html item=item %}
+    {% include ugtastic-interview-card.html interview=interview asset=asset %}
   {% endfor %}
 </article>

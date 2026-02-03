@@ -35,9 +35,13 @@ communities.each do |comm|
     f.puts "    <p>#{desc}</p>"
     f.puts '  </header>'
     f.puts ''
-    f.puts '  {% assign items = site.data.ugtastic.items | where: "community", page.community %}'
-    f.puts '  {% for item in items %}'
-    f.puts '    {% include video-card.html item=item %}'
+    f.puts '  {% assign comm = site.data.ugtastic_communities.communities | where: "slug", page.community | first %}'
+    f.puts '  {% assign assets = site.data.interview_assets.items | where: "source", "ugtastic" | sort: "published_date" | reverse %}'
+    f.puts '  {% for asset in assets %}'
+    f.puts '    {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}'
+    f.puts '    {% if interview and comm and interview.community == comm.name %}'
+    f.puts '      {% include ugtastic-interview-card.html interview=interview asset=asset %}'
+    f.puts '    {% endif %}'
     f.puts '  {% endfor %}'
     f.puts '</article>'
   end

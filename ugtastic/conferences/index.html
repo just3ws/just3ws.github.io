@@ -14,7 +14,8 @@ breadcrumb: UGtastic Conferences
 
   <div class="conference-list">
     {% for conf in site.data.ugtastic_conferences.conferences %}
-      {% assign items = site.data.ugtastic.items | where: "conference", conf.slug %}
+      {% assign items = site.data.interviews.items | where: "conference", conf.name %}
+      {% assign items = items | where: "conference_year", conf.year %}
       <div class="conference-card">
         <h2><a href="/ugtastic/conferences/{{ conf.slug }}/">{{ conf.name }}</a></h2>
         {% if conf.location %}<div class="conference-meta">{{ conf.location }}</div>{% endif %}

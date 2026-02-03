@@ -14,7 +14,7 @@ breadcrumb: UGtastic Communities
 
   <div class="conference-list">
     {% for comm in site.data.ugtastic_communities.communities %}
-      {% assign items = site.data.ugtastic.items | where: "community", comm.slug %}
+      {% assign items = site.data.interviews.items | where: "community", comm.name %}
       <div class="conference-card">
         <h2><a href="/ugtastic/communities/{{ comm.slug }}/">{{ comm.name }}</a></h2>
         <p>{{ comm.description }}</p>
