@@ -9,9 +9,10 @@ breadcrumb_parent_url: /ugtastic/communities/general/
 
 <article class="page">
   {% include breadcrumbs.html %}
-  {% assign item = site.data.ugtastic.items | where: "id", "67125707" | first %}
+  {% assign asset = site.data.interview_assets.items | where: "source", "ugtastic" | where: "asset_id", "67125707" | first %}
+  {% assign interview = asset and site.data.interviews.items | where: "id", asset.interview_id | first %}
   <header>
-    <h1>{{ item.topic | default: item.title }}</h1>
+    <h1>{{ interview.title | default: item.topic | default: item.title }}</h1>
   </header>
 
   {% if item %}
@@ -24,9 +25,9 @@ breadcrumb_parent_url: /ugtastic/communities/general/
         </div>
       {% endif %}
       <div class="video-body">
-        <div class="video-title">{{ item.topic | default: item.title }}</div>
-        {% if item.interviewees and item.interviewees.size > 0 %}
-          <div class=\"video-subtitle\">{% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ', ' }}</div>
+        <div class="video-title">{{ interview.title | default: item.topic | default: item.title }}</div>
+        {% if interview and interview.interviewees and interview.interviewees.size > 0 %}
+          <div class=\"video-subtitle\">{% if interview.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ interview.interviewees | join: ', ' }}</div>
         {% endif %}
         <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
         <div class="video-meta">
@@ -37,7 +38,10 @@ breadcrumb_parent_url: /ugtastic/communities/general/
             {% assign comm = site.data.ugtastic_communities.communities | where: "slug", item.community | first %}
             {% if comm %}<a href="/ugtastic/communities/{{ comm.slug }}/">{{ comm.name }}</a>{% endif %}
           {% endif %}
-          {% if item.interviewers and item.interviewers.size > 0 %}
+          {% if interview and interview.interviewer %}
+            {% if item.conference or item.community %} · {% endif %}
+            Interviewer: <a href="/home/">{{ interview.interviewer }}</a>
+          {% elsif item.interviewers and item.interviewers.size > 0 %}
             {% if item.conference or item.community %} · {% endif %}
             {% if item.interviewers.size == 1 %}Interviewer{% else %}Interviewers{% endif %}:
             {% for interviewer in item.interviewers %}
@@ -45,8 +49,8 @@ breadcrumb_parent_url: /ugtastic/communities/general/
               {% if interviewer == 'Mike Hall' %}<a href="/home/">Mike Hall</a>{% else %}{{ interviewer }}{% endif %}
             {% endfor %}
           {% endif %}
-          {% if item.interviewees and item.interviewees.size > 0 %}
-            · {% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ', ' }}
+          {% if interview and interview.interviewees and interview.interviewees.size > 0 %}
+            · {% if interview.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ interview.interviewees | join: ', ' }}
           {% endif %}
         </div>
         <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
