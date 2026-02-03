@@ -1,0 +1,32 @@
+---
+layout: minimal
+title: Mike Hall - Writing
+description: Technical writing archive from Mike Hall.
+---
+
+<nav class="resume-actions no-print">
+  <a href="/">← Resume</a>
+</nav>
+
+<article>
+  <header class="resume-header">
+    <h1>Writing</h1>
+    <p class="title">Technical articles from the archive</p>
+  </header>
+
+  <section>
+    <aside class="archive-note">
+      <p>These posts were written between 2015-2016 and migrated from earlier blogs. They're preserved here as a record of technical work and writing from that period. Some external links may no longer work.</p>
+    </aside>
+
+    <h2>Posts</h2>
+    <ul class="post-list">
+      {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <span class="post-meta">{{ post.date | date: "%B %Y" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>

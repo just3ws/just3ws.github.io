@@ -1,8 +1,9 @@
 ---
-layout: semantic
+layout: post
 title: Using Postgres RegEx Expressions to Find Very Specific Matches
-tags: Database,Indexes,PostgreSQL,Postgres,RDBMS,RegEx,Ruby on Rails,SQL
-published_on: February 25, 2016
+date: 2015-02-25
+tags: [PostgreSQL, RegEx, Ruby on Rails, SQL]
+archive_note: This post was written in 2015 while working at Coderwall and migrated from an earlier blog. The Ruby and PostgreSQL techniques described remain applicable.
 ---
 
 Coderwall has been having issues with certain avatars generating 403 errors in
@@ -16,15 +17,15 @@ urls to use HTTPS.
 
 ```ruby
 User.where("twitter_token is not null AND thumbnail_url ~ '^https:' AND thumbnail_url ~ 'twimg\.com'").find_each(batch_size: 500) do |user|
-	begin
-		url = URI.parse(user.profile_url)
-		puts "Update #{user.username} because #{user.profile_url} appears to be HTTP."
-		url.scheme = 'https'
-		user.update_attribute(:thumbnail_url, url.to_s)
-		puts " ==> #{user.profile_url}"
-	rescue URI::InvalidURIError
-		ap url
-	end
+  begin
+    url = URI.parse(user.profile_url)
+    puts "Update #{user.username} because #{user.profile_url} appears to be HTTP."
+    url.scheme = 'https'
+    user.update_attribute(:thumbnail_url, url.to_s)
+    puts " ==> #{user.profile_url}"
+  rescue URI::InvalidURIError
+    ap url
+  end
 end
 ```
 
@@ -64,6 +65,3 @@ inside a Postgres instance and let you have extremely fine grained control over
 the your results without having to pull more than you absolutely must from the
 database. They come at a cost of being rather non-index friendly but they are a
 useful tool to have at your disposal when you need it.
-
-To fix the Avatar issues I'll probably have to refetch the profile url's from
-Twitter but that's another article. :)

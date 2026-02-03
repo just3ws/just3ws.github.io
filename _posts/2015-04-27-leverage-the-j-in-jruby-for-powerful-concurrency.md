@@ -1,14 +1,16 @@
 ---
-layout: semantic
+layout: post
 title: Leverage the "J" in JRuby for Powerful Concurrency
-tags: Ruby, JRuby, Java, Concurrency, JVM
+date: 2015-04-27
+tags: [Ruby, JRuby, Java, Concurrency, JVM]
+archive_note: This post was written in 2015 and migrated from an earlier blog. While JRuby remains relevant, modern Ruby (3.x) now offers improved concurrency with Ractors.
 ---
 
 I was working on a project that required some heavy-weight processing of links
 to determine if they were valid based on a variety of criteria. Since the
 standard Ruby interpreter was running each process sequentially the naive
 approach was taking a prohibitively long time. Fortunately this was a simple
-pure Ruby problem and each record was processed independantly of each other this
+pure Ruby problem and each record was processed independently of each other this
 was a good opportunity to use JRuby and it's Java interoperability to get some
 real concurrency power.
 
@@ -66,6 +68,7 @@ impact on the execution performance.
       tasks.push(task)
     end
 ```
+
 As each future completes it's work the `tasks` array enumerates the results of
 the worker execution. In this case I'm just writing the output to `STDOUT`.
 
@@ -83,6 +86,7 @@ the worker execution. In this case I'm just writing the output to `STDOUT`.
     executor.shutdown
   end
 ```
+
 `Worker` implements the actual reason for the script. We include Java's
 `Callable` module so we can work with the `FutureTask` defined above.
 
@@ -90,6 +94,7 @@ the worker execution. In this case I'm just writing the output to `STDOUT`.
   class Worker
     include java.util.concurrent.Callable
 ```
+
 This code is less important but represents some of the work being done. It was a
 rough experiment and the data was a mess. The `scrub_input` was kind of a work
 in progress.
@@ -129,6 +134,7 @@ the naming. I'll leave the references up to you.
         Schrute::Beets::TelnetBeet
       ]).call
 ```
+
 Here I take the result of the input inspector and format it so it can be
 returned and handled by the executor.
 
@@ -156,6 +162,7 @@ fail "Usage: process <file_to_process.csv>" unless file_to_process
 
 App.new(file_to_process).work
 ```
+
 The original [gist](https://gist.github.com/just3ws/e0c6b47f22a32ad16f1a) is up
 on GitHub. In the end using this technique reduced a multiple hour process into
 a few minutes. There was some tweaking for handling particularly slow `Beets`
