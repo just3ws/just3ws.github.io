@@ -69,6 +69,10 @@ def extract_title_parts(title, conference_name, conference_year)
   if (m = stripped.match(/\AInterview with\s+(.+?)\s+on\s+(.+)\z/i))
     interviewees = m[1]
     topic = m[2]
+    topic = topic.gsub(/\A(his|her|their)\s+/i, '')
+  elsif (m = stripped.match(/\AInterview with\s+(.+?)\s+(?:a|an)\s+(.+)\z/i))
+    interviewees = m[1]
+    topic = m[2]
   elsif (m = stripped.match(/\AInterview with\s+(.+?)\s+at\s+(.+)\z/i))
     interviewees = m[1]
     topic = nil
@@ -78,7 +82,13 @@ def extract_title_parts(title, conference_name, conference_year)
     topic = stripped
   end
 
-  interviewee_list = interviewees.to_s.split(/\s*(?:,|&|and)\s*/i).map(&:strip).reject(&:empty?)
+  interviewee_list = if interviewees.to_s.strip.empty?
+                       []
+                     elsif interviewees.include?('&') || interviewees.match?(/\s+and\s+/i) || interviewees.include?(',')
+                       interviewees.to_s.split(/\s*(?:,|&|and)\s*/i).map(&:strip).reject(&:empty?)
+                     else
+                       [interviewees.to_s.strip]
+                     end
 
   {
     'topic' => topic&.strip,
