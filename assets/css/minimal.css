@@ -134,6 +134,105 @@ section {
   margin-bottom: 2rem;
 }
 
+/* UGtastic Archive */
+.page .intro {
+  color: #334155;
+  margin-top: -0.25rem;
+}
+
+.video {
+  padding: 1rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  display: grid;
+  grid-template-columns: minmax(160px, 240px) 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.video:last-of-type {
+  border-bottom: none;
+}
+
+.video-thumb {
+  display: block;
+}
+
+.video-thumb img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.375rem;
+  border: 1px solid #e2e8f0;
+}
+
+.video-body {
+  min-width: 0;
+}
+
+.video-title a {
+  font-weight: 600;
+  font-size: 1.0625rem;
+}
+
+.video-meta {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-top: 0.125rem;
+}
+
+.video-actions {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.video-button {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid #1e3a5f;
+  border-radius: 0.25rem;
+  color: #1e3a5f;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.video-button:hover {
+  color: #fff;
+  background: #1e3a5f;
+  text-decoration: none;
+}
+
+.video-tags {
+  margin: 0.5rem 0 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.tag {
+  background: #eef2ff;
+  color: #1e3a5f;
+  border: 1px solid #c7d2fe;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.video-description {
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  margin-top: 0.375rem;
+}
+
+.video-description-label {
+  color: #64748b;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .video {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Position/Job entries */
 .position {
   margin-bottom: 1.75rem;
