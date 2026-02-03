@@ -2,18 +2,22 @@
 {% if item.conference %}
   {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
 {% endif %}
+{% if item.community %}
+  {% assign comm = site.data.ugtastic_communities.communities | where: "slug", item.community | first %}
+{% endif %}
 {% assign title_prefix = nil %}
 {% if conf %}
   {% assign title_prefix = conf.name %}
-{% elsif item.community %}
-  {% assign title_prefix = item.community %}
+{% elsif comm %}
+  {% assign title_prefix = comm.name %}
 {% endif %}
 {% assign detail_url = "/ugtastic/videos/" | append: item.id | append: "/" %}
 
 <div class="video">
-  {% if item.thumbnail %}
+  {% assign thumb = item.thumbnail_local | default: item.thumbnail %}
+  {% if thumb %}
     <a class="video-thumb" href="{{ detail_url }}">
-      <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+      <img src="{{ thumb }}" alt="Thumbnail for {{ item.title }}">
     </a>
   {% endif %}
   <div class="video-body">
@@ -26,8 +30,8 @@
       {% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}
       {% if conf %}
         · <a class="video-kind" href="/ugtastic/conferences/{{ item.conference }}/">{{ conf.name }}</a>
-      {% elsif item.community %}
-        · <span class="video-kind">{{ item.community }}</span>
+      {% elsif comm %}
+        · <a class="video-kind" href="/ugtastic/communities/{{ item.community }}/">{{ comm.name }}</a>
       {% endif %}
     </div>
     <div class="video-actions">

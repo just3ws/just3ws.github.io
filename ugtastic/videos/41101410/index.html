@@ -1,22 +1,23 @@
 ---
 layout: minimal
-title: UGtastic — Geekfest w/Dave Hoover
+title: UGtastic — geekfest / Geekfest w/Dave Hoover
 description: UGtastic interview with Geekfest w/Dave Hoover.
-breadcrumb: Geekfest w/Dave Hoover
+breadcrumb: geekfest / Geekfest w/Dave Hoover
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
   <header>
-    <h1>Geekfest w/Dave Hoover</h1>
+    <h1>geekfest / Geekfest w/Dave Hoover</h1>
   </header>
 
   {% assign item = site.data.ugtastic.items | where: "id", "41101410" | first %}
   {% if item %}
     <div class="video">
-      {% if item.thumbnail %}
+      {% assign thumb = item.thumbnail_local | default: item.thumbnail %}
+      {% if thumb %}
         <a class="video-thumb" href="{{ item.link }}">
-          <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+          <img src="{{ thumb }}" alt="Thumbnail for {{ item.title }}">
         </a>
       {% endif %}
       <div class="video-body">
@@ -35,8 +36,12 @@ breadcrumb: Geekfest w/Dave Hoover
     </div>
   {% endif %}
 
-  <section class="transcript">
+  <section class=\"transcript\">
     <h2>Transcript</h2>
-    <p>Transcript coming soon.</p>
+    {% if item.transcript %}
+      <div class=\"video-transcript\">{{ item.transcript }}</div>
+    {% else %}
+      <p>Transcript coming soon.</p>
+    {% endif %}
   </section>
 </article>

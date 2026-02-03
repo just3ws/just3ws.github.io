@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: UGtastic — Chicago Software Craftsmanship
+description: UGtastic community interviews from Chicago Software Craftsmanship.
+community: chicago-software-craftsmanship
+breadcrumb: Chicago Software Craftsmanship
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>Chicago Software Craftsmanship</h1>
+    <p>UGtastic community interviews from Chicago Software Craftsmanship.</p>
+  </header>
+
+  {% assign items = site.data.ugtastic.items | where: "community", page.community %}
+  {% for item in items %}
+    {% include video-card.html item=item %}
+  {% endfor %}
+</article>

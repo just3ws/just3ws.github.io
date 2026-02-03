@@ -1,22 +1,23 @@
 ---
 layout: minimal
-title: UGtastic — Igor Polevoy
+title: UGtastic — general / Igor Polevoy
 description: UGtastic interview with Igor Polevoy.
-breadcrumb: Igor Polevoy
+breadcrumb: general / Igor Polevoy
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
   <header>
-    <h1>Igor Polevoy</h1>
+    <h1>general / Igor Polevoy</h1>
   </header>
 
   {% assign item = site.data.ugtastic.items | where: "id", "51479402" | first %}
   {% if item %}
     <div class="video">
-      {% if item.thumbnail %}
+      {% assign thumb = item.thumbnail_local | default: item.thumbnail %}
+      {% if thumb %}
         <a class="video-thumb" href="{{ item.link }}">
-          <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+          <img src="{{ thumb }}" alt="Thumbnail for {{ item.title }}">
         </a>
       {% endif %}
       <div class="video-body">
@@ -35,8 +36,12 @@ breadcrumb: Igor Polevoy
     </div>
   {% endif %}
 
-  <section class="transcript">
+  <section class=\"transcript\">
     <h2>Transcript</h2>
-    <p>Transcript coming soon.</p>
+    {% if item.transcript %}
+      <div class=\"video-transcript\">{{ item.transcript }}</div>
+    {% else %}
+      <p>Transcript coming soon.</p>
+    {% endif %}
   </section>
 </article>

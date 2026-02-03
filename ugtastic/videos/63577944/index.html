@@ -1,22 +1,23 @@
 ---
 layout: minimal
-title: UGtastic — Joel Clermont
+title: UGtastic — general / Joel Clermont
 description: UGtastic interview with Joel Clermont.
-breadcrumb: Joel Clermont
+breadcrumb: general / Joel Clermont
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
   <header>
-    <h1>Joel Clermont</h1>
+    <h1>general / Joel Clermont</h1>
   </header>
 
   {% assign item = site.data.ugtastic.items | where: "id", "63577944" | first %}
   {% if item %}
     <div class="video">
-      {% if item.thumbnail %}
+      {% assign thumb = item.thumbnail_local | default: item.thumbnail %}
+      {% if thumb %}
         <a class="video-thumb" href="{{ item.link }}">
-          <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+          <img src="{{ thumb }}" alt="Thumbnail for {{ item.title }}">
         </a>
       {% endif %}
       <div class="video-body">
@@ -35,8 +36,12 @@ breadcrumb: Joel Clermont
     </div>
   {% endif %}
 
-  <section class="transcript">
+  <section class=\"transcript\">
     <h2>Transcript</h2>
-    <p>Transcript coming soon.</p>
+    {% if item.transcript %}
+      <div class=\"video-transcript\">{{ item.transcript }}</div>
+    {% else %}
+      <p>Transcript coming soon.</p>
+    {% endif %}
   </section>
 </article>

@@ -1,22 +1,23 @@
 ---
 layout: minimal
-title: UGtastic — Chicago Software Craftsmanship w/Steve Kim and Jim Suchy
+title: UGtastic — chicago-software-craftsmanship / Chicago Software Craftsmanship w/Steve Kim and Jim Suchy
 description: UGtastic interview with Chicago Software Craftsmanship w/Steve Kim and Jim Suchy.
-breadcrumb: Chicago Software Craftsmanship w/Steve Kim and Jim Suchy
+breadcrumb: chicago-software-craftsmanship / Chicago Software Craftsmanship w/Steve Kim and Jim Suchy
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
   <header>
-    <h1>Chicago Software Craftsmanship w/Steve Kim and Jim Suchy</h1>
+    <h1>chicago-software-craftsmanship / Chicago Software Craftsmanship w/Steve Kim and Jim Suchy</h1>
   </header>
 
   {% assign item = site.data.ugtastic.items | where: "id", "41882969" | first %}
   {% if item %}
     <div class="video">
-      {% if item.thumbnail %}
+      {% assign thumb = item.thumbnail_local | default: item.thumbnail %}
+      {% if thumb %}
         <a class="video-thumb" href="{{ item.link }}">
-          <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+          <img src="{{ thumb }}" alt="Thumbnail for {{ item.title }}">
         </a>
       {% endif %}
       <div class="video-body">
@@ -35,8 +36,12 @@ breadcrumb: Chicago Software Craftsmanship w/Steve Kim and Jim Suchy
     </div>
   {% endif %}
 
-  <section class="transcript">
+  <section class=\"transcript\">
     <h2>Transcript</h2>
-    <p>Transcript coming soon.</p>
+    {% if item.transcript %}
+      <div class=\"video-transcript\">{{ item.transcript }}</div>
+    {% else %}
+      <p>Transcript coming soon.</p>
+    {% endif %}
   </section>
 </article>
