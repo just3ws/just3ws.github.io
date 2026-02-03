@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-set -e
-
-source .env
-
-mkdir -p tmp/resume
-
-md2resume pdf --template swissen resume/Résumé-for-Mike-Hall-Senior-Software-Developer-Ruby.md tmp/resume
-md2resume html --template swissen --refresh yes ~resume/Résumé-for-Mike-Hall-Senior-Software-Developer-Ruby.md tmp/resume
