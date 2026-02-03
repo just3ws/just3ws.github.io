@@ -1,0 +1,47 @@
+{% assign conf = nil %}
+{% if item.conference %}
+  {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
+{% endif %}
+{% assign title_prefix = nil %}
+{% if conf %}
+  {% assign title_prefix = conf.name %}
+{% elsif item.community %}
+  {% assign title_prefix = item.community %}
+{% endif %}
+{% assign detail_url = "/ugtastic/videos/" | append: item.id | append: "/" %}
+
+<div class="video">
+  {% if item.thumbnail %}
+    <a class="video-thumb" href="{{ detail_url }}">
+      <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+    </a>
+  {% endif %}
+  <div class="video-body">
+    <div class="video-title">
+      <a href="{{ detail_url }}">
+        {% if title_prefix %}{{ title_prefix }} / {% endif %}{{ item.title }}
+      </a>
+    </div>
+    <div class="video-meta">
+      {% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}
+      {% if conf %}
+        · <a class="video-kind" href="/ugtastic/conferences/{{ item.conference }}/">{{ conf.name }}</a>
+      {% elsif item.community %}
+        · <span class="video-kind">{{ item.community }}</span>
+      {% endif %}
+    </div>
+    <div class="video-actions">
+      <a class="video-button" href="{{ item.link }}">Watch on Vimeo</a>
+    </div>
+    {% if item.tags and item.tags.size > 0 %}
+      <div class="video-tags">
+        {% for tag in item.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if item.description %}
+      <div class="video-description"><span class="video-description-label">Vimeo description:</span> {{ item.description }}</div>
+    {% endif %}
+  </div>
+</div>

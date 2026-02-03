@@ -1,0 +1,42 @@
+---
+layout: minimal
+title: UGtastic — Software Craftsmanship North America 2012 / Robert Martin
+description: UGtastic interview with Robert Martin.
+breadcrumb: Software Craftsmanship North America 2012 / Robert Martin
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>Software Craftsmanship North America 2012 / Robert Martin</h1>
+  </header>
+
+  {% assign item = site.data.ugtastic.items | where: "id", "54327051" | first %}
+  {% if item %}
+    <div class="video">
+      {% if item.thumbnail %}
+        <a class="video-thumb" href="{{ item.link }}">
+          <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+        </a>
+      {% endif %}
+      <div class="video-body">
+        <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
+        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
+        <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
+        {% if item.tags and item.tags.size > 0 %}
+          <div class="video-tags">
+            {% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+        {% endif %}
+        {% if item.description %}
+          <div class="video-description"><span class="video-description-label">Vimeo description:</span> {{ item.description }}</div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  <section class="transcript">
+    <h2>Transcript</h2>
+    <p>Transcript coming soon.</p>
+  </section>
+</article>

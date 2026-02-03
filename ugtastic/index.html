@@ -21,48 +21,6 @@ breadcrumb: UGtastic
       {% assign prev_year = year %}
     {% endif %}
 
-    <div class="video">
-      {% if item.thumbnail %}
-        <a class="video-thumb" href="{{ item.link }}">
-          <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
-        </a>
-      {% endif %}
-      <div class="video-body">
-      {% if item.conference %}
-        {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
-        {% if conf %}
-          <div class="video-title"><a href="{{ item.link }}">{{ conf.name }} / {{ item.title }}</a></div>
-        {% else %}
-          <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
-        {% endif %}
-      {% elsif item.community %}
-        <div class="video-title"><a href="{{ item.link }}">{{ item.community }} / {{ item.title }}</a></div>
-      {% else %}
-        <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
-      {% endif %}
-      <div class="video-meta">
-        {% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}
-        {% if item.conference %}
-          {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
-          {% if conf %}· <a class="video-kind" href="/ugtastic/conferences/{{ item.conference }}/">{{ conf.name }}</a>{% endif %}
-        {% elsif item.community %}
-          · <span class="video-kind">{{ item.community }}</span>
-        {% endif %}
-      </div>
-        <div class="video-actions">
-          <a class="video-button" href="{{ item.link }}">Watch on Vimeo</a>
-        </div>
-        {% if item.tags and item.tags.size > 0 %}
-          <div class="video-tags">
-            {% for tag in item.tags %}
-              <span class="tag">{{ tag }}</span>
-            {% endfor %}
-          </div>
-        {% endif %}
-        {% if item.description %}
-          <div class="video-description"><span class="video-description-label">Vimeo description:</span> {{ item.description }}</div>
-        {% endif %}
-      </div>
-    </div>
+    {% include video-card.html item=item %}
   {% endfor %}
 </article>
