@@ -3,9 +3,11 @@ layout: minimal
 title: UGtastic — ChicagoWebConf 2012
 description: UGtastic interviews from ChicagoWebConf 2012.
 conference: chicagowebconf-2012
+breadcrumb: ChicagoWebConf 2012
 ---
 
 <article class="page">
+  {% include breadcrumbs.html %}
   <header>
     <h1>ChicagoWebConf 2012</h1>
     <div class="conference-dates">2012-10-06 – 2012-10-06</div>
@@ -21,8 +23,8 @@ conference: chicagowebconf-2012
         </a>
       {% endif %}
       <div class="video-body">
-        <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
-        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
+        <div class="video-title"><a href="{{ item.link }}">ChicagoWebConf 2012 / {{ item.title }}</a></div>
+        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
         <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
         {% if item.tags and item.tags.size > 0 %}
           <div class="video-tags">

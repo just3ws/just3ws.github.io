@@ -3,9 +3,11 @@ layout: minimal
 title: UGtastic — WindyCityRails 2012
 description: UGtastic interviews from WindyCityRails 2012.
 conference: windycityrails-2012
+breadcrumb: WindyCityRails 2012
 ---
 
 <article class="page">
+  {% include breadcrumbs.html %}
   <header>
     <h1>WindyCityRails 2012</h1>
     <div class="conference-dates">2012-09-07 – 2012-09-12</div>
@@ -21,8 +23,8 @@ conference: windycityrails-2012
         </a>
       {% endif %}
       <div class="video-body">
-        <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
-        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
+        <div class="video-title"><a href="{{ item.link }}">WindyCityRails 2012 / {{ item.title }}</a></div>
+        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
         <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
         {% if item.tags and item.tags.size > 0 %}
           <div class="video-tags">

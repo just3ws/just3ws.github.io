@@ -3,9 +3,11 @@ layout: minimal
 title: UGtastic — Software Craftsmanship North America 2014
 description: UGtastic interviews from Software Craftsmanship North America 2014.
 conference: scna-2014
+breadcrumb: Software Craftsmanship North America 2014
 ---
 
 <article class="page">
+  {% include breadcrumbs.html %}
   <header>
     <h1>Software Craftsmanship North America 2014</h1>
     <div class="conference-dates">2014-03-24 – 2014-04-30</div>
@@ -21,8 +23,8 @@ conference: scna-2014
         </a>
       {% endif %}
       <div class="video-body">
-        <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
-        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
+        <div class="video-title"><a href="{{ item.link }}">Software Craftsmanship North America 2014 / {{ item.title }}</a></div>
+        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
         <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
         {% if item.tags and item.tags.size > 0 %}
           <div class="video-tags">
