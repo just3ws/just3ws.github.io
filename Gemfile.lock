@@ -88,6 +88,8 @@ GEM
       logger
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
+    faraday-retry (2.4.0)
+      faraday (~> 2.0)
     ffi (1.17.3-x86_64-darwin)
     fiber-annotation (0.2.0)
     fiber-local (1.1.0)
@@ -407,6 +409,7 @@ DEPENDENCIES
   bundler-audit
   csv
   erb_lint
+  faraday-retry (~> 2.4)
   github-pages
   html-proofer
   jekyll-octicons

@@ -39,3 +39,5 @@ group :development do
   gem 'scss_lint', require: false
   gem 'webrick', require: false
 end
+
+gem "faraday-retry", "~> 2.4"
