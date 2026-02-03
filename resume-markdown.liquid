@@ -3,15 +3,16 @@ layout: null
 permalink: /resume.md
 sitemap: true
 ---
-# Mike Hall
+{% assign profile = site.data.resume.profile %}
+# {{ profile.name }}
 
-**Staff Software Engineer**
+**{{ profile.title }}**
 
-- Email: [mike@just3ws.com](mailto:mike@just3ws.com)
-- Phone: [(847) 877-3825](tel:+18478773825)
-- Website: [just3ws.com](https://www.just3ws.com)
-- LinkedIn: [linkedin.com/in/just3ws](https://www.linkedin.com/in/just3ws/)
-- GitHub: [github.com/just3ws](https://github.com/just3ws)
+- Email: [{{ profile.contact.email }}](mailto:{{ profile.contact.email }})
+- Phone: [{{ profile.contact.phone }}](tel:{{ profile.contact.phone_tel }})
+- Website: [{{ profile.contact.website.display }}]({{ profile.contact.website.url }})
+- LinkedIn: [{{ profile.contact.linkedin.display }}]({{ profile.contact.linkedin.url }})
+- GitHub: [{{ profile.contact.github.display }}]({{ profile.contact.github.url }})
 
 ---
 

@@ -12,16 +12,17 @@ redirect_from:
   <a href="/resume.txt">Plain Text</a>
 </nav>
 
+{% assign profile = site.data.resume.profile %}
 <article itemscope itemtype="https://schema.org/Person">
   <header class="resume-header">
-    <h1 itemprop="name">Mike Hall</h1>
-    <p class="title" itemprop="jobTitle">Staff Software Engineer</p>
+    <h1 itemprop="name">{{ profile.name }}</h1>
+    <p class="title" itemprop="jobTitle">{{ profile.title }}</p>
     <ul class="contact-info">
-      <li><a href="mailto:mike@just3ws.com" itemprop="email">mike@just3ws.com</a></li>
-      <li><a href="tel:+18478773825" itemprop="telephone">(847) 877-3825</a></li>
-      <li><a href="https://www.just3ws.com" itemprop="url">just3ws.com</a></li>
-      <li><a href="https://www.linkedin.com/in/just3ws/">LinkedIn</a></li>
-      <li><a href="https://github.com/just3ws">GitHub</a></li>
+      <li><a href="mailto:{{ profile.contact.email }}" itemprop="email">{{ profile.contact.email }}</a></li>
+      <li><a href="tel:{{ profile.contact.phone_tel }}" itemprop="telephone">{{ profile.contact.phone }}</a></li>
+      <li><a href="{{ profile.contact.website.url }}" itemprop="url">{{ profile.contact.website.display }}</a></li>
+      <li><a href="{{ profile.contact.linkedin.url }}">{{ profile.contact.linkedin.display }}</a></li>
+      <li><a href="{{ profile.contact.github.url }}">{{ profile.contact.github.display }}</a></li>
     </ul>
   </header>
 

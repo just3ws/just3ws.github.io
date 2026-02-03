@@ -9,9 +9,10 @@ description: Complete career history for Mike Hall, Staff Software Engineer.
   <button onclick="window.print()">Print / Save as PDF</button>
 </nav>
 
+{% assign profile = site.data.resume.profile %}
 <article itemscope itemtype="https://schema.org/Person">
   <header class="resume-header">
-    <h1 itemprop="name">Mike Hall</h1>
+    <h1 itemprop="name">{{ profile.name }}</h1>
     <p class="title">Full Career History</p>
   </header>
 

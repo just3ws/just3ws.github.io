@@ -3,14 +3,15 @@ layout: null
 permalink: /resume.txt
 sitemap: true
 ---
-MIKE HALL
-Staff Software Engineer
+{% assign profile = site.data.resume.profile %}
+{{ profile.name | upcase }}
+{{ profile.title }}
 
-Email: mike@just3ws.com
-Phone: (847) 877-3825
-Website: https://www.just3ws.com
-LinkedIn: https://www.linkedin.com/in/just3ws/
-GitHub: https://github.com/just3ws
+Email: {{ profile.contact.email }}
+Phone: {{ profile.contact.phone }}
+Website: {{ profile.contact.website.url }}
+LinkedIn: {{ profile.contact.linkedin.url }}
+GitHub: {{ profile.contact.github.url }}
 
 ================================================================================
 {{ site.data.resume.summary.title | upcase }}
