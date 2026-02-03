@@ -45,7 +45,7 @@ html {
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
-  background: #fff;
+  background: var(--nord6);
   max-width: 50rem;
   margin: 0 auto;
   padding: 2rem 1rem;
@@ -536,6 +536,19 @@ section {
   transition: all 0.15s ease;
 }
 
+.resume-actions a.resume-actions-primary {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: 0 0 0 2px rgba(136, 192, 208, 0.35);
+}
+
+.resume-actions a.resume-actions-primary:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 2px rgba(136, 192, 208, 0.5);
+}
+
 .resume-actions button:hover,
 .resume-actions a:hover {
   background: var(--surface-2);
@@ -794,6 +807,13 @@ pre code {
 
   h2, h3, h4 {
     page-break-after: avoid;
+    break-after: avoid-page;
+    break-inside: avoid;
+  }
+
+  h2 + * {
+    break-before: avoid-page;
+    page-break-before: avoid;
   }
 
   .skills-list {

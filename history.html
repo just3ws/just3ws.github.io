@@ -5,11 +5,10 @@ description: Complete career history for Mike Hall, Staff Software Engineer.
 ---
 
 <nav class="resume-actions no-print">
-  <a href="/">← Back to Resume</a>
+  <a class="resume-actions-primary" href="/">Resume →</a>
   <button onclick="window.print()">Print / Save as PDF</button>
   <a href="/resume.txt">Plain Text</a>
   <a href="/resume.md">Markdown</a>
-  <a href="/linkedin/">LinkedIn Export</a>
   <a href="/home/">Home</a>
 </nav>
 
@@ -17,11 +16,18 @@ description: Complete career history for Mike Hall, Staff Software Engineer.
 <article itemscope itemtype="https://schema.org/Person">
   <header class="resume-header">
     <h1 itemprop="name">{{ profile.name }}</h1>
-    <p class="title">Full Career History</p>
+    <p class="title">{{ profile.title }}</p>
+    <ul class="contact-info">
+      <li><a href="mailto:{{ profile.contact.email }}" itemprop="email">{{ profile.contact.email }}</a></li>
+      <li><a href="tel:{{ profile.contact.phone_tel }}" itemprop="telephone">{{ profile.contact.phone }}</a></li>
+      <li><a href="{{ profile.contact.website.url }}" itemprop="url">{{ profile.contact.website.display }}</a></li>
+      <li><a href="{{ profile.contact.linkedin.url }}">{{ profile.contact.linkedin.display }}</a></li>
+      <li><a href="{{ profile.contact.github.url }}">{{ profile.contact.github.display }}</a></li>
+    </ul>
   </header>
 
   <section id="experience">
-    <h2>Experience</h2>
+    <h2>Full Career History</h2>
     {% for item in site.data.resume.timeline.history %}
     {% assign position = site.data.resume.positions[item] %}
     {% if position %}
