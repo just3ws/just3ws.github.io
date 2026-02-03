@@ -5,12 +5,7 @@
 {% if item.community %}
   {% assign comm = site.data.ugtastic_communities.communities | where: "slug", item.community | first %}
 {% endif %}
-{% assign title_prefix = nil %}
-{% if conf %}
-  {% assign title_prefix = conf.name %}
-{% elsif comm %}
-  {% assign title_prefix = comm.name %}
-{% endif %}
+{% assign title_text = item.topic | default: item.title %}
 {% assign detail_url = "/ugtastic/videos/" | append: item.id | append: "/" %}
 
 <div class="video">
@@ -22,10 +17,11 @@
   {% endif %}
   <div class="video-body">
     <div class="video-title">
-      <a href="{{ detail_url }}">
-        {% if title_prefix %}{{ title_prefix }} / {% endif %}{{ item.title }}
-      </a>
+      <a href="{{ detail_url }}">{{ title_text }}</a>
     </div>
+    {% if item.interviewees and item.interviewees.size > 0 %}
+      <div class="video-subtitle">Interviewees: {{ item.interviewees | join: ", " }}</div>
+    {% endif %}
     <div class="video-meta">
       {% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}
       {% if conf %}
