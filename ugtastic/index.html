@@ -26,10 +26,27 @@ description: UGtastic interview archive (original Vimeo uploads).
         </a>
       {% endif %}
       <div class="video-body">
+      {% if item.conference %}
+        {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
+        {% if conf %}
+          <div class="video-title"><a href="{{ item.link }}">{{ conf.name }} / {{ item.title }}</a></div>
+        {% else %}
+          <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
+        {% endif %}
+      {% elsif item.community %}
+        <div class="video-title"><a href="{{ item.link }}">{{ item.community }} / {{ item.title }}</a></div>
+      {% else %}
         <div class="video-title"><a href="{{ item.link }}">{{ item.title }}</a></div>
-        <div class="video-meta">
-          {% if item.duration_hms %}{{ item.duration_hms }} · {% endif %}{{ item.created | date: "%b %d, %Y" }}
-        </div>
+      {% endif %}
+      <div class="video-meta">
+        {% if item.duration_minutes %}Duration: {{ item.duration_minutes }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}
+        {% if item.conference %}
+          {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
+          {% if conf %}· <a class="video-kind" href="/ugtastic/conferences/{{ item.conference }}/">{{ conf.name }}</a>{% endif %}
+        {% elsif item.community %}
+          · <span class="video-kind">{{ item.community }}</span>
+        {% endif %}
+      </div>
         <div class="video-actions">
           <a class="video-button" href="{{ item.link }}">Watch on Vimeo</a>
         </div>
