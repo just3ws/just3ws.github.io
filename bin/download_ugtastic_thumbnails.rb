@@ -6,7 +6,7 @@ require 'fileutils'
 
 root = File.expand_path('..', __dir__)
 ugtastic_path = File.join(root, '_data', 'ugtastic.yml')
-thumbnails_dir = File.join(root, 'assets', 'ugtastic', 'thumbs')
+thumbnails_dir = File.join(root, 'assets', 'vimeo', 'thumbs', 'ugtastic')
 FileUtils.mkdir_p(thumbnails_dir)
 
 ugtastic = YAML.safe_load(File.read(ugtastic_path), permitted_classes: [Time, Date], aliases: true)
@@ -15,7 +15,7 @@ items = ugtastic['items'] || []
 items.each do |item|
   next unless item['thumbnail']
   id = item['id'].to_s
-  local_rel = "/assets/ugtastic/thumbs/#{id}.jpg"
+  local_rel = "/assets/vimeo/thumbs/ugtastic/#{id}.jpg"
   local_path = File.join(thumbnails_dir, "#{id}.jpg")
 
   if File.exist?(local_path)
