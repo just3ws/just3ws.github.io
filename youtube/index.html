@@ -1,0 +1,41 @@
+---
+layout: minimal
+title: YouTube Playlists
+description: YouTube interview playlists and archives.
+breadcrumb: YouTube
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+
+  <header>
+    <h1>YouTube</h1>
+    <p class="intro">Interview playlists grouped by conference and community.</p>
+  </header>
+
+  {% assign playlists = site.data.youtube_playlists.playlists %}
+
+  <section>
+    <h2>Conference Interviews</h2>
+    {% assign conference_playlists = playlists | where: "category", "conference" %}
+    {% for playlist in conference_playlists %}
+      {% include youtube-playlist-card.html playlist=playlist %}
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>Community Interviews</h2>
+    {% assign community_playlists = playlists | where: "category", "community" %}
+    {% for playlist in community_playlists %}
+      {% include youtube-playlist-card.html playlist=playlist %}
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>General</h2>
+    {% assign general_playlists = playlists | where: "category", "general" %}
+    {% for playlist in general_playlists %}
+      {% include youtube-playlist-card.html playlist=playlist %}
+    {% endfor %}
+  </section>
+</article>

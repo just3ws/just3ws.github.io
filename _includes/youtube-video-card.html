@@ -1,0 +1,27 @@
+{% assign detail_url = "/youtube/videos/" | append: item.id | append: "/" %}
+
+<div class="video">
+  {% if item.thumbnail %}
+    <a class="video-thumb" href="{{ detail_url }}">
+      <img src="{{ item.thumbnail }}" alt="Thumbnail for {{ item.title }}">
+    </a>
+  {% endif %}
+  <div class="video-body">
+    <div class="video-title"><a href="{{ detail_url }}">{{ item.topic | default: item.title }}</a></div>
+    {% if item.interviewees and item.interviewees.size > 0 %}
+      <div class="video-subtitle">
+        {% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ", " }}
+      </div>
+    {% endif %}
+    <div class="video-meta">
+      {% if item.published %}Published: {{ item.published | date: "%b %d, %Y" }}{% endif %}
+    </div>
+    <div class="video-actions">
+      <a class="video-button primary" href="{{ detail_url }}">Watch Here</a>
+      <a class="video-button" href="{{ item.link }}">Watch on YouTube</a>
+    </div>
+    {% if item.description %}
+      <div class="video-description"><span class="video-description-label">Description:</span> {{ item.description }}</div>
+    {% endif %}
+  </div>
+</div>
