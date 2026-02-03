@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Interviews
+description: Canonical index of interviews across platforms.
+breadcrumb: Interviews
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+
+  <header>
+    <h1>Interviews</h1>
+    <p class="intro">Canonical interview index with links to each published asset.</p>
+  </header>
+
+  {% assign interviews = site.data.interviews.items %}
+  {% for interview in interviews %}
+    {% include interview-card.html interview=interview %}
+  {% endfor %}
+</article>
