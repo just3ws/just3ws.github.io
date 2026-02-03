@@ -1,0 +1,58 @@
+---
+layout: minimal
+title: PechaKucha — Teach Yourself Beginning Community in 24 Months
+description: PechaKucha presentation by Mike Hall.
+breadcrumb: Teach Yourself Beginning Community in 24 Months
+breadcrumb_parent_name: PechaKucha
+breadcrumb_parent_url: /pechakucha/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+
+  {% assign item = site.data.pechakucha.items | where: "slug", "teach-yourself-beginning-community-in-24-months-2" | first %}
+  {% if item %}
+    <header>
+      <h1>{{ item.title }}</h1>
+    </header>
+
+    <div class="video video-detail">
+      {% if item.video_url %}
+        <div class="video-embed">
+          <video controls preload="metadata" poster="{{ item.image_url }}">
+            <source src="{{ item.video_url }}" type="video/mp4">
+          </video>
+        </div>
+      {% endif %}
+      <div class="video-body">
+        {% if item.speaker %}
+          <div class="video-subtitle">Speaker: {{ item.speaker }}</div>
+        {% endif %}
+        <div class="video-meta">
+          {% if item.created %}Published: {{ item.created | date: "%b %d, %Y" }}{% endif %}
+          {% if item.views %} · {{ item.views }} views{% endif %}
+        </div>
+        <div class="video-actions">
+          <a class="video-button" href="{{ item.link }}">Watch on PechaKucha</a>
+        </div>
+        {% if item.tags and item.tags.size > 0 %}
+          <div class="video-tags">
+            {% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+        {% endif %}
+        {% if item.description %}
+          <div class="video-description"><span class="video-description-label">Description:</span> {{ item.description }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% if item.transcript %}
+        <div class="video-transcript">{{ item.transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

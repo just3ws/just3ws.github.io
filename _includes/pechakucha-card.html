@@ -1,0 +1,33 @@
+{% assign detail_url = "/pechakucha/" | append: item.slug | append: "/" %}
+
+<div class="video">
+  {% if item.image_url %}
+    <a class="video-thumb" href="{{ detail_url }}">
+      <img src="{{ item.image_url }}" alt="Thumbnail for {{ item.title }}">
+    </a>
+  {% endif %}
+  <div class="video-body">
+    <div class="video-title"><a href="{{ detail_url }}">{{ item.title }}</a></div>
+    {% if item.speaker %}
+      <div class="video-subtitle">Speaker: {{ item.speaker }}</div>
+    {% endif %}
+    <div class="video-meta">
+      {% if item.created %}Published: {{ item.created | date: "%b %d, %Y" }}{% endif %}
+      {% if item.views %} · {{ item.views }} views{% endif %}
+    </div>
+    <div class="video-actions">
+      <a class="video-button primary" href="{{ detail_url }}">Watch Here</a>
+      <a class="video-button" href="{{ item.link }}">Watch on PechaKucha</a>
+    </div>
+    {% if item.tags and item.tags.size > 0 %}
+      <div class="video-tags">
+        {% for tag in item.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if item.description %}
+      <div class="video-description"><span class="video-description-label">Description:</span> {{ item.description }}</div>
+    {% endif %}
+  </div>
+</div>

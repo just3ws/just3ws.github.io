@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: PechaKucha
+description: PechaKucha presentations by Mike Hall.
+breadcrumb: PechaKucha
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+
+  <header>
+    <h1>PechaKucha</h1>
+    <p class="intro">One-off PechaKucha presentation with video, transcript, and context.</p>
+  </header>
+
+  {% assign items = site.data.pechakucha.items %}
+  {% for item in items %}
+    {% include pechakucha-card.html item=item %}
+  {% endfor %}
+</article>
