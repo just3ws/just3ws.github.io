@@ -1,0 +1,70 @@
+---
+layout: null
+permalink: /resume.md
+---
+# Mike Hall
+
+**Staff Software Engineer**
+
+- Email: [mike@just3ws.com](mailto:mike@just3ws.com)
+- Phone: [(847) 877-3825](tel:+18478773825)
+- Website: [just3ws.com](https://www.just3ws.com)
+- LinkedIn: [linkedin.com/in/just3ws](https://www.linkedin.com/in/just3ws/)
+- GitHub: [github.com/just3ws](https://github.com/just3ws)
+
+---
+
+## {{ site.data.resume.summary.title }}
+
+{{ site.data.resume.summary.text }}
+
+---
+
+## Experience
+{% for item in site.data.resume.timeline.items %}
+{% assign position = site.data.resume.positions[item] %}
+{% if position %}
+### {{ position.title }} — {{ position.company.name }}
+
+**{{ position.start_date }} - {{ position.end_date | default: "Present" }}**{% if position.company.location %} | {{ position.company.location }}{% endif %}
+{% if position.description %}
+
+{{ position.description }}
+{% endif %}
+{% if position.achievements.highlights %}
+
+**Key Achievements:**
+{% for achievement in position.achievements.highlights %}
+- {{ achievement }}
+{% endfor %}
+{% endif %}
+{% if position.skills %}
+
+**Skills:** {{ position.skills | join: ", " }}
+{% endif %}
+{% endif %}
+{% endfor %}
+### {{ site.data.resume.earlier_experience.title }}
+
+**{{ site.data.resume.earlier_experience.dates }}**
+
+{{ site.data.resume.earlier_experience.description }}
+{% for item in site.data.resume.earlier_experience.items %}
+- **{{ item.company }}**{% if item.role %} ({{ item.role }}){% endif %} — {{ item.summary }}
+{% endfor %}
+
+---
+
+## {{ site.data.resume.leadership.title }}
+{% for item in site.data.resume.leadership.items %}
+- {{ item }}
+{% endfor %}
+
+---
+
+## {{ site.data.resume.skills.title }}
+{% for category in site.data.resume.skills.categories %}
+### {{ category.name }}
+
+{{ category.items | join: ", " }}
+{% endfor %}

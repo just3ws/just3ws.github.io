@@ -12,13 +12,10 @@ LinkedIn: https://www.linkedin.com/in/just3ws/
 GitHub: https://github.com/just3ws
 
 ================================================================================
-SUMMARY
+{{ site.data.resume.summary.title | upcase }}
 ================================================================================
 
-Experienced software engineer with 20+ years building robust, maintainable
-systems. Specialized in Ruby, Rails, and PostgreSQL with a track record of
-leading technical initiatives, mentoring teams, and delivering scalable
-solutions for companies including Groupon, ActiveCampaign, and BenchPrep.
+{{ site.data.resume.summary.text | strip | wordwrap: 80 }}
 
 ================================================================================
 EXPERIENCE
@@ -52,44 +49,27 @@ Skills: {{ position.skills | join: ", " }}
 {% endfor %}
 
 --------------------------------------------------------------------------------
-EARLIER EXPERIENCE
-1999 - 2014
+{{ site.data.resume.earlier_experience.title | upcase }}
+{{ site.data.resume.earlier_experience.dates }}
 
-Progressive roles in software development across enterprise, consulting, and
-startup environments. Built revenue-critical systems, introduced CI/CD
-practices, and established foundational technical skills in .NET, Java, and
-early Ruby/Rails adoption.
-
-* Obtiva (Software Craftsman) - Ruby/Rails consultancy; client delivery and
-  mentorship
-* Coderwall / UpCity / Viewpoints - Startup experience; full-stack development
-* TicketsNow - Revenue systems generating $2M+/year; acquired by Ticketmaster
-* BrightStar / Motorola / BP - Enterprise .NET development; system integration
+{{ site.data.resume.earlier_experience.description | strip | wordwrap: 80 }}
+{% for item in site.data.resume.earlier_experience.items %}
+* {{ item.company }}{% if item.role %} ({{ item.role }}){% endif %} - {{ item.summary }}
+{% endfor %}
 
 ================================================================================
-TECHNICAL LEADERSHIP
+{{ site.data.resume.leadership.title | upcase }}
 ================================================================================
-
-* Founded and led enterprise-wide OpenTelemetry initiative, establishing
-  durable observability standards across multiple engineering teams
-* Built and ran global engineering onboarding and training programs at Groupon
-  during hypergrowth
-* Founded engineering Communities of Practice to prevent architectural drift
-  and share knowledge across lanes
-* Founded WHOIS Tech Community (UGtastic), interviewing industry leaders on
-  software craftsmanship
-* Established team enablement functions to separate platform concerns from
-  product delivery
+{% for item in site.data.resume.leadership.items %}
+* {{ item | strip | wordwrap: 76 | replace: "
+", "
+  " }}
+{% endfor %}
 
 ================================================================================
-SKILLS
+{{ site.data.resume.skills.title | upcase }}
 ================================================================================
-
-Languages: Ruby, SQL, JavaScript, HTML/CSS, Bash/Zsh
-
-Frameworks & Tools: Ruby on Rails, PostgreSQL, MySQL, Redis, Git, Linux
-
-Practices: Test-Driven Development, Agile/Scrum, Code Review, Mentoring,
-           Technical Leadership
-
+{% for category in site.data.resume.skills.categories %}
+{{ category.name }}: {{ category.items | join: ", " }}
+{% endfor %}
 ================================================================================
