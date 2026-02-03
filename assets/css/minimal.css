@@ -1,13 +1,34 @@
 /* Minimal Resume Styles - ATS-Friendly Foundation */
 
-/* Color palette - WCAG AA compliant
-   --slate-900: #0f172a (headings, 15.4:1 contrast)
-   --slate-700: #334155 (secondary text, 8.5:1 contrast)
-   --slate-500: #64748b (meta text, 4.6:1 contrast)
-   --blue-700:  #1d4ed8 (links, 7.1:1 contrast)
-   --blue-800:  #1e40af (link hover, 8.6:1 contrast)
-   --accent:    #1e3a5f (Staff+ navy)
-*/
+/* Color palette - Nord-inspired */
+:root {
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+
+  --text: var(--nord0);
+  --muted: var(--nord2);
+  --meta: var(--nord3);
+  --border: var(--nord4);
+  --surface: var(--nord6);
+  --surface-2: var(--nord5);
+  --link: var(--nord10);
+  --link-hover: var(--nord9);
+  --accent: var(--nord10);
+}
 
 /* Reset & Base */
 *, *::before, *::after {
@@ -23,7 +44,7 @@ html {
 
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #1a1a1a;
+  color: var(--text);
   background: #fff;
   max-width: 50rem;
   margin: 0 auto;
@@ -36,7 +57,7 @@ body {
 h1, h2, h3, h4 {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--text);
   line-height: 1.3;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
@@ -47,31 +68,31 @@ h1 {
   font-size: 2.25rem;
   font-weight: 700;
   margin-top: 0;
-  color: #1e3a5f;
+  color: var(--accent);
 }
 
 h2 {
   font-size: 1.375rem;
-  border-bottom: 2px solid #1e3a5f;
+  border-bottom: 2px solid var(--accent);
   padding-bottom: 0.375rem;
   margin-top: 2rem;
 }
 
 h3 {
   font-size: 1.125rem;
-  color: #0f172a;
+  color: var(--text);
 }
 
 h4 {
   font-size: 1rem;
   font-weight: 500;
   font-style: normal;
-  color: #334155;
+  color: var(--muted);
 }
 
 p {
   margin-bottom: 1rem;
-  color: #1a1a1a;
+  color: var(--text);
 }
 
 ul, ol {
@@ -81,17 +102,17 @@ ul, ol {
 
 li {
   margin-bottom: 0.375rem;
-  color: #1a1a1a;
+  color: var(--text);
 }
 
 a {
-  color: #1d4ed8;
+  color: var(--link);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 a:hover {
-  color: #1e40af;
+  color: var(--link-hover);
   text-decoration: underline;
 }
 
@@ -99,7 +120,7 @@ a:hover {
 .resume-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border);
 }
 
 .resume-header h1 {
@@ -109,7 +130,7 @@ a:hover {
 .resume-header .title {
   font-size: 1.25rem;
   font-weight: 500;
-  color: #334155;
+  color: var(--muted);
   margin-bottom: 0.75rem;
 }
 
@@ -127,7 +148,7 @@ a:hover {
 }
 
 .contact-info a {
-  color: #1d4ed8;
+  color: var(--link);
 }
 
 section {
@@ -136,13 +157,13 @@ section {
 
 /* UGtastic Archive */
 .page .intro {
-  color: #334155;
+  color: var(--muted);
   margin-top: -0.25rem;
 }
 
 .video {
   padding: 1rem 0;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--surface-2);
   display: grid;
   grid-template-columns: minmax(160px, 240px) 1fr;
   gap: 1rem;
@@ -161,7 +182,7 @@ section {
   width: 100%;
   height: auto;
   border-radius: 0.375rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
 }
 
 .video-body {
@@ -174,19 +195,19 @@ section {
 }
 
 .video-meta {
-  color: #64748b;
+  color: var(--meta);
   font-size: 0.9rem;
   margin-top: 0.125rem;
 }
 
 .video-subtitle {
-  color: #334155;
+  color: var(--muted);
   font-size: 0.95rem;
   margin-top: 0.25rem;
 }
 
 .video-kind {
-  color: #1e3a5f;
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -205,25 +226,25 @@ section {
 
 .conference-card {
   padding: 1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   border-radius: 0.375rem;
-  background: #f8fafc;
+  background: var(--surface);
 }
 
 .conference-meta {
-  color: #334155;
+  color: var(--muted);
   font-weight: 600;
   margin-top: 0.25rem;
 }
 
 .conference-dates {
-  color: #64748b;
+  color: var(--meta);
   font-size: 0.9rem;
   margin-top: 0.125rem;
 }
 
 .conference-count {
-  color: #1e3a5f;
+  color: var(--accent);
   font-weight: 600;
   margin-top: 0.5rem;
 }
@@ -235,9 +256,9 @@ section {
 .video-button {
   display: inline-block;
   padding: 0.25rem 0.625rem;
-  border: 1px solid #1e3a5f;
+  border: 1px solid var(--accent);
   border-radius: 0.25rem;
-  color: #1e3a5f;
+  color: var(--accent);
   font-size: 0.875rem;
   font-weight: 600;
 }
@@ -247,18 +268,18 @@ section {
 }
 
 .video-button.primary {
-  background: #1e3a5f;
+  background: var(--accent);
   color: #fff;
 }
 
 .video-button.primary:hover {
-  background: #0f2a45;
+  background: var(--nord1);
   color: #fff;
 }
 
 .video-button:hover {
   color: #fff;
-  background: #1e3a5f;
+  background: var(--accent);
   text-decoration: none;
 }
 
@@ -270,9 +291,9 @@ section {
 }
 
 .tag {
-  background: #eef2ff;
-  color: #1e3a5f;
-  border: 1px solid #c7d2fe;
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--border);
   padding: 0.125rem 0.5rem;
   border-radius: 999px;
   font-size: 0.75rem;
@@ -280,26 +301,26 @@ section {
 }
 
 .video-description {
-  color: #1a1a1a;
+  color: var(--text);
   font-size: 0.95rem;
   margin-top: 0.375rem;
 }
 
 .video-description-label {
-  color: #64748b;
+  color: var(--meta);
   font-weight: 600;
 }
 
 .video-transcript {
   margin-top: 0.5rem;
-  color: #1a1a1a;
+  color: var(--text);
   font-size: 0.95rem;
   white-space: pre-wrap;
 }
 
 .video-embed {
   margin-bottom: 1rem;
-  background: #0f172a;
+  background: var(--nord0);
   border-radius: 0.5rem;
   padding: 0.25rem;
 }
@@ -332,7 +353,7 @@ section {
 .position {
   margin-bottom: 1.75rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--surface-2);
 }
 
 .position:last-child {
@@ -345,16 +366,16 @@ section {
 
 .position-title {
   margin: 0;
-  color: #0f172a;
+  color: var(--text);
 }
 
 .position-company {
   font-weight: 600;
-  color: #334155;
+  color: var(--muted);
 }
 
 .position-meta {
-  color: #64748b;
+  color: var(--meta);
   font-size: 0.9rem;
   margin-top: 0.25rem;
 }
@@ -374,14 +395,14 @@ section {
 }
 
 .skills-list li {
-  background: #f1f5f9;
-  color: #334155;
+  background: var(--surface-2);
+  color: var(--muted);
   padding: 0.3125rem 0.625rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   font-weight: 500;
   margin: 0;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
 }
 
 /* Resume Actions Bar */
@@ -391,9 +412,9 @@ section {
   gap: 0.75rem;
   margin-bottom: 1.5rem;
   padding: 0.75rem 1rem;
-  background: #f8fafc;
+  background: var(--surface);
   border-radius: 0.375rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
 }
 
 .breadcrumbs {
@@ -401,21 +422,21 @@ section {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  color: #64748b;
+  color: var(--meta);
   margin-bottom: 1.5rem;
 }
 
 .breadcrumbs a {
-  color: #1e3a5f;
+  color: var(--accent);
   font-weight: 600;
 }
 
 .breadcrumbs-separator {
-  color: #94a3b8;
+  color: var(--border);
 }
 
 .breadcrumbs-current {
-  color: #334155;
+  color: var(--muted);
   font-weight: 600;
 }
 
@@ -426,14 +447,14 @@ section {
 .home-resume-link {
   display: inline-block;
   padding: 0.75rem 1.25rem;
-  border: 2px solid #1e3a5f;
+  border: 2px solid var(--accent);
   border-radius: 0.375rem;
   font-weight: 700;
-  color: #1e3a5f;
+  color: var(--accent);
 }
 
 .home-resume-link:hover {
-  background: #1e3a5f;
+  background: var(--accent);
   color: #fff;
   text-decoration: none;
 }
@@ -443,7 +464,7 @@ section {
 }
 
 .home-intro {
-  color: #334155;
+  color: var(--muted);
 }
 
 .home-hero {
@@ -456,12 +477,12 @@ section {
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
 }
 
 .home-caption {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--meta);
   margin-top: 0.375rem;
 }
 
@@ -471,7 +492,7 @@ section {
 }
 
 .home-resume-note {
-  color: #64748b;
+  color: var(--meta);
   font-size: 0.95rem;
 }
 
@@ -507,19 +528,19 @@ section {
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border);
   border-radius: 0.25rem;
   background: #fff;
-  color: #334155;
+  color: var(--muted);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .resume-actions button:hover,
 .resume-actions a:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-  color: #1e3a5f;
+  background: var(--surface-2);
+  border-color: var(--border);
+  color: var(--accent);
 }
 
 /* Accessibility */
@@ -527,7 +548,7 @@ section {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #1e3a5f;
+  background: var(--accent);
   color: #fff;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -540,15 +561,15 @@ section {
 }
 
 :focus-visible {
-  outline: 2px solid #1d4ed8;
+  outline: 2px solid var(--link);
   outline-offset: 2px;
 }
 
 /* Archive & Posts */
 .archive-note {
-  background: #fef3c7;
-  border: 1px solid #f59e0b;
-  border-left: 4px solid #f59e0b;
+  background: var(--nord13);
+  border: 1px solid var(--nord12);
+  border-left: 4px solid var(--nord12);
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -557,7 +578,7 @@ section {
 
 .archive-note p {
   margin: 0;
-  color: #78350f;
+  color: var(--nord1);
 }
 
 .post-list {
@@ -567,7 +588,7 @@ section {
 
 .post-list li {
   padding: 0.75rem 0;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--surface-2);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -584,14 +605,14 @@ section {
 }
 
 .post-meta {
-  color: #64748b;
+  color: var(--meta);
   font-size: 0.875rem;
 }
 
 .post-header {
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border);
 }
 
 .post-header h1 {
@@ -604,8 +625,8 @@ section {
 
 /* Code blocks */
 pre {
-  background: #1e293b;
-  color: #e2e8f0;
+  background: var(--nord0);
+  color: var(--nord4);
   padding: 1rem;
   border-radius: 0.375rem;
   overflow-x: auto;
@@ -621,10 +642,10 @@ code {
 
 p code,
 li code {
-  background: #f1f5f9;
+  background: var(--surface-2);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
-  color: #0f172a;
+  color: var(--text);
 }
 
 pre code {
@@ -641,9 +662,9 @@ pre code {
 
 .linkedin-card {
   padding: 1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   border-radius: 0.375rem;
-  background: #f8fafc;
+  background: var(--surface);
 }
 
 .linkedin-card-header {
@@ -661,7 +682,7 @@ pre code {
 }
 
 .linkedin-dates {
-  color: #64748b;
+  color: var(--meta);
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -673,10 +694,10 @@ pre code {
 .linkedin-copy-btn {
   display: inline-block;
   padding: 0.375rem 0.75rem;
-  border: 1px solid #1e3a5f;
+  border: 1px solid var(--accent);
   border-radius: 0.25rem;
   background: #fff;
-  color: #1e3a5f;
+  color: var(--accent);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
@@ -684,13 +705,13 @@ pre code {
 }
 
 .linkedin-copy-btn:hover {
-  background: #1e3a5f;
+  background: var(--accent);
   color: #fff;
 }
 
 .linkedin-copy-btn.copied {
-  background: #166534;
-  border-color: #166534;
+  background: var(--nord14);
+  border-color: var(--nord14);
   color: #fff;
 }
 
@@ -701,7 +722,7 @@ pre code {
   font-size: 0.875rem;
   line-height: 1.5;
   padding: 0.75rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border);
   border-radius: 0.375rem;
   background: #fff;
   resize: vertical;
@@ -722,7 +743,7 @@ pre code {
 .linkedin-all-skills {
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 2px solid #e2e8f0;
+  border-top: 2px solid var(--border);
 }
 
 .linkedin-all-skills h2 {
