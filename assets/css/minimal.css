@@ -801,19 +801,14 @@ pre code {
   }
 
   .position {
-    page-break-inside: avoid;
+    page-break-inside: auto;
+    break-inside: auto;
     border-bottom-color: #ddd;
   }
 
   h2, h3, h4 {
     page-break-after: avoid;
     break-after: avoid-page;
-    break-inside: avoid;
-  }
-
-  h2 + * {
-    break-before: avoid-page;
-    page-break-before: avoid;
   }
 
   .skills-list {
