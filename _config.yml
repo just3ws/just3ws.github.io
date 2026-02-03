@@ -6,43 +6,31 @@ url: https://www.just3ws.com
 baseurl: ""
 
 plugins:
-  - jekyll-analytics
   - jekyll-feed
-  - jekyll-font-awesome-sass
   - jekyll-github-metadata
-  - jekyll-octicons
-  - jekyll-optional-front-matter
   - jekyll-redirect-from
   - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-timeago
-  - jekyll-titles-from-headings
-  - jekyll-youtube
 
 sass:
   sass_dir: _sass
   style: compressed
-
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  profile: false
-  startings: [head, body]
 
 exclude:
   # Ruby / build tooling
   - ".bundle"
   - "Gemfile"
   - "Gemfile.lock"
-  - ".ruby-version"
-  - ".ruby-gemset"
+  - "Rakefile"
+  - ".tool-versions"
 
-  # Repo / CI metadata
+  # Editor / IDE
+  - ".editorconfig"
+
+  # Environment
+  - ".env"
+
+  # Repo metadata
   - ".gitignore"
-  - ".travis.yml"
-  - ".stylelintrc.json"
-  - ".codeclimate.yml"
   - ".github"
   - "README.md"
   - "LICENSE"
@@ -50,15 +38,9 @@ exclude:
   # Project documentation (not site content)
   - "CLAUDE.md"
   - "CODEX.md"
-  - "TASKS.md"
   - "career_history.md"
 
-  # Local / runtime config
+  # Local / runtime
   - "bin"
   - "node_modules"
   - "vendor"
-  - "semantic.json"
-  - "nginx.conf"
-
-  # Vendor test artifacts – must never be published or indexed
-  - "assets/scss/bootstrap/js/tests"
