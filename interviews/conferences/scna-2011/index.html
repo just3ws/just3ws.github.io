@@ -1,0 +1,17 @@
+---
+layout: minimal
+title: Software Craftsmanship North America 2011
+description: Interviews recorded at Software Craftsmanship North America 2011.
+---
+
+<article class="page">
+  <header>
+    <h1>Software Craftsmanship North America 2011</h1>
+    <p class="intro">Interviews recorded at Software Craftsmanship North America 2011.</p>
+  </header>
+
+  {% assign items = site.data.interviews.items | where: "conference", "Software Craftsmanship North America 2011" | sort: "recorded_date" | reverse %}
+  {% for interview in items %}
+    {% include interview-card.html interview=interview %}
+  {% endfor %}
+</article>

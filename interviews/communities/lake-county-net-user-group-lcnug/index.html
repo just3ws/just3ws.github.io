@@ -1,0 +1,17 @@
+---
+layout: minimal
+title: Lake County .NET User Group (LCNUG)
+description: Interviews recorded with the Lake County .NET User Group (LCNUG) community.
+---
+
+<article class="page">
+  <header>
+    <h1>Lake County .NET User Group (LCNUG)</h1>
+    <p class="intro">Interviews recorded with the Lake County .NET User Group (LCNUG) community.</p>
+  </header>
+
+  {% assign items = site.data.interviews.items | where: "community", "Lake County .NET User Group (LCNUG)" | sort: "recorded_date" | reverse %}
+  {% for interview in items %}
+    {% include interview-card.html interview=interview %}
+  {% endfor %}
+</article>

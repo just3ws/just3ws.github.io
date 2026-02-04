@@ -27,11 +27,10 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - SCMC metadata lives in `_data/scmc_videos.yml`
 - Generated pages:
   - `bin/generate_video_asset_pages.rb`
-  - `bin/generate_ugtastic_pages.rb`
-  - `bin/generate_ugtastic_community_pages.rb`
-  - `bin/generate_vimeo_pages.rb`
+  - `bin/generate_interview_pages.rb`
+  - `bin/generate_interview_group_pages.rb`
 - Validation:
-  - `bin/validate_ugtastic.rb` (runs in CI)
+  - `bin/cibuild` (runs in CI)
 
 ## Contact
 
@@ -44,10 +43,6 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - [GitHub](https://www.github.com/just3ws)
 
 ## Community
-
-### Presentations
-
-- [Teach Yourself Beginning Community in 24 Months](https://www.pechakucha.org/presentations/teach-yourself-beginning-community-in-24-months-2)
 
 ### Past Community Involvement
 

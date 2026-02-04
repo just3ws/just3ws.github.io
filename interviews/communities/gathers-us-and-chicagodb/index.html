@@ -1,0 +1,17 @@
+---
+layout: minimal
+title: Gathers.us and ChicagoDB
+description: Interviews recorded with the Gathers.us and ChicagoDB community.
+---
+
+<article class="page">
+  <header>
+    <h1>Gathers.us and ChicagoDB</h1>
+    <p class="intro">Interviews recorded with the Gathers.us and ChicagoDB community.</p>
+  </header>
+
+  {% assign items = site.data.interviews.items | where: "community", "Gathers.us and ChicagoDB" | sort: "recorded_date" | reverse %}
+  {% for interview in items %}
+    {% include interview-card.html interview=interview %}
+  {% endfor %}
+</article>

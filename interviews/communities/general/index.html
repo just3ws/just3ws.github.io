@@ -1,0 +1,17 @@
+---
+layout: minimal
+title: General
+description: Interviews recorded with the General community.
+---
+
+<article class="page">
+  <header>
+    <h1>General</h1>
+    <p class="intro">Interviews recorded with the General community.</p>
+  </header>
+
+  {% assign items = site.data.interviews.items | where: "community", "General" | sort: "recorded_date" | reverse %}
+  {% for interview in items %}
+    {% include interview-card.html interview=interview %}
+  {% endfor %}
+</article>
