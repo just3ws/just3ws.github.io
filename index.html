@@ -3,8 +3,8 @@ layout: minimal
 title: Mike Hall - Staff Software Engineer
 description: Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and building scalable backend systems.
 redirect_from:
-  - /resume-minimal.html
-  - /resume-minimal
+- /resume-minimal.html
+- /resume-minimal
 ---
 
 <nav class="resume-actions no-print">
@@ -67,13 +67,13 @@ redirect_from:
           </span>
         </h3>
         <p class="position-meta">
-        <span class="position-dates">
-          <time itemprop="startDate">{{ position.start_date }}</time> –
-          <time itemprop="endDate">{{ position.end_date | default: "Present" }}</time>
-        </span>
-        {% if position.company.location %}
-        | <span itemprop="location">{{ position.company.location }}</span>
-        {% endif %}
+          <span class="position-dates">
+            <time itemprop="startDate">{{ position.start_date }}</time> –
+            <time itemprop="endDate">{{ position.end_date | default: "Present" }}</time>
+          </span>
+          {% if position.company.location %}
+          | <span itemprop="location">{{ position.company.location }}</span>
+          {% endif %}
         </p>
       </header>
 
@@ -101,7 +101,7 @@ redirect_from:
       <header class="position-header">
         <h3 class="position-title">{{ earlier.title }}</h3>
         <p class="position-meta">
-        <span class="position-dates">{{ earlier.dates }}</span>
+          <span class="position-dates">{{ earlier.dates }}</span>
         </p>
       </header>
       <p>{{ earlier.description }}</p>
@@ -136,5 +136,4 @@ redirect_from:
     </ul>
     {% endfor %}
   </section>
-
 </article>
