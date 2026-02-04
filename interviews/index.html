@@ -18,15 +18,11 @@ breadcrumb: Interviews
     <pre class="mermaid">
 flowchart LR
   subgraph Canonical["Canonical Interview Timeline"]
-    interviews[_data/interviews.yml\nUGtastic canonical interviews]
-    assets[_data/interview_assets.yml\nMappings to hosted assets]
+    interviews[_data/interviews.yml\nCanonical interviews]
+    assets[_data/video_assets.yml\nCanonical video assets + publish targets]
     transcripts[_data/transcripts.yml\nAuthoritative transcripts]
-  end
-
-  subgraph UGtastic["UGtastic Source Data"]
-    ugtastic[_data/ugtastic.yml\nVimeo embeds + durations + thumbs]
-    confs[_data/ugtastic_conferences.yml]
-    comms[_data/ugtastic_communities.yml]
+    confs[_data/interview_conferences.yml]
+    comms[_data/interview_communities.yml]
   end
 
   subgraph YouTube["YouTube Sources"]
@@ -44,9 +40,7 @@ flowchart LR
   end
 
   interviews --> assets
-  interviews --> transcripts
-
-  ugtastic --> assets
+  assets --> transcripts
   confs --> interviews
   comms --> interviews
 
@@ -65,8 +59,10 @@ flowchart LR
     mermaid.run({ querySelector: ".mermaid" });
   </script>
 
-  {% assign interviews = site.data.interviews.items %}
+  {% assign interviews = site.data.interviews.items | sort: "recorded_date" | reverse %}
   {% for interview in interviews %}
-    {% include interview-card.html interview=interview %}
+    {% if interview.video_assets and interview.video_assets.size > 0 %}
+      {% include interview-card.html interview=interview %}
+    {% endif %}
   {% endfor %}
 </article>

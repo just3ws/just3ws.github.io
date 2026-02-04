@@ -1,23 +1,16 @@
-{% assign assets = site.data.interview_assets.items | where: "interview_id", interview.id %}
-{% assign primary_asset = assets | where: "source", "ugtastic" | first %}
-{% if primary_asset == nil %}
-  {% assign primary_asset = assets | where: "platform", "youtube" | first %}
-{% endif %}
-{% if primary_asset == nil %}
-  {% assign primary_asset = assets | where: "platform", "vimeo" | first %}
-{% endif %}
+{% assign assets = site.data.video_assets.items | where: "interview_id", interview.id %}
+{% assign vimeo = assets | where: "platform", "vimeo" | first %}
+{% assign youtube = assets | where: "platform", "youtube" | first %}
+{% assign preferred = vimeo | default: youtube %}
 {% assign primary_url = "/interviews/" | append: interview.id | append: "/" %}
-{% if primary_asset %}
-  {% if primary_asset.source == "ugtastic" %}
-    {% assign primary_url = "/ugtastic/videos/" | append: primary_asset.asset_id | append: "/" %}
-  {% elsif primary_asset.platform == "youtube" %}
-    {% assign primary_url = "/youtube/videos/" | append: primary_asset.asset_id | append: "/" %}
-  {% elsif primary_asset.platform == "vimeo" %}
-    {% assign primary_url = "/vimeo/videos/" | append: primary_asset.asset_id | append: "/" %}
-  {% endif %}
-{% endif %}
+{% assign thumb = preferred.thumbnail_local | default: preferred.thumbnail %}
 
 <div class="video">
+  {% if thumb %}
+    <a class="video-thumb" href="{{ primary_url }}">
+      <img src="{{ thumb }}" alt="Thumbnail for {{ interview.title }}">
+    </a>
+  {% endif %}
   <div class="video-body">
     <div class="video-title"><a href="{{ primary_url }}">{{ interview.title }}</a></div>
     {% if interview.interviewees and interview.interviewees.size > 0 %}
@@ -27,16 +20,25 @@
       <div class="video-subtitle">Topic: {{ interview.topic }}</div>
     {% endif %}
     <div class="video-meta">
+      {% if preferred.duration_minutes %}Duration: {{ preferred.duration_minutes | round }} min · {% endif %}{% if preferred.published_date %}Uploaded: {{ preferred.published_date | date: "%b %d, %Y" }}{% endif %}
+    </div>
+    <div class="video-meta">
       {% if interview.conference %}Conference: {{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}{% endif %}
       {% if interview.community %}{% if interview.conference %} · {% endif %}Community: {{ interview.community }}{% endif %}
     </div>
     <div class="video-actions">
       <a class="video-button primary" href="{{ primary_url }}">View Interview</a>
-      {% if assets.size > 0 %}
-        {% for asset in assets %}
-          <a class="video-button" href="{{ asset.url }}">{{ asset.platform | capitalize }}</a>
-        {% endfor %}
-      {% endif %}
+      {% if preferred and preferred.url %}<a class="video-button" href="{{ preferred.url }}">Watch on {{ preferred.platform | capitalize }}</a>{% endif %}
     </div>
+    {% if preferred.tags and preferred.tags.size > 0 %}
+      <div class="video-tags">
+        {% for tag in preferred.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if preferred.description %}
+      <div class="video-description"><span class="video-description-label">Video description:</span> {{ preferred.description }}</div>
+    {% endif %}
   </div>
 </div>

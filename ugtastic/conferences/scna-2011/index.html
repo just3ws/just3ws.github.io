@@ -14,8 +14,8 @@ breadcrumb: Software Craftsmanship North America 2011
     <p>UGtastic interviews recorded at Software Craftsmanship North America 2011.</p>
   </header>
 
-  {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", page.conference | first %}
-  {% assign assets = site.data.interview_assets.items | where: "source", "ugtastic" | sort: "published_date" | reverse %}
+  {% assign conf = site.data.interview_conferences.conferences | where: "slug", page.conference | first %}
+  {% assign assets = site.data.video_assets.items | where: "source", "ugtastic" | sort: "published_date" | reverse %}
   {% for asset in assets %}
     {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}
     {% if interview and conf and interview.conference == conf.name and interview.conference_year == conf.year %}

@@ -1,9 +1,9 @@
 {% assign conf = nil %}
 {% if item.conference %}
-  {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
+  {% assign conf = site.data.interview_conferences.conferences | where: "slug", item.conference | first %}
 {% endif %}
 {% if item.community %}
-  {% assign comm = site.data.ugtastic_communities.communities | where: "slug", item.community | first %}
+  {% assign comm = site.data.interview_communities.communities | where: "slug", item.community | first %}
 {% endif %}
 {% assign title_text = item.topic | default: item.title %}
 {% assign detail_url = "/ugtastic/videos/" | append: item.id | append: "/" %}

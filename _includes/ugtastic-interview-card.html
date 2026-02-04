@@ -1,7 +1,7 @@
 {% assign asset = include.asset %}
 {% assign interview = include.interview %}
 {% if asset == nil and interview %}
-  {% assign asset = site.data.interview_assets.items | where: "interview_id", interview.id | where: "source", "ugtastic" | first %}
+  {% assign asset = site.data.video_assets.items | where: "interview_id", interview.id | where: "source", "ugtastic" | first %}
 {% endif %}
 {% assign detail_url = "/interviews/" | append: interview.id | append: "/" %}
 {% if asset and asset.asset_id %}
@@ -9,9 +9,10 @@
 {% endif %}
 
 <div class="video">
-  {% if asset and asset.thumbnail %}
+{% assign thumb = asset.thumbnail_local | default: asset.thumbnail %}
+  {% if thumb %}
     <a class="video-thumb" href="{{ detail_url }}">
-      <img src="{{ asset.thumbnail }}" alt="Thumbnail for {{ interview.title }}">
+      <img src="{{ thumb }}" alt="Thumbnail for {{ interview.title }}">
     </a>
   {% endif %}
   <div class="video-body">

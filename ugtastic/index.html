@@ -13,7 +13,7 @@ breadcrumb: UGtastic
     <p class="intro">A snapshot of the early software craftsmanship and community conversations, preserved in their first public release.</p>
   </header>
 
-  {% assign assets = site.data.interview_assets.items | where: "source", "ugtastic" | sort: "published_date" | reverse %}
+  {% assign assets = site.data.video_assets.items | where: "source", "ugtastic" | sort: "published_date" | reverse %}
   {% assign prev_year = "" %}
   {% for asset in assets %}
     {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}

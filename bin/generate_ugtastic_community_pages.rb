@@ -4,7 +4,7 @@ require 'fileutils'
 require 'date'
 
 root = File.expand_path('..', __dir__)
-communities_path = File.join(root, '_data', 'ugtastic_communities.yml')
+communities_path = File.join(root, '_data', 'interview_communities.yml')
 
 communities = YAML.safe_load(File.read(communities_path), permitted_classes: [Date], aliases: true)['communities']
 
@@ -35,8 +35,8 @@ communities.each do |comm|
     f.puts "    <p>#{desc}</p>"
     f.puts '  </header>'
     f.puts ''
-    f.puts '  {% assign comm = site.data.ugtastic_communities.communities | where: "slug", page.community | first %}'
-    f.puts '  {% assign assets = site.data.interview_assets.items | where: "source", "ugtastic" | sort: "published_date" | reverse %}'
+    f.puts '  {% assign comm = site.data.interview_communities.communities | where: "slug", page.community | first %}'
+    f.puts '  {% assign assets = site.data.video_assets.items | where: "source", "ugtastic" | sort: "published_date" | reverse %}'
     f.puts '  {% for asset in assets %}'
     f.puts '    {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}'
     f.puts '    {% if interview and comm and interview.community == comm.name %}'

@@ -13,7 +13,7 @@ breadcrumb: UGtastic Conferences
   </header>
 
   <div class="conference-list">
-    {% for conf in site.data.ugtastic_conferences.conferences %}
+    {% for conf in site.data.interview_conferences.conferences %}
       {% assign items = site.data.interviews.items | where: "conference", conf.name %}
       {% assign items = items | where: "conference_year", conf.year %}
       <div class="conference-card">

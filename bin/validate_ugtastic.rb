@@ -3,42 +3,34 @@ require 'yaml'
 require 'date'
 
 root = File.expand_path('..', __dir__)
-data_path = File.join(root, '_data', 'ugtastic.yml')
-conf_path = File.join(root, '_data', 'ugtastic_conferences.yml')
-comm_path = File.join(root, '_data', 'ugtastic_communities.yml')
+conf_path = File.join(root, '_data', 'interview_conferences.yml')
+comm_path = File.join(root, '_data', 'interview_communities.yml')
 interviews_path = File.join(root, '_data', 'interviews.yml')
-assets_path = File.join(root, '_data', 'interview_assets.yml')
+assets_path = File.join(root, '_data', 'video_assets.yml')
 videos_dir = File.join(root, 'ugtastic', 'videos')
 
-ugtastic = YAML.safe_load(File.read(data_path), permitted_classes: [Time, Date], aliases: true)
 confs = YAML.safe_load(File.read(conf_path), permitted_classes: [Date], aliases: true)['conferences']
 comms = YAML.safe_load(File.read(comm_path), permitted_classes: [Date], aliases: true)['communities']
 interviews = YAML.safe_load(File.read(interviews_path), permitted_classes: [Date, Time], aliases: true)['items'] || []
 assets = YAML.safe_load(File.read(assets_path), permitted_classes: [Date, Time], aliases: true)['items'] || []
 conf_slugs = confs.map { |c| c['slug'] }
 comm_slugs = comms.map { |c| c['slug'] }
+conf_names = confs.map { |c| c['name'] }
+comm_names = comms.map { |c| c['name'] }
 interview_ids = interviews.map { |i| i['id'] }
 ugtastic_assets = assets.select { |a| a['source'] == 'ugtastic' }
 
 errors = []
 
-(ugtastic['items'] || []).each do |item|
-  id = item['id']
-  errors << "missing id" unless id
-  errors << "missing title for #{id}" unless item['title']
-  errors << "missing link for #{id}" unless item['link']
-  errors << "missing created for #{id}" unless item['created']
-  errors << "missing duration_minutes for #{id}" unless item['duration_minutes']
+ugtastic_assets.each do |asset|
+  id = asset['asset_id']
+  errors << "missing asset_id for ugtastic asset" unless id
+  errors << "missing url for #{id}" unless asset['url']
+  errors << "missing published_date for #{id}" unless asset['published_date']
+  errors << "missing duration_minutes for #{id}" unless asset['duration_minutes']
 
-  if item['conference'] && !conf_slugs.include?(item['conference'])
-    errors << "unknown conference slug #{item['conference']} for #{id}"
-  end
-  if item['community'] && !comm_slugs.include?(item['community'])
-    errors << "unknown community slug #{item['community']} for #{id}"
-  end
-
-  if item['thumbnail_local']
-    local = File.join(root, item['thumbnail_local'])
+  if asset['thumbnail_local']
+    local = File.join(root, asset['thumbnail_local'])
     errors << "missing local thumbnail for #{id}" unless File.exist?(local)
   end
 
@@ -48,11 +40,16 @@ errors = []
   end
 
   if id
-    asset = ugtastic_assets.find { |a| a['asset_id'].to_s == id.to_s }
-    if asset.nil?
-      errors << "missing interview asset mapping for #{id}"
-    elsif !interview_ids.include?(asset['interview_id'])
+    interview = interviews.find { |i| i['id'] == asset['interview_id'] }
+    if interview.nil?
       errors << "missing interview for asset #{id} (#{asset['interview_id']})"
+    else
+      if interview['conference'] && !conf_names.include?(interview['conference'])
+        errors << "unknown conference name #{interview['conference']} for #{id}"
+      end
+      if interview['community'] && !comm_names.include?(interview['community'])
+        errors << "unknown community name #{interview['community']} for #{id}"
+      end
     end
   end
 end

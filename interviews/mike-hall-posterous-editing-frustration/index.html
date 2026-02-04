@@ -25,7 +25,27 @@ breadcrumb_parent_url: /interviews/
       {% if interview.community %}{% if interview.conference %} · {% endif %}Community: {{ interview.community }}{% endif %}
     </div>
 
-    {% assign assets = site.data.interview_assets.items | where: "interview_id", "mike-hall-posterous-editing-frustration" %}
+    {% assign assets = site.data.video_assets.items | where: "interview_id", "mike-hall-posterous-editing-frustration" %}
+    {% assign vimeo = assets | where: "platform", "vimeo" | first %}
+    {% assign youtube = assets | where: "platform", "youtube" | first %}
+    {% assign preferred = vimeo | default: youtube %}
+
+    {% if preferred %}
+      <div class="video video-detail">
+        <div class="video-embed">
+          <iframe id="interview-embed" src="{{ preferred.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ interview.title }}"></iframe>
+        </div>
+        <div class="video-actions">
+          {% if vimeo %}<button class="video-button{% if preferred and preferred.platform == 'vimeo' %} primary{% endif %}" data-embed="{{ vimeo.embed_url }}">Watch Here (Vimeo)</button>{% endif %}
+          {% if youtube %}<button class="video-button{% if preferred and preferred.platform == 'youtube' %} primary{% endif %}" data-embed="{{ youtube.embed_url }}">Watch Here (YouTube)</button>{% endif %}
+        </div>
+        <div class="video-actions">
+          {% if vimeo %}<a class="video-button" href="{{ vimeo.url }}">View on Vimeo</a>{% endif %}
+          {% if youtube %}<a class="video-button" href="{{ youtube.url }}">View on YouTube</a>{% endif %}
+        </div>
+      </div>
+    {% endif %}
+
     {% if assets.size > 0 %}
       <section>
         <h2>Published Assets</h2>
@@ -36,5 +56,33 @@ breadcrumb_parent_url: /interviews/
         </ul>
       </section>
     {% endif %}
+
+    <section class="transcript">
+      <h2>Transcript</h2>
+      {% assign transcript = nil %}
+      {% if preferred and preferred.transcript %}{% assign transcript = preferred.transcript %}{% endif %}
+      {% if transcript == nil and preferred %}
+        {% assign transcript_entry = site.data.transcripts.items | where: "video_asset_id", preferred.asset_id | first %}
+        {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
+      {% endif %}
+      {% if transcript %}
+        <div class="video-transcript">{{ transcript }}</div>
+      {% else %}
+        <p>Transcript coming soon.</p>
+      {% endif %}
+    </section>
+
+    <script>
+      (function() {
+        var embed = document.getElementById(\"interview-embed\");
+        if (!embed) return;
+        var buttons = document.querySelectorAll(\"[data-embed]\");
+        buttons.forEach(function(btn) {
+          btn.addEventListener(\"click\", function() {
+            embed.setAttribute(\"src\", btn.getAttribute(\"data-embed\"));
+          });
+        });
+      })();
+    </script>
   {% endif %}
 </article>

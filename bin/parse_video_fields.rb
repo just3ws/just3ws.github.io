@@ -30,8 +30,8 @@ def parse_title(title)
 end
 
 # Load community/conference name maps for UGtastic
-comm_path = File.join(root, '_data', 'ugtastic_communities.yml')
-conf_path = File.join(root, '_data', 'ugtastic_conferences.yml')
+comm_path = File.join(root, '_data', 'interview_communities.yml')
+conf_path = File.join(root, '_data', 'interview_conferences.yml')
 comm_map = {}
 conf_map = {}
 if File.exist?(comm_path)
@@ -43,22 +43,23 @@ if File.exist?(conf_path)
   conf_map = confs.each_with_object({}) { |c, h| h[c['slug']] = c['name'] }
 end
 
-# Update UGtastic
 ugtastic_path = File.join(root, '_data', 'ugtastic.yml')
-ugtastic = YAML.safe_load(File.read(ugtastic_path), permitted_classes: [Time, Date], aliases: true) || {}
-ugt_items = ugtastic['items'] || []
+if File.exist?(ugtastic_path)
+  ugtastic = YAML.safe_load(File.read(ugtastic_path), permitted_classes: [Time, Date], aliases: true) || {}
+  ugt_items = ugtastic['items'] || []
 
-ugt_items.each do |item|
-  topic, people = parse_title(item['title'])
-  # For UGtastic, topic is the interview subject (prefix before w/)
-  item['topic'] = topic
-  item['interviewees'] = people if people.any?
-  item.delete('people')
-end
+  ugt_items.each do |item|
+    topic, people = parse_title(item['title'])
+    # For UGtastic, topic is the interview subject (prefix before w/)
+    item['topic'] = topic
+    item['interviewees'] = people if people.any?
+    item.delete('people')
+  end
 
-File.open(ugtastic_path, 'w') do |f|
-  f.puts '---'
-  f.write(YAML.dump({'items' => ugt_items}).sub(/^---\n/, ''))
+  File.open(ugtastic_path, 'w') do |f|
+    f.puts '---'
+    f.write(YAML.dump({'items' => ugt_items}).sub(/^---\n/, ''))
+  end
 end
 
 # Update Vimeo
@@ -84,4 +85,4 @@ File.open(vimeo_path, 'w') do |f|
   f.write(YAML.dump({'items' => vim_items}).sub(/^---\n/, ''))
 end
 
-puts 'Updated UGtastic and Vimeo metadata with topic/people fields'
+puts 'Updated Vimeo metadata with topic/people fields'

@@ -21,8 +21,10 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 
 ## Data & Automation
 
-- UGtastic canonical data lives in `_data/ugtastic.yml`
-- UGtastic community metadata lives in `_data/ugtastic_communities.yml`
+- Canonical interview timeline lives in `_data/interviews.yml`
+- Canonical video assets live in `_data/video_assets.yml`
+- Interview conference metadata lives in `_data/interview_conferences.yml`
+- Interview community metadata lives in `_data/interview_communities.yml`
 - Vimeo one-off metadata lives in `_data/vimeo_videos.yml`
 - Generated pages:
   - `bin/generate_ugtastic_pages.rb`

@@ -1,76 +1,95 @@
 ---
 layout: minimal
-title: UGtastic — general / Michael Eaton
+title: UGtastic — Michael Eaton
 description: UGtastic interview with Michael Eaton.
 breadcrumb: Michael Eaton
-breadcrumb_parent_name: general
+breadcrumb_parent_name: General
 breadcrumb_parent_url: /ugtastic/communities/general/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
-  {% assign item = site.data.ugtastic.items | where: "id", "64936135" | first %}
-  {% assign asset = site.data.interview_assets.items | where: "source", "ugtastic" | where: "asset_id", "64936135" | first %}
-  {% assign interview = asset and site.data.interviews.items | where: "id", asset.interview_id | first %}
+  {% assign asset = site.data.video_assets.items | where: "source", "ugtastic" | where: "asset_id", "64936135" | first %}
+  {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}
+  {% assign assets = site.data.video_assets.items | where: "interview_id", interview.id %}
+  {% assign vimeo = assets | where: "platform", "vimeo" | first %}
+  {% assign youtube = assets | where: "platform", "youtube" | first %}
+  {% assign preferred = vimeo | default: youtube %}
   <header>
-    <h1>{{ interview.title | default: item.topic | default: item.title }}</h1>
+    <h1>{{ interview.title | default: asset.title_on_platform }}</h1>
   </header>
 
-  {% if item %}
+  {% if preferred %}
     <div class="video video-detail">
-      {% assign thumb = item.thumbnail_local | default: item.thumbnail %}
-      {% assign embed = item.embed_url | default: 'https://player.vimeo.com/video/' | append: item.id %}
-      {% if embed %}
+      {% if preferred.embed_url %}
         <div class="video-embed">
-          <iframe src="{{ embed }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ item.title }}"></iframe>
+          <iframe id="interview-embed" src="{{ preferred.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ preferred.title_on_platform }}"></iframe>
         </div>
       {% endif %}
       <div class="video-body">
-        <div class="video-title">{{ interview.title | default: item.topic | default: item.title }}</div>
+        <div class="video-title">{{ interview.title | default: preferred.title_on_platform }}</div>
         {% if interview and interview.interviewees and interview.interviewees.size > 0 %}
-          <div class=\"video-subtitle\">{% if interview.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ interview.interviewees | join: ', ' }}</div>
+          <div class="video-subtitle">{% if interview.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ interview.interviewees | join: ", " }}</div>
         {% endif %}
-        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
+        <div class="video-meta">{% if preferred.duration_minutes %}Duration: {{ preferred.duration_minutes | round }} min · {% endif %}Uploaded: {{ preferred.published_date | date: "%b %d, %Y" }}</div>
         <div class="video-meta">
-          {% if item.conference %}
-            {% assign conf = site.data.ugtastic_conferences.conferences | where: "slug", item.conference | first %}
+          {% if interview and interview.conference %}
+            {% assign conf = site.data.interview_conferences.conferences | where: "name", interview.conference | first %}
             {% if conf %}<a href="/ugtastic/conferences/{{ conf.slug }}/">{{ conf.name }}</a>{% endif %}
-          {% elsif item.community %}
-            {% assign comm = site.data.ugtastic_communities.communities | where: "slug", item.community | first %}
+          {% elsif interview and interview.community %}
+            {% assign comm = site.data.interview_communities.communities | where: "name", interview.community | first %}
             {% if comm %}<a href="/ugtastic/communities/{{ comm.slug }}/">{{ comm.name }}</a>{% endif %}
           {% endif %}
           {% if interview and interview.interviewer %}
-            {% if item.conference or item.community %} · {% endif %}
+            {% if interview.conference or interview.community %} · {% endif %}
             Interviewer: <a href="/home/">{{ interview.interviewer }}</a>
-          {% elsif item.interviewers and item.interviewers.size > 0 %}
-            {% if item.conference or item.community %} · {% endif %}
-            {% if item.interviewers.size == 1 %}Interviewer{% else %}Interviewers{% endif %}:
-            {% for interviewer in item.interviewers %}
-              {% if forloop.index > 1 %}, {% endif %}
-              {% if interviewer == 'Mike Hall' %}<a href="/home/">Mike Hall</a>{% else %}{{ interviewer }}{% endif %}
-            {% endfor %}
           {% endif %}
           {% if interview and interview.interviewees and interview.interviewees.size > 0 %}
             · {% if interview.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ interview.interviewees | join: ', ' }}
           {% endif %}
         </div>
-        <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
-        {% if item.tags and item.tags.size > 0 %}
+        <div class="video-actions">
+          {% if vimeo %}<button class="video-button{% if preferred and preferred.platform == 'vimeo' %} primary{% endif %}" data-embed="{{ vimeo.embed_url }}">Watch Here (Vimeo)</button>{% endif %}
+          {% if youtube %}<button class="video-button{% if preferred and preferred.platform == 'youtube' %} primary{% endif %}" data-embed="{{ youtube.embed_url }}">Watch Here (YouTube)</button>{% endif %}
+        </div>
+        <div class="video-actions">
+          {% if vimeo %}<a class="video-button" href="{{ vimeo.url }}">Watch on Vimeo</a>{% endif %}
+          {% if youtube %}<a class="video-button" href="{{ youtube.url }}">Watch on YouTube</a>{% endif %}
+        </div>
+        {% if preferred.tags and preferred.tags.size > 0 %}
           <div class="video-tags">
-            {% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+            {% for tag in preferred.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
           </div>
         {% endif %}
-        {% if item.description %}
-          <div class="video-description"><span class="video-description-label">Vimeo description:</span> {{ item.description }}</div>
+        {% if preferred.description %}
+          <div class="video-description"><span class="video-description-label">Video description:</span> {{ preferred.description }}</div>
         {% endif %}
       </div>
     </div>
   {% endif %}
 
-  <section class=\"transcript\">
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+  <section class="transcript">
     <h2>Transcript</h2>
-    {% if item.transcript %}
-      <div class=\"video-transcript\">{{ item.transcript }}</div>
+    {% assign transcript = asset.transcript %}
+    {% if transcript == nil %}
+      {% assign transcript_entry = site.data.transcripts.items | where: "video_asset_id", asset.asset_id | first %}
+      {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
+    {% endif %}
+    {% if transcript %}
+      <div class="video-transcript">{{ transcript }}</div>
     {% else %}
       <p>Transcript coming soon.</p>
     {% endif %}
