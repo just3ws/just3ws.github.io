@@ -23,8 +23,6 @@ flowchart TB
     yt_sources[_data/youtube_sources.yml&lt;br/&gt;Playlist IDs to fetch]
     yt_playlists[_data/youtube_playlists.yml&lt;br/&gt;Playlist metadata]
     yt_videos[_data/youtube_videos.yml&lt;br/&gt;Video details]
-    vimeo[_data/vimeo_videos.yml&lt;br/&gt;Legacy Vimeo source records (empty as of 2026-02-04)]
-    pk[_data/pechakucha.yml&lt;br/&gt;Legacy PechaKucha source records (empty as of 2026-02-04)]
   end
 
   subgraph Canonical["Canonical Data"]
@@ -47,8 +45,6 @@ flowchart TB
   yt_playlists --&gt; yt_videos
   yt_videos -..-&gt;|synced to| interviews
   yt_videos -..-&gt;|synced to| assets
-  vimeo -..-&gt;|legacy source| assets
-  pk -..-&gt;|legacy source| assets
 
   interviews &lt;--&gt;|video_asset_id / interview_id| assets
   oneoffs --&gt;|video_asset_id| assets
@@ -70,8 +66,6 @@ flowchart TB
     yt_sources[_data/youtube_sources.yml&lt;br/&gt;Playlist IDs to fetch]
     yt_playlists[_data/youtube_playlists.yml&lt;br/&gt;Playlist metadata]
     yt_videos[_data/youtube_videos.yml&lt;br/&gt;Video details]
-    vimeo[_data/vimeo_videos.yml&lt;br/&gt;Legacy Vimeo source records (empty as of 2026-02-04)]
-    pk[_data/pechakucha.yml&lt;br/&gt;Legacy PechaKucha source records (empty as of 2026-02-04)]
   end
 
   subgraph Canonical["Canonical Data"]
@@ -94,8 +88,6 @@ flowchart TB
   yt_playlists --&gt; yt_videos
   yt_videos -.-&gt;|synced to| interviews
   yt_videos -.-&gt;|synced to| assets
-  vimeo -.-&gt;|legacy source| assets
-  pk -.-&gt;|legacy source| assets
 
   interviews &lt;--&gt;|video_asset_id / interview_id| assets
   oneoffs --&gt;|video_asset_id| assets
@@ -224,14 +216,6 @@ flowchart TB
     link: string            # Direct YouTube URL
     embed_url: string       # Embeddable player URL</code></pre>
 
-    <h4><code>_data/vimeo_videos.yml</code></h4>
-    <p>Legacy Vimeo source records. This file is currently empty (as of 2026-02-04).</p>
-    <pre><code>items: []</code></pre>
-
-    <h4><code>_data/pechakucha.yml</code></h4>
-    <p>Legacy PechaKucha source records. This file is currently empty (as of 2026-02-04).</p>
-    <pre><code>items: []</code></pre>
-
     <h4><code>_data/oneoff_videos.yml</code></h4>
     <p>One-off videos (standalone talks and presentations):</p>
     <pre><code>items:
@@ -340,7 +324,7 @@ flowchart TB
 
   <section>
     <h2>Sync Pipeline</h2>
-    <p>External video sources are synchronized into the canonical <code>interviews.yml</code> and <code>video_assets.yml</code> files. As of 2026-02-04, YouTube is the active source feed; Vimeo and PechaKucha source files are legacy and empty, while their assets live in <code>video_assets.yml</code>. The sync process:</p>
+    <p>External video sources are synchronized into the canonical <code>interviews.yml</code> and <code>video_assets.yml</code> files. The sync process:</p>
     <ol>
       <li>Fetches playlist/video metadata from external platforms</li>
       <li>Creates/updates entries in <code>interviews.yml</code> with basic interview data</li>
