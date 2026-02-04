@@ -1,0 +1,31 @@
+---
+layout: minimal
+title: YouTube — GOTO Chicago 2015 Interviews
+description: YouTube playlist GOTO Chicago 2015 Interviews.
+breadcrumb: GOTO Chicago 2015 Interviews
+breadcrumb_parent_name: YouTube
+breadcrumb_parent_url: /youtube/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>GOTO Chicago 2015 Interviews</h1>
+  </header>
+
+  {% assign playlist = site.data.youtube_playlists.playlists | where: "slug", "goto-chicago-2015-interviews" | first %}
+  {% if playlist %}
+    <div class="video-meta">
+      {% if playlist.category == "conference" %}Conference: {{ playlist.conference_name }} {{ playlist.conference_year }}{% elsif playlist.category == "community" %}Community Interviews{% endif %}
+      {% if playlist.published %} · Published: {{ playlist.published | date: "%b %d, %Y" }}{% endif %}
+    </div>
+    {% if playlist.description and playlist.description != "" %}
+      <p class="intro">{{ playlist.description }}</p>
+    {% endif %}
+  {% endif %}
+
+  {% assign items = site.data.youtube_videos.items | where: "playlist_slug", "goto-chicago-2015-interviews" | sort: "position" %}
+  {% for item in items %}
+    {% include youtube-video-card.html item=item %}
+  {% endfor %}
+</article>
