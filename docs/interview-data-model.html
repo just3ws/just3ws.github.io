@@ -1,0 +1,301 @@
+---
+layout: minimal
+title: Interview Data Model
+description: Data model documentation for interview and video content.
+breadcrumb: Interview Data Model
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+
+  <header>
+    <h1>Interview Data Model</h1>
+    <p class="intro">This document describes the data model for the interview/video content on the site.</p>
+  </header>
+
+  <section>
+    <h2>Data Flow Overview</h2>
+
+    <h3>Rendered Diagram</h3>
+    <pre class="mermaid">
+flowchart TB
+  subgraph Sources["External Sources"]
+    yt_sources[_data/youtube_sources.yml&lt;br/&gt;Playlist IDs to fetch]
+    yt_playlists[_data/youtube_playlists.yml&lt;br/&gt;Playlist metadata]
+    yt_videos[_data/youtube_videos.yml&lt;br/&gt;Video details]
+    vimeo[_data/vimeo_videos.yml&lt;br/&gt;Non-interview Vimeo content]
+    pk[_data/pechakucha.yml&lt;br/&gt;PechaKucha presentations]
+  end
+
+  subgraph Canonical["Canonical Data"]
+    interviews[_data/interviews.yml&lt;br/&gt;Canonical interview records]
+    assets[_data/video_assets.yml&lt;br/&gt;Video asset metadata]
+    transcripts[_data/transcripts.yml&lt;br/&gt;Transcripts - currently unused]
+  end
+
+  subgraph Lookups["Lookup Tables"]
+    confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
+    comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
+  end
+
+  yt_sources --&gt; yt_playlists
+  yt_playlists --&gt; yt_videos
+  yt_videos -..-&gt;|synced to| interviews
+  yt_videos -..-&gt;|synced to| assets
+  vimeo -..-&gt;|synced to| interviews
+  vimeo -..-&gt;|synced to| assets
+  pk -..-&gt;|synced to| interviews
+  pk -..-&gt;|synced to| assets
+
+  interviews &lt;--&gt;|interview_id / video_assets| assets
+  interviews --&gt;|conference field| confs
+  interviews --&gt;|community field| comms
+  assets -..-&gt;|transcript field| transcripts
+    </pre>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: false, theme: "neutral" });
+      mermaid.run({ querySelector: ".mermaid" });
+    </script>
+
+    <h3>Diagram Source</h3>
+    <pre><code>flowchart TB
+  subgraph Sources["External Sources"]
+    yt_sources[_data/youtube_sources.yml&lt;br/&gt;Playlist IDs to fetch]
+    yt_playlists[_data/youtube_playlists.yml&lt;br/&gt;Playlist metadata]
+    yt_videos[_data/youtube_videos.yml&lt;br/&gt;Video details]
+    vimeo[_data/vimeo_videos.yml&lt;br/&gt;Non-interview Vimeo content]
+    pk[_data/pechakucha.yml&lt;br/&gt;PechaKucha presentations]
+  end
+
+  subgraph Canonical["Canonical Data"]
+    interviews[_data/interviews.yml&lt;br/&gt;Canonical interview records]
+    assets[_data/video_assets.yml&lt;br/&gt;Video asset metadata]
+    transcripts[_data/transcripts.yml&lt;br/&gt;Transcripts - currently unused]
+  end
+
+  subgraph Lookups["Lookup Tables"]
+    confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
+    comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
+  end
+
+  yt_sources --&gt; yt_playlists
+  yt_playlists --&gt; yt_videos
+  yt_videos -.-&gt;|synced to| interviews
+  yt_videos -.-&gt;|synced to| assets
+  vimeo -.-&gt;|synced to| interviews
+  vimeo -.-&gt;|synced to| assets
+  pk -.-&gt;|synced to| interviews
+  pk -.-&gt;|synced to| assets
+
+  interviews &lt;--&gt;|interview_id / video_assets| assets
+  interviews --&gt;|conference field| confs
+  interviews --&gt;|community field| comms
+  assets -.-&gt;|transcript field| transcripts</code></pre>
+  </section>
+
+  <section>
+    <h2>File Descriptions</h2>
+
+    <h3>Canonical Data Files</h3>
+
+    <h4><code>_data/interviews.yml</code></h4>
+    <p>The authoritative source for interview records. Each interview contains:</p>
+    <pre><code>items:
+  - id: string              # Unique identifier (slug)
+    title: string           # Display title
+    interviewees: [string]  # List of interviewee names
+    interviewer: string     # Usually "Mike Hall"
+    topic: string           # Interview topic (optional)
+    conference: string      # Conference name (references interview_conferences.yml)
+    conference_year: int    # Year of conference (optional)
+    community: string       # Community name (references interview_communities.yml)
+    recorded_date: date     # When the interview was recorded
+    tags: [string]          # Categorization tags
+    video_assets:           # Inline video asset references
+      - platform: string    # "vimeo" or "youtube"
+        asset_id: string    # Platform-specific video ID</code></pre>
+
+    <h4><code>_data/video_assets.yml</code></h4>
+    <p>Detailed metadata for each video asset. Links back to interviews via <code>interview_id</code>:</p>
+    <pre><code>items:
+  - interview_id: string      # Links to interviews.yml id
+    platform: string          # "vimeo" or "youtube"
+    asset_id: string          # Platform-specific video ID
+    url: string               # Direct URL to video
+    embed_url: string         # Embeddable player URL
+    title_on_platform: string # Title as shown on platform
+    published_date: date      # Publication date
+    thumbnail: string         # Thumbnail URL
+    thumbnail_local: string   # Local thumbnail path (optional)
+    duration_seconds: int     # Video length
+    duration_minutes: int     # Video length (rounded)
+    description: string       # Video description
+    transcript: string        # Inline transcript (usually empty)
+    tags: [string]            # Tags
+    source: string            # Source identifier (e.g., "ugtastic")</code></pre>
+
+    <h4><code>_data/transcripts.yml</code></h4>
+    <p>Reserved for transcript data. Currently empty (<code>items: []</code>). Transcripts are typically stored inline in <code>video_assets.yml</code> or <code>pechakucha.yml</code>.</p>
+
+    <h3>Lookup Tables</h3>
+
+    <h4><code>_data/interview_conferences.yml</code></h4>
+    <p>Conference definitions referenced by interviews:</p>
+    <pre><code>conferences:
+  - slug: string        # URL-friendly identifier
+    name: string        # Full conference name (matched by interviews.conference)
+    start_date: date    # Conference start
+    end_date: date      # Conference end
+    location: string    # Venue location
+    description: string # Conference description</code></pre>
+
+    <h4><code>_data/interview_communities.yml</code></h4>
+    <p>Community definitions referenced by interviews:</p>
+    <pre><code>communities:
+  - slug: string        # URL-friendly identifier
+    name: string        # Full community name (matched by interviews.community)
+    description: string # Community description</code></pre>
+
+    <h3>Source Data Files</h3>
+
+    <h4><code>_data/youtube_sources.yml</code></h4>
+    <p>List of YouTube playlist IDs to fetch:</p>
+    <pre><code>playlist_ids:
+  - string  # YouTube playlist ID</code></pre>
+
+    <h4><code>_data/youtube_playlists.yml</code></h4>
+    <p>Metadata for YouTube playlists:</p>
+    <pre><code>playlists:
+  - id: string              # Playlist ID (matches youtube_sources.yml)
+    title: string           # Playlist title
+    slug: string            # URL-friendly identifier
+    description: string     # Playlist description
+    published: datetime     # Publication timestamp
+    channel_title: string   # Channel name
+    item_count: int         # Number of videos
+    category: string        # Category (e.g., "conference")
+    conference_name: string # Associated conference
+    conference_year: int    # Conference year
+    thumbnail: string       # Thumbnail URL</code></pre>
+
+    <h4><code>_data/youtube_videos.yml</code></h4>
+    <p>Individual YouTube video records:</p>
+    <pre><code>items:
+  - id: string              # YouTube video ID
+    playlist_id: string     # Parent playlist ID
+    playlist_slug: string   # Parent playlist slug
+    title: string           # Video title
+    topic: string           # Topic (optional)
+    interviewees: [string]  # Interviewee names
+    interviewer: string     # Interviewer name
+    description: string     # Video description
+    published: datetime     # Publication timestamp
+    position: int           # Position in playlist
+    channel_title: string   # Channel name
+    thumbnail: string       # Thumbnail URL
+    link: string            # Direct YouTube URL
+    embed_url: string       # Embeddable player URL</code></pre>
+
+    <h4><code>_data/vimeo_videos.yml</code></h4>
+    <p>Non-interview Vimeo content (presentations, demos, etc.):</p>
+    <pre><code>items:
+  - id: int                 # Vimeo video ID
+    title: string           # Video title
+    link: string            # Vimeo URL
+    created: datetime       # Creation timestamp
+    duration_seconds: int   # Video length
+    duration_minutes: int   # Video length (rounded)
+    thumbnail: string       # Thumbnail URL
+    tags: [string]          # Tags
+    description: string     # Video description
+    uploader: string        # Uploader name
+    views: int              # View count
+    license: string         # License type
+    category: string        # Category (e.g., "oneoff")
+    embed_url: string       # Embeddable player URL
+    topic: string           # Topic
+    people: [string]        # People featured</code></pre>
+
+    <h4><code>_data/pechakucha.yml</code></h4>
+    <p>PechaKucha presentation records:</p>
+    <pre><code>items:
+  - id: string              # UUID
+    slug: string            # URL-friendly identifier
+    title: string           # Presentation title
+    speaker: string         # Speaker name
+    link: string            # PechaKucha URL
+    created: date           # Creation date
+    views: int              # View count
+    categories: [string]    # Categories
+    tags: [string]          # Tags
+    image_url: string       # Slide image URL
+    video_url: string       # Video URL
+    description: string     # Description
+    transcript: string      # Full transcript text</code></pre>
+  </section>
+
+  <section>
+    <h2>Relationships</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Relationship</th>
+          <th>Field</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>interviews</td>
+          <td>video_assets</td>
+          <td>1:N (embedded)</td>
+          <td><code>video_assets[]</code></td>
+        </tr>
+        <tr>
+          <td>video_assets</td>
+          <td>interviews</td>
+          <td>N:1</td>
+          <td><code>interview_id</code></td>
+        </tr>
+        <tr>
+          <td>interviews</td>
+          <td>conferences</td>
+          <td>N:1</td>
+          <td><code>conference</code> (name match)</td>
+        </tr>
+        <tr>
+          <td>interviews</td>
+          <td>communities</td>
+          <td>N:1</td>
+          <td><code>community</code> (name match)</td>
+        </tr>
+        <tr>
+          <td>youtube_videos</td>
+          <td>youtube_playlists</td>
+          <td>N:1</td>
+          <td><code>playlist_id</code></td>
+        </tr>
+        <tr>
+          <td>youtube_playlists</td>
+          <td>youtube_sources</td>
+          <td>N:1</td>
+          <td><code>id</code> in <code>playlist_ids[]</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Sync Pipeline</h2>
+    <p>External video sources (YouTube, Vimeo, PechaKucha) are synchronized into the canonical <code>interviews.yml</code> and <code>video_assets.yml</code> files. The sync process:</p>
+    <ol>
+      <li>Fetches playlist/video metadata from external platforms</li>
+      <li>Creates/updates entries in <code>interviews.yml</code> with basic interview data</li>
+      <li>Creates/updates entries in <code>video_assets.yml</code> with detailed video metadata</li>
+      <li>Links records via <code>interview_id</code> and <code>video_assets[]</code> references</li>
+    </ol>
+  </section>
+</article>
