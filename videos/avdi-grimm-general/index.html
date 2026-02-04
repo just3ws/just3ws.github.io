@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Avdi Grimm
+description: Video asset for Avdi Grimm.
+breadcrumb: Avdi Grimm
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "avdi-grimm-general" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

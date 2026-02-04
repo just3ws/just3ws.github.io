@@ -13,21 +13,24 @@ assets = YAML.safe_load(File.read(assets_path), permitted_classes: [Time, Date],
 items = assets.select { |a| a['source'] == 'ugtastic' }
 
 items.each do |item|
-  next unless item['thumbnail']
-  id = item['asset_id'].to_s
+  vimeo = (item['platforms'] || []).find { |p| p['platform'] == 'vimeo' } || (item['platforms'] || []).first
+  next unless vimeo && vimeo['thumbnail']
+  id = vimeo['asset_id'].to_s
   local_rel = "/assets/vimeo/thumbs/ugtastic/#{id}.jpg"
   local_path = File.join(thumbnails_dir, "#{id}.jpg")
 
   if File.exist?(local_path)
-    item['thumbnail_local'] = local_rel
+    vimeo['thumbnail_local'] = local_rel
+    item['thumbnail_local'] = local_rel if item['thumbnail_local'].nil? || item['thumbnail_local'].empty?
     next
   end
 
   begin
-    URI.open(item['thumbnail']) do |io|
+    URI.open(vimeo['thumbnail']) do |io|
       File.open(local_path, 'wb') { |f| f.write(io.read) }
     end
-    item['thumbnail_local'] = local_rel
+    vimeo['thumbnail_local'] = local_rel
+    item['thumbnail_local'] = local_rel if item['thumbnail_local'].nil? || item['thumbnail_local'].empty?
   rescue => e
     warn "Failed to download thumbnail for #{id}: #{e.message}"
   end

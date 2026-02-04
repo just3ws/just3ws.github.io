@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones
+description: Video asset for Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones.
+breadcrumb: Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "ethan-gunderson-ryan-briones-gathers-us-and-chicagodb-gathers-us-and-chicagodb" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

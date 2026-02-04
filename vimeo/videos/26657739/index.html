@@ -1,50 +1,19 @@
 ---
 layout: minimal
-title: Vimeo — Enough C To Get Started In F/OSS w/Andy Lester (Part 1 of 2)
-description: Vimeo video Enough C To Get Started In F/OSS w/Andy Lester (Part 1 of 2).
-breadcrumb: Enough C To Get Started In F/OSS
-breadcrumb_parent_name: SCMC
-breadcrumb_parent_url: /vimeo/scmc/
+title: Video — 26657739
+description: Video asset.
+breadcrumb: Video
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
-  <header><h1>Enough C To Get Started In F/OSS w/Andy Lester (Part 1 of 2)</h1></header>
-
-  {% assign item = site.data.vimeo_videos.items | where: "id", "26657739" | first %}
-  {% if item %}
-    <div class="video video-detail">
-      {% if item.embed_url %}
-        <div class="video-embed">
-          <iframe src="{{ item.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ item.title }}"></iframe>
-        </div>
-      {% endif %}
-      <div class="video-body">
-        <div class="video-title">{{ item.topic | default: item.title }}</div>
-        {% if item.speakers and item.speakers.size > 0 %}
-          <div class="video-subtitle">{% if item.speakers.size == 1 %}Speaker{% else %}Speakers{% endif %}: {{ item.speakers | join: ", " }}</div>
-        {% elsif item.people and item.people.size > 0 %}
-          <div class="video-subtitle">{% if item.people.size == 1 %}Person{% else %}People{% endif %}: {{ item.people | join: ", " }}</div>
-        {% endif %}
-        <div class="video-meta">{% if item.duration_minutes %}Duration: {{ item.duration_minutes | round }} min · {% endif %}Uploaded: {{ item.created | date: "%b %d, %Y" }}</div>
-        <div class="video-actions"><a class="video-button" href="{{ item.link }}">Watch on Vimeo</a></div>
-        {% if item.tags and item.tags.size > 0 %}
-          <div class="video-tags">
-            {% for tag in item.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
-          </div>
-        {% endif %}
-        {% if item.description %}
-          <div class="video-description"><span class="video-description-label">Vimeo description:</span> {{ item.description }}</div>
-        {% endif %}
-      </div>
-    </div>
-    <section class="transcript">
-      <h2>Transcript</h2>
-      {% if item.transcript %}
-        <div class="video-transcript">{{ item.transcript }}</div>
-      {% else %}
-        <p>Transcript coming soon.</p>
-      {% endif %}
-    </section>
+  {% assign asset = site.data.video_assets.items | where: "id", "vimeo-26657739" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+    {% include video-asset-player.html asset=asset embed_id="vimeo-embed" %}
   {% endif %}
 </article>

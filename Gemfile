@@ -8,7 +8,11 @@ gem 'csv'
 
 group :jekyll_plugins do
   # gem 'github-linguist'
-  gem 'github-pages'
+  gem 'jekyll', '~> 3.10'
+  gem 'jekyll-feed'
+  gem 'jekyll-redirect-from'
+  gem 'jekyll-seo-tag'
+  gem 'jekyll-theme-primer'
 
   # gem 'jekyll'
 

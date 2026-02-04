@@ -2,18 +2,19 @@
 layout: minimal
 title: SCMC Videos
 description: Archive of Software Craftsmanship McHenry County videos.
-breadcrumb: SCMC Videos
+breadcrumb: SCMC
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
   <header>
     <h1>SCMC Videos</h1>
-    <p>Recordings from Software Craftsmanship McHenry County meetings and related programming talks. These are the original Vimeo uploads, preserved as-is.</p>
+    <p>Recordings from Software Craftsmanship McHenry County meetings and related programming talks.</p>
   </header>
 
-  {% assign items = site.data.vimeo_videos.items | where: "category", "scmc" %}
+  {% assign items = site.data.scmc_videos.items %}
   {% for item in items %}
-    {% include vimeo-card.html item=item %}
+    {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}
+    {% include video-asset-card.html asset=asset %}
   {% endfor %}
 </article>

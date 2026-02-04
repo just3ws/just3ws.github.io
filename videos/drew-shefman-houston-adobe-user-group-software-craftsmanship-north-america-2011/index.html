@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Houston Adobe User Group w/Drew Shefman
+description: Video asset for Houston Adobe User Group w/Drew Shefman.
+breadcrumb: Houston Adobe User Group w/Drew Shefman
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "drew-shefman-houston-adobe-user-group-software-craftsmanship-north-america-2011" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

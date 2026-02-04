@@ -11,31 +11,11 @@ breadcrumb_parent_url: /youtube/
   {% include breadcrumbs.html %}
   {% assign item = site.data.youtube_videos.items | where: "id", "OJf6GxeRiFQ" | first %}
   {% if item %}
+    {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}
     <header>
       <h1>{{ item.topic | default: item.title }}</h1>
     </header>
 
-    <div class="video video-detail">
-      {% if item.embed_url %}
-        <div class="video-embed">
-          <iframe src="{{ item.embed_url }}" width="640" height="360" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="{{ item.title }}"></iframe>
-        </div>
-      {% endif %}
-      <div class="video-body">
-        {% if item.interviewees and item.interviewees.size > 0 %}
-          <div class="video-subtitle">{% if item.interviewees.size == 1 %}Interviewee{% else %}Interviewees{% endif %}: {{ item.interviewees | join: ", " }}</div>
-        {% endif %}
-        <div class="video-meta">
-          {% if item.published %}Published: {{ item.published | date: "%b %d, %Y" }}{% endif %}
-          · Interviewer: <a href="/home/">{{ item.interviewer | default: "Mike Hall" }}</a>
-        </div>
-        <div class="video-actions">
-          <a class="video-button" href="{{ item.link }}">Watch on YouTube</a>
-        </div>
-        {% if item.description %}
-          <div class="video-description"><span class="video-description-label">Description:</span> {{ item.description }}</div>
-        {% endif %}
-      </div>
-    </div>
+    {% include video-asset-player.html asset=asset embed_id="youtube-embed" %}
   {% endif %}
 </article>

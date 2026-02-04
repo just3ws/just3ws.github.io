@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Simplest Thing w/Ralph Iden
+description: Video asset for Simplest Thing w/Ralph Iden.
+breadcrumb: Simplest Thing w/Ralph Iden
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "vimeo-42266284" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

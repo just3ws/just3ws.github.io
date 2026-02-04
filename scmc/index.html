@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: SCMC Videos
+description: Software Craftsmanship McHenry County videos.
+breadcrumb: SCMC
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>SCMC Videos</h1>
+    <p class="intro">Software Craftsmanship McHenry County recordings.</p>
+  </header>
+
+  {% assign items = site.data.scmc_videos.items %}
+  {% for item in items %}
+    {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}
+    {% include video-asset-card.html asset=asset %}
+  {% endfor %}
+</article>

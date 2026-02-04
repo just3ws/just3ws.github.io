@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Interview with Farrah Bostic founder The Difference Engine and a keynot
+description: Video asset for Interview with Farrah Bostic founder The Difference Engine and a keynot.
+breadcrumb: Interview with Farrah Bostic founder The Difference Engine and a keynot
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "farrah-bostic-founder-the-difference-engine-and-keynot-railsconf-2014" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

@@ -1,20 +1,20 @@
 ---
 layout: minimal
-title: Vimeo Videos
-description: One-off Vimeo videos and talks.
-breadcrumb: Vimeo
+title: One-off Videos
+description: One-off videos and talks.
+breadcrumb: One-offs
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
   <header>
-    <h1>Vimeo Videos</h1>
-    <p>One-off talks and recordings hosted on Vimeo.</p>
-    <p>For SCMC user-group recordings, see <a href="/vimeo/scmc/">SCMC Videos</a>.</p>
+    <h1>One-off Videos</h1>
+    <p>Standalone talks and presentations across platforms.</p>
   </header>
 
-  {% assign items = site.data.vimeo_videos.items | where: "category", "oneoff" %}
+  {% assign items = site.data.oneoff_videos.items %}
   {% for item in items %}
-    {% include vimeo-card.html item=item %}
+    {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}
+    {% include video-asset-card.html asset=asset %}
   {% endfor %}
 </article>

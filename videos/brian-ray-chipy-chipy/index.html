@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — ChiPy w/Brian Ray
+description: Video asset for ChiPy w/Brian Ray.
+breadcrumb: ChiPy w/Brian Ray
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "brian-ray-chipy-chipy" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

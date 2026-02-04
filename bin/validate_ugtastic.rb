@@ -23,33 +23,34 @@ ugtastic_assets = assets.select { |a| a['source'] == 'ugtastic' }
 errors = []
 
 ugtastic_assets.each do |asset|
-  id = asset['asset_id']
-  errors << "missing asset_id for ugtastic asset" unless id
-  errors << "missing url for #{id}" unless asset['url']
-  errors << "missing published_date for #{id}" unless asset['published_date']
-  errors << "missing duration_minutes for #{id}" unless asset['duration_minutes']
+  errors << "missing id for ugtastic asset" unless asset['id']
 
-  if asset['thumbnail_local']
-    local = File.join(root, asset['thumbnail_local'])
-    errors << "missing local thumbnail for #{id}" unless File.exist?(local)
+  vimeo = (asset['platforms'] || []).find { |p| p['platform'] == 'vimeo' } || (asset['platforms'] || []).first
+  vimeo_id = vimeo && vimeo['asset_id']
+  errors << "missing vimeo asset_id for #{asset['id']}" unless vimeo_id
+  errors << "missing url for #{asset['id']}" unless vimeo && vimeo['url']
+  errors << "missing published_date for #{asset['id']}" unless (vimeo && vimeo['published_date']) || asset['published_date']
+  errors << "missing duration_minutes for #{asset['id']}" unless (vimeo && vimeo['duration_minutes']) || asset['duration_minutes']
+
+  if vimeo && vimeo['thumbnail_local']
+    local = File.join(root, vimeo['thumbnail_local'])
+    errors << "missing local thumbnail for #{asset['id']}" unless File.exist?(local)
   end
 
-  if id
-    page = File.join(videos_dir, id.to_s, 'index.html')
-    errors << "missing video page for #{id}" unless File.exist?(page)
+  if vimeo_id
+    page = File.join(videos_dir, vimeo_id.to_s, 'index.html')
+    errors << "missing video page for #{vimeo_id}" unless File.exist?(page)
   end
 
-  if id
-    interview = interviews.find { |i| i['id'] == asset['interview_id'] }
-    if interview.nil?
-      errors << "missing interview for asset #{id} (#{asset['interview_id']})"
-    else
-      if interview['conference'] && !conf_names.include?(interview['conference'])
-        errors << "unknown conference name #{interview['conference']} for #{id}"
-      end
-      if interview['community'] && !comm_names.include?(interview['community'])
-        errors << "unknown community name #{interview['community']} for #{id}"
-      end
+  interview = interviews.find { |i| i['id'] == asset['interview_id'] }
+  if interview.nil?
+    errors << "missing interview for asset #{asset['id']} (#{asset['interview_id']})"
+  else
+    if interview['conference'] && !conf_names.include?(interview['conference'])
+      errors << "unknown conference name #{interview['conference']} for #{asset['id']}"
+    end
+    if interview['community'] && !comm_names.include?(interview['community'])
+      errors << "unknown community name #{interview['community']} for #{asset['id']}"
     end
   end
 end

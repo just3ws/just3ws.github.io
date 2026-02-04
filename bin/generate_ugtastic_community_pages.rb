@@ -40,7 +40,7 @@ communities.each do |comm|
     f.puts '  {% for asset in assets %}'
     f.puts '    {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}'
     f.puts '    {% if interview and comm and interview.community == comm.name %}'
-    f.puts '      {% include ugtastic-interview-card.html interview=interview asset=asset %}'
+    f.puts '      {% include video-asset-card.html asset=asset %}'
     f.puts '    {% endif %}'
     f.puts '  {% endfor %}'
     f.puts '</article>'

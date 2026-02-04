@@ -13,11 +13,9 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 
 - [Home](https://www.just3ws.com/home/) - Navigation hub and context
 - [Writing](https://www.just3ws.com/writing) - Technical posts
-- [UGtastic](https://www.just3ws.com/ugtastic/) - Vimeo original interview archive
-- [UGtastic Conferences](https://www.just3ws.com/ugtastic/conferences/) - Grouped by event
-- [UGtastic Communities](https://www.just3ws.com/ugtastic/communities/) - Grouped by meetup or group
-- [Vimeo Videos](https://www.just3ws.com/vimeo/) - One-off talks and recordings
-- [SCMC Videos](https://www.just3ws.com/vimeo/scmc/) - Software Craftsmanship McHenry County archive
+- [Interviews](https://www.just3ws.com/interviews/) - Interview archive
+- [One-off Videos](https://www.just3ws.com/oneoffs/) - One-off talks and recordings
+- [SCMC Videos](https://www.just3ws.com/scmc/) - Software Craftsmanship McHenry County archive
 
 ## Data & Automation
 
@@ -25,8 +23,10 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - Canonical video assets live in `_data/video_assets.yml`
 - Interview conference metadata lives in `_data/interview_conferences.yml`
 - Interview community metadata lives in `_data/interview_communities.yml`
-- Vimeo one-off metadata lives in `_data/vimeo_videos.yml`
+- One-off metadata lives in `_data/oneoff_videos.yml`
+- SCMC metadata lives in `_data/scmc_videos.yml`
 - Generated pages:
+  - `bin/generate_video_asset_pages.rb`
   - `bin/generate_ugtastic_pages.rb`
   - `bin/generate_ugtastic_community_pages.rb`
   - `bin/generate_vimeo_pages.rb`

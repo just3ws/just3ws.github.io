@@ -16,7 +16,7 @@ breadcrumb: Interviews
 
   {% assign interviews = site.data.interviews.items | sort: "recorded_date" | reverse %}
   {% for interview in interviews %}
-    {% if interview.video_assets and interview.video_assets.size > 0 %}
+    {% if interview.video_asset_id %}
       {% include interview-card.html interview=interview %}
     {% endif %}
   {% endfor %}

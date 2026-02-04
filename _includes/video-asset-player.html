@@ -1,0 +1,69 @@
+{% assign asset = include.asset %}
+{% if asset %}
+  {% assign preferred = nil %}
+  {% if asset.primary_platform %}
+    {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
+  {% endif %}
+  {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
+
+  {% if preferred %}
+    <div class="video video-detail">
+      {% if preferred.video_url %}
+        <div class="video-embed">
+          <video controls preload="metadata" poster="{{ preferred.image_url | default: asset.thumbnail }}">
+            <source src="{{ preferred.video_url }}" type="video/mp4">
+          </video>
+        </div>
+      {% elsif preferred.embed_url %}
+        <div class="video-embed">
+          <iframe id="{{ include.embed_id | default: "asset-embed" }}" src="{{ preferred.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ asset.title }}"></iframe>
+        </div>
+      {% endif %}
+      <div class="video-body">
+        {% if asset.description %}
+          <div class="video-description"><span class="video-description-label">Description:</span> {{ asset.description }}</div>
+        {% endif %}
+        <div class="video-meta">
+          {% if preferred.duration_minutes %}Duration: {{ preferred.duration_minutes | round }} min · {% endif %}{% if asset.published_date %}Published: {{ asset.published_date | date: "%b %d, %Y" }}{% elsif preferred.published_date %}Published: {{ preferred.published_date | date: "%b %d, %Y" }}{% endif %}
+        </div>
+        <div class="video-actions">
+          {% for platform in asset.platforms %}
+            {% if platform.embed_url %}<button class="video-button{% if preferred and preferred.platform == platform.platform %} primary{% endif %}" data-embed="{{ platform.embed_url }}">Watch Here ({{ platform.platform | capitalize }})</button>{% endif %}
+          {% endfor %}
+        </div>
+        <div class="video-actions">
+          {% for platform in asset.platforms %}
+            {% if platform.url %}<a class="video-button" href="{{ platform.url }}">Watch on {{ platform.platform | capitalize }}</a>{% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <section class="transcript">
+    <h2>Transcript</h2>
+    {% assign transcript = nil %}
+    {% if asset.transcript_id %}
+      {% assign transcript_entry = site.data.transcripts.items | where: "id", asset.transcript_id | first %}
+      {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
+    {% endif %}
+    {% if transcript %}
+      <div class="video-transcript">{{ transcript }}</div>
+    {% else %}
+      <p>Transcript coming soon.</p>
+    {% endif %}
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("{{ include.embed_id | default: "asset-embed" }}");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+{% endif %}

@@ -9,19 +9,25 @@ breadcrumb_parent_url: /ugtastic/communities/geekfest/
 
 <article class="page">
   {% include breadcrumbs.html %}
-  {% assign asset = site.data.video_assets.items | where: "source", "ugtastic" | where: "asset_id", "41101410" | first %}
-  {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}
-  {% assign assets = site.data.video_assets.items | where: "interview_id", interview.id %}
-  {% assign vimeo = assets | where: "platform", "vimeo" | first %}
-  {% assign youtube = assets | where: "platform", "youtube" | first %}
-  {% assign preferred = vimeo | default: youtube %}
+  {% assign asset = site.data.video_assets.items | where: "id", "dave-hoover-geekfest-geekfest" | first %}
+  {% assign interview = nil %}
+  {% if asset and asset.interview_id %}
+    {% assign interview = site.data.interviews.items | where: "id", asset.interview_id | first %}
+  {% endif %}
+  {% assign vimeo = nil %}
+  {% assign youtube = nil %}
+  {% if asset and asset.platforms %}
+    {% assign vimeo = asset.platforms | where: "platform", "vimeo" | first %}
+    {% assign youtube = asset.platforms | where: "platform", "youtube" | first %}
+  {% endif %}
+  {% assign preferred = vimeo | default: youtube | default: asset.platforms.first %}
   <header>
-    <h1>{{ interview.title | default: asset.title_on_platform }}</h1>
+    <h1>{{ interview.title | default: asset.title | default: preferred.title_on_platform }}</h1>
   </header>
 
   {% if preferred %}
     <div class="video video-detail">
-      {% if preferred.embed_url %}
+      {% if preferred and preferred.embed_url %}
         <div class="video-embed">
           <iframe id="interview-embed" src="{{ preferred.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ preferred.title_on_platform }}"></iframe>
         </div>
@@ -56,13 +62,13 @@ breadcrumb_parent_url: /ugtastic/communities/geekfest/
           {% if vimeo %}<a class="video-button" href="{{ vimeo.url }}">Watch on Vimeo</a>{% endif %}
           {% if youtube %}<a class="video-button" href="{{ youtube.url }}">Watch on YouTube</a>{% endif %}
         </div>
-        {% if preferred.tags and preferred.tags.size > 0 %}
+        {% if asset and asset.tags and asset.tags.size > 0 %}
           <div class="video-tags">
-            {% for tag in preferred.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+            {% for tag in asset.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
           </div>
         {% endif %}
-        {% if preferred.description %}
-          <div class="video-description"><span class="video-description-label">Video description:</span> {{ preferred.description }}</div>
+        {% if asset and asset.description %}
+          <div class="video-description"><span class="video-description-label">Video description:</span> {{ asset.description }}</div>
         {% endif %}
       </div>
     </div>
@@ -83,9 +89,9 @@ breadcrumb_parent_url: /ugtastic/communities/geekfest/
 
   <section class="transcript">
     <h2>Transcript</h2>
-    {% assign transcript = asset.transcript %}
-    {% if transcript == nil %}
-      {% assign transcript_entry = site.data.transcripts.items | where: "video_asset_id", asset.asset_id | first %}
+    {% assign transcript = nil %}
+    {% if asset and asset.transcript_id %}
+      {% assign transcript_entry = site.data.transcripts.items | where: "id", asset.transcript_id | first %}
       {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
     {% endif %}
     {% if transcript %}

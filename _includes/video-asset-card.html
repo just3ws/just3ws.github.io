@@ -1,0 +1,28 @@
+{% assign asset = include.asset %}
+{% if asset %}
+  {% assign preferred = nil %}
+  {% if asset.primary_platform %}
+    {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
+  {% endif %}
+  {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
+  {% assign detail_url = "/videos/" | append: asset.id | append: "/" %}
+  {% assign thumb = preferred.thumbnail | default: asset.thumbnail %}
+
+  <div class="video">
+    {% if thumb %}
+      <a class="video-thumb" href="{{ detail_url }}">
+        <img src="{{ thumb }}" alt="Thumbnail for {{ asset.title }}">
+      </a>
+    {% endif %}
+    <div class="video-body">
+      <div class="video-title"><a href="{{ detail_url }}">{{ asset.title }}</a></div>
+      <div class="video-meta">
+        {% if asset.published_date %}Published: {{ asset.published_date | date: "%b %d, %Y" }}{% elsif preferred and preferred.published_date %}Published: {{ preferred.published_date | date: "%b %d, %Y" }}{% endif %}
+      </div>
+      <div class="video-actions">
+        <a class="video-button primary" href="{{ detail_url }}">Watch Here</a>
+        {% if preferred and preferred.url %}<a class="video-button" href="{{ preferred.url }}">Watch on {{ preferred.platform | capitalize }}</a>{% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}

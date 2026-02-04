@@ -1,8 +1,8 @@
 ---
 layout: minimal
-title: YouTube — GOTO Chicago 2015 Interviews
-description: YouTube playlist GOTO Chicago 2015 Interviews.
-breadcrumb: GOTO Chicago 2015 Interviews
+title: YouTube — GOTO Conference 2015 Interviews
+description: YouTube playlist GOTO Conference 2015 Interviews.
+breadcrumb: GOTO Conference 2015 Interviews
 breadcrumb_parent_name: YouTube
 breadcrumb_parent_url: /youtube/
 ---
@@ -10,7 +10,7 @@ breadcrumb_parent_url: /youtube/
 <article class="page">
   {% include breadcrumbs.html %}
   <header>
-    <h1>GOTO Chicago 2015 Interviews</h1>
+    <h1>GOTO Conference 2015 Interviews</h1>
   </header>
 
   {% assign playlist = site.data.youtube_playlists.playlists | where: "slug", "goto-chicago-2015-interviews" | first %}
@@ -26,6 +26,7 @@ breadcrumb_parent_url: /youtube/
 
   {% assign items = site.data.youtube_videos.items | where: "playlist_slug", "goto-chicago-2015-interviews" | sort: "position" %}
   {% for item in items %}
-    {% include youtube-video-card.html item=item %}
+    {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}
+    {% include video-asset-card.html asset=asset %}
   {% endfor %}
 </article>

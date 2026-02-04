@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Movie on 9-6-12 at 1.05 PM
+description: Video asset for Movie on 9-6-12 at 1.05 PM.
+breadcrumb: Movie on 9-6-12 at 1.05 PM
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "movie-on-9-6-12-at-1-05-pm-windycityrails-2012" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

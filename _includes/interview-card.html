@@ -1,9 +1,9 @@
-{% assign assets = site.data.video_assets.items | where: "interview_id", interview.id %}
-{% assign vimeo = assets | where: "platform", "vimeo" | first %}
-{% assign youtube = assets | where: "platform", "youtube" | first %}
-{% assign preferred = vimeo | default: youtube %}
+{% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
+{% assign vimeo = asset.platforms | where: "platform", "vimeo" | first %}
+{% assign youtube = asset.platforms | where: "platform", "youtube" | first %}
+{% assign preferred = vimeo | default: youtube | default: asset.platforms.first %}
 {% assign primary_url = "/interviews/" | append: interview.id | append: "/" %}
-{% assign thumb = preferred.thumbnail_local | default: preferred.thumbnail %}
+{% assign thumb = preferred.thumbnail_local | default: preferred.thumbnail | default: asset.thumbnail_local | default: asset.thumbnail %}
 
 <div class="video">
   {% if thumb %}
@@ -20,7 +20,7 @@
       <div class="video-subtitle">Topic: {{ interview.topic }}</div>
     {% endif %}
     <div class="video-meta">
-      {% if preferred.duration_minutes %}Duration: {{ preferred.duration_minutes | round }} min · {% endif %}{% if preferred.published_date %}Uploaded: {{ preferred.published_date | date: "%b %d, %Y" }}{% endif %}
+      {% if preferred.duration_minutes %}Duration: {{ preferred.duration_minutes | round }} min · {% endif %}{% if preferred.published_date %}Uploaded: {{ preferred.published_date | date: "%b %d, %Y" }}{% elsif asset.published_date %}Uploaded: {{ asset.published_date | date: "%b %d, %Y" }}{% endif %}
     </div>
     <div class="video-meta">
       {% if interview.conference %}Conference: {{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}{% endif %}
@@ -30,15 +30,15 @@
       <a class="video-button primary" href="{{ primary_url }}">View Interview</a>
       {% if preferred and preferred.url %}<a class="video-button" href="{{ preferred.url }}">Watch on {{ preferred.platform | capitalize }}</a>{% endif %}
     </div>
-    {% if preferred.tags and preferred.tags.size > 0 %}
+    {% if asset.tags and asset.tags.size > 0 %}
       <div class="video-tags">
-        {% for tag in preferred.tags %}
+        {% for tag in asset.tags %}
           <span class="tag">{{ tag }}</span>
         {% endfor %}
       </div>
     {% endif %}
-    {% if preferred.description %}
-      <div class="video-description"><span class="video-description-label">Video description:</span> {{ preferred.description }}</div>
+    {% if asset.description %}
+      <div class="video-description"><span class="video-description-label">Video description:</span> {{ asset.description }}</div>
     {% endif %}
   </div>
 </div>

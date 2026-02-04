@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Mike Clement
+description: Video asset for Mike Clement.
+breadcrumb: Mike Clement
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "mike-clement-software-craftsmanship-north-america-2012" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

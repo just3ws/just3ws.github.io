@@ -23,9 +23,11 @@ FileUtils.mkdir_p(base_dir)
 ugtastic_assets = assets.select { |a| a['source'] == 'ugtastic' }
 
 ugtastic_assets.each do |asset|
-  id = asset['asset_id'].to_s
+  vimeo_platform = (asset['platforms'] || []).find { |p| p['platform'] == 'vimeo' }
+  id = (vimeo_platform && vimeo_platform['asset_id']) ? vimeo_platform['asset_id'].to_s : asset['id'].to_s
+  asset_key = asset['id'].to_s
   interview = interview_index[asset['interview_id']]
-  title = interview && interview['title'] ? interview['title'] : asset['title_on_platform'] || 'UGtastic Interview'
+  title = interview && interview['title'] ? interview['title'] : asset['title'] || 'UGtastic Interview'
   topic = title
   conf = interview && interview['conference'] ? conf_by_name[interview['conference']] : nil
   comm = interview && interview['community'] ? comm_by_name[interview['community']] : nil
@@ -56,19 +58,25 @@ ugtastic_assets.each do |asset|
     f.puts ""
     f.puts "<article class=\"page\">"
     f.puts "  {% include breadcrumbs.html %}"
-    f.puts "  {% assign asset = site.data.video_assets.items | where: \"source\", \"ugtastic\" | where: \"asset_id\", \"#{id}\" | first %}"
-    f.puts "  {% assign interview = asset and site.data.interviews.items | where: \"id\", asset.interview_id | first %}"
-    f.puts "  {% assign assets = interview and site.data.video_assets.items | where: \"interview_id\", interview.id %}"
-    f.puts "  {% assign vimeo = assets | where: \"platform\", \"vimeo\" | first %}"
-    f.puts "  {% assign youtube = assets | where: \"platform\", \"youtube\" | first %}"
-    f.puts "  {% assign preferred = vimeo | default: youtube %}"
+    f.puts "  {% assign asset = site.data.video_assets.items | where: \"id\", \"#{asset_key}\" | first %}"
+    f.puts "  {% assign interview = nil %}"
+    f.puts "  {% if asset and asset.interview_id %}"
+    f.puts "    {% assign interview = site.data.interviews.items | where: \"id\", asset.interview_id | first %}"
+    f.puts "  {% endif %}"
+    f.puts "  {% assign vimeo = nil %}"
+    f.puts "  {% assign youtube = nil %}"
+    f.puts "  {% if asset and asset.platforms %}"
+    f.puts "    {% assign vimeo = asset.platforms | where: \"platform\", \"vimeo\" | first %}"
+    f.puts "    {% assign youtube = asset.platforms | where: \"platform\", \"youtube\" | first %}"
+    f.puts "  {% endif %}"
+    f.puts "  {% assign preferred = vimeo | default: youtube | default: asset.platforms.first %}"
     f.puts "  <header>"
-    f.puts "    <h1>{{ interview.title | default: asset.title_on_platform }}</h1>"
+    f.puts "    <h1>{{ interview.title | default: asset.title | default: preferred.title_on_platform }}</h1>"
     f.puts "  </header>"
     f.puts ""
     f.puts "  {% if preferred %}"
     f.puts "    <div class=\"video video-detail\">"
-    f.puts "      {% if preferred.embed_url %}"
+    f.puts "      {% if preferred and preferred.embed_url %}"
     f.puts "        <div class=\"video-embed\">"
     f.puts "          <iframe id=\"interview-embed\" src=\"{{ preferred.embed_url }}\" width=\"640\" height=\"360\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" title=\"{{ preferred.title_on_platform }}\"></iframe>"
     f.puts "        </div>"
@@ -103,13 +111,13 @@ ugtastic_assets.each do |asset|
     f.puts "          {% if vimeo %}<a class=\"video-button\" href=\"{{ vimeo.url }}\">Watch on Vimeo</a>{% endif %}"
     f.puts "          {% if youtube %}<a class=\"video-button\" href=\"{{ youtube.url }}\">Watch on YouTube</a>{% endif %}"
     f.puts "        </div>"
-    f.puts "        {% if preferred.tags and preferred.tags.size > 0 %}"
+    f.puts "        {% if asset and asset.tags and asset.tags.size > 0 %}"
     f.puts "          <div class=\"video-tags\">"
-    f.puts "            {% for tag in preferred.tags %}<span class=\"tag\">{{ tag }}</span>{% endfor %}"
+    f.puts "            {% for tag in asset.tags %}<span class=\"tag\">{{ tag }}</span>{% endfor %}"
     f.puts "          </div>"
     f.puts "        {% endif %}"
-    f.puts "        {% if preferred.description %}"
-    f.puts "          <div class=\"video-description\"><span class=\"video-description-label\">Video description:</span> {{ preferred.description }}</div>"
+    f.puts "        {% if asset and asset.description %}"
+    f.puts "          <div class=\"video-description\"><span class=\"video-description-label\">Video description:</span> {{ asset.description }}</div>"
     f.puts "        {% endif %}"
     f.puts "      </div>"
     f.puts "    </div>"
@@ -130,9 +138,9 @@ ugtastic_assets.each do |asset|
     f.puts ""
     f.puts '  <section class="transcript">'
     f.puts "    <h2>Transcript</h2>"
-    f.puts "    {% assign transcript = asset.transcript %}"
-    f.puts "    {% if transcript == nil %}"
-    f.puts "      {% assign transcript_entry = site.data.transcripts.items | where: \"video_asset_id\", asset.asset_id | first %}"
+    f.puts "    {% assign transcript = nil %}"
+    f.puts "    {% if asset and asset.transcript_id %}"
+    f.puts "      {% assign transcript_entry = site.data.transcripts.items | where: \"id\", asset.transcript_id | first %}"
     f.puts "      {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}"
     f.puts "    {% endif %}"
     f.puts "    {% if transcript %}"

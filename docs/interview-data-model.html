@@ -23,14 +23,19 @@ flowchart TB
     yt_sources[_data/youtube_sources.yml&lt;br/&gt;Playlist IDs to fetch]
     yt_playlists[_data/youtube_playlists.yml&lt;br/&gt;Playlist metadata]
     yt_videos[_data/youtube_videos.yml&lt;br/&gt;Video details]
-    vimeo[_data/vimeo_videos.yml&lt;br/&gt;Non-interview Vimeo content]
-    pk[_data/pechakucha.yml&lt;br/&gt;PechaKucha presentations]
+    vimeo[_data/vimeo_videos.yml&lt;br/&gt;Legacy Vimeo source records (empty as of 2026-02-04)]
+    pk[_data/pechakucha.yml&lt;br/&gt;Legacy PechaKucha source records (empty as of 2026-02-04)]
   end
 
   subgraph Canonical["Canonical Data"]
-    interviews[_data/interviews.yml&lt;br/&gt;Canonical interview records]
-    assets[_data/video_assets.yml&lt;br/&gt;Video asset metadata]
-    transcripts[_data/transcripts.yml&lt;br/&gt;Transcripts - currently unused]
+    interviews[_data/interviews.yml&lt;br/&gt;Interview records]
+    assets[_data/video_assets.yml&lt;br/&gt;Canonical video assets]
+    transcripts[_data/transcripts.yml&lt;br/&gt;Transcript text referenced by video_assets]
+  end
+
+  subgraph Buckets["Video Buckets"]
+    oneoffs[_data/oneoff_videos.yml&lt;br/&gt;One-off video list]
+    scmc[_data/scmc_videos.yml&lt;br/&gt;SCMC video list]
   end
 
   subgraph Lookups["Lookup Tables"]
@@ -42,15 +47,15 @@ flowchart TB
   yt_playlists --&gt; yt_videos
   yt_videos -..-&gt;|synced to| interviews
   yt_videos -..-&gt;|synced to| assets
-  vimeo -..-&gt;|synced to| interviews
-  vimeo -..-&gt;|synced to| assets
-  pk -..-&gt;|synced to| interviews
-  pk -..-&gt;|synced to| assets
+  vimeo -..-&gt;|legacy source| assets
+  pk -..-&gt;|legacy source| assets
 
-  interviews &lt;--&gt;|interview_id / video_assets| assets
+  interviews &lt;--&gt;|video_asset_id / interview_id| assets
+  oneoffs --&gt;|video_asset_id| assets
+  scmc --&gt;|video_asset_id| assets
   interviews --&gt;|conference field| confs
   interviews --&gt;|community field| comms
-  assets -..-&gt;|transcript field| transcripts
+  assets -..-&gt;|transcript_id| transcripts
     </pre>
 
     <script type="module">
@@ -65,14 +70,19 @@ flowchart TB
     yt_sources[_data/youtube_sources.yml&lt;br/&gt;Playlist IDs to fetch]
     yt_playlists[_data/youtube_playlists.yml&lt;br/&gt;Playlist metadata]
     yt_videos[_data/youtube_videos.yml&lt;br/&gt;Video details]
-    vimeo[_data/vimeo_videos.yml&lt;br/&gt;Non-interview Vimeo content]
-    pk[_data/pechakucha.yml&lt;br/&gt;PechaKucha presentations]
+    vimeo[_data/vimeo_videos.yml&lt;br/&gt;Legacy Vimeo source records (empty as of 2026-02-04)]
+    pk[_data/pechakucha.yml&lt;br/&gt;Legacy PechaKucha source records (empty as of 2026-02-04)]
   end
 
   subgraph Canonical["Canonical Data"]
-    interviews[_data/interviews.yml&lt;br/&gt;Canonical interview records]
-    assets[_data/video_assets.yml&lt;br/&gt;Video asset metadata]
-    transcripts[_data/transcripts.yml&lt;br/&gt;Transcripts - currently unused]
+    interviews[_data/interviews.yml&lt;br/&gt;Interview records]
+    assets[_data/video_assets.yml&lt;br/&gt;Canonical video assets]
+    transcripts[_data/transcripts.yml&lt;br/&gt;Transcript text referenced by video_assets]
+  end
+
+  subgraph Buckets["Video Buckets"]
+    oneoffs[_data/oneoff_videos.yml&lt;br/&gt;One-off video list]
+    scmc[_data/scmc_videos.yml&lt;br/&gt;SCMC video list]
   end
 
   subgraph Lookups["Lookup Tables"]
@@ -84,15 +94,15 @@ flowchart TB
   yt_playlists --&gt; yt_videos
   yt_videos -.-&gt;|synced to| interviews
   yt_videos -.-&gt;|synced to| assets
-  vimeo -.-&gt;|synced to| interviews
-  vimeo -.-&gt;|synced to| assets
-  pk -.-&gt;|synced to| interviews
-  pk -.-&gt;|synced to| assets
+  vimeo -.-&gt;|legacy source| assets
+  pk -.-&gt;|legacy source| assets
 
-  interviews &lt;--&gt;|interview_id / video_assets| assets
+  interviews &lt;--&gt;|video_asset_id / interview_id| assets
+  oneoffs --&gt;|video_asset_id| assets
+  scmc --&gt;|video_asset_id| assets
   interviews --&gt;|conference field| confs
   interviews --&gt;|community field| comms
-  assets -.-&gt;|transcript field| transcripts</code></pre>
+  assets -.-&gt;|transcript_id| transcripts</code></pre>
   </section>
 
   <section>
@@ -113,31 +123,46 @@ flowchart TB
     community: string       # Community name (references interview_communities.yml)
     recorded_date: date     # When the interview was recorded
     tags: [string]          # Categorization tags
-    video_assets:           # Inline video asset references
-      - platform: string    # "vimeo" or "youtube"
-        asset_id: string    # Platform-specific video ID</code></pre>
+    video_asset_id: string  # video_assets.id</code></pre>
 
     <h4><code>_data/video_assets.yml</code></h4>
-    <p>Detailed metadata for each video asset. Links back to interviews via <code>interview_id</code>:</p>
+    <p>Canonical video asset records. The <code>id</code> is the primary key and permalink for a video, with one or more platform publications stored in <code>platforms[]</code>. Links back to interviews via <code>interview_id</code> (optional):</p>
     <pre><code>items:
-  - interview_id: string      # Links to interviews.yml id
-    platform: string          # "vimeo" or "youtube"
-    asset_id: string          # Platform-specific video ID
-    url: string               # Direct URL to video
-    embed_url: string         # Embeddable player URL
-    title_on_platform: string # Title as shown on platform
-    published_date: date      # Publication date
-    thumbnail: string         # Thumbnail URL
+  - id: string                # Primary key / permalink
+    interview_id: string      # Links to interviews.yml id (optional)
+    title: string             # Canonical title
+    primary_platform: string  # Preferred platform for defaults (optional)
+    source: string            # Source identifier (optional, e.g., "ugtastic")
+    published_date: date      # Primary published date (optional)
+    thumbnail: string         # Primary thumbnail URL (optional)
     thumbnail_local: string   # Local thumbnail path (optional)
-    duration_seconds: int     # Video length
-    duration_minutes: int     # Video length (rounded)
-    description: string       # Video description
-    transcript: string        # Inline transcript (usually empty)
+    duration_seconds: int     # Video length (optional)
+    duration_minutes: int     # Video length (rounded, optional)
+    description: string       # Canonical description (optional)
     tags: [string]            # Tags
-    source: string            # Source identifier (e.g., "ugtastic")</code></pre>
+    transcript_id: string     # References transcripts.yml id (optional)
+    platforms:                # Per-platform publications
+      - platform: string      # "vimeo", "youtube", "pechakucha", etc.
+        asset_id: string      # Platform-specific video ID
+        url: string           # Direct URL to video (optional)
+        embed_url: string     # Embeddable player URL (optional)
+        title_on_platform: string
+        published_date: date  # Publication date on platform (optional)
+        thumbnail: string     # Platform thumbnail URL (optional)
+        thumbnail_local: string # Local thumbnail path (optional)
+        duration_seconds: int   # Video length (optional)
+        duration_minutes: int   # Video length (rounded, optional)
+        description: string     # Platform description (optional)
+        source: string          # Platform source identifier (optional)
+        playlist: string        # Playlist name/label (optional)
+        video_url: string       # Direct video file URL (PechaKucha)
+        image_url: string       # Poster image (PechaKucha)</code></pre>
 
     <h4><code>_data/transcripts.yml</code></h4>
-    <p>Reserved for transcript data. Currently empty (<code>items: []</code>). Transcripts are typically stored inline in <code>video_assets.yml</code> or <code>pechakucha.yml</code>.</p>
+    <p>Canonical transcripts referenced by <code>video_assets.yml</code>:</p>
+    <pre><code>items:
+  - id: string        # Transcript ID (referenced by video_assets.transcript_id)
+    content: string   # Transcript text</code></pre>
 
     <h3>Lookup Tables</h3>
 
@@ -184,6 +209,7 @@ flowchart TB
     <p>Individual YouTube video records:</p>
     <pre><code>items:
   - id: string              # YouTube video ID
+    video_asset_id: string  # References video_assets.yml id
     playlist_id: string     # Parent playlist ID
     playlist_slug: string   # Parent playlist slug
     title: string           # Video title
@@ -199,41 +225,41 @@ flowchart TB
     embed_url: string       # Embeddable player URL</code></pre>
 
     <h4><code>_data/vimeo_videos.yml</code></h4>
-    <p>Non-interview Vimeo content (presentations, demos, etc.):</p>
-    <pre><code>items:
-  - id: int                 # Vimeo video ID
-    title: string           # Video title
-    link: string            # Vimeo URL
-    created: datetime       # Creation timestamp
-    duration_seconds: int   # Video length
-    duration_minutes: int   # Video length (rounded)
-    thumbnail: string       # Thumbnail URL
-    tags: [string]          # Tags
-    description: string     # Video description
-    uploader: string        # Uploader name
-    views: int              # View count
-    license: string         # License type
-    category: string        # Category (e.g., "oneoff")
-    embed_url: string       # Embeddable player URL
-    topic: string           # Topic
-    people: [string]        # People featured</code></pre>
+    <p>Legacy Vimeo source records. This file is currently empty (as of 2026-02-04).</p>
+    <pre><code>items: []</code></pre>
 
     <h4><code>_data/pechakucha.yml</code></h4>
-    <p>PechaKucha presentation records:</p>
+    <p>Legacy PechaKucha source records. This file is currently empty (as of 2026-02-04).</p>
+    <pre><code>items: []</code></pre>
+
+    <h4><code>_data/oneoff_videos.yml</code></h4>
+    <p>One-off videos (standalone talks and presentations):</p>
     <pre><code>items:
-  - id: string              # UUID
+  - video_asset_id: string  # References video_assets.yml id
     slug: string            # URL-friendly identifier
-    title: string           # Presentation title
-    speaker: string         # Speaker name
-    link: string            # PechaKucha URL
+    title: string           # Video title
+    topic: string           # Topic (optional)
+    speaker: string         # Speaker name (optional)
+    people: [string]        # People featured (optional)
+    speakers: [string]      # Speakers list (optional)
     created: date           # Creation date
-    views: int              # View count
-    categories: [string]    # Categories
     tags: [string]          # Tags
-    image_url: string       # Slide image URL
-    video_url: string       # Video URL
-    description: string     # Description
-    transcript: string      # Full transcript text</code></pre>
+    views: int              # View count (optional)
+    category: string        # Category label (optional)
+    categories: [string]    # Category list (optional)</code></pre>
+
+    <h4><code>_data/scmc_videos.yml</code></h4>
+    <p>SCMC (Software Craftsmanship McHenry County) recordings:</p>
+    <pre><code>items:
+  - video_asset_id: string  # References video_assets.yml id
+    slug: string            # URL-friendly identifier
+    title: string           # Video title
+    topic: string           # Topic (optional)
+    speakers: [string]      # Speakers list (optional)
+    created: date           # Creation date
+    tags: [string]          # Tags
+    views: int              # View count (optional)
+    category: string        # Category label (optional)</code></pre>
   </section>
 
   <section>
@@ -251,14 +277,38 @@ flowchart TB
         <tr>
           <td>interviews</td>
           <td>video_assets</td>
-          <td>1:N (embedded)</td>
-          <td><code>video_assets[]</code></td>
+          <td>N:1</td>
+          <td><code>video_asset_id</code></td>
         </tr>
         <tr>
           <td>video_assets</td>
           <td>interviews</td>
-          <td>N:1</td>
+          <td>N:1 (optional)</td>
           <td><code>interview_id</code></td>
+        </tr>
+        <tr>
+          <td>youtube_videos</td>
+          <td>video_assets</td>
+          <td>N:1</td>
+          <td><code>video_asset_id</code></td>
+        </tr>
+        <tr>
+          <td>oneoff_videos</td>
+          <td>video_assets</td>
+          <td>N:1</td>
+          <td><code>video_asset_id</code></td>
+        </tr>
+        <tr>
+          <td>scmc_videos</td>
+          <td>video_assets</td>
+          <td>N:1</td>
+          <td><code>video_asset_id</code></td>
+        </tr>
+        <tr>
+          <td>video_assets</td>
+          <td>transcripts</td>
+          <td>N:1 (optional)</td>
+          <td><code>transcript_id</code></td>
         </tr>
         <tr>
           <td>interviews</td>
@@ -290,12 +340,12 @@ flowchart TB
 
   <section>
     <h2>Sync Pipeline</h2>
-    <p>External video sources (YouTube, Vimeo, PechaKucha) are synchronized into the canonical <code>interviews.yml</code> and <code>video_assets.yml</code> files. The sync process:</p>
+    <p>External video sources are synchronized into the canonical <code>interviews.yml</code> and <code>video_assets.yml</code> files. As of 2026-02-04, YouTube is the active source feed; Vimeo and PechaKucha source files are legacy and empty, while their assets live in <code>video_assets.yml</code>. The sync process:</p>
     <ol>
       <li>Fetches playlist/video metadata from external platforms</li>
       <li>Creates/updates entries in <code>interviews.yml</code> with basic interview data</li>
       <li>Creates/updates entries in <code>video_assets.yml</code> with detailed video metadata</li>
-      <li>Links records via <code>interview_id</code> and <code>video_assets[]</code> references</li>
+      <li>Links records via <code>video_asset_id</code> and optional <code>interview_id</code> references</li>
     </ol>
   </section>
 </article>

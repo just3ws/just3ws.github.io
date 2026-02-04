@@ -26,6 +26,7 @@ breadcrumb_parent_url: /youtube/
 
   {% assign items = site.data.youtube_videos.items | where: "playlist_slug", "railsconf-2014-interviews" | sort: "position" %}
   {% for item in items %}
-    {% include youtube-video-card.html item=item %}
+    {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}
+    {% include video-asset-card.html asset=asset %}
   {% endfor %}
 </article>

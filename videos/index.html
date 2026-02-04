@@ -1,0 +1,19 @@
+---
+layout: minimal
+title: Videos
+description: Canonical video assets across platforms.
+breadcrumb: Videos
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>Videos</h1>
+    <p class="intro">Canonical video assets with one or more published platforms.</p>
+  </header>
+
+  {% assign items = site.data.video_assets.items %}
+  {% for asset in items %}
+    {% include video-asset-card.html asset=asset %}
+  {% endfor %}
+</article>

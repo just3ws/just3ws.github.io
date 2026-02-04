@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: "Video — The A Word: Architecture w/Uncle Bob Martin"
+description: "Video asset for The A Word: Architecture w/Uncle Bob Martin."
+breadcrumb: "The A Word: Architecture w/Uncle Bob Martin"
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "vimeo-30083598" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

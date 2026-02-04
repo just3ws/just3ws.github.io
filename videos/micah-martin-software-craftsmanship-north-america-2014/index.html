@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Micah Martin
+description: Video asset for Micah Martin.
+breadcrumb: Micah Martin
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "micah-martin-software-craftsmanship-north-america-2014" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

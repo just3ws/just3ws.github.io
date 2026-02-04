@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — HTML5 and JavaScript Game Development w/Eric Smith
+description: Video asset for HTML5 and JavaScript Game Development w/Eric Smith.
+breadcrumb: HTML5 and JavaScript Game Development w/Eric Smith
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "vimeo-29430473" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

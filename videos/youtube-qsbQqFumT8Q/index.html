@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Interview with Max De Marzi at GOTO Chicago 2015
+description: Video asset for Interview with Max De Marzi at GOTO Chicago 2015.
+breadcrumb: Interview with Max De Marzi at GOTO Chicago 2015
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "youtube-qsbQqFumT8Q" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: Video — Software Craftsmanship VS Software Engineering w/Andy Maleh
+description: Video asset for Software Craftsmanship VS Software Engineering w/Andy Maleh.
+breadcrumb: Software Craftsmanship VS Software Engineering w/Andy Maleh
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "vimeo-44387717" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>
