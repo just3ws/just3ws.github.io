@@ -13,51 +13,6 @@ breadcrumb: Interviews
     <p class="intro">Canonical interview index with links to each published asset.</p>
   </header>
 
-  <section class="data-model">
-    <h2>Data Model</h2>
-    <pre class="mermaid">
-flowchart LR
-  subgraph Canonical["Canonical Interview Timeline"]
-    interviews[_data/interviews.yml\nCanonical interviews]
-    assets[_data/video_assets.yml\nCanonical video assets + publish targets]
-    transcripts[_data/transcripts.yml\nAuthoritative transcripts]
-    confs[_data/interview_conferences.yml]
-    comms[_data/interview_communities.yml]
-  end
-
-  subgraph YouTube["YouTube Sources"]
-    yt_sources[_data/youtube_sources.yml]
-    yt_playlists[_data/youtube_playlists.yml]
-    yt_videos[_data/youtube_videos.yml]
-  end
-
-  subgraph Vimeo["Vimeo (non-interview content)"]
-    vimeo[_data/vimeo_videos.yml]
-  end
-
-  subgraph PechaKucha["PechaKucha"]
-    pk[_data/pechakucha.yml]
-  end
-
-  interviews --> assets
-  assets --> transcripts
-  confs --> interviews
-  comms --> interviews
-
-  yt_sources --> yt_playlists --> yt_videos --> assets
-
-  vimeo --> assets
-
-  pk --> assets
-    </pre>
-    <p class="intro">If Mermaid is not available, this block shows the relationships in plain text.</p>
-  </section>
-
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({ startOnLoad: false, theme: "neutral" });
-    mermaid.run({ querySelector: ".mermaid" });
-  </script>
 
   {% assign interviews = site.data.interviews.items | sort: "recorded_date" | reverse %}
   {% for interview in interviews %}
