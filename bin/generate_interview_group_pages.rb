@@ -135,7 +135,7 @@ comms.each do |comm|
     "Interviews recorded with the #{comm["name"]} community.",
     "community",
     comm["name"],
-    interviews
+    nil
   )
 end
 
