@@ -1,0 +1,227 @@
+# Interviews Inventory Report
+
+Generated from `context/interviews-history/catalog.json` with normalized event names (derived, source data unchanged).
+
+Summary:
+- Total unique interviews: 201
+- Community: 166 (transcripts: 68)
+- GOTO Conference: 25 (transcripts: 21)
+- RailsConf: 9 (transcripts: 5)
+- SCNA: 1 (transcripts: 0)
+
+## Per-Event Breakdown (Top 25)
+
+| Event | Count | Transcripts |
+| --- | --- | --- |
+| GOTO Chicago 2014 | 17 | 15 |
+| RailsConf 2014 | 9 | 5 |
+| GOTO Chicago 2015 | 5 | 5 |
+| GOTO Chicago 2013 | 2 | 1 |
+| GOTO Chicago (year unknown) | 1 | 0 |
+| SCNA Chicago | 1 | 0 |
+
+## Full Inventory
+
+| Subject | Event (Original) | Event (Normalized) | Group | Transcript | Sources | Titles | Vimeo URLs | YouTube IDs |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Aaron Bedra |  |  | Community | yes | vimeo,youtube | Aaron Bedra | Interview with Aaron Bedra | http://vimeo.com/51956852 |  |
+| Aaron Holbrook |  |  | Community | yes | vimeo,youtube | Aaron Holbrook | Interview with Aaron Holbrook | http://vimeo.com/64894387 |  |
+| Aaron Kalin |  |  | Community | yes | vimeo,youtube | Aaron Kalin | Interview with Aaron Kalin | http://vimeo.com/50904366 |  |
+| Adam Grandy |  |  | Community | yes | vimeo,youtube | Adam Grandy | Interview with Adam Grandy | http://vimeo.com/49275718 |  |
+| Adewale Oshineye |  |  | Community | no | youtube | Interview with Adewale Oshineye |  |  |
+| Adewale Oshineye co-author of Apprenticeship Patterns |  |  | Community | no | youtube | Interview with Adewale Oshineye co-author of Apprenticeship Patterns |  |  |
+| Adewale Oshineye.mp4 |  |  | Community | no | vimeo | Adewale Oshineye.mp4 | http://vimeo.com/90550217 |  |
+| Adewale Oshinye |  |  | Community | yes | vimeo | Adewale Oshinye | http://vimeo.com/54327050 |  |
+| Amitai Schlair |  |  | Community | no | youtube | Interview with Amitai Schlair |  |  |
+| Amitai Schlair.mp4 |  |  | Community | no | vimeo | Amitai Schlair.mp4 | http://vimeo.com/90550218 |  |
+| Amy Kinney |  |  | Community | no | youtube | Interview with Amy Kinney |  |  |
+| Andrea Magnorsky |  |  | Community | yes | vimeo,youtube | Andrea Magnorsky | Interview with Andrea Magnorsky | http://vimeo.com/59963878 |  |
+| Andy Lester |  |  | Community | no | youtube | Interview with Andy Lester |  |  |
+| Andy Lester.mov |  |  | Community | no | vimeo | Andy Lester.mov | http://vimeo.com/50904365 |  |
+| Angelique Martin |  |  | Community | yes | vimeo,youtube | Angelique Martin | Interview with Angelique Martin | http://vimeo.com/49469070 |  |
+| Angelique Martin.mp4 |  |  | Community | no | vimeo | Angelique Martin.mp4 | http://vimeo.com/89909954 |  |
+| Anna Lear |  |  | Community | no | youtube | Interview with Anna Lear |  |  |
+| Anthony Zinni and Jon Buda and Shay Howe |  |  | Community | no | youtube | Interview with Anthony Zinni and Jon Buda and Shay Howe |  |  |
+| Arthur Kay |  |  | Community | yes | vimeo,youtube | Arthur Kay | Interview with Arthur Kay | http://vimeo.com/63577942 |  |
+| Ashe Dryden |  |  | Community | yes | vimeo,youtube | Ashe Dryden | Interview with Ashe Dryden | http://vimeo.com/65153113 |  |
+| Avdi Grimm |  |  | Community | yes | vimeo | Avdi Grimm | http://vimeo.com/62609424 |  |
+| Benjamin Oakes |  |  | Community | yes | vimeo,youtube | Benjamin Oakes | Interview with Benjamin Oakes | http://vimeo.com/49265043 |  |
+| Bill Scott |  |  | Community | no | youtube | Interview with Bill Scott |  |  |
+| Bobby Johnson |  |  | Community | no | youtube | Interview with Bobby Johnson |  |  |
+| Boston SC w/Zach Shaw |  |  | Community | no | vimeo | Boston SC w/Zach Shaw | http://vimeo.com/32400279 |  |
+| Brad Wilkening |  |  | Community | yes | vimeo,youtube | Brad Wilkening | Interview with Brad Wilkening | http://vimeo.com/54327054 |  |
+| Brian Liles |  |  | Community | no | vimeo | Brian Liles | http://vimeo.com/49265045 |  |
+| Brian Marick |  |  | Community | yes | vimeo,youtube | Brian Marick | Interview with Brian Marick | http://vimeo.com/54327055 |  |
+| Brian Ray |  |  | Community | yes | youtube | Interview with Brian Ray |  |  |
+| Bryan Liles |  |  | Community | no | youtube | Interview with Bryan Liles |  |  |
+| Carina C  Zona |  |  | Community | no | youtube | Interview with Carina C  Zona |  |  |
+| Carl Erickson |  |  | Community | yes | vimeo,youtube | Carl Erickson | Interview with Carl Erickson | http://vimeo.com/54327059 |  |
+| Carolyn Chandler |  |  | Community | no | youtube | Interview with Carolyn Chandler |  |  |
+| Charles Oliver Nutter |  |  | Community | yes | vimeo,youtube | Charles Oliver Nutter | Interview with Charles Oliver Nutter | http://vimeo.com/63577941 |  |
+| Charley Baker |  |  | Community | no | youtube | Interview with Charley Baker |  |  |
+| Chet Hendrickson & Ron Jefferies |  |  | Community | yes | vimeo,youtube | Chet Hendrickson & Ron Jefferies | Interview with Chet Hendrickson & Ron Jefferies | http://vimeo.com/90550223 |  |
+| ChiPy w/Brian Ray |  |  | Community | no | vimeo | ChiPy w/Brian Ray | http://vimeo.com/40267250 |  |
+| Chicago Alt.NET w/Sergio Pereira |  |  | Community | no | vimeo | Chicago Alt.NET w/Sergio Pereira | http://vimeo.com/32355187 |  |
+| Chicago Software Craftsmanship w/Steve Kim and Jim Suchy |  |  | Community | no | vimeo | Chicago Software Craftsmanship w/Steve Kim and Jim Suchy | http://vimeo.com/41882969 |  |
+| ChicagoRuby w/Ray Hightower |  |  | Community | no | vimeo | ChicagoRuby w/Ray Hightower | http://vimeo.com/32390600 |  |
+| Chris Whitaker |  |  | Community | yes | youtube | Interview with Chris Whitaker |  |  |
+| Cleveland & Pittsburgh Community w/Michael Norton |  |  | Community | no | vimeo | Cleveland & Pittsburgh Community w/Michael Norton | http://vimeo.com/32400413 |  |
+| Colin Jones |  |  | Community | yes | vimeo,youtube | Colin Jones | Interview with Colin Jones | http://vimeo.com/54327164 |  |
+| Coraline Ada Ehmke on Artis |  |  | Community | yes | youtube | Interview with Coraline Ada Ehmke on Artis |  |  |
+| Corey Haines |  |  | Community | yes | vimeo,youtube | Corey Haines | Interview with Corey Haines | http://vimeo.com/50863074 |  |
+| Cory Foy |  |  | Community | yes | vimeo,youtube | Cory Foy | Interview with Cory Foy | http://vimeo.com/54327163 |  |
+| Culley Smith |  |  | Community | yes | vimeo,youtube | Culley Smith | Interview with Culley Smith | http://vimeo.com/54327166 |  |
+| DC Alt.NET w/Max Lancaster |  |  | Community | no | vimeo | DC Alt.NET w/Max Lancaster | http://vimeo.com/32390975 |  |
+| Dan North |  |  | Community | no | youtube | Interview with Dan North |  |  |
+| Daniel X. O'Neil |  |  | Community | yes | vimeo,youtube | Daniel X. O'Neil | Interview with Daniel X. O'Neil | http://vimeo.com/67125707 |  |
+| Dave Hoover |  |  | Community | no | youtube | Interview with Dave Hoover |  |  |
+| Dave Thomas |  |  | Community | no | youtube | Interview with Dave Thomas |  |  |
+| Dave Thomas.mp4 |  |  | Community | no | vimeo | Dave Thomas.mp4 | http://vimeo.com/90550222 |  |
+| David Dickinson and Ross Beehler |  |  | Community | no | youtube | Interview with David Dickinson and Ross Beehler |  |  |
+| David Heinemeier Hansson (DHH) |  |  | Community | yes | youtube | Interview with David Heinemeier Hansson (DHH) |  |  |
+| Dean Wampler |  |  | Community | yes | youtube | Interview with Dean Wampler |  |  |
+| Denver Community w/Charler Baker |  |  | Community | no | vimeo | Denver Community w/Charler Baker | http://vimeo.com/32391086 |  |
+| Drew Shefman |  |  | Community | no | youtube | Interview with Drew Shefman |  |  |
+| Dustin Updyke |  |  | Community | no | youtube | Interview with Dustin Updyke |  |  |
+| Eric Kingery |  |  | Community | no | youtube | Interview with Eric Kingery |  |  |
+| Eric MacAdie |  |  | Community | yes | vimeo,youtube | Eric MacAdie | Interview with Eric MacAdie | http://vimeo.com/49275714 |  |
+| Evan Light |  |  | Community | yes | vimeo,youtube | Evan Light | Interview with Evan Light | http://vimeo.com/49282610 |  |
+| Evan Phoenix creator of Rubinius Ruby VM and Puma App Se |  |  | Community | yes | youtube | Interview with Evan Phoenix creator of Rubinius Ruby VM and Puma App Se |  |  |
+| Farrah Bostic founder The Difference Engine and a keynot |  |  | Community | yes | youtube | Interview with Farrah Bostic founder The Difference Engine and a keynot |  |  |
+| GOTO Conference and Community w/Dave Thomas |  |  | Community | no | vimeo | GOTO Conference and Community w/Dave Thomas | http://vimeo.com/40984205 |  |
+| Gary Bernhardt |  |  | Community | yes | vimeo | Gary Bernhardt | http://vimeo.com/54327168 |  |
+| Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones |  |  | Community | no | vimeo | Gathers.us and ChicagoDB with Ethan Gunderson and Ryan Briones | http://vimeo.com/47188414 |  |
+| Geekfest w/Dave Hoover |  |  | Community | no | vimeo | Geekfest w/Dave Hoover | http://vimeo.com/41101410 |  |
+| Giles Bowkett |  |  | Community | yes | youtube | Interview with Giles Bowkett |  |  |
+| Giles Bowkett author "Rails |  |  | Community | yes | youtube | Interview with Giles Bowkett author "Rails |  |  |
+| Ginny Hendry |  |  | Community | yes | vimeo,youtube | Ginny Hendry | Interview with Ginny Hendry | http://vimeo.com/49275719 |  |
+| Hadi Hariri |  |  | Community | no | youtube | Interview with Hadi Hariri |  |  |
+| Houston Adobe User Group w/Drew Shefman |  |  | Community | no | vimeo | Houston Adobe User Group w/Drew Shefman | http://vimeo.com/32390353 |  |
+| How to say "UGtastic". |  |  | Community | no | vimeo | How to say "UGtastic". | http://vimeo.com/48662956 |  |
+| Igor Polevoy |  |  | Community | yes | vimeo,youtube | Igor Polevoy | Interview with Igor Polevoy | http://vimeo.com/51479402 |  |
+| JC Grubbs |  |  | Community | no | youtube | Interview with JC Grubbs |  |  |
+| JC Grubbs.mov |  |  | Community | no | vimeo | JC Grubbs.mov | http://vimeo.com/50904089 |  |
+| James Edward Gray II |  |  | Community | no | youtube | Interview with James Edward Gray II |  |  |
+| James Edward Grey III |  |  | Community | no | vimeo | James Edward Grey III | http://vimeo.com/63577939 |  |
+| Jen Lindner and Milan Dobrota |  |  | Community | no | youtube | Interview with Jen Lindner and Milan Dobrota |  |  |
+| Jen Meyers |  |  | Community | no | vimeo | Jen Meyers | http://vimeo.com/54327170 |  |
+| Jen Myers |  |  | Community | no | youtube | Interview with Jen Myers |  |  |
+| Jim Remsik |  |  | Community | yes | vimeo,youtube | Jim Remsik | Interview with Jim Remsik | http://vimeo.com/49265041 |  |
+| Jim Suchy and Steve Kim |  |  | Community | no | youtube | Interview with Jim Suchy and Steve Kim |  |  |
+| Joe Hirn |  |  | Community | no | vimeo,youtube | Joe Hirn | Interview with Joe Hirn | http://vimeo.com/50904088 |  |
+| Joel Clermont |  |  | Community | yes | vimeo,youtube | Joel Clermont | Interview with Joel Clermont | http://vimeo.com/63577944 |  |
+| Joel Turnbull on his "Debugger Driven Development" talk |  |  | Community | yes | youtube | Interview with Joel Turnbull on his "Debugger Driven Development" talk |  |  |
+| John Servin |  |  | Community | no | youtube | Interview with John Servin |  |  |
+| Jonathan Baltz |  |  | Community | no | youtube | Interview with Jonathan Baltz |  |  |
+| Jonathan Baltz.mov |  |  | Community | no | vimeo | Jonathan Baltz.mov | http://vimeo.com/50904090 |  |
+| Justin Love |  |  | Community | yes | vimeo,youtube | Justin Love | Interview with Justin Love | http://vimeo.com/48999117 |  |
+| Justin Searls |  |  | Community | yes | vimeo,youtube | Justin Searls | Interview with Justin Searls | http://vimeo.com/57935124 |  |
+| Katrina Owen |  |  | Community | no | youtube | Interview with Katrina Owen |  |  |
+| Ken Auer |  |  | Community | no | youtube | Interview with Ken Auer |  |  |
+| Kevin Zolkiewicz |  |  | Community | no | youtube | Interview with Kevin Zolkiewicz |  |  |
+| Kevin Zolkiewiecz |  |  | Community | no | vimeo | Kevin Zolkiewiecz | http://vimeo.com/49275715 |  |
+| Kresten Thorup |  |  | Community | no | youtube | Interview with Kresten Thorup |  |  |
+| Kumar McMillan |  |  | Community | no | youtube | Interview with Kumar McMillan |  |  |
+| Kumar McMillian.mov |  |  | Community | no | vimeo | Kumar McMillian.mov | http://vimeo.com/50904086 |  |
+| Lake County .NET User Group (LCNUG) w/Scott Seely |  |  | Community | no | vimeo | Lake County .NET User Group (LCNUG) w/Scott Seely | http://vimeo.com/38713714 |  |
+| Leon Gersing |  |  | Community | yes | vimeo,youtube | Leon Gersing | Interview with Leon Gersing | http://vimeo.com/54327315 |  |
+| London Software Craftsmanship |  |  | Community | no | vimeo | London Software Craftsmanship | http://vimeo.com/32390835 |  |
+| Mandi Walls |  |  | Community | no | youtube | Interview with Mandi Walls |  |  |
+| Mark Simpson |  |  | Community | yes | vimeo,youtube | Mark Simpson | Interview with Mark Simpson | http://vimeo.com/54327317 |  |
+| Martin Atkins |  |  | Community | yes | vimeo,youtube | Martin Atkins | Interview with Martin Atkins | http://vimeo.com/50904091 |  |
+| Matt Polito |  |  | Community | yes | vimeo,youtube | Matt Polito | Interview with Matt Polito | http://vimeo.com/54327318 |  |
+| Matt Ruby creator of Vooza |  |  | Community | no | youtube | Interview with Matt Ruby creator of Vooza |  |  |
+| Max Lancaster |  |  | Community | no | youtube | Interview with Max Lancaster |  |  |
+| Melissa Castello |  |  | Community | yes | youtube | Interview with Melissa Castello |  |  |
+| Melissa Castello.mov |  |  | Community | no | vimeo | Melissa Castello.mov | http://vimeo.com/50904087 |  |
+| Micah Martin |  |  | Community | no | youtube | Interview with Micah Martin |  |  |
+| Micah Martin.mp4 |  |  | Community | no | vimeo | Micah Martin.mp4 | http://vimeo.com/91379724 |  |
+| Michael Eaton |  |  | Community | yes | vimeo,youtube | Michael Eaton | Interview with Michael Eaton | http://vimeo.com/64936135 |  |
+| Michael Ficarra |  |  | Community | no | youtube | Interview with Michael Ficarra |  |  |
+| Michael Norton |  |  | Community | no | youtube | Interview with Michael Norton |  |  |
+| Mike Burton |  |  | Community | no | youtube | Interview with Mike Burton |  |  |
+| Mike Busch |  |  | Community | yes | vimeo,youtube | Mike Busch | Interview with Mike Busch | http://vimeo.com/49617208 |  |
+| Mike Clement |  |  | Community | yes | vimeo,youtube | Mike Clement | Interview with Mike Clement | http://vimeo.com/54327319 |  |
+| Mike Jansen |  |  | Community | yes | vimeo,youtube | Mike Jansen | Interview with Mike Jansen | http://vimeo.com/53481782 |  |
+| Mike Lee |  |  | Community | no | youtube | Interview with Mike Lee |  |  |
+| Mike Miller |  |  | Community | no | youtube | Interview with Mike Miller |  |  |
+| Mike Stringer |  |  | Community | yes | vimeo,youtube | Mike Stringer | Interview with Mike Stringer | http://vimeo.com/64957012 |  |
+| Milan Dobrota & Jen Lindner |  |  | Community | no | vimeo | Milan Dobrota & Jen Lindner | http://vimeo.com/49013253 |  |
+| Movie on 9-6-12 at 1.05 PM |  |  | Community | no | vimeo | Movie on 9-6-12 at 1.05 PM | http://vimeo.com/49265040 |  |
+| Noel Rappin |  |  | Community | yes | vimeo,youtube | Noel Rappin | Interview with Noel Rappin | http://vimeo.com/49282612 |  |
+| Obie Fernandez author The Rails Way & co-founder Hashrocket |  |  | Community | yes | youtube | Interview with Obie Fernandez author The Rails Way & co-founder Hashrocket |  |  |
+| Ola Bini |  |  | Community | yes | youtube | Interview with Ola Bini |  |  |
+| Ola Bini creator of Ioke and JRuby contributor |  |  | Community | yes | youtube | Interview with Ola Bini creator of Ioke and JRuby contributor |  |  |
+| Pat Paasch and Clark Sell |  |  | Community | no | youtube | Interview with Pat Paasch and Clark Sell |  |  |
+| Patrick Welsh |  |  | Community | yes | vimeo,youtube | Patrick Welsh | Interview with Patrick Welsh | http://vimeo.com/54327047 |  |
+| Paul Baker |  |  | Community | yes | vimeo,youtube | Paul Baker | Interview with Paul Baker | http://vimeo.com/50340303 |  |
+| Pittsburgh SC w/Dustin Updyke |  |  | Community | no | vimeo | Pittsburgh SC w/Dustin Updyke | http://vimeo.com/32400938 |  |
+| Randy Ellis |  |  | Community | no | youtube | Interview with Randy Ellis |  |  |
+| Ray Hightower |  |  | Community | yes | youtube | Interview with Ray Hightower |  |  |
+| Refresh Chicago w/John, Shay & Tony |  |  | Community | no | vimeo | Refresh Chicago w/John, Shay & Tony | http://vimeo.com/41046897 |  |
+| Rob Reynolds |  |  | Community | no | youtube | Interview with Rob Reynolds |  |  |
+| Robert "Uncle Bob" Martin |  |  | Community | no | youtube | Interview with Robert "Uncle Bob" Martin |  |  |
+| Robert Martin |  |  | Community | yes | vimeo | Robert Martin | http://vimeo.com/54327051 |  |
+| Ryan Briones and Ethan Gunderson |  |  | Community | no | youtube | Interview with Ryan Briones and Ethan Gunderson |  |  |
+| Ryan Singer |  |  | Community | yes | vimeo,youtube | Ryan Singer | Interview with Ryan Singer | http://vimeo.com/49265046 |  |
+| Ryan Slobojan |  |  | Community | no | youtube | Interview with Ryan Slobojan |  |  |
+| Sam Serpoosh |  |  | Community | yes | vimeo,youtube | Sam Serpoosh | Interview with Sam Serpoosh | http://vimeo.com/64913673 |  |
+| Sandro Mancuso |  |  | Community | yes | vimeo,youtube | Sandro Mancuso | Interview with Sandro Mancuso | http://vimeo.com/54327320 |  |
+| Sandro Mancuso and Tom Brand |  |  | Community | no | youtube | Interview with Sandro Mancuso and Tom Brand |  |  |
+| Sandro Mancuso.mp4 |  |  | Community | no | vimeo | Sandro Mancuso.mp4 | http://vimeo.com/91379726 |  |
+| Sarah Allen & Desi McAdam |  |  | Community | no | vimeo | Sarah Allen & Desi McAdam | http://vimeo.com/54327412 |  |
+| Sarah Allen and Desi McAdam |  |  | Community | yes | youtube | Interview with Sarah Allen and Desi McAdam |  |  |
+| Sarah Gray |  |  | Community | no | youtube | Interview with Sarah Gray |  |  |
+| Sarah Gray.mp4 |  |  | Community | no | vimeo | Sarah Gray.mp4 | http://vimeo.com/91379725 |  |
+| Scott Seely |  |  | Community | no | youtube | Interview with Scott Seely |  |  |
+| Sean Massa & Todd Larsen |  |  | Community | no | vimeo | Sean Massa & Todd Larsen | http://vimeo.com/49874036 |  |
+| Sean Massa and Todd Larsen |  |  | Community | no | youtube | Interview with Sean Massa and Todd Larsen |  |  |
+| Sergio Pereira |  |  | Community | no | youtube | Interview with Sergio Pereira |  |  |
+| South Bend Software Craftsmanship w/Ross |  |  | Community | no | vimeo | South Bend Software Craftsmanship w/Ross | http://vimeo.com/32390729 |  |
+| South Sound .NET w/Bobby Johnson |  |  | Community | no | vimeo | South Sound .NET w/Bobby Johnson | http://vimeo.com/32401050 |  |
+| Stephen Anderson |  |  | Community | yes | vimeo,youtube | Stephen Anderson | Interview with Stephen Anderson | http://vimeo.com/49275717 |  |
+| Stephen Anderson.mp4 |  |  | Community | no | vimeo | Stephen Anderson.mp4 | http://vimeo.com/89909955 |  |
+| Steve Klabnik |  |  | Community | yes | vimeo,youtube | Steve Klabnik | Interview with Steve Klabnik | http://vimeo.com/49282611 |  |
+| Stuart Halloway |  |  | Community | yes | youtube | Interview with Stuart Halloway |  |  |
+| Stuart Halloway.mp4 |  |  | Community | no | vimeo | Stuart Halloway.mp4 | http://vimeo.com/91379723 |  |
+| Tim Murphy |  |  | Community | yes | vimeo,youtube | Tim Murphy | Interview with Tim Murphy | http://vimeo.com/54327413 |  |
+| Tim Ottinger |  |  | Community | yes | vimeo,youtube | Tim Ottinger | Interview with Tim Ottinger | http://vimeo.com/52073144 |  |
+| Zach Dennis |  |  | Community | yes | vimeo,youtube | Zach Dennis | Interview with Zach Dennis | http://vimeo.com/54327414 |  |
+| Zach Shaw |  |  | Community | no | youtube | Interview with Zach Shaw |  |  |
+| Zachary Shaw |  |  | Community | no | youtube | Interview with Zachary Shaw |  |  |
+| angleBracket w/Pat Paasch & Clark Sell |  |  | Community | no | vimeo | angleBracket w/Pat Paasch & Clark Sell | http://vimeo.com/38713715 |  |
+| Gil Tene  Azul CTO & JavaOne Rock Star | GOTO Chicago 2 | GOTO Chicago (year unknown) | GOTO Conference | no | youtube | Interview with Gil Tene  Azul CTO & JavaOne Rock Star @ GOTO Chicago 2 |  |  |
+| Erik Meijer creator Reactive Framework | GOTO Chicago 2013 | GOTO Chicago 2013 | GOTO Conference | no | youtube | Interview with Erik Meijer creator Reactive Framework at GOTO Chicago 2013 |  |  |
+| Rich Hickey creator of Clojure | GOTO Chicago 2013 | GOTO Chicago 2013 | GOTO Conference | yes | youtube | Interview with Rich Hickey creator of Clojure at GOTO Chicago 2013 |  |  |
+| Adrian Cockcroft keynote speaker for GOTO Chicago 2014 |  | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Adrian Cockcroft keynote speaker for GOTO Chicago 2014 |  |  |
+| Aino Vonge Corry an speaker introducer | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Aino Vonge Corry an speaker introducer at GOTO Chicago 2014 |  |  |
+| Alex Rutkowski & Joel Friedman on remote pairing | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Alex Rutkowski & Joel Friedman on remote pairing at GOTO Chicago 2014 |  |  |
+| Camille Fournier on rewriting software | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Camille Fournier on rewriting software at GOTO Chicago 2014 |  |  |
+| Cindy Sprague a lead organizer with GOTO Chicago 2014 |  | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Cindy Sprague a lead organizer with GOTO Chicago 2014 |  |  |
+| Courtney Hemphill on Mixing Lean & Agile Development | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Courtney Hemphill on Mixing Lean & Agile Development at GOTO Chicago 2014 |  |  |
+| Emily Rosengren on User Groups and ThoughtWorks | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | no | youtube | Interview with Emily Rosengren on User Groups and ThoughtWorks at GOTO Chicago 2014 |  |  |
+| Fred George on Programmer Anarchy | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Fred George on Programmer Anarchy at GOTO Chicago 2014 |  |  |
+| Fred Guime organizer Chicago Java UG | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Fred Guime organizer Chicago Java UG at GOTO Chicago 2014 |  |  |
+| Jez Humble on DevOps culture | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Jez Humble on DevOps culture at GOTO Chicago 2014 |  |  |
+| John Jarosz & Coleman Collins on building ecosystems | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with John Jarosz & Coleman Collins on building ecosystems at GOTO Chicago 2014 |  |  |
+| Max De Marzi organizer Graph DB Chicago | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Max De Marzi organizer Graph DB Chicago at GOTO Chicago 2014 |  |  |
+| Michael T  Nygard looking back on five years of DevOps | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Michael T  Nygard looking back on five years of DevOps at GOTO Chicago 2014 |  |  |
+| Richard Lee a contributor to OpenStack | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Richard Lee a contributor to OpenStack at GOTO Chicago 2014 |  |  |
+| Russ Olsen author Eloquent Ruby | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Russ Olsen author Eloquent Ruby at GOTO Chicago 2014 |  |  |
+| Ryan Gerry organizer with Software Craftsmanship McHenry County | GOTO Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | yes | youtube | Interview with Ryan Gerry organizer with Software Craftsmanship McHenry County at GOTO Chicago 2014 |  |  |
+| Tim Bray co inventor XML | GOTO  Chicago 2014 | GOTO Chicago 2014 | GOTO Conference | no | youtube | Interview with Tim Bray co inventor XML at GOTO  Chicago 2014 |  |  |
+| Anita Sengupta | GOTO Chicago 2015 | GOTO Chicago 2015 | GOTO Conference | yes | youtube | Interview with Anita Sengupta @ GOTO Chicago 2015 |  |  |
+| Charles Nutter | GOTO Chicago 2015 | GOTO Chicago 2015 | GOTO Conference | yes | youtube | Interview with Charles Nutter @ GOTO Chicago 2015 |  |  |
+| Dave Duggal | GOTO Chicago 2015 | GOTO Chicago 2015 | GOTO Conference | yes | youtube | Interview with Dave Duggal @ GOTO Chicago 2015 |  |  |
+| Dean Wampler | GOTO Chicago 2015 | GOTO Chicago 2015 | GOTO Conference | yes | youtube | Interview with Dean Wampler @ GOTO Chicago 2015 |  |  |
+| Rebecca Parsons | GOTO Chicago 2015 | GOTO Chicago 2015 | GOTO Conference | yes | youtube | Interview with Rebecca Parsons @ GOTO Chicago 2015 |  |  |
+| Aaron Patterson Ruby & Rails Core team member and keynote speaker | RailsConf 2014 | RailsConf 2014 | RailsConf | no | youtube | Interview with Aaron Patterson Ruby & Rails Core team member and keynote speaker at RailsConf 2014 |  |  |
+| Alexander Dymo on his Ruby Performance talk | RailsConf 2014 | RailsConf 2014 | RailsConf | yes | youtube | Interview with Alexander Dymo on his Ruby Performance talk at RailsConf 2014 |  |  |
+| Carlos Antonio da Silva a Rails Core team member | RailsConf 2014 | RailsConf 2014 | RailsConf | yes | youtube | Interview with Carlos Antonio da Silva a Rails Core team member at RailsConf 2014 |  |  |
+| Evan Light founder DCamp | RailsConf 2014 | RailsConf 2014 | RailsConf | yes | youtube | Interview with Evan Light founder DCamp at RailsConf 2014 |  |  |
+| Greg Baugues on Mental Health in Tech | RailsConf 2014 | RailsConf 2014 | RailsConf | yes | youtube | Interview with Greg Baugues on Mental Health in Tech at RailsConf 2014 |  |  |
+| Justin Collins creator of Brakeman | RailsConf 2014 | RailsConf 2014 | RailsConf | yes | youtube | Interview with Justin Collins creator of Brakeman at RailsConf 2014 |  |  |
+| Rafael França a 2014 Ruby Hero | RailsConf 2014 | RailsConf 2014 | RailsConf | no | youtube | Interview with Rafael França a 2014 Ruby Hero at RailsConf 2014 |  |  |
+| Richard Schneeman a hacker | Heroku and avid F/OSS contributor at RailsConf 2014 | RailsConf 2014 | RailsConf | no | youtube | Interview with Richard Schneeman a hacker at Heroku and avid F/OSS contributor at RailsConf 2014 |  |  |
+| Yehuda Katz & Tom Dale creators of Ember js and | RailsConf 2014 | RailsConf 2014 | RailsConf | no | youtube | Interview with Yehuda Katz & Tom Dale creators of Ember js and  at RailsConf 2014 |  |  |
+| Gary Bernhardt creator "Destroy All Software" | SCNA Chicago | SCNA Chicago | SCNA | no | youtube | Interview with Gary Bernhardt creator "Destroy All Software" at SCNA Chicago |  |  |
