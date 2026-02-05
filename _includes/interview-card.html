@@ -28,7 +28,16 @@
     </div>
     <div class="video-actions">
       <a class="video-button primary" href="{{ primary_url }}">View Interview</a>
-      {% if preferred and preferred.url %}<a class="video-button" href="{{ preferred.url }}">Watch on {{ preferred.platform | capitalize }}</a>{% endif %}
+      {% if asset.platforms and asset.platforms.size > 0 %}
+        {% assign platforms = asset.platforms | sort: "platform" %}
+        {% for platform in platforms %}
+          {% if platform.url %}
+            <a class="video-button" href="{{ platform.url }}">Watch on {{ platform.platform | capitalize }}</a>
+          {% endif %}
+        {% endfor %}
+      {% elsif preferred and preferred.url %}
+        <a class="video-button" href="{{ preferred.url }}">Watch on {{ preferred.platform | capitalize }}</a>
+      {% endif %}
     </div>
     {% if asset.tags and asset.tags.size > 0 %}
       <div class="video-tags">
