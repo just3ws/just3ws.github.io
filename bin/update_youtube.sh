@@ -12,5 +12,3 @@ if [[ -z "${YOUTUBE_API_KEY:-}" ]]; then
 fi
 
 YOUTUBE_API_KEY="$YOUTUBE_API_KEY" bin/fetch_youtube_playlists.rb
-bin/generate_youtube_pages.rb
-
