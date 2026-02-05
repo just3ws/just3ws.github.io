@@ -3,6 +3,11 @@ set -e
 
 source .env
 
+bin/build_interviews.rb
+bin/generate_interview_pages.rb
+ruby bin/generate_video_asset_pages.rb
+ruby bin/generate_interview_group_pages.rb
+
 bundle exec jekyll clean --verbose
 bundle exec jekyll build --verbose
 bundle exec htmlproofer ./_site \

@@ -11,6 +11,11 @@ interviews = YAML.safe_load(File.read(interviews_path), permitted_classes: [Date
 assets = YAML.safe_load(File.read(assets_path), permitted_classes: [Date, Time], aliases: true)['items'] || []
 assets_by_id = assets.each_with_object({}) { |a, h| h[a['id']] = a }
 
+def yaml_quote(value)
+  str = value.to_s.tr("\n", ' ')
+  "\"#{str.gsub('"', '\"')}\""
+end
+
 base_dir = File.join(root, 'interviews')
 FileUtils.mkdir_p(base_dir)
 
@@ -23,9 +28,9 @@ interviews.each do |interview|
   File.open(path, 'w') do |f|
     f.puts '---'
     f.puts 'layout: minimal'
-    f.puts "title: Interview — #{interview['title']}"
-    f.puts "description: Interview with #{interview['title']}."
-    f.puts "breadcrumb: #{interview['title']}"
+    f.puts "title: #{yaml_quote("Interview — #{interview['title']}")}"
+    f.puts "description: #{yaml_quote("Interview with #{interview['title']}.")}"
+    f.puts "breadcrumb: #{yaml_quote(interview['title'])}"
     f.puts 'breadcrumb_parent_name: Interviews'
     f.puts 'breadcrumb_parent_url: /interviews/'
     f.puts '---'

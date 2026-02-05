@@ -12,12 +12,17 @@ interviews = YAML.safe_load(File.read(interviews_path), permitted_classes: [Time
 confs = YAML.safe_load(File.read(conf_path), permitted_classes: [Date], aliases: true)["conferences"] || []
 comms = YAML.safe_load(File.read(comm_path), permitted_classes: [Date], aliases: true)["communities"] || []
 
+def yaml_quote(value)
+  str = value.to_s.tr("\n", ' ')
+  "\"#{str.gsub('"', '\"')}\""
+end
+
 def write_index(path, title, intro, items, link_prefix, count_label)
   File.open(path, "w") do |f|
     f.puts "---"
     f.puts "layout: minimal"
-    f.puts "title: #{title}"
-    f.puts "description: #{intro}"
+    f.puts "title: #{yaml_quote(title)}"
+    f.puts "description: #{yaml_quote(intro)}"
     f.puts "---"
     f.puts ""
     f.puts "<article class=\"page\">"
@@ -48,8 +53,8 @@ def write_detail(path, title, intro, filter_field, filter_value, interviews)
   File.open(path, "w") do |f|
     f.puts "---"
     f.puts "layout: minimal"
-    f.puts "title: #{title}"
-    f.puts "description: #{intro}"
+    f.puts "title: #{yaml_quote(title)}"
+    f.puts "description: #{yaml_quote(intro)}"
     f.puts "---"
     f.puts ""
     f.puts "<article class=\"page\">"

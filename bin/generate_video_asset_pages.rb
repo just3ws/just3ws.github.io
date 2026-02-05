@@ -9,6 +9,11 @@ transcripts_path = File.join(root, '_data', 'transcripts.yml')
 
 assets = YAML.safe_load(File.read(assets_path), permitted_classes: [Time, Date], aliases: true)['items'] || []
 
+def yaml_quote(value)
+  str = value.to_s.tr("\n", ' ')
+  "\"#{str.gsub('"', '\"')}\""
+end
+
 base_dir = File.join(root, 'videos')
 FileUtils.mkdir_p(base_dir)
 
@@ -22,9 +27,9 @@ assets.each do |asset|
   File.open(path, 'w') do |f|
     f.puts '---'
     f.puts 'layout: minimal'
-    f.puts "title: Video — #{title}"
-    f.puts "description: Video asset for #{title}."
-    f.puts "breadcrumb: #{title}"
+    f.puts "title: #{yaml_quote("Video — #{title}")}"
+    f.puts "description: #{yaml_quote("Video asset for #{title}.")}"
+    f.puts "breadcrumb: #{yaml_quote(title)}"
     f.puts 'breadcrumb_parent_name: Videos'
     f.puts 'breadcrumb_parent_url: /videos/'
     f.puts '---'
