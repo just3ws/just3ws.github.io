@@ -8,11 +8,8 @@ gem 'csv'
 
 group :jekyll_plugins do
   # gem 'github-linguist'
-  gem 'jekyll', '~> 3.10'
-  gem 'jekyll-feed'
-  gem 'jekyll-redirect-from'
-  gem 'jekyll-seo-tag'
-  gem 'jekyll-theme-primer'
+  gem 'github-pages'
+  gem 'jekyll-sitemap'
 
   # gem 'jekyll'
 
@@ -40,8 +37,10 @@ group :development do
   gem 'erb_lint', require: false
   gem 'html-proofer', require: false
   gem 'mdl', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
   gem 'scss_lint', require: false
   gem 'webrick', require: false
 end
 
-gem "faraday-retry", "~> 2.4"
+gem 'faraday-retry', '~> 2.4'
