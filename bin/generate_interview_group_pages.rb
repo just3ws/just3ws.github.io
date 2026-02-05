@@ -49,7 +49,7 @@ def write_index(path, title, intro, items, link_prefix, count_label)
   end
 end
 
-def write_detail(path, title, intro, filter_field, filter_value, interviews)
+def write_detail(path, title, intro, filter_field, filter_value, year)
   File.open(path, "w") do |f|
     f.puts "---"
     f.puts "layout: minimal"
@@ -63,7 +63,11 @@ def write_detail(path, title, intro, filter_field, filter_value, interviews)
     f.puts "    <p class=\"intro\">#{intro}</p>"
     f.puts "  </header>"
     f.puts ""
-    f.puts "  {% assign items = site.data.interviews.items | where: \"#{filter_field}\", \"#{filter_value}\" | sort: \"recorded_date\" | reverse %}"
+    if year
+      f.puts "  {% assign items = site.data.interviews.items | where: \"#{filter_field}\", \"#{filter_value}\" | where: \"conference_year\", #{year} | sort: \"recorded_date\" | reverse %}"
+    else
+      f.puts "  {% assign items = site.data.interviews.items | where: \"#{filter_field}\", \"#{filter_value}\" | sort: \"recorded_date\" | reverse %}"
+    end
     f.puts "  {% for interview in items %}"
     f.puts "    {% include interview-card.html interview=interview %}"
     f.puts "  {% endfor %}"
@@ -77,7 +81,11 @@ FileUtils.mkdir_p(confs_dir)
 FileUtils.mkdir_p(comms_dir)
 
 confs.each do |conf|
-  conf["interview_count"] = interviews.count { |i| i["conference"] == conf["name"] }
+  conf_name = conf["conference"] || conf["name"]
+  conf_year = conf["year"]
+  conf["interview_count"] = interviews.count do |i|
+    i["conference"] == conf_name && (!conf_year || i["conference_year"] == conf_year)
+  end
 end
 
 comms.each do |comm|
@@ -105,13 +113,16 @@ write_index(
 confs.each do |conf|
   dir = File.join(confs_dir, conf["slug"])
   FileUtils.mkdir_p(dir)
+  conf_name = conf["conference"] || conf["name"]
+  conf_year = conf["year"]
+  intro = conf_year ? "Interviews recorded at #{conf_name} #{conf_year}." : "Interviews recorded at #{conf_name}."
   write_detail(
     File.join(dir, "index.html"),
     conf["name"],
-    "Interviews recorded at #{conf["name"]}.",
+    intro,
     "conference",
-    conf["name"],
-    interviews
+    conf_name,
+    conf_year
   )
 end
 

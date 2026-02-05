@@ -1,0 +1,17 @@
+---
+layout: minimal
+title: "RailsConf 2014"
+description: "Interviews recorded at RailsConf 2014."
+---
+
+<article class="page">
+  <header>
+    <h1>RailsConf 2014</h1>
+    <p class="intro">Interviews recorded at RailsConf 2014.</p>
+  </header>
+
+  {% assign items = site.data.interviews.items | where: "conference", "RailsConf" | where: "conference_year", 2014 | sort: "recorded_date" | reverse %}
+  {% for interview in items %}
+    {% include interview-card.html interview=interview %}
+  {% endfor %}
+</article>

@@ -10,7 +10,7 @@ description: "Interviews recorded at ChicagoWebConf 2012."
     <p class="intro">Interviews recorded at ChicagoWebConf 2012.</p>
   </header>
 
-  {% assign items = site.data.interviews.items | where: "conference", "ChicagoWebConf 2012" | sort: "recorded_date" | reverse %}
+  {% assign items = site.data.interviews.items | where: "conference", "ChicagoWebConf" | where: "conference_year", 2012 | sort: "recorded_date" | reverse %}
   {% for interview in items %}
     {% include interview-card.html interview=interview %}
   {% endfor %}

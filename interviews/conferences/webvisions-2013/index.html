@@ -1,0 +1,17 @@
+---
+layout: minimal
+title: "WebVisions 2013"
+description: "Interviews recorded at WebVisions 2013."
+---
+
+<article class="page">
+  <header>
+    <h1>WebVisions 2013</h1>
+    <p class="intro">Interviews recorded at WebVisions 2013.</p>
+  </header>
+
+  {% assign items = site.data.interviews.items | where: "conference", "WebVisions" | where: "conference_year", 2013 | sort: "recorded_date" | reverse %}
+  {% for interview in items %}
+    {% include interview-card.html interview=interview %}
+  {% endfor %}
+</article>
