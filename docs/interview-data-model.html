@@ -19,8 +19,6 @@ breadcrumb: Interview Data Model
     <h3>Rendered Diagram</h3>
     <pre class="mermaid">
 flowchart TB
-  subgraph Sources["External Sources"]
-    yt_sources[_data/youtube_sources.yml&lt;br/&gt;Playlist IDs to fetch]
   end
 
   subgraph Canonical["Canonical Data"]
@@ -38,10 +36,6 @@ flowchart TB
     confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
     comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
   end
-
-  yt_sources -..-&gt;|synced to| interviews
-  yt_sources -..-&gt;|synced to| assets
-
   interviews &lt;--&gt;|video_asset_id / interview_id| assets
   oneoffs --&gt;|video_asset_id| assets
   scmc --&gt;|video_asset_id| assets
@@ -58,8 +52,6 @@ flowchart TB
 
     <h3>Diagram Source</h3>
     <pre><code>flowchart TB
-  subgraph Sources["External Sources"]
-    yt_sources[_data/youtube_sources.yml&lt;br/&gt;Playlist IDs to fetch]
   end
 
   subgraph Canonical["Canonical Data"]
@@ -77,10 +69,6 @@ flowchart TB
     confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
     comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
   end
-
-  yt_sources -.-&gt;|synced to| interviews
-  yt_sources -.-&gt;|synced to| assets
-
   interviews &lt;--&gt;|video_asset_id / interview_id| assets
   oneoffs --&gt;|video_asset_id| assets
   scmc --&gt;|video_asset_id| assets
@@ -167,14 +155,7 @@ flowchart TB
     name: string        # Full community name (matched by interviews.community)
     description: string # Community description</code></pre>
 
-    <h3>Source Data Files</h3>
-
-    <h4><code>_data/youtube_sources.yml</code></h4>
-    <p>List of YouTube playlist IDs to fetch. The importer writes directly into <code>video_assets.yml</code> and <code>interviews.yml</code>:</p>
-    <pre><code>playlist_ids:
-  - string  # YouTube playlist ID</code></pre>
-
-    <h4><code>_data/oneoff_videos.yml</code></h4>
+    <h3>Source Data Files</h3>    <h4><code>_data/oneoff_videos.yml</code></h4>
     <p>One-off videos (standalone talks and presentations):</p>
     <pre><code>items:
   - video_asset_id: string  # References video_assets.yml id
@@ -258,24 +239,12 @@ flowchart TB
           <td>N:1</td>
           <td><code>community</code> (name match)</td>
         </tr>
-        <tr>
-          <td>youtube_sources</td>
-          <td>video_assets</td>
-          <td>N:1 (import)</td>
-          <td><code>playlist_ids[]</code></td>
-        </tr>
       </tbody>
     </table>
   </section>
 
   <section>
-    <h2>Sync Pipeline</h2>
-    <p>External video sources are synchronized into the canonical <code>interviews.yml</code> and <code>video_assets.yml</code> files. The sync process:</p>
-    <ol>
-      <li>Fetches playlist/video metadata from external platforms</li>
-      <li>Creates/updates entries in <code>interviews.yml</code> with basic interview data</li>
-      <li>Creates/updates entries in <code>video_assets.yml</code> with detailed video metadata</li>
-      <li>Links records via <code>video_asset_id</code> and optional <code>interview_id</code> references</li>
-    </ol>
+    <h2>Maintenance</h2>
+    <p>Imports are complete. The canonical sources of truth are <code>interviews.yml</code> and <code>video_assets.yml</code>. Ongoing work focuses on pruning, deduping, and maintaining canonical metadata.</p>
   </section>
 </article>
