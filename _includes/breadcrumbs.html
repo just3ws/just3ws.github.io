@@ -1,5 +1,7 @@
 <nav class="breadcrumbs" aria-label="Breadcrumb">
-  <a href="/home/">Home</a>
+  {% assign breadcrumb_root_name = page.breadcrumb_root_name | default: "Home" %}
+  {% assign breadcrumb_root_url = page.breadcrumb_root_url | default: "/home/" %}
+  <a href="{{ breadcrumb_root_url }}">{{ breadcrumb_root_name }}</a>
   <span class="breadcrumbs-separator">/</span>
   {% if page.breadcrumb_parent_name and page.breadcrumb_parent_url %}
     <a href="{{ page.breadcrumb_parent_url }}">{{ page.breadcrumb_parent_name }}</a>
@@ -8,5 +10,9 @@
     <span class="breadcrumbs-current">{{ page.breadcrumb_parent_name }}</span>
     <span class="breadcrumbs-separator">/</span>
   {% endif %}
-  <span class="breadcrumbs-current">{{ page.breadcrumb | default: page.title }}</span>
+  {% if page.url %}
+    <a href="{{ page.url }}">{{ page.breadcrumb | default: page.title }}</a>
+  {% else %}
+    <span class="breadcrumbs-current">{{ page.breadcrumb | default: page.title }}</span>
+  {% endif %}
 </nav>
