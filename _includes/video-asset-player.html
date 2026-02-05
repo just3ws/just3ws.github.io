@@ -44,7 +44,7 @@
     <h2>Transcript</h2>
     {% assign transcript = nil %}
     {% if asset.transcript_id %}
-      {% assign transcript_entry = site.data.transcripts.items | where: "id", asset.transcript_id | first %}
+      {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
       {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
     {% endif %}
     {% if transcript %}
