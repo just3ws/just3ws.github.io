@@ -48,7 +48,7 @@
       {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
     {% endif %}
     {% if transcript %}
-      <div class="video-transcript">{{ transcript }}</div>
+      <div class="video-transcript">{{ transcript | markdownify }}</div>
     {% else %}
       <p>Transcript coming soon.</p>
     {% endif %}
