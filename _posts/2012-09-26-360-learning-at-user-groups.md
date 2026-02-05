@@ -14,13 +14,13 @@ This article reflects on the idea that learning at user groups is multi-directio
 
 #### First a small plug for my user-group community.
 
-[Software Craftsmanship North America](http://mchenry.softwarecraftsmanship.org) (SCMC) is a group that meets once a month at [Follett Software Company](http://www.follettsoftware.com/) in the far-northwestern suburbs of Chicago. We're a diverse group of individuals with members in their teens all the way up to the great grandparents of software development. It's a lot of fun and we always learn something at each meeting.
+Software Craftsmanship North America (`http://mchenry.softwarecraftsmanship.org`) (SCMC) is a group that meets once a month at Follett Software Company (`http://www.follettsoftware.com/`) in the far-northwestern suburbs of Chicago. We're a diverse group of individuals with members in their teens all the way up to the great grandparents of software development. It's a lot of fun and we always learn something at each meeting.
 
 ### There's more to learn than just the topic at User-groups.
 
 I think that user-group meeting topics are just the tip of the learning possibilities at user-group meetings but you have to take a step back to get the full picture.
 
-Let's paint the scene. Last night [Surya Gaddipati](http://twitter.com/suryagaddipati) was presenting on his work in building [LINQR](https://github.com/suryagaddipati/linqr), a [LINQ DSL in Ruby](http://www.meetup.com/Software-Craftsmanship-McHenry-County/events/79576612/). He was presenting to 11 software professionals who were mostly versed in Java and C++ programming.
+Let's paint the scene. Last night Surya Gaddipati (`twitter.com/suryagaddipati`) was presenting on his work in building LINQR (`https://github.com/suryagaddipati/linqr`), a LINQ DSL in Ruby (`http://www.meetup.com/Software-Craftsmanship-McHenry-County/events/79576612/`). He was presenting to 11 software professionals who were mostly versed in Java and C++ programming.
 
 Let's look at the possibilities for learning within the group…
 

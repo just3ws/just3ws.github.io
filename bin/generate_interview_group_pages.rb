@@ -17,15 +17,21 @@ def yaml_quote(value)
   "\"#{str.gsub('"', '\"')}\""
 end
 
-def write_index(path, title, intro, items, link_prefix, count_label)
+def write_index(path, title, intro, items, link_prefix, count_label, parent_name: "Interviews", parent_url: "/interviews/", grandparent_name: nil, grandparent_url: nil)
   File.open(path, "w") do |f|
     f.puts "---"
     f.puts "layout: minimal"
     f.puts "title: #{yaml_quote(title)}"
     f.puts "description: #{yaml_quote(intro)}"
     f.puts "breadcrumb: #{yaml_quote(title)}"
-    f.puts "breadcrumb_parent_name: Interviews"
-    f.puts "breadcrumb_parent_url: /interviews/"
+    if grandparent_name && grandparent_url
+      f.puts "breadcrumb_grandparent_name: #{yaml_quote(grandparent_name)}"
+      f.puts "breadcrumb_grandparent_url: #{grandparent_url}"
+    end
+    if parent_name && parent_url
+      f.puts "breadcrumb_parent_name: #{yaml_quote(parent_name)}"
+      f.puts "breadcrumb_parent_url: #{parent_url}"
+    end
     f.puts "---"
     f.puts ""
     f.puts "<article class=\"page\">"
@@ -53,15 +59,21 @@ def write_index(path, title, intro, items, link_prefix, count_label)
   end
 end
 
-def write_detail(path, title, intro, filter_field, filter_value, year)
+def write_detail(path, title, intro, filter_field, filter_value, year, parent_name: "Interviews", parent_url: "/interviews/", grandparent_name: nil, grandparent_url: nil)
   File.open(path, "w") do |f|
     f.puts "---"
     f.puts "layout: minimal"
     f.puts "title: #{yaml_quote(title)}"
     f.puts "description: #{yaml_quote(intro)}"
     f.puts "breadcrumb: #{yaml_quote(title)}"
-    f.puts "breadcrumb_parent_name: Interviews"
-    f.puts "breadcrumb_parent_url: /interviews/"
+    if grandparent_name && grandparent_url
+      f.puts "breadcrumb_grandparent_name: #{yaml_quote(grandparent_name)}"
+      f.puts "breadcrumb_grandparent_url: #{grandparent_url}"
+    end
+    if parent_name && parent_url
+      f.puts "breadcrumb_parent_name: #{yaml_quote(parent_name)}"
+      f.puts "breadcrumb_parent_url: #{parent_url}"
+    end
     f.puts "---"
     f.puts ""
     f.puts "<article class=\"page\">"
@@ -106,7 +118,9 @@ write_index(
   "Browse interviews grouped by conference.",
   confs,
   "/interviews/conferences",
-  "interview_count"
+  "interview_count",
+  parent_name: "Interviews",
+  parent_url: "/interviews/"
 )
 
 write_index(
@@ -115,7 +129,9 @@ write_index(
   "Browse interviews grouped by community.",
   comms,
   "/interviews/communities",
-  "interview_count"
+  "interview_count",
+  parent_name: "Interviews",
+  parent_url: "/interviews/"
 )
 
 confs.each do |conf|
@@ -130,7 +146,11 @@ confs.each do |conf|
     intro,
     "conference",
     conf_name,
-    conf_year
+    conf_year,
+    parent_name: "Interviews by Conference",
+    parent_url: "/interviews/conferences/",
+    grandparent_name: "Interviews",
+    grandparent_url: "/interviews/"
   )
 end
 
@@ -143,7 +163,11 @@ comms.each do |comm|
     "Interviews recorded with the #{comm["name"]} community.",
     "community",
     comm["name"],
-    nil
+    nil,
+    parent_name: "Interviews by Community",
+    parent_url: "/interviews/communities/",
+    grandparent_name: "Interviews",
+    grandparent_url: "/interviews/"
   )
 end
 

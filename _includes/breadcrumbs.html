@@ -1,18 +1,43 @@
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   {% assign breadcrumb_root_name = page.breadcrumb_root_name | default: "Home" %}
   {% assign breadcrumb_root_url = page.breadcrumb_root_url | default: "/home/" %}
-  <a href="{{ breadcrumb_root_url }}">{{ breadcrumb_root_name }}</a>
-  <span class="breadcrumbs-separator">/</span>
-  {% if page.breadcrumb_parent_name and page.breadcrumb_parent_url %}
-    <a href="{{ page.breadcrumb_parent_url }}">{{ page.breadcrumb_parent_name }}</a>
-    <span class="breadcrumbs-separator">/</span>
-  {% elsif page.breadcrumb_parent_name %}
-    <span class="breadcrumbs-current">{{ page.breadcrumb_parent_name }}</span>
-    <span class="breadcrumbs-separator">/</span>
-  {% endif %}
-  {% if page.url %}
-    <a href="{{ page.url }}">{{ page.breadcrumb | default: page.title }}</a>
+  {% assign breadcrumb_current_name = page.breadcrumb | default: page.title %}
+  {% assign breadcrumb_current_url = page.url %}
+
+  {% if breadcrumb_current_url == breadcrumb_root_url or breadcrumb_current_name == breadcrumb_root_name %}
+    <span class="breadcrumbs-current">{{ breadcrumb_root_name }}</span>
   {% else %}
-    <span class="breadcrumbs-current">{{ page.breadcrumb | default: page.title }}</span>
+    <a href="{{ breadcrumb_root_url }}">{{ breadcrumb_root_name }}</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    {% if page.breadcrumb_grandparent_name and page.breadcrumb_grandparent_url %}
+      {% if page.breadcrumb_grandparent_name != breadcrumb_root_name or page.breadcrumb_grandparent_url != breadcrumb_root_url %}
+        <a href="{{ page.breadcrumb_grandparent_url }}">{{ page.breadcrumb_grandparent_name }}</a>
+        <span class="breadcrumbs-separator">/</span>
+      {% endif %}
+    {% elsif page.breadcrumb_grandparent_name %}
+      {% if page.breadcrumb_grandparent_name != breadcrumb_root_name %}
+        <span class="breadcrumbs-current">{{ page.breadcrumb_grandparent_name }}</span>
+        <span class="breadcrumbs-separator">/</span>
+      {% endif %}
+    {% endif %}
+
+    {% if page.breadcrumb_parent_name and page.breadcrumb_parent_url %}
+      {% if page.breadcrumb_parent_name != breadcrumb_root_name or page.breadcrumb_parent_url != breadcrumb_root_url %}
+        <a href="{{ page.breadcrumb_parent_url }}">{{ page.breadcrumb_parent_name }}</a>
+        <span class="breadcrumbs-separator">/</span>
+      {% endif %}
+    {% elsif page.breadcrumb_parent_name %}
+      {% if page.breadcrumb_parent_name != breadcrumb_root_name %}
+        <span class="breadcrumbs-current">{{ page.breadcrumb_parent_name }}</span>
+        <span class="breadcrumbs-separator">/</span>
+      {% endif %}
+    {% endif %}
+
+    {% if breadcrumb_current_url %}
+      <a href="{{ breadcrumb_current_url }}">{{ breadcrumb_current_name }}</a>
+    {% else %}
+      <span class="breadcrumbs-current">{{ breadcrumb_current_name }}</span>
+    {% endif %}
   {% endif %}
 </nav>
