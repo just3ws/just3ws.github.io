@@ -4,18 +4,22 @@ require 'yaml'
 require 'net/http'
 require 'uri'
 require 'date'
+require 'set'
 
 root = File.expand_path('..', __dir__)
 sources_path = File.join(root, '_data', 'youtube_sources.yml')
 assets_path = File.join(root, '_data', 'video_assets.yml')
 interviews_path = File.join(root, '_data', 'interviews.yml')
 conf_path = File.join(root, '_data', 'interview_conferences.yml')
+oneoffs_path = File.join(root, '_data', 'oneoff_videos.yml')
 
 api_key = ENV['YOUTUBE_API_KEY']
 abort 'YOUTUBE_API_KEY is not set.' unless api_key && !api_key.strip.empty?
 
 sources = YAML.safe_load(File.read(sources_path))
 playlist_ids = Array(sources['playlist_ids']).compact
+channel_handles = Array(sources['channel_handles']).compact
+channel_ids = Array(sources['channel_ids']).compact
 
 API_BASE = 'https://www.googleapis.com/youtube/v3'.freeze
 
@@ -99,6 +103,8 @@ end
 
 playlists = []
 videos = []
+video_playlists = Hash.new { |h, k| h[k] = [] }
+processed_video_ids = Set.new
 
 assets_data = YAML.safe_load(File.read(assets_path), permitted_classes: [Date, Time], aliases: true) || {}
 assets = assets_data['items'] || []
@@ -110,6 +116,14 @@ interviews_by_id = interviews.each_with_object({}) { |i, h| h[i['id']] = i }
 
 confs = YAML.safe_load(File.read(conf_path), permitted_classes: [Date], aliases: true)['conferences'] || []
 confs_by_name = confs.each_with_object({}) { |c, h| h[c['name']] = c }
+
+oneoffs_data = if File.exist?(oneoffs_path)
+                 YAML.safe_load(File.read(oneoffs_path), permitted_classes: [Date, Time], aliases: true) || {}
+               else
+                 {}
+               end
+oneoffs = oneoffs_data['items'] || []
+oneoff_asset_ids = oneoffs.map { |o| o['video_asset_id'] }.compact.to_set
 
 platform_lookup = Hash.new { |h, k| h[k] = {} }
 assets.each do |asset|
@@ -159,6 +173,35 @@ def build_asset_id(base, suffix, existing)
   final
 end
 
+def fetch_uploads_playlist_id(api_key, handle: nil, channel_id: nil)
+  params = { 'part' => 'contentDetails', 'key' => api_key }
+  params['forHandle'] = handle if handle
+  params['id'] = channel_id if channel_id
+  url = "#{API_BASE}/channels?#{URI.encode_www_form(params)}"
+  data = get_json(url)
+  item = data['items']&.first
+  item && item.dig('contentDetails', 'relatedPlaylists', 'uploads')
+end
+
+def fetch_playlist_items(api_key, playlist_id)
+  items = []
+  page_token = nil
+  loop do
+    params = {
+      'part' => 'snippet,contentDetails',
+      'playlistId' => playlist_id,
+      'maxResults' => 50,
+      'key' => api_key
+    }
+    params['pageToken'] = page_token if page_token
+    data = get_json("#{API_BASE}/playlistItems?#{URI.encode_www_form(params)}")
+    items.concat(data['items'] || [])
+    page_token = data['nextPageToken']
+    break unless page_token
+  end
+  items
+end
+
 playlist_ids.each do |playlist_id|
   plist_url = "#{API_BASE}/playlists?part=snippet,contentDetails&id=#{playlist_id}&key=#{api_key}"
   plist = get_json(plist_url)
@@ -187,20 +230,7 @@ playlist_ids.each do |playlist_id|
 
   playlists << playlist
 
-  page_token = nil
-  loop do
-    params = {
-      'part' => 'snippet,contentDetails',
-      'playlistId' => playlist_id,
-      'maxResults' => 50,
-      'key' => api_key
-    }
-    params['pageToken'] = page_token if page_token
-    query = URI.encode_www_form(params)
-    items_url = "#{API_BASE}/playlistItems?#{query}"
-    data = get_json(items_url)
-
-    (data['items'] || []).each do |pi|
+  fetch_playlist_items(api_key, playlist_id).each do |pi|
       sn = pi['snippet'] || {}
       cd = pi['contentDetails'] || {}
       video_id = cd['videoId']
@@ -210,7 +240,7 @@ playlist_ids.each do |playlist_id|
 
       parts = extract_title_parts(sn['title'], playlist['conference_name'], playlist['conference_year'])
 
-      videos << {
+      video_entry = {
         'id' => video_id,
         'playlist_id' => playlist_id,
         'playlist_slug' => playlist['slug'],
@@ -226,21 +256,83 @@ playlist_ids.each do |playlist_id|
         'link' => "https://www.youtube.com/watch?v=#{video_id}&list=#{playlist_id}",
         'embed_url' => "https://www.youtube.com/embed/#{video_id}"
       }
+      videos << video_entry
+      video_playlists[video_id] << playlist
+      processed_video_ids << video_id
     end
-
-    page_token = data['nextPageToken']
-    break unless page_token
-  end
 end
 
 playlists.sort_by! { |p| p['title'].to_s }
 videos.sort_by! { |v| [v['playlist_slug'].to_s, v['position'].to_i] }
 
+channel_handles.each do |handle|
+  uploads_id = fetch_uploads_playlist_id(api_key, handle: handle)
+  next unless uploads_id
+  fetch_playlist_items(api_key, uploads_id).each do |pi|
+    sn = pi['snippet'] || {}
+    cd = pi['contentDetails'] || {}
+    video_id = cd['videoId']
+    next unless video_id
+    next if processed_video_ids.include?(video_id)
+
+    vthumb = pick_thumbnail(sn['thumbnails'])
+    videos << {
+      'id' => video_id,
+      'playlist_id' => nil,
+      'playlist_slug' => nil,
+      'title' => sn['title'],
+      'topic' => nil,
+      'interviewees' => [],
+      'interviewer' => 'Mike Hall',
+      'description' => sn['description'],
+      'published' => sn['publishedAt'],
+      'position' => sn['position'],
+      'channel_title' => sn['channelTitle'],
+      'thumbnail' => vthumb && vthumb['url'],
+      'link' => "https://www.youtube.com/watch?v=#{video_id}",
+      'embed_url' => "https://www.youtube.com/embed/#{video_id}"
+    }
+  end
+end
+
+channel_ids.each do |channel_id|
+  uploads_id = fetch_uploads_playlist_id(api_key, channel_id: channel_id)
+  next unless uploads_id
+  fetch_playlist_items(api_key, uploads_id).each do |pi|
+    sn = pi['snippet'] || {}
+    cd = pi['contentDetails'] || {}
+    video_id = cd['videoId']
+    next unless video_id
+    next if processed_video_ids.include?(video_id)
+
+    vthumb = pick_thumbnail(sn['thumbnails'])
+    videos << {
+      'id' => video_id,
+      'playlist_id' => nil,
+      'playlist_slug' => nil,
+      'title' => sn['title'],
+      'topic' => nil,
+      'interviewees' => [],
+      'interviewer' => 'Mike Hall',
+      'description' => sn['description'],
+      'published' => sn['publishedAt'],
+      'position' => sn['position'],
+      'channel_title' => sn['channelTitle'],
+      'thumbnail' => vthumb && vthumb['url'],
+      'link' => "https://www.youtube.com/watch?v=#{video_id}",
+      'embed_url' => "https://www.youtube.com/embed/#{video_id}"
+    }
+  end
+end
+
 videos.each do |video|
   video_id = video['id']
   playlist = playlists.find { |p| p['id'] == video['playlist_id'] }
-  conf_name = playlist && playlist['conference_name']
-  conf_year = playlist && playlist['conference_year']
+  playlist_matches = video_playlists[video_id]
+  conf_match = (playlist_matches || []).find { |p| p['category'] == 'conference' }
+  conf_name = conf_match && conf_match['conference_name'] || (playlist && playlist['conference_name'])
+  conf_year = conf_match && conf_match['conference_year'] || (playlist && playlist['conference_year'])
+  is_skate = video['title'].to_s.downcase.include?('skate')
 
   asset = platform_lookup['youtube'][video_id]
   interview = nil
@@ -297,7 +389,7 @@ videos.each do |video|
                   nil
                 end
 
-  unless interview
+  unless interview || is_skate
     interview_id = asset['interview_id'] || asset['id']
     interview = {
       'id' => interview_id,
@@ -307,7 +399,7 @@ videos.each do |video|
       'topic' => video['topic'],
       'conference' => conf_name,
       'conference_year' => conf_year,
-      'community' => nil,
+      'community' => conf_name ? nil : 'General',
       'recorded_date' => video['published']&.to_s&.slice(0, 10),
       'tags' => [],
       'video_asset_id' => asset['id']
@@ -317,12 +409,15 @@ videos.each do |video|
     asset['interview_id'] = interview_id
   end
 
-  interview['conference'] ||= conf_name
-  interview['conference_year'] ||= conf_year
-  interview['interviewees'] = Array(video['interviewees']) if Array(interview['interviewees']).empty?
-  interview['topic'] ||= video['topic']
-  interview['video_asset_id'] ||= asset['id']
-  asset['interview_id'] ||= interview['id']
+  if interview
+    interview['conference'] ||= conf_name
+    interview['conference_year'] ||= conf_year
+    interview['community'] ||= conf_name ? nil : 'General'
+    interview['interviewees'] = Array(video['interviewees']) if Array(interview['interviewees']).empty?
+    interview['topic'] ||= video['topic']
+    interview['video_asset_id'] ||= asset['id']
+    asset['interview_id'] ||= interview['id']
+  end
 
   asset['title'] = video['title'] if asset['title'].to_s.strip.empty?
   asset['published_date'] ||= video['published']&.to_s&.slice(0, 10)
@@ -346,12 +441,19 @@ videos.each do |video|
 
   asset['platforms'] = platforms
   platform_lookup['youtube'][video_id.to_s] = asset
+
+  if is_skate && !oneoff_asset_ids.include?(asset['id'])
+    oneoffs << { 'video_asset_id' => asset['id'] }
+    oneoff_asset_ids << asset['id']
+  end
 end
 
 assets_data['items'] = assets
 interviews_data['items'] = interviews
+oneoffs_data['items'] = oneoffs
 
 File.write(assets_path, assets_data.to_yaml)
 File.write(interviews_path, interviews_data.to_yaml)
+File.write(oneoffs_path, oneoffs_data.to_yaml)
 
 puts "Fetched #{playlists.size} playlists and #{videos.size} videos"
