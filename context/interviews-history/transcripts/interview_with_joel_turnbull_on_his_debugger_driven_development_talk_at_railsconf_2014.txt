@@ -1,0 +1,53 @@
+hi it's mike with you tastic i'm here at rails comp 2014 and i'm selling the earth Joel Turnbull who did a talk on debugger driven development if i Dessay there quickly debugger driven developments thing for taking the time to speak with me so your talk what what was your talk I mean what is the bugger driven development and what we trying to teach okay um yeah I've well it was
+
+called the bugger developed driven development with Prai so it was called fit specific to that tool and basically it was talked about using a debugger or a debugging tool not just to fix your software problems but to actually like leverage the runtime and stuff that it provides to actually develop software and like drive your development process so I talked a little bit about that I
+
+demoed some of the cool features of pry and then I kind of dem out a little bit of this workflow that I've been playing with and then and then I did it ran the same workflow with like a an R Spec a sweet and and kind of demoed a pride command called define it that I had created that would do some like help you with this workflow that I learned based on doing small talk development okay oh
+
+you're actually a small talk yeah yeah there's not a lot you guys in the world yeah yeah i mean i spent a little over a year in the two thousand somewhere actually developing a web application and small talk with latino guys for company is that fair oh yeah fair enough okay yeah so yeah I shown a little bit of Pharaoh and showed how effective small talk is and kind of driving your
+
+development process and getting all of the goofy stuff out of the way but I like doing some automatic code generation for you and stuff like that like if you're trusting a class that doesn't exist yet it will just ask you if you want to create it and do it you know you don't have to like pop up with a file type you know class whatever and it's just like a
+
+one-click thing that happens and you can just sit helps you with your flow rather you so you focused on the things i guess where i would use define it i can you describe yeah scenario work so in my in my little demo that I had I was exercising a class called bowling game okay and I am my holes all my demo is kind of focused on this i'm balling getting that kind of thing so but it's a
+
+class that doesn't exist yet so it's a classic kind of tdd thing where the first test is just like does this does this class even exist like you know you're just testing that you can do this thing up and it will error out and write and then so you move from that and you call your first method on that class which you're asking the bowling game for its core and it should return to zero
+
+and then there were the next test was you know can you ball something like call another method bowl and pass in a number of pins you knock Barry and then have the score reflect that and then the next test was just like an addition of two scores and so I don't respect out you know all the things that this bowling game was going to do or at least four of them without implementing any of
+
+the code to do it right just in classic TDD style and then and then used pry rescue in conjunction with this define a command took that when you when you call our spec under the umbrella pry rescue it's going to break and put you into a runtime as soon as it hits that first assertion error or that first exception which in this case was like there is nothing called bowling game so when you
+
+see that one of the the tool the command that that I created basically when you you could type to find it there and just move on say in the background it wrote a file with the FD class definition in it and then you move on the next test and it says there's a gypsy the finite bowling game or did another one did already knew because you have information an exception exception
+
+so okay yeah and so pry allows you to do you have you have access to all of the context of those things and it's very much driven by like exceptions especially in the case of traffic / I rescue and stuff and so all that stuff is available to you when you when you define a product command like that you have all those things available all the power of try to just automatically you
+
+know use those things so so they are just like you said and then you need to get to the next test where it tries to call score which is a method that doesn't exist yet and you get a no method error you know and you use the information inside that exception the phone call define it as I have to do is Prince call define in it then opens up up that file pops you into a method
+
+empty method template you know based on the name of the method the arguments that it was passed you know and and generates that deaf school yeah def score right for the mountain signature for you yeah method signature right pops you right in the middle of it where you can begin implementing it right now so it's kind of like an auto mocking kind of thing almost yeah I mean it was not
+
+mocking anything I mean I guess it's expanding but I mean it's like how an auto market will listen for a call and then basically automatically generators yeah yeah I guess that's her yeah sure but yours is more interactive where it's like you don't know what it should return thank you yeah laser you open it opens up like the editor we can implement yeah so return false return
+
+true return one two three yes on that case it's just return 0 like TDE likes its expects to score to be zero and you see that expectation there like you see the line that failed and says you know X you know we expected bowling game dude score to equal zero and so you can see what the test is expecting and you can and then when you pop into the editor you
+
+can implement what it is so it's you're not really guessing you know exactly the implementation that it expects you know you can provide that you know when you rewrite the actual men right right so I this it's this tool you pretties us all like I already stepping on just in port or is it a gem that I can go and I can add to my pride it's it is now maybe officially a gem got together today with
+
+Conrad arwen and another guy John well that's what I'm space of us last name but he is as soon as so he he he actually like within the past day and it some more stuff on top of that was really cool and so there is like actual new Prime again called pry fix progress yeah that's one of my things will prize it I mean I RV was amazing but there's some to be more like an ecosystem being
+
+belts around pry yeah we're here right now Freddie Barger pride now prefix pride and I and and nothing you know that we're here at railsconf I do you use us in the context of a very else project because you can over you know you can override the the IRB console and in rails and attach the pride yeah this is work inside of testing and developing a rails application yeah sure I mean
+
+there's something to be worked out as far as the fix gem is concerned specifically I mean you know there's a question of okay so when I call to fine it I want to class doesn't exist where do you put the class right i mean right now it just puts it women in whatever directory are in right and so in the context of rails we might have to add some more functionality to say i'll pass
+
+it in n flagon it'll put it in models or something like that or you know like generate it and put it in some other directory that we we pass in being a flag or something like that but I did demo like my first demo was it was an actual rails app and so I just wanted to kind of demo some of the like really cool features that problem exists already and so you know I took people
+
+that pass through how to you know manual invoke run times with finding that pry anywhere I showed that you could you know like you said like these that all these plugins have made pry so powerful because it's so expendable and you can do anything you want with it so I showed the private bugger plug-in which add selected the step in the next and the continued functionality and did you
+
+download the prior RC we can see and don't even oh yeah yeah you can have a dot power C and oh yeah you can alias and all right so you can see n instead of next yeah okay I thought you think that yeah so my command originally just lived in a proper c5 you know and so that's what I pushed up before my talk and we we just took that and put it into an actual library now that you can just
+
+fold into your projects but that's cool like how you can be in privacy you can totally configure everything you can define your commands and holdem and stuff like that so yeah finding that pride has been my it's clearly replaced debugger yeah in my in my work as well but it being a little before you'd have to go into debugger and then you'd have to say p and then the command yeah with
+
+debugger it i mean with our pride just gives you that pretty its stack you can you can say where am i and its toll yeah it's just like i said in my talk of like it's like tiny little things that just turn like a daunting user experience that you just don't even want to deal with it into like something that really motivates you to like explore and like what I do cool things you know and yeah
+
+it's definitely an evolution of RV it's not saying and I guess it's kind of beauties it doesn't say IRB is stupid out it's just not or debugger is stupid it's just saying it's an evolution and yeah I think it's real healthy thing this yeah I arbys got a very specific intention you know it's scaled down for a reason and and it's just that to like
+
+provide an interface to the language you know and I mean it does that job perfectly right so so yeah well you know I want say thank you probably have time to speak the change recently yeah it sounds like it was a rough on talk yeah that's man check it out user groups with lots to say interviews and more no way sharing great ideas in that tech community fascinating conversations
+
+passera of information find out for yourself today at your casa calm you

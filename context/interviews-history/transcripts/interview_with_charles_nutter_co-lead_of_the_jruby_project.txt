@@ -1,0 +1,89 @@
+hi it's mike with you tests and come sitting down with charles not are also known as hideous and the JRuby guy tonight he's going to be giving a presentation at a go to conference event go to night which is a micro conference that the go to conference people go when whatever city they are going to be in in this case chicago they bring in a speaker and they give a presentation on
+
+the topic and tonight is charles nutter talking about what's next for the jvm thank you very much for taking the time to sit down and chat with me so what is next for the jvm well tonight I'm going to be covering a couple different projects that I think are really interesting possible futures for the jvm some of them exist already some are new but a lot of it kind of revolves around
+
+the supporting additional languages new languages and not just new languages but new language features for job language features that we've been missing in the Java language for years so features like invoke dynamic that was added in Java 7 has enabled new features in Java 8 and 9 the the work we're doing with native function calls FSI is project Panama we're going to get something into Java
+
+nine hopefully have an FFI API for job at ten a lot of this stuff is a surprise trying to get for so effort for folks who have no ffi is foreign function interface okay the idea that we've had all these great tools to call across JDM languages then put lots of languages on the JVM but there's a world of C and C++ and native code out there that we could also be using I want to make that easy
+
+to do too so like if somebody was framing a lecture application that can write in interface be able to maybe have JVM languages talk to their rights exactly exactly see a lot of cases where people want to use native graphics libraries or crypto libraries call out on the language implementations that only have native versions trying to make that a little bit easier at the JVM
+
+level and then get the JVM to optimize that as well as it can to okay and you listed a few of the things that are coming up into the into the language or should say into the JB I'm not just the language it just makes me wonder is how far ahead of the language Java is the JVM are they charity or is there well catch more so when invoked that Anna came along in
+
+Java 7 it was it was the first time anything had been added to the JVM that did not have any exposure in Java the language I was used for dynamic languages were used for new features that were coming along the line but there was no way to actually utilize invoke dynamic from a job oh really so it's like a so there's this language it's with job let's at Jake JBL but
+
+right right exactly the sort of proof that the JDM could be a lot more than job there's the opportunity to add features that maybe job it doesn't get the best use out of but other languages will and i think the JD that has a kind of push to JDM way beyond where java is but also provided a hook that jaded that java itself can add a lot of those features that we were missing like
+
+closures and java java 8 lambdas use invoke dynamic heavily behind-the-scenes features that are coming in java 9 like specializing generics and whatnot that's going to be using invoke dynamic too so the JVM is well ahead of Java but making it possible for java to evolve in places it wouldn't before so it's kind of like a little bit of a rubber band effect yeah absolutely absolutely I've have
+
+been in in some of the discussions about some of the new features like specializing arrays like default methods in Java aid lambdas and it's really easy for us to fall back and say well why we just using both dynamic for this because I moga demek makes it so much easier than just using all of the old byte codes yeah it's everything so everything is invoked dynamic yeah it's very easy
+
+for us to basically map pretty much every operation you look at emack which is what it was for is designed to be very customizable byte code that allowed us to plug in new features hopefully not have to change the JVM expect every every version of Java to make it easier to evolve even also in the abstract for your talk you mentioned about security and how that's become a vital part of
+
+the development of the JVM itself has added you know they can mean that things are getting a lockdown and maybe some of those dynamic features are becoming more restricted as if in the case and is that affected jruby or other languages well I don't think as far as functionality it hasn't affected us a whole lot there are a few examples first of all the big zero day
+
+boys came out a couple years ago it was 2013 spring sometime februari several of those actually did involve the invoke dynamic code oh really there were features within onvogue dynamic that there hadn't been ever knew they hadn't had enough testing it wasn't enough stuff out there to check the different security angles and edges and so there were some exploits possible in some of
+
+the invoked dynamic stuff there were lots of others that were not related invoke dynamic too but for the most part the security fixes that meant going in is stuff that has been in there for years it's not stuff that most people are taking advantage of for libraries and languages but there are things that people can stumble upon and in a few cases internal api's that had to be
+
+turned off that we're too invasive 22 difficult to soldier stuff so there's nothing they were required to say oh you have to run JRuby under these flags to disable right yeah nothing like that the JDM itself is really a dynamic vm and so pretty much all the things we need are in there things like a VOC dynamic just kind of expose it Marvin easily for us you know you know there's is it you
+
+describe that sometimes a GBM being ahead of their show java language there's there's other features that are being able to be developed and are considered kind of very progressive concepts like the vectors enclosure as you consider it up a big milestone for what makes closure difference and there made it possible because of being able to really get in there and do a lot of
+
+stuff that people might not think is possible the JVM has ruined anything inside of a ruby that you're looking at the JBL and be like oh man this would be really cool to do right right well not so much in other JDM languages but another run times there are features for optimizing dynamic languages that we haven't gotten yet for example a lot of a lot of other VMS will either have
+
+what's called tagged values where instead of every integer being an object as it has to be in JRuby because we pass it around his object it's all dynamic instead of every new mare numeric value of having to be an object they can just use a special pointer with an extra bit and it's somewhere okay things like that are being considered as additions to the JVM job and nine is going to have things
+
+like value types which are passed on the stack like in.net C sharp so those are the things are coming along heterogeneous arrays arrays of struct types that don't have an extra level of indirection lots of things from different runtimes that specialize generics like makeup you may make it a list of a list of foo it actually is a physical class that's created in memory
+
+a lot of those things are coming along for Java some of them are enabled by both dynamic and some purchase via mobile features that it's obvious how important they are these days and he talks about you know some of these future forward one time so looking at what is coming down the road but you know sometimes in the enterprise environment they don't or anybody they
+
+don't quite keep up with what's the latest and greatest how do you deal with that when you're looking at okay the next version of j ravines hand okay you want to be able to take advantage of invoke dynamic but it's a java 7 feature what is what is the process that should give you for deciding one do without the one to cut off right right well one of the things that oracle did when they
+
+took son over and took over the development of job I OpenJDK is that they they got back to a more formal more rigid release cycle it's down to about two years again they changed up a security cycle so that they've got security releases as needed rather than on a quarterly schedule or by yearly schedule somehow early schedule so it I think in general the JDM is tis is going
+
+the right direction for the stuff you want to do at this point I suppose I'd say it's hard to say exactly can you feel every little more but on that okay so you're looking at invoke dynamic and you're saying okay we know that there's 24 some of the people have adopted the jdk 7 right so you know everybody else is so unlike and we'd like to be able to use those feet right so that's been a
+
+very difficult for us to make that decision I mentioned it security reasons because that's probably the biggest motivator that we're able to use to say trib you make this move Oracle has started to end of life releases on the same sort of scheduled and son did after a couple years two or three years have been released they're not going to be doing updates you might
+
+have to pay for security fixes very easy for us to go to a customer and say okay are you really going to stay on java 6 you're going to pay for release you're gonna pay for security fixes on into the future or maybe you would be willing to go to Java 7 and now more and more people are just making that move because it's better version because it's more secure so the next major version of jury
+
+review we're looking at Java 7 as a minimum we're still trying to mitigate things like Android that are a little bit further behind the times but but generally we we are not way behind like a lot of groups that are still on Java 16 or forbid 15 even sometimes but we have to maintain a middle ground we'd love to be able to use Java 8 features but this until 7th end of life for a
+
+little while it's unlikely that we can make that a standard yeah so it sounds like kind of Oracle's doing some of the dirty work for you saying like no you gotta go for you got it upgrade right right exact argent up and you can is so you can do the good cop you can be good we didn't do it there Oracle there you know we're just doing yeah sure it's on us but you should upgrade uh the UM
+
+which which also kind of comes to you know in Ruby kind of seen the same thing with 18 being end of life and you know nobody's doing ads rails is everything under 2 is unsupported you're looking at that now we're going to the future is now we're starting to see 2 dot 0 being introducing new language concepts and people are starting to adopt that but right now it to dot 0 support is so in
+
+kind of an alpha phase for JRuby as far as I understand has it affected like made it much more complicated trying to before you've got people wanting to move forward and start using to toil features but 19 is the official supported some tax regime Ruby what what what difficulties are you facing there and well in that adoption the Ruby community I'd say post
+
+19 have been pretty comfortable updating to the latest versions of MRI of see Ruby the move from 18 to 19 was a little rocky it took too long similar to the move from java 6 the Java 7 there were five or six years where people were stuck on one night and became extremely entrenched but these days most people are on 20 or higher and the features in 21 22 are not breaking changes try to be
+
+tricky I've been involved in processable that to try to keep it from breaking backward compatibility so we have a lot of folks that actually do want jruby to catch up and get to 220 to one even two to support so that's what we're looking at for our next release we could try and actually beyond impair on parity as far as features with see Ruby because it's got to be a very difficult dance is
+
+maintaining support for the JDM and maintaining support for language features and trying to balance that just really it's really like the the primary challenge of being part of the core jruby team is not that we're privileged in any particular way it's that we've got those headaches I think about Wales version of Java how far are we gonna go on compatibility are we gonna be bugged
+
+for bug compatible with wage thing to see whether it's worth the compatibility change or not it's a challenge man Charles why are you crying I'm implementing a bug yes exactly we have had great things occasionally yeah minor things minor things but yeah it's difficult supporting one platform on top of another we kept ever our pans in both worlds yeah pretty closely well and that
+
+also brings up the other question of being you know kind of wrapping back to looking at some of the JVM features and some cool stuff like closure vectors somebody is that are inside the JVM that you think are there any ideas in the JVM that you think the Ruby community could really like this would fit with their mindset this would fit with how they do things but it's not an MRI is that
+
+something you're just looking at you have to implement a bug instead of Jeff Ruby has there been anything where you're like kind of like itching to implement it but it's just not quite able to to hitting room well we've had to do a lot of analysis along the way because things are going to be different reflektor has different behavior we have real native threads certain data
+
+structures or not it's not efficient to make them thread safe in certain circumstances so we weigh every one of those differences with MRI most of the big differences generally are around threading and how it behaves with with libraries and with the language itself jruby has the only formal definition of what concurrency and Ruby actually looks like what it means to have concurrent
+
+structures what you can expect to the thread safe or fall at all or all the different buzzwords for threading and then I think the next challenge for us in the Ruby were like I need to spend more time on this with Ruby core we need more of the same like Java util concurrent low level primitives in Ruby itself so potentially you could implement a concurrent hashmap in Ruby
+
+right now that's not impossible without third-party libraries that do atomic references and things like that Ruby needs to have those as part of the core language and it needs to accept that concurrency is where everything is going to go until then we are pushing that line we are the concurrent Ruby that and we've poured we're bringing all those features available looking forward to it
+
+Ruby to tattoo I thought I heard some something about the gill lock going away you know is is that really going to move to a place where okay now they might sir really look in that language was like she would be and saying okay what did you want to deal with right yeah it's very likely I think in 22 they've started to try and at least explore what it would take to remove the lock as far
+
+as keeping the internals of the implementation safe at least mots did say at Ruby cough that people he agrees now that true parallelism is important thing for Ruby in the future so they are going to be looking at this I'd say you know when a ruby three point 0 a time frame there's a possibility depending on the level of effort evolved in the time frame that the lock could go away or
+
+could be reduced in scope and the work that we've done to formalize Ruby threading semantics is going to be really important we're looking forward to getting those libraries out there getting those definitions made so that we have good threading across implementations and I bring this to you that kind of last question is when you talked about working with
+
+the JRuby core team you describe it as your choline of the jruby team you know what does the team look like and how do you how do you interact so how our decisions made okay so too so the the two cold leads Coleen's Tom animo and I we're largely responsible for just kind of hurting bug fixes patches contributors around making sure that people are working on the right things
+
+we have our specific areas I work a lot on optimization and compiling tom works on the new optimizing compiler we have and parsing but we relied very heavily on hundreds of community members over the years and probably dozens right now that are doing contributions over the past year or so the number of commits has been going up steadily the number of contributors going up steadily lots of
+
+folks that have their own their own pet problems pet bugs there there XD Ruiz of expertise that they come into the project and want to try and exercise that so we just kind of trying to funnel them towards the work that needs to get done and and then figure out what make it up makes up a release and get something out okay great well thank you very much for taking the Thames two
+
+dozen speak with me appreciate it alright thanks a lot user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for you at Utah State calm

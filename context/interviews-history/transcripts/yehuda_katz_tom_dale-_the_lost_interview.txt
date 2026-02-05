@@ -1,0 +1,31 @@
+hi it's mike with you tastic I'm at railsconf 2014 I'm sitting here with you who two cats and Tom Dale who lead up the ember.js project and they also gave you who to give a keynote and they appear on a talk called how to build up the smart profiler for rails thank you for taking the time to speak with me Eva can you tell me a little bit about the keynote you gave yesterday sure so I've
+
+been thinking about rails for a long time in 4k on rails for a few years and many no it's been great something like eight or nine years yeah and I found it really interesting I think there's been sort of snippets of a likewise convened a convention over configuration cool why is rails cool how does it make you productive and I think people have given sort of snippets of talks about this
+
+over time and I really wanted to unpack like from the perspective of psychology of the stuff this research that we've done what exactly is happening so I talked a little bit about the idea of ego or cognitive depletion okay the idea that people have a limited store of capacity and that store capacity is used for things like working out hard problems and stuff you want to spend it
+
+on but also really boring things like making choices so like when you go to the supermarket if mere act of making a lot of choices as you walk around is enough to deplete your willpower when you get to the end and you have to buy some candy bar from the from the end to the end of the road and so I think there's a lot a lot of science around that and really it helps to explain why
+
+convention over configuration is a good idea so that was sort of the first half of my talk and the second half of my talk was a dressings or the counter arguments that people give the you know my app is just too special I'm a surviving a special programmer I i need the special tools i need my own tools or you know the idea of the law of leaky abstractions idea that
+
+there's no point even worrying about abstractions because abstractions break and of course all of us who say that are sitting on a tower of abstraction right and miles high I don't even think about it you don't even think about so there's something sort of sort of funny about the fact that people were sitting on top of the boat no community sitting on top of the you know the most advanced
+
+dynamic language it anybody's ever built they're complaining about abstractions actions so so I sort of talked about that and I really pitched the the Ruby community the rails community on both working even harder on shared solutions but also if you find yourself in a community like the no community or the JavaScript community or even if you're you know making vim plugins right that
+
+you should you should really push people you should you should fight back against the impulse that you have about against shared solutions and also try to encourage other people to join build up shared solutions because really the only way you could build i think really awesome is by starting on and Steve Dobson and which I acorda my talk by starting on with 24 if you start on 41
+
+there's only so how you can go before everything falls apart and I think you could have an interesting point to which is that a lot of the shared solution oftentimes that's a shared implementation so I think rails member was both examples where the shared solution is the shared implications one of the same but he also drew I thought which is a pretty compelling analogy or
+
+description of having a shared solution via a common interface like on a common interop so a good example the example that you could have gave him the presentation was in JavaScript we had many different promises libraries so everyone had this problem with dealing with asynchronous values and so everyone was reimplemented a thing that was similar but just different enough to not
+
+be compatible right so there was a effort and a movement to say okay well let's find out the commonalities and let's put those into the spec basically into the promises a plus spec and then you do to show that I was really compelling a diagram of okay once we have that specification and all these different implementations at least agreed to that share the subset look at
+
+all these distractions we built on top of that once we had that in common right and I think of this like a historically it's things like unix POSIX in the no community lib UD right which are not necessarily everybody agrees to write things in the same what about everyone agrees though that they're gonna that people are going to build on top of this disparate set of things in
+
+the same way and I mean even the background for your talk makes me tick on how he worded freedom we were the creator of murder but if I wasn't the crater but I was I would say I was the lead maintainer for launch but you work on verb and we're able to set aside some of your your ego that would have been attached to that so I mean it isn't like you don't you come from just sitting on
+
+a lot of yeah so I mean you've been able to disassociate work you've done and then see it common good and joining and I think the promises thing was similar like actually the reason that the promise is a plus which is the name of the spec got created was because we an ember started working on a promise of probation yet another of many and one of the guys who was like sort of big in the
+
+promises communion JavaScript wrote a blog post that was like you're doing it all wrong and I said well you know that's great that you're talking about all wrong but if I don't have tests or at least tests and specifications very hard for me to not actually have to do it right so so we then created a thing and I think I'm herba sort of similar than that i think the the main idea
+
+behind merb was that shared solutions are great but it really is important that occasionally that there's a place for both plugins and also the oddball part of an app to punch down through the abstraction and get at the lower level so you know people right see occasionally they'll write a simpler when people write rust occasionally

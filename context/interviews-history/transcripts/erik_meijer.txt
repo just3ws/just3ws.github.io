@@ -1,0 +1,107 @@
+user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for yourself today yet you classic calm hi it's Mike again with you tastic I'm sitting down at go to Chicago with Eric Meyer Eric Meyer is well if you've worked with Microsoft technologies of
+
+last decade you've worked with something that that Erika's has created or been a part of from C sharp to the azure cloud platform now you're you're you're away from Microsoft and you're working a lot more on the open source world well first of thank you for something down with me but can you tell me a little bit about what this this this platform that you just spoke about this reactive framework
+
+what is that and what is that ok so so yeah so I can try to explain that in in general terms because that I think it's also where they can you know you mentioned open source where they kind of the value of open source comes in so the thing is that if you if you want if you're trying to compose a software and in my view there are four different kind of effects that as a developer you have
+
+that you have to take into account right so let's look at the simple you know when you're doing when you're programming Jonathan you're calling a method typically the method returns one value and that method is executed synchronously so you call you know and to string and you know it's called blocks and then returns a single string right right so that's kind of the
+
+simplest synchronous call that returns one value so input wait output yes now the second thing that what you do is that if you make a call synchronous phone and what you get back is a collection of values okay it's herbal in Java right so you make a goal and now you get back an interval but that iterable it represents multiple values but also they are synchronous because
+
+you call next next next and each go to next is blocking right okay but the important thing is that there's two you know ways to compose your program one where you have a single result and one we have multiple results and then you know when you have multiple results you loop over that and and so on but those are for for synchronous programs those are the two kind of main
+
+ways to compose your program now let's go to the asynchronous case because that's the very important now that we're moving to more kind of distributed world when you make a call you don't want to be blocked because there's like a latency errors whatever you know we all know the kind of fallacies of distributed computing so what you want to do is you want to make these calls
+
+asynchronous now there's a lot of talk these days of in javascript in many languages about how to deal with asynchronous calls in my opinion when you have an asynchronous call that returns a single value and what you do is you return some kind of future or promise or whatever how you want to call it and then don't net that is they used it the type task for that so a task
+
+represents a computation that is asynchronous that has a single result so you make a call you get back this thing that represents you know a promise that you know there will be a value at some point and now what r ex is is that it complements this picture by having what happens if you have it something that returns multiple results asynchronously so say you make the most natural
+
+examples maybe Twitter you make a call you sent a query to Twitter and what you get back is a stream of all the tweets and you're not asking give me the next we know Twitter will kind of you notify you when the disclosure to buffer and well it just notifies you at events or something or like your and even though your local machine if you're doing events processing up your mouse moves or
+
+so on you're not asking the mouse give me the next Mouse mall right you get notified so you get the sequence of collections sorry probably shouldn't drink so that it's okay now so so so what are exes is it it's trying to kind of you know deal with asynchronous computations with streams of data asynchronous data streams okay and and and and if you look at languages like
+
+Earl on they have embraced that that same paradigm for a long time right where you do message passing you have two different agents that send messages to each other and so what this is trying to do is to define an interface that you can put on on different services and then you can glue these things together using this interface okay how the examples you gave were in in.net this is
+
+a dammit only thing that's a very good question so one of these and thinks is that since this is an abstract interface in the sense of abstract that's conceptually abstract there's no language dependency so we will own the open-source scientists like you know our X dot codeplex com okay where we open source this we have versions for JavaScript for dotnet and for c++ the
+
+C++ wellness not as mature and then Netflix has written a java implementation and github has written an object to see implementation and in Dart google has the dart streams library which is also am based on these principles and then other people i've done like by tone and and ruby and so there's a key again this idea of having asynchronous data streams is not died at
+
+all to a single language and that's exactly also what I want because you don't know if you're on the server side use Java and I on the client side use JavaScript and I still want to kind of exchange you know events with your so that's I think very important that that it's not tied to a particular language because it's a little more like a protocol it's a little bit more like
+
+like a protocol okay and because the what we call the RX grammar or the RX design guidelines so if you and I are exchanging messages and what the vertical says is like what is the you know how are the messages represent about the binary format or brothers they can appiah but it's the state machine that we use so RX has a very simple state machine like that so i can send
+
+you a number of messages that are ordered and then i can terminate that stream successfully that means you don't get any more or i can say something went wrong and then we know so that's really the vertical and there is but it makes certain kind of assumptions and so but but but this yeah I mean I'm not so sure if if it's really relevant to make a distinction between the protocol and an
+
+API because you can also say if you have an API for files right you have to you open your file you write in your wreath and you close the file that's kind of a protocol to so for me I'm yeah I don't it's somewhere in between it's it but i think i'd like to emphasize what what is the same instead of what's different and so there are certain ways that you should use or expectations of in what
+
+order you make calls and whether you want to call that a protocol or not i mean that i'm fine with either way well it is it kind of like if if you start to use the word protocol it becomes kind of rust and it becomes dogmatic yes and then he because protocol is very formal it's like everybody has to do it exactly this way and if you don't do this where you're not you're not reactive yes okay
+
+next thing you really this isn't Russell this is a reactive yes and so I'm trying to be very easy going with that biggest for example you know if you have an existing surface for example and in the past weeks have implemented a wrapper for locally which is in logging service or what you can do is you can send it values events you know whether it dev just like white streams and then you can
+
+query them later so it's like now what what i did is i wrapped dead in a reactive you know she'll right and so the underlying thing doesn't know anything about our ex and you know it's just whatever you know the rest api that the locally guys exposed but now you know by making your client library you know talk RX now there's no difference between you know log lee or your mouse
+
+and so now you can kind of you mesh together you know things that comes from locally with your mouse or anything you can visualize it so it allows you to compose so button by making exposing all these things with the same interface then you can compose them but you don't force the interface kind of you know all the way down so that's kind of you know so you can always it's like bridging the
+
+protocols right you can always you know it one of things i think about that's interesting for sa is more of a i am a businessman from just an implementer um is thinking about the log not as just a place where things go to die but that the log is is something that that's alive and get feedback into the application information for back into the app not
+
+just oh this is a thing that I go to figure out when something went wrong yeah so so so this it's kind of interesting if you look at and again you have to be very careful that you don't abstract too much because then everything looks the same but if you look at the UI for example right what is the UI well I'm sending things into the UI and maybe to change the back color of
+
+a button or to kind of you know make a button disabled and out of the UI come a stream of events like mouse clicks and mouse moves and button clicks and then my my coat my UI code transforms dead stream of UI events into other events that it sends into the UI so there's this loop where there's the UI and then my kind of event processing and they are kind of coupled in a loop now if you
+
+look at something like luckily for example there's no difference there because my program sends events do lovely and then can query those events and then go back so you get the kind of same loop so and suddenly a lot of these things now look very similar right because you're observing you know like it's like when you write UI code just like you're observing the UI and based
+
+on what you see you're kind of doing something with the UI so you know what is your logging system you're observing you're running code and based on what happens you can kind of you know and do some result yes and like when you say we and Auggie yes exactly and when you say logging you know that goes there to die then why do you do it you do the logging to observe the behavior of your code
+
+says that you can you know intercept when something expected happens or yeah in a way it's thinking about what my relationship is to the application and then certainly demonstrate what I do or where I on my app and then I watched the logger and i'm watching messages fly by and then imma go that wasn't right then i go do something well okay now i can start to
+
+abstract that thing that i didn't realize that that stream is data yep and I am The Observer that data and then I'm going to react and I think that's just a way to kind of realize what's going on with reactive yes that's that's that's how I just processed it now yes exactly right and then what I'm trying to do is that you can automate yourself away yeah so you right then now but what the next
+
+step I would say to you is that now write some code that will do what you what I did yeah and then and then now you can kind of create more value for your business because now because it once you can automate it really you know the human doesn't need to be there or one thing that I'm also trying to do is that there's many things where the daytime but with these logs for example
+
+is I think this is a nice example there's so much data in the logs but you what you have to do is you have to turn it into something actionable for humans right and so I think that's one of the things that I'm trying to make easy where you can take massive amounts of data and then you know use the computer to convey emerged that such that at some point you get something that's useful at
+
+the human scale right because we cannot deal with millions of events per second I mean even it nobody can do I think that we can maybe deal with like no one event or alert every five minutes right so what you want to do is that's kind of here you want to boil down all that data into something that's consumable by humans and the rest should all be automated to
+
+take a step back we talked about how this is a this is a not to use word protocol but this is a way that many different types of platforms in them and languages can interact with each other so sue me you have to share the this these concepts of many different audiences you Microsoft audience who's implementing in.net JavaScript audience who might be running node or running
+
+browser based applications or a Java so I'm just wondering how you share this message to you when you go and talk about reactive framework GG's Microsoft examples that the JavaScript or D Taylor for what they do or for a job I again okay so is it that this is a very good question so what you always should do is that you should kind of you know phrase things in terms that are familiar to
+
+your target audience so if you're talking with JavaScript people you should use you know JavaScript and examples and so one of the things that I really enjoy not being you know on my own is that it's in some sense much easier to kind of you know go and embed yourself in a different community so and and and we already gave the example of Netflix that did RX for Java right and
+
+while the underlying ideas are the same that there's very big differences actually in the Java and C sharp languages that then affect the concrete design of the API for example and don't net there's this notion of extension methods where you can take any type and you can add you know they are not virtual but you can add like instance methods to that type
+
+and independent of the type itself so for example if you have array of int I can add a new method that conceptually to area and in Jonathan you cannot do that java 8 has you know virtual extension methods on interfaces that are slightly different but so for example the design of RX for java you know has to stay within the constraints of java so what what I'm trying to do when I
+
+work with with people that do an RX implementation for their language is to make sure that it feels natural for their environment but still embodies the same underlying more abstract i would say mathematical principles and let me give you another example in JavaScript array there's already functions like map filter and so on so when you do our X which is you know they did the push
+
+based version of that you're not going to call them select and select money you call them map and where because you know that's natural of course that are natural exactly so that's kind of problem one of the things that I'm really looking forward to is to work with all these different language communities to make this thing kind of feel natural for what they are doing and
+
+then still being able to interoperate between you know machines are between languages and where the protocol is kind of your consistent okay but the implementations should feel natural so let me give you another example when we did the JavaScript version in the beginning in JavaScript the casing of identifiers is opposite of C sharp C and C sharp it's like you have to string
+
+starts with uppercase I always forget whether Scammell or Pascal case I always have to do we look that up on Wikipedia press in JavaScript it's different right right so what we did in the beginning we use the dotnet naming conventions and then all the JavaScript people would go like that and then I was like man that's bike shedding but then I realized no I'm wrong because I find it annoying too if
+
+you have to go the other way exactly so we changed that and now you know then Jafar who signed from netflix said oh we should change the names to show my thinking has evolved very much that now I was like okay you do what's natural for the language and then you know make it still conceptually the same and then you passed the kind of Saint test so there's there's a whole bunch like I
+
+don't know like 3,000 unit tests and that specified the semantics so it's really maintaining the semantics across languages but with different implementations and I must say it's it's that that is the hardest part is that some things don't and translate so you have to run which is also nice like for example what I mentioned with the extension method so you cannot just take
+
+the c-sharp implementation and just plug it into a different language to you have to really work hard on that stupid to make it natural to make it possible in a different language okay if I'm if I have some pet language and i'm looking at home i'm very interested in this reactive stuff and i want to implement it in in my tablets just a Python it's magic I thought doesn't have anything
+
+and where would I go to learn about or talk to people and understand what how to implement it what what the underlying principles are okay so that's that's a very good question so there's there's learn our XCOM so did that's a one of the dotnet early the users then has written a book there's also ball bats and Jesse Liberty have written look a very thin book on RX and which I
+
+like because it's 10 and then there's the RX guidelines that give you a little bit more of the semantics ok and and so I would say you know you start playing with the.net version or the Java version and and then you know you go from there the other thing is that in some sense the JavaScript version that we have for dotnet is a little bit like a reference implementation because JavaScript
+
+doesn't have threading and so so in many cases the implementation there is simpler than the dotnet version which is highly also highly optimized it's very mature code it's like you know so because it's it's written for ya for performance rather than clarity you're looking at that coat may not help you that much ok so but that the common reference seems to be JavaScript did yet
+
+so javascript is probably the kind of thing that that's the most approachable ok and then the concepts are not that difficult I mean that's the things I could but I think you have to be careful that you know I talk a lot about duality and category theory which might scare people off but this has nothing to do in some sense with that that's one way to explain it another way to explain it is
+
+saying you're a JavaScript programmer write JavaScript already has a notion of events everything in javascript is event-based right now one way to look at our X is to say well but events in JavaScript are not something that our first class I cannot have an array of events or I cannot have a function that returns an event right registered by private environment exactly and update
+
+yes and what r x gives you is it makes events into things that you can manipulate and and bounced around so it's a one way to that our exes all sometimes also called it's like first class events so in that sense you know it's very familiar to java programmers because it takes these concepts that they already know and another concept that they already know
+
+like erase erase our first class thinks I can have a function that takes an array I can FFM said returns an array and now you allow the same for events and the power of that is that you can now deep upon the source of the event say a button that fires events from the event itself so for example I can now create an array that has the values and then make that into an event source for
+
+example to test so I don't have to have a button that fires the events but they just put the values in an array and say to event and now getting serves as an event source and so that's the kind of trip so it's really it's actually not that hard and but then of course the Circle T is once you make that first class you have to go and be careful and because of the asynchrony well thank you
+
+very much for the other tablets down with me really appreciate it yes and yeah yeah I would say try it out and if you we're always happy to accept you know contribution yeah yeah you said it's on codeplex it's on codeplex and then and the netflix version is on get up and that's job rxo on get up the netflix sighs okay and learn our racks is this yes yes and so I I you know you
+
+will probably put the URL so those links will be in there okay perfect thank you thank you so much that's my edit point huh user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for yourself today yet you classic calm you

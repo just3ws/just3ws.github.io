@@ -1,0 +1,65 @@
+hi it's mike with you tastic I'm here again at go to cop 2014 I'm sitting here with Michael Nygaard who gave a talk on DevOps at five where are we now thank you very much for taking the time to speak with me can you tell me a little bit about DevOps of 5 what is that what does that mean and how did you come to that presentation sure it'd be happy to so DevOps was actually coined by one
+
+individual we know when the name was created it was created by Patrick Dubois in 2009 ok so that was five years ago and five years is an interesting time span first of all it's a round number and humans like round numbers yeah but it's also sort of the time it takes any idea to go from radical to kind of entering the mainstream it's about half the time it takes for an idea to become
+
+completely mainstream and it's about one quarter of a normal career for a working programmer or the what you would call the time from entering the field to being a grizzled great idea so five years was an interesting time to sort of take stock collect up many of the ideas that people have created sort of provide a survey for folks who haven't been in it great for that time but maybe are
+
+hearing the term are interested in what it's about and frankly also to give some cautions or some warnings great and so I wanted to do all of that in kind of 150 minute package yeah that was my top and i have to say when i heard five obviously again more of like the vine that it's starting to get to the point where we're talking about DevOps more and that's when kind of a theme a little
+
+bit here at go to campus about its mean and lean enterprises and continuous delivery and taking this term DevOps and say no this is really something that we really need to think about yeah definitely and we heard that team echoed by Adrian Cockroft in his keynote that opened the conference where he talked about the the trajectory at Netflix from 2009 where people are saying no it will
+
+never work to somewhere around 2012 they say it only works for special unicorn like that price to 2014 where you know a lot of comfort other sayings yeah we need to do this too and that's definitely how DevOps has gone as well it's gone from this idea that says well it's fine for web native companies like Flickr and Etsy but it doesn't do me any good in my you know retail organization
+
+I got brick-and-mortar stores to worry about but as time is going on we've seen that the ideas are quite generally applicable right okay well in an earlier interview we talked with somebody who talked about how they were using continuous delivery working with the restaurant industry and able to deliver a change 10 hours before opening of a major bar and that these these concepts
+
+can be applied into serious product development that actually really touches an end user and what might have previously been considerably oh my god were in a freeze mode don't touch anything yeah definitely when you look at the reason for freezes and and the sort of traditional deployment process a lot of it is around risk management the idea of saying an event a negative event
+
+has a high cost and so we need to avoid that cost right I would turn that around these days and say preventing that event also has a cost it's not as visible in the immediate sense but it's a cost that you feel in the form of friction and delay in getting things done right so we've changed to a different style of risk management that says I'm going to try and reduce the chance of the bug
+
+slipping through to production but I'm also going to make sure that I detect it immediately and can push a new release that eliminates the bug or and immediately and so in some sense the number of opportunities for error goes way up but the cost of any individual error goes way down because you're limiting the scope so is it trying to turn what its previously known as a risk
+
+period of like once we get into a certain period before it goes live we have code freeze to change is now not risk it's just part of the way we approach well the little cautious about that because there still is some risk associated with it and if you do if you don't adopt any of the other practices and you just go too fast deployments
+
+you're going to incur some damage okay as you speed up the deployments you also need to speed up your monitoring and your metrics you need to make sure that you can detect the problem very quickly so focus on that meantime to detection I've been in many places where the meantime detection is measured in weeks it needs to be seconds yeah to really say you're doing the DevOps continuous
+
+delivery approach and likewise you need to be able to repair the damage very quickly Adrian talked about detecting a bad deployment within five seconds of when it goes live right and automatically switching back over to the old system that's still alive and running so in that case you say a 10 second error how many users are going to hit that 10 second error rate so three
+
+magana I'm trying to put it in into dollar cost terms where I'm comparing the expected losses from bugs slipping through to production versus the expected losses of bugs that are already in production that you can't fix because you're in a freeze yeah so it's it to me it's almost sounds like you're trying to say we're going to reduce that surface area of that first group that hits a new
+
+change mmm and then what once we know because we've kept it that surface area small we can grow it out and then but be able to retract absolutely H more I think I think of limiting it in space and time so limiting the exposure in space is how broadly is my audience exposed to the new code right away so we use techniques like feature flags and differential routing to let a few people
+
+in at a time and then limiting the scope and time is how quickly can I fix the bug when it gets through right so yeah so how the speed-up of or even being able to turn it off because like we need yes if such a flag is cool that one didn't work so that could be that some taneous absolute Rob mitigation of risk so the term DevOps though it's still been kind of a high-level term and
+
+we've talked a little bit about monitoring and continuous delivery what what when you say they try and DevOps so can you kind of break that down into kind of pieces a little bit yeah I'll try actually the schema that I would use comes from John Willis who talked about DevOps as culture automation measurement and sharing okay and culture comes first for a good reason so the idea with
+
+culture is that we want to create a high trust culture where we have a strong and deep collaboration between development and operations this is why by the way I consider it a fallacy to hire a new dev ops team that sits between Devon Dobbs and is supposed to be a bridge because instead of creating a tight junction what you've really done is now made to handoffs instead of just one yeah and
+
+they're they're alien and now there's friction yeah absolutely at both sides feel threatened by this new team so the culture is one of enablement and mutual support so where previously operations is frequently held accountable for code they didn't write very than the availability and performance of site code now we would close that feedback loop and say operations is going to
+
+enable development to move things into production as rapidly as possible and also give development the tools to see the effects of what they do right and now the responsibility is on development to use that ability wisely so instead of focusing on process on automation for self-protection you're focusing on automation to enable your partners and collaborators and doing this so that's
+
+that's kind of the culture that we want to create all of the tools all of the monitoring is in support of that culture and you know in it what I'm thinking about when you're talking about the information and not looking at those metrics is how do you kind of protect yourself but we should say maybe risk but or find Blaine I should say that's it that's
+
+what I was trying to look for is I think about if i'm running a nap and I launch it on my on blocking machine I'm watching my cpu my ram I just wanted not how it's doing and that's a normal thing that i do i'm writing code luckily but that we should also maybe look at our entire systems at that same level of of not detachment from what it's what it's saying that it's not something that
+
+we're looking to protect ourselves from blame or faults but just how is this system working in yeah in fact i would go even farther and say when i'm putting code into production I'm not just interested in how it's doing on RAM and CPU I'm also looking at the effect on the users what's the response time distribution what have I done as far as average latency and the 99th percentile
+
+latency what have I done in terms of conversion rates and revenue coming into my business these are things that developers can care about and want to improve right there's a much older idea that says you know developers don't care about the business they don't understand money they don't you know as long as they get to play with their code they don't care what happens to the business
+
+I found that to be a foolish stereotype and so now you'll have developers who will optimize a chunk of code in order to improve the response time and get the conversion rate up great so we need to think more about that when i'm having a profiler tool that it isn't just looking at bits and bytes but it's looking at key transactions they mean levels you to the customers experience and how they're
+
+going to interact absolutely so all of these tools exist but they're normally fragment so the operations group will have the system monitoring you know maybe you'll have a user experience group that's got the real user monitoring system and then you'll have the marketing for the analytics group that's got the business significant metrics they're all
+
+being collected different ways while you get 60 tracking pixels on a single web page yeah and they're all going into different databases we actually need to bring them all together so I can see a single graph that shows me I don't know io saturation a vertical line where a deployment went out and the conversion rate all overlaid on the same graph so i can see look that that went out and crap
+
+the conversion rate went down yeah so here's the next deployed and went back to where it was supposed to be yeah or for sure the CPU or Iowa hot but conversions went up higher yeah that's going to offset us buying a machine exactly those kinds of thoughts can be done instead of just oh no we write and so the lead flickers would say that this is optimizing the whole value chain
+
+rather than locally optimizing pieces of the value chain right and that's true for the the actions we take to deliver the software as well as the value chain of the software executing in production yeah so it's looking at changes in a holistic manner and just seeing how they reflect off of each other and whether or not if there's an imbalance whether that actually is okay yeah okay um when
+
+somebody goes to your talk if there's one thing that I as a developer or product manager you'd like them to take away from that talk and go back to their to their companies to their projects and try to put some of these new ideas into practice what would you like them to take away most so I think the number one thing I would like people to take away is you can make these changes yourselves
+
+right you don't need permission you don't need approval from on high and you especially don't need to buy you know DevOps in a box or by someone's new tool or old tool that's been relabeled you know dev ops edition something like that DevOps is a style of working and it can start at the grassroots and you know if you show some results with it you'll get more support right
+
+and that's just how things go what was it that I think I'm going to see I think it was kind of fact that so don't tell them you do an agile yeah because they don't understand what are you anyway yeah there because the only answer is no right right yeah if you just do something and it works then the end all times and ask how you did it no they want you to replicate it elsewhere or at
+
+least felt very much get out of your way trouble thank you very much for taking the time strictly a platter to be user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for yourself today yeah cute esta com you

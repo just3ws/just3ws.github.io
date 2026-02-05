@@ -1,0 +1,55 @@
+you hi it's mike with you tastic I'm here railsconf 2014 and I'm sitting with Justin Gordon who gave a talk what was it today about decorators concerns and presenters but he what first thank you for taking the time to speak with me but you were saying that you think that sort of how you came to this talk and how it involved might be marching than sharing
+
+that the exact talk right now I like to like talk about that anyway the the story was was that JetBrains ask me for one to come out to rails cough and show off a remind for a couple days I thought about a little bit i go sure i'd like to go yeah i've been only one ruby conference before and absolutely just was astounded at how different i found the Ruby community in terms of
+
+friendliness and everyone wants to contribute stuff to open source just the whole thing was just just absolutely love everything bat so psycho and rails calm and then at the very last day of the CFP I thought I saw the last tweets it 10 hours left to get you see at p.m. for rails cough and at that point a very committed to go and got my tickets ago what that and it throws a proposal so I
+
+thrown a proposal based on some work of us doing with thoughtbot and reviewing some client rota was working on my work as an independent consultant I'm a freelancer so I know the project c'mon was on I don't have someone to review my code so thought mom was helping me out with that and one of the things we've been working on a lot was the stuff kind of the sanding that sort of techniques
+
+of smaller objects smaller methods so then I was thinking up I don't go god that's what the objective is but i'm using all these different techniques for different scenarios I didn't really interesting talk with me if I could just explain to people the lessons I learned in the techniques and I'll figure out how they're going to take some fat model and controller code and make it summer
+
+so that was he that was the overall idea the talking one of the big things before I went in the talk was I this finally the really cool thing was I come up with a new pattern but this is a cool way to do it the service object pattern they had but it wasn't just what it was was that it ended up i was putting stuff into this object that would actually send back
+
+steps the controller by what the controller should do and we make a long story short it's not going to get code samples for this exercise for my presentation so I looking around and ask I'm on the Carl a form and they learn form all the time so I asked the people on there you know where are some factoid examples so 17 is the places in fact code so projects like for example i was
+
+looking at read mine for example and then sure lots of big examples of some real fact road in there but i'm looking at this one okay i'm going to turn this in there talk people are going to just fall asleep because i'm dry explains because you know my time explaining the context of why it's fat we're never going to get to the techniques so then I decided to develop my own and what's
+
+going to base it on Michael heart tells rails tutorial because that would be nice and simple for everyone to see right on hmm I think I'll put this on get up and make each lesson a different pull request and what I'll do is I'll and then I asked some people on the forums would be a good idea to get the code reviewed and they said yeah I'd be an excellent idea to get it reviewed I
+
+had no idea how excellent an idea was would beat again reviewed so I got start getting the review comments and it was amazing what a difference it made between the final product of what you know what the talk was and what originally was so one of the things actually when i was getting it reviewed was beside those two forums i actually got in touch with david Hyde Meyer hints
+
+and asked him if he'd be willing to give me a comment that's all he was doing his code ping pong tongs I was absolutely astounded when I immediately got back a response with some review of the time I was like whoa this is pretty good yeah and then but however my concept of what I thought things should be was definitely not right let me say i was glad i found that out before not after
+
+the talk as I said this is so super I've come up with a pattern to save the world it's like I was basically in his talk I was basically the poster child of all these people think they're going to come up with a pattern yeah they're going to save the world so anyway luckily I did talk to him and I was one of the guys as his examples it wasn't quite say was gonna say tomorrow
+
+but I thought I had this whole idea oh my god cota rica Troy this cool example that basically is of the blog site i was going to make it so it's got this service like component to it which is instead of just plain creating and posting on there i was going to make it the kiddie safe vlogger so because little kids are like five years old like say words like poop face and fart face
+
+all the time and they think it's fun to call their dad and yeah so I would know anything about that I got three kids I know yeah yeah I know and I'm thankful to hear your any given moment are obsessed with those words yeah so anyway I thought hey find what I do and I came with my example and you can find it all on get up is that you but if the user is a minor then in the end and check for
+
+profanity and if there's four fan of the I'm going to display a special customized flash message and extra big letters so not just regular validation meza message and it's going to say you know I notified your parents you know the oak occasionally one or put in validation and how many times they did like used for fanning to counter on the user model so it's all that stuff
+
+outside the micro post so use again it's not quite Mike repose creating stuff great whole example and stuff anyway though long story short get it reviewed by David okay this thing is totally wrong because i was putting stuff in the control in the so-called service object they have all this knowledge about what the control of need in terms of what the flash is what the status code is all
+
+sorts of things I thought were kind of cold they had to have this extra object packaged up all these values and back to controller so I'm talking David and then he goes well you know one pattern that we've been doing is we've been having these lean controllers so that you know people kind of Dino this cuz just miler trails st. doing like the rails tutorial is that the generator generates for you
+
+a model and action controller you don't really think about breaking out in the little different little itty bitty controllers so it's one of the things safe oh okay we're getting half my control i'll make it lean sotis put everything that I had I put in my service on being back in the controller and then the feedback was was naked no no no you guys still take
+
+anything that could be model related and move it to the model so to make a long story short that was where the talking it up there's a lot of great content it was way more than I can cover in 40 minutes right so I have to make a paw big apology so everybody I was false advertising want to advertise service objects basically the summary there was you probably don't need to use them I'm
+
+not going to say you never do but like like David's quote you think might exist somewhere but then again maybe unicorns 22 yes in there yeah so so that would say essence that and in terms of live coding right I didn't live code I practice it I tried before hand what happened was a talk when we too slow when you're doing that I wish retrospective 8 screencast of the coding
+
+right and I could have blasted through it possibly if enough people send me send me an email or tweet asking me to do it I'll probably record my presentation was going to do in a screencast and that way you can actually step through the code on github and hear the screencast of it well that sounds like it could be moment of a screencast series serviço yeah bothers other places
+
+a host enter your four get in front of you on YouTube as a multi-step tutorial yeah that's what's one thing i love doing with my blog but anything that i think i got so much help learning rails from the community and all the great products that were out there you know and a lot of it and most of it was just unbelievably free and awesome it said so if you're a good my blog rails on maui
+
+com basically and also my tweets is basically what i treat about a blog about is anything that i want to do that i couldn't already find a quick easy answer on the internet somewhere so go to my blog having fun that was actually highly enough with ruby mine out here was that i made it i know michael Hart tell from the rails tutorial i saw his video we did on supplying ago maybe I
+
+should do that one a little one on Ruby mind doing exactly what you did with some line and see the one showing some fun so I did that and where did that end up me I get a call from jet bright say hey you want to be our Technical Evangelist room for washer next thing you know I'm in real you are you coming to rails huh next thing you know I'm a speaker at real tough yeah I just keep
+
+getting better better it's it's tight d that you can go it's not a static community I mean there are some communities where it feels like there's people on the platform and for how solemn you have to have some kind of special credentials to be able to the credentials are for those open source communities are what you do not it's on it it's all about I think the more you
+
+give the more you get is really the bottom line because the more you give the more you get feedback on the more you change the more you improve right and that's what my I think my talk is a perfect example on that sincere as a polished everyone if I scattered t if I get a chance to go do this talk at a user group or some other meeting some other conference second time will be
+
+silky smooth yeah sometimes it's rough sometimes you get up on the stage and it just doesn't go the way you wanted to but anyway you would my talk I know I actually as per the conference i'm not going to decipher but I've been interviewing ok again thank you very much for taking tell the time to speak appreciate your great thanks user groups with lots to say interviews and more no
+
+way sharing great ideas in that tech community fascinating conversations a plethora of information find out for yourself today yep you guessed it calm you

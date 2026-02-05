@@ -1,0 +1,45 @@
+hi it's mike with you tastic i'm here kind of go to comp 2015 I'm study or Dave de gal who is giving a talk on distributed processes thank you very much for taking the time to speak with me so distributor processes it seems to be kind of a theme here at this year's go to come but what is what is it about your talking and how are you describing there's a first thanks for thanks for
+
+the interview so the process is very timely obviously everybody's trying to figure out and then this is a very difficult the main right so I think people been expelled I think we've moved over the last five years from things being partially distributed to we're almost like living distributed now and people dealing with this scale at dealing with asynchrony dealing with
+
+being parallel these are very complex issues right now managing cash is in state at scale also this talk is can be describing our real-time data driven policy control platform I will describe how you know how we were in detail describe our architecture and how we solve some of these problems make it a lot easier for developers to build solutions over the platform without
+
+worrying about the implementation details and that's a whole sort of advantage of you know of our solution is to actually eliminate some of the worst or most challenging aspects and just really competing yeah because it sounds like some of the tools are coming out I described earlier it's been kind of second generation tools that are not only more powerful but a little
+
+friendlier to use and I know you you're the co-founder of hundred I don't rights project directory and what is about your product that answers that salute our or that need this great question anything that's true actually I think there's two things I think it's there's a maturity on the vendor side and also on the market side right I think people have you know already stricter these couple
+
+of times bruise themselves we know what they don't work yeah they know it doesn't work they don't believe hype really anymore right do they know you can't you say the cloud yeah that didn't write any more so now then I'm actually what people are looking for some real solutions that they can test that scale and it's all real complex problems it's exciting time because actually you know
+
+we're talking about palm to computer science actually right people been struggling with for 30 years these aren't just problems of our moment there we're actually pioneering now how to be fully distributed in real-time data driven right and keep that cohesive right because I could easily fly away from me if you don't have it under control right so to your
+
+question about how do we make that more friendly in first of all the systems fully declarative and we adopt a paradigm that's fine the most families paradigm for all fell versus system actually acts like the library right the system essentially makes all of your endpoints whether the remote objects microservices api's or web services or in process objects after you believe
+
+inside our system that might be data models process models policy models and it makes them all of the same creates a consistency layer it creates one loosely coupled well understood oh you know layer it's horizontally scalable a lob stink of it as a logical store it's not just data its data code different objects right just by creating consistency layer we make everything
+
+look the same that's an attraction right it's a readout an obstruction inside our system to see if everything looks the same I can navigate it the same way search the same way I can reason over across the same way so I can now be searching declared and right through the you I can actually be walking relationships between objects and don't actually live anywhere near each other
+
+and showing are completely diverse but in the system it's gonna look like wow I'm going to come and look at the mic object here and enter the arms and something to see every application you've ever touch i click into an application i can see an instance a if you were gone I can see the data and code behind that instance I can actually click into the the models of the remote
+
+objects I might have been I can actually see the version of the policy that applied on the day that you did that transaction like do that front to back and that kind of tracing dependency mapping library kind of access it's far the most friendly thing you could do to developers and everything else is gravy yeah cuz the discoverability is always the challenge I mean we want from wiz
+
+deland soap which at least she had this manifest she could look at and say well this is what my my methods actually called look like and this is the interaction i can expect to rust which is well it's kind of a shape but people kind of had her own shape of the shape you know and didn't always quite conform to kind of the nebulous vision of i'm not sure if he got really
+
+into it Russ had a very concrete definition but it wasn't really discoverable something this is answering some of those problems when I sit down and look at in an environment and like what can I do here yeah absolutely it is the biggie problem shared understanding right how to clients and servers understand each other right and how do you diversify themselves to assist them
+
+so they can be management because it's 2015 and we still you know when they feels like continuous integration right that's talked about a lot here can a misdelivery Kennedy disintegration the word they forget to leave out the silent word between continuous and integration is manual yeah right you know look at the API read the API you are the API in my process a nap so from the process and
+
+a player everything looks still ugly right you know it's only in the service and a guy abstraction layer it is all up it's all loosely coupled yeah yeah ice and yeah look at that you know like I've liberated things from my systems actually is great it is an advanced we've cheap some loose coupling but when we're doing three tier vertical integration of the apps of the process
+
+later we're nowhere yeah we have you just we've moved the ball yeah we're still tying things together just know the fun part about it is I think ten years from now people we have people that they love you did what to well yeah I am manually integrated that right yeah so we're actually automating interoperability itself because we do everything declaratively once a week
+
+once your objects should declare in our system and you cannot navigate them I can have compose them and this one system up by pointing clip I met it down because everything is described in its metadata and use a developer you can pick up any individual object look at it owns dependencies you could fully understand it you can see all everything that's consuming it and that's ever but
+
+it run time you don't you have to wire it into a nap and after says the point to it and system agents will go out and figure out all the dependencies requirements to fulfill that contract and render the value back up to the application process sounds like a really hard problem yo it wasn't around we took two years so we're a lean startup we take a new capital or profitable on our
+
+own or have some customers on four continents we just signed a deal with one of the world's largest put something firm for him and a local can't announce point yet it's building a practice around our technology kinda penetrated solutions we took the first two years of a company no pet we didn't seek any customers just to work out the attraction so we knew
+
+a lot of people are biting off it's a lot of companies on that right a lot of people are fighting off small chunks o problem but just ribbing computing is a big problem and if you only buy off a chunk you're just adding another component to a complex architecture already right don't ever say we really need a layer I we needed enterprise web I need a way to wrap the enterprise in
+
+this thin veneer right where shouldn't be a stack right little where should be this thin horizontal layer between my objects and the behavior I want right and that's that's really accessible to developers it's a different way of thinking they know libraries the interests in dependencies and if they can do all this declaratively they can focus on new connections and business
+
+value I think that's a one well thank you very much for taking time speak right hey that's my commission

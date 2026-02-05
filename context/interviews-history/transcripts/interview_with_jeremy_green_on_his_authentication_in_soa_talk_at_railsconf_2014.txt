@@ -1,0 +1,37 @@
+hi it's mike with you tastic i'm here at railsconf 2014 and i'm sitting here right now with jeremy greene we gave a talk earlier in a conference called Rosa about SOA authentication or authentication through SOA architectures thank you very much for taking the time to speak with me oh so this is like just mangled a name you talk what was what was your talk and what was it about so
+
+that fellow to talk with service-oriented authentication and it was about how you allow users to have single sign-on between several kind of vertically split small services okay at all combined together to form a bigger service and woke a kind of you know what on the goal of shooting for is to be able to do something like you see at amazon for instance where even if you're
+
+going to log you know whether you want to log into their store to buy a book or whether you're trying to log into the AWS web tools you always end up at the same login page they don't have separate ones for each one of those it's always the same authentication in point and then you get redirected back for these different subdomains and so I wanted to build something like that in an app that
+
+I was working on and so spent some time figuring that out and then just wanted to share what I learned and how I got it done with the rails community who is this sir will you like implementing like an OAuth kind of thing yep that's it exactly 0 of 2 obvious you're one of few people that understand it well I understand it enough to implement it I using some gems you know I've at one
+
+point tried to implement a provider myself and it's a little little hairy so haven't gems is nice so what did you use what so there's a gym called doorkeeper that you can drop onto an existing application that already has sign-in of some sort and my case so it's using devised as the sign-in method so you drop that into the application and then that provides all of the othe provider
+
+functionality ok and then what i do is take romney off and build a little tiny rapper gym around it that has a dedicated strategy for delegating authentication to that provider and also provides a few convenience methods for how you deal with this as user signed in or not and then drop that Jim into any of the services that I want to be able to
+
+authenticate till I provide yeah because I was going to ask Emma cocaine so once you get that initial like okay I have this system that can authenticate with then how do you start you have your architecture initiation that this gem will you be able to configure to know about the central authority yep exactly and so the it like i mentioned it has a few convenience methods in it and you
+
+know one of them is just a login required function that you can use as a before filter and so any time that someone lands on one of these leap services and they need to get to a page that's protected that filter kicks in you know you can assign that before filter on the controller actions say right before filter log on your fire and then that checks the user session on the
+
+leaf service and if they're not already logged in it handles redirecting them to the opt-in occation service and if they're you know if they're not logged in there then they're prompted to log in and then they get Reba redirected back to where they wanted to be and if they are already logged into the authentication service is just a real quick Oh out dance to stand up the
+
+session and the leaf surface and if I ever like a standalone apps like I have one of write apps against well I guess actually kind of answer the question was about to ask and say does it support being able to generate a token and then I think that token and I use that to become a key against the PAP and I think if I'm running an API is that this kind of thing it's not something people are
+
+logging into I can generate the secret and key from my central authority you could that wasn't necessarily the focus of my talk I was when we're talking about three-legged OAuth where you are you know delegating to a provider and it's all handled via browser redirects but you can use two-legged OAuth to generate tokens and do you know direct access to services that way okay so you
+
+can get some pretty advanced functionality out of it you can you can do a lot of cool stuff with it and the great thing is it's a open standard you know a lot of really smart people have worked on it a lot of luck people understand it so for me that's a much better solution than trying to invent my own thing and home roll some kind of in a distributed authentication thing is
+
+kind of like you who to talk to that in his keynote the other day that he started the nonprofit shared solutions that other people can understand and so that makes it easier to let other people in on what's happening right is that it becomes a shorthand you can say oh it's an OAuth strategy yep okay I don't necessarily know all the internals went off but if it puts me in a box it does
+
+it's a that i can say okay that i can just put that off the side yeah and just like okay that is something i could fall for later and that takes them cognitive load yeah that you could have talked about yeah absolutely it's just an abstraction that you don't have to understand necessarily how it works just need to understand what it does yeah because because when you first started
+
+to talk about oh I implemented this authentication stretching right I had is already thinking about like what does it how does he do this and you know like it's authors of like this or like that and then they are all off okay yeah yeah go read the white paper go to the doc say okay that's fine if I can forget about it for their context of that that application I don't have to spend a lot
+
+of time thinking about it yeah and for you know speaking with web developers it's nice because almost everybody at some point has encountered Oh auth even if they don't know that they've been counted you know any time that you've ever done sign in with github or sign in with twitter or sign in with Facebook that's all happening over 0 off and so people have you already have some
+
+experience with what that looks like to the user and how you know conceptually how it works we're on this little service you don't actually have to have a username and password you just have to have one on the provider and then there's you know methods of communicating that information back and forth so it's nice that it's something that people are somewhat familiar with
+
+and then I was just kind of delving into the details of you know a little bit about how does the dance actually work and let's happen behind the scenes and then what gems can use to avoid having to implement that's right well again thank you very much for taking the time speaking me I appreciate it expands we might be enjoyed it sure user groups with lots to
+
+say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for yourself today at Utah State com you

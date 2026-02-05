@@ -1,0 +1,127 @@
+user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for yourself today yet you classic calm hi it's mike with you task again i'm here today day 2 of SG&A 2013 right now i'm sitting now with ama Tosh liar who sits on the TNF and as you might know
+
+the TNF is that BS deedar the board of the I can't even say myself but the support of the neck VSD organization foundation tnf I said that beautifully so anyway hi hi which I thank you very much for taking the time to sit down with me because Russia ate it I so the net BST foundation that's that sounds very important what what is the net BST foundation it's a 501c3 nonprofit and
+
+it's basically if you're familiar with the freebsd foundation or untrue openbsd has me like it we officially accept donations that are intended to fund development at PSD and to some extent we determine the project direction the the structure of the organization because it is an organization you don't know we're all volunteers and the disbursement of funds where we see that it helps
+
+development law so the net BST that it's that's like the berkeley san diego unix that's the through our Intel or the i386 in fes these case it turns out to be a lot more than that okay bsd stands for berkeley software distribution or berkeley software development depending on when and 90s you're looking at the location of the acronym and Neffe st was one of the two projects that kind of
+
+forked out of the the death of the original berkeley okay the regions of the University of California sometime in the early 90s stopped being able to fund the development that was happening in Berkeley which had been to begin with a set of patches on top of eighteen eighties units but eventually became his own distribution and one of the hallmarks of bsd unix other than
+
+actually being able to be used by humans to some extent was that it deliberately targeted portability we built and distributed from multiple hardware architectures and that thereby forced to be designed to be able to work on multiple hardware architectures and net bsd and previously are the two major projects that that forked around that time out of the remains of bsd and
+
+freebsd chose what seems like a prescient direction at the time that they should focus on commodity hardware because mostly that's what people have and if you got a realist blast bit of performance on a 90 megahertz Pentium you'll be glad you did yeah and net PSD chose that aspect of tradition from Berkeley that let's let's turn up the knobs to 11 non portability let's stick
+
+with that tradition let's make sure we even more portable let's find more ways to share driver Code abstractions that the drivers be shared abstract away and Ian this and other differences between platforms and just make let that drive the design which is actually why I'm here talking to you today because when I hear about craftsmanship like this conference the UNIX that I think goes
+
+best with that is net DSD I think craftsman who use unix and appreciate unix and appreciate craftsmanship should be very interested in that you sleep well I think there's a lot of people here that don't realize that they're very interested in that bsd and then we kind of tease each other about that apple logo but if I if I'm I'm sayin net vse is the Carl the Darwin kernel is
+
+based off with a PSD or it's a complicated story happen naturally I love got his own experience the the colonel in OS 10 is kind of a hybrid a lot of its history comes from mock which was developed at Carnegie Mellon Marcus the mach1 ICS good kind of like the word mac but totally coins it up it also turns out that one of the primary developers of mock wound up being
+
+executive at Apple later for business merger related reasons but the colonel is mock there is some some more to it than that that's actually not my primary area but we're an FPS d got involved with OS 10 is that in an early version of OS 10 I think up through 10 2 or 10 3 most of the user land utilities were from that you see oh really so if you for instance
+
+if you're running user been ftp it's the one that that was developed in a bsd and enhanced by with me burn and distributed as a autocom buildable piece of source and a lot of a utility is no stem were like that somewhere after 10 2 or 10 3 it became more of a freebsd influence because one of the developers from one of the founders of freebsd jordan hubbard was the director of unix
+
+technologies or something like that in that apple and so they kind of moved in a freebsd direction for user land but the the colonel is actually a different story and I don't know it very well okay so you know how did you come to be involved with you said that the colonel really isn't where you're spending your time where does amitai or Mons haha nickname ah the Welshman spend his time
+
+what is your focus and what do you do with the foundation um as part of the board i'm relatively new i was elected some months ago and just began serving the roles that I had before that were to basically one that I kind of self nominated myself for like you doing the volunteer abroad yeah whoever does the work becomes encouraging and another that I was selected for a while ago the
+
+other one the one that I've selected for is there's a project management committee for package source which is closely related to net bsd in terms of history and organization but isn't an operating system project my PhD is an operating system project package source is a package manager and its distinguishing characteristics that are very compelling to me and i think
+
+possibly to the people in this audience are that it is cross-platform so any kind of UNIX existing you have even if it's windows with services for unit cygwin Allah or whether you have root or not it is still a system you can use the same weight across all of the heterogeneous immunity machines that you have and so if you're a system in which at times all of us are it allows you to
+
+get the tools that you need or the services that you need installed in the same way at all the machines you deal with regardless of what they are where they came from so in that respect it sounds like it's a little bit of chef and a little bit of home brew or more apps there's a more like the more like apt or is it more like a home brew kind of thing when you're saying that it goes
+
+and they can work on any unique see based system is it go and grab source and compile them locally or exactly so it's a homebrew is like some of what kind of short stuff okay homebrew is a the source based builder of packages there works i know it's dad and that's it package source is a source based package manager it also generates binary packages which you can then reuse in
+
+distribute but it's designed to be used with source and so when you when you go and get your package tours tree and say well today i want a ruby 1.9 point 3 installed on whatever the heck the system it right a CD package source laying Ruby 193 make install what happens when you do that is that the the source code for Ruby is fetched its checksum is verified its extracted if it
+
+has dependencies that have to be built and installed in the same way before it can be built they're installed one of the special things package source does is to make sure that the build environment on user machines I to go to that on a dev machine so the package will be reproducibly buildable and then at the end of it you have you know a custom built with the parameters
+
+that you control what the defaults are pretty good Ruby that's in a section of your machine it's only for packages for package source put it in your path and it does what you want so does it also like resolve dependencies and things like dance it does it goes all the way down oh really yeah so yeah because I when you're talking about Ruby I think what we do have a variety of packages
+
+Ruby management tools on our vm which i was actually just this morning tweeting up that they need support but Tom you know how do you exist in that I dare you replace friends from that orb do you that's an excellent question i'm not a rubios i am familiar with kind of an equivalent problem with portal that if you want to have different versions of pearl with different you know what would
+
+be gems in the pearl world installed you want to be able to get those set up and switch between them and know which one you're currently working with pearl has ways of doing that package source is kind of orthogonal but can be used for that specifically what I mean is that you can you can take one package source source tree and bootstrap the package source tools and an entire set of
+
+packages as long as it's in a different location it's totally independent and the parameters can be different and the values can be different so I've used that in the past two to get one set of packages look like this in other side of packages in a slightly different place look like that and you can move a similar anchor to some other trick right you're using my do so so how did you you
+
+said you kind of volunteered for the work and you just came to own it how how did that come to be how did you end up even getting it in position to volunteer so that one that one is a different piece of work that BSD is a website unfortunately I don't think sings the virtues the operating system in the package manager as well as it should the virtues
+
+are terrific the website is not so so I took a hard look a few years ago at why are we having this problem and some people think it's because developers don't like to write documentation I don't believe that's true especially among craftsmen which most of it obviously developers would agree that they are I think the problem is one of tools that we built ourselves that get
+
+in the way that were built a while ago based on old ideas I think what all of us would agree now is a reasonable way to do web content in this day and age is something more like the wiki with a simple input format simple output format ideally you can edit it with VI or emacs in addition to a browser so i found a piece of software that was close to what we needed we had a bunch of type
+
+requirements to be able to run the software i'm also a member of the Society mins for that Vista project so I knew enough about the web problem I knew enough about what the administrators would be happy integrating and I knew enough about this piece of software that would bridge the gap and then I needed to make it bridge the gap which is why I'm also a contributor to aqui wiki
+
+which is an open-source written in perl content management system so I extended wiki wiki so that mednet be a stage requirements we stood up an example of it the admins like that some users like that we now have wicked own MPs the org and someday when i have time that will be how our website is made okay so i just kind of volunteered for that and i'm on the web committee even though i
+
+didn't really mean for that to happen oh there's a lot of unintended consequences yeah but it's in a big way yeah that it sounds like it's a lot of fun and but you know even going back further wine fpsc what was what attracted you to nap ESEA begin with great question so I went to high school about 20-25 north up the road from here and in high school the available nerd dueling that I
+
+could get at was texas instruments graphing calculators at the time that's all the programmability that good things I got to have one of everything ahead of 81 82 at 85 and 90 to which was two megahertz faster than the CPU in the mac plus we had at home oh so it's just like today when you have that that little lot i phone a three year old computers so you know their shameful yeah but so
+
+that's what I had and and I got into the community around it and was invited to participate in a community project that we were building called TI Calthorpe TI themselves wasn't real forthcoming supporting all the third party things that were happening so we wanted to be for ourselves and i was invited to be part of that and they were running on some weird system called linux one point
+
+sigh haha i don't know the first thing about it right so i said how can I even be useful to you guys if what i have is you know an old macintosh back to see I at the 10 how can I even learn how this stuff works so that eventually I can be useful to you guys and one of the people on the project said oh if the mac to see I is what you have then you should run that PSD so that you see our that's
+
+that's pretty that's pretty ancient that's so you did it yourself there well now this may be oh it's not that high definition good the I didn't even realize that I'm in pre I 386 then you know pre intel processors sure that you could run an exam I'm an old Apple that far so I mean that the support goes back that far it does a net bsd runs old 68k Macintoshes amigos with the
+
+similar chipset weird old machines I don't even know what they are a limited run set of machines called the shark the head I think an arm-based processor but not like the ones we have in our home yeah yeah and that was famous for being silent and having no fan it's also famous for having almost no performance hahaha that easy runs on it pretty much anything with an MMU is enough and
+
+somebody will port to it if they have interest and by the same token that bsd has a reputation for prioritizing compatibility with old machines even when it's impractical and gets in the way and there is a maintenance costs to people who are doing colonel in system development to having to deal with these older systems but it's not exorbitant and nobody should come away with the
+
+impression that we don't also run really well on autumn hard work we do so if something is looking to be there running you know they got a mac and they want to get into may be learning some of this heritage of the mat in one a run I'm a PC am presuming i could run a vm within that bsv because if it runs anywhere i'm sure it runs at IBM um and where would I start turn to to look for that just
+
+before I get into the actual answer to your question on the vm from net bsd was part of the early development of the zen says on the Xen write an FPS d was one of the early host systems and one of the early guest systems and has excellent support present both as a dumb 0 and a dumb you in terms of how somebody could could spin up a machine or Aboriginal machine it's a free download actually
+
+there's there's I soz there's tar balls ever you want to do it there are systems that you can get a free shallow compound with and another way to start that for me is what I would probably do first is get to know package tours and you can do that with whatever computer he already had so I could use package tours on my mannequins you can I was one of the people involved in 14 baggage source OS
+
+10 back in 2001-2002 was one of the first platforms that wasn't that bsd they reported package source too and so for me personally when the West time came out yesterday or about how there's an FPS dmos then I used to have to have tutor for computers right I would have my mac that would crash at the slightest provocation and would let me at least SSH until I back to see I and then at
+
+PSD over there that was slow but at least would work right right and when they came up with I was 10 it wasn't immediately a happy marriage but I could see that there's there's a possible future here where I only need one computer I'll be argue about and so for me that's the real the real win is that there's enough unix in OS 10 and package source bridges the gap with whatever
+
+Apple put some old version will these out package horse lets you catch up to the exact same versions of things that I would have on my net bsd system so I you know not to be intentionally controversial but do you recommend people may be really take a look at package tours that are using homebrew and maybe reconsider homebrew order well I'm speaking from ignorance because i
+
+haven't used homebrew more than a tiny bit have a good clone of it just so i can see if they have a recipe that i want to borrow something from because you know they're focused on my stance so they may have something that package tours doesn't have yet and once the head but I've actually run it i have used macports once or twice a long time ago I tried think have check outs of them as
+
+well for the same reason but I actually don't know enough about other systems because I've been so happy with backer source for so long because I can do the same hang out all the machines that i have so i couldn't even make an informed opinion about that so actually a question about packagers because I i eluded you is it also a little bit like chef it sounds
+
+like you can also script a system to build you can so there's a there's a concept of bulk builds which obviously we do in the general complete case on auto build systems see what's broken and what we've changed and to generate binary packages but a person can also drive their own private boat will in whole or in part if they have a specific set of packages they want and wind up at
+
+the end with these binaries they can just sub in for the month of the head so guess so and so if I wanted to say oh I have a brand new install of our net based VSD server or maybe even a linux server and i want to just say going for all the paths with you know put in my simple put in postgrads whatever i can use a bonus bulk build scripts you just go off and build my system and then
+
+using to reproduce across different servers exactly that that also includes things like compile-time options like if you you have mysql and you want to build PHP with support for it or you want you know you're setting up dovecot and post pics for your mail server and you want them to be able to store a great listing database in MySQL or info straight it's a compile-time option we define that in
+
+a configuration file and the package build finds it so the bookbuild also finds it and what you wind up with at the end includes the choices emmitt and in with doing things like like you know if I script to build for a new server I'll have something that goes and goes and fetches and dependencies builds the the piece and then a separate build stop thing and then maybe a separate shell
+
+script that I call after to maybe do some post installment figuration and you hook into any of that stuff with package I'm sure you can in fact i went to package source come in in March and one of the best talks I saw there was about ansible which is one of those okay remote system and driving systems and this is a person who's been a package source developer I'm sure like
+
+I know ansible is a system of shell scripts so you can easily hook in a call to package ad and God knows what else I imagine chef and puppet and those guys could do the same well in it's very interesting because I when you mention ants bulb and suppose one of those things that I've seen on the periphery but never was a call that's just something that some of these out there
+
+but then when you talk about its heritage shared heritage now that it has this relationship a package server since now much more compelling for me it's when it's not an official relationship but it seems like it's a natural fit okay so ansibles is a thing to check out if you're also looking at package tours um if if oh so now I just I just messed myself up now because i lost my flow
+
+because i took a took that aside to pointed the camera um so you're here at se na and you're interested in in the craftsmanship conversation and you said that it seems like a natural fit for what the core of net bsd is but if something's here at se na and they're looking at how i can contribute back to you open source is is it's an epi SE something you might point them at saying
+
+go go look at bugs or were they going to look to you i would absolutely recommend that is the I think it represents if what people who are interested in is operating system development that PSD presents a unique value proposition compared to any other open sources to lipid volunteer for specifically first of all as a craftsman you want to have whatever you're building on
+
+made in a constant like manner which I think one of our speakers yesterday alluded to that you want the tool that you were given to be made with quality and then you want to use it to pay it forward to build something else with color net bsd for whatever you might want to build on top of it is a very simply designed coherent no funny surprises piece of software which for an
+
+operating system is a serious achievement right and then as a craftsman in the world of business you want to have the option to extend software without necessarily having to publish the changes that you make a nut bsd license wise like many of the vs DS is superior to linux in that regard we have the option of making changes that you can keep private for as long as you
+
+want to but step EST is the bsd license as long as you give attribution do as you wish and on top of that what may be asleep as the differentiates it from the other BS BS is that by default every build is a cross build the tool chain that builds the system first bootstraps a tool chain from whatever your host system is to whatever the target system you want to build for is and obviously
+
+for an FPS d we built that because we needed it you have so many target systems right but it means that you can use whatever your fastest computer is to develop for whatever system you're targeting even if it's an embedded device that's a totally different architecture and that's baked into how the system gets built all the time by everybody of course it's auto built like
+
+everybody does nowadays the other thing that's very unique about that bsd is that appeals to craftsman here is the culture of testing that normally you can't do in a colonel but net bsd has some very special technology in the colonel specifically it's it's as a group it's called any current the idea is you should be able to take any component of the colonel and target it
+
+either for direct linking into a model at the colonel like we're all familiar with or compiling it into a thin layer on top of some other system or into a standalone program that has code in it so the canonical example for that is say somebody gives you a USB key and you don't totally trust them you don't totally know what it is if you attach that to your computer it's going
+
+to run the colonel file system code to mount and read from and if there is you know an attack in the format of the file system it's going to bite you so what if you could take that file system code and put it in either line program that didn't run with privileges and you know if there's a body in seg faults in your computer peach run so this is one of the applications the technology the reason
+
+it applies to craftsman is that it means you can write automated tests for kernel code that when they break doesn't mean your system crashed it just means your process crashed and your test harness can keep running and it can record the failure you can get fast feedback and you can go again so it's not only security it's also test family sounds like it's a recognition that those two
+
+go hand in hand a lot of these somebody also said mystery that these design principles sort of go hand in hand you get I think it was Holloway when you design for simplicity the power kind of falls out so when you design for the orthogonality of taking the same piece of parental code and being able to build it for any of these target environments all of a sudden you have all these
+
+options of how to exercise yeah well Swanson thank you very much for taking the time down here really appreciate it and are you and the net VST foundation is something you should check out what will see our URL WWF EST or PST org thank you very much thank you user groups with lots to say interviews and more no way sharing great ideas in that tech community
+
+fascinating conversations plethora of information find out for yourself today at Utah State calm you

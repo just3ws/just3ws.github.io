@@ -1,0 +1,67 @@
+hi it's mike with you tastic I'm at railsconf 2014 and I'm standing here with Justin Cyril's who talked about Lyme and Jess it says open source project which what language is that right then Justin so it's actually a nodejs those two it's Jess yes and we're not like big node advocates but we really think it was the best tool for the job and we're really happy with it
+
+okay so what was the talk what was the actual talk though so it's two thoughts one it's very difficult to give a technical talk that's like an introduction like use this technology without falling into the trap of like here's a readme that I'm listing out all the bullet points that it can do and it's doubly hard when you were the primary author of it because I'm you
+
+know you just don't want to come across like a shill just marketing your stuff or even that you understand the internals and it's hard sometimes to emphasize and be like well what would I want to know about this if I didn't know and precisely and so I actually gave like five really bad talks about lineman before I actually like late last year invested the time to really really get
+
+inside the heads of people who didn't yet see that they had the problem and it solves the problem that it solves is that people hate writing JavaScript and it's in my opinion it's not only just because of the language it's because the tooling and the ecosystem doesn't have all of the like you who does talk and because keynote was about how the conventions and the default
+
+configuration that we get from rails to solve the common problems is where most of the value is in rails and I totally agree but that that mindset is missing from most the JavaScript community that's why his team has had a hard time selling ember jas which is the similar mindset right to the world at large this is what problem am I saw me right right its sights it's too big it's too
+
+opinionated but those common elements between all of our projects to reinvent the wheel every single time is just wasteful and I feel the same way about build tools like I want to feel productive like we need a new rails application like I know how to run the server I I know where models are going to be I know a whole lot of information that I'm not actually thinking about
+
+what I'm actually thinking about is how different from a vanilla rails project like they only configure the stuff that defines how they're different from the norm and I wanted the same thing for JavaScript applications and so we built lineman j s just to be a thin little candy shell around community tasks and build tool stuff that just provides conventions it says hey we expect the
+
+job to be an appt j us and because we do that we can pre configure all this task for you so you don't have to kind of you know puppy pasta this gigantic task configuration from project to project and if you hit another lima project you know how to run it already you know how to run the tests you know how to build it you not deploy it and that was what we were aiming for and so the talk now I
+
+said they give five really bad versions of the talk the talk now is hey you might not realize it but you might be hitting JavaScript from the wrong reasons and you might be under estimating the hidden costs of building one big monolithic rails application with like a mini full-blown JavaScript application buried inside right and once I talk to you about that problem it's
+
+almost like you know the punchline that at the very end sigh oh and here's this thing we wrote that solves all these problems Oh as opposed to be like here's our things please use our thing we would love used our thing yeah cuz I wonder I look at this right now the ecosystem for JavaScript today seems to be kind of exploding this off totally front follower and then somehow there's
+
+lineman and then there's seems like every week there's a new tool popping up until de into the chain I mean help it can be overwhelming yeah absolutely and if there's a shiny bauble syndrome you know that we always have when there's a lot of new stuff out all the time i remember in 2007-2008 in the Ruby community there were new gems all the time seemed to do the same thing
+
+replacing last week's gems right it was really frustrating because I felt like every project I hit everything was changing all the time I'm feeling that way in node now and I think the way to be successful in a highly innovative environment like that is to pick something that works and let it just work for you and stick with it for a while for example in Lima internally one
+
+of the biggest criticisms and people in the node communities that we're using brunch is as the lower level for the task stuff okay and it's because newer shiny baubles that are better and a lot of objective waves and grant have released since then like gulp j/s for example stream bay outing as a final and we agree golf is really cool but the things
+
+that make them better than grunt aren't really problems for us because of how we use ground we use crutches like this tremendous pool of all these common tasks that do everything yeah we don't really use it as like the master of the things that it's golf is solving for are some of the things that lineman already solved for us we don't feel that pain and yet because of the shiny bauble they
+
+people are really excited to just always be on the latest and greatest thing and in this kind of environment sometimes you said to pause let the dust settle and just be productive and that was Ben are going yeah because it is certainly one of the things that's the rails as well as it has a nice curated stack so I can avoid some of those decisions but am I myself hope and i know it project is
+
+it's daunting button mmm it's okay to just pick a tool and just drive that until another tool emerges and yeah just like the talk right like if you adopt a tool because somebody's talking about the tool you skipped a step we've identified a problem that that's actually going to solve you so I think developers a lot of times we love technology we love the rapid pace of
+
+innovation was happening around us and new is fun and great and sexy and sometimes we need a pair of programmer or somebody else on our team to be like so let's what's the ends here what are you trying to actually accomplish with this and then I always like I'm that guy I could possibly like well you know it's cool yeah can we do the cool thing and so I totally related yeah okay and she
+
+changed directions a little bit destructive about the product you look man but you've also written about the action to talk and how you you brain structure yah yah yah and it was a truly impressive mind map that you generated we're trying to understand what you want to teach rather much one expressive can you talk about a little bit about why you created that that post and maybe
+
+even a little bit of information into your actual process right so um that's upon our company blog blog test double calm we're a software agency consultancy so we got got have a blog Russia air what we're learning and I wrote that post out of feedback from both attendees of conferences now that I feel like I've kind of landed on the approach that I like for delivering
+
+talks as well as from some of our only people at æstival you say like hey I want to give a talk but looking at you know Jerry Bernhardt gonna talk or you give a talk that's like very very clearly this polished thing intimidates me like I don't know how to do that right and I want to separate the mist mysticism the confusion of like the magic of like the look at product looks
+
+like from just the hard work that goes into it there's a ton of hard work that goes into it I want to demystify yeah the actual process that you eat that I go through to create it and I'm stuck I'm constantly iterating on that but the the my map you referred to was for the linemen talk and it was the result of me realizing that my attempts of persuading and informing people like the two
+
+primary goals of a technical talk had been a lot more information andale not enough persuasion and so I had to figure out a rhetorical structure that would support both of those goals and keep be snappy and keep people engaged but still give them enough information that they could take the first baby steps on their own and then go start their own adventure instead of feeding them
+
+everything and making people for your life no good I know that now and go on to the next talk right and cuz here when we look at at a talk it like yours are very burnt hearts or theirs as its quarry in telling someone to put it you're going to drop knowledge on everybody in the audience and its potential how do you get to that point and even reminds me a little bit of
+
+Japan's so as a quote of and you play a lot of notes until you find the right ones yeah it's simple but it get the essence of what you're trying to say by exposing the sausage factory they always totally yeah you can see how you came to that so that waits so many little things it's like you know I I pick the color choices for this lineman talk because I know build tools are scary things and
+
+neon green and black terminal shells it seems masculine and unfortunately the name line was a gendered name so what I want to do is like intentionally pick light fun playful silly like like the I'm built a color palette my names are like marshmallow and you know just fun light-hearted things to counter people's expectations and to help people drop their guard right you know it's a one
+
+little tiny piece of a bigger hole I'm not a designer but I absolutely respect the the elements of design that can help support your message yeah so it sounds like you also spend time looking at how other people talky talk about gary perkins violently and other any other speakers who styles you kind of look to you and try to you i try to figure out how they're doing yes of course I I
+
+don't see you as many talks aside like I have a really bad habit of being like always slated for the last day second to last session of a conference and I feel like to be a good steward of people's time I need to be backing away and making as good as I can as I often this a lot of talks but when I do I mean some that I've really enjoyed let's see sandy Mets is always really terrific Katrina
+
+Owen puts a ton of effort into her tox moving very thoughtful Aaron Patterson has this great way of disarming a crowd by showing some local Flair and sometimes some fellows just comedy stand up and then diving into like you know deeper topics and really anyone typically goes into let's see who else of the less super well-known people um gosh it mind blow I'm struggling to
+
+think of other awesome speakers but there's lots out there yeah if you're my friend and you're listening to this new to talk some night and maybe I'm really sorry that's okay but there's lots of good stuff it's an explosion right all these conferences are getting hundreds of requests for people to speak and it's fantastic and I think that the more people put effort into owning the skill
+
+it pays dividends and the ability just to communicate generally and I just want to encourage everyone to you know spend the time to try to hone their craft and a big part of that is going to conferences and watching and going to conferences are going to user groups and practicing and trying and absolutely is anything their feedback and absolutely just like a comedian they go and they
+
+take home to relax at the comedy clubs you can go to use groups and company and give that presentation over and over and over again yeah I I don't take feedback particularly well like if somebody gives me some critical objective feedback I it just makes me feel like an utter failure it feels like a good light like it makes me really really / inside I'm getting a little bit
+
+better but the best feedback is the nonverbals you get from a crowd you can feel when something falls flat you can right you'll if something hits and you can get into a flow what you can just feel the thread of the conversation and you're controlling almost like the thoughts of the people in the room that you're all job into the same the same ideas and arriving at a similar enough
+
+conclusion but then you'll have a shared experience and a great conversation after that's what I look for is in terms of feedback this most valuable today that you know and that ties into the original keynote theme of reading a lot of code to understand okay load watching presentation some listening to presentations can help with with learning how to give good perfect
+
+absolutely okay well thank you very much for taking offense thank you Mike thank you so much for inviting me sure appreciate it user groups with lots to say interviews and more no way sharing great ideas in that tech community fascinating conversations plethora of information find out for yourself today at Utah State com you

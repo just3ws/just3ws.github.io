@@ -1,0 +1,101 @@
+hi it's Mike again with you tastic I'm sitting down today with Charles Nutter you might know him as hideous on Twitter and his blog and you might also known as a leader of the JRuby project hi hi-yah Charles thanks for taking the time to sit down so you you run the JRuby project maybe we can start from the origins you know it's a big project that did spans globe and it's and it has a
+
+lot of impact you know for individual developers and big corporations how did you get invited to JBS started well jruby itself started in about two thousand one guy named Dion Arnie Peterson and a couple other folks wanted to see if I could come up with a ruby parser and once they managed to port the parser over using a Java equivalent to bison they figured okay well we've got
+
+parser we can probably do a ruby implementation as well and the project kind of worked his way along for a few years got some basic things working in around two thousand two or three tom n above the the other co-lead of the project started working on it and various other Ruby folks have appeared in the commit logs over the years I actually came to the project
+
+about 2,000 for i went to the Ruby conf that year which was in reston only about 65 people back then and I was there because someone recommended the language to me had never actually seen it before but being a Java guy I wanted to see if there might be a Jay Ruby project of some kind out there and it turned out there was and Tom a friend of mine who I'd worked with at the university years
+
+before was currently running it so that's kind of where I got started on so uh when you said you were doing Java before and then you learned about this JRuby thing or I mean was it still was it kind of a thing by the time you had started or you said there was a conference yeah it was really Ruby comp that kind of got me into it the thing that I realized was that Jay Ruby Ruby
+
+the language was pretty much the first time I'd been to a conference for a language I didn't know and I recognized all the code i was able to understand all the examples and it was it drew me and i thought that this would be a great language to learn and play with but the only way I was ever going to be able to do that as a Java guy or Java lead developer was to find a way to run it on
+
+the JDM and so so you just immediately jumped in and started using it organ and are committing to it or did you try to use it and find things that didn't do that you needed and you started contributing that way well I played around with it a little bit just to try outs of the examples quickly realize that there were things that I could do with regular Ruby
+
+that I couldn't do with JRuby even trivial basic things like at the time hire me didn't work reiki standard tools and commands that you would run on a standard ruby implementation didn't run and so I was interested in trying to contribute and help out with the project okay so you started from where a lot of people start is there's this thing out there if you like it but it doesn't do
+
+XY and Z and and you started to to fix that that's right I've got a baby monitor that's very loud that's okay from where we left off it sounds like you came to JRuby the same way a lot of people come to open source projects that you start using it and it doesn't do XY and z so you start to fix that and implement at yourself and I I guess she must have really fallen in love with it
+
+at that point yeah well I never I never actually thought that I'd be interested in implementing a language but it turned out that there were so many interesting problems to solve that needed to be done and I thought the potential Ruby on the JVM was huge to be able to use a nicer language they will fall into Java libraries to have access to all the Ruby world it was it's been a labor of
+
+love for past seven or eight years now yeah and I had actually worked previously on another open source project called light step again a project that had kind of gotten quiet not a lot of people working on it but I was interested in it was it was a replacement for the windows explorer desktop there were a number of those back in the late 90s that people were
+
+working on and I kind of got involved the same way there I wanted the project to to move forward I wanted to be able to use it and do more with it and the codebase need a lot of work so it seems like one of my favorite projects is to jump into an open source project to start cleaning it up make it make it work a little better and and so how did it end up with you up being into a
+
+leadership position on the project Demi how did that about well I I guess it wouldn't be efficient I wouldn't officially been considered a co-lead for at least a couple years in 2005 I started getting into the codebase a little bit more trying to figure out how we could speed it up did several rewrites of the interpreter started doing some profiling looking for the
+
+problems that were slowest areas that was slowest in JRuby and then into 2006 we started really working in earnest on getting all the standard rubella Ruby libraries to work IRB break rubygems started drawing in other folks to work on it and probably about that point that it kind of became that I was putting in a lot of time I was as much in charge or as much I had
+
+much as much invested in the project as Tom so we kind of decided that we'd be co-leads from now now now okay cool jumping fest fast-forwarding to to now there's there seems to be a lot of concern with the refinements issues and you've expressed a lot of concerns over that or at least well well retweeted in reblogged concerns it's a kind of an interesting interesting predicament that
+
+you're in having created this proud or work excuse me working working on this project that is tightly coupled to another implementation and when it changes in order to maintain compatibility with the length within the language you also have to change it how how do you reconcile that son is if it gets to be so onerous to implement these changes I don't know obviously what the
+
+actual details are but if it gets to be so honored so other plans maybe even for coffee or be and have it be its own dialect in the future right yes as a compatibility run essentially what we are we're just two by and large trying to mimic the standard implementation of Ruby we are Holden to them as far as new features that come in things that we need to add or do to me to update so
+
+there there's been a constant ketchum we're always slightly behind them as far as getting new features and getting fixes in the big change that we had a big work that we had over the past few years was catching up with ruby 1.9 support which was a massive number of change is especially regarding string and coatings and just some extent some
+
+threading details but we feel like we're kind of at the point now where by the time Ruby 20 comes out which is supposed to be februari sometime we will be in a position to maybe do a release soon after that that has all the same features having caught up in big milestone of 19 changes in 20 aren't too bad the other issue is if we have problems with the features or if there's
+
+an implementation challenge that comes along with them as there were as there are for some aspects of refinements there's been a lot of talk about the Ruby design process lately and or potentially lack thereof but for the most part we've seen that if we raise issues about specific features or aspects of those features to the Ruby core folks and to mots in itself they've
+
+been very receptive to make improvements make changes they also want to be able to optimize the sea implementation of Ruby into the future we are kind of ahead of the curve as far as optimizing grooving we know what challenges they might run into so they've actually been very receptive when we say this aspect of this feature is very difficult to optimize or your run into trouble down
+
+the road so for the most part they it's been a very communicative relationship with the Ruby core folks there where they understand that we have our own challenges implementing Ruby and that we've met some challenges they might have in the future aye sir ben amia talk though of actually i'm not i'm not going to go down that path I was gonna I'm gonna ask
+
+instead with regards to the future JRuby sorry I was going to ask a question about forking off the language again but that's uh I'm gonna edit this sorry sorry I just I was going to ask a question but forking off the language but instead i'm gonna i'm going to focus back on the community so so when you were talking about working with matt's on on trying to make sure and that they
+
+know some of the things that you've already experienced so that way when they're making their optimizations it'll also be a little bit easier for for JRuby to implement those as well and also avoid some of those same pitfalls instead of see Ruby it was kind of funny when you were talking about the process that the Ruby team goes through the other day i was listening to Ruby rogues
+
+with Aaron Patterson and he was comparing the rails release process to the Ruby core process for releasing in he was saying that the rails process is so loosey-goosey compared to the Ruby and it sounds like you're saying that from your experience the Ruby seems a process seems to be a little bit something to be desired in a way decisions are made is that a metric
+
+there is a process there is a fairly clear process that the Ruby poor folks follow the problem is that it's also ground with bug fixes that are really see Ruby specific so for other implementers trying to track what's actually going on as far as feature designed new features specification changes we have to sort through all of the MRI seg faults or
+
+memory leaks or whatever else which are the bulk of traffic or mailing list and the bulk of traffic in the bug tracker as well so there is a process but it's kind of buried within MRIs day-to-day development process takes a little bit of work to sort that out and we're actually going to try and work with Aaron and some of the other Ruby core folks to separate what the parts of the
+
+process that are interesting to other implementations away from what specific to memorize code days after ask if you had to learn how do you uh read Japanese in order to more effectively contribute or english-speaking folks in there in the Ruby development ruby implementation community like Aaron that dunno some Japanese and it definitely greases the wheels of talking about issues but to
+
+their credit the room decor folks have also made a major effort to try to do all of their bug discussion on the standard tracker in English trying to do most of the discussions about features on the English Ruby core list in English there are Japanese folk school are not as strong in English and sometimes we have to sort that out or that don't know English and sometimes we need a
+
+translator but in general communication is steadily improved even though most of the core team is Japanese okay and you know you fall so you're giving some advice back to the sea ruby implementation but you've also had an interesting article talking to the closure community basically I can't remember the exact title but of us if it was some optimization or invoke dynamic
+
+if you want you want it if you want closure to be awesome or something along those lines are you looking at closure other languages are are those influencing JRuby or oh yeah absolutely I've been keeping track of all the key JVM languages and we went up coming once my other role is kind of some sort of jbm expert and so I am keeping track of dynamic especially for
+
+JRuby and dynamic languages who is using those features upcoming features in Java 7 8 9 and really the role that we moved into now that we're at Red Hat is part of a general jvm polyglot group so it's not reasonable to think that as a or b 17 settles down as we get equal maintenance release us out that I or we may turn our attentions to helping do some of the same things for other
+
+languages see if we can help with invoke dynamic stuff enclosure see if we can get Jai thon up to date as far as performance I'm competitive with with JRuby with C Python a little bits and pieces of different language of limitations that could all be improved based on what we've learned from JRuby okay and you know there's one other kind of pillar in this that you have to deal
+
+with because like JRuby is an implementation or a.m. you said it was an implementation language of that was based on Ruby so it's dependent upon what Ruby's doing but also a little bit dependent upon what the young while I was going to say son but Oracle is doing with it with Java but is that kind of a red herring nail that there's OpenJDK and it's it's pretty stable and well
+
+well supported yeah I was skeptical at the beginning like the most people when Oracle took over son but cautiously optimistic I knew that there was a large very open source oriented team on the OpenJDK side that was going into Oracle and that they were not going to be they were not going to compromise their ideals royal source the og community has continued to grow under Oracle and
+
+actually a lot of issues under son have cleaned up we've been very happy with the direction that Oracle's taken with OpenJDK at least as far as what features they're working on what they find important part of the evidence is that they have a whole team of folks working on a javascript implementation as horn and that team is so sidered part of the hotspot BM group because they want both
+
+the fast JavaScript implementation and they want to make changes at the JVM level four languages like JavaScript oh okay they prioritized Allah God and multiple languages perhaps even more than Sunday oh wow so yeah so the future is bright for for developing on the on the jdk yeah I think so they seem to have the priorities right place okay great um now focusing a little bit more
+
+on what you do are teaching and going and speaking obviously there's the JRuby conf how involved with with organizing the jruby come for you or mostly do you go and speak and hang out I've been pretty hands-off it's organizing real world things has never really been a strong suit for me so there are other folks who do better jobs of organizing conferences
+
+but we will do things like trying a keynote speakers try to look for interesting talks review talk submissions help or range or help decide on arrangements places we want to do the talks or where we wanted to conference so on but for the most part we've been hands off with that we have tried to provide some baseline support and try to arrange some monetary support from folks
+
+who are friendly the JRuby project to whoever ends up organizing the conference so yeah for the most part it's kind of it's going hang out a little bit about front planning now when you go and present how do you how do you prepare for a presentation do you mostly go and work and say okay this is what I've been working on so I know this inside and out or do you do slides and
+
+things like that do you practice I have slides but I always prepared like the day or two before I talk it's all stuff that I know I know jruby pretty much inside and out I have dozens of different demonstrations that I do usually what I'm doing as far as presenting JRuby is trying to figure out the audience which makes it easier if I haven't prepared the slides already
+
+figure out the audience what they would be interested in hearing about Jeff Ruby standard Ruby groups will be different from a standard Java group may be different a general development group and then tailor the talk to features or aspects of JRuby that they would find interesting and that would help maybe make them more interested in running
+
+game and so in your also spanning two communities the java community which has its own kind of style for conferences and groups in community its own definition community and then in the Ruby community which has its own definitions has there been any I don't want to say do you like go into one better than the other but you know if you were to answer that question that
+
+would I would be okay with that but I would you have to do anything different though when you're going to presents at a java community or events or verses of rubies or is there any like discernible difference between going to those two different types of above of events oh absolutely I I will say and I've said it before i do like going to ruby events better mostly because the folks that are
+
+at ruby events are looking for something new in almost every case they're looking for a new way to scale their app or a new way to implement some service but they're they're looking for it and change they're looking for something different than what they've done you go to Java events people are much less interested in trying something brand-new trying something to feature new language
+
+as they are just like plain product to how can they get their app out the door more quickly more more business-oriented more money oriented use JRuby java conference the the challenge for us is showing how you can build your apps quicker using Ruby it's not really a JRuby talk as much as it is trying to sell people on Ruby and rails and other libraries in the Ruby world obviously
+
+that's totally unnecessary at a ruby conference they're already sold on those things so we're selling the JVM we're selling JRuby we're trying to show them how this is going to make your Ruby applications better faster more fun and so on so completely different approaches and we do have very different decks of slides that we use for the two different communities and for people who might be
+
+interested in contributing are trying to help out are these get into JRuby maybe understand the internals a little bit better is it certainly advice you have for people who are looking at your be saying oh how can I get involved well we do have some articles on the wiki that talk about how JRuby is structured eternally the basic design some articles on specific subsystems like how the
+
+compiler works how the embedding API works to kind of get people bootstrapped on that I am also hoping to do sometime this month appella blog posts on how to get your foot in the door where all the pieces are for somebody who's never looked at this kind of project how to contribute how to get involved in it it's it's a large project but it is fairly well broken down into subsystems
+
+so because i'm using your some compilers they this section there's somebody missing crypto we have a whole script Oh subsystem so just lots of places to get involved now would probably be looking for easy bugs or looking for refactoring opportunities pieces of code that looked like they could use some cleanup that's how I've gotten into other projects including
+
+light step is basically just doing some cleanup and rewrite so that the code is easier to manage which at the same time you can learn how its laid out it does cool well thank you very much for taking the time to sit down with me Charles yeah thanks a lot for the talk

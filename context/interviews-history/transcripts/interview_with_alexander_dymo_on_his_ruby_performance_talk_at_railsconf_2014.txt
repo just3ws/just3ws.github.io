@@ -1,0 +1,51 @@
+you hi it's Mike review tastic I'm at railsconf 2014 and i'm sitting here with alexandra dima who's going to be giving a talk this afternoon on how to cheaply and easily improve your memory footprint for your Ruby applications by moving up to Ruby to that one I thank you for taking time to speak thank you for having me yeah but to make you Mike so
+
+the talk title I I couldn't quite recall its long title what for what is the gist of the talk so talk is about those things mainly would be 21 and memory optimization and the gist of my talk is that in fact what would be to what does is that it optimizes memory for you okay so you can do it yourself or you can upgrade to one or both 30 copy-on-write implementation and and things i am and
+
+most importantly the generational garbage collection of course if you can you can kind of maybe explain what those are because i even i have fumbling understanding of what the copy i'm reading really does so what copy-on-write does is that if you forgit process you will not you will not have to copy your memory so you don't immediately out for you allocate memory
+
+but you don't you allocate the memory your forked process you have now two processes that use the same memory and they use it until you modify it okay and only a time you've actually allocate more memory okay so you're saying okay I'm going to focus processing the vm knows okay there's this handle i have to have and then you start to write to it that's okay now i'm an alligator this
+
+this this candles everywhere this is handled by operator that's why they always liked it so it is on the highest level so you don't have to do anything with this okay just need to be copying ride safe right that's what it was introduced into wolf Duvall okay is that so it's so efficiently had to be happy right safe is that something that developers rubyists need to
+
+change way they go up writing code not at all unless they use of course see extensions oh ok not at all Ruby does it for me ok so if you're using native Ruby or really core yeah you're gonna be fine you're gonna be fun okay okay but if it's if you're using a gem with with C extensions you might want to look at that it's beyond so they might want to investigate or but usually it's ok ok
+
+and imagine the garbage collector there's been arguments recently about is it production-ready it has been kind of a snarky article about that you know maybe you can tell us a little bit more about what you're really talking about with the garbage collector all right so spoiler before I tell this is going to come on so it's not a spoiler yeah what you get from 21 is a huge improvement ok
+
+so it's definitely production ready and the improvement I usually see is about forty percent speed up just over eight yeah well it is heavy talking to what is different about it versus previous so the only difference is how long GC takes usually so in all troubies you had this huge memory allocated foreign objects and the garbage collection had to go through all this memory and see if there
+
+are some objects to leave work to collect and in 21 it usually goes through only new objects that we are created after the last GC also usually you have like a limited set of object that garbage collection and goes through and that's why it takes less time and then ruby is called mine RTC ok minor GC is that's that's the new garbage collection basically the minor GC is
+
+what is collecting new objects and the major GC is the good ole fashioned DC that collects everything so that's why the garbage collection into one is actually called generational because have these two generations one is new objects and another one is all the objects yeah and 2.2 will have three generation salute will be even faster so what got you digging into into the
+
+internal server of Ruby like this well we had the bad experience with memory usage for example like if you deploy and her aqua have 500 max limit and it's quite look for and yeah it's it's so easy to take 500 mix and if you do that in order to waste you're either stop your central core by their ill PS the axial or two gigs I think I know it was a large number it's a large number yeah
+
+you go listen to the interview with screams that's that he says the numbers and basically what to you don't want to do is you don't have to spend that much money on hardware instead you can just optimize memory and it's quite easy to do actually yeah you know looking at it have you done any digging to compare your metrics using Ruby g1 versus using jruby is it something like we've worked
+
+out or are you fully busting in MRI Ruby yeah this mindful invested than ever I am not really wanted to switch ok the reason is that mm I wrote several rails applications rels to replication or else three applications Francois replication and none of them worked with the J would be so okay that's that's the way it goes for me okay well I could say I have gotten a few out there and and it is
+
+work for me but everyone is mild the others at all saying everybody's mileage and that all depends on what we're doing and what we're using bigness I he is an SI extensions a lot my proprietary extensions to man that's why we cannot use jruby and that's why I'm not quite interested in mr. you you have a more of an engineering background yeah more of the more of the the DHH i right
+
+you're you actually do have an engineering background well you know software engineering if we use the HHS classification yeah it's offering you've even you've obviously weapon taking at the C code for a while yeah is that really helped you with your Ruby understanding see so you can look at it be the call okay I see what the obstructions are right and i can
+
+actually done a lot of c++ program in the past and i enjoyed that unlike must not love you are a different breed yeah so that's why i am ok when I see the problem with roby I just go ahead and read the source code yeah that's what I am so again going to kind of what the theme with your own peanut was this is the reading of the source code and having via building up some additional
+
+skills outside of simply being a rubios you know not just say no I'm erroneous and I I know Ruby but knowing how some that lower level languages works it's been it's worth the investment it is a good investment definitely because you you can't understand how it works yeah and why behaves the way it behaves yeah that's important when you when we optimize things like the really
+
+optimizing need to understand why it is slow all right yeah without the SU you just cannot optimize yeah and avoid the cargo cult in yeah because that was I do understand that also the memory like the old Twitter environment variables that people use all the rather garbage collector our memory or the number of objects that can be allocated between garbage crusher lights that's also been
+
+fixed in 20 or 31 Phillip on actually increased Maryland yeah so what most people do not want to tweak these variables anymore and what I've seen recently that some people do and they do it in the wrong way right so if you have that those old GC environment variables and you're upgrading to to that one you might want to look at taking those out or
+
+determining what they are the new defaults are ya then like that's the part of my talk yeah but near defaults and like do you really want to hear change them yeah okay and by the way of speaking about cargo cult another way that Ruby community especially Wales community don't want to ralph lauren is sequel yeah yeah and like come on that simple let's begin there for 40 years
+
+frameworks come and go cameo and sequel is still here it's such a good investment if you want to improve your performance as well yeah yeah yeah it still sit on the porch giving the old those little those little web frameworks that are for minder skating boards and their roller shoes Santa using Merrill sounds cool but that they have it's the same plain old sequel right but freaking
+
+andropia right it's generating the sequel yeah it's just like you know you're in people people complain about using coffeescript because they say oh it's just generating JavaScript that a long time ago people were saying oh why am I using our of it's just generating sequel and you know it there's a constant is that right okay you can write code on it faster now with the ORM
+
+but you forgot them up sequel wonder if it's going to be the future with all these infections on JavaScript 30 we're gonna have people that don't even know JavaScript fitteds they only know of these abstractions no I don't know it since a question maybe we'll find out well the next 20 years it's more like another question of whether you need to choose between two but
+
+you'd rather use both right when appropriate and think some things are just not good to do in Ruby and Ruby will take and norah's time to to do calculations for example if you have large data sets so that's why you should not forget completely about sequel because this is the thing you want to use at some point I'm not going to say that okay just forget about active
+
+record time yeah do not use any models but now it's have two locks and have more than one to land right you just need to have several tools and sometimes you just need a hammer yeah yeah all right well thank you very much for taking the time to speak at me thank you very much for heavenly xfit user groups with lots to say interviews and more no way sharing great ideas in the tech
+
+community fascinating conversations plethora of information find out for yourself today yeah cute esta com

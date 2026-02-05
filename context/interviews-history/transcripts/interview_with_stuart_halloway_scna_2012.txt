@@ -1,0 +1,97 @@
+user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations popera of information find out for yourself today at you classic calm hi it's Mike with you tastic I'm here at SEMA 2013 I know I'm Savino a Stewart Halloway you recently just give a talk I'm day Tomic in how we built it sir and
+
+or how kinda tech built it thank you very much for taking the time to sit down with me I really appreciate it so what is the atomic and how did you build it so do Tomic is a functional agile database and as many disruptive plays are it's not immediately obvious what it is until you understand it and then it's like of course yeah yeah I want one of
+
+those it's a functional database in that the database is represented as an immutable value which if you follow the closure community or F sharp and you know this is a very popular program so the atomic is in closure or join use closure you talk to it or it's written in closure but as with any database that's an implementation detail okay so because of some of the Atomics unique
+
+characteristics you're likely to want to use it from a JVM language above it is possible to use it via the REST API from Okinawa jiz so similar to how you can talk to cloud the comments or a couch should be soothing couchdb Eureka you have the HTTP API for interacting with it so there is an HTTP a HTTP API but I would I would focus initially on what's
+
+called the peer model Indy coming so as a functional database the database is available as an immutable value in any JVM based peer in the system so you have conceptually at least sort of a full copy of the database available to you from in different peers in the system and so what that gives you is the ability to scale reads elastically at the same time it's an asset system with
+
+a traditional acid transactional model so writes happen in one place but then reads can happen from in different places so it's a fairly unusual model versus systems that are reads and writes are all happen kind of in one place in the database or versus say no sequels where you have reads and writes happening anywhere but you give up on the acid properties so if I wanted if I
+
+was somebody who's like okay I've learned some closure enough to be dangerous and I want to try out a different data store that can get away from the relational model now looking at it at the atomic do I do I have to go and learn a new syntax doesn't like I have to go learn the sequel or whatever proto sequel for dealing with database or how do I interact with it so I guess
+
+there would be two levels to thinking about that the first the first part of it is that the API is a Java API and if the talk today I showed kind of the entirety of the atomic in two slides of code in Java which no Java does not have a reputation for being terse and so being able to tell the entire story in two slides is worth something in and of itself the thing that those two slides
+
+emit is that there is a query language the query language is data log data log is another great academic kit from the 70s along with the relational algebra we picked it because it's particularly well-suited in my opinion to a universal schema database which the atomic is and and therefore you have these pattern matching looking queries so all the the expressions in a query take the form of
+
+entity attribute value transaction and so it's sort of a pattern matching thing anything anytime you leave a question mark anywhere in one of those positions you're looking for something and if that same name appears in more than one place you're doing that joint so people who have come from sequel really appreciate the breath of fresh air of how easy it is to use data log but they're also
+
+happy that it has expressive power that's equivalent to the relational algebra so it's not this you know made up yesterday a query language that is arcane syntax and you know sort of mass it's trying to map like link to a send a sequel like syntax where it's more of you're going to a more older style but more mathematically based logic based language and it truly is the Revenge of
+
+logic programming we're seeing a lot of people that are very excited about functional programming which is great a functional programming has more leverage for certain kinds of problems than the imperative programming that most developers use today likewise logic programming is a level of power above that one of the problems with logic programming historically is that it's
+
+only two to developers in arcane things for most developers you know prologue or rules engines or something like that it's not in their mainstream tool chain or it's in the database just fine except it's this over there place with different semantics and RPC calls so by having the logic engine run in your peer process in your JVM based process then you're able
+
+to actually do logic programming in your program as opposed to trying to bundle up a bunch of stuff into a logic program that we're running somewhere else and try to get me an answer back all in one go you know to avoid and +1 problems and round trips and all that kind of thing yeah see how so that's always been the problem the sequel is like ok I have to take it on to split my problem into two
+
+non-intuitive pieces that are maybe even gonna be in totally different systems and only talk through a single call right today and that gets to you know really the the main point of the talk today about two-thirds of the talk was about the values and the approaches that we took to building the atomic and one of the ones that I talked about was courage and that's not necessarily a
+
+word people use as a design principle very often but I think it's really important because you know I've spent a lot of my career you know sort of having a view of what I was allowed to worry about right now I'm building an application so I'm allowed to worry about the application and so I have this database and it's a key and the best thing I can do about it is create this
+
+sort of layer in the part of the world that I know how to control to make it better and that's what gives you hibernate or active record or things like that and so it's a kind of act of courage to say you know the problem isn't really here right the problem is in the end and I have to go over there to fix it this now becomes a significantly bigger project it's going
+
+to take you know years of thinking and years of development but what you come out with on the other side is a radically different model yeah so before years we were working with oh we have to create these adapters to deal with this thing that was bolted on to our application but you're trying to say no there the application and the data that's pushed that together a little bit
+
+closer so that way there's maybe less of an abstract bolted on Frankenstein model of dealing with the data is that an accurate kind of that's right and and you know another of the key principles anyone who's filed the closure community has heard the simplicity mantra you know repeated ad infinitum I will mention it here only in the
+
+context of saying yeah that model of entity attribute value has a direct mechanical mapping to an associative data structure in other words an object in an object-oriented programming languages which means that unlike with a relational database where you have decisions to make like oh this table has a joint over there I've got to write an XML descriptor that explains how about
+
+joint works or a Ruby DSL that explains how that joint gets turned into objects an associative thing trivially turns into an object here on the database I have a thing it has properties now in my program I have a thing it has property yeah exactly right so so you get the ability to think in a traditional object style modulo the fact that it is a mutable data so that's going to be novel
+
+for most object-oriented programmers and the ability to do logic programming with the same data in your process now just to take a little step away from add atomic and talking about closure and in the community that's building up around that and that it's it's rapidly grown and I but I do remember a few years ago having a talk where my god Martin said that closure is the new Ruby and that's
+
+people seem to be moving off of other languages like Ruby that were popular for a while on to closure and it just it seems to be just growing exponentially just more everyday there's more people adopting but you were one of the people that was early using it in very early stages and and how the community has grown is that something that's you've been actively part of going to user
+
+groups and teaching and or mostly the books and then getting down into hacking so I've had a nice opportunity where user group involvement and is concerned for many years since 2003 I've been involved with the no fluff just stuff Java symposium right which originally started I'm out of user groups and is a big sponsor of Java user groups at least in
+
+the United States and so I've spoken at those events around the country and those are usually sponsored by the local Java user group in the city that they're in in fact I'm here in Chicago right now going to the no fluff just stuff event in Chicago right tomorrow so it's been a really terrific opportunity to interact with user groups on in the Java ecosystem the other ecosystem that I've
+
+lived in a lot in the past several years is obviously the Ruby ecosystem justin gatlin deny founded relevance in 2003 and and the the majority of our work moved to Ruby in 2005 in 2008 we started to see a slow turn of some of the Ruby work becoming closure work which is now in the dominant language at work although there is also still some Ruby but I've had the good luck to be invited
+
+to Ruby events even and perhaps particularly since I became known as a closure programmer and one of the things that is in my experience just fantastic about the Ruby community is their interest in getting new ideas right in a sense that the Ruby community is a meta community about newness and about being able to explore things and that's been really terrific a lot of communities if
+
+you walked up to them and said I have this idea and whatever doing is crazy and you should try my thing maybe like go away yeah and a lot of Rubeus if you say that's done right Oh tell me more yeah tell me how I've been doing everything wrong please so so and it's not and it's not you know a false humility or a sense of like everything's wrong in the Ruby community it's just
+
+really a true openness to ideas an exploration that being said closure adoption has been certainly the most interesting community that I've ever worked with because of the diversity of where people are coming from so you have people that are coming from high productivity expressive languages Ruby in Python you have people who are coming from the sort of mainstream business
+
+development languages Java and C sure you have people who are coming from functional programming you have people who are coming from Lisp obviously closer being a lisp and so you get the Ruby community felt like a big melting pot to me but the closure community even more so that there really is a great diversity of ideas and so and it's exciting that the community is inviting
+
+enough that a ruby person coming in can say oh this is the new ruby yeah for me but that doesn't mean that it's Ruby for someone who's coming from Java they're like oh this is the new Java right for me and so that's been really fun to watch it's just it's about what were the audiences because if I recall perfectly during my rich geeky interview that he mentioned that that it's I from where I
+
+was sitting I thought more rubyists we're going towards closure but seeing that it seems to be Java people have been coming over in much so it's it they're coming from all over not just my observation was for about my perspective but his was no it's actually Java people that are coming over more I think that's true and part of that it's because you know rich comes from a Java and c-sharp
+
+background I mean his quote would be I wrote closure to let me write programs that I would have written in Java and c-sharp better and more effectively one of the things that list programmers in general I think and closure programmers to certainly believe is that osterhaus dichotomy is false right this notion that there are high-powered system programming languages you know Java and
+
+C and C sharp over here and they're expressive languages Ruby and Python you know over here that originated from really a marketing message for a programming language but the dichotomy itself you know covers a lot of details and if you look at the history of Lisp it has always squarely been able to sit on both sides of that divide right Lisp is has been used for super high
+
+performance things where necessary and it has also provided through macros and homogeneous 'ti a level of linguistic abstraction that allows you to do the kinds of dynamic things that a Ruby programmer would love and and even with the marketing message it's also a little bit self-serving is if you've invested a lot into learning C++ and you've been doing it for 20 odd years you're once a
+
+you know it's the better language you know and you know I'm not not it's a little bit of self-preservation there I think even a little bit looking at these languages and being able to say oh I know this high-power language why would I want to go learn something else that's going to invalidate what what I've invested so
+
+much right and I felt like that when I when I went from doing Java to Ruby in my day job it was like eating candy all the time because the language was just so much more expressive it was really great fun and then when I discovered closure it was like I was eating candy that had all of the like nutritional value of the broccoli yeah I guess it could do all this you know performance
+
+you know system level stuff and so being able to have all of that in one package is really terrific for me I don't want to have to spend my time in a writing C code or writing java code I can and I have in the past couple years done that on occasion but but I really want to spend you know my time having more and more leverage moving to functional moving to logic so since it's still such
+
+a grind there's still so many people being introduced to the language and the concepts of the list aside from your book where would you recommend people starting so if they're saying okay I'm not just a developer I'm not in particular anyways what what are some of the resources you might recommend so there are a couple of other books that I would recommend Chaz Emmerich has a book
+
+called now I'm gonna be embarrassed I'm programming closer he's closer programming alright so you go out and try to both fight in the bank over these books yeah I think you win a big chance book well probably the woman to butter Chaz Chaz good-looking fellow so I think that that that's a good book and then as a second book a following book definitely
+
+the joy of closure victory of closure right so so from a book perspective I think those are a good start and then Neal Ford and I have done a series of videos for a Riley called closure inside out okay and the nice thing about closure inside out from my perspective is it represents fairly my up to minute to the minute thinking about how to talk about closure
+
+and so we just filmed the video last year and this represents year 5 of talking about and writing about closure for me and I'm feel like I'm you know I've been in a lot of different places I like the way I explained closure five years ago but I like the way I explained closure five months ago a lot of better yeah so that that's excellent that you're looking at different ways
+
+personally myself on my verbal learner so that's also why I do the videos it's visual and verbal so having those new resources between and then also College always maintaining the closure cones it's like there's a whole variety of ways to come into the language a book videos hands-on activities it's it's it's a it's a language that seems to be just pulling people in although it's not
+
+even like not even just that you have open arms towards people coming in language which you're actively saying okay no call me calm it's it's a lot of fun I'd also say that the conference seen in closure has gotten really great in the last couple years the core conference around the language closure con is actually happening next week in the DC area and then there's a West
+
+Coast Conference closure West in the US and euro closure in Europe so I've got three annual closure conferences right now also both closure West and closure cons have had all the conference talks are videos that are posted on the web so some of the most famous story telling about closure is actually say which hickies talks at these events and so you can do you know video search for closure
+
+cons videos or closure West's videos and there's a lot of really great resources there as well yeah yeah and it's also really cool that the creator's language stays so close to the community it's not like oh they're often their ivory towers replacement which goes to these events and this reason makes himself available to to teach that's amazing well I think it's important for you know there there
+
+are languages that are designed by practitioners to do their own work and so one of the things I like about Ruby like about closure is that the language the community is led by people who are building closure because they're using it and it's not I'm building something for another kind of programmer all right there are some languages that are like designed by a certain group of
+
+programmers for another group of programmers it's not necessarily a bad thing but I think there's a lot of a lot of energy to be had when when you can all pull in the same direction and people have you know overlap in their goals and objectives and the way they're approaching problems well thank you very much for taking the time just don't they really appreciate it it's my pleasure
+
+Mike thanks okay great excellent user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations path era of information find out for yourself today yet you guessed it calm you

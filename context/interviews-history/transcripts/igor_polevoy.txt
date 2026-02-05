@@ -1,0 +1,51 @@
+hi i'm mike with you tastic sitting here with your polla voy Igor does a lot of free and open-source development on the Java platform he's created tools underneath of Java light family of both tools all frameworks I one being active web active jdbc Jace back and the what was the httpd light below basically it's a very small okay client to excess HTTP services so you kind of have this this
+
+family this framework this stack of tools that you've built what kind of led to you creating those uh well a kind of fans we I think for for the time being I was a typical Java guy you know not paying attention to what's happening outside Java you mean in the meantime the Ruby on Rails evolution took off and back in 2007 I was in the project which was a java project but then rails was
+
+slowly introduced into the project and I picked up ruby-on-rails ruby has a language and then rubén Reyes and I saw that you know developing with rubén Reyes was so much faster and better than developing anything that we had in Java and it was like okay Ruby developers enjoy this fantastic framework why don't we have it in Java okay so you're just like how can I make something that says
+
+quickly developed with Nets we're active web came from well no that was not my immediate my immediate reaction to this was great savages must be developing like you know yeah you want to see what was out there in a waited a couple years from 2007-2009 but nothing like that came out so I rolled up my sleeves and started developing first active jdbc okay so we started with the database
+
+jars and up and did was that something that you mostly used for your own projects or row no no no this was from from the very beginning it was used on the commercial projects we were building a massive system for an insurance company and we had 25 months to start and finish a massive project so if we didn't have an tool well if we don't even went with
+
+something like hibernate at the time I was managing a relatively small team was Tim four people plus myself and with active actually bc but by the time we started the project active jdbc was already working not all features were there was the eighty percent or with it well it was probably eighty percent of what we needed for that one pro k so yeah they implement the rest yes and and
+
+it was really funny because the you know hasn't developer architects sometimes you architect things right and sometimes the architect things the wrong way right this one was architected right because when we hit the necessity of hanging having many to many relationship we didn't have it inactive jdbc and my guys were like okay back to hibernate and look wait we're gonna have it two days
+
+from now yeah and we had it two days from from so so it was kind of battle-tested from the work cowboy the idea and then yeah immediately put into production and by the way the first implementation was for a crazy scheme and Oracle so right there so we hit so many problems so it's active jdbc or oracle specific or is it no no it's it's it's not oracle specific the next
+
+implementation was for my sick well then basically there's not much difference between different databases other than generating very specific queries for specific things like imagination how did you go about implementing all these adapters Oh basically I implemented Oracle my sick old poster and h2o and two dialects for Microsoft psycho server or deny Tibetan community okay so this
+
+was you had already released it and it was out in the wild and by the way what license is virtualized Apache ok so you how are you sharing how did people outside of your community get to find out about well I didn't really do much too much effort or any effort to publicize it basically throw it out into a Google old and that's it okay and then I'm
+
+assuming that most people who find these projects are people who have had experience in Ruby on Rails and then start googling like active record for java okay you know things like that so so they it's that that similar wording is it's a little bit intentional because you won't be able to be able to make that yeah you an actor to be seen yeah i was thinking what to name this thing
+
+yeah I didn't particularly want to name it a funny and none existent you know right nay nobody would be able to drive I thought that active record is a good name it's also a name of a pattern but so I took the word hectic because actually you know as opposed to like passive objects and yeah it's it's another hibernate it's a lot more active and then I thought on the on the flip
+
+side it's a very thin veneer on top of jdbc okay so active jdbc and then came about so so you start with a 2gb see how did you come up with active web what was was the impetus for that well as soon as we implemented a massive back-end system for that company we also had to implement about four portals and to be honest implementing active duty bc was a lot harder and i was i always thought
+
+that active web would be something like that yeah Andy Turner to be very easy to do I also implemented a number of other frameworks before them to make it easier for people to build a web application so i did have experience doing that although they didn't go anyway so a little bit about you know why did you choose to make these open source tools why why didn't you try to bundle them up
+
+and sell these tools as components or no well number one reason I'm not a Salesman but the reality is I used so much from open source community linux all kinds of Java frameworks ruby-on-rails I felt that I should give something back okay and yes sir so you've put this out on you created these projects and you put them out on the google chrome and then you share them
+
+out on the google code and people start to find them and they did they just say okay we have these adapters and here's some diapers or are you getting patches back from anybody i have patches i created branches for people to work on because google code is actually a subversion it's not good at a time when I designed it I guess get wasn't as popular so you know some people were
+
+like hey let's move this thing to get like okay what advantages are we gonna kick right so I guess historically maybe someday we'll know it forget so but mostly you get like what changes requests through to the forums or through forums or personal emails the through patches through branches through a issue tracking system that also you know we're posting with google so people
+
+submit sometimes patches sometimes request sometimes find bugs do you have any idea like how many people are using like active jdbc or active while i'm assuming that more people use active jdbc then active web because active jdbc was older I guess who came out before there's an interesting used for active jdbc that I found some people with big websites already built in ruby on rails
+
+right our building massive back-end processes and they're finding activities indispensable because it it mirrors schema oh it's going at about two rails it's very 121 so you can have this java components that can hit your existing exactly the same i can call it your legacy rails database versus exactly used to call the legacy databases for for rails yeah okay so but I mean do you
+
+have any idea like do you have how many people I don't know I throw you know it seems like I'm assuming tens of thousands maybe hey so it's a very angry it's very active career because look I've been using so many different frameworks like walk for j and others but i never asked the question yeah so the people who are actually active in a specific community
+
+is a tiny fraction of their community yeah it's usually like for every one person you hear there's a hundred that you yes never hear from and so are you using are you still using these tools are these something that are still in yes well the team that I started with back in two thousand nine actually I was running different teams before but 2009 is when we started using the frameworks
+
+grew to 12 people and then span of two years and we built like four massive websites for members for insurance companies based on active duty and active web for Johnson & Johnson for humana for discover for insurance company discovery yeah so that was between I was with that company between 2009-2011 at which point i found new employment with Groupon ah ok so that's
+
+four rats for rent right now and and so so where you're using the tools here I've worked on a project with you that's to be open and honest I work on a project with you are not i have used the tools are good for java but no no they are they're really high quality and that's anybody that I've spoken to the cheese I'm has had the same feedback but are you are you using them to build
+
+anything outside of groupon yes I also have my own startup smelled experts pigeon com well Express paginas and it's a novel marketing system yeah so the entire system is built of course an active jdbc active up because I personally believe not because I built the tools but I personally believe that without active basically today in Java environment you have only two contenders
+
+to the Play Framework inactive for projects and ones that I built which allow you to develop a breakneck speed and maintain high quality of your code versus kind of legacy hibernate spring yeah yeah and that's the testing you have the Jace back framework as well so it's a pretty complete stack you sound like with the rails bundle you have you know the active record I yeah active
+
+record and then your the rails and then the test units all kind of together right in one piece okay well thank you very much for taking the time to sit down with me Mike thank you so much

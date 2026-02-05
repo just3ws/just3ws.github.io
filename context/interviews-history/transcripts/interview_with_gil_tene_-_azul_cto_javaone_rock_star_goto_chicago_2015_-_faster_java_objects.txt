@@ -1,0 +1,53 @@
+hi it's mike with you tastic i'm here at go to calm 2015 I'm standing here with Gil tonight who just gave a talk on faster faster java objects and it's going to be doing a workshop on application responsiveness and as well as a case stay so you're pretty busy here at the conference but I got a little bit time to speak with you and I believe she ate that so let's start with
+
+the the talk you just gave about faster java objects what what was that about that's about faster Gemma oh yeah the the talk really focuses on a project that we've been working on an open source projects from we can work on for a year and a half or so we are actually hoping for this to mature and get into OpenJDK into the standard Java and it's the nine or ten subversion and the
+
+purpose of it is to actually allow java to have faster objects an array in a way that matches c 4 speed for the same things ok so it's actually removing what I believe is the last inherent speed difference between Java and C on speed oh really there are lots of other speed differences that could be but do not inherent this is inherent is this addressing that the startup warm-up
+
+problem or is it more of the JVM is running and it's warmed up and teach yourself it's actually not a warm-up for a compilation return I think it's actually memory layout ok so there's there certain constructs of natural to use and C and end up being late on in memory in a way that is either optimal to access in a streaming fashion or quick to get to around the location you
+
+know where in Java doing the exact same semantic thing requires dereferencing through multiple hops and accessing more randomly than then there's an order in climate ethical manner which means that actual axis on real hardware ends up being slower for the same semantic structure we're looking to close the gap for every one of the common ways to do it and see if you have a common natural
+
+way to do it in Java for any type of Java object you already have but in a way that gives you fast access to them and from what I understand you have a reference implementation or the Azul has its own vm version that visit is that have these optimizations already in there so zoom makes multiple JVMs one of them is called sing it's it's a chafing
+
+with better metrics and because you know eliminates garbage collection has much better latency characteristics faster for some things and we also make Zulu which is basically vanilla openjdk we are probably the best binary distribution for opt kit because we're probably the only one for several platforms okay max and windows neither one of those object level is not
+
+specific to a zoo we will certainly put it in our products once the project is there an adopted and i would expect zing for example to optimize it well right well obviously doing it to make sure that it it's a case but we will be demonstrating the speed benefit of object layout based objects on both using and open to decay constant implementations our goal is to actually
+
+have this be part of the standard Java particle thing JK mark anybody's JDK in the future but the the VMS that you're talking about the zulu and design are those something that i could install on my linux distribution and run you know java code against or is it bespoke for your infrastructure at now like how this is altercation installed zing is linux only but any linux then yes you just and
+
+so on the next to run your existing Java code 0 changes to it you know you turn it on and five minutes later you have a better GPA or one minute later with Zulu it's it's beyond just Linux it's on linux on mac on windows in fact we are the only binary you can get today for mac or windows that is openjdk you can get the oracle javion it's a good JVM right if you want the open source one
+
+where it oh really yeah right yeah cuz I mean that's somebody who's a more of a casual not JVM use are you said mostly to power a jruby a poor or some closure code but you're saying I could look and evaluate like maybe I could develop against an or and I'm saying zing developing and zing and also go to production with zing I mean is that it's
+
+at that level you could do that but because it is so interchangeable you don't need to develop to it there are no new API is in it there's there's nothing you do to write for a thing okay rise once young a code yeah I've also just didn't mean it there wasn't production-ready edge to this razor is there extra folks profiler hoax or things that uses suit thing does have
+
+some a lot of nice features none of them are language changes or respect changes they're just you know where normally people have a hard time dealing with a lot of objects or high location rates or you know people think that multiple gigabytes is a big number Zheng gwin's exactly the same response to this level whether you're at a gigabyte or a terabyte or any number in the middle it
+
+can handle 20 gigabytes a second of allocation or 20 megabytes a second both of those are a thousand X ranges and its really the quality where it has this extreme smooth operating range you don't have to worry about things like garbage collection and pickups and stalls and the optimizations hurting you it's built to eliminate the hiccups it's built to be fast all the time rather than fast
+
+and go out to lunch and come back from lunch and go faster which in first is how Java has behaved for last year's is vanilla I call it vanilla knocking heads it's exactly the way the regular Oracle gvn behaves for open circuit is open circuit is no different we build it we give it to people for free we certified we test it and we give it away for free presumably so enterprise support we
+
+support lenders who want to embed a JD JD mr JDK in their products like a router or an ATM machine or just a piece of software that once a jtag inside sudo is a natural fit there too but it's exactly the same both are for jvms our drop-in identical the same as you just get a different version of a deviant from Oracle we get one from us you can have all them together and choose for
+
+application which one you want to use and you should expect no functional behavior difference between them obviously we sing we hope you'll get better metrics right mostly around Lauren noise jitter hiccup stalls whatever it is that bothers you and the ability to smoothly run large things without worrying about but and it it drives me a lot of nuts to hear that
+
+like there's the reference implementation that's that's Oracle and it expect multi-billion dollar corporation have the the reference implementation that's perfectly optimized but working looking at a smaller company ever see smaller than horrible because yeah it's like they're I mean I my brain won't see there's gotta be some trade-off well so let me
+
+correct you on one thing the reference implementation for java is openjdk Oh an Oracle there's only one reference and precision and soap indicate that is what Java is developed defined and product eyes okay people then take that and build other Jadakiss from either directly open source from it or closed source derivatives of it to the Oracle licensing schemes and all codes
+
+indicates a close source version of OpenJDK with some a tooling for example and other things so is then so is the IBM JDK so is everybody else's then Zulu is actually judicata nothing more exactly it and that's where it's the closest thing to an open source distribution of the bit slopes which it is just source code red hat by the way also makes a very good binary build of
+
+open G decay but i would say that between red hat and a soul that's where you can get you know trust that opens the key bills somebody actually tested them to see that the right you didn't build a new source and hope because it's a delicate process we run the 70,000 Plus D CK tests were run through a QA stuff we've been doing for ten years and when we're good and happy with it then
+
+we put it up and say that binary or Dutch wrexham is certified compatible it's fascinating so when we're talking about openjdk really what we're talking about is a source code that represents that reference implementation personal it's not the binary that I install as an end user of the vm but i would look at a Zulu or Oh per hour IBM or zing more the red hat
+
+I see ya there they're plugging interchangeable should be because that's what the Java spec is all about you should not have to be changing your code when you switch the runtime interesting in Java is actually pretty good at that it's been very well policed to do that and I think we're the community we've done a great job oracle and sun before did a great job at this is one of the
+
+things that make java so successful yeah custody yeah and I how about involving a attention Tomic is kind of its own flavor of shining you're putting me in a country for all right yeah yeah dalvik doesn't call itself Java but better not unfortunately you right to it in exactly the job of stuff but not exactly the java stuff so Java is dalvik is a fork of Java ok with it that way you're
+
+building in what looks like javi research you have IDs Java libraries it's not quite Java for example not everything works right you can from dalvik and what we're gonna chew on a JD can you take from with jdk like something that runs a job it might not work on velvet some things do something so reflection you know yeah in various other things so firstly in the dalvik
+
+world there is no spec or no good spec that is similar to java and but we can't argue the Telex not popular it's extremely popular for sort of user interface embedded devices and such and and it's very successful there i think that you know the world is spoken I think it's unfortunate that it's a fork and that it doesn't do the entire spec but you know for me to do anything else
+
+that's all they are focus on a specific vertical of a certain type of device not general purpose for the men outside to be able to tune it for those devices you well thank you very much for taking the time today is fascinating so openjdk is just covered so yeah yes exactly thank you

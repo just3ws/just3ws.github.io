@@ -1,0 +1,111 @@
+user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for yourself today yet you classic calm hi it's Mike again with Duke tastic i'm i'm here today again it to go to Chicago conference that go to Chicago 2013 I'm sitting down with Mike Miller who is the
+
+founder and chief scientist of cloud technology or Cloudant just cloud cloud ins and he there are a database as a service company their specialty is couchdb and big couch so thank you very much for taking the attacks of that might thanks for the chance okay the couch TV how how did cotton get to be involved with a couch TV project a very good question is it okay if I just back
+
+up a little sure give you kind of one overall kind of mission statement absolutely company yeah so we started the company because our backgrounds are big science kinetic data from Large Hadron Collider concern I'll also some of the biggest some said something else big data yeah we got the feeling that big data was going to be a thing right that if it if it was a problem for us it
+
+was eventually gonna be a problem for everybody I think that's been borne out but the other thing we learned over the last four years since we did Y Combinator's that mobile it's also a big thing and so I think these I think the founder of joy and put it best that mobile and big data broken our models computing so that's what Cloudant is trying to solve and so we're trying to
+
+build a CDN vir database and so we run that as as a service and if you step back and say of all the api's and systems out there that can really deal with big as well as disconnected you know that takes you directly and only to couchdb so that's how we got integrated with it with the projects and so we've brought a lot of IP to that project both internally and in the open source okay
+
+and that's really the API layer that we're using you know for this big vision of solving those two problems like ouch and what it and even one more question is is were you part of the creation of CouchDB or or was something like wish all I'm you adopted yeah so I thought it's been involved from a pretty early stage but we you know we became friends of the couch to be community in late two
+
+thousand eight and I think we've been big supporters since we have large number of committers actually to the project I think maybe over half of the committers for actually on the cotton payroll it's a big part of their job but if you step back just technically you know we're not necessarily the couch TV company the things we love about it are its data
+
+model that's really builds uniquely from the ground up so that you can have like two disconnected systems like one can be my phone and one can be the cloud right that have a database and have a document with the same name right or the same ID or they can be like they can be causally disconnected initially but they can be synchronized for later point in time okay which is I think what mobile really
+
+requires and then the other thing is just couches it's pretty radical from an API standpoint if you're used to using a relational database right yeah it's it's a very different totally different grant approach but I think it's very forward-thinking in the sense that okay the internet happens right people use JSON and you know everything speaks HTTP well briefly could you just kind of
+
+describe why couch is different so if somebody's watching and they haven't used couch at all a little absolutely maybe comparing they probably know Mongo because it's really famous sure but couch what how is it different than mine so i think it's it's um is i've got a couple i think number one is that it's a document database and i think it's maybe the first document database i think it
+
+really coined that phrase okay and it's been a pure community project there is not a company that started and then built it and released it right um so it I often compare you know Mongo and CouchDB as like my sequel to postgres i watch TV communities slow it's deliberate and it's in it you know for the decades right right it's not necessarily gotta get to market right
+
+now and that defines the culture and the product path a lot but from the API standpoint it's very different right then a typical database and just from the way you talk to it it's your database is a web server which is pretty radical if you worked in like big enterprise i right I usually lock down the database in this case it's like well you know the Internet has taught us how
+
+to build very secure and high availability you know systems so let's just bake that into the database itself and think about you know working towards a goal of a lumen the middle tier if you want to just let the database do a lot of the things that you generally need well one thing that I think when somebody first looks at cow shot is some of these come fresh to it
+
+myself that you don't write queries in the same way that it's more queries upfront and then you start pushing data into the queries then defining a scheme or just pushing raw data into a yeah it's different um it so the thing about a document database is the idea that in contrast like calm stores like a sander HBase or big table it's not schema tised right so you don't have to sit down pre
+
+declare what you're going to put in and be limited in how you can query then later on downstream any project with a document database the ideas you can always build a new index to do what you write you so that's step number one but step number two is couch dd's very much from the ground up built to be stable in production and so things like table scans don't really exist right because
+
+they're neat when you're starting a project but in production they suck yeah there are the things that make your site go offline and so it's very much about recognizing that disk is cheap so let's store your data durably let's make sure it's always flushed to disk with an F sink before we succeed at a response let's make sure that you can pre-compute on that data using that incremental
+
+indexing engine which is very unique so that no matter how the data is like stored it's prepared in exactly the way your application wants to consume it right it's a load a page drive a nap leaderboard like you name it and then the third thing is I think it's and this is where it really differs from all other databases where I traditionally databases are like single cursor and you
+
+make that cursor really fast because a database may be running on the exact same server that the application is right so it's like oh can we beat microseconds can we get two nanoseconds and that's awesome but when you're talking to it from your phone that's a total waste and what you really want is concurrency so the couch should you be philosophy and this is supported in all
+
+the different backends that implement the API like what is Cloudant or like pouch DB running in your browser is like all the things you need to load a page in your app throw them at the database at the same time and deal with those in a chat fashion right asynchronously as they come back okay and so it's like Oh as long as each of those succeeds in you
+
+know order 10 milliseconds you know cloudy we try to do single millisecond yeah then you're fine and you can you know be well under the 100 millisecond kind of human tolerance for latency okay so it's a very different philosophy than single cursor so I'm really curious about how so you earlier you alluded to that the Cloudant employees are committing to the couch new project it
+
+isn't a fork you didn't fork off the couch gb and now this is the Cloudant specific you know branded we're going to add some proprietary things know you're attributing into the community project yeah i can i can try to be a little more precise with that so we've adopted certain portions of couch to be in our stack um we've taken the API layer and ninety-five percent of it there are
+
+certain things we've turned off everything are unstable and production at scale so we try to make sure that people can go from megabytes to petabytes and write without surprises it's a pretty big challenge yeah yeah John and we love the persistency model so the engine that actually stores data this unique append only p+ tree is fantastic because you never lose data
+
+like we take our systems down with kill bash tonight there's no graceful shot yeah yeah that's just right because it's always consistent there's no right a headlock so we love that the stuff in the middle you know couchdb in its current state is a single server application you could do replicas you know so with climate we brought our IP which is like predominantly inspired by
+
+dynamo be a ritual amazon paper so likewise sandra like what you find in rioc it is masterless it's symmetric no single point of failure so we've put that in between the API and the persistency level and that's you know what we run in our service so with cloud and we'll take a single machine then we'll turn that into a three note you know single CouchDB machine can turn
+
+into a three node cluster where we store your data redundantly then we just add notes for that our biggest cluster is like 250 nodes right now so it just scales as you need it two minutes 0 graceful a Cloudant build yep you know what but I sure but how does that work with the executive hatches back Jen couch for what you what hey this is really good this is a bug fix this is
+
+going to benefit so that's right that's what we did initially ok and then so we've had kind of our code base in CouchDB code base and we've been contributing thing you know cherry-picking what we can contribute him back and actually all the time trying to help foster couchdb to hopefully grow in a direction where it be ready to be like a fully clustered
+
+service right now and so I think it was about two years ago then we said ok the code bases are now close enough right that we could make a fork of CouchDB ok foot are clustering technology back into it with the path of getting that ultimately back in a couch TV ok so that was big couch and that was great that solved the need for people who were running couchdb themselves and wanted to
+
+and wanted to be able to you know scale beyond you know replica sets and now actually just I think a month ago we got to the point where the code bases were close enough that we could then take a lot more of what we had beyond even just big couch right everything from like how we do compaction with multiple file schemes you know auto indexing and quite big chunk of our IP right right as a sr
+
+as our board pointed out so they put that back into a branch of CouchDB so big couch is dead it's no longer being developed on all that work has gone back into a branch of couch TV which we call the the Nebraska merge branch ok so we took our best engineers took them offline for a week set them to one of the engineers homes in Omaha I think I'll davis's house and then they just
+
+heads down and there's great blog post where you can file I don't know how many commits it was five hundred to a thousand commits wow they just create I got it back to a point where it's like okay here's something we can get back to the community now the apache review process begins but that's a serious commitment to choose a serious commitment yeah and so the hope is that
+
+when CouchDB judo or if we can do it around that time comes out then CouchDB will finally have a fully horizontally clustered story around it so that kind of goes back to my initial point like the postgres style tried to do it deliberately right and and you know let the community kind of you know we can say okay here here it is you know sit back take a poke at it
+
+see if it stands up and you know hopefully the committee will accept that as a very good thing so if if I'm looking at evaluating a database so I'm looking at all the community options out there i'm looking at couch i'm working at mine but i'm looking at react i'm looking i'm just thinking of some of the ones that are here and are popular or my sequel driven recommendations for how
+
+they can evaluate and look at and or get more information yeah i think what we try to do is understand what the needs are from the application perspective and so the things that we look for like scale clicked ability in production which is a big one i think if you look at you know systems that pic things in memory and require that versus systems that are really built to be all discs
+
+from the beginning and then the really big things is there a distributed nature to this you know the CouchDB model that were really the reason we we really love that models there's no global right master right that's like a huge is that psych saying the speed of light well I said right as if I really understood about that innovation was this is just like let's go back like I'm a physicist
+
+right oh like you know Einstein was awesome because to be like here's this thing we always thought was true it turns out it's not okay and because of that we can do amazing things right I can launch satellites like a new GPS I can you know I can build particle accelerators all of this is true because it breaks so nothing's going faster than the speed of light and that means x not
+
+constant that was this big thing well x not constant right and so in this case I think developers are so used to assuming they have a have to have a global right master okay but in this disconnected world of mobile devices that are everywhere and like you and I travel around the globe right why do my applications always have to call bath to like North Virginia like okay that's all
+
+right i can so so why can't my phone be the global room can be you know the place where i right information now and then i can synchronize that later right okay and so that is the number one thing that should take you to CouchDB it is the only database that ships with the mobile strategy so it gets you away from that i have to have this yeah a nautical this is this is the all that database
+
+every tier stack that I know exactly how did this up down this for 30 years yeah exactly it's in that sense it's revolutionary and I think it will take a long time for developers to fully understand the power of that and that's something that we're trying to help them evangelize now but once you release that constraint it's incredibly free and you
+
+can do some incredible things with it is couch to be something that developers can completely look at and contribute back to you is there is there are other opportunities maybe you know somebody is not a data scientist to be able to contribute to college yeah absolutely you don't have to you don't even have time to be able to code yeah so the community is very welcoming and that's
+
+one of the things we really we really loved about it when we're first looking at kind of API tears that we can start to leverage to build this database as a service and the community continues to be vibrant there's a great post by you know by Noah Slater thanking couchdb and he doesn't even I don't apologies to know if he watches and I get this wrong because I haven't met in person where I
+
+corresponding a lot you know to the community I don't think even pushes her lack code right so you can jump in with documentation you can jump in with you know being a part of the community just answering questions about how to use it on email list and there's I think a real that you can always write airline code if you want to or now javaScript or you know grab some portion of that and run
+
+with it or be a part of the build process or QA but the community is very welcoming I can't think of somebody that wanted to contribute and wasn't accepted into the community at one level or another and then they're very deliberate people don't immediately become committers but like for instance Russell barranca a cloud employ after being a friend of the community long before we
+
+started a cloud and you know just became an Apache committer and it started ok with pushing patches so it's deliberate right and that's that's again it's it's it's slow 22 you know consider things that people put forward and that's actually another thing you mentioned that it's an Apache project it's not oh this is an open-source thing that's kind of out there this is underneath the
+
+Apache umbrella yeah and that's been big so that you know the project has already survived loss of its founder yeah so Danny cats did an incredible job with the vision for this you know for this database got it into a patch and then you know through various twists of fate ended up you know having to leave the project and do something else I and and you know there was a lot of
+
+worried that the project would die but that's exactly what Apache yeah they rings they gave it a foundation a community like a pre-baked communion bring it in it's stable it's not going anywhere in the community is big enough is strong enough to survive that which you know sure it's a dip and a hit but now it's really not just on the rebound but it's starting to to thrive again in
+
+terms of the number of commits and the amount of activity and you know it speaking also up Damien I remember and I might be misremembering but I could have swore there was an article that he had written where he kind of criticized his original work with couch yeah in the know infamous blog post yeah how does that impact what I mean is is he talking about the original couch implementation
+
+but it's it's changed since now or you know I should try to belittle diplomatic since I'm on camera I can give you a different answer over beers I guess oh but first and foremost I mean Damian deserves a lot of credit for creating this community and it has lasting his impression you know his his legacy is that it's open and accepting and I think that's great through business pressures
+
+I think you know he ended up taking you know a lot of his ideas and reimplemented them into a different system okay he's really transitioned from the couch to the community into the memcache d community okay a particularly confusing point is that even though it doesn't speak the couch the interface that new company and product has the word caption the name oh but it doesn't
+
+even speak couch TV so it's taking a lot of the ideas and and kind of since I couldn't watch them into into memcache d in a clustered but as a second I'll second product kind of it's a second product yeah it is not to say that this terrible product it's a good product for certain use cases and if you're in like advertising or something like that like ad serving I think that's it's it's a
+
+great product but it serves a different purpose in its current form oh it's been confusing to the community and this is a place where I wish Apache would have been a little are a little more draconian in their protection of brand trademark than they were but you know the community survives it well is there any last Israel wrapping up here is there any advice you
+
+would give to somebody directly okay i'm gonna i'm going to use couch just should they come to Cloudant or should they look at the so is the kind of one more like very specific like you have a use case and you already know what you do but maybe brew install couchdb it's good enough for the beginner it's just yeah it's a clear clear distinction so with cloud when we try to be so we're
+
+continuing to stretch the product and wait on Apache project can't just because of the time skill so if you come to cloud and you get full-text indexing search you get you spatial and will continue to expand that product and contribute those things back in a way to to the Apache projects you know so that they can be taken up at a time scale that's appropriate for Apache but the
+
+distinction is very clear if you know you want database as a service which i think is the future I think a decade from now nobody will run their own database okay we don't build our own power plants anymore we pay for electrons on the right right right for a reason but if I just want to get in what exactly used to it if you not to run it yourself or you just want to play with
+
+it yes Apache couchdb is the way to go and in its current state it doesn't give you the ability to scale horizontally by just adding machines and we think that's critical to you being able to test whether or not this is the right choice and so that's why we're making sure the project goes a network just forgetting my feel for it you know yeah I would say it's easiest to come and sign up to
+
+cloud ins but you know if you're sitting behind a firewall or you just won't play with it on your laptop and your offline you should always have the ability to play with it off right right um you know with your mac go and grab the CouchDB application drag it to your apps folder and double-click in your life ok's there you go to break the rap you don't even have seen CouchDB dot org downloads Oh
+
+couchdb org yeah well thank you very much for taking the time to sit down with me pleasure I appreciate it that's but user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for yourself today at Utah State com you

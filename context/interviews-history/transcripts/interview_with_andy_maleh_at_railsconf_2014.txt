@@ -1,0 +1,77 @@
+hi it's mike with you tastic I'm here railsconf 2014 i'm here with any male who did a talk this morning on ultra light and maintainable rails with service so ultra light and maintainable rails wizards I'm that's a very specific topic what what what what chichi wanted to talk about that so I mean building what was there just one of the oldest problems of the web almost everybody's
+
+experienced it especially I mean the oldest examples the shopping cart multi-step exactly like basically you're breaking things down for the user to avoid entering instead of filling in a form that's this large my break it up until like step one is one page step two is the second page that frees the third page it helps with usability and user experience to avoid people jumping off
+
+50 see an overwhelming form where's if you see that many fields only and you break the problem down for them then you help them accomplish their goal without leaving your site that's a bigger pain right that then the people I realize of course because it's not just a straight to single you know page form the typical you know like way you like the typical rails NBC thing is you know you have a
+
+view that has a form you submit if it's a creating on create otherwise it could be an updating there's new there's edits that's the business crazy golf estate you have to deal with exactly you have to purchase the state across distance as you go on and on so like you're going to capture say the user app name and address next up is maybe more personal details about the user and then finally
+
+maybe payment details and so on and so forth so yeah so I mean my last experience building a wizard was during some Java development as well as doing some maintain maintenance of some rails projects but then two years ago when I was when I got commissioned to be a software architect early shares calm to help them launch a new brand new rails website
+
+they had two onboarding wizards one for investors and one for business people and their needs were kind of tough because they're a bootstrapped so we have time limitations I only have one junior developer helping me on the project turn I was brought in as the rails expert and also that the design of those Wizards was not finalized so like he told like the CTO who was kind of
+
+designing or coming up with the requirements told us okay you know like the business project business contact inhibitor onboarding wizard might start with four steps but we might go into mine steps so obviously there were need for flexibility and extensibility that were going to happen really soon also he said I want you on the junior developer be productive and work in parallel face
+
+something fast and not like he didn't want us to block in a way where if I'm because we did pair programming but there were occasions where we would just feel things that the junior developer well in tackling more difficult architectural problem so yeah it was a pretty tough situation and it was my first time solving this problem from scratch so I mean at first I just went
+
+online stack overflow and our Google what I practical articles building wizards with rails like Google gems I was gonna be an easy thing but then everyone i looked up with either be encouraging doing conditional validations on the model which gets really dirty meaning you know validate the name and address on the first step but don't validate on the second step so
+
+you know a lot of it fails they can interative been a stinky head in probably some kind of stay in here to say okay i've updated hamid step 2 and then your duties that's another approach that i saw a state machine which the issue that approaches a lot of like the frameworks that would encourage it would end up forcing you to add a column to the database of the model for a
+
+presentation concern that doesn't the wizard that has nothing to do with the actual business domain model me if I'm just building a project model me having doing on the presentation level with forceps or nine steps should not affect how I had that model I mean I should just have project work with that so yeah and I mean there's the session or hidden
+
+variable accumulation technique which is very popular on if you've ever experienced that one where you store things on this session every step of the way then once you reach the final step of the wizard you actually call so you build up a little hash in exactly there's actually grab all of that at the end of the last step and loaded into an active record of favorite issues just
+
+you know when it forces you to write controllers that vanished at session data right I mean you can offload some of that to our I guess the sub model but for a service object but I was not satisfied it felt like you're either breaking NBC or breaking rest like one other approach I've seen was on coke basis is basically have four controllers like one per step right but in the end
+
+I'm almost looking the same and like this the same code is very repetitive I feel like you're not dry or you're breaking rest are you breaking a MVC so what gives so I was really frustrated I'm like let me tell this from scratch the CTO was a bit frustrated with me when I was finding some time on this because he's like why I'm trying to invent a new way I just write some
+
+straight Brielle's MVC code like he's like almost encourage me or like right five controllers like whatever okay who cares like we're just the start up I'm like no I need to make sure about junior developer can maintain it because I was commissioned for three months only on the I was it was right before I moved out of Chicago and yeah I told him Felina and make sure future developers
+
+maintain a tease i need to make sure that i will be able to add steps quickly and change it quickly when you ask me to change it cuz we're still doing tests on the user experience we weren't sure we weren't completely committed to that design like with any new project so fortunately after one day of me brainstorming and thinking about the problem i stumbled on a design that
+
+seemed to work really well and the junior developer happily and productively delivered and then later on when they brought another senior developer that was remote in Brazil he liked the approach quite a bit and actually send me an email congratulating help in there so what was the what's kind of the gist of the approach that you that you presume you
+
+talk about this approach yeah so that that's what the talk was about was pretty much me going doing a survey but like the holder or existing techniques and then the one I've stumbled about about and how it satisfies rest FB COO and clean code principles i have a blog on it on aunty mallu blog blogspot com ok there's a blog post on it I plan to release the gem for it soon called ultra
+
+lights wizard this is something that is more like a pattern or a jam it's more of a pattern but I I might be able to Accord it into Jenna rails generators so that we'd help people by you know just give it the names of the steps in the generates have a bunch of like the bare minimum desales need to deal sell or something that it's it might be some dfl elements involved as well ok there was a
+
+gem out there called wicked that fells part of the problem well and it's a almost the same solution i stumbled on ok so that was reaffirmed when I thought that gem later on it was not available at the time but I discovered it like a few months later somebody I think came up with that gem and so I plan to just fill in the rest of the solution and it very least it sounds like kind of one of
+
+the themes that ehh for this morning about reading code is it's probably a good idea just even if we don't use your gem to go and read it and understand how I recommend just googling ultra light and maintainable rails wizards and you'll stumble on my blog post ok more about it if the other samples why what what is actually going on in there yep so I mean the gist of it this is the
+
+following ok so when I was thinking about the problem like people blow it out of proportion when they think is take machines first of all because the moment testing thinking about a state machine them in the computer science domain I'm not in the business domain anymore alright so I've already separated from the ideas of domain driven design which is the whole idea of
+
+writing code that is as close as possible to your business concept so they in a more easily over time so I mean I didn't like even starting from there like I felt like that was wrong to begin with so I figured what is a wizard really doing and I asked the audience today that question yeah it was cool to see what the audience would say like it like some people said those it's just
+
+the Wizards goal is to acquire data but I asked him oh but you know I single form when acquired it on the white wizard and then some people were like yeah it breaks it down and organized into multiple steps to help the user so I'm like okay I'm like okay and what's the end goal if I have a semi-finished it was in there like it builds an object like yeah bingo basically it's a wizard
+
+there's nothing but the good old builder design pattern or builder well there's a multi-step builder so when I followed it that way then I then the next question was what is it step and it turns out that stuff if you think of it forget the code forget computer science concepts and that kind of fits with the Acacia stock i guess today if you just think about it naturally it's really just
+
+wizard gives you much each step Oh a view into the model at a time so if I customizing a car then I'm what we're doing off the site one step will have me look at the exterior the car so that's one for you on two and another step is named through here if I want to customize leather inside back the color the dashboard panel so on and so forth and then say a third step could be the
+
+engine so really it's just data fuse so and then I had a few other like goals behind my designs you know I don't wanna I want to avoid conditionals I want to avoid tapping if-else statements in the view I wanted to see if things like a step one show this field in the form of Step two showed up so being very easy after after laying that foundation and they're not being nothing but
+
+to read full resources basically so the main one is project and then the second one every step of the way and the resource is really just a project part that that is a nested resource under project so if you have four steps and you have for project parts so the step name is the idea of the project part so then the route is nothing but you know / projects 51 for example / project parts
+
+/ step 1 okay okay so it ends up so then you just have two controllers one to kick off the wizard as well as once the wizard ends it shows you the landing page of the project or the final confirmation page if it's a shopping cart and then the second wizard is the one that edits project parts that one only has edit and update on it and it walks you through each step tweets them
+
+all the same because all it is just a different ID for each step so that what you do is render each steps page for more physically based on step name so instead of rendering an edit view you would just render the IT the project part which ends up being step 1 dot HTML drb step 2 HTML RB or or say we have more meaningful names we have basic basic info dot HTML garbey details the
+
+HTML BRB documents the HTML BRB so you're able to gradually reveal the implementation of a full instance of that final object in peaceful form yeah like so you end up being able to maintain the views separately very cleanly so each of you has its own form the beauty of it is that simple though because all of them have their form links to the same model so it's just
+
+project but you're just editing in different part at every time now the second challenge I need overcome is how do you deal with validations on each step so the solution the hat that I just stumbled upon like what trying to solve that problem very quickly is create four presenters for project where each one gives you a data view of representing a data view of one step on
+
+the project so it's like the presenter of a patent or view model pattern and it includes the foundations for that step only then you're able to segregate for them the project model has associations and in common business validations and rules but then you can separate specific validations on each step onto the steps so you can and then in order for those steps to read the project data I was
+
+cheated and had them extend project so like I had a basic info dot RB that was basically and for extending project so end up getting automatic access to other columns of projects and when you buy this code you want to pure rails project validation code you're not writing anything special so I mean it work really well with junior programmers they didn't have to feel like like they're
+
+doing crazy domain driven design advanced you how much it go into programming stuff that just rode the rails validations for each step in a separate file as well as wrote a different form for each step on a separate view and in the controller code was uniform and polymorphic they loaded the right a step presenter as well as the right step view based on the step
+
+name and and that point on yeah so I feels very dry we covered a lot of technical stuff here it probably would be best for people do wanna see what was a term they should go Google for ultra light and maintainable rails musics ultralight a meeting and the project that I'm planning to launch it on during github it's ultra light wizard Iove i recreated but it's empty right now I
+
+might actually completed during this conference okay I already found a potential contributor that will help me help pair programming meat on it oh great well thank you very much for digging focused on we appreciate it and just so everybody knows I'm a rail Tavella / Andy's rels developer again and he was actually my first official trainer when I was converting from being
+
+a done that developer to to watch two rails and then I just won't say that I feel like I've grown in my career like your beard has grown in the world and it's it's really an honor to be here at he went and the magnificence I always be my dog kind of way yeah thanks on for initially what I do though vp of engineering with big astronaut myself Oh
+
+big ass remote for consulting company where we have presence in chicago number in Montreal so big astronaut okay I don't thank you very much you're welcome user groups with lots to say interviews and more no way sharing great ideas in that tech community fascinating conversations plethora of information find out for yourself today yet you guessed it calm

@@ -1,0 +1,59 @@
+you hi it's mike with you tasik and i'm at railsconf 2014 and i'm standing here with Aaron Patterson you might know him as tender love on twitter and github in all those social places but he's going to be giving the footnote to the to the conference tonight I can't recall the keynote said yeah I don't know what to call it the anti kita antic United and
+
+uh well thank you very much for taking the time to discrete with me up can you tell me a little bit about what your talk is is going to be about yeah well first i guess so i guess the first thirty percent is just gonna be like jokes and trolling the second thirty percent is going to be I don't know some like bugs and stuff with like you know active record in Charles and the final
+
+sixty percent is going to be excuse me the final fifty percent is going to be about adequate record and I know that I've got to 110,000 fun I always like to give one hundred and ten percent just don't don't so yeah it's just gonna be like I don't know jokes bugs and then adequate records what we're going to be talking about what it was is adequate record it's a it's a project I've been
+
+working on it didn't I've been working on it for a very long time but I didn't really have a name for but what it is is it's just a set of patches on top of active record like a it's just stuff that I've been doing on top of active record specifically for a performance like performance improvements to active record is it is it like edge of a streamlining of the internals org well
+
+it's been so basically I've been refactoring the internals for very long like I've had this idea for the performance improvement what the what the main performance improvement is is basically sequel statement generation caching so actually the string that you pass the database layer or that active record passes to the database make the actual sequel statement feeling it
+
+catches the generation of that so we only do that once and your queries end up being faster from that but I've been working on basically internal reef acting for literally years just to get to the point where I could do I could have this particular thing but I never had a name for it until recently yeah that sounds like God like what in other did bits and just where you can lean on
+
+some that query cache you inside of you you're pulling some of that capability out into into the Ruby layer of the a player so it came yeah yeah we are we actually already do so active record actually already does query caching like uses prepared statements and does casual earners yeah casual Larry execution so we do that the problem though is that even though we even though we use those
+
+prepared statements we still have to generate the sequel statement in order to look up the prepared statement and then do that so we've had we've always had this overhead before acquiring the database of like building up you know building up the query before we go out so this basically eliminates that overhead as are the stuff I've been working on yeah and you've been a
+
+cheater two rails for a while yeah it was grills the first open source projects who were involved in or how did you come to you being a real score yeah no no not at all rails was not the first thing I worked on it all I guess I've been working on well my very first open source commit with or open source patch was probably in was that 2001 i think it was like it was to a pearl for a library
+
+don't Google me rowley is it's embarrassing but you know what I really know you did from no no our first like my first real major open source stuff was with Ruby in maybe 2006 working on the mechanized okay ganized Jim that was like the first my first like real you know yeah meets so that was a part of the pearl meh control mechanize yeah yeah my Andy Laster yep I've also
+
+interviewed awesome awesome of my neck of the woods that's awesome yeah yeah so so so from one open source project to another uh I'm making the network all the oldest art screeching videos yeah yeah so I worked on actually I I mean I didn't actually start recognized I inherited it from I inherited it from somebody like I was using it I was using it a lot and
+
+like actually a fun story about using it but anyway I like the current or the maintainer when I picked it up he wasn't he wasn't working on it so much so I picked it up from him that was like my first responsibility is so that's when you became a growing up in and foss yes yes exactly there is that when you decided to go with a beard or I own something I had a responsibility yeah I
+
+probably haven't got to grow up figure out the beard I you know but from there when did you learn about rails so basically around the same time I was getting into Ruby working off like basically working on mechanized just to do some automation like web automation stuff and then around that same time the 15-minute video came out yeah that that photo blog post yeah and I saw so I saw
+
+that good blog I saw that and I was like wow I gotta try this outside try it out like I tried out rails from there and i loved it i was actually i was actually java developer at the time like i worked at a worked on j2ee systems and saw the saw the blog in 15 minutes and I was like I must do this this looks so much easier than my job more fun yes definitely so that's how I got
+
+introduced like how was introduced to rails and then I don't know maybe about a year later I got a job I took a job doing rails development for a start-up and then you just started contributing patches yeah yeah I mean I did a lot like basically throughout that time my open source portfolio was growing I suppose and so at this star up i got xperia
+
+doing rails development like I didn't really contribute any patches or anything I was just an app developer right but after that job I got a job at ATT and I was doing app development there as well but it turns out that like a tiki interactive yet on Ruby thing yep ATT interactive yeah I got a job there and they uh turns out they had a lot of Ruby developers and a lot of them were
+
+using my open source stuff and they also needed patches to rails and I guess like one thing led to another and that's like that's basically how I got involved yeah I have to say it was a kind of volatile trippy to meet people like you're using my stuff oh yes yes absolutely it was very Lake so at the time I had I mean you know I knew there were people out there who used my software but I was
+
+just kind of extracting well I was yeah so it was kind of abstract it was all i was also completely oblivious to the actual number of people who are really using it because I mean you only get like who you get a bunker par or whatever you only get one I mean you get a bug reports from a very small percentage of people who actually use your software and like you don't
+
+understand exactly how small percentage that is right so then when you understand like oh it's actually very tiny percentage which means that there are tons of people using yourself right kind of it blows your mind it's yeah pretty incredible so yeah I was very nice it was that well now hear you're speaking to a conference for probably the fast overwhelming majority I mean I
+
+I don't know if I said exactly thats to to tha tooa but you know i pay my bills using these tools yeah and yeah and that's that's often wonderful for people who are wanting the large projects or contribute ease does that ever also your your perception of the relationship with like don't you just try not to think about that too much no I mean I think about that it actually
+
+did like that actually makes me very happy that people are using my software to pay you know pay bills I mean like I I don't know like I I'd like all serious on your manage no no no it's okay it's okay it's okay like it's actually so it's actually really cool to me because I want to be able to help people right like ideally I would I want to help as many people as possible and like my
+
+skills are programming that is what I do and that's something I can do well and I feel like I have more reach to help people like doing by doing open source stuff I feel like I'm actually improving the lives of more people than say if I was working on an online advertising website yeah which is ours yes exactly or where this is so like that's I mean that's why I love doing what I do and
+
+I'm happy to think about that it makes me happy that people are making money with software i right yeah so so it feels good and it's fun and that's over all the vibe you give on your Twitter Ram Singh is VB the Friday hugs you have your cat Kirby buff yes very puffy eye guy can mother first gopher just Barbie well well this full name is Gorbachev puff puff thunderhorse the third but we
+
+call him very popular girl each o regard you puff puff thunderhorse thunderhorse the third yeah so you here and here get it right on the Twitter yeah I like so I was like you don't know well enough to call him Garvey I was thinking about changing my name to thunderhorse as it sounds like it sounds super awesome when when I got married I was like hey you what do you think about changing our
+
+last thing is a thunder horse and we can be in a band or something will be the bomb you didn't the metal vibe no I feel like you know I'm gonna get a contact high nah I'm kidding I'm getting I feel like I should be getting a Coptic I'm not askin very serious no I'm not gonna reset um bata well and with that relationship to the community in it sometimes I think obviously looking at
+
+the conference that i look at DHA is very early talk which is funny in his wry sense of his wry humor it's very Danish Denmark Ian humor and then a little bit more American humor you ever I'm over more obvious and I an obviously get like what is the analogy actually Bing Crosby and Bob Hope funny but what was more you know took a where the Gulf oh yes and one was more funny but
+
+in a very upright way so I just think it's funny in our community that we have we have our own Bing Crosby and Bob Hope and you know I think though 11 dhh calapan n and gave his his talk because he didn't have the Bob Hope tube to foil off of i think some people took what he said a little too literally a little too much to heart oh yeah i miss am i know i agree i agree with you i agree with you
+
+well but i think it's fine because that's basically why I'm gonna be trolling yeah yeah so when they listen to you should think of it in the context of research people who are central to the maintenance and future of rails and kind of orbiting around each other in in got into drugs image yes i am the we're at the yin and yang gonna have the little captain's gap by in the golf club
+
+yes think that but i'm sure you're sure dth knows how to pick that's wrong oh yeah thank you very much for taking it out like you so much it it thank you it was good to meet you here have a hug I'll get it on a Friday thanks user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for
+
+yourself today yet you classic com you

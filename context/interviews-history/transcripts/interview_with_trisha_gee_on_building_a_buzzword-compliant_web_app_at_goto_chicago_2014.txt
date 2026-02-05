@@ -1,0 +1,63 @@
+hi it's mike with you boo tastic I'm here again I go to comp 2014 I'm sending your batricia gee who gave a talk about well to me it almost some like The Nightmare on my back scenario a whole stack of topics but you'll be able to tell us all about what she worked in and whether it was a nightmare or or a dream but first of all say thank you for taking the time to speak with me and
+
+they can tell me what the title was because it was a lot of stuff in there I think it was angularjs html5 java mongodb and groovy that's a lot of stuff yeah what could possibly go wrong yeah I couldn't imagine what our trade could imagine like that and but what what was that was it so I guess she'll tell us in a minute whether there was a good thing or a bad thing but what what was the
+
+basis for that talk and what did you talk about in there so the thing was really that I wanted to do so the last few talks I've done were very high level of very architecting and I wanted to get back down to something by coding and do something which which kind of demonstrates what we do on a daily basis as developers and so one of the things I didn't want to do is do a toy
+
+application something which is totally not realistic or do a deep dive on one particular piece of technology because in the real world you have a whole app with lots of moving pieces and I wanted to show how those moving pieces interact where they belong and and have what their what their role is and and the other thing that motivated it was I get asked a lot like what is by people who
+
+are non Java people what is the Java front end of choice and of course the answer is not java what is web stuff so and I realized I was way behind the curve on web stuff so I started looking at an angular and html5 to see what what that was like and it turns out that angular is a lot easier to pick up and I thought and it's caught it fits quite nicely with rest and web services and
+
+JSON staff so you could fire off staff from an angular front end to a java backend and especially using momma Dee because i work for mongodb and which kind of stores often a JSON type format that stack works quite nicely together passing json messages around persisting in database and you're using riesling the front end I mean your JavaScript on the phone and
+
+JavaScript on the back end so yeah kinda well I mean the president mean on the back end so why aren't you see the Mongol I'm not sure you're doing right producers and things like that so yeah so I didn't get as far as any of that stuff that yes there's the JavaScript on server for mongodb so when I'm doing my queries in MongoDB its JavaScript and the objects are very JavaScript II for
+
+mongodb and I think for me as a Java developer and I've been doing back-end java stuff for a while now I had not really realized where the front end had moved to recently the way that things like angular worked and because of that I wasn't really aware of how the JavaScript was kind of thinking if you like on the back end with Mama Odie because I'm thinking in the Java type
+
+way so it's nice to tie all those together and sort of see this is kind of how it works and this is way head needs to be together all to work together so you're you have this larger a list of technologies to pull the stack what did you build I built a web app which and it's designed to be used on your phone okay and you're walking down the street and thing I need a coffee and I need a
+
+coffee so badly I'm gonna order it from my phone or you do that all right now I'm going to order it for my phone and then by the time I get to the coffee shop we were ill be there and then this requires you to do things like and what I wanted to showcase was obviously some things from MongoDB like you can do geolocation searches so i can send Mungo my location and say given your list of
+
+coffee shops give me the closest one and that's quite simple in 10 and so you don't get your choice you don't get to say i want to go to the closest starbucks but room but you could say right this is my coffee send it to my closest place and tell me what that person's it's just coffee right exactly it's gonna be in la taylor be good yeah yeah so yeah that was the edit okay so
+
+you built this app you walk through your development process in the talk yeah so the aim was to walk through from zero so one of the other sciency I have multiple motivations in this talk but one of the other things I wanted to address is people always say well Java is difficult to do it's long-winded to develop in it's difficult to get started so people tend to prototype in languages like Ruby
+
+which is fine something wrong p but you know often then when they get to a point where they need to scale they often move to the jvm so I thought okay how is it really true that's difficult to prototype in Java let's try and do something tiny like this in an hour and get it all up and running in in Java from zero from nothing not I haven't installed an app server somewhere I
+
+don't have a tryout server something it's just running on on the laptop so I start from zero and I use this library well framework called drop wizard which starts up jetty and get really lightweight JSON staff kind of without how to do anything particularly challenging and then build up from there then build up the UI a little bit piece by piece trying to use user stories to
+
+say right now I've got this now I want to move on to this now I'll need to do this now I want to make it look pretty and one of the other things was I added bootstrap into the mix because as as Java developers we tend to think that web development is difficult to do in a pretty way and it has been but with bootstrap we just kind of get a vanilla not ugly web app for fairly minimal cost
+
+yeah and it's like looking at your ton of the talk and there's a lot developing myself I am familiar okay yeah that's all normal stuff and I can kind of divvy up what goes where in that stack but i have to mention somebody who's maybe not so well versed in that stack just looks then just hears all these technologies and it's just kind of daunting yeah to look at them like what does all that
+
+softest yeah Zach what you kind of wanted to help make less daunting yeah I kind of wanted to show the niche for each technology and specifically like I said things like don't put job on front end it's not as if we belong there room and I also heard I've been to a bunch of conferences lately and I find out that lots of Java programmers are doing JavaScript as well I wanted to see what
+
+that looks like I want to see how they talk to each other so this way by saying right this is this is the user story we're going to do now that requires a an angular thing on the on the front end here a bit of JavaScript here and then something on the back end here to take that request and send it to the database and you can sub see where all the pieces fit together that was that was the goal
+
+of it and all did you do live coding I was mostly prebuilt snippets to insult life inside you're incredibly brave well yeah I rehearsed it like many many times before hunt oh that's what could go wrong for ya and when I gave it a kick on London right at the very end it didn't work and I was absolutely terrible tit and then it turned out that it was there's a few
+
+different ericaceous one of which if if your Wi-Fi isn't on the html5 think I'll find blah blah I don't like yeah but to begin with the very beginning I'm doing all just straight pure coding I'm using IntelliJ to help me so it just loads autocomplete there's loads of live templates and IntelliJ which will generate things like HTML and staff for you so you can say input select it will
+
+generate an input select for you so I'll note and just all of it right and one of the things i wanted to show is that if you use the tools properly you don't have to spend all your time typing because typing is not the difficult thing it's like this kind of understanding what you need to do so at the beginning it's all live live and then gradually as it gets more complex
+
+and i don't need to repeat the same sort of typing for a different widget on the screen then I cheated with some live code snippets so I turn in a shortcut and it does that fit okay but most of it is you have to remember them in order and do it right yeah learn like when you said about the it's not necessarily the typing either sticker for a while I called typing is not that it was it's
+
+also i was typing is not the bottom hi it's it's it's what i want to do and in and wondering if that's what also you're trying to see is that it isn't the tool java isn't slow it's it's the thought process you have to do and maybe the way you have to think exactly might be a little bit horror but i might have to do a little different order but i mean is that something that came out in the talk
+
+I'm not sure me and maybe I mean that's kind of that the it should be clear that the typing is not the bottleneck because I do this program and I crates with you from scratch in 50 minutes by typing it out but it didn't take you 15 minutes to create it the first time around you know at me a week to learn angular to get an end to end piece working with angular and I've never used it before another
+
+half a day to get to go to bootstrap then another couple of days just to finish it all off right so it it took me nearly two weeks to create the code which I can then type out in 15 minutes yeah and that's the trick it sounds like via the overnight success in 10 years I took two weeks be able to write an hour but that investments you know once it's sunk you've now can do
+
+that again right exactly and I wanted to say no most of that week and a half two weeks was me learning angular in one week now I don't pretend to be an expert in angular I kind of show how it works but I don't I kind of say a little bit of obviously what I'm doing one doing it but I'm not pretending this is best practice this is this is how you do angular the point is in a week you can
+
+be up to speed on angular and you can write some quite nice modular code which reads in in a sensible fashion was as java developers we tend to think of JavaScript as being blah you know there's a ravine mess of procedural code and I want to say that in a week you can be writing quite pretty looking angular and hopefully if I give this talk again I can perhaps find some better patents
+
+rank you don't get an even neater but so did I me answer Europe you're working for mango and obviously there javascript is important for my go but when you were able to look at javascript from another perspective of writing angular 2 that was that anybody able to come back into your work I'm going to be like all this kind of changed where I look at how I write JavaScript yeah i mean i'm not
+
+doing what's javascript with manga but obviously we use javascript all the time to interface with MongoDB and the json objects are obviously JavaScript objects and something which kind of passed me by in a way because when I was writing JavaScript back in the day it was like this procedural thing you didn't have objects really and so it really doing the angular stuff made me realize what
+
+JSON objects look like what you can do with them how you know you can treat them and and it did give me some thoughts on what I want to do with it with a Java driver because we the Java driver you've got the angular front end you've got Java in the middle then as you say something javascript ish at the back end and the messages have to pass through those layers like how do we make
+
+the driver driver more friendly for those things while still being idiomatic Lee Java is because at the moment the translation into a Java object for in the Java driver is a little bit clunky because they don't have this idea of nice lightweight map ish objects so it did kind of help me me think I haven't really written the Java driver for it yet but and it really
+
+helped me understand the shape of those things a lot better ok well thank you very much for taking the time to speak with me Rasheeda user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations plethora of information find out for yourself today at Utah State com

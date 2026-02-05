@@ -1,0 +1,39 @@
+hi it's mike with you cassock i'm here at go to comp 2014 i'm sending we're here with Camille Fournier he was talk about the great rewrite or well if you should maybe it's not so great yeah you know should we have a rewrite oh thank you very much for taking the time to speak with me so your talk the wilkey's it what was the title of it again is so you want to rewrite and so you want to
+
+rewrite that ok so what it sounds like a little bit of pain yeah to get to that Sergei to share a little bit about yeah what your experience was sure so um I just let run the runway through a big rewrite of our legacy sort of ugly Drupal system into a you know Ruby fronting java so a back-end gotten far for I want to ask front the wrong way yes what is what is that real quick rent
+
+the runway is when thrown my calm we are a ecommerce website we do designer dress and accessory sort term rentals to women okay um and we are actually you know you may you are not our target demographic but probably you know I guess that at least a nose of us or even has used us we have for many many customers throughout the United States okay so you're saying that you had a drupal
+
+application yeah that you rewrote into a Java SOA in architecture and then I interrupted you yes right so you know I basically joined the company when we were first starting to think about this rewrite and let the team through it and it took us about well it took us about two little more than two years to get to all of the major consumer facing customer facing pages out of Drupal we
+
+still have administrative pages in Drupal so this experience is really interesting for me because it just got me interested in why do people rewrite what makes them successful what doesn't make a rewrite success well I think every software engineer is going to have to rewrite something at some point in their career probably it's some point you're going to do one of these really
+
+big rewrites so how do you think about it what are the principles you should think about and going into this process to hopefully make it more successful because rewrites tend to come from a place of failure right you're failing in some way or you see you're going to fail in some way its failures on horizon and so you know it's a very easy for a rewrite itself to fail because
+
+you're already in precarious you know in a precarious place how do you you know think about it to make it successful okay and so it's unlike you did a gradual evolutionary kind of iteration away from this this monolithic architecture you didn't just go yeah system and then replace it yeah yeah yes I would say that the number one thing that we did right was we did a very
+
+iterative slow rollout so we would take logic that was in Drupal we would move it into Java and put the eight put that behind API calls in Drupal and we did this for sort of core data and then core business logic and then once we had done a sort of a good chunk we started moving pages in Drupal out of Drupal and into Ruby so we built a ruby layer in such a way that it was a very thin client it
+
+wasn't talking to the database in the way that our Drupal had been it wasn't this sort of complex you know ball of wax it was simply calling to Java services to get json data and you know maybe doing a little munging of that and showing it on the web page so the one thing coming from a cultural community aspect is that there's a strong identity or tends to be a strong identity in the
+
+PHP community and a strong identity in the java community how much off a developer i'm a PHP developer so when you're saying that PHP developers okay we're going to be taking your stuff and rewriting in java how did you kind of smooth the waters for that yeah well fuso and avoid like consult like well yeah yeah no I mean I think that's I think that's a great question and you
+
+know for better or worse we just you know we had lost a lot of the original developers of rent the runway over the years you know had been written by an outsourced team and then in house and I was not you know in great technical shape because it have had so many owners that the team that was there writing the PHP they were not so in love with the age anymore emotion about they were as
+
+emotionally invested they were mostly like exhausted because they were supporting this thing that kept breaking so in their minds anything to make their support burden a little bit easier and you know take care of some of this complexity and allow them to focus more on getting features out more quickly i think the real thing is that developers
+
+want to ship for the most part developers really care about shipping especially at a company like rent the runway and so our rewrite was always sold to them has this will let you ship faster better you know with much less pain and and it did that and I think that helps with that and uh you know coming here to go to come the presentation you wrote was it based off
+
+of your strictly after your experiences at rent the runway or have you felt this pain before and are you reflecting your yeah previous experiences so I immediately felt this pain to some extent before I had never done a major rewrite like this I had done a lot of actual like sort of reef actors in place where I think with a different team would have resulted in a major rewrite
+
+that may or may not have been successful but I actually talked to a lot of colleagues and friends outside of the company that I knew had either done rewrites considered rewrites not and not done them I read a lot of stories and a lot of articles by people who had you know successfully or you know not successfully done rewrites because I think that this is a common thing you
+
+know developers do this at some point in their career and so I wanted to get more perspectives other than my own as to why people do this and what makes them successful or not an edge to kind of wrap up our are any resources that you read or work or how did you maybe look outside of your own experiences to to get more information about how to approach this digitally like they were
+
+factorable I mean I read what did I read so I read some blog post there's some blog posts actually it's really interesting about like six or seven or eight years ago there was sort of a flurry of don't rewrite that blog post which are really interesting and actually worth reading i think you know these things come in cycles people write about them and then we all forget from
+
+and then we make a bunch of mistakes and then we learn about them so I read a bunch of those i read a little bit about the you know twitter has a pretty good blog post about their rewrite and i also talked to people that were there and worked through that i did a lot of talking to friends too so far reaching out and just reaching out yeah just asking people
+
+like for their experiences if you know someone who's been a software developer for 15 or 20 years you probably knew someone that's done this scene that's been around for this and has some opinions well thank you very much for taking the time to speak with me thank you user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating
+
+conversations plethora of information find out for yourself today at Utah State com

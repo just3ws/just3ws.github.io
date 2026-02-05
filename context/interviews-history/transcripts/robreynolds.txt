@@ -1,0 +1,163 @@
+hi it's Mike again with you tastic today I'm sitting down with Rob Reynolds you might know him as fervent code or on Twitter he's been around in the.net community of creating open-source software for a few years now he started with a lot of chuck norris teen odd utilities round house and an uppercut and he's really worked on new gets and now its latest project he's working on
+
+is called chocolaty it's a kind of like apt for windows so Rob thanks for taking the time to sit down and share with us today thanks for having me sure so we'll work backwards we'll start with chocolaty and then we'll talk about some of the other projects you've worked with so what what is chocolaty and why and how and why did you start to work on it sure chocolaty is your global silent
+
+installer / updater now we describe it as kind of like apt-get but for windows and the kind of means this is not an advocate clone which a lot of people like well this doesn't have a basket command you know update right well it's kind of like advocate what it is is it is it's basically a global power shell execution engine and the biggest modules in it right now are about getting things
+
+installed on your system hey that doesn't mean that's all it has to be used for you can use it for setting configuration values setting registry setting all that we called it chocolatey because it builds on top of new gets packaging infrastructure and so this is a global power shell execution engine that knows about packaging inversion okay so that you could make a new
+
+version of some configuration or an application and then just update the package and somebody could update their system with that yeah and I see like on the chocolaty org website that you have the first example is it looks like it's automating an MSI installer to install git yeah so I mean you're you're launching and you're using the existing infrastructure for for doing installs
+
+you're not like installing into a separate directory and linking binaries or anything like that you're you're instrumenting and making and scripting these these installation packages correct and the biggest reason for that is there doesn't have to be a huge by and to start using chocolaty from the consumer and there doesn't have to be a huge buy-in from the creating packages
+
+side either because you have this existing infrastructure is out there there's Emma sized executables you know install shield type native installers and chocolate he'll try to know that the other thing is that chocolate doesn't do anything different than what you would do is a regular user especially when it comes to like distribution rights so there may be some software out there
+
+let's say something like resharper where you're required to go get it from the the manufacturer chocolaty has the ability to do that for you reaches out and gets it pulls it down the package instructions tell it that you know here's the silent arguments to install it and so they can install it and when you update you just call chocolaty update saying this was resharper and
+
+then it reaches out and it gets the newest package if there is one and walks back through that same process so it you can I mean is it some stuff probably doesn't have a friendly upgrade path or reinstall path I mean how do you I'm into some things you have to say well this one's not an upgradeable package at this time it's an install only is there a difference between those I you know if
+
+it doesn't if the natives dollar doesn't element we handle upgrades and that she's a problem with the you know that package whoever makes that application but yes the chocolaty that would be well this package doesn't do upgrades very well in the future what we're looking at doing for those types of packages is during an upgrade we would just have it
+
+uninstall the package or the current application and then flow through to the actual install okay so you do get that nice thing we don't have that right now that's that's probably a couple versions up but it's something that we're thinking about because we do see some of these native installers and I don't know maybe it's just that the person that makes that application doesn't put forth
+
+the effort to make sure you have a nice upgrade story which is kind of sad yeah and uh so I mean ultimately how what led you to creating or did you were you the one that which might created chocolaty or yes okay so Wow what prompted that I was looking for a really good solution to I mean at the time to get the application type executable gems off of Ruby and this goes back to a bit of
+
+history before new get there was a project that we worked on called new and it was short for new Bueller and our tagline was new nice package but that used Ruby's infrastructure and Ruby's infrastructure had both library type gems which translates into the nice new get dll libraries and then it also had executables so you could set an executable into a gem and then put that
+
+on the path really nicely and in trying to get the rest of those off of rubygems at the request of nick cuanto i was looking for a good way to have a machine-type repository and so out of that came the idea of you know you got your vanilla and you get and then you got your chocolaty NuGet right and the chocolaty was for those machine type things during that period I realized
+
+that we could actually just have it executes PowerShell yeah much the same way that new get does and that open up a world of things that we could do it which brought about the installation configuration and updating of software and it's we brought it in line with a nice answer to the question of you know this missing package manager for Windows and it's not
+
+the first time that somebody's tried to do this I mean there are other ones out there we just tried to make it work with the existing infrastructure as best it could and then you know do the trade offs where necessary and then make the experience for the user and the package creator super simple yeah so it's growing a popularity pretty quickly I'm sorry good no so I was about to ask is
+
+is so it'd be good for anything from building a new server to I'm I have a developer workstation I I got my new box and I want to get all my dev tools on there just likely split I could have my script my chakra the script and then that'll just install everything for me yeah and you could set that up in fact we do that in fact I just got done doing that on a project I'm working on for
+
+some new devs bringing them on we just have a setup that ps1 script it's a parish shell script first scene doesn't install chocolaty and it just walks through and starts installing things on the box 230 there that doesn't do anything I'd really nice thing is this is installing everything from service packs for Pat sorry for visual studio to sequel server express gets installed and
+
+all this is completely automated and then they get I is and is extension I'm sorry expressed and then all the different things that are needed with IAS and this all happens they can get up and go get a coffee and come back and also say a visual studio installed has to be more than a coffee it takes a little longer than that yeah walk to Bolivia and get a coffee the reason
+
+we're able to do that is that chocolaty integrates with other package managers and if I wanted to install something that was like compass which is on Ruby or autosave which is on node which are things we also install during this or bash which is on cygwin or anything that comes from the web platform installer so that's like NBC or any windows components
+
+it's all of those I just changed the source that I'm going to so when I go chocolatey install and say like compass and then I put / source Ruby and if I don't have Ruby installed on that box yet the first thing it's going to do is install it and then it's going to install compass wow that's that sounds pretty pretty intense yet it's a you know and for the end user that becomes
+
+such a super simple process right now if you had to install like dev kit on a Windows machine you know that can be kind of a hair process we built a we took basically the instructions that were out on the wiki set them into a para shell script commented them all out and then made that all automated and so when you go to install dev kit will install Ruby first if it's not installed
+
+and then it installs yep kit so it's just a one line guy and you got dev kit and take that from how it used to could how it used to be then you can see that that's quite an improvement on the process so do you have like a recipe library that you guys work with or or how do people go about some building a new by me so how do you deal with contributors I guess is the question do
+
+you have people who are building scripts and they want to contribute them to a main repo is there something like rubygems.org yes the org and that is the the community I would say the community official repository right was this what was that repo again chocolaty or chocolaty organs were at nestle chocolate is spelled ey right we spell it a little bit more British mostly
+
+because it to me it looks more like it doesn't look as weird and it was available as a domain that's very important name of product because you can actually buy a domain and in this case that was one of those products plus like I said it's a play on chocolate chocolaty NuGet so now so but the people who want to contribute how do you how do you go about receiving or are you guys
+
+making all the recipes or how does that work we have what we consider the helper modules or the utility these utility models that you can use your of course you don't have to use them you can write as much as you want into that chocolaty install script and then when the package gets consumed chocolaty looks for that script and if it's there it just does everything
+
+that's there listed there now the important things to notice that chocolaty by default is not going to run as an administrator so anytime you need administrator access and they show you back since you're going to have to ask for it the script okay so as far as I mean this sounds like a very intense project I mean are you working with other open source contributors or and
+
+and how are they how do they get involved in helping to contribute to the core of chocolaty yeah as far as packages packages are a different idea chocolaty has that distinct separation point where you know it's got a score and its utility and then on the other side all of the packages and packages themselves may have issues so that but that's where a lot of the contributions
+
+come from we have a team of about five folks that are working on chocolaty core and making it better there's a couple of us maybe just me at this time working on the actual chocolate org site we're trying to bring some new features up to that and I know so we got five folks we got another guy who works one of those five folks also works on the puppet package for chocolaty and then on the
+
+other that Chef package is done by another guy and he's not he doesn't consider himself part of the core team yet because he hasn't worked on chocolaty itself and so he's just providing that Chef package and keeping it updated and that's that's awesome okay so because I I interviewed many walls from opscode a few days ago and and she talked about how they can now do
+
+windows server saw that was was something i was about to get at was does charm of the integrate the tent so it sounds like it does already so i did these people come to contribute i mean were these people had already been working with or were they people that found chocolate oh hey this needs to be part of shot for puppet or X yeah a lot of it is somebody
+
+found it realize there was a need and fill the need and you know that's been pretty fantastic we have a lot of community contributions coming too chocolatey even when I don't have time to take a look at it but I think right now we're sitting at 20 open pull requests which uh which could be considered healthy could be considered unhealthy with work constraints you know
+
+we're all human beings so only have a certain amount of time and families yeah and families only a certain a finite amount of time to actually go and evaluate these so we try to keep that that down under I really like to keep it under ten pull request at a time so so you're singkat hub obviously look for for managing that the development the source code yep and we have the wiki out
+
+there the talks about all the commands you can use and then all of the different since of the commands that I'm sorry parameters and switches that you can apply to command so some of them really interesting ones are if you want to download a particular package but you don't like the silent arguments they're using or you want to put it in a director a different directory you can
+
+actually override the arguments from the command line which is kind of nice one of the things we're working on as well as you know what if there's not a chocolaty package them but you want to go ahead and just install it so you want to speed that thing up working on the ability to provide a URL to a msi or an executable and then you could pass yourself and just be kind of a pseudo
+
+it's not really it there's no package for but you get it installed right so you wouldn't even need any of that packaging infrastructure built up now you have a history of being involving souls you were involved in the creation of new and which ultimately well imma did it closed down and become nougat or was that an entirely new code base when you get I wasn't sure how that's all
+
+played out okay so now I was involved in New during the last two reboots it was called in gym when it was originally devised and that was a nick and i can't think of his last name right now he's outta and then David Larrabee and a couple of others I think Chris Patterson andrew sellers were even on the original and then they renamed it to nebular about the time of 2008 and
+
+like the second reboot and then there was a third reboot came about I want to say in 2009 early 2010 and that reboot I got involved with I helped them with some of the stuff but I didn't really work with the core guts of it they're still trying to figure out some of that and then that kind of went to the wayside again and then in early july that year 2010 one of my constituents
+
+said you know we can use Ruby as you instructed like yeah i've been i've been mentioning that it's not far to see that you know people that want to use packaging kid could install ruby and not complain too much about it and sign their on windows like poor second complaint i say that's a rubios too they're known for complaining so i say there was a good nature not no no Ratnam
+
+that's a it was was working and we had video out on it and we kind of went viral gannon at we started getting popular very very quickly because you know it was sorely inside of the dotnet space for the packaging infrastructure and then the Microsoft contacted us and said hey we're working on something we've been working on for a while and we'd like you to help us with that and
+
+we got to look at where they were at with it and we thought wow probably you know what easily a few months if not a year ahead of us what they've done so far plus you know they got people that are fitted to this full time where you know we were just working out in our spare time and so like you know we had top that point we could you know kind of
+
+move our team to work with them and let new sit down or we can continue to work on new and watch you get gained in popularity because it was coming from the Microsoft folks but possibly you'd be doing some things wrong you know that we'd already had experience with and you know through other packaging infrastructures and then try to guide you know guide the folks in the right
+
+direct he is where you know this problem going to work or this isn't a good idea yeah so you guys well while they were technically ahead on their platform you guys had been through some of the rough patches already invented some ideas and fauna oh yeah delivering it this way then has this problem is from this problem so you were able to provide some yeah and they had that started to look
+
+at like their version of rubygems.org we were able to help on some of that as well we really like the ideas from some social aspect and being able to you know I'm this user and I had this many packages and they have this many downloads right and all of that stuff was was kind of there and they originally set it up out of work and then had since moved to a custom
+
+implementation which I think has been a really good choice so they could do more with you know not having to wait for orchard to report in some areas so and then the codeplex now I'm just trying out drive drawn a blank it was the co Plex organization or the complex what was the name of that Rosalie was the code place foundation complex foundation yes so they founded that around that
+
+time was that directly because of the work you guys were doing with them for nougat or because of a stella some charm that was microsoft trying to say we're going to try to partner with open source developers on the microsoft platforms and they try to work more closely with them and they renamed it to the outer curve foundation out of okay after us and that their foundation is
+
+funded somewhat by microsoft for the projects that they are putting developers on and for the projects that they are they think are good but you if you go out outer core foundation or you're going to find a lot of those or microsoft related yeah they're all going to be in the microsoft sphere but they usually have microsoft assets on them as well so they their time to work on those
+
+projects okay so um by the time you get went there i think it was maybe the fourth or fifth project to get accepted into the outer curve foundation and it was kind of interesting we had signed some paperwork coming on to help without with new get that and this was kind of maybe a little ahead of its time for Microsoft is Microsoft lawyers looked over it lawyers at the company I worked
+
+for looked over to make sure that everything was good but it was really about no IP and protection of stuff and then we had to sign it again when I move don't have to auto curve yeah and I that'll to be contributors at a large scale and and today I think they still ask for provokes to find that if they're going to be contributing large contributions to be the code base now
+
+small contributions they don't require anything to be signed just pass a code review and make the people on the project happy about it and they can get put in so it's one of the and what we've seen since you know entity framework is now open source and so one should have more product of the whole bunch all much more product started to to move towards this from Microsoft's I think that's a
+
+good loop yeah especially something that they was so controversial but I was when I was so low down at developer when the entity framework was being promoted its I use that as a euphemism for shove down throats but it was it was being promoted but it sounds like that that opening that up is so letting maybe some people that have some of those strong opinions actually put
+
+fingers to keywords and try to get make things better yeah instead of just sitting idly by waiting for the next initiative to come out of the mothership it's it's fine this really leans white to why we went to work on you get versus just sit to the side and work on our own project and it be a competitor we didn't want another entity frame say I'll make sure that I want in the right direction
+
+package manager it's pretty important and the guy thought that microsoft live rounds per that we're on project at the time we were on there pretty smart guys i mean we're talking about the asp.net team yeah you know hack and who else was involved with that unless I mean I but if you can't say that's that's okay you don't have to today games but I know Phil hack was publicly involved with it
+
+David a bow David Fowler Lewin I can't think of his last name but he's on Twitter's dotnet junkie but yeah these were the guys that were on the project there are some other people oh yeah I can't can't believe without mentioning yeah man I lost my train of thought that's okay yeah there are some pretty good folks on the project yeah and uh you know I'm going to just jump
+
+backwards a little bit further in time and you know you before new get before chocolatey you worked on some other projects all the chuck norris the chuck norris suite of tools i'll call it the the upper cut the so it sounds like you've had a passion for automation and streamlining workflow and and all of that in in the donít how much how much well just if you want to really quickly
+
+describe what uppercut was and what brown house was and is how those influenced and what experiences you got from working on those and people contributing and getting started with those projects and then carrying forward and to the work I mean were those things instrumental in helping you formulate these ideas or or build the concepts that we're going to be required for the
+
+automation that you worked with later in new kitten and and chocolaty yeah I think a lot of is my foray into open source really came I mean to actually contribute an open source came with the chuck norris project before it was called the chuck norris project we just had this idea of you know we have this infrastructure that we'd like to provide so the developers can really ramp up and
+
+you know be able to focus on what they want to do which is developed and not really focus on you know things like infrastructure like I need to do database migration this expensive process of running the you know 20 scripts against the database and then somehow keeping that up to date and uh just as a site went back to the other conversation that luan's last name is
+
+when a grouper and Matt Osborn were the other two guys and of course Scott Hanselman at the top looking over this him and scott guthrie so I thought the big red shirt of course Scott was pretty instrumental in the the entire process of you know welcome welcome welcoming non-microsoft ease onto a project and making that happen at Microsoft so back to chuck nor the check course project
+
+framework for us was a developer infrastructure when I when I started we were working on something that was we had at my company 78 78 projects not not like visual basic or visual c naught C sharp project but 78 repositories football and projects full-blown projects and we needed to to standardize the way we were building all of these we needed to get an automated
+
+build on all of them and for us the answer was not to put it on a build server and just point to the solution file and say that's your built because that's nothing more than compile yeah doesn't run your unit test that doesn't you know run any analytic song I can depend or in cover or open covered or whatever that so what we were looking for and it doesn't do any versioning for
+
+you so we were looking for was a good way to automate that and so we started with this these nan scripts and nant for those who don't know is this thing from quite a while ago that's a derivative of ant which is an XML build tool for java and was ported to dot net it still never reached version 1 but still has not hit it was always 0 dot 96 something you're done I think is the most recent Oh
+
+needed a way to have build scripts and at the time we started out with that and we started to learn that we could template out parts of this and so we could drop in a basically what would be considered templated nan into these to this directory and then we could set up all of our configuration in one particular file and so we could have the same thing for every project and then
+
+like well this is pretty interesting we could open sources I'll call it a brick weed called upper cut the interesting the really same thing about this and if your company that's listening and say well why would you open source something is that what he open sourced and what it became after it was open source are two almost two entirely different products because before it was open source it was
+
+it was it only had to apply to certain company things more open source became like a two to three hundred percent better we we moved away from made some of the configuration stuff better we started to moving into more the ability to write hooks you needed to customize certain sections like a pre post or replace hook for like if you did your versioning in a different way all
+
+of that stuff came once it was open sourced and the company bennett for benefited from yes you had something that wasn't a core competency that you were just using I mean created to use in house took that thing that is like this isn't on our bottom line this is just some stuff put it out where other people could use it they use it contributed back to it and then you breathe does
+
+benefits back in house yeah that's that's a huge play for why if you have something that's not what's the word I'm looking for your company needs to protect it you should well that's what that's why is a core competency because it's it's not something that the business needs to survive it's not a revenue generator it's not a different really a differentiator it's it's not a
+
+competitive advantage I mean it is a competitive advantage but it's not something it's not something that somebody else couldn't given the time and resources create themselves real interesting if it when it goes open source you can become a competitive advantage for you one that what the value comes back the value starts coming back you're like oh this came out of
+
+this this place where these people are working yeah goodwill and and recruiting good old recruiting yeah and so that became the first thing and then the second project out of that was actually I think warm up became the second one and that was worked on by my buddy drew sellers and that is a token replacement tool and so you can setup file folders some structure and then check in source
+
+control and then be able to generate from that thing whatever it is that you want so you have some sort of standard structure so it start it was your intact solution all the packages that you needed in everything right over time those were just references right every eat it and you check that in and you could actually write unit tests and you can put an
+
+automated build on that you can be testing your templates and everything because it's just it's a naming convention that changes it right and then when you generate it out the infrastructure already set up so that two to two or three days to a week or whatever that most people say well we're setting up the infrastructure for the project yeah yeah then I've use your
+
+warmup I used to warm up on on a few small projects just said because it was able to drop and create a structure and not have to think too much about it the move forward if you go to chocolate in you read through the create packages page at the bottom it templeton see you could install so that you could use warm up to quickly generate out your package details and then just add in the stuff
+
+that's necessary from there plus all those little helpers inside of the template so you choose what you need and get rid of the rest Brett was my we were looking at Tarantino and Tarantino lizard oh no did database migrations with sequel files which is what would work but it didn't really do well it didn't really do well with well I'd like some of the cool and I'd like to
+
+maintain say review or a stored procedure or function for something else in the same file right good of your kind of cutting out a little bit oh good here ya Tarantino would require that you put all of the files into the same folder this being an uptight polar and then when you made changes to abuse functions or whatever that all just became part of the next script okay track and we were
+
+looking at making changes and at the time I don't think that the the maintainer were very receptive to that plus we we dictate back we made it work with ms build we didn't see the i don't think it's never been accepted so particular patch and so we're like okay so clearly this isn't going to be the the future that we're going to work with so we need to implement a different
+
+solution started working on that from ground zero and x commit 27 i think we were we were able to be what would be considered the tarantino features complete and well I mean there's something to have a reference implementation yeah and then we're all the way over 300 so now maybe over 400 commits but you know we at the site is we wanted to be we wanted it to have a
+
+super simple configuration it'd be a sequel migration engine execution migration execution engine so it's not actually a migration framework which is nice because then you can actually hook any migration framework that can generate sequel files in the Roundhouse okay like entity framework sequel migrated up sorry fluent migrator those can be created as plug where it can take
+
+the migration code and then have it flipped into a sequel file the nice thing about that is you give the sequel flop epa's and they say yeah you're Nick the other thing that round outs really does well is this concept of global versioning but the way to work and so you can pass on file or a dll and say use this for versioning and so really nice thing about that is your now
+
+versioning your database you're if you're also versioning your code you can actually be in sync so we need to play your code you deploy your database you can say yep we're on the same version so we're good yeah all right well uh it's it's also nice to know that there was a lot more thought that note just being a rails clone I think that was some people thought well that's just the active
+
+record migrations but but it's it's it was it was solving the same problem but in its own way and it had its own design influences right impress also we're looking at the idea that we needed some sarbanes actually the couple bangs so we needed to have sarbanes-oxley implemented in in all of these different tools so a lot of the chuck norris tools are very compliant
+
+with sarbanes-oxley thing that goes on you know who it is it's making the changes a lot of that stuff and then what changing has this translate back to source control and that this was huge and so we try to make sure that we designed all of that appropriately okay well thanks for taking the time to sit down and chat with me today thanks it's rad sure
+
+you

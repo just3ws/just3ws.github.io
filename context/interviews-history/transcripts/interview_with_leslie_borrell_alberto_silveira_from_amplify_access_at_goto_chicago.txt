@@ -1,0 +1,75 @@
+it's mike with you tastic up here go to cop 2014 and I'm sending your Leslie in Alberto we gave a talk on building distributed systems and sharing some of the lessons they learned building their platform for amplify it's an education platform that they're promoting and sharing here at go to calm I think you very much for taking the time to speak with me Leslie can you take tell us a
+
+little bit about where this talk came from and how sure well I think Reena were we're a young company we started in in May of 2012 so we've only been around for two years and we're really we really want to help people understand what amplify is all about not not as a product but as a technology company I think that and go to con specifically has has some great developers here in
+
+engineers looking at new technologies and here to learn about things and so we wanted to share our experiences because i think that the platform that we've built is very unique the challenges that we've the challenges we face are unique but also can be extended to a lot of others situations right and so by sharing those experiences people learn about what we're doing and hopefully are
+
+interested in what we're doing because we think it's really exciting building work you know we're building a mobile platform for education we're trying to change education we're trying to make it better we're trying to help introduce technology in the classroom help teachers helps to engage students and things like that and then at the same time help engineers learn from what
+
+we've done in terms of taking it up a level to say not just not just specifically what we've done but how do you take that up a level and apply it to just any distributed systems that you're creating or any mobile systems and so that's sort of how we got there and I think that you know we've had the opportunity to to learn a lot along the way and just reassure that yeah sure
+
+experience is certainly was one of our goals and especially because what we are doing at amplify in terms of technology it's just not easy we are trying to do things that no one actually ever did before introducing like tablets and in a way that we are introducing it's it it's very unique and we have like a this distributed system with individual machines that
+
+to be working in a reliable way fast weight so that's that's really exciting and that's what we are doing so let's just take a step back and say what was the title of the talk because what are you that happens are really long titles great so the title of the talk is creating just collaborative distributed systems for education yeah I think I'd be typing at the Atlanta Hawks I
+
+remember yeah and then the system you're describing though that was a bunch of tablets that are connecting to a central server and the tablets our kids have the tablet said right at their class wrecked and the teacher has kind of a central master tablet and Edmund tablet I jealous so can I describe it a little bit so we consider consider it to be a platform so we support one-to-one
+
+initiatives in in school so one-to-one initiative is where a school or district purchases tablets for all of the students and all the teachers in the district and then they can use it throughout all of their classes so when's kids come into when kids turn on the tablet we know who they are we know which classes there and we sort of customize the tablet for them and then
+
+when they go into class the teacher the teacher knows that they're in the class their teachers tablet and so they can start the class and what's the teacher starts the class sort of creates a connection between them so that they can share out activities and do lessons and sort of be more collaborative in the class but also it's also a platform right so we can it's an android device
+
+that people can load different educational apps onto and used to use games and different things throughout their school day in class out of class and they can use it for email and all sorts of things yeah and additional to that I think what makes the amplify tablet different from other technologies in the classroom in the past we used to have like computers in the classroom or
+
+even like other device types in the classroom but kids get distracted very easily and in part what what we doing on top of this platform is it's it's allowed to the teacher have control of the class so if its students if you just leave them with like an Android device you're going to be teaching math and they're going to get distracted be playing and good
+
+right you don't want that right so you have like a focus mode and then there's sure and the teacher can control yeah if I'm teaching about volcanoes and then I say I let's watch a video about volcanoes and you have like maybe two million so which explains how that works and all that and after that I want to do I can activate about that so I press eyes on teacher students won't be able
+
+to actually interact with tablet because life I'm actually talking and I don't want you to be distracted with other things in a tablet and so that's really so what the so with the the tart talk was focused on was sort of the cultural the technical and architectural challenges as well as the security challenges we have we have some things that are really specific to the
+
+education space because we're dealing with with miners and their information so we have we have some particular issues around security that we have to deal with and then then messaging how we message between these tablets and then how we how we manage the state between the tablet so so I put our targets very much focused on the technical implementation as well as the the
+
+cultural issues that are specific to the education industry and to touch on the the security one of the things you we had an earlier conversation was about how you handle the interaction with student data woohoo can you describe what what it is that that you need to help ensure the integrity of the student data sure did it technologies yeah I can certainly talk about that so who stood
+
+on student information and that's what we consider VII so personally identifiable information yeah and that's kind of what temporary talked about in this talk is who is being able to get that kind of information about yes and we in terms of implementation the way that we do that even from from the tablet perspective out of data it's encrypted we is like library such as
+
+psycho cipher that goes on top of sequel lights very to being very technical here so outta dated encrypt both in the server and on the on the tablet and the way that we communicate it's all encrypted so if even even for us like developer sometimes we want trouble shooting but we don't have oh they're so hard to so that's why you have to be trying to collect metrics and
+
+everything but we cannot expose the student data anywhere so so hopefully because because of one of the concerns with another company people had worried about github are being able to read private repos and then that even at your company you can't read the data the private data right so I mean it's it's encrypted when we log information we were very careful to make sure that
+
+there's no PII in it and we review the logs and we review that information so we take PII very seriously amplify I think it's been it's actually been in the news a lot lately just because they are there is a lot of focus on education technology and people are trying to figure out how they can use the data to make the education better but at the same time there's there's a balance
+
+right because then people are concerned but we don't want you to use our data or how are you going to use it and so for us we would it's are responsible to make sure that that data is is protected and secured and that's why we also were working with third parties or outside vendors we really we really try not to send them any any personal information unless they've signed agreements with us
+
+and with the school to approve that that kind of transaction and uh when you were describing the the actual distributed system we talked about the clients sitting in the in the students hands the client admin level in the teachers hands but what is what is what is the further distribute is it is it a central service that you manage is it like a software-as-a-service kind of thing or
+
+is that something that gets installed at the Synod of the school right so our servers are cloud base in ec2 and then we have we're actually working on a content delivery server that would be deployed in all of the schools because one of the one of the constraints that we have to deal with that schools is really limited bandwidth so you have now you're increasing the bandwidth
+
+utilization of the schools by giving everyone tablets they're using all day and so that puts a lot of strain on their network so in order to sort of balance that out we've started building out a content delivery server that would be able to cash and then be deployed at the schools that would sort of optimize the band with a little bit better but right now it's all
+
+cloud-based we've started to deploy the servers in a few schools but it's still them in the beginning stages and in the classroom when when we have the tablets in the classroom with teacher and students we have like the concept of the teacher tab to being there the server so to improve the communication reactive and reliability but we have all the data also asynchronous being sync with the
+
+server so we got class flow it's something that's really important if if the teacher doesn't lose the clock plus flow for whatever reason they're gonna just not use the tablet so that's why we have like this kind of hybrid solution where we have like the messaging happen in the classroom and a singles in this everyone ever okay so not everything is gone proxy through the cloud it's
+
+correct some of those interactions you keep local which should probably even be more secure because it's less of a issue that serenity schools network yeah and you know one thing sir in the college everybody has their own private database that's or I'm pursuing do they everybody has their own private databases that's that's got to be a pretty interesting technical challenge I'm managing so many
+
+growing out updates to all those databases is there anything you can describe about like your your DevOps kind of process or or or how that you manage that I mean you just said you use ec2 but it doesn't sound like this an easy configuration see they stretch the imagination see there laughing I know it is not yeah how it's just trying to elaborate like on how we could explain
+
+it better but yeah sure I mean we don't have set we don't have sort of separate databases we have a my sequel database for for everything that's up in the servers and then on on the tablets they have their own database and so the challenge is actually rolling out updates to the to the tablets i think is the bigger challenge for us because the student information is kept within the
+
+school something's up in the cloud is just application right no it's both so we so we actually we integrate with the schools information system so we pull all of that information into our servers and those servers are you know cryptid and we actually do column level encryption on the pomt I I to insurance it's extra safe yeah and and then the communication between the server and the
+
+tablets is encrypted so so we do have so we do have student information but it's encrypted now if somebody is a parent looking at the solution and they're looking to go to their school board and say hey maybe this might be something to check out or they like to just learn more about it I'm sure they can go to amplify dot com amplify calm / tablets sludge tablets and if any discrepancy in
+
+Android so if you're hiring you're probably looking for Android developers we are we hire full stack developers and I think that robots are stacks we gotta worry i mean we do we're an android shop so Android experience is definitely preferred but I think also mobile technology moves so fast we really need good engineers right good engineers that are passionate about mobile that are
+
+interested in android we also have web portals that are built in rails so we you know rails experiences also is also appreciated we're actually doing a big training in July to help train our developers they don't necessarily have Android experience because we found that because what we're building is so much more complex than your typical mobile app then you have mobile app developers
+
+that don't have the depth of experience and then you have engineers that have great depth that don't have that the Android experience and socially do yeah not on this one specific tougher and yeah and the talking about the android is like one thing to build a map and what we are as Leslie mentioned we're being like a platform so we have like a different we have like the DUI front end
+
+for Android that we have like the back end for android on the server side we do play java even escala we have like angularjs 44 and little web for the web so it's all sort of different technology data and data scientists that's something that we really like data-driven so we have to do those analysis as well and we need those kind of yeah you and even get DevOps people
+
+that have a lot of skills in devops I mean we we actually are in a really cool position at amplified because beyond the hardware we can push updates to our tablets every day even right now we do it what today but we definitely strive for a sort of a continuous delivery environment where we can be constantly pushing updates it's really unique in the mobile space so people
+
+that have experience doing continuous delivery that want to kind of take it to a different level we would love to see those kind of people allow them coming to amplify as well Grateful thanks very much please I magic at me thank you user groups with lots to say interviews and more no way sharing great ideas in that tech community fascinating conversations plethora of information find out for
+
+yourself today yeah cute esta com

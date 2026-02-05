@@ -1,0 +1,29 @@
+hi it's mike with you tastic i'm here at go to comp 2015 i'm sitting here with dr. rebecca parsons who gave a presentation on micro services here at the conference thank you very much for taking the time to speak with me microservices what what was what was the talk about it so and how did you come to give a presentation about microservices what what was the driving force for that
+
+that that topic well I've had a long-standing interest in architecture and I speak a lot about evolutionary architecture as a as a way of making systems that are more adaptable because the the system requirements that our business users are placing on systems the rate of change is just continuing to increase and so we need systems that are much more adaptable and evolvable than
+
+they were before and micro services is a relatively new architectural style that is gaining traction and done well microservices architecture does allow you to make changes as fast as possible and so this is a nice approach to architecture that achieves this this goal of an evolutionary architecture okay and and I know that you're coming from a much deeper background than
+
+somebody who's just read an article where the services the CTO it thought works you know so it was this something that's evolved from pain that you're seeing at your clients in turn figure out ways to better solve their problems not just our clients you know organizations like like neck Netflix Amazon others are are looking at architectural styles that are very
+
+similar to this so this is really grown out of the issues that that people are facing with systems that do have to be incredibly responsive incredibly performant and and also responding to changes in required functionality and so it's it's and our clients but it's also been other people in the industry industry right and and it's in so funny to see this
+
+topic it seems to be there's two camps there's the DHH and there's none of the monolith and then then there's on the other side there's people who are dealing with a polyglot problems and I know you were polygon programmer person Polly ambiguous problems that are just in all different types of ecosystems not just to reveal one single stick environment oh you know what is it if
+
+I'm looking and I'm trying to evaluate I've got a rails app and I'm doing this serving this app and I'm trying to figure out hey this is microservices technology it's appropriate for you know blowing my application or I'm working in environments that you know we have a monolith should I start thinking more about microservices what are some of those thresholds that somebody might
+
+want to use to evaluate this this whether they should move towards this technology well one thing is how easy it are difficult you're finding it to make the kinds of changes that your users are expecting I mean a well-designed Nautilus can be the right decision you what would also want to consider things like the the deployment foot prep right when if you're going to scale a monolith
+
+you're going to scale the whole monolith and so if you you know if you're doing a horizontal scaling and you need four of them you're going to have before of the entire model ever there might only be one part of that infrastructure that does need to scale yeah but you don't have that choice so if you're a mom 'less so looking at the kinds of problems that you're running into with
+
+the monolith it may be that it makes sense to stick with the monolith one of the things I spent a lot of time talking about in in the presentation were some of the some of the issues and the implications microservices architectures are more complex than a single monolith and so you want to make sure that the reason you're going to the microservices architecture is sound right so it sounds
+
+like if I have maybe an email my application that is the one place that I'm always seeing performance bottleneck problems and I'm spinning up new instances just to support that aspect I can maybe look at exercising that one exercising that one piece into a microservices I mean is it an all or nothing or can I do piecemeal you can definitely do piecemeal okay yeah okay
+
+so i can just again that's not like you can just good refactoring like an object if I see something that's doing too much and I've got object maybe pull it out I mean this is a lot of this stuff with microservices really just taking object oriented programming concepts to a next level i'm going to try we just tie it 2-2 object orientation because you know there's video that that is one way of
+
+looking at it and use some of the concepts from domain driven development which people tend to associate more with object orientation although it doesn't have to be but those concepts of apply and a lot of the thinking about what constitutes good boundaries okay it's the same they're the same sort of questions are just being asked at a larger level and when you think about
+
+any time you start with a Monell if you know you're probably not going to take a big sledgehammer and on break it up and you're going to progressively pull things out and so yes for a time you might have a small number of services working with a bigger monolith and as as as needs arise you could pull more and more stuff out of that month 11 okay well thank you very much for taking the
+
+time speaking me appreciate it thank you bye

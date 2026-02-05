@@ -1,0 +1,27 @@
+hi it's mike with you test from here gonna go to pop 2015 and i'm sending your with charles nutter who's giving a talk called beyond the beyond the jvm it's a tongue twister fix I've been saying so many long titles day that trying to say a short title is actually more confusing well thank you very much for taking the time to speak with me so beyond the JVM what what is beyond the
+
+JVM well this is a talk I've kind of been working on for a while just to show people that the JVM is evolving and that a lot of the problems and they may have heard about are starting to be solved this talk I kind of took the approach of talking about the work we did on JRuby for the past nine years the challenges of getting JRuby to run on the JVM and be compatible and then you threaded that
+
+story through a few different areas that the JVM is improving I think it went pretty well yeah people seem to appreciate the work is being done yeah and I mean some what are some of the examples like you're JRuby is it's your domain but are you looking at strictly that JRuby aspects or how jruby definitely improves off of this or is it just general JVM stuff too well it's
+
+very ends up being very general the the problems that we had to solve our problems that developers on the JVM have had to deal with for a long time the three areas that I actually went into I talked about how Ruby has tons of method calls and everything's a method call all over the place and using invoke dynamic Java 7 features to optimize things a little bit better make it possible for
+
+Ruby code to get some of the same optimizations that Java does we also had a strong need to be able to call native functions there's a lot of units and pose X stuff in ring and Ruby that has to be essentially the same behavior we can emulate all of it report all that sort of code and all that logic but it ends up being much more compatible and a better experience for users if we can
+
+call native code right so we've worked for years on native integration library and some rappers around that to pre bind a bunch of papac's functions take it easy we call anytime so does that will mean that they makes JRuby on Windows even more accessible in because of the abstraction of those Bob system lip tight calls right back exactly so we're able to were
+
+able to match Ruby's performance exactly the way that it would be on any given platform so if there's platform specific quirks not necessarily bugs or problems but works and how by operations work or quirks and how it deals with manage memory or native memory those things we can do without having to write any native code right we just read a little bit of Java code called through our
+
+native integration layer jnr and get the native fauna they did it native behavior out of that interesting and you know on a side note I if we're talking about the JVM got to me thinking about some of the recent changes and you may or may not have an answer but with the recent changes in the.net CL are now being launched on OS 10 and Linux and markers up seem to make a push you know the I am
+
+Ruby project that kind of died have you looked at that that stuff and look at like how maybe JRuby might benefit from any of these new advancements yeah actually for a couple years I went to the Lang net event that Microsoft hosted where they had language designers runtime designers vm folks all the red men to meet up and talk about what they're doing I went with John rose and
+
+did a front presentation John roses the lead of the pal spot compiler team we talked about basically how hot spot works internally what it's able to do optimization wise today we're able to talk about things that they're doing in c-sharp and how they would make it work and how it fits into their vm I really wish we had more of those events there's no more lying dotnet as far as i know we
+
+still have the JVM language summit and get the C sharp and Microsoft folks over there once in a while and this events like this that are in cross-discipline cross-language so it's nice i had a chance to talk with matt's a little bit earlier but some of the new c sharp stuff yeah and he might not think about like an event like this might bring together two disparate houses
+
+you know I don't know which I mean watching doing a little bit too much lately but I figured that you know which one's house work on it but uh you know i'll just say jvms Atreides and we'll just maybe there are mix I don't know but it's good to see like some of these advancements since good didn't know that there's cross-pollination going on even at a high level of people who are inside
+
+of the project so right right despite the perceived you no animosity between the two platform yeah at work John John Rose I think mentioned he said it's like going to a parallel universe where I go and talk to them it's the same challenges in the same problems and it just makes sense for us to all work together down so actually if that means that it's Mirror Mirror you've got the
+
+goatee so who's yeah who's the good me yes well thank you very much for taking that will do that as a mystery thank you very much you
