@@ -19,8 +19,6 @@ breadcrumb: Interview Data Model
     <h3>Rendered Diagram</h3>
     <pre class="mermaid">
 flowchart TB
-  end
-
   subgraph Canonical["Canonical Data"]
     interviews[_data/interviews.yml&lt;br/&gt;Interview records]
     assets[_data/video_assets.yml&lt;br/&gt;Canonical video assets]
@@ -52,8 +50,6 @@ flowchart TB
 
     <h3>Diagram Source</h3>
     <pre><code>flowchart TB
-  end
-
   subgraph Canonical["Canonical Data"]
     interviews[_data/interviews.yml&lt;br/&gt;Interview records]
     assets[_data/video_assets.yml&lt;br/&gt;Canonical video assets]
@@ -142,7 +138,9 @@ flowchart TB
     <p>Conference definitions referenced by interviews:</p>
     <pre><code>conferences:
   - slug: string        # URL-friendly identifier
-    name: string        # Full conference name (matched by interviews.conference)
+    name: string        # Full conference name (display)
+    conference: string  # Conference series (matched by interviews.conference)
+    year: int           # Conference year (matched by interviews.conference_year)
     start_date: date    # Conference start
     end_date: date      # Conference end
     location: string    # Venue location
@@ -231,7 +229,7 @@ flowchart TB
           <td>interviews</td>
           <td>conferences</td>
           <td>N:1</td>
-          <td><code>conference</code> (name match)</td>
+          <td><code>conference</code> + <code>conference_year</code></td>
         </tr>
         <tr>
           <td>interviews</td>
