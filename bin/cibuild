@@ -3,6 +3,10 @@ set -e
 
 source .env
 
+rm -rf _site .jekyll-metadata
+find interviews -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
+find videos -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
+
 bin/build_interviews.rb
 bin/generate_interview_pages.rb
 ruby bin/generate_video_asset_pages.rb
