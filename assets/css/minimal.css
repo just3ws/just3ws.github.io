@@ -711,7 +711,7 @@ pre code {
   justify-content: space-between;
   align-items: baseline;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .linkedin-card-header h3 {
@@ -725,8 +725,30 @@ pre code {
   white-space: nowrap;
 }
 
+.linkedin-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--meta);
+  font-size: 0.9rem;
+}
+
+.linkedin-location {
+  white-space: nowrap;
+}
+
 .linkedin-card-actions {
   margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.linkedin-card-actions-secondary {
+  margin-top: 0.75rem;
 }
 
 .linkedin-copy-btn {
@@ -769,6 +791,24 @@ pre code {
 
 .linkedin-textarea-skills {
   min-height: 120px;
+}
+
+.linkedin-textarea-short {
+  min-height: 140px;
+}
+
+.linkedin-limit-note {
+  color: var(--meta);
+  font-size: 0.85rem;
+}
+
+.linkedin-short-block.hidden {
+  display: none;
+}
+
+.linkedin-textarea-over {
+  border-color: #c81e1e;
+  box-shadow: 0 0 0 1px rgba(200, 30, 30, 0.2);
 }
 
 .linkedin-skills {

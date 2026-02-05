@@ -23,6 +23,10 @@ breadcrumb: LinkedIn Export
   <div class="linkedin-roles">
     {% for item in site.data.resume.timeline.history %}
       {% assign position = site.data.resume.positions[item] %}
+      {% assign linkedin_entry = nil %}
+      {% if site.data.linkedin %}
+        {% assign linkedin_entry = site.data.linkedin[item] %}
+      {% endif %}
       {% if position %}
         {%- comment -%} Collect skills for aggregation {%- endcomment -%}
         {%- if position.skills -%}
@@ -34,22 +38,38 @@ breadcrumb: LinkedIn Export
         <div class="linkedin-card">
           <div class="linkedin-card-header">
             <h3>{{ position.title }} — {{ position.company.name }}</h3>
+          </div>
+          <div class="linkedin-meta">
             <span class="linkedin-dates">{{ position.start_date }} – {{ position.end_date | default: "Present" }}</span>
+            {% if position.company.location %}
+            <span class="linkedin-location">{{ position.company.location }}</span>
+            {% endif %}
           </div>
           <div class="linkedin-card-actions">
-            <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'textarea-{{ forloop.index }}')">Copy</button>
+            <span class="linkedin-limit-note" data-count-for="textarea-{{ forloop.index }}">Original: 0 characters</span>
+            <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'textarea-{{ forloop.index }}')">Copy Full</button>
           </div>
-          <textarea id="textarea-{{ forloop.index }}" class="linkedin-textarea" readonly>{{ position.title }} — {{ position.company.name }}
-{{ position.start_date }} - {{ position.end_date | default: "Present" }} | {{ position.company.location }}
-{%- if position.description %}
-
+          <textarea id="textarea-{{ forloop.index }}" class="linkedin-textarea" data-short-target="textarea-{{ forloop.index }}-short" data-limit="2000" readonly>{%- if position.description -%}
 {{ position.description | strip }}
 {%- endif -%}
-{%- if position.achievements.highlights %}
+{%- if position.achievements.highlights -%}
+{% if position.description %}
+
+{% endif %}
 {% for achievement in position.achievements.highlights %}
 • {{ achievement | strip }}
 {%- endfor -%}
-{%- endif %}</textarea>
+{%- endif -%}</textarea>
+
+          {% if linkedin_entry and linkedin_entry.text %}
+          <div class="linkedin-short-block" data-short-block-for="textarea-{{ forloop.index }}">
+            <div class="linkedin-card-actions linkedin-card-actions-secondary">
+              <span class="linkedin-limit-note" data-count-for="textarea-{{ forloop.index }}-short">Short: 0 characters</span>
+              <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'textarea-{{ forloop.index }}-short')">Copy LinkedIn</button>
+            </div>
+            <textarea id="textarea-{{ forloop.index }}-short" class="linkedin-textarea linkedin-textarea-short" readonly>{{ linkedin_entry.text | strip }}</textarea>
+          </div>
+          {% endif %}
 
           {% if position.skills %}
           <div class="linkedin-skills">
@@ -79,28 +99,35 @@ breadcrumb: LinkedIn Export
 <script>
 function copyToClipboard(button, textareaId) {
   var textarea = document.getElementById(textareaId);
-  var text = textarea.value;
+  var text = textarea.value.replace(/\n/g, "\r\n");
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(function() {
       showCopied(button);
     }).catch(function() {
-      fallbackCopy(textarea, button);
+      fallbackCopy(text, button);
     });
   } else {
-    fallbackCopy(textarea, button);
+    fallbackCopy(text, button);
   }
 }
 
-function fallbackCopy(textarea, button) {
-  textarea.select();
-  textarea.setSelectionRange(0, 99999);
+function fallbackCopy(text, button) {
+  var temp = document.createElement("textarea");
+  temp.value = text;
+  temp.setAttribute("readonly", "");
+  temp.style.position = "absolute";
+  temp.style.left = "-9999px";
+  document.body.appendChild(temp);
+  temp.select();
+  temp.setSelectionRange(0, 99999);
   try {
     document.execCommand('copy');
     showCopied(button);
   } catch (err) {
     console.error('Copy failed:', err);
   }
+  document.body.removeChild(temp);
   window.getSelection().removeAllRanges();
 }
 
@@ -113,4 +140,62 @@ function showCopied(button) {
     button.classList.remove('copied');
   }, 900);
 }
+
+function truncateForLinkedIn(text, limit) {
+  if (text.length <= limit) return text;
+  var suffix = "...";
+  var max = limit - suffix.length;
+  if (max <= 0) return text.slice(0, limit);
+  var slice = text.slice(0, max);
+  var lastNewline = slice.lastIndexOf("\n");
+  if (lastNewline > 200) {
+    slice = slice.slice(0, lastNewline);
+  } else {
+    var lastSpace = slice.lastIndexOf(" ");
+    if (lastSpace > 80) {
+      slice = slice.slice(0, lastSpace);
+    }
+  }
+  return slice.replace(/\s+$/g, "") + suffix;
+}
+
+function updateShortLinkedInTextareas() {
+  var sources = document.querySelectorAll(".linkedin-textarea[data-short-target]");
+  sources.forEach(function(textarea) {
+    var targetId = textarea.getAttribute("data-short-target");
+    var limit = parseInt(textarea.getAttribute("data-limit"), 10) || 2000;
+    var target = document.getElementById(targetId);
+    var shortBlock = document.querySelector('[data-short-block-for="' + textarea.id + '"]');
+    var originalText = textarea.value;
+    var originalLength = originalText.length;
+    var originalCountLabel = document.querySelector('[data-count-for="' + textarea.id + '"]');
+    if (originalCountLabel) {
+      var originalOver = originalLength > limit ? " (over " + limit + ")" : "";
+      originalCountLabel.textContent = "Original: " + originalLength + " characters" + originalOver;
+    }
+
+    if (originalLength > limit && target) {
+      var existing = target.value.trim();
+      var shortText = existing.length > 0 ? truncateForLinkedIn(existing, limit) : "";
+      target.value = shortText;
+      if (shortBlock) shortBlock.classList.remove("hidden");
+
+      var shortCountLabel = document.querySelector('[data-count-for="' + targetId + '"]');
+      if (shortCountLabel) {
+        var saved = originalLength - shortText.length;
+        shortCountLabel.textContent = "Short: " + shortText.length + " characters (saved " + saved + ")";
+      }
+    } else if (shortBlock) {
+      shortBlock.classList.add("hidden");
+    }
+
+    if (originalLength > limit) {
+      textarea.classList.add("linkedin-textarea-over");
+    } else {
+      textarea.classList.remove("linkedin-textarea-over");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", updateShortLinkedInTextareas);
 </script>
