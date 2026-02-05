@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: "Video — Interview with Drew Shefman"
+description: "Video asset for Interview with Drew Shefman."
+breadcrumb: "Interview with Drew Shefman"
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "interview-with-drew-shefman-general" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

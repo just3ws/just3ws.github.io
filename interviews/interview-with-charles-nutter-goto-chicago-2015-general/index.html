@@ -1,0 +1,31 @@
+---
+layout: minimal
+title: "Interview — Interview with Charles Nutter @ GOTO Chicago 2015"
+description: "Interview with Interview with Charles Nutter @ GOTO Chicago 2015."
+breadcrumb: "Interview with Charles Nutter @ GOTO Chicago 2015"
+breadcrumb_parent_name: Interviews
+breadcrumb_parent_url: /interviews/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign interview = site.data.interviews.items | where: "id", "interview-with-charles-nutter-goto-chicago-2015-general" | first %}
+  {% if interview %}
+    <header>
+      <h1>{{ interview.title }}</h1>
+    </header>
+    {% if interview.interviewees and interview.interviewees.size > 0 %}
+      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {{ interview.interviewees | join: ", " }}</div>
+    {% endif %}
+    {% if interview.topic %}
+      <div class="video-subtitle">Topic: {{ interview.topic }}</div>
+    {% endif %}
+    <div class="video-meta">
+      {% if interview.conference %}Conference: {{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}{% endif %}
+      {% if interview.community %}{% if interview.conference %} · {% endif %}Community: {{ interview.community }}{% endif %}
+    </div>
+
+    {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
+    {% include video-asset-player.html asset=asset embed_id="interview-embed" %}
+  {% endif %}
+</article>

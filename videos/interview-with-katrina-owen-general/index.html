@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: "Video — Interview with Katrina Owen"
+description: "Video asset for Interview with Katrina Owen."
+breadcrumb: "Interview with Katrina Owen"
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "interview-with-katrina-owen-general" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

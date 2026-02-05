@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: "Video — Interview with Sarah Allen and Desi McAdam"
+description: "Video asset for Interview with Sarah Allen and Desi McAdam."
+breadcrumb: "Interview with Sarah Allen and Desi McAdam"
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "interview-with-sarah-allen-and-desi-mcadam-general" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

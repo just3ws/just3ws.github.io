@@ -1,0 +1,20 @@
+---
+layout: minimal
+title: "Video — Head Bounce @ Lake in the Hills Skatepark"
+description: "Video asset for Head Bounce @ Lake in the Hills Skatepark."
+breadcrumb: "Head Bounce @ Lake in the Hills Skatepark"
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "head-bounce-lake-in-the-hills-skatepark-general" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>
