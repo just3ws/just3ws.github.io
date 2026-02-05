@@ -2,9 +2,11 @@
 layout: minimal
 title: Mike Hall - Home
 description: Navigation hub for Mike Hall's work and archives.
+breadcrumb: Home
 ---
 
 <article class="page">
+  {% include breadcrumbs.html %}
   <header>
     <h1>Home</h1>
     <p class="title">The Loop for everything around the resume.</p>
@@ -46,6 +48,19 @@ description: Navigation hub for Mike Hall's work and archives.
     <ul class="home-list">
       <li><a href="/writing/">Writing</a> Short technical essays and notes.</li>
       <li><a href="/history/">Full Career History</a> Complete role timeline.</li>
+    </ul>
+
+    <h2>Tools & Docs</h2>
+    <ul class="home-list">
+      <li><a href="/tools/">Tools</a> Scripts and utilities that keep the archive healthy.</li>
+      <li><a href="/docs/">Docs</a> Data model, taxonomy, and curation notes.</li>
+    </ul>
+
+    <h2>Site Meta</h2>
+    <ul class="home-list">
+      <li><a href="/now/">Now</a> What I’m focused on at the moment.</li>
+      <li><a href="/about/">About</a> The webmaster brief.</li>
+      <li><a href="/contact/">Contact</a> A clean way to reach me.</li>
     </ul>
   </section>
 </article>
