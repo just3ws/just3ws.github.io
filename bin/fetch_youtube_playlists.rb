@@ -85,7 +85,7 @@ def extract_title_parts(title, conference_name, conference_year)
 
   interviewee_list = if interviewees.to_s.strip.empty?
                        []
-                     elsif interviewees.include?('&') || interviewees.match?(/\s+and\s+/i) || interviewees.include?(',')
+                     elsif interviewees.to_s.include?('&') || interviewees.to_s.match?(/\s+and\s+/i) || interviewees.to_s.include?(',')
                        interviewees.to_s.split(/\s*(?:,|&|and)\s*/i).map(&:strip).reject(&:empty?)
                      else
                        [interviewees.to_s.strip]
