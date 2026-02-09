@@ -1,4 +1,4 @@
-name: Validate Content
+name: Build and Validate Site
 
 on:
   push:
@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate UGtastic data
-        run: |
-          ruby -v
-          bin/validate_ugtastic.rb
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4.8
+          bundler-cache: true
+      - name: Build and validate Jekyll output
+        run: ./bin/cibuild
