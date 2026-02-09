@@ -43,6 +43,7 @@ rm -f _site/AGENTS.html _site/AGENTS.md
 
 ruby bin/validate_seo_output.rb
 ruby bin/validate_resume_canonical_mode.rb
+ruby bin/validate_semantic_output.rb
 ruby bin/report_seo_metadata.rb
 
 bundle exec htmlproofer ./_site \

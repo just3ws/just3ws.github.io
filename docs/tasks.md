@@ -88,6 +88,10 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - `/` remains the default root route and canonical resume page.
   - `/home/` is treated as homepage and now canonicalizes to itself.
   - Commit: `311e44b1`.
+- 2026-02-09: Semantic/a11y quality gates expanded.
+  - Smoke checks now enforce semantic landmarks and structured-data contracts for `/` and `/home/`.
+  - Build pipeline now validates semantic output for all built HTML plus required `Person`/`VideoObject`/`Article` JSON-LD coverage.
+  - Commits: `86356c9d`, `this changeset`.
 
 ## Retrospective (2026-02-09)
 
