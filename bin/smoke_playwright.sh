@@ -15,6 +15,8 @@ PORT="${PORT:-4173}"
 BASE_URL="http://127.0.0.1:${PORT}"
 SESSION_BASE="${GITHUB_RUN_ID:-$$}"
 SESSION="ci-seo-smoke-${SESSION_BASE}"
+NPM_CACHE_DIR="${TMPDIR:-/tmp}/npm-cache-${SESSION}"
+export npm_config_cache="${NPM_CACHE_DIR}"
 PWCLI="npx --yes --package @playwright/cli playwright-cli --session ${SESSION}"
 
 python3 -m http.server "$PORT" --directory _site >/tmp/playwright-smoke-server.log 2>&1 &
@@ -29,6 +31,7 @@ cleanup() {
     kill "$SERVER_PID" >/dev/null 2>&1 || true
     wait "$SERVER_PID" >/dev/null 2>&1 || true
   fi
+  rm -rf "${NPM_CACHE_DIR}"
   rm -rf .playwright-cli
 }
 trap cleanup EXIT
