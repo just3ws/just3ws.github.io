@@ -25,6 +25,9 @@
   <link rel="stylesheet" href="/assets/css/minimal.css">
   <script data-goatcounter="https://just3ws.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>
+  {% if page.person_schema %}
+  {% include json-ld.html %}
+  {% endif %}
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>

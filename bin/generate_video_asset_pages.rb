@@ -50,6 +50,7 @@ assets.each do |asset|
     f.puts '    <header>'
     f.puts '      <h1>{{ asset.title }}</h1>'
     f.puts '    </header>'
+    f.puts '    {% include json-ld-video.html asset=asset %}'
     f.puts ''
     f.puts '    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}'
     f.puts '  {% endif %}'

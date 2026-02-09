@@ -1,0 +1,13 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ asset.title | jsonify }},
+  "description": {{ asset.description | default: page.description | jsonify }},
+  "thumbnailUrl": {{ asset.thumbnail | default: asset.platforms[0].thumbnail | jsonify }},
+  "uploadDate": "{{ asset.published_date | date: "%Y-%m-%d" }}",
+  "duration": {% if asset.duration_seconds %}"PT{{ asset.duration_seconds }}S"{% else %}null{% endif %},
+  "url": "https://www.just3ws.com{{ page.url }}",
+  "embedUrl": {{ asset.platforms[0].embed_url | default: nil | jsonify }}
+}
+</script>
