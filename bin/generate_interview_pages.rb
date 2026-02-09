@@ -16,11 +16,20 @@ def yaml_quote(value)
   "\"#{str.gsub('"', '\"')}\""
 end
 
+def normalize_interview_subject(value)
+  value.to_s.strip
+       .sub(/\AInterview with\s+/i, '')
+       .sub(/\AInterview\s*[-:]\s+/i, '')
+       .gsub(/\s+/, ' ')
+       .strip
+end
+
 base_dir = File.join(root, 'interviews')
 FileUtils.mkdir_p(base_dir)
 
 interviews.each do |interview|
   id = interview['id']
+  subject = normalize_interview_subject(interview['title'])
   dir = File.join(base_dir, id)
   FileUtils.mkdir_p(dir)
   path = File.join(dir, 'index.html')
@@ -28,8 +37,8 @@ interviews.each do |interview|
   File.open(path, 'w') do |f|
     f.puts '---'
     f.puts 'layout: minimal'
-    f.puts "title: #{yaml_quote("Interview — #{interview['title']}")}"
-    f.puts "description: #{yaml_quote("Interview with #{interview['title']}.")}"
+    f.puts "title: #{yaml_quote("Interview — #{subject}")}"
+    f.puts "description: #{yaml_quote("Interview with #{subject}.")}"
     f.puts "breadcrumb: #{yaml_quote(interview['title'])}"
     f.puts 'breadcrumb_parent_name: Interviews'
     f.puts 'breadcrumb_parent_url: /interviews/'

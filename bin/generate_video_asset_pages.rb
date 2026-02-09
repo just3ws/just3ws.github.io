@@ -14,12 +14,21 @@ def yaml_quote(value)
   "\"#{str.gsub('"', '\"')}\""
 end
 
+def normalize_asset_subject(value)
+  value.to_s.strip
+       .sub(/\AInterview with\s+/i, '')
+       .sub(/\AInterview\s*[-:]\s+/i, '')
+       .gsub(/\s+/, ' ')
+       .strip
+end
+
 base_dir = File.join(root, 'videos')
 FileUtils.mkdir_p(base_dir)
 
 assets.each do |asset|
   id = asset['id']
   title = asset['title'] || 'Video'
+  subject = normalize_asset_subject(title)
   dir = File.join(base_dir, id)
   FileUtils.mkdir_p(dir)
   path = File.join(dir, 'index.html')
@@ -27,8 +36,8 @@ assets.each do |asset|
   File.open(path, 'w') do |f|
     f.puts '---'
     f.puts 'layout: minimal'
-    f.puts "title: #{yaml_quote("Video — #{title}")}"
-    f.puts "description: #{yaml_quote("Video asset for #{title}.")}"
+    f.puts "title: #{yaml_quote("Video — #{subject}")}"
+    f.puts "description: #{yaml_quote("Video asset for #{subject}.")}"
     f.puts "breadcrumb: #{yaml_quote(title)}"
     f.puts 'breadcrumb_parent_name: Videos'
     f.puts 'breadcrumb_parent_url: /videos/'
