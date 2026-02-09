@@ -74,17 +74,49 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - Commit: `7177c97d`.
 - 2026-02-09: SEO observability + sitemap budget gates improved.
   - CI now emits a machine-readable SEO metadata JSON report and uploads it as a workflow artifact.
-  - Build now enforces a configurable sitemap URL budget (`SITEMAP_MAX_URLS`, default `600`) as a hard gate.
-  - Commits: `4e04d11c`, `this changeset`.
+  - Build now enforces a configurable sitemap URL budget (`SITEMAP_MAX_URLS`) as a hard gate.
+  - Commits: `4e04d11c`, `da544667`.
+- 2026-02-09: Sitemap-budget ratchet completed with CI checkpoints.
+  - Generated interview/video/group pages now explicitly opt out of sitemap indexing.
+  - Sitemap budget ratcheted in controlled steps from `600 -> 300 -> 100`, with GitHub Actions validation at each step.
+  - Commits: `66bfefb1`, `c7aaf87b`, `c0391a9c`.
 - 2026-02-09: Legacy-path maintenance pruning.
   - Removed layout-level legacy redirect mechanics and shifted smoke checks to sitemap-discovered published routes.
   - CI resume guardrails now focus on canonical resume artifacts (`/`, `resume.txt`, `resume.md`) without hardcoded legacy path dependency.
-  - Commits: `5c62650d`, `this changeset`.
+  - Commits: `5c62650d`, `0550432f`.
+- 2026-02-09: Canonical semantics clarified for homepage vs root resume.
+  - `/` remains the default root route and canonical resume page.
+  - `/home/` is treated as homepage and now canonicalizes to itself.
+  - Commit: `311e44b1`.
+
+## Retrospective (2026-02-09)
+
+### What Went Well
+- CI became deterministic and actionable via runtime parity, build gates, and clear failure messages.
+- Resume-critical regressions are now guarded by explicit artifact/content checks in `bin/cibuild`.
+- SEO policy became testable via canonical/indexability validators and report artifacts.
+- Ratcheting strategy worked safely by using small commits and CI checkpoints.
+
+### What Could Have Gone Better
+- Earlier assumptions over-constrained canonical policy before homepage semantics were explicitly clarified.
+- Task documentation drifted during rapid iteration and needed cleanup afterward.
+- Playwright smoke reliability required multiple corrective iterations due to CI/runtime edge cases.
+
+### Keep Doing
+- Keep changes small, isolated, and commit-scoped with immediate CI validation.
+- Keep checks derived from published state (sitemap-driven) rather than hardcoded historical route lists.
+- Keep resume reliability as the first-order guardrail in every pipeline change.
+
+### Stop Doing
+- Stop encoding architecture assumptions without explicit policy confirmation.
+- Stop hardcoding legacy route behavior into validation logic.
+- Stop allowing task-plan text to lag behind implemented behavior.
 
 ## Critical Constraint
 
-- The resume (`/`, `/history/`, `/resume.txt`, `/resume.md`) is the highest-priority surface and must render correctly on every build.
-- Any task that can affect resume rendering must include automated checks and explicit pass/fail criteria.
+- Root route semantics: `/` is the default root route and resume page; `/home/` is homepage content.
+- Resume artifacts (`/`, `/resume.txt`, `/resume.md`) must render correctly on every build.
+- Any task that can affect resume or homepage routing/canonical behavior must include automated pass/fail criteria.
 
 ## Phase 1: Configuration + Pipeline Correctness
 
@@ -101,27 +133,28 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Priority: P0
 - Goal: Prevent regressions on critical resume pages.
 - Tasks:
-  - Add build-time assertions for: `/index.html`, `/history/index.html`, `/resume.txt`, `/resume.md`.
+  - Add build-time assertions for: `/index.html`, `/resume.txt`, `/resume.md`.
   - Verify each exists and contains expected identity markers (`Mike Hall`, `Staff Software Engineer`).
 - Acceptance criteria:
   - CI fails if any critical resume artifact is missing or malformed.
 
 ### P1-03 Preserve generated sitemap correctness in pipeline
 - Priority: P0
-- Goal: Ensure sitemap represents the full canonical indexable set.
+- Goal: Ensure sitemap reflects currently published crawl scope without accidental expansion.
 - Tasks:
-  - Remove or replace manual `sitemap.xml` that currently shadows plugin output.
-  - Add CI check asserting sitemap URL count is above a configured threshold.
+  - Keep generated content marked with explicit sitemap intent (`sitemap: false` for non-published archives).
+  - Enforce sitemap URL budget with `SITEMAP_MAX_URLS` in CI.
+  - Ensure root URL presence in sitemap as a hard requirement.
 - Acceptance criteria:
-  - Built sitemap includes archive pages (interviews/videos/etc.), not only top-level + posts.
+  - CI fails if sitemap count exceeds budget or root URL entry is missing.
 
 ### P1-04 Add browser smoke check for critical routes
 - Priority: P1
 - Goal: Catch runtime regressions that static checks can miss.
 - Tasks:
-  - Add Playwright smoke checks for `/`, `/history/`, `/writing/`, `/interviews/`, `/videos/`.
+  - Discover smoke routes from built sitemap and validate each published route.
   - Assert HTTP 200, visible `<h1>`, and non-empty `<title>`.
-  - Assert `/` stays indexable while legacy routes remain `noindex` and canonicalize to root resume URL.
+  - Assert root route `/` canonical and robots behavior remains correct.
 - Acceptance criteria:
   - Required smoke check passes before merge.
 
@@ -170,10 +203,11 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Priority: P1
 - Goal: Ensure one canonical URL per resource and correct treatment of redirects.
 - Tasks:
-  - Keep redirect-only pages `noindex`.
-  - Verify canonical points to final preferred URL for indexable pages.
+  - Keep canonical host constrained to `https://www.just3ws.com`.
+  - Keep `/` canonicalized to root resume URL.
+  - Keep `/home/` canonicalized to homepage URL.
 - Acceptance criteria:
-  - No canonical loops/conflicts; redirects do not appear as canonical destinations unless intended.
+  - Canonical validation passes with explicit root/home semantics and no host drift.
 
 ### P3-03 Schema alignment by page type
 - Priority: P1
@@ -195,13 +229,8 @@ This task list is prioritized to protect pipeline correctness first, then data i
 
 ## Logged Recommendations (Current)
 
-1. Remove manual `sitemap.xml` override and rely on generated sitemap output.
-2. Add SEO tag generation in shared layout (`_layouts/minimal.html`) to restore canonical + OG coverage.
-3. Add CI assertions specifically for resume page existence/content because resume is the critical asset.
-4. Add deterministic runtime checks in pipeline to prevent accidental system Ruby/Bundler usage.
-5. Normalize generated interview/video metadata text and add dedupe checks to prevent repeated or low-quality snippets.
-6. Keep SEO changes strictly technical/head-level; do not alter visual layout or page content structure unless explicitly requested.
-7. When resume-only mode remains active, move legacy routes from soft deprecation (`200 + noindex`) to explicit deprecation (`301` to `/` or `410`) to reduce crawl waste and strengthen canonical clarity.
-8. Keep the sitemap URL budget gate active in CI (`SITEMAP_MAX_URLS`) and ratchet it down as legacy surface area is retired.
-9. Add a small SEO artifact in CI (e.g., JSON summary from validators) and upload it for trend tracking across commits.
-10. Keep smoke and release checks driven by currently published sitemap routes rather than hardcoded historical paths.
+1. Keep plan text synchronized with implementation after every policy change (same commit series).
+2. Preserve sitemap-driven smoke scope and avoid reintroducing hardcoded path lists.
+3. Add a small CI assertion for `/home/` canonical URL to make homepage semantics explicit in smoke checks.
+4. Keep `SITEMAP_MAX_URLS` at `100` unless intentional publication-scope expansion is approved.
+5. If publication model changes again, define canonical and robots policy first, then implement validation.
