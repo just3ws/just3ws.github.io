@@ -36,3 +36,36 @@ bundle exec jekyll build --verbose
 bundle exec htmlproofer ./_site \
   --disable-external \
   --ignore-url "/^https:\/\/www\.linkedin\.com\//"
+
+require_file() {
+  file_path="$1"
+  if [ ! -f "$file_path" ]; then
+    echo "Missing required artifact: $file_path" >&2
+    exit 1
+  fi
+}
+
+require_contains() {
+  file_path="$1"
+  expected_text="$2"
+  if ! grep -q "$expected_text" "$file_path"; then
+    echo "Expected text not found in $file_path: $expected_text" >&2
+    exit 1
+  fi
+}
+
+# Resume is the highest-priority surface; fail fast on any rendering regression.
+require_file "_site/index.html"
+require_file "_site/history/index.html"
+require_file "_site/resume.txt"
+require_file "_site/resume.md"
+require_contains "_site/index.html" "Mike Hall"
+require_contains "_site/index.html" "Staff Software Engineer"
+
+# Catch sitemap regressions (e.g. partial/manual sitemap output replacing full index).
+require_file "_site/sitemap.xml"
+sitemap_url_count="$(grep -c "<url>" _site/sitemap.xml)"
+if [ "$sitemap_url_count" -lt 100 ]; then
+  echo "Sitemap regression: expected at least 100 URLs, found $sitemap_url_count" >&2
+  exit 1
+fi
