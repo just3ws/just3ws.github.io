@@ -65,6 +65,13 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - 2026-02-09: Smoke checks expanded for legacy-path deprecation behavior.
   - Playwright smoke now asserts legacy routes (`/history/`, `/writing/`, `/interviews/`, `/videos/`) keep root canonical and `noindex`.
   - Commit: `7c6c3e83`.
+- 2026-02-09: CI reliability and smoke stability fixes.
+  - Added Linux platform to lockfile for GitHub-hosted Ubuntu runners and stabilized Playwright smoke session/cache handling.
+  - Commits: `edb8a7d3`, `507f968a`, `2766a47b`, `1b1b767b`.
+- 2026-02-09: Legacy-path hard deprecation enabled.
+  - Non-resume/noindex legacy pages now immediately redirect to resume root while preserving root canonical target policy.
+  - Playwright smoke now validates legacy route redirect behavior.
+  - Commit: `7177c97d`.
 
 ## Critical Constraint
 
@@ -189,3 +196,4 @@ This task list is prioritized to protect pipeline correctness first, then data i
 7. When resume-only mode remains active, move legacy routes from soft deprecation (`200 + noindex`) to explicit deprecation (`301` to `/` or `410`) to reduce crawl waste and strengthen canonical clarity.
 8. Add a sitemap strict-mode gate that fails when URL count exceeds the allowed resume-only threshold to prevent accidental recrawl expansion.
 9. Add a small SEO artifact in CI (e.g., JSON summary from validators) and upload it for trend tracking across commits.
+10. If true HTTP status redirects are required (instead of HTML/JS redirects), add an edge/CDN redirect layer in front of GitHub Pages for `/history/*`, `/writing/*`, `/interviews/*`, and `/videos/*`.
