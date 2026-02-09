@@ -1,7 +1,26 @@
 #!/usr/bin/env sh
 set -e
 
-source .env
+if [ -f .env ]; then
+  # shellcheck disable=SC1091
+  . ./.env
+fi
+
+required_ruby="$(awk '/^ruby /{print $2; exit}' .tool-versions)"
+actual_ruby="$(ruby -e 'print RUBY_VERSION')"
+if [ "$actual_ruby" != "$required_ruby" ]; then
+  echo "Ruby version mismatch: expected $required_ruby, got $actual_ruby" >&2
+  echo "Ensure your shell uses the project runtime from .tool-versions." >&2
+  exit 1
+fi
+
+required_bundler="$(ruby -e 'lock = File.read("Gemfile.lock"); m = lock.match(/BUNDLED WITH\n\s+([0-9.]+)/); print(m && m[1])')"
+actual_bundler="$(bundle --version | awk '{print $3}')"
+if [ "$actual_bundler" != "$required_bundler" ]; then
+  echo "Bundler version mismatch: expected $required_bundler, got $actual_bundler" >&2
+  echo "Install the required Bundler version and retry." >&2
+  exit 1
+fi
 
 rm -rf _site .jekyll-metadata
 find interviews -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
