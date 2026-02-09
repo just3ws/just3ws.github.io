@@ -15,7 +15,7 @@ if [ "$actual_ruby" != "$required_ruby" ]; then
 fi
 
 required_bundler="$(ruby -e 'lock = File.read("Gemfile.lock"); m = lock.match(/BUNDLED WITH\n\s+([0-9.]+)/); print(m && m[1])')"
-actual_bundler="$(bundle --version | awk '{print $3}')"
+actual_bundler="$(bundle --version | awk '{print $NF}')"
 if [ "$actual_bundler" != "$required_bundler" ]; then
   echo "Bundler version mismatch: expected $required_bundler, got $actual_bundler" >&2
   echo "Install the required Bundler version and retry." >&2
