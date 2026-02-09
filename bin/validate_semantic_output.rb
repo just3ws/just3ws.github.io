@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'json'
+
 ROOT = File.expand_path('..', __dir__)
 SITE_DIR = File.join(ROOT, '_site')
 
@@ -9,6 +11,82 @@ end
 
 def match_count(text, regex)
   text.scan(regex).size
+end
+
+def json_ld_script_contents(html)
+  html.scan(%r{<script[^>]+type=["']application/ld\+json["'][^>]*>(.*?)</script>}mi).flatten
+end
+
+def flatten_json_ld_nodes(value)
+  case value
+  when Array
+    value.flat_map { |entry| flatten_json_ld_nodes(entry) }
+  when Hash
+    nodes = [value]
+    graph = value['@graph']
+    nodes.concat(flatten_json_ld_nodes(graph)) if graph
+    nodes
+  else
+    []
+  end
+end
+
+def json_ld_nodes(html, relative, errors)
+  nodes = []
+  json_ld_script_contents(html).each_with_index do |raw_json, index|
+    begin
+      parsed = JSON.parse(raw_json.strip)
+      nodes.concat(flatten_json_ld_nodes(parsed))
+    rescue JSON::ParserError => e
+      errors << "#{relative} has invalid JSON-LD script ##{index + 1}: #{e.message}"
+    end
+  end
+  nodes
+end
+
+def node_has_type?(node, expected_type)
+  node_type = node['@type']
+  return false unless node_type
+  return node_type.include?(expected_type) if node_type.is_a?(Array)
+
+  node_type == expected_type
+end
+
+def value_present?(value)
+  case value
+  when nil
+    false
+  when String
+    !value.strip.empty?
+  when Array
+    !value.empty?
+  when Hash
+    !value.empty?
+  else
+    true
+  end
+end
+
+def field_present?(node, dotted_key)
+  value = dotted_key.split('.').reduce(node) do |current, part|
+    current.is_a?(Hash) ? current[part] : nil
+  end
+  value_present?(value)
+end
+
+def validate_json_ld_type(nodes:, expected_type:, required_fields:, context:, errors:)
+  typed_nodes = nodes.select { |node| node.is_a?(Hash) && node_has_type?(node, expected_type) }
+  if typed_nodes.empty?
+    errors << "#{context} missing #{expected_type} JSON-LD"
+    return
+  end
+
+  typed_nodes.each_with_index do |node, index|
+    missing = required_fields.reject { |key| field_present?(node, key) }
+    next if missing.empty?
+
+    errors << "#{context} #{expected_type} JSON-LD ##{index + 1} missing required fields: #{missing.join(', ')}"
+  end
 end
 
 errors = []
@@ -45,14 +123,20 @@ Dir.glob(File.join(SITE_DIR, '**', '*.html')).sort.each do |path|
 end
 
 index_html = read(File.join(SITE_DIR, 'index.html'))
-unless index_html.match?(/<script[^>]+type=["']application\/ld\+json["'][^>]*>.*"@type"\s*:\s*"Person".*<\/script>/mi)
-  errors << 'index.html missing Person JSON-LD'
-end
+index_nodes = json_ld_nodes(index_html, 'index.html', errors)
+validate_json_ld_type(
+  nodes: index_nodes,
+  expected_type: 'Person',
+  required_fields: %w[name url jobTitle],
+  context: 'index.html',
+  errors: errors
+)
 
 home_html_path = File.join(SITE_DIR, 'home', 'index.html')
 if File.file?(home_html_path)
   home_html = read(home_html_path)
-  if home_html.match?(/<script[^>]+type=["']application\/ld\+json["'][^>]*>.*"@type"\s*:\s*"Person".*<\/script>/mi)
+  home_nodes = json_ld_nodes(home_html, 'home/index.html', errors)
+  if home_nodes.any? { |node| node.is_a?(Hash) && node_has_type?(node, 'Person') }
     errors << 'home/index.html should not expose Person JSON-LD'
   end
 end
@@ -61,17 +145,27 @@ Dir.glob(File.join(SITE_DIR, 'videos', '**', 'index.html')).sort.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative == 'videos/index.html'
   html = read(path)
-  unless html.match?(/<script[^>]+type=["']application\/ld\+json["'][^>]*>.*"@type"\s*:\s*"VideoObject".*<\/script>/mi)
-    errors << "#{relative} missing VideoObject JSON-LD"
-  end
+  nodes = json_ld_nodes(html, relative, errors)
+  validate_json_ld_type(
+    nodes: nodes,
+    expected_type: 'VideoObject',
+    required_fields: %w[name description url uploadDate],
+    context: relative,
+    errors: errors
+  )
 end
 
 Dir.glob(File.join(SITE_DIR, '[0-9][0-9][0-9][0-9]', '**', '*.html')).sort.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   html = read(path)
-  unless html.match?(/<script[^>]+type=["']application\/ld\+json["'][^>]*>.*"@type"\s*:\s*"Article".*<\/script>/mi)
-    errors << "#{relative} missing Article JSON-LD"
-  end
+  nodes = json_ld_nodes(html, relative, errors)
+  validate_json_ld_type(
+    nodes: nodes,
+    expected_type: 'Article',
+    required_fields: ['headline', 'datePublished', 'mainEntityOfPage.@id'],
+    context: relative,
+    errors: errors
+  )
 end
 
 if errors.empty?
