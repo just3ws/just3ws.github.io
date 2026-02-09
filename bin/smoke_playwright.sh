@@ -23,10 +23,6 @@ python3 -m http.server "$PORT" --directory _site >/tmp/playwright-smoke-server.l
 SERVER_PID="$!"
 cleanup() {
   $PWCLI close >/dev/null 2>&1 || true
-  if [ -n "${BROWSER_PID:-}" ] && kill -0 "$BROWSER_PID" >/dev/null 2>&1; then
-    kill "$BROWSER_PID" >/dev/null 2>&1 || true
-    wait "$BROWSER_PID" >/dev/null 2>&1 || true
-  fi
   if kill -0 "$SERVER_PID" >/dev/null 2>&1; then
     kill "$SERVER_PID" >/dev/null 2>&1 || true
     wait "$SERVER_PID" >/dev/null 2>&1 || true
@@ -36,9 +32,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-$PWCLI open "${BASE_URL}/" >/dev/null 2>&1 &
-BROWSER_PID="$!"
-sleep 2
+$PWCLI open "${BASE_URL}/" >/dev/null
 $PWCLI goto "${BASE_URL}/" >/dev/null
 
 assert_route() {
