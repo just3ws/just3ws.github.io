@@ -55,6 +55,10 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - 2026-02-09: `P3-04` implemented.
   - Added metadata length clamping for generated interview/video pages and SEO quality reporting in pipeline output.
   - Commit: `f59c4663`.
+- 2026-02-09: Legacy-path deprecation policy applied.
+  - Resume (`/`) set as sole indexable canonical target; legacy pages now default to `noindex,nofollow` with canonical pointing to resume.
+  - Build checks updated for resume-canonical mode behavior and reporting.
+  - Commit: `abdcefa6`.
 
 ## Critical Constraint
 
