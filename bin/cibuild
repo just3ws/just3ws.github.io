@@ -35,6 +35,10 @@ ruby bin/generate_interview_group_pages.rb
 
 bundle exec jekyll clean --verbose
 bundle exec jekyll build --verbose
+
+# AGENTS docs are for local tooling, not public site output.
+rm -f _site/AGENTS.html _site/AGENTS.md
+
 bundle exec htmlproofer ./_site \
   --disable-external \
   --ignore-url "/^https:\/\/www\.linkedin\.com\//"
