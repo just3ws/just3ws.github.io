@@ -22,6 +22,16 @@ def normalize_asset_subject(value)
        .strip
 end
 
+def clamp_meta(text, max_length)
+  clean = text.to_s.gsub(/\s+/, ' ').strip
+  return clean if clean.length <= max_length
+
+  truncated = clean[0, max_length - 1]
+  truncated = truncated.rpartition(' ').first if truncated.include?(' ')
+  truncated = clean[0, max_length - 1] if truncated.nil? || truncated.empty?
+  "#{truncated}…"
+end
+
 base_dir = File.join(root, 'videos')
 FileUtils.mkdir_p(base_dir)
 
@@ -29,6 +39,8 @@ assets.each do |asset|
   id = asset['id']
   title = asset['title'] || 'Video'
   subject = normalize_asset_subject(title)
+  title_meta = clamp_meta("Video — #{subject}", 70)
+  description_meta = clamp_meta("Video asset for #{subject}.", 160)
   dir = File.join(base_dir, id)
   FileUtils.mkdir_p(dir)
   path = File.join(dir, 'index.html')
@@ -36,8 +48,8 @@ assets.each do |asset|
   File.open(path, 'w') do |f|
     f.puts '---'
     f.puts 'layout: minimal'
-    f.puts "title: #{yaml_quote("Video — #{subject}")}"
-    f.puts "description: #{yaml_quote("Video asset for #{subject}.")}"
+    f.puts "title: #{yaml_quote(title_meta)}"
+    f.puts "description: #{yaml_quote(description_meta)}"
     f.puts "breadcrumb: #{yaml_quote(title)}"
     f.puts 'breadcrumb_parent_name: Videos'
     f.puts 'breadcrumb_parent_url: /videos/'
