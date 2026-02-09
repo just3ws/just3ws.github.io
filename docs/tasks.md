@@ -43,6 +43,18 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - 2026-02-09: Build output hygiene follow-up.
   - Excluded AGENTS instructions from published-site checks and escaped literal Liquid in tasks doc.
   - Commits: `5b680d98`, `29d9ebd5`.
+- 2026-02-09: `P3-01` implemented.
+  - Added deterministic canonical/OG/Twitter head tags in shared layout and enforced production URL context in build pipeline.
+  - Commit: `67ec144c`.
+- 2026-02-09: `P3-02` implemented.
+  - Added SEO output validator for canonical host coverage and redirect/noindex hygiene.
+  - Commit: `dc1fd9a2`.
+- 2026-02-09: `P3-03` implemented.
+  - Scoped `Person` schema to resume pages; added `Article` schema for posts and `VideoObject` schema for video pages.
+  - Commit: `34d113ff`.
+- 2026-02-09: `P3-04` implemented.
+  - Added metadata length clamping for generated interview/video pages and SEO quality reporting in pipeline output.
+  - Commit: `f59c4663`.
 
 ## Critical Constraint
 
@@ -122,7 +134,7 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Priority: P0
 - Goal: Emit canonical and social metadata consistently without visual changes.
 - Tasks:
-  - Add `{% raw %}{% seo %}{% endraw %}` to shared layout head path.
+  - Add shared canonical/OG/Twitter head generation to the minimal layout path.
   - Keep existing custom fields only where needed and non-conflicting.
 - Acceptance criteria:
   - Canonical present on indexable pages.
