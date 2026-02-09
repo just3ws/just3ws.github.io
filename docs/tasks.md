@@ -13,6 +13,24 @@ breadcrumb_parent_url: /docs/
 
 This task list is prioritized to protect pipeline correctness first, then data integrity, then non-visual SEO improvements.
 
+## Progress Log
+
+- 2026-02-09: `P1-01` implemented.
+  - Runtime parity checks added to `bin/cibuild` (Ruby + Bundler).
+  - Commit: `756f258`, follow-up parser fix `959d6ef`.
+- 2026-02-09: `P1-02` implemented.
+  - Resume render guardrails added to `bin/cibuild`.
+  - Commit: `5f4892d`.
+- 2026-02-09: `P1-03` implemented.
+  - Manual sitemap override removed; sitemap floor check added to `bin/cibuild`.
+  - Commit: `364de44`, guardrail in `5f4892d`.
+- 2026-02-09: `P1-04` implemented.
+  - Playwright smoke script added and wired into CI.
+  - Commits: `fc39521`, `77dccbc`, `7983f61`.
+- 2026-02-09: CI workflow corrected to run full site validation.
+  - Broken missing-script validation replaced with `bin/cibuild` on Ruby `3.4.8`.
+  - Commit: `18bee27`.
+
 ## Critical Constraint
 
 - The resume (`/`, `/history/`, `/resume.txt`, `/resume.md`) is the highest-priority surface and must render correctly on every build.
@@ -132,4 +150,3 @@ This task list is prioritized to protect pipeline correctness first, then data i
 4. Add deterministic runtime checks in pipeline to prevent accidental system Ruby/Bundler usage.
 5. Normalize generated interview/video metadata text and add dedupe checks to prevent repeated or low-quality snippets.
 6. Keep SEO changes strictly technical/head-level; do not alter visual layout or page content structure unless explicitly requested.
-
