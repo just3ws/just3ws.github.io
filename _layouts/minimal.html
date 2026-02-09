@@ -5,14 +5,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
+  {% assign seo_title = page.title | default: "Mike Hall" %}
+  {% assign seo_description = page.description | default: "Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems." %}
+  {% assign canonical_path = page.url | default: "/" | replace: "index.html", "" %}
+  {% assign canonical_url = "https://www.just3ws.com" | append: canonical_path %}
+  <title>{{ seo_title }}</title>
+  <meta name="description" content="{{ seo_description }}">
   <meta name="author" content="Mike Hall">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta property="og:title" content="{{ seo_title }}">
+  <meta property="og:description" content="{{ seo_description }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mike Hall">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ seo_title }}">
+  <meta name="twitter:description" content="{{ seo_description }}">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" href="/assets/css/minimal.css">
   <script data-goatcounter="https://just3ws.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>
-  {% include json-ld.html %}
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>

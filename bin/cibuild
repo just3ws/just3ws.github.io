@@ -22,6 +22,8 @@ if [ "$actual_bundler" != "$required_bundler" ]; then
   exit 1
 fi
 
+export JEKYLL_ENV=production
+
 rm -rf _site .jekyll-metadata
 find interviews -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
 find videos -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
@@ -41,6 +43,7 @@ rm -f _site/AGENTS.html _site/AGENTS.md
 
 bundle exec htmlproofer ./_site \
   --disable-external \
+  --ignore-files "/AGENTS\\.html$/" \
   --ignore-url "/^https:\/\/www\.linkedin\.com\//"
 
 require_file() {
