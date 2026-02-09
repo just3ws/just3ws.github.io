@@ -30,6 +30,19 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - 2026-02-09: CI workflow corrected to run full site validation.
   - Broken missing-script validation replaced with `bin/cibuild` on Ruby `3.4.8`.
   - Commit: `18bee27`.
+- 2026-02-09: `P2-01` implemented.
+  - Normalized generated interview/video SEO metadata to remove repeated phrasing.
+  - Commit: `fb865d3`.
+- 2026-02-09: `P2-02` implemented.
+  - Added canonical ID and slug collision validation (`bin/validate_data_dedupe.rb`) in `bin/cibuild`.
+  - Commit: `723be78e`.
+- 2026-02-09: `P2-03` implemented.
+  - Added required-field/reference validation (`bin/validate_data_required_fields.rb`) in `bin/cibuild`.
+  - Fixed orphan `interview_id` references for two non-interview assets.
+  - Commit: `0a00a809`.
+- 2026-02-09: Build output hygiene follow-up.
+  - Excluded AGENTS instructions from published-site checks and escaped literal Liquid in tasks doc.
+  - Commits: `5b680d98`, `29d9ebd5`.
 
 ## Critical Constraint
 
