@@ -78,6 +78,7 @@ require_contains "_site/index.html" "Staff Software Engineer"
 # Catch sitemap regressions (e.g. partial/manual sitemap output replacing full index).
 require_file "_site/sitemap.xml"
 sitemap_url_count="$(grep -c "<url>" _site/sitemap.xml)"
+sitemap_max_urls="${SITEMAP_MAX_URLS:-600}"
 if [ "$sitemap_url_count" -lt 1 ]; then
   echo "Sitemap regression: expected at least 1 URL, found $sitemap_url_count" >&2
   exit 1
@@ -86,6 +87,8 @@ if ! grep -Eq "<loc>https?://[^/]+/</loc>" _site/sitemap.xml; then
   echo "Sitemap regression: missing root resume URL entry in sitemap" >&2
   exit 1
 fi
-if [ "$sitemap_url_count" -gt 5 ]; then
-  echo "Sitemap warning: found $sitemap_url_count URLs while in resume-canonical mode." >&2
+if [ "$sitemap_url_count" -gt "$sitemap_max_urls" ]; then
+  echo "Sitemap regression: found $sitemap_url_count URLs, exceeds budget $sitemap_max_urls." >&2
+  echo "Increase SITEMAP_MAX_URLS only when intentional crawl-scope expansion is approved." >&2
+  exit 1
 fi

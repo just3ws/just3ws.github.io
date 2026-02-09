@@ -72,6 +72,10 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - Non-resume/noindex legacy pages now immediately redirect to resume root while preserving root canonical target policy.
   - Playwright smoke now validates legacy route redirect behavior.
   - Commit: `7177c97d`.
+- 2026-02-09: SEO observability + sitemap budget gates improved.
+  - CI now emits a machine-readable SEO metadata JSON report and uploads it as a workflow artifact.
+  - Build now enforces a configurable sitemap URL budget (`SITEMAP_MAX_URLS`, default `600`) as a hard gate.
+  - Commits: `4e04d11c`, `this changeset`.
 
 ## Critical Constraint
 
@@ -194,6 +198,6 @@ This task list is prioritized to protect pipeline correctness first, then data i
 5. Normalize generated interview/video metadata text and add dedupe checks to prevent repeated or low-quality snippets.
 6. Keep SEO changes strictly technical/head-level; do not alter visual layout or page content structure unless explicitly requested.
 7. When resume-only mode remains active, move legacy routes from soft deprecation (`200 + noindex`) to explicit deprecation (`301` to `/` or `410`) to reduce crawl waste and strengthen canonical clarity.
-8. Add a sitemap strict-mode gate that fails when URL count exceeds the allowed resume-only threshold to prevent accidental recrawl expansion.
+8. Keep the sitemap URL budget gate active in CI (`SITEMAP_MAX_URLS`) and ratchet it down as legacy surface area is retired.
 9. Add a small SEO artifact in CI (e.g., JSON summary from validators) and upload it for trend tracking across commits.
 10. If true HTTP status redirects are required (instead of HTML/JS redirects), add an edge/CDN redirect layer in front of GitHub Pages for `/history/*`, `/writing/*`, `/interviews/*`, and `/videos/*`.
