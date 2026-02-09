@@ -80,7 +80,19 @@ assert_root_seo() {
   }' >/dev/null
 }
 
+assert_home_seo() {
+  $PWCLI goto "${BASE_URL}/home/" >/dev/null
+  $PWCLI eval '() => {
+    const canonical = document.querySelector("link[rel=\"canonical\"]")?.getAttribute("href");
+    if (canonical !== "https://www.just3ws.com/home/") throw new Error(`unexpected home canonical: ${canonical}`);
+    const robots = (document.querySelector("meta[name=\"robots\"]")?.getAttribute("content") || "").toLowerCase();
+    if (!robots.includes("noindex")) throw new Error(`unexpected home robots: ${robots}`);
+    return true;
+  }' >/dev/null
+}
+
 assert_root_seo
+assert_home_seo
 
 # Resume must always render correctly with expected identity markers.
 $PWCLI goto "${BASE_URL}/" >/dev/null
