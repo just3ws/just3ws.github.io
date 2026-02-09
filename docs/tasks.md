@@ -59,6 +59,12 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - Resume (`/`) set as sole indexable canonical target; legacy pages now default to `noindex,nofollow` with canonical pointing to resume.
   - Build checks updated for resume-canonical mode behavior and reporting.
   - Commit: `abdcefa6`.
+- 2026-02-09: Resume-canonical mode made a hard CI gate.
+  - Added output validator to fail builds unless every page canonical resolves to root resume URL and only `index.html` remains indexable.
+  - Commit: `3bbc750b`.
+- 2026-02-09: Smoke checks expanded for legacy-path deprecation behavior.
+  - Playwright smoke now asserts legacy routes (`/history/`, `/writing/`, `/interviews/`, `/videos/`) keep root canonical and `noindex`.
+  - Commit: `7c6c3e83`.
 
 ## Critical Constraint
 
@@ -100,6 +106,7 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Tasks:
   - Add Playwright smoke checks for `/`, `/history/`, `/writing/`, `/interviews/`, `/videos/`.
   - Assert HTTP 200, visible `<h1>`, and non-empty `<title>`.
+  - Assert `/` stays indexable while legacy routes remain `noindex` and canonicalize to root resume URL.
 - Acceptance criteria:
   - Required smoke check passes before merge.
 
@@ -179,3 +186,6 @@ This task list is prioritized to protect pipeline correctness first, then data i
 4. Add deterministic runtime checks in pipeline to prevent accidental system Ruby/Bundler usage.
 5. Normalize generated interview/video metadata text and add dedupe checks to prevent repeated or low-quality snippets.
 6. Keep SEO changes strictly technical/head-level; do not alter visual layout or page content structure unless explicitly requested.
+7. When resume-only mode remains active, move legacy routes from soft deprecation (`200 + noindex`) to explicit deprecation (`301` to `/` or `410`) to reduce crawl waste and strengthen canonical clarity.
+8. Add a sitemap strict-mode gate that fails when URL count exceeds the allowed resume-only threshold to prevent accidental recrawl expansion.
+9. Add a small SEO artifact in CI (e.g., JSON summary from validators) and upload it for trend tracking across commits.
