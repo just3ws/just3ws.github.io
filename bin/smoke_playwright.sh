@@ -20,7 +20,10 @@ python3 -m http.server "$PORT" --directory _site >/tmp/playwright-smoke-server.l
 SERVER_PID="$!"
 cleanup() {
   $PWCLI close >/dev/null 2>&1 || true
-  kill "$SERVER_PID" >/dev/null 2>&1 || true
+  if kill -0 "$SERVER_PID" >/dev/null 2>&1; then
+    kill "$SERVER_PID" >/dev/null 2>&1 || true
+    wait "$SERVER_PID" >/dev/null 2>&1 || true
+  fi
   rm -rf .playwright-cli
 }
 trap cleanup EXIT
