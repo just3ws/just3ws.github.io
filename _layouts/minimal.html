@@ -16,18 +16,11 @@
       {% assign robots_directive = "noindex,nofollow" %}
     {% endif %}
   {% endif %}
-  {% assign legacy_redirect = false %}
-  {% if page.resume_canonical != true and robots_directive contains "noindex" %}
-    {% assign legacy_redirect = true %}
-  {% endif %}
   <title>{{ seo_title }}</title>
   <meta name="description" content="{{ seo_description }}">
   <meta name="author" content="Mike Hall">
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="robots" content="{{ robots_directive }}">
-  {% if legacy_redirect %}
-  <meta http-equiv="refresh" content="0;url={{ canonical_url }}">
-  {% endif %}
   <meta property="og:title" content="{{ seo_title }}">
   <meta property="og:description" content="{{ seo_description }}">
   <meta property="og:url" content="{{ canonical_url }}">
@@ -40,11 +33,6 @@
   <link rel="stylesheet" href="/assets/css/minimal.css">
   <script data-goatcounter="https://just3ws.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>
-  {% if legacy_redirect %}
-  <script>
-    window.location.replace("{{ canonical_url }}");
-  </script>
-  {% endif %}
   {% if page.person_schema %}
   {% include json-ld.html %}
   {% endif %}
