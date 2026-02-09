@@ -91,8 +91,50 @@ assert_home_seo() {
   }' >/dev/null
 }
 
+assert_semantic_a11y_contract() {
+  route="$1"
+  $PWCLI goto "${BASE_URL}${route}" >/dev/null
+  $PWCLI eval "() => {
+    const lang = (document.documentElement.getAttribute('lang') || '').trim();
+    if (!lang) throw new Error('missing html[lang]');
+
+    const mains = document.querySelectorAll('main');
+    if (mains.length !== 1) throw new Error('expected exactly one <main>');
+
+    const h1s = Array.from(document.querySelectorAll('h1')).map((el) => (el.textContent || '').trim()).filter(Boolean);
+    if (h1s.length !== 1) throw new Error('expected exactly one non-empty <h1>');
+
+    const skip = document.querySelector('a.skip-link');
+    if (!skip) throw new Error('missing skip-link');
+    if ((skip.getAttribute('href') || '').trim() !== '#main-content') throw new Error('skip-link href must target #main-content');
+    if (!document.getElementById('main-content')) throw new Error('missing #main-content target');
+
+    const unlabeledNav = document.querySelector('nav:not([aria-label]):not([aria-labelledby])');
+    if (unlabeledNav) throw new Error('found nav without accessible label');
+
+    const imagesMissingAlt = Array.from(document.querySelectorAll('img')).filter((img) => !img.hasAttribute('alt'));
+    if (imagesMissingAlt.length > 0) throw new Error('found image missing alt attribute');
+
+    return true;
+  }" >/dev/null
+}
+
+assert_resume_structured_data() {
+  $PWCLI goto "${BASE_URL}/" >/dev/null
+  $PWCLI eval "() => {
+    const jsonLd = Array.from(document.querySelectorAll('script[type=\"application/ld+json\"]'))
+      .map((s) => s.textContent || '')
+      .join('\\n');
+    if (!jsonLd.includes('\"@type\":\"Person\"')) throw new Error('resume missing Person JSON-LD');
+    return true;
+  }" >/dev/null
+}
+
 assert_root_seo
 assert_home_seo
+assert_semantic_a11y_contract "/"
+assert_semantic_a11y_contract "/home/"
+assert_resume_structured_data
 
 # Resume must always render correctly with expected identity markers.
 $PWCLI goto "${BASE_URL}/" >/dev/null
