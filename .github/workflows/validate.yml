@@ -22,3 +22,10 @@ jobs:
         run: ./bin/cibuild
       - name: Playwright smoke check
         run: ./bin/smoke_playwright.sh
+      - name: Upload SEO report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-metadata-report
+          path: tmp/seo-metadata-report.json
+          if-no-files-found: error

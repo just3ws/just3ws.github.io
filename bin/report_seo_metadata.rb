@@ -1,7 +1,12 @@
 #!/usr/bin/env ruby
+require 'json'
+require 'fileutils'
+require 'time'
 
 ROOT = File.expand_path('..', __dir__)
 SITE_DIR = File.join(ROOT, '_site')
+DEFAULT_REPORT_PATH = File.join(ROOT, 'tmp', 'seo-metadata-report.json')
+report_path = ENV.fetch('SEO_REPORT_JSON', DEFAULT_REPORT_PATH)
 
 title_re = /<title[^>]*>(.*?)<\/title>/im
 desc_re = /<meta[^>]*name=["']description["'][^>]*content=["'](.*?)["'][^>]*>/im
@@ -57,3 +62,18 @@ unless duplicate_descs.empty?
     puts "    - #{count}x #{desc}"
   end
 end
+
+report = {
+  html_pages: records.size,
+  indexable_pages: indexable.size,
+  noindex_pages: records.size - indexable.size,
+  title_outliers: title_outliers.size,
+  desc_outliers: desc_outliers.size,
+  duplicate_titles: duplicate_titles.size,
+  duplicate_descs: duplicate_descs.size,
+  generated_at: Time.now.utc.iso8601
+}
+
+FileUtils.mkdir_p(File.dirname(report_path))
+File.write(report_path, JSON.pretty_generate(report) + "\n")
+puts "  report_json=#{report_path}"
