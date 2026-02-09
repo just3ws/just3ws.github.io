@@ -20,6 +20,10 @@ python3 -m http.server "$PORT" --directory _site >/tmp/playwright-smoke-server.l
 SERVER_PID="$!"
 cleanup() {
   $PWCLI close >/dev/null 2>&1 || true
+  if [ -n "${BROWSER_PID:-}" ] && kill -0 "$BROWSER_PID" >/dev/null 2>&1; then
+    kill "$BROWSER_PID" >/dev/null 2>&1 || true
+    wait "$BROWSER_PID" >/dev/null 2>&1 || true
+  fi
   if kill -0 "$SERVER_PID" >/dev/null 2>&1; then
     kill "$SERVER_PID" >/dev/null 2>&1 || true
     wait "$SERVER_PID" >/dev/null 2>&1 || true
@@ -28,7 +32,10 @@ cleanup() {
 }
 trap cleanup EXIT
 
-$PWCLI open "${BASE_URL}/" >/dev/null
+$PWCLI open "${BASE_URL}/" >/dev/null 2>&1 &
+BROWSER_PID="$!"
+sleep 2
+$PWCLI goto "${BASE_URL}/" >/dev/null
 
 assert_route() {
   route="$1"
@@ -47,6 +54,35 @@ assert_route "/history/"
 assert_route "/writing/"
 assert_route "/interviews/"
 assert_route "/videos/"
+
+assert_root_seo() {
+  $PWCLI goto "${BASE_URL}/" >/dev/null
+  $PWCLI eval '() => {
+    const canonical = document.querySelector("link[rel=\"canonical\"]")?.getAttribute("href");
+    if (canonical !== "https://www.just3ws.com/") throw new Error(`unexpected root canonical: ${canonical}`);
+    const robots = (document.querySelector("meta[name=\"robots\"]")?.getAttribute("content") || "").toLowerCase();
+    if (!robots.includes("index") || robots.includes("noindex")) throw new Error(`unexpected root robots: ${robots}`);
+    return true;
+  }' >/dev/null
+}
+
+assert_legacy_deprecated() {
+  route="$1"
+  $PWCLI goto "${BASE_URL}${route}" >/dev/null
+  $PWCLI eval '() => {
+    const canonical = document.querySelector("link[rel=\"canonical\"]")?.getAttribute("href");
+    if (canonical !== "https://www.just3ws.com/") throw new Error(`unexpected canonical: ${canonical}`);
+    const robots = (document.querySelector("meta[name=\"robots\"]")?.getAttribute("content") || "").toLowerCase();
+    if (!robots.includes("noindex")) throw new Error(`legacy page missing noindex: ${robots}`);
+    return true;
+  }' >/dev/null
+}
+
+assert_root_seo
+assert_legacy_deprecated "/history/"
+assert_legacy_deprecated "/writing/"
+assert_legacy_deprecated "/interviews/"
+assert_legacy_deprecated "/videos/"
 
 # Resume must always render correctly with expected identity markers.
 $PWCLI goto "${BASE_URL}/" >/dev/null
