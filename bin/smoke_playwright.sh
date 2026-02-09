@@ -13,7 +13,8 @@ fi
 
 PORT="${PORT:-4173}"
 BASE_URL="http://127.0.0.1:${PORT}"
-SESSION="ci-seo-smoke"
+SESSION_BASE="${GITHUB_RUN_ID:-$$}"
+SESSION="ci-seo-smoke-${SESSION_BASE}"
 PWCLI="npx --yes --package @playwright/cli playwright-cli --session ${SESSION}"
 
 python3 -m http.server "$PORT" --directory _site >/tmp/playwright-smoke-server.log 2>&1 &
