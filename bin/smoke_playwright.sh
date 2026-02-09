@@ -47,11 +47,27 @@ assert_route() {
   }' >/dev/null
 }
 
-assert_route "/"
-assert_route "/history/"
-assert_route "/writing/"
-assert_route "/interviews/"
-assert_route "/videos/"
+published_routes="$(ruby -rrexml/document -e '
+  doc = REXML::Document.new(File.read("_site/sitemap.xml"))
+  routes = []
+  doc.elements.each("urlset/url/loc") do |loc|
+    path = loc.text.to_s.sub(%r{\Ahttps?://[^/]+}, "")
+    path = "/" if path.empty?
+    path = "#{path}/" unless path.end_with?("/")
+    routes << path
+  end
+  puts routes.uniq.sort
+')"
+
+if [ -z "$published_routes" ]; then
+  echo "No published routes discovered from _site/sitemap.xml" >&2
+  exit 1
+fi
+
+echo "$published_routes" | while IFS= read -r route; do
+  [ -z "$route" ] && continue
+  assert_route "$route"
+done
 
 assert_root_seo() {
   $PWCLI goto "${BASE_URL}/" >/dev/null
@@ -64,25 +80,7 @@ assert_root_seo() {
   }' >/dev/null
 }
 
-assert_legacy_redirects_to_resume() {
-  route="$1"
-  $PWCLI goto "${BASE_URL}${route}" >/dev/null
-  $PWCLI eval '() => {
-    const path = window.location.pathname;
-    if (path !== "/") throw new Error(`legacy route did not redirect to resume: ${path}`);
-    const canonical = document.querySelector("link[rel=\"canonical\"]")?.getAttribute("href");
-    if (canonical !== "https://www.just3ws.com/") throw new Error(`unexpected canonical after redirect: ${canonical}`);
-    const robots = (document.querySelector("meta[name=\"robots\"]")?.getAttribute("content") || "").toLowerCase();
-    if (!robots.includes("index") || robots.includes("noindex")) throw new Error(`unexpected robots after redirect: ${robots}`);
-    return true;
-  }' >/dev/null
-}
-
 assert_root_seo
-assert_legacy_redirects_to_resume "/history/"
-assert_legacy_redirects_to_resume "/writing/"
-assert_legacy_redirects_to_resume "/interviews/"
-assert_legacy_redirects_to_resume "/videos/"
 
 # Resume must always render correctly with expected identity markers.
 $PWCLI goto "${BASE_URL}/" >/dev/null

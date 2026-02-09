@@ -76,6 +76,10 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - CI now emits a machine-readable SEO metadata JSON report and uploads it as a workflow artifact.
   - Build now enforces a configurable sitemap URL budget (`SITEMAP_MAX_URLS`, default `600`) as a hard gate.
   - Commits: `4e04d11c`, `this changeset`.
+- 2026-02-09: Legacy-path maintenance pruning.
+  - Removed layout-level legacy redirect mechanics and shifted smoke checks to sitemap-discovered published routes.
+  - CI resume guardrails now focus on canonical resume artifacts (`/`, `resume.txt`, `resume.md`) without hardcoded legacy path dependency.
+  - Commits: `5c62650d`, `this changeset`.
 
 ## Critical Constraint
 
@@ -200,4 +204,4 @@ This task list is prioritized to protect pipeline correctness first, then data i
 7. When resume-only mode remains active, move legacy routes from soft deprecation (`200 + noindex`) to explicit deprecation (`301` to `/` or `410`) to reduce crawl waste and strengthen canonical clarity.
 8. Keep the sitemap URL budget gate active in CI (`SITEMAP_MAX_URLS`) and ratchet it down as legacy surface area is retired.
 9. Add a small SEO artifact in CI (e.g., JSON summary from validators) and upload it for trend tracking across commits.
-10. If true HTTP status redirects are required (instead of HTML/JS redirects), add an edge/CDN redirect layer in front of GitHub Pages for `/history/*`, `/writing/*`, `/interviews/*`, and `/videos/*`.
+10. Keep smoke and release checks driven by currently published sitemap routes rather than hardcoded historical paths.

@@ -69,7 +69,6 @@ require_contains() {
 
 # Resume is the highest-priority surface; fail fast on any rendering regression.
 require_file "_site/index.html"
-require_file "_site/history/index.html"
 require_file "_site/resume.txt"
 require_file "_site/resume.md"
 require_contains "_site/index.html" "Mike Hall"
