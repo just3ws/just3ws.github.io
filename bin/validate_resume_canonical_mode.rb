@@ -3,6 +3,8 @@
 ROOT = File.expand_path('..', __dir__)
 SITE_DIR = File.join(ROOT, '_site')
 CANONICAL_ROOT = 'https://www.just3ws.com/'
+CANONICAL_HOME = 'https://www.just3ws.com/home/'
+CANONICAL_HOST = 'https://www.just3ws.com'
 
 def read(path)
   File.read(path)
@@ -29,8 +31,12 @@ Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
 
   if canonical.empty?
     errors << "#{relative} missing canonical tag"
-  elsif canonical != CANONICAL_ROOT
-    errors << "#{relative} canonical must be #{CANONICAL_ROOT}, found #{canonical}"
+  elsif !canonical.start_with?(CANONICAL_HOST)
+    errors << "#{relative} canonical must stay on #{CANONICAL_HOST}, found #{canonical}"
+  elsif relative == 'index.html' && canonical != CANONICAL_ROOT
+    errors << "index.html canonical must be #{CANONICAL_ROOT}, found #{canonical}"
+  elsif relative == 'home/index.html' && canonical != CANONICAL_HOME
+    errors << "home/index.html canonical must be #{CANONICAL_HOME}, found #{canonical}"
   end
 
   if robots.include?('index') && !robots.include?('noindex')
