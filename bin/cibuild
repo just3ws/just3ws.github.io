@@ -78,7 +78,7 @@ require_contains "_site/index.html" "Staff Software Engineer"
 # Catch sitemap regressions (e.g. partial/manual sitemap output replacing full index).
 require_file "_site/sitemap.xml"
 sitemap_url_count="$(grep -c "<url>" _site/sitemap.xml)"
-sitemap_max_urls="${SITEMAP_MAX_URLS:-300}"
+sitemap_max_urls="${SITEMAP_MAX_URLS:-100}"
 if [ "$sitemap_url_count" -lt 1 ]; then
   echo "Sitemap regression: expected at least 1 URL, found $sitemap_url_count" >&2
   exit 1
