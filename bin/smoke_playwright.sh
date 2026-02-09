@@ -21,11 +21,9 @@ SERVER_PID="$!"
 cleanup() {
   $PWCLI close >/dev/null 2>&1 || true
   kill "$SERVER_PID" >/dev/null 2>&1 || true
+  rm -rf .playwright-cli
 }
 trap cleanup EXIT
-
-# Ensure browser runtime exists in CI.
-npx --yes --package @playwright/cli playwright-cli install-browser chromium >/dev/null
 
 $PWCLI open "${BASE_URL}/" >/dev/null
 
@@ -55,4 +53,3 @@ $PWCLI eval '() => {
   if (!text.includes("Staff Software Engineer")) throw new Error("resume missing role");
   return true;
 }' >/dev/null
-
