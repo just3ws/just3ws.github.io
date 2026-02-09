@@ -50,6 +50,7 @@ assets.each do |asset|
     f.puts 'layout: minimal'
     f.puts "title: #{yaml_quote(title_meta)}"
     f.puts "description: #{yaml_quote(description_meta)}"
+    f.puts "sitemap: false"
     f.puts "breadcrumb: #{yaml_quote(title)}"
     f.puts 'breadcrumb_parent_name: Videos'
     f.puts 'breadcrumb_parent_url: /videos/'

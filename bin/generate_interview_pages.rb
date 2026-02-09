@@ -51,6 +51,7 @@ interviews.each do |interview|
     f.puts 'layout: minimal'
     f.puts "title: #{yaml_quote(title_meta)}"
     f.puts "description: #{yaml_quote(description_meta)}"
+    f.puts "sitemap: false"
     f.puts "breadcrumb: #{yaml_quote(interview['title'])}"
     f.puts 'breadcrumb_parent_name: Interviews'
     f.puts 'breadcrumb_parent_url: /interviews/'
