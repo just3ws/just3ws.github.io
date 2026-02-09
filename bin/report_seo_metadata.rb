@@ -11,6 +11,7 @@ records = []
 Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative.start_with?('AGENTS.')
+  next if relative == 'AGENTS.html'
 
   html = File.read(path)
   title = html[title_re, 1]&.strip

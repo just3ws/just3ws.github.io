@@ -19,11 +19,20 @@ plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-seo-tag
-  - jekyll-sitemap
 
 sass:
   sass_dir: _sass
   style: compressed
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      sitemap: false
+  - scope:
+      path: "index.html"
+    values:
+      sitemap: true
 
 exclude:
   # Ruby / build tooling
