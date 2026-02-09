@@ -109,7 +109,7 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Priority: P0
 - Goal: Emit canonical and social metadata consistently without visual changes.
 - Tasks:
-  - Add `{% seo %}` to shared layout head path.
+  - Add `{% raw %}{% seo %}{% endraw %}` to shared layout head path.
   - Keep existing custom fields only where needed and non-conflicting.
 - Acceptance criteria:
   - Canonical present on indexable pages.
