@@ -90,8 +90,8 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - Commit: `311e44b1`.
 - 2026-02-09: Semantic/a11y quality gates expanded.
   - Smoke checks now enforce semantic landmarks and structured-data contracts for `/` and `/home/`.
-  - Build pipeline now validates semantic output for all built HTML plus required `Person`/`VideoObject`/`Article` JSON-LD coverage.
-  - Commits: `86356c9d`, `this changeset`.
+  - Build pipeline now validates semantic output for all built HTML plus required `Person`/`VideoObject`/`Article` JSON-LD coverage and required schema fields.
+  - Commits: `86356c9d`, `23722a79`, `5153ffca`.
 
 ## Retrospective (2026-02-09)
 
@@ -219,8 +219,9 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Tasks:
   - Keep `Person` schema on resume-oriented pages.
   - Emit `Article` for writing posts and `VideoObject` for video asset pages.
+  - Enforce required schema fields for each type during CI validation.
 - Acceptance criteria:
-  - Structured data type matches page intent for sampled critical routes.
+  - Structured data type and required fields match page intent across generated output.
 
 ### P3-04 Metadata length and duplication budgets
 - Priority: P2
@@ -235,6 +236,6 @@ This task list is prioritized to protect pipeline correctness first, then data i
 
 1. Keep plan text synchronized with implementation after every policy change (same commit series).
 2. Preserve sitemap-driven smoke scope and avoid reintroducing hardcoded path lists.
-3. Add a small CI assertion for `/home/` canonical URL to make homepage semantics explicit in smoke checks.
-4. Keep `SITEMAP_MAX_URLS` at `100` unless intentional publication-scope expansion is approved.
-5. If publication model changes again, define canonical and robots policy first, then implement validation.
+3. Keep `SITEMAP_MAX_URLS` at `100` unless intentional publication-scope expansion is approved.
+4. If publication model changes again, define canonical and robots policy first, then implement validation.
+5. Keep JSON-LD required-field rules in lockstep with template/schema changes to avoid drift.
