@@ -74,3 +74,17 @@ bundle install
 ```
 
 Pipeline grammar reference: `/docs/pipeline-grammar/`
+
+## Analytics Events (GoatCounter)
+
+GoatCounter page analytics are loaded globally in the `minimal` layout. Custom events are tracked via `assets/js/goatcounter-events.js` for:
+
+- `mailto:` link clicks
+- `tel:` link clicks
+- Resume/file download-style links
+- Outbound link clicks (including video hosts like YouTube/Vimeo)
+
+Missed path tracking is captured in `404.html` as an event:
+
+- `path`: `/event/missed-path`
+- `title`: requested URL path + query string

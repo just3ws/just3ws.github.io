@@ -1,0 +1,58 @@
+---
+layout: minimal
+title: "Page not found"
+description: "The page you requested could not be found."
+robots: noindex,nofollow
+---
+<section>
+  <h1>Page not found</h1>
+  <p>The URL you requested does not exist.</p>
+  <p><a href="/">Go to the homepage</a></p>
+</section>
+<script>
+(function () {
+  var missedPath = window.location.pathname + window.location.search;
+  var dedupeKey = 'gc-missed-path:' + missedPath;
+
+  try {
+    if (window.sessionStorage && window.sessionStorage.getItem(dedupeKey)) {
+      return;
+    }
+  } catch (error) {
+    // Ignore storage access issues and continue.
+  }
+
+  function withGoatCounter(callback, attempts) {
+    var retries = typeof attempts === 'number' ? attempts : 20;
+
+    if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+      callback();
+      return;
+    }
+
+    if (retries <= 0) {
+      return;
+    }
+
+    window.setTimeout(function () {
+      withGoatCounter(callback, retries - 1);
+    }, 250);
+  }
+
+  withGoatCounter(function () {
+    window.goatcounter.count({
+      path: '/event/missed-path',
+      title: missedPath,
+      event: true,
+    });
+
+    try {
+      if (window.sessionStorage) {
+        window.sessionStorage.setItem(dedupeKey, '1');
+      }
+    } catch (error) {
+      // Ignore storage access issues.
+    }
+  });
+})();
+</script>
