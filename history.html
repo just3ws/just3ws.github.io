@@ -13,14 +13,14 @@ person_schema: true
 </nav>
 
 {% assign profile = site.data.resume.profile %}
-<article itemscope itemtype="https://schema.org/Person">
+<article>
   <header class="resume-header">
-    <h1 itemprop="name">{{ profile.name }}</h1>
+    <h1>{{ profile.name }}</h1>
     <p class="title">{{ profile.title }}</p>
     <ul class="contact-info">
-      <li><a href="mailto:{{ profile.contact.email }}" itemprop="email">{{ profile.contact.email }}</a></li>
-      <li><a href="tel:{{ profile.contact.phone_tel }}" itemprop="telephone">{{ profile.contact.phone }}</a></li>
-      <li><a href="{{ profile.contact.website.url }}" itemprop="url">{{ profile.contact.website.display }}</a></li>
+      <li><a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a></li>
+      <li><a href="tel:{{ profile.contact.phone_tel }}">{{ profile.contact.phone }}</a></li>
+      <li><a href="{{ profile.contact.website.url }}">{{ profile.contact.website.display }}</a></li>
       <li>
         <a href="{{ profile.contact.linkedin.url }}">
           <span class="icon" aria-hidden="true">
@@ -49,21 +49,21 @@ person_schema: true
     {% for item in site.data.resume.timeline.history %}
     {% assign position = site.data.resume.positions[item] %}
     {% if position %}
-    <article class="position" itemprop="workExperience" itemscope itemtype="https://schema.org/OrganizationRole">
+    <article class="position">
       <header class="position-header">
         <h3 class="position-title">
-          <span itemprop="roleName">{{ position.title }}</span>
-          <span class="position-company" itemprop="memberOf" itemscope itemtype="https://schema.org/Organization">
-            — <span itemprop="name">{{ position.company.name }}</span>
+          <span>{{ position.title }}</span>
+          <span class="position-company">
+            — <span>{{ position.company.name }}</span>
           </span>
         </h3>
         <p class="position-meta">
         <span class="position-dates">
-          <time itemprop="startDate">{{ position.start_date }}</time> –
-          <time itemprop="endDate">{{ position.end_date | default: "Present" }}</time>
+          <time>{{ position.start_date }}</time> –
+          <time>{{ position.end_date | default: "Present" }}</time>
         </span>
         {% if position.company.location %}
-        | <span itemprop="location">{{ position.company.location }}</span>
+        | <span>{{ position.company.location }}</span>
         {% endif %}
         </p>
       </header>

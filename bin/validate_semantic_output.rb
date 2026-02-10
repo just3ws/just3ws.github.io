@@ -18,6 +18,16 @@ PLACEHOLDER_VALUES = [
   'lorem ipsum',
   'coming soon'
 ].freeze
+DISALLOWED_SCHEMA_MARKERS = [
+  'itemprop="workExperience"',
+  "itemprop='workExperience'",
+  'itemprop="memberOf"',
+  "itemprop='memberOf'",
+  'itemprop="location"',
+  "itemprop='location'",
+  'itemtype="https://schema.org/OrganizationRole"',
+  "itemtype='https://schema.org/OrganizationRole'"
+].freeze
 
 def read(path)
   File.read(path)
@@ -157,6 +167,10 @@ all_html_paths.each do |path|
   html = read(path)
   checked += 1
   coverage[:html_pages_checked] += 1
+
+  DISALLOWED_SCHEMA_MARKERS.each do |marker|
+    errors << "#{relative} contains disallowed schema marker: #{marker}" if html.include?(marker)
+  end
 
   errors << "#{relative} missing html[lang]" unless html.match?(/<html[^>]+lang=["'][^"']+["']/i)
   errors << "#{relative} missing skip-link" unless html.match?(/<a[^>]+class=["'][^"']*\bskip-link\b[^"']*["']/i)

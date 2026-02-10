@@ -7,8 +7,8 @@
   "givenName": "Mike",
   "familyName": "Hall",
   "alternateName": "just3ws",
-  "url": "https://www.just3ws.com",
-  "email": "mike@just3ws.com",
+  "url": "https://www.just3ws.com/",
+  "email": "mailto:mike@just3ws.com",
   "telephone": "+18478773825",
   "jobTitle": "Staff Software Engineer",
   "sameAs": [
@@ -50,13 +50,8 @@
       {% if position.description %}"description": {{ position.description | jsonify }},{% endif %}
       {% if position.skills %}"skills": "{{ position.skills | join: ', ' }}",{% endif %}
       "occupationLocation": {
-        "@type": "City",
+        "@type": "Place",
         "name": "{{ position.company.location | default: 'Remote' }}"
-      },
-      "estimatedSalary": [],
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.just3ws.com/resume-minimal.html"
       }
     }{% unless forloop.last %},{% endunless %}
     {% endif %}
