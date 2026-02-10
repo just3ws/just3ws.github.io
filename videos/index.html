@@ -14,6 +14,6 @@ breadcrumb: Videos
 
   {% assign items = site.data.video_assets.items %}
   {% for asset in items %}
-    {% include video-asset-card.html asset=asset %}
+    {% include_cached video-asset-card.html asset=asset %}
   {% endfor %}
 </article>

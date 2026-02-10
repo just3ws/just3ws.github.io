@@ -15,6 +15,6 @@ breadcrumb: One-offs
   {% assign items = site.data.oneoff_videos.items %}
   {% for item in items %}
     {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}
-    {% include video-asset-card.html asset=asset %}
+    {% include_cached video-asset-card.html asset=asset %}
   {% endfor %}
 </article>

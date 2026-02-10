@@ -7,29 +7,13 @@ ruby '3.4.8'
 gem 'csv'
 
 group :jekyll_plugins do
-  # gem 'github-linguist'
-  gem 'github-pages'
-  gem 'jekyll-sitemap'
-
-  # gem 'jekyll'
-
-  # gem 'jekyll-analytics'
-  # gem 'jekyll-feed'
-  # gem 'jekyll-font-awesome-sass'
-  # gem 'jekyll-github-metadata'
+  gem 'jekyll', '= 3.10.0'
+  gem 'jekyll-feed', '= 0.17.0'
+  gem 'jekyll-include-cache', '= 0.2.1'
   gem 'jekyll-octicons'
-  # gem 'jekyll-optional-front-matter'
-  # gem 'jekyll-redirect-from'
-  # gem 'jekyll-seo'
-  # gem 'jekyll-seo-tag'
-  # gem 'jekyll-sitemap'
-  # gem 'jekyll-timeago'
-  # gem 'jekyll-titles-from-headings'
-  # gem 'jekyll-youtube'
-
-  # gem 'mercenary'
-  # gem 'nokogiri'
-  # gem 'terminal-table'
+  gem 'jekyll-redirect-from', '= 0.16.0'
+  gem 'jekyll-seo-tag', '= 2.8.0'
+  gem 'jekyll-sitemap', '= 1.4.0'
 end
 
 group :development do
