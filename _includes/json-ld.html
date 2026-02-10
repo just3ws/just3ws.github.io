@@ -50,7 +50,7 @@
       {% if position.description %}"description": {{ position.description | jsonify }},{% endif %}
       {% if position.skills %}"skills": "{{ position.skills | join: ', ' }}",{% endif %}
       "occupationLocation": {
-        "@type": "Place",
+        "@type": "AdministrativeArea",
         "name": "{{ position.company.location | default: 'Remote' }}"
       }
     }{% unless forloop.last %},{% endunless %}

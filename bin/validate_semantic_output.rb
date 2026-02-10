@@ -204,6 +204,21 @@ validate_json_ld_type(
   context: 'index.html',
   errors: errors
 )
+index_person_nodes.each_with_index do |person_node, person_index|
+  occupations = person_node['hasOccupation']
+  next unless occupations.is_a?(Array)
+
+  occupations.each_with_index do |occupation_node, occupation_index|
+    next unless occupation_node.is_a?(Hash)
+
+    occupation_location = occupation_node['occupationLocation']
+    next unless occupation_location
+
+    unless occupation_location.is_a?(Hash) && occupation_location['@type'] == 'AdministrativeArea'
+      errors << "index.html Person JSON-LD ##{person_index + 1} hasOccupation ##{occupation_index + 1} occupationLocation.@type must be AdministrativeArea"
+    end
+  end
+end
 coverage[:route_contracts]['/'] = {
   person_json_ld_count: index_person_nodes.size,
   person_required_fields_present: !index_person_nodes.empty? && %w[name url jobTitle].all? { |key| field_present?(index_person_nodes.first, key) },
