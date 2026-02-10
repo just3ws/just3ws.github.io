@@ -35,13 +35,6 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
   - `bin/pipeline smoke` (browser smoke checks)
   - `bin/validate_data_uniqueness.rb` + `bin/validate_data_integrity.rb`
   - `bin/validate_last_modified_output.rb`
-  - `bin/cibuild` (compatibility wrapper)
-
-Legacy wrapper scripts retained for compatibility:
-- `bin/build_interviews.rb` -> `bin/sync_interview_asset_links.rb`
-- `bin/generate_interview_group_pages.rb` -> `bin/generate_interview_taxonomy_pages.rb`
-- `bin/validate_data_dedupe.rb` -> `bin/validate_data_uniqueness.rb`
-- `bin/validate_data_required_fields.rb` -> `bin/validate_data_integrity.rb`
 
 ## Contact
 

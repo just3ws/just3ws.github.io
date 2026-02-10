@@ -57,7 +57,6 @@ Grammar:
 
 ## Notes
 
-- `bin/cibuild` is a compatibility wrapper that delegates to `./bin/pipeline ci`.
 - In CI, the workflow runs:
   - `./bin/pipeline ci`
   - `./bin/pipeline smoke`
@@ -82,8 +81,3 @@ Grammar:
   - `bin/validate_resume_canonical_mode.rb`
   - `bin/validate_semantic_output.rb`
   - `bin/report_seo_metadata.rb`
-- Compatibility wrappers:
-  - `bin/build_interviews.rb`
-  - `bin/generate_interview_group_pages.rb`
-  - `bin/validate_data_dedupe.rb`
-  - `bin/validate_data_required_fields.rb`

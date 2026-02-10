@@ -32,6 +32,9 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - `validate_data_dedupe.rb` -> `validate_data_uniqueness.rb`
   - `validate_data_required_fields.rb` -> `validate_data_integrity.rb`
   - `bin/pipeline` now calls normalized names; legacy script names remain as deprecation wrappers.
+- 2026-02-10: Deprecated compatibility wrappers removed.
+  - Removed: `bin/build_interviews.rb`, `bin/generate_interview_group_pages.rb`, `bin/validate_data_dedupe.rb`, `bin/validate_data_required_fields.rb`, `bin/cibuild`.
+  - Canonical entrypoint is now `bin/pipeline`.
 - 2026-02-09: `P1-01` implemented.
   - Runtime parity checks added to `bin/cibuild` (Ruby + Bundler).
   - Commit: `756f258`, follow-up parser fix `959d6ef`.
