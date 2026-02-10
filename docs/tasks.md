@@ -116,6 +116,38 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Stop hardcoding legacy route behavior into validation logic.
 - Stop allowing task-plan text to lag behind implemented behavior.
 
+## Retrospective (2026-02-10)
+
+### Context Since Last Retro
+- Scope reviewed: post-retro execution focused on practical path items only: stronger semantic-data enforcement and policy-text alignment.
+- Commits in interval: `5153ffca` (required JSON-LD field validation), `dc4799f0` (tasks/policy alignment updates).
+- CI outcomes in interval: `Build and Validate Site` passed (`21845300030`), GitHub Pages deploy passed (`21845299805`).
+
+### Sequential Review Against 2026-02-09 Actions
+1. Keep changes small, isolated, and commit-scoped with immediate CI validation.
+   - Status: upheld.
+   - Evidence: two narrowly scoped commits, each validated with full `./bin/cibuild` and remote CI.
+2. Keep checks derived from published state (sitemap-driven) rather than hardcoded historical route lists.
+   - Status: upheld.
+   - Evidence: no reintroduction of hardcoded legacy path assertions; current checks remain sitemap/published-output oriented.
+3. Keep resume reliability as the first-order guardrail in every pipeline change.
+   - Status: upheld.
+   - Evidence: resume guardrails unchanged and continuously exercised in `bin/cibuild` during both interval commits.
+4. Stop encoding architecture assumptions without explicit policy confirmation.
+   - Status: improved.
+   - Evidence: docs alignment commit updated policy text to match implemented root/home semantics rather than inferred alternatives.
+5. Stop hardcoding legacy route behavior into validation logic.
+   - Status: maintained.
+   - Evidence: semantic validator changes were schema-quality focused and did not add legacy-route coupling.
+6. Stop allowing task-plan text to lag behind implemented behavior.
+   - Status: improved.
+   - Evidence: tasks doc now reflects required-field schema enforcement and removes already-completed recommendations.
+
+### Interval Assessment
+- Interval feel: short, high-signal, and stable.
+- Progress quality: strong. Work converted one partially complete task into enforced CI behavior and reduced policy/documentation drift.
+- Remaining pressure points: keep progress-log dates/entries synchronized as work crosses day boundaries, and continue treating docs alignment as same-series work for behavior changes.
+
 ## Critical Constraint
 
 - Root route semantics: `/` is the default root route and resume page; `/home/` is homepage content.
