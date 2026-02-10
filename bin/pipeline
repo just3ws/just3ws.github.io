@@ -6,13 +6,14 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | validate | smoke | ci | help
+  <command> ::= generate | build | validate | smoke | sitemap | ci | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
   build     Run generate and build _site with Jekyll.
   validate  Run data/SEO/semantic/link checks against _site.
   smoke     Run Playwright smoke checks against built _site.
+  sitemap   Print sitemap coverage summary from built _site.
   ci        Run build + validate (CI core pipeline).
   help      Show this help.
 USAGE
@@ -76,7 +77,7 @@ run_validate() {
   ruby ./bin/validate_data_integrity.rb
   ruby ./bin/validate_last_modified_output.rb
   ruby ./bin/validate_seo_output.rb
-  ruby ./bin/validate_resume_canonical_mode.rb
+  ruby ./bin/validate_public_index_mode.rb
   ruby ./bin/validate_semantic_output.rb
   ruby ./bin/report_seo_metadata.rb
 
@@ -112,7 +113,7 @@ run_validate() {
   # Catch sitemap regressions (e.g. partial/manual sitemap output replacing full index).
   require_file "_site/sitemap.xml"
   sitemap_url_count="$(grep -c "<url>" _site/sitemap.xml)"
-  sitemap_max_urls="${SITEMAP_MAX_URLS:-100}"
+  sitemap_max_urls="${SITEMAP_MAX_URLS:-5000}"
   if [ "$sitemap_url_count" -lt 1 ]; then
     echo "Sitemap regression: expected at least 1 URL, found $sitemap_url_count" >&2
     exit 1
@@ -123,7 +124,7 @@ run_validate() {
   fi
   if [ "$sitemap_url_count" -gt "$sitemap_max_urls" ]; then
     echo "Sitemap regression: found $sitemap_url_count URLs, exceeds budget $sitemap_max_urls." >&2
-    echo "Increase SITEMAP_MAX_URLS only when intentional crawl-scope expansion is approved." >&2
+    echo "Increase SITEMAP_MAX_URLS only when intentional publication-scope expansion is approved." >&2
     exit 1
   fi
 }
@@ -134,6 +135,14 @@ run_smoke() {
     exit 1
   fi
   ./bin/smoke_playwright.sh
+}
+
+run_sitemap() {
+  if [ ! -f _site/sitemap.xml ]; then
+    echo "Missing _site/sitemap.xml. Run './bin/pipeline build' first." >&2
+    exit 1
+  fi
+  ruby ./bin/visualize_sitemap.rb
 }
 
 load_env
@@ -151,6 +160,9 @@ case "$command" in
     ;;
   smoke)
     run_smoke
+    ;;
+  sitemap)
+    run_sitemap
     ;;
   ci)
     run_build

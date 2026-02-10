@@ -20,7 +20,7 @@ Use the pipeline entrypoint for all build/validation workflow commands:
 Grammar:
 
 ```ebnf
-<command> ::= generate | build | validate | smoke | ci | help
+<command> ::= generate | build | validate | smoke | sitemap | ci | help
 ```
 
 ## Commands
@@ -33,6 +33,8 @@ Grammar:
   Runs data integrity checks, SEO/canonical checks, semantic/schema checks, HTMLProofer, and resume/sitemap guardrails against `_site`.
 - `smoke`  
   Runs Playwright smoke checks against built `_site`.
+- `sitemap`  
+  Prints a local sitemap coverage summary (counts by section + URL sample).
 - `ci`  
   Full CI core pipeline (`build` + `validate`).
 - `help`  
@@ -47,6 +49,9 @@ Grammar:
 # CI + browser smoke checks
 ./bin/pipeline ci
 ./bin/pipeline smoke
+
+# Visualize sitemap coverage after a build
+./bin/pipeline sitemap
 
 # Build only (useful when iterating on templates/content)
 ./bin/pipeline build
@@ -78,6 +83,7 @@ Grammar:
   - `bin/validate_data_integrity.rb`
   - `bin/validate_last_modified_output.rb`
   - `bin/validate_seo_output.rb`
-  - `bin/validate_resume_canonical_mode.rb`
+  - `bin/validate_public_index_mode.rb`
   - `bin/validate_semantic_output.rb`
   - `bin/report_seo_metadata.rb`
+  - `bin/visualize_sitemap.rb`

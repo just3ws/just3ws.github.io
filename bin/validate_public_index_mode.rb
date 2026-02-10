@@ -6,16 +6,21 @@ CANONICAL_ROOT = 'https://www.just3ws.com/'
 CANONICAL_HOME = 'https://www.just3ws.com/home/'
 CANONICAL_HOST = 'https://www.just3ws.com'
 
+
 def read(path)
   File.read(path)
 end
 
 def robots_content(html)
-  html[/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i, 1]
+  html[/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i, 1].to_s.downcase
 end
 
 def canonical_href(html)
-  html[/<link[^>]+rel=["']canonical["'][^>]*href=["']([^"']+)["']/i, 1]
+  html[/<link[^>]+rel=["']canonical["'][^>]*href=["']([^"']+)["']/i, 1].to_s
+end
+
+def indexable?(robots)
+  robots.include?('index') && !robots.include?('noindex')
 end
 
 errors = []
@@ -26,8 +31,8 @@ Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
   next if relative.start_with?('AGENTS.')
 
   html = read(path)
-  robots = robots_content(html).to_s.downcase
-  canonical = canonical_href(html).to_s
+  robots = robots_content(html)
+  canonical = canonical_href(html)
 
   if canonical.empty?
     errors << "#{relative} missing canonical tag"
@@ -39,20 +44,26 @@ Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
     errors << "home/index.html canonical must be #{CANONICAL_HOME}, found #{canonical}"
   end
 
-  if robots.include?('index') && !robots.include?('noindex')
-    indexable << relative
-  end
+  indexable << relative if indexable?(robots)
 end
 
-if indexable != ['index.html']
-  errors << "resume-canonical violation: expected only index.html to be indexable, found #{indexable.sort.join(', ')}"
+unless indexable.include?('index.html')
+  errors << 'public-index violation: index.html must be indexable'
+end
+
+unless indexable.include?('home/index.html')
+  errors << 'public-index violation: home/index.html must be indexable'
+end
+
+if indexable.empty?
+  errors << 'public-index violation: expected at least one indexable page'
 end
 
 if errors.empty?
-  puts 'Resume canonical mode validation passed.'
+  puts "Public index mode validation passed (indexable=#{indexable.size})."
   exit 0
 end
 
-warn 'Resume canonical mode validation failed:'
+warn 'Public index mode validation failed:'
 errors.each { |error| warn "  - #{error}" }
 exit 1

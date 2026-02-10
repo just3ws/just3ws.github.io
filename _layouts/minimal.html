@@ -7,14 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% assign seo_title = page.title | default: "Mike Hall" %}
   {% assign seo_description = page.description | default: "Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems." %}
-  {% assign canonical_url = page.canonical_url | default: "https://www.just3ws.com/" %}
+  {% assign canonical_url = page.canonical_url | default: page.url | absolute_url %}
   {% assign robots_directive = page.robots %}
   {% if robots_directive == nil or robots_directive == "" %}
-    {% if page.resume_canonical %}
-      {% assign robots_directive = "index,follow" %}
-    {% else %}
-      {% assign robots_directive = "noindex,nofollow" %}
-    {% endif %}
+    {% assign robots_directive = "index,follow" %}
   {% endif %}
   <title>{{ seo_title }}</title>
   <meta name="description" content="{{ seo_description }}">

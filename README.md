@@ -66,6 +66,9 @@ bundle install
 
 # Run smoke tests against built output
 ./bin/pipeline smoke
+
+# Print sitemap coverage summary
+./bin/pipeline sitemap
 ```
 
 Pipeline grammar reference: `/docs/pipeline-grammar/`

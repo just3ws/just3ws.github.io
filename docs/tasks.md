@@ -70,7 +70,7 @@ This task list is prioritized to protect pipeline correctness first, then data i
 
 1. Keep plan text synchronized with implementation in the same commit series.
 2. Preserve sitemap-driven smoke scope and avoid reintroducing hardcoded route lists.
-3. Keep `SITEMAP_MAX_URLS=100` unless explicit publication-scope expansion is approved.
+3. Keep `SITEMAP_MAX_URLS=5000` unless explicit publication-scope expansion is approved.
 4. If publication model changes, define canonical/robots policy first, then implement validation.
 5. Keep JSON-LD required-field rules in lockstep with template/schema changes.
 

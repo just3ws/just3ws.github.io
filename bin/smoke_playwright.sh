@@ -86,7 +86,7 @@ assert_home_seo() {
     const canonical = document.querySelector("link[rel=\"canonical\"]")?.getAttribute("href");
     if (canonical !== "https://www.just3ws.com/home/") throw new Error(`unexpected home canonical: ${canonical}`);
     const robots = (document.querySelector("meta[name=\"robots\"]")?.getAttribute("content") || "").toLowerCase();
-    if (!robots.includes("noindex")) throw new Error(`unexpected home robots: ${robots}`);
+    if (!robots.includes("index") || robots.includes("noindex")) throw new Error(`unexpected home robots: ${robots}`);
     return true;
   }' >/dev/null
 }

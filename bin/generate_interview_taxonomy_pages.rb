@@ -23,7 +23,6 @@ def write_index(path, title, intro, items, link_prefix, count_label, parent_name
     f.puts "layout: minimal"
     f.puts "title: #{yaml_quote(title)}"
     f.puts "description: #{yaml_quote(intro)}"
-    f.puts "sitemap: false"
     f.puts "breadcrumb: #{yaml_quote(title)}"
     if grandparent_name && grandparent_url
       f.puts "breadcrumb_grandparent_name: #{yaml_quote(grandparent_name)}"
@@ -66,7 +65,6 @@ def write_detail(path, title, intro, filter_field, filter_value, year, parent_na
     f.puts "layout: minimal"
     f.puts "title: #{yaml_quote(title)}"
     f.puts "description: #{yaml_quote(intro)}"
-    f.puts "sitemap: false"
     f.puts "breadcrumb: #{yaml_quote(title)}"
     if grandparent_name && grandparent_url
       f.puts "breadcrumb_grandparent_name: #{yaml_quote(grandparent_name)}"
