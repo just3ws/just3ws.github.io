@@ -48,9 +48,11 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 
 ## Community
 
-### Past Community Involvement
+### Past Community Involvement (WaybackMachine)
 
 - [Chicago Code Camp (2010-2012)](https://web.archive.org/web/20121228074319/https://chicagocodecamp.com:80/)
+- [UGtastic](https://web.archive.org/web/20120414040704/https://www.ugtastic.com/)
+- [UGl.st](https://web.archive.org/web/20140111160057/http://ugl.st/)
 
 ## Development
 
