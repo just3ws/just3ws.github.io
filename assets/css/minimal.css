@@ -488,8 +488,21 @@ section {
   margin-top: 0;
 }
 
+.home-header {
+  margin-bottom: 1.25rem;
+}
+
 .home-intro {
   color: var(--muted);
+}
+
+.home-intro code {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  padding: 0.1rem 0.4rem;
+  color: var(--accent);
+  font-size: 0.9em;
 }
 
 .home-purpose {
@@ -498,6 +511,7 @@ section {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(46, 52, 64, 0.06);
 }
 
 .home-purpose p {
@@ -508,6 +522,11 @@ section {
   display: grid;
   gap: 1.5rem;
   margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: linear-gradient(145deg, #f6f8fb, #eaf0f7);
+  box-shadow: 0 12px 24px rgba(46, 52, 64, 0.08);
 }
 
 .home-hero-media img {
@@ -531,6 +550,34 @@ section {
 .home-resume-note {
   color: var(--meta);
   font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.home-quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.75rem;
+}
+
+.home-quicknav a {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.home-quicknav a:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(136, 192, 208, 0.2);
+  transform: translateY(-1px);
 }
 
 .home-link-grid {
@@ -543,6 +590,14 @@ section {
   border: 1px solid var(--border);
   border-radius: 0.5rem;
   background: var(--surface);
+  box-shadow: 0 8px 18px rgba(46, 52, 64, 0.05);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.home-link-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--nord8);
+  box-shadow: 0 14px 26px rgba(46, 52, 64, 0.09);
 }
 
 .home-link-card h3 {
@@ -573,15 +628,6 @@ section {
     grid-template-columns: 1fr 1fr;
     align-items: start;
   }
-}
-
-.home-list {
-  list-style: none;
-  padding: 0;
-}
-
-.home-list li {
-  margin-bottom: 0.5rem;
 }
 
 .resume-actions button,
