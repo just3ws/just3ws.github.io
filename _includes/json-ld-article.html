@@ -1,3 +1,9 @@
+{% assign modified_items = site.data.last_modified.items | default: site.data.last_modified %}
+{% assign modified_from_build = nil %}
+{% if modified_items %}
+  {% assign modified_from_build = modified_items[page.path] | default: modified_items[page.relative_path] %}
+{% endif %}
+{% assign modified_value = modified_from_build | default: page.last_modified_at | default: page.date %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -13,7 +19,7 @@
     "name": "Mike Hall"
   },
   "datePublished": "{{ page.date | date_to_xmlschema }}",
-  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "dateModified": "{{ modified_value | date_to_xmlschema }}",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://www.just3ws.com{{ page.url }}"

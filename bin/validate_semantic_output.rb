@@ -231,7 +231,7 @@ Dir.glob(File.join(SITE_DIR, '[0-9][0-9][0-9][0-9]', '**', '*.html')).sort.each 
   validate_json_ld_type(
     nodes: nodes,
     expected_type: 'Article',
-    required_fields: ['headline', 'datePublished', 'mainEntityOfPage.@id'],
+    required_fields: ['headline', 'datePublished', 'dateModified', 'mainEntityOfPage.@id'],
     context: relative,
     errors: errors
   )
