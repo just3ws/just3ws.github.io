@@ -15,6 +15,23 @@ This task list is prioritized to protect pipeline correctness first, then data i
 
 ## Progress Log
 
+- 2026-02-10: Pure Jekyll runtime migration implemented (core).
+  - Removed `github-pages` gem and pinned explicit Jekyll/plugin gems in `Gemfile`.
+  - Added explicit `jekyll-sitemap` plugin registration in `_config.yml`.
+  - Lockfile refreshed with local dependency resolution (`bundle lock --local`) due network-restricted environment.
+- 2026-02-10: Experimental build-time last-modified path implemented.
+  - Added `bin/generate_last_modified.rb` (initially behind `EXPERIMENT_LAST_MODIFIED=1` feature flag).
+  - Wired generation into `bin/pipeline build` before Jekyll render.
+  - `Article` JSON-LD now consumes generated metadata with safe fallback to existing values.
+- 2026-02-10: Build-time last-modified graduated from experimental to standard pipeline behavior.
+  - Removed feature flag; metadata now generated on every build.
+  - Added `bin/validate_last_modified_output.rb` to verify post coverage and rendered `dateModified` parity across built article pages.
+- 2026-02-10: Bin tool naming normalized with compatibility wrappers.
+  - `build_interviews.rb` -> `sync_interview_asset_links.rb`
+  - `generate_interview_group_pages.rb` -> `generate_interview_taxonomy_pages.rb`
+  - `validate_data_dedupe.rb` -> `validate_data_uniqueness.rb`
+  - `validate_data_required_fields.rb` -> `validate_data_integrity.rb`
+  - `bin/pipeline` now calls normalized names; legacy script names remain as deprecation wrappers.
 - 2026-02-09: `P1-01` implemented.
   - Runtime parity checks added to `bin/cibuild` (Ruby + Bundler).
   - Commit: `756f258`, follow-up parser fix `959d6ef`.
@@ -153,6 +170,17 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Interval feel: short, high-signal, and stable.
 - Progress quality: strong. Work converted one partially complete task into enforced CI behavior and reduced policy/documentation drift.
 - Remaining pressure points: keep progress-log dates/entries synchronized as work crosses day boundaries, and continue treating docs alignment as same-series work for behavior changes.
+
+## Retrospective Protocol
+
+- Use the standard retrospective format in `docs/retrospectives/index.md` for every meaningful implementation cycle.
+- Ensure each retrospective includes:
+  - what worked
+  - what did not work
+  - what went well
+  - what could be better
+  - explicit process improvements with owners, checkpoints, and validation methods
+- In the following retrospective, review prior improvements with status (`upheld`, `improved`, `maintained`, `regressed`, `dropped`) and evidence.
 
 ## Critical Constraint
 
