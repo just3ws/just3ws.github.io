@@ -65,3 +65,25 @@ Grammar:
 - Build-time last-modified metadata:
   - `./bin/pipeline build` and `./bin/pipeline ci` generate git-based post last-modified values into `_data/last_modified.yml`.
   - Validation ensures each built article page exposes `dateModified` and matches generated values.
+
+## Canonical Script Names
+
+- Generators:
+  - `bin/sync_interview_asset_links.rb`
+  - `bin/generate_interview_pages.rb`
+  - `bin/generate_video_asset_pages.rb`
+  - `bin/generate_interview_taxonomy_pages.rb`
+  - `bin/generate_last_modified.rb`
+- Validators/reports:
+  - `bin/validate_data_uniqueness.rb`
+  - `bin/validate_data_integrity.rb`
+  - `bin/validate_last_modified_output.rb`
+  - `bin/validate_seo_output.rb`
+  - `bin/validate_resume_canonical_mode.rb`
+  - `bin/validate_semantic_output.rb`
+  - `bin/report_seo_metadata.rb`
+- Compatibility wrappers:
+  - `bin/build_interviews.rb`
+  - `bin/generate_interview_group_pages.rb`
+  - `bin/validate_data_dedupe.rb`
+  - `bin/validate_data_required_fields.rb`
