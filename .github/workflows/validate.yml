@@ -29,3 +29,10 @@ jobs:
           name: seo-metadata-report
           path: tmp/seo-metadata-report.json
           if-no-files-found: error
+      - name: Upload schema coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-coverage-report
+          path: tmp/schema-coverage-report.json
+          if-no-files-found: error
