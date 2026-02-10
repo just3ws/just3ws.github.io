@@ -1,0 +1,167 @@
+#!/usr/bin/env sh
+set -eu
+
+usage() {
+  cat <<'USAGE'
+Usage: ./bin/pipeline <command>
+
+Command grammar:
+  <command> ::= generate | build | validate | smoke | ci | help
+
+Commands:
+  generate  Regenerate data-driven interview/video pages.
+  build     Run generate and build _site with Jekyll.
+  validate  Run data/SEO/semantic/link checks against _site.
+  smoke     Run Playwright smoke checks against built _site.
+  ci        Run build + validate (CI core pipeline).
+  help      Show this help.
+USAGE
+}
+
+load_env() {
+  if [ -f .env ]; then
+    # shellcheck disable=SC1091
+    . ./.env
+  fi
+}
+
+check_runtime() {
+  required_ruby="$(awk '/^ruby /{print $2; exit}' .tool-versions)"
+  actual_ruby="$(ruby -e 'print RUBY_VERSION')"
+  if [ "$actual_ruby" != "$required_ruby" ]; then
+    echo "Ruby version mismatch: expected $required_ruby, got $actual_ruby" >&2
+    echo "Ensure your shell uses the project runtime from .tool-versions." >&2
+    exit 1
+  fi
+
+  required_bundler="$(ruby -e 'lock = File.read("Gemfile.lock"); m = lock.match(/BUNDLED WITH\n\s+([0-9.]+)/); print(m && m[1])')"
+  actual_bundler="$(bundle --version | awk '{print $NF}')"
+  if [ "$actual_bundler" != "$required_bundler" ]; then
+    echo "Bundler version mismatch: expected $required_bundler, got $actual_bundler" >&2
+    echo "Install the required Bundler version and retry." >&2
+    exit 1
+  fi
+}
+
+run_generate() {
+  rm -rf _site .jekyll-metadata
+  find interviews -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
+  find videos -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
+
+  ./bin/sync_interview_asset_links.rb
+  ./bin/generate_interview_pages.rb
+  ruby ./bin/generate_video_asset_pages.rb
+  ruby ./bin/generate_interview_taxonomy_pages.rb
+}
+
+run_build() {
+  check_runtime
+  export JEKYLL_ENV=production
+  run_generate
+
+  ruby ./bin/generate_last_modified.rb
+
+  bundle exec jekyll clean --verbose
+  bundle exec jekyll build --verbose
+
+  # AGENTS docs are for local tooling, not public site output.
+  rm -f _site/AGENTS.html _site/AGENTS.md
+}
+
+run_validate() {
+  check_runtime
+  export JEKYLL_ENV=production
+
+  ruby ./bin/validate_data_uniqueness.rb
+  ruby ./bin/validate_data_integrity.rb
+  ruby ./bin/validate_last_modified_output.rb
+  ruby ./bin/validate_seo_output.rb
+  ruby ./bin/validate_resume_canonical_mode.rb
+  ruby ./bin/validate_semantic_output.rb
+  ruby ./bin/report_seo_metadata.rb
+
+  bundle exec htmlproofer ./_site \
+    --disable-external \
+    --ignore-files "/AGENTS\\.html$/" \
+    --ignore-url "/^https:\/\/www\.linkedin\.com\//"
+
+  require_file() {
+    file_path="$1"
+    if [ ! -f "$file_path" ]; then
+      echo "Missing required artifact: $file_path" >&2
+      exit 1
+    fi
+  }
+
+  require_contains() {
+    file_path="$1"
+    expected_text="$2"
+    if ! grep -q "$expected_text" "$file_path"; then
+      echo "Expected text not found in $file_path: $expected_text" >&2
+      exit 1
+    fi
+  }
+
+  # Resume is the highest-priority surface; fail fast on any rendering regression.
+  require_file "_site/index.html"
+  require_file "_site/resume.txt"
+  require_file "_site/resume.md"
+  require_contains "_site/index.html" "Mike Hall"
+  require_contains "_site/index.html" "Staff Software Engineer"
+
+  # Catch sitemap regressions (e.g. partial/manual sitemap output replacing full index).
+  require_file "_site/sitemap.xml"
+  sitemap_url_count="$(grep -c "<url>" _site/sitemap.xml)"
+  sitemap_max_urls="${SITEMAP_MAX_URLS:-100}"
+  if [ "$sitemap_url_count" -lt 1 ]; then
+    echo "Sitemap regression: expected at least 1 URL, found $sitemap_url_count" >&2
+    exit 1
+  fi
+  if ! grep -Eq "<loc>https?://[^/]+/</loc>" _site/sitemap.xml; then
+    echo "Sitemap regression: missing root resume URL entry in sitemap" >&2
+    exit 1
+  fi
+  if [ "$sitemap_url_count" -gt "$sitemap_max_urls" ]; then
+    echo "Sitemap regression: found $sitemap_url_count URLs, exceeds budget $sitemap_max_urls." >&2
+    echo "Increase SITEMAP_MAX_URLS only when intentional crawl-scope expansion is approved." >&2
+    exit 1
+  fi
+}
+
+run_smoke() {
+  if [ ! -d _site ]; then
+    echo "Missing _site directory. Run './bin/pipeline build' first." >&2
+    exit 1
+  fi
+  ./bin/smoke_playwright.sh
+}
+
+load_env
+
+command="${1:-help}"
+case "$command" in
+  generate)
+    run_generate
+    ;;
+  build)
+    run_build
+    ;;
+  validate)
+    run_validate
+    ;;
+  smoke)
+    run_smoke
+    ;;
+  ci)
+    run_build
+    run_validate
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    echo "Unknown command: $command" >&2
+    usage >&2
+    exit 1
+    ;;
+esac

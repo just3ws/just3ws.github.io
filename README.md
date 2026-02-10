@@ -26,11 +26,14 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - One-off metadata lives in `_data/oneoff_videos.yml`
 - SCMC metadata lives in `_data/scmc_videos.yml`
 - Generated pages:
+  - `bin/sync_interview_asset_links.rb`
   - `bin/generate_video_asset_pages.rb`
   - `bin/generate_interview_pages.rb`
-  - `bin/generate_interview_group_pages.rb`
+  - `bin/generate_interview_taxonomy_pages.rb`
 - Validation:
-  - `bin/cibuild` (runs in CI)
+  - `bin/pipeline ci` (CI core pipeline)
+  - `bin/pipeline smoke` (browser smoke checks)
+  - `bin/cibuild` (compatibility wrapper)
 
 ## Contact
 
@@ -58,5 +61,10 @@ bundle install
 ./bin/server
 
 # Build and validate
-./bin/cibuild
+./bin/pipeline ci
+
+# Run smoke tests against built output
+./bin/pipeline smoke
 ```
+
+Pipeline grammar reference: `/docs/pipeline-grammar/`

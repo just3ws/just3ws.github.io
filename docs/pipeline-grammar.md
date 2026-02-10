@@ -1,0 +1,67 @@
+---
+layout: minimal
+title: Pipeline Grammar
+description: Command grammar and usage for the build, validation, and smoke pipeline.
+breadcrumb: Pipeline Grammar
+breadcrumb_parent_name: Docs
+breadcrumb_parent_url: /docs/
+---
+
+{% include breadcrumbs.html %}
+
+# Pipeline Grammar
+
+Use the pipeline entrypoint for all build/validation workflow commands:
+
+```bash
+./bin/pipeline <command>
+```
+
+Grammar:
+
+```ebnf
+<command> ::= generate | build | validate | smoke | ci | help
+```
+
+## Commands
+
+- `generate`  
+  Regenerates data-driven interview/video pages from canonical YAML in `_data/`.
+- `build`  
+  Runs runtime checks, regenerates pages, and builds `_site` via Jekyll.
+- `validate`  
+  Runs data integrity checks, SEO/canonical checks, semantic/schema checks, HTMLProofer, and resume/sitemap guardrails against `_site`.
+- `smoke`  
+  Runs Playwright smoke checks against built `_site`.
+- `ci`  
+  Full CI core pipeline (`build` + `validate`).
+- `help`  
+  Prints grammar and command help.
+
+## Common Flows
+
+```bash
+# Full CI-equivalent local run
+./bin/pipeline ci
+
+# CI + browser smoke checks
+./bin/pipeline ci
+./bin/pipeline smoke
+
+# Build only (useful when iterating on templates/content)
+./bin/pipeline build
+
+# Validate existing _site output without rebuilding
+./bin/pipeline validate
+```
+
+## Notes
+
+- `bin/cibuild` is a compatibility wrapper that delegates to `./bin/pipeline ci`.
+- In CI, the workflow runs:
+  - `./bin/pipeline ci`
+  - `./bin/pipeline smoke`
+- If your shell runtime does not match `.tool-versions`, pipeline commands fail fast with a version mismatch message.
+- Build-time last-modified metadata:
+  - `./bin/pipeline build` and `./bin/pipeline ci` generate git-based post last-modified values into `_data/last_modified.yml`.
+  - Validation ensures each built article page exposes `dateModified` and matches generated values.
