@@ -288,3 +288,42 @@ This task list is prioritized to protect pipeline correctness first, then data i
 3. Keep `SITEMAP_MAX_URLS` at `100` unless intentional publication-scope expansion is approved.
 4. If publication model changes again, define canonical and robots policy first, then implement validation.
 5. Keep JSON-LD required-field rules in lockstep with template/schema changes to avoid drift.
+
+## Reboot Handoff (2026-02-10)
+
+### Current State Snapshot
+- Branch: `master` synced to `origin/master` after commit `01b7aeb0`.
+- Resume-critical contract: active and passing in `bin/cibuild` (`/`, `/resume.txt`, `/resume.md` checks).
+- Canonical/indexability policy: `/` canonical root resume, `/home/` canonical self + noindex; enforced by validators and smoke checks.
+- Semantic/a11y policy: landmark checks + schema type/required-field/placeholder checks active in `bin/validate_semantic_output.rb`.
+- CI observability artifacts:
+  - `seo-metadata-report` (`tmp/seo-metadata-report.json`)
+  - `schema-coverage-report` (`tmp/schema-coverage-report.json`)
+- Latest verified runs:
+  - Build and Validate Site: `21847820237` (success)
+  - pages-build-deployment: `21847819770` (success)
+
+### Plan Status
+- Phase 1: complete and stable.
+- Phase 2: complete and stable.
+- Phase 3:
+  - `P3-01` to `P3-05`: implemented.
+  - Ongoing posture: maintenance/hardening, not net-new policy shifts.
+
+### Reboot Sequence (First 30-60 Minutes)
+1. Sync and verify baseline:
+   - `git pull`
+   - `./bin/cibuild`
+   - confirm no local drift.
+2. Confirm latest CI health on `master`:
+   - check `Build and Validate Site`
+   - check `pages-build-deployment`
+3. Review artifacts from latest successful run:
+   - `seo-metadata-report` for metadata outliers/duplication drift.
+   - `schema-coverage-report` for schema type/route contract drift.
+4. If all green, proceed only with scoped hardening tasks and same-series docs updates.
+
+### Guardrails For Next Iteration
+- Do not change root/home canonical semantics without explicit policy decision.
+- Keep resume reliability checks as first-order, blocking gates.
+- Keep new validation/reporting changes paired with docs/tasks updates in the same commit series.
