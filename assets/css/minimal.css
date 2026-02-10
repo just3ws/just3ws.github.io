@@ -492,6 +492,18 @@ section {
   color: var(--muted);
 }
 
+.home-purpose {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.125rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.home-purpose p {
+  margin-bottom: 0.5rem;
+}
+
 .home-hero {
   display: grid;
   gap: 1.5rem;
@@ -513,12 +525,33 @@ section {
 
 .home-hero-actions {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.65rem;
 }
 
 .home-resume-note {
   color: var(--meta);
   font-size: 0.95rem;
+}
+
+.home-link-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-link-card {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+}
+
+.home-link-card h3 {
+  margin-top: 0;
+}
+
+.home-link-card p {
+  color: var(--muted);
+  margin-bottom: 0.75rem;
 }
 
 .home-list {
@@ -527,12 +560,17 @@ section {
 }
 
 .home-list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.625rem;
 }
 
 @media (min-width: 720px) {
   .home-hero {
     grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+
+  .home-link-grid {
+    grid-template-columns: 1fr 1fr;
     align-items: start;
   }
 }

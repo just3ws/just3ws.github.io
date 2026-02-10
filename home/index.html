@@ -10,12 +10,12 @@ canonical_url: https://www.just3ws.com/home/
   {% include breadcrumbs.html %}
   <header>
     <h1>Home</h1>
-    <p class="title">The Loop for everything around the resume.</p>
-    <p class="home-intro">Staff/Principal engineer focused on making complex systems understandable and change achievable. I’m Mike. I build resilient systems, unblock teams, and make legacy platforms safe to change. Think of this page as the Loop: a central hub where the lines connect to writing, interviews, and the longer arc behind the work.</p>
-    <p class="home-intro">Chicago‑style software is opinionated, practical, and built to last. Same deal here: clear signal, durable fixes, and a bias for craftsmanship that holds up under real production pressure.</p>
+    <p class="title">Everything beyond the resume lives here.</p>
+    <p class="home-intro"><code>/</code> is intentionally the default resume view. <code>/home/</code> is the navigation hub for the broader archive: interviews, videos, writing, docs, and context pages.</p>
+    <p class="home-intro">I’m Mike Hall, a staff/principal engineer focused on resilient systems, practical architecture, and making legacy platforms safer to change. This page is the index for the work around that core profile.</p>
   </header>
 
-  <section class="home-hero">
+  <section class="home-hero" aria-label="Home overview">
     <div class="home-hero-media">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Chicago3_SvG.jpg" alt="Chicago skyline at dusk">
       <div class="home-caption">
@@ -24,44 +24,64 @@ canonical_url: https://www.just3ws.com/home/
       </div>
     </div>
     <div class="home-hero-actions">
-      <a class="home-resume-link" href="/">View Resume</a>
-      <p class="home-resume-note">If you want the straight timeline, start with the resume. These links add the people, places, and context.</p>
-      <p class="home-resume-note"><a href="/history/">Full career history</a> for the complete arc.</p>
+      <a class="home-resume-link" href="/">Go to Resume (/)</a>
+      <a class="home-resume-link" href="/history/">Full Career History</a>
+      <p class="home-resume-note">Use the resume for the concise snapshot. Use this page to explore the full public archive.</p>
     </div>
   </section>
 
+  <section class="home-purpose">
+    <h2>How To Use This Site</h2>
+    <p>Think of the site as two lanes:</p>
+    <ul class="home-list">
+      <li><strong>Lane 1:</strong> <a href="/">Resume</a> at root for the shortest path to qualifications.</li>
+      <li><strong>Lane 2:</strong> <a href="/home/">Home</a> for everything else: evidence, archive, and supporting context.</li>
+    </ul>
+  </section>
+
   <section class="home-links">
-    <h2>Interviews</h2>
-    <ul class="home-list">
-      <li><a href="/interviews/">Interviews</a> Canonical index across platforms.</li>
-      <li><a href="/interviews/conferences/">Interviews by Conference</a> Grouped by event.</li>
-      <li><a href="/interviews/communities/">Interviews by Community</a> Grouped by community.</li>
-    </ul>
+    <h2>Explore</h2>
+    <div class="home-link-grid">
+      <section class="home-link-card">
+        <h3>Interviews</h3>
+        <p>Conversations from conferences, communities, and one-off sessions.</p>
+        <ul class="home-list">
+          <li><a href="/interviews/">All Interviews</a> Canonical interview index.</li>
+          <li><a href="/interviews/conferences/">By Conference</a> Interviews grouped by event.</li>
+          <li><a href="/interviews/communities/">By Community</a> Interviews grouped by community.</li>
+        </ul>
+      </section>
 
-    <h2>Media</h2>
-    <ul class="home-list">
-      <li><a href="/videos/">All Videos</a> Canonical video asset index.</li>
-      <li><a href="/oneoffs/">One-off Videos</a> Standalone talks and presentations.</li>
-      <li><a href="/scmc/">SCMC Videos</a> Software Craftsmanship McHenry County archive.</li>
-    </ul>
+      <section class="home-link-card">
+        <h3>Videos</h3>
+        <p>Published talks, interviews, and recordings across platforms.</p>
+        <ul class="home-list">
+          <li><a href="/videos/">All Videos</a> Canonical video index.</li>
+          <li><a href="/oneoffs/">One-off Videos</a> Standalone talks and presentations.</li>
+          <li><a href="/scmc/">SCMC Videos</a> Software Craftsmanship McHenry County archive.</li>
+        </ul>
+      </section>
 
-    <h2>Writing & History</h2>
-    <ul class="home-list">
-      <li><a href="/writing/">Writing</a> Short technical essays and notes.</li>
-      <li><a href="/history/">Full Career History</a> Complete role timeline.</li>
-    </ul>
+      <section class="home-link-card">
+        <h3>Writing And History</h3>
+        <p>Short technical writing plus full historical career context.</p>
+        <ul class="home-list">
+          <li><a href="/writing/">Writing</a> Technical essays and notes.</li>
+          <li><a href="/history/">Full Career History</a> Complete role timeline.</li>
+        </ul>
+      </section>
 
-    <h2>Tools & Docs</h2>
-    <ul class="home-list">
-      <li><a href="/tools/">Tools</a> Scripts and utilities that keep the archive healthy.</li>
-      <li><a href="/docs/">Docs</a> Data model, taxonomy, and curation notes.</li>
-    </ul>
-
-    <h2>Site Meta</h2>
-    <ul class="home-list">
-      <li><a href="/now/">Now</a> What I’m focused on at the moment.</li>
-      <li><a href="/about/">About</a> The webmaster brief.</li>
-      <li><a href="/contact/">Contact</a> A clean way to reach me.</li>
-    </ul>
+      <section class="home-link-card">
+        <h3>Tools, Docs, And Contact</h3>
+        <p>Operational details, curation notes, and ways to connect.</p>
+        <ul class="home-list">
+          <li><a href="/tools/">Tools</a> Scripts and utilities used to maintain the archive.</li>
+          <li><a href="/docs/">Docs</a> Data model, taxonomy, and process notes.</li>
+          <li><a href="/now/">Now</a> Current focus.</li>
+          <li><a href="/about/">About</a> Site and webmaster context.</li>
+          <li><a href="/contact/">Contact</a> Reach out directly.</li>
+        </ul>
+      </section>
+    </div>
   </section>
 </article>
