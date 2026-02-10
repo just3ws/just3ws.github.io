@@ -92,6 +92,12 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - Smoke checks now enforce semantic landmarks and structured-data contracts for `/` and `/home/`.
   - Build pipeline now validates semantic output for all built HTML plus required `Person`/`VideoObject`/`Article` JSON-LD coverage and required schema fields.
   - Commits: `86356c9d`, `23722a79`, `5153ffca`.
+- 2026-02-10: `P3-03` hardening follow-up implemented.
+  - Semantic validator now enforces route-level schema contracts for `/` and `/home/`, and rejects placeholder values in required JSON-LD fields.
+  - Commit: `9da40f4d`.
+- 2026-02-10: `P3-05` implemented.
+  - CI now emits a machine-readable schema coverage report and uploads it as a workflow artifact.
+  - Commits: `9da40f4d`, `516f7465`.
 
 ## Retrospective (2026-02-09)
 
@@ -263,6 +269,17 @@ This task list is prioritized to protect pipeline correctness first, then data i
   - Add report of duplicate titles/descriptions in CI output.
 - Acceptance criteria:
   - Outlier/duplication counts trend down release over release.
+
+### P3-05 Structured-Data Quality Gates + Coverage Reporting
+- Priority: P1
+- Goal: Keep JSON-LD contracts durable, route-aware, and observable in CI.
+- Tasks:
+  - Enforce route contracts: `/` must expose valid `Person`; `/home/` must not expose `Person`.
+  - Enforce required JSON-LD fields as non-empty and non-placeholder values.
+  - Emit schema coverage report artifact with type counts and route contract status.
+- Acceptance criteria:
+  - CI fails on route contract drift or schema placeholder regressions.
+  - CI uploads `schema-coverage-report` artifact on every run.
 
 ## Logged Recommendations (Current)
 
