@@ -34,8 +34,33 @@ def clamp_meta(text, max_length)
   "#{truncated}…"
 end
 
+def ensure_unique_meta(value, max_length, disambiguator, seen)
+  candidate = value
+  unless seen[candidate]
+    seen[candidate] = true
+    return candidate
+  end
+
+  suffix = " (#{disambiguator})"
+  base_limit = max_length - suffix.length
+  base = clamp_meta(value, base_limit)
+  base = base.gsub(/…\z/, '').strip
+  candidate = "#{base}#{suffix}"
+  candidate = clamp_meta(candidate, max_length)
+
+  if seen[candidate]
+    fallback = clamp_meta("#{value} #{disambiguator}", max_length)
+    candidate = fallback
+  end
+
+  seen[candidate] = true
+  candidate
+end
+
 base_dir = File.join(root, 'videos')
 FileUtils.mkdir_p(base_dir)
+seen_titles = {}
+seen_descriptions = {}
 
 assets.each do |asset|
   id = asset['id']
@@ -75,6 +100,8 @@ assets.each do |asset|
     description_parts << "Asset ID: #{id}"
   end
   description_meta = clamp_meta("#{description_parts.join('. ')}.", 160)
+  title_meta = ensure_unique_meta(title_meta, 70, id, seen_titles)
+  description_meta = ensure_unique_meta(description_meta, 160, id, seen_descriptions)
   dir = File.join(base_dir, id)
   FileUtils.mkdir_p(dir)
   path = File.join(dir, 'index.html')
