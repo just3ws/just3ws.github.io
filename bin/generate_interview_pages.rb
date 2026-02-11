@@ -1,61 +1,13 @@
 #!/usr/bin/env ruby
-require 'yaml'
 require 'fileutils'
-require 'date'
+require_relative '../src/generators/core/meta'
+require_relative '../src/generators/core/text'
+require_relative '../src/generators/core/yaml_io'
 
 root = File.expand_path('..', __dir__)
 interviews_path = File.join(root, '_data', 'interviews.yml')
-assets_path = File.join(root, '_data', 'video_assets.yml')
 
-interviews = YAML.safe_load(File.read(interviews_path), permitted_classes: [Date, Time], aliases: true)['items'] || []
-assets = YAML.safe_load(File.read(assets_path), permitted_classes: [Date, Time], aliases: true)['items'] || []
-assets_by_id = assets.each_with_object({}) { |a, h| h[a['id']] = a }
-
-def yaml_quote(value)
-  str = value.to_s.tr("\n", ' ')
-  "\"#{str.gsub('"', '\"')}\""
-end
-
-def normalize_interview_subject(value)
-  value.to_s.strip
-       .sub(/\AInterview with\s+/i, '')
-       .sub(/\AInterview\s*[-:]\s+/i, '')
-       .gsub(/\s+/, ' ')
-       .strip
-end
-
-def clamp_meta(text, max_length)
-  clean = text.to_s.gsub(/\s+/, ' ').strip
-  return clean if clean.length <= max_length
-
-  truncated = clean[0, max_length - 1]
-  truncated = truncated.rpartition(' ').first if truncated.include?(' ')
-  truncated = clean[0, max_length - 1] if truncated.nil? || truncated.empty?
-  "#{truncated}…"
-end
-
-def ensure_unique_meta(value, max_length, disambiguator, seen)
-  candidate = value
-  unless seen[candidate]
-    seen[candidate] = true
-    return candidate
-  end
-
-  suffix = " (#{disambiguator})"
-  base_limit = max_length - suffix.length
-  base = clamp_meta(value, base_limit)
-  base = base.gsub(/…\z/, '').strip
-  candidate = "#{base}#{suffix}"
-  candidate = clamp_meta(candidate, max_length)
-
-  if seen[candidate]
-    fallback = clamp_meta("#{value} #{disambiguator}", max_length)
-    candidate = fallback
-  end
-
-  seen[candidate] = true
-  candidate
-end
+interviews = Generators::Core::YamlIo.load(interviews_path, key: 'items')
 
 base_dir = File.join(root, 'interviews')
 FileUtils.mkdir_p(base_dir)
@@ -64,7 +16,7 @@ seen_descriptions = {}
 
 interviews.each do |interview|
   id = interview['id']
-  subject = normalize_interview_subject(interview['title'])
+  subject = Generators::Core::Text.normalize_subject(interview['title'])
   context_bits = []
   context_bits << interview['conference'].to_s.strip if interview['conference'].to_s.strip != ''
   context_bits << interview['community'].to_s.strip if interview['community'].to_s.strip != ''
@@ -72,7 +24,7 @@ interviews.each do |interview|
 
   title_core = +"Interview — #{subject}"
   title_core << " (#{context})" unless context.empty?
-  title_meta = clamp_meta(title_core, 70)
+  title_meta = Generators::Core::Meta.clamp(title_core, 70)
 
   description_parts = []
   description_parts << "Interview with #{subject}"
@@ -94,9 +46,9 @@ interviews.each do |interview|
   description_parts << "Recorded: #{recorded_date}" unless recorded_date.empty?
 
   description_parts << "Interview ID: #{id}"
-  description_meta = clamp_meta("#{description_parts.join('. ')}.", 160)
-  title_meta = ensure_unique_meta(title_meta, 70, id, seen_titles)
-  description_meta = ensure_unique_meta(description_meta, 160, id, seen_descriptions)
+  description_meta = Generators::Core::Meta.clamp("#{description_parts.join('. ')}.", 160)
+  title_meta = Generators::Core::Meta.ensure_unique(title_meta, 70, id, seen_titles)
+  description_meta = Generators::Core::Meta.ensure_unique(description_meta, 160, id, seen_descriptions)
   dir = File.join(base_dir, id)
   FileUtils.mkdir_p(dir)
   path = File.join(dir, 'index.html')
@@ -104,9 +56,9 @@ interviews.each do |interview|
   File.open(path, 'w') do |f|
     f.puts '---'
     f.puts 'layout: minimal'
-    f.puts "title: #{yaml_quote(title_meta)}"
-    f.puts "description: #{yaml_quote(description_meta)}"
-    f.puts "breadcrumb: #{yaml_quote(interview['title'])}"
+    f.puts "title: #{Generators::Core::Text.yaml_quote(title_meta)}"
+    f.puts "description: #{Generators::Core::Text.yaml_quote(description_meta)}"
+    f.puts "breadcrumb: #{Generators::Core::Text.yaml_quote(interview['title'])}"
     f.puts 'breadcrumb_parent_name: Interviews'
     f.puts 'breadcrumb_parent_url: /interviews/'
     f.puts '---'

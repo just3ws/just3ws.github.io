@@ -5,38 +5,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% assign seo_title = page.title | default: "Mike Hall" %}
-  {% assign seo_description = page.description | default: "Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems." %}
-  {% assign site_url = site.url | default: "https://www.just3ws.com" %}
-  {% if site_url == "" or site_url contains "localhost" %}
-    {% assign site_url = "https://www.just3ws.com" %}
-  {% endif %}
-  {% assign canonical_url = page.canonical_url %}
-  {% if canonical_url == nil or canonical_url == "" %}
-    {% assign canonical_url = site_url | append: page.url %}
-  {% endif %}
-  {% assign robots_directive = page.robots %}
-  {% if robots_directive == nil or robots_directive == "" %}
-    {% assign robots_directive = "index,follow" %}
-  {% endif %}
-  <title>{{ seo_title }}</title>
-  <meta name="description" content="{{ seo_description }}">
-  <meta name="author" content="Mike Hall">
-  <link rel="canonical" href="{{ canonical_url }}">
-  <meta name="robots" content="{{ robots_directive }}">
-  <meta property="og:title" content="{{ seo_title }}">
-  <meta property="og:description" content="{{ seo_description }}">
-  <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Mike Hall">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{{ seo_title }}">
-  <meta name="twitter:description" content="{{ seo_description }}">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/assets/css/resume.css">
-  <script data-goatcounter="https://just3ws.goatcounter.com/count"
-        async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/js/goatcounter-events.js" defer></script>
+  {% include head/base.html theme_stylesheet="/assets/css/themes/resume.css" %}
+  {% include head/analytics.html %}
   {% if page.person_schema %}
   {% include json-ld.html %}
   {% endif %}

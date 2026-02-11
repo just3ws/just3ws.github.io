@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
-require "yaml"
-require "date"
 require "set"
+require_relative "../src/generators/core/yaml_io"
 
 ROOT = File.expand_path("..", __dir__)
 
@@ -13,14 +12,6 @@ ONEOFFS_PATH = File.join(ROOT, "_data", "oneoff_videos.yml")
 SCMC_PATH = File.join(ROOT, "_data", "scmc_videos.yml")
 TRANSCRIPTS_DIR = File.join(ROOT, "_data", "transcripts")
 INDEX_SUMMARIES_PATH = File.join(ROOT, "_data", "index_summaries.yml")
-
-def load_yaml(path)
-  YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true)
-end
-
-def write_yaml(path, object)
-  File.write(path, YAML.dump(object))
-end
 
 def normalize_space(text)
   text.to_s.gsub(/\s+/, " ").strip
@@ -133,18 +124,18 @@ def build_entity_summary(label:, interviews:, assets_by_id:, transcripts_by_id:)
   }
 end
 
-interviews = load_yaml(INTERVIEWS_PATH)["items"] || []
-assets = load_yaml(ASSETS_PATH)["items"] || []
-conferences_data = load_yaml(CONFERENCES_PATH)
-communities_data = load_yaml(COMMUNITIES_PATH)
-oneoffs = load_yaml(ONEOFFS_PATH)["items"] || []
-scmc_items = load_yaml(SCMC_PATH)["items"] || []
+interviews = Generators::Core::YamlIo.load(INTERVIEWS_PATH, key: "items")
+assets = Generators::Core::YamlIo.load(ASSETS_PATH, key: "items")
+conferences_data = Generators::Core::YamlIo.load(CONFERENCES_PATH)
+communities_data = Generators::Core::YamlIo.load(COMMUNITIES_PATH)
+oneoffs = Generators::Core::YamlIo.load(ONEOFFS_PATH, key: "items")
+scmc_items = Generators::Core::YamlIo.load(SCMC_PATH, key: "items")
 
 assets_by_id = assets.each_with_object({}) { |asset, h| h[asset["id"]] = asset }
 transcripts_by_id = {}
 Dir.glob(File.join(TRANSCRIPTS_DIR, "*.yml")).sort.each do |path|
   transcript_id = File.basename(path, ".yml")
-  transcripts_by_id[transcript_id] = load_yaml(path)
+  transcripts_by_id[transcript_id] = Generators::Core::YamlIo.load(path)
 end
 
 conferences = conferences_data["conferences"] || []
@@ -167,7 +158,7 @@ conferences.each do |conf|
   conf["sample_interview_ids"] = generated["sample_interview_ids"]
   conf["years_active"] = generated["years_active"]
 end
-write_yaml(CONFERENCES_PATH, conferences_data)
+Generators::Core::YamlIo.dump(CONFERENCES_PATH, conferences_data)
 
 communities = communities_data["communities"] || []
 communities.each do |community|
@@ -184,7 +175,7 @@ communities.each do |community|
   community["sample_topics"] = generated["sample_topics"]
   community["sample_interview_ids"] = generated["sample_interview_ids"]
 end
-write_yaml(COMMUNITIES_PATH, communities_data)
+Generators::Core::YamlIo.dump(COMMUNITIES_PATH, communities_data)
 
 conference_series = conferences.group_by { |c| c["conference"] || c["name"] }
 series_fragments = conference_series.sort_by { |name, _| name.to_s }.map do |series_name, items|
@@ -256,5 +247,5 @@ index_summaries = {
   }
 }
 
-write_yaml(INDEX_SUMMARIES_PATH, index_summaries)
+Generators::Core::YamlIo.dump(INDEX_SUMMARIES_PATH, index_summaries)
 puts "Generated context summaries for #{conferences.size} conferences, #{communities.size} communities, and 6 index pages."

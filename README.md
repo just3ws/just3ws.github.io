@@ -31,6 +31,10 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
   - `bin/generate_interview_pages.rb`
   - `bin/generate_interview_taxonomy_pages.rb`
   - `bin/generate_context_summaries.rb`
+- Shared generator helpers:
+  - `src/generators/core/meta.rb`
+  - `src/generators/core/text.rb`
+  - `src/generators/core/yaml_io.rb`
 - Validation:
   - `bin/pipeline ci` (CI core pipeline)
   - `bin/pipeline smoke` (browser smoke checks)

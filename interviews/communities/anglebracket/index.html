@@ -3,10 +3,14 @@ layout: minimal
 title: "angleBracket"
 description: "angleBracket includes 1 interview. Interviewees include Clark Sell and Pat Paasch. Topics include angleBracket."
 breadcrumb: "angleBracket"
+
 breadcrumb_grandparent_name: "Interviews"
 breadcrumb_grandparent_url: /interviews/
+
+
 breadcrumb_parent_name: "Interviews by Community"
 breadcrumb_parent_url: /interviews/communities/
+
 ---
 
 <article class="page">
@@ -15,6 +19,7 @@ breadcrumb_parent_url: /interviews/communities/
     <h1>angleBracket</h1>
     <p class="intro">angleBracket includes 1 interview. Interviewees include Clark Sell and Pat Paasch. Topics include angleBracket.</p>
   </header>
+
 
   {% assign items = site.data.interviews.items | where: "community", "angleBracket" | sort: "recorded_date" | reverse %}
   {% for interview in items %}

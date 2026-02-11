@@ -3,10 +3,14 @@ layout: minimal
 title: "SCNA 2012"
 description: "SCNA 2012 includes 22 interviews. Years represented: 2012. Interviewees include Adewale Oshineye, Adewale Oshinye, Brad Wilkening, Brian Marick, and Carl Erickson. Topics include apprenticeship patterns and community mentorship and crafting technical talks and speaking practice."
 breadcrumb: "SCNA 2012"
+
 breadcrumb_grandparent_name: "Interviews"
 breadcrumb_grandparent_url: /interviews/
+
+
 breadcrumb_parent_name: "Interviews by Conference"
 breadcrumb_parent_url: /interviews/conferences/
+
 ---
 
 <article class="page">
@@ -15,12 +19,17 @@ breadcrumb_parent_url: /interviews/conferences/
     <h1>SCNA 2012</h1>
     <p class="intro">SCNA 2012 includes 22 interviews. Years represented: 2012. Interviewees include Adewale Oshineye, Adewale Oshinye, Brad Wilkening, Brian Marick, and Carl Erickson. Topics include apprenticeship patterns and community mentorship and crafting technical talks and speaking practice.</p>
   </header>
+
   <section class="index-summary">
     <ul class="index-highlights">
+
       <li>Hi, I'm Mike with UGtastic here again at SCNA. I'm sitting down with Adewale Oshineye and it's a little bit late at…</li>
+
       <li>Mike: Hi, I'm Mike again with UGtastic. I'm at SCNA and sitting down with Gary Bernhardt, who created the "Destroy All Software"…</li>
+
     </ul>
   </section>
+
 
   {% assign items = site.data.interviews.items | where: "conference", "SCNA" | where: "conference_year", 2012 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

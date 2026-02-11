@@ -1,0 +1,52 @@
+---
+layout: minimal
+title: <%= Generators::Core::Text.yaml_quote(title) %>
+description: <%= Generators::Core::Text.yaml_quote(intro) %>
+breadcrumb: <%= Generators::Core::Text.yaml_quote(title) %>
+<% if grandparent_name && grandparent_url %>
+breadcrumb_grandparent_name: <%= Generators::Core::Text.yaml_quote(grandparent_name) %>
+breadcrumb_grandparent_url: <%= grandparent_url %>
+<% end %>
+<% if parent_name && parent_url %>
+breadcrumb_parent_name: <%= Generators::Core::Text.yaml_quote(parent_name) %>
+breadcrumb_parent_url: <%= parent_url %>
+<% end %>
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1><%= title %></h1>
+    <p class="intro"><%= intro %></p>
+  </header>
+<% if summary && !summary.to_s.strip.empty? %>
+  <section class="index-summary">
+    <p><%= summary %></p>
+<% if highlights.is_a?(Array) && !highlights.empty? %>
+    <ul class="index-highlights">
+<% highlights.each do |highlight| next if highlight.to_s.strip.empty? %>
+      <li><%= highlight %></li>
+<% end %>
+    </ul>
+<% end %>
+  </section>
+<% end %>
+
+  <div class="conference-list">
+<% cards.each do |card| %>
+    <div class="conference-card">
+      <h2><a href="<%= card[:link] %>"><%= card[:name] %></a></h2>
+<% if card[:summary] && !card[:summary].to_s.empty? %>
+      <p><%= card[:summary] %></p>
+<% end %>
+<% if card[:location] && !card[:location].to_s.empty? %>
+      <div class="conference-meta"><%= card[:location] %></div>
+<% end %>
+<% if card[:dates] && !card[:dates].to_s.empty? %>
+      <div class="conference-dates"><%= card[:dates] %></div>
+<% end %>
+      <div class="conference-count"><%= card[:count_label] %></div>
+    </div>
+<% end %>
+  </div>
+</article>
