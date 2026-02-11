@@ -36,7 +36,11 @@ IDs are deterministic and stable across builds.
 - must expose `Interview` with `@id`, `name`, `url`, `datePublished`, `interviewer`, and `mainEntityOfPage`.
 - should link to canonical `VideoObject` by `subjectOf.@id` when asset data exists.
 
-5. Blog posts (`/YYYY/...`)
+5. Index routes (`/interviews/`, `/videos/`, `/oneoffs/`, `/scmc/`)
+- must expose `CollectionPage` with `mainEntity` set to `ItemList`.
+- each `ListItem` should reference canonical IDs for the underlying entity.
+
+6. Blog posts (`/YYYY/...`)
 - must expose `Article` with `headline`, `datePublished`, `dateModified`, and `mainEntityOfPage.@id`.
 
 ## Validation and Artifacts

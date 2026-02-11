@@ -1,0 +1,40 @@
+{% assign site_url = site.url | default: "https://www.just3ws.com" %}
+{% if site_url == "" or site_url contains "localhost" %}
+  {% assign site_url = "https://www.just3ws.com" %}
+{% endif %}
+{% assign item_id_key = include.item_id_key | default: "id" %}
+{% assign item_name_key = include.item_name_key | default: "title" %}
+{% assign url_prefix = include.url_prefix | default: "/" %}
+{% assign schema_type = include.item_schema_type | default: "Thing" %}
+{% assign entity_id_prefix = include.entity_id_prefix | default: "/id/entity/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ include.collection_name | default: page.title | jsonify }},
+  "description": {{ include.collection_description | default: page.description | jsonify }},
+  "url": "{{ site_url }}{{ page.url }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": {{ include.items.size | default: 0 }},
+    "itemListElement": [
+      {% for item in include.items %}
+      {% assign item_id = item[item_id_key] %}
+      {% assign item_name = item[item_name_key] | default: item.title | default: item_id %}
+      {% if item_id %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "item": {
+          "@type": {{ schema_type | jsonify }},
+          "@id": "{{ site_url }}{{ entity_id_prefix }}{{ item_id }}",
+          "name": {{ item_name | jsonify }},
+          "url": "{{ site_url }}{{ url_prefix }}{{ item_id }}/"
+        }
+      }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>

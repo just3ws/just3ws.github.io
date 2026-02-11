@@ -27,7 +27,17 @@ breadcrumb: Interviews
     </section>
   {% endif %}
 
-  {% assign interviews = site.data.interviews.items | sort: "recorded_date" | reverse %}
+  {% assign interviews = site.data.interviews.items | where_exp: "i", "i.video_asset_id" | sort: "recorded_date" | reverse %}
+  {% include json-ld-itemlist.html
+    collection_name="Interviews"
+    collection_description=page.description
+    items=interviews
+    item_id_key="id"
+    item_name_key="title"
+    url_prefix="/interviews/"
+    item_schema_type="Interview"
+    entity_id_prefix="/id/interview/"
+  %}
   {% for interview in interviews %}
     {% if interview.video_asset_id %}
       {% include_cached interview-card.html interview=interview %}

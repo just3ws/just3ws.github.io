@@ -27,6 +27,16 @@ breadcrumb: Videos
   {% endif %}
 
   {% assign items = site.data.video_assets.items %}
+  {% include json-ld-itemlist.html
+    collection_name="Videos"
+    collection_description=page.description
+    items=items
+    item_id_key="id"
+    item_name_key="title"
+    url_prefix="/videos/"
+    item_schema_type="VideoObject"
+    entity_id_prefix="/id/video/"
+  %}
   {% for asset in items %}
     {% include_cached video-asset-card.html asset=asset %}
   {% endfor %}

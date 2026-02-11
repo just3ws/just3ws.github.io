@@ -283,6 +283,26 @@ Dir.glob(File.join(SITE_DIR, '[0-9][0-9][0-9][0-9]', '**', '*.html')).sort.each 
   )
 end
 
+%w[
+  interviews/index.html
+  videos/index.html
+  oneoffs/index.html
+  scmc/index.html
+].each do |relative|
+  path = File.join(SITE_DIR, relative)
+  next unless File.file?(path)
+
+  html = read(path)
+  nodes = json_ld_nodes(html, relative, errors)
+  validate_json_ld_type(
+    nodes: nodes,
+    expected_type: 'CollectionPage',
+    required_fields: %w[name url mainEntity.@type mainEntity.itemListElement],
+    context: relative,
+    errors: errors
+  )
+end
+
 all_html_paths.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative == 'AGENTS.html'
