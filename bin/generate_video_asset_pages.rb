@@ -5,9 +5,11 @@ require 'date'
 
 root = File.expand_path('..', __dir__)
 assets_path = File.join(root, '_data', 'video_assets.yml')
-transcripts_path = File.join(root, '_data', 'transcripts.yml')
+interviews_path = File.join(root, '_data', 'interviews.yml')
 
 assets = YAML.safe_load(File.read(assets_path), permitted_classes: [Time, Date], aliases: true)['items'] || []
+interviews = YAML.safe_load(File.read(interviews_path), permitted_classes: [Time, Date], aliases: true)['items'] || []
+interviews_by_id = interviews.each_with_object({}) { |i, h| h[i['id']] = i }
 
 def yaml_quote(value)
   str = value.to_s.tr("\n", ' ')
@@ -39,8 +41,40 @@ assets.each do |asset|
   id = asset['id']
   title = asset['title'] || 'Video'
   subject = normalize_asset_subject(title)
-  title_meta = clamp_meta("Video — #{subject}", 70)
-  description_meta = clamp_meta("Video asset for #{subject}.", 160)
+  interview = interviews_by_id[asset['interview_id'].to_s]
+
+  context_bits = []
+  conference = interview && interview['conference'].to_s.strip
+  conference_year = interview && interview['conference_year'].to_s.strip
+  unless conference.to_s.empty?
+    conf_text = conference.dup
+    conf_text << " #{conference_year}" unless conference_year.to_s.empty?
+    context_bits << conf_text
+  end
+  community = interview && interview['community'].to_s.strip
+  context_bits << community unless community.to_s.empty?
+  context = context_bits.first(2).join(' · ')
+
+  title_core = +"Video — #{subject}"
+  title_core << " (#{context})" unless context.empty?
+  title_meta = clamp_meta(title_core, 70)
+
+  description_parts = []
+  canonical_description = asset['description'].to_s.gsub(/\s+/, ' ').strip
+  if canonical_description.empty?
+    description_parts << "Canonical video asset for #{subject}"
+    topic = asset['topic'].to_s.strip
+    description_parts << "Topic: #{topic}" unless topic.empty?
+    description_parts << "Conference: #{conference} #{conference_year}".strip unless conference.to_s.empty?
+    description_parts << "Community: #{community}" unless community.to_s.empty?
+    published_date = asset['published_date'].to_s.strip
+    description_parts << "Published: #{published_date}" unless published_date.empty?
+    description_parts << "Asset ID: #{id}"
+  else
+    description_parts << canonical_description
+    description_parts << "Asset ID: #{id}"
+  end
+  description_meta = clamp_meta("#{description_parts.join('. ')}.", 160)
   dir = File.join(base_dir, id)
   FileUtils.mkdir_p(dir)
   path = File.join(dir, 'index.html')

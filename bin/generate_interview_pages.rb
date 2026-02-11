@@ -40,8 +40,36 @@ FileUtils.mkdir_p(base_dir)
 interviews.each do |interview|
   id = interview['id']
   subject = normalize_interview_subject(interview['title'])
-  title_meta = clamp_meta("Interview — #{subject}", 70)
-  description_meta = clamp_meta("Interview with #{subject}.", 160)
+  context_bits = []
+  context_bits << interview['conference'].to_s.strip if interview['conference'].to_s.strip != ''
+  context_bits << interview['community'].to_s.strip if interview['community'].to_s.strip != ''
+  context = context_bits.first(2).join(' · ')
+
+  title_core = +"Interview — #{subject}"
+  title_core << " (#{context})" unless context.empty?
+  title_meta = clamp_meta(title_core, 70)
+
+  description_parts = []
+  description_parts << "Interview with #{subject}"
+  topic = interview['topic'].to_s.strip
+  description_parts << "Topic: #{topic}" unless topic.empty?
+
+  conference = interview['conference'].to_s.strip
+  conference_year = interview['conference_year'].to_s.strip
+  unless conference.empty?
+    conf_text = conference.dup
+    conf_text << " #{conference_year}" unless conference_year.empty?
+    description_parts << "Conference: #{conf_text}"
+  end
+
+  community = interview['community'].to_s.strip
+  description_parts << "Community: #{community}" unless community.empty?
+
+  recorded_date = interview['recorded_date'].to_s.strip
+  description_parts << "Recorded: #{recorded_date}" unless recorded_date.empty?
+
+  description_parts << "Interview ID: #{id}"
+  description_meta = clamp_meta("#{description_parts.join('. ')}.", 160)
   dir = File.join(base_dir, id)
   FileUtils.mkdir_p(dir)
   path = File.join(dir, 'index.html')
