@@ -26,6 +26,7 @@ breadcrumb_parent_url: /interviews/
     </div>
 
     {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
+    {% include json-ld-interview.html interview=interview asset=asset %}
     {% include video-asset-player.html asset=asset embed_id="interview-embed" %}
   {% endif %}
 </article>

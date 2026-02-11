@@ -1,0 +1,42 @@
+{% assign site_url = site.url | default: "https://www.just3ws.com" %}
+{% if site_url == "" or site_url contains "localhost" %}
+  {% assign site_url = "https://www.just3ws.com" %}
+{% endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Interview",
+  "@id": "{{ site_url }}/id/interview/{{ interview.id }}",
+  "identifier": {{ interview.id | jsonify }},
+  "name": {{ interview.title | jsonify }},
+  "url": "{{ site_url }}{{ page.url }}",
+  "datePublished": "{{ interview.recorded_date | date: "%Y-%m-%d" }}",
+  {% if interview.topic and interview.topic != "" %}"about": {{ interview.topic | jsonify }},{% endif %}
+  "interviewer": {
+    "@type": "Person",
+    "@id": "{{ site_url }}/id/person/mike-hall",
+    "name": {{ interview.interviewer | default: "Mike Hall" | jsonify }}
+  },
+  {% if interview.interviewees and interview.interviewees.size > 0 %}
+  "interviewee": [
+    {% for name in interview.interviewees %}
+    {
+      "@type": "Person",
+      "name": {{ name | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  {% endif %}
+  {% if asset and asset.id %}
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "{{ site_url }}/id/video/{{ asset.id }}",
+    "url": "{{ site_url }}/videos/{{ asset.id }}/"
+  },
+  {% endif %}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site_url }}{{ page.url }}"
+  }
+}
+</script>

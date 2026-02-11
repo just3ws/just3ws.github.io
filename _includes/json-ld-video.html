@@ -2,6 +2,7 @@
 {
   "@context": "https://schema.org",
   "@type": "VideoObject",
+  "@id": "https://www.just3ws.com/id/video/{{ asset.id }}",
   "name": {{ asset.title | jsonify }},
   "description": {{ asset.description | default: page.description | jsonify }},
   "thumbnailUrl": {{ asset.thumbnail | default: asset.platforms[0].thumbnail | jsonify }},

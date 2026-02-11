@@ -247,7 +247,24 @@ Dir.glob(File.join(SITE_DIR, 'videos', '**', 'index.html')).sort.each do |path|
   validate_json_ld_type(
     nodes: nodes,
     expected_type: 'VideoObject',
-    required_fields: %w[name description url uploadDate],
+    required_fields: %w[@id name description url uploadDate],
+    context: relative,
+    errors: errors
+  )
+end
+
+Dir.glob(File.join(SITE_DIR, 'interviews', '**', 'index.html')).sort.each do |path|
+  relative = path.sub("#{SITE_DIR}/", '')
+  next if relative == 'interviews/index.html'
+  next if relative.start_with?('interviews/conferences/')
+  next if relative.start_with?('interviews/communities/')
+
+  html = read(path)
+  nodes = json_ld_nodes(html, relative, errors)
+  validate_json_ld_type(
+    nodes: nodes,
+    expected_type: 'Interview',
+    required_fields: %w[@id name url datePublished interviewer.name mainEntityOfPage.@id],
     context: relative,
     errors: errors
   )

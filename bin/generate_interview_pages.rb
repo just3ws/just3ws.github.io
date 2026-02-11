@@ -82,6 +82,7 @@ interviews.each do |interview|
     f.puts '    </div>'
     f.puts ''
     f.puts "    {% assign asset = site.data.video_assets.items | where: \"id\", interview.video_asset_id | first %}"
+    f.puts "    {% include json-ld-interview.html interview=interview asset=asset %}"
     f.puts "    {% include video-asset-player.html asset=asset embed_id=\"interview-embed\" %}"
     f.puts '  {% endif %}'
     f.puts '</article>'
