@@ -22,7 +22,7 @@ flowchart TB
   subgraph Canonical["Canonical Data"]
     interviews[_data/interviews.yml&lt;br/&gt;Interview records]
     assets[_data/video_assets.yml&lt;br/&gt;Canonical video assets]
-    transcripts[_data/transcripts.yml&lt;br/&gt;Transcript text referenced by video_assets]
+    transcripts[_data/transcripts/*.yml&lt;br/&gt;Transcript entries referenced by video_assets]
   end
 
   subgraph Buckets["Video Buckets"]
@@ -53,7 +53,7 @@ flowchart TB
   subgraph Canonical["Canonical Data"]
     interviews[_data/interviews.yml&lt;br/&gt;Interview records]
     assets[_data/video_assets.yml&lt;br/&gt;Canonical video assets]
-    transcripts[_data/transcripts.yml&lt;br/&gt;Transcript text referenced by video_assets]
+    transcripts[_data/transcripts/*.yml&lt;br/&gt;Transcript entries referenced by video_assets]
   end
 
   subgraph Buckets["Video Buckets"]
@@ -126,11 +126,12 @@ flowchart TB
         video_url: string       # Direct video file URL (PechaKucha)
         image_url: string       # Poster image (PechaKucha)</code></pre>
 
-    <h4><code>_data/transcripts.yml</code></h4>
-    <p>Canonical transcripts referenced by <code>video_assets.yml</code>:</p>
-    <pre><code>items:
-  - id: string        # Transcript ID (referenced by video_assets.transcript_id)
-    content: string   # Transcript text</code></pre>
+    <h4><code>_data/transcripts/*.yml</code></h4>
+    <p>Canonical transcripts referenced by <code>video_assets.yml</code>. Each transcript is stored as its own data file keyed by transcript ID (file basename):</p>
+    <pre><code># File: _data/transcripts/&lt;transcript_id&gt;.yml
+content: |
+  Transcript text...</code></pre>
+    <p><code>_data/transcripts.yml</code> remains as a legacy placeholder and is not the active transcript content source.</p>
 
     <h3>Lookup Tables</h3>
 

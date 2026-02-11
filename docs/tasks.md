@@ -76,6 +76,26 @@ This task list is prioritized to protect pipeline correctness first, then data i
 
 ## Short-Term Backlog
 
-1. Continue periodic validator hardening only where reports indicate drift.
-2. Keep command/documentation grammar aligned to `bin/pipeline` subcommands.
-3. Track retrospective follow-through as first-class process work, not post-hoc cleanup.
+1. Transcript Coverage Expansion
+   - Status: deferred (work in progress).
+   - Notes: transcript onboarding should continue as new source transcript files are produced; avoid blocking other metadata/SEO work on transcript completeness.
+
+2. Metadata Completion at Scale (Active Candidate)
+   - Fill missing `video_assets` fields (`description`, `topic`) in prioritized batches.
+   - Fill missing `interviews` `topic` values where conference/community context is known.
+   - Keep topic/description conventions consistent with canonical slugs and transcript-derived phrasing.
+
+3. SEO Metadata Quality Cleanup (Active Candidate)
+   - Reduce `title_outliers`, `desc_outliers`, `duplicate_titles`, and `duplicate_descs` reported by `tmp/seo-metadata-report.json`.
+   - Prioritize canonical pages first (`/`, `/home/`, `/interviews/`, `/videos/`, high-traffic interview/video routes).
+   - Preserve current canonical/indexability contracts while improving metadata quality.
+
+4. Data Model Documentation Alignment (Active Candidate)
+   - Update docs to reflect per-file transcripts in `_data/transcripts/*.yml` as canonical transcript storage.
+   - Clarify `_data/transcripts.yml` is legacy/placeholder and not the active content source.
+   - Keep docs synchronized with generators/templates in the same commit series.
+
+5. Ongoing Maintenance
+   - Continue periodic validator hardening only where reports indicate drift.
+   - Keep command/documentation grammar aligned to `bin/pipeline` subcommands.
+   - Track retrospective follow-through as first-class process work, not post-hoc cleanup.
