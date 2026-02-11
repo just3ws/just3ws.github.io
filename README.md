@@ -30,6 +30,7 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
   - `bin/generate_video_asset_pages.rb`
   - `bin/generate_interview_pages.rb`
   - `bin/generate_interview_taxonomy_pages.rb`
+  - `bin/generate_context_summaries.rb`
 - Validation:
   - `bin/pipeline ci` (CI core pipeline)
   - `bin/pipeline smoke` (browser smoke checks)

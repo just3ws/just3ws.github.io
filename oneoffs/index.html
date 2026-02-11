@@ -12,6 +12,20 @@ breadcrumb: One-offs
     <p class="intro">Standalone talks and presentations across platforms.</p>
   </header>
 
+  {% assign summary = site.data.index_summaries.pages.oneoffs %}
+  {% if summary %}
+    <section class="index-summary">
+      {% if summary.summary %}<p>{{ summary.summary }}</p>{% endif %}
+      {% if summary.highlights and summary.highlights.size > 0 %}
+        <ul class="index-highlights">
+          {% for item in summary.highlights %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+  {% endif %}
+
   {% assign items = site.data.oneoff_videos.items %}
   {% for item in items %}
     {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}

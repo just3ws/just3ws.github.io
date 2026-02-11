@@ -1,0 +1,21 @@
+---
+primary_domain: www.just3ws.com
+legacy_domains:
+  - domain: whoistech.com
+    status: observe_only
+    preserve_path_query: true
+    notes: Historical UGtastic/community traffic domain.
+  - domain: ugtastic.com
+    status: observe_only
+    preserve_path_query: true
+    notes: Legacy UGtastic brand domain.
+log_export:
+  provider: cloudflare
+  format: csv_or_jsonl
+  required_fields:
+    - ClientRequestHost
+    - ClientRequestPath
+    - ClientRequestQuery
+    - EdgeResponseStatus
+    - ClientCountry
+    - UserAgent

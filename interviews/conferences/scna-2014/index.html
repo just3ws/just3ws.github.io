@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "SCNA 2014"
-description: "Interviews recorded at SCNA 2014."
+description: "SCNA 2014 includes 10 interviews. Years represented: 2014. Interviewees include Adewale Oshineye, Amitai Schlair, Angelique Martin, Chet Hendrickson & Ron Jefferies, and Dave Thomas. Topics include developer advocacy and recording what you learn."
 breadcrumb: "SCNA 2014"
 breadcrumb_grandparent_name: "Interviews"
 breadcrumb_grandparent_url: /interviews/
@@ -13,8 +13,13 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>SCNA 2014</h1>
-    <p class="intro">Interviews recorded at SCNA 2014.</p>
+    <p class="intro">SCNA 2014 includes 10 interviews. Years represented: 2014. Interviewees include Adewale Oshineye, Amitai Schlair, Angelique Martin, Chet Hendrickson & Ron Jefferies, and Dave Thomas. Topics include developer advocacy and recording what you learn.</p>
   </header>
+  <section class="index-summary">
+    <ul class="index-highlights">
+      <li>Hi, it's Mike with SCNA. Hi, it's Mike with UGtastic. I'm here at SCNA 2013, and I'm sitting down with Adewale Oshineye,…</li>
+    </ul>
+  </section>
 
   {% assign items = site.data.interviews.items | where: "conference", "SCNA" | where: "conference_year", 2014 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

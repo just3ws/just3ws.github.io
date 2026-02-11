@@ -63,7 +63,7 @@ This task list is prioritized to protect pipeline correctness first, then data i
 - Ongoing expectation: keep uniqueness/integrity checks in the default CI path.
 
 ### Phase 3: Technical SEO Optimizations (Non-Visual)
-- Status: implemented, now in maintenance mode.
+- Status: implemented, actively tuned with metric-driven follow-up.
 - Ongoing expectation: preserve canonical/schema contracts and artifact-based observability.
 
 ## Logged Recommendations (Current)
@@ -81,21 +81,26 @@ This task list is prioritized to protect pipeline correctness first, then data i
    - Notes: transcript onboarding should continue as new source transcript files are produced; avoid blocking other metadata/SEO work on transcript completeness.
 
 2. Metadata Completion at Scale (Active Candidate)
+   - Status: active candidate.
    - Fill missing `video_assets` fields (`description`, `topic`) in prioritized batches.
    - Fill missing `interviews` `topic` values where conference/community context is known.
    - Keep topic/description conventions consistent with canonical slugs and transcript-derived phrasing.
 
 3. SEO Metadata Quality Cleanup (Active Candidate)
+   - Status: active candidate (partially improved).
+   - Baseline (2026-02-11): `title_outliers=76`, `desc_outliers=56`, `duplicate_titles=0`, `duplicate_descs=4`.
    - Reduce `title_outliers`, `desc_outliers`, `duplicate_titles`, and `duplicate_descs` reported by `tmp/seo-metadata-report.json`.
    - Prioritize canonical pages first (`/`, `/home/`, `/interviews/`, `/videos/`, high-traffic interview/video routes).
    - Preserve current canonical/indexability contracts while improving metadata quality.
 
 4. Data Model Documentation Alignment (Active Candidate)
+   - Status: active candidate.
    - Update docs to reflect per-file transcripts in `_data/transcripts/*.yml` as canonical transcript storage.
    - Clarify `_data/transcripts.yml` is legacy/placeholder and not the active content source.
    - Keep docs synchronized with generators/templates in the same commit series.
 
 5. Ongoing Maintenance
+   - Status: continuous.
    - Continue periodic validator hardening only where reports indicate drift.
    - Keep command/documentation grammar aligned to `bin/pipeline` subcommands.
    - Track retrospective follow-through as first-class process work, not post-hoc cleanup.

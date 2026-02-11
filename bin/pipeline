@@ -50,6 +50,7 @@ run_generate() {
   find videos -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
 
   ./bin/sync_interview_asset_links.rb
+  ruby ./bin/generate_context_summaries.rb
   ./bin/generate_interview_pages.rb
   ruby ./bin/generate_video_asset_pages.rb
   ruby ./bin/generate_interview_taxonomy_pages.rb

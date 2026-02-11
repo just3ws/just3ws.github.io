@@ -13,6 +13,19 @@ breadcrumb: Interviews
     <p class="intro">Canonical interview index with links to each published asset.</p>
   </header>
 
+  {% assign summary = site.data.index_summaries.pages.interviews %}
+  {% if summary %}
+    <section class="index-summary">
+      {% if summary.summary %}<p>{{ summary.summary }}</p>{% endif %}
+      {% if summary.highlights and summary.highlights.size > 0 %}
+        <ul class="index-highlights">
+          {% for item in summary.highlights %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+  {% endif %}
 
   {% assign interviews = site.data.interviews.items | sort: "recorded_date" | reverse %}
   {% for interview in interviews %}

@@ -12,6 +12,20 @@ breadcrumb: SCMC
     <p class="intro">Software Craftsmanship McHenry County recordings.</p>
   </header>
 
+  {% assign summary = site.data.index_summaries.pages.scmc %}
+  {% if summary %}
+    <section class="index-summary">
+      {% if summary.summary %}<p>{{ summary.summary }}</p>{% endif %}
+      {% if summary.highlights and summary.highlights.size > 0 %}
+        <ul class="index-highlights">
+          {% for item in summary.highlights %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+  {% endif %}
+
   {% assign items = site.data.scmc_videos.items %}
   {% for item in items %}
     {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}

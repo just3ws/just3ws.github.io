@@ -12,6 +12,20 @@ breadcrumb: Videos
     <p class="intro">Canonical video assets with one or more published platforms.</p>
   </header>
 
+  {% assign summary = site.data.index_summaries.pages.videos %}
+  {% if summary %}
+    <section class="index-summary">
+      {% if summary.summary %}<p>{{ summary.summary }}</p>{% endif %}
+      {% if summary.highlights and summary.highlights.size > 0 %}
+        <ul class="index-highlights">
+          {% for item in summary.highlights %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+  {% endif %}
+
   {% assign items = site.data.video_assets.items %}
   {% for asset in items %}
     {% include_cached video-asset-card.html asset=asset %}

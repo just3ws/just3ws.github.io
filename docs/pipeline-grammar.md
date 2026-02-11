@@ -27,7 +27,7 @@ Grammar:
 ## Commands
 
 - `generate`  
-  Regenerates data-driven interview/video pages from canonical YAML in `_data/`.
+  Regenerates data-driven interview/video pages plus canonical context summaries from `_data/`.
 - `build`  
   Runs runtime checks, regenerates pages, and builds `_site` via Jekyll.
 - `validate`  
@@ -78,6 +78,7 @@ Grammar:
   - `bin/generate_interview_pages.rb`
   - `bin/generate_video_asset_pages.rb`
   - `bin/generate_interview_taxonomy_pages.rb`
+  - `bin/generate_context_summaries.rb`
   - `bin/generate_last_modified.rb`
 - Validators/reports:
   - `bin/validate_data_uniqueness.rb`

@@ -2,22 +2,29 @@
 require "yaml"
 require "fileutils"
 require "date"
+require "time"
 
 root = File.expand_path("..", __dir__)
 interviews_path = File.join(root, "_data", "interviews.yml")
 conf_path = File.join(root, "_data", "interview_conferences.yml")
 comm_path = File.join(root, "_data", "interview_communities.yml")
+index_summary_path = File.join(root, "_data", "index_summaries.yml")
 
 interviews = YAML.safe_load(File.read(interviews_path), permitted_classes: [Time, Date], aliases: true)["items"] || []
 confs = YAML.safe_load(File.read(conf_path), permitted_classes: [Date], aliases: true)["conferences"] || []
 comms = YAML.safe_load(File.read(comm_path), permitted_classes: [Date], aliases: true)["communities"] || []
+index_summaries = YAML.safe_load(File.read(index_summary_path), permitted_classes: [Date, Time], aliases: true) || {}
 
 def yaml_quote(value)
   str = value.to_s.tr("\n", ' ')
   "\"#{str.gsub('"', '\"')}\""
 end
 
-def write_index(path, title, intro, items, link_prefix, count_label, parent_name: "Interviews", parent_url: "/interviews/", grandparent_name: nil, grandparent_url: nil)
+def interview_count_label(count)
+  count.to_i == 1 ? "1 interview" : "#{count} interviews"
+end
+
+def write_index(path, title, intro, items, link_prefix, count_label, summary: nil, highlights: nil, parent_name: "Interviews", parent_url: "/interviews/", grandparent_name: nil, grandparent_url: nil)
   File.open(path, "w") do |f|
     f.puts "---"
     f.puts "layout: minimal"
@@ -40,18 +47,34 @@ def write_index(path, title, intro, items, link_prefix, count_label, parent_name
     f.puts "    <h1>#{title}</h1>"
     f.puts "    <p class=\"intro\">#{intro}</p>"
     f.puts "  </header>"
+    if summary && !summary.to_s.strip.empty?
+      f.puts "  <section class=\"index-summary\">"
+      f.puts "    <p>#{summary}</p>"
+      if highlights.is_a?(Array) && !highlights.empty?
+        f.puts "    <ul class=\"index-highlights\">"
+        highlights.each do |highlight|
+          next if highlight.to_s.strip.empty?
+          f.puts "      <li>#{highlight}</li>"
+        end
+        f.puts "    </ul>"
+      end
+      f.puts "  </section>"
+    end
     f.puts ""
     f.puts "  <div class=\"conference-list\">"
     items.each do |item|
       f.puts "    <div class=\"conference-card\">"
       f.puts "      <h2><a href=\"#{link_prefix}/#{item["slug"]}/\">#{item["name"]}</a></h2>"
+      if item["summary"] && !item["summary"].to_s.empty?
+        f.puts "      <p>#{item["summary"]}</p>"
+      end
       if item["location"] && !item["location"].to_s.empty?
         f.puts "      <div class=\"conference-meta\">#{item["location"]}</div>"
       end
       if item["start_date"] && item["end_date"]
         f.puts "      <div class=\"conference-dates\">#{item["start_date"]} – #{item["end_date"]}</div>"
       end
-      f.puts "      <div class=\"conference-count\">#{item[count_label]} interviews</div>"
+      f.puts "      <div class=\"conference-count\">#{interview_count_label(item[count_label])}</div>"
       f.puts "    </div>"
     end
     f.puts "  </div>"
@@ -59,7 +82,7 @@ def write_index(path, title, intro, items, link_prefix, count_label, parent_name
   end
 end
 
-def write_detail(path, title, intro, filter_field, filter_value, year, parent_name: "Interviews", parent_url: "/interviews/", grandparent_name: nil, grandparent_url: nil)
+def write_detail(path, title, intro, filter_field, filter_value, year, highlights: nil, parent_name: "Interviews", parent_url: "/interviews/", grandparent_name: nil, grandparent_url: nil)
   File.open(path, "w") do |f|
     f.puts "---"
     f.puts "layout: minimal"
@@ -82,6 +105,16 @@ def write_detail(path, title, intro, filter_field, filter_value, year, parent_na
     f.puts "    <h1>#{title}</h1>"
     f.puts "    <p class=\"intro\">#{intro}</p>"
     f.puts "  </header>"
+    if highlights.is_a?(Array) && !highlights.empty?
+      f.puts "  <section class=\"index-summary\">"
+      f.puts "    <ul class=\"index-highlights\">"
+      highlights.each do |highlight|
+        next if highlight.to_s.strip.empty?
+        f.puts "      <li>#{highlight}</li>"
+      end
+      f.puts "    </ul>"
+      f.puts "  </section>"
+    end
     f.puts ""
     if year
       f.puts "  {% assign items = site.data.interviews.items | where: \"#{filter_field}\", \"#{filter_value}\" | where: \"conference_year\", #{year} | sort: \"recorded_date\" | reverse %}"
@@ -119,6 +152,8 @@ write_index(
   confs,
   "/interviews/conferences",
   "interview_count",
+  summary: index_summaries.dig("pages", "interviews_conferences", "summary"),
+  highlights: index_summaries.dig("pages", "interviews_conferences", "highlights"),
   parent_name: "Interviews",
   parent_url: "/interviews/"
 )
@@ -130,6 +165,8 @@ write_index(
   comms,
   "/interviews/communities",
   "interview_count",
+  summary: index_summaries.dig("pages", "interviews_communities", "summary"),
+  highlights: index_summaries.dig("pages", "interviews_communities", "highlights"),
   parent_name: "Interviews",
   parent_url: "/interviews/"
 )
@@ -139,7 +176,7 @@ confs.each do |conf|
   FileUtils.mkdir_p(dir)
   conf_name = conf["conference"] || conf["name"]
   conf_year = conf["year"]
-  intro = conf_year ? "Interviews recorded at #{conf_name} #{conf_year}." : "Interviews recorded at #{conf_name}."
+  intro = conf["summary"] || (conf_year ? "Interviews recorded at #{conf_name} #{conf_year}." : "Interviews recorded at #{conf_name}.")
   write_detail(
     File.join(dir, "index.html"),
     conf["name"],
@@ -147,6 +184,7 @@ confs.each do |conf|
     "conference",
     conf_name,
     conf_year,
+    highlights: conf["highlights"],
     parent_name: "Interviews by Conference",
     parent_url: "/interviews/conferences/",
     grandparent_name: "Interviews",
@@ -160,10 +198,11 @@ comms.each do |comm|
   write_detail(
     File.join(dir, "index.html"),
     comm["name"],
-    "Interviews recorded with the #{comm["name"]} community.",
+    comm["summary"] || "Interviews recorded with the #{comm["name"]} community.",
     "community",
     comm["name"],
     nil,
+    highlights: comm["highlights"],
     parent_name: "Interviews by Community",
     parent_url: "/interviews/communities/",
     grandparent_name: "Interviews",
