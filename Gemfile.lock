@@ -56,6 +56,7 @@ GEM
       json
     crass (1.0.6)
     csv (3.3.5)
+    diff-lcs (1.6.2)
     drb (2.2.3)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
@@ -201,6 +202,19 @@ GEM
     regexp_parser (2.11.3)
     rexml (3.4.4)
     rouge (3.30.0)
+    rspec (3.13.2)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.6)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.7)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.7)
     rubocop (1.84.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -267,6 +281,7 @@ DEPENDENCIES
   jekyll-seo-tag (= 2.8.0)
   jekyll-sitemap (= 1.4.0)
   mdl
+  rspec
   rubocop
   rubocop-performance
   scss_lint

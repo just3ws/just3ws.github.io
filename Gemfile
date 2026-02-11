@@ -17,6 +17,7 @@ group :jekyll_plugins do
 end
 
 group :development do
+  gem 'rspec', require: false
   gem 'bundler-audit', require: false
   gem 'erb_lint', require: false
   gem 'html-proofer', require: false

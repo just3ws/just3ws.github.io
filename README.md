@@ -71,6 +71,9 @@ bundle install
 # Build and validate
 ./bin/pipeline ci
 
+# Run unit tests for generator/template logic
+bundle exec rspec
+
 # Run smoke tests against built output
 ./bin/pipeline smoke
 
