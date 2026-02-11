@@ -6,15 +6,16 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | validate | smoke | sitemap | ci | help
+  <command> ::= generate | build | test | validate | smoke | sitemap | ci | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
   build     Run generate and build _site with Jekyll.
+  test      Run RSpec unit tests.
   validate  Run data/SEO/semantic/link checks against _site.
   smoke     Run Playwright smoke checks against built _site.
   sitemap   Print sitemap coverage summary from built _site.
-  ci        Run build + validate (CI core pipeline).
+  ci        Run build + test + validate (CI core pipeline).
   help      Show this help.
 USAGE
 }
@@ -130,6 +131,11 @@ run_validate() {
   fi
 }
 
+run_test() {
+  check_runtime
+  bundle exec rspec
+}
+
 run_smoke() {
   if [ ! -d _site ]; then
     echo "Missing _site directory. Run './bin/pipeline build' first." >&2
@@ -159,6 +165,9 @@ case "$command" in
   validate)
     run_validate
     ;;
+  test)
+    run_test
+    ;;
   smoke)
     run_smoke
     ;;
@@ -167,6 +176,7 @@ case "$command" in
     ;;
   ci)
     run_build
+    run_test
     run_validate
     ;;
   help|-h|--help)
