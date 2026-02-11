@@ -6,13 +6,14 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | test | validate | smoke | sitemap | ci | help
+  <command> ::= generate | build | test | validate | semantic-graph | smoke | sitemap | ci | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
   build     Run generate and build _site with Jekyll.
   test      Run RSpec unit tests.
   validate  Run data/SEO/semantic/link checks against _site.
+  semantic-graph Generate JSON-LD semantic graph artifacts from rendered _site.
   smoke     Run Playwright smoke checks against built _site.
   sitemap   Print sitemap coverage summary from built _site.
   ci        Run build + test + validate (CI core pipeline).
@@ -129,11 +130,21 @@ run_validate() {
     echo "Increase SITEMAP_MAX_URLS only when intentional publication-scope expansion is approved." >&2
     exit 1
   fi
+
+  # Report artifact only; never block CI on visualization output.
+  if ! run_semantic_graph; then
+    echo "Warning: semantic graph generation failed (non-blocking)." >&2
+  fi
 }
 
 run_test() {
   check_runtime
   bundle exec rspec
+}
+
+run_semantic_graph() {
+  check_runtime
+  ruby ./bin/visualize_semantic_graph.rb
 }
 
 run_smoke() {
@@ -164,6 +175,9 @@ case "$command" in
     ;;
   validate)
     run_validate
+    ;;
+  semantic-graph)
+    run_semantic_graph
     ;;
   test)
     run_test

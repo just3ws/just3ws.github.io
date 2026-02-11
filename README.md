@@ -77,6 +77,9 @@ bundle exec rspec
 # Run smoke tests against built output
 ./bin/pipeline smoke
 
+# Generate semantic graph artifacts from rendered pages
+./bin/pipeline semantic-graph
+
 # Print sitemap coverage summary
 ./bin/pipeline sitemap
 ```

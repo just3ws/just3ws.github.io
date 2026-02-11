@@ -21,7 +21,7 @@ Use the pipeline entrypoint for all build/validation workflow commands:
 Grammar:
 
 ```ebnf
-<command> ::= generate | build | validate | smoke | sitemap | ci | help
+<command> ::= generate | build | test | validate | semantic-graph | smoke | sitemap | ci | help
 ```
 
 ## Commands
@@ -32,12 +32,14 @@ Grammar:
   Runs runtime checks, regenerates pages, and builds `_site` via Jekyll.
 - `validate`  
   Runs data integrity checks, SEO/canonical checks, semantic/schema checks, HTMLProofer, and resume/sitemap guardrails against `_site`.
+- `semantic-graph`  
+  Generates JSON-LD semantic graph artifacts from rendered `_site` into `tmp/schema-graph.dot` and `tmp/schema-graph-summary.json`.
 - `smoke`  
   Runs Playwright smoke checks against built `_site`.
 - `sitemap`  
   Prints a local sitemap coverage summary (counts by section + URL sample).
 - `ci`  
-  Full CI core pipeline (`build` + `validate`).
+  Full CI core pipeline (`build` + `test` + `validate`).
 - `help`  
   Prints grammar and command help.
 
@@ -46,6 +48,9 @@ Grammar:
 ```bash
 # Full CI-equivalent local run
 ./bin/pipeline ci
+
+# Generate semantic graph artifacts from built pages
+./bin/pipeline semantic-graph
 
 # CI + browser smoke checks
 ./bin/pipeline ci
@@ -88,4 +93,5 @@ Grammar:
   - `bin/validate_public_index_mode.rb`
   - `bin/validate_semantic_output.rb`
   - `bin/report_seo_metadata.rb`
+  - `bin/visualize_semantic_graph.rb`
   - `bin/visualize_sitemap.rb`
