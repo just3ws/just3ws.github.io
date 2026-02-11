@@ -1,14 +1,20 @@
 <header class="site-header no-print" role="banner">
   <nav class="site-nav" aria-label="Primary">
-    <a class="site-nav-brand" href="/home/">just3ws</a>
+    {% assign current_url = page.url | default: "/" %}
+    <a
+      class="site-nav-brand{% if current_url == '/home/' %} is-active{% endif %}"
+      href="/home/"
+      {% if current_url == '/home/' %}aria-current="page"{% endif %}
+    >just3ws</a>
     <div class="site-nav-links">
-      <a href="/home/">Home</a>
-      <a href="/interviews/">Interviews</a>
-      <a href="/videos/">Videos</a>
-      <a href="/writing/">Writing</a>
-      <a href="/docs/">Docs</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
+      <a href="/" {% if current_url == '/' %}class="is-active" aria-current="page"{% endif %}>Resume</a>
+      <a href="/home/" {% if current_url == '/home/' %}class="is-active" aria-current="page"{% endif %}>Home</a>
+      <a href="/interviews/" {% if current_url == '/interviews/' or current_url contains '/interviews/' %}class="is-active" aria-current="page"{% endif %}>Interviews</a>
+      <a href="/videos/" {% if current_url == '/videos/' or current_url contains '/videos/' %}class="is-active" aria-current="page"{% endif %}>Videos</a>
+      <a href="/writing/" {% if current_url == '/writing/' or current_url contains '/writing/' %}class="is-active" aria-current="page"{% endif %}>Writing</a>
+      <a href="/docs/" {% if current_url == '/docs/' or current_url contains '/docs/' %}class="is-active" aria-current="page"{% endif %}>Docs</a>
+      <a href="/about/" {% if current_url == '/about/' or current_url contains '/about/' %}class="is-active" aria-current="page"{% endif %}>About</a>
+      <a href="/contact/" {% if current_url == '/contact/' or current_url contains '/contact/' %}class="is-active" aria-current="page"{% endif %}>Contact</a>
     </div>
   </nav>
 </header>

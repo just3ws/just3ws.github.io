@@ -518,6 +518,11 @@ section {
   margin-right: 0.5rem;
 }
 
+.site-nav-brand.is-active {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
 .site-nav-links {
   display: flex;
   flex-wrap: wrap;
@@ -537,6 +542,12 @@ section {
   background: var(--surface-2);
   color: var(--accent);
   text-decoration: none;
+}
+
+.site-nav-links a.is-active {
+  background: var(--surface-2);
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .breadcrumbs {
