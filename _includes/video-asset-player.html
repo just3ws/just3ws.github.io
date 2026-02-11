@@ -1,5 +1,12 @@
 {% assign asset = include.asset %}
 {% if asset %}
+  {% assign transcript = nil %}
+  {% if asset.transcript_id %}
+    {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
+    {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
+  {% endif %}
+  {% assign has_transcript = false %}
+  {% if transcript %}{% assign has_transcript = true %}{% endif %}
   {% assign preferred = nil %}
   {% if asset.primary_platform %}
     {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
@@ -7,7 +14,7 @@
   {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
 
   {% if preferred %}
-    <div class="video video-detail">
+    <div class="video video-detail{% if has_transcript %} has-transcript{% endif %}">
       {% if preferred.video_url %}
         <div class="video-embed">
           <video controls preload="metadata" poster="{{ preferred.image_url | default: asset.thumbnail }}">
@@ -20,6 +27,12 @@
         </div>
       {% endif %}
       <div class="video-body">
+        {% if has_transcript %}
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        {% endif %}
         {% if asset.description %}
           <div class="video-description"><span class="video-description-label">Description:</span> {{ asset.description }}</div>
         {% endif %}
@@ -40,13 +53,8 @@
     </div>
   {% endif %}
 
-  <section class="transcript">
+  <section class="transcript" id="transcript">
     <h2>Transcript</h2>
-    {% assign transcript = nil %}
-    {% if asset.transcript_id %}
-      {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
-      {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
-    {% endif %}
     {% if transcript %}
       <div class="video-transcript">{{ transcript | markdownify }}</div>
     {% else %}

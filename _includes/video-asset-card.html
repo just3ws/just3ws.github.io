@@ -1,5 +1,13 @@
 {% assign asset = include.asset %}
 {% if asset %}
+  {% assign has_transcript = false %}
+  {% assign transcript_entry = nil %}
+  {% if asset.transcript_id %}
+    {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
+    {% if transcript_entry and transcript_entry.content %}
+      {% assign has_transcript = true %}
+    {% endif %}
+  {% endif %}
   {% assign preferred = nil %}
   {% if asset.primary_platform %}
     {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
@@ -8,7 +16,7 @@
   {% assign detail_url = "/videos/" | append: asset.id | append: "/" %}
   {% assign thumb = preferred.thumbnail | default: asset.thumbnail %}
 
-  <div class="video">
+  <div class="video{% if has_transcript %} has-transcript{% endif %}">
     {% if thumb %}
       <a class="video-thumb" href="{{ detail_url }}">
         <img src="{{ thumb }}" alt="Thumbnail for {{ asset.title }}">
@@ -16,6 +24,11 @@
     {% endif %}
     <div class="video-body">
       <div class="video-title"><a href="{{ detail_url }}">{{ asset.title }}</a></div>
+      {% if has_transcript %}
+        <div class="video-indicators">
+          <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+        </div>
+      {% endif %}
       <div class="video-meta">
         {% if asset.published_date %}Published: {{ asset.published_date | date: "%b %d, %Y" }}{% elsif preferred and preferred.published_date %}Published: {{ preferred.published_date | date: "%b %d, %Y" }}{% endif %}
       </div>

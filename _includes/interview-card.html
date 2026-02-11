@@ -4,8 +4,16 @@
 {% assign preferred = vimeo | default: youtube | default: asset.platforms.first %}
 {% assign primary_url = "/interviews/" | append: interview.id | append: "/" %}
 {% assign thumb = preferred.thumbnail_local | default: preferred.thumbnail | default: asset.thumbnail_local | default: asset.thumbnail %}
+{% assign has_transcript = false %}
+{% assign transcript_entry = nil %}
+{% if asset and asset.transcript_id %}
+  {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
+  {% if transcript_entry and transcript_entry.content %}
+    {% assign has_transcript = true %}
+  {% endif %}
+{% endif %}
 
-<div class="video">
+<div class="video{% if has_transcript %} has-transcript{% endif %}">
   {% if thumb %}
     <a class="video-thumb" href="{{ primary_url }}">
       <img src="{{ thumb }}" alt="Thumbnail for {{ interview.title }}">
@@ -13,6 +21,11 @@
   {% endif %}
   <div class="video-body">
     <div class="video-title"><a href="{{ primary_url }}">{{ interview.title }}</a></div>
+    {% if has_transcript %}
+      <div class="video-indicators">
+        <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+      </div>
+    {% endif %}
     {% if interview.interviewees and interview.interviewees.size > 0 %}
       <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {{ interview.interviewees | join: ", " }}</div>
     {% endif %}

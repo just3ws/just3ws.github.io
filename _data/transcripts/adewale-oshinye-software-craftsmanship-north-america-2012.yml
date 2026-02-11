@@ -1,0 +1,138 @@
+---
+content: |
+  Hi, I'm Mike with UGtastic here again at SCNA.
+  I'm sitting down with Adewale Oshineye and it's a little bit late at night so I apologize for the dark light.
+  We don't have the best lighting, but we wanted to move forward with the interview because I think what Eddie has to say is interesting enough to want to warrant a good listen.
+  You co-authored the Apprenticeship Patterns book with Dave Hoover and it's been a very well-received book in the software craftsmanship.
+  It's been a very useful tool that people who want to become software developers can look at.
+  But I'm curious as to how you see apprenticeships and the concept of the user community.
+  Is there some kind of way that people who are interested in apprenticeships can use the user community?
+  Is there a way to learn more, or is there value for user communities to reach out and talk to apprentices?
+  Okay, so when we tried to define what apprenticeship meant, we were trying to get at this idea that you can't just learn on your own.
+  So one of the examples that was really instrumental in getting me to understand this was that I spent a year trying to learn to juggle.
+  And I bumped into somebody for 20 minutes in Belgium and I made more progress in those 20 minutes with that person than I had in the entire year.
+  Oh.
+  I was trying to learn from a book.
+  Right.
+  And that made me realize that it's so much easier to learn from other people.
+  And it's better if it's not just one person, which is the traditional model of an apprenticeship.
+  It's better if it's a community of people because they can teach you different things.
+  You still want the one-to-one relationship with a mentor, but you still can benefit from a community.
+  In fact, one of the patterns in the book is called kindred spirits.
+  Okay.
+  And it came out of Dave's experiences with a lot of user groups where he was learning new skills.
+  And so for us, as an apprentice, you need a community.
+  You ideally need to be a member of multiple communities so you can pick up a variety of different skills.
+  But also for community, apprentices, people with that kind of mindset can bring energy to your community.
+  Right.
+  They can bring new ideas, especially if they're members of other communities.
+  Enthusiasm.
+  Exactly.
+  But also, you get somebody who comes in and who wants to learn, who wants to do everything you consider boring, everything you've considered, "Oh yes, everybody knows about that." Right.
+  Having somebody new in your community means there's somebody who wants to come in, and if your community is bored with TDD, there's somebody who finds it new and interesting and they wanted to know the details.
+  And they will come in with a different perspective, and they may end up reinventing it from underneath you.
+  And this is one of the most powerful ideas, that you can bring new people into a community, teach them the things the community does and does well, and then listen to their ideas so that when they revolutionize or even just improve your community, you can actually incorporate them.
+  Right.
+  And that's kind of interesting.
+  I mean, I think of a person I interviewed earlier, Colin Jones.
+  He was an apprentice at Eighth Light, and he just embraced the Clojure community.
+  He embraced the Clojure community, and it, in turn, embraced him back.
+  And now he's contributing very much to other people's learning.
+  So he went from being an apprentice, seeing something cool, going to that community and saying, "I'm willing to learn.
+  Let me help and let me learn." And they said, "Okay, sure.
+  Here you go." And then, next thing you know, he's pretty much an expert at Clojure, and people far senior in the industry are coming to him for help.
+  I think it's a very interesting mission.
+  I think it's a very powerful idea.
+  I mean, one of the things, one of the patterns we talk about in the book is this notion of share what you learn.
+  It actually came out of an initial pattern called record what you learn, which is this idea that you can't just go off and learn.
+  You should write down the things you've learned, why you learned them, how you learned them.
+  Because in the future, you'll look back on those, and you'll get new insights.
+  And then one of the things we realized was that actually, just because you've written down this experience, the things you've learned, doesn't mean you always want to publish it, right?
+  But there's a very narrow set of things of circumstances where you want to share this with a wider community of people because you believe that community will benefit.
+  But you do that after you've got to a stage of comfort.
+  One of the things a community can provide you with is a place where you can go to try stuff out.
+  To say, I have this idea, and show it to people.
+  And they may explain to you why it's broken, but because it's your community, or it's a community that welcomes you, they can guide you away from your errors.
+  So it's sort of a safe place to share.
+  That's one of the great things about having a community, especially outside work.
+  You can say, I took this thing we're building, and I rewrote it in I/O, or Ioki, or J, or Unlambda.
+  And it's a huge, giant mess.
+  And I learned a lot of things from making this huge, giant mess.
+  And that's okay, because there's a community that cares about learning.
+  But if you do that at your job, you're putting yourself at risk.
+  There's a potential for financial loss.
+  Or status loss.
+  But it's also the sense that you are taking risks with the data your company is giving you.
+  You're taking risks with the trust other members of your team have placed in you.
+  And the safe place you can go to to try stuff out is actually really valuable.
+  In fact, one of the patterns in the book is called Breakable Toys.
+  It's based on a quote from Linus Torvalds.
+  David's favorite.
+  And the beauty of it is this idea that I can go off and do things, and it's okay if they don't work.
+  Because the goal is to learn, not to build something that works.
+  So one of mine is a very, very slow project I've been working on, which is to write a puzzle for a language, for a magazine that no longer exists.
+  The magazine went bust before they launched their first edition.
+  Or they shut down.
+  And there was a contest they ran to build a parser so people could write articles for the magazine.
+  But the magazine's gone.
+  The test cases for the parser are still there.
+  And I've been using that as a breakable toy.
+  So I'm writing in Java.
+  I'm handwriting the parser and the lexer and everything.
+  But I'm writing in Java and I'm not using any of the Java tools.
+  So you're trying to build it all from, relatively speaking, standard-led up.
+  Worse than that.
+  I'm not using any IDE.
+  I'm just using TextMate.
+  That's my text editor.
+  No fancy extensions.
+  I'm not using any fancy build tools.
+  I'm not even using Javadoc.
+  I'm using JavaP if I want to read the methods and pictures of things.
+  Which is insanely difficult.
+  But it's forcing me to actually think about what I actually really know about Java.
+  And what I've just sort of offloaded to the tools.
+  And making me aware of the distinction between "I know how that works" and "I'll just read that in a Javadoc." And that distinction is quite powerful.
+  The other thing it does is that it forces you to really think about how you design a parser.
+  By the way, I'm doing all of these tests first.
+  Which makes it even harder.
+  I've got to the stage where the parsing books are saying, "At this point, you switch to Adler." And I'm just continuing on.
+  And it's something I pretty much only work on in airports as well.
+  Because it's something I do completely offline.
+  So it's a very slow project, but it's very educational.
+  So the idea is...
+  This almost sounds like a code retreat exercise written very large.
+  Where you're like, "I'm going to do this the hardest way possible." Basically.
+  Yeah, but there's no deliverable.
+  There's just the exercise.
+  It's like tending a garden, it sounds like.
+  Or tending a bonsai.
+  I know for certain nobody's going to use this thing.
+  I know I'm not going to use this.
+  I don't know if you even like the syntax of the language that much.
+  But the exercise is challenging.
+  Because this is somebody who designed the grammar of a language for a set of problems.
+  Which are very large.
+  There are no compromises to make it easier.
+  It's just, this is what we'd like the language to do.
+  And there's a community of people who've built working versions of this parser in a variety of languages.
+  So I know it's possible.
+  I can see ahead of me on the road all the people who've built working implementations in a sensible way.
+  And it took them a few days.
+  And I've been working on it for about a year and a half.
+  So you can sit on GitHub and I don't make much progress.
+  Because maybe six months will go by and I'll actually look at it and I'll get one test to pass.
+  I'll write down what I learned.
+  And it's up there publicly if anybody wants to look at it.
+  I'm not sure how much value they'll get from it.
+  But I get a lot of value.
+  Just forcing myself to be very explicit, very deliberate, very careful in building something.
+  That's very interesting.
+  Like I was saying there, I think that's almost like trimming the bonsai.
+  There's just a zen of working on this thing.
+  There's no deliverable.
+  There's no end to it.
+  There's just the journey.
+  So that's very interesting.
+  Well thank you very much for taking the time to sit down.
+  Thank you very much.
