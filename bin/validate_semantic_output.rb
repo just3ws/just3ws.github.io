@@ -151,6 +151,8 @@ coverage = {
   json_ld_nodes_total: 0,
   typed_nodes: Hash.new(0),
   pages_with_type: Hash.new(0),
+  pages_with_breadcrumbs: 0,
+  pages_with_breadcrumb_schema: 0,
   route_contracts: {},
   errors_count: 0,
   errors: []
@@ -191,6 +193,16 @@ all_html_paths.each do |path|
     next if nav_tag.match?(/\baria-labelledby=["'][^"']+["']/i)
 
     errors << "#{relative} has <nav> without aria-label/aria-labelledby"
+  end
+
+  if html.include?('class="breadcrumbs"')
+    coverage[:pages_with_breadcrumbs] += 1
+    breadcrumb_nodes = json_ld_nodes(html, relative, errors).select { |node| node.is_a?(Hash) && node_has_type?(node, 'BreadcrumbList') }
+    if breadcrumb_nodes.empty?
+      errors << "#{relative} has breadcrumbs UI but missing BreadcrumbList JSON-LD"
+    else
+      coverage[:pages_with_breadcrumb_schema] += 1
+    end
   end
 end
 
@@ -303,6 +315,25 @@ end
   )
 end
 
+%w[
+  interviews/index.html
+  videos/index.html
+  oneoffs/index.html
+  scmc/index.html
+].each do |relative|
+  path = File.join(SITE_DIR, relative)
+  next unless File.file?(path)
+
+  html = read(path)
+  nodes = json_ld_nodes(html, relative, errors)
+  breadcrumb_nodes = nodes.select { |node| node.is_a?(Hash) && node_has_type?(node, 'BreadcrumbList') }
+  coverage[:route_contracts][relative] = {
+    has_collection_page: nodes.any? { |node| node.is_a?(Hash) && node_has_type?(node, 'CollectionPage') },
+    has_breadcrumb_list: !breadcrumb_nodes.empty?
+  }
+  errors << "#{relative} missing BreadcrumbList JSON-LD" if breadcrumb_nodes.empty?
+end
+
 all_html_paths.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative == 'AGENTS.html'
@@ -337,6 +368,8 @@ schema_report = {
   html_pages_total: coverage[:html_pages_total],
   html_pages_checked: coverage[:html_pages_checked],
   json_ld_nodes_total: coverage[:json_ld_nodes_total],
+  pages_with_breadcrumbs: coverage[:pages_with_breadcrumbs],
+  pages_with_breadcrumb_schema: coverage[:pages_with_breadcrumb_schema],
   typed_nodes: coverage[:typed_nodes].sort.to_h,
   pages_with_type: coverage[:pages_with_type].sort.to_h,
   route_contracts: coverage[:route_contracts],

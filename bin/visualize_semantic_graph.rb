@@ -130,6 +130,56 @@ nodes_by_id.values.each do |node|
   node[:types].each { |type| typed_counts[type] += 1 }
 end
 
+unique_edges = edges.uniq
+unique_edges.each do |source, target, _predicate|
+  next unless nodes_by_id[source]
+
+  next if nodes_by_id[target]
+
+  external_node_ids[target] = true
+  nodes_by_id[target] = {
+    id: target,
+    types: ["ExternalRef"],
+    labels: [target],
+    pages: []
+  }
+end
+
+adjacency = Hash.new { |hash, key| hash[key] = [] }
+indegree = Hash.new(0)
+outdegree = Hash.new(0)
+unique_edges.each do |source, target, _predicate|
+  next unless nodes_by_id[source] && nodes_by_id[target]
+
+  adjacency[source] << target
+  adjacency[target] << source
+  outdegree[source] += 1
+  indegree[target] += 1
+end
+
+orphan_node_ids = nodes_by_id.keys.select do |id|
+  indegree[id].zero? && outdegree[id].zero?
+end
+
+visited = {}
+components = 0
+nodes_by_id.each_key do |start_id|
+  next if visited[start_id]
+
+  components += 1
+  queue = [start_id]
+  visited[start_id] = true
+  until queue.empty?
+    node_id = queue.shift
+    adjacency[node_id].each do |neighbor|
+      next if visited[neighbor]
+
+      visited[neighbor] = true
+      queue << neighbor
+    end
+  end
+end
+
 dot_lines = []
 dot_lines << "digraph schema_graph {"
 dot_lines << "  rankdir=LR;"
@@ -146,18 +196,8 @@ nodes_by_id.keys.sort.each do |id|
   dot_lines << "  \"#{dot_escape(id)}\" [label=\"#{dot_escape(label)}\"];"
 end
 
-edges.uniq.sort.each do |source, target, predicate|
-  next unless nodes_by_id[source]
-
-  unless nodes_by_id[target]
-    external_node_ids[target] = true
-    nodes_by_id[target] = {
-      id: target,
-      types: ["ExternalRef"],
-      labels: [target],
-      pages: []
-    }
-  end
+unique_edges.sort.each do |source, target, predicate|
+  next unless nodes_by_id[source] && nodes_by_id[target]
 
   dot_lines << "  \"#{dot_escape(source)}\" -> \"#{dot_escape(target)}\" [label=\"#{dot_escape(predicate)}\"];"
 end
@@ -172,7 +212,11 @@ summary = {
   json_ld_nodes: nodes_by_id.size,
   external_ref_nodes: external_node_ids.size,
   typed_nodes: typed_counts.sort.to_h,
-  edges_total: edges.uniq.size,
+  edges_total: unique_edges.size,
+  connected_components: components,
+  isolated_nodes_count: orphan_node_ids.size,
+  orphan_node_ids: orphan_node_ids.sort.first(200),
+  unresolved_reference_ids: external_node_ids.keys.sort.first(200),
   dot_path: DOT_PATH,
   json_errors_count: json_errors.size,
   json_errors: json_errors.first(200)

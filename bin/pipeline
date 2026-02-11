@@ -6,7 +6,7 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | test | validate | semantic-graph | smoke | sitemap | ci | help
+  <command> ::= generate | build | test | validate | semantic-graph | semantic-audit | smoke | sitemap | ci | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
@@ -14,6 +14,7 @@ Commands:
   test      Run RSpec unit tests.
   validate  Run data/SEO/semantic/link checks against _site.
   semantic-graph Generate JSON-LD semantic graph artifacts from rendered _site.
+  semantic-audit Generate consolidated semantic quality report from validator artifacts.
   smoke     Run Playwright smoke checks against built _site.
   sitemap   Print sitemap coverage summary from built _site.
   ci        Run build + test + validate (CI core pipeline).
@@ -78,6 +79,7 @@ run_validate() {
 
   ruby ./bin/validate_data_uniqueness.rb
   ruby ./bin/validate_data_integrity.rb
+  ruby ./bin/validate_taxonomy_output.rb
   ruby ./bin/validate_last_modified_output.rb
   ruby ./bin/validate_seo_output.rb
   ruby ./bin/validate_public_index_mode.rb
@@ -135,6 +137,10 @@ run_validate() {
   if ! run_semantic_graph; then
     echo "Warning: semantic graph generation failed (non-blocking)." >&2
   fi
+
+  if ! run_semantic_audit; then
+    echo "Warning: semantic audit report generation failed (non-blocking)." >&2
+  fi
 }
 
 run_test() {
@@ -145,6 +151,11 @@ run_test() {
 run_semantic_graph() {
   check_runtime
   ruby ./bin/visualize_semantic_graph.rb
+}
+
+run_semantic_audit() {
+  check_runtime
+  ruby ./bin/semantic_audit.rb
 }
 
 run_smoke() {
@@ -178,6 +189,9 @@ case "$command" in
     ;;
   semantic-graph)
     run_semantic_graph
+    ;;
+  semantic-audit)
+    run_semantic_audit
     ;;
   test)
     run_test

@@ -1,0 +1,51 @@
+{% assign site_url = site.url | default: "https://www.just3ws.com" %}
+{% if site_url == "" or site_url contains "localhost" %}
+  {% assign site_url = "https://www.just3ws.com" %}
+{% endif %}
+{% assign breadcrumb_root_name = page.breadcrumb_root_name | default: "Home" %}
+{% assign breadcrumb_root_url = page.breadcrumb_root_url | default: "/home/" %}
+{% assign breadcrumb_current_name = page.breadcrumb | default: page.title %}
+{% assign breadcrumb_current_url = page.url | default: breadcrumb_root_url %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {% if breadcrumb_current_url == breadcrumb_root_url %}
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": {{ breadcrumb_root_name | jsonify }},
+        "item": "{{ site_url }}{{ breadcrumb_root_url }}"
+      }
+    {% else %}
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": {{ breadcrumb_root_name | jsonify }},
+        "item": "{{ site_url }}{{ breadcrumb_root_url }}"
+      }{% assign breadcrumb_position = 2 %}
+      {% if page.breadcrumb_grandparent_name and page.breadcrumb_grandparent_url and page.breadcrumb_grandparent_url != breadcrumb_root_url %},
+      {
+        "@type": "ListItem",
+        "position": {{ breadcrumb_position }},
+        "name": {{ page.breadcrumb_grandparent_name | jsonify }},
+        "item": "{{ site_url }}{{ page.breadcrumb_grandparent_url }}"
+      }{% assign breadcrumb_position = breadcrumb_position | plus: 1 %}{% endif %}
+      {% if page.breadcrumb_parent_name and page.breadcrumb_parent_url and page.breadcrumb_parent_url != breadcrumb_root_url %},
+      {
+        "@type": "ListItem",
+        "position": {{ breadcrumb_position }},
+        "name": {{ page.breadcrumb_parent_name | jsonify }},
+        "item": "{{ site_url }}{{ page.breadcrumb_parent_url }}"
+      }{% assign breadcrumb_position = breadcrumb_position | plus: 1 %}{% endif %},
+      {
+        "@type": "ListItem",
+        "position": {{ breadcrumb_position }},
+        "name": {{ breadcrumb_current_name | jsonify }},
+        "item": "{{ site_url }}{{ breadcrumb_current_url }}"
+      }
+    {% endif %}
+  ]
+}
+</script>

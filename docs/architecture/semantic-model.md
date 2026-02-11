@@ -21,6 +21,11 @@ This page defines the canonical JSON-LD object model for rendered pages in `_sit
 
 IDs are deterministic and stable across builds.
 
+## Supporting Governance Data
+
+- Navigation contract: `_data/navigation.yml`
+- Taxonomy vocabulary and allowed patterns: `_data/taxonomy.yml`
+
 ## Route Contracts
 
 1. `/`
@@ -40,7 +45,10 @@ IDs are deterministic and stable across builds.
 - must expose `CollectionPage` with `mainEntity` set to `ItemList`.
 - each `ListItem` should reference canonical IDs for the underlying entity.
 
-6. Blog posts (`/YYYY/...`)
+6. Pages with visual breadcrumbs
+- must expose `BreadcrumbList` JSON-LD aligned with rendered breadcrumb links.
+
+7. Blog posts (`/YYYY/...`)
 - must expose `Article` with `headline`, `datePublished`, `dateModified`, and `mainEntityOfPage.@id`.
 
 ## Validation and Artifacts

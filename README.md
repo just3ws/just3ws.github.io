@@ -25,6 +25,8 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - Interview community metadata lives in `_data/interview_communities.yml`
 - One-off metadata lives in `_data/oneoff_videos.yml`
 - SCMC metadata lives in `_data/scmc_videos.yml`
+- Canonical taxonomy vocabulary lives in `_data/taxonomy.yml`
+- Primary navigation model lives in `_data/navigation.yml`
 - Generated pages:
   - `bin/sync_interview_asset_links.rb`
   - `bin/generate_video_asset_pages.rb`
@@ -79,6 +81,9 @@ bundle exec rspec
 
 # Generate semantic graph artifacts from rendered pages
 ./bin/pipeline semantic-graph
+
+# Generate consolidated semantic quality report
+./bin/pipeline semantic-audit
 
 # Print sitemap coverage summary
 ./bin/pipeline sitemap

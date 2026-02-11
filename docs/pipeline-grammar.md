@@ -21,7 +21,7 @@ Use the pipeline entrypoint for all build/validation workflow commands:
 Grammar:
 
 ```ebnf
-<command> ::= generate | build | test | validate | semantic-graph | smoke | sitemap | ci | help
+<command> ::= generate | build | test | validate | semantic-graph | semantic-audit | smoke | sitemap | ci | help
 ```
 
 ## Commands
@@ -34,6 +34,8 @@ Grammar:
   Runs data integrity checks, SEO/canonical checks, semantic/schema checks, HTMLProofer, and resume/sitemap guardrails against `_site`.
 - `semantic-graph`  
   Generates JSON-LD semantic graph artifacts from rendered `_site` into `tmp/schema-graph.dot` and `tmp/schema-graph-summary.json`.
+- `semantic-audit`  
+  Generates consolidated semantic quality report in `tmp/semantic-quality-report.json`.
 - `smoke`  
   Runs Playwright smoke checks against built `_site`.
 - `sitemap`  
@@ -51,6 +53,9 @@ Grammar:
 
 # Generate semantic graph artifacts from built pages
 ./bin/pipeline semantic-graph
+
+# Generate consolidated semantic quality report
+./bin/pipeline semantic-audit
 
 # CI + browser smoke checks
 ./bin/pipeline ci
@@ -88,10 +93,12 @@ Grammar:
 - Validators/reports:
   - `bin/validate_data_uniqueness.rb`
   - `bin/validate_data_integrity.rb`
+  - `bin/validate_taxonomy_output.rb`
   - `bin/validate_last_modified_output.rb`
   - `bin/validate_seo_output.rb`
   - `bin/validate_public_index_mode.rb`
   - `bin/validate_semantic_output.rb`
   - `bin/report_seo_metadata.rb`
   - `bin/visualize_semantic_graph.rb`
+  - `bin/semantic_audit.rb`
   - `bin/visualize_sitemap.rb`
