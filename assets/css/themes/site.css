@@ -425,6 +425,38 @@ section {
   }
 }
 
+@media (max-width: 820px) {
+  .site-nav {
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .site-nav-brand {
+    flex: 1 0 100%;
+    margin-right: 0;
+  }
+
+  .site-nav-links {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .site-nav-links a {
+    display: block;
+    text-align: center;
+    padding: 0.45rem 0.5rem;
+    border: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 460px) {
+  .site-nav-links {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Position/Job entries */
 .position {
   margin-bottom: 1.75rem;
