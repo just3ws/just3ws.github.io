@@ -35,7 +35,7 @@ assets.each do |asset|
   context_bits << community unless community.to_s.empty?
   context = context_bits.first(2).join(' · ')
 
-  title_core = +"Video — #{subject}"
+  title_core = +"Video Archive — #{subject}"
   title_core << " (#{context})" unless context.empty?
   title_meta = Generators::Core::Meta.clamp(title_core, 70)
 
@@ -55,6 +55,12 @@ assets.each do |asset|
     description_parts << "Asset ID: #{id}"
   end
   description_meta = Generators::Core::Meta.clamp("#{description_parts.join('. ')}.", 160)
+  description_meta = Generators::Core::Meta.ensure_min_length(
+    description_meta,
+    70,
+    "Published in Mike Hall's canonical software engineering video archive."
+  )
+  description_meta = Generators::Core::Meta.clamp(description_meta, 160)
   title_meta = Generators::Core::Meta.ensure_unique(title_meta, 70, id, seen_titles)
   description_meta = Generators::Core::Meta.ensure_unique(description_meta, 160, id, seen_descriptions)
   dir = File.join(base_dir, id)

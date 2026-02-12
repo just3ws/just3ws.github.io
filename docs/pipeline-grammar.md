@@ -21,7 +21,7 @@ Use the pipeline entrypoint for all build/validation workflow commands:
 Grammar:
 
 ```ebnf
-<command> ::= generate | build | test | validate | semantic-graph | semantic-audit | smoke | sitemap | ci | help
+<command> ::= generate | build | test | validate | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | help
 ```
 
 ## Commands
@@ -36,6 +36,8 @@ Grammar:
   Generates JSON-LD semantic graph artifacts from rendered `_site` into `tmp/schema-graph.dot` and `tmp/schema-graph-summary.json`.
 - `semantic-audit`  
   Generates consolidated semantic quality report in `tmp/semantic-quality-report.json`.
+- `semantic-snapshot`  
+  Generates `docs/architecture/semantic-graph.md` from semantic report artifacts.
 - `smoke`  
   Runs Playwright smoke checks against built `_site`.
 - `sitemap`  
@@ -56,6 +58,9 @@ Grammar:
 
 # Generate consolidated semantic quality report
 ./bin/pipeline semantic-audit
+
+# Generate docs semantic snapshot from report artifacts
+./bin/pipeline semantic-snapshot
 
 # CI + browser smoke checks
 ./bin/pipeline ci
@@ -101,4 +106,5 @@ Grammar:
   - `bin/report_seo_metadata.rb`
   - `bin/visualize_semantic_graph.rb`
   - `bin/semantic_audit.rb`
+  - `bin/generate_semantic_snapshot_page.rb`
   - `bin/visualize_sitemap.rb`

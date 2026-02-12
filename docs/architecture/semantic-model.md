@@ -59,3 +59,14 @@ IDs are deterministic and stable across builds.
 - Graph outputs:
   - `tmp/schema-graph.dot`
   - `tmp/schema-graph-summary.json`
+- Snapshot page generator: `bin/generate_semantic_snapshot_page.rb`
+- Snapshot page output: `docs/architecture/semantic-graph.md`
+
+## Visualization Workflow
+
+1. Refresh build and semantic artifacts:
+   - `./bin/pipeline ci`
+2. Generate snapshot docs page:
+   - `./bin/pipeline semantic-snapshot`
+3. Review published snapshot:
+   - `/docs/architecture/semantic-graph/`

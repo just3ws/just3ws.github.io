@@ -22,7 +22,7 @@ interviews.each do |interview|
   context_bits << interview['community'].to_s.strip if interview['community'].to_s.strip != ''
   context = context_bits.first(2).join(' · ')
 
-  title_core = +"Interview — #{subject}"
+  title_core = +"Interview Archive — #{subject}"
   title_core << " (#{context})" unless context.empty?
   title_meta = Generators::Core::Meta.clamp(title_core, 70)
 
@@ -47,6 +47,12 @@ interviews.each do |interview|
 
   description_parts << "Interview ID: #{id}"
   description_meta = Generators::Core::Meta.clamp("#{description_parts.join('. ')}.", 160)
+  description_meta = Generators::Core::Meta.ensure_min_length(
+    description_meta,
+    70,
+    "Part of Mike Hall's software engineering interview archive."
+  )
+  description_meta = Generators::Core::Meta.clamp(description_meta, 160)
   title_meta = Generators::Core::Meta.ensure_unique(title_meta, 70, id, seen_titles)
   description_meta = Generators::Core::Meta.ensure_unique(description_meta, 160, id, seen_descriptions)
   dir = File.join(base_dir, id)

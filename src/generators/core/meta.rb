@@ -34,6 +34,14 @@ module Generators
         seen[candidate] = true
         candidate
       end
+
+      def ensure_min_length(value, min_length, extension)
+        clean = value.to_s.gsub(/\s+/, " ").strip
+        return clean if clean.length >= min_length
+
+        joined = "#{clean} #{extension}".gsub(/\s+/, " ").strip
+        joined
+      end
     end
   end
 end

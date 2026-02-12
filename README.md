@@ -85,6 +85,9 @@ bundle exec rspec
 # Generate consolidated semantic quality report
 ./bin/pipeline semantic-audit
 
+# Generate docs semantic snapshot from semantic artifacts
+./bin/pipeline semantic-snapshot
+
 # Print sitemap coverage summary
 ./bin/pipeline sitemap
 ```

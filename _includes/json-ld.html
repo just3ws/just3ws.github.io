@@ -1,19 +1,32 @@
 <!-- JSON-LD Structured Data for ATS and Search Engines -->
+{% assign site_url = site.url | default: "https://www.just3ws.com" %}
+{% if site_url == "" or site_url contains "localhost" %}
+  {% assign site_url = "https://www.just3ws.com" %}
+{% endif %}
+{% assign profile = site.data.resume.profile %}
+{% assign summary = site.data.resume.summary %}
+{% assign person_id = site_url | append: "/id/person/mike-hall" %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Mike Hall",
+  "@id": "{{ person_id }}",
+  "name": {{ profile.name | default: "Mike Hall" | jsonify }},
   "givenName": "Mike",
   "familyName": "Hall",
   "alternateName": "just3ws",
-  "url": "https://www.just3ws.com/",
-  "email": "mailto:mike@just3ws.com",
-  "telephone": "+18478773825",
-  "jobTitle": "Staff Software Engineer",
+  "url": "{{ site_url }}/",
+  "email": "mailto:{{ profile.contact.email }}",
+  "telephone": {{ profile.contact.phone_tel | default: "+18478773825" | jsonify }},
+  "jobTitle": {{ profile.title | default: "Staff Software Engineer" | jsonify }},
+  "description": {{ summary.text | strip | jsonify }},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site_url }}/"
+  },
   "sameAs": [
-    "https://www.linkedin.com/in/just3ws/",
-    "https://github.com/just3ws"
+    {{ profile.contact.linkedin.url | jsonify }},
+    {{ profile.contact.github.url | jsonify }}
   ],
   "knowsAbout": [
     "Ruby",
@@ -56,6 +69,39 @@
     }{% unless forloop.last %},{% endunless %}
     {% endif %}
     {% endfor %}
+  ],
+  "subjectOf": {
+    "@type": "ItemList",
+    "@id": "{{ site_url }}/id/list/career-history",
+    "name": "Career History",
+    "numberOfItems": {{ site.data.resume.timeline.history.size }},
+    "itemListElement": [
+      {% for item in site.data.resume.timeline.history %}
+      {% assign position = site.data.resume.positions[item] %}
+      {% if position %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "item": {
+          "@type": "Occupation",
+          "@id": "{{ site_url }}/id/occupation/{{ item }}",
+          "name": {{ position.title | jsonify }},
+          "description": {{ position.description | default: "" | strip | jsonify }},
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": {{ position.company.location | default: "Remote" | jsonify }}
+          }
+        }
+      }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+      {% endfor %}
+    ]
+  },
+  "knowsLanguage": [
+    {
+      "@type": "Language",
+      "name": "English"
+    }
   ]
 }
 </script>

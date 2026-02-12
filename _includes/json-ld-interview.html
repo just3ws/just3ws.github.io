@@ -2,6 +2,40 @@
 {% if site_url == "" or site_url contains "localhost" %}
   {% assign site_url = "https://www.just3ws.com" %}
 {% endif %}
+{% assign conference_name = interview.conference | to_s | strip %}
+{% assign conference_year = interview.conference_year | to_s | strip %}
+{% assign conference_label = conference_name %}
+{% if conference_name != "" and conference_year != "" %}
+  {% assign conference_label = conference_name | append: " " | append: conference_year %}
+{% endif %}
+{% assign community_name = interview.community | to_s | strip %}
+{% capture about_items %}
+  {% assign has_about = false %}
+  {% if interview.topic and interview.topic != "" %}
+    {
+      "@type": "Thing",
+      "name": {{ interview.topic | jsonify }}
+    }
+    {% assign has_about = true %}
+  {% endif %}
+  {% if conference_name != "" %}
+    {% if has_about %},{% endif %}
+    {
+      "@type": "Event",
+      "@id": "{{ site_url }}/id/conference/{{ conference_name | slugify }}{% if conference_year != "" %}-{{ conference_year }}{% endif %}",
+      "name": {{ conference_label | jsonify }}
+    }
+    {% assign has_about = true %}
+  {% endif %}
+  {% if community_name != "" %}
+    {% if has_about %},{% endif %}
+    {
+      "@type": "Organization",
+      "@id": "{{ site_url }}/id/community/{{ community_name | slugify }}",
+      "name": {{ community_name | jsonify }}
+    }
+  {% endif %}
+{% endcapture %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -11,7 +45,8 @@
   "name": {{ interview.title | jsonify }},
   "url": "{{ site_url }}{{ page.url }}",
   "datePublished": "{{ interview.recorded_date | date: "%Y-%m-%d" }}",
-  {% if interview.topic and interview.topic != "" %}"about": {{ interview.topic | jsonify }},{% endif %}
+  "description": {{ page.description | jsonify }},
+  "inLanguage": "en",
   "interviewer": {
     "@type": "Person",
     "@id": "{{ site_url }}/id/person/mike-hall",
@@ -22,9 +57,16 @@
     {% for name in interview.interviewees %}
     {
       "@type": "Person",
+      "@id": "{{ site_url }}/id/person/{{ name | slugify }}",
       "name": {{ name | jsonify }}
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
+  ],
+  {% endif %}
+  {% assign about_payload = about_items | strip %}
+  {% if about_payload != "" %}
+  "about": [
+    {{ about_payload }}
   ],
   {% endif %}
   {% if asset and asset.id %}

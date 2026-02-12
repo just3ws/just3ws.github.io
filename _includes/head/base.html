@@ -1,5 +1,17 @@
 {% assign seo_title = page.title | default: "Mike Hall" %}
 {% assign seo_description = page.description | default: "Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems." %}
+{% if seo_title.size < 30 %}
+  {% assign seo_title = seo_title | append: " | Mike Hall Archive" %}
+{% endif %}
+{% if seo_title.size > 70 %}
+  {% assign seo_title = seo_title | truncate: 70, "…" %}
+{% endif %}
+{% if seo_description.size < 70 %}
+  {% assign seo_description = seo_description | append: " This page is part of Mike Hall's curated engineering archive and resume." %}
+{% endif %}
+{% if seo_description.size > 160 %}
+  {% assign seo_description = seo_description | truncate: 160, "…" %}
+{% endif %}
 {% assign site_url = site.url | default: "https://www.just3ws.com" %}
 {% if site_url == "" or site_url contains "localhost" %}
   {% assign site_url = "https://www.just3ws.com" %}

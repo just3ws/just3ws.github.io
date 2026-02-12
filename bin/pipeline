@@ -6,7 +6,7 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | test | validate | semantic-graph | semantic-audit | smoke | sitemap | ci | help
+  <command> ::= generate | build | test | validate | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
@@ -15,6 +15,7 @@ Commands:
   validate  Run data/SEO/semantic/link checks against _site.
   semantic-graph Generate JSON-LD semantic graph artifacts from rendered _site.
   semantic-audit Generate consolidated semantic quality report from validator artifacts.
+  semantic-snapshot Generate docs/architecture/semantic-graph.md from semantic artifacts.
   smoke     Run Playwright smoke checks against built _site.
   sitemap   Print sitemap coverage summary from built _site.
   ci        Run build + test + validate (CI core pipeline).
@@ -158,6 +159,11 @@ run_semantic_audit() {
   ruby ./bin/semantic_audit.rb
 }
 
+run_semantic_snapshot() {
+  check_runtime
+  ruby ./bin/generate_semantic_snapshot_page.rb
+}
+
 run_smoke() {
   if [ ! -d _site ]; then
     echo "Missing _site directory. Run './bin/pipeline build' first." >&2
@@ -192,6 +198,9 @@ case "$command" in
     ;;
   semantic-audit)
     run_semantic_audit
+    ;;
+  semantic-snapshot)
+    run_semantic_snapshot
     ;;
   test)
     run_test

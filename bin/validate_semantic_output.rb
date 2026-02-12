@@ -212,7 +212,7 @@ index_person_nodes = index_nodes.select { |node| node.is_a?(Hash) && node_has_ty
 validate_json_ld_type(
   nodes: index_nodes,
   expected_type: 'Person',
-  required_fields: %w[name url jobTitle],
+  required_fields: %w[@id name url jobTitle description hasOccupation subjectOf.itemListElement],
   context: 'index.html',
   errors: errors
 )
@@ -233,8 +233,9 @@ index_person_nodes.each_with_index do |person_node, person_index|
 end
 coverage[:route_contracts]['/'] = {
   person_json_ld_count: index_person_nodes.size,
-  person_required_fields_present: !index_person_nodes.empty? && %w[name url jobTitle].all? { |key| field_present?(index_person_nodes.first, key) },
-  person_required_fields_non_placeholder: !index_person_nodes.empty? && %w[name url jobTitle].none? { |key| contains_placeholder?(field_value(index_person_nodes.first, key)) }
+  person_required_fields_present: !index_person_nodes.empty? && %w[@id name url jobTitle description hasOccupation subjectOf.itemListElement].all? { |key| field_present?(index_person_nodes.first, key) },
+  person_required_fields_non_placeholder: !index_person_nodes.empty? && %w[name url jobTitle description].none? { |key| contains_placeholder?(field_value(index_person_nodes.first, key)) },
+  person_has_career_item_list: !index_person_nodes.empty? && field_present?(index_person_nodes.first, 'subjectOf.itemListElement')
 }
 
 home_html_path = File.join(SITE_DIR, 'home', 'index.html')

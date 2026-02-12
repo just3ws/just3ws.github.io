@@ -73,6 +73,14 @@ This task list is prioritized to protect pipeline correctness first, then data i
 3. Keep `SITEMAP_MAX_URLS=5000` unless explicit publication-scope expansion is approved.
 4. If publication model changes, define canonical/robots policy first, then implement validation.
 5. Keep JSON-LD required-field rules in lockstep with template/schema changes.
+6. Keep semantic graph artifacts and documentation snapshots synchronized when schema contracts change.
+7. Keep agent/skill usage explicit: use registered skills for CI/smoke/security tasks; add a dedicated SEO semantic skill only if repeated workflows become too custom.
+
+## Agent/Skill Coverage
+
+- Sub-agents: not required for the current repository workflow. The existing pipeline + script boundaries are sufficient for deterministic SEO/schema hardening.
+- Registered skills: sufficient for current needs (`gh-fix-ci`, `gh-address-comments`, `playwright`, `screenshot`, security skills).
+- Gap to consider later: a dedicated SEO/semantic skill could reduce repetitive analysis steps, but this is optimization work, not a blocker.
 
 ## Short-Term Backlog
 
@@ -86,20 +94,25 @@ This task list is prioritized to protect pipeline correctness first, then data i
    - Fill missing `interviews` `topic` values where conference/community context is known.
    - Keep topic/description conventions consistent with canonical slugs and transcript-derived phrasing.
 
-3. SEO Metadata Quality Cleanup (Active Candidate)
-   - Status: active candidate (partially improved).
-   - Baseline (2026-02-11): `title_outliers=76`, `desc_outliers=56`, `duplicate_titles=0`, `duplicate_descs=4`.
-   - Reduce `title_outliers`, `desc_outliers`, `duplicate_titles`, and `duplicate_descs` reported by `tmp/seo-metadata-report.json`.
-   - Prioritize canonical pages first (`/`, `/home/`, `/interviews/`, `/videos/`, high-traffic interview/video routes).
-   - Preserve current canonical/indexability contracts while improving metadata quality.
+3. SEO Metadata Quality Cleanup
+   - Status: implemented (2026-02-12 pass), monitor and tune.
+   - Added global head-level title/description normalization for minimum and maximum lengths.
+   - Improved generated interview/video metadata copy to avoid thin descriptions and low-information titles.
+   - Ongoing: monitor `tmp/seo-metadata-report.json` for regressions as new content lands.
 
-4. Data Model Documentation Alignment (Active Candidate)
-   - Status: active candidate.
+4. Data Model Documentation Alignment
+   - Status: implemented, keep synchronized.
    - Update docs to reflect per-file transcripts in `_data/transcripts/*.yml` as canonical transcript storage.
    - Clarify `_data/transcripts.yml` is legacy/placeholder and not the active content source.
    - Keep docs synchronized with generators/templates in the same commit series.
 
-5. Ongoing Maintenance
+5. Structured Data Object Model Expansion
+   - Status: implemented (first complete pass), monitor and tune.
+   - Interview schema now encodes richer entity relationships (`Interview`, `Person`, `Event`, `Organization`, linked `VideoObject`).
+   - Resume schema now enforces `Person` + `Occupation` + career `ItemList` consistency for ATS/search use.
+   - Added semantic graph snapshot docs workflow (`./bin/pipeline semantic-snapshot`) for reviewability.
+
+6. Ongoing Maintenance
    - Status: continuous.
    - Continue periodic validator hardening only where reports indicate drift.
    - Keep command/documentation grammar aligned to `bin/pipeline` subcommands.
