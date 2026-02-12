@@ -17,6 +17,7 @@ breadcrumb_parent_url: /docs/
 - `_data/video_assets.yml`
 - `_data/interview_conferences.yml`
 - `_data/interview_communities.yml`
+- `_data/resources.yml`
 - `_data/transcripts/*.yml`
 
 ## Generation Steps
@@ -39,6 +40,7 @@ breadcrumb_parent_url: /docs/
 `./bin/pipeline validate` runs:
 
 - data uniqueness/integrity checks
+- resources registry validation
 - last-modified parity checks
 - SEO/canonical and semantic/schema validators
 - metadata reporting + HTMLProofer

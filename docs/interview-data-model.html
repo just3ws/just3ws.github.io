@@ -33,12 +33,14 @@ flowchart TB
   subgraph Lookups["Lookup Tables"]
     confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
     comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
+    resources[_data/resources.yml&lt;br/&gt;Trusted source registry]
   end
   interviews &lt;--&gt;|video_asset_id / interview_id| assets
   oneoffs --&gt;|video_asset_id| assets
   scmc --&gt;|video_asset_id| assets
   interviews --&gt;|conference field| confs
   interviews --&gt;|community field| comms
+  confs --&gt;|slug| resources
   assets -..-&gt;|transcript_id| transcripts
     </pre>
 
@@ -64,12 +66,14 @@ flowchart TB
   subgraph Lookups["Lookup Tables"]
     confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
     comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
+    resources[_data/resources.yml&lt;br/&gt;Trusted source registry]
   end
   interviews &lt;--&gt;|video_asset_id / interview_id| assets
   oneoffs --&gt;|video_asset_id| assets
   scmc --&gt;|video_asset_id| assets
   interviews --&gt;|conference field| confs
   interviews --&gt;|community field| comms
+  confs --&gt;|slug| resources
   assets -.-&gt;|transcript_id| transcripts</code></pre>
   </section>
 
@@ -154,6 +158,16 @@ content: |
     name: string        # Full community name (matched by interviews.community)
     description: string # Community description</code></pre>
 
+    <h4><code>_data/resources.yml</code></h4>
+    <p>Trusted source registry keyed by conference slug:</p>
+    <pre><code>source_policy: repository-only
+conferences:
+  conference-slug:
+    - label: string      # Source label
+      url: string        # Absolute URL
+      kind: string       # Optional source kind
+      notes: string      # Optional context</code></pre>
+
     <h3>Source Data Files</h3>    <h4><code>_data/oneoff_videos.yml</code></h4>
     <p>One-off videos (standalone talks and presentations):</p>
     <pre><code>items:
@@ -237,6 +251,12 @@ content: |
           <td>communities</td>
           <td>N:1</td>
           <td><code>community</code> (name match)</td>
+        </tr>
+        <tr>
+          <td>conferences</td>
+          <td>resources</td>
+          <td>1:N</td>
+          <td><code>slug</code> → <code>resources.conferences[slug]</code></td>
         </tr>
       </tbody>
     </table>

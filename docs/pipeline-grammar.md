@@ -98,6 +98,7 @@ Grammar:
 - Validators/reports:
   - `bin/validate_data_uniqueness.rb`
   - `bin/validate_data_integrity.rb`
+  - `bin/validate_resources_output.rb`
   - `bin/validate_taxonomy_output.rb`
   - `bin/validate_last_modified_output.rb`
   - `bin/validate_seo_output.rb`

@@ -23,6 +23,7 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - Canonical video assets live in `_data/video_assets.yml`
 - Interview conference metadata lives in `_data/interview_conferences.yml`
 - Interview community metadata lives in `_data/interview_communities.yml`
+- Trusted source registry lives in `_data/resources.yml`
 - One-off metadata lives in `_data/oneoff_videos.yml`
 - SCMC metadata lives in `_data/scmc_videos.yml`
 - Canonical taxonomy vocabulary lives in `_data/taxonomy.yml`

@@ -1,0 +1,45 @@
+---
+layout: minimal
+title: Trusted Resources
+description: Registry of trusted conference sources used for metadata grounding.
+breadcrumb: Trusted Resources
+breadcrumb_parent_name: Docs
+breadcrumb_parent_url: /docs/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>Trusted Resources</h1>
+    <p class="intro">Repository-controlled source registry for conference metadata and copy grounding.</p>
+  </header>
+
+  <section>
+    <p>File: <code>_data/resources.yml</code></p>
+    <p>Policy: <code>{{ site.data.resources.source_policy | default: "repository-only" }}</code></p>
+  </section>
+
+  <section>
+    <h2>Conference Sources</h2>
+    {% assign confs = site.data.interview_conferences.conferences %}
+    {% for conf in confs %}
+      {% assign conf_sources = site.data.resources.conferences[conf.slug] %}
+      <article class="conference-card">
+        <h3>{{ conf.name }} <span class="conference-count">({{ conf.slug }})</span></h3>
+        {% if conf_sources and conf_sources.size > 0 %}
+          <ul class="index-highlights">
+            {% for source in conf_sources %}
+              <li>
+                <a href="{{ source.url }}">{{ source.label | default: source.url }}</a>
+                {% if source.kind %} ({{ source.kind }}){% endif %}
+                {% if source.notes %}: {{ source.notes }}{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No trusted sources listed yet.</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </section>
+</article>

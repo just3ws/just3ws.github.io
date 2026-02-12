@@ -11,6 +11,7 @@ RSpec.describe "interview taxonomy detail template" do
       title: "SCNA 2012",
       intro: "Interviews recorded at SCNA 2012.",
       liquid_assign: '{% assign items = site.data.interviews.items | where: "conference", "SCNA" %}',
+      conference_slug: "scna-2012",
       highlights: ["Talked about testing", "", "Discussed craftsmanship"],
       parent_name: "Interviews by Conference",
       parent_url: "/interviews/conferences/",
@@ -25,6 +26,8 @@ RSpec.describe "interview taxonomy detail template" do
     expect(output).to include("<li>Discussed craftsmanship</li>")
     expect(output).not_to include("<li></li>")
     expect(output).to include('{% assign items = site.data.interviews.items | where: "conference", "SCNA" %}')
+    expect(output).to include('{% assign conference_resources = site.data.resources.conferences["scna-2012"] %}')
+    expect(output).to include("<h2>Trusted Sources</h2>")
     expect(output).to include("{% include interview-card.html interview=interview %}")
   end
 
@@ -34,6 +37,7 @@ RSpec.describe "interview taxonomy detail template" do
       title: "General",
       intro: "Interviews recorded with the General community.",
       liquid_assign: '{% assign items = site.data.interviews.items | where: "community", "General" %}',
+      conference_slug: nil,
       highlights: [],
       parent_name: "Interviews by Community",
       parent_url: "/interviews/communities/",

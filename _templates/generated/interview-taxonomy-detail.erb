@@ -29,6 +29,28 @@ breadcrumb_parent_url: <%= parent_url %>
   </section>
 <% end %>
 
+<% if conference_slug && !conference_slug.to_s.strip.empty? -%>
+  {% assign conference_resources = site.data.resources.conferences["<%= conference_slug %>"] %}
+  {% if conference_resources and conference_resources.size > 0 %}
+  <section class="index-summary">
+    <h2>Trusted Sources</h2>
+    <ul class="index-highlights">
+      {% for source in conference_resources %}
+      <li>
+        {% if source.url %}
+          <a href="{{ source.url }}">{{ source.label | default: source.url }}</a>
+        {% else %}
+          {{ source.label }}
+        {% endif %}
+        {% if source.kind %} ({{ source.kind }}){% endif %}
+        {% if source.notes %}: {{ source.notes }}{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+<% end -%>
+
   <%= liquid_assign %>
   {% for interview in items %}
     {% include interview-card.html interview=interview %}
