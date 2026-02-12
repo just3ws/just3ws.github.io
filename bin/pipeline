@@ -80,6 +80,7 @@ run_validate() {
 
   ruby ./bin/validate_data_uniqueness.rb
   ruby ./bin/validate_data_integrity.rb
+  ruby ./bin/audit_transcripts.rb
   ruby ./bin/validate_resources_output.rb
   ruby ./bin/validate_taxonomy_output.rb
   ruby ./bin/validate_last_modified_output.rb

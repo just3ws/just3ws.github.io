@@ -6,7 +6,6 @@ require 'fileutils'
 root = File.expand_path('..', __dir__)
 interviews_path = File.join(root, '_data', 'interviews.yml')
 assets_path = File.join(root, '_data', 'video_assets.yml')
-transcripts_path = File.join(root, '_data', 'transcripts.yml')
 
 interviews = []
 assets = []
@@ -35,6 +34,5 @@ assets.sort_by! { |a| [a['primary_platform'] || '', a['id']] }
 
 File.write(interviews_path, { 'items' => interviews }.to_yaml)
 File.write(assets_path, { 'items' => assets }.to_yaml)
-File.write(transcripts_path, { 'items' => [] }.to_yaml) unless File.exist?(transcripts_path)
 
 puts "Built #{interviews.size} interviews and #{assets.size} assets"

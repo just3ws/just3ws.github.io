@@ -40,7 +40,22 @@ breadcrumb_parent_url: /docs/
 `./bin/pipeline validate` runs:
 
 - data uniqueness/integrity checks
+- transcript integrity checks (`bin/audit_transcripts.rb`)
 - resources registry validation
 - last-modified parity checks
 - SEO/canonical and semantic/schema validators
 - metadata reporting + HTMLProofer
+
+## Transcript Import Workflow
+
+Use `bin/import_transcripts_from_outbox.rb` to onboard transcript files from an external directory.
+
+1. Run a dry run to generate mapping reports:
+   - `ruby ./bin/import_transcripts_from_outbox.rb --source-dir /Volumes/Dock_1TB/vimeo/outbox`
+2. Review:
+   - `tmp/transcript-import-report.json`
+   - `tmp/transcript-import-report.md`
+3. Apply high-confidence mappings:
+   - `ruby ./bin/import_transcripts_from_outbox.rb --source-dir /Volumes/Dock_1TB/vimeo/outbox --apply`
+4. Re-run validation:
+   - `./bin/pipeline validate`
