@@ -1,0 +1,21 @@
+---
+layout: minimal
+title: "Video Archive — Stephen Anderson (SCNA 2013)"
+description: "Canonical video asset for Stephen Anderson. Conference: SCNA 2013. Published: 2014-03-24. Asset ID: stephen-anderson-software-craftsmanship-north-america-2013."
+breadcrumb: "Stephen Anderson"
+breadcrumb_parent_name: Videos
+breadcrumb_parent_url: /videos/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign asset = site.data.video_assets.items | where: "id", "stephen-anderson-software-craftsmanship-north-america-2013" | first %}
+  {% if asset %}
+    <header>
+      <h1>{{ asset.title }}</h1>
+    </header>
+    {% include json-ld-video.html asset=asset %}
+
+    {% include video-asset-player.html asset=asset embed_id="asset-embed" %}
+  {% endif %}
+</article>

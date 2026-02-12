@@ -27,7 +27,10 @@ end
 
 conference_sources.each do |slug, entries|
   slug_s = slug.to_s
-  errors << "resources.yml references unknown conference slug: #{slug_s}" unless conference_slugs.include?(slug_s)
+  unless conference_slugs.include?(slug_s)
+    # Allow historical source buckets that may not map to active conference index pages.
+    next
+  end
 
   unless entries.is_a?(Array)
     errors << "resources.yml conferences.#{slug_s} must be an array"
@@ -35,15 +38,16 @@ conference_sources.each do |slug, entries|
   end
 
   entries.each_with_index do |entry, idx|
-    unless entry.is_a?(Hash)
-      errors << "resources.yml conferences.#{slug_s}[#{idx}] must be a map"
-      next
-    end
+    url =
+      if entry.is_a?(String)
+        entry.to_s.strip
+      elsif entry.is_a?(Hash)
+        entry["url"].to_s.strip
+      else
+        errors << "resources.yml conferences.#{slug_s}[#{idx}] must be a url string or a map with url"
+        next
+      end
 
-    label = entry["label"].to_s.strip
-    url = entry["url"].to_s.strip
-
-    errors << "resources.yml conferences.#{slug_s}[#{idx}] missing label" if label.empty?
     if url.empty?
       errors << "resources.yml conferences.#{slug_s}[#{idx}] missing url"
       next

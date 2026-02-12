@@ -38,8 +38,9 @@ breadcrumb_parent_url: /interviews/conferences/
     <ul class="index-highlights">
       {% for source in conference_resources %}
       <li>
-        {% if source.url %}
-          <a href="{{ source.url }}">{{ source.label | default: source.url }}</a>
+        {% assign source_url = source.url | default: source %}
+        {% if source_url %}
+          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
         {% else %}
           {{ source.label }}
         {% endif %}

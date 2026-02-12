@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require "set"
+require "time"
 require_relative "../src/generators/core/yaml_io"
 
 ROOT = File.expand_path("..", __dir__)

@@ -30,7 +30,8 @@ breadcrumb_parent_url: /docs/
           <ul class="index-highlights">
             {% for source in conf_sources %}
               <li>
-                <a href="{{ source.url }}">{{ source.label | default: source.url }}</a>
+                {% assign source_url = source.url | default: source %}
+                <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
                 {% if source.kind %} ({{ source.kind }}){% endif %}
                 {% if source.notes %}: {{ source.notes }}{% endif %}
               </li>

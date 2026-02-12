@@ -21,6 +21,7 @@ breadcrumb_parent_url: /interviews/communities/
   </header>
 
 
+
   {% assign items = site.data.interviews.items | where: "community", "Chicago Software Craftsmanship" | sort: "recorded_date" | reverse %}
   {% for interview in items %}
     {% include interview-card.html interview=interview %}
