@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: Mike Hall - Home
-description: Navigation hub for Mike Hall's work and archives.
+description: Navigation hub for Mike Hall's interviews, talks, writing, and community archives across software craftsmanship and Ruby ecosystems.
 breadcrumb: Home
 canonical_url: https://www.just3ws.com/home/
 ---
@@ -9,9 +9,9 @@ canonical_url: https://www.just3ws.com/home/
 <article class="page">
   {% include breadcrumbs.html %}
   <header class="home-header">
-    <h1>Welcome. I&rsquo;m Mike Hall.</h1>
-    <p class="title">Staff/Principal Software Engineer focused on architecture, resilience, and long-term system stewardship.</p>
-    <p class="home-intro">I help teams make complex software systems easier to understand, safer to evolve, and more reliable in production.</p>
+    <h1>Mike Hall</h1>
+    <p class="title">Staff/Principal Software Engineer focused on architecture, resilience, and long-horizon system stewardship.</p>
+    <p class="home-intro">This site is a working archive: interviews, talks, and notes from years of shipping systems and building technical communities.</p>
   </header>
 
   <section class="home-hero" aria-label="Home overview">
@@ -23,9 +23,9 @@ canonical_url: https://www.just3ws.com/home/
       </div>
     </div>
     <div class="home-hero-actions">
-      <a class="home-resume-link" href="/">Go to Resume (/)</a>
+      <a class="home-resume-link" href="/">Open Resume (/)</a>
       <a class="home-resume-link" href="/history/">Full Career History</a>
-      <p class="home-resume-note">Thanks for visiting. If you&rsquo;re evaluating fit, this page is designed to make that quick and clear.</p>
+      <p class="home-resume-note">If you&rsquo;re evaluating fit, this page maps the technical record quickly.</p>
     </div>
   </section>
 
@@ -39,10 +39,10 @@ canonical_url: https://www.just3ws.com/home/
 
   <section class="home-purpose">
     <h2>How To Use This Site</h2>
-    <p>Think of the site as two lanes:</p>
+    <p>Use the site in two lanes, depending on how deep you want to go:</p>
     <ul class="home-list">
-      <li><strong>Lane 1:</strong> <a href="/">Resume</a> at root for the fastest overview.</li>
-      <li><strong>Lane 2:</strong> <a href="/home/">Home</a> for deeper evidence: interviews, talks, writing, and project context.</li>
+      <li><strong>Lane 1:</strong> <a href="/">Resume</a> for a fast, role-centered overview.</li>
+      <li><strong>Lane 2:</strong> <a href="/home/">Home</a> for archive depth: interviews, talks, writing, and documentation.</li>
     </ul>
   </section>
 
@@ -51,39 +51,45 @@ canonical_url: https://www.just3ws.com/home/
     <div class="home-link-grid">
       <section class="home-link-card">
         <h3>Interviews</h3>
-        <p>Conversations with engineers and community leaders on software craftsmanship, architecture, and real-world delivery.</p>
+        <p>Conversations with working engineers and community builders about craft, tradeoffs, and how technical work holds up over time.</p>
         <ul class="home-list">
-          <li><a href="/interviews/">All Interviews</a> Canonical interview index.</li>
-          <li><a href="/interviews/conferences/">By Conference</a> Interviews grouped by event.</li>
-          <li><a href="/interviews/communities/">By Community</a> Interviews grouped by community.</li>
+          <li><a href="/interviews/">All Interviews</a> Canonical index across the full archive.</li>
+          <li><a href="/interviews/conferences/">By Conference</a> Browse interviews in conference context and timeframe.</li>
+          <li><a href="/interviews/communities/">By Community</a> Follow conversations through local and practitioner communities.</li>
+          <li><a href="/interviews/conferences/scna-2013/">SCNA 2013</a> A dense slice of software craftsmanship discussions.</li>
+          <li><a href="/interviews/communities/chicago-software-craftsmanship/">Chicago Software Craftsmanship</a> Community-centered interview lineage.</li>
         </ul>
       </section>
 
       <section class="home-link-card">
         <h3>Videos</h3>
-        <p>Talks and recordings that show how I explain technical ideas in practical terms.</p>
+        <p>Recorded talks and sessions that show technical ideas under delivery pressure: architecture, maintainability, and practical engineering choices.</p>
         <ul class="home-list">
-          <li><a href="/videos/">All Videos</a> Canonical video index.</li>
-          <li><a href="/oneoffs/">One-off Videos</a> Standalone talks and presentations.</li>
-          <li><a href="/scmc/">SCMC Videos</a> Software Craftsmanship McHenry County archive.</li>
+          <li><a href="/videos/">All Videos</a> Canonical index across YouTube, Vimeo, and related sources.</li>
+          <li><a href="/oneoffs/">One-off Videos</a> Standalone presentations outside recurring series.</li>
+          <li><a href="/scmc/">SCMC Videos</a> Software Craftsmanship McHenry County working-group archive.</li>
         </ul>
       </section>
 
       <section class="home-link-card">
-        <h3>Writing And History</h3>
-        <p>Technical notes from the work plus the longer career arc behind the resume summary.</p>
+        <h3>Writing and History</h3>
+        <p>Technical notes, operational lessons, and career context behind the condensed resume narrative.</p>
         <ul class="home-list">
-          <li><a href="/writing/">Writing</a> Technical essays and notes.</li>
-          <li><a href="/history/">Full Career History</a> Complete role timeline.</li>
+          <li><a href="/writing/">Writing</a> Essays and notes rooted in implementation work.</li>
+          <li><a href="/history/">Full Career History</a> Full timeline with role and project context.</li>
+          <li><a href="/linkedin/">LinkedIn Profile</a> Public career profile and network presence.</li>
         </ul>
       </section>
 
       <section class="home-link-card">
-        <h3>Tools, Docs, And Contact</h3>
-        <p>How this archive is maintained, how information is organized, and how to reach me.</p>
+        <h3>Tools, Docs, and Contact</h3>
+        <p>How the archive is built, validated, and organized, plus direct ways to connect.</p>
         <ul class="home-list">
-          <li><a href="/tools/">Tools</a> Scripts and utilities used to maintain the archive.</li>
-          <li><a href="/docs/">Docs</a> Data model, taxonomy, and process notes.</li>
+          <li><a href="/tools/">Tools</a> Utilities used to maintain and validate the site.</li>
+          <li><a href="/docs/">Docs</a> Data model, taxonomy, and operational notes.</li>
+          <li><a href="/docs/site-tree/">Site Tree</a> Collapsible deep index for fast structural navigation.</li>
+          <li><a href="/docs/architecture/content-pipeline.html">Content Pipeline</a> How source material becomes canonical site pages.</li>
+          <li><a href="/docs/architecture/transcript-import.html">Transcript Import</a> Transcript ingestion model and validation flow.</li>
           <li><a href="/now/">Now</a> Current focus.</li>
           <li><a href="/about/">About</a> Site and webmaster context.</li>
           <li><a href="/contact/">Contact</a> Reach out directly.</li>
