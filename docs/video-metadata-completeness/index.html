@@ -1,0 +1,122 @@
+---
+layout: minimal
+title: Video Metadata Completeness
+description: Completeness matrix for video metadata, including title, topic, transcript, interviewees, and context fields.
+breadcrumb: Video Metadata Completeness
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign report = site.data.video_metadata_completeness %}
+  {% assign items = report.items | sort: "overall_score" %}
+  {% assign rating_keys = "title|description|topic|transcript|interviewees|community|conference" | split: "|" %}
+
+  <header>
+    <h1>Video Metadata Completeness</h1>
+    <p class="intro">Per-video metadata quality report with direct links and field-level status ratings.</p>
+    {% if report and report.summary %}
+      <p>
+        Generated: {{ report.generated_at }} |
+        Total videos: {{ report.summary.total_videos }} |
+        90+ score: {{ report.summary.score_90_plus }} |
+        70-89: {{ report.summary.score_70_to_89 }} |
+        &lt;70: {{ report.summary.score_below_70 }}
+      </p>
+    {% endif %}
+  </header>
+
+  <style>
+    .status-chip { display:inline-block; padding:0.1rem 0.45rem; border-radius:0.5rem; font-size:0.78rem; font-weight:600; border:1px solid transparent; }
+    .status-complete { background:#e8f7ee; color:#1f7a3e; border-color:#bde7cb; }
+    .status-partial { background:#fff7e7; color:#a56200; border-color:#f2d59a; }
+    .status-missing { background:#fdecec; color:#9a1f1f; border-color:#efb4b4; }
+    .status-na { background:#f1f3f5; color:#5a6168; border-color:#d7dce0; }
+    .audit-controls { margin: 1rem 0; display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap; }
+    .audit-controls input { padding:0.45rem 0.6rem; min-width:18rem; border:1px solid #c6ccd2; border-radius:0.35rem; }
+    .audit-controls label { font-size:0.95rem; }
+    .audit-table-wrap { overflow:auto; border:1px solid #d7dce0; border-radius:0.4rem; }
+    .audit-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+    .audit-table th, .audit-table td { padding:0.45rem 0.5rem; border-bottom:1px solid #e4e8eb; vertical-align:top; text-align:left; }
+    .audit-table thead th { position:sticky; top:0; background:#f8fafb; z-index:1; }
+    .audit-score { font-variant-numeric: tabular-nums; font-weight:600; }
+    .audit-meta { font-size:0.8rem; color:#586069; }
+  </style>
+
+  <section>
+    <div class="audit-controls">
+      <input id="audit-filter" type="search" placeholder="Filter by video id or title">
+      <label><input id="hide-complete" type="checkbox"> Hide rows with score 100</label>
+    </div>
+
+    <div class="audit-table-wrap">
+      <table class="audit-table" id="video-metadata-table">
+        <thead>
+          <tr>
+            <th>Video</th>
+            <th>Score</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Topic</th>
+            <th>Transcript</th>
+            <th>Interviewee(s)</th>
+            <th>Community</th>
+            <th>Conference</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+            {% assign ratings = item.ratings %}
+            <tr data-search="{{ item.id | downcase }} {{ item.title | downcase }}" data-score="{{ item.overall_score }}">
+              <td>
+                <a href="{{ item.page_url }}">{{ item.id }}</a>
+                <div class="audit-meta">{{ item.title }}</div>
+                {% if item.interview_url %}<div class="audit-meta"><a href="{{ item.interview_url }}">linked interview</a></div>{% endif %}
+              </td>
+              <td class="audit-score">{{ item.overall_score }}</td>
+              {% for key in rating_keys %}
+                {% assign rating = ratings[key] %}
+                {% assign status_class = "status-" | append: rating.status | replace: "n/a", "na" %}
+                <td>
+                  <span class="status-chip {{ status_class }}">{{ rating.status }}</span>
+                  <div class="audit-meta">{{ rating.reason }}</div>
+                </td>
+              {% endfor %}
+              <td>
+                {% if item.missing_or_partial_fields and item.missing_or_partial_fields.size > 0 %}
+                  <span class="audit-meta">{{ item.missing_or_partial_fields | join: ", " }}</span>
+                {% else %}
+                  <span class="audit-meta">none</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</article>
+
+<script>
+  (function () {
+    var filterInput = document.getElementById("audit-filter");
+    var hideComplete = document.getElementById("hide-complete");
+    var rows = Array.prototype.slice.call(document.querySelectorAll("#video-metadata-table tbody tr"));
+
+    function applyFilters() {
+      var query = (filterInput.value || "").toLowerCase().trim();
+      var hidePerfect = hideComplete.checked;
+
+      rows.forEach(function (row) {
+        var search = row.getAttribute("data-search") || "";
+        var score = parseInt(row.getAttribute("data-score") || "0", 10);
+        var matchesQuery = query.length === 0 || search.indexOf(query) !== -1;
+        var matchesScore = !hidePerfect || score < 100;
+        row.style.display = (matchesQuery && matchesScore) ? "" : "none";
+      });
+    }
+
+    filterInput.addEventListener("input", applyFilters);
+    hideComplete.addEventListener("change", applyFilters);
+  })();
+</script>

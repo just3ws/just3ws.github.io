@@ -55,6 +55,7 @@ run_generate() {
 
   ./bin/sync_interview_asset_links.rb
   ruby ./bin/generate_context_summaries.rb
+  ruby ./bin/generate_video_metadata_completeness.rb
   ./bin/generate_interview_pages.rb
   ruby ./bin/generate_video_asset_pages.rb
   ruby ./bin/generate_interview_taxonomy_pages.rb
