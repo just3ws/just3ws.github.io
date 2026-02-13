@@ -56,9 +56,13 @@ run_generate() {
   ./bin/sync_interview_asset_links.rb
   ruby ./bin/generate_context_summaries.rb
   ruby ./bin/generate_video_metadata_completeness.rb
+  ruby ./bin/generate_archive_status.rb
   ./bin/generate_interview_pages.rb
   ruby ./bin/generate_video_asset_pages.rb
   ruby ./bin/generate_interview_taxonomy_pages.rb
+  ruby ./bin/generate_interview_topics_page.rb
+  ruby ./bin/generate_interviewees_page.rb
+  ruby ./bin/generate_community_stories_page.rb
 }
 
 run_build() {
@@ -84,6 +88,7 @@ run_validate() {
   ruby ./bin/audit_transcripts.rb
   ruby ./bin/validate_resources_output.rb
   ruby ./bin/validate_taxonomy_output.rb
+  ruby ./bin/validate_archive_surfaces.rb
   ruby ./bin/validate_last_modified_output.rb
   ruby ./bin/validate_repo_hygiene.rb
   ruby ./bin/validate_metadata_completeness_budget.rb

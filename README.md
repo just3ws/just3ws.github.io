@@ -12,6 +12,8 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 ## Archives & Media
 
 - [Home](https://www.just3ws.com/home/) - Navigation hub and context
+- [Start Here](https://www.just3ws.com/start-here/) - Time-boxed archive entry paths
+- [Archive Status](https://www.just3ws.com/archive-status/) - Metadata and transcript quality snapshot
 - [Writing](https://www.just3ws.com/writing) - Technical posts
 - [Interviews](https://www.just3ws.com/interviews/) - Interview archive
 - [One-off Videos](https://www.just3ws.com/oneoffs/) - One-off talks and recordings
@@ -42,6 +44,7 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
   - `bin/pipeline ci` (CI core pipeline)
   - `bin/pipeline smoke` (browser smoke checks)
   - `bin/validate_data_uniqueness.rb` + `bin/validate_data_integrity.rb`
+  - `bin/validate_archive_surfaces.rb`
   - `bin/validate_repo_hygiene.rb`
   - `bin/validate_metadata_completeness_budget.rb`
   - `bin/validate_last_modified_output.rb`

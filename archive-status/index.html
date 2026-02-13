@@ -1,0 +1,62 @@
+---
+layout: minimal
+title: Archive Status
+description: Operational snapshot of interview and video archive completeness, transcript coverage, and retranscription queue risk.
+breadcrumb: Archive Status
+breadcrumb_parent_name: Home
+breadcrumb_parent_url: /home/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign status = site.data.archive_status %}
+  {% assign queue = status.transcript_retranscribe_queue %}
+  <header>
+    <h1>Archive Status</h1>
+    <p class="intro">A current operational snapshot of archive completeness and transcript quality pressure.</p>
+    {% if status.generated_at %}<p>Generated: {{ status.generated_at }}</p>{% endif %}
+  </header>
+
+  {% if status.summary %}
+    <section class="index-summary">
+      <h2>Coverage</h2>
+      <ul class="home-list">
+        <li>Total interviews: {{ status.summary.interviews_total }}</li>
+        <li>Total video assets: {{ status.summary.video_assets_total }}</li>
+        <li>Assets with transcript content: {{ status.summary.assets_with_transcript_content }}</li>
+      </ul>
+    </section>
+
+    <section class="index-summary">
+      <h2>Metadata Completeness</h2>
+      <ul class="home-list">
+        <li>Score 90+: {{ status.summary.metadata_score_90_plus }}</li>
+        <li>Score 70-89: {{ status.summary.metadata_score_70_to_89 }}</li>
+        <li>Score below 70: {{ status.summary.metadata_score_below_70 }}</li>
+        <li><a href="/docs/video-metadata-completeness/">Open detailed completeness dashboard</a></li>
+      </ul>
+    </section>
+  {% endif %}
+
+  {% if queue %}
+    <section class="index-summary">
+      <h2>Retranscription Queue</h2>
+      <ul class="home-list">
+        <li>Total candidates: {{ queue.total }}</li>
+        <li>High severity: {{ queue.high }}</li>
+        <li>Medium severity: {{ queue.medium }}</li>
+        <li>Low severity: {{ queue.low }}</li>
+      </ul>
+      {% if queue.top_candidates and queue.top_candidates.size > 0 %}
+        <h3>Top Candidates</h3>
+        <ul class="home-list">
+          {% for item in queue.top_candidates %}
+            <li>
+              <strong>{{ item.transcript_id }}</strong> ({{ item.severity }}, score {{ item.score }}){% if item.reason %}: {{ item.reason }}{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>

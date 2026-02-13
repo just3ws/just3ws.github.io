@@ -1,0 +1,30 @@
+---
+layout: minimal
+title: Work Through Conversations
+description: Selected interview sequences that connect architecture, community stewardship, and mentorship practice to durable engineering work.
+breadcrumb: Work Through Conversations
+breadcrumb_parent_name: Home
+breadcrumb_parent_url: /home/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign tracks = site.data.work_through_conversations.themes %}
+  <header>
+    <h1>Work Through Conversations</h1>
+    <p class="intro">A compact set of interview sequences that reflect how technical work, community stewardship, and long-horizon engineering practice overlap.</p>
+  </header>
+
+  {% for track in tracks %}
+    <section class="index-summary" id="{{ track.id }}">
+      <h2>{{ track.title }}</h2>
+      <p>{{ track.summary }}</p>
+      {% for interview_id in track.interview_ids %}
+        {% assign interview = site.data.interviews.items | where: "id", interview_id | first %}
+        {% if interview %}
+          {% include interview-card.html interview=interview %}
+        {% endif %}
+      {% endfor %}
+    </section>
+  {% endfor %}
+</article>

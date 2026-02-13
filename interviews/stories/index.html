@@ -1,0 +1,46 @@
+---
+layout: minimal
+title: Community Stories
+description: Curated interview tracks that document long-arc patterns in software craftsmanship, user-group practice, and conference ecosystems.
+breadcrumb: Community Stories
+breadcrumb_parent_name: Interviews
+breadcrumb_parent_url: /interviews/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign stories = site.data.community_stories.tracks %}
+  {% assign interview_items = site.data.interviews.items | where_exp: "i", "i.video_asset_id" %}
+  {% include json-ld-itemlist.html
+    collection_name="Community Stories"
+    collection_description=page.description
+    items=interview_items
+    item_id_key="id"
+    item_name_key="title"
+    url_prefix="/interviews/"
+    item_schema_type="Interview"
+    entity_id_prefix="/id/interview/"
+  %}
+  {% include json-ld-interview-entities.html
+    items=interview_items
+    url_prefix="/interviews/"
+  %}
+  <header>
+    <h1>Community Stories</h1>
+    <p class="intro">These tracks are curated sequences from the archive. Each one follows a specific line of practice instead of presenting interviews as an undifferentiated list.</p>
+  </header>
+
+  {% for track in stories %}
+    <section class="index-summary" id="{{ track.id }}">
+      <h2>{{ track.title }}</h2>
+      <p>{{ track.summary }}</p>
+      <p><strong>Why this track:</strong> {{ track.why_it_matters }}</p>
+      {% for interview_id in track.interview_ids %}
+        {% assign interview = site.data.interviews.items | where: "id", interview_id | first %}
+        {% if interview %}
+          {% include interview-card.html interview=interview %}
+        {% endif %}
+      {% endfor %}
+    </section>
+  {% endfor %}
+</article>

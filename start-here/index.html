@@ -1,0 +1,38 @@
+---
+layout: minimal
+title: Start Here
+description: Practical entry paths into the interview and video archive based on your available time and depth of interest.
+breadcrumb: Start Here
+breadcrumb_parent_name: Home
+breadcrumb_parent_url: /home/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign entry = site.data.archive_entry_points %}
+  <header>
+    <h1>Start Here</h1>
+    <p class="intro">This page is the shortest route into the archive. Pick a time budget, then follow the links in sequence.</p>
+  </header>
+
+  {% for lane in entry.lanes %}
+    <section class="index-summary" id="{{ lane.id }}">
+      <h2>{{ lane.label }}</h2>
+      <p>{{ lane.description }}</p>
+      <ul class="home-list">
+        {% for link in lane.links %}
+          <li><a href="{{ link.url }}">{{ link.label }}</a> {{ link.note }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+
+  <section class="index-summary">
+    <h2>Glossary</h2>
+    <ul class="home-list">
+      {% for item in entry.glossary %}
+        <li><strong>{{ item.term }}:</strong> {{ item.definition }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>

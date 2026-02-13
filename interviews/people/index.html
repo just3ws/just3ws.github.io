@@ -1,0 +1,57 @@
+---
+layout: minimal
+title: Interviewees
+description: People-first index of interviewees with appearance counts and direct links into related conversations.
+breadcrumb: Interviewees
+breadcrumb_parent_name: Interviews
+breadcrumb_parent_url: /interviews/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign people = site.data.interviewees_index %}
+  {% assign interview_items = site.data.interviews.items | where_exp: "i", "i.video_asset_id" %}
+  {% include json-ld-itemlist.html
+    collection_name="Interviewees"
+    collection_description=page.description
+    items=interview_items
+    item_id_key="id"
+    item_name_key="title"
+    url_prefix="/interviews/"
+    item_schema_type="Interview"
+    entity_id_prefix="/id/interview/"
+  %}
+  {% include json-ld-interview-entities.html
+    items=interview_items
+    url_prefix="/interviews/"
+  %}
+  <header>
+    <h1>Interviewees</h1>
+    <p class="intro">This index tracks interviewees across the archive so repeated voices and long-term participation are easy to follow.</p>
+    {% if people.summary %}
+      <p>
+        Interviewees: {{ people.summary.total_people }} |
+        With multiple appearances: {{ people.summary.people_with_multiple_interviews }}
+      </p>
+    {% endif %}
+  </header>
+
+  <section>
+    <ul class="home-list">
+      {% for person in people.items %}
+        <li id="{{ person.slug }}">
+          <strong>{{ person.name }}</strong> ({{ person.count }} interviews)
+          {% if person.sample_interview_ids and person.sample_interview_ids.size > 0 %}
+            <br>
+            {% for interview_id in person.sample_interview_ids %}
+              {% assign interview = site.data.interviews.items | where: "id", interview_id | first %}
+              {% if interview %}
+                <a href="/interviews/{{ interview.id }}/">{{ interview.title }}</a>{% unless forloop.last %}, {% endunless %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>
