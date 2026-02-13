@@ -5,7 +5,8 @@ RSpec.describe "json-ld interview template" do
   let(:template) { File.read(template_path) }
 
   it "defines interview JSON-LD contract fields" do
-    expect(template).to include('"@type": "Interview"')
+    expect(template).to include('"@type": "CreativeWork"')
+    expect(template).to include('"additionalType": "https://schema.org/Interview"')
     expect(template).to include('"@id": "{{ site_url }}/id/interview/{{ interview.id }}"')
     expect(template).to include('"datePublished": "{{ interview.recorded_date | date: "%Y-%m-%d" }}"')
     expect(template).to include('"description": {{ page.description | jsonify }}')

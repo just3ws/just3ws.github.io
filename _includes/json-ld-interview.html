@@ -58,7 +58,8 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Interview",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
   "@id": "{{ site_url }}/id/interview/{{ interview.id }}",
   "identifier": {{ interview.id | jsonify }},
   "name": {{ interview.title | jsonify }},

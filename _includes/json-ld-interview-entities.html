@@ -10,7 +10,8 @@
   "@graph": [
     {% for interview in interviews %}
     {
-      "@type": "Interview",
+      "@type": "CreativeWork",
+      "additionalType": "https://schema.org/Interview",
       "@id": "{{ site_url }}/id/interview/{{ interview.id }}",
       "name": {{ interview.title | default: interview.id | jsonify }},
       "url": "{{ site_url }}{{ url_prefix }}{{ interview.id }}/",
