@@ -1,245 +1,386 @@
 ---
-content: "Hi, I'm Mike.\r\n I'm with Utastic here at Chicago Web Conf.\r\n I'm sitting
-  down with Andy Lester.\r\n You might have used some of his tools, www.mechanize
-  or Ack.\r\n He's also formerly ran the Chicago Pearlmongers out in the suburbs.\r\n
-  He's written quite a bit about job hunting and how to be a good citizen inside of
-  the\r\n open source community.\r\n Thank you for sitting down with me, Andy.\r\n
-  Can you tell me a little bit about what your experience has been working with Ack
-  and Mechanize\r\n and all the other tools that you've created and put out there?\r\n
-  Sure.\r\n Most of what I do is, like a lot of open source projects, is scratching
-  an itch.\r\n Something like Ack scratched the itch of me needing to search through
-  a code base that\r\n was multiple different languages together and I needed an easy
-  way to filter out certain\r\n languages.\r\n I scratched that itch and it grew from
-  there.\r\n www.mechanize, the Pearl module, started from we needed a way to do automated
-  testing of\r\n web pages, make sure that logins worked and didn't work in the proper
-  way.\r\n Found an existing module, forked that off, and grew that.\r\n But what's
-  great about that model is once you start the original itch, and once you\r\n talk
-  about it, and once you start talking about, \"Hey, here's something that I've done,\"\r\n
-  and a lot of people, I don't think, talk about that.\r\n They don't talk about their
-  projects enough.\r\n When other people start to use it, the role of me as a maintainer
-  has, in most of my projects,\r\n has gone from the original creator to shepherd
-  of the ongoing maintenance.\r\n So something like Ack, people add features, or Mechanize,
-  I've probably written maybe\r\n a third of Mechanize, and the other two-thirds are
-  all things that have come from the community.\r\n So it's more of the vision.\r\n
-  You've become more of a product manager at a certain point.\r\n At some point, yeah,
-  I do, and part of that also comes to where you need to hand that\r\n off to other
-  people.\r\n So for instance, Mechanize, I've handed off because I've not been able
-  to do the maintenance\r\n on it that I need to do, put the time into it, and there
-  are other people who have those,\r\n have the skill, have the time, and so now,
-  that's going to be part of the core Pearl\r\n LWP, core module.\r\n What else is
-  actually going to be part of Pearl itself?\r\n Well, not of Pearl, but of the LWP,
-  which is pretty common on most of the institutions.\r\n Okay.\r\n Is that like your
-  standard lib?\r\n Yeah.\r\n Oh, okay.\r\n Yeah, it's one of the standard libraries.\r\n
-  And so, that kind of ongoing maintenance, you can pass off, I said, \"Hey, you know
-  what,\r\n I'm not able to put all the time into it.\"\r\n Also there were issues
-  that I was not qualified to deal with.\r\n I'm horrible at internationalization.\r\n
-  I don't understand it.\r\n I don't understand the issues that go into dealing with
-  all the different kinds of character\r\n sets.\r\n And so, when I handed that off
-  to Jesse Vincent, who does a lot of work across multiple character\r\n sets, I mean,
-  he does a lot of stuff with Asian languages, I know, I said, \"Okay, he's\r\n going
-  to know how to deal with this.\"\r\n I handed it off to him.\r\n So, it is like
-  project management, or product management.\r\n It's, and I try not to be, you know,
-  in some extent, I have to be the benevolent dictator,\r\n but I also have to bring
-  people in.\r\n I have to encourage other people to contribute.\r\n So, it's not
-  just about product, it's about encouraging, fostering a sense of, that you're\r\n
-  bringing something to the table, even if it's, I know you were trying to get somebody
-  to\r\n generate an ASCII art for, you know.\r\n Yeah.\r\n Yeah.\r\n Yeah.\r\n Yeah.\r\n
-  Yeah.\r\n For the Cathy, for the ACK.\r\n Right, right.\r\n Because in America,
-  the character Cathy says, \"ACK!\" And she wants chocolate.\r\n Right, and it's
-  just a silly thing.\r\n Yeah.\r\n It's just a silly thing, but there's so many ways
-  that we can contribute.\r\n One of the things that I try to talk about, whenever
-  I can, is that there's so many ways\r\n we contribute to open source.\r\n I wrote
-  an article called, \"14 Ways to Contribute to Open Source Without Being a Rockstar.\"\r\n
-  You can go Google it, you'll find it.\r\n And the point is that you don't have to
-  be one of these huge brains.\r\n You don't have to be a DHH, or a Larry Wall, or
-  one of these guys who just has fantastic\r\n vision and coding chops, because I'm
-  not that guy.\r\n Right.\r\n I just, but I try to contribute where I can.\r\n And
-  everybody has a way that they can contribute, whether that's fixing a bug, whether
-  that's\r\n just verifying a bug in the code.\r\n In the bug tracker.\r\n Or saying,
-  \"Well, you know what, this happens on my machine, and it's different on this\r\n
-  other machine.\"\r\n Just little things like that can make a world of difference
-  when it comes to development.\r\n And so, one of the things I try to talk about
-  is how you don't have to be this, a rock star.\r\n Everybody can contribute in some
-  way.\r\n You don't have to devote hours and hours and hours every week, but just
-  every little bit\r\n that you can do helps.\r\n And I try to think, I talk about
-  how open source is kind of a quilt, and some people\r\n add big squares to the quilt,
-  and some people add little squares to the quilt, but everything\r\n is just little
-  stitches.\r\n And every little stitch that you can add helps the entire community,
-  the entire project,\r\n helps the understanding of open source, and why open source
-  is so important to what we\r\n do in computing.\r\n Yeah.\r\n And it also goes beyond
-  just...\r\n Code contributions, you know, you do the Bobby Tables and the Perl,
-  but...\r\n Right.\r\n BobbyTables.com is a great example, because I read Stack Overflow
-  all the time, StackOverflow.com,\r\n it's a question and answer question, and so
-  many questions, so many questions were people\r\n coming and saying, \"Well, how
-  do I get around SQL injection?\"\r\n And of course, Bobby Tables is a reference
-  to an XKCD cartoon.\r\n Yeah.\r\n About SQL injection.\r\n And people understood
-  that, but they didn't really have...\r\n A lot of these newbies were coming in and
-  didn't understand all the issues.\r\n And I found myself getting so tired of saying
-  the same thing over and over again that I just\r\n set up a website.\r\n And what
-  I did, though, is I just scraped all the answers from everywhere on Stack Overflow,\r\n
-  and I just took the best answers of everything and just put it on the website.\r\n
-  Yeah.\r\n So then I can just make it super simple to make the barriers to helping
-  somebody so low\r\n and just say, \"Go to BobbyTables.com and there's the answer
-  for you.\"\r\n Yeah.\r\n And I think the important differentiation of what you did
-  and some of the other scrapers\r\n is they're mostly trying to do click-throughs.\r\n
-  You're just trying to catalog and make these common answers more accessible.\r\n
-  Yeah.\r\n And is this something that somebody could just go and contribute directly
-  an answer\r\n to?\r\n Well, that's the other beautiful thing, is that the source
-  code for Bobby Tables is\r\n on GitHub.\r\n Okay.\r\n So anybody can go and fork
-  the code on GitHub, make a patch, and send me a pull request.\r\n The beautiful
-  thing about that is that now there's a German translation of BobbyTables.com.\r\n
-  So more internationalization.\r\n More...\r\n Right.\r\n Which I have no idea.\r\n
-  Yeah.\r\n I don't know German, but there's now a German translation.\r\n There's
-  a Russian translation.\r\n And it's all hosted on Bobby Tables.\r\n So the guy who
-  came along and said, \"I'd like to do the German translation,\" set up the\r\n code
-  for me and did a lot of the translation.\r\n But now I have this framework.\r\n
-  Right.\r\n So when the guy came along who wanted to do the Russian translation,
-  just added a language\r\n to it, and now he's able to contribute.\r\n That's one
-  of the beautiful things that GitHub has done, is that they've made the barriers\r\n
-  so low, it's so easy to fork things.\r\n To make comments on issues in the issues
-  database, where it's so simple to do contributions.\r\n Yeah.\r\n And that's the
-  converse to what Linus was saying about his frustrations with Linux,\r\n is they
-  have very high...\r\n In order to contribute to Linux, it's an extremely high threshold
-  to be able to contribute to\r\n the core.\r\n Right.\r\n So for most projects, you
-  just need help.\r\n Right.\r\n You just need somebody to help.\r\n You just need
-  a little bit of stuff.\r\n Yeah.\r\n Right.\r\n And that applies everywhere.\r\n
-  That applies whether it's running a user group meeting.\r\n You come in and you
-  make coffee.\r\n Right.\r\n And anybody can do that.\r\n And it's simple.\r\n Or
-  you clean up afterwards so that your sponsors don't find a mess that...\r\n Right.\r\n
-  It sounds so small, but it's not.\r\n Every one of those is a little stitch in the
-  quilt.\r\n Yeah.\r\n I cannot say how much I appreciated at SCMC, a software craftsmanship
-  in McHenry County.\r\n I don't often plug my own group.\r\n McHenry County represent.\r\n
-  Yeah.\r\n Yeah.\r\n The MC.\r\n But turning around and seeing that the people who
-  came had already cleaned up all their\r\n own stuff.\r\n Sure.\r\n I don't have
-  to run around chasing it.\r\n And so I can talk to people and make newbies to the
-  group feel more comfortable and welcome.\r\n So it's all part of an ecosystem.\r\n
-  Yeah.\r\n When you pick up your own plates, I can talk to somebody who's there for
-  the first\r\n time and make them feel more comfortable so that way they'll come
-  and then we get bigger\r\n and bigger.\r\n It has to be.\r\n It has to be ongoing
-  because so much of what we do is we think of, we sit here and we're\r\n in awe of
-  these great technical brains that do amazing things.\r\n And yet there's so much
-  other things that need to get done and they're not any worse.\r\n It's not like
-  they, you know, they might not have the glamor, but they're still just as\r\n important.\r\n
-  So on the Parrot project, for instance, Parrot is the virtual machine that is underpinning\r\n
-  Rakuto Pearl, which is the main implementation of Pearl six.\r\n So there's an entire
-  virtual machine, uh, that there's some incredible brain power going\r\n into creating
-  a virtual machine and that's way beyond my pay grade.\r\n I don't know.\r\n I, I,
-  that's way beyond me.\r\n I don't understand, you know, sitting here comparing garbage
-  collection algorithms.\r\n That's not, that's not, that's not my thing.\r\n Right.\r\n
-  Right.\r\n But I can do, but what we do have is what's called the Parrot cage cleaners
-  and the Parrot\r\n cage cleaners are the, are the guys who go and, uh, they might
-  look at a test, part of\r\n the test so we can go, Oh, this is, this is redundant
-  to this other test here.\r\n We'll go and remove it or we'll find, uh, some code
-  that for some reason is intended\r\n incorrectly or comment that's out of date or
-  we'll go look in the book in the, uh, the,\r\n uh, ticket queue and go clean stuff
-  up.\r\n Jim Keenan out in New York is amazing that the number of, uh, some days
-  they'll just\r\n be a dozen closed tickets where Jim has gone through and said,
-  Oh, this is fixed.\r\n This is fixed.\r\n This is fixed.\r\n Six months ago and
-  help clean those up.\r\n All that kind of scut work is absolutely crucial to a successful
-  project.\r\n The people who are building the core not have to have a mess, not have
-  to, so that way they\r\n can produce the thing which feeds back to the people who
-  are using it.\r\n Right.\r\n So when you're using it, you pay for it by helping
-  do some scuttle work and then it feeds\r\n back and comes a cycle.\r\n Absolutely.\r\n
-  Absolutely.\r\n Everything that we do, anything that you do that helps an open source
-  project is, is valuable.\r\n Even just talking about it.\r\n You sit here and you
-  write a blog post about, Hey, look, I found this project.\r\n You know, I, I, I
-  found, you know, this food project that I, that saved me an hour on something\r\n
-  that I was doing, save, spend 10, 15 minutes writing that in your blog and, or tweeting\r\n
-  about it or posting it to Facebook or whatever it may be.\r\n And tell people about
-  it because otherwise people don't know about it.\r\n Right.\r\n And you know, one
-  of the, one of the things, it's funny because I have people come up to\r\n me at
-  conferences sometime and they kind of go, I, I, you know, I'll say, well, tell\r\n
-  me about what you do.\r\n And they go, well, you know, I'm not, I'm not as famous
-  as you.\r\n And I say, the only reason I'm famous is because I have a big mouth.\r\n
-  Right.\r\n And I talk about these things.\r\n I'm not any smarter than you are.\r\n
-  I'm not any better programmer than you are.\r\n I just talk a lot.\r\n Yeah.\r\n
-  And, and hey, here we are now.\r\n Yeah.\r\n So that kind, we, one of the things
-  that, that geeks tend to not do is they don't like\r\n to talk about themselves.\r\n
-  They don't like to brag.\r\n Yeah.\r\n They don't like to, and, and that's not just
-  a geek thing.\r\n People in general don't like to, and that's one of the problems,
-  of course, that, that\r\n they have when it comes to job interviews because they
-  don't like to talk about what\r\n they've done.\r\n They don't like to brag.\r\n
-  But part of this is we need to brag.\r\n Not that we're bragging about how cool
-  we are that we did this, but that this is useful.\r\n So something like ACK, I talk
-  about ACK not because I want people to somehow, you know,\r\n adulate me, but that
-  I want people to use it because I think it's helpful.\r\n I want people to find
-  useful things.\r\n So and now, you know, so ACK, ACK has a website called, the ACK
-  website.\r\n The ACK website is called BetterThanGREP.com because I wanted people
-  to have other things\r\n that are better than GREP for searching source code, and
-  there's actually a page on there\r\n where I talk about other kinds of tools that
-  are there.\r\n Yeah.\r\n And now, so now, somebody has come along with a website
-  called BetterThanACK.com, building\r\n on top of that, and I couldn't be more delighted.\r\n
-  I love that we build off of each other, that, and, you know, it's not competition.\r\n
-  It's not, it's not like, you know, people are…\r\n You're going to take away my,
-  my, my earnings.\r\n Right.\r\n By taking some…\r\n Right.\r\n That's, that's one
-  of the tricks with paid software is, is, you know, collaboration\r\n isn't, is desired
-  for the competitor because they're going to be taking away your, your\r\n profit.\r\n
-  Right.\r\n Whereas when it's open source, it's just, hey, you just made something
-  better.\r\n Right.\r\n Hey, now I can use it.\r\n Now my life is better.\r\n It's
-  the difference between a scarcity mentality and an abundance mentality.\r\n Scarcity
-  mentality thinks that everything's in balance.\r\n Everything's a zero sum game.\r\n
-  Whether it's adulation, or love, or time, or everything is just zero sum.\r\n And
-  an abundance mentality says that the more people that come in, the more we have.\r\n
-  The more we have to give.\r\n And so that's why I want to bring in as many people
-  as I can to work on open source.\r\n To use, even if you just use it, that's great
-  because that helps all of us.\r\n So that, that's, that's my philosophy behind it.\r\n
-  Yeah.\r\n Okay.\r\n And just to kind of bring us to an end, with you, with your
-  talks and your writing about\r\n finding jobs, do you mention it all or do you have
-  any experience on using user groups\r\n and conferences to help find jobs?\r\n Well,
-  I actually, it's funny because I, I also wrote, I just wrote another article on\r\n
-  leveraging, I believe it's called Leveraging Your Open Source Experience in the
-  Job Hunt.\r\n Right.\r\n Yeah.\r\n It's a great article.\r\n It's a great article.\r\n
-  Where, you really didn't know this in the softball?\r\n Yeah.\r\n No.\r\n No.\r\n
-  No.\r\n That one actually, I didn't know this one.\r\n Okay.\r\n Well, you, it's
-  a great softball.\r\n They, because I talk about how these are all contacts.\r\n
-  Okay.\r\n People that we know day to day, that we know, our colleagues in open source
-  help us when\r\n we're trying to find other jobs, they help, and we can use our
-  open source experience\r\n on our resumes.\r\n Right.\r\n Because it is work experience.\r\n
-  Work experience on your resume.\r\n Work experience on your resume doesn't have
-  to be paid.\r\n Right.\r\n And so, just as if you organized, you know, say you organized
-  your kid's baseball league.\r\n That's worthwhile to put on your resume because,
-  and you can tie it into a business need.\r\n Absolutely, the things you do in open
-  source should go on your resume.\r\n Should, and, and you can talk about that and
-  say, \"Hey, look, you know what?\r\n These are the things that I've done on this
-  project.\"\r\n So, for instance, on my resume, I talk about the parent project.\r\n
-  Uh-huh.\r\n And about how I've gone through and done these sorts of clean up things,
-  about how\r\n I instrument the code for doing static analysis, and I, and I treat
-  it as if it's a project\r\n that I got paid for.\r\n Right.\r\n I didn't, but in
-  the eyes of the reader, that's still valuable work experience.\r\n Right.\r\n And
-  it's, it's different collateral.\r\n It's.\r\n Yes.\r\n In a way, in a way you do
-  get paid by, but it's not through money.\r\n Right.\r\n It's, it's through recognition,
-  through use, through.\r\n Recognition and gratitude.\r\n Showing people contributing
-  back.\r\n Right.\r\n Recognition and gratitude are the, are the currency of what
-  we do.\r\n And so, the other thing I like to say is that we need to thank each other
-  more.\r\n We need to recognize each other more.\r\n We need to, you know, if, not
-  only should, if you get some, if you find this tool that\r\n saves you a couple
-  of hours of work, not only should you write a blog post about it, but\r\n you should
-  send mail to somebody and say, \"Hey, you know what?\r\n I just used this.\r\n It
-  saved me an hour, and I want to thank you for it.\"\r\n And that one minute, I can't
-  even tell you how much that means to software authors.\r\n To let you know you're
-  not in isolation.\r\n Right.\r\n Yelling out into the dark void.\r\n Right.\r\n
-  That people are actually using this and appreciate it.\r\n That is absolute gold.\r\n
-  You want to sit here and encourage open source?\r\n You want to encourage people
-  to write these tools?\r\n Encourage them directly by letting them know.\r\n And
-  that, and, and just, you know, the last thing is that, what, what you're saying
-  is,\r\n I have a friend who, Igor Polivoy, who I will introduce.\r\n Who does several
-  Java projects.\r\n And every time he would get something, I work with him at Groupon.\r\n
-  Every time he would get an email or some kind of contact saying, \"Somebody used
-  my project\r\n and they have 20 million records in their database and they're using
-  it.\"\r\n They said, \"It's no problem.\"\r\n The sense of, of the good feeling
-  you could just see coming from him.\r\n Yep.\r\n Was, you know, he'd done this thing
-  to scratch his own itch, but somebody else got used from it.\r\n He didn't, he's
-  not thinking about, \"Oh, I should have charged him.\"\r\n He's thinking, \"Oh,
-  I should have charged for that.\"\r\n He's thinking, \"That's really great.\"\r\n
-  And it's funny.\r\n It's a very different mindset.\r\n It is.\r\n And it's funny
-  because our day jobs don't pay us in that.\r\n You, it's not often, you know, sometimes
-  at the end of a big project, upper management will say,\r\n \"Hey, look, we're gonna,
-  we're gonna bring in a couple dozen pizzas and everybody has pizzas in the lunchroom.\r\n
-  And thanks for God, you know, for a job well done.\"\r\n And that's kind of gratitude.\r\n
-  Yeah.\r\n But not the same as an email from somebody who goes,\r\n \"Hey, I just
-  discovered your, your website and it saved me X amount of time and, and it made
-  my life so much easier.\r\n Thank you for doing that.\"\r\n And so we all, we all
-  owe it to the other authors, to open source, to, to help encourage that.\r\n And
-  that's, that just comes back.\r\n That's just paying it forward because it's gonna
-  come back for everything that we've done.\r\n Well, thank you very much for taking
-  the time to talk with me.\r\n Thanks, Mike.\r\n Thanks.\r\n I appreciate it."
+content: |
+  Hi, I'm Mike.
+   I'm with Utastic here at Chicago Web Conf.
+   I'm sitting down with Andy Lester.
+   You might have used some of his tools, www.mechanize or Ack.
+   He's also formerly ran the Chicago Pearlmongers out in the suburbs.
+   He's written quite a bit about job hunting and how to be a good citizen inside of the
+   open source community.
+   Thank you for sitting down with me, Andy.
+   Can you tell me a little bit about what your experience has been working with Ack and Mechanize
+   and all the other tools that you've created and put out there?
+   Sure.
+   Most of what I do is, like a lot of open source projects, is scratching an itch.
+   Something like Ack scratched the itch of me needing to search through a code base that
+   was multiple different languages together and I needed an easy way to filter out certain
+   languages.
+   I scratched that itch and it grew from there.
+   www.mechanize, the Pearl module, started from we needed a way to do automated testing of
+   web pages, make sure that logins worked and didn't work in the proper way.
+   Found an existing module, forked that off, and grew that.
+   But what's great about that model is once you start the original itch, and once you
+   talk about it, and once you start talking about, "Hey, here's something that I've done,"
+   and a lot of people, I don't think, talk about that.
+   They don't talk about their projects enough.
+   When other people start to use it, the role of me as a maintainer has, in most of my projects,
+   has gone from the original creator to shepherd of the ongoing maintenance.
+   So something like Ack, people add features, or Mechanize, I've probably written maybe
+   a third of Mechanize, and the other two-thirds are all things that have come from the community.
+   So it's more of the vision.
+   You've become more of a product manager at a certain point.
+   At some point, yeah, I do, and part of that also comes to where you need to hand that
+   off to other people.
+   So for instance, Mechanize, I've handed off because I've not been able to do the maintenance
+   on it that I need to do, put the time into it, and there are other people who have those,
+   have the skill, have the time, and so now, that's going to be part of the core Pearl
+   LWP, core module.
+   What else is actually going to be part of Pearl itself?
+   Well, not of Pearl, but of the LWP, which is pretty common on most of the institutions.
+   Okay.
+   Is that like your standard lib?
+   Yeah.
+   Oh, okay.
+   Yeah, it's one of the standard libraries.
+   And so, that kind of ongoing maintenance, you can pass off, I said, "Hey, you know what,
+   I'm not able to put all the time into it."
+   Also there were issues that I was not qualified to deal with.
+   I'm horrible at internationalization.
+   I don't understand it.
+   I don't understand the issues that go into dealing with all the different kinds of character
+   sets.
+   And so, when I handed that off to Jesse Vincent, who does a lot of work across multiple character
+   sets, I mean, he does a lot of stuff with Asian languages, I know, I said, "Okay, he's
+   going to know how to deal with this."
+   I handed it off to him.
+   So, it is like project management, or product management.
+   It's, and I try not to be, you know, in some extent, I have to be the benevolent dictator,
+   but I also have to bring people in.
+   I have to encourage other people to contribute.
+   So, it's not just about product, it's about encouraging, fostering a sense of, that you're
+   bringing something to the table, even if it's, I know you were trying to get somebody to
+   generate an ASCII art for, you know.
+   Yeah.
+   Yeah.
+   Yeah.
+   Yeah.
+   Yeah.
+   For the Cathy, for the ACK.
+   Right, right.
+   Because in America, the character Cathy says, "ACK!" And she wants chocolate.
+   Right, and it's just a silly thing.
+   Yeah.
+   It's just a silly thing, but there's so many ways that we can contribute.
+   One of the things that I try to talk about, whenever I can, is that there's so many ways
+   we contribute to open source.
+   I wrote an article called, "14 Ways to Contribute to Open Source Without Being a Rockstar."
+   You can go Google it, you'll find it.
+   And the point is that you don't have to be one of these huge brains.
+   You don't have to be a DHH, or a Larry Wall, or one of these guys who just has fantastic
+   vision and coding chops, because I'm not that guy.
+   Right.
+   I just, but I try to contribute where I can.
+   And everybody has a way that they can contribute, whether that's fixing a bug, whether that's
+   just verifying a bug in the code.
+   In the bug tracker.
+   Or saying, "Well, you know what, this happens on my machine, and it's different on this
+   other machine."
+   Just little things like that can make a world of difference when it comes to development.
+   And so, one of the things I try to talk about is how you don't have to be this, a rock star.
+   Everybody can contribute in some way.
+   You don't have to devote hours and hours and hours every week, but just every little bit
+   that you can do helps.
+   And I try to think, I talk about how open source is kind of a quilt, and some people
+   add big squares to the quilt, and some people add little squares to the quilt, but everything
+   is just little stitches.
+   And every little stitch that you can add helps the entire community, the entire project,
+   helps the understanding of open source, and why open source is so important to what we
+   do in computing.
+   Yeah.
+   And it also goes beyond just...
+   Code contributions, you know, you do the Bobby Tables and the Perl, but...
+   Right.
+   BobbyTables.com is a great example, because I read Stack Overflow all the time, StackOverflow.com,
+   it's a question and answer question, and so many questions, so many questions were people
+   coming and saying, "Well, how do I get around SQL injection?"
+   And of course, Bobby Tables is a reference to an XKCD cartoon.
+   Yeah.
+   About SQL injection.
+   And people understood that, but they didn't really have...
+   A lot of these newbies were coming in and didn't understand all the issues.
+   And I found myself getting so tired of saying the same thing over and over again that I just
+   set up a website.
+   And what I did, though, is I just scraped all the answers from everywhere on Stack Overflow,
+   and I just took the best answers of everything and just put it on the website.
+   Yeah.
+   So then I can just make it super simple to make the barriers to helping somebody so low
+   and just say, "Go to BobbyTables.com and there's the answer for you."
+   Yeah.
+   And I think the important differentiation of what you did and some of the other scrapers
+   is they're mostly trying to do click-throughs.
+   You're just trying to catalog and make these common answers more accessible.
+   Yeah.
+   And is this something that somebody could just go and contribute directly an answer
+   to?
+   Well, that's the other beautiful thing, is that the source code for Bobby Tables is
+   on GitHub.
+   Okay.
+   So anybody can go and fork the code on GitHub, make a patch, and send me a pull request.
+   The beautiful thing about that is that now there's a German translation of BobbyTables.com.
+   So more internationalization.
+   More...
+   Right.
+   Which I have no idea.
+   Yeah.
+   I don't know German, but there's now a German translation.
+   There's a Russian translation.
+   And it's all hosted on Bobby Tables.
+   So the guy who came along and said, "I'd like to do the German translation," set up the
+   code for me and did a lot of the translation.
+   But now I have this framework.
+   Right.
+   So when the guy came along who wanted to do the Russian translation, just added a language
+   to it, and now he's able to contribute.
+   That's one of the beautiful things that GitHub has done, is that they've made the barriers
+   so low, it's so easy to fork things.
+   To make comments on issues in the issues database, where it's so simple to do contributions.
+   Yeah.
+   And that's the converse to what Linus was saying about his frustrations with Linux,
+   is they have very high...
+   In order to contribute to Linux, it's an extremely high threshold to be able to contribute to
+   the core.
+   Right.
+   So for most projects, you just need help.
+   Right.
+   You just need somebody to help.
+   You just need a little bit of stuff.
+   Yeah.
+   Right.
+   And that applies everywhere.
+   That applies whether it's running a user group meeting.
+   You come in and you make coffee.
+   Right.
+   And anybody can do that.
+   And it's simple.
+   Or you clean up afterwards so that your sponsors don't find a mess that...
+   Right.
+   It sounds so small, but it's not.
+   Every one of those is a little stitch in the quilt.
+   Yeah.
+   I cannot say how much I appreciated at SCMC, a software craftsmanship in McHenry County.
+   I don't often plug my own group.
+   McHenry County represent.
+   Yeah.
+   Yeah.
+   The MC.
+   But turning around and seeing that the people who came had already cleaned up all their
+   own stuff.
+   Sure.
+   I don't have to run around chasing it.
+   And so I can talk to people and make newbies to the group feel more comfortable and welcome.
+   So it's all part of an ecosystem.
+   Yeah.
+   When you pick up your own plates, I can talk to somebody who's there for the first
+   time and make them feel more comfortable so that way they'll come and then we get bigger
+   and bigger.
+   It has to be.
+   It has to be ongoing because so much of what we do is we think of, we sit here and we're
+   in awe of these great technical brains that do amazing things.
+   And yet there's so much other things that need to get done and they're not any worse.
+   It's not like they, you know, they might not have the glamor, but they're still just as
+   important.
+   So on the Parrot project, for instance, Parrot is the virtual machine that is underpinning
+   Rakuto Pearl, which is the main implementation of Pearl six.
+   So there's an entire virtual machine, uh, that there's some incredible brain power going
+   into creating a virtual machine and that's way beyond my pay grade.
+   I don't know.
+   I, I, that's way beyond me.
+   I don't understand, you know, sitting here comparing garbage collection algorithms.
+   That's not, that's not, that's not my thing.
+   Right.
+   Right.
+   But I can do, but what we do have is what's called the Parrot cage cleaners and the Parrot
+   cage cleaners are the, are the guys who go and, uh, they might look at a test, part of
+   the test so we can go, Oh, this is, this is redundant to this other test here.
+   We'll go and remove it or we'll find, uh, some code that for some reason is intended
+   incorrectly or comment that's out of date or we'll go look in the book in the, uh, the,
+   uh, ticket queue and go clean stuff up.
+   Jim Keenan out in New York is amazing that the number of, uh, some days they'll just
+   be a dozen closed tickets where Jim has gone through and said, Oh, this is fixed.
+   This is fixed.
+   This is fixed.
+   Six months ago and help clean those up.
+   All that kind of scut work is absolutely crucial to a successful project.
+   The people who are building the core not have to have a mess, not have to, so that way they
+   can produce the thing which feeds back to the people who are using it.
+   Right.
+   So when you're using it, you pay for it by helping do some scuttle work and then it feeds
+   back and comes a cycle.
+   Absolutely.
+   Absolutely.
+   Everything that we do, anything that you do that helps an open source project is, is valuable.
+   Even just talking about it.
+   You sit here and you write a blog post about, Hey, look, I found this project.
+   You know, I, I, I found, you know, this food project that I, that saved me an hour on something
+   that I was doing, save, spend 10, 15 minutes writing that in your blog and, or tweeting
+   about it or posting it to Facebook or whatever it may be.
+   And tell people about it because otherwise people don't know about it.
+   Right.
+   And you know, one of the, one of the things, it's funny because I have people come up to
+   me at conferences sometime and they kind of go, I, I, you know, I'll say, well, tell
+   me about what you do.
+   And they go, well, you know, I'm not, I'm not as famous as you.
+   And I say, the only reason I'm famous is because I have a big mouth.
+   Right.
+   And I talk about these things.
+   I'm not any smarter than you are.
+   I'm not any better programmer than you are.
+   I just talk a lot.
+   Yeah.
+   And, and hey, here we are now.
+   Yeah.
+   So that kind, we, one of the things that, that geeks tend to not do is they don't like
+   to talk about themselves.
+   They don't like to brag.
+   Yeah.
+   They don't like to, and, and that's not just a geek thing.
+   People in general don't like to, and that's one of the problems, of course, that, that
+   they have when it comes to job interviews because they don't like to talk about what
+   they've done.
+   They don't like to brag.
+   But part of this is we need to brag.
+   Not that we're bragging about how cool we are that we did this, but that this is useful.
+   So something like ACK, I talk about ACK not because I want people to somehow, you know,
+   adulate me, but that I want people to use it because I think it's helpful.
+   I want people to find useful things.
+   So and now, you know, so ACK, ACK has a website called, the ACK website.
+   The ACK website is called BetterThanGREP.com because I wanted people to have other things
+   that are better than GREP for searching source code, and there's actually a page on there
+   where I talk about other kinds of tools that are there.
+   Yeah.
+   And now, so now, somebody has come along with a website called BetterThanACK.com, building
+   on top of that, and I couldn't be more delighted.
+   I love that we build off of each other, that, and, you know, it's not competition.
+   It's not, it's not like, you know, people are…
+   You're going to take away my, my, my earnings.
+   Right.
+   By taking some…
+   Right.
+   That's, that's one of the tricks with paid software is, is, you know, collaboration
+   isn't, is desired for the competitor because they're going to be taking away your, your
+   profit.
+   Right.
+   Whereas when it's open source, it's just, hey, you just made something better.
+   Right.
+   Hey, now I can use it.
+   Now my life is better.
+   It's the difference between a scarcity mentality and an abundance mentality.
+   Scarcity mentality thinks that everything's in balance.
+   Everything's a zero sum game.
+   Whether it's adulation, or love, or time, or everything is just zero sum.
+   And an abundance mentality says that the more people that come in, the more we have.
+   The more we have to give.
+   And so that's why I want to bring in as many people as I can to work on open source.
+   To use, even if you just use it, that's great because that helps all of us.
+   So that, that's, that's my philosophy behind it.
+   Yeah.
+   Okay.
+   And just to kind of bring us to an end, with you, with your talks and your writing about
+   finding jobs, do you mention it all or do you have any experience on using user groups
+   and conferences to help find jobs?
+   Well, I actually, it's funny because I, I also wrote, I just wrote another article on
+   leveraging, I believe it's called Leveraging Your Open Source Experience in the Job Hunt.
+   Right.
+   Yeah.
+   It's a great article.
+   It's a great article.
+   Where, you really didn't know this in the softball?
+   Yeah.
+   No.
+   No.
+   No.
+   That one actually, I didn't know this one.
+   Okay.
+   Well, you, it's a great softball.
+   They, because I talk about how these are all contacts.
+   Okay.
+   People that we know day to day, that we know, our colleagues in open source help us when
+   we're trying to find other jobs, they help, and we can use our open source experience
+   on our resumes.
+   Right.
+   Because it is work experience.
+   Work experience on your resume.
+   Work experience on your resume doesn't have to be paid.
+   Right.
+   And so, just as if you organized, you know, say you organized your kid's baseball league.
+   That's worthwhile to put on your resume because, and you can tie it into a business need.
+   Absolutely, the things you do in open source should go on your resume.
+   Should, and, and you can talk about that and say, "Hey, look, you know what?
+   These are the things that I've done on this project."
+   So, for instance, on my resume, I talk about the parent project.
+   Uh-huh.
+   And about how I've gone through and done these sorts of clean up things, about how
+   I instrument the code for doing static analysis, and I, and I treat it as if it's a project
+   that I got paid for.
+   Right.
+   I didn't, but in the eyes of the reader, that's still valuable work experience.
+   Right.
+   And it's, it's different collateral.
+   It's.
+   Yes.
+   In a way, in a way you do get paid by, but it's not through money.
+   Right.
+   It's, it's through recognition, through use, through.
+   Recognition and gratitude.
+   Showing people contributing back.
+   Right.
+   Recognition and gratitude are the, are the currency of what we do.
+   And so, the other thing I like to say is that we need to thank each other more.
+   We need to recognize each other more.
+   We need to, you know, if, not only should, if you get some, if you find this tool that
+   saves you a couple of hours of work, not only should you write a blog post about it, but
+   you should send mail to somebody and say, "Hey, you know what?
+   I just used this.
+   It saved me an hour, and I want to thank you for it."
+   And that one minute, I can't even tell you how much that means to software authors.
+   To let you know you're not in isolation.
+   Right.
+   Yelling out into the dark void.
+   Right.
+   That people are actually using this and appreciate it.
+   That is absolute gold.
+   You want to sit here and encourage open source?
+   You want to encourage people to write these tools?
+   Encourage them directly by letting them know.
+   And that, and, and just, you know, the last thing is that, what, what you're saying is,
+   I have a friend who, Igor Polivoy, who I will introduce.
+   Who does several Java projects.
+   And every time he would get something, I work with him at Groupon.
+   Every time he would get an email or some kind of contact saying, "Somebody used my project
+   and they have 20 million records in their database and they're using it."
+   They said, "It's no problem."
+   The sense of, of the good feeling you could just see coming from him.
+   Yep.
+   Was, you know, he'd done this thing to scratch his own itch, but somebody else got used from it.
+   He didn't, he's not thinking about, "Oh, I should have charged him."
+   He's thinking, "Oh, I should have charged for that."
+   He's thinking, "That's really great."
+   And it's funny.
+   It's a very different mindset.
+   It is.
+   And it's funny because our day jobs don't pay us in that.
+   You, it's not often, you know, sometimes at the end of a big project, upper management will say,
+   "Hey, look, we're gonna, we're gonna bring in a couple dozen pizzas and everybody has pizzas in the lunchroom.
+   And thanks for God, you know, for a job well done."
+   And that's kind of gratitude.
+   Yeah.
+   But not the same as an email from somebody who goes,
+   "Hey, I just discovered your, your website and it saved me X amount of time and, and it made my life so much easier.
+   Thank you for doing that."
+   And so we all, we all owe it to the other authors, to open source, to, to help encourage that.
+   And that's, that just comes back.
+   That's just paying it forward because it's gonna come back for everything that we've done.
+   Well, thank you very much for taking the time to talk with me.
+   Thanks, Mike.
+   Thanks.
+   I appreciate it.

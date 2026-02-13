@@ -59,3 +59,8 @@ Use `bin/import_transcripts_from_outbox.rb` to onboard transcript files from an 
    - `ruby ./bin/import_transcripts_from_outbox.rb --source-dir /Volumes/Dock_1TB/vimeo/outbox --apply`
 4. Re-run validation:
    - `./bin/pipeline validate`
+
+Shortcut wrapper:
+
+- `./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox`
+- `./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit`

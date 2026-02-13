@@ -20,16 +20,23 @@ breadcrumb_parent_url: /docs/
 ## Commands
 
 1. Audit current repository transcript integrity:
-   - `ruby ./bin/audit_transcripts.rb`
+   - `./bin/transcripts audit`
 2. Run import in dry-run mode:
-   - `ruby ./bin/import_transcripts_from_outbox.rb --source-dir /Volumes/Dock_1TB/vimeo/outbox`
+   - `./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
 3. Review output reports:
    - `tmp/transcript-import-report.json`
    - `tmp/transcript-import-report.md`
 4. Apply high-confidence mappings:
-   - `ruby ./bin/import_transcripts_from_outbox.rb --source-dir /Volumes/Dock_1TB/vimeo/outbox --apply`
+   - `./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
 5. Re-run pipeline validation:
-   - `./bin/pipeline validate`
+   - `./bin/transcripts validate`
+
+## One-Command Batch Mode
+
+- Ingest + audit + validate + commit:
+  - `./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit`
+- Ingest + audit + validate + commit + push:
+  - `./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit --auto-push`
 
 ## Notes
 

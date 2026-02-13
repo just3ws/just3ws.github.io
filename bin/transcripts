@@ -1,0 +1,147 @@
+#!/usr/bin/env sh
+set -eu
+
+SOURCE_DIR="/Volumes/Dock_1TB/vimeo/outbox"
+REPORT_DIR="tmp"
+MIN_CONFIDENCE="0.9"
+FORCE=0
+AUTO_COMMIT=0
+AUTO_PUSH=0
+SKIP_VALIDATE=0
+
+usage() {
+  cat <<'USAGE'
+Usage: ./bin/transcripts <command> [options]
+
+Commands:
+  dry-run   Generate transcript mapping reports without changing data.
+  ingest    Apply high-confidence transcript mappings and run checks.
+  audit     Run transcript integrity audit.
+  validate  Run full pipeline validation with project Ruby toolchain.
+  status    Show transcript corpus status from audit.
+  help      Show this help.
+
+Options (for dry-run/ingest):
+  --source-dir PATH         Source transcript directory (default: /Volumes/Dock_1TB/vimeo/outbox)
+  --report-dir PATH         Report output directory (default: tmp)
+  --min-confidence FLOAT    Auto-apply threshold (default: 0.9)
+  --force                   Overwrite existing transcript files.
+  --auto-commit             Commit transcript changes after ingest.
+  --auto-push               Push after auto-commit.
+  --skip-validate           Skip full pipeline validate after ingest.
+
+Examples:
+  ./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox
+  ./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit
+USAGE
+}
+
+run_validate() {
+  if [ -d "$HOME/.asdf/shims" ]; then
+    PATH="$HOME/.asdf/shims:$PATH" ./bin/pipeline validate
+  else
+    ./bin/pipeline validate
+  fi
+}
+
+parse_common_opts() {
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --source-dir)
+        SOURCE_DIR="$2"
+        shift 2
+        ;;
+      --report-dir)
+        REPORT_DIR="$2"
+        shift 2
+        ;;
+      --min-confidence)
+        MIN_CONFIDENCE="$2"
+        shift 2
+        ;;
+      --force)
+        FORCE=1
+        shift 1
+        ;;
+      --auto-commit)
+        AUTO_COMMIT=1
+        shift 1
+        ;;
+      --auto-push)
+        AUTO_PUSH=1
+        AUTO_COMMIT=1
+        shift 1
+        ;;
+      --skip-validate)
+        SKIP_VALIDATE=1
+        shift 1
+        ;;
+      *)
+        echo "Unknown option: $1" >&2
+        usage >&2
+        exit 1
+        ;;
+    esac
+  done
+}
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  dry-run)
+    parse_common_opts "$@"
+    ./bin/import_transcripts_from_outbox.rb \
+      --source-dir "$SOURCE_DIR" \
+      --report-dir "$REPORT_DIR" \
+      --min-confidence "$MIN_CONFIDENCE"
+    ;;
+  ingest)
+    parse_common_opts "$@"
+    if [ "$FORCE" -eq 1 ]; then
+      ./bin/import_transcripts_from_outbox.rb \
+        --source-dir "$SOURCE_DIR" \
+        --report-dir "$REPORT_DIR" \
+        --min-confidence "$MIN_CONFIDENCE" \
+        --apply \
+        --force
+    else
+      ./bin/import_transcripts_from_outbox.rb \
+        --source-dir "$SOURCE_DIR" \
+        --report-dir "$REPORT_DIR" \
+        --min-confidence "$MIN_CONFIDENCE" \
+        --apply
+    fi
+
+    ./bin/audit_transcripts.rb
+    if [ "$SKIP_VALIDATE" -ne 1 ]; then
+      run_validate
+    fi
+
+    if [ "$AUTO_COMMIT" -eq 1 ]; then
+      git add _data/video_assets.yml _data/transcripts/*.yml
+      if ! git diff --cached --quiet; then
+        git commit -m "Ingest transcripts from outbox"
+        if [ "$AUTO_PUSH" -eq 1 ]; then
+          git push
+        fi
+      else
+        echo "No staged transcript changes to commit."
+      fi
+    fi
+    ;;
+  audit|status)
+    ./bin/audit_transcripts.rb
+    ;;
+  validate)
+    run_validate
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    echo "Unknown command: $cmd" >&2
+    usage >&2
+    exit 1
+    ;;
+esac

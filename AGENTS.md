@@ -9,6 +9,10 @@ Use these skills by default for this repository:
 4. `screenshot` - Capture visual evidence for UI regressions.
 5. `security-best-practices` - Run focused security reviews (JS/TS/Ruby-adjacent patterns).
 6. `security-threat-model` - Produce threat models for pipeline/content flows.
+7. `transcript-import-batch` - Batch ingest transcript files from outbox with dry-run/apply + validation workflow.
+8. `transcript-review-gate` - Review low-confidence transcript mappings before apply.
+9. `transcript-quality-check` - Audit transcript integrity and content quality in canonical data.
+10. `transcript-ops-report` - Summarize transcript ingestion throughput and corpus growth.
 
 ## GitHub Pages / Pipeline Focus
 For this site, prioritize:
