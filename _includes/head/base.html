@@ -40,3 +40,8 @@
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="stylesheet" href="/assets/css/core.css">
 <link rel="stylesheet" href="{{ include.theme_stylesheet }}">
+{% if page.stylesheets and page.stylesheets.size > 0 %}
+  {% for stylesheet in page.stylesheets %}
+<link rel="stylesheet" href="{{ stylesheet }}">
+  {% endfor %}
+{% endif %}
