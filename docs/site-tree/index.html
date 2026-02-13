@@ -1,0 +1,500 @@
+---
+layout: minimal
+title: Site Tree Explorer
+description: Interactive deep index of site routes with collapsible tree navigation and filtering.
+breadcrumb: Site Tree Explorer
+breadcrumb_parent_name: Docs
+breadcrumb_parent_url: /docs/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>Site Tree Explorer</h1>
+    <p class="intro">A deep index view of published routes. Expand branches as needed, filter quickly, and avoid the all-pages wall of noise.</p>
+  </header>
+
+  <section class="tree-controls" aria-label="Tree controls">
+    <label for="tree-search">Filter routes</label>
+    <input id="tree-search" type="search" placeholder="Search by path or title (e.g. /interviews/ or 'semantic')" autocomplete="off">
+    <div class="tree-buttons">
+      <button id="mode-path" class="video-button primary" type="button">By Path</button>
+      <button id="mode-kind" class="video-button" type="button">By Type</button>
+      <button id="mode-year" class="video-button" type="button">By Year</button>
+      <button id="expand-top" class="video-button" type="button">Expand Top Level</button>
+      <button id="collapse-all" class="video-button" type="button">Collapse All</button>
+    </div>
+    <p id="tree-stats" class="video-meta" aria-live="polite"></p>
+  </section>
+
+  <section class="tree-layout">
+    <div>
+      <ul id="site-tree" class="site-tree" aria-label="Site route tree"></ul>
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <aside id="node-details" class="tree-details" aria-label="Selected node details">
+      <h2>Selection</h2>
+      <p class="video-meta">Select a node to inspect route details.</p>
+    </aside>
+  </section>
+</article>
+
+<style>
+  .tree-controls {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: var(--surface);
+    margin-bottom: 1rem;
+  }
+
+  .tree-controls label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+  }
+
+  #tree-search {
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+    margin-bottom: 0.625rem;
+    font: inherit;
+    background: #fff;
+  }
+
+  .tree-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .tree-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+    gap: 1rem;
+  }
+
+  .site-tree,
+  .site-tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-tree {
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: #fff;
+    padding: 0.375rem;
+    min-height: 18rem;
+  }
+
+  .tree-node-children {
+    margin-left: 1.25rem;
+    border-left: 1px dashed var(--border);
+    padding-left: 0.625rem;
+  }
+
+  .tree-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.22rem 0.35rem;
+    border-radius: 0.25rem;
+  }
+
+  .tree-row:hover {
+    background: var(--surface);
+  }
+
+  .tree-toggle {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 0.2rem;
+    background: #fff;
+    color: var(--muted);
+    line-height: 1;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  .tree-toggle[disabled] {
+    visibility: hidden;
+  }
+
+  .tree-label {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+  }
+
+  .tree-label strong {
+    color: var(--accent);
+  }
+
+  .tree-route {
+    color: var(--meta);
+    font-size: 0.82rem;
+    margin-left: 0.25rem;
+  }
+
+  .tree-open-link {
+    margin-left: auto;
+    font-size: 0.82rem;
+  }
+
+  .tree-badge {
+    display: inline-block;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--meta);
+    border-radius: 999px;
+    padding: 0 0.45rem;
+    font-size: 0.72rem;
+  }
+
+  .tree-details {
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: var(--surface);
+    padding: 0.75rem;
+    height: fit-content;
+  }
+
+  .tree-details h2 {
+    margin-top: 0;
+  }
+
+  .tree-details dt {
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  .tree-details dd {
+    margin: 0.1rem 0 0 0;
+    color: var(--meta);
+  }
+
+  .search-results {
+    margin-top: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: #fff;
+    padding: 0.375rem;
+  }
+
+  .search-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .search-results li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: 0.25rem;
+  }
+
+  .search-results li:hover {
+    background: var(--surface);
+  }
+
+  @media (max-width: 900px) {
+    .tree-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var items = [];
+    {% assign nav_pages = site.pages | sort: "url" %}
+    {% for page in nav_pages %}
+      items.push({
+        url: {{ page.url | default: "" | jsonify }},
+        title: {{ page.title | default: "" | jsonify }},
+        layout: {{ page.layout | default: "" | jsonify }}
+      });
+    {% endfor %}
+
+    items = items.filter(function(item) {
+      if (item.url === "/sitemap.xml" || item.url === "/robots.txt") return false;
+      if (!item.url) return false;
+      if (item.url.indexOf("/assets/") === 0) return false;
+      if (item.url.indexOf("/id/") === 0) return false;
+      return true;
+    });
+
+    var CHILD_LIMIT = 40;
+    var treeRootEl = document.getElementById("site-tree");
+    var searchInputEl = document.getElementById("tree-search");
+    var searchResultsEl = document.getElementById("search-results");
+    var statsEl = document.getElementById("tree-stats");
+    var detailsEl = document.getElementById("node-details");
+    var modeButtons = {
+      path: document.getElementById("mode-path"),
+      kind: document.getElementById("mode-kind"),
+      year: document.getElementById("mode-year")
+    };
+
+    var expanded = new Set(["/"]);
+    var currentMode = "path";
+    var currentTree = null;
+
+    function kindFor(item) {
+      if (item.url === "/") return "home";
+      if (item.url.indexOf("/interviews/") === 0) return "interviews";
+      if (item.url.indexOf("/videos/") === 0) return "videos";
+      if (item.url.indexOf("/docs/") === 0) return "docs";
+      if (item.url.indexOf("/oneoffs/") === 0) return "oneoffs";
+      if (item.url.indexOf("/scmc/") === 0) return "scmc";
+      if (item.url.indexOf("/posts/") === 0 || /^\/\d{4}\//.test(item.url)) return "posts";
+      return "pages";
+    }
+
+    function yearFor(item) {
+      var m = item.url.match(/^\/(\d{4})\//);
+      if (m) return m[1];
+      return "undated";
+    }
+
+    function routeTokens(url) {
+      return url.split("/").filter(Boolean);
+    }
+
+    function createNode(key, name, parentPath) {
+      return {
+        key: key,
+        name: name,
+        path: parentPath ? parentPath + "/" + key : key,
+        children: {},
+        childKeys: [],
+        page: null,
+        leafCount: 0
+      };
+    }
+
+    function treeForMode(mode) {
+      var root = createNode("/", "/", "");
+      root.path = "/";
+
+      items.forEach(function(item) {
+        var segments;
+        if (mode === "kind") {
+          segments = [kindFor(item)].concat(routeTokens(item.url));
+        } else if (mode === "year") {
+          segments = [yearFor(item), kindFor(item)].concat(routeTokens(item.url));
+        } else {
+          segments = routeTokens(item.url);
+        }
+
+        if (segments.length === 0) {
+          root.page = item;
+          return;
+        }
+
+        var cursor = root;
+        segments.forEach(function(seg) {
+          if (!cursor.children[seg]) {
+            cursor.children[seg] = createNode(seg, seg, cursor.path === "/" ? "" : cursor.path);
+            cursor.childKeys.push(seg);
+          }
+          cursor = cursor.children[seg];
+        });
+        cursor.page = item;
+      });
+
+      function finalize(node) {
+        node.childKeys.sort();
+        var count = node.page ? 1 : 0;
+        node.childKeys.forEach(function(k) {
+          count += finalize(node.children[k]);
+        });
+        node.leafCount = count;
+        return count;
+      }
+
+      finalize(root);
+      return root;
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      currentTree = treeForMode(mode);
+      expanded = new Set(["/"]);
+      Object.keys(modeButtons).forEach(function(key) {
+        modeButtons[key].classList.toggle("primary", key === mode);
+      });
+      render();
+    }
+
+    function openDetails(node) {
+      var html = [];
+      html.push("<h2>Selection</h2>");
+      html.push("<dl>");
+      html.push("<dt>Node</dt><dd><code>" + escapeHtml(node.path || "/") + "</code></dd>");
+      html.push("<dt>Children</dt><dd>" + node.childKeys.length + "</dd>");
+      html.push("<dt>Leaf Routes</dt><dd>" + node.leafCount + "</dd>");
+      if (node.page) {
+        html.push("<dt>Page Title</dt><dd>" + escapeHtml(node.page.title || "(none)") + "</dd>");
+        html.push("<dt>Route</dt><dd><code>" + escapeHtml(node.page.url) + "</code></dd>");
+        html.push("<dt>Kind</dt><dd>" + escapeHtml(kindFor(node.page)) + "</dd>");
+        html.push("<dt>Open</dt><dd><a href=\"" + escapeHtml(node.page.url) + "\">" + escapeHtml(node.page.url) + "</a></dd>");
+      }
+      html.push("</dl>");
+      detailsEl.innerHTML = html.join("");
+    }
+
+    function renderChildren(node, target, level) {
+      var keys = node.childKeys.slice(0, CHILD_LIMIT);
+      var overflow = node.childKeys.length > keys.length;
+
+      keys.forEach(function(key) {
+        var child = node.children[key];
+        var li = document.createElement("li");
+        var row = document.createElement("div");
+        row.className = "tree-row";
+
+        var hasChildren = child.childKeys.length > 0;
+        var isOpen = expanded.has(child.path);
+
+        var toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "tree-toggle";
+        toggle.textContent = hasChildren ? (isOpen ? "−" : "+") : "·";
+        toggle.disabled = !hasChildren;
+        toggle.addEventListener("click", function() {
+          if (!hasChildren) return;
+          if (expanded.has(child.path)) expanded.delete(child.path);
+          else expanded.add(child.path);
+          render();
+        });
+        row.appendChild(toggle);
+
+        var label = document.createElement("button");
+        label.type = "button";
+        label.className = "tree-label";
+        label.innerHTML = "<strong>" + escapeHtml(child.name) + "</strong>";
+        label.addEventListener("click", function() {
+          openDetails(child);
+        });
+        row.appendChild(label);
+
+        var badge = document.createElement("span");
+        badge.className = "tree-badge";
+        badge.textContent = child.leafCount;
+        row.appendChild(badge);
+
+        if (child.page) {
+          var route = document.createElement("span");
+          route.className = "tree-route";
+          route.textContent = child.page.url;
+          row.appendChild(route);
+
+          var open = document.createElement("a");
+          open.className = "tree-open-link";
+          open.href = child.page.url;
+          open.textContent = "open";
+          row.appendChild(open);
+        }
+
+        li.appendChild(row);
+
+        if (hasChildren && isOpen) {
+          var ul = document.createElement("ul");
+          ul.className = "tree-node-children";
+          renderChildren(child, ul, level + 1);
+          li.appendChild(ul);
+        }
+
+        target.appendChild(li);
+      });
+
+      if (overflow) {
+        var more = document.createElement("li");
+        var hint = document.createElement("div");
+        hint.className = "tree-row";
+        hint.innerHTML = "<span class=\"tree-route\">+" + (node.childKeys.length - keys.length) + " more branches. Use filter to narrow this section.</span>";
+        more.appendChild(hint);
+        target.appendChild(more);
+      }
+    }
+
+    function search(query) {
+      var q = query.trim().toLowerCase();
+      if (!q) return [];
+      return items.filter(function(item) {
+        return item.url.toLowerCase().indexOf(q) !== -1 || (item.title || "").toLowerCase().indexOf(q) !== -1;
+      }).slice(0, 200);
+    }
+
+    function renderSearchResults(matches) {
+      searchResultsEl.hidden = false;
+      if (matches.length === 0) {
+        searchResultsEl.innerHTML = "<p class=\"video-meta\">No routes matched.</p>";
+        return;
+      }
+      var html = [];
+      html.push("<p class=\"video-meta\">Showing " + matches.length + " match(es).</p>");
+      html.push("<ul>");
+      matches.forEach(function(item) {
+        html.push("<li><span><strong>" + escapeHtml(item.title || "(untitled)") + "</strong> <span class=\"tree-route\">" + escapeHtml(item.url) + "</span></span><a href=\"" + escapeHtml(item.url) + "\">open</a></li>");
+      });
+      html.push("</ul>");
+      searchResultsEl.innerHTML = html.join("");
+    }
+
+    function render() {
+      var query = searchInputEl.value.trim();
+      treeRootEl.innerHTML = "";
+      searchResultsEl.hidden = true;
+      searchResultsEl.innerHTML = "";
+
+      var matches = search(query);
+      if (query.length > 1) renderSearchResults(matches);
+
+      renderChildren(currentTree, treeRootEl, 0);
+      statsEl.textContent = "Mode: " + currentMode + " · Routes: " + items.length + " · Expanded branches: " + expanded.size + (query ? " · Filter: \"" + query + "\"" : "");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;");
+    }
+
+    searchInputEl.addEventListener("input", render);
+    modeButtons.path.addEventListener("click", function() { setMode("path"); });
+    modeButtons.kind.addEventListener("click", function() { setMode("kind"); });
+    modeButtons.year.addEventListener("click", function() { setMode("year"); });
+
+    document.getElementById("expand-top").addEventListener("click", function() {
+      currentTree.childKeys.forEach(function(k) {
+        expanded.add(currentTree.children[k].path);
+      });
+      render();
+    });
+
+    document.getElementById("collapse-all").addEventListener("click", function() {
+      expanded = new Set(["/"]);
+      render();
+    });
+
+    setMode("path");
+    openDetails(currentTree);
+  })();
+</script>
