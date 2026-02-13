@@ -20,6 +20,7 @@ RSpec.describe "json-ld interview template" do
     expect(template).to include('{% if interview.interviewees and interview.interviewees.size > 0 %}')
     expect(template).to include('{% if asset and asset.id %}')
     expect(template).to include('{% if about_payload != "" %}')
+    expect(template).to include('"contributor": [')
     expect(template).to include('{{ site_url }}/id/person/{{ name | slugify }}')
     expect(template).to include('{{ interview.interviewer | default: "Mike Hall" | jsonify }}')
   end

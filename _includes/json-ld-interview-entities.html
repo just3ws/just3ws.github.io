@@ -16,7 +16,7 @@
       "name": {{ interview.title | default: interview.id | jsonify }},
       "url": "{{ site_url }}{{ url_prefix }}{{ interview.id }}/",
       "datePublished": "{{ interview.recorded_date | date: "%Y-%m-%d" }}",
-      "interviewer": {
+      "author": {
         "@type": "Person",
         "name": {{ interview.interviewer | default: "Mike Hall" | jsonify }}
       },
