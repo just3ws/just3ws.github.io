@@ -42,6 +42,8 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
   - `bin/pipeline ci` (CI core pipeline)
   - `bin/pipeline smoke` (browser smoke checks)
   - `bin/validate_data_uniqueness.rb` + `bin/validate_data_integrity.rb`
+  - `bin/validate_repo_hygiene.rb`
+  - `bin/validate_metadata_completeness_budget.rb`
   - `bin/validate_last_modified_output.rb`
 
 ## Contact

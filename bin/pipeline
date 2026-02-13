@@ -85,6 +85,8 @@ run_validate() {
   ruby ./bin/validate_resources_output.rb
   ruby ./bin/validate_taxonomy_output.rb
   ruby ./bin/validate_last_modified_output.rb
+  ruby ./bin/validate_repo_hygiene.rb
+  ruby ./bin/validate_metadata_completeness_budget.rb
   ruby ./bin/validate_seo_output.rb
   ruby ./bin/validate_public_index_mode.rb
   ruby ./bin/validate_semantic_output.rb

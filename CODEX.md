@@ -56,8 +56,10 @@ Call out mismatches directly.
 
 ### Authoritative Inputs
 
-- `career_history.md`
-  → interpretive context and durable patterns
+- `_data/resume/timeline.yml`
+  → ordering and inclusion scope for resume and history surfaces
+- `_data/resume/summary.yml`
+  → canonical top-level summary narrative
 - `_data/resume/positions/*.yml`
   → canonical resume data
 
@@ -129,8 +131,8 @@ When rewriting or evaluating content:
 If conflicts arise:
 
 1. **CODEX.md** governs behavior and evaluation standards.
-2. **career_history.md** governs interpretation and emphasis.
-3. **YAML files** govern factual record.
+2. **Timeline + summary YAML** govern interpretation and emphasis.
+3. **Position YAML files** govern factual record.
 
 If conflicts cannot be resolved cleanly:
 
