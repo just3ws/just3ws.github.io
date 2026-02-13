@@ -9,6 +9,25 @@
   {% assign conference_label = conference_name | append: " " | append: conference_year %}
 {% endif %}
 {% assign community_name = interview.community | to_s | strip %}
+{% assign preferred = nil %}
+{% if asset and asset.primary_platform %}
+  {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
+{% endif %}
+{% if asset and preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
+{% assign video_name = nil %}
+{% assign video_description = nil %}
+{% assign video_thumbnail = nil %}
+{% assign video_upload_date = nil %}
+{% assign video_embed_url = nil %}
+{% assign video_content_url = nil %}
+{% if asset %}
+  {% assign video_name = asset.title | default: interview.title | default: page.title | default: asset.id %}
+  {% assign video_description = asset.description | default: page.description | default: interview.topic | default: video_name %}
+  {% assign video_thumbnail = asset.thumbnail | default: preferred.thumbnail | default: preferred.image_url %}
+  {% assign video_upload_date = asset.published_date | default: preferred.published_date | default: interview.recorded_date %}
+  {% assign video_embed_url = preferred.embed_url %}
+  {% assign video_content_url = preferred.video_url %}
+{% endif %}
 {% capture about_items %}
   {% assign has_about = false %}
   {% if interview.topic and interview.topic != "" %}
@@ -73,7 +92,13 @@
   "subjectOf": {
     "@type": "VideoObject",
     "@id": "{{ site_url }}/id/video/{{ asset.id }}",
-    "url": "{{ site_url }}/videos/{{ asset.id }}/"
+    "name": {{ video_name | jsonify }},
+    "description": {{ video_description | jsonify }},
+    "thumbnailUrl": {{ video_thumbnail | jsonify }},
+    "uploadDate": "{{ video_upload_date | date: "%Y-%m-%d" }}",
+    "url": "{{ site_url }}/videos/{{ asset.id }}/"{% if video_content_url %},
+    "contentUrl": {{ video_content_url | jsonify }}{% endif %}{% if video_embed_url %},
+    "embedUrl": {{ video_embed_url | jsonify }}{% endif %}
   },
   {% endif %}
   "mainEntityOfPage": {

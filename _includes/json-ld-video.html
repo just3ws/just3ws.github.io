@@ -1,14 +1,30 @@
+{% assign site_url = site.url | default: "https://www.just3ws.com" %}
+{% if site_url == "" or site_url contains "localhost" %}
+  {% assign site_url = "https://www.just3ws.com" %}
+{% endif %}
+{% assign preferred = nil %}
+{% if asset.primary_platform %}
+  {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
+{% endif %}
+{% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
+{% assign video_name = asset.title | default: page.title | default: asset.id %}
+{% assign video_description = asset.description | default: page.description | default: page.excerpt | default: video_name %}
+{% assign video_thumbnail = asset.thumbnail | default: preferred.thumbnail | default: preferred.image_url %}
+{% assign video_upload_date = asset.published_date | default: preferred.published_date | default: page.date %}
+{% assign video_embed_url = preferred.embed_url %}
+{% assign video_content_url = preferred.video_url %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "VideoObject",
-  "@id": "https://www.just3ws.com/id/video/{{ asset.id }}",
-  "name": {{ asset.title | jsonify }},
-  "description": {{ asset.description | default: page.description | jsonify }},
-  "thumbnailUrl": {{ asset.thumbnail | default: asset.platforms[0].thumbnail | jsonify }},
-  "uploadDate": "{{ asset.published_date | date: "%Y-%m-%d" }}",
+  "@id": "{{ site_url }}/id/video/{{ asset.id }}",
+  "name": {{ video_name | jsonify }},
+  "description": {{ video_description | jsonify }},
+  "thumbnailUrl": {{ video_thumbnail | jsonify }},
+  "uploadDate": "{{ video_upload_date | date: "%Y-%m-%d" }}",
   "duration": {% if asset.duration_seconds %}"PT{{ asset.duration_seconds }}S"{% else %}null{% endif %},
-  "url": "https://www.just3ws.com{{ page.url }}",
-  "embedUrl": {{ asset.platforms[0].embed_url | default: nil | jsonify }}
+  "url": "{{ site_url }}{{ page.url }}"{% if video_content_url %},
+  "contentUrl": {{ video_content_url | jsonify }}{% endif %}{% if video_embed_url %},
+  "embedUrl": {{ video_embed_url | jsonify }}{% endif %}
 }
 </script>
