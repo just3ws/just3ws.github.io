@@ -4,7 +4,7 @@ layout: minimal
 {% include json-ld-article.html %}
 {% include breadcrumbs.html %}
 
-<article class="post">
+<article class="post{% if page.tags contains 'linkedin' %} post-linkedin{% endif %}">
   <header class="post-header">
     <h1>{{ page.title }}</h1>
     <p class="post-meta">{{ page.date | date: "%B %Y" }}{% if page.tags %} · {{ page.tags | join: ", " }}{% endif %}</p>
@@ -22,5 +22,7 @@ layout: minimal
     </aside>
     {% endif %}
   </header>
-  {{ content }}
+  <div class="post-body{% if page.tags contains 'linkedin' %} linkedin-article-body{% endif %}">
+    {{ content }}
+  </div>
 </article>
