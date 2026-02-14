@@ -234,6 +234,8 @@ articles.each_with_index do |article, idx|
 
   relative_image = if downloaded_image_path
                      "/" + downloaded_image_path.relative_path_from(ROOT).to_s
+                   elsif image_path&.exist?
+                     "/" + image_path.relative_path_from(ROOT).to_s
                    elsif !hero_image_url.empty?
                      hero_image_url
                    else
