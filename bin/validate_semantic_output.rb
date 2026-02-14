@@ -121,6 +121,46 @@ def contains_placeholder?(value)
   end
 end
 
+def interview_semantic_node?(node)
+  return false unless node.is_a?(Hash)
+  return true if node_has_type?(node, 'Interview')
+  return false unless node_has_type?(node, 'CreativeWork')
+
+  additional_type = node['additionalType']
+  additional_values = additional_type.is_a?(Array) ? additional_type : [additional_type]
+  additional_values.compact.any? do |value|
+    normalized = value.to_s.strip
+    normalized == 'Interview' || normalized.end_with?('/Interview') || normalized.include?('schema.org/Interview')
+  end
+end
+
+def validate_interview_json_ld(nodes:, context:, errors:)
+  interview_nodes = nodes.select { |node| interview_semantic_node?(node) }
+  if interview_nodes.empty?
+    errors << "#{context} missing Interview semantics JSON-LD"
+    return
+  end
+
+  interview_nodes.each_with_index do |node, index|
+    required_fields = if node_has_type?(node, 'Interview')
+                        %w[@id name url datePublished interviewer.name mainEntityOfPage.@id]
+                      else
+                        %w[@id name url datePublished author.name mainEntityOfPage.@id]
+                      end
+
+    missing = required_fields.reject { |key| field_present?(node, key) }
+    unless missing.empty?
+      errors << "#{context} Interview semantics JSON-LD ##{index + 1} missing required fields: #{missing.join(', ')}"
+      next
+    end
+
+    placeholders = required_fields.select { |key| contains_placeholder?(field_value(node, key)) }
+    next if placeholders.empty?
+
+    errors << "#{context} Interview semantics JSON-LD ##{index + 1} has placeholder values in: #{placeholders.join(', ')}"
+  end
+end
+
 def validate_json_ld_type(nodes:, expected_type:, required_fields:, context:, errors:)
   typed_nodes = nodes.select { |node| node.is_a?(Hash) && node_has_type?(node, expected_type) }
   if typed_nodes.empty?
@@ -274,10 +314,8 @@ Dir.glob(File.join(SITE_DIR, 'interviews', '**', 'index.html')).sort.each do |pa
 
   html = read(path)
   nodes = json_ld_nodes(html, relative, errors)
-  validate_json_ld_type(
+  validate_interview_json_ld(
     nodes: nodes,
-    expected_type: 'Interview',
-    required_fields: %w[@id name url datePublished interviewer.name mainEntityOfPage.@id],
     context: relative,
     errors: errors
   )
