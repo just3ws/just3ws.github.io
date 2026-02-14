@@ -3,19 +3,24 @@
 
   var LENSES = ["labor", "revenue", "opportunity", "goodwill"];
 
-  var STAGE_NAMES = {
-    zero_to_need: "Zero -> Identified Need for Developer Role",
-    need_to_req: "Identified Need -> Job Req",
-    job_req_to_hiring: "Job Req -> Hiring Process",
-    hiring_to_onboarding: "Hiring Process -> Onboarding",
-    onboarding_to_functional: "Onboarding -> Functional",
-    functional_to_operational: "Functional -> Operational",
-    operational_to_independent: "Operational -> Independent",
-    independent_to_leverage: "Independent -> Leverage",
-    employment_microloop_friction: "Employment Microloop Friction",
-    retention_to_exit: "Retention Risk -> Exit",
-    exit_to_backfill: "Exit -> Backfill Complete"
-  };
+  var STAGE_SCHEMA = [
+    { id: "zero_to_need", name: "Zero -> Identified Need for Developer Role", target_days: 5, actual_days: 5, fixed: true },
+    { id: "need_to_req", name: "Identified Need -> Job Req", target_days: 3, actual_days: 3, fixed: true },
+    { id: "job_req_to_hiring", name: "Job Req -> Hiring Process", target_days: 20, actual_days: 20, fixed: true },
+    { id: "hiring_to_onboarding", name: "Hiring Process -> Onboarding", target_days: 5, actual_days: 5, fixed: true },
+    { id: "onboarding_to_functional", name: "Onboarding -> Functional", target_days: 3, actual_days: 3, fixed: true },
+    { id: "functional_to_operational", name: "Functional -> Operational", target_days: 20, actual_days: 20, fixed: true },
+    { id: "operational_to_independent", name: "Operational -> Independent", target_days: 45, actual_days: 45, fixed: true },
+    { id: "independent_to_leverage", name: "Independent -> Leverage", target_days: 90, actual_days: 90, fixed: true },
+    { id: "employment_microloop_friction", name: "Employment Microloop Friction", target_days: 10, actual_days: 10, fixed: true },
+    { id: "retention_to_exit", name: "Retention Risk -> Exit", target_days: 0, actual_days: 0, fixed: true },
+    { id: "exit_to_backfill", name: "Exit -> Backfill Complete", target_days: 30, actual_days: 30, fixed: true }
+  ];
+
+  var STAGE_NAMES = STAGE_SCHEMA.reduce(function(map, stage) {
+    map[stage.id] = stage.name;
+    return map;
+  }, {});
 
   var DEFAULTS = {
     team_size: 10,
@@ -24,6 +29,7 @@
     loaded_cost_multiplier: 1.3,
     workdays_per_year: 260,
     compounding_k: 0.01,
+    include_dora_in_total: false,
     weights: { labor: 25, revenue: 25, opportunity: 25, goodwill: 25 },
     global_rates: { revenue: 0, opportunity: 0, goodwill: 0 },
     interview: {
@@ -60,6 +66,9 @@
     return Number.isFinite(n) ? n : fallback;
   }
   function clone(obj) { return JSON.parse(JSON.stringify(obj)); }
+  function sumLensValues(obj) {
+    return LENSES.reduce(function(sum, lens) { return sum + toNumber(obj[lens], 0); }, 0);
+  }
 
   function normalizeWeights(weights) {
     var total = 0;
@@ -92,8 +101,109 @@
     return decodeURIComponent(escape(atob(value)));
   }
 
+  function defaultStages() {
+    return STAGE_SCHEMA.map(function(stage) {
+      return {
+        id: stage.id,
+        name: stage.name,
+        target_days: stage.target_days,
+        actual_days: stage.actual_days,
+        fixed: true,
+        overrides: { labor: null, revenue: null, opportunity: null, goodwill: null }
+      };
+    });
+  }
+
+  function normalizeStage(stage, index) {
+    var fallbackId = "custom_" + (index + 1);
+    var id = (stage && stage.id) ? String(stage.id).trim() : fallbackId;
+    var name = (stage && stage.name) ? String(stage.name).trim() : (STAGE_NAMES[id] || ("Custom Stage " + (index + 1)));
+    var overrides = (stage && stage.overrides) ? stage.overrides : {};
+    var schemaMatch = STAGE_SCHEMA.find(function(s) { return s.id === id; });
+    return {
+      id: id || fallbackId,
+      name: name,
+      target_days: toNumber(stage && stage.target_days, schemaMatch ? schemaMatch.target_days : 0),
+      actual_days: toNumber(stage && stage.actual_days, schemaMatch ? schemaMatch.actual_days : 0),
+      fixed: Boolean(schemaMatch && schemaMatch.fixed),
+      overrides: {
+        labor: overrides.labor == null ? null : toNumber(overrides.labor, 0),
+        revenue: overrides.revenue == null ? null : toNumber(overrides.revenue, 0),
+        opportunity: overrides.opportunity == null ? null : toNumber(overrides.opportunity, 0),
+        goodwill: overrides.goodwill == null ? null : toNumber(overrides.goodwill, 0)
+      }
+    };
+  }
+
+  function normalizeStages(stages) {
+    var raw = Array.isArray(stages) && stages.length ? stages : defaultStages();
+    return raw.map(function(stage, index) { return normalizeStage(stage, index); });
+  }
+
+  function createStageCellInput(value, field, step) {
+    var input = document.createElement("input");
+    input.setAttribute("data-field", field);
+    input.type = "number";
+    input.min = "0";
+    input.step = step || "1";
+    input.required = field === "target" || field === "actual";
+    if (value != null) input.value = String(value);
+    return input;
+  }
+
+  function renderStageRows(stages) {
+    var tbody = $("lifecycle-stage-inputs-body");
+    if (!tbody) return;
+    tbody.innerHTML = "";
+    normalizeStages(stages).forEach(function(stage, index) {
+      var row = document.createElement("tr");
+      row.setAttribute("data-stage-id", stage.id);
+      row.setAttribute("data-stage-fixed", stage.fixed ? "1" : "0");
+
+      var nameCell = document.createElement("td");
+      if (stage.fixed) {
+        nameCell.textContent = stage.name;
+      } else {
+        var nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.setAttribute("data-field", "name");
+        nameInput.value = stage.name || ("Custom Stage " + (index + 1));
+        nameInput.required = true;
+        nameCell.appendChild(nameInput);
+      }
+      row.appendChild(nameCell);
+
+      ["target", "actual"].forEach(function(field) {
+        var td = document.createElement("td");
+        td.appendChild(createStageCellInput(stage[field + "_days"], field, "1"));
+        row.appendChild(td);
+      });
+
+      ["labor_override", "revenue_override", "opportunity_override", "goodwill_override"].forEach(function(field) {
+        var td = document.createElement("td");
+        var key = field.replace("_override", "");
+        td.appendChild(createStageCellInput(stage.overrides[key], field, "10"));
+        row.appendChild(td);
+      });
+
+      var actionCell = document.createElement("td");
+      if (!stage.fixed) {
+        var removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.className = "video-button devex-row-action";
+        removeButton.setAttribute("data-action", "remove-stage");
+        removeButton.textContent = "Remove";
+        actionCell.appendChild(removeButton);
+      } else {
+        actionCell.textContent = "-";
+      }
+      row.appendChild(actionCell);
+      tbody.appendChild(row);
+    });
+  }
+
   function readStageRows() {
-    var rows = document.querySelectorAll("[data-stage-id]");
+    var rows = document.querySelectorAll("#lifecycle-stage-inputs-body [data-stage-id]");
     var stages = [];
     rows.forEach(function(row) {
       function readField(name) {
@@ -101,9 +211,12 @@
         return input ? input.value : "";
       }
       var id = row.getAttribute("data-stage-id");
+      var fixed = row.getAttribute("data-stage-fixed") === "1";
+      var name = fixed ? (STAGE_NAMES[id] || id) : readField("name");
       stages.push({
         id: id,
-        name: STAGE_NAMES[id] || id,
+        name: name,
+        fixed: fixed,
         target_days: toNumber(readField("target"), 0),
         actual_days: toNumber(readField("actual"), 0),
         overrides: {
@@ -125,6 +238,7 @@
       loaded_cost_multiplier: toNumber($("loaded_cost_multiplier").value, DEFAULTS.loaded_cost_multiplier),
       workdays_per_year: toNumber($("workdays_per_year").value, DEFAULTS.workdays_per_year),
       compounding_k: toNumber($("compounding_k").value, DEFAULTS.compounding_k),
+      include_dora_in_total: $("include_dora_in_total").checked,
       weights: {
         labor: toNumber($("weight_labor").value, DEFAULTS.weights.labor),
         revenue: toNumber($("weight_revenue").value, DEFAULTS.weights.revenue),
@@ -156,6 +270,24 @@
     };
   }
 
+  function normalizeInputModel(input) {
+    var model = clone(input || {});
+    model.team_size = toNumber(model.team_size, DEFAULTS.team_size);
+    model.salary_min = toNumber(model.salary_min, DEFAULTS.salary_min);
+    model.salary_max = toNumber(model.salary_max, DEFAULTS.salary_max);
+    model.loaded_cost_multiplier = toNumber(model.loaded_cost_multiplier, DEFAULTS.loaded_cost_multiplier);
+    model.workdays_per_year = toNumber(model.workdays_per_year, DEFAULTS.workdays_per_year);
+    model.compounding_k = toNumber(model.compounding_k, DEFAULTS.compounding_k);
+    model.include_dora_in_total = Boolean(model.include_dora_in_total);
+
+    model.weights = model.weights || clone(DEFAULTS.weights);
+    model.global_rates = model.global_rates || clone(DEFAULTS.global_rates);
+    model.interview = model.interview || clone(DEFAULTS.interview);
+    model.dora = model.dora || clone(DEFAULTS.dora);
+    model.stages = normalizeStages(model.stages);
+    return model;
+  }
+
   function validateInput(input) {
     var errors = [];
     if (input.team_size < 1) errors.push("Team size must be at least 1.");
@@ -172,6 +304,14 @@
       if (stage.target_days < 0 || stage.actual_days < 0) {
         errors.push("Stage days cannot be negative: " + stage.name + ".");
       }
+      if (!stage.name || !String(stage.name).trim()) {
+        errors.push("Each stage must have a name.");
+      }
+    });
+    var seenStageIds = {};
+    input.stages.forEach(function(stage) {
+      if (seenStageIds[stage.id]) errors.push("Stage IDs must be unique. Duplicate found for " + stage.id + ".");
+      seenStageIds[stage.id] = true;
     });
 
     if (input.dora.deployments_per_month < 0) errors.push("DORA deployments per month cannot be negative.");
@@ -239,7 +379,7 @@
     };
   }
 
-  function computeCore4(stageResults, doraOverlay, totalComposite) {
+  function computeCore4(stageResults, doraOverlay, totalComposite, includeDoraInTotal) {
     function stageCost(id) {
       var match = stageResults.find(function(s) { return s.id === id; });
       return match ? match.weighted_composite : 0;
@@ -259,13 +399,13 @@
       {
         name: "Core 3: Flow and Feedback",
         value: stageCost("operational_to_independent") + stageCost("independent_to_leverage") + stageCost("employment_microloop_friction") +
-          ((doraOverlay.lead_base_by_lens.labor + doraOverlay.lead_base_by_lens.revenue + doraOverlay.lead_base_by_lens.opportunity + doraOverlay.lead_base_by_lens.goodwill) * doraOverlay.multiplier),
+          (includeDoraInTotal ? (sumLensValues(doraOverlay.lead_base_by_lens) * doraOverlay.multiplier) : 0),
         hint: "Reduce wait states in review/CI/deploy loops and tighten feedback windows."
       },
       {
         name: "Core 4: Retention and Continuity",
         value: stageCost("retention_to_exit") + stageCost("exit_to_backfill") +
-          ((doraOverlay.recovery_base_by_lens.labor + doraOverlay.recovery_base_by_lens.revenue + doraOverlay.recovery_base_by_lens.opportunity + doraOverlay.recovery_base_by_lens.goodwill) * doraOverlay.multiplier),
+          (includeDoraInTotal ? (sumLensValues(doraOverlay.recovery_base_by_lens) * doraOverlay.multiplier) : 0),
         hint: "Lower attrition friction and strengthen continuity before and after exits."
       }
     ];
@@ -278,6 +418,48 @@
     });
 
     return cores;
+  }
+
+  function computeGoldenSignals(stageResults) {
+    var phases = [
+      {
+        name: "Planning and Staffing",
+        stage_ids: ["zero_to_need", "need_to_req", "job_req_to_hiring"],
+        focus: "Latency: role-to-hire time. Errors: role mismatch/rework. Traffic: requisition and candidate flow. Saturation: interviewer and hiring manager load."
+      },
+      {
+        name: "Enablement and Onboarding",
+        stage_ids: ["hiring_to_onboarding", "onboarding_to_functional", "functional_to_operational"],
+        focus: "Latency: time to first functional contribution. Errors: access/provisioning failures. Traffic: onboarding volume. Saturation: IT and mentor capacity."
+      },
+      {
+        name: "Flow and Feedback",
+        stage_ids: ["operational_to_independent", "independent_to_leverage", "employment_microloop_friction"],
+        focus: "Latency: PR/CI/release wait time. Errors: failed changes and rework loops. Traffic: change throughput. Saturation: CI, review queues, and handoff bottlenecks."
+      },
+      {
+        name: "Retention and Continuity",
+        stage_ids: ["retention_to_exit", "exit_to_backfill"],
+        focus: "Latency: backfill and knowledge transfer time. Errors: continuity and quality degradation. Traffic: attrition/backfill events. Saturation: load shifted to remaining team."
+      }
+    ];
+
+    return phases.map(function(phase) {
+      var relevant = stageResults.filter(function(stage) { return phase.stage_ids.indexOf(stage.id) !== -1; });
+      var latency = relevant.reduce(function(sum, stage) { return sum + stage.delay_days; }, 0);
+      var cost = relevant.reduce(function(sum, stage) { return sum + stage.weighted_composite; }, 0);
+      var status = "Healthy";
+      if (latency > 10 || cost > 25000) status = "At risk";
+      else if (latency > 3 || cost > 5000) status = "Watch";
+
+      return {
+        phase_name: phase.name,
+        latency_days: latency,
+        weighted_friction_cost: cost,
+        focus: phase.focus,
+        status: status
+      };
+    });
   }
 
   function computeResult(input, normalizedWeights, skipSensitivity) {
@@ -294,7 +476,7 @@
     var panelLaborCost = (panelHours / 8) * blendedDaily;
 
     var cumulativeDelay = 0;
-    var totals = {
+    var lifecycleTotals = {
       base_by_lens: { labor: 0, revenue: 0, opportunity: 0, goodwill: 0 },
       compounded_by_lens: { labor: 0, revenue: 0, opportunity: 0, goodwill: 0 },
       base_composite: 0,
@@ -307,7 +489,7 @@
     input.stages.forEach(function(stage) {
       var delayDays = Math.max(0, stage.actual_days - stage.target_days);
       cumulativeDelay += delayDays;
-      totals.total_delay_days += delayDays;
+      lifecycleTotals.total_delay_days += delayDays;
       var multiplier = 1 + (input.compounding_k * cumulativeDelay);
 
       var rates = lensDayRateForStage(stage, blendedDaily, input.global_rates);
@@ -324,8 +506,8 @@
         compoundedByLens[lens] = comp;
         baseTotal += base;
         compoundedTotal += comp;
-        totals.base_by_lens[lens] += base;
-        totals.compounded_by_lens[lens] += comp;
+        lifecycleTotals.base_by_lens[lens] += base;
+        lifecycleTotals.compounded_by_lens[lens] += comp;
       });
 
       var weightedComp = 0;
@@ -335,8 +517,8 @@
         weightedComp += normalizedWeights[lens] * compoundedByLens[lens];
       });
 
-      totals.base_composite += weightedBase;
-      totals.compounded_composite += weightedComp;
+      lifecycleTotals.base_composite += weightedBase;
+      lifecycleTotals.compounded_composite += weightedComp;
 
       stageResults.push({
         id: stage.id,
@@ -354,38 +536,66 @@
     });
 
     var doraOverlay = computeDoraOverlay(input, blendedDaily, cumulativeDelay);
-    var doraWeighted = 0;
+    var doraWeightedBase = 0;
+    var doraWeightedCompounded = 0;
     LENSES.forEach(function(lens) {
-      totals.base_by_lens[lens] += doraOverlay.base_by_lens[lens];
-      totals.compounded_by_lens[lens] += doraOverlay.compounded_by_lens[lens];
-      doraWeighted += normalizedWeights[lens] * doraOverlay.compounded_by_lens[lens];
+      doraWeightedBase += normalizedWeights[lens] * doraOverlay.base_by_lens[lens];
+      doraWeightedCompounded += normalizedWeights[lens] * doraOverlay.compounded_by_lens[lens];
     });
-    totals.base_composite +=
-      (normalizedWeights.labor * doraOverlay.base_by_lens.labor) +
-      (normalizedWeights.revenue * doraOverlay.base_by_lens.revenue) +
-      (normalizedWeights.opportunity * doraOverlay.base_by_lens.opportunity) +
-      (normalizedWeights.goodwill * doraOverlay.base_by_lens.goodwill);
-    totals.compounded_composite += doraWeighted;
 
-    var core4 = computeCore4(stageResults, doraOverlay, totals.compounded_composite);
+    var effectiveTotals = {
+      base_by_lens: clone(lifecycleTotals.base_by_lens),
+      compounded_by_lens: clone(lifecycleTotals.compounded_by_lens),
+      base_composite: lifecycleTotals.base_composite,
+      compounded_composite: lifecycleTotals.compounded_composite
+    };
+
+    if (input.include_dora_in_total) {
+      LENSES.forEach(function(lens) {
+        effectiveTotals.base_by_lens[lens] += doraOverlay.base_by_lens[lens];
+        effectiveTotals.compounded_by_lens[lens] += doraOverlay.compounded_by_lens[lens];
+      });
+      effectiveTotals.base_composite += doraWeightedBase;
+      effectiveTotals.compounded_composite += doraWeightedCompounded;
+    }
+
+    var core4 = computeCore4(stageResults, doraOverlay, effectiveTotals.compounded_composite, input.include_dora_in_total);
+    var goldenSignals = computeGoldenSignals(stageResults);
 
     var result = {
-      metadata: { model_version: "v2", generated_at: new Date().toISOString() },
+      metadata: { model_version: "v3", generated_at: new Date().toISOString() },
       assumptions: {
         salaries: salaries,
         blended_daily_loaded_cost: blendedDaily,
         panel_hours: panelHours,
-        panel_labor_cost: panelLaborCost
+        panel_labor_cost: panelLaborCost,
+        include_dora_in_total: input.include_dora_in_total
       },
       stage_results: stageResults,
       dora_overlay: doraOverlay,
       core4_guidance: core4,
-      totals: totals,
+      golden_signals: goldenSignals,
+      totals: {
+        lifecycle_base_by_lens: lifecycleTotals.base_by_lens,
+        lifecycle_compounded_by_lens: lifecycleTotals.compounded_by_lens,
+        lifecycle_base_composite: lifecycleTotals.base_composite,
+        lifecycle_compounded_composite: lifecycleTotals.compounded_composite,
+        lifecycle_delay_days: lifecycleTotals.total_delay_days,
+        dora_base_by_lens: doraOverlay.base_by_lens,
+        dora_compounded_by_lens: doraOverlay.compounded_by_lens,
+        dora_weighted_base: doraWeightedBase,
+        dora_weighted_compounded: doraWeightedCompounded,
+        dora_delay_days: doraOverlay.total_delay_days,
+        effective_base_by_lens: effectiveTotals.base_by_lens,
+        effective_compounded_by_lens: effectiveTotals.compounded_by_lens,
+        effective_base_composite: effectiveTotals.base_composite,
+        effective_compounded_composite: effectiveTotals.compounded_composite
+      },
       sensitivity: []
     };
 
     if (!skipSensitivity) {
-      result.sensitivity = computeSensitivity(input, normalizedWeights, totals.compounded_composite);
+      result.sensitivity = computeSensitivity(input, normalizedWeights, effectiveTotals.compounded_composite);
     }
 
     return result;
@@ -404,7 +614,7 @@
       var recomputed = computeResult(cloned, normalizedWeights, true);
       rows.push({
         stage_name: stage.name,
-        savings_if_minus_1_day: baseline - recomputed.totals.compounded_composite
+        savings_if_minus_1_day: baseline - recomputed.totals.effective_compounded_composite
       });
     });
     return rows;
@@ -412,14 +622,15 @@
 
   function renderResult(input, result) {
     $("summary-blended").textContent = money(result.assumptions.blended_daily_loaded_cost);
-    $("summary-delay").textContent = String(result.totals.total_delay_days + result.dora_overlay.total_delay_days);
-    $("summary-base").textContent = money(result.totals.base_composite);
-    $("summary-compounded").textContent = money(result.totals.compounded_composite);
+    $("summary-delay").textContent = fixed(result.totals.lifecycle_delay_days, 1);
+    $("summary-base").textContent = money(result.totals.lifecycle_compounded_composite);
+    $("summary-compounded").textContent = money(result.totals.effective_compounded_composite);
     $("summary-panel").textContent = money(result.assumptions.panel_labor_cost);
 
     var doraCompounded = 0;
     LENSES.forEach(function(lens) { doraCompounded += result.dora_overlay.compounded_by_lens[lens]; });
     $("summary-dora").textContent = money(doraCompounded);
+    $("summary-dora-delay").textContent = fixed(result.totals.dora_delay_days, 1);
 
     var topStage = "-";
     var max = -1;
@@ -492,8 +703,8 @@
       var tr = document.createElement("tr");
       tr.innerHTML = [
         "<td>" + lens.charAt(0).toUpperCase() + lens.slice(1) + "</td>",
-        "<td>" + money(result.totals.base_by_lens[lens]) + "</td>",
-        "<td>" + money(result.totals.compounded_by_lens[lens]) + "</td>"
+        "<td>" + money(result.totals.effective_base_by_lens[lens]) + "</td>",
+        "<td>" + money(result.totals.effective_compounded_by_lens[lens]) + "</td>"
       ].join("");
       lensBody.appendChild(tr);
     });
@@ -511,6 +722,21 @@
         "<p>" + item.hint + "</p>"
       ].join("");
       core4.appendChild(card);
+    });
+
+    var goldenSignalsBody = $("golden-signals-body");
+    goldenSignalsBody.innerHTML = "";
+    result.golden_signals.forEach(function(row) {
+      var statusClass = row.status === "At risk" ? "devex-status-risk" : (row.status === "Watch" ? "devex-status-watch" : "devex-status-healthy");
+      var tr = document.createElement("tr");
+      tr.innerHTML = [
+        "<td>" + row.phase_name + "</td>",
+        "<td>" + fixed(row.latency_days, 1) + "</td>",
+        "<td>" + money(row.weighted_friction_cost) + "</td>",
+        "<td>" + row.focus + "</td>",
+        "<td><span class=\"devex-status " + statusClass + "\">" + row.status + "</span></td>"
+      ].join("");
+      goldenSignalsBody.appendChild(tr);
     });
 
     var sensitivityBody = $("sensitivity-results-body");
@@ -534,7 +760,7 @@
   function setError(message) { $("devex-errors").textContent = message || ""; }
 
   function updateHash(input) {
-    var payload = { version: 2, input: input };
+    var payload = { version: 3, input: input };
     history.replaceState(null, "", "#devex=" + base64Encode(JSON.stringify(payload)));
   }
 
@@ -549,12 +775,15 @@
   }
 
   function populateForm(input) {
+    var normalized = normalizeInputModel(input);
+    input = normalized;
     $("team_size").value = input.team_size;
     $("salary_min").value = input.salary_min;
     $("salary_max").value = input.salary_max;
     $("loaded_cost_multiplier").value = input.loaded_cost_multiplier;
     $("workdays_per_year").value = input.workdays_per_year;
     $("compounding_k").value = input.compounding_k;
+    $("include_dora_in_total").checked = Boolean(input.include_dora_in_total);
 
     $("weight_labor").value = input.weights.labor;
     $("weight_revenue").value = input.weights.revenue;
@@ -580,24 +809,11 @@
       $("dora_mttr_actual_hours").value = input.dora.mttr_actual_hours;
       $("dora_mttr_target_hours").value = input.dora.mttr_target_hours;
     }
-
-    var stageById = {};
-    (input.stages || []).forEach(function(stage) { stageById[stage.id] = stage; });
-    document.querySelectorAll("[data-stage-id]").forEach(function(row) {
-      var id = row.getAttribute("data-stage-id");
-      var stage = stageById[id];
-      if (!stage) return;
-      row.querySelector('[data-field="target"]').value = stage.target_days;
-      row.querySelector('[data-field="actual"]').value = stage.actual_days;
-      row.querySelector('[data-field="labor_override"]').value = stage.overrides.labor == null ? "" : stage.overrides.labor;
-      row.querySelector('[data-field="revenue_override"]').value = stage.overrides.revenue == null ? "" : stage.overrides.revenue;
-      row.querySelector('[data-field="opportunity_override"]').value = stage.overrides.opportunity == null ? "" : stage.overrides.opportunity;
-      row.querySelector('[data-field="goodwill_override"]').value = stage.overrides.goodwill == null ? "" : stage.overrides.goodwill;
-    });
+    renderStageRows(input.stages);
   }
 
   function calculate() {
-    var input = collectInput();
+    var input = normalizeInputModel(collectInput());
     var validation = validateInput(input);
     if (!validation.valid) {
       setError(validation.errors.join(" "));
@@ -609,42 +825,51 @@
     updateHash(input);
   }
 
+  function nextCustomStageId(stages) {
+    var max = 0;
+    stages.forEach(function(stage) {
+      var match = String(stage.id || "").match(/^custom_(\d+)$/);
+      if (match) max = Math.max(max, toNumber(match[1], 0));
+    });
+    return "custom_" + (max + 1);
+  }
+
+  function addCustomStage() {
+    var stages = normalizeStages(readStageRows());
+    var nextId = nextCustomStageId(stages);
+    stages.push({
+      id: nextId,
+      name: "Custom Stage " + nextId.split("_")[1],
+      target_days: 0,
+      actual_days: 0,
+      fixed: false,
+      overrides: { labor: null, revenue: null, opportunity: null, goodwill: null }
+    });
+    renderStageRows(stages);
+  }
+
+  function removeCustomStage(button) {
+    var row = button.closest("[data-stage-id]");
+    if (!row) return;
+    var stageId = row.getAttribute("data-stage-id");
+    var stages = normalizeStages(readStageRows()).filter(function(stage) { return stage.id !== stageId; });
+    renderStageRows(stages);
+  }
+
   function resetDefaults() {
-    $("team_size").value = DEFAULTS.team_size;
-    $("salary_min").value = DEFAULTS.salary_min;
-    $("salary_max").value = DEFAULTS.salary_max;
-    $("loaded_cost_multiplier").value = DEFAULTS.loaded_cost_multiplier;
-    $("workdays_per_year").value = DEFAULTS.workdays_per_year;
-    $("compounding_k").value = DEFAULTS.compounding_k;
-
-    $("weight_labor").value = DEFAULTS.weights.labor;
-    $("weight_revenue").value = DEFAULTS.weights.revenue;
-    $("weight_opportunity").value = DEFAULTS.weights.opportunity;
-    $("weight_goodwill").value = DEFAULTS.weights.goodwill;
-
-    $("global_revenue_rate").value = DEFAULTS.global_rates.revenue;
-    $("global_opportunity_rate").value = DEFAULTS.global_rates.opportunity;
-    $("global_goodwill_rate").value = DEFAULTS.global_rates.goodwill;
-
-    $("candidates").value = DEFAULTS.interview.candidates;
-    $("interviewers").value = DEFAULTS.interview.interviewers;
-    $("rounds").value = DEFAULTS.interview.rounds;
-    $("hours_per_round").value = DEFAULTS.interview.hours_per_round;
-    $("prep_debrief_hours_per_candidate").value = DEFAULTS.interview.prep_debrief_hours_per_candidate;
-
-    $("dora_deployments_per_month").value = DEFAULTS.dora.deployments_per_month;
-    $("dora_lead_time_actual_days").value = DEFAULTS.dora.lead_time_actual_days;
-    $("dora_lead_time_target_days").value = DEFAULTS.dora.lead_time_target_days;
-    $("dora_cfr_actual_pct").value = DEFAULTS.dora.cfr_actual_pct;
-    $("dora_cfr_target_pct").value = DEFAULTS.dora.cfr_target_pct;
-    $("dora_mttr_actual_hours").value = DEFAULTS.dora.mttr_actual_hours;
-    $("dora_mttr_target_hours").value = DEFAULTS.dora.mttr_target_hours;
-
-    document.querySelectorAll("[data-stage-id]").forEach(function(row) {
-      row.querySelector('[data-field="labor_override"]').value = "";
-      row.querySelector('[data-field="revenue_override"]').value = "";
-      row.querySelector('[data-field="opportunity_override"]').value = "";
-      row.querySelector('[data-field="goodwill_override"]').value = "";
+    populateForm({
+      team_size: DEFAULTS.team_size,
+      salary_min: DEFAULTS.salary_min,
+      salary_max: DEFAULTS.salary_max,
+      loaded_cost_multiplier: DEFAULTS.loaded_cost_multiplier,
+      workdays_per_year: DEFAULTS.workdays_per_year,
+      compounding_k: DEFAULTS.compounding_k,
+      include_dora_in_total: DEFAULTS.include_dora_in_total,
+      weights: clone(DEFAULTS.weights),
+      global_rates: clone(DEFAULTS.global_rates),
+      interview: clone(DEFAULTS.interview),
+      dora: clone(DEFAULTS.dora),
+      stages: defaultStages()
     });
   }
 
@@ -673,8 +898,8 @@
     }
     try {
       var parsed = JSON.parse(raw);
-      var input = parsed.input ? parsed.input : parsed;
-      if (!input || !input.stages || !input.weights || !input.global_rates) {
+      var input = normalizeInputModel(parsed.input ? parsed.input : parsed);
+      if (!input || !input.weights || !input.global_rates) {
         setError("Invalid snapshot payload.");
         return;
       }
@@ -689,6 +914,8 @@
     var form = $("devex-calculator-form");
     if (!form) return;
 
+    renderStageRows(defaultStages());
+
     form.addEventListener("submit", function(event) {
       event.preventDefault();
       calculate();
@@ -697,6 +924,13 @@
     $("reset-defaults").addEventListener("click", function() {
       resetDefaults();
       calculate();
+    });
+    $("add-custom-stage").addEventListener("click", addCustomStage);
+    $("lifecycle-stage-inputs-body").addEventListener("click", function(event) {
+      var target = event.target;
+      if (target && target.getAttribute("data-action") === "remove-stage") {
+        removeCustomStage(target);
+      }
     });
     $("copy-json").addEventListener("click", copySnapshot);
     $("import-json").addEventListener("click", importSnapshot);

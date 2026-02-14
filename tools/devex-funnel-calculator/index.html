@@ -18,10 +18,40 @@ stylesheets:
   </header>
 
   <section>
+    <h2>How To Use This Form</h2>
+    <div class="devex-note-block">
+      Use the form top-down. Start with team economics, then lifecycle timing, then overlays. The calculator estimates delay cost, not individual performance.
+    </div>
+    <ol>
+      <li>Set `Team and Cost Basis` to model your current org baseline.</li>
+      <li>Set `Lens Weights` to reflect how your leadership values labor, revenue, opportunity, and goodwill.</li>
+      <li>Set `Global Lens Day Rates` for non-labor financial impact; leave zero if unknown.</li>
+      <li>Populate `Lifecycle Stages` with target vs actual days. Delay is `max(actual - target, 0)`.</li>
+      <li>Adjust `Interview Team Effort` so hiring-stage labor reflects real interviewer time.</li>
+      <li>Fill `DORA Translation Inputs` for executive language. Keep DORA as contextual signal unless you intentionally include it in totals.</li>
+      <li>Run `Calculate`, then inspect the top friction stage, Core 4 distribution, and one-day sensitivity savings.</li>
+    </ol>
+    <p class="devex-note">Interpretation: stages show where delay occurs, DX Core 4 indicates likely systemic friction categories, and DORA helps communicate delivery implications in familiar terms.</p>
+  </section>
+
+  <section>
+    <h2>Framework Context</h2>
+    <p class="devex-note">DX Core 4 is used here as the primary interpretation lens. DORA is included as a translation layer for delivery conversations, and Golden Signals language is adapted to software lifecycle phases.</p>
+    <ul>
+      <li><a href="https://getdx.com/dx-core-4/" target="_blank" rel="noopener noreferrer">DX Core 4 overview</a>: framing that combines DORA, SPACE, and DevEx into one productivity model.</li>
+      <li><a href="https://getdx.com/research/benchmarks/" target="_blank" rel="noopener noreferrer">DX Core 4 benchmarks</a>: comparison context for expected ranges and performance bands.</li>
+      <li><a href="https://dora.dev/guides/dora-metrics/" target="_blank" rel="noopener noreferrer">DORA software delivery metrics</a>: deployment and reliability language used for executive translation.</li>
+      <li><a href="https://sre.google/workbook/monitoring/" target="_blank" rel="noopener noreferrer">Golden Signals reference (Google SRE)</a>: latency, errors, traffic, and saturation as a reliability framing base.</li>
+    </ul>
+    <p class="devex-note"><strong>What Core 4 means in this calculator:</strong> lifecycle stages are your value stream, while DX Core 4 cards group those stages into systemic friction domains so you can prioritize interventions.</p>
+    <p class="devex-note"><strong>What this calculator can inform:</strong> where compounding delay cost is accumulating, which phase offers highest one-day savings, how interview/onboarding friction contributes to downstream flow, and how to communicate delivery impacts in DORA terms without making DORA the primary model.</p>
+  </section>
+
+  <section>
     <h2>Inputs</h2>
     <form id="devex-calculator-form" class="devex-form">
       <fieldset>
-        <legend>Team and Cost Basis</legend>
+        <legend>Team and Cost Basis <span class="devex-help-tip" data-tip="Defines loaded daily labor cost and delay compounding behavior across all stages.">?</span></legend>
         <div class="devex-grid devex-grid-4">
           <label>Team size
             <input id="team_size" type="number" min="1" step="1" value="10" required>
@@ -38,14 +68,14 @@ stylesheets:
           <label>Workdays per year
             <input id="workdays_per_year" type="number" min="1" step="1" value="260" required>
           </label>
-          <label>Compounding k
+          <label>Compounding k <span class="devex-help-tip" data-tip="Compounding factor applied as delays accumulate. 0.01 means each cumulative delay day adds about 1% multiplier pressure.">?</span>
             <input id="compounding_k" type="number" min="0" step="0.001" value="0.01" required>
           </label>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>Lens Weights (Percent)</legend>
+        <legend>Lens Weights (Percent) <span class="devex-help-tip" data-tip="Relative importance of each cost lens. Values are normalized, so they do not need to total exactly 100.">?</span></legend>
         <div class="devex-grid devex-grid-4">
           <label>Labor
             <input id="weight_labor" type="number" min="0" step="1" value="25" required>
@@ -63,7 +93,7 @@ stylesheets:
       </fieldset>
 
       <fieldset>
-        <legend>Global Lens Day Rates ($/day)</legend>
+        <legend>Global Lens Day Rates ($/day) <span class="devex-help-tip" data-tip="Default non-labor business impact per delay day. Stage-level overrides can replace these defaults.">?</span></legend>
         <div class="devex-grid devex-grid-4">
           <label>Revenue
             <input id="global_revenue_rate" type="number" min="0" step="10" value="0" required>
@@ -81,8 +111,8 @@ stylesheets:
       </fieldset>
 
       <fieldset>
-        <legend>Lifecycle Stages (Planning -> Post-employment)</legend>
-        <p class="devex-note">Stage overrides are optional. Leave blank to use global defaults and blended labor rate.</p>
+        <legend>Lifecycle Stages (Planning -> Post-employment) <span class="devex-help-tip" data-tip="Primary value-stream timing model. Delay per stage is max(actual - target, 0).">?</span></legend>
+        <p class="devex-note">Stage overrides are optional. Leave blank to use global defaults and blended labor rate. <span class="devex-help-tip" data-tip="Use overrides when a stage has materially different costs (for example interview labor, provisioning bottlenecks, or high-stakes release windows).">?</span></p>
         <div class="devex-table-wrap">
           <table class="devex-input-table">
             <thead>
@@ -94,115 +124,19 @@ stylesheets:
                 <th>Revenue $/day override</th>
                 <th>Opportunity $/day override</th>
                 <th>Goodwill $/day override</th>
+                <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr data-stage-id="zero_to_need">
-                <td>Zero -> Identified Need for Developer Role</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="5" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="5" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="need_to_req">
-                <td>Identified Need -> Job Req</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="3" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="3" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="job_req_to_hiring">
-                <td>Job Req -> Hiring Process (includes interview effort)</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="20" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="20" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="hiring_to_onboarding">
-                <td>Hiring Process -> Onboarding</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="5" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="5" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="onboarding_to_functional">
-                <td>Onboarding -> Functional</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="3" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="3" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="functional_to_operational">
-                <td>Functional -> Operational</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="20" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="20" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="operational_to_independent">
-                <td>Operational -> Independent</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="45" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="45" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="independent_to_leverage">
-                <td>Independent -> Leverage</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="90" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="90" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="employment_microloop_friction">
-                <td>Employment Microloop Friction (aggregate unit-of-work loop)</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="10" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="10" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="retention_to_exit">
-                <td>Retention Risk -> Exit</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="0" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="0" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-              <tr data-stage-id="exit_to_backfill">
-                <td>Exit -> Backfill Complete</td>
-                <td><input data-field="target" type="number" min="0" step="1" value="30" required></td>
-                <td><input data-field="actual" type="number" min="0" step="1" value="30" required></td>
-                <td><input data-field="labor_override" type="number" min="0" step="10"></td>
-                <td><input data-field="revenue_override" type="number" min="0" step="10"></td>
-                <td><input data-field="opportunity_override" type="number" min="0" step="10"></td>
-                <td><input data-field="goodwill_override" type="number" min="0" step="10"></td>
-              </tr>
-            </tbody>
+            <tbody id="lifecycle-stage-inputs-body"></tbody>
           </table>
+        </div>
+        <div class="devex-actions">
+          <button type="button" id="add-custom-stage" class="video-button">Add Custom Stage</button>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>Interview Team Effort (Stage: Job Req -> Hiring Process)</legend>
+        <legend>Interview Team Effort (Stage: Job Req -> Hiring Process) <span class="devex-help-tip" data-tip="Adds explicit interviewer labor burden to the hiring stage so team evaluation time is reflected in cost.">?</span></legend>
         <div class="devex-grid devex-grid-5">
           <label>Candidates
             <input id="candidates" type="number" min="0" step="1" value="6" required>
@@ -223,9 +157,12 @@ stylesheets:
       </fieldset>
 
       <fieldset>
-        <legend>DORA Translation Inputs</legend>
-        <p class="devex-note">This maps DORA language into delay-cost terms for executive reporting.</p>
+        <legend>DORA Translation Inputs <span class="devex-help-tip" data-tip="Executive translation layer for delivery and reliability language. Optional to include in composite totals.">?</span></legend>
+        <p class="devex-note">This maps DORA language into delay-cost terms for executive reporting. DORA remains informational unless explicitly included in totals.</p>
         <div class="devex-grid devex-grid-4">
+          <label class="devex-inline-checkbox">Include DORA overlay in composite totals
+            <input id="include_dora_in_total" type="checkbox">
+          </label>
           <label>Deployments per month
             <input id="dora_deployments_per_month" type="number" min="0" step="1" value="20" required>
           </label>
@@ -263,13 +200,15 @@ stylesheets:
 
   <section>
     <h2>Results</h2>
+    <p class="devex-note">`Composite Cost (Lifecycle)` is always lifecycle-only. `Composite Cost (With Toggle Mode)` includes DORA only when the checkbox is enabled.</p>
     <div class="devex-summary-grid">
       <div class="devex-summary-card"><strong>Blended Team Daily Cost</strong><span id="summary-blended">$0</span></div>
-      <div class="devex-summary-card"><strong>Total Delay Days</strong><span id="summary-delay">0</span></div>
-      <div class="devex-summary-card"><strong>Base Composite Cost</strong><span id="summary-base">$0</span></div>
-      <div class="devex-summary-card"><strong>Compounded Composite Cost</strong><span id="summary-compounded">$0</span></div>
+      <div class="devex-summary-card"><strong>Lifecycle Delay Days</strong><span id="summary-delay">0</span></div>
+      <div class="devex-summary-card"><strong>Composite Cost (Lifecycle)</strong><span id="summary-base">$0</span></div>
+      <div class="devex-summary-card"><strong>Composite Cost (With Toggle Mode)</strong><span id="summary-compounded">$0</span></div>
       <div class="devex-summary-card"><strong>Interview Panel Labor Cost</strong><span id="summary-panel">$0</span></div>
-      <div class="devex-summary-card"><strong>DORA Cost Overlay</strong><span id="summary-dora">$0</span></div>
+      <div class="devex-summary-card"><strong>DORA Cost Overlay (Informational)</strong><span id="summary-dora">$0</span></div>
+      <div class="devex-summary-card"><strong>DORA Delay Days</strong><span id="summary-dora-delay">0</span></div>
       <div class="devex-summary-card"><strong>Top Friction Stage</strong><span id="summary-top-stage">-</span></div>
     </div>
 
@@ -323,6 +262,22 @@ stylesheets:
 
     <h3>DX Core 4 Guidance</h3>
     <div id="core4-guidance" class="devex-summary-grid"></div>
+
+    <h3>Golden Signals by Lifecycle Phase</h3>
+    <div class="devex-table-wrap">
+      <table class="devex-output-table">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Latency (Delay Days)</th>
+            <th>Weighted Friction Cost</th>
+            <th>Golden Signals Focus</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="golden-signals-body"></tbody>
+      </table>
+    </div>
 
     <h3>Sensitivity (Savings If Stage Reduced by 1 Delay Day)</h3>
     <div class="devex-table-wrap">
