@@ -23,7 +23,8 @@ Open a LinkedIn article page while logged in, then run this snippet in Chrome De
 
 ```js
 (() => {
-  const text = (node) => (node && node.textContent ? node.textContent.trim() : "");
+  const text = (node) =>
+    node && node.textContent ? node.textContent.trim() : "";
   const attr = (sel, key) => {
     const el = document.querySelector(sel);
     return el ? (el.getAttribute(key) || "").trim() : "";
@@ -35,21 +36,18 @@ Open a LinkedIn article page while logged in, then run this snippet in Chrome De
     document.title.replace(/\s*\|\s*LinkedIn\s*$/, "");
 
   const originalUrl =
-    attr('meta[property="og:url"]', "content") ||
-    window.location.href;
+    attr('meta[property="og:url"]', "content") || window.location.href;
 
   const heroImageUrl = attr('meta[property="og:image"]', "content");
   const excerpt =
     attr('meta[name="description"]', "content") ||
     attr('meta[property="og:description"]', "content");
 
-  // LinkedIn article pages vary; target the immersive content blocks first.
+  // LinkedIn article pages vary; try likely content containers.
   const contentRoot =
-    document.querySelector('[data-scaffold-immersive-reader-content] .reader-content-blocks-container') ||
-    document.querySelector(".reader-content-blocks-container") ||
-    document.querySelector('[data-scaffold-immersive-reader-content]') ||
-    document.querySelector(".reader-article-content") ||
     document.querySelector("article") ||
+    document.querySelector(".reader-article-content") ||
+    document.querySelector(".article-content") ||
     document.querySelector("main");
 
   const contentHtml = contentRoot ? contentRoot.innerHTML.trim() : "";
@@ -61,9 +59,7 @@ Open a LinkedIn article page while logged in, then run this snippet in Chrome De
     "";
 
   const publishedAt =
-    attr('meta[property="article:published_time"]', "content") ||
-    text(document.querySelector("time")) ||
-    "";
+    attr('meta[property="article:published_time"]', "content") || "";
 
   const payload = {
     title,
@@ -73,7 +69,7 @@ Open a LinkedIn article page while logged in, then run this snippet in Chrome De
     author_profile_url: "https://www.linkedin.com/in/just3ws/",
     hero_image_url: heroImageUrl,
     excerpt,
-    content_html: contentHtml
+    content_html: contentHtml,
   };
 
   copy(JSON.stringify(payload, null, 2));
