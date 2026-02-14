@@ -69,7 +69,7 @@
   let queue = shuffle(candidates);
   let index = 0;
   let timer = null;
-  const intervalMs = 9000;
+  const intervalMs = 14000;
 
   const show = (newIndex) => {
     index = (newIndex + queue.length) % queue.length;
