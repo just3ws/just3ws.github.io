@@ -11,7 +11,7 @@ layout: minimal
     {% if page.originally_published_on and page.original_url %}
     <aside class="archive-note">
       <p>
-        <strong>Originally published on {{ page.originally_published_on }}.</strong>
+        <strong>Originally published on {{ page.originally_published_on }}{% if page.original_published_at %} on {{ page.original_published_at | date: "%B %-d, %Y" }}{% endif %}.</strong>
         <a href="{{ page.original_url }}">View original article</a>.
       </p>
     </aside>

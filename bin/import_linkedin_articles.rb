@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "json"
+require "nokogiri"
 require "optparse"
 require "pathname"
 require "time"
@@ -26,6 +27,13 @@ rescue StandardError
   Date.today
 end
 
+def parse_date_or_nil(value)
+  return nil if value.to_s.strip.empty?
+  Time.parse(value).to_date
+rescue StandardError
+  nil
+end
+
 def extension_from_url(url)
   path = URI(url).path
   ext = File.extname(path).downcase
@@ -34,6 +42,73 @@ def extension_from_url(url)
   ".jpg"
 rescue StandardError
   ".jpg"
+end
+
+def absolutize_linkedin_href(href)
+  return href if href.to_s.strip.empty?
+  return href if href.start_with?("http://", "https://", "mailto:", "tel:")
+  return "https://www.linkedin.com#{href}" if href.start_with?("/")
+
+  href
+end
+
+def sanitize_article_fragment(fragment)
+  fragment.xpath("//comment()").remove
+  fragment.traverse do |node|
+    next unless node.text?
+    node.content = node.text.gsub("<!---->", "")
+  end
+  fragment.css("script,style,iframe,svg,button,nav,header,footer,form").remove
+  fragment.css("span.white-space-pre").each { |node| node.replace(" ") }
+
+  fragment.css("p").each do |p|
+    if p.at_css("ul,ol")
+      p.replace(p.children)
+      next
+    end
+    p.remove if p.text.to_s.strip.empty? && p.css("img,video,iframe").empty?
+  end
+
+  fragment.css("*").each do |node|
+    allowed_attrs = %w[href src alt title]
+    node.attribute_nodes.each do |attr|
+      node.remove_attribute(attr.name) unless allowed_attrs.include?(attr.name)
+    end
+
+    next unless node.name == "a"
+    node["href"] = absolutize_linkedin_href(node["href"])
+    node["rel"] = "noopener noreferrer"
+    node["target"] = "_blank"
+  end
+end
+
+def extract_article_parts(content_html)
+  doc = Nokogiri::HTML.fragment(content_html.to_s)
+
+  body_root = doc.at_css('[data-scaffold-immersive-reader-content] .reader-content-blocks-container') ||
+    doc.at_css(".reader-content-blocks-container") ||
+    doc.at_css('[data-scaffold-immersive-reader-content]') ||
+    doc.at_css(".reader-article-content--content-blocks") ||
+    doc
+
+  published_text = doc.at_css("time")&.text&.strip
+  hero_image_url = doc.at_css("figure img, .reader-cover-image__wrapper-right-rail-layout img, img")&.[]("src")
+
+  fragment = Nokogiri::HTML.fragment(body_root.inner_html.to_s)
+  sanitize_article_fragment(fragment)
+
+  normalized_html = fragment.to_html
+    .gsub("<!---->", "")
+    .gsub(/^[ \t]+$/, "")
+    .gsub(/^[ \t]+(?=<)/, "")
+    .gsub(/\n{3,}/, "\n\n")
+    .strip
+
+  {
+    article_html: normalized_html,
+    published_text: published_text,
+    hero_image_url: hero_image_url
+  }
 end
 
 def wrap_frontmatter(frontmatter, body)
@@ -54,6 +129,13 @@ def wrap_frontmatter(frontmatter, body)
   lines << ""
   lines << body
   lines.join("\n")
+end
+
+def escape_html(text)
+  text.to_s
+    .gsub("&", "&amp;")
+    .gsub("<", "&lt;")
+    .gsub(">", "&gt;")
 end
 
 def download_image(url, dest_path, dry_run:)
@@ -103,9 +185,7 @@ end
 articles.each_with_index do |article, idx|
   title = article["title"].to_s.strip
   original_url = article["original_url"].to_s.strip
-  author_name = article["author_name"].to_s.strip
-  author_profile_url = article["author_profile_url"].to_s.strip
-  published_at = article["published_at"].to_s.strip
+  published_at_input = article["published_at"].to_s.strip
   hero_image_url = article["hero_image_url"].to_s.strip
   content_html = article["content_html"].to_s.strip
   excerpt = article["excerpt"].to_s.strip
@@ -115,29 +195,56 @@ articles.each_with_index do |article, idx|
     next
   end
 
-  date = parse_date(published_at)
+  extracted = extract_article_parts(content_html)
+  content_published_date = parse_date_or_nil(extracted[:published_text])
+  input_published_date = parse_date_or_nil(published_at_input)
+
+  date = if content_published_date && (input_published_date.nil? || input_published_date == Date.today)
+           content_published_date
+         else
+           parse_date(published_at_input)
+         end
+
+  published_at = if content_published_date
+                   content_published_date.strftime("%Y-%m-%d")
+                 elsif input_published_date
+                   input_published_date.strftime("%Y-%m-%d")
+                 else
+                   date.strftime("%Y-%m-%d")
+                 end
+
+  if hero_image_url.empty? && !extracted[:hero_image_url].to_s.strip.empty?
+    hero_image_url = extracted[:hero_image_url].strip
+  end
+  content_html = extracted[:article_html]
+  if content_html.empty?
+    warn "Skipping item #{idx + 1}: unable to extract clean article content."
+    next
+  end
   slug = slugify(title)
   slug = "linkedin-article-#{idx + 1}" if slug.empty?
 
   image_path = nil
+  downloaded_image_path = nil
   unless hero_image_url.empty?
     ext = extension_from_url(hero_image_url)
     image_path = ASSETS_DIR.join("#{date}-#{slug}#{ext}")
-    download_image(hero_image_url, image_path, dry_run: options[:dry_run])
+    downloaded_image_path = download_image(hero_image_url, image_path, dry_run: options[:dry_run])
   end
 
-  relative_image = image_path ? "/" + image_path.relative_path_from(ROOT).to_s : nil
-
-  attribution = +"Originally published on LinkedIn"
-  attribution << " by [#{author_name}](#{author_profile_url})" unless author_name.empty? || author_profile_url.empty?
-  attribution << " on #{date.strftime("%B %-d, %Y")}"
-  attribution << ". [View original article](#{original_url})."
+  relative_image = if downloaded_image_path
+                     "/" + downloaded_image_path.relative_path_from(ROOT).to_s
+                   elsif !hero_image_url.empty?
+                     hero_image_url
+                   else
+                     nil
+                   end
 
   body_parts = []
-  body_parts << "> #{attribution}"
-  body_parts << ""
-  body_parts << "![#{title}](#{relative_image})" if relative_image
-  body_parts << "" if relative_image
+  if relative_image
+    body_parts << "<figure><img src=\"#{relative_image}\" alt=\"#{escape_html(title)}\"></figure>"
+    body_parts << ""
+  end
   body_parts << content_html
   body = body_parts.join("\n")
 
@@ -149,10 +256,10 @@ articles.each_with_index do |article, idx|
     "tags" => %w[linkedin republished],
     "originally_published_on" => "LinkedIn",
     "original_url" => original_url,
-    "original_published_at" => published_at.empty? ? date.to_s : published_at
+    "original_published_at" => published_at
   }
 
-  post_path = POSTS_DIR.join("#{date}-#{slug}.md")
+  post_path = POSTS_DIR.join("#{date}-#{slug}.html")
   content = wrap_frontmatter(frontmatter, body)
 
   if options[:dry_run]

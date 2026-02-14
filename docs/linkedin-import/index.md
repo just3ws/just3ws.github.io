@@ -43,11 +43,13 @@ Open a LinkedIn article page while logged in, then run this snippet in Chrome De
     attr('meta[name="description"]', "content") ||
     attr('meta[property="og:description"]', "content");
 
-  // LinkedIn article pages vary; try likely content containers.
+  // LinkedIn article pages vary; target the immersive content blocks first.
   const contentRoot =
-    document.querySelector("article") ||
+    document.querySelector('[data-scaffold-immersive-reader-content] .reader-content-blocks-container') ||
+    document.querySelector(".reader-content-blocks-container") ||
+    document.querySelector('[data-scaffold-immersive-reader-content]') ||
     document.querySelector(".reader-article-content") ||
-    document.querySelector(".article-content") ||
+    document.querySelector("article") ||
     document.querySelector("main");
 
   const contentHtml = contentRoot ? contentRoot.innerHTML.trim() : "";
@@ -60,6 +62,7 @@ Open a LinkedIn article page while logged in, then run this snippet in Chrome De
 
   const publishedAt =
     attr('meta[property="article:published_time"]', "content") ||
+    text(document.querySelector("time")) ||
     "";
 
   const payload = {
@@ -124,4 +127,3 @@ Then review:
 
 - `/writing/`
 - each new post page for formatting/image quality
-
