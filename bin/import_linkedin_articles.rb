@@ -56,7 +56,9 @@ def sanitize_article_fragment(fragment)
   fragment.xpath("//comment()").remove
   fragment.traverse do |node|
     next unless node.text?
-    node.content = node.text.gsub("<!---->", "")
+    cleaned = node.text.gsub("<!---->", "")
+    cleaned = cleaned.gsub(/[ \t\r\n]+/, " ")
+    node.content = cleaned
   end
   fragment.css("script,style,iframe,svg,button,nav,header,footer,form").remove
   fragment.css("span.white-space-pre").each { |node| node.replace(" ") }
@@ -97,12 +99,12 @@ def extract_article_parts(content_html)
   fragment = Nokogiri::HTML.fragment(body_root.inner_html.to_s)
   sanitize_article_fragment(fragment)
 
-  normalized_html = fragment.to_html
-    .gsub("<!---->", "")
-    .gsub(/^[ \t]+$/, "")
-    .gsub(/^[ \t]+(?=<)/, "")
-    .gsub(/\n{3,}/, "\n\n")
-    .strip
+  blocks = fragment.children.map do |node|
+    html = node.to_html.to_s.gsub("<!---->", "").strip
+    next nil if html.empty?
+    html
+  end.compact
+  normalized_html = blocks.join("\n\n")
 
   {
     article_html: normalized_html,
