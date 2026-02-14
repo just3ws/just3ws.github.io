@@ -24,35 +24,74 @@ canonical_url: https://www.just3ws.com/home/
     <p class="home-intro">This is a working archive of interviews, talks, and writing from years of building software and technical communities.</p>
   </header>
 
-  <section class="home-hero home-featured" aria-labelledby="featured-article-title">
+  <section class="home-hero home-featured" aria-labelledby="featured-article-title" id="home-featured-carousel">
     <div class="home-hero-media">
-      {% if featured_image != "" %}
-      <a href="{{ featured_post.url }}" aria-label="Read featured article: {{ featured_post.title }}">
-        <img src="{{ featured_image }}" alt="Cover image for {{ featured_post.title }}">
+      {% if featured_post and featured_image != "" %}
+      <a href="{{ featured_post.url }}" id="home-featured-link" aria-label="Read featured article: {{ featured_post.title }}">
+        <img id="home-featured-image" src="{{ featured_image }}" alt="Cover image for {{ featured_post.title }}">
       </a>
       {% else %}
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Pair_Programming_3.jpg/1280px-Pair_Programming_3.jpg" alt="Two engineers pair programming at a shared workstation in a collaborative office">
+      <a href="/writing/" id="home-featured-link" aria-label="Browse featured writing">
+        <img id="home-featured-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Pair_Programming_3.jpg/1280px-Pair_Programming_3.jpg" alt="Two engineers pair programming at a shared workstation in a collaborative office">
+      </a>
       {% endif %}
-      <div class="home-caption">
-        {% if featured_post %}
-        Featured article from the Writing archive.
-        {% else %}
-        Photo by Vajrapani666 via Wikimedia Commons (CC BY-SA 3.0).
-        <a href="https://commons.wikimedia.org/wiki/File:Pair_Programming_3.jpg">Source</a>
-        <span aria-hidden="true">|</span>
-        <a href="https://creativecommons.org/licenses/by-sa/3.0/">License</a>
-        {% endif %}
-      </div>
+      <div class="home-caption" id="home-featured-caption">Featured article from the Writing archive.</div>
     </div>
-    <div class="home-hero-actions">
+    <div class="home-hero-actions" aria-live="polite">
       {% if featured_post %}
-      <p class="home-kicker">Featured article</p>
+      <p class="home-kicker" id="home-featured-kicker">Featured article</p>
       <h2 id="featured-article-title">{{ featured_post.title }}</h2>
-      <p>{{ featured_summary }}</p>
-      <p><a class="home-resume-link" href="{{ featured_post.url }}">Read featured article</a></p>
+      <p id="home-featured-summary">{{ featured_summary }}</p>
+      <p><a class="home-resume-link" id="home-featured-cta" href="{{ featured_post.url }}">Read featured article</a></p>
+      <div class="home-carousel-controls" id="home-carousel-controls">
+        <button type="button" class="home-carousel-button" id="home-carousel-prev" aria-label="Show previous highlight">Previous</button>
+        <button type="button" class="home-carousel-button" id="home-carousel-next" aria-label="Show next highlight">Next</button>
+      </div>
       {% endif %}
     </div>
   </section>
+  <div id="home-featured-candidates" hidden>
+    {% for post in site.posts %}
+      {% if post.tags contains "linkedin" %}
+        {% assign post_image_parts = post.content | split: '<img src="' %}
+        {% if post_image_parts.size > 1 %}
+          {% assign post_image = post_image_parts[1] | split: '"' | first %}
+          {% assign post_summary = post.content | strip_html | strip_newlines | strip | truncate: 260 %}
+          <article
+            data-kind="article"
+            data-kicker="Featured article"
+            data-caption="Featured article from the Writing archive."
+            data-title="{{ post.title | escape }}"
+            data-url="{{ post.url }}"
+            data-image="{{ post_image }}"
+            data-summary="{{ post_summary | escape }}"
+            data-cta="Read featured article"></article>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% assign featured_video_ids = "dave-thomas-software-craftsmanship-north-america-2013|sandro-mancuso-software-craftsmanship-north-america-2013|justin-searls-software-craftsmanship-north-america-2012|rich-hickey-creator-of-clojure-general|aaron-patterson-ruby-rails-core-team-member-keynote-speaker-railsconf-2014|david-heinemeier-hansson-dhh-railsconf-2014|robert-martin-software-craftsmanship-north-america-2012|corey-haines-general|brian-marick-software-craftsmanship-north-america-2012|charles-oliver-nutter-general" | split: "|" %}
+    {% for video_id in featured_video_ids %}
+      {% assign asset = site.data.video_assets.items | where: "id", video_id | first %}
+      {% if asset and asset.transcript_id %}
+        {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
+        {% if transcript_entry and transcript_entry.content %}
+          {% assign preferred = asset.platforms | first %}
+          {% assign video_thumb = preferred.thumbnail_local | default: asset.thumbnail_local | default: preferred.thumbnail | default: asset.thumbnail %}
+          {% if video_thumb %}
+            <article
+              data-kind="video"
+              data-kicker="Featured conversation"
+              data-caption="Transcript-backed video from the archive."
+              data-title="{{ asset.title | escape }}"
+              data-url="/videos/{{ asset.id }}/"
+              data-image="{{ video_thumb }}"
+              data-summary="{{ asset.description | strip | truncate: 260 | escape }}"
+              data-cta="Watch featured video"></article>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
 
   <nav class="home-quicknav" aria-label="Quick navigation for hiring and technical evaluation">
     <a href="/">Executive Resume</a>
@@ -174,3 +213,4 @@ canonical_url: https://www.just3ws.com/home/
     </div>
   </section>
 </article>
+<script src="/assets/js/home-featured-carousel.js" defer></script>

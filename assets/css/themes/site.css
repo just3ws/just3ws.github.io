@@ -721,6 +721,38 @@ section {
   margin: 0;
 }
 
+.home-featured.is-transitioning .home-hero-media,
+.home-featured.is-transitioning .home-hero-actions {
+  opacity: 0.25;
+}
+
+.home-hero-media,
+.home-hero-actions {
+  transition: opacity 220ms ease;
+}
+
+.home-carousel-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.home-carousel-button {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.82rem;
+  line-height: 1;
+  padding: 0.42rem 0.8rem;
+  cursor: pointer;
+}
+
+.home-carousel-button:hover {
+  border-color: var(--accent);
+}
+
 .home-resume-note {
   color: var(--meta);
   font-size: 0.95rem;
