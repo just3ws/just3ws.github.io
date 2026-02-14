@@ -15,8 +15,10 @@ def normalize_set(values)
 end
 
 def top_level_entries(root)
+  transient_entries = Set.new(%w[.bundle vendor])
   Dir.children(root)
     .reject { |entry| entry == "." || entry == ".." }
+    .reject { |entry| transient_entries.include?(entry) }
     .sort
 end
 
