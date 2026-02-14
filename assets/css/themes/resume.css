@@ -471,12 +471,78 @@ section {
 .resume-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
   padding: 0.75rem 1rem;
   background: var(--surface);
   border-radius: 0.375rem;
   border: 1px solid var(--border);
+}
+
+.resume-actions-label {
+  color: var(--meta);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Global Site Navigation */
+.site-header {
+  margin: 0 auto 1.25rem;
+  max-width: 50rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(46, 52, 64, 0.05);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.site-nav-brand {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+.site-nav-brand.is-active {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.site-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+
+.site-nav-links a {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.site-nav-links a:hover,
+.site-nav-links a:focus-visible {
+  background: var(--surface-2);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-nav-links a.is-active {
+  background: var(--surface-2);
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .resume-format-control {

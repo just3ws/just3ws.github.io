@@ -4,4 +4,17 @@ set -e
 source .env
 
 bundle exec jekyll clean --verbose
-bundle exec jekyll server --verbose
+
+if command -v open >/dev/null 2>&1; then
+  if [ -d "/Applications/Google Chrome.app" ] || [ -d "$HOME/Applications/Google Chrome.app" ]; then
+    bundle exec jekyll serve --verbose --watch --livereload &
+    JEKYLL_PID=$!
+    sleep 2
+    open -a "Google Chrome" "http://127.0.0.1:4000/"
+    wait "$JEKYLL_PID"
+  else
+    bundle exec jekyll serve --verbose --watch --livereload --open-url
+  fi
+else
+  bundle exec jekyll serve --verbose --watch --livereload
+fi

@@ -19,6 +19,9 @@
           {% if current_url == href %}
             {% assign is_active = true %}
           {% endif %}
+          {% if href == "/" and current_url == "/resume.html" %}
+            {% assign is_active = true %}
+          {% endif %}
         {% else %}
           {% if current_url == href or current_url contains href %}
             {% assign is_active = true %}
