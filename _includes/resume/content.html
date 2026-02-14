@@ -21,34 +21,6 @@
 
 {% assign profile = site.data.resume.profile %}
 <article>
-  {% if page.url == "/" %}
-  {% assign featured_post = site.posts | where_exp: "item", "item.slug == 'from-y2k-panic-to-ai-anxiety-why-the-future-is-always-worth-building'" | first %}
-  {% if featured_post %}
-  {% assign image_parts = featured_post.content | split: '<img src="' %}
-  {% assign featured_image = "" %}
-  {% if image_parts.size > 1 %}
-    {% assign featured_image = image_parts[1] | split: '"' | first %}
-  {% endif %}
-  {% assign featured_summary = featured_post.content | strip_html | strip_newlines | strip | truncate: 260 %}
-  <section class="home-hero home-featured" aria-labelledby="featured-article-title">
-    {% if featured_image != "" %}
-    <div class="home-hero-media">
-      <a href="{{ featured_post.url }}" aria-label="Read featured article: {{ featured_post.title }}">
-        <img src="{{ featured_image }}" alt="Cover image for {{ featured_post.title }}">
-      </a>
-      <p class="home-caption">Featured article from the Writing archive</p>
-    </div>
-    {% endif %}
-    <div class="home-hero-actions">
-      <p class="home-kicker">Featured article</p>
-      <h2 id="featured-article-title">{{ featured_post.title }}</h2>
-      <p>{{ featured_summary }}</p>
-      <p><a class="home-resume-link" href="{{ featured_post.url }}">Read featured article</a></p>
-    </div>
-  </section>
-  {% endif %}
-  {% endif %}
-
   <header class="resume-header">
     <h1>{{ profile.name }}</h1>
     <p class="title">{{ profile.title }}</p>
