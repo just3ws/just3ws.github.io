@@ -23,6 +23,16 @@ EXTENSION_PRIORITY = {
   ".srt" => 3
 }.freeze
 
+TEXT_NORMALIZATION_RULES = [
+  [/\bug[\s._-]*tastic\b/i, "UGtastic"],
+  [/\b(?:you|yu)g[\s._-]*tastic\b/i, "UGtastic"],
+  [/\bug[\s._-]*l[\s._-]*st\b/i, "UGl.st"],
+  [/\bcraftmanship\b/i, "craftsmanship"],
+  [/\bsoft[ -]?ware craftsmanship\b/i, "Software craftsmanship"],
+  [/\bchipy\b/i, "ChiPy"],
+  [/\bscna\b/i, "SCNA"]
+].freeze
+
 def normalize_text(value)
   value.to_s.downcase.gsub(/[^a-z0-9]+/, " ").strip
 end
@@ -81,6 +91,20 @@ def extract_text(path)
   else
     ""
   end
+end
+
+def clean_transcript_text(text)
+  cleaned = text.to_s.dup
+  cleaned.gsub!(/\r\n?/, "\n")
+  cleaned.gsub!(/[ \t]+$/, "")
+  cleaned.gsub!(/\n{3,}/, "\n\n")
+  cleaned.strip!
+
+  TEXT_NORMALIZATION_RULES.each do |pattern, replacement|
+    cleaned.gsub!(pattern, replacement)
+  end
+
+  cleaned
 end
 
 def extract_explicit_ids(filename)
@@ -288,7 +312,7 @@ candidate_mappings = []
 transcripts_by_asset = Hash.new { |h, k| h[k] = [] }
 
 selected_transcript_paths.each do |path|
-  text = extract_text(path)
+  text = clean_transcript_text(extract_text(path))
   if blank?(text)
     report["unmapped"] << { "file" => path, "reason" => "empty_or_unsupported_content" }
     next
@@ -356,7 +380,7 @@ if options[:apply]
     asset = assets_by_id[row["asset_id"]]
     next unless asset
 
-    text = extract_text(file_path)
+    text = clean_transcript_text(extract_text(file_path))
     next if blank?(text)
 
     transcript_id = first_nonempty(asset["transcript_id"], asset["id"])

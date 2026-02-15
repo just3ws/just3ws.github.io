@@ -1,0 +1,295 @@
+---
+content: |-
+  User groups with lots to say, interviews and more, no way, sharing great ideas in the tech community, fascinating conversations, a plethora of information, find out for yourself today at uketastic.com.
+   Why aren't you moving?
+   Testing?
+   Yeah, there we go.
+   Hi, it's Mike with uketastic.
+   Just keep going.
+   Hi, it's Mike with uketastic.
+   I'm sitting down at, geez, it's because I'm in a rush, I'm sorry.
+   Yeah, it's the end of the day and everything's compressed.
+   Hi, it's Mike with uketastic.
+   I'm here at SCNA 2013.
+   Right now I'm sitting down with Stuart Halloway who recently just gave a talk on Datomic and how he built it or how Cognitech built it.
+   Thank you very much for taking the time.
+   Thank you for taking the time to sit down with me, I really appreciate it.
+   So, what is Datomic and how did you build it?
+   So, Datomic is a functional agile database and as many disruptive plays are, it's not immediately obvious what it is until you understand it and then it's like, "Oh, of course, now I would want one of those."
+   It's a functional database in that the database is represented as an immutable value, which if you have followed the Clojure community or F#, this is a very popular trend.
+   So, Datomic is in Clojure or do I use Clojure to talk to it or how do I use it?
+   It's written in Clojure, but as with any database, that's an implementation detail.
+   Okay.
+   So, because of some of Datomic's unique characteristics, you're likely to want to use it from a JVM language, but it is possible to use it via the REST API from other languages.
+   So, similar to how you can talk to Cloud or CouchDB, excuse me, CouchDB, you have the HTTP API for interacting with it?
+   So, there is an HTTP API, but I would...
+   I would focus initially on what's called the peer model in Datomic.
+   So, as a functional database, the database is available as an immutable value in any JVM-based peer in the system.
+   So, you have, conceptually at least, sort of a full copy of the database available to you from in different peers in the system.
+   And so, what that gives you is the ability to scale reads elastically.
+   At the same time, it's an ACID system with a traditional ACID transactional model.
+   So, writes happen in...
+   In one place, but then reads can happen from in different places.
+   So, it's a fairly unusual model versus systems that are reads and writes are all happen kind of in one place in the database, or versus, say, NoSQLs, where you have reads and writes happening anywhere, but you give up on the ACID properties.
+   Right.
+   So, if I wanted...
+   If I was somebody who's like, okay, I've learned some closure enough to be dangerous, and I want to try out a different data store that...
+   And get away from...
+   Relational model, and I'm looking at Datomic, do I have to go and learn a new syntax?
+   Is it like I have to go learn the SQL or whatever, proto-SQL for dealing with database, or how do I interact with it?
+   So, I guess there'd be two levels to thinking about that.
+   The first part of it is that the API is a Java API.
+   And at the talk today, I showed kind of the entirety of Datomic in two slides of code in Java, which, you know, Java does not have a reputation for being...
+   Terse.
+   Yeah.
+   And so, being able to tell the entire story in two slides is worth something in and of itself.
+   The thing that those two slides omit is that there is a query language, the query language is Datalog.
+   Datalog is another great academic kit from the '70s, along with the relational algebra.
+   We picked it because it's particularly well-suited, in my opinion, to a universal schema database, which Datomic is.
+   And therefore, you have these pattern-matching-looking queries.
+   So, all the expressions in a query take the form of entity, attribute, value, transaction.
+   And so, it's sort of a pattern-matching thing.
+   Anytime you leave a question mark anywhere in one of those positions, you're looking for something.
+   And if that same name appears in more than one place, you're doing a join.
+   So, people who have come from SQL really appreciate the breath of fresh air of how easy it is to use Datalog,
+   but they're also happy that it has expressive power that's equivalent to the relational algebra.
+   So, it's not this made-up-yesterday query language that is arcane syntax and no academic promises.
+   It's trying to map, like, link to a SQL-like syntax.
+   Where it's more of you're going a more older style, but more mathematically-based, logic-based language.
+   And it truly is the revenge of logic programming.
+   We're seeing a lot of people that are very excited about functional programming, which is great.
+   It has more leverage for certain kinds of problems than the imperative programming that most developers use today.
+   Likewise, logic programming is a level of power above that.
+   One of the problems with logic programming, historically, is that it's only delivered to developers in arcane things for most developers.
+   You know, prologue or rules engines or something like that.
+   It's not in their mainstream tool chain.
+   Or, it's in the database, which is fine, except it's this over-there place with different semantics and RPC calls.
+   So, by having the logic engine run in your peer process,
+   in your JVM-based process,
+   then you're able to actually do logic programming in your program.
+   As opposed to trying to bundle up a bunch of stuff into a logic program that will run somewhere else
+   and try to get the answer back all in one go.
+   You know, to avoid N+1 problems and round trips and all that kind of thing.
+   Yeah, so that's always been the problem with SQL.
+   Like, okay, I have to split my problem into two non-intuitive pieces
+   that are maybe even going to be in totally different systems and only talk through a single line.
+   Right, and that gets to, you know, really the main point of the talk today,
+   about two-thirds of the talk, was about the values and the approaches that we took to building Datomic.
+   And one of the ones that I talked about was courage.
+   And that's not necessarily a word people use as a design principle very often,
+   but I think it's really important because, you know, I've spent a lot of my career,
+   you know, sort of having a view of what I was allowed to worry about.
+   Right, I'm building an application, so I'm allowed to worry about the application.
+   And so I have this database and it's icky.
+   And the best thing I can do about it is create this sort of layer in the part of the world
+   that I know how to control to make it better.
+   And that's what gives you Hibernate or ActiveRecord or things like that.
+   And so it's a kind of act of courage to say, you know, the problem isn't really here.
+   Right, the problem is in the end and I have to go over there to fix it.
+   This now becomes a significantly bigger project.
+   It's going to take, you know, years of thinking and years of development.
+   And what we come out with on the other side is a radically different model.
+   Yeah, so before years we were working with, oh, we have to create these adapters
+   to deal with this thing that was bolted onto our application.
+   But you're trying to say, no, the application and the data,
+   let's push that together a little bit closer so that way there's maybe less of an abstraction
+   or a bolted on Frankenstein model of dealing with the data.
+   Is that an accurate kind of...
+   That's right.
+   And, you know, another of the key principles, anyone who's followed the Clojure community
+   or the simplicity mantra, you know, repeated on infinitum,
+   I will mention it here only in the context of saying that that model of entity attribute value
+   has a direct mechanical mapping to an associative data structure.
+   In other words, an object in an object-oriented programming language,
+   which means that unlike with a relational database where you have decisions to make,
+   like, oh, this table has a join over there.
+   I've got to write an XML descriptor that explains how that join works
+   or a Ruby DSL that explains how that join gets turned into object.
+   An associative thing trivially turns into an object.
+   Here on the database, I have a thing.
+   It has properties.
+   Now in my program, I have a thing.
+   It has properties.
+   Yeah, exactly.
+   Right.
+   So you get the ability to think in a traditional object style,
+   modulo the fact that it is immutable data,
+   so that's going to be novel for most object-oriented programmers,
+   and the ability to do logic programming with the same data in your process.
+   Now, just to take a little step away from Datomic and talking about Clojure
+   and the community that's building up around that,
+   and that it's rapidly grown.
+   But I do remember a few years ago having a talk where Micah Martin said that Clojure is the new Ruby,
+   and that people seem to be moving off of other languages like Ruby
+   that were popular for a while onto Clojure,
+   and it seems to be just growing exponentially.
+   Every day, there seems to be more people adopting.
+   But you were one of the people that was early using it in very early stages,
+   and how the community has grown.
+   Is that something that you've been actively a part of going to user groups and teaching,
+   or mostly the books and getting down into hacking?
+   So I've had a nice opportunity where user group involvement is concerned.
+   For many years, since 2003, I've been involved with the No Fluff Just Stuff Java Symposium,
+   which originally started out of user groups and is a big sponsor of Java user groups,
+   at least in the United States.
+   And so I've spoken at those events around the country.
+   Those are usually sponsored by the local Java user group in the city that they're in.
+   In fact, I'm here in Chicago right now going to the No Fluff Just Stuff event in Chicago tomorrow.
+   So it's been a really terrific opportunity to interact with user groups in the Java ecosystem.
+   What I've lived in a lot in the past several years is obviously the Ruby ecosystem.
+   Justin Getland and I founded Relevance in 2003,
+   and the majority of our work moved to Ruby in 2005.
+   In 2008, we started to see a slow turn of some of the Ruby work becoming Clojure work,
+   which is now the dominant language at work, although there is also still some Ruby.
+   But I've had the good luck to be invited to Ruby events,
+   even and perhaps particularly since I became known as a Clojure programmer.
+   And one of the things that is, in my experience, just fantastic about the Ruby community
+   is their interest in getting new ideas,
+   in the sense that the Ruby community is a meta-community about newness
+   and about being able to explore things.
+   And that's been really terrific.
+   A lot of communities, if you walked up to them and said,
+   "I have this idea, and what you're doing is crazy, and you should try my thing,"
+   they'd be like, "Go away."
+   And a lot of Rubyists, if you say that to them, they're like,
+   "Oh, tell me more."
+   "Tell me how I've been doing everything wrong, please."
+   And it's not a false humility or a sense of everything's wrong in the Ruby community,
+   it's just really a true openness to ideas and exploration.
+   That being said, Clojure adoption has been certainly the most interesting community
+   that I've ever worked with because of the diversity of where people are coming from.
+   So you have people that are coming from high productivity, expressive languages,
+   Ruby and Python.
+   You have people who are coming from the sort of mainstream business development languages,
+   Java and C#.
+   You have people who are coming from functional programming.
+   You have people who are coming from Lisp, obviously, Clojure being a Lisp.
+   And so you get--the Ruby community felt like a big melting pot to me,
+   but the Clojure community even more so.
+   That there really is a great diversity of ideas.
+   And it's exciting that the community is inviting enough.
+   That a Ruby person coming in can say, "Oh, this is the new Ruby for me."
+   But that doesn't mean that it's Ruby for someone who's coming from Java.
+   They're like, "Oh, this is the new Java for me."
+   And so that's been really fun to watch.
+   Yeah, it's just--it's about whoever the audience is.
+   Because if I recall correctly, during my Rich Hickey interview,
+   that he mentioned that it's--from where I was standing,
+   I thought more Rubyists were going towards Clojure.
+   But he was saying that it seems to be Java people have been coming over in a much--
+   So it's--they're coming from all over, not just--my observation was from where--
+   my perspective at his was, you know, it's actually Java people that are coming over more.
+   I think that's true.
+   And part of that is because, you know, Rich comes from a Java and C# background.
+   I mean, his quote would be, "I wrote Clojure to let me write programs
+   that I would have written in Java and C# better and more effectively."
+   One of the things that Lisp programmers in general, I think,
+   and Clojure programmers certainly believe is that Osterhout's dichotomy is false, right?
+   This notion that there are high-powered system programming languages,
+   you know, Java and C and C# over here,
+   and there are expressive languages, Ruby and Python, you know, over here.
+   That originated from really a marketing message for a programming language.
+   But the dichotomy itself, you know, covers a lot of details.
+   And if you look at the history of Lisp,
+   it has always squarely been able to sit on both sides of that divide, right?
+   Lisp has been used for super high-performance things where necessary,
+   and it is also provided through macro programming.
+   It is provided through macros and homo-iconicity,
+   a level of linguistic abstraction that allows you to do the kinds of dynamic things
+   that a Ruby programmer would love.
+   And even with the marketing message, it's also a little bit self-serving.
+   If you've invested a lot into learning C++ and you've been doing it for 20-odd years,
+   you're going to want to say, "You know, no, it's the better language."
+   You know, I'm not...
+   It's a little bit of self-preservation there, I think, even a little bit,
+   just looking at these languages and being able to say,
+   "Oh, I know this high-power language.
+   Why would I want to go learn something else that's going to invalidate
+   what I've invested so much in learning?"
+   Right.
+   And I felt like that when I went from doing Java to Ruby in my day job,
+   it was like eating candy all the time because the language was just so much more expressive.
+   It was really great fun.
+   And then when I discovered Clojure, it was like I was eating candy
+   that had all of the nutritional value of broccoli, right?
+   Yeah.
+   And I knew all this performance system-level stuff.
+   And so being able to have all of that in one package is really terrific for me.
+   I don't want to have to spend my time writing C code or writing Java code.
+   I can, and I have in the past couple of years done that on occasion,
+   but I really want to spend my time having more and more leverage,
+   moving to functional, moving to logic.
+   So since it's still such a groin and there's still so many people being introduced to the language
+   and the concepts of the Lisp, aside from your book,
+   where would you recommend people starting?
+   If they're saying, "Okay, I'm just a developer, not in particular anyways,"
+   what are some of the resources you might recommend?
+   So there are a couple of other books that I would recommend.
+   Chas Emmerich has a book called -- now I'm going to be embarrassed.
+   I'm programming Clojure, he's Clojure programming.
+   So if you go out and try to -- if you end up buying both of these books,
+   then I think you win.
+   I think Chas' book --
+   Probably the one with the better head.
+   Chas is a good-looking fellow.
+   So I think that that's a good book.
+   And then as a second book, a follow-on book, definitely The Joy of Clojure.
+   The Joy of Clojure.
+   Right.
+   So from a book perspective, I think those are a good start.
+   And then Neil Ford and I have done a series of videos for O'Reilly called Clojure Inside Out.
+   Okay.
+   And the nice thing about Clojure Inside Out, from my perspective,
+   is it represents fairly my up-to-the-minute thinking about how to talk about Clojure.
+   And so we just filmed a video last year,
+   and this represents year five of talking about and writing about Clojure for me.
+   And I feel like I've been in a lot of different places.
+   I like the way I explained Clojure five years ago,
+   but I like the way I explained Clojure five months ago a lot better.
+   Yeah.
+   So that's excellent that you're looking at different ways.
+   Personally, myself, I'm a verbal learner.
+   So that's also why I do the videos.
+   It's visual and verbal.
+   So having those new resources between -- and then also Colin Jones maintaining the Clojure coins.
+   There's a whole variety of ways to come into the language:
+   a book, videos, hands-on activities.
+   It's a language that seems to be just pulling people in almost.
+   Not even just that you have open arms towards people coming into the language,
+   but you're actively saying, "Okay, come, come."
+   It's a lot of fun.
+   I'd also say that the conference scene in Clojure has gotten really great in the last couple of years.
+   The core conference around the language, Clojure Conj,
+   is actually happening next week in the D.C. area.
+   And then there's a West Coast conference, Clojure West, in the U.S.,
+   and Euro Clojure in Europe.
+   So we've got three annual Clojure conferences right now.
+   Also, both Clojure West and Clojure Conj have had --
+   all the conference talks are videos that are posted on the web.
+   So some of the most famous storytelling about Clojure
+   is actually, say, Rich Hickey's talks at these events.
+   You can do a video search for Clojure Conj videos or Clojure West videos.
+   And there's a lot of really great resources there as well.
+   Yeah, and it's also really cool that the creator of the language stays so close to the community.
+   It's not like, "Oh, they're off in their ivory tower someplace."
+   No, Rich goes to these events and participates and makes himself available to teach.
+   That's amazing.
+   Well, I think it's important for --
+   there are languages that are designed by practitioners to do their own work.
+   And so one of the things I like about Ruby
+   and I like about Clojure
+   is that the community is led by people who are building Clojure because they're using it.
+   And it's not, "I'm building something for another kind of programmer."
+   There are some languages that are designed by a certain group of programmers
+   for another group of programmers.
+   It's not necessarily a bad thing,
+   but I think there's a lot of energy to be had
+   when you can all pull in the same direction
+   and people have overlap in their goals and objectives
+   and the way they're approaching problems.
+   Well, thank you very much for taking the time to sit down with me.
+   I really appreciate it.
+   It's my pleasure, Mike.
+   Thanks.
+   Okay, great. Excellent.
+   you
