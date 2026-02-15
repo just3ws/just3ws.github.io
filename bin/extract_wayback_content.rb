@@ -84,7 +84,9 @@ end
 options = {
   output: DEFAULT_OUTPUT_DIR.to_s,
   timeout: 30,
-  input_files: ["_data/resources.yml", "README.md"]
+  input_files: ["_data/resources.yml", "README.md"],
+  urls: [],
+  url_file: nil
 }
 
 OptionParser.new do |opts|
@@ -94,6 +96,8 @@ OptionParser.new do |opts|
   opts.on("--from FILES", "Comma-separated files to scan for Wayback URLs") do |v|
     options[:input_files] = v.split(",").map(&:strip).reject(&:empty?)
   end
+  opts.on("--url URL", "Explicit Wayback URL to extract (repeatable)") { |v| options[:urls] << v.strip }
+  opts.on("--url-file PATH", "Text file containing one Wayback URL per line") { |v| options[:url_file] = v }
 end.parse!
 
 output_dir = Pathname(options[:output]).expand_path
@@ -101,6 +105,16 @@ output_dir.mkpath
 
 scan_paths = options[:input_files].map { |p| Pathname(p).expand_path(ROOT).to_s }
 urls = discover_wayback_urls(scan_paths)
+urls.concat(options[:urls])
+if options[:url_file]
+  url_file_path = Pathname(options[:url_file]).expand_path(ROOT)
+  if url_file_path.exist?
+    urls.concat(url_file_path.read.lines.map(&:strip).reject(&:empty?))
+  else
+    warn "Warning: URL file not found: #{url_file_path}"
+  end
+end
+urls = urls.select { |u| u.match?(%r{\Ahttps?://web\.archive\.org/web/}) }.uniq.sort
 
 if urls.empty?
   warn "No Wayback URLs found in: #{options[:input_files].join(', ')}"

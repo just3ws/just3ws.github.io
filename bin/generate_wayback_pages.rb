@@ -35,21 +35,39 @@ def wrap_text(text, width: 100)
   lines.join("\n")
 end
 
+def provenance_note(source_url)
+  host = source_url.to_s.downcase
+  return nil unless host.include?("ugl.st")
+
+  "Provenance note: `ugl.st` had prior ownership periods unrelated to the User-Group List project. These snapshots are included because their archived content explicitly reflects the UGl.st user-group directory context."
+end
+
 options = {
   summary: DEFAULT_SUMMARY.to_s,
-  output: DEFAULT_OUTPUT.to_s
+  output: DEFAULT_OUTPUT.to_s,
+  base_url: "/docs/wayback/",
+  title: "Wayback Archives",
+  description: "Archived snapshots extracted from Wayback Machine links referenced in this repository.",
+  breadcrumb: "Wayback Archives"
 }
 
 OptionParser.new do |opts|
   opts.banner = "Usage: bin/generate_wayback_pages.rb [options]"
   opts.on("--summary PATH", "Path to tmp/wayback/summary.json") { |v| options[:summary] = v }
   opts.on("--output DIR", "Output docs directory (default: docs/wayback)") { |v| options[:output] = v }
+  opts.on("--base-url URL", "Published base URL for generated pages (default: /docs/wayback/)") { |v| options[:base_url] = v }
+  opts.on("--title TEXT", "Index title (default: Wayback Archives)") { |v| options[:title] = v }
+  opts.on("--description TEXT", "Index description/front matter description") { |v| options[:description] = v }
+  opts.on("--breadcrumb TEXT", "Index breadcrumb label") { |v| options[:breadcrumb] = v }
 end.parse!
 
 summary_path = Pathname(options[:summary]).expand_path
 output_dir = Pathname(options[:output]).expand_path
 pages_dir = output_dir.join("snapshots")
 pages_dir.mkpath
+base_url = options[:base_url].to_s
+base_url = "/#{base_url}" unless base_url.start_with?("/")
+base_url = "#{base_url}/" unless base_url.end_with?("/")
 
 unless summary_path.exist?
   warn "Missing summary file: #{summary_path}"
@@ -88,7 +106,7 @@ ok_records.each do |record|
   excerpt += "..." if extracted_text.length > excerpt.length
 
   page_path = pages_dir.join("#{page_slug}.md")
-  page_url = "/docs/wayback/snapshots/#{page_slug}/"
+  page_url = "#{base_url}snapshots/#{page_slug}/"
   readable_text = wrap_text(extracted_text)
 
   page = +""
@@ -105,6 +123,10 @@ ok_records.each do |record|
   page << "- Archived source: [#{archived_url}](#{archived_url})\n"
   page << "- Original URL: [#{source_url}](#{source_url})\n"
   page << "- Snapshot timestamp: #{archived_at ? archived_at.strftime("%Y-%m-%d %H:%M:%S UTC") : stamp}\n\n"
+  note = provenance_note(source_url)
+  if note
+    page << "> #{note}\n\n"
+  end
   page << "## Archive Snapshot\n\n"
   page << "<pre>\n#{CGI.escapeHTML(readable_text)}\n</pre>\n"
 
@@ -116,7 +138,8 @@ ok_records.each do |record|
     archived_url: archived_url,
     source_url: source_url,
     archived_at: archived_at,
-    excerpt: excerpt
+    excerpt: excerpt,
+    provenance_note: provenance_note(source_url)
   }
 end
 
@@ -126,14 +149,14 @@ index_rows.reverse!
 index = +""
 index << "---\n"
 index << "layout: minimal\n"
-index << "title: Wayback Archives\n"
-index << "description: Archived snapshots extracted from Wayback Machine links referenced in this repository.\n"
-index << "breadcrumb: Wayback Archives\n"
+index << "title: #{options[:title]}\n"
+index << "description: #{options[:description]}\n"
+index << "breadcrumb: #{options[:breadcrumb]}\n"
 index << "breadcrumb_parent_name: Docs\n"
 index << "breadcrumb_parent_url: /docs/\n"
 index << "---\n\n"
 index << "{% include breadcrumbs.html %}\n\n"
-index << "# Wayback Archives\n\n"
+index << "# #{options[:title]}\n\n"
 index << "Archive snapshots extracted from referenced Wayback Machine links and republished with attribution.\n\n"
 
 index_rows.each do |row|
@@ -142,6 +165,9 @@ index_rows.each do |row|
   index << "- Snapshot: #{date_label}\n"
   index << "- Original: [#{row[:source_url]}](#{row[:source_url]})\n"
   index << "- Wayback: [#{row[:archived_url]}](#{row[:archived_url]})\n\n"
+  if row[:provenance_note]
+    index << "> #{row[:provenance_note]}\n\n"
+  end
   index << "#{row[:excerpt]}\n\n"
 end
 

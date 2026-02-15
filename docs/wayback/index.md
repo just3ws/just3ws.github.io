@@ -13,6 +13,9 @@ breadcrumb_parent_url: /docs/
 
 Archive snapshots extracted from referenced Wayback Machine links and republished with attribution.
 
+For community-specific captures (UGtastic + UGl.st) with ownership-context notes, see:
+- [Wayback Community Archives](/docs/wayback/community/)
+
 ## [SCNA 2015](/docs/wayback/snapshots/20151101113454-http-scna-softwarecraftsmanship-org/)
 
 - Snapshot: 2015-11-01
@@ -84,4 +87,3 @@ Chicago, IL - October 15-16, 2010 Home Venue Speakers Schedule Sponsorship Softw
 - Wayback: [https://web.archive.org/web/20090626034401/https://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20090626034401/https://scna.softwarecraftsmanship.org/)
 
 brought to you by Obtiva and 8th Light Home Location Speakers Schedule Sponsorship Wednesday August 26, 2009 Filling up fast! Get your early bird special for only $99 before July 15! Why attend? Software Craftsmanship North America is planting a root in the industry as a forerunner to the Craftsmanship movement. SCNA is devoted to the education and developme...
-
