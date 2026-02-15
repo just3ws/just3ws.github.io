@@ -1,0 +1,57 @@
+---
+layout: "post"
+title: "JavaScript String.format() method."
+date: "2007-04-28"
+description: "A simple JavaScript String.format helper for tokenized string interpolation, originally published on WordPress in 2007."
+tags:
+  - wordpress
+  - republished
+  - wayback
+  - javascript
+  - code
+originally_published_on: "WordPress"
+original_url: "https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2007/04/28/javascript-stringformat-method/"
+original_published_at: "2007-04-28"
+archive_note: "Originally published on just3ws.wordpress.com. Republished from an archived Wayback snapshot."
+---
+
+<p>
+</p>
+<div class="pd-rating" id="pd_rating_holder_891237_post_258"></div>
+
+<p><br>
+A while back I worked on a pretty heavy duty JavaScript interface that required, as is typical in any UI, a lot of string manipulation.  I became tired of building strings with concatenation, they had a tendency to get unwieldy.  I wrote this simple string formatting utility for building strings similiar to C#.</p>
+<p>The best way to use it is to put it into an external JavaScript source file and reference it throughout the project.</p>
+<p>Although the method has only one defined argument it will accept any number of arguments.  If you provide more or less arguments than you define in your string they will not cause an error, they will be ignored.</p>
+<div style="font-family:Courier New;font-size:10pt;color:black;background:white;border:solid 1px black;overflow:auto;white-space:nowrap;padding:10px;">
+<p style="margin:0;"><span style="color:#4f4f4f;font-weight:bold;">String</span><span style="color:#000096;font-weight:bold;">.</span>format <span style="color:#000096;font-weight:bold;">=</span> function( text )</p>
+<p style="margin:0;">{</p>
+<p style="margin:0;">    <span style="color:green;">//check if there are two arguments in the arguments list</span></p>
+<p style="margin:0;">    <span style="color:#000096;font-weight:bold;">if</span> ( arguments<span style="color:#000096;font-weight:bold;">.</span>length <span style="color:#000096;font-weight:bold;">&lt;=</span> 1 )</p>
+<p style="margin:0;">    {</p>
+<p style="margin:0;">        <span style="color:green;">//if there are not 2 or more arguments there’s nothing to replace</span></p>
+<p style="margin:0;">        <span style="color:green;">//just return the original text</span></p>
+<p style="margin:0;">        <span style="color:#000096;font-weight:bold;">return</span> text;</p>
+<p style="margin:0;">    }</p>
+<p style="margin:0;">    <span style="color:green;">//decrement to move to the second argument in the array</span></p>
+<p style="margin:0;">    var tokenCount <span style="color:#000096;font-weight:bold;">=</span> arguments<span style="color:#000096;font-weight:bold;">.</span>length <span style="color:#000096;font-weight:bold;">-</span> 2;</p>
+<p style="margin:0;">    <span style="color:#000096;font-weight:bold;">for</span>( var token <span style="color:#000096;font-weight:bold;">=</span> 0; token <span style="color:#000096;font-weight:bold;">&lt;=</span> tokenCount; token<span style="color:#000096;font-weight:bold;">++</span> )</p>
+<p style="margin:0;">    {</p>
+<p style="margin:0;">        <span style="color:green;">//iterate through the tokens and replace their placeholders from the original text in order</span></p>
+<p style="margin:0;">        text <span style="color:#000096;font-weight:bold;">=</span> text<span style="color:#000096;font-weight:bold;">.</span>replace( <span style="color:#000096;font-weight:bold;">new</span> RegExp( <span style="color:blue;">“\\{“</span> <span style="color:#000096;font-weight:bold;">+</span> token <span style="color:#000096;font-weight:bold;">+</span> <span style="color:blue;">“\\}”</span>, <span style="color:blue;">“gi”</span> ),</p>
+<p style="margin:0;">                                                 arguments[ token <span style="color:#000096;font-weight:bold;">+</span> 1 ] );</p>
+<p style="margin:0;">    }</p>
+<p style="margin:0;">    <span style="color:#000096;font-weight:bold;">return</span> text;</p>
+<p style="margin:0;">};</p>
+</div>
+<p>You can test the method with these simple tests.</p>
+<div style="font-family:Courier New;font-size:10pt;color:black;background:white;border:solid 1px black;overflow:auto;white-space:nowrap;padding:10px;">
+<p style="margin:0;"><span style="color:green;">//simple tests</span></p>
+<p style="margin:0;">document<span style="color:#000096;font-weight:bold;">.</span>write( <span style="color:#4f4f4f;font-weight:bold;">String</span><span style="color:#000096;font-weight:bold;">.</span>format( <span style="color:blue;">“no tokens&lt;br /&gt;”</span> ) );</p>
+<p style="margin:0;">document<span style="color:#000096;font-weight:bold;">.</span>write( <span style="color:#4f4f4f;font-weight:bold;">String</span><span style="color:#000096;font-weight:bold;">.</span>format( <span style="color:blue;">“one token, no args ({0})&lt;br /&gt;”</span> ) );</p>
+<p style="margin:0;">document<span style="color:#000096;font-weight:bold;">.</span>write( <span style="color:#4f4f4f;font-weight:bold;">String</span><span style="color:#000096;font-weight:bold;">.</span>format( <span style="color:blue;">“one token, one args ({0})&lt;br /&gt;”</span>, <span style="color:blue;">“arg1″</span> ) );</p>
+<p style="margin:0;">document<span style="color:#000096;font-weight:bold;">.</span>write( <span style="color:#4f4f4f;font-weight:bold;">String</span><span style="color:#000096;font-weight:bold;">.</span>format( <span style="color:blue;">“one tokens, two args ({0})&lt;br /&gt;”</span>, <span style="color:blue;">“arg1″</span>, <span style="color:blue;">“arg2″</span> ) );</p>
+<p style="margin:0;">document<span style="color:#000096;font-weight:bold;">.</span>write( <span style="color:#4f4f4f;font-weight:bold;">String</span><span style="color:#000096;font-weight:bold;">.</span>format( <span style="color:blue;">“two tokens, two args ({0},{1})&lt;br /&gt;”</span>, <span style="color:blue;">“arg1″</span>, <span style="color:blue;">“arg2″</span> ) );</p>
+<p style="margin:0;">document<span style="color:#000096;font-weight:bold;">.</span>write( <span style="color:#4f4f4f;font-weight:bold;">String</span><span style="color:#000096;font-weight:bold;">.</span>format( <span style="color:blue;">“two tokens swapped, two args ({1},{0})&lt;br /&gt;”</span>, <span style="color:blue;">“arg1″</span>, <span style="color:blue;">“arg2″</span> ) );</p>
+<p style="margin:0;">document<span style="color:#000096;font-weight:bold;">.</span>write( <span style="color:#4f4f4f;font-weight:bold;">String</span><span style="color:#000096;font-weight:bold;">.</span>format( <span style="color:blue;">“four tokens interwoven, two args ({0},{1},{0},{1})&lt;br /&gt;”</span>, <span style="color:blue;">“arg1″</span>, <span style="color:blue;">“arg2″</span> ) );</p>
+</div>

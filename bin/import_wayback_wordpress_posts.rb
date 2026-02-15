@@ -91,6 +91,8 @@ end
 def extract_post(page_html, wayback_url)
   doc = Nokogiri::HTML(page_html)
   title = first_present(
+    doc.at_css("h2[id^='post-']")&.text,
+    doc.at_css("h2.post-title")&.text,
     doc.at_css(".post-header h1")&.text,
     doc.at_css("h1.entry-title")&.text,
     doc.at_css("h1")&.text,
@@ -99,6 +101,10 @@ def extract_post(page_html, wayback_url)
 
   author_line = first_present(doc.at_css(".post-header .author")&.text, doc.at_css(".entry-meta")&.text)
   date_text = author_line[/\bon\s+(.+)\z/i, 1].to_s.strip
+  date_text = first_present(
+    date_text,
+    doc.at_css(".meta .signature p:nth-of-type(2)")&.text
+  )
   date = parse_date(date_text)
   date ||= begin
     original = dewayback(wayback_url)
@@ -110,11 +116,15 @@ def extract_post(page_html, wayback_url)
   end
   date ||= Date.today
 
-  content_node = doc.at_css(".post .entry") || doc.at_css(".entry-content") || doc.at_css("article")
+  content_node =
+    doc.at_css(".post .entry") ||
+    doc.at_css(".entry-content") ||
+    doc.at_css("article") ||
+    doc.at_css("div.main")
   return nil if content_node.nil?
 
   working = Nokogiri::HTML.fragment(content_node.inner_html)
-  working.css("script,style,iframe,form,noscript,#comments,.comments,.comment-number,.commentlist,.navigation,.sharing,.robots-nocontent,.geo,.reply,.c-grav,.snap_nopreview").remove
+  working.css("script,style,iframe,form,noscript,#comments,.comments,.comment-number,.commentlist,.navigation,.sharing,.robots-nocontent,.geo,.reply,.c-grav,.snap_nopreview,.snap_preview,.pd-rating").remove
 
   hero_source = working.at_css("img")&.[]("src").to_s.strip
   tags = doc.css(".meta a[rel='category tag']").map { |a| a.text.to_s.strip }.reject(&:empty?)

@@ -11,11 +11,11 @@ breadcrumb_parent_url: /docs/wayback/
 
 # Wayback Blog Import Inventory
 
-- Generated: 2026-02-15 06:51:02 UTC
+- Generated: 2026-02-15 14:00:15 UTC
 - Manifest files: 10
-- Article URLs: 205
-- Imported: 190
-- Pending: 14
+- Article URLs: 204
+- Imported: 200
+- Pending: 3
 - Missing capture: 1
 - Archive source URLs (discovery targets): 30
 
@@ -30,7 +30,6 @@ breadcrumb_parent_url: /docs/wayback/
 
 | Status | Type | URL | Imported Post | Source Manifest |
 |---|---|---|---|---|
-| `pending` | `article` | https://web.archive.org/web/20100120151125/http://just3ws.wordpress.com/2008/08/04/in-other-words%E2%80%A6-is-the-answerin-other-words-violence-is-the-answer/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100120151125/http://just3ws.wordpress.com/2008/08/04/in-other-words-violence-is-the-answer/ | `_posts/2008-08-04-in-other-words-violence-is-the-answer.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100120151125/http://just3ws.wordpress.com/2008/08/04/in-other-words-violence-is-the-answer/#comments | `_posts/2008-08-04-in-other-words-violence-is-the-answer.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100120151125/http://just3ws.wordpress.com/2008/08/06/putting-the-twit-in-twitter/ | `_posts/2008-08-06-putting-the-twit-in-twitter.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
@@ -111,11 +110,11 @@ breadcrumb_parent_url: /docs/wayback/
 | `imported` | `article` | https://web.archive.org/web/20100120153957/http://just3ws.wordpress.com/2008/07/31/cool-tool-quick-sequence-diagram-editor/#comments | `_posts/2008-07-31-cool-tool-quick-sequence-diagram-editor.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100120154028/http://just3ws.wordpress.com/2008/11/18/msdn-developer-conference/ | `_posts/2008-11-18-msdn-developer-conference.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100120154028/http://just3ws.wordpress.com/2008/11/18/msdn-developer-conference/#comments | `_posts/2008-11-18-msdn-developer-conference.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2009/06/12/how-can-chicago-land-microsoft-developers-improve-their-community/#comment-206 |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2009/11/07/iowa-code-camp/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2009/11/07/string-formatting-in-javascript/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2010/01/03/skinning-your-asp-net-mvc-application-based-on-your-sub-domain/#comment-216 |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2010/01/10/structuremap-question-always-returning-the-last-registry-in-the-list/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2009/06/12/how-can-chicago-land-microsoft-developers-improve-their-community/#comment-206 | `_posts/2009-06-12-how-can-chicagoland-microsoft-developers-improve-their-community.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2009/11/07/iowa-code-camp/ | `_posts/2009-11-07-iowa-code-camp.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2009/11/07/string-formatting-in-javascript/ | `_posts/2009-11-07-string-formatting-in-javascript.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2010/01/03/skinning-your-asp-net-mvc-application-based-on-your-sub-domain/#comment-216 | `_posts/2010-01-03-skinning-your-asp-net-mvc-application-based-on-your-sub-domain.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2010/01/10/structuremap-question-always-returning-the-last-registry-in-the-list/ | `_posts/2010-01-10-updated-structuremap-question-always-returning-the-last-registry-in-the-list.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2010/01/11/coding-architects-senior-developer/ | `_posts/2010-01-11-coding-architects-senior-developer.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2010/01/11/coding-architects-senior-developer/#comment-207 | `_posts/2010-01-11-coding-architects-senior-developer.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2010/01/11/coding-architects-senior-developer/#comment-208 | `_posts/2010-01-11-coding-architects-senior-developer.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
@@ -160,17 +159,17 @@ breadcrumb_parent_url: /docs/wayback/
 | `imported` | `article` | https://web.archive.org/web/20100208045339/http://just3ws.wordpress.com/2010/02/01/february-challenge-very-improved-developer/#comment-244 | `_posts/2010-02-01-february-challenge-very-improved-developer.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100208045339/http://just3ws.wordpress.com/2010/02/01/february-challenge-very-improved-developer/#comment-246 | `_posts/2010-02-01-february-challenge-very-improved-developer.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100208045339/http://just3ws.wordpress.com/2010/02/08/henryka-zalewski-1952-08-10-to-2010-02-06/#respond | `_posts/2010-02-08-henryka-zalewski-1952-08-10-to-2010-02-06.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2007/04/28/javascript-stringformat-method/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2007/04/28/javascript-stringformat-method/ | `_posts/2007-04-28-javascript-string-format-method.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `pending` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2009/03/02/what-if-filtered-exception-handling-in-c/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2009/03/11/db4o-on-shared-hosting-love/#comment-252 | `_posts/2009-03-11-db40-on-shared-hosting-love.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2009/05/17/make-your-code-pretty-on-wordpress-com-with-syntaxhighlighter/ | `_posts/2009-05-17-make-your-code-pretty-on-wordpress-com-with-syntaxhighlighter.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2009/05/19/integrate-beyond-compare-3-into-your-tortoisesvn-merge-process-or-any-other-client/ | `_posts/2009-05-19-integrate-beyond-compare-3-into-your-tortoisesvn-merge-process-or-any-other-client.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2009/12/27/clean-aop-using-post-multicast-syntax/ | `_posts/2009-12-27-clean-aop-using-post-multicast-syntax.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `pending` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/01/working-with-sub-domain-urls-from-your-local-development-machine/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/03/skinning-your-asp-net-mvc-application-based-on-your-sub-domain/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/03/skinning-your-asp-net-mvc-application-based-on-your-sub-domain/#comment-264 |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/03/skinning-your-asp-net-mvc-application-based-on-your-sub-domain/#comment-265 |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
-| `pending` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/05/building-net-with-ruby/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/03/skinning-your-asp-net-mvc-application-based-on-your-sub-domain/ | `_posts/2010-01-03-skinning-your-asp-net-mvc-application-based-on-your-sub-domain.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/03/skinning-your-asp-net-mvc-application-based-on-your-sub-domain/#comment-264 | `_posts/2010-01-03-skinning-your-asp-net-mvc-application-based-on-your-sub-domain.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/03/skinning-your-asp-net-mvc-application-based-on-your-sub-domain/#comment-265 | `_posts/2010-01-03-skinning-your-asp-net-mvc-application-based-on-your-sub-domain.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
+| `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/05/building-net-with-ruby/ | `_posts/2010-01-05-building-net-with-ruby.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/15/playing-with-httpmodules-httpresponse-filters-and-streams-in-net/ | `_posts/2010-01-15-playing-with-httpmodules-httpresponse-filters-and-streams-in-net.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `pending` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/01/25/chicago-code-camp-site-in-progress/ |  | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
 | `imported` | `article` | https://web.archive.org/web/20100310221853/http://just3ws.wordpress.com/2010/02/01/biting-off-almost-more-than-you-can-chew/ | `_posts/2010-02-01-biting-off-almost-more-than-you-can-chew.html` | `docs/wayback/targets-personal-wordpress-posts-local.txt` |
