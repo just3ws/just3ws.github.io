@@ -1,0 +1,27 @@
+---
+layout: resume
+title: "Resume Position — Senior Software Developer — ActiveCampaign"
+description: "Engaged as a short-term senior contributor to address deep structural complexity in the core backend systems. Focused on improving testability, performance,…"
+permalink: /resume/positions/activecampaign/
+breadcrumb: "Senior Software Developer — ActiveCampaign"
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+</nav>
+
+<article>
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% assign position = site.data.resume.positions["activecampaign"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="activecampaign" link_title=false %}
+    {% endif %}
+  </section>
+</article>

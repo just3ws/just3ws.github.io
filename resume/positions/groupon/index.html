@@ -1,0 +1,27 @@
+---
+layout: resume
+title: "Resume Position — Engineering Learning & Development Business…"
+description: "Delivered fraud analysis, internal tooling, and a centralized taxonomy service across multiple stacks. Transitioned to leading efforts to rebuild and improve…"
+permalink: /resume/positions/groupon/
+breadcrumb: "Engineering Learning & Development Business Partner — Groupon"
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+</nav>
+
+<article>
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% assign position = site.data.resume.positions["groupon"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="groupon" link_title=false %}
+    {% endif %}
+  </section>
+</article>

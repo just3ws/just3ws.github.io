@@ -1,0 +1,27 @@
+---
+layout: resume
+title: "Resume Position — Software Developer — Riverpoint Group"
+description: "Built ASP.NET Web Forms Components widgets for a personal health monitoring website, focusing on reliable UI component delivery."
+permalink: /resume/positions/riverpoint/
+breadcrumb: "Software Developer — Riverpoint Group"
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+</nav>
+
+<article>
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% assign position = site.data.resume.positions["riverpoint"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="riverpoint" link_title=false %}
+    {% endif %}
+  </section>
+</article>

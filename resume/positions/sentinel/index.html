@@ -1,0 +1,27 @@
+---
+layout: resume
+title: "Resume Position — Application Analyst — Sentinel Technologies, Inc."
+description: "Contributed to software development for clients including International Reprographics Association, Kolcraft, Cook County, Tripplite, \"Meckler, Bulgar,…"
+permalink: /resume/positions/sentinel/
+breadcrumb: "Application Analyst — Sentinel Technologies, Inc."
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+</nav>
+
+<article>
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% assign position = site.data.resume.positions["sentinel"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="sentinel" link_title=false %}
+    {% endif %}
+  </section>
+</article>

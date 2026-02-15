@@ -1,0 +1,27 @@
+---
+layout: resume
+title: "Resume Position — Core Team Lead — Coderwall"
+description: "Re-launched Coderwall as an open-source project and led the community development efforts."
+permalink: /resume/positions/coderwall/
+breadcrumb: "Core Team Lead — Coderwall"
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+</nav>
+
+<article>
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% assign position = site.data.resume.positions["coderwall"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="coderwall" link_title=false %}
+    {% endif %}
+  </section>
+</article>

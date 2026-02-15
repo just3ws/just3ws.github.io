@@ -1,0 +1,27 @@
+---
+layout: resume
+title: "Resume Position — Senior Software Developer — Upcity"
+description: "Collaborated with a distributed team on an SOA architecture web application that helps small to mid-sized businesses improve their search engine and local…"
+permalink: /resume/positions/upcity/
+breadcrumb: "Senior Software Developer — Upcity"
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+</nav>
+
+<article>
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% assign position = site.data.resume.positions["upcity"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="upcity" link_title=false %}
+    {% endif %}
+  </section>
+</article>

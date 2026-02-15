@@ -1,0 +1,27 @@
+---
+layout: resume
+title: "Resume Position — Principal Developer — Business Decisions, Inc."
+description: "Owned primary development and support for all BDI systems. Partnered with the primary stakeholder on technical strategy and managed teams across multiple…"
+permalink: /resume/positions/bdi/
+breadcrumb: "Principal Developer — Business Decisions, Inc."
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+</nav>
+
+<article>
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% assign position = site.data.resume.positions["bdi"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="bdi" link_title=false %}
+    {% endif %}
+  </section>
+</article>

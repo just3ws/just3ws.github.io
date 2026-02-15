@@ -1,0 +1,39 @@
+<article class="position">
+  <header class="position-header">
+    <h3 class="position-title">
+      {% if include.link_title %}
+      <a href="/resume/positions/{{ include.position_id }}/">{{ include.position.title }}</a>
+      {% else %}
+      <span>{{ include.position.title }}</span>
+      {% endif %}
+      <span class="position-company">
+        — <span>{{ include.position.company.name }}</span>
+      </span>
+    </h3>
+    <p class="position-meta">
+      <span class="position-dates">
+        <time>{{ include.position.start_date }}</time> –
+        <time>{{ include.position.end_date | default: "Present" }}</time>
+      </span>
+      {% if include.position.company.location %}
+      | <span>{{ include.position.company.location }}</span>
+      {% endif %}
+    </p>
+  </header>
+
+  {% if include.position.description %}
+  <p>{{ include.position.description }}</p>
+  {% endif %}
+
+  {% if include.position.achievements.highlights %}
+  <ul>
+    {% for achievement in include.position.achievements.highlights %}
+    <li>{{ achievement }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if include.position.skills %}
+  <p><strong>Skills:</strong> {{ include.position.skills | join: ", " }}</p>
+  {% endif %}
+</article>

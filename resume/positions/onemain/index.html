@@ -1,0 +1,27 @@
+---
+layout: resume
+title: "Resume Position — Associate Director, Staff Engineer — OneMain…"
+description: "Owned lane-level architecture for the Acquisitions platform, spanning customer application flows, partner integrations, and a large legacy application estate…"
+permalink: /resume/positions/onemain/
+breadcrumb: "Associate Director, Staff Engineer — OneMain Financial"
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+</nav>
+
+<article>
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% assign position = site.data.resume.positions["onemain"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="onemain" link_title=false %}
+    {% endif %}
+  </section>
+</article>

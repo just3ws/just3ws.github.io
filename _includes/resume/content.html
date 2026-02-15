@@ -19,37 +19,8 @@
   </noscript>
 </nav>
 
-{% assign profile = site.data.resume.profile %}
 <article>
-  <header class="resume-header">
-    <h1>{{ profile.name }}</h1>
-    <p class="title">{{ profile.title }}</p>
-    <ul class="contact-info">
-      <li><a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a></li>
-      <li><a href="tel:{{ profile.contact.phone_tel }}">{{ profile.contact.phone }}</a></li>
-      <li><a href="{{ profile.contact.website.url }}">{{ profile.contact.website.display }}</a></li>
-      <li>
-        <a href="{{ profile.contact.linkedin.url }}" aria-label="LinkedIn profile" title="LinkedIn profile">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" role="img" focusable="false">
-              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.33V9h3.42v1.56h.05c.48-.9 1.66-1.86 3.41-1.86 3.65 0 4.32 2.4 4.32 5.52v6.23zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
-            </svg>
-          </span>
-          LinkedIn
-        </a>
-      </li>
-      <li>
-        <a href="{{ profile.contact.github.url }}" aria-label="GitHub profile" title="GitHub profile">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" role="img" focusable="false">
-              <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.54 2.36 1.1 2.94.84.09-.66.35-1.1.63-1.36-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
-            </svg>
-          </span>
-          GitHub
-        </a>
-      </li>
-    </ul>
-  </header>
+  {% include resume/profile-header.html %}
 
   {% assign summary = site.data.resume.summary %}
   <section id="summary">
@@ -62,41 +33,7 @@
     {% for item in site.data.resume.timeline.items %}
     {% assign position = site.data.resume.positions[item] %}
     {% if position %}
-    <article class="position">
-      <header class="position-header">
-        <h3 class="position-title">
-          <span>{{ position.title }}</span>
-          <span class="position-company">
-            — <span>{{ position.company.name }}</span>
-          </span>
-        </h3>
-        <p class="position-meta">
-          <span class="position-dates">
-            <time>{{ position.start_date }}</time> –
-            <time>{{ position.end_date | default: "Present" }}</time>
-          </span>
-          {% if position.company.location %}
-          | <span>{{ position.company.location }}</span>
-          {% endif %}
-        </p>
-      </header>
-
-      {% if position.description %}
-      <p>{{ position.description }}</p>
-      {% endif %}
-
-      {% if position.achievements.highlights %}
-      <ul>
-        {% for achievement in position.achievements.highlights %}
-        <li>{{ achievement }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-
-      {% if position.skills %}
-      <p><strong>Skills:</strong> {{ position.skills | join: ", " }}</p>
-      {% endif %}
-    </article>
+    {% include resume/position-entry.html position=position position_id=item link_title=true %}
     {% endif %}
     {% endfor %}
 
