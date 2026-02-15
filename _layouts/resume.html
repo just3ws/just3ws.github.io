@@ -5,7 +5,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% include head/base.html theme_stylesheet="/assets/css/themes/resume.css" %}
+  {% include head/critical-resume.html %}
+  {% include head/base.html theme_stylesheet="/assets/css/themes/resume.css" defer_stylesheets=true %}
   {% include head/analytics.html %}
   {% if page.person_schema %}
   {% include json-ld.html %}

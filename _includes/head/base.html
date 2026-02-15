@@ -38,8 +38,18 @@
 <meta name="twitter:title" content="{{ seo_title }}">
 <meta name="twitter:description" content="{{ seo_description }}">
 <link rel="shortcut icon" href="/favicon.ico">
+{% assign defer_stylesheets = include.defer_stylesheets %}
+{% if defer_stylesheets %}
+<link rel="preload" href="/assets/css/core.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{ include.theme_stylesheet }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="/assets/css/core.css">
+  <link rel="stylesheet" href="{{ include.theme_stylesheet }}">
+</noscript>
+{% else %}
 <link rel="stylesheet" href="/assets/css/core.css">
 <link rel="stylesheet" href="{{ include.theme_stylesheet }}">
+{% endif %}
 {% if page.stylesheets and page.stylesheets.size > 0 %}
   {% for stylesheet in page.stylesheets %}
 <link rel="stylesheet" href="{{ stylesheet }}">
