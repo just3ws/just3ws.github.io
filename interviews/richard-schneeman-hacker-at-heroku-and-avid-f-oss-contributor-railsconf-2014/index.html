@@ -21,7 +21,16 @@ breadcrumb_parent_url: /interviews/
       <div class="video-subtitle">Topic: {{ interview.topic }}</div>
     {% endif %}
     <div class="video-meta">
-      {% if interview.conference %}Conference: {{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}{% endif %}
+      {% if interview.conference %}
+        Conference:
+        {% assign conference_candidates = site.data.interview_conferences.conferences | where: "conference", interview.conference %}
+        {% assign conference_entry = conference_candidates | where: "year", interview.conference_year | first %}
+        {% if conference_entry %}
+          <a href="/interviews/conferences/{{ conference_entry.slug }}/">{{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}</a>
+        {% else %}
+          {{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}
+        {% endif %}
+      {% endif %}
       {% if interview.community %}{% if interview.conference %} · {% endif %}Community: {{ interview.community }}{% endif %}
     </div>
 
