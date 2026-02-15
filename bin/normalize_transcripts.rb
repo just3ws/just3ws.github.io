@@ -9,13 +9,18 @@ ROOT = Pathname(__dir__).join("..").expand_path
 TRANSCRIPTS_DIR = ROOT.join("_data", "transcripts")
 
 TEXT_NORMALIZATION_RULES = [
+  [/\b(?:u|y|e)[a-z-]{0,10}tastic\.com\b/i, "ugtastic.com"],
+  [/\b(?:u|y|e)[a-z-]{0,10}tastic\b/i, "UGtastic"],
+  [/\bhugh[ -]+tastic\b/i, "UGtastic"],
+  [/\bu[ -]?task\b/i, "UGtastic"],
   [/\bug[\s._-]*tastic\b/i, "UGtastic"],
   [/\b(?:you|yu)g[\s._-]*tastic\b/i, "UGtastic"],
   [/\bug[\s._-]*l[\s._-]*st\b/i, "UGl.st"],
   [/\bcraftmanship\b/i, "craftsmanship"],
   [/\bsoft[ -]?ware craftsmanship\b/i, "Software craftsmanship"],
   [/\bchipy\b/i, "ChiPy"],
-  [/\bscna\b/i, "SCNA"]
+  [/\bscna\b/i, "SCNA"],
+  [/\bUGtastic\.com\b/, "ugtastic.com"]
 ].freeze
 
 def clean_transcript_text(text)
