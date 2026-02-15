@@ -92,22 +92,30 @@ rows = assets.map do |asset|
       end
 
     community = normalize(interview["community"])
-    ratings["community"] =
-      if community.empty?
-        status_entry("missing", 0, "linked interview missing community")
-      elsif community == "General"
-        status_entry("partial", 1, "community is General")
-      else
-        status_entry("complete", 2, "community set")
-      end
-
     conference = normalize(interview["conference"])
     conference_year = interview["conference_year"]
+    has_conference = !conference.empty? && !conference_year.nil?
+    has_general_community = community == "General"
+    has_specific_community = !community.empty? && !has_general_community
+
+    ratings["community"] =
+      if has_specific_community
+        status_entry("complete", 2, "community set")
+      elsif has_general_community
+        status_entry("complete", 2, "community set to General")
+      elsif has_conference
+        status_entry("n/a", nil, "conference interview; community optional")
+      else
+        status_entry("missing", 0, "linked interview missing community")
+      end
+
     ratings["conference"] =
-      if !conference.empty? && !conference_year.nil?
+      if has_conference
         status_entry("complete", 2, "conference and year set")
       elsif !conference.empty? || !conference_year.nil?
         status_entry("partial", 1, "conference or year partially set")
+      elsif has_specific_community || has_general_community
+        status_entry("n/a", nil, "community/general interview; conference optional")
       else
         status_entry("missing", 0, "conference/year missing")
       end
