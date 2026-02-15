@@ -1,0 +1,26 @@
+---
+layout: "post"
+title: "If yer code ain't tested, the waterfallists win."
+date: "2007-07-19"
+description: "Just reporting on untested code is nothin'. How about a tool that *removes* untested code.Check out the oh-so-provocatively named coverage tool, Guantanamo.When Guantanamo detects "
+tags:
+  - blogger
+  - frogsbrain
+  - republished
+  - wayback
+originally_published_on: "Blogger"
+original_url: "https://web.archive.org/web/20231125010022/https://frogsbrain.blogspot.com/2007/07/if-yer-code-aint-tested-waterfallists.html"
+original_published_at: "2007-07-19"
+archive_note: "Originally published on frogsbrain.blogspot.com. Republished from local Wayback snapshot exports."
+---
+
+<p>Just reporting on untested code is nothin'.  How about a tool that *removes* untested code.<br><br>Check out the oh-so-provocatively named coverage tool, <a href="http://docs.codehaus.org/x/nC0" target="_blank" rel="noopener noreferrer">Guantanamo</a>.<br><br>When Guantanamo detects untested code it will actually remove it from a working copy of the codebase.  C'mon, if you want to move from the foo-foo world of XP and into the hardcore world Mountain Dew level of extreme it should remove the code from source control.  Currently the tool is only available in the Java world, but with most of the XP tools stack (ant, junit, cruisecontrol, jcover) will eventually find it's way into the C# world.<br><br>If you're wondering about the quality of your unit tests, and are in the Java world, check out <a href="http://docs.codehaus.org/x/oCE" target="_blank" rel="noopener noreferrer">Ashcroft</a>.  The same guy who gave us Guantanamo also created this tool for analyzing your unit tests.  By checking your tests against a set of guidelines your testing practices become more focused and streamlined.  <br><br>They are building a 10 Commandments of Unit Tests, here's a direct quote from their site.<br></p>
+<blockquote><ol>
+<li>I am the class being tested. Thou shalt not test any other class but me.</li>
+<li>[Thou shalt write isolated tests]</li>
+<li>[Thou shalt not access files during unit tests]</li>
+<li>[Thou shalt not write two tests which depend upon each other]</li>
+</ol></blockquote>
+<br>This is good stuff, and I'm looking forward to more of these kinds of tools in the .NET world.  Sure we have VS.NET and it's a great tool, but it seems like everything we have is clones of stuff from the Java universe.  Are there any tools really unique to .NET that didn't originate as a direct reimplementation of a Java tool?<p></p>
+
+<div style="clear: both;"></div>

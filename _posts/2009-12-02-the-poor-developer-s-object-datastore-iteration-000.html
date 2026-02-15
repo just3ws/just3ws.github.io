@@ -1,0 +1,45 @@
+---
+layout: "post"
+title: "The Poor Developer’s Object DataStore: Iteration 000"
+date: "2009-12-02"
+description: "This is part zero of a multi-part series. Jump to The Poor Developer’s Object DataStore: Iteration 001 for the first code drop. What is an object datastore? For an object-oriented "
+tags:
+  - wordpress
+  - republished
+  - wayback
+  - net
+  - alt-net
+  - database
+  - c
+  - dotnet
+  - oodbms
+  - xquery
+  - xpath
+  - serialization
+  - mssql
+  - object-database
+  - objects
+  - csharp
+  - rdbms
+  - relational-database
+  - xml-sql-server
+  - linq
+  - linq-to-sql
+  - linq-to-xml
+  - l2s
+originally_published_on: "WordPress"
+original_url: "https://web.archive.org/web/20100120151145/http://just3ws.wordpress.com/2009/12/02/the-poor-developers-object-datastore-iteration-000/"
+original_published_at: "2009-12-02"
+archive_note: "Originally published on just3ws.wordpress.com. Republished from local Wayback snapshot exports."
+---
+
+<div class="snap_preview">
+<p><b>This is part zero of a multi-part series. Jump to <a href="http://wp.me/pijpG-7f" rel="noopener noreferrer" target="_blank">The Poor Developer’s Object DataStore: Iteration 001</a> for the first code drop.</b></p>
+<p>What is an object datastore? For an object-oriented developer it’s as easy to use as a typed collection. No need to build and maintain a complex relational model to simulate the native object functionality. Just create your object, modify it, store it, query for it and delete it. All the complicated work is handled by the object database engine. But let’s consider a situation where you may want to “roll your own” light-weight object datastore. And depending on your situation, it might make sense. <i>CAVEAT: Rule #1 of Software Engineering: If You Can Use A Proven Product Don’t Write Your Own. They Did It First And They Did It Better.</i> But for the sake of exercise and trying something new let’s just ignore that rule and keep on going.</p>
+<p>Consider the following scenario. You’re a .NET developer and you’ve been tasked with creating an archiving system. The system needs to take a snapshot of the data and store it to be queried against and reported on later.</p>
+<p>How would you implement this? Would you copy the data structure you’re looking to archive and pull the data state into there? How do you manage foreign keys? Do you squish the data into a single table? Do you recreate all the tables with annotations to identify the archived records? Now, it’s a few months later and the original data structure has changed. How do you handle that change in your archiving?</p>
+<p>Do you really want to recreate that complex data structure and try to wrangle the data into it and manage it over time? No, neither did I and I think there is a better way. Let’s consider a new way: an <strong>object datastore</strong>.</p>
+<p>Let’s get this out of the way. Object databases aren’t just for ninjas although they are often wielded by ninjas. An object database is exactly what it sounds like, a <em>database</em> for your <em>objects</em>. No sql, no tables, no object-relational impedance. Just objects persisted similar to how a relational database allows you to store and persist tabular information offline without all the grief of mapping your object-oriented structure onto a relational model. Instead you create your objects and using the database’s API you can save and query for your data without worrying about sql or any of that mess. My personal favorite OODBMS (object-oriented database management system) is <a href="http://developer.db4o.com/Resources/" rel="noopener noreferrer" target="_blank">db4o</a>. I recommend downloading and playing around with it to get a feel for how simple it is to use. (If you want to learn more about various types of *DBMS check out the great presentation by Ben Scoffield at WindyCityRails 2009 – <a href="http://windycityrails.org/videos#3" rel="noopener noreferrer" target="_blank">“Comics” is Hard</a>.)</p>
+<p>There’s one catch to using db4o in a closed source or proprietary project. You can either pay to license the product. It’s not too expensive for bringing into a medium sized project. Or you can release your project under GPL. For the project I was working on, neither option was palatable for our client. Also, I didn’t want to introduce yet another external dependency that our client would have to manage. Instead I created the simplest possible implementation of an object datastore I could using only native .NET and Microsoft Sql Server functionality.</p>
+<p>Continued in <a href="http://wp.me/pijpG-7f" rel="noopener noreferrer" target="_blank">The Poor Developer’s Object DataStore: Iteration 001</a>.</p>
+</div>

@@ -1,0 +1,61 @@
+---
+layout: "post"
+title: "START making DOS follow your CMD"
+date: "2010-03-25"
+description: "I’ll be the first to say, I have *major* terminal envy working with so many Linux and Mac developers. Not just the shell, but pretty much everything about the c"
+tags:
+  - wordpress
+  - republished
+  - wayback
+  - craftsmanship
+  - tool-mastery
+originally_published_on: "WordPress"
+original_url: "https://web.archive.org/web/20100722003758/http://just3ws.wordpress.com/2010/03/25/start-making-dos-follow-your-cmd/"
+original_published_at: "2010-03-25"
+archive_note: "Originally published on just3ws.wordpress.com. Republished from an archived Wayback snapshot."
+---
+
+<div class="snap_preview">
+<div class="pd-rating" id="pd_rating_holder_891237_post_769"></div>
+<p></p>
+<p>I’ll be the first to say, I have *major* terminal envy working with so many Linux and Mac developers. Not just the shell, but pretty much everything about the command line experience is better on *Nix. But don’t count the Windows console completely out just yet. Let’s look at a few commands that can make your life much better in the world of Command.com.</p>
+<h3>
+<code>START</code> it up</h3>
+<p>One of the biggest hurdles to going completely command-line on Windows is having to grab the mouse and click to open a new command prompt when you’re working, reseting all your environment variables and re-navigating to your working directory. Or if you just want to execute an application that will block on the command line during execution. Blech. But those are easy obstacles to surmount using the START and CMD commands.</p>
+<ul>
+<li>
+        Old Way (at least for me)
+<ol>
+<li><code>&lt;Win&gt;</code></li>
+<li>type <code>CMD</code>
+</li>
+<li><code>&lt;ENTER&gt;</code></li>
+<li>&gt; <code>cd c:\Where\Ever\I\Was\Just\Working</code>
+</li>
+<li>&gt; <code>set PATH=c:\My\Libs;%PATH%</code>
+</li>
+<li>&gt; <code>MyBlockingApplication.exe /arg1 /arg2</code>
+</li>
+</ol>
+</li>
+</ul>
+<p>Ugh. Now multiply that by a hundred times a day. Despite having scripted out the environment configuration there still was a lot of context change, reaching for a mouse and clicking around. But using the <code>START</code> command I can save a lot of that mess.</p>
+<ul>
+<li>
+        New Way
+<ol>
+<li>already in a command prompt with my PATH and in the working directory</li>
+<li>&gt; <code>START MyBlockingApplication.exe /arg1 /arg2</code>
+</li>
+</ol>
+</li>
+</ul>
+<p>So what did that do? <code>START</code> opens up a brand new command prompt, keeps the environment settings and working directory from the opener, then executes the statement passed to it. Very handy. You can even chain commands together to get some extra fun.</p>
+<p>A more realistic example that I use for a good chunk of my day to day work is to start up the <code>gem server</code> to read some documentation. I don’t want to block my current command line, and I don’t want to go through those multiple steps just to start up a new command prompt.</p>
+<p>&gt; <code>START /MIN /LOW gem server &amp; chrome http://localhost:8808</code></p>
+<p>It’s not as bad as it may seem. All I’ve done there is start up a new command prompt, running minimized with low priority. I told the command prompt to run the gem server and then start chrome for the appropriate url. The <code>&amp;</code> symbol is used to chain together multiple commands and isn’t particular to <code>START</code>.</p>
+<p>Now that you can start and execute command line programs in a separate window without blocking your session it’s a simple matter to open up multiple command prompts for you to work in as well.</p>
+<p>&gt; <code>START CMD</code></p>
+<p>This will bring up a brand new command window, all setup with your current working environment and ready for you to crank away.</p>
+		
+</div>

@@ -1,0 +1,30 @@
+---
+layout: "post"
+title: "Rant on building strings in C#"
+date: "2009-03-18"
+description: "Okay, I’ve inherited a codebase with no shortage of embedded strings, but there is one thing driving me batty. string strSomething = \"The Hungarian Notat\" + \"ion is bad enough.\r\n"
+tags:
+  - wordpress
+  - republished
+  - wayback
+  - c
+originally_published_on: "WordPress"
+original_url: "https://web.archive.org/web/20100120151647/http://just3ws.wordpress.com/2009/03/18/rant-on-building-strings-in-c/"
+original_published_at: "2009-03-18"
+archive_note: "Originally published on just3ws.wordpress.com. Republished from local Wayback snapshot exports."
+---
+
+<div class="snap_preview">
+<p>Okay, I’ve inherited a codebase with no shortage of embedded strings, but there is one thing driving me batty.</p>
+<pre class="brush: csharp;">string strSomething = "The Hungarian Notat" +
+                      "ion is bad enough.\r\n " +
+                      "but building the string" +
+                      " like this is terrible" +
+                      " and annoying to look at.";
+
+string something = @"The Hungarian Notation has been fixed.
+And the embedded string is less terrible and slightly less annoying to look at.";
+</pre>
+<p>It’s really just a readability thing, I don’t think it affects performance one iota. But looking at it is like walking with a pebble in your shoe. Annoying and it slows you down.</p>
+<p>PS. I noticed the the source code highlighter picks out keywords everywhere. It’s just a hiccup in the formatter nothing to do with the actual code snippet.</p>
+</div>

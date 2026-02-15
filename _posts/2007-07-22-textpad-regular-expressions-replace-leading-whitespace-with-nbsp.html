@@ -1,0 +1,19 @@
+---
+layout: "post"
+title: "TextPad Regular Expressions: Replace Leading Whitespace with '&nbsp;'"
+date: "2007-07-22"
+description: "TextPad is my text-editor of choice. It's simple, fast and lightweight. Plus it supports regular expressions and wildcard searches.When preparing a post for upload onto the site I "
+tags:
+  - blogger
+  - frogsbrain
+  - republished
+  - wayback
+originally_published_on: "Blogger"
+original_url: "https://web.archive.org/web/20231125010022/https://frogsbrain.blogspot.com/2007/07/textpad-regular-expressions-replace.html"
+original_published_at: "2007-07-22"
+archive_note: "Originally published on frogsbrain.blogspot.com. Republished from local Wayback snapshot exports."
+---
+
+<p><a href="http://www.textpad.com/" target="_blank" rel="noopener noreferrer">TextPad</a> is my text-editor of choice.  It's simple, fast and lightweight.  Plus it supports regular expressions and wildcard searches.<br><br>When preparing a post for upload onto the site I often need to replace the leading whitespace with HTML encoded whitespace.  This replacement will have to be run for leading whitespace character you wish to replace, but don't worry TextPad will let you know when there are no more replacements to be made.<br><br>Inside the TextPad Replace dialog ... <i>(Don't copy the quote marks!)</i><br><br><b>Find what:  "<code>^\(\(&amp;nbsp\;\)*\)[[:space:]]</code>"</b><br><br><b>Replace with:  "<code>\1\&amp;nbsp;</code>"</b><br><br>To restore the whitespaces use the follow expression.<br><br><b>Find what:  "<code>^\(\([[:space:]]\)*\)&amp;nbsp\;</code>"</b><br><br><b>Replace with:  "<code>\1 </code>"</b> &lt;-- Notice that there is a single space character after the \1.</p>
+
+<div style="clear: both;"></div>

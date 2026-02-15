@@ -114,6 +114,62 @@ def dedupe_platforms_by_host!(asset)
   asset["platforms"] = deduped
 end
 
+def platform_names(asset)
+  Array(asset["platforms"]).map { |platform| normalize(platform["platform"]).downcase }.reject(&:empty?).uniq
+end
+
+def strict_duration_match?(asset_a, asset_b)
+  duration_a = asset_duration_seconds(asset_a)
+  duration_b = asset_duration_seconds(asset_b)
+  return false if duration_a.nil? || duration_b.nil?
+
+  (duration_a - duration_b).abs <= MAX_DURATION_DELTA_SECONDS
+end
+
+def merge_records!(winner_interview:, winner_asset:, loser_interview:, loser_asset:, interviews:, assets:, metrics:)
+  existing_fingerprints = {}
+  Array(winner_asset["platforms"]).each do |platform|
+    existing_fingerprints[platform_fingerprint(platform)] = true
+  end
+
+  Array(loser_asset["platforms"]).each do |platform|
+    fingerprint = platform_fingerprint(platform)
+    next if existing_fingerprints[fingerprint]
+
+    winner_asset["platforms"] ||= []
+    winner_asset["platforms"] << platform
+    existing_fingerprints[fingerprint] = true
+    metrics[:platforms_appended] += 1
+  end
+
+  dedupe_platforms_by_host!(winner_asset)
+
+  %w[source published_date thumbnail thumbnail_local duration_seconds duration_minutes description topic title primary_platform].each do |field|
+    metrics[:winner_asset_fields_filled] += 1 if maybe_fill!(winner_asset, field, loser_asset[field])
+  end
+
+  winner_asset["tags"] = merge_tags(winner_asset["tags"], loser_asset["tags"])
+  winner_asset["transcript_id"] = loser_asset["transcript_id"] if !present?(winner_asset["transcript_id"]) && present?(loser_asset["transcript_id"])
+
+  %w[topic conference conference_year community recorded_date interviewer].each do |field|
+    metrics[:winner_interview_fields_filled] += 1 if maybe_fill!(winner_interview, field, loser_interview[field])
+  end
+  winner_interview["tags"] = merge_tags(winner_interview["tags"], loser_interview["tags"])
+
+  interviews.each do |interview|
+    next unless interview["video_asset_id"] == loser_asset["id"]
+
+    interview["video_asset_id"] = winner_asset["id"]
+    metrics[:interview_links_repointed] += 1
+  end
+
+  assets.each do |asset|
+    next unless asset["interview_id"] == loser_interview["id"]
+
+    asset["interview_id"] = winner_interview["id"]
+  end
+end
+
 def merge_tags(winner_tags, loser_tags)
   merged = []
   Array(winner_tags).each do |tag|
@@ -192,6 +248,10 @@ metrics = {
   skipped_no_winner: 0,
   skipped_ambiguous: 0,
   skipped_duration_mismatch: 0,
+  strict_candidates: 0,
+  strict_merged: 0,
+  strict_skipped_no_platform_pair: 0,
+  strict_skipped_duration: 0,
   platforms_appended: 0,
   loser_assets_removed: 0,
   loser_interviews_removed: 0,
@@ -232,47 +292,15 @@ interviews.each do |loser_interview|
     next
   end
 
-  existing_fingerprints = {}
-  Array(winner_asset["platforms"]).each do |platform|
-    existing_fingerprints[platform_fingerprint(platform)] = true
-  end
-
-  Array(loser_asset["platforms"]).each do |platform|
-    fingerprint = platform_fingerprint(platform)
-    next if existing_fingerprints[fingerprint]
-
-    winner_asset["platforms"] ||= []
-    winner_asset["platforms"] << platform
-    existing_fingerprints[fingerprint] = true
-    metrics[:platforms_appended] += 1
-  end
-
-  dedupe_platforms_by_host!(winner_asset)
-
-  %w[source published_date thumbnail thumbnail_local duration_seconds duration_minutes description topic title primary_platform].each do |field|
-    metrics[:winner_asset_fields_filled] += 1 if maybe_fill!(winner_asset, field, loser_asset[field])
-  end
-
-  winner_asset["tags"] = merge_tags(winner_asset["tags"], loser_asset["tags"])
-  winner_asset["transcript_id"] = loser_asset["transcript_id"] if !present?(winner_asset["transcript_id"]) && present?(loser_asset["transcript_id"])
-
-  %w[topic conference conference_year community recorded_date interviewer].each do |field|
-    metrics[:winner_interview_fields_filled] += 1 if maybe_fill!(winner_interview, field, loser_interview[field])
-  end
-  winner_interview["tags"] = merge_tags(winner_interview["tags"], loser_interview["tags"])
-
-  interviews.each do |interview|
-    next unless interview["video_asset_id"] == loser_asset["id"]
-
-    interview["video_asset_id"] = winner_asset["id"]
-    metrics[:interview_links_repointed] += 1
-  end
-
-  assets.each do |asset|
-    next unless asset["interview_id"] == loser_interview["id"]
-
-    asset["interview_id"] = winner_interview["id"]
-  end
+  merge_records!(
+    winner_interview: winner_interview,
+    winner_asset: winner_asset,
+    loser_interview: loser_interview,
+    loser_asset: loser_asset,
+    interviews: interviews,
+    assets: assets,
+    metrics: metrics
+  )
 
   loser_asset_ids << loser_asset["id"]
   loser_interview_ids << loser_interview["id"]
@@ -280,6 +308,112 @@ interviews.each do |loser_interview|
 
   if options[:verbose]
     puts "merge: loser=#{loser_interview['id']} (#{loser_asset['id']}) -> winner=#{winner_interview['id']} (#{winner_asset['id']})"
+  end
+end
+
+# Strict second pass: same person + same conference/year + strict duration match + cross-published pair.
+pair_seen = {}
+interview_groups = Hash.new { |h, k| h[k] = [] }
+interviews.each do |interview|
+  asset = asset_by_id[interview["video_asset_id"]]
+  next unless asset
+
+  names = interviewee_key(interview)
+  conf = normalize(interview["conference"])
+  year = normalize(interview["conference_year"])
+  next if names.empty? || conf.empty? || year.empty?
+
+  interview_groups[[names, conf, year]] << { interview: interview, asset: asset }
+end
+
+interview_groups.each_value do |group|
+  next unless group.size > 1
+
+  group.combination(2) do |left, right|
+    left_interview = left[:interview]
+    right_interview = right[:interview]
+    left_asset = left[:asset]
+    right_asset = right[:asset]
+
+    next if loser_interview_ids.include?(left_interview["id"]) || loser_interview_ids.include?(right_interview["id"])
+    next if loser_asset_ids.include?(left_asset["id"]) || loser_asset_ids.include?(right_asset["id"])
+
+    pair_key = [normalize(left_interview["id"]), normalize(right_interview["id"])].sort.join("|")
+    next if pair_seen[pair_key]
+    pair_seen[pair_key] = true
+
+    metrics[:strict_candidates] += 1
+
+    left_platforms = platform_names(left_asset)
+    right_platforms = platform_names(right_asset)
+    unless (left_platforms.include?("youtube") && right_platforms.include?("vimeo")) ||
+           (left_platforms.include?("vimeo") && right_platforms.include?("youtube"))
+      metrics[:strict_skipped_no_platform_pair] += 1
+      next
+    end
+
+    unless strict_duration_match?(left_asset, right_asset)
+      metrics[:strict_skipped_duration] += 1
+      next
+    end
+
+    if present?(left_asset["transcript_id"]) && !present?(right_asset["transcript_id"])
+      winner_interview = left_interview
+      winner_asset = left_asset
+      loser_interview = right_interview
+      loser_asset = right_asset
+    elsif present?(right_asset["transcript_id"]) && !present?(left_asset["transcript_id"])
+      winner_interview = right_interview
+      winner_asset = right_asset
+      loser_interview = left_interview
+      loser_asset = left_asset
+    else
+      left_score = [
+        normalize(left_interview["id"]).start_with?("interview-with-") ? 1 : 0,
+        present?(left_asset["description"]) ? 0 : 1,
+        present?(left_asset["topic"]) ? 0 : 1,
+        -Array(left_asset["platforms"]).size,
+        normalize(left_interview["id"])
+      ]
+      right_score = [
+        normalize(right_interview["id"]).start_with?("interview-with-") ? 1 : 0,
+        present?(right_asset["description"]) ? 0 : 1,
+        present?(right_asset["topic"]) ? 0 : 1,
+        -Array(right_asset["platforms"]).size,
+        normalize(right_interview["id"])
+      ]
+
+      if left_score <= right_score
+        winner_interview = left_interview
+        winner_asset = left_asset
+        loser_interview = right_interview
+        loser_asset = right_asset
+      else
+        winner_interview = right_interview
+        winner_asset = right_asset
+        loser_interview = left_interview
+        loser_asset = left_asset
+      end
+    end
+
+    merge_records!(
+      winner_interview: winner_interview,
+      winner_asset: winner_asset,
+      loser_interview: loser_interview,
+      loser_asset: loser_asset,
+      interviews: interviews,
+      assets: assets,
+      metrics: metrics
+    )
+
+    loser_asset_ids << loser_asset["id"]
+    loser_interview_ids << loser_interview["id"]
+    metrics[:merged] += 1
+    metrics[:strict_merged] += 1
+
+    if options[:verbose]
+      puts "strict-merge: loser=#{loser_interview['id']} (#{loser_asset['id']}) -> winner=#{winner_interview['id']} (#{winner_asset['id']})"
+    end
   end
 end
 

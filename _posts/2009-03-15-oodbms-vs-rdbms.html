@@ -1,0 +1,25 @@
+---
+layout: "post"
+title: "OODBMS vs. RDBMS"
+date: "2009-03-15"
+description: "Not really, but some interesting opinions on the topic. Late in 2008, Rob Conery of SubSonic fame came out with some thoughts on using db4o instead of the “traditional” relational "
+tags:
+  - wordpress
+  - republished
+  - wayback
+  - c
+originally_published_on: "WordPress"
+original_url: "https://web.archive.org/web/20100120151647/http://just3ws.wordpress.com/2009/03/15/oodbms-vs-rdbms/"
+original_published_at: "2009-03-15"
+archive_note: "Originally published on just3ws.wordpress.com. Republished from local Wayback snapshot exports."
+---
+
+<div class="snap_preview">
+<p>Not really, but some interesting opinions on the topic.</p>
+<p>Late in 2008, Rob Conery of SubSonic fame came out with some thoughts on using db4o instead of the “traditional” relational database at least for the duration of the development process.</p>
+<p><a href="http://blog.wekeroad.com/blog/crazy-talk-reducing-orm-friction/" rel="noopener noreferrer" target="_blank">http://blog.wekeroad.com/blog/crazy-talk-reducing-orm-friction/</a><br>
+<a href="http://blog.wekeroad.com/blog/more-oodb-crazy-talk/" rel="noopener noreferrer" target="_blank">http://blog.wekeroad.com/blog/more-oodb-crazy-talk/</a></p>
+<p>Ayende Rahien of Rhino Mocks fame had a dissenting opinion which seemed to demonstrate a preference towards NHibernate. Basically, he assumes that the developer will naturally end up working against a RDBMS in the end regardless, so suffer the DBMS early and get better tools (!) then it will all be okay.</p>
+<p><a href="http://ayende.com/Blog/archive/2008/11/16/the-fallacy-of-irepository.aspx" rel="noopener noreferrer" target="_blank">http://ayende.com/Blog/archive/2008/11/16/the-fallacy-of-irepository.aspx</a></p>
+<p>I’m doing this research after I came to a similar conclusion to Rob and have been begun modeling my application using db4o. I don’t care for cycling into Sql Server Studio, updating a DDL script then executing, remapping the object, regen’ing the mapped objects, fixing the repository, fixing the domain objects, updating my unit tests and fixing the logic errors. I like changing my domain, updating my tests and logic errors. Even with better tools it’s less steps, and that’s a good thing.</p>
+</div>

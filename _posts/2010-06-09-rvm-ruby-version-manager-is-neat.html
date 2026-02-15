@@ -1,0 +1,85 @@
+---
+layout: "post"
+title: "RVM (Ruby Version Manager) is Neat."
+date: "2010-06-09"
+description: "If you are working on Ruby then you are either probably using the default Ruby that came with your Mac or installed via apt-get or manually installed a version "
+tags:
+  - wordpress
+  - republished
+  - wayback
+originally_published_on: "WordPress"
+original_url: "https://web.archive.org/web/20100722003758/http://just3ws.wordpress.com/2010/06/09/rvm-ruby-version-manager-is-neat/"
+original_published_at: "2010-06-09"
+archive_note: "Originally published on just3ws.wordpress.com. Republished from an archived Wayback snapshot."
+---
+
+<div class="snap_preview">
+<div class="pd-rating" id="pd_rating_holder_891237_post_784"></div>
+<p>
+</p>
+<div class="posterous_autopost">If you are working on Ruby then you are either probably using the default Ruby that came with your Mac or installed via apt-get or manually installed a version of Ruby. This is great, and can get you going pretty quickly but what if you need to use another version of Ruby, even temporarily? Ach, now you need to setup which version your system should use by default, where the gems are to be installed and maybe even have to grab the source and build the whole thing yourself. And that’s great, usually once you learn the basics of how to configure and setup the environment it isn’t too bad to repeat the process when needed. But what if you want to experiment with different installations? What if you’d like to easily test how your code behaves on different versions of Ruby? What if you want to have a private Ruby install configured and tailored just to the development piece you’re working on? That could become quite cumbersome and repetetive. Fortunately you don’t have to worry about that mess any longer, just use RVM.
+<p></p>
+<div>RVM is short for Ruby Version Manager. It’s a gem that will help with grabbing, building and configuring pretty much any Ruby environment. Let’s see what we can do…</div>
+<p></p>
+<div><b>As a Ruby developer</b></div>
+<div><b>I want to install the latest version of Ruby without destroying my environment</b></div>
+<p></p>
+<div><b>Scenario: I want to install JRuby</b></div>
+<div><b>  Given I have a Ruby version installed</b></div>
+<div><b>  And I have RubyGems installed</b></div>
+<div><b>  And I have a Java JRE installed</b></div>
+<div><b>  When I execute “gem install rvm”</b></div>
+<div><b>  And I execute “rvm-install”</b></div>
+<div><b>  And I execute “rvm install jruby”</b></div>
+<div><b>  Then I should have jruby installed</b></div>
+<p></p>
+<div><b>Scenario: I want to switch to using JRuby as my default Ruby</b></div>
+<div><b>  Given I have installed RVM</b></div>
+<div><b>  And I have installed JRuby with RVM</b></div>
+<div><b>  When I execute “rvm jruby –default”</b></div>
+<div><b>  Then JRuby should be the default Ruby</b></div>
+<p></p>
+<div>If you’ve played with Cucumber the above syntax may be familiar. It’s just a description of what we can do with RVM and what we should expect. To see all the available versions of Ruby installed and and available to RVM simply type <b>rvm list</b>. The current default Ruby version will be highlighted with a <b>=&gt;</b> prefix. Switch back to the standard Ruby version just type <b>rvm 1.8.7 –default</b>. To get a list of known Rubies that you can install with RVM type <b>rvm list known</b>. Play around with variations of <b>rvm –help</b> or <b>rvm <i><span style="font-weight:normal;">&lt;cmd&gt;</span></i> –help</b>.</div>
+<p></p>
+<div>But RVM isn’t just about grabbing and installing different versions of Ruby. It can also be used to execute commands on different Ruby versions without touching your default environment.</div>
+<p></p>
+<div>Let’s create a Rakefile to test executing rake using different versions of Ruby without switching around our environment. Copy in the following text.</div>
+<p></p>
+<div>
+<div><b>task :default do puts “Using Ruby version #{ENV['RUBY_VERSION']}.” end</b></div>
+</div>
+<p></p>
+<div>Okay, let’s try running this rake file using JRuby.</div>
+<p></p>
+<div><b>Scenario: I want to execute my rake file with JRuby</b></div>
+<div><b>  Given I have installed RVM</b></div>
+<div><b>  And I have installed JRuby with RVM</b></div>
+<div><b>  And I have the rake file on my current working directory</b></div>
+<div><b>  When I execute “rvm jruby rake”</b></div>
+<div><b>  Then I should see “Using Ruby version jruby-1.5.0.”</b></div>
+<p></p>
+<div>Cool, huh? Now let’s try doing that with Ruby 1.8.7…</div>
+<p></p>
+<div>
+<div><b>Scenario: I want to execute my rake file with JRuby</b></div>
+<div><b>  Given I have installed RVM</b></div>
+<div><b>  And I have installed Ruby 1.8.7 with RVM</b></div>
+<div><b>  And I have the rake file on my current working directory</b></div>
+<div><b>  When I execute “rvm 1.8.7 rake”</b></div>
+<div><b>  Then I should see “Using Ruby version ruby-1.8.7-p249.”</b></div>
+</div>
+<p></p>
+<div>NEAT! Of course this can apply to any version of Ruby that you’ve configured with RVM.</div>
+<p></p>
+<div>This is just the tip of the iceburg for what you can do with RVM. It’s got a lot of features and functionality and some nice documentation.</div>
+<p></p>
+<div>To see the available options just type…</div>
+<p></p>
+<div><b>rvm help</b></div>
+<p></p>
+<div>This should give you just enough RVM knowledge to install and configure different Ruby versions and execute alternative Rubies without changing your current configuration. Enjoy.</div>
+<p style="font-size:10px;">  <a href="http://posterous.com/" rel="noopener noreferrer" target="_blank">Posted via email</a>   from <a href="http://just3ws.posterous.com/rvm-ruby-version-manager-is-neat" rel="noopener noreferrer" target="_blank">mdh@just3ws.com</a>  </p>
+</div>
+
+		
+</div>

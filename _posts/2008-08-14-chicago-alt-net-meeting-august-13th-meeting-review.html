@@ -1,0 +1,50 @@
+---
+layout: "post"
+title: "Chicago ALT.NET Meeting August 13th Meeting Review"
+date: "2008-08-14"
+description: "Free pizza *and* a demo of ThoughtWorks Studio’s latest product, pretty nifty for my first meeting. The primary topic was the Cruise continuous integration server. The presenter, R"
+tags:
+  - wordpress
+  - republished
+  - wayback
+  - alt-net
+  - chicago
+  - coder-to-developer
+  - continuous-integration
+  - java
+  - networking
+  - non-microsoft
+  - professional
+  - self-improvement
+  - social-networking
+originally_published_on: "WordPress"
+original_url: "https://web.archive.org/web/20100120151125/http://just3ws.wordpress.com/2008/08/14/chicago-altnet-meeting-august-13th-meeting-review/"
+original_published_at: "2008-08-14"
+archive_note: "Originally published on just3ws.wordpress.com. Republished from local Wayback snapshot exports."
+---
+
+<div class="snap_preview">
+<p>Free <a href="http://www.edwardos.com/" rel="noopener noreferrer" target="_blank">pizza</a> *and* a demo of <a href="http://studios.thoughtworks.com/" rel="noopener noreferrer" target="_blank">ThoughtWorks Studio</a>’s latest product, pretty nifty for my first meeting.</p>
+<p>The primary topic was the <a href="http://studios.thoughtworks.com/cruise-continuous-integration/" rel="noopener noreferrer" target="_blank">Cruise</a> continuous integration server.  The presenter, Robert Norton, was obviously an expert on the matter and handled every question thrown his way thoughtfully and with a direct answer when possible.</p>
+<p>Some key points that I gathered from the demonstration:</p>
+<p>Cruise…</p>
+<p>… is based on J2EE. But has a nice(?) installer to help dirty .NET developers like myself.</p>
+<p>… uses a client/server model.  A central server handles workflow and automation.  Client agents are used to handle the discrete build tasks.</p>
+<p>… supports Rake, NAnt, Ant and Exec out of the box.</p>
+<p>… offers free licensing for up to two agents.</p>
+<p>… agents are intended to run one unit of work.  I.e. a test suite, a build, create an installer, are examples of the types of jobs that would be handled through multiple agents, the list of examples I provided would be three seperate agents.</p>
+<p>… agents can run on Mac, Windows and Linux. Not sure which versions/distros though.</p>
+<p>… agents can run in parallel.</p>
+<p>… agents can be installed on different machines to distribute the workload.</p>
+<p>… uses a loose pipeline model to manage the orchestration of agents (wait, is this BizTalk?)</p>
+<p>… has a very slick interface. (Almost lickable.)</p>
+<p>… has a very nice looking wizard for creating and managing the configuration scripts for the pipelines and the agents.</p>
+<p>… only works off of events from SVN and Mercurial source-control systems as of right now.  No file-system-watchers or scheduled builds yet.</p>
+<p>… has a configuration editor that actually will help you to not kill your server or require a restart for changes to take effect.</p>
+<p>… server uses meta-data to determine which agents are subscribed to handle pipeline events (Why don’t they just call this thing CruiseTalk or GlassCruise? I kid!)</p>
+<p>… server can assign dependencies between agents for cross-pipeline synchronization.</p>
+<p>… doesn’t yet have an extensibility model just yet.</p>
+<p>… is very different from CruiseControl(.NET|.rb) in it’s implementation but inherits allot of the best practices that have evolved from the years of development and experience.</p>
+<p>… can be used like CruiseControl.NET by configuring one agent to perform the entire build.  The trade-off being that you lose the ability to distribute the workload and utilize the pipelining capabilities.</p>
+<p>Well, that’s all I can think of off the top of my head.  I hope I can stay for the B.S. session next time, but I had to get home.  Looking forward to the next meeting.</p>
+</div>
