@@ -148,7 +148,7 @@ a:hover {
 }
 
 .contact-info a {
-  color: var(--link);
+  color: var(--text);
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -460,6 +460,10 @@ section {
   font-weight: 500;
 }
 
+.position a {
+  color: var(--text);
+}
+
 /* Skills */
 .skills-list {
   list-style: none;
@@ -522,7 +526,7 @@ section {
 .site-nav-brand {
   font-weight: 800;
   letter-spacing: 0.02em;
-  color: var(--accent);
+  color: var(--text);
   margin-right: 0.5rem;
   display: inline-flex;
   align-items: center;
@@ -554,7 +558,7 @@ section {
   padding: 0.25rem 0.55rem;
   border-radius: 0.3rem;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--text);
 }
 
 .site-nav-links a:hover,
@@ -566,7 +570,8 @@ section {
 
 .site-nav-links a.is-active {
   background: var(--surface-2);
-  color: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--text);
   font-weight: 700;
 }
 
@@ -1128,4 +1133,11 @@ pre code {
   .skills-list li:last-child::after {
     content: "";
   }
+}
+.site-nav-links a {
+    display: inline-block;
+    padding: 0.25rem 0.55rem;
+    border-radius: 0.3rem;
+    font-weight: 600;
+    color: var(--text);
 }
