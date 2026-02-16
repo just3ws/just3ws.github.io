@@ -28,6 +28,9 @@
 <meta name="description" content="{{ seo_description }}">
 <meta name="author" content="Mike Hall">
 <link rel="canonical" href="{{ canonical_url }}">
+{% if site.release_timestamp %}
+<meta name="release-timestamp" content="{{ site.release_timestamp }}">
+{% endif %}
 <meta name="robots" content="{{ robots_directive }}">
 <meta property="og:title" content="{{ seo_title }}">
 <meta property="og:description" content="{{ seo_description }}">
