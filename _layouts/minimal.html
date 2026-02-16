@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% include head/base.html theme_stylesheet="/assets/css/themes/site.css" %}
   {% include head/analytics.html %}
+  {% include json-ld-website.html %}
   {% if page.person_schema %}
   {% include json-ld.html %}
   {% endif %}

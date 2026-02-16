@@ -14,6 +14,7 @@
   {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
 {% endif %}
 {% if asset and preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
+{% assign transcript_data = site.data.transcripts[interview.id] %}
 {% assign video_name = nil %}
 {% assign video_description = nil %}
 {% assign video_thumbnail = nil %}
@@ -97,6 +98,7 @@
     "description": {{ video_description | jsonify }},
     "thumbnailUrl": {{ video_thumbnail | jsonify }},
     "uploadDate": "{{ video_upload_date | date: "%Y-%m-%d" }}",
+    {% if transcript_data.content %}"transcript": {{ transcript_data.content | jsonify }},{% endif %}
     "url": "{{ site_url }}/videos/{{ asset.id }}/"{% if video_content_url %},
     "contentUrl": {{ video_content_url | jsonify }}{% endif %}{% if video_embed_url %},
     "embedUrl": {{ video_embed_url | jsonify }}{% endif %}
