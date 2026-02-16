@@ -46,7 +46,7 @@ body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
   background: var(--nord6);
-  max-width: 72rem;
+  max-width: 50rem;
   margin: 0 auto;
   padding: 1.25rem 1rem 2rem;
   -webkit-font-smoothing: antialiased;
@@ -54,7 +54,7 @@ body {
 }
 
 main#main-content {
-  max-width: 64rem;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -528,7 +528,7 @@ section {
 /* Global Site Navigation */
 .site-header {
   margin: 0 auto 1.25rem;
-  max-width: 64rem;
+  max-width: 50rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 0.5rem;
@@ -548,6 +548,18 @@ section {
   letter-spacing: 0.02em;
   color: var(--accent);
   margin-right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-nav-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .site-nav-brand.is-active {

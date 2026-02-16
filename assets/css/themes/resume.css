@@ -524,11 +524,23 @@ section {
   letter-spacing: 0.02em;
   color: var(--accent);
   margin-right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .site-nav-brand.is-active {
   text-decoration: underline;
   text-underline-offset: 0.2rem;
+}
+
+.site-nav-avatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .site-nav-links {

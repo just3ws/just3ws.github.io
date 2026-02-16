@@ -8,7 +8,10 @@
       class="site-nav-brand{% if current_url == nav_brand.href %} is-active{% endif %}"
       href="{{ nav_brand.href }}"
       {% if current_url == nav_brand.href %}aria-current="page"{% endif %}
-    >{{ nav_brand.label }}</a>
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      {{ nav_brand.label }}
+    </a>
     <div class="site-nav-links">
       {% for item in nav_items %}
         {% assign label = item.label %}
