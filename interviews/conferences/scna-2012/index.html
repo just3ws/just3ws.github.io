@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "SCNA 2012"
-description: "SCNA 2012 includes 23 interviews. Years represented: 2012. Interviewees include Gary Bernhardt, Adewale Oshineye, Adewale Oshinye, Brad Wilkening, and Brian Marick. Topics include conference speaking and presentation skills, community building and user-group organizing, developer education and learning, community building and user group organizing, and ruby and rails practice."
+description: "SCNA 2012 brings together 23 interviews from 2012. Recurring themes include community building and user-group organizing, conference speaking and presentation skills, and developer education and learning. Featured interviewees include Gary Bernhardt, Adewale Oshineye, Adewale Oshinye, and Brad Wilkening."
 breadcrumb: "SCNA 2012"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,44 +17,57 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>SCNA 2012</h1>
-    <p class="intro">SCNA 2012 includes 23 interviews. Years represented: 2012. Interviewees include Gary Bernhardt, Adewale Oshineye, Adewale Oshinye, Brad Wilkening, and Brian Marick. Topics include conference speaking and presentation skills, community building and user-group organizing, developer education and learning, community building and user group organizing, and ruby and rails practice.</p>
+    <p class="intro">SCNA 2012 brings together 23 interviews from 2012. Recurring themes include community building and user-group organizing, conference speaking and presentation skills, and developer education and learning. Featured interviewees include Gary Bernhardt, Adewale Oshineye, Adewale Oshinye, and Brad Wilkening.</p>
   </header>
 
   <section class="index-summary">
     <ul class="index-highlights">
 
-      <li>Hi, I'm Mike with Uke Tasik here again at SCNA. I'm sitting down with Eddie Oceanea and it's a little bit late…</li>
+      <li>Coverage: 23 interviews from 2012.</li>
 
-      <li>Hi, I'm Mike with uTest, and I'm here at SCNA again, sitting down with Brad Wilkening, who is a co-founder of DevMind…</li>
+      <li>Featured interviewees: Gary Bernhardt, Adewale Oshineye, Adewale Oshinye, Brad Wilkening, and Brian Marick.</li>
 
-      <li>Hi, I'm Mike with UGtastic. I'm sitting down here at SCNA with Brian Merrick. Brian Merrick has spoken, you speak a lot…</li>
-
-      <li>Hi, it's Mike again here with UGtastic at SCNA. I'm sitting down with Carl Erickson, who is the CEO of Atomic Object,…</li>
+      <li>Common themes: community building and user-group organizing, conference speaking and presentation skills, developer education and learning, Ruby and Rails practice, and software craftsmanship and practice.</li>
 
     </ul>
   </section>
 
 
-  {% assign conference_resources = site.data.resources.conferences["scna-2012"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
+
   <section class="index-summary">
-    <h2>Trusted Sources</h2>
+    <h2>Notable Contributors</h2>
     <ul class="index-highlights">
-      {% for source in conference_resources %}
+
       <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
+        <strong>Gary Bernhardt</strong>
+         — Creator of Destroy All Software.
+         Focus: Software design clarity, developer tooling, and code quality discipline.
+        
+          <a href="/interviews/interview-with-gary-bernhardt-creator-destroy-all-software-at-scna-chicago-general/">Interview</a>
+        
       </li>
-      {% endfor %}
+
+      <li>
+        <strong>Sandro Mancuso</strong>
+         — Co-founder of the London Software Craftsmanship community.
+         Focus: Software craftsmanship practice, mentoring, and engineering standards.
+        
+          <a href="/interviews/sandro-mancuso-software-craftsmanship-north-america-2012/">Interview</a>
+        
+      </li>
+
+      <li>
+        <strong>Robert Martin</strong>
+         — Agile Manifesto signatory; co-author of the Software Craftsmanship Manifesto; Clean Code author.
+         Focus: Software craftsmanship, engineering professionalism, and sustainable delivery practices.
+        
+          <a href="/interviews/robert-martin-software-craftsmanship-north-america-2012/">Interview</a>
+        
+      </li>
+
     </ul>
   </section>
-  {% endif %}
+
 
   {% assign items = site.data.interviews.items | where: "conference", "SCNA" | where: "conference_year", 2012 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

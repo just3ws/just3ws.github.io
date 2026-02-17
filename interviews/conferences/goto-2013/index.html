@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "GOTO Conference 2013"
-description: "GOTO Conference 2013 includes 3 interviews. Years represented: 2013. Interviewees include Erik Meijer, Ola Bini, and Rich Hickey. Topics include conference speaking and presentation skills and developer tools and architecture."
+description: "GOTO Conference 2013 brings together 3 interviews from 2013. Recurring themes include conference speaking and presentation skills and developer tools and architecture. Featured interviewees include Erik Meijer, Ola Bini, and Rich Hickey."
 breadcrumb: "GOTO Conference 2013"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,30 +17,57 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>GOTO Conference 2013</h1>
-    <p class="intro">GOTO Conference 2013 includes 3 interviews. Years represented: 2013. Interviewees include Erik Meijer, Ola Bini, and Rich Hickey. Topics include conference speaking and presentation skills and developer tools and architecture.</p>
+    <p class="intro">GOTO Conference 2013 brings together 3 interviews from 2013. Recurring themes include conference speaking and presentation skills and developer tools and architecture. Featured interviewees include Erik Meijer, Ola Bini, and Rich Hickey.</p>
   </header>
 
-
-  {% assign conference_resources = site.data.resources.conferences["goto-2013"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
   <section class="index-summary">
-    <h2>Trusted Sources</h2>
     <ul class="index-highlights">
-      {% for source in conference_resources %}
-      <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
-      </li>
-      {% endfor %}
+
+      <li>Coverage: 3 interviews from 2013.</li>
+
+      <li>Featured interviewees: Erik Meijer, Ola Bini, and Rich Hickey.</li>
+
+      <li>Common themes: conference speaking and presentation skills and developer tools and architecture.</li>
+
     </ul>
   </section>
-  {% endif %}
+
+
+
+  <section class="index-summary">
+    <h2>Notable Contributors</h2>
+    <ul class="index-highlights">
+
+      <li>
+        <strong>Rich Hickey</strong>
+         — Creator of Clojure.
+         Focus: Functional programming, language design, and reasoning about complex systems.
+        
+          <a href="/interviews/rich-hickey-creator-of-clojure-general/">Interview</a>
+        
+      </li>
+
+      <li>
+        <strong>Erik Meijer</strong>
+         — Early leader in reactive programming and Rx ecosystems.
+         Focus: Reactive programming models and composable data/async architecture.
+        
+          <a href="/interviews/erik-meijer-creator-reactive-framework-general/">Interview</a>
+        
+      </li>
+
+      <li>
+        <strong>Ola Bini</strong>
+         — Co-creator of XMLBuilder for Ruby; language/runtime contributor.
+         Focus: Language tooling, polyglot systems, and runtime architecture.
+        
+          <a href="/interviews/ola-bini-general/">Interview</a>
+        
+      </li>
+
+    </ul>
+  </section>
+
 
   {% assign items = site.data.interviews.items | where: "conference", "GOTO Conference" | where: "conference_year", 2013 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

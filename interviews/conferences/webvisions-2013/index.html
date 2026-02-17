@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "WebVisions 2013"
-description: "WebVisions 2013 includes 5 interviews. Years represented: 2013. Interviewees include Bill Scott, Carolyn Chandler, Jason Cranford Teague, Jennifer Jones, and John Servin. Topics include developer community and conference conversations and web development and frontend practice."
+description: "WebVisions 2013 brings together 5 interviews from 2013. Recurring themes include developer community and conference conversations and web development and frontend practice. Featured interviewees include Bill Scott, Carolyn Chandler, Jason Cranford Teague, and Jennifer Jones."
 breadcrumb: "WebVisions 2013"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,30 +17,23 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>WebVisions 2013</h1>
-    <p class="intro">WebVisions 2013 includes 5 interviews. Years represented: 2013. Interviewees include Bill Scott, Carolyn Chandler, Jason Cranford Teague, Jennifer Jones, and John Servin. Topics include developer community and conference conversations and web development and frontend practice.</p>
+    <p class="intro">WebVisions 2013 brings together 5 interviews from 2013. Recurring themes include developer community and conference conversations and web development and frontend practice. Featured interviewees include Bill Scott, Carolyn Chandler, Jason Cranford Teague, and Jennifer Jones.</p>
   </header>
 
-
-  {% assign conference_resources = site.data.resources.conferences["webvisions-2013"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
   <section class="index-summary">
-    <h2>Trusted Sources</h2>
     <ul class="index-highlights">
-      {% for source in conference_resources %}
-      <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
-      </li>
-      {% endfor %}
+
+      <li>Coverage: 5 interviews from 2013.</li>
+
+      <li>Featured interviewees: Bill Scott, Carolyn Chandler, Jason Cranford Teague, Jennifer Jones, and John Servin.</li>
+
+      <li>Common themes: developer community and conference conversations and web development and frontend practice.</li>
+
     </ul>
   </section>
-  {% endif %}
+
+
+
 
   {% assign items = site.data.interviews.items | where: "conference", "WebVisions" | where: "conference_year", 2013 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

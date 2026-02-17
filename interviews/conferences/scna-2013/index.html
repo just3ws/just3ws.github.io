@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "SCNA 2013"
-description: "SCNA 2013 includes 11 interviews. Years represented: 2013. Interviewees include Sandro Mancuso, Adewale Oshineye, Amitai Schlair, Angelique Martin, and Chet Hendrickson. Topics include conference speaking and presentation skills, community building and user-group organizing, community building and user group organizing, clojure and functional programming, and developer education and learning."
+description: "SCNA 2013 brings together 11 interviews from 2013. Recurring themes include community building and user-group organizing, conference speaking and presentation skills, and Clojure and functional programming. Featured interviewees include Sandro Mancuso, Adewale Oshineye, Amitai Schlair, and Angelique Martin."
 breadcrumb: "SCNA 2013"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,42 +17,48 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>SCNA 2013</h1>
-    <p class="intro">SCNA 2013 includes 11 interviews. Years represented: 2013. Interviewees include Sandro Mancuso, Adewale Oshineye, Amitai Schlair, Angelique Martin, and Chet Hendrickson. Topics include conference speaking and presentation skills, community building and user-group organizing, community building and user group organizing, clojure and functional programming, and developer education and learning.</p>
+    <p class="intro">SCNA 2013 brings together 11 interviews from 2013. Recurring themes include community building and user-group organizing, conference speaking and presentation skills, and Clojure and functional programming. Featured interviewees include Sandro Mancuso, Adewale Oshineye, Amitai Schlair, and Angelique Martin.</p>
   </header>
 
   <section class="index-summary">
     <ul class="index-highlights">
 
-      <li>User groups with lots to say, interviews and more, no way, sharing great ideas in the tech community, fascinating conversations, a plethora…</li>
+      <li>Coverage: 11 interviews from 2013.</li>
 
-      <li>User groups with lots to say, interviews and more. No way! Sharing great ideas in the tech community. Fascinating conversations, a plethora…</li>
+      <li>Featured interviewees: Sandro Mancuso, Adewale Oshineye, Amitai Schlair, Angelique Martin, and Chet Hendrickson.</li>
 
-      <li>User groups with lots to say, interviews and more, no way, sharing great ideas in the tech community. Fascinating conversations, a plethora…</li>
+      <li>Common themes: community building and user-group organizing, conference speaking and presentation skills, Clojure and functional programming, developer education and learning, and open source and project maintenance.</li>
 
     </ul>
   </section>
 
 
-  {% assign conference_resources = site.data.resources.conferences["scna-2013"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
+
   <section class="index-summary">
-    <h2>Trusted Sources</h2>
+    <h2>Notable Contributors</h2>
     <ul class="index-highlights">
-      {% for source in conference_resources %}
+
       <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
+        <strong>Sandro Mancuso</strong>
+         — Co-founder of the London Software Craftsmanship community.
+         Focus: Software craftsmanship practice, mentoring, and engineering standards.
+        
+          <a href="/interviews/sandro-mancuso-general/">Interview</a>
+        
       </li>
-      {% endfor %}
+
+      <li>
+        <strong>Dave Thomas</strong>
+         — Co-author of The Pragmatic Programmer; Agile Manifesto signatory.
+         Focus: Developer education, pragmatic engineering, and long-term technical judgment.
+        
+          <a href="/interviews/dave-thomas-software-craftsmanship-north-america-2013/">Interview</a>
+        
+      </li>
+
     </ul>
   </section>
-  {% endif %}
+
 
   {% assign items = site.data.interviews.items | where: "conference", "SCNA" | where: "conference_year", 2013 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "WindyCityRails 2012"
-description: "WindyCityRails 2012 includes 15 interviews. Years represented: 2012. Interviewees include Adam Grandy, Amy Kinney, Benjamin Oakes, Brian Liles, and Eric MacAdie. Topics include ruby and rails practice, conference speaking and presentation skills, community building and user-group organizing, conference av production and audio best practices, and podcasting and community media."
+description: "WindyCityRails 2012 brings together 15 interviews from 2012. Recurring themes include Ruby and Rails practice, conference speaking and presentation skills, and community building and user-group organizing. Featured interviewees include Adam Grandy, Amy Kinney, Benjamin Oakes, and Brian Liles."
 breadcrumb: "WindyCityRails 2012"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,44 +17,23 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>WindyCityRails 2012</h1>
-    <p class="intro">WindyCityRails 2012 includes 15 interviews. Years represented: 2012. Interviewees include Adam Grandy, Amy Kinney, Benjamin Oakes, Brian Liles, and Eric MacAdie. Topics include ruby and rails practice, conference speaking and presentation skills, community building and user-group organizing, conference av production and audio best practices, and podcasting and community media.</p>
+    <p class="intro">WindyCityRails 2012 brings together 15 interviews from 2012. Recurring themes include Ruby and Rails practice, conference speaking and presentation skills, and community building and user-group organizing. Featured interviewees include Adam Grandy, Amy Kinney, Benjamin Oakes, and Brian Liles.</p>
   </header>
 
   <section class="index-summary">
     <ul class="index-highlights">
 
-      <li>Hi, I'm Mike with UGtastic. I'm standing here at Windy City Rails with Adam Grandy who does the, I did say that…</li>
+      <li>Coverage: 15 interviews from 2012.</li>
 
-      <li>Hi, I'm Mike. I'm standing here with Amy Kinney from 2ndConf. So, hi Amy. Can you tell me a little bit about…</li>
+      <li>Featured interviewees: Adam Grandy, Amy Kinney, Benjamin Oakes, Brian Liles, and Eric MacAdie.</li>
 
-      <li>Hi, I'm Mike. I'm here with Benjamin at the Windy City Rails Conference in Chicago. And Benjamin is involved with the New…</li>
-
-      <li>Hi, I'm Mike. I'm here at Windy City Rails again with Brian Lau, who is, if you're in the Ruby community, you've…</li>
+      <li>Common themes: Ruby and Rails practice, conference speaking and presentation skills, community building and user-group organizing, conference AV production and audio best practices, and podcasting and community media.</li>
 
     </ul>
   </section>
 
 
-  {% assign conference_resources = site.data.resources.conferences["windycityrails-2012"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
-  <section class="index-summary">
-    <h2>Trusted Sources</h2>
-    <ul class="index-highlights">
-      {% for source in conference_resources %}
-      <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
-  {% endif %}
+
 
   {% assign items = site.data.interviews.items | where: "conference", "WindyCityRails" | where: "conference_year", 2012 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

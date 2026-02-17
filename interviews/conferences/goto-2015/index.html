@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "GOTO Conference 2015"
-description: "GOTO Conference 2015 includes 27 interviews. Years represented: 2015. Interviewees include Anita Sengupta, Dean Wampler, Rebecca Parsons, Alexandra Masterson, and Chad Fowler. Topics include conference speaking and presentation skills."
+description: "GOTO Conference 2015 brings together 27 interviews from 2015. Recurring themes include conference speaking and presentation skills. Featured interviewees include Anita Sengupta, Dean Wampler, Rebecca Parsons, and Alexandra Masterson."
 breadcrumb: "GOTO Conference 2015"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,30 +17,57 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>GOTO Conference 2015</h1>
-    <p class="intro">GOTO Conference 2015 includes 27 interviews. Years represented: 2015. Interviewees include Anita Sengupta, Dean Wampler, Rebecca Parsons, Alexandra Masterson, and Chad Fowler. Topics include conference speaking and presentation skills.</p>
+    <p class="intro">GOTO Conference 2015 brings together 27 interviews from 2015. Recurring themes include conference speaking and presentation skills. Featured interviewees include Anita Sengupta, Dean Wampler, Rebecca Parsons, and Alexandra Masterson.</p>
   </header>
 
-
-  {% assign conference_resources = site.data.resources.conferences["goto-2015"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
   <section class="index-summary">
-    <h2>Trusted Sources</h2>
     <ul class="index-highlights">
-      {% for source in conference_resources %}
-      <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
-      </li>
-      {% endfor %}
+
+      <li>Coverage: 27 interviews from 2015.</li>
+
+      <li>Featured interviewees: Anita Sengupta, Dean Wampler, Rebecca Parsons, Alexandra Masterson, and Chad Fowler.</li>
+
+      <li>Common themes: conference speaking and presentation skills.</li>
+
     </ul>
   </section>
-  {% endif %}
+
+
+
+  <section class="index-summary">
+    <h2>Notable Contributors</h2>
+    <ul class="index-highlights">
+
+      <li>
+        <strong>Rebecca Parsons</strong>
+         — CTO at Thoughtworks; noted technology strategy author/speaker.
+         Focus: Technology strategy, architectural governance, and enterprise modernization.
+        
+          <a href="/interviews/youtube-SqgQQYzRoHg/">Interview</a>
+        
+      </li>
+
+      <li>
+        <strong>Dean Wampler</strong>
+         — Author and speaker on Scala, big data, and functional systems.
+         Focus: Distributed systems, data platforms, and functional architecture.
+        
+          <a href="/interviews/youtube-4aPzxoVKzG8/">Interview</a>
+        
+      </li>
+
+      <li>
+        <strong>Dave Thomas</strong>
+         — Co-author of The Pragmatic Programmer; Agile Manifesto signatory.
+         Focus: Developer education, pragmatic engineering, and long-term technical judgment.
+        
+          <a href="/interviews/youtube-PENvwc0402I/">Interview</a>
+        
+      </li>
+
+    </ul>
+  </section>
+
 
   {% assign items = site.data.interviews.items | where: "conference", "GOTO Conference" | where: "conference_year", 2015 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

@@ -32,6 +32,107 @@ defaults:
       path: ""
     values:
       sitemap: true
+      robots: index,follow
+  # Docs are public by default; operator runbooks are explicitly noindex below.
+  - scope:
+      path: "docs"
+    values:
+      sitemap: true
+      robots: index,follow
+  # Operator/runbook docs that are useful for maintainers but noisy for search.
+  - scope:
+      path: "docs/architecture/transcript-import.md"
+      type: "pages"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/domain-migration.md"
+      type: "pages"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/linkedin-import"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/pipeline-grammar.md"
+      type: "pages"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/interview-data-model.html"
+      type: "pages"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/repo-hygiene.md"
+      type: "pages"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/resources"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/taxonomy"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/archive-philosophy"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/retrospectives"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/site-tree"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/tasks.md"
+      type: "pages"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/video-metadata-completeness"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "docs/wayback"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  # Utility/ops surfaces outside docs.
+  - scope:
+      path: "tools"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "archive-status"
+    values:
+      sitemap: false
+      robots: noindex,follow
+  - scope:
+      path: "linkedin.html"
+      type: "pages"
+    values:
+      sitemap: false
+      robots: noindex,follow
 
 exclude:
   # Ruby / build tooling

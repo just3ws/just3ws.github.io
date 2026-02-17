@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "RailsConf 2014"
-description: "RailsConf 2014 includes 16 interviews. Years represented: 2014. Interviewees include Aaron Patterson, Alexander Dymo, Carlos Antonio da Silva, Coraline Ada Ehmke, and David Heinemeier Hansson (DHH). Topics include developer community and conference conversations, Artis and engineering leadership, Brakeman and Rails security, DCamp and developer community building, and Debugger Driven Development."
+description: "RailsConf 2014 brings together 16 interviews from 2014. Recurring themes include developer community and conference conversations, Artis and engineering leadership, and Brakeman and Rails security. Featured interviewees include Aaron Patterson, Alexander Dymo, Carlos Antonio da Silva, and Coraline Ada Ehmke."
 breadcrumb: "RailsConf 2014"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,30 +17,48 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>RailsConf 2014</h1>
-    <p class="intro">RailsConf 2014 includes 16 interviews. Years represented: 2014. Interviewees include Aaron Patterson, Alexander Dymo, Carlos Antonio da Silva, Coraline Ada Ehmke, and David Heinemeier Hansson (DHH). Topics include developer community and conference conversations, Artis and engineering leadership, Brakeman and Rails security, DCamp and developer community building, and Debugger Driven Development.</p>
+    <p class="intro">RailsConf 2014 brings together 16 interviews from 2014. Recurring themes include developer community and conference conversations, Artis and engineering leadership, and Brakeman and Rails security. Featured interviewees include Aaron Patterson, Alexander Dymo, Carlos Antonio da Silva, and Coraline Ada Ehmke.</p>
   </header>
 
-
-  {% assign conference_resources = site.data.resources.conferences["railsconf-2014"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
   <section class="index-summary">
-    <h2>Trusted Sources</h2>
     <ul class="index-highlights">
-      {% for source in conference_resources %}
-      <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
-      </li>
-      {% endfor %}
+
+      <li>Coverage: 16 interviews from 2014.</li>
+
+      <li>Featured interviewees: Aaron Patterson, Alexander Dymo, Carlos Antonio da Silva, Coraline Ada Ehmke, and David Heinemeier Hansson (DHH).</li>
+
+      <li>Common themes: developer community and conference conversations, Artis and engineering leadership, Brakeman and Rails security, DCamp and developer community building, and Debugger Driven Development.</li>
+
     </ul>
   </section>
-  {% endif %}
+
+
+
+  <section class="index-summary">
+    <h2>Notable Contributors</h2>
+    <ul class="index-highlights">
+
+      <li>
+        <strong>Aaron Patterson</strong>
+         — Ruby on Rails core team member and prominent maintainer.
+         Focus: Rails internals, performance, and practical framework engineering.
+        
+          <a href="/interviews/aaron-patterson-ruby-rails-core-team-member-keynote-speaker-railsconf-2014/">Interview</a>
+        
+      </li>
+
+      <li>
+        <strong>Coraline Ada Ehmke</strong>
+         — Creator of Contributor Covenant and inclusive OSS governance advocate.
+         Focus: Open source community health, maintainership, and engineering culture.
+        
+          <a href="/interviews/coraline-ada-ehmke-artis-railsconf-2014/">Interview</a>
+        
+      </li>
+
+    </ul>
+  </section>
+
 
   {% assign items = site.data.interviews.items | where: "conference", "RailsConf" | where: "conference_year", 2014 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

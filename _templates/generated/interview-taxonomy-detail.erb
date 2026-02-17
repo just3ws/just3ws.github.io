@@ -29,28 +29,23 @@ breadcrumb_parent_url: <%= parent_url %>
   </section>
 <% end %>
 
-<% if conference_slug && !conference_slug.to_s.strip.empty? -%>
-  {% assign conference_resources = site.data.resources.conferences["<%= conference_slug %>"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
+<% if notable_contributors.is_a?(Array) && !notable_contributors.empty? %>
   <section class="index-summary">
-    <h2>Trusted Sources</h2>
+    <h2>Notable Contributors</h2>
     <ul class="index-highlights">
-      {% for source in conference_resources %}
+<% notable_contributors.each do |contributor| %>
       <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
+        <strong><%= contributor["name"] %></strong>
+        <% if contributor["headline"] && !contributor["headline"].to_s.strip.empty? %> — <%= contributor["headline"] %><% end %>
+        <% if contributor["focus"] && !contributor["focus"].to_s.strip.empty? %> Focus: <%= contributor["focus"] %><% end %>
+        <% if contributor["interview_id"] && !contributor["interview_id"].to_s.strip.empty? %>
+          <a href="/interviews/<%= contributor["interview_id"] %>/">Interview</a>
+        <% end %>
       </li>
-      {% endfor %}
+<% end %>
     </ul>
   </section>
-  {% endif %}
-<% end -%>
+<% end %>
 
   <%= liquid_assign %>
   {% for interview in items %}

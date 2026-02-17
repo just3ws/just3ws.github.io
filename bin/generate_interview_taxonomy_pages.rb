@@ -9,6 +9,7 @@ interviews_path = File.join(root, "_data", "interviews.yml")
 conf_path = File.join(root, "_data", "interview_conferences.yml")
 comm_path = File.join(root, "_data", "interview_communities.yml")
 index_summary_path = File.join(root, "_data", "index_summaries.yml")
+interviewee_signals_path = File.join(root, "_data", "interviewee_signals.yml")
 index_template_path = File.join(root, "_templates", "generated", "interview-taxonomy-index.erb")
 detail_template_path = File.join(root, "_templates", "generated", "interview-taxonomy-detail.erb")
 
@@ -16,6 +17,7 @@ interviews = Generators::Core::YamlIo.load(interviews_path, key: "items")
 confs = Generators::Core::YamlIo.load(conf_path, key: "conferences")
 comms = Generators::Core::YamlIo.load(comm_path, key: "communities")
 index_summaries = Generators::Core::YamlIo.load(index_summary_path)
+interviewee_signals = Generators::Core::YamlIo.load(interviewee_signals_path, key: "contributors")
 
 def interview_count_label(count)
   count.to_i == 1 ? "1 interview" : "#{count} interviews"
@@ -32,10 +34,43 @@ def render_template(template_path, output_path, locals)
   File.write(output_path, renderer.result(binding))
 end
 
+def build_notable_contributors(matching_interviews, signals_by_name, max_items: 6)
+  seen = {}
+  notable = []
+
+  matching_interviews.each do |interview|
+    Array(interview["interviewees"]).each do |name|
+      next if seen[name]
+
+      signal = signals_by_name[name]
+      next unless signal
+
+      seen[name] = true
+      notable << {
+        "name" => name,
+        "headline" => signal["headline"],
+        "focus" => signal["focus"],
+        "interview_id" => interview["id"],
+        "interview_title" => interview["title"],
+        "topic" => interview["topic"]
+      }
+      break if notable.size >= max_items
+    end
+    break if notable.size >= max_items
+  end
+
+  notable
+end
+
 confs_dir = File.join(root, "interviews", "conferences")
 comms_dir = File.join(root, "interviews", "communities")
 FileUtils.mkdir_p(confs_dir)
 FileUtils.mkdir_p(comms_dir)
+signals_by_name = interviewee_signals.each_with_object({}) do |entry, memo|
+  next unless entry["name"]
+
+  memo[entry["name"]] = entry
+end
 
 confs.each do |conf|
   conf_name = conf["conference"] || conf["name"]
@@ -104,6 +139,11 @@ confs.each do |conf|
   FileUtils.mkdir_p(dir)
   conf_name = conf["conference"] || conf["name"]
   conf_year = conf["year"]
+  matching = interviews.select do |i|
+    i["conference"] == conf_name && (!conf_year || i["conference_year"] == conf_year)
+  end
+  sorted_matching = matching.sort_by { |i| i["recorded_date"].to_s }.reverse
+  notable_contributors = build_notable_contributors(sorted_matching, signals_by_name)
   intro = conf["summary"] || (conf_year ? "Interviews recorded at #{conf_name} #{conf_year}." : "Interviews recorded at #{conf_name}.")
   liquid_assign =
     if conf_year
@@ -120,6 +160,7 @@ confs.each do |conf|
     liquid_assign: liquid_assign,
     conference_slug: conf["slug"],
     highlights: conf["highlights"],
+    notable_contributors: notable_contributors,
     parent_name: "Interviews by Conference",
     parent_url: "/interviews/conferences/",
     grandparent_name: "Interviews",
@@ -140,6 +181,7 @@ comms.each do |comm|
     liquid_assign: liquid_assign,
     conference_slug: nil,
     highlights: comm["highlights"],
+    notable_contributors: [],
     parent_name: "Interviews by Community",
     parent_url: "/interviews/communities/",
     grandparent_name: "Interviews",

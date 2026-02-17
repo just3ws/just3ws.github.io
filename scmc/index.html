@@ -9,22 +9,17 @@ breadcrumb: SCMC
   {% include breadcrumbs.html %}
   <header>
     <h1>SCMC Videos</h1>
-    <p class="intro">Recordings from Software Craftsmanship McHenry County sessions and talks.</p>
+    <p class="intro">A working-group archive from Software Craftsmanship McHenry County, focused on practical engineering, shared learning, and talks that stood up to real delivery work.</p>
   </header>
 
-  {% assign summary = site.data.index_summaries.pages.scmc %}
-  {% if summary %}
-    <section class="index-summary">
-      {% if summary.summary %}<p>{{ summary.summary }}</p>{% endif %}
-      {% if summary.highlights and summary.highlights.size > 0 %}
-        <ul class="index-highlights">
-          {% for item in summary.highlights %}
-            <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </section>
-  {% endif %}
+  <section class="index-summary">
+    <p>SCMC was a place for practitioners to test ideas in public, teach from direct experience, and keep technical standards grounded in day-to-day work.</p>
+    <ul class="index-highlights">
+      <li>This collection includes session recordings and community interviews from that period.</li>
+      <li>Topics span craftsmanship, programming languages, tooling, and implementation tradeoffs.</li>
+      <li>Use this page as a starting point, then follow each item into the full video and transcript context.</li>
+    </ul>
+  </section>
 
   {% assign items = site.data.scmc_videos.items %}
   {% include json-ld-itemlist.html

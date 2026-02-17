@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "SCNA 2011"
-description: "SCNA 2011 includes 11 interviews. Years represented: 2011. Interviewees include Bobby Johnson, Charler Baker, Drew Shefman, Dustin Updyke, and London Software Craftsmanship. Topics include Boston SC, Chicago Alt.NET, ChicagoRuby, Cleveland & Pittsburgh Community, and DC Alt.NET."
+description: "SCNA 2011 brings together 11 interviews from 2011. Recurring themes include community building and user-group organizing, Boston SC, and Chicago Alt.NET. Featured interviewees include Bobby Johnson, Charler Baker, Drew Shefman, and Dustin Updyke."
 breadcrumb: "SCNA 2011"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,44 +17,23 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>SCNA 2011</h1>
-    <p class="intro">SCNA 2011 includes 11 interviews. Years represented: 2011. Interviewees include Bobby Johnson, Charler Baker, Drew Shefman, Dustin Updyke, and London Software Craftsmanship. Topics include Boston SC, Chicago Alt.NET, ChicagoRuby, Cleveland & Pittsburgh Community, and DC Alt.NET.</p>
+    <p class="intro">SCNA 2011 brings together 11 interviews from 2011. Recurring themes include community building and user-group organizing, Boston SC, and Chicago Alt.NET. Featured interviewees include Bobby Johnson, Charler Baker, Drew Shefman, and Dustin Updyke.</p>
   </header>
 
   <section class="index-summary">
     <ul class="index-highlights">
 
-      <li>Hi, I'm Mike. I'm standing here with Bobby Johnson from the SouthSound.net Users Group. Hi Bobby, thanks for standing up with me…</li>
+      <li>Coverage: 11 interviews from 2011.</li>
 
-      <li>Hi, I'm Mike. I'm sitting down with Charlie Baker from Denver, and he's kind of been involved with a lot of the…</li>
+      <li>Featured interviewees: Bobby Johnson, Charler Baker, Drew Shefman, Dustin Updyke, and London Software Craftsmanship.</li>
 
-      <li>Hi, I'm standing here with Audrey Sheffman from the Houston Adobe Users Group and he's going to tell us a little bit…</li>
-
-      <li>Hi, I'm Mike. I'm sitting here with Dustin from the Pittsburgh Software craftsmanship User Group. He's one of the organizers that helps…</li>
+      <li>Common themes: community building and user-group organizing, Boston SC, Chicago Alt.NET, ChicagoRuby, and Cleveland & Pittsburgh Community.</li>
 
     </ul>
   </section>
 
 
-  {% assign conference_resources = site.data.resources.conferences["scna-2011"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
-  <section class="index-summary">
-    <h2>Trusted Sources</h2>
-    <ul class="index-highlights">
-      {% for source in conference_resources %}
-      <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
-  {% endif %}
+
 
   {% assign items = site.data.interviews.items | where: "conference", "SCNA" | where: "conference_year", 2011 | sort: "recorded_date" | reverse %}
   {% for interview in items %}

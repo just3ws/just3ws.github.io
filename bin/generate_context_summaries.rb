@@ -43,6 +43,14 @@ def readable_list(values, max_items: 5)
   "#{items[0..-2].join(', ')}, and #{items[-1]}"
 end
 
+def year_phrase(years)
+  sorted = years.compact.map(&:to_i).uniq.sort
+  return nil if sorted.empty?
+  return sorted.first.to_s if sorted.length == 1
+
+  "#{sorted.first} to #{sorted.last}"
+end
+
 def top_values(values, max_items: 5)
   counts = Hash.new(0)
   values.each do |v|
@@ -62,8 +70,22 @@ def normalize_topic(value)
   normalized = normalized.sub(/\AInterview\s*[-:]\s+/i, "")
   normalized = normalized.tr("_", " ")
   normalized = normalized.tr("-", " ") if normalized.match?(/\A[a-z0-9-]+\z/)
-  return "" if normalized.match?(/\AGOPR\d+\z/i)
+  compact = normalized.gsub(/[\s_-]+/, "")
+  return "" if compact.match?(/\Agopr\d+\z/i)
   return "" if normalized.length < 3
+
+  canonical_map = {
+    "community building and user group organizing" => "community building and user-group organizing",
+    "community building and user-group organizing" => "community building and user-group organizing",
+    "developer community and conference conversations" => "developer community and conference conversations",
+    "conference av production and audio best practices" => "conference AV production and audio best practices",
+    "ruby and rails practice" => "Ruby and Rails practice",
+    "clojure and functional programming" => "Clojure and functional programming",
+    "developer tools and architecture" => "developer tools and architecture",
+    "conference speaking and presentation skills" => "conference speaking and presentation skills"
+  }
+  key = normalized.downcase
+  return canonical_map[key] if canonical_map.key?(key)
 
   normalized
 end
@@ -96,28 +118,24 @@ def build_entity_summary(label:, interviews:, assets_by_id:, transcripts_by_id:)
   end
   top_topics = top_values(topics, max_items: 6)
 
-  transcript_snippets = []
-  interviews.each do |interview|
-    asset = assets_by_id[interview["video_asset_id"]]
-    next unless asset
-
-    transcript = transcripts_by_id[asset["transcript_id"].to_s]
-    next unless transcript
-
-    excerpt = transcript_excerpt(transcript["content"])
-    transcript_snippets << excerpt if excerpt
-  end
-  transcript_snippets.uniq!
-
+  year_span = year_phrase(years)
   summary_parts = []
-  summary_parts << "#{label} includes #{pluralize(count, 'interview')}."
-  summary_parts << "Years represented: #{years.join(', ')}." unless years.empty?
-  summary_parts << "Interviewees include #{readable_list(people, max_items: 5)}." unless people.empty?
-  summary_parts << "Topics include #{readable_list(top_topics, max_items: 5)}." unless top_topics.empty?
+  summary_parts << if year_span
+                     "#{label} brings together #{pluralize(count, 'interview')} from #{year_span}."
+                   else
+                     "#{label} brings together #{pluralize(count, 'interview')}."
+                   end
+  summary_parts << "Recurring themes include #{readable_list(top_topics, max_items: 3)}." unless top_topics.empty?
+  summary_parts << "Featured interviewees include #{readable_list(people, max_items: 4)}." unless people.empty?
+
+  friendly_highlights = []
+  friendly_highlights << "Coverage: #{pluralize(count, 'interview')}#{year_span ? " from #{year_span}" : ""}."
+  friendly_highlights << "Featured interviewees: #{readable_list(people, max_items: 5)}." unless people.empty?
+  friendly_highlights << "Common themes: #{readable_list(top_topics, max_items: 5)}." unless top_topics.empty?
 
   {
     "summary" => summary_parts.join(" "),
-    "highlights" => transcript_snippets.first(4),
+    "highlights" => friendly_highlights.first(4),
     "sample_people" => people.first(8),
     "sample_topics" => top_topics.first(8),
     "sample_interview_ids" => interviews.map { |i| i["id"] }.first(10),
@@ -213,10 +231,10 @@ index_summaries = {
       ]
     },
     "interviews_conferences" => {
-      "summary" => "Conference index containing #{pluralize(conferences.size, 'conference edition')} across #{pluralize(conference_series.size, 'conference series', 'conference series')}: #{readable_list(series_fragments, max_items: 6)}.",
+      "summary" => "Browse conference interviews by event and year. This index covers #{pluralize(conferences.size, 'conference edition')} across #{pluralize(conference_series.size, 'conference series', 'conference series')}, with each page summarizing key voices and themes.",
       "highlights" => [
-        "Conference pages include generated summaries and transcript-backed highlights when available.",
-        "Each conference card includes event date range and interview count."
+        "Each conference card includes interview count and date range when available.",
+        "Conference pages surface friendly summary text, featured interviewees, and recurring themes."
       ]
     },
     "interviews_communities" => {

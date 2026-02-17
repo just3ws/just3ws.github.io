@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "GOTO Conference 2014"
-description: "GOTO Conference 2014 includes 17 interviews. Years represented: 2014. Interviewees include Adrian Cockcroft, Aino Vonge Corry, Alex Rutkowski, Camille Fournier, and Cindy Sprague. Topics include conference speaking and presentation skills, community building and user group organizing, community building and user-group organizing, ruby and rails practice, and DevOps culture at GOTO Chicago 2014."
+description: "GOTO Conference 2014 brings together 17 interviews from 2014. Recurring themes include community building and user-group organizing, conference speaking and presentation skills, and Ruby and Rails practice. Featured interviewees include Adrian Cockcroft, Aino Vonge Corry, Alex Rutkowski, and Camille Fournier."
 breadcrumb: "GOTO Conference 2014"
 
 breadcrumb_grandparent_name: "Interviews"
@@ -17,30 +17,39 @@ breadcrumb_parent_url: /interviews/conferences/
   {% include breadcrumbs.html %}
   <header>
     <h1>GOTO Conference 2014</h1>
-    <p class="intro">GOTO Conference 2014 includes 17 interviews. Years represented: 2014. Interviewees include Adrian Cockcroft, Aino Vonge Corry, Alex Rutkowski, Camille Fournier, and Cindy Sprague. Topics include conference speaking and presentation skills, community building and user group organizing, community building and user-group organizing, ruby and rails practice, and DevOps culture at GOTO Chicago 2014.</p>
+    <p class="intro">GOTO Conference 2014 brings together 17 interviews from 2014. Recurring themes include community building and user-group organizing, conference speaking and presentation skills, and Ruby and Rails practice. Featured interviewees include Adrian Cockcroft, Aino Vonge Corry, Alex Rutkowski, and Camille Fournier.</p>
   </header>
 
-
-  {% assign conference_resources = site.data.resources.conferences["goto-2014"] %}
-  {% if conference_resources and conference_resources.size > 0 %}
   <section class="index-summary">
-    <h2>Trusted Sources</h2>
     <ul class="index-highlights">
-      {% for source in conference_resources %}
-      <li>
-        {% assign source_url = source.url | default: source %}
-        {% if source_url %}
-          <a href="{{ source_url }}">{{ source.label | default: source_url }}</a>
-        {% else %}
-          {{ source.label }}
-        {% endif %}
-        {% if source.kind %} ({{ source.kind }}){% endif %}
-        {% if source.notes %}: {{ source.notes }}{% endif %}
-      </li>
-      {% endfor %}
+
+      <li>Coverage: 17 interviews from 2014.</li>
+
+      <li>Featured interviewees: Adrian Cockcroft, Aino Vonge Corry, Alex Rutkowski, Camille Fournier, and Cindy Sprague.</li>
+
+      <li>Common themes: community building and user-group organizing, conference speaking and presentation skills, Ruby and Rails practice, DevOps culture at GOTO Chicago 2014, and Mixing Lean & Agile Development at GOTO Chicago 2014.</li>
+
     </ul>
   </section>
-  {% endif %}
+
+
+
+  <section class="index-summary">
+    <h2>Notable Contributors</h2>
+    <ul class="index-highlights">
+
+      <li>
+        <strong>Adrian Cockcroft</strong>
+         — Former cloud architecture leader at Netflix.
+         Focus: Cloud operations at scale, resilience, and DevOps transformation.
+        
+          <a href="/interviews/youtube-gdd7Cp_ZANY/">Interview</a>
+        
+      </li>
+
+    </ul>
+  </section>
+
 
   {% assign items = site.data.interviews.items | where: "conference", "GOTO Conference" | where: "conference_year", 2014 | sort: "recorded_date" | reverse %}
   {% for interview in items %}
