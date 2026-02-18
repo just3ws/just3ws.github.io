@@ -45,13 +45,16 @@
 {% if defer_stylesheets %}
 <link rel="preload" href="/assets/css/core.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="{{ include.theme_stylesheet }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/css/digital-patina.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
   <link rel="stylesheet" href="/assets/css/core.css">
   <link rel="stylesheet" href="{{ include.theme_stylesheet }}">
+  <link rel="stylesheet" href="/assets/css/digital-patina.css">
 </noscript>
 {% else %}
 <link rel="stylesheet" href="/assets/css/core.css">
 <link rel="stylesheet" href="{{ include.theme_stylesheet }}">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
 {% endif %}
 {% if page.stylesheets and page.stylesheets.size > 0 %}
   {% for stylesheet in page.stylesheets %}

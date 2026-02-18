@@ -1,0 +1,508 @@
+/* 
+ * Digital Patina: A Design System Add-on for Mike Hall
+ * Concept: "Museum of the Machine"
+ * Refined for density and optical balance.
+ */
+
+:root {
+  /* Glass & Stone Palette (Slate/Zinc Neutrals) */
+  --color-bg: #F8FAFC;
+  --color-ink-primary: #0F172A;
+  --color-ink-secondary: #475569;
+  --color-accent: #2563EB; /* Reliability Blue */
+  --color-glass-bg: rgba(255, 255, 255, 0.7);
+  --color-glass-border: rgba(255, 255, 255, 0.4);
+  --color-code-bg: #1E293B;
+
+  /* Overriding existing variables */
+  --text: var(--color-ink-primary);
+  --muted: var(--color-ink-secondary);
+  --meta: #64748B;
+  --border: #E2E8F0;
+  --surface: var(--color-glass-bg);
+  --surface-2: #F1F5F9;
+  --link: var(--color-accent);
+  --link-hover: #1D4ED8;
+  --accent: var(--color-accent);
+
+  /* Typography Stacks */
+  --font-header: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Charter', 'Bitstream Charter', 'Sitka Text', 'Cambria', 'Georgia', serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Menlo', 'Monaco', monospace;
+}
+
+/* Base Aesthetics */
+body {
+  background-color: var(--color-bg) !important;
+  color: var(--color-ink-primary);
+  font-family: var(--font-body) !important;
+  line-height: 1.6; 
+  max-width: 50rem !important; /* Lock container width */
+  margin: 0 auto !important;
+  padding: 1.25rem 1rem 2rem !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Authority */
+h1, h2, h3, h4, .site-title, .site-nav-brand, .position-title {
+  font-family: var(--font-header) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2;
+  color: var(--color-ink-primary);
+}
+
+h1 { font-size: clamp(1.85rem, 4vw, 2.5rem) !important; margin-bottom: 0.5em; border-bottom: none !important; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem; }
+h1 .subtitle { font-family: var(--font-header); font-size: 0.45em; font-weight: 500; color: var(--color-ink-secondary); letter-spacing: 0.05em; text-transform: uppercase; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.5rem) !important; margin-top: 1.5rem !important; border-bottom: 2px solid var(--color-accent) !important; padding-bottom: 0.25rem; }
+
+/* Home Hero Header specific fix */
+.home-header h2.title {
+  font-size: 1.15rem !important;
+  color: var(--color-ink-secondary);
+  border-bottom: none !important;
+  margin-top: -0.25rem !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 500 !important;
+}
+
+p, li, .video-description, .video-transcript, .post-body {
+  font-size: clamp(1rem, 1.2vw, 1.05rem);
+  margin-bottom: 1.25rem;
+  max-width: 70ch;
+}
+
+/* Restore technical sans-serif to UI/Tooling components */
+.linkedin-card, 
+.resume-actions, 
+.site-nav, 
+.video-indicator, 
+.tag, 
+.skills-list li,
+.contact-info,
+.breadcrumbs,
+.resume-format-control,
+button, 
+select, 
+textarea {
+  font-family: var(--font-header) !important;
+}
+
+/* "Glass & Stone" Card System */
+.site-header, 
+.index-summary, 
+.home-purpose, 
+.home-hero, 
+.home-link-card, 
+.conference-card, 
+.linkedin-card,
+.video,
+.post.post-linkedin,
+.home-phalanx-callout {
+  background: var(--color-glass-bg) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-glass-border) !important;
+  border-radius: 12px !important;
+  padding: 1.25rem !important; /* Standardized density */
+  box-shadow: 0 4px 12px -5px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.site-header {
+  margin: 0 0 1.25rem 0 !important; /* Prevent double centering */
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.home-link-card:hover, .conference-card:hover, .video:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Global Navbar Standardization */
+.site-nav {
+  font-family: var(--font-header) !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.site-nav-brand {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+}
+
+.site-nav-avatar {
+  width: 2rem !important;
+  height: 2rem !important;
+  border-radius: 999px !important;
+  border: 2px solid var(--color-accent) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.site-nav-links a {
+  font-family: var(--font-header) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.6rem !important;
+}
+
+.site-nav-links a.is-active {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--color-accent) !important;
+}
+
+/* Micro-Interactions: The "Thick" Link */
+a:not(.video-button):not(.home-resume-link):not(.site-nav-links a):not(.home-quicknav a) {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(37, 99, 235, 0.2);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+
+a:not(.video-button):not(.home-resume-link):not(.site-nav-links a):not(.home-quicknav a):hover {
+  color: #1D4ED8;
+  text-decoration-color: var(--color-accent);
+}
+
+/* Code Blocks: Contrast & Focus */
+pre, code {
+  font-family: var(--font-mono) !important;
+}
+
+pre {
+  background: var(--color-code-bg) !important;
+  color: #E2E8F0 !important;
+  padding: 1.25rem !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+p code, li code {
+  background: #F1F5F9 !important;
+  color: var(--color-accent) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* Density control for Resume */
+.resume-header {
+  padding-bottom: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+section {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Refined Metadata */
+time, .post-meta, .video-meta, .position-meta, .conference-dates, .linkedin-dates {
+  font-family: var(--font-header);
+  font-size: 0.75rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--color-ink-secondary) !important;
+}
+
+/* Home Hero Layout Refinement */
+.home-hero {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+  background: linear-gradient(145deg, rgba(241, 245, 249, 0.9), rgba(226, 232, 240, 0.9)) !important;
+}
+
+.home-hero-header {
+  width: 100%;
+}
+
+.home-hero-header h2 {
+  margin-top: 0 !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  font-size: clamp(1.25rem, 3vw, 1.75rem) !important;
+}
+
+.home-kicker {
+  margin: 0 0 0.25rem 0 !important;
+  color: var(--color-ink-secondary);
+  font-family: var(--font-header);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--color-glass-border);
+}
+
+.home-hero-summary {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100%;
+}
+
+.home-hero-summary p {
+  margin-bottom: 1.25rem !important;
+  font-size: 0.95rem !important;
+  flex-grow: 1; /* Pushes the footer down */
+}
+
+.home-hero-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-glass-border);
+}
+
+.home-hero-cta {
+  font-family: var(--font-header) !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-accent) !important;
+  text-decoration: none !important;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+  transition: all 0.2s ease;
+}
+
+.home-hero-cta:hover {
+  color: #1D4ED8 !important;
+  border-color: #1D4ED8;
+}
+
+.home-carousel-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.home-carousel-button {
+  font-family: var(--font-header) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  padding: 0.35rem 0.75rem !important;
+  border: 1px solid var(--border) !important;
+  background: white !important;
+  border-radius: 999px !important;
+  color: var(--color-ink-secondary) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.home-carousel-button:hover {
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
+}
+
+/* Export Actions & Tooling Bars (Meta-Nav Style) */
+.resume-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.25rem !important;
+  padding: 0 0.25rem !important;
+  background: none !important;
+  border: none !important;
+  margin-top: -0.75rem !important;
+  margin-bottom: 2.5rem !important;
+  width: 100% !important;
+}
+
+.linkedin-card-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 0.5rem 0.75rem !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  margin-bottom: 1.5rem !important;
+  width: fit-content !important;
+}
+
+.resume-actions-label {
+  font-family: var(--font-header);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--meta);
+  letter-spacing: 0.08em;
+  margin-right: 0.25rem;
+}
+
+.resume-actions button, .resume-actions .resume-format-control, .resume-actions .resume-format-control select {
+  font-family: var(--font-header) !important;
+  font-size: 0.725rem !important;
+  font-weight: 600 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  color: var(--color-ink-secondary) !important;
+  cursor: pointer;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(37, 99, 235, 0.3) !important;
+  text-underline-offset: 4px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.linkedin-copy-btn {
+  font-family: var(--font-header) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  padding: 0.25rem 0.6rem !important;
+  border: 1px solid var(--border) !important;
+  background: white !important;
+  color: var(--color-ink-primary) !important;
+  border-radius: 4px !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.resume-actions button:hover, .resume-actions select:hover, .linkedin-copy-btn:hover {
+  color: var(--color-accent) !important;
+  text-decoration-color: var(--color-accent) !important;
+}
+
+.linkedin-copy-btn.copied {
+  background: #DCFCE7 !important;
+  border-color: #22C55E !important;
+  color: #166534 !important;
+}
+
+/* Specific density fix for History page where actions are inside header */
+.home-header .resume-actions {
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+
+/* Writing Archive Grid */
+.post-list {
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+.post-row {
+  display: grid !important;
+  grid-template-columns: 1fr 100px 200px;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.75rem 0 !important;
+  border-bottom: 1px solid var(--surface-2) !important;
+}
+
+@media (max-width: 800px) {
+  .post-row {
+    grid-template-columns: 1fr 100px;
+  }
+  .post-tags {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .post-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .post-date {
+    font-size: 0.7rem !important;
+  }
+}
+
+.post-link {
+  font-weight: 600 !important;
+  font-family: var(--font-header);
+  font-size: 1rem;
+  color: var(--color-ink-primary) !important;
+  text-decoration: none !important;
+}
+
+.post-date {
+  font-family: var(--font-header);
+  font-size: 0.8rem;
+  color: var(--color-ink-secondary);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.post-tags {
+  font-family: var(--font-header);
+  font-size: 0.75rem;
+  color: var(--meta);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media print {
+  body {
+    background: #fff !important;
+    font-size: 11pt;
+  }
+  
+  .site-header, 
+  .index-summary, 
+  .home-purpose, 
+  .home-hero, 
+  .home-link-card, 
+  .conference-card, 
+  .linkedin-card,
+  .video,
+  .post.post-linkedin,
+  .home-phalanx-callout,
+  .resume-actions,
+  .linkedin-card-actions {
+    background: none !important;
+    backdrop-filter: none !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    padding: 1rem !important;
+  }
+
+  .no-print, .resume-actions, .linkedin-card-actions {
+    display: none !important;
+  }
+    text-decoration: underline !important;
+    color: #000 !important;
+  }
+
+  pre {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+    border: 1px solid #ccc !important;
+  }
+}

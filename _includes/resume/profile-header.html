@@ -1,11 +1,6 @@
 {% assign profile = site.data.resume.profile %}
 <header class="resume-header">
-  {% if page.resume_canonical %}
-  <h1>{{ profile.name }}: {{ profile.title }}</h1>
-  {% else %}
-  <h1>{{ profile.name }}</h1>
-  {% endif %}
-  <p class="title">{{ profile.title }}</p>
+  <h1>{{ profile.name }} <span class="subtitle">{{ profile.title }}</span></h1>
   <ul class="contact-info">
     <li><a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a></li>
     <li><a href="tel:{{ profile.contact.phone_tel }}">{{ profile.contact.phone }}</a></li>

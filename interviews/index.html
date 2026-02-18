@@ -6,26 +6,20 @@ breadcrumb: Interviews
 ---
 
 <article class="page">
-  {% include breadcrumbs.html %}
-
-  <header>
-    <h1>Interviews</h1>
-    <p class="intro">An archive of interviews with practitioners, organizers, and builders across conference and community contexts.</p>
+  <header class="home-header">
+    <h1>Interviews <span class="subtitle">Conversations on Craft</span></h1>
+    <h2 class="title">A decade of dialogues with the engineers, authors, and community builders who shaped the modern software landscape.</h2>
+    <p class="home-intro">This archive preserves nearly 200 conversations recorded at the inflection points of the Ruby and Software Craftsmanship movements. These aren't just technical interviews; they are snapshots of how we thought about architecture, community, and the ethics of building software during a transformative era.</p>
   </header>
 
-  {% assign summary = site.data.index_summaries.pages.interviews %}
-  {% if summary %}
-    <section class="index-summary">
-      {% if summary.summary %}<p>{{ summary.summary }}</p>{% endif %}
-      {% if summary.highlights and summary.highlights.size > 0 %}
-        <ul class="index-highlights">
-          {% for item in summary.highlights %}
-            <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </section>
-  {% endif %}
+  <section class="index-summary">
+    <p><strong>Archive Highlights:</strong></p>
+    <ul class="index-highlights">
+      <li><strong>Voices of Influence:</strong> Featuring Dave Thomas, Sandro Mancuso, Dean Wampler, and others.</li>
+      <li><strong>Core Themes:</strong> Deep dives into community building, the evolution of Rails, and the discipline of software craftsmanship.</li>
+      <li><strong>Searchable History:</strong> Over 90 conversations include full transcripts for technical reference.</li>
+    </ul>
+  </section>
 
   {% assign interviews = site.data.interviews.items | where_exp: "i", "i.video_asset_id" | sort: "recorded_date" | reverse %}
   {% include json-ld-itemlist.html
