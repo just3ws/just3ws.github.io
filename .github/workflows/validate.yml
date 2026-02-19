@@ -21,7 +21,17 @@ jobs:
       - name: Build and validate Jekyll output
         run: ./bin/pipeline ci
       - name: Playwright smoke check
-        run: ./bin/pipeline smoke
+        timeout-minutes: 12
+        run: |
+          set -o pipefail
+          ./bin/pipeline smoke 2>&1 | tee tmp/playwright-smoke.log
+      - name: Upload Playwright smoke log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-smoke-log
+          path: tmp/playwright-smoke.log
+          if-no-files-found: warn
       - name: Upload SEO report artifact
         if: always()
         uses: actions/upload-artifact@v4

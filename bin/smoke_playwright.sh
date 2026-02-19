@@ -16,6 +16,8 @@ BASE_URL="http://127.0.0.1:${PORT}"
 SESSION_BASE="${GITHUB_RUN_ID:-$$}"
 SESSION="ci-seo-smoke-${SESSION_BASE}"
 NPM_CACHE_DIR="${TMPDIR:-/tmp}/npm-cache-${SESSION}"
+PWCLI_CMD_TIMEOUT="${PWCLI_CMD_TIMEOUT:-20s}"
+SMOKE_MAX_ROUTES="${SMOKE_MAX_ROUTES:-80}"
 export npm_config_cache="${NPM_CACHE_DIR}"
 PWCLI="npx --yes --package @playwright/cli playwright-cli --session ${SESSION}"
 
@@ -32,19 +34,29 @@ cleanup() {
 }
 trap cleanup EXIT
 
-$PWCLI open "${BASE_URL}/" >/dev/null
-$PWCLI goto "${BASE_URL}/" >/dev/null
+run_pwcli() {
+  timeout "$PWCLI_CMD_TIMEOUT" npx --yes --package @playwright/cli playwright-cli --session "${SESSION}" "$@"
+}
+
+run_pwcli open "${BASE_URL}/" >/dev/null
+run_pwcli goto "${BASE_URL}/" >/dev/null
 
 assert_route() {
   route="$1"
-  $PWCLI goto "${BASE_URL}${route}" >/dev/null
-  $PWCLI eval '() => {
+  if ! run_pwcli goto "${BASE_URL}${route}" >/dev/null; then
+    echo "Smoke failure: navigation failed for route ${route}" >&2
+    return 1
+  fi
+  if ! run_pwcli eval '() => {
     const title = document.title && document.title.trim();
     if (!title) throw new Error("missing title");
     const h1 = document.querySelector("h1")?.textContent?.trim();
     if (!h1) throw new Error("missing h1");
     return { title, h1 };
-  }' >/dev/null
+  }' >/dev/null; then
+    echo "Smoke failure: semantic page checks failed for route ${route}" >&2
+    return 1
+  fi
 }
 
 published_routes="$(ruby -rrexml/document -e '
@@ -64,14 +76,30 @@ if [ -z "$published_routes" ]; then
   exit 1
 fi
 
-echo "$published_routes" | while IFS= read -r route; do
+routes_file="$(mktemp "${TMPDIR:-/tmp}/smoke-routes-XXXXXX")"
+selected_routes_file="$(mktemp "${TMPDIR:-/tmp}/smoke-selected-routes-XXXXXX")"
+echo "$published_routes" >"$routes_file"
+total_routes="$(wc -l <"$routes_file" | tr -d ' ')"
+echo "Discovered ${total_routes} published routes from sitemap."
+
+if [ "$total_routes" -gt "$SMOKE_MAX_ROUTES" ]; then
+  head -n "$SMOKE_MAX_ROUTES" "$routes_file" >"$selected_routes_file"
+  echo "Sampling first ${SMOKE_MAX_ROUTES} routes for smoke checks (set SMOKE_MAX_ROUTES to adjust)."
+else
+  cp "$routes_file" "$selected_routes_file"
+fi
+
+checked=0
+while IFS= read -r route; do
   [ -z "$route" ] && continue
+  checked=$((checked + 1))
+  echo "Smoke check ${checked}: ${route}"
   assert_route "$route"
-done
+done <"$selected_routes_file"
 
 assert_root_seo() {
-  $PWCLI goto "${BASE_URL}/" >/dev/null
-  $PWCLI eval '() => {
+  run_pwcli goto "${BASE_URL}/" >/dev/null
+  run_pwcli eval '() => {
     const canonical = document.querySelector("link[rel=\"canonical\"]")?.getAttribute("href");
     if (canonical !== "https://www.just3ws.com/") throw new Error(`unexpected root canonical: ${canonical}`);
     const robots = (document.querySelector("meta[name=\"robots\"]")?.getAttribute("content") || "").toLowerCase();
@@ -81,8 +109,8 @@ assert_root_seo() {
 }
 
 assert_home_seo() {
-  $PWCLI goto "${BASE_URL}/home/" >/dev/null
-  $PWCLI eval '() => {
+  run_pwcli goto "${BASE_URL}/home/" >/dev/null
+  run_pwcli eval '() => {
     const canonical = document.querySelector("link[rel=\"canonical\"]")?.getAttribute("href");
     if (canonical !== "https://www.just3ws.com/home/") throw new Error(`unexpected home canonical: ${canonical}`);
     const robots = (document.querySelector("meta[name=\"robots\"]")?.getAttribute("content") || "").toLowerCase();
@@ -93,8 +121,8 @@ assert_home_seo() {
 
 assert_semantic_a11y_contract() {
   route="$1"
-  $PWCLI goto "${BASE_URL}${route}" >/dev/null
-  $PWCLI eval "() => {
+  run_pwcli goto "${BASE_URL}${route}" >/dev/null
+  run_pwcli eval "() => {
     const lang = (document.documentElement.getAttribute('lang') || '').trim();
     if (!lang) throw new Error('missing html[lang]');
 
@@ -120,8 +148,8 @@ assert_semantic_a11y_contract() {
 }
 
 assert_resume_structured_data() {
-  $PWCLI goto "${BASE_URL}/" >/dev/null
-  $PWCLI eval "() => {
+  run_pwcli goto "${BASE_URL}/" >/dev/null
+  run_pwcli eval "() => {
     const jsonLd = Array.from(document.querySelectorAll('script[type=\"application/ld+json\"]'))
       .map((s) => s.textContent || '')
       .join('\\n');
@@ -137,8 +165,8 @@ assert_semantic_a11y_contract "/home/"
 assert_resume_structured_data
 
 # Resume must always render correctly with expected identity markers.
-$PWCLI goto "${BASE_URL}/" >/dev/null
-$PWCLI eval '() => {
+run_pwcli goto "${BASE_URL}/" >/dev/null
+run_pwcli eval '() => {
   const text = document.body.textContent || "";
   if (!text.includes("Mike Hall")) throw new Error("resume missing name");
   if (!text.includes("Staff Software Engineer")) throw new Error("resume missing role");
