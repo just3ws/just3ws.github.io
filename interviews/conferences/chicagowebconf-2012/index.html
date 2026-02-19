@@ -42,7 +42,13 @@ breadcrumb_parent_url: /interviews/conferences/
       <h2>Trusted Sources</h2>
       <ul class="index-highlights">
         {% for resource in conference_resources %}
-          <li><a href="{{ resource.url }}">{{ resource.label | default: resource.url }}</a></li>
+          {% assign resource_url = resource.url | default: resource %}
+          {% assign resource_label = resource.label | default: resource_url %}
+          {% if resource_url and resource_url != "" %}
+            <li><a href="{{ resource_url }}">{{ resource_label }}</a></li>
+          {% elsif resource_label and resource_label != "" %}
+            <li>{{ resource_label }}</li>
+          {% endif %}
         {% endfor %}
       </ul>
     </section>
