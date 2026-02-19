@@ -15,6 +15,7 @@ TEXT_NORMALIZATION_RULES = [
   [/\bu[ -]?task\b/i, "UGtastic"],
   [/\bug[\s._-]*tastic\b/i, "UGtastic"],
   [/\b(?:you|yu)g[\s._-]*tastic\b/i, "UGtastic"],
+  [/\b(?:UBITASIC|UCTASIC|uTasic|Ute\s*TASC)\b/i, "UGtastic"],
   [/\bug[\s._-]*l[\s._-]*st\b/i, "UGl.st"],
   [/\bcraftmanship\b/i, "craftsmanship"],
   [/\bsoft[ -]?ware craftsmanship\b/i, "Software craftsmanship"],
@@ -22,6 +23,11 @@ TEXT_NORMALIZATION_RULES = [
   [/\bscna\b/i, "SCNA"],
   [/\bGoToConf(?:erence)?(\d{4})\b/i, "GOTO Conf \\1"],
   [/\bGoToConf(?:erence)?\b/i, "GOTO Conf"],
+  [/\bGoToComp\b/i, "GOTO Conf"],
+  [/\bCensure\b/i, "Sencha"],
+  [/\bEFTJS\b/i, "Ext JS"],
+  [/\bSandro\s+Ancuso\b/i, "Sandra Mancuso"],
+  [/\bBrian\s+Merrick\b/i, "Brian Marick"],
   [/\bUGtastic\.com\b/, "ugtastic.com"]
 ].freeze
 
