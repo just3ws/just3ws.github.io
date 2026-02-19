@@ -42,6 +42,7 @@ breadcrumb_parent_url: /interviews/
         {% if related_entry and related_entry.links and related_entry.links.size > 0 %}
           {% for link in related_entry.links %}
             <div class="video-meta">Related: <a href="{{ link.url }}">{{ link.label }}</a>{% if link.kind %} · Type: {{ link.kind }}{% endif %}</div>
+            {% if link.description %}<div class="video-description">{{ link.description }}</div>{% endif %}
             {% if link.embed_url %}
               <div class="video-embed">
                 <iframe src="{{ link.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ link.label }}"></iframe>

@@ -14,3 +14,4 @@ Reference links for official GOTO Conference interviews/presentations for years 
 ## GOTO Chicago 2015
 
 - https://www.youtube.com/watch?v=xDuwrtwYHu8&list=PLEx5khR4g7PKFs3Y-gWd8TX4Y_5yTyUTP
+- https://gotocon.com/chicago-2015/speakers/

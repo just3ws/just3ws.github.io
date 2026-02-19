@@ -104,6 +104,7 @@ interviews.each do |interview|
     f.puts '        {% if related_entry and related_entry.links and related_entry.links.size > 0 %}'
     f.puts '          {% for link in related_entry.links %}'
     f.puts '            <div class="video-meta">Related: <a href="{{ link.url }}">{{ link.label }}</a>{% if link.kind %} · Type: {{ link.kind }}{% endif %}</div>'
+    f.puts '            {% if link.description %}<div class="video-description">{{ link.description }}</div>{% endif %}'
     f.puts '            {% if link.embed_url %}'
     f.puts '              <div class="video-embed">'
     f.puts '                <iframe src="{{ link.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ link.label }}"></iframe>'
