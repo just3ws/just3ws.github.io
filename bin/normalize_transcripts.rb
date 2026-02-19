@@ -20,6 +20,8 @@ TEXT_NORMALIZATION_RULES = [
   [/\bsoft[ -]?ware craftsmanship\b/i, "Software craftsmanship"],
   [/\bchipy\b/i, "ChiPy"],
   [/\bscna\b/i, "SCNA"],
+  [/\bGoToConf(?:erence)?(\d{4})\b/i, "GOTO Conf \\1"],
+  [/\bGoToConf(?:erence)?\b/i, "GOTO Conf"],
   [/\bUGtastic\.com\b/, "ugtastic.com"]
 ].freeze
 
