@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO="${1:-just3ws/just3ws.github.io}"
+WATCH_MODE="${2:-}"
+
+if ! command -v gh >/dev/null 2>&1; then
+  echo "error: gh CLI is required." >&2
+  exit 1
+fi
+
+if ! gh auth status >/dev/null 2>&1; then
+  echo "error: gh CLI is not authenticated. Run: gh auth login" >&2
+  exit 1
+fi
+
+echo "Repository: ${REPO}"
+echo
+
+echo "Latest workflow run (Build and Validate Site):"
+gh run list \
+  --repo "${REPO}" \
+  --workflow "Build and Validate Site" \
+  --limit 1 \
+  --json databaseId,status,conclusion,createdAt,updatedAt,url,headBranch,headSha \
+  --jq '.[] | "  id=\(.databaseId) status=\(.status) conclusion=\(.conclusion // "pending") branch=\(.headBranch) sha=\(.headSha[0:7])\n  created=\(.createdAt) updated=\(.updatedAt)\n  url=\(.url)"'
+
+echo
+echo "Latest GitHub Pages build:"
+if gh api "repos/${REPO}/pages/builds/latest" >/dev/null 2>&1; then
+  gh api "repos/${REPO}/pages/builds/latest" \
+    --jq '"  status=\(.status) error=\(.error.message // "none")\n  commit=\(.commit[0:7]) created=\(.created_at) updated=\(.updated_at)\n  url=\(.url // "n/a")"'
+else
+  echo "  unavailable (Pages API not enabled for this repo or insufficient token scope)"
+fi
+
+if [[ "${WATCH_MODE}" == "--watch" ]]; then
+  RUN_ID="$(gh run list --repo "${REPO}" --workflow "Build and Validate Site" --limit 1 --json databaseId --jq '.[0].databaseId')"
+  if [[ -n "${RUN_ID}" ]]; then
+    echo
+    echo "Watching workflow run ${RUN_ID}..."
+    gh run watch "${RUN_ID}" --repo "${REPO}" --exit-status
+  fi
+fi

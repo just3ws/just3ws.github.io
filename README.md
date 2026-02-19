@@ -79,6 +79,12 @@ bundle install
 # Build and validate
 ./bin/pipeline ci
 
+# Check latest CI + Pages deploy status
+./bin/deploy_status
+
+# Watch the latest CI run to completion
+./bin/deploy_status just3ws/just3ws.github.io --watch
+
 # Run unit tests for generator/template logic
 bundle exec rspec
 
