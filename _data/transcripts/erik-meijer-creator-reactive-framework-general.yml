@@ -1,0 +1,450 @@
+---
+content: |-
+  Hi, it's Mike again with Uptastic. I'm sitting down at GoTo
+  Chicago with Eric Meyer. Eric Meyer is,
+   well if you've worked with Microsoft technologies over the
+   last decade, you've worked with something
+   that Eric has created or been a part of, from C# to the
+   Azure cloud platform. Now you're away from
+   Microsoft and you're working a lot more on the open source
+   world. Well, first off, thank you for
+   sitting down with me, but can you tell me a little bit
+   about what this platform that you just spoke
+   about, this reactive framework, what is that and what is
+   that? Okay, so I can try to explain that
+   in general terms because that I think is also where you
+   mentioned open source, where the kind of
+   the value of open source comes in. So the thing is if you
+  're trying to compose software, in my view,
+   there are four different kinds of effects that as a
+   developer you have that you have to take
+   into account. So let's look at the simple, you know, when
+   you're doing, when you're programming
+   Java and you're calling a method, typically the method
+   returns one value and that method is actually
+   synchronously. So you call, you know, two string and, you
+   know, that call blocks and then returns
+   a single string. Right. Right. So that's kind of the
+   simplest synchronous call that returns one
+   value. So input, wait, output. Yes. Now the second thing
+   that what you do is that if you
+   make a call, synchronous call, and what you get back is a
+   collection of values,
+   like an iterable in Java. Right. So you make a call and now
+   you get back an iterable, but
+   that iterable represents multiple values, but also they are
+   synchronous because you, you call next,
+   next, next, and each call to next is blocking. Right. Okay.
+   But the, the, the, the important
+   thing is that there's two, you know, ways to compose your
+   program. One where you have a
+   single result and one where you have multiple results. And
+   then, you know, when you have
+   multiple results, you loop over that and, and so on. But
+   those are for, for synchronous programs,
+   those are the two kind of main, um, ways to compose your
+   program. Now let's go to the
+   asynchronous case because that's the very important now
+   that we're moving to more kind of, you know,
+   distributed world. When you make a call, you don't want to
+   be blocked because there's like latency,
+   errors, whatever, you know, we all know the kind of fall
+  acies of distributed computing.
+   So what you want to do is you want, you want to make these
+   calls asynchronous. Right. Now,
+   and there's a lot of, uh, talk these days in JavaScript, in
+   many languages about how to deal
+   with asynchronous calls. And in my opinion, when you have
+   an asynchronous call that returns a single value,
+   um, what you do is you return some kind of future or, you
+   know, promise or whatever,
+   how you want to call it. And then .NET, that is, they use
+   the type task for that. So a task
+   represents a computation that is asynchronous, that has a
+   single result. So you make a call,
+   you get back this thing that represents, you know, a
+   promise that, you know,
+   there will be a value at some point. Um, now what Rx is, is
+   that it complements,
+   this picture by having, what happens if you have something
+   that returns multiple results
+   asynchronously. So say you make, um, the most natural
+   examples, maybe Twitter, you make a call,
+   you send a query to Twitter, and what you get back is a
+   stream of all the tweets. Right. And you're
+   not asking, give me the next tweet. No, Twitter will kind
+   of, you know, notify you when the next tweet.
+   Just pulls up a buffer, kind of.
+   Well, it just notifies you with events or something, or
+   like your, and even on your local machine, if
+   you're doing, um, events processing, like your mouse moves,
+   or so on, you're not asking the mouse,
+   give me the next mouse move. Right. You get notified, so
+   you get a sequence of, of collections.
+   Sorry. Probably shouldn't drink, uh, soda. It's okay. Um,
+   now, so, so, so what Rx is, is it, it's
+   trying to kind of, you know, deal with asynchronous comput
+  ations with streams of data, asynchronous data streams. Okay
+  .
+   And, and, and, and if you look at languages like Erlang,
+   they have embraced that, that same paradigm for a long time
+  , right?
+   Where you do message passing, you have two different agents
+   that send messages to each other, um, and, and so what
+   this is trying to do is to define an interface that you can
+   put on, on different services, and then you can glue
+   these things together using this interface.
+   Okay. Uh, a lot of the examples you gave were in, in .NET.
+   Is this a .NET only thing?
+   Ah, that's a very good question.
+   So one of the, um, things is that since this is an, an
+   abstract interface in the sense of abstract, it's a concept
+  ually abstract, there's no language
+   dependency. So we, we, we, um, on the open source side, it
+  's like, you know, rx.codeplex.com.
+   Okay.
+   Where we open source this. We have versions for JavaScript,
+   for .NET, and for C++. The C++ one is not as mature.
+   Right.
+   Um, then Netflix has written a Java implement.
+   It's a Java implementation. Um, GitHub has written an
+   Objective-C implementation, and in Dart, uh, Google has the
+   Dart streams library, which is also, um, based on these
+   principles.
+   Okay.
+   And then other people have done, like, Python, and, and
+   Ruby, and so there's, like, you know, again, this idea of
+   having asynchronous data streams is not tied at all to a
+   single language, and that's exactly also what I want,
+   because you don't know if you're on, on the server side,
+   use Java, and how to use Java.
+   And I, on the client side, use JavaScript, and I still want
+   to, kind of, exchange, you know, events with you.
+   Right.
+   So, um, that's, I think, very important that, that it's not
+   tied to a particular language.
+   Okay. So it's a little bit more like a protocol?
+   It's a little bit more like, like, like, like a protocol.
+   Okay.
+   Um, because the, the, the, what we call the Rx grammar, or
+   the Rx design guidelines, so if, if you and I are exch
+  anging messages, um, what the protocol says is, like, what
+   is the, you know, how are the messages represented, what is
+   the binary format, or what is the kind of, you know, what
+   is the state machine that we use?
+   So Rx has a very simple state machine like that, so I can
+   send you a number of messages that are ordered, and then I
+   can terminate that stream successfully, that means you don
+  't get any more.
+   I can say something went wrong, and then, you know, so that
+  's really the, the, the, the protocol that, that there is,
+   but it, it, it makes certain kind of assumptions, so, but,
+   what, what is, you know, I, I'm, I'm not so sure if, if it
+  's really relevant to make a distinction between a protocol
+   and an API, because you can also say, if you have an API
+   for files, right, you have to, you open your file, you
+   write, and you read, and you close the file, that's kind of
+   a protocol, too.
+   So, for me, I'm, yeah, I don't, it's somewhere in, in
+   between, it's a, well, I, I think, I, I like to emphasize
+   what, what is the same instead of what's different, so
+   there are certain ways that you should use, or expectations
+   of, in what order you make calls, and, and whether you want
+   to call that a protocol or not, I mean, that, I'm fine with
+   either way.
+   Well, is it kind of like if, if you start to use the word
+   protocol, it becomes kind of rust, and it becomes dogmatic.
+   Yes.
+   And then, then people.
+   Because protocol is very formal, and it's like, everybody
+   has to do it exactly this way, and if you don't do it this
+   way, you're not, you're not reactive.
+   Yes.
+   That's the next thing you're going to say, this isn't rust
+  ful, this isn't reactive.
+   Yes, and, and, and so I'm trying to be very easygoing with
+   that, because, for example, you know, if you have an
+   existing service, for example, I, I, I'm, in the past weeks
+  , I've implemented a wrapper for Logly, which is a, is a, a
+   logging service, so what you can do is you can send it
+   values, you know,
+   events you know whatever they're just like fight streams
+   and then you can query them later so it's
+   like now what i did is i wrapped that in a reactive you
+   know shell right and so the underlying thing
+   doesn't know anything about rx and you know it's just
+   whatever you know the rest api that that the
+   locally guys and exposed but now you know by making your
+   client library you know talk rx now
+   there's no difference between you know um locally or your
+   mouse and so now you can kind of you know
+   mesh together you know things that come from locally with
+   your mouse or and you can visualize
+   it so it allows you to compose so by by making exposing all
+   these things with the same interface
+   then you can compose them
+   but you you don't force the interface kind of you know all
+   the way down so that's kind of you know
+   so you can always it's like bridging the protocols right
+   you can always you know and one of the
+   things i think about that's interesting for as a is more of
+   a i i'm a business developer i'm
+   going to implement just an implementer um is thinking about
+   the log not as
+   just a place where things go to die but that the log is is
+   something that that's alive and
+   can feed back into the application and provide information
+   for back into the app not just oh this
+   is a thing that i go to figure out when something went
+   wrong yeah so so this is it's kind of
+   interesting if you if you look at and and again you have to
+   be very careful that you don't abstract
+   too much because then everything looks the same but if if
+   you look at the ui for example right
+   what is a ui well i'm sending things into the ui and maybe
+   to change the back color of a button or
+   to kind of you know make a button um disabled and out of
+   the ui come a stream of events like mouse
+   clicks and mouse moves and and button clicks and then my my
+   code my ui code transforms that stream
+   of of ui events into other events that it sends into the ui
+   so there's this loop where there's the
+   ui and then my kind of event processing and they are kind
+   of coupled in a loop
+   now if you look at something like locally for example
+   there's no difference there because my program sends events
+   to lovely and then can query those
+   events and then go back so you get the kind of same loop so
+   and suddenly a lot of these things
+   now look very similar right and because you're observing
+   you know like it's like
+   when you write ui code it's like you're observing the ui
+   and based on what you see you're kind of
+   doing something with the ui so you know what is your
+   logging system you're observing your running
+   code and based on what happens you can kind of you know do
+   something you respond to that yes and like
+   when you say yes exactly and when you say logging you know
+   that goes there to die yeah then why do
+   you do it you do the logging to observe the behavior of
+   your code such that you can you know
+   intercept when something you know unexpected happens or
+   yeah and well in a way it's thinking
+   about what my relationship is to the application and then
+   starting to abstract what i do where where
+   i run my app and then i watch the logger and i'm watching
+   messages fly by and then i'm like oh that
+   wasn't right then i go do something well okay now i can
+   start to abstract that thing that i did and
+   realize that that stream is data yep and i am the observer
+   watching that data
+   and then i'm going to react and and i think that's just a
+   way to kind of um
+   realize what's going on with the reactive yes that's that's
+   that's how i just processed it now
+   yes and that's exactly right and then what what i'm trying
+   to do is that you can automate yourself
+   away yeah so you write then now what what the next step i
+   would say to you is that now write
+   some code that will do what you what i did yeah and then
+   and then now you can kind of you know
+   create more value for your business because now because
+   once you can automate it really you know
+   a human doesn't need to be there or one thing that i'm also
+   trying to do is that
+   there's many things where the data like with with these
+   logs for example i think this is a
+   nice example there's so much data in the logs but you what
+   you have to do is you have to turn
+   that into something actionable for humans right and so i
+   think that that's one of the things that
+   i'm trying to make easy where you can take massive amounts
+   of data and then you know use the computer
+   to kind of you know munch that such that at some point you
+   get something that's useful at the human
+   scale right because we cannot deal with millions of events
+   per second i mean even nobody can do
+   that right because we can maybe deal with like you know one
+   event or alert every five minutes
+   right so what you want to do is that's kind of you know you
+   want to boil down all that data
+   into something that's consumable by humans and the rest
+   should all be automated uh to take a step back
+   a little bit so we talked about how this is a this is a uh
+   not to use word protocol but this is a way
+   that many different types of platforms and languages can
+   interact with each other uh so i'm
+   assuming you have to share the this these concepts with
+   many different audiences uh you you know a
+   microsoft audience who's implementing in dot net a javas
+  cript audience who might be running node
+   um or or running browser-based applications
+   um or a java so i'm just wondering how you share this
+   message do you when you go and talk about
+   reactor framework do you use microsoft examples of the j
+  avascript or do you tailor for for what
+   they do or for java again okay so this is a very good
+   question so what what you always should do is
+   that you should kind of you know phrase things in terms
+   that are familiar to your target audience
+   so if you're talking with javascript people you should use
+   you know javascript
+   um examples um and so one of the things that i really enjoy
+   now being you know on my own is that
+   it it's in some sense much easier to kind of you know go
+   and and and embed yourself in a different
+   community um so and and we i already gave the example of
+   netflix that did rx for java right
+   and while the the underlying ideas are the same that there
+  's very big differences actually in the
+   java and c-sharp languages that then affect the the
+   concrete design of the api and for example in
+   dotnet there's this notion of extension methods where you
+   can take any type and you can add
+   you know they're not virtual but you can add like instance
+   methods to that type independent of the
+   type itself so for example if you have array of int i can
+   add a new method like conceptually to
+   array of and in java you cannot do that java 8 has you know
+   virtual extension methods on interfaces
+   that are slightly different but so for example the the
+   design of rx for java you know has to
+   stay within the constraints of java so what i'm trying to
+   do when i work with with people that that
+   do an rx implementation for their language is to make sure
+   that it feels natural for their environment but still
+   embodies the same underlying more abstract i would say
+   mathematical principles and let me give you
+   another example in javascript on array there's already
+   functions like map filter and so on so
+   when you do rx which is you know the push based version of
+   that
+   you're not going to call them select and select many you
+   call them map and where because you know
+   that's natural of course that are natural exactly so that's
+   kind of what i'm
+   really looking forward to one of the things that i'm really
+   looking forward to is to work with all
+   these different language communities to make this thing
+   kind of feel natural for what they're doing
+   and then still being able to interoperate between you know
+   machines or between languages
+   um where the protocol is kind of you know consistent okay
+   but the implementations
+   should feel natural so let me give you another example when
+   we did the javascript version in the
+   beginning in javascript the casing of identifiers is
+   opposite
+   of c sharp so in c sharp it's like you know two strings
+   starts with uppercase i always forget
+   whether that's camel or pascal case i always have to do we
+   look at that up on wikipedia whereas in
+   javascript it's it's different right right so what we did
+   in the beginning is we used the
+   the dot net naming conventions and then all the javascript
+   people would go like
+   and then i was like oh man that's bike shedding but then i
+   realized no i'm wrong because i find
+   it annoying too if if you have to go the other way exactly
+   so we changed that and now
+   you know then jafar hussein from netflix said oh we should
+   change the names too so
+   my thinking has evolved very much that now it's like okay
+   you do what's natural for the language
+   and then um you know make it still conceptually the same
+   and then you pass the kind of same test
+   so there's there's a whole bunch like i don't know like
+   3000 unit tests
+   and that specify the semantics so it's really
+   maintaining the semantics across languages but with
+   different implementations and and
+   i must say it's it's that is the hardest part is that some
+   things don't translate so you have to
+   which is also nice right like for example what i mentioned
+   with the extension method so you
+   cannot just take the c sharp um implementation and just
+   plug it into a different language so
+   you have to really work hard on that to to make it natural
+   and to make it possible in a different language
+   okay if i'm if i have some pet language and i'm looking at
+   i'm very interested in this reactive
+   stuff and i want to implement it in in my let's just say
+   python let's imagine python doesn't have
+   anything and where where would i go to learn about um or or
+   talk to people and understand
+   what how to implement it what what the the underlying
+   principles are
+   okay so that that that's that's a very good question so
+   there's um there's learn rxrx there's learn rxrx
+   dot com so that that's uh one of the dotnet early users
+   that has written a book there's also paul
+   betts and jesse liberty have written a book a very thin
+   book on on rx um which i like because it's
+   thin and then there's the rx guidelines that give you a
+   little bit more of the semantics okay um and
+   and and so i would say you know you start playing with the
+   dotnet version or the java version
+   um and then you know you you go
+   from there the other thing is that in some sense the javas
+  cript version that we have
+   um for dotnet is a little bit like a reference
+   implementation because javascript doesn't have
+   threading and and so so in many cases the the
+   implementation there is simpler than the dotnet
+   version which is highly also highly optimized it's very
+   mature code it's like you know so because
+   it's it's written for you know for performance rather than
+   clarity you know looking at that code
+   may not help you that much okay so but the common reference
+   seems to be javascript yeah so javascript
+   is probably the kind of thing that that's the most approach
+  able okay and then the concepts are not
+   that difficult i mean that's the things like well i think
+   you have to be careful that you know i talk
+   a lot about duality and category theory which might you
+   know scare people off but this has
+   nothing to do in some sense with that that's one way to
+   explain it another way to to explain it is
+   say you're a javascript programmer right javascript already
+   has a notion of events
+   everything in javascript is event based right now one way
+   to look at rx is to say well but
+   events in javascript are not something that are first class
+   so i cannot have an array of events
+   or i cannot have a function that returns an event right
+   right just it's a byproduct
+   of the environment exactly and i think yes and what rx
+   gives you is it makes events into things
+   that you can manipulate and and pass around so it's one way
+   to that rx is sometimes also called
+   it's like first class events so in that sense you know it's
+   very familiar to javascript programmers
+   because it it takes these concepts that they already know
+   and another concept that they already
+   know like arrays arrays are first class things i can have a
+   function that takes an array i can have
+   an array and now you you allow the same for events and the
+   power of that is that you can now decouple
+   the source of the event say a button that fires events from
+   the events itself so for example i can
+   now create an array that has the values and then make that
+   into an event source for example to test
+   so i don't have to have a button that fires the events but
+   i just put the values in an array and
+   say to event and now that thing serves as an event source
+   and so that's the kind of trick so it's really conceptually
+   not that hard um but then of course
+   the subtlety is once you make that first class you have to
+   kind of be careful because of the
+   asynchrony okay well thank you very much for taking the
+   time to stay with me i really appreciate it
+   yes and you know i would say try it out and if you yeah we
+  're always happy to accept you know
+   contributions yeah and you said it's on codeplex it's on
+   codeplex and and the netflix version is on
+   github and that's uh java rx on github the netflix side
+   okay and learn rx is is the place yes yes and
+   so i i i you know you will probably put those yeah those
+   links will be in there okay perfect
+   thank you thank you thank you so much okay that's my edit
+   point

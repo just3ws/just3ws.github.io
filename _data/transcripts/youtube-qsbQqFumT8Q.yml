@@ -1,0 +1,216 @@
+---
+content: |-
+  Hi, it's Mike with UGtastic. I'm here with GoToConf2015. I
+  'm sitting here with Max DeMarzi, who just gave a talk about
+   what finance companies can learn from dating sites, or
+   dating sites can learn from finance.
+   I don't know. I'm sure there's some people, you know, don't
+   call me a gold digger kind of thing. I don't know, but it
+   was really funny in my head before I said that.
+   So anyway, thank you very much for taking the time to speak
+   with me, Max. So that talk is kind of like abstract. What
+   does it mean?
+   So the title was obviously chosen by marketing people who
+   believe that Chicago is nothing but finance companies,
+   which obviously we know is not true.
+   But I mean, it's a pretty significant population.
+   Yeah, absolutely. And putting all kinds of finance, right?
+   The idea here is not so much about specifics, but really
+   more about the overall theme, which is graphs, right?
+   It is to think of your data as graphs.
+   And then...
+   And the kind of things you can do with it.
+   So for the dating example, we went over things like your
+   friends or friends graph, and how usually you start out
+   with dating people in the real world, and then you kind of
+   venture on to the online world from there.
+   Things like shared interests, shared likes, how people can
+   connect based on the things that they mutually find
+   interesting about the other person.
+   Then we went on to things like the safety graph, finding
+   people who are cheaters, who are already married, who are
+   looking for some side action and not really into a long
+   distance relationship, or spammers, people who are
+   expecting you to pay 20 bucks a month.
+   Who watch them on cam type things, or even like the
+   professionals who are sometimes on dating sites.
+   And then from there, looking to different graphs of finance
+  .
+   Once again, looking at consumer graphs, how vendors, how
+   they interact with each other, who's there, who purchases
+   from who, what kind of items they're purchasing.
+   We're looking at asset graphs, managing the underlying
+   assets of your portfolio, and doing funds of funds of funds
+   type analysis down to the lower level.
+   Risk analysis over that whole spectrum.
+   And there are bits and pieces, traders have social networks
+   and also analyzing social networks for interesting
+   financial data, like stock tweets.
+   Sometimes you see a tweet that would actually move a stock
+   or a commodity up and down quite a bit, depending on what
+   that information is.
+   Sometimes it's not even true, you have to understand.
+   Like April 1st, we had Elon Musk talking about Project W
+   was supposed to be like a watch from Tesla.
+   It's not really true.
+   He was talking about something else, but it was April 1st.
+   People thought it was true, and then they retweeted it, and
+   then the stock went up and down for a few seconds.
+   Some people don't look at their calendar.
+   Yeah.
+   I mean, usually the data you get from finance has, hey,
+   this is a number fool joke, but Twitter data doesn't have
+   the disclaimer.
+   Yeah.
+   A few years ago, we had a mini crash because somebody
+   tweeted that Barack Obama had been blown up.
+   So we had a few seconds where everything crashed, and then
+   everything came back up again.
+   People realized how it was just a lie.
+   But that kind of thing can happen all the time.
+   The more real time we are now, the more likely this kind of
+   thing will happen.
+   Yeah.
+   I mean, when you're talking about the impact of Twitter and
+   looking at a tool like Neo4j,
+   so I'm going to, on behalf of your sponsor here at GoToComp
+  , I'm going to go ahead and say,
+   can you tell us a little bit about what Neo4j is and how, I
+   mean, when you say graph database.
+   What does that all mean?
+   Yeah, what does that all mean?
+   Sure.
+   So a few years ago, we had this NoSQL movement come around,
+   and NoSQL kind of went two different ways.
+   One way is the...
+   Let's drop joins altogether and not have them.
+   So document store said, let's bundle up everything into a
+   document and save that so we don't have to do the joins.
+   The key value store said, we don't even know what joins are
+  .
+   We're just key value stores.
+   The column store said, we don't do joins very well.
+   Either we look at column families instead.
+   We're going to deal with those kind of things.
+   And that's one way of dealing with not joining, which is
+   not joining.
+   The other way is by forcing those relationships to be first
+   class sediments.
+   So we save relationships down to disk, relationships down
+   to memory, and they basically become pointers in memory.
+   So it's...
+   It's very fast for us to follow a relationship, but it's
+   not very fast for a key value store or someone else to do
+   that kind of thing.
+   Now, there are some trade-offs.
+   You lose some speed.
+   You lose some rights because of this kind of thing.
+   But if you have a domain that's very graphic in general,
+   like asset management, security, people, information that
+   is connected,
+   then we're a great database to put your data in.
+   Right.
+   And as far as being involved in the community, I know you
+  're involved with a GraphDB user group.
+   Here in Chicago, can you tell us a little bit more about
+   that and kind of bring us up to speed on what's going on in
+   that world?
+   Sure.
+   So I just came off winter.
+   The last meetup I had was in February at PwC, and thank you
+   to those guys for sponsoring us.
+   I don't have a real office downtown, so I'm kind of in the
+   air as far as where I host the meetups, and I try to vary
+   them.
+   So actually, if you have a meeting place and you'd like me
+   to come and do a talk at your place, please invite me, and
+   I'll be happy to do it.
+   Hopefully, you tend to get more going this...
+   The meetup group in London, for example, has 2,000 members.
+   They're the biggest no-sequel meetup group in Europe
+   because they have an office there, and they have multiple
+   people kind of taking care of it.
+   I'm a one-man army trying to do it here, plus I fly a lot,
+   so it makes it a little bit tougher.
+   Yeah, but if you have a space and would like to learn more
+   about GraphDB, just please let me know, and we can work
+   something out.
+   So working in a community, I mean, there's Avid and Flow
+   when you're helping to run a community or trying to
+   facilitate it.
+   I mean, is it something that's been...
+   And just, you know, life circumstances have been kind of
+   pulling on you and making it hard to do the user groups, or
+   is it maybe a waning interest here in Chicago?
+   What is the dynamic that you're feeling?
+   No, it's not so much as a schedule.
+   Yeah.
+   I was home for a few weeks, and then I was in Atlanta, I
+   was in Boston, I was in Houston, and I'm here again.
+   And I try to schedule something a month out, but if Neil
+   says you need to go to see a customer in Delaware,
+   on Friday night, I've got to be there on Monday morning,
+   whatever plans I had are out the window.
+   You don't know how many plays I missed, musicals, and so on
+  , doing this kind of stuff.
+   But, you know, my company needs me to be where they need me
+   to be, and I've got to do what I've got to do.
+   Right.
+   So the community kind of comes secondary.
+   It's been hard to find other folks who kind of would do
+   some presentations.
+   We have a few customers, and they've done presentations,
+   but I've kind of run out of those.
+   So if you are working on a Neo4j project or a proof of
+   concept or something you want to share, I'd be glad to have
+   you as well.
+   So I'm not the only one doing all the talking either.
+   You know, I talk on Neo4j for hours, my God, but at the
+   same time, you know, it'd be nice to hear somebody else's
+   perspective.
+   Right, right.
+   And it's GraphDB focused, so it could be anything that's, I
+   mean, I don't know, are there any other players out in the
+   GraphDB ecosystem?
+   Sort of.
+   I mean, we had Titan for a little bit, and then they kind
+   of went to hibernate into the data stacks sort of things.
+   Orient is also, I guess, number three, or now number two,
+   but they're just not around in Chicago either, so I wouldn
+  't know anyone.
+   I wouldn't even invite to come to a talk.
+   Yeah.
+   So it's kind of in Chicago, GraphDB is kind of niched to
+   Neo4j.
+   At this point, I mean, I think eventually that will change
+   as the space gets bigger.
+   You know, we could venture out into some of the graph
+   processing engines, so Spark is getting a lot of attention,
+   maybe do some graphics or Spark Lab type stuff.
+   If someone's interested in wanting to do a talk about that,
+   you have a built-in audience who kind of already knows
+   graphs and can relate quickly,
+   so you can jump into, hey, show me something cool with
+   graphs, not just what they're all about.
+   Yeah, it doesn't always have to be an intro to graphs.
+   No, absolutely.
+   Well, intros are fine, though.
+   I mean, for everything that you learn, someone else doesn't
+   know it.
+   Right, right.
+   So the more you can share online, the more you can share
+   with people, you're making someone's day better.
+   Yeah.
+   I mean, we do not have the capacity to learn everything
+   that's going on out there.
+   You know, there's 300 databases, there's all these
+   frameworks.
+   Every week a new JavaScript framework comes along, you can
+  't learn it all.
+   If someone learns it for you and then tells you the good
+   parts, that's nice to know.
+   Okay.
+   Well, thank you very much for taking the time to speak with
+   me.
+   Appreciate it.
+   Mm-hmm.
