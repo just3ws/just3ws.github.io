@@ -20,6 +20,8 @@ breadcrumb_parent_url: /interviews/conferences/
     <p class="intro">SCNA 2011 brings together 11 interviews from 2011. Recurring themes include community building and user-group organizing, Boston SC, and Chicago Alt.NET. Featured interviewees include Bobby Johnson, Charler Baker, Drew Shefman, and Dustin Updyke.</p>
   </header>
 
+
+
   <section class="index-summary">
     <ul class="index-highlights">
 
@@ -31,6 +33,20 @@ breadcrumb_parent_url: /interviews/conferences/
 
     </ul>
   </section>
+
+
+
+  {% assign conference_resources = site.data.resources.conferences["scna-2011"] %}
+  {% if conference_resources %}
+    <section class="index-summary">
+      <h2>Trusted Sources</h2>
+      <ul class="index-highlights">
+        {% for resource in conference_resources %}
+          <li><a href="{{ resource.url }}">{{ resource.label | default: resource.url }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
 
 
 

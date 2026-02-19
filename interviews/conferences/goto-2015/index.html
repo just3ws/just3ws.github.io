@@ -20,6 +20,8 @@ breadcrumb_parent_url: /interviews/conferences/
     <p class="intro">GOTO Conference 2015 brings together 27 interviews from 2015. Recurring themes include conference speaking and presentation skills. Featured interviewees include Anita Sengupta, Dean Wampler, Rebecca Parsons, and Alexandra Masterson.</p>
   </header>
 
+
+
   <section class="index-summary">
     <ul class="index-highlights">
 
@@ -31,6 +33,20 @@ breadcrumb_parent_url: /interviews/conferences/
 
     </ul>
   </section>
+
+
+
+  {% assign conference_resources = site.data.resources.conferences["goto-2015"] %}
+  {% if conference_resources %}
+    <section class="index-summary">
+      <h2>Trusted Sources</h2>
+      <ul class="index-highlights">
+        {% for resource in conference_resources %}
+          <li><a href="{{ resource.url }}">{{ resource.label | default: resource.url }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
 
 
 
@@ -62,6 +78,24 @@ breadcrumb_parent_url: /interviews/conferences/
          Focus: Developer education, pragmatic engineering, and long-term technical judgment.
         
           <a href="/interviews/youtube-PENvwc0402I/">Interview</a>
+        
+      </li>
+
+      <li>
+        <strong>Corey Haines</strong>
+        
+        
+        
+          <a href="/interviews/youtube-xhkWYAakUgs/">Interview</a>
+        
+      </li>
+
+      <li>
+        <strong>Anita Sengupta</strong>
+        
+        
+        
+          <a href="/interviews/youtube-c9FHvxx5KCI/">Interview</a>
         
       </li>
 

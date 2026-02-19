@@ -18,6 +18,27 @@ confs = Generators::Core::YamlIo.load(conf_path, key: "conferences")
 comms = Generators::Core::YamlIo.load(comm_path, key: "communities")
 index_summaries = Generators::Core::YamlIo.load(index_summary_path)
 interviewee_signals = Generators::Core::YamlIo.load(interviewee_signals_path, key: "contributors")
+default_notable_names = [
+  "Rich Hickey",
+  "Erik Meijer",
+  "Adrian Cockcroft",
+  "Brian Marick",
+  "Sandro Mancuso",
+  "Corey Haines",
+  "Dave Thomas",
+  "Rebecca Parsons",
+  "Gary Bernhardt",
+  "Dean Wampler",
+  "Giles Bowkett",
+  "Avdi Grimm",
+  "Aaron Patterson",
+  "Ola Bini",
+  "Evan Phoenix",
+  "Evan Light",
+  "Andy Lester",
+  "Anita Sengupta",
+  "James Edward Grey III"
+].freeze
 
 def interview_count_label(count)
   count.to_i == 1 ? "1 interview" : "#{count} interviews"
@@ -34,7 +55,7 @@ def render_template(template_path, output_path, locals)
   File.write(output_path, renderer.result(binding))
 end
 
-def build_notable_contributors(matching_interviews, signals_by_name, max_items: 6)
+def build_notable_contributors(matching_interviews, signals_by_name, fallback_names: [], max_items: 12)
   seen = {}
   notable = []
 
@@ -57,6 +78,34 @@ def build_notable_contributors(matching_interviews, signals_by_name, max_items: 
       break if notable.size >= max_items
     end
     break if notable.size >= max_items
+  end
+
+  if notable.size < max_items && fallback_names.is_a?(Array) && !fallback_names.empty?
+    interview_by_name = {}
+    matching_interviews.each do |interview|
+      Array(interview["interviewees"]).each do |name|
+        interview_by_name[name] ||= interview
+      end
+    end
+
+    fallback_names.each do |name|
+      break if notable.size >= max_items
+      next if seen[name]
+
+      interview = interview_by_name[name]
+      next unless interview
+
+      signal = signals_by_name[name] || {}
+      seen[name] = true
+      notable << {
+        "name" => name,
+        "headline" => signal["headline"],
+        "focus" => signal["focus"],
+        "interview_id" => interview["id"],
+        "interview_title" => interview["title"],
+        "topic" => interview["topic"]
+      }
+    end
   end
 
   notable
@@ -143,7 +192,11 @@ confs.each do |conf|
     i["conference"] == conf_name && (!conf_year || i["conference_year"] == conf_year)
   end
   sorted_matching = matching.sort_by { |i| i["recorded_date"].to_s }.reverse
-  notable_contributors = build_notable_contributors(sorted_matching, signals_by_name)
+  notable_contributors = build_notable_contributors(
+    sorted_matching,
+    signals_by_name,
+    fallback_names: default_notable_names
+  )
   intro = conf["summary"] || (conf_year ? "Interviews recorded at #{conf_name} #{conf_year}." : "Interviews recorded at #{conf_name}.")
   liquid_assign =
     if conf_year
@@ -172,6 +225,13 @@ comms.each do |comm|
   dir = File.join(comms_dir, comm["slug"])
   FileUtils.mkdir_p(dir)
   liquid_assign = "{% assign items = site.data.interviews.items | where: \"community\", \"#{comm["name"]}\" | sort: \"recorded_date\" | reverse %}"
+  matching = interviews.select { |i| i["community"] == comm["name"] }
+  sorted_matching = matching.sort_by { |i| i["recorded_date"].to_s }.reverse
+  notable_contributors = build_notable_contributors(
+    sorted_matching,
+    signals_by_name,
+    fallback_names: default_notable_names
+  )
 
   render_template(
     detail_template_path,
@@ -181,7 +241,7 @@ comms.each do |comm|
     liquid_assign: liquid_assign,
     conference_slug: nil,
     highlights: comm["highlights"],
-    notable_contributors: [],
+    notable_contributors: notable_contributors,
     parent_name: "Interviews by Community",
     parent_url: "/interviews/communities/",
     grandparent_name: "Interviews",

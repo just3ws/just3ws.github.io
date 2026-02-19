@@ -20,6 +20,8 @@ breadcrumb_parent_url: /interviews/conferences/
     <p class="intro">WindyCityRails 2012 brings together 15 interviews from 2012. Recurring themes include Ruby and Rails practice, conference speaking and presentation skills, and community building and user-group organizing. Featured interviewees include Adam Grandy, Amy Kinney, Benjamin Oakes, and Brian Liles.</p>
   </header>
 
+
+
   <section class="index-summary">
     <ul class="index-highlights">
 
@@ -33,6 +35,36 @@ breadcrumb_parent_url: /interviews/conferences/
   </section>
 
 
+
+  {% assign conference_resources = site.data.resources.conferences["windycityrails-2012"] %}
+  {% if conference_resources %}
+    <section class="index-summary">
+      <h2>Trusted Sources</h2>
+      <ul class="index-highlights">
+        {% for resource in conference_resources %}
+          <li><a href="{{ resource.url }}">{{ resource.label | default: resource.url }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+
+
+  <section class="index-summary">
+    <h2>Notable Contributors</h2>
+    <ul class="index-highlights">
+
+      <li>
+        <strong>Evan Light</strong>
+        
+        
+        
+          <a href="/interviews/evan-light-windycityrails-2012/">Interview</a>
+        
+      </li>
+
+    </ul>
+  </section>
 
 
   {% assign items = site.data.interviews.items | where: "conference", "WindyCityRails" | where: "conference_year", 2012 | sort: "recorded_date" | reverse %}

@@ -19,21 +19,47 @@ breadcrumb_parent_url: <%= parent_url %>
     <h1><%= title %></h1>
     <p class="intro"><%= intro %></p>
   </header>
-<% if highlights.is_a?(Array) && !highlights.empty? %>
+<% highlights_list = begin
+  value = highlights
+  value.is_a?(Array) ? value : []
+rescue NameError
+  []
+end %>
+<% notable_contributors_list = begin
+  value = notable_contributors
+  value.is_a?(Array) ? value : []
+rescue NameError
+  []
+end %>
+<% if highlights_list.is_a?(Array) && !highlights_list.empty? %>
   <section class="index-summary">
     <ul class="index-highlights">
-<% highlights.each do |highlight| next if highlight.to_s.strip.empty? %>
+<% highlights_list.each do |highlight| next if highlight.to_s.strip.empty? %>
       <li><%= highlight %></li>
 <% end %>
     </ul>
   </section>
 <% end %>
 
-<% if notable_contributors.is_a?(Array) && !notable_contributors.empty? %>
+<% if conference_slug && !conference_slug.to_s.strip.empty? %>
+  {% assign conference_resources = site.data.resources.conferences["<%= conference_slug %>"] %}
+  {% if conference_resources %}
+    <section class="index-summary">
+      <h2>Trusted Sources</h2>
+      <ul class="index-highlights">
+        {% for resource in conference_resources %}
+          <li><a href="{{ resource.url }}">{{ resource.label | default: resource.url }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+<% end %>
+
+<% if notable_contributors_list.is_a?(Array) && !notable_contributors_list.empty? %>
   <section class="index-summary">
     <h2>Notable Contributors</h2>
     <ul class="index-highlights">
-<% notable_contributors.each do |contributor| %>
+<% notable_contributors_list.each do |contributor| %>
       <li>
         <strong><%= contributor["name"] %></strong>
         <% if contributor["headline"] && !contributor["headline"].to_s.strip.empty? %> — <%= contributor["headline"] %><% end %>

@@ -20,6 +20,8 @@ breadcrumb_parent_url: /interviews/conferences/
     <p class="intro">WebVisions 2013 brings together 5 interviews from 2013. Recurring themes include developer community and conference conversations and web development and frontend practice. Featured interviewees include Bill Scott, Carolyn Chandler, Jason Cranford Teague, and Jennifer Jones.</p>
   </header>
 
+
+
   <section class="index-summary">
     <ul class="index-highlights">
 
@@ -31,6 +33,20 @@ breadcrumb_parent_url: /interviews/conferences/
 
     </ul>
   </section>
+
+
+
+  {% assign conference_resources = site.data.resources.conferences["webvisions-2013"] %}
+  {% if conference_resources %}
+    <section class="index-summary">
+      <h2>Trusted Sources</h2>
+      <ul class="index-highlights">
+        {% for resource in conference_resources %}
+          <li><a href="{{ resource.url }}">{{ resource.label | default: resource.url }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
 
 
 

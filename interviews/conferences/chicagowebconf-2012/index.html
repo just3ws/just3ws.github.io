@@ -20,6 +20,8 @@ breadcrumb_parent_url: /interviews/conferences/
     <p class="intro">ChicagoWebConf 2012 brings together 9 interviews from 2012. Recurring themes include conference speaking and presentation skills, developer education and learning, and open source and project maintenance. Featured interviewees include Aaron Kalin, Andy Lester, JC Grubbs, and Joe Hirn.</p>
   </header>
 
+
+
   <section class="index-summary">
     <ul class="index-highlights">
 
@@ -33,6 +35,36 @@ breadcrumb_parent_url: /interviews/conferences/
   </section>
 
 
+
+  {% assign conference_resources = site.data.resources.conferences["chicagowebconf-2012"] %}
+  {% if conference_resources %}
+    <section class="index-summary">
+      <h2>Trusted Sources</h2>
+      <ul class="index-highlights">
+        {% for resource in conference_resources %}
+          <li><a href="{{ resource.url }}">{{ resource.label | default: resource.url }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+
+
+  <section class="index-summary">
+    <h2>Notable Contributors</h2>
+    <ul class="index-highlights">
+
+      <li>
+        <strong>Andy Lester</strong>
+        
+        
+        
+          <a href="/interviews/andy-lester-chicagowebconf-2012/">Interview</a>
+        
+      </li>
+
+    </ul>
+  </section>
 
 
   {% assign items = site.data.interviews.items | where: "conference", "ChicagoWebConf" | where: "conference_year", 2012 | sort: "recorded_date" | reverse %}
