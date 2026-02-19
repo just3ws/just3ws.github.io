@@ -21,14 +21,38 @@ breadcrumb_parent_url: /docs/
 
 1. Audit current repository transcript integrity:
    - `./bin/transcripts audit`
-2. Run import in dry-run mode:
-   - `./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
-3. Review output reports:
+2. Build ID-suffixed staging files (recommended for ambiguous filenames):
+   - `./bin/transcripts prepare --source-dir /Volumes/Dock_1TB/vimeo/outbox --output-dir tmp/transcript-id-staging --min-confidence 0.8 --clean-output`
+3. Run import in dry-run mode:
+   - `./bin/transcripts dry-run --source-dir tmp/transcript-id-staging --min-confidence 0.9`
+4. Review output reports:
    - `tmp/transcript-import-report.json`
    - `tmp/transcript-import-report.md`
-4. Apply high-confidence mappings:
+5. Apply high-confidence mappings:
+   - `./bin/transcripts ingest --source-dir tmp/transcript-id-staging --min-confidence 0.9`
+
+## Direct Import Mode
+
+If filenames already include explicit IDs and do not need staging:
+
+- `./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
+- `./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
+
+## Report Files
+
+- Mapping report: `tmp/transcript-import-report.json`
+- Human-readable summary: `tmp/transcript-import-report.md`
+
+## Legacy sequence (kept for reference)
+
+1. Run import in dry-run mode:
+   - `./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
+2. Review output reports:
+   - `tmp/transcript-import-report.json`
+   - `tmp/transcript-import-report.md`
+3. Apply high-confidence mappings:
    - `./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
-5. Re-run pipeline validation:
+4. Re-run pipeline validation:
    - `./bin/transcripts validate`
 
 ## One-Command Batch Mode

@@ -3,17 +3,20 @@ set -eu
 
 SOURCE_DIR="/Volumes/Dock_1TB/vimeo/outbox"
 REPORT_DIR="tmp"
+OUTPUT_DIR="tmp/transcript-id-staging"
 MIN_CONFIDENCE="0.9"
 FORCE=0
 AUTO_COMMIT=0
 AUTO_PUSH=0
 SKIP_VALIDATE=0
+CLEAN_OUTPUT=0
 
 usage() {
   cat <<'USAGE'
 Usage: ./bin/transcripts <command> [options]
 
 Commands:
+  prepare   Build ID-suffixed staging files to improve deterministic mapping.
   dry-run   Generate transcript mapping reports without changing data.
   ingest    Apply high-confidence transcript mappings and run checks.
   audit     Run transcript integrity audit.
@@ -21,18 +24,21 @@ Commands:
   status    Show transcript corpus status from audit.
   help      Show this help.
 
-Options (for dry-run/ingest):
+Options (for prepare/dry-run/ingest):
   --source-dir PATH         Source transcript directory (default: /Volumes/Dock_1TB/vimeo/outbox)
   --report-dir PATH         Report output directory (default: tmp)
+  --output-dir PATH         Prepare output directory (default: tmp/transcript-id-staging)
   --min-confidence FLOAT    Auto-apply threshold (default: 0.9)
+  --clean-output            Clear prepare output directory before staging.
   --force                   Overwrite existing transcript files.
   --auto-commit             Commit transcript changes after ingest.
   --auto-push               Push after auto-commit.
   --skip-validate           Skip full pipeline validate after ingest.
 
 Examples:
+  ./bin/transcripts prepare --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.8
   ./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox
-  ./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit
+  ./bin/transcripts ingest --source-dir tmp/transcript-id-staging --auto-commit
 USAGE
 }
 
@@ -58,6 +64,14 @@ parse_common_opts() {
       --min-confidence)
         MIN_CONFIDENCE="$2"
         shift 2
+        ;;
+      --output-dir)
+        OUTPUT_DIR="$2"
+        shift 2
+        ;;
+      --clean-output)
+        CLEAN_OUTPUT=1
+        shift 1
         ;;
       --force)
         FORCE=1
@@ -89,6 +103,23 @@ cmd="${1:-help}"
 shift || true
 
 case "$cmd" in
+  prepare)
+    parse_common_opts "$@"
+    if [ "$CLEAN_OUTPUT" -eq 1 ]; then
+      ./bin/prepare_transcript_id_staging.rb \
+        --source-dir "$SOURCE_DIR" \
+        --report-dir "$REPORT_DIR" \
+        --output-dir "$OUTPUT_DIR" \
+        --min-confidence "$MIN_CONFIDENCE" \
+        --clean-output
+    else
+      ./bin/prepare_transcript_id_staging.rb \
+        --source-dir "$SOURCE_DIR" \
+        --report-dir "$REPORT_DIR" \
+        --output-dir "$OUTPUT_DIR" \
+        --min-confidence "$MIN_CONFIDENCE"
+    fi
+    ;;
   dry-run)
     parse_common_opts "$@"
     ./bin/import_transcripts_from_outbox.rb \
