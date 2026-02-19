@@ -34,6 +34,10 @@ Mapped interviews: 23 / 27
 
 Unmatched interviews: 4
 
+Notes:
+- Direct speaker profile probes for these names (for example, `/chicago-2015/speaker/Bob+Pollin`) resolve back to the generic speakers index, not a person profile page.
+- Name checks against the official speakers index and official 2015 playlist titles did not produce exact matches for these four interviewees.
+
 - `youtube-DBXyrzTEnqg` (Bob Pollin)
 - `youtube-PENvwc0402I` (Dave Thomas)
 - `youtube-c2_IkK46eyk` (Alexandra Masterson)
