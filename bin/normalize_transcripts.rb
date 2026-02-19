@@ -15,6 +15,7 @@ TEXT_NORMALIZATION_RULES = [
   [/\bu[ -]?task\b/i, "UGtastic"],
   [/\bug[\s._-]*tastic\b/i, "UGtastic"],
   [/\b(?:you|yu)g[\s._-]*tastic\b/i, "UGtastic"],
+  [/\bYouTask\b/i, "UGtastic"],
   [/\b(?:UBITASIC|UCTASIC|uTasic|Ute\s*TASC)\b/i, "UGtastic"],
   [/\bug[\s._-]*l[\s._-]*st\b/i, "UGl.st"],
   [/\bcraftmanship\b/i, "craftsmanship"],
