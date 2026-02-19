@@ -1,0 +1,190 @@
+---
+content: |-
+  Five. Recording now is one, two, three.
+   Okay. Hi, it's Mike with Ute Tastic. I'm here at GOTO Conf
+   2015 and I'm sitting here with Kyle Kingsbury who gave the
+   opening keynote and its tagline was Hope Springs Eternal.
+   Did I say that correctly? Okay. Well, thank you very much
+   for taking the time to speak with me.
+   What Hope Springs Eternal? What were you trying to implant
+   as a message for your keynote?
+   The message is basically that everything is broken and we
+   should be crying in the corner.
+   I came to deliver fire and ashes, but we're wrapping it in
+   a pretty happy package.
+   It's like we're smiling. We're all doomed.
+   So in the previous Jepson talks, I'd gone through a number
+   of databases and had found inconsistencies or cases of data
+   loss.
+   And in this talk, I wanted to come back to some of these
+   databases because people are optimistic that they've fixed
+   certain problems.
+   And I wanted to measure whether or not those problems have
+   been resolved and then see if there were new ones.
+   Okay. So like the notorious Mongo missed write problem and
+   things like that.
+   So what were some of...
+   Can you tell me your findings?
+   So MongoDB in particular fixed their majority write issue,
+   where if you would write at the strongest level of
+   consistency,
+   it could occasionally say that it had written data
+   successfully and then lose it.
+   Oh, okay.
+   So that was fixed quickly and it was confirmed to be safe
+   in the latest tests.
+   Okay.
+   I found a new issue, however, which is that it will allow
+   you to read values from the past.
+   So you can write something and then not see it anymore.
+   And a later time it might show up.
+   Well, I guess that's the eventual part of eventually
+   readable instead of eventually consistent.
+   But it'll show up.
+   So there was just some latency issues that if you wrote and
+   then read too fast, it might get stale data.
+   Or you could also read garbage data.
+   You could make a write that should not have succeeded.
+   It would fail, but you might not know it failed.
+   And then it would be visible for reads to that node.
+   So that's called read uncommitted.
+   So both stale reads and dirty reads are sort of...
+   ...two complementary sides of the same phenomenon in Mongo.
+   Okay.
+   And what were some of the other databases?
+   Did you look at MySQL and Postgres and Couch and React and
+   all the other databases that are usually come up in these
+   conversations?
+   So I haven't gone to test MySQL with Postgres replication.
+   I did a very simple single node Postgres analysis, but it
+   doesn't show very much interesting beyond two generals.
+   I did come back to look at Elasticsearch in this test,
+   which previously lost data.
+   But when a partition happened that left a node connecting
+   two different components in the network,
+   that particular behavior was known to be an issue, and the
+   ticket was fixed.
+   And in fact, it had reduced the window of data loss
+   significantly.
+   But there's still some time when you can lose writes.
+   Were you the person who authored those blog post articles
+   doing the partition analysis on...
+   Or was it Elasticsearch I'm thinking of?
+   There was about missing data due to...
+   Some latency inside of certain database scenarios.
+   That could have been me, yeah.
+   Okay.
+   The Jepson series has been going on for a couple years now.
+   And there's a bunch of blog posts, and there's a paper in
+   ACMQ, and there's the talks as well.
+   Okay.
+   And are there any databases that you're just like, yeah,
+   this database is good?
+   Or is it always the...
+   Well, it depends.
+   You know, I think depending on what you're building, you're
+   going to need various guarantees.
+   Guarantees and various performance characteristics and
+   various availability characteristics.
+   So for a consistent metadata store, you might pick
+   something like Zookeeper.
+   Maybe etcd, although that's a little newer, so I figure it
+  'll take a while to iron its mugs.
+   In fact, Zookeeper, you know, over its, what, 10-year
+   history has been ironing out bugs gradually.
+   There was a really nice article from PagerDuty recently
+   that discovered a particular confluence of unchecked checks
+  ums for GCP packets
+   and some weird Xen anomalies that resulted in Zookeeper.
+   So it's like if you have an elbow here and this elbow here,
+   it won't write.
+   Yeah, it's really amazing.
+   These are very difficult to get correct.
+   Yeah, yeah.
+   But Zookeeper, by and large, I think has hammered out a lot
+   of the bugs.
+   Well, and that's one of the things I've heard an interview
+   with one of the Postgres internals DB engine developers.
+   And they basically described that it's, especially with
+   open source development on these tools,
+   it's very hard to get people to work on them that can
+   actually effectively work with these problems
+   because they're hard problems that they're solving.
+   Oh, yes.
+   I mean, so when you're looking at databases, sometimes it
+   feels like the older the better.
+   Does that seem like a reasonable wisdom?
+   Like if it's been around 20 years, it's probably pretty
+   solid.
+   Yeah, and the more use cases it's seen, and as it gets to
+   larger deployments,
+   the more bugs you'll run into enough that it was painful
+   enough that somebody would go and fix it.
+   But conversely, you know, old doesn't necessarily mean safe
+  .
+   There are well-established pieces of software with plenty
+   of bugs in them.
+   Yeah.
+   Not a pen share.
+   So just the word Jepson, what does that mean?
+   What is Jepson?
+   And how did, you know, you said it's a series of articles,
+   but it just seems like such a random word.
+   What does that mean?
+   Carly Rae Jepson is a Canadian pop star.
+   Oh, okay.
+   Who had this famous song, Call Me Maybe.
+   It's all about miscommunication and not knowing if the boy
+   likes you or not.
+   And to me, this speaks to distributed systems where you're
+   sending your operations into the,
+   and hoping that messages come back that they understood you
+  , that they want to meet.
+   That's almost as subtle a pun as UGtastic.
+   UGtastic.
+   User group's fantastic.
+   But, yeah, it's one of those when you finally hear the
+   definition, you're like, that's awesome.
+   Call me maybe.
+   And it makes total sense when you hear it.
+   Well, the blog posts are calling me Jepson, calling me El
+  asticsearch.
+   Oh, okay.
+   And then the hope springs eternal.
+   That one was a little hard.
+   Yeah, in the previous talk, there was a star.
+   Yeah.
+   There was a reference about building a Death Star, and so
+   this is sort of playing on that.
+   Okay.
+   And did you happen to look at any other, like, we have
+   several database providers here,
+   like Neo4j, do your tests look at a variety of types of
+   database stores,
+   or are you mostly focused on NoSQL document stores,
+   or is there a specific vertical style of database that you
+   are focusing on with your Jepson series?
+   I would like to, and I think the tools are capable of
+   analyzing,
+   all sorts of different things.
+   Looking for SQL serializability anomalies is very tricky to
+   do.
+   The analyzer is slow, so it's going to take more work, I
+   think, before I can really do tests on things like Postgres
+  .
+   But basic tests about insert safety and update safety for
+   single rows, I think those should be amenable.
+   And I'm actually hoping to do that in Postgres RDS next.
+   Okay, great.
+   So far, I've done things from consensus services like
+   console and etcd to sort of horizontally scalable key value
+   stores,
+   like Cassandra and React, and then some SQL-style databases
+   like NeoDB.
+   Okay.
+   So there's a whole gamut.
+   Great.
+   Well, thank you very much for taking the time to speak with
+   me.
+   I appreciate it.
+   Thank you.

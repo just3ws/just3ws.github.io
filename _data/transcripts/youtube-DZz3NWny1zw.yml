@@ -1,0 +1,224 @@
+---
+content: |-
+  Hi, it's Mike with UGtastic. I'm still here at GOTO Conf
+   2015, and I'm standing here
+   with Attila Szegedi, who gave a talk about Nashorn making
+   the rhinoceroses
+   thunder. Well, thank you very much for taking the time to
+   speak with me. What
+   rhinoceroses were you herding, and what is Nashorn? Well,
+   we are not
+   even herding them, we just built one. So, Nashorn is German
+   for
+   rhinoceros, so it is a JavaScript runtime on the JVM. There
+   is a bit of a
+   tradition of naming the JavaScript runtimes on the JVM
+   after rhinos, because
+   there was an early O'Reilly book on JavaScript that had a
+   rhino on its
+   cover, so that actually started the big book. Yeah, so I
+   think that that actually
+   started this naming situation, and you know, it allows for
+   some quite
+   nice puns. So yeah, well, the talk was mostly about... I
+   was explaining to
+   people just what are the things that we do to make sure
+   that Nashorn actually
+   runs decently fast on the JVM. There's always... there used
+   to be this stigma of
+   JavaScript runtimes, that it's slow language, and this was
+   mostly
+   dispelled by V8, so Google's V8 has really brought the fast
+   JavaScript
+   runtimes to the market, and we are also doing our best to
+   not be left in
+   dust compared to V8.
+   We're doing a pretty decent job about it. A lot of things
+   that I was
+   actually talking about in my talk are things that we
+   implemented since the
+   original release, so Nashorn had its first release in
+   original Java 8 last
+   March 2014, and since then we did a lot of improvements
+   that you would
+   normally find maybe in a C compiler, so we do a lot of
+   static type inferencing and
+   we do a lot of crazy things like type-specific compilation.
+   We can
+   optimize and deoptimize code on the run, so it turns out
+   that if you want to
+   write a really efficient runtime for your language, you
+   almost need to write
+   half of a half of a VM, really. So the Hotspot VM on the JV
+  M, it
+   already does these things with Java code. It does
+   interpretation of various
+   optimizations, and when it gets it's wrong, then it deoptim
+  izes, reoptimizes, and so on.
+   And it turns out that we wanted to avoid doing these and
+   just rely on
+   the JVM, but the problem is that the language semantics is
+   such, the
+   JavaScript language semantics is sufficiently different
+   from Java, that you
+   can't really just leave it all to the JVM, but we just
+   ended up needing to build a
+   lot of these things on top of it. So it becomes a very
+   sophisticated runtime
+   that can run JavaScript programs on the JVM ever better. I
+  'm not saying really well, but
+   it's ever improving. It's actually really great because
+   there is a lot of
+   challenges every day when I go to work. There's always the
+   next thing
+   that can still be done to make it more efficient. There is
+   not a particularly
+   great or sexy story behind NASM, because, you know, it's
+   just JavaScript on
+   the JVM, and everything else is really just an
+   implementation detail of
+   how do we want to make it so that it just gets better and
+   faster over time. It's a
+   one interesting thing about NASM is that it was actually
+   the first JavaScript
+   runtime that achieved 100% specification compliance. There
+   is a set of
+   specification tests out there that is openly maintained,
+   that contains some
+   11,500 tests, and actually NASM was the first JavaScript
+   runtime back in
+   I think October 2012 or so, that we actually managed to
+   implement it so
+   that it passed all of the tests.
+   Now, I'm not a Node developer, but I know that Node and V8s
+   are extremely tightly
+   coupled, but as far as like just JavaScript syntax, you
+   know, as somebody who's working
+   on the compiler, is there anything where you're looking at
+   like, "Oh, there's Node,
+   you know, how can we get Node as a framework running on top
+   of Rhinoceros?" Is that even
+   the right question? Because like I said, I'm not a Node
+   developer.
+   Yeah, we do actually.
+   We actually have Node version running on NASM. We have a
+   team internally at the company who
+   was writing a version of it, but we are not allowed to call
+   it Node.
+   Oh, yeah, because of copyright and trademarks and stuff
+   like that.
+   Yes, that's right. So, the owners of the Node term have
+   graciously asked us to
+   not use the name, so it actually runs under the name avatar
+  .js.
+   Oracle actually had a server-side technology named avatar,
+   and then the name got expanded
+   and reused. So, avatar.js is, we refer to it as Node API
+   compatible server framework.
+   Oh, okay. So, that kind of gets around that old trademark
+   thing. It's like we're compatible
+   with them, not we are them.
+   So, it's there. It's also available. It's downloadable. You
+   can try it. There's one problem with it that it started out
+   as a great effort, but it started pretty much as a hobby
+   effort by one or two of the
+   developers within the organization. It got adopted, but
+   those guys have since moved on.
+   So, unfortunately, the project itself is pretty dormant,
+   but it was active until a few months
+   ago. It was closely tracking the Node code base, so it's, I
+   mean, again, I cannot say
+   that, yeah, go and use it because it's, at the moment, it
+   might not be actively maintained,
+   but that might change in the future, and by any means, it's
+   still pretty recent, but it
+   also proves just the fact that, yeah, sure, I mean, you can
+   have Node on NAS1. It does
+   work.
+   And, you know, looking at a lot of the, it seems like a lot
+   of the JVM developers
+   cross-communicate whether they're working on JRuby or Cloj
+  ure. I mean, is there been
+   anything that you've looked at from JRuby or the work that
+   Rich Hickey is doing with
+   Clojure that have been pulled into Rhinoceros?
+   I mean, to help with optimization, has there been any cross
+  -pollination there?
+   Well, not really much as such. We do, I do talk with
+   Charlie Nutter a lot, so the JRuby
+   guy, and I don't talk that much with Rich Hickey these days
+  , but we run into each other
+   at conferences, but there is this great conference called
+   the JDM Language Summit that Sun Microsystems
+   used to organize and now Oracle organizes every year. It's
+   a really small conference,
+   usually sometime in the summer, at the Oracle's Santa Clara
+   campus, the ex-Sun campus, where
+   language implementers on the JVM get together and it's, and
+   well, exchange knowledge, talk
+   to each other, there's presentations, but it's a very small
+   conference. It's the number
+   of attendees, I don't think it even reaches 100 people, so
+   it's somewhat hard to, hard
+   to get in. It's fairly, highly priced if you, if you can go
+   to the JVM Language Summit.
+   We do talk a lot there. Nashorn, we, we did, we did speak
+   with JRuby folks on few occasions.
+   I think JRuby right now is, is less sophisticated in terms
+   of code generator, typing, optimizations
+   and so on. They do have a new version, JRuby 9000, which is
+  , which is re-taught from the
+   ground up. It has its own internal, separate internal code
+   representation. I think that
+   it will, it will, it will be awesome. It's very, very, very
+   close to, to the release.
+   Yeah, so we talk to each other, there's concepts that, that
+   we talk about, but you know, I
+   wouldn't say that there was a lot in, in actual
+   optimization. Clojure, Clojure also, optimization,
+   I don't think that like language level optimization is high
+   on their list of priorities. They
+   just compile to JVM and then, and then.
+   They don't like to deal with the things, yeah.
+   Well, I just think it's fascinating. I mean, so many
+   developers who are implementation
+   developers, you know, and users of these languages, kind of
+   differentiate themselves. I do JavaScript,
+   I do Clojure, I do this, but the people that are
+   implementing these languages are talking
+   to each other.
+   Yeah, of course.
+   And it's, and if, if the people who are creating languages
+   are talking to each other,
+   it's maybe something that we should think about as end user
+   developers, is that, you know,
+   use JavaScript, use Clojure, use JVM, you know, just, we're
+   all, we're all in this together.
+   It's great. And especially if you are using the dynamic
+   languages and you're deploying
+   on the JVM, you even have a little bit of a, like a common
+   foundation, which is the
+   JVM itself. So all of these people will be using Java
+   libraries. And if you want to,
+   you can even, you can even stitch together a system where
+   if you find, maybe you're writing
+   the majority of your system in, in, in Ruby and you're
+   deploying JRuby, but if you find
+   a particularly nice algorithm implemented in Python, there
+   is nothing really that prevents
+   you from also taking the JITONS jar file and loaded it in
+   and writing a little bit for
+   the integration.
+   And then you can just go from your Ruby code and you can
+   pass some data into your Python
+   algorithm, let it crunch the things, give it back to you.
+   So it's, it's, I, I think
+   that, as time progresses, hopefully kind of a polyglot
+   programming is, is going to be,
+   is, is, is becoming ever more in reality.
+   Yeah, yeah. Just let the, let the virtual machine sort it
+   out.
+   Yeah, of course. That's what they are for.
+   Yeah. Well, thank you very much for taking the time to
+   speak with me. I appreciate it.
+   It was my pleasure. Thank you.

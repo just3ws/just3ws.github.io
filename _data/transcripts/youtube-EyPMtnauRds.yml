@@ -1,0 +1,204 @@
+---
+content: |-
+  Hi, it's Mike with UGtastic. I'm here at GOTO Conf 2015 and I
+  'm sitting here with
+   Dimitri who gave a talk about the data grid, well, bigger
+   than the data grid.
+   Beyond the data grid. Beyond the data grid with Apache Ign
+  ite. Well, first I want to say
+   thank you very much for taking the time to speak with me
+   and you can tell me a
+   little bit about what your presentation was about and what
+   is this Apache
+   Ignite product. All right, thank you Mike. So yeah, I want
+   you to notice I'm
+   wearing an Apache Ignite t-shirt, first of all, so it's
+   very cool. So whenever you
+   see green t-shirts, I want you to know it's Apache Ignite.
+   So I just gave a talk
+   about Apache Ignite. So it's an Apache project, currently
+   undergoing
+   incubation process at Apache, but I'm getting a feeling it
+  's gonna graduate
+   pretty soon, probably within a couple of months. And what
+   it is, it's a memory data
+   fabric and essentially you use Apache Ignite whenever you
+   face performance or
+   scalability problems within your application. And at that
+   point you decide to
+   introduce an in-memory architecture, you want to cache a
+   lot of data. You're gonna
+   be faced with quite a few use cases, but a lot of them are
+   common and we see it
+   for every project that moves in memory. For example, you
+   are going to have some
+   clustering, you are going to have some scale out,
+   horizontal scalability issues,
+   you are going to probably want to cache data in memory,
+   maybe partition or shard
+   data in memory, and you probably want to transact on that
+   data or maybe query
+   that data. You may want to stream that data into the system
+   or continuously
+   ingest large amounts of data into the system and use
+   streaming,
+   maybe computing using distributed MapReduce, or for joint
+   type APIs. So all
+   of those components are available within Apache Ignite in-
+  memory data fabric. So
+   from the get-go, we wanted Apache Ignite to
+   become a one-point solution for most of the in-memory use
+   cases, and that's
+   why we cover most of these use cases. However, the project
+   is still very simple
+   to use. It comes as one zip file. You just unzip it off
+   your go. It uses all the
+   standard APIs, probably you're most familiar with in Java,
+   like maps, queues,
+   sets, most of the concurrent Java Util concurrent APIs are
+   also ported to
+   Apache Ignite, ThreadPool, distributed executor service.
+   All of those standard
+   APIs are still used within Apache Ignite. So is Apache Ign
+  ite a database competitor to
+   a NoSQL database, or is it a layer that sits between
+   applications and
+   persistent data stores? That's a good question actually. So
+   the answer is it's
+   probably not a simple yes or no answer, because if you look
+   at distributed cache
+   within Apache Ignite, it is a key value store. So from that
+   standpoint, you can
+   think about it from a NoSQL standpoint, because you're
+   working with basic Java
+   objects. It's a key value store. However, Ignite has full
+   SQL capabilities, and it
+   allows you to index those, index inside of those objects.
+   For example, your class
+   names become tables, your fields inside of the classes
+   become columns, and from
+   there, and then you can create indexes in memory, and you
+   can start querying it
+   using standard SQL. So from one side, you can think about
+   it as NoSQL, but it does
+   provide SQL. It's SQL for NoSQL. SQL for NoSQL, there you
+   go, that's a good way to put it. What does it provide, like
+   a
+   way to write back to persistence, or is it always only in
+   memory? Actually, it does.
+   It does provide, it does automatically write through to a
+   persistent store, so if you
+   have like an Oracle database or MySQL database already
+   installed, Ignite will
+   automatically integrate with that data store, automatically
+   will detect all the
+   indexes and put them in memory, or if you can also
+   integrate it, put it on top of
+   NoSQL disk-based databases like Mongo, React, Couchbase, or
+   Cassandra for that matter, and it will
+   also work on top of those as well. So it sounds like an
+   extremely advanced caching
+   layer that provides some direct query capabilities that you
+   can save a call to
+   the actual persistent on-disk databases. That sounds about
+   right for the data
+   grid portion. However, as I mentioned, Ignite is a fabric.
+   Data grid and distributed
+   caching is just one component, and it probably is the
+   biggest component within
+   Ignite, and that's where most of the people actually will
+   use.
+   But there's also streaming of data, there's also sliding
+   window support,
+   there's also distributed map reduce for joint kind of
+   computations, so it
+   provides a lot more than just that. But yeah, from a data
+   grid standpoint, it's a
+   fairly feature-rich project. Okay, and I'm going to ask you
+   to just move a little bit. The project
+   itself, I mean, how did you go about, is it something that
+   you kind of cooked up
+   from projects you were working on or some thesis? Where did
+   the idea come to exist?
+   All right, so actually I'm one of the co-founders of GridG
+  ain systems. So we
+   started out probably seven or eight years ago, and that
+   time we wanted, we had
+   a dream of creating this easy-to-use grid computing system.
+   And we started from
+   compute grid, and probably three years down the road we
+   added data grid
+   capabilities to it. And GridGain actually always had an
+   open-source component, open-source version, and also there
+   was an
+   enterprise version. And in September of last year we
+   decided to donate code to Apache
+   Software Foundation. So it started going through incubation
+   in Apache, and we are,
+   I'm hoping, approaching the graduation in Apache as well.
+   So what is the process? I mean, when you
+   have an idea and you want to spin out an open-source
+   project, do you just, did you
+   go straight to Apache? Or was it that you had a project
+   that you released and
+   Apache contacted you and said, "Hey, let's pull this in."
+   How did that, how did you end up
+   with Apache then? So, well, I mean, there are two parts to
+   the question.
+   We wanted to join Apache because we wanted to grow
+   community around
+   open-source projects. So once you join Apache, you become
+   part of this Apache
+   process, what they call an Apache way, which is very
+   community friendly. It
+   introduces all sorts of outside contributions. So right now
+  , believe it or
+   not, we have, it used to be only GridGain commuters, we
+   probably have more
+   outside contributors working on Ignite than from the side
+   of GridGain. So you
+   get community growth. But however, Apache does not pull the
+   code in. It
+   will take your code, it will take your project and make
+   sure you grow community
+   around it, make sure you work with it the open-source way.
+   But it will not
+   take the code. You're still managing it. So you're still
+   responsible for the project development.
+   But it's just that it's kind of sold through the Apache
+   marketplace. No, it's actually more
+   of an Apache way. I mean, that's what it's called. It's
+   Apache way, which is very open
+   everything. All the discussions happen in the open. All the
+   tickets happen in the
+   open. All the design discussions and future of the project
+   is all in the open
+   and everybody is equal. It doesn't belong to one person. It
+   belongs to the
+   community now. Okay, and when you describe you're in an
+   incubation phase, how
+   do you go from incubation and what's the difference between
+   incubation and being,
+   well, not an incubation? Top-level project, you graduate.
+   So the difference would be
+   that, from a product standpoint, there's a very little
+   difference. From an Apache
+   standpoint, you have to, first of all, license compliance.
+   You have to only have certain
+   allowed licenses in your project, like definitely Apache 2.
+  0 is allowed as a license. There's
+   BSD license and MIT licenses are allowed. Then you have to
+   have a well-oiled build procedure,
+   well-oiled community process set up within Apache.
+   So once you actually show that you can work with an open-
+  source community and follow this
+   kind of path, at that point you're ready to graduate. And
+   usually that happens when
+   you do like two or three releases under Apache. So we're
+   currently on two. I think
+   after the third one we will be ready to graduate. We're
+   already complying. We're
+   already embracing the Apache way. Okay, well thank you very
+   much for taking the
+   time to speak with me and for supporting open-source. Thank
+   you. Thanks.

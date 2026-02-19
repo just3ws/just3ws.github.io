@@ -1,0 +1,175 @@
+---
+content: |-
+  Hi, it's Mike with UGtastic. I'm here at GOTO Conf 2015,
+   and I'm sitting here with
+   Vyacheslav Egorov, who gave a talk on benchmarking JS.
+   Thank you
+   very much for taking the time to speak with me. When you
+   talk about
+   benchmarking JS, are you talking about client-side JS? I
+   mean, JS lives in a lot
+   of different places. Is this Node? Is this browser JS? What
+   are you benchmarking?
+   So, I don't have any particular focus. I'm just looking at
+   the pure JavaScript
+   performance. So, it doesn't matter if you run your
+   JavaScript on the client-side or
+   server-side. Basically, no matter where you are, my talk
+   applies to you. Okay. So,
+   you know, even if I'm in V8 or Rhino or whatever, it's
+   going to be... Okay, so,
+   when you talk, what techniques and tools were you talking
+   about? Where
+   did this talk come from? What experiences did you have that
+   led you to
+   this? Well, I used to work on the V8 team, and when you
+   work on a team of
+   the VM engineers, you usually get different
+   questions from the users, in this case, JavaScript
+   developers, who don't
+   completely understand what happens inside the VM and how
+   they should
+   measure performance of their code. And that's what this
+   talk is based on.
+   Basically, I monitor different social media, and I see
+   people posting different
+   benchmarks, and I look what happens there, and I explain
+   why these benchmarks are
+   usually incorrect. And that's, yeah, that's basically my
+   experience. So, what is
+   some of the things that you see that are incorrect, and
+   like, what are some of the
+   maybe some quick tips that maybe, or articles people should
+   read or try to
+   understand better about JavaScript performance? I think the
+   biggest issue is
+   that people still think that JavaScript implementations are
+   very dumb, but these
+   implementations are quite smart. So, I think that that's
+   the main thing that
+   they should know about that, and they should always account
+   for the very
+   advanced optimizations that the GIS engines are capable of
+   doing now. So, there is no
+   really single tip. They should just try to understand what
+  's happening on the side. Okay.
+   Now, I mean, do, if you're dealing with V8 optimization, I
+   mean, because one of the
+   things is JavaScript is one that's run anywhere, and it
+   runs on V8 or Rhino or
+   different browsers, or, you know, does the wisdom of this
+   is good for
+   JavaScript apply generally everywhere, or do you find
+   people maybe benchmarking,
+   and you say, oh, you did that benchmark on V8, try it on a
+   different VM, and you'll see
+   that it gets much different performance characteristics. Is
+   that a pretty common situation?
+   Sometimes that happens, but these days, the implementations
+   really converge on, they
+   apply the same techniques, so it's quite often that you see
+   the same performance
+   characteristics across all of the platforms you use. That's
+   why this talk is
+   quite universal, and this issue is quite universal. Okay,
+   and when you're looking
+   at the way JavaScript is being implemented, I mean, I've
+   heard, I'm hearing on
+   Twitter, there's a number of people that are tweeting about
+  , you know, if you're doing, if
+   you're trying to implement a class structure in JavaScript,
+   you know, I'm just talking
+   about writing JavaScript, you know, don't reimplement the
+   classical inheritance structure
+   inside of JavaScript versus, you know, using the polymorph
+  ic capabilities of JavaScript
+   and the prototypal, that's actually the word I was trying
+   to say, prototype, it's the end
+   of the day, guys, sorry, the prototypal inheritance and
+   using different ways of structuring
+   your application, does that often not just play into the
+   way people reason
+   about writing JavaScript, but its performance, that, you
+   know, if I'm implementing a
+   class in JavaScript, you know, is that generally gonna
+   perform worse or better
+   than if I do something that's more of a native structure?
+   So the thing is that
+   JavaScript engines, they evolve naturally, so they follow
+   the paths that people are
+   using, so they optimize for the patterns that people are
+   using. In this sense, if you use, for example,
+   constructors and prototypes, this is actually the most
+   performant way of writing JavaScript,
+   especially if you keep everything, like, kind of static,
+   and yeah, you just follow the common
+   patterns and then you will be safe.
+   Okay, okay, and as far as working on the V8 engine itself,
+   that, I didn't realize it before
+   our conversation, that, how did you get involved in working
+   on actually the V8, which has become
+   something of a industry change?
+   Not just with a Chrome browser, but with Node being built
+   on that. I mean, you're
+   working on some pretty intense technology. How did you get
+   involved in
+   working on that team, and what were you doing with them?
+   So, well, I stopped working on V8 three years ago, but I
+   was doing the Java VM
+   before back in Russia, and then V8 people were searching
+   for, like, a person with a
+   compiler background, and they hired me, so I joined the
+   team, and I worked on different
+   parts of the V8, so from garbage collection to compiler
+   infrastructure, and yeah, so that's
+   what I was doing. So, basically, I have the background in
+   this, and that background seems
+   to fit with what the team needed.
+   Right, okay, and you know, you described earlier about two
+   things, you know, one is that the
+   JavaScript implementations are much smarter than people
+   give them credit for, and that
+   the current patterns are, are, of how people write their
+   applications are being used in
+   the JavaScript, and how they're being used to, to derive
+   the future of, of, how these
+   JVMs, excuse me, JVMs, I don't know, JSVMs work. I mean, is
+   there something in the direction
+   that you just see as a common pattern that people are using
+   that you kind of wish they
+   would just move away from, though? Like, even though we
+   have classical inheritance structure,
+   or what we call classical, you know, class and inheritance,
+   but if they just maybe wrote
+   their JavaScript this other way, it would be a lot more
+   efficient.
+   Right.
+   And they might get a lot more native, and they might get a
+   lot more benefits that they
+   don't see now. Is there anything, any advice or
+   observations you've made?
+   No, I actually have an opposite issue. So, the, the
+   JavaScript VMs, even though they
+   are quite smart, they still, because they evolve by
+   following what people do, they are
+   very focused. So, what I really want them to do is to start
+   expanding this area of fast
+   JavaScript and support, like, different corners of the
+   language they do not support well,
+   or they just fall to the slow path, and so on.
+   So, it's actually the other way around.
+   Yeah.
+   Not the people. So, the, the...
+   Well, no, you're saying you wish they would do more of, be
+   aware of these other types
+   of structures.
+   Yes, exactly.
+   Yeah. Yeah. So, you, you are a little bit frustrated with
+   it. Hey, we're just going
+   to do this one type of structure, but JavaScript is so much
+   more than that.
+   Precisely.
+   Okay, great. Well, thank you very much for taking the time
+   to speak with me.
+   Thank you for speaking with me.
+   Yes, I appreciate it. All right, thank you.

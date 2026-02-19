@@ -1,0 +1,401 @@
+---
+content: |-
+  Hi.
+   It's Mike with UGtastic.
+   I'm here at GOTO Conf 2015 and I'm standing here with Jay
+   Fields, who gave a talk on unselfish
+   testing.
+   Thank you very much for taking the time to speak with me.
+   So unselfish testing, what does that mean and where did it
+   come from?
+   Sure.
+   So I used to be a consultant with ThoughtWorks.
+   I was there for several years and worked with a lot of
+   clients and a lot of people that
+   were a lot smarter than me, much more senior than me,
+   learned a lot from them, and then
+   worked with a lot of junior people just coming out of
+   college.
+   And I noticed that people spent a lot of time testing, not
+   necessarily always very effectively.
+   And so I just looked for patterns that I thought would make
+   people more effective.
+   And those turned into blog posts, which eventually turned
+   into a book, which eventually turned
+   into presenting today.
+   But unselfish, what does that mean?
+   Sure.
+   It's thinking about the team.
+   Whenever say you practice TDD, and so your workflow is you
+   sit down and you write a failing
+   test, and then you fix the test, maybe you refactor, but
+   you ever notice the emphasis
+   is always on refactoring of the code.
+   Nobody ever says, "Well, okay, spend some time on the test
+  ."
+   And so you're being selfish at that point.
+   If you're only working on writing code for the feature that
+   you're currently working
+   on, you're really only thinking about yourself.
+   You're thinking about delivering that individual feature.
+   So unselfish testing is about creating tests that are more
+   maintainable for the entire
+   team.
+   So I may write this test and I may quit, and six months
+   down the road, you're tasked with
+   fixing a test because the domain has changed or something's
+   changed.
+   And now you have a broken test that I wrote for my purposes
+   that I didn't really think
+   about you.
+   I was selfish.
+   So you have a test that you have to spend more time
+   debugging.
+   So in my presentation, I actually show a really kind of a
+   selfish test, and it takes you 10
+   minutes, 10 steps, it's really 10 minutes and 10 steps just
+   to get to the expected value
+   of the test.
+   Yeah.
+   It's so funny that that's so appropriate.
+   Because I hadn't really articulated that.
+   I look at open source projects, and one of the first things
+   I do when I'm trying to understand
+   what they're doing is go look at the test, and I was just
+   feeling the pain looking at
+   a library yesterday, saying, "What is the call?
+   How do I call the certain method in their little DSL?"
+   But when I looked at it, they actually had YAML that was
+   loaded, and then they did some
+   reflection on their own API, which caused the tests to
+   execute and validate that it
+   worked, which is great.
+   But they didn't tell me anything about how or why it worked
+  .
+   Now I'm trying to parse whether I'm dealing with their DSL
+   or I'm dealing with a DSL that's
+   in the test framework.
+   And that's not an RSpec thing, that's just their metapro
+  gramming around generating a
+   bunch of data.
+   Sure.
+   Yeah, that's a common problem is you write a test, and you
+   think, "Okay, well, I have
+   a lot of different ideas.
+   How do I abstract some of this out and kind of put it in a
+   common place?"
+   And if you have an idea that kind of flows throughout your
+   entire test suite, then it's
+   great to abstract.
+   Because you coming in, you look at the first test, and you
+  're kind of lost, and then you
+   find the abstractions, but those are valuable across the
+   whole test suite, and that's good.
+   But if you come in, and there's a grouping of tests, just a
+   couple different tests, and
+   they have to connect to read some YAML or go through some
+   specific DSL, and then you
+   spend all of this time reading, just trying to figure out
+   the test, and that doesn't even
+   help you with the underlying open source library.
+   You're just trying to understand this test, and the person
+   who wrote it, they probably
+   wrote something that's very sophisticated and not too hard
+   to work with.
+   Mm-hmm.
+   If you know what you're doing.
+   Yeah, yeah, exactly.
+   Right?
+   But when you come to it fresh...
+   Yeah.
+   It's a different world.
+   Yeah.
+   Especially, like, this was a DSL that I was...or they had a
+   DSL for the configuration, so it's
+   already there.
+   There's that overhead of trying to just figure out how they
+  're doing the DSL.
+   Right.
+   Much less which method do I call to register XYZ with the
+   framework, and it's like, "Oh,
+   man."
+   Meanwhile, you just want to learn the framework.
+   Right.
+   You don't want to learn how clever they were in their tests
+  .
+   Yeah.
+   And that's really the problem with a lot of the stuff you
+   see out there, is people are
+   very clever in their tests.
+   Mm-hmm.
+   But they don't realize that that cleverness does not help
+   future maintainers, until you
+   internalize it, but you're forcing someone to internalize
+   it.
+   Right.
+   Right?
+   They have no choice but to internalize all of that compl
+  ication.
+   Yeah, and if they're just coming to an API, and they've got
+   a task to do, and they're
+   trying to just say, "Oh, how can I use this thing to do my
+   task," then they have to spend
+   hours just to figure out, "Oh, no, it's not going to work."
+   Yeah.
+   You know?
+   And I don't think anyone's doing it maliciously.
+   Yeah.
+   It's just, like, before, we didn't even write tests.
+   Mm-hmm.
+   And then we all kind of dove in to just writing tests all
+   the time, and nobody took a step
+   back.
+   And not enough people, in my opinion, took a step back and
+   said, "Why are we writing
+   this test?
+   You know, did it help us write the code?
+   Well, that's a different test, maybe, than did it help us
+   maintain the code?"
+   And maybe even that is different than documentation or
+   having someone come fresh to a framework
+   and try to understand it.
+   They're different tests.
+   And it sounds like the kind of problem that Gherkin and Cuc
+  umber were trying to solve
+   in a way where they were shooting at using these
+   descriptive steps to say, like, "This
+   is what it's supposed to do."
+   I mean, of course, there was some complexity.
+   I mean, in the background to actually do the thing, but, I
+   mean, do you touch on that at
+   all in your talk, how some frameworks seem to be trying to
+   make things a little bit more
+   human on the surface, at least?
+   Or is that...
+   I didn't really touch on it.
+   I mean, but I have opinions on it, obviously.
+   You know, I think teams should basically just work with
+   what makes them successful.
+   But I don't think anybody should adopt that stuff thinking
+   it's the silver bullet.
+   Or...
+   No.
+   I don't think anybody should adopt that.
+   I'm saying, "Okay, we're gonna make this so that it's human
+   readable first and then machine
+   implement."
+   I think it'll vary by team.
+   Some teams will benefit from that and maybe they'll use it
+   for documentation.
+   There are teams that have a lot of success with kind of BDD
+  -style stuff, but it's not
+   for everyone.
+   There are also people who want just concise, no-nonsense,
+   maintainable tests, don't care
+   about generating documentation, don't care about using the
+   tests for customer collaboration.
+   And that's what it comes down to.
+   You have to...
+   What's your motivator?
+   Right.
+   What's the point of the Gherkin test if only programmers
+   are ever gonna look at it?
+   Right.
+   Is it really helpful?
+   Because programmers know Ruby better than they know reading
+   regexes of strings turned
+   into Ruby.
+   Yeah.
+   Yeah.
+   And also, just kind of going a little further, thinking
+   about, as you were talking about
+   having these really creative tests and maybe refactor to
+   the hilt, I mean, is maybe DRY
+   not necessarily the best thing when you're inside of a test
+  ?
+   Yeah.
+   I mean, that's definitely strong in my talk.
+   It really depends on the team.
+   But I would say the larger the team, the less DRY or being
+   dry is the appropriate choice.
+   Because the larger the team, the more likely you are to run
+   into a test that you've never
+   seen before.
+   Well, I guess it makes sense what context we're talking
+   about.
+   Within an individual test, obviously, you don't wanna
+   repeat ideas.
+   Right.
+   And within an entire test suite, say, some type of factory
+   that creates all of your test
+   instances, that creates a test instance with default values
+  .
+   Right.
+   Very helpful, obviously.
+   And used throughout everywhere.
+   So, DRY that up and reuse it everywhere.
+   It's one concept.
+   Reused everywhere.
+   That's great.
+   Right.
+   But when you say, "Well, this group of tests in this file
+   is one thing, and this
+   is another thing, and this is another thing, and for this
+   group, these parts of setup are
+   applied, and for this group, these parts of setup are
+   applied," but that's not really
+   true.
+   Setup is always applied everywhere.
+   Right.
+   And so, you have that conceptual overhead, and then any
+   helper methods you have, there's
+   more overhead, and I don't...
+   If you're the person that wrote it, and you're the only
+   person that ever maintains the code,
+   then that's probably fine.
+   Dry it out however you want, because it's gonna be your
+   mental model, and just go with
+   it.
+   Right.
+   No criticisms there.
+   But if you work on, say, a 10-person team, and you start
+   drying things out, and hiding
+   a little complexity over here, and hiding a little
+   complexity over here, you're not
+   really reducing complexity.
+   You're just hiding it in different places.
+   And so now, when that test is broken, you're forcing me not
+   only to understand that complexity,
+   but I have to go find it as well.
+   Right.
+   So, I find that frustrating and selfish.
+   So, what would be something that...
+   As somebody who's sitting down and looking at implementing
+   a test suite around a new
+   product, what are maybe some rules of thumb that they might
+   want to have in mind as they're
+   kind of contemplating writing their test suite?
+   First thing is just know your motivators.
+   Know what's really important to you.
+   Do you want to do TDD?
+   Okay, well, that means you should, I don't know, write a
+   test for everything, but just
+   start there.
+   Okay, so now I have a motivator that's gonna cause me to
+   write a test for everything.
+   Great.
+   What is code coverage?
+   I'm not really a fan of 100% code coverage, but some people
+   are.
+   That's gonna be a motivator for some of your tests.
+   If you're not 100% code coverage, then you probably don't
+   need to, say, test the methods
+   of a framework that you're using.
+   Right.
+   They're probably already tested, right?
+   So, know your motivators.
+   I mean, the motivator of customer acceptance is another
+   common one.
+   Your manager told you to is another common one.
+   There are a lot of reasons that people write tests, so the
+   first thing, just know what
+   direction your motivators are even putting you in.
+   So, let's say that you only care about TDD for design, and
+   another way that I like to
+   look at my tests is RR.
+   R-O-I, return on investment, and so, say, you only care
+   about TDD, and you only care
+   about ROI.
+   So, cool.
+   TDD everything.
+   Get the benefits of TDD and get your improved design, you
+   know, everything that everybody's
+   been talking about with TDD.
+   Do that.
+   But just 'cause you wrote a test doesn't mean that it has
+   to stay there.
+   Right.
+   Right?
+   It doesn't need to live there.
+   Instead, I look at my tests, I prefer to look at my tests
+   through ROI, and so every test
+   has an ROI, negative or positive.
+   And so, say you write a test, say you're an insurance
+   company, and you need to look your
+   customers up.
+   Buy social security number.
+   So, social needs to be correct, so you have a validation on
+   social, but you don't need
+   to get correct that they have no integers in their name,
+   because there's no business
+   value in keeping integers out of a name other than maybe,
+   you know, one in a hundred, one
+   in a million.
+   You get a customer who's annoyed 'cause you put an integer
+   in there, but they're not gonna
+   cancel their insurance 'cause you put an integer in their
+   name, right?
+   Right.
+   So, you don't necessarily need a test for that, but maybe
+   you still TDD the feature,
+   verifying that there's no integers in the name, you TDD it,
+   and you get the good design benefits,
+   delete the test, because if that gets broken, if there is a
+   regression, it's minimal impact
+   to the business.
+   Yeah.
+   Actually, you brought up the next question I was gonna ask
+   about culling tests, and that
+   a lot of teams I've seen will take a test and treat it like
+   it's a sync or synced thing
+   that can never be, like, once it's implemented, you can't
+   touch it, and just sometimes I look
+   at tests and I'm like, "Why are we even testing this?
+   It doesn't matter."
+   Yeah.
+   And people are afraid to delete it, because they don't know
+   why they're testing it, and
+   why does it matter?
+   Yeah.
+   And I don't know what my motivation for testing is.
+   Maybe I can't delete that, because it's 100% code coverage,
+   or, you know, my manager said
+   this area needs to be 100% or something like that, but most
+   of the time that's not the
+   case.
+   Most of the time it's just like, "Well, this is a test, so
+   I can't possibly delete it,"
+   because, you know, imagine what would go wrong if somebody
+   found out I deleted it.
+   Yeah.
+   But if you think about it, you know, really, if I deleted a
+   test that was stopping
+   a regression, and we had that regression, and it had almost
+   no or no impact to the business,
+   then it's really not a big deal, right?
+   Right.
+   So you mentioned that you have authored a book.
+   What's your book title?
+   "Working Effectively with Unit Tests."
+   "Working Effectively with Unit Tests."
+   Yeah.
+   And is that a Java-centric book, or is it general purpose?
+   I would say it's general purpose, but it's Java examples,
+   which I know it's hard for
+   some people to swallow.
+   I personally love dynamic languages, but I wanted to make
+   it accessible to the most people,
+   so Java seemed like the good default choice.
+   Okay.
+   So it was "Working Effectively with Unit Tests."
+   "Working Effectively with Unit Tests."
+   "Working Effectively with Unit Tests."
+   It's on LeanPub, so DRM-free.
+   Okay.
+   All the good programmer stuff.
+   All right, great.
+   Well, thank you very much for taking the time to speak with
+   me.
+   Appreciate it.
+   Thanks a lot.
+   Yep.
