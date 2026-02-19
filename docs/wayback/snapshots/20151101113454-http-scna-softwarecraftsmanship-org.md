@@ -12,7 +12,7 @@ breadcrumb_parent_url: /docs/wayback/
 # SCNA 2015
 
 - Archived source: [https://web.archive.org/web/20151101113454/http://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20151101113454/http://scna.softwarecraftsmanship.org/)
-- Original URL: [http://scna.softwarecraftsmanship.org/](http://scna.softwarecraftsmanship.org/)
+- Original URL: [http://scna.softwarecraftsmanship.org/](https://scna.softwarecraftsmanship.org/)
 - Snapshot timestamp: 2015-11-01 17:34:54 UTC
 
 ## Archive Snapshot

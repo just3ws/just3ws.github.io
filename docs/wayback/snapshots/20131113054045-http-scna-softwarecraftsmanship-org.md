@@ -12,7 +12,7 @@ breadcrumb_parent_url: /docs/wayback/
 # SCNA 2013
 
 - Archived source: [https://web.archive.org/web/20131113054045/http://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20131113054045/http://scna.softwarecraftsmanship.org/)
-- Original URL: [http://scna.softwarecraftsmanship.org/](http://scna.softwarecraftsmanship.org/)
+- Original URL: [http://scna.softwarecraftsmanship.org/](https://scna.softwarecraftsmanship.org/)
 - Snapshot timestamp: 2013-11-13 11:40:45 UTC
 
 ## Archive Snapshot

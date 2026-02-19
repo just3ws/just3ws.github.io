@@ -12,7 +12,7 @@ breadcrumb_parent_url: /docs/wayback/
 # Software Craftsmanship North America
 
 - Archived source: [https://web.archive.org/web/20101112134833/http://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20101112134833/http://scna.softwarecraftsmanship.org/)
-- Original URL: [http://scna.softwarecraftsmanship.org/](http://scna.softwarecraftsmanship.org/)
+- Original URL: [http://scna.softwarecraftsmanship.org/](https://scna.softwarecraftsmanship.org/)
 - Snapshot timestamp: 2010-11-12 19:48:33 UTC
 
 ## Archive Snapshot

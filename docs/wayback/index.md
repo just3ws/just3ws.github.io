@@ -19,7 +19,7 @@ For community-specific captures (UGtastic + UGl.st) with ownership-context notes
 ## [SCNA 2015](/docs/wayback/snapshots/20151101113454-http-scna-softwarecraftsmanship-org/)
 
 - Snapshot: 2015-11-01
-- Original: [http://scna.softwarecraftsmanship.org/](http://scna.softwarecraftsmanship.org/)
+- Original: [http://scna.softwarecraftsmanship.org/](https://scna.softwarecraftsmanship.org/)
 - Wayback: [https://web.archive.org/web/20151101113454/http://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20151101113454/http://scna.softwarecraftsmanship.org/)
 
 Learn.Collaborate.Build. Bringing Software Craftsmanship to Southern California November 6th, 2015Los Angeles, CA Schedule Venue Sponsors Media FAQ Register Registration will be closing on Monday, November 2nd, so please register soon. There are only a few tickets left. Featuring Uncle Bob@unclebobmartin Iris Classon@irisclasson Enrique Comba Riepenhausen@ec...
@@ -27,7 +27,7 @@ Learn.Collaborate.Build. Bringing Software Craftsmanship to Southern California 
 ## [http://ugl.st/](/docs/wayback/snapshots/20140111160057-http-ugl-st/)
 
 - Snapshot: 2014-01-11
-- Original: [http://ugl.st/](http://ugl.st/)
+- Original: [http://ugl.st/](https://ugl.st/)
 - Wayback: [https://web.archive.org/web/20140111160057/http://ugl.st/](https://web.archive.org/web/20140111160057/http://ugl.st/)
 
 Toggle navigation User-Group List Home About Register a UG We ❤ User-Groups! UGl.st is building a global list of User-Group communities. Find a community and register yours today. Software Craftsmanship McHenry County McHenry, Illinois United States XXX Crystal Lake, Illinois United States Register your User-Group. What is your User-Group's name? Please desc...
@@ -35,7 +35,7 @@ Toggle navigation User-Group List Home About Register a UG We ❤ User-Groups! U
 ## [SCNA 2013](/docs/wayback/snapshots/20131113054045-http-scna-softwarecraftsmanship-org/)
 
 - Snapshot: 2013-11-13
-- Original: [http://scna.softwarecraftsmanship.org/](http://scna.softwarecraftsmanship.org/)
+- Original: [http://scna.softwarecraftsmanship.org/](https://scna.softwarecraftsmanship.org/)
 - Wayback: [https://web.archive.org/web/20131113054045/http://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20131113054045/http://scna.softwarecraftsmanship.org/)
 
 Register TodaySpeakersScheduleEventsVenueSponsorsMediaFAQRegisterSCNA is a conference for software professionals interested in improving their craft, their community, and themselves.Learnlearning and teaching to improve ourselves.Collaborateproviding an opportunity to connect and develop productive partnerships.Buildbuilding and celebrating a community of pr...
@@ -51,7 +51,7 @@ Saturday, May 19th, 2012 - Grayslake, IL home register schedule sessions speaker
 ## [scna](/docs/wayback/snapshots/20121123031707-http-scna-softwarecraftsmanship-org/)
 
 - Snapshot: 2012-11-23
-- Original: [http://scna.softwarecraftsmanship.org/](http://scna.softwarecraftsmanship.org/)
+- Original: [http://scna.softwarecraftsmanship.org/](https://scna.softwarecraftsmanship.org/)
 - Wayback: [https://web.archive.org/web/20121123031707/http://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20121123031707/http://scna.softwarecraftsmanship.org/)
 
 HOMESPEAKERSSCHEDULEVENUESPONSORSMEDIAFAQCONTACTRegistration is closed.Learnlearning and teaching to improve ourselves.Collaborateproviding an opportunity to connect and develop productive partnerships.Buildbuilding and celebrating a community of professionals while defining the industry.aboutSoftware Craftsmanship North America is a conference for software...
@@ -67,7 +67,7 @@ Users' Groups matter. Let's learn more about the people who create and cultivate
 ## [Software Craftsmanship North America 2011](/docs/wayback/snapshots/20111229061750-http-scna-softwarecraftsmanship-org/)
 
 - Snapshot: 2011-12-29
-- Original: [http://scna.softwarecraftsmanship.org/](http://scna.softwarecraftsmanship.org/)
+- Original: [http://scna.softwarecraftsmanship.org/](https://scna.softwarecraftsmanship.org/)
 - Wayback: [https://web.archive.org/web/20111229061750/http://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20111229061750/http://scna.softwarecraftsmanship.org/)
 
 home venue schedule speakers sponsors Registration Early Bird Pricing: $415 Extended to July 31st! Regular Pricing: $495 Register Now! Organized By Presenting Sponsor Sponsored By Media Sponsors Explore the Art of Software Craftsmanship The complete conference schedule is now available. Check it out! The last day to get a room at the conference rate of $199/...
@@ -75,7 +75,7 @@ home venue schedule speakers sponsors Registration Early Bird Pricing: $415 Exte
 ## [Software Craftsmanship North America](/docs/wayback/snapshots/20101112134833-http-scna-softwarecraftsmanship-org/)
 
 - Snapshot: 2010-11-12
-- Original: [http://scna.softwarecraftsmanship.org/](http://scna.softwarecraftsmanship.org/)
+- Original: [http://scna.softwarecraftsmanship.org/](https://scna.softwarecraftsmanship.org/)
 - Wayback: [https://web.archive.org/web/20101112134833/http://scna.softwarecraftsmanship.org/](https://web.archive.org/web/20101112134833/http://scna.softwarecraftsmanship.org/)
 
 Chicago, IL - October 15-16, 2010 Home Venue Speakers Schedule Sponsorship Software Craftsmanship North America 2010 Join Software Craftsmanship North America 2010 (SCNA) as a forerunner to the Craftsmanship movement! CHICAGO, IL OCTOBER 15-16, 2010 Register Now! Why attend? SCNA returns to present myriad opportunities for those skilled craftsmen as well as...
