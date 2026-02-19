@@ -368,7 +368,18 @@ section {
   margin-top: 0.5rem;
   color: var(--text);
   font-size: 0.95rem;
-  white-space: pre-wrap;
+  white-space: normal;
+  line-height: 1.75;
+  max-width: 72ch;
+  overflow-wrap: anywhere;
+}
+
+.video-transcript p {
+  margin: 0 0 1rem;
+}
+
+.video-transcript p:last-child {
+  margin-bottom: 0;
 }
 
 .video-embed {
