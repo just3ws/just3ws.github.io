@@ -75,6 +75,7 @@ This task list is prioritized to protect pipeline correctness first, then data i
 5. Keep JSON-LD required-field rules in lockstep with template/schema changes.
 6. Keep semantic graph artifacts and documentation snapshots synchronized when schema contracts change.
 7. Keep agent/skill usage explicit: use registered skills for CI/smoke/security tasks; add a dedicated SEO semantic skill only if repeated workflows become too custom.
+8. Keep Playwright smoke checks bounded and observable: enforce explicit step timeouts, cap sampled sitemap routes, and always upload smoke logs as CI artifacts.
 
 ## Agent/Skill Coverage
 
