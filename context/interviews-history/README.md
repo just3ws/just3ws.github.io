@@ -55,6 +55,9 @@ subject,event,source,has_transcript
 "Rich Hickey","GOTO Chicago 2013",youtube,yes
 ```
 
+### `/goto-official-playlists.md`
+Reference list of official GOTO Conference YouTube playlists for interview years.
+
 ---
 
 ## For Homepage Import
