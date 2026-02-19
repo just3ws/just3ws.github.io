@@ -1,0 +1,207 @@
+---
+content: |-
+  Hi, it's Mike with uTastic. I'm here at GoToConf 2014 and I
+  'm sitting here with
+   Tim Bray who's the co-inventor of XML and he's a keynote
+   speaker here today at
+   the GoToConf. Thank you very much for taking the time to
+   speak with me today,
+   Tim. Can you tell us a little bit about your talk and what
+   you're hoping people
+   take home from it? Well I've been mixed up in my, you know,
+   my most most recent
+   job was at Google and I spent a couple of years in the
+   Android groups there and
+   then subsequently did work in other areas and I've become
+   keenly aware of
+   sort of the tension in the marketplace between people who
+   are sort of browser
+   and web technology centric and people who are mobile cent
+  ric and I think
+   there's are some really good reasons to worry that the
+   notion of the browser is
+   losing its centrality in the world of app development.
+   And so what I'm going to talk about today is, is that
+   really a problem? Is that
+   actually happening? And if so, why? And assuming it is
+   happening, is that a
+   problem that we should worry about? And if it's a problem
+   we should worry about
+   then is there anything we could do to improve it? Now this
+   is unscheduled but
+   I'm also going to take a side trip into privacy. Okay.
+   Because I've been doing a
+   lot of work on that recently and in the era of Ed Snowden,
+   you know, we should all
+   be worried about that. Yes. You may think you don't have a
+   privacy problem in your work, but you probably do.
+   Yeah. Well, I mean, even with services that are very
+   popular like HipChat recently, I don't know if you're
+   familiar with, they had a change in their privacy policy
+   when our one-on-one
+   chats are able to be exposed to your employer. I mean, even
+   things like, like
+   that. And when you talk, but to go back to your original
+   keynote, when you're
+   talking about browser versus non-browser, are you talking
+   about native apps versus...
+   Yeah, I'm talking about native apps. Okay. You know,
+   increasingly if
+   somebody's going to build an app, they're actually going to
+   build three apps.
+   They're going to build, you know, a browser version, an iOS
+   version, an Android
+   version, and that's already a problem because, you know,
+   you're having to
+   replicate your work multiple times to get a result. And who
+   knows, you know,
+   Windows Mobile could get a good foothold and we'd all be
+   doing our work four
+   times in a row. So right there there's a problem. And then
+   even different form factors. Well, you know,
+   that just comes with the game. That's actually, you know,
+   not the big biggest part of the problem. And
+   whereas, you know, there's a lot of advantages to mobile
+   apps and people are moving in that
+   direction for reasons, some of which are good, you know,
+   there's some downsides to that too.
+   And we need to, you know, make sure we understand what the
+   upsides and downsides are of having a
+   browser-centric worldview as opposed to a native mobile app
+  -centric worldview and make the right
+   choices in an intelligent way. And just, you know, to inter
+  weave that
+   into the privacy, is it a good thing that we're moving
+   towards native apps versus
+   browsers as far as, maybe, privacy is concerned? So the
+   reason I ask is, I mean, I know cookies and
+   spying, you know, cross-browser checking of cookies and
+   tracking, that's one thing you can do in a
+   browser but maybe you wouldn't be able to do like that in a
+   native app. Yeah, I suppose, but I think that's a small
+   issue compared to the big issues. And the big issues are,
+   you know, the actual
+   criminals and bad guys who are trying to subvert your
+   account and steal your information
+   and your money. And on the other hand, the over-enthusi
+  astic employees of
+   our governments who feel that, you know, everybody would
+   just be safer if they
+   knew everything about everybody and why would anybody want
+   privacy unless they
+   were doing something wrong? I think, you know, they have
+   much bigger tools than
+   cookies. They have, you know, court orders and national
+   security letters for us to
+   worry about. Well, I mean, there was actually a tweet I saw
+   this morning
+   about the amount of data that the NSA has collected was in
+   the order of exabytes,
+   but it would take 350 years to sort it. That, like, is
+   there
+   a point where they just have so much information and it
+   becomes... Well, Google's
+   got way more than that. Oh, okay. And Google, you know, can
+   give you sub-second results on
+   searching the whole thing. So, you know, that doesn't
+   really sound like a...I wouldn't
+   buy that argument. I think that if they employ smart people
+   who know
+   how to index things and so on, which they do, they would be
+   able to make good use
+   of that stuff. So, I mean, that kind of describes it. There
+   is a precedent for having
+   extremely large...I mean, we use it every day.
+   It's become a household term. You know, grandmothers who've
+   never used a computer,
+   they know to Google for something. Right. And they can sift
+   through data like
+   nobody's business. That's right. Why wouldn't the NSA be
+   able to do that? Exactly. What have you
+   found in particular that maybe isn't something that people
+   are really talking
+   about yet? I mean, Snowden's obviously a very popular topic
+  , but... Well, I think we
+   need to buckle down and think about it. I think that, to
+   start with, you know, the
+   room I'm talking to today is going to be full of people who
+   build apps. And a
+   question I would have for them is, "Are you really
+   confident that your app will
+   work if I address it with HTTPS URLs as opposed to HTTP
+   URLs?" Even better, you
+   know, does your work...does your app automatically work
+   with HTTPS only?
+   Right. Because if you do that, then you've removed, you
+   know, one huge window of
+   vulnerability, ranging...which is open to anybody from the
+   NSA to some guy
+   running fire sheep in a coffee shop. Right. And I think it
+  's, you know, it's
+   incumbent upon the app builders to take a big piece of the
+   responsibility for
+   preserving the privacy of the people who use it. And that
+   means they not only need
+   to do the obvious things like use HTTPS, they need to think
+   very carefully about,
+   you know, what information they gather about people, what
+   they store about people,
+   what they tell people, what their policy is as regards
+   legal demands that they receive.
+   And they need to be clear about that stuff. And because laz
+  iness produces a really bad
+   result. Yeah. Well, you know, having been guilty of that
+   myself, as far as looking at
+   the expedient problem, like, over the last few years, or
+   several years ago, XML was
+   the de facto way to exchange information. But over the last
+   couple years, JSON has
+   kind of become more popular. And there's...I've heard pros
+   and cons about
+   adopting a very strict semantic language like XML that can
+  ...excuse me,
+   a more easily correct description of a language through XML
+   versus kind of a loosey-goosey
+   JSON. Is that something maybe that's indicative of the way
+   we're approaching writing applications
+   at this point? Where we're just like, what is the least
+   amount of effort I need to do
+   to push data over the wire? Should we be stepping back and
+   really thinking more about how we're
+   pushing stuff over the wire? Well, you may be right, but
+   that's okay. I mean, there's
+   so much work to do that we should all be trying to do the
+   simplest thing that could possibly work.
+   You know, do things in the simplest way that could work.
+   Then you worry about your constraints.
+   And as regards XML versus JSON, I mean, JSON is clearly,
+   clearly superior if you're exchanging
+   database records and file updates and that kind of stuff.
+   If you're exchanging blog posts
+   or credit reports or medical health records, XML wins for
+   that. So they have different
+   areas of strength. But I would worry not so much about the
+   form of the content, whether it's XML or JSON. I'd worry
+   about, is it traveling safely across the network in a way
+   that somebody who's using my app can
+   be really, really sure that they're connecting to me, not
+   to somebody else, and that nobody
+   else can watch the stuff going along? And then having
+   established that, sort of the bare
+   minimum barrier to entry, then you have to answer questions
+   like, okay, if I use your
+   app, what information are you gathering about me? How are
+   you protecting it? Under what
+   conditions will you release it and to whom? And, you know,
+   you could write, there's a real big takeaway
+   in letters of fire 50 feet high, and they say, don't
+   surprise me. You know, if you, people are, end up getting
+   a nasty surprise about what you're doing with their data,
+   the results will be really bad for you, and you
+   won't say you really want to avoid that.
+   All right. Well, thank you very much for taking the time to
+   speak with me. I appreciate it.
+   User groups with lots to say, interviews and more, no way.
+   Sharing great ideas in the tech community. Fascinating
+   conversations, a plethora of information. Find out for
+   yourself today at uktastic.com.

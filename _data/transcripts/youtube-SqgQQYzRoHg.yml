@@ -1,0 +1,140 @@
+---
+content: |-
+  Hi, it's Mike with U-Tastic. I'm here at GoToConf 2015. I'm
+   sitting here with Dr. Rebecca Parsons, who gave a
+   presentation on microservices here at the conference.
+   Thank you very much for taking the time to speak with me.
+   Microservices, what was the talk about, and how did you
+   come to give a presentation about microservices? What was
+   the driving force for that topic?
+   Well, I've had a longstanding interest in architecture, and
+   I speak a lot about evolutionary architecture as a way of
+   making systems that are more adaptable,
+   because the system requirements that our business users are
+   placing on systems, the rate of change is just continuing
+   to increase.
+   And so we need systems that are much more adaptable and
+   evolvable than they were before.
+   And microservices is a relatively new architectural style
+   that is gaining traction and done well.
+   Microservices architecture does allow you to make changes
+   as fast as possible.
+   And so this is a nice approach to architecture that achie
+  ves this goal of an evolutionary architecture.
+   Okay. And I know that you're coming from a much deeper
+   background than somebody who's just read an article on
+   microservices.
+   Right.
+   As a CTO at ThoughtWorks, so was this something that's
+   evolved from pain that you're seeing at your clients in
+   trying to figure out ways to better solve their problems?
+   Not just our clients. Organizations like Netflix, Amazon,
+   others are looking at architectural styles that are very
+   similar to this.
+   So this has really grown out of the issues that people are
+   facing with services.
+   Okay.
+   So this has really grown out of the issues that people are
+   facing with services.
+   Okay.
+   So this has really grown out of the issues that people are
+   facing with services.
+   Okay. So this has really grown out of the issues that
+   people are facing with services.
+   Okay. So this has really grown out of the issues that
+   people are facing with services.
+   that do have to be incredibly responsive, incredibly
+   performant,
+   and also responding to changes in required functionality.
+   And so it's been our clients, but it's also been other
+   people in the industry.
+   Right, and it's funny to see this topic.
+   It seems to me there's two camps.
+   There's the DHH and this love of the monolith,
+   and then there's on the other side,
+   there's people who are dealing with polyglot problems.
+   I know you're a polyglot programmer person,
+   but polyambiguous problems that are just in all different
+   types of ecosystems,
+   not just a Ruby one single stack environment.
+   What is it, if I'm looking and I'm trying to evaluate,
+   I've got a Rails app and I'm serving this app,
+   and I'm trying to figure out, hey, does this microservices
+   technology,
+   is this appropriate for growing my application,
+   or I'm working in an environment
+   that I'm trying to figure out, hey, does this microservices
+   technology,
+   we have a monolith, should I start thinking more about
+   microservices?
+   What are some of those thresholds that somebody might want
+   to use
+   to evaluate whether they should move towards this
+   technology?
+   Well, one thing is how easy or difficult you're finding it
+   to make the kinds of changes that your users are expecting.
+   I mean, a well-designed monolith can be the right decision.
+   You would also want to consider things like
+   the deployment footprint.
+   If you're going to scale a monolith,
+   you're going to scale the whole monolith.
+   And so if you're doing horizontal scaling
+   and you need four of them,
+   you're going to have four of the entire monolith.
+   There might only be one part of that infrastructure
+   that does need to scale,
+   but you don't have that choice if you're a monolith.
+   So looking at the kinds of problems
+   that you're running into with a monolith,
+   it may be that it makes sense to stick with a monolith,
+   one of the things I spend a lot of time talking about
+   in the presentation were some of the issues
+   and the implications.
+   Microservices architectures are more complex
+   than a single monolith.
+   And so you want to make sure that the reason you're going
+   to the microservices architecture is sound.
+   Right.
+   So it sounds like if I have maybe an email component
+   of my application that is the one place
+   that I'm always seeing performance bottleneck problems
+   and I'm spinning up new instances
+   just to support that aspect,
+   I can maybe look at exercising that one piece
+   into a microservices.
+   I mean, is it an all or nothing or can I do piecemeal?
+   Oh, you can definitely do piecemeal.
+   Okay.
+   Yeah.
+   Okay, so I can just, again,
+   it sounds like even just good refactoring,
+   like an object.
+   If I see something that's doing too much
+   and I have a God object, maybe pull that out.
+   I mean, is a lot of this stuff with microservices
+   really just taking object-oriented programming concepts
+   to a next level?
+   I'm not sure I would just tie it to object orientation,
+   because there's, that is one way of looking at it.
+   And some of the concepts from domain-driven development,
+   which people tend to associate more with object orientation
+  ,
+   although it doesn't have to be.
+   But those concepts apply.
+   And a lot of the thinking about what constitutes good
+   boundaries,
+   it's the same, they're the same sort of questions that are
+   just being asked at a larger level.
+   And when you think about it,
+   any time you start with a monolith,
+   you're probably not going to take a big sledgehammer
+   and smack it and break it up.
+   And you're going to progressively pull things out.
+   And so, yes, for a time, you might have a small number
+   of services working with a bigger monolith.
+   And as needs arise,
+   you could pull more and more stuff out of that monolith.
+   - Okay, well, thank you very much
+   for taking the time to speak with me.
+   I appreciate it.
+   - Thank you, Mike.

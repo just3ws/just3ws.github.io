@@ -1,0 +1,407 @@
+---
+content: |-
+  Hi, it's Mike again with Ugetastic. I'm sitting down with
+   James Edward Gray, who is known for Shades of Grey, the
+   Ruby Rogues, and also if you've used his faster CSV library
+   in 1.8, and now it's part of the standard lib in Ruby 1.9,
+   not, well, just Ruby 1.9.
+   But thanks for taking a moment to sit down, James. I
+   appreciate it. Can you tell me a little bit about how you
+   got involved with Ruby?
+   Yeah, it was a long time ago. I think I entered the
+   community in summer of 2004 or something like that, and I'd
+   just kind of gotten off of a job and, you know, went into
+   that cycle of learning new things, and I grabbed a copy of
+   the programming Ruby and decided I'd teach myself a new
+   language and kind of got stuck and never left.
+   What were you doing before Ruby?
+   I'm Java certified. I did that for several years. I spent a
+   lot of time in the Perl community working there. The
+   project I came off of just before getting into the Ruby
+   community was a big Perl site using CGI and all kinds of
+   crazy stuff.
+   So you've kind of really embraced the Ruby community, and
+   it seems to have been a lot of fun for you. What was it
+   about Ruby?
+   It was pretty early on, because 2004 was, I mean, it hadn't
+   just come out, but that was pre-rails.
+   Yeah, it was really early. It was easy to get hooked in the
+   community back then. It was a very small, tight-knit group
+   of people. We had basically one mailing list where most of
+   our communication happened, and you would literally be
+   posting questions and getting answers from people like Dave
+   Thomas and stuff like that.
+   Yeah, it was really early. It was easy to get hooked in the
+   community back then. It was a very small, tight-knit group
+   of people. We had basically one mailing list where most of
+   our communication happened, and you would literally be
+   posting questions and getting answers from people like Dave
+   Thomas and stuff like that.
+   So I was just on the tail end of that era, and got kind of
+   sucked in that way.
+   Okay. And then you created the Faster CSV library. What
+   drove that?
+   It was an accident, actually. They were talking on the Ruby
+   core mailing list about how the CSV library was so slow,
+   and people were trying to analyze why it was slow.
+   Really, it was...
+   It wasn't any particular fault of the library so much, just
+   that it did a lot of work in a really tight loop, calling a
+   bunch of methods and stuff, which in Ruby is pretty slow.
+   And people were talking about ways to speed it up, and just
+   a few weeks before that, I had read Mastering Regular Exp
+  ression or something like that.
+   Right.
+   And so I said, well, you can do it with one regular
+   expression. And everybody's like, no, you can't. And so I
+   went and pulled it out of the book and put it in the
+   mailing list discussion, and a bunch of people threw really
+   nasty examples at it that it didn't handle well. So I kept
+   tweaking it and tweaking it to seeing if I could get it to
+   do all of it, and I wrote this kind of tiny parser using
+   primarily that one expression.
+   And then a few other things to handle some gnarly edge
+   cases, and that actually ended up being the faster CSV core
+   for a long time. Eventually, somebody came along and rewr
+  ote the parser not to use a regular expression, but that was
+   the start of it.
+   Yeah. And then, I mean, what was the process that went from
+   being an external Ruby gem to being part of the standard
+   lib? What did you have... Did you have to pay a fee? Did
+   you have to sign a license agreement?
+   Yeah, yeah, sign away all my... No, actually, there was
+   discussion once faster CSV had been around for a while.
+   There was discussion multiple times about, you know, should
+   we replace the library and the standard core? And I think
+   most people were positive to the idea in that, you know, we
+   wanted a faster library and stuff.
+   And, you know, we didn't want to break backwards
+   compatibility. And I had a compatibility mode where it
+   would behave like CSV, but it wasn't perfect. There were
+   some cases where it couldn't do the right thing. So that
+   was discussed for a long time, and nobody ever really came
+   to a decision on that, which stalled it getting in.
+   I was tired of it not being in there and wrote a pretty imp
+  assioned plea to, you know, this is ridiculous. We have a
+   much better choice. Can we just put it in? And they were
+   decided... At that point, it was discussed one more time,
+   and it was decided, all right, compatibility be damned. We
+  'll just switch over.
+   Yeah. Well, I remember upgrading from standard CSV to
+   faster CSV and then migrating to 1.9 and had no problems. I
+   mean, but then again, maybe our case wasn't that exotic.
+   1.9 was actually kind of a hurdle because when I brought it
+   in, 1.9 had the M17n engine, right? So it had to be rework
+  ed extensively because of encodings, which encoding, you
+   know, your data is in matters how you find things like a
+   quote and a comma, right?
+   1.9 was actually kind of a hurdle because when I brought it
+   in, 1.9 had the M17n engine, right? So it had to be rework
+  ed extensively because when I brought it in, 1.9 had the M17
+  n engine, right?
+   Yeah, we actually drove some bug fixes in Ruby at that time
+  . When I was fixing CSV, I would figure out a lot of
+   encoding stuff, and I would find some kind of bizarre edge
+   cases and then post them to the list, and that actually
+   ended up fixing certain bugs in Ruby.
+   Oh, okay. So because you were actually driving a use case
+   for a lot of these encoding issues.
+   1.9 was actually kind of a hurdle because when I brought it
+   in, 1.9 had the M17n engine, right? So it had to be rework
+  ed extensively because when I brought it in, 1.9 had the M17
+  n engine, right?
+   Yeah, so because you were actually driving a use case for a
+   lot of these encoding issues.
+   And that drove me crazy, so I wrote those articles that you
+   mentioned on my blog.
+   And so you're jumping over to some of the more social
+   aspects, not just the code, but the Ruby Rogues. You're on
+   there. You're a regular contributor to the Ruby Rogues
+   podcast. How did you get involved with that?
+   I'd had an idea from some other podcasts I listened to that
+   had panel discussions, and I thought, man, it'd be really
+   cool.
+   Wouldn't it be cool to do that in Ruby someday? And I guess
+   Chuck had had pretty much the same idea, and I can't
+   remember who mentioned it first, but one of us mentioned it
+   on Twitter.
+   Wouldn't it be cool to have a panel of Ruby discussions,
+   and whichever one didn't mention it, the other one was like
+  , I've been thinking the same thing.
+   And so we kind of started trading some emails over it and
+   put together the original panel and just started doing it.
+   And it was just something we did for fun in our spare time.
+   But then it got popular pretty quick, really. And so we got
+   lots of feedback, you know, your audio sucks, and things
+   like that.
+   Yeah, I hope eventually to get that kind of feedback.
+   Right, yeah.
+   Because I'll be like, yeah, they all suck.
+   Yeah, when you get a bunch of listeners, they definitely
+   bug you about it quick.
+   Yeah.
+   And, you know, we had some people leave and some people
+   come in, and then we just kind of got lucky in getting a
+   team that really gelled eventually, you know, and played
+   well off of each other.
+   And I think that's mostly what led to its success.
+   Yeah, I listened to quite a few, and Ruby 5 and Ruby Rogues
+   are two that I can tolerate listening to in the background.
+   Because sometimes it's almost like listening a little bit
+   to, like, I used to listen to talk radio.
+   And the banter, it's not too heavy, but, you know, you can
+   kind of tune it out, and it's like a conversation in the
+   background.
+   Right.
+   But it's fun.
+   And that kind of is going to provide my segue into the next
+   topic is I joked with Avdi when I interviewed him about
+   what kind of was the impetus for me to reach out to him was
+   listening to the episode, and it was just this kind of ban
+  ter you guys were having.
+   In the beginning of the show about stand-up chairs, stand-
+  up desks.
+   And I was like, I didn't know at the time that you, you
+   know, you were in a wheelchair.
+   And somebody said something about a stand-up desk, and you
+   said something like, oh, I don't use one, and I don't know
+   who it said.
+   But they're like, well, why, James?
+   And, you know, and then you guys all laughed.
+   And, you know, and I said to Avdi that that's, you know,
+   that's a very.
+   Positive banter because you can't just have that one unless
+   you guys were all friends and knew each other well.
+   But it is germane to the technical community and being out
+   and speaking and going to user groups and conferences and
+   things like that.
+   Has that been something that's, well, what has it been like
+  ?
+   I hate that question, but what has it been like going to
+   conferences?
+   In a wheelchair?
+   It's not, you know, it's not too bad.
+   There was some time early when I was first in the Ruby
+   community.
+   You know, it was a very small group, so I was probably the
+   first one in a wheelchair in the community.
+   And there, just at that time, there wasn't awareness.
+   And there, so they would just book conferences in certain
+   locations without thinking about things.
+   Like accessibility.
+   And there were a couple of early instances where some of
+   the conferences were not in good accessible locations.
+   And that wasn't anybody's fault.
+   Like I said, it was just a lack of awareness.
+   And when it was brought up, you know, everybody felt
+   terrible and all of that.
+   But being in the community pretty early on, that made
+   everybody kind of start putting it as a bullet point.
+   On things you need to look for in a conference location,
+   you know.
+   And so that problem resolved itself really quickly,
+   actually.
+   And really, the harder part for me is just, it's not easy
+   to travel with a big electric wheelchair.
+   Especially if you're going to take a plane.
+   It's very inconvenient.
+   So when I fly, I switch to a manual wheelchair, which is
+   much easier to get around with.
+   When you're flying.
+   But at the same time, it reduces my mobility a lot.
+   So because of that, I just don't tend to go to a lot of far
+  away conferences unless I make it a very special thing and
+   do.
+   So I tend to stick to the conferences around me.
+   And I live basically right in the middle of the U.S.
+   So I usually do the more central conferences.
+   And so I don't get out to some of the big ones on the coast
+   very often, though.
+   So, you know, Josh Susser keeps threatening to drag me to
+   Goguruko.
+   And I would like to make it there someday.
+   But every now and then, I'll make a special exception.
+   I went to Japan for Ruby Taigi one time.
+   But when going there, then I was traveling internationally.
+   So you had things like, you know, how is the accessibility
+   in Japan to consider.
+   So I talked to Matt beforehand, and we had a discussion.
+   And he told me it was really pretty good in Japan's modern
+   cities.
+   So to stay in the big, nice cities, but, you know, to avoid
+   the little towns, which is pretty similar to here in the U.
+  S., actually.
+   So I stayed in big places like Kyoto and Tokyo and did that
+  .
+   And then just recently, this last year, I attended Aloha
+   Ruby Conf.
+   So I flew down to Hawaii and did that.
+   And it was a great time.
+   Yeah.
+   So it is something that you communicate to organizers.
+   Hey, if you're going to have me come speak, just heads up.
+   Well, nowadays, I don't really have to do that anymore.
+   You know, it seems to just, it's something we think about
+   now.
+   And I've seen other people in wheelchairs at conferences
+   now.
+   So, you know, we're a big, sprawling, worldly community
+   that needs to be aware of everybody's needs.
+   So, and luckily, the good thing is, you know, once you
+   reach a certain point, we're a huge community.
+   You know, Ruby Conf limits the attendance and still gets
+   800 to 1,000, you know.
+   So when you have to put that many people in a place, you
+   typically need a very modern hotel or convention center.
+   And those kinds of places are always accessible.
+   Yeah, they've already got that handled.
+   Right.
+   Yeah, because...
+   It is interesting that as I'm doing these interviews, I'm
+   learning more about people's experiences in a community
+   that aren't necessarily young, white males.
+   Right.
+   But even young, white male, like yourself, you know, there
+  's all different varieties of ability and accessibility.
+   So it's kind of been interesting for me.
+   I actually didn't come from the .NET.
+   I mean, I can't...
+   I came from a .NET community for 10 years and then started
+   into Ruby.
+   But in the last few years, it seems like it has grown.
+   There's been some serious pains with isms in the community.
+   But it seems like we're coming out on the other side of
+   that with a much more enlightened community or the birth p
+  angs of an enlightened community.
+   And it's kind of interesting that it's not been something
+   that's been enforced from the outside or a government
+   mandate or some kind of regulation.
+   It's been largely grassroots, the people in the community
+   saying, hey, this is not acceptable or, hey, this has to be
+   better.
+   Yeah, I think that's really improving.
+   I mean, like I said, I think now anybody who plans a Ruby
+   conference is, you know, at least factors it into their
+   thinking, you know, it should be accessible.
+   You know, I have people tell me things like, we'd love to
+   get you to come out to our conference sometimes.
+   Oh, and I've checked.
+   There's a ramp to get on stage, right?
+   You know.
+   Yeah.
+   Things like that, you know.
+   So I think it's in people's minds now and they factor it
+   into their thinking.
+   And just attending the conferences, I'm noticing how much
+   more diverse they're getting.
+   And, yeah, that makes me really proud of us as a community.
+   So, you know, a lot of people in the Ruby community seem to
+   be also, it has hit a certain stage where a lot of the, it
+   seems like a lot of the earlier people who adopted it are
+   now starting to look at other technologies.
+   Is there anything for James?
+   Are you looking at Clojure or anything like that?
+   I play with lots of other things.
+   You know, Erlang I've played with quite a bit.
+   I haven't got around to Clojure or Scala yet, but they're
+   on my list, you know, to get to eventually.
+   Actually, in recent years, I've been more trying to focus
+   on complementary things.
+   Like, you know, a lot of people have been trying to focus
+   on complementary things.
+   A lot of people will go learn Clojure and, you know, use
+   that a bunch.
+   But I've been trying to do things like, I actually sat down
+   at one point and finally sat down and learned Bash, you
+   know, the shell.
+   I just, you know, all those years I could use it a little,
+   but never really sat down and read through a book on it and
+   learned how to write loops in it or things like that.
+   And, boy, that was phenomenal for my productivity.
+   Like, I can't tell.
+   I can't tell you how valuable it was, actually.
+   I mean, I understand now when a process works, what's going
+   on, you know, and what are the rules.
+   And it's funny how much that helps.
+   And so I've been learning more complementary things.
+   I'm a big regular expression nut, and I enjoy digging down
+   into the guts of Aniruma and building really complicated
+   regular expressions to understand how the engine works and
+   things.
+   So I've been focusing more on complementary things.
+   So I've been focusing more on complementary stuff and less
+   on totally, you know, I'm going to switch to this other
+   language kind of stuff.
+   So you're going to come up with a Bash quiz book?
+   No, I don't think my Bash is that good.
+   You need to talk to somebody like Wayne Siegwin for that.
+   He's really great at that kind of stuff.
+   Yeah, and so just to kind of bring us to the tail end, you
+  've written a few books.
+   But the one that was kind of the most interesting for me
+   was the Ruby quiz.
+   I've not actually read it formally.
+   I've sat down and looked through it.
+   But it was interesting that it was more of like, here's
+   some kind of neat things that maybe you wouldn't expect.
+   And what was the impetus for creating that book?
+   So when I came to the Ruby community, I came from the Perl
+   community.
+   And about the only thing I missed from Perl was Perl had
+   Perl's quiz of the week back then running.
+   And it was run by Mark Jason Dominus.
+   And it was a little different from the Ruby quiz.
+   It had like a beginner's level and then expert level each
+   week and stuff.
+   But I really missed doing that quiz and seeing all the
+   solutions and stuff like that.
+   So I created the Ruby quiz to fill that void because I
+   missed it.
+   And I ran it for quite a while.
+   I can't remember how long.
+   And Dave Thomas.
+   At that time was, you know, really getting that pragmatic
+   bookshelf going.
+   And that was when they started producing a lot of Ruby
+   books.
+   And he came to me and said, would you like to take some of
+   the best of the Ruby quizzes and turn them into a book?
+   Okay.
+   So that was how it happened.
+   And he admitted at the time, he's all, you know, it
+   probably won't be a great seller, you know, because it's
+   kind of a niche thing and stuff.
+   But he said that, you know, it's a neat topic and will be
+   something fun to have.
+   And the line ups.
+   Yeah, it was always on the shelves at any of the consult
+  ancies I was at.
+   But it's 1.8.
+   Is there an update coming for 1.9?
+   No, they recently took that book out of print.
+   So I think it's all done.
+   I did the Ruby quiz for three years and then kind of set it
+   aside.
+   It was a huge time commitment because, you know, you had to
+   have problems ready to go.
+   And I wrote the problem each week.
+   And then also I had to, as problems came in, I had to dig
+   through the code enough that I could figure it out and talk
+   about it, you know.
+   So that took me some time.
+   And then I wrote up the summary each week.
+   So all in all, it took me about eight hours a week, I would
+   say, to just run it and sometimes more.
+   It was a complicated problem or something.
+   So eventually I was like, this is a lot of fun, but I'm
+   going to have to set this aside if I'm going to be able to
+   do other things.
+   And there have been some people who've ran brief stints in
+   the interim, but nothing like the original run.
+   Okay.
+   Well, thank you very much for taking the time to sit down
+   and chat with me.
+   So thank you very much.
+   You have a good day.
+   Absolutely.
+   Thanks.
