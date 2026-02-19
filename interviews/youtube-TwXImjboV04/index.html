@@ -1,8 +1,8 @@
 ---
 layout: minimal
-title: "Interview Archive — GOPR0282 (GOTO Conference)"
-description: "Interview with GOPR0282. Topic: GOPR0282. Conference: GOTO Conference 2015. Recorded: 2023-10-23. Interview ID: youtube-TwXImjboV04."
-breadcrumb: "GOPR0282"
+title: "Interview Archive — Mads Torgersen at GOTO Chicago 2015 (GOTO…"
+description: "Interview with Mads Torgersen at GOTO Chicago 2015. Topic: future of C#. Conference: GOTO Conference 2015. Recorded: 2023-10-23. Interview ID:…"
+breadcrumb: "Interview with Mads Torgersen at GOTO Chicago 2015"
 breadcrumb_parent_name: Interviews
 breadcrumb_parent_url: /interviews/
 ---
@@ -33,6 +33,31 @@ breadcrumb_parent_url: /interviews/
       {% endif %}
       {% if interview.community %}{% if interview.conference %} · {% endif %}Community: {{ interview.community }}{% endif %}
     </div>
+
+    {% assign related_entry = site.data.interview_related_videos.items | where: "interview_id", interview.id | first %}
+    {% assign conference_related = site.data.interview_related_videos.conference_playlists | where: "conference", interview.conference | where: "conference_year", interview.conference_year %}
+    {% if (related_entry and related_entry.links and related_entry.links.size > 0) or (conference_related and conference_related.size > 0) %}
+      <section class="related-content">
+        <h2>Related Conference Videos</h2>
+        {% if related_entry and related_entry.links and related_entry.links.size > 0 %}
+          {% for link in related_entry.links %}
+            <div class="video-meta">Related: <a href="{{ link.url }}">{{ link.label }}</a>{% if link.kind %} · Type: {{ link.kind }}{% endif %}</div>
+            {% if link.embed_url %}
+              <div class="video-embed">
+                <iframe src="{{ link.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ link.label }}"></iframe>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% if conference_related and conference_related.size > 0 %}
+          {% for group in conference_related %}
+            {% for link in group.links %}
+              <div class="video-meta">Official playlist: <a href="{{ link.url }}">{{ link.label }}</a>{% if link.kind %} · Type: {{ link.kind }}{% endif %}</div>
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+      </section>
+    {% endif %}
 
     {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
     {% include json-ld-interview.html interview=interview asset=asset %}

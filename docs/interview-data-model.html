@@ -33,6 +33,7 @@ flowchart TB
   subgraph Lookups["Lookup Tables"]
     confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
     comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
+    related[_data/interview_related_videos.yml&lt;br/&gt;Related talks + official playlists]
     resources[_data/resources.yml&lt;br/&gt;Trusted source registry]
   end
   interviews &lt;--&gt;|video_asset_id / interview_id| assets
@@ -40,6 +41,7 @@ flowchart TB
   scmc --&gt;|video_asset_id| assets
   interviews --&gt;|conference field| confs
   interviews --&gt;|community field| comms
+  interviews --&gt;|interview_id / conference+year| related
   confs --&gt;|slug| resources
   assets -..-&gt;|transcript_id| transcripts
     </pre>
@@ -66,6 +68,7 @@ flowchart TB
   subgraph Lookups["Lookup Tables"]
     confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
     comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
+    related[_data/interview_related_videos.yml&lt;br/&gt;Related talks + official playlists]
     resources[_data/resources.yml&lt;br/&gt;Trusted source registry]
   end
   interviews &lt;--&gt;|video_asset_id / interview_id| assets
@@ -73,6 +76,7 @@ flowchart TB
   scmc --&gt;|video_asset_id| assets
   interviews --&gt;|conference field| confs
   interviews --&gt;|community field| comms
+  interviews --&gt;|interview_id / conference+year| related
   confs --&gt;|slug| resources
   assets -.-&gt;|transcript_id| transcripts</code></pre>
   </section>
@@ -168,6 +172,24 @@ conferences:
       kind: string       # Optional source kind
       notes: string      # Optional context</code></pre>
 
+    <h4><code>_data/interview_related_videos.yml</code></h4>
+    <p>Optional related conference content for interview pages:</p>
+    <pre><code>conference_playlists:
+  - conference: string        # Matched by interviews.conference
+    conference_year: int      # Matched by interviews.conference_year
+    links:
+      - label: string         # Display text
+        kind: string          # e.g. "official-playlist"
+        url: string           # External URL
+
+items:
+  - interview_id: string      # Matched by interviews.id
+    links:
+      - label: string         # Display text
+        kind: string          # e.g. "official-talk"
+        url: string           # External URL
+        embed_url: string     # Optional embeddable URL</code></pre>
+
     <h3>Source Data Files</h3>    <h4><code>_data/oneoff_videos.yml</code></h4>
     <p>One-off videos (standalone talks and presentations):</p>
     <pre><code>items:
@@ -257,6 +279,12 @@ conferences:
           <td>resources</td>
           <td>1:N</td>
           <td><code>slug</code> → <code>resources.conferences[slug]</code></td>
+        </tr>
+        <tr>
+          <td>interviews</td>
+          <td>interview_related_videos</td>
+          <td>1:N (optional)</td>
+          <td><code>id</code> or <code>conference + conference_year</code></td>
         </tr>
       </tbody>
     </table>
