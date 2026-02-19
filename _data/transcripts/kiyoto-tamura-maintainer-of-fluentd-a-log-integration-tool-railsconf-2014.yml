@@ -1,0 +1,184 @@
+---
+content: |-
+  Hi, it's Mike with UBITASIC. I'm here at RailsConf 2014 and
+   I'm sitting here with
+   Kyodo Tamura, who is a maintainer for the Fluentd log
+   aggregation and data
+   collector. Thank you very much for taking the time to speak
+  . What is a log
+   aggregator/collector? Fluentd is a log aggregator/log
+   collector written
+   in Ruby and its key features are that it's really
+   lightweight, it's a very small
+   Ruby program augmented by extensible plugin architecture
+   and it runs
+   pretty fast for all sorts of logs. A lot of our customers
+   collect data for
+   like Apache Engine logs, Apache Nginx logs, syslogs,
+   application logs and
+   store them in like Elasticsearch, store them in MongoDB,
+   copy the data, archive it,
+   and so forth. We started a project two and a half years ago
+   and the community has grown
+   to be about like 50 regular contributors, thousands of
+   users in the world including
+   Slideshare and Nintendo. Yeah, Nintendo, that's actually,
+   that's
+   pretty cool. I mean, are you able to say how they're using
+   it?
+   I'm actually not sure about the actual like, you know, how
+   they use it, but I think
+   it's part of their like online games that are going on now.
+   Okay. And basically like with all these companies, logs are
+   very, very important.
+   They want to centrally manage it and they want to do all
+   sorts of operations
+   on them. And before, like a lot of, like myself included,
+   we would rsync, write a
+   script here and there, but as like the number of your data
+   sources increase and
+   the number of storage systems you want to store and use
+   increase, the complexity
+   increases like exponentially. And we wanted 10 complexity,
+   keep everything
+   simple, and keep everything performantly.
+   So how did you get involved in this project?
+   Yeah, so I'm the, so the Fluentd was originally created by
+   my employer, Treasure
+   Data. And I'm employee number one. And when we first
+   created the thing, we didn't think
+   it was going to be big, but one of our customers saw it and
+   they were like, man, like we wish
+   this was open source. And we sort of drew the inspiration
+   from Heroku, who actually
+   offers service as a pass.
+   Okay.
+   But they also like open source a lot of stuff. That's
+   really cool.
+   Especially the stuff that runs on the client side. So we
+   did the same. The community
+   started to grow organically. Right now we have like a
+   little short of like 1800 stars
+   on GitHub and it's been steadily rising.
+   Oh, wow. That's, so it's, it's a pretty well adopted.
+   Yeah. I used to, I sometimes do the self-deprecating so
+   that it is the law
+   collector that nobody's heard of.
+   Right.
+   But it's actually pretty cool.
+   Yeah. No, 1800 people have heard it at least.
+   Yeah.
+   Click that button.
+   Yeah.
+   So the, the contributions is are, do you, it's open source,
+   but how do you, how do you
+   interact with the community? Do you have people like
+   contributing patches or doing?
+   Yeah, yeah, yeah. So right now I think there are 18 people
+   with commit rights. Three of
+   them come from us, Treasure Data. It's a fairly, it's a
+   very balanced community in the sense
+   that we have commuters from like various companies. And
+   although we started originally in Japan,
+   we're, Treasure Data's founders are originally from Japan,
+   starting to spread like a lot
+   of the questions these days come from like all parts of the
+   world. And as someone who
+   constantly asks this question to the mailing list, I'm, I'm
+   glad to see this adoption going
+   global.
+   And you know, it's always funny with some of these open
+   source projects, like I have
+   no idea what Fluentd means. What, how did, what's the name,
+   where did it come from?
+   Oh, okay. So originally, we wanted to make various data
+   sources talk to various data,
+   like back-end systems more fluently. So the original author
+   of the project, Kisada, who
+   also wrote MessagePack, which is a binary protocol, he
+   wanted to call it Fluent. And
+   that's why our GitHub username is Fluent. But then, um, he
+   also realized that's not
+   very Google-able.
+   Yeah.
+   Like when you type Fluent, there's like all sorts of like
+   language websites, right?
+   Right, right.
+   So we just decided to add D, which, um, traditionally
+   stands for daemon.
+   Okay.
+   So that's like stats D, or power syslog D.
+   Oh, okay, so it's the Unix D.
+   Yeah, Unix D. So that, that's the, the story.
+   Oh, okay.
+   So now it's Fluent/Fluent D is the project repo.
+   So if somebody was interested in, in, you know, log aggreg
+  ation and collection, as we
+   start to have more people running multiple servers and
+   needing to aggregate data, um,
+   what, what would they do to, to check out, like how, how do
+   you recommend somebody?
+   So our GitHub repo is a good place to start. Uh, so is our
+   website, friendydontwork.com.
+   And if you're familiar with Ruby, and I know not everyone
+   is from the Ruby community, jam
+   install Fluent D and you can get started right away.
+   Is it like compatible back to 1.8, or is it?
+   Uh, so we officially, I think, support 1.9.3 and above, and
+   in the newer versions
+   we're trying to slowly push the community to 2 and above.
+   Yeah, I'll tell you, yeah, because now it's 2.0 is, is.
+   Yeah, 2.0 is the, and our experimental, um, bleeding edge
+   right now is trying to, uh,
+   work off of 2.1.1.
+   Okay.
+   And Ruby has made a great performance, uh, progress over
+   the past few years, and we want
+   to take advantage of that.
+   And as far as, as putting in the, the log aggregator, is it
+   something that, uh, uh,
+   a normal Rails developer could probably work through?
+   Yeah, so that's the other great thing about Fluent D, like,
+   uh, when we, when I tell people,
+   especially not familiar with, like, writing Ruby systems
+   code, is that, ooh, this is like
+   system software.
+   It's hard, it must be really hard to write plugins.
+   Actually, I know a lot of engineers and programmers, or
+   software writers, um, who learn to write
+   Ruby, myself included, actually, partially, by writing,
+   writing plugins for Fluent D.
+   Oh, really?
+   And there's only, like, a tiny bit of code that you need to
+   write, and everything
+   is really well-attracted, so that you really don't have to
+   repeat what other people have
+   already built.
+   And, yeah, so it's pretty easy to get started.
+   And you said that earlier, it's only about 5,000 lines for
+   the code.
+   Yeah, that's the core.
+   Yeah, so the core.
+   So it's probably a good idea for people to do, like, what D
+  HH recommended, and that's
+   just go read the source code.
+   It's not...
+   Yeah, um, it is, uh, it is a pretty small program, pretty,
+   uh, well-documented.
+   Not in the code, but that is something that we're working
+   on.
+   Okay.
+   And, uh, there's a lot of documentation, and the mailing
+   list is very active, like, when
+   you post something, within 24 hours, someone's gonna
+   respond.
+   Great.
+   Well, thank you very much for taking the time to...
+   Thanks, Mike.
+   Thanks.
+   User groups with lots to say, interviews and more.
+   No way!
+   Sharing great ideas in the tech community.
+   Fascinating conversations, a plethora of information.
+   Find out for yourself today at uktastic.com.
+   Thank you.

@@ -1,0 +1,180 @@
+---
+content: |-
+  Hi, it's Mike with Uketastic. I'm here at GoToConf 2014. I
+  'm sitting here with Camille Fournier, who gave a talk about
+   the great rewrite, or, well, if you should, maybe it's not
+   so great.
+   You know, should you have a rewrite? Well, thank you very
+   much for taking the time to speak with me.
+   So, your talk, what was the title of it again?
+   It was So You Want to Rewrite That.
+   So You Want to Rewrite That. Okay, so it sounds like a
+   little bit of pain to get to that. So, can you share a
+   little bit about what your experience was?
+   Sure. So, I just led Rent the Runway through a big rewrite
+   of our legacy sort of ugly Drupal system into a, you know,
+   Ruby front-end, Java SOA back-end platform.
+   Before, I want to ask, Rent the Runway.
+   Yes.
+   What is that, real quick?
+   Rent the Runway is renttherunway.com. We are an e-commerce
+   website. We do designer dress and accessory short-term rent
+  als to women.
+   And we are actually, you know, you may, you are not our
+   target demographic, but probably you know someone that at
+   least knows of us or even has used us. We have many, many
+   customers throughout the United States.
+   Okay, so you were saying that you had a Drupal application
+   that you rewrote into a Java SOA architecture.
+   And then I interrupted you.
+   Yes. Right. So, you know, I basically joined the company
+   when we were first starting to think about this rewrite and
+   led the team through it.
+   And it took us about, well, it took us about two, a little
+   more than two years to get to all of the major consumer-
+  facing, customer-facing pages out of Drupal.
+   We still have administrative pages in Drupal.
+   So, this experience is really interesting for me because it
+   just got me interested in why do people rewrite?
+   Right.
+   What makes them successful?
+   What doesn't make a rewrite successful?
+   I think every software engineer is going to have to rewrite
+   something at some point in their career.
+   Probably at some point you're going to do one of these
+   really big rewrites.
+   So, how do you think about it?
+   What are the principles you should think about in going
+   into this process to hopefully make it more successful?
+   Because rewrites tend to come from a place of failure,
+   right?
+   You're failing in some way or you see that you're going to
+   fail in some way.
+   It's failures on the horizon.
+   And so, you know, it's very easy.
+   It's very easy for a rewrite itself to fail because you're
+   already in precarious, you know, in a precarious place.
+   How do you, you know, think about it to make it successful?
+   Okay.
+   And so, it sounded like you did a gradual evolutionary kind
+   of iteration away from this monolithic architecture.
+   You didn't just gut the system and then replace it.
+   Yeah.
+   Yeah.
+   Yes, I would say that the number one thing that we did
+   right was we did a very iterative, slow rollout.
+   So, we would take.
+   We would take logic that was in Drupal.
+   We would move it into Java and put that behind API calls in
+   Drupal.
+   And we did this for sort of core data and then core
+   business logic.
+   And then once we had done sort of a good chunk, we started
+   moving pages in Drupal out of Drupal and into Ruby.
+   So, we built a Ruby layer in such a way that it was a very
+   thin client.
+   It wasn't talking to the database in the way that our Drup
+  al had been.
+   It wasn't this sort of complex, you know, ball of wax.
+   It was simply calling.
+   So, we built two Java services to get JSON data and, you
+   know, maybe doing a little munging of that and showing it
+   on the web page.
+   So, the one thing coming from a cultural community aspect
+   is that there's a strong identity or tends to be a strong
+   identity in the PHP community and a strong identity in the
+   Java community.
+   I'm a Java developer.
+   I'm a PHP developer.
+   So, when you're saying to the PHP developers, hey, we're
+   going to be taking your stuff and rewriting in Java, how
+   did you kind of.
+   Smooth the waters with that.
+   Yeah.
+   Well, so.
+   And avoid, like, insult, like, oh, PHP.
+   Yeah, no, I mean, I think that's a great question.
+   And, you know, for better or worse, we just, you know, we
+   had lost a lot of the original developers of Rent the Run
+  way over the years, you know, had been written by an outs
+  ource team and then in-house.
+   And I was not, you know, in great technical shape because
+   it had had so many owners that the team that was there
+   writing the PHP, they were not so involved.
+   Yeah, they weren't emotionally invested.
+   They weren't as emotionally invested.
+   They were mostly, like, exhausted because they were
+   supporting this thing that kept breaking.
+   So, I think in their minds, anything to make their support
+   burden a little bit easier and, you know, take care of some
+   of this complexity and allow them to focus more on getting
+   features out more quickly.
+   I think the real thing is that developers want to ship.
+   For the most part, developers really care about shipping,
+   especially at a company like Rent the Runway.
+   And so, our rewrite was always sold to them as.
+   This will let you ship faster, better, you know, with much
+   less pain.
+   And it did that.
+   And I think that helped with that.
+   And, you know, coming here to GoToConf, the presentation
+   you wrote, was it based off of your, strictly off your
+   experiences at Rent the Runway or have you felt this pain
+   before and are you reflecting your previous experiences?
+   So, I haven't really felt this pain to some extent before.
+   I had never done a major rewrite like this.
+   I had done...
+   A lot of actual, like, sort of refactors in place where I
+   think with a different team would have resulted in a major
+   rewrite that may or may not have been successful.
+   But I actually talked to a lot of colleagues and friends
+   outside of the company that I knew had either done rewrites
+  , considered rewrites, and not done them.
+   I read a lot of stories and a lot of articles by people who
+   had, you know, successfully or, you know, not successfully
+   done rewrites because I think that this is a common thing.
+   You know, developers...
+   Developers do this at some point in their career.
+   And so, I wanted to get more perspectives other than my own
+   as to why people do this and what makes them successful or
+   not.
+   And now, just to kind of wrap up, are there any resources
+   that you read or how did you maybe look outside of your own
+   experiences to get more information about how to approach
+   this?
+   Did you read, like, the refactor book or anything like that
+  ?
+   I mean, I read...
+   What did I read?
+   So, I read some blog posts.
+   There's some...
+   Some blog posts, actually, it's really interesting.
+   About, like, six or seven or eight years ago, there was
+   sort of a flurry of don't rewrite that blog posts, which
+   are really interesting and actually worth reading.
+   I think, you know, these things come in cycles.
+   People write about them and then we all forget.
+   And then we all make a bunch of mistakes and then we rele
+  arn about them.
+   So, I read a bunch of those.
+   I read a little bit about the, you know, Twitter has a
+   pretty good blog post about their rewrite.
+   And I also talked to people that were there and worked
+   through that.
+   I did a lot of talking to friends.
+   So, reaching out and just asking people.
+   Yeah, and just asking people, like, for their experiences.
+   If you know someone who's been a software developer for 15
+   or 20 years, you probably know someone that's done this
+   scene, that's been around for this and has some opinions.
+   Well, thank you very much for taking the time to speak with
+   me.
+   Thank you.
+   User groups with lots to say.
+   Interviews and more.
+   No way.
+   Sharing great ideas in the tech community.
+   Fascinating conversations.
+   A plethora of information.
+   Find out for yourself today.
+   At uktastic.com.

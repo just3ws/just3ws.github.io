@@ -1,0 +1,296 @@
+---
+content: |-
+  Hi, it's Mike with uTastic. I'm at RailsConf 2014 and I'm
+   sitting here with
+   Alexander Dima, who's going to be giving a talk this
+   afternoon on how to cheaply
+   and easily improve your memory footprint for your Ruby
+   applications by moving up
+   to Ruby 2.1. Thank you for taking time to speak with me.
+   Thank you for having me.
+   Good to meet you, Mike. So the talk title, I couldn't quite
+   recall it. It's a long title.
+   What is the gist of the talk? So the talk is about two
+   things mainly: Ruby 2.1
+   and memory optimization. And the gist of my talk is that,
+   in fact, what Ruby 2.1
+   does is that it optimizes memory for you. Okay. So you can
+   do it either yourself
+   or you can upgrade to 2.1 or both. Like the copy-on-write
+   implementation and things like that?
+   Yeah, and most importantly, the generational garbage
+   collection, of course.
+   Okay, can you kind of maybe explain what those are? Because
+   even I have a fumbling
+   understanding of what the copy-on-write really does. So
+   what copy-on-write does is that if you fork your process,
+   you will not have an error.
+   If you fork your process, you will not have an error.
+   If you fork your process, you will not have an error.
+   If you fork your process, you will not have an error.
+   If you fork your process, you will not have an error.
+   If you fork your process, you will not have an error.
+   If you fork your process, you will not have an error.
+   If you fork your process, you will not have an error.
+   If you fork your process, you will not have an error.
+   to copy your memory. So you don't immediately allocate the
+   memory but you don't? You allocate the memory, you fork
+   your process, you have now two processes that use the same
+   memory and they use it until you modify it. Okay. And only
+   then you actually allocate more memory. Okay, so you're
+   saying, okay, I'm going to fork this process and the VM
+   knows, okay, there's this handle I have to have and then
+   you start to write to it and that's, oh, okay, now I'm
+   going to allocate that.
+   This is handled by operating system. Oh, it's by the OS
+   level.
+   Yes, it's on the OS level, so you don't have to do anything
+   with this. You just need to be copy and write safe.
+   Right. That actually was introduced in 2.0.
+   Okay, so if you said you had to be copy and write safe, is
+   that something that developers, Rubyists need to change the
+   way they go about writing code?
+   Not at all.
+   They use, of course, C extensions, but not at all. Ruby
+   does it for you.
+   Okay, so if you're using native Ruby or the Ruby core, you
+  're going to be fine.
+   You're going to be fine.
+   Okay, but if you're using a gem with C extensions, you
+   might want to look at that.
+   You might want to investigate more, but usually it's okay.
+   Okay, and you mentioned the garbage collector.
+   There's been arguments recently about, you know, is it
+   production ready?
+   There's been kind of a...
+   There's been kind of a snarky article about that.
+   You know, maybe you can tell us a little bit more about
+   what you're going to be talking about with the garbage
+   collector.
+   All right, so, spoiler.
+   Before I tell...
+   This is going to come out after your talk.
+   So, it's not a spoiler.
+   Yeah, what you get from 2.1 is a huge improvement.
+   Okay.
+   So, it is definitely production ready, and the improvement
+   I usually see is about 40% speed up.
+   Okay.
+   So, for free, yeah.
+   Have you dug into what is different about it versus
+   previous?
+   So, the only difference is how long GC takes, usually.
+   So, in old Rubies, you had this huge memory allocated for
+   your objects,
+   and the garbage collection had to go through all this
+   memory
+   and see if there are some objects to delete or to collect.
+   And in 2.1, it usually goes through only new objects that
+   were created after the last GC.
+   So, usually, you have a limited set of objects that the
+   garbage collection goes through,
+   and that's why it takes less time.
+   And in Ruby, it's called minor GC.
+   Okay, minor GC, that's the new garbage collection program?
+   Yeah, so, basically...
+   The minor GC is what is collecting new objects,
+   and the major GC is the good old-fashioned GC that collects
+   everything.
+   Just cleans up the hole.
+   So, that's why the garbage collection in 2.1 is actually
+   called generational,
+   because you have these two generations.
+   One is new objects, and another one is old objects.
+   Yeah.
+   And 2.2 will have three generations, so it will be even
+   faster.
+   So, what got you digging into the internals of Ruby like
+   this?
+   Well, we had a bad experience with memory usage.
+   For example, if you deploy in Heroku, you have 500 megs
+   limit,
+   and it's quite low for Ruby.
+   It's so easy to take 500 megs, and if you do that, there
+   are two ways.
+   You either stop using Heroku or buy their new PX.
+   Yeah, which is like 2 gigs, I think, for Dino.
+   It was a large number.
+   It's a large number.
+   If you go listen to the interview with Schneems, he says
+   the number.
+   And, basically, what you don't want to do is you don't want
+   to spend that much money on hardware.
+   So, instead, you can just optimize memory.
+   And it's quite easy to do, actually.
+   Yeah.
+   You know, looking at...
+   It's...
+   Have you done any digging to compare your metrics using
+   Ruby 2.1 versus using JRuby?
+   Is it something, like, you've looked at, or are you fully
+   invested in MRI Ruby?
+   Yeah, at this point, fully invested in MRI and not really
+   wanting to switch.
+   Okay.
+   The reason is that I wrote several Rails applications,
+   Rails 2 application, Rails 3 application,
+   and none of them worked with JRuby.
+   So, that's the way it goes for me.
+   Okay.
+   But I can say I have gotten a few out there, and it's
+   worked for me.
+   But everybody's mileage...
+   Yeah, there's that old saying, everybody's mileage, and it
+   all depends on what we're doing.
+   Yeah, and what we're using, because I'm using C extensions
+   a lot.
+   I have proprietary extensions, too.
+   That's why I cannot use JRuby.
+   Yeah, that's why.
+   That's why.
+   I'm not quite interested in it.
+   So, you have more of an engineering background?
+   Yeah.
+   More of the DHH, right?
+   You actually do have an engineering background.
+   Well, if...
+   Software engineering.
+   If we use DHH's classification, yeah, it's software
+   engineering.
+   We'll just leave it at that.
+   But you've obviously been digging into C code for a while.
+   Yeah.
+   Has that really helped you with your Ruby understanding?
+   Yeah.
+   Yeah.
+   So, you can look at it and be like, oh, okay, I see what
+   the abstractions are.
+   Right.
+   And I've actually done a lot of C++ programming in the past
+  , and I enjoyed that, unlike most people.
+   You were a different breed then.
+   Yeah.
+   So, that's why I'm, okay, when I see the problem with Ruby,
+   I just go ahead and read the source codes.
+   Yeah.
+   That's what I did.
+   So, again, going to kind of what the theme of the original
+   keynote was, is the reading of the source code.
+   Yeah.
+   And having, you know, building up some additional skills
+   outside of simply being a Rubyist.
+   You know, not just saying, oh, I'm a Rubyist, and I know
+   Ruby, but knowing how some of that lower level languages
+   works.
+   It's been...
+   It's worth the investment.
+   It is a good investment, definitely, because you come to
+   understand how it works.
+   Yeah.
+   And why it behaves the way it behaves.
+   Yeah.
+   That's important when we optimize things.
+   It's, like, they're really optimizing you to understand why
+   it is slow.
+   Right.
+   Without the ASU, you just cannot optimize.
+   Yeah.
+   And avoid the cargo culting.
+   Yeah.
+   Because that was, I do understand that also the memory,
+   like the old Twitter environment variables that people
+   would use to override the garbage collector,
+   or memory, or the number of objects that could be allocated
+   between garbage collection.
+   But that's also been fixed in 2.0 or 2.1.
+   2.1 actually increased memory limits.
+   Yeah.
+   So, like, most people do not want to tweak these variables
+   anymore.
+   And what I've seen recently that some people do, and they
+   do it in the wrong way.
+   Right.
+   So, if you have that, those old GC environment variables,
+   and you're upgrading to 2.1,
+   you might want to look at taking those out, or determining
+   what they are, the new defaults are.
+   Yeah.
+   And then, like, that's the part of my talk.
+   Yeah.
+   About new defaults, and, like, do you really want to change
+   them?
+   Yeah.
+   Okay.
+   And, by the way, speaking about cargo cult, another way
+   that Ruby community, especially Rails community, don't want
+   to learn is SQL.
+   Yeah.
+   Yeah.
+   And, like, come on, SQL has been there for 40 years, and
+   web frameworks, come and go, come and go, and SQL is still
+   here.
+   And it's such a good investment.
+   If you want to improve your performance as well.
+   Yeah, yeah, yeah, it's still sitting on the porch, given
+   the old, those little web frameworks that are rolling by,
+   and they're skating boards, and they're roller shoes.
+   Yeah, I understand that using Cameral sounds cool, but, at
+   the end, it's the same plain old SQL, but written in Ruby.
+   Right.
+   It's generating the SQL.
+   Yeah, it's generating.
+   Just like, you know, you're...
+   Yeah.
+   People complain about using CoffeeScript, because they say,
+   oh, it's just generating JavaScript, but a long time ago,
+   people were saying, oh, why am I using the ORM?
+   It's just generating SQL.
+   Mm-hmm.
+   And, you know, there's pros and cons to that.
+   Yeah, right.
+   Okay, you can write code a little bit faster now with the
+   ORM, but we've forgotten about SQL.
+   I wonder if that's going to be the future with all these
+   abstractions on JavaScript.
+   We're going to have people that don't even know JavaScript,
+   because they only know these abstractions.
+   I don't know.
+   It's a question.
+   It's a question.
+   Maybe we'll find out in the next 20 years.
+   Well, it's more like not a question of whether you need to
+   choose between two, but you'd rather use both.
+   Right.
+   When appropriate.
+   And, like, some things are just not good to do in Ruby, and
+   Ruby will take enormous time to do calculations, for
+   example, if you have large data sets.
+   Mm-hmm.
+   So, that's why you should not forget completely about.
+   Right.
+   Because this is the thing you want to use at some point.
+   I'm not going to say that, okay, just forget about Active
+  Record.
+   Yeah, yeah.
+   Do not use any models.
+   No, it's have a toolbox, and have more than one tool.
+   Right.
+   Yeah.
+   You just need to have several tools.
+   Sometimes you just need a hammer.
+   Yeah.
+   Yeah.
+   All right.
+   Well, thank you very much for taking the time to speak with
+   me.
+   I really appreciate it.
+   Thank you very much for having me.
+   Thanks.
+   Thanks.
+   User groups with lots to say.
+   Interviews and more.
+   No way.
+   Sharing great ideas.
+   In the tech community, fascinating conversations, a plet
+  hora of information.
+   Find out for yourself today at uktastic.com.
