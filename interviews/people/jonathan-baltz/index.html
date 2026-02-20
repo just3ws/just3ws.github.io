@@ -1,0 +1,63 @@
+---
+layout: minimal
+title: Jonathan Baltz Interviews
+description: Interview archive page for Jonathan Baltz, including appearances, related conference profiles, and presentation links.
+breadcrumb: Jonathan Baltz
+breadcrumb_parent_name: Interviewees
+breadcrumb_parent_url: /interviews/people/
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  {% assign person = site.data.interviewees_index.items | where: "slug", "jonathan-baltz" | first %}
+  {% if person %}
+    <header>
+      <h1>{{ person.name }}</h1>
+      <p>{{ person.count }} interview{% if person.count != 1 %}s{% endif %} in the archive.</p>
+      {% if person.profile_summary and person.profile_summary != "" %}
+        <p>{{ person.profile_summary }}</p>
+      {% endif %}
+    </header>
+
+    {% if person.bio_links and person.bio_links.size > 0 %}
+      <section>
+        <h2>Profile Links</h2>
+        <ul>
+          {% for link in person.bio_links %}
+            <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% if person.presentation_links and person.presentation_links.size > 0 %}
+      <section>
+        <h2>Related Talks</h2>
+        <ul>
+          {% for link in person.presentation_links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.label }}</a>
+              {% if link.description and link.description != "" %}<br>{{ link.description }}{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% if person.appearances and person.appearances.size > 0 %}
+      <section>
+        <h2>Interview Appearances</h2>
+        <ul class="home-list">
+          {% for appearance in person.appearances %}
+            <li>
+              <a href="{{ appearance.url }}">{{ appearance.title }}</a>
+              {% if appearance.recorded_date and appearance.recorded_date != "" %} · {{ appearance.recorded_date }}{% endif %}
+              {% if appearance.conference and appearance.conference != "" %} · {{ appearance.conference }}{% if appearance.conference_year and appearance.conference_year != "" %} {{ appearance.conference_year }}{% endif %}{% endif %}
+              {% if appearance.topic and appearance.topic != "" %}<br>Topic: {{ appearance.topic }}{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  {% endif %}
+</article>

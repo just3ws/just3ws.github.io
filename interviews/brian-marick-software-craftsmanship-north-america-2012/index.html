@@ -11,11 +11,12 @@ breadcrumb_parent_url: /interviews/
   {% include breadcrumbs.html %}
   {% assign interview = site.data.interviews.items | where: "id", "brian-marick-software-craftsmanship-north-america-2012" | first %}
   {% if interview %}
+    {% assign related_entry = site.data.interview_related_videos.items | where: "interview_id", interview.id | first %}
     <header>
       <h1>{{ interview.title }}</h1>
     </header>
     {% if interview.interviewees and interview.interviewees.size > 0 %}
-      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {{ interview.interviewees | join: ", " }}</div>
+      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {% for person in interview.interviewees %}<a href="/interviews/people/{{ person | slugify }}/">{{ person }}</a>{% assign bio_url = nil %}{% if related_entry and related_entry.links %}{% for link in related_entry.links %}{% if link.kind == "conference-bio" and link.label contains person %}{% assign bio_url = link.url %}{% endif %}{% endfor %}{% endif %}{% if bio_url %} (<a href="{{ bio_url }}">conference bio</a>){% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
     {% endif %}
     {% if interview.topic %}
       <div class="video-subtitle">Topic: {{ interview.topic }}</div>
@@ -34,14 +35,22 @@ breadcrumb_parent_url: /interviews/
       {% if interview.community %}{% if interview.conference %} · {% endif %}Community: {{ interview.community }}{% endif %}
     </div>
 
-    {% assign related_entry = site.data.interview_related_videos.items | where: "interview_id", interview.id | first %}
     {% assign conference_related = site.data.interview_related_videos.conference_playlists | where: "conference", interview.conference | where: "conference_year", interview.conference_year %}
     {% if (related_entry and related_entry.links and related_entry.links.size > 0) or (conference_related and conference_related.size > 0) %}
       <section class="related-content">
         <h2>Related Conference Videos</h2>
         {% if related_entry and related_entry.links and related_entry.links.size > 0 %}
           {% for link in related_entry.links %}
-            <div class="video-meta">Related: <a href="{{ link.url }}">{{ link.label }}</a>{% if link.kind %} · Type: {{ link.kind }}{% endif %}</div>
+            {% case link.kind %}
+            {% when "conference-bio" %}
+              <div class="video-meta">Interviewee Bio: <a href="{{ link.url }}">{{ link.label }}</a></div>
+            {% when "conference-presentation-page" %}
+              <div class="video-meta">Presentation Details: <a href="{{ link.url }}">{{ link.label }}</a></div>
+            {% when "conference-presentation-video" %}
+              <div class="video-meta">Presentation Video: <a href="{{ link.url }}">{{ link.label }}</a></div>
+            {% else %}
+              <div class="video-meta">Related: <a href="{{ link.url }}">{{ link.label }}</a>{% if link.kind %} · Type: {{ link.kind }}{% endif %}</div>
+            {% endcase %}
             {% if link.description %}<div class="video-description">{{ link.description }}</div>{% endif %}
             {% if link.embed_url %}
               <div class="video-embed">

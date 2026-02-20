@@ -10,24 +10,9 @@ breadcrumb_parent_url: /interviews/
 <article class="page">
   {% include breadcrumbs.html %}
   {% assign people = site.data.interviewees_index %}
-  {% assign interview_items = site.data.interviews.items | where_exp: "i", "i.video_asset_id" %}
-  {% include json-ld-itemlist.html
-    collection_name="Interviewees"
-    collection_description=page.description
-    items=interview_items
-    item_id_key="id"
-    item_name_key="title"
-    url_prefix="/interviews/"
-    item_schema_type="Interview"
-    entity_id_prefix="/id/interview/"
-  %}
-  {% include json-ld-interview-entities.html
-    items=interview_items
-    url_prefix="/interviews/"
-  %}
   <header>
     <h1>Interviewees</h1>
-    <p class="intro">This index tracks interviewees across the archive so repeated voices and long-term participation are easy to follow.</p>
+    <p class="intro">Browse dedicated profile pages for interviewees, including all appearances and conference context links.</p>
     {% if people.summary %}
       <p>
         Interviewees: {{ people.summary.total_people }} |
@@ -40,7 +25,7 @@ breadcrumb_parent_url: /interviews/
     <ul class="home-list">
       {% for person in people.items %}
         <li id="{{ person.slug }}">
-          <strong>{{ person.name }}</strong> ({{ person.count }} interviews)
+          <strong><a href="/interviews/people/{{ person.slug }}/">{{ person.name }}</a></strong> ({{ person.count }} interviews)
           {% if person.sample_interview_ids and person.sample_interview_ids.size > 0 %}
             <br>
             {% for interview_id in person.sample_interview_ids %}
