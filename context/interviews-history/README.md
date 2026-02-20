@@ -55,6 +55,12 @@ subject,event,source,has_transcript
 "Rich Hickey","GOTO Chicago 2013",youtube,yes
 ```
 
+### `/video-asset-canonical-map.tsv`
+Canonical YouTube ID mapping used for cautious dedupe application:
+- `winner` rows are canonical IDs for merged duplicates
+- `alias_to_winner` rows preserve secondary IDs as alternates
+- `keep_both` rows explicitly preserve separate interviews
+
 ### `/goto-official-playlists.md`
 Reference list of official GOTO Conference YouTube playlists for interview years.
 
