@@ -4,6 +4,7 @@
 require "yaml"
 require "optparse"
 require "pathname"
+require "date"
 
 ROOT = Pathname(__dir__).join("..").expand_path
 TRANSCRIPTS_DIR = ROOT.join("_data", "transcripts")
@@ -25,6 +26,10 @@ TEXT_NORMALIZATION_RULES = [
   [/\bGoToConf(?:erence)?(\d{4})\b/i, "GOTO Conf \\1"],
   [/\bGoToConf(?:erence)?\b/i, "GOTO Conf"],
   [/\bGoToComp\b/i, "GOTO Conf"],
+  [/\bGoToConferences\b/i, "GOTO Conferences"],
+  [/\bGoToChicago\b/i, "GOTO Chicago"],
+  [/\bGoToNight(s)?\b/i, "GOTO Night\\1"],
+  [/\bGoTo\b/i, "GOTO"],
   [/\bCensure\b/i, "Sencha"],
   [/\bEFTJS\b/i, "Ext JS"],
   [/\bSandro\s+Ancuso\b/i, "Sandra Mancuso"],
