@@ -78,7 +78,7 @@ interviews.each do |interview|
     f.puts '      <h1>{{ interview.title }}</h1>'
     f.puts '    </header>'
     f.puts '    {% if interview.interviewees and interview.interviewees.size > 0 %}'
-    f.puts '      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {% for person in interview.interviewees %}<a href="/interviews/people/{{ person | slugify }}/">{{ person }}</a>{% assign bio_url = nil %}{% if related_entry and related_entry.links %}{% for link in related_entry.links %}{% if link.kind == "conference-bio" and link.label contains person %}{% assign bio_url = link.url %}{% endif %}{% endfor %}{% endif %}{% if bio_url %} (<a href="{{ bio_url }}">conference bio</a>){% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>'
+    f.puts '      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {% for person in interview.interviewees %}{% assign person_entry = site.data.interviewees_index.items | where: "name", person | first %}{% assign person_slug = person | slugify %}{% if person_entry and person_entry.slug %}{% assign person_slug = person_entry.slug %}{% endif %}<a href="/interviews/people/{{ person_slug }}/">{{ person }}</a>{% assign bio_url = nil %}{% if related_entry and related_entry.links %}{% for link in related_entry.links %}{% if link.kind == "conference-bio" and link.label contains person %}{% assign bio_url = link.url %}{% endif %}{% endfor %}{% endif %}{% if bio_url %} (<a href="{{ bio_url }}">conference bio</a>){% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>'
     f.puts '    {% endif %}'
     f.puts '    {% if interview.topic %}'
     f.puts '      <div class="video-subtitle">Topic: {{ interview.topic }}</div>'

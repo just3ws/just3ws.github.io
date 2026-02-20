@@ -311,6 +311,7 @@ Dir.glob(File.join(SITE_DIR, 'interviews', '**', 'index.html')).sort.each do |pa
   next if relative == 'interviews/index.html'
   next if relative.start_with?('interviews/conferences/')
   next if relative.start_with?('interviews/communities/')
+  next if relative.start_with?('interviews/people/')
 
   html = read(path)
   nodes = json_ld_nodes(html, relative, errors)

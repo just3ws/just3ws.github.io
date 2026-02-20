@@ -16,7 +16,7 @@ breadcrumb_parent_url: /interviews/
       <h1>{{ interview.title }}</h1>
     </header>
     {% if interview.interviewees and interview.interviewees.size > 0 %}
-      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {% for person in interview.interviewees %}<a href="/interviews/people/{{ person | slugify }}/">{{ person }}</a>{% assign bio_url = nil %}{% if related_entry and related_entry.links %}{% for link in related_entry.links %}{% if link.kind == "conference-bio" and link.label contains person %}{% assign bio_url = link.url %}{% endif %}{% endfor %}{% endif %}{% if bio_url %} (<a href="{{ bio_url }}">conference bio</a>){% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}: {% for person in interview.interviewees %}{% assign person_entry = site.data.interviewees_index.items | where: "name", person | first %}{% assign person_slug = person | slugify %}{% if person_entry and person_entry.slug %}{% assign person_slug = person_entry.slug %}{% endif %}<a href="/interviews/people/{{ person_slug }}/">{{ person }}</a>{% assign bio_url = nil %}{% if related_entry and related_entry.links %}{% for link in related_entry.links %}{% if link.kind == "conference-bio" and link.label contains person %}{% assign bio_url = link.url %}{% endif %}{% endfor %}{% endif %}{% if bio_url %} (<a href="{{ bio_url }}">conference bio</a>){% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
     {% endif %}
     {% if interview.topic %}
       <div class="video-subtitle">Topic: {{ interview.topic }}</div>
