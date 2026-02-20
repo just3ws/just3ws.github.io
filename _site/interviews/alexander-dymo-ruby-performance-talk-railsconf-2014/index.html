@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Archive — Alexander Dymo on Ruby performance at RailsConf…</title>
+<meta name="description" content="Interview with Alexander Dymo on Ruby performance at RailsConf 2014. Topic: Ruby performance. Conference: RailsConf 2014. Recorded: 2022-05-13. Interview ID:…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/interviews/alexander-dymo-ruby-performance-talk-railsconf-2014/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Interview Archive — Alexander Dymo on Ruby performance at RailsConf…">
+<meta property="og:description" content="Interview with Alexander Dymo on Ruby performance at RailsConf 2014. Topic: Ruby performance. Conference: RailsConf 2014. Recorded: 2022-05-13. Interview ID:…">
+<meta property="og:url" content="https://www.just3ws.com/interviews/alexander-dymo-ruby-performance-talk-railsconf-2014/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Archive — Alexander Dymo on Ruby performance at RailsConf…">
+<meta name="twitter:description" content="Interview with Alexander Dymo on Ruby performance at RailsConf 2014. Topic: Ruby performance. Conference: RailsConf 2014. Recorded: 2022-05-13. Interview ID:…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" class="is-active" aria-current="page">Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/interviews/">Interviews</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/interviews/alexander-dymo-ruby-performance-talk-railsconf-2014/">Interview with Alexander Dymo on Ruby performance at RailsConf 2014</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interviews",
+        "item": "https://www.just3ws.com/interviews/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Alexander Dymo on Ruby performance at RailsConf 2014",
+        "item": "https://www.just3ws.com/interviews/alexander-dymo-ruby-performance-talk-railsconf-2014/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    
+    <header>
+      <h1>Interview with Alexander Dymo on Ruby performance at RailsConf 2014</h1>
+    </header>
+    
+      <div class="video-subtitle">Interviewee: <a href="/interviews/people/alexander-dymo/">Alexander Dymo</a></div>
+    
+    
+      <div class="video-subtitle">Topic: Ruby performance</div>
+    
+    <div class="video-meta">
+      
+        Conference:
+        
+        
+        
+          <a href="/interviews/conferences/railsconf-2014/">RailsConf 2014</a>
+        
+      
+      
+    </div>
+
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
+  "@id": "https://www.just3ws.com/id/interview/alexander-dymo-ruby-performance-talk-railsconf-2014",
+  "identifier": "alexander-dymo-ruby-performance-talk-railsconf-2014",
+  "name": "Interview with Alexander Dymo on Ruby performance at RailsConf 2014",
+  "url": "https://www.just3ws.com/interviews/alexander-dymo-ruby-performance-talk-railsconf-2014/",
+  "datePublished": "2022-05-13",
+  "description": "Interview with Alexander Dymo on Ruby performance at RailsConf 2014. Topic: Ruby performance. Conference: RailsConf 2014. Recorded: 2022-05-13. Interview ID:…",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.just3ws.com/id/person/mike-hall",
+    "name": "Mike Hall"
+  },
+  
+  "contributor": [
+    
+    {
+      "@type": "Person",
+      "@id": "https://www.just3ws.com/id/person/alexander-dymo",
+      "name": "Alexander Dymo"
+    }
+    
+  ],
+  
+  
+  
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Ruby performance"
+    }
+    
+  
+  
+    ,
+    {
+      "@type": "Event",
+      "@id": "https://www.just3ws.com/id/conference/railsconf-2014",
+      "name": "RailsConf 2014"
+    }
+  ],
+  
+  
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "https://www.just3ws.com/id/video/alexander-dymo-ruby-performance-talk-railsconf-2014",
+    "name": "Interview with Alexander Dymo on Ruby performance at RailsConf 2014",
+    "description": "Interview with Alexander Dymo at RailsConf 2014 on Ruby performance. This recording captures practical lessons and perspective for software teams and technical communities.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/wv4vHJtyJKA/maxresdefault.jpg",
+    "uploadDate": "2022-05-13",
+    "transcript": "Hi, it's Mike with UGtastic. I'm at RailsConf 2014 and I'm\n sitting here with\n Alexander Dima, who's going to be giving a talk this\n afternoon on how to cheaply\n and easily improve your memory footprint for your Ruby\n applications by moving up\n to Ruby 2.1. Thank you for taking time to speak with me.\n Thank you for having me.\n Good to meet you, Mike. So the talk title, I couldn't quite\n recall it. It's a long title.\n What is the gist of the talk? So the talk is about two\n things mainly: Ruby 2.1\n and memory optimization. And the gist of my talk is that,\n in fact, what Ruby 2.1\n does is that it optimizes memory for you. Okay. So you can\n do it either yourself\n or you can upgrade to 2.1 or both. Like the copy-on-write\n implementation and things like that?\n Yeah, and most importantly, the generational garbage\n collection, of course.\n Okay, can you kind of maybe explain what those are? Because\n even I have a fumbling\n understanding of what the copy-on-write really does. So\n what copy-on-write does is that if you fork your process,\n you will not have an error.\n If you fork your process, you will not have an error.\n If you fork your process, you will not have an error.\n If you fork your process, you will not have an error.\n If you fork your process, you will not have an error.\n If you fork your process, you will not have an error.\n If you fork your process, you will not have an error.\n If you fork your process, you will not have an error.\n If you fork your process, you will not have an error.\n to copy your memory. So you don't immediately allocate the\n memory but you don't? You allocate the memory, you fork\n your process, you have now two processes that use the same\n memory and they use it until you modify it. Okay. And only\n then you actually allocate more memory. Okay, so you're\n saying, okay, I'm going to fork this process and the VM\n knows, okay, there's this handle I have to have and then\n you start to write to it and that's, oh, okay, now I'm\n going to allocate that.\n This is handled by operating system. Oh, it's by the OS\n level.\n Yes, it's on the OS level, so you don't have to do anything\n with this. You just need to be copy and write safe.\n Right. That actually was introduced in 2.0.\n Okay, so if you said you had to be copy and write safe, is\n that something that developers, Rubyists need to change the\n way they go about writing code?\n Not at all.\n They use, of course, C extensions, but not at all. Ruby\n does it for you.\n Okay, so if you're using native Ruby or the Ruby core, you\n're going to be fine.\n You're going to be fine.\n Okay, but if you're using a gem with C extensions, you\n might want to look at that.\n You might want to investigate more, but usually it's okay.\n Okay, and you mentioned the garbage collector.\n There's been arguments recently about, you know, is it\n production ready?\n There's been kind of a...\n There's been kind of a snarky article about that.\n You know, maybe you can tell us a little bit more about\n what you're going to be talking about with the garbage\n collector.\n All right, so, spoiler.\n Before I tell...\n This is going to come out after your talk.\n So, it's not a spoiler.\n Yeah, what you get from 2.1 is a huge improvement.\n Okay.\n So, it is definitely production ready, and the improvement\n I usually see is about 40% speed up.\n Okay.\n So, for free, yeah.\n Have you dug into what is different about it versus\n previous?\n So, the only difference is how long GC takes, usually.\n So, in old Rubies, you had this huge memory allocated for\n your objects,\n and the garbage collection had to go through all this\n memory\n and see if there are some objects to delete or to collect.\n And in 2.1, it usually goes through only new objects that\n were created after the last GC.\n So, usually, you have a limited set of objects that the\n garbage collection goes through,\n and that's why it takes less time.\n And in Ruby, it's called minor GC.\n Okay, minor GC, that's the new garbage collection program?\n Yeah, so, basically...\n The minor GC is what is collecting new objects,\n and the major GC is the good old-fashioned GC that collects\n everything.\n Just cleans up the hole.\n So, that's why the garbage collection in 2.1 is actually\n called generational,\n because you have these two generations.\n One is new objects, and another one is old objects.\n Yeah.\n And 2.2 will have three generations, so it will be even\n faster.\n So, what got you digging into the internals of Ruby like\n this?\n Well, we had a bad experience with memory usage.\n For example, if you deploy in Heroku, you have 500 megs\n limit,\n and it's quite low for Ruby.\n It's so easy to take 500 megs, and if you do that, there\n are two ways.\n You either stop using Heroku or buy their new PX.\n Yeah, which is like 2 gigs, I think, for Dino.\n It was a large number.\n It's a large number.\n If you go listen to the interview with Schneems, he says\n the number.\n And, basically, what you don't want to do is you don't want\n to spend that much money on hardware.\n So, instead, you can just optimize memory.\n And it's quite easy to do, actually.\n Yeah.\n You know, looking at...\n It's...\n Have you done any digging to compare your metrics using\n Ruby 2.1 versus using JRuby?\n Is it something, like, you've looked at, or are you fully\n invested in MRI Ruby?\n Yeah, at this point, fully invested in MRI and not really\n wanting to switch.\n Okay.\n The reason is that I wrote several Rails applications,\n Rails 2 application, Rails 3 application,\n and none of them worked with JRuby.\n So, that's the way it goes for me.\n Okay.\n But I can say I have gotten a few out there, and it's\n worked for me.\n But everybody's mileage...\n Yeah, there's that old saying, everybody's mileage, and it\n all depends on what we're doing.\n Yeah, and what we're using, because I'm using C extensions\n a lot.\n I have proprietary extensions, too.\n That's why I cannot use JRuby.\n Yeah, that's why.\n That's why.\n I'm not quite interested in it.\n So, you have more of an engineering background?\n Yeah.\n More of the DHH, right?\n You actually do have an engineering background.\n Well, if...\n Software engineering.\n If we use DHH's classification, yeah, it's software\n engineering.\n We'll just leave it at that.\n But you've obviously been digging into C code for a while.\n Yeah.\n Has that really helped you with your Ruby understanding?\n Yeah.\n Yeah.\n So, you can look at it and be like, oh, okay, I see what\n the abstractions are.\n Right.\n And I've actually done a lot of C++ programming in the past\n, and I enjoyed that, unlike most people.\n You were a different breed then.\n Yeah.\n So, that's why I'm, okay, when I see the problem with Ruby,\n I just go ahead and read the source codes.\n Yeah.\n That's what I did.\n So, again, going to kind of what the theme of the original\n keynote was, is the reading of the source code.\n Yeah.\n And having, you know, building up some additional skills\n outside of simply being a Rubyist.\n You know, not just saying, oh, I'm a Rubyist, and I know\n Ruby, but knowing how some of that lower level languages\n works.\n It's been...\n It's worth the investment.\n It is a good investment, definitely, because you come to\n understand how it works.\n Yeah.\n And why it behaves the way it behaves.\n Yeah.\n That's important when we optimize things.\n It's, like, they're really optimizing you to understand why\n it is slow.\n Right.\n Without the ASU, you just cannot optimize.\n Yeah.\n And avoid the cargo culting.\n Yeah.\n Because that was, I do understand that also the memory,\n like the old Twitter environment variables that people\n would use to override the garbage collector,\n or memory, or the number of objects that could be allocated\n between garbage collection.\n But that's also been fixed in 2.0 or 2.1.\n 2.1 actually increased memory limits.\n Yeah.\n So, like, most people do not want to tweak these variables\n anymore.\n And what I've seen recently that some people do, and they\n do it in the wrong way.\n Right.\n So, if you have that, those old GC environment variables,\n and you're upgrading to 2.1,\n you might want to look at taking those out, or determining\n what they are, the new defaults are.\n Yeah.\n And then, like, that's the part of my talk.\n Yeah.\n About new defaults, and, like, do you really want to change\n them?\n Yeah.\n Okay.\n And, by the way, speaking about cargo cult, another way\n that Ruby community, especially Rails community, don't want\n to learn is SQL.\n Yeah.\n Yeah.\n And, like, come on, SQL has been there for 40 years, and\n web frameworks, come and go, come and go, and SQL is still\n here.\n And it's such a good investment.\n If you want to improve your performance as well.\n Yeah, yeah, yeah, it's still sitting on the porch, given\n the old, those little web frameworks that are rolling by,\n and they're skating boards, and they're roller shoes.\n Yeah, I understand that using Cameral sounds cool, but, at\n the end, it's the same plain old SQL, but written in Ruby.\n Right.\n It's generating the SQL.\n Yeah, it's generating.\n Just like, you know, you're...\n Yeah.\n People complain about using CoffeeScript, because they say,\n oh, it's just generating JavaScript, but a long time ago,\n people were saying, oh, why am I using the ORM?\n It's just generating SQL.\n Mm-hmm.\n And, you know, there's pros and cons to that.\n Yeah, right.\n Okay, you can write code a little bit faster now with the\n ORM, but we've forgotten about SQL.\n I wonder if that's going to be the future with all these\n abstractions on JavaScript.\n We're going to have people that don't even know JavaScript,\n because they only know these abstractions.\n I don't know.\n It's a question.\n It's a question.\n Maybe we'll find out in the next 20 years.\n Well, it's more like not a question of whether you need to\n choose between two, but you'd rather use both.\n Right.\n When appropriate.\n And, like, some things are just not good to do in Ruby, and\n Ruby will take enormous time to do calculations, for\n example, if you have large data sets.\n Mm-hmm.\n So, that's why you should not forget completely about.\n Right.\n Because this is the thing you want to use at some point.\n I'm not going to say that, okay, just forget about Active\nRecord.\n Yeah, yeah.\n Do not use any models.\n No, it's have a toolbox, and have more than one tool.\n Right.\n Yeah.\n You just need to have several tools.\n Sometimes you just need a hammer.\n Yeah.\n Yeah.\n All right.\n Well, thank you very much for taking the time to speak with\n me.\n I really appreciate it.\n Thank you very much for having me.\n Thanks.\n Thanks.\n User groups with lots to say.\n Interviews and more.\n No way.\n Sharing great ideas.\n In the tech community, fascinating conversations, a plet\nhora of information.\n Find out for yourself today at ugtastic.com.",
+    "url": "https://www.just3ws.com/videos/alexander-dymo-ruby-performance-talk-railsconf-2014/",
+    "embedUrl": "https://www.youtube.com/embed/wv4vHJtyJKA"
+  },
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/interviews/alexander-dymo-ruby-performance-talk-railsconf-2014/"
+  }
+}
+</script>
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="interview-embed" src="https://www.youtube.com/embed/wv4vHJtyJKA" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Alexander Dymo on Ruby performance at RailsConf 2014"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Interview with Alexander Dymo at RailsConf 2014 on Ruby performance. This recording captures practical lessons and perspective for software teams and technical communities.</div>
+        
+        <div class="video-meta">
+          Published: May 13, 2022
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/wv4vHJtyJKA">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=wv4vHJtyJKA&list=PLgmTADxYKzzZItmN7yuhTCzzF3YC7kqGK">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>Hi, it’s Mike with UGtastic. I’m at RailsConf 2014 and I’m
+ sitting here with
+ Alexander Dima, who’s going to be giving a talk this
+ afternoon on how to cheaply
+ and easily improve your memory footprint for your Ruby
+ applications by moving up
+ to Ruby 2.1. Thank you for taking time to speak with me.
+ Thank you for having me.
+ Good to meet you, Mike. So the talk title, I couldn’t quite
+ recall it. It’s a long title.
+ What is the gist of the talk? So the talk is about two
+ things mainly: Ruby 2.1
+ and memory optimization. And the gist of my talk is that,
+ in fact, what Ruby 2.1
+ does is that it optimizes memory for you. Okay. So you can
+ do it either yourself
+ or you can upgrade to 2.1 or both. Like the copy-on-write
+ implementation and things like that?
+ Yeah, and most importantly, the generational garbage
+ collection, of course.
+ Okay, can you kind of maybe explain what those are? Because
+ even I have a fumbling
+ understanding of what the copy-on-write really does. So
+ what copy-on-write does is that if you fork your process,
+ you will not have an error.
+ If you fork your process, you will not have an error.
+ If you fork your process, you will not have an error.
+ If you fork your process, you will not have an error.
+ If you fork your process, you will not have an error.
+ If you fork your process, you will not have an error.
+ If you fork your process, you will not have an error.
+ If you fork your process, you will not have an error.
+ If you fork your process, you will not have an error.
+ to copy your memory. So you don’t immediately allocate the
+ memory but you don’t? You allocate the memory, you fork
+ your process, you have now two processes that use the same
+ memory and they use it until you modify it. Okay. And only
+ then you actually allocate more memory. Okay, so you’re
+ saying, okay, I’m going to fork this process and the VM
+ knows, okay, there’s this handle I have to have and then
+ you start to write to it and that’s, oh, okay, now I’m
+ going to allocate that.
+ This is handled by operating system. Oh, it’s by the OS
+ level.
+ Yes, it’s on the OS level, so you don’t have to do anything
+ with this. You just need to be copy and write safe.
+ Right. That actually was introduced in 2.0.
+ Okay, so if you said you had to be copy and write safe, is
+ that something that developers, Rubyists need to change the
+ way they go about writing code?
+ Not at all.
+ They use, of course, C extensions, but not at all. Ruby
+ does it for you.
+ Okay, so if you’re using native Ruby or the Ruby core, you
+‘re going to be fine.
+ You’re going to be fine.
+ Okay, but if you’re using a gem with C extensions, you
+ might want to look at that.
+ You might want to investigate more, but usually it’s okay.
+ Okay, and you mentioned the garbage collector.
+ There’s been arguments recently about, you know, is it
+ production ready?
+ There’s been kind of a…
+ There’s been kind of a snarky article about that.
+ You know, maybe you can tell us a little bit more about
+ what you’re going to be talking about with the garbage
+ collector.
+ All right, so, spoiler.
+ Before I tell…
+ This is going to come out after your talk.
+ So, it’s not a spoiler.
+ Yeah, what you get from 2.1 is a huge improvement.
+ Okay.
+ So, it is definitely production ready, and the improvement
+ I usually see is about 40% speed up.
+ Okay.
+ So, for free, yeah.
+ Have you dug into what is different about it versus
+ previous?
+ So, the only difference is how long GC takes, usually.
+ So, in old Rubies, you had this huge memory allocated for
+ your objects,
+ and the garbage collection had to go through all this
+ memory
+ and see if there are some objects to delete or to collect.
+ And in 2.1, it usually goes through only new objects that
+ were created after the last GC.
+ So, usually, you have a limited set of objects that the
+ garbage collection goes through,
+ and that’s why it takes less time.
+ And in Ruby, it’s called minor GC.
+ Okay, minor GC, that’s the new garbage collection program?
+ Yeah, so, basically…
+ The minor GC is what is collecting new objects,
+ and the major GC is the good old-fashioned GC that collects
+ everything.
+ Just cleans up the hole.
+ So, that’s why the garbage collection in 2.1 is actually
+ called generational,
+ because you have these two generations.
+ One is new objects, and another one is old objects.
+ Yeah.
+ And 2.2 will have three generations, so it will be even
+ faster.
+ So, what got you digging into the internals of Ruby like
+ this?
+ Well, we had a bad experience with memory usage.
+ For example, if you deploy in Heroku, you have 500 megs
+ limit,
+ and it’s quite low for Ruby.
+ It’s so easy to take 500 megs, and if you do that, there
+ are two ways.
+ You either stop using Heroku or buy their new PX.
+ Yeah, which is like 2 gigs, I think, for Dino.
+ It was a large number.
+ It’s a large number.
+ If you go listen to the interview with Schneems, he says
+ the number.
+ And, basically, what you don’t want to do is you don’t want
+ to spend that much money on hardware.
+ So, instead, you can just optimize memory.
+ And it’s quite easy to do, actually.
+ Yeah.
+ You know, looking at…
+ It’s…
+ Have you done any digging to compare your metrics using
+ Ruby 2.1 versus using JRuby?
+ Is it something, like, you’ve looked at, or are you fully
+ invested in MRI Ruby?
+ Yeah, at this point, fully invested in MRI and not really
+ wanting to switch.
+ Okay.
+ The reason is that I wrote several Rails applications,
+ Rails 2 application, Rails 3 application,
+ and none of them worked with JRuby.
+ So, that’s the way it goes for me.
+ Okay.
+ But I can say I have gotten a few out there, and it’s
+ worked for me.
+ But everybody’s mileage…
+ Yeah, there’s that old saying, everybody’s mileage, and it
+ all depends on what we’re doing.
+ Yeah, and what we’re using, because I’m using C extensions
+ a lot.
+ I have proprietary extensions, too.
+ That’s why I cannot use JRuby.
+ Yeah, that’s why.
+ That’s why.
+ I’m not quite interested in it.
+ So, you have more of an engineering background?
+ Yeah.
+ More of the DHH, right?
+ You actually do have an engineering background.
+ Well, if…
+ Software engineering.
+ If we use DHH’s classification, yeah, it’s software
+ engineering.
+ We’ll just leave it at that.
+ But you’ve obviously been digging into C code for a while.
+ Yeah.
+ Has that really helped you with your Ruby understanding?
+ Yeah.
+ Yeah.
+ So, you can look at it and be like, oh, okay, I see what
+ the abstractions are.
+ Right.
+ And I’ve actually done a lot of C++ programming in the past
+, and I enjoyed that, unlike most people.
+ You were a different breed then.
+ Yeah.
+ So, that’s why I’m, okay, when I see the problem with Ruby,
+ I just go ahead and read the source codes.
+ Yeah.
+ That’s what I did.
+ So, again, going to kind of what the theme of the original
+ keynote was, is the reading of the source code.
+ Yeah.
+ And having, you know, building up some additional skills
+ outside of simply being a Rubyist.
+ You know, not just saying, oh, I’m a Rubyist, and I know
+ Ruby, but knowing how some of that lower level languages
+ works.
+ It’s been…
+ It’s worth the investment.
+ It is a good investment, definitely, because you come to
+ understand how it works.
+ Yeah.
+ And why it behaves the way it behaves.
+ Yeah.
+ That’s important when we optimize things.
+ It’s, like, they’re really optimizing you to understand why
+ it is slow.
+ Right.
+ Without the ASU, you just cannot optimize.
+ Yeah.
+ And avoid the cargo culting.
+ Yeah.
+ Because that was, I do understand that also the memory,
+ like the old Twitter environment variables that people
+ would use to override the garbage collector,
+ or memory, or the number of objects that could be allocated
+ between garbage collection.
+ But that’s also been fixed in 2.0 or 2.1.
+ 2.1 actually increased memory limits.
+ Yeah.
+ So, like, most people do not want to tweak these variables
+ anymore.
+ And what I’ve seen recently that some people do, and they
+ do it in the wrong way.
+ Right.
+ So, if you have that, those old GC environment variables,
+ and you’re upgrading to 2.1,
+ you might want to look at taking those out, or determining
+ what they are, the new defaults are.
+ Yeah.
+ And then, like, that’s the part of my talk.
+ Yeah.
+ About new defaults, and, like, do you really want to change
+ them?
+ Yeah.
+ Okay.
+ And, by the way, speaking about cargo cult, another way
+ that Ruby community, especially Rails community, don’t want
+ to learn is SQL.
+ Yeah.
+ Yeah.
+ And, like, come on, SQL has been there for 40 years, and
+ web frameworks, come and go, come and go, and SQL is still
+ here.
+ And it’s such a good investment.
+ If you want to improve your performance as well.
+ Yeah, yeah, yeah, it’s still sitting on the porch, given
+ the old, those little web frameworks that are rolling by,
+ and they’re skating boards, and they’re roller shoes.
+ Yeah, I understand that using Cameral sounds cool, but, at
+ the end, it’s the same plain old SQL, but written in Ruby.
+ Right.
+ It’s generating the SQL.
+ Yeah, it’s generating.
+ Just like, you know, you’re…
+ Yeah.
+ People complain about using CoffeeScript, because they say,
+ oh, it’s just generating JavaScript, but a long time ago,
+ people were saying, oh, why am I using the ORM?
+ It’s just generating SQL.
+ Mm-hmm.
+ And, you know, there’s pros and cons to that.
+ Yeah, right.
+ Okay, you can write code a little bit faster now with the
+ ORM, but we’ve forgotten about SQL.
+ I wonder if that’s going to be the future with all these
+ abstractions on JavaScript.
+ We’re going to have people that don’t even know JavaScript,
+ because they only know these abstractions.
+ I don’t know.
+ It’s a question.
+ It’s a question.
+ Maybe we’ll find out in the next 20 years.
+ Well, it’s more like not a question of whether you need to
+ choose between two, but you’d rather use both.
+ Right.
+ When appropriate.
+ And, like, some things are just not good to do in Ruby, and
+ Ruby will take enormous time to do calculations, for
+ example, if you have large data sets.
+ Mm-hmm.
+ So, that’s why you should not forget completely about.
+ Right.
+ Because this is the thing you want to use at some point.
+ I’m not going to say that, okay, just forget about Active
+Record.
+ Yeah, yeah.
+ Do not use any models.
+ No, it’s have a toolbox, and have more than one tool.
+ Right.
+ Yeah.
+ You just need to have several tools.
+ Sometimes you just need a hammer.
+ Yeah.
+ Yeah.
+ All right.
+ Well, thank you very much for taking the time to speak with
+ me.
+ I really appreciate it.
+ Thank you very much for having me.
+ Thanks.
+ Thanks.
+ User groups with lots to say.
+ Interviews and more.
+ No way.
+ Sharing great ideas.
+ In the tech community, fascinating conversations, a plet
+hora of information.
+ Find out for yourself today at ugtastic.com.</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>

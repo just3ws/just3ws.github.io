@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Domain Migration | Mike Hall Archive</title>
+<meta name="description" content="Legacy domain migration and redirect-log workflow. This page is part of Mike Hall's curated engineering archive and resume.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/domain-migration.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Domain Migration | Mike Hall Archive">
+<meta property="og:description" content="Legacy domain migration and redirect-log workflow. This page is part of Mike Hall's curated engineering archive and resume.">
+<meta property="og:url" content="https://www.just3ws.com/docs/domain-migration.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Domain Migration | Mike Hall Archive">
+<meta name="twitter:description" content="Legacy domain migration and redirect-log workflow. This page is part of Mike Hall's curated engineering archive and resume.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/domain-migration.html">Domain Migration</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Domain Migration",
+        "item": "https://www.just3ws.com/docs/domain-migration.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="domain-migration">Domain Migration</h1>
+
+<p>This workflow supports legacy-domain migration while preserving visibility into inbound traffic patterns before final redirect policy is locked.</p>
+
+<h2 id="primary-policy">Primary Policy</h2>
+
+<ul>
+  <li>Canonical production domain: <code class="language-plaintext highlighter-rouge">https://www.just3ws.com</code></li>
+  <li>Legacy domains should be fronted by Cloudflare and redirected with <code class="language-plaintext highlighter-rouge">301</code> to the canonical domain.</li>
+  <li>Redirects must preserve path and query string.</li>
+</ul>
+
+<h2 id="configuration-source">Configuration Source</h2>
+
+<ul>
+  <li>Migration config file: <code class="language-plaintext highlighter-rouge">_data/domain_migration.yml</code></li>
+  <li>Key fields:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">primary_domain</code></li>
+      <li><code class="language-plaintext highlighter-rouge">legacy_domains[].domain</code></li>
+      <li><code class="language-plaintext highlighter-rouge">legacy_domains[].status</code> (<code class="language-plaintext highlighter-rouge">observe_only</code> or <code class="language-plaintext highlighter-rouge">redirect_enforced</code>)</li>
+      <li><code class="language-plaintext highlighter-rouge">legacy_domains[].preserve_path_query</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cloudflare-rule-shape">Cloudflare Rule Shape</h2>
+
+<p>For each legacy domain:</p>
+
+<ol>
+  <li>Enable proxying through Cloudflare.</li>
+  <li>Create a redirect rule matching host.</li>
+  <li>Target URL expression:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com${uri}</code></li>
+    </ul>
+  </li>
+  <li>Status code: <code class="language-plaintext highlighter-rouge">301</code>.</li>
+  <li>Preserve query string.</li>
+</ol>
+
+<h2 id="log-capture">Log Capture</h2>
+
+<p>Export logs with at least:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ClientRequestHost</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ClientRequestPath</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ClientRequestQuery</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EdgeResponseStatus</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ClientCountry</code></li>
+  <li><code class="language-plaintext highlighter-rouge">UserAgent</code></li>
+</ul>
+
+<p>Then summarize with:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby ./bin/report_legacy_domain_logs.rb path/to/cloudflare-export.csv
+</code></pre></div></div>
+
+<h2 id="output-use">Output Use</h2>
+
+<ul>
+  <li>Identify high-volume legacy routes.</li>
+  <li>Identify paths that should get dedicated redirects.</li>
+  <li>Monitor migration progress by host/path/request volume over time.</li>
+</ul>
+
+  </main>
+</body>
+</html>

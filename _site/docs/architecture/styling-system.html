@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Styling System | Mike Hall Archive</title>
+<meta name="description" content="Shared style core with separate resume and site themes. This page is part of Mike Hall's curated engineering archive and resume.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/architecture/styling-system.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Styling System | Mike Hall Archive">
+<meta property="og:description" content="Shared style core with separate resume and site themes. This page is part of Mike Hall's curated engineering archive and resume.">
+<meta property="og:url" content="https://www.just3ws.com/docs/architecture/styling-system.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Styling System | Mike Hall Archive">
+<meta name="twitter:description" content="Shared style core with separate resume and site themes. This page is part of Mike Hall's curated engineering archive and resume.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/architecture/styling-system.html">Styling System</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Styling System",
+        "item": "https://www.just3ws.com/docs/architecture/styling-system.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="styling-system">Styling System</h1>
+
+<p>The styling model is split into:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/core.css</code> shared baseline tokens and reset.</li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/themes/resume.css</code> resume-focused theme.</li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/themes/site.css</code> archive/site-focused theme.</li>
+</ul>
+
+<h2 id="layout-to-theme-mapping">Layout-to-Theme Mapping</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/resume.html</code> loads <code class="language-plaintext highlighter-rouge">core.css</code> + <code class="language-plaintext highlighter-rouge">themes/resume.css</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/minimal.html</code> loads <code class="language-plaintext highlighter-rouge">core.css</code> + <code class="language-plaintext highlighter-rouge">themes/site.css</code></li>
+</ul>
+
+<h2 id="compatibility-paths">Compatibility Paths</h2>
+
+<p>Wrapper files exist for compatibility with legacy references:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/resume.css</code></li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/site.css</code></li>
+</ul>
+
+<p>These wrappers import the new core + themed files.</p>
+
+<h2 id="design-intent">Design Intent</h2>
+
+<ul>
+  <li>Resume pages remain visually stable and conservative.</li>
+  <li>Non-resume pages can evolve navigation and component styling without destabilizing resume output.</li>
+</ul>
+
+  </main>
+</body>
+</html>

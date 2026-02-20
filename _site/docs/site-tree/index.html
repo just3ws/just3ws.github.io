@@ -1,0 +1,5040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Site Tree Explorer | Mike Hall Archive</title>
+<meta name="description" content="Interactive deep index of site routes with collapsible tree navigation and filtering.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/site-tree/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Site Tree Explorer | Mike Hall Archive">
+<meta property="og:description" content="Interactive deep index of site routes with collapsible tree navigation and filtering.">
+<meta property="og:url" content="https://www.just3ws.com/docs/site-tree/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Site Tree Explorer | Mike Hall Archive">
+<meta name="twitter:description" content="Interactive deep index of site routes with collapsible tree navigation and filtering.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/site-tree/">Site Tree Explorer</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Site Tree Explorer",
+        "item": "https://www.just3ws.com/docs/site-tree/"
+      }
+    
+  ]
+}
+</script>
+
+
+  <header>
+    <h1>Site Tree Explorer</h1>
+    <p class="intro">A deep index view of published routes. Expand branches as needed, filter quickly, and avoid the all-pages wall of noise.</p>
+  </header>
+
+  <section class="tree-controls" aria-label="Tree controls">
+    <label for="tree-search">Filter routes</label>
+    <input id="tree-search" type="search" placeholder="Search by path or title (e.g. /interviews/ or 'semantic')" autocomplete="off">
+    <div class="tree-buttons">
+      <button id="mode-path" class="video-button primary" type="button">By Path</button>
+      <button id="mode-kind" class="video-button" type="button">By Type</button>
+      <button id="mode-year" class="video-button" type="button">By Year</button>
+      <button id="expand-top" class="video-button" type="button">Expand Top Level</button>
+      <button id="collapse-all" class="video-button" type="button">Collapse All</button>
+    </div>
+    <p id="tree-stats" class="video-meta" aria-live="polite"></p>
+  </section>
+
+  <section class="tree-layout">
+    <div>
+      <ul id="site-tree" class="site-tree" aria-label="Site route tree"></ul>
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <aside id="node-details" class="tree-details" aria-label="Selected node details">
+      <h2>Selection</h2>
+      <p class="video-meta">Select a node to inspect route details.</p>
+    </aside>
+  </section>
+</article>
+
+<style>
+  .tree-controls {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: var(--surface);
+    margin-bottom: 1rem;
+  }
+
+  .tree-controls label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+  }
+
+  #tree-search {
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+    margin-bottom: 0.625rem;
+    font: inherit;
+    background: #fff;
+  }
+
+  .tree-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .tree-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+    gap: 1rem;
+  }
+
+  .site-tree,
+  .site-tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-tree {
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: #fff;
+    padding: 0.375rem;
+    min-height: 18rem;
+  }
+
+  .tree-node-children {
+    margin-left: 1.25rem;
+    border-left: 1px dashed var(--border);
+    padding-left: 0.625rem;
+  }
+
+  .tree-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.22rem 0.35rem;
+    border-radius: 0.25rem;
+  }
+
+  .tree-row:hover {
+    background: var(--surface);
+  }
+
+  .tree-toggle {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 0.2rem;
+    background: #fff;
+    color: var(--muted);
+    line-height: 1;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  .tree-toggle[disabled] {
+    visibility: hidden;
+  }
+
+  .tree-label {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+  }
+
+  .tree-label strong {
+    color: var(--accent);
+  }
+
+  .tree-route {
+    color: var(--meta);
+    font-size: 0.82rem;
+    margin-left: 0.25rem;
+  }
+
+  .tree-open-link {
+    margin-left: auto;
+    font-size: 0.82rem;
+  }
+
+  .tree-badge {
+    display: inline-block;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--meta);
+    border-radius: 999px;
+    padding: 0 0.45rem;
+    font-size: 0.72rem;
+  }
+
+  .tree-details {
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: var(--surface);
+    padding: 0.75rem;
+    height: fit-content;
+  }
+
+  .tree-details h2 {
+    margin-top: 0;
+  }
+
+  .tree-details dt {
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  .tree-details dd {
+    margin: 0.1rem 0 0 0;
+    color: var(--meta);
+  }
+
+  .search-results {
+    margin-top: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: #fff;
+    padding: 0.375rem;
+  }
+
+  .search-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .search-results li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: 0.25rem;
+  }
+
+  .search-results li:hover {
+    background: var(--surface);
+  }
+
+  @media (max-width: 900px) {
+    .tree-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var items = [];
+    
+    
+      items.push({
+        url: "/",
+        title: "Mike Hall - Staff Software Engineer",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/404.html",
+        title: "Page not found",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/about/",
+        title: "About",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/archive-status/",
+        title: "Archive Status",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/contact/",
+        title: "Contact",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/",
+        title: "Docs",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/architecture/content-pipeline.html",
+        title: "Content Pipeline",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/architecture/overview.html",
+        title: "Architecture Overview",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/architecture/resume-job-targeting.html",
+        title: "Resume Job Targeting",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/architecture/semantic-graph.html",
+        title: "Semantic Graph Snapshot",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/architecture/semantic-model.html",
+        title: "Semantic Model",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/architecture/styling-system.html",
+        title: "Styling System",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/architecture/transcript-import.html",
+        title: "Transcript Import",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/archive-philosophy/",
+        title: "Archive Philosophy",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/domain-migration.html",
+        title: "Domain Migration",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/interview-data-model.html",
+        title: "Interview Data Model",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/linkedin-import/",
+        title: "LinkedIn Article Import",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/pipeline-grammar/",
+        title: "Pipeline Grammar",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/repo-hygiene.html",
+        title: "Repository Hygiene",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/resources/",
+        title: "Trusted Resources",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/retrospectives/",
+        title: "Retrospective Protocol",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/site-tree/",
+        title: "Site Tree Explorer",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/tasks.html",
+        title: "Tasks",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/taxonomy/",
+        title: "Taxonomy",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/video-metadata-completeness/",
+        title: "Video Metadata Completeness",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/",
+        title: "Wayback Archives",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/blog-import-inventory.html",
+        title: "Wayback Blog Import Inventory",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/",
+        title: "Wayback Community Archives",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20120414040704-http-ugtastic-com-80.html",
+        title: "Wayback Snapshot: ugtastic",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20121203140904-http-ugtastic-com-80.html",
+        title: "Wayback Snapshot: UGtastic's most recent interviews are with Martin Atkins, Jonathan Baltz, and J.C. Grubbs. -- Find out more about the people behind user-groups, meetups and technical conferences. Run a meetup or user-group then signup to get your community featured today.",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20130307081827-http-ugtastic-com-80.html",
+        title: "Wayback Snapshot: UGtastic's most recent interviews are with Brad Wilkening, Zach Dennis, and Tim Murphy. -- Interviews with people who make technical communities interesting.",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20131104125527-http-ugtastic-com-80.html",
+        title: "Wayback Snapshot: UGtastic - Interviews with people who make technical communities interesting.",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20140105115755-http-ugtastic-com-80.html",
+        title: "Wayback Snapshot: UGtastic Telling the story of technical community one interview at a time.",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20140111160057-http-ugl-st.html",
+        title: "Wayback Snapshot: http://ugl.st/",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20141022041106-http-ugtastic-com-80.html",
+        title: "Wayback Snapshot: Interviews with Tech Community Leaders -",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20141217083739-https-ugl-st.html",
+        title: "Wayback Snapshot: User-Group List by UGtastic",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/community/snapshots/20141222063128-https-ugl-st.html",
+        title: "Wayback Snapshot: User-Group List by UGtastic",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20090626034401-https-scna-softwarecraftsmanship-org.html",
+        title: "Wayback Snapshot: Software Craftsmanship North America",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20101112134833-http-scna-softwarecraftsmanship-org.html",
+        title: "Wayback Snapshot: Software Craftsmanship North America",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20111229061750-http-scna-softwarecraftsmanship-org.html",
+        title: "Wayback Snapshot: Software Craftsmanship North America 2011",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20120414040704-https-www-ugtastic-com.html",
+        title: "Wayback Snapshot: ugtastic",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20121123031707-http-scna-softwarecraftsmanship-org.html",
+        title: "Wayback Snapshot: scna",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20121228074319-https-chicagocodecamp-com-80.html",
+        title: "Wayback Snapshot: Chicago Code Camp 2012 - May 19th",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20131113054045-http-scna-softwarecraftsmanship-org.html",
+        title: "Wayback Snapshot: SCNA 2013",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20140111160057-http-ugl-st.html",
+        title: "Wayback Snapshot: http://ugl.st/",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/snapshots/20151101113454-http-scna-softwarecraftsmanship-org.html",
+        title: "Wayback Snapshot: SCNA 2015",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/docs/wayback/ugtastic-interview-context.yml",
+        title: "",
+        layout: ""
+      });
+    
+      items.push({
+        url: "/docs/wayback/wbm-derived-assets.yml",
+        title: "",
+        layout: ""
+      });
+    
+      items.push({
+        url: "/docs/wayback/wbm-spider-backlog.html",
+        title: "Wayback Spider Backlog",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/feed.xml",
+        title: "",
+        layout: ""
+      });
+    
+      items.push({
+        url: "/history/",
+        title: "Mike Hall - Complete Career Timeline",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/home/",
+        title: "Mike Hall - Home",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/",
+        title: "Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/aaron-bedra-general/",
+        title: "Interview Archive — Aaron Bedra (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/aaron-holbrook-general/",
+        title: "Interview Archive — Aaron Holbrook (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/aaron-kalin-chicagowebconf-2012/",
+        title: "Interview Archive — Aaron Kalin at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/aaron-patterson-ruby-rails-core-team-member-keynote-speaker-railsconf-2014/",
+        title: "Interview Archive — Aaron Patterson on Rails core and keynote…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/adam-grandy-windycityrails-2012/",
+        title: "Interview Archive — Adam Grandy at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/adewale-oshineye-general/",
+        title: "Interview Archive — Adewale Oshineye at SCNA 2012 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/adewale-oshineye-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Adewale Oshineye at SCNA 2013 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/adewale-oshinye-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Adewale Oshinye at SCNA 2012 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/alexander-dymo-ruby-performance-talk-railsconf-2014/",
+        title: "Interview Archive — Alexander Dymo on Ruby performance at RailsConf…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/amitai-schlair-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Amitai Schlair at SCNA 2013 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/andrea-magnorsky-general/",
+        title: "Interview Archive — Andrea Magnorsky (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/andy-lester-chicagowebconf-2012/",
+        title: "Interview Archive — Andy Lester at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/angelique-martin-general/",
+        title: "Interview Archive — Angelique Martin (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/angelique-martin-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Angelique Martin at SCNA 2013 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/arthur-kay-general/",
+        title: "Interview Archive — Arthur Kay (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/ashe-dryden-general/",
+        title: "Interview Archive — Ashe Dryden (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/avdi-grimm-general/",
+        title: "Interview Archive — Avdi Grimm (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/benjamin-oakes-windycityrails-2012/",
+        title: "Interview Archive — Benjamin Oakes at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/bill-scott-general/",
+        title: "Interview Archive — Bill Scott at WebVisions 2013 (WebVisions ·…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/bobby-johnson-south-sound-net-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Bobby Johnson — South Sound .NET (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/brad-wilkening-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Brad Wilkening at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/brian-liles-windycityrails-2012/",
+        title: "Interview Archive — Brian Liles at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/brian-marick-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Brian Marick at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/brian-ray-chipy-chipy/",
+        title: "Interview Archive — Brian Ray — ChiPy (ChiPy)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/carl-erickson-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Carl Erickson at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/",
+        title: "Interview Archive — Carlos Antonio da Silva on Rails core…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/charler-baker-denver-community-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Charler Baker — Denver Community (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/charles-oliver-nutter-general/",
+        title: "Interview Archive — Charles Oliver Nutter (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/chet-hendrickson-ron-jefferies-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Chet Hendrickson & Ron Jefferies at SCNA 2013…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/colin-jones-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Colin Jones at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/",
+        title: "Interviews by Community",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/anglebracket/",
+        title: "angleBracket",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/chicago-software-craftsmanship/",
+        title: "Chicago Software Craftsmanship",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/chipy/",
+        title: "ChiPy",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/gathers-us-and-chicagodb/",
+        title: "Gathers.us and ChicagoDB",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/geekfest/",
+        title: "Geekfest",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/general/",
+        title: "General",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/goto-conference-and-community/",
+        title: "GOTO Conference and Community",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/lake-county-net-user-group-lcnug/",
+        title: "Lake County .NET User Group (LCNUG)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/communities/refresh-chicago/",
+        title: "Refresh Chicago",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/",
+        title: "Interviews by Conference",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/chicagowebconf-2012/",
+        title: "ChicagoWebConf 2012",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/goto-2013/",
+        title: "GOTO Conference 2013",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/goto-2014/",
+        title: "GOTO Conference 2014",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/goto-2015/",
+        title: "GOTO Conference 2015",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/railsconf-2014/",
+        title: "RailsConf 2014",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/scna-2011/",
+        title: "SCNA 2011",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/scna-2012/",
+        title: "SCNA 2012",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/scna-2013/",
+        title: "SCNA 2013",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/webvisions-2013/",
+        title: "WebVisions 2013",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/conferences/windycityrails-2012/",
+        title: "WindyCityRails 2012",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/coraline-ada-ehmke-artis-railsconf-2014/",
+        title: "Interview Archive — Coraline Ada Ehmke on Artis and engineering…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/corey-haines-general/",
+        title: "Interview Archive — Corey Haines (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/cory-foy-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Cory Foy at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/culley-smith-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Culley Smith at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/daniel-x-o-neil-general/",
+        title: "Interview Archive — Daniel X. O'Neil (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/dave-hoover-geekfest-geekfest/",
+        title: "Interview Archive — Dave Hoover — Geekfest (Geekfest)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/dave-thomas-goto-conference-and-community-goto-conference-and-community/",
+        title: "Interview Archive — Dave Thomas — GOTO Conference and Community…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/dave-thomas-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Dave \"pragdave\" Thomas at SCNA 2013 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/david-heinemeier-hansson-dhh-railsconf-2014/",
+        title: "Interview Archive — David Heinemeier Hansson (DHH) on Rails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/drew-shefman-houston-adobe-user-group-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Drew Shefman — Houston Adobe User Group (SCNA ·…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/dustin-updyke-pittsburgh-sc-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Dustin Updyke — Pittsburgh SC (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/eric-macadie-windycityrails-2012/",
+        title: "Interview Archive — Eric MacAdie at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/erik-meijer-creator-reactive-framework-general/",
+        title: "Interview Archive — Erik Meijer creator Reactive Framework at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/ethan-gunderson-ryan-briones-gathers-us-and-chicagodb-gathers-us-and-chicagodb/",
+        title: "Interview Archive — Ethan Gunderson & Ryan Briones — Gathers.us and…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/evan-light-founder-dcamp-railsconf-2014/",
+        title: "Interview Archive — Evan Light on DCamp and developer community…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/evan-light-windycityrails-2012/",
+        title: "Interview Archive — Evan Light at WindyCityRails 2012 (WindyCityRails)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/",
+        title: "Interview Archive — Evan Phoenix on Rubinius, Puma App Server, and…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/farrah-bostic-founder-the-difference-engine-and-keynot-railsconf-2014/",
+        title: "Interview Archive — Farrah Bostic on The Difference Engine and…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/gary-bernhardt-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Gary Bernhardt at SCNA 2012 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/ginny-hendry-windycityrails-2012/",
+        title: "Interview Archive — Ginny Hendry at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/how-to-say-ugtastic-general/",
+        title: "Interview Archive — How to say \"UGtastic\". (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/igor-polevoy-general/",
+        title: "Interview Archive — Igor Polevoy (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-angelique-martin-general/",
+        title: "Interview Archive — (interview-with-angelique-martin-general)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-anita-sengupta-goto-chicago-2015-general/",
+        title: "Interview Archive — Anita Sengupta @ GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-anna-lear-general/",
+        title: "Interview Archive — Anna Lear (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-anthony-zinni-and-jon-buda-and-shay-howe-general/",
+        title: "Interview Archive — Anthony Zinni and Jon Buda and Shay Howe (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-carina-c-zona-general/",
+        title: "Interview Archive — Carina C Zona (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-carolyn-chandler-general/",
+        title: "Interview Archive — Carolyn Chandler at WebVisions 2013 (WebVisions…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-charles-nutter-goto-chicago-2015-general/",
+        title: "Interview Archive — Charles Nutter @ GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-charley-baker-general/",
+        title: "Interview Archive — Charley Baker (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-chris-whitaker-general/",
+        title: "Interview Archive — Chris Whitaker (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-dan-north-general/",
+        title: "Interview Archive — Dan North (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-dave-duggal-goto-chicago-2015-general/",
+        title: "Interview Archive — Dave Duggal @ GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-david-dickinson-and-ross-beehler-general/",
+        title: "Interview Archive — David Dickinson and Ross Beehler (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-dean-wampler-general/",
+        title: "Interview Archive — Dean Wampler (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-dean-wampler-goto-chicago-2015-general/",
+        title: "Interview Archive — Dean Wampler @ GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-eric-kingery-general/",
+        title: "Interview Archive — Eric Kingery (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-gary-bernhardt-creator-destroy-all-software-at-scna-chicago-general/",
+        title: "Interview Archive — Gary Bernhardt creator \"Destroy All Software\" at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-gil-tene-azul-cto-javaone-rock-star-goto-chicago-2-general/",
+        title: "Interview Archive — Gil Tene Azul CTO & JavaOne Rock Star @ GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-giles-bowkett-author-rails-general/",
+        title: "Interview Archive — Giles Bowkett author \"Rails (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-giles-bowkett-general/",
+        title: "Interview Archive — Giles Bowkett (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-greg-baugues-railsconf-2014/",
+        title: "Interview Archive — Greg Baugues at RailsConf 2014 (RailsConf)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-hadi-hariri-general/",
+        title: "Interview Archive — Hadi Hariri (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-james-edward-gray-ii-general/",
+        title: "Interview Archive — James Edward Gray II (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-jason-cranford-teague-general/",
+        title: "Interview Archive — Jason Cranford Teague at WebVisions 2013…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-jen-myers-general/",
+        title: "Interview Archive — Jen Myers (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-jennifer-jones-general/",
+        title: "Interview Archive — Jennifer Jones at WebVisions 2013 (WebVisions ·…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-john-servin-general/",
+        title: "Interview Archive — John Servin at WebVisions 2013 (WebVisions ·…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-katrina-owen-general/",
+        title: "Interview Archive — Katrina Owen (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-ken-auer-general/",
+        title: "Interview Archive — Ken Auer (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-kresten-thorup-general/",
+        title: "Interview Archive — Kresten Thorup (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-mandi-walls-general/",
+        title: "Interview Archive — Mandi Walls (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-matt-ruby-creator-of-vooza-general/",
+        title: "Interview Archive — Matt Ruby creator of Vooza (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-michael-ficarra-general/",
+        title: "Interview Archive — Michael Ficarra (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-mike-burton-general/",
+        title: "Interview Archive — Mike Burton (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-mike-lee-general/",
+        title: "Interview Archive — Mike Lee (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-mike-miller-general/",
+        title: "Interview Archive — Mike Miller (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-ola-bini-creator-of-ioke-and-jruby-contributor-general/",
+        title: "Interview Archive — Ola Bini creator of Ioke and JRuby contributor…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-randy-ellis-general/",
+        title: "Interview Archive — Randy Ellis (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-rebecca-parsons-goto-chicago-2015-general/",
+        title: "Interview Archive — Rebecca Parsons @ GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-rob-reynolds-general/",
+        title: "Interview Archive — Rob Reynolds (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-ryan-slobojan-general/",
+        title: "Interview Archive — Ryan Slobojan (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-sandro-mancuso-and-tom-brand-general/",
+        title: "Interview Archive — Sandro Mancuso and Tom Brand (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-stephen-anderson-general/",
+        title: "Interview Archive — Stephen Anderson (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/interview-with-zachary-shaw-general/",
+        title: "Interview Archive — Zachary Shaw (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/james-edward-grey-iii-general/",
+        title: "Interview Archive — James Edward Grey III (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/jc-grubbs-chicagowebconf-2012/",
+        title: "Interview Archive — JC Grubbs at ChicagoWebConf 2012 (ChicagoWebConf)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/jen-meyers-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Jen Meyers at SCNA 2012 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/jim-remsik-windycityrails-2012/",
+        title: "Interview Archive — Jim Remsik at WindyCityRails 2012 (WindyCityRails)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/joe-hirn-chicagowebconf-2012/",
+        title: "Interview Archive — Joe Hirn at ChicagoWebConf 2012 (ChicagoWebConf…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/joel-clermont-general/",
+        title: "Interview Archive — Joel Clermont (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/joel-turnbull-debugger-driven-development-talk-railsconf-2014/",
+        title: "Interview Archive — Joel Turnbull on Debugger Driven Development at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/john-shay-tony-refresh-chicago-refresh-chicago/",
+        title: "Interview Archive — John & Shay & Tony — Refresh Chicago (Refresh…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/jonathan-baltz-chicagowebconf-2012/",
+        title: "Interview Archive — Jonathan Baltz at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/justin-collins-creator-of-brakeman-railsconf-2014/",
+        title: "Interview Archive — Justin Collins on Brakeman and Rails security at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/justin-love-windycityrails-2012/",
+        title: "Interview Archive — Justin Love at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/justin-searls-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Justin Searls at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/kevin-zolkiewiecz-windycityrails-2012/",
+        title: "Interview Archive — Kevin Zolkiewiecz at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/",
+        title: "Interview Archive — Kiyoto Tamura on FluentD and log integration…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/kumar-mcmillan-general/",
+        title: "Interview Archive — Kumar McMillan at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/kumar-mcmillian-chicagowebconf-2012/",
+        title: "Interview Archive — Kumar McMillian at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/leon-gersing-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Leon Gersing at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/london-software-craftsmanship-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — London Software Craftsmanship at SCNA 2011 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/mark-simpson-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Mark Simpson at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/martin-atkins-chicagowebconf-2012/",
+        title: "Interview Archive — Martin Atkins at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/matt-polito-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Matt Polito at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/max-lancaster-dc-alt-net-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Max Lancaster — DC Alt.NET (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/melissa-castello-chicagowebconf-2012/",
+        title: "Interview Archive — Melissa Castello at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/micah-martin-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Micah Martin at SCNA 2013 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/michael-eaton-general/",
+        title: "Interview Archive — Michael Eaton (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/michael-norton-cleveland-pittsburgh-community-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Michael Norton — Cleveland & Pittsburgh…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/mike-busch-general/",
+        title: "Interview Archive — Mike Busch (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/mike-clement-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Mike Clement at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/mike-jansen-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Mike Jansen at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/mike-stringer-general/",
+        title: "Interview Archive — Mike Stringer (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/milan-dobrota-jen-lindner-windycityrails-2012/",
+        title: "Interview Archive — Milan Dobrota & Jen Lindner at WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/movie-on-9-6-12-at-1-05-pm-windycityrails-2012/",
+        title: "Interview Archive — Amy Kinney at WindyCityRails 2012 (WindyCityRails)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/noel-rappin-windycityrails-2012/",
+        title: "Interview Archive — Noel Rappin at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/obie-fern-ez-author-the-rails-way-co-founder-hashrocket-railsconf-2014/",
+        title: "Interview Archive — Obie Fernandez on The Rails Way and consulting…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/ola-bini-general/",
+        title: "Interview Archive — Ola Bini at GOTO Conference 2013 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/pat-paasch-clark-sell-anglebracket-anglebracket/",
+        title: "Interview Archive — Pat Paasch & Clark Sell — angleBracket…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/patrick-welsh-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Patrick Welsh at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/paul-baker-general/",
+        title: "Interview Archive — Paul Baker (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/",
+        title: "Interviewees",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/aaron-bedra/",
+        title: "Aaron Bedra Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/aaron-holbrook/",
+        title: "Aaron Holbrook Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/aaron-kalin/",
+        title: "Aaron Kalin Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/aaron-patterson/",
+        title: "Aaron Patterson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/adam-grandy/",
+        title: "Adam Grandy Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/adewale-oshineye/",
+        title: "Adewale Oshineye Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/adewale-oshinye/",
+        title: "Adewale Oshinye Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/adrian-cockcroft/",
+        title: "Adrian Cockcroft Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/aino-vonge-corry/",
+        title: "Aino Vonge Corry Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/alex-rutkowski/",
+        title: "Alex Rutkowski Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/alexander-dymo/",
+        title: "Alexander Dymo Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/alexandra-masterson/",
+        title: "Alexandra Masterson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/amitai-schlair/",
+        title: "Amitai Schlair Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/amy-kinney/",
+        title: "Amy Kinney Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/andrea-magnorsky/",
+        title: "Andrea Magnorsky Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/andy-lester/",
+        title: "Andy Lester Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/angelique-martin/",
+        title: "Angelique Martin Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/anita-sengupta/",
+        title: "Anita Sengupta Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/anna-lear/",
+        title: "Anna Lear Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/anthony-zinni/",
+        title: "Anthony Zinni Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/arthur-kay/",
+        title: "Arthur Kay Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ashe-dryden/",
+        title: "Ashe Dryden Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/attila-szegedi/",
+        title: "Attila Szegedi Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/avdi-grimm/",
+        title: "Avdi Grimm Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/benjamin-oakes/",
+        title: "Benjamin Oakes Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/bill-scott/",
+        title: "Bill Scott Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/bob-pollin/",
+        title: "Bob Pollin Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/bobby-johnson/",
+        title: "Bobby Johnson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/brad-wilkening/",
+        title: "Brad Wilkening Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/brian-liles/",
+        title: "Brian Liles Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/brian-marick/",
+        title: "Brian Marick Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/brian-ray/",
+        title: "Brian Ray Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/camille-fournier/",
+        title: "Camille Fournier Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/carina-c-zona/",
+        title: "Carina C Zona Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/carl-erickson/",
+        title: "Carl Erickson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/carlos-antonio-da-silva/",
+        title: "Carlos Antonio da Silva Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/carolyn-chandler/",
+        title: "Carolyn Chandler Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/chad-fowler/",
+        title: "Chad Fowler Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/charler-baker/",
+        title: "Charler Baker Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/charles-nutter/",
+        title: "Charles Nutter Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/charles-oliver-nutter/",
+        title: "Charles Oliver Nutter Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/charley-baker/",
+        title: "Charley Baker Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/chet-hendrickson/",
+        title: "Chet Hendrickson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/chris-whitaker/",
+        title: "Chris Whitaker Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/cindy-sprague/",
+        title: "Cindy Sprague Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/clark-sell/",
+        title: "Clark Sell Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/coleman-collins/",
+        title: "Coleman Collins Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/colin-jones/",
+        title: "Colin Jones Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/coraline-ada-ehmke/",
+        title: "Coraline Ada Ehmke Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/corey-haines/",
+        title: "Corey Haines Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/cory-foy/",
+        title: "Cory Foy Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/courtney-hemphill/",
+        title: "Courtney Hemphill Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/culley-smith/",
+        title: "Culley Smith Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/dan-north/",
+        title: "Dan North Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/daniel-x-o-neil/",
+        title: "Daniel X. O'Neil Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/dave-duggal/",
+        title: "Dave Duggal Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/dave-hoover/",
+        title: "Dave Hoover Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/dave-pragdave-thomas/",
+        title: "Dave \"pragdave\" Thomas Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/dave-thomas/",
+        title: "Dave Thomas Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/david-dickinson/",
+        title: "David Dickinson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/david-heinemeier-hansson-dhh/",
+        title: "David Heinemeier Hansson (DHH) Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/dean-wampler/",
+        title: "Dean Wampler Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/desi-mcadam/",
+        title: "Desi McAdam Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/dmitri/",
+        title: "Dmitri Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/drew-shefman/",
+        title: "Drew Shefman Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/dustin-updyke/",
+        title: "Dustin Updyke Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/emily-rosengren/",
+        title: "Emily Rosengren Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/eric-kingery/",
+        title: "Eric Kingery Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/eric-macadie/",
+        title: "Eric MacAdie Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/erik-meijer/",
+        title: "Erik Meijer Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ethan-gunderson/",
+        title: "Ethan Gunderson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/evan-light/",
+        title: "Evan Light Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/evan-phoenix/",
+        title: "Evan Phoenix Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/farrah-bostic/",
+        title: "Farrah Bostic Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/fred-george/",
+        title: "Fred George Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/fred-guime/",
+        title: "Fred Guime Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/gary-bernhardt/",
+        title: "Gary Bernhardt Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/gil-tene/",
+        title: "Gil Tene Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/giles-bowkett/",
+        title: "Giles Bowkett Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ginny-hendry/",
+        title: "Ginny Hendry Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/greg-baugues/",
+        title: "Greg Baugues Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/hadi-hariri/",
+        title: "Hadi Hariri Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/how-to-say-ugtastic/",
+        title: "How to say \"UGtastic\". Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/igor-polevoy/",
+        title: "Igor Polevoy Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/james-edward-gray-ii/",
+        title: "James Edward Gray II Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/james-edward-grey-iii/",
+        title: "James Edward Grey III Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jason-cranford-teague/",
+        title: "Jason Cranford Teague Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jay-fields/",
+        title: "Jay Fields Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jc-grubbs/",
+        title: "JC Grubbs Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jen-lindner/",
+        title: "Jen Lindner Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jen-meyers/",
+        title: "Jen Meyers Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jen-myers/",
+        title: "Jen Myers Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jennifer-jones/",
+        title: "Jennifer Jones Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jerry-cattell/",
+        title: "Jerry Cattell Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jez-humble/",
+        title: "Jez Humble Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jim-remsik/",
+        title: "Jim Remsik Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jim-suchy/",
+        title: "Jim Suchy Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/joe-hirn/",
+        title: "Joe Hirn Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/joel-clermont/",
+        title: "Joel Clermont Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/joel-friedman/",
+        title: "Joel Friedman Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/joel-turnbull/",
+        title: "Joel Turnbull Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/john-jarosz/",
+        title: "John Jarosz Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/john-servin/",
+        title: "John Servin Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/john/",
+        title: "John Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jon-buda/",
+        title: "Jon Buda Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/jonathan-baltz/",
+        title: "Jonathan Baltz Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/justin-collins/",
+        title: "Justin Collins Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/justin-love/",
+        title: "Justin Love Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/justin-meyer/",
+        title: "Justin Meyer Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/justin-searls/",
+        title: "Justin Searls Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/katrina-owen/",
+        title: "Katrina Owen Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ken-auer/",
+        title: "Ken Auer Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/kevin-zolkiewiecz/",
+        title: "Kevin Zolkiewiecz Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/kiyoto-tamura/",
+        title: "Kiyoto Tamura Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/kresten-thorup/",
+        title: "Kresten Thorup Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/kumar-mcmillan/",
+        title: "Kumar McMillan Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/kumar-mcmillian/",
+        title: "Kumar McMillian Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/kyle-kingsbury/",
+        title: "Kyle Kingsbury Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/leon-gersing/",
+        title: "Leon Gersing Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/london-software-craftsmanship/",
+        title: "London Software Craftsmanship Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mads-torgersen/",
+        title: "Mads Torgersen Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mandi-walls/",
+        title: "Mandi Walls Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mark-simpson/",
+        title: "Mark Simpson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/martin-atkins/",
+        title: "Martin Atkins Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/matt-polito/",
+        title: "Matt Polito Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/matt-ruby/",
+        title: "Matt Ruby Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/matthew-brender/",
+        title: "Matthew Brender Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/max-de-marzi/",
+        title: "Max De Marzi Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/max-lancaster/",
+        title: "Max Lancaster Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/melissa-castello/",
+        title: "Melissa Castello Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/micah-martin/",
+        title: "Micah Martin Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/michael-eaton/",
+        title: "Michael Eaton Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/michael-ficarra/",
+        title: "Michael Ficarra Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/michael-norton/",
+        title: "Michael Norton Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/michael-t-nygard/",
+        title: "Michael T. Nygard Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mike-burton/",
+        title: "Mike Burton Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mike-busch/",
+        title: "Mike Busch Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mike-clement/",
+        title: "Mike Clement Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mike-jansen/",
+        title: "Mike Jansen Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mike-lee/",
+        title: "Mike Lee Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mike-miller/",
+        title: "Mike Miller Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/mike-stringer/",
+        title: "Mike Stringer Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/milan-dobrota/",
+        title: "Milan Dobrota Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/noel-rappin/",
+        title: "Noel Rappin Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/obie-fernandez/",
+        title: "Obie Fernandez Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ola-bini/",
+        title: "Ola Bini Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/pat-paasch/",
+        title: "Pat Paasch Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/patrick-welsh/",
+        title: "Patrick Welsh Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/paul-baker/",
+        title: "Paul Baker Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/rafael-fran-a/",
+        title: "Rafael França Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/randy-ellis/",
+        title: "Randy Ellis Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ray-hightower/",
+        title: "Ray Hightower Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/rebecca-parsons/",
+        title: "Rebecca Parsons Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/rich-hickey/",
+        title: "Rich Hickey Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/richard-lee/",
+        title: "Richard Lee Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/richard-schneeman/",
+        title: "Richard Schneeman Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/rob-reynolds/",
+        title: "Rob Reynolds Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/robert-martin/",
+        title: "Robert Martin Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ron-jefferies/",
+        title: "Ron Jefferies Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ross-beehler/",
+        title: "Ross Beehler Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ross/",
+        title: "Ross Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/russ-olsen/",
+        title: "Russ Olsen Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ryan-briones/",
+        title: "Ryan Briones Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ryan-gerry/",
+        title: "Ryan Gerry Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ryan-singer/",
+        title: "Ryan Singer Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/ryan-slobojan/",
+        title: "Ryan Slobojan Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/sam-serpoosh/",
+        title: "Sam Serpoosh Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/sandro-mancuso/",
+        title: "Sandro Mancuso Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/sarah-allen/",
+        title: "Sarah Allen Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/sarah-gray/",
+        title: "Sarah Gray Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/scott-seely/",
+        title: "Scott Seely Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/sean-massa/",
+        title: "Sean Massa Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/sergio-pereira/",
+        title: "Sergio Pereira Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/shay-howe/",
+        title: "Shay Howe Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/shay/",
+        title: "Shay Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/stephen-anderson/",
+        title: "Stephen Anderson Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/steve-kim/",
+        title: "Steve Kim Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/steve-klabnik/",
+        title: "Steve Klabnik Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/stuart-halloway/",
+        title: "Stuart Halloway Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/tim-bray/",
+        title: "Tim Bray Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/tim-murphy/",
+        title: "Tim Murphy Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/tim-ottinger/",
+        title: "Tim Ottinger Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/todd-larsen/",
+        title: "Todd Larsen Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/tom-brand/",
+        title: "Tom Brand Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/tom-dale/",
+        title: "Tom Dale Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/tony/",
+        title: "Tony Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/trisha-gee/",
+        title: "Trisha Gee Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/vyacheslav-egorov/",
+        title: "Vyacheslav Egorov Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/yehuda-katz/",
+        title: "Yehuda Katz Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/zach-dennis/",
+        title: "Zach Dennis Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/zach-shaw/",
+        title: "Zach Shaw Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/people/zachary-shaw/",
+        title: "Zachary Shaw Interviews",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/rafael-fran-a-2014-ruby-hero-railsconf-2014/",
+        title: "Interview Archive — Rafael Franca on Ruby Hero recognition and…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/ray-hightower-chicagoruby-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Ray Hightower — ChicagoRuby (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/rich-hickey-creator-of-clojure-general/",
+        title: "Interview Archive — Rich Hickey creator of Clojure at GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/",
+        title: "Interview Archive — Richard Schneeman on Heroku, open source, and…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/robert-martin-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Robert Martin at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/ross-south-bend-software-craftsmanship-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Ross — South Bend Software Craftsmanship (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/ryan-singer-windycityrails-2012/",
+        title: "Interview Archive — Ryan Singer at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/sam-serpoosh-general/",
+        title: "Interview Archive — Sam Serpoosh (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/sandro-mancuso-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Sandro Mancuso at SCNA 2012 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/sandro-mancuso-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Sandro Mancuso at SCNA 2013 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/sarah-allen-desi-mcadam-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Sarah Allen & Desi McAdam at SCNA 2012 (SCNA ·…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/sarah-gray-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Sarah Gray at SCNA 2013 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/scott-seely-lake-county-net-user-group-lcnug-lake-county-net-user-group-lcnug/",
+        title: "Interview Archive — Scott Seely — Lake County .NET User Group…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/sean-massa-todd-larsen-general/",
+        title: "Interview Archive — Sean Massa & Todd Larsen (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Sergio Pereira — Chicago Alt.NET (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/stephen-anderson-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Stephen Anderson at SCNA 2013 (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/stephen-anderson-windycityrails-2012/",
+        title: "Interview Archive — Stephen Anderson at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/steve-kim-jim-suchy-chicago-software-craftsmanship-chicago-software-craftsmanship/",
+        title: "Interview Archive — Steve Kim & Jim Suchy — Chicago Software…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/steve-klabnik-windycityrails-2012/",
+        title: "Interview Archive — Steve Klabnik at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/stories/",
+        title: "Community Stories",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/stuart-halloway-software-craftsmanship-north-america-2013/",
+        title: "Interview Archive — Stuart Halloway at SCNA 2013 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/tim-murphy-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Tim Murphy at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/tim-ottinger-general/",
+        title: "Interview Archive — Tim Ottinger (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/topics/",
+        title: "Interviews by Topic",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/yehuda-katz-tom-dale-creators-of-ember-js-railsconf-2014/",
+        title: "Interview Archive — Yehuda Katz and Tom Dale on Ember.js and…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-2Xyy_PwzPws/",
+        title: "Interview Archive — Chad Fowler at GOTO Chicago 2015 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-4aPzxoVKzG8/",
+        title: "Interview Archive — Dean Wampler at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-7C9B9jO2Vrk/",
+        title: "Interview Archive — Alex Rutkowski & Joel Friedman on remote pairing…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-7EpWuB60zrg/",
+        title: "Interview Archive — Richard Lee a contributor to OpenStack at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-BQ1gpu_k2Jc/",
+        title: "Interview Archive — Jay Fields at GOTO Chicago 2015 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-DBXyrzTEnqg/",
+        title: "Interview Archive — Bob Pollin at GOTO Chicago 2015 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-DZz3NWny1zw/",
+        title: "Interview Archive — Attila Szegedi at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-EyPMtnauRds/",
+        title: "Interview Archive — Dmitri at GOTO Chicago 2015 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-FwqdaF4lmzk/",
+        title: "Interview Archive — Michael T. Nygard at GOTO Chicago 2014 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-KAEUffnMB8o/",
+        title: "Interview Archive — John Jarosz & Coleman Collins on building…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-N9e36bDgi8k/",
+        title: "Interview Archive — Trisha Gee at GOTO Chicago 2015 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-ObnjEj9DSfg/",
+        title: "Interview Archive — Greg Baugues at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-PENvwc0402I/",
+        title: "Interview Archive — Dave Thomas at GOTO Chicago 2015 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-SqgQQYzRoHg/",
+        title: "Interview Archive — Rebecca Parsons at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-TwXImjboV04/",
+        title: "Interview Archive — Mads Torgersen at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-U3PuqsQ7mUU/",
+        title: "Interview Archive — Camille Fournier on rewriting software at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-Y8VYOpJ5LMo/",
+        title: "Interview Archive — Gil Tene at GOTO Chicago 2015 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-aeBNVfEKqLI/",
+        title: "Interview Archive — Emily Rosengren on User Groups and ThoughtWorks…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-c2_IkK46eyk/",
+        title: "Interview Archive — Alexandra Masterson at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-c9FHvxx5KCI/",
+        title: "Interview Archive — Anita Sengupta keynote speaker at GOTO ~Chicago~…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-cZ_RFokNArk/",
+        title: "Interview Archive — Justin Meyer at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-eBgjbcsS4TI/",
+        title: "Interview Archive — Cindy Sprague a lead organizer with GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-fW76Pkj5bo0/",
+        title: "Interview Archive — Max De Marzi organizer Graph DB Chicago at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-gBQfB84aqW4/",
+        title: "Interview Archive — Ryan Gerry organizer with Software Craftsmanship…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-gdd7Cp_ZANY/",
+        title: "Interview Archive — Adrian Cockcroft keynote speaker for GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-iNXlpw_C3Lg/",
+        title: "Interview Archive — Fred George on Programmer Anarchy at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-jkg0VMNnEuc/",
+        title: "Interview Archive — Aino Vonge Corry an speaker introducer at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-nKWpW1AE7V8/",
+        title: "Interview Archive — Matthew Brender at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-qCa-8eiTFvk/",
+        title: "Interview Archive — Jerry Cattell at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-qsbQqFumT8Q/",
+        title: "Interview Archive — Max De Marzi at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-soEOxJ3crRk/",
+        title: "Interview Archive — Courtney Hemphill on Mixing Lean & Agile…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-tAHBuD_tntI/",
+        title: "Interview Archive — Tim Bray at GOTO Chicago 2014 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-vbZjw_Sw73M/",
+        title: "Interview Archive — Jez Humble on DevOps culture at GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-wjB2Q7zn74I/",
+        title: "Interview Archive — Russ Olsen author Eloquent Ruby at GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-xQoDtM5glps/",
+        title: "Interview Archive — Vyacheslav Egorov at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-xhkWYAakUgs/",
+        title: "Interview Archive — Corey Haines at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-yteRYdgZu5g/",
+        title: "Interview Archive — Dave Duggal at GOTO Chicago 2015 (GOTO Conference)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-z5TjpgZ9xno/",
+        title: "Interview Archive — Fred Guime organizer Chicago Java UG at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/youtube-zTQrlhmSfLE/",
+        title: "Interview Archive — Kyle Kingsbury at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/zach-dennis-software-craftsmanship-north-america-2012/",
+        title: "Interview Archive — Zach Dennis at SCNA 2012 (SCNA · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/interviews/zach-shaw-boston-sc-software-craftsmanship-north-america-2011/",
+        title: "Interview Archive — Zach Shaw — Boston SC (SCNA)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/linkedin/",
+        title: "LinkedIn Export",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/now/",
+        title: "Now",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/oneoffs/",
+        title: "One-off Videos",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/redirects.json",
+        title: "",
+        layout: ""
+      });
+    
+      items.push({
+        url: "/resume-minimal.html",
+        title: "",
+        layout: "redirect"
+      });
+    
+      items.push({
+        url: "/resume-minimal/",
+        title: "",
+        layout: "redirect"
+      });
+    
+      items.push({
+        url: "/resume.html",
+        title: "Mike Hall - Staff Software Engineer",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume.json",
+        title: "",
+        layout: ""
+      });
+    
+      items.push({
+        url: "/resume.md",
+        title: "",
+        layout: ""
+      });
+    
+      items.push({
+        url: "/resume.txt",
+        title: "",
+        layout: ""
+      });
+    
+      items.push({
+        url: "/resume/positions/activecampaign/",
+        title: "Resume Position — Senior Software Developer — ActiveCampaign",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/bdi/",
+        title: "Resume Position — Principal Developer — Business Decisions, Inc.",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/benchprep/",
+        title: "Resume Position — Senior Software Developer — BenchPrep",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/bp/",
+        title: "Resume Position — Senior Software Developer — BP",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/brightstar/",
+        title: "Resume Position — Senior .NET Developer — Brightstar Corporation",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/ch-robinson/",
+        title: "Resume Position — System Administrator — C.H. Robinson",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/coderwall/",
+        title: "Resume Position — Core Team Lead — Coderwall",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/groupon/",
+        title: "Resume Position — Engineering Learning & Development Business…",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/ips/",
+        title: "Resume Position — Programmer Analyst — Integrated Performance…",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/jpmc/",
+        title: "Resume Position — Assistant Vice President, Application Developer —…",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/klobomedia/",
+        title: "Resume Position — CTO — KloboMedia",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/motorola/",
+        title: "Resume Position — Senior Software Developer — Motorola",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/new-labor-strategies/",
+        title: "Resume Position — Programmer Analyst — New Labor Strategies, Inc.",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/obtiva/",
+        title: "Resume Position — Software Engineer — Obtiva",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/onemain/",
+        title: "Resume Position — Associate Director, Staff Engineer — OneMain…",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/reachlocal/",
+        title: "Resume Position — Senior Software Developer — ReachLocal",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/riverpoint/",
+        title: "Resume Position — Software Developer — Riverpoint Group",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/sentinel/",
+        title: "Resume Position — Application Analyst — Sentinel Technologies, Inc.",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/sk-holdings/",
+        title: "Resume Position — Senior Backend Developer — SK Holdings, Inc.",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/tandem/",
+        title: "Resume Position — Principal Consultant — Tandem",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/ticketsnow/",
+        title: "Resume Position — Senior .NET Developer — TicketsNow",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/trippe/",
+        title: "Resume Position — Software Developer — Trippe Manufacturing, Inc.",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/upcity/",
+        title: "Resume Position — Senior Software Developer — Upcity",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/resume/positions/viewpoints/",
+        title: "Resume Position — Senior Software Developer — Viewpoints",
+        layout: "resume"
+      });
+    
+      items.push({
+        url: "/scmc/",
+        title: "SCMC Videos",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/sitemap.xml",
+        title: "",
+        layout: ""
+      });
+    
+      items.push({
+        url: "/start-here/",
+        title: "Start Here",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/tools/",
+        title: "Tools",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/tools/devex-funnel-calculator/",
+        title: "DevEx Funnel Cost Calculator",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/",
+        title: "Videos",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/aaron-bedra-general/",
+        title: "Video Archive — Aaron Bedra (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/aaron-holbrook-general/",
+        title: "Video Archive — Aaron Holbrook (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/aaron-kalin-chicagowebconf-2012/",
+        title: "Video Archive — Aaron Kalin at ChicagoWebConf 2012 (ChicagoWebConf…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/aaron-patterson-ruby-rails-core-team-member-keynote-speaker-railsconf-2014/",
+        title: "Video Archive — Aaron Patterson on Rails core and keynote…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/adam-grandy-windycityrails-2012/",
+        title: "Video Archive — Adam Grandy at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/adewale-oshineye-general/",
+        title: "Video Archive — Adewale Oshineye (SCNA 2012)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/adewale-oshineye-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Adewale Oshineye at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/adewale-oshinye-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Adewale Oshinye at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/alexander-dymo-ruby-performance-talk-railsconf-2014/",
+        title: "Video Archive — Alexander Dymo on Ruby performance at RailsConf 2014…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/amitai-schlair-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Amitai Schlair at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/andrea-magnorsky-general/",
+        title: "Video Archive — Andrea Magnorsky (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/andy-lester-chicagowebconf-2012/",
+        title: "Video Archive — Andy Lester at ChicagoWebConf 2012 (ChicagoWebConf…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/angelique-martin-general/",
+        title: "Video Archive — Angelique Martin (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/angelique-martin-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Angelique Martin at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/arthur-kay-general/",
+        title: "Video Archive — Arthur Kay (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/ashe-dryden-general/",
+        title: "Video Archive — Ashe Dryden (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/avdi-grimm-general/",
+        title: "Video Archive — Avdi Grimm (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/benjamin-oakes-windycityrails-2012/",
+        title: "Video Archive — Benjamin Oakes at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/bill-scott-general/",
+        title: "Video Archive — Bill Scott (WebVisions 2013 · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/bobby-johnson-south-sound-net-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Bobby Johnson at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/brad-wilkening-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Brad Wilkening at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/brian-liles-windycityrails-2012/",
+        title: "Video Archive — Brian Liles at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/brian-marick-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Brian Marick at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/brian-ray-chipy-chipy/",
+        title: "Video Archive — Brian Ray from ChiPy (ChiPy)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/carl-erickson-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Carl Erickson at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/",
+        title: "Video Archive — Carlos Antonio da Silva on Rails core maintenance at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/charler-baker-denver-community-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Denver Community w/Charler Baker (SCNA 2011)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/charles-oliver-nutter-general/",
+        title: "Video Archive — Charles Oliver Nutter (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/chet-hendrickson-ron-jefferies-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Chet Hendrickson & Ron Jefferies at Software…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/colin-jones-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Colin Jones at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/coraline-ada-ehmke-artis-railsconf-2014/",
+        title: "Video Archive — Coraline Ada Ehmke on Artis and engineering…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/corey-haines-general/",
+        title: "Video Archive — Corey Haines (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/cory-foy-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Cory Foy at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/culley-smith-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Culley Smith at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/daniel-x-o-neil-general/",
+        title: "Video Archive — Daniel X. O'Neil (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/dave-hoover-geekfest-geekfest/",
+        title: "Video Archive — Dave Hoover from Geekfest (Geekfest)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/dave-thomas-goto-conference-and-community-goto-conference-and-community/",
+        title: "Video Archive — GOTO Conference and Community w/Dave Thomas (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/dave-thomas-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Dave Thomas at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/david-heinemeier-hansson-dhh-railsconf-2014/",
+        title: "Video Archive — David Heinemeier Hansson (DHH) on Rails ecosystem…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/drew-shefman-houston-adobe-user-group-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Drew Shefman at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/dustin-updyke-pittsburgh-sc-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Dustin Updyke at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/eric-macadie-windycityrails-2012/",
+        title: "Video Archive — Eric MacAdie at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/erik-meijer-creator-reactive-framework-general/",
+        title: "Video Archive — Erik Meijer creator Reactive Framework at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/ethan-gunderson-ryan-briones-gathers-us-and-chicagodb-gathers-us-and-chicagodb/",
+        title: "Video Archive — Ethan Gunderson & Ryan Briones from Gathers.us and…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/evan-light-founder-dcamp-railsconf-2014/",
+        title: "Video Archive — Evan Light on DCamp and developer community building…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/evan-light-windycityrails-2012/",
+        title: "Video Archive — Evan Light at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/",
+        title: "Video Archive — Evan Phoenix on Rubinius, Puma App Server, and Ruby…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/farrah-bostic-founder-the-difference-engine-and-keynot-railsconf-2014/",
+        title: "Video Archive — Farrah Bostic on The Difference Engine and keynote…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/gary-bernhardt-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Gary Bernhardt at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/ginny-hendry-windycityrails-2012/",
+        title: "Video Archive — Ginny Hendry at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/head-bounce-lake-in-the-hills-skatepark-general/",
+        title: "Video Archive — Head Bounce @ Lake in the Hills Skatepark",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/how-to-say-ugtastic-general/",
+        title: "Video Archive — How to say \"UGtastic\". (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/igor-polevoy-general/",
+        title: "Video Archive — Igor Polevoy (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-angelique-martin-general/",
+        title: "Video Archive — Angelique (interview-with-angelique-martin-general)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-anita-sengupta-goto-chicago-2015-general/",
+        title: "Video Archive — Anita Sengupta @ GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-anna-lear-general/",
+        title: "Video Archive — Anna Lear (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-anthony-zinni-and-jon-buda-and-shay-howe-general/",
+        title: "Video Archive — Anthony Zinni and Jon Buda and Shay Howe (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-carina-c-zona-general/",
+        title: "Video Archive — Carina C Zona (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-carolyn-chandler-general/",
+        title: "Video Archive — Carolyn Chandler (WebVisions 2013 · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-charles-nutter-goto-chicago-2015-general/",
+        title: "Video Archive — Charles Nutter @ GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-charley-baker-general/",
+        title: "Video Archive — Charley Baker (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-chris-whitaker-general/",
+        title: "Video Archive — Chris Whitaker (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-dan-north-general/",
+        title: "Video Archive — Dan North (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-dave-duggal-goto-chicago-2015-general/",
+        title: "Video Archive — Dave Duggal @ GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-david-dickinson-and-ross-beehler-general/",
+        title: "Video Archive — David Dickinson and Ross Beehler (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-dean-wampler-general/",
+        title: "Video Archive — Dean Wampler (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-dean-wampler-goto-chicago-2015-general/",
+        title: "Video Archive — Dean Wampler @ GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-eric-kingery-general/",
+        title: "Video Archive — Eric Kingery (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-gary-bernhardt-creator-destroy-all-software-at-scna-chicago-general/",
+        title: "Video Archive — Gary Bernhardt creator \"Destroy All Software\" at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-gil-tene-azul-cto-javaone-rock-star-goto-chicago-2-general/",
+        title: "Video Archive — Gil Tene Azul CTO & JavaOne Rock Star @ GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-giles-bowkett-author-rails-general/",
+        title: "Video Archive — Giles Bowkett author \"Rails (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-giles-bowkett-general/",
+        title: "Video Archive — Giles Bowkett (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-hadi-hariri-general/",
+        title: "Video Archive — Hadi Hariri (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-james-edward-gray-ii-general/",
+        title: "Video Archive — James Edward Gray II (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-jason-cranford-teague-general/",
+        title: "Video Archive — Jason Cranford Teague (WebVisions 2013 · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-jen-myers-general/",
+        title: "Video Archive — Jen Myers (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-jennifer-jones-general/",
+        title: "Video Archive — Jennifer Jones (WebVisions 2013 · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-john-servin-general/",
+        title: "Video Archive — John Servin (WebVisions 2013 · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-katrina-owen-general/",
+        title: "Video Archive — Katrina Owen (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-ken-auer-general/",
+        title: "Video Archive — Ken Auer (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-kresten-thorup-general/",
+        title: "Video Archive — Kresten Thorup (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-mandi-walls-general/",
+        title: "Video Archive — Mandi Walls (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-matt-ruby-creator-of-vooza-general/",
+        title: "Video Archive — Matt Ruby creator of Vooza (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-michael-ficarra-general/",
+        title: "Video Archive — Michael Ficarra (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-mike-burton-general/",
+        title: "Video Archive — Mike Burton (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-mike-lee-general/",
+        title: "Video Archive — Mike Lee (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-mike-miller-general/",
+        title: "Video Archive — Mike Miller (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-ola-bini-creator-of-ioke-and-jruby-contributor-general/",
+        title: "Video Archive — Ola Bini creator of Ioke and JRuby contributor…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-randy-ellis-general/",
+        title: "Video Archive — Randy Ellis (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-rebecca-parsons-goto-chicago-2015-general/",
+        title: "Video Archive — Rebecca Parsons @ GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-rob-reynolds-general/",
+        title: "Video Archive — Rob Reynolds (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-ryan-slobojan-general/",
+        title: "Video Archive — Ryan Slobojan (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-sandro-mancuso-and-tom-brand-general/",
+        title: "Video Archive — Sandro Mancuso and Tom Brand (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-stephen-anderson-general/",
+        title: "Video Archive — Stephen Anderson (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/interview-with-zachary-shaw-general/",
+        title: "Video Archive — Zachary Shaw (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/james-edward-grey-iii-general/",
+        title: "Video Archive — James Edward Grey III (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/jc-grubbs-chicagowebconf-2012/",
+        title: "Video Archive — JC Grubbs at ChicagoWebConf 2012 (ChicagoWebConf 2012)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/jen-meyers-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Jen Meyers at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/jim-remsik-windycityrails-2012/",
+        title: "Video Archive — Jim Remsik at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/joe-hirn-chicagowebconf-2012/",
+        title: "Video Archive — Joe Hirn at ChicagoWebConf 2012 (ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/joel-clermont-general/",
+        title: "Video Archive — Joel Clermont (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/joel-turnbull-debugger-driven-development-talk-railsconf-2014/",
+        title: "Video Archive — Joel Turnbull on Debugger Driven Development at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/john-shay-tony-refresh-chicago-refresh-chicago/",
+        title: "Video Archive — John & Shay & Tony from Refresh Chicago (Refresh…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/jonathan-baltz-chicagowebconf-2012/",
+        title: "Video Archive — Jonathan Baltz at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/justin-collins-creator-of-brakeman-railsconf-2014/",
+        title: "Video Archive — Justin Collins on Brakeman and Rails security at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/justin-love-windycityrails-2012/",
+        title: "Video Archive — Justin Love at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/justin-searls-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Justin Searls at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/kevin-zolkiewiecz-windycityrails-2012/",
+        title: "Video Archive — Kevin Zolkiewiecz at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/killer-skatepark-evansville-in-july-2022-general/",
+        title: "Video Archive — Killer Skatepark, Evansville, IN, July 2022",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/",
+        title: "Video Archive — Kiyoto Tamura on FluentD and log integration tooling…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/kumar-mcmillan-general/",
+        title: "Video Archive — Kumar McMillan (ChicagoWebConf 2012)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/kumar-mcmillian-chicagowebconf-2012/",
+        title: "Video Archive — Kumar McMillian at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/leon-gersing-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Leon Gersing at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/london-software-craftsmanship-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — London Software Craftsmanship at Software…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/mark-simpson-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Mark Simpson at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/martin-atkins-chicagowebconf-2012/",
+        title: "Video Archive — Martin Atkins at ChicagoWebConf 2012 (ChicagoWebConf…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/matt-polito-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Matt Polito at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/max-lancaster-dc-alt-net-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Max Lancaster at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/melissa-castello-chicagowebconf-2012/",
+        title: "Video Archive — Melissa Castello at ChicagoWebConf 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/micah-martin-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Micah Martin at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/michael-eaton-general/",
+        title: "Video Archive — Michael Eaton (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/michael-norton-cleveland-pittsburgh-community-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Cleveland & Pittsburgh Community w/Michael Norton…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/mike-busch-general/",
+        title: "Video Archive — Mike Busch (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/mike-clement-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Mike Clement at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/mike-hall-introduction-to-aop-with-postsharp/",
+        title: "Video Archive — Introduction to AOP with PostSharp w/Mike Hall",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/mike-hall-posterous-editing-frustration/",
+        title: "Video Archive — Posterous editing frustration w/Mike Hall",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/mike-jansen-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Mike Jansen at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/mike-stringer-general/",
+        title: "Video Archive — Mike Stringer (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/milan-dobrota-jen-lindner-windycityrails-2012/",
+        title: "Video Archive — Milan Dobrota & Jen Lindner at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/movie-on-9-6-12-at-1-05-pm-windycityrails-2012/",
+        title: "Video Archive — Amy Kinney at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/noel-rappin-windycityrails-2012/",
+        title: "Video Archive — Noel Rappin at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/obie-fern-ez-author-the-rails-way-co-founder-hashrocket-railsconf-2014/",
+        title: "Video Archive — Obie Fernandez on The Rails Way and consulting…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/ola-bini-general/",
+        title: "Video Archive — Ola Bini (GOTO Conference 2013)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/pat-paasch-clark-sell-anglebracket-anglebracket/",
+        title: "Video Archive — Pat Paasch & Clark Sell from angleBracket…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/patrick-welsh-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Patrick Welsh at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/paul-baker-general/",
+        title: "Video Archive — Paul Baker (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/pechakucha-teach-yourself-beginning-community-in-24-months-2/",
+        title: "Video Archive — Teach Yourself Beginning Community in 24 Months",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/rafael-fran-a-2014-ruby-hero-railsconf-2014/",
+        title: "Video Archive — Rafael Franca on Ruby Hero recognition and community…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/ray-hightower-chicagoruby-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Ray Hightower at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/rich-hickey-creator-of-clojure-general/",
+        title: "Video Archive — Rich Hickey creator of Clojure at GOTO Chicago 2013…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/",
+        title: "Video Archive — Richard Schneeman on Heroku, open source, and Rails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/robert-martin-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Robert Martin at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/ross-south-bend-software-craftsmanship-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Ross at Software Craftsmanship North America 2011…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/ryan-singer-windycityrails-2012/",
+        title: "Video Archive — Ryan Singer at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/sam-serpoosh-general/",
+        title: "Video Archive — Sam Serpoosh (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/sandro-mancuso-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Sandro Mancuso at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/sandro-mancuso-software-craftsmanship-north-america-2013/",
+        title: "Video (sandro-mancuso-software-craftsmanship-north-america-2013)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/sarah-allen-desi-mcadam-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Sarah Allen & Desi McAdam at Software Craftsmanship…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/sarah-gray-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Sarah Gray at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/scott-seely-lake-county-net-user-group-lcnug-lake-county-net-user-group-lcnug/",
+        title: "Video Archive — Scott Seely from Lake County .NET User Group (LCNUG)…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/sean-massa-todd-larsen-general/",
+        title: "Video Archive — Sean Massa & Todd Larsen (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Sergio Pereira at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/stephen-anderson-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Stephen Anderson at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/stephen-anderson-windycityrails-2012/",
+        title: "Video Archive — Stephen Anderson at WindyCityRails 2012…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/steve-kim-jim-suchy-chicago-software-craftsmanship-chicago-software-craftsmanship/",
+        title: "Video Archive — Steve Kim & Jim Suchy from Chicago Software…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/steve-klabnik-windycityrails-2012/",
+        title: "Video Archive — Steve Klabnik at WindyCityRails 2012 (WindyCityRails…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/stuart-halloway-software-craftsmanship-north-america-2013/",
+        title: "Video Archive — Stuart Halloway at Software Craftsmanship North…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/tim-murphy-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Tim Murphy at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/tim-ottinger-general/",
+        title: "Video Archive — Tim Ottinger (General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-26657739/",
+        title: "Video Archive — Enough C To Get Started In F/OSS w/Andy Lester (Part…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-26669252/",
+        title: "Video Archive — Enough C To Get Started In F/OSS (vimeo-26669252)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-27889917/",
+        title: "Video Archive — Blind SQL Injection w/Michael Buselli",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-29430473/",
+        title: "Video Archive — HTML5 and JavaScript Game Development w/Eric Smith",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-30083598/",
+        title: "Video Archive — The A Word: Architecture w/Uncle Bob Martin",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-32266297/",
+        title: "Video Archive — Front End Craftsmanship: Toward a More Meaningful…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-37080647/",
+        title: "Video Archive — TDD Your JavaScript With Backbone.js w/Mike Jansen",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-38723757/",
+        title: "Video Archive — Beginner C++ for Expert Programmers w/Scott Seely",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-38936294/",
+        title: "Video Archive — ActiveJDBC & ActiveWeb for Java w/Igor Polevoy",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-42266284/",
+        title: "Video Archive — Simplest Thing w/Ralph Iden",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-42282153/",
+        title: "Video Archive — Dynamic HTML 5 using jQuery for Perl Programmers…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/vimeo-44387717/",
+        title: "Video Archive — Software Craftsmanship VS Software Engineering…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/yehuda-katz-tom-dale-creators-of-ember-js-railsconf-2014/",
+        title: "Video Archive — Yehuda Katz and Tom Dale on Ember.js and frontend…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube--RpPLgSF0kQ/",
+        title: "Video Archive — Michael Ficarra (General) (youtube--RpPLgSF0kQ)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-2Xyy_PwzPws/",
+        title: "Video Archive — Chad Fowler at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-4aPzxoVKzG8/",
+        title: "Video Archive — Dean Wampler at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-5umGKgZlqIw/",
+        title: "Video Archive — Sarah Allen and Desi McAdam (SCNA 2012 · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-7C9B9jO2Vrk/",
+        title: "Video Archive — Alex Rutkowski & Joel Friedman on remote pairing at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-7EpWuB60zrg/",
+        title: "Video Archive — Richard Lee a contributor to OpenStack at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-BQ1gpu_k2Jc/",
+        title: "Video Archive — Jay Fields at GOTO Chicago 2015 (GOTO Conference 2015)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-D8KqeuEBhvc/",
+        title: "Video Archive — Bill Scott (WebVisions 2013 · (youtube-D8KqeuEBhvc)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-DBXyrzTEnqg/",
+        title: "Video Archive — Bob Pollin at GOTO Chicago 2015 (GOTO Conference 2015)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-DZz3NWny1zw/",
+        title: "Video Archive — Attila Szegedi at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-EyPMtnauRds/",
+        title: "Video Archive — Dmitri at GOTO Chicago 2015 (GOTO Conference 2015)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-FQCDazouHKk/",
+        title: "Video Archive — Angelique Martin (General) (youtube-FQCDazouHKk)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-FwqdaF4lmzk/",
+        title: "Video Archive — Michael T. Nygard looking back on five years of…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-J8iOl7g8az8/",
+        title: "Video Archive — Chet Hendrickson & Ron Jefferies (SCNA 2013 · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-KAEUffnMB8o/",
+        title: "Video Archive — John Jarosz & Coleman Collins on building ecosystems…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-KZQW9oL9Gfo/",
+        title: "Video Archive — Sandro Mancuso (SCNA 2013)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-N9e36bDgi8k/",
+        title: "Video Archive — Trisha Gee at GOTO Chicago 2015 (GOTO Conference 2015)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-ObnjEj9DSfg/",
+        title: "Video Archive — Greg Baugues at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-PENvwc0402I/",
+        title: "Video Archive — Dave Thomas at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-PeyzIoZh6tw/",
+        title: "Video Archive — Amitai Schlair (SCNA 2013 · General)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-SqgQQYzRoHg/",
+        title: "Video Archive — Rebecca Parsons at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-TwXImjboV04/",
+        title: "Video Archive — Mads Torgersen at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-U3PuqsQ7mUU/",
+        title: "Video Archive — Camille Fournier on rewriting software at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-Y8VYOpJ5LMo/",
+        title: "Video Archive — Gil Tene at GOTO Chicago 2015 (GOTO Conference 2015)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-aCUPJbziujI/",
+        title: "Video Archive — Greg Baugues on Mental Health in Tech at RailsConf…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-aeBNVfEKqLI/",
+        title: "Video Archive — Emily Rosengren on User Groups and ThoughtWorks at…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-c2_IkK46eyk/",
+        title: "Video Archive — Alexandra Masterson at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-c9FHvxx5KCI/",
+        title: "Video Archive — Anita Sengupta keynote speaker at GOTO Chicago 2015…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-cZ_RFokNArk/",
+        title: "Video Archive — Justin Meyer at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-eBgjbcsS4TI/",
+        title: "Video Archive — Cindy Sprague a lead organizer with GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-fW76Pkj5bo0/",
+        title: "Video Archive — Max De Marzi organizer Graph DB Chicago at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-gBQfB84aqW4/",
+        title: "Video Archive — Ryan Gerry organizer with Software Craftsmanship…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-gdd7Cp_ZANY/",
+        title: "Video Archive — Adrian Cockcroft keynote speaker for GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-iNXlpw_C3Lg/",
+        title: "Video Archive — Fred George on Programmer Anarchy at GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-jkg0VMNnEuc/",
+        title: "Video Archive — Aino Vonge Corry a speaker introducer at GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-nKWpW1AE7V8/",
+        title: "Video Archive — Matthew Brender at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-qCa-8eiTFvk/",
+        title: "Video Archive — Jerry Cattell at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-qsbQqFumT8Q/",
+        title: "Video Archive — Max De Marzi at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-soEOxJ3crRk/",
+        title: "Video Archive — Courtney Hemphill on Mixing Lean & Agile Development…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-tAHBuD_tntI/",
+        title: "Video Archive — Tim Bray at GOTO Chicago 2014 (GOTO Conference 2014)",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-vbZjw_Sw73M/",
+        title: "Video Archive — Jez Humble on DevOps culture at GOTO Chicago 2014…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-wjB2Q7zn74I/",
+        title: "Video Archive — Russ Olsen author Eloquent Ruby at GOTO Chicago 2014…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-xQoDtM5glps/",
+        title: "Video Archive — Vyacheslav Egorov at GOTO Chicago 2015 (GOTO…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-xhkWYAakUgs/",
+        title: "Video Archive — Corey Haines at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-yteRYdgZu5g/",
+        title: "Video Archive — Dave Duggal at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-z5TjpgZ9xno/",
+        title: "Video Archive — Fred Guime organizer Chicago Java UG at GOTO Chicago…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/youtube-zTQrlhmSfLE/",
+        title: "Video Archive — Kyle Kingsbury at GOTO Chicago 2015 (GOTO Conference…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/zach-dennis-software-craftsmanship-north-america-2012/",
+        title: "Video Archive — Zach Dennis at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/videos/zach-shaw-boston-sc-software-craftsmanship-north-america-2011/",
+        title: "Video Archive — Zach Shaw at Software Craftsmanship North America…",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/work-through-conversations/",
+        title: "Work Through Conversations",
+        layout: "minimal"
+      });
+    
+      items.push({
+        url: "/writing/",
+        title: "Mike Hall - Writing",
+        layout: "minimal"
+      });
+    
+
+    items = items.filter(function(item) {
+      if (item.url === "/sitemap.xml" || item.url === "/robots.txt") return false;
+      if (!item.url) return false;
+      if (item.url.indexOf("/assets/") === 0) return false;
+      if (item.url.indexOf("/id/") === 0) return false;
+      return true;
+    });
+
+    var CHILD_LIMIT = 40;
+    var treeRootEl = document.getElementById("site-tree");
+    var searchInputEl = document.getElementById("tree-search");
+    var searchResultsEl = document.getElementById("search-results");
+    var statsEl = document.getElementById("tree-stats");
+    var detailsEl = document.getElementById("node-details");
+    var modeButtons = {
+      path: document.getElementById("mode-path"),
+      kind: document.getElementById("mode-kind"),
+      year: document.getElementById("mode-year")
+    };
+
+    var expanded = new Set(["/"]);
+    var currentMode = "path";
+    var currentTree = null;
+
+    function kindFor(item) {
+      if (item.url === "/") return "home";
+      if (item.url.indexOf("/interviews/") === 0) return "interviews";
+      if (item.url.indexOf("/videos/") === 0) return "videos";
+      if (item.url.indexOf("/docs/") === 0) return "docs";
+      if (item.url.indexOf("/oneoffs/") === 0) return "oneoffs";
+      if (item.url.indexOf("/scmc/") === 0) return "scmc";
+      if (item.url.indexOf("/posts/") === 0 || /^\/\d{4}\//.test(item.url)) return "posts";
+      return "pages";
+    }
+
+    function yearFor(item) {
+      var m = item.url.match(/^\/(\d{4})\//);
+      if (m) return m[1];
+      return "undated";
+    }
+
+    function routeTokens(url) {
+      return url.split("/").filter(Boolean);
+    }
+
+    function createNode(key, name, parentPath) {
+      return {
+        key: key,
+        name: name,
+        path: parentPath ? parentPath + "/" + key : key,
+        children: {},
+        childKeys: [],
+        page: null,
+        leafCount: 0
+      };
+    }
+
+    function treeForMode(mode) {
+      var root = createNode("/", "/", "");
+      root.path = "/";
+
+      items.forEach(function(item) {
+        var segments;
+        if (mode === "kind") {
+          segments = [kindFor(item)].concat(routeTokens(item.url));
+        } else if (mode === "year") {
+          segments = [yearFor(item), kindFor(item)].concat(routeTokens(item.url));
+        } else {
+          segments = routeTokens(item.url);
+        }
+
+        if (segments.length === 0) {
+          root.page = item;
+          return;
+        }
+
+        var cursor = root;
+        segments.forEach(function(seg) {
+          if (!cursor.children[seg]) {
+            cursor.children[seg] = createNode(seg, seg, cursor.path === "/" ? "" : cursor.path);
+            cursor.childKeys.push(seg);
+          }
+          cursor = cursor.children[seg];
+        });
+        cursor.page = item;
+      });
+
+      function finalize(node) {
+        node.childKeys.sort();
+        var count = node.page ? 1 : 0;
+        node.childKeys.forEach(function(k) {
+          count += finalize(node.children[k]);
+        });
+        node.leafCount = count;
+        return count;
+      }
+
+      finalize(root);
+      return root;
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      currentTree = treeForMode(mode);
+      expanded = new Set(["/"]);
+      Object.keys(modeButtons).forEach(function(key) {
+        modeButtons[key].classList.toggle("primary", key === mode);
+      });
+      render();
+    }
+
+    function openDetails(node) {
+      var html = [];
+      html.push("<h2>Selection</h2>");
+      html.push("<dl>");
+      html.push("<dt>Node</dt><dd><code>" + escapeHtml(node.path || "/") + "</code></dd>");
+      html.push("<dt>Children</dt><dd>" + node.childKeys.length + "</dd>");
+      html.push("<dt>Leaf Routes</dt><dd>" + node.leafCount + "</dd>");
+      if (node.page) {
+        html.push("<dt>Page Title</dt><dd>" + escapeHtml(node.page.title || "(none)") + "</dd>");
+        html.push("<dt>Route</dt><dd><code>" + escapeHtml(node.page.url) + "</code></dd>");
+        html.push("<dt>Kind</dt><dd>" + escapeHtml(kindFor(node.page)) + "</dd>");
+        html.push("<dt>Open</dt><dd><a href=\"" + escapeHtml(node.page.url) + "\">" + escapeHtml(node.page.url) + "</a></dd>");
+      }
+      html.push("</dl>");
+      detailsEl.innerHTML = html.join("");
+    }
+
+    function renderChildren(node, target, level) {
+      var keys = node.childKeys.slice(0, CHILD_LIMIT);
+      var overflow = node.childKeys.length > keys.length;
+
+      keys.forEach(function(key) {
+        var child = node.children[key];
+        var li = document.createElement("li");
+        var row = document.createElement("div");
+        row.className = "tree-row";
+
+        var hasChildren = child.childKeys.length > 0;
+        var isOpen = expanded.has(child.path);
+
+        var toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "tree-toggle";
+        toggle.textContent = hasChildren ? (isOpen ? "−" : "+") : "·";
+        toggle.disabled = !hasChildren;
+        toggle.addEventListener("click", function() {
+          if (!hasChildren) return;
+          if (expanded.has(child.path)) expanded.delete(child.path);
+          else expanded.add(child.path);
+          render();
+        });
+        row.appendChild(toggle);
+
+        var label = document.createElement("button");
+        label.type = "button";
+        label.className = "tree-label";
+        label.innerHTML = "<strong>" + escapeHtml(child.name) + "</strong>";
+        label.addEventListener("click", function() {
+          openDetails(child);
+        });
+        row.appendChild(label);
+
+        var badge = document.createElement("span");
+        badge.className = "tree-badge";
+        badge.textContent = child.leafCount;
+        row.appendChild(badge);
+
+        if (child.page) {
+          var route = document.createElement("span");
+          route.className = "tree-route";
+          route.textContent = child.page.url;
+          row.appendChild(route);
+
+          var open = document.createElement("a");
+          open.className = "tree-open-link";
+          open.href = child.page.url;
+          open.textContent = "open";
+          row.appendChild(open);
+        }
+
+        li.appendChild(row);
+
+        if (hasChildren && isOpen) {
+          var ul = document.createElement("ul");
+          ul.className = "tree-node-children";
+          renderChildren(child, ul, level + 1);
+          li.appendChild(ul);
+        }
+
+        target.appendChild(li);
+      });
+
+      if (overflow) {
+        var more = document.createElement("li");
+        var hint = document.createElement("div");
+        hint.className = "tree-row";
+        hint.innerHTML = "<span class=\"tree-route\">+" + (node.childKeys.length - keys.length) + " more branches. Use filter to narrow this section.</span>";
+        more.appendChild(hint);
+        target.appendChild(more);
+      }
+    }
+
+    function search(query) {
+      var q = query.trim().toLowerCase();
+      if (!q) return [];
+      return items.filter(function(item) {
+        return item.url.toLowerCase().indexOf(q) !== -1 || (item.title || "").toLowerCase().indexOf(q) !== -1;
+      }).slice(0, 200);
+    }
+
+    function renderSearchResults(matches) {
+      searchResultsEl.hidden = false;
+      if (matches.length === 0) {
+        searchResultsEl.innerHTML = "<p class=\"video-meta\">No routes matched.</p>";
+        return;
+      }
+      var html = [];
+      html.push("<p class=\"video-meta\">Showing " + matches.length + " match(es).</p>");
+      html.push("<ul>");
+      matches.forEach(function(item) {
+        html.push("<li><span><strong>" + escapeHtml(item.title || "(untitled)") + "</strong> <span class=\"tree-route\">" + escapeHtml(item.url) + "</span></span><a href=\"" + escapeHtml(item.url) + "\">open</a></li>");
+      });
+      html.push("</ul>");
+      searchResultsEl.innerHTML = html.join("");
+    }
+
+    function render() {
+      var query = searchInputEl.value.trim();
+      treeRootEl.innerHTML = "";
+      searchResultsEl.hidden = true;
+      searchResultsEl.innerHTML = "";
+
+      var matches = search(query);
+      if (query.length > 1) renderSearchResults(matches);
+
+      renderChildren(currentTree, treeRootEl, 0);
+      statsEl.textContent = "Mode: " + currentMode + " · Routes: " + items.length + " · Expanded branches: " + expanded.size + (query ? " · Filter: \"" + query + "\"" : "");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;");
+    }
+
+    searchInputEl.addEventListener("input", render);
+    modeButtons.path.addEventListener("click", function() { setMode("path"); });
+    modeButtons.kind.addEventListener("click", function() { setMode("kind"); });
+    modeButtons.year.addEventListener("click", function() { setMode("year"); });
+
+    document.getElementById("expand-top").addEventListener("click", function() {
+      currentTree.childKeys.forEach(function(k) {
+        expanded.add(currentTree.children[k].path);
+      });
+      render();
+    });
+
+    document.getElementById("collapse-all").addEventListener("click", function() {
+      expanded = new Set(["/"]);
+      render();
+    });
+
+    setMode("path");
+    openDetails(currentTree);
+  })();
+</script>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Improve Case-Insensitive Queries in PostgreSQL Using Smarter Indexes</title>
+<meta name="description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/2015/02/25/improve-case-insensitive-queries-in-postgres-using-smarter-indexes.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Improve Case-Insensitive Queries in PostgreSQL Using Smarter Indexes">
+<meta property="og:description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<meta property="og:url" content="https://www.just3ws.com/2015/02/25/improve-case-insensitive-queries-in-postgres-using-smarter-indexes.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Improve Case-Insensitive Queries in PostgreSQL Using Smarter Indexes">
+<meta name="twitter:description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Improve Case-Insensitive Queries in PostgreSQL Using Smarter Indexes",
+  "description": "One of the unique features of Postgres is it’s powerful index engine.Using Postgres you can get much more fine grained control over how yourdata is indexed. For example indexes on expressions which allow you tocreate indexes on fields that have UPPER or LOWER functions appliedto them.",
+  "author": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "datePublished": "2015-02-25T00:00:00-06:00",
+  "dateModified": "2026-02-02T21:55:48-06:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/2015/02/25/improve-case-insensitive-queries-in-postgres-using-smarter-indexes.html"
+  }
+}
+</script>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+
+    
+      <a href="/2015/02/25/improve-case-insensitive-queries-in-postgres-using-smarter-indexes.html">Improve Case-Insensitive Queries in PostgreSQL Using Smarter Indexes</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Improve Case-Insensitive Queries in PostgreSQL Using Smarter Indexes",
+        "item": "https://www.just3ws.com/2015/02/25/improve-case-insensitive-queries-in-postgres-using-smarter-indexes.html"
+      }
+    
+  ]
+}
+</script>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>Improve Case-Insensitive Queries in PostgreSQL Using Smarter Indexes</h1>
+    <p class="post-meta">February 2015 · PostgreSQL, Indexes, SQL, Performance</p>
+    
+    
+    <aside class="archive-note">
+      <p><strong>Archive note:</strong> This post was written in 2015 and migrated from an earlier blog. The techniques described remain relevant to PostgreSQL.</p>
+    </aside>
+    
+  </header>
+  <div class="post-body">
+    <p>One of the unique features of Postgres is it’s powerful index engine.
+Using Postgres you can get much more fine grained control over how your
+data is indexed. For example indexes on expressions which allow you to
+create indexes on fields that have <code class="language-plaintext highlighter-rouge">UPPER</code> or <code class="language-plaintext highlighter-rouge">LOWER</code> functions applied
+to them.</p>
+
+<p>Typically a <code class="language-plaintext highlighter-rouge">VARCHAR</code> field is case-sensitive in Postgres. Meaning that
+<code class="language-plaintext highlighter-rouge">fieldname = 'FOO'</code> and <code class="language-plaintext highlighter-rouge">fieldname = 'foo'</code> won’t match when the actual
+value is “FOO”. A common technique is to normalize the field value like
+<code class="language-plaintext highlighter-rouge">lower(fieldname) = lower('FOO')</code> to coerce the fields to match using
+their lower-case form. The problem is that this will ignore indexes and
+cause Postgres to use a Sequential Scan to find the match evaluating
+each row looking for a match. This is expensive and non-ideal for large
+and frequently queried tables.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">explain</span> <span class="k">select</span> <span class="n">username</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="k">lower</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">=</span> <span class="k">lower</span><span class="p">(</span><span class="s1">'just3ws'</span><span class="p">);</span>
+                        <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">-----------------------------------------------------------</span>
+ <span class="n">Seq</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">users</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">13327</span><span class="p">.</span><span class="mi">36</span> <span class="k">rows</span><span class="o">=</span><span class="mi">558</span> <span class="n">width</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+   <span class="n">Filter</span><span class="p">:</span> <span class="p">(</span><span class="k">lower</span><span class="p">((</span><span class="n">username</span><span class="p">)::</span><span class="nb">text</span><span class="p">)</span> <span class="o">=</span> <span class="s1">'just3ws'</span><span class="p">::</span><span class="nb">text</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Compare that to the query with no expression and a simple index on the username
+field.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">explain</span> <span class="k">select</span> <span class="n">username</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="n">username</span> <span class="o">=</span> <span class="k">lower</span><span class="p">(</span><span class="s1">'just3ws'</span><span class="p">);</span>
+                                     <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">-------------------------------------------------------------------------------------</span>
+ <span class="k">Index</span> <span class="n">Scan</span> <span class="k">using</span> <span class="n">index_users_on_username</span> <span class="k">on</span> <span class="n">users</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">4</span><span class="p">.</span><span class="mi">07</span> <span class="k">rows</span><span class="o">=</span><span class="mi">1</span> <span class="n">width</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+   <span class="k">Index</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">((</span><span class="n">username</span><span class="p">)::</span><span class="nb">text</span> <span class="o">=</span> <span class="s1">'just3ws'</span><span class="p">::</span><span class="nb">text</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>There’s a significant cost to pay when querying against expressions. But
+all is not lost. Postgres will let you build <a href="https://www.postgresql.org/docs/current/static/indexes-expressional.html">indexes against
+expressions</a>.</p>
+
+<p>In this case we’ll apply a index that will take the <code class="language-plaintext highlighter-rouge">lower()</code> expression
+into account.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">index</span> <span class="n">ix_users_username_lower</span> <span class="k">on</span> <span class="n">users</span> <span class="p">(</span><span class="k">lower</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="n">varchar_pattern_ops</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Now when we query for <code class="language-plaintext highlighter-rouge">lower(usernames)</code> we’ll be able to take advantage
+of the index to avoid full table scanning.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">explain</span> <span class="k">select</span> <span class="n">username</span> <span class="k">from</span> <span class="n">users</span> <span class="k">where</span> <span class="k">lower</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">=</span> <span class="k">lower</span><span class="p">(</span><span class="s1">'just3ws'</span><span class="p">);</span>
+                                       <span class="n">QUERY</span> <span class="n">PLAN</span>
+<span class="c1">----------------------------------------------------------------------------------------</span>
+ <span class="n">Bitmap</span> <span class="n">Heap</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">users</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">4</span><span class="p">.</span><span class="mi">92</span><span class="p">..</span><span class="mi">988</span><span class="p">.</span><span class="mi">43</span> <span class="k">rows</span><span class="o">=</span><span class="mi">558</span> <span class="n">width</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+   <span class="k">Recheck</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="k">lower</span><span class="p">((</span><span class="n">username</span><span class="p">)::</span><span class="nb">text</span><span class="p">)</span> <span class="o">=</span> <span class="s1">'just3ws'</span><span class="p">::</span><span class="nb">text</span><span class="p">)</span>
+   <span class="o">-&gt;</span>  <span class="n">Bitmap</span> <span class="k">Index</span> <span class="n">Scan</span> <span class="k">on</span> <span class="n">ix_users_username_lower</span>  <span class="p">(</span><span class="n">cost</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">..</span><span class="mi">4</span><span class="p">.</span><span class="mi">90</span> <span class="k">rows</span><span class="o">=</span><span class="mi">558</span> <span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+         <span class="k">Index</span> <span class="n">Cond</span><span class="p">:</span> <span class="p">(</span><span class="k">lower</span><span class="p">((</span><span class="n">username</span><span class="p">)::</span><span class="nb">text</span><span class="p">)</span> <span class="o">=</span> <span class="s1">'just3ws'</span><span class="p">::</span><span class="nb">text</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It’s much better than the Sequential Scan now although still a little
+bit slower than just querying against the simple index.</p>
+
+<p>The Bitmap Heap Scan is useful when there is a lot of variety in the
+data and Postgres is able to intelligently segregate the data. Basically
+the data is chunked into smaller sets that Postgres can filter though
+and more intelligently decide which sets to scan and which to skip.
+Where the Sequential Scan will touch every single row in the table.</p>
+
+<p>Read more about the Postgres <a href="https://www.postgresql.org/docs/current/static/indexes-expressional.html">Index on
+Expressions</a>
+in the official documentation and this explanation by the author of the
+<a href="https://www.postgresql.org/message-id/12553.1135634231@sss.pgh.pa.us">Postgres Bitmap Heap Scan
+algorithm</a>
+Tom Lane.</p>
+
+<p>For a full explanation of what the <code class="language-plaintext highlighter-rouge">cost</code>, <code class="language-plaintext highlighter-rouge">rows</code>, and <code class="language-plaintext highlighter-rouge">width</code> values
+mean please check out <a href="https://www.postgresql.org/docs/current/static/using-explain.html">Using
+Explain</a>
+from the Postgres documentation.</p>
+
+<p><code class="language-plaintext highlighter-rouge">varchar_pattern_ops</code> is explained in Postgres
+<a href="https://www.postgresql.org/docs/current/static/indexes-opclass.html">Index</a>
+documentation.</p>
+
+  </div>
+</article>
+
+  </main>
+</body>
+</html>

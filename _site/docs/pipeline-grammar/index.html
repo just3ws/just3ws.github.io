@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Pipeline Grammar | Mike Hall Archive</title>
+<meta name="description" content="Command grammar and usage for the build, validation, and smoke pipeline.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/pipeline-grammar/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Pipeline Grammar | Mike Hall Archive">
+<meta property="og:description" content="Command grammar and usage for the build, validation, and smoke pipeline.">
+<meta property="og:url" content="https://www.just3ws.com/docs/pipeline-grammar/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pipeline Grammar | Mike Hall Archive">
+<meta name="twitter:description" content="Command grammar and usage for the build, validation, and smoke pipeline.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/pipeline-grammar/">Pipeline Grammar</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Pipeline Grammar",
+        "item": "https://www.just3ws.com/docs/pipeline-grammar/"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="pipeline-grammar">Pipeline Grammar</h1>
+
+<p>Use the pipeline entrypoint for all build/validation workflow commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/pipeline &lt;<span class="nb">command</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Grammar:</p>
+
+<pre><code class="language-ebnf">&lt;command&gt; ::= generate | build | test | validate | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | help
+</code></pre>
+
+<h2 id="commands">Commands</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">generate</code><br />
+Regenerates data-driven interview/video pages plus canonical context summaries from <code class="language-plaintext highlighter-rouge">_data/</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">build</code><br />
+Runs runtime checks, regenerates pages, and builds <code class="language-plaintext highlighter-rouge">_site</code> via Jekyll.</li>
+  <li><code class="language-plaintext highlighter-rouge">validate</code><br />
+Runs data integrity checks, SEO/canonical checks, semantic/schema checks, HTMLProofer, and resume/sitemap guardrails against <code class="language-plaintext highlighter-rouge">_site</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">semantic-graph</code><br />
+Generates JSON-LD semantic graph artifacts from rendered <code class="language-plaintext highlighter-rouge">_site</code> into <code class="language-plaintext highlighter-rouge">tmp/schema-graph.dot</code> and <code class="language-plaintext highlighter-rouge">tmp/schema-graph-summary.json</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">semantic-audit</code><br />
+Generates consolidated semantic quality report in <code class="language-plaintext highlighter-rouge">tmp/semantic-quality-report.json</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">semantic-snapshot</code><br />
+Generates <code class="language-plaintext highlighter-rouge">docs/architecture/semantic-graph.md</code> from semantic report artifacts.</li>
+  <li><code class="language-plaintext highlighter-rouge">smoke</code><br />
+Runs Playwright smoke checks against built <code class="language-plaintext highlighter-rouge">_site</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">sitemap</code><br />
+Prints a local sitemap coverage summary (counts by section + URL sample).</li>
+  <li><code class="language-plaintext highlighter-rouge">ci</code><br />
+Full CI core pipeline (<code class="language-plaintext highlighter-rouge">build</code> + <code class="language-plaintext highlighter-rouge">test</code> + <code class="language-plaintext highlighter-rouge">validate</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">help</code><br />
+Prints grammar and command help.</li>
+</ul>
+
+<h2 id="common-flows">Common Flows</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Full CI-equivalent local run</span>
+./bin/pipeline ci
+
+<span class="c"># Generate semantic graph artifacts from built pages</span>
+./bin/pipeline semantic-graph
+
+<span class="c"># Generate consolidated semantic quality report</span>
+./bin/pipeline semantic-audit
+
+<span class="c"># Generate docs semantic snapshot from report artifacts</span>
+./bin/pipeline semantic-snapshot
+
+<span class="c"># CI + browser smoke checks</span>
+./bin/pipeline ci
+./bin/pipeline smoke
+
+<span class="c"># Visualize sitemap coverage after a build</span>
+./bin/pipeline sitemap
+
+<span class="c"># Build only (useful when iterating on templates/content)</span>
+./bin/pipeline build
+
+<span class="c"># Validate existing _site output without rebuilding</span>
+./bin/pipeline validate
+</code></pre></div></div>
+
+<h2 id="notes">Notes</h2>
+
+<ul>
+  <li>In CI, the workflow runs:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/pipeline ci</code></li>
+      <li><code class="language-plaintext highlighter-rouge">./bin/pipeline smoke</code></li>
+    </ul>
+  </li>
+  <li>If your shell runtime does not match <code class="language-plaintext highlighter-rouge">.tool-versions</code>, pipeline commands fail fast with a version mismatch message.</li>
+  <li>Build-time last-modified metadata:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/pipeline build</code> and <code class="language-plaintext highlighter-rouge">./bin/pipeline ci</code> generate git-based post last-modified values into <code class="language-plaintext highlighter-rouge">_data/last_modified.yml</code>.</li>
+      <li>Validation ensures each built article page exposes <code class="language-plaintext highlighter-rouge">dateModified</code> and matches generated values.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="canonical-script-names">Canonical Script Names</h2>
+
+<ul>
+  <li>Generators:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bin/sync_interview_asset_links.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_interview_pages.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_video_asset_pages.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_interview_taxonomy_pages.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_context_summaries.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_last_modified.rb</code></li>
+    </ul>
+  </li>
+  <li>Validators/reports:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bin/validate_data_uniqueness.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/validate_data_integrity.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/validate_resources_output.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/validate_taxonomy_output.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/validate_last_modified_output.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/validate_seo_output.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/validate_public_index_mode.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/validate_semantic_output.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/report_seo_metadata.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/visualize_semantic_graph.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/semantic_audit.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_semantic_snapshot_page.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/visualize_sitemap.rb</code></li>
+    </ul>
+  </li>
+</ul>
+
+  </main>
+</body>
+</html>

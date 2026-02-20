@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  :root {
+    --nord0: #2e3440;
+    --nord2: #434c5e;
+    --nord4: #d8dee9;
+    --nord6: #eceff4;
+    --nord10: #5e81ac;
+    --text: var(--nord0);
+    --muted: var(--nord2);
+    --border: var(--nord4);
+    --surface: var(--nord6);
+    --accent: var(--nord10);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: var(--nord6);
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .site-header {
+    margin: 0 auto 1.25rem;
+    max-width: 50rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+  }
+
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    padding: 0.75rem 1rem;
+    align-items: center;
+  }
+</style>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Mike Hall - Staff Software Engineer</title>
+<meta name="description" content="HTML resume endpoint equivalent to the root resume, kept for format consistency with resume.txt and resume.md.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Mike Hall - Staff Software Engineer">
+<meta property="og:description" content="HTML resume endpoint equivalent to the root resume, kept for format consistency with resume.txt and resume.md.">
+<meta property="og:url" content="https://www.just3ws.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mike Hall - Staff Software Engineer">
+<meta name="twitter:description" content="HTML resume endpoint equivalent to the root resume, kept for format consistency with resume.txt and resume.md.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="preload" href="/assets/css/core.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/css/themes/resume.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="/assets/css/digital-patina.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="/assets/css/core.css">
+  <link rel="stylesheet" href="/assets/css/themes/resume.css">
+  <link rel="stylesheet" href="/assets/css/digital-patina.css">
+</noscript>
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+  <!-- JSON-LD Structured Data for ATS and Search Engines -->
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.just3ws.com/id/person/mike-hall",
+  "name": "Mike Hall",
+  "givenName": "Mike",
+  "familyName": "Hall",
+  "alternateName": "just3ws",
+  "url": "https://www.just3ws.com/",
+  "email": "mailto:mike@just3ws.com",
+  "telephone": "+18478773825",
+  "jobTitle": "Staff Software Engineer",
+  "description": "Staff-level engineer who sets direction for critical platforms, makes system behavior legible, and reduces systemic risk so multi-team plans are grounded in reality. Known for aligning engineering, product, and leadership on what’s required to stabilize and evolve systems, enabling durable change tied to business outcomes.",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/just3ws/",
+    "https://github.com/just3ws"
+  ],
+  "knowsAbout": [
+    "Ruby",
+    "Ruby on Rails",
+    "PostgreSQL",
+    "Redis",
+    "SQL",
+    "JavaScript",
+    "C#",
+    "Java",
+    "Clojure",
+    "Linux",
+    "AWS",
+    "OpenTelemetry",
+    "CI/CD",
+    "Architectural Ownership",
+    "Platform Modernization",
+    "Observability Strategy",
+    "Incident Response & Postmortems",
+    "Risk Management",
+    "Cross-Team Influence",
+    "Technical Strategy",
+    "Mentoring",
+    "AI-augmented development (pairing, review, refactoring)",
+    "System Reliability"
+  ],
+  "hasOccupation": [
+    
+    
+    
+    {
+      "@type": "Occupation",
+      "name": "Associate Director, Staff Engineer",
+      "description": "Owned lane-level architecture for the Acquisitions platform, spanning customer application flows, partner integrations, and a large legacy application estate in a regulated financial environment. Operated as a senior individual contributor accountable for architectural integrity, production stability, and cross-team execution, with authority established through incident leadership, deep system knowledge, and cross-team trust. Focused on making system behavior observable and understandable across teams to enable data-driven decisions, reduce systemic risk, and support reliable change in long-lived systems.",
+      "skills": "Platform Architecture, System Resilience, Incident Leadership, Observability, Legacy System Modernization, Distributed Systems, Ruby on Rails, PostgreSQL, OpenTelemetry, AWS",
+      "occupationLocation": {
+        "@type": "AdministrativeArea",
+        "name": "Remote"
+      }
+    },
+    
+    
+    
+    
+    {
+      "@type": "Occupation",
+      "name": "Senior Backend Developer",
+      "description": "Took broad ownership of stabilizing and modernizing a shared Ruby on Rails platform supporting multiple business lines. Operated as a high-leverage individual contributor addressing architectural complexity, operational blind spots, and performance constraints while making system behavior legible, expanding observability, improving delivery reliability, and increasing insight into system and business behavior. Portions of this work supported preparation of platform-backed assets for external transition, alongside ongoing operational demands.",
+      "skills": "Platform Modernization, Backend System Architecture, Ruby on Rails, System Observability and Monitoring, CI/CD Optimization, Data Pipelines (ETL), Data Analytics, Database Performance Optimization, Full-Text Search (PostgreSQL), Cache Layer Design (Redis), PostgreSQL, MySQL, Prometheus, Logentries, SendGrid",
+      "occupationLocation": {
+        "@type": "AdministrativeArea",
+        "name": "Chicago, IL"
+      }
+    },
+    
+    
+    
+    
+    {
+      "@type": "Occupation",
+      "name": "Senior Software Developer",
+      "description": "Engaged as a short-term senior contributor to address deep structural complexity in the core backend systems. Focused on improving testability, performance, and change safety within a tightly coupled legacy PHP codebase, while making targeted frontend enhancements to stabilize and extend the existing test suite.",
+      "skills": "Legacy System Modernization, Backend System Architecture, Testability and Change Safety, Performance Optimization, PHP, MySQL, Ember.js, JavaScript, Automated Testing",
+      "occupationLocation": {
+        "@type": "AdministrativeArea",
+        "name": "Chicago, IL"
+      }
+    },
+    
+    
+    
+    
+    {
+      "@type": "Occupation",
+      "name": "Senior Software Developer",
+      "description": "Took ownership of improving correctness, performance, and security for high-stakes assessment workflows. Focused on eliminating calculation errors, hardening response integrity, and defining safe integration boundaries for embedded client applications while improving database performance under load.",
+      "skills": "Backend System Architecture, Data Integrity and Correctness, Secure API Design, Trust Boundary Definition, Database Performance Optimization, PostgreSQL, JWT Authentication, Ruby, Ruby on Rails, JavaScript, Observability and Logging",
+      "occupationLocation": {
+        "@type": "AdministrativeArea",
+        "name": "Chicago, IL"
+      }
+    },
+    
+    
+    
+    
+    {
+      "@type": "Occupation",
+      "name": "Senior Software Developer",
+      "description": "Contributed to platform modernization efforts during a period of organizational transition and acquisition. Designed and implemented new API layers to safely expose internal capabilities, while working with the Customer Funnel team to evaluate and de-risk a planned rewrite of a large legacy system. Identified fundamental data and system knowledge gaps that informed a shift toward incremental modernization rather than wholesale replacement.",
+      "skills": "Platform Architecture, API Gateway Design, Legacy System Modernization, Incremental Migration Strategies, Secure API Design, Data Migration Strategy, Ruby, Ruby on Rails, PostgreSQL, React, Redis, CI/CD and Code Quality Tooling",
+      "occupationLocation": {
+        "@type": "AdministrativeArea",
+        "name": "Remote"
+      }
+    },
+    
+    
+    
+    
+    {
+      "@type": "Occupation",
+      "name": "CTO",
+      "description": "Technical co-founder/CTO (concurrent) responsible for all technology decisions, architecture, and product delivery. Built a customer-serving social media analytics platform from inception through deployment under evolving third-party API constraints.",
+      "skills": "Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, Amazon RDS, Heroku, DigitalOcean, Twitter API, Facebook Graph API, Instagram API, New Relic, Rollbar",
+      "occupationLocation": {
+        "@type": "AdministrativeArea",
+        "name": "Remote"
+      }
+    },
+    
+    
+    
+    
+    {
+      "@type": "Occupation",
+      "name": "Core Team Lead",
+      "description": "Re-launched Coderwall as an open-source project and led the community development efforts.",
+      "skills": "AWS S3, Airbrake, Backbone.js, Bash, CSS, ElasticSearch, Git, GitHub, GitHub API, XHTML, Heroku, JRuby, JavaScript, MongoDB, Packer, PostgreSQL, Puma, RSpec, Redis, Ruby, Ruby on Rails, Sass, Sidekiq, Stripe, Vagrant, Vim, Z shell (Zsh), jQuery",
+      "occupationLocation": {
+        "@type": "AdministrativeArea",
+        "name": "Remote"
+      }
+    }
+    
+    
+  ],
+  "subjectOf": {
+    "@type": "ItemList",
+    "@id": "https://www.just3ws.com/id/list/career-history",
+    "name": "Career History",
+    "numberOfItems": 24,
+    "itemListElement": [
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/onemain",
+          "name": "Associate Director, Staff Engineer",
+          "description": "Owned lane-level architecture for the Acquisitions platform, spanning customer application flows, partner integrations, and a large legacy application estate in a regulated financial environment. Operated as a senior individual contributor accountable for architectural integrity, production stability, and cross-team execution, with authority established through incident leadership, deep system knowledge, and cross-team trust. Focused on making system behavior observable and understandable across teams to enable data-driven decisions, reduce systemic risk, and support reliable change in long-lived systems.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Remote"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/sk-holdings",
+          "name": "Senior Backend Developer",
+          "description": "Took broad ownership of stabilizing and modernizing a shared Ruby on Rails platform supporting multiple business lines. Operated as a high-leverage individual contributor addressing architectural complexity, operational blind spots, and performance constraints while making system behavior legible, expanding observability, improving delivery reliability, and increasing insight into system and business behavior. Portions of this work supported preparation of platform-backed assets for external transition, alongside ongoing operational demands.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/activecampaign",
+          "name": "Senior Software Developer",
+          "description": "Engaged as a short-term senior contributor to address deep structural complexity in the core backend systems. Focused on improving testability, performance, and change safety within a tightly coupled legacy PHP codebase, while making targeted frontend enhancements to stabilize and extend the existing test suite.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/tandem",
+          "name": "Principal Consultant",
+          "description": "Short-term advisory engagement for a federal client to assess a high-risk rewrite program and reset scope and delivery assumptions.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/benchprep",
+          "name": "Senior Software Developer",
+          "description": "Took ownership of improving correctness, performance, and security for high-stakes assessment workflows. Focused on eliminating calculation errors, hardening response integrity, and defining safe integration boundaries for embedded client applications while improving database performance under load.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/reachlocal",
+          "name": "Senior Software Developer",
+          "description": "Contributed to platform modernization efforts during a period of organizational transition and acquisition. Designed and implemented new API layers to safely expose internal capabilities, while working with the Customer Funnel team to evaluate and de-risk a planned rewrite of a large legacy system. Identified fundamental data and system knowledge gaps that informed a shift toward incremental modernization rather than wholesale replacement.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Remote"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/klobomedia",
+          "name": "CTO",
+          "description": "Technical co-founder/CTO (concurrent) responsible for all technology decisions, architecture, and product delivery. Built a customer-serving social media analytics platform from inception through deployment under evolving third-party API constraints.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Remote"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/coderwall",
+          "name": "Core Team Lead",
+          "description": "Re-launched Coderwall as an open-source project and led the community development efforts.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Remote"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/upcity",
+          "name": "Senior Software Developer",
+          "description": "Collaborated with a distributed team on an SOA architecture web application that helps small to mid-sized businesses improve their search engine and local presence.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Remote"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/viewpoints",
+          "name": "Senior Software Developer",
+          "description": "Led team supporting development of core business systems.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/groupon",
+          "name": "Engineering Learning & Development Business Partner",
+          "description": "Delivered fraud analysis, internal tooling, and a centralized taxonomy service across multiple stacks. Transitioned to leading efforts to rebuild and improve onboarding and engineering retention programs.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/obtiva",
+          "name": "Software Engineer",
+          "description": "Consultant dispatched to clients to work independently and in team environments. Worked on projects building B2B services for Sears, internal report generation systems for Leapfrog Online, and with Groupon prior to the acquisition. Brought in for .NET work based on Alt.NET community reputation and transitioned into Ruby/Rails delivery in a craftsmanship-focused consultancy.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 13,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/bdi",
+          "name": "Principal Developer",
+          "description": "Owned primary development and support for all BDI systems. Partnered with the primary stakeholder on technical strategy and managed teams across multiple consulting firms. Simplified contractor onboarding by providing standardized VM images, reducing setup time. Introduced Subversion for version control.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Remote"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 14,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/jpmc",
+          "name": "Assistant Vice President, Application Developer",
+          "description": "Contributed to the Commercial Card platform by identifying and resolving cross-system integration failures between distributed .NET services and mainframe systems, restoring stability to regulated financial workflows.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 15,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/brightstar",
+          "name": "Senior .NET Developer",
+          "description": "Improved end-to-end purchase order visibility across the sales and inventory chain by integrating BizTalk workflows, Solomon financial systems, third-party packages, and custom internal applications into a unified operational model, surfaced via an executive dashboard for supply-chain oversight.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Libertyville, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 16,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/ticketsnow",
+          "name": "Senior .NET Developer",
+          "description": "Designed and led the delivery of a real-time inventory locking and order fulfillment service that eliminated duplicate sales of high-demand inventory under concurrent load, guaranteed purchase integrity during checkout, and generated $2M+ in incremental revenue within its first year. Established delivery practices for the Real-Time team by leading its first Scrum project and institutionalizing iterative execution and cross-functional coordination to support revenue-critical systems.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Crystal Lake, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 17,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/bp",
+          "name": "Senior Software Developer",
+          "description": "Delivered new features for the Process Fitness invoicing system, improving operational billing workflows.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Naperville, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 18,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/motorola",
+          "name": "Senior Software Developer",
+          "description": "Delivered new features for a sales portfolio application used for retail sales support while operating inside a large, multi-director enterprise environment. First formal exposure to Scrum; observed the impact of process discipline and organizational friction on delivery.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Libertyville, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 19,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/riverpoint",
+          "name": "Software Developer",
+          "description": "Built ASP.NET Web Forms Components widgets for a personal health monitoring website, focusing on reliable UI component delivery.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Des Plaines, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 20,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/ips",
+          "name": "Programmer Analyst",
+          "description": "Created simple-to-use but feature-rich custom report rules modeling interface using JavaScript and CSS for the UI with ASP on the server.\nBuilt a dynamic SQL rules wizard in ASP using early JSON techniques to enable flexible reporting. Developed reporting widgets using ASP.NET Web Forms Components, building early .NET experience after a largely classic ASP environment.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "East Dundee, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 21,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/new-labor-strategies",
+          "name": "Programmer Analyst",
+          "description": "Developed modules for a kiosk-based HR system designed for factory floor installations, including coupon management, employee information, a touch-screen keyboard generator, and internal job posting/bidding. Pushed for browser-side JavaScript and modern practices within a VBScript-heavy codebase.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Park Ridge, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 22,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/trippe",
+          "name": "Software Developer",
+          "description": "Created custom sales lead tracking application and sales spreadsheet transformation engine for analyzing data structure of an Excel spreadsheet and determining the best strategy for importing its data in the tracking application. Continued delivery directly with the client after the consulting firm exited, keeping business-critical work moving.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Chicago, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 23,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/sentinel",
+          "name": "Application Analyst",
+          "description": "Contributed to software development for clients including International Reprographics Association, Kolcraft, Cook County, Tripplite, \"Meckler, Bulgar, Tilson\", Harley-Davidson Motorcycles, \"Mack and Parker\", and the Chase Group. Delivered an early OCR pipeline (awk/sed + OCR tooling) to digitize large volumes of receipts into a database, navigating semi-structured text and scanner calibration constraints. The work functioned at small scale and informed a decision to pursue a different approach for full-scale digitization.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Downers Grove, IL"
+          }
+        }
+      },
+      
+      
+      
+      
+      {
+        "@type": "ListItem",
+        "position": 24,
+        "item": {
+          "@type": "Occupation",
+          "@id": "https://www.just3ws.com/id/occupation/ch-robinson",
+          "name": "System Administrator",
+          "description": "Local administrator responsible for site hardware, system upgrades, and user support. Proactively pursued training and proposed an automated shipment booking solution to reduce manual workflow friction.",
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": "Oakbrook, IL"
+          }
+        }
+      }
+      
+      
+    ]
+  },
+  "knowsLanguage": [
+    {
+      "@type": "Language",
+      "name": "English"
+    }
+  ]
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" class="is-active" aria-current="page">Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="resume-actions no-print" aria-label="Resume export actions">
+  <span class="resume-actions-label">Resume Exports</span>
+  <label class="resume-format-control" for="resume-format-select">
+    <span>Download</span>
+    <select id="resume-format-select" aria-label="Download resume in another format" onchange="if(this.value){window.location.href=this.value;}">
+      <option value="">Select...</option>
+      <option value="/resume.html" selected>HTML</option>
+      <option value="/resume.md">Markdown</option>
+      <option value="/resume.txt">Plain Text</option>
+      <option value="/resume.json">JSON</option>
+    </select>
+  </label>
+  <button aria-label="Print or save executive resume as PDF" title="Print or save executive resume as PDF" onclick="window.print()">Print / PDF</button>
+  <noscript>
+    <a href="/resume.html">HTML</a>
+    <a href="/resume.md">Markdown</a>
+    <a href="/resume.txt">Plain Text</a>
+    <a href="/resume.json">JSON</a>
+  </noscript>
+</nav>
+
+<article>
+  
+<header class="resume-header">
+  <h1>Mike Hall <span class="subtitle">Staff Software Engineer</span></h1>
+  <ul class="contact-info">
+    <li><a href="mailto:mike@just3ws.com">mike@just3ws.com</a></li>
+    <li><a href="tel:+18478773825">(847) 877-3825</a></li>
+    <li><a href="https://www.just3ws.com">just3ws.com</a></li>
+    <li>
+      <a href="https://www.linkedin.com/in/just3ws/" aria-label="LinkedIn profile" title="LinkedIn profile">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" focusable="false">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.67H9.33V9h3.42v1.56h.05c.48-.9 1.66-1.86 3.41-1.86 3.65 0 4.32 2.4 4.32 5.52v6.23zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
+          </svg>
+        </span>
+        LinkedIn
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/just3ws" aria-label="GitHub profile" title="GitHub profile">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" focusable="false">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.54 2.36 1.1 2.94.84.09-.66.35-1.1.63-1.36-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
+          </svg>
+        </span>
+        GitHub
+      </a>
+    </li>
+  </ul>
+</header>
+
+
+  
+  <section id="summary">
+    <h2>Summary</h2>
+    <p>Staff-level engineer who sets direction for critical platforms, makes system behavior legible, and reduces systemic risk so multi-team plans are grounded in reality. Known for aligning engineering, product, and leadership on what’s required to stabilize and evolve systems, enabling durable change tied to business outcomes.</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    
+    
+    
+    <article class="position">
+  <header class="position-header">
+    <h3 class="position-title">
+      
+      <a href="/resume/positions/onemain/">Associate Director, Staff Engineer</a>
+      
+      <span class="position-company">
+        — <span>OneMain Financial</span>
+      </span>
+    </h3>
+    <p class="position-meta">
+      <span class="position-dates">
+        <time>January 2021</time> –
+        <time>February 2026</time>
+      </span>
+      
+      | <span>Remote</span>
+      
+    </p>
+  </header>
+
+  
+  <p>Owned lane-level architecture for the Acquisitions platform, spanning customer application flows, partner integrations, and a large legacy application estate in a regulated financial environment. Operated as a senior individual contributor accountable for architectural integrity, production stability, and cross-team execution, with authority established through incident leadership, deep system knowledge, and cross-team trust. Focused on making system behavior observable and understandable across teams to enable data-driven decisions, reduce systemic risk, and support reliable change in long-lived systems.</p>
+  
+
+  
+  <ul>
+    
+    <li>Acted as the final escalation point for high-severity production incidents, taking ownership of live diagnosis during large cross-functional calls, coordinating investigation across teams, establishing a shared understanding of system behavior, and driving concrete action plans with clear follow-up ownership.</li>
+    
+    <li>Transformed incident response into institutional learning by ensuring every major failure resulted in improved monitoring, clarified ownership, updated documentation, refined operational processes, and corrected cross-team touchpoints across systems with decades of accumulated history.</li>
+    
+    <li>Reconstructed end-to-end customer acquisition flows by mapping execution context from the customer’s browser through application layers, enterprise service middleware, and downstream business systems, creating an authoritative operational model to ground incident response, risk review, and change planning in observed reality.</li>
+    
+    <li>Designed and delivered a re-architecture of session state handling across complex, multi-step user workflows, eliminating a persistent integrity failure mode that impaired customer tracking, diagnosis, and incident recovery under real production conditions.</li>
+    
+    <li>Founded and led the OpenTelemetry Working Group, establishing shared observability standards and training engineering and cybersecurity teams to reason about system behavior using common telemetry; transitioned ownership once practices were institutionalized and adoption became self-sustaining.</li>
+    
+    <li>Led platform modernization and lifecycle remediation under continuous production load, maintaining regulatory compliance while reducing operational risk and restoring the ability to safely evolve legacy systems.</li>
+    
+    <li>Re-architected fragmented engineering ownership into a single accountable operating model, clarifying architectural responsibility and escalation paths as a necessary consequence of observed production realities.</li>
+    
+    <li>Founded an enablement function to isolate cross-cutting platform, risk, and remediation work from feature delivery, enabling sustained progress on long-horizon stability initiatives without disrupting customer-facing teams.</li>
+    
+    <li>Surfaced and led remediation of systemic integrity risks in high-volume financial workflows, improving transaction reliability and reducing enterprise risk.</li>
+    
+  </ul>
+  
+
+  
+  <p><strong>Skills:</strong> Platform Architecture, System Resilience, Incident Leadership, Observability, Legacy System Modernization, Distributed Systems, Ruby on Rails, PostgreSQL, OpenTelemetry, AWS</p>
+  
+</article>
+
+    
+    
+    
+    
+    <article class="position">
+  <header class="position-header">
+    <h3 class="position-title">
+      
+      <a href="/resume/positions/sk-holdings/">Senior Backend Developer</a>
+      
+      <span class="position-company">
+        — <span>SK Holdings, Inc.</span>
+      </span>
+    </h3>
+    <p class="position-meta">
+      <span class="position-dates">
+        <time>January 2019</time> –
+        <time>December 2020</time>
+      </span>
+      
+      | <span>Chicago, IL</span>
+      
+    </p>
+  </header>
+
+  
+  <p>Took broad ownership of stabilizing and modernizing a shared Ruby on Rails platform supporting multiple business lines. Operated as a high-leverage individual contributor addressing architectural complexity, operational blind spots, and performance constraints while making system behavior legible, expanding observability, improving delivery reliability, and increasing insight into system and business behavior. Portions of this work supported preparation of platform-backed assets for external transition, alongside ongoing operational demands.</p>
+  
+
+  
+  <ul>
+    
+    <li>Modernized and upgraded large portions of the Ruby and Rails stack across multiple applications, reducing technical debt, addressing security vulnerabilities, and improving long-term maintainability.</li>
+    
+    <li>Expanded operational visibility by introducing centralized logging and monitoring, working with hosting providers to interpret metrics and establish actionable insight into system behavior and capacity.</li>
+    
+    <li>Designed and built data pipelines synchronizing millions of records between internal systems and third-party services, enabling reliable high-volume operations and new business initiatives.</li>
+    
+    <li>Led data-layer remediation efforts by replacing expensive dynamic queries with Materialized Views, materially reducing load on high-traffic reporting and analytics workloads.</li>
+    
+    <li>Migrated session and cache workloads from MySQL to Redis, isolating transactional databases from non-critical load and improving response times under peak traffic.</li>
+    
+    <li>Optimized CI pipelines by reordering and parallelizing test execution, materially reducing feedback cycle time and improving delivery throughput.</li>
+    
+  </ul>
+  
+
+  
+  <p><strong>Skills:</strong> Platform Modernization, Backend System Architecture, Ruby on Rails, System Observability and Monitoring, CI/CD Optimization, Data Pipelines (ETL), Data Analytics, Database Performance Optimization, Full-Text Search (PostgreSQL), Cache Layer Design (Redis), PostgreSQL, MySQL, Prometheus, Logentries, SendGrid</p>
+  
+</article>
+
+    
+    
+    
+    
+    <article class="position">
+  <header class="position-header">
+    <h3 class="position-title">
+      
+      <a href="/resume/positions/activecampaign/">Senior Software Developer</a>
+      
+      <span class="position-company">
+        — <span>ActiveCampaign</span>
+      </span>
+    </h3>
+    <p class="position-meta">
+      <span class="position-dates">
+        <time>September 2018</time> –
+        <time>December 2018</time>
+      </span>
+      
+      | <span>Chicago, IL</span>
+      
+    </p>
+  </header>
+
+  
+  <p>Engaged as a short-term senior contributor to address deep structural complexity in the core backend systems. Focused on improving testability, performance, and change safety within a tightly coupled legacy PHP codebase, while making targeted frontend enhancements to stabilize and extend the existing test suite.</p>
+  
+
+  
+  <ul>
+    
+    <li>Diagnosed structural constraints in the core backend subsystem and established a path for safe iteration on contact management and business rules.</li>
+    
+    <li>Introduced testable query patterns and caching strategies to replace ad-hoc global data access, improving performance and enabling more reliable automated testing.</li>
+    
+    <li>Reduced risk in a highly coupled legacy codebase by isolating critical behaviors behind clearer boundaries, enabling incremental change without large-scale rewrites.</li>
+    
+    <li>Extended and hardened the existing frontend test suite in Ember, improving reliability and confidence in UI-driven workflows.</li>
+    
+    <li>Improved developer feedback loops by making previously opaque behavior observable through tests rather than runtime debugging.</li>
+    
+  </ul>
+  
+
+  
+  <p><strong>Skills:</strong> Legacy System Modernization, Backend System Architecture, Testability and Change Safety, Performance Optimization, PHP, MySQL, Ember.js, JavaScript, Automated Testing</p>
+  
+</article>
+
+    
+    
+    
+    
+    <article class="position">
+  <header class="position-header">
+    <h3 class="position-title">
+      
+      <a href="/resume/positions/benchprep/">Senior Software Developer</a>
+      
+      <span class="position-company">
+        — <span>BenchPrep</span>
+      </span>
+    </h3>
+    <p class="position-meta">
+      <span class="position-dates">
+        <time>March 2017</time> –
+        <time>February 2018</time>
+      </span>
+      
+      | <span>Chicago, IL</span>
+      
+    </p>
+  </header>
+
+  
+  <p>Took ownership of improving correctness, performance, and security for high-stakes assessment workflows. Focused on eliminating calculation errors, hardening response integrity, and defining safe integration boundaries for embedded client applications while improving database performance under load.</p>
+  
+
+  
+  <ul>
+    
+    <li>Diagnosed and eliminated assessment calculation errors by analyzing and optimizing critical PostgreSQL queries using EXPLAIN ANALYZE and query planning tools, improving accuracy and response times.</li>
+    
+    <li>Implemented JWT-based response verification to prevent tampering and enforce once-only processing of assessment submissions, strengthening trust in platform outcomes.</li>
+    
+    <li>Designed and built a secure cross-origin communication API to support embedded client applications, establishing explicit trust boundaries between host and embedded contexts.</li>
+    
+    <li>Reduced operational risk by identifying and resolving performance bottlenecks affecting high-concurrency assessment workflows.</li>
+    
+    <li>Improved delivery reliability by introducing lightweight team practices that clarified acceptance criteria and reduced rework in high-impact assessment workflow changes.</li>
+    
+  </ul>
+  
+
+  
+  <p><strong>Skills:</strong> Backend System Architecture, Data Integrity and Correctness, Secure API Design, Trust Boundary Definition, Database Performance Optimization, PostgreSQL, JWT Authentication, Ruby, Ruby on Rails, JavaScript, Observability and Logging</p>
+  
+</article>
+
+    
+    
+    
+    
+    <article class="position">
+  <header class="position-header">
+    <h3 class="position-title">
+      
+      <a href="/resume/positions/reachlocal/">Senior Software Developer</a>
+      
+      <span class="position-company">
+        — <span>ReachLocal</span>
+      </span>
+    </h3>
+    <p class="position-meta">
+      <span class="position-dates">
+        <time>March 2015</time> –
+        <time>November 2016</time>
+      </span>
+      
+      | <span>Remote</span>
+      
+    </p>
+  </header>
+
+  
+  <p>Contributed to platform modernization efforts during a period of organizational transition and acquisition. Designed and implemented new API layers to safely expose internal capabilities, while working with the Customer Funnel team to evaluate and de-risk a planned rewrite of a large legacy system. Identified fundamental data and system knowledge gaps that informed a shift toward incremental modernization rather than wholesale replacement.</p>
+  
+
+  
+  <ul>
+    
+    <li>Designed and built an API Gateway to expose selected internal services through well-defined, secure interfaces, enabling controlled integration with internal and external consumers.</li>
+    
+    <li>Evaluated the feasibility of a full rewrite of a legacy customer-facing system and demonstrated that unclear data lineage and billions of existing records made a big-bang migration impractical and high risk.</li>
+    
+    <li>Proposed and validated an incremental modernization strategy in which a new API layer operated alongside the legacy system, allowing new features to be developed independently while legacy functionality was migrated selectively.</li>
+    
+    <li>Designed a two-tier frontend architecture that separated user experience iteration from backend system constraints, reducing regression risk while enabling faster experimentation without destabilizing core systems.</li>
+    
+    <li>Modernized critical integration points by wrapping legacy functionality in Rails APIs, extending the useful life of the existing platform while enabling gradual transition to newer components.</li>
+    
+    <li>Reduced operational and maintenance risk by introducing code quality and security tooling, improving visibility into system health and failure modes.</li>
+    
+  </ul>
+  
+
+  
+  <p><strong>Skills:</strong> Platform Architecture, API Gateway Design, Legacy System Modernization, Incremental Migration Strategies, Secure API Design, Data Migration Strategy, Ruby, Ruby on Rails, PostgreSQL, React, Redis, CI/CD and Code Quality Tooling</p>
+  
+</article>
+
+    
+    
+    
+    
+    <article class="position">
+  <header class="position-header">
+    <h3 class="position-title">
+      
+      <a href="/resume/positions/klobomedia/">CTO</a>
+      
+      <span class="position-company">
+        — <span>KloboMedia</span>
+      </span>
+    </h3>
+    <p class="position-meta">
+      <span class="position-dates">
+        <time>March 2014</time> –
+        <time>September 2016</time>
+      </span>
+      
+      | <span>Remote</span>
+      
+    </p>
+  </header>
+
+  
+  <p>Technical co-founder/CTO (concurrent) responsible for all technology decisions, architecture, and product delivery. Built a customer-serving social media analytics platform from inception through deployment under evolving third-party API constraints.</p>
+  
+
+  
+  <ul>
+    
+    <li>Architected and built complete social media analytics platform integrating Twitter, Facebook, and Instagram APIs to aggregate cross-platform insights for agency clients.</li>
+    
+    <li>Designed high-throughput data pipeline using Sidekiq Enterprise to process social media patterns and generate actionable recommendations.</li>
+    
+    <li>Implemented PostgreSQL JSONB storage strategy enabling flexible querying of heterogeneous social media data without schema migrations.</li>
+    
+    <li>Built and secured production infrastructure across DigitalOcean, Heroku, and Amazon RDS with automated deployment pipelines.</li>
+    
+    <li>Led product development and coordinated with design consultants to deliver customer-facing analytics interface and administrative reporting tools aligned to founder and investor expectations.</li>
+    
+    <li>Managed external teams to accelerate UI delivery while maintaining architectural consistency.</li>
+    
+  </ul>
+  
+
+  
+  <p><strong>Skills:</strong> Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, Amazon RDS, Heroku, DigitalOcean, Twitter API, Facebook Graph API, Instagram API, New Relic, Rollbar</p>
+  
+</article>
+
+    
+    
+    
+    
+    <article class="position">
+  <header class="position-header">
+    <h3 class="position-title">
+      
+      <a href="/resume/positions/coderwall/">Core Team Lead</a>
+      
+      <span class="position-company">
+        — <span>Coderwall</span>
+      </span>
+    </h3>
+    <p class="position-meta">
+      <span class="position-dates">
+        <time>January 2014</time> –
+        <time>December 2014</time>
+      </span>
+      
+      | <span>Remote</span>
+      
+    </p>
+  </header>
+
+  
+  <p>Re-launched Coderwall as an open-source project and led the community development efforts.</p>
+  
+
+  
+  <ul>
+    
+    <li>Relaunched Coderwall as an open-source project and guided a diverse contributor community.</li>
+    
+    <li>Replaced Resque with Sidekiq to reduce background job cost on Heroku.</li>
+    
+    <li>Replaced MongoDB with Postgres to simplify queries, reduce costs, and improve maintainability.</li>
+    
+    <li>Improved Elasticsearch queries and upgraded the service to stabilize search performance and relevance.</li>
+    
+  </ul>
+  
+
+  
+  <p><strong>Skills:</strong> AWS S3, Airbrake, Backbone.js, Bash, CSS, ElasticSearch, Git, GitHub, GitHub API, XHTML, Heroku, JRuby, JavaScript, MongoDB, Packer, PostgreSQL, Puma, RSpec, Redis, Ruby, Ruby on Rails, Sass, Sidekiq, Stripe, Vagrant, Vim, Z shell (Zsh), jQuery</p>
+  
+</article>
+
+    
+    
+
+    
+    <article class="position">
+      <header class="position-header">
+        <h3 class="position-title">Earlier Experience</h3>
+        <p class="position-meta">
+          <span class="position-dates">1999 – 2014</span>
+        </p>
+      </header>
+      <p>Foundations in enterprise systems, consulting, and early web scale, with emphasis on craftsmanship, mentoring, and resilient delivery under real production constraints. Built revenue-critical systems, introduced CI/CD practices, and moved from .NET to early Ruby/Rails adoption through community-driven engineering cultures.</p>
+      <ul>
+        
+        <li>Obtiva (Software Craftsman) — Craftsmanship-focused consultancy; community leadership (Geekfest), mentorship, and transition from .NET to early Ruby/Rails delivery</li>
+        
+        <li>Coderwall / UpCity / Viewpoints — Startup platform work; full-stack delivery and scaling foundations</li>
+        
+        <li>TicketsNow — Revenue-critical fulfillment system; $2M+/year impact; acquired by Ticketmaster</li>
+        
+        <li>BrightStar / Motorola / BP — Enterprise .NET integration and operational systems across large organizations</li>
+        
+      </ul>
+      <p><a href="/history/">View full career history</a></p>
+    </article>
+  </section>
+
+  
+  <section id="leadership">
+    <h2>Technical Leadership</h2>
+    <ul>
+      
+      <li>Established enterprise-wide OpenTelemetry standards and transitioned ownership after adoption stabilized across teams</li>
+      
+      <li>Created an enablement function separating platform risk work from product delivery to sustain long-horizon remediation</li>
+      
+      <li>Built Communities of Practice to prevent architectural drift and align cross-team decisions</li>
+      
+      <li>Built and ran global engineering onboarding and training at Groupon during hypergrowth, improving ramp time and retention</li>
+      
+      <li>Founded Software Craftsmanship McHenry County (2009), handed off leadership after two years, and built a community that still meets with 823 members</li>
+      
+      <li>Founded WHOIS Tech Community (UGtastic), interviewing industry leaders and shaping software craftsmanship discourse</li>
+      
+    </ul>
+  </section>
+
+  
+  <section id="skills">
+    <h2>Skills</h2>
+    
+    <h3>Languages</h3>
+    <ul class="skills-list">
+      
+      <li>Ruby</li>
+      
+      <li>SQL</li>
+      
+      <li>JavaScript</li>
+      
+      <li>C#</li>
+      
+      <li>Java</li>
+      
+      <li>Clojure</li>
+      
+    </ul>
+    
+    <h3>Frameworks & Tools</h3>
+    <ul class="skills-list">
+      
+      <li>Ruby on Rails</li>
+      
+      <li>PostgreSQL</li>
+      
+      <li>Redis</li>
+      
+      <li>Linux</li>
+      
+      <li>AWS</li>
+      
+      <li>OpenTelemetry</li>
+      
+      <li>CI/CD</li>
+      
+    </ul>
+    
+    <h3>Practices</h3>
+    <ul class="skills-list">
+      
+      <li>Architectural Ownership</li>
+      
+      <li>Platform Modernization</li>
+      
+      <li>Observability Strategy</li>
+      
+      <li>Incident Response & Postmortems</li>
+      
+      <li>Risk Management</li>
+      
+      <li>Cross-Team Influence</li>
+      
+      <li>Technical Strategy</li>
+      
+      <li>Mentoring</li>
+      
+      <li>AI-augmented development (pairing, review, refactoring)</li>
+      
+      <li>System Legibility</li>
+      
+    </ul>
+    
+  </section>
+
+</article>
+<!-- Rebuild marker: 2026-02-05 -->
+
+
+  </main>
+</body>
+</html>

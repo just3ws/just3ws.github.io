@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Semantic Graph Snapshot | Mike Hall Archive</title>
+<meta name="description" content="Rendered-page schema graph snapshot from validator artifacts with route-level contract checks.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/architecture/semantic-graph.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Semantic Graph Snapshot | Mike Hall Archive">
+<meta property="og:description" content="Rendered-page schema graph snapshot from validator artifacts with route-level contract checks.">
+<meta property="og:url" content="https://www.just3ws.com/docs/architecture/semantic-graph.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Semantic Graph Snapshot | Mike Hall Archive">
+<meta name="twitter:description" content="Rendered-page schema graph snapshot from validator artifacts with route-level contract checks.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      
+        <a href="/docs/architecture/semantic-model/">Semantic Model</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/architecture/semantic-graph.html">Semantic Graph Snapshot</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      }
+      ,
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Semantic Model",
+        "item": "https://www.just3ws.com/docs/architecture/semantic-model/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Semantic Graph Snapshot",
+        "item": "https://www.just3ws.com/docs/architecture/semantic-graph.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="semantic-graph-snapshot">Semantic Graph Snapshot</h1>
+
+<p>Snapshot generated from rendered <code class="language-plaintext highlighter-rouge">_site</code> JSON-LD artifacts.</p>
+
+<ul>
+  <li>Generated at (graph): <code class="language-plaintext highlighter-rouge">2026-02-12T01:07:36Z</code></li>
+  <li>Generated at (coverage): <code class="language-plaintext highlighter-rouge">2026-02-12T01:07:28Z</code></li>
+  <li>Nodes: <code class="language-plaintext highlighter-rouge">1559</code></li>
+  <li>Edges: <code class="language-plaintext highlighter-rouge">1760</code></li>
+  <li>Connected components: <code class="language-plaintext highlighter-rouge">588</code></li>
+  <li>Isolated nodes: <code class="language-plaintext highlighter-rouge">583</code></li>
+  <li>Unresolved references: <code class="language-plaintext highlighter-rouge">434</code></li>
+</ul>
+
+<pre><code class="language-mermaid">graph TD
+  P[Person] --&gt; O[Occupation]
+  P --&gt; CH[Career ItemList]
+  CP[CollectionPage] --&gt; IL[ItemList]
+  I[Interview] --&gt; IP[Interviewee Person]
+  I --&gt; V[VideoObject]
+  WP[WebPage] --&gt; BL[BreadcrumbList]
+  A[Article] --&gt; WP
+</code></pre>
+
+<h2 id="typed-nodes">Typed Nodes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th style="text-align: right">Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Article</code></td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BreadcrumbList</code></td>
+      <td style="text-align: right">583</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CollectionPage</code></td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Interview</code></td>
+      <td style="text-align: right">258</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Person</code></td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">VideoObject</code></td>
+      <td style="text-align: right">275</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="pages-with-type">Pages With Type</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th style="text-align: right">Pages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Article</code></td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BreadcrumbList</code></td>
+      <td style="text-align: right">583</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CollectionPage</code></td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Interview</code></td>
+      <td style="text-align: right">258</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Person</code></td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">VideoObject</code></td>
+      <td style="text-align: right">275</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="route-contracts">Route Contracts</h2>
+
+<h3><code class="language-plaintext highlighter-rouge">/</code></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">person_has_career_item_list</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">person_json_ld_count</code>: <code class="language-plaintext highlighter-rouge">1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">person_required_fields_non_placeholder</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">person_required_fields_present</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+</ul>
+
+<h3 id="home"><code class="language-plaintext highlighter-rouge">/home/</code></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">person_absent</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">person_json_ld_count</code>: <code class="language-plaintext highlighter-rouge">0</code></li>
+</ul>
+
+<h3 id="interviewsindexhtml"><code class="language-plaintext highlighter-rouge">interviews/index.html</code></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">has_breadcrumb_list</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">has_collection_page</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+</ul>
+
+<h3 id="oneoffsindexhtml"><code class="language-plaintext highlighter-rouge">oneoffs/index.html</code></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">has_breadcrumb_list</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">has_collection_page</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+</ul>
+
+<h3 id="scmcindexhtml"><code class="language-plaintext highlighter-rouge">scmc/index.html</code></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">has_breadcrumb_list</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">has_collection_page</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+</ul>
+
+<h3 id="videosindexhtml"><code class="language-plaintext highlighter-rouge">videos/index.html</code></h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">has_breadcrumb_list</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">has_collection_page</code>: <code class="language-plaintext highlighter-rouge">true</code></li>
+</ul>
+
+<h2 id="sample-orphan-nodes">Sample Orphan Nodes</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">anon:2012/09/26/360-learning-at-user-groups.html#2.2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:2015/02/25/improve-case-insensitive-queries-in-postgres-using-smarter-indexes.html#2.4</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:2015/02/25/using-postgres-regex-expressions-to-find-very-specific-matches.html#2.6</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:2015/04/27/leverage-the-j-in-jruby-for-powerful-concurrency.html#2.8</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:about/index.html#1.9</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:contact/index.html#1.10</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/architecture/content-pipeline.html#1.11</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/architecture/overview.html#1.12</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/architecture/semantic-graph.html#1.13</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/architecture/semantic-model.html#1.14</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/architecture/styling-system.html#1.15</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/archive-philosophy/index.html#1.16</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/domain-migration.html#1.17</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/index.html#1.18</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/interview-data-model.html#1.19</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/pipeline-grammar/index.html#1.20</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/retrospectives/index.html#1.21</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/tasks.html#1.22</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:docs/taxonomy/index.html#1.23</code></li>
+  <li><code class="language-plaintext highlighter-rouge">anon:home/index.html#1.24</code></li>
+</ul>
+
+<h2 id="sample-unresolved-references">Sample Unresolved References</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/2012/09/26/360-learning-at-user-groups.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/2015/02/25/improve-case-insensitive-queries-in-postgres-using-smarter-indexes.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/2015/02/25/using-postgres-regex-expressions-to-find-very-specific-matches.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/2015/04/27/leverage-the-j-in-jruby-for-powerful-concurrency.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/anglebracket</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/chicago-software-craftsmanship</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/chipy</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/gathers-us-and-chicagodb</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/geekfest</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/general</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/goto-conference-and-community</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/lake-county-net-user-group-lcnug</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/community/refresh-chicago</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/conference/chicagowebconf-2012</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/conference/goto-conference-2013</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/conference/goto-conference-2014</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/conference/goto-conference-2015</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/conference/railsconf-2014</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/conference/scna-2011</code></li>
+</ul>
+
+<h2 id="artifacts">Artifacts</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">tmp/schema-graph.dot</code></li>
+  <li><code class="language-plaintext highlighter-rouge">tmp/schema-graph-summary.json</code></li>
+  <li><code class="language-plaintext highlighter-rouge">tmp/schema-coverage-report.json</code></li>
+</ul>
+
+  </main>
+</body>
+</html>

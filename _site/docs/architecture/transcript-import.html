@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Transcript Import | Mike Hall Archive</title>
+<meta name="description" content="Runbook for importing transcript files and mapping them to canonical video assets.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/architecture/transcript-import.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Transcript Import | Mike Hall Archive">
+<meta property="og:description" content="Runbook for importing transcript files and mapping them to canonical video assets.">
+<meta property="og:url" content="https://www.just3ws.com/docs/architecture/transcript-import.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Transcript Import | Mike Hall Archive">
+<meta name="twitter:description" content="Runbook for importing transcript files and mapping them to canonical video assets.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/architecture/transcript-import.html">Transcript Import</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Transcript Import",
+        "item": "https://www.just3ws.com/docs/architecture/transcript-import.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="transcript-import">Transcript Import</h1>
+
+<h2 id="canonical-model">Canonical Model</h2>
+
+<ul>
+  <li>Transcript files live in <code class="language-plaintext highlighter-rouge">_data/transcripts/*.yml</code>.</li>
+  <li>Video assets reference transcripts via <code class="language-plaintext highlighter-rouge">_data/video_assets.yml</code> <code class="language-plaintext highlighter-rouge">transcript_id</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/transcripts.yml</code> is legacy and not used for active content.</li>
+</ul>
+
+<h2 id="commands">Commands</h2>
+
+<ol>
+  <li>Audit current repository transcript integrity:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts audit</code></li>
+    </ul>
+  </li>
+  <li>Build ID-suffixed staging files (recommended for ambiguous filenames):
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts prepare --source-dir /Volumes/Dock_1TB/vimeo/outbox --output-dir tmp/transcript-id-staging --min-confidence 0.8 --clean-output</code></li>
+    </ul>
+  </li>
+  <li>Run import in dry-run mode:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts dry-run --source-dir tmp/transcript-id-staging --min-confidence 0.9</code></li>
+    </ul>
+  </li>
+  <li>Review output reports:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">tmp/transcript-import-report.json</code></li>
+      <li><code class="language-plaintext highlighter-rouge">tmp/transcript-import-report.md</code></li>
+    </ul>
+  </li>
+  <li>Apply high-confidence mappings:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts ingest --source-dir tmp/transcript-id-staging --min-confidence 0.9</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="direct-import-mode">Direct Import Mode</h2>
+
+<p>If filenames already include explicit IDs and do not need staging:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9</code></li>
+  <li><code class="language-plaintext highlighter-rouge">./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9</code></li>
+</ul>
+
+<h2 id="report-files">Report Files</h2>
+
+<ul>
+  <li>Mapping report: <code class="language-plaintext highlighter-rouge">tmp/transcript-import-report.json</code></li>
+  <li>Human-readable summary: <code class="language-plaintext highlighter-rouge">tmp/transcript-import-report.md</code></li>
+</ul>
+
+<h2 id="legacy-sequence-kept-for-reference">Legacy sequence (kept for reference)</h2>
+
+<ol>
+  <li>Run import in dry-run mode:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9</code></li>
+    </ul>
+  </li>
+  <li>Review output reports:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">tmp/transcript-import-report.json</code></li>
+      <li><code class="language-plaintext highlighter-rouge">tmp/transcript-import-report.md</code></li>
+    </ul>
+  </li>
+  <li>Apply high-confidence mappings:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9</code></li>
+    </ul>
+  </li>
+  <li>Re-run pipeline validation:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts validate</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="one-command-batch-mode">One-Command Batch Mode</h2>
+
+<ul>
+  <li>Ingest + audit + validate + commit:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit</code></li>
+    </ul>
+  </li>
+  <li>Ingest + audit + validate + commit + push:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit --auto-push</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+
+<ul>
+  <li>Supported source file formats: <code class="language-plaintext highlighter-rouge">.txt</code>, <code class="language-plaintext highlighter-rouge">.md</code>, <code class="language-plaintext highlighter-rouge">.srt</code>, <code class="language-plaintext highlighter-rouge">.vtt</code>.</li>
+  <li>Existing transcript files are not overwritten unless <code class="language-plaintext highlighter-rouge">--force</code> is supplied.</li>
+  <li>Low-confidence mappings are never auto-applied; review those in the report first.</li>
+</ul>
+
+  </main>
+</body>
+</html>

@@ -18,8 +18,14 @@ jobs:
         with:
           ruby-version: 3.4.8
           bundler-cache: true
-      - name: Build and validate Jekyll output
-        run: ./bin/pipeline ci
+      - name: Ensure committed built site exists
+        run: |
+          test -f _site/index.html
+          test -f _site/sitemap.xml
+      - name: Run tests
+        run: ./bin/pipeline test
+      - name: Validate committed site output
+        run: ./bin/pipeline validate
       - name: Playwright smoke check
         timeout-minutes: 12
         run: |

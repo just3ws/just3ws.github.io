@@ -1,0 +1,85 @@
+# UGtastic Interview Context Extraction
+
+- Source directory: `tmp/wbm/ugtastic`
+- Extracted interview entries: 64
+- Matched to `video_assets`: 51
+- Unmatched: 13
+
+## Rich Context Samples
+
+- `2012-03-17` [Interview with Clark Sell and Pat Paasch](https://www.ugtastic.com/clark-sell-and-pat-paasch)
+  - Summary: Pat Paasch and Clark Sell founded angleBracket, a hands-on web-tech focused hackfest type users’ group up in the Far Northern Suburbs of Chicago. I attended a meeting and then recorded the interview at a post-meeting get-together at a local bar. Not the best sound quality but the meeting was a lot of fun and provided a great opportunity to spend a little time pairing and hacking on a variety of things in a relatively short time.
+  - Matches: 
+- `2012-03-17` [Interview with Scott Seely](https://www.ugtastic.com/scott-seely)
+  - Summary: Scott Seely runs a .NET users’ group up in Grayslake, IL. He’s also extremely active in the Chicago-land Microsoft Developer community that Microsoft recognized him as a Regional Director. He explains why he founded LCNUG and what exactly is a “Regional Director”.
+  - Matches: 
+- `2012-04-12` [Interview with Brian Ray](https://www.ugtastic.com/brian-ray)
+  - Summary: Brian Ray took the time to sit down before the April 2012 ChiPy (pronounced Chippy) and chat about the Chicago Python community.
+  - Matches: 
+- `2012-04-24` [Interview with Anthony Zinni, Jon Buda, and Shay Howe](https://www.ugtastic.com/anthony-zinni-jon-buda-and-shay-howe)
+  - Summary: Refresh Chicago is the Chicago chapter of the UI/UX/Designer-oriented Refresh users’ groups. I sat down with Jon Buda, Anthony Zinni and Shay Howe from Refresh Chicago before their meeting to discuss the unique perspective of Chicago’s design and front-end community. Refresh Chicago homepage. RSVP and stay up to date with upcoming meetings on their Meetup.com page.
+  - Matches: 
+- `2012-04-24` [Interview with Dave Thomas](https://www.ugtastic.com/dave-thomas)
+  - Summary: Dave Thomas was in town and took the time to speak with me about the GOTO conference and provide insight into the work he’s doing world wide to build broad spectrum technical communities.
+  - Matches: interview-with-dave-thomas-general, dave-thomas-software-craftsmanship-north-america-2013, youtube-PENvwc0402I
+- `2012-04-25` [Interview with Dave Hoover](https://www.ugtastic.com/dave-hoover)
+  - Summary: Geekfest was the heart of Obtiva and since the acquisition by Groupon it has grown from a small group of developers to what feels almost like a weekly mini-conference. Dave Hoover chats with me about the origin and growth of Geekfest.
+  - Matches: 
+- `2012-05-08` [Interview with Jim Suchy and Steve Kim](https://www.ugtastic.com/jim-suchy-and-steve-kim)
+  - Summary: I stopped by the Chicago Software Craftsmanship meeting and got a chance to chat with Steve Kim and Jim Suchy. Steve and Jim run the Chicago Software Craftsmanship group at the 8th Light office in downtown Chicago. This interview is a little bit chaotic because we did the interview as people were beginning to file in for the meeting.
+  - Matches: 
+- `2012-08-07` [Interview with Ryan Briones and Ethan Gunderson](https://www.ugtastic.com/ryan-briones-and-ethan-gunderson)
+  - Summary: After a couple months of fighting schedules Ethan, Ryan and myself were able to sit down and chat about the work they’re doing on Gathers.us and the ChicagoDB. This video is actually the second as we had a technical difficulty with the first recording. I really appreciate that we were able to finally get this interview recorded! Oh, and they did end up getting some chicken.
+  - Matches: 
+- `2012-08-14` [Interview with Justin Love](https://www.ugtastic.com/justin-love)
+  - Summary: Justin Love is very active in the Chicago Ruby & JavaScript communities. He’s also starting up a “Demo Days” group out in the far suburbs of Chicago to help with aspiring entrepreneurs learn how to pitch their ideas.
+  - Matches: justin-love-windycityrails-2012
+- `2012-08-21` [Interview with Jen Lindner and Milan Dobrota](https://www.ugtastic.com/jen-lindner-and-milan-dobrota)
+  - Summary: Jen Lindner and Milan Dobrota are developers are the Chicago Tribune who are working to help Chicago’s user-group community and bring awareness that the Chicago Tribune is also an awesome tech company.
+  - Matches: 
+- `2012-10-16` [Interview with Adam Grandy](https://www.ugtastic.com/adam-grandy)
+  - Summary: Not everyone who is involved in running a technical user-conference is a programmer. Adam Grandy is the “A-V Guy” for the WindyCityRails conference. While most of us are watching the conference for entertainment and education, Adam is carefully watching every second of the conference to keep the speaker in focus and make sure that all the valuable information that’s being shared is captured in high-quality, professional-level video. Adam is one of those unsung people that puts in a great deal of
+  - Matches: adam-grandy-windycityrails-2012
+- `2012-10-20` [Interview with Ginny Hendry](https://www.ugtastic.com/ginny-hendry)
+  - Summary: Ginny Hendry started as a member of ChicagoRuby and before she knew it she was running Ruby Hackfests and now she’s helping facilitate Railsbridge Womens Outreach workshops.
+  - Matches: ginny-hendry-windycityrails-2012
+- `2012-10-23` [Interview with Evan Light](https://www.ugtastic.com/evan-light)
+  - Summary: Evan Light created the very cool Ruby DCamp “unconference” that takes techies out from their urban confines and get’s them out to code & collaborate in the great wilderness outside of D.C.
+  - Matches: evan-light-windycityrails-2012
+- `2012-10-27` [Interview with Steve Klabnik](https://www.ugtastic.com/steve-klabnik)
+  - Summary: While most tech conference speakers tend to present on purely technical content, Steve Klabnik likes to take a more thoughtful approach to the software industry. Steve presented on Literate Code at WindyCityRails 2011 and in 2012 presented Development and Philosophy. I think it’s very worthwhile to spend at least a bit of time thinking *about* our industry as it relates to us personally and to society at large is a very good thing.
+  - Matches: steve-klabnik-windycityrails-2012
+- `2012-10-30` [Interview with Noel Rappin](https://www.ugtastic.com/noel-rappin)
+  - Summary: Noel Rappin has a long history speaking and teaching even before he joined the TDD community. Noel has co-authored books for Python, Ruby+Rails and now he’s focusing on teaching testing concepts in JavaScript through the “Master Space and Time With JavaScript” series.
+  - Matches: noel-rappin-windycityrails-2012
+- `2012-11-13` [Interview with Paul Baker](https://www.ugtastic.com/paul-baker)
+  - Summary: Paul Baker co-organizes the Open Government Chicago(-land) user group. He’s been an active organizer for government data projects and lead the Chicago Lobbyist project that was not only a beautiful site but brought a great deal of transparency to how money is allocated by lobbyist’s in Chicago.
+  - Matches: paul-baker-general
+- `2012-11-17` [Interview with Kumar McMillan](https://www.ugtastic.com/kumar-mcmillan)
+  - Summary: Kumar McMillan works for the Mozilla Foundation for the team working to create the Mozilla OS. Kumar talks a bit about working with large, distributed teams with many volunteers collaborating with paid engineers to create a potential competitor to the Android and iOS phone operating systems.
+  - Matches: kumar-mcmillan-general
+- `2012-11-20` [Interview with Melissa Castello](https://www.ugtastic.com/melissa-castello)
+  - Summary: Melissa Castello is a trained, professional interviewer who’s worked interviewing people in the professional poker and horse racing circuits. She’s gotten a chance to travel all over and hone her interviewing skills in sometimes high-pressure situations.
+  - Matches: melissa-castello-chicagowebconf-2012
+- `2012-11-27` [Interview with Jonathan Baltz](https://www.ugtastic.com/jonathan-baltz)
+  - Summary: Jonathan Baltz runs the Chicago Heroku and Chicago Force.com Developers user-groups. We discuss the differences and similarities between the types of people who gravitate to the two different meetings.
+  - Matches: jonathan-baltz-chicagowebconf-2012
+- `2012-12-18` [Interview with Tim Ottinger](https://www.ugtastic.com/tim-ottinger)
+  - Summary: Tim Ottinger chats about how he co-authored the Agile in a Flash set of flashcards.The Agile in a Flash cards were born from the idea that people are smarter than we think and can be taught the core concepts in a concentrated format. Distill the ideas into key axioms and let people go from there.
+  - Matches: tim-ottinger-general
+
+## Unmatched Entries
+
+- `2012-03-17` [Interview with Clark Sell and Pat Paasch](https://www.ugtastic.com/clark-sell-and-pat-paasch)
+- `2012-03-17` [Interview with Scott Seely](https://www.ugtastic.com/scott-seely)
+- `2012-04-12` [Interview with Brian Ray](https://www.ugtastic.com/brian-ray)
+- `2012-04-24` [Interview with Anthony Zinni, Jon Buda, and Shay Howe](https://www.ugtastic.com/anthony-zinni-jon-buda-and-shay-howe)
+- `2012-04-25` [Interview with Dave Hoover](https://www.ugtastic.com/dave-hoover)
+- `2012-05-08` [Interview with Jim Suchy and Steve Kim](https://www.ugtastic.com/jim-suchy-and-steve-kim)
+- `2012-08-07` [Interview with Ryan Briones and Ethan Gunderson](https://www.ugtastic.com/ryan-briones-and-ethan-gunderson)
+- `2012-08-21` [Interview with Jen Lindner and Milan Dobrota](https://www.ugtastic.com/jen-lindner-and-milan-dobrota)
+- `2012-11-24` [Interview with J.C. Grubbs](https://www.ugtastic.com/j-c-grubbs)
+- `2013-08-19` [Interview with Erik Meijer](https://www.ugtastic.com/erik-meijer)
+- `2013-11-11` [Interview with Jason Cranford Teague](https://www.ugtastic.com/jason-cranford-teague-interview)
+- `2013-11-25` [Interview with Jennifer Jones](https://www.ugtastic.com/jennifer-jones-interview)
+- `2013-12-04` [Interview with Micah Martin co-founder of 8th Light](https://www.ugtastic.com/micah-martin)

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Leverage the "J" in JRuby for Powerful Concurrency</title>
+<meta name="description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/2015/04/27/leverage-the-j-in-jruby-for-powerful-concurrency.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Leverage the "J" in JRuby for Powerful Concurrency">
+<meta property="og:description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<meta property="og:url" content="https://www.just3ws.com/2015/04/27/leverage-the-j-in-jruby-for-powerful-concurrency.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leverage the "J" in JRuby for Powerful Concurrency">
+<meta name="twitter:description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Leverage the \"J\" in JRuby for Powerful Concurrency",
+  "description": "I was working on a project that required some heavy-weight processing of linksto determine if they were valid based on a variety of criteria. Since thestandard Ruby interpreter was running each process sequentially the naiveapproach was taking a prohibitively long time. Fortunately this was a simplepure Ruby problem and each record was processed independently of each other thiswas a good opportunity to use JRuby and it’s Java interoperability to get somereal concurrency power.",
+  "author": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "datePublished": "2015-04-27T00:00:00-05:00",
+  "dateModified": "2026-02-02T21:55:48-06:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/2015/04/27/leverage-the-j-in-jruby-for-powerful-concurrency.html"
+  }
+}
+</script>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+
+    
+      <a href="/2015/04/27/leverage-the-j-in-jruby-for-powerful-concurrency.html">Leverage the "J" in JRuby for Powerful Concurrency</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Leverage the \"J\" in JRuby for Powerful Concurrency",
+        "item": "https://www.just3ws.com/2015/04/27/leverage-the-j-in-jruby-for-powerful-concurrency.html"
+      }
+    
+  ]
+}
+</script>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>Leverage the "J" in JRuby for Powerful Concurrency</h1>
+    <p class="post-meta">April 2015 · Ruby, JRuby, Java, Concurrency, JVM</p>
+    
+    
+    <aside class="archive-note">
+      <p><strong>Archive note:</strong> This post was written in 2015 and migrated from an earlier blog. While JRuby remains relevant, modern Ruby (3.x) now offers improved concurrency with Ractors.</p>
+    </aside>
+    
+  </header>
+  <div class="post-body">
+    <p>I was working on a project that required some heavy-weight processing of links
+to determine if they were valid based on a variety of criteria. Since the
+standard Ruby interpreter was running each process sequentially the naive
+approach was taking a prohibitively long time. Fortunately this was a simple
+pure Ruby problem and each record was processed independently of each other this
+was a good opportunity to use JRuby and it’s Java interoperability to get some
+real concurrency power.</p>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">ruby-concurrent</code> library and JRuby Interop I first load in the Java
+Futures libraries.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">java_import</span> <span class="n">java</span><span class="p">.</span><span class="nf">util</span><span class="p">.</span><span class="nf">concurrent</span><span class="o">.</span><span class="no">Callable</span>
+<span class="n">java_import</span> <span class="n">java</span><span class="p">.</span><span class="nf">util</span><span class="p">.</span><span class="nf">concurrent</span><span class="o">.</span><span class="no">Executors</span>
+<span class="n">java_import</span> <span class="n">java</span><span class="p">.</span><span class="nf">util</span><span class="p">.</span><span class="nf">concurrent</span><span class="o">.</span><span class="no">FutureTask</span>
+<span class="n">java_import</span> <span class="n">java</span><span class="p">.</span><span class="nf">util</span><span class="p">.</span><span class="nf">concurrent</span><span class="o">.</span><span class="no">LinkedBlockingQueue</span>
+<span class="n">java_import</span> <span class="n">java</span><span class="p">.</span><span class="nf">util</span><span class="p">.</span><span class="nf">concurrent</span><span class="o">.</span><span class="no">ThreadPoolExecutor</span>
+<span class="n">java_import</span> <span class="n">java</span><span class="p">.</span><span class="nf">util</span><span class="p">.</span><span class="nf">concurrent</span><span class="o">.</span><span class="no">TimeUnit</span>
+</code></pre></div></div>
+
+<p>Since the goal is to squeeze as many executions as possible I set the pool size
+to saturate all available cores.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">POOL_SIZE</span> <span class="o">=</span> <span class="n">java</span><span class="p">.</span><span class="nf">lang</span><span class="o">.</span><span class="no">Runtime</span><span class="p">.</span><span class="nf">getRuntime</span><span class="p">.</span><span class="nf">availableProcessors</span> <span class="o">*</span> <span class="mi">8</span>
+</code></pre></div></div>
+
+<p>The application reads in a CSV and writes each row into a threadsafe array for
+later processing. Since the input itself wasn’t the bottleneck sequentially
+reading in the file had little impact on the execution time.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">App</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">file_to_process</span><span class="p">)</span>
+    <span class="vi">@queue</span> <span class="o">=</span> <span class="no">ThreadSafe</span><span class="o">::</span><span class="no">Array</span><span class="p">.</span><span class="nf">new</span>
+
+    <span class="no">CSV</span><span class="p">.</span><span class="nf">foreach</span><span class="p">(</span><span class="n">file_to_process</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
+      <span class="vi">@queue</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">App.work</code> sets up the futures creation and execution. I looped over the queue
+of rows and create a new <code class="language-plaintext highlighter-rouge">Worker</code> (defined below) and hand that off to the Java
+Future in preparation for execution. Again, the list of tasks in the queue
+wasn’t the bottle next so enumerating over the queue was not a significant
+impact on the execution performance.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">work</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="no">ThreadSafe</span><span class="o">::</span><span class="no">Array</span><span class="p">.</span><span class="nf">new</span>
+
+    <span class="n">executor</span> <span class="o">=</span> <span class="no">ThreadPoolExecutor</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">POOL_SIZE</span><span class="p">,</span> <span class="no">POOL_SIZE</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="no">TimeUnit</span><span class="o">::</span><span class="no">SECONDS</span><span class="p">,</span> <span class="no">LinkedBlockingQueue</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="vi">@queue</span><span class="p">.</span><span class="nf">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+      <span class="n">row</span> <span class="o">=</span> <span class="vi">@queue</span><span class="p">.</span><span class="nf">pop</span>
+      <span class="n">email</span> <span class="o">=</span> <span class="n">row</span><span class="p">.</span><span class="nf">shift</span>
+      <span class="n">task</span> <span class="o">=</span> <span class="no">FutureTask</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Worker</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">row</span><span class="p">))</span>
+      <span class="n">executor</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+      <span class="n">tasks</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+
+<p>As each future completes it’s work the <code class="language-plaintext highlighter-rouge">tasks</code> array enumerates the results of
+the worker execution. In this case I’m just writing the output to <code class="language-plaintext highlighter-rouge">STDOUT</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">tasks</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="nf">get</span>
+
+      <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="ss">:status</span><span class="p">]</span> <span class="o">==</span> <span class="ss">:passed</span>
+        <span class="vg">$stdout</span><span class="p">.</span><span class="nf">puts</span><span class="p">([</span><span class="n">result</span><span class="p">[</span><span class="ss">:email</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="ss">:data</span><span class="p">]].</span><span class="nf">flatten</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">)</span>
+      <span class="k">else</span>
+        <span class="vg">$stderr</span><span class="p">.</span><span class="nf">puts</span><span class="p">([</span><span class="n">result</span><span class="p">[</span><span class="ss">:input</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="ss">:data</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="ss">:reason</span><span class="p">]].</span><span class="nf">flatten</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="n">executor</span><span class="p">.</span><span class="nf">shutdown</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Worker</code> implements the actual reason for the script. We include Java’s
+<code class="language-plaintext highlighter-rouge">Callable</code> module so we can work with the <code class="language-plaintext highlighter-rouge">FutureTask</code> defined above.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">Worker</span>
+    <span class="kp">include</span> <span class="n">java</span><span class="p">.</span><span class="nf">util</span><span class="p">.</span><span class="nf">concurrent</span><span class="o">.</span><span class="no">Callable</span>
+</code></pre></div></div>
+
+<p>This code is less important but represents some of the work being done. It was a
+rough experiment and the data was a mess. The <code class="language-plaintext highlighter-rouge">scrub_input</code> was kind of a work
+in progress.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nb">attr_reader</span> <span class="ss">:input</span>
+    <span class="nb">attr_reader</span> <span class="ss">:data</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+      <span class="vi">@input</span> <span class="o">=</span> <span class="n">email</span>
+      <span class="vi">@data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">scrub_input</span>
+      <span class="vi">@input</span>
+        <span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^(%20|%3c|%22)+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^(\\)+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/(%20|%3c|%22)+$/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^[-.]+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^#+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+
+<p>Since the rules were being implemented in a plugin style I had a little fun with
+the naming. I’ll leave the references up to you.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">call</span>
+      <span class="n">email</span> <span class="o">=</span> <span class="n">scrub_input</span>
+
+      <span class="n">inspector</span> <span class="o">=</span> <span class="no">Schrute</span><span class="o">::</span><span class="no">BeetInspector</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="p">[</span>
+        <span class="no">Schrute</span><span class="o">::</span><span class="no">Beets</span><span class="o">::</span><span class="no">TldBeet</span><span class="p">,</span>
+        <span class="no">Schrute</span><span class="o">::</span><span class="no">Beets</span><span class="o">::</span><span class="no">DomainBeet</span><span class="p">,</span>
+        <span class="no">Schrute</span><span class="o">::</span><span class="no">Beets</span><span class="o">::</span><span class="no">LocalpartBeet</span><span class="p">,</span>
+        <span class="no">Schrute</span><span class="o">::</span><span class="no">Beets</span><span class="o">::</span><span class="no">SuppressionListBeet</span><span class="p">,</span>
+        <span class="no">Schrute</span><span class="o">::</span><span class="no">Beets</span><span class="o">::</span><span class="no">KeywordBeet</span><span class="p">,</span>
+        <span class="no">Schrute</span><span class="o">::</span><span class="no">Beets</span><span class="o">::</span><span class="no">TelnetBeet</span>
+      <span class="p">]).</span><span class="nf">call</span>
+</code></pre></div></div>
+
+<p>Here I take the result of the input inspector and format it so it can be
+returned and handled by the executor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="n">status</span> <span class="o">=</span> <span class="n">inspector</span><span class="p">.</span><span class="nf">passed?</span> <span class="p">?</span> <span class="ss">:passed</span> <span class="p">:</span> <span class="ss">:failed</span>
+
+      <span class="p">{</span>
+        <span class="ss">status: </span><span class="n">status</span><span class="p">,</span>
+        <span class="ss">email: </span><span class="n">email</span><span class="p">,</span>
+        <span class="ss">input: </span><span class="n">input</span><span class="p">,</span>
+        <span class="ss">data: </span><span class="n">data</span><span class="p">,</span>
+        <span class="ss">reason: </span><span class="n">inspector</span><span class="p">.</span><span class="nf">result</span><span class="p">[</span><span class="ss">:evaluation</span><span class="p">].</span><span class="nf">last</span><span class="p">.</span><span class="nf">reasons</span>
+      <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Since the code was implemented in a single script file the execution is defined
+at the bottom.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">file_to_process</span> <span class="o">=</span> <span class="no">ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">fail</span> <span class="s2">"Usage: process &lt;file_to_process.csv&gt;"</span> <span class="k">unless</span> <span class="n">file_to_process</span>
+
+<span class="no">App</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">file_to_process</span><span class="p">).</span><span class="nf">work</span>
+</code></pre></div></div>
+
+<p>The original <a href="https://gist.github.com/just3ws/e0c6b47f22a32ad16f1a">gist</a> is up
+on GitHub. In the end using this technique reduced a multiple hour process into
+a few minutes. There was some tweaking for handling particularly slow <code class="language-plaintext highlighter-rouge">Beets</code>
+but those were separate issues entirely.</p>
+
+  </div>
+</article>
+
+  </main>
+</body>
+</html>

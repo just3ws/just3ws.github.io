@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Coffee, Donuts and Asynchronous Message Handling</title>
+<meta name="description" content="I love coffee and donuts almost as much as I love being a software developer. But this morning I had a moment of clarity during my daily indulgence. I stroll i…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/2008/08/28/coffee-donuts-and-asynchronous-message-handling.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Coffee, Donuts and Asynchronous Message Handling">
+<meta property="og:description" content="I love coffee and donuts almost as much as I love being a software developer. But this morning I had a moment of clarity during my daily indulgence. I stroll i…">
+<meta property="og:url" content="https://www.just3ws.com/2008/08/28/coffee-donuts-and-asynchronous-message-handling.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coffee, Donuts and Asynchronous Message Handling">
+<meta name="twitter:description" content="I love coffee and donuts almost as much as I love being a software developer. But this morning I had a moment of clarity during my daily indulgence. I stroll i…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Coffee, Donuts and Asynchronous Message Handling",
+  "description": "I love coffee and donuts almost as much as I love being a software developer. But this morning I had a moment of clarity during my daily indulgence. I stroll into the blur of activ",
+  "author": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "datePublished": "2008-08-28T00:00:00-05:00",
+  "dateModified": "2026-02-15T07:30:35-06:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/2008/08/28/coffee-donuts-and-asynchronous-message-handling.html"
+  }
+}
+</script>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+
+    
+      <a href="/2008/08/28/coffee-donuts-and-asynchronous-message-handling.html">Coffee, Donuts and Asynchronous Message Handling</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Coffee, Donuts and Asynchronous Message Handling",
+        "item": "https://www.just3ws.com/2008/08/28/coffee-donuts-and-asynchronous-message-handling.html"
+      }
+    
+  ]
+}
+</script>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>Coffee, Donuts and Asynchronous Message Handling</h1>
+    <p class="post-meta">August 2008 · wordpress, republished, wayback, uncategorized</p>
+    
+    <aside class="archive-note">
+      <p>
+        <strong>Originally published on WordPress on August 28, 2008.</strong>
+        <a href="https://web.archive.org/web/20100120151125/http://just3ws.wordpress.com/2008/08/28/coffee-donuts-and-asynchronous-message-handling/">View original article</a>.
+      </p>
+    </aside>
+    
+    
+    <aside class="archive-note">
+      <p><strong>Archive note:</strong> Originally published on just3ws.wordpress.com. Republished from local Wayback snapshot exports.</p>
+    </aside>
+    
+  </header>
+  <div class="post-body">
+    <div class="snap_preview">
+<p>I love coffee and donuts almost as much as I love being a software developer.  But this morning I had a moment of clarity during my daily indulgence.</p>
+<p>I stroll into the blur of activity that is the Dunkin Donuts near the riverside entrance ramp of Olgilvie Train station. An Indian woman behind the counter turns, smiles, points at me then asks, “Can I help you?”</p>
+<p>“Uh, yes, extra-large cream and sugar.” Before I am finished with my sentence she has already turned back to the coffee machine with an extra-large coffee cup in her hand.</p>
+<p>To my right the bespectacled gentleman behind the cash register is swiping the credit card of another customer who arrived seconds after me.  But she doesn’t have her order yet.  As the receipt is printing he turns to me and asks if I need anything else.</p>
+<p>“Yes, one chocolate glazed.”</p>
+<p>Meanwhile the woman with my coffee turns to him and says, “Extra large coffee” and deposits the coffee on the counter. I begin munching on my donut that some anonymous person had already placed on the counter. She’s already getting coffee for the lady to my left. The lady who paid as I began my order takes her sandwich order directly from the sandwich person and leaves.</p>
+<p>As I pop the top on my coffee cup to sample the merchandise and check for adequate cream and sugar the cashier recites my order.  “Extra large cream and sugar. Chocolate glazed. Anything else?” Nope, I hand him my credit card.</p>
+<p>As he swipes my credit card a lady to my left asks, “Does bacon come on the flatbread sandwich?” While the receipt prints out he turns to his left and taps the sandwich maker to alert her to the customer.  The sandwich maker comes around to speak with the customer. The cashier hands me my receipt.</p>
+<p>As I step out of the donut shop into the throng pushing towards the rotating doors I realize that I have just been processed through an Asynchronous Message Handling System.</p>
+<p>The system consists of individuals who know what they can do and how to alert the other workers of things they cannot. Each individual piece of the order can be broken down and handled by the appropriate individual then each individual hands off their completed work to another.  The entire request can be rolled up and completed prior to any individual portion of the process has itself completed. Of course not everything is perfect, and there is a similar process to handle mistakes by any one piece of the process. But overall I think it is a good analogy of how multi-threaded, asynchronous systems like BizTalk and WF work using patterns like the Publish-Subscribe.</p>
+<p>I love software.</p>
+</div>
+
+  </div>
+</article>
+
+  </main>
+</body>
+</html>

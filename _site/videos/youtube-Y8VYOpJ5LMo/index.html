@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Video Archive — Gil Tene at GOTO Chicago 2015 (GOTO Conference 2015)</title>
+<meta name="description" content="Interview with Gil Tene at GOTO Conference 2015 on faster Java objects and JVM performance engineering. This recording captures practical lessons and…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/videos/youtube-Y8VYOpJ5LMo/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Video Archive — Gil Tene at GOTO Chicago 2015 (GOTO Conference 2015)">
+<meta property="og:description" content="Interview with Gil Tene at GOTO Conference 2015 on faster Java objects and JVM performance engineering. This recording captures practical lessons and…">
+<meta property="og:url" content="https://www.just3ws.com/videos/youtube-Y8VYOpJ5LMo/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Video Archive — Gil Tene at GOTO Chicago 2015 (GOTO Conference 2015)">
+<meta name="twitter:description" content="Interview with Gil Tene at GOTO Conference 2015 on faster Java objects and JVM performance engineering. This recording captures practical lessons and…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/videos/">Videos</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/videos/youtube-Y8VYOpJ5LMo/">Interview with Gil Tene at GOTO Chicago 2015</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Videos",
+        "item": "https://www.just3ws.com/videos/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Gil Tene at GOTO Chicago 2015",
+        "item": "https://www.just3ws.com/videos/youtube-Y8VYOpJ5LMo/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    <header>
+      <h1>Interview with Gil Tene at GOTO Chicago 2015</h1>
+    </header>
+    
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "@id": "https://www.just3ws.com/id/video/youtube-Y8VYOpJ5LMo",
+  "name": "Interview with Gil Tene at GOTO Chicago 2015",
+  "description": "Interview with Gil Tene at GOTO Conference 2015 on faster Java objects and JVM performance engineering. This recording captures practical lessons and perspective for software teams and technical communities.",
+  "thumbnailUrl": "https://i.ytimg.com/vi/Y8VYOpJ5LMo/maxresdefault.jpg",
+  "uploadDate": "2024-08-08",
+  "duration": null,
+  "url": "https://www.just3ws.com/videos/youtube-Y8VYOpJ5LMo/",
+  "embedUrl": "https://www.youtube.com/embed/Y8VYOpJ5LMo"
+}
+</script>
+
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="asset-embed" src="https://www.youtube.com/embed/Y8VYOpJ5LMo" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Gil Tene at GOTO Chicago 2015"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Interview with Gil Tene at GOTO Conference 2015 on faster Java objects and JVM performance engineering. This recording captures practical lessons and perspective for software teams and technical communities.</div>
+        
+        <div class="video-meta">
+          Published: Aug 08, 2024
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/Y8VYOpJ5LMo">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=Y8VYOpJ5LMo&list=PLgmTADxYKzzY6zF2GFV8IREdI7CXE2zEZ">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>Hi, it’s Mike with UGtastic. I’m here at GOTO Conf 2015 and
+ I’m standing here with Gail Tenney who just gave a talk on
+ faster Java objects and is going to be doing a workshop on
+ application responsiveness as well as a case study.
+ So you’re pretty busy here at the conference, but I got a
+ little bit of time to speak with you and I really
+ appreciate that.
+ So let’s start with the talk you just gave about faster
+ Java objects. What was that about?
+ It’s about faster Java. The talk really focuses on a
+ project that we’ve been working on, an open source project
+ from Wikimedia for a year and a half or so.
+ We are actually hoping for this to mature and get into Open
+JDK, into the standard Java SE 9 or 10, some version.
+ And the purpose of it is to actually allow Java to have
+ faster objects in array in a way that matches C for speed.
+ So it’s actually removing what I believe is the last
+ inherent speed difference we in Java can see on speed.
+ Oh, really?
+ There are lots of other speed differences that could be,
+ but they’re not inherent. This is inherent.
+ Is this addressing the startup warm-up problem or is it
+ more of the JVM is running and it’s warmed up and these
+ just allocations?
+ It’s actually not a warm-up or a compilation related thing.
+ It’s actually memory layout.
+ Okay.
+ So there’s…
+ There are certain constructs that are natural to use in C
+ and end up being laid out in memory in a way that is either
+ optimal to access in a streaming fashion or quick to get to
+ a random location in them.
+ Where in Java, doing the exact same semantic thing requires
+ dereferencing through multiple hops and accessing more
+ randomly than in an order predictable manner.
+ Which means that actual access on real hardware ends up
+ being slower for the same semantic structure.
+ We’re looking to close…
+ We’re looking to close the gap for every one of the common
+ ways you do it in C to have a common natural way to do it
+ in Java for any type of Java object you already have, but
+ in a way that gives you fast access to them.
+ And from what I understand, you have a reference
+ implementation or the Azul has its own VM version? Does
+ that have these optimizations already in there?
+ So Azul makes multiple JVMs. One of them is called Zing. It
+‘s a JVM with better metrics.
+ It eliminates garbage collection, has much better latency
+ characteristics, faster for some things.
+ And we also make Zulu, which is basically vanilla OpenJDK.
+ We are probably the best binary distribution for OpenJDK
+ because we’re probably the only one for several platforms,
+ Macs and Windows.
+ Neither one of those…
+ Object Cloud is not specific to Azul.
+ We will certainly put it in our products once the project
+ is there and adopted.
+ And I would expect Zing, for example, to optimize it well.
+ We’re obviously doing it to make sure that it is the case.
+ But we will be demonstrating the speed benefit of object
+ layout-based objects on both Zing and OpenJDK proof-of-con
+cept implementations.
+ Our goal is to actually have this be part of the standard
+ Java, part of OpenJDK, part of anybody’s JDK in the future.
+ But the VMs that you’re talking about, the Zulu and the Zen
+, are those something that I could install on my Linux
+ distribution?
+ And run Java code against?
+ Or is it bespoke for your infrastructure?
+ Just the JDK.
+ Zing is Linux only, but any Linux.
+ And yes, you just install it on Linux and run your existing
+ Java code.
+ Zero changes to it.
+ You turn it on and five minutes later you have a better JVM
+.
+ Or one minute later.
+ With Zulu, it’s beyond just Linux.
+ It’s on Linux, on Mac, on Windows.
+ In fact, we are the only binary you can get today for Mac
+ or Windows that is OpenJDK.
+ You can get the Oracle JVM.
+ It’s a good JVM.
+ Right.
+ If you want the open source one, we’re it.
+ Oh, really?
+ Yeah.
+ Yeah, because, I mean, as somebody who’s more of a casual J
+VM user, I use it mostly to power a JRuby app or some
+ closure code.
+ But you’re saying that I could look and evaluate, like,
+ maybe I could develop against Zen.
+ I’m sorry, this is Zing.
+ Zing.
+ Develop against Zing and also go to production with Zing.
+ I mean, is that at that level?
+ You could do that, but because it is so interchangeable,
+ you don’t need to develop to it.
+ There are no new APIs in it.
+ There’s nothing you do to write for Zing.
+ Okay.
+ It just runs Java code.
+ Yeah.
+ I mostly just didn’t mean that it wasn’t production ready.
+ Is there extra hooks, profiler hooks or things that I’d be
+ able to use?
+ So, Zing does have a lot of nice features.
+ None of them are language changes.
+ Spec changes.
+ They’re just, you know, where normally people have a hard
+ time dealing with a lot of objects or high allocation rates
+ or, you know, people think that multiple gigabytes is a big
+ number.
+ Zing runs at exactly the same responsiveness level, whether
+ you’re at a gigabyte or a terabyte or any number in the
+ middle.
+ It can handle 20 gigabytes a second of allocation or 20 meg
+abytes a second.
+ Both of those are 1,000x ranges.
+ And it’s really the quality where it has this extreme
+ smooth operating range.
+ You don’t have to worry about.
+ You don’t have to worry about things like garbage
+ collection and hiccups and stalls and deoptimizations
+ hurting you.
+ It’s built to eliminate the hiccups.
+ It’s built to be fast all the time rather than fast and go
+ out to lunch and come back from lunch and go fast again.
+ Which, unfortunately, is how Java’s behaved for the last 20
+ years.
+ Zulu is vanilla.
+ I call it vanilla.
+ It’s exactly the way the regular Oracle JVM behaves or Open
+JK.
+ It is OpenJK.
+ It is no different.
+ We build it.
+ We give it to people for free.
+ We certify it.
+ We test it.
+ And we give it away for free.
+ For Zulu, we sell enterprise support.
+ We support vendors who want to embed a JVM or JDK in their
+ products, like a router or an ATM machine or just a piece
+ of software that wants a JDK inside.
+ Zulu is a natural fit there, too.
+ But it’s exactly the same.
+ Both of our JVMs are drop-in identical, the same as you
+ just get a different version of a JVM from Oracle.
+ We get one from us.
+ You can have all.
+ All of them together and choose per application which one
+ you want to use.
+ And you should expect no functional behavior difference
+ between them.
+ Obviously, with Zing, we hope you’ll get better metrics,
+ mostly around lower noise, jitter, hiccups, stalls,
+ whatever it is that bothers you,
+ and the ability to smoothly run large things without
+ worrying about them.
+ It drives me a little nuts to hear that there’s the
+ reference implementation that’s Oracle, and you’d expect a
+ multibillion-dollar corporation.
+ I have the reference implementation that’s perfectly
+ optimized.
+ But looking at a smaller company, obviously smaller than
+ Oracle, it’s like my brain wants to say there’s got to be
+ some trade-off.
+ Well, so let me correct you on one thing.
+ The reference implementation for Java is OpenJDK, not
+ Oracle.
+ There’s only one reference implementation.
+ It’s OpenJDK.
+ That is where Java is developed, defined, and productized.
+ Oh, okay.
+ People then take that and build other JDKs from, either
+ directly open source from it or closed source derivatives
+ of it through the Oracle licensing schemes.
+ And Oracle JDK is a closed source version of OpenJDK with
+ some added tooling, for example, and other things.
+ So is Zing.
+ So is the IBM JDK.
+ So is everybody else’s.
+ Then Zulu is actually OpenJDK, nothing more.
+ Exactly.
+ And that’s where it’s the closest thing to an open source
+ distribution.
+ OpenJDK is just source code.
+ Red Hat, by the way, also makes a very good binary build of
+ OpenJDK.
+ But I would say that between Red Hat and Azul, that’s where
+ you can get trusted OpenJDK builds.
+ Somebody actually tested them to see that they’re right.
+ You didn’t build it from source and hope.
+ Because it’s a delicate process.
+ We run the 70,000 plus TCK tests.
+ We run Thrill QA stuff we’ve been doing for 10 years.
+ And when we’re good and happy with it, then we put it up
+ and say, that binary with Dutch XM is certified compatible.
+ It’s fascinating.
+ So when we’re talking about OpenJDK, really what we’re
+ talking about is a source code that represents that
+ reference implementation,
+ not the binary that I install as an end user of the VM.
+ But I would look at Zulu or Oracle or IBM or Zing or the
+ Red Hat ICT.
+ Their plug-in interchangeable should be because that’s what
+ the Java spec is all about.
+ You should not have to be changing.
+ You’re code when you switch the runtime.
+ And Java’s actually pretty good at that.
+ It’s been very well-policed to do that.
+ And I think as a community, we’ve done a great job.
+ Oracle and Sun before did a great job at this.
+ It’s one of the things that make Java so successful.
+ Yeah.
+ Fascinating.
+ Yeah.
+ And how about Dalvik?
+ As I understand, Dalvik is kind of its own flavor of Java.
+ And you’re putting me in a controversial environment.
+ Oh, okay.
+ Sorry.
+ Not intentionally.
+ So Dalvik doesn’t call itself Java.
+ It better not.
+ But unfortunately, you write to it in exactly the Java
+ stuff,
+ but not exactly the Java stuff.
+ So Dalvik is a fork of Java.
+ You can think of it that way.
+ You’re building in what looks like Java.
+ You’re using Java IDs, Java libraries.
+ But it’s not quite Java.
+ For example, not everything works.
+ Right.
+ And in reverse, you take from Dalvik and it won’t work on a
+ JDK,
+ and you take from a JDK.
+ Like something that runs a Java, it might not work on Dal
+vik.
+ Some things do, some things don’t.
+ It’s just a reflection.
+ Yeah.
+ You know?
+ Yeah.
+ And various other things.
+ So unfortunately, in the Dalvik world, there is no spec,
+ or no good spec that is similar to Java.
+ But we can’t argue that Dalvik’s not popular.
+ It’s extremely popular for sort of user interface embedded
+ devices and such.
+ And it’s very successful there.
+ I think the world has spoken.
+ I think it’s unfortunate that it’s a fork and that it doesn
+‘t do the entire spec.
+ You know?
+ Yeah.
+ That’s not for me to do anything about.
+ Yeah.
+ Well, it sounds like they are focusing on a specific
+ vertical of a certain type of device,
+ not general purpose.
+ And now it’s said to be able to tune it for those devices.
+ Yeah.
+ Well, thank you very much for taking the time to speak to
+ me.
+ It’s fascinating.
+ So OpenJDK is just code, so.
+ Yeah.
+ Yeah.
+ Yes, exactly.
+ Thank you.
+ Absolutely.</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("asset-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Using Postgres RegEx Expressions to Find Very Specific Matches</title>
+<meta name="description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/2015/02/25/using-postgres-regex-expressions-to-find-very-specific-matches.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Using Postgres RegEx Expressions to Find Very Specific Matches">
+<meta property="og:description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<meta property="og:url" content="https://www.just3ws.com/2015/02/25/using-postgres-regex-expressions-to-find-very-specific-matches.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Using Postgres RegEx Expressions to Find Very Specific Matches">
+<meta name="twitter:description" content="Staff-level software engineer with expertise in Ruby, Rails, PostgreSQL, and scalable backend systems.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Using Postgres RegEx Expressions to Find Very Specific Matches",
+  "description": "Coderwall has been having issues with certain avatars generating 403 errors inthe browser console. You probably wouldn’t notice unless you had your dev toolsopen while you were browsing but there were a little over 25% of our Twitteravatars that weren’t rendering properly due to trying to connect via HTTPinstead of HTTPS. (And other changes to how Twitter resolves it’s profileimages but that’s a bigger issue.) Fortunately with the power of Ruby andPostgres RegEx selectors it’s relatively trivial to find and transform the HTTPurls to use HTTPS.",
+  "author": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "datePublished": "2015-02-25T00:00:00-06:00",
+  "dateModified": "2026-02-02T21:55:48-06:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/2015/02/25/using-postgres-regex-expressions-to-find-very-specific-matches.html"
+  }
+}
+</script>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+
+    
+      <a href="/2015/02/25/using-postgres-regex-expressions-to-find-very-specific-matches.html">Using Postgres RegEx Expressions to Find Very Specific Matches</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Using Postgres RegEx Expressions to Find Very Specific Matches",
+        "item": "https://www.just3ws.com/2015/02/25/using-postgres-regex-expressions-to-find-very-specific-matches.html"
+      }
+    
+  ]
+}
+</script>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>Using Postgres RegEx Expressions to Find Very Specific Matches</h1>
+    <p class="post-meta">February 2015 · PostgreSQL, RegEx, Ruby on Rails, SQL</p>
+    
+    
+    <aside class="archive-note">
+      <p><strong>Archive note:</strong> This post was written in 2015 while working at Coderwall and migrated from an earlier blog. The Ruby and PostgreSQL techniques described remain applicable.</p>
+    </aside>
+    
+  </header>
+  <div class="post-body">
+    <p>Coderwall has been having issues with certain avatars generating 403 errors in
+the browser console. You probably wouldn’t notice unless you had your dev tools
+open while you were browsing but there were a little over 25% of our Twitter
+avatars that weren’t rendering properly due to trying to connect via HTTP
+instead of HTTPS. (<em>And other changes to how Twitter resolves it’s profile
+images but that’s a bigger issue.</em>) Fortunately with the power of Ruby and
+Postgres RegEx selectors it’s relatively trivial to find and transform the HTTP
+urls to use HTTPS.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"twitter_token is not null AND thumbnail_url ~ '^https:' AND thumbnail_url ~ 'twimg</span><span class="se">\.</span><span class="s2">com'"</span><span class="p">).</span><span class="nf">find_each</span><span class="p">(</span><span class="ss">batch_size: </span><span class="mi">500</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+  <span class="k">begin</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">profile_url</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Update </span><span class="si">#{</span><span class="n">user</span><span class="p">.</span><span class="nf">username</span><span class="si">}</span><span class="s2"> because </span><span class="si">#{</span><span class="n">user</span><span class="p">.</span><span class="nf">profile_url</span><span class="si">}</span><span class="s2"> appears to be HTTP."</span>
+    <span class="n">url</span><span class="p">.</span><span class="nf">scheme</span> <span class="o">=</span> <span class="s1">'https'</span>
+    <span class="n">user</span><span class="p">.</span><span class="nf">update_attribute</span><span class="p">(</span><span class="ss">:thumbnail_url</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">to_s</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">" ==&gt; </span><span class="si">#{</span><span class="n">user</span><span class="p">.</span><span class="nf">profile_url</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">rescue</span> <span class="no">URI</span><span class="o">::</span><span class="no">InvalidURIError</span>
+    <span class="n">ap</span> <span class="n">url</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Our <code class="language-plaintext highlighter-rouge">User</code> model has a field <code class="language-plaintext highlighter-rouge">thumbnail_url</code> which holds the URL for users who
+log into Coderwall via OAuth. Since the issue was currently a problem
+predominantly for Twitter logins, and LinkedIn doesn’t allow for fetching the
+thumbnails via HTTPS, I first limited the query to known Twitter login users.</p>
+
+<p>Next I want to filter by users who have <code class="language-plaintext highlighter-rouge">thumbnail_url</code>’s that are not already
+using HTTPS. That number was near-zero after some poking I did to verify the
+issue, but better to be safe than sorry and it also helps with re-running the
+script, no sense in selecting a record that’s already been updated. I used the
+Postgres RegEx matcher <code class="language-plaintext highlighter-rouge">thumbnail_url ~ '^https:'</code> but could very well have used
+<code class="language-plaintext highlighter-rouge">thumbnail_url ilike 'https:%'</code> which can still utilize some indexes if
+available. The <code class="language-plaintext highlighter-rouge">ilike</code> vs <code class="language-plaintext highlighter-rouge">like</code> is also preferable in this case because it is
+case-insensitive</p>
+
+<p>The last part of the query <code class="language-plaintext highlighter-rouge">thumbnail_url ~ 'twimg\.com'</code> could have also been
+<code class="language-plaintext highlighter-rouge">thumbnail_url ilike '%twimg.com%'</code> but was used because I was refactoring from
+matchers that were inside the block as I was testing this little bit of
+functionality.</p>
+
+<p>Then I used the <code class="language-plaintext highlighter-rouge">find_each(batch_size: 500)</code> to fetch the records in batches of
+500 to avoid excessive queries. Given this batch size I did about 56+ <code class="language-plaintext highlighter-rouge">select</code>s
+instead of 28,000+.</p>
+
+<p>We can fetch Avatars from a few different places so we abstract the url via the
+<code class="language-plaintext highlighter-rouge">profile_url</code> method. I could have just fetched from <code class="language-plaintext highlighter-rouge">thumbnail_url</code> but it
+didn’t make any difference in this case. I load the url into <code class="language-plaintext highlighter-rouge">URI.parse</code> so I
+can manipulate the url without string manipulation. I convert the <code class="language-plaintext highlighter-rouge">scheme</code> on
+the URI instance and then update the attribute on the model. The <code class="language-plaintext highlighter-rouge">puts</code> and <code class="language-plaintext highlighter-rouge">ap</code>
+(awesome_print) statements are just there to help me as I watch the process run.</p>
+
+<p>While the query could have further been simplified via <code class="language-plaintext highlighter-rouge">ilike</code> wildcard
+statements the Postgres RegEx expressions are very useful for matching data
+inside a Postgres instance and let you have extremely fine grained control over
+the your results without having to pull more than you absolutely must from the
+database. They come at a cost of being rather non-index friendly but they are a
+useful tool to have at your disposal when you need it.</p>
+
+  </div>
+</article>
+
+  </main>
+</body>
+</html>

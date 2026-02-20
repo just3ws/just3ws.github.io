@@ -76,7 +76,13 @@ bundle install
 # Run local server
 ./bin/server
 
-# Build and validate
+# Build _site locally (this output is committed)
+./bin/pipeline build
+
+# Validate committed _site
+./bin/pipeline validate
+
+# Full local CI pipeline (includes build)
 ./bin/pipeline ci
 
 # Check latest CI + Pages deploy status
@@ -102,6 +108,19 @@ bundle exec rspec
 
 # Print sitemap coverage summary
 ./bin/pipeline sitemap
+```
+
+## Deployment Model
+
+- `_site/` is committed to git and treated as the deploy artifact.
+- CI validates/tests committed output and does not rebuild in GitHub Actions.
+- Pages deploy uploads committed `_site/` directly.
+- Before pushing deploy changes, run:
+
+```bash
+./bin/pipeline build
+./bin/pipeline validate
+./bin/pipeline smoke
 ```
 
 Pipeline grammar reference: `/docs/pipeline-grammar/`

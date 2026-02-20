@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>DevEx Funnel Cost Calculator | Mike Hall Archive</title>
+<meta name="description" content="Stateless calculator for quantifying full developer lifecycle friction and compounding cost across labor, revenue, opportunity, and goodwill lenses.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/tools/devex-funnel-calculator/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="DevEx Funnel Cost Calculator | Mike Hall Archive">
+<meta property="og:description" content="Stateless calculator for quantifying full developer lifecycle friction and compounding cost across labor, revenue, opportunity, and goodwill lenses.">
+<meta property="og:url" content="https://www.just3ws.com/tools/devex-funnel-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DevEx Funnel Cost Calculator | Mike Hall Archive">
+<meta name="twitter:description" content="Stateless calculator for quantifying full developer lifecycle friction and compounding cost across labor, revenue, opportunity, and goodwill lenses.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+  
+<link rel="stylesheet" href="/assets/css/tools/devex-funnel-calculator.css">
+  
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page devex-calculator-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/tools/">Tools</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/tools/devex-funnel-calculator/">DevEx Funnel Calculator</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://www.just3ws.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "DevEx Funnel Calculator",
+        "item": "https://www.just3ws.com/tools/devex-funnel-calculator/"
+      }
+    
+  ]
+}
+</script>
+
+
+  <header class="devex-hero">
+    <p class="devex-kicker">Lifecycle Economics</p>
+    <h1>DevEx Funnel Cost Calculator</h1>
+    <p class="intro">Translate developer lifecycle friction into financial impact from role planning through post-employment transitions, with DORA and DX Core 4 guidance overlays.</p>
+  </header>
+
+  <section>
+    <h2>How To Use This Form</h2>
+    <div class="devex-note-block">
+      Use the form top-down. Start with team economics, then lifecycle timing, then overlays. The calculator estimates delay cost, not individual performance.
+    </div>
+    <ol>
+      <li>Set `Team and Cost Basis` to model your current org baseline.</li>
+      <li>Set `Lens Weights` to reflect how your leadership values labor, revenue, opportunity, and goodwill.</li>
+      <li>Set `Global Lens Day Rates` for non-labor financial impact; leave zero if unknown.</li>
+      <li>Populate `Lifecycle Stages` with target vs actual days. Delay is `max(actual - target, 0)`.</li>
+      <li>Adjust `Interview Team Effort` so hiring-stage labor reflects real interviewer time.</li>
+      <li>Fill `DORA Translation Inputs` for executive language. Keep DORA as contextual signal unless you intentionally include it in totals.</li>
+      <li>Run `Calculate`, then inspect the top friction stage, Core 4 distribution, and one-day sensitivity savings.</li>
+    </ol>
+    <p class="devex-note">Interpretation: stages show where delay occurs, DX Core 4 indicates likely systemic friction categories, and DORA helps communicate delivery implications in familiar terms.</p>
+  </section>
+
+  <section>
+    <h2>Framework Context</h2>
+    <p class="devex-note">DX Core 4 is used here as the primary interpretation lens. DORA is included as a translation layer for delivery conversations, and Golden Signals language is adapted to software lifecycle phases.</p>
+    <ul>
+      <li><a href="https://getdx.com/dx-core-4/" target="_blank" rel="noopener noreferrer">DX Core 4 overview</a>: framing that combines DORA, SPACE, and DevEx into one productivity model.</li>
+      <li><a href="https://getdx.com/research/benchmarks/" target="_blank" rel="noopener noreferrer">DX Core 4 benchmarks</a>: comparison context for expected ranges and performance bands.</li>
+      <li><a href="https://dora.dev/guides/dora-metrics/" target="_blank" rel="noopener noreferrer">DORA software delivery metrics</a>: deployment and reliability language used for executive translation.</li>
+      <li><a href="https://sre.google/workbook/monitoring/" target="_blank" rel="noopener noreferrer">Golden Signals reference (Google SRE)</a>: latency, errors, traffic, and saturation as a reliability framing base.</li>
+    </ul>
+    <p class="devex-note"><strong>What Core 4 means in this calculator:</strong> lifecycle stages are your value stream, while DX Core 4 cards group those stages into systemic friction domains so you can prioritize interventions.</p>
+    <p class="devex-note"><strong>What this calculator can inform:</strong> where compounding delay cost is accumulating, which phase offers highest one-day savings, how interview/onboarding friction contributes to downstream flow, and how to communicate delivery impacts in DORA terms without making DORA the primary model.</p>
+  </section>
+
+  <section>
+    <h2>Inputs</h2>
+    <form id="devex-calculator-form" class="devex-form">
+      <fieldset>
+        <legend>Team and Cost Basis <span class="devex-help-tip" data-tip="Defines loaded daily labor cost and delay compounding behavior across all stages.">?</span></legend>
+        <div class="devex-grid devex-grid-4">
+          <label>Team size
+            <input id="team_size" type="number" min="1" step="1" value="10" required>
+          </label>
+          <label>Salary min (annual)
+            <input id="salary_min" type="number" min="0" step="1000" value="50000" required>
+          </label>
+          <label>Salary max (annual)
+            <input id="salary_max" type="number" min="0" step="1000" value="100000" required>
+          </label>
+          <label>Loaded cost multiplier
+            <input id="loaded_cost_multiplier" type="number" min="0" step="0.01" value="1.30" required>
+          </label>
+          <label>Workdays per year
+            <input id="workdays_per_year" type="number" min="1" step="1" value="260" required>
+          </label>
+          <label>Compounding k <span class="devex-help-tip" data-tip="Compounding factor applied as delays accumulate. 0.01 means each cumulative delay day adds about 1% multiplier pressure.">?</span>
+            <input id="compounding_k" type="number" min="0" step="0.001" value="0.01" required>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Lens Weights (Percent) <span class="devex-help-tip" data-tip="Relative importance of each cost lens. Values are normalized, so they do not need to total exactly 100.">?</span></legend>
+        <div class="devex-grid devex-grid-4">
+          <label>Labor
+            <input id="weight_labor" type="number" min="0" step="1" value="25" required>
+          </label>
+          <label>Revenue
+            <input id="weight_revenue" type="number" min="0" step="1" value="25" required>
+          </label>
+          <label>Opportunity
+            <input id="weight_opportunity" type="number" min="0" step="1" value="25" required>
+          </label>
+          <label>Goodwill
+            <input id="weight_goodwill" type="number" min="0" step="1" value="25" required>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Global Lens Day Rates ($/day) <span class="devex-help-tip" data-tip="Default non-labor business impact per delay day. Stage-level overrides can replace these defaults.">?</span></legend>
+        <div class="devex-grid devex-grid-4">
+          <label>Revenue
+            <input id="global_revenue_rate" type="number" min="0" step="10" value="0" required>
+          </label>
+          <label>Opportunity
+            <input id="global_opportunity_rate" type="number" min="0" step="10" value="0" required>
+          </label>
+          <label>Goodwill
+            <input id="global_goodwill_rate" type="number" min="0" step="10" value="0" required>
+          </label>
+          <div class="devex-note-block">
+            Labor day rate defaults to blended fully-loaded team daily rate.
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Lifecycle Stages (Planning -> Post-employment) <span class="devex-help-tip" data-tip="Primary value-stream timing model. Delay per stage is max(actual - target, 0).">?</span></legend>
+        <p class="devex-note">Stage overrides are optional. Leave blank to use global defaults and blended labor rate. <span class="devex-help-tip" data-tip="Use overrides when a stage has materially different costs (for example interview labor, provisioning bottlenecks, or high-stakes release windows).">?</span></p>
+        <div class="devex-table-wrap">
+          <table class="devex-input-table">
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>Target days</th>
+                <th>Actual days</th>
+                <th>Labor $/day override</th>
+                <th>Revenue $/day override</th>
+                <th>Opportunity $/day override</th>
+                <th>Goodwill $/day override</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="lifecycle-stage-inputs-body"></tbody>
+          </table>
+        </div>
+        <div class="devex-actions">
+          <button type="button" id="add-custom-stage" class="video-button">Add Custom Stage</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Interview Team Effort (Stage: Job Req -> Hiring Process) <span class="devex-help-tip" data-tip="Adds explicit interviewer labor burden to the hiring stage so team evaluation time is reflected in cost.">?</span></legend>
+        <div class="devex-grid devex-grid-5">
+          <label>Candidates
+            <input id="candidates" type="number" min="0" step="1" value="6" required>
+          </label>
+          <label>Interviewers
+            <input id="interviewers" type="number" min="0" step="1" value="3" required>
+          </label>
+          <label>Rounds
+            <input id="rounds" type="number" min="0" step="1" value="4" required>
+          </label>
+          <label>Hours per round
+            <input id="hours_per_round" type="number" min="0" step="0.5" value="1" required>
+          </label>
+          <label>Prep + debrief hours per candidate
+            <input id="prep_debrief_hours_per_candidate" type="number" min="0" step="0.5" value="1.5" required>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>DORA Translation Inputs <span class="devex-help-tip" data-tip="Executive translation layer for delivery and reliability language. Optional to include in composite totals.">?</span></legend>
+        <p class="devex-note">This maps DORA language into delay-cost terms for executive reporting. DORA remains informational unless explicitly included in totals.</p>
+        <div class="devex-grid devex-grid-4">
+          <label class="devex-inline-checkbox">Include DORA overlay in composite totals
+            <input id="include_dora_in_total" type="checkbox">
+          </label>
+          <label>Deployments per month
+            <input id="dora_deployments_per_month" type="number" min="0" step="1" value="20" required>
+          </label>
+          <label>Lead time actual (days)
+            <input id="dora_lead_time_actual_days" type="number" min="0" step="0.1" value="3" required>
+          </label>
+          <label>Lead time target (days)
+            <input id="dora_lead_time_target_days" type="number" min="0" step="0.1" value="1" required>
+          </label>
+          <label>Change failure rate actual (%)
+            <input id="dora_cfr_actual_pct" type="number" min="0" max="100" step="0.1" value="15" required>
+          </label>
+          <label>Change failure rate target (%)
+            <input id="dora_cfr_target_pct" type="number" min="0" max="100" step="0.1" value="10" required>
+          </label>
+          <label>MTTR actual (hours)
+            <input id="dora_mttr_actual_hours" type="number" min="0" step="0.1" value="12" required>
+          </label>
+          <label>MTTR target (hours)
+            <input id="dora_mttr_target_hours" type="number" min="0" step="0.1" value="4" required>
+          </label>
+          <div class="devex-note-block">
+            DORA cost impact is computed as extra lead-time delay + excess-failure recovery delay.
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="devex-actions">
+        <button type="submit" class="video-button primary">Calculate</button>
+        <button type="button" id="reset-defaults" class="video-button">Reset Defaults</button>
+      </div>
+      <p id="devex-errors" class="devex-errors" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section>
+    <h2>Results</h2>
+    <p class="devex-note">`Composite Cost (Lifecycle)` is always lifecycle-only. `Composite Cost (With Toggle Mode)` includes DORA only when the checkbox is enabled.</p>
+    <div class="devex-summary-grid">
+      <div class="devex-summary-card"><strong>Blended Team Daily Cost</strong><span id="summary-blended">$0</span></div>
+      <div class="devex-summary-card"><strong>Lifecycle Delay Days</strong><span id="summary-delay">0</span></div>
+      <div class="devex-summary-card"><strong>Composite Cost (Lifecycle)</strong><span id="summary-base">$0</span></div>
+      <div class="devex-summary-card"><strong>Composite Cost (With Toggle Mode)</strong><span id="summary-compounded">$0</span></div>
+      <div class="devex-summary-card"><strong>Interview Panel Labor Cost</strong><span id="summary-panel">$0</span></div>
+      <div class="devex-summary-card"><strong>DORA Cost Overlay (Informational)</strong><span id="summary-dora">$0</span></div>
+      <div class="devex-summary-card"><strong>DORA Delay Days</strong><span id="summary-dora-delay">0</span></div>
+      <div class="devex-summary-card"><strong>Top Friction Stage</strong><span id="summary-top-stage">-</span></div>
+    </div>
+
+    <h3>Stage Waterfall</h3>
+    <div class="devex-table-wrap">
+      <table class="devex-output-table">
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Target</th>
+            <th>Actual</th>
+            <th>Delay</th>
+            <th>Multiplier</th>
+            <th>Base Total</th>
+            <th>Compounded Total</th>
+            <th>Weighted Composite</th>
+          </tr>
+        </thead>
+        <tbody id="stage-results-body"></tbody>
+      </table>
+    </div>
+
+    <h3>DORA Translation</h3>
+    <div class="devex-table-wrap">
+      <table class="devex-output-table">
+        <thead>
+          <tr>
+            <th>Signal</th>
+            <th>Value</th>
+            <th>Target</th>
+            <th>Excess Delay Contribution</th>
+          </tr>
+        </thead>
+        <tbody id="dora-results-body"></tbody>
+      </table>
+    </div>
+
+    <h3>Lens Totals</h3>
+    <div class="devex-table-wrap">
+      <table class="devex-output-table">
+        <thead>
+          <tr>
+            <th>Lens</th>
+            <th>Base Total</th>
+            <th>Compounded Total</th>
+          </tr>
+        </thead>
+        <tbody id="lens-results-body"></tbody>
+      </table>
+    </div>
+
+    <h3>DX Core 4 Guidance</h3>
+    <div id="core4-guidance" class="devex-summary-grid"></div>
+
+    <h3>Golden Signals by Lifecycle Phase</h3>
+    <div class="devex-table-wrap">
+      <table class="devex-output-table">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Latency (Delay Days)</th>
+            <th>Weighted Friction Cost</th>
+            <th>Golden Signals Focus</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="golden-signals-body"></tbody>
+      </table>
+    </div>
+
+    <h3>Sensitivity (Savings If Stage Reduced by 1 Delay Day)</h3>
+    <div class="devex-table-wrap">
+      <table class="devex-output-table">
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Savings</th>
+          </tr>
+        </thead>
+        <tbody id="sensitivity-results-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Share and Snapshot</h2>
+    <div class="devex-actions">
+      <button type="button" id="copy-json" class="video-button">Copy JSON Snapshot</button>
+      <button type="button" id="import-json" class="video-button">Import JSON Snapshot</button>
+    </div>
+    <label for="json-snapshot">Snapshot payload</label>
+    <textarea id="json-snapshot" rows="10" spellcheck="false"></textarea>
+    <p class="devex-note">State is encoded in the URL hash after each calculation for bookmark/share usage. No server-side persistence is used.</p>
+  </section>
+</article>
+
+<script src="/assets/js/devex-funnel-calculator.js"></script>
+
+  </main>
+</body>
+</html>

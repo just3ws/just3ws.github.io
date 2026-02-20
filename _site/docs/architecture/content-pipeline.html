@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Content Pipeline | Mike Hall Archive</title>
+<meta name="description" content="How canonical data becomes generated pages and validated output. This page is part of Mike Hall's curated engineering archive and resume.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/architecture/content-pipeline.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Content Pipeline | Mike Hall Archive">
+<meta property="og:description" content="How canonical data becomes generated pages and validated output. This page is part of Mike Hall's curated engineering archive and resume.">
+<meta property="og:url" content="https://www.just3ws.com/docs/architecture/content-pipeline.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Content Pipeline | Mike Hall Archive">
+<meta name="twitter:description" content="How canonical data becomes generated pages and validated output. This page is part of Mike Hall's curated engineering archive and resume.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/architecture/content-pipeline.html">Content Pipeline</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Content Pipeline",
+        "item": "https://www.just3ws.com/docs/architecture/content-pipeline.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="content-pipeline">Content Pipeline</h1>
+
+<h2 id="inputs">Inputs</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_data/interviews.yml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_data/video_assets.yml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_data/interview_conferences.yml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_data/interview_communities.yml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_data/resources.yml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_data/transcripts/*.yml</code></li>
+</ul>
+
+<h2 id="generation-steps">Generation Steps</h2>
+
+<ol>
+  <li>link alignment: <code class="language-plaintext highlighter-rouge">bin/sync_interview_asset_links.rb</code></li>
+  <li>summary derivation: <code class="language-plaintext highlighter-rouge">bin/generate_context_summaries.rb</code></li>
+  <li>page generation:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_interview_pages.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_video_asset_pages.rb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bin/generate_interview_taxonomy_pages.rb</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="template-sources">Template Sources</h2>
+
+<ul>
+  <li>Generated taxonomy pages now render through:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">_templates/generated/interview-taxonomy-index.erb</code></li>
+      <li><code class="language-plaintext highlighter-rouge">_templates/generated/interview-taxonomy-detail.erb</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="validation">Validation</h2>
+
+<p><code class="language-plaintext highlighter-rouge">./bin/pipeline validate</code> runs:</p>
+
+<ul>
+  <li>data uniqueness/integrity checks</li>
+  <li>transcript integrity checks (<code class="language-plaintext highlighter-rouge">bin/audit_transcripts.rb</code>)</li>
+  <li>resources registry validation</li>
+  <li>last-modified parity checks</li>
+  <li>SEO/canonical and semantic/schema validators</li>
+  <li>metadata reporting + HTMLProofer</li>
+</ul>
+
+<h2 id="transcript-import-workflow">Transcript Import Workflow</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">bin/import_transcripts_from_outbox.rb</code> to onboard transcript files from an external directory.</p>
+
+<ol>
+  <li>Run a dry run to generate mapping reports:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ruby ./bin/import_transcripts_from_outbox.rb --source-dir /Volumes/Dock_1TB/vimeo/outbox</code></li>
+    </ul>
+  </li>
+  <li>Review:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">tmp/transcript-import-report.json</code></li>
+      <li><code class="language-plaintext highlighter-rouge">tmp/transcript-import-report.md</code></li>
+    </ul>
+  </li>
+  <li>Apply high-confidence mappings:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ruby ./bin/import_transcripts_from_outbox.rb --source-dir /Volumes/Dock_1TB/vimeo/outbox --apply</code></li>
+    </ul>
+  </li>
+  <li>Re-run validation:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/pipeline validate</code></li>
+    </ul>
+  </li>
+</ol>
+
+<p>Shortcut wrapper:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox</code></li>
+  <li><code class="language-plaintext highlighter-rouge">./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit</code></li>
+</ul>
+
+  </main>
+</body>
+</html>

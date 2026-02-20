@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Resume Job Targeting | Mike Hall Archive</title>
+<meta name="description" content="Strategy for job-specific resume permalinks using overlays on canonical timeline data.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/architecture/resume-job-targeting.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Resume Job Targeting | Mike Hall Archive">
+<meta property="og:description" content="Strategy for job-specific resume permalinks using overlays on canonical timeline data.">
+<meta property="og:url" content="https://www.just3ws.com/docs/architecture/resume-job-targeting.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Resume Job Targeting | Mike Hall Archive">
+<meta name="twitter:description" content="Strategy for job-specific resume permalinks using overlays on canonical timeline data.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/architecture/resume-job-targeting.html">Resume Job Targeting</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Resume Job Targeting",
+        "item": "https://www.just3ws.com/docs/architecture/resume-job-targeting.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="resume-job-targeting">Resume Job Targeting</h1>
+
+<p>Status: strategy documented for future implementation. Not currently implemented.</p>
+
+<h2 id="goal">Goal</h2>
+
+<p>Support shareable, print-friendly, job-specific resume links (for a specific role at a specific company) without forking or duplicating canonical resume data.</p>
+
+<p>Examples:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/resume/jobs/staff-platform-acme-2026/</code></li>
+  <li><code class="language-plaintext highlighter-rouge">/resume/jobs/principal-backend-contoso-2026/</code></li>
+</ul>
+
+<h2 id="core-decision">Core Decision</h2>
+
+<ol>
+  <li>Keep canonical resume data as the source of truth:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">_data/resume/timeline.yml</code></li>
+      <li><code class="language-plaintext highlighter-rouge">_data/resume/summary.yml</code></li>
+      <li><code class="language-plaintext highlighter-rouge">_data/resume/positions/*.yml</code></li>
+    </ul>
+  </li>
+  <li>Define job targets as overlays that selectively override canonical fields at render time.</li>
+  <li>Never clone full position records into job-specific files.</li>
+</ol>
+
+<h2 id="proposed-data-model">Proposed Data Model</h2>
+
+<p>Store one file per target:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_data/resume/jobs/&lt;job_slug&gt;.yml</code></li>
+</ul>
+
+<p>Suggested shape (field-level replace/override only):</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">id</span><span class="pi">:</span> <span class="s">staff-platform-acme-2026</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Staff Platform Engineer - Acme</span>
+<span class="na">company</span><span class="pi">:</span> <span class="s">Acme</span>
+<span class="na">role</span><span class="pi">:</span> <span class="s">Staff Platform Engineer</span>
+<span class="na">created_at</span><span class="pi">:</span> <span class="s">2026-02-17</span>
+<span class="na">sitemap</span><span class="pi">:</span> <span class="no">false</span>
+<span class="na">robots</span><span class="pi">:</span> <span class="s">noindex,follow</span>
+
+<span class="na">summary</span><span class="pi">:</span>
+  <span class="na">text</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+    <span class="s">Tailored summary for this role.</span>
+
+<span class="na">timeline</span><span class="pi">:</span>
+  <span class="na">include</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">onemain</span>
+    <span class="pi">-</span> <span class="s">sk-holdings</span>
+    <span class="pi">-</span> <span class="s">activecampaign</span>
+  <span class="na">exclude</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">coderwall</span>
+
+<span class="na">positions</span><span class="pi">:</span>
+  <span class="na">onemain</span><span class="pi">:</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+      <span class="s">Override role summary for this target.</span>
+    <span class="na">achievements</span><span class="pi">:</span>
+      <span class="na">highlights</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">Tailored highlight one.</span>
+        <span class="pi">-</span> <span class="s">Tailored highlight two.</span>
+    <span class="na">skills</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">OpenTelemetry</span>
+      <span class="pi">-</span> <span class="s">Incident Leadership</span>
+</code></pre></div></div>
+
+<h2 id="route-and-rendering-strategy">Route and Rendering Strategy</h2>
+
+<ol>
+  <li>Generate a static page per job target:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">/resume/jobs/&lt;job_slug&gt;/</code></li>
+    </ul>
+  </li>
+  <li>Render with the existing resume layout and include stack.</li>
+  <li>Build a merged view model:
+    <ul>
+      <li>start with canonical data</li>
+      <li>apply target overlay</li>
+      <li>render result</li>
+    </ul>
+  </li>
+  <li>Printing should use the same page (<code class="language-plaintext highlighter-rouge">window.print</code>) as other resume pages.</li>
+</ol>
+
+<h2 id="canonical-and-indexing-policy">Canonical and Indexing Policy</h2>
+
+<p>Default policy for company/job-targeted resumes:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">robots: noindex,follow</code></li>
+  <li><code class="language-plaintext highlighter-rouge">sitemap: false</code></li>
+  <li>Canonical can be self-referential or root; choose one policy and enforce it in validators.</li>
+</ol>
+
+<p>Recommendation:</p>
+
+<ol>
+  <li>Use self-canonical for each job target page.</li>
+  <li>Keep noindex + sitemap false to avoid search indexing and stale public discovery.</li>
+</ol>
+
+<h2 id="guardrails">Guardrails</h2>
+
+<ol>
+  <li>Root route semantics stay unchanged:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">/</code> remains the canonical default resume.</li>
+      <li><code class="language-plaintext highlighter-rouge">/home/</code> remains the homepage surface.</li>
+    </ul>
+  </li>
+  <li>Job overlays can only override approved display fields.</li>
+  <li>Unknown position IDs in overlays must fail validation.</li>
+  <li>Empty/invalid target outputs must fail generation.</li>
+  <li>Keep active targets small and intentional to avoid maintenance sprawl.</li>
+</ol>
+
+<h2 id="operational-workflow">Operational Workflow</h2>
+
+<ol>
+  <li>Create <code class="language-plaintext highlighter-rouge">_data/resume/jobs/&lt;job_slug&gt;.yml</code>.</li>
+  <li>Run generation for job target pages.</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">./bin/pipeline validate</code>.</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">./bin/pipeline smoke</code> for resume and target routes.</li>
+  <li>Share <code class="language-plaintext highlighter-rouge">/resume/jobs/&lt;job_slug&gt;/</code> for that application.</li>
+  <li>Retire or archive old target files when no longer needed.</li>
+</ol>
+
+<h2 id="known-tradeoffs">Known Tradeoffs</h2>
+
+<ol>
+  <li>More targeted pages increase editorial overhead.</li>
+  <li>Highlight-level edits are easiest when replacing full <code class="language-plaintext highlighter-rouge">highlights</code> arrays.</li>
+  <li>This is intentionally optimized for accuracy and maintainability, not unlimited variants.</li>
+</ol>
+
+
+  </main>
+</body>
+</html>

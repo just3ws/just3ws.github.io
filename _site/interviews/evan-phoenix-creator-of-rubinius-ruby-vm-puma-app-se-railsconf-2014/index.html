@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Archive — Evan Phoenix on Rubinius, Puma App Server, and…</title>
+<meta name="description" content="Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014. Topic: Rubinius, Puma App Server, and Ruby VM design.…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/interviews/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Interview Archive — Evan Phoenix on Rubinius, Puma App Server, and…">
+<meta property="og:description" content="Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014. Topic: Rubinius, Puma App Server, and Ruby VM design.…">
+<meta property="og:url" content="https://www.just3ws.com/interviews/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Archive — Evan Phoenix on Rubinius, Puma App Server, and…">
+<meta name="twitter:description" content="Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014. Topic: Rubinius, Puma App Server, and Ruby VM design.…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" class="is-active" aria-current="page">Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/interviews/">Interviews</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/interviews/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/">Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interviews",
+        "item": "https://www.just3ws.com/interviews/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014",
+        "item": "https://www.just3ws.com/interviews/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    
+    <header>
+      <h1>Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014</h1>
+    </header>
+    
+      <div class="video-subtitle">Interviewee: <a href="/interviews/people/evan-phoenix/">Evan Phoenix</a></div>
+    
+    
+      <div class="video-subtitle">Topic: Rubinius, Puma App Server, and Ruby VM design</div>
+    
+    <div class="video-meta">
+      
+        Conference:
+        
+        
+        
+          <a href="/interviews/conferences/railsconf-2014/">RailsConf 2014</a>
+        
+      
+      
+    </div>
+
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
+  "@id": "https://www.just3ws.com/id/interview/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014",
+  "identifier": "evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014",
+  "name": "Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014",
+  "url": "https://www.just3ws.com/interviews/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/",
+  "datePublished": "2022-05-13",
+  "description": "Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014. Topic: Rubinius, Puma App Server, and Ruby VM design.…",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.just3ws.com/id/person/mike-hall",
+    "name": "Mike Hall"
+  },
+  
+  "contributor": [
+    
+    {
+      "@type": "Person",
+      "@id": "https://www.just3ws.com/id/person/evan-phoenix",
+      "name": "Evan Phoenix"
+    }
+    
+  ],
+  
+  
+  
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Rubinius, Puma App Server, and Ruby VM design"
+    }
+    
+  
+  
+    ,
+    {
+      "@type": "Event",
+      "@id": "https://www.just3ws.com/id/conference/railsconf-2014",
+      "name": "RailsConf 2014"
+    }
+  ],
+  
+  
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "https://www.just3ws.com/id/video/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014",
+    "name": "Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014",
+    "description": "Interview with Evan Phoenix at RailsConf 2014 on Rubinius, Puma App Server, and Ruby VM design. This recording captures practical lessons and perspective for software teams and technical communities.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/IONvc8f0taI/maxresdefault.jpg",
+    "uploadDate": "2022-05-13",
+    "transcript": "Hi, it's Mike with UGtastic. I'm standing here with Evan\n Phoenix, who is a director with the\n Ruby Central and he's an organizer with the RubyConf and\n the RailsConf that we're at today.\n You might also know a little bit of his work inside of the\n Ruby community. He's one of the few\n people that can say they've actually created a Ruby. He\n created the Rubinius virtual machine\n and the Puma web server and probably countless other things\n I can't even think of, but those are\n pretty big things. But let's start with the conference that\n we're at today. Well, first,\n thank you for taking the time to speak. Sure, my pleasure.\n So, RailsConf, how did you get\n involved in organizing? Sure, yeah. So, I'm a director of\n Ruby Central now and I got involved\n basically being asked to do it by the previous directors,\n who were Chad Fowler, Rich Kelmer,\n and David Black. So, they asked me if I'd be interested in\n being a director. They had done\n it since the beginning. So, since, I want to say 2004. And\n they had decided like, well, you know,\n it'd be nice to have some new people come in. And so, yeah.\n So, I said, oh, it'd be great. I was\n actually working on helping them out with RubyJung stuff at\n the time. And so, they said, okay, well,\n you obviously care about this stuff. Do you want to be more\n involved? And I said, sure. So, yeah. So,\n that kind of brought me in, made me a director. And then,\n quickly, I realized that, oh, okay,\n we run these conferences now, too. So, yeah. So, that's\n kind of how I got involved. I was sort of\n recruited in, if you will. Yeah. So, I mean, you obviously,\n to have that level of trust, you were\n already very active in the community at that point. Pretty\n active, yeah. Yeah. Were you mostly working\n at conferences? It was mostly an open source. Okay. You\n know, I had certainly been to a lot of\n conferences. I'd been to plenty of RubyConf's and RailsConf\n's and regional conferences and\n international ones at that point. Not helping out a ton,\n mostly because I ended up speaking at a lot\n of the conferences. So, I didn't really want, I wouldn't\n have that be my focus. Not, you know,\n what I do now, which is running around and making sure that\n the conference is actually going well.\n Do you have coffee? Yeah, do you have coffee? Exactly. Is\n there enough coffee?\n I know the internet's down. Right. That's exactly right. Oh\n, let me look at it again. Yeah,\n okay. So, yeah. So, I hadn't really been involved in the\n actual volunteering and that kind of stuff,\n but I certainly helped out. So, you know, the Ruby\n conferences are, you know, very much a\n community affair. So, you know, I'd been at, you know,\n those guys are my friends and they'd been\n working on Ruby conferences. And so, occasionally, I would\n like, oh, what do you need help doing? And\n I would help out, just do whatever. So, I was fairly, I was\n aware of the logistics. You know,\n it wasn't a totally closed idea to me. I knew, okay, there\n's this and there's that and that kind\n of stuff. When you moved from being kind of in the code or\n just kind of helping maybe set up and\n things like that, how, and then being thrust into an\n organization. Right. Well, I mean, how much of\n a shock was that to your system? It wasn't too bad. I mean,\n I think that, you know, it would\n kind of, we did a little bit at a time. I think that the\n first big one, the first thing that we\n were like, okay, wow, was the 2011 RailsConf. It was the\n first one that O'Reilly was no longer\n a partner with Ruby Central on it. And we kind of like, you\n know, I wasn't really aware of the,\n I didn't, that was my first time doing that conference. And\n so, there was a lot of things\n that we were like, oh, my God, I'm going to do this. I'm\n going to do this. I'm going to do this.\n We have no signage. And it's two weeks before the\n conference. So, we were like, quick, do a bunch\n of signs. And we need a t-shirt real fast. Do a bunch of t-\nshirts, you know. So, that was a little,\n there's these times where it gets very hectic. And we've\n actually gotten a lot better with\n managing that kind of stuff now. But it wasn't a huge shock\n. You know, it's managing expectations\n is sort of what making a conference is all about. And\n honestly, having an open source project is\n a lot about managing other.\n Your users' expectations and that kind of thing. So, it's\n not totally dissimilar.\n Yeah. Has it changed your perspective of running and\n organizing? Has it really changed?\n If you go to other conferences, do you look at them a\n little differently?\n Oh, yeah. One thing that we, the organizers that we were\n talking about is whether or not we feel\n like the conference has gone well, right? That's a thing\n that we're constantly asking ourselves\n and asking each other, you know, are things going okay?\n That kind of stuff. And it's funny,\n we can't, our opinions.\n It's actually really bad on whether or not it's going well.\n Because we only see the warts.\n We only see the stuff that doesn't work. Because that's the\n stuff that gets brought to our attention.\n The stuff that does work really well, people are like, oh,\n that was great. They don't, we\n don't really hear about that kind of stuff. So, we actually\n have to like go ask people's\n opinions. How's the conference going? I think that, so now\n when I go to other conferences\n and I see what's going on, I'm much more attuned to like,\n okay, they're having a problem. I\n can tell the way that they're acting. Oh, there's a problem\n over here. And I don't know\n how to deal with it. But I can tell.\n Yeah.\n You feel a little bit of sympathy.\n Exactly.\n That's exactly right. Yeah.\n And the other thing is, like in a FOSS project, where you\n're working and you've got the people\n complaining. And those probably are the ones that are most\n in your face. I mean, you're\n working on a project that's very, very visible. And then\n every time somebody gets frustrated,\n they're like, I'm not.\n Yeah, yeah, yeah. This thing doesn't work at all.\n Yeah, yeah, yeah.\n So, you might feel a little bit more, you know, working in\n open source. You've maybe\n developed a little thicker skin.\n Oh, sure. I'm sure. Absolutely.\n Yeah. So, you're able to look at it a little bit more in\n context.\n Yeah. It doesn't really get, you know, when people say like\n, oh, this doesn't work or\n whatever. It doesn't get to me. I mean, like, I'm\n interested. I want to know, like, because\n I want them to be happy. And I want to know why it doesn't\n work. Like, what's the exact\n circumstances. But over time, I've allowed myself to not.\n For my emotional state to not be a reflection of those\n other people's emotional state. So,\n when they're mad, it doesn't make me mad. I just go like,\n okay, I understand that that's\n the problem. You know, we've got to help them fix it, but I\n don't get all riled up about\n it.\n Well, and like, even I chatted with DHH and Aaron Patterson\n about knowing that you have\n a project that people might be sticking their career, you\n know, not careers on.\n No, absolutely.\n Day-to-day job.\n Yeah.\n You know, how does that, because we've kind of segued here.\n That's fine.\n The, you know, knowing that you've created something that\n many people are, you know,\n paying their bills with and doing great work. And then,\n does that ever weigh on you? Or\n does it, or is that?\n It doesn't, I don't think, it doesn't really weigh on me. I\n think that more, it's exciting\n for me more than anything else that, you know, like we have\n, because I think that, I think\n that if, if people didn't set, weren't so adamant in\n telling us that they felt like,\n the conferences were going well, I think it would weigh on\n me a lot more. But I think that the fact that people feel,\n people come up and tell us that the conferences are going\n well, that there's all these great talks and that kind of\n thing. And I had somebody, somebody tell Marty, who's one\n of the directors say like, you need to pick not such great\n tracks and put them all together at the same time. Because\n I can't figure out which talks to go to.\n Yeah. That's like the good problem.\n Right. When we hear that, you know, that, that kind of\n means, you know, there's always going to be problems. But\n when we hear that from a lot of people, the way of knowing\n that, like, you know, we have a duty, if you will, is, it's\n, it's an energizing, it's a vigoring more than it's a\n burden. Because we know that, like, you know, we can help,\n we can help make the community better and keep it at a\n certain size and keep it going. And that will make, that\n will allow other companies to do more rails projects.\n And the people at our conferences will get those jobs. And,\n you know, so I think it's, it's more like we're happy that\n it's, that it's going as well as it is.\n It's, it's more like we're happy that it's, it's more like\n we're happy that it's going as well as it is.\n It's, it's more like we're happy that it's, it's more like\n we're happy that it's going as well as it is.\n We're all very, we're all friends. We all talk about what's\n going on because we all have different things to bring to\n the table.\n We're not building exactly the same thing. And so that\n allows us to, that allows us to sort of be friends, talk\n about solutions.\n How are you solving this other thing?\n And the other thing is that it's good that we're friends\n because it would be kind of lonely otherwise, right?\n There's not a lot of people doing that work. You really\n want to have somebody else to talk to.\n That's exactly right.\n Right. And so if, if we were, you know, if we, if we weren\n't friends, if everything was like a constant butting of\n heads, then it would be, yeah, it would be this very\n isolating thing.\n But because they're all sort of, uh, yeah, like I said, we\n're all friends. So that makes it better.\n So when people, is it, is it ever like, uh, you just want\n people to stop doing these comparisons or, or do you think\n that there is another valid, like, so that way people can\n weigh their situation?\n Yeah, I think if the people stop doing the comparisons.\n Yeah, I think if the people stop doing the comparisons,\n then there's probably not a option.\n That probably means there's only one thing, right?\n Um, and so that you want the comparisons because it means\n that people are looking at them and they're saying like, oh\n, okay, well, should I choose this one or should I choose\n this one?\n And what does this give me that that doesn't give me?\n What are the trade-offs?\n And I think that you're always going to have the comparison\n.\n You want the comparison.\n I mean, you know, there's a million different cars out\n there and that's all people do is compare cars.\n Which car should I get?\n That kind of thing.\n Right, right.\n And you want that.\n All the car companies want comparison.\n Comparisons because it means that they're looking at their\n other, you know, it means that there's sort of a healthy\n ecosystem of choice for these things.\n And that you can figure out how to compete on features.\n Absolutely.\n Yeah, and you want to compete on the things that matter for\n the users.\n You don't want to compete on, like, oh, or sabotage this\n other project.\n You want to, you know, your users say, okay, well, we\n really love something like this.\n And you say, like, okay, well, I'll go add that for you or\n whatever it might be.\n That's where you want to compete.\n You want to say, like, okay, we're giving people what they\n want.\n And that's, you know, who can give that the best or the\n version of it that, you know, some set of users want the\n most or whatever.\n So, you know, and again, because I, the conferences are\n fascinating, but the reason I'm so excited to talk about\n Rubinius is that we're here about Ruby.\n And that's, and it is Ruby.\n So, I also just want to also understand about how you.\n Your path to creating a VM.\n Sure.\n Not just the Ruby-specific one, but was that your first\n implementation of something like this?\n Well, okay.\n So, Rubinius is actually on its.\n It's currently two sort of virtual machines because it's\n got a JIT in addition to the normal virtual machine.\n But it's really the third code base for the same project.\n Okay.\n So, the first two.\n The first one.\n Okay.\n Well, I'll go back to the beginning.\n So, I got involved with doing it because I was always liked\n, like, languages and virtual machines.\n I thought that was a very interesting part in computing\n because it's like this building block.\n If you can make it really good, if you can make it really\n sound and interesting, then you can build anything on top\n of it, right?\n And so, I started off, I was just kind of interested in it.\n And a friend of mine, Ryan Davis, said, suggested that I\n get the.\n Small Talk Blue Book, which is this sort of canonical book\n that the second half of it is just a reference for how to\n build a Small Talk virtual machine.\n And it was a reference for a machine that they never built.\n Someone actually has translated it.\n Squeak was actually a translation of that thing originally.\n But it was just.\n It was more like a general spec.\n It was for documentation.\n It was like, okay, well, this is how you do this.\n And all the documentation.\n That's so funny to be like, it's a documentation of\n something that you're saying.\n And it doesn't exist.\n Yeah, they never used the code that's in there.\n In fact, there's all these typos.\n Oh, really?\n In the code itself.\n Which is fine.\n But it's all written in Small Talk as well.\n So, they didn't have Small Talk to write, to run this thing\n because they wrote it in Small Talk.\n So, of course, it was just for documentation.\n So, I got that.\n And I was like, okay, it's so easy.\n Like, I can read the thing.\n And I feel like, okay, this is what the bytecode looks like\n.\n This is how you dispatch the bytecode.\n This is how, when you call a method, what would you do?\n So, I really just translated.\n I just put the blue book into my own virtual machine.\n I wrote all in Ruby.\n So, it's the first version of Rubinius.\n And it's actually the first 50 commits or something in the\n Git repository.\n You can go back and look at it.\n It's an augmentation of the Small Talk, yeah.\n Well, it's for Ruby.\n But it was for Ruby.\n It's basically the techniques, the exact ideas that were in\n the Small Talk, but for Ruby.\n But it didn't run very much.\n I mean, it was like, it had its own.\n It did have a very simple garbage collector.\n It had a bytecode virtual machine.\n It was super, super slow.\n Obviously, I was writing it in Ruby and just running it on\n 1.8.2, I think, was the Ruby at the time.\n So, I did that.\n And then I was just very interested in it.\n And then I got accepted to talk about it at RubyConf Denver\n 2006.\n No.\n Yeah, 2006 or 2007.\n I can't remember.\n Anyway, so, and I realized that I couldn't present this\n thing that was just all Ruby and super, super slow.\n People were going to be like,\n Oh, this is very cool.\n How can I use it?\n And I'd be like,\n You can't use it at all.\n I suggest you never use this thing.\n That would be really kind of a bummer.\n So, I translated it into C.\n Just like hand translated it.\n Read the Ruby, wrote the C.\n Read the Ruby, wrote the C.\n And so, that was the first version of Rubinius that was,\n that you could sort of use.\n It was still pretty slow.\n And we kind of built up techniques and we did all kinds of\n stuff on top of it until about 2000 and...\n 2008, 2009, and we translated into C++ and we changed a\n bunch of things when we did that.\n So, that's kind of...\n So, it's been, it was Ruby and Ruby and then Ruby and C and\n then Ruby and C++.\n Right.\n Okay.\n So, it's...\n So, what's next?\n A closure?\n I don't know.\n I don't know.\n Yeah, I have no idea.\n Yes.\n ADA.\n Yeah, I don't know.\n Oh, an APL version.\n That'd be fun.\n It's one long line.\n Yeah.\n Okay.\n So, you're...\n So, you know, very passionate about creating these\n concurrent, I mean, a multi-threaded VM.\n Yeah.\n And people always are looking at Ruby and say, well, it's\n got the GL, the Global Interpreter Lock.\n Yeah.\n And, you know, that you have to have the four processes.\n But look at JRuby and Rubinius.\n So, now you're, you know, you're actually in a way going\n head to head with Java.\n Yeah, absolutely.\n 100%.\n Yeah.\n Absolutely.\n Which is, you know, that's...\n Scary.\n Yeah.\n Yeah.\n If you start crying, that's okay.\n I appreciate that.\n You know, because, I mean, it's a huge mega corporation.\n Yeah.\n But, so, you know, it's pretty obvious that you're\n passionate about creating performance\n tools that we can use to run Codon.\n In 2014, if I'm looking at Rubinius, can I look and say,\n yeah, I should maybe look at\n this and try to see what I can do with it.\n Maybe look at my production systems.\n Absolutely.\n I mean, I think that there are still places that it's\n slower than even MRI.\n There's a lot of Rails code that does things that kind of\n confuse the JIT compiler.\n Yeah.\n But we have users that use Rubinius for very specific\n workloads because they control enough\n of it that they can basically make it...\n Their Ruby code can run extremely fast inside Rubinius.\n We have, like, high-frequency traders or people who run\n workers with just, like, the background\n workers, a lot of times people run background workers with\n Rubinius that aren't running\n inside Rails, and they're doing something that's like, okay\n, well, I'm going to go off\n and do this big calculation, whatever I want to do.\n I do that in Rubinius, and it's super fast.\n And, again, they sort of, like, kind of get the best of\n both worlds in that way.\n And that's because it's funny you mention that because we\n can actually, it might come\n as a surprise, but we can actually run other stuff on Ruby,\n not just Rails.\n Right.\n Right.\n Exactly.\n That's exactly right.\n Yeah.\n But, yeah, no, you did say something, though, that I want\n to hook onto.\n I asked this question to DHH earlier about, you know,\n because he is openly critical of\n certain companies that, you know, just so happen to use\n Rails and make a lot of money\n with it.\n And then you mentioned the high-frequency traders, which\n are controversial.\n Sure, sure.\n You know, I don't know what your feelings are regarding\n high-frequency trading, but\n knowing that your tools are getting used to basically buy\n people's islands, but they're\n not necessarily...\n They're not necessarily giving anything back.\n Okay.\n You know, what are your thoughts regarding...\n Yeah.\n I mean, I think that, you know, going in when I was, when I\n started writing a VM, I thought\n about this, actually.\n I was like, okay, I'm going to write, if I really want to\n do this, and this is true for\n almost any job.\n This is not just true for a Ruby implementation.\n But some of you give away, and you don't...\n Yeah, absolutely.\n At least for a job, I've got a paycheck.\n Yeah, yes.\n It, I think that you, you go in and you're like, I'm going\n to do this.\n I'm going to do this.\n And you go into it saying that, like, you know, the, if my\n license is such a way that\n I want, I want people to use this independent of whether or\n not I agree with the way that\n they're using it, you have to kind of, like, sort of, you\n know...\n Divorce your...\n Yeah, kind of check that at the door.\n Right.\n You have to say, like, look, there's always going to be\n those people who are going to\n do something with it that you don't, that you would not do\n with it, right?\n That doesn't mean that your thing is not good and that you\n shouldn't not do that because,\n oh, someone might use it in a bad way.\n It's not a...\n It's not a nuclear weapon.\n It's not nuclear, you know, that kind of thing.\n It's just some software.\n If you don't do it, somebody else will do it.\n It's not like there's this vacuum of software out there.\n So, I think that I've kind of come to the conclusion that\n it doesn't, I can't, I have\n no control over that, right?\n I have no control over what, how people are going to use it\n, what they're going to use\n it for, whether or not I agree with what they use it for.\n And so, I can't really allow myself to worry about that.\n That's just, like, that's the world that's going to happen.\n So, that's how it goes.\n And just a funny anecdote is that I had a friend, I have a\n friend who was listening\n to a Senate judiciary hearing against some company, for a\n company he worked with, and\n they were having to explain their algorithm, and he's\n sitting there watching, and he's\n with his daughter, and he says, daddy wrote that.\n Wow, that's amazing.\n Yeah.\n And he's listening to these people talk about this anti-mon\nopoly, you know, I'm not going\n to say who or what.\n Yeah, yeah, yeah, that's amazing.\n Yeah, yeah, that's super interesting.\n And, but, you know, hearing about, you know, like I said, D\nHH complaining or commenting\n on certain companies, and you mentioned the high-frequency\n trading, it's like, this stuff\n can get used in ways that maybe aren't anticipated, but you\n kind of just have to let it go.\n I mean, I think for me, I think the way that I, the way\n that I come to terms with it is\n just to think that if, if I'm making, if I'm making money,\n I'm making money, I'm making\n my users happy, whatever they do with it, I sort of, that's\n fine with it, right?\n Again, I can't control that.\n I just, but I still want to, I still am beholden, I hold\n myself beholden to the users who work\n this thing.\n You know, so I'm going to use it too.\n I'm a user as well, but those people's opinions matter as\n well.\n So I want to, if they're happy with what's going on, then\n that, then I'm fine with it.\n And I have to just sort of end there.\n I can't get into the deeper, but what are they actually\n doing with it?\n I can't, I can't do that, so.\n Right.\n And, you know, just coming back to the conference, you know\n, 2014 is wrapping up, I mean, or\n not 2014 in general, but the RailsConf 2014 is wrapping up\n today.\n Are there already plans for what's next or, since you're in\n Chicago, you go all over?\n Yeah, so we've got RubyConf in November coming up, that's\n in San Diego.\n Okay.\n And then we have RailsConf 2015, which we're going to\n announce the location for at the\n keynote this afternoon.\n Great.\n And then, yeah, we're good.\n So it's live in wallets.\n Yeah.\n Oh, yeah.\n Yeah.\n We're, we're going.\n We're going.\n Everything's good.\n You know, I think that people have asked us, you know, like\n, oh, could the conference be\n bigger?\n Is the conference growing okay?\n And, you know, we sell out the, we sell out both\n conferences every year.\n You know, RailsConf only sells out a couple weeks before\n the conference actually starts.\n But that actually tells us that we're probably exactly the\n right size.\n Okay.\n Because if we weren't selling, if we weren't selling out,\n we'd know that we're probably\n buying, you know, we're a little too big.\n If we sold out too early, maybe we're a little too small.\n But we're kind of where we are.\n We're kind of in this sweet spot, I think.\n And, you know, we're a lot of people that are, you know, we\n're a lot of people that are\n a lot of new people at this year's RailsConf, which is\n super, super important.\n We know that the community is healthy.\n We know that there's new people coming in.\n You know, at some point, I've told this to other people, at\n some point there will be\n a decline.\n I don't know when that's going to occur.\n I don't know what it looks like.\n But I know that having new people come in, be it in the\n community, be it at the conferences,\n will delay that decline, you know, all the time.\n So it might come someday, but it's, well, eventually there\n's going to be the heat death\n of the universe.\n But not this year.\n But not this year.\n Right.\n All right.\n Well, thank you very much.\n Absolutely.\n My pleasure.\n Appreciate it.\n Sure.\n User groups with lots to say, interviews and more.\n No way.\n Sharing great ideas in the tech community.\n Fascinating conversations, a plethora of information.\n Find out for yourself today at ugtastic.com.\n you",
+    "url": "https://www.just3ws.com/videos/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/",
+    "embedUrl": "https://www.youtube.com/embed/IONvc8f0taI"
+  },
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/interviews/evan-phoenix-creator-of-rubinius-ruby-vm-puma-app-se-railsconf-2014/"
+  }
+}
+</script>
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="interview-embed" src="https://www.youtube.com/embed/IONvc8f0taI" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Evan Phoenix on Rubinius, Puma App Server, and Ruby VM design at RailsConf 2014"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Interview with Evan Phoenix at RailsConf 2014 on Rubinius, Puma App Server, and Ruby VM design. This recording captures practical lessons and perspective for software teams and technical communities.</div>
+        
+        <div class="video-meta">
+          Published: May 13, 2022
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/IONvc8f0taI">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=IONvc8f0taI&list=PLgmTADxYKzzZItmN7yuhTCzzF3YC7kqGK">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>Hi, it’s Mike with UGtastic. I’m standing here with Evan
+ Phoenix, who is a director with the
+ Ruby Central and he’s an organizer with the RubyConf and
+ the RailsConf that we’re at today.
+ You might also know a little bit of his work inside of the
+ Ruby community. He’s one of the few
+ people that can say they’ve actually created a Ruby. He
+ created the Rubinius virtual machine
+ and the Puma web server and probably countless other things
+ I can’t even think of, but those are
+ pretty big things. But let’s start with the conference that
+ we’re at today. Well, first,
+ thank you for taking the time to speak. Sure, my pleasure.
+ So, RailsConf, how did you get
+ involved in organizing? Sure, yeah. So, I’m a director of
+ Ruby Central now and I got involved
+ basically being asked to do it by the previous directors,
+ who were Chad Fowler, Rich Kelmer,
+ and David Black. So, they asked me if I’d be interested in
+ being a director. They had done
+ it since the beginning. So, since, I want to say 2004. And
+ they had decided like, well, you know,
+ it’d be nice to have some new people come in. And so, yeah.
+ So, I said, oh, it’d be great. I was
+ actually working on helping them out with RubyJung stuff at
+ the time. And so, they said, okay, well,
+ you obviously care about this stuff. Do you want to be more
+ involved? And I said, sure. So, yeah. So,
+ that kind of brought me in, made me a director. And then,
+ quickly, I realized that, oh, okay,
+ we run these conferences now, too. So, yeah. So, that’s
+ kind of how I got involved. I was sort of
+ recruited in, if you will. Yeah. So, I mean, you obviously,
+ to have that level of trust, you were
+ already very active in the community at that point. Pretty
+ active, yeah. Yeah. Were you mostly working
+ at conferences? It was mostly an open source. Okay. You
+ know, I had certainly been to a lot of
+ conferences. I’d been to plenty of RubyConf’s and RailsConf
+‘s and regional conferences and
+ international ones at that point. Not helping out a ton,
+ mostly because I ended up speaking at a lot
+ of the conferences. So, I didn’t really want, I wouldn’t
+ have that be my focus. Not, you know,
+ what I do now, which is running around and making sure that
+ the conference is actually going well.
+ Do you have coffee? Yeah, do you have coffee? Exactly. Is
+ there enough coffee?
+ I know the internet’s down. Right. That’s exactly right. Oh
+, let me look at it again. Yeah,
+ okay. So, yeah. So, I hadn’t really been involved in the
+ actual volunteering and that kind of stuff,
+ but I certainly helped out. So, you know, the Ruby
+ conferences are, you know, very much a
+ community affair. So, you know, I’d been at, you know,
+ those guys are my friends and they’d been
+ working on Ruby conferences. And so, occasionally, I would
+ like, oh, what do you need help doing? And
+ I would help out, just do whatever. So, I was fairly, I was
+ aware of the logistics. You know,
+ it wasn’t a totally closed idea to me. I knew, okay, there
+‘s this and there’s that and that kind
+ of stuff. When you moved from being kind of in the code or
+ just kind of helping maybe set up and
+ things like that, how, and then being thrust into an
+ organization. Right. Well, I mean, how much of
+ a shock was that to your system? It wasn’t too bad. I mean,
+ I think that, you know, it would
+ kind of, we did a little bit at a time. I think that the
+ first big one, the first thing that we
+ were like, okay, wow, was the 2011 RailsConf. It was the
+ first one that O’Reilly was no longer
+ a partner with Ruby Central on it. And we kind of like, you
+ know, I wasn’t really aware of the,
+ I didn’t, that was my first time doing that conference. And
+ so, there was a lot of things
+ that we were like, oh, my God, I’m going to do this. I’m
+ going to do this. I’m going to do this.
+ We have no signage. And it’s two weeks before the
+ conference. So, we were like, quick, do a bunch
+ of signs. And we need a t-shirt real fast. Do a bunch of t-
+shirts, you know. So, that was a little,
+ there’s these times where it gets very hectic. And we’ve
+ actually gotten a lot better with
+ managing that kind of stuff now. But it wasn’t a huge shock
+. You know, it’s managing expectations
+ is sort of what making a conference is all about. And
+ honestly, having an open source project is
+ a lot about managing other.
+ Your users’ expectations and that kind of thing. So, it’s
+ not totally dissimilar.
+ Yeah. Has it changed your perspective of running and
+ organizing? Has it really changed?
+ If you go to other conferences, do you look at them a
+ little differently?
+ Oh, yeah. One thing that we, the organizers that we were
+ talking about is whether or not we feel
+ like the conference has gone well, right? That’s a thing
+ that we’re constantly asking ourselves
+ and asking each other, you know, are things going okay?
+ That kind of stuff. And it’s funny,
+ we can’t, our opinions.
+ It’s actually really bad on whether or not it’s going well.
+ Because we only see the warts.
+ We only see the stuff that doesn’t work. Because that’s the
+ stuff that gets brought to our attention.
+ The stuff that does work really well, people are like, oh,
+ that was great. They don’t, we
+ don’t really hear about that kind of stuff. So, we actually
+ have to like go ask people’s
+ opinions. How’s the conference going? I think that, so now
+ when I go to other conferences
+ and I see what’s going on, I’m much more attuned to like,
+ okay, they’re having a problem. I
+ can tell the way that they’re acting. Oh, there’s a problem
+ over here. And I don’t know
+ how to deal with it. But I can tell.
+ Yeah.
+ You feel a little bit of sympathy.
+ Exactly.
+ That’s exactly right. Yeah.
+ And the other thing is, like in a FOSS project, where you
+‘re working and you’ve got the people
+ complaining. And those probably are the ones that are most
+ in your face. I mean, you’re
+ working on a project that’s very, very visible. And then
+ every time somebody gets frustrated,
+ they’re like, I’m not.
+ Yeah, yeah, yeah. This thing doesn’t work at all.
+ Yeah, yeah, yeah.
+ So, you might feel a little bit more, you know, working in
+ open source. You’ve maybe
+ developed a little thicker skin.
+ Oh, sure. I’m sure. Absolutely.
+ Yeah. So, you’re able to look at it a little bit more in
+ context.
+ Yeah. It doesn’t really get, you know, when people say like
+, oh, this doesn’t work or
+ whatever. It doesn’t get to me. I mean, like, I’m
+ interested. I want to know, like, because
+ I want them to be happy. And I want to know why it doesn’t
+ work. Like, what’s the exact
+ circumstances. But over time, I’ve allowed myself to not.
+ For my emotional state to not be a reflection of those
+ other people’s emotional state. So,
+ when they’re mad, it doesn’t make me mad. I just go like,
+ okay, I understand that that’s
+ the problem. You know, we’ve got to help them fix it, but I
+ don’t get all riled up about
+ it.
+ Well, and like, even I chatted with DHH and Aaron Patterson
+ about knowing that you have
+ a project that people might be sticking their career, you
+ know, not careers on.
+ No, absolutely.
+ Day-to-day job.
+ Yeah.
+ You know, how does that, because we’ve kind of segued here.
+ That’s fine.
+ The, you know, knowing that you’ve created something that
+ many people are, you know,
+ paying their bills with and doing great work. And then,
+ does that ever weigh on you? Or
+ does it, or is that?
+ It doesn’t, I don’t think, it doesn’t really weigh on me. I
+ think that more, it’s exciting
+ for me more than anything else that, you know, like we have
+, because I think that, I think
+ that if, if people didn’t set, weren’t so adamant in
+ telling us that they felt like,
+ the conferences were going well, I think it would weigh on
+ me a lot more. But I think that the fact that people feel,
+ people come up and tell us that the conferences are going
+ well, that there’s all these great talks and that kind of
+ thing. And I had somebody, somebody tell Marty, who’s one
+ of the directors say like, you need to pick not such great
+ tracks and put them all together at the same time. Because
+ I can’t figure out which talks to go to.
+ Yeah. That’s like the good problem.
+ Right. When we hear that, you know, that, that kind of
+ means, you know, there’s always going to be problems. But
+ when we hear that from a lot of people, the way of knowing
+ that, like, you know, we have a duty, if you will, is, it’s
+, it’s an energizing, it’s a vigoring more than it’s a
+ burden. Because we know that, like, you know, we can help,
+ we can help make the community better and keep it at a
+ certain size and keep it going. And that will make, that
+ will allow other companies to do more rails projects.
+ And the people at our conferences will get those jobs. And,
+ you know, so I think it’s, it’s more like we’re happy that
+ it’s, that it’s going as well as it is.
+ It’s, it’s more like we’re happy that it’s, it’s more like
+ we’re happy that it’s going as well as it is.
+ It’s, it’s more like we’re happy that it’s, it’s more like
+ we’re happy that it’s going as well as it is.
+ We’re all very, we’re all friends. We all talk about what’s
+ going on because we all have different things to bring to
+ the table.
+ We’re not building exactly the same thing. And so that
+ allows us to, that allows us to sort of be friends, talk
+ about solutions.
+ How are you solving this other thing?
+ And the other thing is that it’s good that we’re friends
+ because it would be kind of lonely otherwise, right?
+ There’s not a lot of people doing that work. You really
+ want to have somebody else to talk to.
+ That’s exactly right.
+ Right. And so if, if we were, you know, if we, if we weren
+‘t friends, if everything was like a constant butting of
+ heads, then it would be, yeah, it would be this very
+ isolating thing.
+ But because they’re all sort of, uh, yeah, like I said, we
+‘re all friends. So that makes it better.
+ So when people, is it, is it ever like, uh, you just want
+ people to stop doing these comparisons or, or do you think
+ that there is another valid, like, so that way people can
+ weigh their situation?
+ Yeah, I think if the people stop doing the comparisons.
+ Yeah, I think if the people stop doing the comparisons,
+ then there’s probably not a option.
+ That probably means there’s only one thing, right?
+ Um, and so that you want the comparisons because it means
+ that people are looking at them and they’re saying like, oh
+, okay, well, should I choose this one or should I choose
+ this one?
+ And what does this give me that that doesn’t give me?
+ What are the trade-offs?
+ And I think that you’re always going to have the comparison
+.
+ You want the comparison.
+ I mean, you know, there’s a million different cars out
+ there and that’s all people do is compare cars.
+ Which car should I get?
+ That kind of thing.
+ Right, right.
+ And you want that.
+ All the car companies want comparison.
+ Comparisons because it means that they’re looking at their
+ other, you know, it means that there’s sort of a healthy
+ ecosystem of choice for these things.
+ And that you can figure out how to compete on features.
+ Absolutely.
+ Yeah, and you want to compete on the things that matter for
+ the users.
+ You don’t want to compete on, like, oh, or sabotage this
+ other project.
+ You want to, you know, your users say, okay, well, we
+ really love something like this.
+ And you say, like, okay, well, I’ll go add that for you or
+ whatever it might be.
+ That’s where you want to compete.
+ You want to say, like, okay, we’re giving people what they
+ want.
+ And that’s, you know, who can give that the best or the
+ version of it that, you know, some set of users want the
+ most or whatever.
+ So, you know, and again, because I, the conferences are
+ fascinating, but the reason I’m so excited to talk about
+ Rubinius is that we’re here about Ruby.
+ And that’s, and it is Ruby.
+ So, I also just want to also understand about how you.
+ Your path to creating a VM.
+ Sure.
+ Not just the Ruby-specific one, but was that your first
+ implementation of something like this?
+ Well, okay.
+ So, Rubinius is actually on its.
+ It’s currently two sort of virtual machines because it’s
+ got a JIT in addition to the normal virtual machine.
+ But it’s really the third code base for the same project.
+ Okay.
+ So, the first two.
+ The first one.
+ Okay.
+ Well, I’ll go back to the beginning.
+ So, I got involved with doing it because I was always liked
+, like, languages and virtual machines.
+ I thought that was a very interesting part in computing
+ because it’s like this building block.
+ If you can make it really good, if you can make it really
+ sound and interesting, then you can build anything on top
+ of it, right?
+ And so, I started off, I was just kind of interested in it.
+ And a friend of mine, Ryan Davis, said, suggested that I
+ get the.
+ Small Talk Blue Book, which is this sort of canonical book
+ that the second half of it is just a reference for how to
+ build a Small Talk virtual machine.
+ And it was a reference for a machine that they never built.
+ Someone actually has translated it.
+ Squeak was actually a translation of that thing originally.
+ But it was just.
+ It was more like a general spec.
+ It was for documentation.
+ It was like, okay, well, this is how you do this.
+ And all the documentation.
+ That’s so funny to be like, it’s a documentation of
+ something that you’re saying.
+ And it doesn’t exist.
+ Yeah, they never used the code that’s in there.
+ In fact, there’s all these typos.
+ Oh, really?
+ In the code itself.
+ Which is fine.
+ But it’s all written in Small Talk as well.
+ So, they didn’t have Small Talk to write, to run this thing
+ because they wrote it in Small Talk.
+ So, of course, it was just for documentation.
+ So, I got that.
+ And I was like, okay, it’s so easy.
+ Like, I can read the thing.
+ And I feel like, okay, this is what the bytecode looks like
+.
+ This is how you dispatch the bytecode.
+ This is how, when you call a method, what would you do?
+ So, I really just translated.
+ I just put the blue book into my own virtual machine.
+ I wrote all in Ruby.
+ So, it’s the first version of Rubinius.
+ And it’s actually the first 50 commits or something in the
+ Git repository.
+ You can go back and look at it.
+ It’s an augmentation of the Small Talk, yeah.
+ Well, it’s for Ruby.
+ But it was for Ruby.
+ It’s basically the techniques, the exact ideas that were in
+ the Small Talk, but for Ruby.
+ But it didn’t run very much.
+ I mean, it was like, it had its own.
+ It did have a very simple garbage collector.
+ It had a bytecode virtual machine.
+ It was super, super slow.
+ Obviously, I was writing it in Ruby and just running it on
+ 1.8.2, I think, was the Ruby at the time.
+ So, I did that.
+ And then I was just very interested in it.
+ And then I got accepted to talk about it at RubyConf Denver
+ 2006.
+ No.
+ Yeah, 2006 or 2007.
+ I can’t remember.
+ Anyway, so, and I realized that I couldn’t present this
+ thing that was just all Ruby and super, super slow.
+ People were going to be like,
+ Oh, this is very cool.
+ How can I use it?
+ And I’d be like,
+ You can’t use it at all.
+ I suggest you never use this thing.
+ That would be really kind of a bummer.
+ So, I translated it into C.
+ Just like hand translated it.
+ Read the Ruby, wrote the C.
+ Read the Ruby, wrote the C.
+ And so, that was the first version of Rubinius that was,
+ that you could sort of use.
+ It was still pretty slow.
+ And we kind of built up techniques and we did all kinds of
+ stuff on top of it until about 2000 and…
+ 2008, 2009, and we translated into C++ and we changed a
+ bunch of things when we did that.
+ So, that’s kind of…
+ So, it’s been, it was Ruby and Ruby and then Ruby and C and
+ then Ruby and C++.
+ Right.
+ Okay.
+ So, it’s…
+ So, what’s next?
+ A closure?
+ I don’t know.
+ I don’t know.
+ Yeah, I have no idea.
+ Yes.
+ ADA.
+ Yeah, I don’t know.
+ Oh, an APL version.
+ That’d be fun.
+ It’s one long line.
+ Yeah.
+ Okay.
+ So, you’re…
+ So, you know, very passionate about creating these
+ concurrent, I mean, a multi-threaded VM.
+ Yeah.
+ And people always are looking at Ruby and say, well, it’s
+ got the GL, the Global Interpreter Lock.
+ Yeah.
+ And, you know, that you have to have the four processes.
+ But look at JRuby and Rubinius.
+ So, now you’re, you know, you’re actually in a way going
+ head to head with Java.
+ Yeah, absolutely.
+ 100%.
+ Yeah.
+ Absolutely.
+ Which is, you know, that’s…
+ Scary.
+ Yeah.
+ Yeah.
+ If you start crying, that’s okay.
+ I appreciate that.
+ You know, because, I mean, it’s a huge mega corporation.
+ Yeah.
+ But, so, you know, it’s pretty obvious that you’re
+ passionate about creating performance
+ tools that we can use to run Codon.
+ In 2014, if I’m looking at Rubinius, can I look and say,
+ yeah, I should maybe look at
+ this and try to see what I can do with it.
+ Maybe look at my production systems.
+ Absolutely.
+ I mean, I think that there are still places that it’s
+ slower than even MRI.
+ There’s a lot of Rails code that does things that kind of
+ confuse the JIT compiler.
+ Yeah.
+ But we have users that use Rubinius for very specific
+ workloads because they control enough
+ of it that they can basically make it…
+ Their Ruby code can run extremely fast inside Rubinius.
+ We have, like, high-frequency traders or people who run
+ workers with just, like, the background
+ workers, a lot of times people run background workers with
+ Rubinius that aren’t running
+ inside Rails, and they’re doing something that’s like, okay
+, well, I’m going to go off
+ and do this big calculation, whatever I want to do.
+ I do that in Rubinius, and it’s super fast.
+ And, again, they sort of, like, kind of get the best of
+ both worlds in that way.
+ And that’s because it’s funny you mention that because we
+ can actually, it might come
+ as a surprise, but we can actually run other stuff on Ruby,
+ not just Rails.
+ Right.
+ Right.
+ Exactly.
+ That’s exactly right.
+ Yeah.
+ But, yeah, no, you did say something, though, that I want
+ to hook onto.
+ I asked this question to DHH earlier about, you know,
+ because he is openly critical of
+ certain companies that, you know, just so happen to use
+ Rails and make a lot of money
+ with it.
+ And then you mentioned the high-frequency traders, which
+ are controversial.
+ Sure, sure.
+ You know, I don’t know what your feelings are regarding
+ high-frequency trading, but
+ knowing that your tools are getting used to basically buy
+ people’s islands, but they’re
+ not necessarily…
+ They’re not necessarily giving anything back.
+ Okay.
+ You know, what are your thoughts regarding…
+ Yeah.
+ I mean, I think that, you know, going in when I was, when I
+ started writing a VM, I thought
+ about this, actually.
+ I was like, okay, I’m going to write, if I really want to
+ do this, and this is true for
+ almost any job.
+ This is not just true for a Ruby implementation.
+ But some of you give away, and you don’t…
+ Yeah, absolutely.
+ At least for a job, I’ve got a paycheck.
+ Yeah, yes.
+ It, I think that you, you go in and you’re like, I’m going
+ to do this.
+ I’m going to do this.
+ And you go into it saying that, like, you know, the, if my
+ license is such a way that
+ I want, I want people to use this independent of whether or
+ not I agree with the way that
+ they’re using it, you have to kind of, like, sort of, you
+ know…
+ Divorce your…
+ Yeah, kind of check that at the door.
+ Right.
+ You have to say, like, look, there’s always going to be
+ those people who are going to
+ do something with it that you don’t, that you would not do
+ with it, right?
+ That doesn’t mean that your thing is not good and that you
+ shouldn’t not do that because,
+ oh, someone might use it in a bad way.
+ It’s not a…
+ It’s not a nuclear weapon.
+ It’s not nuclear, you know, that kind of thing.
+ It’s just some software.
+ If you don’t do it, somebody else will do it.
+ It’s not like there’s this vacuum of software out there.
+ So, I think that I’ve kind of come to the conclusion that
+ it doesn’t, I can’t, I have
+ no control over that, right?
+ I have no control over what, how people are going to use it
+, what they’re going to use
+ it for, whether or not I agree with what they use it for.
+ And so, I can’t really allow myself to worry about that.
+ That’s just, like, that’s the world that’s going to happen.
+ So, that’s how it goes.
+ And just a funny anecdote is that I had a friend, I have a
+ friend who was listening
+ to a Senate judiciary hearing against some company, for a
+ company he worked with, and
+ they were having to explain their algorithm, and he’s
+ sitting there watching, and he’s
+ with his daughter, and he says, daddy wrote that.
+ Wow, that’s amazing.
+ Yeah.
+ And he’s listening to these people talk about this anti-mon
+opoly, you know, I’m not going
+ to say who or what.
+ Yeah, yeah, yeah, that’s amazing.
+ Yeah, yeah, that’s super interesting.
+ And, but, you know, hearing about, you know, like I said, D
+HH complaining or commenting
+ on certain companies, and you mentioned the high-frequency
+ trading, it’s like, this stuff
+ can get used in ways that maybe aren’t anticipated, but you
+ kind of just have to let it go.
+ I mean, I think for me, I think the way that I, the way
+ that I come to terms with it is
+ just to think that if, if I’m making, if I’m making money,
+ I’m making money, I’m making
+ my users happy, whatever they do with it, I sort of, that’s
+ fine with it, right?
+ Again, I can’t control that.
+ I just, but I still want to, I still am beholden, I hold
+ myself beholden to the users who work
+ this thing.
+ You know, so I’m going to use it too.
+ I’m a user as well, but those people’s opinions matter as
+ well.
+ So I want to, if they’re happy with what’s going on, then
+ that, then I’m fine with it.
+ And I have to just sort of end there.
+ I can’t get into the deeper, but what are they actually
+ doing with it?
+ I can’t, I can’t do that, so.
+ Right.
+ And, you know, just coming back to the conference, you know
+, 2014 is wrapping up, I mean, or
+ not 2014 in general, but the RailsConf 2014 is wrapping up
+ today.
+ Are there already plans for what’s next or, since you’re in
+ Chicago, you go all over?
+ Yeah, so we’ve got RubyConf in November coming up, that’s
+ in San Diego.
+ Okay.
+ And then we have RailsConf 2015, which we’re going to
+ announce the location for at the
+ keynote this afternoon.
+ Great.
+ And then, yeah, we’re good.
+ So it’s live in wallets.
+ Yeah.
+ Oh, yeah.
+ Yeah.
+ We’re, we’re going.
+ We’re going.
+ Everything’s good.
+ You know, I think that people have asked us, you know, like
+, oh, could the conference be
+ bigger?
+ Is the conference growing okay?
+ And, you know, we sell out the, we sell out both
+ conferences every year.
+ You know, RailsConf only sells out a couple weeks before
+ the conference actually starts.
+ But that actually tells us that we’re probably exactly the
+ right size.
+ Okay.
+ Because if we weren’t selling, if we weren’t selling out,
+ we’d know that we’re probably
+ buying, you know, we’re a little too big.
+ If we sold out too early, maybe we’re a little too small.
+ But we’re kind of where we are.
+ We’re kind of in this sweet spot, I think.
+ And, you know, we’re a lot of people that are, you know, we
+‘re a lot of people that are
+ a lot of new people at this year’s RailsConf, which is
+ super, super important.
+ We know that the community is healthy.
+ We know that there’s new people coming in.
+ You know, at some point, I’ve told this to other people, at
+ some point there will be
+ a decline.
+ I don’t know when that’s going to occur.
+ I don’t know what it looks like.
+ But I know that having new people come in, be it in the
+ community, be it at the conferences,
+ will delay that decline, you know, all the time.
+ So it might come someday, but it’s, well, eventually there
+‘s going to be the heat death
+ of the universe.
+ But not this year.
+ But not this year.
+ Right.
+ All right.
+ Well, thank you very much.
+ Absolutely.
+ My pleasure.
+ Appreciate it.
+ Sure.
+ User groups with lots to say, interviews and more.
+ No way.
+ Sharing great ideas in the tech community.
+ Fascinating conversations, a plethora of information.
+ Find out for yourself today at ugtastic.com.
+ you</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>

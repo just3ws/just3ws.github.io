@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Archive — Richard Schneeman on Heroku, open source, and…</title>
+<meta name="description" content="Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014. Topic: Heroku, open source, and Rails operations. Conference:…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/interviews/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Interview Archive — Richard Schneeman on Heroku, open source, and…">
+<meta property="og:description" content="Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014. Topic: Heroku, open source, and Rails operations. Conference:…">
+<meta property="og:url" content="https://www.just3ws.com/interviews/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Archive — Richard Schneeman on Heroku, open source, and…">
+<meta name="twitter:description" content="Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014. Topic: Heroku, open source, and Rails operations. Conference:…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" class="is-active" aria-current="page">Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/interviews/">Interviews</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/interviews/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/">Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interviews",
+        "item": "https://www.just3ws.com/interviews/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014",
+        "item": "https://www.just3ws.com/interviews/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    
+    <header>
+      <h1>Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014</h1>
+    </header>
+    
+      <div class="video-subtitle">Interviewee: <a href="/interviews/people/richard-schneeman/">Richard Schneeman</a></div>
+    
+    
+      <div class="video-subtitle">Topic: Heroku, open source, and Rails operations</div>
+    
+    <div class="video-meta">
+      
+        Conference:
+        
+        
+        
+          <a href="/interviews/conferences/railsconf-2014/">RailsConf 2014</a>
+        
+      
+      
+    </div>
+
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
+  "@id": "https://www.just3ws.com/id/interview/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014",
+  "identifier": "richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014",
+  "name": "Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014",
+  "url": "https://www.just3ws.com/interviews/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/",
+  "datePublished": "2022-05-13",
+  "description": "Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014. Topic: Heroku, open source, and Rails operations. Conference:…",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.just3ws.com/id/person/mike-hall",
+    "name": "Mike Hall"
+  },
+  
+  "contributor": [
+    
+    {
+      "@type": "Person",
+      "@id": "https://www.just3ws.com/id/person/richard-schneeman",
+      "name": "Richard Schneeman"
+    }
+    
+  ],
+  
+  
+  
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Heroku, open source, and Rails operations"
+    }
+    
+  
+  
+    ,
+    {
+      "@type": "Event",
+      "@id": "https://www.just3ws.com/id/conference/railsconf-2014",
+      "name": "RailsConf 2014"
+    }
+  ],
+  
+  
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "https://www.just3ws.com/id/video/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014",
+    "name": "Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014",
+    "description": "Interview with Richard Schneeman at RailsConf 2014 on Heroku, open source, and Rails operations. This recording captures practical lessons and perspective for software teams and technical communities.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/YjN7aOH494g/maxresdefault.jpg",
+    "uploadDate": "2022-05-13",
+    "transcript": "It's Mike with Uteastic. I'm here at RailsConf 2014 and I'm\n standing here with\n Richard Schneeman who gave a talk earlier today called Her\noku 2014: A Year in Review.\n He's also a Rails core contributor and he's created a few\n libraries over the\n years. One popular one was Sextant for helping Rails\n developers see their\n routes without having to run reg routes and another was W\nicked which was a\n multi-stop form wizard basically. Thank you very much for\n taking the time to\n speak with me. Yeah, thanks for having me. I appreciate it.\n So Heroku 2014: A Year in Review.\n We're only a few months into 2014. How do you how do you do\n that? That's that's\n pretty... So Rails is really important to us so I measure\n my personal\n years from RailsConf to RailsConf. Oh, okay. So it's a\n RailsConf standard year.\n Yeah. Okay, so it's like the RailsConf calendar. Yeah,\n there's like the Gregorian.\n Exactly, exactly. So yeah, a lot of really interesting\n things have happened this\n past year. We've been majorly focused on performance and a\n lot of a lot of things\n in that vein. Would you like to hear something about that?\n Yeah, no. Please tell me about your talk.\n Yeah, okay, great. So one of the biggest things that we\n released is PX Dynos.\n Okay. In the past, a dyno represents 512 megabytes of RAM\n and with a PX\n dyno instead you get, I want to say it's 8 gigabytes of RAM\n and six physical\n cores. Per dyno? Six physical CPUs, yes, per dyno. Okay. So\n that in the past you've\n always been able to scale up very horizontally very easily\n but if you're\n either using an application that has a lot of memory use or\n if you want a\n lot of concurrency per application, let's say you want to\n run a bunch of Unicorn\n workers or Puma workers per actual physical dyno, then you\n weren't able to in\n the past. But now we're focused a lot more on not just fast\n but consistently\n fast is kind of the key with that. So do you work with the\n dyno team or what\n is your role at Heroku?\n Okay, so I work with the Ruby task force. So Terrence Lee\n and I are on the\n languages team and we are in charge of the Ruby experience.\n That means we\n maintain the build pack whenever you do get push Heroku\n master and it's like all\n bundle install and everything flies by your screen. That's\n us. Okay. So if\n like deploying is slow. I definitely use your work. Okay,\n great, great. Many times, many,\n many times. We also luckily the company thinks it's a big\n part of that product\n is actually coming out and interfacing with the community\n and like finding real\n world people, you know, experiencing their pains or\n experiencing like, you\n know, oh, I love, you know, love your work and just\n figuring out what people like,\n what people don't like, how they're working and where we\n need to go in the\n future. So a lot of that as well. Okay. So I, we, yeah, we\n haven't, my, my team\n hasn't directly implemented the PX dynos product. But what\n's, what's, what's\n interesting to us is that once they came out with this,\n this product and they\n said, okay, we think this is important. We think this is\n valuable. They, they\n kind of came to each individual language team and said like\n, all right, well, how,\n you know, how should people on, uh, you know, Python\n optimize and maximize this?\n And they're like, all right, now that we have this, how do\n people on Ruby like\n really take advantage of it? Exactly. Exactly. And so, um,\n working in like\n hand in hand with some customers and, uh, doing a lot of\n experiments, um, had\n just one afternoon I was like, oh, you know, I wonder how\n many rescue workers I\n could run on, on a PX dino. And I was like, I was like, I\n'll just guess and\n start at 200. Oh, okay. I can run that many. Yeah. Let's\n just see how much\n until we can make it fall over. Yeah, exactly. Uh, and just\n playing around, uh,\n and ended up, so I wrote some documentation.\n For a rescue pool as a result of that. Um, and, uh, so it,\n it's really nice\n having access to, you know, customers who are kind of\n craving and demanding for\n these things and that are interested in actually working\n hand in hand with you\n in, in, in implementing them and getting real world\n feedback from them. So it's\n not just, it's, uh, it's also been able to take a lot of\n that and take it over\n to, um, other, uh, open source frameworks like, like rails.\n Right. Um, so yeah,\n so as far as the, the, uh, I'm actually gonna have to talk\n to you after this interview\n about, about the PX machine because my client does utilize\n that. So that's a, that's very\n interesting. Uh, but that's not too much for the interview.\n Uh, but as far as how did you\n come to be with Heroku X? I mean, you're, you're with Rails\n core kind of, can you tell\n us a little bit about your journey there? Did you, were you\n with Rails core before Heroku\n or? Uh, so, um, actually on the, uh, on the issues team, uh\n, currently. And, uh, I'm a\n big fan of Rails core. Uh, so I started working for Heroku\n about two years ago, a little over\n two years ago. Previous to that, I was working for a\n company called Gowalla. Uh, they were\n competitors to four square, got bought by, uh, got bought\n by Facebook and Facebook doesn't\n employ a lot of Ruby programmers. A little different\n platform. Yeah. Uh, and, um, like\n loved Heroku basically forever and they happen to have,\n have a, have a job slot. And for,\n uh, for getting involved with Rails, that was something\n that like,\n it was my dream to like have a commit into Rails. I\n remember like bumping into, uh, Aaron\n at that conference at one point in time and being like, how\n do I do this? And like, how\n does it even work? I was like, I want to add this, this, uh\n, it's like, you used to have\n get and patch and post in your log, say like saying this\n request is a get request. And\n for some reason that got like bumped or like no longer in\n there. Uh, or maybe it was an\n error message or something. And I was like, how do I do\n this? And like, he helped me out\n and I was like, this is great. And so I kept on trying to\n do that just whenever, you know,\n whenever, whenever I ran into like stubbed my toe on\n something, I'd be like, Oh, I'd\n like to actually like dig in and fix that. And just after\n time, um, yeah, like, uh, actually\n with, with sextant, the, um, the routes in the browser, I\n released that. And then, um,\n some of the, some people on rails core actually\n independently approached me and they were\n like, we love this. Can we, can you like, please work with\n us to like get it into rails,\n you know, rails proper. Uh, and like that, that was a\n pretty good experience and just\n hung out in, uh, in campfire.\n Yeah.\n I just did a bunch of work. And one day I got an email\n saying, Hey, like we've given\n you like, like collaborator access, like, you know, feel\n free to like close out, uh,\n close out issues and like, you know, do, do all of this\n stuff.\n Right. Right. Yeah. That's interesting. You're in the path\n that it's, it's a common path.\n It's get in there, do something, be helpful, reach out,\n communicate. And if you're doing\n good stuff, eventually you're probably going to become a\n trusted member of the team. And,\n uh,\n you just keep going at, uh, uh, Charles Nutter had kind of\n the same kind of story. He was\n just saw some issues and just wanted to help out. And\n eventually, you know, he's running\n J Ruby.\n Next thing you know. Yeah. I mean like very, like the, the\n famous quote, like writers,\n right. It's like open source contributors contribute. Yeah.\n Like just, you know, start\n out with documentation and like, it's a, it's not magic. It\n's a lot of work. Yeah. And,\n uh, so I'm just curious, working with, with the, uh, the\n Ruby, uh, team. I mean, you know,\n you probably have to do a lot of interaction with people\n outside the community. Um, you\n know, how's that, how do you balance that with your, your\n action, like going to conferences\n and talking, how do you balance that with, with working\n inside of your own organization?\n Oh, uh, it's really tough. Um, any kind of balance is\n really tough. I, I tend to be the\n kind of person that like, I get a problem and I like focus,\n like that's all I can think\n about that one problem. Right. Uh, so a lot of force is\n really important. I, I, I, I, I,\n uh, so a lot of forced context switching, um, a lot of, uh,\n uh, I mean, even, even at,\n um, even at conferences, just like having to, having to\n partition time and saying like,\n okay, you know what? Even like I'm here, I'm still, I'm\n still meeting people. Um, one trick,\n well, maybe it's not a trick, but at conferences, I think,\n uh, I think it's actually a mistake\n to try to go to every single session. Right. And you know,\n even if it's, especially if\n it's a multi-track session or, you know, conference, uh,\n you just can't. Uh, so I try to reserve\n percent of my time for just hallway interactions, bumping\n into people, uh, like having some\n great conversations, finding out what other people are, are\n working on. And I still love\n going to, going to the talks and hearing everything there.\n Um, but, uh, you know, so instead of\n working in my room, like I'll work outside and if somebody\n bumps into me and asked me\n a question about something I've been working on or they\n want to like, Oh, I've, you know,\n I've typically the best feedback is like unsolicited\n feedback. Like somebody is like, Hey, you\n know, I didn't like this one thing that happened.\n When I was pushing to Roku and I'm like, Oh, you know, I\n can actually do something\n about that. Like, uh, just, you know, recently we've had\n some, it's like people are like,\n Oh, I'm getting bad performance. And it's like, Oh, well\n like, let me take a look. And\n it's like, okay, Oh, you're, I see you're using web brick\n in, in production. And it's\n like, and it's like, Oh, well I didn't know that. And it's\n like, it just says rails, like\n it says rail server and it's, you know, it's just rail\n server. And it's like, yeah, but\n so it's a little bit more complicated. Yeah. And it's like,\n we, well, we, you know, and\n some warnings and some things that just, uh, this kind of\n like gradual trying to gently\n lead you to the path of happiness and Zen, you know, and\n this is a, probably a question\n on a left field, but I'm, since I mentioned Charles Nutter\n earlier, um, Hedius is a J\n Ruby, uh, maintainer. Um, the, there's, there's a trend\n towards, uh, moving towards, uh, using\n J Ruby or encouraging people to use J Ruby because of, uh,\n proper threading and, and,\n um, you know, uh, some of that support when you're long\n running processes. Is that something\n that, um, like you, are you using C Ruby or are you\n starting to encourage people to look\n at J Ruby with Heroku or is that, uh, so, so we've\n supported J Ruby for quite a while\n actually. And, um, we, we work with Charles quite a bit. We\n also, we have, uh, we have\n Rubinius. It's, it's actually technically not supported,\n but, uh, but it's still, it's\n still runs and it, and it works. Our support is actually\n provided through the Rubinius.\n Team. Um, yeah. And, uh, so I just generally wreck\n encourage people to like play and have\n fun and like, please, like if you're on MRI now, try MRR,\n try J Ruby. And like I've written\n when we first, when we first launched J Ruby, like I wrote\n docs on like migrating a rails\n app and, um, you know, just some, some things, uh, like\n even being a beat, trying that as\n a gem author, I was like, Oh wow, there's all of these gems\n that like just don't work\n on J Ruby.\n Because of like C extensions. And, um, and so like in the\n future, now that I'm working\n on gems, I'm very conscious of like how, like on Travis, I\n always test on J Ruby and always\n test on Rubinius.\n I was going to say like with Travis, you can have multiple\n targets. Exactly. You can, you\n can just say, test this on J Ruby or MRI one nine one eight\n two things like that. So you\n can get some of that flexibility.\n Yeah. And, and it's also the, the, the more people who try\n it, the more people who demand\n these.\n Things that are looking for them, the more knowledge there\n is out there. It's a lot easier\n today to switch over your app to use J Ruby. Um, I mean the\n community portion of it, typically\n my code has been relatively trivial. Most of my code just\n works and it's, and like over\n time, like it gets faster. Uh, and so like, I think every\n app is slightly different. Uh,\n so some people just want like running, you know, fast\n scripts and like, that's exactly\n like, you cannot beat the MRI, like boot up time.\n It is great and amazing. Like if you want to, if you can\n parallelize and you could,\n you're actually doing real Ruby, like number crunching,\n like J Ruby and threads. Like I\n still, but I still actually recommend MRI, even though we\n have a global interpreter lock,\n it's still not, it's not like a, you can still write\n threaded code, especially if you're\n using like a web server, um, or you're on the web, like you\n're using database calls,\n you're hitting APIs, all these other things. Didn't you\n create a background worker gem\n called threaded?\n Threaded or something like that.\n Yeah, yeah, yeah, yeah. Yeah. Cause actually I, I spiked on\n that myself between sucker\n punch and, and, uh, threaded. Uh, so yeah. And being able\n to use that for background\n on, on J Ruby and save a few bucks on dynos was, yeah. Yeah\n. So I had forgotten about\n that. So even, even in other smaller aspects of my NAB as,\n as popular, you've done a bunch\n of open source. Sorry, that was, that was, you're talking\n about threads and I'm sitting\n there. Oh yeah. That's.\n That's something that's, you know, you can do that. You don\n't necessarily always have\n to spin up a rescue worker in a separate dyno or in, in, in\n Heroku. And, and, and that's\n the reason I was asking about moving to J Ruby is, um, you\n know, being able to do those\n things where I can consolidate and have one, like if I don\n't have a long running process,\n it's going to be kind of quick, but I want to be able to\n just return my response back\n to the clients. I can, uh, you know, run this thing in a\n separate, uh, thread. And, uh,\n earlier today you had a book signing. So you're, you're,\n you're moving into the world of being\n an author. You, you're a code writer and now you're a code\n book author.\n Yeah. A writer of many things. So the name of the book is\n Heroku up and running. It's\n a published on O'Reilly. Also a coauthor, uh, Neil Midd\nleton. He like, uh, it was, he\n actually started the book and then, and then brought me in.\n Um, so a lot of there, there's\n some other Heroku books out there and most of them just end\n up being do this, then do\n this, then do that.\n And it's just number one, all the majority of it is very\n technical, very rote. It's all\n online already and there's no explanation as to why. And we\n wanted something that was\n a little bit more timeless. Um, it's really got into the\n philosophy and, uh, it was published\n a couple, a couple of months ago and it's, it's not\n outdated yet.\n Oh, really? Yeah.\n Yeah.\n That's rare.\n It's, it's like, and that, it's like, that's the, that's\n like the golden standard of what\n we were going for.\n It didn't make it past the three month mark.\n Um, yeah, I, I think like just, yeah, we're right there. So\n we'll know in a few days whether\n or not totally like revamp these hierarchies if the book\n collapses. But, uh, and, and I've\n had, I've had some people tell me, uh, that like they\n played around a little bit with\n Heroku and there's a, there's a large number of things that\n they're like, they didn't realize\n or they knew that that was what happened, but not\n necessarily why it happened that way.\n Yeah. And even today at lunch, I was hearing one of the, uh\n, other, uh, employees from\n Heroku that's here was sitting at the table and people were\n just picking his brain and\n trying to understand. And it sounds like Heroku has done a\n great job of black boxing a lot\n and, and making a very low barrier to entry, but being able\n to go beyond that and say,\n okay, what can I really do with this, this thing that I\n have with this dino? What is,\n what is that? You know, and it's, and these obstructions\n sometimes, you know, they're,\n they're good for marketing and being able to just have a\n common language. But when somebody's\n really like, how do I get in there and do stuff and things\n I do every day, there's a,\n you can run,\n a Heroku run bash and I can actually get a bash shell into\n like an LS and CD and, you\n know, and I did not know that. Exactly. And it's like, I\n literally use this every single\n day. And I mean, so there's, there's some stuff in there\n like that, that like, it's\n like, there's a whole section on debugging and troubles\nhooting and like, you know, things\n that you might not have known before. But I mean, like we,\n we do love the, we, we aim\n to be as easy to use as possible. Um, and kind of my goal\n in life is to make that a little\n less black boxy, uh, and, and just make it a little bit\n more user friendly. Yeah. So\n like for the 90% use cases, it's a nice even path and it's\n nice and well trodden. But when\n you need to go off and just LS into your bin directory and\n see what permissions are on\n some bin. Yeah. And which, you know, which bundle and all\n of these other, like, so, so\n there's a lot of that stuff that's being exposed in the\n book and how to do that. Yeah. Because\n to, to be frank, people, when I said, well, uh, Heroku Dyno\n is a Linux instance. I'm going\n to boot to 10. I think it's where it's at right now or\n something. They were like, I\n did not know. Wait, it runs on a computer. I thought it was\n literally magic. I mean,\n it's almost like, is it, is it some kind of custom bespoke,\n you know, image that's its\n own kernel build or something like that. Yeah. You don't\n know, you know, it's, it's hard to tell those kinds\n of things unless you go in there and dig around. I had\n somebody come up to me. Oh, you, you inject\n a custom version of rails, right? No. Yeah. It's the\n version of rails you specify. I think\n something that comes from when I would rewrite your, your\n HTML and you're like, well, what\n really happened there? No, I just wrote a file and it went\n and also mounting some gems\n that used to do. Yeah. Yeah. That's, that's changed. But\n anyway, again, thank you very\n much for taking the time. Heroku up and running. Heroku up\n and running. Right. And that's, I'm sure it's on Amazon\n and all those places. Wherever you find books. Thank you.\n User groups with lots to say,\n interviews and more. No way. Sharing great ideas in the\n tech community. Fascinating conversations,\n a plethora of information. Find out for yourself today at u\nktastic.com.\n you",
+    "url": "https://www.just3ws.com/videos/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/",
+    "embedUrl": "https://www.youtube.com/embed/YjN7aOH494g"
+  },
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/interviews/richard-schneeman-hacker-at-heroku-and-avid-f-oss-contributor-railsconf-2014/"
+  }
+}
+</script>
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="interview-embed" src="https://www.youtube.com/embed/YjN7aOH494g" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Richard Schneeman on Heroku, open source, and Rails operations at RailsConf 2014"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Interview with Richard Schneeman at RailsConf 2014 on Heroku, open source, and Rails operations. This recording captures practical lessons and perspective for software teams and technical communities.</div>
+        
+        <div class="video-meta">
+          Published: May 13, 2022
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/YjN7aOH494g">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=YjN7aOH494g&list=PLgmTADxYKzzZItmN7yuhTCzzF3YC7kqGK">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>It’s Mike with Uteastic. I’m here at RailsConf 2014 and I’m
+ standing here with
+ Richard Schneeman who gave a talk earlier today called Her
+oku 2014: A Year in Review.
+ He’s also a Rails core contributor and he’s created a few
+ libraries over the
+ years. One popular one was Sextant for helping Rails
+ developers see their
+ routes without having to run reg routes and another was W
+icked which was a
+ multi-stop form wizard basically. Thank you very much for
+ taking the time to
+ speak with me. Yeah, thanks for having me. I appreciate it.
+ So Heroku 2014: A Year in Review.
+ We’re only a few months into 2014. How do you how do you do
+ that? That’s that’s
+ pretty… So Rails is really important to us so I measure
+ my personal
+ years from RailsConf to RailsConf. Oh, okay. So it’s a
+ RailsConf standard year.
+ Yeah. Okay, so it’s like the RailsConf calendar. Yeah,
+ there’s like the Gregorian.
+ Exactly, exactly. So yeah, a lot of really interesting
+ things have happened this
+ past year. We’ve been majorly focused on performance and a
+ lot of a lot of things
+ in that vein. Would you like to hear something about that?
+ Yeah, no. Please tell me about your talk.
+ Yeah, okay, great. So one of the biggest things that we
+ released is PX Dynos.
+ Okay. In the past, a dyno represents 512 megabytes of RAM
+ and with a PX
+ dyno instead you get, I want to say it’s 8 gigabytes of RAM
+ and six physical
+ cores. Per dyno? Six physical CPUs, yes, per dyno. Okay. So
+ that in the past you’ve
+ always been able to scale up very horizontally very easily
+ but if you’re
+ either using an application that has a lot of memory use or
+ if you want a
+ lot of concurrency per application, let’s say you want to
+ run a bunch of Unicorn
+ workers or Puma workers per actual physical dyno, then you
+ weren’t able to in
+ the past. But now we’re focused a lot more on not just fast
+ but consistently
+ fast is kind of the key with that. So do you work with the
+ dyno team or what
+ is your role at Heroku?
+ Okay, so I work with the Ruby task force. So Terrence Lee
+ and I are on the
+ languages team and we are in charge of the Ruby experience.
+ That means we
+ maintain the build pack whenever you do get push Heroku
+ master and it’s like all
+ bundle install and everything flies by your screen. That’s
+ us. Okay. So if
+ like deploying is slow. I definitely use your work. Okay,
+ great, great. Many times, many,
+ many times. We also luckily the company thinks it’s a big
+ part of that product
+ is actually coming out and interfacing with the community
+ and like finding real
+ world people, you know, experiencing their pains or
+ experiencing like, you
+ know, oh, I love, you know, love your work and just
+ figuring out what people like,
+ what people don’t like, how they’re working and where we
+ need to go in the
+ future. So a lot of that as well. Okay. So I, we, yeah, we
+ haven’t, my, my team
+ hasn’t directly implemented the PX dynos product. But what
+‘s, what’s, what’s
+ interesting to us is that once they came out with this,
+ this product and they
+ said, okay, we think this is important. We think this is
+ valuable. They, they
+ kind of came to each individual language team and said like
+, all right, well, how,
+ you know, how should people on, uh, you know, Python
+ optimize and maximize this?
+ And they’re like, all right, now that we have this, how do
+ people on Ruby like
+ really take advantage of it? Exactly. Exactly. And so, um,
+ working in like
+ hand in hand with some customers and, uh, doing a lot of
+ experiments, um, had
+ just one afternoon I was like, oh, you know, I wonder how
+ many rescue workers I
+ could run on, on a PX dino. And I was like, I was like, I
+‘ll just guess and
+ start at 200. Oh, okay. I can run that many. Yeah. Let’s
+ just see how much
+ until we can make it fall over. Yeah, exactly. Uh, and just
+ playing around, uh,
+ and ended up, so I wrote some documentation.
+ For a rescue pool as a result of that. Um, and, uh, so it,
+ it’s really nice
+ having access to, you know, customers who are kind of
+ craving and demanding for
+ these things and that are interested in actually working
+ hand in hand with you
+ in, in, in implementing them and getting real world
+ feedback from them. So it’s
+ not just, it’s, uh, it’s also been able to take a lot of
+ that and take it over
+ to, um, other, uh, open source frameworks like, like rails.
+ Right. Um, so yeah,
+ so as far as the, the, uh, I’m actually gonna have to talk
+ to you after this interview
+ about, about the PX machine because my client does utilize
+ that. So that’s a, that’s very
+ interesting. Uh, but that’s not too much for the interview.
+ Uh, but as far as how did you
+ come to be with Heroku X? I mean, you’re, you’re with Rails
+ core kind of, can you tell
+ us a little bit about your journey there? Did you, were you
+ with Rails core before Heroku
+ or? Uh, so, um, actually on the, uh, on the issues team, uh
+, currently. And, uh, I’m a
+ big fan of Rails core. Uh, so I started working for Heroku
+ about two years ago, a little over
+ two years ago. Previous to that, I was working for a
+ company called Gowalla. Uh, they were
+ competitors to four square, got bought by, uh, got bought
+ by Facebook and Facebook doesn’t
+ employ a lot of Ruby programmers. A little different
+ platform. Yeah. Uh, and, um, like
+ loved Heroku basically forever and they happen to have,
+ have a, have a job slot. And for,
+ uh, for getting involved with Rails, that was something
+ that like,
+ it was my dream to like have a commit into Rails. I
+ remember like bumping into, uh, Aaron
+ at that conference at one point in time and being like, how
+ do I do this? And like, how
+ does it even work? I was like, I want to add this, this, uh
+, it’s like, you used to have
+ get and patch and post in your log, say like saying this
+ request is a get request. And
+ for some reason that got like bumped or like no longer in
+ there. Uh, or maybe it was an
+ error message or something. And I was like, how do I do
+ this? And like, he helped me out
+ and I was like, this is great. And so I kept on trying to
+ do that just whenever, you know,
+ whenever, whenever I ran into like stubbed my toe on
+ something, I’d be like, Oh, I’d
+ like to actually like dig in and fix that. And just after
+ time, um, yeah, like, uh, actually
+ with, with sextant, the, um, the routes in the browser, I
+ released that. And then, um,
+ some of the, some people on rails core actually
+ independently approached me and they were
+ like, we love this. Can we, can you like, please work with
+ us to like get it into rails,
+ you know, rails proper. Uh, and like that, that was a
+ pretty good experience and just
+ hung out in, uh, in campfire.
+ Yeah.
+ I just did a bunch of work. And one day I got an email
+ saying, Hey, like we’ve given
+ you like, like collaborator access, like, you know, feel
+ free to like close out, uh,
+ close out issues and like, you know, do, do all of this
+ stuff.
+ Right. Right. Yeah. That’s interesting. You’re in the path
+ that it’s, it’s a common path.
+ It’s get in there, do something, be helpful, reach out,
+ communicate. And if you’re doing
+ good stuff, eventually you’re probably going to become a
+ trusted member of the team. And,
+ uh,
+ you just keep going at, uh, uh, Charles Nutter had kind of
+ the same kind of story. He was
+ just saw some issues and just wanted to help out. And
+ eventually, you know, he’s running
+ J Ruby.
+ Next thing you know. Yeah. I mean like very, like the, the
+ famous quote, like writers,
+ right. It’s like open source contributors contribute. Yeah.
+ Like just, you know, start
+ out with documentation and like, it’s a, it’s not magic. It
+‘s a lot of work. Yeah. And,
+ uh, so I’m just curious, working with, with the, uh, the
+ Ruby, uh, team. I mean, you know,
+ you probably have to do a lot of interaction with people
+ outside the community. Um, you
+ know, how’s that, how do you balance that with your, your
+ action, like going to conferences
+ and talking, how do you balance that with, with working
+ inside of your own organization?
+ Oh, uh, it’s really tough. Um, any kind of balance is
+ really tough. I, I tend to be the
+ kind of person that like, I get a problem and I like focus,
+ like that’s all I can think
+ about that one problem. Right. Uh, so a lot of force is
+ really important. I, I, I, I, I,
+ uh, so a lot of forced context switching, um, a lot of, uh,
+ uh, I mean, even, even at,
+ um, even at conferences, just like having to, having to
+ partition time and saying like,
+ okay, you know what? Even like I’m here, I’m still, I’m
+ still meeting people. Um, one trick,
+ well, maybe it’s not a trick, but at conferences, I think,
+ uh, I think it’s actually a mistake
+ to try to go to every single session. Right. And you know,
+ even if it’s, especially if
+ it’s a multi-track session or, you know, conference, uh,
+ you just can’t. Uh, so I try to reserve
+ percent of my time for just hallway interactions, bumping
+ into people, uh, like having some
+ great conversations, finding out what other people are, are
+ working on. And I still love
+ going to, going to the talks and hearing everything there.
+ Um, but, uh, you know, so instead of
+ working in my room, like I’ll work outside and if somebody
+ bumps into me and asked me
+ a question about something I’ve been working on or they
+ want to like, Oh, I’ve, you know,
+ I’ve typically the best feedback is like unsolicited
+ feedback. Like somebody is like, Hey, you
+ know, I didn’t like this one thing that happened.
+ When I was pushing to Roku and I’m like, Oh, you know, I
+ can actually do something
+ about that. Like, uh, just, you know, recently we’ve had
+ some, it’s like people are like,
+ Oh, I’m getting bad performance. And it’s like, Oh, well
+ like, let me take a look. And
+ it’s like, okay, Oh, you’re, I see you’re using web brick
+ in, in production. And it’s
+ like, and it’s like, Oh, well I didn’t know that. And it’s
+ like, it just says rails, like
+ it says rail server and it’s, you know, it’s just rail
+ server. And it’s like, yeah, but
+ so it’s a little bit more complicated. Yeah. And it’s like,
+ we, well, we, you know, and
+ some warnings and some things that just, uh, this kind of
+ like gradual trying to gently
+ lead you to the path of happiness and Zen, you know, and
+ this is a, probably a question
+ on a left field, but I’m, since I mentioned Charles Nutter
+ earlier, um, Hedius is a J
+ Ruby, uh, maintainer. Um, the, there’s, there’s a trend
+ towards, uh, moving towards, uh, using
+ J Ruby or encouraging people to use J Ruby because of, uh,
+ proper threading and, and,
+ um, you know, uh, some of that support when you’re long
+ running processes. Is that something
+ that, um, like you, are you using C Ruby or are you
+ starting to encourage people to look
+ at J Ruby with Heroku or is that, uh, so, so we’ve
+ supported J Ruby for quite a while
+ actually. And, um, we, we work with Charles quite a bit. We
+ also, we have, uh, we have
+ Rubinius. It’s, it’s actually technically not supported,
+ but, uh, but it’s still, it’s
+ still runs and it, and it works. Our support is actually
+ provided through the Rubinius.
+ Team. Um, yeah. And, uh, so I just generally wreck
+ encourage people to like play and have
+ fun and like, please, like if you’re on MRI now, try MRR,
+ try J Ruby. And like I’ve written
+ when we first, when we first launched J Ruby, like I wrote
+ docs on like migrating a rails
+ app and, um, you know, just some, some things, uh, like
+ even being a beat, trying that as
+ a gem author, I was like, Oh wow, there’s all of these gems
+ that like just don’t work
+ on J Ruby.
+ Because of like C extensions. And, um, and so like in the
+ future, now that I’m working
+ on gems, I’m very conscious of like how, like on Travis, I
+ always test on J Ruby and always
+ test on Rubinius.
+ I was going to say like with Travis, you can have multiple
+ targets. Exactly. You can, you
+ can just say, test this on J Ruby or MRI one nine one eight
+ two things like that. So you
+ can get some of that flexibility.
+ Yeah. And, and it’s also the, the, the more people who try
+ it, the more people who demand
+ these.
+ Things that are looking for them, the more knowledge there
+ is out there. It’s a lot easier
+ today to switch over your app to use J Ruby. Um, I mean the
+ community portion of it, typically
+ my code has been relatively trivial. Most of my code just
+ works and it’s, and like over
+ time, like it gets faster. Uh, and so like, I think every
+ app is slightly different. Uh,
+ so some people just want like running, you know, fast
+ scripts and like, that’s exactly
+ like, you cannot beat the MRI, like boot up time.
+ It is great and amazing. Like if you want to, if you can
+ parallelize and you could,
+ you’re actually doing real Ruby, like number crunching,
+ like J Ruby and threads. Like I
+ still, but I still actually recommend MRI, even though we
+ have a global interpreter lock,
+ it’s still not, it’s not like a, you can still write
+ threaded code, especially if you’re
+ using like a web server, um, or you’re on the web, like you
+‘re using database calls,
+ you’re hitting APIs, all these other things. Didn’t you
+ create a background worker gem
+ called threaded?
+ Threaded or something like that.
+ Yeah, yeah, yeah, yeah. Yeah. Cause actually I, I spiked on
+ that myself between sucker
+ punch and, and, uh, threaded. Uh, so yeah. And being able
+ to use that for background
+ on, on J Ruby and save a few bucks on dynos was, yeah. Yeah
+. So I had forgotten about
+ that. So even, even in other smaller aspects of my NAB as,
+ as popular, you’ve done a bunch
+ of open source. Sorry, that was, that was, you’re talking
+ about threads and I’m sitting
+ there. Oh yeah. That’s.
+ That’s something that’s, you know, you can do that. You don
+‘t necessarily always have
+ to spin up a rescue worker in a separate dyno or in, in, in
+ Heroku. And, and, and that’s
+ the reason I was asking about moving to J Ruby is, um, you
+ know, being able to do those
+ things where I can consolidate and have one, like if I don
+‘t have a long running process,
+ it’s going to be kind of quick, but I want to be able to
+ just return my response back
+ to the clients. I can, uh, you know, run this thing in a
+ separate, uh, thread. And, uh,
+ earlier today you had a book signing. So you’re, you’re,
+ you’re moving into the world of being
+ an author. You, you’re a code writer and now you’re a code
+ book author.
+ Yeah. A writer of many things. So the name of the book is
+ Heroku up and running. It’s
+ a published on O’Reilly. Also a coauthor, uh, Neil Midd
+leton. He like, uh, it was, he
+ actually started the book and then, and then brought me in.
+ Um, so a lot of there, there’s
+ some other Heroku books out there and most of them just end
+ up being do this, then do
+ this, then do that.
+ And it’s just number one, all the majority of it is very
+ technical, very rote. It’s all
+ online already and there’s no explanation as to why. And we
+ wanted something that was
+ a little bit more timeless. Um, it’s really got into the
+ philosophy and, uh, it was published
+ a couple, a couple of months ago and it’s, it’s not
+ outdated yet.
+ Oh, really? Yeah.
+ Yeah.
+ That’s rare.
+ It’s, it’s like, and that, it’s like, that’s the, that’s
+ like the golden standard of what
+ we were going for.
+ It didn’t make it past the three month mark.
+ Um, yeah, I, I think like just, yeah, we’re right there. So
+ we’ll know in a few days whether
+ or not totally like revamp these hierarchies if the book
+ collapses. But, uh, and, and I’ve
+ had, I’ve had some people tell me, uh, that like they
+ played around a little bit with
+ Heroku and there’s a, there’s a large number of things that
+ they’re like, they didn’t realize
+ or they knew that that was what happened, but not
+ necessarily why it happened that way.
+ Yeah. And even today at lunch, I was hearing one of the, uh
+, other, uh, employees from
+ Heroku that’s here was sitting at the table and people were
+ just picking his brain and
+ trying to understand. And it sounds like Heroku has done a
+ great job of black boxing a lot
+ and, and making a very low barrier to entry, but being able
+ to go beyond that and say,
+ okay, what can I really do with this, this thing that I
+ have with this dino? What is,
+ what is that? You know, and it’s, and these obstructions
+ sometimes, you know, they’re,
+ they’re good for marketing and being able to just have a
+ common language. But when somebody’s
+ really like, how do I get in there and do stuff and things
+ I do every day, there’s a,
+ you can run,
+ a Heroku run bash and I can actually get a bash shell into
+ like an LS and CD and, you
+ know, and I did not know that. Exactly. And it’s like, I
+ literally use this every single
+ day. And I mean, so there’s, there’s some stuff in there
+ like that, that like, it’s
+ like, there’s a whole section on debugging and troubles
+hooting and like, you know, things
+ that you might not have known before. But I mean, like we,
+ we do love the, we, we aim
+ to be as easy to use as possible. Um, and kind of my goal
+ in life is to make that a little
+ less black boxy, uh, and, and just make it a little bit
+ more user friendly. Yeah. So
+ like for the 90% use cases, it’s a nice even path and it’s
+ nice and well trodden. But when
+ you need to go off and just LS into your bin directory and
+ see what permissions are on
+ some bin. Yeah. And which, you know, which bundle and all
+ of these other, like, so, so
+ there’s a lot of that stuff that’s being exposed in the
+ book and how to do that. Yeah. Because
+ to, to be frank, people, when I said, well, uh, Heroku Dyno
+ is a Linux instance. I’m going
+ to boot to 10. I think it’s where it’s at right now or
+ something. They were like, I
+ did not know. Wait, it runs on a computer. I thought it was
+ literally magic. I mean,
+ it’s almost like, is it, is it some kind of custom bespoke,
+ you know, image that’s its
+ own kernel build or something like that. Yeah. You don’t
+ know, you know, it’s, it’s hard to tell those kinds
+ of things unless you go in there and dig around. I had
+ somebody come up to me. Oh, you, you inject
+ a custom version of rails, right? No. Yeah. It’s the
+ version of rails you specify. I think
+ something that comes from when I would rewrite your, your
+ HTML and you’re like, well, what
+ really happened there? No, I just wrote a file and it went
+ and also mounting some gems
+ that used to do. Yeah. Yeah. That’s, that’s changed. But
+ anyway, again, thank you very
+ much for taking the time. Heroku up and running. Heroku up
+ and running. Right. And that’s, I’m sure it’s on Amazon
+ and all those places. Wherever you find books. Thank you.
+ User groups with lots to say,
+ interviews and more. No way. Sharing great ideas in the
+ tech community. Fascinating conversations,
+ a plethora of information. Find out for yourself today at u
+ktastic.com.
+ you</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>

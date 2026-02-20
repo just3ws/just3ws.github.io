@@ -1,0 +1,279 @@
+.devex-calculator-page {
+  --devex-bg-1: #f2f5fb;
+  --devex-bg-2: #e8eef8;
+  --devex-ink: #1f2736;
+  --devex-muted: #4c566a;
+  --devex-accent: #4f79af;
+  --devex-accent-2: #6aa2c1;
+  --devex-border: #cfd8e6;
+  --devex-surface: #ffffff;
+  --devex-surface-alt: #f7f9fd;
+  color: var(--devex-ink);
+}
+
+.devex-hero {
+  background: linear-gradient(135deg, rgba(129, 161, 193, 0.2), rgba(143, 188, 187, 0.25), rgba(216, 222, 233, 0.65));
+  border: 1px solid var(--devex-border);
+  border-radius: 0.85rem;
+  padding: 1.25rem 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 10px 24px rgba(46, 52, 64, 0.09);
+}
+
+.devex-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  color: var(--devex-accent);
+  font-weight: 700;
+}
+
+.devex-hero h1 {
+  margin-top: 0.3rem;
+  margin-bottom: 0.35rem;
+}
+
+.devex-form fieldset {
+  border: 1px solid var(--devex-border);
+  border-radius: 0.65rem;
+  background: linear-gradient(180deg, var(--devex-surface), var(--devex-surface-alt));
+  padding: 1rem;
+  margin: 0 0 1rem;
+  box-shadow: 0 2px 8px rgba(46, 52, 64, 0.04);
+}
+
+.devex-form legend {
+  font-weight: 700;
+  padding: 0 0.4rem;
+  color: var(--devex-accent);
+}
+
+.devex-inline-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.devex-inline-checkbox input {
+  width: auto;
+  margin-top: 0;
+}
+
+.devex-help-tip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--devex-border);
+  color: var(--devex-accent);
+  background: #fff;
+  font-size: 0.72rem;
+  line-height: 1;
+  cursor: help;
+}
+
+.devex-help-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.4rem);
+  transform: translateX(-50%);
+  min-width: 220px;
+  max-width: 300px;
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.42rem;
+  border: 1px solid var(--devex-border);
+  background: #1f2736;
+  color: #eceff4;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity 120ms ease;
+}
+
+.devex-help-tip:hover::after,
+.devex-help-tip:focus-visible::after {
+  opacity: 1;
+}
+
+.devex-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.devex-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.devex-grid-5 {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.devex-form label {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--devex-muted);
+}
+
+.devex-form input,
+.devex-form textarea {
+  width: 100%;
+  margin-top: 0.25rem;
+  border: 1px solid var(--devex-border);
+  border-radius: 0.45rem;
+  padding: 0.48rem 0.58rem;
+  font: inherit;
+  background: #fff;
+  color: var(--devex-ink);
+}
+
+.devex-form input:focus,
+.devex-form textarea:focus {
+  outline: none;
+  border-color: var(--devex-accent);
+  box-shadow: 0 0 0 3px rgba(94, 129, 172, 0.18);
+}
+
+.devex-note,
+.devex-note-block {
+  color: var(--devex-muted);
+  font-size: 0.86rem;
+}
+
+.devex-note-block {
+  background: linear-gradient(135deg, rgba(136, 192, 208, 0.15), rgba(216, 222, 233, 0.25));
+  border: 1px dashed var(--devex-border);
+  border-radius: 0.45rem;
+  padding: 0.55rem 0.6rem;
+}
+
+.devex-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.9rem 0;
+}
+
+.devex-errors {
+  margin-top: 0.35rem;
+  color: #9f3e48;
+  font-weight: 600;
+}
+
+.devex-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.devex-summary-card {
+  border: 1px solid var(--devex-border);
+  border-radius: 0.62rem;
+  background: linear-gradient(180deg, #ffffff, #f3f7fc);
+  padding: 0.72rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  box-shadow: 0 6px 14px rgba(46, 52, 64, 0.06);
+}
+
+.devex-summary-card span {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--devex-accent);
+}
+
+.devex-core4-card p,
+.devex-core4-card small {
+  margin: 0;
+  color: var(--devex-muted);
+}
+
+.devex-status {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.devex-status-healthy {
+  background: rgba(163, 190, 140, 0.22);
+  color: #2f5f36;
+}
+
+.devex-status-watch {
+  background: rgba(235, 203, 139, 0.3);
+  color: #7d5b08;
+}
+
+.devex-status-risk {
+  background: rgba(191, 97, 106, 0.25);
+  color: #7e252d;
+}
+
+.devex-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid var(--devex-border);
+  border-radius: 0.55rem;
+  background: #fff;
+}
+
+.devex-input-table,
+.devex-output-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+
+.devex-input-table th,
+.devex-input-table td,
+.devex-output-table th,
+.devex-output-table td {
+  border-bottom: 1px solid #dbe3f0;
+  padding: 0.45rem 0.52rem;
+  vertical-align: top;
+}
+
+.devex-input-table th,
+.devex-output-table th {
+  background: linear-gradient(180deg, #edf3fb, #e6eef9);
+  color: #2f3f59;
+  text-align: left;
+  font-size: 0.86rem;
+}
+
+.devex-output-table tbody tr:nth-child(even),
+.devex-input-table tbody tr:nth-child(even) {
+  background: rgba(245, 249, 255, 0.6);
+}
+
+.devex-row-action {
+  padding: 0.2rem 0.45rem;
+  font-size: 0.78rem;
+}
+
+#json-snapshot {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  min-height: 160px;
+}
+
+@media (max-width: 900px) {
+  .devex-form fieldset {
+    padding: 0.78rem;
+  }
+
+  .devex-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

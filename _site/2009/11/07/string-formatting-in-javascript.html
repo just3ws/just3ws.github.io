@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>String Formatting In JavaScript</title>
+<meta name="description" content="A follow-up on JavaScript string formatting patterns, including static and prototype-based implementations and community alternatives.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/2009/11/07/string-formatting-in-javascript.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="String Formatting In JavaScript">
+<meta property="og:description" content="A follow-up on JavaScript string formatting patterns, including static and prototype-based implementations and community alternatives.">
+<meta property="og:url" content="https://www.just3ws.com/2009/11/07/string-formatting-in-javascript.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="String Formatting In JavaScript">
+<meta name="twitter:description" content="A follow-up on JavaScript string formatting patterns, including static and prototype-based implementations and community alternatives.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "String Formatting In JavaScript",
+  "description": "A follow-up on JavaScript string formatting patterns, including static and prototype-based implementations and community alternatives.",
+  "author": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "datePublished": "2009-11-07T00:00:00-06:00",
+  "dateModified": "2026-02-15T08:07:28-06:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/2009/11/07/string-formatting-in-javascript.html"
+  }
+}
+</script>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+
+    
+      <a href="/2009/11/07/string-formatting-in-javascript.html">String Formatting In JavaScript</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "String Formatting In JavaScript",
+        "item": "https://www.just3ws.com/2009/11/07/string-formatting-in-javascript.html"
+      }
+    
+  ]
+}
+</script>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>String Formatting In JavaScript</h1>
+    <p class="post-meta">November 2009 · wordpress, republished, wayback, javascript, code</p>
+    
+    <aside class="archive-note">
+      <p>
+        <strong>Originally published on WordPress on November 7, 2009.</strong>
+        <a href="https://web.archive.org/web/20100120154235/http://just3ws.wordpress.com/2009/11/07/string-formatting-in-javascript/">View original article</a>.
+      </p>
+    </aside>
+    
+    
+    <aside class="archive-note">
+      <p><strong>Archive note:</strong> Originally published on just3ws.wordpress.com. Republished from an archived Wayback snapshot.</p>
+    </aside>
+    
+  </header>
+  <div class="post-body">
+    <p><br>
+A few years ago I posted a small snippet of JavaScript from a library I created way back in the bad-old days of “Classic” ASP. The post generated a handful of comments between the different blog hosts I’ve tried but only two mentioned anything about how to do it better. The rest were the standard Internet-protocol messages reminding me of how much I suck (thank you *so* much).</p>
+<p>A couple a guys posted something more useful than just a reminder of my own total failure as a developer and a human being. Daniel Schaeffer and the code-name “R.” posted alternative solutions. Unfortunately, Mr. “R.” didn’t post a link for me to find him, but I do think I tracked him down (Google will find you).</p>
+<p>A little history first, back when .NET 1.0 was the new hotness one of the first things I fell in love with was the String.Format() method. Simply put, given a string literal decorated with some tokens you could create template strings without having to muss about with concatenation. I know, I know, C/C++ had something like this and other languages have too. Whippty-do. I was reared on the BASIC product-line, whatever.</p>
+<p>C#’s string template functionality was a godsend in my eyes. I had (have) an intrinsic hatred of concatenation, mostly built up from creating dynamic sites in ASP that had to work in NN4 and IE4 (hate). All the HTML, JavaScript and CSS was built on the server and spit out to the client in whole. It was a nightmare to look at because of dynamic nature of the application as almost all the output was built programmatically on the server. Let’s just say there was a lot of string concatenation. Unfortunately, moving to .NET wasn’t an option. Yet string concatenation made me so itchy, so I scratched it as is the nature of an itchy developer.</p>
+<pre class="brush: jscript;">String.format("Hello, {0}.", "World");</pre>
+<p>Very simple, obviously, it didn’t contain the full sophistication of the full-blown String.Format() in .NET but it did mean I didn’t have to do this anymore.</p>
+<pre class="brush: jscript;">var myContrivedExample = "&lt;a href=\"" + protocol + "://" + url + "\"&gt;" + text+ "\"&lt;/a&gt;";</pre>
+<p>Now I could do…</p>
+<pre class="brush: jscript;">var myContrivedExample = String.format("&lt;a href=\"{0}://{1}\"&gt;{2}\"&lt;/a&gt;", protocol, url, text);</pre>
+<p>Yeah, just take a second and try to follow the first one and spot the mistake. Then find the mistake in the second one. Yeah, much easier, huh.</p>
+<p>Here’s the original code snippet.</p>
+<pre class="brush: jscript;">String.format = function(text) {
+ //check if there are two arguments in the arguments list
+ if (arguments.length &lt;= 1) {
+ //if there are not 2 or more arguments there's nothing to replace
+ //just return the just3ws text
+ return text;
+ }
+ //decrement to move to the second argument in the array
+ var tokenCount = arguments.length - 2;
+ for (var token = 0; token &lt;= tokenCount; ++token) {
+ //iterate through the tokens and replace their placeholders from the just3ws text in order
+ text = text.replace(new RegExp("\\{" + token + "\\}", "gi"), arguments[token + 1]);
+ }
+ return text;
+};</pre>
+<p>Basically, it dynamically appends a static method to the String object. By default it expects a single argument, which can be any string. If there’s only one argument it just passes that string through unmodified. Although, if a second argument is provided the method will attempt to locate a token in the string and replace all instances of that token with the passed in string. Repeat the replacement for each following argument. Pretty straight-forward, probably a naive implementation but it got the job done.</p>
+<p>A few years pass and I post the method on a blog.</p>
+<p>Time churns on and the events of history progress, eventually someone reads the post.</p>
+<p>More time churning more historical events, then someone replies to it. Neat.</p>
+<p>Another one, wait. I know I suck.</p>
+<p>Okay, here’s another one.</p>
+<p>Now I’m looking back on the sad legacy of my blogging efforts till now and trying to gleam something useful from it and this is the best I can do.</p>
+<p>Daniel Schaeffer was the first to oblige me with a response. I like what he did, it was clean and simple. Although, it wasn’t *exactly* the same.</p>
+<p>All the comments that begin with //JUST3WS: were added by myself for the sake of the posting. And please forgive my taking some liberties with the code formatting, I’m a bit fussy.</p>
+<pre class="brush: jscript;">String.prototype.format = function() {
+ var pattern = /\{\d+\}/g;
+ var args = arguments; //JUST3WS: Referencing the JavaScript 'arguments' object that is available inside all methods.
+ //JUST3WS: 'this' refers to the current instance of the String object.
+ // and the Lambda function is called for every match of the pattern.
+ return this.replace(pattern, function(capture) {
+ return args[capture.match(/\d+/)];
+ });
+};</pre>
+<p>We can turn Mr. Schaeffer’s method into a static method relatively easily.</p>
+<pre class="brush: jscript;">String.format = function() {
+ var pattern = /\{\d+\}/g;
+ var args = arguments; //JUST3WS: This stays as is.
+ if (args == null || args.Length == 0) {
+ return “”;
+ } //JUST3WS: The arguments might be null or empty because the
+ // method signature doesn't require at least one.
+ // JavaScript is permissive in it's parameter checks
+ // and will just use the closest match. So if there are
+ // no overloads which match better this method will still
+ // be invoked regardless of how many arguments are passed in.
+ //JUST3WS: 'this' refers to the current instance of the String object.
+ // and the Lambda function is called for every match of the pattern.
+ return this.replace(pattern, function(capture) {
+ //JUST3WS: This is where Lambda's can be tricky. The calling scope (caller) is visible to the executing method (callee).
+ // We can't use the local 'arguments' object because it would refer to the callee's arguments, not the callers. :-P
+ //
+ return args[capture.match(/\d+/)];
+ });
+};</pre>
+<p>What’s cool about his method was actually adding an instance method to the String object. Meaning, you couldn’t just call the method in an imperative manner like my static method. But it did mean you write some really neat looking syntax. Also, he used a Lambda function to handle the token replacement. You know Lambda’s; used to be feared and respected and known only to the Lisp/Scheme necromancers but now all the cool kids are running about like it’s Dad’s old Army overcoat.</p>
+<pre class="brush: jscript;">var myContrivedExample = "&lt;a href=\"{0}://{1}\"&gt;{2}\"&lt;/a&gt;".format(protocol, url, text);</pre>
+<p>Because the string literal is actually an implicit instance of the String object in JavaScript, you can invoke methods on it. Very, very cool and clean.</p>
+<p>Later on secret-agent known only as “R.” left me cryptic message to check out his implementation. But he didn’t leave a clue as how to find him, so once I mustered up the car and realized I needed few hundred more words in this post to make it seem “literate” I did a little research (Google) for “R.+String.format()” and think I found him. His post on a String.format() implementation provided both methods, a static and an instance version.</p>
+<pre class="brush: jscript;">String.format = function() {
+ if (arguments.length == 0) {
+ return null;
+ }
+ var str = arguments[0];
+ for (var i = 1; i &lt; arguments.length; ++i) {
+ var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+ str = str.replace(re, arguments[i]);
+ }
+ return str;
+};</pre>
+<p>Great minds think alike. Sorry about that mate.</p>
+<pre class="brush: jscript;">String.prototype.format = function() {
+ var str = this;
+ for (var i = 0; i &lt; arguments.length; ++i) {
+ var re = new RegExp('\\{' + i + '\\}', 'gm');
+ str = str.replace(re, arguments[i]);
+ }
+ return str;
+};</pre>
+<p>Thanks for posting guys.</p>
+<p>What’s interesting to me is the variety of ways that string formatting can be implemented. I don’t know why most JavaScript frameworks don’t offer some kind of string formatting functionality out of the box. The only one that I’ve seen thus far is the Microsoft Ajax framework, but they have a whole different methodology. But that’s for a different article.</p>
+
+  </div>
+</article>
+
+  </main>
+</body>
+</html>

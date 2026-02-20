@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Archive — Attila Szegedi at GOTO Chicago 2015 (GOTO…</title>
+<meta name="description" content="Interview with Attila Szegedi at GOTO Chicago 2015. Topic: Nashorn and JavaScript on the JVM. Conference: GOTO Conference 2015. Recorded: 2023-10-23.…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/interviews/youtube-DZz3NWny1zw/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Interview Archive — Attila Szegedi at GOTO Chicago 2015 (GOTO…">
+<meta property="og:description" content="Interview with Attila Szegedi at GOTO Chicago 2015. Topic: Nashorn and JavaScript on the JVM. Conference: GOTO Conference 2015. Recorded: 2023-10-23.…">
+<meta property="og:url" content="https://www.just3ws.com/interviews/youtube-DZz3NWny1zw/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Archive — Attila Szegedi at GOTO Chicago 2015 (GOTO…">
+<meta name="twitter:description" content="Interview with Attila Szegedi at GOTO Chicago 2015. Topic: Nashorn and JavaScript on the JVM. Conference: GOTO Conference 2015. Recorded: 2023-10-23.…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" class="is-active" aria-current="page">Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/interviews/">Interviews</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/interviews/youtube-DZz3NWny1zw/">Interview with Attila Szegedi at GOTO Chicago 2015</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interviews",
+        "item": "https://www.just3ws.com/interviews/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Attila Szegedi at GOTO Chicago 2015",
+        "item": "https://www.just3ws.com/interviews/youtube-DZz3NWny1zw/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    
+    <header>
+      <h1>Interview with Attila Szegedi at GOTO Chicago 2015</h1>
+    </header>
+    
+      <div class="video-subtitle">Interviewee: <a href="/interviews/people/attila-szegedi/">Attila Szegedi</a> (<a href="https://gotocon.com/chicago-2015/speaker/Attila+Szegedi">conference bio</a>)</div>
+    
+    
+      <div class="video-subtitle">Topic: Nashorn and JavaScript on the JVM</div>
+    
+    <div class="video-meta">
+      
+        Conference:
+        
+        
+        
+          <a href="/interviews/conferences/goto-2015/">GOTO Conference 2015</a>
+        
+      
+      
+    </div>
+
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
+  "@id": "https://www.just3ws.com/id/interview/youtube-DZz3NWny1zw",
+  "identifier": "youtube-DZz3NWny1zw",
+  "name": "Interview with Attila Szegedi at GOTO Chicago 2015",
+  "url": "https://www.just3ws.com/interviews/youtube-DZz3NWny1zw/",
+  "datePublished": "2023-10-23",
+  "description": "Interview with Attila Szegedi at GOTO Chicago 2015. Topic: Nashorn and JavaScript on the JVM. Conference: GOTO Conference 2015. Recorded: 2023-10-23.…",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.just3ws.com/id/person/mike-hall",
+    "name": "Mike Hall"
+  },
+  
+  "contributor": [
+    
+    {
+      "@type": "Person",
+      "@id": "https://www.just3ws.com/id/person/attila-szegedi",
+      "name": "Attila Szegedi"
+    }
+    
+  ],
+  
+  
+  
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Nashorn and JavaScript on the JVM"
+    }
+    
+  
+  
+    ,
+    {
+      "@type": "Event",
+      "@id": "https://www.just3ws.com/id/conference/goto-conference-2015",
+      "name": "GOTO Conference 2015"
+    }
+  ],
+  
+  
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "https://www.just3ws.com/id/video/youtube-DZz3NWny1zw",
+    "name": "Interview with Attila Szegedi at GOTO Chicago 2015",
+    "description": "Interview with Attila Szegedi at GOTO Conference 2015 on Nashorn and JavaScript runtime design on the JVM. This recording captures practical lessons and perspective for software teams and technical communities.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/DZz3NWny1zw/maxresdefault.jpg",
+    "uploadDate": "2024-08-08",
+    "transcript": "Hi, it's Mike with UGtastic. I'm still here at GOTO Conf\n 2015, and I'm standing here\n with Attila Szegedi, who gave a talk about Nashorn making\n the rhinoceroses\n thunder. Well, thank you very much for taking the time to\n speak with me. What\n rhinoceroses were you herding, and what is Nashorn? Well,\n we are not\n even herding them, we just built one. So, Nashorn is German\n for\n rhinoceros, so it is a JavaScript runtime on the JVM. There\n is a bit of a\n tradition of naming the JavaScript runtimes on the JVM\n after rhinos, because\n there was an early O'Reilly book on JavaScript that had a\n rhino on its\n cover, so that actually started the big book. Yeah, so I\n think that that actually\n started this naming situation, and you know, it allows for\n some quite\n nice puns. So yeah, well, the talk was mostly about... I\n was explaining to\n people just what are the things that we do to make sure\n that Nashorn actually\n runs decently fast on the JVM. There's always... there used\n to be this stigma of\n JavaScript runtimes, that it's slow language, and this was\n mostly\n dispelled by V8, so Google's V8 has really brought the fast\n JavaScript\n runtimes to the market, and we are also doing our best to\n not be left in\n dust compared to V8.\n We're doing a pretty decent job about it. A lot of things\n that I was\n actually talking about in my talk are things that we\n implemented since the\n original release, so Nashorn had its first release in\n original Java 8 last\n March 2014, and since then we did a lot of improvements\n that you would\n normally find maybe in a C compiler, so we do a lot of\n static type inferencing and\n we do a lot of crazy things like type-specific compilation.\n We can\n optimize and deoptimize code on the run, so it turns out\n that if you want to\n write a really efficient runtime for your language, you\n almost need to write\n half of a half of a VM, really. So the Hotspot VM on the JV\nM, it\n already does these things with Java code. It does\n interpretation of various\n optimizations, and when it gets it's wrong, then it deoptim\nizes, reoptimizes, and so on.\n And it turns out that we wanted to avoid doing these and\n just rely on\n the JVM, but the problem is that the language semantics is\n such, the\n JavaScript language semantics is sufficiently different\n from Java, that you\n can't really just leave it all to the JVM, but we just\n ended up needing to build a\n lot of these things on top of it. So it becomes a very\n sophisticated runtime\n that can run JavaScript programs on the JVM ever better. I\n'm not saying really well, but\n it's ever improving. It's actually really great because\n there is a lot of\n challenges every day when I go to work. There's always the\n next thing\n that can still be done to make it more efficient. There is\n not a particularly\n great or sexy story behind NASM, because, you know, it's\n just JavaScript on\n the JVM, and everything else is really just an\n implementation detail of\n how do we want to make it so that it just gets better and\n faster over time. It's a\n one interesting thing about NASM is that it was actually\n the first JavaScript\n runtime that achieved 100% specification compliance. There\n is a set of\n specification tests out there that is openly maintained,\n that contains some\n 11,500 tests, and actually NASM was the first JavaScript\n runtime back in\n I think October 2012 or so, that we actually managed to\n implement it so\n that it passed all of the tests.\n Now, I'm not a Node developer, but I know that Node and V8s\n are extremely tightly\n coupled, but as far as like just JavaScript syntax, you\n know, as somebody who's working\n on the compiler, is there anything where you're looking at\n like, \"Oh, there's Node,\n you know, how can we get Node as a framework running on top\n of Rhinoceros?\" Is that even\n the right question? Because like I said, I'm not a Node\n developer.\n Yeah, we do actually.\n We actually have Node version running on NASM. We have a\n team internally at the company who\n was writing a version of it, but we are not allowed to call\n it Node.\n Oh, yeah, because of copyright and trademarks and stuff\n like that.\n Yes, that's right. So, the owners of the Node term have\n graciously asked us to\n not use the name, so it actually runs under the name avatar\n.js.\n Oracle actually had a server-side technology named avatar,\n and then the name got expanded\n and reused. So, avatar.js is, we refer to it as Node API\n compatible server framework.\n Oh, okay. So, that kind of gets around that old trademark\n thing. It's like we're compatible\n with them, not we are them.\n So, it's there. It's also available. It's downloadable. You\n can try it. There's one problem with it that it started out\n as a great effort, but it started pretty much as a hobby\n effort by one or two of the\n developers within the organization. It got adopted, but\n those guys have since moved on.\n So, unfortunately, the project itself is pretty dormant,\n but it was active until a few months\n ago. It was closely tracking the Node code base, so it's, I\n mean, again, I cannot say\n that, yeah, go and use it because it's, at the moment, it\n might not be actively maintained,\n but that might change in the future, and by any means, it's\n still pretty recent, but it\n also proves just the fact that, yeah, sure, I mean, you can\n have Node on NAS1. It does\n work.\n And, you know, looking at a lot of the, it seems like a lot\n of the JVM developers\n cross-communicate whether they're working on JRuby or Cloj\nure. I mean, is there been\n anything that you've looked at from JRuby or the work that\n Rich Hickey is doing with\n Clojure that have been pulled into Rhinoceros?\n I mean, to help with optimization, has there been any cross\n-pollination there?\n Well, not really much as such. We do, I do talk with\n Charlie Nutter a lot, so the JRuby\n guy, and I don't talk that much with Rich Hickey these days\n, but we run into each other\n at conferences, but there is this great conference called\n the JDM Language Summit that Sun Microsystems\n used to organize and now Oracle organizes every year. It's\n a really small conference,\n usually sometime in the summer, at the Oracle's Santa Clara\n campus, the ex-Sun campus, where\n language implementers on the JVM get together and it's, and\n well, exchange knowledge, talk\n to each other, there's presentations, but it's a very small\n conference. It's the number\n of attendees, I don't think it even reaches 100 people, so\n it's somewhat hard to, hard\n to get in. It's fairly, highly priced if you, if you can go\n to the JVM Language Summit.\n We do talk a lot there. Nashorn, we, we did, we did speak\n with JRuby folks on few occasions.\n I think JRuby right now is, is less sophisticated in terms\n of code generator, typing, optimizations\n and so on. They do have a new version, JRuby 9000, which is\n, which is re-taught from the\n ground up. It has its own internal, separate internal code\n representation. I think that\n it will, it will, it will be awesome. It's very, very, very\n close to, to the release.\n Yeah, so we talk to each other, there's concepts that, that\n we talk about, but you know, I\n wouldn't say that there was a lot in, in actual\n optimization. Clojure, Clojure also, optimization,\n I don't think that like language level optimization is high\n on their list of priorities. They\n just compile to JVM and then, and then.\n They don't like to deal with the things, yeah.\n Well, I just think it's fascinating. I mean, so many\n developers who are implementation\n developers, you know, and users of these languages, kind of\n differentiate themselves. I do JavaScript,\n I do Clojure, I do this, but the people that are\n implementing these languages are talking\n to each other.\n Yeah, of course.\n And it's, and if, if the people who are creating languages\n are talking to each other,\n it's maybe something that we should think about as end user\n developers, is that, you know,\n use JavaScript, use Clojure, use JVM, you know, just, we're\n all, we're all in this together.\n It's great. And especially if you are using the dynamic\n languages and you're deploying\n on the JVM, you even have a little bit of a, like a common\n foundation, which is the\n JVM itself. So all of these people will be using Java\n libraries. And if you want to,\n you can even, you can even stitch together a system where\n if you find, maybe you're writing\n the majority of your system in, in, in Ruby and you're\n deploying JRuby, but if you find\n a particularly nice algorithm implemented in Python, there\n is nothing really that prevents\n you from also taking the JITONS jar file and loaded it in\n and writing a little bit for\n the integration.\n And then you can just go from your Ruby code and you can\n pass some data into your Python\n algorithm, let it crunch the things, give it back to you.\n So it's, it's, I, I think\n that, as time progresses, hopefully kind of a polyglot\n programming is, is going to be,\n is, is, is becoming ever more in reality.\n Yeah, yeah. Just let the, let the virtual machine sort it\n out.\n Yeah, of course. That's what they are for.\n Yeah. Well, thank you very much for taking the time to\n speak with me. I appreciate it.\n It was my pleasure. Thank you.",
+    "url": "https://www.just3ws.com/videos/youtube-DZz3NWny1zw/",
+    "embedUrl": "https://www.youtube.com/embed/DZz3NWny1zw"
+  },
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/interviews/youtube-DZz3NWny1zw/"
+  }
+}
+</script>
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="interview-embed" src="https://www.youtube.com/embed/DZz3NWny1zw" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Attila Szegedi at GOTO Chicago 2015"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Interview with Attila Szegedi at GOTO Conference 2015 on Nashorn and JavaScript runtime design on the JVM. This recording captures practical lessons and perspective for software teams and technical communities.</div>
+        
+        <div class="video-meta">
+          Published: Aug 08, 2024
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/DZz3NWny1zw">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=DZz3NWny1zw&list=PLgmTADxYKzzY6zF2GFV8IREdI7CXE2zEZ">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>Hi, it’s Mike with UGtastic. I’m still here at GOTO Conf
+ 2015, and I’m standing here
+ with Attila Szegedi, who gave a talk about Nashorn making
+ the rhinoceroses
+ thunder. Well, thank you very much for taking the time to
+ speak with me. What
+ rhinoceroses were you herding, and what is Nashorn? Well,
+ we are not
+ even herding them, we just built one. So, Nashorn is German
+ for
+ rhinoceros, so it is a JavaScript runtime on the JVM. There
+ is a bit of a
+ tradition of naming the JavaScript runtimes on the JVM
+ after rhinos, because
+ there was an early O’Reilly book on JavaScript that had a
+ rhino on its
+ cover, so that actually started the big book. Yeah, so I
+ think that that actually
+ started this naming situation, and you know, it allows for
+ some quite
+ nice puns. So yeah, well, the talk was mostly about… I
+ was explaining to
+ people just what are the things that we do to make sure
+ that Nashorn actually
+ runs decently fast on the JVM. There’s always… there used
+ to be this stigma of
+ JavaScript runtimes, that it’s slow language, and this was
+ mostly
+ dispelled by V8, so Google’s V8 has really brought the fast
+ JavaScript
+ runtimes to the market, and we are also doing our best to
+ not be left in
+ dust compared to V8.
+ We’re doing a pretty decent job about it. A lot of things
+ that I was
+ actually talking about in my talk are things that we
+ implemented since the
+ original release, so Nashorn had its first release in
+ original Java 8 last
+ March 2014, and since then we did a lot of improvements
+ that you would
+ normally find maybe in a C compiler, so we do a lot of
+ static type inferencing and
+ we do a lot of crazy things like type-specific compilation.
+ We can
+ optimize and deoptimize code on the run, so it turns out
+ that if you want to
+ write a really efficient runtime for your language, you
+ almost need to write
+ half of a half of a VM, really. So the Hotspot VM on the JV
+M, it
+ already does these things with Java code. It does
+ interpretation of various
+ optimizations, and when it gets it’s wrong, then it deoptim
+izes, reoptimizes, and so on.
+ And it turns out that we wanted to avoid doing these and
+ just rely on
+ the JVM, but the problem is that the language semantics is
+ such, the
+ JavaScript language semantics is sufficiently different
+ from Java, that you
+ can’t really just leave it all to the JVM, but we just
+ ended up needing to build a
+ lot of these things on top of it. So it becomes a very
+ sophisticated runtime
+ that can run JavaScript programs on the JVM ever better. I
+‘m not saying really well, but
+ it’s ever improving. It’s actually really great because
+ there is a lot of
+ challenges every day when I go to work. There’s always the
+ next thing
+ that can still be done to make it more efficient. There is
+ not a particularly
+ great or sexy story behind NASM, because, you know, it’s
+ just JavaScript on
+ the JVM, and everything else is really just an
+ implementation detail of
+ how do we want to make it so that it just gets better and
+ faster over time. It’s a
+ one interesting thing about NASM is that it was actually
+ the first JavaScript
+ runtime that achieved 100% specification compliance. There
+ is a set of
+ specification tests out there that is openly maintained,
+ that contains some
+ 11,500 tests, and actually NASM was the first JavaScript
+ runtime back in
+ I think October 2012 or so, that we actually managed to
+ implement it so
+ that it passed all of the tests.
+ Now, I’m not a Node developer, but I know that Node and V8s
+ are extremely tightly
+ coupled, but as far as like just JavaScript syntax, you
+ know, as somebody who’s working
+ on the compiler, is there anything where you’re looking at
+ like, “Oh, there’s Node,
+ you know, how can we get Node as a framework running on top
+ of Rhinoceros?” Is that even
+ the right question? Because like I said, I’m not a Node
+ developer.
+ Yeah, we do actually.
+ We actually have Node version running on NASM. We have a
+ team internally at the company who
+ was writing a version of it, but we are not allowed to call
+ it Node.
+ Oh, yeah, because of copyright and trademarks and stuff
+ like that.
+ Yes, that’s right. So, the owners of the Node term have
+ graciously asked us to
+ not use the name, so it actually runs under the name avatar
+.js.
+ Oracle actually had a server-side technology named avatar,
+ and then the name got expanded
+ and reused. So, avatar.js is, we refer to it as Node API
+ compatible server framework.
+ Oh, okay. So, that kind of gets around that old trademark
+ thing. It’s like we’re compatible
+ with them, not we are them.
+ So, it’s there. It’s also available. It’s downloadable. You
+ can try it. There’s one problem with it that it started out
+ as a great effort, but it started pretty much as a hobby
+ effort by one or two of the
+ developers within the organization. It got adopted, but
+ those guys have since moved on.
+ So, unfortunately, the project itself is pretty dormant,
+ but it was active until a few months
+ ago. It was closely tracking the Node code base, so it’s, I
+ mean, again, I cannot say
+ that, yeah, go and use it because it’s, at the moment, it
+ might not be actively maintained,
+ but that might change in the future, and by any means, it’s
+ still pretty recent, but it
+ also proves just the fact that, yeah, sure, I mean, you can
+ have Node on NAS1. It does
+ work.
+ And, you know, looking at a lot of the, it seems like a lot
+ of the JVM developers
+ cross-communicate whether they’re working on JRuby or Cloj
+ure. I mean, is there been
+ anything that you’ve looked at from JRuby or the work that
+ Rich Hickey is doing with
+ Clojure that have been pulled into Rhinoceros?
+ I mean, to help with optimization, has there been any cross
+-pollination there?
+ Well, not really much as such. We do, I do talk with
+ Charlie Nutter a lot, so the JRuby
+ guy, and I don’t talk that much with Rich Hickey these days
+, but we run into each other
+ at conferences, but there is this great conference called
+ the JDM Language Summit that Sun Microsystems
+ used to organize and now Oracle organizes every year. It’s
+ a really small conference,
+ usually sometime in the summer, at the Oracle’s Santa Clara
+ campus, the ex-Sun campus, where
+ language implementers on the JVM get together and it’s, and
+ well, exchange knowledge, talk
+ to each other, there’s presentations, but it’s a very small
+ conference. It’s the number
+ of attendees, I don’t think it even reaches 100 people, so
+ it’s somewhat hard to, hard
+ to get in. It’s fairly, highly priced if you, if you can go
+ to the JVM Language Summit.
+ We do talk a lot there. Nashorn, we, we did, we did speak
+ with JRuby folks on few occasions.
+ I think JRuby right now is, is less sophisticated in terms
+ of code generator, typing, optimizations
+ and so on. They do have a new version, JRuby 9000, which is
+, which is re-taught from the
+ ground up. It has its own internal, separate internal code
+ representation. I think that
+ it will, it will, it will be awesome. It’s very, very, very
+ close to, to the release.
+ Yeah, so we talk to each other, there’s concepts that, that
+ we talk about, but you know, I
+ wouldn’t say that there was a lot in, in actual
+ optimization. Clojure, Clojure also, optimization,
+ I don’t think that like language level optimization is high
+ on their list of priorities. They
+ just compile to JVM and then, and then.
+ They don’t like to deal with the things, yeah.
+ Well, I just think it’s fascinating. I mean, so many
+ developers who are implementation
+ developers, you know, and users of these languages, kind of
+ differentiate themselves. I do JavaScript,
+ I do Clojure, I do this, but the people that are
+ implementing these languages are talking
+ to each other.
+ Yeah, of course.
+ And it’s, and if, if the people who are creating languages
+ are talking to each other,
+ it’s maybe something that we should think about as end user
+ developers, is that, you know,
+ use JavaScript, use Clojure, use JVM, you know, just, we’re
+ all, we’re all in this together.
+ It’s great. And especially if you are using the dynamic
+ languages and you’re deploying
+ on the JVM, you even have a little bit of a, like a common
+ foundation, which is the
+ JVM itself. So all of these people will be using Java
+ libraries. And if you want to,
+ you can even, you can even stitch together a system where
+ if you find, maybe you’re writing
+ the majority of your system in, in, in Ruby and you’re
+ deploying JRuby, but if you find
+ a particularly nice algorithm implemented in Python, there
+ is nothing really that prevents
+ you from also taking the JITONS jar file and loaded it in
+ and writing a little bit for
+ the integration.
+ And then you can just go from your Ruby code and you can
+ pass some data into your Python
+ algorithm, let it crunch the things, give it back to you.
+ So it’s, it’s, I, I think
+ that, as time progresses, hopefully kind of a polyglot
+ programming is, is going to be,
+ is, is, is becoming ever more in reality.
+ Yeah, yeah. Just let the, let the virtual machine sort it
+ out.
+ Yeah, of course. That’s what they are for.
+ Yeah. Well, thank you very much for taking the time to
+ speak with me. I appreciate it.
+ It was my pleasure. Thank you.</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Archive — Kyle Kingsbury at GOTO Chicago 2015 (GOTO…</title>
+<meta name="description" content="Interview with Kyle Kingsbury at GOTO Chicago 2015. Topic: database consistency and Jepsen testing. Conference: GOTO Conference 2015. Recorded: 2023-10-23.…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/interviews/youtube-zTQrlhmSfLE/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Interview Archive — Kyle Kingsbury at GOTO Chicago 2015 (GOTO…">
+<meta property="og:description" content="Interview with Kyle Kingsbury at GOTO Chicago 2015. Topic: database consistency and Jepsen testing. Conference: GOTO Conference 2015. Recorded: 2023-10-23.…">
+<meta property="og:url" content="https://www.just3ws.com/interviews/youtube-zTQrlhmSfLE/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Archive — Kyle Kingsbury at GOTO Chicago 2015 (GOTO…">
+<meta name="twitter:description" content="Interview with Kyle Kingsbury at GOTO Chicago 2015. Topic: database consistency and Jepsen testing. Conference: GOTO Conference 2015. Recorded: 2023-10-23.…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" class="is-active" aria-current="page">Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/interviews/">Interviews</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/interviews/youtube-zTQrlhmSfLE/">Interview with Kyle Kingsbury at GOTO Chicago 2015</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interviews",
+        "item": "https://www.just3ws.com/interviews/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Kyle Kingsbury at GOTO Chicago 2015",
+        "item": "https://www.just3ws.com/interviews/youtube-zTQrlhmSfLE/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    
+    <header>
+      <h1>Interview with Kyle Kingsbury at GOTO Chicago 2015</h1>
+    </header>
+    
+      <div class="video-subtitle">Interviewee: <a href="/interviews/people/kyle-kingsbury/">Kyle Kingsbury</a> (<a href="https://gotocon.com/chicago-2015/speaker/Kyle+Kingsbury">conference bio</a>)</div>
+    
+    
+      <div class="video-subtitle">Topic: database consistency and Jepsen testing</div>
+    
+    <div class="video-meta">
+      
+        Conference:
+        
+        
+        
+          <a href="/interviews/conferences/goto-2015/">GOTO Conference 2015</a>
+        
+      
+      
+    </div>
+
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
+  "@id": "https://www.just3ws.com/id/interview/youtube-zTQrlhmSfLE",
+  "identifier": "youtube-zTQrlhmSfLE",
+  "name": "Interview with Kyle Kingsbury at GOTO Chicago 2015",
+  "url": "https://www.just3ws.com/interviews/youtube-zTQrlhmSfLE/",
+  "datePublished": "2023-10-23",
+  "description": "Interview with Kyle Kingsbury at GOTO Chicago 2015. Topic: database consistency and Jepsen testing. Conference: GOTO Conference 2015. Recorded: 2023-10-23.…",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.just3ws.com/id/person/mike-hall",
+    "name": "Mike Hall"
+  },
+  
+  "contributor": [
+    
+    {
+      "@type": "Person",
+      "@id": "https://www.just3ws.com/id/person/kyle-kingsbury",
+      "name": "Kyle Kingsbury"
+    }
+    
+  ],
+  
+  
+  
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "database consistency and Jepsen testing"
+    }
+    
+  
+  
+    ,
+    {
+      "@type": "Event",
+      "@id": "https://www.just3ws.com/id/conference/goto-conference-2015",
+      "name": "GOTO Conference 2015"
+    }
+  ],
+  
+  
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "https://www.just3ws.com/id/video/youtube-zTQrlhmSfLE",
+    "name": "Interview with Kyle Kingsbury at GOTO Chicago 2015",
+    "description": "Interview with Kyle Kingsbury at GOTO Conference 2015 on database consistency, failure modes, and Jepsen-style testing. This recording captures practical lessons and perspective for software teams and technical communities.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/zTQrlhmSfLE/maxresdefault.jpg",
+    "uploadDate": "2024-08-08",
+    "transcript": "Five. Recording now is one, two, three.\n Okay. Hi, it's Mike with Ute Tastic. I'm here at GOTO Conf\n 2015 and I'm sitting here with Kyle Kingsbury who gave the\n opening keynote and its tagline was Hope Springs Eternal.\n Did I say that correctly? Okay. Well, thank you very much\n for taking the time to speak with me.\n What Hope Springs Eternal? What were you trying to implant\n as a message for your keynote?\n The message is basically that everything is broken and we\n should be crying in the corner.\n I came to deliver fire and ashes, but we're wrapping it in\n a pretty happy package.\n It's like we're smiling. We're all doomed.\n So in the previous Jepson talks, I'd gone through a number\n of databases and had found inconsistencies or cases of data\n loss.\n And in this talk, I wanted to come back to some of these\n databases because people are optimistic that they've fixed\n certain problems.\n And I wanted to measure whether or not those problems have\n been resolved and then see if there were new ones.\n Okay. So like the notorious Mongo missed write problem and\n things like that.\n So what were some of...\n Can you tell me your findings?\n So MongoDB in particular fixed their majority write issue,\n where if you would write at the strongest level of\n consistency,\n it could occasionally say that it had written data\n successfully and then lose it.\n Oh, okay.\n So that was fixed quickly and it was confirmed to be safe\n in the latest tests.\n Okay.\n I found a new issue, however, which is that it will allow\n you to read values from the past.\n So you can write something and then not see it anymore.\n And a later time it might show up.\n Well, I guess that's the eventual part of eventually\n readable instead of eventually consistent.\n But it'll show up.\n So there was just some latency issues that if you wrote and\n then read too fast, it might get stale data.\n Or you could also read garbage data.\n You could make a write that should not have succeeded.\n It would fail, but you might not know it failed.\n And then it would be visible for reads to that node.\n So that's called read uncommitted.\n So both stale reads and dirty reads are sort of...\n ...two complementary sides of the same phenomenon in Mongo.\n Okay.\n And what were some of the other databases?\n Did you look at MySQL and Postgres and Couch and React and\n all the other databases that are usually come up in these\n conversations?\n So I haven't gone to test MySQL with Postgres replication.\n I did a very simple single node Postgres analysis, but it\n doesn't show very much interesting beyond two generals.\n I did come back to look at Elasticsearch in this test,\n which previously lost data.\n But when a partition happened that left a node connecting\n two different components in the network,\n that particular behavior was known to be an issue, and the\n ticket was fixed.\n And in fact, it had reduced the window of data loss\n significantly.\n But there's still some time when you can lose writes.\n Were you the person who authored those blog post articles\n doing the partition analysis on...\n Or was it Elasticsearch I'm thinking of?\n There was about missing data due to...\n Some latency inside of certain database scenarios.\n That could have been me, yeah.\n Okay.\n The Jepson series has been going on for a couple years now.\n And there's a bunch of blog posts, and there's a paper in\n ACMQ, and there's the talks as well.\n Okay.\n And are there any databases that you're just like, yeah,\n this database is good?\n Or is it always the...\n Well, it depends.\n You know, I think depending on what you're building, you're\n going to need various guarantees.\n Guarantees and various performance characteristics and\n various availability characteristics.\n So for a consistent metadata store, you might pick\n something like Zookeeper.\n Maybe etcd, although that's a little newer, so I figure it\n'll take a while to iron its mugs.\n In fact, Zookeeper, you know, over its, what, 10-year\n history has been ironing out bugs gradually.\n There was a really nice article from PagerDuty recently\n that discovered a particular confluence of unchecked checks\nums for GCP packets\n and some weird Xen anomalies that resulted in Zookeeper.\n So it's like if you have an elbow here and this elbow here,\n it won't write.\n Yeah, it's really amazing.\n These are very difficult to get correct.\n Yeah, yeah.\n But Zookeeper, by and large, I think has hammered out a lot\n of the bugs.\n Well, and that's one of the things I've heard an interview\n with one of the Postgres internals DB engine developers.\n And they basically described that it's, especially with\n open source development on these tools,\n it's very hard to get people to work on them that can\n actually effectively work with these problems\n because they're hard problems that they're solving.\n Oh, yes.\n I mean, so when you're looking at databases, sometimes it\n feels like the older the better.\n Does that seem like a reasonable wisdom?\n Like if it's been around 20 years, it's probably pretty\n solid.\n Yeah, and the more use cases it's seen, and as it gets to\n larger deployments,\n the more bugs you'll run into enough that it was painful\n enough that somebody would go and fix it.\n But conversely, you know, old doesn't necessarily mean safe\n.\n There are well-established pieces of software with plenty\n of bugs in them.\n Yeah.\n Not a pen share.\n So just the word Jepson, what does that mean?\n What is Jepson?\n And how did, you know, you said it's a series of articles,\n but it just seems like such a random word.\n What does that mean?\n Carly Rae Jepson is a Canadian pop star.\n Oh, okay.\n Who had this famous song, Call Me Maybe.\n It's all about miscommunication and not knowing if the boy\n likes you or not.\n And to me, this speaks to distributed systems where you're\n sending your operations into the,\n and hoping that messages come back that they understood you\n, that they want to meet.\n That's almost as subtle a pun as UGtastic.\n UGtastic.\n User group's fantastic.\n But, yeah, it's one of those when you finally hear the\n definition, you're like, that's awesome.\n Call me maybe.\n And it makes total sense when you hear it.\n Well, the blog posts are calling me Jepson, calling me El\nasticsearch.\n Oh, okay.\n And then the hope springs eternal.\n That one was a little hard.\n Yeah, in the previous talk, there was a star.\n Yeah.\n There was a reference about building a Death Star, and so\n this is sort of playing on that.\n Okay.\n And did you happen to look at any other, like, we have\n several database providers here,\n like Neo4j, do your tests look at a variety of types of\n database stores,\n or are you mostly focused on NoSQL document stores,\n or is there a specific vertical style of database that you\n are focusing on with your Jepson series?\n I would like to, and I think the tools are capable of\n analyzing,\n all sorts of different things.\n Looking for SQL serializability anomalies is very tricky to\n do.\n The analyzer is slow, so it's going to take more work, I\n think, before I can really do tests on things like Postgres\n.\n But basic tests about insert safety and update safety for\n single rows, I think those should be amenable.\n And I'm actually hoping to do that in Postgres RDS next.\n Okay, great.\n So far, I've done things from consensus services like\n console and etcd to sort of horizontally scalable key value\n stores,\n like Cassandra and React, and then some SQL-style databases\n like NeoDB.\n Okay.\n So there's a whole gamut.\n Great.\n Well, thank you very much for taking the time to speak with\n me.\n I appreciate it.\n Thank you.",
+    "url": "https://www.just3ws.com/videos/youtube-zTQrlhmSfLE/",
+    "embedUrl": "https://www.youtube.com/embed/zTQrlhmSfLE"
+  },
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/interviews/youtube-zTQrlhmSfLE/"
+  }
+}
+</script>
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="interview-embed" src="https://www.youtube.com/embed/zTQrlhmSfLE" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Kyle Kingsbury at GOTO Chicago 2015"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Interview with Kyle Kingsbury at GOTO Conference 2015 on database consistency, failure modes, and Jepsen-style testing. This recording captures practical lessons and perspective for software teams and technical communities.</div>
+        
+        <div class="video-meta">
+          Published: Aug 08, 2024
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/zTQrlhmSfLE">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=zTQrlhmSfLE&list=PLgmTADxYKzzY6zF2GFV8IREdI7CXE2zEZ">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>Five. Recording now is one, two, three.
+ Okay. Hi, it’s Mike with Ute Tastic. I’m here at GOTO Conf
+ 2015 and I’m sitting here with Kyle Kingsbury who gave the
+ opening keynote and its tagline was Hope Springs Eternal.
+ Did I say that correctly? Okay. Well, thank you very much
+ for taking the time to speak with me.
+ What Hope Springs Eternal? What were you trying to implant
+ as a message for your keynote?
+ The message is basically that everything is broken and we
+ should be crying in the corner.
+ I came to deliver fire and ashes, but we’re wrapping it in
+ a pretty happy package.
+ It’s like we’re smiling. We’re all doomed.
+ So in the previous Jepson talks, I’d gone through a number
+ of databases and had found inconsistencies or cases of data
+ loss.
+ And in this talk, I wanted to come back to some of these
+ databases because people are optimistic that they’ve fixed
+ certain problems.
+ And I wanted to measure whether or not those problems have
+ been resolved and then see if there were new ones.
+ Okay. So like the notorious Mongo missed write problem and
+ things like that.
+ So what were some of…
+ Can you tell me your findings?
+ So MongoDB in particular fixed their majority write issue,
+ where if you would write at the strongest level of
+ consistency,
+ it could occasionally say that it had written data
+ successfully and then lose it.
+ Oh, okay.
+ So that was fixed quickly and it was confirmed to be safe
+ in the latest tests.
+ Okay.
+ I found a new issue, however, which is that it will allow
+ you to read values from the past.
+ So you can write something and then not see it anymore.
+ And a later time it might show up.
+ Well, I guess that’s the eventual part of eventually
+ readable instead of eventually consistent.
+ But it’ll show up.
+ So there was just some latency issues that if you wrote and
+ then read too fast, it might get stale data.
+ Or you could also read garbage data.
+ You could make a write that should not have succeeded.
+ It would fail, but you might not know it failed.
+ And then it would be visible for reads to that node.
+ So that’s called read uncommitted.
+ So both stale reads and dirty reads are sort of…
+ …two complementary sides of the same phenomenon in Mongo.
+ Okay.
+ And what were some of the other databases?
+ Did you look at MySQL and Postgres and Couch and React and
+ all the other databases that are usually come up in these
+ conversations?
+ So I haven’t gone to test MySQL with Postgres replication.
+ I did a very simple single node Postgres analysis, but it
+ doesn’t show very much interesting beyond two generals.
+ I did come back to look at Elasticsearch in this test,
+ which previously lost data.
+ But when a partition happened that left a node connecting
+ two different components in the network,
+ that particular behavior was known to be an issue, and the
+ ticket was fixed.
+ And in fact, it had reduced the window of data loss
+ significantly.
+ But there’s still some time when you can lose writes.
+ Were you the person who authored those blog post articles
+ doing the partition analysis on…
+ Or was it Elasticsearch I’m thinking of?
+ There was about missing data due to…
+ Some latency inside of certain database scenarios.
+ That could have been me, yeah.
+ Okay.
+ The Jepson series has been going on for a couple years now.
+ And there’s a bunch of blog posts, and there’s a paper in
+ ACMQ, and there’s the talks as well.
+ Okay.
+ And are there any databases that you’re just like, yeah,
+ this database is good?
+ Or is it always the…
+ Well, it depends.
+ You know, I think depending on what you’re building, you’re
+ going to need various guarantees.
+ Guarantees and various performance characteristics and
+ various availability characteristics.
+ So for a consistent metadata store, you might pick
+ something like Zookeeper.
+ Maybe etcd, although that’s a little newer, so I figure it
+‘ll take a while to iron its mugs.
+ In fact, Zookeeper, you know, over its, what, 10-year
+ history has been ironing out bugs gradually.
+ There was a really nice article from PagerDuty recently
+ that discovered a particular confluence of unchecked checks
+ums for GCP packets
+ and some weird Xen anomalies that resulted in Zookeeper.
+ So it’s like if you have an elbow here and this elbow here,
+ it won’t write.
+ Yeah, it’s really amazing.
+ These are very difficult to get correct.
+ Yeah, yeah.
+ But Zookeeper, by and large, I think has hammered out a lot
+ of the bugs.
+ Well, and that’s one of the things I’ve heard an interview
+ with one of the Postgres internals DB engine developers.
+ And they basically described that it’s, especially with
+ open source development on these tools,
+ it’s very hard to get people to work on them that can
+ actually effectively work with these problems
+ because they’re hard problems that they’re solving.
+ Oh, yes.
+ I mean, so when you’re looking at databases, sometimes it
+ feels like the older the better.
+ Does that seem like a reasonable wisdom?
+ Like if it’s been around 20 years, it’s probably pretty
+ solid.
+ Yeah, and the more use cases it’s seen, and as it gets to
+ larger deployments,
+ the more bugs you’ll run into enough that it was painful
+ enough that somebody would go and fix it.
+ But conversely, you know, old doesn’t necessarily mean safe
+.
+ There are well-established pieces of software with plenty
+ of bugs in them.
+ Yeah.
+ Not a pen share.
+ So just the word Jepson, what does that mean?
+ What is Jepson?
+ And how did, you know, you said it’s a series of articles,
+ but it just seems like such a random word.
+ What does that mean?
+ Carly Rae Jepson is a Canadian pop star.
+ Oh, okay.
+ Who had this famous song, Call Me Maybe.
+ It’s all about miscommunication and not knowing if the boy
+ likes you or not.
+ And to me, this speaks to distributed systems where you’re
+ sending your operations into the,
+ and hoping that messages come back that they understood you
+, that they want to meet.
+ That’s almost as subtle a pun as UGtastic.
+ UGtastic.
+ User group’s fantastic.
+ But, yeah, it’s one of those when you finally hear the
+ definition, you’re like, that’s awesome.
+ Call me maybe.
+ And it makes total sense when you hear it.
+ Well, the blog posts are calling me Jepson, calling me El
+asticsearch.
+ Oh, okay.
+ And then the hope springs eternal.
+ That one was a little hard.
+ Yeah, in the previous talk, there was a star.
+ Yeah.
+ There was a reference about building a Death Star, and so
+ this is sort of playing on that.
+ Okay.
+ And did you happen to look at any other, like, we have
+ several database providers here,
+ like Neo4j, do your tests look at a variety of types of
+ database stores,
+ or are you mostly focused on NoSQL document stores,
+ or is there a specific vertical style of database that you
+ are focusing on with your Jepson series?
+ I would like to, and I think the tools are capable of
+ analyzing,
+ all sorts of different things.
+ Looking for SQL serializability anomalies is very tricky to
+ do.
+ The analyzer is slow, so it’s going to take more work, I
+ think, before I can really do tests on things like Postgres
+.
+ But basic tests about insert safety and update safety for
+ single rows, I think those should be amenable.
+ And I’m actually hoping to do that in Postgres RDS next.
+ Okay, great.
+ So far, I’ve done things from consensus services like
+ console and etcd to sort of horizontally scalable key value
+ stores,
+ like Cassandra and React, and then some SQL-style databases
+ like NeoDB.
+ Okay.
+ So there’s a whole gamut.
+ Great.
+ Well, thank you very much for taking the time to speak with
+ me.
+ I appreciate it.
+ Thank you.</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>

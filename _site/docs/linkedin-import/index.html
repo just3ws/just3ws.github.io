@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>LinkedIn Article Import | Mike Hall Archive</title>
+<meta name="description" content="Workflow for importing LinkedIn articles into the site with attribution, linkback, and image handling.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/linkedin-import/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="LinkedIn Article Import | Mike Hall Archive">
+<meta property="og:description" content="Workflow for importing LinkedIn articles into the site with attribution, linkback, and image handling.">
+<meta property="og:url" content="https://www.just3ws.com/docs/linkedin-import/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LinkedIn Article Import | Mike Hall Archive">
+<meta name="twitter:description" content="Workflow for importing LinkedIn articles into the site with attribution, linkback, and image handling.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/linkedin-import/">LinkedIn Import</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "LinkedIn Import",
+        "item": "https://www.just3ws.com/docs/linkedin-import/"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="linkedin-article-import">LinkedIn Article Import</h1>
+
+<p>This workflow imports your LinkedIn articles into <code class="language-plaintext highlighter-rouge">_posts</code> with:</p>
+
+<ul>
+  <li>full article HTML body</li>
+  <li>original hero image (downloaded locally)</li>
+  <li>attribution and linkback to LinkedIn</li>
+</ul>
+
+<h2 id="1-extract-article-json-in-browser">1) Extract Article JSON In Browser</h2>
+
+<p>Open a LinkedIn article page while logged in, then run this snippet in Chrome DevTools Console.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">node</span> <span class="o">&amp;&amp;</span> <span class="nx">node</span><span class="p">.</span><span class="nx">textContent</span> <span class="p">?</span> <span class="nx">node</span><span class="p">.</span><span class="nx">textContent</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span> <span class="p">:</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">attr</span> <span class="o">=</span> <span class="p">(</span><span class="nx">sel</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="nx">sel</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">el</span> <span class="p">?</span> <span class="p">(</span><span class="nx">el</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">||</span> <span class="dl">""</span><span class="p">).</span><span class="nx">trim</span><span class="p">()</span> <span class="p">:</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">title</span> <span class="o">=</span>
+    <span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">meta[property="og:title"]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span>
+    <span class="nx">text</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">h1</span><span class="dl">"</span><span class="p">))</span> <span class="o">||</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">title</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">*</span><span class="se">\|\s</span><span class="sr">*LinkedIn</span><span class="se">\s</span><span class="sr">*$/</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">originalUrl</span> <span class="o">=</span>
+    <span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">meta[property="og:url"]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">heroImageUrl</span> <span class="o">=</span> <span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">meta[property="og:image"]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">excerpt</span> <span class="o">=</span>
+    <span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">meta[name="description"]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span>
+    <span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">meta[property="og:description"]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="c1">// LinkedIn article pages vary; try likely content containers.</span>
+  <span class="kd">const</span> <span class="nx">contentRoot</span> <span class="o">=</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">article</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.reader-article-content</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.article-content</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">main</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">contentHtml</span> <span class="o">=</span> <span class="nx">contentRoot</span> <span class="p">?</span> <span class="nx">contentRoot</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span> <span class="p">:</span> <span class="dl">""</span><span class="p">;</span>
+
+  <span class="c1">// Optional byline extraction.</span>
+  <span class="kd">const</span> <span class="nx">authorName</span> <span class="o">=</span>
+    <span class="nx">text</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-test-id="article-author-name"]</span><span class="dl">'</span><span class="p">))</span> <span class="o">||</span>
+    <span class="nx">text</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.author-name</span><span class="dl">"</span><span class="p">))</span> <span class="o">||</span>
+    <span class="dl">""</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">publishedAt</span> <span class="o">=</span>
+    <span class="nx">attr</span><span class="p">(</span><span class="dl">'</span><span class="s1">meta[property="article:published_time"]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span> <span class="dl">""</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">title</span><span class="p">,</span>
+    <span class="na">original_url</span><span class="p">:</span> <span class="nx">originalUrl</span><span class="p">,</span>
+    <span class="na">published_at</span><span class="p">:</span> <span class="nx">publishedAt</span><span class="p">,</span>
+    <span class="na">author_name</span><span class="p">:</span> <span class="nx">authorName</span><span class="p">,</span>
+    <span class="na">author_profile_url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.linkedin.com/in/just3ws/</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">hero_image_url</span><span class="p">:</span> <span class="nx">heroImageUrl</span><span class="p">,</span>
+    <span class="nx">excerpt</span><span class="p">,</span>
+    <span class="na">content_html</span><span class="p">:</span> <span class="nx">contentHtml</span><span class="p">,</span>
+  <span class="p">};</span>
+
+  <span class="nx">copy</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Copied article JSON to clipboard.</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<p>Paste each copied payload into one JSON array file, for example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">tmp/linkedin/articles.json</code></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"published_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author_profile_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.linkedin.com/in/just3ws/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hero_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"excerpt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"content_html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="2-dry-run">2) Dry Run</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/import_linkedin_articles.rb <span class="nt">--input</span> tmp/linkedin/articles.json <span class="nt">--dry-run</span>
+</code></pre></div></div>
+
+<h2 id="3-import">3) Import</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/import_linkedin_articles.rb <span class="nt">--input</span> tmp/linkedin/articles.json
+</code></pre></div></div>
+
+<p>Outputs:</p>
+
+<ul>
+  <li>Posts: <code class="language-plaintext highlighter-rouge">_posts/YYYY-MM-DD-&lt;slug&gt;.md</code></li>
+  <li>Images: <code class="language-plaintext highlighter-rouge">assets/images/writing/linkedin/</code></li>
+</ul>
+
+<h2 id="4-build--review">4) Build + Review</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
+</code></pre></div></div>
+
+<p>Then review:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/writing/</code></li>
+  <li>each new post page for formatting/image quality</li>
+</ul>
+
+  </main>
+</body>
+</html>

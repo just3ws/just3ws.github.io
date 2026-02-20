@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Data Model | Mike Hall Archive</title>
+<meta name="description" content="Data model documentation for interview and video content. This page is part of Mike Hall's curated engineering archive and resume.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/interview-data-model.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Interview Data Model | Mike Hall Archive">
+<meta property="og:description" content="Data model documentation for interview and video content. This page is part of Mike Hall's curated engineering archive and resume.">
+<meta property="og:url" content="https://www.just3ws.com/docs/interview-data-model.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Data Model | Mike Hall Archive">
+<meta name="twitter:description" content="Data model documentation for interview and video content. This page is part of Mike Hall's curated engineering archive and resume.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+
+    
+      <a href="/docs/interview-data-model.html">Interview Data Model</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interview Data Model",
+        "item": "https://www.just3ws.com/docs/interview-data-model.html"
+      }
+    
+  ]
+}
+</script>
+
+
+
+  <header>
+    <h1>Interview Data Model</h1>
+    <p class="intro">This document describes the data model for the interview/video content on the site.</p>
+  </header>
+
+  <section>
+    <h2>Data Flow Overview</h2>
+
+    <h3>Rendered Diagram</h3>
+    <pre class="mermaid">
+flowchart TB
+  subgraph Canonical["Canonical Data"]
+    interviews[_data/interviews.yml&lt;br/&gt;Interview records]
+    assets[_data/video_assets.yml&lt;br/&gt;Canonical video assets]
+    transcripts[_data/transcripts/*.yml&lt;br/&gt;Transcript entries referenced by video_assets]
+  end
+
+  subgraph Buckets["Video Buckets"]
+    oneoffs[_data/oneoff_videos.yml&lt;br/&gt;One-off video list]
+    scmc[_data/scmc_videos.yml&lt;br/&gt;SCMC video list]
+  end
+
+  subgraph Lookups["Lookup Tables"]
+    confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
+    comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
+    related[_data/interview_related_videos.yml&lt;br/&gt;Related talks + official playlists]
+    resources[_data/resources.yml&lt;br/&gt;Trusted source registry]
+  end
+  interviews &lt;--&gt;|video_asset_id / interview_id| assets
+  oneoffs --&gt;|video_asset_id| assets
+  scmc --&gt;|video_asset_id| assets
+  interviews --&gt;|conference field| confs
+  interviews --&gt;|community field| comms
+  interviews --&gt;|interview_id / conference+year| related
+  confs --&gt;|slug| resources
+  assets -..-&gt;|transcript_id| transcripts
+    </pre>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: false, theme: "neutral" });
+      mermaid.run({ querySelector: ".mermaid" });
+    </script>
+
+    <h3>Diagram Source</h3>
+    <pre><code>flowchart TB
+  subgraph Canonical["Canonical Data"]
+    interviews[_data/interviews.yml&lt;br/&gt;Interview records]
+    assets[_data/video_assets.yml&lt;br/&gt;Canonical video assets]
+    transcripts[_data/transcripts/*.yml&lt;br/&gt;Transcript entries referenced by video_assets]
+  end
+
+  subgraph Buckets["Video Buckets"]
+    oneoffs[_data/oneoff_videos.yml&lt;br/&gt;One-off video list]
+    scmc[_data/scmc_videos.yml&lt;br/&gt;SCMC video list]
+  end
+
+  subgraph Lookups["Lookup Tables"]
+    confs[_data/interview_conferences.yml&lt;br/&gt;Conference definitions]
+    comms[_data/interview_communities.yml&lt;br/&gt;Community definitions]
+    related[_data/interview_related_videos.yml&lt;br/&gt;Related talks + official playlists]
+    resources[_data/resources.yml&lt;br/&gt;Trusted source registry]
+  end
+  interviews &lt;--&gt;|video_asset_id / interview_id| assets
+  oneoffs --&gt;|video_asset_id| assets
+  scmc --&gt;|video_asset_id| assets
+  interviews --&gt;|conference field| confs
+  interviews --&gt;|community field| comms
+  interviews --&gt;|interview_id / conference+year| related
+  confs --&gt;|slug| resources
+  assets -.-&gt;|transcript_id| transcripts</code></pre>
+  </section>
+
+  <section>
+    <h2>File Descriptions</h2>
+
+    <h3>Canonical Data Files</h3>
+
+    <h4><code>_data/interviews.yml</code></h4>
+    <p>The authoritative source for interview records. Each interview contains:</p>
+    <pre><code>items:
+  - id: string              # Unique identifier (slug)
+    title: string           # Display title
+    interviewees: [string]  # List of interviewee names
+    interviewer: string     # Usually "Mike Hall"
+    topic: string           # Interview topic (optional)
+    conference: string      # Conference name (references interview_conferences.yml)
+    conference_year: int    # Year of conference (optional)
+    community: string       # Community name (references interview_communities.yml)
+    recorded_date: date     # When the interview was recorded
+    tags: [string]          # Categorization tags
+    video_asset_id: string  # video_assets.id</code></pre>
+
+    <h4><code>_data/video_assets.yml</code></h4>
+    <p>Canonical video asset records. The <code>id</code> is the primary key and permalink for a video, with one or more platform publications stored in <code>platforms[]</code>. Links back to interviews via <code>interview_id</code> (optional):</p>
+    <pre><code>items:
+  - id: string                # Primary key / permalink
+    interview_id: string      # Links to interviews.yml id (optional)
+    title: string             # Canonical title
+    primary_platform: string  # Preferred platform for defaults (optional)
+    source: string            # Source identifier (optional, e.g., "ugtastic")
+    published_date: date      # Primary published date (optional)
+    thumbnail: string         # Primary thumbnail URL (optional)
+    thumbnail_local: string   # Local thumbnail path (optional)
+    duration_seconds: int     # Video length (optional)
+    duration_minutes: int     # Video length (rounded, optional)
+    description: string       # Canonical description (optional)
+    tags: [string]            # Tags
+    transcript_id: string     # References transcripts.yml id (optional)
+    platforms:                # Per-platform publications
+      - platform: string      # "vimeo", "youtube", "pechakucha", etc.
+        asset_id: string      # Platform-specific video ID
+        url: string           # Direct URL to video (optional)
+        embed_url: string     # Embeddable player URL (optional)
+        title_on_platform: string
+        published_date: date  # Publication date on platform (optional)
+        thumbnail: string     # Platform thumbnail URL (optional)
+        thumbnail_local: string # Local thumbnail path (optional)
+        duration_seconds: int   # Video length (optional)
+        duration_minutes: int   # Video length (rounded, optional)
+        description: string     # Platform description (optional)
+        source: string          # Platform source identifier (optional)
+        playlist: string        # Playlist name/label (optional)
+        video_url: string       # Direct video file URL (PechaKucha)
+        image_url: string       # Poster image (PechaKucha)</code></pre>
+
+    <h4><code>_data/transcripts/*.yml</code></h4>
+    <p>Canonical transcripts referenced by <code>video_assets.yml</code>. Each transcript is stored as its own data file keyed by transcript ID (file basename):</p>
+    <pre><code># File: _data/transcripts/&lt;transcript_id&gt;.yml
+content: |
+  Transcript text...</code></pre>
+    <p><code>_data/transcripts.yml</code> remains as a legacy placeholder and is not the active transcript content source.</p>
+
+    <h3>Lookup Tables</h3>
+
+    <h4><code>_data/interview_conferences.yml</code></h4>
+    <p>Conference definitions referenced by interviews:</p>
+    <pre><code>conferences:
+  - slug: string        # URL-friendly identifier
+    name: string        # Full conference name (display)
+    conference: string  # Conference series (matched by interviews.conference)
+    year: int           # Conference year (matched by interviews.conference_year)
+    start_date: date    # Conference start
+    end_date: date      # Conference end
+    location: string    # Venue location
+    description: string # Conference description</code></pre>
+
+    <h4><code>_data/interview_communities.yml</code></h4>
+    <p>Community definitions referenced by interviews:</p>
+    <pre><code>communities:
+  - slug: string        # URL-friendly identifier
+    name: string        # Full community name (matched by interviews.community)
+    description: string # Community description</code></pre>
+
+    <h4><code>_data/resources.yml</code></h4>
+    <p>Trusted source registry keyed by conference slug:</p>
+    <pre><code>source_policy: repository-only
+conferences:
+  conference-slug:
+    - label: string      # Source label
+      url: string        # Absolute URL
+      kind: string       # Optional source kind
+      notes: string      # Optional context</code></pre>
+
+    <h4><code>_data/interview_related_videos.yml</code></h4>
+    <p>Optional related conference content for interview pages:</p>
+    <pre><code>conference_playlists:
+  - conference: string        # Matched by interviews.conference
+    conference_year: int      # Matched by interviews.conference_year
+    links:
+      - label: string         # Display text
+        kind: string          # e.g. "official-playlist"
+        url: string           # External URL
+
+items:
+  - interview_id: string      # Matched by interviews.id
+    links:
+      - label: string         # Display text
+        kind: string          # e.g. "official-talk"
+        url: string           # External URL
+        embed_url: string     # Optional embeddable URL</code></pre>
+
+    <h3>Source Data Files</h3>    <h4><code>_data/oneoff_videos.yml</code></h4>
+    <p>One-off videos (standalone talks and presentations):</p>
+    <pre><code>items:
+  - video_asset_id: string  # References video_assets.yml id
+    slug: string            # URL-friendly identifier
+    title: string           # Video title
+    topic: string           # Topic (optional)
+    speaker: string         # Speaker name (optional)
+    people: [string]        # People featured (optional)
+    speakers: [string]      # Speakers list (optional)
+    created: date           # Creation date
+    tags: [string]          # Tags
+    views: int              # View count (optional)
+    category: string        # Category label (optional)
+    categories: [string]    # Category list (optional)</code></pre>
+
+    <h4><code>_data/scmc_videos.yml</code></h4>
+    <p>SCMC (Software Craftsmanship McHenry County) recordings:</p>
+    <pre><code>items:
+  - video_asset_id: string  # References video_assets.yml id
+    slug: string            # URL-friendly identifier
+    title: string           # Video title
+    topic: string           # Topic (optional)
+    speakers: [string]      # Speakers list (optional)
+    created: date           # Creation date
+    tags: [string]          # Tags
+    views: int              # View count (optional)
+    category: string        # Category label (optional)</code></pre>
+  </section>
+
+  <section>
+    <h2>Relationships</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Relationship</th>
+          <th>Field</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>interviews</td>
+          <td>video_assets</td>
+          <td>N:1</td>
+          <td><code>video_asset_id</code></td>
+        </tr>
+        <tr>
+          <td>video_assets</td>
+          <td>interviews</td>
+          <td>N:1 (optional)</td>
+          <td><code>interview_id</code></td>
+        </tr>
+        <tr>
+          <td>oneoff_videos</td>
+          <td>video_assets</td>
+          <td>N:1</td>
+          <td><code>video_asset_id</code></td>
+        </tr>
+        <tr>
+          <td>scmc_videos</td>
+          <td>video_assets</td>
+          <td>N:1</td>
+          <td><code>video_asset_id</code></td>
+        </tr>
+        <tr>
+          <td>video_assets</td>
+          <td>transcripts</td>
+          <td>N:1 (optional)</td>
+          <td><code>transcript_id</code></td>
+        </tr>
+        <tr>
+          <td>interviews</td>
+          <td>conferences</td>
+          <td>N:1</td>
+          <td><code>conference</code> + <code>conference_year</code></td>
+        </tr>
+        <tr>
+          <td>interviews</td>
+          <td>communities</td>
+          <td>N:1</td>
+          <td><code>community</code> (name match)</td>
+        </tr>
+        <tr>
+          <td>conferences</td>
+          <td>resources</td>
+          <td>1:N</td>
+          <td><code>slug</code> → <code>resources.conferences[slug]</code></td>
+        </tr>
+        <tr>
+          <td>interviews</td>
+          <td>interview_related_videos</td>
+          <td>1:N (optional)</td>
+          <td><code>id</code> or <code>conference + conference_year</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Maintenance</h2>
+    <p>Imports are complete. The canonical sources of truth are <code>interviews.yml</code> and <code>video_assets.yml</code>. Ongoing work focuses on pruning, deduping, and maintaining canonical metadata.</p>
+  </section>
+</article>
+
+  </main>
+</body>
+</html>

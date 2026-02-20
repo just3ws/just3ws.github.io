@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Tasks | Mike Hall Archive</title>
+<meta name="description" content="Prioritized technical tasks for pipeline reliability, data integrity, and SEO hardening.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/tasks.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Tasks | Mike Hall Archive">
+<meta property="og:description" content="Prioritized technical tasks for pipeline reliability, data integrity, and SEO hardening.">
+<meta property="og:url" content="https://www.just3ws.com/docs/tasks.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tasks | Mike Hall Archive">
+<meta name="twitter:description" content="Prioritized technical tasks for pipeline reliability, data integrity, and SEO hardening.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/tasks.html">Tasks</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Tasks",
+        "item": "https://www.just3ws.com/docs/tasks.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="tasks">Tasks</h1>
+
+<p>This task list is prioritized to protect pipeline correctness first, then data integrity, then non-visual SEO improvements.</p>
+
+<h2 id="historical-context">Historical Context</h2>
+
+<h3 id="theme-1-build-and-ci-reliability-foundation">Theme 1: Build and CI reliability foundation</h3>
+<ul>
+  <li>Standardized the pipeline around <code class="language-plaintext highlighter-rouge">bin/pipeline</code> as the canonical entrypoint.</li>
+  <li>Removed deprecated wrapper scripts and aligned docs/CI to canonical commands.</li>
+  <li>Kept runtime parity checks, resume artifact checks, and deterministic CI validation as hard gates.</li>
+</ul>
+
+<h3 id="theme-2-data-integrity-and-generation-quality">Theme 2: Data integrity and generation quality</h3>
+<ul>
+  <li>Added strong data validation for uniqueness and required fields.</li>
+  <li>Normalized generated interview/video metadata to remove duplication and low-quality copy.</li>
+  <li>Kept data checks in the CI path to fail fast on structural regressions.</li>
+</ul>
+
+<h3 id="theme-3-seosemantic-policy-hardening">Theme 3: SEO/semantic policy hardening</h3>
+<ul>
+  <li>Enforced explicit canonical semantics (<code class="language-plaintext highlighter-rouge">/</code> as root resume route, <code class="language-plaintext highlighter-rouge">/home/</code> as homepage route).</li>
+  <li>Added output validators for canonical/indexability and semantic/schema coverage.</li>
+  <li>Added CI artifacts for observability (<code class="language-plaintext highlighter-rouge">seo-metadata-report</code>, <code class="language-plaintext highlighter-rouge">schema-coverage-report</code>).</li>
+</ul>
+
+<h3 id="theme-4-build-time-last-modified-workflow">Theme 4: Build-time last-modified workflow</h3>
+<ul>
+  <li>Implemented build-time last-modified generation and graduated it from experimental to default behavior.</li>
+  <li>Added verification checks to ensure rendered <code class="language-plaintext highlighter-rouge">dateModified</code> parity across article pages.</li>
+  <li>Established template/data contract to keep metadata generation and rendered output in sync.</li>
+</ul>
+
+<h2 id="retrospective-process">Retrospective Process</h2>
+
+<ul>
+  <li>Use the standard retrospective format in <code class="language-plaintext highlighter-rouge">docs/retrospectives/index.md</code> for each meaningful implementation cycle.</li>
+  <li>Every retrospective must explicitly capture:
+    <ul>
+      <li>what worked</li>
+      <li>what did not work</li>
+      <li>what went well</li>
+      <li>what could be better</li>
+      <li>process improvements with owners, checkpoints, and validation methods</li>
+    </ul>
+  </li>
+  <li>The next retrospective must evaluate prior improvements with status (<code class="language-plaintext highlighter-rouge">upheld</code>, <code class="language-plaintext highlighter-rouge">improved</code>, <code class="language-plaintext highlighter-rouge">maintained</code>, <code class="language-plaintext highlighter-rouge">regressed</code>, <code class="language-plaintext highlighter-rouge">dropped</code>) and evidence.</li>
+</ul>
+
+<h2 id="critical-constraint">Critical Constraint</h2>
+
+<ul>
+  <li>Root route semantics: <code class="language-plaintext highlighter-rouge">/</code> is the default root route and resume page; <code class="language-plaintext highlighter-rouge">/home/</code> is homepage content.</li>
+  <li>Resume artifacts (<code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">/resume.txt</code>, <code class="language-plaintext highlighter-rouge">/resume.md</code>) must render correctly on every build.</li>
+  <li>Any task affecting resume or homepage routing/canonical behavior must include automated pass/fail criteria.</li>
+</ul>
+
+<h2 id="current-operating-plan">Current Operating Plan</h2>
+
+<h3 id="phase-1-configuration--pipeline-correctness">Phase 1: Configuration + Pipeline Correctness</h3>
+<ul>
+  <li>Status: complete and stable.</li>
+  <li>Ongoing expectation: keep runtime parity and resume guardrails as blocking CI checks.</li>
+</ul>
+
+<h3 id="phase-2-structural-integrity-of-data">Phase 2: Structural Integrity of Data</h3>
+<ul>
+  <li>Status: complete and stable.</li>
+  <li>Ongoing expectation: keep uniqueness/integrity checks in the default CI path.</li>
+</ul>
+
+<h3 id="phase-3-technical-seo-optimizations-non-visual">Phase 3: Technical SEO Optimizations (Non-Visual)</h3>
+<ul>
+  <li>Status: implemented, actively tuned with metric-driven follow-up.</li>
+  <li>Ongoing expectation: preserve canonical/schema contracts and artifact-based observability.</li>
+</ul>
+
+<h2 id="logged-recommendations-current">Logged Recommendations (Current)</h2>
+
+<ol>
+  <li>Keep plan text synchronized with implementation in the same commit series.</li>
+  <li>Preserve sitemap-driven smoke scope and avoid reintroducing hardcoded route lists.</li>
+  <li>Keep <code class="language-plaintext highlighter-rouge">SITEMAP_MAX_URLS=5000</code> unless explicit publication-scope expansion is approved.</li>
+  <li>If publication model changes, define canonical/robots policy first, then implement validation.</li>
+  <li>Keep JSON-LD required-field rules in lockstep with template/schema changes.</li>
+  <li>Keep semantic graph artifacts and documentation snapshots synchronized when schema contracts change.</li>
+  <li>Keep agent/skill usage explicit: use registered skills for CI/smoke/security tasks; add a dedicated SEO semantic skill only if repeated workflows become too custom.</li>
+  <li>Keep Playwright smoke checks bounded and observable: enforce explicit step timeouts, cap sampled sitemap routes, and always upload smoke logs as CI artifacts.</li>
+</ol>
+
+<h2 id="agentskill-coverage">Agent/Skill Coverage</h2>
+
+<ul>
+  <li>Sub-agents: not required for the current repository workflow. The existing pipeline + script boundaries are sufficient for deterministic SEO/schema hardening.</li>
+  <li>Registered skills: sufficient for current needs (<code class="language-plaintext highlighter-rouge">gh-fix-ci</code>, <code class="language-plaintext highlighter-rouge">gh-address-comments</code>, <code class="language-plaintext highlighter-rouge">playwright</code>, <code class="language-plaintext highlighter-rouge">screenshot</code>, security skills).</li>
+  <li>Gap to consider later: a dedicated SEO/semantic skill could reduce repetitive analysis steps, but this is optimization work, not a blocker.</li>
+</ul>
+
+<h2 id="short-term-backlog">Short-Term Backlog</h2>
+
+<ol>
+  <li>Transcript Coverage Expansion
+    <ul>
+      <li>Status: deferred (work in progress).</li>
+      <li>Notes: transcript onboarding should continue as new source transcript files are produced; avoid blocking other metadata/SEO work on transcript completeness.</li>
+    </ul>
+  </li>
+  <li>Metadata Completion at Scale (Active Candidate)
+    <ul>
+      <li>Status: active candidate.</li>
+      <li>Fill missing <code class="language-plaintext highlighter-rouge">video_assets</code> fields (<code class="language-plaintext highlighter-rouge">description</code>, <code class="language-plaintext highlighter-rouge">topic</code>) in prioritized batches.</li>
+      <li>Fill missing <code class="language-plaintext highlighter-rouge">interviews</code> <code class="language-plaintext highlighter-rouge">topic</code> values where conference/community context is known.</li>
+      <li>Keep topic/description conventions consistent with canonical slugs and transcript-derived phrasing.</li>
+    </ul>
+  </li>
+  <li>SEO Metadata Quality Cleanup
+    <ul>
+      <li>Status: implemented (2026-02-12 pass), monitor and tune.</li>
+      <li>Added global head-level title/description normalization for minimum and maximum lengths.</li>
+      <li>Improved generated interview/video metadata copy to avoid thin descriptions and low-information titles.</li>
+      <li>Ongoing: monitor <code class="language-plaintext highlighter-rouge">tmp/seo-metadata-report.json</code> for regressions as new content lands.</li>
+    </ul>
+  </li>
+  <li>Data Model Documentation Alignment
+    <ul>
+      <li>Status: implemented, keep synchronized.</li>
+      <li>Update docs to reflect per-file transcripts in <code class="language-plaintext highlighter-rouge">_data/transcripts/*.yml</code> as canonical transcript storage.</li>
+      <li>Clarify <code class="language-plaintext highlighter-rouge">_data/transcripts.yml</code> is legacy/placeholder and not the active content source.</li>
+      <li>Keep docs synchronized with generators/templates in the same commit series.</li>
+    </ul>
+  </li>
+  <li>Structured Data Object Model Expansion
+    <ul>
+      <li>Status: implemented (first complete pass), monitor and tune.</li>
+      <li>Interview schema now encodes richer entity relationships (<code class="language-plaintext highlighter-rouge">Interview</code>, <code class="language-plaintext highlighter-rouge">Person</code>, <code class="language-plaintext highlighter-rouge">Event</code>, <code class="language-plaintext highlighter-rouge">Organization</code>, linked <code class="language-plaintext highlighter-rouge">VideoObject</code>).</li>
+      <li>Resume schema now enforces <code class="language-plaintext highlighter-rouge">Person</code> + <code class="language-plaintext highlighter-rouge">Occupation</code> + career <code class="language-plaintext highlighter-rouge">ItemList</code> consistency for ATS/search use.</li>
+      <li>Added semantic graph snapshot docs workflow (<code class="language-plaintext highlighter-rouge">./bin/pipeline semantic-snapshot</code>) for reviewability.</li>
+    </ul>
+  </li>
+  <li>Ongoing Maintenance
+    <ul>
+      <li>Status: continuous.</li>
+      <li>Continue periodic validator hardening only where reports indicate drift.</li>
+      <li>Keep command/documentation grammar aligned to <code class="language-plaintext highlighter-rouge">bin/pipeline</code> subcommands.</li>
+      <li>Track retrospective follow-through as first-class process work, not post-hoc cleanup.</li>
+    </ul>
+  </li>
+</ol>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>[Linky] HOW TO: Debug into a .NET XmlSerializer Generated Assembly</title>
+<meta name="description" content="When using the xml serialization object to serialize and deserialize an object a temporary class file is generated. This article explains how to find the inter…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/2007/05/18/linky-how-to-debug-into-a-net-xmlserializer-generated-assembly.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="[Linky] HOW TO: Debug into a .NET XmlSerializer Generated Assembly">
+<meta property="og:description" content="When using the xml serialization object to serialize and deserialize an object a temporary class file is generated. This article explains how to find the inter…">
+<meta property="og:url" content="https://www.just3ws.com/2007/05/18/linky-how-to-debug-into-a-net-xmlserializer-generated-assembly.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Linky] HOW TO: Debug into a .NET XmlSerializer Generated Assembly">
+<meta name="twitter:description" content="When using the xml serialization object to serialize and deserialize an object a temporary class file is generated. This article explains how to find the inter…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "[Linky] HOW TO: Debug into a .NET XmlSerializer Generated Assembly",
+  "description": "When using the xml serialization object to serialize and deserialize an object a temporary class file is generated. This article explains how to find the intermediary file and step",
+  "author": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "datePublished": "2007-05-18T00:00:00-05:00",
+  "dateModified": "2026-02-15T07:30:35-06:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/2007/05/18/linky-how-to-debug-into-a-net-xmlserializer-generated-assembly.html"
+  }
+}
+</script>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+
+    
+      <a href="/2007/05/18/linky-how-to-debug-into-a-net-xmlserializer-generated-assembly.html">[Linky] HOW TO: Debug into a .NET XmlSerializer Generated Assembly</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "[Linky] HOW TO: Debug into a .NET XmlSerializer Generated Assembly",
+        "item": "https://www.just3ws.com/2007/05/18/linky-how-to-debug-into-a-net-xmlserializer-generated-assembly.html"
+      }
+    
+  ]
+}
+</script>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>[Linky] HOW TO: Debug into a .NET XmlSerializer Generated Assembly</h1>
+    <p class="post-meta">May 2007 · blogger, frogsbrain, republished, wayback</p>
+    
+    <aside class="archive-note">
+      <p>
+        <strong>Originally published on Blogger on May 18, 2007.</strong>
+        <a href="https://web.archive.org/web/20231125010021/https://frogsbrain.blogspot.com/2007/05/linky-how-to-debug-into-net.html">View original article</a>.
+      </p>
+    </aside>
+    
+    
+    <aside class="archive-note">
+      <p><strong>Archive note:</strong> Originally published on frogsbrain.blogspot.com. Republished from local Wayback snapshot exports.</p>
+    </aside>
+    
+  </header>
+  <div class="post-body">
+    <p>When using the xml serialization object to serialize and deserialize an object a temporary class file is generated.  This article explains how to find the intermediary file and step into it with the VS.Net debugger.<br><br>Article by Scott Hanselman.</p>
+
+<div style="clear: both;"></div>
+
+  </div>
+</article>
+
+  </main>
+</body>
+</html>

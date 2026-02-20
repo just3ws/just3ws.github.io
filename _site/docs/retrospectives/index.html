@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Retrospective Protocol | Mike Hall Archive</title>
+<meta name="description" content="Standard retrospective format for what worked, what did not, and process improvements.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/retrospectives/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Retrospective Protocol | Mike Hall Archive">
+<meta property="og:description" content="Standard retrospective format for what worked, what did not, and process improvements.">
+<meta property="og:url" content="https://www.just3ws.com/docs/retrospectives/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrospective Protocol | Mike Hall Archive">
+<meta name="twitter:description" content="Standard retrospective format for what worked, what did not, and process improvements.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/retrospectives/">Retrospectives</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Retrospectives",
+        "item": "https://www.just3ws.com/docs/retrospectives/"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="retrospective-protocol">Retrospective Protocol</h1>
+
+<p>Use this format after each meaningful implementation cycle. Keep it concise, evidence-based, and action-oriented.</p>
+
+<h2 id="required-sections">Required Sections</h2>
+
+<ol>
+  <li>What Worked
+    <ul>
+      <li>Concrete behaviors or decisions that improved outcomes.</li>
+      <li>Include evidence: CI run IDs, validator results, timings, or commit references.</li>
+    </ul>
+  </li>
+  <li>What Did Not Work
+    <ul>
+      <li>Concrete issues, failures, or friction points.</li>
+      <li>Include impact and trigger conditions.</li>
+    </ul>
+  </li>
+  <li>What Went Well
+    <ul>
+      <li>Positive execution patterns worth repeating.</li>
+      <li>Distinct from “what worked” by focusing on team/process quality.</li>
+    </ul>
+  </li>
+  <li>What Could Be Better
+    <ul>
+      <li>Gaps where outcomes were acceptable but not optimal.</li>
+      <li>Include why improvement matters.</li>
+    </ul>
+  </li>
+  <li>Process Improvements
+    <ul>
+      <li>List only actionable items.</li>
+      <li>Each item must include:
+        <ul>
+          <li>owner</li>
+          <li>expected outcome</li>
+          <li>due checkpoint (date or next milestone)</li>
+          <li>validation method</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Follow-up Review (next retrospective)
+    <ul>
+      <li>For each prior improvement item, mark:
+        <ul>
+          <li>status: upheld, improved, maintained, regressed, or dropped</li>
+          <li>evidence</li>
+          <li>adjustment (if needed)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="retrospective-template">Retrospective Template</h2>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Retrospective (YYYY-MM-DD)</span>
+
+<span class="gu">### Context</span>
+<span class="p">-</span> Scope:
+<span class="p">-</span> Time window:
+<span class="p">-</span> Relevant commits:
+<span class="p">-</span> CI runs:
+
+<span class="gu">### What Worked</span>
+<span class="p">-</span> [ ] item + evidence
+
+<span class="gu">### What Did Not Work</span>
+<span class="p">-</span> [ ] item + impact + trigger
+
+<span class="gu">### What Went Well</span>
+<span class="p">-</span> [ ] item
+
+<span class="gu">### What Could Be Better</span>
+<span class="p">-</span> [ ] item + why
+
+<span class="gu">### Process Improvements</span>
+<span class="p">1.</span> Improvement:
+<span class="p">   -</span> Owner:
+<span class="p">   -</span> Expected outcome:
+<span class="p">   -</span> Due checkpoint:
+<span class="p">   -</span> Validation method:
+
+<span class="gu">### Prior Improvement Follow-up</span>
+<span class="p">1.</span> Improvement:
+<span class="p">   -</span> Status:
+<span class="p">   -</span> Evidence:
+<span class="p">   -</span> Adjustment:
+</code></pre></div></div>
+
+<h2 id="quality-bar">Quality Bar</h2>
+
+<ul>
+  <li>Do not include generic statements without evidence.</li>
+  <li>Keep process improvements small and testable.</li>
+  <li>Keep retrospective updates in the same commit series as behavior/policy changes when possible.</li>
+</ul>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Repository Hygiene | Mike Hall Archive</title>
+<meta name="description" content="Policy for pruning stale files, controlling legacy content, and preventing repository drift.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/repo-hygiene.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Repository Hygiene | Mike Hall Archive">
+<meta property="og:description" content="Policy for pruning stale files, controlling legacy content, and preventing repository drift.">
+<meta property="og:url" content="https://www.just3ws.com/docs/repo-hygiene.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Repository Hygiene | Mike Hall Archive">
+<meta name="twitter:description" content="Policy for pruning stale files, controlling legacy content, and preventing repository drift.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/repo-hygiene.html">Repository Hygiene</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Repository Hygiene",
+        "item": "https://www.just3ws.com/docs/repo-hygiene.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="repository-hygiene">Repository Hygiene</h1>
+
+<p>This policy keeps technical debt from accumulating in the repository by making file ownership, retention, and pruning rules explicit.</p>
+
+<h2 id="file-classes">File Classes</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">canonical</code>: source files required to generate public site output.</li>
+  <li><code class="language-plaintext highlighter-rouge">generated</code>: repo-tracked generated artifacts required by the site (<code class="language-plaintext highlighter-rouge">interviews/</code>, <code class="language-plaintext highlighter-rouge">videos/</code>, selected <code class="language-plaintext highlighter-rouge">_data</code> outputs).</li>
+  <li><code class="language-plaintext highlighter-rouge">reference</code>: implementation documentation required for maintainers.</li>
+  <li><code class="language-plaintext highlighter-rouge">ephemeral</code>: local reports and build outputs (<code class="language-plaintext highlighter-rouge">tmp/</code>, <code class="language-plaintext highlighter-rouge">_site/</code>) that are never canonical.</li>
+  <li><code class="language-plaintext highlighter-rouge">legacy</code>: historical context files kept for migration support, not as active source of truth.</li>
+</ul>
+
+<h2 id="retention-rules">Retention Rules</h2>
+
+<ol>
+  <li>Keep <code class="language-plaintext highlighter-rouge">canonical</code>, <code class="language-plaintext highlighter-rouge">generated</code>, and <code class="language-plaintext highlighter-rouge">reference</code> files in version control.</li>
+  <li>Exclude <code class="language-plaintext highlighter-rouge">ephemeral</code> files from commits unless explicitly required by policy.</li>
+  <li>Mark <code class="language-plaintext highlighter-rouge">legacy</code> directories in <code class="language-plaintext highlighter-rouge">_data/repo_hygiene.yml</code> and require an explicit retention decision.</li>
+  <li>Any new top-level file or directory must be declared in <code class="language-plaintext highlighter-rouge">_data/repo_hygiene.yml</code>.</li>
+</ol>
+
+<h2 id="pruning-workflow">Pruning Workflow</h2>
+
+<ol>
+  <li>Detect candidates with <code class="language-plaintext highlighter-rouge">ruby ./bin/validate_repo_hygiene.rb</code>.</li>
+  <li>Confirm that a candidate is not referenced by build scripts, templates, docs, or validators.</li>
+  <li>If uncertain, quarantine under an archive path before deletion.</li>
+  <li>Remove references and update <code class="language-plaintext highlighter-rouge">_data/repo_hygiene.yml</code> in the same commit.</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">./bin/pipeline validate</code>.</li>
+</ol>
+
+<h2 id="current-decisions">Current Decisions</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">career_history.md</code> is deprecated and must not be reintroduced.</li>
+  <li><code class="language-plaintext highlighter-rouge">context/interviews-history/</code> is legacy reference data and must stay explicitly marked as <code class="language-plaintext highlighter-rouge">review_required</code> until archival policy is finalized.</li>
+</ul>
+
+<h2 id="ci-enforcement">CI Enforcement</h2>
+
+<p><code class="language-plaintext highlighter-rouge">bin/validate_repo_hygiene.rb</code> is part of <code class="language-plaintext highlighter-rouge">./bin/pipeline validate</code> and enforces:</p>
+
+<ul>
+  <li>top-level allowlist compliance</li>
+  <li>deprecated-path blocking</li>
+  <li>docs-link style consistency checks for <code class="language-plaintext highlighter-rouge">/docs/*</code> routes</li>
+</ul>
+
+  </main>
+</body>
+</html>

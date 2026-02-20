@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Clean AOP using Post# Multicast Syntax.</title>
+<meta name="description" content="Post# is a powerful and relatively mature Aspect-Oriented Programming (AOP) framework for .NET. I love it and use it in every project that I have a need to imp…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/2009/12/27/clean-aop-using-post-multicast-syntax.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Clean AOP using Post# Multicast Syntax.">
+<meta property="og:description" content="Post# is a powerful and relatively mature Aspect-Oriented Programming (AOP) framework for .NET. I love it and use it in every project that I have a need to imp…">
+<meta property="og:url" content="https://www.just3ws.com/2009/12/27/clean-aop-using-post-multicast-syntax.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Clean AOP using Post# Multicast Syntax.">
+<meta name="twitter:description" content="Post# is a powerful and relatively mature Aspect-Oriented Programming (AOP) framework for .NET. I love it and use it in every project that I have a need to imp…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Clean AOP using Post# Multicast Syntax.",
+  "description": "Post# is a powerful and relatively mature Aspect-Oriented Programming (AOP) framework for .NET. I love it and use it in every project that I have a need to implement crosscutting c",
+  "author": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mike Hall"
+  },
+  "datePublished": "2009-12-27T00:00:00-06:00",
+  "dateModified": "2026-02-19T14:25:16-06:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/2009/12/27/clean-aop-using-post-multicast-syntax.html"
+  }
+}
+</script>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+
+    
+      <a href="/2009/12/27/clean-aop-using-post-multicast-syntax.html">Clean AOP using Post# Multicast Syntax.</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Clean AOP using Post# Multicast Syntax.",
+        "item": "https://www.just3ws.com/2009/12/27/clean-aop-using-post-multicast-syntax.html"
+      }
+    
+  ]
+}
+</script>
+
+
+
+<article class="post">
+  <header class="post-header">
+    <h1>Clean AOP using Post# Multicast Syntax.</h1>
+    <p class="post-meta">December 2009 · wordpress, republished, wayback, aop, net, aspect, aspect-oriented-programming, c, csharp, post, postsharp</p>
+    
+    <aside class="archive-note">
+      <p>
+        <strong>Originally published on WordPress on December 27, 2009.</strong>
+        <a href="https://web.archive.org/web/20100120151145/http://just3ws.wordpress.com/2009/12/27/clean-aop-using-post-multicast-syntax/">View original article</a>.
+      </p>
+    </aside>
+    
+    
+    <aside class="archive-note">
+      <p><strong>Archive note:</strong> Originally published on just3ws.wordpress.com. Republished from local Wayback snapshot exports.</p>
+    </aside>
+    
+  </header>
+  <div class="post-body">
+    <div class="snap_preview">
+<p>Post# is a powerful and relatively mature Aspect-Oriented Programming (AOP) framework for .NET. I love it and use it in every project that I have a need to implement crosscutting concerns for. But one thing I’ve heard many people complain about is having to decorate your source code with tons of custom attributes. And that doesn’t have to be the case.</p>
+<p>It’s very easy to add the aspect attributes when you have a codebase with only a handful of classes to manage. But what about when your codebase becomes very large. Or what if you want to be able to turn on and off certain aspects for different builds? Maybe a trial version of your application doesn’t allow certain features unless there’s a license code present? You may want to be able to enable trial users to “flip a switch” by adding a license code to access all features. You may also want to allow licensed users to download an “optimized” version that doesn’t include the license check. Using Post# it would be easy to add the license check to your objects. But going one by one to remove those attributes to do an “optimized” build would be a serious pain. Fortunately, Post# can easily handle this scenario using Multicast Attributes. And the best thing is that you don’t have to change your current attributes to access this functionality. <sub>[caveat: By that I mean if you are using the PostSharp.Laos attributes you don't have to change anything. If you are writing your own custom aspects off PostSharp.Core that's a little more involved.]</sub></p>
+<p>Let’s say it’s late o’clock on a Friday and your PHB runs up and panicking “OH NOES! OUR RETAIL STORE GENARATOR DOESN’T MAKE OUR CUSTOMERS FEEL WELCOME WHEN THEY ENTER OUR STORES!!1! AND IT DOESN’T REMIND THEM TO COME BACK AGAIN REAL SOON!!” <sub>[edit: PHB's always speak in all-caps with poor spelling, grammar and typos.]</sub> So you need to add this functionality in post haste. Post# to the rescue! So you whip up an aspect to greet the shopper every time they enter and leave the Shopping Experience(tm).</p>
+<pre class="brush: csharp;">[Serializable]
+public class GreeterAspect : OnMethodBoundaryAspect
+{
+    public string ClassName { get; private set; }
+
+    public override void CompileTimeInitialize(MethodBase method)
+    {
+        this.ClassName = method.DeclaringType.Name;
+    }
+
+    public override void OnEntry(MethodExecutionEventArgs eventArgs)
+    {
+        Console.Out.WriteLine("Welcome to {0}!", this.ClassName);
+    }
+
+    public override void OnExit(MethodExecutionEventArgs eventArgs)
+    {
+        Console.Out.WriteLine(@"Thanks for visiting, {0}.
+Hope to see you again real soon!", this.ClassName);
+    }
+}
+</pre>
+<p>Now comes the hard part. You have to go into that nasty (hey, you didn’t write it) codebase and find every place that the Shopper Experience(TM) was defined and decorate it with a <code>[GreeterAspect]</code> attribute.</p>
+<pre class="brush: csharp;">public class BetterBuy : IBigBoxStore
+{
+    [GreeterAspect]
+    public void Shop()
+    {
+        Console.Out.WriteLine("No, I don't want to purchase an extended warranty.");
+    }
+}
+</pre>
+<p>So it’s good that you have saved a great deal of repetition in your code by encapsulating this crosscutting concern into an aspect. But it’s bad because now every developer who implements the Shopper Experience(TM) has to remember to include the attribute on their implementation. If there were only a better way!</p>
+<p>Fortunately, there is. Post# was created by some smart dudes and they probably knew that adding that attribute everywhere was going to be almost as much of a maintenance headache as just adding pre and post conditions by hand. So they implemented a syntax to allow you to selectively apply the PostSharp attributes throughout your assembly. Now, instead of having to decorate each join point by hand you can declaratively specify where to apply the aspect from a single location.</p>
+<pre class="brush: csharp;">[assembly: GreeterAspect(AttributeTargetMembers = "ShopperExperience")]
+</pre>
+<p>By adding this declaration to your source code Post# will search for every member of your classes with the name ShopperExperience and add the aspect just as if you had declared it directly on your class definition. </p>
+<p>Now your PHB is happy because you’ve implemented the request in record time. You are happy because you didn’t have to go and touch each and every instance of the ShopperExperience(TM). And future developers are happy because they don’t have to worry about accidentally forgetting to apply the attribute when adding a new store.</p>
+<p>This is a very contrived example of how to get started using the multicast syntax. Post# allows for complex filters to be set on where the aspects will be applied. But that’s a topic for another post. For more in-depth information on how to use the multicast syntax checkout the excellent Post# documentation <a href="https://doc.postsharp.org/1.5/Default.aspx##PostSharp.HxS/UserGuide/Laos/Multicasting/Overview.html" rel="noopener noreferrer" target="_blank">here</a>.</p>
+<p>Full Example Source Code:</p>
+<pre class="brush: csharp;">/*
+ * You'll need to add references to:
+ *  PostSharp.Laos.dll
+ *  PostSharp.Public.dll
+ *  nunit.framework.dll
+ */
+using System;
+using System.Reflection;
+using BigBoxRetailer;
+using NUnit.Framework;
+using PostSharp.Laos;
+
+[assembly: GreeterAspect(AttributeTargetMembers = "ShopperExperience")]
+
+namespace BigBoxRetailer
+{
+    [Serializable]
+    public class GreeterAspect : OnMethodBoundaryAspect
+    {
+        public string ClassName { get; private set; }
+
+        public override void CompileTimeInitialize(MethodBase method)
+        {
+            this.ClassName = method.DeclaringType.Name;
+        }
+
+        public override void OnEntry(MethodExecutionEventArgs eventArgs)
+        {
+            Console.Out.WriteLine("Welcome to {0}!", this.ClassName);
+        }
+
+        public override void OnExit(MethodExecutionEventArgs eventArgs)
+        {
+            Console.Out.WriteLine(@"Thanks for visiting, {0}.
+Hope to see you again real soon!", this.ClassName);
+        }
+    }
+
+    public class Program
+    {
+        private static void Main()
+        {
+            var factory = new BigBoxFactory();
+            var stripMall = new[]
+                                {
+                                    factory.CreateStore(BigBoxStores.BetterBuy),
+                                    factory.CreateStore(BigBoxStores.BullsEye),
+                                    factory.CreateStore(BigBoxStores.FloorMart),
+                                };
+            foreach (var bigBoxStore in stripMall)
+            {
+                bigBoxStore.ShopperExperience();
+            }
+            Console.In.ReadLine();
+        }
+    }
+
+    public enum BigBoxStores
+    {
+        BetterBuy,
+        FloorMart,
+        BullsEye,
+    }
+
+    public interface IBigBoxFactory
+    {
+        IBigBoxStore CreateStore(BigBoxStores bigBoxStores);
+    }
+
+    public class BigBoxFactory : IBigBoxFactory
+    {
+        public IBigBoxStore CreateStore(BigBoxStores bigBoxStore)
+        {
+            switch (bigBoxStore)
+            {
+                case BigBoxStores.BetterBuy:
+                    return new BetterBuy();
+                case BigBoxStores.BullsEye:
+                    return new BullsEye();
+                case BigBoxStores.FloorMart:
+                    return new FloorMart();
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+    }
+
+    public interface IBigBoxStore
+    {
+        void ShopperExperience();
+    }
+
+    public class BetterBuy : IBigBoxStore
+    {
+        public void ShopperExperience()
+        {
+            Console.Out.WriteLine("No, I don't want to purchase an extended warranty.");
+        }
+    }
+
+    public class FloorMart : IBigBoxStore
+    {
+        public void ShopperExperience()
+        {
+            Console.Out.WriteLine("Better than the fleamarket.");
+        }
+    }
+
+    public class BullsEye : IBigBoxStore
+    {
+        public void ShopperExperience()
+        {
+            Console.Out.WriteLine("Better than FloorMart.");
+        }
+    }
+
+    [TestFixture]
+    public class BigBoxRetailerTests
+    {
+        [TestCase(BigBoxStores.BetterBuy, typeof (BetterBuy))]
+        [TestCase(BigBoxStores.BullsEye, typeof (BullsEye))]
+        [TestCase(BigBoxStores.FloorMart, typeof (FloorMart))]
+        public void FactoryTest(BigBoxStores value, Type expected)
+        {
+            var factory = new BigBoxFactory();
+            IBigBoxStore store = factory.CreateStore(value);
+            Assert.IsInstanceOf(expected, store);
+        }
+    }
+}
+</pre>
+		<div id="geo-post-574" class="geo geo-post" style="display: none">
+			<span class="latitude">42.241134</span>
+			<span class="longitude">-88.316197</span>
+		</div>
+</div>
+
+  </div>
+</article>
+
+  </main>
+</body>
+</html>

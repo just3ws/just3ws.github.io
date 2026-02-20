@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Archive — Carlos Antonio da Silva on Rails core…</title>
+<meta name="description" content="Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014. Topic: Rails core maintenance. Conference: RailsConf 2014. Recorded:…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/interviews/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Interview Archive — Carlos Antonio da Silva on Rails core…">
+<meta property="og:description" content="Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014. Topic: Rails core maintenance. Conference: RailsConf 2014. Recorded:…">
+<meta property="og:url" content="https://www.just3ws.com/interviews/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Archive — Carlos Antonio da Silva on Rails core…">
+<meta name="twitter:description" content="Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014. Topic: Rails core maintenance. Conference: RailsConf 2014. Recorded:…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" class="is-active" aria-current="page">Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/interviews/">Interviews</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/interviews/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/">Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interviews",
+        "item": "https://www.just3ws.com/interviews/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014",
+        "item": "https://www.just3ws.com/interviews/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    
+    <header>
+      <h1>Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014</h1>
+    </header>
+    
+      <div class="video-subtitle">Interviewee: <a href="/interviews/people/carlos-antonio-da-silva/">Carlos Antonio da Silva</a></div>
+    
+    
+      <div class="video-subtitle">Topic: Rails core maintenance</div>
+    
+    <div class="video-meta">
+      
+        Conference:
+        
+        
+        
+          <a href="/interviews/conferences/railsconf-2014/">RailsConf 2014</a>
+        
+      
+      
+    </div>
+
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
+  "@id": "https://www.just3ws.com/id/interview/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014",
+  "identifier": "carlos-antonio-da-silva-rails-core-team-member-railsconf-2014",
+  "name": "Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014",
+  "url": "https://www.just3ws.com/interviews/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/",
+  "datePublished": "2022-05-13",
+  "description": "Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014. Topic: Rails core maintenance. Conference: RailsConf 2014. Recorded:…",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.just3ws.com/id/person/mike-hall",
+    "name": "Mike Hall"
+  },
+  
+  "contributor": [
+    
+    {
+      "@type": "Person",
+      "@id": "https://www.just3ws.com/id/person/carlos-antonio-da-silva",
+      "name": "Carlos Antonio da Silva"
+    }
+    
+  ],
+  
+  
+  
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Rails core maintenance"
+    }
+    
+  
+  
+    ,
+    {
+      "@type": "Event",
+      "@id": "https://www.just3ws.com/id/conference/railsconf-2014",
+      "name": "RailsConf 2014"
+    }
+  ],
+  
+  
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "https://www.just3ws.com/id/video/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014",
+    "name": "Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014",
+    "description": "Interview with Carlos Antonio da Silva at RailsConf 2014 on Rails core maintenance. This recording captures practical lessons and perspective for software teams and technical communities.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/tJ3mhzjAiso/maxresdefault.jpg",
+    "uploadDate": "2022-05-13",
+    "transcript": "Hi, it's Mike with UGtastic. I'm here at RailsConf 2014,\n and I'm standing here with\n Carlos Antonio da Silva, who's a software developer with\n Platformatech, and you might\n also know some of his projects, Devise, Simpleform. He's\n also a Rails core contributor. He gave a talk\n today about some of the tricks that Rails didn't teach you.\n Did I say that correctly?\n Yeah, tricks that Rails didn't tell you about.\n Tricks that Rails didn't tell you about. So thank you very\n much for taking the time to speak with\n me. I appreciate it. So can you tell me a little bit more\n about tricks that Rails didn't tell me\n about?\n Right, yeah. So the idea behind this talk is that I've been\n working with Rails for around six years,\n and I've been in a lot of different projects and seen a lot\n of different code from different people\n around the world.\n And people get used to writing their own code without\n actually looking at what Rails can give\n them. So there are times where we see code that could be\n replaced by Rails' existing features,\n features that were released in newer versions, or even\n features that were since the beginning in\n Rails, right? And the idea was just to show some nice\n tricks that Rails has, some small features,\n features that people don't use that much, and that can help\n them on a database while working with\n Rails. And that can make their code better. And that can\n make their code better.\n And that can make their code better, simpler, and easier to\n understand. So that's the whole idea\n behind the talk. What was an example of one that was a real\n common kind of thing that you maybe,\n when you're seeing contributions back to Rails, is that a\n place where you often see those, where\n people are contributing back redundant code, or is this\n talking about applications that people are\n writing with Rails, and they just keep reinventing the\n wheel?\n Yeah, it's usually applications that people are writing\n that try to reinvent the wheel, because\n they write features that Rails already gives them, right?\n They try to do things that are\n over-complex, and that Rails can simplify by using some of\n the Rails features. So that was the idea of\n showing some of these tricks. Maybe I will post more on a\n blog post or something, but the idea\n behind that was that people should first, before actually\n going, writing down the code, go search,\n ask around, and see if Rails can help them in some way to\n make their code simpler.\n Okay. And we were talking a little bit before the interview\n about your contributions\n to open source, and I asked about Platformatech, and you\n said that it was kind of a funny story\n that you had come to Platformatech through open source.\n Yeah, yeah. So it's been almost five years that I'm working\n there. I was actually\n the first external guy to start working at Platformatech,\n besides the four founders.\n And I started because of open source, because I was working\n as a freelancer,\n back like five years ago, and I was using one of Jose Bolin\n's projects, which is called\n Inherited Resources, and I was talking to him in the\n mailing list and asking a bunch of stuff,\n helping him with some issues and all that stuff, and he\n sent me an email asking if I would like to\n work with them in a project. Like, it was just a project at\n the beginning, because they were\n needing someone, and somehow, I don't know how, they\n thought about me, because I was talking to him, and\n well, then I did that project, I started that project with\n them, because of the open source discussions we were having\n,\n and after that, we started working together.\n Yeah. So was that before you started working with the Rails\n team, or...?\n Yeah, yeah, that was before. After that, I started\n contributing to Rails, and then more and more since then.\n So how did you go about becoming involved and contributing\n to Rails core? How did that come about?\n Yeah, so after starting working at Platformatech, I started\n working with Rails, and then after that, I started working\n with Rails, and then more and more since then.\n So how did you go about becoming involved and contributing\n to Rails, and then after that, I started working with Rails\n, and then more and more since then.\n Well, we got involved more in Rails, because JosÃ© was also\n part of the Rails... Actually, he got part of the Rails\n core team in 2010, I guess, but we were always discussing,\n and every time we found a bug, we tried to send a pre-re\nquest to fix that.\n Platformatech has this culture of encouraging people to\n contribute more, right? So at that time, we started doing\n some minor bug fixes and trying to keep up to date with\n what was going on in Rails, also, and that\n was opening doors for us to contribute more and more. Maybe\n fixing some documentation, maybe fixing some issue, or ref\nactoring a code that just got merged is also a good way.\n So I started contributing more and more and more like that,\n and then there was a time where I had, like, 1,000 commits\n or something.\n Yeah, that's a lot of commits to open source. So you've\n been quite prolific. But that's 1,000 commits into Rails,\n you mean?\n Into Rails, yeah.\n That's not even counting all the other projects.\n No, no, no.\n Okay. So what was the process to become a core team member?\n How did that work? Did they have the ceremony? Did they\n light the torch?\n No.\n Can you talk about it?\n Yes, yes, sure. Well, as I said, I was contributing more\n and more, and as I was contributing more, I was actually\n needing more feedback from the guys that were core or\n already core.\n They were contributors, right? So there was a time where\n they added me to a campfire room where some contributors\n hang around there to talk about Rails, talk about the\n issues and things like that.\n So that was, like, the first step, getting to talk more\n about with the contributors, guys. And then we started\n contributing more and more to Rails because of that,\n because we have, like, direct contact with them.\n So we ended up contributing more.\n And, well, after that, after some time...\n After some time, they got us access to the issues tracker,\n so we could close issues.\n We actually had, at that time, access to commit to Rails,\n but we were not allowed to because, like, GitHub does not\n allow to block only commits and give access to issues.\n So we were giving access to issues, but we were just not\n committers.\n Right, right. So that was more of just trust.\n Yeah, more of a way of trusting us that we would...\n Like, help them with issues and pull requests and, ah, this\n pull request is about to merge, then ping someone that can\n merge it, basically, something like that.\n And, well, after some time working on issues and helping\n them with pull requests and reviewing code and all that\n stuff, they gave us access to commit.\n Commit access to Rails, so we were, like, contributors. We\n could merge pull requests, send our own commits and things\n like that.\n And, well, after, like, more than a year or so contributing\n like that, more or less.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.\n And, well, after some time, we were, like, more or less\n contributing like that.",
+    "url": "https://www.just3ws.com/videos/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/",
+    "embedUrl": "https://www.youtube.com/embed/tJ3mhzjAiso"
+  },
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/interviews/carlos-antonio-da-silva-rails-core-team-member-railsconf-2014/"
+  }
+}
+</script>
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="interview-embed" src="https://www.youtube.com/embed/tJ3mhzjAiso" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Carlos Antonio da Silva on Rails core maintenance at RailsConf 2014"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Interview with Carlos Antonio da Silva at RailsConf 2014 on Rails core maintenance. This recording captures practical lessons and perspective for software teams and technical communities.</div>
+        
+        <div class="video-meta">
+          Published: May 13, 2022
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/tJ3mhzjAiso">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=tJ3mhzjAiso&list=PLgmTADxYKzzZItmN7yuhTCzzF3YC7kqGK">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>Hi, it’s Mike with UGtastic. I’m here at RailsConf 2014,
+ and I’m standing here with
+ Carlos Antonio da Silva, who’s a software developer with
+ Platformatech, and you might
+ also know some of his projects, Devise, Simpleform. He’s
+ also a Rails core contributor. He gave a talk
+ today about some of the tricks that Rails didn’t teach you.
+ Did I say that correctly?
+ Yeah, tricks that Rails didn’t tell you about.
+ Tricks that Rails didn’t tell you about. So thank you very
+ much for taking the time to speak with
+ me. I appreciate it. So can you tell me a little bit more
+ about tricks that Rails didn’t tell me
+ about?
+ Right, yeah. So the idea behind this talk is that I’ve been
+ working with Rails for around six years,
+ and I’ve been in a lot of different projects and seen a lot
+ of different code from different people
+ around the world.
+ And people get used to writing their own code without
+ actually looking at what Rails can give
+ them. So there are times where we see code that could be
+ replaced by Rails’ existing features,
+ features that were released in newer versions, or even
+ features that were since the beginning in
+ Rails, right? And the idea was just to show some nice
+ tricks that Rails has, some small features,
+ features that people don’t use that much, and that can help
+ them on a database while working with
+ Rails. And that can make their code better. And that can
+ make their code better.
+ And that can make their code better, simpler, and easier to
+ understand. So that’s the whole idea
+ behind the talk. What was an example of one that was a real
+ common kind of thing that you maybe,
+ when you’re seeing contributions back to Rails, is that a
+ place where you often see those, where
+ people are contributing back redundant code, or is this
+ talking about applications that people are
+ writing with Rails, and they just keep reinventing the
+ wheel?
+ Yeah, it’s usually applications that people are writing
+ that try to reinvent the wheel, because
+ they write features that Rails already gives them, right?
+ They try to do things that are
+ over-complex, and that Rails can simplify by using some of
+ the Rails features. So that was the idea of
+ showing some of these tricks. Maybe I will post more on a
+ blog post or something, but the idea
+ behind that was that people should first, before actually
+ going, writing down the code, go search,
+ ask around, and see if Rails can help them in some way to
+ make their code simpler.
+ Okay. And we were talking a little bit before the interview
+ about your contributions
+ to open source, and I asked about Platformatech, and you
+ said that it was kind of a funny story
+ that you had come to Platformatech through open source.
+ Yeah, yeah. So it’s been almost five years that I’m working
+ there. I was actually
+ the first external guy to start working at Platformatech,
+ besides the four founders.
+ And I started because of open source, because I was working
+ as a freelancer,
+ back like five years ago, and I was using one of Jose Bolin
+‘s projects, which is called
+ Inherited Resources, and I was talking to him in the
+ mailing list and asking a bunch of stuff,
+ helping him with some issues and all that stuff, and he
+ sent me an email asking if I would like to
+ work with them in a project. Like, it was just a project at
+ the beginning, because they were
+ needing someone, and somehow, I don’t know how, they
+ thought about me, because I was talking to him, and
+ well, then I did that project, I started that project with
+ them, because of the open source discussions we were having
+,
+ and after that, we started working together.
+ Yeah. So was that before you started working with the Rails
+ team, or…?
+ Yeah, yeah, that was before. After that, I started
+ contributing to Rails, and then more and more since then.
+ So how did you go about becoming involved and contributing
+ to Rails core? How did that come about?
+ Yeah, so after starting working at Platformatech, I started
+ working with Rails, and then after that, I started working
+ with Rails, and then more and more since then.
+ So how did you go about becoming involved and contributing
+ to Rails, and then after that, I started working with Rails
+, and then more and more since then.
+ Well, we got involved more in Rails, because JosÃ© was also
+ part of the Rails… Actually, he got part of the Rails
+ core team in 2010, I guess, but we were always discussing,
+ and every time we found a bug, we tried to send a pre-re
+quest to fix that.
+ Platformatech has this culture of encouraging people to
+ contribute more, right? So at that time, we started doing
+ some minor bug fixes and trying to keep up to date with
+ what was going on in Rails, also, and that
+ was opening doors for us to contribute more and more. Maybe
+ fixing some documentation, maybe fixing some issue, or ref
+actoring a code that just got merged is also a good way.
+ So I started contributing more and more and more like that,
+ and then there was a time where I had, like, 1,000 commits
+ or something.
+ Yeah, that’s a lot of commits to open source. So you’ve
+ been quite prolific. But that’s 1,000 commits into Rails,
+ you mean?
+ Into Rails, yeah.
+ That’s not even counting all the other projects.
+ No, no, no.
+ Okay. So what was the process to become a core team member?
+ How did that work? Did they have the ceremony? Did they
+ light the torch?
+ No.
+ Can you talk about it?
+ Yes, yes, sure. Well, as I said, I was contributing more
+ and more, and as I was contributing more, I was actually
+ needing more feedback from the guys that were core or
+ already core.
+ They were contributors, right? So there was a time where
+ they added me to a campfire room where some contributors
+ hang around there to talk about Rails, talk about the
+ issues and things like that.
+ So that was, like, the first step, getting to talk more
+ about with the contributors, guys. And then we started
+ contributing more and more to Rails because of that,
+ because we have, like, direct contact with them.
+ So we ended up contributing more.
+ And, well, after that, after some time…
+ After some time, they got us access to the issues tracker,
+ so we could close issues.
+ We actually had, at that time, access to commit to Rails,
+ but we were not allowed to because, like, GitHub does not
+ allow to block only commits and give access to issues.
+ So we were giving access to issues, but we were just not
+ committers.
+ Right, right. So that was more of just trust.
+ Yeah, more of a way of trusting us that we would…
+ Like, help them with issues and pull requests and, ah, this
+ pull request is about to merge, then ping someone that can
+ merge it, basically, something like that.
+ And, well, after some time working on issues and helping
+ them with pull requests and reviewing code and all that
+ stuff, they gave us access to commit.
+ Commit access to Rails, so we were, like, contributors. We
+ could merge pull requests, send our own commits and things
+ like that.
+ And, well, after, like, more than a year or so contributing
+ like that, more or less.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.
+ And, well, after some time, we were, like, more or less
+ contributing like that.</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Semantic Model | Mike Hall Archive</title>
+<meta name="description" content="Canonical JSON-LD entity model and route-level schema contracts for rendered pages.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/architecture/semantic-model.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Semantic Model | Mike Hall Archive">
+<meta property="og:description" content="Canonical JSON-LD entity model and route-level schema contracts for rendered pages.">
+<meta property="og:url" content="https://www.just3ws.com/docs/architecture/semantic-model.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Semantic Model | Mike Hall Archive">
+<meta name="twitter:description" content="Canonical JSON-LD entity model and route-level schema contracts for rendered pages.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/architecture/semantic-model.html">Semantic Model</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Semantic Model",
+        "item": "https://www.just3ws.com/docs/architecture/semantic-model.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="semantic-model">Semantic Model</h1>
+
+<p>This page defines the canonical JSON-LD object model for rendered pages in <code class="language-plaintext highlighter-rouge">_site</code>.</p>
+
+<h2 id="canonical-entity-ids">Canonical Entity IDs</h2>
+
+<ul>
+  <li>Person: <code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/person/mike-hall</code></li>
+  <li>Interview: <code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/interview/&lt;interview-id&gt;</code></li>
+  <li>VideoObject: <code class="language-plaintext highlighter-rouge">https://www.just3ws.com/id/video/&lt;video-asset-id&gt;</code></li>
+</ul>
+
+<p>IDs are deterministic and stable across builds.</p>
+
+<h2 id="supporting-governance-data">Supporting Governance Data</h2>
+
+<ul>
+  <li>Navigation contract: <code class="language-plaintext highlighter-rouge">_data/navigation.yml</code></li>
+  <li>Taxonomy vocabulary and allowed patterns: <code class="language-plaintext highlighter-rouge">_data/taxonomy.yml</code></li>
+</ul>
+
+<h2 id="route-contracts">Route Contracts</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">/</code>
+    <ul>
+      <li>must expose <code class="language-plaintext highlighter-rouge">Person</code> JSON-LD.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">/home/</code>
+    <ul>
+      <li>must not expose resume <code class="language-plaintext highlighter-rouge">Person</code> JSON-LD.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">/videos/&lt;id&gt;/</code>
+    <ul>
+      <li>must expose <code class="language-plaintext highlighter-rouge">VideoObject</code> with <code class="language-plaintext highlighter-rouge">@id</code>, <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">description</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">uploadDate</code>.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">/interviews/&lt;id&gt;/</code>
+    <ul>
+      <li>must expose <code class="language-plaintext highlighter-rouge">Interview</code> with <code class="language-plaintext highlighter-rouge">@id</code>, <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">datePublished</code>, <code class="language-plaintext highlighter-rouge">interviewer</code>, and <code class="language-plaintext highlighter-rouge">mainEntityOfPage</code>.</li>
+      <li>should link to canonical <code class="language-plaintext highlighter-rouge">VideoObject</code> by <code class="language-plaintext highlighter-rouge">subjectOf.@id</code> when asset data exists.</li>
+    </ul>
+  </li>
+  <li>Index routes (<code class="language-plaintext highlighter-rouge">/interviews/</code>, <code class="language-plaintext highlighter-rouge">/videos/</code>, <code class="language-plaintext highlighter-rouge">/oneoffs/</code>, <code class="language-plaintext highlighter-rouge">/scmc/</code>)
+    <ul>
+      <li>must expose <code class="language-plaintext highlighter-rouge">CollectionPage</code> with <code class="language-plaintext highlighter-rouge">mainEntity</code> set to <code class="language-plaintext highlighter-rouge">ItemList</code>.</li>
+      <li>each <code class="language-plaintext highlighter-rouge">ListItem</code> should reference canonical IDs for the underlying entity.</li>
+    </ul>
+  </li>
+  <li>Pages with visual breadcrumbs
+    <ul>
+      <li>must expose <code class="language-plaintext highlighter-rouge">BreadcrumbList</code> JSON-LD aligned with rendered breadcrumb links.</li>
+    </ul>
+  </li>
+  <li>Blog posts (<code class="language-plaintext highlighter-rouge">/YYYY/...</code>)
+    <ul>
+      <li>must expose <code class="language-plaintext highlighter-rouge">Article</code> with <code class="language-plaintext highlighter-rouge">headline</code>, <code class="language-plaintext highlighter-rouge">datePublished</code>, <code class="language-plaintext highlighter-rouge">dateModified</code>, and <code class="language-plaintext highlighter-rouge">mainEntityOfPage.@id</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="validation-and-artifacts">Validation and Artifacts</h2>
+
+<ul>
+  <li>Semantic contract validator: <code class="language-plaintext highlighter-rouge">bin/validate_semantic_output.rb</code></li>
+  <li>Coverage report: <code class="language-plaintext highlighter-rouge">tmp/schema-coverage-report.json</code></li>
+  <li>Graph artifact generator: <code class="language-plaintext highlighter-rouge">bin/visualize_semantic_graph.rb</code></li>
+  <li>Graph outputs:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">tmp/schema-graph.dot</code></li>
+      <li><code class="language-plaintext highlighter-rouge">tmp/schema-graph-summary.json</code></li>
+    </ul>
+  </li>
+  <li>Snapshot page generator: <code class="language-plaintext highlighter-rouge">bin/generate_semantic_snapshot_page.rb</code></li>
+  <li>Snapshot page output: <code class="language-plaintext highlighter-rouge">docs/architecture/semantic-graph.md</code></li>
+</ul>
+
+<h2 id="visualization-workflow">Visualization Workflow</h2>
+
+<ol>
+  <li>Refresh build and semantic artifacts:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/pipeline ci</code></li>
+    </ul>
+  </li>
+  <li>Generate snapshot docs page:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">./bin/pipeline semantic-snapshot</code></li>
+    </ul>
+  </li>
+  <li>Review published snapshot:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">/docs/architecture/semantic-graph/</code></li>
+    </ul>
+  </li>
+</ol>
+
+  </main>
+</body>
+</html>

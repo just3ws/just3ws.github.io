@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Archive — Justin Collins on Brakeman and Rails security at…</title>
+<meta name="description" content="Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014. Topic: Brakeman and Rails security. Conference: RailsConf 2014. Recorded:…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/interviews/justin-collins-creator-of-brakeman-railsconf-2014/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Interview Archive — Justin Collins on Brakeman and Rails security at…">
+<meta property="og:description" content="Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014. Topic: Brakeman and Rails security. Conference: RailsConf 2014. Recorded:…">
+<meta property="og:url" content="https://www.just3ws.com/interviews/justin-collins-creator-of-brakeman-railsconf-2014/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Archive — Justin Collins on Brakeman and Rails security at…">
+<meta name="twitter:description" content="Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014. Topic: Brakeman and Rails security. Conference: RailsConf 2014. Recorded:…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" class="is-active" aria-current="page">Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/interviews/">Interviews</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/interviews/justin-collins-creator-of-brakeman-railsconf-2014/">Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interviews",
+        "item": "https://www.just3ws.com/interviews/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014",
+        "item": "https://www.just3ws.com/interviews/justin-collins-creator-of-brakeman-railsconf-2014/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    
+    <header>
+      <h1>Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014</h1>
+    </header>
+    
+      <div class="video-subtitle">Interviewee: <a href="/interviews/people/justin-collins/">Justin Collins</a></div>
+    
+    
+      <div class="video-subtitle">Topic: Brakeman and Rails security</div>
+    
+    <div class="video-meta">
+      
+        Conference:
+        
+        
+        
+          <a href="/interviews/conferences/railsconf-2014/">RailsConf 2014</a>
+        
+      
+      
+    </div>
+
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
+  "@id": "https://www.just3ws.com/id/interview/justin-collins-creator-of-brakeman-railsconf-2014",
+  "identifier": "justin-collins-creator-of-brakeman-railsconf-2014",
+  "name": "Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014",
+  "url": "https://www.just3ws.com/interviews/justin-collins-creator-of-brakeman-railsconf-2014/",
+  "datePublished": "2022-05-13",
+  "description": "Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014. Topic: Brakeman and Rails security. Conference: RailsConf 2014. Recorded:…",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.just3ws.com/id/person/mike-hall",
+    "name": "Mike Hall"
+  },
+  
+  "contributor": [
+    
+    {
+      "@type": "Person",
+      "@id": "https://www.just3ws.com/id/person/justin-collins",
+      "name": "Justin Collins"
+    }
+    
+  ],
+  
+  
+  
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Brakeman and Rails security"
+    }
+    
+  
+  
+    ,
+    {
+      "@type": "Event",
+      "@id": "https://www.just3ws.com/id/conference/railsconf-2014",
+      "name": "RailsConf 2014"
+    }
+  ],
+  
+  
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "https://www.just3ws.com/id/video/justin-collins-creator-of-brakeman-railsconf-2014",
+    "name": "Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014",
+    "description": "Interview with Justin Collins at RailsConf 2014 on Brakeman and Rails security. This recording captures practical lessons and perspective for software teams and technical communities.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/gziLRsXk0eA/maxresdefault.jpg",
+    "uploadDate": "2022-05-13",
+    "transcript": "Hi, it's Mike with UGtastic. I'm here again at RailsConf\n 2014 and I'm standing here with Justin Collins.\n Justin is going to be doing a talk tomorrow called \"Tales\n from the Crypt\" but he's also the creator of the Brakeman\n Gem.\n Well, thank you very much for taking the time to speak with\n me.\n First, can we start with the Brakeman Gem? Because I'm a\n fan, but I'd like you to describe what it is.\n Sure. So, the Brakeman Gem is a static analysis security\n tool for Ruby on Rails applications.\n So, it looks at your source code, finds potential\n vulnerabilities, and lets you know about them.\n Great. But wait, it's a dynamic language. How can we do any\n kind of static analysis?\n Oh, boy. So, I've talked about that quite a bit.\n You know, the important thing for a security tool is just\n finding stuff.\n And, yes, static analysis security purists may be upset\n because you can't prove certain things or you can't analyze\n certain things.\n But for a security tool, it's really not that important\n that it be perfect, but just that we're able to identify\n potential problems inside the source code.\n So, it's kind of like if you, just because you can't maybe\n identify everything, it doesn't mean that it's going to\n work.\n Yeah.\n So, it's kind of like if you, just because you can't maybe\n identify everything, it doesn't mean that it's going to\n work.\n Yeah.\n So, it's kind of like if you, just because you can't maybe\n identify everything, it doesn't mean that it's going to\n work.\n Yeah.\n So, it's kind of like if you, just because you can't maybe\n identify everything, it doesn't mean that it's going to\n work.\n mean you shouldn't identify exactly exactly so so what kind\n of inspired you to create sov right\n then um it's kind of a long story but uh basically i got an\n internship on a security team at att\n interactive and i had proposed during my interview\n something like this knowing nothing about security\n or rails or i mean i knew what it was but no experience\n with rails i proposed hey what if\n you just had a tool that found this stuff for you right and\n then they said hey why don't you work\n on a tool that would find this stuff for us um and they\n were nice enough to allow me to open source\n it at the end of my internship and then i worked for them\n later uh as well on it so so security is\n something that you're have a passion about um i mean i fell\n into it by accident you know like\n i just happened to get an internship on a security team no\n real uh security experience before that\n but um i you know i've been able to create a tool that's\n been really helpful for people and through\n that tool i've gotten into the security community and you\n know i i think as a developer there's\n always an advantage to being a developer and having\n security knowledge because a lot of times\n the security community is not perceived as being very nice\n people or very smart people sometimes\n by developers who are like i'm just trying to get stuff\n done they're always blaming me for doing\n things wrong but what they know they don't even write code\n right right so it's always good to be\n able to bridge that gap and approach people you know in a\n nice way be a nice person right yeah and\n and you know i've liked being able to run the the brickman\n analysis on my gem and and a few other\n you know on my projects a few other uh gems you know along\n those lines of the rails uh best\n practices sure and um and then bullet you know anything\n that can help give a little bit of\n insight into what's going on in the code is always great\n but i was curious you said you\n can't cover everything is there something maybe you could\n think of\n that you would like to be able to cover but as a common\n problem it's just kind of too hard to\n really pin down that developers on rails projects should be\n thinking about um wow that's a really\n good question um yes i mean there are there are things that\n are difficult to determine statically\n there are some things that it would just take too much time\n to determine and i try to keep\n up to date with the things that i've done and i think that\n's the best way to do it um so i think\n that's the best way to do it for most people um i think one\n like one good example for example is\n that uh you know you don't always know what gems are doing\n the breakdown doesn't look at your\n dependencies um helper methods for example they tend to use\n html safe a lot because maybe they're\n building out tags and you tend to trust those helper\n methods because somebody wrote it and they\n probably know what they were doing and in your view it\n looks like it's escaped but actually the\n helper might be setting html safe and building out some\n tags but they're also putting in user\n input now you have cross-site scripting okay and that's\n something that brakeman could possibly find\n but uh right now it can't so so something to look at is\n look at your gems if they're doing dynamic\n if you're content generally yeah any kind of content\n generation any kind of oh i'm using this\n helper to generate some html you might want to look into\n that and see what exactly are they doing are\n they properly escaping the values or are they just calling\n html safe and and just jamming it in\n there yeah exactly exactly so it brings me over to your\n talk the uh it's it's a group talk but\n it's tales from the crypt yes and i now i'm presuming that\n's encryption uh that would be a\n good assumption yeah but we're actually not going to talk\n about encryption at all okay yes uh well\n it's a very side note okay um to be honest i didn't notice\n the pun until after the talk was\n done oh we should have done something uh with this pun yeah\n i have some probably because with\n with open ss all heart bleed stuff encryption is kind of a\n hot topic right now it is a hot topic\n but i think everyone's kind of aware you know i have very\n non-technical people approach me and say\n hey what about heart bleed like did that affect twitter you\n know did should i do something and\n these are people who are not technical at all and yet they\n've heard about it so i don't think\n probably people at rails\n comp don't need to hear about it even more right right um\n and that wasn't the the purpose of our\n talk the purpose of our talk is just um we really we're\n going to present sort of your your worst\n nightmare one day in the life of a couple developers at a\n company and it's just like\n one security problem after another okay and just kind of\n trying to demonstrate you know and these\n things happen i mean people find these problems uh people's\n sites get hacked into and so we're just\n it's kind of just a teaching and hopefully we can present\n some proactive steps to prevent these\n really bad days from happening well i'm looking forward to\n your talk and i really appreciate you\n taking the time to speak with me now no problem thank you\n thank you great perfect thank you very\n much yeah man my legs are funny um you know that was uh\n have some pure static analysis\n uh or at least information no so the story i was going to\n tell you\n uh all right so i i worked with uh not directly worked with\n aaron but we sat in proximity to each\n other uh hey group on okay the the first group time the\n first time yes and um user groups with\n lots to say interviews and more no way sharing great ideas\n in the tech community fascinating\n conversations a plethora of information find out for\n yourself today at ugtastic.com",
+    "url": "https://www.just3ws.com/videos/justin-collins-creator-of-brakeman-railsconf-2014/",
+    "embedUrl": "https://www.youtube.com/embed/gziLRsXk0eA"
+  },
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/interviews/justin-collins-creator-of-brakeman-railsconf-2014/"
+  }
+}
+</script>
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="interview-embed" src="https://www.youtube.com/embed/gziLRsXk0eA" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Justin Collins on Brakeman and Rails security at RailsConf 2014"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Interview with Justin Collins at RailsConf 2014 on Brakeman and Rails security. This recording captures practical lessons and perspective for software teams and technical communities.</div>
+        
+        <div class="video-meta">
+          Published: May 13, 2022
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/gziLRsXk0eA">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=gziLRsXk0eA&list=PLgmTADxYKzzZItmN7yuhTCzzF3YC7kqGK">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>Hi, it’s Mike with UGtastic. I’m here again at RailsConf
+ 2014 and I’m standing here with Justin Collins.
+ Justin is going to be doing a talk tomorrow called “Tales
+ from the Crypt” but he’s also the creator of the Brakeman
+ Gem.
+ Well, thank you very much for taking the time to speak with
+ me.
+ First, can we start with the Brakeman Gem? Because I’m a
+ fan, but I’d like you to describe what it is.
+ Sure. So, the Brakeman Gem is a static analysis security
+ tool for Ruby on Rails applications.
+ So, it looks at your source code, finds potential
+ vulnerabilities, and lets you know about them.
+ Great. But wait, it’s a dynamic language. How can we do any
+ kind of static analysis?
+ Oh, boy. So, I’ve talked about that quite a bit.
+ You know, the important thing for a security tool is just
+ finding stuff.
+ And, yes, static analysis security purists may be upset
+ because you can’t prove certain things or you can’t analyze
+ certain things.
+ But for a security tool, it’s really not that important
+ that it be perfect, but just that we’re able to identify
+ potential problems inside the source code.
+ So, it’s kind of like if you, just because you can’t maybe
+ identify everything, it doesn’t mean that it’s going to
+ work.
+ Yeah.
+ So, it’s kind of like if you, just because you can’t maybe
+ identify everything, it doesn’t mean that it’s going to
+ work.
+ Yeah.
+ So, it’s kind of like if you, just because you can’t maybe
+ identify everything, it doesn’t mean that it’s going to
+ work.
+ Yeah.
+ So, it’s kind of like if you, just because you can’t maybe
+ identify everything, it doesn’t mean that it’s going to
+ work.
+ mean you shouldn’t identify exactly exactly so so what kind
+ of inspired you to create sov right
+ then um it’s kind of a long story but uh basically i got an
+ internship on a security team at att
+ interactive and i had proposed during my interview
+ something like this knowing nothing about security
+ or rails or i mean i knew what it was but no experience
+ with rails i proposed hey what if
+ you just had a tool that found this stuff for you right and
+ then they said hey why don’t you work
+ on a tool that would find this stuff for us um and they
+ were nice enough to allow me to open source
+ it at the end of my internship and then i worked for them
+ later uh as well on it so so security is
+ something that you’re have a passion about um i mean i fell
+ into it by accident you know like
+ i just happened to get an internship on a security team no
+ real uh security experience before that
+ but um i you know i’ve been able to create a tool that’s
+ been really helpful for people and through
+ that tool i’ve gotten into the security community and you
+ know i i think as a developer there’s
+ always an advantage to being a developer and having
+ security knowledge because a lot of times
+ the security community is not perceived as being very nice
+ people or very smart people sometimes
+ by developers who are like i’m just trying to get stuff
+ done they’re always blaming me for doing
+ things wrong but what they know they don’t even write code
+ right right so it’s always good to be
+ able to bridge that gap and approach people you know in a
+ nice way be a nice person right yeah and
+ and you know i’ve liked being able to run the the brickman
+ analysis on my gem and and a few other
+ you know on my projects a few other uh gems you know along
+ those lines of the rails uh best
+ practices sure and um and then bullet you know anything
+ that can help give a little bit of
+ insight into what’s going on in the code is always great
+ but i was curious you said you
+ can’t cover everything is there something maybe you could
+ think of
+ that you would like to be able to cover but as a common
+ problem it’s just kind of too hard to
+ really pin down that developers on rails projects should be
+ thinking about um wow that’s a really
+ good question um yes i mean there are there are things that
+ are difficult to determine statically
+ there are some things that it would just take too much time
+ to determine and i try to keep
+ up to date with the things that i’ve done and i think that
+‘s the best way to do it um so i think
+ that’s the best way to do it for most people um i think one
+ like one good example for example is
+ that uh you know you don’t always know what gems are doing
+ the breakdown doesn’t look at your
+ dependencies um helper methods for example they tend to use
+ html safe a lot because maybe they’re
+ building out tags and you tend to trust those helper
+ methods because somebody wrote it and they
+ probably know what they were doing and in your view it
+ looks like it’s escaped but actually the
+ helper might be setting html safe and building out some
+ tags but they’re also putting in user
+ input now you have cross-site scripting okay and that’s
+ something that brakeman could possibly find
+ but uh right now it can’t so so something to look at is
+ look at your gems if they’re doing dynamic
+ if you’re content generally yeah any kind of content
+ generation any kind of oh i’m using this
+ helper to generate some html you might want to look into
+ that and see what exactly are they doing are
+ they properly escaping the values or are they just calling
+ html safe and and just jamming it in
+ there yeah exactly exactly so it brings me over to your
+ talk the uh it’s it’s a group talk but
+ it’s tales from the crypt yes and i now i’m presuming that
+‘s encryption uh that would be a
+ good assumption yeah but we’re actually not going to talk
+ about encryption at all okay yes uh well
+ it’s a very side note okay um to be honest i didn’t notice
+ the pun until after the talk was
+ done oh we should have done something uh with this pun yeah
+ i have some probably because with
+ with open ss all heart bleed stuff encryption is kind of a
+ hot topic right now it is a hot topic
+ but i think everyone’s kind of aware you know i have very
+ non-technical people approach me and say
+ hey what about heart bleed like did that affect twitter you
+ know did should i do something and
+ these are people who are not technical at all and yet they
+‘ve heard about it so i don’t think
+ probably people at rails
+ comp don’t need to hear about it even more right right um
+ and that wasn’t the the purpose of our
+ talk the purpose of our talk is just um we really we’re
+ going to present sort of your your worst
+ nightmare one day in the life of a couple developers at a
+ company and it’s just like
+ one security problem after another okay and just kind of
+ trying to demonstrate you know and these
+ things happen i mean people find these problems uh people’s
+ sites get hacked into and so we’re just
+ it’s kind of just a teaching and hopefully we can present
+ some proactive steps to prevent these
+ really bad days from happening well i’m looking forward to
+ your talk and i really appreciate you
+ taking the time to speak with me now no problem thank you
+ thank you great perfect thank you very
+ much yeah man my legs are funny um you know that was uh
+ have some pure static analysis
+ uh or at least information no so the story i was going to
+ tell you
+ uh all right so i i worked with uh not directly worked with
+ aaron but we sat in proximity to each
+ other uh hey group on okay the the first group time the
+ first time yes and um user groups with
+ lots to say interviews and more no way sharing great ideas
+ in the tech community fascinating
+ conversations a plethora of information find out for
+ yourself today at ugtastic.com</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>

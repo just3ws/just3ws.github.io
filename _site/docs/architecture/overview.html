@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Architecture Overview | Mike Hall Archive</title>
+<meta name="description" content="Repository structure and ownership boundaries for resume, archive, and generation workflows.">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/docs/architecture/overview.html">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Architecture Overview | Mike Hall Archive">
+<meta property="og:description" content="Repository structure and ownership boundaries for resume, archive, and generation workflows.">
+<meta property="og:url" content="https://www.just3ws.com/docs/architecture/overview.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Architecture Overview | Mike Hall Archive">
+<meta name="twitter:description" content="Repository structure and ownership boundaries for resume, archive, and generation workflows.">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" >Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/docs/">Docs</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/docs/architecture/overview.html">Architecture Overview</a>
+    
+  
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Docs",
+        "item": "https://www.just3ws.com/docs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Architecture Overview",
+        "item": "https://www.just3ws.com/docs/architecture/overview.html"
+      }
+    
+  ]
+}
+</script>
+
+<h1 id="architecture-overview">Architecture Overview</h1>
+
+<p>This repository has two primary product surfaces:</p>
+
+<ol>
+  <li>Resume surface (<code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">/history/</code>, <code class="language-plaintext highlighter-rouge">/resume.txt</code>, <code class="language-plaintext highlighter-rouge">/resume.md</code>) optimized for stability.</li>
+  <li>Archive/site surface (<code class="language-plaintext highlighter-rouge">/home/</code>, <code class="language-plaintext highlighter-rouge">/interviews/</code>, <code class="language-plaintext highlighter-rouge">/videos/</code>, docs, taxonomy pages) optimized for ongoing iteration.</li>
+</ol>
+
+<h2 id="core-layout-boundaries">Core Layout Boundaries</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">layout: resume</code> pages use the resume theme and avoid archive navigation chrome.</li>
+  <li><code class="language-plaintext highlighter-rouge">layout: minimal</code> pages use the site theme and include global site navigation.</li>
+  <li>Shared head/meta logic lives in <code class="language-plaintext highlighter-rouge">_includes/head/base.html</code>.</li>
+</ul>
+
+<h2 id="content-sources">Content Sources</h2>
+
+<ul>
+  <li>Canonical data: <code class="language-plaintext highlighter-rouge">_data/*.yml</code></li>
+  <li>Transcript corpus: <code class="language-plaintext highlighter-rouge">_data/transcripts/*.yml</code></li>
+  <li>Derived/generated metadata: <code class="language-plaintext highlighter-rouge">_data/index_summaries.yml</code>, <code class="language-plaintext highlighter-rouge">_data/last_modified.yml</code></li>
+</ul>
+
+<h2 id="generation-pipeline">Generation Pipeline</h2>
+
+<p><code class="language-plaintext highlighter-rouge">./bin/pipeline generate</code> orchestrates:</p>
+
+<ol>
+  <li>data synchronization (<code class="language-plaintext highlighter-rouge">sync_interview_asset_links.rb</code>)</li>
+  <li>context summary generation (<code class="language-plaintext highlighter-rouge">generate_context_summaries.rb</code>)</li>
+  <li>interview/video page generation</li>
+  <li>taxonomy page generation</li>
+</ol>
+
+<h2 id="ruby-generator-modules">Ruby Generator Modules</h2>
+
+<p>Shared generator helpers now live under:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">src/generators/core/meta.rb</code></li>
+  <li><code class="language-plaintext highlighter-rouge">src/generators/core/text.rb</code></li>
+  <li><code class="language-plaintext highlighter-rouge">src/generators/core/yaml_io.rb</code></li>
+</ul>
+
+<p>This keeps <code class="language-plaintext highlighter-rouge">bin/*</code> scripts as orchestration entrypoints and reduces repeated helper logic.</p>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+
+
+
+
+
+
+
+<title>Interview Archive — Kiyoto Tamura on FluentD and log integration…</title>
+<meta name="description" content="Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014. Topic: FluentD and log integration tooling. Conference: RailsConf 2014.…">
+<meta name="author" content="Mike Hall">
+<link rel="canonical" href="https://www.just3ws.com/interviews/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/">
+
+<meta name="release-timestamp" content="2026-02-16 17:40:57 +0000">
+
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Interview Archive — Kiyoto Tamura on FluentD and log integration…">
+<meta property="og:description" content="Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014. Topic: FluentD and log integration tooling. Conference: RailsConf 2014.…">
+<meta property="og:url" content="https://www.just3ws.com/interviews/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mike Hall">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interview Archive — Kiyoto Tamura on FluentD and log integration…">
+<meta name="twitter:description" content="Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014. Topic: FluentD and log integration tooling. Conference: RailsConf 2014.…">
+<link rel="shortcut icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/themes/site.css">
+<link rel="stylesheet" href="/assets/css/digital-patina.css">
+
+
+
+  <script data-goatcounter="https://just3ws.goatcounter.com/count"
+      async src="https://gc.zgo.at/count.js"></script>
+<script src="/assets/js/goatcounter-events.js" defer></script>
+
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "http://localhost:4000/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "http://localhost:4000/search/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header no-print" role="banner">
+  <nav class="site-nav" aria-label="Primary">
+    
+    
+    
+    
+    <a
+      class="site-nav-brand"
+      href="/home/"
+      
+    >
+      <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+      Mike Hall
+    </a>
+    <div class="site-nav-links">
+      
+        
+        
+        
+        
+        
+        <a href="/" >Resume</a>
+      
+        
+        
+        
+        
+        
+        <a href="/writing/" >Writing</a>
+      
+        
+        
+        
+        
+        
+        <a href="/interviews/" class="is-active" aria-current="page">Interviews</a>
+      
+        
+        
+        
+        
+        
+        <a href="/contact/" >Contact</a>
+      
+    </div>
+  </nav>
+</header>
+
+  <main id="main-content">
+    <article class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+  
+  
+  
+  
+
+  
+    <a href="/home/">Home</a>
+    <span class="breadcrumbs-separator">/</span>
+
+    
+
+    
+      
+        <a href="/interviews/">Interviews</a>
+        <span class="breadcrumbs-separator">/</span>
+      
+    
+
+    
+      <a href="/interviews/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/">Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014</a>
+    
+  
+</nav>
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.just3ws.com/home/"
+      }
+      
+      ,
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Interviews",
+        "item": "https://www.just3ws.com/interviews/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014",
+        "item": "https://www.just3ws.com/interviews/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/"
+      }
+    
+  ]
+}
+</script>
+
+
+  
+  
+    
+    <header>
+      <h1>Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014</h1>
+    </header>
+    
+      <div class="video-subtitle">Interviewee: <a href="/interviews/people/kiyoto-tamura/">Kiyoto Tamura</a></div>
+    
+    
+      <div class="video-subtitle">Topic: FluentD and log integration tooling</div>
+    
+    <div class="video-meta">
+      
+        Conference:
+        
+        
+        
+          <a href="/interviews/conferences/railsconf-2014/">RailsConf 2014</a>
+        
+      
+      
+    </div>
+
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Interview",
+  "@id": "https://www.just3ws.com/id/interview/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014",
+  "identifier": "kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014",
+  "name": "Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014",
+  "url": "https://www.just3ws.com/interviews/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/",
+  "datePublished": "2023-11-07",
+  "description": "Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014. Topic: FluentD and log integration tooling. Conference: RailsConf 2014.…",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://www.just3ws.com/id/person/mike-hall",
+    "name": "Mike Hall"
+  },
+  
+  "contributor": [
+    
+    {
+      "@type": "Person",
+      "@id": "https://www.just3ws.com/id/person/kiyoto-tamura",
+      "name": "Kiyoto Tamura"
+    }
+    
+  ],
+  
+  
+  
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "FluentD and log integration tooling"
+    }
+    
+  
+  
+    ,
+    {
+      "@type": "Event",
+      "@id": "https://www.just3ws.com/id/conference/railsconf-2014",
+      "name": "RailsConf 2014"
+    }
+  ],
+  
+  
+  "subjectOf": {
+    "@type": "VideoObject",
+    "@id": "https://www.just3ws.com/id/video/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014",
+    "name": "Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014",
+    "description": "Explore the world of log aggregation and data collection through FluentD, a powerful tool discussed by Kiyoto Tamura, a lead maintainer, at RailsConf 2014. FluentD, written in Ruby, serves as a lightweight and extensible log aggregator used by major companies like SlideShare and Nintendo.\n\nIn this video, we summarize Tamura's insights into FluentD, covering its features, origin, community involvement, and how it's making a significant impact in the realm of log management.\n\nKey Points:\n\n    Introduction to FluentD: Understand what a log aggregator and collector is and how FluentD, with its extensible plugin architecture, efficiently handles various log types from Apache Engine, NGinx, Syslogs, and Application Logs.\n\n    Origin and Community: Learn how Tamura's involvement began at Treasure Data, the creators of FluentD, and the journey from its closed origins to becoming an open-source success. Discover the diverse community, boasting 50 regular contributors and a user base spanning the globe.\n\n    Getting Started: Explore how individuals interested in log aggregation can engage with FluentD, including guidance on navigating the GitHub repository, visiting the official website, and installing FluentD for immediate exploration in Ruby.\n\n    Accessibility and Ease of Use: Discover how FluentD, despite being system software, is designed to be approachable for developers new to Ruby. It's a valuable learning opportunity for those interested in writing plugins, thanks to its concise codebase and an active community mailing list for support.\n\n    Conclusion: Uncover the recommendation to dive into the source code to understand FluentD's functionality due to its simplicity, despite potential improvements in code documentation.\n\nFluentD offers a great opportunity for developers, log management enthusiasts, and those interested in efficient log aggregation and data collection. Join us in exploring this powerful tool and delve deeper into its functionality and community support. Don't forget to like, share, and subscribe for more insightful content on log management and tech tools!",
+    "thumbnailUrl": "https://i.ytimg.com/vi/-3OLPdajHVg/maxresdefault.jpg",
+    "uploadDate": "2023-11-07",
+    "transcript": "Hi, it's Mike with UGtastic. I'm here at RailsConf 2014 and\n I'm sitting here with\n Kyodo Tamura, who is a maintainer for the Fluentd log\n aggregation and data\n collector. Thank you very much for taking the time to speak\n. What is a log\n aggregator/collector? Fluentd is a log aggregator/log\n collector written\n in Ruby and its key features are that it's really\n lightweight, it's a very small\n Ruby program augmented by extensible plugin architecture\n and it runs\n pretty fast for all sorts of logs. A lot of our customers\n collect data for\n like Apache Engine logs, Apache Nginx logs, syslogs,\n application logs and\n store them in like Elasticsearch, store them in MongoDB,\n copy the data, archive it,\n and so forth. We started a project two and a half years ago\n and the community has grown\n to be about like 50 regular contributors, thousands of\n users in the world including\n Slideshare and Nintendo. Yeah, Nintendo, that's actually,\n that's\n pretty cool. I mean, are you able to say how they're using\n it?\n I'm actually not sure about the actual like, you know, how\n they use it, but I think\n it's part of their like online games that are going on now.\n Okay. And basically like with all these companies, logs are\n very, very important.\n They want to centrally manage it and they want to do all\n sorts of operations\n on them. And before, like a lot of, like myself included,\n we would rsync, write a\n script here and there, but as like the number of your data\n sources increase and\n the number of storage systems you want to store and use\n increase, the complexity\n increases like exponentially. And we wanted 10 complexity,\n keep everything\n simple, and keep everything performantly.\n So how did you get involved in this project?\n Yeah, so I'm the, so the Fluentd was originally created by\n my employer, Treasure\n Data. And I'm employee number one. And when we first\n created the thing, we didn't think\n it was going to be big, but one of our customers saw it and\n they were like, man, like we wish\n this was open source. And we sort of drew the inspiration\n from Heroku, who actually\n offers service as a pass.\n Okay.\n But they also like open source a lot of stuff. That's\n really cool.\n Especially the stuff that runs on the client side. So we\n did the same. The community\n started to grow organically. Right now we have like a\n little short of like 1800 stars\n on GitHub and it's been steadily rising.\n Oh, wow. That's, so it's, it's a pretty well adopted.\n Yeah. I used to, I sometimes do the self-deprecating so\n that it is the law\n collector that nobody's heard of.\n Right.\n But it's actually pretty cool.\n Yeah. No, 1800 people have heard it at least.\n Yeah.\n Click that button.\n Yeah.\n So the, the contributions is are, do you, it's open source,\n but how do you, how do you\n interact with the community? Do you have people like\n contributing patches or doing?\n Yeah, yeah, yeah. So right now I think there are 18 people\n with commit rights. Three of\n them come from us, Treasure Data. It's a fairly, it's a\n very balanced community in the sense\n that we have commuters from like various companies. And\n although we started originally in Japan,\n we're, Treasure Data's founders are originally from Japan,\n starting to spread like a lot\n of the questions these days come from like all parts of the\n world. And as someone who\n constantly asks this question to the mailing list, I'm, I'm\n glad to see this adoption going\n global.\n And you know, it's always funny with some of these open\n source projects, like I have\n no idea what Fluentd means. What, how did, what's the name,\n where did it come from?\n Oh, okay. So originally, we wanted to make various data\n sources talk to various data,\n like back-end systems more fluently. So the original author\n of the project, Kisada, who\n also wrote MessagePack, which is a binary protocol, he\n wanted to call it Fluent. And\n that's why our GitHub username is Fluent. But then, um, he\n also realized that's not\n very Google-able.\n Yeah.\n Like when you type Fluent, there's like all sorts of like\n language websites, right?\n Right, right.\n So we just decided to add D, which, um, traditionally\n stands for daemon.\n Okay.\n So that's like stats D, or power syslog D.\n Oh, okay, so it's the Unix D.\n Yeah, Unix D. So that, that's the, the story.\n Oh, okay.\n So now it's Fluent/Fluent D is the project repo.\n So if somebody was interested in, in, you know, log aggreg\nation and collection, as we\n start to have more people running multiple servers and\n needing to aggregate data, um,\n what, what would they do to, to check out, like how, how do\n you recommend somebody?\n So our GitHub repo is a good place to start. Uh, so is our\n website, friendydontwork.com.\n And if you're familiar with Ruby, and I know not everyone\n is from the Ruby community, jam\n install Fluent D and you can get started right away.\n Is it like compatible back to 1.8, or is it?\n Uh, so we officially, I think, support 1.9.3 and above, and\n in the newer versions\n we're trying to slowly push the community to 2 and above.\n Yeah, I'll tell you, yeah, because now it's 2.0 is, is.\n Yeah, 2.0 is the, and our experimental, um, bleeding edge\n right now is trying to, uh,\n work off of 2.1.1.\n Okay.\n And Ruby has made a great performance, uh, progress over\n the past few years, and we want\n to take advantage of that.\n And as far as, as putting in the, the log aggregator, is it\n something that, uh, uh,\n a normal Rails developer could probably work through?\n Yeah, so that's the other great thing about Fluent D, like,\n uh, when we, when I tell people,\n especially not familiar with, like, writing Ruby systems\n code, is that, ooh, this is like\n system software.\n It's hard, it must be really hard to write plugins.\n Actually, I know a lot of engineers and programmers, or\n software writers, um, who learn to write\n Ruby, myself included, actually, partially, by writing,\n writing plugins for Fluent D.\n Oh, really?\n And there's only, like, a tiny bit of code that you need to\n write, and everything\n is really well-attracted, so that you really don't have to\n repeat what other people have\n already built.\n And, yeah, so it's pretty easy to get started.\n And you said that earlier, it's only about 5,000 lines for\n the code.\n Yeah, that's the core.\n Yeah, so the core.\n So it's probably a good idea for people to do, like, what D\nHH recommended, and that's\n just go read the source code.\n It's not...\n Yeah, um, it is, uh, it is a pretty small program, pretty,\n uh, well-documented.\n Not in the code, but that is something that we're working\n on.\n Okay.\n And, uh, there's a lot of documentation, and the mailing\n list is very active, like, when\n you post something, within 24 hours, someone's gonna\n respond.\n Great.\n Well, thank you very much for taking the time to...\n Thanks, Mike.\n Thanks.\n User groups with lots to say, interviews and more.\n No way!\n Sharing great ideas in the tech community.\n Fascinating conversations, a plethora of information.\n Find out for yourself today at ugtastic.com.\n Thank you.",
+    "url": "https://www.just3ws.com/videos/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/",
+    "embedUrl": "https://www.youtube.com/embed/-3OLPdajHVg"
+  },
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.just3ws.com/interviews/kiyoto-tamura-maintainer-of-fluentd-a-log-integration-tool-railsconf-2014/"
+  }
+}
+</script>
+
+    
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <div class="video video-detail has-transcript">
+      
+        <div class="video-embed">
+          <iframe id="interview-embed" src="https://www.youtube.com/embed/-3OLPdajHVg" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Interview with Kiyoto Tamura on FluentD and log integration tooling at RailsConf 2014"></iframe>
+        </div>
+      
+      <div class="video-body">
+        
+          <div class="video-indicators">
+            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
+            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
+          </div>
+        
+        
+          <div class="video-description"><span class="video-description-label">Description:</span> Explore the world of log aggregation and data collection through FluentD, a powerful tool discussed by Kiyoto Tamura, a lead maintainer, at RailsConf 2014. FluentD, written in Ruby, serves as a lightweight and extensible log aggregator used by major companies like SlideShare and Nintendo.
+
+In this video, we summarize Tamura's insights into FluentD, covering its features, origin, community involvement, and how it's making a significant impact in the realm of log management.
+
+Key Points:
+
+    Introduction to FluentD: Understand what a log aggregator and collector is and how FluentD, with its extensible plugin architecture, efficiently handles various log types from Apache Engine, NGinx, Syslogs, and Application Logs.
+
+    Origin and Community: Learn how Tamura's involvement began at Treasure Data, the creators of FluentD, and the journey from its closed origins to becoming an open-source success. Discover the diverse community, boasting 50 regular contributors and a user base spanning the globe.
+
+    Getting Started: Explore how individuals interested in log aggregation can engage with FluentD, including guidance on navigating the GitHub repository, visiting the official website, and installing FluentD for immediate exploration in Ruby.
+
+    Accessibility and Ease of Use: Discover how FluentD, despite being system software, is designed to be approachable for developers new to Ruby. It's a valuable learning opportunity for those interested in writing plugins, thanks to its concise codebase and an active community mailing list for support.
+
+    Conclusion: Uncover the recommendation to dive into the source code to understand FluentD's functionality due to its simplicity, despite potential improvements in code documentation.
+
+FluentD offers a great opportunity for developers, log management enthusiasts, and those interested in efficient log aggregation and data collection. Join us in exploring this powerful tool and delve deeper into its functionality and community support. Don't forget to like, share, and subscribe for more insightful content on log management and tech tools!</div>
+        
+        <div class="video-meta">
+          Published: Nov 07, 2023
+        </div>
+        <div class="video-actions">
+          
+            <button class="video-button primary" data-embed="https://www.youtube.com/embed/-3OLPdajHVg">Watch Here (Youtube)</button>
+          
+        </div>
+        <div class="video-actions">
+          
+            <a class="video-button" href="https://www.youtube.com/watch?v=-3OLPdajHVg&list=PLgmTADxYKzzZItmN7yuhTCzzF3YC7kqGK">Watch on Youtube</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  <section class="transcript" id="transcript">
+    <h2>Transcript</h2>
+    
+      <div class="video-transcript"><p>Hi, it’s Mike with UGtastic. I’m here at RailsConf 2014 and
+ I’m sitting here with
+ Kyodo Tamura, who is a maintainer for the Fluentd log
+ aggregation and data
+ collector. Thank you very much for taking the time to speak
+. What is a log
+ aggregator/collector? Fluentd is a log aggregator/log
+ collector written
+ in Ruby and its key features are that it’s really
+ lightweight, it’s a very small
+ Ruby program augmented by extensible plugin architecture
+ and it runs
+ pretty fast for all sorts of logs. A lot of our customers
+ collect data for
+ like Apache Engine logs, Apache Nginx logs, syslogs,
+ application logs and
+ store them in like Elasticsearch, store them in MongoDB,
+ copy the data, archive it,
+ and so forth. We started a project two and a half years ago
+ and the community has grown
+ to be about like 50 regular contributors, thousands of
+ users in the world including
+ Slideshare and Nintendo. Yeah, Nintendo, that’s actually,
+ that’s
+ pretty cool. I mean, are you able to say how they’re using
+ it?
+ I’m actually not sure about the actual like, you know, how
+ they use it, but I think
+ it’s part of their like online games that are going on now.
+ Okay. And basically like with all these companies, logs are
+ very, very important.
+ They want to centrally manage it and they want to do all
+ sorts of operations
+ on them. And before, like a lot of, like myself included,
+ we would rsync, write a
+ script here and there, but as like the number of your data
+ sources increase and
+ the number of storage systems you want to store and use
+ increase, the complexity
+ increases like exponentially. And we wanted 10 complexity,
+ keep everything
+ simple, and keep everything performantly.
+ So how did you get involved in this project?
+ Yeah, so I’m the, so the Fluentd was originally created by
+ my employer, Treasure
+ Data. And I’m employee number one. And when we first
+ created the thing, we didn’t think
+ it was going to be big, but one of our customers saw it and
+ they were like, man, like we wish
+ this was open source. And we sort of drew the inspiration
+ from Heroku, who actually
+ offers service as a pass.
+ Okay.
+ But they also like open source a lot of stuff. That’s
+ really cool.
+ Especially the stuff that runs on the client side. So we
+ did the same. The community
+ started to grow organically. Right now we have like a
+ little short of like 1800 stars
+ on GitHub and it’s been steadily rising.
+ Oh, wow. That’s, so it’s, it’s a pretty well adopted.
+ Yeah. I used to, I sometimes do the self-deprecating so
+ that it is the law
+ collector that nobody’s heard of.
+ Right.
+ But it’s actually pretty cool.
+ Yeah. No, 1800 people have heard it at least.
+ Yeah.
+ Click that button.
+ Yeah.
+ So the, the contributions is are, do you, it’s open source,
+ but how do you, how do you
+ interact with the community? Do you have people like
+ contributing patches or doing?
+ Yeah, yeah, yeah. So right now I think there are 18 people
+ with commit rights. Three of
+ them come from us, Treasure Data. It’s a fairly, it’s a
+ very balanced community in the sense
+ that we have commuters from like various companies. And
+ although we started originally in Japan,
+ we’re, Treasure Data’s founders are originally from Japan,
+ starting to spread like a lot
+ of the questions these days come from like all parts of the
+ world. And as someone who
+ constantly asks this question to the mailing list, I’m, I’m
+ glad to see this adoption going
+ global.
+ And you know, it’s always funny with some of these open
+ source projects, like I have
+ no idea what Fluentd means. What, how did, what’s the name,
+ where did it come from?
+ Oh, okay. So originally, we wanted to make various data
+ sources talk to various data,
+ like back-end systems more fluently. So the original author
+ of the project, Kisada, who
+ also wrote MessagePack, which is a binary protocol, he
+ wanted to call it Fluent. And
+ that’s why our GitHub username is Fluent. But then, um, he
+ also realized that’s not
+ very Google-able.
+ Yeah.
+ Like when you type Fluent, there’s like all sorts of like
+ language websites, right?
+ Right, right.
+ So we just decided to add D, which, um, traditionally
+ stands for daemon.
+ Okay.
+ So that’s like stats D, or power syslog D.
+ Oh, okay, so it’s the Unix D.
+ Yeah, Unix D. So that, that’s the, the story.
+ Oh, okay.
+ So now it’s Fluent/Fluent D is the project repo.
+ So if somebody was interested in, in, you know, log aggreg
+ation and collection, as we
+ start to have more people running multiple servers and
+ needing to aggregate data, um,
+ what, what would they do to, to check out, like how, how do
+ you recommend somebody?
+ So our GitHub repo is a good place to start. Uh, so is our
+ website, friendydontwork.com.
+ And if you’re familiar with Ruby, and I know not everyone
+ is from the Ruby community, jam
+ install Fluent D and you can get started right away.
+ Is it like compatible back to 1.8, or is it?
+ Uh, so we officially, I think, support 1.9.3 and above, and
+ in the newer versions
+ we’re trying to slowly push the community to 2 and above.
+ Yeah, I’ll tell you, yeah, because now it’s 2.0 is, is.
+ Yeah, 2.0 is the, and our experimental, um, bleeding edge
+ right now is trying to, uh,
+ work off of 2.1.1.
+ Okay.
+ And Ruby has made a great performance, uh, progress over
+ the past few years, and we want
+ to take advantage of that.
+ And as far as, as putting in the, the log aggregator, is it
+ something that, uh, uh,
+ a normal Rails developer could probably work through?
+ Yeah, so that’s the other great thing about Fluent D, like,
+ uh, when we, when I tell people,
+ especially not familiar with, like, writing Ruby systems
+ code, is that, ooh, this is like
+ system software.
+ It’s hard, it must be really hard to write plugins.
+ Actually, I know a lot of engineers and programmers, or
+ software writers, um, who learn to write
+ Ruby, myself included, actually, partially, by writing,
+ writing plugins for Fluent D.
+ Oh, really?
+ And there’s only, like, a tiny bit of code that you need to
+ write, and everything
+ is really well-attracted, so that you really don’t have to
+ repeat what other people have
+ already built.
+ And, yeah, so it’s pretty easy to get started.
+ And you said that earlier, it’s only about 5,000 lines for
+ the code.
+ Yeah, that’s the core.
+ Yeah, so the core.
+ So it’s probably a good idea for people to do, like, what D
+HH recommended, and that’s
+ just go read the source code.
+ It’s not…
+ Yeah, um, it is, uh, it is a pretty small program, pretty,
+ uh, well-documented.
+ Not in the code, but that is something that we’re working
+ on.
+ Okay.
+ And, uh, there’s a lot of documentation, and the mailing
+ list is very active, like, when
+ you post something, within 24 hours, someone’s gonna
+ respond.
+ Great.
+ Well, thank you very much for taking the time to…
+ Thanks, Mike.
+ Thanks.
+ User groups with lots to say, interviews and more.
+ No way!
+ Sharing great ideas in the tech community.
+ Fascinating conversations, a plethora of information.
+ Find out for yourself today at ugtastic.com.
+ Thank you.</p>
+</div>
+    
+  </section>
+
+  <script>
+    (function() {
+      var embed = document.getElementById("interview-embed");
+      if (!embed) return;
+      var buttons = document.querySelectorAll("[data-embed]");
+      buttons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          embed.setAttribute("src", btn.getAttribute("data-embed"));
+        });
+      });
+    })();
+  </script>
+
+
+  
+</article>
+
+  </main>
+</body>
+</html>
