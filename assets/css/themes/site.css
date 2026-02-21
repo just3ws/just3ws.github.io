@@ -698,6 +698,123 @@ section {
   margin: 0;
 }
 
+.home-phalanx-duel-cta {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(138, 107, 36, 0.5);
+  border-radius: 0.45rem;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(221, 185, 106, 0.13) 0%, rgba(221, 185, 106, 0) 45%),
+    linear-gradient(155deg, #20180e 0%, #141006 70%, #21190f 100%);
+  box-shadow: 0 6px 14px rgba(46, 35, 18, 0.2);
+}
+
+.home-phalanx-duel-avatar {
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(221, 185, 106, 0.7);
+  box-shadow: 0 0 0 1px rgba(30, 24, 16, 0.65), 0 5px 10px rgba(0, 0, 0, 0.35);
+}
+
+.home-phalanx-duel-copy p {
+  margin: 0;
+}
+
+.home-phalanx-duel-title {
+  margin-top: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ddb96a;
+  line-height: 1.1;
+}
+
+.home-phalanx-duel-body {
+  margin-top: 0.15rem;
+  color: #e8d4aa;
+  max-width: 64ch;
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+
+.home-phalanx-duel-actions {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.home-phalanx-duel-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.7rem;
+  padding: 0.25rem 0.62rem;
+  border: 1px solid #5a4626;
+  border-radius: 0.35rem;
+  text-decoration: none;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+}
+
+.home-phalanx-duel-link-primary {
+  background: linear-gradient(160deg, #ddb96a 0%, #c49a38 48%, #8a6b24 100%);
+  color: #0b0906;
+  border-color: #ddb96a;
+}
+
+.home-phalanx-duel-link-primary:visited {
+  color: #0b0906;
+}
+
+.home-phalanx-duel-link-primary:hover {
+  color: #0b0906;
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(196, 154, 56, 0.32);
+}
+
+.home-phalanx-duel-link-primary:focus,
+.home-phalanx-duel-link-primary:focus-visible {
+  color: #0b0906;
+}
+
+.home-phalanx-duel-link-secondary {
+  background: rgba(196, 154, 56, 0.08);
+  color: #e8d4aa;
+  border-color: #5a4626;
+}
+
+.home-phalanx-duel-link-secondary:visited {
+  color: #e8d4aa;
+}
+
+.home-phalanx-duel-link-secondary:hover {
+  color: #ddb96a;
+  border-color: #8a6b24;
+  background: rgba(196, 154, 56, 0.15);
+  transform: translateY(-1px);
+}
+
+.home-phalanx-duel-link-secondary:focus,
+.home-phalanx-duel-link-secondary:focus-visible {
+  color: #e8d4aa;
+}
+
+@media (max-width: 700px) {
+  .home-phalanx-duel-cta {
+    align-items: flex-start;
+  }
+
+  .home-phalanx-duel-body {
+    max-width: none;
+  }
+}
+
 .home-intro {
   color: var(--muted);
 }
