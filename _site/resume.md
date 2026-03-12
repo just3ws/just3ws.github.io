@@ -24,7 +24,7 @@ Staff software engineer who stabilizes revenue-critical platforms, reduces syste
 
 ## Core Skills
 
-Platform Architecture, Legacy Modernization, System Reliability, Incident Leadership, Observability, Cross-Team Technical Leadership, Ruby on Rails, PostgreSQL, Redis, AWS, OpenTelemetry, Secure API Design, CI/CD
+Platform Architecture, Technical Strategy, Legacy Modernization, Reliability Engineering, Incident Leadership, Observability Strategy, Cross-Team Technical Leadership, Risk Reduction, Platform Enablement, Ruby on Rails, PostgreSQL, OpenTelemetry
 
 ---
 
