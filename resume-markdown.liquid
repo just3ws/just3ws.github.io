@@ -4,14 +4,19 @@ permalink: /resume.md
 sitemap: true
 ---
 {% assign profile = site.data.resume.profile %}
+{% assign ats = site.data.resume.ats %}
+{% assign linkedin_display = profile.contact.linkedin.url | replace_first: "https://www.", "" | replace_first: "https://", "" | replace_first: "http://", "" %}
 # {{ profile.name }}
 
 **{{ profile.title }}**
+{% if profile.location %}
+{{ profile.location.display }}
+{% endif %}
 
 - Email: [{{ profile.contact.email }}](mailto:{{ profile.contact.email }})
 - Phone: [{{ profile.contact.phone }}](tel:{{ profile.contact.phone_tel }})
 - Website: [{{ profile.contact.website.display }}]({{ profile.contact.website.url }})
-- LinkedIn: [{{ profile.contact.linkedin.display }}]({{ profile.contact.linkedin.url }})
+- LinkedIn: [{{ linkedin_display }}]({{ profile.contact.linkedin.url }})
 - GitHub: [{{ profile.contact.github.display }}]({{ profile.contact.github.url }})
 
 ---
@@ -22,51 +27,48 @@ sitemap: true
 
 ---
 
+## Core Skills
+
+{{ ats.skills | join: ", " }}
+
+---
+
 ## Experience
-{% for item in site.data.resume.timeline.items %}
-{% assign position = site.data.resume.positions[item] %}
-{% if position %}
-### {{ position.title }} — {{ position.company.name }}
+{% for entry in ats.positions %}
+{% assign position = site.data.resume.positions[entry.id] %}
+{% if position and entry %}
+### {{ position.title }} at {{ position.company.name }}
 
 **{{ position.start_date }} - {{ position.end_date | default: "Present" }}**{% if position.company.location %} | {{ position.company.location }}{% endif %}
-{% if position.description %}
+{% if entry.summary %}
 
-{{ position.description }}
+{{ entry.summary }}
 {% endif %}
-{% if position.achievements.highlights %}
+{% if entry.highlights %}
 
-**Key Achievements:**
-{% for achievement in position.achievements.highlights %}
+**Key Outcomes:**
+{% for achievement in entry.highlights %}
 - {{ achievement }}
 {% endfor %}
 {% endif %}
-{% if position.skills %}
-
-**Skills:** {{ position.skills | join: ", " }}
 {% endif %}
-{% endif %}
-{% endfor %}
-### {{ site.data.resume.earlier_experience.title }}
-
-**{{ site.data.resume.earlier_experience.dates }}**
-
-{{ site.data.resume.earlier_experience.description }}
-{% for item in site.data.resume.earlier_experience.items %}
-- **{{ item.company }}**{% if item.role %} ({{ item.role }}){% endif %} — {{ item.summary }}
 {% endfor %}
 
 ---
 
-## {{ site.data.resume.leadership.title }}
-{% for item in site.data.resume.leadership.items %}
-- {{ item }}
+## {{ ats.additional_experience.title }}
+{% for item in ats.additional_experience.items %}
+{% assign position = site.data.resume.positions[item.id] %}
+- **{{ position.title }}**, {{ position.company.name }} ({{ position.start_date }} - {{ position.end_date | default: "Present" }}{% if position.company.location %}, {{ position.company.location }}{% endif %}): {{ item.summary }}
 {% endfor %}
 
 ---
 
-## {{ site.data.resume.skills.title }}
-{% for category in site.data.resume.skills.categories %}
-### {{ category.name }}
+## {{ ats.earlier_experience.title }}
 
-{{ category.items | join: ", " }}
+**{{ ats.earlier_experience.dates }}**
+
+{{ ats.earlier_experience.summary }}
+{% for item in ats.earlier_experience.items %}
+- **{{ item.label }}**: {{ item.summary }}
 {% endfor %}

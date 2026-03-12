@@ -1,0 +1,65 @@
+{% assign ats = site.data.resume.ats %}
+<nav class="resume-actions no-print" aria-label="Resume actions">
+  <span class="resume-actions-label">Resume</span>
+  <a href="/history/" class="resume-actions-primary">Full Career Timeline</a>
+  <a href="/resume.txt">Plain Text</a>
+  <a href="/resume.md">Markdown</a>
+  <a href="/resume.json">JSON</a>
+  <button aria-label="Print or save ATS resume as PDF" title="Print or save ATS resume as PDF" onclick="window.print()">Print / PDF</button>
+</nav>
+
+<article class="ats-resume-content">
+  {% include resume/profile-header.html %}
+
+  {% assign summary = site.data.resume.summary %}
+  <section id="summary">
+    <h2>{{ summary.title }}</h2>
+    <p>{{ summary.text }}</p>
+  </section>
+
+  <section id="skills">
+    <h2>Core Skills</h2>
+    <ul class="skills-list ats-skills">
+      {% for skill in ats.skills %}
+      <li>{{ skill }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    {% for entry in ats.positions %}
+    {% assign position = site.data.resume.positions[entry.id] %}
+    {% if position and entry %}
+    {% include resume/ats-position-entry.html position=position entry=entry %}
+    {% endif %}
+    {% endfor %}
+  </section>
+
+  <section id="additional-experience">
+    <h2>{{ ats.additional_experience.title }}</h2>
+    <ul class="ats-supporting-list">
+      {% for item in ats.additional_experience.items %}
+      {% assign position = site.data.resume.positions[item.id] %}
+      {% if position %}
+      <li>
+        <strong>{{ position.title }}, {{ position.company.name }}</strong>
+        <span class="ats-supporting-meta"> | {{ position.start_date }} - {{ position.end_date | default: "Present" }}{% if position.company.location %} | {{ position.company.location }}{% endif %}</span>
+        : {{ item.summary }}
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section id="earlier-experience">
+    <h2>{{ ats.earlier_experience.title }}</h2>
+    <p class="section-meta">{{ ats.earlier_experience.dates }}</p>
+    <p>{{ ats.earlier_experience.summary }}</p>
+    <ul class="ats-supporting-list">
+      {% for item in ats.earlier_experience.items %}
+      <li><strong>{{ item.label }}</strong>: {{ item.summary }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>

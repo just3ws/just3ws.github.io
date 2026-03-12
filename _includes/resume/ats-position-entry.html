@@ -1,0 +1,22 @@
+<article class="position position-ats">
+  <header class="position-header">
+    <h3 class="position-title">{{ include.position.title }}</h3>
+    <p class="position-meta">
+      <span class="position-company">{{ include.position.company.name }}</span>
+      {%- if include.position.company.location %} | <span>{{ include.position.company.location }}</span>{%- endif %}
+      <span class="position-dates"> | <time>{{ include.position.start_date }}</time> - <time>{{ include.position.end_date | default: "Present" }}</time></span>
+    </p>
+  </header>
+
+  {%- if include.entry.summary %}
+  <p>{{ include.entry.summary }}</p>
+  {%- endif %}
+
+  {%- if include.entry.highlights %}
+  <ul>
+    {%- for highlight in include.entry.highlights %}
+    <li>{{ highlight }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+</article>

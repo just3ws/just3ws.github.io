@@ -48,7 +48,7 @@
       <p>{{ earlier.description }}</p>
       <ul>
         {% for item in earlier.items %}
-        <li>{{ item.company }}{% if item.role %} ({{ item.role }}){% endif %} — {{ item.summary }}</li>
+        <li>{{ item.company }}{% if item.role %} ({{ item.role }}){% endif %}: {{ item.summary }}</li>
         {% endfor %}
       </ul>
       <p><a href="/history/">View full career history</a></p>

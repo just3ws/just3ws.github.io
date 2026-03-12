@@ -1,39 +1,40 @@
 <article class="position">
   <header class="position-header">
     <h3 class="position-title">
-      {% if include.link_title %}
+      {%- if include.link_title -%}
       <a href="/resume/positions/{{ include.position_id }}/">{{ include.position.title }}</a>
-      {% else %}
+      {%- else -%}
       <span>{{ include.position.title }}</span>
-      {% endif %}
-      <span class="position-company">
-        — <span>{{ include.position.company.name }}</span>
-      </span>
+      {%- endif -%}
     </h3>
     <p class="position-meta">
+      {%- if include.position.company.name -%}
+      <span class="position-company">{{ include.position.company.name }}</span>
+      {%- endif -%}
+      {%- if include.position.company.location -%}
+      {%- if include.position.company.name %} | {% endif -%}<span>{{ include.position.company.location }}</span>
+      {%- endif -%}
       <span class="position-dates">
-        <time>{{ include.position.start_date }}</time> –
+        {%- if include.position.company.name or include.position.company.location %} | {% endif -%}
+        <time>{{ include.position.start_date }}</time> -
         <time>{{ include.position.end_date | default: "Present" }}</time>
       </span>
-      {% if include.position.company.location %}
-      | <span>{{ include.position.company.location }}</span>
-      {% endif %}
     </p>
   </header>
 
-  {% if include.position.description %}
+  {%- if include.position.description %}
   <p>{{ include.position.description }}</p>
-  {% endif %}
+  {%- endif %}
 
-  {% if include.position.achievements.highlights %}
+  {%- if include.position.achievements.highlights %}
   <ul>
-    {% for achievement in include.position.achievements.highlights %}
+    {%- for achievement in include.position.achievements.highlights %}
     <li>{{ achievement }}</li>
-    {% endfor %}
+    {%- endfor %}
   </ul>
-  {% endif %}
+  {%- endif %}
 
-  {% if include.position.skills %}
+  {%- if include.position.skills %}
   <p><strong>Skills:</strong> {{ include.position.skills | join: ", " }}</p>
-  {% endif %}
+  {%- endif %}
 </article>

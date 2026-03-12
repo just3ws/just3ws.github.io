@@ -6,6 +6,7 @@
 {% assign profile = site.data.resume.profile %}
 {% assign summary = site.data.resume.summary %}
 {% assign person_id = site_url | append: "/id/person/mike-hall" %}
+{% assign profile_location = profile.location %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -19,7 +20,17 @@
   "email": "mailto:{{ profile.contact.email }}",
   "telephone": {{ profile.contact.phone_tel | default: "+18478773825" | jsonify }},
   "jobTitle": {{ profile.title | default: "Staff Software Engineer" | jsonify }},
-  "description": {{ summary.text | strip | jsonify }},
+  "description": {{ summary.text | strip | jsonify }}{% if profile_location %},
+  "homeLocation": {
+    "@type": "Place",
+    "name": {{ profile_location.display | jsonify }},
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": {{ profile_location.locality | jsonify }},
+      "addressRegion": {{ profile_location.region | jsonify }},
+      "addressCountry": {{ profile_location.country | default: "US" | jsonify }}
+    }
+  }{% endif %},
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "{{ site_url }}/"
