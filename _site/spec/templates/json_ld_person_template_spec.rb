@@ -8,6 +8,7 @@ RSpec.describe "json-ld person template" do
     expect(template).to include('"@type": "Person"')
     expect(template).to include('"@id": "{{ person_id }}"')
     expect(template).to include('"description": {{ summary.text | strip | jsonify }}')
+    expect(template).to include('"homeLocation"')
     expect(template).to include('"hasOccupation"')
     expect(template).to include('"subjectOf"')
     expect(template).to include('"@type": "ItemList"')
