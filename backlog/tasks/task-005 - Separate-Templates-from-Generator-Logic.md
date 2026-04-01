@@ -1,10 +1,10 @@
 ---
 id: TASK-005
 title: Separate Templates from Generator Logic
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-04-01 15:29'
-updated_date: '2026-04-01 19:50'
+updated_date: '2026-04-01 19:59'
 labels: []
 dependencies: []
 priority: medium
@@ -23,6 +23,19 @@ Current Ruby scripts (e.g., `generate_interview_pages.rb`) have large blocks of 
 - [ ] #3 Ruby scripts/plugins should only handle data preparation and front matter assignment.
 - [ ] #4 Ensure that existing styles are maintained.
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Separated hard-coded templates from generator logic by moving them to dedicated Jekyll layouts.
+- Created `_layouts/interview.html` for interview detail pages.
+- Created `_layouts/video_asset.html` for video detail pages.
+- Created `_layouts/taxonomy_index.html` and `_layouts/taxonomy_detail.html` for conference and community groupings.
+- Updated Jekyll Generator plugins to use these new layouts, passing data via frontmatter.
+- Removed large blocks of hard-coded HTML from Ruby scripts, significantly improving maintainability.
+- Verified that styling and structure of generated pages are maintained.
+- This fulfills all acceptance criteria for TASK-005.
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
