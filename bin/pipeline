@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# Unified pipeline runner using Rake
 set -eu
 
 usage() {
@@ -23,215 +24,42 @@ Commands:
 USAGE
 }
 
-load_env() {
-  if [ -f .env ]; then
-    # shellcheck disable=SC1091
-    . ./.env
-  fi
-}
-
-check_runtime() {
-  required_ruby="$(awk '/^ruby /{print $2; exit}' .tool-versions)"
-  actual_ruby="$(ruby -e 'print RUBY_VERSION')"
-  if [ "$actual_ruby" != "$required_ruby" ]; then
-    echo "Ruby version mismatch: expected $required_ruby, got $actual_ruby" >&2
-    echo "Ensure your shell uses the project runtime from .tool-versions." >&2
-    exit 1
-  fi
-
-  required_bundler="$(ruby -e 'lock = File.read("Gemfile.lock"); m = lock.match(/BUNDLED WITH\n\s+([0-9.]+)/); print(m && m[1])')"
-  actual_bundler="$(bundle --version | awk '{print $NF}')"
-  if [ "$actual_bundler" != "$required_bundler" ]; then
-    echo "Bundler version mismatch: expected $required_bundler, got $actual_bundler" >&2
-    echo "Install the required Bundler version and retry." >&2
-    exit 1
-  fi
-}
-
-run_generate() {
-  rm -rf _site .jekyll-metadata
-  find interviews -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
-  find videos -mindepth 1 -maxdepth 1 ! -name 'index.html' -exec rm -rf {} +
-
-  ./bin/sync_interview_asset_links.rb
-  ruby ./bin/generate_context_summaries.rb
-  ruby ./bin/generate_video_metadata_completeness.rb
-  ruby ./bin/generate_archive_status.rb
-  ./bin/generate_interview_pages.rb
-  ruby ./bin/generate_video_asset_pages.rb
-  ruby ./bin/generate_interview_taxonomy_pages.rb
-  ruby ./bin/generate_interview_topics_page.rb
-  ruby ./bin/generate_interviewees_page.rb
-  ruby ./bin/generate_community_stories_page.rb
-  ruby ./bin/generate_resume_position_pages.rb
-}
-
-run_build() {
-  check_runtime
-  export JEKYLL_ENV=production
-  run_generate
-
-  ruby ./bin/generate_last_modified.rb
-
-  bundle exec jekyll clean --verbose
-  bundle exec jekyll build --verbose
-
-  # AGENTS docs are for local tooling, not public site output.
-  rm -f _site/AGENTS.html _site/AGENTS.md
-}
-
-run_validate() {
-  check_runtime
-  export JEKYLL_ENV=production
-
-  ruby ./bin/validate_data_uniqueness.rb
-  ruby ./bin/validate_data_integrity.rb
-  ruby ./bin/audit_transcripts.rb
-  ruby ./bin/validate_resources_output.rb
-  ruby ./bin/validate_taxonomy_output.rb
-  ruby ./bin/validate_archive_surfaces.rb
-  ruby ./bin/validate_last_modified_output.rb
-  ruby ./bin/validate_repo_hygiene.rb
-  ruby ./bin/validate_metadata_completeness_budget.rb
-  ruby ./bin/validate_seo_output.rb
-  ruby ./bin/validate_public_index_mode.rb
-  ruby ./bin/validate_semantic_output.rb
-  ruby ./bin/report_seo_metadata.rb
-
-  bundle exec htmlproofer ./_site \
-    --disable-external \
-    --ignore-files "/AGENTS\\.html$/" \
-    --ignore-url "/^https:\/\/www\.linkedin\.com\//"
-
-  require_file() {
-    file_path="$1"
-    if [ ! -f "$file_path" ]; then
-      echo "Missing required artifact: $file_path" >&2
-      exit 1
-    fi
-  }
-
-  require_contains() {
-    file_path="$1"
-    expected_text="$2"
-    if ! grep -q "$expected_text" "$file_path"; then
-      echo "Expected text not found in $file_path: $expected_text" >&2
-      exit 1
-    fi
-  }
-
-  # Resume is the highest-priority surface; fail fast on any rendering regression.
-  require_file "_site/index.html"
-  require_file "_site/resume.txt"
-  require_file "_site/resume.md"
-  require_contains "_site/index.html" "Mike Hall"
-  require_contains "_site/index.html" "Staff Software Engineer"
-
-  # Catch sitemap regressions (e.g. partial/manual sitemap output replacing full index).
-  require_file "_site/sitemap.xml"
-  sitemap_url_count="$(grep -c "<url>" _site/sitemap.xml)"
-  sitemap_max_urls="${SITEMAP_MAX_URLS:-5000}"
-  if [ "$sitemap_url_count" -lt 1 ]; then
-    echo "Sitemap regression: expected at least 1 URL, found $sitemap_url_count" >&2
-    exit 1
-  fi
-  if ! grep -Eq "<loc>https?://[^/]+/</loc>" _site/sitemap.xml; then
-    echo "Sitemap regression: missing root resume URL entry in sitemap" >&2
-    exit 1
-  fi
-  if [ "$sitemap_url_count" -gt "$sitemap_max_urls" ]; then
-    echo "Sitemap regression: found $sitemap_url_count URLs, exceeds budget $sitemap_max_urls." >&2
-    echo "Increase SITEMAP_MAX_URLS only when intentional publication-scope expansion is approved." >&2
-    exit 1
-  fi
-
-  # Report artifact only; never block CI on visualization output.
-  if ! run_semantic_graph; then
-    echo "Warning: semantic graph generation failed (non-blocking)." >&2
-  fi
-
-  if ! run_semantic_audit; then
-    echo "Warning: semantic audit report generation failed (non-blocking)." >&2
-  fi
-}
-
-run_test() {
-  check_runtime
-  bundle exec rspec
-}
-
-run_semantic_graph() {
-  check_runtime
-  ruby ./bin/visualize_semantic_graph.rb
-}
-
-run_semantic_audit() {
-  check_runtime
-  ruby ./bin/semantic_audit.rb
-}
-
-run_semantic_snapshot() {
-  check_runtime
-  ruby ./bin/generate_semantic_snapshot_page.rb
-}
-
-run_smoke() {
-  if [ ! -d _site ]; then
-    echo "Missing _site directory. Run './bin/pipeline build' first." >&2
-    exit 1
-  fi
-  ./bin/smoke_playwright.sh
-}
-
-run_sitemap() {
-  if [ ! -f _site/sitemap.xml ]; then
-    echo "Missing _site/sitemap.xml. Run './bin/pipeline build' first." >&2
-    exit 1
-  fi
-  ruby ./bin/visualize_sitemap.rb
-}
-
-load_env
-
-command="${1:-help}"
-case "$command" in
+case "${1:-help}" in
   generate)
-    run_generate
+    bundle exec rake generate
     ;;
   build)
-    run_build
-    ;;
-  validate)
-    run_validate
-    ;;
-  semantic-graph)
-    run_semantic_graph
-    ;;
-  semantic-audit)
-    run_semantic_audit
-    ;;
-  semantic-snapshot)
-    run_semantic_snapshot
+    bundle exec rake build
     ;;
   test)
-    run_test
+    bundle exec rake test
+    ;;
+  validate)
+    bundle exec rake validate
+    ;;
+  semantic-graph)
+    bundle exec rake semantic:graph
+    ;;
+  semantic-audit)
+    bundle exec rake semantic:audit
+    ;;
+  semantic-snapshot)
+    bundle exec rake semantic:snapshot
     ;;
   smoke)
-    run_smoke
+    bundle exec rake smoke
     ;;
   sitemap)
-    run_sitemap
+    bundle exec rake sitemap
     ;;
   ci)
-    run_build
-    run_test
-    run_validate
+    bundle exec rake ci
     ;;
   help|-h|--help)
     usage
     ;;
   *)
-    echo "Unknown command: $command" >&2
+    echo "Unknown command: $1" >&2
     usage >&2
     exit 1
     ;;

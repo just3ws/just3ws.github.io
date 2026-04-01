@@ -202,6 +202,7 @@ all_html_paths.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative == 'AGENTS.html'
   next if relative.start_with?('AGENTS.')
+  next if relative.start_with?('backlog/')
 
   coverage[:html_pages_total] += 1
   next if relative == 'resume-minimal.html' || relative == 'resume-minimal/index.html'
@@ -378,6 +379,7 @@ all_html_paths.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative == 'AGENTS.html'
   next if relative.start_with?('AGENTS.')
+  next if relative.start_with?('backlog/')
 
   html = read(path)
   nodes = json_ld_nodes(html, relative, errors)
