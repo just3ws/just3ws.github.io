@@ -1,0 +1,70 @@
+---
+layout: minimal
+---
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>{{ page.title }}</h1>
+    <p class="intro">{{ page.description }}</p>
+  </header>
+
+{% if page.highlights and page.highlights.size > 0 %}
+  <section class="index-summary">
+    <ul class="index-highlights">
+{% for highlight in page.highlights %}
+      <li>{{ highlight }}</li>
+{% endfor %}
+    </ul>
+  </section>
+{% endif %}
+
+{% if page.conference_slug and page.conference_slug != "" %}
+  {% assign conference_resources = site.data.resources.conferences[page.conference_slug] %}
+  {% if conference_resources %}
+    <section class="index-summary">
+      <h2>Trusted Sources</h2>
+      <ul class="index-highlights">
+        {% for resource in conference_resources %}
+          {% assign resource_url = resource.url | default: resource %}
+          {% assign resource_label = resource.label | default: resource_url %}
+          {% if resource_url and resource_url != "" %}
+            <li><a href="{{ resource_url }}">{{ resource_label }}</a></li>
+          {% elsif resource_label and resource_label != "" %}
+            <li>{{ resource_label }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+{% endif %}
+
+{% if page.notable_contributors and page.notable_contributors.size > 0 %}
+  <section class="index-summary">
+    <h2>Notable Contributors</h2>
+    <ul class="index-highlights">
+{% for contributor in page.notable_contributors %}
+      <li>
+        <strong>{{ contributor.name }}</strong>
+        {% if contributor.headline and contributor.headline != "" %} — {{ contributor.headline }}{% endif %}
+        {% if contributor.focus and contributor.focus != "" %} Focus: {{ contributor.focus }}{% endif %}
+        {% if contributor.interview_id and contributor.interview_id != "" %}
+          <a href="/interviews/{{ contributor.interview_id }}/">Interview</a>
+        {% endif %}
+      </li>
+{% endfor %}
+    </ul>
+  </section>
+{% endif %}
+
+  {% if page.conference_name and page.conference_year %}
+    {% assign items = site.data.interviews.items | where: "conference", page.conference_name | where: "conference_year", page.conference_year | sort: "recorded_date" | reverse %}
+  {% elsif page.conference_name %}
+    {% assign items = site.data.interviews.items | where: "conference", page.conference_name | sort: "recorded_date" | reverse %}
+  {% elsif page.community_name %}
+    {% assign items = site.data.interviews.items | where: "community", page.community_name | sort: "recorded_date" | reverse %}
+  {% endif %}
+
+  {% for interview in items %}
+    {% include interview-card.html interview=interview %}
+  {% endfor %}
+</article>

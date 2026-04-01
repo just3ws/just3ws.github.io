@@ -25,15 +25,15 @@ desc 'Validate the built site'
 task validate: ['validate:all']
 
 namespace :generate do
-  desc 'Run all generation scripts'
+  desc 'Run all generation scripts (Legacy disk-based scripts are mostly deprecated by plugins)'
   task all: [
     :sync_links,
     :context_summaries,
     :video_completeness,
     :archive_status,
-    :interview_pages,
-    :video_pages,
-    :taxonomy,
+    # :interview_pages,      # Deprecated by InterviewGenerator plugin
+    # :video_pages,          # Deprecated by VideoAssetGenerator plugin
+    # :taxonomy,             # Deprecated by TaxonomyGenerator plugin
     :topics,
     :interviewees,
     :community_stories,

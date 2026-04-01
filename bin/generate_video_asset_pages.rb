@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+# DEPRECATED: This script is replaced by _plugins/generate_video_assets.rb
+# Use 'bundle exec rake generate' or just build the site with Jekyll.
+# Disk-based generation is no longer required for development or CI.
 require 'fileutils'
 require_relative '../src/generators/core/meta'
 require_relative '../src/generators/core/text'
