@@ -18,13 +18,11 @@ jobs:
         with:
           ruby-version: 3.4.8
           bundler-cache: true
-      - name: Ensure committed built site exists
-        run: |
-          test -f _site/index.html
-          test -f _site/sitemap.xml
+      - name: Build site
+        run: ./bin/pipeline build
       - name: Run tests
         run: ./bin/pipeline test
-      - name: Validate committed site output
+      - name: Validate site output
         run: ./bin/pipeline validate
       - name: Playwright smoke check
         timeout-minutes: 12

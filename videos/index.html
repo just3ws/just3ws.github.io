@@ -1,0 +1,43 @@
+---
+layout: minimal
+title: Videos
+description: Canonical video archive across platforms, preserving talks and interviews with stable IDs and durable links.
+breadcrumb: Videos
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  <header>
+    <h1>Videos</h1>
+    <p class="intro">Canonical video records with stable IDs and one or more published platform links.</p>
+  </header>
+
+  {% assign summary = site.data.index_summaries.pages.videos %}
+  {% if summary %}
+    <section class="index-summary">
+      {% if summary.summary %}<p>{{ summary.summary }}</p>{% endif %}
+      {% if summary.highlights and summary.highlights.size > 0 %}
+        <ul class="index-highlights">
+          {% for item in summary.highlights %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+  {% endif %}
+
+  {% assign items = site.data.video_assets.items %}
+  {% include json-ld-itemlist.html
+    collection_name="Videos"
+    collection_description=page.description
+    items=items
+    item_id_key="id"
+    item_name_key="title"
+    url_prefix="/videos/"
+    item_schema_type="CreativeWork"
+    entity_id_prefix="/id/video/"
+  %}
+  {% for asset in items %}
+    {% include_cached video-asset-card.html asset=asset %}
+  {% endfor %}
+</article>

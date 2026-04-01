@@ -23,13 +23,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Ensure committed built site exists
-        run: |
-          test -f _site/index.html
-          test -f _site/sitemap.xml
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4.8
+          bundler-cache: true
+      - name: Build site
+        run: ./bin/pipeline build
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload Pages artifact from committed _site
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
