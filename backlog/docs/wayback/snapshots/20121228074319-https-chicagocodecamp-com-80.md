@@ -1,10 +1,11 @@
 ---
 layout: minimal
-title: "Wayback Snapshot: Chicago Code Camp 2012 - May 19th"
-description: "Archived content republished from Wayback: https://chicagocodecamp.com:80/"
-breadcrumb: "Wayback Snapshot"
+title: 'Wayback Snapshot: Chicago Code Camp 2012 - May 19th'
+description: 'Archived content republished from Wayback: https://chicagocodecamp.com:80/'
+breadcrumb: Wayback Snapshot
 breadcrumb_parent_name: Wayback Archives
-breadcrumb_parent_url: /backlog/docs/wayback/
+breadcrumb_parent_url: "/backlog/docs/wayback/"
+id: doc-033
 ---
 
 {% include breadcrumbs.html %}

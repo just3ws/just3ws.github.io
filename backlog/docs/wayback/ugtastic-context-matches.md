@@ -1,3 +1,10 @@
+---
+id: doc-037
+title: UGtastic Interview Context Extraction
+type: other
+created_date: '2026-04-01 15:29'
+---
+
 # UGtastic Interview Context Extraction
 
 - Source directory: `tmp/wbm/ugtastic`
@@ -83,3 +90,4 @@
 - `2013-11-11` [Interview with Jason Cranford Teague](https://www.ugtastic.com/jason-cranford-teague-interview)
 - `2013-11-25` [Interview with Jennifer Jones](https://www.ugtastic.com/jennifer-jones-interview)
 - `2013-12-04` [Interview with Micah Martin co-founder of 8th Light](https://www.ugtastic.com/micah-martin)
+

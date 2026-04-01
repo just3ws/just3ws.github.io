@@ -1,3 +1,10 @@
+---
+id: doc-009
+title: Backlog Structure Overview
+type: other
+created_date: '2026-04-01 15:29'
+---
+
 # Backlog Structure Overview
 
 This project uses a structured backlog system located in the `backlog/` directory, with a central dashboard at `Backlog.md` in the root.
@@ -20,3 +27,4 @@ This project uses a structured backlog system located in the `backlog/` director
 ## Working with Decisions
 
 All significant architectural changes must be preceded by an ADR in `backlog/decisions/`. This ensures that the rationale for changes is preserved for future maintainers.
+

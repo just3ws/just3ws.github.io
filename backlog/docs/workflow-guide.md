@@ -1,3 +1,10 @@
+---
+id: doc-039
+title: Workflow Guide
+type: other
+created_date: '2026-04-01 15:29'
+---
+
 # Workflow Guide
 
 This document describes the core workflows for maintaining the site data, building the archive, and performing deployments.
@@ -46,3 +53,4 @@ The project is currently transitioning to a more automated and robust architectu
 - Moving build/deploy to GitHub Actions.
 - Using Jekyll memory-based generators instead of disk-based HTML generation.
 - Consolidating fragmented scripts into a unified CLI.
+

@@ -123,7 +123,7 @@ bundle exec rspec
 ./bin/pipeline smoke
 ```
 
-Pipeline grammar reference: `/docs/pipeline-grammar/`
+Pipeline grammar reference: `/backlog/docs/pipeline-grammar/`
 
 ## Analytics Events (GoatCounter)
 

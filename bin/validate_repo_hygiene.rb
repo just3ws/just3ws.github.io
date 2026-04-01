@@ -33,11 +33,11 @@ def docs_href_patterns(root)
 
     content = File.read(path)
     content.scan(href_regex).flatten.each do |href|
-      next unless href.start_with?("/docs/")
-      next if href.start_with?("/docs/#")
+      next unless href.start_with?("/backlog/docs/")
+      next if href.start_with?("/backlog/docs/#")
 
       route = href.split("#", 2).first.split("?", 2).first
-      next if route == "/docs/"
+      next if route == "/backlog/docs/"
 
       style =
         if route.end_with?(".html")

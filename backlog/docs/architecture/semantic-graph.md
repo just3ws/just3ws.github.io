@@ -1,12 +1,14 @@
 ---
 layout: minimal
 title: Semantic Graph Snapshot
-description: Rendered-page schema graph snapshot from validator artifacts with route-level contract checks.
+description: Rendered-page schema graph snapshot from validator artifacts with route-level
+  contract checks.
 breadcrumb: Semantic Graph Snapshot
 breadcrumb_parent_name: Semantic Model
-breadcrumb_parent_url: /backlog/docs/architecture/semantic-model/
+breadcrumb_parent_url: "/backlog/docs/architecture/semantic-model/"
 breadcrumb_grandparent_name: Docs
-breadcrumb_grandparent_url: /backlog/docs/
+breadcrumb_grandparent_url: "/backlog/docs/"
+id: doc-005
 ---
 
 {% include breadcrumbs.html %}

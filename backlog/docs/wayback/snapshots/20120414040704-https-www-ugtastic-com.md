@@ -1,10 +1,11 @@
 ---
 layout: minimal
-title: "Wayback Snapshot: ugtastic"
-description: "Archived content republished from Wayback: https://www.ugtastic.com/"
-breadcrumb: "Wayback Snapshot"
+title: 'Wayback Snapshot: ugtastic'
+description: 'Archived content republished from Wayback: https://www.ugtastic.com/'
+breadcrumb: Wayback Snapshot
 breadcrumb_parent_name: Wayback Archives
-breadcrumb_parent_url: /backlog/docs/wayback/
+breadcrumb_parent_url: "/backlog/docs/wayback/"
+id: doc-031
 ---
 
 {% include breadcrumbs.html %}

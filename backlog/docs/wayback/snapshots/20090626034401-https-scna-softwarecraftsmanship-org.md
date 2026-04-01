@@ -1,10 +1,11 @@
 ---
 layout: minimal
-title: "Wayback Snapshot: Software Craftsmanship North America"
-description: "Archived content republished from Wayback: https://scna.softwarecraftsmanship.org/"
-breadcrumb: "Wayback Snapshot"
+title: 'Wayback Snapshot: Software Craftsmanship North America'
+description: 'Archived content republished from Wayback: https://scna.softwarecraftsmanship.org/'
+breadcrumb: Wayback Snapshot
 breadcrumb_parent_name: Wayback Archives
-breadcrumb_parent_url: /backlog/docs/wayback/
+breadcrumb_parent_url: "/backlog/docs/wayback/"
+id: doc-028
 ---
 
 {% include breadcrumbs.html %}

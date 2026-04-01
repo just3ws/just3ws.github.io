@@ -1,10 +1,11 @@
 ---
 layout: minimal
-title: "Wayback Snapshot: SCNA 2013"
-description: "Archived content republished from Wayback: http://scna.softwarecraftsmanship.org/"
-breadcrumb: "Wayback Snapshot"
+title: 'Wayback Snapshot: SCNA 2013'
+description: 'Archived content republished from Wayback: http://scna.softwarecraftsmanship.org/'
+breadcrumb: Wayback Snapshot
 breadcrumb_parent_name: Wayback Archives
-breadcrumb_parent_url: /backlog/docs/wayback/
+breadcrumb_parent_url: "/backlog/docs/wayback/"
+id: doc-034
 ---
 
 {% include breadcrumbs.html %}

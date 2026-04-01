@@ -45,7 +45,7 @@ end
 options = {
   summary: DEFAULT_SUMMARY.to_s,
   output: DEFAULT_OUTPUT.to_s,
-  base_url: "/docs/wayback/",
+  base_url: "/backlog/docs/wayback/",
   title: "Wayback Archives",
   description: "Archived snapshots extracted from Wayback Machine links referenced in this repository.",
   breadcrumb: "Wayback Archives"
@@ -54,8 +54,8 @@ options = {
 OptionParser.new do |opts|
   opts.banner = "Usage: bin/generate_wayback_pages.rb [options]"
   opts.on("--summary PATH", "Path to tmp/wayback/summary.json") { |v| options[:summary] = v }
-  opts.on("--output DIR", "Output docs directory (default: docs/wayback)") { |v| options[:output] = v }
-  opts.on("--base-url URL", "Published base URL for generated pages (default: /docs/wayback/)") { |v| options[:base_url] = v }
+  opts.on("--output DIR", "Output docs directory (default: backlog/docs/wayback)") { |v| options[:output] = v }
+  opts.on("--base-url URL", "Published base URL for generated pages (default: /backlog/docs/wayback/)") { |v| options[:base_url] = v }
   opts.on("--title TEXT", "Index title (default: Wayback Archives)") { |v| options[:title] = v }
   opts.on("--description TEXT", "Index description/front matter description") { |v| options[:description] = v }
   opts.on("--breadcrumb TEXT", "Index breadcrumb label") { |v| options[:breadcrumb] = v }
@@ -116,7 +116,7 @@ ok_records.each do |record|
   page << "description: #{yaml_quote("Archived content republished from Wayback: #{source_url}")}\n"
   page << "breadcrumb: #{yaml_quote("Wayback Snapshot")}\n"
   page << "breadcrumb_parent_name: Wayback Archives\n"
-  page << "breadcrumb_parent_url: /docs/wayback/\n"
+  page << "breadcrumb_parent_url: /backlog/docs/wayback/\n"
   page << "---\n\n"
   page << "{% include breadcrumbs.html %}\n\n"
   page << "# #{title}\n\n"
@@ -153,7 +153,7 @@ index << "title: #{options[:title]}\n"
 index << "description: #{options[:description]}\n"
 index << "breadcrumb: #{options[:breadcrumb]}\n"
 index << "breadcrumb_parent_name: Docs\n"
-index << "breadcrumb_parent_url: /docs/\n"
+index << "breadcrumb_parent_url: /backlog/docs/\n"
 index << "---\n\n"
 index << "{% include breadcrumbs.html %}\n\n"
 index << "# #{options[:title]}\n\n"

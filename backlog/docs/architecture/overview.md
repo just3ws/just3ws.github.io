@@ -1,10 +1,12 @@
 ---
 layout: minimal
 title: Architecture Overview
-description: Repository structure and ownership boundaries for resume, archive, and generation workflows.
+description: Repository structure and ownership boundaries for resume, archive, and
+  generation workflows.
 breadcrumb: Architecture Overview
 breadcrumb_parent_name: Docs
-breadcrumb_parent_url: /backlog/docs/
+breadcrumb_parent_url: "/backlog/docs/"
+id: doc-003
 ---
 
 {% include breadcrumbs.html %}

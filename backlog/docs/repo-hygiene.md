@@ -1,10 +1,12 @@
 ---
 layout: minimal
 title: Repository Hygiene
-description: Policy for pruning stale files, controlling legacy content, and preventing repository drift.
+description: Policy for pruning stale files, controlling legacy content, and preventing
+  repository drift.
 breadcrumb: Repository Hygiene
 breadcrumb_parent_name: Docs
-breadcrumb_parent_url: /backlog/docs/
+breadcrumb_parent_url: "/backlog/docs/"
+id: doc-013
 ---
 
 {% include breadcrumbs.html %}

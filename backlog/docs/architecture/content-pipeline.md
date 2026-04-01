@@ -4,7 +4,8 @@ title: Content Pipeline
 description: How canonical data becomes generated pages and validated output.
 breadcrumb: Content Pipeline
 breadcrumb_parent_name: Docs
-breadcrumb_parent_url: /backlog/docs/
+breadcrumb_parent_url: "/backlog/docs/"
+id: doc-002
 ---
 
 {% include breadcrumbs.html %}

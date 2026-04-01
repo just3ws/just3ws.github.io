@@ -4,7 +4,8 @@ title: Styling System
 description: Shared style core with separate resume and site themes.
 breadcrumb: Styling System
 breadcrumb_parent_name: Docs
-breadcrumb_parent_url: /backlog/docs/
+breadcrumb_parent_url: "/backlog/docs/"
+id: doc-007
 ---
 
 {% include breadcrumbs.html %}

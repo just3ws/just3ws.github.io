@@ -1,10 +1,12 @@
 ---
 layout: minimal
 title: Resume Job Targeting
-description: Strategy for job-specific resume permalinks using overlays on canonical timeline data.
+description: Strategy for job-specific resume permalinks using overlays on canonical
+  timeline data.
 breadcrumb: Resume Job Targeting
 breadcrumb_parent_name: Docs
-breadcrumb_parent_url: /backlog/docs/
+breadcrumb_parent_url: "/backlog/docs/"
+id: doc-004
 ---
 
 {% include breadcrumbs.html %}

@@ -1,10 +1,12 @@
 ---
 layout: minimal
 title: LinkedIn Article Import
-description: Workflow for importing LinkedIn articles into the site with attribution, linkback, and image handling.
+description: Workflow for importing LinkedIn articles into the site with attribution,
+  linkback, and image handling.
 breadcrumb: LinkedIn Import
 breadcrumb_parent_name: Docs
-breadcrumb_parent_url: /backlog/docs/
+breadcrumb_parent_url: "/backlog/docs/"
+id: doc-011
 ---
 
 {% include breadcrumbs.html %}

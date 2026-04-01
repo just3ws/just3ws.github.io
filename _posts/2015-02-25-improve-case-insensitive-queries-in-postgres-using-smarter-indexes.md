@@ -44,7 +44,7 @@ explain select username from users where username = lower('just3ws');
 
 There's a significant cost to pay when querying against expressions. But
 all is not lost. Postgres will let you build [indexes against
-expressions](https://www.postgresql.org/docs/current/static/indexes-expressional.html).
+expressions](https://www.postgresql.org/backlog/docs/current/static/indexes-expressional.html).
 
 In this case we'll apply a index that will take the `lower()` expression
 into account.
@@ -77,7 +77,7 @@ and more intelligently decide which sets to scan and which to skip.
 Where the Sequential Scan will touch every single row in the table.
 
 Read more about the Postgres [Index on
-Expressions](https://www.postgresql.org/docs/current/static/indexes-expressional.html)
+Expressions](https://www.postgresql.org/backlog/docs/current/static/indexes-expressional.html)
 in the official documentation and this explanation by the author of the
 [Postgres Bitmap Heap Scan
 algorithm](https://www.postgresql.org/message-id/12553.1135634231@sss.pgh.pa.us)
@@ -85,9 +85,9 @@ Tom Lane.
 
 For a full explanation of what the `cost`, `rows`, and `width` values
 mean please check out [Using
-Explain](https://www.postgresql.org/docs/current/static/using-explain.html)
+Explain](https://www.postgresql.org/backlog/docs/current/static/using-explain.html)
 from the Postgres documentation.
 
 `varchar_pattern_ops` is explained in Postgres
-[Index](https://www.postgresql.org/docs/current/static/indexes-opclass.html)
+[Index](https://www.postgresql.org/backlog/docs/current/static/indexes-opclass.html)
 documentation.

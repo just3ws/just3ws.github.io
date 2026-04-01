@@ -1,10 +1,12 @@
 ---
 layout: minimal
 title: Wayback Blog Import Inventory
-description: Inventory of personal blog/article URLs discovered via Wayback and their import status.
+description: Inventory of personal blog/article URLs discovered via Wayback and their
+  import status.
 breadcrumb: Wayback Blog Inventory
 breadcrumb_parent_name: Wayback Archives
-breadcrumb_parent_url: /backlog/docs/wayback/
+breadcrumb_parent_url: "/backlog/docs/wayback/"
+id: doc-016
 ---
 
 {% include breadcrumbs.html %}

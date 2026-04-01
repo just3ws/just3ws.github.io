@@ -2,10 +2,11 @@
 layout: minimal
 title: Pipeline Grammar
 description: Command grammar and usage for the build, validation, and smoke pipeline.
-permalink: /backlog/docs/pipeline-grammar/
+permalink: "/backlog/docs/pipeline-grammar/"
 breadcrumb: Pipeline Grammar
 breadcrumb_parent_name: Docs
-breadcrumb_parent_url: /backlog/docs/
+breadcrumb_parent_url: "/backlog/docs/"
+id: doc-012
 ---
 
 {% include breadcrumbs.html %}
