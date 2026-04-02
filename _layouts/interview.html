@@ -39,7 +39,7 @@ layout: minimal
         Conference:
         {% assign conference_candidates = site.data.interview_conferences.conferences | where: "conference", interview.conference %}
         {% assign conference_entry = conference_candidates | where: "year", interview.conference_year | first %}
-        {% if conference_entry % Rose
+        {% if conference_entry %}
           <a href="/interviews/conferences/{{ conference_entry.slug }}/">{{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}</a>
         {% else %}
           {{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}
