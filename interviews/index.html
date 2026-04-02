@@ -1,30 +1,30 @@
 ---
 layout: minimal
-title: Interviews
-description: Interview archive spanning conferences and practitioner communities across Ruby and software craftsmanship ecosystems.
-breadcrumb: Interviews
+title: Conversations on Craft
+description: Over 200 technical conversations recorded at the inflection points of the Ruby and Software Craftsmanship movements.
+breadcrumb: Conversations
 ---
 
 <article class="page">
   <header class="home-header">
-    <h1>Interviews <span class="subtitle">Conversations on Craft</span></h1>
+    <h1>Technical Conversations <span class="subtitle">Dialogues on Craft</span></h1>
     <h2 class="title">A decade of dialogues with the engineers, authors, and community builders who shaped the modern software landscape.</h2>
-    <p class="home-intro">This archive preserves nearly 200 conversations recorded at the inflection points of the Ruby and Software Craftsmanship movements. These aren't just technical interviews; they are snapshots of how we thought about architecture, community, and the ethics of building software during a transformative era.</p>
+    <p class="home-intro">This collection preserves nearly 200 conversations recorded at the inflection points of the Ruby and Software Craftsmanship movements. These aren't just technical interviews; they are snapshots of how we thought about architecture, community, and the ethics of building software during a transformative era.</p>
   </header>
 
   <section class="index-summary">
-    <p><strong>Archive Highlights:</strong></p>
+    <p><strong>Highlights:</strong></p>
     <ul class="index-highlights">
-      <li><strong>Voices of Influence:</strong> Featuring Dave Thomas, Sandro Mancuso, Dean Wampler, and others.</li>
-      <li><strong>Core Themes:</strong> Deep dives into community building, the evolution of Rails, and the discipline of software craftsmanship.</li>
-      <li><strong>Searchable History:</strong> Over 90 conversations include full transcripts for technical reference.</li>
+      <li><strong>Voices of Influence:</strong> Featuring deep dives with Dave Thomas, Dan North, Katrina Owen, Sandro Mancuso, Gil Tene, Hadi Hariri, and Dean Wampler.</li>
+      <li><strong>Core Themes:</strong> Evolution of the Ruby ecosystem, the rise of the Software Craftsmanship movement, and the discipline of building resilient systems.</li>
+      <li><strong>Searchable History:</strong> Over 90 conversations include full transcripts for technical reference and historical context.</li>
     </ul>
   </section>
 
   {% assign interviews = site.data.interviews.items | where_exp: "i", "i.video_asset_id" | sort: "recorded_date" | reverse %}
   {% include json-ld-breadcrumbs.html %}
   {% include json-ld-itemlist.html
-    collection_name="Interviews"
+    collection_name="Technical Conversations"
     collection_description=page.description
     items=interviews
     item_id_key="id"

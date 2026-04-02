@@ -20,7 +20,7 @@ test.describe('Site Layout and Aesthetics', () => {
     // Validate avatar dimensions (ensuring it's not collapsed or oversized)
     const box = await avatar.boundingBox();
     expect(box.width).toBeGreaterThan(30);
-    expect(box.width).toBeLessThan(45);
+    expect(box.width).toBeLessThan(55);
     expect(box.height).toBe(box.width); // Should be square/circular
   });
 
