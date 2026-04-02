@@ -1,10 +1,10 @@
 ---
 id: TASK-014
 title: Visual & Content Integrity Assertion Suite
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-04-02 12:00'
-updated_date: '2026-04-02 14:06'
+updated_date: '2026-04-02 14:36'
 labels: []
 dependencies:
   - TASK-013
@@ -23,6 +23,19 @@ Expand the Playwright test suite to perform deep structural and visual assertion
 - [ ] #2 Playwright tests assert presence of Skills Dashboard.
 - [ ] #3 Visual regression screenshots are captured for manual review.
 <!-- AC:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Successfully expanded the Playwright test suite to ensure visual and content integrity.
+- Implemented deep structural assertions for the new Skills Dashboard, verifying proficiency level categorization.
+- Added assertions for rich achievement metadata, ensuring Impact and Leadership badges are correctly rendered.
+- Integrated automated full-page screenshot capture for home, resume, and mobile views.
+- Added a dedicated mobile responsiveness check to verify header and layout behavior on small screens.
+- Optimized the Playwright configuration for more reliable local execution.
+- Verified that the full assertion suite passes cleanly in the CI pipeline.
+- This fulfills all acceptance criteria for TASK-014.
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
