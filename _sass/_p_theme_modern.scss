@@ -233,56 +233,137 @@ h3 {
   margin-bottom: 0.4rem;
 }
 
+/* High-Impact achievement-meta badges */
 .achievement-meta {
   display: inline-flex;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.2rem 0.75rem;
-  border-radius: 2rem;
-  margin-right: 0.6rem;
-  margin-top: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  margin-top: 0.35rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  line-height: 1;
 
   .meta-label {
-    opacity: 0.8;
-    margin-right: 0.35rem;
+    opacity: 0.7;
+    margin-right: 0.25rem;
+    font-weight: 800;
   }
 
   &.impact {
-    background: rgba(19, 156, 150, 0.08);
-    color: #117a76;
-    border: 1px solid rgba(19, 156, 150, 0.2);
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
   }
 
   &.leadership {
-    background: #eef4ff;
+    background: #eff6ff;
     color: #1e40af;
-    border: 1px solid #d0e1ff;
+    border: 1px solid #bfdbfe;
   }
 }
 
-/* Skills Dashboard Refinement */
+/* Bento Skills Dashboard - High Density & Visual Impact */
 .skills-dashboard {
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
-.skills-category .category-name {
-  font-size: 1rem;
-  font-weight: 800;
-  color: $nord3;
-}
-
-.skill-level-group .level-label {
-  border-radius: 4px;
-  font-size: 0.7rem;
+.skills-category {
+  background: white;
+  border: 1px solid $nord4;
+  border-radius: var(--radius-md);
+  padding: 1.5rem !important;
+  margin-bottom: 0 !important;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
   
-  &.expertise {
-    background: $avatar-teal;
-    color: white;
+  .category-name {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: $nord3;
+    margin-bottom: 1.25rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $nord5;
+    padding-bottom: 0.5rem;
   }
 }
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.skill-level-group {
+  .level-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+    
+    &.expertise {
+      background: $avatar-teal;
+      color: white;
+    }
+    &.proficiency {
+      background: $nord4;
+      color: $nord0;
+    }
+    &.familiarity {
+      background: transparent;
+      border: 1px solid $nord4;
+      color: $nord3;
+    }
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.6rem;
+    list-style: none;
+    padding: 0;
+
+    li {
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $nord0;
+      margin: 0 !important;
+
+      &::after {
+        content: "•";
+        color: $nord4;
+        margin-left: 0.4rem;
+        font-size: 0.7rem;
+      }
+
+      &:last-child::after {
+        content: "";
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .skills-dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* Footer */
 .site-footer {

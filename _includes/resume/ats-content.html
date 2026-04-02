@@ -8,11 +8,6 @@
     <p>{{ summary.text }}</p>
   </section>
 
-  <section id="skills">
-    <h2>Core Skills</h2>
-    {% include resume/skills-dashboard.html %}
-  </section>
-
   <section id="experience">
     <h2>Experience</h2>
     {% for entry in ats.positions %}
@@ -21,6 +16,11 @@
     {% include resume/ats-position-entry.html position=position entry=entry %}
     {% endif %}
     {% endfor %}
+  </section>
+
+  <section id="skills">
+    <h2>Core Skills</h2>
+    {% include resume/skills-dashboard.html %}
   </section>
 
   <section id="additional-experience">
