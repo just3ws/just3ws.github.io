@@ -1,0 +1,45 @@
+<header class="site-header no-print" role="banner">
+  <div class="header-container">
+    <nav class="site-nav" aria-label="Primary">
+      {% assign current_url = page.url | default: "/" %}
+      {% assign nav_data = site.data.navigation.primary %}
+      {% assign nav_brand = nav_data.brand %}
+      {% assign nav_items = nav_data.items %}
+      
+      <div class="nav-left">
+        <a
+          class="site-nav-brand{% if current_url == nav_brand.href %} is-active{% endif %}"
+          href="{{ nav_brand.href }}"
+          {% if current_url == nav_brand.href %}aria-current="page"{% endif %}
+        >
+          <img class="site-nav-avatar" src="/avatar.png" alt="Mike Hall">
+          <span class="brand-label">{{ nav_brand.label }}</span>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="site-nav-links">
+          {% for item in nav_items %}
+            {% assign label = item.label %}
+            {% assign href = item.href %}
+            {% assign mode = item.mode | default: "prefix" %}
+            {% assign is_active = false %}
+            {% if mode == "exact" %}
+              {% if current_url == href %}
+                {% assign is_active = true %}
+              {% endif %}
+              {% if href == "/" and current_url == "/resume.html" %}
+                {% assign is_active = true %}
+              {% endif %}
+            {% else %}
+              {% if current_url == href or current_url contains href %}
+                {% assign is_active = true %}
+              {% endif %}
+            {% endif %}
+            <a href="{{ href }}" class="nav-link{% if is_active %} is-active{% endif %}" {% if is_active %}aria-current="page"{% endif %}>{{ label }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

@@ -1,22 +1,4 @@
 ---
+layout: base
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% include head/critical-resume.html %}
-  {% include head/base.html theme_stylesheet="/assets/css/resume.css" %}
-  {% include head/analytics.html %}
-  {% if page.person_schema %}
-  {% include json-ld.html %}
-  {% endif %}
-</head>
-<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  {% include site-nav.html %}
-  <main id="main-content">
-{{- content }}
-  </main>
-</body>
-</html>
+{{ content }}

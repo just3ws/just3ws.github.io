@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  {% if page.layout == 'resume' %}
+    {% include head/critical-resume.html %}
+  {% endif %}
+
+  {% assign theme_css = "/assets/css/site.css" %}
+  {% if page.layout == 'resume' %}
+    {% assign theme_css = "/assets/css/resume.css" %}
+  {% endif %}
+
+  {% include head/base.html theme_stylesheet=theme_css %}
+  {% include head/analytics.html %}
+  
+  {% if page.person_schema or page.layout == 'resume' %}
+    {% include json-ld.html %}
+  {% else %}
+    {% include json-ld-website.html %}
+  {% endif %}
+
+  {% if page.stylesheets %}
+    {% for stylesheet in page.stylesheets %}
+      <link rel="stylesheet" href="{{ stylesheet }}">
+    {% endfor %}
+  {% endif %}
+</head>
+<body class="layout-{{ page.layout }}{% if page.body_class %} {{ page.body_class }}{% endif %}">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  {% include header.html %}
+
+  <main id="main-content" class="main-container">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer no-print">
+    <div class="footer-container">
+      <p>&copy; {{ "now" | date: "%Y" }} Mike Hall. Built with Jekyll 4.</p>
+    </div>
+  </footer>
+</body>
+</html>
