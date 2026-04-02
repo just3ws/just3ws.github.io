@@ -44,22 +44,26 @@ body {
   height: var(--header-height);
   padding: 0 1.25rem;
   display: flex;
-  align-items: center; /* Vertical alignment fixed */
+  align-items: center;
   justify-content: space-between;
+
+  .nav-left, .nav-right, &-links {
+    display: flex;
+    align-items: center;
+  }
 
   &-brand {
     display: inline-flex;
-    align-items: center; /* Vertical alignment fixed */
+    align-items: center;
     gap: 0.75rem;
     text-decoration: none !important;
-    line-height: 1;
     
     .brand-label {
       font-weight: 800;
       font-size: 1.15rem;
       color: $nord0;
       letter-spacing: -0.02em;
-      margin: 0;
+      line-height: normal;
     }
   }
 
@@ -79,8 +83,6 @@ body {
   }
 
   &-links {
-    display: flex;
-    align-items: center; /* Vertical alignment fixed */
     gap: 0.25rem;
 
     .nav-link {
@@ -92,7 +94,7 @@ body {
       transition: all var(--transition-speed) ease;
       border: 1px solid transparent;
       text-decoration: none !important;
-      line-height: 1;
+      line-height: normal;
 
       &:hover {
         background: rgba(236, 239, 244, 0.8);
