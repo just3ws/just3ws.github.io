@@ -219,12 +219,61 @@ namespace :import do
 end
 
 namespace :transcript do
+  desc 'Audit transcripts for missing files or content'
   task :audit do
-    sh 'ruby ./bin/audit_transcripts.rb'
+    require_relative 'src/generators/archive_manager'
+    auditor = Generators::ArchiveManager::TranscriptAuditor.new(Dir.pwd)
+    report = auditor.run
+    
+    puts "Transcript Audit"
+    puts "assets_total=#{report[:assets_total]}"
+    puts "assets_with_transcript_id=#{report[:assets_with_transcript_id]}"
+    puts "unique_transcript_ids_used=#{report[:unique_transcript_ids_used]}"
+    puts "transcript_files=#{report[:transcript_files_count]}"
+    puts "missing_transcript_files=#{report[:missing_files].size}"
+    puts "missing_transcript_content=#{report[:missing_content].size}"
+    puts "invalid_transcript_files=#{report[:invalid_files].size}"
+    puts "orphan_transcript_files=#{report[:orphan_files].size}"
+    puts "duplicate_transcript_id_usage=#{report[:duplicate_usage].size}"
+
+    unless report[:missing_files].empty?
+      puts "\nMissing transcript files:"
+      report[:missing_files].each { |f| puts "  - asset=#{f[:asset_id]} transcript_id=#{f[:transcript_id]}" }
+    end
+
+    if report[:missing_files].empty? && report[:missing_content].empty? && report[:invalid_files].empty?
+      puts "\nTranscript audit passed."
+    else
+      warn "\nTranscript audit failed."
+      exit 1
+    end
   end
 
+  desc 'Normalize transcript text (use APPLY=true to save changes)'
   task :normalize do
-    sh 'ruby ./bin/normalize_transcripts.rb'
+    require_relative 'src/generators/archive_manager'
+    apply = ENV['APPLY'] == 'true'
+    transcripts_dir = File.join(Dir.pwd, "_data", "transcripts")
+    paths = Dir.glob(File.join(transcripts_dir, "*.yml")).sort
+    changed = []
+
+    paths.each do |path|
+      payload = YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true) || {}
+      original = payload["content"].to_s
+      normalized = Generators::ArchiveManager.normalize_transcript(original)
+      next if normalized == original
+
+      changed << path
+      if apply
+        payload["content"] = normalized
+        File.write(path, payload.to_yaml)
+      end
+    end
+
+    puts "transcript_files=#{paths.size}"
+    puts "changed=#{changed.size}"
+    changed.first(20).each { |path| puts " - #{Pathname.new(path).relative_path_from(Dir.pwd)}" }
+    puts "mode=#{apply ? 'apply' : 'dry-run'}"
   end
 
   task :prepare_staging do
