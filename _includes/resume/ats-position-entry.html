@@ -13,9 +13,22 @@
   {%- endif %}
 
   {%- if include.entry.highlights %}
-  <ul>
-    {%- for highlight in include.entry.highlights %}
-    <li>{{ highlight }}</li>
+  <ul class="achievement-highlights">
+    {%- for highlight_text in include.entry.highlights %}
+    <li>
+      {% assign rich_achievement = include.position.achievements.highlights | where: "text", highlight_text | first %}
+      {% if rich_achievement %}
+        <span class="achievement-text">{{ rich_achievement.text }}</span>
+        {% if rich_achievement.impact %}
+          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> {{ rich_achievement.impact }}</span>
+        {% endif %}
+        {% if rich_achievement.leadership %}
+          <span class="achievement-meta leadership"><span class="meta-label">Leadership:</span> {{ rich_achievement.leadership }}</span>
+        {% endif %}
+      {% else %}
+        {{ highlight_text }}
+      {% endif %}
+    </li>
     {%- endfor %}
   </ul>
   {%- endif %}
