@@ -65,17 +65,9 @@
     </ul>
   </section>
 
-  {% assign skills = site.data.resume.skills %}
   <section id="skills">
-    <h2>{{ skills.title }}</h2>
-    {% for category in skills.categories %}
-    <h3>{{ category.name }}</h3>
-    <ul class="skills-list">
-      {% for item in category.items %}
-      <li>{{ item }}</li>
-      {% endfor %}
-    </ul>
-    {% endfor %}
+    <h2>Skills</h2>
+    {% include resume/skills-dashboard.html %}
   </section>
 
 </article>

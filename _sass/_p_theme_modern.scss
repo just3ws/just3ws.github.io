@@ -158,6 +158,80 @@ h1 {
   }
 }
 
+/* Skills Dashboard */
+.skills-dashboard {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.skills-category {
+  .category-name {
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+    font-size: 1.1rem;
+    color: $nord3;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-level-group {
+  .level-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+
+    &.expertise {
+      background: $nord10;
+      color: white;
+    }
+    &.proficiency {
+      background: $nord9;
+      color: white;
+    }
+    &.familiarity {
+      background: $nord4;
+      color: $nord0;
+    }
+  }
+
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    list-style: none;
+    padding: 0;
+
+    li {
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
+      font-size: 0.95rem;
+      color: $nord0;
+      margin: 0 !important;
+
+      &::before {
+        content: "•";
+        color: $nord10;
+        margin-right: 0.5rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 h2 {
   margin-top: 3rem !important;
   border-bottom: none !important;
