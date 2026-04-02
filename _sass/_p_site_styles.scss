@@ -1,0 +1,121 @@
+/* Global Site Navigation */
+.site-header {
+  margin: 0 auto 1.25rem;
+  max-width: 50rem;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(46, 52, 64, 0.05);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 1rem;
+
+  &-brand {
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: $text;
+    margin-right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &.is-active {
+      text-decoration: underline;
+      text-underline-offset: 0.2rem;
+    }
+  }
+
+  &-avatar {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 1px solid $border;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  &-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+
+    a {
+      display: inline-block;
+      padding: 0.25rem 0.55rem;
+      border-radius: 0.3rem;
+      font-weight: 600;
+      color: $text;
+
+      &:hover, &:focus-visible {
+        background: $surface-2;
+        color: $accent;
+        text-decoration: none;
+      }
+
+      &.is-active {
+        background: $surface-2;
+        border: 1px solid $accent;
+        color: $text;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+main#main-content {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 820px) {
+  .site-nav {
+    align-items: stretch;
+    gap: 0.6rem;
+
+    &-brand {
+      flex: 1 0 100%;
+      margin-right: 0;
+    }
+
+    &-links {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.4rem;
+
+      a {
+        display: block;
+        text-align: center;
+        padding: 0.45rem 0.5rem;
+        border: 1px solid $border;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .site-nav {
+    align-items: flex-start;
+
+    &-links a {
+      padding: 0.2rem 0.45rem;
+      font-size: 0.92rem;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .site-nav-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Page styles */
+.home-hero {
+  background: linear-gradient(145deg, #f6f8fb, #eaf0f7);
+}

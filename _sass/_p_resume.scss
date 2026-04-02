@@ -1,0 +1,188 @@
+/* Resume-specific styles */
+
+body.resume {
+  @extend .minimal;
+}
+
+body.ats-resume {
+  background: #fff;
+
+  .site-header,
+  .resume-actions {
+    box-shadow: none;
+  }
+
+  .resume-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+
+    .title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .contact-info {
+    gap: 0.375rem 1rem;
+  }
+
+  .contact-item {
+    padding: 0.1rem 0;
+    gap: 0.25rem;
+  }
+
+  .contact-label {
+    min-width: auto;
+  }
+
+  section {
+    margin-bottom: 1.35rem;
+  }
+
+  p, li {
+    max-width: none;
+  }
+
+  .position {
+    margin-bottom: 1.1rem;
+    padding-bottom: 1rem;
+
+    p {
+      margin-bottom: 0.75rem;
+    }
+
+    ul {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .ats-skills {
+    gap: 0.375rem;
+
+    li {
+      font-size: 0.82rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  .ats-supporting-list {
+    padding-left: 1rem;
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+  }
+
+  .ats-supporting-meta,
+  .section-meta {
+    color: $meta;
+    font-size: 0.9rem;
+  }
+}
+
+/* Contact items */
+.contact-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  line-height: 1.4;
+}
+
+.contact-label {
+  color: $meta;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-value {
+  color: $text;
+}
+
+.resume-format-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid $border;
+  border-radius: 0.25rem;
+  background: #fff;
+  color: $muted;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  select {
+    border: 1px solid $border;
+    border-radius: 0.25rem;
+    background: #fff;
+    color: $muted;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  body.ats-resume {
+    background: #fff;
+    font-size: 10.5pt;
+    line-height: 1.35;
+
+    .site-header {
+      display: none;
+    }
+
+    .resume-header {
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .contact-label {
+      color: #555;
+      font-size: 8.5pt;
+    }
+
+    section {
+      margin-bottom: 0.9rem;
+    }
+
+    h1 {
+      font-size: 20pt;
+    }
+
+    h2 {
+      font-size: 12pt;
+      margin-top: 1rem;
+    }
+
+    h3 {
+      font-size: 11pt;
+    }
+
+    .position {
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.75rem;
+      page-break-inside: auto;
+      break-inside: auto;
+
+      &-header {
+        page-break-after: avoid;
+        break-after: avoid-page;
+
+        & + p, & + ul {
+          page-break-before: avoid;
+          break-before: avoid-page;
+        }
+      }
+    }
+
+    p, li {
+      font-size: 10pt;
+    }
+
+    .skills-list li {
+      font-size: 9pt;
+    }
+  }
+}
