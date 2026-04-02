@@ -27,9 +27,21 @@
   {%- endif %}
 
   {%- if include.position.achievements.highlights %}
-  <ul>
+  <ul class="achievement-highlights">
     {%- for achievement in include.position.achievements.highlights %}
-    <li>{{ achievement }}</li>
+    <li>
+      {% if achievement.text %}
+        <span class="achievement-text">{{ achievement.text }}</span>
+        {% if achievement.impact %}
+          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> {{ achievement.impact }}</span>
+        {% endif %}
+        {% if achievement.leadership %}
+          <span class="achievement-meta leadership"><span class="meta-label">Leadership:</span> {{ achievement.leadership }}</span>
+        {% endif %}
+      {% else %}
+        {{ achievement }}
+      {% endif %}
+    </li>
     {%- endfor %}
   </ul>
   {%- endif %}
