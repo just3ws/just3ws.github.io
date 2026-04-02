@@ -19,8 +19,8 @@ test.describe('Site Layout and Aesthetics', () => {
     
     // Validate avatar dimensions (ensuring it's not collapsed or oversized)
     const box = await avatar.boundingBox();
-    expect(box.width).toBeGreaterThan(20);
-    expect(box.width).toBeLessThan(40);
+    expect(box.width).toBeGreaterThan(30);
+    expect(box.width).toBeLessThan(45);
     expect(box.height).toBe(box.width); // Should be square/circular
   });
 
@@ -28,17 +28,37 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.goto('/');
     await expect(page.locator('h1')).toContainText('Mike Hall');
     
+    // Capture full page screenshot for manual review
     await page.screenshot({ path: 'tmp/screenshots/resume.png', fullPage: true });
     
-    // Check for achievement highlights
-    const achievements = page.locator('.achievement-highlights');
-    await expect(achievements.first()).toBeVisible();
+    // 1. Verify Achievement Highlights and Badges
+    const achievementSection = page.locator('.achievement-highlights');
+    await expect(achievementSection.first()).toBeVisible();
     
-    // Check for impact badges
-    const impactBadge = page.locator('.achievement-meta.impact');
-    if (await impactBadge.count() > 0) {
-      await expect(impactBadge.first()).toBeVisible();
+    const impactBadges = page.locator('.achievement-meta.impact');
+    await expect(impactBadges.first()).toBeVisible();
+    await expect(impactBadges.first()).toContainText(/impact:/i);
+
+    const leadershipBadges = page.locator('.achievement-meta.leadership');
+    if (await leadershipBadges.count() > 0) {
+      await expect(leadershipBadges.first()).toBeVisible();
+      await expect(leadershipBadges.first()).toContainText(/leadership:/i);
     }
+
+    // 2. Verify Skills Dashboard
+    const skillsDashboard = page.locator('.skills-dashboard');
+    await expect(skillsDashboard).toBeVisible();
+    
+    const expertiseGroup = page.locator('.skill-level-group .level-label.expertise');
+    await expect(expertiseGroup.first()).toBeVisible();
+    await expect(expertiseGroup.first()).toHaveText('Expertise');
+
+    const skillItem = page.locator('.skills-list li');
+    await expect(skillItem.first()).toBeVisible();
+    
+    // Check for proficiency levels
+    await expect(page.locator('.level-label.expertise').first()).toHaveText('Expertise');
+    await expect(page.locator('.level-label.proficiency').first()).toHaveText('Proficiency');
   });
 
   test('Navigation is functional and consistent', async ({ page }) => {
@@ -49,5 +69,21 @@ test.describe('Site Layout and Aesthetics', () => {
     
     const avatar = page.locator('.site-nav-avatar');
     await expect(avatar).toBeVisible();
+  });
+
+  test('Mobile responsiveness check', async ({ page }) => {
+    // Set viewport to a typical mobile size
+    await page.setViewportSize({ width: 375, height: 667 });
+    await page.goto('/home/');
+    
+    // Header should adjust for mobile (vertical layout in my SCSS)
+    const nav = page.locator('.site-nav');
+    const navBox = await nav.boundingBox();
+    
+    // In mobile view, the nav-links should be full width or at least centered
+    const navLinks = page.locator('.site-nav-links');
+    await expect(navLinks).toBeVisible();
+    
+    await page.screenshot({ path: 'tmp/screenshots/mobile-home.png' });
   });
 });

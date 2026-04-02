@@ -19,11 +19,7 @@
 
   <section id="skills">
     <h2>Core Skills</h2>
-    <ul class="skills-list ats-skills">
-      {%- for skill in ats.skills %}
-      <li>{{ skill }}</li>
-      {%- endfor %}
-    </ul>
+    {% include resume/skills-dashboard.html %}
   </section>
 
   <section id="experience">
