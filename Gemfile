@@ -28,6 +28,8 @@ group :development do
   gem 'scss_lint', require: false
   gem 'webrick', '~> 1.8'
   gem 'dry-validation', '~> 1.10'
+  gem 'image_optim', '~> 0.31'
+  gem 'image_optim_pack', '~> 0.6'
 end
 
 gem 'faraday-retry', '~> 2.4'
