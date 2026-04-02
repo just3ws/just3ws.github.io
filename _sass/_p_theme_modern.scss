@@ -233,38 +233,32 @@ h3 {
   margin-bottom: 0.4rem;
 }
 
-/* Subtle achievement-meta tags - Integrated context without jarring caps */
+/* Integrated achievement-meta callouts - Narrative context without jarring UI */
 .achievement-meta {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  margin-left: 0.6rem; /* Shift to the right of the text */
-  margin-top: 0;
-  text-transform: lowercase; /* Remove yelly-caps */
-  font-variant: small-caps; /* Professional subtle look */
-  letter-spacing: 0.02em;
-  line-height: 1.4;
-  vertical-align: middle;
+  display: block; /* Move to its own line for better integration */
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: $nord3; /* Muted slate for the description */
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  text-transform: none !important;
+  font-variant: none !important;
+  line-height: 1.5;
 
   .meta-label {
-    opacity: 0.6;
-    margin-right: 0.2rem;
     font-weight: 700;
+    margin-right: 0.25rem;
+    opacity: 1;
   }
 
-  &.impact {
-    color: #166534;
-    background: #f0fdf4;
-    border: 1px solid #dcfce7;
+  &.impact .meta-label {
+    color: #166534; /* Professional Green */
   }
 
-  &.leadership {
-    color: #1e40af;
-    background: #eff6ff;
-    border: 1px solid #dbeafe;
+  &.leadership .meta-label {
+    color: #1e40af; /* Professional Blue */
   }
 }
 
