@@ -41,31 +41,8 @@
 <meta name="twitter:title" content="{{ seo_title }}">
 <meta name="twitter:description" content="{{ seo_description }}">
 <link rel="shortcut icon" href="/favicon.ico">
-{% assign defer_stylesheets = include.defer_stylesheets %}
-{% assign include_patina = include.include_patina %}
-{% if include_patina == nil %}
-  {% assign include_patina = true %}
-{% endif %}
-{% if defer_stylesheets %}
-<link rel="preload" href="/assets/css/core.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="{{ include.theme_stylesheet }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-{% if include_patina %}
-<link rel="preload" href="/assets/css/digital-patina.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-{% endif %}
-<noscript>
-  <link rel="stylesheet" href="/assets/css/core.css">
-  <link rel="stylesheet" href="{{ include.theme_stylesheet }}">
-{% if include_patina %}
-  <link rel="stylesheet" href="/assets/css/digital-patina.css">
-{% endif %}
-</noscript>
-{% else %}
-<link rel="stylesheet" href="/assets/css/core.css">
-<link rel="stylesheet" href="{{ include.theme_stylesheet }}">
-{% if include_patina %}
-<link rel="stylesheet" href="/assets/css/digital-patina.css">
-{% endif %}
-{% endif %}
+{% assign theme_stylesheet = include.theme_stylesheet | default: "/assets/css/site.css" %}
+<link rel="stylesheet" href="{{ theme_stylesheet }}">
 {% if page.stylesheets and page.stylesheets.size > 0 %}
   {% for stylesheet in page.stylesheets %}
 <link rel="stylesheet" href="{{ stylesheet }}">
