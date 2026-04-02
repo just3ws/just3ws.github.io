@@ -1,9 +1,10 @@
 ---
 id: TASK-011
 title: Enrich and Standardize All Resume Positions
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-04-02 11:59'
+updated_date: '2026-04-02 12:01'
 labels: []
 dependencies: []
 priority: high
