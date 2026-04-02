@@ -121,7 +121,7 @@ namespace :validate do
   end
 
   task :data_integrity do
-    sh 'ruby ./bin/validate_data_integrity.rb'
+    sh 'ruby ./bin/validate_data.rb'
   end
 
   task :audit_transcripts do

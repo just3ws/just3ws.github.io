@@ -27,6 +27,7 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'scss_lint', require: false
   gem 'webrick', '~> 1.8'
+  gem 'dry-validation', '~> 1.10'
 end
 
 gem 'faraday-retry', '~> 2.4'
