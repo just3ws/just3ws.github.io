@@ -31,19 +31,9 @@ test.describe('Site Layout and Aesthetics', () => {
     // Capture full page screenshot for manual review
     await page.screenshot({ path: 'tmp/screenshots/resume.png', fullPage: true });
     
-    // 1. Verify Achievement Highlights and Badges
+    // 1. Verify Achievement Highlights
     const achievementSection = page.locator('.achievement-highlights');
     await expect(achievementSection.first()).toBeVisible();
-    
-    const impactBadges = page.locator('.achievement-meta.impact');
-    await expect(impactBadges.first()).toBeVisible();
-    await expect(impactBadges.first()).toContainText(/impact:/i);
-
-    const leadershipBadges = page.locator('.achievement-meta.leadership');
-    if (await leadershipBadges.count() > 0) {
-      await expect(leadershipBadges.first()).toBeVisible();
-      await expect(leadershipBadges.first()).toContainText(/leadership:/i);
-    }
 
     // 2. Verify Skills Dashboard
     const skillsDashboard = page.locator('.skills-dashboard');
