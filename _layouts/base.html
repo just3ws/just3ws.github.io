@@ -42,5 +42,18 @@
       <p>&copy; {{ "now" | date: "%Y" }} Mike Hall. Built with Jekyll 4.</p>
     </div>
   </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('scroll-progress');
+      if (!bar) return;
+      const h = document.documentElement, 
+            b = document.body,
+            st = 'scrollTop',
+            sh = 'scrollHeight';
+      const percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+      bar.style.width = percent + '%';
+    });
+  </script>
 </body>
 </html>
