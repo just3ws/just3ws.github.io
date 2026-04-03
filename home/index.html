@@ -1,197 +1,148 @@
 ---
 layout: minimal
-title: Mike Hall - Home
-description: Navigation hub for Mike Hall's interviews, talks, writing, and community archives across software craftsmanship and Ruby ecosystems.
+title: Mike Hall | Staff Software Engineer
+description: Staff-level engineer focused on reclaiming legacy systems, reducing systemic risk, and enabling safe change in revenue-critical environments.
 breadcrumb: Home
 canonical_url: https://www.just3ws.com/home/
 ---
 
 <article class="page">
-  <section class="home-phalanx-callout" aria-label="Phalanx Duel game callout">
-    <div class="home-phalanx-duel-cta">
-      <picture>
-        <source srcset="/assets/images/phalanxduel-avatar-120.webp" type="image/webp">
-        <img class="home-phalanx-duel-avatar" src="/assets/images/phalanxduel-avatar.png" alt="Phalanx Duel avatar" width="120" height="120" loading="lazy" decoding="async">
-      </picture>
-      <div class="home-phalanx-duel-copy">
-        <p class="home-phalanx-duel-title">Play Phalanx Duel</p>
-        <p class="home-phalanx-duel-body">A fast tactical browser duel where one smart move can flip the entire match.</p>
-        <div class="home-phalanx-duel-actions">
-          <a class="home-phalanx-duel-link home-phalanx-duel-link-primary" href="https://play.phalanxduel.com">Play Now</a>
-          <a class="home-phalanx-duel-link home-phalanx-duel-link-secondary" href="https://phalanxduel.com">Visit Website</a>
-        </div>
-      </div>
-    </div>
-  </section>
   <header class="home-header">
     <h1>Mike Hall <span class="subtitle">Staff Software Engineer</span></h1>
-    <h2 class="title">Focused on architecture, reliability, and practical execution.</h2>
-    <p class="home-intro">Welcome. I've built this site as a living archive of my work. Here you will find interviews, talks, and writing from years of building systems, mentoring engineers, and helping technical communities thrive.</p>
+    <p class="home-headline">I reclaim legacy, revenue-critical systems by making behavior visible, reducing systemic risk, and enabling teams to change safely.</p>
   </header>
 
-  {% assign featured_post = site.posts | where_exp: "item", "item.slug == 'from-y2k-panic-to-ai-anxiety-why-the-future-is-always-worth-building'" | first %}
-  {% assign featured_image = "" %}
-  {% assign featured_summary = "" %}
-  {% if featured_post %}
-    {% assign image_parts = featured_post.content | split: '<img src="' %}
-    {% if image_parts.size > 1 %}
-      {% assign featured_image = image_parts[1] | split: '"' | first %}
-    {% endif %}
-    {% assign featured_summary = featured_post.content | strip_html | strip_newlines | strip | truncate: 280 %}
-  {% endif %}
+  <section class="home-intro">
+    <p>Staff Engineer focused on architecture, production health, and systemic risk for high-volume platforms in regulated environments. I specialize in making complex legacy cores legible and evolvable through observability, incident leadership, and system modeling, ensuring organizational alignment and durable reliability.</p>
+  </section>
 
-  <section class="home-hero home-featured" aria-labelledby="featured-article-title" id="home-featured-carousel">
-    {% if featured_post %}
-    <div class="home-hero-header">
-      <p class="home-kicker" id="home-featured-kicker">Featured article</p>
-      <h2 id="featured-article-title">{{ featured_post.title }}</h2>
-    </div>
+  <section class="home-patterns">
+    <h2>What I’m Known For</h2>
+    <ul class="home-list">
+      <li><strong>System Reconstruction</strong>: Rebuilding understanding where documentation has drifted from production reality.</li>
+      <li><strong>Incident-to-Correction</strong>: Turning high-severity failures into durable system and process improvements.</li>
+      <li><strong>Modernization Under Load</strong>: Enabling platform evolution without greenfield rewrites or service interruption.</li>
+      <li><strong>Operational Legibility</strong>: Making system behavior transparent to align engineering, security, and product goals.</li>
+      <li><strong>Structural Intervention</strong>: Restructuring execution paths when organization and system models mismatch.</li>
+    </ul>
+  </section>
 
-    <div class="home-hero-grid">
-      <div class="home-hero-media">
-        <a href="{{ featured_post.url }}" id="home-featured-link" aria-label="Read featured article: {{ featured_post.title }}">
-          <img id="home-featured-image" src="{{ featured_image }}" alt="Cover image for {{ featured_post.title }}">
-        </a>
-        <div class="home-caption" id="home-featured-caption">Featured article from the Writing archive.</div>
+  <section class="home-experience">
+    <h2>Core Experience</h2>
+    
+    <div class="position">
+      <div class="position-header">
+        <h3 class="position-title">Associate Director, Staff Engineer</h3>
+        <span class="position-dates">2021 – 2026</span>
       </div>
+      <p class="position-company">OneMain Financial | Remote</p>
+      <p class="position-context">Owned lane-level architecture and systemic risk for a customer acquisition platform spanning browser, Rails layers, enterprise middleware, and downstream systems in a regulated environment.</p>
       
-      <div class="home-hero-summary">
-        <p id="home-featured-summary">{{ featured_summary }}</p>
-        
-        <div class="home-hero-footer">
-          <nav class="home-hero-nav" aria-label="Featured content actions">
-            <a class="home-hero-cta" id="home-featured-cta" href="{{ featured_post.url }}">Read featured article</a>
-          </nav>
-          <div class="home-carousel-controls" id="home-carousel-controls">
-            <button type="button" class="home-carousel-button" id="home-carousel-prev" aria-label="Show previous highlight">Prev</button>
-            <button type="button" class="home-carousel-button" id="home-carousel-next" aria-label="Show next highlight">Next</button>
-          </div>
-        </div>
+      <ul class="achievement-highlights">
+        <li>
+          Re-architected fragmented engineering ownership into a single accountable operating model by reconstructing end-to-end execution flows across the full system.
+          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> Eliminated assumption-driven debugging, enabling coordinated incident response and reliable change planning across disconnected teams.</span>
+        </li>
+        <li>
+          Founded and operationalized the ACQ Enablement team to separate platform risk, remediation, and infrastructure work from product delivery.
+          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> Enabled sustained progress on systemic stability and compliance initiatives without degrading customer-facing delivery.</span>
+        </li>
+        <li>
+          Converted incident response from ad hoc coordination into a repeatable system of record by establishing trace-driven diagnosis and correction loops.
+          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> Ensured every major failure resulted in measurable improvements to monitoring, ownership, and cross-system integration.</span>
+        </li>
+        <li>
+          Led enterprise adoption of OpenTelemetry, standardizing observability across engineering and cybersecurity.
+          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> Shifted teams from intuition-based debugging to shared, trace-based reasoning; transitioned ownership after adoption became self-sustaining.</span>
+        </li>
+        <li>
+          Modernized legacy Rails platform components under continuous production load by re-architecting multi-step user workflows and state handling.
+          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> Eliminated persistent data integrity failure modes while maintaining uninterrupted operation of the revenue funnel.</span>
+        </li>
+        <li>
+          Established systemic risk management as an explicit engineering responsibility, identifying cross-system failure modes and prioritizing remediation based on business exposure.
+          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> Moved the organization from reactive incident response to proactive reliability engineering.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="position">
+      <div class="position-header">
+        <h3 class="position-title">Senior Software Engineer</h3>
+        <span class="position-dates">2018 – 2021</span>
+      </div>
+      <p class="position-company">SK Holdings | Chicago, IL</p>
+      <ul class="achievement-highlights">
+        <li>Modernized and stabilized a shared Rails platform supporting millions of users and high-volume data flows.</li>
+        <li>Led data-layer remediation by replacing expensive dynamic queries with Materialized Views, reducing system load.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="home-operating">
+    <h2>Operating Patterns</h2>
+    <ul class="home-list">
+      <li>Make system behavior legible before prescribing change.</li>
+      <li>Use incidents as evidence for system correction.</li>
+      <li>Reduce risk through boundaries and ownership clarity.</li>
+      <li>Separate delivery from remediation when both are starved.</li>
+      <li>Favor incremental modernization over speculative rewrites.</li>
+    </ul>
+  </section>
+
+  <section class="home-capabilities">
+    <div class="home-link-grid">
+      <div class="home-link-card">
+        <h3>Core Capabilities</h3>
+        <ul class="home-list">
+          <li>Platform Architecture</li>
+          <li>Legacy Modernization</li>
+          <li>Incident Leadership</li>
+          <li>Observability Strategy</li>
+          <li>System Legibility</li>
+          <li>Reliability Engineering</li>
+          <li>Cross-Team Technical Leadership</li>
+        </ul>
+      </div>
+      <div class="home-link-card">
+        <h3>Technical Stack</h3>
+        <ul class="home-list">
+          <li>Ruby, Rails, PostgreSQL</li>
+          <li>Redis, AWS</li>
+          <li>OpenTelemetry</li>
+        </ul>
       </div>
     </div>
-    {% endif %}
-  </section>
-  <div id="home-featured-candidates" hidden>
-    {% for post in site.posts %}
-      {% if post.tags contains "linkedin" %}
-        {% assign post_image_parts = post.content | split: '<img src="' %}
-        {% if post_image_parts.size > 1 %}
-          {% assign post_image = post_image_parts[1] | split: '"' | first %}
-          {% assign post_summary = post.content | strip_html | strip_newlines | strip | truncate: 260 %}
-          <article
-            data-kind="article"
-            data-kicker="Featured article"
-            data-caption="Featured article from the Writing archive."
-            data-title="{{ post.title | escape }}"
-            data-url="{{ post.url }}"
-            data-image="{{ post_image }}"
-            data-summary="{{ post_summary | escape }}"
-            data-cta="Read featured article"></article>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-    {% assign featured_video_ids = "dave-thomas-software-craftsmanship-north-america-2013|sandro-mancuso-software-craftsmanship-north-america-2013|justin-searls-software-craftsmanship-north-america-2012|rich-hickey-creator-of-clojure-general|aaron-patterson-ruby-rails-core-team-member-keynote-speaker-railsconf-2014|david-heinemeier-hansson-dhh-railsconf-2014|robert-martin-software-craftsmanship-north-america-2012|corey-haines-general|brian-marick-software-craftsmanship-north-america-2012|charles-oliver-nutter-general" | split: "|" %}
-    {% for video_id in featured_video_ids %}
-      {% assign asset = site.data.video_assets.items | where: "id", video_id | first %}
-      {% if asset and asset.transcript_id %}
-        {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
-        {% if transcript_entry and transcript_entry.content %}
-          {% assign preferred = asset.platforms | first %}
-          {% assign video_thumb = preferred.thumbnail_local | default: asset.thumbnail_local | default: preferred.thumbnail | default: asset.thumbnail %}
-          {% if video_thumb %}
-            <article
-              data-kind="video"
-              data-kicker="Featured conversation"
-              data-caption="Transcript-backed video from the archive."
-              data-title="{{ asset.title | escape }}"
-              data-url="/videos/{{ asset.id }}/"
-              data-image="{{ video_thumb }}"
-              data-summary="{{ asset.description | strip | truncate: 260 | escape }}"
-              data-cta="Watch featured video"></article>
-          {% endif %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-  </div>
-
-  <section class="home-guided-tour" aria-labelledby="guided-tour-title">
-    <h2 id="guided-tour-title">Start Here in Minutes</h2>
-    <p class="home-intro">If you're evaluating fit, start with the path that matches your time. Each route is designed to deliver clear signal without extra noise.</p>
-
-    <div class="home-link-grid">
-      <section class="home-link-card">
-        <h3>10 Minutes</h3>
-        <p>Fast overview for role alignment and immediate next steps.</p>
-        <ul class="home-list">
-          <li><a href="/">Resume & Key Outcomes</a> Core scope, outcomes, and role fit.</li>
-          <li><a href="/contact/">Contact</a> Start a direct conversation.</li>
-        </ul>
-      </section>
-      <section class="home-link-card">
-        <h3>30 Minutes</h3>
-        <p>More context on trajectory, judgment, and technical depth.</p>
-        <ul class="home-list">
-          <li><a href="/history/">Career Timeline</a> Full chronology and progression.</li>
-          <li><a href="/writing/">Writing</a> Technical tradeoffs and decision framing.</li>
-        </ul>
-      </section>
-      <section class="home-link-card">
-        <h3>Deeper Dive</h3>
-        <p>Structured evidence across interviews, talks, and curated paths.</p>
-        <ul class="home-list">
-          <li><a href="/start-here/">Start Here</a> Guided routes into architecture and delivery work.</li>
-          <li><a href="/interviews/">Interviews</a> Long-form conversations and community context.</li>
-          <li><a href="/videos/">Videos</a> Talks and technical sessions.</li>
-        </ul>
-      </section>
-    </div>
   </section>
 
-  <section class="home-links">
+  <section class="home-leadership">
+    <h2>Technical Leadership</h2>
+    <ul class="home-list">
+      <li><strong>OpenTelemetry Working Group</strong>: Founded and led the group to scale trace-based diagnosis site-wide.</li>
+      <li><strong>Geekfest@OMF</strong>: Built a community of practice to share technical standards and accelerate organizational learning.</li>
+    </ul>
+  </section>
+
+  <section class="home-navigation">
     <h2>Explore More</h2>
     <div class="home-link-grid">
       <section class="home-link-card">
-        <h3>Interviews</h3>
-        <p>Conversations with engineers and community builders about craft, tradeoffs, and what holds up over time.</p>
+        <h3>Technical Conversations</h3>
+        <p>A decade of dialogues with the engineers and community builders who shaped the modern software landscape.</p>
         <ul class="home-list">
-          <li><a href="/interviews/">All Interviews</a> Full interview index.</li>
-          <li><a href="/interviews/conferences/">By Conference</a> Interviews grouped by event and year.</li>
-          <li><a href="/interviews/people/">By Interviewee</a> Repeated voices across contexts.</li>
+          <li><a href="/interviews/">All Conversations</a></li>
+          <li><a href="/interviews/conferences/">By Conference</a></li>
         </ul>
       </section>
 
       <section class="home-link-card">
-        <h3>Videos</h3>
-        <p>Recorded talks and sessions showing architecture, maintainability, and practical engineering under delivery pressure.</p>
+        <h3>Writing & Notes</h3>
+        <p>Technical writing focused on implementation details, tradeoffs, and system work.</p>
         <ul class="home-list">
-          <li><a href="/videos/">All Videos</a> Full video index.</li>
-          <li><a href="/oneoffs/">One-off Videos</a> Standalone presentations.</li>
-          <li><a href="/scmc/">SCMC Videos</a> Software Craftsmanship McHenry County archive.</li>
+          <li><a href="/writing/">Latest Posts</a></li>
+          <li><a href="/work-through-conversations/">Work Through Conversations</a></li>
         </ul>
       </section>
-
-      <section class="home-link-card">
-        <h3>Resume and Writing</h3>
-        <p>Resume-level summary plus written context behind scope, outcomes, and operating environments.</p>
-        <ul class="home-list">
-          <li><a href="/">Executive Resume</a> Fast summary for hiring loops.</li>
-          <li><a href="/history/">Career Timeline</a> Full chronology and role context.</li>
-          <li><a href="/writing/">Writing</a> Essays grounded in implementation work.</li>
-        </ul>
-      </section>
-
-      <section class="home-link-card">
-        <h3>Contact and Context</h3>
-        <p>Ways to connect and optional context pages for deeper review.</p>
-        <ul class="home-list">
-          <li><a href="/contact/">Contact</a> Reach out for hiring, collaboration, or follow-up.</li>
-          <li><a href="{{ site.data.resume.profile.contact.linkedin.url }}">LinkedIn</a> Public profile and network context.</li>
-          <li><a href="/about/">About</a> Site purpose and publishing context.</li>
-          <li><a href="/work-through-conversations/">Work Through Conversations</a> Curated tracks linking evidence to practice.</li>
-        </ul>
-      </section>
-
     </div>
   </section>
 </article>
-<script src="/assets/js/home-featured-carousel.js" defer></script>
