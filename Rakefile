@@ -124,9 +124,7 @@ namespace :validate do
     sh 'ruby ./bin/validate_data.rb'
   end
 
-  task :audit_transcripts do
-    sh 'ruby ./bin/audit_transcripts.rb'
-  end
+  task :audit_transcripts => 'transcript:audit'
 
   task :resources_output do
     sh 'ruby ./bin/validate_resources_output.rb'
