@@ -2,44 +2,11 @@
   {% for category in site.data.resume.skills.categories %}
     <div class="skills-category">
       <h3 class="category-name">{{ category.name }}</h3>
-      
-      <div class="skills-grid">
-        {% assign expertise = category.items | where: "level", "Expertise" %}
-        {% if expertise.size > 0 %}
-          <div class="skill-level-group">
-            <h4 class="level-label expertise">Expertise</h4>
-            <ul class="skills-list">
-              {% for item in expertise %}
-                <li>{{ item.name }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-
-        {% assign proficiency = category.items | where: "level", "Proficiency" %}
-        {% if proficiency.size > 0 %}
-          <div class="skill-level-group">
-            <h4 class="level-label proficiency">Proficiency</h4>
-            <ul class="skills-list">
-              {% for item in proficiency %}
-                <li>{{ item.name }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-
-        {% assign familiarity = category.items | where: "level", "Familiarity" %}
-        {% if familiarity.size > 0 %}
-          <div class="skill-level-group">
-            <h4 class="level-label familiarity">Familiarity</h4>
-            <ul class="skills-list">
-              {% for item in familiarity %}
-                <li>{{ item.name }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-      </div>
+      <ul class="skills-list">
+        {% for item in category.items %}
+          <li>{{ item.name }}</li>
+        {% endfor %}
+      </ul>
     </div>
   {% endfor %}
 </div>

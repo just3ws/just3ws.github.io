@@ -39,16 +39,12 @@ test.describe('Site Layout and Aesthetics', () => {
     const skillsDashboard = page.locator('.skills-dashboard');
     await expect(skillsDashboard).toBeVisible();
     
-    const expertiseGroup = page.locator('.skill-level-group .level-label.expertise');
-    await expect(expertiseGroup.first()).toBeVisible();
-    await expect(expertiseGroup.first()).toHaveText('Expertise');
+    const categoryLabel = page.locator('.skills-category .category-name');
+    await expect(categoryLabel.first()).toBeVisible();
+    await expect(categoryLabel.first()).toContainText(/Strategic Capabilities/i);
 
     const skillItem = page.locator('.skills-list li');
     await expect(skillItem.first()).toBeVisible();
-    
-    // Check for proficiency levels
-    await expect(page.locator('.level-label.expertise').first()).toHaveText('Expertise');
-    await expect(page.locator('.level-label.proficiency').first()).toHaveText('Proficiency');
   });
 
   test('Navigation is functional and consistent', async ({ page }) => {

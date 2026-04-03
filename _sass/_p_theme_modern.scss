@@ -233,11 +233,11 @@ h3 {
   margin-bottom: 0.4rem;
 }
 
-/* Bento Skills Dashboard - High Density & Visual Impact */
+/* Bento Skills Dashboard - High Density & Strategic Alignment */
 .skills-dashboard {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
   margin-top: 1rem;
 }
 
@@ -245,87 +245,50 @@ h3 {
   background: white;
   border: 1px solid $nord4;
   border-radius: var(--radius-md);
-  padding: 1.5rem !important;
+  padding: 2rem !important;
   margin-bottom: 0 !important;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   
   .category-name {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 800;
     color: $nord3;
-    margin-bottom: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     border-bottom: 1px solid $nord5;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
   }
 }
 
-.skills-grid {
+.skills-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-}
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
 
-.skill-level-group {
-  .level-label {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.15rem 0.4rem;
-    border-radius: 3px;
-    margin-bottom: 0.5rem;
-    
-    &.expertise {
-      background: $avatar-teal;
-      color: white;
-    }
-    &.proficiency {
-      background: $nord4;
-      color: $nord0;
-    }
-    &.familiarity {
-      background: transparent;
-      border: 1px solid $nord4;
-      color: $nord3;
-    }
-  }
+  li {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: $nord0;
+    margin: 0 !important;
+    position: relative;
+    padding-left: 1.5rem;
 
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem 0.6rem;
-    list-style: none;
-    padding: 0;
-
-    li {
-      background: none !important;
-      border: none !important;
-      padding: 0 !important;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: $nord0;
-      margin: 0 !important;
-
-      &::after {
-        content: "•";
-        color: $nord4;
-        margin-left: 0.4rem;
-        font-size: 0.7rem;
-      }
-
-      &:last-child::after {
-        content: "";
-      }
+    &::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: $avatar-teal;
+      font-weight: 800;
     }
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .skills-dashboard {
     grid-template-columns: 1fr;
   }
