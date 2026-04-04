@@ -10,15 +10,29 @@ breadcrumb: Contact
   {% assign profile = site.data.resume.profile %}
   <header>
     <h1>Contact</h1>
-    <p class="intro">Thanks for stopping by. If you want to collaborate, discuss a role, ask a technical question, or flag an archive correction, this is the best place to reach me.</p>
+    <p class="intro">Whether you're looking to discuss a role, a technical challenge, or an archive correction, this is the best way to reach me.</p>
   </header>
 
-  <section>
-    <p>Email is the fastest path for most things. If you are reaching out about a specific talk, article, or role, a short note with context is always appreciated.</p>
+  <section id="professional">
+    <h2>Professional Inquiry</h2>
+    <p>For opportunities, collaboration, or consulting, the fastest path is usually via email. If you're reaching out about a specific role or article, please include relevant context so I can respond effectively.</p>
     <ul class="home-list">
-      <li>Email: <a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a></li>
-      <li>LinkedIn: <a href="{{ profile.contact.linkedin.url }}">{{ profile.contact.linkedin.display }}</a></li>
-      <li>GitHub: <a href="{{ profile.contact.github.url }}">{{ profile.contact.github.display }}</a></li>
+      <li><strong>Email:</strong> <a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a></li>
+      <li><strong>LinkedIn:</strong> <a href="{{ profile.contact.linkedin.url }}">{{ profile.contact.linkedin.display }}</a></li>
     </ul>
+  </section>
+
+  <section id="technical">
+    <h2>Technical & Archive Feedback</h2>
+    <p>If you've spotted a bug in the code, an error in an interview transcript, or a missing asset in the archive, your feedback is invaluable for maintaining this lineage.</p>
+    <ul class="home-list">
+      <li><strong>GitHub:</strong> <a href="{{ profile.contact.github.url }}">{{ profile.contact.github.display }}</a></li>
+      <li><strong>Corrections:</strong> Feel free to open an issue or pull request directly on the repository for specific site or archive improvements.</li>
+    </ul>
+  </section>
+
+  <section id="expectations">
+    <h2>Response Expectations</h2>
+    <p>I aim to respond to most non-automated inquiries within 48 hours. If you haven't heard back by then, please feel free to send a follow-up nudge.</p>
   </section>
 </article>
