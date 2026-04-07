@@ -1,9 +1,10 @@
 ---
 id: TASK-018
 title: 'T-1000: Consolidate JSON-LD Templating'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-04-07 13:39'
+updated_date: '2026-04-07 15:27'
 labels: []
 milestone: System Transformation Phase 2
 dependencies: []
