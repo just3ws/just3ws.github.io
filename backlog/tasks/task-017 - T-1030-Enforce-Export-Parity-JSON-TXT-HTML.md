@@ -1,9 +1,10 @@
 ---
 id: TASK-017
 title: 'T-1030: Enforce Export Parity (JSON/TXT/HTML)'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-04-07 13:39'
+updated_date: '2026-04-07 16:45'
 labels: []
 milestone: System Transformation Phase 2
 dependencies: []
