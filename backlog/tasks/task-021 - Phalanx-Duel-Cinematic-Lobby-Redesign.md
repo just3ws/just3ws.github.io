@@ -7,7 +7,6 @@ created_date: '2026-04-08 02:23'
 updated_date: '2026-04-08 02:36'
 labels:
   - ui
-  - redesign
 dependencies: []
 priority: high
 ---
