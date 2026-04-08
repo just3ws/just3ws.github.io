@@ -39,17 +39,34 @@ EXPERIENCE
 {{ position.company.name }}{% if position.company.location %} | {{ position.company.location }}{% endif %}
 
 {{ position.start_date }} - {{ position.end_date | default: "Present" }}
-{% if entry.summary %}
 
+{% if position.context %}
+Context: {{ position.context | strip | wordwrap: 76 | replace: "
+", "
+  " }}
+Action:  {{ position.action | strip | wordwrap: 76 | replace: "
+", "
+  " }}
+Impact:  {{ position.impact | strip | wordwrap: 76 | replace: "
+", "
+  " }}
+{% elsif entry.summary %}
 {{ entry.summary | strip | wordwrap: 80 }}
 {% endif %}
-{% if entry.highlights %}
 
+{% assign highlights = position.highlights | default: entry.highlights %}
+{% if highlights %}
 Key Outcomes:
-{% for achievement in entry.highlights %}
+{% for achievement in highlights %}
+{% if achievement.text %}
+* {{ achievement.text | strip | wordwrap: 76 | replace: "
+", "
+  " }}{% if achievement.label %} [{{ achievement.label }}]{% endif %}
+{% else %}
 * {{ achievement | strip | wordwrap: 76 | replace: "
 ", "
   " }}
+{% endif %}
 {% endfor %}
 {% endif %}
 {% endif %}
@@ -61,7 +78,7 @@ Key Outcomes:
 {% for item in ats.additional_experience.items %}
 {% assign position = site.data.resume.positions[item.id] %}
 * {{ position.title }} | {{ position.company.name }} | {{ position.start_date }} - {{ position.end_date | default: "Present" }}{% if position.company.location %} | {{ position.company.location }}{% endif %}
-  {{ item.summary | strip | wordwrap: 76 | replace: "
+  {{ position.summary | default: item.summary | strip | wordwrap: 76 | replace: "
 ", "
   " }}
 {% endfor %}

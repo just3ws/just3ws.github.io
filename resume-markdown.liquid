@@ -32,7 +32,6 @@ sitemap: true
 {{ ats.skills | join: ", " }}
 
 ---
-
 ## Experience
 {% for entry in ats.positions %}
 {% assign position = site.data.resume.positions[entry.id] %}
@@ -40,17 +39,25 @@ sitemap: true
 ### {{ position.title }} at {{ position.company.name }}
 
 **{{ position.start_date }} - {{ position.end_date | default: "Present" }}**{% if position.company.location %} | {{ position.company.location }}{% endif %}
-{% if entry.summary %}
 
+{% if position.context %}
+**Context:** {{ position.context }}
+
+**Action:** {{ position.action }}
+
+**Impact:** {{ position.impact }}
+{% elsif entry.summary %}
 {{ entry.summary }}
 {% endif %}
-{% if entry.highlights %}
 
+{% assign highlights = position.highlights | default: entry.highlights %}
+{% if highlights %}
 **Key Outcomes:**
-{% for achievement in entry.highlights %}
-- {{ achievement }}
+{% for achievement in highlights %}
+- {% if achievement.text %}{{ achievement.text }}{% if achievement.label %} [{{ achievement.label }}]{% endif %}{% else %}{{ achievement }}{% endif %}
 {% endfor %}
 {% endif %}
+
 {% endif %}
 {% endfor %}
 
@@ -59,7 +66,7 @@ sitemap: true
 ## {{ ats.additional_experience.title }}
 {% for item in ats.additional_experience.items %}
 {% assign position = site.data.resume.positions[item.id] %}
-- **{{ position.title }}**, {{ position.company.name }} ({{ position.start_date }} - {{ position.end_date | default: "Present" }}{% if position.company.location %}, {{ position.company.location }}{% endif %}): {{ item.summary }}
+- **{{ position.title }}**, {{ position.company.name }} ({{ position.start_date }} - {{ position.end_date | default: "Present" }}{% if position.company.location %}, {{ position.company.location }}{% endif %}): {{ position.summary | default: item.summary }}
 {% endfor %}
 
 ---

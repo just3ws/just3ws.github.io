@@ -37,5 +37,13 @@ $font-family-mono: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 $font-size-base: 18px; /* Bumped from 16px */
 $line-height-base: 1.7; /* Increased for breathing room */
 
-/* Spacing */
-$spacing-unit: 1rem;
+/* Spacing - Base-8 relative scale (based on 18px root) */
+$space-1: 0.44rem;  /* ~8px */
+$space-2: 0.88rem;  /* ~16px */
+$space-3: 1.33rem;  /* ~24px */
+$space-4: 1.77rem;  /* ~32px */
+$space-5: 2.22rem;  /* ~40px */
+$space-6: 2.66rem;  /* ~48px */
+$space-8: 3.55rem;  /* ~64px */
+
+$spacing-unit: $space-2;

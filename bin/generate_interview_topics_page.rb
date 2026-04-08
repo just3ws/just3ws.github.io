@@ -84,7 +84,7 @@ File.write(OUT_PAGE_PATH, <<~HTML)
     {% assign topic_data = site.data.interview_topics %}
     {% assign topics = topic_data.items %}
     {% assign interview_items = site.data.interviews.items | where_exp: "i", "i.video_asset_id" %}
-    {% include json-ld-itemlist.html
+    {% include schema-factory.html
       collection_name="Interviews by Topic"
       collection_description=page.description
       items=interview_items
@@ -93,10 +93,6 @@ File.write(OUT_PAGE_PATH, <<~HTML)
       url_prefix="/interviews/"
       item_schema_type="Interview"
       entity_id_prefix="/id/interview/"
-    %}
-    {% include json-ld-interview-entities.html
-      items=interview_items
-      url_prefix="/interviews/"
     %}
     <header>
       <h1>Interviews by Topic</h1>

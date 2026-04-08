@@ -112,9 +112,14 @@ namespace :validate do
     :seo_output,
     :public_index_mode,
     :semantic_output,
+    :export_parity,
     :report_seo,
     :htmlproofer
   ]
+
+  task :export_parity do
+    sh 'ruby ./bin/validate_exports.rb'
+  end
 
   task :data_uniqueness do
     sh 'ruby ./bin/validate_data_uniqueness.rb'

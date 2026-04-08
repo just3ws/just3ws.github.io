@@ -8,15 +8,27 @@
     </p>
   </header>
 
-  {%- if include.entry.summary %}
-  <p>{{ include.entry.summary }}</p>
+  {%- if include.position.context %}
+  <div class="position-narrative">
+    <p><strong>Context:</strong> {{ include.position.context }}</p>
+    <p><strong>Action:</strong> {{ include.position.action }}</p>
+    <p><strong>Impact:</strong> {{ include.position.impact }}</p>
+  </div>
+  {%- elsif include.position.summary %}
+  <p>{{ include.position.summary }}</p>
   {%- endif %}
 
-  {%- if include.entry.highlights %}
+  {%- if include.position.highlights or include.entry.highlights %}
   <ul class="achievement-highlights">
-    {%- for highlight_text in include.entry.highlights %}
+    {%- assign highlights = include.position.highlights | default: include.entry.highlights %}
+    {%- for highlight in highlights %}
     <li>
-      {{ highlight_text }}
+      {%- if highlight.text %}
+        {{ highlight.text }}
+        {%- if highlight.label %}<span class="highlight-label">[{{ highlight.label }}]</span>{%- endif %}
+      {%- else %}
+        {{ highlight }}
+      {%- endif %}
     </li>
     {%- endfor %}
   </ul>

@@ -22,8 +22,7 @@ breadcrumb: Conversations
   </section>
 
   {% assign interviews = site.data.interviews.items | where_exp: "i", "i.video_asset_id" | sort: "recorded_date" | reverse %}
-  {% include json-ld-breadcrumbs.html %}
-  {% include json-ld-itemlist.html
+  {% include schema-factory.html
     collection_name="Technical Conversations"
     collection_description=page.description
     items=interviews

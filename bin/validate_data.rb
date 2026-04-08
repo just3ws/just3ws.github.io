@@ -34,11 +34,16 @@ assets = load_yaml(File.join(ROOT, '_data', 'video_assets.yml'), 'items')
 confs = load_yaml(File.join(ROOT, '_data', 'interview_conferences.yml'), 'conferences')
 comms = load_yaml(File.join(ROOT, '_data', 'interview_communities.yml'), 'communities')
 
+positions = Dir[File.join(ROOT, '_data', 'resume', 'positions', '*.yml')].map do |path|
+  YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true) || {}
+end
+
 # 1. Schema Validation
 errors.concat(validate_collection(interviews, Validators::InterviewContract, 'Interview'))
 errors.concat(validate_collection(assets, Validators::VideoAssetContract, 'VideoAsset'))
 errors.concat(validate_collection(confs, Validators::ConferenceContract, 'Conference'))
 errors.concat(validate_collection(comms, Validators::CommunityContract, 'Community'))
+errors.concat(validate_collection(positions, Validators::ResumePositionContract, 'ResumePosition'))
 
 # 2. Referential Integrity
 interview_ids = interviews.map { |i| i['id'].to_s }.to_set

@@ -1,80 +1,62 @@
+---
 company:
   name: ReachLocal
   location: Remote
-
 title: Senior Software Developer
 type: Full-time
 start_date: March 2015
 end_date: November 2016
-
-context: >-
-  ReachLocal provided a large-scale digital marketing platform supporting
-  thousands of small and mid-sized businesses. The system combined lead
-  management, campaign execution, subscription billing, and reporting, and
-  included a long-lived legacy codebase with significant data volume and
-  historical complexity.
-
+context: ReachLocal operated a high-volume digital marketing platform with  thousands
+  of customers. A massive, high-risk "big bang" rewrite of the  customer-facing system
+  was planned, despite unclear data lineage and  significant historical complexity.
 scope:
   scale: Thousands of customers, high-volume transactional and reporting data
   ownership: API design, legacy system modernization strategy, integration boundaries
   influence: Cross-team across engineering, product, and customer-facing functions
-
-description: >-
-  Contributed to platform modernization efforts during a period of organizational
-  transition and acquisition. Designed and implemented new API layers to safely
-  expose internal capabilities, while working with the Customer Funnel team to
-  evaluate and de-risk a planned rewrite of a large legacy system. Identified
-  fundamental data and system knowledge gaps that informed a shift toward
-  incremental modernization rather than wholesale replacement.
-
-achievements:
-  highlights:
-    - text: >-
-        Designed and built an API Gateway to expose selected internal services
-        through well-defined, secure interfaces.
-      impact: >-
-        Enabled controlled integration with internal and external consumers
-        while maintaining platform security.
-    - text: >-
-        Evaluated the feasibility of a full rewrite of a legacy customer-facing
-        system.
-      leadership: >-
-        Demonstrated that unclear data lineage and high data volume made a
-        big-bang migration impractical, preventing a high-risk project failure.
-    - text: >-
-        Proposed and validated an incremental modernization strategy using an
-        interstitial API layer.
-      impact: >-
-        Allowed new features to be developed independently while legacy
-        functionality was migrated selectively, reducing delivery risk.
-    - text: >-
-        Designed a two-tier frontend architecture that separated user experience
-        iteration from backend system constraints.
-      impact: >-
-        Reduced regression risk and enabled faster experimentation without
-        destabilizing core systems.
-    - text: >-
-        Modernized critical integration points by wrapping legacy functionality in
-        Rails APIs.
-      impact: >-
-        Extended the useful life of the existing platform while enabling a
-        gradual transition to newer components.
-    - text: >-
-        Reduced operational and maintenance risk by introducing code quality and
-        security tooling.
-      impact: >-
-        Improved visibility into system health and failure modes.
-
+description: Contributed to platform modernization efforts during a period of organizational
+  transition and acquisition. Designed and implemented new API layers to safely expose
+  internal capabilities, while working with the Customer Funnel team to evaluate and
+  de-risk a planned rewrite of a large legacy system. Identified fundamental data
+  and system knowledge gaps that informed a shift toward incremental modernization
+  rather than wholesale replacement.
 skills:
-  - Platform Architecture
-  - API Gateway Design
-  - Legacy System Modernization
-  - Incremental Migration Strategies
-  - Secure API Design
-  - Data Migration Strategy
-  - Ruby
-  - Ruby on Rails
-  - PostgreSQL
-  - React
-  - Redis
-  - CI/CD and Code Quality Tooling
+- Platform Architecture
+- API Gateway Design
+- Legacy System Modernization
+- Incremental Migration Strategies
+- Secure API Design
+- Data Migration Strategy
+- Ruby
+- Ruby on Rails
+- PostgreSQL
+- React
+- Redis
+- CI/CD and Code Quality Tooling
+id: reachlocal
+summary: De-risked a large legacy rewrite by proposing an incremental modernization
+  strategy built around API boundaries.
+action: Evaluated the rewrite feasibility and proposed an alternative incremental  modernization
+  strategy. Designed an API Gateway to wrap legacy  functionality and established
+  a two-tier frontend architecture to  decouple UX from backend constraints.
+impact: Prevented a high-risk project failure by demonstrating the impracticality  of
+  a full rewrite. Enabled new feature development to proceed  independently via an
+  interstitial API layer, extending the platform's  life while reducing delivery risk.
+highlights:
+- text: Designed and built an API Gateway to expose selected internal services  through
+    well-defined, secure interfaces.
+  label: Architecture
+- text: Evaluated the feasibility of a full rewrite of a legacy customer-facing  system,
+    preventing a high-risk project failure.
+  label: Risk
+- text: Proposed and validated an incremental modernization strategy using an  interstitial
+    API layer.
+  label: Modernization
+- text: Designed a two-tier frontend architecture that separated user experience  iteration
+    from backend system constraints.
+  label: Efficiency
+- text: Modernized critical integration points by wrapping legacy functionality in  Rails
+    APIs.
+  label: Reliability
+- text: Reduced operational and maintenance risk by introducing code quality and  security
+    tooling.
+  label: Quality

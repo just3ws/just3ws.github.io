@@ -76,4 +76,25 @@ module Validators
       optional(:highlights).array(:string)
     end
   end
+
+  class ResumePositionContract < BaseContract
+    params do
+      required(:id).filled(:string)
+      required(:title).filled(:string)
+      required(:company).hash do
+        required(:name).filled(:string)
+        optional(:location).maybe(:string)
+      end
+      required(:start_date).filled(:string)
+      optional(:end_date).maybe(:string)
+      required(:summary).filled(:string)
+      required(:context).filled(:string)
+      required(:action).filled(:string)
+      required(:impact).filled(:string)
+      required(:highlights).array(:hash) do
+        required(:text).filled(:string)
+        optional(:label).maybe(:string)
+      end
+    end
+  end
 end

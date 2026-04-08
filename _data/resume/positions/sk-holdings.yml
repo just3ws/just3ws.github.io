@@ -1,72 +1,71 @@
+---
 company:
   name: SK Holdings, Inc.
-  location: "Chicago, IL"
-
+  location: Chicago, IL
 title: Senior Backend Developer
 type: Full-time
-
 start_date: January 2019
 end_date: December 2020
-
-context: >-
-  SK Holdings operated multiple digital media and subscription-oriented
-  businesses supported by a shared Ruby on Rails backend platform. The platform
-  handled content delivery, account and subscription management, billing, and
-  high-volume campaign operations. Systems processed millions of users and
-  contacts and evolved under ongoing business change, partnerships, and asset
-  transitions.
-
+context: A high-traffic Rails platform supporting millions of users faced mounting  technical
+  debt and limited operational visibility. Data-heavy workloads  and reporting queries
+  were straining transactional databases, impacting  response times and deployment
+  frequency.
 scope:
   scale: Millions of users and contacts across multi-property platforms
   ownership: Core Rails platform modernization, data pipelines, and system performance
-  influence: Cross-functional across engineering, operations, product, and external vendors
-
-description: >-
-  Took broad ownership of stabilizing and modernizing a shared Ruby on Rails
-  platform supporting multiple business lines. Operated as a high-leverage
-  individual contributor addressing architectural complexity, operational blind
-  spots, and performance constraints while making system behavior legible,
-  expanding observability, improving delivery reliability, and increasing
-  insight into system and business behavior.
-  Portions of this work supported preparation of platform-backed assets for
-  external transition, alongside ongoing operational demands.
-
-achievements:
-  highlights:
-    - text: >-
-        Modernized and upgraded core Ruby and Rails stacks across multiple 
-        applications, reducing technical debt and improving long-term maintainability.
-    - text: >-
-        Expanded operational visibility by introducing centralized logging and 
-        monitoring, working with providers to establish actionable insight into 
-        system capacity.
-    - text: >-
-        Designed and built robust data pipelines synchronizing millions of records 
-        to enable reliable high-volume operations and new business initiatives.
-    - text: >-
-        Led data-layer remediation by replacing expensive dynamic queries with 
-        Materialized Views, materially reducing load on reporting and analytics workloads.
-    - text: >-
-        Migrated session and cache workloads from MySQL to Redis to isolate 
-        transactional databases and improve response times under peak traffic.
-    - text: >-
-        Optimized CI pipelines by reordering and parallelizing test execution, 
-        materially reducing feedback cycle time and improving throughput.
-
+  influence: Cross-functional across engineering, operations, product, and external
+    vendors
+description: Took broad ownership of stabilizing and modernizing a shared Ruby on
+  Rails platform supporting multiple business lines. Operated as a high-leverage individual
+  contributor addressing architectural complexity, operational blind spots, and performance
+  constraints while making system behavior legible, expanding observability, improving
+  delivery reliability, and increasing insight into system and business behavior.
+  Portions of this work supported preparation of platform-backed assets for external
+  transition, alongside ongoing operational demands.
 skills:
-  - Platform Modernization
-  - Backend System Architecture
-  - Ruby on Rails
-  - System Observability and Monitoring
-  - CI/CD Optimization
-  - Data Pipelines (ETL)
-  - Data Analytics
-  - Database Performance Optimization
-  - Full-Text Search (PostgreSQL)
-  - Cache Layer Design (Redis)
-  - Sidekiq
-  - PostgreSQL
-  - MySQL
-  - Prometheus
-  - Logentries
-  - SendGrid
+- Platform Modernization
+- Backend System Architecture
+- Ruby on Rails
+- System Observability and Monitoring
+- CI/CD Optimization
+- Data Pipelines (ETL)
+- Data Analytics
+- Database Performance Optimization
+- Full-Text Search (PostgreSQL)
+- Cache Layer Design (Redis)
+- Sidekiq
+- PostgreSQL
+- MySQL
+- Prometheus
+- Logentries
+- SendGrid
+id: sk-holdings
+summary: Stabilized and modernized a shared Rails platform supporting multiple digital
+  properties, millions of users, and high-volume data flows.
+action: Modernized the core Ruby/Rails stack and introduced centralized logging/monitoring.  Architected
+  robust data pipelines for high-volume synchronization.  Optimized the data layer
+  using Materialized Views and migrated cache/session  workloads to Redis. Parallelized
+  CI test execution.
+impact: Materially reduced technical debt and improved long-term maintainability.  Dramatically
+  decreased database load and response times during peak traffic.  Improved developer
+  throughput by shortening CI feedback cycles and  establishing actionable capacity
+  insights.
+highlights:
+- text: Modernized and upgraded core Ruby and Rails stacks across multiple  applications,
+    reducing technical debt and improving long-term maintainability.
+  label: Modernization
+- text: Expanded operational visibility by introducing centralized logging and  monitoring,
+    working with providers to establish actionable insight into  system capacity.
+  label: Observability
+- text: Designed and built robust data pipelines synchronizing millions of records  to
+    enable reliable high-volume operations and new business initiatives.
+  label: Systems
+- text: Led data-layer remediation by replacing expensive dynamic queries with  Materialized
+    Views, materially reducing load on reporting and analytics workloads.
+  label: Performance
+- text: Migrated session and cache workloads from MySQL to Redis to isolate  transactional
+    databases and improve response times under peak traffic.
+  label: Reliability
+- text: Optimized CI pipelines by reordering and parallelizing test execution,  materially
+    reducing feedback cycle time and improving throughput.
+  label: Efficiency

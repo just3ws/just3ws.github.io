@@ -1,64 +1,55 @@
+---
 company:
   name: ActiveCampaign
   location: Chicago, IL
-
 title: Senior Software Developer
 type: Contract
-
 start_date: September 2018
 end_date: December 2018
-
-context: >-
-  ActiveCampaign is a large-scale marketing automation and CRM platform serving
-  a global customer base. The system included a mature PHP backend with a highly
-  coupled core responsible for contact management, business rules, and data
-  access, alongside a modernizing frontend stack.
-
+context: A mature PHP backend for a global CRM platform had a highly coupled core,  making
+  changes risky and performance opaque. Global data access patterns  inhibited reliable
+  automated testing.
 scope:
   scale: Large, high-traffic CRM platform with complex legacy core
   ownership: Testability, performance, and change safety within core systems
   influence: Engineering teams responsible for backend and frontend reliability
-
-description: >-
-  Engaged as a short-term senior contributor to address deep structural
-  complexity in the core backend systems. Focused on improving testability,
-  performance, and change safety within a tightly coupled legacy PHP codebase,
-  while making targeted frontend enhancements to stabilize and extend the
-  existing test suite.
-
-achievements:
-  highlights:
-    - text: >-
-        Diagnosed structural constraints in the core backend subsystem and
-        established a path for safe iteration on contact management and business
-        rules.
-      leadership: Technical leadership in legacy modernization strategy
-    - text: >-
-        Introduced testable query patterns and caching strategies to replace
-        ad-hoc global data access, improving performance and enabling more reliable
-        automated testing.
-      impact: Significant improvement in query performance and test reliability
-    - text: >-
-        Reduced risk in a highly coupled legacy codebase by isolating critical
-        behaviors behind clearer boundaries, enabling incremental change without
-        large-scale rewrites.
-      impact: 40% reduction in production risk for core contact management changes
-    - text: >-
-        Extended and hardened the existing frontend test suite in Ember,
-        improving reliability and confidence in UI-driven workflows.
-      impact: Increased frontend test coverage and reduced UI regression rate
-    - text: >-
-        Improved developer feedback loops by making previously opaque behavior
-        observable through tests rather than runtime debugging.
-      leadership: Mentored teams on observability and test-driven development
-
+description: Engaged as a short-term senior contributor to address deep structural
+  complexity in the core backend systems. Focused on improving testability, performance,
+  and change safety within a tightly coupled legacy PHP codebase, while making targeted
+  frontend enhancements to stabilize and extend the existing test suite.
 skills:
-  - Legacy System Modernization
-  - Backend System Architecture
-  - Testability and Change Safety
-  - Performance Optimization
-  - PHP
-  - MySQL
-  - Ember.js
-  - JavaScript
-  - Automated Testing
+- Legacy System Modernization
+- Backend System Architecture
+- Testability and Change Safety
+- Performance Optimization
+- PHP
+- MySQL
+- Ember.js
+- JavaScript
+- Automated Testing
+id: activecampaign
+summary: Improved testability, performance, and change safety inside a tightly coupled
+  CRM core.
+action: Established safe iteration paths for contact management by isolating  critical
+  behaviors behind boundaries. Introduced testable query patterns  and caching strategies.
+  Hardened the Ember.js frontend test suite.
+impact: Reduced production risk for core changes by 40%. Significantly improved  query
+  performance and enabled reliable developer feedback loops through  observability
+  and tests rather than runtime debugging.
+highlights:
+- text: Diagnosed structural constraints in the core backend subsystem and  established
+    a path for safe iteration on contact management and business rules.
+  label: Modernization
+- text: Introduced testable query patterns and caching strategies to replace  ad-hoc
+    global data access, improving performance and enabling more reliable  automated
+    testing.
+  label: Performance
+- text: Reduced risk in a highly coupled legacy codebase by isolating critical  behaviors
+    behind clearer boundaries, enabling incremental change without  large-scale rewrites.
+  label: Risk
+- text: Extended and hardened the existing frontend test suite in Ember,  improving
+    reliability and confidence in UI-driven workflows.
+  label: Quality
+- text: Improved developer feedback loops by making previously opaque behavior  observable
+    through tests rather than runtime debugging.
+  label: Observability

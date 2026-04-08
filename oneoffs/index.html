@@ -27,7 +27,7 @@ breadcrumb: One-offs
   {% endif %}
 
   {% assign items = site.data.oneoff_videos.items %}
-  {% include json-ld-itemlist.html
+  {% include schema-factory.html
     collection_name="One-off Videos"
     collection_description=page.description
     items=items

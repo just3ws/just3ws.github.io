@@ -31,7 +31,7 @@ history.uniq.each do |position_id|
   company_name = position.dig("company", "name").to_s.strip
   headline = [title, company_name].reject(&:empty?).join(" at ")
   page_title = Generators::Core::Meta.clamp("Resume Position: #{headline}", 70)
-  description = position["description"].to_s.strip
+  description = position["summary"].to_s.strip
   description = "Role details for #{headline}." if description.empty?
   description = Generators::Core::Meta.ensure_min_length(description, 70, " Part of Mike Hall's resume archive.")
   description = Generators::Core::Meta.clamp(description, 160)

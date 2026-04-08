@@ -1,0 +1,11 @@
+<div class="system-impact-card">
+  <h3 class="impact-signal">{{ include.signal }}</h3>
+  <ul class="impact-achievements">
+    {% for item in include.achievements %}
+    <li class="impact-item">
+      <span class="impact-text">{{ item.text }}</span>
+      <span class="impact-source"> — {{ item.company }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

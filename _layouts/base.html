@@ -16,11 +16,7 @@
   {% include head/base.html theme_stylesheet=theme_css %}
   {% include head/analytics.html %}
   
-  {% if page.person_schema or page.layout == 'resume' %}
-    {% include json-ld.html %}
-  {% else %}
-    {% include json-ld-website.html %}
-  {% endif %}
+  {% include schema-factory.html %}
 
   {% if page.stylesheets %}
     {% for stylesheet in page.stylesheets %}
