@@ -1,7 +1,7 @@
 ---
 id: TASK-021
 title: 'Phalanx Duel: Cinematic Lobby Redesign'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 02:23'
 updated_date: '2026-04-08 02:37'
