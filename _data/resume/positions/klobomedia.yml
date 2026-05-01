@@ -5,17 +5,19 @@ company:
 title: CTO
 start_date: March 2014
 end_date: September 2016
-context: KloboMedia was an early-stage startup requiring a social media  analytics
-  platform for agencies. The system needed to aggregate  heterogeneous data from Twitter,
-  Facebook, and Instagram under  evolving API constraints.
-scope:
-  scale: Early-stage startup, multi-platform social API integration
-  ownership: Full technical ownership (architecture, infrastructure, product)
-  influence: Technical co-founder, cross-functional with design consultants
-description: Technical co-founder/CTO (concurrent) responsible for all technology
-  decisions, architecture, and product delivery. Built a customer-serving social media
-  analytics platform from inception through deployment under evolving third-party
-  API constraints.
+id: klobomedia
+summary: Owned end-to-end platform architecture, leading high-throughput data integration
+  for an early-stage social media startup.
+highlights:
+- Evolving third-party API constraints were addressed by architecting a resilient
+  platform integrating Twitter, Facebook, and Instagram APIs, enabling unified social
+  impact measurement.
+- High-volume data processing bottlenecks were addressed by designing a high-throughput
+  pipeline using Sidekiq Enterprise, generating real-time recommendations.
+- Heterogeneous social media data was addressed by implementing a PostgreSQL JSONB
+  storage strategy, enabling flexible querying.
+- Multi-cloud infrastructure needs were addressed by building and securing production
+  environments across DigitalOcean, Heroku, and AWS with automated deployment pipelines.
 skills:
 - Ruby
 - Ruby on Rails
@@ -28,33 +30,3 @@ skills:
 - Twitter API
 - Facebook Graph API
 - Instagram API
-- New Relic
-- Rollbar
-id: klobomedia
-summary: Built and delivered a social media analytics platform as technical  co-founder
-  and CTO.
-action: Architected and built the entire platform from inception. Designed  high-throughput
-  data pipelines using Sidekiq Enterprise. Implemented  a PostgreSQL JSONB storage
-  strategy and secured multi-cloud  infrastructure (DigitalOcean, Heroku, AWS).
-impact: Enabled agency clients to measure social impact from a single  interface.
-  Generated actionable real-time recommendations by  processing large volumes of social
-  data. Aligned product delivery  with investor expectations as a technical co-founder.
-highlights:
-- text: Architected and built complete social media analytics platform  integrating
-    Twitter, Facebook, and Instagram APIs.
-  label: Architecture
-- text: Designed high-throughput data pipeline using Sidekiq Enterprise to  process
-    social media patterns.
-  label: Performance
-- text: Implemented PostgreSQL JSONB storage strategy enabling flexible  querying
-    of heterogeneous social media data.
-  label: Systems
-- text: Built and secured production infrastructure across DigitalOcean,  Heroku,
-    and Amazon RDS with automated deployment pipelines.
-  label: Reliability
-- text: Led product development and coordinated with design consultants to  deliver
-    customer-facing analytics interface and administrative reporting tools.
-  label: Leadership
-- text: Managed external teams to accelerate UI delivery while maintaining  architectural
-    consistency.
-  label: Efficiency

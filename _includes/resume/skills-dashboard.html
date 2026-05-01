@@ -1,12 +1,12 @@
 <div class="skills-dashboard">
   {% for category in site.data.resume.skills.categories %}
-    <div class="skills-category">
-      <h3 class="category-name">{{ category.name }}</h3>
-      <ul class="skills-list">
-        {% for item in category.items %}
-          <li>{{ item.name }}</li>
-        {% endfor %}
-      </ul>
-    </div>
+  <div class="skills-category">
+    <h3 class="category-name">{{ category.name }}</h3>
+    <ul class="skills-list">
+      {% for item in category.items %}
+      <li>{{ item.name | default: item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
   {% endfor %}
 </div>

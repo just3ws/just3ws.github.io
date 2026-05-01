@@ -50,10 +50,9 @@ sitemap: true
 {{ entry.summary }}
 {% endif %}
 
-{% assign highlights = position.highlights | default: entry.highlights %}
-{% if highlights %}
+{% if position.highlights %}
 **Key Outcomes:**
-{% for achievement in highlights %}
+{% for achievement in position.highlights %}
 - {% if achievement.text %}{{ achievement.text }}{% if achievement.label %} [{{ achievement.label }}]{% endif %}{% else %}{{ achievement }}{% endif %}
 {% endfor %}
 {% endif %}

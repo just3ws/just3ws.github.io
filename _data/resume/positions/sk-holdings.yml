@@ -6,66 +6,51 @@ title: Senior Backend Developer
 type: Full-time
 start_date: January 2019
 end_date: December 2020
-context: A high-traffic Rails platform supporting millions of users faced mounting  technical
-  debt and limited operational visibility. Data-heavy workloads  and reporting queries
-  were straining transactional databases, impacting  response times and deployment
-  frequency.
-scope:
-  scale: Millions of users and contacts across multi-property platforms
-  ownership: Core Rails platform modernization, data pipelines, and system performance
-  influence: Cross-functional across engineering, operations, product, and external
-    vendors
-description: Took broad ownership of stabilizing and modernizing a shared Ruby on
-  Rails platform supporting multiple business lines. Operated as a high-leverage individual
-  contributor addressing architectural complexity, operational blind spots, and performance
-  constraints while making system behavior legible, expanding observability, improving
-  delivery reliability, and increasing insight into system and business behavior.
-  Portions of this work supported preparation of platform-backed assets for external
-  transition, alongside ongoing operational demands.
-skills:
-- Platform Modernization
-- Backend System Architecture
-- Ruby on Rails
-- System Observability and Monitoring
-- CI/CD Optimization
-- Data Pipelines (ETL)
-- Data Analytics
-- Database Performance Optimization
-- Full-Text Search (PostgreSQL)
-- Cache Layer Design (Redis)
-- Sidekiq
-- PostgreSQL
-- MySQL
-- Prometheus
-- Logentries
-- SendGrid
 id: sk-holdings
-summary: Stabilized and modernized a shared Rails platform supporting multiple digital
-  properties, millions of users, and high-volume data flows.
-action: Modernized the core Ruby/Rails stack and introduced centralized logging/monitoring.  Architected
-  robust data pipelines for high-volume synchronization.  Optimized the data layer
-  using Materialized Views and migrated cache/session  workloads to Redis. Parallelized
-  CI test execution.
-impact: Materially reduced technical debt and improved long-term maintainability.  Dramatically
-  decreased database load and response times during peak traffic.  Improved developer
-  throughput by shortening CI feedback cycles and  establishing actionable capacity
-  insights.
+
+summary: >
+  Owned backend system stability and performance for a high-traffic Rails
+  platform supporting millions of users, leading modernization and data-layer
+  optimization to improve reliability and delivery under production load.
+
 highlights:
-- text: Modernized and upgraded core Ruby and Rails stacks across multiple  applications,
-    reducing technical debt and improving long-term maintainability.
-  label: Modernization
-- text: Expanded operational visibility by introducing centralized logging and  monitoring,
-    working with providers to establish actionable insight into  system capacity.
-  label: Observability
-- text: Designed and built robust data pipelines synchronizing millions of records  to
-    enable reliable high-volume operations and new business initiatives.
-  label: Systems
-- text: Led data-layer remediation by replacing expensive dynamic queries with  Materialized
-    Views, materially reducing load on reporting and analytics workloads.
-  label: Performance
-- text: Migrated session and cache workloads from MySQL to Redis to isolate  transactional
-    databases and improve response times under peak traffic.
-  label: Reliability
-- text: Optimized CI pipelines by reordering and parallelizing test execution,  materially
-    reducing feedback cycle time and improving throughput.
-  label: Efficiency
+  - text: >
+      Critical performance bottlenecks under peak traffic were resolved by
+      replacing expensive reporting queries with Materialized Views and
+      migrating cache and session workloads to Redis, improving response times
+      and isolating transactional databases from non-critical load.
+
+  - text: >
+      Accumulating technical debt across a legacy Rails ecosystem was reduced by
+      leading hands-on upgrades of core Ruby and Rails stacks across multiple
+      applications, maintaining service continuity during high-risk platform
+      transitions.
+
+  - text: >
+      Slow and unreliable delivery cycles were improved by re-architecting CI/CD
+      pipelines for parallel execution, reducing feedback time and enabling more
+      consistent and predictable releases.
+
+  - text: >
+      Limited operational visibility across distributed services was addressed
+      by introducing centralized logging and Prometheus-based monitoring,
+      enabling earlier detection of performance issues and reducing production
+      firefighting.
+
+  - text: >
+      High-volume data synchronization challenges were solved by designing and
+      implementing data pipelines to move and reconcile millions of records
+      across systems, supporting reliable integrations and new business
+      capabilities.
+
+skills:
+  - Ruby on Rails
+  - PostgreSQL
+  - MySQL
+  - Redis
+  - Sidekiq
+  - Prometheus
+  - CI/CD
+  - Data Pipelines
+  - System Observability
+  - Backend Architecture

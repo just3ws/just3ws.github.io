@@ -11,32 +11,15 @@
   <section id="experience">
     <div class="experience-header">
       <h2>Experience</h2>
-      <div class="view-toggle no-print">
-        <input type="radio" id="view-chronological" name="resume-view" value="chronological" checked>
-        <label for="view-chronological">Chronological</label>
-        <input type="radio" id="view-signals" name="resume-view" value="signals">
-        <label for="view-signals">By Impact Signal</label>
-      </div>
     </div>
 
-    <div class="experience-content chronological-view">
-      {% for entry in ats.positions %}
-      {% assign position = site.data.resume.positions[entry.id] %}
-      {% if position and entry %}
-      {% include resume/ats-position-entry.html position=position entry=entry %}
-      {% endif %}
+    <div class="experience-content">
+      {% for position_item in ats.positions %}
+        {% assign position_data = site.data.resume.positions[position_item.id] %}
+        {% if position_data %}
+          {% include position.html position=position_data %}
+        {% endif %}
       {% endfor %}
-    </div>
-
-    <div class="experience-content signals-view">
-      {% assign signals = site.data.resume.positions | group_by_signal %}
-      <div class="impact-grid">
-        {% for signal_group in signals %}
-        {% assign signal_name = signal_group[0] %}
-        {% assign achievements = signal_group[1] %}
-        {% include resume/system-impact-card.html signal=signal_name achievements=achievements %}
-        {% endfor %}
-      </div>
     </div>
   </section>
 
@@ -47,102 +30,47 @@
       align-items: center;
       margin-bottom: 1.5rem;
     }
-    .view-toggle {
-      display: flex;
-      gap: 0.5rem;
-      background: var(--bg-secondary, #f4f4f4);
-      padding: 0.25rem;
-      border-radius: 4px;
-    }
-    .view-toggle input[type="radio"] {
-      display: none;
-    }
-    .view-toggle label {
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 3px;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-    }
-    .view-toggle input[type="radio"]:checked + label {
-      background: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      font-weight: bold;
-    }
-    
-    .signals-view {
-      display: none;
-    }
-    
-    #view-signals:checked ~ .signals-view {
-      display: block;
-    }
-    #view-chronological:checked ~ .chronological-view {
-      display: block;
-    }
-    #view-signals:checked ~ .chronological-view {
-      display: none;
-    }
-
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .system-impact-card {
-      background: white;
-      border: 1px solid #eee;
-      padding: 1.25rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .impact-signal {
-      margin-top: 0;
-      color: #2c3e50;
-      border-bottom: 2px solid #3498db;
-      display: inline-block;
-      padding-bottom: 0.25rem;
-      margin-bottom: 1rem;
-    }
-    .impact-achievements {
-      padding-left: 1.25rem;
-      margin: 0;
-    }
-    .impact-item {
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-    }
-    .impact-source {
-      font-size: 0.85rem;
-      color: #7f8c8d;
-      font-style: italic;
-    }
-
-    @media print {
-      .view-toggle { display: none ! deprivation; }
-      .signals-view { display: none !important; }
-      .chronological-view { display: block !important; }
-    }
   </style>
 
+  {% if ats.selected_projects and ats.selected_projects.items.size > 0 %}
+  <section id="selected-projects">
+    <div class="experience-header">
+      <h2>{{ ats.selected_projects.title }}</h2>
+    </div>
+
+    <div class="experience-content">
+      {% for project_item in ats.selected_projects.items %}
+        {% assign project_data = site.data.resume.positions[project_item.id] %}
+        {% if project_data %}
+          <!-- DEBUG: {{ project_data.title }} -->
+          {% include project.html project=project_data %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   <section id="skills">
-    <h2>Core Skills</h2>
-    {% include resume/skills-dashboard.html %}
+    <h2>{{ site.data.resume.skills.title | default: "Core Skills" }}</h2>
+    <div class="skills-dashboard">
+      {% for category_item in site.data.resume.skills.categories %}
+        {% include skills.html category=category_item %}
+      {% endfor %}
+    </div>
   </section>
 
   <section id="additional-experience">
     <h2>{{ ats.additional_experience.title }}</h2>
     <ul class="ats-supporting-list">
-      {% for item in ats.additional_experience.items %}
-      {% assign position = site.data.resume.positions[item.id] %}
-      {% if position %}
-      <li>
-        <strong>{{ position.title }}, {{ position.company.name }}</strong>
-        <span class="ats-supporting-meta"> | {{ position.start_date }} - {{ position.end_date | default: "Present" }}{% if position.company.location %} | {{ position.company.location }}{% endif %}</span>
-        : {{ position.summary | default: item.summary }}
-      </li>
-      {% endif %}
+      {% for add_entry in ats.additional_experience.items %}
+        {% assign add_position = site.data.resume.positions[add_entry.id] %}
+        {% if add_position %}
+          <li>
+            <strong>{{ add_position.title }}, {{ add_position.company.name }}</strong>
+            <span class="ats-supporting-meta"> | {{ add_position.start_date }} - {{ add_position.end_date | default: "Present" }}{% if add_position.company.location %} | {{ add_position.company.location }}{% endif %}</span>
+            : {{ add_position.summary | default: add_entry.summary }}
+          </li>
+        {% endif %}
       {% endfor %}
     </ul>
   </section>
@@ -152,9 +80,10 @@
     <p class="section-meta">{{ ats.earlier_experience.dates }}</p>
     <p>{{ ats.earlier_experience.summary }}</p>
     <ul class="ats-supporting-list">
-      {% for item in ats.earlier_experience.items %}
-      <li><strong>{{ item.label }}</strong>: {{ item.summary }}</li>
+      {% for earlier_item in ats.earlier_experience.items %}
+        <li><strong>{{ earlier_item.label }}</strong>: {{ earlier_item.summary }}</li>
       {% endfor %}
     </ul>
   </section>
 </article>
+rticle>

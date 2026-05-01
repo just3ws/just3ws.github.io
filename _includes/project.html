@@ -1,0 +1,28 @@
+<article class="position position-ats">
+  <header class="position-header">
+    <h3 class="position-title">{{ include.project.title }}</h3>
+    <p class="position-meta">
+      <span class="position-company">{{ include.project.company.name }}</span>
+      {%- if include.project.company.location %} | <span>{{ include.project.company.location }}</span>{%- endif %}
+      <span class="position-dates"> | <time>{{ include.project.start_date }}</time> - <time>{{ include.project.end_date | default: "Present" }}</time></span>
+    </p>
+  </header>
+
+  {%- if include.project.summary %}
+  <p>{{ include.project.summary }}</p>
+  {%- endif %}
+
+  {%- if include.project.highlights %}
+  <ul class="achievement-highlights">
+    {%- for highlight in include.project.highlights %}
+    <li>
+      {%- if highlight.text %}
+        {{ highlight.text }}
+      {%- else %}
+        {{ highlight }}
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+</article>

@@ -165,8 +165,8 @@ body {
   background: white;
   border: 1px solid rgba(216, 222, 233, 0.7);
   border-radius: var(--radius-md);
-  padding: 2rem !important;
-  margin-bottom: 2rem !important;
+  padding: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
   transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-sm);
 
@@ -187,15 +187,15 @@ h1 {
   letter-spacing: -0.035em;
   line-height: 1.1;
   font-weight: 800;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: $nord0;
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-top: 4.5rem !important;
-  margin-bottom: 1.75rem !important;
+  margin-top: 3rem !important;
+  margin-bottom: 1.25rem !important;
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -218,10 +218,10 @@ h3 {
 
 /* Metadata & Badges */
 .achievement-highlights {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   
   li {
-    margin-bottom: 1.25rem !important;
+    margin-bottom: 0.85rem !important;
     position: relative;
   }
 }
@@ -266,7 +266,7 @@ h3 {
 .skills-dashboard {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 1rem;
 }
 
@@ -274,7 +274,7 @@ h3 {
   background: white;
   border: 1px solid $nord4;
   border-radius: var(--radius-md);
-  padding: 2rem !important;
+  padding: 1.5rem !important;
   margin-bottom: 0 !important;
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -284,11 +284,11 @@ h3 {
     font-size: 0.95rem;
     font-weight: 800;
     color: $nord3;
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 1rem !important;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     border-bottom: 1px solid $nord5;
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
   }
 }
 
@@ -302,6 +302,7 @@ h3 {
   li {
     font-size: 1.05rem;
     font-weight: 500;
+    line-height: 1.5;
     color: $nord0;
     margin: 0 !important;
     position: relative;
@@ -495,19 +496,106 @@ h3 {
 
 /* Print Overrides */
 @media print {
-  .site-header, .resume-subnav, .home-navigation, .home-link-grid {
+  .site-header, .resume-subnav, .home-navigation, .home-link-grid, .no-print {
     display: none !important;
   }
-  
+
+  .ats-resume-content {
+    max-width: none;
+  }
+
   .position, .conference-card, .video {
     border: none !important;
     padding: 0 !important;
     box-shadow: none !important;
     transform: none !important;
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  h2 {
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   h2::after {
     display: none;
+  }
+
+  section {
+    margin-bottom: 1rem !important;
+  }
+
+  h2,
+  h3,
+  .position-header {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .position-ats,
+  .skills-category,
+  #summary,
+  #additional-experience,
+  #earlier-experience {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .achievement-highlights,
+  .skills-list {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .achievement-highlights {
+    margin-top: 0.5rem !important;
+  }
+
+  .achievement-highlights > li,
+  .skills-list > li,
+  .ats-supporting-list > li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    orphans: 3;
+    widows: 3;
+    margin-bottom: 0.5rem !important;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .skills-dashboard {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .skills-category {
+    padding: 1rem !important;
+    border: 1px solid #d8dee9 !important;
+    box-shadow: none !important;
+  }
+
+  .skills-category .category-name {
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .skills-list {
+    list-style: disc !important;
+    padding-left: 1.25rem !important;
+    display: block !important;
+  }
+
+  .skills-list li {
+    margin-bottom: 0.25rem !important;
+    padding-left: 0 !important;
+    display: list-item !important;
+  }
+
+  .skills-list li::before {
+    display: none !important;
   }
 }

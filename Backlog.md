@@ -54,6 +54,42 @@ These tasks are derived from recent architectural reviews to improve system main
 | [task-008](backlog/tasks/task-008-generator-unit-tests.md) | Add unit tests for generators | To Do | High |
 | [task-009](backlog/tasks/task-009-transcript-pipeline-consolidation.md) | Consolidate Transcript Pipeline | To Do | Medium |
 | [task-010](backlog/tasks/task-010-image-optimization.md) | Implement Image Optimization | To Do | Low |
+| [task-011](backlog/tasks/task-011-repair-broken-transcript-igor-polevoy.md) | Repair Broken Transcript (Igor Polevoy) | Blocked | High |
+| [task-021](backlog/tasks/task-021%20-%20Repair-Broken-Transcript-%E2%80%94-Chet-Hendrickson-Ron-Jefferies-scna-2013.md) | Repair Broken Transcript (Chet & Ron) | To Do | High |
+| [task-022](backlog/tasks/task-022%20-%20Repair-Broken-Transcript-%E2%80%94-Ethan-Gunderson-Ryan-Briones-gathers-us.md) | Repair Broken Transcript (Ethan & Ryan) | To Do | High |
+| [task-023](backlog/tasks/task-023%20-%20Repair-Broken-Transcript-%E2%80%94-Jonathan-Baltz-jonathan-baltz-chicagowebconf-2012.md) | Repair Broken Transcript (Jonathan Baltz) | To Do | High |
+| [task-024](backlog/tasks/task-024%20-%20Repair-Broken-Transcript-%E2%80%94-Dave-Hoover-geekfest-geekfest.md) | Repair Broken Transcript (Dave Hoover) | To Do | High |
+| [task-025](backlog/tasks/task-025%20-%20Repair-Broken-Transcript-%E2%80%94-Ashe-Dryden-ashe-dryden-general.md) | Repair Broken Transcript (Ashe Dryden) | To Do | High |
+
+---
+
+## Archive Canonical Review (Phase 1)
+
+This milestone tracks the canonical review and optimization of all 197 interview transcripts according to the `TRANSCRIPTION_PROMPT.md` protocol.
+
+| Task ID | Title | Status | Priority |
+| :--- | :--- | :--- | :--- |
+| [task-027](backlog/tasks/task-027%20-%20Canonical-Review-%E2%80%94-Aaron-Bedra-aaron-bedra-general.md) | Canonical Review (Aaron Bedra) | To Do | Medium |
+| [task-026](backlog/tasks/task-026%20-%20Canonical-Review-%E2%80%94-Aaron-Holbrook-aaron-holbrook-general.md) | Canonical Review (Aaron Holbrook) | To Do | Medium |
+| [task-029](backlog/tasks/task-029%20-%20Canonical-Review-%E2%80%94-Andrea-Magnorsky-andrea-magnorsky-general.md) | Canonical Review (Andrea Magnorsky) | To Do | Medium |
+| [task-030](backlog/tasks/task-030%20-%20Canonical-Review-%E2%80%94-Angelique-Martin-angelique-martin-general.md) | Canonical Review (Angelique Martin) | To Do | Medium |
+| [task-028](backlog/tasks/task-028%20-%20Canonical-Review-%E2%80%94-Arthur-Kay-arthur-kay-general.md) | Canonical Review (Arthur Kay) | To Do | Medium |
+| [task-101](backlog/tasks/task-101%20-%20Canonical-Review-%E2%80%94-Angelique-Martin-interview-with-angelique-martin-general.md) | Canonical Review (Angelique Martin) | To Do | Medium |
+| [task-102](backlog/tasks/task-102%20-%20Canonical-Review-%E2%80%94-Dickinson-Beehler-interview-with-dickinson-beehler.md) | Canonical Review (Dickinson & Beehler) | To Do | Medium |
+| [task-103](backlog/tasks/task-103%20-%20Canonical-Review-%E2%80%94-Dave-Thomas-dave-thomas-goto-conference-and-community.md) | Canonical Review (Dave Thomas) | To Do | Medium |
+| [task-104](backlog/tasks/task-104%20-%20Canonical-Review-%E2%80%94-Gil-Tene-interview-with-gil-tene.md) | Canonical Review (Gil Tene) | To Do | Medium |
+| [task-105](backlog/tasks/task-105%20-%20Canonical-Review-%E2%80%94-Chris-Whitaker-interview-with-chris-whitaker-general.md) | Canonical Review (Chris Whitaker) | To Do | Medium |
+| [task-106](backlog/tasks/task-106%20-%20Canonical-Review-%E2%80%94-Dean-Wampler-interview-with-dean-wampler-general.md) | Canonical Review (Dean Wampler) | To Do | Medium |
+| [task-107](backlog/tasks/task-107%20-%20Canonical-Review-%E2%80%94-Hadi-Hariri-interview-with-hadi-hariri-general.md) | Canonical Review (Hadi Hariri) | To Do | Medium |
+| [task-108](backlog/tasks/task-108%20-%20Canonical-Review-%E2%80%94-Carina-C.-Zona-interview-with-carina-c-zona-general.md) | Canonical Review (Carina C. Zona) | To Do | Medium |
+| [task-109](backlog/tasks/task-109%20-%20Canonical-Review-%E2%80%94-Zinni-Buda-Howe-interview-with-zinni-buda-howe.md) | Canonical Review (Zinni, Buda, Howe) | To Do | Medium |
+| [task-110](backlog/tasks/task-110%20-%20Canonical-Review-%E2%80%94-Eric-Kingery-interview-with-eric-kingery-general.md) | Canonical Review (Eric Kingery) | To Do | Medium |
+| [task-111](backlog/tasks/task-111%20-%20Canonical-Review-%E2%80%94-Giles-Bowkett-interview-with-giles-bowkett-general.md) | Canonical Review (Giles Bowkett) | To Do | Medium |
+| [task-112](backlog/tasks/task-112%20-%20Canonical-Review-%E2%80%94-Dan-North-interview-with-dan-north-general.md) | Canonical Review (Dan North) | To Do | Medium |
+| [task-113](backlog/tasks/task-113%20-%20Canonical-Review-%E2%80%94-Anna-Lear-interview-with-anna-lear-general.md) | Canonical Review (Anna Lear) | To Do | Medium |
+| [task-114](backlog/tasks/task-114%20-%20Canonical-Review-%E2%80%94-James-Edward-Gray-II-interview-with-james-edward-gray-ii.md) | Canonical Review (James Edward Gray II) | To Do | Medium |
+| [task-115](backlog/tasks/task-115%20-%20Canonical-Review-%E2%80%94-Giles-Bowkett-Rails-interview-with-giles-bowkett-rails.md) | Canonical Review (Giles Bowkett - Rails) | To Do | Medium |
+| [task-116](backlog/tasks/task-116%20-%20Canonical-Review-%E2%80%94-Charley-Baker-interview-with-charley-baker-general.md) | Canonical Review (Charley Baker) | To Do | Medium |
 
 ---
 

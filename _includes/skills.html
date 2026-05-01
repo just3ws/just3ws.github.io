@@ -1,0 +1,8 @@
+<div class="skills-category">
+  <h3 class="category-name">{{ include.category.name }}</h3>
+  <ul class="skills-list">
+    {%- for item in include.category.items %}
+    <li>{{ item.name | default: item }}</li>
+    {%- endfor %}
+  </ul>
+</div>

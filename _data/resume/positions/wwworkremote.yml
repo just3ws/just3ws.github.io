@@ -1,0 +1,52 @@
+---
+company:
+  name: Independent
+  location: Remote
+title: AI-Augmented Rails Systems Engineer (WWWorkRemote)
+type: Project
+start_date: 2025
+end_date: Present
+id: wwworkremote
+
+summary: >
+  Built a Rails-based data platform using PostgreSQL and vector search to
+  ingest, normalize, and analyze large volumes of job data with controlled
+  AI-assisted workflows.
+
+highlights:
+  - text: >
+      Fragmented job data across multiple sources was unified by building a
+      Rails ingestion and normalization pipeline, enabling consistent storage
+      and downstream processing in PostgreSQL.
+
+  - text: >
+      Low-signal job matching was improved by implementing semantic search using
+      pgvector, enabling more precise alignment between candidate profiles and
+      job requirements.
+
+  - text: >
+      Inconsistent behavior across AI providers was reduced by designing a
+      provider-agnostic orchestration layer, enabling controlled use of multiple
+      models with consistent outputs.
+
+  - text: >
+      Risk of prompt injection and malformed input was mitigated by implementing
+      a multi-stage guardrails pipeline with normalization and heuristic
+      scanning, improving safety of AI-driven workflows.
+
+  - text: >
+      Drift between generated output and system constraints was reduced by
+      injecting static analysis signals into AI workflows, ensuring adherence to
+      security and architectural requirements.
+
+skills:
+  - Ruby on Rails
+  - PostgreSQL
+  - pgvector
+  - API Design
+  - Data Pipelines
+  - System Design
+  - AI-Orchestration
+  - Prompt Safety
+  - OpenTelemetry
+  - Distributed Systems

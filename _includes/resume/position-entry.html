@@ -22,32 +22,16 @@
     </p>
   </header>
 
-  {%- if include.position.context %}
-  <div class="position-narrative">
-    <p><strong>Context:</strong> {{ include.position.context }}</p>
-    <p><strong>Action:</strong> {{ include.position.action }}</p>
-    <p><strong>Impact:</strong> {{ include.position.impact }}</p>
-  </div>
-  {%- elsif include.position.summary %}
+  {%- if include.position.summary %}
   <p>{{ include.position.summary }}</p>
   {%- endif %}
 
-  {%- if include.position.highlights or include.position.achievements.highlights %}
+  {%- if include.position.highlights %}
   <ul class="achievement-highlights">
-    {%- assign highlights = include.position.highlights | default: include.position.achievements.highlights %}
-    {%- for highlight in highlights %}
+    {%- for highlight in include.position.highlights %}
     <li>
       {% if highlight.text %}
         <span class="achievement-text">{{ highlight.text }}</span>
-        {% if highlight.label %}
-          <span class="highlight-label">[{{ highlight.label }}]</span>
-        {% endif %}
-        {% if highlight.impact %}
-          <span class="achievement-meta impact"><span class="meta-label">Impact:</span> {{ highlight.impact }}</span>
-        {% endif %}
-        {% if highlight.leadership %}
-          <span class="achievement-meta leadership"><span class="meta-label">Leadership:</span> {{ highlight.leadership }}</span>
-        {% endif %}
       {% else %}
         {{ highlight }}
       {% endif %}

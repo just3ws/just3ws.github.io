@@ -30,10 +30,10 @@
 
   <section id="experience">
     <h2>Experience</h2>
-    {% for item in site.data.resume.timeline.items %}
-    {% assign position = site.data.resume.positions[item] %}
-    {% if position %}
-    {% include resume/position-entry.html position=position position_id=item link_title=true %}
+    {% for tl_item in site.data.resume.timeline.items %}
+    {% assign exp_position = site.data.resume.positions[tl_item] %}
+    {% if exp_position %}
+    {% include resume/position-entry.html position=exp_position position_id=tl_item link_title=true %}
     {% endif %}
     {% endfor %}
 
@@ -47,8 +47,8 @@
       </header>
       <p>{{ earlier.description }}</p>
       <ul>
-        {% for item in earlier.items %}
-        <li>{{ item.company }}{% if item.role %} ({{ item.role }}){% endif %}: {{ item.summary }}</li>
+        {% for earlier_item in earlier.items %}
+        <li>{{ earlier_item.company }}{% if earlier_item.role %} ({{ earlier_item.role }}){% endif %}: {{ earlier_item.summary }}</li>
         {% endfor %}
       </ul>
       <p><a href="/history/">View full career history</a></p>
@@ -59,14 +59,14 @@
   <section id="leadership">
     <h2>{{ leadership.title }}</h2>
     <ul>
-      {% for item in leadership.items %}
-      <li>{{ item }}</li>
+      {% for leader_item in leadership.items %}
+      <li>{{ leader_item }}</li>
       {% endfor %}
     </ul>
   </section>
 
   <section id="skills">
-    <h2>Skills</h2>
+    <h2>{{ site.data.resume.skills.title | default: "Skills" }}</h2>
     {% include resume/skills-dashboard.html %}
   </section>
 

@@ -41,7 +41,7 @@ test.describe('Site Layout and Aesthetics', () => {
     
     const categoryLabel = page.locator('.skills-category .category-name');
     await expect(categoryLabel.first()).toBeVisible();
-    await expect(categoryLabel.first()).toContainText(/Strategic Capabilities/i);
+    await expect(categoryLabel.first()).toContainText(/Architecture & Delivery/i);
 
     const skillItem = page.locator('.skills-list li');
     await expect(skillItem.first()).toBeVisible();
