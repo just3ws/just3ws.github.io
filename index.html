@@ -92,7 +92,7 @@ permalink: /
     <h2>Diagnostic Intake</h2>
     <p>Tell me what's broken. I'll review your intake within 4 hours.</p>
     
-    <form class="intake-form">
+    <form class="intake-form" action="https://formspree.io/f/xaqvqrrw" method="POST" enctype="multipart/form-data">
       {% for section in site.data.audit_intake.sections %}
         <fieldset>
           <legend>{{ section.title }}</legend>
@@ -102,19 +102,19 @@ permalink: /
             <div class="form-field">
               <label>{{ field.label }}{% if field.required %} <span class="required">*</span>{% endif %}</label>
               {% if field.type == 'textarea' %}
-                <textarea placeholder="{{ field.placeholder }}" {% if field.required %}required{% endif %}></textarea>
+                <textarea name="{{ field.label | slugify }}" placeholder="{{ field.placeholder }}" {% if field.required %}required{% endif %}></textarea>
               {% elsif field.type == 'select' %}
-                <select {% if field.required %}required{% endif %}>
+                <select name="{{ field.label | slugify }}" {% if field.required %}required{% endif %}>
                   {% for option in field.options %}
-                    <option>{{ option }}</option>
+                    <option value="{{ option }}">{{ option }}</option>
                   {% endfor %}
                 </select>
               {% elsif field.type == 'checkbox' %}
                 <div class="checkbox-wrapper">
-                  <input type="checkbox"> <span>{{ field.description }}</span>
+                  <input type="checkbox" name="{{ field.label | slugify }}" value="yes"> <span>{{ field.description }}</span>
                 </div>
               {% else %}
-                <input type="{{ field.type }}" {% if field.required %}required{% endif %}>
+                <input type="{{ field.type }}" name="{{ field.label | slugify }}" {% if field.required %}required{% endif %}>
                 {% if field.description %}<p class="field-help">{{ field.description }}</p>{% endif %}
               {% endif %}
             </div>
@@ -122,6 +122,11 @@ permalink: /
         </fieldset>
       {% endfor %}
       
+      <div class="form-field">
+        <label>Your Email <span class="required">*</span></label>
+        <input type="email" name="_replyto" placeholder="email@company.com" required>
+      </div>
+
       <div class="form-actions">
         <button type="submit" class="button button-primary">Submit for Review</button>
       </div>
