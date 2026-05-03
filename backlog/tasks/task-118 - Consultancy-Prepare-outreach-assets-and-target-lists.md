@@ -4,8 +4,9 @@ title: 'Consultancy: Prepare outreach assets and target lists'
 status: To Do
 assignee: []
 created_date: '2026-05-03 18:59'
+updated_date: '2026-05-03 19:08'
 labels: []
-milestone: m-1
+milestone: m-5
 dependencies: []
 priority: high
 ---
