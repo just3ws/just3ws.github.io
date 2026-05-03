@@ -93,6 +93,9 @@ permalink: /
     <p>Tell me what's broken. I'll review your intake within 4 hours.</p>
     
     <form class="intake-form" action="https://formspree.io/f/xaqvqrrw" method="POST" enctype="multipart/form-data">
+      <input type="text" name="_gotcha" style="display:none">
+      <input type="hidden" name="_next" value="https://www.just3ws.com/consultancy/thanks/">
+      
       {% for section in site.data.audit_intake.sections %}
         <fieldset>
           <legend>{{ section.title }}</legend>

@@ -35,7 +35,13 @@
 
   <footer class="site-footer no-print">
     <div class="footer-container">
-      <p>&copy; {{ "now" | date: "%Y" }} Mike Hall.</p>
+      <p>&copy; {{ "now" | date: "%Y" }} Mike Hall. 
+        {% if page.layout == 'resume' %}
+          <span class="footer-cta" style="margin-left: 1rem; border-left: 1px solid #ccc; padding-left: 1rem;">
+            Need Rails/Postgres diagnostics? <a href="/">View Consultancy Offers</a>
+          </span>
+        {% endif %}
+      </p>
     </div>
   </footer>
 
