@@ -1,10 +1,10 @@
 ---
 id: TASK-118
 title: 'Consultancy: Prepare outreach assets and target lists'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-03 18:59'
-updated_date: '2026-05-03 19:08'
+updated_date: '2026-05-03 20:53'
 labels: []
 milestone: m-5
 dependencies: []
@@ -19,10 +19,10 @@ Prepare the communication assets and target lists required for the Day 1-5 outre
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Draft a LinkedIn Service Page description based on the 'sellable copy' in the launch plan.
-- [ ] #2 Prepare templates for warm outreach, cold LinkedIn DMs, and community posts (Slack/Discord) as defined in the plan.
-- [ ] #3 Create a target list of 40 names/companies for initial outreach.
-- [ ] #4 Identify 5 high-potential Rails/Postgres expert jobs on marketplaces (Upwork/Toptal).
+- [x] #1 Draft a LinkedIn Service Page description based on the 'sellable copy' in the launch plan.
+- [x] #2 Prepare templates for warm outreach, cold LinkedIn DMs, and community posts (Slack/Discord) as defined in the plan.
+- [x] #3 Create a target list of 40 names/companies for initial outreach.
+- [x] #4 Identify 5 high-potential Rails/Postgres expert jobs on marketplaces (Upwork/Toptal).
 <!-- AC:END -->
 
 ## Definition of Done
