@@ -1,9 +1,10 @@
 ---
 id: TASK-121
 title: 'Consultancy: Root Swap & Redirection'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-03 19:08'
+updated_date: '2026-05-03 19:15'
 labels: []
 milestone: m-4
 dependencies: []
@@ -18,9 +19,9 @@ Establish the consultancy as the primary presence by moving the landing page to 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Replace the site root (/) with the consultancy landing page.
-- [ ] #2 Configure 301 redirects for legacy resume SEO.
-- [ ] #3 Update site-nav.html to include the consultancy link and update the resume link.
+- [x] #1 Replace the site root (/) with the consultancy landing page.
+- [x] #2 Configure 301 redirects for legacy resume SEO.
+- [x] #3 Update site-nav.html to include the consultancy link and update the resume link.
 <!-- AC:END -->
 
 ## Definition of Done
