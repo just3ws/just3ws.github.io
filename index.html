@@ -1,14 +1,159 @@
 ---
-layout: resume
-title: Mike Hall | Staff Software Engineer
-description: Staff software engineer focused on platform architecture, reliability, observability, and legacy modernization.
-person_schema: true
-resume_canonical: true
-canonical_url: https://www.just3ws.com/
-use_digital_patina: false
-body_class: ats-resume
+layout: base
+title: Rails & Postgres Consultancy | 48-Hour Diagnostics
+description: Fixed-scope system behavior audits and query triage for high-stakes Rails and Postgres systems.
+permalink: /
 ---
 
-{% include resume/ats-content.html %}
+<section class="consultancy-hero">
+  <div class="container">
+    <h1>Your Rails system shouldn't be a haunted house.</h1>
+    <p class="lead">Fixed-scope diagnostics for expensive, already-visible problems. Evidence-first, AI-enabled, human-led.</p>
+    <div class="hero-actions">
+      <a href="#offers" class="button button-primary">View Diagnostic Offers</a>
+      <a href="#intake" class="button button-secondary">Start Intake</a>
+    </div>
+  </div>
+</section>
 
-<!-- release {{ site.release_timestamp | default: "unknown" }} -->
+<section id="pains" class="consultancy-pains section-alt">
+  <div class="container">
+    <h2>The problems I solve.</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Silent Data Loss</h3>
+        <p>Record loss in signup, checkout, or sync paths that damage revenue and trust.</p>
+      </div>
+      <div class="card">
+        <h3>Query Contention</h3>
+        <p>Slow queries and lock contention that cause user-facing slowness or incidents.</p>
+      </div>
+      <div class="card">
+        <h3>Job Storms</h3>
+        <p>Retry storms or stale background jobs causing duplicate or missing side effects.</p>
+      </div>
+      <div class="card">
+        <h3>Upgrade Blockers</h3>
+        <p>Rails, Ruby, or Postgres upgrades blocked by hidden coupling or fear of regressions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offers" class="consultancy-offers">
+  <div class="container">
+    <h2>Fixed-Scope Diagnostic Offers</h2>
+    <div class="grid">
+      <div class="card product-card">
+        <div class="product-header">
+          <h3>48-Hour System Behavior Audit</h3>
+          <p class="price">$2,500</p>
+        </div>
+        <ul class="features">
+          <li>One app, one DB, one critical path</li>
+          <li>Reconstruct actual execution path from logs</li>
+          <li>Behavior map & top three risks</li>
+          <li>Evidence appendix & prioritized next steps</li>
+          <li>30-minute expert walkthrough</li>
+        </ul>
+        <div class="product-footer">
+          <p class="timeline"><strong>Timeline:</strong> 2 Business Days</p>
+        </div>
+      </div>
+      <div class="card product-card">
+        <div class="product-header">
+          <h3>Query & Data Integrity Triage</h3>
+          <p class="price">$4,000</p>
+        </div>
+        <ul class="features">
+          <li>One query cluster or sync path</li>
+          <li>Deep EXPLAIN pack & IO/cache behavior analysis</li>
+          <li>Ranked query pain list & contention findings</li>
+          <li>Integrity checks & remediation sequence</li>
+          <li>45-minute expert walkthrough</li>
+        </ul>
+        <div class="product-footer">
+          <p class="timeline"><strong>Timeline:</strong> 3 Business Days</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ai-advantage" class="consultancy-ai section-alt">
+  <div class="container">
+    <h2>The AI Advantage</h2>
+    <p>I use local AI tools to compress logs, summarize execution plans, and cluster anomalies faster than manual effort allows. **I keep AI out of the liability boundary.** human judgment remains on scope, evidence selection, root-cause calls, and risk ranking.</p>
+  </div>
+</section>
+
+<section id="intake" class="consultancy-intake">
+  <div class="container">
+    <h2>Diagnostic Intake</h2>
+    <p>Tell me what's broken. I'll review your intake within 4 hours.</p>
+    
+    <form class="intake-form">
+      {% for section in site.data.audit_intake.sections %}
+        <fieldset>
+          <legend>{{ section.title }}</legend>
+          {% if section.description %}<p class="field-help">{{ section.description }}</p>{% endif %}
+          
+          {% for field in section.fields %}
+            <div class="form-field">
+              <label>{{ field.label }}{% if field.required %} <span class="required">*</span>{% endif %}</label>
+              {% if field.type == 'textarea' %}
+                <textarea placeholder="{{ field.placeholder }}" {% if field.required %}required{% endif %}></textarea>
+              {% elsif field.type == 'select' %}
+                <select {% if field.required %}required{% endif %}>
+                  {% for option in field.options %}
+                    <option>{{ option }}</option>
+                  {% endfor %}
+                </select>
+              {% elsif field.type == 'checkbox' %}
+                <div class="checkbox-wrapper">
+                  <input type="checkbox"> <span>{{ field.description }}</span>
+                </div>
+              {% else %}
+                <input type="{{ field.type }}" {% if field.required %}required{% endif %}>
+                {% if field.description %}<p class="field-help">{{ field.description }}</p>{% endif %}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </fieldset>
+      {% endfor %}
+      
+      <div class="form-actions">
+        <button type="submit" class="button button-primary">Submit for Review</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .consultancy-hero { padding: 4rem 0; text-align: center; }
+  .consultancy-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+  .lead { font-size: 1.5rem; color: #666; max-width: 800px; margin: 0 auto 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+  .card { padding: 2rem; border: 1px solid #eee; border-radius: 8px; background: #fff; }
+  .section-alt { background: #f9f9f9; padding: 4rem 0; }
+  .product-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #eee; margin-bottom: 1rem; padding-bottom: 0.5rem; }
+  .price { font-size: 1.5rem; font-weight: bold; color: #2ecc71; }
+  .features { list-style: none; padding: 0; margin: 1rem 0; }
+  .features li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+  .features li::before { content: "✓"; position: absolute; left: 0; color: #2ecc71; }
+  .intake-form fieldset { border: none; margin-bottom: 3rem; padding: 0; }
+  .intake-form legend { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+  .form-field { margin-bottom: 1.5rem; }
+  .form-field label { display: block; font-weight: bold; margin-bottom: 0.5rem; }
+  .form-field input[type="text"], .form-field input[type="date"], .form-field textarea, .form-field select { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px; }
+  .field-help { font-size: 0.9rem; color: #666; margin-top: 0.25rem; }
+  .required { color: #e74c3c; }
+  .button { display: inline-block; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; }
+  .button-primary { background: #3498db; color: #fff; }
+  .button-secondary { background: #eee; color: #333; margin-left: 1rem; }
+  @media (max-width: 768px) {
+    .consultancy-hero h1 { font-size: 2rem; }
+    .hero-actions .button { display: block; margin: 1rem 0; }
+    .button-secondary { margin-left: 0; }
+  }
+</style>
