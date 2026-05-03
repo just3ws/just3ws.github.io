@@ -1,19 +1,25 @@
 # Backlog - Mike Hall's Archive & Resume Project
-
 ## Project Status Overview
 
-Current operating status: **Maintenance & Optimization Phase**.
+Current operating status: **Market Entry & Customer Acquisition Phase**.
 
-The project has stabilized its build pipeline, data integrity, and SEO foundations. The current focus is on architectural modernization and archive completeness.
+The consultancy launch is complete. The site root now hosts the "Guided Diagnostic Sprint" offers. The current focus is on executing the outreach sprints (Warm and Cold) to secure the first paid engagement.
 
 ### Critical Constraints
-- **Root Route Semantics:** `/` is the root resume route; `/home/` is homepage content.
-- **Resume Integrity:** `/`, `/resume.txt`, and `/resume.md` must render correctly on every build.
-- **CI Guardrails:** Runtime parity, uniqueness, and integrity checks are blocking gates.
+- **Root Route Semantics:** `/` is the primary consultancy landing page; `/resume/` is the resume.
+- **Security First:** All diagnostic work must follow the PII sanitization protocol.
+- **Evidence Validation:** Diagnostic timelines only start after evidence (logs/schema) is validated.
 
 ---
 
-## Decisions
+## Active Backlog (Market Entry)
+
+| Task ID | Title | Status | Priority |
+| :--- | :--- | :--- | :--- |
+| [TASK-122](backlog/tasks/task-122-Consultancy-Day-2-Warm-Outreach-Sprint.md) | Consultancy: Day 2 Warm Outreach Sprint | To Do | High |
+| [TASK-123](backlog/tasks/task-123-Consultancy-Day-3-Cold-Targeted-Outreach.md) | Consultancy: Day 3 Cold Targeted Outreach | To Do | High |
+
+## Active Backlog (System Transformation - Phase 2)
 
 Individual Architectural Decision Records (ADRs) are stored in `backlog/decisions/`.
 

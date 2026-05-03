@@ -25,7 +25,7 @@ test.describe('Site Layout and Aesthetics', () => {
   });
 
   test('Resume renders correctly and is professional', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/resume/');
     await expect(page.locator('h1')).toContainText('Mike Hall');
     
     // Capture full page screenshot for manual review
@@ -51,7 +51,7 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.goto('/home/');
     const resumeLink = page.locator('.site-nav-links a', { hasText: 'Resume' });
     await resumeLink.click();
-    await expect(page).toHaveURL(/\/$/);
+    await expect(page).toHaveURL(/\/resume\/$/);
     
     const avatar = page.locator('.site-nav-avatar');
     await expect(avatar).toBeVisible();

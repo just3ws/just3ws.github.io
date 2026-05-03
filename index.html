@@ -42,38 +42,66 @@ permalink: /
 
 <section id="offers" class="consultancy-offers">
   <div class="container">
-    <h2>Fixed-Scope Diagnostic Offers</h2>
+    <h2>Guided Diagnostic Sprints</h2>
+    <p class="section-intro">Expert interventions for production systems. No generic advice—just evidence-based root causes and remediation paths.</p>
     <div class="grid">
       <div class="card product-card">
         <div class="product-header">
-          <h3>48-Hour System Behavior Audit</h3>
-          <p class="price">$2,500</p>
+          <h3>Expert Strategy Session</h3>
+          <p class="price">$750</p>
         </div>
+        <p class="card-meta"><em>The perfect first step.</em></p>
         <ul class="features">
-          <li>One app, one DB, one critical path</li>
-          <li>Reconstruct actual execution path from logs</li>
-          <li>Behavior map & top three risks</li>
-          <li>Evidence appendix & prioritized next steps</li>
-          <li>30-minute expert walkthrough</li>
+          <li><strong>90-Minute Deep-Dive:</strong> Focused analysis of your most pressing system pain.</li>
+          <li><strong>Immediate Roadmap:</strong> Real-time feedback on query, lock, or sync bottlenecks.</li>
+          <li><strong>Zero-Risk:</strong> 100% of the fee is credited toward your first Guided Sprint.</li>
         </ul>
         <div class="product-footer">
-          <p class="timeline"><strong>Timeline:</strong> 2 Business Days</p>
+          <p class="timeline"><strong>Timeline:</strong> Scheduled within 48 hours</p>
         </div>
       </div>
       <div class="card product-card">
         <div class="product-header">
-          <h3>Query & Data Integrity Triage</h3>
-          <p class="price">$4,000</p>
+          <h3>System Behavior Deep-Dive</h3>
+          <p class="price">$4,500</p>
         </div>
         <ul class="features">
-          <li>One query cluster or sync path</li>
-          <li>Deep EXPLAIN pack & IO/cache behavior analysis</li>
-          <li>Ranked query pain list & contention findings</li>
-          <li>Integrity checks & remediation sequence</li>
-          <li>45-minute expert walkthrough</li>
+          <li><strong>Mandatory Context Download:</strong> 90-min session with your system expert/BA.</li>
+          <li><strong>PII Safety First:</strong> Guided log sanitization protocol before any data transfer.</li>
+          <li><strong>Path Reconstruction:</strong> Mapping actual execution flows from correlated logs.</li>
+          <li><strong>Evidence-First Report:</strong> Root-cause analysis with cited log/schema artifacts.</li>
+          <li><strong>Remediation Roadmap:</strong> Prioritized sequence of fixes for one critical path.</li>
         </ul>
         <div class="product-footer">
-          <p class="timeline"><strong>Timeline:</strong> 3 Business Days</p>
+          <p class="timeline"><strong>Timeline:</strong> 1 Business Week (post-evidence validation)</p>
+        </div>
+      </div>
+      <div class="card product-card">
+        <div class="product-header">
+          <h3>Query or Integrity Triage</h3>
+          <p class="price">$6,500</p>
+        </div>
+        <p class="card-meta"><em>Choose one specialized track:</em></p>
+        <div class="tracks">
+          <div class="track">
+            <h4>Track A: SQL Performance & Contention</h4>
+            <ul class="features">
+              <li>Lock-wait pattern & IPC bottleneck identification</li>
+              <li>Deep EXPLAIN (ANALYZE, BUFFERS) profiling</li>
+              <li>Postgres wait-event analysis</li>
+            </ul>
+          </div>
+          <div class="track">
+            <h4>Track B: Sync Integrity & Async Correctness</h4>
+            <ul class="features">
+              <li>Background job retry-storm isolation</li>
+              <li>State drift & sync breakpoint identification</li>
+              <li>Race condition & idempotent check audit</li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-footer">
+          <p class="timeline"><strong>Timeline:</strong> 1 Business Week (post-evidence validation)</p>
         </div>
       </div>
     </div>
@@ -159,6 +187,11 @@ permalink: /
   .button { display: inline-block; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: bold; cursor: pointer; border: none; }
   .button-primary { background: #3498db; color: #fff; }
   .button-secondary { background: #eee; color: #333; margin-left: 1rem; }
+  .product-footer { margin-top: auto; padding-top: 1rem; border-top: 1px solid #eee; }
+  .card-meta { font-size: 0.9rem; color: #666; margin-bottom: 1rem; }
+  .tracks { display: flex; flex-direction: column; gap: 1.5rem; }
+  .track h4 { font-size: 1rem; color: #3498db; margin-bottom: 0.5rem; }
+  .track .features { margin: 0; font-size: 0.95rem; }
   @media (max-width: 768px) {
     .consultancy-hero h1 { font-size: 2rem; }
     .hero-actions .button { display: block; margin: 1rem 0; }

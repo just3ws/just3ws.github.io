@@ -7,57 +7,57 @@ Prepare a list of 40 potential clients. Prioritize those with "visible pain" sig
 
 | Company | Contact | Pain Signal (e.g., Hiring Sr Rails, Monolith) | Status |
 |---|---|---|---|
-| [Target 01] | | | |
-| [Target 02] | | | |
-| [Target 03] | | | |
-| [Target 04] | | | |
-| [Target 05] | | | |
-| [Target 06] | | | |
-| [Target 07] | | | |
-| [Target 08] | | | |
-| [Target 09] | | | |
-| [Target 10] | | | |
+| Topkey | Founder/Lead | Hiring Sr Rails, "Beautiful Monolith", Fintech | To Do |
+| PrizePicks | Head of Engineering | Hiring Sr Backend (Rails), high load, background jobs | To Do |
+| ForUsAll | Engineering Lead | Hiring Sr Rails (AI Native), Large Monolith | To Do |
+| Doximity | Engineering Manager | Hiring Sr Rails, Mature Monolith | To Do |
+| Fleetio | Head of Platform | Hiring Staff Engineer, Scaling infrastructure | To Do |
+| Versapay | Hiring Manager | Hiring Sr Rails, Fintech data integrity | To Do |
+| InpharmD | Founder | YC W21, Hiring Sr Rails | To Do |
+| Koinly | CTO | Crypto Tax, High SQL load, complex sync | To Do |
+| Toma | Founder | YC W24, AI/Rails integration | To Do |
+| Gusto | Engineering Lead | Mature monolith, scaling background jobs | To Do |
 
-## Sector 2: Warm Outreach (Former Colleagues/Network)
-*Source: LinkedIn, Address Book*
+## Sector 2: Warm Outreach (Former Interviewees/Network)
+*Source: UGtastic Interview Archive*
 
 | Company | Contact | Relationship | Status |
 |---|---|---|---|
-| [Target 11] | | | |
-| [Target 12] | | | |
-| [Target 13] | | | |
-| [Target 14] | | | |
-| [Target 15] | | | |
-| [Target 16] | | | |
-| [Target 17] | | | |
-| [Target 18] | | | |
-| [Target 19] | | | |
-| [Target 20] | | | |
+| JetBrains | Hadi Hariri | Interviewed (UGtastic) | To Do |
+| Independent | Avdi Grimm | Interviewed (UGtastic) | To Do |
+| Independent | Corey Haines | Interviewed (UGtastic) | To Do |
+| Pragmatic Programmers | Dave Thomas | Interviewed (UGtastic) | To Do |
+| 8th Light | Mike Jansen | Interviewed (UGtastic) | To Do |
+| Clean Coders | Robert Martin | Interviewed (UGtastic) | To Do |
+| Blue Box | Chad Fowler | Interviewed (UGtastic) | To Do |
+| DevMynd | JC Grubbs | Interviewed (UGtastic) | To Do |
+| Table XI | Mark Rickmeier | Network / Interviewed | To Do |
+| Hashrocket | (Contact) | Network / Agency Peers | To Do |
 
 ## Sector 3: High-Growth SaaS / Marketplace (Potential Ghost Bugs)
-*Source: Crunchbase, Industry News*
+*Source: Industry News, Tech Trends 2026*
 
 | Company | Sector | Trigger (e.g., Scaling fast, new feature launch) | Status |
 |---|---|---|---|
-| [Target 21] | Fintech | Data sync/integrity is critical | |
-| [Target 22] | Healthtech | Compliance/Audit trails are critical | |
-| [Target 23] | Ecommerce | Checkout peaks/locking risk | |
-| [Target 24] | | | |
-| [Target 25] | | | |
-| [Target 26] | | | |
-| [Target 27] | | | |
-| [Target 28] | | | |
-| [Target 29] | | | |
-| [Target 30] | | | |
+| Judge.me | E-commerce | 500k shops / 10 engineers; high-load per head | To Do |
+| Aurora Solar | GreenTech | High growth SaaS, scaling data models | To Do |
+| Zeitview | Analytics | Massive datasets, complex enterprise workflows | To Do |
+| Zocdoc | HealthTech | Real-time scheduling, high concurrency | To Do |
+| Modern Fertility | HealthTech | Complex clinical data models | To Do |
+| Intercom | SaaS | AI-first messaging infrastructure | To Do |
+| Affirm | FinTech | BNPL, checkout peaks, transaction locking | To Do |
+| Instacart | Logistics | Real-time logistics, high-concurrency jobs | To Do |
+| Zipline | HealthTech | Logistics, Rails-heavy backend | To Do |
+| SmartFinancial | Insurance | High-scale lead gen, Rails/Postgres | To Do |
 
-## Sector 4: Marketplace Leads (Active Pain)
+## Sector 4: Marketplace & Monitoring (Active Pain)
 *Source: Upwork, Toptal, Gun.io*
 
 | Project/Company | Pain Described | Urgency | Status |
 |---|---|---|---|
-| [Target 31] | | | |
-| [Target 32] | | | |
-| [Target 33] | | | |
+| [Target 31] | Monitor "Expert Rails" on Upwork daily | High | |
+| [Target 32] | Monitor "Postgres Performance" on Toptal | High | |
+| [Target 33] | Monitor YC "Work at a Startup" daily | High | |
 | [Target 34] | | | |
 | [Target 35] | | | |
 | [Target 36] | | | |

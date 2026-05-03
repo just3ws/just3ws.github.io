@@ -16,7 +16,7 @@ I’m reaching out because I’ve just launched a specialized diagnostic service
 - Slow queries and lock contention under load.
 - Background job retry storms (Sidekiq/DelayedJob).
 
-I’m currently offering a **48-hour System Behavior Audit**. I take read-only production logs and schema, use a specialized AI-enabled toolchain to cluster anomalies, and deliver a behavior map with the top 3 root-cause risks within 2 business days.
+I’m currently offering a **System Behavior Deep-Dive**. I take read-only production logs and schema, use a specialized AI-enabled toolchain to cluster anomalies, and deliver a behavior map with the top 3 root-cause risks within one business week of evidence validation.
 
 If you (or anyone in your network) are dealing with a "haunted house" path in your monolith that the team hasn't had time to pin down, I’d love to help.
 
@@ -30,7 +30,7 @@ Mike
 ## 2. Cold Targeted Outreach (Job Boards/Wellfound)
 **Goal:** Convert a hiring need into a fixed-price diagnostic win.
 
-**Subject:** Expert help for [Specific Role/Problem from Job Post]
+**Subject:** Expert diagnostic help for [Specific Role/Problem from Job Post]
 
 Hi [Founder/Hiring Manager Name],
 
@@ -38,11 +38,11 @@ I saw your posting for a [Role] on [Rails Job Board/Wellfound]. It sounds like y
 
 Hiring for senior roles takes time, but production issues don't wait. If you have any recurring incidents, query contention, or data-integrity anomalies that are currently blocking your delivery, I can help.
 
-I provide a **48-hour System Behavior Audit**. It is a fixed-scope intervention designed to give you an evidence-based root cause and a remediation plan for one painful production path, fast.
+I provide a **System Behavior Deep-Dive**. It is a fixed-scope, one-week intervention designed to give you an evidence-based root cause and a remediation plan for one painful production path, fast. Unlike general contracting, this is a guided sprint that includes a mandatory context download and explicit PII protection.
 
-I've just established this as my primary consultancy focus. You can see the tiers and diagnostic scope here: https://www.just3ws.com/
+I’ve just established this as my primary consultancy focus. You can see the tiers and diagnostic scope here: https://www.just3ws.com/
 
-Would you be open to a 15-minute call to see if a quick diagnostic sprint could clear your current backlog while you finish your search?
+Would you be open to a 15-minute call to see if a quick diagnostic sprint—or even just a one-off **Expert Strategy Session**—could clear your current backlog while you finish your search?
 
 Best,
 Mike
@@ -56,9 +56,12 @@ Mike
 
 "I've seen [Symptom] happen before when [brief technical insight about lock contention/callback loops].
 
-I’m actually running a specialized Rails/Postgres consultancy that focuses exactly on these kinds of 'ghost bugs' and production bottlenecks. I use a specialized AI toolchain to cluster logs and find root causes in 48 hours.
+I’m actually running a specialized Rails/Postgres consultancy that focuses exactly on these kinds of 'ghost bugs' and production bottlenecks. 
 
-If your team is stuck on this, feel free to check out my diagnostic tiers here: https://www.just3ws.com/"
+If your team is stuck, I offer 90-minute **Expert Strategy Sessions** to map out a remediation plan, which can be folded into a full diagnostic sprint later. 
+
+Check out the options here: https://www.just3ws.com/"
+
 
 ---
 
@@ -70,10 +73,10 @@ If your team is stuck on this, feel free to check out my diagnostic tiers here: 
 
 Based on your description of [Specific Problem], this sounds like a [Specific technical hypothesis]. 
 
-Instead of an open-ended hourly engagement, I recommend my **48-hour System Behavior Audit**. For a fixed price of $2,500, I will:
-1. Reconstruct the actual execution path from your production logs.
+Instead of an open-ended hourly engagement, I recommend my **System Behavior Deep-Dive**. For a fixed price of $4,500, I will:
+1. Reconstruct the actual execution path from your production logs (using a guided sanitization protocol).
 2. Identify the top 3 root-cause risks for this symptom.
-3. Deliver a prioritized remediation plan within 2 business days.
+3. Deliver a prioritized remediation plan and engineering walkthrough within one business week of evidence validation.
 
 I require read-only access to logs and schema. You can view my full diagnostic surface and testimonials (coming soon) at https://www.just3ws.com/.
 
