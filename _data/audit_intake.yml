@@ -1,0 +1,45 @@
+sections:
+  - title: System Architecture
+    description: Provide high-level context about your Rails and Postgres environment.
+    fields:
+      - label: Primary Pain Point
+        type: select
+        options:
+          - Silent Record Loss / Sync Issues
+          - Slow Queries / Lock Contention
+          - Background Job / Sidekiq Anomalies
+          - Upgrade Blockers (Rails/Ruby/Postgres)
+          - Third-party Integration Drift
+          - Recurring Incidents / Ghost Bugs
+          - Other (Please specify)
+        required: true
+      - label: Symptom Description
+        type: textarea
+        placeholder: "Describe exactly what is happening (or not happening) in production."
+        required: true
+
+  - title: Evidence Pack
+    description: To perform a 48-hour audit, I require specific diagnostic artifacts.
+    fields:
+      - label: Schema Definition
+        type: file
+        description: "schema.rb or structure.sql"
+        required: true
+      - label: Top Query Stats
+        type: file
+        description: "Output of pg_stat_statements (CSV or JSON preferred)"
+      - label: Sample EXPLAIN Output
+        type: file
+        description: "EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) for problematic queries"
+      - label: Representative Logs
+        type: file
+        description: "Rails production logs with Request/Correlation IDs (scrubbed of PII)"
+
+  - title: Access & Timeline
+    fields:
+      - label: Requested Start Date
+        type: date
+        required: true
+      - label: Read-Only Access Available?
+        type: checkbox
+        description: "I can provide temporary read-only access to production/staging monitoring tools (e.g., Datadog, New Relic, pganalyze)."
