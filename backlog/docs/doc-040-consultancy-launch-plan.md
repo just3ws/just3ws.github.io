@@ -12,7 +12,16 @@ The practical plan is to sell one main productized offer and one narrower add-on
 
 AI belongs in the workflow, but not in the liability boundary. Use it locally to compress logs, summarize `EXPLAIN` output, cluster anomalies, and produce first-pass system maps. Keep human judgment on scope, evidence selection, root-cause calls, risk ranking, and the final recommendation memo. That division is consistent with the current market: Stack Overflow’s 2025 survey shows 84% of respondents using or planning to use AI in development, but 46% said they do not trust the accuracy of AI output. The winning message is therefore not “I do AI consulting.” It is “I tell you what your system is actually doing, fast, with evidence.”
 
-A first paid engagement inside one to three weeks is plausible, not guaranteed, if you treat the launch like a sales sprint. Put the service at the site root, create a free LinkedIn Service Page, send direct outreach to founders and heads of engineering at companies already hiring for Rails, post short high-signal messages in Rails/Postgres communities, and bid only on the newest expert-level marketplace jobs. Current platform structure supports that sequence: LinkedIn already has a service marketplace, Rails communities are open and active, YC exposes founders directly, and Upwork/Toptal already aggregate current freelance demand.
+## Milestones & Architectural Shift
+
+The ultimate goal is to establish the consultancy as the primary brand. This requires a structural shift in the site's presence.
+
+| Milestone | Objective | Key Actions |
+|---|---|---|
+| **M1: Resume Migration** | Relegate resume to sub-path | Migrate `index.html` (current resume) to `/resume` and `/resume.html`; verify all deep links. |
+| **M2: Surface Build** | Create consultancy intake | Build landing page at `/consultancy` (staging); implement intake surface and tiers. |
+| **M3: Root Swap** | **Consultancy as Primary Presence** | Move consultancy landing page to `/` (site root); configure 301 redirects for legacy resume SEO; update navigation. |
+| **M4: Market Entry** | First paid engagement | Execute the "Customer Acquisition" sprint; secure first signed audit. |
 
 ## Market reality
 
@@ -73,7 +82,7 @@ Use direct outreach first and marketplaces second. Direct wins because the buyer
 
 | Day | Objective | Exact actions | Exit condition |
 |---|---|---|---|
-| Day 1 | Build the conversion surface | Replace site root with the offer, publish LinkedIn Service Page, prepare one-page PDF summary, build target list of 40 names | Site is live and the target list exists |
+| Day 1 | Build the conversion surface | **Execute Milestone M1 & M2** (Migrate resume, stage intake page); prepare target list of 40 names | Site is live and the target list exists |
 | Day 2 | Warm outreach | Send 15 direct emails/DMs to former colleagues, founders, and engineering leads; ask for referral if not a fit | At least 5 replies or referral paths |
 | Day 3 | Cold targeted outreach | Send 10 short messages to Rails-company founders/heads from Rails Job Board, YC, and Wellfound | At least 2 live conversations |
 | Day 4 | Community touches | Post one concise offer note in Rails/Postgres communities where allowed; reply to existing “help needed” or hiring threads | At least 3 direct contacts from community touchpoints |
