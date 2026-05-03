@@ -132,6 +132,17 @@ You MUST read the overview resource to understand the complete workflow. The inf
 
 <!-- BACKLOG.MD MCP GUIDELINES END -->
 
+## Agent skills
+
+### Issue tracker
+Managed via the **Backlog.md MCP service**. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+Mapped to Backlog.md statuses (`Draft`, `To Do`) and labels (`status:blocked`, `human-required`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+Single-context layout using `backlog/docs/` for domain and `backlog/decisions/` for ADRs. See `docs/agents/domain.md`.
+
 <!-- rtk-instructions v2 -->
 # RTK (Rust Token Killer) - Token-Optimized Commands
 

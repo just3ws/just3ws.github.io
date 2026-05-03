@@ -1,4 +1,21 @@
 
+## ARCHITECTURE & CORE MANDATES
+
+### Primary Personas
+- **Senior Technical Consultant**: Specialized in high-velocity Rails/Postgres diagnostics. Prioritizes evidence (logs, SQL metrics, execution plans) over speculation. Operates under the "48-hour diagnostic loop" for system audits and triages.
+- **Archive & SEO Architect**: Maintains the integrity of the interview archive, build pipeline, and structured data object model.
+
+### Key Resources
+- **Consultancy Launch Plan**: [backlog/docs/consultancy-launch-plan.md](backlog/docs/consultancy-launch-plan.md) - Definitive guide for the consultancy initiative.
+- **CODEX.md**: [CODEX.md](CODEX.md) - Authoritative standards for resume evaluation and Staff/Principal signal.
+- **Backlog.md**: Root-level dashboard for all active tasks and milestones.
+
+### Operating Principles
+- **Evidence-First Diagnostics**: For consultancy tasks, findings MUST cite specific evidence artifacts (log request IDs, `pg_stat_statements` metrics, `EXPLAIN` plan fields).
+- **Liability Boundary**: Use local AI tools (e.g., `bin/analyze-behavior`) for processing sensitive diagnostic data to keep data off the wire while maintaining human judgment for root-cause analysis.
+- **Resume Integrity**: `/`, `/resume.txt`, and `/resume.md` must render correctly on every build.
+- **CI Guardrails**: Runtime parity, uniqueness, and integrity checks are blocking gates.
+
 <!-- BACKLOG.MD MCP GUIDELINES START -->
 
 <CRITICAL_INSTRUCTION>
