@@ -1,9 +1,10 @@
 ---
 id: TASK-120
 title: 'Consultancy: Resume Migration (Shadow Launch)'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-05-03 19:07'
+updated_date: '2026-05-03 19:09'
 labels: []
 milestone: m-2
 dependencies: []
@@ -18,9 +19,9 @@ Migrate the current resume (index.html) to a sub-path (/resume) to prepare for t
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Migrate index.html to /resume and /resume.html.
-- [ ] #2 Verify deep links to the resume still function.
-- [ ] #3 Ensure Jekyll renders the resume correctly at the new path.
+- [x] #1 Migrate index.html to /resume and /resume.html.
+- [x] #2 Verify deep links to the resume still function.
+- [x] #3 Ensure Jekyll renders the resume correctly at the new path.
 <!-- AC:END -->
 
 ## Definition of Done
