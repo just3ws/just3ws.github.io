@@ -8,44 +8,39 @@ This playbook codifies Mike's Staff-level architectural methodologies into a rep
 **Goal:** Establish the "Diagnostic Surface" and define the "Normal State."
 
 ### Phase 1: The Baseline Audit (Day 1)
-*   **The Baseline Quiz**: For every system in the suspected path, identify:
-    1.  **Languages & Versions**: (e.g., Ruby 3.2, Node 18)
-    2.  **Frameworks & Versions**: (e.g., Rails 7.1, Express 4)
-    3.  **Infrastructure Ownership**: Do you manage the servers/DB, or is it delegated? To which group?
-*   **Business Entry Point**: Where does the business consider the start of the critical flow?
-    *   Is it a customer-initiated click? 
-    *   Is it a scheduled job?
-    *   Document the precise starting point from the business perspective.
+*   **The Baseline Quiz**: Use [`baseline-quiz.md`](baseline-quiz.md) to inventory the stack.
+    1.  **Technical Inventory**: Languages, frameworks (Rails/Sidekiq biased), and infrastructure ownership.
+    2.  **Reach Analysis**: Where is the first write? What are the immediate FK boundaries?
+*   **Business Intent**: Identify the SME and the precise "Starting Point" of the flow.
 
 ### Phase 2: Boundary Evidence Capture (Day 2)
-*   **Action**: Help the team capture telemetry at the starting point.
-*   **Evidence Types**:
-    1.  **Browser/UI**: HAR files.
-    2.  **Web Layer**: Nginx/Apache logs.
-    3.  **App Layer**: Rails/App production logs.
-    4.  **Analytics**: Segment/Mixpanel/Amplitude dumps.
+*   **Action**: Coordinate the capture of telemetry at the identified Starting Point.
+*   **Artifacts**: HAR files (Browser), Nginx logs (Web Layer), Application logs, and DB Snapshots.
 
 ### Phase 3: Token Discovery (Days 3-4)
 *   **Action**: Identify the creation of the unique identifier that tracks the flow.
-*   **Goal**: Find the `Request ID`, `Correlation ID`, `JWT`, or `Transaction Token` that is relevant to the business flow.
 *   **Discovery**: How does this token move from the Entry Point into deeper systems?
 
 ### Phase 4: Diagnostic Surface Map (Day 5)
-*   **Deliverable**: A comprehensive list of systems, versions, owners, and the entry-to-token path. 
-*   **Outcome**: The client now has a legible map of what they are actually running, ready for full mapping.
+*   **Deliverable**: A comprehensive list of systems, versions, and the entry-to-token path.
+*   **Risk Identification**: First-pass identification of **System of Record** conflicts.
 
 ---
 
-## 2. Offer: Panoramic Process Mapping ($7,500)
-**Goal:** Full topography reconstruction (Follow-on to Discovery).
+## 2. Offer: Data Mapping & Integrity Triage ($7,500)
+**Goal:** Structural resolution of data drift and system-of-record risk.
 
-### Phase 1: Cross-Silo Correlation (Week 1)
-*   **Action**: Use the Process Token to trace requests through the identified systems.
-*   **Goal**: Identify every system boundary where the token is lost or dropped.
+### Phase 1: Deep Reach Analysis (Week 1)
+*   **Action**: Map every logical and physical Foreign Key connected to the process entry point.
+*   **Goal**: Identify the "Surface Area" of the data. How many systems are touched by one form submission?
 
-### Phase 2: Topography Visualization (Week 2)
-*   **Action**: Map the actual path vs. the business intent.
-*   **Outcome**: Identify "silent drops" and integrity drift.
+### Phase 2: System of Record Audit (Week 1)
+*   **Action**: Identify where data is modified downstream and whether those changes are reflected in the original stack.
+*   **Goal**: Find where the primary app is making decisions based on stale/local data.
+
+### Phase 3: The Remediation Recipe (Week 2)
+*   **Action**: Design a sequence for purging orphan data or synchronizing state.
+*   **Outcome**: A verified path to process integrity.
 
 ---
 

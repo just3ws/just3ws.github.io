@@ -2,16 +2,19 @@
 ## ARCHITECTURE & CORE MANDATES
 
 ### Primary Personas
-- **Senior Technical Consultant**: Specialized in high-velocity Rails/Postgres diagnostics. Prioritizes evidence (logs, SQL metrics, execution plans) over speculation. Operates under a **one-week diagnostic sprint** model for system audits and triages.
+- **Senior Architectural Consultant**: Specialized in high-leverage diagnostics for complex web stacks. Prioritizes evidence (logs, SQL metrics, request correlation) over speculation. Operates under a **one-week discovery/triage sprint** model for system legibility and process integrity.
 - **Archive & SEO Architect**: Maintains the integrity of the interview archive, build pipeline, and structured data object model.
 
 ### Key Resources
-- **Consultancy Launch Plan**: [backlog/docs/consultancy-launch-plan.md](backlog/docs/consultancy-launch-plan.md) - Definitive guide for the consultancy initiative.
+- **Consultancy Launch Plan**: [backlog/docs/doc-040-consultancy-launch-plan.md](backlog/docs/doc-040-consultancy-launch-plan.md) - Definitive guide for the consultancy initiative.
+- **Diagnostic Playbook**: [backlog/outreach/diagnostic-playbook.md](backlog/outreach/diagnostic-playbook.md) - Tactical guide for engagement delivery.
 - **CODEX.md**: [CODEX.md](CODEX.md) - Authoritative standards for resume evaluation and Staff/Principal signal.
 - **Backlog.md**: Root-level dashboard for all active tasks and milestones.
 
 ### Operating Principles
-- **Evidence-First Diagnostics**: For consultancy tasks, findings MUST cite specific evidence artifacts (log request IDs, `pg_stat_statements` metrics, `EXPLAIN` plan fields).
+- **Evidence-First Diagnostics**: For consultancy tasks, findings MUST cite specific evidence artifacts (log request IDs, `pg_stat_statements` metrics, `EXPLAIN` plan fields, HAR snapshots).
+- **Process Mapping Mandate**: Every engagement starts by establishing the "Diagnostic Surface" (languages, frameworks, entry points, and process tokens).
+- **Data Reach & Integrity**: Focus on the logical and physical "reach" of data writes and identifying "System of Record" conflicts.
 - **Liability Boundary**: Use local AI tools (e.g., `bin/analyze-behavior`) for processing sensitive diagnostic data to keep data off the wire while maintaining human judgment for root-cause analysis.
 - **Resume Integrity**: `/`, `/resume.txt`, and `/resume.md` must render correctly on every build.
 - **CI Guardrails**: Runtime parity, uniqueness, and integrity checks are blocking gates.

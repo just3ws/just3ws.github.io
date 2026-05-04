@@ -2,7 +2,17 @@
 
 This document codifies the high-value architectural frameworks for transforming raw client data into "Panoramic Views" through **Process Mapping**.
 
-## 1. The Panoramic View Framework
+## 1. The Baseline Discovery Framework
+**Goal:** Inventory systems and identify business entry points to establish the diagnostic surface.
+
+### AI Prompt Template:
+> "Based on the client's responses to the **Baseline Quiz**, summarize the current topography. 
+> 1. List every system, its language/version, and its infrastructure owner.
+> 2. Define the 'Business Entry Point'—where does the business think this starts?
+> 3. Identify the required evidence artifacts (HAR, Nginx, Rails logs) needed for this layer.
+> 4. State the hypothesis for the **Process Token**: which identifier is likely the key to correlation?"
+
+## 2. The Panoramic View Framework
 **Goal:** Establish "System Normalcy" by mapping the end-to-end topography of a process and correlating requests through the entire stack.
 
 ### The Methodology:
