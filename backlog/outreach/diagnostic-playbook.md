@@ -49,6 +49,20 @@ This playbook codifies Mike's Staff-level architectural methodologies into a rep
 
 ---
 
-## 3. The Solo Architect Workflow (You + AI)
-*   **Phase 1 (Discovery)**: Mike leads the "Baseline Quiz" and "Entry Point" sessions. AI helps summarize the findings.
-*   **Phase 2 (Mapping)**: AI clusters the Process Tokens through log dumps. Mike provides the architectural verdict on the breakpoints.
+## 3. The Engagement Value: Context & Alignment
+Every layer of the Process Mapping engagement is designed to provide value to the client's team before the final report is even drafted.
+
+### Value during Discovery:
+- **Shared Context**: The "Baseline Quiz" forces teams out of silos and creates a shared language for the stack.
+- **Immediate Insights**: As entry points are identified and tokens discovered, teams gain real-time awareness of their observability gaps.
+- **Evidence-First Training**: Guiding the team through log correlation and HAR capture levels up their internal diagnostic capabilities.
+
+### Value during Mapping:
+- **High-Confidence Baseline**: Providing the team with a verified map of the "Normal State" reduces finger-pointing during incidents.
+- **Target State Enablement**: By clearing the "mud" of the current state, Mike frees technical leadership to focus on long-horizon architectural shifts with certainty.
+
+## 4. The Solo Architect Workflow (You + AI)
+*   **Engagement Lead**: Mike facilitates the discovery sessions, ensuring the business intent is aligned with technical reality.
+*   **High-Volume Correlation**: The AI clusters IDs and maps the basic system topography.
+*   **Architect's Verdict**: Mike reviews the mapping and identifies the critical system breakpoints.
+*   **Target State Bridge**: Mike translates the "Normal State" findings into actionable steps for the client's future architecture.
