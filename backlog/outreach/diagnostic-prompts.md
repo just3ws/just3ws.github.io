@@ -1,46 +1,39 @@
 # Specialized Diagnostic Frameworks
 
-This document codifies the high-value architectural frameworks derived from Mike's career as a Senior Staff Architect. These prompts and methodologies are used to transform raw client data into "Panoramic Views."
+This document codifies the high-value architectural frameworks for transforming raw client data into "Panoramic Views" through **Process Mapping**.
 
 ## 1. The Panoramic View Framework
-**Goal:** Establish "System Normalcy" by mapping the end-to-end topography of a process.
+**Goal:** Establish "System Normalcy" by mapping the end-to-end topography of a process and correlating requests through the entire stack.
 
 ### The Methodology:
-1. **Entry Point Capture**: Identify the absolute start of the request (e.g., Affiliate link, API call).
-2. **Exit Point Capture**: Identify the final success state (e.g., Postgres record committed, 200 OK).
-3. **Error State Capture**: Identify every breakpoint (Retry loops, silent drops, exceptions).
-4. **Topography Mapping**: Reconstruct the flow across Rails, background jobs, and third-party silos.
+1. **Entry Point Identification**: Identifying the start of a business process (e.g., UI interaction, API call, incoming webhook).
+2. **Exit Point Identification**: Identifying the final resolution state (e.g., Database commit, external API success, notification).
+3. **Error State Capture**: Pinpointing every state where the process deviates from "Normal."
+4. **Topography Correlation**: Mapping the request as it traverses the stack (Rails, Redis, Background Jobs, Middleware, Postgres).
 
 ### AI Prompt Template:
-> "Analyze these Rails logs using the Panoramic View framework. 
-> 1. Cluster all Request IDs that share a common Entry Point.
-> 2. Trace them to their final Exit Point in the DB or downstream service.
-> 3. Identify any 'orphan' requests that have an entry but no visible exit.
-> 4. Map the 'error topography'—where do these orphans typically stall?"
+> "Perform an end-to-end **Process Mapping** on these logs. 
+> 1. Correlate all Request IDs involved in this specific business process.
+> 2. Identify the system topography: which services, jobs, and tables are touched?
+> 3. Trace the path from Entry to Exit.
+> 4. Identify 'orphaned' or 'stalled' states where the process diverges from the Normal State."
 
 ---
 
-## 2. ACQ Mapping (Legacy Entanglement)
-**Goal:** Untangle mixed logic in legacy monoliths to define "What exactly is our product?"
+## 2. Process to System Mapping (Legacy Entanglement)
+**Goal:** Identifying all systems involved in a business process to resolve obscured behavior.
 
 ### The Methodology:
-- **Asset Identification**: Cataloging every Rails file, service, and DB table responsible for the lane.
-- **Decision Logic Extraction**: Pulling out the hidden business rules mixed with infrastructure code.
-- **Dependency Mapping**: Identifying "MuleSoft/IBM i/z" style dependencies that obscure the flow.
+- **System Identification**: Cataloging every service, dependency, and data store touched by a process.
+- **Boundary Analysis**: Defining where data enters and leaves each system.
+- **Request Correlation**: Using unique identifiers to trace a single business action through the entire topography.
 
 ---
 
-## 3. PII & Orphan Remediation
-**Goal:** Structural cleanup of institutional data liabilities.
+## 3. PII & Data Integrity Remediation
+**Goal:** Structural cleanup of institutional data liabilities through process mapping.
 
 ### The Methodology:
-- **Orphan Discovery**: Searching for legacy table prefixes (e.g., `clarity_`) or abandoned applicant tables.
-- **Deep Schema Audit**: Searching for 9-digit patterns (SSNs) in non-obvious fields.
-- **The Purge Recipe**: Building a dependency-aware deletion sequence to ensure data integrity during cleanup.
-
----
-
-## 4. The "Bourne" Pattern (Solo Execution)
-**Goal:** High-competence, autonomous resolution of systemic messes.
-- **Solo Advantage**: Direct access, zero "junior" overhead, architect-level judgment.
-- **Mechanism**: Use AI for compression and clustering; use Mike for the "System Normal" verdict.
+- **Orphan Discovery**: Identifying data silos that are no longer part of the "Normal State" process flow.
+- **Process Audit**: Mapping how sensitive data flows through the stack to identify unencrypted or legacy leakage points.
+- **The Purge Recipe**: Building a dependency-aware sequence for institutional data purging.

@@ -11,7 +11,7 @@ test.describe('Consultancy Intake Lifecycle', () => {
     await expect(page).toHaveTitle(/Rails & Postgres Consultancy/);
     await expect(page.locator('h1')).toContainText("Your Rails system shouldn't be a haunted house.");
     await expect(page.locator('.consultancy-offers h3').first()).toContainText("Expert Strategy Session");
-    await expect(page.locator('.consultancy-offers h3').nth(1)).toContainText("Panoramic Lifecycle Mapping");
+    await expect(page.locator('.consultancy-offers h3').nth(1)).toContainText("Panoramic Process Mapping");
   });
 
   test('Intake form is correctly configured for Formspree', async ({ page }) => {

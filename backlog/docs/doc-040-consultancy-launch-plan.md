@@ -8,7 +8,7 @@ created_date: '2026-05-03 18:59'
 
 **Executive summary.** The shortest path to paid consulting is not an AI product, a general “fractional engineering” pitch, or a broad Rails agency offer. It is a fixed-scope diagnostic service for expensive, already-visible problems inside Rails/Postgres systems: broken production behavior, upgrade blockers, slow queries, lock contention, broken sync jobs, and funnel or data-integrity anomalies. That market is real right now. The official Rails Job Board is active with senior Rails roles; current startup hiring on Wellfound spans both 11–50 and 51–200 employee companies; founder-led startups on Y Combinator’s jobs platform explicitly expose founders as the hiring contact; and current freelance listings show buyers paying for urgent short-term Rails/Postgres work, including expert fixed-price integration work and legacy rescue projects.
 
-The practical plan is to sell one main productized offer and one narrower add-on. The main offer should be a **48-hour System Behavior Audit** priced to close quickly, not optimized for lifetime margin on day one. A secondary **Query and Data Integrity Triage** should exist for buyers whose problem is visibly in Postgres, Sidekiq-style background processing, or third-party sync paths. Current market rates support that packaging: Upwork’s current Rails cost guide shows typical historical hourly ranges, its same page shows intermediate and expert bands, and Arc’s 2026 rate data puts Rails freelancers at a median of \$61–80/hr and an average of \$81–100/hr. A \$2,500 entry audit and a \$4,000 deeper triage are therefore inside market, especially when the alternative is continued revenue leakage, downtime, or blocked delivery.
+The practical plan is to sell one main productized offer and one narrower add-on. The main offer should be a **System Behavior Deep-Dive** priced to close quickly, not optimized for lifetime margin on day one. A secondary **PII & Data Integrity Remediation** should exist for buyers whose problem is visibly in Postgres, Sidekiq-style background processing, or third-party sync paths. Current market rates support that packaging: Upwork’s current Rails cost guide shows typical historical hourly ranges, its same page shows intermediate and expert bands, and Arc’2026 rate data puts Rails freelancers at a median of \$61–80/hr and an average of \$81–100/hr. A \$4,500 entry Deep-Dive and a \$7,500 deeper remediation are therefore inside market, especially when the alternative is continued revenue leakage, downtime, or blocked delivery.
 
 AI belongs in the workflow, but not in the liability boundary. Use it locally to compress logs, summarize `EXPLAIN` output, cluster anomalies, and produce first-pass system maps. Keep human judgment on scope, evidence selection, root-cause calls, risk ranking, and the final recommendation memo. That division is consistent with the current market: Stack Overflow’s 2025 survey shows 84% of respondents using or planning to use AI in development, but 46% said they do not trust the accuracy of AI output. The winning message is therefore not “I do AI consulting.” It is “I tell you what your system is actually doing, fast, with evidence.”
 
@@ -21,7 +21,7 @@ The ultimate goal is to establish the consultancy as the primary brand. This req
 | **M1: Resume Migration** | Relegate resume to sub-path | Migrate `index.html` (current resume) to `/resume` and `/resume.html`; verify all deep links. |
 | **M2: Surface Build** | Create consultancy intake | Build landing page at `/consultancy` (staging); implement intake surface and tiers. |
 | **M3: Root Swap** | **Consultancy as Primary Presence** | Move consultancy landing page to `/` (site root); configure 301 redirects for legacy resume SEO; update navigation. |
-| **M4: Market Entry** | First paid engagement | Execute the "Customer Acquisition" sprint; secure first signed audit. |
+| **M4: Market Entry** | First paid engagement | Execute the "Customer Acquisition" sprint; secure first signed engagement. |
 
 ## Market reality
 
@@ -45,14 +45,14 @@ Do not sell “consulting.” Sell diagnosis of one painful, expensive, specific
 
 | Concrete problem | Why it is urgent | Why teams stall | Best offer | AI-enabled advantage |
 |---|---|---|---|---|
-| Silent record loss in a signup, checkout, import, or sync path | Revenue loss, support load, trust damage | Ownership crosses app code, jobs, and DB state | 48-hour System Behavior Audit | Cluster logs, reconstruct event sequence, summarize likely breakpoints |
-| Slow query or lock contention under production load | User-facing slowness, incidents, deploy hesitation | Teams argue about app code vs DB cause | Query and Data Integrity Triage | Rank query pain from `pg_stat_statements`; summarize `EXPLAIN` JSON fast |
-| Retry storms or stale background jobs causing duplicate or missing side effects | Money, messaging, or state corruption | Job framework behavior is asynchronous and distributed | Query and Data Integrity Triage | Cluster retry classes, payload shapes, and timing windows |
-| Rails/Ruby/Postgres upgrade blocked by hidden coupling | Security and delivery risk accumulates | Fear of regressions blocks movement | 48-hour System Behavior Audit | Build a dependency/risk map from code, logs, and schema faster |
-| Third-party integration drift | Finance or ops teams lose confidence in the data | Internal teams lack time to trace both ends | Query and Data Integrity Triage | Compare event logs, payload samples, and DB state across the sync path |
-| Same incident keeps recurring with no agreed root cause | On-call fatigue and leadership distrust | Tests pass; production still misbehaves | 48-hour System Behavior Audit | Compress previous incident artifacts into hypothesis clusters |
-| Event-sourced, callback-heavy, or command-pattern behavior diverges from the team’s mental model | Product and engineering start arguing about “expected” state | State is emergent, not obvious from one file | 48-hour System Behavior Audit | Produce first-pass state machine summaries from traces and code |
-| Key engineer left and nobody knows the behavior envelope | Key-person risk becomes a business risk | Knowledge is trapped in history, not docs | 48-hour System Behavior Audit | Use local retrieval over logs/schema/code to rebuild operating context |
+| Silent record loss in a signup, checkout, import, or sync path | Revenue loss, support load, trust damage | Ownership crosses app code, jobs, and DB state | System Behavior Deep-Dive | Cluster logs, reconstruct event sequence, summarize likely breakpoints |
+| Slow query or lock contention under production load | User-facing slowness, incidents, deploy hesitation | Teams argue about app code vs DB cause | PII & Data Integrity Remediation | Rank query pain from `pg_stat_statements`; summarize `EXPLAIN` JSON fast |
+| Retry storms or stale background jobs causing duplicate or missing side effects | Money, messaging, or state corruption | Job framework behavior is asynchronous and distributed | PII & Data Integrity Remediation | Cluster retry classes, payload shapes, and timing windows |
+| Rails/Ruby/Postgres upgrade blocked by hidden coupling | Security and delivery risk accumulates | Fear of regressions blocks movement | System Behavior Deep-Dive | Build a dependency/risk map from code, logs, and schema faster |
+| Third-party integration drift | Finance or ops teams lose confidence in the data | Internal teams lack time to trace both ends | PII & Data Integrity Remediation | Compare event logs, payload samples, and DB state across the sync path |
+| Same incident keeps recurring with no agreed root cause | On-call fatigue and leadership distrust | Tests pass; production still misbehaves | System Behavior Deep-Dive | Compress previous incident artifacts into hypothesis clusters |
+| Event-sourced, callback-heavy, or command-pattern behavior diverges from the team’s mental model | Product and engineering start arguing about “expected” state | State is emergent, not obvious from one file | System Behavior Deep-Dive | Produce first-pass state machine summaries from traces and code |
+| Key engineer left and nobody knows the behavior envelope | Key-person risk becomes a business risk | Knowledge is trapped in history, not docs | System Behavior Deep-Dive | Use local retrieval over logs/schema/code to rebuild operating context |
 
 ## Minimal service design
 
@@ -60,8 +60,8 @@ The market already understands audit-style work. Multiple specialist Rails and P
 
 | Offer | Exact scope | Deliverables | Timebox | Launch price | Standard price | Explicit exclusions |
 |---|---|---|---|---:|---:|---|
-| 48-hour System Behavior Audit | One app, one DB, one critical path, one visible symptom; read-only production access preferred | Two-to-four page report, behavior map, top three risks, evidence appendix, prioritized next steps, 30-minute walkthrough | 2 business days | \$2,500 | \$3,500 | No code changes, no on-call, no rewrite plan, no multi-service estate review |
-| Query and Data Integrity Triage | One query cluster, lock/contention pattern, or one sync/data-integrity path | Ranked query pain list, `EXPLAIN` pack, contention findings, integrity checks, remediation sequence, 45-minute walkthrough | 3 business days | \$4,000 | \$5,500 | No migration implementation, no warehouse work, no full observability rollout, no feature shipping |
+| System Behavior Deep-Dive | One app, one DB, one critical path, one visible symptom; read-only production access mandatory | Two-to-four page report, behavior map, top three risks, evidence appendix, prioritized next steps, 60-minute walkthrough | 1 business week | \$4,500 | \$6,000 | No code changes, no on-call, no rewrite plan, no multi-service estate review |
+| PII & Data Integrity Remediation | One query cluster, lock/contention pattern, or one sync/data-integrity path | Remediation recipe, orphan discovery map, integrity checks, remediation sequence, 60-minute walkthrough | 1 business week | \$7,500 | \$10,000 | No migration implementation, no warehouse work, no full observability rollout, no feature shipping |
 
 ## AI leverage
 

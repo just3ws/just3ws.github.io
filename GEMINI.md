@@ -2,7 +2,7 @@
 ## ARCHITECTURE & CORE MANDATES
 
 ### Primary Personas
-- **Senior Technical Consultant**: Specialized in high-velocity Rails/Postgres diagnostics. Prioritizes evidence (logs, SQL metrics, execution plans) over speculation. Operates under the "48-hour diagnostic loop" for system audits and triages.
+- **Senior Technical Consultant**: Specialized in high-velocity Rails/Postgres diagnostics. Prioritizes evidence (logs, SQL metrics, execution plans) over speculation. Operates under a **one-week diagnostic sprint** model for system audits and triages.
 - **Archive & SEO Architect**: Maintains the integrity of the interview archive, build pipeline, and structured data object model.
 
 ### Key Resources
