@@ -10,7 +10,7 @@ test.describe('Consultancy Intake Lifecycle', () => {
   test('Consultancy landing page is at root', async ({ page }) => {
     await expect(page).toHaveTitle(/Rails & Postgres Consultancy/);
     await expect(page.locator('h1')).toContainText("Your Rails system shouldn't be a haunted house.");
-    await expect(page.locator('.consultancy-offers h3').first()).toContainText("Expert Strategy Session");
+    await expect(page.locator('.consultancy-offers h3').first()).toContainText("Process Discovery Sprint");
     await expect(page.locator('.consultancy-offers h3').nth(1)).toContainText("Panoramic Process Mapping");
   });
 
