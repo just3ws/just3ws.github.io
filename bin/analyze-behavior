@@ -38,10 +38,18 @@ echo "--- Diagnostic Analysis: $TYPE ($FILE) ---"
 
 case $TYPE in
   logs)
-    PROMPT="You are a Rails performance expert. Analyze these logs. Cluster anomalies, reconstruct the request sequence, and summarize likely breakpoints. Quote evidence."
+    PROMPT="Apply the **Panoramic View** framework to these Rails logs. 
+1. Cluster all Request IDs sharing a common Entry Point (Affiliate/API). 
+2. Trace to their final Exit Point (DB commit/200 OK). 
+3. Identify 'orphan' requests with no visible exit. 
+4. Map the 'error topography'—where do these orphans stall? Quote evidence."
     ;;
   schema)
-    PROMPT="You are a Senior Rails Architect. Analyze this schema.rb. Identify high-risk coupling, potential integrity issues, and relationship hotspots. Map the behavior surface."
+    PROMPT="Apply the **ACQ Mapping** framework to this schema.rb. 
+1. Catalog every table responsible for the Acquisitions lane. 
+2. Identify high-risk coupling with legacy silos. 
+3. Perform **Orphan Discovery**: search for abandoned table prefixes (e.g., clarity_). 
+4. Identify fields likely containing PII (9-digit patterns)."
     ;;
   queries)
     PROMPT="You are a Postgres DBA. Analyze this pg_stat_statements CSV. Rank queries by total_exec_time. Cluster similar query shapes. Identify the top 3 candidates for indexing or refactoring."
