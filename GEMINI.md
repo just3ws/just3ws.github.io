@@ -13,9 +13,9 @@
 
 ### Operating Principles
 - **Evidence-First Diagnostics**: For consultancy tasks, findings MUST cite specific evidence artifacts (log request IDs, `pg_stat_statements` metrics, `EXPLAIN` plan fields, HAR snapshots).
-- **Process Mapping Mandate**: Every engagement starts by establishing the "Diagnostic Surface" (languages, frameworks, entry points, and process tokens).
+- **Process Topography Mandate**: Every engagement starts by establishing the "Diagnostic Surface" and mapping the system topography (languages, frameworks, entry points, and process tokens).
 - **Data Reach & Integrity**: Focus on the logical and physical "reach" of data writes and identifying "System of Record" conflicts.
-- **Liability Boundary**: Use local AI tools (e.g., `bin/analyze-behavior`) for processing sensitive diagnostic data to keep data off the wire while maintaining human judgment for root-cause analysis.
+- **Liability Boundary**: Maintain strict human judgment for root-cause analysis, scope definition, and risk ranking. Findings must be derived directly from evidence (logs, SQL, plans).
 - **Resume Integrity**: `/`, `/resume.txt`, and `/resume.md` must render correctly on every build.
 - **CI Guardrails**: Runtime parity, uniqueness, and integrity checks are blocking gates.
 

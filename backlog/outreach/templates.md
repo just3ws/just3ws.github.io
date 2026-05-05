@@ -61,7 +61,7 @@ If your team is stuck in a 'haunted house' process, feel free to check out my di
 **Goal:** Differentiate from hourly contractors by selling the *outcome*.
 
 **Proposal:**
-"I am not a generalist contractor. I am an architectural specialist focused on process mapping and data integrity for high-scale web stacks (Rails/Sidekiq biased).
+"I am not a generalist contractor. I am an architectural specialist focused on **Process Topography** and data integrity for high-scale legacy Rails stacks. My goal is to generate a panoramic view of your system health so you can secure your legacy and prepare for AI with confidence."
 
 Based on your description of [Specific Problem], this sounds like a [Specific technical hypothesis]. 
 

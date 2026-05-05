@@ -5,11 +5,12 @@ sections:
       - label: Primary Pain Point
         type: select
         options:
+          - The "Crusty" Monolith (Upgrade Blockers / Security)
+          - Topography Blind Spots (No "Panoramic View" of Data)
+          - AI Readiness / Brittle Data Foundation
           - Silent Record Loss / Sync Issues
           - Slow Queries / Lock Contention
           - Background Job / Sidekiq Anomalies
-          - Upgrade Blockers (Rails/Ruby/Postgres)
-          - Third-party Integration Drift
           - Recurring Incidents / Ghost Bugs
           - Other (Please specify)
         required: true
@@ -18,28 +19,30 @@ sections:
         placeholder: "Describe exactly what is happening (or not happening) in production."
         required: true
 
-  - title: Evidence Pack
-    description: To perform a 48-hour audit, I require specific diagnostic artifacts.
+  - title: Diagnostic Surface
+    description: To prepare for our Strategy Session, please indicate which diagnostic signals are currently available in your environment.
     fields:
-      - label: Schema Definition
-        type: file
-        description: "schema.rb or structure.sql"
+      - label: Observability Stack
+        type: textarea
+        placeholder: "e.g., Datadog, New Relic, pganalyze, CloudWatch, etc."
         required: true
-      - label: Top Query Stats
-        type: file
-        description: "Output of pg_stat_statements (CSV or JSON preferred)"
-      - label: Sample EXPLAIN Output
-        type: file
-        description: "EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) for problematic queries"
-      - label: Representative Logs
-        type: file
-        description: "Rails production logs with Request/Correlation IDs (scrubbed of PII)"
+      - label: Logging Depth
+        type: select
+        options:
+          - We have correlated Request/Correlation IDs end-to-end
+          - We have standard Rails logs (no correlation)
+          - Our logging is thin/non-existent
+          - I'm not sure
+        required: true
+      - label: Non-Production Parity
+        type: checkbox
+        description: "We have a staging or sandbox environment where we can safely reproduce business processes."
 
   - title: Access & Timeline
     fields:
       - label: Requested Start Date
         type: date
         required: true
-      - label: Read-Only Access Available?
+      - label: Technical Lead Available?
         type: checkbox
-        description: "I can provide temporary read-only access to production/staging monitoring tools (e.g., Datadog, New Relic, pganalyze)."
+        description: "A technical lead or architect will be available for a 90-minute discovery call."
