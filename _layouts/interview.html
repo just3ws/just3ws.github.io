@@ -6,47 +6,11 @@ layout: minimal
   {% assign interview = site.data.interviews.items | where: "id", page.interview_id | first %}
   {% if interview %}
     {% assign related_entry = site.data.interview_related_videos.items | where: "interview_id", interview.id | first %}
-    <header>
-      <h1>{{ interview.title }}</h1>
-    </header>
-    {% if interview.interviewees and interview.interviewees.size > 0 %}
-      <div class="video-subtitle">Interviewee{% if interview.interviewees.size > 1 %}s{% endif %}:
-        {% for person in interview.interviewees %}
-          {% assign person_entry = site.data.interviewees_index.items | where: "name", person | first %}
-          {% assign person_slug = person | slugify %}
-          {% if person_entry and person_entry.slug %}
-            {% assign person_slug = person_entry.slug %}
-          {% endif %}
-          <a href="/interviews/people/{{ person_slug }}/">{{ person }}</a>
-          {% assign bio_url = nil %}
-          {% if related_entry and related_entry.links %}
-            {% for link in related_entry.links %}
-              {% if link.kind == "conference-bio" and link.label contains person %}
-                {% assign bio_url = link.url %}
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-          {% if bio_url %} (<a href="{{ bio_url }}">conference bio</a>){% endif %}
-          {% unless forloop.last %}, {% endunless %}
-        {% endfor %}
-      </div>
-    {% endif %}
-    {% if interview.topic %}
-      <div class="video-subtitle">Topic: {{ interview.topic }}</div>
-    {% endif %}
-    <div class="video-meta">
-      {% if interview.conference %}
-        Conference:
-        {% assign conference_candidates = site.data.interview_conferences.conferences | where: "conference", interview.conference %}
-        {% assign conference_entry = conference_candidates | where: "year", interview.conference_year | first %}
-        {% if conference_entry %}
-          <a href="/interviews/conferences/{{ conference_entry.slug }}/">{{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}</a>
-        {% else %}
-          {{ interview.conference }}{% if interview.conference_year %} {{ interview.conference_year }}{% endif %}
-        {% endif %}
-      {% endif %}
-      {% if interview.community %}{% if interview.conference %} · {% endif %}Community: {{ interview.community }}{% endif %}
-    </div>
+    
+    {% comment %} 
+      Redundant title/meta removed. 
+      The professional Editorial Hero is now rendered via the video-asset-player include below.
+    {% endcomment %}
 
     {% assign conference_related = site.data.interview_related_videos.conference_playlists | where: "conference", interview.conference | where: "conference_year", interview.conference_year %}
     {% if related_entry.links.size > 0 or conference_related.size > 0 %}

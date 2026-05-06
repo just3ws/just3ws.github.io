@@ -22,105 +22,130 @@
   {% endif %}
   {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
 
-  {% if preferred %}
-    <div class="video video-detail{% if has_transcript %} has-transcript{% endif %}">
-      {% if preferred.video_url %}
-        <div class="video-embed">
-          <video controls preload="metadata" poster="{{ preferred.image_url | default: asset.thumbnail }}">
-            <source src="{{ preferred.video_url }}" type="video/mp4">
-          </video>
-        </div>
-      {% elsif preferred.embed_url %}
-        <div class="video-embed">
-          <iframe id="{{ include.embed_id | default: "asset-embed" }}" src="{{ preferred.embed_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ asset.title }}"></iframe>
-        </div>
-      {% endif %}
-      <div class="video-body">
-        {% if has_transcript %}
-          <div class="video-indicators">
-            <span class="video-indicator transcript" aria-label="Transcript available">★ Transcript Available</span>
-            <a class="video-indicator-link" href="#transcript">Jump to transcript</a>
-          </div>
-        {% endif %}
-        {% if asset.description %}
-          <div class="video-description"><span class="video-description-label">Description:</span> {{ asset.description }}</div>
-        {% endif %}
-        <div class="video-meta">
-          {% if preferred.duration_minutes %}Duration: {{ preferred.duration_minutes | round }} min · {% endif %}{% if asset.published_date %}Published: {{ asset.published_date | date: "%b %d, %Y" }}{% elsif preferred.published_date %}Published: {{ preferred.published_date | date: "%b %d, %Y" }}{% endif %}
-        </div>
-        <div class="video-actions">
-          {% for platform in asset.platforms %}
-            {% if platform.embed_url %}<button class="video-button{% if preferred and preferred.platform == platform.platform %} primary{% endif %}" data-embed="{{ platform.embed_url }}">Watch Here ({{ platform.platform | capitalize }})</button>{% endif %}
-          {% endfor %}
-        </div>
-        <div class="video-actions">
-          {% for platform in asset.platforms %}
-            {% if platform.url %}<a class="video-button" href="{{ platform.url }}">Watch on {{ platform.platform | capitalize }}</a>{% endif %}
-          {% endfor %}
+  <div class="interview-editorial-container">
+    <header class="interview-hero">
+      <div class="hero-content">
+        <h1 class="editorial-title">{{ asset.title }}</h1>
+        <div class="hero-meta">
+          {% if preferred.published_date %}
+            <time class="published-date">{{ preferred.published_date | date: "%B %d, %Y" }}</time>
+          {% endif %}
+          <span class="meta-divider">•</span>
+          <span class="editorial-category">UGtastic Archive</span>
         </div>
       </div>
-    </div>
-  {% endif %}
+    </header>
 
-  <section class="transcript" id="transcript">
-    <h2>Transcript</h2>
-    {% if transcript_content == "structured" %}
-      <div class="video-transcript-chat-container">
+    {% if preferred %}
+      <section class="video-stage">
+        <div class="video-stage-inner">
+          {% if preferred.video_url %}
+            <div class="video-embed">
+              <video controls preload="metadata" poster="{{ preferred.image_url | default: asset.thumbnail }}">
+                <source src="{{ preferred.video_url }}" type="video/mp4">
+              </video>
+            </div>
+          {% elsif preferred.embed_url %}
+            <div class="video-embed">
+              <iframe id="{{ include.embed_id | default: "asset-embed" }}" src="{{ preferred.embed_url }}" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ asset.title }}"></iframe>
+            </div>
+          {% endif %}
+        </div>
         
-        <div class="imessage-thread">
-          {% for turn in transcript_data.turns %}
-            {% assign speaker_id = turn.speaker %}
-            {% assign speaker_info = transcript_data.speaker_map[speaker_id] %}
-            {% assign is_interviewer = false %}
+        <div class="video-details-bar">
+          <div class="indicator-group">
+            {% if has_transcript %}
+              <span class="editorial-badge transcript">Transcript Verified</span>
+            {% endif %}
+            {% if preferred.duration_minutes %}
+              <span class="editorial-badge duration">{{ preferred.duration_minutes | round }} Minutes</span>
+            {% endif %}
+          </div>
+          <div class="platform-actions">
+            {% for platform in asset.platforms %}
+              {% if platform.url %}
+                <a class="platform-link" href="{{ platform.url }}" target="_blank" rel="noopener">Watch on {{ platform.platform | capitalize }}</a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
 
-            {% if speaker_info %}
+    <div class="editorial-main-content">
+      {% if transcript_data.speaker_map %}
+        <section class="speakers-editorial-grid">
+          {% for speaker in transcript_data.speaker_map %}
+            {% assign s_id = speaker[0] %}
+            {% assign s_info = speaker[1] %}
+            {% assign is_host = false %}
+            {% if s_id == "M1" or s_info.role contains "Interviewer" %}
+              {% assign is_host = true %}
+            {% endif %}
+            <div class="speaker-editorial-card {% if is_host %}is-host{% endif %}">
+              <span class="speaker-role-label">{% if is_host %}The Interviewer{% else %}The Guest{% endif %}</span>
+              <h2 class="speaker-name-display">{{ s_info.name | default: s_info }}</h2>
+              <p class="speaker-bio-subtext">{{ s_info.role }}</p>
+            </div>
+          {% endfor %}
+        </section>
+      {% endif %}
+
+      <section class="transcript-editorial" id="transcript">
+        <div class="section-header-editorial">
+          <h2 class="section-title">The Conversation</h2>
+          <hr class="title-accent">
+        </div>
+
+        {% if transcript_content == "structured" %}
+          <div class="editorial-thread">
+            {% for turn in transcript_data.turns %}
+              {% assign speaker_id = turn.speaker %}
+              {% assign speaker_info = transcript_data.speaker_map[speaker_id] %}
+              {% assign is_interviewer = false %}
               {% if speaker_id == "M1" or speaker_info.role contains "Interviewer" %}
                 {% assign is_interviewer = true %}
               {% endif %}
-              {% assign s_name = speaker_info.name | default: speaker_info %}
-              {% assign s_role = speaker_info.role %}
-            {% else %}
-              {% assign s_name = speaker_id %}
-              {% assign s_role = nil %}
-            {% endif %}
 
-            <div class="imessage-turn {% if is_interviewer %}interviewer{% else %}guest subject-{{ speaker_id }}{% endif %}">
-              <div class="imessage-header">
-                <span class="imessage-name">{{ s_name }}</span>
-                {% if s_role %}
-                  <span class="imessage-subtext">{{ s_role }}</span>
-                {% endif %}
-              </div>
-              <div class="imessage-bubble">
-                <div class="imessage-text">{{ turn.text }}</div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-
-        {% if transcript_data.insights and transcript_data.insights.size > 0 %}
-          <div class="transcript-insights-modern">
-            <h3>Key Insights</h3>
-            <div class="insights-grid">
-              {% for insight in transcript_data.insights %}
-                <div class="insight-card-modern">
-                  <div class="insight-card-header">
-                    <span class="insight-label-modern {{ insight.type }}">{{ insight.type | replace: "-", " " }}</span>
-                    {% if insight.confidence %}<span class="insight-confidence">Confidence: {{ insight.confidence }}</span>{% endif %}
-                  </div>
-                  <p class="insight-statement">{{ insight.statement }}</p>
+              <div class="editorial-turn {% if is_interviewer %}is-interviewer{% else %}is-guest guest-{{ speaker_id }}{% endif %}">
+                <div class="turn-identity-sidebar">
+                  <span class="speaker-name-short">{{ speaker_info.name | split: " " | first }}</span>
                 </div>
-              {% endfor %}
-            </div>
+                <div class="turn-body">
+                  <div class="turn-header-mobile">
+                    <span class="mobile-speaker-name">{{ speaker_info.name }}</span>
+                    <span class="mobile-speaker-label">{% if is_interviewer %}Host{% else %}Guest{% endif %}</span>
+                  </div>
+                  <div class="turn-text-content">{{ turn.text }}</div>
+                </div>
+              </div>
+            {% endfor %}
           </div>
+
+          {% if transcript_data.insights and transcript_data.insights.size > 0 %}
+            <section class="insights-editorial">
+              <div class="section-header-editorial">
+                <h2 class="section-title">Critical Insights</h2>
+                <hr class="title-accent">
+              </div>
+              <div class="insights-editorial-grid">
+                {% for insight in transcript_data.insights %}
+                  <div class="insight-editorial-item">
+                    <span class="insight-tag {{ insight.type }}">{{ insight.type | replace: "-", " " }}</span>
+                    <blockquote class="insight-quote">"{{ insight.statement }}"</blockquote>
+                  </div>
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+        {% elsif transcript_content %}
+          <div class="legacy-transcript-content">{{ transcript_content | markdownify }}</div>
+        {% else %}
+          <p class="coming-soon">Full transcript in preparation.</p>
         {% endif %}
-      </div>
-    {% elsif transcript_content %}
-      <div class="video-transcript">{{ transcript_content | markdownify }}</div>
-    {% else %}
-      <p>Transcript coming soon.</p>
-    {% endif %}
-  </section>
+      </section>
+    </div>
+  </div>
 
   <script>
     (function() {
