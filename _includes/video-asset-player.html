@@ -1,14 +1,23 @@
 {% assign asset = include.asset %}
 {% if asset %}
-  {% assign transcript = nil %}
+  {% assign transcript_data = nil %}
+  {% assign transcript_content = nil %}
   {% if asset.transcript_id %}
-    {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
-    {% if transcript_entry %}{% assign transcript = transcript_entry.content %}{% endif %}
+    {% assign transcript_data = site.data.transcripts[asset.transcript_id] %}
+    {% if transcript_data %}
+      {% if transcript_data.turns %}
+        {% assign transcript_content = "structured" %}
+      {% else %}
+        {% assign transcript_content = transcript_data.content %}
+      {% endif %}
+    {% endif %}
   {% endif %}
   {% assign has_transcript = false %}
-  {% if transcript %}{% assign has_transcript = true %}{% endif %}
-  {% assign preferred = nil %}
-  {% if asset.primary_platform %}
+  {% if transcript_content %}{% assign has_transcript = true %}{% endif %}
+  
+  {% comment %} Bias to YouTube if present {% endcomment %}
+  {% assign preferred = asset.platforms | where: "platform", "youtube" | first %}
+  {% if preferred == nil and asset.primary_platform %}
     {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
   {% endif %}
   {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
@@ -55,8 +64,59 @@
 
   <section class="transcript" id="transcript">
     <h2>Transcript</h2>
-    {% if transcript %}
-      <div class="video-transcript">{{ transcript | markdownify }}</div>
+    {% if transcript_content == "structured" %}
+      <div class="video-transcript-chat-container">
+        
+        <div class="imessage-thread">
+          {% for turn in transcript_data.turns %}
+            {% assign speaker_id = turn.speaker %}
+            {% assign speaker_info = transcript_data.speaker_map[speaker_id] %}
+            {% assign is_interviewer = false %}
+
+            {% if speaker_info %}
+              {% if speaker_id == "M1" or speaker_info.role contains "Interviewer" %}
+                {% assign is_interviewer = true %}
+              {% endif %}
+              {% assign s_name = speaker_info.name | default: speaker_info %}
+              {% assign s_role = speaker_info.role %}
+            {% else %}
+              {% assign s_name = speaker_id %}
+              {% assign s_role = nil %}
+            {% endif %}
+
+            <div class="imessage-turn {% if is_interviewer %}interviewer{% else %}guest subject-{{ speaker_id }}{% endif %}">
+              <div class="imessage-header">
+                <span class="imessage-name">{{ s_name }}</span>
+                {% if s_role %}
+                  <span class="imessage-subtext">{{ s_role }}</span>
+                {% endif %}
+              </div>
+              <div class="imessage-bubble">
+                <div class="imessage-text">{{ turn.text }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if transcript_data.insights and transcript_data.insights.size > 0 %}
+          <div class="transcript-insights-modern">
+            <h3>Key Insights</h3>
+            <div class="insights-grid">
+              {% for insight in transcript_data.insights %}
+                <div class="insight-card-modern">
+                  <div class="insight-card-header">
+                    <span class="insight-label-modern {{ insight.type }}">{{ insight.type | replace: "-", " " }}</span>
+                    {% if insight.confidence %}<span class="insight-confidence">Confidence: {{ insight.confidence }}</span>{% endif %}
+                  </div>
+                  <p class="insight-statement">{{ insight.statement }}</p>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% elsif transcript_content %}
+      <div class="video-transcript">{{ transcript_content | markdownify }}</div>
     {% else %}
       <p>Transcript coming soon.</p>
     {% endif %}

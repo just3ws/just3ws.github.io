@@ -286,6 +286,62 @@ namespace :transcript do
   task :report_loops do
     sh 'ruby ./bin/report_transcript_loops.rb'
   end
+
+  desc 'Process a transcript using OpenAI (slug: interview slug, apply: save changes)'
+  task :process, [:slug] do |_t, args|
+    require_relative 'src/generators/transcript_processor'
+    slug = args[:slug]
+    apply = ENV['APPLY'] == 'true'
+
+    abort "Usage: rake transcript:process[slug] (APPLY=true to save)" unless slug
+
+    # 1. Load data
+    interview = YAML.safe_load(File.read('_data/interviews.yml'), permitted_classes: [Date, Time], aliases: true)['items'].find { |i| i['id'] == slug }
+    abort "Interview not found: #{slug}" unless interview
+
+    video_asset = YAML.safe_load(File.read('_data/video_assets.yml'), permitted_classes: [Date, Time], aliases: true)['items'].find { |v| v['id'] == interview['video_asset_id'] }
+    abort "Video asset not found for: #{slug}" unless video_asset
+
+    transcript_id = video_asset['transcript_id']
+    transcript_path = "_data/transcripts/#{transcript_id}.yml"
+    abort "Transcript file not found: #{transcript_path}" unless File.exist?(transcript_path)
+
+    transcript_payload = YAML.safe_load(File.read(transcript_path), permitted_classes: [Date, Time], aliases: true)
+    content = transcript_payload['content']
+
+    # 2. Process
+    puts "Processing #{slug} (transcript: #{transcript_id})..."
+    processor = Generators::TranscriptProcessor.new
+    result = processor.process(content, interview)
+
+    if result['error']
+      puts "Error processing transcript: #{result['error']}"
+      puts result['raw_response'] if result['raw_response']
+      exit 1
+    end
+
+    # 3. Output/Apply
+    if apply
+      puts "Applying changes to #{transcript_path}..."
+      # Preserve existing keys but update/add turns, speaker_map, and insights
+      transcript_payload['speaker_map'] = result['speaker_map']
+      transcript_payload['turns'] = result['turns']
+      transcript_payload['insights'] = result['insights']
+      # We keep 'content' for now as a fallback/historical record
+      File.write(transcript_path, transcript_payload.to_yaml)
+      puts "Done."
+    else
+      puts "\n--- DRY RUN RESULT ---"
+      puts "Speaker Map: #{result['speaker_map']}"
+      puts "Turns: #{result['turns']&.size || 0}"
+      puts "Insights: #{result['insights']&.size || 0}"
+      puts "\nFirst 3 turns:"
+      result['turns']&.first(3)&.each { |t| puts "  #{t['speaker']}: #{t['text'][0..100]}..." }
+      puts "\nInsights:"
+      result['insights']&.each { |i| puts "  - [#{i['type']}] #{i['statement']}" }
+      puts "\n(Use APPLY=true to save these changes to the YAML file)"
+    end
+  end
 end
 
 namespace :maintenance do

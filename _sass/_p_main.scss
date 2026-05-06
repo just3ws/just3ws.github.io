@@ -1,4 +1,158 @@
-@forward "p_variables";
-@forward "p_core";
-@forward "p_base_layout";
-@forward "p_theme_modern";
+/* iMessage-Style Conversational UI */
+.video-transcript-chat-container {
+  margin-top: 4rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.imessage-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Consistent gap between turns */
+  padding: 1rem 0;
+}
+
+.imessage-turn {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+}
+
+/* Alignment Logic */
+.imessage-turn.interviewer {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.imessage-turn.guest {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+/* Identity Header - BOLD Name and Subtext/Subtitle */
+.imessage-header {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column; /* Stack name and subtext */
+  padding: 0 0.25rem;
+}
+
+.interviewer .imessage-header { text-align: left; }
+.guest .imessage-header { text-align: right; }
+
+.imessage-name {
+  font-weight: 800; /* Extra Bold Name */
+  font-size: 1rem;
+  color: #111;
+  display: block;
+}
+
+.imessage-subtext {
+  font-size: 0.75rem; /* Small subtitle */
+  font-weight: 400;
+  color: #8e8e93; /* Muted grey like iOS subtext */
+  display: block;
+  margin-top: 2px;
+}
+
+/* Bubble Aesthetic */
+.imessage-bubble {
+  padding: 1rem 1.25rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-size: 1.05rem;
+  position: relative;
+}
+
+/* Mike (Interviewer) - Grey Bubble */
+.imessage-turn.interviewer .imessage-bubble {
+  background-color: #e9e9eb;
+  color: #000;
+  border-radius: 20px;
+  border-bottom-left-radius: 4px; /* Tail effect */
+}
+
+/* Igor/Guests - Distinct Colors for up to 3 guests */
+/* Guest 1: iOS Blue */
+.imessage-turn.guest.subject-S1 .imessage-bubble {
+  background-color: #007aff;
+  color: #fff;
+  border-radius: 20px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Guest 2: iOS Green */
+.imessage-turn.guest.subject-S2 .imessage-bubble {
+  background-color: #34c759;
+  color: #fff;
+  border-radius: 20px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Guest 3: iOS Indigo/Purple */
+.imessage-turn.guest.subject-S3 .imessage-bubble {
+  background-color: #5856d6;
+  color: #fff;
+  border-radius: 20px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Fallback for other guests/legacy */
+.imessage-turn.guest .imessage-bubble {
+  background-color: #007aff;
+  color: #fff;
+  border-radius: 20px;
+  border-bottom-right-radius: 4px;
+  text-align: left;
+}
+
+/* Key Insights */
+.transcript-insights-modern {
+  margin-top: 5rem;
+  padding: 2.5rem;
+  background: #f2f2f7;
+  border-radius: 20px;
+}
+
+.transcript-insights-modern h3 {
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.insight-card-modern {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.insight-label-modern {
+  font-size: 0.65rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.insight-label-modern.durable { background: #e1f5fe; color: #01579b; }
+.insight-label-modern.time-bound { background: #fff3e0; color: #e65100; }
+
+.insight-statement {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+}

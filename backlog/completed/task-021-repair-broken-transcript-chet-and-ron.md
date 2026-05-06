@@ -40,8 +40,8 @@ The transcript for `chet-hendrickson-ron-jefferies-software-craftsmanship-north-
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
-- [ ] #2 Valid transcript content exists.
-- [ ] #3 Linkage chain (Interview -> Asset -> Transcript) is verified.
-- [ ] #4 Task updated to 'Ready' or 'Done'.
+- [x] #1 AC criteria is completed and the change has been verified
+- [x] #2 Valid transcript content exists.
+- [x] #3 Linkage chain (Interview -> Asset -> Transcript) is verified.
+- [x] #4 Task updated to 'Ready' or 'Done'.
 <!-- DOD:END -->

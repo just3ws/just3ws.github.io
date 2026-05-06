@@ -54,8 +54,8 @@ These tasks are derived from recent architectural reviews to improve system main
 | [task-008](backlog/tasks/task-008-generator-unit-tests.md) | Add unit tests for generators | To Do | High |
 | [task-009](backlog/tasks/task-009-transcript-pipeline-consolidation.md) | Consolidate Transcript Pipeline | To Do | Medium |
 | [task-010](backlog/tasks/task-010-image-optimization.md) | Implement Image Optimization | To Do | Low |
-| [task-011](backlog/tasks/task-011-repair-broken-transcript-igor-polevoy.md) | Repair Broken Transcript (Igor Polevoy) | Blocked | High |
-| [task-021](backlog/tasks/task-021%20-%20Repair-Broken-Transcript-%E2%80%94-Chet-Hendrickson-Ron-Jefferies-scna-2013.md) | Repair Broken Transcript (Chet & Ron) | To Do | High |
+| [task-011](backlog/completed/task-011-repair-broken-transcript-igor-polevoy.md) | Repair Broken Transcript (Igor Polevoy) | Done | High |
+| [task-021](backlog/completed/task-021-repair-broken-transcript-chet-and-ron.md) | Repair Broken Transcript (Chet & Ron) | Done | High |
 | [task-022](backlog/tasks/task-022%20-%20Repair-Broken-Transcript-%E2%80%94-Ethan-Gunderson-Ryan-Briones-gathers-us.md) | Repair Broken Transcript (Ethan & Ryan) | To Do | High |
 | [task-023](backlog/tasks/task-023%20-%20Repair-Broken-Transcript-%E2%80%94-Jonathan-Baltz-jonathan-baltz-chicagowebconf-2012.md) | Repair Broken Transcript (Jonathan Baltz) | To Do | High |
 | [task-024](backlog/tasks/task-024%20-%20Repair-Broken-Transcript-%E2%80%94-Dave-Hoover-geekfest-geekfest.md) | Repair Broken Transcript (Dave Hoover) | To Do | High |

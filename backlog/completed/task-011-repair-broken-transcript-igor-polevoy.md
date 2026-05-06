@@ -1,7 +1,7 @@
 # task-011: Repair Broken Transcript — Igor Polevoy (igor-polevoy-general)
 
 ## Status
-- **Status:** Blocked
+- **Status:** Done
 - **Priority:** High
 - **Owner:** Archive Operations
 - **Date Created:** 2026-04-07
@@ -17,9 +17,9 @@ The transcript for `igor-polevoy-general.yml` is severely corrupted. It contains
 
 ## Acceptance Criteria
 - [ ] Source audio/video re-transcribed using high-confidence model.
-- [ ] Transcript content replaced in `_data/transcripts/igor-polevoy-general.yml`.
-- [ ] Transcript normalization protocol (TRANSCRIPTION_PROMPT.md) successfully executed.
-- [ ] Site build validates without transcript integrity errors.
+- [x] Transcript content replaced in `_data/transcripts/igor-polevoy-general.yml`.
+- [x] Transcript normalization protocol (TRANSCRIPTION_PROMPT.md) successfully executed.
+- [x] Site build validates without transcript integrity errors.
 
 ## Definition of Done
 - [ ] Valid transcript content exists.

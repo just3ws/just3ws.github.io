@@ -33,3 +33,6 @@ group :development do
 end
 
 gem 'faraday-retry', '~> 2.4'
+
+gem "ruby-openai", "~> 8.3"
+gem "dotenv", "~> 3.2"
