@@ -407,6 +407,49 @@ namespace :semantic do
   end
 end
 
+namespace :audit do
+  desc 'Prepare an audit prompt for ChatGPT'
+  task :prepare, [:slug] do |_t, args|
+    slug = args[:slug]
+    abort "Usage: rake audit:prepare[slug]" unless slug
+    sh "ruby bin/prepare_audit_prompt.rb #{slug}"
+  end
+
+  desc 'Ingest an audit result from the inbox'
+  task :ingest, [:slug] do |_t, args|
+    slug = args[:slug]
+    abort "Usage: rake audit:ingest[slug]" unless slug
+    inbox_file = "backlog/audit/inbox/#{slug}.yml"
+    abort "Error: No file found at #{inbox_file}" unless File.exist?(inbox_file)
+    sh "ruby bin/ingest_audit.rb #{slug} #{inbox_file}"
+  end
+
+  desc 'Prepare the next wave of interviews for audit'
+  task :prepare_wave do
+    # Find next 5 "To Do" canonical reviews from Backlog.md
+    backlog = File.read('Backlog.md')
+    tasks = backlog.scan(/\| \[task-\d+\]\(.*?\) \| Canonical Review \((.*?)\) \| To Do \|/).flatten
+    # We need to map Guest Name back to Slug. 
+    # For now, let's use a manual list of next high-impact ones
+    wave_slugs = [
+      'aaron-holbrook-general',
+      'andrea-magnorsky-general',
+      'angelique-martin-general',
+      'arthur-kay-general',
+      'interview-with-angelique-martin-general'
+    ]
+    
+    wave_slugs.each do |slug|
+      begin
+        sh "ruby bin/prepare_audit_prompt.rb #{slug}"
+      rescue => e
+        puts "Skipping #{slug}: #{e.message}"
+      end
+    end
+    puts "\nWave 4 Prepared in backlog/audit/outbox/"
+  end
+end
+
 desc 'Run local development server'
 task :server do
   sh './bin/server'

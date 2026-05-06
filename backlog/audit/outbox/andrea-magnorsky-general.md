@@ -1,0 +1,291 @@
+### SYSTEM ROLE & INSTRUCTIONS
+      ### SYSTEM ROLE: ARCHIVE FORENSIC AGENT
+      You are a Staff-level Software Engineer and Oral Historian. You are repairing "phonetic-heavy" transcripts from 2010-2015 era technical interviews.
+
+      ### DOMAIN CONTEXT
+      The archive covers the "Software Craftsmanship" movement. You must be hypersensitive to:
+      - Ecosystems: Ruby on Rails, Java (Spring/Hibernate), .NET (C#), Clojure, Smalltalk.
+      - Patterns: TDD, SOLID, Active Record vs Data Mapper, DDD, Hexagonal Architecture.
+      - Events: SCNA (Software Craftsmanship North America), GOTO, WindyCityRails.
+
+      ### HEAVY-LIFTING RULES
+      1. INFER SPEAKERS VIA SEMANTIC ROLE:
+         - M1 (Mike Hall): Asks about community, "why did you build this?", "what was the impetus?", and provides meta-commentary on the recording environment.
+         - S1 (Subject): Provides deep technical rationale, implementation details, and mentions specific library names they authored.
+      2. JARGON CORRECTION (PHONETIC REPAIR):
+         - Correct "phonetic drift" based on technical context. 
+         - Examples: "Active JSBC" -> "ActiveJDBC", "Postgre" -> "Postgres", "Hibernate" -> "Hibernate", "A-gile" -> "Agile".
+      3. TURN SEGMENTATION:
+         - Identify "back-channeling" (e.g., "Right", "Yeah", "Okay") and keep them as distinct turns or merge them into the previous speaker's block only if they do not interrupt the flow.
+      4. INSIGHT EXTRACTION:
+         - Identify "Durable Insights": Concepts that are still relevant to Staff-level engineering today.
+         - Identify "Time-Bound Constraints": Decisions made because of the limitations of the era (e.g., "waiting for Oracle drivers in 2007").
+
+      ### OUTPUT SCHEMA (STRICT YAML)
+      You must output a YAML object containing:
+      - speaker_map: Map of ID (M1, S1) to Full Name and Role.
+      - turns: Array of {speaker: string, text: string}.
+      - insights: Array of {statement: string, type: durable|time-bound, confidence: high|medium}.
+      - youtube:
+          title: "SEO-optimized title using interview context"
+          description: "Full YouTube-ready description including summary, speakers, and event context."
+          tags: ["array", "of", "SEO", "tags"]
+          chapters:
+            - timestamp: "00:00"
+              title: "Introduction"
+            - timestamp: "MM:SS"
+              title: "Chapter Title"
+
+      Do not output any prose, markers, or backticks outside the YAML.
+
+### INTERVIEW METADATA
+---
+id: andrea-magnorsky-general
+title: Andrea Magnorsky
+interviewees:
+- Andrea Magnorsky
+interviewer: Mike Hall
+topic: conference speaking and presentation skills
+conference:
+conference_year:
+community: General
+recorded_date: '2013-02-19'
+tags: []
+video_asset_id: andrea-magnorsky-general
+
+### RAW TRANSCRIPT
+Hi, it's Mike again with UGtastic. I'm on the line here with Andrea Magnorski, who helps run the GameCraft, the Dublin Alt.net, and she also does a podcast called 32 Minutos, which is a Minutos. I'm very American here. I will mangle it, but it's a Spanish language podcast. Hi, Andrea. Thanks for taking the time to sit down.
+ Hi, how are you doing? It's great to be here talking to you.
+ Good, good. Now, you're in Dublin right now?
+ Yeah, we're in Dublin, Ireland.
+ Dublin, Ireland. Okay, I'm in the United States, so we're a few hours separate. It's the afternoon for you.
+ Yeah, it's a very nice 2.25 p.m. right now.
+ Oh, nice. So, let's just jump right in. What is GameCraft?
+ Okay, GameCraft is a game jam where you have to be there. The last one lasted 12 hours, and what a game jam is,
+ is
+ a
+, you start the day with nothing, and you end the day with a game. You can work with a group or without a group, and there's prizes. You meet new people to make games with, and that kind of stuff.
+ Now, is this like games for any platform, or is this a specific?
+ Yeah, the idea is that you get good at prototyping, or that you get good at just actually make something. It doesn't matter what it is. Use any platform you like.
+ The idea is you come from nothing to finish or, you know, to have a rough prototype in that very set time frame.
+ So, like, what kind of games do people make?
+ Well, it was really funny. We had one, like, two weeks ago, and we had, you know, we had HTML5 games, you know, multiple MMOs type of games. We had single player games. We had games made in Unity with really nice art, and we had games made with really nice art.
+ We had games made with Love, you know, it's a game engine from Lua. It's really interesting. It's really borrowed. It's from puzzles to, like, MMOs to anything, really.
+ Oh, cool. And you said you had, like, prizes and things like this, so you have, like, corporate sponsors, or how does that work?
+ Yeah, the gaming industry in Ireland is growing big time, and that also means there's companies. Some of them are well-known, like Joel.
+ Yeah, they're well-known, like Joel, Demon Wars, Swerve, and, you know, we just reached out to them and said, hey, do you want to pay for some food and some prizes? And they were like, yeah, this is great, because for them, they get to meet people who are interested in making games, and for us, it's great, because it means we can run a really nice event.
+ Right. So, is this something you've done once, or you've done it a few times?
+ This has gone now twice, and we have a slightly different one organized for the 11th.
+ The 11th of December, and that's one where we're just companies, like, we're just, like, little indie games companies that we're going to do, we're going to screencast it live, and we're going to put a big donate button, and it's all going to go to a local charity.
+ And the idea is, again, you know, game jamming, and do it with a kind of Christmas spirit, and, you know, do something for Christmas that is not like, oh, I'll just put a hat in the game.
+ Yeah.
+ So, what made you start?
+ How did you start this, or how did you get involved with GameCraft?
+ Well, I have a games company.
+ Oh, okay. Well, that would make sense.
+ Yeah, so, I don't know, something died there.
+ BatCat, right?
+ Yeah, I'm one of the co-founders of BatCat Games.
+ We make PC and console games, maybe some, or, you know, it doesn't matter.
+ And, you know, we kind of went, like, you know, there's not enough, these kinds of events.
+ So, I just, because I have...
+ I have experience running events, I just went and talked to, hey, let's do a game jam.
+ And it got really popular.
+ The first one, we had 250 sign-ups, and 150 people turning up on the day, because it's a free event.
+ Right.
+ And it was great.
+ The university was the host, so we had a full kind of ground floor, full of people making games, and it was really exciting.
+ So, you had people, like, sleeping and hacking and...
+ No, it was just eight hours.
+ Oh, it was just eight hours, okay.
+ So, they were, like, particularly at the end, everybody was coming for us.
+ Yeah.
+ It was great.
+ They're mainlining the Red Bull, you know?
+ Yeah.
+ Yeah, we had food in the place, so that was actually really good.
+ And, you know, people kind of commented, and, you know, we actually made it thinking, okay, you know, we'll just do this.
+ And then, as soon as, the same day, people said, when are you doing this again?
+ So, that was February, and we did one now in November, so...
+ So, now that...
+ Now that you've done a couple of these now, do you have any advice for somebody who's planning on doing a game, hacking events?
+ Sure.
+ I think the distinction I made on our Game Jam is that you have to be there.
+ There are some online ones that are great.
+ So, if you're doing a presential one, I don't know if that's the correct word, like, one when you have to be there,
+ at the end, make something so that people talk to each other about their games.
+ Either, like, that everybody has two minutes to...
+ Present the games to everybody, or that they have to go and talk to each other for some, like, some...
+ Give them a hook, so they have to talk to someone else.
+ Then, the other thing is actually having food on the place, so people don't have to leave and come back.
+ Yeah.
+ It's really helpful.
+ And water, and, you know, the coffee, and tea, that kind of stuff.
+ It's actually quite cheap to run.
+ And prices are a nice addition, you know?
+ Yeah.
+ Make it comfortable.
+ Offices are really good for running.
+ Running the events, particularly open plan offices.
+ So, you know, talk to your local people that does these things.
+ And, you know, say, hey, can I use your office for a game camp?
+ Yeah.
+ Some of them will say yes.
+ Yeah.
+ And for the people that might want to participate in a game hacking event, or any kind of hacking endurance event,
+ do you have any advice for those people that are going to be participants?
+ Yeah.
+ Always prepare what...
+ Choose your framework.
+ Before you go.
+ It's super handy to be ready and not having to spend an hour.
+ It's like, oh, what would I do?
+ Downloading the framework, or setting up, if you're going to use a repository, set it up.
+ Make sure, you know, don't count on wireless, because there's going to be a lot of people.
+ Maybe you won't be able to access that.
+ That kind of stuff.
+ Have a bunch of USB sticks, just because you're going to be working with people who might not have network.
+ That might be a good way.
+ And bring a bottle of water.
+ Okay.
+ Yeah, so stay hydrated.
+ Yeah.
+ Okay, and you're also involved with the Dublin alt.net.
+ And so, what is going on with alt.net in Dublin?
+ Well, at the moment, I'm not running the organization of the group anymore.
+ Okay.
+ Because I founded it, like, about three years ago with someone else.
+ Well, we founded alt.net.
+ It follows the principles of...
+ I'm sure you guys know, your audience, basically, it's just alternatives to Microsoft.net technologies.
+ And we had a really, really nice group, and I thought it was time to leave the community drive itself.
+ Okay, cool.
+ Well, what drove you to start the group?
+ Well, I was involved in Ruby Ireland at the start.
+ And I saw the wonderful work they were doing.
+ And I just craved...
+ You know, something that would cover my main language, which is C#.
+ So, then I met Claudio Perrone, which he's another guy that helped.
+ He said, let's found this.
+ And it's like, okay.
+ So, how do we do this?
+ And it's like, well, you put a website, and you're going to meet in a pub and take it from there.
+ Yeah.
+ And, you know, the first day, we had, like, 15 people.
+ And then, you know, we kept having meetings.
+ And it kind of stays at that 20, 30.
+ Level of people, you know.
+ Very interested in learning more.
+ Did you use Meetup, or were you just word of mouth, or how did you communicate?
+ We used Google Groups and Twitter.
+ Oh, okay.
+ To let people know about the meetings.
+ Yeah, yeah.
+ And, you know, the things like Ireland is relatively small.
+ There's one and a half million people here.
+ And developer community is not that big.
+ So, we all kind of know each other.
+ Yeah.
+ So.
+ It's like, hey, you know, there's, like, beer, and we talk about code.
+ It's great, you know.
+ Yeah, beer and code is always good.
+ Yeah.
+ And I've recently handed off a group myself after a couple years.
+ And so, I'm interested in somebody else who's done something like that.
+ When you handed off your group to another organizer, how did you do that?
+ How did you handle handing the group off?
+ With difficulty.
+ With difficulty.
+ Well, when you say difficulty, you mean you didn't want to let it go because you enjoyed it, or?
+ No, I really wanted to let it go.
+ It's so much work to do it right.
+ Yeah.
+ You know, to actually keep it going, particularly every month, you know.
+ And the thing was finding someone that would look after the group with the same level of care.
+ And, you know, you wouldn't disappoint the community by not being there.
+ Right.
+ And I was lucky enough that the guys taking over.
+ They were working in my office.
+ So, I was like, I sent an email to everybody saying, listen, I need to leave.
+ And someone needs to take care of this because it's only fair.
+ And I think, you know, maybe what I'm doing is getting tired and boring because two years, you probably just keep doing the same thing.
+ So, I wanted new blood and new ideas.
+ And now, two guys actually took it over.
+ And then one of them had to move to Switzerland.
+ So, now it's just...
+ Just one guy.
+ He's doing a great job, Andrew Smith.
+ That's great.
+ Yeah.
+ It's very satisfying when you see it handed off.
+ To me, it was.
+ And seeing the people that took over it, started to schedule meetings and see that, okay, this isn't dead.
+ This isn't dead.
+ It's great.
+ Yeah.
+ And the last thing is kind of interesting.
+ So, you're in Dublin, Ireland, but you do a Spanish language podcast.
+ Yeah.
+ And you don't sound like you have a traditional Irish accent.
+ Oh, come on.
+ No.
+ I was born in Argentina.
+ Oh, okay.
+ Okay.
+ I came to Ireland 10 years ago.
+ Okay.
+ So, you do this podcast.
+ What is 32 Minutos?
+ 32 Minutes.
+ 32 Minutos or 32 Minutos is a podcast about dot-net technologies too.
+ And I was interviewed on it a few times.
+ I was just talking about, like, better practices, CQRS, and whatnot.
+ And then, you know, somehow it kind of turned out that, like, hey, you know, we had tonight, like, two or three times.
+ Can you do one?
+ I kind of host the show with us.
+ Oh, really?
+ And I was like, yeah, sure.
+ It's great.
+ Because every time I was talking, I was struggling with the Spanish, even though I'm a native speaker, because I don't speak it often enough.
+ And I thought, this is a great way to connect with a community that is latent and hungry for knowledge.
+ And hopefully I can help and also get to practice my Spanish a bit more, you know, and make friends in Spain.
+ And that's all good things.
+ Yeah.
+ So, I had to wonder, though, did you learn technology in Spanish or did you learn technology in English?
+ Because I have some friends and some colleagues who aren't native English speakers, but the bias in programming is generally English.
+ Yep.
+ And when they turnâ€¦
+ I try to translate stuff back into native language.
+ My wife is Polish, so sometimes when we're having a conversation, she's helping translate for me.
+ She doesn't have equal words for them.
+ Was that something that was, likeâ€¦
+ A problem?
+ Well, the thing is, in Argentina, unlike in Spain, we're very pro-using the English words.
+ Like, you know, your networking class is not called redes, it's called networking.
+ Oh, okay.
+ So, in Cat5, it's Cat5.
+ And iDisposable is still iDisposable, you know.
+ So, but this is not the same in Spain.
+ So, the podcast is sometimes incredibly funny.
+ So, no, and also I left Argentina about 10, over 10 years ago.
+ So, I never dealt with technology, like, in depth in Spanish.
+ I thought, well, like, it's not a problem for me at all.
+ And actually, I find it weird in the podcast, too.
+ When people say, for example, I'm used to say NBC and MBC.
+ It's like, what?
+ What is MBC?
+ That doesn't even make sense.
+ Yeah, it's like whenever an acronym gets translated in, like, you know, the USSR, the SSSR, that oldâ€¦
+ It always struck me as funny, like, translating the Russian acronym into English.
+ And it's always, ugh, just feels weird.
+ It's likeâ€¦
+ Yeah, it totally is.
+ Okay.
+ Well, thank you very much for taking the time to sit down with me.
+ I really appreciate it.
+ Oh, thank you very much.
+ And I'm glad to hear people are doing stuff about user groups.
+ Cool.
+ Anything you need to let me know, I'm roundcrisis and Twitter.
+ roundcrisis on Twitter.

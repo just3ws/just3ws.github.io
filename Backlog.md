@@ -69,11 +69,11 @@ This milestone tracks the canonical review and optimization of all 197 interview
 
 | Task ID | Title | Status | Priority |
 | :--- | :--- | :--- | :--- |
-| [task-027](backlog/tasks/task-027%20-%20Canonical-Review-%E2%80%94-Aaron-Bedra-aaron-bedra-general.md) | Canonical Review (Aaron Bedra) | To Do | Medium |
-| [task-026](backlog/tasks/task-026%20-%20Canonical-Review-%E2%80%94-Aaron-Holbrook-aaron-holbrook-general.md) | Canonical Review (Aaron Holbrook) | To Do | Medium |
-| [task-029](backlog/tasks/task-029%20-%20Canonical-Review-%E2%80%94-Andrea-Magnorsky-andrea-magnorsky-general.md) | Canonical Review (Andrea Magnorsky) | To Do | Medium |
-| [task-030](backlog/tasks/task-030%20-%20Canonical-Review-%E2%80%94-Angelique-Martin-angelique-martin-general.md) | Canonical Review (Angelique Martin) | To Do | Medium |
-| [task-028](backlog/tasks/task-028%20-%20Canonical-Review-%E2%80%94-Arthur-Kay-arthur-kay-general.md) | Canonical Review (Arthur Kay) | To Do | Medium |
+| [task-027](backlog/completed/task-027-canonical-review-aaron-bedra.md) | Canonical Review (Aaron Bedra) | Done | Medium |
+| [task-026](backlog/completed/task-026-canonical-review-aaron-holbrook.md) | Canonical Review (Aaron Holbrook) | Done | Medium |
+| [task-029](backlog/completed/task-029-canonical-review-andrea-magnorsky.md) | Canonical Review (Andrea Magnorsky) | Done | Medium |
+| [task-030](backlog/completed/task-030-canonical-review-angelique-martin.md) | Canonical Review (Angelique Martin) | Done | Medium |
+| [task-028](backlog/completed/task-028-canonical-review-arthur-kay.md) | Canonical Review (Arthur Kay) | Done | Medium |
 | [task-101](backlog/tasks/task-101%20-%20Canonical-Review-%E2%80%94-Angelique-Martin-interview-with-angelique-martin-general.md) | Canonical Review (Angelique Martin) | To Do | Medium |
 | [task-102](backlog/tasks/task-102%20-%20Canonical-Review-%E2%80%94-Dickinson-Beehler-interview-with-dickinson-beehler.md) | Canonical Review (Dickinson & Beehler) | To Do | Medium |
 | [task-103](backlog/tasks/task-103%20-%20Canonical-Review-%E2%80%94-Dave-Thomas-dave-thomas-goto-conference-and-community.md) | Canonical Review (Dave Thomas) | To Do | Medium |

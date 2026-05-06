@@ -7,12 +7,10 @@ interviews = YAML.safe_load(File.read(interviews_path), permitted_classes: [Date
 assets = YAML.safe_load(File.read(assets_path), permitted_classes: [Date, Time], aliases: true)
 
 mapping = {
-  'robert-martin-software-craftsmanship-north-america-2012' => "Filling the Vessel: Robert 'Uncle Bob' Martin on the Craft of Performance and Clean Coders",
-  'avdi-grimm-general' => "The Art of Remote Pairing: Avdi Grimm on Ruby Tapas, Wide Teams, and Community",
-  'corey-haines-general' => "Cranking Design to 11: Corey Haines on the Global Day of Code Retreat and the Art of Practice",
-  'dave-thomas-goto-conference-and-community-goto-conference-and-community' => "Independent Tech: Dave Thomas on GOTO Conferences, Vendor Influence, and Community Values",
-  'sandro-mancuso-software-craftsmanship-north-america-2012' => "Scaling Craftsmanship: Sandro Mancuso on Language-Agnostic Learning and LSCC Growth",
-  'stephen-anderson-windycityrails-2012' => "Community as a Side Effect: Stephen Anderson on Mad Railers, Madison Ruby, and Bendyworks"
+  'aaron-holbrook-general' => "Building Community from Scratch: Aaron Holbrook on WordPress User Groups and WordCamps",
+  'andrea-magnorsky-general' => "From Prototypes to Podcasts: Andrea Magnorsky on Game Jams, Alt.NET, and Community Hand-offs",
+  'angelique-martin-general' => "Crafting a Community: Angelique Martin on Organizing Software Craftsmanship North America",
+  'arthur-kay-general' => "Building Corporate Communities: Arthur Kay on Sencha, Ext JS, and Local Meetups"
 }
 
 interviews['items'].each do |interview|
