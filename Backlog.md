@@ -74,7 +74,7 @@ This milestone tracks the canonical review and optimization of all 197 interview
 | [task-029](backlog/completed/task-029-canonical-review-andrea-magnorsky.md) | Canonical Review (Andrea Magnorsky) | Done | Medium |
 | [task-030](backlog/completed/task-030-canonical-review-angelique-martin.md) | Canonical Review (Angelique Martin) | Done | Medium |
 | [task-028](backlog/completed/task-028-canonical-review-arthur-kay.md) | Canonical Review (Arthur Kay) | Done | Medium |
-| [task-101](backlog/tasks/task-101%20-%20Canonical-Review-%E2%80%94-Angelique-Martin-interview-with-angelique-martin-general.md) | Canonical Review (Angelique Martin) | To Do | Medium |
+| [task-101](backlog/completed/task-101-canonical-review-angelique-martin-duplicate.md) | Canonical Review (Angelique Martin - Duplicate) | Done | Medium |
 | [task-102](backlog/tasks/task-102%20-%20Canonical-Review-%E2%80%94-Dickinson-Beehler-interview-with-dickinson-beehler.md) | Canonical Review (Dickinson & Beehler) | To Do | Medium |
 | [task-103](backlog/tasks/task-103%20-%20Canonical-Review-%E2%80%94-Dave-Thomas-dave-thomas-goto-conference-and-community.md) | Canonical Review (Dave Thomas) | To Do | Medium |
 | [task-104](backlog/tasks/task-104%20-%20Canonical-Review-%E2%80%94-Gil-Tene-interview-with-gil-tene.md) | Canonical Review (Gil Tene) | To Do | Medium |
