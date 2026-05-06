@@ -67,63 +67,19 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - [UGtastic](https://web.archive.org/web/20120414040704/https://www.ugtastic.com/)
 - [UGl.st](https://web.archive.org/web/20140111160057/http://ugl.st/)
 
-## Development
+## Contributing
 
-```bash
-# Install dependencies
-bundle install
+For information on local development, build pipelines, and repository standards, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-# Run local server
-./bin/server
+Full system documentation and operator runbooks are available in the [Docs Index](/backlog/docs/).
 
-# Build _site locally (this output is committed)
-./bin/pipeline build
+## Development Overview
 
-# Validate committed _site
-./bin/pipeline validate
+The project is built with **Jekyll 4.x** and uses a data-driven architecture.
 
-# Full local CI pipeline (includes build)
-./bin/pipeline ci
-
-# Check latest CI + Pages deploy status
-./bin/deploy_status
-
-# Watch the latest CI run to completion
-./bin/deploy_status just3ws/just3ws.github.io --watch
-
-# Run unit tests for generator/template logic
-bundle exec rspec
-
-# Run smoke tests against built output
-./bin/pipeline smoke
-
-# Generate semantic graph artifacts from rendered pages
-./bin/pipeline semantic-graph
-
-# Generate consolidated semantic quality report
-./bin/pipeline semantic-audit
-
-# Generate docs semantic snapshot from semantic artifacts
-./bin/pipeline semantic-snapshot
-
-# Print sitemap coverage summary
-./bin/pipeline sitemap
-```
-
-## Deployment Model
-
-- `_site/` is committed to git and treated as the deploy artifact.
-- CI validates/tests committed output and does not rebuild in GitHub Actions.
-- Pages deploy uploads committed `_site/` directly.
-- Before pushing deploy changes, run:
-
-```bash
-./bin/pipeline build
-./bin/pipeline validate
-./bin/pipeline smoke
-```
-
-Pipeline grammar reference: `/backlog/docs/pipeline-grammar/`
+- **Canonical Data**: Lives in `_data/` (YAML).
+- **Core Pipeline**: `./bin/pipeline` (Rake-based).
+- **Automation**: Specialized Ruby generators in `_plugins/`.
 
 ## Analytics Events (GoatCounter)
 

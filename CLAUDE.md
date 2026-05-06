@@ -24,30 +24,22 @@ The number one goal is an accessible and progressive adoption of clean standards
 
 ## Project Overview
 
-Personal resume/portfolio website for Mike Hall (just3ws.com). Built with Jekyll and validated/deployed via GitHub Actions.
+Personal resume/portfolio website for Mike Hall (just3ws.com). Built with Jekyll 4.x and validated/deployed via GitHub Actions.
 
 ## Commands
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full development, test, and validation workflows.
+
 ```bash
-# Install dependencies
-bundle install
-
-# Run local development server (includes draft posts)
-./bin/server
-
-# Build and validate (CI pipeline)
-./bin/pipeline ci
-
-# Run browser smoke checks against built output
-./bin/pipeline smoke
-
-# Run HTML validation only
-bundle exec rake htmlproofer
+# Quick Core Commands
+./bin/server        # Local dev server
+./bin/pipeline ci   # Build + Unit Test + Validate
+./bin/pipeline smoke # Browser smoke tests
 ```
 
 ## Architecture
 
-**Static Site Generator**: Jekyll 3.x with explicitly pinned plugins (no `github-pages` runtime gem)
+**Static Site Generator**: Jekyll 4.x with custom generator plugins.
 
 **Resume Data Structure**:
 - `_data/resume/timeline.yml` - List of position references (controls display order)
