@@ -13,11 +13,11 @@ breadcrumb: Conversations
   </header>
 
   <section class="index-summary">
-    <p><strong>Highlights:</strong></p>
+    <p><strong>The Archive:</strong></p>
     <ul class="index-highlights">
-      <li><strong>Voices of Influence:</strong> Featuring deep dives with Dave Thomas, Dan North, Katrina Owen, Sandro Mancuso, Gil Tene, Hadi Hariri, and Dean Wampler.</li>
-      <li><strong>Core Themes:</strong> Evolution of the Ruby ecosystem, the rise of the Software Craftsmanship movement, and the discipline of building resilient systems.</li>
-      <li><strong>Searchable History:</strong> Over 90 conversations include full transcripts for technical reference and historical context.</li>
+      <li><strong>Voices of Influence:</strong> Deep-dive dialogues with industry pioneers like Rich Hickey, Robert 'Uncle Bob' Martin, Jez Humble, Aaron Bedra, and many more.</li>
+      <li><strong>Core Themes:</strong> The rise of Agile and Software Craftsmanship, the evolution of distributed systems, and the discipline of building resilient, maintainable software.</li>
+      <li><strong>Searchable Forensic History:</strong> Every audited interview features a structured, chat-style transcript, extracted technical insights, and YouTube-optimized metadata.</li>
     </ul>
   </section>
 
@@ -32,9 +32,12 @@ breadcrumb: Conversations
     item_schema_type="CreativeWork"
     entity_id_prefix="/id/interview/"
   %}
-  {% for interview in interviews %}
-    {% if interview.video_asset_id %}
-      {% include_cached interview-card.html interview=interview %}
-    {% endif %}
-  {% endfor %}
+
+  <div class="editorial-index-grid">
+    {% for interview in interviews %}
+      {% if interview.video_asset_id %}
+        {% include_cached interview-card.html interview=interview %}
+      {% endif %}
+    {% endfor %}
+  </div>
 </article>

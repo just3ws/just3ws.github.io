@@ -426,27 +426,71 @@ namespace :audit do
 
   desc 'Prepare the next wave of interviews for audit'
   task :prepare_wave do
-    # Find next 5 "To Do" canonical reviews from Backlog.md
+    require 'yaml'
+    # Find next "To Do" canonical reviews from Backlog.md
     backlog = File.read('Backlog.md')
     tasks = backlog.scan(/\| \[task-\d+\]\(.*?\) \| Canonical Review \((.*?)\) \| To Do \|/).flatten
-    # We need to map Guest Name back to Slug. 
-    # For now, let's use a manual list of next high-impact ones
-    wave_slugs = [
-      'aaron-holbrook-general',
-      'andrea-magnorsky-general',
-      'angelique-martin-general',
-      'arthur-kay-general',
-      'interview-with-angelique-martin-general'
-    ]
     
-    wave_slugs.each do |slug|
+    # Map of specific task names to their actual slugs to handle the messy ones
+    slug_overrides = {
+      'Dickinson & Beehler' => 'interview-with-david-dickinson-and-ross-beehler-general',
+      'Dave Thomas' => 'dave-thomas-goto-conference-and-community-goto-conference-and-community',
+      'Gil Tene' => 'interview-with-gil-tene-azul-cto-javaone-rock-star-goto-chicago-2-general',
+      'Chris Whitaker' => 'interview-with-chris-whitaker-general',
+      'Dean Wampler' => 'interview-with-dean-wampler-general',
+      'Zinni, Buda, Howe' => 'interview-with-anthony-zinni-and-jon-buda-and-shay-howe-general',
+      'Giles Bowkett - Rails' => 'interview-with-giles-bowkett-rails'
+    }
+    
+    video_assets = YAML.safe_load(File.read('_data/video_assets.yml'), permitted_classes: [Date, Time], aliases: true)
+    
+    valid_slugs = []
+    
+    tasks.each do |task_name|
+      break if valid_slugs.size >= 5
+      
+      clean_name = task_name.sub(/ - Duplicate/, '').strip
+      
+      # Try exact override, or "first-last-general", or "interview-with-first-last-general"
+      base_slug = clean_name.downcase.gsub(/[^a-z0-9]+/, '-')
+      slug_candidates = [
+        slug_overrides[clean_name],
+        "#{base_slug}-general",
+        "interview-with-#{base_slug}-general",
+        "interview-with-#{base_slug}"
+      ].compact
+      
+      # Find first candidate that has a valid asset mapping and transcript
+      matched_slug = nil
+      slug_candidates.each do |candidate|
+        asset = video_assets['items'].find { |v| v['interview_id'] == candidate || v['id'] == candidate }
+        if asset && asset['transcript_id']
+          transcript_path = "_data/transcripts/#{asset['transcript_id']}.yml"
+          if File.exist?(transcript_path)
+            matched_slug = candidate
+            break
+          end
+        end
+      end
+      
+      valid_slugs << matched_slug if matched_slug
+    end
+    
+    if valid_slugs.empty?
+      puts "No more 'To Do' tasks found that have existing transcript files."
+      exit 0
+    end
+    
+    puts "Preparing Wave 5: #{valid_slugs.join(', ')}"
+    
+    valid_slugs.each do |slug|
       begin
         sh "ruby bin/prepare_audit_prompt.rb #{slug}"
       rescue => e
         puts "Skipping #{slug}: #{e.message}"
       end
     end
-    puts "\nWave 4 Prepared in backlog/audit/outbox/"
+    puts "\nWave 5 Prepared in backlog/audit/outbox/"
   end
 end
 

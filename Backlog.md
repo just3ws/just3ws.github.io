@@ -76,11 +76,11 @@ This milestone tracks the canonical review and optimization of all 197 interview
 | [task-028](backlog/completed/task-028-canonical-review-arthur-kay.md) | Canonical Review (Arthur Kay) | Done | Medium |
 | [task-101](backlog/completed/task-101-canonical-review-angelique-martin-duplicate.md) | Canonical Review (Angelique Martin - Duplicate) | Done | Medium |
 | [task-102](backlog/tasks/task-102%20-%20Canonical-Review-%E2%80%94-Dickinson-Beehler-interview-with-dickinson-beehler.md) | Canonical Review (Dickinson & Beehler) | To Do | Medium |
-| [task-103](backlog/tasks/task-103%20-%20Canonical-Review-%E2%80%94-Dave-Thomas-dave-thomas-goto-conference-and-community.md) | Canonical Review (Dave Thomas) | To Do | Medium |
+| [task-103](backlog/completed/task-103-canonical-review-dave-thomas.md) | Canonical Review (Dave Thomas) | Done | Medium |
 | [task-104](backlog/tasks/task-104%20-%20Canonical-Review-%E2%80%94-Gil-Tene-interview-with-gil-tene.md) | Canonical Review (Gil Tene) | To Do | Medium |
 | [task-105](backlog/tasks/task-105%20-%20Canonical-Review-%E2%80%94-Chris-Whitaker-interview-with-chris-whitaker-general.md) | Canonical Review (Chris Whitaker) | To Do | Medium |
 | [task-106](backlog/tasks/task-106%20-%20Canonical-Review-%E2%80%94-Dean-Wampler-interview-with-dean-wampler-general.md) | Canonical Review (Dean Wampler) | To Do | Medium |
-| [task-107](backlog/tasks/task-107%20-%20Canonical-Review-%E2%80%94-Hadi-Hariri-interview-with-hadi-hariri-general.md) | Canonical Review (Hadi Hariri) | To Do | Medium |
+| [task-107](backlog/completed/task-107-canonical-review-hadi-hariri.md) | Canonical Review (Hadi Hariri) | Done | Medium |
 | [task-108](backlog/tasks/task-108%20-%20Canonical-Review-%E2%80%94-Carina-C.-Zona-interview-with-carina-c-zona-general.md) | Canonical Review (Carina C. Zona) | To Do | Medium |
 | [task-109](backlog/tasks/task-109%20-%20Canonical-Review-%E2%80%94-Zinni-Buda-Howe-interview-with-zinni-buda-howe.md) | Canonical Review (Zinni, Buda, Howe) | To Do | Medium |
 | [task-110](backlog/tasks/task-110%20-%20Canonical-Review-%E2%80%94-Eric-Kingery-interview-with-eric-kingery-general.md) | Canonical Review (Eric Kingery) | To Do | Medium |

@@ -98,25 +98,32 @@
         </div>
 
         {% if transcript_content == "structured" %}
-          <div class="editorial-thread">
+          <div class="imessage-thread">
             {% for turn in transcript_data.turns %}
               {% assign speaker_id = turn.speaker %}
               {% assign speaker_info = transcript_data.speaker_map[speaker_id] %}
               {% assign is_interviewer = false %}
-              {% if speaker_id == "M1" or speaker_info.role contains "Interviewer" %}
-                {% assign is_interviewer = true %}
+
+              {% if speaker_info %}
+                {% if speaker_id == "M1" or speaker_info.role contains "Interviewer" %}
+                  {% assign is_interviewer = true %}
+                {% endif %}
+                {% assign s_name = speaker_info.name | default: speaker_info %}
+                {% assign s_role = speaker_info.role %}
+              {% else %}
+                {% assign s_name = speaker_id %}
+                {% assign s_role = nil %}
               {% endif %}
 
-              <div class="editorial-turn {% if is_interviewer %}is-interviewer{% else %}is-guest guest-{{ speaker_id }}{% endif %}">
-                <div class="turn-identity-sidebar">
-                  <span class="speaker-name-short">{{ speaker_info.name | split: " " | first }}</span>
+              <div class="imessage-turn {% if is_interviewer %}interviewer{% else %}guest subject-{{ speaker_id }}{% endif %}">
+                <div class="imessage-header">
+                  <span class="imessage-name">{{ s_name }}</span>
+                  {% if s_role %}
+                    <span class="imessage-subtext">{{ s_role }}</span>
+                  {% endif %}
                 </div>
-                <div class="turn-body">
-                  <div class="turn-header-mobile">
-                    <span class="mobile-speaker-name">{{ speaker_info.name }}</span>
-                    <span class="mobile-speaker-label">{% if is_interviewer %}Host{% else %}Guest{% endif %}</span>
-                  </div>
-                  <div class="turn-text-content">{{ turn.text }}</div>
+                <div class="imessage-bubble">
+                  <div class="imessage-text">{{ turn.text }}</div>
                 </div>
               </div>
             {% endfor %}

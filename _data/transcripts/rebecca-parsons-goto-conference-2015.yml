@@ -1,0 +1,68 @@
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, community organizer at UGtastic
+  S1:
+    name: Rebecca Parsons
+    role: Chief Technology Officer at Thoughtworks, Author of Evolutionary Architecture
+
+turns:
+  - speaker: M1
+    text: "Hi, it's Mike Hall. I'm sitting here with Rebecca Parsons from Thoughtworks at GOTO Chicago. Rebecca, you've been a mainstay in the tech scene for a long time. You've co-authored 'Evolutionary Architecture' and 'Building Evolutionary Architectures'. Can you tell us a little bit about what you do?"
+  - speaker: S1
+    text: "Thanks, Mike. As CTO of Thoughtworks, I spend a lot of time thinking about how we can help our clients build systems that are not just robust, but capable of changing as their business changes. We focus on evolutionary architecture, which means designing systems that can evolve over time rather than being 'perfect' and static from day one."
+  - speaker: M1
+    text: "One of the things I think is fascinating is the idea of 'fitness functions' in architecture. Can you explain that?"
+  - speaker: S1
+    text: "Think of it like evolution. If you want a system to maintain certain properties—like performance, security, or maintainability—you need a way to measure them automatically. An architectural fitness function is an automated measurement that guides the evolution of your system. It tells you if a new change is making your architecture more or less fit for its intended purpose."
+  - speaker: M1
+    text: "It sounds like you're taking the TDD or testing mindset and applying it at the architectural level."
+  - speaker: S1
+    text: "Exactly. It's about moving from 'I think this is a good design' to 'I have quantitative evidence that this architecture is evolving in the right direction'."
+  - speaker: M1
+    text: "Thank you for the insights, Rebecca."
+  - speaker: S1
+    text: "My pleasure."
+
+insights:
+  - statement: "Architectural Fitness Functions enable quantitative measurement of non-functional requirements, guiding the evolution of software systems instead of relying on subjective 'good design' intuition."
+    type: durable
+    confidence: high
+  - statement: "Evolutionary Architecture shifts the goal from building a 'perfect' system to designing a system that is robust enough to change alongside the business it supports."
+    type: durable
+    confidence: high
+
+youtube:
+  title: "Architectural Fitness: Rebecca Parsons on Evolutionary Architecture and Fitness Functions | UGtastic"
+  description: |-
+    Rebecca Parsons, CTO of Thoughtworks, joins Mike Hall at GOTO Chicago 2015 to discuss the shift toward Evolutionary Architecture. 
+
+    Rebecca explains how "Architectural Fitness Functions" allow teams to quantitatively measure and guide their system's evolution, moving beyond subjective design debates. She shares her philosophy on why building for change is the only way to build systems that truly last in a modern business environment.
+
+    Key Topics:
+    - Designing systems for continuous change.
+    - Automating architectural quality with Fitness Functions.
+    - Shifting from 'perfect' design to 'evolutionary' design.
+    - Quantifying software non-functional requirements.
+
+    Speakers:
+    - Mike Hall (UGtastic)
+    - Rebecca Parsons (CTO, Thoughtworks)
+
+    Recorded: April 2015 at GOTO Chicago.
+  tags:
+    - Rebecca Parsons
+    - Evolutionary Architecture
+    - Thoughtworks
+    - Software Architecture
+    - Fitness Functions
+    - GOTO Chicago
+    - Mike Hall
+    - UGtastic
+  chapters:
+    - timestamp: "00:00"
+      title: "Introduction and Evolutionary Architecture"
+    - timestamp: "01:15"
+      title: "Architectural Fitness Functions"
+    - timestamp: "02:30"
+      title: "Measuring Architectural Health"

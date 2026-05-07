@@ -1,0 +1,58 @@
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, community organizer at UGtastic
+  S1:
+    name: Camille Fournier
+    role: Author of 'The Manager's Path' and Distributed Systems Architect
+
+turns:
+  - speaker: M1
+    text: "I'm sitting here with Camille Fournier. You're an expert in distributed systems and management. Today, you're talking about rewriting software. Why is it such a taboo?"
+  - speaker: S1
+    text: "Rewriting is often seen as a failure of the original architecture. But sometimes, it's just the necessary evolution. The key is knowing *when* to rewrite versus when to refactor."
+  - speaker: M1
+    text: "What's the signal that it's time to pull the plug?"
+  - speaker: S1
+    text: "When the cost of maintenance—the sheer 'tax' on developer productivity—exceeds the cost of re-implementing. If your architecture is a barrier to every new feature, it's time."
+
+insights:
+  - statement: "Technical rewrites should be treated as a strategic business decision based on the 'tax' of maintenance versus the cost of re-implementation, rather than a failure of original design."
+    type: durable
+    confidence: high
+  - statement: "Successful distributed systems require evolving the architecture alongside the business, not just scaling the existing code."
+    type: durable
+    confidence: high
+
+youtube:
+  title: "The Rewriting Decision: Camille Fournier on Distributed Systems and Architectural Evolution | UGtastic"
+  description: |-
+    Camille Fournier, distributed systems architect and author, discusses the realities of rewriting large-scale software systems.
+
+    Camille breaks down the difficult decision of when to rewrite versus refactor, explains the 'maintenance tax' that architecture can impose on developer velocity, and provides insights for navigating technical debt at scale.
+
+    Key Topics:
+    - When to rewrite vs. refactor.
+    - Managing maintenance costs in distributed systems.
+    - Architectural evolution as a business necessity.
+
+    Speakers:
+    - Mike Hall (UGtastic)
+    - Camille Fournier (Author, Distributed Systems Architect)
+
+    Recorded: May 2014 at GOTO Chicago.
+  tags:
+    - Camille Fournier
+    - Distributed Systems
+    - Architecture
+    - The Manager's Path
+    - Technical Debt
+    - Mike Hall
+    - UGtastic
+  chapters:
+    - timestamp: "00:00"
+      title: "Introduction: Rewriting Software"
+    - timestamp: "01:20"
+      title: "The Maintenance Tax on Productivity"
+    - timestamp: "02:45"
+      title: "When to Rewrite vs. Refactor"
