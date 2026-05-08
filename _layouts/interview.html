@@ -3,7 +3,9 @@ layout: minimal
 ---
 <article class="page">
   {% include breadcrumbs.html %}
-  {% assign interview = site.data.interviews.items | where: "id", page.interview_id | first %}
+  
+  {% assign interview = site.data.all_archive_items | where: "id", page.interview_id | first %}
+
   {% if interview %}
     {% assign related_entry = site.data.interview_related_videos.items | where: "interview_id", interview.id | first %}
     {% assign conference_related = site.data.interview_related_videos.conference_playlists | where: "conference", interview.conference | where: "conference_year", interview.conference_year %}

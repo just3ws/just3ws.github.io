@@ -24,6 +24,10 @@
   {% endif %}
   <div class="editorial-card-body">
     <div class="editorial-card-meta">
+      {% if interview.collection and interview.collection != "UGtastic" %}
+        <span class="collection-badge">{{ interview.collection }}</span>
+        <span class="meta-dot">•</span>
+      {% endif %}
       {% if preferred.published_date %}
         <time>{{ preferred.published_date | date: "%b %Y" }}</time>
       {% elsif asset.published_date %}

@@ -626,25 +626,39 @@ section {
 }
 
 .post-row {
-  display: grid;
-  grid-template-columns: 1fr 100px 200px;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 0;
   border-bottom: 1px solid $surface-2;
 
   &:last-child {
     border-bottom: none;
   }
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr auto;
-    gap: 0.5rem 1rem;
+  .post-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
 
-    .post-tags {
-      grid-column: 1 / -1;
-      font-size: 0.8rem;
-    }
+  .post-excerpt {
+    margin: 0.25rem 0 0.5rem;
+    font-size: 0.95rem;
+    color: $nord3;
+    line-height: 1.5;
+    max-width: 50rem;
+  }
+
+  .post-metadata-row {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .post-tags {
+    text-align: left;
+    font-size: 0.8rem;
   }
 }
 
