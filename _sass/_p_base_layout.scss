@@ -708,6 +708,8 @@ section {
   line-height: 1.6;
   font-size: 1.125rem;
   color: $text;
+  max-width: 100%;
+  overflow-x: hidden;
 
   p, ul, ol {
     margin-bottom: 1.5rem;
@@ -720,6 +722,13 @@ section {
     margin: 2.5rem auto;
     border-radius: 0.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Specific handling for the first image if it is a hero image */
+  > p:first-child img,
+  > img:first-child {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
   }
 
   h2, h3, h4 {
