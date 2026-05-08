@@ -58,6 +58,9 @@ module Jekyll
       end
       site.data['archive_transcribed_count'] = transcribed_count
 
+      seen_titles = {}
+      seen_descriptions = {}
+
       all_items.each do |interview|
         id = interview['id']
         next unless id # Skip malformed entries
