@@ -1,0 +1,59 @@
+---
+layout: minimal
+title: Mike Hall - Portfolio
+description: A collection of historical projects, community platforms, and engineering work preserved via the Wayback Machine.
+breadcrumb: Portfolio
+permalink: /portfolio/
+---
+
+<article class="page">
+  <header class="home-header">
+    <h1>Project Portfolio <span class="subtitle">Digital Archeology</span></h1>
+    <h2 class="title">A career built on community, platform architecture, and technical media.</h2>
+    <p class="home-intro">This portfolio showcases key projects and platforms I've designed, built, and led over the years. Many of these are preserved here via the Wayback Machine, documenting the evolution of my work in the technical community.</p>
+  </header>
+
+  <div class="editorial-index-grid">
+    {% for project in site.data.portfolio %}
+    <article class="editorial-card portfolio-card">
+      <div class="editorial-card-body">
+        <div class="editorial-card-meta">
+          <span>{{ project.years }}</span>
+          <span class="meta-dot">•</span>
+          <span class="collection-badge">{{ project.role }}</span>
+        </div>
+        <h3 class="editorial-card-title">
+          {{ project.title }}
+        </h3>
+        <p class="editorial-card-guests">
+          {{ project.description }}
+        </p>
+        <div class="project-tags-row">
+          {% for tag in project.tags %}
+            <span class="related-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        <div class="editorial-card-actions">
+          <a class="editorial-card-button" href="{{ project.wayback_url }}" target="_blank" rel="noopener">Explore on Wayback</a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</article>
+
+<style>
+  .portfolio-card {
+    border-top: 4px solid var(--color-primary, #007bff);
+  }
+  .project-tags-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .project-tags-row .related-tag {
+    margin-bottom: 0;
+    font-size: 0.6rem;
+  }
+</style>
