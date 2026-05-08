@@ -704,6 +704,30 @@ section {
   }
 }
 
+.post-body {
+  line-height: 1.6;
+  font-size: 1.125rem;
+  color: $text;
+
+  p, ul, ol {
+    margin-bottom: 1.5rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2.5rem auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  h2, h3, h4 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
 /* Code blocks */
 pre {
   background: $nord0;
