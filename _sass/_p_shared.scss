@@ -1,0 +1,13 @@
+@use "p_variables" as *;
+
+/* Shared Placeholders and Mixins */
+
+%minimal-styles {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: $space-4 $space-2;
+}
+
+@mixin minimal {
+  @extend %minimal-styles;
+}

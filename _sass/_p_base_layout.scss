@@ -1,11 +1,10 @@
 @use "p_variables" as *;
+@use "p_shared" as *;
 
 /* Minimal Layout - Foundation for Resume and Archive */
 
 .minimal {
-  max-width: 50rem;
-  margin: 0 auto;
-  padding: $space-4 $space-2;
+  @include minimal;
 }
 
 /* Resume Structure */

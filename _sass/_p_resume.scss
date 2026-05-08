@@ -1,9 +1,10 @@
 @use "p_variables" as *;
+@use "p_shared" as *;
 
 /* Resume-specific styles */
 
 body.resume {
-  @extend .minimal;
+  @include minimal;
 }
 
 body.ats-resume {
