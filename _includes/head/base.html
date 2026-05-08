@@ -39,7 +39,10 @@
 <meta property="og:site_name" content="Mike Hall">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{ seo_title }}">
-<meta name="twitter:description" content="{{ seo_description }}">
+<link rel="twitter:description" content="{{ seo_description }}">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }} - Atom Feed" href="{{ site.url }}/feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }} - RSS Feed" href="{{ site.url }}/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }} - Interviews Feed" href="{{ site.url }}/interviews.xml" />
 <link rel="shortcut icon" href="/favicon.ico">
 {% assign theme_stylesheet = include.theme_stylesheet | default: "/assets/css/site.css" %}
 <link rel="stylesheet" href="{{ theme_stylesheet }}">

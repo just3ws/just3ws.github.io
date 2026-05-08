@@ -1,0 +1,36 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+  <link href="{{ site.url }}/interviews.xml" rel="self" type="application/atom+xml" />
+  <link href="{{ site.url }}/interviews/" rel="alternate" type="text/html" />
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>{{ site.url }}/interviews.xml</id>
+  <title type="html">Mike Hall - Interviews Archive</title>
+  <subtitle>Technical interviews from the DevOps and Software Craftsmanship movements.</subtitle>
+  {% if site.author %}
+  <author>
+    <name>{{ site.author.name | xml_escape }}</name>
+    <email>{{ site.author.email | xml_escape }}</email>
+  </author>
+  {% endif %}
+
+  {% assign interviews = site.data.interviews.items | sort: "recorded_date" | reverse %}
+  {% for interview in interviews limit:20 %}
+  <entry>
+    <title type="html">{{ interview.title | xml_escape }}</title>
+    <link href="{{ site.url }}/interviews/{{ interview.id }}/" rel="alternate" type="text/html" title="{{ interview.title | xml_escape }}" />
+    <published>{{ interview.recorded_date | date_to_xmlschema }}</published>
+    <updated>{{ interview.recorded_date | date_to_xmlschema }}</updated>
+    <id>{{ site.url }}/interviews/{{ interview.id }}/</id>
+    <content type="html" xml:base="{{ site.url }}/interviews/{{ interview.id }}/">
+      {{ interview.topic | xml_escape }}
+    </content>
+    {% for tag in interview.tags %}
+    <category term="{{ tag | xml_escape }}" />
+    {% endfor %}
+  </entry>
+  {% endfor %}
+</feed>
