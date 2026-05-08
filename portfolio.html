@@ -16,6 +16,11 @@ permalink: /portfolio/
   <div class="editorial-index-grid">
     {% for project in site.data.portfolio %}
     <article class="editorial-card portfolio-card">
+      {% if project.image %}
+        <a class="editorial-card-thumb" href="{{ project.wayback_url }}" target="_blank" rel="noopener">
+          <img src="{{ project.image }}" alt="Screenshot for {{ project.title }}" loading="lazy">
+        </a>
+      {% endif %}
       <div class="editorial-card-body">
         <div class="editorial-card-meta">
           <span>{{ project.years }}</span>
