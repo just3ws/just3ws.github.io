@@ -23,6 +23,16 @@ breadcrumb: Conversations
   </section>
 
 
+  <section class="transcription-status-bar">
+    <span class="status-metric">Archive Status: 157 of 197 Transcribed</span>
+    <p class="status-note">
+      This archive is a work in progress. If you spot errors in transcription or have archival context to add, please contact 
+      <a href="mailto:mike@just3ws.com">Mike Hall</a>, reach out on 
+      <a href="https://www.linkedin.com/in/just3ws/" target="_blank" rel="noopener">LinkedIn</a>, or 
+      <a href="https://github.com/just3ws/just3ws.github.io/issues" target="_blank" rel="noopener">submit an issue</a> on GitHub.
+    </p>
+  </section>
+
   {% assign interviews = site.data.interviews.items | where_exp: "i", "i.video_asset_id" | sort: "recorded_date" | reverse %}
   {% include schema-factory.html
     collection_name="Technical Conversations"

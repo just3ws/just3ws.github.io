@@ -476,3 +476,98 @@
 .editorial-card-button:hover {
   border-bottom-color: var(--color-primary, #007bff);
 }
+
+/* Social Share Component */
+.social-share {
+  margin: 3rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid #eee;
+}
+
+.share-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+.share-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.share-btn svg {
+  flex-shrink: 0;
+}
+
+.share-btn.linkedin { background: #0077b5; }
+.share-btn.linkedin:hover { background: #005582; }
+
+.share-btn.mastodon { background: #6364ff; }
+.share-btn.mastodon:hover { background: #4d4dff; }
+
+.share-btn.email { background: #333; }
+.share-btn.email:hover { background: #000; }
+
+@media (max-width: 600px) {
+  .social-share {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+/* Transcription Status Bar */
+.transcription-status-bar {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e3f2fd;
+  border-left: 4px solid #2196f3;
+  border-radius: 0 8px 8px 0;
+}
+
+.status-metric {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.status-note {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+  margin: 0;
+}
+
+.status-note a {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.status-note a:hover {
+  text-decoration: underline;
+}

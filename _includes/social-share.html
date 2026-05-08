@@ -1,0 +1,32 @@
+<div class="social-share no-print">
+  <span class="share-label">Share Conversation:</span>
+  <div class="share-links">
+    {% assign share_url = site.url | append: page.url | url_encode %}
+    {% assign share_title = page.title | url_encode %}
+    
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url }}" 
+       class="share-btn linkedin" 
+       target="_blank" 
+       rel="noopener" 
+       title="Share on LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      LinkedIn
+    </a>
+
+    <a href="https://mastodonshare.com/?url={{ share_url }}&text={{ share_title }}" 
+       class="share-btn mastodon" 
+       target="_blank" 
+       rel="noopener" 
+       title="Share on Mastodon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.326 7.812.297 10.491.297 12.59v.232c0 2.1.03 4.779.619 7.464.49 2.67 2.4 4.135 4.7 4.542 1.348.242 2.756.31 4.168.23 2.115-.12 3.12-.51 3.12-.51l-.045-2.02s-1.89.51-4.043.43c-2.115-.08-4.14-.373-4.475-2.85-.033-.243-.053-.48-.053-.717 0 0 2.21.51 4.73.57 2.413.06 4.67-.14 6.81-.35 2.14-.21 3.86-.7 4.14-2.89.28-2.2 0-7.39 0-7.39 0-2.11-.03-4.78-.62-7.464zm-3.87 11h-2.556V11.23c0-1.57-.46-2.57-1.38-2.57-.75 0-1.15.53-1.35 1.03-.07.16-.1.35-.1.54v4.54l-2.556-.002v-4.54c0-.19-.03-.38-.1-.54-.2-.5-.6-1.03-1.35-1.03-.92 0-1.38 1-1.38 2.57v5.228H6.15V8.16h2.556V9.45c.42-.7 1.25-1.48 2.61-1.48 1.4 0 2.47.88 2.8 2.2 0 0 .34-1.2 1.7-2.13 1.37-.93 2.45-.07 2.45.07.72 1.1 1.13 2.2 1.13 5.4v3.62z"/></svg>
+      Mastodon
+    </a>
+
+    <a href="mailto:?subject={{ share_title }}&body={{ share_url }}" 
+       class="share-btn email" 
+       title="Share via Email">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      Email
+    </a>
+  </div>
+</div>

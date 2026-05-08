@@ -12,6 +12,10 @@ layout: minimal
     {% include schema-factory.html interview=interview asset=asset %}
     {% include video-asset-player.html asset=asset embed_id="interview-embed" %}
 
+    <div class="interview-editorial-container" style="padding-bottom: 0; margin-bottom: -2rem;">
+      {% include social-share.html %}
+    </div>
+
     {% if related_entry.links.size > 0 or conference_related.size > 0 %}
       <div class="interview-editorial-container" style="padding-top: 0; margin-top: -3rem;">
         <section class="related-context-editorial">
