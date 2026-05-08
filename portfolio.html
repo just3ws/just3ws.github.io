@@ -1,26 +1,39 @@
 ---
 layout: minimal
 title: Mike Hall - Portfolio
-description: A collection of historical projects, community platforms, and engineering work preserved via the Wayback Machine.
+description: A collection of historical projects, community platforms, and engineering work. Features a dynamic visual timeline of site evolution.
 breadcrumb: Portfolio
 permalink: /portfolio/
 ---
 
 <article class="page">
   <header class="home-header">
-    <h1>Project Portfolio <span class="subtitle">Digital Archeology</span></h1>
+    <h1>Project Portfolio <span class="subtitle">Digital Archeology & Modern Games</span></h1>
     <h2 class="title">A career built on community, platform architecture, and technical media.</h2>
-    <p class="home-intro">This portfolio showcases key projects and platforms I've designed, built, and led over the years. Many of these are preserved here via the Wayback Machine, documenting the evolution of my work in the technical community.</p>
+    <p class="home-intro">This portfolio showcases key projects and platforms I've designed, built, and led. From deterministic card combat to historical community archives, this is a look at the evolution of my work.</p>
   </header>
 
   <div class="editorial-index-grid">
     {% for project in site.data.portfolio %}
-    <article class="editorial-card portfolio-card">
-      {% if project.image %}
-        <a class="editorial-card-thumb" href="{{ project.wayback_url }}" target="_blank" rel="noopener">
+    <article class="editorial-card portfolio-card" id="project-{{ project.id }}">
+      {% if project.images %}
+        <div class="portfolio-slideshow" data-project="{{ project.id }}">
+          <div class="slideshow-track">
+            {% for img in project.images %}
+              <img src="{{ img }}" alt="{{ project.title }} Evolution" class="slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+            {% endfor %}
+          </div>
+          <div class="slideshow-controls">
+            <button class="slide-prev" aria-label="Previous Slide">❮</button>
+            <button class="slide-next" aria-label="Next Slide">❯</button>
+          </div>
+        </div>
+      {% elsif project.image %}
+        <div class="editorial-card-thumb">
           <img src="{{ project.image }}" alt="Screenshot for {{ project.title }}" loading="lazy">
-        </a>
+        </div>
       {% endif %}
+
       <div class="editorial-card-body">
         <div class="editorial-card-meta">
           <span>{{ project.years }}</span>
@@ -39,7 +52,12 @@ permalink: /portfolio/
           {% endfor %}
         </div>
         <div class="editorial-card-actions">
-          <a class="editorial-card-button" href="{{ project.wayback_url }}" target="_blank" rel="noopener">Explore on Wayback</a>
+          {% if project.url %}
+            <a class="editorial-card-button" href="{{ project.url }}" target="_blank" rel="noopener">Visit Site</a>
+          {% endif %}
+          {% if project.wayback_url %}
+            <a class="editorial-card-button" href="{{ project.wayback_url }}" target="_blank" rel="noopener">Explore Archive</a>
+          {% endif %}
         </div>
       </div>
     </article>
@@ -47,18 +65,191 @@ permalink: /portfolio/
   </div>
 </article>
 
+<div id="gallery-modal" class="gallery-modal" aria-hidden="true">
+  <span class="modal-close">×</span>
+  <div class="modal-content">
+    <img id="modal-img" src="" alt="Expanded Preview">
+  </div>
+</div>
+
 <style>
   .portfolio-card {
     border-top: 4px solid var(--color-primary, #007bff);
+    overflow: hidden;
   }
+  
   .project-tags-row {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
     margin-bottom: 1.5rem;
   }
+  
   .project-tags-row .related-tag {
     margin-bottom: 0;
     font-size: 0.6rem;
   }
+
+  /* Slideshow CSS */
+  .portfolio-slideshow {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    background: #000;
+    cursor: pointer;
+  }
+
+  .slideshow-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .slide.is-active {
+    opacity: 1;
+  }
+
+  .slideshow-controls {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .slideshow-controls button {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+
+  .slideshow-controls button:hover {
+    background: var(--color-primary, #007bff);
+  }
+
+  /* Modal/Gallery CSS */
+  .gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-modal[aria-hidden="false"] {
+    display: flex;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+
+  .modal-content img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slideshows = document.querySelectorAll('.portfolio-slideshow');
+    const modal = document.getElementById('gallery-modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeBtn = document.querySelector('.modal-close');
+
+    slideshows.forEach(slideshow => {
+      const slides = slideshow.querySelectorAll('.slide');
+      let currentIndex = 0;
+      let interval;
+
+      const showSlide = (index) => {
+        slides.forEach(s => s.classList.remove('is-active'));
+        slides[index].classList.add('is-active');
+        currentIndex = index;
+      };
+
+      const nextSlide = (e) => {
+        if (e) e.stopPropagation();
+        let next = (currentIndex + 1) % slides.length;
+        showSlide(next);
+      };
+
+      const prevSlide = (e) => {
+        if (e) e.stopPropagation();
+        let prev = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(prev);
+      };
+
+      // Auto-play
+      const startAutoPlay = () => {
+        interval = setInterval(nextSlide, 4000);
+      };
+
+      const stopAutoPlay = () => {
+        clearInterval(interval);
+      };
+
+      startAutoPlay();
+
+      // Controls
+      slideshow.querySelector('.slide-next').addEventListener('click', nextSlide);
+      slideshow.querySelector('.slide-prev').addEventListener('click', prevSlide);
+
+      // Modal expansion
+      slideshow.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') return;
+        const activeImg = slides[currentIndex];
+        modalImg.src = activeImg.src;
+        modal.setAttribute('aria-hidden', 'false');
+        stopAutoPlay();
+      });
+
+      slideshow.addEventListener('mouseenter', stopAutoPlay);
+      slideshow.addEventListener('mouseleave', startAutoPlay);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.setAttribute('aria-hidden', 'true');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>
