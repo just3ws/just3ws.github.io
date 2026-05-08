@@ -105,7 +105,7 @@ module Jekyll
           'description' => description_meta,
           'image' => thumbnail,
           'breadcrumb' => interview['title'],
-          'breadcrumb_parent_name' => 'Interviews',
+          'breadcrumb_parent_name' => 'Conversations',
           'breadcrumb_parent_url' => '/interviews/',
           'interview_id' => id,
           'collection' => interview['collection']
