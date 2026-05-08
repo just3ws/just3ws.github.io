@@ -34,6 +34,17 @@ breadcrumb: Conversations
       <a href="https://github.com/just3ws/just3ws.github.io/issues" target="_blank" rel="noopener">submit an issue</a> on GitHub.
     </p>
   </section>
+
+  <nav class="archive-filters no-print" aria-label="Archive Collections">
+    <span class="filter-label">Browse Collections:</span>
+    <div class="filter-group">
+      <button class="filter-btn is-active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="UGtastic">UGtastic</button>
+      <button class="filter-btn" data-filter="SCMC">SCMC</button>
+      <button class="filter-btn" data-filter="Archive">Archive</button>
+    </div>
+  </nav>
+
   {% include schema-factory.html
     collection_name="Technical Conversations"
     collection_description=page.description
@@ -52,4 +63,31 @@ breadcrumb: Conversations
       {% endif %}
     {% endfor %}
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.editorial-card');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          // Update active state
+          buttons.forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+
+          // Filter cards
+          cards.forEach(card => {
+            const collection = card.getAttribute('data-collection');
+            if (filter === 'all' || collection === filter) {
+              card.classList.remove('is-hidden');
+            } else {
+              card.classList.add('is-hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
 </article>

@@ -576,3 +576,59 @@
 .status-note a:hover {
   text-decoration: underline;
 }
+
+/* Archive Filters */
+.archive-filters {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 0.5rem 0;
+}
+
+.filter-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: white;
+  border: 1px solid #eee;
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #666;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary, #007bff);
+  color: var(--color-primary, #007bff);
+}
+
+.filter-btn.is-active {
+  background: var(--color-primary, #007bff);
+  border-color: var(--color-primary, #007bff);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+/* Editorial Card Filter Logic */
+.editorial-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.editorial-card.is-hidden {
+  display: none;
+}

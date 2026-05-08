@@ -13,7 +13,7 @@
   {% endif %}
 {% endif %}
 
-<article class="editorial-card">
+<article class="editorial-card" data-collection="{{ interview.collection }}">
   {% if thumb %}
     <a class="editorial-card-thumb" href="{{ primary_url }}">
       <img src="{{ thumb }}" alt="Thumbnail for {{ interview.title }}" loading="lazy">
