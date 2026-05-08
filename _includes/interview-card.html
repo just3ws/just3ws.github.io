@@ -42,7 +42,13 @@
     </h3>
     {% if interview.interviewees and interview.interviewees.size > 0 %}
       <div class="editorial-card-guests">
-        Featuring: {{ interview.interviewees | join: ", " }}
+        {% if interview.collection == "UGtastic" %}
+          Featuring: {{ interview.interviewees | join: ", " }}
+        {% elsif interview.collection == "SCMC" %}
+          Speaker: {{ interview.interviewees | join: ", " }}
+        {% else %}
+          People: {{ interview.interviewees | join: ", " }}
+        {% endif %}
       </div>
     {% endif %}
     <div class="editorial-card-actions">
