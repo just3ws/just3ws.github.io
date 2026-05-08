@@ -69,6 +69,7 @@ module Jekyll
         site.pages << VideoAssetPage.new(site, site.source, id, {
           'title' => title_meta,
           'description' => description_meta,
+          'image' => asset['thumbnail'],
           'breadcrumb' => title,
           'breadcrumb_parent_name' => 'Videos',
           'breadcrumb_parent_url' => '/videos/',

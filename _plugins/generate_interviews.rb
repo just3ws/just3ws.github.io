@@ -59,9 +59,14 @@ module Jekyll
         title_meta = Generators::Core::Meta.ensure_unique(title_meta, 70, id, seen_titles)
         description_meta = Generators::Core::Meta.ensure_unique(description_meta, 160, id, seen_descriptions)
 
+        # Look up thumbnail for social preview
+        video_asset = site.data.dig('video_assets', 'items').find { |a| a['id'] == interview['video_asset_id'] }
+        thumbnail = video_asset['thumbnail'] if video_asset
+
         site.pages << InterviewPage.new(site, site.source, id, {
           'title' => title_meta,
           'description' => description_meta,
+          'image' => thumbnail,
           'breadcrumb' => interview['title'],
           'breadcrumb_parent_name' => 'Interviews',
           'breadcrumb_parent_url' => '/interviews/',
