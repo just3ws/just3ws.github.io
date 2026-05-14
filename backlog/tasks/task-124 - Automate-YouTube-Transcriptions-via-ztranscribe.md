@@ -4,7 +4,7 @@ title: Automate YouTube Transcriptions via ztranscribe
 status: In Progress
 assignee: []
 created_date: '2026-05-14 17:26'
-updated_date: '2026-05-14 18:45'
+updated_date: '2026-05-14 19:54'
 labels: []
 dependencies: []
 priority: high
@@ -45,9 +45,16 @@ A large number of interviews are still pending transcription. We will use the lo
 <!-- SECTION:NOTES:BEGIN -->
 Updated `backlog/docs/architecture/transcript-import.md` to document the new asynchronous transcription workflow. 
 
-Currently, the `yt-transcribe` worker is still crunching through the queue in the background. I also ran the `audit:prepare_wave` task, which confirmed that all "To Do" canonical review tasks that already have a transcript on disk have been completed. 
+Encountered an issue where the background worker was suspended by the OS because `ffmpeg` (called by `yt-transcribe`) attempted to read from `stdin` when launched without a terminal attached.
 
-We are officially caught up and waiting on the background worker to finish transcribing the next batch of YouTube videos before any more canonical audits can be performed. The system is operating exactly as designed.
+Resolved the issue by:
+1. Killing the suspended worker.
+2. Running `zdots-ctx clear-stale-jobs` to release the locked jobs.
+3. Restarting the worker with explicit redirection: `zdots-ctx worker --type transcription < /dev/null &`.
+
+Documented this failure mode and the exact recovery steps in the architecture runbook to ensure the process is highly resilient and fully resumable after internet outages or OS interruptions.
+
+Currently, the `yt-transcribe` worker is happily crunching through the queue in the background. We are waiting on it to finish the next batch of YouTube videos before any more canonical audits can be performed. The system is operating exactly as designed.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
