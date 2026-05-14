@@ -144,7 +144,7 @@ case "$cmd" in
         --apply
     fi
 
-    ./bin/audit_transcripts.rb
+    bundle exec rake transcript:audit
     if [ "$SKIP_VALIDATE" -ne 1 ]; then
       run_validate
     fi
@@ -162,7 +162,7 @@ case "$cmd" in
     fi
     ;;
   audit|status)
-    ./bin/audit_transcripts.rb
+    bundle exec rake transcript:audit
     ;;
   validate)
     run_validate
