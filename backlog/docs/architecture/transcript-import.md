@@ -13,6 +13,31 @@ id: doc-008
 
 # Transcript Import
 
+## Automated YouTube Transcription (Async)
+
+For missing transcripts of videos hosted on YouTube, we use a local asynchronous pipeline powered by `zdots-ctx` and `whisper.cpp`.
+
+1. **Enqueue Pending Videos:**
+   Identify all pending `video_assets` with a YouTube ID and enqueue them to the local `zdots-ctx` worker.
+   ```bash
+   ./bin/batch_ztranscribe.rb
+   ```
+2. **Start the Background Worker:**
+   Ensure the worker is running to process the queue asynchronously.
+   ```bash
+   zdots-ctx worker --type transcription
+   ```
+3. **Stage Completed Transcripts:**
+   As the worker finishes downloading and transcribing to `~/Downloads/transcripts/`, map them back to their canonical `video_asset_id` and stage them for ingestion.
+   ```bash
+   ./bin/stage_completed_transcripts.rb
+   ```
+4. **Ingest Staged Transcripts:**
+   Use the standard pipeline to ingest the staged files into `_data/transcripts/`.
+   ```bash
+   ./bin/transcripts ingest --source-dir tmp/transcript-id-staging --min-confidence 0.9 --auto-commit
+   ```
+
 ## Canonical Model
 
 - Transcript files live in `_data/transcripts/*.yml`.
