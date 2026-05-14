@@ -1,10 +1,10 @@
 ---
 id: TASK-124
 title: Automate YouTube Transcriptions via ztranscribe
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-05-14 17:26'
-updated_date: '2026-05-14 18:27'
+updated_date: '2026-05-14 18:28'
 labels: []
 dependencies: []
 priority: high
@@ -24,7 +24,7 @@ A large number of interviews are still pending transcription. We will use the lo
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Identify all pending video_assets with a youtube platform id
+- [x] #1 Identify all pending video_assets with a youtube platform id
 - [ ] #2 Use yt-transcribe to download and transcribe the audio
 - [ ] #3 Import the resulting transcripts into the project using the transcript pipeline
 - [ ] #4 Run transcript-conversational-audit on the new transcripts to generate insights and metadata
@@ -43,9 +43,7 @@ A large number of interviews are still pending transcription. We will use the lo
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-Created `bin/batch_ztranscribe.rb` to automate the transcription pipeline. It dynamically identifies 41 pending interviews missing `transcript_id` that have a valid YouTube `asset_id`, runs them through `~/.config/zsh/recipes/yt-transcribe`, and automatically stages the resulting `.txt` files in `tmp/transcript-id-staging/` using their canonical `video_asset_id` to ensure 100% confidence during ingestion.
-
-Next step: Run `./bin/batch_ztranscribe.rb`, followed by `./bin/transcripts ingest`, and then we can initiate the `transcript-conversational-audit` waves.
+Updated `bin/batch_ztranscribe.rb` to enqueue transcription jobs via `zdots-ctx enqueue`. Enqueued 41 transcription jobs successfully. Started `zdots-ctx worker --type transcription` in the background (PID: 18490) to process the jobs. The worker will download and transcribe the videos automatically. Once finished, we need to ingest the outputs from `~/Downloads/transcripts/` into the project and run the conversational audit.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
