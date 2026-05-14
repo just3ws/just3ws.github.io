@@ -4,6 +4,7 @@ title: Automate YouTube Transcriptions via ztranscribe
 status: To Do
 assignee: []
 created_date: '2026-05-14 17:26'
+updated_date: '2026-05-14 18:17'
 labels: []
 dependencies: []
 priority: high
@@ -28,6 +29,14 @@ A large number of interviews are still pending transcription. We will use the lo
 - [ ] #3 Import the resulting transcripts into the project using the transcript pipeline
 - [ ] #4 Run transcript-conversational-audit on the new transcripts to generate insights and metadata
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Created `bin/batch_ztranscribe.rb` to automate the transcription pipeline. It dynamically identifies 41 pending interviews missing `transcript_id` that have a valid YouTube `asset_id`, runs them through `~/.config/zsh/recipes/yt-transcribe`, and automatically stages the resulting `.txt` files in `tmp/transcript-id-staging/` using their canonical `video_asset_id` to ensure 100% confidence during ingestion.
+
+Next step: Run `./bin/batch_ztranscribe.rb`, followed by `./bin/transcripts ingest`, and then we can initiate the `transcript-conversational-audit` waves.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
