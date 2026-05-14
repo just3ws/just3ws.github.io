@@ -4,7 +4,7 @@ title: Automate YouTube Transcriptions via ztranscribe
 status: To Do
 assignee: []
 created_date: '2026-05-14 17:26'
-updated_date: '2026-05-14 18:17'
+updated_date: '2026-05-14 18:27'
 labels: []
 dependencies: []
 priority: high
@@ -29,6 +29,16 @@ A large number of interviews are still pending transcription. We will use the lo
 - [ ] #3 Import the resulting transcripts into the project using the transcript pipeline
 - [ ] #4 Run transcript-conversational-audit on the new transcripts to generate insights and metadata
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Plan (Updated for async capabilities)
+1. **Discovery:** Find all `video_assets` missing a `transcript_id` with a valid `youtube` platform ID.
+2. **Enqueue Jobs:** For each video, use `zdots-ctx enqueue transcription '{"url": "https://www.youtube.com/watch?v=<id>"}'` to queue the download and transcription asynchronously.
+3. **Background Worker:** Run the `zdots-ctx worker` in a background process or terminal pane to process the queued transcriptions without blocking the main workflow.
+4. **Ingestion & Auditing:** As jobs complete and output to `~/Downloads/transcripts/`, stage them in `tmp/transcript-id-staging/` using their `video_asset_id` and run `./bin/transcripts ingest`. Finally, run the `transcript-conversational-audit` skill to generate insights and metadata.
+<!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 
