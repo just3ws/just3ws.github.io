@@ -4,7 +4,7 @@ title: Automate YouTube Transcriptions via ztranscribe
 status: In Progress
 assignee: []
 created_date: '2026-05-14 17:26'
-updated_date: '2026-05-14 19:54'
+updated_date: '2026-05-14 23:33'
 labels: []
 dependencies: []
 priority: high
@@ -55,6 +55,8 @@ Resolved the issue by:
 Documented this failure mode and the exact recovery steps in the architecture runbook to ensure the process is highly resilient and fully resumable after internet outages or OS interruptions.
 
 Currently, the `yt-transcribe` worker is happily crunching through the queue in the background. We are waiting on it to finish the next batch of YouTube videos before any more canonical audits can be performed. The system is operating exactly as designed.
+
+[Update: The worker was resumed after being checked on. The stale jobs were requeued and the background process is running `whisper-cli` normally.]
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
