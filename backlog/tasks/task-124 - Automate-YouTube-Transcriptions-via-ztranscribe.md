@@ -4,7 +4,7 @@ title: Automate YouTube Transcriptions via ztranscribe
 status: In Progress
 assignee: []
 created_date: '2026-05-14 17:26'
-updated_date: '2026-05-14 18:28'
+updated_date: '2026-05-14 18:39'
 labels: []
 dependencies: []
 priority: high
@@ -43,7 +43,10 @@ A large number of interviews are still pending transcription. We will use the lo
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-Updated `bin/batch_ztranscribe.rb` to enqueue transcription jobs via `zdots-ctx enqueue`. Enqueued 41 transcription jobs successfully. Started `zdots-ctx worker --type transcription` in the background (PID: 18490) to process the jobs. The worker will download and transcribe the videos automatically. Once finished, we need to ingest the outputs from `~/Downloads/transcripts/` into the project and run the conversational audit.
+Background worker is currently processing the queue of 41 videos. 
+Wrote a script `bin/stage_completed_transcripts.rb` to automatically stage any finished `.txt` files from the worker. 
+Successfully staged, ingested, and performed a canonical audit on the first completed transcript (`david-heinemeier-hansson-dhh-railsconf-2014`). 
+The worker will continue processing the remaining ~40 videos in the background over the next few hours. Once done, the staging and ingestion scripts can be run again to process the rest of the batch.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
