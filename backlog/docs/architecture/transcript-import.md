@@ -15,28 +15,43 @@ id: doc-008
 
 ## Automated YouTube Transcription (Async)
 
-For missing transcripts of videos hosted on YouTube, we use a local asynchronous pipeline powered by `zdots-ctx` and `whisper.cpp`.
+For missing transcripts of videos hosted on YouTube, we use a local asynchronous pipeline powered by `zdots-ctx` and `whisper.cpp`. This process is designed to be highly resilient and fully resumable.
 
 1. **Enqueue Pending Videos:**
    Identify all pending `video_assets` with a YouTube ID and enqueue them to the local `zdots-ctx` worker.
    ```bash
    ./bin/batch_ztranscribe.rb
    ```
-2. **Start the Background Worker:**
-   Ensure the worker is running to process the queue asynchronously.
+2. **Start the Background Worker (Safely):**
+   Ensure the worker is running to process the queue asynchronously. 
+   **CRITICAL:** When running in the background, you MUST redirect stdin from `/dev/null`. If you do not, the underlying `ffmpeg` process (used by `yt-transcribe` to convert audio) will attempt to read from the terminal, immediately suspending the entire worker process.
    ```bash
-   zdots-ctx worker --type transcription
+   # Run in background safely:
+   zdots-ctx worker --type transcription < /dev/null &
    ```
-3. **Stage Completed Transcripts:**
+3. **Pausing and Resuming (Interruption Recovery):**
+   If the process is interrupted (e.g., power loss, internet outage, or manual kill):
+   - Clear any jobs that were stuck in the "running" state when the interruption occurred:
+     ```bash
+     zdots-ctx clear-stale-jobs
+     ```
+   - Restart the worker using the safe command from Step 2. It will automatically pick up where it left off.
+4. **Stage Completed Transcripts:**
    As the worker finishes downloading and transcribing to `~/Downloads/transcripts/`, map them back to their canonical `video_asset_id` and stage them for ingestion.
    ```bash
    ./bin/stage_completed_transcripts.rb
    ```
-4. **Ingest Staged Transcripts:**
+5. **Ingest Staged Transcripts:**
    Use the standard pipeline to ingest the staged files into `_data/transcripts/`.
    ```bash
    ./bin/transcripts ingest --source-dir tmp/transcript-id-staging --min-confidence 0.9 --auto-commit
    ```
+6. **Audit and Extract Insights:**
+   Once ingested, prepare the newly available transcripts for the conversational audit to extract SEO metadata, separate speakers, and pull durable insights.
+   ```bash
+   bundle exec rake audit:prepare_wave
+   ```
+   Then activate the `transcript-conversational-audit` skill to process the generated prompts.
 
 ## Canonical Model
 
