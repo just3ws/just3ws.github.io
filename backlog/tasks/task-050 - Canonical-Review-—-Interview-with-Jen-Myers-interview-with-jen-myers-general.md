@@ -1,9 +1,10 @@
 ---
 id: TASK-050
 title: Canonical Review — Interview with Jen Myers (interview-with-jen-myers-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
+updated_date: '2026-05-15 03:36'
 labels:
   - transcript
   - interview
