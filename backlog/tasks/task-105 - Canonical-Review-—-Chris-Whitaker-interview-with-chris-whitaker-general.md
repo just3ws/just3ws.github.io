@@ -1,9 +1,10 @@
 ---
 id: TASK-105
 title: Canonical Review — Chris Whitaker (interview-with-chris-whitaker-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:56'
+updated_date: '2026-05-15 02:35'
 labels:
   - transcript
   - interview
