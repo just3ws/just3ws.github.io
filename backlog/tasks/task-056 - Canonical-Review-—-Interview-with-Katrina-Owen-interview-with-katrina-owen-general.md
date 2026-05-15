@@ -3,9 +3,10 @@ id: TASK-056
 title: >-
   Canonical Review — Interview with Katrina Owen
   (interview-with-katrina-owen-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
+updated_date: '2026-05-15 03:36'
 labels:
   - transcript
   - interview
