@@ -1,0 +1,85 @@
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, community organizer at UGtastic
+  S1:
+    name: Dean Wampler
+    role: Software Architect, Big Data Expert, and Author
+turns:
+- speaker: M1
+  text: "Hi, it's Mike again with UGtastic. I'm here today at GOTO Chicago 2013 and I'm again sitting down with Dean Wampler who is one of those people that always seems to be ahead of the tech curve and is a fixture here in Chicago. When I was first getting into AOP it was already old hat for him, and when I was starting to look at big data his name came up as someone to talk to. But I had already known you through the community because of your involvement in conferences and user groups. So how does that work for you? Do you use the community to stay up to speed on things or are you looking at things and putting those to the community?"
+- speaker: S1
+  text: "Well I'm sure it's both. I obviously like to talk about what I find interesting and what I think people will find interesting for solving problems. That's kind of why I started the Scala user group and have always been active in the user groups here in Chicago. I think the reason I like to keep up with trends is both because it's interesting but also because there's a bit of paranoia there. I've always been a little nervous about growing stale—in part because it gets boring to do the same thing over and over again, but also because I don't want to eventually get to the point where I feel like I'm completely out of touch with what's going on. I think also this is a young industry; we're still learning how to do stuff. The kind of problems we're solving today are in some ways the same problems we've always been solving, but oftentimes the scale is a lot different today than it was, say, 20 years ago when the web first started. So a lot of times it's a sort of restlessness that there's got to be a better way. Maybe we're getting work done, but it sure seems to be painful in some respect, so is there a better way? That's how I see it."
+- speaker: M1
+  text: "I think there is a better way. That's how I started getting interested in AOP as a way of solving problems that we saw in composing systems. It didn't quite pan out the way I thought it would, but now I've seen that there's a lot that functional programming brings, in part because the problems we're doing today are a lot more data-centric and it's really good for that, as well as for concurrency like multi-core and stuff. And then I just like to be engaged with people, learn from people, and talk about what I think is a really good way for people to learn from each other."
+- speaker: M1
+  text: "I had forgotten about the Scala group. A little note for the audience: you had spoken at a Chicago Code Camp and my wife—who is not a programmer—sat in your session. She wanted me to become a programmer and she took extensive notes because you explained it in a way where she was able to grasp it. It actually helped us in our conversations."
+- speaker: S1
+  text: "I'm a marriage counselor."
+- speaker: M1
+  text: "Yeah, you're a marriage counselor! Because now she understood a little bit better the problems that I face and what programming is. I'm just curious—Scala was 'the next big thing' for a little while for functional programming before Clojure really got its legs. Are you still in the Scala space, or have you moved on to other languages?"
+- speaker: S1
+  text: "No, I'm still a big fan of Scala and a big fan of Clojure. To be honest, I'm a little torn between the two; I think they both have various strengths and weaknesses. I still do a lot of Scala because it's a great toolbox for me that fits the way I like to program. It does all the functional stuff and has some really nice extensions to object-oriented programming compared to Java that address some issues that Java wasn't good at. I recommend people try to become familiar with both if they're looking for another language so they don't just grab the first thing that comes along and fail to appreciate other options. A lot of times these things come down to personal preferences, but some languages are better than others for certain problems."
+- speaker: M1
+  text: "You've moved between AOP, Ruby, Scala, and now Big Data. These are different communities. Have you made any observations about moving between these groups—how they approach topics or share information?"
+- speaker: S1
+  text: "That's an interesting question. One thing that comes to mind is that you typically see Ruby more in feature-rich website development; Rails really drove that Ruby popularity. There's sort of a culture that goes with that—people that are maybe more visually oriented, more aesthetically oriented, and Ruby is a beautiful language to work with in that regard. I sort of got out of that community, at least as far as active involvement, because I wanted to get back into more server-side general development for more scalable systems, and that meant going back to the JVM. That's about the time I started to really get into functional programming, learned about Scala and Clojure, and then ironically I did a lot of Hadoop consulting recently as part of the big data space. In a way that was a deliberate movement because I did physics in school and there was a lot of math I hadn't used in a long time but liked doing."
+- speaker: M1
+  text: "So what's 'the next big thing'?"
+- speaker: S1
+  text: "That's a really good question. I talked a little bit about this in my talk the other day, mostly in the context of big data. I do think that functional programming is going to see more widespread adoption. Even though a lot of people have talked about the multi-core problem—how do we write robust concurrency code—as the driver for functional programming, I actually think more developers are going to run up against a wall trying to do data problems. If they write Hadoop apps or use some other tool, functional programming is a better fit there. The other trend I'm starting to see is more specialization in that space—probabilistic models used for machine learning and predictive analytics. Like when Netflix recommends something and it actually looks like something you'd be interested in; there's a predictive model going on behind the scenes. Making that technology easier to use for people who aren't experts is a specialization I see happening."
+- speaker: M1
+  text: "Your presentations seem to follow what you're passionate about at the moment. Is that an intentional push or pull—are you following what's interesting or are you digging deep to force yourself to learn?"
+- speaker: S1
+  text: "It's funny you ask that, because there have been times when I proposed a talk on something I really didn't know a whole lot about, but it was a motivator to force me to make the time to learn it. But in general, I try to talk about stuff that I have legitimate experience in and feel like I can offer some wisdom to help other people avoid mistakes. I do like public speaking and teaching; it's rewarding to talk with people about what seems to be working and what we should be doing instead."
+- speaker: M1
+  text: "As an experienced speaker, do you have a process for preparing your talks? Are you a 'slides-first' guy?"
+- speaker: S1
+  text: "I guess I am a slides-first guy in terms of preparing them. I've done enough now that I don't really rehearse them much, and sometimes they're a little rough around the edges or rushed. I've tended to have more material than less, so I've had to develop an intuitive feel for how long I want to spend on each slide. Slides are a great outlining format; I'll start with a rough outline that way and then flesh it out as I go."
+- speaker: M1
+  text: "Okay well thank you very much for taking the time, Dean. I appreciate it."
+- speaker: S1
+  text: "Thank you very much. Thanks."
+insights:
+- statement: "The fear of 'technical staleness' acts as a critical motivator for seasoned developers to move toward the technological frontier, preventing professional stagnation."
+  type: durable
+  confidence: high
+- statement: "Functional programming's primary path to mainstream adoption is likely driven by data-scale challenges (e.g., Hadoop, Big Data) rather than purely concurrency concerns, as data problems force developers to confront the limitations of traditional imperative models."
+  type: durable
+  confidence: high
+- statement: "Technical communities often form distinct cultural 'personalities' based on their primary use cases: Ruby/Rails attracts aesthetically and visually-oriented developers, while the JVM attracts those focused on server-side scalability and system architecture."
+  type: durable
+  confidence: medium
+- statement: "Public speaking can serve as a powerful 'learning catalyst' by forcing an expert to formalize their knowledge under the pressure of a deadline and a public audience."
+  type: durable
+  confidence: high
+- statement: "Predictive analytics and machine learning represent a shift toward specialized technical domains becoming accessible to generalist developers through better abstractions and tools."
+  type: time-bound
+  confidence: high
+youtube:
+  title: "Data over Concurrency: Dean Wampler on the Real Driver for Functional Programming | GOTO Chicago 2013"
+  description: "Mike Hall sits down with Dean Wampler, author and Big Data architect, at GOTO Chicago 2013. They explore Dean's journey from Aspect-Oriented Programming (AOP) into the world of Scala, Clojure, and Hadoop. Dean shares his insights on why the data-processing wall is a bigger driver for functional programming than multi-core concurrency, the cultural differences between Ruby and JVM communities, and the 'restlessness' that drives technical innovation."
+  tags:
+  - Big Data
+  - Functional Programming
+  - Scala
+  - Clojure
+  - Hadoop
+  - Software Architecture
+  - GOTO Conference
+  - Software Craftsmanship
+  chapters:
+  - timestamp: '00:00'
+    title: "Introduction and the Fear of Technical Staleness"
+  - timestamp: '01:45'
+    title: "From AOP to Functional Programming"
+  - timestamp: '03:30'
+    title: "Scala vs. Clojure: Choosing the Right Tool"
+  - timestamp: '05:00'
+    title: "The Cultural Split: Ruby vs. JVM Ecosystems"
+  - timestamp: '06:45'
+    title: "The Next Big Thing: Specialized Data Models"
+  - timestamp: '08:30'
+    title: "Public Speaking as a Learning Motivator"
+  - timestamp: '10:00'
+    title: "Slide-First Preparation and Speaking Intuition"

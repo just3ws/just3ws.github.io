@@ -75,13 +75,13 @@ This milestone tracks the canonical review and optimization of all 197 interview
 | [task-030](backlog/completed/task-030-canonical-review-angelique-martin.md) | Canonical Review (Angelique Martin) | Done | Medium |
 | [task-028](backlog/completed/task-028-canonical-review-arthur-kay.md) | Canonical Review (Arthur Kay) | Done | Medium |
 | [task-101](backlog/completed/task-101-canonical-review-angelique-martin-duplicate.md) | Canonical Review (Angelique Martin - Duplicate) | Done | Medium |
-| [task-102](backlog/tasks/task-102%20-%20Canonical-Review-%E2%80%94-Dickinson-Beehler-interview-with-dickinson-beehler.md) | Canonical Review (Dickinson & Beehler) | To Do | Medium |
+| [task-102](backlog/completed/task-102-canonical-review-dickinson-beehler.md) | Canonical Review (Dickinson & Beehler) | Done | Medium |
 | [task-103](backlog/completed/task-103-canonical-review-dave-thomas.md) | Canonical Review (Dave Thomas) | Done | Medium |
-| [task-104](backlog/tasks/task-104%20-%20Canonical-Review-%E2%80%94-Gil-Tene-interview-with-gil-tene.md) | Canonical Review (Gil Tene) | To Do | Medium |
-| [task-105](backlog/tasks/task-105%20-%20Canonical-Review-%E2%80%94-Chris-Whitaker-interview-with-chris-whitaker-general.md) | Canonical Review (Chris Whitaker) | To Do | Medium |
-| [task-106](backlog/tasks/task-106%20-%20Canonical-Review-%E2%80%94-Dean-Wampler-interview-with-dean-wampler-general.md) | Canonical Review (Dean Wampler) | To Do | Medium |
+| [task-104](backlog/completed/task-104-canonical-review-gil-tene.md) | Canonical Review (Gil Tene) | Done | Medium |
+| [task-105](backlog/completed/task-105-canonical-review-chris-whitaker.md) | Canonical Review (Chris Whitaker) | Done | Medium |
+| [task-106](backlog/completed/task-106-canonical-review-dean-wampler.md) | Canonical Review (Dean Wampler) | Done | Medium |
 | [task-107](backlog/completed/task-107-canonical-review-hadi-hariri.md) | Canonical Review (Hadi Hariri) | Done | Medium |
-| [task-108](backlog/tasks/task-108%20-%20Canonical-Review-%E2%80%94-Carina-C.-Zona-interview-with-carina-c-zona-general.md) | Canonical Review (Carina C. Zona) | To Do | Medium |
+| [task-108](backlog/completed/task-108-canonical-review-carina-c-zona.md) | Canonical Review (Carina C. Zona) | Done | Medium |
 | [task-109](backlog/completed/task-109-canonical-review-zinni-buda-howe.md) | Canonical Review (Zinni, Buda, Howe) | Done | Medium |
 | [task-110](backlog/tasks/task-110%20-%20Canonical-Review-%E2%80%94-Eric-Kingery-interview-with-eric-kingery-general.md) | Canonical Review (Eric Kingery) | To Do | Medium |
 | [task-111](backlog/tasks/task-111%20-%20Canonical-Review-%E2%80%94-Giles-Bowkett-interview-with-giles-bowkett-general.md) | Canonical Review (Giles Bowkett) | To Do | Medium |

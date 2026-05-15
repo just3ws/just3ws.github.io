@@ -1,0 +1,197 @@
+### SYSTEM ROLE & INSTRUCTIONS
+      ### SYSTEM ROLE: ARCHIVE FORENSIC AGENT
+      You are a Staff-level Software Engineer and Oral Historian. You are repairing "phonetic-heavy" transcripts from 2010-2015 era technical interviews.
+
+      ### DOMAIN CONTEXT
+      The archive covers the "Software Craftsmanship" movement. You must be hypersensitive to:
+      - Ecosystems: Ruby on Rails, Java (Spring/Hibernate), .NET (C#), Clojure, Smalltalk.
+      - Patterns: TDD, SOLID, Active Record vs Data Mapper, DDD, Hexagonal Architecture.
+      - Events: SCNA (Software Craftsmanship North America), GOTO, WindyCityRails.
+
+      ### HEAVY-LIFTING RULES
+      1. INFER SPEAKERS VIA SEMANTIC ROLE:
+         - M1 (Mike Hall): Asks about community, "why did you build this?", "what was the impetus?", and provides meta-commentary on the recording environment.
+         - S1 (Subject): Provides deep technical rationale, implementation details, and mentions specific library names they authored.
+      2. JARGON CORRECTION (PHONETIC REPAIR):
+         - Correct "phonetic drift" based on technical context. 
+         - Examples: "Active JSBC" -> "ActiveJDBC", "Postgre" -> "Postgres", "Hibernate" -> "Hibernate", "A-gile" -> "Agile".
+      3. TURN SEGMENTATION:
+         - Identify "back-channeling" (e.g., "Right", "Yeah", "Okay") and keep them as distinct turns or merge them into the previous speaker's block only if they do not interrupt the flow.
+      4. INSIGHT EXTRACTION:
+         - Identify "Durable Insights": Concepts that are still relevant to Staff-level engineering today.
+         - Identify "Time-Bound Constraints": Decisions made because of the limitations of the era (e.g., "waiting for Oracle drivers in 2007").
+
+      ### OUTPUT SCHEMA (STRICT YAML)
+      You must output a YAML object containing:
+      - speaker_map: Map of ID (M1, S1) to Full Name and Role.
+      - turns: Array of {speaker: string, text: string}.
+      - insights: Array of {statement: string, type: durable|time-bound, confidence: high|medium}.
+      - youtube:
+          title: "SEO-optimized title using interview context"
+          description: "Full YouTube-ready description including summary, speakers, and event context."
+          tags: ["array", "of", "SEO", "tags"]
+          chapters:
+            - timestamp: "00:00"
+              title: "Introduction"
+            - timestamp: "MM:SS"
+              title: "Chapter Title"
+
+      Do not output any prose, markers, or backticks outside the YAML.
+
+### INTERVIEW METADATA
+---
+id: interview-with-jen-myers-general
+title: Interview with Jen Myers
+interviewees:
+- Jen Myers
+interviewer: Mike Hall
+topic: developer community and conference conversations
+conference:
+conference_year:
+community: General
+recorded_date: '2022-01-07'
+tags: []
+video_asset_id: interview-with-jen-myers-general
+
+### RAW TRANSCRIPT
+Hi, I'm Mike with UkeTastic. I'm here again at SCNA. I'm sitting down with Jen Meyer from Relevance and she, as a, well you're a designer, you're a digital native designer and you come and you speak to technical audiences, programmers and developers and also you speak to designers.
+ I'm sure that, or I believe that there's probably a big difference between those two audiences. What is it that you, do you see any difference when you speak to them?
+ There's some differences and I'm definitely personally more comfortable in the techie community for lack of a better term. That's kind of where I started and that's where I feel most at home honestly. Honestly when I go speak to designers I feel a little bit kind of on the other side of things because I do spend so much time in the technical landscape.
+ But there is.
+ There's definitely differences. I think a lot of the designers that I know, I know a lot of people who are in the UX community which is kind of almost a subset of the larger design community and they have, they work with different mediums and some of them are product designers but it's still very interesting to be able to find the common ground in between things. It sometimes just takes a little bit more work to figure out what a designer's perspective and what medium they work in and where they're coming from and then find the common ground. You don't feel I do have to do that as much in the tech community.
+ And I do think the designers too tend to, they have, they seem to see a larger sense of a lot of things. Not to say that tech people are narrow minded or anything like that. It's not that at all. But I think designers tend to have a very large sense of everything. And that always helps even if they're not very technical. I can kind of find some common ground in what they are passionate about and what they do and connect it to what I do and do that. And that's the main thing with designers.
+ So in just a broader sense, do you mean that they're looking at their design and how their design interacts where maybe a developer is just like, oh, how do I make this design work with this app?
+ I think that could be. I'm not sure exactly what it is, honestly. It's just kind of an impression that I get. And I think that designers tend to, they just really do like to have the large picture. They like to know how everything fits together. And I'm like that in that sense.
+ Right.
+ That's one thing that I do like to talk to developers.
+ Right.
+ Because it's easy to get wrapped up in little things. And details are important.
+ Right.
+ But it's really important for me to have larger context on things. And I think that's something I bring as a designer, having a context and knowing how things fit in. And that's the same whether you're actually doing that in a product or you're dealing with a community.
+ Right.
+ You have to manage those perspectives.
+ And just to jump back, when I introduced you as a digital native, what does that mean?
+ That's a term that I just started to coin, actually.
+ Oh, okay.
+ Because I haven't heard anybody else use it. But it was a way that I'm using to describe it.
+ Right.
+ So I think it's really important.
+ It's a way that I'm using to describe myself.
+ Okay.
+ Because I am a designer. I worked as a designer in software. But I don't have a formal design background.
+ Right.
+ So I didn't come from a print background and then learn to do it. I learned design by learning HTML back in 2001.
+ Right.
+ And things like that.
+ So you started on a computer.
+ I started in a digital landscape. And so everything that I've learned about design theory, I've learned about design principles. But since I'm always working in a digital medium, all of those principles I've always applied digitally, not to print or things like that.
+ And I have done some print projects. But actually, print projects are more of a struggle for me because I'm used to working in a digital thing.
+ Yeah.
+ So it's --
+ Why doesn't this resize?
+ Exactly. I get really nervous if I make something for print. And I'm like, I can't change it afterwards.
+ Right.
+ Or I can't change it down the road. It's a completely different process, completely different medium. And you can do it. The principles are the same. It's just about learning that medium. And that's the thing with -- I like the idea of a digital native designer in this field because those are designers who understand how design works in this medium.
+ Right.
+ And they have all the specific, you know, implementations and needs and all the possibilities.
+ Is there anything that when you go and you're talking to a technical program or audience that is -- you think is particularly hard to get across that maybe as developers we're just not quite attuned enough to some concept or idea that you see maybe as you go to one conference after another, this one just doesn't click for some reason?
+ No, there really isn't. I have really good experiences talking to developers universally. I've talked about this topic at many conferences. And I always have developers come and talk to me.
+ Yeah.
+ And they ask me, like, how can I learn? And there's a lot of them that feel that they can't. But I don't think there's any one thing that would be holding -- I've never seen anything across the board that's like, no, they're not getting this. It's just a matter of not knowing where to start, really.
+ Right.
+ Which has nothing to do with them. It's about, you know, how we're educating people and sharing information.
+ And that's one of the reasons in my talk I talk about how designers need to be more explicit and be more clear so that developers understand this. But mostly -- in fact, pretty much universally, all the developers that I've talked to, developers I work with, are really interested in learning these things on their own.
+ I think the only thing holding them back is not knowing exactly where to start, which hopefully is something that I can work on helping and us other, you know, digital designers can work on putting resources out there and stuff like that.
+ Yeah.
+ Because we could certainly use a little bit more usability and a little bit more just --
+ Mm-hmm.
+ -- make it look nice.
+ Mm-hmm.
+ And that is -- have you spoken -- like, Software craftsmanship North America is a -- what we call a polyglot.
+ Mm-hmm.
+ It's not one platform. But working in a real -- have you spoken at, like, any real specific or any -- any .NET specific or any -- any specific technology?
+ I have spoken at specific Ruby conferences, although most Ruby conferences that I have spoken at are very open --
+ Yeah.
+ -- to -- to things.
+ Yeah.
+ I have not spoken at anything else specific, although I have spoken at other polyglot conferences that tend toward -- more towards .NET, more towards things like that.
+ Mm-hmm.
+ So there's a wide range of --
+ Right.
+ -- of programmers. But honestly, the same -- I -- I still have the same experiences, the same common ground of --
+ Yeah.
+ -- the interest in learning at least a little bit of design.
+ Yeah.
+ Yeah. Well, the -- the question I was going to get at, though, before I get a little distracted as well --
+ Mm-hmm.
+ -- was that there seems to be a signature style --
+ Mm-hmm.
+ -- in each one of those that -- that you kind of know that a -- a -- a .NET's Microsoft platform --
+ Mm-hmm.
+ -- because it's got its own design influences --
+ Mm-hmm.
+ -- versus something on iOS --
+ Mm-hmm.
+ -- which is, you know --
+ Mm-hmm.
+ -- that it is --
+ Right, right.
+ -- but -- and -- and even in the Rails community, I tend to see a -- a certain style.
+ And now with Bootstrap --
+ Yeah.
+ -- that's going to be --
+ Yeah.
+ -- you know, I mean, I -- I have to admit, even on my own site --
+ Mm-hmm.
+ -- it's -- it's -- it's Bootstrap --
+ Mm-hmm.
+ -- because it's -- it's easy --
+ Right.
+ -- and it takes me a long way.
+ So, have you -- is that something that's -- is that something that concerns you, that
+ maybe there's starting to be, like, this -- or -- or is that maybe a good thing that there's
+ these signature styles that are starting to emerge for these different --
+ Yeah, it doesn't really concern me.
+ Yeah.
+ I think -- I think it's okay.
+ I -- I -- I will stop sort of saying Bootstrap is --
+ -- the solution for everything.
+ Yeah.
+ But no, and -- and actually, I had a conversation with somebody yesterday where I was kind
+ of making a joke, but he was describing a cir -- a situation where, like, you know, honestly,
+ if you're in a group stance, it makes sense for you to do that.
+ Right.
+ So that's what I feel, that there are just different solutions for different problems.
+ And I think as long as, you know, they're still kind of going back to that design foundation
+ --
+ Right.
+ -- or that you're still in touch with, you know, the collaborative process, and that
+ there are still people involved in this.
+ You're making deliberate decisions.
+ Okay.
+ I think that's what it really comes down to, is we have standards that we're not
+ thinking about.
+ And that's true for whatever discipline.
+ Mm-hmm.
+ It's the same thing in design --
+ Mm-hmm.
+ -- and design and development.
+ If you're just doing things unthinkingly --
+ Mm-hmm.
+ -- and everybody does --
+ Right.
+ -- then that's obviously probably not the best thing to do.
+ You've got to have the animated gif.
+ Right.
+ Yeah.
+ If it doesn't sparkle.
+ Right.
+ But there are, you know, there are some things where even if it may not be the ideal solution
+ in every case, in some cases it makes sense to do that.
+ Mm-hmm.
+ In different languages, there are things that make more sense than others.
+ So developing solutions specifically for them I don't think is a bad thing, as long as we're
+ continuing to think deliberately about them.
+ Well, thank you very much for sitting down.
+ Absolutely.
+ Thank you.

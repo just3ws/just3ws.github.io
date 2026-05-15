@@ -1,0 +1,79 @@
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, community organizer at UGtastic
+  S1:
+    name: Carina C. Zona
+    role: Developer, Sex Educator, and Founder of CCZ Logics
+turns:
+- speaker: M1
+  text: "Hi, it's Mike with UGtastic. I'm sitting here at the SCNA 2013 conference in Chicago. Right now I'm sitting down with Carina C. Zona who just gave a talk on 'Schemas for the Real World.' She talked about how we should think more about how our applications are either inclusive or exclusive, and how we're approaching our users and thinking about how they feel using our software. I really appreciate you taking the time to sit down with me."
+- speaker: S1
+  text: "Oh thanks, I've wanted to do this for a while. This is great."
+- speaker: M1
+  text: "So your talk—can you tell us a little bit more about what your presentation was and how you came to that topic?"
+- speaker: S1
+  text: "It's always a little bit hard to summarize because it's unusual; it's not something we have books about yet. Essentially, it really comes out of my work as both a developer and a sex educator, and how those combined gave me some insights into how people feel about software. A lot of times we're creating features and we're really excited about them, but we don't have a good idea of how the users feel—particularly when they're quite the opposite of excited. When people are really unhappy, they just walk away from an app; they don't let you know it isn't working for them. So we lack that feedback loop. As a sex educator, I got to hear questions that were initially unexpected to me. Most of the time it's much broader than just 'how to have sex.' It's about how I relate to people, how I manage a relationship, or how things change when I'm married or have children."
+- speaker: M1
+  text: "You mentioned being empathetic because people are often embarrassed and you can't be judgmental."
+- speaker: S1
+  text: "Yeah, the work I do is for a group called San Francisco Sex Information (SFSI). We run a hotline that's been run for 40 years completely by volunteers. One of the things taught to us in training is that there are two common questions that come up. One is essentially: 'Am I normal?' A tremendous number of questions come down to that—not 'how do I do something,' but just 'are other people in the world like me?' It struck me that in any part of our lives, that comes up. When software is developed within the constraints of our own imagination, we can't serve marginalized people. We create values or experiences completely oblivious to them, not out of malice, but just a lack of awareness of how diverse humans are."
+- speaker: M1
+  text: "It's funny you mention it because even as a middle-aged white guy in the Midwest, I'll go on a business site and they'll ask what kind of business I have, and none of the categories fit UGtastic. It's so frustrating because I'm forced to pick one and they're going to misunderstand me."
+- speaker: S1
+  text: "Exactly. Or when they have categories like 'Web' and 'Software Engineering' and force you to pick one. Often they ask because they want to know how to monetize your data. I was really interested in this idea that everywhere we are constantly making choices for other people on who they're allowed to be, even on bland stuff like what's your job, let alone much more personal things."
+- speaker: S1
+  text: "One topic I've been exploring is names. Our understanding of what a name is is incredibly culturally constrained. Americans have this middle initial concept, but in many countries, surname and last name are not the same. In China, the family name is first. People descending from Spanish or Portuguese traditions often build last names based on both sides of the family, which can be very long. We have these constraints, like a field must be between 1 and 20 characters. People then have to decide which part of their family tree and history they're going to pretend doesn't exist. That's crazy. Our databases can totally tolerate varied length fields. It's not 1972 where we have a physical tumbler holding bits of data. The difference between CHARs and VARCHARs at this point is really important; there's no reason to be that conservative about reserving space anymore. We can think about what a person needs for their personhood."
+- speaker: M1
+  text: "I want to jump back to that 'Am I normal?' point. In our interfaces, how many times do we look at a screen and go, 'Am I stupid, or is everybody having problems with this?' Like with healthcare.gov."
+- speaker: S1
+  text: "Yeah, a lot of users will think they're the ones who are broken. Having to raise those questions can be really alienating. One example from my talk is Facebook adding an 'Open Relationship' status, but then only allowing you to list one partner. That forces a person to choose who the 'real' relationship is, which defeats the point. It can feel like you're being closeted or forced to tell a big lie to the rest of the world. People who are transgender or in open relationships often express the most gratitude for this talk because their personhood is so rarely recognized. We don't have the right as developers to decide who is valid."
+- speaker: M1
+  text: "As developers, we are the ones who need to be paying attention to the ramifications of our decisions. I also learned there are legal changes coming regarding these protections."
+- speaker: S1
+  text: "Yes, this is rapidly changing. In Australia, a court case opened up a third category of gender on passports and driver's licenses. Germany recently passed a law allowing birth certificates to have a gender that is either 'indeterminate' or blank, recognizing that binary gender doesn't work for everyone. If we want to know someone's legal name or address, we have to be open to the fact that those things are not what we assume they are. We have to remain flexible for a world that is constantly changing."
+- speaker: M1
+  text: "Well, thank you very much for taking the time to speak to me. I enjoyed your talk and this conversation."
+- speaker: S1
+  text: "I did too. Thank you."
+insights:
+- statement: "'Am I normal?' is a fundamental psychological query users bring to software interfaces; when a system fails to recognize a user's identity or experience, the subliminal message is 'you are not welcome here.'"
+  type: durable
+  confidence: high
+- statement: "Technical constraints of the past (like rigid field lengths and fixed schemas) have morphed into cultural constraints, forcing users to truncate their personhood (e.g., names, family history) to fit legacy database assumptions."
+  type: durable
+  confidence: high
+- statement: "The use of CHAR vs VARCHAR is no longer a performance trade-off but a decision regarding the respect for human diversity and name-length variation."
+  type: durable
+  confidence: high
+- statement: "Software developed within the 'constraints of the developer's imagination' inherently marginalizes users who exist outside those narrow demographic or social assumptions."
+  type: durable
+  confidence: high
+- statement: "Binary data models for gender and one-to-one relationship schemas are increasingly coming into conflict with both evolving social norms and new legal standards (e.g., Australian and German gender laws)."
+  type: durable
+  confidence: high
+youtube:
+  title: "Personhood in the Schema: Carina C. Zona on Inclusive Design and the 'Am I Normal?' Problem"
+  description: "Mike Hall sits down with Carina C. Zona at SCNA 2013 to discuss her groundbreaking work on 'Schemas for the Real World.' Carina explores how developers can build more inclusive software by understanding the fundamental human need for validation. They discuss the cultural bias in name fields, the psychological impact of exclusionary interfaces (the 'Am I Normal?' question), and why our modern database flexibility means we no longer have an excuse for rigid, personhood-truncating schemas."
+  tags:
+  - Inclusive Design
+  - Software Craftsmanship
+  - Database Schema
+  - User Experience
+  - Carina C Zona
+  - SCNA 2013
+  - Diversity in Tech
+  - Human Centered Design
+  chapters:
+  - timestamp: '00:00'
+    title: "Introduction and Sex Education Insights"
+  - timestamp: '02:00'
+    title: "The 'Am I Normal?' Question in Software"
+  - timestamp: '03:45'
+    title: "The Cultural Bias of Name Fields"
+  - timestamp: '05:45'
+    title: "CHAR vs. VARCHAR: The Trade-off of Personhood"
+  - timestamp: '07:30'
+    title: "Exclusionary Interfaces: Relationship Status and Closeting"
+  - timestamp: '10:00'
+    title: "Legal Evolution: Moving Beyond Binary Gender"

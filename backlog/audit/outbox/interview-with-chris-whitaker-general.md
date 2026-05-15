@@ -1,0 +1,666 @@
+### SYSTEM ROLE & INSTRUCTIONS
+      ### SYSTEM ROLE: ARCHIVE FORENSIC AGENT
+      You are a Staff-level Software Engineer and Oral Historian. You are repairing "phonetic-heavy" transcripts from 2010-2015 era technical interviews.
+
+      ### DOMAIN CONTEXT
+      The archive covers the "Software Craftsmanship" movement. You must be hypersensitive to:
+      - Ecosystems: Ruby on Rails, Java (Spring/Hibernate), .NET (C#), Clojure, Smalltalk.
+      - Patterns: TDD, SOLID, Active Record vs Data Mapper, DDD, Hexagonal Architecture.
+      - Events: SCNA (Software Craftsmanship North America), GOTO, WindyCityRails.
+
+      ### HEAVY-LIFTING RULES
+      1. INFER SPEAKERS VIA SEMANTIC ROLE:
+         - M1 (Mike Hall): Asks about community, "why did you build this?", "what was the impetus?", and provides meta-commentary on the recording environment.
+         - S1 (Subject): Provides deep technical rationale, implementation details, and mentions specific library names they authored.
+      2. JARGON CORRECTION (PHONETIC REPAIR):
+         - Correct "phonetic drift" based on technical context. 
+         - Examples: "Active JSBC" -> "ActiveJDBC", "Postgre" -> "Postgres", "Hibernate" -> "Hibernate", "A-gile" -> "Agile".
+      3. TURN SEGMENTATION:
+         - Identify "back-channeling" (e.g., "Right", "Yeah", "Okay") and keep them as distinct turns or merge them into the previous speaker's block only if they do not interrupt the flow.
+      4. INSIGHT EXTRACTION:
+         - Identify "Durable Insights": Concepts that are still relevant to Staff-level engineering today.
+         - Identify "Time-Bound Constraints": Decisions made because of the limitations of the era (e.g., "waiting for Oracle drivers in 2007").
+
+      ### OUTPUT SCHEMA (STRICT YAML)
+      You must output a YAML object containing:
+      - speaker_map: Map of ID (M1, S1) to Full Name and Role.
+      - turns: Array of {speaker: string, text: string}.
+      - insights: Array of {statement: string, type: durable|time-bound, confidence: high|medium}.
+      - youtube:
+          title: "SEO-optimized title using interview context"
+          description: "Full YouTube-ready description including summary, speakers, and event context."
+          tags: ["array", "of", "SEO", "tags"]
+          chapters:
+            - timestamp: "00:00"
+              title: "Introduction"
+            - timestamp: "MM:SS"
+              title: "Chapter Title"
+
+      Do not output any prose, markers, or backticks outside the YAML.
+
+### INTERVIEW METADATA
+---
+id: interview-with-chris-whitaker-general
+title: Interview with Chris Whitaker
+interviewees:
+- Chris Whitaker
+interviewer: Mike Hall
+topic: developer community and conference conversations
+conference:
+conference_year:
+community: General
+recorded_date: '2022-01-07'
+tags: []
+video_asset_id: interview-with-chris-whitaker-general
+
+### RAW TRANSCRIPT
+Hi, it's Mike again with Ugetastic. Today I'm sitting down with Chris Whittaker, who's involved
+ with the Smart Chicago Collaborative, and correct me if I'm wrong, it was the Code for America? Is
+ that correct? Correct. I have a dual role. I'm the local organizer here in Chicago for Code for
+ America, and I'm also a consultant with the Smart Chicago Collaborative, which is a non-profit group
+ here in Chicago. Yeah, and both of those are, one or both of those are involved with a lot of
+ hackfests and contributing open code for people to get that data that's government data and
+ government information. Can you tell a little bit about the hackfests and how Code for America and
+ the Chicago Smart Collaborative are involved in those, and how do you work in those?
+ Sure. Well, the OpenGov hack nights are actually being run by Derek Eder and Juan Velez with OpenCity.
+ They've been doing these hack nights at a place called 1871, which is a co-working space in
+ Chicago's Merchandise Mart, for about the past year. We have them every Tuesday night at 6 p.m.,
+ same place, same time, and that's where a lot of sort of volunteer coders go to work on projects
+ that they want to spend more time on. So, we've been doing a lot of work on that, and we've been
+ doing a lot of work on that, and we've been doing a lot of work on that, and we've been doing a lot of
+ work on that, and we've been doing a lot of work on that, and we've been doing a lot of work on that,
+ and we've been doing a lot of work on that, and we've been doing a lot of work on that, and we've
+ been doing a lot of work on that, and we've been doing a lot of work on that, and we've been doing
+ a lot of work on that, and we've been doing a lot of work on that, and we've been doing a lot of work
+ on that, and we've been doing a lot of work on that, and we've been doing a lot of work on that, and
+ just like a weekend event. My role with Smart Chicago Collaborative, we are investing in several
+ different apps that we pay people full-time money to help develop. One of these apps is
+ called Foodborne Chicago that searches Twitters for, I'm sorry, searches Twitter for tweets about
+ food poisoning. Oh, really? And once it finds that app, it'll tweet back at the author saying,
+ hey, I'm sorry, you're sick. Can you give us some more information? And with that information,
+ we can actually submit a 311 request to the city to send a food inspector to that restaurant.
+ So these are apps that are actually really interacting with people. These aren't just
+ like, oh, I put this thing kind of up on the web, but it's... These are real apps that are
+ performing a public service. And so I'm fortunate to be in Chicago's civic technology
+ scene.
+ I mean, where we're building both big things like Foodborne and then small things like
+ an app that will tell you when your local police meeting is or how to find your nearest polling
+ place. So we're kind of working on both a big level and a smaller level.
+ Yeah, I think it's really interesting to see. I mean, I've spoken with Dan X. O'Neill and
+ Paul Baker about the open government, and it's really fascinating to see what's happening here
+ in Chicago around...
+ Civic hacking. And the hack fest that you were just recently doing, can you tell me
+ a little bit about what those were? I mean, they were weekend events, though, that were...
+ Well, we've... This summer, we've had a lot of hackathons in Chicago. I think the earliest
+ one that we've had this year was the... The Chicago Police Department recently launched
+ an API to help communicate...
+ Security concerns to Chicago Police Department through a program called CAPS. And so we had
+ a hackathon at Google to sort of play with that API and see what we could do with it.
+ We recently just finished the National Day of Civic Hacking, which we had three simultaneous
+ events in Chicago. We had a hackathon that was focused on immigration in Chicago's Pilsen
+ neighborhood. We had a youth-centered hackathon at Adler Planetarium. And then we had a youth-centered
+ hackathon at Adler Planetarium. And then we had a youth-centered hackathon at Adler Planetarium.
+ And then we had a youth-centered hackathon at Adler Planetarium. And then we had a youth-centered
+ hackathon at Adler Planetarium. And then we had a youth-centered hackathon at Adler Planetarium. And
+ then we had a youth-centered hackathon at Adler Planetarium. And then we had more of
+ a general hackathon at 1871. Okay. And so how did you get involved with these? Is this
+ something you've... Have you been running groups before or...?
+ I started out in the public sector as a field representative for the Illinois Department
+ of Employment Security. I got hired on just as the recession was beginning and the bottom
+ was dropping out and there were just lines and lines of people out the door.
+ Mm-hmm.
+ And so I show up on my first day of work. I'm excited. I'm ready to help my community
+ during this kind of rough time. I get on my computer and it's a DOS program. It is a DOS-based
+ program that is probably older than I am.
+ And because I had recently gotten out of college and had been used to having computer labs
+ with the latest and greatest, I got a smartphone. And I'm looking at this and I'm going, "You've
+ got to be kidding me. This is unreal."
+ Yeah.
+ So I ran towards the civic technologists as fast as I could go. And I had gotten an
+ invite to a group called Urban Geek Drinks that Justin Massa had started to sort of pull
+ together people who were involved in urban policy and technology and kind of put them
+ all in one room. And through that, I met Derek Eder with Open City and Paul Baker and Dan
+ O'Neill. And that's sort of how I got involved. When Code for America launched its brigade
+ program, I wanted to get involved because I think Code for America is doing just phenomenal
+ work in this area and wanted to be able to contribute in a way that was more than just
+ trying to start a meetup group. Chicago already had an OpenGov meetup group. And so I proposed,
+ you know, a plan to brigade on how to sort of expand the universe in terms of civic technology
+ issues. And through that, I got more involved in Smart Chicago and just kind of went from
+ there.
+ And you used the term "brigade captain." That was kind of interesting. What is a brigade
+ captain and how does that work for Code for America?
+ So the brigade program started last October.
+ Mm-hmm.
+ In about 30 -- and we're now in 34 different cities.
+ So this is national.
+ This is a national program. So in most cities, these are the individuals who are organizing
+ the very first hackathons these cities have had who are doing the hard sort of task of
+ gathering all the people together in a room and having them focus on using technology
+ to solve civic problems.
+ Mm-hmm.
+ And in Chicago, we're fortunate that we've already been through that wall, that we already
+ have a very active Open Government group. Joe Jemunska and Dan O'Neill started OpenGov
+ Chicago probably about five years ago. And so when the brigade program started, we wanted
+ to make sure that, you know, we weren't just duplicating efforts.
+ Right.
+ And so where in most cities, they're trying to start groups. In Chicago, we're more of
+ a support role.
+ Okay.
+ And we also use what we've learned here in Chicago and sort of export those lessons
+ and those code bases that we've developed to other younger cities.
+ Okay. So, I mean, if I was in a city that was looking at wanting to get involved with
+ Code for America, you know, I live in some -- not the biggest metropolitan area, but
+ -- or I'm even maybe out in the suburbs and I want to do something. Is that something
+ that would be -- like, for example, myself, I live in Queens.
+ I live in Crystal Lake. Would there be -- is that something I would do for my city or is
+ it really --
+ Yeah, absolutely. What -- you can go to brigade.codeforamerica.org --
+ Okay.
+ -- and there'll be sort of a sign-up sheet where you can say, "Hey, I'm a coder. I
+ have these skills. I'm a community organizer. I have these skills. I have these challenges
+ that I'm dealing with." And that will let national headquarters know who you are. If
+ there's something already -- I mean, I don't know. I don't know. I don't know. I don't know.
+ But if there's something already in your area, they will introduce you to the local
+ organizer there. If there is nobody there, then they'll connect you with resources on
+ how you can start your own brigade in your city and how you can sort of gain access to
+ all the resources and the network that Code for America has to offer.
+ Yeah. And is this something you might think would be good for existing user groups?
+ Like if you already have a presence, is this something that could be -- is it something
+ that really has to be kind of a --
+ Not at all. Chicago doesn't have, like, its own separate Code for America meet-up group.
+ We've just sort of co-opted the meet-up groups and the weekly hack nights that already existed.
+ To borrow an Army term, you sort of stay in your lane or don't fix what's not broken.
+ And so for groups that are already active in their communities and already doing hackathons
+ and things with civic technology, I think it would be a good idea to have a meet-up group.
+ But you don't have to start your whole separate thing to be involved in Code for America.
+ I know New York did something similar in that they co-opted some of the groups. And I know
+ there's groups in DC that were already working on stuff before they got involved in Brigade.
+ So by all means, you can sort of co-opt and connect with Code for America's network, even
+ if you already have a group that kind of does the same thing.
+ It's a great way to augment an existing community, give them some more purpose than just pizza
+ and the latest libraries.
+ One of the things I had been thinking about was recently there's been a lot of talk about
+ the NSA and Snowden and all this worries about FISA.
+ It seems like there's a potential for cracking down on what seems to have been a lot of good
+ work.
+ It seems like Code for America has already started.
+ Is that something that's been discussed or is that something that's come up where it's
+ just too new?
+ I think the biggest sort of shouts of criticism and concern and the people who are really
+ adamant about the government sort of behaving itself when it comes to these things are the
+ same group of people who are involved in civic technology and everything.
+ I think it's a real problem.
+ I think it's a big problem.
+ I think it's a problem.
+ I think it's a problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.
+ I think it's a big problem.

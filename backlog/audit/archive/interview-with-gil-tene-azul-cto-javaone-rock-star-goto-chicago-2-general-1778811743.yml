@@ -1,0 +1,93 @@
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, community organizer at UGtastic
+  S1:
+    name: Gil Tene
+    role: CTO and Co-Founder of Azul Systems, JVM Performance Expert
+turns:
+- speaker: M1
+  text: "Hi, it's Mike with UGtastic. I'm here at GOTO Chicago 2015 and I'm standing here with Gil Tene, who just gave a talk on faster Java objects and is going to be doing a workshop on application responsiveness as well as a case study. So you're pretty busy here at the conference but I got a little bit of time to speak with you and I really appreciate that. So let's start with the talk you just gave about faster Java objects. What was that about?"
+- speaker: S1
+  text: "Well, it's about faster Java. The talk really focuses on a project that we've been working on, an open-source project called ObjectLayout, for a year and a half or so. We are actually hoping for this to mature and get into OpenJDK, into the standard Java SE 9 or 10, some version. And the purpose of it is to actually allow Java to have faster objects in arrays in a way that matches C for speed for the same things. It's actually removing what I believe is the last inherent speed difference between Java and C."
+- speaker: M1
+  text: "Oh, really? Is this addressing the startup warm-up problem or is it more of the JVM running and these are just allocations?"
+- speaker: S1
+  text: "It's actually not a warm-up or a compilation-related thing. It's actually memory layout. There are certain constructs that are natural to use in C and end up being laid out in memory in a way that is either optimal to access in a streaming fashion or quick to get to a random location in them. In Java, doing the exact same semantic thing requires dereferencing through multiple hops and accessing more randomly than in an ordered, predictable manner. That means actual access on real hardware ends up being slower for the same semantic structure. We're looking to close the gap to have a common, natural way to do it in Java for any type of Java object you already have, but in a way that gives you fast access to them."
+- speaker: M1
+  text: "And from what I understand, Azul has its own VM version. Does that have these optimizations already in there?"
+- speaker: S1
+  text: "Azul makes multiple JVMs. One of them is called Zing. It's a JVM with better metrics that eliminates garbage collection pauses, has much better latency characteristics, and is faster for some things. We also make Zulu, which is basically vanilla OpenJDK. We are probably the best binary distribution for OpenJDK because we're probably the only one for several platforms, like Mac and Windows. ObjectLayout is not specific to Azul. We will certainly put it in our platform once the project is there and adopted."
+- speaker: M1
+  text: "But the VMs that you're talking about, the Zulu and Zing, are those something that I could install on my Linux distribution and run existing Java code against?"
+- speaker: S1
+  text: "Yes, it's just a JDK install. Zing is Linux-only, but any Linux. You just install it and run your existing Java code with zero changes to it. With Zulu, it's beyond just Linux; it's on Linux, Mac, and Windows. In fact, we are the only binary you can get today for Mac or Windows that is OpenJDK. You can get the Oracle JDK, but if you want the open-source one, we're it."
+- speaker: M1
+  text: "Yeah, because as somebody who's more of a casual JVM user—using it mostly to power a JRuby app or some Clojure code—you're saying I could develop against Zing and also go to production with it?"
+- speaker: S1
+  text: "You could do that, but because it is so interchangeable, you don't need to develop to it. There are no new APIs, nothing you do to write specifically for Zing. It just runs Java code. Zing does have a lot of nice features where normally people have a hard time dealing with a lot of objects or high allocation rates. Zing runs exactly the same responsiveness level whether you're at a gigabyte or a terabyte. It can handle 20 gigabytes a second of allocation or 20 megabytes a second. It has this extreme smooth operating range where you don't have to worry about garbage collection hiccups, stalls, and deoptimizations hurting you. It's built to be fast all the time rather than fast, go out to lunch, and come back from lunch and go fast again—which unfortunately is how Java has behaved for the last 20 years."
+- speaker: M1
+  text: "Zulu is vanilla then?"
+- speaker: S1
+  text: "Zulu is vanilla OpenJDK. We build it, we certify it using the TCK, and we give it away for free. We sell enterprise support for it. Both of our JVMs are drop-in identical; you should expect no functional behavior difference. With Zing, we hope you'll get better metrics around lower noise, jitter, hiccups, and the ability to smoothly run large things."
+- speaker: M1
+  text: "To hear that there's the reference implementation that's Oracle, you'd expect a multi-billion dollar corporation to have the version that's perfectly optimized, but looking at Azul, my brain wants to say there's got to be some trade-off."
+- speaker: S1
+  text: "Let me correct you on one thing: the reference implementation for Java is OpenJDK, not Oracle. That is where Java is developed, defined, and productized. Oracle JDK is a closed-source derivative of OpenJDK with some added tooling. So is Zing, so is the IBM JDK. Zulu is actually OpenJDK, nothing more. Red Hat also makes a very good binary build, but Azul is where you can get trusted OpenJDK builds for Mac and Windows. We run the 70,000+ TCK tests and QA to ensure binary compatibility."
+- speaker: M1
+  text: "It's fascinating. So OpenJDK is the source code, but we switch between Zulu, IBM, or Red Hat runtimes interchangeably because that's what the Java spec is all about."
+- speaker: S1
+  text: "Exactly. Java has been very well policed to ensure you don't have to change your code when you switch the runtime. Oracle and Sun before them did a great job at this, and it's one of the things that make Java so successful."
+- speaker: M1
+  text: "And how about Dalvik? As I understand, Dalvik is kind of its own developer of Java."
+- speaker: S1
+  text: "Are you putting me in a controversial environment? Dalvik doesn't call itself Java, and it better not. Dalvik is a fork of Java. You're building in what looks like Java, but it's not quite Java. For example, not everything works, and you take from Dalvik and it won't work on a JDK, and vice-versa. It's extremely popular for user interface embedded devices, but it's unfortunate that it's a fork and doesn't follow the entire spec. But that's not for me to do anything about."
+- speaker: M1
+  text: "Well, thank you very much for taking the time to speak to me. It's fascinating that OpenJDK is just code."
+- speaker: S1
+  text: "Exactly. Thank you."
+insights:
+- statement: "The primary performance bottleneck in Java compared to C isn't compilation speed or warm-up time, but inherent memory layout and the 'dereference tax' required by the Java object model."
+  type: durable
+  confidence: high
+- statement: "The reference implementation for Java is OpenJDK (the source code), not any specific vendor's binary like Oracle JDK."
+  type: durable
+  confidence: high
+- statement: "Predictable responsiveness (eliminating 'hiccups' and stalls) is often more valuable for enterprise systems than raw peak throughput, as it allows for smooth operation across a massive range of heap sizes and allocation rates."
+  type: durable
+  confidence: high
+- statement: "The success of the Java ecosystem is largely due to the strict enforcement of specification compatibility, allowing runtimes (Zing, Zulu, IBM, Red Hat) to be drop-in interchangeable."
+  type: durable
+  confidence: high
+- statement: "Dalvik is technically a fork of Java rather than a compatible runtime, which creates a vertical silo where code is not easily portable between standard JVMs and the Android environment."
+  type: durable
+  confidence: medium
+youtube:
+  title: "The Inherent Speed of Java: Gil Tene on Memory Layout and JVM Performance | GOTO Chicago 2015"
+  description: "Gil Tene, CTO of Azul Systems and JVM performance expert, explains the 'ObjectLayout' project and the quest to eliminate the last inherent speed differences between Java and C. He discusses the difference between OpenJDK source and binary distributions (like Zulu and Zing), the importance of predictable latency over raw throughput, and why Android's Dalvik is a fork rather than a standard Java runtime."
+  tags:
+  - Java
+  - JVM
+  - Gil Tene
+  - Azul Systems
+  - Performance Engineering
+  - OpenJDK
+  - Garbage Collection
+  - Software Architecture
+  - GOTO Conference
+  chapters:
+  - timestamp: '00:00'
+    title: "Introduction and Faster Java Objects"
+  - timestamp: '01:15'
+    title: "Memory Layout: The Gap Between Java and C"
+  - speaker: S1
+    timestamp: '03:00'
+    title: "Zing vs. Zulu: Latency vs. Vanilla OpenJDK"
+  - timestamp: '05:30'
+    title: "Predictable Performance Across Heap Sizes"
+  - timestamp: '07:30'
+    title: "OpenJDK: Source Code as the Reference Implementation"
+  - timestamp: '09:45'
+    title: "The Success of Java Spec Policing"
+  - timestamp: '10:30'
+    title: "Dalvik: The Controversy of Java Forks"

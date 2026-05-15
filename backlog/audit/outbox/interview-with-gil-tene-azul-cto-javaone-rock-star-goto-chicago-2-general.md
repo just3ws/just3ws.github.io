@@ -1,0 +1,197 @@
+### SYSTEM ROLE & INSTRUCTIONS
+      ### SYSTEM ROLE: ARCHIVE FORENSIC AGENT
+      You are a Staff-level Software Engineer and Oral Historian. You are repairing "phonetic-heavy" transcripts from 2010-2015 era technical interviews.
+
+      ### DOMAIN CONTEXT
+      The archive covers the "Software Craftsmanship" movement. You must be hypersensitive to:
+      - Ecosystems: Ruby on Rails, Java (Spring/Hibernate), .NET (C#), Clojure, Smalltalk.
+      - Patterns: TDD, SOLID, Active Record vs Data Mapper, DDD, Hexagonal Architecture.
+      - Events: SCNA (Software Craftsmanship North America), GOTO, WindyCityRails.
+
+      ### HEAVY-LIFTING RULES
+      1. INFER SPEAKERS VIA SEMANTIC ROLE:
+         - M1 (Mike Hall): Asks about community, "why did you build this?", "what was the impetus?", and provides meta-commentary on the recording environment.
+         - S1 (Subject): Provides deep technical rationale, implementation details, and mentions specific library names they authored.
+      2. JARGON CORRECTION (PHONETIC REPAIR):
+         - Correct "phonetic drift" based on technical context. 
+         - Examples: "Active JSBC" -> "ActiveJDBC", "Postgre" -> "Postgres", "Hibernate" -> "Hibernate", "A-gile" -> "Agile".
+      3. TURN SEGMENTATION:
+         - Identify "back-channeling" (e.g., "Right", "Yeah", "Okay") and keep them as distinct turns or merge them into the previous speaker's block only if they do not interrupt the flow.
+      4. INSIGHT EXTRACTION:
+         - Identify "Durable Insights": Concepts that are still relevant to Staff-level engineering today.
+         - Identify "Time-Bound Constraints": Decisions made because of the limitations of the era (e.g., "waiting for Oracle drivers in 2007").
+
+      ### OUTPUT SCHEMA (STRICT YAML)
+      You must output a YAML object containing:
+      - speaker_map: Map of ID (M1, S1) to Full Name and Role.
+      - turns: Array of {speaker: string, text: string}.
+      - insights: Array of {statement: string, type: durable|time-bound, confidence: high|medium}.
+      - youtube:
+          title: "SEO-optimized title using interview context"
+          description: "Full YouTube-ready description including summary, speakers, and event context."
+          tags: ["array", "of", "SEO", "tags"]
+          chapters:
+            - timestamp: "00:00"
+              title: "Introduction"
+            - timestamp: "MM:SS"
+              title: "Chapter Title"
+
+      Do not output any prose, markers, or backticks outside the YAML.
+
+### INTERVIEW METADATA
+---
+id: interview-with-gil-tene-azul-cto-javaone-rock-star-goto-chicago-2-general
+title: Interview with Gil Tene  Azul CTO & JavaOne Rock Star @ GOTO Chicago 2
+interviewees:
+- Gil Tene
+interviewer: Mike Hall
+topic: developer community and conference conversations
+conference:
+conference_year:
+community: General
+recorded_date: '2022-03-10'
+tags: []
+video_asset_id: interview-with-gil-tene-azul-cto-javaone-rock-star-goto-chicago-2-general
+
+### RAW TRANSCRIPT
+Hi, it's Mike with uketastic. I'm here at GoToConf 2015 and I'm standing here with
+ Gail Tunney who just gave a talk on faster Java objects and is going to be doing a workshop on
+ application responsiveness and as well as a case study. So you're pretty busy here at the
+ conference but I got a little bit time to speak with you and I really appreciate that. So let's
+ start with the talk you just gave about faster Java objects. What was that about? Well it's about
+ faster Java. The talk really focuses on a project that we've been working on, an open source project
+ from WikimediaCon for a year and a half or so. We are actually hoping for this to mature and get
+ into OpenJDK, into the standard Java SE 9 or 10, some version. And the purpose of it is to actually
+ make it a little bit faster. So let's talk a little bit more about that. So let's start with the talk you just gave about faster Java objects. What was that about? Well it's about faster Java. Oh, yeah. The talk really focuses on a project that we've been working on an open source project from WikimediaCon for a year and a half or so. We are actually hoping for this to mature and get into OpenJDK, into the standard Java SE 9 or 10, some version. And the purpose of it is to actually
+ allow Java to have faster objects in array in a way that matches C for speed for
+ the same things. Okay. So it's actually removing what I believe is the last
+ inherent speed difference between Java and C on speed. Oh, really? There are lots of
+ other speed differences that could be, but they're not inherent. This is
+ inherent. Is this addressing the startup warm-up problem or is it
+ more of the JVM is running and it's warmed up and these just
+ allocations? It's actually not a warm-up or a compilation related thing. It's actually
+ memory layout. Okay. So there are certain constructs that are natural to use in C and
+ end up being laid out in memory in a way that is either optimal to access in a streaming
+ fashion or quick to get to a random location in them. Where in Java doing the exact same
+ semantic thing requires dereferencing through multiple hops and accessing more randomly
+ than in an ordered, predictable manner. That's not purely sequential. Yeah. Which, again,
+ means that actual access on real hardware ends up being slower for the
+ same semantic structure. We're looking to close the gap for every one of the
+ common ways to do it in C to have a common natural way to do it in Java for
+ any type of Java object you already have, but in a way that gives you fast access
+ to them. And from what I understand, you have a reference implementation or the
+ Azul has its own VM version. Does that have these optimizations already in there?
+ So Azul makes multiple JVMs. One of them is called Zing. It's a JVM with better metrics
+ that eliminates garbage collection, has much better latency characteristics, faster for
+ some things. And we also make Zulu, which is basically vanilla OpenJDK. We are probably
+ the best binary distribution for OpenJDK because we're probably the only one for several platforms,
+ Macs and Windows. Neither one of those... ObjectLoud is not specific to Azul. We will certainly
+ put it in our platform. Okay.
+ In our products once the project is there and adopted. And I would expect Zing, for
+ example, to optimize it well. We're obviously doing it to make sure that it is the case,
+ but we will be demonstrating the speed benefit of ObjectLoud-based objects on both Zing and
+ OpenJDK proof-of-concept implementations. Our goal is to actually have this be part
+ of the standard Java, part of OpenJDK, part of anybody's JDK in the future.
+ But the VMs that you're talking about, the Zulu and...
+ Zen, are those something that I could install on my Linux distribution and run, you know,
+ Java code against? Or is it bespoke for your infrastructure? Like, are these...
+ Just JDK installed. Zing is Linux only, but any Linux. And yes, you just install it on
+ Linux and run your existing Java code. Zero changes to it. You know, you turn it on and
+ five minutes later, you have a better JVM.
+ Four. One minute later. With Zulu, it's beyond just Linux. It's on Linux, on Mac, on Windows.
+ In fact, we are the only binary you can get today for Mac or Windows that is OpenJDK.
+ You can get the Oracle JVM. It's a good JVM.
+ Right.
+ If you want the open source one, we're it.
+ Oh, really?
+ Yeah.
+ Yeah, because, I mean, as somebody who's more of a casual JVM user, I use it mostly to
+ power a JRuby app or some Clojure code.
+ But you're saying that I could look and evaluate, like, maybe I could develop against Zen or...
+ And I'm sorry, this is Zing.
+ Zing.
+ Zing.
+ Develop against Zing and also go to production with Zing? I mean, is it at that level?
+ You could do that, but because it is so interchangeable, you don't need to develop to it. There are
+ no new APIs in it. There's nothing you do to write for Zing.
+ Okay.
+ It just runs Java code.
+ Yeah. I mostly just didn't mean that there wasn't production ready. I just was, is there
+ extra hooks?
+ Profiler hooks or things that I'd be able to use?
+ So, Zing does have some, a lot of nice features. None of them are language changes
+ or spec changes. They're just, you know, where normally people have a hard time dealing with
+ a lot of objects or high allocation rates or, you know, people think that multiple gigabytes
+ is a big number, Zing runs exactly the same response at this level, whether you're at
+ a gigabyte or a terabyte or any number in the middle. It can handle 20 gigabytes a second
+ of allocation or 20 megabytes a second.
+ Both of those are 1,000x ranges, and it's really the quality where it has this extreme
+ smooth operating range. You don't have to worry about things like garbage collection
+ and hiccups and stalls and deoptimizations hurting you. It's built to eliminate the hiccups.
+ It's built to be fast all the time rather than fast and go out to lunch and come back
+ from lunch and go fast again, which unfortunately is how Java's behaved for the last 20 years.
+ Zulu is vanilla. I call it vanilla.
+ It's exactly the way the regular Oracle JVM behaves or OpenJK. It is OpenJK. It is no different.
+ We build it, we give it to people for free, we certify it, we test it, and we give it
+ away for free. For Zulu, we sell enterprise support. We support vendors who want to embed
+ a JVM or JDK in their products, like a router or an ATM machine or just a piece of software
+ that wants a JDK inside. Zulu is a natural fit there, too.
+ Exactly the same. Both of our JVMs are drop-in identical, the same as you just get a different
+ version of a JVM from Oracle. We get one from us. You can have all of them together and
+ choose per application which one you want to use. You should expect no functional behavior
+ difference between them. Obviously, with Zing, we hope you'll get better metrics, mostly
+ around lower noise, jitter, hiccups, stalls, whatever it is that bothers you, and the ability
+ to smoothly run large things without worrying about them.
+ To hear that there's the reference implementation that's Oracle, you'd expect a multi-billion
+ dollar corporation to have the reference implementation that's perfectly optimized, but looking
+ at a smaller company, obviously smaller than Oracle, my brain wants to say there's got
+ to be some trade-off. Let me correct you on one thing. The reference
+ implementation for Java is OpenJDK, not Oracle. There's only one reference implementation.
+ It's OpenJDK. That is where Java is developed, defined, and productized. People then take
+ that and build other JDKs from, either directly open source from it or closed source derivatives
+ of it through the Oracle licensing schemes. Oracle JDK is a closed source version of OpenJDK
+ with some added tooling, for example, and other things. So is Zing. So is the IBM JDK.
+ So is everybody else's. Then Zulu is actually OpenJDK, nothing more. Exactly it. And that's
+ where it's the closest thing to an open source distribution of the bits. OpenJDK is just
+ source code. Red Hat, by the way, also makes a very good binary build of OpenJDK, but I
+ would say that between Red Hat and Azul, that's where you can get trusted OpenJDK builds. Somebody
+ actually tested them to see that they're right. You didn't build it from source and hope because
+ it's a delicate process. We run the 70,000 plus TPS.
+ We run the 70,000 plus TCK tests. We run through QA stuff we've been doing for 10 years. And
+ when we're good and happy with it, then we put it up and say that binary with dot checksum
+ is certified compatible. It's fascinating. So when we're talking about OpenJDK, really
+ what we're talking about is a source code that represents that reference implementation,
+ not the binary that I install as an end user of the VM. But I would look at Zulu or IBM
+ Zing or the Red Hat IC. Their plug-in interchangeable should be, because that's what the Java spec
+ is all about. You should not have to be changing your code when you switch the runtime.
+ Interesting.
+ And Java is actually pretty good at that. It's been very well policed to do that. And
+ I think as a community, we've done a great job. Oracle and Sun before did a great job
+ at this. It's one of the things that make Java so successful.
+ Yeah. Interesting. Yeah. And how about Dalvik? As I understand, Dalvik is kind of its own
+ developer of Java.
+ Are you putting me in a controversial environment?
+ Oh, okay. Sorry. Yeah. Not intentionally.
+ So Dalvik doesn't call itself Java. It better not. Unfortunately, you write to it in exactly
+ the Java stuff, but not exactly the Java stuff. So Dalvik is a fork of Java. You can think
+ of it that way. You're building in what looks like Java. You're using Java IDs, Java libraries.
+ But it's not quite Java. For example, not everything works.
+ Right.
+ And of course, you take from Dalvik and it won't work on a JDK. And you take from
+ a JDK, like something that runs on Java, it might not work on Dalvik. Some things do.
+ Some things don't. Reflection. And various other things. So unfortunately, in the Dalvik
+ world, there is no spec or no good spec that is similar to Java. But we can't argue that
+ Dalvik's not popular. It's extremely popular for sort of user interface embedded devices.
+ And such. And it's very successful there. I think that the world has spoken.
+ Right.
+ I think it's unfortunate that it's a fork and that it doesn't do the entire spec. But
+ that's not for me to do anything about.
+ Yeah. Well, that sounds like they are focusing on a specific vertical of a certain
+ type of device, not general purpose. And they also have to be able to tune it for those
+ devices.
+ Yeah.
+ Well, thank you very much for taking the time to speak to me. It's fascinating. So
+ OpenJDK is just code, so.
+ Yeah. Yes. Exactly.
+ Thank you.
+ Absolutely.

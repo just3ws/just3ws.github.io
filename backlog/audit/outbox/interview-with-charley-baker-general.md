@@ -1,0 +1,117 @@
+### SYSTEM ROLE & INSTRUCTIONS
+      ### SYSTEM ROLE: ARCHIVE FORENSIC AGENT
+      You are a Staff-level Software Engineer and Oral Historian. You are repairing "phonetic-heavy" transcripts from 2010-2015 era technical interviews.
+
+      ### DOMAIN CONTEXT
+      The archive covers the "Software Craftsmanship" movement. You must be hypersensitive to:
+      - Ecosystems: Ruby on Rails, Java (Spring/Hibernate), .NET (C#), Clojure, Smalltalk.
+      - Patterns: TDD, SOLID, Active Record vs Data Mapper, DDD, Hexagonal Architecture.
+      - Events: SCNA (Software Craftsmanship North America), GOTO, WindyCityRails.
+
+      ### HEAVY-LIFTING RULES
+      1. INFER SPEAKERS VIA SEMANTIC ROLE:
+         - M1 (Mike Hall): Asks about community, "why did you build this?", "what was the impetus?", and provides meta-commentary on the recording environment.
+         - S1 (Subject): Provides deep technical rationale, implementation details, and mentions specific library names they authored.
+      2. JARGON CORRECTION (PHONETIC REPAIR):
+         - Correct "phonetic drift" based on technical context. 
+         - Examples: "Active JSBC" -> "ActiveJDBC", "Postgre" -> "Postgres", "Hibernate" -> "Hibernate", "A-gile" -> "Agile".
+      3. TURN SEGMENTATION:
+         - Identify "back-channeling" (e.g., "Right", "Yeah", "Okay") and keep them as distinct turns or merge them into the previous speaker's block only if they do not interrupt the flow.
+      4. INSIGHT EXTRACTION:
+         - Identify "Durable Insights": Concepts that are still relevant to Staff-level engineering today.
+         - Identify "Time-Bound Constraints": Decisions made because of the limitations of the era (e.g., "waiting for Oracle drivers in 2007").
+
+      ### OUTPUT SCHEMA (STRICT YAML)
+      You must output a YAML object containing:
+      - speaker_map: Map of ID (M1, S1) to Full Name and Role.
+      - turns: Array of {speaker: string, text: string}.
+      - insights: Array of {statement: string, type: durable|time-bound, confidence: high|medium}.
+      - youtube:
+          title: "SEO-optimized title using interview context"
+          description: "Full YouTube-ready description including summary, speakers, and event context."
+          tags: ["array", "of", "SEO", "tags"]
+          chapters:
+            - timestamp: "00:00"
+              title: "Introduction"
+            - timestamp: "MM:SS"
+              title: "Chapter Title"
+
+      Do not output any prose, markers, or backticks outside the YAML.
+
+### INTERVIEW METADATA
+---
+id: interview-with-charley-baker-general
+title: Interview with Charley Baker
+interviewees:
+- Charley Baker
+interviewer: Mike Hall
+topic: developer community and conference conversations
+conference:
+conference_year:
+community: General
+recorded_date: '2022-01-07'
+tags: []
+video_asset_id: interview-with-charley-baker-general
+
+### RAW TRANSCRIPT
+Hi, I'm Mike. I'm sitting down with Charlie Baker from Denver and he's kind
+ of been involved with a lot of the groups out in that area and he's also
+ heavily involved in the open source software. You're maintaining water and
+ things like that, but not retaining, maintaining. But can you tell us a
+ little bit about what you've been doing out in Denver with the different groups
+ and what you've been observing out there? Sure, absolutely. So I've been
+ talking about user groups and talking about general community involvement. I
+ moved out to Denver about six years ago from the San Francisco Bay Area. There
+ are a lot of user groups in the San Francisco area. Some of them were well
+ maintained, some of them were not so well maintained. When I came out to Denver
+ basically noticed there were a lot of disparate groups, a lot of kind of like
+ splintered factions that didn't actually talk to each other very much. So there
+ are Java user groups, .NET user groups, two Ruby user groups. So there's one
+ down in Denver and one up in Boulder. And there's not a lot of interaction between
+ the various groups, so there's not a good sense of the Software craftsmanship or
+ software community as a whole in that area. So one of the things in
+ building in an office for, I was looking to build out an office for Optiva, now Groupon,
+ one of the things about hiring people in and doing this sort of thing is building
+ out a community, getting a sense of community that you can actually draw from so that people know what's happening.
+ Right. So you're kind of going, are you going to different user groups and talking to their leadership and trying to say, hey, what's going on? You guys are doing these meetings, but sure, good, bad things.
+ Right now we've got a sense of each of the user groups. It's interesting between the different languages and between some of the different communities that exist. So, you know, the .NET community, Java community and whatnot. There's a different feel to each of the user groups.
+ So it's a matter of kind of figuring out what the different feel is. And then we were talking just briefly about kind of an overarching getting the heads of those groups together so that you've got kind of a group of people that you can talk to about things like scheduling.
+ So, you know, if you're doing Ruby, which are also interested in iOS programming, make sure that those dates don't collide so that you don't end up having one sit on top of another.
+ If you're doing a conference, for example, we just did Rocky Mountain Ruby a few months ago, pulling people from the iOS community, pulling people from Java community, getting people from outside the Ruby community interested and let them know that things like this are available.
+ Right. So you mean like I'm a Ruby dev and I've gone to Rocky Mountain Ruby and I don't know that right in my backyard that there's...
+ And I use an iPhone and I'm interested in iPhone. Hey, there's an iPhone iOS user group. Why don't you go check them out? You know, is that the kind of...
+ Yeah, that's exactly right. I mean, I find a lot of crossover between, you know, particularly in my experience between Ruby, people doing Ruby development going to iOS and getting involved in that.
+ So just being aware that those groups are out there, getting people in the iOS groups and saying, you know, why don't you come out to a Ruby group, see how we do things.
+ And I think that's a really good way to get the experience of that particular user group. And like I said, each of the user groups kind of has their own flavor. So it's a really interesting experience to go from one language to another. And then even larger scale groups like Agile groups. So there's Agile Vember. There are other groups kind of like outside of scrape technical groups as well.
+ Yeah. And, you know, I've done a few interviews today and a few people who weren't necessarily Ruby developers were looking at...
+ Yeah. And, you know, I've done a few interviews today and a few people were looking at the Ruby community and trying to use that as a model for what they would like to see in a .NET community or... Well, mostly it was .NET developers who were looking at the Ruby community.
+ As far as like working with user groups, since you've been kind of cross-pollinating, is it as dire as a situation in the .NET groups as some of the people in the .NET might think it is? And when they're looking over at the Ruby thinking, oh, that's the way I want to be.
+ Do you have any perspective on whether or not maybe it's like, hey, just keep going in the direction you're doing?
+ That's a great question. I mean, I think in the Ruby community, we've been really fortunate to have strong community builders. I think .NET and Java communities suffer somewhat from not having that. So I think there are lessons learned and vice versa. I think there are lessons that the Ruby community can learn from other groups. In organizing a group, creating a conference and all of the kind of common themes, I think it makes sense.
+ It makes sense for us all to kind of talk together, right? Kind of on the meta level, I suppose.
+ Right. And would you recommend, I don't want to be too leading into the question, but if you have, if somebody is watching and they run a user group, they run a .NET or Java or an iOS or an Android group, what would you recommend they do to maybe become, I guess this is kind of a leading question, better citizens in their community? You know, they're working with their group.
+ How can they broaden their perspective?
+ That's a good question. I mean, I think attending another group in the first place and just going out to it, finding out what's happening out there is good.
+ If you look at the various user groups, the people running the user groups generally are your community leaders.
+ Right.
+ So it's a matter of, you know, getting those people together to create a broader sense of community in an area. So Java itself has, you know, population-wise, it's somewhere around a million, something like that. Don't know the specifics.
+ But getting a broader sense so that we can all draw from kind of a common pool and have common experiences and kind of switch back and forth without having walls between the different communities.
+ Yeah. And, you know, the other thing, you were saying that the, earlier you were talking about how a Ruby developer might be interested in iOS and even in our conversation a little bit earlier about meeting plans, stepping on each other. Like, I'm a Ruby dev and I use Vim. It would be nice if they weren't on the same night.
+ Exactly. Do you see a lot of that kind of, like, I would like to go to both meetings. Do you see a lot of people that are appearing at different groups that, you know, you see the same person going to multiple groups?
+ Honestly, I don't see that very frequently, which is kind of surprising. So I know a lot of, you know, .NET and Java people who are doing that during the day and they want to do Ruby at night, you know, so there are different interests and your day job might not necessarily be where you might want to go.
+ So, attending or vice versa, maybe you go to an iOS group from a .NET group, something like that.
+ But not a lot of cross-pollination.
+ There's not a lot of cross-pollination. So it is, people tend to be stuck in their various communities and there are no walls between the communities. I think probably one of the better, one of the least walled communities is kind of Ruby and iOS. So I keep mentioning that. Ruby and JavaScript, for instance, as well.
+ Yeah, that would seem.
+ There's not a lot of crossover and there's a lot of interest by Ruby developers in these different technologies.
+ Yeah, but most Ruby developers are also web developers and they have no Macs and iOS.
+ That's right, that's right. So it's a natural, it's absolutely a natural crossover, whereas I see, you know, I did Microsoft development years and years ago and I find doing Microsoft development is very tough because you do end up kind of caught into a very specific community and a lot of
+ people don't get outside of it.
+ So, you know, the recommendation is to try to find out what other groups are in your area and if you lead a group, go check out their, some other meetings and talk to their, talk to the people.
+ The community leaders from each group should be talking to each other to create kind of a broader sense of community and have no sense of competition between the various groups. I think it makes sense for us all to collaborate together on building a community and area.
+ So, you know, as far as finding people, there's a dearth of software engineers and it's very hard to find.
+ So I think creating a community makes it much easier to find people to figure out how people are solving those types of problems which affect all of our communities.
+ Great. Well, thank you very much, Charlie, for sitting down with me.
+ Thanks, buddy.
+ Appreciate it.
+ See you, Grant.
