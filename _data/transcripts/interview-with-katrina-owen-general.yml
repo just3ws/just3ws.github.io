@@ -139,3 +139,132 @@ content: |-
    user groups with lots to say interviews and more no way sharing great ideas in the tech community
    fascinating conversations a plethora of information find out for yourself today at ucdastic.com
    foreign
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, community organizer at UGtastic
+  S1:
+    name: Katrina Owen
+    role: Developer and Open Source Contributor, Creator of Exercism.io
+turns:
+- speaker: M1
+  text: Hi, it's Mike with UGtastic. I'm here at SCNA 2013 and I'm sitting down with
+    Katrina Owen, who is going to be giving a talk called 'Here Be Dragons.' You're
+    the last talk of the sessions, so I wanted to make sure we caught up now. 'Here
+    Be Dragons'—what does that mean?
+- speaker: S1
+  text: It's a reference to old mapmaking where explorers would draw dragons in the
+    parts where they didn't know what was there. My talk is a code review, so it's
+    a metaphor for all the scary things you don't know are in the code. I'm using
+    an anonymized version of production code I ran into a couple of years ago.
+- speaker: M1
+  text: Does the person who wrote it know you're doing this?
+- speaker: S1
+  text: No, hence anonymized. It's actually kind of awkward because they weren't on
+    the team when the bug was reported. I started looking at the code, and it was
+    crazy, so I asked around the office to see who wrote it. Nobody recalled writing
+    it! When I finally checked git blame, I found out who it was, and they truly had
+    no recollection. That happens when you have thousands of lines of code over years.
+    And sometimes, you check git blame and the 'idiot' who wrote the code was actually
+    you.
+- speaker: M1
+  text: That's a good reminder to be kind, especially when the person who wrote it
+    might be sitting right next to you. What makes this specific code worth a talk?
+- speaker: S1
+  text: The code is so bad it has a punchline, but I really use it as an excuse to
+    talk about the people issues. We have a tendency toward the Fundamental Attribution
+    Error—assuming code is terrible because the author is 'stupid' rather than understanding
+    the pressures they were under. Maybe they were new to the language, or under a
+    tight deadline, or just really tired. If we knew the pressures, we would assume
+    they wrote it that way for a passing, temporary reason.
+- speaker: M1
+  text: There was a recent situation on Twitter where someone was blasted for a first-time
+    open source contribution, and it was quite harsh. It made people think about being
+    kinder. Is that the line you're walking?
+- speaker: S1
+  text: 'I do tear this code apart because it makes a good story, but in real life,
+    I try to be both kind and realistic. I look at the code and ask questions about
+    context: ''What trade-offs did you consider? Why did you go in this direction?''
+    Sometimes they say, ''I didn''t know that method existed,'' and I learn something
+    too. Other times, they had a constraint I didn''t see. We aren''t fixed points
+    of intelligence; we flex based on context.'
+- speaker: M1
+  text: So the point is to be context-aware rather than context-free.
+- speaker: S1
+  text: Exactly. Stay aware of the fact that there is context. Let that inform the
+    questions you ask rather than the judgments you make.
+- speaker: M1
+  text: I think that's a great point. One goal of these interviews is to humanize
+    people who are otherwise only known through technical personas or online handles,
+    where they can sometimes be abused because people forget they are human. We all
+    make mistakes and fumble.
+- speaker: S1
+  text: The reason I wanted to do this talk is that I'm actually very bad at empathy.
+    People talk about it constantly, but I can't always conceive of what they mean.
+    However, when you explain it as 'asking about the pressures rather than making
+    judgments about who they are,' I can do that. I know how to ask questions. That
+    is a concrete way I can practice empathy, even if I'm someone who is naturally
+    quick to judge.
+- speaker: M1
+  text: If we can feel frustration with the code, we can probably bet the author was
+    frustrated writing it too. It all comes back to context.
+- speaker: S1
+  text: Yeah. Thank you for having me.
+- speaker: M1
+  text: Thank you, Katrina.
+insights:
+- statement: 'The Fundamental Attribution Error in software: Developers often attribute
+    ''bad code'' to the author''s lack of intelligence (dispositional) rather than
+    the external pressures, deadlines, or lack of knowledge at the time (situational).'
+  type: durable
+  confidence: high
+- statement: 'Empathy as a technical practice: For those who find the abstract concept
+    of empathy difficult to grasp, it can be operationalized as ''asking about the
+    pressures and constraints of the author'' rather than making character judgments.'
+  type: durable
+  confidence: high
+- statement: 'The ''Git Blame Paradox'': The emotional distance provided by technical
+    tools can lead to harsh judgments of others, yet we often find ourselves being
+    the very authors of the code we once criticized.'
+  type: durable
+  confidence: high
+- statement: 'Code review should be a dialogue of discovery: Asking ''Why did you
+    go in this direction?'' often reveals hidden architectural constraints that the
+    reviewer was unaware of.'
+  type: durable
+  confidence: high
+- statement: 'Intelligence is not a fixed point: A developer''s performance varies
+    significantly based on current context (tiredness, personal stress, environment),
+    and code represents only a single snapshot of that fluctuating capability.'
+  type: durable
+  confidence: medium
+youtube:
+  title: 'Here Be Dragons: Katrina Owen on Operationalizing Empathy in Code Review
+    | SCNA 2013'
+  description: Mike Hall sits down with Katrina Owen (creator of Exercism.io) at SCNA
+    2013 to discuss her talk 'Here Be Dragons.' They explore the psychology of code
+    review, the 'Fundamental Attribution Error' that leads us to judge other developers
+    too harshly, and how to practice empathy by asking about constraints and pressures
+    rather than making character judgments.
+  tags:
+  - Code Review
+  - Software Craftsmanship
+  - Katrina Owen
+  - Exercism
+  - Empathy in Tech
+  - SCNA 2013
+  - Git Blame
+  - Psychology of Programming
+  chapters:
+  - timestamp: '00:00'
+    title: Introduction and Mapmaking Metaphors
+  - timestamp: '01:15'
+    title: The Git Blame Surprise
+  - timestamp: '02:30'
+    title: The Fundamental Attribution Error
+  - timestamp: '04:15'
+    title: 'Walking the Line: Critique vs. Kindness'
+  - timestamp: '06:00'
+    title: Operationalizing Empathy for the Logical Mind
+  - timestamp: '08:15'
+    title: Intelligence as a Fluctuating State
