@@ -1,9 +1,10 @@
 ---
 id: TASK-106
 title: Canonical Review — Dean Wampler (interview-with-dean-wampler-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:56'
+updated_date: '2026-05-15 02:35'
 labels:
   - transcript
   - interview
