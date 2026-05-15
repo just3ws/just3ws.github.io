@@ -3,9 +3,10 @@ id: TASK-046
 title: >-
   Canonical Review — Interview with David Dickinson and Ross Beehler
   (interview-with-david-dickinson-and-ross-beehler-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
+updated_date: '2026-05-15 02:35'
 labels:
   - transcript
   - interview
