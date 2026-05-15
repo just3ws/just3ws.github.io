@@ -1,9 +1,10 @@
 ---
 id: TASK-035
 title: Canonical Review — Daniel X. O'Neil (daniel-x-o-neil-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:37'
+updated_date: '2026-05-15 02:30'
 labels:
   - transcript
   - interview
