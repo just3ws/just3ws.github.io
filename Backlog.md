@@ -73,6 +73,17 @@ This milestone tracks the canonical review and optimization of all 197 interview
 | [task-026](backlog/completed/task-026-canonical-review-aaron-holbrook.md) | Canonical Review (Aaron Holbrook) | Done | Medium |
 | [task-029](backlog/completed/task-029-canonical-review-andrea-magnorsky.md) | Canonical Review (Andrea Magnorsky) | Done | Medium |
 | [task-030](backlog/completed/task-030-canonical-review-angelique-martin.md) | Canonical Review (Angelique Martin) | Done | Medium |
+| [task-050](backlog/completed/task-050-canonical-review-jen-myers.md) | Canonical Review (Jen Myers) | Done | Medium |
+| [task-051](backlog/tasks/task-051%20-%20Canonical-Review-%E2%80%94-Interview-with-James-Edward-Gray-II-interview-with-james-edward-gray-ii-general.md) | Canonical Review (James Edward Gray II) | To Do | Medium |
+| [task-052](backlog/tasks/task-052%20-%20Canonical-Review-%E2%80%94-Interview-with-Ken-Auer-interview-with-ken-auer-general.md) | Canonical Review (Ken Auer) | To Do | Medium |
+| [task-053](backlog/tasks/task-053%20-%20Canonical-Review-%E2%80%94-Interview-with-Giles-Bowkett-author-Rails-interview-with-giles-bowkett-author-rails-general.md) | Canonical Review (Giles Bowkett author "Rails) | To Do | Medium |
+| [task-054](backlog/tasks/task-054%20-%20Canonical-Review-%E2%80%94-Interview-with-Hadi-Hariri-interview-with-hadi-hariri-general.md) | Canonical Review (Hadi Hariri) | To Do | Medium |
+| [task-055](backlog/tasks/task-055%20-%20Canonical-Review-%E2%80%94-Interview-with-Chris-Whitaker-interview-with-chris-whitaker-general.md) | Canonical Review (Chris Whitaker) | To Do | Medium |
+| [task-056](backlog/completed/task-056-canonical-review-katrina-owen.md) | Canonical Review (Katrina Owen) | Done | Medium |
+| [task-057](backlog/tasks/task-057%20-%20Canonical-Review-%E2%80%94-Interview-with-Matt-Ruby-creator-of-Vooza-interview-with-matt-ruby-creator-of-vooza-general.md) | Canonical Review (Matt Ruby creator of Vooza) | To Do | Medium |
+| [task-058](backlog/tasks/task-058%20-%20Canonical-Review-%E2%80%94-Interview-with-Kresten-Thorup-interview-with-kresten-thorup-general.md) | Canonical Review (Kresten Thorup) | To Do | Medium |
+| [task-059](backlog/tasks/task-059%20-%20Canonical-Review-%E2%80%94-Interview-with-Mandi-Walls-interview-with-mandi-walls-general.md) | Canonical Review (Mandi Walls) | To Do | Medium |
+| [task-060](backlog/tasks/task-060%20-%20Canonical-Review-%E2%80%94-Interview-with-Dean-Wampler-interview-with-dean-wampler-general.md) | Canonical Review (Dean Wampler) | To Do | Medium |
 | [task-028](backlog/completed/task-028-canonical-review-arthur-kay.md) | Canonical Review (Arthur Kay) | Done | Medium |
 | [task-101](backlog/completed/task-101-canonical-review-angelique-martin-duplicate.md) | Canonical Review (Angelique Martin - Duplicate) | Done | Medium |
 | [task-102](backlog/completed/task-102-canonical-review-dickinson-beehler.md) | Canonical Review (Dickinson & Beehler) | Done | Medium |
@@ -83,13 +94,13 @@ This milestone tracks the canonical review and optimization of all 197 interview
 | [task-107](backlog/completed/task-107-canonical-review-hadi-hariri.md) | Canonical Review (Hadi Hariri) | Done | Medium |
 | [task-108](backlog/completed/task-108-canonical-review-carina-c-zona.md) | Canonical Review (Carina C. Zona) | Done | Medium |
 | [task-109](backlog/completed/task-109-canonical-review-zinni-buda-howe.md) | Canonical Review (Zinni, Buda, Howe) | Done | Medium |
-| [task-110](backlog/tasks/task-110%20-%20Canonical-Review-%E2%80%94-Eric-Kingery-interview-with-eric-kingery-general.md) | Canonical Review (Eric Kingery) | To Do | Medium |
+| [task-110](backlog/completed/task-110-canonical-review-eric-kingery.md) | Canonical Review (Eric Kingery) | Done | Medium |
 | [task-111](backlog/tasks/task-111%20-%20Canonical-Review-%E2%80%94-Giles-Bowkett-interview-with-giles-bowkett-general.md) | Canonical Review (Giles Bowkett) | To Do | Medium |
-| [task-112](backlog/tasks/task-112%20-%20Canonical-Review-%E2%80%94-Dan-North-interview-with-dan-north-general.md) | Canonical Review (Dan North) | To Do | Medium |
+| [task-112](backlog/completed/task-112-canonical-review-dan-north.md) | Canonical Review (Dan North) | Done | Medium |
 | [task-113](backlog/completed/task-113-canonical-review-anna-lear.md) | Canonical Review (Anna Lear) | Done | Medium |
 | [task-114](backlog/completed/task-114-canonical-review-james-edward-gray-ii.md) | Canonical Review (James Edward Gray II) | Done | Medium |
 | [task-115](backlog/tasks/task-115%20-%20Canonical-Review-%E2%80%94-Giles-Bowkett-Rails-interview-with-giles-bowkett-rails.md) | Canonical Review (Giles Bowkett - Rails) | To Do | Medium |
-| [task-116](backlog/tasks/task-116%20-%20Canonical-Review-%E2%80%94-Charley-Baker-interview-with-charley-baker-general.md) | Canonical Review (Charley Baker) | To Do | Medium |
+| [task-116](backlog/completed/task-116-canonical-review-charley-baker.md) | Canonical Review (Charley Baker) | Done | Medium |
 
 ---
 
