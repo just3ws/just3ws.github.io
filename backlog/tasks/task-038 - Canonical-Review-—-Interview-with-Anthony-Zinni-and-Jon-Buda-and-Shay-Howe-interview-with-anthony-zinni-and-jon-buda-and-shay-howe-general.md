@@ -3,9 +3,10 @@ id: TASK-038
 title: >-
   Canonical Review — Interview with Anthony Zinni and Jon Buda and Shay Howe
   (interview-with-anthony-zinni-and-jon-buda-and-shay-howe-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:37'
+updated_date: '2026-05-15 02:30'
 labels:
   - transcript
   - interview
