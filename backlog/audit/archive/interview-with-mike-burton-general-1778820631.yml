@@ -1,0 +1,76 @@
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, community organizer at UGtastic
+  S1:
+    name: Mike Burton
+    role: Android Developer, Creator of RoboGuice, Author of 'Android App Development for Dummies'
+turns:
+- speaker: M1
+  text: "Hi, it's Mike with UGtastic again. I'm sitting down with Mike Burton. Mike is an Android developer over in Palo Alto, and he has created several open source tools. The most popular is RoboGuice, which is a dependency injection—an IoC tool—for Android development. He's also written the book 'Android Application Development for Dummies' and does a lot of speaking in the Android community. Thanks for taking the time to sit down with me, Mike."
+- speaker: S1
+  text: "Sure, absolutely. It's nice to finally catch up."
+- speaker: M1
+  text: "What led you into Android development? It's been a relatively new platform over the last few years. Were you always focused on mobile?"
+- speaker: S1
+  text: "Actually, I wasn't. I was a backend engineer for most of my career. I did mostly Spring, Hibernate, and Java-based solutions—using EJBs way back when, then switching to Spring, and eventually moving to Django, Python, and a little bit of Ruby on Rails. About four years ago, at a startup in San Francisco, we started looking at mobile. The iPhone had been out for a year, the Android G1 had just been released, and because I had Java experience, my friends asked me to write our first app. I've focused entirely on mobile since then, writing apps for OpenTable, TripIt, Digg, and eventually Groupon after our startup was acquired."
+- speaker: M1
+  text: "What was it about Android that hooked you compared to the iOS platform?"
+- speaker: S1
+  text: "One thing that really attracted me is that the tools were open source. Android was leveraging a ton of Java-based libraries that I was already familiar with. I realized that, more so than iOS, there were a lot of people contributing to libraries that Android apps use. Android is a 'scrappy' platform with a few more rough edges, and that gives open source developers more opportunities to pry things open and contribute. Apple does its best to hide the rough edges; Android just exposes everything."
+- speaker: M1
+  text: "You've been very prolific in the community. What exactly is RoboGuice and how did it come about?"
+- speaker: S1
+  text: "RoboGuice is a dependency injection framework—an IoC (Inversion of Control) container for Android. It came out of my experience using Spring on the backend. Back then, enterprise Java was dominated by heavyweight, convoluted standards like EJB, which led to the rise of Spring. When I moved to Android, I realized that all the nice, clean architectural patterns I'd developed using Spring weren't available. Android was basically just 'plain old regular Java,' and it was painful. I started working on bringing dependency injection to mobile while building the TripIt and OpenTable apps."
+- speaker: M1
+  text: "And you also took over the 'Android Development for Dummies' book series?"
+- speaker: S1
+  text: "Yeah, the first edition was written by my friend Don Felker. When it came time for the second edition, he was busy with his startup, Conquer, and asked if I wanted to take it over. The 'For Dummies' series is interesting because the audience isn't necessarily technical experts; it's people who may have no programming experience at all and just want to get into the Android thing. For experts, there's always Google and Stack Overflow."
+- speaker: M1
+  text: "Speaking of Stack Overflow, you're a top contributor in the Java and Android tags. How did you get there?"
+- speaker: S1
+  text: "Honestly, that just comes from asking a whole hell of a lot of questions. Because I was there early in Android development and couldn't figure anything out, I posted every single question I had. Eventually, it accumulated, and now I spend more time answering than asking. It's that concept of 'Exposing Your Ignorance' that Dave Hoover wrote about in his apprenticeship book. If you're open about what you don't know, eventually you'll be the one teaching others."
+- speaker: M1
+  text: "It's the circle of life! Well, thank you very much for taking the time to sit down with me, Mike. I appreciate it."
+- speaker: S1
+  text: "Sure thing. I'm glad we got the chance to talk."
+insights:
+- statement: "The 'Scrappy Platform' advantage: Open-source ecosystems like Android often grow faster than 'polished' walled gardens because their visible 'rough edges' provide clear entry points for community contribution and library development."
+  type: durable
+  confidence: high
+- statement: "Architectural Migration: Complex backend patterns like Dependency Injection (DI) and Inversion of Control (IoC) are essential for managing complexity in mobile applications as they transition from simple tools to enterprise-scale platforms."
+  type: durable
+  confidence: high
+- statement: "Exposing Ignorance as a Growth Strategy: High-ranking expertise on platforms like Stack Overflow is often built not by knowing all the answers, but by being the first to publicly document and ask about the hardest problems."
+  type: durable
+  confidence: high
+- statement: "The 'For Dummies' Paradox: Technical documentation must be tiered; while experts rely on high-velocity search and community forums, there is a constant and vital market for foundational, 'zero-assumption' educational material for new entrants."
+  type: durable
+  confidence: medium
+- statement: "Startup acquisitions (like Groupon's growth phase) act as massive accelerators for technical libraries, forcing 'hobby' open-source projects to mature into production-grade infrastructure under the weight of millions of users."
+  type: time-bound
+  confidence: high
+youtube:
+  title: "Scrappy Open Source: Mike Burton on RoboGuice, Android Architecture, and Exposing Ignorance"
+  description: "Mike Hall sits down with Mike Burton, creator of RoboGuice and author of 'Android Application Development for Dummies.' They discuss Mike's transition from backend Java (Spring/EJB) to mobile, why the open-source nature of Android attracted him over iOS, the origins of dependency injection on mobile, and why 'exposing your ignorance' on Stack Overflow is the fastest way to become an expert."
+  tags:
+  - Android
+  - RoboGuice
+  - Dependency Injection
+  - Open Source
+  - Java
+  - Mobile Development
+  - Stack Overflow
+  - Software Architecture
+  - Groupon Tech
+  chapters:
+  - timestamp: '00:00'
+    title: "Introduction and Backend Origins"
+  - timestamp: '01:30'
+    title: "Android vs. iOS: The Open Source Attraction"
+  - timestamp: '03:15'
+    title: "The Origins of RoboGuice and IoC on Mobile"
+  - timestamp: '05:45'
+    title: "Writing for the 'For Dummies' Audience"
+  - timestamp: '07:30'
+    title: "Stack Overflow and the Art of Exposing Ignorance"
