@@ -1,9 +1,10 @@
 ---
 id: TASK-104
 title: Canonical Review — Gil Tene (interview-with-gil-tene)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:56'
+updated_date: '2026-05-15 02:30'
 labels:
   - transcript
   - interview
