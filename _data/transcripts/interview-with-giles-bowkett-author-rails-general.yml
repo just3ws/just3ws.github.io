@@ -1,0 +1,545 @@
+---
+content: |-
+  Hi, it's Mike again with Uketastic. Today I'm sitting down with Giles Bokut. You might know him on Twitter as Giles Goatboy.
+   He's been around in the Ruby community pretty much since, well, since there's been a Ruby community. He's a really active FOSS developer.
+   He's written the book Rails As She's Spoken and recently written a very interesting blog post about respect in the community,
+   about having a sense of decorum in our communications with each other. Thanks, Giles, for taking the time to sit down. I really appreciate it.
+   Sure, sure. Glad to be here.
+   So what inspired that post and what was the post about, again, just for those who haven't read it?
+   I think, I don't actually recall the exact title.
+   But it was like a simple protocol to enforce or enable "you are not your code," right?
+   Which was that blog post that went around a little while and it was a little unnecessarily controversial because of the context in which it was introduced.
+   Even though the essential idea of the blog post was, I think, very valid that, you know, oh, sorry, go ahead.
+   I was going to say that for those that don't know that "you are not your code" was about some people.
+   Yeah.
+   People had severely criticized code.
+   There was, you know, RVM versus RBEnv.
+   And then there were some comments about a person who had contributed some, I guess, code.
+   Yeah, yeah.
+   I want to give the back story then.
+   So the back story was that RVM was like the, you know, probably still is, the dominant Ruby version manager, which is what it stands for.
+   And Sam Stevenson.
+   Sam Stevenson, I think.
+   Somebody created a version called -- created a variant, a similar thing that worked differently, called RBEnv and introduced it with some snark in the readme, which they then removed after there was sort of like a Twitter drama about it.
+   And then, you know, "you are not your code" came as a blog post from Sam Stevenson maybe like two days.
+   Two days after he tweeted that, you know, he found it very frustrating that every time he talked about the differences between RVM and RBEnv, people started talking about how they felt that Wayne Segwin, who created RVM, was a good guy.
+   Right.
+   And they liked him and they didn't want to be mean to him.
+   And, you know, he wrote this big blog post about, you know, "you are not your code.
+   If I criticize your code, it doesn't mean I hate you.
+   It just means I won't --"
+   "I think this code should be different."
+   And it was a totally valid point.
+   But in context, it kind of just didn't -- it didn't quite work because when I read that, I didn't feel like, oh, wow, you know, he's saying this because he wants everyone to be more, you know, nice.
+   It felt like he was just sort of evading the consequences of -- I mean, if you tell everybody my project exists because that's what it is.
+   Yeah.
+   You know?
+   It's just not --
+   It's hard to spin that as you're, you know, like --
+   Yeah.
+   It's hard to have a conversation at that point, you know?
+   So what I said, you know, in my blog post was, like, you know, if he had just, you know, said, like, I'm sorry, I was a dick about that guy's project, but it happened a year ago, and I still believe that my project has some valid technical benefits, you know, then I'm like, okay, I'm going to do it.
+   I'm going to do it.
+   I'm going to do it.
+   I'm going to do it.
+   I'm going to do it.
+   I'm going to do it.
+   I'm going to do it.
+   I'm going to do it.
+   And I'm going to do it.
+   I'm going to do it.
+   And I still believe that my project has some valid technical benefits, and I want to just put that part behind, you know, so I'm going to, like, re-apologize.
+   I don't know if he ever apologized in the first place, but hopefully.
+   And just re-apologize to permanently clear the air.
+   You know, that might be more productive.
+   And during the course of this post, I referred to Mr. Stevenson as Mr. Stevenson.
+   Mm-hmm.
+   You know, and I elaborated later in the post that I don't know him personally.
+   Right.
+   I don't want to write a blog post about, like, you know, the reason this is a problem is because this guy, Sam, is a big douchebag.
+   Right.
+   You know, because that's not going to solve anything.
+   Mm-hmm.
+   Right?
+   It's just more of the same.
+   Yeah, it's just more of the same.
+   And I'm like, why not, you know, say, like, if you're going to criticize somebody's behavior online, do them, you know, some sort of, you know.
+   Default respect showing.
+   Right.
+   By referring to them as, you know, Mr. Stevenson or if it was an argument with someone else, you know, Ms. Someone else.
+   Right?
+   And that way, you know, it really is like a communications protocol.
+   And it's been around since the dawn of time.
+   Right.
+   You know, as, I mean, not really, but, you know, for several hundred years at least.
+   It makes me think of martial arts, how the goal of martial arts is to get into a ring and beat the hell out of it.
+   Get into a ring and beat the hell out of each other.
+   But.
+   Right.
+   You start off like, you know.
+   Right.
+   You respect that you're going to fight and then there's certain, you know, you don't do this, you don't do that.
+   I mean, I think even in the MMA, they have certain things that are kind of, you know, do that.
+   Yeah, yeah.
+   Because that's poor decorum.
+   You know, that's, it's a reminder that, yeah, we are sometimes, we're in competition.
+   You know, our ideas are something that we create and we want to put out there.
+   And sometimes we don't like an idea and we would like our idea to be adopted.
+   You know, I'm sure Mr. Stevens wanted his idea to be adopted and taken on as the primary goal.
+   The way, yeah.
+   Sorry, just, it's actually Stevens, Mr. Stevens.
+   Okay.
+   Yeah.
+   But.
+   And he has, by the way, just, you know, to say, like, another reason I want to, you know, make sure that if I disagree with him I still show respect is because he, I think he wrote Prototype.
+   Right.
+   If I recall correctly.
+   Which, you know, very, very influential.
+   He's been no slouch.
+   Yeah, no slouch.
+   And pow as well, I think.
+   But, yeah, sorry, you were saying.
+   I was just saying that, well, I was talking about the martial arts analogy.
+   But, and going back to what you're saying about, when somebody says you are not your code, a lot of it is in the delivery and the demeanor of the person saying it.
+   I think about, I interviewed Leon Gersing, and when he says you're not your code, it's very, man, it's okay.
+   You're not your code.
+   It's, don't worry about it.
+   Yeah, yeah.
+   That's what you were at that time when you wrote it, and it's great.
+   You know, let's just, you know, it's kind of very the dude-esque.
+   It's kind of Lebowski-esque.
+   But, and I also think about another person who's contributed, Andy Lester, who created ACK.
+   And some other tools, mostly in the pro community.
+   ACK is awesome.
+   Yeah, and ACK was better than grep.
+   So, I mean, a little bit of, like, a little bit of tease, a little bit of a jab, all delivered in a very congenial, jovial way.
+   And when somebody came to me, when I interviewed him, he was talking about, a person was creating a tool called Better Than ACK.
+   And they worried that he would be offended.
+   And he's like, no, no, that's, you know.
+   Right, it's a worthy goal.
+   Yeah, it's good.
+   Be better.
+   But, you know, that it was delivered with, in a way that could still be interpreted as humorous.
+   But I think.
+   Yeah, yeah.
+   I'm going to go out on a limb here, and I'm going to say sometimes certain people, and it tends to be in the Rails community that I've noticed, have a little bit of an acerbic.
+   Way of delivering.
+   I'm trying to say it in the nicest way possible.
+   That they can be a little bit caustic in their opinions.
+   Yeah, there is a lot of that.
+   And, you know, it doesn't really take very much of it to get a whole atmosphere started.
+   And once you have that atmosphere, it kind of seems like, you know, you've got, well, it just, it takes the fun out of things.
+   Right?
+   Like that.
+   I don't know if it's anger or, you know, just like a really harsh approach to time management or something.
+   But when you see that stuff, you know, sooner or later you're going to have to call somebody on it.
+   And, you know, it might not be fun to do.
+   Like, in an ideal world, it would all just be humor.
+   You know, but people don't like me making.
+   You know, if someone has a serious mentality, people don't like being made fun of.
+   Right.
+   Right?
+   And, like, when, you know, like, when that acerbic vibe is introduced, you know, you might be able to diffuse the effects.
+   Like, you know, I'll, I don't want to dance around the issue.
+   One of the major sources of intense space.
+   Intense speech in the Rails community is the creator of Rails, David Heinemeier Hansen.
+   And, you know, if you want to criticize Mr. Heinemeier Hansen, there is the somewhat obvious challenge that he is an amazing programmer.
+   And, you know, I mean, I personally, my life was changed for the better by using his software, you know, by a staggering degree.
+   And I've learned a great deal from, you know, from watching what he did and looking at his code and so on and so forth.
+   And I really feel that there has to be some way to prevent, like, a, you know, you've got in Ruby in general, you've got this notion of maths is nice, so we are nice.
+   And if you can't have that as, like, a guiding thing.
+   Then maybe.
+   Maybe making sure to demonstrate respect for someone who you disagree with can kind of settle things down in another way.
+   You know, like humor is a really good way of diffusing tension.
+   Like, I made fun of Mr. Heinemeier Hansen with a dramatic reading of Rails' omakase, which is a blog post he wrote.
+   And I was like, you know, this will probably not do great things for my relationship.
+   For that particular individual.
+   I doubt my respect for him in general is going to be readily apparent in my, you know, because the reading is, I exaggerated it and made it funny, I hope.
+   Right?
+   And certainly some people found it funny, which is what you hope for.
+   And in so doing, you know, I wouldn't necessarily say that I was hugely strategic about it.
+   But I did kind of hope that to some degree, like, by making it funny, by making the Rails' omakase thing funny, hopefully that can act as like a, what do they call it, like a fire break?
+   When you have, like, all the area around a fire raised.
+   Oh, yes.
+   Yeah.
+   So that way nothing can burn in that area.
+   Yeah.
+   To prevent the sort of acerbic fury from spreading.
+   You know, and like creating a whole toxic atmosphere.
+   Was it a little bit of make fun of myself before anybody else can make fun of me for me?
+   You know, by removing those, that layer of self-seriousness and self.
+   Yeah, yeah.
+   By creating an atmosphere of fun.
+   Yeah.
+   And it tears it down.
+   So that way nobody has to feel like they're approaching you.
+   It just, you expose yourself and you put yourself out there and you've made fun of yourself and you've exposed a weakness.
+   Therefore, you've made yourself a little bit more human, a little bit more vulnerable.
+   Where some people, I think, still want to have that wall between them and the world for whatever reason.
+   Yeah.
+   And, well, I worry about that a little because this whole idea of like, you know, Mr. This and Ms. That actually feels like a little bit of a wall.
+   So, I don't know.
+   I mean, typically.
+   Well, it's the bowing.
+   It's not within the martial arts.
+   It's a sign of respect.
+   You're not bowing.
+   I mean, you bow to the instructor out of deference.
+   But to each other, to your peers, you bow not to that individual but to the environment that you're in.
+   Yeah, yeah.
+   And you're respecting that you're in this environment.
+   And you're in this moment.
+   And you're in this mode of thinking.
+   You're not -- and that's one of the subtle things.
+   It took me a long time.
+   It's as much of a developer as I've turned into a couch potato developer.
+   I have a background in martial arts in my youth.
+   And it was one of the things that you learn to understand that it wasn't about the person.
+   It was about the actual interaction itself.
+   You're respecting that you're in this ring.
+   You're expecting you're in the dojo or the dojang for Taekwondo.
+   And you use these formal things.
+   So that way you don't accidentally really get into a fight.
+   I'm sorry.
+   I'm going to just --
+   No worries.
+   So I just thought the --
+   Yeah, yeah.
+   Because you know why?
+   I haven't done a whole bunch of martial arts.
+   I did do fencing and a smidgen of Taekwondo when I was little.
+   Right?
+   But I remember, you know, like the salute before the sword fighting.
+   And, you know, part of it was because you wanted it to be over once you got out of the ring.
+   Right?
+   And you didn't want it to be like some big thing.
+   And I also -- I don't know.
+   I talked about it in the blog post that I got it from -- I went to this school for a year, which is where I also did the fencing.
+   And it was actually a convention there that in classes, you know, you would -- I mean, you would literally have, you know, religious people and atheists discussing the Bible in this school.
+   Right.
+   Right?
+   And there was a class of, you know, it was about reading great books.
+   And one of the great books is the freaking Bible.
+   And this is like a really, you know, people -- it can be a very personal thing.
+   Yeah.
+   Yeah.
+   And in order -- like how do you create that?
+   Like how do you create an atmosphere where people who disagree about such an incredible fundamental thing can still learn from each other?
+   Right?
+   And one of those things is like let's show a baseline level of respect to, you know -- I don't know if it's going to catch on.
+   Right?
+   I don't know if I'm going to be able to say like, you know, two years from now, everybody is calling each other, you know, Mr. This and Ms. That and, you know --
+   You're bringing back the Victorian era is what you're --
+   Yeah.
+   Yeah.
+   Like I don't know if that's really going to happen.
+   We're going to have parasols and hoop skirts and --
+   And monocles, of course.
+   Yeah.
+   Right?
+   Like that would be, you know, kind of a strange accomplishment.
+   I'm not sure if it would be a good thing, you know?
+   But like -- and I'm not going to stop swearing.
+   Right?
+   Because I swear all over the place.
+   I'm kind of surprised I made it this far without, you know, without saying anything like that.
+   But, you know, frankly, like I even worry that it might be a little bit too much.
+   I mean, I'm not going to be able to say anything about it.
+   I'm not going to be able to say anything about it.
+   I'm not going to be able to say anything about it.
+   But, you know, frankly, like I even worry that it might be a situation where, you know,
+   people who aren't writing Ruby or who write Ruby but also write other languages might
+   be like what's going on with these people that they can't even talk to each other anymore
+   and they got to like, you know, I must put on my suit and refer to you as Mr. This and
+   that.
+   You know?
+   Like, it seems a little crazy.
+   Yeah.
+   Well, I think the Ruby developers have always been kind of the weirdos that's
+   always doing --
+   Yeah.
+   Yeah.
+   Fair enough.
+   If it's going to be anything, it's going to be dramatic.
+   Yeah.
+   Well, I mean, and it is a little bit of drama, right?
+   It's like a little ritual, you know, as opposed to just saying, "Hey, dude," you know?
+   But like that seems to me is like one of the most acceptable weirdnesses that I've ever
+   seen.
+   One of the most, you know, non-destructive eccentricities you could possibly cultivate,
+   right?
+   It's like I am, you know, too nice to people, right?
+   That would be a great problem to have.
+   Yeah.
+   And it is one of the things that I also didn't start off in a Ruby world.
+   I came from a .
+   That development, which was very, very corporate, very, very formal but in a different way.
+   Can I just interrupt one?
+   Sure.
+   I know I talk a lot.
+   But one thing I absolutely hate about corporate environments, fucking cannot stand, is when
+   people like, you know, "I'm going to use my corporate position to tell you what to
+   do and I'm going to call you by your first name," but there's also this little atmosphere
+   that if I'm like, you know, Mr. VP, right, or whatever, or CEO guy, you can't call me
+   by my first name, right?
+   Right.
+   It's a power play.
+   Yeah, it is.
+   And it's like this business casual thing.
+   Because technically, you do know the CEO's first name, right?
+   Yes.
+   It's just like you can't use it for some secret reason.
+   Yeah.
+   You know?
+   And I just feel like if you're going to be in a situation where, you know, I mean, basically,
+   in Rails' own , you know, Mr. Hanemeyer Hansen pulled rank, right?
+   He just said, "It's my project.
+   I'm going to do what I want."
+   And the thing is, I can totally respect that.
+   I can totally see myself making the same decision.
+   Yeah.
+   It's my project.
+   You know?
+   And, you know, frankly, like, the guy transformed my career, right, transformed my experience
+   as a developer, raised my standards forever as to what developing could be.
+   You know, if he wants to say it's my project, you know, tough, okay, you know.
+   But if you're going to pull rank, then maybe, you know, I mean, Mr. was at some point probably
+   a type of rank, right?
+   There was, like, Sir, Lord.
+   Mr., you know?
+   If you're a butler, you refer to, you know, like, okay, this is a massive tangent.
+   But watching Batman movies, whenever there's a Batman story where Bruce Wayne is a kid,
+   it makes me very, very angry because they always have Alfred referring to Bruce Wayne
+   as, you know, Mr. Bruce, right, or Master Wayne.
+   Actually, they don't do that.
+   But they should.
+   Like, if you're a butler and you're speaking to your, like…
+   you know, Lord's child, you refer to it as it.
+   You refer to them as Master, right, even though they're a kid.
+   When they grow up, they become Mr. This is a very strange thing, you know?
+   It's a relic of the Victorian era, you know?
+   Yeah, I think that's…
+   Total tangent.
+   I don't think that Master means…
+   Could you edit that out?
+   No, no, no.
+   We're going to keep it.
+   It's just Batman movies and their historical inaccuracy.
+   I don't know.
+   That guy running around with a cape and a flying bat.
+   That way it gets so inaccurate.
+   I accept the cape and the, like, you know, the spaceship that he just drives around New
+   York in.
+   Yeah.
+   But, you know, misusing Victorian era titles, you know, and their subtle differences.
+   Ooh.
+   I'm sure even in the Victorian era, there was always some little subtlety that would
+   get somebody hung up on something.
+   Literally hung up, probably.
+   Yeah.
+   But, so, just, you know, kind of coming…
+   To wrap, I want to actually go backwards in history a little bit.
+   And you've been involved in open source software, so you have a perspective.
+   So when you're writing this blog post, you're not just coming out of the blue and saying,
+   "Oh, I'm somebody who's been outside of this community and this is just what I see
+   is going on here."
+   I mean, you've been doing Ruby development since before Rails, right?
+   No, not quite.
+   I mean…
+   Okay.
+   When you talk about, like…
+   I wanted to interrupt earlier.
+   But I didn't because you said, like, doing Ruby development since the beginning.
+   And if you look at someone like, I don't know, Avdi Grim or Jim Wyrick, right?
+   They really were around before Rails.
+   Me, I was brought to Ruby by Rails technically in 2005.
+   Oh.
+   But we're talking, like, December 28, 2005.
+   So really 2006…
+   But that was like a 0.something still around that time.
+   Yeah.
+   It was Rails 0.13.
+   Okay.
+   And I did spend a bunch of time just, you know, on, you know, Ruby for its own sake
+   because, you know, it's neat.
+   Yeah.
+   And, you know, just speaking about languages, you were speaking about Archaeopteryx.
+   Am I even close?
+   No, that's absolutely completely correct.
+   Okay.
+   Great.
+   And that's written in all JavaScript, correct?
+   No.
+   I've ported it…
+   I've ported it to JavaScript.
+   It was written in Ruby.
+   I did some tricks to make it act a little like JavaScript, though.
+   I used Lambda all over the place and I aliased L to Lambda because you can do that with JavaScript.
+   You can just put a function anywhere and I wanted to do that.
+   I didn't even realize it was like JavaScript-esque at the time that I was doing it.
+   But then I ported it, most of it, not all of it, to CoffeeScript and I renamed it Clyde
+   because it's just one syllable.
+   Clyde Stubblefield?
+   Clyde Stubblefield.
+   Yes.
+   Yes.
+   The funky drummer.
+   Yes.
+   Okay.
+   I think that's where I was trying to tie it into.
+   I brought this in the last second before we started the interview, was that you had talked
+   about Archaeopteryx and Clyde and I was just wondering, are you one of those people that
+   is post-Ruby or are you still doing Ruby?
+   Oh, no.
+   Okay.
+   This year, I did a ton of Ruby.
+   All this year, I'm still hacking some projects of my own but all this year is an entire month.
+   Right now, all I'm doing is writing and creating videos and stuff like that but using Ruby and
+   there's some Node.js in there but the Node.js music stuff is really more of a side project.
+   Is that a beat a day?
+   Sorry?
+   Are you doing a beat a day?
+   A beat a day.
+   Are you creating...
+   Because I noticed on your site you had today's beats.
+   Oh, no.
+   I also have another thing called DJ Goat Boy which is a Twitter account and initially, I started that in 2009 I think and the goal was to make a new beat every single day.
+   I got the idea for that from Courtney Gaskin from ENTP and it was a really good idea and it made me much better at making music.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
+   I think it's a really good idea.
