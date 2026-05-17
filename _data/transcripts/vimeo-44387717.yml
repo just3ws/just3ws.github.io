@@ -1,9708 +1,4851 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Guest
-    role: Guest
-turns:
-- speaker: M1
-  text: So, who here would declare themselves as software engineers?
-- speaker: S1
-  text: |-
-    I'll just get a tally of sorts.
-
-    Okay, about half the people in the room.
-
-    Who would say, who are comfortable calling themselves as a software craftsman?
-
-    Okay, three people.
-
-    So, the interesting thing is there's not much overlap between the two groups,
-
-    and that's part of the reason why the VS is there in the title of the talk.
-
-    I perceived it as the versus for a long time.
-
-    Working as a consultant before we got acquired by Groupon,
-
-    I worked as a consultant for Optiva.
-
-    So, when I was working there, Optiva with the leadership of Dave Hoover
-
-    encouraged the idea of Software Craftsmanship as well as software apprenticeship.
-
-    And having developers learn their skills under the guidance of what he would call a journeyman
-
-    or, you know, a guy who's on the field out there doing it for real
-
-    as opposed to learning, say, in academia from a college
-
-    or like a computer science degree or a software engineering master's degree
-
-    or that kind of thing.
-
-    So, I have formal education in software engineering, though.
-
-    I've studied computer science as my, like, undergrad degree
-
-    and then I did software engineering as a master's.
-
-    And it always bothered me that there's a rift between the two
-
-    because I felt like they had similar goals.
-
-    That was my motivation behind blogging about it as well as giving this talk.
-
-    So, let's go over the outline of the talk.
-
-    So, I'm going to be giving definitions for software engineering
-
-    and Software Craftsmanship, at least my perspective on them.
-
-    I'm going to talk about the similarities and the differences between them.
-
-    And then, I'll go over applications of both that I saw at Groupon
-
-    to give an example of how they play in the wild.
-
-    So, one of the original definitions of software engineering,
-
-    which happened in the NATO Software Engineering Conference in 1968,
-
-    that was around the time when, of inception, software engineering.
-
-    Software engineering is the establishment
-
-    of sound engineering principles
-
-    in order to obtain economical software
-
-    that is reliable
-
-    and works efficiently on real machines.
-
-    So, notice how
-
-    this is kind of similar
-
-    to something that happened
-
-    in the last decade
-
-    with Agile.
-
-    When the Agile folks came up with the manifesto,
-
-    it was a very generic,
-
-    general, high-level,
-
-    principle-based manifesto.
-
-    So, this also sounds very generic
-
-    and focused on principles,
-
-    but not necessarily a process.
-
-    So, although a lot of developers equate software engineering
-
-    with heavyweight processes like Waterfolk,
-
-    there was not necessarily any connection between the two.
-
-    It just happened that one of the first processes
-
-    that came about in software development
-
-    was Waterfolk, for example.
-
-    So, their key focus, though,
-
-    really was on sound engineering
-
-    to obtain economical software
-
-    that's reliable and efficient
-
-    on real machines.
-
-    So,
-
-    that's a huge difference
-
-    between writing codes
-
-    for the sake of writing code
-
-    or for the sake of scientific theory
-
-    as opposed to writing code
-
-    for the sake of, you know,
-
-    meeting a business plan,
-
-    meeting some business goals,
-
-    being economical,
-
-    having performance,
-
-    having reliability.
-
-    So, the key thing about software engineering
-
-    is to focus programmers
-
-    on meeting deadlines,
-
-    focusing on cutting cost, etc.,
-
-    getting high reliability,
-
-    and so on.
-
-    Now, craftsmanship got popularized
-
-    by a book by Pete McBreen,
-
-    also called Software Craftsmanship.
-
-    And one of the things he said
-
-    was becoming a good software developer
-
-    involved a lot more
-
-    than just learning to write programs.
-
-    software development is a craft.
-
-    It blends science, engineering,
-
-    mathematics,
-
-    linguistics, and art.
-
-    So, one thing he noticed,
-
-    or the feel I got
-
-    from, you know,
-
-    reading a little bit
-
-    through his book,
-
-    that he didn't like the idea
-
-    that some people thought
-
-    that building software
-
-    is purely,
-
-    purely predictable
-
-    in a way
-
-    where it's like
-
-    you learn the steps,
-
-    you follow them,
-
-    and you get software.
-
-    He tried to make it clear
-
-    that it's actually
-
-    kind of not very linear.
-
-    There's art in it,
-
-    there's linguistics,
-
-    like you might write
-
-    different statements,
-
-    you can write a statement
-
-    of code, say,
-
-    in three or four different ways,
-
-    and certain ways
-
-    will flow better
-
-    than other ways.
-
-    Like,
-
-    this is the big reason
-
-    for, for example,
-
-    why
-
-    David Shilensky
-
-    and David Stills
-
-    and several developers
-
-    in the Rails community
-
-    came up with RSpec,
-
-    was they wanted to
-
-    come up with a testing library
-
-    that flows better linguistically.
-
-    So,
-
-    that kind of
-
-    comes under the umbrella
-
-    of craftsmanship
-
-    is basically
-
-    it's not just
-
-    you know,
-
-    you do A, B, C,
-
-    you get predictable results,
-
-    you succeed.
-
-    There's a little bit
-
-    of art to it.
-
-    There's a little bit
-
-    of balancing concerns,
-
-    balancing disciplines.
-
-    Another book
-
-    that popularized
-
-    the topic, though,
-
-    which is one
-
-    of my favorite books
-
-    in software development,
-
-    is The Pragmatic Programmer.
-
-    We already read
-
-    that Pragmatic Programmer
-
-    or at least
-
-    will show up through it.
-
-    That book
-
-    changed my perspective
-
-    on software development
-
-    I would say
-
-    significantly
-
-    because
-
-    if it's emphasis
-
-    on soft skills
-
-    it's not just
-
-    the hard technical skills.
-
-    One of the things
-
-    that the book
-
-    tries to
-
-    make clear
-
-    or like
-
-    one of the metaphors
-
-    that the book uses
-
-    actually is
-
-    the medieval European
-
-    craftsmanship metaphor
-
-    of comparing
-
-    building software
-
-    to say
-
-    building weapons
-
-    for example
-
-    in the Middle Ages.
-
-    so
-
-    the way
-
-    they describe
-
-    craftsmanship
-
-    is
-
-    a programmer
-
-    might start
-
-    as an apprentice
-
-    under another programmer
-
-    that's a lot
-
-    more experienced
-
-    and that have
-
-    successfully
-
-    built software
-
-    out in the world.
-
-    They will
-
-    gradually climb
-
-    their way
-
-    to becoming
-
-    a skilled journeyman.
-
-    A journeyman
-
-    is usually
-
-    a person
-
-    who
-
-    has become
-
-    more comfortable
-
-    with the basics
-
-    of building software
-
-    as well as
-
-    they're multifaceted
-
-    so they're not only
-
-    they don't only know
-
-    how to say
-
-    write a program
-
-    in Java
-
-    but they also
-
-    know how to deploy
-
-    the program
-
-    with the Java
-
-    technologies
-
-    like J2EE.
-
-    They know
-
-    how to interface
-
-    with business people
-
-    in order to
-
-    better communicate.
-
-    They know
-
-    a little bit
-
-    about user interface
-
-    design
-
-    and so on
-
-    and so forth.
-
-    So
-
-    eventually
-
-    and then
-
-    the goal
-
-    is to reach
-
-    mastery.
-
-    Some people
-
-    reach it
-
-    other people
-
-    you know
-
-    spend
-
-    they can spend
-
-    their entire life
-
-    going towards
-
-    that goal
-
-    and improving
-
-    maybe not necessarily
-
-    reaching it
-
-    but at least
-
-    they're always
-
-    improving
-
-    because of
-
-    having that goal
-
-    in mind.
-
-    Then you know
-
-    a few people
-
-    might reach
-
-    that goal
-
-    where
-
-    Pete McBreen
-
-    describes mastery
-
-    as having
-
-    built a masterpiece
-
-    like
-
-    for example
-
-    say a
-
-    programmer
-
-    of sorts
-
-    built something
-
-    like
-
-    I mean
-
-    I would say
-
-    a masterpiece
-
-    could be
-
-    Linux
-
-    so having
-
-    built something
-
-    as big as
-
-    Linux
-
-    I would
-
-    personally
-
-    definitely
-
-    consider
-
-    Linux Tarpault
-
-    a master
-
-    of software
-
-    development
-
-    so that's
-
-    an example
-
-    of reaching
-
-    mastery.
-
-    similarities
-
-    so one thing
-
-    I personally
-
-    noticed
-
-    is
-
-    there seems
-
-    to be
-
-    shared
-
-    common goals
-
-    between
-
-    software engineering
-
-    and software
-
-    craftsmanship
-
-    and they're
-
-    both focused
-
-    on meeting
-
-    customer needs
-
-    delivering
-
-    high quality
-
-    software
-
-    reliable
-
-    software
-
-    ensuring
-
-    timely
-
-    release
-
-    and
-
-    minimizing
-
-    risk of
-
-    failure
-
-    so
-
-    does
-
-    anybody
-
-    in the room
-
-    disagree
-
-    with any
-
-    of these
-
-    goals
-
-    right
-
-    however
-
-    a few
-
-    issues
-
-    have come
-
-    about
-
-    from engineering
-
-    and they're
-
-    not necessarily
-
-    related to
-
-    the original
-
-    inception of
-
-    software engineering
-
-    how it was
-
-    originally
-
-    founded
-
-    it was more
-
-    the way it
-
-    evolved
-
-    it went
-
-    into a few
-
-    directions
-
-    that made
-
-    people
-
-    you know
-
-    scratch their
-
-    head
-
-    and be like
-
-    this is not
-
-    working for us
-
-    we need
-
-    something new
-
-    we need
-
-    something better
-
-    so like
-
-    one of them
-
-    is
-
-    somehow
-
-    this attitude
-
-    got fostered
-
-    of believing
-
-    that engineers
-
-    can perfectly
-
-    streamline
-
-    building
-
-    software
-
-    so you
-
-    go
-
-    to college
-
-    you get
-
-    a degree
-
-    in computer
-
-    science
-
-    maybe
-
-    another degree
-
-    in software
-
-    engineering
-
-    and then
-
-    if you
-
-    follow the
-
-    processes
-
-    that you
-
-    learn
-
-    there
-
-    you're
-
-    going to
-
-    build
-
-    software
-
-    perfectly
-
-    like
-
-    complete
-
-    control
-
-    predictability
-
-    as if
-
-    it's a factory
-
-    of
-
-    Toyotas
-
-    or something
-
-    unfortunately
-
-    you know
-
-    a lot of people
-
-    know that
-
-    in the real world
-
-    that
-
-    I would say
-
-    more than 90%
-
-    of the time
-
-    that's not the case
-
-    there's a lot
-
-    of unpredictability
-
-    plans change
-
-    all the time
-
-    sometimes
-
-    sometimes
-
-    it might start
-
-    in one direction
-
-    thinking
-
-    you're going to
-
-    keep in that
-
-    direction
-
-    for the next
-
-    four months
-
-    but then
-
-    two weeks
-
-    later
-
-    something changes
-
-    in business
-
-    or you discover
-
-    that the solution
-
-    that you're building
-
-    in the code
-
-    is not working
-
-    for the users
-
-    so you end up
-
-    adjusting
-
-    your approach
-
-    significantly
-
-    so there's
-
-    a lot of room
-
-    for unpredictability
-
-    which prompted
-
-    the need
-
-    for something
-
-    other than
-
-    software engineering
-
-    the interesting
-
-    thing is
-
-    even Agile
-
-    which is supposed
-
-    to be about
-
-    flexibility
-
-    even some of
-
-    the Agile advocates
-
-    ended up
-
-    falling through
-
-    that trap
-
-    of thinking
-
-    if you follow
-
-    all the Agile
-
-    practices
-
-    you're going to
-
-    get results
-
-    also
-
-    there's a little
-
-    bit of
-
-    too much
-
-    structure
-
-    in software
-
-    engineering
-
-    there's this idea
-
-    that one has
-
-    to learn
-
-    almost
-
-    or many
-
-    best practices
-
-    before they
-
-    can build
-
-    anything
-
-    with any use
-
-    but a lot
-
-    of new
-
-    programmers
-
-    in today's
-
-    age
-
-    have proven
-
-    that
-
-    without
-
-    much
-
-    formal
-
-    education
-
-    in any
-
-    of the best
-
-    practices
-
-    software
-
-    engineering
-
-    they were
-
-    able to
-
-    build
-
-    some
-
-    really
-
-    cool
-
-    pieces
-
-    of software
-
-    and here
-
-    would give
-
-    me an
-
-    example
-
-    of that
-
-    no games
-
-    so
-
-    one of the
-
-    programmers
-
-    I work
-
-    with at
-
-    Groupon
-
-    his name
-
-    is Roy
-
-    Kolak
-
-    he was
-
-    new
-
-    to Optiva
-
-    he joined
-
-    Optiva
-
-    about five
-
-    years ago
-
-    he was
-
-    very new
-
-    to software
-
-    software
-
-    developed
-
-    in general
-
-    I think
-
-    he joined
-
-    he was 22
-
-    years
-
-    when he joined
-
-    he was very
-
-    young
-
-    he built
-
-    an iPhone
-
-    app
-
-    in like
-
-    three to six
-
-    months
-
-    that got
-
-    featured
-
-    as one
-
-    of the top
-
-    hundred
-
-    I believe
-
-    Macworld
-
-    magazine
-
-    apps of the
-
-    year
-
-    during
-
-    either the
-
-    first or the
-
-    second year
-
-    when the
-
-    iPhone
-
-    came about
-
-    I thought
-
-    that was
-
-    a very
-
-    inspiring
-
-    example
-
-    of somebody
-
-    who's
-
-    trained
-
-    via the
-
-    software
-
-    craftsmanship
-
-    approach
-
-    and was
-
-    able to
-
-    build
-
-    something
-
-    that was
-
-    interesting
-
-    of use
-
-    that app
-
-    was called
-
-    Noteworthy
-
-    it was an
-
-    app that
-
-    lets you
-
-    basically
-
-    somebody
-
-    mentions to
-
-    you
-
-    a lot
-
-    of
-
-    younger
-
-    people
-
-    and teenagers
-
-    I guess
-
-    listen to a
-
-    lot of
-
-    different kinds
-
-    of music
-
-    and like
-
-    to discover
-
-    bands
-
-    if somebody
-
-    mentions a
-
-    band to
-
-    you
-
-    you can
-
-    get up
-
-    Noteworthy
-
-    on the
-
-    iPhone
-
-    and looks
-
-    it up
-
-    and then
-
-    it bookmarks
-
-    it for you
-
-    so then
-
-    you remember
-
-    to check
-
-    it later
-
-    so yeah
-
-    it was a
-
-    cool idea
-
-    I used
-
-    the app
-
-    quite a
-
-    while
-
-    so
-
-    this is
-
-    an example
-
-    of someone
-
-    with no
-
-    formal education
-
-    building
-
-    something
-
-    that's
-
-    of good
-
-    use
-
-    to people
-
-    and
-
-    third
-
-    some
-
-    engineers
-
-    seem to
-
-    think
-
-    that best
-
-    practices
-
-    apply
-
-    everywhere
-
-    on every
-
-    situation
-
-    so
-
-    they get
-
-    comfortable
-
-    for example
-
-    with design
-
-    patterns
-
-    and then
-
-    they feel
-
-    like
-
-    you have
-
-    to shoehorn
-
-    and hoard
-
-    them
-
-    everywhere
-
-    or
-
-    I mean
-
-    more experienced
-
-    engineers are
-
-    aware that
-
-    different contexts
-
-    will require
-
-    different practices
-
-    so a design
-
-    pattern that
-
-    worked for you
-
-    in three
-
-    projects
-
-    might not
-
-    work in the
-
-    fourth one
-
-    or so on
-
-    and so forth
-
-    but there's
-
-    this attitude
-
-    in a lot
-
-    of software
-
-    engineers
-
-    that you
-
-    have to
-
-    shoehorn
-
-    things every
-
-    time
-
-    so like
-
-    dependency
-
-    injection is a
-
-    very good
-
-    example in the
-
-    Java world
-
-    it was
-
-    it's a good
-
-    idea for
-
-    certain projects
-
-    but a lot
-
-    of people
-
-    then think
-
-    oh we're
-
-    going to do
-
-    everything
-
-    depends on
-
-    injection
-
-    and you end
-
-    up with
-
-    over-blooded
-
-    software that
-
-    has a lot
-
-    of extra
-
-    unnecessary
-
-    complexity
-
-    just because
-
-    you know
-
-    they used it
-
-    as a golden
-
-    hammer
-
-    as opposed
-
-    to solving
-
-    one specific
-
-    problem
-
-    like
-
-    one of the
-
-    problems
-
-    that came
-
-    to solve
-
-    was
-
-    related
-
-    to
-
-    some
-
-    legacy
-
-    Java
-
-    applications
-
-    were very
-
-    difficult
-
-    to write
-
-    tests for
-
-    like automated
-
-    tests
-
-    dependency
-
-    injection
-
-    was a way
-
-    to let you
-
-    decouple
-
-    a classroom
-
-    third-party
-
-    dependencies
-
-    but if
-
-    that
-
-    I mean
-
-    that could
-
-    be needed
-
-    for a very
-
-    large piece
-
-    of software
-
-    but for
-
-    something small
-
-    that you're
-
-    building
-
-    for a tiny
-
-    project
-
-    you might not
-
-    need dependency
-
-    injection
-
-    it might just
-
-    be overkill
-
-    so it's an
-
-    example where
-
-    contexts play
-
-    a role
-
-    in whether
-
-    a practice
-
-    is applicable
-
-    or not
-
-    before I
-
-    continue
-
-    you wanted
-
-    to say
-
-    something
-
-    go ahead
-
-    well you
-
-    were asking
-
-    about examples
-
-    of software
-
-    that weren't
-
-    necessarily developed
-
-    with rigorous
-
-    procedure
-
-    and yet
-
-    I personally
-
-    think a good
-
-    example of that
-
-    is eBay
-
-    which started
-
-    out as a
-
-    hobbyist site
-
-    to sell
-
-    a few things
-
-    and it snowballed
-
-    and it snowballed
-
-    and later
-
-    engineering practices
-
-    were brought in
-
-    to shore up
-
-    the site
-
-    and make
-
-    it actually
-
-    scale
-
-    but in the
-
-    end
-
-    eBay
-
-    and today
-
-    even still
-
-    lives with
-
-    the legacy
-
-    of being
-
-    a hobbyist
-
-    site
-
-    first
-
-    yeah
-
-    thanks
-
-    yeah there
-
-    are a lot
-
-    of examples
-
-    like that
-
-    I agree
-
-    yeah the web
-
-    has facilitated
-
-    a lot
-
-    of like
-
-    it lowered
-
-    the barrier
-
-    of entry
-
-    to a lot
-
-    of people
-
-    which is good
-
-    because then
-
-    it can grow
-
-    with the business
-
-    I mean Groupon
-
-    is one of the best
-
-    examples
-
-    of that as well
-
-    but yeah
-
-    it can grow
-
-    with the business
-
-    that's when
-
-    you need to bring
-
-    more engineering
-
-    and more discipline
-
-    practices
-
-    so to mitigate
-
-    some of the
-
-    concerns and issues
-
-    I raised
-
-    craftsmen
-
-    see software development
-
-    more as an art
-
-    that emerges
-
-    and less as a
-
-    structured science
-
-    that's perfectly
-
-    predictable
-
-    so they let
-
-    time and experience
-
-    shape up
-
-    the skills
-
-    successfully
-
-    competing
-
-    software projects
-
-    I mean
-
-    one example
-
-    of this
-
-    like
-
-    who here
-
-    has ever worked
-
-    with a review
-
-    on Rails application
-
-    okay
-
-    one very common
-
-    example
-
-    is
-
-    monolithic
-
-    Rails apps
-
-    that's a
-
-    that's a big
-
-    problem
-
-    so
-
-    one can start
-
-    if you think
-
-    of building
-
-    the software
-
-    as an art
-
-    that emerges
-
-    as opposed
-
-    to just
-
-    following rules
-
-    you can think
-
-    of starting
-
-    by building
-
-    the app
-
-    as one app
-
-    but then
-
-    eventually
-
-    you will notice
-
-    patterns
-
-    emerging
-
-    in the app
-
-    like
-
-    there are
-
-    more
-
-    administrative
-
-    focused
-
-    use cases
-
-    say
-
-    versus
-
-    other
-
-    use cases
-
-    so then
-
-    maybe you can
-
-    split those
-
-    into a separate
-
-    app
-
-    and be able
-
-    to maintain
-
-    their tests
-
-    and their code
-
-    in a different
-
-    repository
-
-    which might
-
-    make the team
-
-    more productive
-
-    because it
-
-    might minimize
-
-    coupling
-
-    as well
-
-    between
-
-    administrative
-
-    parts of the app
-
-    and regular
-
-    parts
-
-    so
-
-    it's just
-
-    the idea
-
-    that it's
-
-    flowing
-
-    it's not
-
-    necessarily
-
-    structured
-
-    you couldn't
-
-    preconceive
-
-    or think
-
-    about
-
-    everything
-
-    at once
-
-    you can
-
-    break things
-
-    down
-
-    to
-
-    chunks
-
-    also
-
-    craftsmen
-
-    often discover
-
-    their own
-
-    best practices
-
-    from their
-
-    experience
-
-    which often
-
-    better fit
-
-    their situations
-
-    so
-
-    what's a good
-
-    example
-
-    of that
-
-    one of the
-
-    apps that
-
-    Optiva
-
-    helped build
-
-    is called
-
-    Mad Mimi
-
-    it's an email
-
-    sending app
-
-    and
-
-    one of the
-
-    patterns
-
-    that were
-
-    noticed
-
-    in it
-
-    was
-
-    the need
-
-    to do
-
-    things
-
-    in the
-
-    background
-
-    and
-
-    some best
-
-    practices
-
-    came about
-
-    as far as
-
-    how to write
-
-    the code
-
-    for separating
-
-    foreground work
-
-    from background
-
-    work
-
-    and separating
-
-    it in the
-
-    repository
-
-    and doing
-
-    that kind of
-
-    stuff
-
-    so
-
-    something that
-
-    emerged
-
-    it's not
-
-    something that
-
-    was thought
-
-    about at
-
-    first
-
-    everything
-
-    lived in
-
-    the same
-
-    place
-
-    but then
-
-    things got
-
-    split off
-
-    because it
-
-    became more
-
-    convenient
-
-    for the
-
-    problems
-
-    so
-
-    that was
-
-    an example
-
-    of that
-
-    also
-
-    craftsmen
-
-    do not
-
-    religiously
-
-    follow even
-
-    their own
-
-    best practices
-
-    so you might
-
-    discover a
-
-    best practice
-
-    for a while
-
-    and think
-
-    it was very
-
-    cool
-
-    but then
-
-    later
-
-    transcend it
-
-    and be like
-
-    okay
-
-    it doesn't
-
-    work anymore
-
-    again
-
-    more experienced
-
-    software engineers
-
-    do that as
-
-    well
-
-    because that's
-
-    the point of
-
-    practice
-
-    is to think
-
-    of the context
-
-    not just
-
-    applying it
-
-    lightly
-
-    but it's
-
-    kind of nice
-
-    to see that
-
-    emerging
-
-    naturally
-
-    with craftsmen
-
-    as opposed
-
-    to them
-
-    thinking hard
-
-    about wanting
-
-    to put the
-
-    context in
-
-    place
-
-    so yeah
-
-    that's because
-
-    they rely
-
-    more on their
-
-    intuition
-
-    and gut
-
-    feeling
-
-    to succeed
-
-    which
-
-    everybody
-
-    rely on
-
-    time to
-
-    time
-
-    but
-
-    seems like
-
-    craftsmen
-
-    rely more
-
-    on gut
-
-    feeling
-
-    than
-
-    engineers
-
-    probably
-
-    because
-
-    they're not
-
-    as worried
-
-    about meeting
-
-    certain
-
-    practices
-
-    and again
-
-    I'm talking
-
-    about
-
-    engineers
-
-    that are
-
-    less
-
-    experienced
-
-    in this
-
-    case
-
-    not the
-
-    more
-
-    experienced
-
-    ones
-
-    but let's
-
-    revisit
-
-    software
-
-    engineering
-
-    though
-
-    so
-
-    oh yeah
-
-    actually
-
-    now just
-
-    keep
-
-    hammering
-
-    on the
-
-    last point
-
-    even
-
-    Tom
-
-    DeMarco
-
-    which I
-
-    found
-
-    very
-
-    surprising
-
-    when I
-
-    heard of
-
-    this
-
-    a few
-
-    years
-
-    ago
-
-    he's
-
-    famous for
-
-    saying
-
-    you cannot
-
-    control
-
-    what you
-
-    cannot
-
-    measure
-
-    it's a
-
-    very very
-
-    popular
-
-    statement
-
-    in the
-
-    science
-
-    engineering
-
-    world
-
-    it was
-
-    a big
-
-    driver
-
-    for
-
-    estimation
-
-    models
-
-    like
-
-    Kokomo
-
-    and other
-
-    models
-
-    and like
-
-    having
-
-    people
-
-    always
-
-    trick
-
-    you know
-
-    record
-
-    their
-
-    hours
-
-    record
-
-    different
-
-    things
-
-    in order
-
-    to
-
-    lines of
-
-    code
-
-    or
-
-    whatever
-
-    in order
-
-    to
-
-    do
-
-    estimation
-
-    based
-
-    on that
-
-    but even
-
-    eventually
-
-    he
-
-    there was
-
-    an article
-
-    in the
-
-    recently
-
-    where
-
-    the title
-
-    of the
-
-    article
-
-    was
-
-    software
-
-    engineering
-
-    an idea
-
-    whose
-
-    time
-
-    has
-
-    come
-
-    and gone
-
-    and
-
-    I read
-
-    the article
-
-    it was
-
-    very
-
-    provocative
-
-    and I
-
-    think it
-
-    was a
-
-    little
-
-    exaggerated
-
-    to make
-
-    the article
-
-    more
-
-    interesting
-
-    but
-
-    the point
-
-    that I
-
-    took away
-
-    without
-
-    necessarily
-
-    taking
-
-    everything
-
-    in the
-
-    article
-
-    seriously
-
-    was
-
-    that
-
-    even
-
-    Tom
-
-    DeMarco
-
-    started
-
-    questioning
-
-    the idea
-
-    that you
-
-    need to
-
-    estimate
-
-    everything
-
-    beforehand
-
-    or like
-
-    know
-
-    everything
-
-    beforehand
-
-    he
-
-    seemed
-
-    to be
-
-    on board
-
-    with
-
-    that
-
-    Agile
-
-    idea
-
-    of
-
-    letting
-
-    things
-
-    emerge
-
-    with
-
-    time
-
-    as
-
-    opposed
-
-    to
-
-    having
-
-    everything
-
-    controlled
-
-    I just
-
-    found a book
-
-    from that
-
-    article
-
-    where he says
-
-    strict control
-
-    is something
-
-    that matters
-
-    a lot
-
-    on relatively
-
-    useless
-
-    projects
-
-    and much
-
-    less
-
-    than useful
-
-    projects
-
-    you
-
-    do 100%
-
-    control
-
-    that's
-
-    too much
-
-    it's funny
-
-    it's like
-
-    if you want
-
-    to do 100%
-
-    control
-
-    don't use
-
-    a computer
-
-    for it
-
-    anymore
-
-    just do
-
-    the work
-
-    with your
-
-    hands
-
-    then you'll
-
-    be happy
-
-    okay
-
-    so
-
-    what are
-
-    some
-
-    differences
-
-    I mean
-
-    one of
-
-    the things
-
-    that I
-
-    a pattern
-
-    that I
-
-    noticed
-
-    that can
-
-    reconcile
-
-    like both
-
-    software
-
-    engineering
-
-    and craftsmanship
-
-    and make
-
-    work together
-
-    is you can
-
-    think of
-
-    engineering
-
-    as the
-
-    macro
-
-    goal
-
-    delivering
-
-    economical
-
-    software
-
-    that's
-
-    reliable
-
-    and efficient
-
-    kind of
-
-    like the
-
-    definition
-
-    of it
-
-    during
-
-    its inception
-
-    in 1968
-
-    but then
-
-    craftsmanship
-
-    is more
-
-    of a
-
-    microprocess
-
-    of mastering
-
-    the skills
-
-    gradually
-
-    that will
-
-    help you
-
-    achieve that
-
-    goal
-
-    in the long
-
-    term
-
-    because when
-
-    you start
-
-    as a
-
-    craftsman
-
-    it seems
-
-    like craftsmanship
-
-    is a better
-
-    model for
-
-    accomplishing
-
-    that goal
-
-    as opposed
-
-    to studying
-
-    books for
-
-    four years
-
-    and then
-
-    suddenly
-
-    throwing you
-
-    on the
-
-    field
-
-    even if
-
-    I were
-
-    to study
-
-    books
-
-    for four
-
-    years
-
-    I would
-
-    want
-
-    craftsmanship
-
-    to be
-
-    my model
-
-    for how
-
-    to become
-
-    successful
-
-    in the real
-
-    world
-
-    my first
-
-    job
-
-    was
-
-    me working
-
-    as the
-
-    sole
-
-    programmer
-
-    on a
-
-    project
-
-    at a
-
-    software
-
-    company
-
-    where I
-
-    had no
-
-    guidance
-
-    whatsoever
-
-    but I
-
-    was the
-
-    go-getter
-
-    you know
-
-    like I
-
-    was the
-
-    go-for
-
-    guy
-
-    to give
-
-    me tasks
-
-    and I
-
-    get them
-
-    done
-
-    and I
-
-    learned
-
-    quite a bit
-
-    on my
-
-    own
-
-    but I
-
-    ended up
-
-    quitting
-
-    that
-
-    company
-
-    because
-
-    there
-
-    was no
-
-    mentor
-
-    of any
-
-    sort
-
-    or
-
-    a more
-
-    senior
-
-    developer
-
-    that
-
-    would
-
-    be
-
-    free
-
-    to
-
-    help
-
-    me
-
-    or
-
-    that
-
-    would
-
-    be
-
-    motivated
-
-    actually
-
-    to
-
-    help me
-
-    to spend
-
-    time
-
-    helping me
-
-    improve
-
-    my
-
-    skills
-
-    so
-
-    the more
-
-    senior
-
-    developers
-
-    were busy
-
-    they'd always
-
-    be busy
-
-    not want
-
-    to spend
-
-    time helping
-
-    a junior
-
-    developer
-
-    in fact
-
-    they'd be like
-
-    if I'm asking
-
-    for help
-
-    that means I'm not
-
-    good enough
-
-    like they made it
-
-    feel that way
-
-    which is part
-
-    of the reason
-
-    why I ended up
-
-    quitting
-
-    so I think
-
-    craftsmanship
-
-    is a good
-
-    model to
-
-    get to the
-
-    micro process
-
-    of reaching
-
-    the macro
-
-    goal
-
-    so of course
-
-    a few years
-
-    ago
-
-    a bunch of
-
-    eight
-
-    lighters
-
-    and a few
-
-    people from
-
-    octiva
-
-    and a few
-
-    other software
-
-    developers
-
-    from this
-
-    area
-
-    came together
-
-    and came up
-
-    with a
-
-    Software Craftsmanship
-
-    manifesto
-
-    the help
-
-    of Uncle Bob
-
-    so as an
-
-    aspiring
-
-    software craftsman
-
-    we're raising
-
-    the Bob
-
-    professional software
-
-    development
-
-    by practicing
-
-    it and helping
-
-    others learn
-
-    their craft
-
-    notice the
-
-    emphasis
-
-    on learning
-
-    not just
-
-    practicing
-
-    it's both
-
-    trying to
-
-    have a balance
-
-    of the
-
-    short-term
-
-    goal
-
-    of getting
-
-    work done
-
-    as well
-
-    as the
-
-    long-term
-
-    goal
-
-    of always
-
-    improving
-
-    not as soon
-
-    stagnating
-
-    so through
-
-    this work
-
-    we have
-
-    come to
-
-    value
-
-    so in the
-
-    same style
-
-    with the
-
-    Agile manifesto
-
-    it's got
-
-    things on the
-
-    left side
-
-    and the
-
-    right side
-
-    they're not
-
-    only working
-
-    software
-
-    but also
-
-    well-crafted
-
-    software
-
-    so we don't
-
-    want to do
-
-    the minimum
-
-    possible
-
-    to get
-
-    the job
-
-    done
-
-    with code
-
-    that's
-
-    very
-
-    terrible
-
-    to maintain
-
-    behind the
-
-    scenes
-
-    so we
-
-    want to build
-
-    software
-
-    that's
-
-    also
-
-    well-crafted
-
-    software
-
-    not only
-
-    responding to
-
-    change
-
-    but also
-
-    steadily
-
-    adding
-
-    value
-
-    so we
-
-    don't want
-
-    to just be
-
-    thrashing
-
-    and responding
-
-    to change
-
-    to please
-
-    business
-
-    from day
-
-    to day
-
-    without seeing
-
-    value being
-
-    added over
-
-    a year
-
-    sometimes
-
-    business people
-
-    dig themselves
-
-    into a hole
-
-    by changing
-
-    their mind
-
-    every week
-
-    if
-
-    software
-
-    developers
-
-    who are
-
-    working
-
-    with them
-
-    aren't
-
-    responsible
-
-    to
-
-    alert
-
-    them
-
-    that
-
-    they're
-
-    not
-
-    necessarily
-
-    adding
-
-    a value
-
-    over the
-
-    long term
-
-    they won't
-
-    be really
-
-    helping them
-
-    so they
-
-    might be
-
-    pocketing
-
-    money
-
-    and getting
-
-    things done
-
-    week to
-
-    week
-
-    but
-
-    if the
-
-    business
-
-    fails
-
-    a year
-
-    later
-
-    it's not
-
-    that good
-
-    for the
-
-    developers
-
-    not only
-
-    individuals
-
-    and interactions
-
-    but also
-
-    a community
-
-    of professionals
-
-    so one
-
-    of the
-
-    things
-
-    that helped
-
-    a lot
-
-    of developers
-
-    on the field
-
-    improve their
-
-    skills further
-
-    is not only
-
-    to spend
-
-    time
-
-    learning on
-
-    the job
-
-    but also
-
-    going to
-
-    things like
-
-    this meeting
-
-    conferences
-
-    working on
-
-    open source
-
-    projects
-
-    doing anything
-
-    that would
-
-    foster
-
-    community
-
-    of professionals
-
-    and that
-
-    ends up
-
-    feeding back
-
-    into the
-
-    individual
-
-    because then
-
-    that individual
-
-    has to improve
-
-    their skills
-
-    in order to
-
-    interact with
-
-    other professionals
-
-    in the field
-
-    there's also
-
-    cross-pollination
-
-    of skills
-
-    when you go
-
-    and meet
-
-    others
-
-    that are
-
-    working in
-
-    different
-
-    programming
-
-    languages
-
-    different verticals
-
-    etc
-
-    so this is
-
-    another idea
-
-    that feeds
-
-    into craftsmanship
-
-    continuous
-
-    learning
-
-    and improvement
-
-    finally
-
-    not only
-
-    customer
-
-    collaboration
-
-    but also
-
-    productive
-
-    partnerships
-
-    so
-
-    it's
-
-    basically
-
-    just going
-
-    beyond
-
-    customer
-
-    collaboration
-
-    to feel
-
-    really like
-
-    you're a
-
-    partner
-
-    in that
-
-    business
-
-    it's not
-
-    like
-
-    a master
-
-    slaves
-
-    relationship
-
-    where
-
-    they give
-
-    you orders
-
-    no
-
-    you can
-
-    do
-
-    more
-
-    you can
-
-    be a
-
-    partner
-
-    you can
-
-    give
-
-    them
-
-    ideas
-
-    that
-
-    they
-
-    could
-
-    never
-
-    think
-
-    about
-
-    because
-
-    they're
-
-    not
-
-    a two
-
-    perspective
-
-    from the
-
-    perspective
-
-    of a coder
-
-    so I mean
-
-    both perspectives
-
-    are useful
-
-    the business
-
-    perspective
-
-    is high level
-
-    enough
-
-    to be
-
-    detached
-
-    from
-
-    code
-
-    and think
-
-    of
-
-    more
-
-    like
-
-    you know
-
-    strategic
-
-    direction
-
-    of the
-
-    company
-
-    I guess
-
-    whereas
-
-    a software
-
-    developer
-
-    might think
-
-    of things
-
-    that are
-
-    good
-
-    optimizations
-
-    like
-
-    for example
-
-    we can
-
-    save the
-
-    money
-
-    so and so
-
-    sorry
-
-    we can
-
-    save the
-
-    company
-
-    so and so
-
-    that much
-
-    money
-
-    if
-
-    we move
-
-    from
-
-    Amazon
-
-    EC2
-
-    to some
-
-    other
-
-    provider
-
-    like
-
-    we cut
-
-    our cost
-
-    by half
-
-    so that's
-
-    an initiative
-
-    they don't
-
-    have to
-
-    come
-
-    from
-
-    developers
-
-    business
-
-    people
-
-    aren't
-
-    going to
-
-    be able
-
-    to make
-
-    a good
-
-    decision
-
-    about that
-
-    the reason
-
-    they couldn't
-
-    is because
-
-    even if
-
-    they knew
-
-    about
-
-    the cost
-
-    of say
-
-    let's assume
-
-    Heroku
-
-    is cheaper
-
-    I don't think
-
-    it is
-
-    let's say
-
-    Rails hosting
-
-    is cheaper
-
-    than EC2
-
-    it's actually
-
-    more expensive
-
-    but
-
-    business people
-
-    wouldn't know
-
-    the trade-offs
-
-    though
-
-    of the two
-
-    services
-
-    because there
-
-    are always
-
-    trade-offs
-
-    like pros
-
-    and cons
-
-    and
-
-    it's the
-
-    developers
-
-    that can
-
-    be responsible
-
-    for making
-
-    the decision
-
-    on which
-
-    trade-off
-
-    they're willing
-
-    to make
-
-    otherwise
-
-    you end up
-
-    with
-
-    you end up
-
-    working in
-
-    an environment
-
-    where
-
-    business people
-
-    are making
-
-    technical decisions
-
-    and pushing
-
-    on you
-
-    things like
-
-    salesforce
-
-    when it's
-
-    not necessarily
-
-    the best fit
-
-    for your project
-
-    etc.
-
-    there are
-
-    many examples
-
-    of working
-
-    in an environment
-
-    where suddenly
-
-    oh we're going
-
-    to be using
-
-    this ERP
-
-    package
-
-    it's going
-
-    to improve
-
-    our productivity
-
-    it's because
-
-    the business
-
-    people made
-
-    the decision
-
-    without necessarily
-
-    consulting the developers
-
-    when it actually
-
-    ends up degrading
-
-    productivity
-
-    because they end up
-
-    having to go
-
-    jump through
-
-    hoops
-
-    with a process
-
-    that might be
-
-    too much
-
-    for them
-
-    in their environment
-
-    so just like
-
-    the Agile manifesto
-
-    pursuit of items
-
-    on the left
-
-    we have found
-
-    the items
-
-    on the right
-
-    to be
-
-    indispensable
-
-    actually it's not
-
-    exactly the same
-
-    but what I'm
-
-    trying to say
-
-    though is
-
-    so with the Agile
-
-    manifesto
-
-    they have one side
-
-    that was more
-
-    important than
-
-    the other side
-
-    so I guess
-
-    that's a similarity
-
-    here
-
-    here they're saying
-
-    okay this is
-
-    very important
-
-    but while we're
-
-    doing this
-
-    we think
-
-    this is
-
-    indispensable
-
-    to succeed
-
-    with this
-
-    so if you want
-
-    to get good
-
-    collaboration
-
-    you want to feel
-
-    like you're a
-
-    partner
-
-    if you want
-
-    to respond
-
-    to change
-
-    well enough
-
-    for the business
-
-    you want to
-
-    make sure
-
-    you're adding
-
-    value
-
-    so on
-
-    and so forth
-
-    is this clear
-
-    so far
-
-    go ahead
-
-    just
-
-    I may have
-
-    mentioned this
-
-    I may have
-
-    space
-
-    I mean
-
-    that's
-
-    not just
-
-    in the style
-
-    of Agile
-
-    I mean
-
-    that is
-
-    an extension
-
-    explicitly
-
-    an extension
-
-    of Agile
-
-    that's a
-
-    very good
-
-    point
-
-    that I
-
-    meant to
-
-    actually mention
-
-    is
-
-    a lot of
-
-    these values
-
-    come from Agile
-
-    the ones that are
-
-    on the left
-
-    so then the ones
-
-    that are on the
-
-    right end
-
-    of the extensions
-
-    for them
-
-    I've established
-
-    that software
-
-    engineering
-
-    has got a bad
-
-    reputation
-
-    however
-
-    unfortunately
-
-    some of the
-
-    reputation
-
-    is undeserved
-
-    or some of it
-
-    may have not
-
-    been intentional
-
-    at least not
-
-    as part of
-
-    the original
-
-    inception
-
-    of what the
-
-    idea of software
-
-    engineering
-
-    should have been
-
-    or what it was
-
-    about
-
-    so I mean
-
-    over time
-
-    collected a lot
-
-    of negative
-
-    associations
-
-    like it's
-
-    strict
-
-    it's got a lot
-
-    of big up front
-
-    design
-
-    heavyweight
-
-    processes
-
-    everything
-
-    must be
-
-    predictable
-
-    measure
-
-    everything
-
-    etc
-
-    in reality
-
-    the Agile
-
-    process
-
-    actually
-
-    is
-
-    a software
-
-    engineering
-
-    process
-
-    it's not
-
-    necessarily
-
-    like a lot
-
-    of developers
-
-    think Agile
-
-    is different
-
-    than software
-
-    engineering
-
-    but it's
-
-    actually
-
-    just an
-
-    evolution
-
-    of it
-
-    so they
-
-    started
-
-    with
-
-    waterfall
-
-    which was
-
-    a very
-
-    linear
-
-    process
-
-    then there
-
-    was
-
-    some of
-
-    the other
-
-    processes
-
-    for example
-
-    our Bowen
-
-    spiral process
-
-    which was
-
-    a little
-
-    incremental
-
-    and there
-
-    was the
-
-    unified
-
-    process
-
-    which was
-
-    also
-
-    incremental
-
-    and then
-
-    there's
-
-    the Agile
-
-    and then
-
-    some of
-
-    the Agile
-
-    processes
-
-    came about
-
-    like the
-
-    Agile
-
-    unified
-
-    process
-
-    which is
-
-    a lot
-
-    lighter
-
-    weight
-
-    than
-
-    unified
-
-    extreme
-
-    programming
-
-    Scrum
-
-    etc
-
-    so all
-
-    of these
-
-    things
-
-    were to
-
-    meet
-
-    the goals
-
-    of
-
-    engineering
-
-    but
-
-    somehow
-
-    people
-
-    when they
-
-    use the
-
-    word
-
-    Agile
-
-    they
-
-    don't
-
-    like
-
-    to
-
-    separate
-
-    the
-
-    two
-
-    they
-
-    say
-
-    oh
-
-    no
-
-    something
-
-    about
-
-    big
-
-    up front
-
-    design
-
-    that's not
-
-    necessarily
-
-    the case
-
-    even the
-
-    whole
-
-    spiral
-
-    model
-
-    one of the
-
-    earlier
-
-    models
-
-    was
-
-    evolutionary
-
-    wasn't
-
-    necessarily
-
-    about
-
-    big
-
-    up front
-
-    design
-
-    and I
-
-    hate to
-
-    do this
-
-    but
-
-    I'm going
-
-    to throw
-
-    a tiny
-
-    defense
-
-    for
-
-    waterfall
-
-    because
-
-    I
-
-    so
-
-    this
-
-    older
-
-    gentlemen
-
-    that
-
-    worked
-
-    in
-
-    water
-
-    for
-
-    many
-
-    years
-
-    and
-
-    have
-
-    applied
-
-    the
-
-    waterfall
-
-    process
-
-    successfully
-
-    there
-
-    not
-
-    successfully
-
-    in the
-
-    sense of
-
-    how good
-
-    he could
-
-    have done
-
-    with
-
-    Agile
-
-    I bet
-
-    he could
-
-    have done
-
-    better
-
-    with
-
-    Agile
-
-    but
-
-    when he
-
-    mentioned
-
-    that
-
-    his teams
-
-    always
-
-    made
-
-    waterfall
-
-    work
-
-    one of the
-
-    key things
-
-    that were
-
-    emphasized
-
-    is that
-
-    even with
-
-    waterfall
-
-    when you
-
-    move
-
-    say
-
-    from the
-
-    design
-
-    phase
-
-    to the
-
-    development
-
-    phase
-
-    if you
-
-    notice
-
-    something
-
-    wrong
-
-    you can
-
-    feedback
-
-    soon
-
-    you don't
-
-    have to
-
-    wait six
-
-    months
-
-    before you
-
-    feedback
-
-    into the
-
-    design
-
-    phase
-
-    and also
-
-    if QA
-
-    discovers
-
-    something
-
-    you can
-
-    go and
-
-    fix it
-
-    in the
-
-    code
-
-    soon
-
-    you don't
-
-    have to
-
-    wait
-
-    for the
-
-    end of
-
-    the
-
-    nine
-
-    months
-
-    later
-
-    to do
-
-    it
-
-    so
-
-    what I'm
-
-    trying to
-
-    say
-
-    is
-
-    when
-
-    applied
-
-    in a
-
-    practical
-
-    manner
-
-    waterfall
-
-    even becomes
-
-    a little
-
-    more flowing
-
-    than
-
-    the
-
-    textbook
-
-    waterfall
-
-    it's
-
-    got feedback
-
-    cycles
-
-    it's not
-
-    necessarily
-
-    as
-
-    tweaked
-
-    as people
-
-    make it
-
-    up
-
-    and
-
-    make it
-
-    like
-
-    a lot
-
-    of the
-
-    strictness
-
-    or maybe
-
-    big
-
-    upfront
-
-    design
-
-    might
-
-    come
-
-    more
-
-    from
-
-    lack
-
-    of
-
-    skill
-
-    in
-
-    software
-
-    engineering
-
-    as opposed
-
-    to
-
-    what
-
-    software
-
-    engineering
-
-    was
-
-    about
-
-    but
-
-    then
-
-    again
-
-    if
-
-    that
-
-    lack
-
-    of
-
-    skill
-
-    is
-
-    happening
-
-    a lot
-
-    that's
-
-    when
-
-    people
-
-    realize
-
-    okay
-
-    maybe
-
-    we don't
-
-    have
-
-    a very
-
-    easy
-
-    to learn
-
-    process
-
-    so
-
-    we should
-
-    come up
-
-    with
-
-    something
-
-    better
-
-    which
-
-    is part
-
-    of the
-
-    reason
-
-    why
-
-    Agile
-
-    kind
-
-    of took
-
-    over
-
-    waterfall
-
-    and
-
-    software
-
-    craftsmanship
-
-    is emerging
-
-    now as
-
-    a new
-
-    model
-
-    for
-
-    learning
-
-    how to
-
-    build
-
-    software
-
-    successfully
-
-    yeah so
-
-    I mean a lot
-
-    of the
-
-    things that
-
-    happen as far
-
-    as negative
-
-    associations
-
-    happen through
-
-    thinking traps
-
-    like
-
-    yeah like
-
-    getting too
-
-    attached to
-
-    words
-
-    instead of
-
-    seeking
-
-    the meaning
-
-    behind
-
-    them
-
-    accepting
-
-    education
-
-    from the
-
-    media
-
-    silver
-
-    bullet
-
-    syndrome
-
-    lack
-
-    and white
-
-    thinking
-
-    so yeah
-
-    software
-
-    engineering
-
-    is
-
-    alive and
-
-    well
-
-    at
-
-    Groupon
-
-    and I
-
-    think
-
-    what you
-
-    mentioned
-
-    about
-
-    eBay
-
-    I mean a
-
-    very similar
-
-    thing to
-
-    what happened
-
-    at Groupon
-
-    where it
-
-    started with
-
-    a very
-
-    lightweight
-
-    Agile
-
-    process
-
-    but then
-
-    as it
-
-    increased
-
-    in complexity
-
-    software
-
-    engineering
-
-    became
-
-    a very
-
-    strong
-
-    need
-
-    eventually
-
-    then
-
-    gradually
-
-    over
-
-    you know
-
-    several months
-
-    it got
-
-    introduced
-
-    and then
-
-    now it
-
-    became a
-
-    very
-
-    I would say
-
-    like a
-
-    day-to-day
-
-    practice
-
-    and move on
-
-    so like
-
-    what are
-
-    some examples
-
-    software
-
-    engineering
-
-    so like
-
-    they have
-
-    tools for
-
-    system
-
-    health
-
-    measurability
-
-    they
-
-    definitely
-
-    do
-
-    usability
-
-    design
-
-    you know
-
-    A-B
-
-    testing
-
-    which is
-
-    one of
-
-    the
-
-    disciplines
-
-    that are
-
-    under the
-
-    umbrella
-
-    of software
-
-    engineering
-
-    release
-
-    engineering
-
-    is very
-
-    big
-
-    performance
-
-    engineering
-
-    is very
-
-    big
-
-    you know
-
-    pre-thought
-
-    like
-
-    sometimes
-
-    big up
-
-    front
-
-    software
-
-    architecture
-
-    is important
-
-    and is
-
-    needed
-
-    once you
-
-    surpass
-
-    a certain
-
-    threshold
-
-    of complexity
-
-    with what
-
-    you're building
-
-    as well
-
-    as the
-
-    requirements
-
-    that you
-
-    have
-
-    so once
-
-    the
-
-    requirements
-
-    get really
-
-    big
-
-    and you
-
-    have a lot
-
-    of interesting
-
-    non-functional
-
-    requirements
-
-    that demand
-
-    a lot of
-
-    scale
-
-    and security
-
-    and etc
-
-    then you're
-
-    going to have
-
-    to worry
-
-    about the
-
-    architecture
-
-    up front
-
-    not necessarily
-
-    just
-
-    not necessarily
-
-    let it
-
-    emerge
-
-    completely
-
-    organically
-
-    however
-
-    a lot
-
-    of architecture
-
-    did emerge
-
-    organically
-
-    but
-
-    some of
-
-    the newer
-
-    things
-
-    that are
-
-    being
-
-    built
-
-    they're
-
-    starting
-
-    to think
-
-    at this
-
-    scale
-
-    right now
-
-    servicing
-
-    millions
-
-    and millions
-
-    of users
-
-    they couldn't
-
-    let something
-
-    start small
-
-    anymore
-
-    they have
-
-    to start
-
-    with
-
-    at least
-
-    some level
-
-    of engineering
-
-    involved
-
-    with building
-
-    a software
-
-    project
-
-    or a
-
-    software
-
-    tool
-
-    verification
-
-    acceptance
-
-    testing
-
-    automated
-
-    testing
-
-    and
-
-    some
-
-    Agile
-
-    practices
-
-    like
-
-    iterative
-
-    development
-
-    velocity
-
-    tracking
-
-    and so on
-
-    and so forth
-
-    but one thing
-
-    that I thought
-
-    was very
-
-    interesting
-
-    about
-
-    Groupon
-
-    compared
-
-    to a lot
-
-    of other
-
-    companies
-
-    is the fact
-
-    that craftsmanship
-
-    is popular
-
-    with Groupon
-
-    engineers
-
-    meaning they're not
-
-    opposed to it
-
-    just because they're
-
-    doing engineering
-
-    doesn't mean
-
-    they're against
-
-    craftsmanship
-
-    so
-
-    about an
-
-    apprenticeship
-
-    program
-
-    this is
-
-    Jacob
-
-    he's
-
-    a recently
-
-    graduated
-
-    apprentice
-
-    that finished
-
-    a six month
-
-    apprenticeship
-
-    he worked with me
-
-    very briefly
-
-    on a small
-
-    project
-
-    and this is
-
-    his mentor
-
-    looks like
-
-    Captain Havoc
-
-    from Tintin
-
-    at least that's
-
-    the joke
-
-    master
-
-    he's
-
-    a very good
-
-    colleague
-
-    of mine
-
-    I learned
-
-    quite a bit
-
-    working with
-
-    Joe Banks
-
-    when him
-
-    and I
-
-    were at
-
-    Optiva
-
-    before we
-
-    joined Groupon
-
-    as well
-
-    I learned a lot
-
-    of things
-
-    great patient
-
-    developer
-
-    Interbranch
-
-    employee swap
-
-    so
-
-    this is kind of
-
-    like an idea
-
-    that got
-
-    popularized
-
-    in the craftsmanship
-
-    world
-
-    called the
-
-    craftsmanship swap
-
-    has anybody
-
-    heard of it?
-
-    so
-
-    Optiva
-
-    and a few
-
-    other consulting
-
-    companies
-
-    like
-
-    8flight
-
-    like
-
-    Edgecase
-
-    Relevance
-
-    a few others
-
-    did this thing
-
-    where in order
-
-    to do
-
-    since they're
-
-    not in
-
-    competitive
-
-    markets
-
-    in order to
-
-    cross-pollinate
-
-    their skills
-
-    they did
-
-    swaps
-
-    so they
-
-    like
-
-    for example
-
-    I did a swap
-
-    with Edgecase
-
-    last year
-
-    that was
-
-    still with Optiva
-
-    where I went
-
-    there for a week
-
-    and then they
-
-    sent a guy
-
-    to Optiva
-
-    for a week
-
-    so I worked
-
-    in Ohio
-
-    with their
-
-    developers
-
-    pair programming
-
-    writing tests
-
-    working on their
-
-    project
-
-    and then they
-
-    did the same
-
-    with their
-
-    developer
-
-    so I ended
-
-    up
-
-    learning things
-
-    from their
-
-    environment
-
-    and what
-
-    they like to
-
-    do
-
-    and what kind
-
-    of tools
-
-    they prefer
-
-    and they
-
-    learn things
-
-    from us
-
-    and that way
-
-    we both
-
-    exchange knowledge
-
-    we're able
-
-    to improve
-
-    each other
-
-    I mean
-
-    we're able
-
-    to improve
-
-    our skills
-
-    internal skills
-
-    by looking
-
-    at what
-
-    another company
-
-    is doing
-
-    so
-
-    Groupon
-
-    is at a
-
-    scale now
-
-    where they
-
-    can do
-
-    the same
-
-    thing
-
-    between
-
-    their
-
-    branches
-
-    so I mean
-
-    the key
-
-    branches
-
-    in the US
-
-    are the
-
-    Chicago
-
-    branch
-
-    and the
-
-    Palo Alto
-
-    branch
-
-    they got a
-
-    branch
-
-    in Denver
-
-    and I think
-
-    they're starting
-
-    one in Seattle
-
-    there's a few
-
-    others too
-
-    but
-
-    they've had
-
-    us do
-
-    a one week
-
-    swap
-
-    also
-
-    early this year
-
-    me
-
-    everybody
-
-    on my
-
-    team
-
-    with Palo Alto
-
-    where
-
-    we went there
-
-    and hung up
-
-    for a week
-
-    and saw
-
-    what they're
-
-    doing
-
-    also
-
-    they did
-
-    another
-
-    kind of swap
-
-    where
-
-    they had
-
-    one of our
-
-    developers
-
-    at a time
-
-    go there
-
-    for a week
-
-    and work
-
-    on
-
-    a project
-
-    that was
-
-    integrating
-
-    with our
-
-    project
-
-    so not only
-
-    did it help
-
-    in terms of
-
-    skills
-
-    but also
-
-    in terms
-
-    of
-
-    better
-
-    collaboration
-
-    between
-
-    teams
-
-    so the
-
-    idea
-
-    is
-
-    definitely
-
-    plausible
-
-    even at
-
-    a non-consulting
-
-    company
-
-    pair
-
-    programming
-
-    is very
-
-    common
-
-    in a
-
-    coupon
-
-    it's not
-
-    enforced
-
-    often
-
-    people
-
-    will enforce
-
-    pair
-
-    programming
-
-    when it's
-
-    a new
-
-    skill
-
-    for a
-
-    team
-
-    once a
-
-    team
-
-    has
-
-    become
-
-    quite
-
-    comfortable
-
-    with it
-
-    the team
-
-    can decide
-
-    on their
-
-    own
-
-    what they
-
-    want
-
-    to do
-
-    if they
-
-    want
-
-    to
-
-    pair
-
-    program
-
-    or
-
-    not
-
-    or
-
-    if they
-
-    want
-
-    to
-
-    pair
-
-    program
-
-    40%
-
-    of the
-
-    time
-
-    or
-
-    80%
-
-    or
-
-    whatever
-
-    so
-
-    yeah
-
-    who here
-
-    has done
-
-    pair
-
-    programming
-
-    okay
-
-    half the room
-
-    pair
-
-    yeah
-
-    yeah
-
-    yeah
-
-    yeah
-
-    yeah
-
-    code
-
-    reviews
-
-    so
-
-    sometimes
-
-    we do
-
-    code
-
-    reviews
-
-    even
-
-    if we
-
-    do
-
-    pair
-
-    programming
-
-    because
-
-    you end up
-
-    with different
-
-    perspective
-
-    like
-
-    might do
-
-    a code
-
-    review
-
-    with
-
-    performance
-
-    team
-
-    or security
-
-    people
-
-    which
-
-    would know
-
-    more
-
-    about
-
-    these
-
-    things
-
-    but
-
-    yeah
-
-    if I
-
-    did
-
-    not
-
-    pair
-
-    with
-
-    someone
-
-    I
-
-    would
-
-    definitely
-
-    do
-
-    a
-
-    clear
-
-    review
-
-    yeah
-
-    pair
-
-    programming
-
-    is
-
-    very
-
-    beneficial
-
-    though
-
-    in the
-
-    craftsmanship
-
-    world
-
-    and it
-
-    came from
-
-    extreme
-
-    programming
-
-    one of the
-
-    Agile
-
-    processes
-
-    it's very
-
-    beneficial
-
-    for two
-
-    things
-
-    either
-
-    mentoring
-
-    mentoring
-
-    for a
-
-    junior
-
-    programmer
-
-    so
-
-    if you
-
-    got a new
-
-    programmer
-
-    on the
-
-    team
-
-    he's
-
-    not
-
-    very
-
-    familiar
-
-    with
-
-    the
-
-    tools
-
-    not
-
-    very
-
-    familiar
-
-    with
-
-    the
-
-    software
-
-    project
-
-    you
-
-    can
-
-    have
-
-    him
-
-    hide
-
-    in
-
-    a
-
-    cave
-
-    for
-
-    a
-
-    month
-
-    and
-
-    learn
-
-    study
-
-    the
-
-    code
-
-    and
-
-    figure
-
-    it
-
-    out
-
-    on
-
-    their
-
-    own
-
-    or
-
-    you
-
-    can
-
-    have
-
-    them
-
-    be
-
-    doing
-
-    good
-
-    productive
-
-    work
-
-    and
-
-    pair
-
-    programming
-
-    with
-
-    other
-
-    people
-
-    and
-
-    helping
-
-    them
-
-    solve
-
-    problems
-
-    while
-
-    they're
-
-    also
-
-    gradually
-
-    learning
-
-    the
-
-    code
-
-    base
-
-    so
-
-    that's
-
-    one
-
-    benefit to
-
-    it
-
-    don't
-
-    need
-
-    mentoring
-
-    then
-
-    the
-
-    purpose
-
-    of
-
-    the
-
-    change
-
-    changes
-
-    so
-
-    a lot
-
-    of
-
-    the
-
-    time
-
-    when
-
-    you're
-
-    writing
-
-    code
-
-    it's
-
-    not
-
-    about
-
-    it's
-
-    not about
-
-    writing
-
-    the code
-
-    it's
-
-    about
-
-    solving
-
-    problems
-
-    and
-
-    a
-
-    problem
-
-    can
-
-    be
-
-    solved
-
-    in
-
-    many
-
-    ways
-
-    any
-
-    software
-
-    problem
-
-    I can
-
-    write
-
-    the
-
-    code
-
-    with
-
-    one
-
-    class
-
-    I can
-
-    write
-
-    it
-
-    with
-
-    two
-
-    three
-
-    classes
-
-    I can
-
-    use
-
-    a
-
-    library
-
-    I can
-
-    integrate
-
-    with
-
-    a
-
-    web
-
-    service
-
-    and
-
-    there
-
-    are
-
-    pros
-
-    and
-
-    cons
-
-    to
-
-    each
-
-    approach
-
-    often
-
-    work
-
-    that
-
-    come
-
-    out
-
-    of
-
-    the
-
-    thought
-
-    of
-
-    one
-
-    programmer
-
-    is
-
-    not
-
-    as
-
-    a
-
-    possible
-
-    solutions
-
-    as
-
-    work
-
-    that
-
-    came
-
-    from
-
-    two
-
-    programmers
-
-    so
-
-    programmers
-
-    would have
-
-    a lot
-
-    more
-
-    variety
-
-    in
-
-    their
-
-    perspectives
-
-    so
-
-    they
-
-    can
-
-    come
-
-    up
-
-    with
-
-    a lot
-
-    more
-
-    interesting
-
-    solutions
-
-    than
-
-    a
-
-    solution
-
-    of
-
-    one
-
-    person
-
-    it's
-
-    just
-
-    the
-
-    idea
-
-    of
-
-    synergy
-
-    you know
-
-    like
-
-    one plus
-
-    one
-
-    is
-
-    not
-
-    two
-
-    one
-
-    plus
-
-    one
-
-    is
-
-    a
-
-    lot
-
-    more
-
-    because
-
-    you
-
-    get
-
-    a
-
-    lot
-
-    of
-
-    interesting
-
-    creativity
-
-    flowing
-
-    when
-
-    two
-
-    people
-
-    are
-
-    discussing
-
-    a
-
-    problem
-
-    so
-
-    given
-
-    that
-
-    not a lot
-
-    of
-
-    code
-
-    time
-
-    is spent
-
-    on just
-
-    typing
-
-    especially
-
-    productive
-
-    languages
-
-    like
-
-    Ruby
-
-    that
-
-    doesn't
-
-    need you
-
-    to type
-
-    that much
-
-    code
-
-    anyways
-
-    to
-
-    implement
-
-    a
-
-    feature
-
-    you might
-
-    spend
-
-    two or
-
-    three
-
-    days
-
-    on
-
-    the
-
-    feature
-
-    type
-
-    only
-
-    like
-
-    you
-
-    can
-
-    implement
-
-    the
-
-    entire
-
-    feature
-
-    in
-
-    Ruby
-
-    maybe
-
-    150
-
-    lines
-
-    maybe
-
-    100
-
-    lines
-
-    maybe
-
-    even
-
-    less
-
-    I mean
-
-    I can
-
-    type
-
-    100
-
-    words
-
-    a minute
-
-    100
-
-    lines
-
-    is
-
-    like
-
-    whatever
-
-    like
-
-    15
-
-    minutes
-
-    I don't
-
-    know
-
-    what I'm
-
-    trying to
-
-    say
-
-    is
-
-    that's
-
-    why
-
-    pair
-
-    programming
-
-    is
-
-    encouraged
-
-    because
-
-    it ends
-
-    up
-
-    you end
-
-    up
-
-    with
-
-    a lot
-
-    more
-
-    creative
-
-    solutions
-
-    and
-
-    better
-
-    designs
-
-    for
-
-    the
-
-    code
-
-    as
-
-    well
-
-    as
-
-    more
-
-    maintainable
-
-    designs
-
-    because
-
-    I might
-
-    have
-
-    my
-
-    own
-
-    induced
-
-    yncrasies
-
-    for
-
-    how
-
-    I
-
-    write
-
-    code
-
-    but
-
-    then
-
-    when
-
-    I
-
-    share
-
-    it
-
-    with
-
-    somebody
-
-    else
-
-    they're
-
-    like
-
-    this
-
-    is
-
-    weird
-
-    and
-
-    so
-
-    there's
-
-    a lot
-
-    less
-
-    chance
-
-    of me
-
-    writing
-
-    code
-
-    that's
-
-    harder
-
-    for
-
-    others
-
-    to
-
-    maintain
-
-    so
-
-    yeah
-
-    that's
-
-    one
-
-    of the
-
-    reasons
-
-    why
-
-    programming
-
-    is
-
-    encouraged
-
-    so
-
-    there's
-
-    a big
-
-    focus
-
-    on
-
-    learning
-
-    including
-
-    providing
-
-    internal
-
-    training
-
-    courses
-
-    for
-
-    employees
-
-    like
-
-    training
-
-    on
-
-    TDD
-
-    Ruby
-
-    and
-
-    Rails
-
-    as
-
-    well
-
-    as
-
-    the
-
-    code
-
-    base
-
-    Noel
-
-    Rappin
-
-    is in charge
-
-    of conducting
-
-    those
-
-    trainings
-
-    every once
-
-    in a while
-
-    he grabs
-
-    another
-
-    developer
-
-    to help
-
-    him
-
-    yeah
-
-    he's
-
-    an author
-
-    of a book
-
-    called
-
-    Professional
-
-    Ruby on
-
-    Rails
-
-    he's got
-
-    very
-
-    a lot
-
-    like
-
-    he also
-
-    wrote
-
-    a new
-
-    book
-
-    called
-
-    Test Prescriptions
-
-    I think
-
-    Rails
-
-    Test Prescriptions
-
-    or something
-
-    like that
-
-    I like
-
-    one thing
-
-    I like
-
-    a lot
-
-    about
-
-    working
-
-    with Noel
-
-    or interacting
-
-    with him
-
-    is he has
-
-    a very
-
-    very wide
-
-    perspective
-
-    on
-
-    the different
-
-    teaching techniques
-
-    and it might
-
-    be related
-
-    to the fact
-
-    that he's
-
-    got a PhD
-
-    which I think
-
-    would help
-
-    with education
-
-    and like
-
-    teaching
-
-    but he knows
-
-    that for example
-
-    you could learn
-
-    Ruby from
-
-    the bottom
-
-    up
-
-    by learning
-
-    operators
-
-    and if statements
-
-    that kind of stuff
-
-    and then build up
-
-    to object-oriented
-
-    programming
-
-    or
-
-    if you're already
-
-    an object-oriented
-
-    programmer
-
-    you might want
-
-    to start
-
-    as an OO
-
-    programmer
-
-    with the OO
-
-    constructs first
-
-    and then dig down
-
-    into the details
-
-    of the language
-
-    so
-
-    yeah
-
-    it's kind of
-
-    interesting
-
-    to have an instructor
-
-    that knows
-
-    who's flexible
-
-    enough to adjust
-
-    for trainees
-
-    based on
-
-    their background
-
-    so yeah
-
-    so there are
-
-    a few masters
-
-    also at Rupont
-
-    which is very cool
-
-    so Michael
-
-    Feathers
-
-    who worked
-
-    with Uncle Bob
-
-    at Object Mentor
-
-    and authored
-
-    Working Effectively
-
-    with Legacy Code
-
-    a great book
-
-    on how to
-
-    work with
-
-    legacy
-
-    old legacy
-
-    codebases
-
-    he's working
-
-    in Groupon
-
-    right now
-
-    and then
-
-    Aaron Badrow
-
-    I recently joined
-
-    he's written
-
-    a book
-
-    on Clojure
-
-    and contributed
-
-    to the Clojure
-
-    programming language
-
-    has anybody
-
-    heard of Clojure?
-
-    it's a new
-
-    Lisp-like language
-
-    that's built
-
-    on top of the JVM
-
-    that's given a lot
-
-    of popularity
-
-    recently
-
-    as a practical
-
-    functional
-
-    programming language
-
-    especially
-
-    for distributed
-
-    systems
-
-    and
-
-    parallelized
-
-    processing
-
-    distributed
-
-    computing
-
-    fortunately
-
-    so I don't
-
-    work with
-
-    Aaron Mesmer
-
-    directly
-
-    but fortunately
-
-    he sits almost
-
-    right next to me
-
-    we're in an
-
-    open
-
-    Agile-like
-
-    environment
-
-    so I hear him
-
-    talk all the time
-
-    like to other
-
-    developers
-
-    I learn a lot
-
-    just overhearing
-
-    writing codes
-
-    that's kind of cool
-
-    so yeah
-
-    I encourage him
-
-    to present at conferences
-
-    I recently
-
-    presented at RailsConf
-
-    in 2012
-
-    I gave a talk
-
-    called
-
-    Militages Patterns
-
-    so again
-
-    this leads back
-
-    into what I
-
-    like that
-
-    software
-
-    craftsmanship
-
-    manifesto
-
-    the idea
-
-    of you want
-
-    to work
-
-    like try to
-
-    foster a community
-
-    of professionals
-
-    and interact
-
-    with the community
-
-    not just
-
-    your work
-
-    environment
-
-    in order to
-
-    better your skills
-
-    so one way
-
-    of doing that
-
-    is to present
-
-    at conferences
-
-    and I mean
-
-    of course
-
-    often
-
-    how this starts
-
-    is I end up
-
-    thinking of an idea
-
-    and I present it
-
-    at
-
-    we have a weekly
-
-    meeting
-
-    in Groupon
-
-    called
-
-    eFest
-
-    every Tuesday
-
-    that's open
-
-    to the public
-
-    where different
-
-    Groupon
-
-    or actually
-
-    anybody
-
-    can go there
-
-    and give a
-
-    presentation
-
-    it's a much
-
-    smaller environment
-
-    than a conference
-
-    so it's a very
-
-    good training
-
-    ground
-
-    so I often
-
-    start by giving
-
-    a talk there
-
-    or giving a talk
-
-    at a meeting
-
-    like a user group
-
-    kind of like this one
-
-    then eventually
-
-    once the talk
-
-    is ironed out
-
-    I give it
-
-    at a conference
-
-    that's one way
-
-    of building up
-
-    presentation skills
-
-    I think they're also
-
-    it's limited to 80 people
-
-    and it fills up
-
-    every single
-
-    future
-
-    yeah
-
-    yeah that helps
-
-    pretty good food
-
-    very good food
-
-    barbecue chicken
-
-    pork
-
-    so yeah
-
-    we hosting conferences
-
-    and meetups
-
-    so yeah
-
-    weekly eFest
-
-    weekly brown bag
-
-    that one's an
-
-    internal Groupon
-
-    weekly event
-
-    that one's only
-
-    Groupon only
-
-    it's also presentations
-
-    but more about
-
-    topics related
-
-    to the Groupon
-
-    codebase
-
-    specifically
-
-    and Groupon
-
-    problems
-
-    not necessarily
-
-    public topics
-
-    whereas the
-
-    GeekFest for example
-
-    which is every Tuesday
-
-    like today
-
-    the topic was on
-
-    actually Aaron Bedra
-
-    presented today
-
-    he gave a talk
-
-    on proving
-
-    correctness
-
-    of software
-
-    and how
-
-    test driven development
-
-    doesn't prove
-
-    correctness
-
-    it just proves
-
-    that whatever
-
-    specs
-
-    or whatever
-
-    test you wrote
-
-    the software
-
-    will meet
-
-    as far as
-
-    the cases
-
-    you specified
-
-    and he said
-
-    he talked about
-
-    a cool project
-
-    where
-
-    it was a site
-
-    that was servicing
-
-    millions of people
-
-    and they would
-
-    discover bugs
-
-    I think it was
-
-    a computer game
-
-    and they would
-
-    discover bugs
-
-    because of the
-
-    random usage
-
-    of people
-
-    that
-
-    you wouldn't
-
-    discover on your
-
-    own in a million
-
-    years
-
-    just writing
-
-    writing tests
-
-    in a TDD
-
-    fashion
-
-    so like TDD
-
-    was not sufficient
-
-    for that project
-
-    even TDD
-
-    which helps a lot
-
-    in ironing out
-
-    preventing bugs
-
-    was not sufficient
-
-    so he gave a talk
-
-    on how they built
-
-    an automated system
-
-    that would collect
-
-    failures
-
-    from different users
-
-    and feed them
-
-    into some sort
-
-    of a functional
-
-    computing thing
-
-    and then
-
-    it would
-
-    yeah
-
-    it was quite
-
-    a complex talk
-
-    actually
-
-    you guys
-
-    do this
-
-    every Tuesday
-
-    because it's
-
-    open to the public
-
-    anyone
-
-    interested in this
-
-    yeah
-
-    pretty much
-
-    what time does it
-
-    start
-
-    12 o'clock
-
-    12 o'clock
-
-    for an hour
-
-    it was a very
-
-    interesting talk
-
-    like he talked
-
-    about things
-
-    he built
-
-    with a
-
-    enclosure
-
-    to solve the
-
-    problem
-
-    one other thing
-
-    they do
-
-    is host
-
-    a conference
-
-    that's also
-
-    internal to
-
-    Groupon
-
-    called
-
-    Groupon
-
-    University
-
-    it happens
-
-    annually
-
-    it's basically
-
-    kind of like
-
-    the software
-
-    craftsmanship
-
-    or the
-
-    Agile conference
-
-    except it's
-
-    all Groupon
-
-    employees
-
-    presenting ideas
-
-    to other
-
-    Groupon
-
-    employees
-
-    so
-
-    interesting
-
-    thing
-
-    about it
-
-    is if you
-
-    have a really
-
-    cool idea
-
-    and you want
-
-    to make it
-
-    spread in the
-
-    company
-
-    that's like
-
-    one of the best
-
-    avenues to do
-
-    in it
-
-    I mean any
-
-    of those avenues
-
-    would be good
-
-    but that was
-
-    pretty good
-
-    because often
-
-    people end up
-
-    spending a lot
-
-    of time
-
-    discussing the
-
-    ideas
-
-    that were
-
-    presented
-
-    I already
-
-    talked about
-
-    that
-
-    these are the
-
-    titles of the
-
-    books
-
-    so
-
-    software
-
-    apprenticeship
-
-    at Groupon
-
-    so
-
-    determining
-
-    which people
-
-    to accept
-
-    as software
-
-    apprentices
-
-    we use
-
-    some principles
-
-    that actually
-
-    Altiva came
-
-    up with
-
-    in the past
-
-    before they
-
-    got acquired
-
-    like Groupon
-
-    like potential
-
-    over credential
-
-    so one of the
-
-    issues with
-
-    apprentices
-
-    is you're going
-
-    to take
-
-    somebody from
-
-    scratch
-
-    how do you
-
-    know who's
-
-    good from
-
-    who's not
-
-    good
-
-    like when
-
-    you're
-
-    interviewing
-
-    people
-
-    they have
-
-    a resume
-
-    at least
-
-    their resume
-
-    will give
-
-    you a little
-
-    bit of
-
-    detail
-
-    about their
-
-    experiences
-
-    at least
-
-    you have
-
-    a starting
-
-    point
-
-    but with
-
-    a person
-
-    that's
-
-    a blank slate
-
-    the only
-
-    way to
-
-    judge them
-
-    is to
-
-    interact
-
-    with them
-
-    have a
-
-    conversation
-
-    show them
-
-    some code
-
-    do a little
-
-    bit of
-
-    pair programming
-
-    with them
-
-    and then
-
-    figure out
-
-    if they
-
-    have
-
-    potential
-
-    and you
-
-    would care
-
-    a lot
-
-    more about
-
-    that
-
-    over
-
-    credentials
-
-    so are
-
-    they
-
-    willing
-
-    to learn
-
-    are they
-
-    asking
-
-    the right
-
-    questions
-
-    do they
-
-    seem
-
-    highly
-
-    motivated
-
-    internally
-
-    motivated
-
-    so then
-
-    you end
-
-    up
-
-    deciding
-
-    based on
-
-    potential
-
-    whether
-
-    you want
-
-    to hire
-
-    the person
-
-    not
-
-    necessarily
-
-    based on
-
-    potential
-
-    the program
-
-    is six
-
-    months
-
-    with three
-
-    milestones
-
-    every
-
-    milestone
-
-    the
-
-    apprentice
-
-    has to
-
-    give a
-
-    presentation
-
-    on a
-
-    personal
-
-    project
-
-    that he'll
-
-    be building
-
-    throughout
-
-    the entire
-
-    apprenticeship
-
-    so
-
-    the good
-
-    thing
-
-    about
-
-    having
-
-    three
-
-    milestones
-
-    is
-
-    it'll
-
-    enable
-
-    the
-
-    apprentice
-
-    to get
-
-    feedback
-
-    from his
-
-    mentor
-
-    as well
-
-    as other
-
-    senior
-
-    employees
-
-    senior
-
-    developers
-
-    of the
-
-    company
-
-    and then
-
-    correct
-
-    the course
-
-    of this
-
-    project
-
-    if it
-
-    wasn't
-
-    going
-
-    in a
-
-    direction
-
-    that
-
-    was
-
-    interesting
-
-    or
-
-    useful
-
-    that
-
-    actually
-
-    happened
-
-    with
-
-    Jacob
-
-    that
-
-    you guys
-
-    saw
-
-    in the
-
-    previous
-
-    photo
-
-    in the
-
-    first two
-
-    milestones
-
-    he had
-
-    quite a
-
-    bit of
-
-    feedback
-
-    on what
-
-    was missing
-
-    in his
-
-    project
-
-    his project
-
-    almost got
-
-    risky
-
-    where it
-
-    was almost
-
-    not going to
-
-    meet the
-
-    quality
-
-    or the
-
-    standards
-
-    for what
-
-    an apprentice
-
-    should deliver
-
-    at the end
-
-    but
-
-    he ended
-
-    up
-
-    course
-
-    correcting
-
-    quite a
-
-    bit
-
-    and by
-
-    the third
-
-    milestone
-
-    he actually
-
-    blew us
-
-    away with
-
-    the presentation
-
-    he gave
-
-    it was a
-
-    very interesting
-
-    project
-
-    he did
-
-    something
-
-    related to
-
-    static
-
-    analysis
-
-    on
-
-    Ruby
-
-    code
-
-    in order
-
-    to figure
-
-    out
-
-    the likelihood
-
-    for having
-
-    bugs
-
-    like which
-
-    areas
-
-    in the
-
-    code
-
-    might have
-
-    the most
-
-    bugs
-
-    or most
-
-    risk
-
-    for having
-
-    a bug
-
-    and it
-
-    would shoot
-
-    an email
-
-    automatically
-
-    to the
-
-    developers
-
-    that have
-
-    committed
-
-    that code
-
-    to get
-
-    information
-
-    about what
-
-    potential
-
-    bugs or what
-
-    areas of
-
-    code could
-
-    be improved
-
-    so the
-
-    mentor oversees
-
-    the apprentice
-
-    the entire
-
-    period
-
-    however that
-
-    doesn't mean
-
-    that the
-
-    apprentice has
-
-    to work
-
-    with the
-
-    mentor
-
-    on his
-
-    team
-
-    the entire
-
-    period
-
-    so Jacob
-
-    worked with
-
-    me for a
-
-    little while
-
-    and worked
-
-    with a few
-
-    other people
-
-    a few
-
-    other teams
-
-    for a
-
-    while
-
-    and he
-
-    spent a
-
-    good chunk
-
-    of time
-
-    with his
-
-    mentor
-
-    as well
-
-    but the
-
-    mentor
-
-    would be
-
-    overseeing
-
-    him the
-
-    entire time
-
-    regardless
-
-    so are you
-
-    saying that
-
-    he's working
-
-    both for
-
-    at the same
-
-    time
-
-    he's working
-
-    with a team
-
-    on their
-
-    core area
-
-    functionality
-
-    plus he has
-
-    an ongoing
-
-    personal project
-
-    and he has
-
-    to sort of
-
-    balance his
-
-    time between
-
-    those two
-
-    things
-
-    yes
-
-    what was
-
-    the expected
-
-    kind of
-
-    next between
-
-    those two
-
-    is that
-
-    50-50
-
-    or is it
-
-    20%
-
-    personal
-
-    50-50
-
-    sounds reasonable
-
-    yeah
-
-    I remember
-
-    there was a guy
-
-    called John
-
-    invented
-
-    apprenticeship
-
-    at Optiva
-
-    before
-
-    and he
-
-    had to work
-
-    a lot of extra
-
-    hours for his
-
-    personal project
-
-    because he was
-
-    working on real
-
-    projects with
-
-    Optiva and
-
-    Z-Optiva
-
-    but at the
-
-    same time
-
-    it's like a free
-
-    opportunity to
-
-    learn super
-
-    fast
-
-    in a real
-
-    environment
-
-    so that's a
-
-    balancing the
-
-    cost of how
-
-    much work he
-
-    has to put
-
-    into it
-
-    as well as
-
-    you know
-
-    if somebody
-
-    is new
-
-    it doesn't
-
-    hurt to work
-
-    harder than
-
-    usual
-
-    yeah I mean
-
-    Jacob ended
-
-    up graduating
-
-    and he
-
-    ended up
-
-    in his
-
-    dream location
-
-    he moved to
-
-    Denver
-
-    Denver office
-
-    he's a big
-
-    fan of
-
-    snowboarding
-
-    I believe
-
-    where it's
-
-    like snow sports
-
-    so he was
-
-    very happy
-
-    to do that
-
-    so yeah
-
-    worked out
-
-    for him
-
-    is apprenticeship
-
-    tied to
-
-    like an
-
-    employee contract
-
-    period also
-
-    or is this
-
-    sort of
-
-    unrelated to
-
-    the sort of
-
-    employment
-
-    relationship
-
-    as far as I
-
-    know it is
-
-    yeah
-
-    so if
-
-    if you don't
-
-    pass the
-
-    six month
-
-    period
-
-    your contract
-
-    has ended
-
-    yeah I think
-
-    I don't know
-
-    the details
-
-    if you have
-
-    six months
-
-    you either
-
-    get an offer
-
-    letter to
-
-    join as
-
-    a full-time
-
-    employee
-
-    or not
-
-    right
-
-    there's a
-
-    couple
-
-    things about
-
-    the friendship
-
-    program
-
-    that are
-
-    a little
-
-    bit different
-
-    one is
-
-    you can stipend
-
-    not full
-
-    salary
-
-    two is
-
-    you have a
-
-    partner
-
-    and three
-
-    you don't get
-
-    that
-
-    you're
-
-    actually
-
-    you're not
-
-    doing that
-
-    a few times
-
-    people have
-
-    done well
-
-    enough
-
-    and they've
-
-    gotten
-
-    offered
-
-    more
-
-    to take
-
-    more
-
-    well
-
-    thanks
-
-    so it's
-
-    for companies
-
-    that are
-
-    trying to find
-
-    people
-
-    and camps
-
-    are being
-
-    very,
-
-    very competitive
-
-    offers for
-
-    $80-$90
-
-    for first grad
-
-    it's a great
-
-    way to get
-
-    a bunch of
-
-    real experience
-
-    but not
-
-    software experience
-
-    to come in
-
-    and learn
-
-    software
-
-    so I recommend
-
-    for everybody
-
-    who doesn't have
-
-    a function
-
-    program
-
-    if you want
-
-    to take
-
-    it
-
-    does
-
-    definitely
-
-    open
-
-    it's
-
-    possible
-
-    for you
-
-    to go
-
-    yeah
-
-    apprentice
-
-    here
-
-    programs
-
-    between people
-
-    on different
-
-    teams
-
-    spend about
-
-    there you go
-
-    15%
-
-    of their time
-
-    on the
-
-    personal project
-
-    and
-
-    and
-
-    and
-
-    then
-
-    it
-
-    presents
-
-    it to
-
-    developers
-
-    doing the
-
-    milestones
-
-    and
-
-    that's a wrap
-
-    any
-
-    questions
-
-    comments
-
-    I was thinking
-
-    about this
-
-    there's so much
-
-    good stuff
-
-    in there
-
-    I was thinking
-
-    though
-
-    that I don't
-
-    see myself
-
-    as a software
-
-    engineer
-
-    or a craftsman
-
-    or an angel
-
-    or a waterfall
-
-    or a barrel
-
-    jumper
-
-    or anything
-
-    like that
-
-    and I think
-
-    I was thinking
-
-    about this
-
-    I think it's
-
-    because
-
-    we're really
-
-    not any
-
-    of those
-
-    and yet
-
-    we're all
-
-    of those
-
-    if you think
-
-    about engineering
-
-    as a tool
-
-    set
-
-    that we're
-
-    given
-
-    we have
-
-    some great
-
-    tools
-
-    and then
-
-    we take
-
-    as a craftsman
-
-    we take
-
-    those tools
-
-    and use
-
-    them
-
-    the artist
-
-    can take
-
-    the same
-
-    brush
-
-    that I can
-
-    take
-
-    and create
-
-    a masterpiece
-
-    that I can
-
-    make
-
-    so
-
-    it's a matter
-
-    of that
-
-    so
-
-    I think
-
-    what you're
-
-    talking about
-
-    at least
-
-    what I'm
-
-    getting out
-
-    of it
-
-    is a
-
-    process
-
-    that we
-
-    come
-
-    we have
-
-    these tools
-
-    where
-
-    we're
-
-    becoming
-
-    as an apprentice
-
-    or a journey
-
-    or just
-
-    kind of
-
-    working our
-
-    way through
-
-    here
-
-    and that's
-
-    what it's
-
-    all about
-
-    because I'm
-
-    looking back
-
-    now
-
-    and although
-
-    I do apply
-
-    all of these
-
-    principles
-
-    to some degree
-
-    or another
-
-    I don't
-
-    consciously
-
-    do it
-
-    and I guess
-
-    that probably
-
-    is the part
-
-    that comes
-
-    as we do
-
-    it enough
-
-    that it becomes
-
-    so
-
-    if I'm
-
-    given a project
-
-    intuitively
-
-    I may not
-
-    understand everything
-
-    about it
-
-    but I kind of
-
-    have it all
-
-    pictured out
-
-    on a well
-
-    this is about
-
-    what it's going
-
-    to look like
-
-    oh my goodness
-
-    these are the
-
-    things we've got
-
-    to watch out for
-
-    and then
-
-    like you said
-
-    apply your ability
-
-    to be a crass
-
-    person
-
-    and to
-
-    be creative
-
-    to take pride
-
-    so that's
-
-    what I'm saying
-
-    I don't see
-
-    myself as one
-
-    or the other
-
-    but kind of
-
-    I like your
-
-    description
-
-    of calling
-
-    like saying
-
-    becoming
-
-    I like that
-
-    word
-
-    it's
-
-    I think
-
-    the reason
-
-    why a company
-
-    might want to
-
-    invest in
-
-    craftsmanship
-
-    is to ensure
-
-    that developers
-
-    are always
-
-    continuing
-
-    to improve
-
-    or always
-
-    becoming
-
-    better
-
-    not necessarily
-
-    sticking
-
-    to one
-
-    comfortable
-
-    area
-
-    of software
-
-    development
-
-    that they
-
-    like
-
-    I used to be
-
-    very uncomfortable
-
-    say
-
-    very comfortable
-
-    with back-end
-
-    development
-
-    I did not do
-
-    fun and development
-
-    well
-
-    like CSS
-
-    stuff
-
-    I just learned
-
-    it
-
-    I mean
-
-    I've been
-
-    programming
-
-    for 10 years
-
-    like I just
-
-    learned CSS
-
-    a proper
-
-    like really good
-
-    fun and CSS
-
-    with taking
-
-    designs from
-
-    graphic designers
-
-    and turning them
-
-    into websites
-
-    three months ago
-
-    because I
-
-    I worked
-
-    on a team
-
-    on a project
-
-    where they
-
-    really needed
-
-    more fun
-
-    and people
-
-    and at the
-
-    time we were
-
-    in a time
-
-    crunch
-
-    and I ended
-
-    up having to
-
-    take on that
-
-    job to help
-
-    the team
-
-    so it's
-
-    just a way
-
-    to ensure
-
-    that people
-
-    are always
-
-    continuously
-
-    learning
-
-    acquiring new
-
-    skills
-
-    and improving
-
-    as opposed
-
-    to staying
-
-    at one level
-
-    any other
-
-    questions
-
-    I guess
-
-    the way
-
-    that I
-
-    look at
-
-    it
-
-    what I'm
-
-    seeing
-
-    based on
-
-    your
-
-    presentation
-
-    is that
-
-    an engineer
-
-    is not
-
-    necessarily
-
-    a craftsman
-
-    and a craftsman
-
-    is not
-
-    necessarily
-
-    an engineer
-
-    I think
-
-    the way
-
-    that that
-
-    breaks out
-
-    given
-
-    the way
-
-    you were
-
-    describing
-
-    it
-
-    is that
-
-    the engineer
-
-    is not
-
-    necessarily
-
-    the guy
-
-    that
-
-    can go
-
-    in
-
-    and make
-
-    the most
-
-    elegant
-
-    code
-
-    or make
-
-    the most
-
-    the best
-
-    architectural
-
-    decisions
-
-    for the
-
-    application
-
-    that's there
-
-    I'm talking
-
-    more about
-
-    the approach
-
-    of how you
-
-    become an
-
-    experienced
-
-    software
-
-    developer
-
-    so one
-
-    of the things
-
-    I highlighted
-
-    in the beginning
-
-    to summarize
-
-    so I
-
-    defined the
-
-    two
-
-    and then I
-
-    highlighted
-
-    the common
-
-    goal
-
-    between the
-
-    two
-
-    so then
-
-    I was
-
-    talking
-
-    about
-
-    to reach
-
-    that
-
-    common
-
-    goal
-
-    very
-
-    experienced
-
-    software
-
-    engineers
-
-    can
-
-    hit that
-
-    goal
-
-    quite well
-
-    they can
-
-    build quality
-
-    software
-
-    economically
-
-    with good
-
-    performance
-
-    and stuff
-
-    good security
-
-    etc
-
-    I guess
-
-    what I'm
-
-    talking about
-
-    though
-
-    is in order
-
-    to reach
-
-    that goal
-
-    it seems
-
-    like the
-
-    software
-
-    craftsmanship
-
-    perhaps
-
-    will get
-
-    you there
-
-    a lot
-
-    faster
-
-    than
-
-    getting
-
-    formal
-
-    education
-
-    in software
-
-    engineering
-
-    or reading
-
-    all the
-
-    software
-
-    engineering
-
-    books
-
-    learning
-
-    things
-
-    that
-
-    way
-
-    because
-
-    then you
-
-    gradually
-
-    learn
-
-    skills
-
-    with people
-
-    that are
-
-    actually
-
-    experienced
-
-    in doing
-
-    it on the
-
-    field
-
-    so you're
-
-    not so
-
-    focused on
-
-    the separation
-
-    of roles
-
-    you're more
-
-    focused on
-
-    how we
-
-    get to the end
-
-    role
-
-    right
-
-    right
-
-    yeah
-
-    so like
-
-    in a way
-
-    I'm kind of
-
-    actually trying
-
-    to align
-
-    the two
-
-    I'm sure
-
-    that there
-
-    is overlap
-
-    or that they
-
-    can meet
-
-    they're not
-
-    necessarily
-
-    in contradiction
-
-    any other
-
-    questions
-
-    all right
-
-    thank you
-
-    very much
-
-    everybody
-
-    so
-
-    I want to
-
-    look at the
-
-    definition
-
-    similarities
-
-    and differences
-
-    applications at
-
-    Groupon
-
-    these are some
-
-    references
-
-    Groupon is hiring
-
-    I'll let H talk
-
-    more about that
-
-    we already talked
-
-    a little bit
-
-    Groupon has a few
-
-    dozen software teams
-
-    and I have a blog
-
-    and a tweet
-
-    and twitter
-
-    want to follow
-
-    thank you
-
-    thanks Andy
-
-    so next month
-
-    I think we have a
-
-    topic but I'm not
-
-    sure what it is
-
-    so we'll get that
-
-    posted in the next
-
-    week or two
-
-    and I hope to see
-
-    you guys next
-
-    time
-
-    thanks
+content: |-
+  So, who here would declare themselves as software engineers?
+   I'll just get a tally of sorts.
+   Okay, about half the people in the room.
+   Who would say, who are comfortable calling themselves as a software craftsman?
+   Okay, three people.
+   So, the interesting thing is there's not much overlap between the two groups,
+   and that's part of the reason why the VS is there in the title of the talk.
+   I perceived it as the versus for a long time.
+   Working as a consultant before we got acquired by Groupon,
+   I worked as a consultant for Optiva.
+   So, when I was working there, Optiva with the leadership of Dave Hoover
+   encouraged the idea of Software craftsmanship as well as software apprenticeship.
+   And having developers learn their skills under the guidance of what he would call a journeyman
+   or, you know, a guy who's on the field out there doing it for real
+   as opposed to learning, say, in academia from a college
+   or like a computer science degree or a software engineering master's degree
+   or that kind of thing.
+   So, I have formal education in software engineering, though.
+   I've studied computer science as my, like, undergrad degree
+   and then I did software engineering as a master's.
+   And it always bothered me that there's a rift between the two
+   because I felt like they had similar goals.
+   That was my motivation behind blogging about it as well as giving this talk.
+   So, let's go over the outline of the talk.
+   So, I'm going to be giving definitions for software engineering
+   and Software craftsmanship, at least my perspective on them.
+   I'm going to talk about the similarities and the differences between them.
+   And then, I'll go over applications of both that I saw at Groupon
+   to give an example of how they play in the wild.
+   So, one of the original definitions of software engineering,
+   which happened in the NATO Software Engineering Conference in 1968,
+   that was around the time when, of inception, software engineering.
+   Software engineering is the establishment
+   of sound engineering principles
+   in order to obtain economical software
+   that is reliable
+   and works efficiently on real machines.
+   So, notice how
+   this is kind of similar
+   to something that happened
+   in the last decade
+   with Agile.
+   When the Agile folks came up with the manifesto,
+   it was a very generic,
+   general, high-level,
+   principle-based manifesto.
+   So, this also sounds very generic
+   and focused on principles,
+   but not necessarily a process.
+   So, although a lot of developers equate software engineering
+   with heavyweight processes like Waterfolk,
+   there was not necessarily any connection between the two.
+   It just happened that one of the first processes
+   that came about in software development
+   was Waterfolk, for example.
+   So, their key focus, though,
+   really was on sound engineering
+   to obtain economical software
+   that's reliable and efficient
+   on real machines.
+   So,
+   that's a huge difference
+   between writing codes
+   for the sake of writing code
+   or for the sake of scientific theory
+   as opposed to writing code
+   for the sake of, you know,
+   meeting a business plan,
+   meeting some business goals,
+   being economical,
+   having performance,
+   having reliability.
+   So, the key thing about software engineering
+   is to focus programmers
+   on meeting deadlines,
+   focusing on cutting cost, etc.,
+   getting high reliability,
+   and so on.
+   Now, craftsmanship got popularized
+   by a book by Pete McBreen,
+   also called Software craftsmanship.
+   And one of the things he said
+   was becoming a good software developer
+   involved a lot more
+   than just learning to write programs.
+   software development is a craft.
+   It blends science, engineering,
+   mathematics,
+   linguistics, and art.
+   So, one thing he noticed,
+   or the feel I got
+   from, you know,
+   reading a little bit
+   through his book,
+   that he didn't like the idea
+   that some people thought
+   that building software
+   is purely,
+   purely predictable
+   in a way
+   where it's like
+   you learn the steps,
+   you follow them,
+   and you get software.
+   He tried to make it clear
+   that it's actually
+   kind of not very linear.
+   There's art in it,
+   there's linguistics,
+   like you might write
+   different statements,
+   you can write a statement
+   of code, say,
+   in three or four different ways,
+   and certain ways
+   will flow better
+   than other ways.
+   Like,
+   this is the big reason
+   for, for example,
+   why
+   David Shilensky
+   and David Stills
+   and several developers
+   in the Rails community
+   came up with RSpec,
+   was they wanted to
+   come up with a testing library
+   that flows better linguistically.
+   So,
+   that kind of
+   comes under the umbrella
+   of craftsmanship
+   is basically
+   it's not just
+   you know,
+   you do A, B, C,
+   you get predictable results,
+   you succeed.
+   There's a little bit
+   of art to it.
+   There's a little bit
+   of balancing concerns,
+   balancing disciplines.
+   Another book
+   that popularized
+   the topic, though,
+   which is one
+   of my favorite books
+   in software development,
+   is The Pragmatic Programmer.
+   We already read
+   that Pragmatic Programmer
+   or at least
+   will show up through it.
+   That book
+   changed my perspective
+   on software development
+   I would say
+   significantly
+   because
+   if it's emphasis
+   on soft skills
+   it's not just
+   the hard technical skills.
+   One of the things
+   that the book
+   tries to
+   make clear
+   or like
+   one of the metaphors
+   that the book uses
+   actually is
+   the medieval European
+   craftsmanship metaphor
+   of comparing
+   building software
+   to say
+   building weapons
+   for example
+   in the Middle Ages.
+   so
+   the way
+   they describe
+   craftsmanship
+   is
+   a programmer
+   might start
+   as an apprentice
+   under another programmer
+   that's a lot
+   more experienced
+   and that have
+   successfully
+   built software
+   out in the world.
+   They will
+   gradually climb
+   their way
+   to becoming
+   a skilled journeyman.
+   A journeyman
+   is usually
+   a person
+   who
+   has become
+   more comfortable
+   with the basics
+   of building software
+   as well as
+   they're multifaceted
+   so they're not only
+   they don't only know
+   how to say
+   write a program
+   in Java
+   but they also
+   know how to deploy
+   the program
+   with the Java
+   technologies
+   like J2EE.
+   They know
+   how to interface
+   with business people
+   in order to
+   better communicate.
+   They know
+   a little bit
+   about user interface
+   design
+   and so on
+   and so forth.
+   So
+   eventually
+   and then
+   the goal
+   is to reach
+   mastery.
+   Some people
+   reach it
+   other people
+   you know
+   spend
+   they can spend
+   their entire life
+   going towards
+   that goal
+   and improving
+   maybe not necessarily
+   reaching it
+   but at least
+   they're always
+   improving
+   because of
+   having that goal
+   in mind.
+   Then you know
+   a few people
+   might reach
+   that goal
+   where
+   Pete McBreen
+   describes mastery
+   as having
+   built a masterpiece
+   like
+   for example
+   say a
+   programmer
+   of sorts
+   built something
+   like
+   I mean
+   I would say
+   a masterpiece
+   could be
+   Linux
+   so having
+   built something
+   as big as
+   Linux
+   I would
+   personally
+   definitely
+   consider
+   Linux Tarpault
+   a master
+   of software
+   development
+   so that's
+   an example
+   of reaching
+   mastery.
+   similarities
+   so one thing
+   I personally
+   noticed
+   is
+   there seems
+   to be
+   shared
+   common goals
+   between
+   software engineering
+   and software
+   craftsmanship
+   and they're
+   both focused
+   on meeting
+   customer needs
+   delivering
+   high quality
+   software
+   reliable
+   software
+   ensuring
+   timely
+   release
+   and
+   minimizing
+   risk of
+   failure
+   so
+   does
+   anybody
+   in the room
+   disagree
+   with any
+   of these
+   goals
+   right
+   however
+   a few
+   issues
+   have come
+   about
+   from engineering
+   and they're
+   not necessarily
+   related to
+   the original
+   inception of
+   software engineering
+   how it was
+   originally
+   founded
+   it was more
+   the way it
+   evolved
+   it went
+   into a few
+   directions
+   that made
+   people
+   you know
+   scratch their
+   head
+   and be like
+   this is not
+   working for us
+   we need
+   something new
+   we need
+   something better
+   so like
+   one of them
+   is
+   somehow
+   this attitude
+   got fostered
+   of believing
+   that engineers
+   can perfectly
+   streamline
+   building
+   software
+   so you
+   go
+   to college
+   you get
+   a degree
+   in computer
+   science
+   maybe
+   another degree
+   in software
+   engineering
+   and then
+   if you
+   follow the
+   processes
+   that you
+   learn
+   there
+   you're
+   going to
+   build
+   software
+   perfectly
+   like
+   complete
+   control
+   predictability
+   as if
+   it's a factory
+   of
+   Toyotas
+   or something
+   unfortunately
+   you know
+   a lot of people
+   know that
+   in the real world
+   that
+   I would say
+   more than 90%
+   of the time
+   that's not the case
+   there's a lot
+   of unpredictability
+   plans change
+   all the time
+   sometimes
+   sometimes
+   it might start
+   in one direction
+   thinking
+   you're going to
+   keep in that
+   direction
+   for the next
+   four months
+   but then
+   two weeks
+   later
+   something changes
+   in business
+   or you discover
+   that the solution
+   that you're building
+   in the code
+   is not working
+   for the users
+   so you end up
+   adjusting
+   your approach
+   significantly
+   so there's
+   a lot of room
+   for unpredictability
+   which prompted
+   the need
+   for something
+   other than
+   software engineering
+   the interesting
+   thing is
+   even agile
+   which is supposed
+   to be about
+   flexibility
+   even some of
+   the agile advocates
+   ended up
+   falling through
+   that trap
+   of thinking
+   if you follow
+   all the agile
+   practices
+   you're going to
+   get results
+   also
+   there's a little
+   bit of
+   too much
+   structure
+   in software
+   engineering
+   there's this idea
+   that one has
+   to learn
+   almost
+   or many
+   best practices
+   before they
+   can build
+   anything
+   with any use
+   but a lot
+   of new
+   programmers
+   in today's
+   age
+   have proven
+   that
+   without
+   much
+   formal
+   education
+   in any
+   of the best
+   practices
+   software
+   engineering
+   they were
+   able to
+   build
+   some
+   really
+   cool
+   pieces
+   of software
+   and here
+   would give
+   me an
+   example
+   of that
+   no games
+   so
+   one of the
+   programmers
+   I work
+   with at
+   Groupon
+   his name
+   is Roy
+   Kolak
+   he was
+   new
+   to Optiva
+   he joined
+   Optiva
+   about five
+   years ago
+   he was
+   very new
+   to software
+   software
+   developed
+   in general
+   I think
+   he joined
+   he was 22
+   years
+   when he joined
+   he was very
+   young
+   he built
+   an iPhone
+   app
+   in like
+   three to six
+   months
+   that got
+   featured
+   as one
+   of the top
+   hundred
+   I believe
+   Macworld
+   magazine
+   apps of the
+   year
+   during
+   either the
+   first or the
+   second year
+   when the
+   iPhone
+   came about
+   I thought
+   that was
+   a very
+   inspiring
+   example
+   of somebody
+   who's
+   trained
+   via the
+   software
+   craftsmanship
+   approach
+   and was
+   able to
+   build
+   something
+   that was
+   interesting
+   of use
+   that app
+   was called
+   Noteworthy
+   it was an
+   app that
+   lets you
+   basically
+   somebody
+   mentions to
+   you
+   a lot
+   of
+   younger
+   people
+   and teenagers
+   I guess
+   listen to a
+   lot of
+   different kinds
+   of music
+   and like
+   to discover
+   bands
+   if somebody
+   mentions a
+   band to
+   you
+   you can
+   get up
+   Noteworthy
+   on the
+   iPhone
+   and looks
+   it up
+   and then
+   it bookmarks
+   it for you
+   so then
+   you remember
+   to check
+   it later
+   so yeah
+   it was a
+   cool idea
+   I used
+   the app
+   quite a
+   while
+   so
+   this is
+   an example
+   of someone
+   with no
+   formal education
+   building
+   something
+   that's
+   of good
+   use
+   to people
+   and
+   third
+   some
+   engineers
+   seem to
+   think
+   that best
+   practices
+   apply
+   everywhere
+   on every
+   situation
+   so
+   they get
+   comfortable
+   for example
+   with design
+   patterns
+   and then
+   they feel
+   like
+   you have
+   to shoehorn
+   and hoard
+   them
+   everywhere
+   or
+   I mean
+   more experienced
+   engineers are
+   aware that
+   different contexts
+   will require
+   different practices
+   so a design
+   pattern that
+   worked for you
+   in three
+   projects
+   might not
+   work in the
+   fourth one
+   or so on
+   and so forth
+   but there's
+   this attitude
+   in a lot
+   of software
+   engineers
+   that you
+   have to
+   shoehorn
+   things every
+   time
+   so like
+   dependency
+   injection is a
+   very good
+   example in the
+   Java world
+   it was
+   it's a good
+   idea for
+   certain projects
+   but a lot
+   of people
+   then think
+   oh we're
+   going to do
+   everything
+   depends on
+   injection
+   and you end
+   up with
+   over-blooded
+   software that
+   has a lot
+   of extra
+   unnecessary
+   complexity
+   just because
+   you know
+   they used it
+   as a golden
+   hammer
+   as opposed
+   to solving
+   one specific
+   problem
+   like
+   one of the
+   problems
+   that came
+   to solve
+   was
+   related
+   to
+   some
+   legacy
+   Java
+   applications
+   were very
+   difficult
+   to write
+   tests for
+   like automated
+   tests
+   dependency
+   injection
+   was a way
+   to let you
+   decouple
+   a classroom
+   third-party
+   dependencies
+   but if
+   that
+   I mean
+   that could
+   be needed
+   for a very
+   large piece
+   of software
+   but for
+   something small
+   that you're
+   building
+   for a tiny
+   project
+   you might not
+   need dependency
+   injection
+   it might just
+   be overkill
+   so it's an
+   example where
+   contexts play
+   a role
+   in whether
+   a practice
+   is applicable
+   or not
+   before I
+   continue
+   you wanted
+   to say
+   something
+   go ahead
+   well you
+   were asking
+   about examples
+   of software
+   that weren't
+   necessarily developed
+   with rigorous
+   procedure
+   and yet
+   I personally
+   think a good
+   example of that
+   is eBay
+   which started
+   out as a
+   hobbyist site
+   to sell
+   a few things
+   and it snowballed
+   and it snowballed
+   and later
+   engineering practices
+   were brought in
+   to shore up
+   the site
+   and make
+   it actually
+   scale
+   but in the
+   end
+   eBay
+   and today
+   even still
+   lives with
+   the legacy
+   of being
+   a hobbyist
+   site
+   first
+   yeah
+   thanks
+   yeah there
+   are a lot
+   of examples
+   like that
+   I agree
+   yeah the web
+   has facilitated
+   a lot
+   of like
+   it lowered
+   the barrier
+   of entry
+   to a lot
+   of people
+   which is good
+   because then
+   it can grow
+   with the business
+   I mean Groupon
+   is one of the best
+   examples
+   of that as well
+   but yeah
+   it can grow
+   with the business
+   that's when
+   you need to bring
+   more engineering
+   and more discipline
+   practices
+   so to mitigate
+   some of the
+   concerns and issues
+   I raised
+   craftsmen
+   see software development
+   more as an art
+   that emerges
+   and less as a
+   structured science
+   that's perfectly
+   predictable
+   so they let
+   time and experience
+   shape up
+   the skills
+   successfully
+   competing
+   software projects
+   I mean
+   one example
+   of this
+   like
+   who here
+   has ever worked
+   with a review
+   on Rails application
+   okay
+   one very common
+   example
+   is
+   monolithic
+   Rails apps
+   that's a
+   that's a big
+   problem
+   so
+   one can start
+   if you think
+   of building
+   the software
+   as an art
+   that emerges
+   as opposed
+   to just
+   following rules
+   you can think
+   of starting
+   by building
+   the app
+   as one app
+   but then
+   eventually
+   you will notice
+   patterns
+   emerging
+   in the app
+   like
+   there are
+   more
+   administrative
+   focused
+   use cases
+   say
+   versus
+   other
+   use cases
+   so then
+   maybe you can
+   split those
+   into a separate
+   app
+   and be able
+   to maintain
+   their tests
+   and their code
+   in a different
+   repository
+   which might
+   make the team
+   more productive
+   because it
+   might minimize
+   coupling
+   as well
+   between
+   administrative
+   parts of the app
+   and regular
+   parts
+   so
+   it's just
+   the idea
+   that it's
+   flowing
+   it's not
+   necessarily
+   structured
+   you couldn't
+   preconceive
+   or think
+   about
+   everything
+   at once
+   you can
+   break things
+   down
+   to
+   chunks
+   also
+   craftsmen
+   often discover
+   their own
+   best practices
+   from their
+   experience
+   which often
+   better fit
+   their situations
+   so
+   what's a good
+   example
+   of that
+   one of the
+   apps that
+   Optiva
+   helped build
+   is called
+   Mad Mimi
+   it's an email
+   sending app
+   and
+   one of the
+   patterns
+   that were
+   noticed
+   in it
+   was
+   the need
+   to do
+   things
+   in the
+   background
+   and
+   some best
+   practices
+   came about
+   as far as
+   how to write
+   the code
+   for separating
+   foreground work
+   from background
+   work
+   and separating
+   it in the
+   repository
+   and doing
+   that kind of
+   stuff
+   so
+   something that
+   emerged
+   it's not
+   something that
+   was thought
+   about at
+   first
+   everything
+   lived in
+   the same
+   place
+   but then
+   things got
+   split off
+   because it
+   became more
+   convenient
+   for the
+   problems
+   so
+   that was
+   an example
+   of that
+   also
+   craftsmen
+   do not
+   religiously
+   follow even
+   their own
+   best practices
+   so you might
+   discover a
+   best practice
+   for a while
+   and think
+   it was very
+   cool
+   but then
+   later
+   transcend it
+   and be like
+   okay
+   it doesn't
+   work anymore
+   again
+   more experienced
+   software engineers
+   do that as
+   well
+   because that's
+   the point of
+   practice
+   is to think
+   of the context
+   not just
+   applying it
+   lightly
+   but it's
+   kind of nice
+   to see that
+   emerging
+   naturally
+   with craftsmen
+   as opposed
+   to them
+   thinking hard
+   about wanting
+   to put the
+   context in
+   place
+   so yeah
+   that's because
+   they rely
+   more on their
+   intuition
+   and gut
+   feeling
+   to succeed
+   which
+   everybody
+   rely on
+   time to
+   time
+   but
+   seems like
+   craftsmen
+   rely more
+   on gut
+   feeling
+   than
+   engineers
+   probably
+   because
+   they're not
+   as worried
+   about meeting
+   certain
+   practices
+   and again
+   I'm talking
+   about
+   engineers
+   that are
+   less
+   experienced
+   in this
+   case
+   not the
+   more
+   experienced
+   ones
+   but let's
+   revisit
+   software
+   engineering
+   though
+   so
+   oh yeah
+   actually
+   now just
+   keep
+   hammering
+   on the
+   last point
+   even
+   Tom
+   DeMarco
+   which I
+   found
+   very
+   surprising
+   when I
+   heard of
+   this
+   a few
+   years
+   ago
+   he's
+   famous for
+   saying
+   you cannot
+   control
+   what you
+   cannot
+   measure
+   it's a
+   very very
+   popular
+   statement
+   in the
+   science
+   engineering
+   world
+   it was
+   a big
+   driver
+   for
+   estimation
+   models
+   like
+   Kokomo
+   and other
+   models
+   and like
+   having
+   people
+   always
+   trick
+   you know
+   record
+   their
+   hours
+   record
+   different
+   things
+   in order
+   to
+   lines of
+   code
+   or
+   whatever
+   in order
+   to
+   do
+   estimation
+   based
+   on that
+   but even
+   eventually
+   he
+   there was
+   an article
+   in the
+   recently
+   where
+   the title
+   of the
+   article
+   was
+   software
+   engineering
+   an idea
+   whose
+   time
+   has
+   come
+   and gone
+   and
+   I read
+   the article
+   it was
+   very
+   provocative
+   and I
+   think it
+   was a
+   little
+   exaggerated
+   to make
+   the article
+   more
+   interesting
+   but
+   the point
+   that I
+   took away
+   without
+   necessarily
+   taking
+   everything
+   in the
+   article
+   seriously
+   was
+   that
+   even
+   Tom
+   DeMarco
+   started
+   questioning
+   the idea
+   that you
+   need to
+   estimate
+   everything
+   beforehand
+   or like
+   know
+   everything
+   beforehand
+   he
+   seemed
+   to be
+   on board
+   with
+   that
+   agile
+   idea
+   of
+   letting
+   things
+   emerge
+   with
+   time
+   as
+   opposed
+   to
+   having
+   everything
+   controlled
+   I just
+   found a book
+   from that
+   article
+   where he says
+   strict control
+   is something
+   that matters
+   a lot
+   on relatively
+   useless
+   projects
+   and much
+   less
+   than useful
+   projects
+   you
+   do 100%
+   control
+   that's
+   too much
+   it's funny
+   it's like
+   if you want
+   to do 100%
+   control
+   don't use
+   a computer
+   for it
+   anymore
+   just do
+   the work
+   with your
+   hands
+   then you'll
+   be happy
+   okay
+   so
+   what are
+   some
+   differences
+   I mean
+   one of
+   the things
+   that I
+   a pattern
+   that I
+   noticed
+   that can
+   reconcile
+   like both
+   software
+   engineering
+   and craftsmanship
+   and make
+   work together
+   is you can
+   think of
+   engineering
+   as the
+   macro
+   goal
+   delivering
+   economical
+   software
+   that's
+   reliable
+   and efficient
+   kind of
+   like the
+   definition
+   of it
+   during
+   its inception
+   in 1968
+   but then
+   craftsmanship
+   is more
+   of a
+   microprocess
+   of mastering
+   the skills
+   gradually
+   that will
+   help you
+   achieve that
+   goal
+   in the long
+   term
+   because when
+   you start
+   as a
+   craftsman
+   it seems
+   like craftsmanship
+   is a better
+   model for
+   accomplishing
+   that goal
+   as opposed
+   to studying
+   books for
+   four years
+   and then
+   suddenly
+   throwing you
+   on the
+   field
+   even if
+   I were
+   to study
+   books
+   for four
+   years
+   I would
+   want
+   craftsmanship
+   to be
+   my model
+   for how
+   to become
+   successful
+   in the real
+   world
+   my first
+   job
+   was
+   me working
+   as the
+   sole
+   programmer
+   on a
+   project
+   at a
+   software
+   company
+   where I
+   had no
+   guidance
+   whatsoever
+   but I
+   was the
+   go-getter
+   you know
+   like I
+   was the
+   go-for
+   guy
+   to give
+   me tasks
+   and I
+   get them
+   done
+   and I
+   learned
+   quite a bit
+   on my
+   own
+   but I
+   ended up
+   quitting
+   that
+   company
+   because
+   there
+   was no
+   mentor
+   of any
+   sort
+   or
+   a more
+   senior
+   developer
+   that
+   would
+   be
+   free
+   to
+   help
+   me
+   or
+   that
+   would
+   be
+   motivated
+   actually
+   to
+   help me
+   to spend
+   time
+   helping me
+   improve
+   my
+   skills
+   so
+   the more
+   senior
+   developers
+   were busy
+   they'd always
+   be busy
+   not want
+   to spend
+   time helping
+   a junior
+   developer
+   in fact
+   they'd be like
+   if I'm asking
+   for help
+   that means I'm not
+   good enough
+   like they made it
+   feel that way
+   which is part
+   of the reason
+   why I ended up
+   quitting
+   so I think
+   craftsmanship
+   is a good
+   model to
+   get to the
+   micro process
+   of reaching
+   the macro
+   goal
+   so of course
+   a few years
+   ago
+   a bunch of
+   eight
+   lighters
+   and a few
+   people from
+   octiva
+   and a few
+   other software
+   developers
+   from this
+   area
+   came together
+   and came up
+   with a
+   Software craftsmanship
+   manifesto
+   the help
+   of Uncle Bob
+   so as an
+   aspiring
+   software craftsman
+   we're raising
+   the Bob
+   professional software
+   development
+   by practicing
+   it and helping
+   others learn
+   their craft
+   notice the
+   emphasis
+   on learning
+   not just
+   practicing
+   it's both
+   trying to
+   have a balance
+   of the
+   short-term
+   goal
+   of getting
+   work done
+   as well
+   as the
+   long-term
+   goal
+   of always
+   improving
+   not as soon
+   stagnating
+   so through
+   this work
+   we have
+   come to
+   value
+   so in the
+   same style
+   with the
+   agile manifesto
+   it's got
+   things on the
+   left side
+   and the
+   right side
+   they're not
+   only working
+   software
+   but also
+   well-crafted
+   software
+   so we don't
+   want to do
+   the minimum
+   possible
+   to get
+   the job
+   done
+   with code
+   that's
+   very
+   terrible
+   to maintain
+   behind the
+   scenes
+   so we
+   want to build
+   software
+   that's
+   also
+   well-crafted
+   software
+   not only
+   responding to
+   change
+   but also
+   steadily
+   adding
+   value
+   so we
+   don't want
+   to just be
+   thrashing
+   and responding
+   to change
+   to please
+   business
+   from day
+   to day
+   without seeing
+   value being
+   added over
+   a year
+   sometimes
+   business people
+   dig themselves
+   into a hole
+   by changing
+   their mind
+   every week
+   if
+   software
+   developers
+   who are
+   working
+   with them
+   aren't
+   responsible
+   to
+   alert
+   them
+   that
+   they're
+   not
+   necessarily
+   adding
+   a value
+   over the
+   long term
+   they won't
+   be really
+   helping them
+   so they
+   might be
+   pocketing
+   money
+   and getting
+   things done
+   week to
+   week
+   but
+   if the
+   business
+   fails
+   a year
+   later
+   it's not
+   that good
+   for the
+   developers
+   not only
+   individuals
+   and interactions
+   but also
+   a community
+   of professionals
+   so one
+   of the
+   things
+   that helped
+   a lot
+   of developers
+   on the field
+   improve their
+   skills further
+   is not only
+   to spend
+   time
+   learning on
+   the job
+   but also
+   going to
+   things like
+   this meeting
+   conferences
+   working on
+   open source
+   projects
+   doing anything
+   that would
+   foster
+   community
+   of professionals
+   and that
+   ends up
+   feeding back
+   into the
+   individual
+   because then
+   that individual
+   has to improve
+   their skills
+   in order to
+   interact with
+   other professionals
+   in the field
+   there's also
+   cross-pollination
+   of skills
+   when you go
+   and meet
+   others
+   that are
+   working in
+   different
+   programming
+   languages
+   different verticals
+   etc
+   so this is
+   another idea
+   that feeds
+   into craftsmanship
+   continuous
+   learning
+   and improvement
+   finally
+   not only
+   customer
+   collaboration
+   but also
+   productive
+   partnerships
+   so
+   it's
+   basically
+   just going
+   beyond
+   customer
+   collaboration
+   to feel
+   really like
+   you're a
+   partner
+   in that
+   business
+   it's not
+   like
+   a master
+   slaves
+   relationship
+   where
+   they give
+   you orders
+   no
+   you can
+   do
+   more
+   you can
+   be a
+   partner
+   you can
+   give
+   them
+   ideas
+   that
+   they
+   could
+   never
+   think
+   about
+   because
+   they're
+   not
+   a two
+   perspective
+   from the
+   perspective
+   of a coder
+   so I mean
+   both perspectives
+   are useful
+   the business
+   perspective
+   is high level
+   enough
+   to be
+   detached
+   from
+   code
+   and think
+   of
+   more
+   like
+   you know
+   strategic
+   direction
+   of the
+   company
+   I guess
+   whereas
+   a software
+   developer
+   might think
+   of things
+   that are
+   good
+   optimizations
+   like
+   for example
+   we can
+   save the
+   money
+   so and so
+   sorry
+   we can
+   save the
+   company
+   so and so
+   that much
+   money
+   if
+   we move
+   from
+   Amazon
+   EC2
+   to some
+   other
+   provider
+   like
+   we cut
+   our cost
+   by half
+   so that's
+   an initiative
+   they don't
+   have to
+   come
+   from
+   developers
+   business
+   people
+   aren't
+   going to
+   be able
+   to make
+   a good
+   decision
+   about that
+   the reason
+   they couldn't
+   is because
+   even if
+   they knew
+   about
+   the cost
+   of say
+   let's assume
+   Heroku
+   is cheaper
+   I don't think
+   it is
+   let's say
+   Rails hosting
+   is cheaper
+   than EC2
+   it's actually
+   more expensive
+   but
+   business people
+   wouldn't know
+   the trade-offs
+   though
+   of the two
+   services
+   because there
+   are always
+   trade-offs
+   like pros
+   and cons
+   and
+   it's the
+   developers
+   that can
+   be responsible
+   for making
+   the decision
+   on which
+   trade-off
+   they're willing
+   to make
+   otherwise
+   you end up
+   with
+   you end up
+   working in
+   an environment
+   where
+   business people
+   are making
+   technical decisions
+   and pushing
+   on you
+   things like
+   salesforce
+   when it's
+   not necessarily
+   the best fit
+   for your project
+   etc.
+   there are
+   many examples
+   of working
+   in an environment
+   where suddenly
+   oh we're going
+   to be using
+   this ERP
+   package
+   it's going
+   to improve
+   our productivity
+   it's because
+   the business
+   people made
+   the decision
+   without necessarily
+   consulting the developers
+   when it actually
+   ends up degrading
+   productivity
+   because they end up
+   having to go
+   jump through
+   hoops
+   with a process
+   that might be
+   too much
+   for them
+   in their environment
+   so just like
+   the agile manifesto
+   pursuit of items
+   on the left
+   we have found
+   the items
+   on the right
+   to be
+   indispensable
+   actually it's not
+   exactly the same
+   but what I'm
+   trying to say
+   though is
+   so with the agile
+   manifesto
+   they have one side
+   that was more
+   important than
+   the other side
+   so I guess
+   that's a similarity
+   here
+   here they're saying
+   okay this is
+   very important
+   but while we're
+   doing this
+   we think
+   this is
+   indispensable
+   to succeed
+   with this
+   so if you want
+   to get good
+   collaboration
+   you want to feel
+   like you're a
+   partner
+   if you want
+   to respond
+   to change
+   well enough
+   for the business
+   you want to
+   make sure
+   you're adding
+   value
+   so on
+   and so forth
+   is this clear
+   so far
+   go ahead
+   just
+   I may have
+   mentioned this
+   I may have
+   space
+   I mean
+   that's
+   not just
+   in the style
+   of agile
+   I mean
+   that is
+   an extension
+   explicitly
+   an extension
+   of agile
+   that's a
+   very good
+   point
+   that I
+   meant to
+   actually mention
+   is
+   a lot of
+   these values
+   come from agile
+   the ones that are
+   on the left
+   so then the ones
+   that are on the
+   right end
+   of the extensions
+   for them
+   I've established
+   that software
+   engineering
+   has got a bad
+   reputation
+   however
+   unfortunately
+   some of the
+   reputation
+   is undeserved
+   or some of it
+   may have not
+   been intentional
+   at least not
+   as part of
+   the original
+   inception
+   of what the
+   idea of software
+   engineering
+   should have been
+   or what it was
+   about
+   so I mean
+   over time
+   collected a lot
+   of negative
+   associations
+   like it's
+   strict
+   it's got a lot
+   of big up front
+   design
+   heavyweight
+   processes
+   everything
+   must be
+   predictable
+   measure
+   everything
+   etc
+   in reality
+   the agile
+   process
+   actually
+   is
+   a software
+   engineering
+   process
+   it's not
+   necessarily
+   like a lot
+   of developers
+   think agile
+   is different
+   than software
+   engineering
+   but it's
+   actually
+   just an
+   evolution
+   of it
+   so they
+   started
+   with
+   waterfall
+   which was
+   a very
+   linear
+   process
+   then there
+   was
+   some of
+   the other
+   processes
+   for example
+   our Bowen
+   spiral process
+   which was
+   a little
+   incremental
+   and there
+   was the
+   unified
+   process
+   which was
+   also
+   incremental
+   and then
+   there's
+   the agile
+   and then
+   some of
+   the agile
+   processes
+   came about
+   like the
+   agile
+   unified
+   process
+   which is
+   a lot
+   lighter
+   weight
+   than
+   unified
+   extreme
+   programming
+   scrum
+   etc
+   so all
+   of these
+   things
+   were to
+   meet
+   the goals
+   of
+   engineering
+   but
+   somehow
+   people
+   when they
+   use the
+   word
+   agile
+   they
+   don't
+   like
+   to
+   separate
+   the
+   two
+   they
+   say
+   oh
+   no
+   something
+   about
+   big
+   up front
+   design
+   that's not
+   necessarily
+   the case
+   even the
+   whole
+   spiral
+   model
+   one of the
+   earlier
+   models
+   was
+   evolutionary
+   wasn't
+   necessarily
+   about
+   big
+   up front
+   design
+   and I
+   hate to
+   do this
+   but
+   I'm going
+   to throw
+   a tiny
+   defense
+   for
+   waterfall
+   because
+   I
+   so
+   this
+   older
+   gentlemen
+   that
+   worked
+   in
+   water
+   for
+   many
+   years
+   and
+   have
+   applied
+   the
+   waterfall
+   process
+   successfully
+   there
+   not
+   successfully
+   in the
+   sense of
+   how good
+   he could
+   have done
+   with
+   agile
+   I bet
+   he could
+   have done
+   better
+   with
+   agile
+   but
+   when he
+   mentioned
+   that
+   his teams
+   always
+   made
+   waterfall
+   work
+   one of the
+   key things
+   that were
+   emphasized
+   is that
+   even with
+   waterfall
+   when you
+   move
+   say
+   from the
+   design
+   phase
+   to the
+   development
+   phase
+   if you
+   notice
+   something
+   wrong
+   you can
+   feedback
+   soon
+   you don't
+   have to
+   wait six
+   months
+   before you
+   feedback
+   into the
+   design
+   phase
+   and also
+   if QA
+   discovers
+   something
+   you can
+   go and
+   fix it
+   in the
+   code
+   soon
+   you don't
+   have to
+   wait
+   for the
+   end of
+   the
+   nine
+   months
+   later
+   to do
+   it
+   so
+   what I'm
+   trying to
+   say
+   is
+   when
+   applied
+   in a
+   practical
+   manner
+   waterfall
+   even becomes
+   a little
+   more flowing
+   than
+   the
+   textbook
+   waterfall
+   it's
+   got feedback
+   cycles
+   it's not
+   necessarily
+   as
+   tweaked
+   as people
+   make it
+   up
+   and
+   make it
+   like
+   a lot
+   of the
+   strictness
+   or maybe
+   big
+   upfront
+   design
+   might
+   come
+   more
+   from
+   lack
+   of
+   skill
+   in
+   software
+   engineering
+   as opposed
+   to
+   what
+   software
+   engineering
+   was
+   about
+   but
+   then
+   again
+   if
+   that
+   lack
+   of
+   skill
+   is
+   happening
+   a lot
+   that's
+   when
+   people
+   realize
+   okay
+   maybe
+   we don't
+   have
+   a very
+   easy
+   to learn
+   process
+   so
+   we should
+   come up
+   with
+   something
+   better
+   which
+   is part
+   of the
+   reason
+   why
+   agile
+   kind
+   of took
+   over
+   waterfall
+   and
+   software
+   craftsmanship
+   is emerging
+   now as
+   a new
+   model
+   for
+   learning
+   how to
+   build
+   software
+   successfully
+   yeah so
+   I mean a lot
+   of the
+   things that
+   happen as far
+   as negative
+   associations
+   happen through
+   thinking traps
+   like
+   yeah like
+   getting too
+   attached to
+   words
+   instead of
+   seeking
+   the meaning
+   behind
+   them
+   accepting
+   education
+   from the
+   media
+   silver
+   bullet
+   syndrome
+   lack
+   and white
+   thinking
+   so yeah
+   software
+   engineering
+   is
+   alive and
+   well
+   at
+   Groupon
+   and I
+   think
+   what you
+   mentioned
+   about
+   eBay
+   I mean a
+   very similar
+   thing to
+   what happened
+   at Groupon
+   where it
+   started with
+   a very
+   lightweight
+   agile
+   process
+   but then
+   as it
+   increased
+   in complexity
+   software
+   engineering
+   became
+   a very
+   strong
+   need
+   eventually
+   then
+   gradually
+   over
+   you know
+   several months
+   it got
+   introduced
+   and then
+   now it
+   became a
+   very
+   I would say
+   like a
+   day-to-day
+   practice
+   and move on
+   so like
+   what are
+   some examples
+   software
+   engineering
+   so like
+   they have
+   tools for
+   system
+   health
+   measurability
+   they
+   definitely
+   do
+   usability
+   design
+   you know
+   A-B
+   testing
+   which is
+   one of
+   the
+   disciplines
+   that are
+   under the
+   umbrella
+   of software
+   engineering
+   release
+   engineering
+   is very
+   big
+   performance
+   engineering
+   is very
+   big
+   you know
+   pre-thought
+   like
+   sometimes
+   big up
+   front
+   software
+   architecture
+   is important
+   and is
+   needed
+   once you
+   surpass
+   a certain
+   threshold
+   of complexity
+   with what
+   you're building
+   as well
+   as the
+   requirements
+   that you
+   have
+   so once
+   the
+   requirements
+   get really
+   big
+   and you
+   have a lot
+   of interesting
+   non-functional
+   requirements
+   that demand
+   a lot of
+   scale
+   and security
+   and etc
+   then you're
+   going to have
+   to worry
+   about the
+   architecture
+   up front
+   not necessarily
+   just
+   not necessarily
+   let it
+   emerge
+   completely
+   organically
+   however
+   a lot
+   of architecture
+   did emerge
+   organically
+   but
+   some of
+   the newer
+   things
+   that are
+   being
+   built
+   they're
+   starting
+   to think
+   at this
+   scale
+   right now
+   servicing
+   millions
+   and millions
+   of users
+   they couldn't
+   let something
+   start small
+   anymore
+   they have
+   to start
+   with
+   at least
+   some level
+   of engineering
+   involved
+   with building
+   a software
+   project
+   or a
+   software
+   tool
+   verification
+   acceptance
+   testing
+   automated
+   testing
+   and
+   some
+   agile
+   practices
+   like
+   iterative
+   development
+   velocity
+   tracking
+   and so on
+   and so forth
+   but one thing
+   that I thought
+   was very
+   interesting
+   about
+   Groupon
+   compared
+   to a lot
+   of other
+   companies
+   is the fact
+   that craftsmanship
+   is popular
+   with Groupon
+   engineers
+   meaning they're not
+   opposed to it
+   just because they're
+   doing engineering
+   doesn't mean
+   they're against
+   craftsmanship
+   so
+   about an
+   apprenticeship
+   program
+   this is
+   Jacob
+   he's
+   a recently
+   graduated
+   apprentice
+   that finished
+   a six month
+   apprenticeship
+   he worked with me
+   very briefly
+   on a small
+   project
+   and this is
+   his mentor
+   looks like
+   Captain Havoc
+   from Tintin
+   at least that's
+   the joke
+   master
+   he's
+   a very good
+   colleague
+   of mine
+   I learned
+   quite a bit
+   working with
+   Joe Banks
+   when him
+   and I
+   were at
+   Optiva
+   before we
+   joined Groupon
+   as well
+   I learned a lot
+   of things
+   great patient
+   developer
+   Interbranch
+   employee swap
+   so
+   this is kind of
+   like an idea
+   that got
+   popularized
+   in the craftsmanship
+   world
+   called the
+   craftsmanship swap
+   has anybody
+   heard of it?
+   so
+   Optiva
+   and a few
+   other consulting
+   companies
+   like
+   8flight
+   like
+   Edgecase
+   Relevance
+   a few others
+   did this thing
+   where in order
+   to do
+   since they're
+   not in
+   competitive
+   markets
+   in order to
+   cross-pollinate
+   their skills
+   they did
+   swaps
+   so they
+   like
+   for example
+   I did a swap
+   with Edgecase
+   last year
+   that was
+   still with Optiva
+   where I went
+   there for a week
+   and then they
+   sent a guy
+   to Optiva
+   for a week
+   so I worked
+   in Ohio
+   with their
+   developers
+   pair programming
+   writing tests
+   working on their
+   project
+   and then they
+   did the same
+   with their
+   developer
+   so I ended
+   up
+   learning things
+   from their
+   environment
+   and what
+   they like to
+   do
+   and what kind
+   of tools
+   they prefer
+   and they
+   learn things
+   from us
+   and that way
+   we both
+   exchange knowledge
+   we're able
+   to improve
+   each other
+   I mean
+   we're able
+   to improve
+   our skills
+   internal skills
+   by looking
+   at what
+   another company
+   is doing
+   so
+   Groupon
+   is at a
+   scale now
+   where they
+   can do
+   the same
+   thing
+   between
+   their
+   branches
+   so I mean
+   the key
+   branches
+   in the US
+   are the
+   Chicago
+   branch
+   and the
+   Palo Alto
+   branch
+   they got a
+   branch
+   in Denver
+   and I think
+   they're starting
+   one in Seattle
+   there's a few
+   others too
+   but
+   they've had
+   us do
+   a one week
+   swap
+   also
+   early this year
+   me
+   everybody
+   on my
+   team
+   with Palo Alto
+   where
+   we went there
+   and hung up
+   for a week
+   and saw
+   what they're
+   doing
+   also
+   they did
+   another
+   kind of swap
+   where
+   they had
+   one of our
+   developers
+   at a time
+   go there
+   for a week
+   and work
+   on
+   a project
+   that was
+   integrating
+   with our
+   project
+   so not only
+   did it help
+   in terms of
+   skills
+   but also
+   in terms
+   of
+   better
+   collaboration
+   between
+   teams
+   so the
+   idea
+   is
+   definitely
+   plausible
+   even at
+   a non-consulting
+   company
+   pair
+   programming
+   is very
+   common
+   in a
+   coupon
+   it's not
+   enforced
+   often
+   people
+   will enforce
+   pair
+   programming
+   when it's
+   a new
+   skill
+   for a
+   team
+   once a
+   team
+   has
+   become
+   quite
+   comfortable
+   with it
+   the team
+   can decide
+   on their
+   own
+   what they
+   want
+   to do
+   if they
+   want
+   to
+   pair
+   program
+   or
+   not
+   or
+   if they
+   want
+   to
+   pair
+   program
+   40%
+   of the
+   time
+   or
+   80%
+   or
+   whatever
+   so
+   yeah
+   who here
+   has done
+   pair
+   programming
+   okay
+   half the room
+   pair
+   yeah
+   yeah
+   yeah
+   yeah
+   yeah
+   code
+   reviews
+   so
+   sometimes
+   we do
+   code
+   reviews
+   even
+   if we
+   do
+   pair
+   programming
+   because
+   you end up
+   with different
+   perspective
+   like
+   might do
+   a code
+   review
+   with
+   performance
+   team
+   or security
+   people
+   which
+   would know
+   more
+   about
+   these
+   things
+   but
+   yeah
+   if I
+   did
+   not
+   pair
+   with
+   someone
+   I
+   would
+   definitely
+   do
+   a
+   clear
+   review
+   yeah
+   pair
+   programming
+   is
+   very
+   beneficial
+   though
+   in the
+   craftsmanship
+   world
+   and it
+   came from
+   extreme
+   programming
+   one of the
+   agile
+   processes
+   it's very
+   beneficial
+   for two
+   things
+   either
+   mentoring
+   mentoring
+   for a
+   junior
+   programmer
+   so
+   if you
+   got a new
+   programmer
+   on the
+   team
+   he's
+   not
+   very
+   familiar
+   with
+   the
+   tools
+   not
+   very
+   familiar
+   with
+   the
+   software
+   project
+   you
+   can
+   have
+   him
+   hide
+   in
+   a
+   cave
+   for
+   a
+   month
+   and
+   learn
+   study
+   the
+   code
+   and
+   figure
+   it
+   out
+   on
+   their
+   own
+   or
+   you
+   can
+   have
+   them
+   be
+   doing
+   good
+   productive
+   work
+   and
+   pair
+   programming
+   with
+   other
+   people
+   and
+   helping
+   them
+   solve
+   problems
+   while
+   they're
+   also
+   gradually
+   learning
+   the
+   code
+   base
+   so
+   that's
+   one
+   benefit to
+   it
+   don't
+   need
+   mentoring
+   then
+   the
+   purpose
+   of
+   the
+   change
+   changes
+   so
+   a lot
+   of
+   the
+   time
+   when
+   you're
+   writing
+   code
+   it's
+   not
+   about
+   it's
+   not about
+   writing
+   the code
+   it's
+   about
+   solving
+   problems
+   and
+   a
+   problem
+   can
+   be
+   solved
+   in
+   many
+   ways
+   any
+   software
+   problem
+   I can
+   write
+   the
+   code
+   with
+   one
+   class
+   I can
+   write
+   it
+   with
+   two
+   three
+   classes
+   I can
+   use
+   a
+   library
+   I can
+   integrate
+   with
+   a
+   web
+   service
+   and
+   there
+   are
+   pros
+   and
+   cons
+   to
+   each
+   approach
+   often
+   work
+   that
+   come
+   out
+   of
+   the
+   thought
+   of
+   one
+   programmer
+   is
+   not
+   as
+   a
+   possible
+   solutions
+   as
+   work
+   that
+   came
+   from
+   two
+   programmers
+   so
+   programmers
+   would have
+   a lot
+   more
+   variety
+   in
+   their
+   perspectives
+   so
+   they
+   can
+   come
+   up
+   with
+   a lot
+   more
+   interesting
+   solutions
+   than
+   a
+   solution
+   of
+   one
+   person
+   it's
+   just
+   the
+   idea
+   of
+   synergy
+   you know
+   like
+   one plus
+   one
+   is
+   not
+   two
+   one
+   plus
+   one
+   is
+   a
+   lot
+   more
+   because
+   you
+   get
+   a
+   lot
+   of
+   interesting
+   creativity
+   flowing
+   when
+   two
+   people
+   are
+   discussing
+   a
+   problem
+   so
+   given
+   that
+   not a lot
+   of
+   code
+   time
+   is spent
+   on just
+   typing
+   especially
+   productive
+   languages
+   like
+   Ruby
+   that
+   doesn't
+   need you
+   to type
+   that much
+   code
+   anyways
+   to
+   implement
+   a
+   feature
+   you might
+   spend
+   two or
+   three
+   days
+   on
+   the
+   feature
+   type
+   only
+   like
+   you
+   can
+   implement
+   the
+   entire
+   feature
+   in
+   Ruby
+   maybe
+   150
+   lines
+   maybe
+   100
+   lines
+   maybe
+   even
+   less
+   I mean
+   I can
+   type
+   100
+   words
+   a minute
+   100
+   lines
+   is
+   like
+   whatever
+   like
+   15
+   minutes
+   I don't
+   know
+   what I'm
+   trying to
+   say
+   is
+   that's
+   why
+   pair
+   programming
+   is
+   encouraged
+   because
+   it ends
+   up
+   you end
+   up
+   with
+   a lot
+   more
+   creative
+   solutions
+   and
+   better
+   designs
+   for
+   the
+   code
+   as
+   well
+   as
+   more
+   maintainable
+   designs
+   because
+   I might
+   have
+   my
+   own
+   induced
+  yncrasies
+   for
+   how
+   I
+   write
+   code
+   but
+   then
+   when
+   I
+   share
+   it
+   with
+   somebody
+   else
+   they're
+   like
+   this
+   is
+   weird
+   and
+   so
+   there's
+   a lot
+   less
+   chance
+   of me
+   writing
+   code
+   that's
+   harder
+   for
+   others
+   to
+   maintain
+   so
+   yeah
+   that's
+   one
+   of the
+   reasons
+   why
+   programming
+   is
+   encouraged
+   so
+   there's
+   a big
+   focus
+   on
+   learning
+   including
+   providing
+   internal
+   training
+   courses
+   for
+   employees
+   like
+   training
+   on
+   TDD
+   Ruby
+   and
+   Rails
+   as
+   well
+   as
+   the
+   code
+   base
+   Noel
+   Rappin
+   is in charge
+   of conducting
+   those
+   trainings
+   every once
+   in a while
+   he grabs
+   another
+   developer
+   to help
+   him
+   yeah
+   he's
+   an author
+   of a book
+   called
+   Professional
+   Ruby on
+   Rails
+   he's got
+   very
+   a lot
+   like
+   he also
+   wrote
+   a new
+   book
+   called
+   Test Prescriptions
+   I think
+   Rails
+   Test Prescriptions
+   or something
+   like that
+   I like
+   one thing
+   I like
+   a lot
+   about
+   working
+   with Noel
+   or interacting
+   with him
+   is he has
+   a very
+   very wide
+   perspective
+   on
+   the different
+   teaching techniques
+   and it might
+   be related
+   to the fact
+   that he's
+   got a PhD
+   which I think
+   would help
+   with education
+   and like
+   teaching
+   but he knows
+   that for example
+   you could learn
+   Ruby from
+   the bottom
+   up
+   by learning
+   operators
+   and if statements
+   that kind of stuff
+   and then build up
+   to object-oriented
+   programming
+   or
+   if you're already
+   an object-oriented
+   programmer
+   you might want
+   to start
+   as an OO
+   programmer
+   with the OO
+   constructs first
+   and then dig down
+   into the details
+   of the language
+   so
+   yeah
+   it's kind of
+   interesting
+   to have an instructor
+   that knows
+   who's flexible
+   enough to adjust
+   for trainees
+   based on
+   their background
+   so yeah
+   so there are
+   a few masters
+   also at Rupont
+   which is very cool
+   so Michael
+   Feathers
+   who worked
+   with Uncle Bob
+   at Object Mentor
+   and authored
+   Working Effectively
+   with Legacy Code
+   a great book
+   on how to
+   work with
+   legacy
+   old legacy
+   codebases
+   he's working
+   in Groupon
+   right now
+   and then
+   Aaron Badrow
+   I recently joined
+   he's written
+   a book
+   on Clojure
+   and contributed
+   to the Clojure
+   programming language
+   has anybody
+   heard of Clojure?
+   it's a new
+   Lisp-like language
+   that's built
+   on top of the JVM
+   that's given a lot
+   of popularity
+   recently
+   as a practical
+   functional
+   programming language
+   especially
+   for distributed
+   systems
+   and
+   parallelized
+   processing
+   distributed
+   computing
+   fortunately
+   so I don't
+   work with
+   Aaron Mesmer
+   directly
+   but fortunately
+   he sits almost
+   right next to me
+   we're in an
+   open
+   agile-like
+   environment
+   so I hear him
+   talk all the time
+   like to other
+   developers
+   I learn a lot
+   just overhearing
+   writing codes
+   that's kind of cool
+   so yeah
+   I encourage him
+   to present at conferences
+   I recently
+   presented at RailsConf
+   in 2012
+   I gave a talk
+   called
+   Militages Patterns
+   so again
+   this leads back
+   into what I
+   like that
+   software
+   craftsmanship
+   manifesto
+   the idea
+   of you want
+   to work
+   like try to
+   foster a community
+   of professionals
+   and interact
+   with the community
+   not just
+   your work
+   environment
+   in order to
+   better your skills
+   so one way
+   of doing that
+   is to present
+   at conferences
+   and I mean
+   of course
+   often
+   how this starts
+   is I end up
+   thinking of an idea
+   and I present it
+   at
+   we have a weekly
+   meeting
+   in Groupon
+   called
+   eFest
+   every Tuesday
+   that's open
+   to the public
+   where different
+   Groupon
+   or actually
+   anybody
+   can go there
+   and give a
+   presentation
+   it's a much
+   smaller environment
+   than a conference
+   so it's a very
+   good training
+   ground
+   so I often
+   start by giving
+   a talk there
+   or giving a talk
+   at a meeting
+   like a user group
+   kind of like this one
+   then eventually
+   once the talk
+   is ironed out
+   I give it
+   at a conference
+   that's one way
+   of building up
+   presentation skills
+   I think they're also
+   it's limited to 80 people
+   and it fills up
+   every single
+   future
+   yeah
+   yeah that helps
+   pretty good food
+   very good food
+   barbecue chicken
+   pork
+   so yeah
+   we hosting conferences
+   and meetups
+   so yeah
+   weekly eFest
+   weekly brown bag
+   that one's an
+   internal Groupon
+   weekly event
+   that one's only
+   Groupon only
+   it's also presentations
+   but more about
+   topics related
+   to the Groupon
+   codebase
+   specifically
+   and Groupon
+   problems
+   not necessarily
+   public topics
+   whereas the
+   GeekFest for example
+   which is every Tuesday
+   like today
+   the topic was on
+   actually Aaron Bedra
+   presented today
+   he gave a talk
+   on proving
+   correctness
+   of software
+   and how
+   test driven development
+   doesn't prove
+   correctness
+   it just proves
+   that whatever
+   specs
+   or whatever
+   test you wrote
+   the software
+   will meet
+   as far as
+   the cases
+   you specified
+   and he said
+   he talked about
+   a cool project
+   where
+   it was a site
+   that was servicing
+   millions of people
+   and they would
+   discover bugs
+   I think it was
+   a computer game
+   and they would
+   discover bugs
+   because of the
+   random usage
+   of people
+   that
+   you wouldn't
+   discover on your
+   own in a million
+   years
+   just writing
+   writing tests
+   in a TDD
+   fashion
+   so like TDD
+   was not sufficient
+   for that project
+   even TDD
+   which helps a lot
+   in ironing out
+   preventing bugs
+   was not sufficient
+   so he gave a talk
+   on how they built
+   an automated system
+   that would collect
+   failures
+   from different users
+   and feed them
+   into some sort
+   of a functional
+   computing thing
+   and then
+   it would
+   yeah
+   it was quite
+   a complex talk
+   actually
+   you guys
+   do this
+   every Tuesday
+   because it's
+   open to the public
+   anyone
+   interested in this
+   yeah
+   pretty much
+   what time does it
+   start
+   12 o'clock
+   12 o'clock
+   for an hour
+   it was a very
+   interesting talk
+   like he talked
+   about things
+   he built
+   with a
+   enclosure
+   to solve the
+   problem
+   one other thing
+   they do
+   is host
+   a conference
+   that's also
+   internal to
+   Groupon
+   called
+   Groupon
+   University
+   it happens
+   annually
+   it's basically
+   kind of like
+   the software
+   craftsmanship
+   or the
+   agile conference
+   except it's
+   all Groupon
+   employees
+   presenting ideas
+   to other
+   Groupon
+   employees
+   so
+   interesting
+   thing
+   about it
+   is if you
+   have a really
+   cool idea
+   and you want
+   to make it
+   spread in the
+   company
+   that's like
+   one of the best
+   avenues to do
+   in it
+   I mean any
+   of those avenues
+   would be good
+   but that was
+   pretty good
+   because often
+   people end up
+   spending a lot
+   of time
+   discussing the
+   ideas
+   that were
+   presented
+   I already
+   talked about
+   that
+   these are the
+   titles of the
+   books
+   so
+   software
+   apprenticeship
+   at Groupon
+   so
+   determining
+   which people
+   to accept
+   as software
+   apprentices
+   we use
+   some principles
+   that actually
+   Altiva came
+   up with
+   in the past
+   before they
+   got acquired
+   like Groupon
+   like potential
+   over credential
+   so one of the
+   issues with
+   apprentices
+   is you're going
+   to take
+   somebody from
+   scratch
+   how do you
+   know who's
+   good from
+   who's not
+   good
+   like when
+   you're
+   interviewing
+   people
+   they have
+   a resume
+   at least
+   their resume
+   will give
+   you a little
+   bit of
+   detail
+   about their
+   experiences
+   at least
+   you have
+   a starting
+   point
+   but with
+   a person
+   that's
+   a blank slate
+   the only
+   way to
+   judge them
+   is to
+   interact
+   with them
+   have a
+   conversation
+   show them
+   some code
+   do a little
+   bit of
+   pair programming
+   with them
+   and then
+   figure out
+   if they
+   have
+   potential
+   and you
+   would care
+   a lot
+   more about
+   that
+   over
+   credentials
+   so are
+   they
+   willing
+   to learn
+   are they
+   asking
+   the right
+   questions
+   do they
+   seem
+   highly
+   motivated
+   internally
+   motivated
+   so then
+   you end
+   up
+   deciding
+   based on
+   potential
+   whether
+   you want
+   to hire
+   the person
+   not
+   necessarily
+   based on
+   potential
+   the program
+   is six
+   months
+   with three
+   milestones
+   every
+   milestone
+   the
+   apprentice
+   has to
+   give a
+   presentation
+   on a
+   personal
+   project
+   that he'll
+   be building
+   throughout
+   the entire
+   apprenticeship
+   so
+   the good
+   thing
+   about
+   having
+   three
+   milestones
+   is
+   it'll
+   enable
+   the
+   apprentice
+   to get
+   feedback
+   from his
+   mentor
+   as well
+   as other
+   senior
+   employees
+   senior
+   developers
+   of the
+   company
+   and then
+   correct
+   the course
+   of this
+   project
+   if it
+   wasn't
+   going
+   in a
+   direction
+   that
+   was
+   interesting
+   or
+   useful
+   that
+   actually
+   happened
+   with
+   Jacob
+   that
+   you guys
+   saw
+   in the
+   previous
+   photo
+   in the
+   first two
+   milestones
+   he had
+   quite a
+   bit of
+   feedback
+   on what
+   was missing
+   in his
+   project
+   his project
+   almost got
+   risky
+   where it
+   was almost
+   not going to
+   meet the
+   quality
+   or the
+   standards
+   for what
+   an apprentice
+   should deliver
+   at the end
+   but
+   he ended
+   up
+   course
+   correcting
+   quite a
+   bit
+   and by
+   the third
+   milestone
+   he actually
+   blew us
+   away with
+   the presentation
+   he gave
+   it was a
+   very interesting
+   project
+   he did
+   something
+   related to
+   static
+   analysis
+   on
+   Ruby
+   code
+   in order
+   to figure
+   out
+   the likelihood
+   for having
+   bugs
+   like which
+   areas
+   in the
+   code
+   might have
+   the most
+   bugs
+   or most
+   risk
+   for having
+   a bug
+   and it
+   would shoot
+   an email
+   automatically
+   to the
+   developers
+   that have
+   committed
+   that code
+   to get
+   information
+   about what
+   potential
+   bugs or what
+   areas of
+   code could
+   be improved
+   so the
+   mentor oversees
+   the apprentice
+   the entire
+   period
+   however that
+   doesn't mean
+   that the
+   apprentice has
+   to work
+   with the
+   mentor
+   on his
+   team
+   the entire
+   period
+   so Jacob
+   worked with
+   me for a
+   little while
+   and worked
+   with a few
+   other people
+   a few
+   other teams
+   for a
+   while
+   and he
+   spent a
+   good chunk
+   of time
+   with his
+   mentor
+   as well
+   but the
+   mentor
+   would be
+   overseeing
+   him the
+   entire time
+   regardless
+   so are you
+   saying that
+   he's working
+   both for
+   at the same
+   time
+   he's working
+   with a team
+   on their
+   core area
+   functionality
+   plus he has
+   an ongoing
+   personal project
+   and he has
+   to sort of
+   balance his
+   time between
+   those two
+   things
+   yes
+   what was
+   the expected
+   kind of
+   next between
+   those two
+   is that
+   50-50
+   or is it
+   20%
+   personal
+   50-50
+   sounds reasonable
+   yeah
+   I remember
+   there was a guy
+   called John
+   invented
+   apprenticeship
+   at Optiva
+   before
+   and he
+   had to work
+   a lot of extra
+   hours for his
+   personal project
+   because he was
+   working on real
+   projects with
+   Optiva and
+   Z-Optiva
+   but at the
+   same time
+   it's like a free
+   opportunity to
+   learn super
+   fast
+   in a real
+   environment
+   so that's a
+   balancing the
+   cost of how
+   much work he
+   has to put
+   into it
+   as well as
+   you know
+   if somebody
+   is new
+   it doesn't
+   hurt to work
+   harder than
+   usual
+   yeah I mean
+   Jacob ended
+   up graduating
+   and he
+   ended up
+   in his
+   dream location
+   he moved to
+   Denver
+   Denver office
+   he's a big
+   fan of
+   snowboarding
+   I believe
+   where it's
+   like snow sports
+   so he was
+   very happy
+   to do that
+   so yeah
+   worked out
+   for him
+   is apprenticeship
+   tied to
+   like an
+   employee contract
+   period also
+   or is this
+   sort of
+   unrelated to
+   the sort of
+   employment
+   relationship
+   as far as I
+   know it is
+   yeah
+   so if
+   if you don't
+   pass the
+   six month
+   period
+   your contract
+   has ended
+   yeah I think
+   I don't know
+   the details
+   if you have
+   six months
+   you either
+   get an offer
+   letter to
+   join as
+   a full-time
+   employee
+   or not
+   right
+   there's a
+   couple
+   things about
+   the friendship
+   program
+   that are
+   a little
+   bit different
+   one is
+   you can stipend
+   not full
+   salary
+   two is
+   you have a
+   partner
+   and three
+   you don't get
+   that
+   you're
+   actually
+   you're not
+   doing that
+   a few times
+   people have
+   done well
+   enough
+   and they've
+   gotten
+   offered
+   more
+   to take
+   more
+   well
+   thanks
+   so it's
+   for companies
+   that are
+   trying to find
+   people
+   and camps
+   are being
+   very,
+   very competitive
+   offers for
+   $80-$90
+   for first grad
+   it's a great
+   way to get
+   a bunch of
+   real experience
+   but not
+   software experience
+   to come in
+   and learn
+   software
+   so I recommend
+   for everybody
+   who doesn't have
+   a function
+   program
+   if you want
+   to take
+   it
+   does
+   definitely
+   open
+   it's
+   possible
+   for you
+   to go
+   yeah
+   apprentice
+   here
+   programs
+   between people
+   on different
+   teams
+   spend about
+   there you go
+   15%
+   of their time
+   on the
+   personal project
+   and
+   and
+   and
+   then
+   it
+   presents
+   it to
+   developers
+   doing the
+   milestones
+   and
+   that's a wrap
+   any
+   questions
+   comments
+   I was thinking
+   about this
+   there's so much
+   good stuff
+   in there
+   I was thinking
+   though
+   that I don't
+   see myself
+   as a software
+   engineer
+   or a craftsman
+   or an angel
+   or a waterfall
+   or a barrel
+   jumper
+   or anything
+   like that
+   and I think
+   I was thinking
+   about this
+   I think it's
+   because
+   we're really
+   not any
+   of those
+   and yet
+   we're all
+   of those
+   if you think
+   about engineering
+   as a tool
+   set
+   that we're
+   given
+   we have
+   some great
+   tools
+   and then
+   we take
+   as a craftsman
+   we take
+   those tools
+   and use
+   them
+   the artist
+   can take
+   the same
+   brush
+   that I can
+   take
+   and create
+   a masterpiece
+   that I can
+   make
+   so
+   it's a matter
+   of that
+   so
+   I think
+   what you're
+   talking about
+   at least
+   what I'm
+   getting out
+   of it
+   is a
+   process
+   that we
+   come
+   we have
+   these tools
+   where
+   we're
+   becoming
+   as an apprentice
+   or a journey
+   or just
+   kind of
+   working our
+   way through
+   here
+   and that's
+   what it's
+   all about
+   because I'm
+   looking back
+   now
+   and although
+   I do apply
+   all of these
+   principles
+   to some degree
+   or another
+   I don't
+   consciously
+   do it
+   and I guess
+   that probably
+   is the part
+   that comes
+   as we do
+   it enough
+   that it becomes
+   so
+   if I'm
+   given a project
+   intuitively
+   I may not
+   understand everything
+   about it
+   but I kind of
+   have it all
+   pictured out
+   on a well
+   this is about
+   what it's going
+   to look like
+   oh my goodness
+   these are the
+   things we've got
+   to watch out for
+   and then
+   like you said
+   apply your ability
+   to be a crass
+   person
+   and to
+   be creative
+   to take pride
+   so that's
+   what I'm saying
+   I don't see
+   myself as one
+   or the other
+   but kind of
+   I like your
+   description
+   of calling
+   like saying
+   becoming
+   I like that
+   word
+   it's
+   I think
+   the reason
+   why a company
+   might want to
+   invest in
+   craftsmanship
+   is to ensure
+   that developers
+   are always
+   continuing
+   to improve
+   or always
+   becoming
+   better
+   not necessarily
+   sticking
+   to one
+   comfortable
+   area
+   of software
+   development
+   that they
+   like
+   I used to be
+   very uncomfortable
+   say
+   very comfortable
+   with back-end
+   development
+   I did not do
+   fun and development
+   well
+   like CSS
+   stuff
+   I just learned
+   it
+   I mean
+   I've been
+   programming
+   for 10 years
+   like I just
+   learned CSS
+   a proper
+   like really good
+   fun and CSS
+   with taking
+   designs from
+   graphic designers
+   and turning them
+   into websites
+   three months ago
+   because I
+   I worked
+   on a team
+   on a project
+   where they
+   really needed
+   more fun
+   and people
+   and at the
+   time we were
+   in a time
+   crunch
+   and I ended
+   up having to
+   take on that
+   job to help
+   the team
+   so it's
+   just a way
+   to ensure
+   that people
+   are always
+   continuously
+   learning
+   acquiring new
+   skills
+   and improving
+   as opposed
+   to staying
+   at one level
+   any other
+   questions
+   I guess
+   the way
+   that I
+   look at
+   it
+   what I'm
+   seeing
+   based on
+   your
+   presentation
+   is that
+   an engineer
+   is not
+   necessarily
+   a craftsman
+   and a craftsman
+   is not
+   necessarily
+   an engineer
+   I think
+   the way
+   that that
+   breaks out
+   given
+   the way
+   you were
+   describing
+   it
+   is that
+   the engineer
+   is not
+   necessarily
+   the guy
+   that
+   can go
+   in
+   and make
+   the most
+   elegant
+   code
+   or make
+   the most
+   the best
+   architectural
+   decisions
+   for the
+   application
+   that's there
+   I'm talking
+   more about
+   the approach
+   of how you
+   become an
+   experienced
+   software
+   developer
+   so one
+   of the things
+   I highlighted
+   in the beginning
+   to summarize
+   so I
+   defined the
+   two
+   and then I
+   highlighted
+   the common
+   goal
+   between the
+   two
+   so then
+   I was
+   talking
+   about
+   to reach
+   that
+   common
+   goal
+   very
+   experienced
+   software
+   engineers
+   can
+   hit that
+   goal
+   quite well
+   they can
+   build quality
+   software
+   economically
+   with good
+   performance
+   and stuff
+   good security
+   etc
+   I guess
+   what I'm
+   talking about
+   though
+   is in order
+   to reach
+   that goal
+   it seems
+   like the
+   software
+   craftsmanship
+   perhaps
+   will get
+   you there
+   a lot
+   faster
+   than
+   getting
+   formal
+   education
+   in software
+   engineering
+   or reading
+   all the
+   software
+   engineering
+   books
+   learning
+   things
+   that
+   way
+   because
+   then you
+   gradually
+   learn
+   skills
+   with people
+   that are
+   actually
+   experienced
+   in doing
+   it on the
+   field
+   so you're
+   not so
+   focused on
+   the separation
+   of roles
+   you're more
+   focused on
+   how we
+   get to the end
+   role
+   right
+   right
+   yeah
+   so like
+   in a way
+   I'm kind of
+   actually trying
+   to align
+   the two
+   I'm sure
+   that there
+   is overlap
+   or that they
+   can meet
+   they're not
+   necessarily
+   in contradiction
+   any other
+   questions
+   all right
+   thank you
+   very much
+   everybody
+   so
+   I want to
+   look at the
+   definition
+   similarities
+   and differences
+   applications at
+   Groupon
+   these are some
+   references
+   Groupon is hiring
+   I'll let H talk
+   more about that
+   we already talked
+   a little bit
+   Groupon has a few
+   dozen software teams
+   and I have a blog
+   and a tweet
+   and twitter
+   want to follow
+   thank you
+   thanks Andy
+   so next month
+   I think we have a
+   topic but I'm not
+   sure what it is
+   so we'll get that
+   posted in the next
+   week or two
+   and I hope to see
+   you guys next
+   time
+   thanks
