@@ -1,362 +1,547 @@
 ---
-content: Hi, it's Mike with UGtastic again. Today I'm sitting down with Ken Auer.
-  Ken has been a speaker in the object-oriented community for a very long time and
-  I first heard him talk at SCNA 2009 where he talked a little bit about how he got
-  into speaking and teaching and eventually mentoring through role model software
-  with the object-oriented community. So also he's a devout religious person, Christian,
-  and carries that faith into his teachings and his work through role model software.
-  So we'll talk a little bit about how he got involved with teaching, how role model
-  software came to be, and what some of his experiences have been with sharing his
-  faith as part of his life and his teaching. So Ken, thank you very much for taking
-  the time to sit down with me today. So in 2009, I was attending, I think it was
-  the first SCNA conference, and I got a chance to hear you talk. And my recollection
-  wasn't perfect. I thought you had been inspired by some presentations you had heard
-  by some of the people who were starting the concepts or promoting OO. But you corrected
-  me to say that you had already been working with OO. Can you tell me a little bit
-  about how you got started and what the real story was? Sure. Yeah, it's kind of
-  interesting. I was hired by a company called Paradigm, which some people may have
-  heard of. They actually invented DSL, but not back when I was working with them.
-  But they hired me to help build the next network management system. What do you
-  mean, DSL? And one of the marketing guys. Sorry? You meant DSL, the internet communication.
-  Yeah, exactly. Way back then, they were just dealing with high speed modems. But
-  they wanted to build the next generation network management system. And so I was
-  there with a bunch of more experienced developers than I was. And we were all trying
-  to figure out how do we build this and see. And this was a time when workstations,
-  like some workstations, were just getting off the ground. Tektronix, HP, Digital,
-  a couple of these guys had workstations. And we were just exploring what technology
-  we could use. We wanted something called a graphical user interface. The term GUI
-  wasn't invented yet. You know, it realizes the 80s and the Mac had just came out.
-  And so one of the marketing guys actually had read one of the three articles written
-  about object-oriented programming at the time. And he said, you know, you guys really
-  should be looking into object-oriented programming. And he said, you guys need to
-  be looking at that. We all looked at each other and said, what's object-oriented
-  programming? And he said, you guys need to be looking at that. We all looked at
-  each other and said, what's object-oriented programming? And he said, you guys need
-  to be looking at that. We all looked at each other and said, what's object-oriented
-  programming? And so we went and read the three articles that were written on it
-  and said, this sounds pretty cool. We should look into this. And we were a bunch
-  of computer science grads, most of us. Well, I shouldn't say most of us. Some of
-  us were. Others had gotten to engineering programming for other means. And we had
-  never heard of this thing. And we started studying it and looking into it and found
-  out that small talk ran on some of these workstations that we were looking at. And
-  next thing you know, we were learning about it from the guys at StepStone, which
-  were actually inventors of Objective-C because they believe that small talk could
-  never be used in a commercial environment. We proved them wrong, but we eventually
-  started using Objective-C and small talk. And it was kind of interesting. So as
-  I'm doing this, I'm pretty new, 23, 24, getting my master's at night and learning
-  about object-oriented technology in my day job. And I'm going to these master's
-  programs at night and seeing the academics talking about the stuff that I'm supposed
-  to need to know to be successful in my career. And they introduced object-oriented
-  technology in a very academic way that had nothing to do with the objects we were
-  dealing with. And I finally said, you know what, I'm going to stop listening to
-  the academics and just pour my time into understanding this technology, which they
-  don't seem to understand. Little did I know the first OOPSLA conference was just
-  being formed the same year I just learned about objects. And OOPSLA was object-oriented
-  programming systems and languages and it was a combination of academics and people
-  trying to apply this application, right? And yeah, I very quickly got to meet the
-  people who had written the three books on small talk, you know, the folks out of
-  Xerox PARC, met guys like Kent Beck and Ward Cunningham who were doing work out
-  of Tektronix and a few other guys and a lot of academics. And I very quickly understood
-  that first of all, most of academics, I had just gotten my, you know, degree in
-  college, never heard of it. Most academics didn't hear of it either, it wasn't relevant.
-  And then the academics that were there talking about objects, it's like, this just
-  doesn't make sense. I do this every day and what you're saying is so irrelevant.
-  Yeah. They're talking about correct programs and I'm thinking correct programs is
-  one that people use and is helpful. You know, it's not a mathematical formula here,
-  guys. Yeah, so very quickly, yeah, so I very quickly got drawn to, started participating
-  in workshops at OOPSLA and talk about this concept of object-oriented design, you
-  know, we had object-oriented programming and we'd never heard of object-oriented
-  design and, you know, got into workshops and started talking to guys like Kent Beck
-  and Ward Cunningham and back in 1987, I pulled up this not too long ago, a paper
-  that Kent and Ward wrote in 1987 about patterns in programming languages and how
-  patterns can help us. And, you know, for years we started talking about patterns,
-  years later we were, you know, talking about rolling this out to the rest of the
-  world and the patterns books started coming out and eventually things like extreme
-  programming, all of this came out of applying this. So a lot of that gets into how
-  I started teaching people because you couldn't get this from college. Yeah, people
-  were taking these very interesting topics and making them dull and you were looking
-  at like how can you convert this to something to be more consumable. Right. And
-  then, you know, I found out other than guys like, well, you know, Kent had a computer
-  science degree but Ward had a double E or something and the more people I met in
-  this community that were people that were really doing great stuff, the more I realized
-  how many didn't have a computer science degree. I remember working with a guy one
-  time and he did something pretty cool and I said, yeah, that's pretty neat. He says,
-  yeah, not bad for a history major, is it? And, you know, I started recognizing that
-  most of the best developers that I'd run into had mentors. You know, somebody who
-  just helped them along and they just really wanted to take the technology and apply
-  it. And, you know, I started realizing, well, if this is the case and, you know,
-  although, you know, my computer science degree, I certainly don't want to say it
-  had no value. It certainly did. It got me my first job. But, I was recognizing that,
-  you know, if I want to help people learn how to do object room programming, it's
-  a whole paradigm shift from anything they're teaching in universities. They're almost
-  teaching it backwards. They teach performance first instead of, you know, the mantra
-  we came up with, you know, Kent and I and a couple others, make it run, make it
-  right, make it fast. You know, performance comes last. Once you've got this thing
-  down nice and clean, then, you know, if there's any performance left to tune out
-  of it, then you tune it. People weren't being taught this. So, I found that, you
-  know, I'm constantly, as I'm working with my clients, I got into object room consulting
-  for a small company called Knowledge Systems in the late 80s. And, it just grew
-  as small talk and other things started growing. And, constantly trying to teach
-  people how this was different than the way they thought before. You know, introducing
-  GUIs and objects and stuff that was all brand new to most people. Found that, boy,
-  you know, having a computer science degree often got in the way. Sometimes it didn't,
-  you know, it depends on whether people can make the jumps. But, I just found that
-  mentoring was the most important thing and immersion. You know, just learning it
-  by doing it and having somebody who's done it around you. You know, my mentors were
-  the guys who wrote the small talk library. You know, I spent all that time reading
-  the code because it was the only object we're encoded on the planet. Yeah. So, you
-  reached out to them and then they kind of took you under their wing to help you
-  to learn or did you start -- I'm sorry? Did you -- I guess I was just speaking to
-  the microphone. So, you were looking for a mentor and you were able to find a mentor
-  in them. Yeah. Is that a correct assessment of how that worked or did you -- Yeah,
-  well, I mean, it quickly became -- you know, again, we were -- I mean, recognize
-  -- we were the pioneers. We go to -- the first hoopla was 600 people. You know,
-  and probably 300 or 400 of them were academics. Right. You know, I found out that,
-  you know, at the ripe old age of 25 with a couple of years under my belt that I
-  was -- I had more experience in building object-oriented systems than most people
-  on the planet. And certainly looking for mentors but there wasn't a whole lot to
-  choose from. Okay. So, you know, definitely meeting Kent and Ward and, you know,
-  we kind of, in many ways, became our own mentors. You know, we just share experiences
-  of here's what I tried. How did that work, you know? Right. We were describing different
-  patterns that showed up in the Gang of Four book, you know, eight years later. We
-  didn't have a name for them at the time but -- Right. You were saying, yeah, I tried
-  this thing and, you know, let somebody -- you know, some year later I found out
-  that I implemented the proxy pattern and I didn't know that it had a name. It just
-  seemed to make sense, right? So, how did that ultimately end up with you going into
-  the role of a mentor or the mentor or how did you end up moving into working with
-  somebody as a mentor? How did that eventually culminate? Well, when I was hired
-  at Knowledge Systems, I was working with Sam Adams who probably had about a year's
-  worth more experience than I did and, you know, certainly learned a lot from Sam
-  and we learned a lot from each other. It was great to have a community of people
-  having those ideas. But very quickly it became clear that, you know, in order to
-  hire more people into Knowledge Systems that knew something about small talk, there
-  weren't a whole lot of people who had more than two or three years' experience.
-  Right. Right. We had to find somebody who at least had spelled it and used it for
-  something and bring them on. Actually, the most interesting one was Ignetta Jakobsen,
-  Ivar Jakobsen's daughter, was just graduating college. Ivar was coming out with
-  the idea of refactory and wanted to build a software product around it and felt
-  like, "Okay, well I'll send my daughter to America, she can explore America" and
-  asked if she could live at Knowledge Systems and glean from us and then we just,
-  whenever we spent an hour with her teaching her, just rack up a bill and he'd pay
-  the bill. Yeah. And that became an incredible experience because within three months,
-  now Ignetta was a very, very bright individual, but within three months we saw how
-  much she learned by being in the environment of, "I'm trying to solve this problem.
-  Here's what I think. Here's the kind of stuff I need. How would you do this?" And
-  we'd spend time, you know, walking her through how we would approach it. Then she'd
-  do something and show it to us and we review her code. And we watched that happen.
-  Eventually, we started having clients who said, "We need more of your time, but
-  we don't have a consulting budget." Right. And our owner, Reed Phillips, had this
-  great idea of saying, "Well, how about we do what we did with Ignetta, formalize
-  it. We called it the Small Talk Apprenticeship Program." And it ended up saying,
-  you know, we take three people from a client, team them up with one of our people
-  and immerse them. You basically get locked in a large room with these people. We
-  build stuff together. Right. We talk through the principles and everything. And
-  that was wildly successful. We'd see people who came through that program in three
-  months be masters versus the guys that were going back to it had a year of experience.
-  And we just saw that this is the way it needs to be done. You know, immersion is
-  by far the best way to go. They were getting what would otherwise take several years
-  to get. And they get to pay it out of their education budget for these people who
-  didn't have any more consulting budgets. So it worked out kind of good back then.
-  And you used, you called it the Apprenticeship Program, or it had the word apprenticeship
-  in it. Was there any precedent in software for apprenticeship programs at that time?
-  Or was this based off of just taking a word that seemed appropriate? Yeah. You know,
-  I never heard of anything like that before. I know that a few people kind of duplicated
-  it afterwards. You know, I know when Extreme Programming came out, Bob Martin had
-  these XP immersion things that they went several weeks and you'd just sit down with
-  Kent and a bunch of other guys, you know, sit in a room and just do stuff XP way.
-  Yeah. But I think as far as I know, the Small Duck Apprenticeship Program was really
-  the first of its kind and then several people duplicated it. And I'm quite honestly,
-  I don't know where they came, you know, who came up with the name. We just said,
-  how do we, how do we do this? Package it up in a way that we can sell to people
-  who are spending money out of their education budget. Because you had to have a
-  program to do that, right? You had to have a course. So, you know, we called it
-  a course, but it really spanned, spanned about 10 weeks, about six weeks of immersion
-  over 10 weeks, they get to go home and they drink from a fire hose, go home, swallow
-  a little bit, come back, drink some water. Yeah. Gasping. Yeah. So fast forward
-  a little bit to role model software and you're founding that, as I understand it's,
-  you've, from your original talk that I heard in 2009, that you've actually integrated
-  role model software into your home, into your life, that there's the business and
-  the home all in one, I can't think of the right word, but. Integrated. Integrated.
-  Thank you. Lifestyle. So, you have mentors come and they live in a part of the house.
-  How does that work? Yeah. No, it's confusing to me sometimes too. No, really. I
-  mean, so actually I'm sitting in our, in a basement of our house. We, we designed
-  this, but we started the company before, before I designed this house. With the
-  vision of basically recognizing that, you know, this whole idea of mentorship and,
-  so you mentioned my faith, you know, I was, I was at the same time as I was learning
-  how to be a better mentor and do more with software. I was also being trained in,
-  in church leadership in a very intense, um, kind of discipleship, apprenticeship
-  type of program. And just started recognizing, wow, this is really neat. And, and
-  I had people going through the same thing with me that had seminary degrees and
-  said, man, I never learned this stuff in seminary. Right. Um, this is just going
-  through, you know, the Bible and working with these men of God who've been leading
-  churches and stuff. And, um, they were saying what a great experience it was. So
-  I just started seeing these patterns. And then, you know, I had a daughter and had
-  to figure out how to educate her. And I had started, heard about homeschooling.
-  So I started learning about homeschooling and found out, wow, you know, when you
-  start homeschooling, your whole model of education changes drastically. So all this
-  was, was happening with me in the nineties. I didn't even know what's happening
-  to me. You know, I just was, you know, there, um, stumbled upon the idea of doing
-  it in software, stumbled upon in church leadership. And now I'm trying to raise
-  my, my own children and figure out how to educate them. And just started seeing
-  this pattern of, wow, you know, when you actually live with people, um, the more
-  experienced teaching the young, less experienced and actually doing stuff, um, education
-  happens in a very different way than our traditional sit in the classroom, hear
-  the lecture, take the test. Um, you know, and again, not that there's no value for
-  some of that. You know, uh, in fact, my daughter and I just, my daughter's now 21.
-  And we, we sometimes speak at, uh, homeschooling conferences. And one of the, one
-  of the reasons why we gave is the value of a, of a non-academic education and point
-  out that a, a well-rounded education isn't just theory, but it's application. Um,
-  and they need to overlap because theory without application is just head knowledge,
-  right? Application without understanding the foundations of it, get you to come
-  in up with practices that you think are smart, but you're missing off, right? Right.
-  So, um, you know, that's, and that's kind of the way we do this, uh, here. So when
-  I started role model, uh, was kind of, again, I was just learning about homeschooling.
-  Um, I needed to hire my first employee cause I had more work to do than I could.
-  And I couldn't afford a college graduate that, that wanted more money than they
-  were worth. Cause I knew that they're going to come out of college. They don't know
-  anything about objects. Right. Right. You know, I'm, I'm going to pay $50,000 a
-  year for the privilege of teaching them. Yeah. I didn't think I wanted to do that.
-  They spent a few hours a week working on some assignments that have no deadlines
-  except for it's due for a grade and just get there. Right. Yeah. And so, uh, I tried
-  an experiment with a couple of pretty bright high school guys and that didn't work
-  out, uh, for a variety of reasons, which we don't have time to get into. But then
-  I eventually, uh, stumbled across this homeschool guy, Nathaniel Talbot, who many
-  people might know now, uh, who was looking for a mentor, trying to avoid having,
-  you know, his parents said, look, either got to find a way to get mentored and get
-  a career or go to college. And he, he wanted a mentor and I wanted a mentee and,
-  uh, it just worked out great. So he came on board and, you know, I'd give him assignments
-  and he'd do some other odds and ends and empty the trash can for me and whatever.
-  And, uh, you know, it just started working out. And then after that, um, after that
-  worked out so well, within about a year and a half, Nathaniel was blowing away a
-  lot of the people that I was working with, the clients who had the computer science
-  degrees and everything else. Um, granted, Nathaniel was an unusual guy, but, uh,
-  guys who are hungry and want to learn, they tend to make the best apprentices. Right,
-  right. So, uh, after doing that, we did another one the next year and just kind
-  of, you know, probably average about one a year. Sometimes we had more than one
-  going and others. But, uh, really found out, you know, we're trying to get work
-  done here. You can only have so much time where you're teaching the guys who don't
-  know anything. But eventually it doesn't take them that long until they start becoming
-  the guys, mentoring the next group of guys. And now it's, you know, more of an environment
-  where the group is mentoring. Um, well, we do, we did start a couple of years ago,
-  the Craftsmanship Academy to kind of formalize the foundational part. Cause what
-  I'd find is that time out of time you need to pump into somebody for the first three
-  to six months was just a lot. And just to get the principles in there, the theory
-  that they never got. Right. Or the applied theory they never got. And so I've made
-  this immersion program a couple of years ago to say the first, the first few months
-  are just going to be pretty intense. Um, but after that, you know, as soon as they've
-  gotten that, we teach them the principles, teach them test first development, teach
-  them a few other things. Uh, how to build what good code looks like, why you review
-  your code. Don't just whip it together. Right. Um, you know, just a lot of stuff.
-  And then they just start working with the, with the teams. Yeah. I thought it was
-  very interesting how you were talking about, um, once it were, it sounded like you
-  were saying that the, once their apprentices reach a certain level, they could sort
-  of kind of support each other. And I've observed that, uh, in my past in martial
-  arts and also in, uh, in my own little ones. Um, my, my kids are much, much, much
-  younger than, uh, your kids, but, uh, starting to see them. I've got a seven year
-  old still. Oh, okay. Well, I got a five and a two year old and seeing the five year
-  old sit down now and sing the alphabet to the two year old. And now the two year
-  old is singing along with the five year old and how they, they teach other each
-  other. And it becomes kind of a, a self, uh, regulating machine, self running machine.
-  And, and I think a lot of that is just, it's a very human way to learn. I just think
-  that, uh, you know, getting, uh, um, a, uh, enough, uh, erasing the temperature
-  of the room, the ambient temperature is what I like to call it. The ambient temperature
-  of the room high enough that all of a sudden people start to be able to see things
-  in each other and share and, and communicate. That's, that's a whole value of community
-  that I, I really like to, uh, uh, uh, emphasize here on, on, uh, Yukatastic. So,
-  um, and, and talking about getting that message out, we talked about a little bit
-  about how, uh, you know, you're open with your faith. It's, it's the role model
-  software, um, has, even has the cross in, uh, in the, in the logo. And it's, it's
-  a hard balance when you're dealing with a, uh, heterogeneous, uh, uh, community
-  that has so many different, uh, faiths or non-faiths. So, uh, has it been a challenge
-  or has it been helpful, uh, for you going out and sharing your message and also
-  with that you're, you're, you're, you live an integrated life and your faith is
-  integrated into your life and into your career. Right. Has that been a challenge
-  or, or, or, or, or help? Um, yeah, some days more challenging than others. Um, the,
-  the, um, I mean, at the end of the day, you know, I, I, I was just reading Colossians.
-  Yesterday and pointed, you know, prices first in everything. It takes first place
-  in everything. And that's, that's the way I live. So I can't, if he's going to be
-  first place in everything, that means includes my work. Right. And, um, you know,
-  I think it helps my, most of my clients would say, you know, they're dealing with
-  people who work with integrity. If we say we're going to do something, we do it.
-  If we screw up, we admit to it, we make it right. Um, how does that affect my clients?
-  Even the ones that aren't, don't share my faith like that. Um, in fact, one of my,
-  uh, best clients, he, he's a self-proclaimed pagan and, uh, you know, he's, but
-  he's, he appreciates our honesty. He's an honest guy himself. Um, so that works
-  out fine. Um, I do know that there's been people who won't work with us because
-  they just, uh, I don't know what they're afraid of. I mean, it's really interesting
-  that the people who promote tolerance are very intolerant to people who don't share
-  their faith. Um, and you know, one, uh, early on I had a good friend of mine, I
-  knew from the small dog community when I started my business. Um, shared with me
-  when I, when I showed my logo, my first website came up and, um, he said, you know,
-  Ken, I appreciate your faith. He says, but man, you gotta feed your family. You
-  know, you don't want to be advertising that. People are gonna be turned off. You
-  gotta feed your family. And I said, well, you know, thanks for that advice, but
-  I know who my provider is and I'm eating fine. Yeah. You know, and, um, yes, that's
-  the case. I definitely know that there are people who turned off by it. Um, there
-  were a lot of people who turned off by Jesus Christ. Yeah. You know, they still
-  are. And, um, you know, for some reason, some people think that the worst thing
-  in the world right now is somebody who actually has a faith and has a faith in Christ
-  and believes that there's a thing called sin in the world. Um, you know, personally,
-  I think sin in the world is a pretty big problem and it was a pretty big problem
-  in me. And I thank God I have a savior who died for me. Right. I don't want to hide
-  that. Why should I hide it in the workplace? I mean, the whole idea that it shouldn't
-  happen in the workplace, it better affect everything I do. Um, and it does. So,
-  um, you know, it's definitely been a problem. I know when I had the Craftsmanship
-  Academy website, there was, uh, somewhere along the line, I said, here's the behavior.
-  And, you know, I chose some wording that, yeah, I can see some people might be inflamed
-  by it or whatever. So I changed the wording. But, you know, some people just had
-  a fit and just started calling me all kinds of names. And it's like, look, man,
-  I'm just trying to tell you that if you come here, this is what you're going to
-  be dealing with. We have a biblical worldview. And when people don't act right,
-  we're going to ask them to repent. And repent is a bad word to some people. Um,
-  you know, the list of sins are great. You know, from being, if you look in Romans,
-  I mean, list, you know, things like being disobedient to parents. It's called sin.
-  Um, there's all kinds of sins. And if we don't want to act like there's a thing
-  called sin, we're going to be living in it. And there's going to be consequences
-  to that. So, um, you know, we call people to repent when they act poorly, uh, with
-  each other. Um, if they're leading destructive lifestyles, we would call them to
-  repent of that. It doesn't mean you're fired, you're shot, you're, you should be
-  put in jail. Right. You know, I'm not out there trying to hate mine, but I am to
-  say, Hey, this is Jesus Christ died for me. He's God. And there's a thing called
-  sin. And, uh, we should repent from it. That's what he asked people to do. Um, so
-  some people just say, well, I don't share that faith, but I'll work with you anyway.
-  And others just, you know, leave skid marks. Yeah. Yeah. I, I, I'll, I'll openly
-  say I was one of those people that had a, uh, kind of a visceral reaction at first
-  to, uh, what I thought was a, um, negative statement on the, on the, uh, on the
-  posting. And it was more that I was frustrated because I know what you're doing
-  is good. And, um, and it helps more people than getting hooked on one line. And
-  it's better to look at somebody holistically, um, what they're, what they're doing
-  and what their intent, kind of where their heart is, uh, than to get too hung up
-  on one aspect. Uh, you know, that we live in a pluralistic society and that, uh,
-  you know, you think one thing. I think another, but as long as we can live in somewhat
-  reasonable harmony, that's what matters. And I just was most interested in, in,
-  in exactly what you described. Is the, uh, how that, how, how trying to share your,
-  uh, how trying to communicate your message of craftsmanship and software and professionalism
-  and mentorship and getting people to adopt those, um, well, they're secular, uh,
-  secular perspectives. While trying to balance, uh, not getting your message misconstrued
-  or, or hindered by people getting hung up on, on the fact that you're also sharing
-  it with the message of your faith. Um, yeah, it's, um, you know, what's interesting
-  is the, the word tolerance. I mean, originally the whole idea of tolerance is you
-  tolerate people who think differently than you. Um, and, um, I, I try to do that.
-  I tolerate people who think, I, I've hired some of them, you know, they don't, not
-  everybody hears, shares my same faith. Um, we certainly have clients that don't,
-  um, some in a flaming way don't. Right. Right. Um, but at the end of the day, you
-  know, if they can tolerate it, great. You know, I have to tolerate their differences.
-  They tolerate my differences. Um, I believe in tolerance. I think tolerance is a
-  great thing. Um, I don't want to see, I don't see, I don't see, I want tolerance
-  to go back to what it meant. Right. Tolerance isn't freedom from religion. Right.
-  Tolerance is freedom of religion. Right. I mean, if a Muslim is going to work next
-  to me or, or, uh, or a Jewish man or, or, or a self-proclaimed pagan, I mean, that's,
-  I can work next to them. Right. You know, and I'll tolerate certain things. There's
-  certain things I won't tolerate. Um, and there's certain things they won't tolerate.
-  So, uh, you know, if we can, if we can get past those things, we can work together.
-  If we can't, we can't, but I'm not going to change who I am and I'm not going to
-  deny my Lord. I mean, people have died for that before in history. And, uh, if I
-  have to die for it someday, I will. I hope it's not tomorrow. I hope not. I hope
-  you're, you're teaching and, and, and sharing the, uh, the concept of mentorship
-  for a very long time. Because, uh, uh, like I said, I, I think what is important
-  is the message of improving ourselves and each other and sharing, uh, than getting
-  hung up on any particular thing. And, uh, um, so yeah, that's, that's, that's, that
-  was my main perspective. Great. Well, thank you very much for taking the time to
-  sit down with me. I really appreciate your time. Well, thank you for, uh, giving
-  me the opportunity. Sure. Sure.
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: Ken Auer
+    role: developer community and conference conversations
+turns:
+- speaker: M1
+  text: |-
+    Hi, it's Mike with UGtastic again. Today I'm sitting down with Ken Auer. Ken has been
+     a speaker in the object-oriented community for a very long time and I first heard him talk at
+     SCNA 2009 where he talked a little bit about how he got into speaking and teaching and eventually
+     mentoring through role model software with the object-oriented community. So also he's a devout
+     religious person, Christian, and carries that faith into his teachings and his work through
+     role model software. So we'll talk a little bit about how he got involved with teaching,
+     how role model software came to be, and what some of his experiences have been with sharing his faith
+     as part of his life and his teaching. So Ken, thank you very much for taking the time to sit down with me today.
+     So in 2009, I was attending, I think it was the first SCNA conference, and I got a chance to hear you talk.
+     And my recollection wasn't perfect. I thought you had been inspired by some presentations you had heard by
+     some of the people who were starting the concepts or promoting OO. But you corrected me to say
+     that you had already been working with OO. Can you tell me a little bit about how you got started and
+     what the real story was?
+     Sure. Yeah, it's kind of interesting. I was hired by a company called Paradigm, which some people may have heard of.
+     They actually invented DSL, but not back when I was working with them. But they hired me to help build the next network management system.
+     What do you mean, DSL?
+     And one of the marketing guys. Sorry?
+     You meant DSL, the internet communication.
+     Yeah, exactly. Way back then, they were just dealing with high speed modems. But they wanted to build the next generation network management system.
+     And so I was there with a bunch of more experienced developers than I was. And we were all trying to figure out how do we build this and see.
+     And this was a time when workstations, like some workstations, were just getting off the ground.
+     Tektronix, HP, Digital, a couple of these guys had workstations. And we were just exploring what technology we could use.
+     We wanted something called a graphical user interface. The term GUI wasn't invented yet.
+     You know, it realizes the 80s and the Mac had just came out.
+     And so one of the marketing guys actually had read one of the three articles written about object-oriented programming at the time.
+     And he said, you know, you guys really should be looking into object-oriented programming.
+     And he said, you guys need to be looking at that. We all looked at each other and said, what's object-oriented programming?
+     And he said, you guys need to be looking at that. We all looked at each other and said, what's object-oriented programming?
+     And he said, you guys need to be looking at that. We all looked at each other and said, what's object-oriented programming?
+     And so we went and read the three articles that were written on it and said, this sounds pretty cool.
+     We should look into this. And we were a bunch of computer science grads, most of us. Well, I shouldn't say most of us. Some of us were.
+     Others had gotten to engineering programming for other means. And we had never heard of this thing.
+     And we started studying it and looking into it and found out that small talk ran on some of these workstations that we were looking at.
+     And next thing you know, we were learning about it from the guys at StepStone, which were actually inventors of Objective-C because they believe that small talk could never be used in a commercial environment.
+     We proved them wrong, but we eventually started using Objective-C and small talk.
+     And it was kind of interesting. So as I'm doing this, I'm pretty new, 23, 24, getting my master's at night and learning about object-oriented technology in my day job.
+     And I'm going to these master's programs at night and seeing the academics talking about the stuff that I'm supposed to need to know to be successful in my career.
+     And they introduced object-oriented technology in a very academic way that had nothing to do with the objects we were dealing with.
+     And I finally said, you know what, I'm going to stop listening to the academics and just pour my time into understanding this technology, which they don't seem to understand.
+     Little did I know the first OOPSLA conference was just being formed the same year I just learned about objects.
+     And OOPSLA was object-oriented programming systems and languages and it was a combination of academics and people trying to apply this application, right?
+     And yeah, I very quickly got to meet the people who had written the three books on small talk, you know, the folks out of Xerox PARC, met guys like Kent Beck and Ward Cunningham who were doing work out of Tektronix and a few other guys and a lot of academics.
+     And I very quickly understood that first of all, most of academics, I had just gotten my, you know, degree in college, never heard of it.
+     Most academics didn't hear of it either, it wasn't relevant.
+     And then the academics that were there talking about objects, it's like, this just doesn't make sense.
+     I do this every day and what you're saying is so irrelevant.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    They're talking about correct programs and I'm thinking correct programs is one that people use and is helpful.
+     You know, it's not a mathematical formula here, guys.
+     Yeah, so very quickly, yeah, so I very quickly got drawn to, started participating in workshops at OOPSLA and talk about this concept of object-oriented design, you know, we had object-oriented programming and we'd never heard of object-oriented design and, you know, got into workshops and started talking to guys like Kent Beck and Ward Cunningham and back in 1987, I pulled up this not too long ago, a paper that Kent and Ward wrote in 1987 about patterns in programming languages and
+     how patterns can help us.
+     And, you know, for years we started talking about patterns, years later we were, you know, talking about rolling this out to the rest of the world and the patterns books started coming out and eventually things like extreme programming, all of this came out of applying this.
+     So a lot of that gets into how I started teaching people because you couldn't get this from college.
+     Yeah, people were taking these very interesting topics and making them dull and you were looking at like how can you convert this to something to be more consumable.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    And then, you know, I found out other than guys like, well, you know, Kent had a computer science degree but Ward had a double E or something and the more people I met in this community that were people that were really doing great stuff, the more I realized how many didn't have a computer science degree.
+     I remember working with a guy one time and he did something pretty cool and I said, yeah, that's pretty neat.
+     He says, yeah, not bad for a history major, is it?
+     And, you know, I started recognizing that most of the best developers that I'd run into had mentors.
+     You know, somebody who just helped them along and they just really wanted to take the technology and apply it.
+     And, you know, I started realizing, well, if this is the case and, you know, although, you know, my computer science degree, I certainly don't want to say it had no value.
+     It certainly did.
+     It got me my first job.
+     But, I was recognizing that, you know, if I want to help people learn how to do object room programming, it's a whole paradigm shift from anything they're teaching in universities.
+     They're almost teaching it backwards.
+     They teach performance first instead of, you know, the mantra we came up with, you know, Kent and I and a couple others, make it run, make it right, make it fast.
+     You know, performance comes last.
+     Once you've got this thing down nice and clean, then, you know, if there's any performance left to tune out of it, then you tune it.
+     People weren't being taught this.
+     So, I found that, you know, I'm constantly, as I'm working with my clients, I got into object room consulting for a small company called Knowledge Systems in the late 80s.
+     And, it just grew as small talk and other things started growing.
+     And, constantly trying to teach people how this was different than the way they thought before.
+     You know, introducing GUIs and objects and stuff that was all brand new to most people.
+     Found that, boy, you know, having a computer science degree often got in the way.
+     Sometimes it didn't, you know, it depends on whether people can make the jumps.
+     But, I just found that mentoring was the most important thing and immersion.
+     You know, just learning it by doing it and having somebody who's done it around you.
+     You know, my mentors were the guys who wrote the small talk library.
+     You know, I spent all that time reading the code because it was the only object we're encoded on the planet.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    So, you reached out to them and then they kind of took you under their wing to help you to learn or did you start --
+     I'm sorry?
+     Did you -- I guess I was just speaking to the microphone.
+     So, you were looking for a mentor and you were able to find a mentor in them.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    Is that a correct assessment of how that worked or did you --
+     Yeah, well, I mean, it quickly became -- you know, again, we were -- I mean, recognize -- we were the pioneers.
+     We go to -- the first hoopla was 600 people.
+     You know, and probably 300 or 400 of them were academics.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    You know, I found out that, you know, at the ripe old age of 25 with a couple of years under
+     my belt that I was -- I had more experience in building object-oriented systems than most
+     people on the planet.
+     And certainly looking for mentors but there wasn't a whole lot to choose from.
+- speaker: M1
+  text: Okay.
+- speaker: M1
+  text: |-
+    So, you know, definitely meeting Kent and Ward and, you know, we kind of, in many ways,
+     became our own mentors.
+     You know, we just share experiences of here's what I tried.
+     How did that work, you know?
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    We were describing different patterns that showed up in the Gang of Four book, you know,
+     eight years later.
+     We didn't have a name for them at the time but --
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    You were saying, yeah, I tried this thing and, you know, let somebody -- you know,
+     some year later I found out that I implemented the proxy pattern and I didn't know that it
+     had a name.
+     It just seemed to make sense, right?
+     So, how did that ultimately end up with you going into the role of a mentor or the
+     mentor or how did you end up moving into working with somebody as a mentor?
+     How did that eventually culminate?
+     Well, when I was hired at Knowledge Systems, I was working with Sam Adams who probably had
+     about a year's worth more experience than I did and, you know, certainly learned a lot
+     from Sam and we learned a lot from each other.
+     It was great to have a community of people having those ideas.
+     But very quickly it became clear that, you know, in order to hire more people into Knowledge
+     Systems that knew something about small talk, there weren't a whole lot of people who had
+     more than two or three years' experience.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    We had to find somebody who at least had spelled it and used it for something and bring them
+     on.
+     Actually, the most interesting one was Ignetta Jakobsen, Ivar Jakobsen's daughter, was just
+     graduating college.
+     Ivar was coming out with the idea of refactory and wanted to build a software product around
+     it and felt like, "Okay, well I'll send my daughter to America, she can explore America"
+     and asked if she could live at Knowledge Systems and glean from us and then we just, whenever
+     we spent an hour with her teaching her, just rack up a bill and he'd pay the bill.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    And that became an incredible experience because within three months, now Ignetta was a very,
+     very bright individual, but within three months we saw how much she learned by being in the
+     environment of, "I'm trying to solve this problem.
+     Here's what I think.
+     Here's the kind of stuff I need.
+     How would you do this?"
+     And we'd spend time, you know, walking her through how we would approach it.
+     Then she'd do something and show it to us and we review her code.
+     And we watched that happen.
+     Eventually, we started having clients who said, "We need more of your time, but we don't
+     have a consulting budget."
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    And our owner, Reed Phillips, had this great idea of saying, "Well, how about we do what we did
+     with Ignetta, formalize it.
+     We called it the Small Talk Apprenticeship Program."
+     And it ended up saying, you know, we take three people from a client, team them up with one
+     of our people and immerse them.
+     You basically get locked in a large room with these people.
+     We build stuff together.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    We talk through the principles and everything.
+     And that was wildly successful.
+     We'd see people who came through that program in three months be masters versus the guys that
+     were going back to it had a year of experience.
+     And we just saw that this is the way it needs to be done.
+     You know, immersion is by far the best way to go.
+     They were getting what would otherwise take several years to get.
+     And they get to pay it out of their education budget for these people who didn't have any
+     more consulting budgets.
+     So it worked out kind of good back then.
+     And you used, you called it the Apprenticeship Program, or it had the word apprenticeship in it.
+     Was there any precedent in software for apprenticeship programs at that time?
+     Or was this based off of just taking a word that seemed appropriate?
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    You know, I never heard of anything like that before.
+     I know that a few people kind of duplicated it afterwards.
+     You know, I know when Extreme Programming came out, Bob Martin had these XP immersion
+     things that they went several weeks and you'd just sit down with Kent and a bunch of other
+     guys, you know, sit in a room and just do stuff XP way.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    But I think as far as I know, the Small Duck Apprenticeship Program was really the first
+     of its kind and then several people duplicated it.
+     And I'm quite honestly, I don't know where they came, you know, who came up with the name.
+     We just said, how do we, how do we do this?
+     Package it up in a way that we can sell to people who are spending money out of their education
+     budget.
+     Because you had to have a program to do that, right?
+     You had to have a course.
+     So, you know, we called it a course, but it really spanned, spanned about 10 weeks,
+     about six weeks of immersion over 10 weeks, they get to go home and they drink from a
+     fire hose, go home, swallow a little bit, come back, drink some water.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: Gasping.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    So fast forward a little bit to role model software and you're founding that, as I understand
+     it's, you've, from your original talk that I heard in 2009, that you've actually integrated
+     role model software into your home, into your life, that there's the business and the home
+     all in one, I can't think of the right word, but.
+     Integrated.
+     Integrated.
+     Thank you.
+     Lifestyle.
+     So, you have mentors come and they live in a part of the house.
+     How does that work?
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    No, it's confusing to me sometimes too.
+     No, really.
+     I mean, so actually I'm sitting in our, in a basement of our house.
+     We, we designed this, but we started the company before, before I designed this house.
+     With the vision of basically recognizing that, you know, this whole idea of mentorship and,
+     so you mentioned my faith, you know, I was, I was at the same time as I was learning how
+     to be a better mentor and do more with software.
+     I was also being trained in, in church leadership in a very intense, um, kind of discipleship,
+     apprenticeship type of program.
+     And just started recognizing, wow, this is really neat.
+     And, and I had people going through the same thing with me that had seminary degrees and
+     said, man, I never learned this stuff in seminary.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    Um, this is just going through, you know, the Bible and working with these men of God
+     who've been leading churches and stuff.
+     And, um, they were saying what a great experience it was.
+     So I just started seeing these patterns.
+     And then, you know, I had a daughter and had to figure out how to educate her.
+     And I had started, heard about homeschooling.
+     So I started learning about homeschooling and found out, wow, you know, when you start homeschooling,
+     your whole model of education changes drastically.
+     So all this was, was happening with me in the nineties.
+     I didn't even know what's happening to me.
+     You know, I just was, you know, there, um, stumbled upon the idea of doing it in software,
+     stumbled upon in church leadership.
+     And now I'm trying to raise my, my own children and figure out how to educate them.
+     And just started seeing this pattern of, wow, you know, when you actually live with people,
+     um, the more experienced teaching the young, less experienced and actually doing stuff,
+     um, education happens in a very different way than our traditional sit in the classroom,
+     hear the lecture, take the test.
+     Um, you know, and again, not that there's no value for some of that.
+     You know, uh, in fact, my daughter and I just, my daughter's now 21.
+     And we, we sometimes speak at, uh, homeschooling conferences.
+     And one of the, one of the reasons why we gave is the value of a, of a non-academic education
+     and point out that a, a well-rounded education isn't just theory, but it's application.
+     Um, and they need to overlap because theory without application is just head knowledge, right?
+     Application without understanding the foundations of it, get you to come in up with practices
+     that you think are smart, but you're missing off, right?
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    So, um, you know, that's, and that's kind of the way we do this, uh, here.
+     So when I started role model, uh, was kind of, again, I was just learning about homeschooling.
+     Um, I needed to hire my first employee cause I had more work to do than I could.
+     And I couldn't afford a college graduate that, that wanted more money than they were worth.
+     Cause I knew that they're going to come out of college.
+     They don't know anything about objects.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: You know, I'm, I'm going to pay $50,000 a year for the privilege of teaching
+    them.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    I didn't think I wanted to do that.
+     They spent a few hours a week working on some assignments that have no deadlines except
+     for it's due for a grade and just get there.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    And so, uh, I tried an experiment with a couple of pretty bright high school guys and that didn't
+     work out, uh, for a variety of reasons, which we don't have time to get into.
+     But then I eventually, uh, stumbled across this homeschool guy, Nathaniel Talbot, who
+     many people might know now, uh, who was looking for a mentor, trying to avoid having, you know,
+     his parents said, look, either got to find a way to get mentored and get a career or go
+     to college.
+     And he, he wanted a mentor and I wanted a mentee and, uh, it just worked out great.
+     So he came on board and, you know, I'd give him assignments and he'd do some other odds
+     and ends and empty the trash can for me and whatever.
+     And, uh, you know, it just started working out.
+     And then after that, um, after that worked out so well, within about a year and a half,
+     Nathaniel was blowing away a lot of the people that I was working with, the clients who had
+     the computer science degrees and everything else.
+     Um, granted, Nathaniel was an unusual guy, but, uh, guys who are hungry and want to learn,
+     they tend to make the best apprentices.
+     Right, right.
+     So, uh, after doing that, we did another one the next year and just kind of, you know,
+     probably average about one a year.
+     Sometimes we had more than one going and others.
+     But, uh, really found out, you know, we're trying to get work done here.
+     You can only have so much time where you're teaching the guys who don't know anything.
+     But eventually it doesn't take them that long until they start becoming the guys,
+     mentoring the next group of guys.
+     And now it's, you know, more of an environment where the group is mentoring.
+     Um, well, we do, we did start a couple of years ago, the Craftsmanship Academy
+     to kind of formalize the foundational part.
+     Cause what I'd find is that time out of time you need to pump into somebody for the first
+     three to six months was just a lot.
+     And just to get the principles in there, the theory that they never got.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    Or the applied theory they never got.
+     And so I've made this immersion program a couple of years ago to say the first,
+     the first few months are just going to be pretty intense.
+     Um, but after that, you know, as soon as they've gotten that,
+     we teach them the principles, teach them test first development, teach them a few other things.
+     Uh, how to build what good code looks like, why you review your code.
+     Don't just whip it together.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    Um, you know, just a lot of stuff.
+     And then they just start working with the, with the teams.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    I thought it was very interesting how you were talking about, um,
+     once it were, it sounded like you were saying that the,
+     once their apprentices reach a certain level, they could sort of kind of support each other.
+     And I've observed that, uh, in my past in martial arts and also in, uh, in my own little ones.
+     Um, my, my kids are much, much, much younger than, uh, your kids, but, uh, starting to see them.
+     I've got a seven year old still.
+     Oh, okay.
+     Well, I got a five and a two year old and seeing the five year old sit down now and sing the alphabet to the two year old.
+     And now the two year old is singing along with the five year old and how they, they teach other each other.
+     And it becomes kind of a, a self, uh, regulating machine, self running machine.
+     And, and I think a lot of that is just, it's a very human way to learn.
+     I just think that, uh, you know, getting, uh, um, a, uh, enough, uh, erasing the temperature of the room, the ambient temperature is what I like to call it.
+     The ambient temperature of the room high enough that all of a sudden people start to be able to see things in each other and share and, and communicate.
+     That's, that's a whole value of community that I, I really like to, uh, uh, uh, emphasize here on, on, uh, Yukatastic.
+     So, um, and, and talking about getting that message out, we talked about a little bit about how, uh, you know, you're open with your faith.
+     It's, it's the role model software, um, has, even has the cross in, uh, in the, in the logo.
+     And it's, it's a hard balance when you're dealing with a, uh, heterogeneous, uh, uh, community that has so many different, uh, faiths or non-faiths.
+     So, uh, has it been a challenge or has it been helpful, uh, for you going out and sharing your message and also with that you're, you're, you're, you live an integrated life and your faith is integrated into your life and into your career.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    Has that been a challenge or, or, or, or, or help?
+     Um, yeah, some days more challenging than others.
+     Um, the, the, um, I mean, at the end of the day, you know, I, I, I was just reading Colossians.
+     Yesterday and pointed, you know, prices first in everything.
+     It takes first place in everything.
+     And that's, that's the way I live.
+     So I can't, if he's going to be first place in everything, that means includes my work.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    And, um, you know, I think it helps my, most of my clients would say, you know, they're dealing with people who work with integrity.
+     If we say we're going to do something, we do it.
+     If we screw up, we admit to it, we make it right.
+     Um, how does that affect my clients?
+     Even the ones that aren't, don't share my faith like that.
+     Um, in fact, one of my, uh, best clients, he, he's a self-proclaimed pagan and, uh, you know, he's, but he's, he appreciates our honesty.
+     He's an honest guy himself.
+     Um, so that works out fine.
+     Um, I do know that there's been people who won't work with us because they just, uh, I don't know what they're afraid of.
+     I mean, it's really interesting that the people who promote tolerance are very intolerant to people who don't share their faith.
+     Um, and you know, one, uh, early on I had a good friend of mine, I knew from the small dog community when I started my business.
+     Um, shared with me when I, when I showed my logo, my first website came up and, um, he said, you know, Ken, I appreciate your faith.
+     He says, but man, you gotta feed your family.
+     You know, you don't want to be advertising that.
+     People are gonna be turned off.
+     You gotta feed your family.
+     And I said, well, you know, thanks for that advice, but I know who my provider is and I'm eating fine.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    You know, and, um, yes, that's the case.
+     I definitely know that there are people who turned off by it.
+     Um, there were a lot of people who turned off by Jesus Christ.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    You know, they still are.
+     And, um, you know, for some reason, some people think that the worst thing in the world right now is somebody who actually has a faith and has a faith in Christ and believes that there's a thing called sin in the world.
+     Um, you know, personally, I think sin in the world is a pretty big problem and it was a pretty big problem in me.
+     And I thank God I have a savior who died for me.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    I don't want to hide that.
+     Why should I hide it in the workplace?
+     I mean, the whole idea that it shouldn't happen in the workplace, it better affect everything I do.
+     Um, and it does.
+     So, um, you know, it's definitely been a problem.
+     I know when I had the Craftsmanship Academy website, there was, uh, somewhere along the line, I said, here's the behavior.
+     And, you know, I chose some wording that, yeah, I can see some people might be inflamed by it or whatever.
+     So I changed the wording.
+     But, you know, some people just had a fit and just started calling me all kinds of names.
+     And it's like, look, man, I'm just trying to tell you that if you come here, this is what you're going to be dealing with.
+     We have a biblical worldview.
+     And when people don't act right, we're going to ask them to repent.
+     And repent is a bad word to some people.
+     Um, you know, the list of sins are great.
+     You know, from being, if you look in Romans, I mean, list, you know, things like being disobedient to parents.
+     It's called sin.
+     Um, there's all kinds of sins.
+     And if we don't want to act like there's a thing called sin, we're going to be living in it.
+     And there's going to be consequences to that.
+     So, um, you know, we call people to repent when they act poorly, uh, with each other.
+     Um, if they're leading destructive lifestyles, we would call them to repent of that.
+     It doesn't mean you're fired, you're shot, you're, you should be put in jail.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    You know, I'm not out there trying to hate mine, but I am to say, Hey, this is Jesus Christ died for me.
+     He's God.
+     And there's a thing called sin.
+     And, uh, we should repent from it.
+     That's what he asked people to do.
+     Um, so some people just say, well, I don't share that faith, but I'll work with you anyway.
+     And others just, you know, leave skid marks.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    I, I, I'll, I'll openly say I was one of those people that had a, uh, kind of a visceral reaction at first to, uh, what I thought was a, um, negative statement on the, on the, uh, on the posting.
+     And it was more that I was frustrated because I know what you're doing is good.
+     And, um, and it helps more people than getting hooked on one line.
+     And it's better to look at somebody holistically, um, what they're, what they're doing and what their intent, kind of where their heart is, uh, than to get too hung up on one aspect.
+     Uh, you know, that we live in a pluralistic society and that, uh, you know, you think one thing.
+     I think another, but as long as we can live in somewhat reasonable harmony, that's what matters.
+     And I just was most interested in, in, in exactly what you described.
+     Is the, uh, how that, how, how trying to share your, uh, how trying to communicate your message of craftsmanship and software and professionalism and mentorship and getting people to adopt those, um, well, they're secular, uh, secular perspectives.
+     While trying to balance, uh, not getting your message misconstrued or, or hindered by people getting hung up on, on the fact that you're also sharing it with the message of your faith.
+     Um, yeah, it's, um, you know, what's interesting is the, the word tolerance.
+     I mean, originally the whole idea of tolerance is you tolerate people who think differently than you.
+     Um, and, um, I, I try to do that.
+     I tolerate people who think, I, I've hired some of them, you know, they don't, not everybody hears, shares my same faith.
+     Um, we certainly have clients that don't, um, some in a flaming way don't.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    Um, but at the end of the day, you know, if they can tolerate it, great.
+     You know, I have to tolerate their differences.
+     They tolerate my differences.
+     Um, I believe in tolerance.
+     I think tolerance is a great thing.
+     Um, I don't want to see, I don't see, I don't see, I want tolerance to go back to what it meant.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: Tolerance isn't freedom from religion.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: Tolerance is freedom of religion.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: I mean, if a Muslim is going to work next to me or, or, uh, or a Jewish man
+    or, or, or a self-proclaimed pagan, I mean, that's, I can work next to them.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    You know, and I'll tolerate certain things.
+     There's certain things I won't tolerate.
+     Um, and there's certain things they won't tolerate.
+     So, uh, you know, if we can, if we can get past those things, we can work together.
+     If we can't, we can't, but I'm not going to change who I am and I'm not going to deny my Lord.
+     I mean, people have died for that before in history.
+     And, uh, if I have to die for it someday, I will.
+     I hope it's not tomorrow.
+     I hope not.
+     I hope you're, you're teaching and, and, and sharing the, uh, the concept of mentorship for a very long time.
+     Because, uh, uh, like I said, I, I think what is important is the message of improving ourselves and each other and sharing, uh, than getting hung up on any particular thing.
+     And, uh, um, so yeah, that's, that's, that's, that was my main perspective.
+     Great.
+     Well, thank you very much for taking the time to sit down with me.
+     I really appreciate your time.
+     Well, thank you for, uh, giving me the opportunity.
+     Sure.
+     Sure.
+insights: []

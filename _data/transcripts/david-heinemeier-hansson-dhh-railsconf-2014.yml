@@ -1,212 +1,399 @@
 ---
-content: "User groups with lots to say, interviews and more, no way! Sharing great
-  ideas in the tech community. Fascinating conversations, a plethora of information.
-  Find out for yourself today at UGtastic. \n\nHi, it's Mike with UGtastic. I'm here
-  at RailsConf 2014 and I'm standing here with DHH, David Hanemeyer Hansen. If you
-  might know him, he's written a few books, done a few stuff. I think you have something
-  to do with the product that we're here for the conference about, but we're going
-  to talk about his keynote that he just gave about clarity and being a software writer.
-  Well, first of all, I want to say thank you very much for taking the time to talk
-  with me. Sure. So your keynote, what was the gist of what you were trying to communicate?
-  Sure, so I think the identity of most programmers are coming from an age where they're
-  trying to do a lot of work, and they're trying to do a lot of work, and they're
-  trying to do a lot of work, and they're trying to do a lot of work, and they're
-  trying to do a lot of work, and they're trying to do a lot of work, and they're
-  trying to do a lot of work, and they're trying to do a lot of work, and they're
-  trying to do a lot of work, and they're trying to do a lot of work, and they're
-  trying to do a lot of work, and they're trying to do a lot of work, and they're
-  trying to do a lot of work. And I think that's the angle that doesn't fit the development
-  of information technology very well anymore. And that angle is software engineering.
-  I think there's a lot of programmers who create information systems where engineering
-  is actually not the primary thing that they do. What they do is they write. They're
-  software writers. They're trying to achieve a level of clarity, figuring out, first
-  of all, what are they building? It's not like a bridge where you just know, well,
-  it needs to go from there to there, and we need to have this structural bearing,
-  and so on and so forth. A lot of systems are very big, and they're very vaguely
-  defined, right? So figuring out what you want to build is very much like figuring
-  out what you want to say. Right. It's more elastic than just go from here to there.
-  It is. And it's more fuzzy, and it's not as objective. It's a much more subjective
-  endeavor. And I find that writing is a much better metaphor than engineering. And
-  within that, I find that one of the main ways that people are driving their development
-  right now is TDD, test-driven development. And I've just--I used to be a big fan.
-  And I used to be a big fan because it sounded like it made a lot of sense to me.
-  Right. What I found over the years is that the test-first approach, driving your
-  design through the test, actually didn't make that much sense to me. And I found
-  that a lot of other software that I looked at and discussed with people who sort
-  of--that was created through the test-first paradigm wasn't better. It was worse.
-  And what's interesting, though, is-- Yeah. --is it seems like Rails was very early
-  on in the whole test-driven development and putting that out there and even introducing
-  it as a concept. But now, 10 years later, you're feeling like you're backing away
-  from that original-- Yeah. So I think Rails was probably the first framework that
-  just had test by default. Right. We had a place to put the test. We generated them
-  through the scaffolds per default. And I think there's still a lot of good to that.
-  It's not that tests are bad. I think--I can't imagine building a modern application
-  today without tests. Right. --with automated tests, you're really in the woods.
-  Right. But I don't find it as a--the primary objective of my design discipline.
-  Right. Getting to-- It's a little bit more nuanced than that. It's more nuanced
-  than that. And mostly, it's just test-first works for me for a tiny majority of
-  the cases of what I do. And for a majority of the cases, test-first, especially
-  when focused on the unit instead of the whole system, actually ends up creating
-  more problems than it solves. Okay. And--but like I was saying-- Yeah. It sounds
-  like you've developed a more nuanced approach. And it seems like some of the interactions
-  with people in the community is a little bit more dogmatic one way or the other.
-  Other people are kind of taking a cheeky stance of, \"Ah, test-driven development,
-  that's silly.\" And then there's the other side, the Bob Martin camp, which is clean
-  code. You even kind of had a little shot at the dirty code there, a slide. But,
-  you know, listening to your conversation, it's--it's a little bit different. It's
-  a little bit different. Yeah. I mean, if you're talking in person versus observing
-  conversations online, it sounds like some of that meaning, that nuance is--it's
-  lost sometimes. Sure. I mean, anything on Twitter is void of nuance. You have 140
-  characters. The only thing you can put out is absolutes. Yeah. And they can be influential
-  in sort of starting the discussion and driving it. It won't get it all to nuance.
-  You have to go deeper than just 140 characters, of course. Has the ping-pong helped
-  with that? Or--? I think the ping-pong helped me crystallize my thoughts on it a
-  bit. And the ping-pong, basically for people who don't know, was sort of people
-  submitting a piece of code. I did that on Hacker News a few times, and then there
-  was some guy who set up a site for it. And we went over where this code could go.
-  Like, we agreed that the original piece of code was bad, and then people would ping-pong
-  on it. Some people would then say, \"Oh, well, the code is bad because it's in the
-  pattern or it's not easily testable,\" or whatever. And I would try to go in a different
-  direction, where whenever I applied this ping-pong, it was about clarity. I'm going
-  to make this code clearer, simpler, easier to understand, lower conceptual overhead,
-  all these things, right? And I find out I ended up in a very different spot, right?
-  So that's what partly helped me, informed me, is that we are going in different
-  directions. You end up somewhere else when you go through test first than when you
-  go through clarity first. I don't want to call it that, because I certainly don't
-  want to have anything, like, clarity-driven about it. It sounds ridiculous. Well,
-  I talked to Dan North, and it's the same kind of thing, where they start with an
-  idea, and then it becomes dogma by all the people who adopt it. And then they want
-  to have that rigid -- I think that's what the -- I had a quote by Ken Beck that's
-  incredibly reasonable. It talks about sort of confidence levels in your code. More
-  so than just talking about, well, every piece of code needs to be written with a
-  test failing first. I think it's just not -- I don't know if it's not realistic,
-  because I'm sure it's the real stuff for somebody. It's certainly not realistic
-  for me. It's not the real for me. It doesn't arrive at something better. I tried
-  very hard, multiple times, and I didn't find that it took me to a good place. And
-  the one thing I see with the ping pong is at least it gives a concrete A and B that
-  can be talked about and reasoned about. Yes. Before after code is -- I'm really
-  a big fan of that, because it crystallizes a lot of arguments that are otherwise
-  very fluffy. It's very easy to talk about these things in the abstract. I think
-  clarity -- it's almost impossible to talk about it in the abstract, because everybody
-  agrees. Yes, of course we should have clear code. It's not a controversial term,
-  but when you apply it to an actual piece of code, then it can -- quite quickly,
-  it can become controversial. Right. Okay. So, you know, I wanted to ask a few questions.
-  Sure. Some people have contributed ideas for topics. Yeah. One of those was about
-  just your experience releasing Rails as a major project, and that it gets used by
-  companies that make billions of dollars. Sure. And it gives back even a fraction
-  of what they -- Yeah. How have you dealt with that? I mean, it doesn't sound like
-  you're doing too shabby, but -- Sure. -- not billions of dollars shabby. No, no.
-  And I don't need to. And it doesn't bother me at all, actually. There are a lot
-  of people who do feel like, well, they're owed something because they contribute
-  to open source. I think that's an unfortunate perspective to have on what you're
-  doing. If you're doing it for external reasons and external rewards, that's not
-  where I'm doing it. Mm-hmm. I'm doing it for my own reward. Right. A big part of
-  my own reward is just that I enjoy it. Right. I'm not doing it for somebody else
-  to sort of land me a payday out of it. And I enjoy sharing it. And a side effect
-  of sharing it freely and letting people use it like they want to -- like, I wouldn't
-  want to use anything -- is that some people could choose to use it to build great
-  things that are of great value, and I don't see any of that value. Yeah. That's
-  okay. I mean, I think it's a -- that's where open source -- like, I'm a big proponent
-  of open source, but there's also -- there's a side of open source that I'm not --
-  Yeah. There's a side of open source that I'm not that enthusiastic about. And GPL,
-  to some extent, is that side of it. I am not that enthusiastic about roping people
-  into -- you have to either donate code or money or whatever just because you use
-  something. Mm-hmm. That doesn't appeal to me, especially on the code part. I don't
-  want the code of somebody who doesn't want to give it. Mm-hmm. Like, that's going
-  to be, in my perspective, probably not very good code. Right. And so what? Like,
-  I don't care if somebody extends it. If I need something in Rails I don't have already,
-  I'll build it my damn self. Right. And, you know, actually that -- since you brought
-  up the GPL, that was going to cover another question. Sure. But I do want to ask
-  about -- so open -- Rails is open source, and many of the libraries are -- that
-  are used by it -- well, all of the libraries that are used by it are also part of
-  Rails or open source -- Sure. -- you know, omakase-selected gems. But Rails itself,
-  that's a trademark. Mm-hmm. And I didn't think about this until just now, is that
-  there is a -- there does seem to be a line between the codes out there, and you
-  can use it -- Right. -- but the brand itself. And has that helped keep Rails on
-  Rails? I think it helps keep Rails being this one thing. Mm-hmm. It's very easy
-  to dilute it. In the early days we had a lot of people actually calling their frameworks
-  in other languages Rails. Mm-hmm. And that's not a great thing. Like, I'm making
-  Rails -- Mm-hmm. -- with a certain mission, with a certain approach to it, and I
-  want people to be able to know what that is. Right. I don't want people to pick
-  something else up that says Rails. They think it's something that I made -- Mm-hmm.
-  -- and then it's some fucking PHP framework that I -- Right. -- really wouldn't
-  want to touch with a 10-foot pole, right? So I think trademarks are good in sort
-  of removing confusion. Mm-hmm. So, I mean, that's what they're there for, right?
-  Right. They're there for just that, like, a certain company or a certain product,
-  they can be that thing, right? Mm-hmm. Like, Coca-Cola can sell their cola, and
-  it's called Coca-Cola. Mm-hmm. And somebody else can't sell their cola and call
-  it Coca-Cola because the consumer would get confused. I think there's great value
-  in that. You can certainly go overboard, and people do that all the time. And some
-  of that is, unfortunately, part of what trademark law is, that you have to sort
-  of enforce it. Right. Otherwise, you lose it. That's tricky to keep that balance.
-  It is. It is. It is. It's turning people off. Yeah. For me, the whole thing about
-  keeping Rails as a trademark is just to avoiding that confusion. Mm-hmm. Not to
-  avoiding people. Like, I just -- I don't want somebody to represent me. I want somebody
-  to be representing, like, the official Rails if it's not something that I believe
-  in. Right. Because that's going to reflect poorly on me. So that's the reason we
-  have it. We haven't really used it for anything else. It doesn't -- there's incredibly
-  little economic value being derived from it. It's protecting what Rails is. Okay.
-  Yeah. Okay. And another question, you know, we talked about the GPL, but what are
-  your feelings about companies whose business practices you don't necessarily agree
-  with, though, using -- Sure. -- or using Rails? To me, it's like I'm also paying
-  my taxes, and some of those taxes go to paved roads, and some people who drive on
-  those roads I don't agree with. So what? Like, it really doesn't matter. I can completely
-  distinguish between sorts of technical aspects of what somebody's doing and then
-  their otherwise business practices. So to me, there's definitely no sort of conflict
-  in calling out companies who I think have poor business practices, whether they're
-  using Rails or not. Yeah. But I mean, when they come out and they say, \"Oh, we're
-  a Rails shop,\" and you're like, \"I wish you didn't say that,\" you know? Yeah.
-  I do -- to me, it's like Rails is open to us. It's MIT. You can take it. You can
-  do whatever you want with it. I'm not responsible for anybody who uses Rails, what
-  they do with it, with the individual members of sort of the Rails community. I don't
-  want that police role. This is not a hierarchy in that sense. Right. I don't want
-  anybody who uses Rails as my employee, and I have to be responsible for anything
-  they say on behalf of Rails. Right. Just because somebody uses Rails doesn't mean
-  that they're expressing thoughts on behalf of me. That's not how this is. That's
-  explicitly why this is MIT. Take and do whatever you want with it. Like, no strings
-  attached, right? Because then there's not that obligation for me to police everybody
-  who uses it and how they use it or whether they're good people or they're bad people
-  or whatever. It's just not -- it's a separate thing. And I don't want that as being
-  part of the -- what goes into Rails. Like, it's enough sort of on my shoulders just
-  to run Rails as the vision of the framework and so on. Right. If I also had to be
-  responsible for anybody who chooses to use it and what they do, I'd fuck that. Okay.
-  And the last one is a little bit more of a fun question and relative to the theme
-  of Uteastic. And that was during your keynote even you mentioned going as a child
-  to see --. Or a young man, young boy to see the Gathering grouping back in Denmark.
-  Right. But just to go back in time to when you first were extracting Rails from
-  Basecamp, if I'm -- Yep. I got nervous. I thought I was going to say the wrong thing.
-  Sure. But when you were first extracting it, you wanted to show it to people and
-  you wanted to get people to look at it and check it out. And you would go into user
-  groups. What was the first other user group or conference you presented Rails? And
-  what was the reception? Yeah. I think I actually first showed it off to some friends
-  who were working at a couple of different companies. And I got like, oh, yeah, that
-  sounds interesting. Not a whole lot of feedback to it. And then I showed it off
-  at a Danish university. And at the university itself, I don't know, maybe 30 people
-  or 40 people. No, like, yeah, people were interested. But it was like getting the
-  video up that really made people interested in getting it out online. Just meeting
-  with a local group of people. Didn't really do that much in the beginning. Where
-  I found like-minded people were all over the internet. I posted a video and somebody
-  was like, oh, they wrote me. And like, oh, this is really interesting. I want to
-  learn more about this. At that time, I was also on the Ruby mailing list. I was
-  participating a fair amount in that. We were talking on there. And IRC. I was usually
-  in IRC. So for me, it was always about the virtual groups, not so much about meeting
-  in person. Even though that's great, too. I mean, that's what we're doing here at
-  RailsCon, 1,500 people. It's great to do that occasionally. But the bulk of the
-  sort of real work happens remotely. It happens for people just working for wherever
-  they are. Because when you look at the Rails core group and the alumni group, they're
-  from all over the place. They're from all sorts of different countries and different
-  cities and so forth. And if I just had to run Rails just out of the programmers
-  available in Copenhagen, I mean, no offense to the programmers in Copenhagen. But
-  of course, it wouldn't be as good. Like having the whole world work on something
-  versus having one city and one tiny country. One tiny country work on something.
-  Not the same thing. And I remember that video coming out. Oh, yeah. I was actually
-  a Microsoft developer at the time. And I didn't like it. Right. But at that point
-  in my life, my career options were limited. And I just remember seeing that and
-  going, that's cool. I want to work with that someday. And now I do. So I appreciate
-  the creation and the work. And it's very nice. Now I gushed. And now I forgot what
-  I was going to say. But I just want to thank you. I know you're busy. You have to
-  go. Thank you very much. Sure. It's my pleasure. Absolutely. Thank you for putting
-  this out there. Thanks. I love talking about it. All right. Thanks, everyone. User
-  groups with lots to say. Interviews and more. No way. Sharing great ideas in the
-  tech community. Fascinating conversations. A plethora of information. Find out for
-  yourself today at UGtastic. Bye. Bye. Bye. Bye. Bye. Bye. Bye."
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: David Heinemeier Hansson (DHH)
+    role: Rails ecosystem stewardship
+turns:
+- speaker: M1
+  text: |-
+    User groups with lots to say, interviews and more, no way! Sharing great ideas in
+     the tech community. Fascinating conversations, a plethora of information.
+     Find out for yourself today at UGtastic.
+     Hi, it's Mike with UGtastic. I'm here at RailsConf 2014 and I'm standing here with
+     DHH, David Hanemeyer Hansen. If you might know him, he's written a few books, done a
+     few stuff. I think you have something to do with the product that we're here for
+     the conference about, but we're going to talk about his keynote that he just gave
+     about clarity and being a software writer. Well, first of all, I want to say
+     thank you very much for taking the time to talk with me. Sure. So your
+     keynote, what was the gist of what you were trying to communicate? Sure, so I
+     think the identity of most programmers are coming from an
+     age where they're trying to do a lot of work, and they're trying to do a lot of work, and they're
+     trying to do a lot of work, and they're trying to do a lot of work, and they're
+     trying to do a lot of work, and they're trying to do a lot of work, and they're
+     trying to do a lot of work, and they're trying to do a lot of work, and they're
+     trying to do a lot of work, and they're trying to do a lot of work, and they're
+     trying to do a lot of work, and they're trying to do a lot of work, and they're trying to do a lot of work. And I think that's the angle that doesn't fit the development of information technology very well anymore. And that angle is software engineering. I think there's a lot of programmers who create information systems where engineering is actually not the primary thing that they do. What they do is they write. They're software writers. They're trying to achieve a level of clarity, figuring out, first of all, what are they building? It's not like a bridge where you just know, well, it needs to go from there to there, and we need to have this structural bearing, and so on and so forth. A lot of systems are very big, and they're very
+     vaguely defined, right? So figuring out what you want to build is very much like figuring out what you want to say.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    It's more elastic than just go from here to there.
+     It is. And it's more fuzzy, and it's not as objective. It's a much more subjective endeavor. And I find that writing is a much better metaphor than engineering. And within that, I find that one of the main ways that people are driving their development right now is TDD, test-driven
+     development. And I've just--I used to be a big fan. And I used to be a big fan because it sounded like it made a lot of sense to me.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    What I found over the years is that the test-first approach, driving your design through the test, actually didn't make that much sense to me. And I found that a lot of other software that I looked at and discussed with people who sort of--that was created through the test-first paradigm wasn't better. It was worse.
+     And what's interesting, though, is--
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: "--is it seems like Rails was very early on in the whole test-driven development
+    and putting that out there and even introducing it as a concept. But now, 10 years
+    later, you're feeling like you're backing away from that original--"
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: So I think Rails was probably the first framework that just had test by default.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: We had a place to put the test. We generated them through the scaffolds per
+    default. And I think there's still a lot of good to that. It's not that tests
+    are bad. I think--I can't imagine building a modern application today without
+    tests.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: "--with automated tests, you're really in the woods."
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: But I don't find it as a--the primary objective of my design discipline.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    Getting to--
+     It's a little bit more nuanced than that.
+     It's more nuanced than that. And mostly, it's just test-first works for me for a tiny majority of the cases of what I do. And for a majority of the cases, test-first, especially when focused on the unit instead of the whole system, actually ends up creating more problems than it solves.
+- speaker: M1
+  text: Okay.
+- speaker: M1
+  text: And--but like I was saying--
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    It sounds like you've developed a more nuanced approach. And it seems like some of the interactions with people in the community is a little bit more dogmatic one way or the other. Other people are kind of taking a cheeky stance of, "Ah, test-driven development, that's silly." And then there's the other side, the Bob Martin camp, which is clean code. You even kind of had a little shot at the dirty code there, a slide. But, you know, listening to your conversation, it's--it's a little bit different.
+     It's a little bit different.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    I mean, if you're talking in person versus observing conversations online, it sounds like some of that meaning, that nuance is--it's lost sometimes.
+     Sure. I mean, anything on Twitter is void of nuance. You have 140 characters. The only thing you can put out is absolutes.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    And they can be influential in sort of starting the discussion and driving it. It won't get it all to nuance. You have to go deeper than just 140 characters, of course.
+     Has the ping-pong helped with that? Or--?
+     I think the ping-pong helped me crystallize my thoughts on it a bit. And the ping-pong, basically for people who don't know, was sort of people submitting a piece of code.
+     I did that on Hacker News a few times, and then there was some guy who set up a site for it. And we went over where this code could go.
+     Like, we agreed that the original piece of code was bad, and then people would ping-pong on it. Some people would then say, "Oh, well, the code is bad because it's in the pattern or it's not easily testable," or whatever.
+     And I would try to go in a different direction, where whenever I applied this ping-pong, it was about clarity.
+     I'm going to make this code clearer, simpler, easier to understand, lower conceptual overhead, all these things, right?
+     And I find out I ended up in a very different spot, right?
+     So that's what partly helped me, informed me, is that we are going in different directions.
+     You end up somewhere else when you go through test first than when you go through clarity first.
+     I don't want to call it that, because I certainly don't want to have anything, like, clarity-driven about it. It sounds ridiculous.
+     Well, I talked to Dan North, and it's the same kind of thing, where they start with an idea, and then it becomes dogma by all the people who adopt it.
+     And then they want to have that rigid --
+     I think that's what the -- I had a quote by Ken Beck that's incredibly reasonable. It talks about sort of confidence levels in your code.
+     More so than just talking about, well, every piece of code needs to be written with a test failing first.
+     I think it's just not -- I don't know if it's not realistic, because I'm sure it's the real stuff for somebody. It's certainly not realistic for me. It's not the real for me.
+     It doesn't arrive at something better. I tried very hard, multiple times, and I didn't find that it took me to a good place.
+     And the one thing I see with the ping pong is at least it gives a concrete A and B that can be talked about and reasoned about.
+     Yes. Before after code is -- I'm really a big fan of that, because it crystallizes a lot of arguments that are otherwise very fluffy.
+     It's very easy to talk about these things in the abstract. I think clarity -- it's almost impossible to talk about it in the abstract, because everybody agrees.
+     Yes, of course we should have clear code. It's not a controversial term, but when you apply it to an actual piece of code, then it can -- quite quickly, it can become controversial.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: Okay.
+- speaker: S1
+  text: |-
+    So, you know, I wanted to ask a few questions.
+     Sure.
+     Some people have contributed ideas for topics.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    One of those was about just your experience releasing Rails as a major project, and that it gets used by companies that make billions of dollars.
+     Sure.
+     And it gives back even a fraction of what they --
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    How have you dealt with that? I mean, it doesn't sound like you're doing too shabby, but --
+     Sure.
+     -- not billions of dollars shabby.
+     No, no. And I don't need to. And it doesn't bother me at all, actually. There are a lot of people who do feel like, well, they're owed something because they contribute to open source.
+     I think that's an unfortunate perspective to have on what you're doing. If you're doing it for external reasons and external rewards, that's not where I'm doing it.
+     Mm-hmm.
+     I'm doing it for my own reward.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: A big part of my own reward is just that I enjoy it.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: I'm not doing it for somebody else to sort of land me a payday out of it.
+    And I enjoy sharing it. And a side effect of sharing it freely and letting people
+    use it like they want to -- like, I wouldn't want to use anything -- is that some
+    people could choose to use it to build great things that are of great value, and
+    I don't see any of that value.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: That's okay. I mean, I think it's a -- that's where open source -- like, I'm
+    a big proponent of open source, but there's also -- there's a side of open source
+    that I'm not --
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    There's a side of open source that I'm not that enthusiastic about. And GPL, to some extent, is that side of it. I am not that enthusiastic about roping people into -- you have to either donate code or money or whatever just because you use something.
+     Mm-hmm.
+     That doesn't appeal to me, especially on the code part. I don't want the code of somebody who doesn't want to give it.
+     Mm-hmm.
+     Like, that's going to be, in my perspective, probably not very good code.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: And so what? Like, I don't care if somebody extends it. If I need something
+    in Rails I don't have already, I'll build it my damn self.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    And, you know, actually that -- since you brought up the GPL, that was going to cover another question.
+     Sure.
+     But I do want to ask about -- so open -- Rails is open source, and many of the libraries are -- that are used by it -- well, all of the libraries that are used by it are also part of Rails or open source --
+     Sure.
+     -- you know, omakase-selected gems. But Rails itself, that's a trademark.
+     Mm-hmm.
+     And I didn't think about this until just now, is that there is a -- there does seem to be a line between the codes out there, and you can use it --
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    -- but the brand itself. And has that helped keep Rails on Rails?
+     I think it helps keep Rails being this one thing.
+     Mm-hmm.
+     It's very easy to dilute it. In the early days we had a lot of people actually calling their frameworks in other languages Rails.
+     Mm-hmm.
+     And that's not a great thing. Like, I'm making Rails --
+     Mm-hmm.
+     -- with a certain mission, with a certain approach to it, and I want people to be able to know what that is.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    I don't want people to pick something else up that says Rails. They think it's something that I made --
+     Mm-hmm.
+     -- and then it's some fucking PHP framework that I --
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    -- really wouldn't want to touch with a 10-foot pole, right? So I think trademarks are good in sort of removing confusion.
+     Mm-hmm.
+     So, I mean, that's what they're there for, right?
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    They're there for just that, like, a certain company or a certain product, they can be that thing, right?
+     Mm-hmm.
+     Like, Coca-Cola can sell their cola, and it's called Coca-Cola.
+     Mm-hmm.
+     And somebody else can't sell their cola and call it Coca-Cola because the consumer would get confused.
+     I think there's great value in that. You can certainly go overboard, and people do that all the time.
+     And some of that is, unfortunately, part of what trademark law is, that you have to sort of enforce it.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    Otherwise, you lose it.
+     That's tricky to keep that balance.
+     It is. It is. It is.
+     It's turning people off.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    For me, the whole thing about keeping Rails as a trademark is just to avoiding that confusion.
+     Mm-hmm.
+     Not to avoiding people. Like, I just -- I don't want somebody to represent me.
+     I want somebody to be representing, like, the official Rails if it's not something that I believe in.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    Because that's going to reflect poorly on me.
+     So that's the reason we have it. We haven't really used it for anything else.
+     It doesn't -- there's incredibly little economic value being derived from it.
+     It's protecting what Rails is.
+- speaker: M1
+  text: Okay.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: Okay.
+- speaker: M1
+  text: |-
+    And another question, you know, we talked about the GPL, but what are your feelings about companies whose business practices you don't necessarily agree with, though, using --
+     Sure.
+     -- or using Rails?
+     To me, it's like I'm also paying my taxes, and some of those taxes go to paved roads, and some people who drive on those roads I don't agree with.
+     So what?
+     Like, it really doesn't matter.
+     I can completely distinguish between sorts of technical aspects of what somebody's doing and then their otherwise business practices.
+     So to me, there's definitely no sort of conflict in calling out companies who I think have poor business practices, whether they're using Rails or not.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: But I mean, when they come out and they say, "Oh, we're a Rails shop," and
+    you're like, "I wish you didn't say that," you know?
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    I do -- to me, it's like Rails is open to us.
+     It's MIT.
+     You can take it.
+     You can do whatever you want with it.
+     I'm not responsible for anybody who uses Rails, what they do with it, with the individual members of sort of the Rails community.
+     I don't want that police role.
+     This is not a hierarchy in that sense.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: I don't want anybody who uses Rails as my employee, and I have to be responsible
+    for anything they say on behalf of Rails.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    Just because somebody uses Rails doesn't mean that they're expressing thoughts on behalf of me.
+     That's not how this is.
+     That's explicitly why this is MIT.
+     Take and do whatever you want with it.
+     Like, no strings attached, right?
+     Because then there's not that obligation for me to police everybody who uses it and how they use it or whether they're good people or they're bad people or whatever.
+     It's just not -- it's a separate thing.
+     And I don't want that as being part of the -- what goes into Rails.
+     Like, it's enough sort of on my shoulders just to run Rails as the vision of the framework and so on.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: If I also had to be responsible for anybody who chooses to use it and what
+    they do, I'd fuck that.
+- speaker: S1
+  text: Okay.
+- speaker: S1
+  text: |-
+    And the last one is a little bit more of a fun question and relative to the theme of Uteastic.
+     And that was during your keynote even you mentioned going as a child to see --.
+     Or a young man, young boy to see the Gathering grouping back in Denmark.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    But just to go back in time to when you first were extracting Rails from Basecamp, if I'm --
+     Yep.
+     I got nervous.
+     I thought I was going to say the wrong thing.
+     Sure.
+     But when you were first extracting it, you wanted to show it to people and you wanted to get people to look at it and check it out.
+     And you would go into user groups.
+     What was the first other user group or conference you presented Rails?
+     And what was the reception?
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    I think I actually first showed it off to some friends who were working at a couple of different companies.
+     And I got like, oh, yeah, that sounds interesting.
+     Not a whole lot of feedback to it.
+     And then I showed it off at a Danish university.
+     And at the university itself, I don't know, maybe 30 people or 40 people.
+     No, like, yeah, people were interested.
+     But it was like getting the video up that really made people interested in getting it out online.
+     Just meeting with a local group of people.
+     Didn't really do that much in the beginning.
+     Where I found like-minded people were all over the internet.
+     I posted a video and somebody was like, oh, they wrote me.
+     And like, oh, this is really interesting.
+     I want to learn more about this.
+     At that time, I was also on the Ruby mailing list.
+     I was participating a fair amount in that.
+     We were talking on there.
+     And IRC.
+     I was usually in IRC.
+     So for me, it was always about the virtual groups, not so much about meeting in person.
+     Even though that's great, too.
+     I mean, that's what we're doing here at RailsCon, 1,500 people.
+     It's great to do that occasionally.
+     But the bulk of the sort of real work happens remotely.
+     It happens for people just working for wherever they are.
+     Because when you look at the Rails core group and the alumni group, they're from all over the place.
+     They're from all sorts of different countries and different cities and so forth.
+     And if I just had to run Rails just out of the programmers available in Copenhagen, I mean, no offense to the programmers in Copenhagen.
+     But of course, it wouldn't be as good.
+     Like having the whole world work on something versus having one city and one tiny country.
+     One tiny country work on something.
+     Not the same thing.
+     And I remember that video coming out.
+     Oh, yeah.
+     I was actually a Microsoft developer at the time.
+     And I didn't like it.
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    But at that point in my life, my career options were limited.
+     And I just remember seeing that and going, that's cool.
+     I want to work with that someday.
+     And now I do.
+     So I appreciate the creation and the work.
+     And it's very nice.
+     Now I gushed.
+     And now I forgot what I was going to say.
+     But I just want to thank you.
+     I know you're busy.
+     You have to go.
+     Thank you very much.
+     Sure.
+     It's my pleasure.
+     Absolutely.
+     Thank you for putting this out there.
+     Thanks.
+     I love talking about it.
+     All right.
+     Thanks, everyone.
+     User groups with lots to say.
+     Interviews and more.
+     No way.
+     Sharing great ideas in the tech community.
+     Fascinating conversations.
+     A plethora of information.
+     Find out for yourself today at UGtastic.
+     Bye.
+     Bye.
+     Bye.
+     Bye.
+     Bye.
+     Bye.
+     Bye.
+insights: []

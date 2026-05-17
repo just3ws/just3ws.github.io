@@ -1,233 +1,404 @@
 ---
-content: Hi, it's Mike with UGtastic. I'm here at RailsConf 2014 and I'm standing
-  here with Yehuda Katz and Tom Dale, who are the creators of the Ember project and
-  also contributors to Rails. Yehuda gave a keynote yesterday morning and they also
-  gave a talk about how to build a smart profiler for Rails. Thank you very much for
-  taking the time to speak with me, I appreciate it. Yehuda, I know it's the end of
-  the day and we're all pretty tired, but can you sum it up a little memory of the
-  keynote talk you gave yesterday and what the topic was? Sure, so I sort of talked
-  about two areas. The first area was just sort of talking about the idea of cognitive
-  or ego depleting. which is this idea that we have a limited store of cognitive capacity.
-  It's sort of like you have a battery. Like the end of the day at a conference. We've
-  made so many decisions today. And so a lot of people think of cognitive capacity
-  as something that drains uniformly through the day or it drains when you work on
-  hard problems. But actually it turns out that a lot of the things that drain your
-  cognitive capacity are really mundane things like making choices or getting into
-  a little bit of an argument can be really depleting. You could spend like five minutes
-  getting into an argument. You've probably felt this. After five minutes you're drained
-  for the rest of the day. Well it's like when you go to the grocery store, if you
-  think about where you're there for like an hour, you're constantly making decisions.
-  And you get to the checkout line and there's the candy bars. There's a reason there's
-  a candy bar there. Yeah. Because making even like what brand of spaghetti sauce
-  should I buy. Yeah. Causes your willpower to complete. Yeah. So willpower, all these
-  things are sort of the same thing. And the idea was just showing a convention over
-  configuration. It's the idea that Rails I think spent a lot of time and energy advocating
-  for. It's basically part of the same thing by reducing choices and getting everyone
-  on the same page about defaults. Because defaults are really a psychological hack
-  that we can use to allow us to both when we're in a really good mood, allow us to
-  do more before we deplete, use up too much our capacity, but also keep us on the
-  straight and narrow when we're in a bad mood. So you may think when you're being
-  a programmer, what do I name this controller, that you think that it has zero cost.
-  But in fact, it's actually stopping your willpower and your ability to actually
-  think through the more important problems. Yeah. I know I've sat in projects myself
-  and been like, it's hard to even get started because I'm thinking about, oh, do
-  I want to do Postgres or MySQL? Right. Yeah. It's like odd. And really silly decisions
-  like that, like by the time you've made a few of them. And I think the important
-  part is not to say, well, we're going to take away your decision making, right?
-  Because people don't like losing autonomy for very good reasons. What you're saying
-  is we're just going to give you some sane defaults. Right. Defaults are the hack
-  that you use to prevent yourself from being cognitively depleted. So you have the
-  energy to work on the real problems that matter for your business or for your product.
-  And even thinking about defaults, did you ever see the movie Moscow and the Hudson
-  with Robin Williams? No. There's a wonderful scene. It's from the '80s, but whenever
-  I think about cognitive overload, I think about that scene where he goes and he
-  wants to just buy coffee. And he's from the Soviet Union. He just wants to buy coffee.
-  And he looks at the coffee and he says, Folgers, Taster's Choice. And then finally
-  he's looking and then finally he's running back and forth and he's like, coffee,
-  coffee, coffee. And then he picks up and he passes on. Because those choices hold
-  a lot. As DJ said, people like, what's the book? People like choices a lot more
-  than they like having to choose. Yeah. So that was sort of the first half of it.
-  The second half was talking about all the excuses that people give themselves to
-  justify not building up these abstractions. So I think one of the most common ones
-  is like, oh, I'm so special. I have all these special needs, special requirements.
-  And if I don't, you know, if you make me use a tool that's for everybody, how am
-  I going to get my job done with all these things so special? And then people, even
-  when people get past that and they say, you know, I am doing really the same thing
-  as everyone else, they use this excuse of the law of leaky abstractions. Like, oh,
-  these abstractions, these abstractions are always leaked, so there's no point in
-  even bothering with them. And ironically, you see people making these arguments
-  about leaky abstractions sitting on the top of the most epic abstraction stack,
-  right? So you have Node people who are really allergic to abstractions, but they're
-  sitting on top of not just, you know, not just the hardware abstraction, but C,
-  Unix, POSIX, LibUV, you know, one of the most amazing dynamic language jits that
-  had ever been created. And then on the top of that, they say, oh, Promises, that's
-  such a heavy abstraction. I can't remember to deal with that. Well, this is really
-  funny, too, because you think about, like, it wasn't that long ago that people were
-  literally like, if you want, like, hardware was bespoke. Like, every new chip was
-  completely customizable. And then at some point, processors, CPUs, like general
-  processors, got sufficiently good as abstraction that everyone was like, you know
-  what, it's silly for me to be laying out my own chips. Let's just use this off-the-shelf
-  Intel chipset, right? And you would never think about it. No one ever is thinking,
-  oh, okay, I want a new computer. Should I get x86 or should I build my own? It's
-  like, okay, I'm just going to use x86 or ARM. Those are the two things that everyone's
-  agreed upon. Nobody thinks about that. So it's a little bit arrogant, I think. But
-  this happens every layer of the abstraction stack. Everyone always thinks, like,
-  well, I rely on all these abstractions, but I'm at the peak mark. The thing that
-  I am doing is so unique. Like, really, there's no shared solution or shared abstraction
-  that could possibly encapsulate this problem that I'm having. Until you get to it,
-  right? I am going to cut this piece of wood. I need to go and craft something in
-  which I can separate these pieces of wood from each other. Right, yeah, yeah, exactly.
-  No, you just go grab the saw. Yeah, exactly. Exactly, exactly. And it's funny. And
-  I think the reason is that people go in when you're-- there's kind of, as Huda says,
-  there's this layer of experimentation at the top. So there's the abstraction stack,
-  and then at the top, there's always a layer of experimentation. And especially,
-  like, younger developers, less experienced developers, they come in and they say,
-  well, you know, I tried the abstraction. It wasn't perfect yet. It leaked a lot.
-  It wasn't quite perfect. And so their reaction is not, well, I should wait for this
-  to mature. Their reaction is, well, of course, this abstraction as a non-principle
-  must be bad because I failed at it. And then the next time they see an abstraction,
-  they basically just hate abstractions. They hate all abstractions. And, yeah. And
-  I think what's kind of cool is that when you get past this, when you say, no, F86
-  is the thing, Unix is the thing, C is the thing, you can actually start building
-  much, much higher than you thought you could build before. You actually start being
-  able to-- you get into a place where you have a shared understanding of what it
-  is that you're building. And you can, as Steve Jobs said in the quote that I excerpted
-  in my talk, you can start from the 20th floor instead of starting from the first
-  floor. And there's way too many people that are always thinking, oh, I'll just,
-  you know, I'll start from the first floor every time. It's a lot simpler. Right?
-  But really you want to be building things. Having that shared understanding allows
-  everyone to kind of like solve the problem once and then start building on top.
-  And a lot of times, as you could have said in the presentation, that means having
-  a shared implementation, like Rails, Ember. These are shared implementations that
-  everyone can build on top of. But even if you don't share the implementation, even
-  just sharing common vocabulary, having a common interface. So a good example that
-  you could have used was the idea of promises in JavaScript. Everyone is having to
-  deal with asynchronous values. Everyone was having to, was implementing promises
-  as a way of solving that. But everyone's implementing just a little bit differently.
-  Right. And you really couldn't build, you couldn't use these pieces together. You
-  couldn't build on that abstraction. So Dominic D'Nicola really was the one that
-  drove, okay, well, hey, look, we're all doing similar things. I'm going to write
-  a spec. And it's going to be a set of tests. It's going to be a test suite. And
-  if you write a promises implementation, everyone just conformed to this. And that,
-  I think, had really unexpected properties, emergent properties where, okay, now
-  everyone's set it out of the spec. Now it's in the DOM spec. Now it's in the W3C
-  specs. And now actually support for it's being built into the language. And that
-  had to happen in a layered abstraction sort of way. Yeah, because it gets to be
-  something almost like an if statement. It's, you know, it's a construct that you're
-  going to be able to take for granted. That you're going to be able to go from one
-  platform. You know, you're already in this language. It would be like if there was
-  no if and everyone wrote a if function using go-to. Well, you could imagine that
-  someone says, I don't really think control flow really belongs in line. So this
-  is the thing people say about process. I don't understand why control flow is in
-  the language. It's like, hey, guys, guess what? Control flow is in the language.
-  It's an if statement. It'll be okay. I think we can add another asynchronous control
-  flow to the language. And I don't think anything's going to explode. Yeah, yeah.
-  And as far as working in these abstractions, it can become complicated. And there's
-  a product that you guys have launched. And as I said when I was interviewing Lea,
-  that's, you know, I'm not being sponsored by this. But you guys are doing great.
-  You have a long history of just putting stuff in the community. So I wanted to promote
-  your company. And so can you tell us a little bit about Tilde and the product that
-  you're creating? Sure, yeah. Because it relates also to your talk. And I think it's
-  actually related to the open source work as well. Because the last company that
-  we all worked at together, so the founders me, Yehuda, Lea, and Carl, we all worked
-  at a VC-backed company before. And the experience was great. It was very emphasized
-  open source. But at the end of the day, you know, the money, it wasn't necessarily
-  self-sustaining. If you didn't achieve liftoff right away, it's basically like the
-  team got scattered to the winds. And so when we started Tilde, we really wanted
-  to do something that was bootstrapped. We wanted to be bootstrapped and proud. But
-  it turns out it's hard to be bootstrapped and proud if you're bootstrapped and bankrupt.
-  Yeah. So we needed some way to make money. And the obvious way to do that is to
-  become Ember Inc, right? There's like MongoDB Inc. There's Meteor Inc. There's NTM
-  Inc. There's like a long, somewhat, history of VC-backed companies doing open source,
-  where that's like the company driving. And that's a totally plausible model. But
-  for us, we feel like the best innovation happens when you have kind of coalition
-  of companies all working together and there's no one dominant company. We like Postgres.
-  We like Rails, where there's a core team and there are members from many different
-  companies all working on that problem. They steward it. They do a lot of work on
-  it. And you have to reach consensus. Actually, you can't bully ideas and you have
-  to argue for your ideas on the strengths and their merits. And I think that's very
-  important. So what do we do now? Well, we wanted to build something cool. We didn't
-  want to build something really lame. We believe in tackling hard problems. And we
-  also believe in playing dear strengths. So we spent a long time thinking about,
-  okay, what are our strengths? So, one, I think we know how to build developer tools.
-  We've been doing it for a long time. Carl's a badass at building distributed systems.
-  Yeah. And I think we have a pretty... And we know the real stack. And we know the
-  real stack. Obviously, we know the real stack. So that's good. You guys tricked
-  it up at some point. Yeah. So we built Skylight. And the reason we built Skylight
-  was that all the way back in 2009, hard to believe, five years ago, DHA wrote a
-  blog post called The Problem With Averages. And he said, if you're thinking about
-  the performance of your web app, thinking in terms of averages, the words he used
-  were useless and wrong. He said, what you really need is a histogram. You need to
-  see the distribution. Because if you're a statistician, you use averages to think
-  about normal bell curves. But that's not what response times are. Yeah. So he said
-  this in 2009. It's 2014. And there still has not been any tool on the market that
-  developers can take off the shelf and get that tool. Right? If you're a Google or
-  you're a Facebook or Twitter, you have teams building this for you. But that's not
-  Joe small shop. Right. So that's what Skylight does. Skylight basically gives you
-  the tools that the big companies have to think about for web performance in a way
-  that's super accessible, super fast. An Ember app is really, really fast, really
-  responsive. And I think pretty easy to use. Is it possible with Skylight to be able
-  to look at the metrics and be able to try to figure out what kind of characteristics
-  like a specific type of user, like an admin logging in and doing a bunch of crazy
-  things? Right. So that's what the histogram is for. Basically, if you have an average,
-  you're taking cache hits, cache misses, RSS feeds, XHRs, admin users that causes
-  three more database queries to happen. Yeah. You're taking all of that and you're
-  compressing it into a single number. So having the histogram there, we keep the
-  whole distribution. So we can show you the histogram for any time slice up to 30
-  days for any endpoint. And so you can see, like, oh, it looks like there's a cluster.
-  You can zoom in and you can say, oh, it looks like if the request is taking 700
-  milliseconds instead of 200, it's because I'm doing all these extra queries for
-  my database. So one thing that you left out is that it's not just the histogram.
-  Once you've decided what part of the distribution you want to look at, you actually
-  get a really high-fidelity trace, which tells you, you know, first you had this
-  wrap thing. Then you went into this controller. Then you made these three database
-  queries. Then you started rendering a template. You made these three database queries.
-  And we just announced at RailsConf that we're adding CPU profiling. Very, very low
-  impact. Maybe like 10 microseconds per request of impact to do CPU profiling. And
-  then that means we'll be able to say, here are the actual Ruby code that actually
-  was spent. So we can basically not just show you here's the distribution of your
-  request, but we can show you exactly what is happening inside those requests. And
-  not just what's happening inside of, you know, the average request, but what's happening
-  in slow requests or fast requests. You know, maybe a fast request is fast because
-  you're not running all this code. And that maybe sounds like an incremental improvement.
-  But it actually completely, completely changes the way that you diagnose it. It
-  changes the work of how you diagnose the front. Right? Because the way that you
-  can do it today without Skylight is you say, oh, it looks like there was a spike
-  in production. Our response has gotten really bad. And you know they're bad. Because
-  if the average is bad, then you know it's really bad. So you're like, okay, let's
-  go diagnose this. So what do you do? You check out the app on your local machine.
-  You run it. You maybe put some seed data. You try to, like, put some load on it.
-  You plug it into the production database. You can't reproduce it. Well, I guess
-  we'll just pray that this doesn't happen again. Yeah. But what you can do with Skylight
-  is you have a graph, right? You zoom back and see, ah, here's a spike. Here's where
-  the 95% algorithm spiked. You select it in the chart. And now you have a full fidelity
-  stack trace of exactly what was happening in your app, in production, on your production
-  boxes. And it doesn't matter. You don't have to think about it ahead of time. You
-  can go back 30 days. Yeah. And, I mean, can I even find out, like, maybe if another
-  process was impacting what I'm doing? Like, if I'm running something. So I'm looking
-  at my app, and I get these really slow requests at a certain time in the day. I
-  can't see anything weird in my app, but does that CPU help me, like, see, like,
-  oh, there was a bunch of other stuff maybe running at that time? So we don't do
-  anything like that right now. I think you can definitely imagine us doing it. Our
-  goal in general is to identify the kinds of problems that are hitting, that people
-  are hitting. And we're a very small team. We're only six people. It gives us a lot
-  of focus. And what that means is that we look and we say, okay, what kinds of problems
-  are we related? So a really common one that we noticed was n plus one queries. We're
-  running the same query over and over. So we spent the time to actually, you know,
-  to automatically show you when you have repeated queries. We had a CPU profile because
-  a lot of people said, well, this is great, but I have this big area of just Ruby
-  code. I have no idea what it is. How do we get more? So if we notice that this kind
-  of problem of like, you know, there's a background job and it's fake, my request
-  flow is really common. I think we'll probably start looking at, we have a lot of
-  areas and things like distributed tracing that we want to get into. And really what
-  we end up working on is based on what's the next thing that we can do that will
-  help another group of people effectively diagnose what's going on. So you're kind
-  of a little bit of dog fitting in as well. Yeah, I mean, we run Skylight on our
-  own app. Our own app is a big chunk of it is a Rails app and we use Skylight. So
-  we're looking at Skylight every day basically to see what's slow and what's fast.
-  Well, thank you very much for taking the time to speak with me. No problem. And
-  thanks for all your work. Thanks very much for having us. Number and Rails and all
-  that stuff and Bundler. No problem. Great. Thanks. Great. Thank you very much. I
-  really appreciate you. Yeah. User groups with lots to say, interviews and more.
-  No way. Sharing great ideas in the tech community. Fascinating conversations. A
-  plethora of information. Find out for yourself today at UGtastic.
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: Yehuda Katz, Tom Dale
+    role: Ember.js and frontend architecture
+turns:
+- speaker: M1
+  text: Hi, it's Mike with UGtastic
+- speaker: M1
+  text: |-
+    . I'm here at RailsConf 2014 and I'm standing here with Yehuda Katz and Tom Dale, who are the creators of the Ember project and also contributors to Rails.
+     Yehuda gave a keynote yesterday morning and they also gave a talk about how to build a smart profiler for Rails.
+     Thank you very much for taking the time to speak with me, I appreciate it.
+     Yehuda, I know it's the end of the day and we're all pretty tired, but can you sum it up a little memory of the keynote talk you gave yesterday and what the topic was?
+     Sure, so I sort of talked about two areas. The first area was just sort of talking about the idea of cognitive or ego depleting.
+     which is this idea that we have a limited store of cognitive capacity. It's sort of like you have a battery.
+     Like the end of the day at a conference.
+     We've made so many decisions today.
+     And so a lot of people think of cognitive capacity as something that drains uniformly through the day or it drains when you work on hard problems.
+     But actually it turns out that a lot of the things that drain your cognitive capacity are really mundane things like making choices or getting into a little bit of an argument can be really depleting.
+     You could spend like five minutes getting into an argument. You've probably felt this. After five minutes you're drained for the rest of the day.
+     Well it's like when you go to the grocery store, if you think about where you're there for like an hour, you're constantly making decisions.
+     And you get to the checkout line and there's the candy bars. There's a reason there's a candy bar there.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: Because making even like what brand of spaghetti sauce should I buy.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: Causes your willpower to complete.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    So willpower, all these things are sort of the same thing. And the idea was just showing a convention over configuration.
+     It's the idea that Rails I think spent a lot of time and energy advocating for. It's basically part of the same thing by reducing choices and getting everyone on the same page about defaults.
+     Because defaults are really a psychological hack that we can use to allow us to both when we're in a really good mood, allow us to do more before we deplete, use up too much our capacity, but also keep us on the straight and narrow when we're in a bad mood.
+     So you may think when you're being a programmer, what do I name this controller, that you think that it has zero cost. But in fact, it's actually stopping your willpower and your ability to actually think through the more important problems.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: I know I've sat in projects myself and been like, it's hard to even get started
+    because I'm thinking about, oh, do I want to do Postgres or MySQL?
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    It's like odd.
+     And really silly decisions like that, like by the time you've made a few of them.
+     And I think the important part is not to say, well, we're going to take away your decision making, right?
+     Because people don't like losing autonomy for very good reasons.
+     What you're saying is we're just going to give you some sane defaults.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    Defaults are the hack that you use to prevent yourself from being cognitively depleted.
+     So you have the energy to work on the real problems that matter for your business or for your product.
+     And even thinking about defaults, did you ever see the movie Moscow and the Hudson with Robin Williams?
+     No.
+     There's a wonderful scene.
+     It's from the '80s, but whenever I think about cognitive overload, I think about that scene where he goes and he wants to just buy coffee.
+     And he's from the Soviet Union.
+     He just wants to buy coffee.
+     And he looks at the coffee and he says, Folgers, Taster's Choice.
+     And then finally he's looking and then finally he's running back and forth and he's like, coffee, coffee, coffee.
+     And then he picks up and he passes on.
+     Because those choices hold a lot.
+     As DJ said, people like, what's the book?
+     People like choices a lot more than they like having to choose.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    So that was sort of the first half of it.
+     The second half was talking about all the excuses that people give themselves to justify not building up these abstractions.
+     So I think one of the most common ones is like, oh, I'm so special.
+     I have all these special needs, special requirements.
+     And if I don't, you know, if you make me use a tool that's for everybody, how am I going to get my job done with all these things so special?
+     And then people, even when people get past that and they say, you know, I am doing really the same thing as everyone else,
+     they use this excuse of the law of leaky abstractions.
+     Like, oh, these abstractions, these abstractions are always leaked, so there's no point in even bothering with them.
+     And ironically, you see people making these arguments about leaky abstractions sitting on the top of the most epic abstraction stack, right?
+     So you have Node people who are really allergic to abstractions, but they're sitting on top of not just, you know,
+     not just the hardware abstraction, but C, Unix, POSIX, LibUV, you know, one of the most amazing dynamic language jits that had ever been created.
+     And then on the top of that, they say, oh, Promises, that's such a heavy abstraction.
+     I can't remember to deal with that.
+     Well, this is really funny, too, because you think about, like, it wasn't that long ago that people were literally like,
+     if you want, like, hardware was bespoke.
+     Like, every new chip was completely customizable.
+     And then at some point, processors, CPUs, like general processors, got sufficiently good as abstraction that everyone was like,
+     you know what, it's silly for me to be laying out my own chips.
+     Let's just use this off-the-shelf Intel chipset, right?
+     And you would never think about it.
+     No one ever is thinking, oh, okay, I want a new computer.
+     Should I get x86 or should I build my own?
+     It's like, okay, I'm just going to use x86 or ARM.
+     Those are the two things that everyone's agreed upon.
+     Nobody thinks about that.
+     So it's a little bit arrogant, I think.
+     But this happens every layer of the abstraction stack.
+     Everyone always thinks, like, well, I rely on all these abstractions, but I'm at the peak mark.
+     The thing that I am doing is so unique.
+     Like, really, there's no shared solution or shared abstraction that could possibly encapsulate this problem that I'm having.
+     Until you get to it, right?
+     I am going to cut this piece of wood.
+     I need to go and craft something in which I can separate these pieces of wood from each other.
+     Right, yeah, yeah, exactly.
+     No, you just go grab the saw.
+     Yeah, exactly.
+     Exactly, exactly.
+     And it's funny.
+     And I think the reason is that people go in when you're-- there's kind of, as Huda says, there's this layer of experimentation at the top.
+     So there's the abstraction stack, and then at the top, there's always a layer of experimentation.
+     And especially, like, younger developers, less experienced developers, they come in and they say, well, you know, I tried the abstraction.
+     It wasn't perfect yet.
+     It leaked a lot.
+     It wasn't quite perfect.
+     And so their reaction is not, well, I should wait for this to mature.
+     Their reaction is, well, of course, this abstraction as a non-principle must be bad because I failed at it.
+     And then the next time they see an abstraction, they basically just hate abstractions.
+     They hate all abstractions.
+     And, yeah.
+     And I think what's kind of cool is that when you get past this, when you say, no, F86 is
+     the thing, Unix is the thing, C is the thing, you can actually start building much, much higher
+     than you thought you could build before.
+     You actually start being able to-- you get into a place where you have a shared understanding
+     of what it is that you're building.
+     And you can, as Steve Jobs said in the quote that I excerpted in my talk, you can start from
+     the 20th floor instead of starting from the first floor.
+     And there's way too many people that are always thinking, oh, I'll just, you know, I'll start
+     from the first floor every time.
+     It's a lot simpler.
+     Right?
+     But really you want to be building things.
+     Having that shared understanding allows everyone to kind of like solve the problem once
+     and then start building on top.
+     And a lot of times, as you could have said in the presentation, that means having a shared
+     implementation, like Rails, Ember.
+     These are shared implementations that everyone can build on top of.
+     But even if you don't share the implementation, even just sharing common vocabulary, having
+     a common interface.
+     So a good example that you could have used was the idea of promises in JavaScript.
+     Everyone is having to deal with asynchronous values.
+     Everyone was having to, was implementing promises as a way of solving that.
+     But everyone's implementing just a little bit differently.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    And you really couldn't build, you couldn't use these pieces together.
+     You couldn't build on that abstraction.
+     So Dominic D'Nicola really was the one that drove, okay, well, hey, look, we're all doing
+     similar things.
+     I'm going to write a spec.
+     And it's going to be a set of tests.
+     It's going to be a test suite.
+     And if you write a promises implementation, everyone just conformed to this.
+     And that, I think, had really unexpected properties, emergent properties where, okay,
+     now everyone's set it out of the spec.
+     Now it's in the DOM spec.
+     Now it's in the W3C specs.
+     And now actually support for it's being built into the language.
+     And that had to happen in a layered abstraction sort of way.
+     Yeah, because it gets to be something almost like an if statement.
+     It's, you know, it's a construct that you're going to be able to take for granted.
+     That you're going to be able to go from one platform.
+     You know, you're already in this language.
+     It would be like if there was no if and everyone wrote a if function using go-to.
+     Well, you could imagine that someone says, I don't really think control flow really belongs
+     in line.
+     So this is the thing people say about process.
+     I don't understand why control flow is in the language.
+     It's like, hey, guys, guess what?
+     Control flow is in the language.
+     It's an if statement.
+     It'll be okay.
+     I think we can add another asynchronous control flow to the language.
+     And I don't think anything's going to explode.
+     Yeah, yeah.
+     And as far as working in these abstractions, it can become complicated.
+     And there's a product that you guys have launched.
+     And as I said when I was interviewing Lea, that's, you know, I'm not being sponsored by this.
+     But you guys are doing great.
+     You have a long history of just putting stuff in the community.
+     So I wanted to promote your company.
+     And so can you tell us a little bit about Tilde and the product that you're creating?
+     Sure, yeah.
+     Because it relates also to your talk.
+     And I think it's actually related to the open source work as well.
+     Because the last company that we all worked at together, so the founders me, Yehuda, Lea,
+     and Carl, we all worked at a VC-backed company before.
+     And the experience was great.
+     It was very emphasized open source.
+     But at the end of the day, you know, the money, it wasn't necessarily self-sustaining.
+     If you didn't achieve liftoff right away, it's basically like the team got scattered to the
+     winds.
+     And so when we started Tilde, we really wanted to do something that was bootstrapped.
+     We wanted to be bootstrapped and proud.
+     But it turns out it's hard to be bootstrapped and proud if you're bootstrapped and bankrupt.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    So we needed some way to make money.
+     And the obvious way to do that is to become Ember Inc, right?
+     There's like MongoDB Inc.
+     There's Meteor Inc.
+     There's NTM Inc.
+     There's like a long, somewhat, history of VC-backed companies doing open source, where that's
+     like the company driving.
+     And that's a totally plausible model.
+     But for us, we feel like the best innovation happens when you have kind of coalition of companies
+     all working together and there's no one dominant company.
+     We like Postgres.
+     We like Rails, where there's a core team and there are members from many different companies
+     all working on that problem.
+     They steward it.
+     They do a lot of work on it.
+     And you have to reach consensus.
+     Actually, you can't bully ideas and you have to argue for your ideas on the strengths and
+     their merits.
+     And I think that's very important.
+     So what do we do now?
+     Well, we wanted to build something cool.
+     We didn't want to build something really lame.
+     We believe in tackling hard problems.
+     And we also believe in playing dear strengths.
+     So we spent a long time thinking about, okay, what are our strengths?
+     So, one, I think we know how to build developer tools.
+     We've been doing it for a long time.
+     Carl's a badass at building distributed systems.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    And I think we have a pretty...
+     And we know the real stack.
+     And we know the real stack.
+     Obviously, we know the real stack.
+     So that's good.
+     You guys tricked it up at some point.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    So we built Skylight.
+     And the reason we built Skylight was that all the way back in 2009, hard to believe,
+     five years ago, DHA wrote a blog post called The Problem With Averages.
+     And he said, if you're thinking about the performance of your web app,
+     thinking in terms of averages, the words he used were useless and wrong.
+     He said, what you really need is a histogram.
+     You need to see the distribution.
+     Because if you're a statistician, you use averages to think about normal bell curves.
+     But that's not what response times are.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    So he said this in 2009.
+     It's 2014.
+     And there still has not been any tool on the market that developers can take off the shelf
+     and get that tool.
+     Right?
+     If you're a Google or you're a Facebook or Twitter, you have teams building this for you.
+     But that's not Joe small shop.
+- speaker: S1
+  text: Right.
+- speaker: S1
+  text: |-
+    So that's what Skylight does.
+     Skylight basically gives you the tools that the big companies have to think about for
+     web performance in a way that's super accessible, super fast.
+     An Ember app is really, really fast, really responsive.
+     And I think pretty easy to use.
+     Is it possible with Skylight to be able to look at the metrics and be able to try to figure
+     out what kind of characteristics like a specific type of user, like an admin logging in and
+     doing a bunch of crazy things?
+- speaker: M1
+  text: Right.
+- speaker: M1
+  text: |-
+    So that's what the histogram is for.
+     Basically, if you have an average, you're taking cache hits, cache misses, RSS feeds, XHRs,
+     admin users that causes three more database queries to happen.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    You're taking all of that and you're compressing it into a single number.
+     So having the histogram there, we keep the whole distribution.
+     So we can show you the histogram for any time slice up to 30 days for any endpoint.
+     And so you can see, like, oh, it looks like there's a cluster.
+     You can zoom in and you can say, oh, it looks like if the request is taking 700 milliseconds
+     instead of 200, it's because I'm doing all these extra queries for my database.
+     So one thing that you left out is that it's not just the histogram.
+     Once you've decided what part of the distribution you want to look at, you actually get a really
+     high-fidelity trace, which tells you, you know, first you had this wrap thing.
+     Then you went into this controller.
+     Then you made these three database queries.
+     Then you started rendering a template.
+     You made these three database queries.
+     And we just announced at RailsConf that we're adding CPU profiling.
+     Very, very low impact.
+     Maybe like 10 microseconds per request of impact to do CPU profiling.
+     And then that means we'll be able to say, here are the actual Ruby code that actually was spent.
+     So we can basically not just show you here's the distribution of your request,
+     but we can show you exactly what is happening inside those requests.
+     And not just what's happening inside of, you know, the average request,
+     but what's happening in slow requests or fast requests.
+     You know, maybe a fast request is fast because you're not running all this code.
+     And that maybe sounds like an incremental improvement.
+     But it actually completely, completely changes the way that you diagnose it.
+     It changes the work of how you diagnose the front.
+     Right?
+     Because the way that you can do it today without Skylight is you say,
+     oh, it looks like there was a spike in production.
+     Our response has gotten really bad.
+     And you know they're bad.
+     Because if the average is bad, then you know it's really bad.
+     So you're like, okay, let's go diagnose this.
+     So what do you do?
+     You check out the app on your local machine.
+     You run it.
+     You maybe put some seed data.
+     You try to, like, put some load on it.
+     You plug it into the production database.
+     You can't reproduce it.
+     Well, I guess we'll just pray that this doesn't happen again.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    But what you can do with Skylight is you have a graph, right?
+     You zoom back and see, ah, here's a spike.
+     Here's where the 95% algorithm spiked.
+     You select it in the chart.
+     And now you have a full fidelity stack trace of exactly what was happening in your app,
+     in production, on your production boxes.
+     And it doesn't matter.
+     You don't have to think about it ahead of time.
+     You can go back 30 days.
+- speaker: M1
+  text: Yeah.
+- speaker: M1
+  text: |-
+    And, I mean, can I even find out, like, maybe if another process was impacting what I'm doing?
+     Like, if I'm running something.
+     So I'm looking at my app, and I get these really slow requests at a certain time in the day.
+     I can't see anything weird in my app, but does that CPU help me, like, see, like,
+     oh, there was a bunch of other stuff maybe running at that time?
+     So we don't do anything like that right now.
+     I think you can definitely imagine us doing it.
+     Our goal in general is to identify the kinds of problems that are hitting, that people are hitting.
+     And we're a very small team.
+     We're only six people.
+     It gives us a lot of focus.
+     And what that means is that we look and we say, okay, what kinds of problems are we related?
+     So a really common one that we noticed was n plus one queries.
+     We're running the same query over and over.
+     So we spent the time to actually, you know, to automatically show you when you have repeated
+     queries.
+     We had a CPU profile because a lot of people said, well, this is great, but I have this big
+     area of just Ruby code.
+     I have no idea what it is.
+     How do we get more?
+     So if we notice that this kind of problem of like, you know, there's a background job
+     and it's fake, my request flow is really common.
+     I think we'll probably start looking at, we have a lot of areas and things like distributed
+     tracing that we want to get into.
+     And really what we end up working on is based on what's the next thing that we can do that
+     will help another group of people effectively diagnose what's going on.
+     So you're kind of a little bit of dog fitting in as well.
+     Yeah, I mean, we run Skylight on our own app.
+     Our own app is a big chunk of it is a Rails app and we use Skylight.
+     So we're looking at Skylight every day basically to see what's slow and what's fast.
+     Well, thank you very much for taking the time to speak with me.
+     No problem.
+     And thanks for all your work.
+     Thanks very much for having us.
+     Number and Rails and all that stuff and Bundler.
+     No problem.
+     Great.
+     Thanks.
+     Great.
+     Thank you very much.
+     I really appreciate you.
+- speaker: S1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    User groups with lots to say, interviews and more.
+     No way.
+     Sharing great ideas in the tech community.
+     Fascinating conversations.
+     A plethora of information.
+     Find out for yourself today at UGtastic.
+insights: []
