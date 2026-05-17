@@ -1,72 +1,210 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Ethan Gunderson, Ryan Briones
-    role: Gathers.us and ChicagoDB
-turns:
-- speaker: M1
-  text: |-
-    Hi, I'm Mike, sitting down again with Ryan Briones and Ethan Gunderson. These guys created Gathers Us, it's a website for managing user group information, or user
-     group events, and also are the founders of the Chicago DB user group. Thanks Ryan and Ethan for sitting down, again, we had a little technical snafu beforehand. So, what we discussed earlier is that Gathers Us had a pretty interesting origin, that it
-     was based off of a need that you had in creating Chicago DB. Can you describe a little bit about some of the inception of Gathers Us and what that is
-     in?
-- speaker: S1
-  text: |-
-    I mean it's used for several user groups, I've used it myself, and I know Geekfest uses it. It's a great success and you get a lot of sign-ups, I mean well over 100 each week. But how did Gathers Us come out of Chicago DB? Well, there were two major things that happened. One, we were too cheap to use a tool that costs money, there's a couple of them out there, a
-     lot of them out there, which was kind of the biggest impetus for us to create our own. Especially when we kind of had this idea for the group, but we didn't know how it was going
-     to, you know, if it was going to be successful or not, we didn't want to pay money for something
-     that was just going to be, that wasn't going to like have legs and go on. Kind of the second thing though, a personal gripe of mine is that a lot of other meeting websites,
-     in order to attend an event, they force you to sign up and actually have an account with
-     their site before you can attend that event. And so there's another big like design goal with Gathers Us was to make it dead simple
-     to both create an event and attend an event. Only information you need to provide is your first name, last name and email and then, you
-     know, you can attend an event. Do you ever have any problem with spam because it's so easy to get in there? Yes. I mean, I know you have a CAPTCHA out there. That's the reason why. Okay. And has that actually been effective? It hasn't happened since we introduced it. Oh, good. But, like you said, it was born out of a need when you were creating Chicago DB. So the question I asked earlier was what database did you end up using? I'm considering that you're a database group and that would be kind of a critical question. What database is Gathers Us built on? So the database, sorry, the database we used is Mongo for no particular reason whatsoever. Yes. Other than I want an argument. Okay. And some of the things that you learn in creating Gathers Us were those things that you were able
-     to kind of bring back into the meetings. So you start off, you want to have a user group about databases and about learning database technologies. So you create a site to support that. You pick the database and, you know, did you learn anything about and were you able to bring
-     that back into what you were sharing with the group? Yeah, we never did anything with the group on it. I did give two talks at Mongo conferences about the data strategies that we used for storing
-     our data. Because at the time, which was probably the biggest pain point using Mongo is that almost
-     none of that was documented. Everyone was using their own. Yeah. So you were on the bleeding edge. Yeah. Right there. And that's the thing about being on the bleeding edge is you bleed. It's painful. So going into the group, you know, you founded a group about what you said about two years
-     ago. Two or three, yeah. And what kind of format did you follow when you were doing actual meetings? What was the typical structure of a meeting? Well, kind of, as illustrated as, you know, the inception of Gathersoss is, that was kind
-     of our, like, the reason why we had to create a group like this is because, you know, we essentially
-     decided on using Mongo kind of just out of a, like, it might as well have been flipping
-     a coin or something like that, you know. We had no idea why Mongo would be better than any other database. And so what our goals were, were to design a group that was focused around like this deep
-     learning of, you know, what makes a particular database better than another, understand like
-     the core of that so that we could apply that to our normal day-to-day stuff. And, you know, there's a lot of good talent in Chicago, a lot of people that have had experience
-     both with modern non-relational databases and people that have a lot of experience building
-     applications on relational databases as well. So we figured that in a selfish way, we could kind of leech off of the knowledge that's here
-     in Chicago and kind of take that to the next level. So we did that in two different ways. Uh, the format of the group was kind of designed around that. Uh, like every user group, we had a portion of the group that's kind of like a face forward,
-     uh, presentation style, um, uh, part where someone would talk about technology or something
-     like that. Uh, but to start out the night, we would, uh, do, um, we would read these database white
-     papers, um, that would kind of give us some kind of deep knowledge about, uh, a particular
-     technology like, uh, dynamo or big table or, uh, something like that. Um, and, uh, kind of maybe set the stage for what we were going to talk about later that day. Okay. And anything really interesting in that you, you learned from reading these white papers yourself
-     with, or anything that was kind of surprising about that? So the biggest thing for me was the realization that basically no, no new ideas have come out
-     of database theory in the last 35 years. Yeah. So things like the dynamo paper are just a group of ideas presented slightly differently. Um, but they're all 35 years old. Yeah. You also mentioned something about the, the, the specificity of, of some of the original,
-     um, or the modern NoSQL implementations came out of really specific concerns like the dynamo
-     being the shipping cart, uh, backend from Amazon. Now it's got millions of things bolted onto it. Right. You have, you have full databases that are built around that paper, um, both from Amazon
-     and from competition. Um, and, uh, you know, looking at, uh, um, at the, trying to cover these technical white
-     papers, it's, it's, it's a very large undertaking, even just when you're trying to understand yourself
-     and grab, uh, get your hands around these white papers, getting people to read these papers
-     month to month. Did, is that, uh, something that was easy to do? Did you have lots of people saying, yes, I'm going to read this paper and give an hour long
-     presentation on, on its contents or was that a challenge? Uh, it was a challenge. Yeah. I mean, most of the time people would not read the paper and, uh, kind of the, one of the
-     things we wanted to do is, you know, it was, would be rough for us to be the ones that,
-     um, kind of like led the discussion every month and be the only one, the only voices in the
-     group. So we tried to get people to volunteer to do, and we had a couple of good core, um, uh,
-     members that would kind of step up from time to time to do that. But, um, uh, essentially, uh, trying to get people to volunteer, um, to lead the discussion
-     on, um, on a particular paper was, uh, rough. Yeah. And kind of, you joked it earlier that it's maybe, you don't necessarily even understand
-     it all yourself. And then all of a sudden you're trying to present it to a bunch of other people. Which is probably why we had a hard time getting people to volunteer. Yeah. Like no one wants to try to lead a discussion about a topic that they don't truly understand. Yeah. And a lot of those white papers are hard. Yeah. Yeah. Yeah. It's, yeah, they're very, they're very technical written a lot of time ago. Yes. And very ivory tower-ish. Lots of math. Yeah. Yeah. There's a lot of math. That's interesting. The... Oh, do you have a meeting? We're gonna get chicken with that? Yeah. Crap. Uh, go. All right. All right. So, the, uh, you know, the papers, you know, you said they were very tough and the people
-     would be trying to, uh, to come in and, uh, and present on these papers. Uh, have you looked at any other formats, like bringing in vendors or anything? Was there anything you learned trying to maybe reach out to a Mongo company or a, like, and
-     get them to come in? Have you, did you do anything like that? Yeah. Uh, we've had people from 10-gen, um, I don't think we've had anyone from Basho. Membase. Membase. Um... The, the issue that we've kind of had with bringing vendors in is that they're more or
-     less interested in, like, converting you to use their database. Right. Which is usually leads to more of like a sales pitchy kind of presentation instead of, like,
-     a low-level technical talk. Mm-hmm. Right. Like, it's really hard to get a vendor to tell you the trade-offs that you're making. Right. Right. Yeah. And it's like, no, it's totally not in their best interest to do that. Right. So, what is the future, right? Do you have, uh, plans for, for reviving the group or how is, how is, how is... looking forward to the future of, uh, Chicago DB? I don't... It hasn't been totally decided yet what'll happen. Um, the interest in the group has died out a little bit. And I think that's mostly due to, like, specialized user groups forming. Mm-hmm. Like, we have a React, Hadoop, basically any relatively still popular NoSQL database has
-     its own user group in Chicago now. Right. Um, but what I, what I, even though it was really difficult to do, the white papers are
-     still, uh, my favorite part about the group, um, and so I've been tossing around the idea
-     of doing a general computer science white paper user group. Oh, okay. Um. Yeah, but, so you can see the same kind of fracturing, and so I could understand that would
-     be, uh, kind of frustrating is, uh, whereas you started with trying to understand the core
-     tenants that could be applied to any of those database systems, now people have kind of segregated
-     themselves by their platform. Right. And that's, uh, I could see that might be kind of frustrating, or, uh, do you think it's
-     a good thing, or? I don't mind it. Yeah. Um, like Ryan said, the, the whole purpose of the group was so that we could learn, and
-     I learned. Uh, so, that's all I care about. So, go for it. So call it to you. Yeah. Go for it to you. And then you can have something very cool out of it. I gather results, it's very popular, so.
-- speaker: M1
-  text: Well, um, thank you very much for sitting down, Ryan. I don't want to keep
-    you guys from your chicken. Thank you very much. Thanks.
+content: |-
+  Hi, I'm Mike, sitting down again with Ryan Briones and Ethan Gunderson.
+   These guys created Gathers Us, it's a website for managing user group information, or user
+   group events, and also are the founders of the Chicago DB user group.
+   Thanks Ryan and Ethan for sitting down, again, we had a little technical snafu beforehand.
+   So, what we discussed earlier is that Gathers Us had a pretty interesting origin, that it
+   was based off of a need that you had in creating Chicago DB.
+   Can you describe a little bit about some of the inception of Gathers Us and what that is
+   in?
+   I mean it's used for several user groups, I've used it myself, and I know Geekfest uses it.
+   It's a great success and you get a lot of sign-ups, I mean well over 100 each week.
+   But how did Gathers Us come out of Chicago DB?
+   Well, there were two major things that happened.
+   One, we were too cheap to use a tool that costs money, there's a couple of them out there, a
+   lot of them out there, which was kind of the biggest impetus for us to create our own.
+   Especially when we kind of had this idea for the group, but we didn't know how it was going
+   to, you know, if it was going to be successful or not, we didn't want to pay money for something
+   that was just going to be, that wasn't going to like have legs and go on.
+   Kind of the second thing though, a personal gripe of mine is that a lot of other meeting websites,
+   in order to attend an event, they force you to sign up and actually have an account with
+   their site before you can attend that event.
+   And so there's another big like design goal with Gathers Us was to make it dead simple
+   to both create an event and attend an event.
+   Only information you need to provide is your first name, last name and email and then, you
+   know, you can attend an event.
+   Do you ever have any problem with spam because it's so easy to get in there?
+   Yes.
+   I mean, I know you have a CAPTCHA out there.
+   That's the reason why.
+   Okay.
+   And has that actually been effective?
+   It hasn't happened since we introduced it.
+   Oh, good.
+   But, like you said, it was born out of a need when you were creating Chicago DB.
+   So the question I asked earlier was what database did you end up using?
+   I'm considering that you're a database group and that would be kind of a critical question.
+   What database is Gathers Us built on?
+   So the database, sorry, the database we used is Mongo for no particular reason whatsoever.
+   Yes.
+   Other than I want an argument.
+   Okay.
+   And some of the things that you learn in creating Gathers Us were those things that you were able
+   to kind of bring back into the meetings.
+   So you start off, you want to have a user group about databases and about learning database technologies.
+   So you create a site to support that.
+   You pick the database and, you know, did you learn anything about and were you able to bring
+   that back into what you were sharing with the group?
+   Yeah, we never did anything with the group on it.
+   I did give two talks at Mongo conferences about the data strategies that we used for storing
+   our data.
+   Because at the time, which was probably the biggest pain point using Mongo is that almost
+   none of that was documented.
+   Everyone was using their own.
+   Yeah.
+   So you were on the bleeding edge.
+   Yeah.
+   Right there.
+   And that's the thing about being on the bleeding edge is you bleed.
+   It's painful.
+   So going into the group, you know, you founded a group about what you said about two years
+   ago.
+   Two or three, yeah.
+   And what kind of format did you follow when you were doing actual meetings?
+   What was the typical structure of a meeting?
+   Well, kind of, as illustrated as, you know, the inception of Gathersoss is, that was kind
+   of our, like, the reason why we had to create a group like this is because, you know, we essentially
+   decided on using Mongo kind of just out of a, like, it might as well have been flipping
+   a coin or something like that, you know.
+   We had no idea why Mongo would be better than any other database.
+   And so what our goals were, were to design a group that was focused around like this deep
+   learning of, you know, what makes a particular database better than another, understand like
+   the core of that so that we could apply that to our normal day-to-day stuff.
+   And, you know, there's a lot of good talent in Chicago, a lot of people that have had experience
+   both with modern non-relational databases and people that have a lot of experience building
+   applications on relational databases as well.
+   So we figured that in a selfish way, we could kind of leech off of the knowledge that's here
+   in Chicago and kind of take that to the next level.
+   So we did that in two different ways.
+   Uh, the format of the group was kind of designed around that.
+   Uh, like every user group, we had a portion of the group that's kind of like a face forward,
+   uh, presentation style, um, uh, part where someone would talk about technology or something
+   like that.
+   Uh, but to start out the night, we would, uh, do, um, we would read these database white
+   papers, um, that would kind of give us some kind of deep knowledge about, uh, a particular
+   technology like, uh, dynamo or big table or, uh, something like that.
+   Um, and, uh, kind of maybe set the stage for what we were going to talk about later that day.
+   Okay.
+   And anything really interesting in that you, you learned from reading these white papers yourself
+   with, or anything that was kind of surprising about that?
+   So the biggest thing for me was the realization that basically no, no new ideas have come out
+   of database theory in the last 35 years.
+   Yeah.
+   So things like the dynamo paper are just a group of ideas presented slightly differently.
+   Um, but they're all 35 years old.
+   Yeah.
+   You also mentioned something about the, the, the specificity of, of some of the original,
+   um, or the modern NoSQL implementations came out of really specific concerns like the dynamo
+   being the shipping cart, uh, backend from Amazon.
+   Now it's got millions of things bolted onto it.
+   Right.
+   You have, you have full databases that are built around that paper, um, both from Amazon
+   and from competition.
+   Um, and, uh, you know, looking at, uh, um, at the, trying to cover these technical white
+   papers, it's, it's, it's a very large undertaking, even just when you're trying to understand yourself
+   and grab, uh, get your hands around these white papers, getting people to read these papers
+   month to month.
+   Did, is that, uh, something that was easy to do?
+   Did you have lots of people saying, yes, I'm going to read this paper and give an hour long
+   presentation on, on its contents or was that a challenge?
+   Uh, it was a challenge.
+   Yeah.
+   I mean, most of the time people would not read the paper and, uh, kind of the, one of the
+   things we wanted to do is, you know, it was, would be rough for us to be the ones that,
+   um, kind of like led the discussion every month and be the only one, the only voices in the
+   group.
+   So we tried to get people to volunteer to do, and we had a couple of good core, um, uh,
+   members that would kind of step up from time to time to do that.
+   But, um, uh, essentially, uh, trying to get people to volunteer, um, to lead the discussion
+   on, um, on a particular paper was, uh, rough.
+   Yeah.
+   And kind of, you joked it earlier that it's maybe, you don't necessarily even understand
+   it all yourself.
+   And then all of a sudden you're trying to present it to a bunch of other people.
+   Which is probably why we had a hard time getting people to volunteer.
+   Yeah.
+   Like no one wants to try to lead a discussion about a topic that they don't truly understand.
+   Yeah.
+   And a lot of those white papers are hard.
+   Yeah.
+   Yeah.
+   Yeah.
+   It's, yeah, they're very, they're very technical written a lot of time ago.
+   Yes.
+   And very ivory tower-ish.
+   Lots of math.
+   Yeah.
+   Yeah.
+   There's a lot of math.
+   That's interesting.
+   The...
+   Oh, do you have a meeting?
+   We're gonna get chicken with that?
+   Yeah.
+   Crap.
+   Uh, go.
+   All right.
+   All right.
+   So, the, uh, you know, the papers, you know, you said they were very tough and the people
+   would be trying to, uh, to come in and, uh, and present on these papers.
+   Uh, have you looked at any other formats, like bringing in vendors or anything?
+   Was there anything you learned trying to maybe reach out to a Mongo company or a, like, and
+   get them to come in?
+   Have you, did you do anything like that?
+   Yeah.
+   Uh, we've had people from 10-gen, um, I don't think we've had anyone from Basho.
+   Membase.
+   Membase.
+   Um...
+   The, the issue that we've kind of had with bringing vendors in is that they're more or
+   less interested in, like, converting you to use their database.
+   Right.
+   Which is usually leads to more of like a sales pitchy kind of presentation instead of, like,
+   a low-level technical talk.
+   Mm-hmm.
+   Right.
+   Like, it's really hard to get a vendor to tell you the trade-offs that you're making.
+   Right.
+   Right.
+   Yeah.
+   And it's like, no, it's totally not in their best interest to do that.
+   Right.
+   So, what is the future, right?
+   Do you have, uh, plans for, for reviving the group or how is, how is, how is...
+   looking forward to the future of, uh, Chicago DB?
+   I don't...
+   It hasn't been totally decided yet what'll happen.
+   Um, the interest in the group has died out a little bit.
+   And I think that's mostly due to, like, specialized user groups forming.
+   Mm-hmm.
+   Like, we have a React, Hadoop, basically any relatively still popular NoSQL database has
+   its own user group in Chicago now.
+   Right.
+   Um, but what I, what I, even though it was really difficult to do, the white papers are
+   still, uh, my favorite part about the group, um, and so I've been tossing around the idea
+   of doing a general computer science white paper user group.
+   Oh, okay.
+   Um.
+   Yeah, but, so you can see the same kind of fracturing, and so I could understand that would
+   be, uh, kind of frustrating is, uh, whereas you started with trying to understand the core
+   tenants that could be applied to any of those database systems, now people have kind of segregated
+   themselves by their platform.
+   Right.
+   And that's, uh, I could see that might be kind of frustrating, or, uh, do you think it's
+   a good thing, or?
+   I don't mind it.
+   Yeah.
+   Um, like Ryan said, the, the whole purpose of the group was so that we could learn, and
+   I learned.
+   Uh, so, that's all I care about.
+   So, go for it.
+   So call it to you.
+   Yeah.
+   Go for it to you.
+   And then you can have something very cool out of it.
+   I gather results, it's very popular, so.
+   Well, um, thank you very much for sitting down, Ryan.
+   I don't want to keep you guys from your chicken.
+   Thank you very much.
+   Thanks.

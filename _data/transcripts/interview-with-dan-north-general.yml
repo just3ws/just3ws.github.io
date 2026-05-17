@@ -1,63 +1,483 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Dan North
-    role: developer community and conference conversations
-turns:
-- speaker: M1
-  text: |-
-    Hi, it's Mike again with Uktasek. I'm still here at GOTO Conference Chicago, they haven't kicked me out yet. I'm sitting down with Dan North. Dan is well known as the kind of the father of BDD. You are the one who wrote the first paper and description and first implementations. And I also think it's fascinating that you're kind of an iconoclast who likes to question dogma. Over the years, over the last seven years, BDD has become dogma. Either you do it or you don't. And you can't do BDD, you've got to do BDD, and there's all these things. And being that you're a person who questions dogma, what is it like to be someone who created something,
-     has now been accepted as a dogmatic thing?
-- speaker: S1
-  text: |-
-    As a dogma, I think, yeah. So this to me comes down to experience. So what happens is when you have someone who is new to something, when they're a novice in a particular area,
-     they want to just find a thing that works. They want to be told what to do, they want rules, they want structure, and they want to be able to just follow a recipe,
-     and they want to get quick wins in that way. Right. And this is sort of part of learning theory is that this is how we operate while we gain context and while we gain experience. And once we've got a bunch of experience and a bunch of context, we can start making good decisions. Right. Now, what happens is people will pick up something without any context and say, right, well, then this must be how it works. And they're really uncomfortable, as I was talking about, with uncertainty. Right. They don't like the idea of uncertainty. They don't like the idea that we can't know some things. And so they'll fill in the blanks. And this is what we do. So BDD, I've deliberately never written down. I mean, I wrote the Introducing BDD article, but I've never really been that descriptive or prescriptive about what it is and what it isn't. Because to me, it isn't a set of practices. It's a way of engaging. It's a way of trying to get work done. Yeah. It's a way of thinking about a problem. Yeah. And Liz Kier says this really well. She's basically, it's about the conversations, right? Okay. Everything comes back to the conversations. And so, you know, I said in a talk recently, like, the only BDD tool that matters is the one in your head. But that's it. Everything else is just detail. And so you get the kind of the camps that are the, you know, the aspect camps and the J Behave camps and the Cucumber camps and all these guys. And then this world of misinformation about, oh, BDD is this and BDD is that. And, you know, BDD only works at this high level. And then you use TDD down in the, whatever. And I think a lot of that is a basic misunderstanding of what TDD is and what I was trying to do with BDD and where that's ended up. So I think with anything, as long, as soon as it's around for any length of time, people will become dogmatic about it. Right. There's, there's a, there's a subset of people. There's a, you know, there's a, there's a type of people, if you like, who are going to pick up on something. And especially when they start making that their thing. Like if they're selling, you know, I'm a BDD consultant. Right. And they've got to sound pretty definite about things. This is, this is BDD and this isn't BDD. This is why you should listen to me. Yeah. This is why you should listen to me. This is why you should pay me bucks. Right. So I have a working theory. It's only a theory. I have no data. Only, only, only observational, which is that people start selling certifications in things
-     when they, well, like, yeah, like any of those things, when, when they think it's the last
-     good idea they're going to have. So there's a, yeah, I'm going to, I'm going to monetize this thing. Now I, I never wanted to monetize BDD because I don't think it's a, you know, it's, it's
-     just, it's a useful thing. Yeah. It's a useful thing. You shouldn't monetize ideas. I think that's, that's crazy. Or rather you shouldn't try and lock down ideas. There's a, I came across a lovely quote. If you want an idea to, to, to travel, you shouldn't try and travel with it. Oh, okay. And I really like that. Yeah. And you look at. Don't, don't assign it to your personality. No, no, very much so. Here you go. So put it out there. So BDD started as me trying to coach TDD better because TDD is so awesome. I love TDD. I love the, the thinking that goes in TDD. And I, you know, you, you've heard me bashing on TDD. Right. I'm not. I'm bashing on TDD zealots because I'm bashing on zealots. Right. Do you know what I mean? It's like. It's not TDD. TDD is a pattern. Okay. It's a pattern in the classic, uh, Alexandrian sense of a pattern. It's a strategy that works well in a particular situation, in a certain context. It resolves some forces. It introduces other forces. And it needs to be used in conjunction with a bunch of other patterns. So there are places where the, the, it's the first thing I'll reach for is TDD. Right. And there are places where it's just going to slow me down or it's going to be irrelevant
-     or it's even going to lead me to a wrong solution. Mm-hm. You know? So, so when people say, well, Dan North is a TDD, that's, that's, it's almost sounds
-     like that dogma trying to find the conflict where it, it really isn't. Yeah. Yeah. It's, it's, it's, it's making, it's making up a phantom enemy. And, and that's part of it. But I think part of it as well is it makes a good soundbite. Yeah. You know, uh, Dan North is advocating copying and pasting code. Right. I, I, I am, right? Yeah. There's, there's a certain context in which I want to copy and paste code. Mm-hm. And the context is very specific. And I describe it as one of my, um, accelerated Agile patterns called ginger cake. And the point about it is it's a pattern. It works in a certain context. That doesn't say you should always copy and paste code or you should never copy and paste
-     code. It says given these constraints in this environment, in this context, it's a useful strategy to
-     have in your pocket. Yeah. Yeah. And then it's, that when it's towards that level of mastery where I wonder if part of the dogma
-     is people just don't feel, uh, confident enough also that there's, well, I'm going to take
-     a step back and I want to just go back to what you were talking about with the last idea. I've heard, uh, that the reason that they want to charge money for it is because they think
-     it's going to be the last idea they, I've heard that in, uh, with music as well. I've heard it as an argument. Why? Is that right? That's how many songs does an artist have in them? And if they don't charge for them, how do they know that they're going to have another
-     hit? And if they don't protect their copyright, how do they know they're going to, you know? Ah, so, right. So, so, so, so it's, it's been thinking I've got a hit here. So I need to, yeah. Okay. I like that. So that was, it sounds like it's a human way of thinking about problems. It isn't unique to software development. It is, it's just humans do this when we're, when we're confronted with the fear of this
-     is all I've got. Yeah. Yeah. Maybe, yeah. Uh, uh, Linda Reising was talking about this yesterday. Lost aversion. Okay. So the idea that you have a thing and you might lose the thing is much more compelling
-     than, uh, so she was talking about reward structures and she said, if you offer someone a bonus
-     for doing something, it actually, it ends up being a disincentive. Like all the data says it ends up being a disincentive. Is that the Dan Pink's drive? Um, they, oh, there's a ton of, there's a ton of research around this. Okay. Um, he's one of them certainly. And that's all sort of behavioral economics school. Um, but that if you, uh, present it as I've already given you this bonus, but you'll
-     lose it if you don't reach these targets, people will work extra hard to hit those targets. Okay. It's not that it's a carrot. Even though it's hypothetical. It's, it's, here's your carrot, but I'm gonna take it away. Yeah. Yeah. Yeah. Yeah. Yeah. It's, it's the risk of losing a carrot is more effective than a carrot. Yeah. Or a stick. Yeah. Is to offer the carrot as a thing that you could lose. I can see how that is because I can be like, I have this carrot. We're gonna take it away. Versus I don't have a carrot. I don't lose anything. But you know, I, I, I might work all the way up to the line and not get it. I have to say even what you described is I've seen these bonuses at companies where now when
-     a company says, we're gonna offer a bonus to you for performance. I've been in enough companies where all of a sudden at bonus time, it was, you know, we
-     weren't doing so hot last year. Yeah. Yeah. Well, it's been a tough year. Yeah. Yeah. Yeah. We're gonna have to pull that belt a little tighter. Just, just see my new boat. Yeah. Yeah. Yeah. Yeah. Yeah. And, and, and people will leave. I mean, you'll actually lose people by, by doing that because of the, the loss, they've
-     now lost that thing. And they're like, great. Yeah. I, I, I nearly had that thing and I lost it. Right. Um, so you rise over. There's a great interview with, um, Alanis Morissette. Okay. Randomly. And, uh, and it's about her second album. So her first album is angry, angry music. Yeah. And then her second album, she's met this guy and she's really in love and she's really
-     happy. And it's this album of happy songs. Things have gotten much better. It's gotten much better. And it's, it's, it's actually, it's a good album. There's some solid songs on there, but it's a happy album. And, and they were saying like, all your fans are really furious because you, you know,
-     you're, you're not writing this angry music. And she's like, I don't write angry music. I write music about how I'm feeling. Yeah. So I write angry music. I'm happy as I'm writing happy music. Yeah. I like to cut myself to the first album. Yeah. Yeah. It just doesn't work. Well, this is, and yeah, exactly. And it's like, you know, I, I, I'm a fan of yours and I want to, I want, I want you
-     to carry on being angry because that's what I associate with you. And, and you get, um, you know, in our industry, I think there's, there's something
-     of that as well. There's a, there's a cult of personality thing where you associate someone with something
-     and, and that can become a reinforcing loop. Yeah. So there's folks, um, certainly in the kind of Agile end of the industry who, who do do
-     one thing and they do the one thing again and again and again and again. And it's like, well, you know, are you stuck there? Like move, move that thing forward. That thing was great. It was a great solution for the problem you had in that context. What's the new context? What, what, how does that move forward? Um, someone who's the antithesis of that, uh, is someone like Michael Feathers. Mm-hm. Who's always, always on something new. Right. He's always like, he's always, brain's always going, he's always coming up with ideas. You know, he wrote this book about legacy code, you know, about a hundred years ago, which
-     is still a classic and still deserves a place on every programmer's bookshelf. And he's just doing crazy, crazy other stuff now. Right. And he's always looking at, uh, how code bases evolve over time and all this. And he's, you know, every time I see him speak, it's fascinating. It's new. It's, uh, you know, it's, it's, it's taking ideas forwards. And so there, there are folks who, you know, the, the, the only association I have with Michael
-     is it's going to be interesting. Right. Do you know what I mean? It's like, it's interesting. And it's the, um, I, I, I call it the, the, the noun problem. Once you get a noun as your middle name that says like, you know, you're, you're the legacy
-     code guy or you're the BDD guy. Then you're kind of like, well, yeah, I'm doing other stuff as well. BDD was one step on that journey. And, and also, um, if you look at it as a little ecosystem, there's, I'm not, I'm not
-     where the action is. Right. You look at Goyko Ajic with specification by example. You look at Liz Keo with the BDD for life stuff. Um, you look at Chris Matts and Aleph Marson with the real options. And like all of these things are kind of going off in really interesting, crazy directions. Yeah. And I'm looking at that going, wow. Do you know what I mean? I, I, I'm, I'm really enjoying seeing that. From the other side of it as somebody who's like, I remember reading, uh, your, your post
-     about, uh, BDD back up, you know, in, in '06 or '07. And I was doing . NET at the time. And I remember just, you know, being like, oh, this is, you know, this is really great. And wanting to figure out how to do this and . NET because it hadn't been defined yet. But I can understand that urge to want to look at the first person. You know, the first person who, who initiated it. And maybe not necessarily trusting those that came after. Yes. And when you're looking and you're trying to figure out what this thing is. And you're trying to understand and get something in mind. that I can remember continually going back to your blog and trying to get more information
-     out of. It's. Yeah. I need to write more. I need to write more. It goes to the cult of personality thing. Yeah. Um, where instead of me just thinking about the idea and saying, how do we talk about this
-     idea? It was more of, well, how do I understand more about what that person was trying to say? And then it becomes, well, so I, I could see how that, that thought process can evolve
-     in people who are looking at these ideas. Well, and this is, this is why I, I name drop as furiously as I do. Yeah. Is what I want is that when people come searching for, you know, for me because of BDD, the,
-     you know, pretty, the first or second thing they see will be me talking about Liz or talking
-     about Goiko. Right. Or talking about Chris or, you know, these guys. Because then they go, ah, well that's somewhere else I can look. And, and it creates that association. Eric Evans does the same thing with domain driven design. He'll talk about, um, you know, the, the folks who, who have taken that on. Mm-hm. And, and, and, and evolve that and develop that. So you, you go and look at pretty much any of his talks. And he's talking about what other people are doing with, with his ideas, which is fantastic. Yeah. It, it sounds like. I'm going to create a generational thing, you know. Yeah. It's like, you know, you see, you see these things evolve. And it's a different mindset between, that I have to push people down to lift myself up. Versus I'm going to build people up. And as I build them up, I'll come up with them. Well, it's the zero sum game thing. It's like, I, I, I don't believe in kind of slicing up a pie. I believe in trying to make a bigger pie. Do you know what I mean? Right, right. Because then that's, that, that, that everyone wants. Then everybody eats. Yeah. And we all have a lot of pie. Yeah. That's good. Yeah. Okay. Well, uh, going to so many different conferences and speaking to, um, different types of audiences. One of the things I've talked to some speakers about is how do they prepare and how do they
-     maybe change the messages or how do you, or do you change your message when you're talking
-     to a predominantly job audience or predominantly Agile practitioners, people who identify themselves
-     as Agile people and they become, do you, when you are going to be talking about your topics,
-     do you adjust, um, what you're going to say for the audience or do you say, I have a message
-     and then I'm going to just keep repeating that specific message. So, um, now who was that? I think it was someone like Rebecca Parsons is the CTO at ThoughtWorks. She said to me when I was talking about BDD and I said to her, I, I feel like I've been having a BDD forever. And she said, if you've got an idea and it's a good idea, you'll just find that you keep saying it again and
-     and again and again and again, because people need to hear it again and again and again and you're going
-     to get lots of different audiences and, and you're going to keep saying that message. Now, um, that's if you're trying to get a particular idea across. What I find is, and I was looking back, I've got like, uh, I don't know, 40 or 50 different talks
-     I've given over about, you know, eight years or something across all kinds of different topics. And what I'll try and do, even if I'm giving the same talk again or the same, you know, title and abstract kind of thing. So it's the same, it's the rough, it's largely the same message. I'll always try and refresh it. And because it may be that, you know, if it's a talk I gave six months ago, my thinking's moved on. And I look at it and I go, do I still think those things? Or have I, uh, tuned that message? Or actually this thing came out a bit ambiguous and so I want to kind of tweak it. So I'm constantly tweaking my talks, uh, constantly tweaking. Well, yeah, so trying to move the ideas forward. I mean, I, um, I had a massive, uh, epiphany is probably the right word, um, in the last couple of years with the Accelerated Agile stuff. I went from being a, um, you know, big A Agile consultant in a big A Agile consulting firm. I mean, ThoughtWorks isn't, doesn't have a named methodology, if you like. Um, you know, they'll use whatever, uh, works in a situation. They're very pragmatic in that way. But there was very much a ThoughtWorks feel of doing Agile. Right. And the kind of clients I'll be working with, these big, heavy, enterprising organizations
-     where you needed to move, you know, help them move at the speed they could move at. Right. And then I ended up in this tiny little team doing crazy stuff. And, and had to rethink a whole bunch of stuff. So I was, you know, I was, you know, you say the iconoclast thing. I, there were a whole bunch of, like, for me, real core truths. Right. That I, that I, that I, I, I sincerely believed about how software gets written. That I've found myself challenging. And what, what I try and do in those situations. You know, you can either just go, la, la, la, I'm gonna go back in my, you know, in my happy place. Right. Um, or, or try and assimilate that. And so that's where I've ended up now. And someone was asking me about, like, you know, why, why have I called it accelerated Agile and not be past Agile? And isn't, well, what, isn't there time for a new thing? And the, I think the main discovery I've, I've made, or the main realization I've come to over the last couple of years is the thing I've been working with and the thing I've been, you know, that I'm now trying to document is Agile. Right. As in the manifesto rather than Agile as in the methodology. Right. So getting back to the core principles. Yeah. Yeah. And, and, you know, and people over process suggests that people interactions are more important than any process. Ergo, as soon as you start defining that as a process, you've systemically set up to fail. Right. You know, there is a dogma around Scrum. There is a dogma around Kanban. There is a dogma around BDD. There is a dogma around all these different things, XP. Er, XP had the 12 commandments. Right. You know, you talk to Ken Beck about XP, and that's the opposite of anything he wanted people to be thinking. Really? Right. He's very much, he's entirely values driven. Mm-hm. You know, he's very much, er, like the, the whole point for him, the whole point of the first book was, you know, communication,
-     simplicity, feedback, or, you know, the, the, the core values. Mm-hm. Oh, by the way, here's some things he did on this really cool project. Yeah. Here's some nice tools that support that. Yeah, here's some nice tools that support that. And it, and it was experiential. It was like, we've done this, and these are the things that we found that worked. Now, you have to do this. Right. And, and then that became, you know, and he also had this lovely picture of how they support each other and which ones. Yeah. It was a pattern diagram. Right. It was a pattern, a diagram of result, of resolving forces and patterns. Mm-hm. Like, he thinks in patterns. He's one of those guys. And, unfortunately, people wanted rules. And the point about a pattern is it's contextual. And the point about rules is they're not. And so people took all these patterns, all these really good ideas, like TDD, like pair programming. It's brilliant in many situations. It's not a thing you should, you know, it's not, it's not, there are, there are no silver bullets, right? Including that. Automation. Automation has a, you know, an evil dark side. Right. As soon as you automate something, you're locking that thing. You're now making that thing brittle. Right. Yeah. Um, which may be okay. Maybe you want fast and repeatable at the expense of, uh, malleable. Mm-hm. But it is at the expense of. Right, right. Yeah. There's always trade-offs. Yeah. And all of these things. And so, um, so dogma. I mean, bringing right back to your, you know, your opening question. Um, I think dogma comes from where we don't have context or where we have fear. Mm-hm. And I think those two things tend to be very closely related. So the more context we have, the more experience we have, the more we understand a situation,
-     the less fearful we are. Or the less irrationally fearful we are. Right? So it's, it's, it all comes down to Yoda. It always comes down to Yoda. Yeah. Yeah. Well, thank you very much for taking the time to sit down with me. I really appreciate it. Thank you. Thanks. Okay. That's good. Thank you.
+content: |-
+  Hi, it's Mike again with Uktasek. I'm still here at GoToConf Chicago, they haven't kicked me out yet.
+   I'm sitting down with Dan North. Dan is well known as the kind of the father of BDD.
+   You are the one who wrote the first paper and description and first implementations.
+   And I also think it's fascinating that you're kind of an iconoclast who likes to question dogma.
+   Over the years, over the last seven years, BDD has become dogma.
+   Either you do it or you don't.
+   And you can't do BDD, you've got to do BDD, and there's all these things.
+   And being that you're a person who questions dogma, what is it like to be someone who created something,
+   has now been accepted as a dogmatic thing?
+   As a dogma, I think, yeah.
+   So this to me comes down to experience.
+   So what happens is when you have someone who is new to something, when they're a novice in a particular area,
+   they want to just find a thing that works.
+   They want to be told what to do, they want rules, they want structure, and they want to be able to just follow a recipe,
+   and they want to get quick wins in that way.
+   Right.
+   And this is sort of part of learning theory is that this is how we operate while we gain context and while we gain experience.
+   And once we've got a bunch of experience and a bunch of context, we can start making good decisions.
+   Right.
+   Now, what happens is people will pick up something without any context and say, right, well, then this must be how it works.
+   And they're really uncomfortable, as I was talking about, with uncertainty.
+   Right.
+   They don't like the idea of uncertainty.
+   They don't like the idea that we can't know some things.
+   And so they'll fill in the blanks.
+   And this is what we do.
+   So BDD, I've deliberately never written down.
+   I mean, I wrote the Introducing BDD article, but I've never really been that descriptive or prescriptive about what it is and what it isn't.
+   Because to me, it isn't a set of practices.
+   It's a way of engaging.
+   It's a way of trying to get work done.
+   Yeah.
+   It's a way of thinking about a problem.
+   Yeah.
+   And Liz Kier says this really well.
+   She's basically, it's about the conversations, right?
+   Okay.
+   Everything comes back to the conversations.
+   And so, you know, I said in a talk recently, like, the only BDD tool that matters is the one in your head.
+   But that's it.
+   Everything else is just detail.
+   And so you get the kind of the camps that are the, you know, the aspect camps and the J Behave camps and the cucumber camps and all these guys.
+   And then this world of misinformation about, oh, BDD is this and BDD is that.
+   And, you know, BDD only works at this high level.
+   And then you use TDD down in the, whatever.
+   And I think a lot of that is a basic misunderstanding of what TDD is and what I was trying to do with BDD and where that's ended up.
+   So I think with anything, as long, as soon as it's around for any length of time, people will become dogmatic about it.
+   Right.
+   There's, there's a, there's a subset of people.
+   There's a, you know, there's a, there's a type of people, if you like, who are going to pick up on something.
+   And especially when they start making that their thing.
+   Like if they're selling, you know, I'm a BDD consultant.
+   Right.
+   And they've got to sound pretty definite about things.
+   This is, this is BDD and this isn't BDD.
+   This is why you should listen to me.
+   Yeah.
+   This is why you should listen to me.
+   This is why you should pay me bucks.
+   Right.
+   So I have a working theory.
+   It's only a theory.
+   I have no data.
+   Only, only, only observational, which is that people start selling certifications in things
+   when they, well, like, yeah, like any of those things, when, when they think it's the last
+   good idea they're going to have.
+   So there's a, yeah, I'm going to, I'm going to monetize this thing.
+   Now I, I never wanted to monetize BDD because I don't think it's a, you know, it's, it's
+   just, it's a useful thing.
+   Yeah.
+   It's a useful thing.
+   You shouldn't monetize ideas.
+   I think that's, that's crazy.
+   Or rather you shouldn't try and lock down ideas.
+   There's a, I came across a lovely quote.
+   If you want an idea to, to, to travel, you shouldn't try and travel with it.
+   Oh, okay.
+   And I really like that.
+   Yeah.
+   And you look at.
+   Don't, don't assign it to your personality.
+   No, no, very much so.
+   Here you go.
+   So put it out there.
+   So BDD started as me trying to coach TDD better because TDD is so awesome.
+   I love TDD.
+   I love the, the thinking that goes in TDD.
+   And I, you know, you, you've heard me bashing on TDD.
+   Right.
+   I'm not.
+   I'm bashing on TDD zealots because I'm bashing on zealots.
+   Right.
+   Do you know what I mean?
+   It's like.
+   It's not TDD.
+   TDD is a pattern.
+   Okay.
+   It's a pattern in the classic, uh, Alexandrian sense of a pattern.
+   It's a strategy that works well in a particular situation, in a certain context.
+   It resolves some forces.
+   It introduces other forces.
+   And it needs to be used in conjunction with a bunch of other patterns.
+   So there are places where the, the, it's the first thing I'll reach for is TDD.
+   Right.
+   And there are places where it's just going to slow me down or it's going to be irrelevant
+   or it's even going to lead me to a wrong solution.
+   Mm-hm.
+   You know?
+   So, so when people say, well, Dan North is a TDD, that's, that's, it's almost sounds
+   like that dogma trying to find the conflict where it, it really isn't.
+   Yeah.
+   Yeah.
+   It's, it's, it's, it's making, it's making up a phantom enemy.
+   And, and that's part of it.
+   But I think part of it as well is it makes a good soundbite.
+   Yeah.
+   You know, uh, Dan North is advocating copying and pasting code.
+   Right.
+   I, I, I am, right?
+   Yeah.
+   There's, there's a certain context in which I want to copy and paste code.
+   Mm-hm.
+   And the context is very specific.
+   And I describe it as one of my, um, accelerated agile patterns called ginger cake.
+   And the point about it is it's a pattern.
+   It works in a certain context.
+   That doesn't say you should always copy and paste code or you should never copy and paste
+   code.
+   It says given these constraints in this environment, in this context, it's a useful strategy to
+   have in your pocket.
+   Yeah.
+   Yeah.
+   And then it's, that when it's towards that level of mastery where I wonder if part of the dogma
+   is people just don't feel, uh, confident enough also that there's, well, I'm going to take
+   a step back and I want to just go back to what you were talking about with the last idea.
+   I've heard, uh, that the reason that they want to charge money for it is because they think
+   it's going to be the last idea they, I've heard that in, uh, with music as well.
+   I've heard it as an argument.
+   Why?
+   Is that right?
+   That's how many songs does an artist have in them?
+   And if they don't charge for them, how do they know that they're going to have another
+   hit?
+   And if they don't protect their copyright, how do they know they're going to, you know?
+   Ah, so, right.
+   So, so, so, so it's, it's been thinking I've got a hit here.
+   So I need to, yeah.
+   Okay.
+   I like that.
+   So that was, it sounds like it's a human way of thinking about problems.
+   It isn't unique to software development.
+   It is, it's just humans do this when we're, when we're confronted with the fear of this
+   is all I've got.
+   Yeah.
+   Yeah.
+   Maybe, yeah.
+   Uh, uh, Linda Reising was talking about this yesterday.
+   Lost aversion.
+   Okay.
+   So the idea that you have a thing and you might lose the thing is much more compelling
+   than, uh, so she was talking about reward structures and she said, if you offer someone a bonus
+   for doing something, it actually, it ends up being a disincentive.
+   Like all the data says it ends up being a disincentive.
+   Is that the Dan Pink's drive?
+   Um, they, oh, there's a ton of, there's a ton of research around this.
+   Okay.
+   Um, he's one of them certainly.
+   And that's all sort of behavioral economics school.
+   Um, but that if you, uh, present it as I've already given you this bonus, but you'll
+   lose it if you don't reach these targets, people will work extra hard to hit those targets.
+   Okay.
+   It's not that it's a carrot.
+   Even though it's hypothetical.
+   It's, it's, here's your carrot, but I'm gonna take it away.
+   Yeah.
+   Yeah.
+   Yeah.
+   Yeah.
+   Yeah.
+   It's, it's the risk of losing a carrot is more effective than a carrot.
+   Yeah.
+   Or a stick.
+   Yeah.
+   Is to offer the carrot as a thing that you could lose.
+   I can see how that is because I can be like, I have this carrot.
+   We're gonna take it away.
+   Versus I don't have a carrot.
+   I don't lose anything.
+   But you know, I, I, I might work all the way up to the line and not get it.
+   I have to say even what you described is I've seen these bonuses at companies where now when
+   a company says, we're gonna offer a bonus to you for performance.
+   I've been in enough companies where all of a sudden at bonus time, it was, you know, we
+   weren't doing so hot last year.
+   Yeah.
+   Yeah.
+   Well, it's been a tough year.
+   Yeah.
+   Yeah.
+   Yeah.
+   We're gonna have to pull that belt a little tighter.
+   Just, just see my new boat.
+   Yeah.
+   Yeah.
+   Yeah.
+   Yeah.
+   Yeah.
+   And, and, and people will leave.
+   I mean, you'll actually lose people by, by doing that because of the, the loss, they've
+   now lost that thing.
+   And they're like, great.
+   Yeah.
+   I, I, I nearly had that thing and I lost it.
+   Right.
+   Um, so you rise over.
+   There's a great interview with, um, Alanis Morissette.
+   Okay.
+   Randomly.
+   And, uh, and it's about her second album.
+   So her first album is angry, angry music.
+   Yeah.
+   And then her second album, she's met this guy and she's really in love and she's really
+   happy.
+   And it's this album of happy songs.
+   Things have gotten much better.
+   It's gotten much better.
+   And it's, it's, it's actually, it's a good album.
+   There's some solid songs on there, but it's a happy album.
+   And, and they were saying like, all your fans are really furious because you, you know,
+   you're, you're not writing this angry music.
+   And she's like, I don't write angry music.
+   I write music about how I'm feeling.
+   Yeah.
+   So I write angry music.
+   I'm happy as I'm writing happy music.
+   Yeah.
+   I like to cut myself to the first album.
+   Yeah.
+   Yeah.
+   It just doesn't work.
+   Well, this is, and yeah, exactly.
+   And it's like, you know, I, I, I'm a fan of yours and I want to, I want, I want you
+   to carry on being angry because that's what I associate with you.
+   And, and you get, um, you know, in our industry, I think there's, there's something
+   of that as well.
+   There's a, there's a cult of personality thing where you associate someone with something
+   and, and that can become a reinforcing loop.
+   Yeah.
+   So there's folks, um, certainly in the kind of agile end of the industry who, who do do
+   one thing and they do the one thing again and again and again and again.
+   And it's like, well, you know, are you stuck there?
+   Like move, move that thing forward.
+   That thing was great.
+   It was a great solution for the problem you had in that context.
+   What's the new context?
+   What, what, how does that move forward?
+   Um, someone who's the antithesis of that, uh, is someone like Michael Feathers.
+   Mm-hm.
+   Who's always, always on something new.
+   Right.
+   He's always like, he's always, brain's always going, he's always coming up with ideas.
+   You know, he wrote this book about legacy code, you know, about a hundred years ago, which
+   is still a classic and still deserves a place on every programmer's bookshelf.
+   And he's just doing crazy, crazy other stuff now.
+   Right.
+   And he's always looking at, uh, how code bases evolve over time and all this.
+   And he's, you know, every time I see him speak, it's fascinating.
+   It's new.
+   It's, uh, you know, it's, it's, it's taking ideas forwards.
+   And so there, there are folks who, you know, the, the, the only association I have with Michael
+   is it's going to be interesting.
+   Right.
+   Do you know what I mean?
+   It's like, it's interesting.
+   And it's the, um, I, I, I call it the, the, the noun problem.
+   Once you get a noun as your middle name that says like, you know, you're, you're the legacy
+   code guy or you're the BDD guy.
+   Then you're kind of like, well, yeah, I'm doing other stuff as well.
+   BDD was one step on that journey.
+   And, and also, um, if you look at it as a little ecosystem, there's, I'm not, I'm not
+   where the action is.
+   Right.
+   You look at Goyko Ajic with specification by example.
+   You look at Liz Keo with the BDD for life stuff.
+   Um, you look at Chris Matts and Aleph Marson with the real options.
+   And like all of these things are kind of going off in really interesting, crazy directions.
+   Yeah.
+   And I'm looking at that going, wow.
+   Do you know what I mean?
+   I, I, I'm, I'm really enjoying seeing that.
+   From the other side of it as somebody who's like, I remember reading, uh, your, your post
+   about, uh, BDD back up, you know, in, in '06 or '07.
+   And I was doing .NET at the time.
+   And I remember just, you know, being like, oh, this is, you know, this is really great.
+   And wanting to figure out how to do this and .NET because it hadn't been defined yet.
+   But I can understand that urge to want to look at the first person.
+   You know, the first person who, who initiated it.
+   And maybe not necessarily trusting those that came after.
+   Yes.
+   And when you're looking and you're trying to figure out what this thing is.
+   And you're trying to understand and get something in mind.
+   that I can remember continually going back to your blog and trying to get more information
+   out of.
+   It's.
+   Yeah.
+   I need to write more.
+   I need to write more.
+   It goes to the cult of personality thing.
+   Yeah.
+   Um, where instead of me just thinking about the idea and saying, how do we talk about this
+   idea?
+   It was more of, well, how do I understand more about what that person was trying to say?
+   And then it becomes, well, so I, I could see how that, that thought process can evolve
+   in people who are looking at these ideas.
+   Well, and this is, this is why I, I name drop as furiously as I do.
+   Yeah.
+   Is what I want is that when people come searching for, you know, for me because of BDD, the,
+   you know, pretty, the first or second thing they see will be me talking about Liz or talking
+   about Goiko.
+   Right.
+   Or talking about Chris or, you know, these guys.
+   Because then they go, ah, well that's somewhere else I can look.
+   And, and it creates that association.
+   Eric Evans does the same thing with domain driven design.
+   He'll talk about, um, you know, the, the folks who, who have taken that on.
+   Mm-hm.
+   And, and, and, and evolve that and develop that.
+   So you, you go and look at pretty much any of his talks.
+   And he's talking about what other people are doing with, with his ideas, which is fantastic.
+   Yeah.
+   It, it sounds like.
+   I'm going to create a generational thing, you know.
+   Yeah.
+   It's like, you know, you see, you see these things evolve.
+   And it's a different mindset between, that I have to push people down to lift myself up.
+   Versus I'm going to build people up.
+   And as I build them up, I'll come up with them.
+   Well, it's the zero sum game thing.
+   It's like, I, I, I don't believe in kind of slicing up a pie.
+   I believe in trying to make a bigger pie.
+   Do you know what I mean?
+   Right, right.
+   Because then that's, that, that, that everyone wants.
+   Then everybody eats.
+   Yeah.
+   And we all have a lot of pie.
+   Yeah.
+   That's good.
+   Yeah.
+   Okay.
+   Well, uh, going to so many different conferences and speaking to, um, different types of audiences.
+   One of the things I've talked to some speakers about is how do they prepare and how do they
+   maybe change the messages or how do you, or do you change your message when you're talking
+   to a predominantly job audience or predominantly agile practitioners, people who identify themselves
+   as agile people and they become, do you, when you are going to be talking about your topics,
+   do you adjust, um, what you're going to say for the audience or do you say, I have a message
+   and then I'm going to just keep repeating that specific message.
+   So, um, now who was that?
+   I think it was someone like Rebecca Parsons is the CTO at ThoughtWorks.
+   She said to me when I was talking about BDD and I said to her, I, I feel like I've been having a BDD forever.
+   And she said, if you've got an idea and it's a good idea, you'll just find that you keep saying it again and
+   and again and again and again, because people need to hear it again and again and again and you're going
+   to get lots of different audiences and, and you're going to keep saying that message.
+   Now, um, that's if you're trying to get a particular idea across.
+   What I find is, and I was looking back, I've got like, uh, I don't know, 40 or 50 different talks
+   I've given over about, you know, eight years or something across all kinds of different topics.
+   And what I'll try and do, even if I'm giving the same talk again or the same, you know, title and abstract kind of thing.
+   So it's the same, it's the rough, it's largely the same message.
+   I'll always try and refresh it.
+   And because it may be that, you know, if it's a talk I gave six months ago, my thinking's moved on.
+   And I look at it and I go, do I still think those things?
+   Or have I, uh, tuned that message?
+   Or actually this thing came out a bit ambiguous and so I want to kind of tweak it.
+   So I'm constantly tweaking my talks, uh, constantly tweaking.
+   Well, yeah, so trying to move the ideas forward.
+   I mean, I, um, I had a massive, uh, epiphany is probably the right word, um, in the last couple of years with the Accelerated Agile stuff.
+   I went from being a, um, you know, big A Agile consultant in a big A Agile consulting firm.
+   I mean, ThoughtWorks isn't, doesn't have a named methodology, if you like.
+   Um, you know, they'll use whatever, uh, works in a situation.
+   They're very pragmatic in that way.
+   But there was very much a ThoughtWorks feel of doing Agile.
+   Right.
+   And the kind of clients I'll be working with, these big, heavy, enterprising organizations
+   where you needed to move, you know, help them move at the speed they could move at.
+   Right.
+   And then I ended up in this tiny little team doing crazy stuff.
+   And, and had to rethink a whole bunch of stuff.
+   So I was, you know, I was, you know, you say the iconoclast thing.
+   I, there were a whole bunch of, like, for me, real core truths.
+   Right.
+   That I, that I, that I, I, I sincerely believed about how software gets written.
+   That I've found myself challenging.
+   And what, what I try and do in those situations.
+   You know, you can either just go, la, la, la, I'm gonna go back in my, you know, in my happy place.
+   Right.
+   Um, or, or try and assimilate that.
+   And so that's where I've ended up now.
+   And someone was asking me about, like, you know, why, why have I called it accelerated Agile and not be past Agile?
+   And isn't, well, what, isn't there time for a new thing?
+   And the, I think the main discovery I've, I've made, or the main realization I've come to over the last couple of years is the thing I've been working with and the thing I've been, you know, that I'm now trying to document is Agile.
+   Right.
+   As in the manifesto rather than Agile as in the methodology.
+   Right.
+   So getting back to the core principles.
+   Yeah.
+   Yeah.
+   And, and, you know, and people over process suggests that people interactions are more important than any process.
+   Ergo, as soon as you start defining that as a process, you've systemically set up to fail.
+   Right.
+   You know, there is a dogma around Scrum.
+   There is a dogma around Kanban.
+   There is a dogma around BDD.
+   There is a dogma around all these different things, XP.
+   Er, XP had the 12 commandments.
+   Right.
+   You know, you talk to Ken Beck about XP, and that's the opposite of anything he wanted people to be thinking.
+   Really?
+   Right.
+   He's very much, he's entirely values driven.
+   Mm-hm.
+   You know, he's very much, er, like the, the whole point for him, the whole point of the first book was, you know, communication,
+   simplicity, feedback, or, you know, the, the, the core values.
+   Mm-hm.
+   Oh, by the way, here's some things he did on this really cool project.
+   Yeah.
+   Here's some nice tools that support that.
+   Yeah, here's some nice tools that support that.
+   And it, and it was experiential.
+   It was like, we've done this, and these are the things that we found that worked.
+   Now, you have to do this.
+   Right.
+   And, and then that became, you know, and he also had this lovely picture of how they support each other and which ones.
+   Yeah.
+   It was a pattern diagram.
+   Right.
+   It was a pattern, a diagram of result, of resolving forces and patterns.
+   Mm-hm.
+   Like, he thinks in patterns.
+   He's one of those guys.
+   And, unfortunately, people wanted rules.
+   And the point about a pattern is it's contextual.
+   And the point about rules is they're not.
+   And so people took all these patterns, all these really good ideas, like TDD, like pair programming.
+   It's brilliant in many situations.
+   It's not a thing you should, you know, it's not, it's not, there are, there are no silver bullets, right?
+   Including that.
+   Automation.
+   Automation has a, you know, an evil dark side.
+   Right.
+   As soon as you automate something, you're locking that thing.
+   You're now making that thing brittle.
+   Right.
+   Yeah.
+   Um, which may be okay.
+   Maybe you want fast and repeatable at the expense of, uh, malleable.
+   Mm-hm.
+   But it is at the expense of.
+   Right, right.
+   Yeah.
+   There's always trade-offs.
+   Yeah.
+   And all of these things.
+   And so, um, so dogma.
+   I mean, bringing right back to your, you know, your opening question.
+   Um, I think dogma comes from where we don't have context or where we have fear.
+   Mm-hm.
+   And I think those two things tend to be very closely related.
+   So the more context we have, the more experience we have, the more we understand a situation,
+   the less fearful we are.
+   Or the less irrationally fearful we are.
+   Right?
+   So it's, it's, it all comes down to Yoda.
+   It always comes down to Yoda.
+   Yeah.
+   Yeah.
+   Well, thank you very much for taking the time to sit down with me.
+   I really appreciate it.
+   Thank you.
+   Thanks.
+   Okay.
+   That's good.
+   Thank you.
