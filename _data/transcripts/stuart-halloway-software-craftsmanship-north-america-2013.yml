@@ -22,7 +22,8 @@ turns:
     Hi, it's Mike with UGtastic
 
     . I'm here at SCNA 2013. Right now I'm sitting down with Stuart Halloway who recently just gave a talk on Datomic and how he built it or how Cognitech built it. Thank you very much for taking the time. Thank you for taking the time to sit down with me, I really appreciate it. So, what is Datomic and how did you build it? So, Datomic is a functional Agile database and as many disruptive plays are, it's not immediately obvious what it is until you understand it and then it's like, "Oh, of course, now I would want one of those." It's a functional database in that the database is represented as an immutable value, which if you have followed the Clojure community or F#, this is a very popular trend. So, Datomic is in Clojure or do I use Clojure to talk to it or how do I use it? It's written in Clojure, but as with any database, that's an implementation detail.
-
+- speaker: S1
+  text: |-
     Okay.
 
     So, because of some of Datomic's unique characteristics, you're likely to want to use it from a JVM language, but it is possible to use it via the REST API from other languages. So, similar to how you can talk to Cloud or CouchDB, excuse me, CouchDB, you have the HTTP API for interacting with it? So, there is an HTTP API, but I would... I would focus initially on what's called the peer model in Datomic. So, as a functional database, the database is available as an immutable value in any JVM-based peer in the system. So, you have, conceptually at least, sort of a full copy of the database available to you from in different peers in the system. And so, what that gives you is the ability to scale reads elastically. At the same time, it's an ACID system with a traditional ACID transactional model. So, writes happen in... In one place, but then reads can happen from in different places. So, it's a fairly unusual model versus systems that are reads and writes are all happen kind of in one place in the database, or versus, say, NoSQLs, where you have reads and writes happening anywhere, but you give up on the ACID properties.
@@ -42,10 +43,9 @@ turns:
     Right.
 
     And I felt like that when I went from doing Java to Ruby in my day job, it was like eating candy all the time because the language was just so much more expressive. It was really great fun. And then when I discovered Clojure, it was like I was eating candy that had all of the nutritional value of broccoli, right?
-- speaker: S1
-  text: Yeah.
-- speaker: M1
-  text: |-
+
+    Yeah.
+
     And I knew all this performance system-level stuff. And so being able to have all of that in one package is really terrific for me. I don't want to have to spend my time writing C code or writing Java code. I can, and I have in the past couple of years done that on occasion, but I really want to spend my time having more and more leverage, moving to functional, moving to logic. So since it's still such a groin and there's still so many people being introduced to the language and the concepts of the Lisp, aside from your book, where would you recommend people starting? If they're saying, "Okay, I'm just a developer, not in particular anyways," what are some of the resources you might recommend? So there are a couple of other books that I would recommend. Chas Emmerich has a book called -- now I'm going to be embarrassed. I'm programming Clojure, he's Clojure programming. So if you go out and try to -- if you end up buying both of these books, then I think you win. I think Chas' book -- Probably the one with the better head. Chas is a good-looking fellow. So I think that that's a good book. And then as a second book, a follow-on book, definitely The Joy of Clojure. The Joy of Clojure.
 
     Right.
@@ -57,6 +57,35 @@ turns:
     And the nice thing about Clojure Inside Out, from my perspective, is it represents fairly my up-to-the-minute thinking about how to talk about Clojure. And so we just filmed a video last year, and this represents year five of talking about and writing about Clojure for me. And I feel like I've been in a lot of different places. I like the way I explained Clojure five years ago, but I like the way I explained Clojure five months ago a lot better.
 
     Yeah.
-
-    So that's excellent that you're looking at different ways. Personally, myself, I'm a verbal learner. So that's also why I do the videos. It's visual and verbal. So having those new resources between -- and then also Colin Jones maintaining the Clojure coins. There's a whole variety of ways to come into the language: a book, videos, hands-on activities. It's a language that seems to be just pulling people in almost. Not even just that you have open arms towards people coming into the language, but you're actively saying, "Okay, come, come." It's a lot of fun. I'd also say that the conference scene in Clojure has gotten really great in the last couple of years. The core conference around the language, Clojure Conj, is actually happening next week in the D.C. area. And then there's a West Coast conference, Clojure West, in the U.S., and Euro Clojure in Europe. So we've got three annual Clojure conferences right now. Also, both Clojure West and Clojure Conj have had -- all the conference talks are videos that are posted on the web. So some of the most famous storytelling about Clojure is actually, say, Rich Hickey's talks at these events. You can do a video search for Clojure Conj videos or Clojure West videos. And there's a lot of really great resources there as well. Yeah, and it's also really cool that the creator of the language stays so close to the community. It's not like, "Oh, they're off in their ivory tower someplace." No, Rich goes to these events and participates and makes himself available to teach. That's amazing. Well, I think it's important for -- there are languages that are designed by practitioners to do their own work. And so one of the things I like about Ruby and I like about Clojure is that the community is led by people who are building Clojure because they're using it. And it's not, "I'm building something for another kind of programmer." There are some languages that are designed by a certain group of programmers for another group of programmers. It's not necessarily a bad thing, but I think there's a lot of energy to be had when you can all pull in the same direction and people have overlap in their goals and objectives and the way they're approaching problems. Well, thank you very much for taking the time to sit down with me. I really appreciate it. It's my pleasure, Mike. Thanks. Okay, great. Excellent. you
+- speaker: M1
+  text: 'So that''s excellent that you''re looking at different ways. Personally,
+    myself, I''m a verbal learner. So that''s also why I do the videos. It''s visual
+    and verbal. So having those new resources between -- and then also Colin Jones
+    maintaining the Clojure coins. There''s a whole variety of ways to come into the
+    language: a book, videos, hands-on activities. It''s a language that seems to
+    be just pulling people in almost. Not even just that you have open arms towards
+    people coming into the language, but you''re actively saying, "Okay, come, come."
+    It''s a lot of fun. I''d also say that the conference scene in Clojure has gotten
+    really great in the last couple of years. The core conference around the language,
+    Clojure Conj, is actually happening next week in the D.C. area. And then there''s
+    a West Coast conference, Clojure West, in the U.S., and Euro Clojure in Europe.
+    So we''ve got three annual Clojure conferences right now. Also, both Clojure West
+    and Clojure Conj have had -- all the conference talks are videos that are posted
+    on the web. So some of the most famous storytelling about Clojure is actually,
+    say, Rich Hickey''s talks at these events. You can do a video search for Clojure
+    Conj videos or Clojure West videos. And there''s a lot of really great resources
+    there as well. Yeah, and it''s also really cool that the creator of the language
+    stays so close to the community. It''s not like, "Oh, they''re off in their ivory
+    tower someplace." No, Rich goes to these events and participates and makes himself
+    available to teach. That''s amazing. Well, I think it''s important for -- there
+    are languages that are designed by practitioners to do their own work. And so
+    one of the things I like about Ruby and I like about Clojure is that the community
+    is led by people who are building Clojure because they''re using it. And it''s
+    not, "I''m building something for another kind of programmer." There are some
+    languages that are designed by a certain group of programmers for another group
+    of programmers. It''s not necessarily a bad thing, but I think there''s a lot
+    of energy to be had when you can all pull in the same direction and people have
+    overlap in their goals and objectives and the way they''re approaching problems.
+    Well, thank you very much for taking the time to sit down with me. I really appreciate
+    it. It''s my pleasure, Mike. Thanks. Okay, great. Excellent. you'
 insights: []

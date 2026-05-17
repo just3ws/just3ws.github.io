@@ -12,7 +12,8 @@ turns:
     Hi, it's Mike with UGtastic
 
     . I'm here at RailsConf 2014 and I'm sitting here with Kiyoto Tamura, who is a maintainer for the Fluentd log aggregation and data collector. Thank you very much for taking the time to speak . What is a log aggregator/collector? Fluentd is a log aggregator/log collector written in Ruby and its key features are that it's really lightweight, it's a very small Ruby program augmented by extensible plugin architecture and it runs pretty fast for all sorts of logs. A lot of our customers collect data for like Apache Engine logs, Apache Nginx logs, syslogs, application logs and store them in like Elasticsearch, store them in MongoDB, copy the data, archive it, and so forth. We started a project two and a half years ago and the community has grown to be about like 50 regular contributors, thousands of users in the world including Slideshare and Nintendo. Yeah, Nintendo, that's actually, that's pretty cool. I mean, are you able to say how they're using it? I'm actually not sure about the actual like, you know, how they use it, but I think it's part of their like online games that are going on now.
-
+- speaker: S1
+  text: |-
     Okay.
 
     And basically like with all these companies, logs are very, very important. They want to centrally manage it and they want to do all sorts of operations on them. And before, like a lot of, like myself included, we would rsync, write a script here and there, but as like the number of your data sources increase and the number of storage systems you want to store and use increase, the complexity increases like exponentially. And we wanted 10 complexity, keep everything simple, and keep everything performantly. So how did you get involved in this project? Yeah, so I'm the, so the Fluentd was originally created by my employer, Treasure Data. And I'm employee number one. And when we first created the thing, we didn't think it was going to be big, but one of our customers saw it and they were like, man, like we wish this was open source. And we sort of drew the inspiration from Heroku, who actually offers service as a pass.
@@ -54,6 +55,11 @@ turns:
     And Ruby has made a great performance, uh, progress over the past few years, and we want to take advantage of that. And as far as, as putting in the, the log aggregator, is it something that, uh, uh, a normal Rails developer could probably work through? Yeah, so that's the other great thing about Fluentd, like, uh, when we, when I tell people, especially not familiar with, like, writing Ruby systems code, is that, ooh, this is like system software. It's hard, it must be really hard to write plugins. Actually, I know a lot of engineers and programmers, or software writers, um, who learn to write Ruby, myself included, actually, partially, by writing, writing plugins for Fluentd. Oh, really? And there's only, like, a tiny bit of code that you need to write, and everything is really well-attracted, so that you really don't have to repeat what other people have already built. And, yeah, so it's pretty easy to get started. And you said that earlier, it's only about 5,000 lines for the code. Yeah, that's the core. Yeah, so the core. So it's probably a good idea for people to do, like, what D HH recommended, and that's just go read the source code. It's not... Yeah, um, it is, uh, it is a pretty small program, pretty, uh, well-documented. Not in the code, but that is something that we're working on.
 
     Okay.
-
-    And, uh, there's a lot of documentation, and the mailing list is very active, like, when you post something, within 24 hours, someone's gonna respond. Great. Well, thank you very much for taking the time to... Thanks, Mike. Thanks. User groups with lots to say, interviews and more. No way! Sharing great ideas in the tech community. Fascinating conversations, a plethora of information. Find out for yourself today at UGtastic. Thank you.
+- speaker: M1
+  text: And, uh, there's a lot of documentation, and the mailing list is very active,
+    like, when you post something, within 24 hours, someone's gonna respond. Great.
+    Well, thank you very much for taking the time to... Thanks, Mike. Thanks. User
+    groups with lots to say, interviews and more. No way! Sharing great ideas in the
+    tech community. Fascinating conversations, a plethora of information. Find out
+    for yourself today at UGtastic. Thank you.
 insights: []

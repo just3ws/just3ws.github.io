@@ -12,7 +12,8 @@ turns:
     Hi, it's Mike with UGtastic
 
     . I'm here at GOTO Conference 2015 and I'm standing here with Gail Tunney who just gave a talk on faster Java objects and is going to be doing a workshop on application responsiveness and as well as a case study. So you're pretty busy here at the conference but I got a little bit time to speak with you and I really appreciate that. So let's start with the talk you just gave about faster Java objects. What was that about? Well it's about faster Java. The talk really focuses on a project that we've been working on, an open source project from WikimediaCon for a year and a half or so. We are actually hoping for this to mature and get into OpenJDK, into the standard Java SE 9 or 10, some version. And the purpose of it is to actually make it a little bit faster. So let's talk a little bit more about that. So let's start with the talk you just gave about faster Java objects. What was that about? Well it's about faster Java. Oh, yeah. The talk really focuses on a project that we've been working on an open source project from WikimediaCon for a year and a half or so. We are actually hoping for this to mature and get into OpenJDK, into the standard Java SE 9 or 10, some version. And the purpose of it is to actually allow Java to have faster objects in array in a way that matches C for speed for the same things.
-
+- speaker: S1
+  text: |-
     Okay.
 
     So it's actually removing what I believe is the last inherent speed difference between Java and C on speed. Oh, really? There are lots of other speed differences that could be, but they're not inherent. This is inherent. Is this addressing the startup warm-up problem or is it more of the JVM is running and it's warmed up and these just allocations? It's actually not a warm-up or a compilation related thing. It's actually memory layout.
@@ -32,13 +33,11 @@ turns:
     Right.
 
     If you want the open source one, we're it. Oh, really?
-- speaker: S1
-  text: |-
+
     Yeah.
 
     Yeah, because, I mean, as somebody who's more of a casual JVM user, I use it mostly to power a JRuby app or some Clojure code. But you're saying that I could look and evaluate, like, maybe I could develop against Zen or... And I'm sorry, this is Zing. Zing. Zing. Develop against Zing and also go to production with Zing? I mean, is it at that level? You could do that, but because it is so interchangeable, you don't need to develop to it. There are no new APIs in it. There's nothing you do to write for Zing.
-- speaker: M1
-  text: |-
+
     Okay.
 
     It just runs Java code.
@@ -72,7 +71,8 @@ turns:
     Well, that sounds like they are focusing on a specific vertical of a certain type of device, not general purpose. And they also have to be able to tune it for those devices.
 
     Yeah.
-
+- speaker: M1
+  text: |-
     Well, thank you very much for taking the time to speak to me. It's fascinating. So OpenJDK is just code, so.
 
     Yeah.

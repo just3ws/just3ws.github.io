@@ -16,12 +16,21 @@ turns:
     Hi, it's Mike with UGtastic
 
     . I'm here at GOTO Conference 2015 and I'm sitting here with Kyle Kingsbury who gave the opening keynote and its tagline was Hope Springs Eternal. Did I say that correctly?
+- speaker: S1
+  text: Okay.
 - speaker: M1
+  text: Well, thank you very much for taking the time to speak with me. What Hope
+    Springs Eternal? What were you trying to implant as a message for your keynote?
+    The message is basically that everything is broken and we should be crying in
+    the corner. I came to deliver fire and ashes, but we're wrapping it in a pretty
+    happy package. It's like we're smiling. We're all doomed. So in the previous Jepson
+    talks, I'd gone through a number of databases and had found inconsistencies or
+    cases of data loss. And in this talk, I wanted to come back to some of these databases
+    because people are optimistic that they've fixed certain problems. And I wanted
+    to measure whether or not those problems have been resolved and then see if there
+    were new ones.
+- speaker: S1
   text: |-
-    Okay.
-
-    Well, thank you very much for taking the time to speak with me. What Hope Springs Eternal? What were you trying to implant as a message for your keynote? The message is basically that everything is broken and we should be crying in the corner. I came to deliver fire and ashes, but we're wrapping it in a pretty happy package. It's like we're smiling. We're all doomed. So in the previous Jepson talks, I'd gone through a number of databases and had found inconsistencies or cases of data loss. And in this talk, I wanted to come back to some of these databases because people are optimistic that they've fixed certain problems. And I wanted to measure whether or not those problems have been resolved and then see if there were new ones.
-
     Okay.
 
     So like the notorious Mongo missed write problem and things like that. So what were some of... Can you tell me your findings? So MongoDB in particular fixed their majority write issue, where if you would write at the strongest level of consistency, it could occasionally say that it had written data successfully and then lose it. Oh, okay. So that was fixed quickly and it was confirmed to be safe in the latest tests.
@@ -55,6 +64,7 @@ turns:
     And did you happen to look at any other, like, we have several database providers here, like Neo4j, do your tests look at a variety of types of database stores, or are you mostly focused on NoSQL document stores, or is there a specific vertical style of database that you are focusing on with your Jepson series? I would like to, and I think the tools are capable of analyzing, all sorts of different things. Looking for SQL serializability anomalies is very tricky to do. The analyzer is slow, so it's going to take more work, I think, before I can really do tests on things like Postgres . But basic tests about insert safety and update safety for single rows, I think those should be amenable. And I'm actually hoping to do that in Postgres RDS next. Okay, great. So far, I've done things from consensus services like console and etcd to sort of horizontally scalable key value stores, like Cassandra and React, and then some SQL-style databases like NeoDB.
 
     Okay.
-
-    So there's a whole gamut. Great. Well, thank you very much for taking the time to speak with me. I appreciate it. Thank you.
+- speaker: M1
+  text: So there's a whole gamut. Great. Well, thank you very much for taking the
+    time to speak with me. I appreciate it. Thank you.
 insights: []

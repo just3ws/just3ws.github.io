@@ -12,7 +12,8 @@ turns:
     Hi, it's Mike with UGtastic
 
     . I'm here at GOTO Conference 2015, and I'm sitting here with Vyacheslav Egorov, who gave a talk on benchmarking JS. Thank you very much for taking the time to speak with me. When you talk about benchmarking JS, are you talking about client-side JS? I mean, JS lives in a lot of different places. Is this Node? Is this browser JS? What are you benchmarking? So, I don't have any particular focus. I'm just looking at the pure JavaScript performance. So, it doesn't matter if you run your JavaScript on the client-side or server-side. Basically, no matter where you are, my talk applies to you.
-
+- speaker: S1
+  text: |-
     Okay.
 
     So, you know, even if I'm in V8 or Rhino or whatever, it's going to be... Okay, so, when you talk, what techniques and tools were you talking about? Where did this talk come from? What experiences did you have that led you to this? Well, I used to work on the V8 team, and when you work on a team of the VM engineers, you usually get different questions from the users, in this case, JavaScript developers, who don't completely understand what happens inside the VM and how they should measure performance of their code. And that's what this talk is based on. Basically, I monitor different social media, and I see people posting different benchmarks, and I look what happens there, and I explain why these benchmarks are usually incorrect. And that's, yeah, that's basically my experience. So, what is some of the things that you see that are incorrect, and like, what are some of the maybe some quick tips that maybe, or articles people should read or try to understand better about JavaScript performance? I think the biggest issue is that people still think that JavaScript implementations are very dumb, but these implementations are quite smart. So, I think that that's the main thing that they should know about that, and they should always account for the very advanced optimizations that the GIS engines are capable of doing now. So, there is no really single tip. They should just try to understand what 's happening on the side.
@@ -32,6 +33,9 @@ turns:
     Yeah.
 
     Yeah.
-
-    So, you, you are a little bit frustrated with it. Hey, we're just going to do this one type of structure, but JavaScript is so much more than that. Precisely. Okay, great. Well, thank you very much for taking the time to speak with me. Thank you for speaking with me. Yes, I appreciate it. All right, thank you.
+- speaker: M1
+  text: So, you, you are a little bit frustrated with it. Hey, we're just going to
+    do this one type of structure, but JavaScript is so much more than that. Precisely.
+    Okay, great. Well, thank you very much for taking the time to speak with me. Thank
+    you for speaking with me. Yes, I appreciate it. All right, thank you.
 insights: []

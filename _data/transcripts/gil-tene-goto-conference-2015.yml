@@ -12,7 +12,8 @@ turns:
     Hi, it's Mike with UGtastic
 
     . I'm here at GOTO Conference 2015 and I'm standing here with Gail Tenney who just gave a talk on faster Java objects and is going to be doing a workshop on application responsiveness as well as a case study. So you're pretty busy here at the conference, but I got a little bit of time to speak with you and I really appreciate that. So let's start with the talk you just gave about faster Java objects. What was that about? It's about faster Java. The talk really focuses on a project that we've been working on, an open source project from Wikimedia for a year and a half or so. We are actually hoping for this to mature and get into Open JDK, into the standard Java SE 9 or 10, some version. And the purpose of it is to actually allow Java to have faster objects in array in a way that matches C for speed. So it's actually removing what I believe is the last inherent speed difference we in Java can see on speed. Oh, really? There are lots of other speed differences that could be, but they're not inherent. This is inherent. Is this addressing the startup warm-up problem or is it more of the JVM is running and it's warmed up and these just allocations? It's actually not a warm-up or a compilation related thing. It's actually memory layout.
-
+- speaker: S1
+  text: |-
     Okay.
 
     So there's... There are certain constructs that are natural to use in C and end up being laid out in memory in a way that is either optimal to access in a streaming fashion or quick to get to a random location in them. Where in Java, doing the exact same semantic thing requires dereferencing through multiple hops and accessing more randomly than in an order predictable manner. Which means that actual access on real hardware ends up being slower for the same semantic structure. We're looking to close... We're looking to close the gap for every one of the common ways you do it in C to have a common natural way to do it in Java for any type of Java object you already have, but in a way that gives you fast access to them. And from what I understand, you have a reference implementation or the Azul has its own VM version? Does that have these optimizations already in there? So Azul makes multiple JVMs. One of them is called Zing. It 's a JVM with better metrics. It eliminates garbage collection, has much better latency characteristics, faster for some things. And we also make Zulu, which is basically vanilla OpenJDK. We are probably the best binary distribution for OpenJDK because we're probably the only one for several platforms, Macs and Windows. Neither one of those... Object Cloud is not specific to Azul. We will certainly put it in our products once the project is there and adopted. And I would expect Zing, for example, to optimize it well. We're obviously doing it to make sure that it is the case. But we will be demonstrating the speed benefit of object layout-based objects on both Zing and OpenJDK proof-of-con cept implementations. Our goal is to actually have this be part of the standard Java, part of OpenJDK, part of anybody's JDK in the future. But the VMs that you're talking about, the Zulu and the Zen , are those something that I could install on my Linux distribution? And run Java code against? Or is it bespoke for your infrastructure? Just the JDK. Zing is Linux only, but any Linux. And yes, you just install it on Linux and run your existing Java code. Zero changes to it. You turn it on and five minutes later you have a better JVM . Or one minute later. With Zulu, it's beyond just Linux. It's on Linux, on Mac, on Windows. In fact, we are the only binary you can get today for Mac or Windows that is OpenJDK. You can get the Oracle JVM. It's a good JVM.
@@ -20,13 +21,11 @@ turns:
     Right.
 
     If you want the open source one, we're it. Oh, really?
-- speaker: S1
-  text: |-
+
     Yeah.
 
     Yeah, because, I mean, as somebody who's more of a casual J VM user, I use it mostly to power a JRuby app or some closure code. But you're saying that I could look and evaluate, like, maybe I could develop against Zen. I'm sorry, this is Zing. Zing. Develop against Zing and also go to production with Zing. I mean, is that at that level? You could do that, but because it is so interchangeable, you don't need to develop to it. There are no new APIs in it. There's nothing you do to write for Zing.
-- speaker: M1
-  text: |-
+
     Okay.
 
     It just runs Java code.
@@ -50,28 +49,22 @@ turns:
     Yeah.
 
     You know?
-- speaker: S1
-  text: Yeah.
-- speaker: M1
-  text: And various other things. So unfortunately, in the Dalvik world, there is
-    no spec, or no good spec that is similar to Java. But we can't argue that Dalvik's
-    not popular. It's extremely popular for sort of user interface embedded devices
-    and such. And it's very successful there. I think the world has spoken. I think
-    it's unfortunate that it's a fork and that it doesn 't do the entire spec. You
-    know?
-- speaker: S1
-  text: |-
+
+    Yeah.
+
+    And various other things. So unfortunately, in the Dalvik world, there is no spec, or no good spec that is similar to Java. But we can't argue that Dalvik's not popular. It's extremely popular for sort of user interface embedded devices and such. And it's very successful there. I think the world has spoken. I think it's unfortunate that it's a fork and that it doesn 't do the entire spec. You know?
+
     Yeah.
 
     That's not for me to do anything about.
 
     Yeah.
-- speaker: M1
-  text: |-
+
     Well, it sounds like they are focusing on a specific vertical of a certain type of device, not general purpose. And now it's said to be able to tune it for those devices.
 
     Yeah.
-
+- speaker: M1
+  text: |-
     Well, thank you very much for taking the time to speak to me. It's fascinating. So OpenJDK is just code, so.
 
     Yeah.

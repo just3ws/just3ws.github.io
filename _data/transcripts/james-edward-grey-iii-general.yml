@@ -8,9 +8,28 @@ speaker_map:
     role: ruby and rails practice
 turns:
 - speaker: M1
+  text: Hi, it's Mike again with UGtastic. I'm sitting down with James Edward Gray,
+    who is known for Shades of Grey, the Ruby Rogues, and also if you've used his
+    faster CSV library in 1.8, and now it's part of the standard lib in Ruby 1.9.
+    Well, just Ruby 1.9. But thanks for taking a moment to sit down, James. I appreciate
+    it. Can you tell me a little bit about how you got involved with Ruby? Yeah, it
+    was a long time ago. I think I entered the community in summer of 2004 or something
+    like that, and I had just kind of gotten off of a job and went into that cycle
+    of learning new things, and I grabbed a copy of the programming Ruby and decided
+    I'd teach myself a new language and kind of got stuck and never left. What were
+    you doing before Ruby? I'm Java certified. I did that for several years. I spent
+    a lot of time in the Perl community working there. The project I came off of just
+    before getting into the Ruby community was a big Perl site using CGI and all kinds
+    of crazy stuff. So you've kind of really embraced the Ruby community, and it seems
+    to have been a lot of fun for you. What was it about? Ruby early on. Because 2004
+    was, I mean, it hadn't just come out, but that was pre-rails. Yeah, it was really
+    early. It was easy to get hooked in the community back then. It was a very small,
+    tight-knit group of people. We had basically one mailing list where most of our
+    communication happened, and you would literally be posting questions and getting
+    answers from people like Dave Thomas and stuff like that. So I was just on the
+    tail end of that era and got kind of sucked in that way.
+- speaker: S1
   text: |-
-    Hi, it's Mike again with UGtastic. I'm sitting down with James Edward Gray, who is known for Shades of Grey, the Ruby Rogues, and also if you've used his faster CSV library in 1.8, and now it's part of the standard lib in Ruby 1.9. Well, just Ruby 1.9. But thanks for taking a moment to sit down, James. I appreciate it. Can you tell me a little bit about how you got involved with Ruby? Yeah, it was a long time ago. I think I entered the community in summer of 2004 or something like that, and I had just kind of gotten off of a job and went into that cycle of learning new things, and I grabbed a copy of the programming Ruby and decided I'd teach myself a new language and kind of got stuck and never left. What were you doing before Ruby? I'm Java certified. I did that for several years. I spent a lot of time in the Perl community working there. The project I came off of just before getting into the Ruby community was a big Perl site using CGI and all kinds of crazy stuff. So you've kind of really embraced the Ruby community, and it seems to have been a lot of fun for you. What was it about? Ruby early on. Because 2004 was, I mean, it hadn't just come out, but that was pre-rails. Yeah, it was really early. It was easy to get hooked in the community back then. It was a very small, tight-knit group of people. We had basically one mailing list where most of our communication happened, and you would literally be posting questions and getting answers from people like Dave Thomas and stuff like that. So I was just on the tail end of that era and got kind of sucked in that way.
-
     Okay.
 
     And then you created the faster CSV library. What drove that? It was an accident, actually. They were talking on the Ruby core mailing list about how the CSV library was so slow, and people were trying to analyze why it was slow. Really interesting. Really interesting. But it wasn't any particular fault of the library so much, just that it did a lot of work in a really tight loop, calling a bunch of methods and stuff, which in Ruby is pretty slow. And people were talking about ways to speed it up. And just a few weeks before that, I had read Mastering Regular Expression or something like that.

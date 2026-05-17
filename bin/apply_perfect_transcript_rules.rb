@@ -2,8 +2,13 @@
 require 'yaml'
 
 RULES = [
+  # --- Brand: UGtastic ---
   [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
+  [/\b[Uu]ktasek(?:\.com)?\b/i, "UGtastic"],
+  [/\b[Uu]btastic(?:\.com)?\b/i, "UGtastic"],
   [/\b[Uu]g[ -]?l[ -]?st\b/i, "UGl.st"],
+  
+  # --- Industry Terms ---
   [/\b[Gg]oto[ -]?[Cc]onf(?:erence)?\b/i, "GOTO Conference"],
   [/\b[Rr]ails[ -]?[Cc]onf\b/i, "RailsConf"],
   [/\b[Ww]indy[ -]?[Cc]ity[ -]?[Rr]ails\b/i, "WindyCityRails"],
@@ -32,10 +37,14 @@ RULES = [
   [/\b[Jj]behave\b/i, "JBehave"],
   [/\b[Rr]spec\b/i, "RSpec"],
   [/\b[Vv]ooza\b/i, "Vooza"],
+  
+  # --- Remove Whisper hallucinations ---
   [/\b[Tt]hanks for watching\b/i, ""],
   [/\b[Ss]ubscribe to my channel\b/i, ""],
   [/\b[Hh]it the bell icon\b/i, ""],
   [/\b[Pp]lease like and subscribe\b/i, ""],
+  
+  # --- Punctuation & Whitespace ---
   [/ {2,}/, " "],
   [/\n{3,}/, "\n\n"]
 ]
@@ -46,18 +55,18 @@ def apply_to_text(text)
   text
 end
 
-path = ARGV[0]
-unless path && File.exist?(path)
-  puts "Usage: #{$0} <path_to_transcript_yml>"
-  exit 1
+ARGV.each do |path|
+  next unless File.exist?(path)
+  begin
+    data = YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true)
+    if data["turns"]
+      data["turns"].each { |turn| apply_to_text(turn["text"]) }
+    elsif data["content"]
+      apply_to_text(data["content"])
+    end
+    File.write(path, data.to_yaml)
+    puts "Applied perfection rules to #{path}"
+  rescue => e
+    puts "Error in #{path}: #{e.message}"
+  end
 end
-
-data = YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true)
-if data["turns"]
-  data["turns"].each { |turn| apply_to_text(turn["text"]) }
-elsif data["content"]
-  apply_to_text(data["content"])
-end
-
-File.write(path, data.to_yaml)
-puts "Applied perfection rules to #{path}"

@@ -8,9 +8,22 @@ speaker_map:
     role: developer community and conference conversations
 turns:
 - speaker: M1
+  text: Hi, it's Mike again with NukeTastic. I'm here today again at the GoToChicago
+    conference, GoToChicago 2013. I'm sitting down with Mike Miller, who is the founder
+    and chief scientist of Cloudant Technology, or Cloudant? Just Cloudant. Cloudant.
+    And their database is a service company. Their specialty is CouchDB and BigCouch.
+    So thank you very much for taking the time to sit down, Mike. Thanks for the chance.
+    Okay, the CouchDB, how did Cloudant get to be involved with the CouchDB project?
+    Very good question. Is it okay if I just back up a little bit and give you kind
+    of one overall kind of mission statement, like a theme for the company? Absolutely.
+    Yeah, so we started the company because our backgrounds were in big stuff. So
+    we started the company because our backgrounds were in big stuff. So we started
+    big stuff. So we started the company because our backgrounds were in big stuff.
+    So we started science and big data from Large Hadron Collider and CERN. A lot.
+    So some of the biggest data sets in the world. Some big data. Yeah, and we got
+    the feeling that big data was going to be a thing.
+- speaker: S1
   text: |-
-    Hi, it's Mike again with NukeTastic. I'm here today again at the GoToChicago conference, GoToChicago 2013. I'm sitting down with Mike Miller, who is the founder and chief scientist of Cloudant Technology, or Cloudant? Just Cloudant. Cloudant. And their database is a service company. Their specialty is CouchDB and BigCouch. So thank you very much for taking the time to sit down, Mike. Thanks for the chance. Okay, the CouchDB, how did Cloudant get to be involved with the CouchDB project? Very good question. Is it okay if I just back up a little bit and give you kind of one overall kind of mission statement, like a theme for the company? Absolutely. Yeah, so we started the company because our backgrounds were in big stuff. So we started the company because our backgrounds were in big stuff. So we started big stuff. So we started the company because our backgrounds were in big stuff. So we started science and big data from Large Hadron Collider and CERN. A lot. So some of the biggest data sets in the world. Some big data. Yeah, and we got the feeling that big data was going to be a thing.
-
     Right.
 
     And that if it was a problem for us, it was eventually going to be a problem for everybody. I think that's been borne out. But the other thing we learned over the last four years since we did Y Combinator is that mobile is also a big thing. And so I think these, I think the founder of Joyent put it best, that mobile and big data have broken our model of computing.
@@ -94,10 +107,9 @@ turns:
     Right.
 
     To load a page, drive an app, leaderboard, you name it. And then the third thing is, I think it's... And this is where it really differs from all other databases. Right? Traditionally, databases are like a single cursor, and you make that cursor really fast because a database may be running on the exact same server that the application is. Right?
-- speaker: S1
-  text: Right.
-- speaker: M1
-  text: |-
+
+    Right.
+
     So it's like, "Oh, can we beat microseconds? Can we get to nanoseconds?" And that's awesome, but when you're talking to it from your phone, that's a total waste.
 
     Right.
@@ -167,8 +179,7 @@ turns:
     Yeah.
 
     So the review process begins, but the hope -- So that's a serious commitment to the community. Serious commitment, yeah. And so the hope is that when CouchDB 2.0, or if we can do it around that time, comes out, then CouchDB will finally have a fully horizontally clustered story around it. So that kind of goes back to my initial point, like the Postgres style. We tried to do it deliberately and, you know, let the community kind of -- you know, we can say, "Okay, here. Here it is." You know, sit back, take a poke at it, see if it stands up, and, you know, hopefully the community will accept that as well. Hopefully the community will accept that as a very good thing. So if I'm looking at evaluating a database, I'm looking at all the community options out there. I'm looking at Couch. I'm looking at Mongo. I'm looking at React. I'm looking -- I'm just thinking of some of the ones that are here and are popular, or MySQL. Do you have any recommendations for how they can evaluate and look at or get more information?
-- speaker: S1
-  text: |-
+
     Yeah.
 
     I think what we try to do is understand what the needs are from the application perspective. And so the things that we look for are, like, scale, predictability in production, which is a big one, I think, if you look at, you know, systems that pick things in memory and require that versus systems that are really built to be all disk from the beginning. And then the really big thing is, is there a distributed nature to this? You know? The CouchDB model that we're really -- And we really love that model. So there's no global right master.
@@ -178,15 +189,13 @@ turns:
     That's like a huge -- that's like saying the speed of light. Well, I said right as if I really understood what that implication was.
 
     Yeah.
-- speaker: M1
-  text: This is just like, let's step back. Like, I'm a physicist, right?
-- speaker: S1
-  text: |-
+
+    This is just like, let's step back. Like, I'm a physicist, right?
+
     Yeah.
 
     Like, you know, Einstein was awesome because he'd be like, here's this thing we always thought was true. And it turns out it's not.
-- speaker: M1
-  text: |-
+
     Okay.
 
     And because of that, we can do amazing things. Right? I can launch satellites. I can do GPS. I can, you know, I can build particle accelerators. All of this is true because -- So it breaks some constraints. Nothing can go faster than the speed of light.
@@ -202,8 +211,7 @@ turns:
     Okay.
 
     All right. That's ridiculous. So why can't my phone be the global -- can be, you know, the place where I write information now? And then I can synchronize that later, right?
-- speaker: M1
-  text: |-
+
     Okay.
 
     And so that is the number one thing that should take you to CouchDB.
@@ -223,15 +231,13 @@ turns:
     Yeah.
 
     Exactly. It's -- and in that sense, it's revolutionary. And I think it will take a long time for developers to fully understand the power of that. And that's something that we're trying to help kind of evangelize now. Mm-hmm. But once you release that constraint, it's incredibly free. And you can do some incredible things with it. Is CouchDB something that developers can really look at and contribute back to? Is there -- are there opportunities maybe for somebody who's not a data scientist to be able to contribute to Couch?
-- speaker: S1
-  text: |-
+
     Yeah.
 
     Absolutely. You don't have to -- you don't even have to be able to code.
 
     Yeah.
-- speaker: M1
-  text: |-
+
     So the community is very welcoming. And that's one of the things we really loved about it when we were first looking at kind of API tiers that we could, you know, start to leverage to build this database as a service. And the community continues to be vibrant. There's a great post by, you know, by Noah Slater thanking CouchDB. And he doesn't even -- I don't -- apologies to Noah if he watches and I get this wrong. Because I haven't met him in person.
 
     Right.

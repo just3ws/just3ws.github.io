@@ -8,9 +8,16 @@ speaker_map:
     role: Guest
 turns:
 - speaker: M1
+  text: Hi, it's Mike with Utesc again. I'm sitting now with Michael Ficarra. Michael
+    has been very active in the CoffeeScript community, even so much so that you've
+    been taking a crack at doing a rewrite of the CoffeeScript compiler. He's done
+    fundraising through Kickstarter to help support that. Thank you very much for
+    taking the time to sit down. So, I'm going to ask you a question you've probably
+    never heard before. Why CoffeeScript? Why use it or why am I into it? Why are
+    you into it? How did you come to it? So, I've been in the community for as long
+    as I can remember.
+- speaker: S1
   text: |-
-    Hi, it's Mike with Utesc again. I'm sitting now with Michael Ficarra. Michael has been very active in the CoffeeScript community, even so much so that you've been taking a crack at doing a rewrite of the CoffeeScript compiler. He's done fundraising through Kickstarter to help support that. Thank you very much for taking the time to sit down. So, I'm going to ask you a question you've probably never heard before. Why CoffeeScript? Why use it or why am I into it? Why are you into it? How did you come to it? So, I've been in the community for as long as I can remember.
-
     Yeah.
 
     But I'm interested in CoffeeScript because it provides a small but still significant advantage over JavaScript.
@@ -36,10 +43,9 @@ turns:
     Okay.
 
     So you were attracted to working with CoffeeScript and you're bringing some of a more of a rigorous approach because of your training to the design bit. What ultimately led to the idea of a rewrite? Because as we kind of joked before, isn't there already a CoffeeScript compiler?
-- speaker: S1
-  text: Yeah.
-- speaker: M1
-  text: |-
+
+    Yeah.
+
     So the compiler has some failings, I guess you could call them. There are some features that people want like source maps is a good example, which maps your compiled JavaScript back to the original CoffeeScript so you can do debugging in whatever your JavaScript is as if you're developing a JavaScript. And those would be really hard with the architecture of the compiler. The original compiler was, you know, Jeremy's first try at making a compiler. It was very rough. I'm not trying to take a dig at it or anything. But it didn't use a model that allowed for us to preserve that source position information through the compilation process. So there are some basic failings in just the overall design of the compiler that wouldn't allow us to do a lot of things. And of course, there were, you know, 300 or so open bugs and a lot of it with, like, you know, inconsistent parsing of the syntax. And, you know, I just wanted to encapsulate fixing all of these things. So improving the integration with existing tooling, clean up some syntactical inconsistencies, and just also a lot of second -- this is the second product improvements. You go through product one and it's okay. We find out everything that wasn't so good. And that's okay. You go through product two. You go through product three. You go through product four. You go through product five. You go through product six. You go through product seven. You go through product eight. You go through product nine. You go through product 10. You go through product 11. You go through product 12. You go through product 13. You go through product 14. You go through product 15. You go through product 16. You go through product 15. You go through product 16. You go through product 17. You go through product 18. You go through product 19. You go through product 20. You go through product 21. You go through product 22. You go through product 23. You go through product 24. You go through product 25. You go through product 26. You go through product 27. You go through product 28. You go through product 28. You go through product 29. You go through product 30. You go through product 31. You go through product 32. You go through product 33. You go through product 34. You go through product 35. You go through product 36. You go through product 37. You go through product 38. You go through product 39. You go through product 40. time and effort, so certainly cost a lot of time.
 
     Yeah.
@@ -63,8 +69,9 @@ turns:
     So, worked with him a lot on it, and I guess he used their building, their computers, everything, and they even gave me some money. So I was very generous with Groupon. Oh, wow. And that's why I'm here in Chicago, actually. I just moved down here for that. Yeah, so part of it is Groupon feeding back into the open source community.
 
     Yeah.
-
-    Alright, well thank you very much for taking the time to sit down. Appreciate it.
+- speaker: M1
+  text: Alright, well thank you very much for taking the time to sit down. Appreciate
+    it.
 - speaker: S1
   text: |-
     Thanks for having me
