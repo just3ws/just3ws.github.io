@@ -1,191 +1,176 @@
 ---
-content: |-
-  Hi, it's Mike with UGtastic. I'm here at RailsConf 2014 and I'm standing here with Carlos Antonio
-   Da Silva, who's a software developer with Platformatech. And you might also know some
-   of his projects: Devise, Simpleform. He's also a Rails core contributor. He gave a talk today
-   about some of the tricks that Rails didn't teach you. Did I say that correctly?
-   Yeah, tricks that Rails didn't tell you about.
-   Tricks that Rails didn't tell you about. So thank you very much for taking the time to
-   speak with me. I appreciate it. So can you tell me a little bit more about tricks
-   that Rails didn't tell me about? Right, yes. So the idea behind this talk is that
-   I've been working with Rails for around six years and I've been in a lot of
-   different projects and seen a lot of different code from different people
-   around the world, right? And people get used to write in their own code without
-   actually looking at what Rails can give them. So there are times where we see code
-   that could be replaced by Rails' existing features, features that were released in
-   newer versions or even features that were since the beginning in Rails, right? And the
-   idea was just to show some nice tricks that Rails has, some small features, features
-   that people don't use that much. And that can help them on a database while
-   working with Rails. And that can make their code better, simpler, and easier to understand.
-   So that's the whole idea behind the talk.
-   What was an example of one that was a real common kind of thing that you maybe, when you're
-   seeing contributions back to Rails, is that a place where you often see those where people
-   are contributing back redundant code? Or is this talking about applications that people are writing with Rails and they just keep reinventing the wheel?
-   Yeah, it's usually applications that people are writing that try to reinvent the wheel because they write features that Rails already gives them.
-   Right? They try to do things that are over complex and that Rails can simplify by using some of the Rails features.
-   So that was the idea of showing some of these tricks. And maybe I will post more on a blog post or something.
-   But the idea behind that was that push first before actually going, writing down the code, go search, ask around, and see if Rails can help them in some way to make their code simpler.
-   Okay. And we were talking a little bit before the interview about your contributions to open source and I asked about Platformatech and you said that it was kind of a funny story that you would come to Platformatech through open source.
-   Yeah, yeah. So it's been almost five years that I'm working there. I was actually the first external guy to start working at Platformatech besides the four founders.
-   And I started because of open source because I was working as a freelancer back five years ago. And I was using one of Josef Alin's projects, which is called Inherited Resources.
-   And I was talking to him in the mailing list and asking a bunch of stuff, helping him with some issues and all that stuff. And he sent me an email asking if I would like to work with them in a project.
-   It was like just a project at the beginning because they were needing someone and somehow, I don't know how, they thought about me because I was talking to him.
-   And well, then I did that project. I started that project with them because of the open source discussions we were having. And after that, we started working together.
-   Yeah. So was that before you started working with the Rails team or...?
-   Yeah, yeah. That was before. After that, I started contributing to Rails and then more and more since then.
-   So how did you go about becoming involved and contributing to Rails core? How did that come about?
-   Yeah. So after starting working at Platformatech, well, we got involved more in Rails because Josef was also part of Rails.
-   Actually, he got part of the Rails core team in 2010, I guess. But we were always discussing and every time we found a bug, we tried to send a request to fix that.
-   Platformatech has this culture of encouraging people to contribute more, right?
-   Yeah. So at that time, we started doing some minor bug fixes and trying to keep up to date with what was going on in Rails also.
-   And that was opening doors for us to contribute more and more. Maybe fixing some documentation, maybe fixing some issue, or like refactoring a code that just got merged is also a good way.
-   So I started contributing more and more and more like that. And then there was a time where I had like a thousand commits or something.
-   Yeah. That's a lot of commits to open source. So you've been quite prolific. But that's a thousand commits into Rails, you mean?
-   Into Rails, yeah. Right now...
-   That's not even counting all of the other projects.
-   No, no, no.
-   Okay.
-   So what was the process of to become a core team member? How did that work? Did they have the ceremony? Did they light the torch?
-   No.
-   Can you talk about it?
-   Yeah, yeah.
-   Sure.
-   Well, as I said, I was like contributing more and more. And as I was contributing more, I was actually needing more feedback from the guys that were core or already contributors, right?
-   So there was a time where they added me to a campfire room where some contributors hang around there to talk about Rails, talk about issues and things like that.
-   So that was like the first step, getting to talk more about with the contributors guys. And then we started contributing more and more to Rails because of that.
-   Because we have like direct contact with them. So we end up contributing more.
-   Well, after that, after some time, they got us access to the issues tracker. So we could close issues.
-   We actually have, we had at that time, access to commit to Rails, but we were not allowed to, because like GitHub does not allow to block only commits and give access to issues.
-   So we were giving access to issues, but we were just not committers.
-   Right, right. So that was more of just trusting.
-   Yeah, that's more of a way of trusting us that we would like, help them with issues and pre-requests.
-   And ah, this pre-request is ready to merge, then ping someone that can merge it.
-   Okay.
-   Something like that.
-   And well, after some time, ah, working on issues and helping them with pre-requests and reviewing code and all that stuff, ah, they gave us access to commit, commit access to Rails.
-   So we are, we were like contributors, we could merge pre-requests, send our own commits and things like that.
-   And well, after like more than a year or so, ah, contributing like that more frequently, ah, they, ah, gave us the core team, ah, part.
-   So, ah, so is it, like, blood in, you know, like, now you're, you can only use Rails for the rest of your life, or are you allowed to look at other frameworks?
-   No.
-   So I mean, at Platformatech, you guys do a lot of Elixir too, right?
-   Yeah, yeah.
-   We, we are mostly focusing on Rails and Ruby, right?
-   But we are also developing Elixir.
-   And we'll be applying it in some projects.
-   But in general, like, we are free to use other, other technologies, other frameworks if necessary.
-   There is no problem.
-   It's just the best tool for the job.
-   Yeah, yeah.
-   Right now it's the best tool, too, we have for doing our jobs.
-   And speaking of other tools, uh, expanding beyond just Rails proper, ah, some of the extension,
-   you've worked on, ah, Simpleform, ah, there's, you know, there used to be Formtastic, or there
-   still is, excuse me, there still is Formtastic, but there's an alternative now with your Simpleform.
-   What's, you, you, if I'm not mistaken, you created that project?
-   Yeah, I did.
-   Yeah, and, ah, so what, what led to that?
-   What pain did you feel that, did you want to create that?
-   In general, our open source projects, they all came out from real projects, from experiences
-   we had in projects, like, ah, device, for example, we, we had an application, and we were having
-   problems with the authentication solution we were using, and we decided to create our own
-   to solve our problem.
-   Right.
-   Right.
-   That's very popular now, it's, yeah, it's, I mean, that's got a huge community around
-   of people using this.
-   Yeah, a lot of people have been using Device, and it's been great, like, hearing feedback
-   from people here, ah, that they really love Device and use them, use the tool, and, well,
-   and Device was really, like, almost five years ago, and Simpleform is going to be four years,
-   I guess, it's a little bit less than Device.
-   Uh, well, Simpleform was similar to, ah, we were working on a project that, like, had
-   a bunch of forms, very customized forms, because the client was a designer, actually.
-   Right.
-   And so he, like, designed this really nice, ah, interface with all forms, and all different
-   markup, and FarmTask wasn't really doing, ah, helping us in doing that, so we had to do
-   our own, ah, our own form builder for that, in that project.
-   Right.
-   And after, like, we are finishing that project, we decided to extract that, ah, and turn into
-   a gem, the Simpleform gem, ah, which could help us in other projects.
-   And the basic idea behind Simpleform is, ah, allowing you to have flexible markup.
-   Right.
-   So it happens a lot in that project, and it has been helping us.
-   Yeah, I, I, I've, I've used, ah, all of your work, so.
-   Great.
-   And I use it every day.
-   Uh, and, the one thing I'm curious about with Device, though, is that's a sensitive piece
-   of infrastructure.
-   That's, that's, when I put that into my app, ah, you know, it's, it's, there's a lot of
-   trust, because there's a lot of stuff going on there.
-   I don't necessarily, ah, dig into.
-   And, ah, it's, you know, you know, integrated with Warden, it's doing authentication, it's
-   doing different algorithms for encryption.
-   How much of a learning experience has that been working with creating Devise?
-   And, yeah, in the beginning, it was really great, because, like, ah, I had less than one
-   year, one year or so, ah, working with Rails full-time.
-   And it was really a great, ah, learning experience at the beginning.
-   It was my first actual gem that I was building.
-   Ah, and I learned a lot about the authentication process, ah, how to build a gem, ah, and, ah,
-   and, ah, and, ah, and how to integrate things with Rails better.
-   And we actually have improved a lot the integration between Gems and Rails since then.
-   Ah, and the nice thing is that we could make Devise and perform in our other gems.
-   Always keep up-to-date with newer Rails versions.
-   Ah, and it's, it has been a really great learning experience.
-   Every new, ah, big version of Devise that we release, ah, we need to change a lot of things,
-   and we learn more, ah, on how the authentication part works, ah, what are, are the, the problems
-   we, we have, ah, on that matter, how we need to be safe on doing things.
-   We need, like, we can't just screw up, because it's authentication, it's important for people
-   with security, right?
-   So there's a lot involved in that.
-   So we try to be the most safe we can.
-   And, ah, and I'm also curious, because the Devise is, is associated with platform attack,
-   and, and it's open source, I mean, even though in open source you are somewhat relinquishing
-   liability, has there been any concern, or anybody ever, kind of sour, working on it, because
-   maybe something went wrong, and they're, they've come back to, because I'm just wondering about
-   the dark side of doing open source development here.
-   I just made me think about, you create something, you put it out there, and it's a sensitive piece
-   of infrastructure.
-   Has that been something that you've had to learn any hard lessons about?
-   Somebody coming back and saying, hey, this didn't encrypt the password right?
-   Yeah, well, it's, it's simply impossible to make everyone happy, right?
-   So, like, we try to do our best, we try to help people the most we can.
-   We have a mailing list where we direct people to get help where there are more people involved.
-   We have a special security list where people can send us security problems if they are having,
-   or if they think they found something, that could be a security issue in the device.
-   And so, it's hard to, to...
-   Well, actually, no, that was very interesting.
-   So, if, if somebody, like, people get in trouble out, out in, in, in the real world, for discovering security issues.
-   Right.
-   I mean, discovering security issues, how do you go about...
-   But you're saying that you actually have a...
-   Yeah, we have sort of a process, like, Braille's has a security process very well defined, right?
-   There is a mailing, an email you have to send, special email, and other stuff.
-   We have an email for the device, too, where you can send it.
-   There is a contributors markdown file in the device repo, in GitHub, where you can look.
-   There is the email there, and you need to send an email to that particular address, and then we will guide you to that.
-   But we have seen already people, like, posting stuff on the internet about a possible security problem, and that's not good, right?
-   Yeah.
-   Yeah, that's, because then you're just kind of undermining the work you're doing.
-   Yeah.
-   Instead of just telling you, you're not, like, some bank who just wants to sue you into oblivion.
-   No, you're going to want to go fix it.
-   Yeah, yeah, and we try, like, to have a real process behind it, and it's, like, we try to communicate with the guy who is sending the issue to us, and get it fixed as possible, right?
-   Right.
-   Because it can be, like, a minor issue, or it can be a big issue.
-   It can affect, like, lots of versions.
-   So we have, as Rails, we have released, like, three or four versions, older versions of the device because of security issues already.
-   So we try to have that process.
-   Was there any, in particular, with this whole Heartbleed OpenSSL security problem that, you know, I'm sure even, my wife, who's not a developer, even she asked me, do we need to go change our passwords?
-   I heard about this hack.
-   Is that something that you've had to deal with with device, or mostly has that been just educating?
-   No, basically we were not affected by anything that we could have heard of so far, at least.
-   At least nothing inside of--
-   Yeah, not inside of that device code or anything.
-   Okay.
-   Well, thank you very much for taking the time to speak with me.
-   I appreciate it.
-   Thank you.
-   Thanks for having me.
-   User groups with lots to say, interviews and more.
-   No way!
-   Sharing great ideas in the tech community.
-   Fascinating conversations, a plethora of information.
-   Find out for yourself today at euchtastic.com
+content: "Hi, it's Mike with UGtastic. I'm here at RailsConf 2014 and I'm standing
+  here with Carlos Antonio Da Silva, who's a software developer with Platformatech.
+  And you might also know some of his projects: Devise, Simpleform. He's also a Rails
+  core contributor. He gave a talk today about some of the tricks that Rails didn't
+  teach you. Did I say that correctly? Yeah, tricks that Rails didn't tell you about.
+  Tricks that Rails didn't tell you about. So thank you very much for taking the time
+  to speak with me. I appreciate it. So can you tell me a little bit more about tricks
+  that Rails didn't tell me about? Right, yes. So the idea behind this talk is that
+  I've been working with Rails for around six years and I've been in a lot of different
+  projects and seen a lot of different code from different people around the world,
+  right? And people get used to write in their own code without actually looking at
+  what Rails can give them. So there are times where we see code that could be replaced
+  by Rails' existing features, features that were released in newer versions or even
+  features that were since the beginning in Rails, right? And the idea was just to
+  show some nice tricks that Rails has, some small features, features that people
+  don't use that much. And that can help them on a database while working with Rails.
+  And that can make their code better, simpler, and easier to understand. So that's
+  the whole idea behind the talk. What was an example of one that was a real common
+  kind of thing that you maybe, when you're seeing contributions back to Rails, is
+  that a place where you often see those where people are contributing back redundant
+  code? Or is this talking about applications that people are writing with Rails and
+  they just keep reinventing the wheel? Yeah, it's usually applications that people
+  are writing that try to reinvent the wheel because they write features that Rails
+  already gives them. Right? They try to do things that are over complex and that
+  Rails can simplify by using some of the Rails features. So that was the idea of
+  showing some of these tricks. And maybe I will post more on a blog post or something.
+  But the idea behind that was that push first before actually going, writing down
+  the code, go search, ask around, and see if Rails can help them in some way to make
+  their code simpler. Okay. And we were talking a little bit before the interview
+  about your contributions to open source and I asked about Platformatech and you
+  said that it was kind of a funny story that you would come to Platformatech through
+  open source. Yeah, yeah. So it's been almost five years that I'm working there.
+  I was actually the first external guy to start working at Platformatech besides
+  the four founders. And I started because of open source because I was working as
+  a freelancer back five years ago. And I was using one of Josef Alin's projects,
+  which is called Inherited Resources. And I was talking to him in the mailing list
+  and asking a bunch of stuff, helping him with some issues and all that stuff. And
+  he sent me an email asking if I would like to work with them in a project. It was
+  like just a project at the beginning because they were needing someone and somehow,
+  I don't know how, they thought about me because I was talking to him. And well,
+  then I did that project. I started that project with them because of the open source
+  discussions we were having. And after that, we started working together. Yeah. So
+  was that before you started working with the Rails team or...? Yeah, yeah. That
+  was before. After that, I started contributing to Rails and then more and more since
+  then. So how did you go about becoming involved and contributing to Rails core?
+  How did that come about? Yeah. So after starting working at Platformatech, well,
+  we got involved more in Rails because Josef was also part of Rails. Actually, he
+  got part of the Rails core team in 2010, I guess. But we were always discussing
+  and every time we found a bug, we tried to send a request to fix that. Platformatech
+  has this culture of encouraging people to contribute more, right? Yeah. So at that
+  time, we started doing some minor bug fixes and trying to keep up to date with what
+  was going on in Rails also. And that was opening doors for us to contribute more
+  and more. Maybe fixing some documentation, maybe fixing some issue, or like refactoring
+  a code that just got merged is also a good way. So I started contributing more and
+  more and more like that. And then there was a time where I had like a thousand commits
+  or something. Yeah. That's a lot of commits to open source. So you've been quite
+  prolific. But that's a thousand commits into Rails, you mean? Into Rails, yeah.
+  Right now... That's not even counting all of the other projects. No, no, no. Okay.
+  So what was the process of to become a core team member? How did that work? Did
+  they have the ceremony? Did they light the torch? No. Can you talk about it? Yeah,
+  yeah. Sure. Well, as I said, I was like contributing more and more. And as I was
+  contributing more, I was actually needing more feedback from the guys that were
+  core or already contributors, right? So there was a time where they added me to
+  a campfire room where some contributors hang around there to talk about Rails, talk
+  about issues and things like that. So that was like the first step, getting to talk
+  more about with the contributors guys. And then we started contributing more and
+  more to Rails because of that. Because we have like direct contact with them. So
+  we end up contributing more. Well, after that, after some time, they got us access
+  to the issues tracker. So we could close issues. We actually have, we had at that
+  time, access to commit to Rails, but we were not allowed to, because like GitHub
+  does not allow to block only commits and give access to issues. So we were giving
+  access to issues, but we were just not committers. Right, right. So that was more
+  of just trusting. Yeah, that's more of a way of trusting us that we would like,
+  help them with issues and pre-requests. And ah, this pre-request is ready to merge,
+  then ping someone that can merge it. Okay. Something like that. And well, after
+  some time, ah, working on issues and helping them with pre-requests and reviewing
+  code and all that stuff, ah, they gave us access to commit, commit access to Rails.
+  So we are, we were like contributors, we could merge pre-requests, send our own
+  commits and things like that. And well, after like more than a year or so, ah, contributing
+  like that more frequently, ah, they, ah, gave us the core team, ah, part. So, ah,
+  so is it, like, blood in, you know, like, now you're, you can only use Rails for
+  the rest of your life, or are you allowed to look at other frameworks? No. So I
+  mean, at Platformatech, you guys do a lot of Elixir too, right? Yeah, yeah. We,
+  we are mostly focusing on Rails and Ruby, right? But we are also developing Elixir.
+  And we'll be applying it in some projects. But in general, like, we are free to
+  use other, other technologies, other frameworks if necessary. There is no problem.
+  It's just the best tool for the job. Yeah, yeah. Right now it's the best tool, too,
+  we have for doing our jobs. And speaking of other tools, uh, expanding beyond just
+  Rails proper, ah, some of the extension, you've worked on, ah, Simpleform, ah, there's,
+  you know, there used to be Formtastic, or there still is, excuse me, there still
+  is Formtastic, but there's an alternative now with your Simpleform. What's, you,
+  you, if I'm not mistaken, you created that project? Yeah, I did. Yeah, and, ah,
+  so what, what led to that? What pain did you feel that, did you want to create that?
+  In general, our open source projects, they all came out from real projects, from
+  experiences we had in projects, like, ah, device, for example, we, we had an application,
+  and we were having problems with the authentication solution we were using, and
+  we decided to create our own to solve our problem. Right. Right. That's very popular
+  now, it's, yeah, it's, I mean, that's got a huge community around of people using
+  this. Yeah, a lot of people have been using Device, and it's been great, like, hearing
+  feedback from people here, ah, that they really love Device and use them, use the
+  tool, and, well, and Device was really, like, almost five years ago, and Simpleform
+  is going to be four years, I guess, it's a little bit less than Device. Uh, well,
+  Simpleform was similar to, ah, we were working on a project that, like, had a bunch
+  of forms, very customized forms, because the client was a designer, actually. Right.
+  And so he, like, designed this really nice, ah, interface with all forms, and all
+  different markup, and FarmTask wasn't really doing, ah, helping us in doing that,
+  so we had to do our own, ah, our own form builder for that, in that project. Right.
+  And after, like, we are finishing that project, we decided to extract that, ah,
+  and turn into a gem, the Simpleform gem, ah, which could help us in other projects.
+  And the basic idea behind Simpleform is, ah, allowing you to have flexible markup.
+  Right. So it happens a lot in that project, and it has been helping us. Yeah, I,
+  I, I've, I've used, ah, all of your work, so. Great. And I use it every day. Uh,
+  and, the one thing I'm curious about with Device, though, is that's a sensitive
+  piece of infrastructure. That's, that's, when I put that into my app, ah, you know,
+  it's, it's, there's a lot of trust, because there's a lot of stuff going on there.
+  I don't necessarily, ah, dig into. And, ah, it's, you know, you know, integrated
+  with Warden, it's doing authentication, it's doing different algorithms for encryption.
+  How much of a learning experience has that been working with creating Devise? And,
+  yeah, in the beginning, it was really great, because, like, ah, I had less than
+  one year, one year or so, ah, working with Rails full-time. And it was really a
+  great, ah, learning experience at the beginning. It was my first actual gem that
+  I was building. Ah, and I learned a lot about the authentication process, ah, how
+  to build a gem, ah, and, ah, and, ah, and, ah, and how to integrate things with
+  Rails better. And we actually have improved a lot the integration between Gems and
+  Rails since then. Ah, and the nice thing is that we could make Devise and perform
+  in our other gems. Always keep up-to-date with newer Rails versions. Ah, and it's,
+  it has been a really great learning experience. Every new, ah, big version of Devise
+  that we release, ah, we need to change a lot of things, and we learn more, ah, on
+  how the authentication part works, ah, what are, are the, the problems we, we have,
+  ah, on that matter, how we need to be safe on doing things. We need, like, we can't
+  just screw up, because it's authentication, it's important for people with security,
+  right? So there's a lot involved in that. So we try to be the most safe we can.
+  And, ah, and I'm also curious, because the Devise is, is associated with platform
+  attack, and, and it's open source, I mean, even though in open source you are somewhat
+  relinquishing liability, has there been any concern, or anybody ever, kind of sour,
+  working on it, because maybe something went wrong, and they're, they've come back
+  to, because I'm just wondering about the dark side of doing open source development
+  here. I just made me think about, you create something, you put it out there, and
+  it's a sensitive piece of infrastructure. Has that been something that you've had
+  to learn any hard lessons about? Somebody coming back and saying, hey, this didn't
+  encrypt the password right? Yeah, well, it's, it's simply impossible to make everyone
+  happy, right? So, like, we try to do our best, we try to help people the most we
+  can. We have a mailing list where we direct people to get help where there are more
+  people involved. We have a special security list where people can send us security
+  problems if they are having, or if they think they found something, that could be
+  a security issue in the device. And so, it's hard to, to... Well, actually, no,
+  that was very interesting. So, if, if somebody, like, people get in trouble out,
+  out in, in, in the real world, for discovering security issues. Right. I mean, discovering
+  security issues, how do you go about... But you're saying that you actually have
+  a... Yeah, we have sort of a process, like, Braille's has a security process very
+  well defined, right? There is a mailing, an email you have to send, special email,
+  and other stuff. We have an email for the device, too, where you can send it. There
+  is a contributors markdown file in the device repo, in GitHub, where you can look.
+  There is the email there, and you need to send an email to that particular address,
+  and then we will guide you to that. But we have seen already people, like, posting
+  stuff on the internet about a possible security problem, and that's not good, right?
+  Yeah. Yeah, that's, because then you're just kind of undermining the work you're
+  doing. Yeah. Instead of just telling you, you're not, like, some bank who just wants
+  to sue you into oblivion. No, you're going to want to go fix it. Yeah, yeah, and
+  we try, like, to have a real process behind it, and it's, like, we try to communicate
+  with the guy who is sending the issue to us, and get it fixed as possible, right?
+  Right. Because it can be, like, a minor issue, or it can be a big issue. It can
+  affect, like, lots of versions. So we have, as Rails, we have released, like, three
+  or four versions, older versions of the device because of security issues already.
+  So we try to have that process. Was there any, in particular, with this whole Heartbleed
+  OpenSSL security problem that, you know, I'm sure even, my wife, who's not a developer,
+  even she asked me, do we need to go change our passwords? I heard about this hack.
+  Is that something that you've had to deal with with device, or mostly has that been
+  just educating? No, basically we were not affected by anything that we could have
+  heard of so far, at least. At least nothing inside of-- Yeah, not inside of that
+  device code or anything. Okay. Well, thank you very much for taking the time to
+  speak with me. I appreciate it. Thank you. \n\nThanks for having me. User groups
+  with lots to say, interviews and more. No way! Sharing great ideas in the tech community.
+  Fascinating conversations, a plethora of information. Find out for yourself today
+  at euchtastic.com"

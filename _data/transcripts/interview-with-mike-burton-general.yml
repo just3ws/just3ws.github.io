@@ -1,155 +1,125 @@
 ---
-content: |-
-  Hi, it's Mike with UGtastic again. I'm sitting down with Mike Burton. Mike is an Android
-   developer over in Palo Alto, and he has done several open source tools. The most popular
-   tool he's created is RoboJuice, which is a dependency. It's an IOC tool. I'll let him
-   explain it. For doing Android development, he's also written a book, The Android Application
-   Development for Dummies. He does a lot of speaking inside of the Android community.
-   Thanks for taking the time to sit down with me, Mike. It's nice to talk with you.
-   Sure, absolutely. It's nice to finally catch up.
-   What led you into Android development? It's kind of a new platform for the last
-   few years. Were you always in mobile? No, actually I wasn't. I was basically
-   a back-end engineer for most of my career. I was doing mostly Spring and Hibernate, and
-   Java-based solutions, using EJBs way, way back and then abandoning that and switching
-   over to Spring, and then eventually moving over to other tiers like Django and Python
-   and doing a little bit of Ruby on Rails. It wasn't until about four years ago, I was working
-   at a little startup up in San Francisco with my friends Mihir and Yishai. I was doing all
-   that work, and we started getting into mobile because the iPhone had been released about
-   a year ago. The Android G1 had just come out, and we thought, "Hmm, well, we don't really
-   know if this G1 thing is going to take off or not, but hey, Mike, you have some Java
-   experience. Why don't you write for us?" So I wrote my first app on there. I ended
-   up focusing entirely on mobile for the past several years. After writing the application
-   and the app for that startup, I also wrote the OpenTable, TripIt, and Digg applications
-   as well as a few other ones, and then came here. Well, actually, the startup got acquired
-   by Groupon, and so I started working on the Groupon application right away and been doing
-   it ever since.
-   But what was it about the Android, though, that hooked you instead of going over to iOS
-   platform?
-   Right, right. Well, I mean, I think one of the really interesting things is we didn't
-   know what direction the Android community was going to go off in, but one thing that
-   really attracted me over the iOS community is that a lot of the tools were open source.
-   So Google basically acquired a startup called Android, and that startup was using a whole
-   bunch of different open source tools to construct their OS platform.
-   So you could already leverage just a ton of your Java-based libraries and things that
-   you're already familiar with. And so I was able to get in there and just start writing
-   code really quickly. And then after I started getting involved in the open source community,
-   I realized that more so than in iOS, there are a lot of people out there contributing
-   to Android, if not directly to the Android platform, then directly to libraries that
-   a lot of Android applications use. And there's a little bit of that on iOS, but I think because,
-   I think Android is a little bit more of a scrappy platform, it's got a few more rough
-   edges, and I think that gives a lot of opportunities for open source people to come in and contribute.
-   Yeah, it doesn't feel too polished, so you can't figure out where you can get a fingernail
-   underneath something and pry it open.
-   Exactly, exactly. Whereas I think Apple, when they have rough edges, they do their
-   best to hide them from you so you can get under the hood. Android, they just expose
-   all that shit and put it away.
-   Yeah, no, that's okay.
-   Do you ever use any of the alternative, like even with Android phones, there's different
-   builds of the, like I run CyanogenMod, I've run, I'm trying to blank on the other one,
-   but it's a Chinese mod. M-I-U-I, M-I-U-I.
-   Oh, I haven't, I'm familiar with it, but I've never tried it.
-   Okay, do you have any, like do you use Cyanogen or do you use stock?
-   No, I try to stay with the stock stuff as much as possible. You know, obviously in my
-   day job, we're mostly targeting, Groupon has, gosh, I don't even know how many millions
-   of downloads at this point, but it's a lot. I think it's over 5 million. And the vast,
-   vast majority of those people are all on stock ROMs. And so we've got our hands full just
-   trying to keep track of all the different devices that are out there already, let alone
-   adding custom ROMs to it. So every once in a while, we'll see bug reports coming in from
-   Cyanogen stuff and we do try to get to those, but we focus more on the stock stuff.
-   And so you've also, I mean, you've obviously been very prolific in the community. What
-   is RoboJuice and what, it's being used by some pretty big name vendors and competitors
-   of Groupon as well.
-   Yeah. Yeah. So basically, so RoboJuice is a dependency injection framework. It's, it's
-   basically an inversion of control container, the IOC container, like you were mentioning
-   earlier. And it came about because of my experience on using Spring on the backend. So basically,
-   if you're familiar with Java development and container-based development, what you'll find
-   is that it used to be everybody was using these things called Entity Beams and EJB3
-   and that kind of stuff. It was a very heavyweight standard that Java and Sun produced in order
-   to do enterprise development.
-   Well, what people realized is that the EJB standards were so convoluted and so difficult
-   to use.
-   Um, the interfaces were just terrible that there came about this competitor called Spring.
-   And Spring, um, I don't know if you want to actually get into what dependency injection
-   is. It's sort of a, an open-ended difficult topic.
-   Yeah, that's, that's a longer conversation. We're more focused on the community and what,
-   what drove us to become involved and take on what we've taken on in the community.
-   Sure, sure. So, so I came over to Android and I realized that all of the nice, clean
-   things that I had developed under using a container like Spring, I wasn't able to bring
-   over to the Android space at all. Java, you know, Android was basically just plain old
-   regular Java. Um, and, uh, it was painful. It hurt.
-   Yeah.
-   It, it was, it was really bad. And so what I started doing when I was working on the
-   TripIt application is I started working on, uh, bringing dependency injection to Android.
-   Um, and I continued that through TripIt and OpenTable and, uh, and into my time here at
-   Groupon as well.
-   Oh, okay. And that's, and that's something that's totally open-source. Anybody can go
-   check it out. If they Google it, they'll find RoboJuice. And, um, and, you know, jumping
-   to the, the book, is that, is that kind of how you came to be involved in writing the
-   application development or was that book before RoboJuice?
-   Yeah, yeah. No, so the book and, uh, RoboJuice happened around the same time.
-   So, the first edition of the book was written by my friend, Don Felker. Um, he is a, an
-   Android consultant and he has, um, a startup that he's working on called Conquer, uh, which
-   is a great sort of multiplayer mobile game. Um, he wrote the original version of the Android
-   application for development, Android application development for Dummies book. Um, and, uh,
-   when it came time to implement the second edition, uh, he asked me if I wanted to take
-   it over because he was working on a bunch of other stuff at the time. And, uh, you know,
-   it sounded great to me. I had some talks with the publishers. They were familiar with my
-   work based on RoboJuice.
-   And, uh, we just took it from there. So, I took over the second edition and, uh, uh,
-   the third edition will probably be me as well.
-   Oh, wow. And, uh, you know, people, I mean, we give, uh, the, the four Dummies a little
-   bit of a, a little bit of a, a hard time.
-   Needle, needle, yeah, exactly.
-   Yeah, yeah. Um, I mean, were, were you hesitant at first or did, because you trusted
-   your, Don, you were just fine with it?
-   No, no. I mean, uh, I mean, I think it's, it
-   makes sense that we give the Dummies, uh, series a, a difficult time. You know, we are
-   basically technical experts in our fields. And we may not be Android experts, but we
-   certainly know our own, you know, uh, are you a Ruby guy or, yeah. So, um, so basically
-   we know that stuff really well. The Dummies series is different. The Dummies series is
-   intended, is, has an audience of people who don't have expertise in a given field. Um,
-   and in fact, they may not have hardly any expertise at all.
-   So, this might be somebody who's just like, hey, I'd like to get into this Android
-   thing.
-   Right, exactly.
-   Not necessarily, I'm a programmer and all, I gotta implement this, this UI in, in, in
-   Android.
-   Right, right, exactly, exactly. So, um, the, the book is great if you're just coming
-   up to speed, if you're just getting introduced to Android. Um, but for people like us who
-   already have a little bit of familiarity and stuff like that, you know, we can, we can
-   get along just fine with, uh, Google and Stack Overflow.
-   Yep.
-   Yeah.
-   So, you're, you're in one of the, you have an interesting kind of, uh, um, credential
-   that you, one of the top, top ten contributors to, what was that, the top ten percent of
-   contributors to the, uh, Java and Android tags on Stack Overflow?
-   Yeah.
-   Yeah, well, I mean, basically that just comes around from asking a whole hell of a lot of
-   questions.
-   Because, uh, I was there early in, uh, in Android development and couldn't figure
-   anything out, so every time I ran into a question, I just posted it to Stack Overflow and it,
-   uh, ended up accumulating.
-   Yeah.
-   Accumulating a lot of points.
-   So nowadays I spend more time answering than, than asking, but.
-   Yeah.
-   Eventually it flips over.
-   Yeah.
-   Yeah.
-   So you, you exposed, um, it's, we had a book, uh, uh, uh, another person who I'd
-   interviewed, uh, Dave Hoover, he had written a book about, um, apprenticeship and learning
-   basically.
-   And one of the things was exposing your ignorance and it's, and it shows how if you're open
-   that you don't know, eventually you will know.
-   Yeah.
-   And eventually you can teach and, and share and bring that knowledge back.
-   And, and, and it all just kind of goes full circle and hakuna matata, the circle of life.
-   Right.
-   Exactly.
-   So.
-   Well, thank you very much for taking the time to sit down with me, Mike.
-   Sure thing.
-   I appreciate it.
-   Thanks.
-   Yeah.
-   I'm, uh, I'm glad we got this chance to talk.
+content: Hi, it's Mike with UGtastic again. I'm sitting down with Mike Burton. Mike
+  is an Android developer over in Palo Alto, and he has done several open source tools.
+  The most popular tool he's created is RoboJuice, which is a dependency. It's an
+  IOC tool. I'll let him explain it. For doing Android development, he's also written
+  a book, The Android Application Development for Dummies. He does a lot of speaking
+  inside of the Android community. Thanks for taking the time to sit down with me,
+  Mike. It's nice to talk with you. Sure, absolutely. It's nice to finally catch up.
+  What led you into Android development? It's kind of a new platform for the last
+  few years. Were you always in mobile? No, actually I wasn't. I was basically a back-end
+  engineer for most of my career. I was doing mostly Spring and Hibernate, and Java-based
+  solutions, using EJBs way, way back and then abandoning that and switching over
+  to Spring, and then eventually moving over to other tiers like Django and Python
+  and doing a little bit of Ruby on Rails. It wasn't until about four years ago, I
+  was working at a little startup up in San Francisco with my friends Mihir and Yishai.
+  I was doing all that work, and we started getting into mobile because the iPhone
+  had been released about a year ago. The Android G1 had just come out, and we thought,
+  "Hmm, well, we don't really know if this G1 thing is going to take off or not, but
+  hey, Mike, you have some Java experience. Why don't you write for us?" So I wrote
+  my first app on there. I ended up focusing entirely on mobile for the past several
+  years. After writing the application and the app for that startup, I also wrote
+  the OpenTable, TripIt, and Digg applications as well as a few other ones, and then
+  came here. Well, actually, the startup got acquired by Groupon, and so I started
+  working on the Groupon application right away and been doing it ever since. But
+  what was it about the Android, though, that hooked you instead of going over to
+  iOS platform? Right, right. Well, I mean, I think one of the really interesting
+  things is we didn't know what direction the Android community was going to go off
+  in, but one thing that really attracted me over the iOS community is that a lot
+  of the tools were open source. So Google basically acquired a startup called Android,
+  and that startup was using a whole bunch of different open source tools to construct
+  their OS platform. So you could already leverage just a ton of your Java-based libraries
+  and things that you're already familiar with. And so I was able to get in there
+  and just start writing code really quickly. And then after I started getting involved
+  in the open source community, I realized that more so than in iOS, there are a lot
+  of people out there contributing to Android, if not directly to the Android platform,
+  then directly to libraries that a lot of Android applications use. And there's a
+  little bit of that on iOS, but I think because, I think Android is a little bit
+  more of a scrappy platform, it's got a few more rough edges, and I think that gives
+  a lot of opportunities for open source people to come in and contribute. Yeah, it
+  doesn't feel too polished, so you can't figure out where you can get a fingernail
+  underneath something and pry it open. Exactly, exactly. Whereas I think Apple, when
+  they have rough edges, they do their best to hide them from you so you can get under
+  the hood. Android, they just expose all that shit and put it away. Yeah, no, that's
+  okay. Do you ever use any of the alternative, like even with Android phones, there's
+  different builds of the, like I run CyanogenMod, I've run, I'm trying to blank on
+  the other one, but it's a Chinese mod. M-I-U-I, M-I-U-I. Oh, I haven't, I'm familiar
+  with it, but I've never tried it. Okay, do you have any, like do you use Cyanogen
+  or do you use stock? No, I try to stay with the stock stuff as much as possible.
+  You know, obviously in my day job, we're mostly targeting, Groupon has, gosh, I
+  don't even know how many millions of downloads at this point, but it's a lot. I
+  think it's over 5 million. And the vast, vast majority of those people are all on
+  stock ROMs. And so we've got our hands full just trying to keep track of all the
+  different devices that are out there already, let alone adding custom ROMs to it.
+  So every once in a while, we'll see bug reports coming in from Cyanogen stuff and
+  we do try to get to those, but we focus more on the stock stuff. And so you've also,
+  I mean, you've obviously been very prolific in the community. What is RoboJuice
+  and what, it's being used by some pretty big name vendors and competitors of Groupon
+  as well. Yeah. Yeah. So basically, so RoboJuice is a dependency injection framework.
+  It's, it's basically an inversion of control container, the IOC container, like
+  you were mentioning earlier. And it came about because of my experience on using
+  Spring on the backend. So basically, if you're familiar with Java development and
+  container-based development, what you'll find is that it used to be everybody was
+  using these things called Entity Beams and EJB3 and that kind of stuff. It was a
+  very heavyweight standard that Java and Sun produced in order to do enterprise development.
+  Well, what people realized is that the EJB standards were so convoluted and so difficult
+  to use. Um, the interfaces were just terrible that there came about this competitor
+  called Spring. And Spring, um, I don't know if you want to actually get into what
+  dependency injection is. It's sort of a, an open-ended difficult topic. Yeah, that's,
+  that's a longer conversation. We're more focused on the community and what, what
+  drove us to become involved and take on what we've taken on in the community. Sure,
+  sure. So, so I came over to Android and I realized that all of the nice, clean things
+  that I had developed under using a container like Spring, I wasn't able to bring
+  over to the Android space at all. Java, you know, Android was basically just plain
+  old regular Java. Um, and, uh, it was painful. It hurt. Yeah. It, it was, it was
+  really bad. And so what I started doing when I was working on the TripIt application
+  is I started working on, uh, bringing dependency injection to Android. Um, and I
+  continued that through TripIt and OpenTable and, uh, and into my time here at Groupon
+  as well. Oh, okay. And that's, and that's something that's totally open-source.
+  Anybody can go check it out. If they Google it, they'll find RoboJuice. And, um,
+  and, you know, jumping to the, the book, is that, is that kind of how you came to
+  be involved in writing the application development or was that book before RoboJuice?
+  Yeah, yeah. No, so the book and, uh, RoboJuice happened around the same time. So,
+  the first edition of the book was written by my friend, Don Felker. Um, he is a,
+  an Android consultant and he has, um, a startup that he's working on called Conquer,
+  uh, which is a great sort of multiplayer mobile game. Um, he wrote the original
+  version of the Android application for development, Android application development
+  for Dummies book. Um, and, uh, when it came time to implement the second edition,
+  uh, he asked me if I wanted to take it over because he was working on a bunch of
+  other stuff at the time. And, uh, you know, it sounded great to me. I had some talks
+  with the publishers. They were familiar with my work based on RoboJuice. And, uh,
+  we just took it from there. So, I took over the second edition and, uh, uh, the
+  third edition will probably be me as well. Oh, wow. And, uh, you know, people, I
+  mean, we give, uh, the, the four Dummies a little bit of a, a little bit of a, a
+  hard time. Needle, needle, yeah, exactly. Yeah, yeah. Um, I mean, were, were you
+  hesitant at first or did, because you trusted your, Don, you were just fine with
+  it? No, no. I mean, uh, I mean, I think it's, it makes sense that we give the Dummies,
+  uh, series a, a difficult time. You know, we are basically technical experts in
+  our fields. And we may not be Android experts, but we certainly know our own, you
+  know, uh, are you a Ruby guy or, yeah. So, um, so basically we know that stuff really
+  well. The Dummies series is different. The Dummies series is intended, is, has an
+  audience of people who don't have expertise in a given field. Um, and in fact, they
+  may not have hardly any expertise at all. So, this might be somebody who's just
+  like, hey, I'd like to get into this Android thing. Right, exactly. Not necessarily,
+  I'm a programmer and all, I gotta implement this, this UI in, in, in Android. Right,
+  right, exactly, exactly. So, um, the, the book is great if you're just coming up
+  to speed, if you're just getting introduced to Android. Um, but for people like
+  us who already have a little bit of familiarity and stuff like that, you know, we
+  can, we can get along just fine with, uh, Google and Stack Overflow. Yep. Yeah.
+  So, you're, you're in one of the, you have an interesting kind of, uh, um, credential
+  that you, one of the top, top ten contributors to, what was that, the top ten percent
+  of contributors to the, uh, Java and Android tags on Stack Overflow? Yeah. Yeah,
+  well, I mean, basically that just comes around from asking a whole hell of a lot
+  of questions. Because, uh, I was there early in, uh, in Android development and
+  couldn't figure anything out, so every time I ran into a question, I just posted
+  it to Stack Overflow and it, uh, ended up accumulating. Yeah. Accumulating a lot
+  of points. So nowadays I spend more time answering than, than asking, but. Yeah.
+  Eventually it flips over. Yeah. Yeah. So you, you exposed, um, it's, we had a book,
+  uh, uh, uh, another person who I'd interviewed, uh, Dave Hoover, he had written
+  a book about, um, apprenticeship and learning basically. And one of the things was
+  exposing your ignorance and it's, and it shows how if you're open that you don't
+  know, eventually you will know. Yeah. And eventually you can teach and, and share
+  and bring that knowledge back. And, and, and it all just kind of goes full circle
+  and hakuna matata, the circle of life. Right. Exactly. So. Well, thank you very
+  much for taking the time to sit down with me, Mike. Sure thing. I appreciate it.
+  Thanks. Yeah. I'm, uh, I'm glad we got this chance to talk.

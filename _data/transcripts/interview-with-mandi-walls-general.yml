@@ -1,105 +1,120 @@
 ---
-content: |-
-  Hi, it's Mike again with UGtastic. I'm sitting down today with Mandy Walls, who's a technical
-   evangelist with Opscode. The Chef people, if you've ever done any kind of building servers
-   or managing using the Chef utility, well, it's Opscode. Hi Mandy, thanks for taking the time
-   to sit down with me today. I kind of just want to ask you straight off, what exactly is
-   a technical evangelist and how do you work with the technical community? Do you run conferences
-   or do you work with people at conferences? Do you speak or how does that work? What is
-   that? So originally our technical evangelist positions were folks who basically help our
-   customers and our would-be customers like understand what Chef does, what it is, how it can help
-   you manage all of your systems. Over time and as Opscode has grown, we're actually now the
-   Opscode's professional services team. So technically I'm really a consultant and I get to travel to
-   our customers as they need help. We do training. I go to conferences representing Opscode. So
-   sometimes like in a booth or at a table, passing out literature, sometimes giving talks about our
-   product. We run our own conference. So that was the other part of your question. We are,
-   Opscode does run a user conference in college, ChefConf. And that's actually this year taking place in
-   April. And so we put that together as a forum for our bigger customers who, well, for anybody really,
-   but as a place for our folks to share things they've learned about Chef and how they're running their
-   infrastructures and things like that. It's been pretty interesting. Yeah. Chef is open source, correct?
-   Absolutely. Yeah. So, so it's, it's, it's an open source platform for managing servers and people
-   and people who are managing, well, it's, it's Linux. It's all Linux if I, or. Actually, uh, we,
-   we support Windows now. Oh, really? So yeah, you can have Windows clients, uh, for different, uh,
-   versions of Windows 2000 server 2003 and eight and Windows seven. And, uh, we also have support for,
-   like commercial Unix's as well. Okay. So you, the, the, uh, uh, I, I just blanked out on the name of the
-   conference that you mentioned. The, uh, ChefConf. ChefConf. Um, yep. So it's ChefConf. Uh, is it all
-   Opscode speakers or do you bring in other? Okay. Uh, no, it's all, it's, we have, uh, an open call for
-   papers actually. So anyone who, uh, uses Chef for, uh, whatever they do, uh, they can send us, uh,
-   submit to our CFP and, uh, come and talk about what they're, what they're doing. Maybe tools they've
-   developed around Chef. Um, some folks at, uh, Etsy in particular write a lot of tools, uh, to do what
-   they do. So they had a talk last year about some of their tools. Um, some of our, uh, other larger
-   customers that are doing sort of interesting things in spaces where open source software is not
-   generally found. So like in financial services and things like that, um, those folks talk last year,
-   we had a talk from Fidelity. Um, we had, uh, cycle computing. They do, um, like bioinformatics,
-   science-y sort of things. Um, so yeah, anybody who does anything with Chef. Okay. So do you,
-   are you involved in, in organizing or doing the reviews for proposals or? Yeah, absolutely. Um,
-   there's, uh, a number of folks, uh, at Opscode involved. Um, a lot of us do the reviews and then
-   there's a group of us that, um, work on, you know, planning the, uh, deciding what kind of other
-   activities to have, you know, uh, are there things we want to focus on, uh, as far as,
-   you know, topics that the community is interested in that maybe we don't have nobody put in the CFP
-   for. Um, so yeah, we have a small committee of, of folks that, that I'm on that are, that do the
-   planning. And then there's a, everybody who is interested really can read this, the, the, the papers
-   and review them as they get submitted. So we get an idea of what everybody thinks is interesting as
-   we all talk to different customers. So, um, knowing what the entire community is interested
-   in learning about is hard for one person to keep track of. Yeah. Yeah. It's, it's hard for one
-   person to be the gatekeeper on that. Absolutely. A couple of weeks ago, we had a, uh, kind of an
-   interesting conversation. Ash Dryden, um, has been trying to gather people together who are interested
-   in increasing, uh, diversity in, in the technical community through conferences and user groups and,
-   and places like that. And you were one of the people that I met on that call. Um, what, what,
-   what made you interested in, in participating in that conversation? And, uh, how does that relate to what,
-   your, the work you're doing with, with, uh, ChefConf? Um, so my interest in that goes back a number of
-   years. Um, for one thing, I've always worked in operations. And when, when we think about diversity
-   in the technical community at large, um, some areas, some niches have better diversity than others.
-   So a couple of times I've been to, to conferences related to maybe database, um, technologies or,
-   uh, programming languages. And the diversity is a lot more broad there than it is when coming from
-   operations. So, um, it was, when I started my career, it was years before I actually met another
-   woman systems administrator. So, um, I kind of got interested in that, um, from that perspective,
-   like it, there, there really isn't that much diversity in operations. It's, it's still very
-   male dominated, which is fine. You know, it's just how things happen, but, um, there are women out
-   there doing it. And, um, so. Well, yeah, operations is, is a, is a unique place in that it, it, it,
-   it has, it may be male dominated, but it's not necessarily even perceived as being a, um, a positive.
-   It, it, it's always got that, uh, awful stereotype of the neck beard hacker. Uh, you know, the Unix,
-   you know, the neck, you know, the bearded Unix old dude who just has been doing this stuff for a
-   million years. Absolutely. Um, but even then it's, it's, it's, it's more diverse. I, I look at our
-   ops team here at Groupon and there's males, females, young, old, but it's, it, it, it is tends to be,
-   to be female. I mean, excuse me, to be male. Um, yes. So, yeah. Sorry. I just drew a blank here on
-   what my point was, but you were, you were saying about the, the, that it tends to not be a very
-   diverse group and you're looking at ways that it has been anything you've done that, uh, like
-   trying to hire in more women or reaching out to, uh, like women's groups, you know, there's some of
-   these, uh, uh, uh, women who code, uh, black girls code, things like that. But is there anything
-   like that for ops operations? Not really. I mean, years ago, um, when I was first getting
-   started, so the Linux chicks were around and I actually picked my, my moniker before I even knew
-   they existed. Um, so I go by, by Linux chick, but, um, they were an organization that was sort
-   of formed to, to help, uh, women learn Linux in particular. Um, sisters is another group, um,
-   that is sort of, uh, technology agnostic and that there's, uh, women from all different, um,
-   portions of the technology spectrum there, including academics, which is a little interesting.
-   Um, is that sisters as in like S Y S? Yeah. Okay. So like system sisters. Okay. Yeah. Yeah.
-   And, uh, that's, uh, supported by the Anita Borg Institute and that's been a really good
-   group as well. But as far as I know, I don't, I, I haven't come across any, like, um,
-   sort of the, there's the groups like that are coming up now, like the women who code and girl
-   development and things like that, that are focused on operations. And, and part of that maybe is that
-   it's, it's hard to teach operations. And, and we, as a, as a portion of the, the industry are struggling
-   with that right now. Like how do we distill the things we know in a productive way to help the next
-   generation of operations people? Um, and, and maybe when we get some of that figured out, like it's,
-   it's one thing, you know, you've got like 35, 40 years of pedagogy for, you know, teaching software
-   development and, and even though the methods have slightly changed and the languages are a little
-   bit different, you're still building, you have notable building blocks and how you teach software
-   engineering. Um, on the operation side, like what do you start with? Like, okay, here's how you log
-   into a system, but then you can go an infinite number of directions and we haven't really put that
-   together yet. So there's some cool stuff like op school and some other things coming up that, um,
-   I'm really watching to see if there's going to be something there that we could use, uh, in a
-   similar vein as outreach, as, you know, education for the next generation, um, putting something
-   together that's, uh, a, in a comfortable environment for, for girls and women who are maybe intimidated by
-   technology, um, or don't really know enough about it to even make a decision. Um, so yeah, I'm very
-   interested in following a lot of that stuff. Um, the girls who code stuff and, and all those, uh,
-   RailsBridge, pi ladies, um, all those groups are, are really doing some really great things.
-   Yeah. So you, you, so to wrap up, you mentioned that there was two groups that aren't directly related
-   to ops, but there's the Linux chicks that people can check out and the sisters as in system, uh,
-   S Y S stirs. Um, and you said those are focused on learning
-   Linux and, and, and the fundamentals of, of getting involved and starting there.
-   Yeah. The Linux chicks, uh, uh, definitely are, are Linux specific sisters is just basically for
-   as long as you stay on technology topic in some way. Um, we, there's good threads about, you know,
-   interviewing and work-life balance and all kinds of stuff for technologists. It's really good.
-   Oh, cool. Well, thank you for taking the time to sit down with me today.
-   Absolutely. Thanks for inviting me.
-   Thank you.
+content: Hi, it's Mike again with UGtastic. I'm sitting down today with Mandy Walls,
+  who's a technical evangelist with Opscode. The Chef people, if you've ever done
+  any kind of building servers or managing using the Chef utility, well, it's Opscode.
+  Hi Mandy, thanks for taking the time to sit down with me today. I kind of just want
+  to ask you straight off, what exactly is a technical evangelist and how do you work
+  with the technical community? Do you run conferences or do you work with people
+  at conferences? Do you speak or how does that work? What is that? So originally
+  our technical evangelist positions were folks who basically help our customers and
+  our would-be customers like understand what Chef does, what it is, how it can help
+  you manage all of your systems. Over time and as Opscode has grown, we're actually
+  now the Opscode's professional services team. So technically I'm really a consultant
+  and I get to travel to our customers as they need help. We do training. I go to
+  conferences representing Opscode. So sometimes like in a booth or at a table, passing
+  out literature, sometimes giving talks about our product. We run our own conference.
+  So that was the other part of your question. We are, Opscode does run a user conference
+  in college, ChefConf. And that's actually this year taking place in April. And so
+  we put that together as a forum for our bigger customers who, well, for anybody
+  really, but as a place for our folks to share things they've learned about Chef
+  and how they're running their infrastructures and things like that. It's been pretty
+  interesting. Yeah. Chef is open source, correct? Absolutely. Yeah. So, so it's,
+  it's, it's an open source platform for managing servers and people and people who
+  are managing, well, it's, it's Linux. It's all Linux if I, or. Actually, uh, we,
+  we support Windows now. Oh, really? So yeah, you can have Windows clients, uh, for
+  different, uh, versions of Windows 2000 server 2003 and eight and Windows seven.
+  And, uh, we also have support for, like commercial Unix's as well. Okay. So you,
+  the, the, uh, uh, I, I just blanked out on the name of the conference that you mentioned.
+  The, uh, ChefConf. ChefConf. Um, yep. So it's ChefConf. Uh, is it all Opscode speakers
+  or do you bring in other? Okay. Uh, no, it's all, it's, we have, uh, an open call
+  for papers actually. So anyone who, uh, uses Chef for, uh, whatever they do, uh,
+  they can send us, uh, submit to our CFP and, uh, come and talk about what they're,
+  what they're doing. Maybe tools they've developed around Chef. Um, some folks at,
+  uh, Etsy in particular write a lot of tools, uh, to do what they do. So they had
+  a talk last year about some of their tools. Um, some of our, uh, other larger customers
+  that are doing sort of interesting things in spaces where open source software is
+  not generally found. So like in financial services and things like that, um, those
+  folks talk last year, we had a talk from Fidelity. Um, we had, uh, cycle computing.
+  They do, um, like bioinformatics, science-y sort of things. Um, so yeah, anybody
+  who does anything with Chef. Okay. So do you, are you involved in, in organizing
+  or doing the reviews for proposals or? Yeah, absolutely. Um, there's, uh, a number
+  of folks, uh, at Opscode involved. Um, a lot of us do the reviews and then there's
+  a group of us that, um, work on, you know, planning the, uh, deciding what kind
+  of other activities to have, you know, uh, are there things we want to focus on,
+  uh, as far as, you know, topics that the community is interested in that maybe we
+  don't have nobody put in the CFP for. Um, so yeah, we have a small committee of,
+  of folks that, that I'm on that are, that do the planning. And then there's a, everybody
+  who is interested really can read this, the, the, the papers and review them as
+  they get submitted. So we get an idea of what everybody thinks is interesting as
+  we all talk to different customers. So, um, knowing what the entire community is
+  interested in learning about is hard for one person to keep track of. Yeah. Yeah.
+  It's, it's hard for one person to be the gatekeeper on that. Absolutely. A couple
+  of weeks ago, we had a, uh, kind of an interesting conversation. Ash Dryden, um,
+  has been trying to gather people together who are interested in increasing, uh,
+  diversity in, in the technical community through conferences and user groups and,
+  and places like that. And you were one of the people that I met on that call. Um,
+  what, what, what made you interested in, in participating in that conversation?
+  And, uh, how does that relate to what, your, the work you're doing with, with, uh,
+  ChefConf? Um, so my interest in that goes back a number of years. Um, for one thing,
+  I've always worked in operations. And when, when we think about diversity in the
+  technical community at large, um, some areas, some niches have better diversity
+  than others. So a couple of times I've been to, to conferences related to maybe
+  database, um, technologies or, uh, programming languages. And the diversity is a
+  lot more broad there than it is when coming from operations. So, um, it was, when
+  I started my career, it was years before I actually met another woman systems administrator.
+  So, um, I kind of got interested in that, um, from that perspective, like it, there,
+  there really isn't that much diversity in operations. It's, it's still very male
+  dominated, which is fine. You know, it's just how things happen, but, um, there
+  are women out there doing it. And, um, so. Well, yeah, operations is, is a, is a
+  unique place in that it, it, it, it has, it may be male dominated, but it's not
+  necessarily even perceived as being a, um, a positive. It, it, it's always got that,
+  uh, awful stereotype of the neck beard hacker. Uh, you know, the Unix, you know,
+  the neck, you know, the bearded Unix old dude who just has been doing this stuff
+  for a million years. Absolutely. Um, but even then it's, it's, it's, it's more diverse.
+  I, I look at our ops team here at Groupon and there's males, females, young, old,
+  but it's, it, it, it is tends to be, to be female. I mean, excuse me, to be male.
+  Um, yes. So, yeah. Sorry. I just drew a blank here on what my point was, but you
+  were, you were saying about the, the, that it tends to not be a very diverse group
+  and you're looking at ways that it has been anything you've done that, uh, like
+  trying to hire in more women or reaching out to, uh, like women's groups, you know,
+  there's some of these, uh, uh, uh, women who code, uh, black girls code, things
+  like that. But is there anything like that for ops operations? Not really. I mean,
+  years ago, um, when I was first getting started, so the Linux chicks were around
+  and I actually picked my, my moniker before I even knew they existed. Um, so I go
+  by, by Linux chick, but, um, they were an organization that was sort of formed to,
+  to help, uh, women learn Linux in particular. Um, sisters is another group, um,
+  that is sort of, uh, technology agnostic and that there's, uh, women from all different,
+  um, portions of the technology spectrum there, including academics, which is a little
+  interesting. Um, is that sisters as in like S Y S? Yeah. Okay. So like system sisters.
+  Okay. Yeah. Yeah. And, uh, that's, uh, supported by the Anita Borg Institute and
+  that's been a really good group as well. But as far as I know, I don't, I, I haven't
+  come across any, like, um, sort of the, there's the groups like that are coming
+  up now, like the women who code and girl development and things like that, that
+  are focused on operations. And, and part of that maybe is that it's, it's hard to
+  teach operations. And, and we, as a, as a portion of the, the industry are struggling
+  with that right now. Like how do we distill the things we know in a productive way
+  to help the next generation of operations people? Um, and, and maybe when we get
+  some of that figured out, like it's, it's one thing, you know, you've got like 35,
+  40 years of pedagogy for, you know, teaching software development and, and even
+  though the methods have slightly changed and the languages are a little bit different,
+  you're still building, you have notable building blocks and how you teach software
+  engineering. Um, on the operation side, like what do you start with? Like, okay,
+  here's how you log into a system, but then you can go an infinite number of directions
+  and we haven't really put that together yet. So there's some cool stuff like op
+  school and some other things coming up that, um, I'm really watching to see if there's
+  going to be something there that we could use, uh, in a similar vein as outreach,
+  as, you know, education for the next generation, um, putting something together
+  that's, uh, a, in a comfortable environment for, for girls and women who are maybe
+  intimidated by technology, um, or don't really know enough about it to even make
+  a decision. Um, so yeah, I'm very interested in following a lot of that stuff. Um,
+  the girls who code stuff and, and all those, uh, RailsBridge, pi ladies, um, all
+  those groups are, are really doing some really great things. Yeah. So you, you,
+  so to wrap up, you mentioned that there was two groups that aren't directly related
+  to ops, but there's the Linux chicks that people can check out and the sisters as
+  in system, uh, S Y S stirs. Um, and you said those are focused on learning Linux
+  and, and, and the fundamentals of, of getting involved and starting there. Yeah.
+  The Linux chicks, uh, uh, definitely are, are Linux specific sisters is just basically
+  for as long as you stay on technology topic in some way. Um, we, there's good threads
+  about, you know, interviewing and work-life balance and all kinds of stuff for technologists.
+  It's really good. Oh, cool. Well, thank you for taking the time to sit down with
+  me today. Absolutely. Thanks for inviting me. Thank you.

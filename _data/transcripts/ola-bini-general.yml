@@ -1,197 +1,205 @@
 ---
-content: |-
-  Hi, it's Mike again with UGtastic. I'm still here today at the GoToComp Chicago 2013. Right now I'm
-   sitting down with Ola Beeney. Ola has been kind of a prolific committer to open source and most,
-   probably I'm assuming most dear to your heart, is your own language, Aoki. Well, first thank you for
-   sitting down with me to talk. And what is Aoki and why did you create it? So Aoki is a programming
-   language. It's an experiment first and foremost. I decided to create it because I was at the point
-   in my language interest because I've been part of the JRuby project for many years and before
-   that I was part of another language implementation on the JVM. And for a long time I've been kind of
-   searching for the right language on the right platform.
-   And JRuby was a good step in the right direction. But Ruby as a language still didn't have everything
-   I wanted a language to have. And I wasn't really sure. I was looking around. I was learning a lot
-   of languages, teaching myself most of the languages out there to some degree or another and trying to
-   find something that suited me. And at some point I just gave up and decided to, okay, I'm just going
-   to try creating something myself and see where that ends up. Just explicitly experimenting, making it a
-   laboratory for me.
-   For things instead of something that is supposed to be useful. So I went in with it expecting
-   it to be slow, expecting it to not necessarily have all the features that a general purpose language
-   really has to have. And it's played out really well. I've had a maximum of 10 users. People are poking
-   on it, testing it, and doing fun stuff with it. But it's more of an inspiration to people more than
-   anything else. And I've done a lot of crazy stuff that I quite like in it. It is a dog slow. It's not
-   useful for real purpose things.
-   I think at this point it was probably 6 or 7 years ago since I started creating it. But that was kind of where it started out.
-   So it is a language that is based on the JVM. That was on purpose because I wanted to bootstrap based on all the existing
-   stuff that was available on the platform. The GC, the libraries, all that stuff that makes it so much easier to do stuff
-   without having to build it all from scratch. I started with a design that is very similar to a language called IO.
-   It's a small embedded language that runs in C. It's written in C. IO has a very different standard library.
-   The core library and the core implementations are quite different. Fundamentally at the lowest level, Ioke and Ioken do very similar things.
-   But everything on top of the core message sending routines are quite different. And specifically Ioke has a lot of inspiration from Lisp.
-   When it comes to thinking around macros. And also uses a lot of small talk thinking when it comes to first or higher order concepts.
-   Having first class versions of everything in the system and so on.
-   Well, with the expressiveness of, because I read a little bit about the Wikipedia page. I haven't tried Ioke yet. But what I understand is that where Lisp had to make certain
-   tradeoffs to become performance and usable, you're not making those tradeoffs in favor of strict adherence to what your design principles are.
-   But I have to wonder, is there certain problems that you could solve with Ioke that, while they might not be fast, maybe can be more...
-   Is there something that you can do with Ioke that you could easily do with another language, even Lisp?
-   Yeah, I mean, I think that modeling some kinds of things are actually really powerful in Ioke.
-   So let me just talk quickly about, so the basic language features that makes Ioke different from Lisp is really that it is a prototype-based, object-oriented language at the core of the language.
-   And that is really visible all through the whole thing. It embraces mutability at every level, so everything in the system is available at runtime in the system.
-   A small example, and this is something that makes it very easy to do domain-specific languages in Ioke, is that you actually have access to the parsing table.
-   And you can modify the parsing tables at runtime. Fundamentally, Ioke syntax is a very simple prefix engine, but it does something that I call operator shuffling, where you really fundamentally can change the precedence of different operators.
-   You can add new operators, you can strip away and have no operator whatsoever. But at the end of the day, they will all compile down, they will all parse and shuffle down into a canonical language.
-   And that canonical AST at runtime is available also at runtime. In fact, every time you call a method, that is represented as a first-class message that you have access to if you want to.
-   And if you call a method, that method can have access to the outside context of where it's called at runtime, which means that, in fact, since the AST is mutable at runtime, you can have methods that can reach back into the point where they were called.
-   And modify the code at that point if you want to. So you can have macros that have effects outside of the inside of the macro if you want to, for example.
-   I'm going to have to go back and re-watch this for you a couple times.
-   The reason I was so going to laugh is because, obviously, you're somebody who's extremely comfortable with dealing with multiple languages and have really delved into how languages even work.
-   And in your talk, you talk that you use about seven to eight languages in the cancer research problem.
-   I just want to go back to a young Ola who was in school. How did you get involved? Where did the language bug bite you?
-   That's a very hard question. So I started programming when I was seven years old.
-   That was basic on an Apple IIc. I started writing small games and stuff like that.
-   And then I very quickly went through C, C++, and Assembler.
-   So in Scandinavia, there was something called the demo scene that grew out of the games pirating.
-   I don't know if you remember, in the '80s and '90s where you got a pirated game, you usually had an intro to the game where the pirating group kind of did a presentation showing how cool and elite they were.
-   And then the real game started.
-   And those kind of intros, they kind of cropped off and took off separately from the pirating movement and became kind of a scene by itself where people were trying to impress each other, come up with really impressive graphical things that did...
-   I mean, it's almost like small movies doing programming.
-   And I was deeply involved in that movement.
-   There were things like doing the coolest presentation you can do in 64 kilobytes of space, for example.
-   So I did graphics programming.
-   And in order to learn, I mean, you have to use C or C++ for the top-level stuff.
-   You had to use Assembler for the graphic routines.
-   You had to be able to understand Pascal as well because half of the tutorials and stuff like that was in Pascal and half of it was in C.
-   So in order to learn all the techniques, you had to switch back and forth.
-   All the 3D engines were written in C++, so you had to get into that.
-   And at some point, I don't know, I became very...
-   used to switching between those.
-   And then I branched out.
-   I found Lisp.
-   And then I...
-   Yeah, it just branched out.
-   And then I did Java for a few years in a corporate setting or actually not a corporate, in a university setting.
-   But I worked for the IT department and did Java development for them.
-   And I realized that I was very unhappy with the capabilities of these languages.
-   So I started branching out.
-   This was probably when I was 19, 20.
-   I started learning more and more languages just to find something better because I was so dissatisfied with the...
-   with the capabilities of the existing languages, with the way the code grow like crazy, with the limited abstraction capabilities and so on.
-   So because you were exposed to so many languages at a young age and the hard internals...
-   I suspect so.
-   Yeah, because the other thing that I...
-   I have a strong belief in the power of programming languages to help us manage complex problems.
-   I think that's really important.
-   But I also believe that the best programs out there are the ones who understand them.
-   The ones who understand the whole machine, the whole stack, has a full system level understanding.
-   So that when you use a really high level feature, you know what the cost is.
-   And you know when to use it and when not to use it.
-   You know when you can just ignore it completely and just focus on the high level stuff.
-   And you know when you actually have to think about it.
-   So do you think that maybe there's a...
-   I just have to wonder now since so much of our languages are really high abstraction languages, they really hide a lot of all of that internals.
-   There's a negative trend as kids are learning those really high abstraction languages and they're not seeing so many internals.
-   Is there maybe a danger in that?
-   Well, I mean, okay.
-   So let me first make one point.
-   And that is I don't actually believe that our languages are that high level right now.
-   I mean, a language like Java, for example, is very low level.
-   And that still was used for most of the...
-   C# and Java are really like still the major programming languages.
-   And they are not high level.
-   And one of the problems with them is that they don't hide enough of the machine.
-   They're this kind of weird mix of trying to be high level in one area and then showing their paddies in the other one.
-   I think it's more of what I was...
-   Not so much that I'm dealing with registers and interrupts and things like that.
-   But that dealing with really moving memory from here to here and then jumping in.
-   Making it really low level and having to think in this very...
-   Concrete, low level.
-   Like with Java, I'm just going to say I'm going to call a collection.
-   And I'm going to iterate over it.
-   And I'm not thinking about what that iteration is really doing.
-   That it's moving...
-   And incidentally, I mean, that whole approach in Java 8 is going to change.
-   Because then you have to stop thinking about it as iterating.
-   Because iterating is actually...
-   It's too tied to the implementation pattern.
-   And maybe iterating, like actually going from the next pointer is going to be the wrong approach when you're using lambdas and streams in Java 8.
-   Instead.
-   But I think, going back to your original question, I think that the main problem is not so much that our high level languages are hiding this stuff.
-   I think that the way we are teaching new programmers how to deal with things at different levels should change.
-   I think that we are de-emphasizing things too much.
-   I actually believe it's good that people learn a lot of different languages.
-   But that we don't have the choice to use the language at the right abstraction level for what we need to do.
-   But I feel still that we are missing...
-   We have all this low level stuff and then up to a specific point.
-   But then we are actually missing this really, really high level stuff that will allow us to manage much more of the complexity than what we're doing today.
-   And I think that a lot of today's focus on functional programming is actually misdirected.
-   It's misdirected unhappiness with the fact that we don't have other high level mechanisms right now.
-   It makes me kind of think about Dan North's talk about dogma.
-   It sounds like before we can't have procedural programming, you have to have object oriented.
-   And now everybody is dogmatic about doing object oriented.
-   Now the new dogma is well if you're not doing functional you're not cool.
-   That's true.
-   And it's kind of funny coming off a project where I've used the functional language for the last year as the main language.
-   It's like I'm still not a functional...
-   I mean I don't think functional is going to solve anything.
-   I think functional is a useful tool just like all the other tools.
-   The reason I used Clojure was not because it's functional, it's because it's a LISP.
-   And those two things are not actually the same thing.
-   You can use a LISP for macros and data structure for example without really caring about the fact that it's functional.
-   And the other way around.
-   Okay.
-   And as you...
-   I'm going to just jump over to the JRuby project.
-   Now the Clojure...
-   I'm struggling for the question I want to ask but it's on the tip of my tongue.
-   You've worked on LISP and you've worked on really understanding how the JVM works.
-   How did you get involved with working on the...
-   with JRuby?
-   Because it seems like Ruby and the LISP community seem to have a very different approach to designing software.
-   You're obviously comfortable in moving between multiple languages.
-   But when you look at the two, the Clojure community and the JRuby community, what really differences do you see there?
-   Not just the languages themselves but the users and the community around them.
-   That's an interesting question.
-   I mean, I think there is a lot of things in common.
-   Especially if you take away just the JRuby community.
-   Not the whole Ruby community but the JRuby community.
-   I actually think that there are more things in common between the JRuby and Clojure community than anything else.
-   I mean, you can see that many of the companies and people that were big on using JRuby and Ruby...
-   like Relevance, for example, have actually kind of gone into using Clojure for a lot of what they're doing.
-   But they're not giving up on JRuby.
-   They're just using it for some parts of the system.
-   I think what I'm seeing, the most thing that I see in common is actually that the people who are doing this are the people who are pragmatic.
-   They're the ones who build real world, complicated systems where they actually need the benefit of something like Clojure for leverage.
-   But running on the JVM is a pragmatic choice.
-   And using JRuby for other purposes.
-   I think that's another part where, I mean, JRuby still has a lot of benefits when it comes to libraries, I would say.
-   Because, like, or even frameworks, like Rails is a good example.
-   Actually, I don't use Rails that much anymore, but you still have lightweight libraries like Synada.
-   You still have really lightweight, simple ways of dealing, slicing and dicing data and stuff like that.
-   And using the right tool for the job, I mean, that seems to be what unifies the JRuby and the Clojure people to a large degree.
-   Well, thank you very much for taking the time to stand with me.
-   I really appreciate it.
-   Thank you.
-   Thanks.
-   And just a last kind of final wrap-up question is, if somebody's looking at, interested in digging into Yoki and trying to understand it and using it to better understand languages, where should they start?
-   Well, you can definitely start with the guide.
-   It's a fairly complete guide.
-   The source code is not that large, and a lot of it is actually written in Yoki itself.
-   I think one of the more interesting aspects of Yoki was that I wrote the whole thing TDD.
-   So there is a complete test code base that covers the whole language.
-   So when I created the .NET version of Yoki, I just let the tests actually guide the whole implementation.
-   So it was very easy to make a port of it to C# and F#.
-   So looking at the tests, looking at the internal implementation is actually, I mean, it's not a big project by itself.
-   So I think that should be easy.
-   Since I don't do a lot of fancy stuff in order to make it really fast, the code is not as impenetrable as some other language implementations can be.
-   Like, JRuby has fantastic source code.
-   It's beautifully written, but it is written with more than an I2 performance, and that sometimes you have to read a lot to understand the things that make it necessary to do things a specific way, for example.
-   So is there a website, Yoki?
-   Yeah, Yoki.org.
-   Yoki.org.
-   Okay.
-   So go check out Yoki.org and try to expand your language horizons.
-   Thanks again.
-   Thank you.
-   Okay, great.
-   Thank you very much.
-   I really appreciate it.
-   Yeah.
+content: Hi, it's Mike again with UGtastic. I'm still here today at the GoToComp Chicago
+  2013. Right now I'm sitting down with Ola Beanie. Ola has been kind of a prolific
+  committer to open source and most, probably, I'm assuming most dear to your heart
+  is your own language, Aoki. Well first, thank you for sitting down with me to talk
+  and what is Aoki and why did you create it? So, Aoki is a programming language.
+  It's an experiment first and foremost. I decided to create it because I was at the
+  point in my language interest because I've been part of the JRuby project for many
+  years and before that I was part of another language implementation on the JVM and
+  for a long time I've been kind of searching for the right language on the right
+  platform. And JRuby was a good step in the right direction, but Ruby as a language
+  still didn't have everything I wanted a language to have and I wasn't really sure.
+  I was looking around, I was learning a lot of other languages, teaching myself most
+  of the languages out there to some degree or another and trying to find something
+  that suited me. And at some point, I just gave up and decided to, okay, I'm just
+  going to try creating something myself and see where that ends up. Just explicitly
+  experimenting, making it a laboratory for things instead of something that is supposed
+  to be useful. So, I went in with it expecting it to be slow, expecting it to not
+  necessarily have all the features that a general purpose language really has to
+  have. And it's played out really well. I've had a maximum of 10 users. People are
+  poking on it, testing it and doing fun stuff with it, but it's more of an inspiration
+  to people more than anything else. And I've done a lot of crazy stuff that I quite
+  like in it. It has a dog slow, it's not useful for real purpose things. I think
+  at this point, it was probably six or seven years ago since I started creating it.
+  But that was kind of where it started out. So, it is a language that is based on
+  the JVM. Okay. That was on purpose because I wanted to bootstrap based on all the
+  existing stuff that was available on the platform. The GC, the libraries, all that
+  stuff that makes it so much easier to do stuff without having to build it all from
+  scratch. I started with a design that is very similar to a language called IO. Okay.
+  That is a small embedded language that runs in C, is written in C. IO has a very
+  different standard library. And that's the core library and the core implementations
+  are quite different. Fundamentally, at the lowest level, IO can do very similar
+  things, but everything on top of the core message sending routines are quite different.
+  And specifically, IO has a lot of inspiration from Lisp when it comes to thinking
+  around macros and also uses a lot of small talk thinking when it comes to first
+  or higher order concepts, having first class versions of everything in the system
+  and so on. Well, if it's, there's a, with the, the expressiveness of, because I
+  read a little bit about the Wikipedia page, I haven't tried IO yet, but it's, what
+  I understand is that you, where Lisp had to make certain trade-offs to become performance
+  and usable, you're not making those trade-offs in favor of strict adherence to what
+  your design principles are. But I have to wonder, is there certain problems that
+  you could solve with IO key that while they might not be fast, maybe can be more,
+  is there something that you can do with IO key that you could easily do with another
+  language, even all this? Yeah, I mean, I think that modeling some kinds of things
+  are actually really powerful and IO key. And so let me just talk quickly about,
+  so the basic language features that makes IO key different from a list was really
+  that it is a prototype based object oriented language at the core of the language.
+  And that, that is really visible through the whole thing. It embraces mutability
+  at every level. So everything in the system is available at runtime in the system.
+  A small example, and this is something that makes it very easy to do domain specific
+  languages in IO key, is that you actually have access to the parsing tables and
+  you can modify the parsing tables at runtime. Fundamentally IO key syntax is a very
+  simple prefix engine, but it does something that I call operator shuffling, where
+  you really fundamentally can change the reorder, the precedence of different operators,
+  you can add new operators, you can strip away and have no operator whatsoever. But
+  at the end of the day, they will all compile down, they will all parse and shuffle
+  down into a canonical AST. And that canonical AST at runtime is available also at
+  runtime. In fact, every time you call a method that is represented as a first class
+  message that you have access to if you want to. And that you, if you call a method,
+  that method can have access to the outside context of where it's called at runtime,
+  which means that in fact, since the AST is mutable at runtime, you can have methods
+  that can reach back into the point where they were called and modify the code at
+  that point, if you want it. So you can have macros that have effects outside of
+  the inside of the macro, if you want to, for example. I'm going to have to go back
+  and rewatch this for you a couple times. Which I was, I was, I was laughing because
+  it, what, the reason I was starting to laugh is because I, I, obviously, uh, you're
+  somebody who's extremely comfortable with dealing with multiple languages and have
+  really delved into how languages even work. Um, in, in your talk, you talk that,
+  that you use about seven to eight languages in the, uh, in the, uh, in the, uh,
+  uh, the, the cancer research problem. I, I just want to go back to like a young
+  Ola who, who was in school. Uh, how did you get involved in like, how did, where
+  did the language bug bite you? That's a very hard question. Um, because, so I started
+  programming when I was seven years old. Um, that was basic on an Apple IIc. I, I
+  started writing small games and stuff like that at that point. And then, uh, I very
+  quickly went through C, C++, was an assembler because I, I would, uh, so in Scandinavia,
+  there was this, um, there's something called the demo scene, uh, that grew out of,
+  uh, the pirating, uh, the games pirating, where, I, I don't know if you remember,
+  uh, in the eighties and nineties, where you, where you got a pirated game, you usually
+  had an intro to the game where the pirating group, they kind of did a presentation
+  of showing how cool and elite they were. And then the real game started right now,
+  those kinds of intros, they kind of, um, they kind of cropped off and took off separately
+  from the pirating movement and became kind of a scene by itself where people were
+  trying to impress each other, come up with really impressive graphical things that
+  did, uh, I mean, it's almost like small, small movies doing, uh, doing programming.
+  And I was deeply involved in that movement. There were things like, uh, doing the
+  coolest, uh, presentation you can do in 64 kilobytes of space, for example. So I
+  did graphics programming and, and in order to learn, I would, I mean, you have to
+  use C or C++ for the up level, top level stuff. You had to use assembler for the
+  graphic routines. You had to be able to understand Pascal as well, because half
+  of the tutorials and stuff like that was in Pascal and half of it was in C. So in
+  order to learn all the techniques, you had to switch back and forth, um, all the
+  C, all the, all the 3D engines were written in C++. So you had to get into that.
+  And at that, at some point, um, I don't know, I became very used to switching between
+  those. And then I branched out, I found Lisp and then I, yeah, it just branched
+  out. And then, um, I did Java for a few years, uh, in a corporate setting, or actually
+  not a corporate, in a university setting. Um, but I, I worked for the IT department
+  and the Java development for them. And I, I realized that I was very unhappy with
+  the capabilities of these languages. So I started branching out. This was probably
+  when I was 19, 20, I started learning more and more languages just to find something
+  better because I was so dissatisfied with the, um, with the capabilities of the
+  existing languages, with the way, the way the code grow like crazy, uh, with the
+  limited abstraction capabilities, and so on. So because you were exposed to so many
+  languages at a young age and, and the hard internals. I suspect so. Yeah. Because
+  the other thing that I, I, I have a strong belief in the power of programming languages
+  to help us manage complex problems. I think that's really important, but I also
+  believe that the best programs out there are the ones who understand the whole machine,
+  the whole stack has a full system level understanding so that when you use a really
+  high level feature, you know what the cost is, and you know when to use it and when
+  not to use it. You know when you can just ignore it completely and just focus on
+  the high level stuff and you know when you actually have to think about it. So do
+  you think there maybe there's, uh, uh, an, I just have to wonder now since so much
+  of our languages are really high abstraction languages, they really hide a lot of
+  all of that internals. Do you think that maybe there's, there's a negative trend
+  as kids are learning those really high abstraction languages and they're not seeing
+  so many internals? Is there maybe a danger in that? Well, I mean, okay, so let me
+  first make one point and that is I don't actually believe that our languages are
+  that high level right now. I, I mean, a language like Java for example is very low
+  level and that still was used for most of the C and C sharp and Java are really
+  like still the major programming languages and they are not high level. Uh, in fact,
+  one of the problems with them is that they don't hide enough of the machine. They're
+  this kind of weird mix of, uh, trying to be high level in one area and then showing
+  their paddies in the other one. That's, uh, I think it's more of what I was, not
+  so much that I'm dealing with registers and, and interrupts and things like that,
+  but that's dealing with really, really moving memory from here to here and then
+  jumping and making it, um, making really low level and having to think in this very,
+  um, concrete low level. Like with Java, I'm just going to say I'm going to call
+  a collection and I'm going to iterate over it and I'm not thinking about what that
+  iteration is really doing, um, you know, that it's, it's moving. And incidentally,
+  I mean, that, that whole approach in Java 8 is going to change because then you
+  have to stop thinking about it as iterating because iterating is actually, it's
+  too tied to the implementation pattern and maybe iterating like actually going from
+  the exporter is going to be the wrong approach when you're using lambdas and streams
+  in Java 8 instead. But I, I think going back to your original question, uh, I think
+  that the main problem is not so much that our high level languages are hiding this
+  stuff. I think that, uh, the way we are teaching, uh, new programmers how to deal
+  with things at different levels should change. I think that we are de-emphasizing
+  things too much. Um, I, I actually believe it's good that people learn a lot of
+  different languages, but that we then have the choice to use the language at the
+  right abstraction level for what we need to do. But I feel still that we are missing.
+  We have all this low level stuff and then up to a specific point, but then we are
+  actually missing this really, really high level stuff that will allow us to manage
+  much more of the complexity than, than what we're doing today. And I think that
+  a lot of the, today's focus on functional programming is actually misdirected. Um,
+  it, it's misdirected, uh, unhappiness with the fact that we don't have other high
+  level mechanisms right now. It, it makes me kind of think about, uh, Dan North's
+  talk about dogma, and it sounds like, um, you know, before we had, we can't have
+  procedural programming. You have to have object oriented and now everybody's dogmatic
+  about doing an object. Now it's the new dogma is, well, if you're not doing functional,
+  you're not cool, but you know, that's true. It's, and, and it's kind of funny coming
+  off a project that where I've used a functional language for their last year as
+  the main language. It's like, I'm still not a functional, uh, I, I mean, I don't
+  think a functional is going to solve anything. I think some functional is a useful
+  tool just like all the other tools, but the reason we use closure was not because
+  it's functional, it's because it's a lisp, and those two things are not actually
+  the same thing. Uh, you can use a lisp, uh, for macros and data structure, for example,
+  without really caring about the fact that it's functional and the other way around.
+  Okay. And is, is you, I'm going to just jump over to the, to the jRuby project.
+  Now, um, the closure, I'm struggling for the question I want to ask, but I, it's
+  on the tip of my tongue, but you, you've, you've worked on lisp and you've worked,
+  uh, uh, you know, I'm really understanding how the JVM works. How did you get involved
+  with working on the, um, with jRuby? Because it seems like Ruby and, and, and the
+  lisp community seem to have a very different approach to designing software. You
+  know, do you, you're obviously comfortable in moving between multiple languages,
+  but when you look at the two, the closure community and the jRuby community, what,
+  what really differences do you see there in, in not just, not just the languages
+  themselves, but the users and the community around that? Hmm. That's an interesting
+  question. I mean, I think, um, I think there is a lot of things in common, especially
+  if you take away just the JRuby community and not just, not the whole Ruby community,
+  but the JRuby community. I actually think that there are more things in common between
+  the JRuby and closure community than anything else. And I mean, you can see that
+  many of the companies and people that were big on using JRuby and Ruby, like relevance,
+  for example, have actually kind of gone into using closure for a lot of what they're
+  doing, but they're not giving up on JRuby. They're just using it for some parts
+  of the system. I think what I'm seeing that the most thing that I see in common
+  is actually that these, the people who are doing this are the people who are pragmatic.
+  They're the ones who build real world, complicated systems where they actually need
+  the benefit of something like closure for, for leverage, but, um, running on the
+  JVM is a pragmatic choice and using JRuby for other parts where, I mean, JRuby still
+  has a lot of benefits when it comes to libraries, I would say because, um, like,
+  or even frameworks like, uh, Rails is a good example. I actually, I don't use Rails
+  that much anymore, but, uh, you still have lightweight, uh, libraries like Sinatra.
+  You still have really lightweight, simple ways of dealing, slicing and dicing data
+  and stuff like that. And, um, and using the right tool for the job. I mean, that
+  seems to be what unifies the JRuby and the closure people to a large degree. Okay.
+  Well, thank you very much for taking the time to stomp me. I really appreciate it.
+  Thank you. Thanks. And, uh, just a, uh, uh, last kind of final wrap-up question
+  is if somebody's looking at, uh, interested in digging into Ioki and, and trying
+  to understand and using it to better understand languages, where, where should they
+  start? Well, you can, you can definitely start with the guide. It's a fairly complete
+  guide. Uh, the source code is not that large and a lot of it is actually written
+  in Ioki itself. Um, I think one of the more interesting aspects of Ioki was that,
+  uh, I wrote the whole thing, uh, TDD. So there is a complete, uh, test, uh, code
+  base that, that covers the whole language. So when I created the .NET version of
+  Ioki, I just let the tests actually guide the whole implementation. So it was very
+  easy to make a port of it to, to C sharp, uh, and F sharp. Um, so looking at the
+  tests, looking at the, uh, the internal implementation is actually, I mean, it's
+  not a big project by itself. So I think that should be easy since I don't do a lot
+  of fancy stuff in order to make it really fast. The code is not as impenetrable
+  as, as some other language implementations can be. Like, JRuby has fantastic source
+  code. It's beautifully written, but it is written with more than an IOT performance
+  and that's sometimes, uh, you have to read a lot to understand the, the things that,
+  uh, make it necessary to do things a specific way, for example. Okay. Awesome. But
+  is there, is there a website Ioki? Yeah, Ioki.org. Ioki.org. Yeah. Okay. So go check
+  out Ioki.org and then, and try to expand your, uh, your language horizons. Thanks
+  again. Thank you. Okay. Great. Thank you very much. I really appreciate it. Yeah.

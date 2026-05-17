@@ -1,928 +1,175 @@
 ---
-content: |-
-  Hi, it's Mike again with UGtastic. I'm sitting down today with Charles Nutter. You might know him as Hedius on Twitter and his blog.
-   And you might also know him as the leader of the JRuby project. Hi Charles, thanks for taking the time to sit down.
-   So you run the JRuby project. Maybe we could start from the origins.
-   You know, it's a big project that spans the globe and it has a lot of impact for individual developers and big corporations.
-   How did JRuby get started? Well, JRuby itself started in about 2001.
-   A guy named Jan Arne Pedersen and a couple other folks wanted to see if they could at least come up with a Ruby parser.
-   And once they managed to port the parser over using a Java equivalent device,
-   they figured, okay, well, we've got a parser, we can probably do a Ruby implementation as well.
-   And the project kind of worked its way along for a few years, got some basic things working.
-   In around 2002 or 2003, Tom Ennebo, the other co-leader of the project, started working on it.
-   And various other Ruby folks have appeared in the commit logs over the years.
-   I actually came to the project in about 2001.
-   In about 2004, I went to the RubyConf that year, which was in Reston.
-   It was only about 65 people back then.
-   And I only was there because someone recommended the language to me.
-   I'd never actually seen it before.
-   But being a Java guy, I wanted to see if there might be a JRuby project of some kind out there.
-   And it turned out there was.
-   And Tom, a friend of mine who I'd worked with at the university years before, was currently running it.
-   So that's kind of where I got started on it.
-   So you said you were doing Java before, and then you learned about this JRuby thing.
-   Was it kind of a thing by the time you had started?
-   You said there was a conference.
-   Yeah, it was really RubyConf that kind of got me into it.
-   The thing that I realized was that Ruby, the language, was pretty much the first time I'd been to a conference
-   for a language I didn't know.
-   And I recognized all the code.
-   I was able to understand all the examples.
-   And it drew me in.
-   I thought that this would be a great language to learn and play with.
-   But the only way I was ever going to be able to do that as a Java guy or as a Java lead developer
-   was to find a way to run it on the JVM.
-   And so you just immediately jumped in and started using it or committing to it?
-   Or did you try to use it and find things that it didn't do that you needed?
-   And you started contributing that way?
-   Well, I played around with it first a little bit just to try out some Ruby examples.
-   I quickly realized that there were things that I could do with regular Ruby that I couldn't do with JRuby.
-   Even trivial, basic things like at the time, IRB didn't work.
-   Rake didn't work.
-   Standard tools and commands that you would run on a standard Ruby implementation didn't run.
-   And so I was interested in trying to contribute and help out with the project.
-   Okay, so you started from where a lot of people start.
-   There's this thing out there, you like it, but it doesn't do X, Y, and Z.
-   And you started to fix that.
-   That's right.
-   Actually, you might need to edit this.
-   I've got a baby monitor that's very loud at the moment.
-   It's okay.
-   From where we left off, it sounds like you came to JRuby the same way a lot of people come to.
-   A lot of people come to open source projects that you start using it and it doesn't do X, Y, and Z.
-   So you start to fix that and implement it yourself.
-   And I guess you must have really fallen in love with it at that point.
-   Yeah, well, I never actually thought that I'd be interested in implementing a language.
-   But it turned out that there were so many interesting problems to solve that needed to be done.
-   And I thought the potential of Ruby on the JVM was huge.
-   To be able to use a nicer language, to be able to fall into Java libraries, to have access to all the Ruby world.
-   It's been a labor of love for the past seven or eight years now.
-   And I'd actually worked previously on another open source project called LightStep.
-   Again, a project that had kind of gotten quiet, not a lot of people working on it.
-   But I was interested in it.
-   It was a replacement for the Windows Explorer desktop.
-   There were a number of those back in the late '90s.
-   That people were working on.
-   And I kind of got involved the same way there.
-   I wanted the project to move forward.
-   I wanted to be able to use it and do more with it.
-   And the code base needed a lot of work.
-   So it seems like one of my favorite projects is to jump into an open source project and start cleaning it up.
-   And make it work a little better.
-   And so how did it end up with you being into a leadership position on the project then?
-   How did that evolve?
-   I guess I wouldn't officially have been considered a co-lead for at least a couple years.
-   In 2005 I started getting into the code base a little bit more.
-   Trying to figure out how we could speed it up.
-   Did several rewrites of the interpreter.
-   Started doing some profiling looking for the areas that were the slowest in JRuby.
-   And then into 2006 we started really working in earnest on getting all the standard Ruby libraries to work.
-   IRB, Rake, RubyGems.
-   Started drawing in other folks to work on it.
-   And probably about that point that it kind of became apparent that I was putting in a lot of time.
-   And I was as much in charge or as much invested in the project as Tom.
-   So we kind of decided that we'd be co-leads from then on out.
-   Okay, cool.
-   Jumping fast forwarding to now.
-   There seems to be a lot of concern with the refinements issue.
-   And you've expressed a lot of concerns over that.
-   Or at least well retweeted and reblogged concerns.
-   It's kind of an interesting predicament that you're in.
-   Having created this, or excuse me, working on this project that is tightly coupled to another implementation.
-   And when it changes in order to maintain compatibility within the language.
-   You also have to change.
-   How do you reconcile that?
-   If it gets to be so onerous to implement these changes.
-   I don't know obviously what the actual details are.
-   But if it gets to be so onerous.
-   Are there plans maybe to even fork off JRuby and have it be its own dialect in the future?
-   Right.
-   Yeah, as a compatibility project.
-   Which is essentially what we are.
-   We're just by and large trying to mimic the standard implementation of Ruby.
-   We are beholden to them as far as new features that come in.
-   Things that we need to add.
-   Or things that we need to update.
-   So there's been a constant catch up.
-   I mean we're always slightly behind them.
-   As far as getting new features in.
-   Getting fixes in.
-   The big change that we had.
-   The big work that we had over the past few years.
-   Was catching up with Ruby 1.9 support.
-   Which was a massive number of changes.
-   Especially regarding string encodings.
-   And to some extent some threading details.
-   But we feel like we're kind of at the point now where.
-   By the time Ruby 2.0 comes out.
-   Which is supposed to be February sometime.
-   We will be in a position to maybe do a release soon after that.
-   That has all the same features.
-   Having caught up with the big milestone of 1.9.
-   Changes in 2.0 aren't too bad.
-   The other issue is.
-   If we have problems with the features.
-   Or if there's an implementation challenge.
-   That comes along with them.
-   As there were.
-   As there are for some aspects of refinements.
-   There's been a lot of talk about the Ruby design process lately.
-   Or potentially lack thereof.
-   But for the most part.
-   We've seen that if we raise issues.
-   About specific features.
-   Or aspects of those features.
-   To the Ruby core folks.
-   And to Motts himself.
-   They've been very receptive.
-   To make improvements.
-   Make changes.
-   They also want to be able to optimize.
-   The C implementation of Ruby into the future.
-   We are kind of ahead of the curve.
-   As far as optimizing Ruby.
-   And we know what challenges they might run into.
-   So they've actually been very receptive.
-   When we say.
-   This aspect of this feature is very difficult to optimize.
-   Or you're going to run into trouble down the road.
-   So for the most part.
-   It's been a very.
-   Communicative.
-   Relationship.
-   With the Ruby core folks.
-   They understand that.
-   We have our own challenges.
-   Implementing Ruby.
-   And that we've met some challenges.
-   That they might have in the future.
-   Has there been any.
-   Talk though.
-   Of.
-   Actually.
-   I'm not.
-   I'm not going to go down that path.
-   I was going to.
-   I'm going to ask instead.
-   With.
-   With regards to.
-   The future of JRuby.
-   I'm going to.
-   I'm going to.
-   I'm not.
-   I'm not going to go down that path.
-   I was going to.
-   I'm going to ask.
-   Instead.
-   With.
-   With regards to.
-   The future of JRuby.
-   Sorry.
-   I was going to ask a question about.
-   Forking off the language.
-   Again.
-   But.
-   That's.
-   I'm going to edit this.
-   Sorry.
-   Sorry.
-   I just.
-   I was going to ask a question.
-   About.
-   Forking off the language.
-   But.
-   Instead.
-   I'm going to.
-   I'm going to focus back on.
-   On the community.
-   So.
-   So when you were talking about.
-   Working with.
-   Matz.
-   On.
-   On.
-   The.
-   The.
-   Community.
-   And.
-   The.
-   Community.
-   On.
-   Trying to.
-   Make sure.
-   And.
-   That they know.
-   Some of the things.
-   That you've already experienced.
-   So that way.
-   When they're making their optimizations.
-   It'll also be a little bit easier.
-   For.
-   For JRuby.
-   To implement those as well.
-   And also avoid.
-   Some of those same.
-   Pitfalls.
-   Inside of CRuby.
-   It was kind of funny.
-   When you were talking about.
-   The process.
-   That.
-   The Ruby team.
-   Goes through.
-   The other day.
-   I was listening to.
-   Ruby Rogues.
-   With Aaron Patterson.
-   And he was comparing.
-   The Rails.
-   Release process.
-   To the Ruby.
-   Core process.
-   For releasing.
-   And.
-   He was saying.
-   That the Rails.
-   Process.
-   Is so loosey goosey.
-   Compared to the Ruby.
-   And it sounds like.
-   You're saying.
-   That.
-   From your experience.
-   The Ruby.
-   Seems.
-   Process.
-   Seems to be a little bit.
-   Something to be desired.
-   In a way.
-   Decisions are made.
-   Is.
-   Is that inaccurate?
-   There is.
-   A process.
-   There is a fairly clear process.
-   That.
-   The.
-   Ruby.
-   Core.
-   Folks.
-   Are bound up.
-   With.
-   Bug fixes.
-   That are really.
-   CRuby.
-   Specific.
-   So.
-   For.
-   Other implementers.
-   Trying to track.
-   What's actually.
-   Going on.
-   As far as.
-   Feature design.
-   New features.
-   Specification changes.
-   We have to.
-   Sort through.
-   All of the.
-   MRI.
-   Seg faults.
-   Or memory leaks.
-   Or whatever else.
-   Which are the bulk of.
-   Traffic.
-   On the.
-   Ruby.
-   Core.
-   Mailing list.
-   There is a process.
-   But it's kind of.
-   Buried within.
-   MRI's.
-   Day to day.
-   Development process.
-   Takes a little bit of work.
-   To sort that out.
-   And we're actually.
-   Going to.
-   Try and work with.
-   Aaron.
-   And some of the other.
-   Ruby.
-   Core.
-   Folks.
-   To.
-   Separate.
-   What.
-   The parts of the process.
-   That are.
-   Interesting.
-   To other.
-   Implementations.
-   Away from.
-   What's.
-   Specific.
-   To.
-   MRI's.
-   There.
-   Are.
-   A few.
-   English.
-   Speaking.
-   Folks.
-   In the.
-   Ruby.
-   Development.
-   Ruby.
-   Implementation.
-   Community.
-   Like.
-   Aaron.
-   That.
-   Do.
-   Know.
-   Some.
-   Japanese.
-   And it.
-   Definitely.
-   Greases.
-   The.
-   Wheels.
-   Of.
-   Talking.
-   About.
-   Issues.
-   But.
-   The.
-   English.
-   Ruby.
-   Core.
-   List.
-   In.
-   English.
-   There.
-   Are.
-   Japanese.
-   Folks.
-   Who.
-   Are.
-   Not.
-   As.
-   Strong.
-   In.
-   English.
-   And.
-   Sometimes.
-   We.
-   Have.
-   To.
-   Sort.
-   That.
-   Out.
-   Or.
-   That.
-   Don't.
-   Think.
-   Of.
-   Us.
-   But.
-   We.
-   Have.
-   A.
-   Lot.
-   To.
-   Work.
-   With.
-   The.
-   Community.
-   And.
-   We.
-   Have.
-   Lots.
-   Of.
-   People.
-   That.
-   You.
-   Have.
-   To.
-   Work.
-   With.
-   Our.
-   Community.
-   We.
-   Have.
-   Some.
-   Kind.
-   Of.
-   Some.
-   Sort.
-   Of.
-   JVM.
-   Expert.
-   And.
-   So.
-   I.
-   Am.
-   Keeping.
-   Track.
-   Of.
-   Dynamic.
-   Especially.
-   For.
-   J.
-   Ruby.
-   And.
-   Dynamic.
-   Languages.
-   Who.
-   Is.
-   Using.
-   Those.
-   Features.
-   Upcoming.
-   That.
-   Settles.
-   Down.
-   As.
-   We.
-   Get.
-   A.
-   Couple.
-   Maintenance.
-   Releases.
-   Out.
-   That.
-   I.
-   Or.
-   We.
-   May.
-   Turn.
-   Our.
-   Tensions.
-   To.
-   Helping.
-   Do.
-   Some.
-   Of.
-   The.
-   Same.
-   Things.
-   For.
-   Other.
-   In.
-   This.
-   That.
-   You.
-   Have.
-   To.
-   Deal.
-   With.
-   Because.
-   Like.
-   J.
-   Ruby.
-   Is.
-   An.
-   Implementation.
-   Or.
-   A.
-   You.
-   Said.
-   It.
-   Was.
-   An.
-   Implementation.
-   Language.
-   Of.
-   That.
-   Was.
-   Based.
-   On.
-   You.
-   Supported.
-   Yeah.
-   I've.
-   I was.
-   Skeptical.
-   At.
-   The.
-   Beginning.
-   Like.
-   Most.
-   People.
-   When.
-   Oracle.
-   Took.
-   Over.
-   Sun.
-   But.
-   Cautiously.
-   Optimistic.
-   I.
-   Knew.
-   That.
-   There.
-   Was.
-   A.
-   Large.
-   Very.
-   Open.
-   Source.
-   Oracle.
-   And.
-   Actually.
-   A.
-   Lot.
-   Of.
-   Issues.
-   Under.
-   Sun.
-   Have.
-   Been.
-   Cleaned.
-   Up.
-   We've.
-   Been.
-   Very.
-   Happy.
-   With.
-   The.
-   Direction.
-   That.
-   Oracle's.
-   Taken.
-   With.
-   Open.
-   JDK.
-   At.
-   Least.
-   As.
-   They.
-   Want.
-   To.
-   Make.
-   Changes.
-   At.
-   The.
-   JVM.
-   Level.
-   For.
-   Languages.
-   Like.
-   Javascript.
-   Okay.
-   Prioritized.
-   All.
-   Languages.
-   Perhaps.
-   Even.
-   More.
-   Than.
-   Sunday.
-   Oh.
-   Wow.
-   So.
-   Yeah.
-   So.
-   The.
-   Future.
-   How.
-   Involved.
-   With.
-   With.
-   Organizing.
-   The.
-   J.
-   Ruby.
-   Com.
-   For.
-   You.
-   Or.
-   Mostly.
-   Do.
-   You.
-   Go.
-   And.
-   Speak.
-   And.
-   Hang.
-   Out.
-   I've.
-   Been.
-   Pretty.
-   Hands.
-   Off.
-   It's.
-   Organizing.
-   Real.
-   Or.
-   You.
-   Know.
-   Range.
-   Or.
-   Help.
-   Decide.
-   On.
-   Arrangements.
-   Places.
-   We.
-   Want.
-   To.
-   Do.
-   The.
-   Talks.
-   Or.
-   Where.
-   We.
-   Want.
-   To.
-   Do.
-   The.
-   Conference.
-   So.
-   On.
-   But.
-   For.
-   The.
-   Most.
-   Now.
-   When.
-   You.
-   Go.
-   And.
-   Presents.
-   How.
-   Do.
-   You.
-   How.
-   Do.
-   You.
-   Prepare.
-   For.
-   A.
-   Presentation.
-   Do.
-   You.
-   Mostly.
-   Go.
-   And.
-   Work.
-   And.
-   Say.
-   Okay.
-   This.
-   Is.
-   What.
-   Usually.
-   What.
-   I'm.
-   Doing.
-   Is.
-   Trying.
-   To.
-   Figure.
-   Out.
-   The.
-   Audience.
-   Which.
-   Makes.
-   It.
-   Easier.
-   If.
-   I.
-   Haven't.
-   Prepared.
-   The.
-   Slides.
-   Already.
-   Figure.
-   Out.
-   The.
-   Audience.
-   What.
-   They.
-   Would.
-   Be.
-   More.
-   Interested.
-   In.
-   Running.
-   And.
-   So.
-   In.
-   You're.
-   Also.
-   Spanning.
-   Two.
-   Communities.
-   The.
-   Java.
-   Community.
-   Which.
-   Has.
-   Its.
-   Own.
-   Kind.
-   Of.
-   Style.
-   For.
-   Conferences.
-   And.
-   Groups.
-   And.
-   Community.
-   We.
-   Have.
-   To.
-   Do.
-   Anything.
-   Different.
-   Though.
-   When.
-   You're.
-   Going.
-   To.
-   Presents.
-   At.
-   A.
-   Java.
-   Community.
-   Or.
-   Events.
-   Or.
-   Versus.
-   A.
-   Ruby.
-   Is.
-   There.
-   Any.
-   Like.
-   Discernible.
-   Difference.
-   Between.
-   New.
-   Way.
-   To.
-   Scale.
-   Their.
-   App.
-   Or.
-   A.
-   New.
-   Way.
-   To.
-   Implement.
-   Some.
-   Service.
-   But.
-   They're.
-   They're.
-   Looking.
-   For.
-   Change.
-   They're.
-   Looking.
-   For.
-   Something.
-   Different.
-   Than.
-   What.
-   They've.
-   Done.
-   You.
-   Ever.
-   Been.
-   That's.
-   The.
-   Thing.
-   We.
-   Go.
-   And.
-   Talk.
-   To.
-   A.
-   Java.
-   Conference.
-   The.
-   Challenge.
-   For.
-   Us.
-   Is.
-   Showing.
-   How.
-   You.
-   Can.
-   Build.
-   Your.
-   Apps.
-   Quicker.
-   Using.
-   Ruby.
-   To.
-   Make.
-   Your.
-   Ruby.
-   Applications.
-   Better.
-   Faster.
-   More.
-   Fun.
-   And.
-   So.
-   On.
-   So.
-   Completely.
-   Different.
-   Approaches.
-   And.
-   We.
-   Do.
-   Have.
-   Very.
-   Different.
-   Decks.
-   Of.
-   Slides.
-   That.
-   We.
-   Use.
-   For.
-   All.
-   Of.
-   Us.
-   Well.
-   We.
-   Do.
-   Have.
-   Some.
-   Articles.
-   On.
-   The.
-   Wiki.
-   That.
-   Talk.
-   About.
-   How.
-   J.
-   Ruby.
-   Is.
-   Structured.
-   Internally.
-   The.
-   Basic.
-   Design.
-   Some.
-   Articles.
-   On.
-   Specific.
-   Subsystems.
-   How.
-   To.
-   Contribute.
-   How.
-   To.
-   Get.
-   Involved.
-   In.
-   It's.
-   It's.
-   A.
-   Large.
-   Project.
-   But.
-   It.
-   Is.
-   Fairly.
-   Well.
-   Broken.
-   Down.
-   Into.
-   Subsystems.
-   So.
-   Because.
-   I'm.
-   Using.
-   Compilers.
-   This.
-   Section.
-   They.
-   Could.
-   Use.
-   Some.
-   Cleanup.
-   It's.
-   How.
-   I've.
-   Gotten.
-   Into.
-   Other.
-   Projects.
-   Including.
-   Lightstep.
-   Is.
-   Basically.
-   Just.
-   Doing.
-   Some.
-   Cleanup.
+content: Hi, it's Mike again with UGtastic. I'm sitting down today with Charles Nutter.
+  You might know him as Hedius on Twitter and his blog. And you might also know him
+  as the leader of the JRuby project. Hi Charles, thanks for taking the time to sit
+  down. So you run the JRuby project. Maybe we could start from the origins. You know,
+  it's a big project that spans the globe and it has a lot of impact for individual
+  developers and big corporations. How did JRuby get started? Well, JRuby itself started
+  in about 2001. A guy named Jan Arne Pedersen and a couple other folks wanted to
+  see if they could at least come up with a Ruby parser. And once they managed to
+  port the parser over using a Java equivalent device, they figured, okay, well, we've
+  got a parser, we can probably do a Ruby implementation as well. And the project
+  kind of worked its way along for a few years, got some basic things working. In
+  around 2002 or 2003, Tom Ennebo, the other co-leader of the project, started working
+  on it. And various other Ruby folks have appeared in the commit logs over the years.
+  I actually came to the project in about 2001. In about 2004, I went to the RubyConf
+  that year, which was in Reston. It was only about 65 people back then. And I only
+  was there because someone recommended the language to me. I'd never actually seen
+  it before. But being a Java guy, I wanted to see if there might be a JRuby project
+  of some kind out there. And it turned out there was. And Tom, a friend of mine who
+  I'd worked with at the university years before, was currently running it. So that's
+  kind of where I got started on it. So you said you were doing Java before, and then
+  you learned about this JRuby thing. Was it kind of a thing by the time you had started?
+  You said there was a conference. Yeah, it was really RubyConf that kind of got me
+  into it. The thing that I realized was that Ruby, the language, was pretty much
+  the first time I'd been to a conference for a language I didn't know. And I recognized
+  all the code. I was able to understand all the examples. And it drew me in. I thought
+  that this would be a great language to learn and play with. But the only way I was
+  ever going to be able to do that as a Java guy or as a Java lead developer was to
+  find a way to run it on the JVM. And so you just immediately jumped in and started
+  using it or committing to it? Or did you try to use it and find things that it didn't
+  do that you needed? And you started contributing that way? Well, I played around
+  with it first a little bit just to try out some Ruby examples. I quickly realized
+  that there were things that I could do with regular Ruby that I couldn't do with
+  JRuby. Even trivial, basic things like at the time, IRB didn't work. Rake didn't
+  work. Standard tools and commands that you would run on a standard Ruby implementation
+  didn't run. And so I was interested in trying to contribute and help out with the
+  project. Okay, so you started from where a lot of people start. There's this thing
+  out there, you like it, but it doesn't do X, Y, and Z. And you started to fix that.
+  That's right. Actually, you might need to edit this. I've got a baby monitor that's
+  very loud at the moment. It's okay. From where we left off, it sounds like you came
+  to JRuby the same way a lot of people come to. A lot of people come to open source
+  projects that you start using it and it doesn't do X, Y, and Z. So you start to
+  fix that and implement it yourself. And I guess you must have really fallen in love
+  with it at that point. Yeah, well, I never actually thought that I'd be interested
+  in implementing a language. But it turned out that there were so many interesting
+  problems to solve that needed to be done. And I thought the potential of Ruby on
+  the JVM was huge. To be able to use a nicer language, to be able to fall into Java
+  libraries, to have access to all the Ruby world. It's been a labor of love for the
+  past seven or eight years now. And I'd actually worked previously on another open
+  source project called LightStep. Again, a project that had kind of gotten quiet,
+  not a lot of people working on it. But I was interested in it. It was a replacement
+  for the Windows Explorer desktop. There were a number of those back in the late
+  '90s. That people were working on. And I kind of got involved the same way there.
+  I wanted the project to move forward. I wanted to be able to use it and do more
+  with it. And the code base needed a lot of work. So it seems like one of my favorite
+  projects is to jump into an open source project and start cleaning it up. And make
+  it work a little better. And so how did it end up with you being into a leadership
+  position on the project then? How did that evolve? I guess I wouldn't officially
+  have been considered a co-lead for at least a couple years. In 2005 I started getting
+  into the code base a little bit more. Trying to figure out how we could speed it
+  up. Did several rewrites of the interpreter. Started doing some profiling looking
+  for the areas that were the slowest in JRuby. And then into 2006 we started really
+  working in earnest on getting all the standard Ruby libraries to work. IRB, Rake,
+  RubyGems. Started drawing in other folks to work on it. And probably about that
+  point that it kind of became apparent that I was putting in a lot of time. And I
+  was as much in charge or as much invested in the project as Tom. So we kind of decided
+  that we'd be co-leads from then on out. Okay, cool. Jumping fast forwarding to now.
+  There seems to be a lot of concern with the refinements issue. And you've expressed
+  a lot of concerns over that. Or at least well retweeted and reblogged concerns.
+  It's kind of an interesting predicament that you're in. Having created this, or
+  excuse me, working on this project that is tightly coupled to another implementation.
+  And when it changes in order to maintain compatibility within the language. You
+  also have to change. How do you reconcile that? If it gets to be so onerous to implement
+  these changes. I don't know obviously what the actual details are. But if it gets
+  to be so onerous. Are there plans maybe to even fork off JRuby and have it be its
+  own dialect in the future? Right. Yeah, as a compatibility project. Which is essentially
+  what we are. We're just by and large trying to mimic the standard implementation
+  of Ruby. We are beholden to them as far as new features that come in. Things that
+  we need to add. Or things that we need to update. So there's been a constant catch
+  up. I mean we're always slightly behind them. As far as getting new features in.
+  Getting fixes in. The big change that we had. The big work that we had over the
+  past few years. Was catching up with Ruby 1.9 support. Which was a massive number
+  of changes. Especially regarding string encodings. And to some extent some threading
+  details. But we feel like we're kind of at the point now where. By the time Ruby
+  2.0 comes out. Which is supposed to be February sometime. We will be in a position
+  to maybe do a release soon after that. That has all the same features. Having caught
+  up with the big milestone of 1.9. Changes in 2.0 aren't too bad. The other issue
+  is. If we have problems with the features. Or if there's an implementation challenge.
+  That comes along with them. As there were. As there are for some aspects of refinements.
+  There's been a lot of talk about the Ruby design process lately. Or potentially
+  lack thereof. But for the most part. We've seen that if we raise issues. About specific
+  features. Or aspects of those features. To the Ruby core folks. And to Motts himself.
+  They've been very receptive. To make improvements. Make changes. They also want
+  to be able to optimize. The C implementation of Ruby into the future. We are kind
+  of ahead of the curve. As far as optimizing Ruby. And we know what challenges they
+  might run into. So they've actually been very receptive. When we say. This aspect
+  of this feature is very difficult to optimize. Or you're going to run into trouble
+  down the road. So for the most part. It's been a very. Communicative. Relationship.
+  With the Ruby core folks. They understand that. We have our own challenges. Implementing
+  Ruby. And that we've met some challenges. That they might have in the future. Has
+  there been any. Talk though. Of. Actually. I'm not. I'm not going to go down that
+  path. I was going to. I'm going to ask instead. With. With regards to. The future
+  of JRuby. I'm going to. I'm going to. I'm not. I'm not going to go down that path.
+  I was going to. I'm going to ask. Instead. With. With regards to. The future of
+  JRuby. Sorry. I was going to ask a question about. Forking off the language. Again.
+  But. That's. I'm going to edit this. Sorry. Sorry. I just. I was going to ask a
+  question. About. Forking off the language. But. Instead. I'm going to. I'm going
+  to focus back on. On the community. So. So when you were talking about. Working
+  with. Matz. On. On. The. The. Community. And. The. Community. On. Trying to. Make
+  sure. And. That they know. Some of the things. That you've already experienced.
+  So that way. When they're making their optimizations. It'll also be a little bit
+  easier. For. For JRuby. To implement those as well. And also avoid. Some of those
+  same. Pitfalls. Inside of CRuby. It was kind of funny. When you were talking about.
+  The process. That. The Ruby team. Goes through. The other day. I was listening to.
+  Ruby Rogues. With Aaron Patterson. And he was comparing. The Rails. Release process.
+  To the Ruby. Core process. For releasing. And. He was saying. That the Rails. Process.
+  Is so loosey goosey. Compared to the Ruby. And it sounds like. You're saying. That.
+  From your experience. The Ruby. Seems. Process. Seems to be a little bit. Something
+  to be desired. In a way. Decisions are made. Is. Is that inaccurate? There is. A
+  process. There is a fairly clear process. That. The. Ruby. Core. Folks. Are bound
+  up. With. Bug fixes. That are really. CRuby. Specific. So. For. Other implementers.
+  Trying to track. What's actually. Going on. As far as. Feature design. New features.
+  Specification changes. We have to. Sort through. All of the. MRI. Seg faults. Or
+  memory leaks. Or whatever else. Which are the bulk of. Traffic. On the. Ruby. Core.
+  Mailing list. There is a process. But it's kind of. Buried within. MRI's. Day to
+  day. Development process. Takes a little bit of work. To sort that out. And we're
+  actually. Going to. Try and work with. Aaron. And some of the other. Ruby. Core.
+  Folks. To. Separate. What. The parts of the process. That are. Interesting. To other.
+  Implementations. Away from. What's. Specific. To. MRI's. There. Are. A few. English.
+  Speaking. Folks. In the. Ruby. Development. Ruby. Implementation. Community. Like.
+  Aaron. That. Do. Know. Some. Japanese. And it. Definitely. Greases. The. Wheels.
+  Of. Talking. About. Issues. But. The. English. Ruby. Core. List. In. English. There.
+  Are. Japanese. Folks. Who. Are. Not. As. Strong. In. English. And. Sometimes. We.
+  Have. To. Sort. That. Out. Or. That. Don't. Think. Of. Us. But. We. Have. A. Lot.
+  To. Work. With. The. Community. And. We. Have. Lots. Of. People. That. You. Have.
+  To. Work. With. Our. Community. We. Have. Some. Kind. Of. Some. Sort. Of. JVM. Expert.
+  And. So. I. Am. Keeping. Track. Of. Dynamic. Especially. For. J. Ruby. And. Dynamic.
+  Languages. Who. Is. Using. Those. Features. Upcoming. That. Settles. Down. As. We.
+  Get. A. Couple. Maintenance. Releases. Out. That. I. Or. We. May. Turn. Our. Tensions.
+  To. Helping. Do. Some. Of. The. Same. Things. For. Other. In. This. That. You. Have.
+  To. Deal. With. Because. Like. J. Ruby. Is. An. Implementation. Or. A. You. Said.
+  It. Was. An. Implementation. Language. Of. That. Was. Based. On. You. Supported.
+  Yeah. I've. I was. Skeptical. At. The. Beginning. Like. Most. People. When. Oracle.
+  Took. Over. Sun. But. Cautiously. Optimistic. I. Knew. That. There. Was. A. Large.
+  Very. Open. Source. Oracle. And. Actually. A. Lot. Of. Issues. Under. Sun. Have.
+  Been. Cleaned. Up. We've. Been. Very. Happy. With. The. Direction. That. Oracle's.
+  Taken. With. Open. JDK. At. Least. As. They. Want. To. Make. Changes. At. The. JVM.
+  Level. For. Languages. Like. Javascript. Okay. Prioritized. All. Languages. Perhaps.
+  Even. More. Than. Sunday. Oh. Wow. So. Yeah. So. The. Future. How. Involved. With.
+  With. Organizing. The. J. Ruby. Com. For. You. Or. Mostly. Do. You. Go. And. Speak.
+  And. Hang. Out. I've. Been. Pretty. Hands. Off. It's. Organizing. Real. Or. You.
+  Know. Range. Or. Help. Decide. On. Arrangements. Places. We. Want. To. Do. The.
+  Talks. Or. Where. We. Want. To. Do. The. Conference. So. On. But. For. The. Most.
+  Now. When. You. Go. And. Presents. How. Do. You. How. Do. You. Prepare. For. A.
+  Presentation. Do. You. Mostly. Go. And. Work. And. Say. Okay. This. Is. What. Usually.
+  What. I'm. Doing. Is. Trying. To. Figure. Out. The. Audience. Which. Makes. It.
+  Easier. If. I. Haven't. Prepared. The. Slides. Already. Figure. Out. The. Audience.
+  What. They. Would. Be. More. Interested. In. Running. And. So. In. You're. Also.
+  Spanning. Two. Communities. The. Java. Community. Which. Has. Its. Own. Kind. Of.
+  Style. For. Conferences. And. Groups. And. Community. We. Have. To. Do. Anything.
+  Different. Though. When. You're. Going. To. Presents. At. A. Java. Community. Or.
+  Events. Or. Versus. A. Ruby. Is. There. Any. Like. Discernible. Difference. Between.
+  New. Way. To. Scale. Their. App. Or. A. New. Way. To. Implement. Some. Service.
+  But. They're. They're. Looking. For. Change. They're. Looking. For. Something. Different.
+  Than. What. They've. Done. You. Ever. Been. That's. The. Thing. We. Go. And. Talk.
+  To. A. Java. Conference. The. Challenge. For. Us. Is. Showing. How. You. Can. Build.
+  Your. Apps. Quicker. Using. Ruby. To. Make. Your. Ruby. Applications. Better. Faster.
+  More. Fun. And. So. On. So. Completely. Different. Approaches. And. We. Do. Have.
+  Very. Different. Decks. Of. Slides. That. We. Use. For. All. Of. Us. Well. We. Do.
+  Have. Some. Articles. On. The. Wiki. That. Talk. About. How. J. Ruby. Is. Structured.
+  Internally. The. Basic. Design. Some. Articles. On. Specific. Subsystems. How. To.
+  Contribute. How. To. Get. Involved. In. It's. It's. A. Large. Project. But. It.
+  Is. Fairly. Well. Broken. Down. Into. Subsystems. So. Because. I'm. Using. Compilers.
+  This. Section. They. Could. Use. Some. Cleanup. It's. How. I've. Gotten. Into. Other.
+  Projects. Including. Lightstep. Is. Basically. Just. Doing. Some. Cleanup.
