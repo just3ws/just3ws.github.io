@@ -94,7 +94,7 @@ module Generators
               transcript = YAML.safe_load(path.read, permitted_classes: [Date, Time], aliases: true)
               if !transcript.is_a?(Hash)
                 report[:invalid_files] << { asset_id: id, transcript_id: t_id, path: path.to_s, error: "Not a Hash" }
-              elsif transcript["content"].to_s.strip.empty?
+              elsif (transcript["content"].to_s.strip.empty?) && (transcript["turns"].nil? || transcript["turns"].empty?)
                 report[:missing_content] << { asset_id: id, transcript_id: t_id, path: path.to_s }
               end
             rescue => e
