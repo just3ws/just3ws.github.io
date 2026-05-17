@@ -21,7 +21,7 @@ def validate_collection(items, contract_class, label)
     next if result.success?
 
     result.errors.to_h.each do |field, messages|
-      errors << "#{label} [#{id}] field '#{field}': #{messages.join(', ')}"
+      errors << "#{label} [#{id}] field '#{field}': #{Array(messages).join(', ')}"
     end
   end
   errors
