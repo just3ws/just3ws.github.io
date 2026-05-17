@@ -9,15 +9,16 @@ speaker_map:
 turns:
 - speaker: M1
   text: |-
-    Hi, it's Mike again with UGtastic. I'm still here today at the GoToComp Chicago 2013.
-
-    Right now I'm sitting down with Ola Beanie. Ola has been kind of a prolific committer to
+    Hi, it's Mike again with UGtastic. I'm still here today at the GoToComp Chicago 2013. Right now I'm sitting down with Ola Beanie. Ola has been kind of a prolific committer to
 
     open source and most, probably, I'm assuming most dear to your heart is your own language,
 
     Aoki. Well first, thank you for sitting down with me to talk and what is Aoki and why did
 
-    you create it? So, Aoki is a programming language. It's an experiment first and foremost. I decided
+    you create it?
+- speaker: S1
+  text: |-
+    So, Aoki is a programming language. It's an experiment first and foremost. I decided
 
     to create it because I was at the point in my language interest because I've been part
 
@@ -50,16 +51,22 @@ turns:
     real purpose things. I think at this point, it was probably six or seven years ago since I started
 
     creating it. But that was kind of where it started out. So, it is a language that is based on the JVM.
-
-    Okay. That was on purpose because I wanted to bootstrap based on all the existing stuff that was
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: |-
+    That was on purpose because I wanted to bootstrap based on all the existing stuff that was
 
     available on the platform. The GC, the libraries, all that stuff that makes it so much easier to do stuff
 
     without having to build it all from scratch. I started with a design that is very similar to
 
-    a language called IO. Okay. That is a small embedded language that runs in C, is written in C.
-
-    IO has a very different standard library. And that's the core library and the core implementations are
+    a language called IO.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: |-
+    That is a small embedded language that runs in C, is written in C. IO has a very different standard library. And that's the core library and the core implementations are
 
     quite different. Fundamentally, at the lowest level, IO can do very similar things, but everything on top
 
@@ -87,23 +94,15 @@ turns:
 
     features that makes IO key different from a list was really that it is a prototype based object oriented
 
-    language at the core of the language. And that, that is really visible through the whole thing.
+    language at the core of the language. And that, that is really visible through the whole thing. It embraces mutability at every level. So everything in the system is available at runtime in the system. A small example, and this is something that makes it very easy to do domain specific languages in IO key,
 
-    It embraces mutability at every level. So everything in the system is available at runtime in the system.
-
-    A small example, and this is something that makes it very easy to do domain specific languages in IO key,
-
-    is that you actually have access to the parsing tables and you can modify the parsing tables at runtime.
-
-    Fundamentally IO key syntax is a very simple prefix engine, but it does something that I call operator shuffling,
+    is that you actually have access to the parsing tables and you can modify the parsing tables at runtime. Fundamentally IO key syntax is a very simple prefix engine, but it does something that I call operator shuffling,
 
     where you really fundamentally can change the reorder, the precedence of different operators,
 
     you can add new operators, you can strip away and have no operator whatsoever. But at the end of the day,
 
-    they will all compile down, they will all parse and shuffle down into a canonical AST.
-
-    And that canonical AST at runtime is available also at runtime. In fact,
+    they will all compile down, they will all parse and shuffle down into a canonical AST. And that canonical AST at runtime is available also at runtime. In fact,
 
     every time you call a method that is represented as a first class message that you have access to
 
@@ -115,19 +114,21 @@ turns:
 
     at that point, if you want it. So you can have macros that have effects outside of the inside of the macro,
 
-    if you want to, for example. I'm going to have to go back and rewatch this for you a couple times.
-
-    Which I was, I was, I was laughing because it, what, the reason I was starting to laugh is because I,
+    if you want to, for example. I'm going to have to go back and rewatch this for you a couple times. Which I was, I was, I was laughing because it, what, the reason I was starting to laugh is because I,
 
     I, obviously, uh, you're somebody who's extremely comfortable with dealing with multiple languages
 
     and have really delved into how languages even work. Um, in, in your talk, you talk that, that you use
 
-    about seven to eight languages in the, uh, in the, uh, in the, uh, uh, the, the cancer research problem.
+    about seven to eight languages in the, uh, in the, uh, in the, uh, uh, the, the cancer research problem. I, I just want to go back to like a young Ola who, who was in school.
+- speaker: M1
+  text: |-
+    Uh, how did you get involved in
 
-    I, I just want to go back to like a young Ola who, who was in school. Uh, how did you get involved in
-
-    like, how did, where did the language bug bite you? That's a very hard question. Um, because,
+    like, how did, where did the language bug bite you?
+- speaker: S1
+  text: |-
+    That's a very hard question. Um, because,
 
     so I started programming when I was seven years old. Um, that was basic on an Apple IIc. I, I started
 
@@ -147,9 +148,7 @@ turns:
 
     kind of a scene by itself where people were trying to impress each other, come up with really impressive
 
-    graphical things that did, uh, I mean, it's almost like small, small movies doing, uh, doing programming.
-
-    And I was deeply involved in that movement. There were things like, uh, doing the coolest, uh, presentation
+    graphical things that did, uh, I mean, it's almost like small, small movies doing, uh, doing programming. And I was deeply involved in that movement. There were things like, uh, doing the coolest, uh, presentation
 
     you can do in 64 kilobytes of space, for example. So I did graphics programming and, and in order to
 
@@ -167,9 +166,7 @@ turns:
 
     out. And then, um, I did Java for a few years, uh, in a corporate setting, or actually not a corporate,
 
-    in a university setting. Um, but I, I worked for the IT department and the Java development for them.
-
-    And I, I realized that I was very unhappy with the capabilities of these languages. So I started
+    in a university setting. Um, but I, I worked for the IT department and the Java development for them. And I, I realized that I was very unhappy with the capabilities of these languages. So I started
 
     branching out. This was probably when I was 19, 20, I started learning more and more languages just to
 
@@ -177,9 +174,12 @@ turns:
 
     languages, with the way, the way the code grow like crazy, uh, with the limited abstraction capabilities,
 
-    and so on. So because you were exposed to so many languages at a young age and, and the hard internals.
-
-    I suspect so. Yeah. Because the other thing that I, I, I have a strong belief in the power of programming
+    and so on. So because you were exposed to so many languages at a young age and, and the hard internals. I suspect so.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: |-
+    Because the other thing that I, I, I have a strong belief in the power of programming
 
     languages to help us manage complex problems. I think that's really important, but I also believe
 
@@ -189,15 +189,13 @@ turns:
 
     cost is, and you know when to use it and when not to use it. You know when you can just ignore it
 
-    completely and just focus on the high level stuff and you know when you actually have to think about it.
+    completely and just focus on the high level stuff and you know when you actually have to think about it. So do you think there maybe there's, uh, uh, an, I just have to wonder now since so much of our
 
-    So do you think there maybe there's, uh, uh, an, I just have to wonder now since so much of our
+    languages are really high abstraction languages, they really hide a lot of all of that internals. Do you think that maybe there's, there's a negative trend as kids are learning those really high
 
-    languages are really high abstraction languages, they really hide a lot of all of that internals.
-
-    Do you think that maybe there's, there's a negative trend as kids are learning those really high
-
-    abstraction languages and they're not seeing so many internals? Is there maybe a danger in that?
+    abstraction languages and they're not seeing so many internals?
+- speaker: M1
+  text: Is there maybe a danger in that?
 - speaker: S1
   text: |-
     Well, I mean, okay, so let me first make one point and that is I don't actually believe that our
@@ -268,17 +266,25 @@ turns:
 
     structure, for example, without really caring about the fact that it's functional and the other way
 
-    around. Okay. And is, is you, I'm going to just jump over to the, to the jRuby project. Now, um,
+    around.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: |-
+    And is, is you, I'm going to just jump over to the, to the jRuby project. Now, um,
 
     the closure, I'm struggling for the question I want to ask, but I, it's on the tip of my tongue, but
 
     you, you've, you've worked on lisp and you've worked, uh, uh, you know, I'm really understanding
 
-    how the JVM works. How did you get involved with working on the, um, with jRuby? Because it seems like
+    how the JVM works.
+- speaker: M1
+  text: How did you get involved with working on the, um, with jRuby?
+- speaker: S1
+  text: |-
+    Because it seems like
 
-    Ruby and, and, and the lisp community seem to have a very different approach to designing software.
-
-    You know, do you, you're obviously comfortable in moving between multiple languages, but
+    Ruby and, and, and the lisp community seem to have a very different approach to designing software. You know, do you, you're obviously comfortable in moving between multiple languages, but
 
     when you look at the two, the closure community and the jRuby community, what,
 
@@ -290,15 +296,11 @@ turns:
 
     JRuby community and not just, not the whole Ruby community, but the JRuby community. I actually
 
-    think that there are more things in common between the JRuby and closure community than anything else.
-
-    And I mean, you can see that many of the companies and people that were big on using JRuby and Ruby,
+    think that there are more things in common between the JRuby and closure community than anything else. And I mean, you can see that many of the companies and people that were big on using JRuby and Ruby,
 
     like relevance, for example, have actually kind of gone into using closure for a lot of what they're
 
-    doing, but they're not giving up on JRuby. They're just using it for some parts of the system.
-
-    I think what I'm seeing that the most thing that I see in common is actually that these,
+    doing, but they're not giving up on JRuby. They're just using it for some parts of the system. I think what I'm seeing that the most thing that I see in common is actually that these,
 
     the people who are doing this are the people who are pragmatic. They're the ones who build real world,
 
@@ -310,22 +312,14 @@ turns:
 
     I would say because, um, like, or even frameworks like, uh, Rails is a good example. I actually,
 
-    I don't use Rails that much anymore, but, uh, you still have lightweight, uh, libraries like Sinatra.
-
-    You still have really lightweight, simple ways of dealing, slicing and dicing data and stuff like
+    I don't use Rails that much anymore, but, uh, you still have lightweight, uh, libraries like Sinatra. You still have really lightweight, simple ways of dealing, slicing and dicing data and stuff like
 
     that. And, um, and using the right tool for the job. I mean, that seems to be what unifies the JRuby and
 
     the closure people to a large degree.
 - speaker: M1
   text: |-
-    Okay. Well, thank you very much for taking the time to stomp me. I really appreciate it.
-
-    Thank you.
-
-    Thanks.
-
-    And, uh, just a, uh, uh, last kind of final wrap-up question is if somebody's looking at,
+    Okay. Well, thank you very much for taking the time to stomp me. I really appreciate it. Thank you. Thanks. And, uh, just a, uh, uh, last kind of final wrap-up question is if somebody's looking at,
 
     uh, interested in digging into Ioki and, and trying to understand and using it to better
 
@@ -336,28 +330,40 @@ turns:
 
     the source code is not that large and a lot of it is actually written in Ioki itself. Um,
 
-    I think one of the more interesting aspects of Ioki was that, uh, I wrote the whole thing, uh, TDD.
+    I think one of the more interesting aspects of Ioki was that, uh, I wrote the whole thing, uh, TDD. So there is a complete, uh, test, uh, code base that, that covers the whole language. So when I created
 
-    So there is a complete, uh, test, uh, code base that, that covers the whole language. So when I created
-
-    the .NET version of Ioki, I just let the tests actually guide the whole implementation. So it
+    the . NET version of Ioki, I just let the tests actually guide the whole implementation. So it
 
     was very easy to make a port of it to, to C sharp, uh, and F sharp. Um, so looking at the tests,
 
-    looking at the, uh, the internal implementation is actually, I mean, it's not a big project by itself.
-
-    So I think that should be easy since I don't do a lot of fancy stuff in order to make it really fast.
-
-    The code is not as impenetrable as, as some other language implementations can be. Like,
+    looking at the, uh, the internal implementation is actually, I mean, it's not a big project by itself. So I think that should be easy since I don't do a lot of fancy stuff in order to make it really fast. The code is not as impenetrable as, as some other language implementations can be. Like,
 
     JRuby has fantastic source code. It's beautifully written, but it is written with more than an
 
     IOT performance and that's sometimes, uh, you have to read a lot to understand the, the things that,
 
-    uh, make it necessary to do things a specific way, for example. Okay. Awesome. But is there,
+    uh, make it necessary to do things a specific way, for example.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Awesome.
+- speaker: M1
+  text: |-
+    But is there,
 
-    is there a website Ioki? Yeah, Ioki.org. Ioki.org. Yeah. Okay. So go check out Ioki.org and then,
+    is there a website Ioki?
+- speaker: S1
+  text: Yeah, Ioki. org. Ioki. org.
+- speaker: M1
+  text: Yeah. Okay.
+- speaker: S1
+  text: |-
+    So go check out Ioki. org and then,
 
     and try to expand your, uh, your language horizons. Thanks again. Thank you.
-
-    Okay. Great. Thank you very much. I really appreciate it. Yeah.
+- speaker: M1
+  text: Okay. Great.
+- speaker: S1
+  text: Thank you very much.
+- speaker: M1
+  text: I really appreciate it. Yeah.

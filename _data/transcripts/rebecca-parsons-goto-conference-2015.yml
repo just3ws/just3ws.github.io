@@ -14,112 +14,95 @@ turns:
     what was the talk about and how did you come to give a presentation about microservices?
     What was the driving force for that topic?
 - speaker: S1
-  text: |-
-    Well, I've had a long-standing interest in architecture and I speak a lot about evolutionary architecture as a way of making systems that are more adaptable because the system requirements that our business users are placing on systems, the rate of change is just continuing to increase.
-
-    And so we need systems that are much more adaptable and evolvable than they were before. And microservices is a relatively new architectural style that is gaining traction and done well.
-
+  text: Well, I've had a long-standing interest in architecture and I speak a lot
+    about evolutionary architecture as a way of making systems that are more adaptable
+    because the system requirements that our business users are placing on systems,
+    the rate of change is just continuing to increase. And so we need systems that
+    are much more adaptable and evolvable than they were before. And microservices
+    is a relatively new architectural style that is gaining traction and done well.
     A microservices architecture does allow you to make changes as fast as possible.
-
-    Okay.
-
-    And so this is a nice approach to architecture that achieves this goal of an evolutionary architecture.
-
-    Okay. And I know that you're coming from a much deeper background than somebody who's just read an article on microservices as a CTO at ThoughtWorks.
-
-    So was this something that's evolved from pain that you're seeing at your clients in trying to figure out ways to better solve their problems?
-
-    Not just our clients. You know, organizations like Netflix, Amazon, others are looking at architectural styles that are very similar to this.
-
-    So this is really grown out of the issues that people are facing with systems that do have to be incredibly responsive, incredibly performant.
-
-    And also responding to changes in required functionality. And so it's been our clients, but it's also been other people in the industry.
-
-    Right. And it's funny to see this topic. It seems to be there's two camps. There's the DHH and this love of the monolith.
-
-    And then there's on the other side, there's people who are dealing with polyglot problems. I know you were a polyglot programmer person.
-
-    But poly ambiguous problems that are just in all different types of ecosystems, not just a Ruby, one single stack environment.
-
-    You know, what is it if I'm looking and I'm trying to evaluate, I've got a Rails app and I'm doing this, serving this app and I'm trying to figure out,
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: And so this is a nice approach to architecture that achieves this goal of
+    an evolutionary architecture.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: And I know that you're coming from a much deeper background than somebody
+    who's just read an article on microservices as a CTO at ThoughtWorks. So was this
+    something that's evolved from pain that you're seeing at your clients in trying
+    to figure out ways to better solve their problems? Not just our clients. You know,
+    organizations like Netflix, Amazon, others are looking at architectural styles
+    that are very similar to this. So this is really grown out of the issues that
+    people are facing with systems that do have to be incredibly responsive, incredibly
+    performant. And also responding to changes in required functionality. And so it's
+    been our clients, but it's also been other people in the industry.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: |-
+    And it's funny to see this topic. It seems to be there's two camps. There's the DHH and this love of the monolith. And then there's on the other side, there's people who are dealing with polyglot problems. I know you were a polyglot programmer person. But poly ambiguous problems that are just in all different types of ecosystems, not just a Ruby, one single stack environment. You know, what is it if I'm looking and I'm trying to evaluate, I've got a Rails app and I'm doing this, serving this app and I'm trying to figure out,
 
     hey, does this microservices technology, is this appropriate for, you know, growing my application or I'm working in an environment that's, you know, we have a monolith.
-
-    Should I start thinking more about microservices? What are some of those thresholds that somebody might want to use to evaluate this,
-
-    whether they should move towards this technology?
-
-    Well, one thing is how easy or difficult you're finding it to make the kinds of changes that your users are expecting.
-
-    I mean, a well-designed monolith can be the right decision.
-
-    You would also want to consider things like the deployment footprint.
-
-    Right.
-
-    When, if you're going to scale a monolith, you're going to scale the whole monolith.
-
-    Right.
-
-    And so if you, you know, if you're doing horizontal scaling and you need four of them, you're going to have four of the entire monolith.
-
-    Right.
-
-    There might only be one part of that infrastructure that does need to scale.
-
-    Yeah.
-
-    But you don't have that choice if you're a monolith.
-
-    So looking at the kinds of problems that you're running into with the monolith, it may be that it makes sense to stick with the monolith.
-
-    One of the things I spend a lot of time talking about in the presentation were some of the issues and the implications.
-
-    Microservices architectures are more complex than a single monolith.
-
-    And so you want to make sure that the reason you're going to the microservices architecture is sound.
-
-    Right.
-
-    So it sounds like if I have maybe an email component of my application that is the one place that I'm always seeing performance bottleneck problems and I'm spinning up new instances just to support that aspect.
-
-    I can maybe look at exercising that one, exercising that one piece into a microservices.
-
-    I mean, is it an all or nothing or can I do piecemeal?
-
-    Oh, you can definitely do piecemeal.
-
-    Okay.
-
-    Yeah.
-
-    Okay.
-
-    So I can just, again, it sounds like even just good refactoring, like an object.
-
-    If I see something that's doing too much and I have a God object, maybe pull that out.
-
-    I mean, is a lot of this stuff with microservices really just taking object oriented programming concepts to a next level?
-
-    I'm not sure I would just tie it to object orientation because, you know, there's, you know, that is one way of looking at it.
-
-    And, you know, some of the concepts from domain driven development, which people tend to associate more with object orientation, although it doesn't have to be.
-
-    But those concepts apply.
-
-    And a lot of the thinking about what constitutes good boundaries, it's the same, they're the same sort of questions that are just being asked at a larger level.
-
-    And when you think about any time you start with a monolith, you know, you're probably not going to take a big sledge hammer and break it up and you're going to progressively pull things out.
-
-    And so, yes, for a time you might have, you know, a small number of services working with a bigger monolith.
-
-    And as needs arise, you could pull more and more stuff out of that monolith.
-
-    Okay.
 - speaker: M1
-  text: |-
-    Well, thank you very much for taking the time to speak with me.
-
-    I appreciate it.
+  text: Should I start thinking more about microservices?
 - speaker: S1
-  text: Thank you, Mike.
+  text: |-
+    What are some of those thresholds that somebody might want to use to evaluate this,
+
+    whether they should move towards this technology? Well, one thing is how easy or difficult you're finding it to make the kinds of changes that your users are expecting. I mean, a well-designed monolith can be the right decision. You would also want to consider things like the deployment footprint.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: When, if you're going to scale a monolith, you're going to scale the whole
+    monolith.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: And so if you, you know, if you're doing horizontal scaling and you need four
+    of them, you're going to have four of the entire monolith.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: There might only be one part of that infrastructure that does need to scale.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: But you don't have that choice if you're a monolith. So looking at the kinds
+    of problems that you're running into with the monolith, it may be that it makes
+    sense to stick with the monolith. One of the things I spend a lot of time talking
+    about in the presentation were some of the issues and the implications. Microservices
+    architectures are more complex than a single monolith. And so you want to make
+    sure that the reason you're going to the microservices architecture is sound.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: So it sounds like if I have maybe an email component of my application that
+    is the one place that I'm always seeing performance bottleneck problems and I'm
+    spinning up new instances just to support that aspect. I can maybe look at exercising
+    that one, exercising that one piece into a microservices.
+- speaker: M1
+  text: I mean, is it an all or nothing or can I do piecemeal?
+- speaker: S1
+  text: Oh, you can definitely do piecemeal.
+- speaker: M1
+  text: Okay. Yeah. Okay.
+- speaker: S1
+  text: So I can just, again, it sounds like even just good refactoring, like an object.
+    If I see something that's doing too much and I have a God object, maybe pull that
+    out. I mean, is a lot of this stuff with microservices really just taking object
+    oriented programming concepts to a next level? I'm not sure I would just tie it
+    to object orientation because, you know, there's, you know, that is one way of
+    looking at it. And, you know, some of the concepts from domain driven development,
+    which people tend to associate more with object orientation, although it doesn't
+    have to be. But those concepts apply. And a lot of the thinking about what constitutes
+    good boundaries, it's the same, they're the same sort of questions that are just
+    being asked at a larger level. And when you think about any time you start with
+    a monolith, you know, you're probably not going to take a big sledge hammer and
+    break it up and you're going to progressively pull things out. And so, yes, for
+    a time you might have, you know, a small number of services working with a bigger
+    monolith. And as needs arise, you could pull more and more stuff out of that monolith.
+- speaker: M1
+  text: Okay. Well, thank you very much for taking the time to speak with me. I appreciate
+    it. Thank you, Mike.

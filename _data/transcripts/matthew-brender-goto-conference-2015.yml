@@ -11,27 +11,77 @@ turns:
   text: |-
     Hi, it's Mike with UGtastic
 
-    . I'm here at GOTO Conference 2015. I 'm standing here with Matthew Brender, who gave a talk on how to navigate unstructured data. Thank you very much for taking the time to speak with me. So, navigating unstructured data, where did this talk come from and what was it about? Sure. So, I'm here on behalf of Basho, my employer, and we 're the creators of React, a distributed NoSQL database, which fundamentally breaks some basic concepts when you've come from a relational world like we all do. So, I've been doing some research on, okay, first off, what type of data is unstructured versus something that fits more naturally into a relational database? And secondly, what are some of the actual system architect ures that people are taking into effect and trying to achieve with their infrastructure, as opposed to having these segmented groupings and data pushing here and there? Just pulling there and refactoring here and there, trying to have more of a raw event stream that results in a repeat able sequence of events that you can analyze after the fact. I'm fascinated by that. There are a few different architect ures that I reviewed.
+    . I'm here at GOTO Conference 2015. I 'm standing here with Matthew Brender, who gave a talk on how to navigate unstructured data. Thank you very much for taking the time to speak with me. So, navigating unstructured data, where did this talk come from and what was it about? Sure.
 - speaker: S1
-  text: |-
-    Okay.
-
-    So, with the unstructured data, I mean, is React a document store database or is it, I mean, NoSQL is such a broad term. Yeah, and that was part of the thing we have to tackle, right? Like, you hear NoSQL and you don't know what to assume. You just know that it's not rows and columns. So, key value is the simplest form. That is, in fact, what React is. But I also went over columnar and graph databases and how they fit different goals. But what's great about a key value database and particularly an AP key value database that is sacrificing some consistency state for in order to have a growing level of availability in an architecture, you find some nuances about that that are a little different. That are really effective for companies that are growing and the amount of data that they're consuming.
-
-    Okay.
-
-    I mean, and compared to like another really big player in that key value source, you know, Redis, I mean, how does Redis and React, I mean, do they serve different purposes or? Yeah, exactly. They're very complementary. So, I'd say a decent to a significant portion of our customers also use Redis side by side because Redis is key value, but what it does is keeps everything. I mean, you can use Redis to do both the data and the mapping of that data in memory, and you can perform set functionality on the data and actually aggregate it on the fly as you need it from your application. So, it makes an ideal read cache, but what it doesn't offer is any sort of guarantee on availability in the sense of durability in the case of a failure of a node. So, Redis right now, to the best of my knowledge, it's actually a master-slave architecture, so you have multiple systems and they own portions of the structure. So, Redis is the best way to do that, but it's also the best way for us to keep track of what's going on in the process and keep track of the data that we're sharing. So, Redis is the best way to do that, but it's also the best way for us to keep track of the data that we're sharing. What makes React and Cassandra and others like us really interesting is that data is evenly distributed over a consistent hashing table, meaning each node has a consistent amount of information and it's durable. It's written to disk before you get that acknowledgement, but that's still on a very lightweight millisecond transaction standpoint as opposed to something that could be much larger.
-
-    Okay.
-
-    And so, you know, did you come to React through the open source? I mean, did you come to React through the open source? Did you come to Bashow through the React open source, or have you been working with React more because of being a Bashow employee? No, it's very much the latter. I was not at all familiar with databases. I'm going to drift in a little bit. Just go. We have to stand uncomfortably close. You good? No, I'm comfortable. I'm comfortable.
-
-    Okay.
-
-    As long as you're comfortable, we're good. Fine. All right, great.
-
-    Okay.
+  text: So, I'm here on behalf of Basho, my employer, and we 're the creators of React,
+    a distributed NoSQL database, which fundamentally breaks some basic concepts when
+    you've come from a relational world like we all do. So, I've been doing some research
+    on, okay, first off, what type of data is unstructured versus something that fits
+    more naturally into a relational database? And secondly, what are some of the
+    actual system architect ures that people are taking into effect and trying to
+    achieve with their infrastructure, as opposed to having these segmented groupings
+    and data pushing here and there? Just pulling there and refactoring here and there,
+    trying to have more of a raw event stream that results in a repeat able sequence
+    of events that you can analyze after the fact. I'm fascinated by that. There are
+    a few different architect ures that I reviewed.
 - speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So, with the unstructured data, I mean, is React a document store database
+    or is it, I mean, NoSQL is such a broad term.
+- speaker: M1
+  text: Yeah, and that was part of the thing we have to tackle, right?
+- speaker: S1
+  text: Like, you hear NoSQL and you don't know what to assume. You just know that
+    it's not rows and columns. So, key value is the simplest form. That is, in fact,
+    what React is. But I also went over columnar and graph databases and how they
+    fit different goals. But what's great about a key value database and particularly
+    an AP key value database that is sacrificing some consistency state for in order
+    to have a growing level of availability in an architecture, you find some nuances
+    about that that are a little different. That are really effective for companies
+    that are growing and the amount of data that they're consuming.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: I mean, and compared to like another really big player in that key value source,
+    you know, Redis, I mean, how does Redis and React, I mean, do they serve different
+    purposes or? Yeah, exactly. They're very complementary. So, I'd say a decent to
+    a significant portion of our customers also use Redis side by side because Redis
+    is key value, but what it does is keeps everything. I mean, you can use Redis
+    to do both the data and the mapping of that data in memory, and you can perform
+    set functionality on the data and actually aggregate it on the fly as you need
+    it from your application. So, it makes an ideal read cache, but what it doesn't
+    offer is any sort of guarantee on availability in the sense of durability in the
+    case of a failure of a node. So, Redis right now, to the best of my knowledge,
+    it's actually a master-slave architecture, so you have multiple systems and they
+    own portions of the structure. So, Redis is the best way to do that, but it's
+    also the best way for us to keep track of what's going on in the process and keep
+    track of the data that we're sharing. So, Redis is the best way to do that, but
+    it's also the best way for us to keep track of the data that we're sharing. What
+    makes React and Cassandra and others like us really interesting is that data is
+    evenly distributed over a consistent hashing table, meaning each node has a consistent
+    amount of information and it's durable. It's written to disk before you get that
+    acknowledgement, but that's still on a very lightweight millisecond transaction
+    standpoint as opposed to something that could be much larger.
+- speaker: M1
+  text: Okay. And so, you know, did you come to React through the open source? I mean,
+    did you come to React through the open source?
+- speaker: S1
+  text: Did you come to Bashow through the React open source, or have you been working
+    with React more because of being a Bashow employee? No, it's very much the latter.
+    I was not at all familiar with databases. I'm going to drift in a little bit.
+    Just go. We have to stand uncomfortably close.
+- speaker: M1
+  text: You good?
+- speaker: S1
+  text: No, I'm comfortable. I'm comfortable.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: As long as you're comfortable, we're good. Fine. All right, great.
+- speaker: M1
+  text: Okay.
+- speaker: S1
   text: So, I came to React through my work. I joined Bashow because I have a lot
     of respect and admiration for the leadership and the product. Every single person
     I spoke to said the product is rock solid, is by far really respected in the industry,
@@ -68,7 +118,8 @@ turns:
     that's core to the culture at Basho and something I really respect and admire
     about the community around us. We solve a specific set of problems, and if you
     need that problem solved well, we feel we have the best by far solution to that.
-    Great. Well, thank you very much for taking the time to speak with me. I appreciate
+- speaker: M1
+  text: Great. Well, thank you very much for taking the time to speak with me. I appreciate
     it. Yeah, my pleasure, Mike. It was great to do so and hang out with Shutter.
     Fluttershy. Fluttershy. You guys will see Fluttershy later. Thanks. Bye.
 insights: []

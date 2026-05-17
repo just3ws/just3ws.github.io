@@ -3,9 +3,10 @@ require 'yaml'
 
 RULES = [
   # --- Brand: UGtastic ---
-  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
+  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget|ukt|yug|yuget|yuge)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
   [/\b[Uu]ktasek(?:\.com)?\b/i, "UGtastic"],
   [/\b[Uu]btastic(?:\.com)?\b/i, "UGtastic"],
+  [/\b[Ee]vo[ -]?Tasic\b/i, "UGtastic"],
   [/\b[Uu]g[ -]?l[ -]?st\b/i, "UGl.st"],
   
   # --- Industry Terms ---
@@ -58,14 +59,13 @@ end
 ARGV.each do |path|
   next unless File.exist?(path)
   begin
-    data = YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true)
+    data = YAML.load_file(path, permitted_classes: [Date, Time], aliases: true)
     if data["turns"]
       data["turns"].each { |turn| apply_to_text(turn["text"]) }
     elsif data["content"]
       apply_to_text(data["content"])
     end
     File.write(path, data.to_yaml)
-    puts "Applied perfection rules to #{path}"
   rescue => e
     puts "Error in #{path}: #{e.message}"
   end

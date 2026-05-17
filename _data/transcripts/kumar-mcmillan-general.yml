@@ -12,50 +12,138 @@ turns:
     the Mozilla Open Source, well we all know Mozilla, we all know Firefox, but there's
     also a Firefox OS that is coming out and Kumar is working with the team to help
     interact with the community. Can you tell us a little bit about what Firefox OS
-    is? Yeah, sure. So mobile apps have been kind of dominated by Android and iOS
+    is?
+- speaker: S1
+  text: Yeah, sure. So mobile apps have been kind of dominated by Android and iOS
     and so at Mozilla we just really wanted the web to be the platform for mobile
     apps and so we set out almost about a year ago to build a phone basically that's
     run by the Gecko engine. And you actually have one of those phones on you. It's
     a real thing. Yeah, it's happening. It's there. You can't probably... You can't
     see it from the camera here, but this is working and it's, I mean it's been open
     from day one and so that's sort of been a pretty interesting part of the project.
+- speaker: M1
+  text: Yeah.
 - speaker: S1
-  text: |-
-    Yeah.
-
-    So as soon as we started committing code to the Git repo, we just had people come out and sort of say, hey Mozilla, we've been doing the same thing in secret. Yeah, yeah. Let's like work together and build a phone together. And so that's sort of been the open source community. It took a whole company out from the shadows and said, hey, let's actually start contributing to this thing and make it better for everybody. So they're going to benefit, Mozilla's going to benefit. Yeah, definitely. Everybody. Yeah, and we have people, I mean, I tell a lot of people that one of the first times I started digging into the project, I was working on IRC with someone to help me kind of get it built and I was having some problems. And I was... you know, this guy to help me out and then I was like, oh, hey, you know, do you, you know, I work for Mozilla in Chicago, where do you work?
-
-    Yeah.
-
-    And he said, oh, no, I'm in Greece, I don't work for Mozilla, you know, he was just somebody just on the project and that's sort of how open it is. Anyone can jump on IRC, anyone could get involved, anyone can start submitting patches, you know, we have the Telefonica guys who were helping us do the launch in Brazil and then they're committing to our repo every day. They're committing to Git. They're putting their assigned bugs in our Mozilla tracker, they're just part of the project, you know. So is, when you're working on the open source project, especially one as big as, I mean, the Firefox browser is a huge project, but I can only imagine how huge a OS project is, is there, like, oversight from Mozilla and, like, a direction and then people just pick up things that interest them and they want to help out with them? How does the community interact?
-
-    Yeah.
-
-    Yeah, well, it's really focused as in, you know, Mozilla employs a lot of people to be working on this project and so, you know, there's, like any project, there's deadlines and, you know, there's a huge kind of, you know, QA infrastructure, there's a big code review process for getting patches into the mainline, but there's, but like I said, there's just a lot of involvement from the community, we're working with people, you know, now who are strategic partners, like the Telefonica network, also Qualcomm, who is working on some of the chips, also, you know, people in Europe and a lot of people are just here that we now kind of have some professional working relationships with because we're shipping a phone, but because it was open source, they basically, you know, we didn't sort of say, we didn't come to them behind closed doors.
-
-    Okay.
-
-    So, kind of like with the... Yeah, Linux project, there's, you know, Linus is, Linus has come out with some pretty strong, you know, opinions on how people should contribute. Do, does Mozilla have its own kind of guidelines that people can look at and say, oh, this is how I can contribute and how I could... Oh, yeah, definitely, definitely. It's pretty structured. I mean, you have to, before any patch gets accepted, I mean, it has to go through a pretty extensive review process and, you know, a lot of that... It's stylistic reviews, but also, you know, we just, we need to make sure people are using the right APIs and when, you know, people aren't so familiar with, you know, really low-level parts of the system, part of the code review will be like, oh, no, you need to like, you know, pass messages back and forth with this API instead of this API, just stuff like that. And that keeps the quality at a good level, you know. And the, you kind of talked a little bit about... This needs interaction with this guy in Greece who's not even on the team, but he's just helping you because he wants to contribute. Has there been any other kind of really interesting interactions with people contributing from the community, good or bad? Just, is there anything that pops to mind aside from... Yeah, well, it's, I actually work more specifically on the marketplace, which is our app store for the phone. And so, I work also on payments. And so, that's... It's a website. It's a Python-run website. And so, that's kind of this standalone project. It's a little separate from Firefox OS. And it's been kind of hard to get outside contributors involved in that.
-
-    Okay.
-
-    We have a lot of documentation for how to set it up. It's not really easy to set it up, but, you know, we've documented everything, so you can set it up. But we've seen a lot of people jump in that, you know, find us wherever on the web. They just see that Mozilla's open source. They see that the app store that we're building. It's open source. And they try to get involved. They kind of jump on IRC and it's like, hey, I spent a day building this project. I'm stuck here. And, you know, we try to help them, but sometimes everyone's busy. Yeah, you can't always help like you'd like to. Yeah, so people kind of come and go like that with open source. They get a little frustrated and then they leave. So, you know, we're doing stuff to make it easier. We're making, like, you know, vagrant images so that people can just do, like, a one-click install and have a virtual machine that's running a development version. Of the app store. So we're actually, we make a really strong effort, you know, time permitting so that we can get outside contributors. Because that's the core of Mozilla. Mozilla is not the size of Google, you know, or, you know, the people we're kind of competing with, you know, are the size of Mozilla. Like, the employees is basically the size of a single project at Mozilla, for example. Like, the Google Plus team is probably the size of all of Mozilla. And, you know. Yeah, that's a little scale difference. Yeah, yeah. So we're trying to build a phone and we're just Mozilla, you know. So it's actually, you know, one of the things we've always done and the reason why Firefox has been so successful, you know, in what it set out to do, which was, like, you know, make the web a kind of level playing field, take over Internet Explorer, which no one thought was possible at the time, is because we work with the community.
-
-    Right.
-
-    And because it's open source. And just before we wrap up here.
-
-    Yeah.
-
-    You work with. You work with an online radio station. Yes. Can you just give a little plug for that and describe what you're doing there? Because you said that's also open source.
-
-    Yeah.
-
-    It's tripradio.org. And it's, you know, it's funny. I tell people it's a nonprofit just like Mozilla. And in a lot of ways, it's similar to Mozilla, but at obviously a very much smaller scale. Everything is open source. All our software is open source. And we really work with the community as much as possible. It's built entirely by volunteers. And it's a lot of fun. If somebody wanted to listen to it, what kind of music is it? It's all kinds of music. Tripradio.org. We broadcast about 18 hours a day now. So, chirp, like as in birdie, chirp, C-H-I-R-P.org.
-
-    Okay.
-
-    Yeah.
-
-    One word, tripradio.org. All right. Thank you very much. Thanks, Mike. Thank you.
+  text: So as soon as we started committing code to the Git repo, we just had people
+    come out and sort of say, hey Mozilla, we've been doing the same thing in secret.
+    Yeah, yeah. Let's like work together and build a phone together. And so that's
+    sort of been the open source community. It took a whole company out from the shadows
+    and said, hey, let's actually start contributing to this thing and make it better
+    for everybody. So they're going to benefit, Mozilla's going to benefit. Yeah,
+    definitely. Everybody. Yeah, and we have people, I mean, I tell a lot of people
+    that one of the first times I started digging into the project, I was working
+    on IRC with someone to help me kind of get it built and I was having some problems.
+    And I was... you know, this guy to help me out and then I was like, oh, hey, you
+    know, do you, you know, I work for Mozilla in Chicago, where do you work?
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And he said, oh, no, I'm in Greece, I don't work for Mozilla, you know, he
+    was just somebody just on the project and that's sort of how open it is. Anyone
+    can jump on IRC, anyone could get involved, anyone can start submitting patches,
+    you know, we have the Telefonica guys who were helping us do the launch in Brazil
+    and then they're committing to our repo every day. They're committing to Git.
+    They're putting their assigned bugs in our Mozilla tracker, they're just part
+    of the project, you know. So is, when you're working on the open source project,
+    especially one as big as, I mean, the Firefox browser is a huge project, but I
+    can only imagine how huge a OS project is, is there, like, oversight from Mozilla
+    and, like, a direction and then people just pick up things that interest them
+    and they want to help out with them?
+- speaker: M1
+  text: How does the community interact? Yeah.
+- speaker: S1
+  text: Yeah, well, it's really focused as in, you know, Mozilla employs a lot of
+    people to be working on this project and so, you know, there's, like any project,
+    there's deadlines and, you know, there's a huge kind of, you know, QA infrastructure,
+    there's a big code review process for getting patches into the mainline, but there's,
+    but like I said, there's just a lot of involvement from the community, we're working
+    with people, you know, now who are strategic partners, like the Telefonica network,
+    also Qualcomm, who is working on some of the chips, also, you know, people in
+    Europe and a lot of people are just here that we now kind of have some professional
+    working relationships with because we're shipping a phone, but because it was
+    open source, they basically, you know, we didn't sort of say, we didn't come to
+    them behind closed doors.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So, kind of like with the... Yeah, Linux project, there's, you know, Linus
+    is, Linus has come out with some pretty strong, you know, opinions on how people
+    should contribute. Do, does Mozilla have its own kind of guidelines that people
+    can look at and say, oh, this is how I can contribute and how I could... Oh, yeah,
+    definitely, definitely. It's pretty structured. I mean, you have to, before any
+    patch gets accepted, I mean, it has to go through a pretty extensive review process
+    and, you know, a lot of that... It's stylistic reviews, but also, you know, we
+    just, we need to make sure people are using the right APIs and when, you know,
+    people aren't so familiar with, you know, really low-level parts of the system,
+    part of the code review will be like, oh, no, you need to like, you know, pass
+    messages back and forth with this API instead of this API, just stuff like that.
+    And that keeps the quality at a good level, you know. And the, you kind of talked
+    a little bit about... This needs interaction with this guy in Greece who's not
+    even on the team, but he's just helping you because he wants to contribute.
+- speaker: M1
+  text: Has there been any other kind of really interesting interactions with people
+    contributing from the community, good or bad?
+- speaker: S1
+  text: Just, is there anything that pops to mind aside from... Yeah, well, it's,
+    I actually work more specifically on the marketplace, which is our app store for
+    the phone. And so, I work also on payments. And so, that's... It's a website.
+    It's a Python-run website. And so, that's kind of this standalone project. It's
+    a little separate from Firefox OS. And it's been kind of hard to get outside contributors
+    involved in that.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: We have a lot of documentation for how to set it up. It's not really easy
+    to set it up, but, you know, we've documented everything, so you can set it up.
+    But we've seen a lot of people jump in that, you know, find us wherever on the
+    web. They just see that Mozilla's open source. They see that the app store that
+    we're building. It's open source. And they try to get involved. They kind of jump
+    on IRC and it's like, hey, I spent a day building this project. I'm stuck here.
+    And, you know, we try to help them, but sometimes everyone's busy. Yeah, you can't
+    always help like you'd like to. Yeah, so people kind of come and go like that
+    with open source. They get a little frustrated and then they leave. So, you know,
+    we're doing stuff to make it easier. We're making, like, you know, vagrant images
+    so that people can just do, like, a one-click install and have a virtual machine
+    that's running a development version. Of the app store. So we're actually, we
+    make a really strong effort, you know, time permitting so that we can get outside
+    contributors. Because that's the core of Mozilla. Mozilla is not the size of Google,
+    you know, or, you know, the people we're kind of competing with, you know, are
+    the size of Mozilla. Like, the employees is basically the size of a single project
+    at Mozilla, for example. Like, the Google Plus team is probably the size of all
+    of Mozilla. And, you know. Yeah, that's a little scale difference. Yeah, yeah.
+    So we're trying to build a phone and we're just Mozilla, you know. So it's actually,
+    you know, one of the things we've always done and the reason why Firefox has been
+    so successful, you know, in what it set out to do, which was, like, you know,
+    make the web a kind of level playing field, take over Internet Explorer, which
+    no one thought was possible at the time, is because we work with the community.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: And because it's open source. And just before we wrap up here.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: You work with. You work with an online radio station. Yes.
+- speaker: M1
+  text: Can you just give a little plug for that and describe what you're doing there?
+- speaker: S1
+  text: Because you said that's also open source.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: It's tripradio. org. And it's, you know, it's funny. I tell people it's a
+    nonprofit just like Mozilla. And in a lot of ways, it's similar to Mozilla, but
+    at obviously a very much smaller scale. Everything is open source. All our software
+    is open source. And we really work with the community as much as possible. It's
+    built entirely by volunteers. And it's a lot of fun.
+- speaker: M1
+  text: If somebody wanted to listen to it, what kind of music is it?
+- speaker: S1
+  text: It's all kinds of music. Tripradio. org. We broadcast about 18 hours a day
+    now. So, chirp, like as in birdie, chirp, C-H-I-R-P. org.
+- speaker: M1
+  text: Okay. Yeah.
+- speaker: S1
+  text: One word, tripradio. org. All right. Thank you very much. Thanks, Mike. Thank
+    you.
 insights: []

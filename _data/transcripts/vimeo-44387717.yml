@@ -10,30 +10,18 @@ turns:
 - speaker: M1
   text: So, who here would declare themselves as software engineers?
 - speaker: S1
+  text: I'll just get a tally of sorts. Okay, about half the people in the room.
+- speaker: M1
+  text: Who would say, who are comfortable calling themselves as a software craftsman?
+- speaker: S1
   text: |-
-    I'll just get a tally of sorts.
+    Okay, three people. So, the interesting thing is there's not much overlap between the two groups,
 
-    Okay, about half the people in the room.
+    and that's part of the reason why the VS is there in the title of the talk. I perceived it as the versus for a long time. Working as a consultant before we got acquired by Groupon,
 
-    Who would say, who are comfortable calling themselves as a software craftsman?
+    I worked as a consultant for Optiva. So, when I was working there, Optiva with the leadership of Dave Hoover
 
-    Okay, three people.
-
-    So, the interesting thing is there's not much overlap between the two groups,
-
-    and that's part of the reason why the VS is there in the title of the talk.
-
-    I perceived it as the versus for a long time.
-
-    Working as a consultant before we got acquired by Groupon,
-
-    I worked as a consultant for Optiva.
-
-    So, when I was working there, Optiva with the leadership of Dave Hoover
-
-    encouraged the idea of Software Craftsmanship as well as software apprenticeship.
-
-    And having developers learn their skills under the guidance of what he would call a journeyman
+    encouraged the idea of Software Craftsmanship as well as software apprenticeship. And having developers learn their skills under the guidance of what he would call a journeyman
 
     or, you know, a guy who's on the field out there doing it for real
 
@@ -41,39 +29,19 @@ turns:
 
     or like a computer science degree or a software engineering master's degree
 
-    or that kind of thing.
+    or that kind of thing. So, I have formal education in software engineering, though. I've studied computer science as my, like, undergrad degree
 
-    So, I have formal education in software engineering, though.
+    and then I did software engineering as a master's. And it always bothered me that there's a rift between the two
 
-    I've studied computer science as my, like, undergrad degree
+    because I felt like they had similar goals. That was my motivation behind blogging about it as well as giving this talk. So, let's go over the outline of the talk. So, I'm going to be giving definitions for software engineering
 
-    and then I did software engineering as a master's.
+    and Software Craftsmanship, at least my perspective on them. I'm going to talk about the similarities and the differences between them. And then, I'll go over applications of both that I saw at Groupon
 
-    And it always bothered me that there's a rift between the two
-
-    because I felt like they had similar goals.
-
-    That was my motivation behind blogging about it as well as giving this talk.
-
-    So, let's go over the outline of the talk.
-
-    So, I'm going to be giving definitions for software engineering
-
-    and Software Craftsmanship, at least my perspective on them.
-
-    I'm going to talk about the similarities and the differences between them.
-
-    And then, I'll go over applications of both that I saw at Groupon
-
-    to give an example of how they play in the wild.
-
-    So, one of the original definitions of software engineering,
+    to give an example of how they play in the wild. So, one of the original definitions of software engineering,
 
     which happened in the NATO Software Engineering Conference in 1968,
 
-    that was around the time when, of inception, software engineering.
-
-    Software engineering is the establishment
+    that was around the time when, of inception, software engineering. Software engineering is the establishment
 
     of sound engineering principles
 
@@ -81,9 +49,7 @@ turns:
 
     that is reliable
 
-    and works efficiently on real machines.
-
-    So, notice how
+    and works efficiently on real machines. So, notice how
 
     this is kind of similar
 
@@ -91,35 +57,25 @@ turns:
 
     in the last decade
 
-    with Agile.
-
-    When the Agile folks came up with the manifesto,
+    with Agile. When the Agile folks came up with the manifesto,
 
     it was a very generic,
 
     general, high-level,
 
-    principle-based manifesto.
-
-    So, this also sounds very generic
+    principle-based manifesto. So, this also sounds very generic
 
     and focused on principles,
 
-    but not necessarily a process.
-
-    So, although a lot of developers equate software engineering
+    but not necessarily a process. So, although a lot of developers equate software engineering
 
     with heavyweight processes like Waterfolk,
 
-    there was not necessarily any connection between the two.
-
-    It just happened that one of the first processes
+    there was not necessarily any connection between the two. It just happened that one of the first processes
 
     that came about in software development
 
-    was Waterfolk, for example.
-
-    So, their key focus, though,
+    was Waterfolk, for example. So, their key focus, though,
 
     really was on sound engineering
 
@@ -127,9 +83,7 @@ turns:
 
     that's reliable and efficient
 
-    on real machines.
-
-    So,
+    on real machines. So,
 
     that's a huge difference
 
@@ -151,43 +105,31 @@ turns:
 
     having performance,
 
-    having reliability.
-
-    So, the key thing about software engineering
+    having reliability. So, the key thing about software engineering
 
     is to focus programmers
 
     on meeting deadlines,
 
-    focusing on cutting cost, etc.,
+    focusing on cutting cost, etc. ,
 
     getting high reliability,
 
-    and so on.
-
-    Now, craftsmanship got popularized
+    and so on. Now, craftsmanship got popularized
 
     by a book by Pete McBreen,
 
-    also called Software Craftsmanship.
-
-    And one of the things he said
+    also called Software Craftsmanship. And one of the things he said
 
     was becoming a good software developer
 
     involved a lot more
 
-    than just learning to write programs.
-
-    software development is a craft.
-
-    It blends science, engineering,
+    than just learning to write programs. software development is a craft. It blends science, engineering,
 
     mathematics,
 
-    linguistics, and art.
-
-    So, one thing he noticed,
+    linguistics, and art. So, one thing he noticed,
 
     or the feel I got
 
@@ -215,15 +157,11 @@ turns:
 
     you follow them,
 
-    and you get software.
-
-    He tried to make it clear
+    and you get software. He tried to make it clear
 
     that it's actually
 
-    kind of not very linear.
-
-    There's art in it,
+    kind of not very linear. There's art in it,
 
     there's linguistics,
 
@@ -241,9 +179,7 @@ turns:
 
     will flow better
 
-    than other ways.
-
-    Like,
+    than other ways. Like,
 
     this is the big reason
 
@@ -265,9 +201,7 @@ turns:
 
     come up with a testing library
 
-    that flows better linguistically.
-
-    So,
+    that flows better linguistically. So,
 
     that kind of
 
@@ -285,19 +219,13 @@ turns:
 
     you get predictable results,
 
-    you succeed.
+    you succeed. There's a little bit
 
-    There's a little bit
-
-    of art to it.
-
-    There's a little bit
+    of art to it. There's a little bit
 
     of balancing concerns,
 
-    balancing disciplines.
-
-    Another book
+    balancing disciplines. Another book
 
     that popularized
 
@@ -309,17 +237,13 @@ turns:
 
     in software development,
 
-    is The Pragmatic Programmer.
-
-    We already read
+    is The Pragmatic Programmer. We already read
 
     that Pragmatic Programmer
 
     or at least
 
-    will show up through it.
-
-    That book
+    will show up through it. That book
 
     changed my perspective
 
@@ -337,9 +261,7 @@ turns:
 
     it's not just
 
-    the hard technical skills.
-
-    One of the things
+    the hard technical skills. One of the things
 
     that the book
 
@@ -369,9 +291,7 @@ turns:
 
     for example
 
-    in the Middle Ages.
-
-    so
+    in the Middle Ages. so
 
     the way
 
@@ -399,9 +319,7 @@ turns:
 
     built software
 
-    out in the world.
-
-    They will
+    out in the world. They will
 
     gradually climb
 
@@ -409,9 +327,7 @@ turns:
 
     to becoming
 
-    a skilled journeyman.
-
-    A journeyman
+    a skilled journeyman. A journeyman
 
     is usually
 
@@ -451,9 +367,7 @@ turns:
 
     technologies
 
-    like J2EE.
-
-    They know
+    like J2EE. They know
 
     how to interface
 
@@ -461,9 +375,7 @@ turns:
 
     in order to
 
-    better communicate.
-
-    They know
+    better communicate. They know
 
     a little bit
 
@@ -473,9 +385,7 @@ turns:
 
     and so on
 
-    and so forth.
-
-    So
+    and so forth. So
 
     eventually
 
@@ -485,9 +395,7 @@ turns:
 
     is to reach
 
-    mastery.
-
-    Some people
+    mastery. Some people
 
     reach it
 
@@ -521,9 +429,7 @@ turns:
 
     having that goal
 
-    in mind.
-
-    Then you know
+    in mind. Then you know
 
     a few people
 
@@ -595,9 +501,7 @@ turns:
 
     of reaching
 
-    mastery.
-
-    similarities
+    mastery. similarities
 
     so one thing
 
@@ -3887,9 +3791,7 @@ turns:
 
     for your project
 
-    etc.
-
-    there are
+    etc. there are
 
     many examples
 
@@ -5471,9 +5373,7 @@ turns:
 
     has anybody
 
-    heard of it?
-
-    so
+    heard of it? so
 
     Optiva
 
@@ -7171,9 +7071,7 @@ turns:
 
     has anybody
 
-    heard of Clojure?
-
-    it's a new
+    heard of Clojure? it's a new
 
     Lisp-like language
 
