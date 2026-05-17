@@ -1,386 +1,249 @@
 ---
 content: |-
-  Hi, I'm Mike with UGtastic, sitting here with Igor Polivoy.
+  Hi, I'm Mike with Yugotastic, sitting here with Igor Polovoy.
    Igor does a lot of free and open source development on the Java platform.
    He's created tools underneath the Java Lite family of, well, tools, frameworks, one being
-   Active Web, Active JDBC, JSpec, and the, what was it, the HTTP Lite?
+   Active Web, Active JDBC, JSpec, and the, what was it, the HTTP Lite.
    HTTP Lite, basically it's a very small client to access HTTP services.
    So you kind of have this family, this framework, this stack of tools that you've built.
    What kind of led to you creating those?
    Well, a kind of envy, I think.
    For the time being, I was a typical Java guy, you know, not paying attention to what's happening
    outside Java.
-   In the meantime, the Ruby on Rails revolution took off.
-   And back in 2007, I was in the project.
-   It was a Java project, but then Rails was slowly introduced into the project and I picked
-   up Ruby on Rails, Ruby as a language, and then Ruby on Rails, and I saw that developing
+   In the meantime, the Ruby on Rails revolution took off, and back in 2007, I was in the project
+   which was a Java project, but then Rails was slowly introduced into the project, and I
+   picked up Ruby on Rails, Ruby as a language, and then Ruby on Rails, and I saw that developing
    with Ruby on Rails was so much faster and better than developing anything that we had
    in Java.
    And it was like, okay, Ruby developers enjoy this fantastic framework, why don't we have
    it in Java?
-   Okay, so you were just like, how can I make something that's as quick to develop
-   with?
-   And that's where Active Web came from.
-   No, that was not my immediate...my immediate reaction to this was, great, somebody must
+   Oh, okay, so you were just like, how can I make something that's as quick to develop
+   with, and that's where Active Web came from.
+   Yeah.
+   No, that was not my immediate, my immediate reaction to this was, great, somebody must
    be developing right now.
    Oh, okay.
    Yeah, you wanted to see what was out there.
-   And I waited a couple years from 2007 to 2009, but nothing like that came out.
+   And I waited a couple years, from 2007 to 2009, but nothing like that came out.
    So I rolled up my sleeves and started developing first Active JDBC.
-   Okay, so you started with the database first.
-   Yeah.
-   And was that something that you mostly used for your own projects?
-   Or...
+   Okay, so you started with the database first, and did, was that something that you mostly
+   used for your own projects?
    Oh, no, no, no.
    This was from the very beginning, it was used on commercial projects.
    We were building a massive system for an insurance company, and we had two and a half months
    to start and finish a massive project.
    So if we didn't have an agile tool, if we even went with something like Hibernate, at
    the time I was managing a relatively small team, it was a team of four people plus myself.
-   And with Active JDBC...
-   But by the time we started the project, Active JDBC was already working, not all features
-   were there.
-   Was it 80% or was it...?
+   Yeah.
+   Yeah.
+   Yeah.
+   So Active JDBC, by the time we started the project, Active JDBC was already working.
+   Right.
+   Not all features were there.
+   It was the 80% or was it?
    Well, it was probably 80% of what we needed for that one project.
    Okay.
    So you had to implement the rest kind of on time.
    Yes.
-   And it was really funny because, you know, as a developer or architect, sometimes you
-   architect things right, and sometimes you architect things the wrong way.
+   And it was really funny because, you know, as a developer architect, sometimes you architect
+   things right, and sometimes you architect things the wrong way.
    Right.
-   This one was architected right, because when we hit...
-   When we hit the necessity of having many-to-many relationship, we didn't have it in Active
-   JDBC.
-   And my guys were like, "Okay, back to Hibernate," and I'm like, "Wait, we're gonna have it two
-   days from now."
+   This one was architected right.
+   Right.
+   So when we hit the necessity of having many-to-many relationship, we didn't have it in Active JDBC.
+   And my guys were like, "Okay, back to Hibernate."
+   I'm like, "Wait, we're going to have it two days from now."
    Yeah.
-   And we had it two days from now.
-   From then.
+   And we had it two days from then.
    So it was kind of battle-tested from the word go.
    Oh, yeah.
-   You had the idea, and then you immediately put it into production.
+   You had the idea and then you immediately put it into production.
    And by the way, the first implementation was for a crazy schema in Oracle.
    So right there, we hit so many problems.
-   So is Active JDBC Oracle-specific, or is it...?
-   No, no, no.
-   It's not Oracle-specific.
-   The next implementation was for MySQL, and then basically, there's not much difference
-   between different databases, other than generating very specific queries for specific things,
-   like pagination and...
-   So how did you go about implementing all these adapters?
-   Oh, basically, I implemented Oracle, MySQL, and Postgre, and H2, and two dialects for...
-   Microsoft SQL Server were donated by the community.
+   So is Active JDBC Oracle specific or is it...
+   No.
+   No.
+   No.
+   No.
+   No.
+   It's not Oracle specific.
+   The next implementation was for MySQL.
+   Then basically, there's not much difference between different databases other than generating
+   very specific queries for specific things like pagination and...
+   How did you go about implementing all these adapters?
+   Oh, basically, I implemented Oracle, MySQL, and PostgreSQL, and H2 and two dialects for
+   Microsoft SQL Server, which were donated by the community.
    Okay.
    So this was...
-   You had already released it, and it was out in the wild.
-   And by the way, what license is...
+   You had already released it and it was out in the wild.
+   By the way, what license is...
    Apache.
-   Apache.
-   Apache.
+   Apache 2.
    Okay.
    So how were you sharing...
-   How did people outside of your community get to find out about...?
-   Well, I didn't really do too much effort, or any effort to publicize it.
-   I basically threw it out into a Google code, and that's it.
+   How did people outside of your community get to find out about...
+   Well, I didn't really do too much effort or any effort to publicize it.
+   I basically threw it out into a Google code and that's it.
    Okay.
-   I'm assuming that most people who find these projects are people who have had experience
-   in Ruby on Rails, and then start Googling, like, Active Record for Java, or things like
-   that.
+   And I'm assuming that most people who find these projects are people who have had experience
+   in Ruby on Rails and then start Googling like Active Record for Java or things like that.
    Okay.
-   So that similar wording is a little bit intentional, because you want people to be able to make
+   So that similar wording is a little bit intentional because you want people to be able to make
    that...
    Yeah.
    You mean ActiveJSBC?
    Yeah.
    I was thinking what to name this thing.
    Yeah.
-   I didn't particularly want to name it a funny, nonexistent name.
+   I didn't particularly want to name it a funny non-existing name.
    Right.
-   I thought that ActiveRecord is a good name.
-   It's also a name of a pattern.
-   So I took the word "active," because actually, as opposed to passive objects in Hibernate,
+   I thought that Active Record is a good name.
+   It's also a name of a pattern, but...
+   So I took the word active because actually as opposed to like passive objects in Hibernate,
    it's a lot more active.
-   And then I thought, on the flip side, it's a very thin veneer on top of JDBC.
+   And then I thought on the flip side, it's a very thin veneer on top of JDBC.
    Okay.
-   So ActiveJDBC, and then came about.
-   So you started with ActiveJDBC.
-   How did you come up with ActiveWeb?
+   So active JDBC and then came about.
+   So you started with active JDBC.
+   How did you come up with active web?
    What was the impetus for that?
-   Well, as soon as we implemented a massive back-end system for that company, we also
-   had to implement about four portals.
-   And to be honest, implementing ActiveJDBC was a lot harder.
-   And I always thought that ActiveWeb would be something like that.
-   Yeah.
+   Well, as soon as we implemented a massive backend system for that company, we also had
+   to implement about four portals.
+   And to be honest, implementing active JDBC was a lot harder.
+   And I always thought that active web would be something like that.
    And it turned out to be very easy to do.
-   I also implemented a number of other frameworks before then...
-   Mm-hmm.
-   ...to make it easier for people to build web applications.
-   So I did have experience doing that.
-   Okay.
-   Although they didn't go anywhere.
-   So a little bit about why did you choose to make these open-source tools?
+   I also implemented a number of other frameworks before them to make it easier.
+   It made it easier for people to build web applications.
+   So I did have experience doing that, although they didn't go anywhere.
+   So a little bit about why did you choose to make these open source tools?
    Why didn't you try to bundle them up and sell these tools as components?
-   Oh.
    Well, number one reason, I'm not a salesman.
-   But the reality is I used so much from open-source community.
+   But the reality is I used so much from open source community.
    Mm-hmm.
-   And I think that's where I learned a lot from you.
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, community organizer at UGtastic
-  S1:
-    name: Igor Polevoy
-    role: Creator of JavaLite, ActiveJDBC, and ActiveWeb
-turns:
-- speaker: M1
-  text: Hi, I'm Mike with UGtastic, sitting here with Igor Polevoy.
-- speaker: M1
-  text: Igor does a lot of free and open-source development on the Java platform.
-    He's created tools underneath the JavaLite family of frameworks and tools, including
-    ActiveWeb, ActiveJDBC, JSpec, and HTTP Lite.
-- speaker: M1
-  text: You kind of have this family, this framework stack of tools that you've built.
-    What kind of led to you creating those?
-- speaker: S1
-  text: Well, kind of envy, I think. At the time, I was a typical Java guy, not paying
-    attention to what was happening outside Java.
-- speaker: S1
-  text: In the meantime, the Ruby on Rails revolution took off. Back in 2007, I was
-    on a Java project, but Rails was slowly introduced into the project.
-- speaker: S1
-  text: I picked up Ruby as a language, and then Ruby on Rails, and I saw that developing
-    with Ruby on Rails was so much faster and better than developing anything we had
-    in Java.
-- speaker: S1
-  text: It was like, okay, Ruby developers enjoy this fantastic framework. Why don't
-    we have it in Java?
-- speaker: M1
-  text: Okay, so you were thinking, how can I make something that's as quick to develop
-    with? And that's where ActiveWeb came from?
-- speaker: S1
-  text: No, that was not my immediate reaction. My immediate reaction was, great,
-    somebody must already be developing this.
-- speaker: M1
-  text: Oh, okay. You wanted to see what was already out there.
-- speaker: S1
-  text: Yeah. I waited a couple years, from 2007 to 2009, but nothing like that came
-    out. So I rolled up my sleeves and started developing ActiveJDBC first.
-- speaker: M1
-  text: Okay, so you started with the database layer first.
-- speaker: S1
-  text: Yeah.
-- speaker: M1
-  text: Was that mostly something you used for your own projects?
-- speaker: S1
-  text: Oh no, no, no. From the very beginning, it was used on commercial projects.
-- speaker: S1
-  text: We were building a massive system for an insurance company, and we had two
-    and a half months to start and finish a massive project.
-- speaker: S1
-  text: If we didn't have an agile tool, and if we had gone with something like Hibernate,
-    it would have been difficult.
-- speaker: S1
-  text: At the time, I was managing a relatively small team. It was a team of four
-    people plus myself.
-- speaker: S1
-  text: By the time we started the project, ActiveJDBC was already working, although
-    not all features were there.
-- speaker: M1
-  text: Was it about 80 percent complete?
-- speaker: S1
-  text: It was probably 80 percent of what we needed for that one project.
-- speaker: M1
-  text: Okay. So you had to implement the rest in real time.
-- speaker: S1
-  text: Yes. And it was really funny because, as a developer or architect, sometimes
-    you architect things right, and sometimes you architect things the wrong way.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: This one was architected right. When we hit the need for many-to-many relationships,
-    we didn't have support for that in ActiveJDBC.
-- speaker: S1
-  text: My guys were like, 'Okay, back to Hibernate,' and I said, 'Wait, we're going
-    to have it two days from now.'
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And we had it two days later.
-- speaker: M1
-  text: So it was battle-tested from the word go. You had the idea and immediately
-    put it into production.
-- speaker: S1
-  text: Oh yeah. And by the way, the first implementation was for a crazy Oracle schema,
-    so right there we hit a lot of problems.
-- speaker: M1
-  text: So is ActiveJDBC Oracle-specific?
-- speaker: S1
-  text: No, no, no. It's not Oracle-specific. The next implementation was for MySQL,
-    and then basically there isn't much difference between databases other than generating
-    very specific queries for things like pagination.
-- speaker: M1
-  text: So how did you go about implementing all these adapters?
-- speaker: S1
-  text: Basically I implemented Oracle, MySQL, PostgreSQL, and H2. Two dialects for
-    Microsoft SQL Server were donated by the community.
-- speaker: M1
-  text: Okay. So by this point, it had already been released and was out in the wild.
-- speaker: M1
-  text: And by the way, what license is it under?
-- speaker: S1
-  text: Apache.
-- speaker: M1
-  text: Apache. Okay. How did people outside your immediate community find out about
-    it?
-- speaker: S1
-  text: I didn't really make much effort to publicize it. I basically threw it onto
-    Google Code, and that was it.
-- speaker: M1
-  text: I'm assuming that most people who found these projects had experience with
-    Ruby on Rails and started Googling things like 'Active Record for Java.'
-- speaker: S1
-  text: Yeah.
-- speaker: M1
-  text: So the similar wording was intentional because you wanted people to make that
-    connection?
-- speaker: S1
-  text: You mean ActiveJDBC?
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: I was thinking about what to name this thing. I didn't particularly want a
-    funny, made-up name.
-- speaker: S1
-  text: I thought ActiveRecord was a good name. It's also the name of a design pattern.
-- speaker: S1
-  text: So I took the word 'active' because, as opposed to passive objects in Hibernate,
-    it's a lot more active.
-- speaker: S1
-  text: On the flip side, it's a very thin veneer on top of JDBC. So ActiveJDBC came
-    about that way.
-- speaker: M1
-  text: So you started with ActiveJDBC. How did you come up with ActiveWeb? What was
-    the impetus for that?
-- speaker: S1
-  text: As soon as we implemented a massive back-end system for that company, we also
-    had to implement about four portals.
-- speaker: S1
-  text: To be honest, implementing ActiveJDBC was a lot harder than implementing ActiveWeb.
-    I always thought ActiveWeb would be harder.
-- speaker: S1
-  text: It turned out to be very easy to do.
-- speaker: S1
-  text: I had also implemented a number of other frameworks before then to make it
-    easier for people to build web applications, so I already had experience doing
-    that.
-- speaker: M1
-  text: Although those earlier frameworks didn't really go anywhere.
-- speaker: S1
-  text: Right.
-- speaker: M1
-  text: Why did you choose to make these open-source tools instead of bundling them
-    up and selling them as commercial components?
-- speaker: S1
-  text: Well, number one, I'm not a salesman.
-- speaker: S1
-  text: But the reality is I used so much from the open-source community, and I think
-    that's where I learned a lot.
-insights:
-- statement: Ruby on Rails fundamentally shifted developer expectations around productivity
-    and framework ergonomics across multiple ecosystems.
-  type: durable
-  confidence: high
-- statement: Frameworks developed under real production pressure often evolve quickly
-    toward practical, battle-tested abstractions.
-  type: durable
-  confidence: high
-- statement: Small engineering teams can deliver large systems rapidly when tooling
-    minimizes ceremony and accidental complexity.
-  type: durable
-  confidence: high
-- statement: Naming frameworks after recognizable architectural patterns improves
-    discoverability and lowers adoption friction.
-  type: durable
-  confidence: high
-- statement: The distinction between Active Record-style models and passive ORM entities
-    was a major architectural debate in the Java ecosystem during this era.
-  type: durable
-  confidence: high
-- statement: Google Code was a common distribution mechanism for open-source Java
-    projects before the widespread consolidation around GitHub.
-  type: time-bound
-  confidence: high
-- statement: Database portability concerns in the early 2010s frequently centered
-    around SQL dialect differences such as pagination support.
-  type: durable
-  confidence: high
-- statement: Teams in the late 2000s often viewed Hibernate as too heavyweight for
-    highly compressed delivery timelines.
-  type: time-bound
-  confidence: medium
-youtube:
-  title: "Building Active Record for Java: Igor Polevoy on JavaLite & Rails Influence"
-  description: |-
-    Mike Hall from UGtastic sits down with Igor Polevoy, creator of the JavaLite framework family, to discuss how the Ruby on Rails revolution influenced Java development in the late 2000s.
-
-    Igor explains the origins of ActiveJDBC, ActiveWeb, HTTP Lite, and related JavaLite tools, including how production pressure on a large insurance project forced rapid framework development and real-world architectural decisions.
-
-    Topics include:
-    - Ruby on Rails influence on Java frameworks
-    - Active Record vs Hibernate approaches
-    - Building ActiveJDBC under production deadlines
-    - Open-source development culture in the Java ecosystem
-    - Oracle, MySQL, PostgreSQL, and SQL dialect support
-    - Google Code era open-source distribution
-    - Pragmatic architecture and framework design
-
-    Speakers:
-    - Mike Hall (UGtastic)
-    - Igor Polevoy (JavaLite, ActiveJDBC, ActiveWeb)
-
-    Recorded: October 15, 2012
-
-    This interview captures a transitional period in software craftsmanship where Ruby on Rails heavily influenced developer expectations around productivity, simplicity, and framework ergonomics across multiple ecosystems.
-  tags:
-  - Igor Polevoy
-  - ActiveJDBC
-  - ActiveWeb
-  - JavaLite
-  - Ruby on Rails
-  - Java
-  - Hibernate
-  - Active Record
-  - Software Craftsmanship
-  - UGtastic
-  - Open Source
-  - JDBC
-  - ORM
-  - PostgreSQL
-  - MySQL
-  - Oracle
-  - Agile Development
-  - Java Frameworks
-  - Software Architecture
-  - 2012 Tech Interviews
-  chapters:
-  - timestamp: '00:00'
-    title: Introduction to Igor Polevoy and JavaLite
-  - timestamp: '00:42'
-    title: Ruby on Rails Changes Java Development
-  - timestamp: '02:08'
-    title: Why ActiveJDBC Was Created
-  - timestamp: '03:10'
-    title: Building a Massive Insurance Platform
-  - timestamp: '04:22'
-    title: Battle-Testing ActiveJDBC in Production
-  - timestamp: '05:11'
-    title: Oracle, MySQL, PostgreSQL, and Database Dialects
-  - timestamp: '06:18'
-    title: Open Source Distribution Through Google Code
-  - timestamp: '07:01'
-    title: Naming ActiveJDBC and Active Record Influences
-  - timestamp: '08:14'
-    title: The Origin of ActiveWeb
-  - timestamp: '09:02'
-    title: Why Igor Chose Open Source
+   Mm-hmm.
+   I used all kinds of Java frameworks, Ruby and Rails.
+   I felt that I should give something back.
+   Okay.
+   And so you put this out on, you created these projects and you put them out on the Google
+   Code.
+   And then you shared them out on the Google Code.
+   And people started to find them and did they just say, "Okay, we have these adapters and
+   here's some adapters."
+   Or are you getting patches back from anybody?
+   I have patches.
+   I created branches for people to work on.
+   Because Google Code is actually a subversion, it's not Git.
+   At the time when I designed it, I guess, Git wasn't as popular.
+   So some people were like, "Hey, let's move this thing to Git."
+   I'm like, "Okay, what advantages are we gonna get?"
+   Right.
+   So I guess historically, maybe someday we'll move it to Git.
+   But mostly you get what changes, requests through the forums or...?
+   Through forums, through personal emails, through patches, through branches, through, if you'll
+   call it that, issue tracking system that also we're hosting with Google.
+   So people submit sometimes patches, sometimes requests, sometimes find bugs.
+   Do you have any idea how many people are using ActiveJDBC or ActiveWeb?
+   I'm assuming that more people use ActiveJDBC than ActiveWeb because ActiveJDBC was older,
+   I guess, it came out before.
+   There's an interesting use for ActiveJDBC that I don't know.
+   Yeah.
+   Yeah.
+   There's an interesting use for ActiveJDBC that I found.
+   Some people with big websites, already built in Ruby and Rails, are building massive backend
+   processes and they're finding ActiveJDBC indispensable because it mirrors a schema that is compatible
+   to Rails one-to-one.
+   So you can have these Java components that can hit your existing...
+   Exactly the same.
+   Now you can call it your legacy Rails database versus what you used to call the legacy databases
+   before Rails.
+   Yep.
+   Okay.
+   So, but I mean, do you have any idea like, do you have...
+   How many people?
+   I don't know.
+   I threw, you know, it seems like, I'm assuming tens of thousands, maybe.
+   So it's a very active...
+   It's very active.
+   Oh, yeah.
+   Because look, I've been using so many different frameworks like Log4j and others, but I never
+   asked the question.
+   Yeah.
+   So the people who are actually active in a specific community is a tiny fraction of...
+   Yeah.
+   Of that community.
+   Yeah.
+   It's usually like for every one person you hear, there's 100 that you never hear from.
+   And so are you using, are you still using these tools?
+   Are these something that are still in maintenance?
+   Yes.
+   Well, the team that I started with back in 2009, actually I was running different teams
+   before, but in 2009 is when we started using the frameworks, grew to 12 people within span
+   of two years.
+   So, like four massive websites for members, for insurance companies based on ActiveJBC
+   and ActiveWeb for Johnson & Johnson, for Humana, for Discover, for insurance companies,
+   Discover.
+   Right.
+   Yeah.
+   So that was between...
+   I was with that company between 2009 and 2011, at which point I found new employment with
+   Groupon.
+   Ah, okay.
+   So that's where we're at right now.
+   Yeah.
+   And so you're using the tools here.
+   I've worked on a project with you that's, to be open and honest, I've worked on a project
+   with Igor and I have used the tools, they're good.
+   For Java.
+   But no, they are really high quality and that's anybody that I've spoken to that's used them
+   has had the same feedback.
+   But are you using them to build anything outside of Groupon?
+   Yes.
+   I also have my own startup.
+   It's called ExpressPigeon.com.
+   Well, ExpressPigeon as in...
+   We'll have a marketing system.
+   It's an email marketing system.
+   Yeah.
+   So the entire system is built, of course, on ActiveJBC, because I personally believe,
+   not because I built the tools, but I personally believe that without Active...
+   Basically, today in Java environment, you have only two contenders, the Play Framework
+   and Active Projects, the ones that I built, which allow you to develop at breakneck speed.
+   Okay.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   So that's why I'm using the tools.
+   Yeah.
+   time to sit down with me Mike thank you so much
