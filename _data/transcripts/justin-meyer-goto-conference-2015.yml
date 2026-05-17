@@ -1,90 +1,193 @@
 ---
-content: |-
-  Hi, it's Mike with Uktastic and I'm here at GoToConf 2015 again. I'm standing here with Justin Meyer who gave a talk on how to build single page applications the right way or did I say those in the right order? Close enough. Okay. Yeah, you did a good job. So those words were in the title of his talk. Thank you very much for taking the time to speak with me. So about building single page applications the right way, you know, what was that talk about that wasn't in the title?
-   Yeah, so the longer title would be that I've done consulting for like eight years front end JavaScript consulting built a bunch of different projects for a lot of different companies and I wanted to see if I could put in one 50 minute talk all the different different techniques and strategies we use to make like applications I would say competitive in a kind of the world we are
-   now where if you want it to be as fast as possible maintainable as possible. What are all the best things that you should probably be doing? And how do we do them as an example? Okay, so with your talk, what were some of the high points or what were some of the lessons maybe that you're trying to to bring and surface?
-   So the biggest one was what my favorite was was the model layer that we added. We kind of discovered that when you make a request for page data or like hey, I want a list of to do's, you're always in the params that you pass to the server, those ones represent a set.
-   Like I want to do's for user ID 5. So you put an object with user ID 5 in it. That represents a set and then if you can compare that set to other sets that you're loading, you can do all these sophisticated performance optimizations for free.
-   Right. So if you want to, if you have multiple, if you have pages that are making multiple requests at the same time, you can union those sets to make a single request for all data.
-   You can do things like fall through caching. And the biggest one of all of them I thought was how easy real time behavior becomes. So normally when you request data from a paper from the server and you get a list of elements or list of items to do's and you just stick that into the browser, right, you'll use like live, live binding. So if the list changes, well, the page will update itself, but you just get that list.
-   But if you can associate the set of data that was used to retrieve that list and keep a reference to that list and its set, then when a new data item comes in, you can automatically decide does it belong in that set or is it in that set and needs to be removed.
-   Right. So all the normal stuff you have to do with the real time of like updates come in and maintaining these lists and what's visually on the page, you can get that automatically if you have set awareness.
-   Okay. So were these lessons that were coming from your production environments or?
-   Yeah. So from our clients. So you're drifting a little bit. Am I drifting a little bit? Let me stay in?
-   Yeah. Yeah. You're great.
-   So the one from the, the biggest example for the set stuff came from an application we wrote that was kind of like a file manager and had real time connection. So if new files would come in, we'd have to put them in the right place.
-   Right. And also, um, it would load the folders and the folders and the files in two independent widgets and we wanted to write them so they didn't have to know about each other, like the folders and the files and folders.
-   So we wrote this layer to automatically detect that you were loading overlapping data, unify it, make a single request and then kind of feed it back out.
-   Yeah. So it sounds like, you know, a lot of people look at single page applications and think, oh, it's just easier to write JavaScript than it is to write server side code and deal with that.
-   But it sounds like it's not really the case. It sounds like there's a lot of thought that has to be put into the architecture supporting a single page application that isn't obvious.
-   Yes. If you want to, I mean, it's, if you're writing an application, it's all about how complex your application you're writing.
-   I do tend to think that writing JavaScript code for the same set of features tends to be easier doing front like thin server architecture is definitely easier than writing, you know, from the server's perspective because it's kind of somehow easier to like pull your data in, draw the page all in the client than to definitely do it on the server.
-   But what my talk was about is you want those kind of features that people want and expect out of apps now.
-   Right.
-   Like real time is a good example. Or if you want it to run really fast, you have to, yeah, there's a lot of sophisticated stuff you have to do. But I think we've found ways of making that a lot easier.
-   Okay. Okay. And, you know, the ecosystem around single page architectures is constantly in flux and ironically flux.
-   It's just MVVM branded with a new name.
-   So when people are looking at building a single page architecture now, and they're looking at a plethora of options, you know, Angular is God's, what the, some plastic name, I can't think of, Polymer.
-   Well, Google has Polymer.
-   Yeah, Google has Polymer and React and Flux and, you know, Backbone seems to be kind of on life support.
-   Yeah.
-   I mean, there's so many choices. I mean, how, do you talk about like how you can evaluate how your needs relate to capabilities or Ember, you know, that's another.
-   Yeah.
-   Because there's so many. Like, do you talk about those kinds of decisions?
-   Not in this talk, but I'm happy to talk about it. So I'm extremely biased because I'm the maintainer of KanJS, which is a framework and that's what my presentation showed.
-   Well, at least for what we care about is, I built JavaScript MVC like seven years ago, and what we say is that if you would use that and kept with us, we will be able to upgrade you to the latest, greatest features.
-   Because KanJS has everything that all the other frameworks have. But you're absolutely right in that it's a rapidly changing world.
-   Right.
-   Right? Backbone was huge. Angular was huge. Now it seems like React is going to eat a lot of Angular's lunch.
-   So, one of the first points I actually made in my talk was that how technology choices matter far less than management and user experience choices.
-   Okay.
-   And this is actually backed up by data that we've accumulated with our company.
-   Okay.
-   So the first thing I talked about is how we use checklists to make sure we're doing the right things on projects.
-   We go to a client and be like, "Hey, are you guys doing these things? Let's figure out a way to do that."
-   But we've kept data over the things over time of what we have and haven't done.
-   And we've all wrote what correlates strongest to project success.
-   And things like, you know, how long will it be until your first release?
-   Right.
-   Do you do social events with your company? Are you doing user experience testing?
-   Okay.
-   It matters far, far more than things like, are you even writing tests?
-   Okay.
-   So, just kind of taking a spin on culture as being a, well, I think there was a talk where they, or some kind of common wisdom about that your architecture represents your communication system.
-   Yeah.
-   And it sounds like you're kind of in that same spirit of like, if you're going to be building something, how are you guys communicating?
-   How, how is the company going about building its, its products?
-   Yeah.
-   Not just like, are you doing TDD, but how do you talk? How do you communicate?
-   That's exactly like, I think that, so everybody wants to do framework words discussions and they're valid because there's interesting differences.
-   Um, and I'm happy to go into that.
-   Yeah.
-   But my first point I always make is that if you're looking at a choice of framework is going to matter in terms of success or not with your application, it's probably not.
-   And if you really do care about success, you do care about those things or communication, are we building the right app for the right people, that kind of things.
-   Um, and I also think that in choice of framework, you know, pick which one you guys can get behind the most.
-   Cause I've been in situations where some people want this from framework and other people want this framework.
-   Right.
-   Right.
-   You need everybody on the same page, just get them on the same page.
-   It doesn't matter, even if you're going to be like, we want to use backbone.
-   Right.
-   Even though like it, in terms of features, it's kind of been left behind.
-   If everybody's together and you're all going to invest in it and everybody's going to get a good, the experts in backbone, you'll produce something way better than the newest bleeding edge framework with all the bells and whistles.
-   Yeah.
-   And it's even the same with like, it sounds like what you're describing is PHP versus Ruby versus Python.
-   If you're a professional, you know what you want to build, you're going to build something, you know, whether it's in VB or it's in Clojure, um, you know, two ends of the popularity spectrum.
-   Yeah.
-   Who thinks who's smartest, which, which we know it's, it's, it's the person who makes the most money.
-   Yeah.
-   So, but, but the point is, is that if you're happy with what you're going to be building and at least you can get everybody working together.
-   Mm-hm.
-   And wrapping their heads around the complexity of the problem, it doesn't matter whether you use flathead screwdrivers or Phillips.
-   Yeah.
-   You're going to, you're going to build something.
-   So, okay.
-   Well, thank you very much for taking the time to speak with me.
-   Awesome.
-   I appreciate it.
-   Thank you, Mike.
-   Thanks.
-   Thank you.
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: Justin Meyer
+    role: building single-page applications
+turns:
+- speaker: M1
+  text: Hi, it's Mike with UGtastic and I'm here at GOTO Conference 2015 again. I'm
+    standing here with Justin Meyer who gave a talk on how to build single page applications
+    the right way or did I say those in the right order? Close enough. Okay. Yeah,
+    you did a good job. So those words were in the title of his talk. Thank you very
+    much for taking the time to speak with me. So about building single page applications
+    the right way, you know, what was that talk about that wasn't in the title?
+- speaker: S1
+  text: |-
+    Yeah, so the longer title would be that I've done consulting for like eight years front end JavaScript consulting built a bunch of different projects for a lot of different companies and I wanted to see if I could put in one 50 minute talk all the different different techniques and strategies we use to make like applications I would say competitive in a kind of the world we are
+
+    now where if you want it to be as fast as possible maintainable as possible. What are all the best things that you should probably be doing? And how do we do them as an example? Okay, so with your talk, what were some of the high points or what were some of the lessons maybe that you're trying to to bring and surface?
+
+    So the biggest one was what my favorite was was the model layer that we added. We kind of discovered that when you make a request for page data or like hey, I want a list of to do's, you're always in the params that you pass to the server, those ones represent a set.
+
+    Like I want to do's for user ID 5. So you put an object with user ID 5 in it. That represents a set and then if you can compare that set to other sets that you're loading, you can do all these sophisticated performance optimizations for free.
+
+    Right. So if you want to, if you have multiple, if you have pages that are making multiple requests at the same time, you can union those sets to make a single request for all data.
+
+    You can do things like fall through caching. And the biggest one of all of them I thought was how easy real time behavior becomes. So normally when you request data from a paper from the server and you get a list of elements or list of items to do's and you just stick that into the browser, right, you'll use like live, live binding. So if the list changes, well, the page will update itself, but you just get that list.
+
+    But if you can associate the set of data that was used to retrieve that list and keep a reference to that list and its set, then when a new data item comes in, you can automatically decide does it belong in that set or is it in that set and needs to be removed.
+
+    Right. So all the normal stuff you have to do with the real time of like updates come in and maintaining these lists and what's visually on the page, you can get that automatically if you have set awareness.
+
+    Okay. So were these lessons that were coming from your production environments or?
+
+    Yeah. So from our clients. So you're drifting a little bit. Am I drifting a little bit? Let me stay in?
+
+    Yeah. Yeah. You're great.
+
+    So the one from the, the biggest example for the set stuff came from an application we wrote that was kind of like a file manager and had real time connection. So if new files would come in, we'd have to put them in the right place.
+
+    Right. And also, um, it would load the folders and the folders and the files in two independent widgets and we wanted to write them so they didn't have to know about each other, like the folders and the files and folders.
+
+    So we wrote this layer to automatically detect that you were loading overlapping data, unify it, make a single request and then kind of feed it back out.
+
+    Yeah. So it sounds like, you know, a lot of people look at single page applications and think, oh, it's just easier to write JavaScript than it is to write server side code and deal with that.
+
+    But it sounds like it's not really the case. It sounds like there's a lot of thought that has to be put into the architecture supporting a single page application that isn't obvious.
+
+    Yes. If you want to, I mean, it's, if you're writing an application, it's all about how complex your application you're writing.
+
+    I do tend to think that writing JavaScript code for the same set of features tends to be easier doing front like thin server architecture is definitely easier than writing, you know, from the server's perspective because it's kind of somehow easier to like pull your data in, draw the page all in the client than to definitely do it on the server.
+
+    But what my talk was about is you want those kind of features that people want and expect out of apps now.
+
+    Right.
+
+    Like real time is a good example. Or if you want it to run really fast, you have to, yeah, there's a lot of sophisticated stuff you have to do. But I think we've found ways of making that a lot easier.
+
+    Okay. Okay. And, you know, the ecosystem around single page architectures is constantly in flux and ironically flux.
+
+    It's just MVVM branded with a new name.
+
+    So when people are looking at building a single page architecture now, and they're looking at a plethora of options, you know, Angular is God's, what the, some plastic name, I can't think of, Polymer.
+
+    Well, Google has Polymer.
+
+    Yeah, Google has Polymer and React and Flux and, you know, Backbone seems to be kind of on life support.
+
+    Yeah.
+
+    I mean, there's so many choices. I mean, how, do you talk about like how you can evaluate how your needs relate to capabilities or Ember, you know, that's another.
+
+    Yeah.
+
+    Because there's so many. Like, do you talk about those kinds of decisions?
+
+    Not in this talk, but I'm happy to talk about it. So I'm extremely biased because I'm the maintainer of KanJS, which is a framework and that's what my presentation showed.
+
+    Well, at least for what we care about is, I built JavaScript MVC like seven years ago, and what we say is that if you would use that and kept with us, we will be able to upgrade you to the latest, greatest features.
+
+    Because KanJS has everything that all the other frameworks have. But you're absolutely right in that it's a rapidly changing world.
+
+    Right.
+
+    Right? Backbone was huge. Angular was huge. Now it seems like React is going to eat a lot of Angular's lunch.
+
+    So, one of the first points I actually made in my talk was that how technology choices matter far less than management and user experience choices.
+
+    Okay.
+
+    And this is actually backed up by data that we've accumulated with our company.
+
+    Okay.
+
+    So the first thing I talked about is how we use checklists to make sure we're doing the right things on projects.
+
+    We go to a client and be like, "Hey, are you guys doing these things? Let's figure out a way to do that."
+
+    But we've kept data over the things over time of what we have and haven't done.
+
+    And we've all wrote what correlates strongest to project success.
+
+    And things like, you know, how long will it be until your first release?
+
+    Right.
+
+    Do you do social events with your company? Are you doing user experience testing?
+
+    Okay.
+
+    It matters far, far more than things like, are you even writing tests?
+
+    Okay.
+
+    So, just kind of taking a spin on culture as being a, well, I think there was a talk where they, or some kind of common wisdom about that your architecture represents your communication system.
+
+    Yeah.
+
+    And it sounds like you're kind of in that same spirit of like, if you're going to be building something, how are you guys communicating?
+
+    How, how is the company going about building its, its products?
+
+    Yeah.
+
+    Not just like, are you doing TDD, but how do you talk? How do you communicate?
+
+    That's exactly like, I think that, so everybody wants to do framework words discussions and they're valid because there's interesting differences.
+
+    Um, and I'm happy to go into that.
+
+    Yeah.
+
+    But my first point I always make is that if you're looking at a choice of framework is going to matter in terms of success or not with your application, it's probably not.
+
+    And if you really do care about success, you do care about those things or communication, are we building the right app for the right people, that kind of things.
+
+    Um, and I also think that in choice of framework, you know, pick which one you guys can get behind the most.
+
+    Cause I've been in situations where some people want this from framework and other people want this framework.
+
+    Right.
+
+    Right.
+
+    You need everybody on the same page, just get them on the same page.
+
+    It doesn't matter, even if you're going to be like, we want to use backbone.
+
+    Right.
+
+    Even though like it, in terms of features, it's kind of been left behind.
+
+    If everybody's together and you're all going to invest in it and everybody's going to get a good, the experts in backbone, you'll produce something way better than the newest bleeding edge framework with all the bells and whistles.
+
+    Yeah.
+
+    And it's even the same with like, it sounds like what you're describing is PHP versus Ruby versus Python.
+
+    If you're a professional, you know what you want to build, you're going to build something, you know, whether it's in VB or it's in Clojure, um, you know, two ends of the popularity spectrum.
+
+    Yeah.
+
+    Who thinks who's smartest, which, which we know it's, it's, it's the person who makes the most money.
+
+    Yeah.
+
+    So, but, but the point is, is that if you're happy with what you're going to be building and at least you can get everybody working together.
+
+    Mm-hm.
+
+    And wrapping their heads around the complexity of the problem, it doesn't matter whether you use flathead screwdrivers or Phillips.
+
+    Yeah.
+
+    You're going to, you're going to build something.
+
+    So, okay.
+- speaker: M1
+  text: |-
+    Well, thank you very much for taking the time to speak with me.
+
+    Awesome.
+
+    I appreciate it.
+- speaker: S1
+  text: |-
+    Thank you, Mike.
+
+    Thanks.
+
+    Thank you.

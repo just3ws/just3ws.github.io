@@ -1,131 +1,270 @@
 ---
-content: |-
-  Hi, it's Mike with UTASIC, and I'm at RailsConf 2014, and I'm standing here with Aaron Patterson.
-   You might know him as TenderLove on Twitter and GitHub and all those social places, but he's going
-   to be giving the footnote to the conference tonight. I can't really call it the keynote,
-   because it's at the end. I don't know what to call it. The anti-keynotes. Yeah, the anti-keynotes.
-   Well, thank you very much for taking the time to speak with me. Can you tell me a little bit about
-   what your talk is going to be about? Yeah, well, first, I guess the first 30% is just going to be
-   like jokes and trolling. The second 30% is going to be, I don't know, some bugs and stuff.
-   With like, you know, active record internals, and the final 60% is going to be, excuse me, the final
-   50% is going to be about adequate record. And I know that adds up to 110%, but I always like
-   to give 110%. It's 100%, just don't add it. Don't add. So yeah, it's just going to be like, I don't know,
-   jokes, bugs, and then adequate record is what we're going to be talking about. Okay. What is adequate
-   record? It's a project I've been working on. I've been working on it for a very long time,
-   but I didn't really have a name for it. But what it is, it's just a set of patches on top of active
-   record. Like, it's just stuff that I've been doing on top of active record, specifically for performance,
-   like performance improvements to active record. Is it like just more of a streamlining of the
-   internals or? Well, it's been, so basically I've been refactoring the internals for a very long,
-   like I've had this idea for the performance improvement. And what the main performance improvement
-   is, is basically SQL statement generation caching. So actually the string that you pass to the database,
-   or that active record passes to the database, like the actual SQL statement, it caches the generation
-   of that. So we only do that once and your queries end up being faster from that. But I've been working
-   on basically internal refactoring for literally years just to get to the point where I could do,
-   I could have this particular thing, but I never had a name for it until recently.
-   Oh, really? Yeah. Well, that sounds like, like what, in other database engines where you can lean on
-   some of that query caching inside of it, you're pulling some of that capability out into, into the
-   Ruby layer, the app layer, so it can... Yeah, yeah. We are, we actually already do,
-   so active record actually already does query caching, like uses prepared statements and does
-   cache query, yeah, cache query execution. So we do that. The problem though, is that even though we,
-   even though we use those prepared statements, we still have to generate the SQL statement in order
-   to look up the prepared statement and then do that. So we've had, we've always had this overhead
-   before querying the database of like building up, you know, building up the query before we go out.
-   So this basically eliminates that overhead is part of the stuff I've been working on. Yeah. And you've,
-   you've been a contributor to Rails for a while. Yeah. Was Rails the first open source projects you were
-   involved in or how did you come to being a Rails core? Yeah, no, no, not at all. Rails was not the
-   first thing I worked on at all. I guess I've been working on, well, my very first open source commit
-   or open source patch was probably in, what was that? 2001, I think.
-   Um, but it was like, it was to a Perl, Perl library. Don't Google me, Perl please. It's embarrassing.
-   But you don't want anybody to know you did Perl. No, no. I can't. No, my first, like my first real
-   major open source stuff was with Ruby in maybe 2006 working on the mechanized gem. That was like
-   the first, my first like real, you know, meat. Also that was a port of the Perl Mechanizer. Perl
-   Mechanized. Yeah. Yeah. By Andy Lester. Yep. Who I've also interviewed. Oh, awesome. Awesome. From
-   my neck of the woods. Oh, that's awesome. Yeah. Yeah. So, so, so, so from one open source project to
-   another, uh, I'm, I'm making the network. I'm going to close all the open source contributors. Yeah. Yeah.
-   So I worked on actually, I, I mean, I didn't actually start Mechanize. I inherited it from,
-   I inherited it from somebody. Like I was using it, I was using it a lot. And like,
-   actually I have a fun story about using it. Uh, but anyway, yeah, I like the current or the
-   maintainer when I picked it up, he wasn't, he wasn't working on it so much. So I picked it up
-   from him and that was like my first responsibility, I guess. So that's when you became a grownup in,
-   in FOSS. Yes, yes, exactly. Is that when you decided to go with the beard or like, Oh, I own
-   something. I got a responsibility. Yeah. I probably got to grow up, grow out the beard.
-   But I, you know, but from there, when did you learn about rails? Uh, so
-   basically around the same time I was getting into Ruby working on like basically working on Mechanize,
-   um, just to do some, oh, automation, like web automation stuff. Um, and then
-   around that same time, the 15 minute video came out. Oh yeah. That doc filled a blog post. Yeah.
-   And then I saw, so I saw that blog. Yeah. I saw that and I was like, wow, I got to try this out.
-   So I tried out, like I tried out rails from there and I, I loved it. I was actually a,
-   I was actually a Java developer at the time. Like I worked at a, worked on J2EE systems,
-   um, and saw the, saw the blog in 15 minutes. And I was like, I must do this.
-   This looks so much easier than my job. Yeah. And more fun.
-   Yes, definitely. Uh, so that's how I got introduced, like how I was introduced to rails. And then,
-   I don't know, maybe about a year later, I got a job. I took a job doing rails development for a startup.
-   And then it was, and then you just started contributing patches or?
-   Yeah. Yeah. I mean, I did a lot of like, basically throughout that time,
-   my open source portfolio was growing, I suppose. And, um, uh, so at this startup,
-   I got experience doing rails development. Like I didn't really contribute any patches or anything.
-   I was just an app developer. Right. Um, but, uh, after that job,
-   I got a job at AT&T and I was doing app development there as well, but it turns out that like,
-   Oh, AT&T Interactive. Yeah. Seattle Ruby thing.
-   Yeah. AT&T Interactive. Yeah. I got a job there and they, um, it turns out they had a lot of Ruby
-   developers and a lot of them were using my open source stuff and they also needed patches to rails. And
-   I guess like one thing led to another and that's like, that's basically how I got involved.
-   Yeah. I have to say, it was a kind of a little trippy to meet people and be like,
-   you're using my stuff. Oh yes. Yes, absolutely. It was very like,
-   so at the time I had, I mean, you know, I knew there were people out there who used
-   my software, but I was just kind of abstract thing. Well, I was, yeah, so it was kind of abstract.
-   It was all, I was also completely oblivious to the actual number of people who were really using it.
-   Cause I mean, you know, you only get like, you get a bug report or whatever. You only get one,
-   I mean, you get a bug reports from a very small percentage of people who actually use your software.
-   And like, you don't understand exactly how small a percentage that is. Right. So then when you
-   understand like, Oh, it's actually a very tiny percentage, which means that there are tons of
-   people using your software, it kind of, it blows your mind. It's, it's pretty incredible. So yeah,
-   it was very nice. Yeah. Well, and now here you're speaking to a conference for probably the vast,
-   overwhelming majority. I mean, I, I don't know if I said exactly this to, to DHH, but that, you know,
-   I, I pay my bills using these tools and, uh, you know, and that's, that's, I, I, I often wonder for,
-   for people who are wanting a large projects or contributing to these, does that ever
-   alter your, your perception of, of the relationship with like, don't you just try not to think about
-   that too much? Uh, no, I mean, I think about that. It actually like, that actually makes me very happy
-   that people are using my software to pay, you know, pay bills. I mean, like, I, I don't know, like, I,
-   I got all serious on you, man. I'm sorry. No, no, no, it's okay. It's okay. It's okay. Like,
-   it's actually, so it's actually really cool to me because, um, I want to be able to help people,
-   right? Like, ideally I would, I want to help as many people as possible. And like,
-   my skills are programming. Like that is what I do. And that's something I can do well. And I feel like,
-   um, I have more reach to help people like doing, by doing open source stuff, I feel like I'm actually
-   improving the lives of more people than say, if I was working on an online advertising website.
-   Yeah. Which is where, yes, exactly. Or where, so like, that's, I mean,
-   that's why I love doing what I do. And I'm happy to think about that. It makes me happy that people
-   are making money with software I write. Yeah. So, so it feels good and it's fun. And then,
-   and that's overall the vibe you give on, on your Twitter and everything is you do the Friday hugs,
-   you have your cat, Gorby Puff. Yes, Gorby Puff. Yeah. I can remember if it's Gorby Puff or just
-   Gorby. Well, well, his full name is Gorbachev Puff Puff Thunder Horse the third, but we call him Gorby Puff for
-   short. Gorby Puff Puff Thunder Horse the third. Yeah. So you hear it here. Please, please get it
-   right on the Twitter. Yeah. I like, so I was thinking about... You don't know him well enough to call
-   him Gorby Puff. I was thinking about changing my name to Thunder Horse because it sounds like,
-   it sounds super awesome. When, when I got married, I was like, Hey, what do you think about changing our
-   last name to Thunder Horse? So we can be in a band or something. Yeah, we'll be the band. You do have
-   the metal vibe. I feel like, you know, I'm going to get a contact high. No, I'm kidding. I'm kidding.
-   I feel like I should be getting a contact high. I'm not actually a race, a race. No, I'm not going to
-   race that. Um, but, uh, well, uh, you know, and, and, and with, with that relationship to the community,
-   and sometimes I think, I was seeing, looking at the conference and I look at, uh, DHH's very, uh,
-   early talk, which is funny in his wry sense of his wry humor. It's very Danish, Denmarkian humor. Uh,
-   and then a little bit more, uh, uh, American humor, a little bit more obvious. Uh, and I,
-   I, and I was thinking like, what is the analogy of Bing Crosby and Bob Holt, where they were both
-   funny, but one was more, you know, the guffaw funny, and, uh,
-   Ayo. Yeah, yeah. Sway in the golf club, you know, and, uh, one was more funny, but in a very
-   upright way. Uh, so I just think it's, it's funny in our community that we have, uh,
-   we have our own Bing Crosby and, and Bob Holt. And, you know, I, I think though, when, when DHH
-   got up and, and, and gave his, his talk, that because he didn't have the Bob Holt to, to foil off of,
-   I think some people took what he said a little too literally, a little too much to heart.
-   Oh, yeah. Am I, am I, am I. No, I agree. I agree with you. I agree with you. Well,
-   but, but I think it's fine because, um, that's basically why I'm going to be trolling him in my talk.
-   Yeah. So when they, when they listen to you, they should think of it in the context of,
-   you know, these are two people who are central to the maintenance and future of rails and kind of
-   orbiting around each other in, in getting the direction that you listen. Yes. I am the, we're
-   the yin and yang. Yeah. I suppose. I'm going to have the little captain's cap, uh, uh, in the golf
-   club. Yes, exactly. But I'm sure, uh, I'm sure DHH knows how to dance really well. Oh yeah. Yeah.
-   Um, well, thank you very much for taking the time. Oh, thank you so much. I really appreciate it.
-   Thank you. It was good to meet you here. Have a hug.
-   I'll get it on a Friday. User groups with lots to say, interviews and more. No way. Sharing great ideas
-   in the tech community. Fascinating conversations, a plethora of information. Find out for yourself
-   today at Ugetastic.com.
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: Aaron Patterson
+    role: Rails core and keynote perspective
+turns:
+- speaker: M1
+  text: |-
+    Hi, it's Mike with UTASIC, and I'm at RailsConf 2014, and I'm standing here with Aaron Patterson.
+
+    You might know him as TenderLove on Twitter and GitHub and all those social places, but he's going
+
+    to be giving the footnote to the conference tonight. I can't really call it the keynote,
+
+    because it's at the end. I don't know what to call it. The anti-keynotes. Yeah, the anti-keynotes.
+
+    Well, thank you very much for taking the time to speak with me. Can you tell me a little bit about
+
+    what your talk is going to be about? Yeah, well, first, I guess the first 30% is just going to be
+
+    like jokes and trolling. The second 30% is going to be, I don't know, some bugs and stuff.
+
+    With like, you know, active record internals, and the final 60% is going to be, excuse me, the final
+
+    50% is going to be about adequate record. And I know that adds up to 110%, but I always like
+
+    to give 110%. It's 100%, just don't add it. Don't add. So yeah, it's just going to be like, I don't know,
+
+    jokes, bugs, and then adequate record is what we're going to be talking about. Okay. What is adequate
+
+    record? It's a project I've been working on. I've been working on it for a very long time,
+
+    but I didn't really have a name for it. But what it is, it's just a set of patches on top of active
+
+    record. Like, it's just stuff that I've been doing on top of active record, specifically for performance,
+
+    like performance improvements to active record. Is it like just more of a streamlining of the
+
+    internals or? Well, it's been, so basically I've been refactoring the internals for a very long,
+
+    like I've had this idea for the performance improvement. And what the main performance improvement
+
+    is, is basically SQL statement generation caching. So actually the string that you pass to the database,
+
+    or that active record passes to the database, like the actual SQL statement, it caches the generation
+
+    of that. So we only do that once and your queries end up being faster from that. But I've been working
+
+    on basically internal refactoring for literally years just to get to the point where I could do,
+
+    I could have this particular thing, but I never had a name for it until recently.
+
+    Oh, really? Yeah. Well, that sounds like, like what, in other database engines where you can lean on
+
+    some of that query caching inside of it, you're pulling some of that capability out into, into the
+
+    Ruby layer, the app layer, so it can... Yeah, yeah. We are, we actually already do,
+
+    so active record actually already does query caching, like uses prepared statements and does
+
+    cache query, yeah, cache query execution. So we do that. The problem though, is that even though we,
+
+    even though we use those prepared statements, we still have to generate the SQL statement in order
+
+    to look up the prepared statement and then do that. So we've had, we've always had this overhead
+
+    before querying the database of like building up, you know, building up the query before we go out.
+
+    So this basically eliminates that overhead is part of the stuff I've been working on. Yeah. And you've,
+
+    you've been a contributor to Rails for a while. Yeah. Was Rails the first open source projects you were
+
+    involved in or how did you come to being a Rails core? Yeah, no, no, not at all. Rails was not the
+
+    first thing I worked on at all. I guess I've been working on, well, my very first open source commit
+
+    or open source patch was probably in, what was that? 2001, I think.
+
+    Um, but it was like, it was to a Perl, Perl library. Don't Google me, Perl please. It's embarrassing.
+
+    But you don't want anybody to know you did Perl. No, no. I can't. No, my first, like my first real
+
+    major open source stuff was with Ruby in maybe 2006 working on the mechanized gem. That was like
+
+    the first, my first like real, you know, meat. Also that was a port of the Perl Mechanizer. Perl
+
+    Mechanized. Yeah. Yeah. By Andy Lester. Yep. Who I've also interviewed. Oh, awesome. Awesome. From
+
+    my neck of the woods. Oh, that's awesome. Yeah. Yeah. So, so, so, so from one open source project to
+
+    another, uh, I'm, I'm making the network. I'm going to close all the open source contributors. Yeah. Yeah.
+
+    So I worked on actually, I, I mean, I didn't actually start Mechanize. I inherited it from,
+
+    I inherited it from somebody. Like I was using it, I was using it a lot. And like,
+
+    actually I have a fun story about using it. Uh, but anyway, yeah, I like the current or the
+
+    maintainer when I picked it up, he wasn't, he wasn't working on it so much. So I picked it up
+
+    from him and that was like my first responsibility, I guess. So that's when you became a grownup in,
+
+    in FOSS. Yes, yes, exactly. Is that when you decided to go with the beard or like, Oh, I own
+
+    something. I got a responsibility. Yeah. I probably got to grow up, grow out the beard.
+
+    But I, you know, but from there, when did you learn about rails? Uh, so
+
+    basically around the same time I was getting into Ruby working on like basically working on Mechanize,
+
+    um, just to do some, oh, automation, like web automation stuff. Um, and then
+
+    around that same time, the 15 minute video came out. Oh yeah. That doc filled a blog post. Yeah.
+
+    And then I saw, so I saw that blog. Yeah. I saw that and I was like, wow, I got to try this out.
+
+    So I tried out, like I tried out rails from there and I, I loved it. I was actually a,
+
+    I was actually a Java developer at the time. Like I worked at a, worked on J2EE systems,
+
+    um, and saw the, saw the blog in 15 minutes. And I was like, I must do this.
+
+    This looks so much easier than my job. Yeah. And more fun.
+
+    Yes, definitely. Uh, so that's how I got introduced, like how I was introduced to rails. And then,
+
+    I don't know, maybe about a year later, I got a job. I took a job doing rails development for a startup.
+
+    And then it was, and then you just started contributing patches or?
+- speaker: S1
+  text: |-
+    Yeah. Yeah. I mean, I did a lot of like, basically throughout that time,
+
+    my open source portfolio was growing, I suppose. And, um, uh, so at this startup,
+
+    I got experience doing rails development. Like I didn't really contribute any patches or anything.
+
+    I was just an app developer. Right. Um, but, uh, after that job,
+
+    I got a job at AT&T and I was doing app development there as well, but it turns out that like,
+
+    Oh, AT&T Interactive. Yeah. Seattle Ruby thing.
+
+    Yeah. AT&T Interactive. Yeah. I got a job there and they, um, it turns out they had a lot of Ruby
+
+    developers and a lot of them were using my open source stuff and they also needed patches to rails. And
+
+    I guess like one thing led to another and that's like, that's basically how I got involved.
+
+    Yeah. I have to say, it was a kind of a little trippy to meet people and be like,
+
+    you're using my stuff. Oh yes. Yes, absolutely. It was very like,
+
+    so at the time I had, I mean, you know, I knew there were people out there who used
+
+    my software, but I was just kind of abstract thing. Well, I was, yeah, so it was kind of abstract.
+
+    It was all, I was also completely oblivious to the actual number of people who were really using it.
+
+    Cause I mean, you know, you only get like, you get a bug report or whatever. You only get one,
+
+    I mean, you get a bug reports from a very small percentage of people who actually use your software.
+
+    And like, you don't understand exactly how small a percentage that is. Right. So then when you
+
+    understand like, Oh, it's actually a very tiny percentage, which means that there are tons of
+
+    people using your software, it kind of, it blows your mind. It's, it's pretty incredible. So yeah,
+
+    it was very nice. Yeah. Well, and now here you're speaking to a conference for probably the vast,
+
+    overwhelming majority. I mean, I, I don't know if I said exactly this to, to DHH, but that, you know,
+
+    I, I pay my bills using these tools and, uh, you know, and that's, that's, I, I, I often wonder for,
+
+    for people who are wanting a large projects or contributing to these, does that ever
+
+    alter your, your perception of, of the relationship with like, don't you just try not to think about
+
+    that too much? Uh, no, I mean, I think about that. It actually like, that actually makes me very happy
+
+    that people are using my software to pay, you know, pay bills. I mean, like, I, I don't know, like, I,
+
+    I got all serious on you, man. I'm sorry. No, no, no, it's okay. It's okay. It's okay. Like,
+
+    it's actually, so it's actually really cool to me because, um, I want to be able to help people,
+
+    right? Like, ideally I would, I want to help as many people as possible. And like,
+
+    my skills are programming. Like that is what I do. And that's something I can do well. And I feel like,
+
+    um, I have more reach to help people like doing, by doing open source stuff, I feel like I'm actually
+
+    improving the lives of more people than say, if I was working on an online advertising website.
+
+    Yeah. Which is where, yes, exactly. Or where, so like, that's, I mean,
+
+    that's why I love doing what I do. And I'm happy to think about that. It makes me happy that people
+
+    are making money with software I write. Yeah. So, so it feels good and it's fun. And then,
+
+    and that's overall the vibe you give on, on your Twitter and everything is you do the Friday hugs,
+
+    you have your cat, Gorby Puff. Yes, Gorby Puff. Yeah. I can remember if it's Gorby Puff or just
+
+    Gorby. Well, well, his full name is Gorbachev Puff Puff Thunder Horse the third, but we call him Gorby Puff for
+
+    short. Gorby Puff Puff Thunder Horse the third. Yeah. So you hear it here. Please, please get it
+
+    right on the Twitter. Yeah. I like, so I was thinking about... You don't know him well enough to call
+
+    him Gorby Puff. I was thinking about changing my name to Thunder Horse because it sounds like,
+
+    it sounds super awesome. When, when I got married, I was like, Hey, what do you think about changing our
+
+    last name to Thunder Horse? So we can be in a band or something. Yeah, we'll be the band. You do have
+
+    the metal vibe. I feel like, you know, I'm going to get a contact high. No, I'm kidding. I'm kidding.
+
+    I feel like I should be getting a contact high. I'm not actually a race, a race. No, I'm not going to
+
+    race that. Um, but, uh, well, uh, you know, and, and, and with, with that relationship to the community,
+
+    and sometimes I think, I was seeing, looking at the conference and I look at, uh, DHH's very, uh,
+
+    early talk, which is funny in his wry sense of his wry humor. It's very Danish, Denmarkian humor. Uh,
+
+    and then a little bit more, uh, uh, American humor, a little bit more obvious. Uh, and I,
+
+    I, and I was thinking like, what is the analogy of Bing Crosby and Bob Holt, where they were both
+
+    funny, but one was more, you know, the guffaw funny, and, uh,
+
+    Ayo. Yeah, yeah. Sway in the golf club, you know, and, uh, one was more funny, but in a very
+
+    upright way. Uh, so I just think it's, it's funny in our community that we have, uh,
+
+    we have our own Bing Crosby and, and Bob Holt. And, you know, I, I think though, when, when DHH
+
+    got up and, and, and gave his, his talk, that because he didn't have the Bob Holt to, to foil off of,
+
+    I think some people took what he said a little too literally, a little too much to heart.
+
+    Oh, yeah. Am I, am I, am I. No, I agree. I agree with you. I agree with you. Well,
+
+    but, but I think it's fine because, um, that's basically why I'm going to be trolling him in my talk.
+
+    Yeah. So when they, when they listen to you, they should think of it in the context of,
+
+    you know, these are two people who are central to the maintenance and future of rails and kind of
+
+    orbiting around each other in, in getting the direction that you listen. Yes. I am the, we're
+
+    the yin and yang. Yeah. I suppose. I'm going to have the little captain's cap, uh, uh, in the golf
+
+    club. Yes, exactly. But I'm sure, uh, I'm sure DHH knows how to dance really well. Oh yeah. Yeah.
+- speaker: M1
+  text: |-
+    Um, well, thank you very much for taking the time. Oh, thank you so much. I really appreciate it.
+
+    Thank you. It was good to meet you here. Have a hug.
+
+    I'll get it on a Friday. User groups with lots to say, interviews and more. No way. Sharing great ideas
+
+    in the tech community. Fascinating conversations, a plethora of information. Find out for yourself
+
+    today at UGtastic.
