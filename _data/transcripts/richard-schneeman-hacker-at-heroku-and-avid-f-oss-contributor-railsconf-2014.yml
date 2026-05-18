@@ -98,7 +98,7 @@ turns:
      that the path that it's it's a common path it's get in there do something be helpful reach out communicate
      and if you're doing good stuff eventually you're probably going to become a trusted member of the
      team and uh you just keep going at uh uh charles nutter had kind of the same kind of story he was
-     just saw some issues and just wanted to help out and eventually you know he's running j ruby next thing you
+     just saw some issues and just wanted to help out and eventually you know he's running JRuby next thing you
      know yeah yeah I mean like very like the the famous quote like writers write it's like open source
      contributors contribute yeah like just you know start out documentation and like it's uh it's not magic
      it's a lot of work yeah and uh so I'm just curious working with with the uh the ruby uh team you probably
@@ -125,39 +125,39 @@ turns:
      so it's a little bit more complicated yeah and it's like we well we you know and so added uh some
      some warnings and some things and just uh this kind of like gradual trying to gently lead you to the path of
      happiness and zen you know and this is uh probably a question on the left field but I'm since I mentioned
-     charles nutter earlier um headius is a jruby uh maintainer the there's there's a trend towards uh
-     moving towards uh using jruby or encouraging people to use jruby because of uh proper threading and
+     charles nutter earlier um headius is a JRuby uh maintainer the there's there's a trend towards uh
+     moving towards uh using JRuby or encouraging people to use JRuby because of uh proper threading and
      and um you know some of that support when you're having long running processes is that something that
-     um like you are you using cruby or are you starting to encourage people to look at jruby with Heroku or
-     is that uh so so we supported jruby for quite a while actually and um we we work with charles quite
+     um like you are you using cruby or are you starting to encourage people to look at JRuby with Heroku or
+     is that uh so so we supported JRuby for quite a while actually and um we we work with charles quite
      a bit we also we have uh we have Rubinius it's it's actually technically not supported okay but uh but
      it still it still runs and it works our support is actually provided through the Rubinius team okay um
      um yeah and uh so i just generally wreck encourage people to like play and have fun and like please
-     like if you're on mri now try mr try jruby right and like i've written when we first when we first
-     launched jruby like i wrote docs on like migrating a rails app and um you know just some some things
+     like if you're on mri now try mr try JRuby right and like i've written when we first when we first
+     launched JRuby like i wrote docs on like migrating a rails app and um you know just some some things
      uh like even being a be trying that as a gem author i was like oh wow there's all of these gems that
-     like just don't work in on jruby because of like c extensions and um and so like in the future now
-     that i'm working on gems i'm very conscious of like how like on travis i always test on jruby and
+     like just don't work in on JRuby because of like c extensions and um and so like in the future now
+     that i'm working on gems i'm very conscious of like how like on travis i always test on JRuby and
      always test on Rubinius i was to say like with travis you can have multiple uh targets exactly you can
-     you can just say test this on jruby or mri 19 182 things like that so you can get some of that
+     you can just say test this on JRuby or mri 19 182 things like that so you can get some of that
      flexibility yeah and and it's also the the more people who try it the more people who demand these
      things and are looking for them the more knowledge there is out there it's a lot easier today to
-     switch over your app to use jruby um i mean the community portion of it typically my code has been
+     switch over your app to use JRuby um i mean the community portion of it typically my code has been
      relatively trivial most of my code just works and it's and like over time like it gets faster uh and so
      like i think every app is slightly different uh so some people just want like quick running you know
      fast scripts and like that's exactly like you cannot beat the mri like boot up time it is great and
      amazing like if you want to if you can parallelize and you could you're actually doing real ruby like
-     number crunching like jruby and threads like i still but i still actually recommend mri even though we have
+     number crunching like JRuby and threads like i still but i still actually recommend mri even though we have
      a global interpreter lock it's still not it's not like you can still write threaded code especially
      if you're using like a web server um or you're on the web like you're using database calls you're
      hitting apis all these other things didn't you create a background worker gem called threaded or
      something like that yeah yeah yeah yeah yeah because actually i i spiked on that myself between sucker punch and
-     and uh threaded uh so yeah and being able to use that for background on jruby and save a few bucks on dynos
+     and uh threaded uh so yeah and being able to use that for background on JRuby and save a few bucks on dynos
      was yeah yeah so i forgot about that so even even in other smaller aspects it might not be as as popular
      you've done a bunch of open source sorry that was that was when you're talking about threads and i'm sitting
      there oh yeah that's that that's something that's you know you can do that you don't necessarily always
      have to spin up a rescue worker in a separate dino or in Heroku and and that's the reason i was asking
-     about moving to jruby is um you know being able to do those things where i can consolidate and have
+     about moving to JRuby is um you know being able to do those things where i can consolidate and have
      one like if i don't have a long running process it's going to be kind of quick but i want to be able
      to just return my response back to the clients i can uh you know run this thing in a separate uh thread
      mm-hmm and uh earlier today you had a book signing so you're you're you're moving into the world of
