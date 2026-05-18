@@ -1,1044 +1,6873 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Guest
-    role: Guest
-turns:
-- speaker: M1
-  text: My job is slinging Perl and PHP right now at Follett Library Resources. We're
-    the sister company to Follett Software. We sell the books. They manage the books.
-    That's oversimplified, but that's all right. In addition to this, I do a lot of
-    other things. I manage XML transfer stacks. I do all sorts of stuff. But I also
-    work on other things by night. One of those things, as I explained earlier, was
-    that I've been working on jQuery-based websites, doing some AJAX things, just
-    learning a new technology. Because, as I explained earlier, you might want to
-    rotate that a little bit. But, as I explained earlier, we all need to keep growing
-    in order to be the best craftsman that we can be. So, this is my growth experiment,
-    and I look forward to sharing it with you. Now, coming into tonight, I'm hoping
-    that you know... Well, I have Perl up here. But, really, I'm hoping that you know
-    a dynamic language of some sort. Because the concepts are all going to be applicable.
-    Perl is what I know. It's my bread and butter. But, it's not strictly necessary
-    to know Perl to get most of the core concepts here. I ask that you know a dynamic
-    language of some sort, just so that you have some references as we move forward.
-    Because I'm not going to be explaining blocks. I'm not going to be explaining
-    comparisons. I'm not going to be doing a lot of basic stuff. I'm going to gloss
-    right through just to give you an introduction. Excuse me. Has anybody not used
-    a dynamic language? Like, JavaScript, Ruby, Python, Perl? So, everybody knows
-    the concepts?
-- speaker: S1
-  text: Okay, cool. So, I'm also hoping that you know some HTML and CSS. It's going
-    to become important as we go later on down the line. It's not necessary that you're
-    at an expert level. But, in order to be able to tie all this stuff together, these
-    really are web languages. So, you have to have some basis there. I'm also hoping
-    that you may or may not know some basic JavaScript. That's okay. I'm not expecting
-    anyone to really have some serious programming with it. Although, in this group
-    here, I am kind of hoping some of you do. Because, I need your help. I'm giving
-    this talk again in a month to the Yet Another Pearl Conference. And, I'm hoping
-    you guys can help be my gimmicks here. So, if you have any questions, clarifications,
-    suggestions, please, feel free, raise your hand, ask the question. I won't bite,
-    I promise. And, we can talk about it and we can move forward here. So, please
-    also be patient with me. Especially to the guys that know this stuff. Obviously,
-    I'm going to be covering a lot of things that you may already know. But, I need
-    to be able to bring people up to the mic. So, where I'm going to start today is,
-    I have a pro-based, to-do list app. It's a simple little chat box. It has priority.
-    It has one of the things checked. Give me a summary, give me a description. It's
-    a very basic app. It's written right now with HTML4. We're going to make changes
-    to it to bring it up to HTML5. Discuss what sorts of changes need to happen in
-    order to do that. Then, we'll introduce some JavaScript, some jQuery into the
-    app. Make it work a little better. And then, finally, we'll create a JSON backend.
-    Get some data transfer in there so that we don't have to do a refresh every time
-    we do something like add a text. So, that's where we're going to go for this.
-    I had this slide up earlier. If you haven't had an opportunity to grab the code,
-    I still have it. If you need it, but otherwise, if you have it, you can follow
-    along. So, some notes on that code, however. I'm going to say the standard demo
-    app caveats. This is not production-level code. While it's not necessarily vulnerable
-    to SQL injection or anything like that, it's certainly a single-user system. There's
-    not really a whole lot of error checking. It's mostly code intended to demonstrate
-    the concepts. Within the code, there is a prerequisite script. If you run it,
-    it will tell you if you have everything that you need installed in order to successfully
-    run the code. If you don't have anything that's in there, in that same directory
-    are the actual installation tarballs for that code. So, there's a couple of Pro
-    modules. If you don't have them, they're there. Also, since this is a web app,
-    obviously, you need a web server to run it. You might need to tweak your HTTPD.
-    com in order to run CGI. It's pretty simple to do. Finally, the state in here
-    is transitional by design. What I mean by that is, as we heard earlier, we're
-    doing the simplest thing that could possibly work here. So, most of the trade-offs
-    that I make in this code are, again, to be able to demonstrate the concepts rather
-    than worry about covering every single edge case. So, with that, I'm going to
-    present the app. And as you can see, it's just a simple to-do list app. Right
-    now, there's no data in it. So, for example, I can add a task here. I can click
-    on that, and I can add it. Later, I'll be able to eat pizza. So, now I've got
-    to hit the sync button, and now that task goes away. And so, that's the basic
-    controls within the app. It's really straightforward here. So, with that in mind,
-    let's talk HTML. If I come back here and I look at the source code, you will see
-    that it's written in pretty standard, strict HTML 401. It could be transitional.
-    It could be anything else. I just wrote strict. It does validate as plain. You'll
-    see that, you know, I do the standard things. I declare the character set. I set
-    some styles throughout. I've got a basic table in there that's got all the information
-    in it. And that's pretty standard HTML stuff. Assuming everyone's pretty much
-    been aware or knows what this is doing here. So, with that in mind, HTML5 to move
-    from HTML4 is actually more about simplicity. It's more powerful, but a lot of
-    the assumptions that were built into HTML4, a lot of the extensibility, it's found
-    to not be needed. Again, the simplest thing that could possibly work. It's a thing
-    you're tied together.
-- speaker: M1
-  text: Exactly.
-- speaker: S1
-  text: It could have been better. However, in a HTML5 world, valid HTML is more important
-    than ever. Writing bad HTML, writing invalid concepts, things like that, are the
-    quickest way to break JavaScript apps that rely on modifying the web page dynamic.
-    It's really important to have that clean so that you don't have unexpected failures
-    happen. If you don't close your tables properly, if you're mixing data around,
-    it's very easy to get things in the wrong place very quick. And if you have a
-    dynamic app, you may not have an easy way to get out of that other than to reboot
-    or, of course, refresh the page. Browsers act differently with invalid HTML. Pretty
-    much everyone should know about Internet Explorer's Quartz mode, where you don't
-    get any sort of standard performance if you've got even the barest hint of invalid
-    HTML. It falls back to something that works for most everybody, but then you don't
-    get all the whiz-bang features that you want in your modern web apps. Especially,
-    HTML4 introduced the ID attribute for elements that you could uniquely identify
-    attributes on a web page. Don't duplicate those. It makes for very difficult to
-    diagnose problems. You know, good validators will point those out to you, but
-    especially when you're modifying, when you're looking for elements inside your
-    document, if you have multiples, you don't know what you're going to wind up with.
-    So, the other thing is that fallback or backwards compatibility is even more important
-    these days than it ever happened. In the past, you'd have a page you knew that
-    you were dealing with Internet Explorer, you're dealing with Firefox, you know,
-    you might even get the random person that was still on Netscape Navigator 4. 01.
-    It happens. However, these days, those browsers are generally being supplanted.
-    IE6 is no longer supported. I don't know if you do use it here at college. There's
-    my gig. Oh, come on. We'll use IE5, too. There is that.
-- speaker: M1
-  text: Use or support?
-- speaker: S1
-  text: But even more than that, we all have browsers built into our cell phones.
-    Now, I've got a nice Motorola cell phone here. It's about a year old. Still running,
-    I think it's Froyo on here with the browsers that that came with. So that browser
-    is two, three years old. Other people have, well, we said have even older browsers
-    or text-based browsers, or, you know, the full, rich browser support that we come
-    to expect in these apps isn't available on cell phones, on tablets, on these platforms
-    that people are pushing these apps out to today. So it's important whenever we're
-    talking about making these changes that we keep in mind we have to have a fallback
-    or we're going to alienate a bunch of users. Especially if you're writing something
-    that's intended to be social or to have people using it on the go. The quickest
-    way to get people who not use it is to break their mobile support. There's a great
-    website that I reference all the time called caniuse. com. The goal of the site
-    is that it will tell you for all the various modern-day HTML components for HTML5,
-    for CSS, for JavaScript, for AJAX, what versions of what browsers support that
-    and whether those browsers are still current. So, for example, if I click through
-    on this, oh, that's right, I can't pull that up. Anyway, if I go and I pull it
-    up and I take a look at table shading support, I can see that pretty much every
-    browser supports that. Some of the Opera mobiles don't, and IE6 has some problems
-    with some of the gradients, but for the most part, it works okay. On the other
-    hand, you know, get XML, getting XML over the wire, that's only supported in more
-    modern browsers. Some of the CSS3s features, the dynamic shifting and that, that's
-    all in the newest browsers. In fact, there's some stuff that some browsers, like
-    Internet Explorer, just plain out don't support at all, and if you're writing
-    stuff that isn't supported in Internet Explorer, a lot of your users aren't going
-    to be able to do that. So, if you're looking to use a new WSBand feature, check
-    there first, see if it's a good idea to include it if a majority of people would
-    actually be able to use it. So, there's a few things we do, we can do to convert
-    HTML 4 to 5 pretty easy. The first one is we need a new doctype. HTML5 no longer
-    uses a namespace or an explicit version declaration. It just says doctype HTML.
-    That goes at the top of your HTML. That tells the browsers that you're writing
-    in an HTML5 compatible mode. HTML, language equals English. Now, language doesn't
-    actually do anything as far as helping to parse the, uh, parse it or, uh, help
-    with translation necessarily or anything like that. It just identifies what language
-    the main content is in order to give browsers a heads up of what kinds of data
-    can expect. You know, if there's, if there's Arabic, if Arabic is the primary
-    language and it's going to choose to lay things out differently than it would
-    for English, for example. Uh, if you have screen readers, they'll know to read
-    in a Arabic voice instead of an English voice, things like that. Uh, language
-    is optional, but you don't need names based declarations in here anymore. Uh,
-    you don't need a lot of other garbage in here. It's pretty much been simplified
-    down to just then. Um, everyone saw the meta tag before where you're declaring
-    a whole bunch of things up at the top of the document that identify like the character
-    set. The character set is one of those that, uh, has been simplified down. So
-    you just say that the meta character set is UTF-ing. Uh, the standard does say
-    that's got to be in the first 10, 24 bytes of your file just so that the browser
-    knows what kind of character set to render the rest of the way. Uh, if it's not,
-    then you get whatever the default to the browser is or whatever your web server
-    told. Uh, the script and the style tags, which do our JavaScript and our CSS,
-    you don't have to say that this is a script type equals JavaScript anymore. Just
-    say script. The days of, the days of action script are gone. Uh, the days of BB
-    script are gone. JavaScript, wave of the future. So, again, we simplify, we get
-    rid of the extraneous stuff here necessary, and we just assume that if you see
-    a script, unless you know otherwise, it's JavaScript. one thing that XHTML did
-    that HTML4 did not do, is introduce elements that are attributes that are not
-    collapsed. In HTML4, you could just say input type equals checkbox checked. In
-    HTML5, those have to be explicitly stated checked equals checked, or selected
-    equals selected. it was determined to keep that so that you could get well formed
-    and you would know that this is actually intended to be an attribute and not random
-    garbage thrown into a tab.
-- speaker: M1
-  text: excuse me, is the input still not closed? Do you know what I'm saying?
-- speaker: S1
-  text: Yes, there's no XML closing. Yes, and I'm going to get to that in just a second.
-    No, that's all right. Yeah, the slash is gone, and I'll get to that. It should
-    be there. The biggest thing that affects people moving to HTML5, CSS is now the
-    way to do all presentational tags. There is no more font tag, there is no more
-    Italian tag, there is no more strong tag. You're expected to do all this in CSS.
-    No, there is a strong tag. There's no bold tag. Strong is semantic. Strong is
-    okay, EM is okay. There's some things you just can't do with CSS. Well, no, it's
-    not that. Strong is semantic.
-- speaker: M1
-  text: You use CSS to say, what does strong mean?
-- speaker: S1
-  text: Bold says, make it darker. That's what CSS is supposed to do. But saying strong
-    is not a EM. It's not a style. It just means something you hear is important.
-    They're highlighting a block. Thank you for that.
-- speaker: M1
-  text: I appreciate that. Of course, one thing is if you want to use EM instead of
-    I for emphasize instead of italic. Right. There's EM for emphasize and strong.
-    The default behavior is that they do bold and italic, but they're basically there
-    so that you can make them do whatever you want to know that. The general point
-    here though is that presentational HTML is no more. That also means there are
-    no more table borders. There is no more table cell padding. There is no more table
-    cell spacing. There is no more BG color. There is no more V align. It's all in
-    CSS. so this is the way that that's preferred. Actually, there's another thing
-    that should go in there and border collapse with. I'll get to that later. And
-    in HTML5, no more frames. You can still use them. There's a whole document typeset
-    that is set aside as frame set. But in HTML5, there are no more frames. There
-    is no target equals blank. There are no more attributes like that. HTML5, the
-    HTML itself is not about controlling the browser's behavior anymore. It's about
-    providing a structural document that can be modified by CSS and other methods.
-    The best thing though is that HTML5 is mostly backwards compatible. The people
-    who are implementing HTML5 understand that you're not going to be able to do it
-    all in one day. You can do this in steps. It's the same way with HTML4. You'll
-    get warnings. But for the most part, the browser will do what you expect if you
-    leave those things in. going forward it's best to have all these things taken
-    care of, make the presentation separate from your structure. That's just best
-    practice now in the HTML world. Now for a while there was XHTML as well. These
-    two live side by side. But XHTML never really caught on because it required a
-    new document type and the browsers never really supported it. It relied on well-formed
-    XML which almost nothing ever produces. So for any app that actually used XHTML,
-    first of all all the HTML4 advice applies here too because XHTML was specifically
-    written to be HTML4 plus XML semantics. As part of that if you're making the conversion,
-    your movie XML marker, you don't need the document that says XML version 1. 0.
-    You don't need the namespace attribute that declares where the ETD is. You don't
-    have the trailing tag slashes anymore. You don't have to force close tags. In
-    fact, it is valid within HTML5 to open a table cell and never close it, close
-    the whole table and the browser is supposed to do the right thing. I personally
-    don't recommend that because it makes it trouble to debug people. things but you
-    can do it. You don't have to send things anymore as application XML plus HTML.
-    Just content type text HTML. And there is such a thing as XHTML5. Don't bother
-    with it. it was put out as a draft specification. It's not really being taken
-    up. HTML5 wave of the future. So, again, with HTML5, CSS is now mandatory. I personally
-    recommend you keep your CSS together in a stylesheet, not spread out throughout
-    your code because if you do that, it makes it harder for other elements who want
-    to apply their own stylesheet or otherwise have, if you need to make changes to
-    your presentation, it makes it harder to take care of that. so keep your CSS together
-    as much as you can. By the same token, be as specific and as general as you can.
-    If you're highlighting a link, use the ID of the link in order to specify it,
-    but make sure that you have a fallback to set your link styles generally, things
-    like that. Degrade gracefully. Has everyone here heard of bookmarklets?
-- speaker: S1
-  text: Bookmarklets are web developer's best friend. They really are. They tell you
-    they're little pieces of JavaScript that go in your browser's box bar, you click
-    on them and they do something. One of my favorites is called Zapp CSS. It takes
-    all the CSS and it throws it out. And especially if you're on one of these pages
-    that has a lot of flash and bad colors, you hit that button and if the site's
-    been done well at all, it drops into a nice little readable format and you don't
-    have to deal with a lot of web annoyances, people doing paint on green or whatever.
-    So don't get cute. use the CSS that you need to make your presentation good. There's
-    a lot of tricks in CSS like shading and rounding corners and all of that. Sometimes
-    that's good for presentation but a lot of times people see those new features
-    and say, oh, I gotta have that, I gotta have rounded corners and this button's
-    gotta pulse and blink.
-- speaker: M1
-  text: Who here liked the blink tab?
-- speaker: S1
-  text: Yeah, okay. But people still used it. Don't use new stuff just to use it.
-    Use it if it makes things better. CSS does need to be validated too. The World
-    Wide Web Consortium at W3. org has really great validators for both HTML and CSS.
-    Please use them. It's even more important now with dynamic HTML because a lot
-    of using things like jQuery rely rely on CSS. I'm assuming when you say CSS now
-    mandatory, you're talking about the fact that you're supposed to use it to do
-    your layout kinds of things?
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: That you're not, you don't have your bold tag. You don't have... Don't use
-    font color equals green.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: That won't validate. Mandatory sounds like you have to use CSS.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: It's not mandatory because the application will do it is not CSS.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: You don't have to only violate it. It was just kind of a confusing type. What
-    it means is formatting is done through CSS.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: always looking for feedback on the credit page. Yes, I am.
-- speaker: M1
-  text: Okay. If anybody's going to get feedback, who's going to be frank? Okay.
-- speaker: S1
-  text: So, with all these things in mind, I converted the app to H205. I'll go ahead
-    and I'll pull that up. Now, one thing you might notice is that the table borders
-    have shifted a little bit. The old-style table borders were just thicker with
-    the drop shadow and all that. And the new borders are a little bit thin. Now,
-    that's something you can style yourself. But, for the most part, this is the same
-    table change.
-- speaker: M1
-  text: So, what changed between the two?
-- speaker: S1
-  text: Of course, I don't have color. I didn't. That's what I did. Oh. But, my BIM
-    isn't colored right now. So. I put to open BIM.
-- speaker: M1
-  text: What's that?
-- speaker: S1
-  text: I put to open BIM.
-- speaker: M1
-  text: Open BIM? Okay, so what did I do in order to make this app HTML5 compliant?
-- speaker: S1
-  text: I got rid of the present patient stuff. I'm not aligning my tables in line
-    anymore. It's all done in CSS. You know, I got my align, I've got my B align.
-    I've got those kinds of things. Like, the...
-- speaker: M1
-  text: Do I have to pick it up?
-- speaker: S1
-  text: No.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Change the doc type. Change the character set. Added the CSS rules. So, I
-    mean, these are rules that are styling the cells according to the way that they
-    were styled before. Styling the whole table. This is the border collapse that
-    I was talking about. If you don't do that, then you'll have a whole bunch of boxes
-    instead of a single table.
-- speaker: M1
-  text: What the heck is that?
-- speaker: S1
-  text: Oh, that's fine. You know, the body got rid of the font styles in the body.
-    The table has been simplified down. Getting rid of stuff, I didn't really have
-    to add a whole lot. I removed and that's what made this HTML5 come back. And sadly,
-    my internet isn't up. I would show you that this also validates as HTML5.
-- speaker: M1
-  text: So, any questions on this?
-- speaker: S1
-  text: Maybe for your title, the emphasis of the separation of design from Markup,
-    structure and style. You know, instead of like maybe CSS is mandatory, something
-    along the lines of how structure and style are separate structure and style is
-    mandatory. I like that. Thank you.
-- speaker: M1
-  text: Can you roll back up to the style? Sure. This one here?
-- speaker: S1
-  text: Right there. Interesting. I thought style was a lot of MLB text CSS. It is.
-    You have to specify that. It is. I don't.
-- speaker: M1
-  text: Why did you specify it then?
-- speaker: S1
-  text: Because I didn't, because I did not remove that. Oh, yeah. Pick that up. Yeah,
-    so. See if you would have served it. Very good. Yeah, I could remove. You could
-    always count on me to find the form.
-- speaker: M1
-  text: I appreciate that. For the short comes of good quality of it. Why it took
-    seven months. Isn't that what they call paraplegal room? Yeah.
-- speaker: S1
-  text: Yes.
-- speaker: M1
-  text: Now, where's your test?
-- speaker: S1
-  text: Oh. It's going to be ranked on that. No, you already qualified yourself that
-    this was for demonstration purposes only. Oh, I know. I put that warning in there
-    just to avoid that question that's still down. That doesn't make that invalid
-    that you didn't specify that. No. It just says you don't need to.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: You don't need to, and if you do, that's what it means to be. Even when I
-    was weighing the presentation to say you should do it this way, you don't need
-    this.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: There's only one way to do anything.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And that is not the simplest thing I could possibly work. Apparently I didn't
-    have enough opportunity to bash rough. So again, what I do, I remove the presentation
-    like develop attributes, I edit CSS classes, a style sheet, and an extraneous
-    attribute that is a need, and I simplify tags like the doctype. just to bring
-    everything down, make it a cleaner piece of HTML, something that's more understandable,
-    quicker to look at. So now let's talk JavaScript. Up till now, it's just all been
-    about HTML. Most people who write in a dynamic language like to think in a sequential
-    web, in a sequential ABC format for how their programs are going to work. everything
-    is linear functional programming. The world of the web and JavaScript has moved
-    away from that and move into event driven programming. If you've ever actually
-    done any Windows programming or X programming or anything like that, those are
-    examples of event driven interfaces. So making that shift is difficult because
-    it's a completely different way of thinking. You don't necessarily have all your
-    preconditions set before something runs. You have to validate all that. You have
-    to know what state you're in. So the important things to note about JavaScript
-    versus say Perl. We're declaring we're still declaring our variables ahead of
-    time. JavaScript unlike Perl does not have sigils. What I mean by that is in the
-    case of Perl if you have a variable you have a dollar sign up front or an act
-    sign up front or something that gives you a clue about the structure of the data
-    contained within that variable you don't have that in JavaScript. In fact everything
-    in JavaScript is of one type object. You have no interpolation. So we're used
-    to in dynamic languages we're used to throwing a couple variables in a string
-    printing that puppy out. You don't have that in JavaScript. it's a simplified
-    language. There are ways to format strings but there is no general quote variable
-    quote. Like I said everything is an object. Your strings are objects. Your numbers
-    are objects. Even your objects are objects. I say that mockingly but it's true.
-    There is a whole inheritance structure everything receives everything that the
-    object module can do plus you inherit down from there. So strings have properties
-    numbers have properties and any object that you build itself has a property. In
-    dynamic languages we have gotten used to the concept of scope being by block.
-    If I declare if I'm doing an if condition I have any variable that I declare inside
-    of there that's scoped inside that block. Once that block goes away that variable
-    is gone. I don't have that anymore. Scope is my function. So if I declare if I
-    declare variable at the end of my function I have that scope even if I exit out
-    if it's inside an if condition I declare it I still have it at the end of that
-    end. one of the best ways to learn about different concepts in JavaScript is to
-    play with it. Type in various commands and see what you get out. One of the nice
-    things about modern web browsers is that they include a good JavaScript console
-    for the most part. So for example come back over to the browser here if I go to
-    about play here and then I go down into my JavaScript console I can start typing
-    expressions seeing what I get. If I want to declare an object I can do that and
-    I can see what the result is. And most of your browsers these days are including
-    the SIN this also makes a great debugging tool but just like you learn to crawl
-    before you learn to walk sometimes just typing in things like this can help you
-    gain an understanding of the mechanics of JavaScript. There are also some quirks
-    and you'll find those as you try them out. We'll get into some of those in a little
-    bit too. For Perl people I have this I will be releasing the slides after I give
-    the talk. there is a seminal Perl book called Higher Order Perl that discusses
-    proper modern ways of building applications and best practices and things like
-    that. Sean Burke who is one of the one of the was one of the best contributors
-    to Perl wrote a companion piece called Higher Order JavaScript and a lot of the
-    gotchas in that that people run into when moving from a dynamic language to JavaScript
-    he talks about. He's got great examples and walks through the Higher Order Pro
-    book and applies that to JavaScript on that page. so when I send that out please
-    visit that link and try it out. It's another great way to learn by looking at
-    what other people are doing. JavaScript is a dynamic language so don't contrast
-    it with it. That is true. Perhaps I need to put it more than dynamic language.
-    I cannot use the term scripting language. I will be hoisted. Oh because Perl people
-    won't grow. Yes. Perl is no more scripting language than Ruby is a scripting language.
-    We write real programs in those things but we don't have a good name for dynamic
-    language. Well they are. I mean it is a dynamic language and so is JavaScript.
-    That's just not the distinction that you want to. That's true. It's just a different
-    language in the dynamic language family.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So let's have some basic concepts here of things that how things work. Again
-    I based everything on Perl in here because that's my intended audience. If you
-    know what dynamic language or again I don't know if you work that. If you know
-    your Perl, your Ruby, that kind of your PHP, a lot of these examples will feel
-    right at home. We'll walk through them as we go. So to concatenate things. Putting
-    two things together. In Perl we use a period between two variables. That's how
-    we concatenate things. you can also put them in a string and concatenate them
-    that way. In JavaScript we use the plus operator. Which one can add those two
-    things as strings but it may add those two things as numbers. So generally if
-    you're going to concatenate and you're not sure if you have a number or not, you
-    use the bottom form. You make sure that it's a string when you go to add. Arrays.
-    Both languages have arrays. Perl you declare them like that. In JavaScript you
-    can declare them either way there. These two are in fact accordingly. But arrays
-    are available. Perl has the concept of an associative array or a hash. JavaScript
-    is not. The closest thing you can do in JavaScript to making a hash is to make
-    a new object. That's what that actually does is that makes an object with attributes.
-    And then you can use that object, mock object and its attributes as an associative
-    array. You don't have the same kind of control but if you're trying to group things
-    together the same way you would in a hash it may make sense for you to do. Regular
-    expressions. JavaScript actually supports a pretty good subset of Perl compatible
-    regular expressions. There are some differences. Perl evolves constantly but you
-    can do a simple regex match in JavaScript very easily built right into the language.
-    Yes, that regular expression is an object. to get data out of a regex like you
-    do in Perl you can declare part of the regex that you want to capture the same
-    way you can do it in JavaScript. That's the part I want to capture and then I'm
-    going to grab the first thing that was captured right there. The exec actually
-    returns an array that will give you not only what you match but all the captures
-    inside. so you do have that option. When you're calling methods off an object
-    in Perl we use the arrow. In JavaScript we use the dot. The other interesting
-    thing is that in JavaScript you have a default object presented inside your function.
-    So whatever object your function is called off of is available to you by default
-    as this. In Perl you have to specifically ask for it.
-- speaker: M1
-  text: Yes? Is self and shift a special word in Perl?
-- speaker: S1
-  text: Yes it is. Well self is not a special word in Perl. Self is not a special
-    word in Perl. Shift it says take the first argument off the argument list and
-    return. And then the next time you call shift you get the second argument off
-    the list and so on and so forth.
-- speaker: M1
-  text: Could you your audience probably know that? Yeah.
-- speaker: S1
-  text: Parameters in Perl are very explicit unlike almost any other language out
-    there. More like from the shell background.
-- speaker: M1
-  text: Yeah. Right.
-- speaker: S1
-  text: And although you do have explicit parameters in JavaScript too. You can either
-    declare a prototype or you can just say here's a function and I'm going to pull
-    up the argument. No I mean explicit in the sense that you have an array and you
-    have to ship them off. Oh yeah. As opposed to just having them be there and they
-    make them.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: PHP JavaScript you just say hey here's my parameter that was coming in and
-    give me whatever I got. And that's a great tie-in right here. in Perl I just say
-    hey I've got a function or subroutine in JavaScript I can either declare it as
-    a function with arguments or without and then do whatever I need to do inside.
-    This also automatically assigns what if the first argument is to bar and then
-    I can just use it. I don't have to take any time inside the function retrieving
-    that historic. Checking equality. This is something we do a lot. In Perl there
-    are two different kinds of equality comparisons. There is a numeric type and there
-    is a string type. In JavaScript we have two different comparisons. We have a value
-    type and we have a boolean type. No. We can script. We can script. Double equals
-    is what you mean by value is if you have objects like the number one and the string
-    one in JavaScript in a weak comparison they'll compare equally. The triple equal
-    is a strict they also have to match by type. close type version. I was feeling
-    that concept of PHP takes that to value right there. It's not though. It's still
-    value. It's strict value comparison. It's not identity in JavaScript. they can
-    different objects but as long as they're the same object with the same value and
-    same type. Yes. Two different strings with the same value are compared string
-    to quality. I think the general advice is use triple equals well.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: I mean unless you want the type version.
-- speaker: M1
-  text: Yeah. Right.
-- speaker: S1
-  text: Unless you specifically want the type version. The other interesting thing
-    about JavaScript equality is that again we talked about there is not a number
-    that you get like if you divide by zero. The interesting thing is you cannot directly
-    check for is this variable not a number. Well there's a function called is not
-    a number.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: If you try and stuff into one of these you have two not a numbers. Not a number
-    doesn't equal anything. Correct.
-- speaker: M1
-  text: Should I point people at Gary Bernhardt's what? Tom? You know what?
-- speaker: S1
-  text: I almost included it. I'm not doing that for brevity. And I'm already at 45
-    minutes of I can already see I'm going to trip a bunch of that. Conditionals Pearl
-    has a concept of if if else if else JavaScript is just if else if else Now in
-    Pearl blocks are required inside your ifs in JavaScript they're not. So that means
-    you can just say if condition function don't need a block there. It is highly
-    recommended but it is not required. Well you also have your C style for loops
-    which is initialize your variable here's your check condition here's your increment
-    condition both work exactly the same way. I would change your double end of the
-    word again. Well the double end yeah if you want to go to third line for putting
-    a double ampersand in there it's like okay now I'm confused or put it on a new
-    line I was trying not to go for a third line because I got a whole other more
-    days but the nice thing about this slide is that these are mostly things that
-    are pretty close to the same in curl we say for each variable in javascript is
-    4 a and b you can't actually in curl say 4 a b like that but that's not good loop
-    controls if I'm in the middle of while loop and I want to move on to the next
-    one in curl I do max if I want to break down I do last javascript if I want to
-    try code to catch an exception in curl I have an eval structure that lets me catch
-    those fatal conditions in javascript I have a try catch block pretty much the
-    same scenario and if I want to get out of that block with an error condition in
-    curl I use dive in javascript I use throw and then whatever I throw is what the
-    argument is here on the curl side I actually have to go and root around and throw
-    what that can issue is if I want to increment these are the same the exception
-    of the sigil both of these work pretty much the same and the set of operators
-    is pretty close the only difference really in the main set of operators you use
-    day to day in curl you have concatenation operator like that in javascript you
-    want to do comments in curl if you want a single line comment you use pound sign
-    if you want a multi line comment generally you're put in pod or something like
-    that pod is pearls plain old documentation format in javascript you have c style
-    single line comment and healthy line comments if you want to actually print something
-    out on curl side you just use print on the javascript side if you're writing into
-    an html document you're going to use document dot write not print print does not
-    do what you think it does print prints that means it will send the document to
-    the printer so don't do that and if you want to throw an error condition in curl
-    we have warn which said something to standard error and then you can handle it
-    in javascript there are two different types of warnings there's a work which will
-    just be a pop-up and let you see what the error condition is or you can do a log
-    to the javascript console and then if you have that you can go into your javascript
-    console and see what messages you want so those are some of the differences and
-    some of the similarities between curl and javascript Any questions? You mentioned
-    too about the really strong suggestion that you're doing, opening a block, you
-    put a brace on the same line. There's always the Holy War, you know, it's a key
-    in our style in other languages versus, you know, starting the brace on the other
-    line. That actually would get you in trouble. For return. For return, yeah. They
-    say, oh, you really meant it. Because of, because of semicolon, automatic semicolon
-    insertion, insertion. Which is really not intuitive. I mean, if you come back
-    to my examples here, that's basically the way that I code. The block opens on
-    the same line, it opens and closes the line after. It's the way God would be.
-    It's the way God would be. Yes, the way God would be.
-- speaker: M1
-  text: What was that?
-- speaker: S1
-  text: God doesn't use braces. This is the only part I get your guys' help on. Well,
-    no, I've done that as a matter of style, but I didn't realize that there was.
-    It is. It is. We had this discussion about standardizing for Java, and we said,
-    really, we want to, like, do the braces on the same line, and that was one of
-    the things we talked about, that you could introduce. Yeah, but you said there
-    was an actual defect if you. Yes, if you say return, and then on the next line,
-    open curly brace, some object, automatic semicolon insertion will look at the
-    return as being a statement and a return from that point. And it won't actually
-    return the object. Well. It will actually return. It will return undefined. Undefined.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: It is.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: This is one of the parts I need your guys' help on. I don't have a lot of
-    good JavaScript resources. The Mozilla one is really heck of garbage. It's not
-    really, I mean, I'm not necessarily looking for answers here. I think I'll send
-    you some. Please. If you guys can send me some e-mails of some good resources
-    that I can recommend. Definitely don't want. Yeah, I'll say.
-- speaker: M1
-  text: You know what?
-- speaker: S1
-  text: Well, that's actually, that's actually, I use Google mostly.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: Which sends me into there, which gives me the information I need with browsing
-    it. Painting it in. No, it's got a lot of mistakes.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: It's really not a good reference.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Well, that's why I said, I'm looking for your help. Yeah, I'll send. So please,
-    you know, send me some resources. Or if, if you can't send me through the meetup
-    group or whatever, I'll give out my e-mail. Or Ryan's got it. You know, something
-    like that. You can find me in the night in the corporate book. I'd like to see
-    them anyway. So meetup groups.
-- speaker: M1
-  text: Yeah. Yeah.
-- speaker: S1
-  text: The meetup group is ideal.
-- speaker: M1
-  text: Yeah. Yeah.
-- speaker: S1
-  text: Just start a thread on there with your resources. And because everybody should
-    be, it should be public. Anybody should be able to, well, if you want them, you,
-    you, you just had to be a member of the group, right? And that, that, because
-    you had to, you didn't have to do anything.
-- speaker: M1
-  text: Yeah. Yeah.
-- speaker: S1
-  text: So.
-- speaker: M1
-  text: Okay. Yeah.
-- speaker: S1
-  text: Anything that will get people to go into the forum. I'm trying here. I'm trying.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So let's talk about events really quick. Because as I explained when I started
-    talking about JavaScript, it's an event-based model. It's not a functional programming
-    model. There are functions, but JavaScript is mostly based on triggered events.
-    On clicking on something, focusing on something, changing something, submitting
-    a form, the basic actions that we do when we're browsing the web.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: One of the interesting things about JavaScript's events model are that return
-    values are important. If your function returns a false value, for example, when
-    on a link, you have something that says, when I click on this link, call this
-    function, and that function returns false, your JavaScript will execute, but you
-    will not actually follow the link. This is actually a very nice model to use if
-    you're going to degrade to something that can't support JavaScript, where you
-    want to follow the link, but if someone's got JavaScript enabled, pop them up
-    into a window or something like that. However, this event model requires you to
-    think asynchronously. You can't assume your state. You don't necessarily have
-    all your prerequisites available. You don't even know at the time that your JavaScript
-    fires, your page may not even be rendered. And so you have to be aware of these
-    things whenever you're writing a function on a page that's going to be modifying
-    the structure of the page. Avoidance beginning in this case, complicated code
-    that weeps through each other. It's very difficult, but it's important to do.
-    You know, functions have to be as clear as possible. Do, again, the simplest thing
-    that could possibly work. You know, very minimal functions will help make things
-    clearer and help you understand later on when you're making a change what it is
-    that your functions are supposed to be doing. Side effects are very easy to create
-    in JavaScript.
-- speaker: M1
-  text: So, now that we've talked a little bit about JavaScript, how do we get it
-    into our page?
-- speaker: S1
-  text: Well, there's four ways to do it. You can either throw a script element in
-    and put your JavaScript off in another file. That's great to do if you're going
-    to have a library of functions. That's great if you're calling off. Say, for example,
-    you're going to include a Google map. You obviously don't have that source code.
-    You're going to call off to them. You know, that's great for including other resources
-    so that it doesn't actually clover up your HTML. On the other hand, you can explicitly
-    put JavaScript right into your HTML. And there are times when that's very good
-    to do and there are times when that's not. You can make a JavaScript function
-    an attribute of another thing. So, I can create an HTML button object and then
-    give it an event, in this case onClick, and have it call off a function anytime
-    that button is clicked. You look like you're about to say something. Or, I can
-    actually make a URL that would be followed that is a JavaScript function.
-- speaker: M1
-  text: Remember earlier when I said that your browser probably includes JavaScript,
-    JavaScript console?
-- speaker: S1
-  text: Chances are, if you type in JavaScript colon and some JavaScript into your
-    browser bar, you will actually get that JavaScript executed in that browser and
-    you can see the result. So, even if there's not a dedicated console, chances are
-    you actually have the ability to run JavaScript in your browser without having
-    to put it into a page. In fact, that's how bookmarklets work. So, again, to come
-    back over, inline or include, you know, if you have a, if you're thinking about
-    JavaScript in a module form or you basically have a library versus a script where
-    you just have a single page and you've got a little bit of JavaScript in there
-    to do something. Weigh them out, decide which of the tradeoffs is better for you.
-    Page size versus browser cache, if I put 20K of JavaScript in my page, then I
-    have to do, every time I serve that page, I have to send out that same 20K of
-    JavaScript. It could be in my cache. But on the other hand, if I put a script
-    in my cache and I don't version the file name or force and reload the page, people
-    might be getting older versions of my JavaScript whenever they load my page. Um,
-    my rules of thumb, functions go in an include file or in the very head of the
-    document. Actions go where they're needed, clicks and things like that. And I
-    am always in the habit whenever I make a change to my files, to shift reload.
-    And then that way I know that I'm clearing out my cache and I'm getting the newest
-    version of my resources.
-- speaker: M1
-  text: Any questions?
-- speaker: S1
-  text: Okay, moving on. Javascript, as I said, everything is an object. So to deal
-    with making changes on a page, we have to have an object that represents the page.
-    That is the document object. So your page is represented with a document object
-    model. There is actually an object living in memory that represents all the elements
-    within your page. Every element in your HTML has an object. The whole thing together
-    represents the HTML that you have written and have sent to the browser. Think
-    of the document object as a dispatcher. You are not going to, in general, call
-    the document object and say replace everything in this document with this slightly
-    tweaked version because I want to change a form. So you are going to ask the document
-    for those elements for other objects that represent the things that you want to
-    change. And then you are going to change them yourself. And then that propagates
-    back up into the document. Again, you want to manipulate those objects. You don't
-    want to really worry about manipulating text in and of itself. What I mean by
-    that is you are not going to change the HTML inside the object. You are going
-    to change the object itself. Avoid the temptation of directly referencing HTML
-    inside your Javascript. If you can do it with the elements that are previously
-    presented, do it. If you start getting into a case where you are writing your
-    own HTML and you are going to supplant something else, and then you write invalid
-    HTML, you are going to be chasing down bugs for a long time and you are not going
-    to know where they came from. Missing a closing tag is enough or duplicating a
-    closing tag is enough to throw off the way your page is ready. So quickly, your
-    browser also has objects too. So we can get a window and that will tell us the
-    size of the viewport on the browser so that I can know if my width is this big
-    or this big and I can adjust it accordingly. I can also get information about
-    the screen that the browser is running in. I can also access the history. There
-    are some other things such as navigator which will give you some insight into
-    the browser itself. So most of the time you are not worried about these. These
-    only really matter if you are trying to make presentational changes. Say for example
-    you want something that is exactly half the size of the browser. Now when you
-    are writing functions, the important thing to note is that your function can only
-    return one thing. That one thing can contain multiple things. It can be an object.
-    It can be an array. It can be a boolean. But it can only return one thing. So
-    that one thing is important. For example when I was talking earlier about the
-    dispatch and returning false. If I need to have a false return but I also need
-    to grab a variable on the way out, that is not going to work that well. So you
-    are going to need to make allowances for things like that. I talked about returning
-    true and false into control. The JavaScript's default failure mode is to stop
-    what you are doing. So if I call up a function and it has a syntax error that
-    was not picked up before, I am not going to continue down into the function. None
-    of the rest of my clicks will work. None of the rest of my dynamic actions will
-    work. Javascript just stops executing if it runs across an app. That is important
-    because if you are throwing a line in debugging somewhere and you never get to
-    it, you have to move up higher. Find out where it is actually, where you can get
-    to and where you can. And thus, knowing how many bugs and bugs between knowing
-    about the alert function that I showed you earlier, being able to make toggles,
-    put things in a console log, that sort of thing. You know, having an analytical
-    mind really helps when you start getting into these troubles because it could
-    be the smallest detail that's tripping away. There are step through debuggers
-    in almost all the major programs. So, you know, find one of those, become acquainted
-    with it.
-- speaker: M1
-  text: So, Nikki, where are you with slides in time?
-- speaker: S1
-  text: I have maybe another 15 minutes. Oh. Maybe.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: No, I am going to, the rest of this goes pretty quick.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So, now here I come back to the, to the to-do list and in this particular
-    case I am going to add, get some dinner, pizza is out, go to bed, stuff like that.
-    That's the rest of my name.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: But in this particular case, the way the app worked previously is that if
-    I change one of those priorities until I resubmitted the form and did all that,
-    changing one wouldn't change the rest of them. So, I introduced a JavaScript function
-    that if I decided I need to go to bed before getting some dinner, I do that and
-    you see the priority change.
-- speaker: M1
-  text: Okay. Now, how did I do that?
-- speaker: S1
-  text: That's really good.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: First thing I did, which isn't working on here very, very well, but inside
-    my select option, on the page, because I have, I have that select that has all
-    my priority values in it, on my select option, I added an on change event. If
-    you're eagle eyed, you'll notice that every other time that I've done it, the
-    action has been capitalized. In this case, it is not. That's not a bug. That's
-    actually okay. You don't have the camel case. It's better, it's, it's, to me,
-    it's better if you do because it's more understandable. But, and when I say camel
-    case, I need to throw in the capital in the middle of it. So, what I, what I do
-    now is I say, I want to adjust the priority of this.
-- speaker: M1
-  text: What is this?
-- speaker: S1
-  text: This is the select object that I'm, that I'm currently changing. And all of
-    that, yes. The on change event fires when the element is changed. So, if I, if
-    I click on the select and I have all my options there, nothing happens to me.
-    But then when I select one, and that control goes away, that's when the on change
-    button. So, it turns, it's changed. It doesn't have to lose focus. It doesn't
-    have to lose focus. It just has to, if I press the down arrow three times, and
-    then press enter, it didn't lose focus, but it changed. So, it's not. Correct.
-    There are keystroke events though. There are, but in this particular case, on
-    change is not one of those. There's on key up, on key down, and so on and so forth.
-    So. Change is a more higher level thing. It's more of a semantic thing. There's
-    different ways you can change the state of a select.
-- speaker: M1
-  text: Right. Right.
-- speaker: S1
-  text: So, what that adjust priority function does, first of all, I cleared an argument.
-    Remember I said the this is the selected I'm operating on. I'm just going to call
-    it e, short for element. Since this is the scope of my function, that's fine by
-    me. I'm going to get the new value by asking for the current value of the element.
-    And that's going to go into a new variable that I'm creating called new value.
-    Then, from here down to here, I'm figuring out which variable or which number
-    I just replaced. I do that simply by going through all the numbers and seeing
-    what first one I'm missing. If I ran out of values, then don't worry about it.
-    And then, from down here, down here is where I go through each element and change
-    it if it falls in that range of numbers that need to be changed. So, in this particular
-    case, I came up here and I said, here are all my selects. These are all the elements
-    with a tag name on select. When I have grabbed all of the select fields that are
-    in my document, I found out how many there are with this length method. Remember,
-    length is an object method, so everything has a length. It might be zero, but
-    it has a length. And then, I'm going to walk through each one of these here. And,
-    if it's, if I finally found my number here, that, if I find my old, or if I, if
-    I find, so I go through and I find one.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: I find two.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Find three. Oh, no. I can't find three. That must have been the number I was
-    replacing. This is where the continue goes to do the next increment. This is where
-    the break goes to break out and say, I've gone through the entire list, but I've
-    gone through all the numbers. There are no more numbers for me to check. Down
-    here, this is where I figure out what my range is, whether I'm going from three
-    to four or from four to three. And then, down here, I use those same selects,
-    all those select elements that I did. I go through, and I say, if this isn't the
-    one, now, this is the ID. This is what I was talking about earlier, where everything
-    has a unique ID. If this isn't the one that I'm currently changing, and it falls
-    in ranges of one change, then change it. That's all I have to do. This function,
-    when it runs, will go through every element and change it if necessary.
-- speaker: M1
-  text: Any questions?
-- speaker: S1
-  text: Instead of direction being decreased or increased, might just set it to plus
-    one or minus one. And add it directly to all selects that items. Could have done
-    that. Could have done that. Could have done that. It's semantic. Wow. And as you
-    can see, that's all that I changed. So I added a function to adjust the priorities,
-    and I added an event that calls that function whenever I actually need a change
-    to the priority. So now let's talk jQuery. Most of the jQuery semantics, we've
-    talked about with JavaScript already. jQuery. It's written in JavaScript. It's
-    framework. Everything revolves around an object. Dollar sign. This is the hardest
-    concept to grasp in jQuery. Because personally for me, coming from a language
-    with signals, I want that to be a variable. And it's 9. It could have just as
-    easily been Q or 34. It could have been anything. But it's a dollar sign. And
-    that being a special character is something that not a lot of people are going
-    to use in their code ordinarily. So that makes it a very easy choice to say, "Hey,
-    I'm a special object. I'm a framework. I'm just another variable. " The other
-    thing about jQuery is you have to think about set operations like SQL.
-- speaker: M1
-  text: Who here has done SQL? Okay.
-- speaker: S1
-  text: Almost everybody. SQL is a database language that lets you select sets of
-    data to operate on. So if I want to get, say for example, I have a database that's
-    got everybody here in it. And I want to find all the people who are over 25 years
-    of age, I can ask through SQL. Give me everybody who's 25 years of age. Orals.
-    When I say set operations, I'm not necessarily going to get those back in any
-    specific order unless I ask for them that way. But I'm going to get a whole set.
-    I don't just operate on one unless I have some way to specifically identify a
-    single one. For the most part, I'm doing something to a lot of them good ones.
-    Then callbacks and anonymous functions. In Perl, we do have anonymous functions.
-    We don't deal so much with callbacks. What I mean by these, callbacks are a function
-    that you give to something that's running async previously. When it's done, it
-    calls that function and finishes doing whatever it was you were supposed to do.
-    You're not sitting in a loop waiting. You just handed it off and something else
-    will call you when it's done. Anonymous function means you have a function. You
-    just didn't give it a name. You can still run it. You can still do things with
-    it. It just doesn't have a specific name inside your code. jQuery. com in this
-    case is an awesome reference for me. You can go in there. They've got really great
-    examples. They've got good comments in there. You can type in a couple words of
-    what you're looking to do inside your search engine and it pulls up all the functions
-    that have something to do with that and gives you examples. It really is a great
-    reference. So, if you have any questions about it, that's my A number one.
-- speaker: M1
-  text: Are you ready?
-- speaker: S1
-  text: It means you can't work on a page until it's rendered. So, if I just stick
-    a piece of JavaScript in my page and it's going to change the page somehow, when
-    it executes, if the page isn't fully rendered, then my change isn't really going
-    to take effect because the browser is not ready for it yet. The browser doesn't
-    have the full document object model, full doc. So, it can't make changes to it
-    until it has the whole thing. So, to this end, jQuery provides the help for it,
-    document. ready. Anything that you want to do that's going to make a change to
-    the structure of a page goes into a function, an anonymous function, that you
-    give to document. ready. And then, when the page is ready, it runs it. Kind of
-    the same concept as body onload. If you've ever done any sort of onload inside
-    HTML where you said, call this JavaScript when the page is ready, change the color,
-    change the length, whatever. It's the same kind of concept here. Except the document
-    ready can be called multiple times and it will stack everything up. If I try and
-    replace an onload inside a body, whatever the last one I put there is, wins. But
-    if I use the tools that jQuery gives me, then I can segment out my document changing
-    JavaScript and it will just run in place when it's supposed to. So, jQuery over
-    plain JavaScript handles cross-browser compatibility. I don't have to worry about
-    IE7 versus Mozilla 14 versus Chrome 18, whatever they're up to now. jQuery just
-    handles that for the most part. I don't really have to worry about those little
-    quirks. Simplified syntax for set operations. If I want to operate on all those
-    select elements you saw before, I had to get element by tag, go through them all,
-    make sure I was getting out the one that I didn't want. jQuery makes that much
-    simpler. Extensions tend to work consistently with people who develop add-ons
-    for jQuery like jQuery UI. They all work within the same model, they all have
-    basically the same consistency so it's a lot easier to pick up an extension and
-    go. And unless somebody claims I'm not being clear, really all the frameworks
-    can be. Prototype, Node. js, YUI, Google Web Toolkit. jQuery just happens to be
-    the most popular one right now. Take note out of that list, it's not a browser
-    framework, it's a server site. Replace it with underscore. It's not, that one's
-    not really either.
-- speaker: M1
-  text: No, really?
-- speaker: S1
-  text: It's not a DOM framework. Well, yeah, it's just a standard library. Yeah,
-    it's just a little library. It's nice. I like it. So, part of the reason I was
-    stressing CSS so much before is jQuery loves CSS. Everything works in jQuery on
-    a CSS selector. So, if I want to add a new paragraph to the body of my document,
-    I say give me the body and append that document. If I have a div call with an
-    ID of notes or note with a class of notes and I want to hide my notes, I do that.
-    If I have a table with a header and I want to add a class, maybe a style to highlight
-    the header or whatever, but I can use add class and I'm coming off of this CSS
-    select. So, this is why CSS validation is so important. Because if you don't have
-    all your CSS validated, if you have conflicts in your CSS, the first time you're
-    going to do something with it in jQuery, you're going to get unexpected results.
-    Validation is really important in modern HTML. So, I'll skip over the demo, the
-    full demo explanation here. But the short version is that I can take now and I
-    can add a fourth task here. Task 2. And what you'll notice is before when I clicked
-    on it, there's a pause. It went to the server. It did a lot of, it did the calculation,
-    put it in the database, fit me back to full page. Here, I'm just adding as many
-    tasks as I want. And they just add in right in. And then when I finally sync the
-    page here, then it will go to the database. Then it will save that. And then,
-    so my server round trips are reduced. You know, it's just dynamically adding as
-    many rows that I need and then I handle it on the back end. If I load, say, my
-    prior version, you can see all the tasks were put in. Even though, when I'm back
-    over here, if I add a fourth task there, I haven't synced it yet. So it's not
-    actually, it's not actually in the database.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Now, one of the things you're mentioning with the selectors, too, and I don't
-    think I heard it, was that you're using them to select, for example, like with
-    a specific ID. But what's really pretty amazing about that is that you're actually,
-    you can actually iterate over a whole class. So you have a particular class of
-    a certain type. And just with one of the functions, you can apply a certain set
-    of actions across every class.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: So you can do certain .
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: So I added some Perl stuff, and I added some Perl stuff at the top to handle
-    adding multiple things. At once, I added a class called CellCry onto my select,
-    because that's the selector for the priorities, so I just called it that. And
-    then down here at the bottom, I included my jQuery, and then I have a ready function.
-    This doesn't actually execute until my document's ready. And it comes through
-    here, and it will say, if I add something in the new, when I click on the button,
-    take all that stuff, clear those out, and then go through and for every select,
-    add a new priority. Notice I'm only doing that once. I don't have a loop. I didn't
-    select all the selects. I just set it once. Selects. All selects with that class,
-    get that new option added on. Powerful. It's a set operation. Makes things simpler.
-    But if you're not paying attention, you might add way too much stuff. You have
-    to be careful about how you target that stuff. So let me just wrap up a couple
-    of things here. Quick talk on data exchange, JavaScript loves external data fetches.
-    That's what known as AJAX. It stands for Asynchronous JavaScript and XML. But
-    it doesn't have to be XML. It's just a name. The current way of doing it, the
-    best practice, is generally with JSON, which is JavaScript object notation. Now,
-    pro people have seen YAML. JSON is YAML. There's a couple extra extensions. But
-    for the most part, it's a very simple key value language with some object handling
-    and silence. So you can declare some arrays. You can declare things like that.
-    But for the most part, it's a key value store. And it just takes and it serializes
-    an object and you can retrieve it and do what you need to do. So in the old days
-    of AJAX, you do something called XML HTTP request. You make your own asynchronous
-    call. You block until it came through. Catch your own stairs. That's a paper.
-    But these days, jQuery provides an AJAX or a getJSON method that handles all those
-    details for you. That's why I was talking about callbacks earlier. You set everything
-    up. You hand it a function. And when the data finally comes back, you do what
-    you need to do. Let your framework handle the details. Give you a callback. On
-    the AJAX though, you've got to be prepared to offer a callback. Your data service
-    might be unavailable. Your request might not complete. You could be waiting four
-    hours to actually get data back. So if you have another way of being able to provide
-    the data, that's good. So don't make your page sit forever until an AJAX request
-    is answered. Have a timeout if nothing else. Try and be compatible with older
-    browsers. Some things obviously you can't. But for the most part, if there's a
-    way to both do it and be compatible and not be compatible, try and do both. You
-    know, it's not just an IE7. Phones have little browsers too. But for, say, IE7
-    and you want to use JSON, you need one additional file. It's called JSON to be
-    included. If you have JSON support, it doesn't get used. If you don't have JSON
-    support, it gets into it. So that's the last demo I have here, which is if I add
-    yet another task. Of course I don't have an asynchronous requirement. But you
-    notice it didn't block.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: It didn't block. All of a sudden I popped up and I said, hey. So in this particular
-    case, if you load up the code, or I'll send out a link later so that you can click
-    around and try it out, it would actually add the task in the priority on the page.
-    It would be in the database and it would have done all of that without a page
-    refresh.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: The way that it does that. This is the last slide, by the way. The way that
-    it does that. First of all, I'm going to make a template row here and I'm going
-    to hide it. And that's just going to be whenever I want to insert a new row, I
-    want to have something to copy from, so I don't have to make it on the fly every
-    time. This is the JSON that I was talking about. So now I have a function. This
-    function is the old function that I had that added those extra rows. It's just
-    reduced into a separate function so that I can debug it separately from having
-    to call out on an AJAX request. So I have that. And then down below, this is my
-    JSON call. This is where I call off and I say, call that CGI. Here are my parameters.
-    When I get my JSON back, here's what to do. Call that function. That's all I'm
-    doing. When it comes back, it will add that row into my DOM. I'm moving on like
-    nothing ever happened. So, that's pretty much it. And here's my template row,
-    so I can copy that. Put that in mind.
-- speaker: M1
-  text: What else could I do?
-- speaker: S1
-  text: I could offer instant change sync support so that I don't have to even hit
-    the sync button right now and you still have to. I could add more data points.
-    I could support pushing new paths so that if somebody else added one in another
-    browser would push in my new one, it's up to you. You could go a whole bunch of
-    different places from that, but that's at least the start. Thank you very much.
-    And for listening to me dribble, listening to me blather on twice as long as I
-    thought I would, you get a free ebook. Serious. O'Reilly has given me permission
-    to give this out to you. You get a free ebook. Serious. O'Reilly has given me
-    permission to give this out to you.
+content: |-
+  My job is slinging Perl and PHP right now at Follett Library Resources.
+
+   We're the sister company to Follett Software. We sell the books. They manage the books.
+
+   That's oversimplified, but that's all right.
+
+   In addition to this, I do a lot of other things.
+
+   I manage XML transfer stacks. I do all sorts of stuff.
+
+   But I also work on other things by night.
+
+   One of those things, as I explained earlier, was that I've been working on jQuery-based websites,
+
+   doing some AJAX things, just learning a new technology.
+
+   Because, as I explained earlier, you might want to rotate that a little bit.
+
+   But, as I explained earlier, we all need to keep growing in order to be the best craftsman that we can be.
+
+   So, this is my growth experiment, and I look forward to sharing it with you.
+
+   Now, coming into tonight, I'm hoping that you know...
+
+   Well, I have Perl up here.
+
+   But, really, I'm hoping that you know a dynamic language of some sort.
+
+   Because the concepts are all going to be applicable.
+
+   Perl is what I know.
+
+   It's my bread and butter.
+
+   But, it's not strictly necessary to know Perl to get most of the core concepts here.
+
+   I ask that you know a dynamic language of some sort, just so that you have some references as we move forward.
+
+   Because I'm not going to be explaining blocks.
+
+   I'm not going to be explaining comparisons.
+
+   I'm not going to be doing a lot of basic stuff.
+
+   I'm going to gloss right through just to give you an introduction.
+
+   Excuse me.
+
+   Has anybody not used a dynamic language?
+
+   Like, JavaScript, Ruby, Python, Perl?
+
+   So, everybody knows the concepts?
+
+   Okay, cool.
+
+   So, I'm also hoping that you know some HTML and CSS.
+
+   It's going to become important as we go later on down the line.
+
+   It's not necessary that you're at an expert level.
+
+   But, in order to be able to tie all this stuff together, these really are web languages.
+
+   So, you have to have some basis there.
+
+   I'm also hoping that you may or may not know some basic JavaScript.
+
+   That's okay.
+
+   I'm not expecting anyone to really have some serious programming with it.
+
+   Although, in this group here, I am kind of hoping some of you do.
+
+   Because, I need your help.
+
+   I'm giving this talk again in a month to the Yet Another Pearl Conference.
+
+   And, I'm hoping you guys can help be my gimmicks here.
+
+   So, if you have any questions, clarifications, suggestions,
+
+   please, feel free, raise your hand, ask the question.
+
+   I won't bite, I promise.
+
+   And, we can talk about it and we can move forward here.
+
+   So, please also be patient with me.
+
+   Especially to the guys that know this stuff.
+
+   Obviously, I'm going to be covering a lot of things that you may already know.
+
+   But, I need to be able to bring people up to the mic.
+
+   So, where I'm going to start today is, I have a pro-based, to-do list app.
+
+   It's a simple little chat box.
+
+   It has priority.
+
+   It has one of the things checked.
+
+   Give me a summary, give me a description.
+
+   It's a very basic app.
+
+   It's written right now with HTML4.
+
+   We're going to make changes to it to bring it up to HTML5.
+
+   Discuss what sorts of changes need to happen in order to do that.
+
+   Then, we'll introduce some JavaScript, some jQuery into the app.
+
+   Make it work a little better.
+
+   And then, finally, we'll create a JSON backend.
+
+   Get some data transfer in there so that we don't have to do a refresh
+
+   every time we do something like add a text.
+
+   So, that's where we're going to go for this.
+
+   I had this slide up earlier.
+
+   If you haven't had an opportunity to grab the code, I still have it.
+
+   If you need it, but otherwise, if you have it, you can follow along.
+
+   So, some notes on that code, however.
+
+   I'm going to say the standard demo app caveats.
+
+   This is not production-level code.
+
+   While it's not necessarily vulnerable to SQL injection or anything like that,
+
+   it's certainly a single-user system.
+
+   There's not really a whole lot of error checking.
+
+   It's mostly code intended to demonstrate the concepts.
+
+   Within the code, there is a prerequisite script.
+
+   If you run it, it will tell you if you have everything that you need installed
+
+   in order to successfully run the code.
+
+   If you don't have anything that's in there,
+
+   in that same directory are the actual installation tarballs for that code.
+
+   So, there's a couple of Pro modules.
+
+   If you don't have them, they're there.
+
+   Also, since this is a web app, obviously, you need a web server to run it.
+
+   You might need to tweak your HTTPD.com in order to run CGI.
+
+   It's pretty simple to do.
+
+   Finally, the state in here is transitional by design.
+
+   What I mean by that is, as we heard earlier, we're doing the simplest thing that could possibly work here.
+
+   So, most of the trade-offs that I make in this code are, again, to be able to demonstrate the concepts
+
+   rather than worry about covering every single edge case.
+
+   So, with that, I'm going to present the app.
+
+   And as you can see, it's just a simple to-do list app.
+
+   Right now, there's no data in it.
+
+   So, for example, I can add a task here.
+
+   I can click on that, and I can add it.
+
+   Later, I'll be able to eat pizza.
+
+   So, now I've got to hit the sync button, and now that task goes away.
+
+   And so, that's the basic controls within the app.
+
+   It's really straightforward here.
+
+   So, with that in mind, let's talk HTML.
+
+   If I come back here and I look at the source code,
+
+   you will see that it's written in pretty standard, strict HTML 401.
+
+   It could be transitional.
+
+   It could be anything else.
+
+   I just wrote strict.
+
+   It does validate as plain.
+
+   You'll see that, you know, I do the standard things.
+
+   I declare the character set.
+
+   I set some styles throughout.
+
+   I've got a basic table in there that's got all the information in it.
+
+   And that's pretty standard HTML stuff.
+
+   Assuming everyone's pretty much been aware or knows what this is doing here.
+
+   So, with that in mind, HTML5 to move from HTML4 is actually more about simplicity.
+
+   It's more powerful, but a lot of the assumptions that were built into HTML4,
+
+   a lot of the extensibility, it's found to not be needed.
+
+   Again, the simplest thing that could possibly work.
+
+   It's a thing you're tied together.
+
+   Exactly.
+
+   It could have been better.
+
+   However, in a HTML5 world, valid HTML is more important than ever.
+
+   Writing bad HTML, writing invalid concepts, things like that,
+
+   are the quickest way to break JavaScript apps that rely on modifying the web page dynamic.
+
+   It's really important to have that clean so that you don't have unexpected failures happen.
+
+   If you don't close your tables properly, if you're mixing data around,
+
+   it's very easy to get things in the wrong place very quick.
+
+   And if you have a dynamic app, you may not have an easy way to get out of that
+
+   other than to reboot or, of course, refresh the page.
+
+   Browsers act differently with invalid HTML.
+
+   Pretty much everyone should know about Internet Explorer's Quartz mode,
+
+   where you don't get any sort of standard performance
+
+   if you've got even the barest hint of invalid HTML.
+
+   It falls back to something that works for most everybody,
+
+   but then you don't get all the whiz-bang features that you want in your modern web apps.
+
+   Especially, HTML4 introduced the ID attribute for elements
+
+   that you could uniquely identify attributes on a web page.
+
+   Don't duplicate those.
+
+   It makes for very difficult to diagnose problems.
+
+   You know, good validators will point those out to you,
+
+   but especially when you're modifying,
+
+   when you're looking for elements inside your document,
+
+   if you have multiples, you don't know what you're going to wind up with.
+
+   So, the other thing is that fallback
+
+   or backwards compatibility
+
+   is even more important these days
+
+   than it ever happened.
+
+   In the past, you'd have a page
+
+   you knew that you were dealing with Internet Explorer,
+
+   you're dealing with Firefox,
+
+   you know, you might even get the random person
+
+   that was still on Netscape Navigator 4.01.
+
+   It happens.
+
+   However, these days,
+
+   those browsers are generally being supplanted.
+
+   IE6 is no longer supported.
+
+   I don't know if you do use it here at college.
+
+   There's my gig.
+
+   Oh, come on.
+
+   We'll use IE5, too.
+
+   There is that.
+
+   Use or support?
+
+   But even more than that,
+
+   we all have browsers built into our cell phones.
+
+   Now, I've got a nice Motorola cell phone here.
+
+   It's about a year old.
+
+   Still running,
+
+   I think it's Froyo on here
+
+   with the browsers that that came with.
+
+   So that browser is two, three years old.
+
+   Other people have,
+
+   well, we said have even older browsers
+
+   or text-based browsers,
+
+   or, you know,
+
+   the full, rich browser support
+
+   that we come to expect in these apps
+
+   isn't available on cell phones,
+
+   on tablets,
+
+   on these platforms
+
+   that people are pushing these apps out to today.
+
+   So it's important
+
+   whenever we're talking about
+
+   making these changes
+
+   that we keep in mind
+
+   we have to have a fallback
+
+   or we're going to alienate a bunch of users.
+
+   Especially if you're writing something
+
+   that's intended to be social
+
+   or to have people using it on the go.
+
+   The quickest way to get people who not use it
+
+   is to break their mobile support.
+
+   There's a great website
+
+   that I reference all the time
+
+   called caniuse.com.
+
+   The goal of the site
+
+   is that it will tell you
+
+   for all the various
+
+   modern-day HTML components
+
+   for HTML5,
+
+   for CSS,
+
+   for JavaScript,
+
+   for AJAX,
+
+   what versions
+
+   of what browsers
+
+   support that
+
+   and whether those browsers
+
+   are still current.
+
+   So, for example,
+
+   if I click through on this,
+
+   oh, that's right,
+
+   I can't pull that up.
+
+   Anyway,
+
+   if I go and I pull it up
+
+   and I take a look
+
+   at table shading support,
+
+   I can see that
+
+   pretty much every browser
+
+   supports that.
+
+   Some of the Opera mobiles
+
+   don't,
+
+   and IE6
+
+   has some problems
+
+   with some of the gradients,
+
+   but for the most part,
+
+   it works okay.
+
+   On the other hand,
+
+   you know,
+
+   get XML,
+
+   getting XML
+
+   over the wire,
+
+   that's only supported
+
+   in more modern browsers.
+
+   Some of the CSS3s features,
+
+   the dynamic shifting
+
+   and that,
+
+   that's all in the newest browsers.
+
+   In fact,
+
+   there's some stuff
+
+   that some browsers,
+
+   like Internet Explorer,
+
+   just plain out
+
+   don't support at all,
+
+   and if you're writing stuff
+
+   that isn't supported
+
+   in Internet Explorer,
+
+   a lot of your users
+
+   aren't going to be able
+
+   to do that.
+
+   So,
+
+   if you're looking
+
+   to use a new
+
+   WSBand feature,
+
+   check there first,
+
+   see if it's a good idea
+
+   to include it
+
+   if a majority of people
+
+   would actually be able
+
+   to use it.
+
+   So,
+
+   there's a few things
+
+   we do,
+
+   we can do
+
+   to convert
+
+   HTML 4 to 5
+
+   pretty easy.
+
+   The first one is
+
+   we need a new
+
+   doctype.
+
+   HTML5
+
+   no longer
+
+   uses a namespace
+
+   or an explicit
+
+   version declaration.
+
+   It just says
+
+   doctype HTML.
+
+   That goes at the
+
+   top of your HTML.
+
+   That tells the browsers
+
+   that you're writing
+
+   in an HTML5
+
+   compatible mode.
+
+   HTML,
+
+   language equals English.
+
+   Now,
+
+   language doesn't
+
+   actually do
+
+   anything as far
+
+   as helping
+
+   to parse
+
+   the,
+
+   uh,
+
+   parse it
+
+   or,
+
+   uh,
+
+   help with translation
+
+   necessarily
+
+   or anything like that.
+
+   It just identifies
+
+   what language
+
+   the main content
+
+   is in order
+
+   to give browsers
+
+   a heads up
+
+   of what kinds
+
+   of data
+
+   can expect.
+
+   You know,
+
+   if there's,
+
+   if there's
+
+   Arabic,
+
+   if Arabic
+
+   is the primary
+
+   language
+
+   and it's going
+
+   to choose
+
+   to lay things
+
+   out differently
+
+   than it would
+
+   for English,
+
+   for example.
+
+   Uh,
+
+   if you have
+
+   screen readers,
+
+   they'll know
+
+   to read in a
+
+   Arabic voice
+
+   instead of an
+
+   English voice,
+
+   things like that.
+
+   Uh,
+
+   language is
+
+   optional,
+
+   but you don't
+
+   need names
+
+   based declarations
+
+   in here anymore.
+
+   Uh,
+
+   you don't need
+
+   a lot of
+
+   other garbage
+
+   in here.
+
+   It's pretty much
+
+   been simplified
+
+   down to
+
+   just then.
+
+   Um,
+
+   everyone saw
+
+   the meta tag
+
+   before where
+
+   you're declaring
+
+   a whole bunch
+
+   of things
+
+   up at the top
+
+   of the document
+
+   that identify
+
+   like the character
+
+   set.
+
+   The character
+
+   set is one
+
+   of those
+
+   that,
+
+   uh,
+
+   has been
+
+   simplified
+
+   down.
+
+   So you just
+
+   say that the
+
+   meta character
+
+   set is
+
+   UTF-ing.
+
+   Uh,
+
+   the standard
+
+   does say
+
+   that's got to
+
+   be in the
+
+   first 10,
+
+   24 bytes
+
+   of your file
+
+   just so that
+
+   the browser
+
+   knows what
+
+   kind of character
+
+   set to render
+
+   the rest of
+
+   the way.
+
+   Uh,
+
+   if it's not,
+
+   then you get
+
+   whatever the
+
+   default to the
+
+   browser is
+
+   or whatever
+
+   your web
+
+   server told.
+
+   Uh,
+
+   the script
+
+   and the style
+
+   tags,
+
+   which do our
+
+   JavaScript
+
+   and our
+
+   CSS,
+
+   you don't
+
+   have to say
+
+   that this
+
+   is a
+
+   script
+
+   type
+
+   equals
+
+   JavaScript
+
+   anymore.
+
+   Just say
+
+   script.
+
+   The days
+
+   of,
+
+   the days
+
+   of action
+
+   script
+
+   are gone.
+
+   Uh,
+
+   the days
+
+   of
+
+   BB script
+
+   are gone.
+
+   JavaScript,
+
+   wave of
+
+   the future.
+
+   So,
+
+   again,
+
+   we simplify,
+
+   we get rid
+
+   of the
+
+   extraneous
+
+   stuff here
+
+   necessary,
+
+   and we
+
+   just assume
+
+   that if
+
+   you see
+
+   a script,
+
+   unless you
+
+   know
+
+   otherwise,
+
+   it's
+
+   JavaScript.
+
+   one thing
+
+   that
+
+   XHTML
+
+   did that
+
+   HTML4
+
+   did not
+
+   do,
+
+   is
+
+   introduce
+
+   elements
+
+   that are
+
+   attributes
+
+   that are
+
+   not
+
+   collapsed.
+
+   In
+
+   HTML4,
+
+   you could
+
+   just say
+
+   input
+
+   type
+
+   equals
+
+   checkbox
+
+   checked.
+
+   In
+
+   HTML5,
+
+   those have
+
+   to be
+
+   explicitly
+
+   stated
+
+   checked
+
+   equals
+
+   checked,
+
+   or
+
+   selected
+
+   equals
+
+   selected.
+
+   it
+
+   was
+
+   determined
+
+   to keep
+
+   that
+
+   so that
+
+   you could
+
+   get well
+
+   formed and
+
+   you would
+
+   know that
+
+   this is
+
+   actually
+
+   intended to
+
+   be an
+
+   attribute
+
+   and not
+
+   random
+
+   garbage
+
+   thrown into
+
+   a tab.
+
+   excuse me,
+
+   is the
+
+   input
+
+   still
+
+   not
+
+   closed?
+
+   Do you
+
+   know what I'm
+
+   saying?
+
+   Yes,
+
+   there's no
+
+   XML
+
+   closing.
+
+   Yes,
+
+   and I'm
+
+   going to get
+
+   to that
+
+   in just a
+
+   second.
+
+   No,
+
+   that's
+
+   all right.
+
+   Yeah,
+
+   the slash
+
+   is gone,
+
+   and I'll
+
+   get to
+
+   that.
+
+   It should
+
+   be there.
+
+   The biggest
+
+   thing that
+
+   affects people
+
+   moving to
+
+   HTML5,
+
+   CSS is
+
+   now the
+
+   way to
+
+   do all
+
+   presentational
+
+   tags.
+
+   There is no
+
+   more font
+
+   tag,
+
+   there is no
+
+   more Italian
+
+   tag,
+
+   there is no
+
+   more strong
+
+   tag.
+
+   You're
+
+   expected to
+
+   do all
+
+   this in
+
+   CSS.
+
+   No,
+
+   there is a
+
+   strong tag.
+
+   There's no
+
+   bold tag.
+
+   Strong is
+
+   semantic.
+
+   Strong is
+
+   okay,
+
+   EM is
+
+   okay.
+
+   There's
+
+   some
+
+   things you
+
+   just can't
+
+   do with
+
+   CSS.
+
+   Well,
+
+   no,
+
+   it's not
+
+   that.
+
+   Strong is
+
+   semantic.
+
+   You use
+
+   CSS to
+
+   say,
+
+   what does
+
+   strong
+
+   mean?
+
+   Bold says,
+
+   make it
+
+   darker.
+
+   That's
+
+   what CSS
+
+   is supposed
+
+   to do.
+
+   But saying
+
+   strong is
+
+   not a
+
+   EM.
+
+   It's
+
+   not a
+
+   style.
+
+   It just
+
+   means something
+
+   you hear
+
+   is important.
+
+   They're
+
+   highlighting a
+
+   block.
+
+   Thank you
+
+   for that.
+
+   I appreciate
+
+   that.
+
+   Of course,
+
+   one thing is
+
+   if you want
+
+   to use
+
+   EM instead of
+
+   I for
+
+   emphasize
+
+   instead of
+
+   italic.
+
+   Right.
+
+   There's
+
+   EM for
+
+   emphasize and
+
+   strong.
+
+   The default
+
+   behavior is
+
+   that they
+
+   do bold
+
+   and italic,
+
+   but they're
+
+   basically
+
+   there so
+
+   that you
+
+   can make
+
+   them do
+
+   whatever
+
+   you want
+
+   to know
+
+   that.
+
+   The general
+
+   point here
+
+   though is
+
+   that
+
+   presentational
+
+   HTML is
+
+   no more.
+
+   That also
+
+   means there
+
+   are no more
+
+   table borders.
+
+   There is no
+
+   more table
+
+   cell padding.
+
+   There is no
+
+   more table
+
+   cell spacing.
+
+   There is no
+
+   more BG
+
+   color.
+
+   There is no
+
+   more V
+
+   align.
+
+   It's all
+
+   in CSS.
+
+   so this
+
+   is the
+
+   way that
+
+   that's
+
+   preferred.
+
+   Actually,
+
+   there's another
+
+   thing that
+
+   should go in
+
+   there and
+
+   border collapse
+
+   with.
+
+   I'll get to
+
+   that later.
+
+   And in
+
+   HTML5,
+
+   no more
+
+   frames.
+
+   You can
+
+   still use
+
+   them.
+
+   There's a
+
+   whole document
+
+   typeset that
+
+   is set aside
+
+   as frame
+
+   set.
+
+   But in
+
+   HTML5,
+
+   there are
+
+   no more
+
+   frames.
+
+   There is
+
+   no target
+
+   equals blank.
+
+   There are
+
+   no more
+
+   attributes like
+
+   that.
+
+   HTML5,
+
+   the HTML
+
+   itself is
+
+   not about
+
+   controlling the
+
+   browser's
+
+   behavior anymore.
+
+   It's about
+
+   providing a
+
+   structural
+
+   document that
+
+   can be
+
+   modified by
+
+   CSS
+
+   and other
+
+   methods.
+
+   The best
+
+   thing though
+
+   is that
+
+   HTML5 is
+
+   mostly
+
+   backwards
+
+   compatible.
+
+   The people
+
+   who are
+
+   implementing
+
+   HTML5
+
+   understand that
+
+   you're not
+
+   going to be
+
+   able to do
+
+   it all in
+
+   one day.
+
+   You can do
+
+   this in
+
+   steps.
+
+   It's the same
+
+   way with
+
+   HTML4.
+
+   You'll get
+
+   warnings.
+
+   But for the
+
+   most part,
+
+   the browser
+
+   will do what
+
+   you expect if
+
+   you leave
+
+   those things
+
+   in.
+
+   going forward
+
+   it's best to
+
+   have all
+
+   these things
+
+   taken care of,
+
+   make the
+
+   presentation
+
+   separate from
+
+   your structure.
+
+   That's just
+
+   best practice
+
+   now in the
+
+   HTML world.
+
+   Now for a while
+
+   there was
+
+   XHTML as well.
+
+   These two live
+
+   side by side.
+
+   But XHTML never
+
+   really caught on
+
+   because it
+
+   required a new
+
+   document type
+
+   and the browsers
+
+   never really
+
+   supported it.
+
+   It relied on
+
+   well-formed XML
+
+   which almost
+
+   nothing ever
+
+   produces.
+
+   So for any
+
+   app that
+
+   actually used
+
+   XHTML,
+
+   first of all
+
+   all the
+
+   HTML4 advice
+
+   applies here too
+
+   because XHTML
+
+   was specifically
+
+   written to be
+
+   HTML4 plus
+
+   XML semantics.
+
+   As part of
+
+   that if you're
+
+   making the
+
+   conversion,
+
+   your movie
+
+   XML marker,
+
+   you don't need
+
+   the document
+
+   that says
+
+   XML version 1.0.
+
+   You don't need
+
+   the namespace
+
+   attribute that
+
+   declares where
+
+   the ETD is.
+
+   You don't have
+
+   the trailing
+
+   tag slashes
+
+   anymore.
+
+   You don't have
+
+   to force close
+
+   tags.
+
+   In fact,
+
+   it is valid
+
+   within HTML5
+
+   to open a table
+
+   cell and never
+
+   close it,
+
+   close the whole
+
+   table and the
+
+   browser is supposed
+
+   to do the right
+
+   thing.
+
+   I personally
+
+   don't recommend
+
+   that because it
+
+   makes it trouble
+
+   to debug people.
+
+   things but you
+
+   can do it.
+
+   You don't have
+
+   to send things
+
+   anymore as
+
+   application XML
+
+   plus HTML.
+
+   Just content
+
+   type text HTML.
+
+   And there is
+
+   such a thing as
+
+   XHTML5.
+
+   Don't bother
+
+   with it.
+
+   it was put out
+
+   as a draft
+
+   specification.
+
+   It's not really
+
+   being taken up.
+
+   HTML5 wave of
+
+   the future.
+
+   So, again,
+
+   with HTML5,
+
+   CSS is now
+
+   mandatory.
+
+   I personally
+
+   recommend you
+
+   keep your CSS
+
+   together in a
+
+   stylesheet, not
+
+   spread out
+
+   throughout your
+
+   code because if
+
+   you do that,
+
+   it makes it
+
+   harder for other
+
+   elements who want
+
+   to apply their
+
+   own stylesheet or
+
+   otherwise have,
+
+   if you need to
+
+   make changes to
+
+   your presentation,
+
+   it makes it
+
+   harder to take
+
+   care of that.
+
+   so keep your
+
+   CSS together as
+
+   much as you
+
+   can.
+
+   By the same
+
+   token, be as
+
+   specific and as
+
+   general as you
+
+   can.
+
+   If you're
+
+   highlighting a
+
+   link, use the
+
+   ID of the
+
+   link in order
+
+   to specify it,
+
+   but make sure
+
+   that you have a
+
+   fallback to set
+
+   your link styles
+
+   generally, things
+
+   like that.
+
+   Degrade gracefully.
+
+   Has everyone
+
+   here heard of
+
+   bookmarklets?
+
+   Bookmarklets are
+
+   web developer's
+
+   best friend.
+
+   They really are.
+
+   They tell you
+
+   they're little
+
+   pieces of
+
+   JavaScript that
+
+   go in your
+
+   browser's
+
+   box bar, you
+
+   click on them
+
+   and they do
+
+   something.
+
+   One of my
+
+   favorites is
+
+   called Zapp
+
+   CSS.
+
+   It takes all
+
+   the CSS and
+
+   it throws it
+
+   out.
+
+   And especially
+
+   if you're on
+
+   one of these
+
+   pages that has
+
+   a lot of
+
+   flash and
+
+   bad colors,
+
+   you hit that
+
+   button and
+
+   if the site's
+
+   been done well
+
+   at all, it
+
+   drops into a
+
+   nice little
+
+   readable format
+
+   and you don't
+
+   have to deal
+
+   with a lot of
+
+   web annoyances,
+
+   people doing
+
+   paint on green
+
+   or whatever.
+
+   So don't get
+
+   cute.
+
+   use the CSS
+
+   that you need
+
+   to make your
+
+   presentation good.
+
+   There's a lot
+
+   of tricks in
+
+   CSS like shading
+
+   and rounding
+
+   corners and
+
+   all of that.
+
+   Sometimes that's
+
+   good for
+
+   presentation but
+
+   a lot of times
+
+   people see those
+
+   new features and
+
+   say, oh, I gotta
+
+   have that, I gotta
+
+   have rounded
+
+   corners and
+
+   this button's
+
+   gotta pulse and
+
+   blink.
+
+   Who here
+
+   liked the
+
+   blink tab?
+
+   Yeah, okay.
+
+   But people
+
+   still used it.
+
+   Don't use
+
+   new stuff just
+
+   to use it.
+
+   Use it if it
+
+   makes things
+
+   better.
+
+   CSS does need
+
+   to be validated
+
+   too.
+
+   The World Wide
+
+   Web Consortium
+
+   at W3.org has
+
+   really great
+
+   validators for
+
+   both HTML and
+
+   CSS.
+
+   Please use
+
+   them.
+
+   It's even
+
+   more important
+
+   now with
+
+   dynamic HTML
+
+   because a lot
+
+   of using
+
+   things like
+
+   jQuery rely
+
+   rely on CSS.
+
+   I'm assuming
+
+   when you say
+
+   CSS now
+
+   mandatory,
+
+   you're talking
+
+   about the
+
+   fact that
+
+   you're supposed
+
+   to use it
+
+   to do your
+
+   layout
+
+   kinds of
+
+   things?
+
+   Right.
+
+   That you're not,
+
+   you don't have
+
+   your bold tag.
+
+   You don't have...
+
+   Don't use font
+
+   color equals
+
+   green.
+
+   Yeah.
+
+   That won't
+
+   validate.
+
+   Mandatory sounds
+
+   like you have
+
+   to use CSS.
+
+   Yeah.
+
+   It's not mandatory
+
+   because the
+
+   application will do it
+
+   is not CSS.
+
+   Right.
+
+   You don't have to
+
+   only violate it.
+
+   It was just
+
+   kind of a confusing
+
+   type.
+
+   What it means is
+
+   formatting is done
+
+   through CSS.
+
+   Right.
+
+   always looking
+
+   for feedback
+
+   on the
+
+   credit page.
+
+   Yes, I am.
+
+   Okay.
+
+   If anybody's
+
+   going to get
+
+   feedback,
+
+   who's going
+
+   to be frank?
+
+   Okay.
+
+   So, with all
+
+   these things in
+
+   mind, I converted
+
+   the app to
+
+   H205.
+
+   I'll go ahead
+
+   and I'll pull
+
+   that up.
+
+   Now, one thing
+
+   you might notice
+
+   is that the
+
+   table borders
+
+   have shifted
+
+   a little bit.
+
+   The old-style
+
+   table borders
+
+   were just thicker
+
+   with the drop
+
+   shadow and all
+
+   that.
+
+   And the new
+
+   borders
+
+   are a little
+
+   bit thin.
+
+   Now, that's
+
+   something you
+
+   can style
+
+   yourself.
+
+   But, for
+
+   the most part,
+
+   this is the
+
+   same table
+
+   change.
+
+   So, what
+
+   changed
+
+   between the
+
+   two?
+
+   Of course,
+
+   I don't have
+
+   color.
+
+   I didn't.
+
+   That's what I
+
+   did.
+
+   Oh.
+
+   But, my
+
+   BIM isn't
+
+   colored right now.
+
+   So.
+
+   I put to
+
+   open BIM.
+
+   What's that?
+
+   I put to
+
+   open BIM.
+
+   Open BIM?
+
+   Okay, so what did I
+
+   do in order to
+
+   make this app
+
+   HTML5 compliant?
+
+   I got rid of
+
+   the present
+
+   patient stuff.
+
+   I'm not aligning
+
+   my tables in
+
+   line anymore.
+
+   It's all done
+
+   in CSS.
+
+   You know, I got
+
+   my align, I've got
+
+   my B align.
+
+   I've got those
+
+   kinds of things.
+
+   Like, the...
+
+   Do I have to
+
+   pick it up?
+
+   No.
+
+   Okay.
+
+   Change the
+
+   doc type.
+
+   Change the
+
+   character set.
+
+   Added the
+
+   CSS rules.
+
+   So, I mean,
+
+   these are rules
+
+   that are styling
+
+   the cells
+
+   according to
+
+   the way that
+
+   they were
+
+   styled before.
+
+   Styling the
+
+   whole table.
+
+   This is the
+
+   border collapse
+
+   that I was
+
+   talking about.
+
+   If you don't
+
+   do that,
+
+   then you'll
+
+   have a whole
+
+   bunch of
+
+   boxes instead
+
+   of a single
+
+   table.
+
+   What the heck
+
+   is that?
+
+   Oh, that's
+
+   fine.
+
+   You know,
+
+   the body
+
+   got rid of
+
+   the font
+
+   styles in
+
+   the body.
+
+   The table
+
+   has been
+
+   simplified down.
+
+   Getting rid
+
+   of stuff,
+
+   I didn't
+
+   really have to
+
+   add a whole
+
+   lot.
+
+   I removed
+
+   and that's
+
+   what made
+
+   this HTML5
+
+   come back.
+
+   And sadly,
+
+   my internet
+
+   isn't up.
+
+   I would show
+
+   you that this
+
+   also validates
+
+   as HTML5.
+
+   So, any
+
+   questions on
+
+   this?
+
+   Maybe for
+
+   your title,
+
+   the emphasis
+
+   of the
+
+   separation of
+
+   design from
+
+   Markup,
+
+   structure and
+
+   style.
+
+   You know,
+
+   instead of
+
+   like maybe CSS
+
+   is mandatory,
+
+   something along
+
+   the lines of
+
+   how structure
+
+   and style
+
+   are
+
+   separate
+
+   structure and
+
+   style is
+
+   mandatory.
+
+   I like that.
+
+   Thank you.
+
+   Can you
+
+   roll back up
+
+   to the
+
+   style?
+
+   Sure.
+
+   This one
+
+   here?
+
+   Right there.
+
+   Interesting.
+
+   I thought
+
+   style was
+
+   a lot of
+
+   MLB text
+
+   CSS.
+
+   It is.
+
+   You have to
+
+   specify that.
+
+   It is.
+
+   I don't.
+
+   Why did
+
+   you specify
+
+   it then?
+
+   Because I
+
+   didn't,
+
+   because I
+
+   did not
+
+   remove that.
+
+   Oh, yeah.
+
+   Pick that
+
+   up.
+
+   Yeah, so.
+
+   See if you
+
+   would have
+
+   served it.
+
+   Very good.
+
+   Yeah, I
+
+   could remove.
+
+   You could
+
+   always count
+
+   on me to
+
+   find the
+
+   form.
+
+   I appreciate
+
+   that.
+
+   For the
+
+   short
+
+   comes of
+
+   good quality
+
+   of it.
+
+   Why it
+
+   took seven
+
+   months.
+
+   Isn't
+
+   that what
+
+   they call
+
+   paraplegal room?
+
+   Yeah.
+
+   Yes.
+
+   Now, where's
+
+   your test?
+
+   Oh.
+
+   It's going to be
+
+   ranked on that.
+
+   No, you
+
+   already
+
+   qualified
+
+   yourself
+
+   that this
+
+   was for
+
+   demonstration
+
+   purposes only.
+
+   Oh, I
+
+   know.
+
+   I put that
+
+   warning in
+
+   there just
+
+   to avoid
+
+   that question
+
+   that's still
+
+   down.
+
+   That doesn't
+
+   make that
+
+   invalid
+
+   that you
+
+   didn't
+
+   specify
+
+   that.
+
+   No.
+
+   It just
+
+   says you
+
+   don't need
+
+   to.
+
+   Right.
+
+   You don't
+
+   need to,
+
+   and if you
+
+   do,
+
+   that's what
+
+   it means to
+
+   be.
+
+   Even when I
+
+   was weighing
+
+   the presentation
+
+   to say you
+
+   should do it
+
+   this way,
+
+   you don't
+
+   need this.
+
+   Right.
+
+   There's
+
+   only one
+
+   way to
+
+   do
+
+   anything.
+
+   Right.
+
+   And that
+
+   is not
+
+   the simplest
+
+   thing I
+
+   could possibly
+
+   work.
+
+   Apparently
+
+   I didn't
+
+   have enough
+
+   opportunity
+
+   to bash
+
+   rough.
+
+   So
+
+   again,
+
+   what I do,
+
+   I remove
+
+   the presentation
+
+   like develop
+
+   attributes,
+
+   I edit
+
+   CSS classes,
+
+   a style sheet,
+
+   and an extraneous
+
+   attribute that
+
+   is a need,
+
+   and I simplify
+
+   tags like the
+
+   doctype.
+
+   just to bring
+
+   everything down,
+
+   make it a cleaner
+
+   piece of HTML,
+
+   something that's
+
+   more understandable,
+
+   quicker to look
+
+   at.
+
+   So now let's
+
+   talk JavaScript.
+
+   Up till now,
+
+   it's just all
+
+   been about HTML.
+
+   Most people
+
+   who write in
+
+   a dynamic
+
+   language like
+
+   to think
+
+   in a sequential
+
+   web,
+
+   in a sequential
+
+   ABC format
+
+   for how their
+
+   programs are
+
+   going to work.
+
+   everything is
+
+   linear functional
+
+   programming.
+
+   The world
+
+   of the web
+
+   and JavaScript
+
+   has moved
+
+   away from that
+
+   and move
+
+   into event
+
+   driven programming.
+
+   If you've
+
+   ever actually
+
+   done any
+
+   Windows
+
+   programming
+
+   or X
+
+   programming
+
+   or anything
+
+   like that,
+
+   those are
+
+   examples of
+
+   event driven
+
+   interfaces.
+
+   So
+
+   making that
+
+   shift
+
+   is
+
+   difficult
+
+   because
+
+   it's a
+
+   completely
+
+   different way
+
+   of thinking.
+
+   You don't
+
+   necessarily
+
+   have all
+
+   your preconditions
+
+   set before
+
+   something runs.
+
+   You have to
+
+   validate all that.
+
+   You have to
+
+   know what state
+
+   you're in.
+
+   So
+
+   the important
+
+   things to note
+
+   about JavaScript
+
+   versus
+
+   say
+
+   Perl.
+
+   We're
+
+   declaring
+
+   we're
+
+   still declaring
+
+   our variables
+
+   ahead of time.
+
+   JavaScript
+
+   unlike
+
+   Perl
+
+   does not
+
+   have
+
+   sigils.
+
+   What I mean by
+
+   that is
+
+   in the case
+
+   of Perl
+
+   if you have a
+
+   variable
+
+   you have a
+
+   dollar sign up front
+
+   or an act sign up front
+
+   or something
+
+   that gives you a clue
+
+   about the structure
+
+   of the data contained
+
+   within that variable
+
+   you don't have that
+
+   in JavaScript.
+
+   In fact
+
+   everything in JavaScript
+
+   is of one type
+
+   object.
+
+   You have no
+
+   interpolation.
+
+   So we're used to
+
+   in dynamic languages
+
+   we're used to
+
+   throwing a couple
+
+   variables in a string
+
+   printing that puppy out.
+
+   You don't have that
+
+   in JavaScript.
+
+   it's a simplified
+
+   language.
+
+   There are ways
+
+   to format strings
+
+   but there is
+
+   no general
+
+   quote
+
+   variable
+
+   quote.
+
+   Like I said
+
+   everything is an object.
+
+   Your strings are objects.
+
+   Your numbers are objects.
+
+   Even your objects
+
+   are objects.
+
+   I say that
+
+   mockingly
+
+   but it's true.
+
+   There is a whole
+
+   inheritance structure
+
+   everything
+
+   receives
+
+   everything
+
+   that the object
+
+   module can do
+
+   plus you
+
+   inherit down
+
+   from there.
+
+   So strings
+
+   have properties
+
+   numbers have properties
+
+   and any object
+
+   that you build
+
+   itself
+
+   has a property.
+
+   In dynamic languages
+
+   we have gotten
+
+   used to the
+
+   concept of
+
+   scope being
+
+   by block.
+
+   If I declare
+
+   if I'm doing
+
+   an if condition
+
+   I have
+
+   any variable
+
+   that I declare
+
+   inside of there
+
+   that's scoped
+
+   inside that block.
+
+   Once that block
+
+   goes away
+
+   that variable
+
+   is gone.
+
+   I don't have that
+
+   anymore.
+
+   Scope is my
+
+   function.
+
+   So if I declare
+
+   if I declare
+
+   variable at the
+
+   end of my function
+
+   I have that scope
+
+   even if
+
+   I exit out
+
+   if it's inside
+
+   an if condition
+
+   I declare it
+
+   I still have it
+
+   at the end of that end.
+
+   one of the best
+
+   ways to learn
+
+   about different
+
+   concepts in
+
+   JavaScript
+
+   is to play
+
+   with it.
+
+   Type in
+
+   various commands
+
+   and see what you
+
+   get out.
+
+   One of the
+
+   nice things about
+
+   modern web
+
+   browsers
+
+   is that they
+
+   include
+
+   a good JavaScript
+
+   console for the
+
+   most part.
+
+   So for example
+
+   come back over
+
+   to the browser
+
+   here
+
+   if I go to
+
+   about play
+
+   here
+
+   and then I go
+
+   down into
+
+   my JavaScript
+
+   console
+
+   I can start
+
+   typing expressions
+
+   seeing what I
+
+   get.
+
+   If I want to
+
+   declare
+
+   an object
+
+   I can do that
+
+   and I can see
+
+   what the result
+
+   is.
+
+   And most
+
+   of your browsers
+
+   these days
+
+   are including
+
+   the SIN
+
+   this also makes
+
+   a great debugging
+
+   tool
+
+   but just like
+
+   you learn to
+
+   crawl before you
+
+   learn to walk
+
+   sometimes just
+
+   typing in
+
+   things like
+
+   this
+
+   can help
+
+   you gain
+
+   an understanding
+
+   of the mechanics
+
+   of JavaScript.
+
+   There are also
+
+   some quirks
+
+   and you'll find
+
+   those as you
+
+   try them out.
+
+   We'll get into
+
+   some of those
+
+   in a little bit
+
+   too.
+
+   For Perl
+
+   people
+
+   I have this
+
+   I will be
+
+   releasing the
+
+   slides after
+
+   I give the
+
+   talk.
+
+   there is a
+
+   seminal Perl
+
+   book called
+
+   Higher Order
+
+   Perl
+
+   that discusses
+
+   proper
+
+   modern ways
+
+   of building
+
+   applications
+
+   and best
+
+   practices
+
+   and things
+
+   like that.
+
+   Sean Burke
+
+   who is one
+
+   of the
+
+   one of the
+
+   was one
+
+   of the best
+
+   contributors
+
+   to Perl
+
+   wrote a
+
+   companion piece
+
+   called Higher
+
+   Order JavaScript
+
+   and a lot
+
+   of the
+
+   gotchas
+
+   in that
+
+   that people
+
+   run into
+
+   when moving
+
+   from a dynamic
+
+   language to
+
+   JavaScript
+
+   he talks about.
+
+   He's got
+
+   great examples
+
+   and walks
+
+   through the
+
+   Higher Order
+
+   Pro book
+
+   and applies
+
+   that to
+
+   JavaScript
+
+   on that
+
+   page.
+
+   so when
+
+   I send
+
+   that out
+
+   please visit
+
+   that link
+
+   and try
+
+   it out.
+
+   It's another
+
+   great way
+
+   to learn
+
+   by looking
+
+   at what
+
+   other people
+
+   are doing.
+
+   JavaScript is a
+
+   dynamic language
+
+   so don't
+
+   contrast it
+
+   with it.
+
+   That is
+
+   true.
+
+   Perhaps
+
+   I need
+
+   to put it
+
+   more than
+
+   dynamic
+
+   language.
+
+   I cannot
+
+   use the term
+
+   scripting
+
+   language.
+
+   I will be
+
+   hoisted.
+
+   Oh because
+
+   Perl people
+
+   won't
+
+   grow.
+
+   Yes.
+
+   Perl is no
+
+   more scripting
+
+   language than
+
+   Ruby is a
+
+   scripting language.
+
+   We write
+
+   real programs
+
+   in those things
+
+   but we don't
+
+   have a good
+
+   name for
+
+   dynamic
+
+   language.
+
+   Well they
+
+   are.
+
+   I mean it
+
+   is a
+
+   dynamic
+
+   language and
+
+   so is
+
+   JavaScript.
+
+   That's just
+
+   not the
+
+   distinction
+
+   that you
+
+   want to.
+
+   That's
+
+   true.
+
+   It's just
+
+   a different
+
+   language in
+
+   the dynamic
+
+   language family.
+
+   Okay.
+
+   So let's
+
+   have some
+
+   basic concepts
+
+   here of
+
+   things that
+
+   how things
+
+   work.
+
+   Again I
+
+   based everything
+
+   on Perl
+
+   in here because
+
+   that's my
+
+   intended
+
+   audience.
+
+   If you
+
+   know what
+
+   dynamic
+
+   language
+
+   or again
+
+   I don't
+
+   know if
+
+   you work
+
+   that.
+
+   If you
+
+   know your
+
+   Perl,
+
+   your Ruby,
+
+   that kind
+
+   of your
+
+   PHP,
+
+   a lot of
+
+   these examples
+
+   will feel
+
+   right at
+
+   home.
+
+   We'll walk
+
+   through them
+
+   as we go.
+
+   So to
+
+   concatenate
+
+   things.
+
+   Putting two
+
+   things together.
+
+   In Perl we
+
+   use a period
+
+   between two
+
+   variables.
+
+   That's how
+
+   we concatenate
+
+   things.
+
+   you can also
+
+   put them
+
+   in a
+
+   string and
+
+   concatenate
+
+   them that
+
+   way.
+
+   In JavaScript
+
+   we use
+
+   the plus
+
+   operator.
+
+   Which one
+
+   can add
+
+   those two
+
+   things as
+
+   strings but
+
+   it may add
+
+   those two
+
+   things as
+
+   numbers.
+
+   So generally
+
+   if you're
+
+   going to
+
+   concatenate
+
+   and you're
+
+   not sure if
+
+   you have a
+
+   number or
+
+   not,
+
+   you use the
+
+   bottom form.
+
+   You make
+
+   sure that
+
+   it's a
+
+   string when
+
+   you go
+
+   to add.
+
+   Arrays.
+
+   Both
+
+   languages have
+
+   arrays.
+
+   Perl you
+
+   declare them
+
+   like that.
+
+   In JavaScript
+
+   you can
+
+   declare them
+
+   either way
+
+   there.
+
+   These two
+
+   are in
+
+   fact
+
+   accordingly.
+
+   But
+
+   arrays are
+
+   available.
+
+   Perl has
+
+   the concept
+
+   of an
+
+   associative
+
+   array or
+
+   a hash.
+
+   JavaScript
+
+   is not.
+
+   The closest
+
+   thing you
+
+   can do
+
+   in JavaScript
+
+   to making
+
+   a hash
+
+   is to
+
+   make a
+
+   new object.
+
+   That's
+
+   what that
+
+   actually does
+
+   is that
+
+   makes an
+
+   object with
+
+   attributes.
+
+   And then
+
+   you can
+
+   use that
+
+   object,
+
+   mock object
+
+   and its
+
+   attributes
+
+   as an
+
+   associative
+
+   array.
+
+   You don't
+
+   have the
+
+   same kind
+
+   of control
+
+   but if
+
+   you're trying
+
+   to group
+
+   things together
+
+   the same
+
+   way you
+
+   would in
+
+   a hash
+
+   it may
+
+   make sense
+
+   for you
+
+   to do.
+
+   Regular
+
+   expressions.
+
+   JavaScript
+
+   actually
+
+   supports
+
+   a
+
+   pretty good
+
+   subset
+
+   of
+
+   Perl
+
+   compatible
+
+   regular
+
+   expressions.
+
+   There are
+
+   some
+
+   differences.
+
+   Perl
+
+   evolves
+
+   constantly
+
+   but you
+
+   can do
+
+   a simple
+
+   regex match
+
+   in JavaScript
+
+   very easily
+
+   built right
+
+   into the
+
+   language.
+
+   Yes,
+
+   that regular
+
+   expression
+
+   is an
+
+   object.
+
+   to get
+
+   data out
+
+   of a
+
+   regex
+
+   like you
+
+   do in
+
+   Perl
+
+   you can
+
+   declare
+
+   part of
+
+   the regex
+
+   that you
+
+   want to
+
+   capture
+
+   the same
+
+   way you
+
+   can do
+
+   it in
+
+   JavaScript.
+
+   That's the
+
+   part I
+
+   want to
+
+   capture
+
+   and then
+
+   I'm
+
+   going to
+
+   grab
+
+   the first
+
+   thing
+
+   that was
+
+   captured
+
+   right there.
+
+   The exec
+
+   actually returns
+
+   an array
+
+   that will give
+
+   you not only
+
+   what you
+
+   match
+
+   but all
+
+   the
+
+   captures
+
+   inside.
+
+   so you
+
+   do have
+
+   that option.
+
+   When you're
+
+   calling methods
+
+   off an
+
+   object in
+
+   Perl we
+
+   use the
+
+   arrow.
+
+   In
+
+   JavaScript
+
+   we use
+
+   the dot.
+
+   The other
+
+   interesting
+
+   thing is
+
+   that in
+
+   JavaScript
+
+   you have
+
+   a default
+
+   object
+
+   presented
+
+   inside your
+
+   function.
+
+   So whatever
+
+   object your
+
+   function is
+
+   called off
+
+   of is
+
+   available to
+
+   you by
+
+   default as
+
+   this.
+
+   In Perl you
+
+   have to
+
+   specifically
+
+   ask for it.
+
+   Yes?
+
+   Is
+
+   self and
+
+   shift a
+
+   special word
+
+   in Perl?
+
+   Yes it is.
+
+   Well self
+
+   is not a
+
+   special word
+
+   in Perl.
+
+   Self is not a
+
+   special word
+
+   in Perl.
+
+   Shift
+
+   it says
+
+   take the
+
+   first argument
+
+   off the
+
+   argument list
+
+   and return.
+
+   And then
+
+   the next time
+
+   you call
+
+   shift you
+
+   get the
+
+   second argument
+
+   off the
+
+   list
+
+   and so on
+
+   and so forth.
+
+   Could you
+
+   your audience
+
+   probably know
+
+   that?
+
+   Yeah.
+
+   Parameters
+
+   in Perl
+
+   are very
+
+   explicit
+
+   unlike
+
+   almost
+
+   any other
+
+   language
+
+   out there.
+
+   More like
+
+   from the
+
+   shell
+
+   background.
+
+   Yeah.
+
+   Right.
+
+   And although
+
+   you do have
+
+   explicit parameters
+
+   in JavaScript
+
+   too.
+
+   You can
+
+   either declare
+
+   a prototype
+
+   or you can
+
+   just say
+
+   here's a
+
+   function
+
+   and I'm
+
+   going to
+
+   pull up
+
+   the argument.
+
+   No I
+
+   mean explicit
+
+   in the
+
+   sense that
+
+   you have
+
+   an array
+
+   and you have
+
+   to ship
+
+   them off.
+
+   Oh yeah.
+
+   As opposed
+
+   to just
+
+   having them
+
+   be there
+
+   and they
+
+   make them.
+
+   Yeah.
+
+   PHP
+
+   JavaScript
+
+   you just
+
+   say hey
+
+   here's my
+
+   parameter
+
+   that was
+
+   coming in
+
+   and give
+
+   me whatever
+
+   I got.
+
+   And that's
+
+   a great tie-in
+
+   right here.
+
+   in Perl
+
+   I just
+
+   say hey
+
+   I've got
+
+   a function
+
+   or subroutine
+
+   in JavaScript
+
+   I can
+
+   either
+
+   declare it
+
+   as a
+
+   function
+
+   with
+
+   arguments
+
+   or without
+
+   and then
+
+   do whatever
+
+   I need
+
+   to do
+
+   inside.
+
+   This
+
+   also
+
+   automatically
+
+   assigns
+
+   what if
+
+   the first
+
+   argument
+
+   is to
+
+   bar
+
+   and then
+
+   I can
+
+   just use
+
+   it.
+
+   I don't
+
+   have to
+
+   take any
+
+   time
+
+   inside
+
+   the
+
+   function
+
+   retrieving
+
+   that
+
+   historic.
+
+   Checking
+
+   equality.
+
+   This is
+
+   something
+
+   we do
+
+   a lot.
+
+   In
+
+   Perl
+
+   there are
+
+   two
+
+   different
+
+   kinds
+
+   of
+
+   equality
+
+   comparisons.
+
+   There is
+
+   a numeric
+
+   type
+
+   and there
+
+   is a
+
+   string
+
+   type.
+
+   In JavaScript
+
+   we have
+
+   two
+
+   different
+
+   comparisons.
+
+   We have
+
+   a value
+
+   type
+
+   and we
+
+   have
+
+   a
+
+   boolean
+
+   type.
+
+   No.
+
+   We can
+
+   script.
+
+   We can
+
+   script.
+
+   Double
+
+   equals
+
+   is
+
+   what
+
+   you
+
+   mean
+
+   by
+
+   value
+
+   is
+
+   if
+
+   you
+
+   have
+
+   objects
+
+   like
+
+   the
+
+   number
+
+   one
+
+   and
+
+   the
+
+   string
+
+   one
+
+   in
+
+   JavaScript
+
+   in
+
+   a
+
+   weak
+
+   comparison
+
+   they'll
+
+   compare
+
+   equally.
+
+   The
+
+   triple
+
+   equal is
+
+   a strict
+
+   they also
+
+   have to
+
+   match
+
+   by type.
+
+   close
+
+   type
+
+   version.
+
+   I was
+
+   feeling
+
+   that
+
+   concept
+
+   of
+
+   PHP
+
+   takes
+
+   that
+
+   to
+
+   value
+
+   right there.
+
+   It's not
+
+   though.
+
+   It's still
+
+   value.
+
+   It's strict
+
+   value
+
+   comparison.
+
+   It's not
+
+   identity
+
+   in JavaScript.
+
+   they can
+
+   different
+
+   objects
+
+   but as long
+
+   as they're
+
+   the same
+
+   object
+
+   with the
+
+   same
+
+   value
+
+   and same
+
+   type.
+
+   Yes.
+
+   Two
+
+   different
+
+   strings
+
+   with the
+
+   same
+
+   value
+
+   are
+
+   compared
+
+   string
+
+   to
+
+   quality.
+
+   I think
+
+   the general
+
+   advice
+
+   is use
+
+   triple
+
+   equals
+
+   well.
+
+   Yeah.
+
+   I mean
+
+   unless
+
+   you want
+
+   the type
+
+   version.
+
+   Yeah.
+
+   Right.
+
+   Unless
+
+   you specifically
+
+   want
+
+   the type
+
+   version.
+
+   The other
+
+   interesting
+
+   thing
+
+   about
+
+   JavaScript
+
+   equality
+
+   is that
+
+   again
+
+   we talked
+
+   about
+
+   there is
+
+   not a
+
+   number
+
+   that
+
+   you get
+
+   like if
+
+   you divide
+
+   by zero.
+
+   The interesting
+
+   thing is
+
+   you cannot
+
+   directly check
+
+   for is
+
+   this variable
+
+   not a
+
+   number.
+
+   Well there's
+
+   a function
+
+   called
+
+   is not
+
+   a number.
+
+   Right.
+
+   If you try
+
+   and stuff
+
+   into one
+
+   of these
+
+   you have
+
+   two not
+
+   a numbers.
+
+   Not a
+
+   number
+
+   doesn't
+
+   equal
+
+   anything.
+
+   Correct.
+
+   Should I
+
+   point people
+
+   at Gary
+
+   Bernhardt's
+
+   what?
+
+   Tom?
+
+   You know
+
+   what?
+
+   I almost
+
+   included it.
+
+   I'm not
+
+   doing that
+
+   for brevity.
+
+   And I'm
+
+   already at
+
+   45 minutes
+
+   of
+
+   I can
+
+   already see
+
+   I'm going
+
+   to trip
+
+   a bunch
+
+   of
+
+   that.
+
+   Conditionals
+
+   Pearl
+
+   has a
+
+   concept
+
+   of
+
+   if
+
+   if
+
+   else
+
+   if
+
+   else
+
+   JavaScript
+
+   is
+
+   just
+
+   if
+
+   else
+
+   if
+
+   else
+
+   Now
+
+   in
+
+   Pearl
+
+   blocks
+
+   are
+
+   required
+
+   inside
+
+   your
+
+   ifs
+
+   in
+
+   JavaScript
+
+   they're
+
+   not.
+
+   So that
+
+   means you
+
+   can just
+
+   say
+
+   if
+
+   condition
+
+   function
+
+   don't
+
+   need a
+
+   block
+
+   there.
+
+   It is
+
+   highly
+
+   recommended
+
+   but it
+
+   is not
+
+   required.
+
+   Well
+
+   you also
+
+   have
+
+   your
+
+   C
+
+   style
+
+   for
+
+   loops
+
+   which
+
+   is
+
+   initialize
+
+   your
+
+   variable
+
+   here's
+
+   your
+
+   check
+
+   condition
+
+   here's
+
+   your
+
+   increment
+
+   condition
+
+   both
+
+   work
+
+   exactly
+
+   the same
+
+   way.
+
+   I would
+
+   change
+
+   your
+
+   double
+
+   end
+
+   of
+
+   the
+
+   word
+
+   again.
+
+   Well
+
+   the
+
+   double
+
+   end
+
+   yeah
+
+   if
+
+   you want
+
+   to go
+
+   to third
+
+   line
+
+   for
+
+   putting
+
+   a
+
+   double
+
+   ampersand
+
+   in there
+
+   it's
+
+   like okay
+
+   now I'm
+
+   confused
+
+   or put
+
+   it on
+
+   a new
+
+   line
+
+   I was
+
+   trying not
+
+   to go
+
+   for a
+
+   third
+
+   line
+
+   because
+
+   I
+
+   got a
+
+   whole
+
+   other
+
+   more
+
+   days
+
+   but
+
+   the
+
+   nice
+
+   thing
+
+   about
+
+   this
+
+   slide
+
+   is
+
+   that
+
+   these
+
+   are
+
+   mostly
+
+   things
+
+   that
+
+   are
+
+   pretty
+
+   close
+
+   to
+
+   the
+
+   same
+
+   in
+
+   curl
+
+   we say
+
+   for
+
+   each
+
+   variable
+
+   in
+
+   javascript
+
+   is
+
+   a
+
+   and
+
+   b
+
+   you
+
+   can't
+
+   actually
+
+   in
+
+   curl
+
+   say
+
+   a
+
+   b
+
+   like
+
+   that
+
+   but
+
+   that's
+
+   not
+
+   good
+
+   loop
+
+   controls
+
+   if
+
+   I'm
+
+   in the
+
+   middle
+
+   of
+
+   while
+
+   loop
+
+   and
+
+   I
+
+   want
+
+   to
+
+   move
+
+   on
+
+   to
+
+   the
+
+   next
+
+   one
+
+   in
+
+   curl
+
+   I
+
+   do
+
+   max
+
+   if
+
+   I
+
+   want
+
+   to
+
+   break
+
+   down
+
+   I
+
+   do
+
+   last
+
+   javascript
+
+   if
+
+   I
+
+   want
+
+   to
+
+   try
+
+   code
+
+   to
+
+   catch
+
+   an
+
+   exception
+
+   in
+
+   curl
+
+   I
+
+   have
+
+   an
+
+   eval
+
+   structure
+
+   that
+
+   lets
+
+   me
+
+   catch
+
+   those
+
+   fatal
+
+   conditions
+
+   in
+
+   javascript
+
+   I
+
+   have
+
+   a
+
+   try
+
+   catch
+
+   block
+
+   pretty
+
+   much
+
+   the same
+
+   scenario
+
+   and if
+
+   I
+
+   want
+
+   to
+
+   get
+
+   out
+
+   of
+
+   that
+
+   block
+
+   with
+
+   an
+
+   error
+
+   condition
+
+   in
+
+   curl
+
+   I
+
+   use
+
+   dive
+
+   in
+
+   javascript
+
+   I
+
+   use
+
+   throw
+
+   and
+
+   then
+
+   whatever
+
+   I
+
+   throw
+
+   is
+
+   what
+
+   the
+
+   argument
+
+   is
+
+   here
+
+   on
+
+   the
+
+   curl
+
+   side
+
+   I
+
+   actually
+
+   have
+
+   to
+
+   go
+
+   and
+
+   root
+
+   around
+
+   and
+
+   throw
+
+   what
+
+   that
+
+   can
+
+   issue
+
+   is
+
+   if
+
+   I
+
+   want
+
+   to
+
+   increment
+
+   these
+
+   are
+
+   the same
+
+   the
+
+   exception
+
+   of the
+
+   sigil
+
+   both of
+
+   these
+
+   work
+
+   pretty
+
+   much
+
+   the
+
+   same
+
+   and
+
+   the
+
+   set
+
+   of
+
+   operators
+
+   is
+
+   pretty
+
+   close
+
+   the
+
+   only
+
+   difference
+
+   really
+
+   in
+
+   the main
+
+   set
+
+   of
+
+   operators
+
+   you
+
+   use
+
+   day
+
+   to
+
+   day
+
+   in
+
+   curl
+
+   you
+
+   have
+
+   concatenation
+
+   operator
+
+   like
+
+   that
+
+   in
+
+   javascript
+
+   you
+
+   want
+
+   to
+
+   do
+
+   comments
+
+   in
+
+   curl
+
+   if
+
+   you
+
+   want
+
+   a
+
+   single
+
+   line
+
+   comment
+
+   you
+
+   use
+
+   pound
+
+   sign
+
+   if
+
+   you
+
+   want
+
+   a
+
+   multi
+
+   line
+
+   comment
+
+   generally
+
+   you're
+
+   put in
+
+   pod
+
+   or
+
+   something
+
+   like
+
+   that
+
+   pod
+
+   is
+
+   pearls
+
+   plain
+
+   old
+
+   documentation
+
+   format
+
+   in
+
+   javascript
+
+   you
+
+   have
+
+   c
+
+   style
+
+   single
+
+   line
+
+   comment
+
+   and
+
+   healthy
+
+   line
+
+   comments
+
+   if
+
+   you
+
+   want
+
+   to
+
+   actually
+
+   print
+
+   something
+
+   out
+
+   on
+
+   curl
+
+   side
+
+   you
+
+   just
+
+   use
+
+   print
+
+   on
+
+   the
+
+   javascript
+
+   side
+
+   if
+
+   you're
+
+   writing
+
+   into
+
+   an
+
+   html
+
+   document
+
+   you're
+
+   going
+
+   to
+
+   use
+
+   document
+
+   dot
+
+   write
+
+   not
+
+   print
+
+   print
+
+   does
+
+   not
+
+   do
+
+   what
+
+   you
+
+   think
+
+   it
+
+   does
+
+   print
+
+   prints
+
+   that
+
+   means
+
+   it
+
+   will
+
+   send
+
+   the
+
+   document
+
+   to
+
+   the
+
+   printer
+
+   so
+
+   don't
+
+   do
+
+   that
+
+   and
+
+   if
+
+   you
+
+   want
+
+   to
+
+   throw
+
+   an
+
+   error
+
+   condition
+
+   in
+
+   curl
+
+   we
+
+   have
+
+   warn
+
+   which
+
+   said
+
+   something
+
+   to
+
+   standard
+
+   error
+
+   and
+
+   then
+
+   you
+
+   can
+
+   handle
+
+   it
+
+   in
+
+   javascript
+
+   there
+
+   are
+
+   two
+
+   different
+
+   types
+
+   of
+
+   warnings
+
+   there's
+
+   a
+
+   work
+
+   which
+
+   will
+
+   just
+
+   be
+
+   a
+
+   pop-up
+
+   and
+
+   let
+
+   you
+
+   see
+
+   what
+
+   the
+
+   error
+
+   condition
+
+   is
+
+   or
+
+   you
+
+   can
+
+   do
+
+   a
+
+   log
+
+   to
+
+   the
+
+   javascript
+
+   console
+
+   and
+
+   then
+
+   if
+
+   you
+
+   have
+
+   that
+
+   you
+
+   can
+
+   go
+
+   into
+
+   your
+
+   javascript
+
+   console
+
+   and
+
+   see
+
+   what
+
+   messages
+
+   you
+
+   want
+
+   so
+
+   those
+
+   are
+
+   some
+
+   of
+
+   the
+
+   differences
+
+   and
+
+   some
+
+   of
+
+   the
+
+   similarities
+
+   between
+
+   curl
+
+   and javascript
+
+   Any questions? You mentioned too about the really strong suggestion that you're doing, opening a block, you put a brace on the same line. There's always the Holy War, you know, it's a key in our style in other languages versus, you know, starting the brace on the other line. That actually would get you in trouble.
+
+   For return. For return, yeah. They say, oh, you really meant it. Because of, because of semicolon, automatic semicolon insertion, insertion. Which is really not intuitive.
+
+   I mean, if you come back to my examples here, that's basically the way that I code. The block opens on the same line, it opens and closes the line after.
+
+   It's the way God would be.
+
+   It's the way God would be.
+
+   Yes, the way God would be.
+
+   What was that?
+
+   God doesn't use braces.
+
+   This is the only part I get your guys' help on.
+
+   Well, no, I've done that as a matter of style, but I didn't realize that there was.
+
+   It is.
+
+   It is.
+
+   We had this discussion about standardizing for Java, and we said, really, we want to, like, do the braces on the same line, and that was one of the things we talked about, that you could introduce.
+
+   Yeah, but you said there was an actual defect if you.
+
+   Yes, if you say return, and then on the next line, open curly brace, some object, automatic semicolon insertion will look at the return as being a statement and a return from that point.
+
+   And it won't actually return the object.
+
+   Well.
+
+   It will actually return.
+
+   It will return undefined.
+
+   Undefined.
+
+   Yeah.
+
+   It is.
+
+   Okay.
+
+   This is one of the parts I need your guys' help on.
+
+   I don't have a lot of good JavaScript resources.
+
+   The Mozilla one is really heck of garbage.
+
+   It's not really, I mean, I'm not necessarily looking for answers here.
+
+   I think I'll send you some.
+
+   Please.
+
+   If you guys can send me some e-mails of some good resources that I can recommend.
+
+   Definitely don't want.
+
+   Yeah, I'll say.
+
+   You know what?
+
+   Well, that's actually, that's actually, I use Google mostly.
+
+   Right.
+
+   Which sends me into there, which gives me the information I need with browsing it.
+
+   Painting it in.
+
+   No, it's got a lot of mistakes.
+
+   Okay.
+
+   It's really not a good reference.
+
+   Okay.
+
+   Well, that's why I said, I'm looking for your help.
+
+   Yeah, I'll send.
+
+   So please, you know, send me some resources.
+
+   Or if, if you can't send me through the meetup group or whatever, I'll give out my e-mail.
+
+   Or Ryan's got it.
+
+   You know, something like that.
+
+   You can find me in the night in the corporate book.
+
+   I'd like to see them anyway.
+
+   So meetup groups.
+
+   Yeah.
+
+   Yeah.
+
+   The meetup group is ideal.
+
+   Yeah.
+
+   Yeah.
+
+   Just start a thread on there with your resources.
+
+   And because everybody should be, it should be public.
+
+   Anybody should be able to, well, if you want them, you, you, you just had to be a member
+
+   of the group, right?
+
+   And that, that, because you had to, you didn't have to do anything.
+
+   Yeah.
+
+   Yeah.
+
+   So.
+
+   Okay.
+
+   Yeah.
+
+   Anything that will get people to go into the forum.
+
+   I'm trying here.
+
+   I'm trying.
+
+   Okay.
+
+   So let's talk about events really quick.
+
+   Because as I explained when I started talking about JavaScript, it's an event-based model.
+
+   It's not a functional programming model.
+
+   There are functions, but JavaScript is mostly based on triggered events.
+
+   On clicking on something, focusing on something, changing something, submitting a form, the basic
+
+   actions that we do when we're browsing the web.
+
+   Yeah.
+
+   One of the interesting things about JavaScript's events model are that return values are important.
+
+   If your function returns a false value, for example, when on a link, you have something
+
+   that says, when I click on this link, call this function, and that function returns false,
+
+   your JavaScript will execute, but you will not actually follow the link.
+
+   This is actually a very nice model to use if you're going to degrade to something that can't support JavaScript,
+
+   where you want to follow the link, but if someone's got JavaScript enabled, pop them up into a window or something like that.
+
+   However, this event model requires you to think asynchronously.
+
+   You can't assume your state.
+
+   You don't necessarily have all your prerequisites available.
+
+   You don't even know at the time that your JavaScript fires, your page may not even be rendered.
+
+   And so you have to be aware of these things whenever you're writing a function on a page that's going to be modifying the structure of the page.
+
+   Avoidance beginning in this case, complicated code that weeps through each other.
+
+   It's very difficult, but it's important to do.
+
+   You know, functions have to be as clear as possible.
+
+   Do, again, the simplest thing that could possibly work.
+
+   You know, very minimal functions will help make things clearer and help you understand later on when you're making a change what it is that your functions are supposed to be doing.
+
+   Side effects are very easy to create in JavaScript.
+
+   So, now that we've talked a little bit about JavaScript, how do we get it into our page?
+
+   Well, there's four ways to do it.
+
+   You can either throw a script element in and put your JavaScript off in another file.
+
+   That's great to do if you're going to have a library of functions.
+
+   That's great if you're calling off.
+
+   Say, for example, you're going to include a Google map.
+
+   You obviously don't have that source code.
+
+   You're going to call off to them.
+
+   You know, that's great for including other resources so that it doesn't actually clover up your HTML.
+
+   On the other hand, you can explicitly put JavaScript right into your HTML.
+
+   And there are times when that's very good to do and there are times when that's not.
+
+   You can make a JavaScript function an attribute of another thing.
+
+   So, I can create an HTML button object and then give it an event, in this case onClick, and have it call off a function anytime that button is clicked.
+
+   You look like you're about to say something.
+
+   Or, I can actually make a URL that would be followed that is a JavaScript function.
+
+   Remember earlier when I said that your browser probably includes JavaScript, JavaScript console?
+
+   Chances are, if you type in JavaScript colon and some JavaScript into your browser bar, you will actually get that JavaScript executed in that browser and you can see the result.
+
+   So, even if there's not a dedicated console, chances are you actually have the ability to run JavaScript in your browser without having to put it into a page.
+
+   In fact, that's how bookmarklets work.
+
+   So, again, to come back over, inline or include, you know, if you have a, if you're thinking about JavaScript in a module form or you basically have a library versus a script where you just have a single page and you've got a little bit of JavaScript in there to do something.
+
+   Weigh them out, decide which of the tradeoffs is better for you.
+
+   Page size versus browser cache, if I put 20K of JavaScript in my page, then I have to do, every time I serve that page, I have to send out that same 20K of JavaScript.
+
+   It could be in my cache.
+
+   But on the other hand, if I put a script in my cache and I don't version the file name or force and reload the page,
+
+   people might be getting older versions of my JavaScript whenever they load my page.
+
+   Um, my rules of thumb, functions go in an include file or in the very head of the document.
+
+   Actions go where they're needed, clicks and things like that.
+
+   And I am always in the habit whenever I make a change to my files, to shift reload.
+
+   And then that way I know that I'm clearing out my cache and I'm getting the newest version of my resources.
+
+   Any questions?
+
+   Okay, moving on.
+
+   Javascript, as I said, everything is an object.
+
+   So to deal with making changes on a page, we have to have an object that represents the page.
+
+   That is the document object.
+
+   So your page is represented with a document object model.
+
+   There is actually an object living in memory that represents all the elements within your page.
+
+   Every element in your HTML has an object.
+
+   The whole thing together represents the HTML that you have written and have sent to the browser.
+
+   Think of the document object as a dispatcher.
+
+   You are not going to, in general, call the document object and say replace everything in this document with this slightly tweaked version because I want to change a form.
+
+   So you are going to ask the document for those elements for other objects that represent the things that you want to change.
+
+   And then you are going to change them yourself.
+
+   And then that propagates back up into the document.
+
+   Again, you want to manipulate those objects.
+
+   You don't want to really worry about manipulating text in and of itself.
+
+   What I mean by that is you are not going to change the HTML inside the object.
+
+   You are going to change the object itself.
+
+   Avoid the temptation of directly referencing HTML inside your Javascript.
+
+   If you can do it with the elements that are previously presented, do it.
+
+   If you start getting into a case where you are writing your own HTML and you are going to supplant something else,
+
+   and then you write invalid HTML, you are going to be chasing down bugs for a long time and you are not going to know where they came from.
+
+   Missing a closing tag is enough or duplicating a closing tag is enough to throw off the way your page is ready.
+
+   So quickly, your browser also has objects too.
+
+   So we can get a window and that will tell us the size of the viewport on the browser so that I can know if my width is this big or this big and I can adjust it accordingly.
+
+   I can also get information about the screen that the browser is running in.
+
+   I can also access the history.
+
+   There are some other things such as navigator which will give you some insight into the browser itself.
+
+   So most of the time you are not worried about these.
+
+   These only really matter if you are trying to make presentational changes.
+
+   Say for example you want something that is exactly half the size of the browser.
+
+   Now when you are writing functions, the important thing to note is that your function can only return one thing.
+
+   That one thing can contain multiple things.
+
+   It can be an object.
+
+   It can be an array.
+
+   It can be a boolean.
+
+   But it can only return one thing.
+
+   So that one thing is important.
+
+   For example when I was talking earlier about the dispatch and returning false.
+
+   If I need to have a false return but I also need to grab a variable on the way out, that is not going to work that well.
+
+   So you are going to need to make allowances for things like that.
+
+   I talked about returning true and false into control.
+
+   The JavaScript's default failure mode is to stop what you are doing.
+
+   So if I call up a function and it has a syntax error that was not picked up before, I am not going to continue down into the function.
+
+   None of the rest of my clicks will work.
+
+   None of the rest of my dynamic actions will work.
+
+   Javascript just stops executing if it runs across an app.
+
+   That is important because if you are throwing a line in debugging somewhere and you never get to it, you have to move up higher.
+
+   Find out where it is actually, where you can get to and where you can.
+
+   And thus, knowing how many bugs and bugs between knowing about the alert function that I showed you earlier, being able to make toggles, put things in a console log, that sort of thing.
+
+   You know, having an analytical mind really helps when you start getting into these troubles because it could be the smallest detail that's tripping away.
+
+   There are step through debuggers in almost all the major programs.
+
+   So, you know, find one of those, become acquainted with it.
+
+   So, Nikki, where are you with slides in time?
+
+   I have maybe another 15 minutes.
+
+   Oh.
+
+   Maybe.
+
+   Yeah.
+
+   No, I am going to, the rest of this goes pretty quick.
+
+   Okay.
+
+   So, now here I come back to the, to the to-do list and in this particular case I am going to add, get some dinner, pizza is out, go to bed, stuff like that.
+
+   That's the rest of my name.
+
+   Okay.
+
+   But in this particular case, the way the app worked previously is that if I change one of those priorities until I resubmitted the form and did all that, changing one wouldn't change the rest of them.
+
+   So, I introduced a JavaScript function that if I decided I need to go to bed before getting some dinner, I do that and you see the priority change.
+
+   Okay.
+
+   Now, how did I do that?
+
+   That's really good.
+
+   Okay.
+
+   First thing I did, which isn't working on here very, very well, but inside my select option,
+
+   on the page, because I have, I have that select that has all my priority values in it, on my select option, I added an on change event.
+
+   If you're eagle eyed, you'll notice that every other time that I've done it, the action has been capitalized.
+
+   In this case, it is not.
+
+   That's not a bug.
+
+   That's actually okay.
+
+   You don't have the camel case.
+
+   It's better, it's, it's, to me, it's better if you do because it's more understandable.
+
+   But, and when I say camel case, I need to throw in the capital in the middle of it.
+
+   So, what I, what I do now is I say, I want to adjust the priority of this.
+
+   What is this?
+
+   This is the select object that I'm, that I'm currently changing.
+
+   And all of that, yes.
+
+   The on change event fires when the element is changed.
+
+   So, if I, if I click on the select and I have all my options there, nothing happens to me.
+
+   But then when I select one, and that control goes away, that's when the on change button.
+
+   So, it turns, it's changed.
+
+   It doesn't have to lose focus.
+
+   It doesn't have to lose focus.
+
+   It just has to, if I press the down arrow three times, and then press enter, it didn't
+
+   lose focus, but it changed.
+
+   So, it's not.
+
+   Correct.
+
+   There are keystroke events though.
+
+   There are, but in this particular case, on change is not one of those.
+
+   There's on key up, on key down, and so on and so forth.
+
+   So.
+
+   Change is a more higher level thing.
+
+   It's more of a semantic thing.
+
+   There's different ways you can change the state of a select.
+
+   Right.
+
+   Right.
+
+   So, what that adjust priority function does, first of all, I cleared an argument.
+
+   Remember I said the this is the selected I'm operating on.
+
+   I'm just going to call it e, short for element.
+
+   Since this is the scope of my function, that's fine by me.
+
+   I'm going to get the new value by asking for the current value of the element.
+
+   And that's going to go into a new variable that I'm creating called new value.
+
+   Then, from here down to here, I'm figuring out which variable or which number I just replaced.
+
+   I do that simply by going through all the numbers and seeing what first one I'm missing.
+
+   If I ran out of values, then don't worry about it.
+
+   And then, from down here, down here is where I go through each element and change it if
+
+   it falls in that range of numbers that need to be changed.
+
+   So, in this particular case, I came up here and I said, here are all my selects.
+
+   These are all the elements with a tag name on select.
+
+   When I have grabbed all of the select fields that are in my document, I found out how many
+
+   there are with this length method.
+
+   Remember, length is an object method, so everything has a length.
+
+   It might be zero, but it has a length.
+
+   And then, I'm going to walk through each one of these here.
+
+   And, if it's, if I finally found my number here, that, if I find my old, or if I, if I find,
+
+   so I go through and I find one.
+
+   Okay.
+
+   I find two.
+
+   Okay.
+
+   Find three.
+
+   Oh, no.
+
+   I can't find three.
+
+   That must have been the number I was replacing.
+
+   This is where the continue goes to do the next increment.
+
+   This is where the break goes to break out and say, I've gone through the entire list, but
+
+   I've gone through all the numbers.
+
+   There are no more numbers for me to check.
+
+   Down here, this is where I figure out what my range is, whether I'm going from three to
+
+   four or from four to three.
+
+   And then, down here, I use those same selects, all those select elements that I did.
+
+   I go through, and I say, if this isn't the one, now, this is the ID.
+
+   This is what I was talking about earlier, where everything has a unique ID.
+
+   If this isn't the one that I'm currently changing, and it falls in ranges of one change, then change it.
+
+   That's all I have to do.
+
+   This function, when it runs, will go through every element and change it if necessary.
+
+   Any questions?
+
+   Instead of direction being decreased or increased, might just set it to plus one or minus one.
+
+   And add it directly to all selects that items.
+
+   Could have done that.
+
+   Could have done that.
+
+   Could have done that.
+
+   It's semantic.
+
+   Wow.
+
+   And as you can see, that's all that I changed.
+
+   So I added a function to adjust the priorities, and I added an event that calls that function whenever I actually need a change to the priority.
+
+   So now let's talk jQuery.
+
+   Most of the jQuery semantics, we've talked about with JavaScript already.
+
+   jQuery.
+
+   It's written in JavaScript.
+
+   It's framework.
+
+   Everything revolves around an object.
+
+   Dollar sign.
+
+   This is the hardest concept to grasp in jQuery.
+
+   Because personally for me, coming from a language with signals, I want that to be a variable.
+
+   And it's 9.
+
+   It could have just as easily been Q or 34.
+
+   It could have been anything.
+
+   But it's a dollar sign.
+
+   And that being a special character is something that not a lot of people are going to use in their code ordinarily.
+
+   So that makes it a very easy choice to say, "Hey, I'm a special object.
+
+   I'm a framework.
+
+   I'm just another variable."
+
+   The other thing about jQuery is you have to think about set operations like SQL.
+
+   Who here has done SQL?
+
+   Okay.
+
+   Almost everybody.
+
+   SQL is a database language that lets you select sets of data to operate on.
+
+   So if I want to get, say for example, I have a database that's got everybody here in it.
+
+   And I want to find all the people who are over 25 years of age, I can ask through SQL.
+
+   Give me everybody who's 25 years of age.
+
+   Orals.
+
+   When I say set operations, I'm not necessarily going to get those back in any specific order
+
+   unless I ask for them that way.
+
+   But I'm going to get a whole set.
+
+   I don't just operate on one unless I have some way to specifically identify a single one.
+
+   For the most part, I'm doing something to a lot of them good ones.
+
+   Then callbacks and anonymous functions.
+
+   In Perl, we do have anonymous functions.
+
+   We don't deal so much with callbacks.
+
+   What I mean by these, callbacks are a function that you give to something that's running async
+
+   previously.
+
+   When it's done, it calls that function and finishes doing whatever it was you were supposed
+
+   to do.
+
+   You're not sitting in a loop waiting.
+
+   You just handed it off and something else will call you when it's done.
+
+   Anonymous function means you have a function.
+
+   You just didn't give it a name.
+
+   You can still run it.
+
+   You can still do things with it.
+
+   It just doesn't have a specific name inside your code.
+
+   jQuery.com in this case is an awesome reference for me.
+
+   You can go in there.
+
+   They've got really great examples.
+
+   They've got good comments in there.
+
+   You can type in a couple words of what you're looking to do inside your search engine and
+
+   it pulls up all the functions that have something to do with that and gives you examples.
+
+   It really is a great reference.
+
+   So, if you have any questions about it, that's my A number one.
+
+   Are you ready?
+
+   It means you can't work on a page until it's rendered.
+
+   So, if I just stick a piece of JavaScript in my page and it's going to change the page
+
+   somehow, when it executes, if the page isn't fully rendered, then my change isn't really
+
+   going to take effect because the browser is not ready for it yet.
+
+   The browser doesn't have the full document object model, full doc.
+
+   So, it can't make changes to it until it has the whole thing.
+
+   So, to this end, jQuery provides the help for it, document.ready.
+
+   Anything that you want to do that's going to make a change to the structure of a page goes
+
+   into a function, an anonymous function, that you give to document.ready.
+
+   And then, when the page is ready, it runs it.
+
+   Kind of the same concept as body onload.
+
+   If you've ever done any sort of onload inside HTML where you said, call this JavaScript when
+
+   the page is ready, change the color, change the length, whatever.
+
+   It's the same kind of concept here.
+
+   Except the document ready can be called multiple times and it will stack everything up.
+
+   If I try and replace an onload inside a body, whatever the last one I put there is, wins.
+
+   But if I use the tools that jQuery gives me, then I can segment out my document changing JavaScript and it will just run in place when it's supposed to.
+
+   So, jQuery over plain JavaScript handles cross-browser compatibility.
+
+   I don't have to worry about IE7 versus Mozilla 14 versus Chrome 18, whatever they're up to now.
+
+   jQuery just handles that for the most part.
+
+   I don't really have to worry about those little quirks.
+
+   Simplified syntax for set operations.
+
+   If I want to operate on all those select elements you saw before, I had to get element by tag, go through them all, make sure I was getting out the one that I didn't want.
+
+   jQuery makes that much simpler.
+
+   Extensions tend to work consistently with people who develop add-ons for jQuery like jQuery UI.
+
+   They all work within the same model, they all have basically the same consistency so it's a lot easier to pick up an extension and go.
+
+   And unless somebody claims I'm not being clear, really all the frameworks can be.
+
+   Prototype, Node.js, YUI, Google Web Toolkit.
+
+   jQuery just happens to be the most popular one right now.
+
+   Take note out of that list, it's not a browser framework, it's a server site.
+
+   Replace it with underscore.
+
+   It's not, that one's not really either.
+
+   No, really?
+
+   It's not a DOM framework.
+
+   Well, yeah, it's just a standard library.
+
+   Yeah, it's just a little library.
+
+   It's nice.
+
+   I like it.
+
+   So, part of the reason I was stressing CSS so much before is jQuery loves CSS.
+
+   Everything works in jQuery on a CSS selector.
+
+   So, if I want to add a new paragraph to the body of my document, I say give me the body and append that document.
+
+   If I have a div call with an ID of notes or note with a class of notes and I want to hide my notes, I do that.
+
+   If I have a table with a header and I want to add a class, maybe a style to highlight the header or whatever, but I can use add class and I'm coming off of this CSS select.
+
+   So, this is why CSS validation is so important.
+
+   Because if you don't have all your CSS validated, if you have conflicts in your CSS, the first time you're going to do something with it in jQuery, you're going to get unexpected results.
+
+   Validation is really important in modern HTML.
+
+   So, I'll skip over the demo, the full demo explanation here.
+
+   But the short version is that I can take now and I can add a fourth task here.
+
+   Task 2.
+
+   And what you'll notice is before when I clicked on it, there's a pause.
+
+   It went to the server.
+
+   It did a lot of, it did the calculation, put it in the database, fit me back to full page.
+
+   Here, I'm just adding as many tasks as I want.
+
+   And they just add in right in.
+
+   And then when I finally sync the page here, then it will go to the database.
+
+   Then it will save that.
+
+   And then, so my server round trips are reduced.
+
+   You know, it's just dynamically adding as many rows that I need and then I handle it on the back end.
+
+   If I load, say, my prior version, you can see all the tasks were put in.
+
+   Even though, when I'm back over here, if I add a fourth task there, I haven't synced it yet.
+
+   So it's not actually, it's not actually in the database.
+
+   Okay.
+
+   Now, one of the things you're mentioning with the selectors, too, and I don't think I heard it,
+
+   was that you're using them to select, for example, like with a specific ID.
+
+   But what's really pretty amazing about that is that you're actually, you can actually iterate over a whole class.
+
+   So you have a particular class of a certain type.
+
+   And just with one of the functions, you can apply a certain set of actions across every class.
+
+   Right.
+
+   So you can do certain .
+
+   Right.
+
+   So I added some Perl stuff, and I added some Perl stuff at the top to handle adding multiple things.
+
+   At once, I added a class called CellCry onto my select, because that's the selector for the priorities, so I just called it that.
+
+   And then down here at the bottom, I included my jQuery, and then I have a ready function.
+
+   This doesn't actually execute until my document's ready.
+
+   And it comes through here, and it will say, if I add something in the new, when I click on the button, take all that stuff, clear those out, and then go through and for every select, add a new priority.
+
+   Notice I'm only doing that once.
+
+   I don't have a loop.
+
+   I didn't select all the selects.
+
+   I just set it once.
+
+   Selects.
+
+   All selects with that class, get that new option added on.
+
+   Powerful.
+
+   It's a set operation.
+
+   Makes things simpler.
+
+   But if you're not paying attention, you might add way too much stuff.
+
+   You have to be careful about how you target that stuff.
+
+   So let me just wrap up a couple of things here.
+
+   Quick talk on data exchange, JavaScript loves external data fetches.
+
+   That's what known as AJAX.
+
+   It stands for Asynchronous JavaScript and XML.
+
+   But it doesn't have to be XML.
+
+   It's just a name.
+
+   The current way of doing it, the best practice, is generally with JSON, which is JavaScript object
+
+   notation.
+
+   Now, pro people have seen YAML.
+
+   JSON is YAML.
+
+   There's a couple extra extensions.
+
+   But for the most part, it's a very simple key value language with some object handling
+
+   and silence.
+
+   So you can declare some arrays.
+
+   You can declare things like that.
+
+   But for the most part, it's a key value store.
+
+   And it just takes and it serializes an object and you can retrieve it and do what you need
+
+   to do.
+
+   So in the old days of AJAX, you do something called XML HTTP request.
+
+   You make your own asynchronous call.
+
+   You block until it came through.
+
+   Catch your own stairs.
+
+   That's a paper.
+
+   But these days, jQuery provides an AJAX or a getJSON method that handles all those details
+
+   for you.
+
+   That's why I was talking about callbacks earlier.
+
+   You set everything up.
+
+   You hand it a function.
+
+   And when the data finally comes back, you do what you need to do.
+
+   Let your framework handle the details.
+
+   Give you a callback.
+
+   On the AJAX though, you've got to be prepared to offer a callback.
+
+   Your data service might be unavailable.
+
+   Your request might not complete.
+
+   You could be waiting four hours to actually get data back.
+
+   So if you have another way of being able to provide the data, that's good.
+
+   So don't make your page sit forever until an AJAX request is answered.
+
+   Have a timeout if nothing else.
+
+   Try and be compatible with older browsers.
+
+   Some things obviously you can't.
+
+   But for the most part, if there's a way to both do it and be compatible and not be compatible,
+
+   try and do both.
+
+   You know, it's not just an IE7.
+
+   Phones have little browsers too.
+
+   But for, say, IE7 and you want to use JSON, you need one additional file.
+
+   It's called JSON to be included.
+
+   If you have JSON support, it doesn't get used.
+
+   If you don't have JSON support, it gets into it.
+
+   So that's the last demo I have here, which is if I add yet another task.
+
+   Of course I don't have an asynchronous requirement.
+
+   But you notice it didn't block.
+
+   Right.
+
+   It didn't block.
+
+   All of a sudden I popped up and I said, hey.
+
+   So in this particular case, if you load up the code, or I'll send out a link later so
+
+   that you can click around and try it out, it would actually add the task in the priority
+
+   on the page.
+
+   It would be in the database and it would have done all of that without a page refresh.
+
+   Okay.
+
+   The way that it does that.
+
+   This is the last slide, by the way.
+
+   The way that it does that.
+
+   First of all, I'm going to make a template row here and I'm going to hide it.
+
+   And that's just going to be whenever I want to insert a new row, I want to have something
+
+   to copy from, so I don't have to make it on the fly every time.
+
+   This is the JSON that I was talking about.
+
+   So now I have a function.
+
+   This function is the old function that I had that added those extra rows.
+
+   It's just reduced into a separate function so that I can debug it separately from having
+
+   to call out on an AJAX request.
+
+   So I have that.
+
+   And then down below, this is my JSON call.
+
+   This is where I call off and I say, call that CGI.
+
+   Here are my parameters.
+
+   When I get my JSON back, here's what to do.
+
+   Call that function.
+
+   That's all I'm doing.
+
+   When it comes back, it will add that row into my DOM.
+
+   I'm moving on like nothing ever happened.
+
+   So, that's pretty much it.
+
+   And here's my template row, so I can copy that.
+
+   Put that in mind.
+
+   What else could I do?
+
+   I could offer instant change sync support so that I don't have to even hit the sync button
+
+   right now and you still have to.
+
+   I could add more data points.
+
+   I could support pushing new paths so that if somebody else added one in another browser
+
+   would push in my new one, it's up to you.
+
+   You could go a whole bunch of different places from that, but that's at least the start.
+
+   Thank you very much.
+
+   And for listening to me dribble, listening to me blather on twice as long as I thought I would,
+
+   you get a free ebook.
+
+   Serious.
+
+   O'Reilly has given me permission to give this out to you.
+
+   You get a free ebook.
+
+   Serious.
+
+   O'Reilly has given me permission to give this out to you.

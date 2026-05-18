@@ -1,43 +1,293 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Dean Wampler
-    role: developer community and conference conversations
-turns:
-- speaker: M1
-  text: "Hi, it's Mike again with UGtastic. I'm here today at GOTO Conf Chicago 2013 and I'm again sitting down with Dean Wampler who is one of those people that is always seems to be ahead of the tech curve and is a fixture here in Chicago. When I was first getting into AOP it was already old hat for him and when I was starting to look at big data his name came up, you were recommended as somebody to talk to and but I had already known you through the community because of your involvement in conferences and user groups. So how how does that work for you? Do you do you use the community to stay up to speed on things or are you looking at things and putting those to the community?"
-- speaker: S1
-  text: "Well I'm sure it's both. I obviously like to talk about what I find interesting and what I think people will find interesting for solving problems. and so that's kind of why I started the Scala user group and have always been kind of active in the user groups here in Chicago. I think the reason I like to keep up with trends is both it's interesting but also there's a bit of paranoia there. I've always been a little nervous about growing stale and in part because it gets boring to do the same thing over and over again but it's a little bit of that you know I don't want to eventually get to the point where I feel like I'm completely out of touch with what's going on but I think also this is a young industry we're still learning how to do stuff the kind of problems we're solving today in some ways that the same problems we've always been solving but oftentimes are very different you like the scale of things there's a lot different today than it was say you know 20 years ago when the web first started and so a lot of times it's sort of a restlessness that there's got to be a better way you know yeah maybe we're getting work done but sure it sure seems to be painful in some respect so is there a better way and that's how I see it. I think there is a better way and that's how I started getting interested in AOP as a way of solving problems that we saw in composing systems and it didn't quite pan out the way I thought it would but you know now I've kind of seen that there's a lot that functional programming brings in part because of the problems we're doing today are a lot more data centric and it's really good for that as well as good for concurrency like multi-core and stuff and then it just I like to be engaged with people learn from people and that's part of being you know out front and also to like talking about what I think is is a really good way for people to learn from each other and I think that's interesting and helping people figure out what works for them."
-- speaker: M1
-  text: "I had forgotten about the Scala and actually a little note for the audience that you had spoken at a Chicago Code Camp and my wife she came to she's not a programmer but she sat in your in your session and wanted me to become a programmer and she she brought my notes and she took extensive notes and had a great time because it you you explained it in a way where you know she wasn't a developer she still was able to grasp and it actually helped us in our conversations. I mean I'm a marriage counselor."
-- speaker: S1
-  text: "Yeah you're a marriage counselor because now she understood a little bit better a lot of the problems that I face and what programming is when you're when you're doing it."
-- speaker: M1
-  text: "But um I'm just curious like Scala was was popular I'm just kind of going back in time a little bit Scala was the next big thing for a little while for functional programming before Clojure really you know got its legs. Are you still in the Scala space is that still something you're interested in or have you moved on to other languages?"
-- speaker: S1
-  text: "No I'm still a big fan of Scala and I'm a big fan of Clojure to be honest I'm a little torn between the two I think they both have various strengths and weaknesses. I still do a lot of Scala because it's like this a great toolbox for me that that fits the way I like the program it does that all the functional stuff it has some really nice extensions to object-oriented programming compared to Java that address some issues that Java wasn't good at so I still like it a lot I I recommend people try to at least become familiar with both of them if they're looking for another language just to so they don't like you just grab the first thing that comes along and then don't appreciate what other options are there a lot of times these things come down to personal preferences but you know once again some some languages are better than others for certain problems and so I certainly really like working with the Clojure community when I can but you know you only got so many hours in the day."
-- speaker: M1
-  text: "Yeah there's so many hours and you know you've you've over the years you've even what I've observed is you know you were with AOP and with Ruby and the Scala and now Big Data now these are different different communities if you made any observations about moving between these different groups about the way people approach the topics in their communities and and how they meet and share information."
-- speaker: S1
-  text: "Yeah that's an interesting question I think there may be a couple of things that come to mind one is that you typically see Ruby more in like you feature-rich website development your rails of course is really drove by the Ruby popularity not that it can't be used for other things but that seems to be the the niche that most Ruby developers fit in and so there's sort of a culture that goes with that people that are more you know maybe visually oriented more aesthetically oriented tend to be there and Ruby is a beautiful language to work with in that regard I sort of really got out of that community at least as far as active involvement mostly because I wanted to get back into more server-side general development for more scalable systems and and that meant for me anyway going back to the JVM or more fully and and then you know it's about that time that I started to really get into functional programming learned about Scala enclosure and kind of started working with Scala and then ironically they do I did a lot of Hadoop consulting recently and as part of the whole big data space and in a way that was sort of a move deliberate movement because I did physics in school and there was a lot of math that I hadn't used in a long time but I kind of liked doing and it was a way to sort of get back a little bit to doing more more serious math on data so that was kind of the attraction there."
-- speaker: M1
-  text: "So what's the next big thing?"
-- speaker: S1
-  text: "Thanks that's a really good question I talked a little bit about this in my talk the other day it was mostly in the context of big data but I do think that functional programming is going to see more widespread adoption I think actually even though a lot of people have talked about the like the multi-core problem how do we write a robust concurrency code is kind of the driver for functional programming at least mainstream adoption I actually think that more developers are going to run up against a wall trying to just do data problems like if they write Hadoop apps or or use some other tool and I actually think that functional programming is probably going to get more mainstream adoption for that problem than for concurrency because typically in a lot of these larger organizations there's a few really smart guys that know how to write the concurrent stuff or at least historically this has been the case and everybody else just kind of ignores it for better or worse so I see more people running up against the need for something new with data problems and functional programming in my view is a better fit there and the other trend I'm starting to see is a little bit more specialization in that space like there's there's so-called probabilistic models that they use for things like machine learning and predictive analytics and like when you you know rent a movie from Netflix and they recommend something that yeah actually that looks like something that might be interested and there's a predictive model going on behind the scenes technology to make that easier to more to be used more widely the outside just people who are real experts I see that kind of specialization happening."
-- speaker: M1
-  text: "And you talk about also when you your presentations seem to follow what you're passionate about at the moment is that an intentional like yeah I like this thing so therefore I'm going to dig deep on this topic and then two presentations or is it more oh I know that this is an interesting topic right now so therefore I'm going to try to dig deep and do the presentations is it is it more of a push or pull way that you may make your talks?"
-- speaker: S1
-  text: "Well it's funny you asked that because there have been times when I proposed to talk and something I really didn't know a whole lot about but it was sort of a motivator to force me to make the time yeah to learn it but in general I try to talk about stuff that I have legitimate experience and that I feel like I can offer some wisdom and help other people avoid mistakes or or whatever and that's generally what I do I do like to do public speaking and teaching when I've done training so for me that's it's rewarding in that way but I think it's always interesting to talk with people and either one-on-one or in a group you know or in a more formal setting about you know what seems to be going on what seems to be working what what's wrong with what we're doing now what should we be doing instead so it's usually more like experience driven as opposed to hey I'm interested in that let me learn about it and then do a talk on."
-- speaker: M1
-  text: "So as an experience speaker do you have a process for preparing your talks do you do you practice them do you write them ahead of time are you a slides first kind of guy or?"
-- speaker: S1
-  text: "I guess I'm a slides first guy kind of guy in terms of preparing them I guess I've done enough now that I don't really rehearse them that much and sometimes they're a little rough around the edges or rushed I've tended like most people maybe have more stuff than the less than enough but yeah I kind of have to develop an intuitive feel for how long I want to spend on each slide and that seems to work out and usually I'm too rushed to spend much time yeah rehearsing and refine anyway because we're all busy but yeah so I typically will start out I mean slides are kind of a great outlying format if you want to capture it that way and I'll start with a rough outline that way and then flesh it out as I go."
-- speaker: M1
-  text: "Okay well thank you very much for taking the time to tell my life."
-- speaker: S1
-  text: "Yeah thank you very much."
-- speaker: M1
-  text: "Thank you very much for taking the time to speak with me today. Find out for yourself today at UGtastic.com."
+content: |-
+  Hi, it's Mike again with UteTastic. I'm here today at GoToCom Chicago 2013 and I'm
+
+   again sitting down with Dean Wampler who is one of those people that is always
+
+   seems to be ahead of the tech curve and is a fixture here in Chicago. When I
+
+   was first getting into AOP it was already old hat for him and when I was
+
+   starting to look at big data his name came up, you were recommended as
+
+   somebody to talk to and but I had already known you through the community
+
+   because of your involvement in conferences and user groups. So how
+
+   how does that work for you? Do you do you use the community to stay up to speed on
+
+   things or are you looking at things and putting those to the community? Well I'm
+
+   sure it's both. I obviously like to talk about what I find interesting and what I
+
+   think people will find interesting for solving problems.
+
+   and so that's kind of why I started the Scala user group and have always been
+
+   kind of active in the user groups here in Chicago. I think the reason I like to
+
+   keep up with trends is both it's interesting but also there's a bit of
+
+   paranoia there. I've always been a little nervous about growing stale and in part
+
+   because it gets boring to do the same thing over and over again but it's a
+
+   little bit of that you know I don't want to
+
+   eventually get to the point where I feel like I'm completely out of touch with
+
+   what's going on but I think also this is a young industry we're still learning
+
+   how to do stuff the kind of problems we're solving today in some ways that
+
+   the same problems we've always been solving but oftentimes are very
+
+   different you like the scale of things there's a lot different today than it
+
+   was say you know 20 years ago when the web first started and so a lot of times
+
+   it's sort of a restlessness that there's got to be a better way you know yeah
+
+   maybe we're getting work done but sure it sure seems to be painful in some
+
+   respect so is there a better way and that's how I see it.
+
+   I think there is a better way and that's how I started getting interested in AOP as a
+
+   way of solving problems that we saw in composing systems and it didn't quite
+
+   pan out the way I thought it would but you know now I've kind of seen that
+
+   there's a lot that functional programming brings in part because of
+
+   the problems we're doing today are a lot more data centric and it's really good
+
+   for that as well as good for concurrency like multi-core and stuff and then it
+
+   just I like to be engaged with people learn from people and that's part of
+
+   being you know out front and also to like talking about what I think is is a
+
+   really good way for people to learn from each other and I think that's
+
+   interesting and helping people figure out what works for them.
+
+   I had forgotten about the Scala and actually a little note for the audience
+
+   that you had spoken at a Chicago Code Camp and my wife she came to she's not a
+
+   programmer but she sat in your in your session and wanted me to become a
+
+   programmer and she she brought my notes and she took extensive notes and had a
+
+   great time because it you you explained it in a way where you know she wasn't a
+
+   developer she still was able to grasp and it actually helped us in our
+
+   conversations. I mean I'm a marriage counselor. Yeah you're a marriage counselor because now she
+
+   understood a little bit better a lot of the problems that I face and what
+
+   programming is when you're when you're doing it but um I'm just curious like
+
+   Scala was was popular I'm just kind of going back in time a little bit Scala
+
+   was the next big thing for a little while for functional programming before
+
+   Clojure really you know got its legs. Are you still in the Scala space is that
+
+   still something you're interested in or have you moved on to other languages? No
+
+   I'm still a big fan of Scala and I'm a big fan of Clojure to be honest I'm a
+
+   little torn between the two I think they both have various strengths and
+
+   weaknesses.
+
+   I still do a lot of Scala because it's like this a great toolbox for me
+
+   that that fits the way I like the program it does that all the functional
+
+   stuff it has some really nice extensions to object-oriented programming compared
+
+   to Java that address some issues that Java wasn't good at so I still like it a
+
+   lot I I recommend people try to at least become familiar with both of them if
+
+   they're looking for another language just to so they don't like you just grab
+
+   the first thing that comes along and then don't appreciate what other options
+
+   are there a lot of times these things come down to personal preferences but
+
+   you know once again some some languages are better than others for certain
+
+   problems and so I certainly really like working with the Clojure community when
+
+   I can but you know you only got so many hours in the day. Yeah there's so many hours and you
+
+   know you've you've over the years you've even what I've observed is you know you
+
+   were with AOP and with Ruby and the Scala and now Big Data now these are
+
+   different different communities if you made any observations about moving
+
+   between these different groups about the way people approach the topics in their
+
+   communities and and how they meet and share information yeah that's an
+
+   interesting question I think there may be a couple of things that come to mind
+
+   one is that you typically see Ruby more in like you feature-rich website
+
+   development your rails of course is really drove by the Ruby popularity not
+
+   that it can't be used for other things but that seems to be the the niche that
+
+   most Ruby developers fit in and so there's sort of a culture that goes with
+
+   that people that are more you know maybe visually oriented more aesthetically
+
+   oriented tend to be there and Ruby is a beautiful language to work with in that
+
+   regard I sort of really got out of that community at least as far as active
+
+   involvement mostly because I wanted to get back into more server-side general
+
+   development for more scalable systems and and that meant for me anyway going
+
+   back to the JVM or more fully and and
+
+   then you know it's about that time that I started to really get into functional
+
+   programming learned about Scala enclosure and kind of started working
+
+   with Scala and then ironically they do I did a lot of Hadoop consulting recently
+
+   and as part of the whole big data space and in a way that was sort of a move
+
+   deliberate movement because I did physics in school and there was a lot of
+
+   math that I hadn't used in a long time but I kind of liked doing and it was a
+
+   way to sort of get back a little bit to doing more
+
+   more serious math on data so that was kind of the attraction there so what's
+
+   the next big thing thanks that's a really good question I talked a little
+
+   bit about this in my talk the other day it was mostly in the context of big data
+
+   but I do think that functional programming is going to see more
+
+   widespread adoption I think actually even though a lot of people have talked
+
+   about the like the multi-core problem how do we write a robust concurrency
+
+   code is kind of the driver for functional programming at least mainstream
+
+   adoption I actually think that more developers are going to run up against a
+
+   wall trying to just do data problems like if they write Hadoop apps or or use
+
+   some other tool and I actually think that functional programming is probably
+
+   going to get more mainstream adoption for that problem than for concurrency
+
+   because typically in a lot of these larger organizations there's a few really
+
+   smart guys that know how to write the concurrent stuff or at least historically this has been the case and
+
+   everybody else just kind of ignores it for better or worse so I see more people
+
+   running up against the need for something new with data problems and
+
+   functional programming in my view is a better fit there and the other trend I'm
+
+   starting to see is a little bit more specialization in that space like
+
+   there's there's so-called probabilistic models that they use for things like
+
+   machine learning and predictive analytics and like when you you know rent
+
+   a movie from Netflix and they recommend something that yeah actually that looks
+
+   like something that might be interested and there's a predictive model going on behind the
+
+   scenes technology to make that easier to more to be used more widely the outside
+
+   just people who are real experts I see that kind of specialization happening
+
+   and you talk about also when you your presentations seem to follow what you're
+
+   passionate about at the moment is that an intentional like yeah I like this
+
+   thing so therefore I'm going to dig deep on this topic and then two presentations
+
+   or is it more oh I know that this is an interesting topic right now so therefore
+
+   I'm going to try to dig deep and do the presentations is it is it more of a
+
+   push or pull way that you may make your talks well it's funny you asked that
+
+   because there have been times when I proposed to talk and something I really
+
+   didn't know a whole lot about but it was sort of a motivator to force me to make
+
+   the time yeah to learn it but in general I try to talk about stuff that I have
+
+   legitimate experience and that I feel like I can offer some wisdom and help
+
+   other people avoid mistakes or or whatever and that's
+
+   generally what I do I do like to do public speaking and teaching when I've
+
+   done training so for me that's it's rewarding in that way but I think it's
+
+   always interesting to talk with people and either one-on-one or in a group you
+
+   know or in a more formal setting about you know what seems to be going on what
+
+   seems to be working what what's wrong with what we're doing now what should we
+
+   be doing instead so it's usually more like experience driven as opposed to hey
+
+   I'm interested in that let me learn about it and then do a talk on so is it
+
+   experience speaker do you have a process for preparing your talks do you
+
+   do you practice them do you write them ahead of time are you a slides first
+
+   kind of guy or I guess I'm a slides first guy kind of guy in terms of
+
+   preparing them I guess I've done enough now that I don't really rehearse them
+
+   that much and sometimes they're a little rough around the edges or rushed I've
+
+   tended like most people maybe have more stuff than the less than enough but yeah
+
+   I kind of have to develop an intuitive feel for how long I want to spend on each
+
+   slide and that seems to work out and usually I'm too rushed to spend much
+
+   time yeah rehearsing and refine anyway because we're all busy but yeah so I
+
+   typically will start out I mean slides are kind of a great outlying format if
+
+   you want to capture it that way and I'll start with a rough outline that way and
+
+   then flesh it out as I go okay well thank you very much for taking the time
+
+   to tell my life yeah thank you very much thanks
+
+   you
+
+   you
+
+   you
+
+   you
+
+   you
+
+   you

@@ -1,464 +1,727 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Guest
-    role: Guest
-turns:
-- speaker: M1
-  text: "[Music] UGtastic Hi it's Mike with UGtastic, I'm still here at the Web Visions
-    2013 here at the Jane Siskel Film Center in Chicago. I'm sitting there with Bill
-    Scott. Bill is well somebody who was recommended to me by more people than anybody
-    else today then somebody I should sit down and talk with. Bill is a, well you
-    work with PayPal but can you describe what your title is because it was a little
-    bit more than I could... So I head up what's called what I call user interface
-    engineering and so think of it as the front-end development, front-end engineering,
-    all of the web technologies, desktop, all of us. So my background basically is
-    I came from Netflix before I came to PayPal. I was the head of UI engineering
-    there. I worked closely with the design team for about four years. Right. Built
-    that team up, the engineering team. And then before that I was at Yahoo and there
-    I did like the Yahoo design pattern library. I was also the Ajax analyst at Yahoo.
-    And my passion is really around designing. So a few small copies. Yeah, a few
-    small copies. And I also have a book with O'Reilly called Design and Web Interfaces.
-    Okay. It's strictly a design book. So I'm one of those weird hybrids that can
-    do JavaScript engineering but also do design book. What is the animal on it?"
-- speaker: S1
-  text: Mine is the most amazing one possible.
-- speaker: M1
-  text: So the design books have birds, right? Yeah.
-- speaker: S1
-  text: So mine is the cock of the rock. I'm the only, yeah anyway. I didn't pick
-    it. Yeah, yeah. They picked it.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Yeah, that's always fun to find out what the animal was. I have to get a picture
-    of it because the one in my head is not. Yeah, it's TMI. So, so okay, so I mean
-    obviously you have a very broad depth of experience. And there's one thing that's
-    in particular interesting that's just happened with PayPal here in Chicago.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And that is the acquisition of Braintree, one of our major financial credit
-    card services that's been acquired by PayPal.
-- speaker: M1
-  text: Yeah. Do you have any insight into what happened?
-- speaker: S1
-  text: Well, I know, I know the, so the arc that, that it ties in really well with
-    what I even talked about at the workshop and the day of the talk, uh, we've been
-    on a journey to transform PayPal into an innovative company.
-- speaker: M1
-  text: Right? Right?
-- speaker: S1
-  text: Uh, PayPal has been a very good brand and very successful in the amount of
-    money it's made and those sorts of things like that. But when I was leaving Netflix
-    in 2011, it was pretty obvious that, that PayPal wasn't really on my radar as
-    a company I went to, but I knew a few kid folks there who were the CTO that I
-    had a lot of respect for of the previous things they had done.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And so they've been talking about coming. And we started a journey when David
-    Marcus became president in April of 2012, uh, to transform PayPal to the very
-    lean, that they had like a startup, hence the use of Lean UX. So the acquisition
-    of Braintree really is another step in an evolution. It's like, here, here's obviously
-    an incredible company that started up, has, uh, moved at lightning speed and is
-    making a huge impact on PayPal. Uh, definitely, uh, definitely a strong development
-    of awesome APIs. Also they had Venmo, the New York, you know, which is a great,
-    a great, a great mobile app. So we've got mobile talent, API talent. We are already
-    transferring our APIs, but this just kind of takes us to the next level, I believe.
-    And one of the cool things we're going to do because David is a huge, he's a serial
-    entrepreneur, our president, until PayPal, he only did start us, right? Uh, until
-    he got acquired by PayPal. So he's going through the acquisition. Now he's right
-    now he's acquired. So it's very, very important that we let Braintree continue
-    to be the innovator it is, have, you know, still be called Braintree, be, you
-    know, be able to, uh, to, to, to not really change anything other than give it
-    a great broader breath and, uh, much more, you know, financial support and the
-    larger eBay family. And it fits really well. We're really excited. In fact, I
-    met Michael Wokey, who's here, is one of the product designers, product managers.
-    Uh, he's actually in my talk and he's got a quick chance to chat with him. Yeah,
-    and Braintree, I know, and I've actually interviewed, uh, one developer from the
-    UTSC and just extremely well perspective of the developer community in Chicago.
-    Um, uh, but I, so that's current events, but I, I'm interested in your book and
-    also the concept of Lean UX that you're teaching.
-- speaker: M1
-  text: Yeah. And what does that mean? Yeah.
-- speaker: S1
-  text: So, uh, if you're familiar with Jeff, God helps book, uh, Lean UX, which follows
-    on... I'm more on the dev side, so I'm not familiar. Okay, cool.
-- speaker: M1
-  text: Yeah. Yeah.
-- speaker: S1
-  text: So, uh, if you think about Lean Startup, you know, Lean Startup really is
-    about, you know, how do I get to customers as quick as possible?
-- speaker: M1
-  text: How do I validate my risky assumptions? How do I pivot either way?
-- speaker: S1
-  text: Or the Lean Startup. Lean Startup, sorry, I'm sorry. No, no, no, Lean UX falls
-    onto that, so Jeff God help actually book on Lean UX and we started using those
-    same ideas. What Lean UX really says is, hey, we're gonna be doing design, uh,
-    you know, it's not really about delivering documentation, it's about delivering
-    experience and doing that collaboratively with engineering, with design, with
-    product, all together. So, closing some of those loops. Yeah, break those walls
-    down, be very collaborative in nature, uh, as much as possible to even live in
-    the same room or same space together, and operate like a startup, like a startup.
-    And so this is very aproposal to a large company like PayPal that had, you know,
-    from an innovation perspective, had, uh, obviously stagnated. Uh, coming up to
-    2011, actually, it just took, uh, it could take six weeks to change those words
-    on the site.
-- speaker: M1
-  text: Right. And so now we're down to less than five minutes, aren't you? Okay.
-- speaker: S1
-  text: Just based on, 'cause we wait five minutes to check the web, you know, uh,
-    the web we're gonna get. Uh, so it's, you know, we've been transforming the technology
-    stack, and I talked about that actually in Photoshop a little bit, all with this
-    idea in mind of how do you get engineering, so I'm actually writing another book
-    right now for the Lean Startup series called Lean Engineering.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: And the idea of Lean Engineering is, if you think about engineering from the
-    perspective of enabling learning.
-- speaker: M1
-  text: Right. What do you do different engineering?
-- speaker: S1
-  text: Well, one of the things you do different is you're actually engineering for
-    prototyping. You don't think of prototyping as a separate activity. You're actually
-    thinking the product should support prototypes. So, we've actually engineered
-    our architecture now so that the prototype stack is the same as the production
-    stack. So, we use Node. js, we use some JavaScript template on top of that. We
-    can run that on our Java stack or our Node stack or our C++ stack, you know, our
-    templates. So, what we do in prototyping on a, like, weekly or every other week
-    basis, we can feed right in the Agile stream and it's gonna become, you know,
-    with a little more massaging, become our production code. So, you actually get
-    this economy, uh, you know, then you can also take the product and fork it and
-    get, you know, and just do some, uh, you know, some usability studies, what we
-    call Lean Back Scrum Team.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And then take it right back into Agile.
-- speaker: M1
-  text: So, how different is that from the concepts of, like, MVP, the minimum viable
-    product? Yeah. Is it, is it the same?
-- speaker: S1
-  text: It supports it. It supports it because what you can do if you've got a real
-    rapid prototyping stack is you can create an MVP. Now, you can create, you know,
-    there's a larger process of, you know, going out to customers doing random visits
-    or doing studies or surveys or whatever else. That may include just paper prototyping
-    or using, you know, something like a tool like a prototype on paper, which you
-    take pictures of your sketches, stitch them together and you've got to work on
-    the prototype. Or, you know, maybe it's like an action, which is a prototyping
-    tool. There's a lot of tools you can use. But what I've been talking about the
-    last two days is really more what happens when you get that closer to Agile.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: You actually want to, you want to somehow marry designing the Agile process,
-    which has been a long time question. And the way we've solved that is by having
-    what we call a Lean UX Scrum Team that runs just a little bit ahead of the Agile
-    Scrum Team. But some of the same team members flip between the two teams. And
-    the Lean UX Scrum Team is focused on pushing out prototypes and showing it to
-    customers. That's our sprint releases.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Whereas the Agile is doing a little bit of code that can go live.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So that's interesting. So you have these two teams running in parallel or
-    near parallel.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: A little bit off from each other. And using two slightly different methodologies
-    for delivering.
-- speaker: M1
-  text: Yeah. What was the reason that one of us using the Scrum methodology and the
-    other one?
-- speaker: S1
-  text: Well, they both use sort of a Scrum methodology. You know, the Lean UX doesn't
-    look so Agile. You know, Agile Scrum has a lot of them. They like to come serve
-    on machine.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: The stand-ups, the weekly iterations.
-- speaker: M1
-  text: Right. Right.
-- speaker: S1
-  text: So there's still the concept of stand-ups, you know, in the Lean Scrum Team.
-    But there's not like a lot of stories in the backlog. It's very simple. It's much
-    more hypothesis driven. You're much more, you know, rapidly sketching or creating
-    a design, getting in prototype form, and then getting in usability and testing
-    so you can learn from it. And then what comes out of that, you know, feeds out
-    of that is stories from the backlog of Agile. Code that you can actually reuse
-    because you can develop the UI to a fairly, you know, rough state. You know, it's
-    got the Happy Pass and stuff. And you've got some of the application built, too,
-    so that you can take and harden that. And what we like to do is flip engineers
-    between the Lean and the Agile so they're always like more of a customer setup.
-    So there's much more of a customer setup.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: That's very interesting because it makes me think of like the spike into production
-    kind of a concept. You just build something that's just good enough.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And just clean it up and put it into the production code base.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So I think of this. I heard somebody, you know, on the design side use the
-    same. You know, engineering say CI/CD, continuous integration to each deployment.
-    But you can think of continuous innovation, continuous design, you know.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: So the design is always a problem.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Looking back at some of the big companies and trying to bring in these Agile
-    or working with more Agile methodologies in these larger companies that might
-    be a little bit more, let's say, traditional?
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: A little, maybe a little bit stuck in a rut as it happens in large organizations.
-- speaker: M1
-  text: Yeah. Yeah. Yeah. Has that been something that's been openly embraced from
-    the bottom up or has it been pushed down?
-- speaker: S1
-  text: It's been bottom up and top down.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And outside in, I would say, too. You know, if you're actually, if you look
-    at change models, generally the best change models are top down, you know, bottom
-    up and new DNA from the outside coming in. Because you do need DNA in an organization.
-    Because big organizations that have gotten static, what's happened is, you know,
-    they don't even know why they do stupid stuff.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: They just do stupid stuff. They just do it. And there's actually smart people
-    in there. I mean, smart people are stupid.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: You know, because this is the way organizations work like that. And then you
-    have some bad DNA and you have some antibodies that are in the organization that
-    resist change. And so you have to flush the system out. You have to, like, you
-    know, get rid of some of those antibodies, change some of those antibodies into
-    actually being something positive to get change going. So yeah, it's, you know,
-    I mean, PayPal, Franklin coming in 2011, Netflix, I knew what it was like. I've
-    done a lot of investigation. It was, it was screwed up. It was screwed up in technology,
-    in process, and design. Everything was, I don't think there was a single, you
-    know, organization from, I'm thinking from a customer-centric perspective that
-    was really operating right. And sometimes, you know, because they, they had to
-    at some point right the ship and really turn the dial towards risk. You know,
-    be risk averse, make sure payments went through. And in, in that whole pick-up
-    swing, you lose the experience. You lose the fact that you're freezing accounts
-    and putting the accounts on hold that are very good people that are going to charity
-    and whatever else. And all those stories get out there.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And over time, it creates this very angry, because what you do with people's
-    money personally affects them.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And they don't forget it.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And yeah, and you're right. I hadn't even thought about that before this interview.
-    But about the, there's the constant story on Reddit about the, my, this charity
-    or my Kickstarter got frozen. And I don't know why. Yep. And what we do is what
-    our data does is I do this, a bunch of us do this. We're watching Reddit. We're
-    watching Hackney News. We're watching Twitter. As soon as you see something like
-    that, we go fix the problem. But then what we do is we look under the cover saying,
-    okay, what's the policy change in this thing? Sometimes these things aren't overnight.
-    You know, for example, I had, I forget who it was exactly, but I had, you know,
-    one of the conference organizers, you know, all of a sudden you got this account's
-    frozen line. And we went to work on it. And, you know, it was obvious that, look,
-    this is a common occurrence. You can't just say if somebody's all of a sudden
-    money starts coming in really, really fast, that that's a bad thing. You know,
-    because there are certain scenarios where that works. So the risk team has to
-    develop different models. New models, yeah. Because you think about it, you've
-    got 120 million customers. You know, it's not like somebody sitting in there and
-    going, I'm going to freeze this account. It's just computer algorithms.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And then what happens, you have, if you're, you know, the call center support
-    team. Is not enabled to fix those problems, then you double whammy it.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: So it's just stuck in the mind. So David did things like, you know, the team
-    actually that does the call center support, some of them, they actually enable
-    them with what they call tokens, almost like goodwill tokens.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: Or basically, if they, they can take one of those tokens and fix any problem
-    and can't get fired. Can't get in trouble. If they make a mistake, you learn from
-    mistakes. So you have a certain amount of these tokens you can kind of utilize
-    to get on.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: It's like, you're going to enable, we're going to trust you.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Just do what you got to do.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: But we're going to have a safeguard.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And there's a little bit of spending there you have to do with it.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So you know, you know, you think about it, you know, yeah, this obviously
-    should be fixed.
-- speaker: M1
-  text: Yeah. Yeah.
-- speaker: S1
-  text: So those kind of things have changed. And we actually, you know, I don't know
-    the exact number, but it's a pretty high number each month, less account for reasons,
-    less account for reasons. Funny story. I'll give you a funny story. So early this
-    year, there's a story came on Hacker News about this kid who created a JavaScript
-    library, an animation library. And he was a junior in college, actually, in Northern
-    Kentucky University. And PayPal had locked his account because he made a tremendous,
-    I mean, I've got a tremendous amount of money in a very short period of time.
-    And he got on Hacker News and said, I think he said something like, you know,
-    I made about $200,000. And PayPal's locked my account.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So we saw it. We went to work, unlocked his account, and we hired him.
-- speaker: M1
-  text: Oh, really?
-- speaker: S1
-  text: He came in and did amazing stuff for us. One of the best interns I've ever
-    had.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And he's coming back. We made him an offer. He's coming back next year. We
-    had a blast. We were about to do so much of articles about that. And I really
-    loved doing that because, you know, PayPal has been, I gave a talk in Ireland
-    last week, Node conference. And one of the guys was writing up stories about it.
-    He said, he called my talk mesmerizing. Because he said, all of us in the crowd
-    had written PayPal off as being in the dark ages.
-- speaker: M1
-  text: Right. Right.
-- speaker: S1
-  text: And it was so refreshing because, you know, we're leading the charge on Node.
-    We're one of the companies that's actually, we're about to open source a bunch
-    of Node frameworks. But, you know, we brought a bunch of people from the outside
-    to other companies. We also had some great people inside that were already there.
-    And we changed. I kind of like that story.
-- speaker: M1
-  text: That's a funny story for me is, you know, how do I get engineering design
-    work together? How do I get technology?
-- speaker: S1
-  text: And frankly, I'm having no trouble recruiting at all. I'm getting some really
-    great people. I'm getting some really great people. Because, you know, people,
-    at the end of the day, engineers and designers, whoever, what you're going to
-    work on is really important and empowering. So we got that.
-- speaker: M1
-  text: Who are you going to work with?
-- speaker: S1
-  text: So I've brought some great people in from lots of good companies. That's important.
-    And how you're going to work. That's this lean UX, lean style of working. It's
-    critical. If you get the who, how, and the what down right, of course, you got
-    to pay decent. Maybe good location helps. But those are all, you know, they're
-    not the main thing. People make all kinds of sacrifices to get the how, even the
-    what. Well, I mean, it sounds like one of the things when you hear about a story
-    like the young man who made $200,000 off his library is he's got some decent seed
-    money that he could spend on the next thing.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: But convincing him that you obviously had to bring something other than just
-    pure money to him and say, you're going to have this environment where you're
-    going to be having some latitude and some freedom to do something interesting.
-    Well, you know, fortunately at the same time, I've hired a friend of mine. He
-    used to have a search at Netflix. He'd gone on to be the CTO of mobile at Zynga.
-    Previously, he had been at Amazon to help build the initial cloud and even in
-    the early days of Mac OS. So the guy's a well-traveled.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: He's a wonderful guy. So we were able to bring Emmanuel, the intern, in and
-    work directly with Ron. He got to work with one of the best clients around.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And that's not just money. That's more of that money.
-- speaker: M1
-  text: Right. Yeah. Right.
-- speaker: S1
-  text: And then, of course, Jeff Harrell on my team is just really brilliant. And
-    another guy, Eric, that I brought from Netflix and a few other folks that have
-    been from Netflix. They're just really smart, awesome guys who get the full package
-    of not just engineering, but it's design. It's customer-centric.
-- speaker: M1
-  text: Right. And that's what drives someone like Emmanuel, right? Right.
-- speaker: S1
-  text: Of his intern. At the end of the day, he's passionate about creating the best
-    experience possible.
-- speaker: M1
-  text: He would sit there and go, "You know when I do this?
-- speaker: S1
-  text: '" Because he was building an HTML5 equivalent or a native app and nailing
-    it, infinite scrolling, doing all the crazy complicated stuff. And he''s going
-    like, "Look, when I move this," and I can see it because I''m a pixel maniac too.'
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: But some of the people on the team couldn't see it. Every once in a while,
-    it jigs by one pixel. That just drove him nuts.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: He was going to get that right. And I love that attention to detail. And,
-    of course, I have that too, so I think he enjoyed working with me because I would
-    come back and say, "You know, the friction is not exactly right. The physics is
-    not exactly right on this issue of the live experience versus the native. " And
-    so, within about an hour, he came back, "Check this out," and now he had it nailed
-    it.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And he loved that, being challenged like that.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And knowing that he's working with people he can respect.
-- speaker: M1
-  text: Yeah. Yeah.
-- speaker: S1
-  text: I mean, it's not about that you won't respect who you're working with, but
-    somebody who's ... You want to be challenged.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Who's going to push you and be like somebody who's been there.
-- speaker: M1
-  text: Yeah. Yeah. Well, thank you very much for having me. Yes. I really enjoyed
-    it. It's great to meet you. Likewise. Thank you. [Music] ! Find out for yourself
-    today at UGtastic!
+content: |-
+  user groups with lots to say interviews and more no way sharing great ideas in
+
+   the tech community fascinating conversations a plethora of information
+
+   find out for yourself today at Yuketastic.com
+
+   Hi it's Mike with Yuketastic, I'm still here at the Web Visions 2013 here at the
+
+   Jane Siskel Film Center in Chicago. I'm sitting there with Bill Scott. Bill is
+
+   well somebody who was recommended to me by more people than anybody else today
+
+   then somebody I should sit down and talk with. Bill is a, well you work with PayPal
+
+   but can you describe what your title is because it was a little bit more than I could...
+
+   So I head up what's called what I call user interface engineering and so think of
+
+   it as the front-end development, front-end engineering, all of the web
+
+   technologies, desktop, all of us. So my background basically is I came from
+
+   Netflix before I came to PayPal. I was the head of UI engineering there. I worked closely with the design team for about four years.
+
+   Right. Built that team up, the engineering team. And then before that I was at Yahoo and there I did like the Yahoo design pattern library. I was also the Ajax analyst at Yahoo.
+
+   And my passion is really around designing. So a few small copies. Yeah, a few small copies. And I also have a book with O'Reilly called
+
+   Design and Web Interfaces. Okay. It's strictly a design book. So I'm one of those weird hybrids that can do
+
+   JavaScript engineering but also do design book. What is the animal on it? Mine is the most amazing one possible.
+
+   So the design books have birds, right? Yeah. So mine is the cock of the rock. I'm the only, yeah anyway. I didn't pick it. Yeah, yeah. They picked it.
+
+   Okay. Yeah, that's always fun to find out what the animal was. I have to get a picture of it because the one in my head is not.
+
+   Yeah, it's TMI. So, so okay, so I mean obviously you have a very broad depth of experience.
+
+   And there's one thing that's in particular interesting that's just happened with PayPal here in Chicago. Yeah.
+
+   And that is the acquisition of Braintree, one of our major financial credit card services that's been acquired by PayPal. Yeah.
+
+   Do you have any insight into what happened? Well, I know, I know the, so the arc that, that it ties in really well with what I even
+
+   talked about at the workshop and the day of the talk, uh, we've been on a journey to transform PayPal into an innovative company. Right? Right?
+
+   Uh, PayPal has been a very good brand and very successful in the amount of money it's made and those sorts of things like that.
+
+   But when I was leaving Netflix in 2011, it was pretty obvious that, that PayPal wasn't really on my radar as a company I went to, but I knew a few kid folks there who were the CTO that I had a lot of respect for
+
+   of the previous things they had done. Yeah. And so they've been talking about coming. And we started a journey when David Marcus became president in April of 2012,
+
+   uh, to transform PayPal to the very lean, that they had like a startup, hence the use of Lean UX. So the acquisition of Braintree really is another step in an evolution.
+
+   It's like, here, here's obviously an incredible company that started up, has, uh, moved at lightning speed and is making a huge impact on PayPal.
+
+   Uh, definitely, uh, definitely a strong development of awesome APIs. Also they had Venmo, the New York, you know, which is a great, a great, a great mobile app.
+
+   So we've got mobile talent, API talent. We are already transferring our APIs, but this just kind of takes us to the next level, I believe.
+
+   And one of the cool things we're going to do because David is a huge, he's a serial entrepreneur, our president, until PayPal, he only did start us, right?
+
+   Uh, until he got acquired by PayPal. So he's going through the acquisition.
+
+   Now he's right now he's acquired. So it's very, very important that we let Braintree continue to be the innovator it is, have, you know, still be called Braintree, be, you know, be able to, uh, to, to, to not really change anything other than give it a great broader breath and, uh, much more, you know, financial support and the larger eBay family.
+
+   And it fits really well. We're really excited. In fact, I met Michael Wokey, who's here, is one of the product designers, product managers. Uh, he's actually in my talk and he's got a quick chance to chat with him.
+
+   Yeah, and Braintree, I know, and I've actually interviewed, uh, one developer from the UTSC and just extremely well perspective of the developer community in Chicago.
+
+   Um, uh, but I, so that's current events, but I, I'm interested in your book and also the concept of Lean UX that you're teaching.
+
+   Yeah. And what does that mean?
+
+   Yeah. So, uh, if you're familiar with Jeff, God helps book, uh, Lean UX, which follows on...
+
+   I'm more on the dev side, so I'm not familiar.
+
+   Okay, cool. Yeah. Yeah. So, uh, if you think about Lean Startup, you know, Lean Startup really is about, you know, how do I get to customers as quick as possible?
+
+   How do I validate my risky assumptions? How do I pivot either way?
+
+   Or the Lean Startup.
+
+   Lean Startup, sorry, I'm sorry.
+
+   No, no, no, Lean UX falls onto that, so Jeff God help actually book on Lean UX and we started using those same ideas.
+
+   What Lean UX really says is, hey, we're gonna be doing design, uh, you know, it's not really about delivering documentation, it's about delivering experience and doing that collaboratively with engineering, with design, with product, all together.
+
+   So, closing some of those loops.
+
+   Yeah, break those walls down, be very collaborative in nature, uh, as much as possible to even live in the same room or same space together, and operate like a startup, like a startup.
+
+   And so this is very aproposal to a large company like PayPal that had, you know, from an innovation perspective, had, uh, obviously stagnated.
+
+   Uh, coming up to 2011, actually, it just took, uh, it could take six weeks to change those words on the site.
+
+   Right.
+
+   And so now we're down to less than five minutes, aren't you?
+
+   Okay.
+
+   Just based on, 'cause we wait five minutes to check the web, you know, uh, the web we're gonna get.
+
+   Uh, so it's, you know, we've been transforming the technology stack, and I talked about that actually in Photoshop a little bit, all with this idea in mind of how do you get engineering, so I'm actually writing another book right now for the Lean Startup series called Lean Engineering.
+
+   Okay.
+
+   And the idea of Lean Engineering is, if you think about engineering from the perspective of enabling learning.
+
+   Right.
+
+   What do you do different engineering?
+
+   Well, one of the things you do different is you're actually engineering for prototyping.
+
+   You don't think of prototyping as a separate activity.
+
+   You're actually thinking the product should support prototypes.
+
+   So, we've actually engineered our architecture now so that the prototype stack is the same as the production stack.
+
+   So, we use Node.js, we use some JavaScript template on top of that.
+
+   We can run that on our Java stack or our Node stack or our C++ stack, you know, our templates.
+
+   So, what we do in prototyping on a, like, weekly or every other week basis, we can feed right in the Agile stream and it's gonna become, you know, with a little more massaging, become our production code.
+
+   So, you actually get this economy, uh, you know, then you can also take the product and fork it and get, you know, and just do some, uh, you know, some usability studies, what we call Lean Back Scrum Team.
+
+   Yeah.
+
+   And then take it right back into Agile.
+
+   So, how different is that from the concepts of, like, MVP, the minimum viable product?
+
+   Yeah.
+
+   Is it, is it the same?
+
+   It supports it.
+
+   It supports it because what you can do if you've got a real rapid prototyping stack is you can create an MVP.
+
+   Now, you can create, you know, there's a larger process of, you know, going out to customers doing random visits or doing studies or surveys or whatever else.
+
+   That may include just paper prototyping or using, you know, something like a tool like a prototype on paper, which you take pictures of your sketches, stitch them together and you've got to work on the prototype.
+
+   Or, you know, maybe it's like an action, which is a prototyping tool.
+
+   There's a lot of tools you can use.
+
+   But what I've been talking about the last two days is really more what happens when you get that closer to Agile.
+
+   Yeah.
+
+   You actually want to, you want to somehow marry designing the Agile process, which has been a long time question.
+
+   And the way we've solved that is by having what we call a Lean UX Scrum Team that runs just a little bit ahead of the Agile Scrum Team.
+
+   But some of the same team members flip between the two teams.
+
+   And the Lean UX Scrum Team is focused on pushing out prototypes and showing it to customers.
+
+   That's our sprint releases.
+
+   Okay.
+
+   Whereas the Agile is doing a little bit of code that can go live.
+
+   Okay.
+
+   So that's interesting.
+
+   So you have these two teams running in parallel or near parallel.
+
+   Yeah.
+
+   A little bit off from each other.
+
+   And using two slightly different methodologies for delivering.
+
+   Yeah.
+
+   What was the reason that one of us using the Scrum methodology and the other one?
+
+   Well, they both use sort of a Scrum methodology.
+
+   You know, the Lean UX doesn't look so Agile.
+
+   You know, Agile Scrum has a lot of them.
+
+   They like to come serve on machine.
+
+   Right.
+
+   The stand-ups, the weekly iterations.
+
+   Right.
+
+   Right.
+
+   So there's still the concept of stand-ups, you know, in the Lean Scrum Team.
+
+   But there's not like a lot of stories in the backlog.
+
+   It's very simple.
+
+   It's much more hypothesis driven.
+
+   You're much more, you know, rapidly sketching or creating a design, getting in prototype form,
+
+   and then getting in usability and testing so you can learn from it.
+
+   And then what comes out of that, you know, feeds out of that is stories from the backlog of Agile.
+
+   Code that you can actually reuse because you can develop the UI to a fairly, you know, rough state.
+
+   You know, it's got the Happy Pass and stuff.
+
+   And you've got some of the application built, too, so that you can take and harden that.
+
+   And what we like to do is flip engineers between the Lean and the Agile so they're always like more of a customer setup.
+
+   So there's much more of a customer setup.
+
+   Yeah.
+
+   That's very interesting because it makes me think of like the spike into production kind of a concept.
+
+   You just build something that's just good enough.
+
+   Yeah.
+
+   And just clean it up and put it into the production code base.
+
+   Yeah.
+
+   So I think of this.
+
+   I heard somebody, you know, on the design side use the same.
+
+   You know, engineering say CI/CD, continuous integration to each deployment.
+
+   But you can think of continuous innovation, continuous design, you know.
+
+   Right.
+
+   So the design is always a problem.
+
+   Yeah.
+
+   Looking back at some of the big companies and trying to bring in these Agile or working with
+
+   more Agile methodologies in these larger companies that might be a little bit more, let's say,
+
+   traditional?
+
+   Yeah.
+
+   A little, maybe a little bit stuck in a rut as it happens in large organizations.
+
+   Yeah.
+
+   Yeah.
+
+   Yeah.
+
+   Has that been something that's been openly embraced from the bottom up or has it been pushed
+
+   down?
+
+   It's been bottom up and top down.
+
+   Yeah.
+
+   And outside in, I would say, too.
+
+   You know, if you're actually, if you look at change models, generally the best change models
+
+   are top down, you know, bottom up and new DNA from the outside coming in.
+
+   Because you do need DNA in an organization.
+
+   Because big organizations that have gotten static, what's happened is, you know, they don't
+
+   even know why they do stupid stuff.
+
+   Right.
+
+   They just do stupid stuff.
+
+   They just do it.
+
+   And there's actually smart people in there.
+
+   I mean, smart people are stupid.
+
+   Right.
+
+   You know, because this is the way organizations work like that.
+
+   And then you have some bad DNA and you have some antibodies that are in the organization
+
+   that resist change.
+
+   And so you have to flush the system out.
+
+   You have to, like, you know, get rid of some of those antibodies, change some of those
+
+   antibodies into actually being something positive to get change going.
+
+   So yeah, it's, you know, I mean, PayPal, Franklin coming in 2011, Netflix, I knew what it was
+
+   like.
+
+   I've done a lot of investigation.
+
+   It was, it was screwed up.
+
+   It was screwed up in technology, in process, and design.
+
+   Everything was, I don't think there was a single, you know, organization from, I'm thinking
+
+   from a customer-centric perspective that was really operating right.
+
+   And sometimes, you know, because they, they had to at some point right the ship and really
+
+   turn the dial towards risk.
+
+   You know, be risk averse, make sure payments went through.
+
+   And in, in that whole pick-up swing, you lose the experience.
+
+   You lose the fact that you're freezing accounts and putting the accounts on hold that are very
+
+   good people that are going to charity and whatever else.
+
+   And all those stories get out there.
+
+   Yeah.
+
+   And over time, it creates this very angry, because what you do with people's money personally
+
+   affects them.
+
+   Right.
+
+   And they don't forget it.
+
+   Yeah.
+
+   And yeah, and you're right.
+
+   I hadn't even thought about that before this interview.
+
+   But about the, there's the constant story on Reddit about the, my, this charity or my Kickstarter
+
+   got frozen.
+
+   And I don't know why.
+
+   Yep.
+
+   And what we do is what our data does is I do this, a bunch of us do this.
+
+   We're watching Reddit.
+
+   We're watching Hackney News.
+
+   We're watching Twitter.
+
+   As soon as you see something like that, we go fix the problem.
+
+   But then what we do is we look under the cover saying, okay, what's the policy change in this
+
+   thing?
+
+   Sometimes these things aren't overnight.
+
+   You know, for example, I had, I forget who it was exactly, but I had, you know, one of
+
+   the conference organizers, you know, all of a sudden you got this account's frozen line.
+
+   And we went to work on it.
+
+   And, you know, it was obvious that, look, this is a common occurrence.
+
+   You can't just say if somebody's all of a sudden money starts coming in really, really
+
+   fast, that that's a bad thing.
+
+   You know, because there are certain scenarios where that works.
+
+   So the risk team has to develop different models.
+
+   New models, yeah.
+
+   Because you think about it, you've got 120 million customers.
+
+   You know, it's not like somebody sitting in there and going, I'm going to freeze this
+
+   account.
+
+   It's just computer algorithms.
+
+   Right.
+
+   And then what happens, you have, if you're, you know, the call center support team.
+
+   Is not enabled to fix those problems, then you double whammy it.
+
+   Right.
+
+   So it's just stuck in the mind.
+
+   So David did things like, you know, the team actually that does the call center support,
+
+   some of them, they actually enable them with what they call tokens, almost like goodwill
+
+   tokens.
+
+   Right.
+
+   Or basically, if they, they can take one of those tokens and fix any problem and can't
+
+   get fired.
+
+   Can't get in trouble.
+
+   If they make a mistake, you learn from mistakes.
+
+   So you have a certain amount of these tokens you can kind of utilize to get on.
+
+   Yeah.
+
+   It's like, you're going to enable, we're going to trust you.
+
+   Yeah.
+
+   Just do what you got to do.
+
+   Yeah.
+
+   But we're going to have a safeguard.
+
+   Yeah.
+
+   And there's a little bit of spending there you have to do with it.
+
+   Yeah.
+
+   So you know, you know, you think about it, you know, yeah, this obviously should be fixed.
+
+   Yeah.
+
+   Yeah.
+
+   So those kind of things have changed.
+
+   And we actually, you know, I don't know the exact number, but it's a pretty high number
+
+   each month, less account for reasons, less account for reasons.
+
+   Funny story.
+
+   I'll give you a funny story.
+
+   So early this year, there's a story came on Hacker News about this kid who created a JavaScript
+
+   library, an animation library.
+
+   And he was a junior in college, actually, in Northern Kentucky University.
+
+   And PayPal had locked his account because he made a tremendous, I mean, I've got a tremendous
+
+   amount of money in a very short period of time.
+
+   And he got on Hacker News and said, I think he said something like, you know, I made about
+
+   $200,000.
+
+   And PayPal's locked my account.
+
+   Yeah.
+
+   So we saw it.
+
+   We went to work, unlocked his account, and we hired him.
+
+   Oh, really?
+
+   He came in and did amazing stuff for us.
+
+   One of the best interns I've ever had.
+
+   Yeah.
+
+   And he's coming back.
+
+   We made him an offer.
+
+   He's coming back next year.
+
+   We had a blast.
+
+   We were about to do so much of articles about that.
+
+   And I really loved doing that because, you know, PayPal has been, I gave a talk in Ireland
+
+   last week, Node conference.
+
+   And one of the guys was writing up stories about it.
+
+   He said, he called my talk mesmerizing.
+
+   Because he said, all of us in the crowd had written PayPal off as being in the dark ages.
+
+   Right.
+
+   Right.
+
+   And it was so refreshing because, you know, we're leading the charge on Node.
+
+   We're one of the companies that's actually, we're about to open source a bunch of Node
+
+   frameworks.
+
+   But, you know, we brought a bunch of people from the outside to other companies.
+
+   We also had some great people inside that were already there.
+
+   And we changed.
+
+   I kind of like that story.
+
+   That's a funny story for me is, you know, how do I get engineering design work together?
+
+   How do I get technology?
+
+   And frankly, I'm having no trouble recruiting at all.
+
+   I'm getting some really great people.
+
+   I'm getting some really great people.
+
+   Because, you know, people, at the end of the day, engineers and designers, whoever, what
+
+   you're going to work on is really important and empowering.
+
+   So we got that.
+
+   Who are you going to work with?
+
+   So I've brought some great people in from lots of good companies.
+
+   That's important.
+
+   And how you're going to work.
+
+   That's this lean UX, lean style of working.
+
+   It's critical.
+
+   If you get the who, how, and the what down right, of course, you got to pay decent.
+
+   Maybe good location helps.
+
+   But those are all, you know, they're not the main thing.
+
+   People make all kinds of sacrifices to get the how, even the what.
+
+   Well, I mean, it sounds like one of the things when you hear about a story like the young man
+
+   who made $200,000 off his library is he's got some decent seed money that he could spend
+
+   on the next thing.
+
+   Yeah.
+
+   But convincing him that you obviously had to bring something other than just pure money
+
+   to him and say, you're going to have this environment where you're going to be having
+
+   some latitude and some freedom to do something interesting.
+
+   Well, you know, fortunately at the same time, I've hired a friend of mine.
+
+   He used to have a search at Netflix.
+
+   He'd gone on to be the CTO of mobile at Zynga.
+
+   Previously, he had been at Amazon to help build the initial cloud and even in the early days
+
+   of Mac OS.
+
+   So the guy's a well-traveled.
+
+   Yeah.
+
+   He's a wonderful guy.
+
+   So we were able to bring Emmanuel, the intern, in and work directly with Ron.
+
+   He got to work with one of the best clients around.
+
+   Yeah.
+
+   And that's not just money.
+
+   That's more of that money.
+
+   Right.
+
+   Yeah.
+
+   Right.
+
+   And then, of course, Jeff Harrell on my team is just really brilliant.
+
+   And another guy, Eric, that I brought from Netflix and a few other folks that have been
+
+   from Netflix.
+
+   They're just really smart, awesome guys who get the full package of not just engineering, but
+
+   it's design.
+
+   It's customer-centric.
+
+   Right.
+
+   And that's what drives someone like Emmanuel, right?
+
+   Right.
+
+   Of his intern.
+
+   At the end of the day, he's passionate about creating the best experience possible.
+
+   He would sit there and go, "You know when I do this?"
+
+   Because he was building an HTML5 equivalent or a native app and nailing it, infinite scrolling,
+
+   doing all the crazy complicated stuff.
+
+   And he's going like, "Look, when I move this," and I can see it because I'm a pixel maniac
+
+   too.
+
+   Right.
+
+   But some of the people on the team couldn't see it.
+
+   Every once in a while, it jigs by one pixel.
+
+   That just drove him nuts.
+
+   Yeah.
+
+   He was going to get that right.
+
+   And I love that attention to detail.
+
+   And, of course, I have that too, so I think he enjoyed working with me because I would
+
+   come back and say, "You know, the friction is not exactly right.
+
+   The physics is not exactly right on this issue of the live experience versus the native."
+
+   And so, within about an hour, he came back, "Check this out," and now he had it nailed it.
+
+   Yeah.
+
+   And he loved that, being challenged like that.
+
+   Yeah.
+
+   And knowing that he's working with people he can respect.
+
+   Yeah.
+
+   Yeah.
+
+   I mean, it's not about that you won't respect who you're working with, but somebody who's
+
+   ...
+
+   You want to be challenged.
+
+   Yeah.
+
+   Who's going to push you and be like somebody who's been there.
+
+   Yeah.
+
+   Yeah.
+
+   Well, thank you very much for having me.
+
+   Yes.
+
+   I really enjoyed it.
+
+   It's great to meet you.
+
+   Likewise.
+
+   Thank you.
+
+   Thank you.
+
+   User groups with lots to say, interviews and more.
+
+   No way!
+
+   Sharing great ideas in the tech community.
+
+   Fascinating conversations, a plethora of information.
+
+   Find out for yourself today at uketastic.com!
+
+   Find out for yourself today at ugetastic.com!
