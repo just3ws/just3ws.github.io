@@ -8,153 +8,142 @@ speaker_map:
     role: rewriting software at GOTO Chicago 2014
 turns:
 - speaker: M1
-  text: |-
-    Hi, it's Mike with UGtastic. I'm here at GOTO Conference 2014. I'm standing here with Camille Fournier,
-     who gave a talk about the great rewrites. Or, well, if you should, maybe it's not so great. Yeah. You know, should you have a rewrite? Well, thank you very much for taking the time to speak
-     with me. So your talk, what was the title of it again?
+  text: Hi, it's Mike with UGtastic. I'm here at GOTO Conference 2014. I'm standing
+    here with Camille Fournier, who gave a talk about the great rewrites. Or, well,
+    if you should, maybe it's not so great. Yeah. You know, should you have a rewrite?
+    Well, thank you very much for taking the time to speak with me. So your talk,
+    what was the title of it again?
 - speaker: S1
-  text: |-
-    It was, "So You Want to Rewrite That. "
-     "So You Want to Rewrite That. " Okay. So it sounds like a little bit of pain to get to that.
+  text: It was, "So You Want to Rewrite That. " "So You Want to Rewrite That. " Okay.
+    So it sounds like a little bit of pain to get to that.
 - speaker: M1
-  text: |-
-    So can you
-     share a little bit about what your experience was? Sure.
+  text: So can you share a little bit about what your experience was? Sure.
 - speaker: S1
-  text: |-
-    So I just led Rent the Runway through a big
-     rewrite of our legacy sort of ugly Drupal system into a Ruby frontend, Java SOA backend platform. Before I want to ask Rent the Runway. Yes.
+  text: So I just led Rent the Runway through a big rewrite of our legacy sort of
+    ugly Drupal system into a Ruby frontend, Java SOA backend platform. Before I want
+    to ask Rent the Runway. Yes.
 - speaker: M1
   text: What is, what is that real quick?
 - speaker: S1
-  text: |-
-    Rent the Runway is renttherunway. com. We are a e-commerce website. We do designer dress and
-     accessory short-term rentals to women.
+  text: Rent the Runway is renttherunway. com. We are a e-commerce website. We do
+    designer dress and accessory short-term rentals to women.
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: |-
-    And we are actually, you know, you may, you are not our
-     target demographic, but probably you know someone that at least knows of us or even has used us. We have many, many customers throughout the United States.
+  text: And we are actually, you know, you may, you are not our target demographic,
+    but probably you know someone that at least knows of us or even has used us. We
+    have many, many customers throughout the United States.
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: |-
-    So you were saying that you had a Drupal
-     application that you rewrote into a Java SOA architecture and then I interrupted you. Yes.
+  text: So you were saying that you had a Drupal application that you rewrote into
+    a Java SOA architecture and then I interrupted you. Yes.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: |-
-    So, you know, I basically joined the company when we were first starting to think
-     about this rewrite and led the team through it. And it took us about, well, it took us about two,
-     a little more than two years to get to all of the major consumer facing, customer facing pages
-     out of Drupal. Um, we still have administrative pages in Drupal.
+  text: So, you know, I basically joined the company when we were first starting to
+    think about this rewrite and led the team through it. And it took us about, well,
+    it took us about two, a little more than two years to get to all of the major
+    consumer facing, customer facing pages out of Drupal. Um, we still have administrative
+    pages in Drupal.
 - speaker: M1
-  text: |-
-    So this experience is really
-     interesting for me because it just got me interested in why do people rewrite? What makes them successful? What doesn't make a rewrite successful?
+  text: So this experience is really interesting for me because it just got me interested
+    in why do people rewrite? What makes them successful? What doesn't make a rewrite
+    successful?
 - speaker: S1
-  text: |-
-    I think every software engineer is going to have to rewrite
-     something at some point in their career. Probably at some point, you're going to do one of these really
-     big rewrites.
+  text: I think every software engineer is going to have to rewrite something at some
+    point in their career. Probably at some point, you're going to do one of these
+    really big rewrites.
 - speaker: M1
-  text: |-
-    So how do you think about it? What are the principles you should think about
-     in going into this process to hopefully make it more successful? Because rewrites tend to come
-     from a place of failure, right?
+  text: So how do you think about it? What are the principles you should think about
+    in going into this process to hopefully make it more successful? Because rewrites
+    tend to come from a place of failure, right?
 - speaker: S1
-  text: |-
-    You're failing in some way, or you see that you're going to fail in
-     some way. It's failures on the horizon. Um, and so, you know, it's very easy for a rewrite itself to fail
-     because you're already in precarious, you know, in a precarious place.
+  text: You're failing in some way, or you see that you're going to fail in some way.
+    It's failures on the horizon. Um, and so, you know, it's very easy for a rewrite
+    itself to fail because you're already in precarious, you know, in a precarious
+    place.
 - speaker: M1
-  text: |-
-    How do you, you know,
-     think about it to make it successful? Okay.
+  text: How do you, you know, think about it to make it successful? Okay.
 - speaker: S1
-  text: |-
-    And so it sounded like you did a gradual evolutionary
-     kind of iteration away from this, this monolithic architecture. You didn't just gut the system and
-     then replace it.
+  text: And so it sounded like you did a gradual evolutionary kind of iteration away
+    from this, this monolithic architecture. You didn't just gut the system and then
+    replace it.
 - speaker: M1
   text: Yeah. Yeah.
 - speaker: S1
-  text: |-
-    Um, yes, I would say that the number one thing that we did right
-     was we did a very iterative, slow rollout. So we would take logic that was in Drupal. We would move
-     it into Java and put the, put that behind API calls in Drupal. And we did this for sort of core
-     data and then core business logic. And then once we had done a sort of a good chunk, we started moving
-     pages in Drupal out of Drupal and into Ruby. So we built a Ruby layer in such a way that it was a very
-     thin client. It wasn't talking to the database in the way that our Drupal had been. It wasn't this sort
-     of complex, you know, ball of wax. It was simply calling two Java services to get JSON data and,
-     you know, maybe doing a little munging of that and showing it on the webpage. So the one thing coming from a cultural, um, community aspect is that there's a strong identity,
-     uh, or tends to be a strong identity in the PHP community and a strong identity in the Java
-     community. I'm a Java developer. I'm a PHP developer. Um, so when you're saying to the PHP
-     developers, Hey, we're going to be taking your stuff and rewriting in Java.
+  text: Um, yes, I would say that the number one thing that we did right was we did
+    a very iterative, slow rollout. So we would take logic that was in Drupal. We
+    would move it into Java and put the, put that behind API calls in Drupal. And
+    we did this for sort of core data and then core business logic. And then once
+    we had done a sort of a good chunk, we started moving pages in Drupal out of Drupal
+    and into Ruby. So we built a Ruby layer in such a way that it was a very thin
+    client. It wasn't talking to the database in the way that our Drupal had been.
+    It wasn't this sort of complex, you know, ball of wax. It was simply calling two
+    Java services to get JSON data and, you know, maybe doing a little munging of
+    that and showing it on the webpage. So the one thing coming from a cultural, um,
+    community aspect is that there's a strong identity, uh, or tends to be a strong
+    identity in the PHP community and a strong identity in the Java community. I'm
+    a Java developer. I'm a PHP developer. Um, so when you're saying to the PHP developers,
+    Hey, we're going to be taking your stuff and rewriting in Java.
 - speaker: M1
-  text: |-
-    How did you kind of smooth
-     the waters with that? Yeah.
+  text: How did you kind of smooth the waters with that? Yeah.
 - speaker: S1
   text: Well, so. And avoid like insult like, oh, yeah.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: |-
-    No,
-     I mean, I think that's, I think that's a great question. And, you know, for better or worse,
-     we just, you know, we had lost a lot of the original developers of Rent the Runway over the years,
-     you know, had been written by an outsource team and then in-house. And I was not, you know,
-     in great technical shape because it had so many owners that the team that was there writing the PHP,
-     they were not so in love with the PHP. They weren't emotionally invested. They weren't as emotionally invested. They were mostly like exhausted
-     because they were supporting this thing that kept breaking. So I think in their minds,
-     anything to make their support burden a little bit easier and, you know, take care of some of this
-     complexity and allow them to focus more on getting features out more quickly. I think the real thing
-     is that developers want to ship. For the most part, developers really care about shipping, especially
-     at a company like Rent the Runway. And so our rewrite was always sold to them as this will let you ship
-     faster, better, you know, with much less pain. And, and it did that. And I think that helps with that. And, you know, coming here to GOTO Conference, the presentation you wrote, was it based off of your,
-     strictly off of your experiences at Rent the Runway or have you felt this pain before?
+  text: No, I mean, I think that's, I think that's a great question. And, you know,
+    for better or worse, we just, you know, we had lost a lot of the original developers
+    of Rent the Runway over the years, you know, had been written by an outsource
+    team and then in-house. And I was not, you know, in great technical shape because
+    it had so many owners that the team that was there writing the PHP, they were
+    not so in love with the PHP. They weren't emotionally invested. They weren't as
+    emotionally invested. They were mostly like exhausted because they were supporting
+    this thing that kept breaking. So I think in their minds, anything to make their
+    support burden a little bit easier and, you know, take care of some of this complexity
+    and allow them to focus more on getting features out more quickly. I think the
+    real thing is that developers want to ship. For the most part, developers really
+    care about shipping, especially at a company like Rent the Runway. And so our
+    rewrite was always sold to them as this will let you ship faster, better, you
+    know, with much less pain. And, and it did that. And I think that helps with that.
+    And, you know, coming here to GOTO Conference, the presentation you wrote, was
+    it based off of your, strictly off of your experiences at Rent the Runway or have
+    you felt this pain before?
 - speaker: M1
-  text: |-
-    And are you
-     reflecting your previous experiences?
+  text: And are you reflecting your previous experiences?
 - speaker: S1
-  text: |-
-    So I have really felt this pain to some extent before. I had never
-     done a major rewrite like this. I had done a lot of actual like sort of refactors in place where I
-     think with a different team would have resulted in a major rewrite that may or may not have been
-     successful. But I actually talked to a lot of colleagues and friends outside of the company
-     that I knew had either done rewrites, considered rewrites, not done them. I read a lot of stories
-     and a lot of articles by people who had, you know, successfully or, you know, not successfully done
-     rewrites because I think that this is a common thing. You know, developers do this at some point in
-     their career. And so I wanted to get more perspectives other than my own as to why people do this and
-     what makes them successful or not. And just to kind of wrap up, are any resources that you
-     read or how did you maybe look outside of your own experiences to get more information about how to
-     approach this?
+  text: So I have really felt this pain to some extent before. I had never done a
+    major rewrite like this. I had done a lot of actual like sort of refactors in
+    place where I think with a different team would have resulted in a major rewrite
+    that may or may not have been successful. But I actually talked to a lot of colleagues
+    and friends outside of the company that I knew had either done rewrites, considered
+    rewrites, not done them. I read a lot of stories and a lot of articles by people
+    who had, you know, successfully or, you know, not successfully done rewrites because
+    I think that this is a common thing. You know, developers do this at some point
+    in their career. And so I wanted to get more perspectives other than my own as
+    to why people do this and what makes them successful or not. And just to kind
+    of wrap up, are any resources that you read or how did you maybe look outside
+    of your own experiences to get more information about how to approach this?
 - speaker: M1
   text: Did you read like the Refactor book or anything? I mean, I read, what did
     I read?
 - speaker: S1
-  text: |-
-    So I read
-     some blog posts. There's some blog posts actually, it's really interesting about like six or seven or
-     eight years ago, there was sort of a flurry of don't rewrite that blog posts, which are really
-     interesting and actually worth reading. I think, you know, these things come in cycles, people write
-     about them and then we all forget. And then we all make a bunch of mistakes and then we relearn about
-     them. Um, so I read a bunch of those. I read a little bit about the, you know, Twitter has a pretty good blog
-     post about their rewrite. And I also talked to people that were there, um, and worked through that. Um,
-     I did a lot of talking to friends too. So reaching out and just reaching out.
+  text: So I read some blog posts. There's some blog posts actually, it's really interesting
+    about like six or seven or eight years ago, there was sort of a flurry of don't
+    rewrite that blog posts, which are really interesting and actually worth reading.
+    I think, you know, these things come in cycles, people write about them and then
+    we all forget. And then we all make a bunch of mistakes and then we relearn about
+    them. Um, so I read a bunch of those. I read a little bit about the, you know,
+    Twitter has a pretty good blog post about their rewrite. And I also talked to
+    people that were there, um, and worked through that. Um, I did a lot of talking
+    to friends too. So reaching out and just reaching out.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: |-
-    And just asking people
-     like for their experiences. If you know someone who's been a software developer for 15 or 20 years,
-     you probably know someone that's done this scene that's been around for this and has some opinions.
+  text: And just asking people like for their experiences. If you know someone who's
+    been a software developer for 15 or 20 years, you probably know someone that's
+    done this scene that's been around for this and has some opinions.
 - speaker: M1
   text: Well, thank you very much for taking the time to speak with me. Thank you.
-    User groups with lots to say, interviews and more. No way. Sharing great ideas
-    in the tech community. Fascinating conversations, a plethora of information. Find
-    out for yourself today at UGtastic.
+    [Music]

@@ -16,9 +16,22 @@ turns:
     has a lot of impact for individual developers and big corporations. How did JRuby
     get started?
 - speaker: S1
-  text: |-
-    Well JRuby itself started in about 2001. A guy named Dion Arna Peterson and a couple other folks wanted to see if they could at least come up with a Ruby parser. And once they managed to port the parser over using a Java equivalent to Bison,
-     they figured, okay, well, we've got a parser. We can probably do a Ruby implementation as well. And the project kind of worked its way along for a few years, got some basic things working. In around 2002 or 2003, Tom Enabo, the other co-lead of the project, started working on it. And various other Ruby folks have appeared in the commit logs over the years. I actually came to the project in about 2004. I went to the RubyConf that year, which was in Reston. It was only about 65 people back then. And I only was there because someone recommended the language to me. I'd never actually seen it before. But being a Java guy, I wanted to see if there might be a JRuby project of some kind out there. And it turned out there was. And Tom, a friend of mine who I'd worked with at the university years before, was currently running it. So that's kind of where I got started on it. So you said you were doing Java before and then you learned about this JRuby thing.
+  text: Well JRuby itself started in about 2001. A guy named Dion Arna Peterson and
+    a couple other folks wanted to see if they could at least come up with a Ruby
+    parser. And once they managed to port the parser over using a Java equivalent
+    to Bison, they figured, okay, well, we've got a parser. We can probably do a Ruby
+    implementation as well. And the project kind of worked its way along for a few
+    years, got some basic things working. In around 2002 or 2003, Tom Enabo, the other
+    co-lead of the project, started working on it. And various other Ruby folks have
+    appeared in the commit logs over the years. I actually came to the project in
+    about 2004. I went to the RubyConf that year, which was in Reston. It was only
+    about 65 people back then. And I only was there because someone recommended the
+    language to me. I'd never actually seen it before. But being a Java guy, I wanted
+    to see if there might be a JRuby project of some kind out there. And it turned
+    out there was. And Tom, a friend of mine who I'd worked with at the university
+    years before, was currently running it. So that's kind of where I got started
+    on it. So you said you were doing Java before and then you learned about this
+    JRuby thing.
 - speaker: M1
   text: I mean, was it still, was it kind of a thing by the time you had started?
 - speaker: S1
@@ -90,17 +103,70 @@ turns:
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: |-
-    Yeah, as a compatibility project, which is essentially what we are, we're just, by and large, trying to mimic the standard implementation of Ruby. We are beholden to them as far as new features that come in, things that we need to add or things that we need to update. So there's been a constant catch-up. I mean, we're always slightly behind them as far as getting new features in, getting fixes in. The big change that we had, the big work that we had over the past few years was catching up with Ruby 1. 9 support, which was a massive number of changes. Especially regarding string encodings and, to some extent, some threading details. But we feel like we're kind of at the point now where, by the time Ruby 2. 0 comes out, which is supposed to be February sometime, we will be in a position to maybe do a release soon after that that has all the same features. Mm-hm. Having caught up with the big milestone of 1. 9, changes in 2. 0 aren't too bad. The other issue is if we have problems with the features or if there's an implementation challenge that comes along with them, as there are for some aspects of refinements. There's been a lot of talk about the Ruby design process lately or potentially lack thereof. But for the most part, we've seen that if we raise issues about specific features or aspects of those features to the Ruby core folks and to MOTS himself,
-     they've been very receptive to make improvements, make changes. They also want to be able to optimize the C implementation of Ruby into the future. We are kind of ahead of the curve as far as optimizing Ruby and we know what challenges they might run into. So they've actually been very receptive when we say this aspect of this feature is very difficult to optimize or you're going to run into trouble down the road. So for the most part, it's been a very communicative relationship with the Ruby core folks. So they understand that we have our own challenges implementing Ruby and that we've met some challenges that they might have in the future. Is there been any talk though of -- actually, I'm not going to go down that path. I was going to ask instead -- with regards to the future of JRuby -- sorry. I was going to ask a question about forking off the language again, but that's -- I'm going to edit this. Sorry. I was going to ask a question about forking off the language, but instead I'm going to focus back on the community. So when you were talking about working with Matts on trying to make sure that they know some of the things that you've already experienced so that way when they're making their optimizations,
-     it'll also be a little bit easier for JRuby to implement those as well and also avoid some of those same pitfalls inside of CRuby. It was kind of funny when you were talking about the process that the Ruby team goes through. The other day I was listening to Ruby Rogues with Aaron Patterson and he was comparing the Rails release process to the Ruby core process for releasing. And he was saying that the Rails process is so loosey-goosey compared to the Ruby. And it sounds like you're saying that, from your experience, the Ruby process seems to be a little bit something to be desired in the way decisions are made.
+  text: Yeah, as a compatibility project, which is essentially what we are, we're
+    just, by and large, trying to mimic the standard implementation of Ruby. We are
+    beholden to them as far as new features that come in, things that we need to add
+    or things that we need to update. So there's been a constant catch-up. I mean,
+    we're always slightly behind them as far as getting new features in, getting fixes
+    in. The big change that we had, the big work that we had over the past few years
+    was catching up with Ruby 1. 9 support, which was a massive number of changes.
+    Especially regarding string encodings and, to some extent, some threading details.
+    But we feel like we're kind of at the point now where, by the time Ruby 2. 0 comes
+    out, which is supposed to be February sometime, we will be in a position to maybe
+    do a release soon after that that has all the same features. Mm-hm. Having caught
+    up with the big milestone of 1. 9, changes in 2. 0 aren't too bad. The other issue
+    is if we have problems with the features or if there's an implementation challenge
+    that comes along with them, as there are for some aspects of refinements. There's
+    been a lot of talk about the Ruby design process lately or potentially lack thereof.
+    But for the most part, we've seen that if we raise issues about specific features
+    or aspects of those features to the Ruby core folks and to MOTS himself, they've
+    been very receptive to make improvements, make changes. They also want to be able
+    to optimize the C implementation of Ruby into the future. We are kind of ahead
+    of the curve as far as optimizing Ruby and we know what challenges they might
+    run into. So they've actually been very receptive when we say this aspect of this
+    feature is very difficult to optimize or you're going to run into trouble down
+    the road. So for the most part, it's been a very communicative relationship with
+    the Ruby core folks. So they understand that we have our own challenges implementing
+    Ruby and that we've met some challenges that they might have in the future. Is
+    there been any talk though of -- actually, I'm not going to go down that path.
+    I was going to ask instead -- with regards to the future of JRuby -- sorry. I
+    was going to ask a question about forking off the language again, but that's --
+    I'm going to edit this. Sorry. I was going to ask a question about forking off
+    the language, but instead I'm going to focus back on the community. So when you
+    were talking about working with Matts on trying to make sure that they know some
+    of the things that you've already experienced so that way when they're making
+    their optimizations, it'll also be a little bit easier for JRuby to implement
+    those as well and also avoid some of those same pitfalls inside of CRuby. It was
+    kind of funny when you were talking about the process that the Ruby team goes
+    through. The other day I was listening to Ruby Rogues with Aaron Patterson and
+    he was comparing the Rails release process to the Ruby core process for releasing.
+    And he was saying that the Rails process is so loosey-goosey compared to the Ruby.
+    And it sounds like you're saying that, from your experience, the Ruby process
+    seems to be a little bit something to be desired in the way decisions are made.
 - speaker: M1
   text: Is that inaccurate?
 - speaker: S1
-  text: |-
-    There is a process. There is a fairly clear process that the Ruby core folks follow. The problem is that it's also bound up with bug fixes that are really CRuby specific. So for other implementers trying to track what's actually going on as far as feature design, new features, specification changes,
-     we have to sort through all of the MRI seg faults or memory leaks or whatever else,
-     which are the bulk of traffic on the Ruby core mailing list and the bulk of traffic in the bug tracker as well. So there is a process that's kind of buried within MRI's day-to-day development process. It takes a little bit of work to sort that out. And we're actually going to try and work with Aaron and some of the other Ruby core folks to separate the parts of the process that are interesting to other implementations away from what's specific to MRI's code base. Now I have to ask, have you had to learn how to read Japanese in order to more effectively contribute? There will probably be a big help. There are a few English speaking folks in the Ruby development, Ruby implementation community like Aaron that do know some Japanese. And it definitely greases the wheels of talking about issues. But to their credit, the Ruby core folks have also made a major effort to try to do all of their bug discussion on the standard tracker in English. Try to do most of the discussions about features on the English Ruby core list in English. There are Japanese folks who are not as strong in English and sometimes we have to sort that out or that don't know English and sometimes we need a translator. But in general, communication is steadily improved even though most of the core team is Japanese.
+  text: There is a process. There is a fairly clear process that the Ruby core folks
+    follow. The problem is that it's also bound up with bug fixes that are really
+    CRuby specific. So for other implementers trying to track what's actually going
+    on as far as feature design, new features, specification changes, we have to sort
+    through all of the MRI seg faults or memory leaks or whatever else, which are
+    the bulk of traffic on the Ruby core mailing list and the bulk of traffic in the
+    bug tracker as well. So there is a process that's kind of buried within MRI's
+    day-to-day development process. It takes a little bit of work to sort that out.
+    And we're actually going to try and work with Aaron and some of the other Ruby
+    core folks to separate the parts of the process that are interesting to other
+    implementations away from what's specific to MRI's code base. Now I have to ask,
+    have you had to learn how to read Japanese in order to more effectively contribute?
+    There will probably be a big help. There are a few English speaking folks in the
+    Ruby development, Ruby implementation community like Aaron that do know some Japanese.
+    And it definitely greases the wheels of talking about issues. But to their credit,
+    the Ruby core folks have also made a major effort to try to do all of their bug
+    discussion on the standard tracker in English. Try to do most of the discussions
+    about features on the English Ruby core list in English. There are Japanese folks
+    who are not as strong in English and sometimes we have to sort that out or that
+    don't know English and sometimes we need a translator. But in general, communication
+    is steadily improved even though most of the core team is Japanese.
 - speaker: M1
   text: Okay.
 - speaker: S1
@@ -153,16 +219,22 @@ turns:
   text: Um, uh, how involved with, with organizing the JRubyConf are you? Or, or mostly
     do you go and, and speak and hang out?
 - speaker: S1
-  text: |-
-    I've, I've been pretty hands off. Uh, it's, organizing real world things has never really been a drawn suit for me. So I, there, there are other folks who would do better jobs of, of organizing conferences, but we will do things like, uh, try and get keynote speakers. Try to look for interesting talks, uh, review talk submissions, uh, help, or, you know, arrange, or help, uh, decide on arrangements, places we want to do the talks,
-     or where we want to do the conference, so on. Uh, but for the most part, we've been hands off with that. We have tried to, uh, provide some baseline support, and try to arrange some monetary support from folks who are friendly to the JRuby Project,
-     to whoever ends up organizing the conference. Um, so, yeah, for the most part, it's kind of a go and hang out thing, but a little bit of upfront planning.
+  text: I've, I've been pretty hands off. Uh, it's, organizing real world things has
+    never really been a drawn suit for me. So I, there, there are other folks who
+    would do better jobs of, of organizing conferences, but we will do things like,
+    uh, try and get keynote speakers. Try to look for interesting talks, uh, review
+    talk submissions, uh, help, or, you know, arrange, or help, uh, decide on arrangements,
+    places we want to do the talks, or where we want to do the conference, so on.
+    Uh, but for the most part, we've been hands off with that. We have tried to, uh,
+    provide some baseline support, and try to arrange some monetary support from folks
+    who are friendly to the JRuby Project, to whoever ends up organizing the conference.
+    Um, so, yeah, for the most part, it's kind of a go and hang out thing, but a little
+    bit of upfront planning.
 - speaker: M1
   text: Now, when you go and present, what, how do you, how do you prepare for a presentation?
 - speaker: S1
-  text: |-
-    Do you mostly go and work and say, "Okay, this is what I've been working on,
-     so I know this inside and out," or do you do slides and things like that?
+  text: Do you mostly go and work and say, "Okay, this is what I've been working on,
+    so I know this inside and out," or do you do slides and things like that?
 - speaker: M1
   text: Do you practice?
 - speaker: S1
@@ -197,9 +269,34 @@ turns:
 - speaker: M1
   text: How can they get their app out the door more quickly?
 - speaker: S1
-  text: |-
-    Uh, more, more business oriented, more money oriented. Use JRuby. Yeah, exactly. And that's, that's the thing. When we go and talk to, uh, a Java conference, the, the challenge for us is showing how you can build your apps quicker using Ruby. Mm-hm. It's not really a JRuby talk as much as it is trying to sell people on Ruby and Rails and other libraries in the Ruby world. Obviously, that's totally unnecessary. At a Ruby conference, they're already sold on those things. Mm-hm. So, we're selling the JVM. We're selling JRuby. Uh, we're trying to show them how this is going to make your Ruby applications better. Faster, more fun, and so on. So, completely different approaches. And we, we do have very different decks of slides that we use for the two different communities. And, and for people who might be interested in contributing, or trying to help out, or at least get into JRuby, maybe understand the internals a little bit better. Is, is, is there any advice you have for people who are looking at JRuby and saying, "Oh, how can I get involved? "
-     Well, we do have some articles on the wiki that talk about how JRuby is structured internally, the basic design. Uh, some articles on specific subsystems, like how the compiler works, how the embedding API works, uh, to kind of get people bootstrapped on that. I am also hoping to do, sometime this month, a couple of blog posts on how to get your foot in the door, where all the pieces are, uh, for somebody who's never looked at this kind of project, how to contribute, how to get involved in it. Uh, it's, it's, it's a large project, but it is fairly well broken down into subsystems. So, if we have somebody who's interested in compilers, they can do this section. If there's somebody who's interested in crypto, we have the whole crypto subsystem. So, just, uh, the easiest way for folks to get involved now would probably be looking for easy bugs, or looking for refactoring opportunities. Uh, pieces of code that look like they could use some cleanup. Uh, it's how I've gotten into other projects, including LightStep, is basically just doing some cleanup and rewrite, so that the code is easier to manage. Which, at the same time, you kind of learn how it's laid out and what it does. Cool.
+  text: Uh, more, more business oriented, more money oriented. Use JRuby. Yeah, exactly.
+    And that's, that's the thing. When we go and talk to, uh, a Java conference, the,
+    the challenge for us is showing how you can build your apps quicker using Ruby.
+    Mm-hm. It's not really a JRuby talk as much as it is trying to sell people on
+    Ruby and Rails and other libraries in the Ruby world. Obviously, that's totally
+    unnecessary. At a Ruby conference, they're already sold on those things. Mm-hm.
+    So, we're selling the JVM. We're selling JRuby. Uh, we're trying to show them
+    how this is going to make your Ruby applications better. Faster, more fun, and
+    so on. So, completely different approaches. And we, we do have very different
+    decks of slides that we use for the two different communities. And, and for people
+    who might be interested in contributing, or trying to help out, or at least get
+    into JRuby, maybe understand the internals a little bit better. Is, is, is there
+    any advice you have for people who are looking at JRuby and saying, "Oh, how can
+    I get involved? " Well, we do have some articles on the wiki that talk about how
+    JRuby is structured internally, the basic design. Uh, some articles on specific
+    subsystems, like how the compiler works, how the embedding API works, uh, to kind
+    of get people bootstrapped on that. I am also hoping to do, sometime this month,
+    a couple of blog posts on how to get your foot in the door, where all the pieces
+    are, uh, for somebody who's never looked at this kind of project, how to contribute,
+    how to get involved in it. Uh, it's, it's, it's a large project, but it is fairly
+    well broken down into subsystems. So, if we have somebody who's interested in
+    compilers, they can do this section. If there's somebody who's interested in crypto,
+    we have the whole crypto subsystem. So, just, uh, the easiest way for folks to
+    get involved now would probably be looking for easy bugs, or looking for refactoring
+    opportunities. Uh, pieces of code that look like they could use some cleanup.
+    Uh, it's how I've gotten into other projects, including LightStep, is basically
+    just doing some cleanup and rewrite, so that the code is easier to manage. Which,
+    at the same time, you kind of learn how it's laid out and what it does. Cool.
 - speaker: M1
   text: Well, thank you very much for taking the time to sit down with me, Charles.
     Yeah, thanks a lot for the talk.

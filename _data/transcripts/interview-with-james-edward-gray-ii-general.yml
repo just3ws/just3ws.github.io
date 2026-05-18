@@ -8,32 +8,34 @@ speaker_map:
     role: developer community and conference conversations
 turns:
 - speaker: M1
-  text: |-
-    Hi, it's Mike again with UGtastic. I'm sitting down with James Edward Gray,
-     who is known for Shades of Gray, the Ruby Rogues,
-     and also if you've used his faster CSV library in 1. 8,
-     and now it's part of the standard lib in Ruby 1. 9. Well, just Ruby 1. 9. But thanks for taking a moment to sit down, James. I appreciate it. Can you tell me a little bit about how you got involved with Ruby?
+  text: Hi, it's Mike again with UGtastic. I'm sitting down with James Edward Gray,
+    who is known for Shades of Gray, the Ruby Rogues, and also if you've used his
+    faster CSV library in 1. 8, and now it's part of the standard lib in Ruby 1. 9.
+    Well, just Ruby 1. 9. But thanks for taking a moment to sit down, James. I appreciate
+    it. Can you tell me a little bit about how you got involved with Ruby?
 - speaker: S1
-  text: |-
-    Yeah, it was a long time ago. I think I entered the community in the summer of 2004 or something like that,
-     and I'd just kind of gotten off of a job
-     and went into that cycle of learning new things,
-     and I grabbed a copy of the programming Ruby
-     and decided I'd teach myself a new language
-     and kind of got stuck and never left.
+  text: Yeah, it was a long time ago. I think I entered the community in the summer
+    of 2004 or something like that, and I'd just kind of gotten off of a job and went
+    into that cycle of learning new things, and I grabbed a copy of the programming
+    Ruby and decided I'd teach myself a new language and kind of got stuck and never
+    left.
 - speaker: M1
   text: What were you doing before Ruby?
 - speaker: S1
-  text: |-
-    I'm Java certified. I did that for several years. I spent a lot of time in the Perl community working there. The project I came off of just before getting into the Ruby community
-     was a big Perl site using CGI and all kinds of crazy stuff. So you've kind of really embraced the Ruby community and seems to have been a lot of fun for you.
+  text: I'm Java certified. I did that for several years. I spent a lot of time in
+    the Perl community working there. The project I came off of just before getting
+    into the Ruby community was a big Perl site using CGI and all kinds of crazy stuff.
+    So you've kind of really embraced the Ruby community and seems to have been a
+    lot of fun for you.
 - speaker: M1
   text: What was it about Ruby early on?
 - speaker: S1
-  text: |-
-    Because 2004 was – I mean, it hadn't just come out, but that was pre-Rails. Yeah, it was really early. It was easy to get hooked in the community back then. It was a very small, tight-knit group of people. We had basically one mailing list where most of our communication happened,
-     and you would literally be posting questions and getting answers from people like Dave Thomas
-     and stuff like that. So I was just on the tail end of that era and got kind of sucked in that way.
+  text: Because 2004 was – I mean, it hadn't just come out, but that was pre-Rails.
+    Yeah, it was really early. It was easy to get hooked in the community back then.
+    It was a very small, tight-knit group of people. We had basically one mailing
+    list where most of our communication happened, and you would literally be posting
+    questions and getting answers from people like Dave Thomas and stuff like that.
+    So I was just on the tail end of that era and got kind of sucked in that way.
 - speaker: M1
   text: Okay.
 - speaker: S1
@@ -41,12 +43,13 @@ turns:
 - speaker: M1
   text: What drove that?
 - speaker: S1
-  text: |-
-    It was an accident, actually. They were talking on the Ruby core mailing list about how the CSV library was so slow,
-     and people were trying to analyze why it was slow. And really, it wasn't any particular fault of the library so much,
-     just that it did a lot of work in a really tight loop,
-     calling a bunch of methods and stuff, which in Ruby is pretty slow. And people were talking about ways to speed it up. And just a few weeks before that,
-     I had read Mastering Regular Expression or something like that.
+  text: It was an accident, actually. They were talking on the Ruby core mailing list
+    about how the CSV library was so slow, and people were trying to analyze why it
+    was slow. And really, it wasn't any particular fault of the library so much, just
+    that it did a lot of work in a really tight loop, calling a bunch of methods and
+    stuff, which in Ruby is pretty slow. And people were talking about ways to speed
+    it up. And just a few weeks before that, I had read Mastering Regular Expression
+    or something like that.
 - speaker: M1
   text: Right.
 - speaker: S1
@@ -54,15 +57,20 @@ turns:
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: |-
-    And so I said, well, you can do it with one regular expression. And everybody's like, no, you can't. And so I went and pulled it out of the book and put it in the mailing list discussion. And a bunch of people threw really nasty examples at it that it didn't handle well. So I kept tweaking it and tweaking it to seeing if I could get it to do all of it. And I wrote this kind of tiny parser using primarily that one expression
-     and a few other things to handle some gnarly edge cases. And that actually ended up being the faster CSV core for a long time. Eventually, somebody came along and rewrote the parser, not to use a regular expression. But that was the start of it.
+  text: And so I said, well, you can do it with one regular expression. And everybody's
+    like, no, you can't. And so I went and pulled it out of the book and put it in
+    the mailing list discussion. And a bunch of people threw really nasty examples
+    at it that it didn't handle well. So I kept tweaking it and tweaking it to seeing
+    if I could get it to do all of it. And I wrote this kind of tiny parser using
+    primarily that one expression and a few other things to handle some gnarly edge
+    cases. And that actually ended up being the faster CSV core for a long time. Eventually,
+    somebody came along and rewrote the parser, not to use a regular expression. But
+    that was the start of it.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: |-
-    And then, I mean, what was the process that went from being an external Ruby gem
-     to being part of the standard lib?
+  text: And then, I mean, what was the process that went from being an external Ruby
+    gem to being part of the standard lib?
 - speaker: M1
   text: What did you have? Did you have to pay a fee? Did you have to sign a license
     agreement with Matt?
@@ -73,34 +81,38 @@ turns:
   text: There was discussion multiple times about, you know, should we replace the
     library and the standard core?
 - speaker: S1
-  text: |-
-    And I think most people were positive to the idea in that, you know, we wanted a faster library and stuff. It was faster CSV had a slightly different interface than CSV. And, you know, we didn't want to break backwards compatibility. And I had a compatibility mode where it would behave like CSV, but it wasn't perfect. There were some cases where it couldn't do the right thing. So that was discussed for a long time, and nobody ever really came to a decision on that,
-     which stalled it getting in. But then Greg Brown, a friend of mine, kind of got tired of it not being in there
-     and wrote a pretty impassioned plea to, you know, this is ridiculous. We have a much better choice.
+  text: And I think most people were positive to the idea in that, you know, we wanted
+    a faster library and stuff. It was faster CSV had a slightly different interface
+    than CSV. And, you know, we didn't want to break backwards compatibility. And
+    I had a compatibility mode where it would behave like CSV, but it wasn't perfect.
+    There were some cases where it couldn't do the right thing. So that was discussed
+    for a long time, and nobody ever really came to a decision on that, which stalled
+    it getting in. But then Greg Brown, a friend of mine, kind of got tired of it
+    not being in there and wrote a pretty impassioned plea to, you know, this is ridiculous.
+    We have a much better choice.
 - speaker: M1
   text: Can we just put it in?
 - speaker: S1
-  text: |-
-    And then they were decided, at that point, it was discussed one more time,
-     and it was decided, all right, compatibility be damned, we'll just switch over.
+  text: And then they were decided, at that point, it was discussed one more time,
+    and it was decided, all right, compatibility be damned, we'll just switch over.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: |-
-    Well, I remember upgrading from standard CSV to faster CSV and then migrating to 1. 9
-     and had no problems. I mean, but then again, maybe our case wasn't that exotic. 1. 9 was actually kind of a hurdle because when I brought it in, 1.
+  text: Well, I remember upgrading from standard CSV to faster CSV and then migrating
+    to 1. 9 and had no problems. I mean, but then again, maybe our case wasn't that
+    exotic. 1. 9 was actually kind of a hurdle because when I brought it in, 1.
 - speaker: M1
   text: 9 had the M17N engine, right?
 - speaker: S1
-  text: |-
-    So it had to be reworked extensively because of encodings, which encoding, you know,
-     your data is in matters how you find things like a quote and a comma, right?
+  text: So it had to be reworked extensively because of encodings, which encoding,
+    you know, your data is in matters how you find things like a quote and a comma,
+    right?
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: |-
-    And so actually, CSV, the standard 1. 9 library, was probably the first practical application of M17N,
-     and I basically had to figure out how all of that worked so that I could rewrite the core of CSV to be aware of encodings.
+  text: And so actually, CSV, the standard 1. 9 library, was probably the first practical
+    application of M17N, and I basically had to figure out how all of that worked
+    so that I could rewrite the core of CSV to be aware of encodings.
 - speaker: M1
   text: Oh, so that's how your encoding article came to be?
 - speaker: S1
@@ -108,50 +120,70 @@ turns:
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: |-
-    I had to figure all that out to port the library. Yeah, because actually that article was very helpful for me on more than one occasion,
-     just trying to figure out why data was being lost between Rails, talking to Postgres,
-     and back in an earlier version of the gem. We actually drove some bug fixes in Ruby at that time. When I was fixing CSV, I would figure out a lot of encoding stuff,
-     and I would find some kind of bizarre edge cases and then post them to the list,
-     and that actually ended up fixing certain bugs in Ruby. Oh, okay, so because you were actually driving a use case for a lot of these encoding issues,
-     like putting in weird data, putting in foreign languages and a variety of languages. So that makes sense. Yeah, you were kind of up, burn-in testing the encoding engine.
+  text: I had to figure all that out to port the library. Yeah, because actually that
+    article was very helpful for me on more than one occasion, just trying to figure
+    out why data was being lost between Rails, talking to Postgres, and back in an
+    earlier version of the gem. We actually drove some bug fixes in Ruby at that time.
+    When I was fixing CSV, I would figure out a lot of encoding stuff, and I would
+    find some kind of bizarre edge cases and then post them to the list, and that
+    actually ended up fixing certain bugs in Ruby. Oh, okay, so because you were actually
+    driving a use case for a lot of these encoding issues, like putting in weird data,
+    putting in foreign languages and a variety of languages. So that makes sense.
+    Yeah, you were kind of up, burn-in testing the encoding engine.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: |-
-    So the hardest thing when I was doing that is there was zero documentation. You know, the encoding was just a chunk of code that had been dumped into Ruby,
-     and I had to basically sit there and reverse engineer it and talk to certain people about what it did,
-     and that drove me crazy. So I wrote those articles that you mentioned on my blog. And so you're jumping over to some of the more social aspects, not just the code, but the Ruby Rogues. You're on there. You're a regular contributor to the Ruby Rogues podcast.
+  text: So the hardest thing when I was doing that is there was zero documentation.
+    You know, the encoding was just a chunk of code that had been dumped into Ruby,
+    and I had to basically sit there and reverse engineer it and talk to certain people
+    about what it did, and that drove me crazy. So I wrote those articles that you
+    mentioned on my blog. And so you're jumping over to some of the more social aspects,
+    not just the code, but the Ruby Rogues. You're on there. You're a regular contributor
+    to the Ruby Rogues podcast.
 - speaker: M1
   text: How did you get involved with that?
 - speaker: S1
-  text: |-
-    I'd had an idea from some other podcasts I listened to that had panel discussions,
-     and I thought, man, it'd be really cool to do that in Ruby someday. And I guess Chuck had had pretty much the same idea, and I can't remember who mentioned it first,
-     but one of us mentioned it on Twitter. Wouldn't it be cool to have a panel of, you know, Ruby discussions and the other,
-     whichever one didn't mention it, the other one was like, I didn't think the same thing. And so we kind of started trading some emails over it and put together the original panel
-     and just started doing it. And it was just something we did, you know, for fun in our spare time. But then it got popular pretty quick, really. And so we got lots of feedback, you know, your audio sucks and, you know, things like that.
+  text: I'd had an idea from some other podcasts I listened to that had panel discussions,
+    and I thought, man, it'd be really cool to do that in Ruby someday. And I guess
+    Chuck had had pretty much the same idea, and I can't remember who mentioned it
+    first, but one of us mentioned it on Twitter. Wouldn't it be cool to have a panel
+    of, you know, Ruby discussions and the other, whichever one didn't mention it,
+    the other one was like, I didn't think the same thing. And so we kind of started
+    trading some emails over it and put together the original panel and just started
+    doing it. And it was just something we did, you know, for fun in our spare time.
+    But then it got popular pretty quick, really. And so we got lots of feedback,
+    you know, your audio sucks and, you know, things like that.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: |-
-    I hope eventually they get that kind of feedback. Right, yeah. Because I'll be like, yeah, they all suck. Yeah, when you get a bunch of listeners, they definitely bug you about it quick. So we started fixing that. And, you know, we had some people leave and some people come in,
-     and then we just kind of got lucky in getting a team that really gelled eventually, you know,
-     and played well off of each other. And I think that's mostly what led to its success. Yeah, I listened to quite a few. And Ruby 5 and Ruby Rogues are two that I can tolerate listening to in the background. Because sometimes it's almost like listening a little bit to, like, I used to listen to talk radio and the banter. It's not too heavy, but, you know, you can kind of tune it out, and it's like a conversation in the background.
+  text: I hope eventually they get that kind of feedback. Right, yeah. Because I'll
+    be like, yeah, they all suck. Yeah, when you get a bunch of listeners, they definitely
+    bug you about it quick. So we started fixing that. And, you know, we had some
+    people leave and some people come in, and then we just kind of got lucky in getting
+    a team that really gelled eventually, you know, and played well off of each other.
+    And I think that's mostly what led to its success. Yeah, I listened to quite a
+    few. And Ruby 5 and Ruby Rogues are two that I can tolerate listening to in the
+    background. Because sometimes it's almost like listening a little bit to, like,
+    I used to listen to talk radio and the banter. It's not too heavy, but, you know,
+    you can kind of tune it out, and it's like a conversation in the background.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: |-
-    But it's fun. And that kind of is going to provide my segue into the next topic is I joked with Avdi when I interviewed him
-     about what kind of was the impetus for me to reach out to him was listening to the episode. And it was just this kind of banter you guys were having in the beginning of the show about stand-up chairs, stand-up desks. And I was like, I didn't know at the time that you, you know, you were in a wheelchair. And somebody said something about a stand-up desk, and you said something like, oh, I don't use one,
-     and I don't know who it said.
+  text: But it's fun. And that kind of is going to provide my segue into the next
+    topic is I joked with Avdi when I interviewed him about what kind of was the impetus
+    for me to reach out to him was listening to the episode. And it was just this
+    kind of banter you guys were having in the beginning of the show about stand-up
+    chairs, stand-up desks. And I was like, I didn't know at the time that you, you
+    know, you were in a wheelchair. And somebody said something about a stand-up desk,
+    and you said something like, oh, I don't use one, and I don't know who it said.
 - speaker: M1
   text: But they're like, well, why, James?
 - speaker: S1
-  text: |-
-    And, you know, and then you guys all laughed. And, you know, and I said to Avdi that that's, you know, that's a very positive banter because you can't just have that one
-     unless you guys were all friends and knew each other well. But it is germane to the technical community and being out and speaking and going to user groups and conferences
-     and things like that.
+  text: And, you know, and then you guys all laughed. And, you know, and I said to
+    Avdi that that's, you know, that's a very positive banter because you can't just
+    have that one unless you guys were all friends and knew each other well. But it
+    is germane to the technical community and being out and speaking and going to
+    user groups and conferences and things like that.
 - speaker: M1
   text: Has that been something that's – what has it been like? I hate that question,
     but what has it been like going to conferences in a wheelchair?

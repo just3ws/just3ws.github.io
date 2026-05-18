@@ -8,10 +8,38 @@ speaker_map:
     role: Apache Ignite beyond the data grid
 turns:
 - speaker: M1
-  text: |-
-    Hi, it's Mike with UGtastic
-
-    . I'm here at GOTO Conference 2015 and I 'm sitting here with Dimitri who gave a talk about the data grid, well, bigger than the data grid. Beyond the data grid. Beyond the data grid with Apache Ign ite. Well, first I want to say thank you very much for taking the time to speak with me and you can tell me a little bit about what your presentation was about and what is this Apache Ignite product. All right, thank you Mike. So yeah, I want you to notice I'm wearing an Apache Ignite t-shirt, first of all, so it's very cool. So whenever you see green t-shirts, I want you to know it's Apache Ignite. So I just gave a talk about Apache Ignite. So it's an Apache project, currently undergoing incubation process at Apache, but I'm getting a feeling it 's gonna graduate pretty soon, probably within a couple of months. And what it is, it's a memory data fabric and essentially you use Apache Ignite whenever you face performance or scalability problems within your application. And at that point you decide to introduce an in-memory architecture, you want to cache a lot of data. You're gonna be faced with quite a few use cases, but a lot of them are common and we see it for every project that moves in memory. For example, you are going to have some clustering, you are going to have some scale out, horizontal scalability issues, you are going to probably want to cache data in memory, maybe partition or shard data in memory, and you probably want to transact on that data or maybe query that data. You may want to stream that data into the system or continuously ingest large amounts of data into the system and use streaming, maybe computing using distributed MapReduce, or for joint type APIs. So all of those components are available within Apache Ignite in- memory data fabric. So from the get-go, we wanted Apache Ignite to become a one-point solution for most of the in-memory use cases, and that's why we cover most of these use cases. However, the project is still very simple to use. It comes as one zip file. You just unzip it off your go. It uses all the standard APIs, probably you're most familiar with in Java, like maps, queues, sets, most of the concurrent Java Util concurrent APIs are also ported to Apache Ignite, ThreadPool, distributed executor service. All of those standard APIs are still used within Apache Ignite. So is Apache Ign ite a database competitor to a NoSQL database, or is it a layer that sits between applications and persistent data stores?
+  text: Hi, it's Mike with UGtastic . I'm here at GOTO Conference 2015 and I 'm sitting
+    here with Dimitri who gave a talk about the data grid, well, bigger than the data
+    grid. Beyond the data grid. Beyond the data grid with Apache Ign ite. Well, first
+    I want to say thank you very much for taking the time to speak with me and you
+    can tell me a little bit about what your presentation was about and what is this
+    Apache Ignite product. All right, thank you Mike. So yeah, I want you to notice
+    I'm wearing an Apache Ignite t-shirt, first of all, so it's very cool. So whenever
+    you see green t-shirts, I want you to know it's Apache Ignite. So I just gave
+    a talk about Apache Ignite. So it's an Apache project, currently undergoing incubation
+    process at Apache, but I'm getting a feeling it 's gonna graduate pretty soon,
+    probably within a couple of months. And what it is, it's a memory data fabric
+    and essentially you use Apache Ignite whenever you face performance or scalability
+    problems within your application. And at that point you decide to introduce an
+    in-memory architecture, you want to cache a lot of data. You're gonna be faced
+    with quite a few use cases, but a lot of them are common and we see it for every
+    project that moves in memory. For example, you are going to have some clustering,
+    you are going to have some scale out, horizontal scalability issues, you are going
+    to probably want to cache data in memory, maybe partition or shard data in memory,
+    and you probably want to transact on that data or maybe query that data. You may
+    want to stream that data into the system or continuously ingest large amounts
+    of data into the system and use streaming, maybe computing using distributed MapReduce,
+    or for joint type APIs. So all of those components are available within Apache
+    Ignite in- memory data fabric. So from the get-go, we wanted Apache Ignite to
+    become a one-point solution for most of the in-memory use cases, and that's why
+    we cover most of these use cases. However, the project is still very simple to
+    use. It comes as one zip file. You just unzip it off your go. It uses all the
+    standard APIs, probably you're most familiar with in Java, like maps, queues,
+    sets, most of the concurrent Java Util concurrent APIs are also ported to Apache
+    Ignite, ThreadPool, distributed executor service. All of those standard APIs are
+    still used within Apache Ignite. So is Apache Ign ite a database competitor to
+    a NoSQL database, or is it a layer that sits between applications and persistent
+    data stores?
 - speaker: S1
   text: That's a good question actually. So the answer is it's probably not a simple
     yes or no answer, because if you look at distributed cache within Apache Ignite,

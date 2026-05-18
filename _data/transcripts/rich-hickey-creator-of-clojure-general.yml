@@ -8,15 +8,27 @@ speaker_map:
     role: conference speaking and presentation skills
 turns:
 - speaker: M1
-  text: |-
-    Hi, it's Mike again with UGtastic. I'm here again at the GOTO Conference in Chicago, 2013. I'm sitting down with Rich Hickey. Rich, as you may know, is the creator of the Clojure Programming Language. It's a LISP dialect on the JVM. Thank you very much for taking the time to sit down with me. It's a very busy conference, so I appreciate it. You're welcome. So you created Clojure, and you released it to the LISP mailing list, and yada, yada, yada. Eventually there's user groups exploding, conferences being formed about people who are rabid fans of the language
-     and the concepts and the ideas behind underpinning the language. As somebody who's created this tool and then basically kind of released it to the world,
-     what is it like or what has your experience been creating this tool and then seeing these various groups pop up
-     when you didn't have a marketing team, you didn't have some evangelists out there seeding money for user groups to pop up? What has that been like for you?
+  text: Hi, it's Mike again with UGtastic. I'm here again at the GOTO Conference in
+    Chicago, 2013. I'm sitting down with Rich Hickey. Rich, as you may know, is the
+    creator of the Clojure Programming Language. It's a LISP dialect on the JVM. Thank
+    you very much for taking the time to sit down with me. It's a very busy conference,
+    so I appreciate it. You're welcome. So you created Clojure, and you released it
+    to the LISP mailing list, and yada, yada, yada. Eventually there's user groups
+    exploding, conferences being formed about people who are rabid fans of the language
+    and the concepts and the ideas behind underpinning the language. As somebody who's
+    created this tool and then basically kind of released it to the world, what is
+    it like or what has your experience been creating this tool and then seeing these
+    various groups pop up when you didn't have a marketing team, you didn't have some
+    evangelists out there seeding money for user groups to pop up? What has that been
+    like for you?
 - speaker: S1
-  text: |-
-    Well, it's been incredible. You know, it's quite surprising. You know, I think when I wrote Clojure, I definitely did it as a personal satisfaction project. And being a new language and a LISP, I did not expect very many people to be interested at all. But I think Paul Graham's book and essays and the success of Python and Ruby sort of seeded people in their desire for new languages
-     and for a LISP that they could actually use for day-to-day work. So yeah, it was quite surprising. You know, I put out a message to two dozen people.
+  text: Well, it's been incredible. You know, it's quite surprising. You know, I think
+    when I wrote Clojure, I definitely did it as a personal satisfaction project.
+    And being a new language and a LISP, I did not expect very many people to be interested
+    at all. But I think Paul Graham's book and essays and the success of Python and
+    Ruby sort of seeded people in their desire for new languages and for a LISP that
+    they could actually use for day-to-day work. So yeah, it was quite surprising.
+    You know, I put out a message to two dozen people.
 - speaker: M1
   text: Yeah.
 - speaker: S1
@@ -25,14 +37,43 @@ turns:
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: |-
-    It was really, something was, some interest in the idea of it was already there before Clojure was, I think. Well, and one of the things I find interesting is that it's built on a pretty stable, like the culture underneath Java
-     and the JVM, people around that, that's a pretty well-established community. It's not too much exciting things going on. And people aren't rabidly, well, not so many rabid, I'm a Java developer. I mean, people identify as Java, but they're not as enthusiastic about it as they would say,
-     I'm a well-versed Clojure developer or even a Ruby developer. So I just think it's interesting that this, the hottest language right now is built on this really incredibly vanilla, boring platform. Has that been something that's been, you know, a boon or a bust with working with, getting support from people on the JVM? I think it's quite critical to Clojure's success, that it's built on top of something that is an industry standard
-     and people are comfortable deploying in production. It's one of the reasons why Clojure was, it was possible for Clojure to succeed, was the fact that it was possible for people to use in production
-     and use where, at work. And I think that's what helped drive people's enthusiasm, was that they knew they had to work with the JVM
-     and now here was something that let them do something new and yet remain connected to what they had been doing
-     as opposed to sort of drop everything and try something completely different. Kind of having that boring base allows you to have a little bit of excitement and know that the underpinnings are nice and SOLID and they're not going to... Yeah, well they're not just boring, they're also quite capable and robust and well tested and there's a lot of leverage in the libraries that exist there. So, you know, I wouldn't want to belittle Java and the JVM's role in Clojure. Well boring wasn't necessarily a negative statement. It's that the boring, I know I can get up and it's going to be working and I don't have to worry about... Yes, not exciting in that, you know, you don't want to be excited way. But looking at another language and group, the Ruby group, where you don't always know things are going to work. You know, those, you know, the libraries are always under a lot of churn. You know, that's not necessarily the most stable community. But what I see with the Clojure community is that much like the Ruby community that just grew up and became this rabid, very much very passionate, very vocal community. I see a kind of mirroring in the Clojure community where it seems like while Clojure is built on Java and it's a very well, strong foundation, the community that came up into Java doesn't seem to be... Or actually, the community that seems to have migrated most to Clojure actually seems to be more the Ruby community, at least from my observations. So the numbers actually say that most, I would say, you know, plurality of Clojure programmers come from Java.
+  text: It was really, something was, some interest in the idea of it was already
+    there before Clojure was, I think. Well, and one of the things I find interesting
+    is that it's built on a pretty stable, like the culture underneath Java and the
+    JVM, people around that, that's a pretty well-established community. It's not
+    too much exciting things going on. And people aren't rabidly, well, not so many
+    rabid, I'm a Java developer. I mean, people identify as Java, but they're not
+    as enthusiastic about it as they would say, I'm a well-versed Clojure developer
+    or even a Ruby developer. So I just think it's interesting that this, the hottest
+    language right now is built on this really incredibly vanilla, boring platform.
+    Has that been something that's been, you know, a boon or a bust with working with,
+    getting support from people on the JVM? I think it's quite critical to Clojure's
+    success, that it's built on top of something that is an industry standard and
+    people are comfortable deploying in production. It's one of the reasons why Clojure
+    was, it was possible for Clojure to succeed, was the fact that it was possible
+    for people to use in production and use where, at work. And I think that's what
+    helped drive people's enthusiasm, was that they knew they had to work with the
+    JVM and now here was something that let them do something new and yet remain connected
+    to what they had been doing as opposed to sort of drop everything and try something
+    completely different. Kind of having that boring base allows you to have a little
+    bit of excitement and know that the underpinnings are nice and SOLID and they're
+    not going to... Yeah, well they're not just boring, they're also quite capable
+    and robust and well tested and there's a lot of leverage in the libraries that
+    exist there. So, you know, I wouldn't want to belittle Java and the JVM's role
+    in Clojure. Well boring wasn't necessarily a negative statement. It's that the
+    boring, I know I can get up and it's going to be working and I don't have to worry
+    about... Yes, not exciting in that, you know, you don't want to be excited way.
+    But looking at another language and group, the Ruby group, where you don't always
+    know things are going to work. You know, those, you know, the libraries are always
+    under a lot of churn. You know, that's not necessarily the most stable community.
+    But what I see with the Clojure community is that much like the Ruby community
+    that just grew up and became this rabid, very much very passionate, very vocal
+    community. I see a kind of mirroring in the Clojure community where it seems like
+    while Clojure is built on Java and it's a very well, strong foundation, the community
+    that came up into Java doesn't seem to be... Or actually, the community that seems
+    to have migrated most to Clojure actually seems to be more the Ruby community,
+    at least from my observations. So the numbers actually say that most, I would
+    say, you know, plurality of Clojure programmers come from Java.
 - speaker: M1
   text: Oh really?
 - speaker: S1
@@ -60,10 +101,14 @@ turns:
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: |-
-    Well, and even very interesting projects. And the reason I'm probably, I probably have a Ruby bias. And I probably, the reason I probably see more people from the Ruby community going to Clojure
-     is because of just my local, what I see. And I mostly interacted with Ruby. And I was just inferring though that more, it seemed like a lot of the developers I know
-     who have been doing Ruby are kind of bored with Ruby. Or they're starting to see cracks in Ruby's methodologies and how it's implemented. And they're starting to see some of the limitations. And they're looking at Clojure as being an answer to that.
+  text: Well, and even very interesting projects. And the reason I'm probably, I probably
+    have a Ruby bias. And I probably, the reason I probably see more people from the
+    Ruby community going to Clojure is because of just my local, what I see. And I
+    mostly interacted with Ruby. And I was just inferring though that more, it seemed
+    like a lot of the developers I know who have been doing Ruby are kind of bored
+    with Ruby. Or they're starting to see cracks in Ruby's methodologies and how it's
+    implemented. And they're starting to see some of the limitations. And they're
+    looking at Clojure as being an answer to that.
 - speaker: M1
   text: Is there any, is there any truth in that?
 - speaker: S1
@@ -132,9 +177,16 @@ turns:
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: |-
-    Because, you know, there had been other lisp communities that had struggled with that. And, uh, I think that had been a barrier to adoption. And I wanted to make sure that, um, Clojure had a, a clean slate there. Um, and the thing that's been really satisfying has been to see, um,
-     the entire community, um, propel that forward. Because after a certain point, as one person, you can't, you know, manage that. It has to be sort of in the fabric of the community. And I think, um, a positive attitude is, uh, is in the fabric of the community. And that just, you know, helps reinforce itself. Has it, has it, and this is more of a question of becoming the center of this kind of, uh, lisp revolution, for lack of a better term.
+  text: Because, you know, there had been other lisp communities that had struggled
+    with that. And, uh, I think that had been a barrier to adoption. And I wanted
+    to make sure that, um, Clojure had a, a clean slate there. Um, and the thing that's
+    been really satisfying has been to see, um, the entire community, um, propel that
+    forward. Because after a certain point, as one person, you can't, you know, manage
+    that. It has to be sort of in the fabric of the community. And I think, um, a
+    positive attitude is, uh, is in the fabric of the community. And that just, you
+    know, helps reinforce itself. Has it, has it, and this is more of a question of
+    becoming the center of this kind of, uh, lisp revolution, for lack of a better
+    term.
 - speaker: M1
   text: Is that, uh, has that impacted you?
 - speaker: S1
@@ -321,17 +373,21 @@ turns:
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: |-
-    So a lot of the early adopters either had to know that or sort of get that on their own because
-     I, you know, I just was trying to tell the story of how Clojure was unique and couldn't
-     tell the story of Lisp and sort of the fundamentals of some of it. And, uh, and now, you know, the scope for somebody who knows nothing is bigger still. So, um, that's where the community comes in and, and they're already there. They're there with a bunch of supportive tools and alternative documentation sites and, and,
-     uh, you know, uh, examples and, and, uh, yeah, all kinds of exercises and things like that.
+  text: So a lot of the early adopters either had to know that or sort of get that
+    on their own because I, you know, I just was trying to tell the story of how Clojure
+    was unique and couldn't tell the story of Lisp and sort of the fundamentals of
+    some of it. And, uh, and now, you know, the scope for somebody who knows nothing
+    is bigger still. So, um, that's where the community comes in and, and they're
+    already there. They're there with a bunch of supportive tools and alternative
+    documentation sites and, and, uh, you know, uh, examples and, and, uh, yeah, all
+    kinds of exercises and things like that.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: |-
-    So there's a lot of different things and you pick what, you know, makes sense to you. And, uh, but, uh, I'm quite proud of the community and, and, and how well they are, um,
-     receiving the newcomers and, uh, being positive and helping them, you know, succeed.
+  text: So there's a lot of different things and you pick what, you know, makes sense
+    to you. And, uh, but, uh, I'm quite proud of the community and, and, and how well
+    they are, um, receiving the newcomers and, uh, being positive and helping them,
+    you know, succeed.
 - speaker: M1
   text: Great. Well, thank you very much for taking the time to sit down. Sure. My
     pleasure.

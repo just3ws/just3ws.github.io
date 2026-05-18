@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
 require 'yaml'
 
+# --- JINGLE REGEX ---
+# Matches the "User groups with lots to say..." jingle with various phonetic misspellings
+JINGLE_REGEX = /User groups with lots to say.*?(?:UGtastic|uktastic|euketastic|ubtastic|evotasic|ugetastic|ukt|euke|uke|yugetastic|yuge|uktasek)(?:\s*\.?\s*com)?\.?\s*/im
+
 RULES = [
-  # --- Brands & Core Identity ---
-  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget|ukt|yug|yuget|yuge)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
-  [/\b[Uu]ktasek(?:\.com)?\b/i, "UGtastic"],
-  [/\b[Uu]btastic(?:\.com)?\b/i, "UGtastic"],
+  # --- Brand: UGtastic ---
+  [/\b\w*tastic(?:\s*\.?\s*com)?\b/i, "UGtastic"],
+  [/\b[Uu]ktasek(?:\s*\.?\s*com)?\b/i, "UGtastic"],
+  [/\b[Uu]btastic(?:\s*\.?\s*com)?\b/i, "UGtastic"],
   [/\b[Ee]vo[ -]?Tasic\b/i, "UGtastic"],
   [/\b[Uu]g[ -]?l[ -]?st\b/i, "UGl.st"],
 
@@ -19,7 +23,6 @@ RULES = [
   [/\b[Rr]ails[ -]?[Bb]ridge\b/i, "RailsBridge"],
   
   # --- Languages & Ecosystems ---
-  [/\b[Cc]losure\b/, "Clojure"], # Only if capitalized (avoid common word 'closure')
   [/\b[Cc]lojure\b/i, "Clojure"],
   [/\b[Rr]uby[ -]?[Oo]n[ -]?[Rr]ails\b/i, "Ruby on Rails"],
   [/\b[Rr]ubinius\b/i, "Rubinius"],
@@ -39,11 +42,10 @@ RULES = [
   [/\b[Kk]anban\b/i, "Kanban"],
   [/\b[Ss]crum\b/i, "Scrum"],
   [/\b[Dd]ev[ -]?[Oo]ps\b/i, "DevOps"],
-  [/\b[Ss]olid\b/, "SOLID"], # Only if capitalized (avoid common word 'solid')
 
   # --- Companies & Organizations ---
   [/\b[Gg]oto[ -]?[Cc]onf(?:erence)?\b/i, "GOTO Conference"],
-  [/\b[Rr]ails[ -]?[Cc]onf\b/i, "RailsConf"],
+  [/\b[Rr]ails[ -]?[Cc]conf\b/i, "RailsConf"],
   [/\b[Tt]hought[ -]?[Ww]orks\b/i, "ThoughtWorks"],
   [/\b[Oo]ps[ -]?[Cc]ode\b/i, "Opscode"],
   [/\b[Pp]ay[ -]?[Pp]al\b/i, "PayPal"],
@@ -54,7 +56,7 @@ RULES = [
   [/\b[Vv]imeo\b/i, "Vimeo"],
   [/\b[Yy]ou[ -]?[Tt]ube\b/i, "YouTube"],
 
-  # --- Cleanup Hallucinations ---
+  # --- Remove Whisper hallucinations ---
   [/\b[Tt]hanks for watching\b/i, ""],
   [/\b[Ss]ubscribe to my channel\b/i, ""],
   [/\b[Hh]it the bell icon\b/i, ""],
@@ -73,7 +75,16 @@ OUTRO_RULES = [
 
 def apply_to_text(text)
   return text unless text
+  # 1. Clean the jingle
+  text.gsub!(JINGLE_REGEX, "[Music] ")
+  
+  # 2. Apply general rules
   RULES.each { |pattern, replacement| text.gsub!(pattern, replacement) }
+  
+  # 3. Clean up artifacts
+  text.gsub!(/\[Music\]\s+(?:com\.)?\s*/i, "[Music] ")
+  text.gsub!(/\s{2,}/, " ")
+  text.strip!
   text
 end
 
