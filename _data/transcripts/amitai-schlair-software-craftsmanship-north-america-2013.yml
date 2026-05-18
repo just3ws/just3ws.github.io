@@ -1,611 +1,311 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Amitai Schlair
-    role: open source and project maintenance
-turns:
-- speaker: M1
-  text: |-
-    user groups with lots to say interviews and more no way sharing great ideas in
-
-    the tech community fascinating conversations a plethora of information
-
-    find out for yourself today at UGtastic
-
-    hi it's Mike with UGtastic again I'm here today at day two of SCNA 2013 right
-
-    now I'm sitting down with Amitai Schleyer who sits on the TNF and as you
-
-    might know the TNF is the net BSD the board of the I can't even say myself but
-
-    it's a board of the net BSD organization or a foundation TNF I said that
-
-    beautifully so anyway hi hi Amitai thank you very much for taking the time to sit
-
-    down with me appreciate it so the net BSD foundation that's that sounds very
-
-    important what what is the net BSD foundation it's a 501c3 nonprofit and
-
-    it's basically if you're familiar with the free BSD foundation
-
-    or I'm sure open BSD has something like it we officially accept donations that
-
-    are intended to fund development in the BSD and to some extent we determine the
-
-    project direction the the structure of the organization because it is an
-
-    organization even though we're all volunteers and the disbursement of funds
-
-    where we see that it helps development along so the net BSD that that's that's
-
-    like the Berkeley San Diego Unix that's the
-
-    foundation for the I-386 in that BSD's case it turns out to be a lot more than that okay BSD stands for Berkeley software distribution or Berkeley software development depending on when in the 90s you're looking at the
-
-    expansion of the acronym and net BSD was one of the two projects that kind of
-
-    forked out of the the death of the original Berkeley okay the Regents of
-
-    the University of California sometime in the early 90s stopped being able to fund
-
-    the development that was happening in Berkeley
-
-    which had been to begin with a set of patches on top of AT&T's units but
-
-    eventually became its own distribution and one of the hallmarks of BSD Unix
-
-    other than actually being able to be used by humans to some extent was that it
-
-    deliberately targeted portability it was deliberately built and distributed from
-
-    multiple hardware architectures and that thereby forced to be designed to be able
-
-    to work on multiple hardware architectures and
-
-    NetBSD and FreeBSD are the two major projects that forked around that time
-
-    out of the remains of BSD and FreeBSD chose what seems like a prescient
-
-    direction at the time that they should focus on commodity hardware because
-
-    mostly that's what people have and if you eke out every last bit of
-
-    performance on a 90 megahertz Pentium you'll be glad you did yeah and NetBSD
-
-    chose that aspect of tradition from Berkeley that let's let's turn up the
-
-    knobs to 11 on portability let's stick with that tradition let's make sure we're
-
-    even more portable let's find more ways to share driver code abstractions that
-
-    let the drivers be shared abstract the way Andean-ness and other differences
-
-    between platforms and just make let that drive the design which is actually why
-
-    I'm here talking to you today because when I hear about craftsmanship and
-
-    this conference the Unix that I think goes best with that is NetBSD I think
-
-    craftsmen who use Unix and appreciate Unix and appreciate craftsmanship should
-
-    be very interested in that business well I think there's a lot of people here
-
-    that don't realize that they're very interested in NetBSD and didn't we we
-
-    kind of tease each other about that Apple logo but if I if I'm not mistaken
-
-    NetBSD is the kernel the Darwin kernel is based off of NetBSD or it's
-
-    a complicated story naturally the kernel in OS 10 is kind of a hybrid a lot of
-
-    its history comes from mock which was developed at Carnegie Mellon mark as the
-
-    MACH MACH good kind of like the word Mac but totally coincidental it also turns
-
-    out that one of the primary developers of mock wound up being an executive at
-
-    Apple later for business merger related reasons but the kernel is mocked and
-
-    there is some some more to it than that that's actually not my primary area of
-
-    work but where NetBSD got involved with OS 10 is that in an early version of OS
-
-    10 I think up through 10 2 or 10 3 most of the user land utilities were from
-
-    NetBSD early so if you for instance if you're running user bin FTP it's the one
-
-    that that was developed in FBSD and enhanced by Luke Mewburn and distributed
-
-    as a an autoconft buildable piece of source
-
-    and a lot of the utilities in OS 10 were like that somewhere after 10 2 or 10 3
-
-    it became more of a FreeBSD influence because one of the developers from one
-
-    of the founders of FreeBSD Jordan Hubbard was the director of Unix
-
-    technologies or something like that at Apple and so they kind of moved in a
-
-    FreeBSD direction for user land but the the kernel is actually a different
-
-    story and I don't know it very well okay so you know how did you come to be
-
-    involved with the you said that the kernel really isn't where you're spending your time
-
-    where where does Amitai or Schmanz his nickname the where Schmanz spent his time
-
-    what is your focus and what do you do with the the foundation as part of the
-
-    board I'm relatively new I was elected some months ago and just began serving
-
-    the roles that I had before that were two basically one that I kind of self
-
-    nominated myself for like you do in a volunteer project whoever does the work
-
-    becomes in charge and another that I was selected for a while ago the other one
-
-    the one that I selected for is there's a project management committee for package
-
-    source which is closely related to NetBSD in terms of history and
-
-    organization but isn't an operating system project NetBSD is an operating
-
-    system project package source is a package manager and it's distinguishing characteristics that
-
-    are very compelling to me and I think possibly to the people in this audience
-
-    are that it is cross-platform so any kind of unix-y system you have even if
-
-    it's Windows with services for unix or sigwin on it or whether you have root or not it is
-
-    still a system you can use the same way across all of the heterogeneous unix-y
-
-    machines that you have and so if you're a sysadmin which at times all of us are it allows you to
-
-    get the tools that you need or the services that you need installed in the
-
-    same way on all the machines you deal with regardless of what they are where
-
-    they came from so in that respect it sounds like it's a little bit of chef
-
-    and a little bit of homebrew or more apt there's a more like is it more like
-
-    apt or is it more like a homebrew kind of thing when you're saying that it goes
-
-    and it can work on any unix-y based system
-
-    does it go and grab source and compile them locally exactly so it's homebrew is
-
-    like some of what package source does okay homebrew is a I believe the source
-
-    based builder of packages that works on OS X and that's it package source is a
-
-    source based package manager it also generates binary packages which you can
-
-    then reuse and distribute but it's designed to be used with source and so
-
-    when you when you go and get your package source tree and say well today I
-
-    want Ruby 1. 9. 3 installed on whatever the heck this system is right CD package
-
-    source laying Ruby 1. 9. 3 make install and what happens when you do that is
-
-    that the the source code for Ruby is fetched its checksum is verified it's
-
-    extracted if it has dependencies that have to be built and installed in the
-
-    same way before it can be built they're installed one of the special things
-
-    package source does is to make sure that the build environment on user machine is
-
-    identical to that on a
-
-    dev machine so the package will be reproducibly buildable and then at the
-
-    end of it you have you know a custom built with the parameters that you
-
-    control but the defaults are pretty good Ruby that's in a section of your machine
-
-    that's only for packages from package source you put it in your path and it
-
-    does what you want so does it also like resolve dependencies and things like
-
-    that it does it goes all the way down oh really
-
-    so yeah cuz I when you're talking about Ruby I think well we do have a variety of
-
-    packages Ruby management tools RVM which I was actually just this morning
-
-    tweeting up that they need support but um you know how do you exist in that are
-
-    you replacements from that or do you that's an excellent question I'm not a
-
-    Rubyist I I'm familiar with kind of an
-
-    equivalent problem with pearl that if you want to have different versions of
-
-    pearl with different you know what would be gems in the pro world installed you want to be able to
-
-    get those set up and switch between them and know which one you're currently
-
-    working with pearl has ways of doing that package source is kind of
-
-    orthogonal but can be used for that specifically what I mean is that you can
-
-    you can take one package source source tree and bootstrap the package source
-
-    tools and an entire set of packages as long as it's in a different location
-
-    it's totally independent and the parameters can be different and the
-
-    values can be different so I've used that in the past to
-
-    to get one set of packages look like this another set of packages in a
-
-    slightly different place look like that and you can move a sim link or do some
-
-    other trick right so so how did you you said you kind of volunteered for the
-
-    work and you just came to own it how how did that come to be how did you end up
-
-    even getting into position to volunteer so that one that one is a different
-
-    piece of work NetBSD's website unfortunately I don't
-
-    think sings the virtues of the operating system in the
-
-    package manager as well as it should the virtues are terrific the website is not
-
-    so so I took a hard look a few years ago at why are we having this problem and
-
-    some people think it's because developers don't like to write
-
-    documentation I don't believe that's true especially among craftsmen which
-
-    most of the NetBSD developers would agree that they are I think the problem
-
-    is one of tools that we built ourselves that get in the way that were built a
-
-    while ago based on old ideas I think what all of us would agree now is a reason
-
-    of the way to do web content in this day and age is something more like a wiki
-
-    with a simple input format simple output format ideally you can edit it with VI
-
-    or Emacs in addition to a browser so I found a piece of software that was close
-
-    to what we needed we had a bunch of tight requirements to be able to run the
-
-    software I'm also a member of the sysadmin for the NetBSD project so I knew
-
-    enough about the web problem I knew enough about what the administrators would be
-
-    happy integrating and I knew enough about this piece of software that would bridge
-
-    the gap and then I needed to make it bridge the gap which is why I'm also a
-
-    contributor to wiki wiki which is an open source written in pearl content
-
-    management system so I extended wiki wiki so that it met NetBSD's
-
-    requirements we stood up an example of it the admins liked it some users liked
-
-    that we now have wiki. netbsd. org and someday when I have time that will be
-
-    how our website is made okay so I just kind of volunteered for that and now I'm
-
-    on the web committee even though I didn't really mean for that to happen
-
-    yeah but it's an okay way yeah that it sounds like it's a lot of fun and but you
-
-    know even going back further why NetBSD what was what attracted you to NetBSD to
-
-    begin with great question so I went to high school about 20-25 miles north of
-
-    the road from here and in high school the available nerd tooling that I could
-
-    get at was Texas Instruments Graphic Calculators at the time
-
-    that's all the programmability that I could get to it so I got to it I had one
-
-    of everything I had 81 82 85 and 92 which was two megahertz faster than the
-
-    CPU in the Mac plus we had at home oh wow so it's just like today when you have
-
-    that that little iPhone and a three-year-old computer it's like no
-
-    they're shameful yeah but so that's what I had and and I got into the community
-
-    around it and was invited to participate in a community project that we were
-
-    we were building called ti calc. org ti themselves wasn't real forthcoming
-
-    supporting all the third-party things that were happening so we wanted to be
-
-    for ourselves and I was invited to be part of that and they were running on
-
-    some weird system called Linux one point something I don't know the first thing
-
-    about it right so I said how can I even be useful to you guys if what I have is
-
-    you know an old Macintosh Mac 2ci at the time
-
-    how can I even learn how this stuff works so that eventually I can be useful to you guys
-
-    and one of the people on the project said oh if the Mac 2ci is what you have
-
-    then you should run that BSD so the 2ci that's that's pretty that's pretty
-
-    ancient that's so you dated yourself there I didn't even realize that I mean
-
-    pre i386 that you know pre Intel processors sure that
-
-    you could run unix on an old Apple that far so I mean that the support goes back
-
-    that far it does net BSD runs on old 68k Macintoshes Amiga's with the similar
-
-    chipset weird old machines I don't even know what they are a limited run set of
-
-    machines called the shark that had I think an arm based processor but not like
-
-    the ones we have in our phone yeah yeah and that was famous for being silent and
-
-    having no fan it's also famous for having almost no performance but that
-
-    BSD runs on it pretty much anything with an MMU is enough and somebody will report
-
-    to it if they have an interest and by the same token that BSD has a reputation
-
-    for prioritizing compatibility with old machines even when it's impractical and
-
-    gets in the way and there is a maintenance cost to people who are doing
-
-    kernel and system development to having to deal with these older systems but
-
-    it's not exorbitant and nobody should be worried about that
-
-    we should come away with the impression that we don't also run really well on
-
-    modern hardware we do so if somebody's looking to they they're running you know
-
-    they got a Mac and they want to get into maybe learning some of that this
-
-    heritage of the Mac and want to run on the PC I'm presuming I could run a VM
-
-    with an FBSD because if it runs anywhere I'm sure it runs at a VM and where would
-
-    I start
-
-    to look for that?
-- speaker: S1
-  text: |-
-    Just before I get into the actual answer to your question on the VM front
-
-    NetBSD was part of the early development of the XEN system, NetBSD was
-
-    one of the early host systems and one of the early guest systems and has
-
-    excellent support for XEN both as a DOM 0 and a DOM U. In terms of how somebody
-
-    could could spin up a machine or a virtual machine it's a free download
-
-    naturally there's there's ISOs there's tarballs however you want to do it there
-
-    are systems that you can get a free download of. There's a free shell account on to play around with and another way to start that
-
-    for me is is what I would probably do first is get to know package source and you can
-
-    do that with whatever computer you already have.
-- speaker: M1
-  text: So I could use package source on my Mac?
-- speaker: S1
-  text: |-
-    You can. I was one of the people involved in porting package source to OS X back in 2001/2002. It was one of the first platforms that wasn't NetBSD that we ported package source to. And so for me personally when OS X came out you asked earlier about how there's NetBSD
-
-    I used to have to have two different computers I would have my Mac that would
-
-    crash at the slightest provocation and would let me at least SSH into my Mac 2
-
-    CI and then NetBSD over there that was slow but at least would work right. And when they came out with OS X it wasn't immediately a happy marriage but
-
-    I could see that there's a there's a possible future here where I only need
-
-    one computer and so for me that's the real the real win is that there's a
-
-    there's enough units in OS X and package source bridges the gap with whatever Apple
-
-    puts an old version or leaves out package source lets you catch up to the exact same
-
-    versions of things that I would have on my NetBSD system. So you know not to be intentionally controversial but do you recommend people maybe really take
-
-    a look at package source that are using homebrew and maybe reconsider homebrew or? Well I'm speaking from ignorance because I haven't used homebrew more than a time. I have a good clone of it just so I can see if they have a recipe that I want to
-
-    borrow something from because you know they they're focused on OS X so they
-
-    may have something that package source doesn't have yet and wants to have but
-
-    I've actually run it I have used Mac ports once or twice a long time ago I
-
-    tried Fink I have checkouts of them as well for the same reason but I actually
-
-    don't know enough about other systems because I've been so happy with package
-
-    source for so long because I can do the same thing and all the machines that I
-
-    have so I couldn't even make an informed opinion about that. So actually a question about package source because I alluded to is it also a little bit
-
-    like Chef it sounds like you can also script a system to build?
-- speaker: M1
-  text: |-
-    You can so there's a there's a concept of bulk builds which obviously we do in the general
-
-    complete case on auto build systems to see what's broken and what we've changed and to
-
-    generate binary packages but a person can also drive their own private bulk build in
-
-    whole or in part if they have a specific set of packages they want and wind up at the end
-
-    binaries they can just sub in for the ones that they have so yes so and so if I
-
-    wanted to say oh I have a brand new install of a NetBase VSD server or maybe
-
-    even a Linux server and I want to just say go and put all the you know put in
-
-    MySQL put in Postgres whatever I can use one of those bulk build scripts to
-
-    just go off and build my system and then use that to reproduce across different
-
-    servers exactly that that also includes things like
-
-    compile-time options like if you you have MySQL and you want to build PHP
-
-    with support for it or you want you know you're you're setting up dovecott and
-
-    postfix for your mail server and you want them to be able to store a gray
-
-    listing database in MySQL or in Postgres it's a compile-time option you
-
-    define that in a configuration file and the package build finds it so the bulk
-
-    build also finds it and what you wind up with at the end includes the choices
-
-    that you made and with doing things like like
-
-    if I script to build for a new server I'll have something that goes and goes
-
-    and fetches the dependencies builds the the piece and then a separate or builds
-
-    the thing and then maybe a separate shell script that I call after to maybe
-
-    do some post install configuration can you hook into any of that stuff with
-
-    package I'm sure you can in fact I went to package source con in Berlin in March
-
-    and one of the best talks I saw there was about Ansible which is one of those okay
-
-    promote system and driving systems and this is a person who's been a package
-
-    source developer I'm sure I know Ansible is a system of shell scripts so you can
-
-    easily hook in a call to package add and God knows what else I imagine chef and
-
-    puppet and those guys could do the same well it's very interesting because when
-
-    you mentioned Ansible Ansible is one of those things that I've seen on the
-
-    periphery but never was like oh that's just something that somebody's out there
-
-    but then when you talk about this shared heritage now that it has this relationship with package
-
-    source it's now much more compelling for me to go and spend time it's not an official
-
-    relationship but it seems like it's a natural fit okay so Ansible is a thing to
-
-    check out if you're also looking at package source um if if so now I just I
-
-    just messed myself up now because I lost my flow because I took a took that aside
-
-    to point at the camera um so you're here at SCNA and you're interested in in the craftsmanship
-
-    uh conversation and you said that it seems like a natural fit for what the core of NetBSD is but
-
-    if somebody's here at SCNA and they're they're they're looking at how I can contribute back to
-
-    open source um is is is the NetBSD something you might point them at saying go go look at bugs or
-
-    where would they go look to you I would absolutely recommend that BSD I think it represents uh if if
-
-    what people here are interested in is operating system development NetBSD presents a unique value
-
-    proposition compared to any other open source system they could volunteer for specifically
-
-    first of all as a craftsman you want to have whatever you're building on to have been made
-
-    in a craftsman-like manner which I think one of our speakers yesterday uh alluded to that you you
-
-    want the tool that you were given to be made with quality and then you want to use it to pay it
-
-    forward to build something else with color
-
-    NetBSD for whatever you might want to build on top of it uh is a very simply designed coherent
-
-    no funny surprises piece of software which for an operating system is a serious achievement right
-
-    and then as a craftsman in the world of business you want to have the option to extend software
-
-    without necessarily having to publish the changes that you make and that BSD license-wise like any
-
-    of the BSDs is superior to Linux in that regard you have the option of making changes that you can
-
-    keep private for as long as you want to um what's the BSD license the BSD license as long as you give
-
-    attribution do as you wish and on top of that what NetBSD does that differentiates it from the other
-
-    BSDs is that by default every build is a cross build the the tool chain that builds the system
-
-    first bootstraps a tool chain from whatever your host system is to whatever the target system you
-
-    want to build for is and obviously for NetBSD we built that because we needed it we have so many
-
-    target systems right but
-
-    it means that you can use whatever your fastest computer is to develop for whatever system you're
-
-    targeting even if it's an embedded device that's a totally different architecture and that's baked
-
-    into how the system gets built all the time by everybody of course it's auto built like everybody
-
-    does nowadays and the other thing that's very unique about NetBSD is that appeals to craftsmen
-
-    here is the culture of testing that normally you can't do in a kernel but NetBSD has some very
-
-    special technology in the kernel
-
-    specifically it's it's as a group it's called any kernel the idea is you should be able to take any
-
-    component of the kernel and target it either for direct linking into a monolithic kernel like we're
-
-    all familiar with or compiling it into a thin layer on top of some other system or into a
-
-    standalone program that has all the source code in it so the canonical example for that is say
-
-    somebody gives you a USB key and you don't totally trust them you don't totally know what
-
-    it is if you attach that to your computer it's going to run the kernel file system code to mount
-
-    and read from and if there's you know an attack in the format of the file system that's going to
-
-    bite you so what if you could take that file system code and put it in a user land program
-
-    that didn't run with privileges and you know if there's a bug it's egg faults and your computer
-
-    keeps running so this is one of the applications of the technology the reason it applies to
-
-    craftsmen is that it means you can write automated tests for kernel code that when they break
-
-    doesn't mean your system crashed it just means your process crashed and your test harness can
-
-    keep running and it can record the failure you can get fast feedback and you can go again so
-
-    so it's not only security it's also testability and it sounds like it's a recognition that those
-
-    two go hand in hand a lot of these somebody also said yesterday that these design principles sort
-
-    of go hand in hand you get I think it was uh uh Halloway when you design for simplicity the power
-
-    kind of falls out
-
-    so when you design for the orthogonality of taking the same piece of kernel code and being able to
-
-    build it for any of these target environments all of a sudden you have all these options of how to exercise it yeah well uh thank you very much for taking the time to sit down here really
-
-    appreciate it and uh thank you and then net BSD Foundation is something you should check out what
-
-    was the uh URL www. netbsd. org netbsd. org thank you very much thank you user groups with lots to say
-
-    and more no way sharing great ideas in the tech Community fascinating conversations a
-
-    plethora of information find out for yourself today at UGtastic
+content: |-
+  user groups with lots to say interviews and more no way sharing great ideas in
+   the tech community fascinating conversations a plethora of information
+   find out for yourself today at uktastic.com
+   hi it's Mike with uktastic again I'm here today at day two of SCNA 2013 right
+   now I'm sitting down with Amitai Schleyer who sits on the TNF and as you
+   might know the TNF is the net BSD the board of the I can't even say myself but
+   it's a board of the net BSD organization or a foundation TNF I said that
+   beautifully so anyway hi hi Amitai thank you very much for taking the time to sit
+   down with me appreciate it so the net BSD foundation that's that sounds very
+   important what what is the net BSD foundation it's a 501c3 nonprofit and
+   it's basically if you're familiar with the free BSD foundation
+   or I'm sure open BSD has something like it we officially accept donations that
+   are intended to fund development in the BSD and to some extent we determine the
+   project direction the the structure of the organization because it is an
+   organization even though we're all volunteers and the disbursement of funds
+   where we see that it helps development along so the net BSD that that's that's
+   like the Berkeley San Diego Unix that's the
+   foundation for the I-386 in that BSD's case it turns out to be a lot more than that okay BSD stands for Berkeley software distribution or Berkeley software development depending on when in the 90s you're looking at the
+   expansion of the acronym and net BSD was one of the two projects that kind of
+   forked out of the the death of the original Berkeley okay the Regents of
+   the University of California sometime in the early 90s stopped being able to fund
+   the development that was happening in Berkeley
+   which had been to begin with a set of patches on top of AT&T's units but
+   eventually became its own distribution and one of the hallmarks of BSD Unix
+   other than actually being able to be used by humans to some extent was that it
+   deliberately targeted portability it was deliberately built and distributed from
+   multiple hardware architectures and that thereby forced to be designed to be able
+   to work on multiple hardware architectures and
+   NetBSD and FreeBSD are the two major projects that forked around that time
+   out of the remains of BSD and FreeBSD chose what seems like a prescient
+   direction at the time that they should focus on commodity hardware because
+   mostly that's what people have and if you eke out every last bit of
+   performance on a 90 megahertz Pentium you'll be glad you did yeah and NetBSD
+   chose that aspect of tradition from Berkeley that let's let's turn up the
+   knobs to 11 on portability let's stick with that tradition let's make sure we're
+   even more portable let's find more ways to share driver code abstractions that
+   let the drivers be shared abstract the way Andean-ness and other differences
+   between platforms and just make let that drive the design which is actually why
+   I'm here talking to you today because when I hear about craftsmanship and
+   this conference the Unix that I think goes best with that is NetBSD I think
+   craftsmen who use Unix and appreciate Unix and appreciate craftsmanship should
+   be very interested in that business well I think there's a lot of people here
+   that don't realize that they're very interested in NetBSD and didn't we we
+   kind of tease each other about that Apple logo but if I if I'm not mistaken
+   NetBSD is the kernel the Darwin kernel is based off of NetBSD or it's
+   a complicated story naturally the kernel in OS 10 is kind of a hybrid a lot of
+   its history comes from mock which was developed at Carnegie Mellon mark as the
+   MACH MACH good kind of like the word Mac but totally coincidental it also turns
+   out that one of the primary developers of mock wound up being an executive at
+   Apple later for business merger related reasons but the kernel is mocked and
+   there is some some more to it than that that's actually not my primary area of
+   work but where NetBSD got involved with OS 10 is that in an early version of OS
+   10 I think up through 10 2 or 10 3 most of the user land utilities were from
+   NetBSD early so if you for instance if you're running user bin FTP it's the one
+   that that was developed in FBSD and enhanced by Luke Mewburn and distributed
+   as a an autoconft buildable piece of source
+   and a lot of the utilities in OS 10 were like that somewhere after 10 2 or 10 3
+   it became more of a FreeBSD influence because one of the developers from one
+   of the founders of FreeBSD Jordan Hubbard was the director of Unix
+   technologies or something like that at Apple and so they kind of moved in a
+   FreeBSD direction for user land but the the kernel is actually a different
+   story and I don't know it very well okay so you know how did you come to be
+   involved with the you said that the kernel really isn't where you're spending your time
+   where where does Amitai or Schmanz his nickname the where Schmanz spent his time
+   what is your focus and what do you do with the the foundation as part of the
+   board I'm relatively new I was elected some months ago and just began serving
+   the roles that I had before that were two basically one that I kind of self
+   nominated myself for like you do in a volunteer project whoever does the work
+   becomes in charge and another that I was selected for a while ago the other one
+   the one that I selected for is there's a project management committee for package
+   source which is closely related to NetBSD in terms of history and
+   organization but isn't an operating system project NetBSD is an operating
+   system project package source is a package manager and it's distinguishing characteristics that
+   are very compelling to me and I think possibly to the people in this audience
+   are that it is cross-platform so any kind of unix-y system you have even if
+   it's Windows with services for unix or sigwin on it or whether you have root or not it is
+   still a system you can use the same way across all of the heterogeneous unix-y
+   machines that you have and so if you're a sysadmin which at times all of us are it allows you to
+   get the tools that you need or the services that you need installed in the
+   same way on all the machines you deal with regardless of what they are where
+   they came from so in that respect it sounds like it's a little bit of chef
+   and a little bit of homebrew or more apt there's a more like is it more like
+   apt or is it more like a homebrew kind of thing when you're saying that it goes
+   and it can work on any unix-y based system
+   does it go and grab source and compile them locally exactly so it's homebrew is
+   like some of what package source does okay homebrew is a I believe the source
+   based builder of packages that works on OS X and that's it package source is a
+   source based package manager it also generates binary packages which you can
+   then reuse and distribute but it's designed to be used with source and so
+   when you when you go and get your package source tree and say well today I
+   want Ruby 1.9.3 installed on whatever the heck this system is right CD package
+   source laying Ruby 1.9.3 make install and what happens when you do that is
+   that the the source code for Ruby is fetched its checksum is verified it's
+   extracted if it has dependencies that have to be built and installed in the
+   same way before it can be built they're installed one of the special things
+   package source does is to make sure that the build environment on user machine is
+   identical to that on a
+   dev machine so the package will be reproducibly buildable and then at the
+   end of it you have you know a custom built with the parameters that you
+   control but the defaults are pretty good Ruby that's in a section of your machine
+   that's only for packages from package source you put it in your path and it
+   does what you want so does it also like resolve dependencies and things like
+   that it does it goes all the way down oh really
+   so yeah cuz I when you're talking about Ruby I think well we do have a variety of
+   packages Ruby management tools RVM which I was actually just this morning
+   tweeting up that they need support but um you know how do you exist in that are
+   you replacements from that or do you that's an excellent question I'm not a
+   Rubyist I I'm familiar with kind of an
+   equivalent problem with pearl that if you want to have different versions of
+   pearl with different you know what would be gems in the pro world installed you want to be able to
+   get those set up and switch between them and know which one you're currently
+   working with pearl has ways of doing that package source is kind of
+   orthogonal but can be used for that specifically what I mean is that you can
+   you can take one package source source tree and bootstrap the package source
+   tools and an entire set of packages as long as it's in a different location
+   it's totally independent and the parameters can be different and the
+   values can be different so I've used that in the past to
+   to get one set of packages look like this another set of packages in a
+   slightly different place look like that and you can move a sim link or do some
+   other trick right so so how did you you said you kind of volunteered for the
+   work and you just came to own it how how did that come to be how did you end up
+   even getting into position to volunteer so that one that one is a different
+   piece of work NetBSD's website unfortunately I don't
+   think sings the virtues of the operating system in the
+   package manager as well as it should the virtues are terrific the website is not
+   so so I took a hard look a few years ago at why are we having this problem and
+   some people think it's because developers don't like to write
+   documentation I don't believe that's true especially among craftsmen which
+   most of the NetBSD developers would agree that they are I think the problem
+   is one of tools that we built ourselves that get in the way that were built a
+   while ago based on old ideas I think what all of us would agree now is a reason
+   of the way to do web content in this day and age is something more like a wiki
+   with a simple input format simple output format ideally you can edit it with VI
+   or Emacs in addition to a browser so I found a piece of software that was close
+   to what we needed we had a bunch of tight requirements to be able to run the
+   software I'm also a member of the sysadmin for the NetBSD project so I knew
+   enough about the web problem I knew enough about what the administrators would be
+   happy integrating and I knew enough about this piece of software that would bridge
+   the gap and then I needed to make it bridge the gap which is why I'm also a
+   contributor to wiki wiki which is an open source written in pearl content
+   management system so I extended wiki wiki so that it met NetBSD's
+   requirements we stood up an example of it the admins liked it some users liked
+   that we now have wiki.netbsd.org and someday when I have time that will be
+   how our website is made okay so I just kind of volunteered for that and now I'm
+   on the web committee even though I didn't really mean for that to happen
+   yeah but it's an okay way yeah that it sounds like it's a lot of fun and but you
+   know even going back further why NetBSD what was what attracted you to NetBSD to
+   begin with great question so I went to high school about 20-25 miles north of
+   the road from here and in high school the available nerd tooling that I could
+   get at was Texas Instruments Graphic Calculators at the time
+   that's all the programmability that I could get to it so I got to it I had one
+   of everything I had 81 82 85 and 92 which was two megahertz faster than the
+   CPU in the Mac plus we had at home oh wow so it's just like today when you have
+   that that little iPhone and a three-year-old computer it's like no
+   they're shameful yeah but so that's what I had and and I got into the community
+   around it and was invited to participate in a community project that we were
+   we were building called ti calc.org ti themselves wasn't real forthcoming
+   supporting all the third-party things that were happening so we wanted to be
+   for ourselves and I was invited to be part of that and they were running on
+   some weird system called Linux one point something I don't know the first thing
+   about it right so I said how can I even be useful to you guys if what I have is
+   you know an old Macintosh Mac 2ci at the time
+   how can I even learn how this stuff works so that eventually I can be useful to you guys
+   and one of the people on the project said oh if the Mac 2ci is what you have
+   then you should run that BSD so the 2ci that's that's pretty that's pretty
+   ancient that's so you dated yourself there I didn't even realize that I mean
+   pre i386 that you know pre Intel processors sure that
+   you could run unix on an old Apple that far so I mean that the support goes back
+   that far it does net BSD runs on old 68k Macintoshes Amiga's with the similar
+   chipset weird old machines I don't even know what they are a limited run set of
+   machines called the shark that had I think an arm based processor but not like
+   the ones we have in our phone yeah yeah and that was famous for being silent and
+   having no fan it's also famous for having almost no performance but that
+   BSD runs on it pretty much anything with an MMU is enough and somebody will report
+   to it if they have an interest and by the same token that BSD has a reputation
+   for prioritizing compatibility with old machines even when it's impractical and
+   gets in the way and there is a maintenance cost to people who are doing
+   kernel and system development to having to deal with these older systems but
+   it's not exorbitant and nobody should be worried about that
+   we should come away with the impression that we don't also run really well on
+   modern hardware we do so if somebody's looking to they they're running you know
+   they got a Mac and they want to get into maybe learning some of that this
+   heritage of the Mac and want to run on the PC I'm presuming I could run a VM
+   with an FBSD because if it runs anywhere I'm sure it runs at a VM and where would
+   I start
+   to look for that?
+   Just before I get into the actual answer to your question on the VM front
+   NetBSD was part of the early development of the XEN system, NetBSD was
+   one of the early host systems and one of the early guest systems and has
+   excellent support for XEN both as a DOM 0 and a DOM U. In terms of how somebody
+   could could spin up a machine or a virtual machine it's a free download
+   naturally there's there's ISOs there's tarballs however you want to do it there
+   are systems that you can get a free download of.
+   There's a free shell account on to play around with and another way to start that
+   for me is is what I would probably do first is get to know package source and you can
+   do that with whatever computer you already have.
+   So I could use package source on my Mac?
+   You can.
+   I was one of the people involved in porting package source to OS X back in 2001/2002.
+   It was one of the first platforms that wasn't NetBSD that we ported package source to.
+   And so for me personally when OS X came out you asked earlier about how there's NetBSD
+   I used to have to have two different computers I would have my Mac that would
+   crash at the slightest provocation and would let me at least SSH into my Mac 2
+   CI and then NetBSD over there that was slow but at least would work right.
+   And when they came out with OS X it wasn't immediately a happy marriage but
+   I could see that there's a there's a possible future here where I only need
+   one computer and so for me that's the real the real win is that there's a
+   there's enough units in OS X and package source bridges the gap with whatever Apple
+   puts an old version or leaves out package source lets you catch up to the exact same
+   versions of things that I would have on my NetBSD system.
+   So you know not to be intentionally controversial but do you recommend people maybe really take
+   a look at package source that are using homebrew and maybe reconsider homebrew or?
+   Well I'm speaking from ignorance because I haven't used homebrew more than a time.
+   I have a good clone of it just so I can see if they have a recipe that I want to
+   borrow something from because you know they they're focused on OS X so they
+   may have something that package source doesn't have yet and wants to have but
+   I've actually run it I have used Mac ports once or twice a long time ago I
+   tried Fink I have checkouts of them as well for the same reason but I actually
+   don't know enough about other systems because I've been so happy with package
+   source for so long because I can do the same thing and all the machines that I
+   have so I couldn't even make an informed opinion about that.
+   So actually a question about package source because I alluded to is it also a little bit
+   like Chef it sounds like you can also script a system to build?
+   You can so there's a there's a concept of bulk builds which obviously we do in the general
+   complete case on auto build systems to see what's broken and what we've changed and to
+   generate binary packages but a person can also drive their own private bulk build in
+   whole or in part if they have a specific set of packages they want and wind up at the end
+   binaries they can just sub in for the ones that they have so yes so and so if I
+   wanted to say oh I have a brand new install of a NetBase VSD server or maybe
+   even a Linux server and I want to just say go and put all the you know put in
+   MySQL put in Postgres whatever I can use one of those bulk build scripts to
+   just go off and build my system and then use that to reproduce across different
+   servers exactly that that also includes things like
+   compile-time options like if you you have MySQL and you want to build PHP
+   with support for it or you want you know you're you're setting up dovecott and
+   postfix for your mail server and you want them to be able to store a gray
+   listing database in MySQL or in Postgres it's a compile-time option you
+   define that in a configuration file and the package build finds it so the bulk
+   build also finds it and what you wind up with at the end includes the choices
+   that you made and with doing things like like
+   if I script to build for a new server I'll have something that goes and goes
+   and fetches the dependencies builds the the piece and then a separate or builds
+   the thing and then maybe a separate shell script that I call after to maybe
+   do some post install configuration can you hook into any of that stuff with
+   package I'm sure you can in fact I went to package source con in Berlin in March
+   and one of the best talks I saw there was about Ansible which is one of those okay
+   promote system and driving systems and this is a person who's been a package
+   source developer I'm sure I know Ansible is a system of shell scripts so you can
+   easily hook in a call to package add and God knows what else I imagine chef and
+   puppet and those guys could do the same well it's very interesting because when
+   you mentioned Ansible Ansible is one of those things that I've seen on the
+   periphery but never was like oh that's just something that somebody's out there
+   but then when you talk about this shared heritage now that it has this relationship with package
+   source it's now much more compelling for me to go and spend time it's not an official
+   relationship but it seems like it's a natural fit okay so Ansible is a thing to
+   check out if you're also looking at package source um if if so now I just I
+   just messed myself up now because I lost my flow because I took a took that aside
+   to point at the camera um so you're here at SCNA and you're interested in in the craftsmanship
+   uh conversation and you said that it seems like a natural fit for what the core of NetBSD is but
+   if somebody's here at SCNA and they're they're they're looking at how I can contribute back to
+   open source um is is is the NetBSD something you might point them at saying go go look at bugs or
+   where would they go look to you I would absolutely recommend that BSD I think it represents uh if if
+   what people here are interested in is operating system development NetBSD presents a unique value
+   proposition compared to any other open source system they could volunteer for specifically
+   first of all as a craftsman you want to have whatever you're building on to have been made
+   in a craftsman-like manner which I think one of our speakers yesterday uh alluded to that you you
+   want the tool that you were given to be made with quality and then you want to use it to pay it
+   forward to build something else with color
+   NetBSD for whatever you might want to build on top of it uh is a very simply designed coherent
+   no funny surprises piece of software which for an operating system is a serious achievement right
+   and then as a craftsman in the world of business you want to have the option to extend software
+   without necessarily having to publish the changes that you make and that BSD license-wise like any
+   of the BSDs is superior to Linux in that regard you have the option of making changes that you can
+   keep private for as long as you want to um what's the BSD license the BSD license as long as you give
+   attribution do as you wish and on top of that what NetBSD does that differentiates it from the other
+   BSDs is that by default every build is a cross build the the tool chain that builds the system
+   first bootstraps a tool chain from whatever your host system is to whatever the target system you
+   want to build for is and obviously for NetBSD we built that because we needed it we have so many
+   target systems right but
+   it means that you can use whatever your fastest computer is to develop for whatever system you're
+   targeting even if it's an embedded device that's a totally different architecture and that's baked
+   into how the system gets built all the time by everybody of course it's auto built like everybody
+   does nowadays and the other thing that's very unique about NetBSD is that appeals to craftsmen
+   here is the culture of testing that normally you can't do in a kernel but NetBSD has some very
+   special technology in the kernel
+   specifically it's it's as a group it's called any kernel the idea is you should be able to take any
+   component of the kernel and target it either for direct linking into a monolithic kernel like we're
+   all familiar with or compiling it into a thin layer on top of some other system or into a
+   standalone program that has all the source code in it so the canonical example for that is say
+   somebody gives you a USB key and you don't totally trust them you don't totally know what
+   it is if you attach that to your computer it's going to run the kernel file system code to mount
+   and read from and if there's you know an attack in the format of the file system that's going to
+   bite you so what if you could take that file system code and put it in a user land program
+   that didn't run with privileges and you know if there's a bug it's egg faults and your computer
+   keeps running so this is one of the applications of the technology the reason it applies to
+   craftsmen is that it means you can write automated tests for kernel code that when they break
+   doesn't mean your system crashed it just means your process crashed and your test harness can
+   keep running and it can record the failure you can get fast feedback and you can go again so
+   so it's not only security it's also testability and it sounds like it's a recognition that those
+   two go hand in hand a lot of these somebody also said yesterday that these design principles sort
+   of go hand in hand you get I think it was uh uh Halloway when you design for simplicity the power
+   kind of falls out
+   so when you design for the orthogonality of taking the same piece of kernel code and being able to
+   build it for any of these target environments all of a sudden you have all these options of
+   how to exercise it yeah well uh thank you very much for taking the time to sit down here really
+   appreciate it and uh thank you and then net BSD Foundation is something you should check out what
+   was the uh URL www.netbsd.org netbsd.org thank you very much thank you user groups with lots to say
+   and more no way sharing great ideas in the tech Community fascinating conversations a
+   plethora of information find out for yourself today at uktastic.com
