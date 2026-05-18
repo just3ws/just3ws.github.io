@@ -1,979 +1,342 @@
 ---
-content: |-
-  user groups with lots to say interviews and more no way sharing great ideas in
-
-   the tech community fascinating conversations a plethora of information
-
-   find out for yourself today at uke-tastic.com
-
-   Hi it's Mike with uke-tastic again. I'm sitting
-
-   down with Michael Ficarra. Michael has been very active in the CoffeeScript
-
-   community even so much so that you've been taking a crack at doing
-
-   a rewrite of the CoffeeScript compiler and he's done fundraising through
-
-   Kickstarter to to help support that. Thank you very much for taking the time
-
-   to sit down. So I'm going to ask you a question you've probably never heard before.
-
-   Why CoffeeScript? Why use it or why am I into it? Why are you into it?
-
-   How did you come to it? I've been in the community for as long as I can remember
-
-   but I'm interested in CoffeeScript because it provides a small but still
-
-   significant advantage over JavaScript yeah without any setbacks really it
-
-   provides a syntax for you to use that that is that better describes what your
-
-   your intent your the intent of your program. Did you come to CoffeeScript
-
-   through like development or were you just reading like hey this is kind of
-
-   cool this is some of the JavaScript like were you doing a project with it or
-
-   something? I don't know. You don't remember? I don't I don't remember getting into it. I'm sorry I've been asked that
-
-   before. You saw it and you were just in love with it. I know it's around like summertime a few
-
-   years ago. Okay well so I mean to go from adopting CoffeeScript to saying hey I'm going to rewrite the compiler that's a big jump and
-
-   what what kind of what's it at? So yeah it was a few years of working on it
-
-   really that was I got into it I the CoffeeScript was very new around there just like six
-
-   months old when I when I found it and my first contribution was well one of my
-
-   first contributions was a complete rewrite of the test suite because the
-
-   test suite was just a very very simple and it's not organized
-
-   and it was not done very well looking for magic numbers all over the place and
-
-   yeah just not clean not maintainable so just made a little micro framework for
-
-   them to use and rewrote all the testing and obviously added about double the test
-
-   suite at the time and it's still the same test suite we're using today.
-
-   That's really interesting you mention that because I interviewed Charles Nutter
-
-   and he kind of described a kind of a similar path into JLS
-
-   Ruby and that's seeing the project and contributing to it making it better
-
-   doing those so it kind of goes into the theme of participating in the community by coming in
-
-   and helping. Doing those things that are messy and people kind of won't leave behind but it's not
-
-   like you want to wade past that. Yeah one thing leads to another and working on it
-
-   all the time and answering issues discussing just language design how
-
-   we're going to move forward what features will and will not be part of language and
-
-   how are we going to represent it in an active way. All sorts of contributions and I've been a
-
-   maintainer Jeremy gave me access for that since pretty early on
-
-   because I was just so active so get out there contribute to open source projects and
-
-   your help will be appreciated. Well it sounds like you're also like a really
-
-   early adopter it's still in an adoption like I we've had conversations I'm quite so
-
-   excited about this project and I think it's going to take a lot of work to get
-
-   it out there and I think it's going to take a lot of work to get it out there
-
-   and I think it's going to take a lot of work to get it out there but I think it's
-
-   going to take a lot of work to get it out there but I think it's going to take a lot
-
-   of work to get it out there but I think it's going to take a lot of work to get it out there
-
-   and I think it's going to take a lot of work to get it out there and I think it's
-
-   going to take a lot of work to get it out there and I think it's going to take a lot
-
-   of work to get it out there and I think it's going to take a lot of work to get it out
-
-   there and I think it's going to take a lot of work to get it out there and I think it's
-
-   going to take a lot of work to get it out there and I think it's going to take a lot
-
-   Interesting. Yeah. Okay. So you've studied academically and in depth the concepts that underpin language design and creation. So when you were looking at CoffeeScript, was there anything that jumped out at you?
-
-   Like, wow, this is complete--was it something that was pure and because, wow, that was really good? Or was it something like, oh, there's potential, but it's a real diamond in the rough?
-
-   Well, you know, one of the big draws is that it's built on JavaScript semantics, you know. By default, you can mostly assume JavaScript semantics for your CoffeeScript book.
-
-   And JavaScript has really, really nice, beautiful parts to it. It has some ugly things, like width and eval.
-
-   But--
-
-   But it has these beautiful parts, like closures and, you know, um, sorry.
-
-   Oh, of course, first class functions.
-
-   Yes, semicolons, parentheses.
-
-   So, yeah, it has those semicolons because everybody loves it.
-
-   Yeah. Well, okay, so with the--you were attracted to its underpinnings.
-
-   be very flexible and something you run in a lot of different places so you build up on dice or
-
-   language and kind of like going out of jvm where it's a lot of that infrastructure and the hard
-
-   part of getting that runtime out in a lot of places is already that battle's already been won
-
-   yeah yeah i mean so i was thinking of the prototype system i couldn't think of the word uh
-
-   yes so so yeah we share the semantic so member access walks prototype change just like it does
-
-   in javascript and that's actually a nice feature that we want so we just take that we just read
-
-   the benefits by compiling yeah okay so you you were attracted to working with with uh coffee
-
-   scripts and you're bringing some of uh of a more rigorous approach because of your training to the
-
-   design bit what ultimately led you the idea that you wanted to work with coffee scripts and you're
-
-   bringing some of a more rigorous approach because of your training to the design bit what ultimately
-
-   led you the idea that you wanted to work with coffee scripts and you're bringing some of a more rigorous
-
-   approach because of your training to the design bit what ultimately led you the idea that you wanted
-
-   to work with coffee scripts and you're bringing some of a more rigorous approach because of your training
-
-   to the design bit what ultimately led you the idea that you wanted to work with coffee scripts
-
-   the idea that you wanted to work with coffee scripts the idea of a rewrite because as you're kind of
-
-   the idea that you wanted to work with coffee scripts the idea of a rewrite because as you're kind of
-
-   the idea that you wanted to work with coffee scripts the idea of a rewrite because as you're kind of joking for it isn't there already a
-
-   the idea of a rewrite because as you're kind of joking for it isn't there already a
-
-   the idea of a rewrite because as you're kind of joking for it isn't there already a coffee strip compiler
-
-   joking for it isn't there already a coffee strip compiler
-
-   joking for it isn't there already a coffee strip compiler yeah uh so the compiler has
-
-   yeah uh so the compiler has
-
-   yeah uh so the compiler has uh
-
-   yeah uh so the compiler has uh some failings i guess we call them
-
-   some failings i guess we call them
-
-   some failings i guess we call them the uh there's some features that people
-
-   the uh there's some features that people want uh like source maps
-
-   want uh like source maps
-
-   want uh like source maps it's a good example um
-
-   it's a good example um
-
-   it's a good example um which maps your compiled dot script back
-
-   which maps your compiled dot script back
-
-   which maps your compiled dot script back to the original coffee script so you can
-
-   to the original coffee script so you can
-
-   to the original coffee script so you can do debugging in whatever your jobs will
-
-   do debugging in whatever your jobs will
-
-   do debugging in whatever your jobs will do on your webinars
-
-   do on your webinars
-
-   do on your webinars as if you're developing a public script
-
-   as if you're developing a public script
-
-   as if you're developing a public script and those would be really hard uh with
-
-   and those would be really hard uh with
-
-   and those would be really hard uh with the architecture of the compiler
-
-   the architecture of the compiler
-
-   the architecture of the compiler the original compiler was jeremy's first
-
-   the original compiler was jeremy's first
-
-   the original compiler was jeremy's first first try at making a compiler it was
-
-   first try at making a compiler it was
-
-   first try at making a compiler it was very rough and
-
-   very rough and
-
-   very rough and not trying to
-
-   not trying to
-
-   not trying to take a dig at it or anything but but it
-
-   take a dig at it or anything but but it
-
-   take a dig at it or anything but but it wasn't it didn't use a
-
-   wasn't it didn't use a
-
-   wasn't it didn't use a model that allowed to allow for us to
-
-   model that allowed to allow for us to
-
-   model that allowed to allow for us to preserve
-
-   preserve
-
-   preserve that source position information through
-
-   that source position information through
-
-   that source position information through the compilation process
-
-   so
-
-   so
-
-   so there are some basic uh failings in
-
-   there are some basic uh failings in
-
-   there are some basic uh failings in just the overall design of the compiler
-
-   just the overall design of the compiler
-
-   just the overall design of the compiler that wouldn't allow us to do a lot of a
-
-   that wouldn't allow us to do a lot of a
-
-   that wouldn't allow us to do a lot of a lot of things and of course there were
-
-   lot of things and of course there were
-
-   lot of things and of course there were you know 300 or so open bugs
-
-   you know 300 or so open bugs
-
-   you know 300 or so open bugs a lot of it with like
-
-   a lot of it with like
-
-   a lot of it with like inconsistent parsing the syntax and
-
-   inconsistent parsing the syntax and
-
-   inconsistent parsing the syntax and um
-
-   um
-
-   um you know i just wanted to
-
-   you know i just wanted to
-
-   you know i just wanted to encapsulate fixing all of these things
-
-   encapsulate fixing all of these things
-
-   encapsulate fixing all of these things to improve integration with existing
-
-   to improve integration with existing
-
-   to improve integration with existing tooling
-
-   tooling
-
-   tooling clean up some syntactical
-
-   clean up some syntactical
-
-   clean up some syntactical inconsistencies
-
-   inconsistencies
-
-   inconsistencies and just also a lot of
-
-   and just also a lot of
-
-   and just also a lot of second second uh the second uh
-
-   second second uh the second uh
-
-   second second uh the second uh product improvements is you go through
-
-   product improvements is you go through
-
-   product improvements is you go through product one and it's okay we find out
-
-   product one and it's okay we find out
-
-   product one and it's okay we find out everything that
-
-   everything that
-
-   everything that wasn't so good and let's just fix all
-
-   wasn't so good and let's just fix all those
-
-   those
-
-   those those things so it's it's wrong too yeah
-
-   those things so it's it's wrong too yeah
-
-   those things so it's it's wrong too yeah it was like the first compiler say hey
-
-   it was like the first compiler say hey
-
-   it was like the first compiler say hey try to feel out how people like this and
-
-   try to feel out how people like this and
-
-   try to feel out how people like this and they really like now we can
-
-   they really like now we can
-
-   they really like now we can really do uh
-
-   really do uh
-
-   really do uh do it at this time so you you started
-
-   do it at this time so you you started
-
-   do it at this time so you you started this
-
-   this
-
-   this yeah obviously
-
-   yeah obviously
-
-   yeah obviously you know it's free software but it
-
-   you know it's free software but it
-
-   you know it's free software but it costs money to create it in time and
-
-   costs money to create it in time and
-
-   costs money to create it in time and effort so certainly cost a lot of time
-
-   effort so certainly cost a lot of time
-
-   effort so certainly cost a lot of time yeah
-
-   yeah
-
-   yeah uh she you started this where did the
-
-   uh she you started this where did the
-
-   uh she you started this where did the idea for the kick shooter come
-
-   idea for the kick shooter come
-
-   idea for the kick shooter come uh i just uh
-
-   uh i just uh
-
-   uh i just uh you know i had heard the kickstarter was
-
-   you know i had heard the kickstarter was
-
-   you know i had heard the kickstarter was in the news a lot at the time and i
-
-   in the news a lot at the time and i
-
-   in the news a lot at the time and i guess it's so it's a big phenomenon but
-
-   guess it's so it's a big phenomenon but
-
-   guess it's so it's a big phenomenon but um yeah i heard people getting funded
-
-   um yeah i heard people getting funded
-
-   um yeah i heard people getting funded for it for similar projects and
-
-   for it for similar projects and
-
-   for it for similar projects and uh i i had had this idea for this
-
-   uh i i had had this idea for this
-
-   uh i i had had this idea for this rewrite in my head for a long time i
-
-   rewrite in my head for a long time i
-
-   rewrite in my head for a long time i also had uh you know ideas for it i had
-
-   also had uh you know ideas for it i had
-
-   also had uh you know ideas for it i had published this manifesto of things that
-
-   published this manifesto of things that
-
-   published this manifesto of things that would change about the language as well
-
-   would change about the language as well
-
-   would change about the language as well and
-
-   and
-
-   and an end goal of this compiler is that i
-
-   an end goal of this compiler is that i
-
-   an end goal of this compiler is that i would have a really good extensible
-
-   would have a really good extensible
-
-   would have a really good extensible thing to work off of to write a language
-
-   thing to work off of to write a language
-
-   thing to work off of to write a language that is similar to college script with
-
-   that is similar to college script with
-
-   that is similar to college script with the changes that i i would make i uh had
-
-   the changes that i i would make i uh had
-
-   the changes that i i would make i uh had full control of the college script yeah
-
-   full control of the college script yeah
-
-   full control of the college script yeah exactly so um
-
-   exactly so um
-
-   exactly so um you know
-
-   you know
-
-   you know i would love to get a
-
-   i would love to get a
-
-   i would love to get a compiler that is extensible and i can
-
-   compiler that is extensible and i can
-
-   compiler that is extensible and i can build off of
-
-   build off of
-
-   build off of and that this is my shortcut to to doing
-
-   and that this is my shortcut to to doing
-
-   and that this is my shortcut to to doing that okay
-
-   that okay
-
-   that okay so really it was just a big selfish
-
-   it's a scratch the edge it's and it benefits
-
-   it's a scratch the edge it's and it benefits
-
-   it's a scratch the edge it's and it benefits everybody yes um so you you launched
-
-   everybody yes um so you you launched
-
-   everybody yes um so you you launched the the um the
-
-   the the
-
-   the kickstarter and it succeeded your goals
-
-   kickstarter and it succeeded your goals
-
-   kickstarter and it succeeded your goals it looked like you were over a thousand
-
-   it looked like you were over a thousand
-
-   it looked like you were over a thousand dollars past yeah the original goal was
-
-   dollars past yeah the original goal was
-
-   dollars past yeah the original goal was i initially planned to do like a
-
-   i initially planned to do like a
-
-   i initially planned to do like a you know
-
-   you know
-
-   you know x dollars per month that i'll be able to
-
-   x dollars per month that i'll be able to
-
-   x dollars per month that i'll be able to work on it but then you know
-
-   work on it but then you know
-
-   work on it but then you know depending on how successful it was i
-
-   depending on how successful it was i
-
-   depending on how successful it was i didn't want to be indefinitely chained
-
-   didn't want to be indefinitely chained
-
-   didn't want to be indefinitely chained to the uh project so i i decided i would
-
-   to the uh project so i i decided i would
-
-   to the uh project so i i decided i would just fix it to a four-month period that
-
-   just fix it to a four-month period that
-
-   just fix it to a four-month period that i would contribute all my time to and i
-
-   i would contribute all my time to and i
-
-   i would contribute all my time to and i would just bust the thing out and
-
-   would just bust the thing out and
-
-   would just bust the thing out and that that period started in june and it
-
-   that that period started in june and it
-
-   that that period started in june and it ended september
-
-   ended september
-
-   ended september so so how did it go did it go well for
-
-   so so how did it go did it go well for
-
-   so so how did it go did it go well for you i think it's really successful yeah
-
-   you i think it's really successful yeah
-
-   you i think it's really successful yeah the project is you know really popular
-
-   the project is you know really popular it's being used by a lot of people it's
-
-   it's being used by a lot of people it's
-
-   it's being used by a lot of people it's being incorporated into uh popular ide
-
-   being incorporated into uh popular ide
-
-   being incorporated into uh popular ide and um you know it's it's seeing
-
-   and um you know it's it's seeing
-
-   and um you know it's it's seeing adoption it's still it needs a little
-
-   adoption it's still it needs a little
-
-   adoption it's still it needs a little work of course it needs a little
-
-   work of course it needs a little
-
-   work of course it needs a little polishing i didn't get to 100 of the
-
-   polishing i didn't get to 100 of the
-
-   polishing i didn't get to 100 of the things i wanted to get to in the
-
-   things i wanted to get to in the
-
-   things i wanted to get to in the kickstarter uh by the time the period
-
-   kickstarter uh by the time the period was over but uh at least like 95 of
-
-   was over but uh at least like 95 of
-
-   was over but uh at least like 95 of the things i wanted to do
-
-   the things i wanted to do
-
-   the things i wanted to do that's better than most projects yeah
-
-   that's better than most projects yeah
-
-   that's better than most projects yeah yeah and um my backers seem really happy
-
-   yeah and um my backers seem really happy
-
-   yeah and um my backers seem really happy about it that's good uh just we're
-
-   about it that's good uh just we're
-
-   about it that's good uh just we're curious why i mentioned earlier about
-
-   curious why i mentioned earlier about
-
-   curious why i mentioned earlier about martin atkins who had done a seminar he
-
-   martin atkins who had done a seminar he
-
-   martin atkins who had done a seminar he was doing a series of seminars on how to
-
-   was doing a series of seminars on how to do kickstarters one of the pitfalls he
-
-   do kickstarters one of the pitfalls he
-
-   do kickstarters one of the pitfalls he described it is uh and the first
-
-   described it is uh and the first
-
-   described it is uh and the first kickstarter is
-
-   kickstarter is
-
-   kickstarter is uh you know looking at the amount of
-
-   uh you know looking at the amount of
-
-   uh you know looking at the amount of money that you're going to need and just
-
-   money that you're going to need and just
-
-   money that you're going to need and just saying okay that's what i'm going to ask
-
-   saying okay that's what i'm going to ask
-
-   saying okay that's what i'm going to ask for and that i need twelve thousand
-
-   for and that i need twelve thousand
-
-   for and that i need twelve thousand dollars just ask for twelve thousand
-
-   dollars just ask for twelve thousand
-
-   dollars just ask for twelve thousand dollars for getting taxes and the cost
-
-   dollars for getting taxes and the cost
-
-   dollars for getting taxes and the cost of sending out the was it that's
-
-   of sending out the was it that's
-
-   of sending out the was it that's something you ran into or so i made
-
-   something you ran into or so i made
-
-   something you ran into or so i made sure to remember
-
-   sure to remember
-
-   sure to remember taxes and how much kickstarter takes
-
-   taxes and how much kickstarter takes
-
-   taxes and how much kickstarter takes a big portion of that from you and so is
-
-   a big portion of that from you and so is
-
-   a big portion of that from you and so is amazon payments uh so when it gets to
-
-   amazon payments uh so when it gets to
-
-   amazon payments uh so when it gets to you yeah
-
-   you yeah
-
-   you yeah it's it is definitely less but um i
-
-   it's it is definitely less but um i
-
-   it is definitely less but um i didn't have any like physical goods or
-
-   didn't have any like physical goods or
-
-   didn't have any like physical goods or anything i had to deal with which some
-
-   anything i had to deal with which some
-
-   anything i had to deal with which some people complained about they said you
-
-   people complained about they said you
-
-   people complained about they said you know i'm backing this why why don't i
-
-   know i'm backing this why why don't i
-
-   know i'm backing this why why don't i get anything it's kind of like a
-
-   get anything it's kind of like a
-
-   get anything it's kind of like a selfish response but but really what it
-
-   selfish response but but really what it
-
-   selfish response but but really what it was was a contribution to the community
-
-   was was a contribution to the community
-
-   was was a contribution to the community everybody benefits if just a few people
-
-   everybody benefits if just a few people
-
-   everybody benefits if just a few people contribute especially like
-
-   contribute especially like
-
-   contribute especially like the corporate donations that we got you
-
-   the corporate donations that we got you
-
-   the corporate donations that we got you know that they're
-
-   know that they're
-
-   know that they're making such use of this tool in this
-
-   making such use of this tool in this
-
-   making such use of this tool in this language um you know that it's it's
-
-   language um you know that it's it's
-
-   language um you know that it's it's worth it to them to if they had to buy
-
-   worth it to them to if they had to buy
-
-   worth it to them to if they had to buy it if it was made software that they'd
-
-   it if it was made software that they'd
-
-   it if it was made software that they'd be paying so much more why not just
-
-   be paying so much more why not just
-
-   be paying so much more why not just contribute uh small amounts and then
-
-   contribute uh small amounts and then
-
-   contribute uh small amounts and then everybody will
-
-   everybody will
-
-   everybody will benefit the unfortunate thing is that
-
-   benefit the unfortunate thing is that
-
-   benefit the unfortunate thing is that everybody can say that's their
-
-   everybody can say that's their
-
-   everybody can say that's their responsibility
-
-   responsibility
-
-   responsibility there's always that kind of yeah game
-
-   there's always that kind of yeah game
-
-   there's always that kind of yeah game theory nobody should contribute
-
-   theory nobody should contribute
-
-   theory nobody should contribute uh and you know just to kind of bring
-
-   uh and you know just to kind of bring
-
-   uh and you know just to kind of bring things around uh your we're here at
-
-   things around uh your we're here at
-
-   things around uh your we're here at groupon and uh
-
-   groupon and uh
-
-   groupon and uh groupon is is uh is uh you're a research
-
-   groupon is is uh is uh you're a research
-
-   groupon is is uh is uh is uh you're a research partner
-
-   partner
-
-   partner for coffee scripts i saw that you're in
-
-   for coffee scripts i saw that you're in
-
-   for coffee scripts i saw that you're in your description when i was looking at
-
-   your description when i was looking at
-
-   your description when i was looking at a research fellow
-
-   a research fellow
-
-   a research fellow so yeah groupon
-
-   so yeah groupon
-
-   so yeah groupon did something special for the kickstarter
-
-   did something special for the kickstarter
-
-   did something special for the kickstarter instead of donating
-
-   instead of donating
-
-   instead of donating like the other companies
-
-   like the other companies
-
-   like the other companies they
-
-   they
-
-   they they said
-
-   they said
-
-   they said why not come here and use all of our
-
-   they said why not come here and use all of our
-
-   they said why not come here and use all of our resources we'll give you
-
-   resources we'll give you
-
-   resources we'll give you a few people that you know that have
-
-   a few people that you know that have
-
-   a few people that you know that have worked in languages before that can
-
-   worked in languages before that can
-
-   worked in languages before that can you know that you can go to
-
-   you know that you can go to
-
-   you know that you can go to for any advice
-
-   for any advice
-
-   for any advice and work out problems with
-
-   and work out problems with
-
-   and work out problems with one of those
-
-   one of those
-
-   one of those was definitely erin bedra works on
-
-   was definitely erin bedra works on
-
-   was definitely erin bedra works on closure all the time we interviewed
-
-   closure all the time we interviewed
-
-   closure all the time we interviewed before
-
-   before
-
-   before so you guys know yeah um so
-
-   so you guys know yeah um so
-
-   so you guys know yeah um so worked with him a lot on it and uh i
-
-   worked with him a lot on it and uh i
-
-   worked with him a lot on it and uh i got to use
-
-   got to use
-
-   got to use their their building their their
-
-   their their building their their
-
-   their their building their their computers everything and uh they even
-
-   computers everything and uh they even
-
-   computers everything and uh they even gave me some money
-
-   gave me some money
-
-   gave me some money so it was
-
-   so it was
-
-   so it was very generous oh wow
-
-   very generous oh wow
-
-   very generous oh wow that's why i'm here in chicago actually
-
-   that's why i'm here in chicago actually
-
-   that's why i'm here in chicago actually i just moved down here for that yeah so
-
-   i just moved down here for that yeah so
-
-   i just moved down here for that yeah so part of it is groupon
-
-   part of it is groupon
-
-   part of it is groupon feeding back into the open source
-
-   feeding back into the open source
-
-   feeding back into the open source community all right well thank you very
-
-   community all right well thank you very
-
-   community all right well thank you very much for taking the time to sit down
-
-   much for taking the time to sit down
-
-   much for taking the time to sit down thanks for having me
-
-   thanks for having me
-
-   thanks for having me user groups with lots to say interviews
-
-   user groups with lots to say interviews
-
-   user groups with lots to say interviews and more no way sharing great ideas in
-
-   and more no way sharing great ideas in
-
-   and more no way sharing great ideas in the tech community
-
-   the tech community
-
-   the tech community fascinating conversations a plethora of
-
-   fascinating conversations a plethora of
-
-   fascinating conversations a plethora of information find out for yourself today
-
-   information find out for yourself today
-
-   information find out for yourself today at yuktastic.com
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: Michael Ficarra
+    role: developer community and conference conversations
+turns:
+- speaker: M1
+  text: "[Music] -UGtastic Hi it's Mike with uke-UGtastic again. I'm sitting down
+    with Michael Ficarra. Michael has been very active in the CoffeeScript community
+    even so much so that you've been taking a crack at doing a rewrite of the CoffeeScript
+    compiler and he's done fundraising through Kickstarter to to help support that.
+    Thank you very much for taking the time to sit down. So I'm going to ask you a
+    question you've probably never heard before. Why CoffeeScript? Why use it or why
+    am I into it? Why are you into it? How did you come to it?"
+- speaker: S1
+  text: I've been in the community for as long as I can remember but I'm interested
+    in CoffeeScript because it provides a small but still significant advantage over
+    JavaScript yeah without any setbacks really it provides a syntax for you to use
+    that that is that better describes what your your intent your the intent of your
+    program. Did you come to CoffeeScript through like development or were you just
+    reading like hey this is kind of cool this is some of the JavaScript like were
+    you doing a project with it or something? I don't know.
+- speaker: M1
+  text: You don't remember?
+- speaker: S1
+  text: I don't I don't remember getting into it. I'm sorry I've been asked that before.
+    You saw it and you were just in love with it. I know it's around like summertime
+    a few years ago. Okay well so I mean to go from adopting CoffeeScript to saying
+    hey I'm going to rewrite the compiler that's a big jump and what what kind of
+    what's it at? So yeah it was a few years of working on it really that was I got
+    into it I the CoffeeScript was very new around there just like six months old
+    when I when I found it and my first contribution was well one of my first contributions
+    was a complete rewrite of the test suite because the test suite was just a very
+    very simple and it's not organized and it was not done very well looking for magic
+    numbers all over the place and yeah just not clean not maintainable so just made
+    a little micro framework for them to use and rewrote all the testing and obviously
+    added about double the test suite at the time and it's still the same test suite
+    we're using today. That's really interesting you mention that because I interviewed
+    Charles Nutter and he kind of described a kind of a similar path into JLS Ruby
+    and that's seeing the project and contributing to it making it better doing those
+    so it kind of goes into the theme of participating in the community by coming
+    in and helping. Doing those things that are messy and people kind of won't leave
+    behind but it's not like you want to wade past that. Yeah one thing leads to another
+    and working on it all the time and answering issues discussing just language design
+    how we're going to move forward what features will and will not be part of language
+    and how are we going to represent it in an active way. All sorts of contributions
+    and I've been a maintainer Jeremy gave me access for that since pretty early on
+    because I was just so active so get out there contribute to open source projects
+    and your help will be appreciated. Well it sounds like you're also like a really
+    early adopter it's still in an adoption like I we've had conversations I'm quite
+    so excited about this project and I think it's going to take a lot of work to
+    get it out there and I think it's going to take a lot of work to get it out there
+    and I think it's going to take a lot of work to get it out there but I think it's
+    going to take a lot of work to get it out there but I think it's going to take
+    a lot of work to get it out there but I think it's going to take a lot of work
+    to get it out there and I think it's going to take a lot of work to get it out
+    there and I think it's going to take a lot of work to get it out there and I think
+    it's going to take a lot of work to get it out there and I think it's going to
+    take a lot of work to get it out there and I think it's going to take a lot of
+    work to get it out there and I think it's going to take a lot of work to get it
+    out there and I think it's going to take a lot Interesting.
+- speaker: M1
+  text: Yeah. Okay.
+- speaker: S1
+  text: So you've studied academically and in depth the concepts that underpin language
+    design and creation.
+- speaker: M1
+  text: So when you were looking at CoffeeScript, was there anything that jumped out
+    at you? Like, wow, this is complete--was it something that was pure and because,
+    wow, that was really good? Or was it something like, oh, there's potential, but
+    it's a real diamond in the rough?
+- speaker: S1
+  text: Well, you know, one of the big draws is that it's built on JavaScript semantics,
+    you know. By default, you can mostly assume JavaScript semantics for your CoffeeScript
+    book. And JavaScript has really, really nice, beautiful parts to it. It has some
+    ugly things, like width and eval. But-- But it has these beautiful parts, like
+    closures and, you know, um, sorry. Oh, of course, first class functions. Yes,
+    semicolons, parentheses. So, yeah, it has those semicolons because everybody loves
+    it.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: Well, okay, so with the--you were attracted to its underpinnings.
+- speaker: M1
+  text: be very flexible and something you run in a lot of different places so you
+    build up on dice or language and kind of like going out of jvm where it's a lot
+    of that infrastructure and the hard part of getting that runtime out in a lot
+    of places is already that battle's already been won yeah yeah i mean so i was
+    thinking of the prototype system i couldn't think of the word uh yes so so yeah
+    we share the semantic so member access walks prototype change just like it does
+    in javascript and that's actually a nice feature that we want so we just take
+    that we just read the benefits by compiling yeah okay so you you were attracted
+    to working with with uh coffee scripts and you're bringing some of uh of a more
+    rigorous approach because of your training to the design bit what ultimately led
+    you the idea that you wanted to work with coffee scripts and you're bringing some
+    of a more rigorous approach because of your training to the design bit what ultimately
+    led you the idea that you wanted to work with coffee scripts and you're bringing
+    some of a more rigorous approach because of your training to the design bit what
+    ultimately led you the idea that you wanted to work with coffee scripts and you're
+    bringing some of a more rigorous approach because of your training to the design
+    bit what ultimately led you the idea that you wanted to work with coffee scripts
+    the idea that you wanted to work with coffee scripts the idea of a rewrite because
+    as you're kind of the idea that you wanted to work with coffee scripts the idea
+    of a rewrite because as you're kind of the idea that you wanted to work with coffee
+    scripts the idea of a rewrite because as you're kind of joking for it isn't there
+    already a the idea of a rewrite because as you're kind of joking for it isn't
+    there already a the idea of a rewrite because as you're kind of joking for it
+    isn't there already a coffee strip compiler joking for it isn't there already
+    a coffee strip compiler joking for it isn't there already a coffee strip compiler
+    yeah uh so the compiler has yeah uh so the compiler has yeah uh so the compiler
+    has uh yeah uh so the compiler has uh some failings i guess we call them some
+    failings i guess we call them some failings i guess we call them the uh there's
+    some features that people the uh there's some features that people want uh like
+    source maps want uh like source maps want uh like source maps it's a good example
+    um it's a good example um it's a good example um which maps your compiled dot
+    script back which maps your compiled dot script back which maps your compiled
+    dot script back to the original coffee script so you can to the original coffee
+    script so you can to the original coffee script so you can do debugging in whatever
+    your jobs will do debugging in whatever your jobs will do debugging in whatever
+    your jobs will do on your webinars do on your webinars do on your webinars as
+    if you're developing a public script as if you're developing a public script as
+    if you're developing a public script and those would be really hard uh with and
+    those would be really hard uh with and those would be really hard uh with the
+    architecture of the compiler the architecture of the compiler the architecture
+    of the compiler the original compiler was jeremy's first the original compiler
+    was jeremy's first the original compiler was jeremy's first first try at making
+    a compiler it was first try at making a compiler it was first try at making a
+    compiler it was very rough and very rough and very rough and not trying to not
+    trying to not trying to take a dig at it or anything but but it take a dig at
+    it or anything but but it take a dig at it or anything but but it wasn't it didn't
+    use a wasn't it didn't use a wasn't it didn't use a model that allowed to allow
+    for us to model that allowed to allow for us to model that allowed to allow for
+    us to preserve preserve preserve that source position information through that
+    source position information through that source position information through the
+    compilation process so so so there are some basic uh failings in there are some
+    basic uh failings in there are some basic uh failings in just the overall design
+    of the compiler just the overall design of the compiler just the overall design
+    of the compiler that wouldn't allow us to do a lot of a that wouldn't allow us
+    to do a lot of a that wouldn't allow us to do a lot of a lot of things and of
+    course there were lot of things and of course there were lot of things and of
+    course there were you know 300 or so open bugs you know 300 or so open bugs you
+    know 300 or so open bugs a lot of it with like a lot of it with like a lot of
+    it with like inconsistent parsing the syntax and inconsistent parsing the syntax
+    and inconsistent parsing the syntax and um um um you know i just wanted to you
+    know i just wanted to you know i just wanted to encapsulate fixing all of these
+    things encapsulate fixing all of these things encapsulate fixing all of these
+    things to improve integration with existing to improve integration with existing
+    to improve integration with existing tooling tooling tooling clean up some syntactical
+    clean up some syntactical clean up some syntactical inconsistencies inconsistencies
+    inconsistencies and just also a lot of and just also a lot of and just also a
+    lot of second second uh the second uh second second uh the second uh second second
+    uh the second uh product improvements is you go through product improvements is
+    you go through product improvements is you go through product one and it's okay
+    we find out product one and it's okay we find out product one and it's okay we
+    find out everything that everything that everything that wasn't so good and let's
+    just fix all wasn't so good and let's just fix all those those those those things
+    so it's it's wrong too yeah those things so it's it's wrong too yeah those things
+    so it's it's wrong too yeah it was like the first compiler say hey it was like
+    the first compiler say hey it was like the first compiler say hey try to feel
+    out how people like this and try to feel out how people like this and try to feel
+    out how people like this and they really like now we can they really like now
+    we can they really like now we can really do uh really do uh really do uh do it
+    at this time so you you started do it at this time so you you started do it at
+    this time so you you started this this this yeah obviously yeah obviously yeah
+    obviously you know it's free software but it you know it's free software but it
+    you know it's free software but it costs money to create it in time and costs
+    money to create it in time and costs money to create it in time and effort so
+    certainly cost a lot of time effort so certainly cost a lot of time effort so
+    certainly cost a lot of time yeah yeah yeah uh she you started this where did
+    the uh she you started this where did the uh she you started this where did the
+    idea for the kick shooter come idea for the kick shooter come idea for the kick
+    shooter come uh i just uh uh i just uh uh i just uh you know i had heard the kickstarter
+    was you know i had heard the kickstarter was you know i had heard the kickstarter
+    was in the news a lot at the time and i in the news a lot at the time and i in
+    the news a lot at the time and i guess it's so it's a big phenomenon but guess
+    it's so it's a big phenomenon but guess it's so it's a big phenomenon but um yeah
+    i heard people getting funded um yeah i heard people getting funded um yeah i
+    heard people getting funded for it for similar projects and for it for similar
+    projects and for it for similar projects and uh i i had had this idea for this
+    uh i i had had this idea for this uh i i had had this idea for this rewrite in
+    my head for a long time i rewrite in my head for a long time i rewrite in my head
+    for a long time i also had uh you know ideas for it i had also had uh you know
+    ideas for it i had also had uh you know ideas for it i had published this manifesto
+    of things that published this manifesto of things that published this manifesto
+    of things that would change about the language as well would change about the
+    language as well would change about the language as well and and and an end goal
+    of this compiler is that i an end goal of this compiler is that i an end goal
+    of this compiler is that i would have a really good extensible would have a really
+    good extensible would have a really good extensible thing to work off of to write
+    a language thing to work off of to write a language thing to work off of to write
+    a language that is similar to college script with that is similar to college script
+    with that is similar to college script with the changes that i i would make i
+    uh had the changes that i i would make i uh had the changes that i i would make
+    i uh had full control of the college script yeah full control of the college script
+    yeah full control of the college script yeah exactly so um exactly so um exactly
+    so um you know you know you know i would love to get a i would love to get a i
+    would love to get a compiler that is extensible and i can compiler that is extensible
+    and i can compiler that is extensible and i can build off of build off of build
+    off of and that this is my shortcut to to doing and that this is my shortcut to
+    to doing and that this is my shortcut to to doing that okay that okay that okay
+    so really it was just a big selfish it's a scratch the edge it's and it benefits
+    it's a scratch the edge it's and it benefits it's a scratch the edge it's and
+    it benefits everybody yes um so you you launched everybody yes um so you you launched
+    everybody yes um so you you launched the the um the the the the kickstarter and
+    it succeeded your goals kickstarter and it succeeded your goals kickstarter and
+    it succeeded your goals it looked like you were over a thousand it looked like
+    you were over a thousand it looked like you were over a thousand dollars past
+    yeah the original goal was dollars past yeah the original goal was dollars past
+    yeah the original goal was i initially planned to do like a i initially planned
+    to do like a i initially planned to do like a you know you know you know x dollars
+    per month that i'll be able to x dollars per month that i'll be able to x dollars
+    per month that i'll be able to work on it but then you know work on it but then
+    you know work on it but then you know depending on how successful it was i depending
+    on how successful it was i depending on how successful it was i didn't want to
+    be indefinitely chained didn't want to be indefinitely chained didn't want to
+    be indefinitely chained to the uh project so i i decided i would to the uh project
+    so i i decided i would to the uh project so i i decided i would just fix it to
+    a four-month period that just fix it to a four-month period that just fix it to
+    a four-month period that i would contribute all my time to and i i would contribute
+    all my time to and i i would contribute all my time to and i would just bust the
+    thing out and would just bust the thing out and would just bust the thing out
+    and that that period started in june and it that that period started in june and
+    it that that period started in june and it ended september ended september ended
+    september so so how did it go did it go well for so so how did it go did it go
+    well for so so how did it go did it go well for you i think it's really successful
+    yeah you i think it's really successful yeah you i think it's really successful
+    yeah the project is you know really popular the project is you know really popular
+    it's being used by a lot of people it's it's being used by a lot of people it's
+    it's being used by a lot of people it's being incorporated into uh popular ide
+    being incorporated into uh popular ide being incorporated into uh popular ide
+    and um you know it's it's seeing and um you know it's it's seeing and um you know
+    it's it's seeing adoption it's still it needs a little adoption it's still it
+    needs a little adoption it's still it needs a little work of course it needs a
+    little work of course it needs a little work of course it needs a little polishing
+    i didn't get to 100 of the polishing i didn't get to 100 of the polishing i didn't
+    get to 100 of the things i wanted to get to in the things i wanted to get to in
+    the things i wanted to get to in the kickstarter uh by the time the period kickstarter
+    uh by the time the period was over but uh at least like 95 of was over but uh
+    at least like 95 of was over but uh at least like 95 of the things i wanted to
+    do the things i wanted to do the things i wanted to do that's better than most
+    projects yeah that's better than most projects yeah that's better than most projects
+    yeah yeah and um my backers seem really happy yeah and um my backers seem really
+    happy yeah and um my backers seem really happy about it that's good uh just we're
+    about it that's good uh just we're about it that's good uh just we're curious
+    why i mentioned earlier about curious why i mentioned earlier about curious why
+    i mentioned earlier about martin atkins who had done a seminar he martin atkins
+    who had done a seminar he martin atkins who had done a seminar he was doing a
+    series of seminars on how to was doing a series of seminars on how to do kickstarters
+    one of the pitfalls he do kickstarters one of the pitfalls he do kickstarters
+    one of the pitfalls he described it is uh and the first described it is uh and
+    the first described it is uh and the first kickstarter is kickstarter is kickstarter
+    is uh you know looking at the amount of uh you know looking at the amount of uh
+    you know looking at the amount of money that you're going to need and just money
+    that you're going to need and just money that you're going to need and just saying
+    okay that's what i'm going to ask saying okay that's what i'm going to ask saying
+    okay that's what i'm going to ask for and that i need twelve thousand for and
+    that i need twelve thousand for and that i need twelve thousand dollars just ask
+    for twelve thousand dollars just ask for twelve thousand dollars just ask for
+    twelve thousand dollars for getting taxes and the cost dollars for getting taxes
+    and the cost dollars for getting taxes and the cost of sending out the was it
+    that's of sending out the was it that's of sending out the was it that's something
+    you ran into or so i made something you ran into or so i made something you ran
+    into or so i made sure to remember sure to remember sure to remember taxes and
+    how much kickstarter takes taxes and how much kickstarter takes taxes and how
+    much kickstarter takes a big portion of that from you and so is a big portion
+    of that from you and so is a big portion of that from you and so is amazon payments
+    uh so when it gets to amazon payments uh so when it gets to amazon payments uh
+    so when it gets to you yeah you yeah you yeah it's it is definitely less but um
+    i it's it is definitely less but um i it is definitely less but um i didn't have
+    any like physical goods or didn't have any like physical goods or didn't have
+    any like physical goods or anything i had to deal with which some anything i had
+    to deal with which some anything i had to deal with which some people complained
+    about they said you people complained about they said you people complained about
+    they said you know i'm backing this why why don't i know i'm backing this why
+    why don't i know i'm backing this why why don't i get anything it's kind of like
+    a get anything it's kind of like a get anything it's kind of like a selfish response
+    but but really what it selfish response but but really what it selfish response
+    but but really what it was was a contribution to the community was was a contribution
+    to the community was was a contribution to the community everybody benefits if
+    just a few people everybody benefits if just a few people everybody benefits if
+    just a few people contribute especially like contribute especially like contribute
+    especially like the corporate donations that we got you the corporate donations
+    that we got you the corporate donations that we got you know that they're know
+    that they're know that they're making such use of this tool in this making such
+    use of this tool in this making such use of this tool in this language um you
+    know that it's it's language um you know that it's it's language um you know that
+    it's it's worth it to them to if they had to buy worth it to them to if they had
+    to buy worth it to them to if they had to buy it if it was made software that
+    they'd it if it was made software that they'd it if it was made software that
+    they'd be paying so much more why not just be paying so much more why not just
+    be paying so much more why not just contribute uh small amounts and then contribute
+    uh small amounts and then contribute uh small amounts and then everybody will
+    everybody will everybody will benefit the unfortunate thing is that benefit the
+    unfortunate thing is that benefit the unfortunate thing is that everybody can
+    say that's their everybody can say that's their everybody can say that's their
+    responsibility responsibility responsibility there's always that kind of yeah
+    game there's always that kind of yeah game there's always that kind of yeah game
+    theory nobody should contribute theory nobody should contribute theory nobody
+    should contribute uh and you know just to kind of bring uh and you know just to
+    kind of bring uh and you know just to kind of bring things around uh your we're
+    here at things around uh your we're here at things around uh your we're here at
+    groupon and uh groupon and uh groupon and uh groupon is is uh is uh you're a research
+    groupon is is uh is uh you're a research groupon is is uh is uh is uh you're a
+    research partner partner partner for coffee scripts i saw that you're in for coffee
+    scripts i saw that you're in for coffee scripts i saw that you're in your description
+    when i was looking at your description when i was looking at your description
+    when i was looking at a research fellow a research fellow a research fellow so
+    yeah groupon so yeah groupon so yeah groupon did something special for the kickstarter
+    did something special for the kickstarter did something special for the kickstarter
+    instead of donating instead of donating instead of donating like the other companies
+    like the other companies like the other companies they they they they said they
+    said they said why not come here and use all of our they said why not come here
+    and use all of our they said why not come here and use all of our resources we'll
+    give you resources we'll give you resources we'll give you a few people that you
+    know that have a few people that you know that have a few people that you know
+    that have worked in languages before that can worked in languages before that
+    can worked in languages before that can you know that you can go to you know that
+    you can go to you know that you can go to for any advice for any advice for any
+    advice and work out problems with and work out problems with and work out problems
+    with one of those one of those one of those was definitely erin bedra works on
+    was definitely erin bedra works on was definitely erin bedra works on closure
+    all the time we interviewed closure all the time we interviewed closure all the
+    time we interviewed before before before so you guys know yeah um so so you guys
+    know yeah um so so you guys know yeah um so worked with him a lot on it and uh
+    i worked with him a lot on it and uh i worked with him a lot on it and uh i got
+    to use got to use got to use their their building their their their their building
+    their their their their building their their computers everything and uh they
+    even computers everything and uh they even computers everything and uh they even
+    gave me some money gave me some money gave me some money so it was so it was so
+    it was very generous oh wow very generous oh wow very generous oh wow that's why
+    i'm here in chicago actually that's why i'm here in chicago actually that's why
+    i'm here in chicago actually i just moved down here for that yeah so i just moved
+    down here for that yeah so i just moved down here for that yeah so part of it
+    is groupon part of it is groupon part of it is groupon feeding back into the open
+    source feeding back into the open source feeding back into the open source community
+    all right well thank you very community all right well thank you very community
+    all right well thank you very much for taking the time to sit down much for taking
+    the time to sit down much for taking the time to sit down thanks for having me
+    thanks for having me thanks for having me [Music]

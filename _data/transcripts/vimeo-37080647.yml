@@ -1,2139 +1,1054 @@
 ---
-content: |-
-  --way to really write good code that I'm proud of.
-
-   You end up with a form that's normally HTML,
-
-   and then you want to add some hiding or showing
-
-   of one of the fields, and then you put something
-
-   in the document ready, and then you hide it on one case,
-
-   and then something happens, and then it changes.
-
-   And it doesn't really feel right.
-
-   I'm not sure how to test that.
-
-   I'm not sure how to control how that works
-
-   without some web-based tests that don't make me very happy.
-
-   So I started using Backbone about four or five months ago.
-
-   I was working with a client, and they're
-
-   about to embark on a new project that they knew
-
-   was going to be client-side heavy.
-
-   They had made a mess in their previous application
-
-   with their JavaScript and wanted to get a better control
-
-   over what this new code was going to look like.
-
-   And so they started looking at a few options.
-
-   They were looking at, I think JavaScript NBC was one.
-
-   Sprout Core was another, and Backbone.js.
-
-   Spent some time specking things out.
-
-   For us, we ended up succeeding the best in that short amount
-
-   of time with Backbone.js.
-
-   It was just kind of an easier learning curve.
-
-   Kind of felt like you were writing JavaScript
-
-   and not really learning another set of--
-
-   another language to write what your JavaScript should do.
-
-   So we embarked with JavaScript.
-
-   I learned a lot about how to write with Backbone,
-
-   how to test with Backbone.js.
-
-   And I've come up with some patterns, some ideas about what
-
-   good Backbone.js code looks like, how it should all work together.
-
-   And that's what I'm going to cover today.
-
-   We're going to talk first about Backbone.js.
-
-   So I want to give a good intro to what the framework is like.
-
-   And then we can start to dive in how you would use Backbone
-
-   in a web project, or how you would evolve your project using--
-
-   trying to move forward with tests in order to add that functionality
-
-   bit by bit.
-
-   So that being said, let's just stop and talk about JavaScript
-
-   right away.
-
-   JavaScript is an interesting language.
-
-   It's kind of a bit like Frankenstein, in that it was kind of cobbled together,
-
-   right?
-
-   It's not a lot of standards in there.
-
-   It's really powerful, though.
-
-   It's really fast.
-
-   And it's got all these standards that are used all over the place.
-
-   I mean, all the broads are supported.
-
-   But it can also kind of rip your arms off if you're not careful.
-
-   And it can cause a lot of problems.
-
-   So it's kind of up to you to control JavaScript.
-
-   You want to kind of get away from just this procedural mess of code
-
-   that happens in your Document Ready,
-
-   and actually just get a grip on it.
-
-   Make sure that it's doing what you want it to do,
-
-   and not having it override something
-
-   that lives in the global namespace.
-
-   So back to Backbone.js.
-
-   A little bit of background on the creator.
-
-   Jeremy Ashganis is the guy that--
-
-   he worked at a company called Document Cloud.
-
-   It was a project that was JavaScript heavy.
-
-   And out of their experience with Document Cloud,
-
-   they ended up creating and extracting out Backbone.js.
-
-   Jeremy also is the creator of CoffeeScript.
-
-   I don't know if any of you folks have used CoffeeScript before.
-
-   But he's done those two things.
-
-   And also Underscore.js, a kind of collection of functional type methods
-
-   that you can use with your JavaScript projects.
-
-   So, when it comes down to his Backbone, it's really about structure.
-
-   The structure that it can give to your application.
-
-   One of the examples here is there's a model in Backbone.
-
-   Backbone is kind of built as an MVC framework for the client side.
-
-   I'm not sure if that's entirely accurate, but it does have structure.
-
-   It's got a framework and it's got a model in it.
-
-   We'll leave the discussion about whether it's a true MVC for another time.
-
-   But here's an example of how a model works, or how you set up a model.
-
-   So, you set up a task.
-
-   This is a pretty straightforward task model.
-
-   It's got-- you can have defaults.
-
-   So, if you create a new instance of a task, it will have this attribute of complete,
-
-   and it's got to be false.
-
-   You can also have-- you can also create-- so, if you create it,
-
-   you can also give it other value.
-
-   So, you can give it a description of, you know,
-
-   so letting you run on the top of the laboratory.
-
-   And then when you call task.getDescription, it's going to return that value to you.
-
-   Models can be-- can live inside of collections.
-
-   Collections are really just kind of a convenient way to access a group of models.
-
-   So, you've got some defaults.
-
-   So, you can say if you want to create something through a collection,
-
-   you can pass in the list of attributes,
-
-   and it's going to create an instance of that model that's been associated with it
-
-   with those-- with those attributes.
-
-   Can you go just a little slower through that?
-
-   Sure, sure.
-
-   So, yeah, just to back up here on the collection,
-
-   I can talk a little about how this interacts with the server, too.
-
-   So, models and collections are going to represent the data that lives in your server.
-
-   It's not going to live in the client.
-
-   It's going to live somewhere else.
-
-   And my-- some of the apps I passed around, it can live in a Rails project.
-
-   It can just be HTML5 local storage.
-
-   Just somewhere that you're going to get the data from to display to your user.
-
-   So, in this case here, we have a-- you've got the-- you're extending the backbone collection
-
-   base object and adding a couple of attributes to it.
-
-   The model that listed here is-- this here is a-- just a namespace.
-
-   This is the application namespace of to-do.
-
-   This is my models underneath and this is the task that's-- that's essentially what the model
-
-   definition is.
-
-   And then the URL there is tasks.
-
-   And so, the URL is going to be the action that it tries to access whenever you do a save
-
-   or a create or a destroy on the model.
-
-   And those are going to just correspond to the right HTTP request to get a new one, to fetch
-
-   out an entire index of these models, to update them, to destroy them.
-
-   So, that's part of that configuration there is on the collection.
-
-   And back here in this collection example here, we instantiate the task collection and then
-
-   we're calling a create and that's going to add-- this create is going to add instances of
-
-   models to the collection and also take care of sending that-- that post request down to
-
-   the server to actually create and persist in the database.
-
-   Any questions?
-
-   Okay.
-
-   One of the nice things about Backbone is that you don't have to use the entire framework.
-
-   You kind of pick and choose what you want to-- what you want to interact with when it comes
-
-   to the objects.
-
-   An example of this is a Backbone router.
-
-   So the router's function in Backbone is to essentially monitor the window location, the URL that you're
-
-   visiting.
-
-   When you-- when you-- when you initialize a router, it's going to assume that you're on the--
-
-   it's going to take these actions.
-
-   It's going to-- you can use it to kind of bootstrap in any values that you load from your--
-
-   your initial server request.
-
-   So say you're serving up an HTML page and you're going to give it some data to start with.
-
-   So you can call this router with these options and say, okay, well, I already have some tasks
-
-   I've loaded.
-
-   So I'm just going to create that inside of this router and I'm also going to create a
-
-   view that has that collection.
-
-   I'm going to get to the views in a second here.
-
-   And then you can define some routes inside of here.
-
-   So that empty string there is going to be the default route for the page.
-
-   And then it's going to call that function when it hits that route.
-
-   So if you go to the base URL of the page, the first thing it's going to do is call this loadTask function.
-
-   And that's going to go off and probably load some tasks, right?
-
-   And then if you visit a URL that looks like this, it's going to be-- it's with a little
-
-   slug for the ID there, it's going to fire the EditTask function.
-
-   An example of what the EditTask function might look like is this here.
-
-   So let's say you're just going through your to-do app.
-
-   You've got a list of things that you've got that you want to get done.
-
-   And you click on one of those-- you click on one of those tasks, that can act as a link
-
-   that just directs you to that URL that we specified.
-
-   And it's going to fire this EditTask function.
-
-   This is going to instantiate a view that we passed along the collection so it has knowledge
-
-   of it and then render that view.
-
-   Again, I'm going to get a little bit more to the views in a second, but this is kind of
-
-   a typical thing.
-
-   You know, when you hit a URL, it's going to render-- it's going to do some action to render
-
-   something for the user.
-
-   This is how you'd use a router.
-
-   So essentially, inside of a document-ready or somewhere on your page, you're going to
-
-   instantiate your router.
-
-   And then, in order to actually start the router doing things, you need to start Backbone History.
-
-   Backbone History is going to work if you have a router defined on your page and it's got some
-
-   routes defined.
-
-   So assuming you have all that setup that I showed on the previous slides, as soon as you
-
-   start up Backbone History, then it's going to start monitoring the URLs and start firing
-
-   actions.
-
-   So if for some reason you didn't want to start monitoring right away, you could defer that
-
-   starting of the history monitoring and then start using Backbone after you've loaded the
-
-   page and they've taken some action.
-
-   Do you have any insight into why it's history?
-
-   It seems like a weird thing to call it.
-
-   I think it's kind of keeping in parallel with the DOM window history inside of a browser.
-
-   So there's something similar that keeps the history of the browser and everything you visited.
-
-   So I think that's what it's trying to parallel.
-
-   I think it's trying to get the same idea of this is the list of things.
-
-   I'm not necessarily sure.
-
-   I don't think this requires the HTML5 interface to make it work, but it's kind of the same
-
-   idea.
-
-   So you want to have access to this state.
-
-   So actually, for example, if you clicked on a link to edit a task, right, you're going
-
-   to get a URL that looks like this.
-
-   Your slash to do and then the hash with task slash 34 slash edit.
-
-   And the nice thing about this is if you instantiate that Backbone router on your page and start
-
-   monitoring the history, you can essentially link to this permanently.
-
-   You can pass this around and when Backbone gets loaded, it's going to find that URL that
-
-   you gave it and then load that so you can actually take a link that you can send to someone and
-
-   it's going to load the JavaScript right away for you.
-
-   This link actually means something because of Backbone and it can load where you were in
-
-   the state of that JavaScript versus having to link to a static HTML page.
-
-   Any questions on the router?
-
-   That's kind of cool.
-
-   Yeah, it's pretty slick.
-
-   So it's a nice way to keep track of things.
-
-   Yeah, this convention of using the hash for what the JavaScript portion of your web page
-
-   is doing is something that you'll probably see on Twitter, other things.
-
-   They're not using Backbone, but I think it's kind of the conventions that's emerged for trying
-
-   to store what would be a JavaScript-ish type link.
-
-   So...
-
-   Oh, sorry.
-
-   Yeah.
-
-   So another question is, along with that, I've heard some backlash for using like the hash
-
-   just because everything happens, the hash doesn't get sent down to the server, and now you're
-
-   kind of stuck with links with hashes you have to maintain that all on the client side.
-
-   Yeah.
-
-   Is there like an option not to do that?
-
-   So like if the browser does support HTML5 history, then it can do that?
-
-   Or is it just hard-coded just to do the hash?
-
-   It is, you may be able to overwrite it.
-
-   I'm not sure if it's going to be the hash specifically or if it's going to detect something or other.
-
-   You know what I found, we'll probably talk about this more at the end of it too, is I found
-
-   that with a lot of these JavaScript frameworks that are emerging, they're kind of just saying
-
-   that's to IE7 and below.
-
-   We're just going to support the new stuff because it's too hard, excuse me, it's too hard.
-
-   And it's easier to support the browser that actually can render JavaScript in a reasonable
-
-   manner, a more predictable manner, you might say.
-
-   How well does it play with other libraries that use hash as well?
-
-   Like is it going to be a problem?
-
-   I believe that jQuery mobile uses the hash as well, one history.
-
-   So would you, I don't know, would you ever try to use both in an application?
-
-   You know, I mean, I've heard of some projects that are trying to use Backbone and jQuery
-
-   mobile UI.
-
-   I haven't taken a look at it specifically, but yeah, I mean, that's definitely something
-
-   you'd have to be aware of is how all your different libraries can interact with it.
-
-   You know, the nice thing about the router is that if your application doesn't really require
-
-   you to jump back to a certain state, this is the part I go back on is you don't have to
-
-   use it.
-
-   It doesn't fire it up for you to start with.
-
-   You can just not create a router and have the functions that render stuff just happen from
-
-   event bindings.
-
-   So that's one way to get around is just to not use that function if you don't want to.
-
-   I imagine, though, if there was another library that was waiting for the window of history
-
-   to change and detect some hash that it could be that both actions are triggered.
-
-   It could do the thing that one JavaScript library is waiting for the event on of the certain history
-
-   state, and then also backbone is going to execute too, and then whatever happens is anyone's yes at that point.
-
-   I guess it depends on what it does to the DOM and who wins, who gets there first.
-
-   So, speaking of the DOM, things have been pretty good until now, right?
-
-   We're just talking about stuff on the server, monitoring the Windows history state.
-
-   It's all been pretty straightforward.
-
-   It's a pretty simple structure.
-
-   There's not a lot of complexity yet.
-
-   But when it comes to the DOM, you enter into this really murky territory.
-
-   You've got some control over what's in there if you're the one creating the full application,
-
-   but if you're working with someone else that's giving you HTML, it can get a little tricky,
-
-   and it certainly behaves differently across browsers as well.
-
-   So, let's talk more about the views and backbone.
-
-   So, this quote here is actually from the Backbone.js documentation.
-
-   They're more convention than code, and that's certainly an accurate description.
-
-   Now, when I talk about a backbone view, I'm really talking about an object,
-
-   something that's going to control a certain slice of the DOM.
-
-   Something that's going to watch a certain element on the page that you give it,
-
-   and it's going to bind events to it.
-
-   It's going to render things inside of it, and that's the convention part.
-
-   I mean, that's what you want to focus in on one part of the DOM,
-
-   even though you can still access and do anything else you want inside of it.
-
-   Should we take a two-minute break to grab pizza?
-
-   Yeah.
-
-   Before I dive into how the view looks as an object,
-
-   why do you guys grab some slices of pizza and we can start back up here?
-
-   Yeah, there's pop and the bass amount of water.
-
-   Yeah, right.
-
-   And angle of water.
-
-   There's a water fountain.
-
-   It's cold?
-
-   Yeah.
-
-   Yeah.
-
-   Yeah.
-
-   Yeah.
-
-   Yeah.
-
-   There's pop and the bass amount of water.
-
-   Yeah, right.
-
-   There's a water fountain.
-
-   Yeah.
-
-   Yeah.
-
-   Yeah, there's pop and the bass amount of water.
-
-   Yeah, right.
-
-   And angle of water.
-
-   Whatever's a water fountain.
-
-   - How's this going? - It's going? Yeah.
-
-   - There's a link here.
-
-   - Uh...
-
-   - Yeah.
-
-   - It's very nice.
-
-   - Oh, yeah.
-
-   - Are you going to go on back?
-
-   - Hi.
-
-   - Would you want some teaching?
-
-   - There should be some left.
-
-   Maybe.
-
-   - French Market.
-
-   - Yes.
-
-   - Yes.
-
-   - Yeah.
-
-   - That's the spelling word.
-
-   - How do you shop?
-
-   - I know.
-
-   - How do you use it?
-
-   - I'm just thinking about that.
-
-   - I'm just thinking about that.
-
-   - We're trying to find them.
-
-   - Yeah.
-
-   - I've never actually done it.
-
-   I don't even know what I'm going to do.
-
-   - Dr. Sharon, did you have this book?
-
-   - Yeah.
-
-   - Yeah, I kind of got a look on this one.
-
-   - Sounds like it's working.
-
-   - I think it's working.
-
-   - Do you guys do the next one?
-
-   - Do it.
-
-   - That's good.
-
-   - That's Taylor.
-
-   - That's Taylor.
-
-   - You're not going to do that.
-
-   - You're not going to do that.
-
-   - Yeah.
-
-   - You guys work there together.
-
-   - No.
-
-   - This is Taylor.
-
-   - Hey.
-
-   - I'm here.
-
-   - No.
-
-   - Oh, really?
-
-   - Yes.
-
-   - Yeah.
-
-   - I'm coming to your test.
-
-   - I don't know.
-
-   - I don't know.
-
-   - It's very painful.
-
-   - Yeah, probably not.
-
-   - Okay.
-
-   - Okay.
-
-   - Perfect.
-
-   - I should go with a lot of ice.
-
-   - I don't know.
-
-   - Yeah.
-
-   - Yeah.
-
-   - I don't know.
-
-   - I don't know.
-
-   - All right.
-
-   Looks like everyone's got at least a slice of pizza.
-
-   So we can, uh...
-
-   - I don't know.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - All right.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - Okay.
-
-   - All right.
-
-   Looks like everyone's got at least a slice of pizza
-
-   so we can, uh, get started back up here.
-
-   All right.
-
-   So, uh, getting back to the backbone views.
-
-   Uh, so let's take a look at what a view might look like.
-
-   Uh, so, uh, views, uh, one way to use a view in backbone is to, you're going to find
-
-   what you would your other objects, your collections and your routers and your models.
-
-   Uh, and you're going to give it, one thing you can do is you can give it some tag names
-
-   and class names.
-
-   Uh, now this is just kind of a way of saying, uh, if you want backbone to render some HTML,
-
-   these can kind of be your container tags and classes.
-
-   So no matter what you render and add to inside the element for that view, it's going to wrap
-
-   it inside of this.
-
-   So, another part of it for the view is that a view provides a really nice way to bind events
-
-   to, uh, to a part of the element, to a part of the, part of the DOM, a certain element.
-
-   And what happens is that this hash of events, or it's going to, as soon as you, uh, instantiate,
-
-   as soon as you instantiate the view and give it an element that it's going to, to, to manage,
-
-   to control, it's going to bind these events to it.
-
-   And if you remove the view, it's going to destroy the events.
-
-   It kind of is a way to, to, to, to push out that knowledge and, you know, that, that maintenance
-
-   of the event bindings.
-
-   And there is some convenience method as well for, if you want to rebind all your events
-
-   or unbind them, that's, that exists as well.
-
-   So, like, um, this is kind of like the live method in the older versions of jQuery, in
-
-   that it, it does it dynamically, you know, if you add new graphs to your page and you have
-
-   a, a view out there for whatever you added, it's automatically going to find it and bind
-
-   it at?
-
-   Essentially, yeah.
-
-   If you, if you render, uh, let me, I can get to it in a second.
-
-   But so, a view is going to also render.
-
-   If you're going to render HTML and add it to the element that the view is controlling,
-
-   it's going to bind events to it.
-
-   Uh, one of the ways that you can use a view is that you can hand it an existing element
-
-   in your HTML.
-
-   So, let's say you let it go into static HTML and now you want to control something inside
-
-   it with backbone.
-
-   Uh, as soon as you instantiate the view with that element, it's going to try and bind all
-
-   those events to it.
-
-   So, if you've got some static HTML that you want it to, you, you know, you're going to serve
-
-   it up like that and you want backbone to monitor it.
-
-   Uh, whatever's inside of it, it can bind events to that as well.
-
-   So, it's another way just to kind of take care of that event binding.
-
-   It's something that I found really convenient about backbone views.
-
-   Uh, so, for this, for this, uh, function here, uh, so when a key up occurs on the new
-
-   task, uh, ID selector, we want to do a function for, uh, create on enter.
-
-   And so, what that function might look like is, uh, you know, when you perceive this key
-
-   up event, we want to, uh, add the input value from the field that we're watching and do a
-
-   collection create.
-
-   So, the idea is that, you know, if you're typing something into your to do app, uh, you hit enter
-
-   on the field, it's going to add a model to your collection with whatever you just typed in.
-
-   I'm omitting some of the code here, but, you know, checking that you're hitting enter key
-
-   and not just some random key.
-
-   Uh, but that's kind of the gut stuff.
-
-   That's what the backbone part of it is.
-
-   And you have to bind when, in the previous slide, you bound it as a string.
-
-   Yeah.
-
-   So, you're certain, you're feeding it this events, this hash of events.
-
-   And the, the convention here is that this is just the, the event is going to do the binding
-
-   on.
-
-   This is the function that it's going to use.
-
-   Using this function needs to be defined within your view.
-
-   So, if you want to call some other function lived outside of view, you'd really just create
-
-   a wrapper for that function and then call that function inside your view function.
-
-   So, will this be bound to the view?
-
-   Uh, yeah, this inside the view is, uh, the view object.
-
-   And there are a couple, a couple of nice methods with underscore, I believe.
-
-   I think it's the underscore portion of it that, uh, you can do like a bind all.
-
-   And it's, you can always give this being the view as the context of your functions, in
-
-   case you get lost in callbacks and nested functions.
-
-   So, I'm sorry.
-
-   Sure.
-
-   Sure.
-
-   I spent a lot of time trying to debug my crappy Java scripts.
-
-   Oh.
-
-   Very interesting.
-
-   Uh, but like, any time you have your, something that's, you know, a string that actually has
-
-   to match a function name, I'm going to misspell it.
-
-   Uh, what happens if you, if that function doesn't exist?
-
-   Does it air out silently or loudly?
-
-   You will get an error when you instantiate the view.
-
-   All right.
-
-   Uh, it will, you'll get an error that will appear in your JavaScript console in your browser.
-
-   Um, and if, uh, yeah, we'll get to the testing portion of layer, but it provides a nice loud
-
-   failure when you, if you're running tests to see that you're buying the air vents properly.
-
-   Uh, so that's, that's really nice too, is that it's going to make sure that you're buying the
-
-   right thing and it'll tell you if it's, if it's not.
-
-   I'm going to go away again on that.
-
-   Okay.
-
-   So, um, if you have a view inside of another view, you know, I think it's powerful that
-
-   you can, like, employ the views on top of views.
-
-   Now, this isn't smart enough to just identify a new task inside of just this view.
-
-   I mean, God forbid there's, the embedded view has a new task as well.
-
-   Would it accidentally fire on this key up?
-
-   If that makes any sense.
-
-   The events that are bound inside of here are going to search inside of this views element.
-
-   Okay.
-
-   So if you have another view inside of it, it might accidentally.
-
-   If you have a nested view that's also going to render something with that ID, it'll pick
-
-   that up.
-
-   Okay.
-
-   Anything inside of there is fair game, essentially.
-
-   Okay.
-
-   All right.
-
-   So that was the create an enter function.
-
-   Uh, so here's the, so for the, for the tasks view, this is the, the view that we're going
-
-   to use to create all the different tasks, uh, the individual task views themselves.
-
-   So what we're going to do here is use one of the underscore functions to say, uh, for each
-
-   model in the collection, we're going to call add task.
-
-   And then the, this, this return, this here is a, uh, it's a backbone convention.
-
-   When you call render that's recommended that you return this being the view so you can chain
-
-   calls.
-
-   So you can return this element.
-
-   You can do something else after it.
-
-   Um, use that as, as you may, uh, for chaining.
-
-   Right now we have three misses.
-
-   Yeah.
-
-   Uh, so, uh, and this is the add task function.
-
-   So here we're actually, we do have a view inside of our task view.
-
-   So the task view is responsible for rendering every model in the collection, but here we're
-
-   delegating to a, a singular task view.
-
-   That's going to render, uh, each of the models and the, and the corresponding view along with
-
-   it.
-
-   So what I'm doing here is that inside of add task, I'm going to instantiate the task view.
-
-   And I'm going to give it the model that I'm getting from iterating through the collection
-
-   of, of tasks.
-
-   So each time through I'm going to instantiate another model and use it.
-
-   Uh, this task L is just a convenience to kind of clarify what I'm doing here.
-
-   So I'm doing a view.render and I'm getting the L from it because I'm returning to this
-
-   and my function.
-
-   L is going to be the element that the view is controlling.
-
-   And then I'm going to take the task L. I'm going to search for the task class inside
-
-   of my element view and then just prepend it to the list.
-
-   So it's going to just kind of keep on adding things on the top as it goes.
-
-   You could do an append.
-
-   Um, actually this example is not the greatest because what I'm doing here is I'm really
-
-   searching the entire DOM for a task class.
-
-   Uh, what you can do is that you have, um, a this dot dollar sign.
-
-   So any queries that you might do with jQuery or whatever library you're using would be scoped
-
-   to the views element.
-
-   So that actually could be a little bit better and searched just inside of your view, inside
-
-   of your views elements.
-
-   Makes sense.
-
-   Any questions?
-
-   Any questions?
-
-   Okay.
-
-   So, like I said, back when I was talking about structure, um, we haven't really talked about
-
-   anything like, um, certain JavaScript template rendering libraries.
-
-   Uh, we've talked a little bit about jQuery, but really we've got a way to just kind of take
-
-   the part where you're dealing with the server and push it out to one side of your JavaScript
-
-   code.
-
-   You've got a section where the view is going to deal with dealing with the DOM and these
-
-   things are kind of separated out.
-
-   And as you start to separate those things out, you can see where you can start to hook in
-
-   other functions that are your own, that you're namespacing on your own, other objects.
-
-   things that you can actually write the code, uh, for what you want your business like to do and
-
-   not necessarily have to worry about traversing the DOM inside the same statement.
-
-   So, that being said, even with Backbone, you can make a mess.
-
-   It's JavaScript and it's the DOM, right?
-
-   And there's no, there's no guardrails.
-
-   This is trying to help, trying to help you make decisions about where to deal with certain
-
-   parts of, you know, deal with the view over here, deal with the server over here.
-
-   But I mean, like I showed you with that, uh, selector inside of, for the tasks, you can
-
-   still just traverse the entire DOM and do whatever you want.
-
-   There's nothing stopping you with Backbone.
-
-   Backbone is not going to get your way for the most part.
-
-   So, uh, so now what?
-
-   Any questions on Backbone, the structure of Backbone before we kind of move on into some
-
-   scenarios?
-
-   Okay.
-
-   All right, so now it's time to make JavaScript dance a little bit.
-
-   We want to actually tell them what to do and have it do it.
-
-   So, there are really kind of two questions that I'm going to attempt to at least show a
-
-   path for tonight.
-
-   One is how do you test drive client-side JavaScript?
-
-   And that also kind of relates to how do you write clean JavaScript?
-
-   How do you write JavaScript that you're proud of?
-
-   Before, four or five months ago, I don't know if I wrote any JavaScript that I was ever proud
-
-   of.
-
-   I don't, that I would show.
-
-   To me, it was JavaScript was something I would do at the last minute.
-
-   I would find the jQuery function that would do it with the least amount of code possible,
-
-   and then I'd say, hey, it's done.
-
-   And then maybe I'd write a test that would fire up the browser, you know, and then execute
-
-   the JavaScript and see if it renders something in the DOM properly.
-
-   That was about it.
-
-   And I wasn't very thrilled with it.
-
-   And so, what I'd like to do is kind of walk through a couple scenarios of how your, how
-
-   a new web application could evolve its JavaScript and what steps you can take to move in the,
-
-   what I think is a better direction than just everything in document ready.
-
-   So, first scenario.
-
-   So, like I said, let's talk about a web app with no JavaScript in it.
-
-   Like any good web application, you're going to be collecting demographics information.
-
-   Right?
-
-   So, they all do.
-
-   So, let's say you want to add a feature where you want to show additional fields if you want
-
-   to add additional emergency contact information.
-
-   So, there's a, there's, there's lots of things you can do, but let's consider two things.
-
-   One would be, so in document ready, let's bind a function to the, to a click event for add
-
-   additional contacts.
-
-   And then find hidden fields, fields that were hidden in the DOM when you load the page and
-
-   then show them.
-
-   Or, should we create an app namespace, initialize, and then bind an event to a show fields function.
-
-   So, the show fields is going to take care of the showing of this given a certain event.
-
-   Any, any thoughts on either approach?
-
-   Well, that's okay, because you all probably would choose B, right?
-
-   Which is great, because it's using namespace your JavaScript.
-
-   Namespacing your JavaScript is probably the easiest thing you can do to make your code better.
-
-   What you're going to avoid by namespacing your JavaScript is overwriting other JavaScript libraries.
-
-   Any other JavaScript you include in your page.
-
-   You know, you, I think jQuery, for example, maybe tries to protect itself from someone overwriting
-
-   the dollar sign that you use.
-
-   But if you're using other JavaScript libraries, there's no guarantee that they're going to protect
-
-   the code that they use.
-
-   And with JavaScript, you can just go in and redefine a global variable from doing this magnificent
-
-   library of stuff into something that, you know, returns nil or undefined.
-
-   So, namespacing it keeps your JavaScript separate, keeps it under control so you don't have to worry
-
-   about people overwriting you with other libraries as well.
-
-   And so, it's something I wanted to throw out there as something that's really important to do,
-
-   really no matter what.
-
-   So, we've namespaced it.
-
-   So, in this next scenario, let's talk about testing it.
-
-   So, with a Rails project, there's a, there's a Jasmine gem you can install.
-
-   And there's a Jasmine library of JavaScript that lets you do testing.
-
-   I don't know how many of you, there's a, there's a, a Ruby testing library called RSpec.
-
-   And it's got this interesting, it's got a good syntax.
-
-   You basically can describe it in kind of plain English of what it's going to do and these assertions
-
-   on what it's going to do and Jasmine does a good job of that on the JavaScript side.
-
-   So, let's say that you've, you've added a file called RSpec JS.
-
-   And, so right now you have a jQuery selector that's going to find and show a class.
-
-   So, it's going to go out and find the additional fields and then call the jQuery show method on it.
-
-   So, you start to think about what are your fixtures going to look like.
-
-   So, when you're running JavaScript tests, you don't necessarily want to use the HTML.
-
-   You don't want to have to fire up your entire web app to get the HTML that you're going to test.
-
-   So, you can create fixtures.
-
-   So, fixtures are just an HTML that you can use just for your test that you can execute your JavaScript on.
-
-   So, there are a couple options.
-
-   One would be to just copy the rendered HTML from your app into a fixture file and then load it in your spec.
-
-   Or, you could set a fixture that looks something generic like this.
-
-   You know, it's got a button with an ID of add.
-
-   It's got some information there.
-
-   It's got some hidden fields inside of a div.
-
-   Some fields.
-
-   Whatever your content is.
-
-   So, any, any thoughts on which may, which way may be a better approach?
-
-   Less code is better code.
-
-   Me?
-
-   Yeah.
-
-   Good job, guys.
-
-   Yeah, exactly.
-
-   Less code is better code.
-
-   There's, it's hard to find a compelling reason for loading your entire site's HTML file to test a certain portion of the JavaScript.
-
-   What you end up doing is that you create this dependency on a snapshot of your DOM from a point in time that you're now responsible for maintaining if you expect your JavaScript code to work under those conditions.
-
-   By writing a fixture that just has the bare minimum of code that you need to make sure it works, you're doing a couple things.
-
-   One, you're, you're going to speed up your test because they don't have to load an entire HTML file to run.
-
-   And you're also kind of go through this exercise of figuring out what's the least amount of DOM I need to make this JavaScript work.
-
-   You're not depending on a certain setup to make sure it works.
-
-   You're going to say, okay, this is the stuff I need to make this JavaScript work.
-
-   And you can make your JavaScript a lot more focused.
-
-   Now, that kind of can get you into trouble if you are not considering any other possibilities of what could happen with it.
-
-   Say, say this, I mean, you shouldn't have more than one DOM element with the ID of add, for example.
-
-   It should be an ID.
-
-   But now it's not really considering if there are ones with an ID of add that exist elsewhere.
-
-   You know, that ID is kind of a convinced way to get around that.
-
-   But if it was a class, you know, it's going to, maybe it finds other things that have that same class on there.
-
-   So it would be aware of.
-
-   But if you're writing the JavaScript and you're writing the HTML, that's something you can, you can try and balance.
-
-   But it's still something to be aware of.
-
-   So moving on to the next scenario here, let's say you've got your fixture and you're ready to test.
-
-   So how do we test this?
-
-   Do you want to actually try and trigger the click event in our Jasmine test?
-
-   That's going to make the fixture element visible?
-
-   Or do we want to spy on this function that binds the event?
-
-   Then call show fields directly and check the fixture afterwards.
-
-   Can you guys tell us in advance next time if there's going to be a test?
-
-   I see a pattern.
-
-   So with this add click, I mean, you're going to trigger the event.
-
-   With the way Jasmine works, it's going to actually trigger events and you can do things like that with it.
-
-   So this is, this seems more like an integration test.
-
-   You're testing a couple things at once here, right?
-
-   You're testing that the elements bound properly and you're testing that the function gets called and you're testing that the function does what you expect it to do.
-
-   It's a lot of stuff that's happening in not a lot of code, which, I mean, that's kind of the real power of jQuery, right?
-
-   That's one of the things that's so attractive is that you can do so much with so little jQuery code, which is great.
-
-   But it's not really great for separating out all the different things you can do in your JavaScript.
-
-   So is this the A answer?
-
-   Is this stuff that you tried and went down that route and decided it sucked and then kept trying stuff until you found something that was better?
-
-   Let's get through the rest of them.
-
-   Actually, no.
-
-   So these are things that I've done without testing JavaScript and it's things that I've tried to do while testing JavaScript.
-
-   And as I've tried to do things that I would have done before, I found that I really am testing a lot of things.
-
-   So this is part, it experienced me with JavaScript thinking, okay, well, I'll do this to test this as I figure out how to actually test JavaScript.
-
-   And then also what really breaks it down into testing the nitty-gritty of these things that are happening.
-
-   If I'm just that particular scenario, it looks like, I mean, that's the kind of thing that if I, like, didn't know what I, you know, if I was new to it, I would probably try a, and then, like, three weeks later, someone would say, hey, why don't you do this?
-
-   And then, like, ah, yeah, duh, you know.
-
-   Yeah.
-
-   I mean, I had serious trouble testing JavaScript for the first month or so, probably.
-
-   I would back up and try it three different ways before I felt comfortable with what needs to happen to do something.
-
-   And 90% of my trouble was DOM-related.
-
-   I was trying to do something with the DOM or a fixture, and I just needed to get the bare minimum out there for doing stuff with the view
-
-   and then back out and start to write code that doesn't concern the view at all.
-
-   And that was a big part for me of just trying to get over that hump.
-
-   And so we'll talk more about it, too.
-
-   But that was kind of the prompt for some of these scenarios here.
-
-   And the thing, too, is that with this B option here, I probably wouldn't have thought about it.
-
-   So you can spy on this binding function to say that it has been called with some Jasmine libraries.
-
-   And then a separate test to actually call a show fields and check that the fixture happens.
-
-   That's something that lets you narrow down what's going to happen when you do a certain thing.
-
-   You're just doing one action instead of several of them to one call.
-
-   So another scenario like that would be, well, why don't we have some client-side validation?
-
-   So if you're trying to enter your social security number, if it's not nine digits, let's show something to the user right away
-
-   so they don't have to wait for a save action and then a response from the server.
-
-   So this is kind of the same flavor.
-
-   You could trigger a change event on the SSN field to say that something has changed.
-
-   And then that would cause the error to display.
-
-   Or we can do kind of a similar pattern.
-
-   Spy on the bind function, call the function directly, and then check the fixture afterwards.
-
-   In this case, again, there's a lot happening.
-
-   There's even more happening in this simple example than the previous one.
-
-   And this is kind of why you don't want to just trigger events in your test.
-
-   That makes your test harder to break down.
-
-   So with that option A, you're doing lots of things, right?
-
-   Not only are you verifying the binding of the event and checking that your field is valid or invalid,
-
-   you're going to check for the correct message of that validity check.
-
-   And you're going to be traversing the DOM to make sure that, one, it got bound to the right element.
-
-   And then, two, that you've rendered the error message in the right spot.
-
-   So jQuery is really nice.
-
-   It takes care of all this DOM traversal for you and probably a lot -- and a lot more.
-
-   And it makes it so transparent to doing it that you kind of forget that you're doing this really complicated thing with a small call.
-
-   And what I'd like to do is kind of let jQuery handle that but then get far away from it as possible so I'm not reliant upon the results of that for the rest of my code.
-
-   If I expect it to -- I want to make sure that it happens properly but then I can go and do something that doesn't really depend on the results of that in order to make my test work.
-
-   And is this out of -- because you don't want to rely on the browser like you want to be able to test it in Node.js or was it a speed factor?
-
-   Like you found like 100 tests took like 10 minutes to come?
-
-   So it's -- it's a couple things.
-
-   Speed is one thing.
-
-   If I don't have a lot of DOM to traverse, it's -- it'll go faster.
-
-   It's also for just separating out responsibilities in my code.
-
-   It's easier to test what something you should do if it's only doing one thing.
-
-   And if you're expecting one line of code to do four or five things, that's a little bit harder to test.
-
-   You're kind of clumping all these responsibilities together into one thing, which again, I mean, I love jQuery.
-
-   It's a fantastic library and I use it a lot, especially for DOM traversal.
-
-   But it also is harder to test that you've got -- you need to make all this set up and then do one thing
-
-   and make sure that all your assumptions are met.
-
-   It can get a little tricky.
-
-   So one pattern that I've done is that I -- instead of executing a function on the result of a jQuery selector,
-
-   so it's going to go find something that I fire something based on what it gets back.
-
-   What I can -- what I'll do is that I'll do that jQuery selection, get that jQuery object,
-
-   and then pass that to a function to deal with it.
-
-   So then my function can take that jQuery object and then do something with it.
-
-   So my test can just take a jQuery object in the setup and not have to worry about the actual finding of it.
-
-   It separates the finding of the element with what you do with it when you get it.
-
-   It's something that leads to easier testability and separation of your code.
-
-   One of the patterns that I found really useful with the project that we've been working on.
-
-   All right, so that's the first four scenarios.
-
-   So you've realized now that all this hypothetical JavaScript you were writing, it's kind of cluttered, right?
-
-   There's lots of things that go on pretty quickly.
-
-   So you decided to attend this amazing session on Backbone.js in McHenry County, right?
-
-   And so then you think, wow, this Backbone stuff is pretty cool.
-
-   So you wanted to refactor your JavaScript to use Backbone.js.
-
-   So using Backbone.js, you can do all these things that you're going to do before, but you've got these objects to kind of separate them out.
-
-   So it's verifying the binding of the event.
-
-   You can use jQuery-- no, excuse me.
-
-   It's verifying the binding of the event by testing that your view's events hash is configured a certain way
-
-   and making sure that that view is using a certain element.
-
-   You're kind of taking care of that one portion of it.
-
-   Now, you are relying on what Backbone is going to do for you with its events.
-
-   There, I'm just deferring to the library.
-
-   And that is something that I'm coupled to in my code.
-
-   It's a choice that I made that I'm going to let this handle it so I don't have to worry about crossbarrows or issues.
-
-   This is going to handle it for me.
-
-   Let's check the logic of valid versus invalid.
-
-   That's something that my model can do.
-
-   I can check my model by calling model.validate.
-
-   You know, all the checks that I have will execute.
-
-   And it's going to return a message for me.
-
-   So given a certain state of the model's attributes, I can expect my validate method to return an error message for me.
-
-   And then, finally, in my view, if I get an error back from the model, I can check that when I give it this model with this error message already,
-
-   that it's going to add it to the right spot.
-
-   So I don't have to trigger the error message in order to see that it's been inserted in the right spot.
-
-   I just have a function that says render error messages.
-
-   And it's going to go, you know, you give it the error message when you call the function,
-
-   and that function is going to take care of rendering it.
-
-   It's not going to have to do all the work it wants to validate it.
-
-   So instead of having one long test that goes through all four steps, sequentially you would have basically four different tests that aren't dependent on the tool.
-
-   Yeah.
-
-   Better because then if it's failing at step three, you know it's just that.
-
-   Yeah.
-
-   And it helps you kind of see where your code is reusable, too.
-
-   This validation pattern is really common.
-
-   You're probably going to want to use it for any client-side validation.
-
-   So you start to see where you can reuse these functions instead of just kind of doing everything at once all in a row.
-
-   And those tests, those integration style tests, they certainly have value as well, but you don't necessarily want to use those by themselves.
-
-   These unit style tests give you, they help you expose where your code is reusable if you're separating out these responsibilities.
-
-   So let's talk about refactoring with this, with backbone in mind.
-
-   So you want to use backbone to use the, to show hidden fields in your HTML.
-
-   So actually the answer to this one may not be B.
-
-   This one is kind of, so a backbone view of event biting and a function that unhides the views L.
-
-   Let's just say it calls some j, the jQuery show method.
-
-   Or that you have an event binding and a function that's going to render a JavaScript template.
-
-   That's what JST is here.
-
-   That's just a shorthand for a certain, there's a JavaScript templating convention, the Jamit package.
-
-   It's one of the things that Document Cloud and Jeremy Ashkenis published as part of their open source projects.
-
-   Anyway, it doesn't matter, it's just a JavaScript template.
-
-   So rather than say manipulating the existing DOM to unhide something, would you rather have it just event bind and then render something brand new on the page?
-
-   So the content doesn't exist at the time the page loads, it's going to exist when you add it when that event occurs.
-
-   So now you've got a case where you can either rely on the DOM to have what you need before you start up all your JavaScript on document ready or you can have your JavaScript insert that content for you.
-
-   Any thoughts on what may be a better approach?
-
-   Or the pros and cons of each I should say?
-
-   So what's interesting actually is that client side rendering depending on your browser and your machine can actually be pretty quick.
-
-   In some cases quicker than the rendering that's going to happen server side that gets sent back up with a response.
-
-   But you're right.
-
-   If you're rendering a lot of stuff, that can be kind of slow.
-
-   If you've loaded it all beforehand and now you're just done hiring you, it's going to be there.
-
-   You're just now toggling the style on it.
-
-   And what I've found too when I have these, you know, I'm working on a project with a front-end designer and they're used to working inside of HTML or Haml or whatever it is that they're used to manipulating.
-
-   And now they have this separate templating they need to learn.
-
-   That can be tricky too.
-
-   It's hard to move back and forth as a designer that's working on this if someone else is just creating all different kinds of templates.
-
-   So it's another set of templating that you've got to learn to use and then use properly.
-
-   As far as a guide for this goes, I don't really know if I have one.
-
-   What I would say is if it's hiding and unhiding additional fields, maybe that's something I would just load in the DOM and then unhide versus trying to render that content separately.
-
-   Because that's going to be pretty static.
-
-   I'm only going to have one instance of these fields.
-
-   Maybe I only have one instance of these fields.
-
-   But say in a to-do app, if I'm going to have a lot of tasks, I don't really have, maybe I don't want to have just one hidden version of the edit form that I want to use for everything.
-
-   I can just add and remove that from the DOM as I go and then a JavaScript template is really nice for that.
-
-   Some things that I've done, I've tried a couple different patterns.
-
-   You know, if I feel like I've got this static display of content, like a table that's got a certain amount of elements that I want to fill out, that's pretty good as static HTML.
-
-   And then I just give that to backbone view to watch and render things inside of or manipulate inside of.
-
-   But if I've got a content that's going to be pretty dynamic and I don't want to wait for the server to respond with what I need, using JSTs has been a pretty nice thing to have.
-
-   Because it does happen pretty quickly, at least in modern browsers.
-
-   I kind of alluded to this before, but so with the jQuery, it's nice. It's really nice.
-
-   This is from the creator of jQuery.
-
-   It's pretty accurate. There's problems. There's problems all over.
-
-   And I like jQuery because it handles a lot of that cross-browser compatibility for me.
-
-   I read that jQuery is, I think John had said, and I think it's on the jQuery site, but essentially if a browser has more than 1% usage in the standard metrics, jQuery is going to support it.
-
-   So you can be pretty sure that jQuery methods are going to do what you expect them to do, regardless of what browser the user is using.
-
-   So that's really nice to not have to worry about rewriting every single thing that needs to happen across IE, Firefox, Chrome, Safari, whatever.
-
-   But that being said, just know why you're using jQuery.
-
-   If you're using it for DOM traversal, I think that's a really good way to use it.
-
-   You know, there's all sorts of plugins, too.
-
-   There are validates plugins.
-
-   There are things that, you know, maybe you'd want a model to take care of versus some plugin to handle.
-
-   There are lots of really nice UI plugins as well.
-
-   It's just something that you need to be aware of.
-
-   And if you're trying to separate out your responsibilities to JavaScript code, it's really easy to clump them all together and just rely on a library to do that stuff for you.
-
-   I think that some of those plugins are bad to use.
-
-   Is that what you're saying?
-
-   I'm not totally calling your point.
-
-   Well, I think your mileage is going to vary.
-
-   You know, just going out and looking for plugins is a good way to get something that works reasonably well pretty quickly.
-
-   But unless you're going through and looking at the source code of the plugin, you may not really know what it's doing and you may be getting yourself into some using and relying on some library that isn't really all that configurable.
-
-   It's relying on certain assumptions that may just not be supported as well.
-
-   jQuery core, I would rely upon pretty much.
-
-   Not without question, but I wouldn't really hesitate to plug that in if it's something staring in jQuery.
-
-   The same thing could be said about any Ruby gems or other plugins to other frameworks.
-
-   I mean, there are some gems out there that you can write in the morning, you know.
-
-   Yeah.
-
-   And they're not supported a month later either.
-
-   I mean, it's just oftentimes I feel more comfortable writing the code even if it means a little more work.
-
-   If I write it and I've got a test for it and I know exactly what it does, I feel better about that code and it's going to keep on doing what I want to.
-
-   And it's going to be easier to modify later when my requirements change.
-
-   So, that's the general point.
-
-   Now, you can still test what those lever is doing to some degree.
-
-   If you're going to call within a back-end view or something like that, you can spy on that call.
-
-   You can stub it out just to make sure that it gets called.
-
-   But, again, that's kind of just a, kind of like the namespace thing.
-
-   It's sort of a general thing that I've learned about trying to test JavaScript that's been helpful to me.
-
-   So, when I'm evaluating a gem and deciding if I want to use it, I'll go and I'll look at the tests
-
-   and actually see if they wrote any tests at all.
-
-   Right?
-
-   Because a lot of times, is there something similar you can do when you're looking at libraries?
-
-   Well, don't look for tests because you probably won't find them.
-
-   Right.
-
-   I mean, hardly anybody writes a test for those kind of libraries.
-
-   But, you know, is there some other, like, smell that you would look for when you're looking at a JavaScript library?
-
-   You know, the validates, I mean, that one feels a little funny to me, that you've got this thing that's going to,
-
-   you're going to bind some events to a certain field and then you've got validations that are going to happen.
-
-   I mean, what's, it seems like that should be something more like a model and background should know about,
-
-   rather than have some general plug-in that doesn't really relate to any, you're going to have to have a validate.
-
-   That's one example.
-
-   So if it's, if it's doing something that really, some bad one ought to be doing, you would say don't track, you know, avoid the plug-in.
-
-   I wouldn't say avoid it.
-
-   I would just say be cognizant.
-
-   I mean, the, maybe another one, like, is the Ajax form plug-in.
-
-   So you've basically got this, and this is the, this kind of gets to the Ajax form plug-in as something that essentially you can use it on a form that exists as just static HTML.
-
-   And it is going to intercept the submit message, the submit button that you click.
-
-   It's going to intercept that, submit your form as an Ajax call.
-
-   So you can do all this stuff here.
-
-   If Java, if JavaScript is working, then it can do an Ajax and it's not going to refresh the page or flicker the page when you submit it.
-
-   You can do something else afterwards.
-
-   But if JavaScript is disabled, then the form works as expected with HTML.
-
-   So that's, that's cool.
-
-   I mean, that's, that's unobtrusive, right?
-
-   If it doesn't work, then it doesn't work.
-
-   The HTML one works fine.
-
-   But that kind of full interception of what it's doing and submitting, it's really convenient, but the moment you want something slightly different, then you're kind of stuck with this plug-in.
-
-   And that's maybe a better example of kind of going down this route of some convention, some plug-in, and really what you want is finer-grained control.
-
-   It depends on how much control you want, I guess, or how much you expect to need.
-
-   Well, that particular scenario kind of screws up your separation of concerns.
-
-   Whatever you've got figured out, yeah, it imposes its own approach.
-
-   Yeah.
-
-   You might not like it.
-
-   I mean, it's something I've used before and it's really nice because you write 12 characters of JavaScript and you're done.
-
-   You get the Ajax call and everything's good.
-
-   So, there are certainly advantages.
-
-   It just depends on when you get into really client-rich applications on the website, finer-grained control is usually what you need to do.
-
-   So, if you were walking into a new project today, how sure would you be that you'd use Backbone.js or would you want to see what other frameworks are available?
-
-   You know, I've heard a lot about Ember.js lately.
-
-   Ember seems like the equivalent, like Ember is kind of just all this past judgment.
-
-   It's kind of like the Rails of JavaScript frameworks.
-
-   There's a lot of convention over configuration there.
-
-   You've got the ability to kind of take things out if you don't want them, but it's very opinionated in saying that we're going to use this templating library.
-
-   We're going to expect you to render things in this fashion.
-
-   And I do end up writing a fair, you know, when you're starting with a new project with Backbone, you may end up writing a lot of the code the same, you know, over and over again.
-
-   And that can kind of just mean that it's time to abstract something out.
-
-   And I like to have, maybe it's just my hesitation with my knowledge of, my deep knowledge of JavaScript, but it's nice to have that fine-grained control over it so I know that it's doing what I want it to do.
-
-   At this point, I don't think I would, you know, I would use, I would write JavaScript without Backbone, but that's because I've kind of seen what you can do with Backbone JS.
-
-   You can, you've got this, that's the really nice thing about it, just to kind of segue into my next slide here.
-
-   It's just a framework, right?
-
-   I mean, you can, the nice thing about Backbone is that it doesn't really get in your way.
-
-   It doesn't demand you use certain libraries or certain templating plugins.
-
-   It shows you how to separate out these responsibilities.
-
-   And if you want something that does, that communicates with the server a certain way that Backbone doesn't do,
-
-   it kind of provides a template for how that code would look.
-
-   Same thing with rendering to the DOM or controlling events.
-
-   Like it's, it's this really nice way to, it provides a structure, something that you could use.
-
-   And I've used Backbone just to control events on an element before.
-
-   No rendering at all.
-
-   I just don't like, just like having it defined its events and I feel pretty comfortable with it.
-
-   What are your thoughts on CoffeeScript?
-
-   CoffeeScript?
-
-   So, my thoughts on CoffeeScript are, if I was starting over and I didn't know anything about JavaScript,
-
-   CoffeeScript would be really nice.
-
-   Having gone through the pitfalls of JavaScript for a while now,
-
-   I can write JavaScript that avoids the things that CoffeeScript tries to help you avoid.
-
-   Like, namespacing properly, like doing comparators that make sense.
-
-   You know, it doesn't try and coerce your types, you know, from a string to an integer for you
-
-   if you do a double equal instead of a triple equal.
-
-   There's lots of really, what's it, the, there's that book, JavaScript Good Parts by Douglas Crockford.
-
-   The best part about that book is the appendix where it's like JavaScript the awful parts.
-
-   Because that's the stuff that CoffeeScript basically says, this is really dumb.
-
-   We're going to write this in a way that it avoids this stuff for you.
-
-   It's, it's weird jumping to it from JavaScript because I feel like I'm missing something and I just kind of start typing it.
-
-   But, you know, it's also, even though it compiles down, it's also kind of lower ceremonial as well.
-
-   You don't have to type all the blocks.
-
-   It's going to create that closure for you on that.
-
-   It's kind of like someone, it seems like someone just read JavaScript in good parts and said, okay, this makes more sense in language.
-
-   So it's a, it's a convenience and it compiles down to JavaScript.
-
-   So, alright.
-
-   That being said, I haven't written much of it.
-
-   Any other questions?
-
-   I think I made my point.
-
-   I'm not sure.
-
-   Anyway, I mean, it's good.
-
-   It provides that structure.
-
-   That's, that's the basic takeaway with Backbone.
-
-   Other kind of summary things, things that kind of help me lead towards clean JavaScript is namespacing 100%.
-
-   I would never not do it.
-
-   If you're writing tests, minimize your fixtures at all.
-
-   It makes your test fast.
-
-   It's a, and it helps you write more focused JavaScript.
-
-   You've mentioned runtime for tests.
-
-   I've got a, I mean, a six month old MacBook Pro here.
-
-   On our project we have, I think 700 Jasmine tests right now and they run in Chrome in about a second.
-
-   So it can be pretty speedy.
-
-   I think, you know, Safari, it runs in three seconds or something.
-
-   But they're, they're really quick.
-
-   And that's because we're not loading any fixtures.
-
-   Uh, there's a project that I'm working on, uh, that has, that had 800 line fixture files.
-
-   And those seconds, 50 of them took 10 seconds to run.
-
-   So it can really bog you down.
-
-   So is it to say that the test that you, the 700 tests that you run in a second, you're not doing any DOM manipulation or you just minimize stuff?
-
-   I'm manipulating the fixture that I'm working.
-
-   And it's really that I'm saying, okay, the fixture just has a single div with this one class.
-
-   When I execute the test, I expect it to insert some validation error inside that div.
-
-   I don't have to traverse the entire DOM to find out how to load the fixture, you know, before I run each test to make it happen.
-
-   So you're manipulating the DOM?
-
-   Yeah, it's just in very small, isolated places.
-
-   Yeah.
-
-   And you just, I mean, you can't get away from it.
-
-   But you can certainly make it as small as possible.
-
-   Yeah, because that was kind of the question I had was, if you're trying to get away from relying so much on jQuery, are you spending a lot of time mocking what jQuery does for you?
-
-   Not a lot of time.
-
-   I mean, there's certainly parts of it where you've, that part where you're interacting with it, you've got to deal with it.
-
-   But the same thing goes if you're trying to deal with a database.
-
-   You've got some tests that are going to deal with your database section.
-
-   But once you've got that figured out, then you can mock out everything else and test your business logic that just, you know, can do its own thing.
-
-   It doesn't really require it to do, to function.
-
-   That kind of leads me into another point, which is really just making sure that you're separating responsibilities and actually unit testing your code.
-
-   Again, integration tests are fine, and they're good, and they catch things.
-
-   But unit testing provides a deeper layer of coverage that I think is really valuable.
-
-   So, any other questions, comments?
-
-   Can you show us a test?
-
-   Yes, I can.
-
-   So, there are some links to my GitHub repos.
-
-   Let me pull up the, my Rails version that was on the thumb drive.
-
-   I'll put them back up.
-
-   I'll put them back up.
-
-   Yeah.
-
-   So, right now I've got, I've got nothing on the screen.
-
-   So, I've started up, I've started up Jasmine as a, just running locally.
-
-   Um, and let me point my browser to this.
-
-   So, this is the suite of tests I have for JavaScript for the Rails version of my to-do app.
-
-   Um, since they depended on Jasmine, I didn't translate these for the local storage version.
-
-   But, uh, you can take a look at them when we get in the repo.
-
-   Let me expand these.
-
-   So, you can kind of see what the tests look like.
-
-   So, for the collection and models, I've got some pretty basic setup type tests.
-
-   That it's using the task model, that the URL is defined as what I want it to be.
-
-   Uh, we've got some validations about what an empty description is and what, you know,
-
-   if that's invalid or what.
-
-   Um, for the views, some event bindings, what these actual functions are doing.
-
-   Let me pop open the code and show you what some of these look like.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   Let me pop open the code and show you what I'm going to do.
-
-   So, let me pop open the code and show you what I'm going to do.
-
-   So, here I've got a before each block where I'm doing some setup for each of the tests.
-
-   I'm essentially, this JST here, this is the template that I want to render inside my view.
-
-   And I've made the decision that I don't care what my view renders.
-
-   This app is simple enough that as long as it's rendering, that's fine by me.
-
-   This is just some empty function that I can spy on or step out that to make sure it gets called.
-
-   I've got some, I've got a test model here.
-
-   I'm stubbing out the save method because I don't want to try and trigger a save to the server when I run my specs.
-
-   And then I've got a view that I'm going to use in my test as well.
-
-   I'm going to give it the model and then I'm going to restore it so I don't have any problems with my setup between tests.
-
-   So, let's render the template test here.
-
-   What I'm essentially doing is I'm setting up a spy with Sinon.js.
-
-   This is a stubbing mocking library that's all over JavaScript that I've really enjoyed using.
-
-   The Jasmine spies if you're using Rails are nice as well.
-
-   This is something I've just gotten in the habit of.
-
-   So, what I do is I'm just going to call render on the view.
-
-   And after I call it, I'm expecting that that template spy was called and that I was passing the attributes of the model along with it.
-
-   So, to show you the actual code it's running against, this is the edit task view.
-
-   This is what the surrender function is doing.
-
-   It's getting the HTML from calling this template as a function with the attributes.
-
-   And then it's going to append it to the L through the HTML, the jQuery HTML function.
-
-   And then it's going to return this.
-
-   So, that's essentially what that test is doing.
-
-   Let me show you any questions on the viewed one.
-
-   I'm going to jump back to the game too.
-
-   So, what did you say the testing point is called?
-
-   Jasmine is the plug-out of Mars Becky.
-
-   A little bit, yeah.
-
-   So, let me open up the task.
-
-   So, here for the validations, I'm creating a task with no attributes on it.
-
-   When I call validate, I want to check that the description, if the description is null, that I want that to be invalid.
-
-   So, I'm expecting that the first error in the errors attribute here is going to be equal to this field of description and this message.
-
-   And then vice versa, I call it and I've got some description in there that there are no errors.
-
-   And then this validate function here is essentially doing just that.
-
-   I'm just constructing an array that I give it a list of objects with all those fields and error messages there.
-
-   Any other questions or things you'd like to take a look at?
-
-   Have you had experience running the Jasmine tests in a continuous integration server?
-
-   Yeah.
-
-   So, my client's project, we use Hudson and it runs on a Linux server.
-
-   So, there's some setup you can use to run it basically on Firefox on the Linux server.
-
-   There's a couple of commands you can use and you can run Jasmine as like a CI task for a Rails application.
-
-   Not to get too Rails-y.
-
-   But, so, so, so, so, right a task you would get would be Jasmine CI.
-
-   What that's going to do is it's going to fire up a Firefox browser on this screen, you'll just have to believe me.
-
-   And then it outputs the results of it to the terminal here.
-
-   And that comes with the Jasmine gem?
-
-   The Jasmine gem.
-
-   Okay.
-
-   Yeah.
-
-   So, yeah, that's a good question.
-
-   So, I, for the dependencies I'm kind of managing it by hand.
-
-   I'm just concluding them in the right order when I'm setting up my JavaScript includes.
-
-   I think for on the, on our project we're using the, Rails has the, there's like a JS manifest you can use.
-
-   Where it's going, you can list out all the files and it's going to compile them to one single JS file that it serves.
-
-   There's a, I mean there, I think there's a handful of libraries but that's the one we're using on our Rails application.
-
-   Some type of compressor.
-
-   I don't even, I'm not sure.
-
-   It doesn't minify it in development or QA mode.
-
-   But then in production it can also minify it.
-
-   So, it really just takes out all of your, all your extra spaces.
-
-   So, actually that kind of reminds me, one thing that we do have is a gem that will run JSLint on our JavaScript, on our, on our application files.
-
-   And so, what, you can configure that with all of the JSLint is the, basically the syntax checker that Douglas Crockford, the JavaScript for good parts guy wrote.
-
-   That will tell you if your JavaScript is good.
-
-   It has just the good parts or the bad parts.
-
-   That includes semicolon placement.
-
-   JavaScript will insert semicolons for you if you didn't do it.
-
-   And it will guess where that may be.
-
-   So, if you're trying to compress all your JavaScript into no spaces in your production file,
-
-   and you're missing semicolons, then bad things can happen.
-
-   So, we actually have that running as a task on our Hudson server as well.
-
-   If there are any JSLint failures, then our build fails, you know.
-
-   Which has been helpful.
-
-   To make sure that we're not going to run into any of those weird JavaScript types of errors later when we're actually using the production.
-
-   Have you had any experience with, like, modules?
-
-   Not a lot.
-
-   I mean, I think the nice thing about the Rails process working is that it kind of has some of that stuff built in for me.
-
-   I've heard a lot about it, and it does sound pretty slick, but just nothing I've got a lot of personal experience with.
-
-   Any other questions?
-
-   Let me toss this GitHub link back up on here.
-
-   All right.
-
-   Well, thank you, everybody.
-
-   Thank you very much.
-
-   It's my birthday, you know.
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: Guest
+    role: Guest
+turns:
+- speaker: M1
+  text: "--way to really write good code that I'm proud of. You end up with a form
+    that's normally HTML, and then you want to add some hiding or showing of one of
+    the fields, and then you put something in the document ready, and then you hide
+    it on one case, and then something happens, and then it changes. And it doesn't
+    really feel right. I'm not sure how to test that. I'm not sure how to control
+    how that works without some web-based tests that don't make me very happy. So
+    I started using Backbone about four or five months ago. I was working with a client,
+    and they're about to embark on a new project that they knew was going to be client-side
+    heavy. They had made a mess in their previous application with their JavaScript
+    and wanted to get a better control over what this new code was going to look like.
+    And so they started looking at a few options. They were looking at, I think JavaScript
+    NBC was one. Sprout Core was another, and Backbone. js. Spent some time specking
+    things out. For us, we ended up succeeding the best in that short amount of time
+    with Backbone. js. It was just kind of an easier learning curve. Kind of felt
+    like you were writing JavaScript and not really learning another set of-- another
+    language to write what your JavaScript should do. So we embarked with JavaScript.
+    I learned a lot about how to write with Backbone, how to test with Backbone. js.
+    And I've come up with some patterns, some ideas about what good Backbone. js code
+    looks like, how it should all work together. And that's what I'm going to cover
+    today. We're going to talk first about Backbone. js. So I want to give a good
+    intro to what the framework is like. And then we can start to dive in how you
+    would use Backbone in a web project, or how you would evolve your project using--
+    trying to move forward with tests in order to add that functionality bit by bit.
+    So that being said, let's just stop and talk about JavaScript right away. JavaScript
+    is an interesting language. It's kind of a bit like Frankenstein, in that it was
+    kind of cobbled together, right?"
+- speaker: S1
+  text: It's not a lot of standards in there. It's really powerful, though. It's really
+    fast. And it's got all these standards that are used all over the place. I mean,
+    all the broads are supported. But it can also kind of rip your arms off if you're
+    not careful. And it can cause a lot of problems. So it's kind of up to you to
+    control JavaScript. You want to kind of get away from just this procedural mess
+    of code that happens in your Document Ready, and actually just get a grip on it.
+    Make sure that it's doing what you want it to do, and not having it override something
+    that lives in the global namespace. So back to Backbone. js. A little bit of background
+    on the creator. Jeremy Ashganis is the guy that-- he worked at a company called
+    Document Cloud. It was a project that was JavaScript heavy. And out of their experience
+    with Document Cloud, they ended up creating and extracting out Backbone. js. Jeremy
+    also is the creator of CoffeeScript. I don't know if any of you folks have used
+    CoffeeScript before. But he's done those two things. And also Underscore. js,
+    a kind of collection of functional type methods that you can use with your JavaScript
+    projects. So, when it comes down to his Backbone, it's really about structure.
+    The structure that it can give to your application. One of the examples here is
+    there's a model in Backbone. Backbone is kind of built as an MVC framework for
+    the client side. I'm not sure if that's entirely accurate, but it does have structure.
+    It's got a framework and it's got a model in it. We'll leave the discussion about
+    whether it's a true MVC for another time. But here's an example of how a model
+    works, or how you set up a model. So, you set up a task. This is a pretty straightforward
+    task model. It's got-- you can have defaults. So, if you create a new instance
+    of a task, it will have this attribute of complete, and it's got to be false.
+    You can also have-- you can also create-- so, if you create it, you can also give
+    it other value. So, you can give it a description of, you know, so letting you
+    run on the top of the laboratory. And then when you call task. getDescription,
+    it's going to return that value to you. Models can be-- can live inside of collections.
+    Collections are really just kind of a convenient way to access a group of models.
+    So, you've got some defaults. So, you can say if you want to create something
+    through a collection, you can pass in the list of attributes, and it's going to
+    create an instance of that model that's been associated with it with those-- with
+    those attributes.
+- speaker: M1
+  text: Can you go just a little slower through that?
+- speaker: S1
+  text: Sure, sure. So, yeah, just to back up here on the collection, I can talk a
+    little about how this interacts with the server, too. So, models and collections
+    are going to represent the data that lives in your server. It's not going to live
+    in the client. It's going to live somewhere else. And my-- some of the apps I
+    passed around, it can live in a Rails project. It can just be HTML5 local storage.
+    Just somewhere that you're going to get the data from to display to your user.
+    So, in this case here, we have a-- you've got the-- you're extending the backbone
+    collection base object and adding a couple of attributes to it. The model that
+    listed here is-- this here is a-- just a namespace. This is the application namespace
+    of to-do. This is my models underneath and this is the task that's-- that's essentially
+    what the model definition is. And then the URL there is tasks. And so, the URL
+    is going to be the action that it tries to access whenever you do a save or a
+    create or a destroy on the model. And those are going to just correspond to the
+    right HTTP request to get a new one, to fetch out an entire index of these models,
+    to update them, to destroy them. So, that's part of that configuration there is
+    on the collection. And back here in this collection example here, we instantiate
+    the task collection and then we're calling a create and that's going to add--
+    this create is going to add instances of models to the collection and also take
+    care of sending that-- that post request down to the server to actually create
+    and persist in the database.
+- speaker: M1
+  text: Any questions? Okay.
+- speaker: S1
+  text: One of the nice things about Backbone is that you don't have to use the entire
+    framework. You kind of pick and choose what you want to-- what you want to interact
+    with when it comes to the objects. An example of this is a Backbone router. So
+    the router's function in Backbone is to essentially monitor the window location,
+    the URL that you're visiting. When you-- when you-- when you initialize a router,
+    it's going to assume that you're on the-- it's going to take these actions. It's
+    going to-- you can use it to kind of bootstrap in any values that you load from
+    your-- your initial server request. So say you're serving up an HTML page and
+    you're going to give it some data to start with. So you can call this router with
+    these options and say, okay, well, I already have some tasks I've loaded. So I'm
+    just going to create that inside of this router and I'm also going to create a
+    view that has that collection. I'm going to get to the views in a second here.
+    And then you can define some routes inside of here. So that empty string there
+    is going to be the default route for the page. And then it's going to call that
+    function when it hits that route. So if you go to the base URL of the page, the
+    first thing it's going to do is call this loadTask function.
+- speaker: M1
+  text: And that's going to go off and probably load some tasks, right?
+- speaker: S1
+  text: And then if you visit a URL that looks like this, it's going to be-- it's
+    with a little slug for the ID there, it's going to fire the EditTask function.
+    An example of what the EditTask function might look like is this here. So let's
+    say you're just going through your to-do app. You've got a list of things that
+    you've got that you want to get done. And you click on one of those-- you click
+    on one of those tasks, that can act as a link that just directs you to that URL
+    that we specified. And it's going to fire this EditTask function. This is going
+    to instantiate a view that we passed along the collection so it has knowledge
+    of it and then render that view. Again, I'm going to get a little bit more to
+    the views in a second, but this is kind of a typical thing. You know, when you
+    hit a URL, it's going to render-- it's going to do some action to render something
+    for the user. This is how you'd use a router. So essentially, inside of a document-ready
+    or somewhere on your page, you're going to instantiate your router. And then,
+    in order to actually start the router doing things, you need to start Backbone
+    History. Backbone History is going to work if you have a router defined on your
+    page and it's got some routes defined. So assuming you have all that setup that
+    I showed on the previous slides, as soon as you start up Backbone History, then
+    it's going to start monitoring the URLs and start firing actions. So if for some
+    reason you didn't want to start monitoring right away, you could defer that starting
+    of the history monitoring and then start using Backbone after you've loaded the
+    page and they've taken some action.
+- speaker: M1
+  text: Do you have any insight into why it's history?
+- speaker: S1
+  text: It seems like a weird thing to call it. I think it's kind of keeping in parallel
+    with the DOM window history inside of a browser. So there's something similar
+    that keeps the history of the browser and everything you visited. So I think that's
+    what it's trying to parallel. I think it's trying to get the same idea of this
+    is the list of things. I'm not necessarily sure. I don't think this requires the
+    HTML5 interface to make it work, but it's kind of the same idea. So you want to
+    have access to this state. So actually, for example, if you clicked on a link
+    to edit a task, right, you're going to get a URL that looks like this. Your slash
+    to do and then the hash with task slash 34 slash edit. And the nice thing about
+    this is if you instantiate that Backbone router on your page and start monitoring
+    the history, you can essentially link to this permanently. You can pass this around
+    and when Backbone gets loaded, it's going to find that URL that you gave it and
+    then load that so you can actually take a link that you can send to someone and
+    it's going to load the JavaScript right away for you. This link actually means
+    something because of Backbone and it can load where you were in the state of that
+    JavaScript versus having to link to a static HTML page.
+- speaker: M1
+  text: Any questions on the router?
+- speaker: S1
+  text: That's kind of cool. Yeah, it's pretty slick. So it's a nice way to keep track
+    of things. Yeah, this convention of using the hash for what the JavaScript portion
+    of your web page is doing is something that you'll probably see on Twitter, other
+    things. They're not using Backbone, but I think it's kind of the conventions that's
+    emerged for trying to store what would be a JavaScript-ish type link. So... Oh,
+    sorry.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: So another question is, along with that, I've heard some backlash for using
+    like the hash just because everything happens, the hash doesn't get sent down
+    to the server, and now you're kind of stuck with links with hashes you have to
+    maintain that all on the client side.
+- speaker: M1
+  text: Yeah. Is there like an option not to do that? So like if the browser does
+    support HTML5 history, then it can do that? Or is it just hard-coded just to do
+    the hash?
+- speaker: S1
+  text: It is, you may be able to overwrite it. I'm not sure if it's going to be the
+    hash specifically or if it's going to detect something or other. You know what
+    I found, we'll probably talk about this more at the end of it too, is I found
+    that with a lot of these JavaScript frameworks that are emerging, they're kind
+    of just saying that's to IE7 and below. We're just going to support the new stuff
+    because it's too hard, excuse me, it's too hard. And it's easier to support the
+    browser that actually can render JavaScript in a reasonable manner, a more predictable
+    manner, you might say.
+- speaker: M1
+  text: How well does it play with other libraries that use hash as well? Like is
+    it going to be a problem?
+- speaker: S1
+  text: I believe that jQuery mobile uses the hash as well, one history.
+- speaker: M1
+  text: So would you, I don't know, would you ever try to use both in an application?
+- speaker: S1
+  text: You know, I mean, I've heard of some projects that are trying to use Backbone
+    and jQuery mobile UI. I haven't taken a look at it specifically, but yeah, I mean,
+    that's definitely something you'd have to be aware of is how all your different
+    libraries can interact with it. You know, the nice thing about the router is that
+    if your application doesn't really require you to jump back to a certain state,
+    this is the part I go back on is you don't have to use it. It doesn't fire it
+    up for you to start with. You can just not create a router and have the functions
+    that render stuff just happen from event bindings. So that's one way to get around
+    is just to not use that function if you don't want to. I imagine, though, if there
+    was another library that was waiting for the window of history to change and detect
+    some hash that it could be that both actions are triggered. It could do the thing
+    that one JavaScript library is waiting for the event on of the certain history
+    state, and then also backbone is going to execute too, and then whatever happens
+    is anyone's yes at that point. I guess it depends on what it does to the DOM and
+    who wins, who gets there first.
+- speaker: M1
+  text: So, speaking of the DOM, things have been pretty good until now, right?
+- speaker: S1
+  text: We're just talking about stuff on the server, monitoring the Windows history
+    state. It's all been pretty straightforward. It's a pretty simple structure. There's
+    not a lot of complexity yet. But when it comes to the DOM, you enter into this
+    really murky territory. You've got some control over what's in there if you're
+    the one creating the full application, but if you're working with someone else
+    that's giving you HTML, it can get a little tricky, and it certainly behaves differently
+    across browsers as well. So, let's talk more about the views and backbone. So,
+    this quote here is actually from the Backbone. js documentation. They're more
+    convention than code, and that's certainly an accurate description. Now, when
+    I talk about a backbone view, I'm really talking about an object, something that's
+    going to control a certain slice of the DOM. Something that's going to watch a
+    certain element on the page that you give it, and it's going to bind events to
+    it. It's going to render things inside of it, and that's the convention part.
+    I mean, that's what you want to focus in on one part of the DOM, even though you
+    can still access and do anything else you want inside of it.
+- speaker: M1
+  text: Should we take a two-minute break to grab pizza? Yeah.
+- speaker: S1
+  text: Before I dive into how the view looks as an object, why do you guys grab some
+    slices of pizza and we can start back up here? Yeah, there's pop and the bass
+    amount of water. Yeah, right. And angle of water. There's a water fountain.
+- speaker: M1
+  text: It's cold? Yeah. Yeah. Yeah. Yeah. Yeah.
+- speaker: S1
+  text: There's pop and the bass amount of water. Yeah, right. There's a water fountain.
+- speaker: M1
+  text: Yeah. Yeah.
+- speaker: S1
+  text: Yeah, there's pop and the bass amount of water. Yeah, right. And angle of
+    water. Whatever's a water fountain.
+- speaker: M1
+  text: "- How's this going? - It's going? Yeah."
+- speaker: S1
+  text: "- There's a link here. - Uh... - Yeah. - It's very nice. - Oh, yeah."
+- speaker: M1
+  text: "- Are you going to go on back?"
+- speaker: S1
+  text: "- Hi."
+- speaker: M1
+  text: "- Would you want some teaching?"
+- speaker: S1
+  text: "- There should be some left. Maybe. - French Market. - Yes. - Yes. - Yeah.
+    - That's the spelling word."
+- speaker: M1
+  text: "- How do you shop?"
+- speaker: S1
+  text: "- I know."
+- speaker: M1
+  text: "- How do you use it?"
+- speaker: S1
+  text: "- I'm just thinking about that. - I'm just thinking about that. - We're trying
+    to find them. - Yeah. - I've never actually done it. I don't even know what I'm
+    going to do. - Dr."
+- speaker: M1
+  text: Sharon, did you have this book?
+- speaker: S1
+  text: "- Yeah. - Yeah, I kind of got a look on this one. - Sounds like it's working.
+    - I think it's working."
+- speaker: M1
+  text: "- Do you guys do the next one?"
+- speaker: S1
+  text: "- Do it. - That's good. - That's Taylor. - That's Taylor. - You're not going
+    to do that. - You're not going to do that. - Yeah. - You guys work there together.
+    - No. - This is Taylor. - Hey. - I'm here. - No."
+- speaker: M1
+  text: "- Oh, really?"
+- speaker: S1
+  text: "- Yes. - Yeah. - I'm coming to your test. - I don't know. - I don't know.
+    - It's very painful. - Yeah, probably not. - Okay. - Okay. - Perfect. - I should
+    go with a lot of ice. - I don't know. - Yeah. - Yeah. - I don't know. - I don't
+    know. - All right. Looks like everyone's got at least a slice of pizza. So we
+    can, uh... - I don't know. - Okay. - Okay. - Okay. - Okay. - Okay. - Okay. - Okay.
+    - All right. - Okay. - Okay. - Okay. - Okay. - Okay. - Okay. - Okay. - Okay. -
+    Okay. - Okay. - Okay. - Okay. - All right. Looks like everyone's got at least
+    a slice of pizza so we can, uh, get started back up here. All right. So, uh, getting
+    back to the backbone views. Uh, so let's take a look at what a view might look
+    like. Uh, so, uh, views, uh, one way to use a view in backbone is to, you're going
+    to find what you would your other objects, your collections and your routers and
+    your models. Uh, and you're going to give it, one thing you can do is you can
+    give it some tag names and class names. Uh, now this is just kind of a way of
+    saying, uh, if you want backbone to render some HTML, these can kind of be your
+    container tags and classes. So no matter what you render and add to inside the
+    element for that view, it's going to wrap it inside of this. So, another part
+    of it for the view is that a view provides a really nice way to bind events to,
+    uh, to a part of the element, to a part of the, part of the DOM, a certain element.
+    And what happens is that this hash of events, or it's going to, as soon as you,
+    uh, instantiate, as soon as you instantiate the view and give it an element that
+    it's going to, to, to manage, to control, it's going to bind these events to it.
+    And if you remove the view, it's going to destroy the events. It kind of is a
+    way to, to, to, to push out that knowledge and, you know, that, that maintenance
+    of the event bindings. And there is some convenience method as well for, if you
+    want to rebind all your events or unbind them, that's, that exists as well. So,
+    like, um, this is kind of like the live method in the older versions of jQuery,
+    in that it, it does it dynamically, you know, if you add new graphs to your page
+    and you have a, a view out there for whatever you added, it's automatically going
+    to find it and bind it at? Essentially, yeah. If you, if you render, uh, let me,
+    I can get to it in a second. But so, a view is going to also render. If you're
+    going to render HTML and add it to the element that the view is controlling, it's
+    going to bind events to it. Uh, one of the ways that you can use a view is that
+    you can hand it an existing element in your HTML. So, let's say you let it go
+    into static HTML and now you want to control something inside it with backbone.
+    Uh, as soon as you instantiate the view with that element, it's going to try and
+    bind all those events to it. So, if you've got some static HTML that you want
+    it to, you, you know, you're going to serve it up like that and you want backbone
+    to monitor it. Uh, whatever's inside of it, it can bind events to that as well.
+    So, it's another way just to kind of take care of that event binding. It's something
+    that I found really convenient about backbone views. Uh, so, for this, for this,
+    uh, function here, uh, so when a key up occurs on the new task, uh, ID selector,
+    we want to do a function for, uh, create on enter. And so, what that function
+    might look like is, uh, you know, when you perceive this key up event, we want
+    to, uh, add the input value from the field that we're watching and do a collection
+    create. So, the idea is that, you know, if you're typing something into your to
+    do app, uh, you hit enter on the field, it's going to add a model to your collection
+    with whatever you just typed in. I'm omitting some of the code here, but, you
+    know, checking that you're hitting enter key and not just some random key. Uh,
+    but that's kind of the gut stuff. That's what the backbone part of it is. And
+    you have to bind when, in the previous slide, you bound it as a string."
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: So, you're certain, you're feeding it this events, this hash of events. And
+    the, the convention here is that this is just the, the event is going to do the
+    binding on. This is the function that it's going to use. Using this function needs
+    to be defined within your view. So, if you want to call some other function lived
+    outside of view, you'd really just create a wrapper for that function and then
+    call that function inside your view function.
+- speaker: M1
+  text: So, will this be bound to the view?
+- speaker: S1
+  text: Uh, yeah, this inside the view is, uh, the view object. And there are a couple,
+    a couple of nice methods with underscore, I believe. I think it's the underscore
+    portion of it that, uh, you can do like a bind all. And it's, you can always give
+    this being the view as the context of your functions, in case you get lost in
+    callbacks and nested functions. So, I'm sorry.
+- speaker: M1
+  text: Sure. Sure.
+- speaker: S1
+  text: I spent a lot of time trying to debug my crappy Java scripts. Oh. Very interesting.
+    Uh, but like, any time you have your, something that's, you know, a string that
+    actually has to match a function name, I'm going to misspell it.
+- speaker: M1
+  text: Uh, what happens if you, if that function doesn't exist? Does it air out silently
+    or loudly?
+- speaker: S1
+  text: You will get an error when you instantiate the view. All right. Uh, it will,
+    you'll get an error that will appear in your JavaScript console in your browser.
+    Um, and if, uh, yeah, we'll get to the testing portion of layer, but it provides
+    a nice loud failure when you, if you're running tests to see that you're buying
+    the air vents properly. Uh, so that's, that's really nice too, is that it's going
+    to make sure that you're buying the right thing and it'll tell you if it's, if
+    it's not. I'm going to go away again on that.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So, um, if you have a view inside of another view, you know, I think it's
+    powerful that you can, like, employ the views on top of views. Now, this isn't
+    smart enough to just identify a new task inside of just this view. I mean, God
+    forbid there's, the embedded view has a new task as well.
+- speaker: M1
+  text: Would it accidentally fire on this key up?
+- speaker: S1
+  text: If that makes any sense. The events that are bound inside of here are going
+    to search inside of this views element.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So if you have another view inside of it, it might accidentally. If you have
+    a nested view that's also going to render something with that ID, it'll pick that
+    up.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Anything inside of there is fair game, essentially.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: All right. So that was the create an enter function. Uh, so here's the, so
+    for the, for the tasks view, this is the, the view that we're going to use to
+    create all the different tasks, uh, the individual task views themselves. So what
+    we're going to do here is use one of the underscore functions to say, uh, for
+    each model in the collection, we're going to call add task. And then the, this,
+    this return, this here is a, uh, it's a backbone convention. When you call render
+    that's recommended that you return this being the view so you can chain calls.
+    So you can return this element. You can do something else after it. Um, use that
+    as, as you may, uh, for chaining. Right now we have three misses.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: Uh, so, uh, and this is the add task function. So here we're actually, we
+    do have a view inside of our task view. So the task view is responsible for rendering
+    every model in the collection, but here we're delegating to a, a singular task
+    view. That's going to render, uh, each of the models and the, and the corresponding
+    view along with it. So what I'm doing here is that inside of add task, I'm going
+    to instantiate the task view. And I'm going to give it the model that I'm getting
+    from iterating through the collection of, of tasks. So each time through I'm going
+    to instantiate another model and use it. Uh, this task L is just a convenience
+    to kind of clarify what I'm doing here. So I'm doing a view. render and I'm getting
+    the L from it because I'm returning to this and my function. L is going to be
+    the element that the view is controlling. And then I'm going to take the task
+    L. I'm going to search for the task class inside of my element view and then just
+    prepend it to the list. So it's going to just kind of keep on adding things on
+    the top as it goes. You could do an append. Um, actually this example is not the
+    greatest because what I'm doing here is I'm really searching the entire DOM for
+    a task class. Uh, what you can do is that you have, um, a this dot dollar sign.
+    So any queries that you might do with jQuery or whatever library you're using
+    would be scoped to the views element. So that actually could be a little bit better
+    and searched just inside of your view, inside of your views elements. Makes sense.
+- speaker: M1
+  text: Any questions? Any questions? Okay.
+- speaker: S1
+  text: So, like I said, back when I was talking about structure, um, we haven't really
+    talked about anything like, um, certain JavaScript template rendering libraries.
+    Uh, we've talked a little bit about jQuery, but really we've got a way to just
+    kind of take the part where you're dealing with the server and push it out to
+    one side of your JavaScript code. You've got a section where the view is going
+    to deal with dealing with the DOM and these things are kind of separated out.
+    And as you start to separate those things out, you can see where you can start
+    to hook in other functions that are your own, that you're namespacing on your
+    own, other objects. things that you can actually write the code, uh, for what
+    you want your business like to do and not necessarily have to worry about traversing
+    the DOM inside the same statement. So, that being said, even with Backbone, you
+    can make a mess.
+- speaker: M1
+  text: It's JavaScript and it's the DOM, right?
+- speaker: S1
+  text: And there's no, there's no guardrails. This is trying to help, trying to help
+    you make decisions about where to deal with certain parts of, you know, deal with
+    the view over here, deal with the server over here. But I mean, like I showed
+    you with that, uh, selector inside of, for the tasks, you can still just traverse
+    the entire DOM and do whatever you want. There's nothing stopping you with Backbone.
+    Backbone is not going to get your way for the most part.
+- speaker: M1
+  text: So, uh, so now what? Any questions on Backbone, the structure of Backbone
+    before we kind of move on into some scenarios? Okay.
+- speaker: S1
+  text: All right, so now it's time to make JavaScript dance a little bit. We want
+    to actually tell them what to do and have it do it. So, there are really kind
+    of two questions that I'm going to attempt to at least show a path for tonight.
+- speaker: M1
+  text: One is how do you test drive client-side JavaScript? And that also kind of
+    relates to how do you write clean JavaScript? How do you write JavaScript that
+    you're proud of?
+- speaker: S1
+  text: Before, four or five months ago, I don't know if I wrote any JavaScript that
+    I was ever proud of. I don't, that I would show. To me, it was JavaScript was
+    something I would do at the last minute. I would find the jQuery function that
+    would do it with the least amount of code possible, and then I'd say, hey, it's
+    done. And then maybe I'd write a test that would fire up the browser, you know,
+    and then execute the JavaScript and see if it renders something in the DOM properly.
+    That was about it. And I wasn't very thrilled with it. And so, what I'd like to
+    do is kind of walk through a couple scenarios of how your, how a new web application
+    could evolve its JavaScript and what steps you can take to move in the, what I
+    think is a better direction than just everything in document ready. So, first
+    scenario. So, like I said, let's talk about a web app with no JavaScript in it.
+    Like any good web application, you're going to be collecting demographics information.
+- speaker: M1
+  text: Right?
+- speaker: S1
+  text: So, they all do. So, let's say you want to add a feature where you want to
+    show additional fields if you want to add additional emergency contact information.
+    So, there's a, there's, there's lots of things you can do, but let's consider
+    two things. One would be, so in document ready, let's bind a function to the,
+    to a click event for add additional contacts. And then find hidden fields, fields
+    that were hidden in the DOM when you load the page and then show them. Or, should
+    we create an app namespace, initialize, and then bind an event to a show fields
+    function. So, the show fields is going to take care of the showing of this given
+    a certain event.
+- speaker: M1
+  text: Any, any thoughts on either approach? Well, that's okay, because you all probably
+    would choose B, right?
+- speaker: S1
+  text: Which is great, because it's using namespace your JavaScript. Namespacing
+    your JavaScript is probably the easiest thing you can do to make your code better.
+    What you're going to avoid by namespacing your JavaScript is overwriting other
+    JavaScript libraries. Any other JavaScript you include in your page. You know,
+    you, I think jQuery, for example, maybe tries to protect itself from someone overwriting
+    the dollar sign that you use. But if you're using other JavaScript libraries,
+    there's no guarantee that they're going to protect the code that they use. And
+    with JavaScript, you can just go in and redefine a global variable from doing
+    this magnificent library of stuff into something that, you know, returns nil or
+    undefined. So, namespacing it keeps your JavaScript separate, keeps it under control
+    so you don't have to worry about people overwriting you with other libraries as
+    well. And so, it's something I wanted to throw out there as something that's really
+    important to do, really no matter what. So, we've namespaced it. So, in this next
+    scenario, let's talk about testing it. So, with a Rails project, there's a, there's
+    a Jasmine gem you can install. And there's a Jasmine library of JavaScript that
+    lets you do testing. I don't know how many of you, there's a, there's a, a Ruby
+    testing library called RSpec. And it's got this interesting, it's got a good syntax.
+    You basically can describe it in kind of plain English of what it's going to do
+    and these assertions on what it's going to do and Jasmine does a good job of that
+    on the JavaScript side. So, let's say that you've, you've added a file called
+    RSpec JS. And, so right now you have a jQuery selector that's going to find and
+    show a class. So, it's going to go out and find the additional fields and then
+    call the jQuery show method on it. So, you start to think about what are your
+    fixtures going to look like. So, when you're running JavaScript tests, you don't
+    necessarily want to use the HTML. You don't want to have to fire up your entire
+    web app to get the HTML that you're going to test. So, you can create fixtures.
+    So, fixtures are just an HTML that you can use just for your test that you can
+    execute your JavaScript on. So, there are a couple options. One would be to just
+    copy the rendered HTML from your app into a fixture file and then load it in your
+    spec. Or, you could set a fixture that looks something generic like this. You
+    know, it's got a button with an ID of add. It's got some information there. It's
+    got some hidden fields inside of a div. Some fields. Whatever your content is.
+- speaker: M1
+  text: So, any, any thoughts on which may, which way may be a better approach?
+- speaker: S1
+  text: Less code is better code.
+- speaker: M1
+  text: Me? Yeah.
+- speaker: S1
+  text: Good job, guys. Yeah, exactly. Less code is better code. There's, it's hard
+    to find a compelling reason for loading your entire site's HTML file to test a
+    certain portion of the JavaScript. What you end up doing is that you create this
+    dependency on a snapshot of your DOM from a point in time that you're now responsible
+    for maintaining if you expect your JavaScript code to work under those conditions.
+    By writing a fixture that just has the bare minimum of code that you need to make
+    sure it works, you're doing a couple things. One, you're, you're going to speed
+    up your test because they don't have to load an entire HTML file to run. And you're
+    also kind of go through this exercise of figuring out what's the least amount
+    of DOM I need to make this JavaScript work. You're not depending on a certain
+    setup to make sure it works. You're going to say, okay, this is the stuff I need
+    to make this JavaScript work. And you can make your JavaScript a lot more focused.
+    Now, that kind of can get you into trouble if you are not considering any other
+    possibilities of what could happen with it. Say, say this, I mean, you shouldn't
+    have more than one DOM element with the ID of add, for example. It should be an
+    ID. But now it's not really considering if there are ones with an ID of add that
+    exist elsewhere. You know, that ID is kind of a convinced way to get around that.
+    But if it was a class, you know, it's going to, maybe it finds other things that
+    have that same class on there. So it would be aware of. But if you're writing
+    the JavaScript and you're writing the HTML, that's something you can, you can
+    try and balance. But it's still something to be aware of. So moving on to the
+    next scenario here, let's say you've got your fixture and you're ready to test.
+- speaker: M1
+  text: So how do we test this? Do you want to actually try and trigger the click
+    event in our Jasmine test? That's going to make the fixture element visible? Or
+    do we want to spy on this function that binds the event?
+- speaker: S1
+  text: Then call show fields directly and check the fixture afterwards.
+- speaker: M1
+  text: Can you guys tell us in advance next time if there's going to be a test?
+- speaker: S1
+  text: I see a pattern. So with this add click, I mean, you're going to trigger the
+    event. With the way Jasmine works, it's going to actually trigger events and you
+    can do things like that with it. So this is, this seems more like an integration
+    test.
+- speaker: M1
+  text: You're testing a couple things at once here, right?
+- speaker: S1
+  text: You're testing that the elements bound properly and you're testing that the
+    function gets called and you're testing that the function does what you expect
+    it to do. It's a lot of stuff that's happening in not a lot of code, which, I
+    mean, that's kind of the real power of jQuery, right? That's one of the things
+    that's so attractive is that you can do so much with so little jQuery code, which
+    is great. But it's not really great for separating out all the different things
+    you can do in your JavaScript.
+- speaker: M1
+  text: So is this the A answer?
+- speaker: S1
+  text: Is this stuff that you tried and went down that route and decided it sucked
+    and then kept trying stuff until you found something that was better? Let's get
+    through the rest of them. Actually, no. So these are things that I've done without
+    testing JavaScript and it's things that I've tried to do while testing JavaScript.
+    And as I've tried to do things that I would have done before, I found that I really
+    am testing a lot of things. So this is part, it experienced me with JavaScript
+    thinking, okay, well, I'll do this to test this as I figure out how to actually
+    test JavaScript. And then also what really breaks it down into testing the nitty-gritty
+    of these things that are happening. If I'm just that particular scenario, it looks
+    like, I mean, that's the kind of thing that if I, like, didn't know what I, you
+    know, if I was new to it, I would probably try a, and then, like, three weeks
+    later, someone would say, hey, why don't you do this? And then, like, ah, yeah,
+    duh, you know.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: I mean, I had serious trouble testing JavaScript for the first month or so,
+    probably. I would back up and try it three different ways before I felt comfortable
+    with what needs to happen to do something. And 90% of my trouble was DOM-related.
+    I was trying to do something with the DOM or a fixture, and I just needed to get
+    the bare minimum out there for doing stuff with the view and then back out and
+    start to write code that doesn't concern the view at all. And that was a big part
+    for me of just trying to get over that hump. And so we'll talk more about it,
+    too. But that was kind of the prompt for some of these scenarios here. And the
+    thing, too, is that with this B option here, I probably wouldn't have thought
+    about it. So you can spy on this binding function to say that it has been called
+    with some Jasmine libraries. And then a separate test to actually call a show
+    fields and check that the fixture happens. That's something that lets you narrow
+    down what's going to happen when you do a certain thing. You're just doing one
+    action instead of several of them to one call.
+- speaker: M1
+  text: So another scenario like that would be, well, why don't we have some client-side
+    validation?
+- speaker: S1
+  text: So if you're trying to enter your social security number, if it's not nine
+    digits, let's show something to the user right away so they don't have to wait
+    for a save action and then a response from the server. So this is kind of the
+    same flavor. You could trigger a change event on the SSN field to say that something
+    has changed. And then that would cause the error to display. Or we can do kind
+    of a similar pattern. Spy on the bind function, call the function directly, and
+    then check the fixture afterwards. In this case, again, there's a lot happening.
+    There's even more happening in this simple example than the previous one. And
+    this is kind of why you don't want to just trigger events in your test. That makes
+    your test harder to break down.
+- speaker: M1
+  text: So with that option A, you're doing lots of things, right?
+- speaker: S1
+  text: Not only are you verifying the binding of the event and checking that your
+    field is valid or invalid, you're going to check for the correct message of that
+    validity check. And you're going to be traversing the DOM to make sure that, one,
+    it got bound to the right element. And then, two, that you've rendered the error
+    message in the right spot. So jQuery is really nice. It takes care of all this
+    DOM traversal for you and probably a lot -- and a lot more. And it makes it so
+    transparent to doing it that you kind of forget that you're doing this really
+    complicated thing with a small call. And what I'd like to do is kind of let jQuery
+    handle that but then get far away from it as possible so I'm not reliant upon
+    the results of that for the rest of my code. If I expect it to -- I want to make
+    sure that it happens properly but then I can go and do something that doesn't
+    really depend on the results of that in order to make my test work. And is this
+    out of -- because you don't want to rely on the browser like you want to be able
+    to test it in Node.
+- speaker: M1
+  text: js or was it a speed factor? Like you found like 100 tests took like 10 minutes
+    to come?
+- speaker: S1
+  text: So it's -- it's a couple things. Speed is one thing. If I don't have a lot
+    of DOM to traverse, it's -- it'll go faster. It's also for just separating out
+    responsibilities in my code. It's easier to test what something you should do
+    if it's only doing one thing. And if you're expecting one line of code to do four
+    or five things, that's a little bit harder to test. You're kind of clumping all
+    these responsibilities together into one thing, which again, I mean, I love jQuery.
+    It's a UGtastic library and I use it a lot, especially for DOM traversal. But
+    it also is harder to test that you've got -- you need to make all this set up
+    and then do one thing and make sure that all your assumptions are met. It can
+    get a little tricky. So one pattern that I've done is that I -- instead of executing
+    a function on the result of a jQuery selector, so it's going to go find something
+    that I fire something based on what it gets back. What I can -- what I'll do is
+    that I'll do that jQuery selection, get that jQuery object, and then pass that
+    to a function to deal with it. So then my function can take that jQuery object
+    and then do something with it. So my test can just take a jQuery object in the
+    setup and not have to worry about the actual finding of it. It separates the finding
+    of the element with what you do with it when you get it. It's something that leads
+    to easier testability and separation of your code. One of the patterns that I
+    found really useful with the project that we've been working on. All right, so
+    that's the first four scenarios.
+- speaker: M1
+  text: So you've realized now that all this hypothetical JavaScript you were writing,
+    it's kind of cluttered, right?
+- speaker: S1
+  text: There's lots of things that go on pretty quickly. So you decided to attend
+    this amazing session on Backbone.
+- speaker: M1
+  text: js in McHenry County, right?
+- speaker: S1
+  text: And so then you think, wow, this Backbone stuff is pretty cool. So you wanted
+    to refactor your JavaScript to use Backbone. js. So using Backbone. js, you can
+    do all these things that you're going to do before, but you've got these objects
+    to kind of separate them out. So it's verifying the binding of the event. You
+    can use jQuery-- no, excuse me. It's verifying the binding of the event by testing
+    that your view's events hash is configured a certain way and making sure that
+    that view is using a certain element. You're kind of taking care of that one portion
+    of it. Now, you are relying on what Backbone is going to do for you with its events.
+    There, I'm just deferring to the library. And that is something that I'm coupled
+    to in my code. It's a choice that I made that I'm going to let this handle it
+    so I don't have to worry about crossbarrows or issues. This is going to handle
+    it for me. Let's check the logic of valid versus invalid. That's something that
+    my model can do. I can check my model by calling model. validate. You know, all
+    the checks that I have will execute. And it's going to return a message for me.
+    So given a certain state of the model's attributes, I can expect my validate method
+    to return an error message for me. And then, finally, in my view, if I get an
+    error back from the model, I can check that when I give it this model with this
+    error message already, that it's going to add it to the right spot. So I don't
+    have to trigger the error message in order to see that it's been inserted in the
+    right spot. I just have a function that says render error messages. And it's going
+    to go, you know, you give it the error message when you call the function, and
+    that function is going to take care of rendering it. It's not going to have to
+    do all the work it wants to validate it. So instead of having one long test that
+    goes through all four steps, sequentially you would have basically four different
+    tests that aren't dependent on the tool.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: Better because then if it's failing at step three, you know it's just that.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And it helps you kind of see where your code is reusable, too. This validation
+    pattern is really common. You're probably going to want to use it for any client-side
+    validation. So you start to see where you can reuse these functions instead of
+    just kind of doing everything at once all in a row. And those tests, those integration
+    style tests, they certainly have value as well, but you don't necessarily want
+    to use those by themselves. These unit style tests give you, they help you expose
+    where your code is reusable if you're separating out these responsibilities. So
+    let's talk about refactoring with this, with backbone in mind. So you want to
+    use backbone to use the, to show hidden fields in your HTML. So actually the answer
+    to this one may not be B. This one is kind of, so a backbone view of event biting
+    and a function that unhides the views L. Let's just say it calls some j, the jQuery
+    show method. Or that you have an event binding and a function that's going to
+    render a JavaScript template. That's what JST is here. That's just a shorthand
+    for a certain, there's a JavaScript templating convention, the Jamit package.
+    It's one of the things that Document Cloud and Jeremy Ashkenis published as part
+    of their open source projects. Anyway, it doesn't matter, it's just a JavaScript
+    template. So rather than say manipulating the existing DOM to unhide something,
+    would you rather have it just event bind and then render something brand new on
+    the page? So the content doesn't exist at the time the page loads, it's going
+    to exist when you add it when that event occurs. So now you've got a case where
+    you can either rely on the DOM to have what you need before you start up all your
+    JavaScript on document ready or you can have your JavaScript insert that content
+    for you.
+- speaker: M1
+  text: Any thoughts on what may be a better approach? Or the pros and cons of each
+    I should say?
+- speaker: S1
+  text: So what's interesting actually is that client side rendering depending on
+    your browser and your machine can actually be pretty quick. In some cases quicker
+    than the rendering that's going to happen server side that gets sent back up with
+    a response. But you're right. If you're rendering a lot of stuff, that can be
+    kind of slow. If you've loaded it all beforehand and now you're just done hiring
+    you, it's going to be there. You're just now toggling the style on it. And what
+    I've found too when I have these, you know, I'm working on a project with a front-end
+    designer and they're used to working inside of HTML or Haml or whatever it is
+    that they're used to manipulating. And now they have this separate templating
+    they need to learn. That can be tricky too. It's hard to move back and forth as
+    a designer that's working on this if someone else is just creating all different
+    kinds of templates. So it's another set of templating that you've got to learn
+    to use and then use properly. As far as a guide for this goes, I don't really
+    know if I have one. What I would say is if it's hiding and unhiding additional
+    fields, maybe that's something I would just load in the DOM and then unhide versus
+    trying to render that content separately. Because that's going to be pretty static.
+    I'm only going to have one instance of these fields. Maybe I only have one instance
+    of these fields. But say in a to-do app, if I'm going to have a lot of tasks,
+    I don't really have, maybe I don't want to have just one hidden version of the
+    edit form that I want to use for everything. I can just add and remove that from
+    the DOM as I go and then a JavaScript template is really nice for that. Some things
+    that I've done, I've tried a couple different patterns. You know, if I feel like
+    I've got this static display of content, like a table that's got a certain amount
+    of elements that I want to fill out, that's pretty good as static HTML. And then
+    I just give that to backbone view to watch and render things inside of or manipulate
+    inside of. But if I've got a content that's going to be pretty dynamic and I don't
+    want to wait for the server to respond with what I need, using JSTs has been a
+    pretty nice thing to have. Because it does happen pretty quickly, at least in
+    modern browsers. I kind of alluded to this before, but so with the jQuery, it's
+    nice. It's really nice. This is from the creator of jQuery. It's pretty accurate.
+    There's problems. There's problems all over. And I like jQuery because it handles
+    a lot of that cross-browser compatibility for me. I read that jQuery is, I think
+    John had said, and I think it's on the jQuery site, but essentially if a browser
+    has more than 1% usage in the standard metrics, jQuery is going to support it.
+    So you can be pretty sure that jQuery methods are going to do what you expect
+    them to do, regardless of what browser the user is using. So that's really nice
+    to not have to worry about rewriting every single thing that needs to happen across
+    IE, Firefox, Chrome, Safari, whatever. But that being said, just know why you're
+    using jQuery. If you're using it for DOM traversal, I think that's a really good
+    way to use it. You know, there's all sorts of plugins, too. There are validates
+    plugins. There are things that, you know, maybe you'd want a model to take care
+    of versus some plugin to handle. There are lots of really nice UI plugins as well.
+    It's just something that you need to be aware of. And if you're trying to separate
+    out your responsibilities to JavaScript code, it's really easy to clump them all
+    together and just rely on a library to do that stuff for you. I think that some
+    of those plugins are bad to use.
+- speaker: M1
+  text: Is that what you're saying?
+- speaker: S1
+  text: I'm not totally calling your point. Well, I think your mileage is going to
+    vary. You know, just going out and looking for plugins is a good way to get something
+    that works reasonably well pretty quickly. But unless you're going through and
+    looking at the source code of the plugin, you may not really know what it's doing
+    and you may be getting yourself into some using and relying on some library that
+    isn't really all that configurable. It's relying on certain assumptions that may
+    just not be supported as well. jQuery core, I would rely upon pretty much. Not
+    without question, but I wouldn't really hesitate to plug that in if it's something
+    staring in jQuery. The same thing could be said about any Ruby gems or other plugins
+    to other frameworks. I mean, there are some gems out there that you can write
+    in the morning, you know.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And they're not supported a month later either. I mean, it's just oftentimes
+    I feel more comfortable writing the code even if it means a little more work.
+    If I write it and I've got a test for it and I know exactly what it does, I feel
+    better about that code and it's going to keep on doing what I want to. And it's
+    going to be easier to modify later when my requirements change. So, that's the
+    general point. Now, you can still test what those lever is doing to some degree.
+    If you're going to call within a back-end view or something like that, you can
+    spy on that call. You can stub it out just to make sure that it gets called. But,
+    again, that's kind of just a, kind of like the namespace thing. It's sort of a
+    general thing that I've learned about trying to test JavaScript that's been helpful
+    to me. So, when I'm evaluating a gem and deciding if I want to use it, I'll go
+    and I'll look at the tests and actually see if they wrote any tests at all.
+- speaker: M1
+  text: Right? Because a lot of times, is there something similar you can do when
+    you're looking at libraries?
+- speaker: S1
+  text: Well, don't look for tests because you probably won't find them.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: I mean, hardly anybody writes a test for those kind of libraries. But, you
+    know, is there some other, like, smell that you would look for when you're looking
+    at a JavaScript library? You know, the validates, I mean, that one feels a little
+    funny to me, that you've got this thing that's going to, you're going to bind
+    some events to a certain field and then you've got validations that are going
+    to happen. I mean, what's, it seems like that should be something more like a
+    model and background should know about, rather than have some general plug-in
+    that doesn't really relate to any, you're going to have to have a validate. That's
+    one example. So if it's, if it's doing something that really, some bad one ought
+    to be doing, you would say don't track, you know, avoid the plug-in. I wouldn't
+    say avoid it. I would just say be cognizant. I mean, the, maybe another one, like,
+    is the Ajax form plug-in. So you've basically got this, and this is the, this
+    kind of gets to the Ajax form plug-in as something that essentially you can use
+    it on a form that exists as just static HTML. And it is going to intercept the
+    submit message, the submit button that you click. It's going to intercept that,
+    submit your form as an Ajax call. So you can do all this stuff here. If Java,
+    if JavaScript is working, then it can do an Ajax and it's not going to refresh
+    the page or flicker the page when you submit it. You can do something else afterwards.
+    But if JavaScript is disabled, then the form works as expected with HTML. So that's,
+    that's cool.
+- speaker: M1
+  text: I mean, that's, that's unobtrusive, right?
+- speaker: S1
+  text: If it doesn't work, then it doesn't work. The HTML one works fine. But that
+    kind of full interception of what it's doing and submitting, it's really convenient,
+    but the moment you want something slightly different, then you're kind of stuck
+    with this plug-in. And that's maybe a better example of kind of going down this
+    route of some convention, some plug-in, and really what you want is finer-grained
+    control. It depends on how much control you want, I guess, or how much you expect
+    to need. Well, that particular scenario kind of screws up your separation of concerns.
+    Whatever you've got figured out, yeah, it imposes its own approach.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: You might not like it. I mean, it's something I've used before and it's really
+    nice because you write 12 characters of JavaScript and you're done. You get the
+    Ajax call and everything's good. So, there are certainly advantages. It just depends
+    on when you get into really client-rich applications on the website, finer-grained
+    control is usually what you need to do. So, if you were walking into a new project
+    today, how sure would you be that you'd use Backbone.
+- speaker: M1
+  text: js or would you want to see what other frameworks are available?
+- speaker: S1
+  text: You know, I've heard a lot about Ember. js lately. Ember seems like the equivalent,
+    like Ember is kind of just all this past judgment. It's kind of like the Rails
+    of JavaScript frameworks. There's a lot of convention over configuration there.
+    You've got the ability to kind of take things out if you don't want them, but
+    it's very opinionated in saying that we're going to use this templating library.
+    We're going to expect you to render things in this fashion. And I do end up writing
+    a fair, you know, when you're starting with a new project with Backbone, you may
+    end up writing a lot of the code the same, you know, over and over again. And
+    that can kind of just mean that it's time to abstract something out. And I like
+    to have, maybe it's just my hesitation with my knowledge of, my deep knowledge
+    of JavaScript, but it's nice to have that fine-grained control over it so I know
+    that it's doing what I want it to do. At this point, I don't think I would, you
+    know, I would use, I would write JavaScript without Backbone, but that's because
+    I've kind of seen what you can do with Backbone JS. You can, you've got this,
+    that's the really nice thing about it, just to kind of segue into my next slide
+    here.
+- speaker: M1
+  text: It's just a framework, right?
+- speaker: S1
+  text: I mean, you can, the nice thing about Backbone is that it doesn't really get
+    in your way. It doesn't demand you use certain libraries or certain templating
+    plugins. It shows you how to separate out these responsibilities. And if you want
+    something that does, that communicates with the server a certain way that Backbone
+    doesn't do, it kind of provides a template for how that code would look. Same
+    thing with rendering to the DOM or controlling events. Like it's, it's this really
+    nice way to, it provides a structure, something that you could use. And I've used
+    Backbone just to control events on an element before. No rendering at all. I just
+    don't like, just like having it defined its events and I feel pretty comfortable
+    with it.
+- speaker: M1
+  text: What are your thoughts on CoffeeScript? CoffeeScript?
+- speaker: S1
+  text: So, my thoughts on CoffeeScript are, if I was starting over and I didn't know
+    anything about JavaScript, CoffeeScript would be really nice. Having gone through
+    the pitfalls of JavaScript for a while now, I can write JavaScript that avoids
+    the things that CoffeeScript tries to help you avoid. Like, namespacing properly,
+    like doing comparators that make sense. You know, it doesn't try and coerce your
+    types, you know, from a string to an integer for you if you do a double equal
+    instead of a triple equal. There's lots of really, what's it, the, there's that
+    book, JavaScript Good Parts by Douglas Crockford. The best part about that book
+    is the appendix where it's like JavaScript the awful parts. Because that's the
+    stuff that CoffeeScript basically says, this is really dumb. We're going to write
+    this in a way that it avoids this stuff for you. It's, it's weird jumping to it
+    from JavaScript because I feel like I'm missing something and I just kind of start
+    typing it. But, you know, it's also, even though it compiles down, it's also kind
+    of lower ceremonial as well. You don't have to type all the blocks. It's going
+    to create that closure for you on that. It's kind of like someone, it seems like
+    someone just read JavaScript in good parts and said, okay, this makes more sense
+    in language. So it's a, it's a convenience and it compiles down to JavaScript.
+    So, alright. That being said, I haven't written much of it.
+- speaker: M1
+  text: Any other questions?
+- speaker: S1
+  text: I think I made my point. I'm not sure. Anyway, I mean, it's good. It provides
+    that structure. That's, that's the basic takeaway with Backbone. Other kind of
+    summary things, things that kind of help me lead towards clean JavaScript is namespacing
+    100%. I would never not do it. If you're writing tests, minimize your fixtures
+    at all. It makes your test fast. It's a, and it helps you write more focused JavaScript.
+    You've mentioned runtime for tests. I've got a, I mean, a six month old MacBook
+    Pro here. On our project we have, I think 700 Jasmine tests right now and they
+    run in Chrome in about a second. So it can be pretty speedy. I think, you know,
+    Safari, it runs in three seconds or something. But they're, they're really quick.
+    And that's because we're not loading any fixtures. Uh, there's a project that
+    I'm working on, uh, that has, that had 800 line fixture files. And those seconds,
+    50 of them took 10 seconds to run. So it can really bog you down. So is it to
+    say that the test that you, the 700 tests that you run in a second, you're not
+    doing any DOM manipulation or you just minimize stuff? I'm manipulating the fixture
+    that I'm working. And it's really that I'm saying, okay, the fixture just has
+    a single div with this one class. When I execute the test, I expect it to insert
+    some validation error inside that div. I don't have to traverse the entire DOM
+    to find out how to load the fixture, you know, before I run each test to make
+    it happen.
+- speaker: M1
+  text: So you're manipulating the DOM?
+- speaker: S1
+  text: Yeah, it's just in very small, isolated places.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And you just, I mean, you can't get away from it. But you can certainly make
+    it as small as possible. Yeah, because that was kind of the question I had was,
+    if you're trying to get away from relying so much on jQuery, are you spending
+    a lot of time mocking what jQuery does for you? Not a lot of time. I mean, there's
+    certainly parts of it where you've, that part where you're interacting with it,
+    you've got to deal with it. But the same thing goes if you're trying to deal with
+    a database. You've got some tests that are going to deal with your database section.
+    But once you've got that figured out, then you can mock out everything else and
+    test your business logic that just, you know, can do its own thing. It doesn't
+    really require it to do, to function. That kind of leads me into another point,
+    which is really just making sure that you're separating responsibilities and actually
+    unit testing your code. Again, integration tests are fine, and they're good, and
+    they catch things. But unit testing provides a deeper layer of coverage that I
+    think is really valuable.
+- speaker: M1
+  text: So, any other questions, comments? Can you show us a test?
+- speaker: S1
+  text: Yes, I can. So, there are some links to my GitHub repos. Let me pull up the,
+    my Rails version that was on the thumb drive. I'll put them back up. I'll put
+    them back up.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: So, right now I've got, I've got nothing on the screen. So, I've started up,
+    I've started up Jasmine as a, just running locally. Um, and let me point my browser
+    to this. So, this is the suite of tests I have for JavaScript for the Rails version
+    of my to-do app. Um, since they depended on Jasmine, I didn't translate these
+    for the local storage version. But, uh, you can take a look at them when we get
+    in the repo. Let me expand these. So, you can kind of see what the tests look
+    like. So, for the collection and models, I've got some pretty basic setup type
+    tests. That it's using the task model, that the URL is defined as what I want
+    it to be. Uh, we've got some validations about what an empty description is and
+    what, you know, if that's invalid or what. Um, for the views, some event bindings,
+    what these actual functions are doing. Let me pop open the code and show you what
+    some of these look like. Let me pop open the code and show you what I'm going
+    to do. Let me pop open the code and show you what I'm going to do. Let me pop
+    open the code and show you what I'm going to do. Let me pop open the code and
+    show you what I'm going to do. Let me pop open the code and show you what I'm
+    going to do. Let me pop open the code and show you what I'm going to do. Let me
+    pop open the code and show you what I'm going to do. Let me pop open the code
+    and show you what I'm going to do. Let me pop open the code and show you what
+    I'm going to do. Let me pop open the code and show you what I'm going to do. So,
+    let me pop open the code and show you what I'm going to do. So, here I've got
+    a before each block where I'm doing some setup for each of the tests. I'm essentially,
+    this JST here, this is the template that I want to render inside my view. And
+    I've made the decision that I don't care what my view renders. This app is simple
+    enough that as long as it's rendering, that's fine by me. This is just some empty
+    function that I can spy on or step out that to make sure it gets called. I've
+    got some, I've got a test model here. I'm stubbing out the save method because
+    I don't want to try and trigger a save to the server when I run my specs. And
+    then I've got a view that I'm going to use in my test as well. I'm going to give
+    it the model and then I'm going to restore it so I don't have any problems with
+    my setup between tests. So, let's render the template test here. What I'm essentially
+    doing is I'm setting up a spy with Sinon. js. This is a stubbing mocking library
+    that's all over JavaScript that I've really enjoyed using. The Jasmine spies if
+    you're using Rails are nice as well. This is something I've just gotten in the
+    habit of. So, what I do is I'm just going to call render on the view. And after
+    I call it, I'm expecting that that template spy was called and that I was passing
+    the attributes of the model along with it. So, to show you the actual code it's
+    running against, this is the edit task view. This is what the surrender function
+    is doing. It's getting the HTML from calling this template as a function with
+    the attributes. And then it's going to append it to the L through the HTML, the
+    jQuery HTML function. And then it's going to return this. So, that's essentially
+    what that test is doing. Let me show you any questions on the viewed one. I'm
+    going to jump back to the game too.
+- speaker: M1
+  text: So, what did you say the testing point is called?
+- speaker: S1
+  text: Jasmine is the plug-out of Mars Becky. A little bit, yeah. So, let me open
+    up the task. So, here for the validations, I'm creating a task with no attributes
+    on it. When I call validate, I want to check that the description, if the description
+    is null, that I want that to be invalid. So, I'm expecting that the first error
+    in the errors attribute here is going to be equal to this field of description
+    and this message. And then vice versa, I call it and I've got some description
+    in there that there are no errors. And then this validate function here is essentially
+    doing just that. I'm just constructing an array that I give it a list of objects
+    with all those fields and error messages there.
+- speaker: M1
+  text: Any other questions or things you'd like to take a look at? Have you had experience
+    running the Jasmine tests in a continuous integration server? Yeah.
+- speaker: S1
+  text: So, my client's project, we use Hudson and it runs on a Linux server. So,
+    there's some setup you can use to run it basically on Firefox on the Linux server.
+    There's a couple of commands you can use and you can run Jasmine as like a CI
+    task for a Rails application. Not to get too Rails-y. But, so, so, so, so, right
+    a task you would get would be Jasmine CI. What that's going to do is it's going
+    to fire up a Firefox browser on this screen, you'll just have to believe me. And
+    then it outputs the results of it to the terminal here.
+- speaker: M1
+  text: And that comes with the Jasmine gem?
+- speaker: S1
+  text: The Jasmine gem.
+- speaker: M1
+  text: Okay. Yeah.
+- speaker: S1
+  text: So, yeah, that's a good question. So, I, for the dependencies I'm kind of
+    managing it by hand. I'm just concluding them in the right order when I'm setting
+    up my JavaScript includes. I think for on the, on our project we're using the,
+    Rails has the, there's like a JS manifest you can use. Where it's going, you can
+    list out all the files and it's going to compile them to one single JS file that
+    it serves. There's a, I mean there, I think there's a handful of libraries but
+    that's the one we're using on our Rails application. Some type of compressor.
+    I don't even, I'm not sure. It doesn't minify it in development or QA mode. But
+    then in production it can also minify it. So, it really just takes out all of
+    your, all your extra spaces. So, actually that kind of reminds me, one thing that
+    we do have is a gem that will run JSLint on our JavaScript, on our, on our application
+    files. And so, what, you can configure that with all of the JSLint is the, basically
+    the syntax checker that Douglas Crockford, the JavaScript for good parts guy wrote.
+    That will tell you if your JavaScript is good. It has just the good parts or the
+    bad parts. That includes semicolon placement. JavaScript will insert semicolons
+    for you if you didn't do it. And it will guess where that may be. So, if you're
+    trying to compress all your JavaScript into no spaces in your production file,
+    and you're missing semicolons, then bad things can happen. So, we actually have
+    that running as a task on our Hudson server as well. If there are any JSLint failures,
+    then our build fails, you know. Which has been helpful. To make sure that we're
+    not going to run into any of those weird JavaScript types of errors later when
+    we're actually using the production.
+- speaker: M1
+  text: Have you had any experience with, like, modules?
+- speaker: S1
+  text: Not a lot. I mean, I think the nice thing about the Rails process working
+    is that it kind of has some of that stuff built in for me. I've heard a lot about
+    it, and it does sound pretty slick, but just nothing I've got a lot of personal
+    experience with.
+- speaker: M1
+  text: Any other questions?
+- speaker: S1
+  text: Let me toss this GitHub link back up on here. All right. Well, thank you,
+    everybody. Thank you very much. It's my birthday, you know.
