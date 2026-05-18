@@ -5,9 +5,12 @@ module Generators
 
       def clamp(text, max_length)
         clean = text.to_s.gsub(/\s+/, " ").strip
+        return clean if max_length <= 0
         return clean if clean.length <= max_length
 
         truncated = clean[0, max_length - 1]
+        return "" if truncated.nil? || truncated.empty?
+        
         truncated = truncated.rpartition(" ").first if truncated.include?(" ")
         truncated = clean[0, max_length - 1] if truncated.nil? || truncated.empty?
         "#{truncated}…"
