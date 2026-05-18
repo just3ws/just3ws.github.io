@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 require 'yaml'
+require 'fileutils'
+
+TRANSCRIPTS_DIR = "_data/transcripts"
 
 RULES = [
   # --- Brand: UGtastic ---
-  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget|ukt|yug|yuget|yuge)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
-  [/\b[Uu]ktasek(?:\.com)?\b/i, "UGtastic"],
-  [/\b[Uu]btastic(?:\.com)?\b/i, "UGtastic"],
-  [/\b[Ee]vo[ -]?Tasic\b/i, "UGtastic"],
+  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
   [/\b[Uu]g[ -]?l[ -]?st\b/i, "UGl.st"],
   
-  # --- Industry Terms ---
+  # --- Conferences & Communities ---
   [/\b[Gg]oto[ -]?[Cc]onf(?:erence)?\b/i, "GOTO Conference"],
   [/\b[Rr]ails[ -]?[Cc]onf\b/i, "RailsConf"],
   [/\b[Ww]indy[ -]?[Cc]ity[ -]?[Rr]ails\b/i, "WindyCityRails"],
@@ -17,6 +17,8 @@ RULES = [
   [/\b[Cc]hipy\b/i, "ChiPy"],
   [/\b[Ss]cna\b/i, "SCNA"],
   [/\b[Rr]ails[ -]?[Bb]ridge\b/i, "RailsBridge"],
+  
+  # --- Industry Terms & Companies ---
   [/\b[Cc]raftmanship\b/i, "craftsmanship"],
   [/\b[Ss]oftware[ -]?[Cc]raftsmanship\b/i, "Software Craftsmanship"],
   [/\b[Tt]hought[ -]?[Ww]orks\b/i, "ThoughtWorks"],
@@ -45,48 +47,32 @@ RULES = [
   [/\b[Hh]it the bell icon\b/i, ""],
   [/\b[Pp]lease like and subscribe\b/i, ""],
   
-  # --- Punctuation & Whitespace ---
+  # --- Whitespace and Cleanup ---
   [/ {2,}/, " "],
   [/\n{3,}/, "\n\n"]
 ]
 
-OUTRO_RULES = [
-  [/\b(?:Bye\.?\s*){2,}/i, "Bye."], # Fix "Bye. Bye. Bye." loops
-  [/\b(?:Thank you\.?\s*){2,}/i, "Thank you."], # Fix "Thank you. Thank you."
-  [/^Thank you very much for taking the time to speak with me\.?$/i, "Thank you very much for taking the time to speak with me today. Find out for yourself today at UGtastic.com."]
-]
+puts "Perfecting transcripts in #{TRANSCRIPTS_DIR}..."
 
-def apply_to_text(text)
-  return text unless text
-  RULES.each { |pattern, replacement| text.gsub!(pattern, replacement) }
-  text
-end
-
-def apply_outro_rules(text)
-  return text unless text
-  OUTRO_RULES.each { |pattern, replacement| text.gsub!(pattern, replacement) }
-  text
-end
-
-ARGV.each do |path|
-  next unless File.exist?(path)
+count = 0
+Dir.glob("#{TRANSCRIPTS_DIR}/*.yml").each do |file|
   begin
-    data = YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true)
+    data = YAML.safe_load(File.read(file), permitted_classes: [Date, Time], aliases: true) || {}
+    next unless data && data["content"]
+
+    original = data["content"].dup
     
-    if data["turns"]
-      # Apply general rules to all turns
-      data["turns"].each { |turn| apply_to_text(turn["text"]) }
-      
-      # Apply outro rules specifically to the last turn
-      if data["turns"].last
-        apply_outro_rules(data["turns"].last["text"])
-      end
-    elsif data["content"]
-      apply_to_text(data["content"])
+    RULES.each do |pattern, replacement|
+      data["content"].gsub!(pattern, replacement)
     end
-    
-    File.write(path, data.to_yaml)
+
+    if data["content"] != original
+      File.write(file, data.to_yaml)
+      count += 1
+    end
   rescue => e
-    puts "Error in #{path}: #{e.message}"
+    puts "Error processing #{file}: #{e.message}"
   end
 end
+
+puts "Success: Perfected #{count} transcripts."
