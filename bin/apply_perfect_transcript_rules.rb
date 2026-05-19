@@ -2,21 +2,22 @@
 require 'yaml'
 
 # --- LEXICAL NAME REPAIRS ---
-# Explicitly map known phonetic misspellings to correct names
 NAME_REPAIRS = {
   "Gil Tene" => [/Gail Tenney/i, /Gil Ten\b/i, /Galtin/i],
   "Rich Hickey" => [/Richie Hickey/i, /Richie Hicky/i],
   "Adewale Oshineye" => [/Adeo Shinyea/i, /Eddie Oceanea/i],
   "Sandro Mancuso" => [/Sandra Mancuso/i],
-  "DHH" => [/D. H. H./i, /DH H/i]
+  "DHH" => [/D. H. H./i, /DH H/i],
+  "Dave Thomas" => [/Dave Thomas/i, /Dave "pragdave" Thomas/i]
 }
 
 # --- JINGLE REGEX ---
 JINGLE_REGEX = /User groups with lots to say.*?(?:UGtastic|uktastic|euketastic|ubtastic|evotasic|ugetastic|ukt|euke|uke|yugetastic|yuge|uktasek)(?:\s*\.?\s*com)?\.?\s*/im
 
 RULES = [
-  # --- Brands & Core Identity ---
-  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget|ukt|yug|yuget|yuge)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
+  # --- Brand: UGtastic ---
+  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget|ukt|yug|yuget|yuge|ugtasc)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
+  [/\bugtasc\b/i, "UGtastic"],
   [/\b[Uu]ktasek(?:\.com)?\b/i, "UGtastic"],
   [/\b[Uu]btastic(?:\.com)?\b/i, "UGtastic"],
   [/\b[Ee]vo[ -]?Tasic\b/i, "UGtastic"],
@@ -54,7 +55,7 @@ RULES = [
 
   # --- Companies & Organizations ---
   [/\b[Gg]oto[ -]?[Cc]onf(?:erence)?\b/i, "GOTO Conference"],
-  [/\b[Rr]ails[ -]?[Cc]conf\b/i, "RailsConf"],
+  [/\b[Rr]ails[ -]?[Cc]onf\b/i, "RailsConf"],
   [/\b[Tt]hought[ -]?[Ww]orks\b/i, "ThoughtWorks"],
   [/\b[Oo]ps[ -]?[Cc]ode\b/i, "Opscode"],
   [/\b[Pp]ay[ -]?[Pp]al\b/i, "PayPal"],
