@@ -1,162 +1,279 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Katrina Owen
-    role: developer community and conference conversations
-turns:
-- speaker: M1
-  text: "[Music] hi it's Mike with UGtastic I'm here at SCNA 2013 and right now I'm
-    sitting down with Katrina Owen who's gonna be giving a talk called here be dragons
-    the reason I say here we are going to be is because you're the last talk of the
-    sessions I might not get a chance to interview afterwards but uh thank you for
-    taking the time to sit down with me I know you're probably have a lot on your
-    mind that you're getting ready to talk today at the end of the conference"
-- speaker: S1
-  text: sure and so here be dragons what what does that mean it's a reference back
-    to the old mapmaking days where the explorers would draw dragons in the parts
-    of the maps where they didn't know what was there and my talk is a code review
-    so it's it's a metaphor for all of the things that you don't know are in the code
-    and that can be quite scary so what code are you is it some arbitrary code or
-    is it something that you it's an anonymized version of some production code that
-    I ran into a couple years ago okay there was a bug there's a person who wrote
-    it or the team that wrote it know that you're doing this or no hence anonymized
-    okay but I mean but I mean they have they've been clued in that like was this
-    well I guess where I'm coming from is is did the original code review come from
-    something you worked with them on and it's actually kind of awkward so they weren't
-    really on the team when when the bug was reported I I started looking at the code
-    and it was it was kind of it was kind of crazy and so I asked I before I figured
-    out what code was involved in this feature I didn't really know who had written
-    it so I asked around the table I was working in a very small company I asked around
-    the table who who remembers who who wrote this stuff nobody recalled writing it
-    nobody recalled writing it and so when I finally figured out with git blame or
-    figured out what code was involved and then did git blame on that I did find out
-    who it was yeah and they just had no recollection of writing it which is fine
-    yeah yeah it's gonna happen over hundreds or thousands of lines of coding yeah
-    for years and they weren't really on the project normally so it was just this
-    side thing that they had done and so the best though is when you check git blame
-    and it was you oh yeah oh yeah that was my previous talk yeah who's the oh no
-    that idiot was me so and that's also why you gotta be careful when you're like
-    who's the idiot who wrote this code and the person's like drinking a coffee next
-    to you so you know it's a reminder to be kind but so so what what is it in the
-    code that meet this particular code something that you wanted to create a talk
-    about the the code is is so bad that it has a punchline and and so I actually
-    really only use the code as an excuse to talk about some of the people issues
-    around having terrible code or code at all we were talking about who's this idiot
-    who wrote the code we have a tendency I talked a little bit about the fundamental
-    attribution error where we tend to us we don't we're not aware of the pressures
-    the the pressures that that that were in play when some code was written we can't
-    see them from where we stand and so we tend to assume because we can't see those
-    pressures that the reason the code is terrible is that the person who wrote them
-    is stupid right and if we knew the pressures we would tend to assume that the
-    reason they wrote it was some temporary thing that is passing and if they had
-    had better a better situation they would write much better so kind of like that
-    that often misattributed quote about don't assume malice when you can explain
-    with ignorance in our case it's don't explain stupidity with just not knowing
-    the constraints that they were under at that time right you know they could have
-    been for anything from being just new to the language to deadlines very very tired
-    because you've been up three days hacking maybe your cat died I mean there are
-    any reasons right that could be that you are not at your best so like a few months
-    or a year or so ago there was kind of a kerfuffle on the Twitters about Corey
-    Haynes and made some comments that blasted a developer for who contributed was
-    new to contributing to open source and you know was it was it was something that
-    eventually came back and apologized it was a little bit harsh you know and it
-    kind of gave some people pause to think about being a little bit more kind and
-    try not to criticize a code so harshly that it reflects on a person is that something
-    that did you're trying to walk that line with your talk a little bit I do tear
-    this code apart okay but it makes a good story that's kind of worth it in real
-    life I try to be very both kind and realistic about code reviews I try to look
-    at the code that's there and say what I'm seeing is this duplication or I don't
-    understand the name that you used and and try to ask questions about their context
-    what are the trade-offs that you considered why why did you go in this direction
-    did you consider this other vection sometimes they're like oh yeah it didn't occur
-    to me I didn't even know there was a method called max bi on a new right yeah
-    yeah that's awesome now I learned something new and other times it's like well
-    yeah I was thinking about this and I'm like well gee that's a really good point
-    yeah yeah it's some constraint that you didn't yeah because sometimes when we
-    look at the code we might just be wrong oh yeah I'm not very smart it's it's a
-    great spectrum of intelligence and you know we all live in somewhere in that and
-    it's and it flexes though sometimes we're we're billions and we can um we could
-    solve any problems and other days like you said cat died and you're just down
-    and it's it's it's even something that when you approach a code review I think
-    we need to think about is okay this person was there and it isn't like this fixed
-    point in intelligence for them that's also a fixed point in intelligence and awareness
-    right now and that's why those conversations are wonderful to have and that's
-    also why we have these conversations so we can we can think about you know why
-    we're doing what we do here in these and I'm just kind of searching for for what
-    my point is okay I'll think about it okay yeah so like a review tell me what's
-    my performance so I think that I think the point is that stay aware of the fact
-    that there is context don't be very quick to judge and and let that let that inform
-    the questions that you ask rather than the judgments that you make okay great
-    so so think about context become context aware we're not we're not a context free
-    grammar so okay I'm I am doing terrible right now at the end of this interview
-    but that is okay that's what we do this for when I get my review of the interview
-    it'll get torn apart so that's all right but you can treat it though right no
-    no I'm gonna go ahead and I'm gonna let this ride because that's the whole point
-    of these these conversations and again I just see much like um where you're looking
-    at the code and you're trying to think about the humanity of the person who wrote
-    the code so not getting back on track thinking about that it was human who wrote
-    the code and that it's not just a bunch of random lines that you know that somebody
-    tried that somebody was you know when they did this they were probably trying
-    really hard to do the right thing and um one of the points of of these interviews
-    is to take people that might otherwise only be known through Twitter blogs online
-    personas where they can kind of become a little distant and and become anonymized
-    so that way they can be kind of even a little bit abused because people forget
-    that they're humans you know that they're out there they're trying to share a
-    message or they're trying to share something or they're doing some work or maybe
-    they're even unintentionally out there because they created something and now
-    it got popular to take those interviews take these interviews and take those people
-    excuse me through these interviews and um share them and say these people are
-    human and and we have these conversations and we make mistakes and we fumble and
-    we you know in in the course of a conversation maybe get uh drifted off of an
-    original point but these are not intended to be super journalistic uh interviews
-    these are casual conversations with people much like you know you're looking at
-    these these these lines of codes and turning them into conversations and and talks
-    yeah yeah so the reason I the reason I wanted to do a talk well first of all the
-    code was just funny but second of all this point of um of being aware of of the
-    questions that you can ask rather than the judgments that you make is that I'm
-    very bad at empathy and this is something that comes up a lot it's been coming
-    up over and over and over again how you have to empathize with your fellow developers
-    and I don't even know what it means and people try to explain it to me and I'm
-    unable to conceive of what it means when they explain it in terms of empathy but
-    when you explain it in terms of asking about the pressures rather than making
-    judgments about um about who they are and what they know I'm able to do that I
-    can I can say okay I can I know how to ask questions I can do that instead of
-    just making it a judgment even though I'm pretty quick to judge well I mean when
-    we're looking at the line of code and we're like this um who wrote this and you're
-    just hating on them because you're like now you have to move a ton of things around
-    and it's just complicates what's in your head but when you step up and you get
-    your cup of coffee you can think about you know sometimes take a breath and be
-    like I'm tired maybe they were tired too yeah and I think that makes it a little
-    bit easier yeah to to realize that humans can feel that we're all humans here
-    doing this together if I can be frustrated I bet they were frustrated writing
-    this code right and you can feel that frustration yeah coming out you can feel
-    that somebody added a 10th filter line I know because I've personally done that
-    on the code that they were trying to diagnose why it wasn't behaving maybe they
-    expected because of some external Force right and apply and again it comes down
-    to context yeah so well thank you very much for taking the time to stop here I
-    really appreciate it yeah user groups with lots to say interviews and more no
-    way sharing great ideas in the tech community fascinating conversations a plethora
-    of information find out for yourself today at ucdastic. com foreign
-insights:
-- statement: Code reviews should focus on the code itself, not the coder's intelligence.
-  type: durable
-  confidence: high
-- statement: Misattributing poor code quality to the coder's intelligence is a common
-    mistake.
-  type: durable
-  confidence: high
-- statement: Understanding the constraints developers face is crucial for effective
-    code reviews.
-  type: durable
-  confidence: high
-- statement: Being kind and realistic in code reviews can lead to more productive
-    and positive conversations.
-  type: durable
-  confidence: high
-- statement: Code reviews should acknowledge the spectrum of intelligence and the
-    pressures developers face.
-  type: durable
-  confidence: high
+content: |-
+  user groups with lots to say interviews and more no way sharing great ideas in
+
+   the tech community fascinating conversations a plethora of information
+
+   find out for yourself today at uktastic.com hi it's Mike with uktastic I'm
+
+   here at SCNA 2013 and right now I'm sitting down with Katrina Owen who's gonna be
+
+   giving a talk called here be dragons the reason I say here we are going to be is
+
+   because you're the last talk of the sessions I might not get a chance to
+
+   interview afterwards but uh thank you for taking the time to sit down with me
+
+   I know you're probably have a lot on your mind that you're getting ready to
+
+   talk today at the end of the conference sure and so here be dragons what what
+
+   does that mean it's a reference back to the old mapmaking days where the
+
+   explorers would draw dragons in the parts of the maps where they didn't know
+
+   what was there and my talk is a code review so it's
+
+   it's a metaphor for all of the things that you don't know are in the code and
+
+   that can be quite scary so what code are you is it some arbitrary code or is it
+
+   something that you it's an anonymized version of some production code that I
+
+   ran into a couple years ago okay there was a bug there's a person who wrote it
+
+   or the team that wrote it know that you're doing this or
+
+   no hence anonymized
+
+   okay but I mean but I mean they have they've been clued in that like was this
+
+   well I guess where I'm coming from is is did the original code review come from
+
+   something you worked with them on and it's actually kind of awkward so they
+
+   weren't really on the team when when the bug was reported I I started looking at
+
+   the code and it was it was kind of it was kind of crazy and so I asked I
+
+   before I figured out what code was involved in this feature I didn't really
+
+   know who had written it so I asked around the table I was working in a very
+
+   small company I asked around the table who who remembers who who wrote this
+
+   stuff nobody recalled writing it nobody recalled writing it and so when I
+
+   finally figured out with git blame or figured out what code was involved and
+
+   then did git blame on that I did find out who it was yeah and they just had no
+
+   recollection of writing it which is fine yeah yeah it's gonna happen over hundreds or thousands of
+
+   lines of coding yeah for years and they weren't really on the project normally so
+
+   it was just this side thing that they had done and so the best though is when
+
+   you check git blame and it was you oh yeah oh yeah that was my previous talk
+
+   yeah who's the oh no that idiot was me so and that's also why you gotta be
+
+   careful when you're like who's the idiot who wrote this code and the person's
+
+   like drinking a coffee next to you so you know it's a reminder to be kind but
+
+   so so what what is it in the code that meet this particular code something that
+
+   you wanted to create a talk about the the code is is so bad that it has a
+
+   punchline and and so I actually really only use the code as an excuse to talk
+
+   about some of the people issues around having terrible code or code at all we
+
+   were talking about who's this idiot who wrote the code
+
+   we have a tendency I talked a little bit about the fundamental attribution error
+
+   where we tend to us we don't we're not aware of the pressures the the pressures
+
+   that that that were in play when some code was written we can't see them from
+
+   where we stand and so we tend to assume because we can't see those pressures
+
+   that the reason the code is terrible is that the person who wrote them is stupid
+
+   right and if we knew the pressures we would tend to assume that the reason they wrote it was
+
+   some temporary thing that is passing and if they had had better a better
+
+   situation they would write much better so kind of like that that often
+
+   misattributed quote about don't assume malice when you can explain with
+
+   ignorance in our case it's don't explain stupidity with just not knowing the
+
+   constraints that they were under at that time right you know they could have been
+
+   for anything from being just new to the language to deadlines very very tired because
+
+   you've been up three days hacking maybe your cat died I mean there are any
+
+   reasons right that could be that you are not at your best so like a few months
+
+   or a year or so ago there was kind of a kerfuffle on the Twitters about Corey
+
+   Haynes and made some comments that blasted a developer for who contributed
+
+   was new to contributing to open source and you know was it was it was
+
+   something that eventually came back and apologized it was a little bit harsh you
+
+   know and it kind of gave some people pause to think about being a little bit
+
+   more kind and try not to criticize a code so harshly that it reflects on a
+
+   person is that something that did you're trying to walk that line with your talk
+
+   a little bit I do tear this code apart okay but it makes a good story
+
+   that's kind of worth it in real life I try to be very
+
+   both kind and realistic about code reviews I try to look at the code that's
+
+   there and say what I'm seeing is this duplication or I don't understand the
+
+   name that you used and and try to ask questions about their context what are
+
+   the trade-offs that you considered why why did you go in this direction did you
+
+   consider this other vection sometimes they're like oh yeah it didn't occur to
+
+   me I didn't even know there was a method called max bi on a new right yeah yeah
+
+   that's awesome now I learned something new and other times it's like well yeah I
+
+   was thinking about this and I'm like well gee that's a really good point yeah
+
+   yeah it's some constraint that you didn't yeah because sometimes when we
+
+   look at the code we might just be wrong oh yeah I'm not very smart it's it's a
+
+   great spectrum of intelligence and you know we all live in somewhere in that
+
+   and it's and it flexes though sometimes we're we're billions and we can um
+
+   we could solve any problems and other days like you said cat died and you're
+
+   just down and it's it's it's even something that when you approach a code
+
+   review I think we need to think about is okay this person was there and it isn't
+
+   like this fixed point in intelligence for them that's also a fixed point in
+
+   intelligence and awareness right now and that's why those conversations are
+
+   wonderful to have and that's also why we have these conversations so we can we can think
+
+   about you know why we're doing what we do here in these and I'm just kind of
+
+   searching for for what my point is okay I'll think about it okay yeah so like a
+
+   review tell me what's my performance so I think that I think the point is that
+
+   stay aware of the fact that there is context don't be very quick to judge and
+
+   and let that let that inform the questions that you ask rather than the judgments that you make okay
+
+   great so so think about context become context aware we're not we're not a
+
+   context free grammar so okay I'm I am doing terrible right now at the end of
+
+   this interview but that is okay that's what we do this for when I get my review
+
+   of the interview it'll get torn apart so that's all right but you can treat it
+
+   though right no no I'm gonna go ahead and I'm gonna let this ride because
+
+   that's the whole point of these these conversations and again I just see much like
+
+   um where you're looking at the code and you're trying to think about the
+
+   humanity of the person who wrote the code so not getting back on track
+
+   thinking about that it was human who wrote the code and that it's not just a
+
+   bunch of random lines that you know that somebody tried that somebody was you
+
+   know when they did this they were probably trying really hard to do the
+
+   right thing and um one of the points of of these interviews is to take people
+
+   that might otherwise only be known through Twitter blogs online personas
+
+   where they can kind of become a little distant and and become anonymized so
+
+   that way they can be kind of even a little bit abused because people forget
+
+   that they're humans you know that they're out there they're trying to
+
+   share a message or they're trying to share something or they're doing some
+
+   work or maybe they're even unintentionally out there because they
+
+   created something and now it got popular to take
+
+   those interviews take these interviews and take those people excuse me through
+
+   these interviews and um share them and say these people are human and and we
+
+   have these conversations and we make mistakes and we fumble and we you know
+
+   in in the course of a conversation maybe get uh drifted off of an original point
+
+   but these are not intended to be
+
+   super journalistic uh interviews these are casual conversations with people
+
+   much like you know you're looking at these these these lines of codes and
+
+   turning them into conversations and and talks yeah yeah so the reason I the
+
+   reason I wanted to do a talk well first of all the code was just funny but second
+
+   of all this point of um of being aware of of the questions that you can ask
+
+   rather than the judgments that you make is that I'm very bad at empathy and this
+
+   is something that comes up a lot it's been coming up over and over and over
+
+   again how you have to empathize with your fellow
+
+   developers and I don't even know what it means and people try to explain it to me
+
+   and I'm unable to conceive of what it means when they explain it in terms of
+
+   empathy but when you explain it in terms of asking about the pressures rather than
+
+   making judgments about um about who they are and what they know I'm able to do
+
+   that I can I can say okay I can I know how to ask questions I can do that
+
+   instead of just making it a judgment even though I'm pretty quick to judge
+
+   well I mean when we're looking at the line of code and we're like this
+
+   um who wrote this and you're just hating on them because you're like now you have
+
+   to move a ton of things around and it's just complicates what's in your head
+
+   but when you step up and you get your cup of coffee you can think about you know sometimes
+
+   take a breath and be like I'm tired maybe they were tired too yeah and I think that makes it a
+
+   little bit easier yeah to to realize that humans can feel that we're all humans here doing this
+
+   together if I can be frustrated I bet they were frustrated writing this code right and you can feel
+
+   that frustration yeah coming out you can feel that somebody added a 10th filter line I know
+
+   because I've personally done that on the code that they were trying to diagnose why it wasn't behaving
+
+   maybe they expected because of some external Force right and apply and again it comes down to context
+
+   yeah so well thank you very much for taking the time to stop here I really appreciate it yeah
+
+   user groups with lots to say interviews and more no way sharing great ideas in the tech community
+
+   fascinating conversations a plethora of information find out for yourself today at ucdastic.com
+
+   foreign

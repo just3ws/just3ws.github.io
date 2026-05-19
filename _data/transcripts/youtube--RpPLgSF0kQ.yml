@@ -1,243 +1,385 @@
 ---
-speaker_map:
-  M1:
-    name: Mike Hall
-    role: Interviewer, UGtastic
-  S1:
-    name: Guest
-    role: Guest
-turns:
-- speaker: M1
-  text: Hi, it's Mike with Utesc again. I'm sitting now with Michael Ficarra. Michael
-    has been very active in the CoffeeScript community, even so much so that you've
-    been taking a crack at doing a rewrite of the CoffeeScript compiler. He's done
-    fundraising through Kickstarter to help support that. Thank you very much for
-    taking the time to sit down. So, I'm going to ask you a question you've probably
-    never heard before. Why CoffeeScript? Why use it or why am I into it? Why are
-    you into it? How did you come to it?
-- speaker: S1
-  text: So, I've been in the community for as long as I can remember.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: But I'm interested in CoffeeScript because it provides a small but still significant
-    advantage over JavaScript.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Without any setbacks, really. It provides a syntax for you to use that better
-    describes the intent of your program.
-- speaker: M1
-  text: Did you come to CoffeeScript through development?
-- speaker: S1
-  text: Or were you just reading and like, "Hey, this is kind of cool. This is some
-    of the JavaScript.
-- speaker: M1
-  text: "\" Like, were you doing a project with it or something?"
-- speaker: S1
-  text: I don't know.
-- speaker: M1
-  text: You don't remember?
-- speaker: S1
-  text: I don't remember getting into it. I'm sorry. I've been asked that before.
-    You saw it and you were just in love with it. I know it's around, like, summertime
-    a few years ago.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Well, so, I mean, to go from adopting CoffeeScript to saying, "Hey, I'm going
-    to rewrite the compiler," I mean, that's a big jump.
-- speaker: M1
-  text: So, what kind of led to that?
-- speaker: S1
-  text: So, yeah, it was a few years of working on it, really. I got into it. CoffeeScript
-    was very new for me. I was just six months old when I found it. And my first contribution
-    was -- well, one of my first contributions was a complete rewrite of the test
-    suite because the test suite was just very, very simple and it was not organized.
-    And it was not done very well. I was looking for magic numbers all over the place.
-    And it was just not clean, not maintainable. So, just made a little micro-framework
-    for them to use and rewrote all the testing and obviously added about double the
-    test suite at the time. And it's still the same test suite we're using today.
-    That's really interesting you mention that because I interviewed Charles Nutter
-    and he kind of described kind of a similar path into -- into JRuby and that's
-    seeing the project and contributing to it, making it better, doing those. So,
-    it kind of goes into the theme of participating in the community by coming in
-    and helping, doing those things that are messy and people kind of won't leave
-    behind. But it sounds like you went way past that, actually. Yeah, one thing led
-    to another and working on it all the time and answering issues, discussing just
-    language design, how we're going to move forward, what features will and will
-    not be part of language, how we're going to represent them syntactically, all
-    sorts of contributions. And, you know, I've been a maintainer. Jeremy gave me
-    access to that before, you know, since pretty early on because I was just so active.
-    So, you know, get out there, contribute to open source projects and, you know,
-    your help will be appreciated. Well, and it sounds like you're also like a really
-    early adopter. It's still in an adoption. Like, we've had conversations that I
-    haven't quite switched over yet. Yeah, yeah. And it's getting really big, but
-    there's still so much to go. There's a lot of people that are either fearful or
-    they say it's not worth it to me or they just haven't even looked at it. Now,
-    you have an academic background with language design, PLC theory.
-- speaker: M1
-  text: So, well, first off, what is PLC, real quick?
-- speaker: S1
-  text: I myself don't come from a comp sci background. I'm a developer by trade,
-    not by training. So PLC stands for Programming Languages Studies. You study paradigms
-    that are incorporated in programming languages and just programming languages
-    studies. If you're interested in programming languages, you're interested in PLC.
-    Yeah, in PLC, yeah.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So you've studied academically. Yeah, yeah, yeah. And you've also studied
-    in depth the concepts that underpin language design and creation.
-- speaker: M1
-  text: So when you were looking at CoffeeScript, you know, was there anything that
-    jumped out at you?
-- speaker: S1
-  text: Like, wow, this is complete.
-- speaker: M1
-  text: Was it something that was pure and pulled you in because, wow, that was really
-    good? Or was it something like, oh, there's potential that it's a real diamond
-    in the rough?
-- speaker: S1
-  text: Well, you know, one of the big draws is that it's built on JavaScript semantics.
-    You know, by default, you can mostly assume JavaScript semantics for your CoffeeScript
-    book. And JavaScript has a really, really nice, beautiful port to it. It has some
-    ugly things like with and eval. But it has these beautiful ports like closures
-    and, you know. Sorry. First class functions. Yes. Semicolons, parentheses. Oh,
-    yeah, there's no semicolons.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Well, okay, so with the -- you were attracted to its underpinnings that would
-    be very flexible and something you'd run in a lot of different places. So you
-    could build a nicer language. And kind of like building out a JVM where it's a
-    lot of that infrastructure and the hard part of getting that runtime out in a
-    lot of places is already -- that battle's already been won. Yeah, yeah. I mean,
-    so I was thinking of the prototype . Well, part of the prototype . Yes. So, yeah,
-    we share the semantics. So, you know, member access walks the prototype chain
-    just like it does in JavaScript. And that's actually a nice feature that we want.
-    So we just take that with us by compiling it into one.
-- speaker: M1
-  text: Yeah. Okay.
-- speaker: S1
-  text: So you were attracted to working with CoffeeScript and you're bringing some
-    of a more of a rigorous approach because of your training to the design bit.
-- speaker: M1
-  text: What ultimately led to the idea of a rewrite? Because as we kind of joked
-    before, isn't there already a CoffeeScript compiler? Yeah.
-- speaker: S1
-  text: So the compiler has some failings, I guess you could call them. There are
-    some features that people want like source maps is a good example, which maps
-    your compiled JavaScript back to the original CoffeeScript so you can do debugging
-    in whatever your JavaScript is as if you're developing a JavaScript. And those
-    would be really hard with the architecture of the compiler. The original compiler
-    was, you know, Jeremy's first try at making a compiler. It was very rough. I'm
-    not trying to take a dig at it or anything. But it didn't use a model that allowed
-    for us to preserve that source position information through the compilation process.
-    So there are some basic failings in just the overall design of the compiler that
-    wouldn't allow us to do a lot of things. And of course, there were, you know,
-    300 or so open bugs and a lot of it with, like, you know, inconsistent parsing
-    of the syntax. And, you know, I just wanted to encapsulate fixing all of these
-    things. So improving the integration with existing tooling, clean up some syntactical
-    inconsistencies, and just also a lot of second -- this is the second product improvements.
-    You go through product one and it's okay. We find out everything that wasn't so
-    good. And that's okay. You go through product two. You go through product three.
-    You go through product four. You go through product five. You go through product
-    six. You go through product seven. You go through product eight. You go through
-    product nine. You go through product 10. You go through product 11. You go through
-    product 12. You go through product 13. You go through product 14. You go through
-    product 15. You go through product 16. You go through product 15. You go through
-    product 16. You go through product 17. You go through product 18. You go through
-    product 19. You go through product 20. You go through product 21. You go through
-    product 22. You go through product 23. You go through product 24. You go through
-    product 25. You go through product 26. You go through product 27. You go through
-    product 28. You go through product 28. You go through product 29. You go through
-    product 30. You go through product 31. You go through product 32. You go through
-    product 33. You go through product 34. You go through product 35. You go through
-    product 36. You go through product 37. You go through product 38. You go through
-    product 39. You go through product 40. time and effort, so certainly cost a lot
-    of time.
-- speaker: M1
-  text: Yeah. She, you started this, where did the idea for the Kickstarter come?
-- speaker: S1
-  text: I just, you know, had heard of it, Kickstarter was in the news a lot at the
-    time, and I guess it's still a big phenomenon, but yeah, I heard people getting
-    funded for it for similar projects, and I had had this idea for this rewrite in
-    my head for a long time, I also had, you know, ideas for it, I had published this
-    manifesto of things that would change about the language as well, and an end goal
-    of this compiler is that I would have a really good extensible thing to work off
-    of to write a language that is similar to CollegeScript with the changes that
-    I would make. Oh, I had full control of CollegeScript. Yeah, exactly. So, you
-    know, I would love to get a compiler that is extensible and I can build off of,
-    and this is my shortcut to doing that.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So really it was just a big selfish, you know, but everybody's done it before.
-    It's a scratch the itch, and it benefits everybody. Yes. So you launched the Kickstarter,
-    and it succeeded your goals, it looked like you were over a thousand dollars past
-    what the original goal was. I initially planned to do like a, you know, X dollars
-    per month that I'll be able to work on, but then, you know, depending on how successful
-    it was, I didn't want to be indefinitely chained to the project, so I decided
-    I would just fix it to a four-month period that I would contribute all my time
-    to, and I would just bust the thing out, and that period started in June and ended
-    in September.
-- speaker: M1
-  text: So how did it go? Did it go well for you?
-- speaker: S1
-  text: I think it's really successful.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: The project is, you know, it's really popular, it's being used by a lot of
-    people, it's being incorporated into popular IDE, and, you know, it's seeing adoption.
-    It still needs a little work, of course it needs a little polishing. I didn't
-    get to 100% of the things I wanted to get to in the Kickstarter by the time the
-    period was over, but at least like 95% of the things I wanted to do.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: That's better than most projects. Yeah, yeah, and my backers seem really happy
-    about this. That's good. Just curious, one I mentioned earlier about Martin Atkins,
-    who had done a seminar, he was doing a series of seminars on how to do Kickstarters,
-    and one of the pitfalls, you described it, is in the first Kickstarter is, you
-    know, looking at the amount of money that you're going to need and just saying,
-    okay, that's what I'm going to ask for. I mean, I need $12,000, so I'm going to
-    just ask for $12,000 for getting taxes and the cost of sending out the, was it,
-    was that something you ran into, or? So I made sure to remember taxes, and how
-    much Kickstarter takes, it took a big portion of that from me, and so it was Amazon
-    payments. So when it gets to you, it is definitely less, but I didn't have any
-    physical goods or anything like that to deal with, which some people complained
-    about, they said, you know, I'm backing this, why don't I get anything? It was
-    kind of like a selfish response, but really what it was was a contribution to
-    the community. Everybody benefits if just a few people contribute, especially
-    like, you know, like, you know, like, you know, like, you know, the corporate
-    donations that we got, you know, that they're making such use of this tool and
-    this language, you know, that it's worth it to them to, if they had to buy it,
-    if it was made software, that they would be paying so much more. Why not just
-    contribute a small amount, and then everybody will benefit. The unfortunate thing
-    is that everybody can say that's their responsibility, that's the other guy's
-    responsibility. Yeah, and nobody should contribute. And, you know, just to kind
-    of bring things around, we're here at Groupon, and Groupon is your research partner
-    for CoffeeScripts. I saw that in your description when I was looking at it.
-- speaker: M1
-  text: A research fellow?
-- speaker: S1
-  text: Research fellow. So, yeah, Groupon did something special for the Kickstarter.
-    Instead of donating, like, a few grand, they said, you know, we're here to help
-    you, you know, we're here to help you. And he said, why not come here and use
-    all of our resources, we'll give you a few people that have, you know, that have
-    worked in languages before, that you can go to for any advice, and work out problems
-    with. One of those was definitely Aaron Bedra, who works on Clojure all the time.
-    Who we interviewed before. So you guys know Aaron Bedra.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So, worked with him a lot on it, and I guess he used their building, their
-    computers, everything, and they even gave me some money. So I was very generous
-    with Groupon. Oh, wow. And that's why I'm here in Chicago, actually. I just moved
-    down here for that. Yeah, so part of it is Groupon feeding back into the open
-    source community.
-- speaker: M1
-  text: Yeah. Alright, well thank you very much for taking the time to sit down. Appreciate
-    it. Thanks for having me. Thank you.
+content: |-
+  Hi, it's Mike with Utesc again. I'm sitting now with Michael Ficarra. Michael has been very active in the CoffeeScript community, even so much so that you've been taking a crack at doing a rewrite of the CoffeeScript compiler.
+
+   He's done fundraising through Kickstarter to help support that. Thank you very much for taking the time to sit down.
+
+   So, I'm going to ask you a question you've probably never heard before. Why CoffeeScript?
+
+   Why use it or why am I into it?
+
+   Why are you into it? How did you come to it?
+
+   So, I've been in the community for as long as I can remember.
+
+   Yeah.
+
+   But I'm interested in CoffeeScript because it provides a small but still significant advantage over JavaScript.
+
+   Yeah.
+
+   Without any setbacks, really. It provides a syntax for you to use that better describes the intent of your program.
+
+   Did you come to CoffeeScript through development?
+
+   Or were you just reading and like, "Hey, this is kind of cool. This is some of the JavaScript."
+
+   Like, were you doing a project with it or something?
+
+   I don't know.
+
+   You don't remember?
+
+   I don't remember getting into it. I'm sorry. I've been asked that before.
+
+   You saw it and you were just in love with it.
+
+   I know it's around, like, summertime a few years ago.
+
+   Okay.
+
+   Well, so, I mean, to go from adopting CoffeeScript to saying, "Hey, I'm going to rewrite the compiler," I mean, that's a big jump.
+
+   So, what kind of led to that?
+
+   So, yeah, it was a few years of working on it, really. I got into it.
+
+   CoffeeScript was very new for me. I was just six months old when I found it.
+
+   And my first contribution was -- well, one of my first contributions was a complete rewrite of the test suite because the test suite was just very, very simple and it was not organized.
+
+   And it was not done very well. I was looking for magic numbers all over the place.
+
+   And it was just not clean, not maintainable.
+
+   So, just made a little micro-framework for them to use and rewrote all the testing and obviously added about double the test suite at the time.
+
+   And it's still the same test suite we're using today.
+
+   That's really interesting you mention that because I interviewed Charles Nutter and he kind of described kind of a similar path into --
+
+   into JRuby and that's seeing the project and contributing to it, making it better, doing those.
+
+   So, it kind of goes into the theme of participating in the community by coming in and helping, doing those things that are messy and people kind of won't leave behind.
+
+   But it sounds like you went way past that, actually.
+
+   Yeah, one thing led to another and working on it all the time and answering issues, discussing just language design, how we're going to move forward,
+
+   what features will and will not be part of language, how we're going to represent them syntactically, all sorts of contributions.
+
+   And, you know, I've been a maintainer.
+
+   Jeremy gave me access to that before, you know, since pretty early on because I was just so active.
+
+   So, you know, get out there, contribute to open source projects and, you know, your help will be appreciated.
+
+   Well, and it sounds like you're also like a really early adopter. It's still in an adoption.
+
+   Like, we've had conversations that I haven't quite switched over yet.
+
+   Yeah, yeah. And it's getting really big, but there's still so much to go.
+
+   There's a lot of people that are either fearful or they say it's not worth it to me or they just haven't even looked at it.
+
+   Now, you have an academic background with language design, PLC theory.
+
+   So, well, first off, what is PLC, real quick?
+
+   I myself don't come from a comp sci background.
+
+   I'm a developer by trade, not by training.
+
+   So PLC stands for Programming Languages Studies.
+
+   You study paradigms that are incorporated in programming languages and just programming languages studies.
+
+   If you're interested in programming languages, you're interested in PLC.
+
+   Yeah, in PLC, yeah. Okay.
+
+   So you've studied academically.
+
+   Yeah, yeah, yeah.
+
+   And you've also studied in depth the concepts that underpin language design and creation.
+
+   So when you were looking at CoffeeScript, you know, was there anything that jumped out at you?
+
+   Like, wow, this is complete.
+
+   Was it something that was pure and pulled you in because, wow, that was really good?
+
+   Or was it something like, oh, there's potential that it's a real diamond in the rough?
+
+   Well, you know, one of the big draws is that
+
+   it's built on JavaScript semantics.
+
+   You know, by default, you can mostly assume JavaScript semantics for your CoffeeScript book.
+
+   And JavaScript has a really, really nice, beautiful port to it.
+
+   It has some ugly things like with and eval.
+
+   But it has these beautiful ports like closures and, you know.
+
+   Sorry.
+
+   First class functions.
+
+   Yes.
+
+   Semicolons, parentheses.
+
+   Oh, yeah, there's no semicolons.
+
+   Yeah.
+
+   Well, okay, so with the -- you were attracted to its underpinnings that would be very flexible
+
+   and something you'd run in a lot of different places.
+
+   So you could build a nicer language.
+
+   And kind of like building out a JVM where it's a lot of that infrastructure and the hard part
+
+   of getting that runtime out in a lot of places is already -- that battle's already been won.
+
+   Yeah, yeah.
+
+   I mean, so I was thinking of the prototype .
+
+   Well, part of the prototype .
+
+   Yes.
+
+   So, yeah, we share the semantics.
+
+   So, you know, member access walks the prototype chain just like it does in JavaScript.
+
+   And that's actually a nice feature that we want.
+
+   So we just take that with us by compiling it into one.
+
+   Yeah.
+
+   Okay.
+
+   So you were attracted to working with CoffeeScript and you're bringing some of a more of a rigorous
+
+   approach because of your training to the design bit.
+
+   What ultimately led to the idea of a rewrite?
+
+   Because as we kind of joked before, isn't there already a CoffeeScript compiler?
+
+   Yeah.
+
+   So the compiler has some failings, I guess you could call them.
+
+   There are some features that people want like source maps is a good example, which maps
+
+   your compiled JavaScript back to the original CoffeeScript so you can do debugging in whatever
+
+   your JavaScript is as if you're developing a JavaScript.
+
+   And those would be really hard with the architecture of the compiler.
+
+   The original compiler was, you know, Jeremy's first try at making a compiler.
+
+   It was very rough.
+
+   I'm not trying to take a dig at it or anything.
+
+   But it didn't use a model that allowed for us to preserve that source position information
+
+   through the compilation process.
+
+   So there are some basic failings in just the overall design of the compiler that wouldn't
+
+   allow us to do a lot of things.
+
+   And of course, there were, you know, 300 or so open bugs and a lot of it with, like, you
+
+   know, inconsistent parsing of the syntax.
+
+   And, you know, I just wanted to encapsulate fixing all of these things.
+
+   So improving the integration with existing tooling, clean up some syntactical inconsistencies,
+
+   and just also a lot of second -- this is the second product improvements.
+
+   You go through product one and it's okay.
+
+   We find out everything that wasn't so good.
+
+   And that's okay.
+
+   You go through product two.
+
+   You go through product three.
+
+   You go through product four.
+
+   You go through product five.
+
+   You go through product six.
+
+   You go through product seven.
+
+   You go through product eight.
+
+   You go through product nine.
+
+   You go through product 10.
+
+   You go through product 11.
+
+   You go through product 12.
+
+   You go through product 13.
+
+   You go through product 14.
+
+   You go through product 15.
+
+   You go through product 16.
+
+   You go through product 15.
+
+   You go through product 16.
+
+   You go through product 17.
+
+   You go through product 18.
+
+   You go through product 19.
+
+   You go through product 20.
+
+   You go through product 21.
+
+   You go through product 22.
+
+   You go through product 23.
+
+   You go through product 24.
+
+   You go through product 25.
+
+   You go through product 26.
+
+   You go through product 27.
+
+   You go through product 28.
+
+   You go through product 28.
+
+   You go through product 29.
+
+   You go through product 30.
+
+   You go through product 31.
+
+   You go through product 32.
+
+   You go through product 33.
+
+   You go through product 34.
+
+   You go through product 35.
+
+   You go through product 36.
+
+   You go through product 37.
+
+   You go through product 38.
+
+   You go through product 39.
+
+   You go through product 40.
+
+   time and effort, so certainly cost a lot of time. Yeah. She, you started this, where did the idea for the Kickstarter come? I just, you know, had heard of it, Kickstarter was in the news a lot at the time, and I guess it's still a big phenomenon, but yeah, I heard people getting funded for it for similar projects, and I had had this idea for this rewrite in my head for a long time, I also had, you know, ideas for it,
+
+   I had published this manifesto of things that would change about the language as well, and an end goal of this compiler is that I would have a really good extensible thing to work off of to write a language that is similar to CollegeScript with the changes that I would make. Oh, I had full control of CollegeScript. Yeah, exactly. So, you know, I would love to get a compiler that is extensible and I can build off of, and this is my shortcut to doing that. Okay.
+
+   So really it was just a big selfish, you know, but everybody's done it before. It's a scratch the itch, and it benefits everybody. Yes. So you launched the Kickstarter, and it succeeded your goals, it looked like you were over a thousand dollars past what the original goal was. I initially planned to do like a, you know, X dollars per month that I'll be able to work on,
+
+   but then, you know, depending on how successful it was, I didn't want to be indefinitely chained to the project, so I decided I would just fix it to a four-month period that I would contribute all my time to, and I would just bust the thing out, and that period started in June and ended in September. So how did it go? Did it go well for you? I think it's really successful. Yeah. The project is, you know,
+
+   it's really popular, it's being used by a lot of people, it's being incorporated into popular IDE, and, you know, it's seeing adoption. It still needs a little work, of course it needs a little polishing. I didn't get to 100% of the things I wanted to get to in the Kickstarter by the time the period was over, but at least like 95% of the things I wanted to do. Yeah. That's better than most projects. Yeah, yeah, and my backers seem really happy about this. That's good. Just curious, one I mentioned earlier about
+
+   Martin Atkins, who had done a seminar, he was doing a series of seminars on how to do Kickstarters, and one of the pitfalls, you described it, is in the first Kickstarter is, you know, looking at the amount of money that you're going to need and just saying, okay, that's what I'm going to ask for. I mean, I need $12,000, so I'm going to just ask for $12,000 for getting taxes and the cost of sending out the, was it, was that something you ran into, or? So I made sure to remember taxes,
+
+   and how much Kickstarter takes, it took a big portion of that from me, and so it was Amazon
+
+   payments. So when it gets to you, it is definitely less, but I didn't have any physical goods
+
+   or anything like that to deal with, which some people complained about, they said, you
+
+   know, I'm backing this, why don't I get anything? It was kind of like a selfish response, but
+
+   really what it was was a contribution to the community. Everybody benefits if just a few
+
+   people contribute, especially like, you know, like, you know, like, you know, like, you
+
+   know, the corporate donations that we got, you know, that they're making such use of
+
+   this tool and this language, you know, that it's worth it to them to, if they had to buy
+
+   it, if it was made software, that they would be paying so much more. Why not just contribute
+
+   a small amount, and then everybody will benefit. The unfortunate thing is that everybody can
+
+   say that's their responsibility, that's the other guy's responsibility.
+
+   Yeah, and nobody should contribute.
+
+   And, you know, just to kind of bring things around, we're here at Groupon, and Groupon
+
+   is your research partner for CoffeeScripts. I saw that in your description when I was
+
+   looking at it.
+
+   A research fellow?
+
+   Research fellow.
+
+   So, yeah, Groupon did something special for the Kickstarter. Instead of donating, like,
+
+   a few grand, they said, you know, we're here to help you, you know, we're here to help
+
+   you. And he said, why not come here and use all of our resources, we'll give you a few
+
+   people that have, you know, that have worked in languages before, that you can go to for
+
+   any advice, and work out problems with. One of those was definitely Aaron Bedra, who works
+
+   on Clojure all the time.
+
+   Who we interviewed before.
+
+   So you guys know Aaron Bedra.
+
+   Yeah.
+
+   So, worked with him a lot on it, and I guess he used their building, their computers, everything,
+
+   and they even gave me some money. So I was very generous with Groupon.
+
+   Oh, wow.
+
+   And that's why I'm here in Chicago, actually. I just moved down here for that.
+
+   Yeah, so part of it is Groupon feeding back into the open source community.
+
+   Yeah.
+
+   Alright, well thank you very much for taking the time to sit down.
+
+   Appreciate it.
+
+   Thanks for having me.
+
+   Thank you.
