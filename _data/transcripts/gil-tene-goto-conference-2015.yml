@@ -9,11 +9,11 @@ speaker_map:
 turns:
 - speaker: M1
   text: Hi, it's Mike with UGtastic . I'm here at GOTO Conference 2015 and I'm standing
-    here with Gail Tenney who just gave a talk on faster Java objects and is going
-    to be doing a workshop on application responsiveness as well as a case study.
-    So you're pretty busy here at the conference, but I got a little bit of time to
-    speak with you and I really appreciate that. So let's start with the talk you
-    just gave about faster Java objects. What was that about?
+    here with Gil Tene who just gave a talk on faster Java objects and is going to
+    be doing a workshop on application responsiveness as well as a case study. So
+    you're pretty busy here at the conference, but I got a little bit of time to speak
+    with you and I really appreciate that. So let's start with the talk you just gave
+    about faster Java objects. What was that about?
 - speaker: S1
   text: It's about faster Java. The talk really focuses on a project that we've been
     working on, an open source project from Wikimedia for a year and a half or so.
@@ -192,4 +192,16 @@ turns:
 - speaker: M1
   text: Yeah. Well, thank you very much for taking the time to speak to me. It's fascinating.
     So OpenJDK is just code, so. Yeah. Yeah. Yes, exactly. Thank you. Absolutely.
-insights: []
+insights:
+- statement: The project aims to close the inherent speed difference between Java
+    and C for object allocation.
+  type: durable
+  confidence: high
+- statement: The optimization is not related to startup warm-up or compilation, but
+    rather to memory layout.
+  type: durable
+  confidence: high
+- statement: Azul makes multiple JVMs, including Zing with better metrics and Zulu
+    as a binary distribution for OpenJDK.
+  type: durable
+  confidence: high

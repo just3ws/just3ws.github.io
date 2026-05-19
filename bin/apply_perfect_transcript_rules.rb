@@ -1,15 +1,24 @@
 #!/usr/bin/env ruby
 require 'yaml'
 
+# --- LEXICAL NAME REPAIRS ---
+# Explicitly map known phonetic misspellings to correct names
+NAME_REPAIRS = {
+  "Gil Tene" => [/Gail Tenney/i, /Gil Ten\b/i, /Galtin/i],
+  "Rich Hickey" => [/Richie Hickey/i, /Richie Hicky/i],
+  "Adewale Oshineye" => [/Adeo Shinyea/i, /Eddie Oceanea/i],
+  "Sandro Mancuso" => [/Sandra Mancuso/i],
+  "DHH" => [/D. H. H./i, /DH H/i]
+}
+
 # --- JINGLE REGEX ---
-# Matches the "User groups with lots to say..." jingle with various phonetic misspellings
 JINGLE_REGEX = /User groups with lots to say.*?(?:UGtastic|uktastic|euketastic|ubtastic|evotasic|ugetastic|ukt|euke|uke|yugetastic|yuge|uktasek)(?:\s*\.?\s*com)?\.?\s*/im
 
 RULES = [
-  # --- Brand: UGtastic ---
-  [/\b\w*tastic(?:\s*\.?\s*com)?\b/i, "UGtastic"],
-  [/\b[Uu]ktasek(?:\s*\.?\s*com)?\b/i, "UGtastic"],
-  [/\b[Uu]btastic(?:\s*\.?\s*com)?\b/i, "UGtastic"],
+  # --- Brands & Core Identity ---
+  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget|ukt|yug|yuget|yuge)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
+  [/\b[Uu]ktasek(?:\.com)?\b/i, "UGtastic"],
+  [/\b[Uu]btastic(?:\.com)?\b/i, "UGtastic"],
   [/\b[Ee]vo[ -]?Tasic\b/i, "UGtastic"],
   [/\b[Uu]g[ -]?l[ -]?st\b/i, "UGl.st"],
 
@@ -81,7 +90,14 @@ def apply_to_text(text)
   # 2. Apply general rules
   RULES.each { |pattern, replacement| text.gsub!(pattern, replacement) }
   
-  # 3. Clean up artifacts
+  # 3. Apply Name Repairs
+  NAME_REPAIRS.each do |correct_name, patterns|
+    patterns.each do |p|
+      text.gsub!(p, correct_name)
+    end
+  end
+
+  # 4. Clean up artifacts
   text.gsub!(/\[Music\]\s+(?:com\.)?\s*/i, "[Music] ")
   text.gsub!(/\s{2,}/, " ")
   text.strip!
