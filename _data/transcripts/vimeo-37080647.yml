@@ -13,27 +13,28 @@ turns:
     the fields, and then you put something in the document ready, and then you hide
     it on one case, and then something happens, and then it changes. And it doesn't
     really feel right. I'm not sure how to test that. I'm not sure how to control
-    how that works without some web-based tests that don't make me very happy. So
-    I started using Backbone about four or five months ago. I was working with a client,
-    and they're about to embark on a new project that they knew was going to be client-side
-    heavy. They had made a mess in their previous application with their JavaScript
-    and wanted to get a better control over what this new code was going to look like.
-    And so they started looking at a few options. They were looking at, I think JavaScript
-    NBC was one. Sprout Core was another, and Backbone. js. Spent some time specking
-    things out. For us, we ended up succeeding the best in that short amount of time
-    with Backbone. js. It was just kind of an easier learning curve. Kind of felt
-    like you were writing JavaScript and not really learning another set of-- another
-    language to write what your JavaScript should do. So we embarked with JavaScript.
-    I learned a lot about how to write with Backbone, how to test with Backbone. js.
-    And I've come up with some patterns, some ideas about what good Backbone. js code
-    looks like, how it should all work together. And that's what I'm going to cover
-    today. We're going to talk first about Backbone. js. So I want to give a good
-    intro to what the framework is like. And then we can start to dive in how you
-    would use Backbone in a web project, or how you would evolve your project using--
-    trying to move forward with tests in order to add that functionality bit by bit.
-    So that being said, let's just stop and talk about JavaScript right away. JavaScript
-    is an interesting language. It's kind of a bit like Frankenstein, in that it was
-    kind of cobbled together, right?"
+    how that works without some web-based tests that don't make me very happy. So"
+- speaker: S1
+  text: I started using Backbone about four or five months ago. I was working with
+    a client, and they're about to embark on a new project that they knew was going
+    to be client-side heavy. They had made a mess in their previous application with
+    their JavaScript and wanted to get a better control over what this new code was
+    going to look like. And so they started looking at a few options. They were looking
+    at, I think JavaScript NBC was one. Sprout Core was another, and Backbone. js.
+    Spent some time specking things out. For us, we ended up succeeding the best in
+    that short amount of time with Backbone. js. It was just kind of an easier learning
+    curve. Kind of felt like you were writing JavaScript and not really learning another
+    set of-- another language to write what your JavaScript should do. So we embarked
+    with JavaScript. I learned a lot about how to write with Backbone, how to test
+    with Backbone. js. And I've come up with some patterns, some ideas about what
+    good Backbone. js code looks like, how it should all work together. And that's
+    what I'm going to cover today. We're going to talk first about Backbone. js. So
+    I want to give a good intro to what the framework is like. And then we can start
+    to dive in how you would use Backbone in a web project, or how you would evolve
+    your project using-- trying to move forward with tests in order to add that functionality
+    bit by bit. So that being said, let's just stop and talk about JavaScript right
+    away. JavaScript is an interesting language. It's kind of a bit like Frankenstein,
+    in that it was kind of cobbled together, right?
 - speaker: S1
   text: It's not a lot of standards in there. It's really powerful, though. It's really
     fast. And it's got all these standards that are used all over the place. I mean,

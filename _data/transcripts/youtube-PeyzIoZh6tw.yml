@@ -9,118 +9,120 @@ speaker_map:
 turns:
 - speaker: M1
   text: "[Music] hi it's Mike with UGtastic again I'm here today at day two of SCNA
-    2013 right now I'm sitting down with Amitai Schleyer who sits on the TNF and as
-    you might know the TNF is the net BSD the board of the I can't even say myself
-    but it's a board of the net BSD organization or a foundation TNF I said that beautifully
-    so anyway hi hi Amitai thank you very much for taking the time to sit down with
-    me appreciate it so the net BSD foundation that's that sounds very important what
-    what is the net BSD foundation it's a 501c3 nonprofit and it's basically if you're
-    familiar with the free BSD foundation or I'm sure OpenBSD has something like it
-    we officially accept donations that are intended to fund development in the BSD
-    and to some extent we determine the project direction the structure of the organization
-    because it is an organization even though we're all volunteers and the disbursement
-    of funds where we see that it helps the development law so the net BSD that's
-    that's like the Berkeley San Diego Unix that's the Intel or the i386 in FBSD's
-    case it turns out to be a lot more than that okay BSD stands for Berkeley software
-    distribution or Berkeley software development depending on when in the 90s you're
-    looking at the expansion of the the acronym and net BSD was one of the two projects
-    that kind of forked out of the the death of the original Berkeley okay the regents
-    of the University of California sometime in the early 90s stopped being able to
-    fund the development that was happening in Berkeley which had been to begin with
-    a set of patches on top of AT&T's units but eventually became its own distribution
-    and one of the hallmarks of BSD units other than actually being able to be used
-    by humans to some extent was that it deliberately targeted portability it was
-    deliberately built and distributed from multiple hardware architectures and that
-    thereby forced to be designed to be able to work on multiple hardware architectures
-    and net BSD and previous the year the two major projects that that forked around
-    that time out of the remains of BSD and previous he chose what seems like a prescient
-    direction at the time that they should focus on commodity hardware because mostly
-    that's what people have and if you eat out every last bit of performance on a
-    90 megahertz Pentium you'll be glad you did yeah and net BSD chose that aspect
-    of tradition from Berkeley that let's let's turn up the knobs to 11 on portability
-    let's stick with that tradition let's make sure we're even more portable let's
-    find more ways to share driver code abstractions that let the drivers be shared
-    abstract the way and being this and other differences between platforms and just
-    make let that drive the design which is actually why I'm here talking to you today
-    because when I hear about craftsmanship in this conference the Unix that I think
-    goes best with that is net BSD I think craftsmen who use Unix and appreciate Unix
-    and appreciate craftsmanship should be very interested in that business well I
-    think there's a lot of people here that don't realize that they're very interested
-    in net BSD and then we kind of tease each other about that Apple logo but if I
-    if I'm I'm seeing net BSD is the current the Darwin kernel is based off of that
-    BSD or it's a complicated story naturally the the kernel in OS X is kind of a
-    hybrid a lot of its history comes from mock which was developed to Carnegie Mellon
-    mark is the M-A-C-H M-A-C-H good kind of like the word Mac but totally coincidental
-    and it also turns out that one of the primary developers of mock wound up being
-    executive at Apple later for business merger related reasons but the kernel is
-    mock there is some some more to it than that that's actually not my primary area
-    of work but where net BSD got involved with OS X is that in an early version of
-    OS X I think up through 10. 2 or 10. 3 most of the user land utilities were from
-    net BSD so if you for instance if you're running user bin FTP it's the one that
-    that was developed in a BSD and enhanced by Luke Newbern and distributed as a
-    an auto-conf buildable piece of source and a lot of the utilities in OS X were
-    like that somewhere after 10. 2 or 10. 3 it became more of a free BSD influence
-    because one of the developers from one of the founders of FreeBSD Jordan Hubbard
-    was the director of UNIX technologies or something like that at Apple and so they
-    kind of moved in a FreeBSD direction for user land but the the kernel is actually
-    a different story and I don't know it very well okay so you know how did you come
-    to be involved with the you said that the kernel really isn't where you're spending
-    your time where where where does Amatai or Schman spend his time what is your
-    focus and what do you do with the the foundation as part of the board I'm relatively
-    new I was elected some months ago and just began serving the roles that I had
-    before that were two basically one one that I kind of self-nominated myself for
-    like you do in a volunteer project does the work becomes in charge and another
-    that I was selected for a while ago the other one the one that I selected for
-    is there's a project management committee for package source which is closely
-    related to NetBSD in terms of history and organization but isn't an operating
-    system project NetBSD is an operating system project package source is a package
-    manager and its distinguishing characteristics that are very compelling to me
-    and I think possibly to the people in this audience are that it is cross-platform
-    so any kind of UNIX system you have even if it's Windows with services for UNIX
-    or SIGWIN on it or whether you have root or not it is still a system you can use
-    the same way across all of the heterogeneous UNIX E machines that you have and
-    so if you're a sys admin which at times all of us are it allows you to get the
-    tools that you need or the services that you need installed in the same way on
-    all the machines you deal with regardless of what they are where they came from
-    so in that respect it sounds like a little bit of chef and a little bit of homebrew
-    or more apt there's a more like is it more like apt or is it more like a homebrew
-    kind of thing when you're saying that it goes and it can work on any UNIX e-based
-    system does it go and grab source and compile them locally or exactly so it's
-    homebrew is like some of what package source does okay homebrew is a I believe
-    the source-based builder of packages that works on OS X and that's it package
-    source is a source-based package manager it also generates binary packages which
-    you can then reuse and distribute but it's designed to be used with source and
-    so when you when you go and get your package source tree and say well today I
-    want Ruby 1. 9. 3 installed on whatever the system is CD package source laying
-    Ruby 1. 9. 3 make install and what happens when you do that is that the the source
-    code for Ruby is fetched its checksum is verified its extracted if it has dependencies
-    that have to be built and installed in the same way before it can be built they're
-    installed one of the special things package source does is to make sure that the
-    build environment on a user machine is identical to that on a dev machine so the
-    package will be reproducibly buildable and then at the end of it you have you
-    know custom built with the parameters that you control but the defaults are pretty
-    good a Ruby that's in a section of your machine it's only for packages from package
-    source put it in your path and it does what you want so does it also like resolve
-    dependencies and things like that it does it goes all the way down oh really so
-    yeah because I when you're talking about Ruby I think well we do have a variety
-    of packages Ruby management tools RVM which I was actually just this morning tweeting
-    out that they need support but um you know how do you exist in that are you replacements
-    from that or do you that's an excellent question I'm not a Rubyist I am familiar
-    with kind of an equivalent problem with Perl that if you want to have different
-    versions of Perl with different you know what would be gems in the Perl world
-    installed you want to be able to get those set up and switch between them and
-    know which one you're currently working with Perl has ways of doing that package
-    source is kind of orthogonal but can be used for that specifically what I mean
-    is that you you can you can take one package source source tree and bootstrap
-    the package source tools and an entire set of packages as long as it's in a different
-    location it's totally independent and the parameters can be different and the
-    values can be different so I've used that in the past to to get one set of packages
-    look like this another set of packages in a slightly different place look like
-    that and you can move a sim link or do some other trick right so so how did you
-    you said you kind of volunteered for the work and you just came to own it how
-    how did that come to be how did you end up even getting into a position to volunteer
-    so that one uh that one is a different piece of work netbsd's website unfortunately
-    I don't think sings the virtues of the operating system and the package manager
+    2013 right now I'm sitting down with"
+- speaker: S1
+  text: Amitai Schleyer who sits on the TNF and as you might know the TNF is the net
+    BSD the board of the I can't even say myself but it's a board of the net BSD organization
+    or a foundation TNF I said that beautifully so anyway hi hi Amitai thank you very
+    much for taking the time to sit down with me appreciate it so the net BSD foundation
+    that's that sounds very important what what is the net BSD foundation it's a 501c3
+    nonprofit and it's basically if you're familiar with the free BSD foundation or
+    I'm sure OpenBSD has something like it we officially accept donations that are
+    intended to fund development in the BSD and to some extent we determine the project
+    direction the structure of the organization because it is an organization even
+    though we're all volunteers and the disbursement of funds where we see that it
+    helps the development law so the net BSD that's that's like the Berkeley San Diego
+    Unix that's the Intel or the i386 in FBSD's case it turns out to be a lot more
+    than that okay BSD stands for Berkeley software distribution or Berkeley software
+    development depending on when in the 90s you're looking at the expansion of the
+    the acronym and net BSD was one of the two projects that kind of forked out of
+    the the death of the original Berkeley okay the regents of the University of California
+    sometime in the early 90s stopped being able to fund the development that was
+    happening in Berkeley which had been to begin with a set of patches on top of
+    AT&T's units but eventually became its own distribution and one of the hallmarks
+    of BSD units other than actually being able to be used by humans to some extent
+    was that it deliberately targeted portability it was deliberately built and distributed
+    from multiple hardware architectures and that thereby forced to be designed to
+    be able to work on multiple hardware architectures and net BSD and previous the
+    year the two major projects that that forked around that time out of the remains
+    of BSD and previous he chose what seems like a prescient direction at the time
+    that they should focus on commodity hardware because mostly that's what people
+    have and if you eat out every last bit of performance on a 90 megahertz Pentium
+    you'll be glad you did yeah and net BSD chose that aspect of tradition from Berkeley
+    that let's let's turn up the knobs to 11 on portability let's stick with that
+    tradition let's make sure we're even more portable let's find more ways to share
+    driver code abstractions that let the drivers be shared abstract the way and being
+    this and other differences between platforms and just make let that drive the
+    design which is actually why I'm here talking to you today because when I hear
+    about craftsmanship in this conference the Unix that I think goes best with that
+    is net BSD I think craftsmen who use Unix and appreciate Unix and appreciate craftsmanship
+    should be very interested in that business well I think there's a lot of people
+    here that don't realize that they're very interested in net BSD and then we kind
+    of tease each other about that Apple logo but if I if I'm I'm seeing net BSD is
+    the current the Darwin kernel is based off of that BSD or it's a complicated story
+    naturally the the kernel in OS X is kind of a hybrid a lot of its history comes
+    from mock which was developed to Carnegie Mellon mark is the M-A-C-H M-A-C-H good
+    kind of like the word Mac but totally coincidental and it also turns out that
+    one of the primary developers of mock wound up being executive at Apple later
+    for business merger related reasons but the kernel is mock there is some some
+    more to it than that that's actually not my primary area of work but where net
+    BSD got involved with OS X is that in an early version of OS X I think up through
+    10. 2 or 10. 3 most of the user land utilities were from net BSD so if you for
+    instance if you're running user bin FTP it's the one that that was developed in
+    a BSD and enhanced by Luke Newbern and distributed as a an auto-conf buildable
+    piece of source and a lot of the utilities in OS X were like that somewhere after
+    10. 2 or 10. 3 it became more of a free BSD influence because one of the developers
+    from one of the founders of FreeBSD Jordan Hubbard was the director of UNIX technologies
+    or something like that at Apple and so they kind of moved in a FreeBSD direction
+    for user land but the the kernel is actually a different story and I don't know
+    it very well okay so you know how did you come to be involved with the you said
+    that the kernel really isn't where you're spending your time where where where
+    does Amatai or Schman spend his time what is your focus and what do you do with
+    the the foundation as part of the board I'm relatively new I was elected some
+    months ago and just began serving the roles that I had before that were two basically
+    one one that I kind of self-nominated myself for like you do in a volunteer project
+    does the work becomes in charge and another that I was selected for a while ago
+    the other one the one that I selected for is there's a project management committee
+    for package source which is closely related to NetBSD in terms of history and
+    organization but isn't an operating system project NetBSD is an operating system
+    project package source is a package manager and its distinguishing characteristics
+    that are very compelling to me and I think possibly to the people in this audience
+    are that it is cross-platform so any kind of UNIX system you have even if it's
+    Windows with services for UNIX or SIGWIN on it or whether you have root or not
+    it is still a system you can use the same way across all of the heterogeneous
+    UNIX E machines that you have and so if you're a sys admin which at times all
+    of us are it allows you to get the tools that you need or the services that you
+    need installed in the same way on all the machines you deal with regardless of
+    what they are where they came from so in that respect it sounds like a little
+    bit of chef and a little bit of homebrew or more apt there's a more like is it
+    more like apt or is it more like a homebrew kind of thing when you're saying that
+    it goes and it can work on any UNIX e-based system does it go and grab source
+    and compile them locally or exactly so it's homebrew is like some of what package
+    source does okay homebrew is a I believe the source-based builder of packages
+    that works on OS X and that's it package source is a source-based package manager
+    it also generates binary packages which you can then reuse and distribute but
+    it's designed to be used with source and so when you when you go and get your
+    package source tree and say well today I want Ruby 1. 9. 3 installed on whatever
+    the system is CD package source laying Ruby 1. 9. 3 make install and what happens
+    when you do that is that the the source code for Ruby is fetched its checksum
+    is verified its extracted if it has dependencies that have to be built and installed
+    in the same way before it can be built they're installed one of the special things
+    package source does is to make sure that the build environment on a user machine
+    is identical to that on a dev machine so the package will be reproducibly buildable
+    and then at the end of it you have you know custom built with the parameters that
+    you control but the defaults are pretty good a Ruby that's in a section of your
+    machine it's only for packages from package source put it in your path and it
+    does what you want so does it also like resolve dependencies and things like that
+    it does it goes all the way down oh really so yeah because I when you're talking
+    about Ruby I think well we do have a variety of packages Ruby management tools
+    RVM which I was actually just this morning tweeting out that they need support
+    but um you know how do you exist in that are you replacements from that or do
+    you that's an excellent question I'm not a Rubyist I am familiar with kind of
+    an equivalent problem with Perl that if you want to have different versions of
+    Perl with different you know what would be gems in the Perl world installed you
+    want to be able to get those set up and switch between them and know which one
+    you're currently working with Perl has ways of doing that package source is kind
+    of orthogonal but can be used for that specifically what I mean is that you you
+    can you can take one package source source tree and bootstrap the package source
+    tools and an entire set of packages as long as it's in a different location it's
+    totally independent and the parameters can be different and the values can be
+    different so I've used that in the past to to get one set of packages look like
+    this another set of packages in a slightly different place look like that and
+    you can move a sim link or do some other trick right so so how did you you said
+    you kind of volunteered for the work and you just came to own it how how did that
+    come to be how did you end up even getting into a position to volunteer so that
+    one uh that one is a different piece of work netbsd's website unfortunately I
+    don't think sings the virtues of the operating system and the package manager
     as well as it should the virtues are terrific the website is not so uh so I took
     a hard look a few years ago at why are we having this problem and some people
     think it's because developers don't like to write documentation I don't believe
@@ -304,4 +306,4 @@ turns:
     all these options of how to exercise it yeah well uh thank you very much for taking
     the time to sit down here really appreciate it and uh thank you and the netbsd
     foundation is something you should check out what was the uh url uh www. netbsd.
-    org netbsd. org thank you very much thank you [Music] UGtastic you"
+    org netbsd. org thank you very much thank you [Music] UGtastic you
