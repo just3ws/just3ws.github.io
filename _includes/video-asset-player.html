@@ -73,6 +73,14 @@
     {% endif %}
 
     <div class="editorial-main-content">
+      {% if asset.description %}
+        <section class="interview-abstract">
+          <div class="description-content">
+            {{ asset.description }}
+          </div>
+        </section>
+      {% endif %}
+
       {% if transcript_data.speaker_map %}
         <section class="speakers-editorial-grid">
           {% for speaker in transcript_data.speaker_map %}

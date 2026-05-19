@@ -91,6 +91,37 @@
   color: #fff;
 }
 
+/* Interview Abstract / Executive Summary */
+.interview-abstract {
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-left: 6px solid #111;
+  padding: 3rem;
+  margin-bottom: 5rem;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.description-content {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #333;
+  font-weight: 500;
+  white-space: pre-wrap; /* Preserve line breaks from description */
+}
+
+.description-content a {
+  color: var(--color-primary, #007bff);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.description-content a:hover {
+  color: #000;
+  text-decoration-thickness: 2px;
+}
+
 /* Speaker Editorial Grid */
 .speakers-editorial-grid {
   display: grid;
