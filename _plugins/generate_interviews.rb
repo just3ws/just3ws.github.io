@@ -65,39 +65,55 @@ module Jekyll
         id = interview['id']
         next unless id # Skip malformed entries
         
+        # Look up corresponding video asset
+        video_asset = site.data.dig('video_assets', 'items').find { |a| a['id'] == interview['video_asset_id'] } ||
+                      site.data.dig('video_assets', 'items').find { |a| a['id'] == id }
+
+        # --- SEO TITLE OPTIMIZATION ---
+        # Format: Hook/Subject: Guest Name | Context
         subject = Generators::Core::Text.normalize_subject(interview['title'])
+        guest_name = Array(interview['interviewees']).first
+        
+        title_core = if guest_name
+          "#{subject}: Interview with #{guest_name}"
+        else
+          "#{interview['collection']} — #{subject}"
+        end
+
         context_bits = []
-        context_bits << interview['collection'] if interview['collection']
         context_bits << interview['conference'].to_s.strip if interview['conference'].to_s.strip != ''
         context_bits << interview['community'].to_s.strip if interview['community'].to_s.strip != ''
-        context = context_bits.first(2).join(' · ')
+        context = context_bits.first(1).join(' ') # Keep it slim
+        
+        title_meta = +"#{title_core}"
+        title_meta << " | #{context}" unless context.empty?
+        title_meta = Generators::Core::Meta.clamp(title_meta, 70)
 
-        title_core = +"#{interview['collection']} — #{subject}"
-        title_core << " (#{context})" unless context.empty?
-        title_meta = Generators::Core::Meta.clamp(title_core, 70)
+        # --- SEO DESCRIPTION OPTIMIZATION ---
+        # Prioritize the "Engagement Hook" from video_assets.yml
+        if video_asset && video_asset['description'] && video_asset['description'].length > 50
+          description_meta = Generators::Core::Meta.clamp(video_asset['description'], 160)
+        else
+          description_parts = []
+          description_parts << "Archive: #{interview['collection']}"
+          description_parts << "Featuring: #{Array(interview['interviewees']).join(', ')}" if interview['interviewees']
+          topic = interview['topic'].to_s.strip
+          description_parts << "Topic: #{topic}" unless topic.empty?
+          recorded_date = interview['recorded_date'].to_s.strip
+          description_parts << "Recorded: #{recorded_date}" unless recorded_date.empty?
+          description_meta = Generators::Core::Meta.clamp("#{description_parts.join('. ')}.", 160)
+        end
 
-        description_parts = []
-        description_parts << "Archive: #{interview['collection']}"
-        description_parts << "Featuring: #{Array(interview['interviewees']).join(', ')}" if interview['interviewees']
-        topic = interview['topic'].to_s.strip
-        description_parts << "Topic: #{topic}" unless topic.empty?
-
-        recorded_date = interview['recorded_date'].to_s.strip
-        description_parts << "Recorded: #{recorded_date}" unless recorded_date.empty?
-
-        description_parts << "ID: #{id}"
-        description_meta = Generators::Core::Meta.clamp("#{description_parts.join('. ')}.", 160)
         description_meta = Generators::Core::Meta.ensure_min_length(
           description_meta,
           70,
           "Part of Mike Hall's technical video and interview archive."
         )
         description_meta = Generators::Core::Meta.clamp(description_meta, 160)
+        
         title_meta = Generators::Core::Meta.ensure_unique(title_meta, 70, id, seen_titles)
         description_meta = Generators::Core::Meta.ensure_unique(description_meta, 160, id, seen_descriptions)
 
-        # Look up thumbnail for social preview
-        video_asset = site.data.dig('video_assets', 'items').find { |a| a['id'] == interview['video_asset_id'] }
         thumbnail = video_asset['thumbnail'] if video_asset
 
         site.pages << InterviewPage.new(site, site.source, id, {
@@ -108,7 +124,8 @@ module Jekyll
           'breadcrumb_parent_name' => 'Conversations',
           'breadcrumb_parent_url' => '/interviews/',
           'interview_id' => id,
-          'collection' => interview['collection']
+          'collection' => interview['collection'],
+          'asset' => video_asset # Inject for schema-factory.html
         })
       end
     end

@@ -8,12 +8,21 @@ module Generators
         return clean if max_length <= 0
         return clean if clean.length <= max_length
 
+        # If it fits perfectly after stripping trailing punctuation
+        trimmed = clean[0, max_length].strip
+        return trimmed if clean.length <= max_length + 3 && clean =~ /[.!?]$/
+
+        # Standard truncation at word boundary
         truncated = clean[0, max_length - 1]
         return "" if truncated.nil? || truncated.empty?
         
-        truncated = truncated.rpartition(" ").first if truncated.include?(" ")
-        truncated = clean[0, max_length - 1] if truncated.nil? || truncated.empty?
-        "#{truncated}…"
+        # Find last word boundary
+        last_space = truncated.rindex(" ")
+        if last_space && last_space > (max_length * 0.7)
+          truncated = truncated[0, last_space]
+        end
+
+        "#{truncated.strip}…"
       end
 
       def ensure_unique(value, max_length, disambiguator, seen)
