@@ -1,515 +1,331 @@
 ---
-content: |-
-  Hi, it's Mike again with Uketastic. I'm here again at the GoToConference in Chicago, 2013.
-
-   I'm sitting down with Rich Hickey. Rich, as you may know, is the creator of the Closure Programming Language.
-
-   It's a LISP dialect on the JVM. Thank you very much for taking the time to sit down with me.
-
-   It's a very busy conference, so I appreciate it.
-
-   You're welcome.
-
-   So you created Closure, and you released it to the LISP mailing list, and yada, yada, yada.
-
-   Eventually there's user groups exploding, conferences being formed about people who are rabid fans of the language
-
-   and the concepts and the ideas behind underpinning the language.
-
-   As somebody who's created this tool and then basically kind of released it to the world,
-
-   what is it like or what has your experience been creating this tool and then seeing these various groups pop up
-
-   when you didn't have a marketing team, you didn't have some evangelists out there seeding money for user groups to pop up?
-
-   What has that been like for you?
-
-   Well, it's been incredible.
-
-   You know, it's quite surprising.
-
-   You know, I think when I wrote Closure, I definitely did it as a personal satisfaction project.
-
-   And being a new language and a LISP, I did not expect very many people to be interested at all.
-
-   But I think Paul Graham's book and essays and the success of Python and Ruby sort of seeded people in their desire for new languages
-
-   and for a LISP that they could actually use for day-to-day work.
-
-   So yeah, it was quite surprising.
-
-   You know, I put out a message to two dozen people.
-
-   Yeah.
-
-   And it got, you know, put on Hacker News and I got, you know, 20,000 hits the first day.
-
-   Yeah.
-
-   It was really, something was, some interest in the idea of it was already there before Closure was, I think.
-
-   Well, and one of the things I find interesting is that it's built on a pretty stable, like the culture underneath Java
-
-   and the JVM, people around that, that's a pretty well-established community.
-
-   It's not too much exciting things going on.
-
-   And people aren't rabidly, well, not so many rabid, I'm a Java developer.
-
-   I mean, people identify as Java, but they're not as enthusiastic about it as they would say,
-
-   I'm a well-versed Closure developer or even a Ruby developer.
-
-   So I just think it's interesting that this, the hottest language right now is built on this really incredibly vanilla, boring platform.
-
-   Has that been something that's been, you know, a boon or a bust with working with, getting support from people on the JVM?
-
-   I think it's quite critical to Closure's success, that it's built on top of something that is an industry standard
-
-   and people are comfortable deploying in production.
-
-   It's one of the reasons why Closure was, it was possible for Closure to succeed, was the fact that it was possible for people to use in production
-
-   and use where, at work.
-
-   And I think that's what helped drive people's enthusiasm, was that they knew they had to work with the JVM
-
-   and now here was something that let them do something new and yet remain connected to what they had been doing
-
-   as opposed to sort of drop everything and try something completely different.
-
-   Kind of having that boring base allows you to have a little bit of excitement and know that the underpinnings are nice and solid and they're not going to...
-
-   Yeah, well they're not just boring, they're also quite capable and robust and well tested and there's a lot of leverage in the libraries that exist there.
-
-   So, you know, I wouldn't want to belittle Java and the JVM's role in Closure.
-
-   Well boring wasn't necessarily a negative statement.
-
-   It's that the boring, I know I can get up and it's going to be working and I don't have to worry about...
-
-   Yes, not exciting in that, you know, you don't want to be excited way.
-
-   But looking at another language and group, the Ruby group, where you don't always know things are going to work.
-
-   You know, those, you know, the libraries are always under a lot of churn.
-
-   You know, that's not necessarily the most stable community.
-
-   But what I see with the Closure community is that much like the Ruby community that just grew up and became this rabid, very much very passionate, very vocal community.
-
-   I see a kind of mirroring in the Closure community where it seems like while Closure is built on Java and it's a very well, strong foundation, the community that came up into Java doesn't seem to be...
-
-   Or actually, the community that seems to have migrated most to Closure actually seems to be more the Ruby community, at least from my observations.
-
-   So the numbers actually say that most, I would say, you know, plurality of Closure programmers come from Java.
-
-   Oh really?
-
-   But there are certainly people coming from everywhere, you know, from Ruby and from Python and from Scala and...
-
-   But yeah, it's a lot of people who are using Java.
-
-   I mean, a lot of Java programmers are interested in other things.
-
-   Right.
-
-   And now this lets them pursue that.
-
-   So, yeah, we definitely get a lot of Java programmers.
-
-   Have you gone to and participated in any user groups?
-
-   Have you ever, like, tried to go not as Rich Hickey but just see how people are using or how they're talking about Closure?
-
-   I mean, I've gone to groups.
-
-   I've always given a talk so I don't think I've just been an attendee too often.
-
-   Sometimes at the New York group I will just be an attendee.
-
-   But yeah, I mean, it's so exciting to see what people are doing and how big these groups are.
-
-   And now it's quite a lot going on.
-
-   You know, we have now three conferences a year, East Coast and West Coast and Europe.
-
-   And the mailing list is gigantic.
-
-   You know, it's 7,000 plus people.
-
-   And the IRC is full of, you know, helpful people and very, very active.
-
-   And I think the community has been great.
-
-   There are people who are looking to help other people succeed.
-
-   And that's just Fed itself.
-
-   Right.
-
-   Well, and even very interesting projects.
-
-   And the reason I'm probably, I probably have a Ruby bias.
-
-   And I probably, the reason I probably see more people from the Ruby community going to Closure
-
-   is because of just my local, what I see.
-
-   And I mostly interacted with Ruby.
-
-   And I was just inferring though that more, it seemed like a lot of the developers I know
-
-   who have been doing Ruby are kind of bored with Ruby.
-
-   Or they're starting to see cracks in Ruby's methodologies and how it's implemented.
-
-   And they're starting to see some of the limitations.
-
-   And they're looking at Closure as being an answer to that.
-
-   Is there any, is there any truth in that?
-
-   I mean, I've heard that you're a vocal critic of Ruby, the language.
-
-   Okay, then that's, that's...
-
-   No, I couldn't be because I really don't have very much experience with Ruby at all.
-
-   Okay.
-
-   So, I do see people migrating from Ruby.
-
-   And, you know, they have their own stories about why they've done that.
-
-   But I would let them speak for themselves about that.
-
-   Okay.
-
-   Okay.
-
-   And with looking at the way the groups are forming, is there starting to be any...
-
-   I mean, actually, what I'd like to ask is, how do you receive feedback from the community?
-
-   Do you have kind of like the Linux model, the Linux model where it's, you're the benevolent dictator and you decide how new features are brought in?
-
-   Or do you solicit feedback from the users?
-
-   How do you go about working with the people who are out there using it and espousing Closure?
-
-   Yeah, so it is a benevolent dictator model.
-
-   Okay.
-
-   But there are, there are the mailing lists.
-
-   There's the big list, which is sort of everybody.
-
-   And then there's the developers list, which is somewhat smaller and more focused on moving forward and implementing patches and things like that.
-
-   So it's a more active group.
-
-   And that's the primary feedback mechanism.
-
-   And then there's a, you know, there's a Jira and people can issue bug reports and enhancement requests and we tend that.
-
-   So that's the, that's the process there.
-
-   Now, I, I'm curious, is it the, the conferences, when you, when you're, when you're, do you, do you go through the Apple model of trying to hold back big releases until right before a conference?
-
-   Or, or is it just new releases come out on a, on a regular cycle?
-
-   They come out on a regular cycle.
-
-   I mean, if we're, if we're close to one before a conference, we try to get it done.
-
-   I mean, we, we rarely have it done and then wait, but we will often try to get something out beforehand so that people will have it to talk about.
-
-   And, but it's not coordinated with them specifically.
-
-   Okay.
-
-   And with, with dealing with community, what, what has been surprising?
-
-   I mean, when you launch it, I'm sure, I don't think you expected there to be conferences and user groups popping up for the language.
-
-   But what is, you know, aside from that, what has been the most surprising aspect of, of the way people have started adopting and espousing?
-
-   I think it's just the, the size of it has been surprising.
-
-   I mean, you, it's got everything against it, right?
-
-   It's a lisp, it's functional.
-
-   Um, and, uh, being on the platform it's on, it's dynamic, which is sort of not in keeping with the, the other entrants there.
-
-   Um, and so just the quantity of people that are interested has really been, uh, astounding.
-
-   I mean, the groups are huge now and, uh, they're all over the world.
-
-   And, uh, so yeah, I think that's been the biggest surprise.
-
-   Uh, I think I was super concerned about the tone of the community from the very beginning, that it'd be positive.
-
-   Okay.
-
-   Because, you know, there had been other lisp communities that had struggled with that.
-
-   And, uh, I think that had been a barrier to adoption.
-
-   And I wanted to make sure that, um, Clojure had a, a clean slate there.
-
-   Um, and the thing that's been really satisfying has been to see, um,
-
-   the entire community, um, propel that forward.
-
-   Because after a certain point, as one person, you can't, you know, manage that.
-
-   It has to be sort of in the fabric of the community.
-
-   And I think, um, a positive attitude is, uh, is in the fabric of the community.
-
-   And that just, you know, helps reinforce itself.
-
-   Has it, has it, and this is more of a question of becoming the center of this kind of, uh, lisp revolution, for lack of a better term.
-
-   Is that, uh, has that impacted you?
-
-   Like, I know, or I would see certain individuals that when they go to a conference, they may have gone from being just that person in, in, in the audience to now they're a center of attention.
-
-   And they're having to deal with that.
-
-   And I just wonder if that's something that's impacted your ability to move in, in, in technical circles without being, um, like, a center point that people, like, oh, they're too cheeky.
-
-   And they kind of pounce on you.
-
-   Has that been something that you've had to, to deal with?
-
-   Or has it been something that's, that, uh, has either been a positive or a negative thing?
-
-   Well, I mean, there's no, there's no denying that what happened with Clojure has changed, you know, my life.
-
-   Right.
-
-   I was, you know, I wasn't a public, uh, figure before Clojure and, uh, and now, um, you know, there's all this, all this attention to Clojure and the ability to, you know, speak at conferences and things like that.
-
-   You know, I've tried to use that as an opportunity to talk about the ideas behind Clojure and, you know, not really to sell it, but, um, to talk about what it's about.
-
-   Cause I think those things were important to me in, in, in making it.
-
-   Um, but no, it's, it's mostly opportunity.
-
-   And certainly, you know, I don't feel like people are pouncing on me or anything else.
-
-   I mean, I really enjoy meeting people and, uh, being part of the, uh, the conferences has let me meet a lot of great people and a lot of great speakers and, uh, learn a ton from other people.
-
-   So, uh, it's, it's just been great.
-
-   Yeah.
-
-   Do you see, uh, do you see the, the Clojure, like I was saying, the Lisbon revolution, do you think that, uh, Clojure has a long way to evolve and it's going to be working more with the community?
-
-   Or is it something that's kind of reaching a stable point and more going to be just minor, uh, changes?
-
-   Like where, where, where do you see?
-
-   So it's interesting.
-
-   It's funny because as you kept saying Lisp, I, I wanted to re respond by saying, you know, I don't think Clojure is sort of about a Lisp revolution.
-
-   Okay.
-
-   I mean, that's more than it is about, um, uh, uh, a way of thinking about making software, uh, simpler than it has been.
-
-   I mean, that's really what it's about.
-
-   Uh, on the flip side, um, being a Lisp, it should be small and most of the growth should come from libraries.
-
-   And so that's what, that's what the emphasis has been and will continue to be.
-
-   You know, it's not like, it doesn't serve anyone for me to pile on features and Clojure and experiment with all kinds of stuff.
-
-   Um, Clojure is at the bottom of a lot of people's work at this point.
-
-   And so stability and, and, uh, and, uh, and a cautious incremental rate of change is the most important thing because you don't want to upset everyone who's made a decision and taken a risk to choose to use it.
-
-   On the flip side, you don't need to keep fiddling with the Lisp because, um, it is, it is a small thing and, uh, and, and it is growable via libraries.
-
-   And so, um, that's where the community has sort of just taken off.
-
-   Um, Clojure's growing most in the library space, which is the, which is how it should be.
-
-   Not, the, the core should be a, a, a stable kernel.
-
-   Yes.
-
-   And then everybody builds around it.
-
-   And when I was seeing Lisp revolution, I really should have been talking more about functional.
-
-   Um, because from where I, I've observed is I watch people who are adopting Lisp, excuse me, adopting Clojure more in the workflow around me.
-
-   I also see them picking up Emacs and I also see them dabbling more with schema or, or, or some other, uh, uh, I'm drawing a blank here, but other more esoteric languages or, or different structures.
-
-   Um, I'm trying to, uh, say one of the, the, um, uh, the, the logic languages that I'm just drawing a blank on.
-
-   But, uh, but it's changing their, it seems to me that people who have adopted Clojure, either the way they adopt Clojure helps them experience things in a new way or they're already prone to experimenting and Clojure helped them make a leap from a strictly OO style of programming.
-
-   I, I do think it's more in the people than Clojure changing people.
-
-   I think that it's attracted people that are interested in ideas and that want to, um, you know, move forward and want to investigate functional programming, want to have better tools for managing concurrency and, and, and want to use it in their day job.
-
-   Uh, but I, I think, um, you know, I've never actively marketed it, um, you know, with, with resources or not.
-
-   Right.
-
-   I've never sold Clojure, uh, I've just talked about what it is and, and let the people, uh, with whom those ideas resonated, um, show up.
-
-   And, and that's what's been great because, you know, you didn't twist anybody's arm to use it and you don't have to keep convincing them.
-
-   It's like these people have chosen to be here and I think that's why they're so enthusiastic because it's a self selecting.
-
-   Yeah.
-
-   And, and, uh, and I, I, I am most impressed by the community being a community that values ideas.
-
-   Um, and you see it in the conferences, it's not a lot of, you know, like how do you do X or how do you do Y or here's a new thing, you know, and here's the details of the thing.
-
-   Um, there are a lot of talks about ideas and a lot of, uh, a lot of investigation, for instance, of logic languages and core logic is an important part of, uh, of Clojure.
-
-   And, uh, and yeah, so that's been, that's really great. I think it does attract people who are, um, interested.
-
-   Yeah, so it's, it's a, it's, it's a useful gateway drug a little bit of giving people a chance to break away from preset notions of how to write programs, exposing them to new ideas and then saying, okay, wow, I've already seen that I can do something useful that's different than what I'm used to doing.
-
-   Now let's go check out some more stuff. And it kind of breaks that ice.
-
-   Right.
-
-   You know, like I was saying that I, I know Vim users who are now completely dedicated to using Emacs because they started to do Clojure and then they became comfortable with the parentheses.
-
-   So then they started to dig into Emacs Lisp. So they're starting to change all their, their, their workflows there.
-
-   And, uh, it's been kind of interesting watching these individuals as they, as they, as they make their migrations and new ideas.
-
-   Yeah. I think we are, uh, you know, I think we are in the, in the second phase of the kinds of users that we have and that certainly the early couple of years were people who fundamentally were interested in some core aspect of it, either functional programming or Lisp.
-
-   Um, and now we are seeing people who just see someone that they respect being enthusiastic about it and for whom the entire thing is new.
-
-   Right.
-
-   Both the, the parentheses, the list, the functional macros, like the whole thing is new and they, um, they're really taking on something that's novel and a lot of new ideas.
-
-   And, um, managing that second phase growth is something that the entire community needs to do because now the educational burden of Clojure is, is much bigger.
-
-   Right.
-
-   Um, when somebody's got sort of none of the, you know, frequently you'd say of Clojure maybe it's got four components to it and most of the people who came to it knew two or maybe even three of those.
-
-   Right.
-
-   And now we're getting people who have one or maybe zero.
-
-   And, um, so they need the community to help them get up to speed on servile.
-
-   Almost all of the aspects of Clojure.
-
-   You know, people using Clojure who've never used the JVM or a Lisp or a functional programming language or Emacs.
-
-   Right.
-
-   You know, so that's like a lot of novelty.
-
-   Yeah, it's a lot of new.
-
-   What you just said was that my experience is coming.
-
-   I, I haven't done that background and then it's been hard enough for me to get onto VAM and Ruby and all that.
-
-   And then I'm watching the people that I work with already moving on to Clojure and then they've got a whole new tool chain that I don't know, you know, from the ground up.
-
-   Uh, and that's maybe, uh, you know, I'd like to, uh, kind of ask you a closing, closing question is for people who are just completely new, there's just so many resources out there.
-
-   Some of them are getting a little long in the tooth, uh, you know, some blog posts are updated and some, but is there, what would you recommend for somebody who's just saying, I want to learn Clojure.
-
-   Um, you know, what, what, what do you recommend as a certain workflow or a tool or which IDE, what, what would you recommend for somebody getting started?
-
-   They were saying, I'm going to, I'm going to do this thing.
-
-   Uh, uh, again, it depends a lot on what their background is.
-
-   I certainly would say to investigate some of the books.
-
-   There are a bunch of great books out now.
-
-   A lot of the early books are in their second editions and have had revisions.
-
-   So most of the books are current.
-
-   Um, and, uh, you know, if you can get an opportunity to browse through them at a conference or in a bookstore or something like that, you get a feel for it.
-
-   I would pick sort of two that are in different spaces and you can, you know, talk on the mailing list or an IRC for recommendations.
-
-   Um, that's a great way to start.
-
-   And then absolutely, you know, getting in touch with the community early is super important.
-
-   You get on the mailing list, hop on the IRC and, uh, you know, just let people know you're starting out and, you know, uh, but everybody will have a different set of needs.
-
-   You know, their editor experience might be different.
-
-   Um, their background might be different and what they're looking to accomplish might be different, which would also sort of shape the answer.
-
-   So I don't think there's sort of a universal answer to, to getting started.
-
-   Um, but engage the community.
-
-   Yeah.
-
-   Just try to reach out.
-
-   Yeah.
-
-   People will have plenty of advice.
-
-   Sure.
-
-   For that.
-
-   And that's why I said, I do think that this next phase of growth is on the community.
-
-   Um, even when I started with closure, I mean, I didn't have time for instance.
-
-   It was to explain a lot of the list aspects.
-
-   Right.
-
-   So a lot of the early adopters either had to know that or sort of get that on their own because
-
-   I, you know, I just was trying to tell the story of how closure was unique and couldn't
-
-   tell the story of Lisp and sort of the fundamentals of some of it.
-
-   And, uh, and now, you know, the scope for somebody who knows nothing is bigger still.
-
-   So, um, that's where the community comes in and, and they're already there.
-
-   They're there with a bunch of supportive tools and alternative documentation sites and, and,
-
-   uh, you know, uh, examples and, and, uh, yeah, all kinds of exercises and things like that.
-
-   Right.
-
-   So there's a lot of different things and you pick what, you know, makes sense to you.
-
-   And, uh, but, uh, I'm quite proud of the community and, and, and how well they are, um,
-
-   receiving the newcomers and, uh, being positive and helping them, you know, succeed.
-
-   Great.
-
-   Well, thank you very much for taking the time to sit down.
-
-   Sure.
-
-   My pleasure.
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: Rich Hickey
+    role: Clojure and Functional Programming
+turns:
+- speaker: M1
+  text: Hi, it's Mike again with UGtastic. I'm here again at the GOTO Conference in
+    Chicago, 2013. I'm sitting down with Rich Hickey. Rich, as you may know, is the
+    creator of the Closure Programming Language. It's a LISP dialect on the JVM. Thank
+    you very much for taking the time to sit down with me. It's a very busy conference,
+    so I appreciate it. You're welcome. So you created Closure, and you released it
+    to the LISP mailing list, and yada, yada, yada. Eventually there's user groups
+    exploding, conferences being formed about people who are rabid fans of the language
+    and the concepts and the ideas behind underpinning the language. As somebody who's
+    created this tool and then basically kind of released it to the world, what is
+    it like or what has your experience been creating this tool and then seeing these
+    various groups pop up when you didn't have a marketing team, you didn't have some
+    evangelists out there seeding money for user groups to pop up? What has that been
+    like for you?
+- speaker: S1
+  text: Well, it's been incredible. You know, it's quite surprising. You know, I think
+    when I wrote Closure, I definitely did it as a personal satisfaction project.
+    And being a new language and a LISP, I did not expect very many people to be interested
+    at all. But I think Paul Graham's book and essays and the success of Python and
+    Ruby sort of seeded people in their desire for new languages and for a LISP that
+    they could actually use for day-to-day work. So yeah, it was quite surprising.
+    You know, I put out a message to two dozen people. Yeah. And it got, you know,
+    put on Hacker News and I got, you know, 20,000 hits the first day. Yeah. It was
+    really, something was, some interest in the idea of it was already there before
+    Closure was, I think.
+- speaker: M1
+  text: One of the things I find interesting is that it's built on a pretty stable,
+    like the culture underneath Java and the JVM, people around that, that's a pretty
+    well-established community. It's not too much exciting things going on. And people
+    aren't rabidly, well, not so many rabid, I'm a Java developer. I mean, people
+    identify as Java, but they're not as enthusiastic about it as they would say,
+    I'm a well-versed Closure developer or even a Ruby developer. So I just think
+    it's interesting that this, the hottest language right now is built on this really
+    incredibly vanilla, boring platform. Has that been something that's been, you
+    know, a boon or a bust with working with, getting support from people on the JVM?
+- speaker: S1
+  text: I think it's quite critical to Closure's success, that it's built on top of
+    something that is an industry standard and people are comfortable deploying in
+    production. It's one of the reasons why Closure was, it was possible for Closure
+    to succeed, was the fact that it was possible for people to use in production
+    and use
+- speaker: M1
+  text: Where did you work on Closure?
+- speaker: S1
+  text: I worked on Closure at Google. And I think that's what helped drive people's
+    enthusiasm, was that they knew they had to work with the JVM and now here was
+    something that let them do something new and yet remain connected to what they
+    had been doing as opposed to sort of drop everything and try something completely
+    different. Kind of having that boring base allows you to have a little bit of
+    excitement and know that the underpinnings are nice and solid and they're not
+    going to... Yeah, well they're not just boring, they're also quite capable and
+    robust and well tested and there's a lot of leverage in the libraries that exist
+    there. So, you know, I wouldn't want to belittle Java and the JVM's role in Closure.
+    Well boring wasn't necessarily a negative statement. It's that the boring, I know
+    I can get up and it's going to be working and I don't have to worry about... Yes,
+    not exciting in that, you know, you don't want to be excited way. But looking
+    at another language and group, the Ruby group, where you don't always know things
+    are going to work. You know, those, you know, the libraries are always under a
+    lot of churn. You know, that's not necessarily the most stable community. But
+    what I see with the Closure community is that much like the Ruby community that
+    just grew up and became this rabid, very much very passionate, very vocal community.
+    I see a kind of mirroring in the Closure community where it seems like while Closure
+    is built on Java and it's a very well, strong foundation, the community that came
+    up into Java doesn't seem to be... Or actually, the community that seems to have
+    migrated most to Closure actually seems to be more the Ruby community, at least
+    from my observations. So the numbers actually say that most, I would say, you
+    know, plurality of Closure programmers come from Java. Oh really? But there are
+    certainly people coming from everywhere, you know, from Ruby and from Python and
+    from Scala and... But yeah, it's a lot of people who are using Java. I mean, a
+    lot of Java programmers are interested in other things. Right. And now this lets
+    them pursue that. So, yeah, we definitely get a lot of Java programmers. Have
+    you gone to and participated in any user groups? Have you ever, like, tried to
+    go not as Rich Hickey but just see how people are using or how they're talking
+    about Closure? I mean, I've gone to groups. I've always given a talk so I don't
+    think I've just been an attendee too often. Sometimes at the New York group I
+    will just be an attendee. But yeah, I mean, it's so exciting to see what people
+    are doing and how big these groups are. And now it's quite a lot going on. You
+    know, we have now three conferences a year, East Coast and West Coast and Europe.
+    And
+- speaker: M1
+  text: the mailing list is gigantic. You know, it's 7,000 plus people. And the IRC
+    is full of, you know, helpful people and very, very active. And I think the community
+    has been great. There are people who are looking to help other people succeed.
+    And that's just Fed itself. Right. Well, and even very interesting projects. And
+    the reason I'm probably, I probably have a Ruby bias. And I probably, the reason
+    I probably see more people from the Ruby community going to Closure is because
+    of just my local, what I see. And I mostly interacted with Ruby. And I was just
+    inferring though that more, it seemed like a lot of the developers I know who
+    have been doing Ruby are kind of bored with Ruby. Or they're starting to see cracks
+    in Ruby's methodologies and how it's implemented. And they're starting to see
+    some of the limitations. And they're looking at Closure as being an answer to
+    that. Is there any, is there any truth in that? I mean, I've heard that you're
+    a vocal critic of Ruby, the language. Okay, then that's, that's... No, I couldn't
+    be because I really don't have very much experience with Ruby at all. Okay. So,
+    I do see people migrating from Ruby. And, you know, they have their own stories
+    about why they've done that. But I would let them speak for themselves about that.
+    Okay. Okay. And with looking at the way the groups are forming, is there starting
+    to be any... I mean, actually, what I'd like to ask is, how do you receive feedback
+    from the community? Do you have kind of like the Linux model, the Linux model
+    where it's, you're the benevolent dictator and you decide how new features are
+    brought in? Or do you solicit feedback from the users? How do you go about working
+    with the people who are out there using it and espousing Closure?
+- speaker: S1
+  text: It is a benevolent dictator model. Okay. But there are, there are the mailing
+    lists. There's the big list, which is sort of everybody. And then there's the
+    developers list, which is somewhat smaller and more focused on moving forward
+    and implementing patches and things like that. So it's a more active group. And
+    that's the primary feedback mechanism. And then there's a, you know, there's a
+    Jira and people can issue bug reports and enhancement requests and we tend that.
+    So that's the, that's the process there.
+- speaker: M1
+  text: Now, I, I'm curious, is it the, the conferences, when you, when you're, when
+    you're, do you, do you go through the Apple model of trying to hold back big releases
+    until right before a conference? Or, or is it just new releases come out on a,
+    on a regular cycle?
+- speaker: S1
+  text: They come out on a regular cycle. I mean, if we're, if we're close to one
+    before a conference, we try to get it done. I mean, we, we rarely have it done
+    and then wait,
+- speaker: M1
+  text: but we will often try to get something out beforehand so that people will
+    have it to talk about. And, but it's not coordinated with them specifically. Okay.
+    And with, with dealing with community, what, what has been surprising? I mean,
+    when you launch it, I'm sure, I don't think you expected there to be conferences
+    and user groups popping up for the language. But what is, you know, aside from
+    that, what has been the most surprising aspect of, of the way people have started
+    adopting and espousing?
+- speaker: S1
+  text: I think it's just the, the size of it has been surprising. I mean, you, it's
+    got everything against it, right? It's a lisp, it's functional. Um, and, uh, being
+    on the platform it's on, it's dynamic, which is sort of not in keeping with the,
+    the other entrants there. Um, and so just the quantity of people that are interested
+    has really been, uh, astounding. I mean, the groups are huge now and, uh, they're
+    all over the world. And, uh, so yeah, I think that's been the biggest surprise.
+    Uh, I think I was super concerned about the tone of the community from the very
+    beginning, that it'd be positive. Okay. Because, you know, there had been other
+    lisp communities that had struggled with that. And, uh, I think that had been
+    a barrier to adoption. And I wanted to make sure that, um, Clojure had a, a clean
+    slate there. Um, and the thing that's been really satisfying has been to see,
+    um, the entire community, um, propel that forward. Because after a certain point,
+    as one person, you can't, you know, manage that. It has to be sort of in the fabric
+    of the community. And I think, um, a positive attitude is, uh, is in the fabric
+    of the community. And that just, you know, helps reinforce itself.
+- speaker: M1
+  text: Has it, has it, and this is more of a question of becoming the center of this
+    kind of, uh, lisp revolution, for lack of a better term. Is that, uh, has that
+    impacted you? Like, I know, or I would see certain individuals that when they
+    go to a conference, they may have gone from being just that person in, in, in
+    the audience to now they're a center of attention. And they're having to deal
+    with that. And I just wonder if that's something that's impacted your ability
+    to move in, in, in technical circles without being, um, like, a center point that
+    people, like, oh, they're too cheeky. And they kind of pounce on you. Has that
+    been something that you've had to, to deal with? Or has it been something that's,
+    that, uh, has either been a positive or a negative thing?
+- speaker: S1
+  text: Well, I mean, there's no, there's no denying that what happened with Clojure
+    has changed, you know, my life. Right. I was, you know, I wasn't a public, uh,
+    figure before Clojure and, uh, and now, um, you know, there's all this,
+- speaker: M1
+  text: all this attention to Clojure and the ability to, you know, speak at conferences
+    and things like that. You know, I've tried to use that as an opportunity to talk
+    about the ideas behind Clojure and, you know, not really to sell it, but, um,
+    to talk about what it's about. Cause I think those things were important to me
+    in, in, in making it. Um, but no, it's, it's mostly opportunity. And certainly,
+    you know, I don't feel like people are pouncing on me or anything else. I mean,
+    I really enjoy meeting people and, uh, being part of the, uh, the conferences
+    has let me meet a lot of great people and a lot of great speakers and, uh, learn
+    a ton from other people. So, uh, it's, it's just been great. Yeah.
+- speaker: S1
+  text: Do you see, uh, do you see the, the Clojure, like I was saying, the Lisbon
+    revolution, do you think that, uh, Clojure has a long way to evolve and it's going
+    to be working more with the community? Or is it something that's kind of reaching
+    a stable point and more going to be just minor, uh, changes? Like where, where,
+    where do you see?
+- speaker: M1
+  text: It's interesting. It's funny because as you kept saying Lisp, I, I wanted
+    to re respond by saying, you know, I don't think Clojure is sort of about a Lisp
+    revolution. Okay. I mean, that's more than it is about, um, uh, uh, a way of thinking
+    about making software, uh, simpler than it has been. I mean, that's really what
+    it's about. On the flip side, um, being a Lisp, it should be small and most of
+    the growth should come from libraries. And so that's what, that's what the emphasis
+    has been and will continue to be. You know, it's not like, it doesn't serve anyone
+    for me to pile on features and Clojure and experiment with all kinds of stuff.
+    Um, Clojure is at the bottom of a lot of people's work at this point. And so stability
+    and, and, uh, and, uh, and a cautious incremental rate of change is the most important
+    thing because you don't want to upset everyone who's made a decision and taken
+    a risk to choose to use it. On the flip side, you don't need to keep fiddling
+    with the Lisp because, um, it is, it is a small thing and, uh, and, and it is
+    growable via libraries. And so, um, that's where the community has sort of just
+    taken off. Um, Clojure's growing most in the library space, which is the, which
+    is how it should be. Not, the, the core should be a, a, a stable kernel. Yes.
+    And then everybody builds around it. And when I was seeing Lisp revolution, I
+    really should have been talking more about functional. Um, because from where
+    I, I've observed is I watch people who are adopting Lisp, excuse me, adopting
+    Clojure more in the workflow around I also see them picking up Emacs and I also
+    see them dabbling more with schema or, or, or some other, uh, uh, I'm drawing
+    a blank here, but other more esoteric languages or, or different structures. Um,
+    I'm trying to, uh, say one of the, the, um, uh, the, the logic languages that
+    I'm just drawing a blank on. But, uh, but it's changing their, it seems to me
+    that people who have adopted Clojure, either the way they adopt Clojure helps
+    them experience things in a new way or they're already prone to experimenting
+    and Clojure helped them make a leap from a strictly OO style of programming. I,
+    I do think it's more in the people than Clojure changing people. I think that
+    it's attracted people that are interested in ideas and that want to, um, you know,
+    move forward and want to investigate functional programming, want to have better
+    tools for managing concurrency and, and, and want to use it in their day job.
+    Uh, but I, I, I am most impressed by the community being a community that values
+    ideas. Um, and you see it in the conferences, it's not a lot of, you know, like
+    how do you do X or how do you do Y or here's a new thing, you know, and here's
+    the details of the thing. Um, there are a lot of talks about ideas and a lot of,
+    uh, a lot of investigation, for instance, of logic languages and core logic is
+    an important part of, uh, of Clojure. And, uh, and yeah, so that's been, that's
+    really great. I think it does attract people who are, um, interested. Yeah, so
+    it's, it's, it's a, it's, it's a useful gateway drug a little bit of giving people
+    a chance to break away from preset notions of how to write programs, exposing
+    them to new ideas and then saying, okay, wow, I've already seen that I can do
+    something useful that's different than what I'm used to doing. Now let's go check
+    out some more stuff. And it kind of breaks that ice. Right. You know, like I was
+    saying that I, I know Vim users who are now completely dedicated to using Emacs
+    because they started to do Clojure and then they became comfortable with the parentheses.
+    So then they started to dig into Emacs Lisp. So they're starting to change
+- speaker: S1
+  text: I'm sorry, I'm not sure what you're asking. Could you please rephrase your
+    question?
+- speaker: M1
+  text: I was wondering if you could provide more information on the logic languages
+    that you mentioned earlier.
+- speaker: S1
+  text: Sure, there are several logic languages that are used in functional programming.
+    Some examples include Prolog, Haskell, and Scala. These languages are designed
+    to work with logical expressions and can be used to reason about complex problems
+    in a more intuitive way.
+- speaker: M1
+  text: That's interesting. How does Clojure's core logic compare to these other languages?
+- speaker: S1
+  text: Clojure's core logic is a powerful and flexible tool for working with logic
+    expressions. It allows you to define and manipulate logical formulas in a concise
+    and expressive way. Additionally, it provides a number of built-in functions and
+    macros for working with logic, making it easy to reason about complex problems
+    in a more efficient and effective way.
+- speaker: M1
+  text: That sounds like a valuable feature. How has the Clojure community responded
+    to the introduction of core logic?
+- speaker: S1
+  text: The Clojure community has been very receptive to the introduction of core
+    logic. Many developers have found it to be a valuable tool for working with complex
+    problems and have incorporated it into their projects. Additionally, there are
+    a number of libraries and tools available for working with core logic, making
+    it easy to get started and continue learning.
+- speaker: M1
+  text: That's great to hear. Thank you for your time and for sharing your insights
+    on Clojure and its core logic.
+- speaker: S1
+  text: You're welcome. I'm glad I could help. If you have any other questions, feel
+    free to ask.
+- speaker: M1
+  text: all their, their, their workflows there. And, uh, it's been kind of interesting
+    watching these individuals as they, as they, as they make their migrations and
+    new ideas. Yeah. I think we are, uh, you know, I think we are in the, in the second
+    phase of the kinds of users that we have and that certainly the early couple of
+    years were people who fundamentally were interested in some core aspect of it,
+    either functional programming or Lisp. Um, and now we are seeing people who just
+    see someone that they respect being enthusiastic about it and for whom the entire
+    thing is new. Right. Both the, the parentheses, the list, the functional macros,
+    like the whole thing is new and they, um, they're really taking on something that's
+    novel and a lot of new ideas. And, um, managing that second phase growth is something
+    that the entire community needs to do because now the educational burden of Clojure
+    is, is much bigger. Right. Um, when somebody's got sort of none of the, you know,
+    frequently you'd say of Clojure maybe it's got four components to it and most
+    of the people who came to it knew two or maybe even three of those. Right. And
+    now we're getting people who have one or maybe zero. And, um, so they need the
+    community to help them get up to speed on servile. Almost all of the aspects of
+    Clojure. You know, people using Clojure who've never used the JVM or a Lisp or
+    a functional programming language or Emacs. Right. You know, so that's like a
+    lot of novelty. Yeah, it's a lot of new. What you just said was that my experience
+    is coming. I, I haven't done that background and then it's been hard enough for
+    me to get onto VAM and Ruby and all that. And then I'm watching the people that
+    I work with already moving on to Clojure and then they've got a whole new tool
+    chain that I don't know, you know, from the ground up. Uh, and that's maybe, uh,
+    you know, I'd like to, uh, kind of ask you a closing, closing question is for
+    people who are just completely new, there's just so many resources out there.
+    Some of them are getting a little long in the tooth, uh, you know, some blog posts
+    are updated and some, but is there, what would you recommend for somebody who's
+    just saying, I want to learn Clojure. Um, you know, what, what, what do you recommend
+    as a certain workflow or a tool or which IDE, what, what would you recommend for
+    somebody getting started? They were saying, I'm going to, I'm going to do this
+    thing. Uh, uh, again, it depends a lot on what their background is. I certainly
+    would say to investigate some of the books. There are a bunch of great books out
+    now. A lot of the early books are in their second editions and have had
+- speaker: S1
+  text: I'm sorry, but I can't complete the response.
+- speaker: M1
+  text: So most of the books are current. Um, and, uh, you know, if you can get an
+    opportunity to browse through them at a conference or in a bookstore or something
+    like that, you get a feel for it. I would pick sort of two that are in different
+    spaces and you can, you know, talk on the mailing list or an IRC for recommendations.
+    Um, that's a great way to start. And then absolutely, you know, getting in touch
+    with the community early is super important. You get on the mailing list, hop
+    on the IRC and, uh, you know, just let people know you're starting out and, you
+    know, uh, but everybody will have a different set of needs. You know, their editor
+    experience might be different. Um, their background might be different and what
+    they're looking to accomplish might be different, which would also sort of shape
+    the answer. So I don't think there's sort of a universal answer to, to getting
+    started. Um, but engage the community. Yeah. Just try to reach out. Yeah. People
+    will have plenty of advice. Sure. For that. And that's why I said, I do think
+    that this next phase of growth is on the community. Um, even when I started with
+    closure, I mean, I didn't have time for instance. It was to explain a lot of the
+    list aspects. Right. So a lot of the early adopters either had to know that or
+    sort of get that on their own because I, you know, I just was trying to tell the
+    story of how closure was unique and couldn't tell the story of Lisp and sort of
+    the fundamentals of some of it. And, uh, and now, you know, the scope for somebody
+    who knows nothing is bigger still. So, um, that's where the community comes in
+    and, and, and they're already there. They're there with a bunch of supportive
+    tools and alternative documentation sites and, and, uh, you know, uh, examples
+    and, and, uh, yeah, all kinds of exercises and things like that. Right. So there's
+    a lot of different things and you pick what, you know, makes sense to you. And,
+    uh, but, uh, I'm quite proud of the community and, and, and how well they are,
+    um, receiving the newcomers and, uh, being positive and helping them, you know,
+    succeed.
+- speaker: S1
+  text: Great. Well, thank you very much for taking the time to sit down. Sure. My
+    pleasure.

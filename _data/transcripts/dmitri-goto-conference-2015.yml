@@ -14,10 +14,7 @@ turns:
     grid. Beyond the data grid. Beyond the data grid with Apache Ignite. Well, first
     I want to say thank you very much for taking the time to speak with me and you
     can tell me a little bit about what your presentation was about and what is this
-    Apache Ignite product.
-- speaker: S1
-  text: |-
-    All right, thank you Mike. So yeah, I want you to notice
+    Apache Ignite product. All right, thank you Mike. So yeah, I want you to notice
     I'm wearing an Apache Ignite t-shirt, first of all, so it's very cool. So whenever
     you see green t-shirts, I want you to know it's Apache Ignite. So I just gave
     a talk about Apache Ignite. So it's an Apache project, currently undergoing incubation
@@ -41,11 +38,7 @@ turns:
     standard APIs, probably you're most familiar with in Java, like maps, queues,
     sets, most of the concurrent Java Util concurrent APIs are also ported to Apache
     Ignite, ThreadPool, distributed executor service. All of those standard APIs are
-    still used within Apache Ignite.
-- speaker: M1
-  text: So is Apache Ignite a database competitor to
-    a NoSQL database, or is it a layer that sits between applications and persistent
-    data stores?
+    still used within Apache Ignite. So is Apache Ignite a database competitor to a NoSQL database, or is it a layer that sits between applications and persistent data stores?
 - speaker: S1
   text: That's a good question actually. So the answer is it's probably not a simple
     yes or no answer, because if you look at distributed cache within Apache Ignite,
@@ -66,23 +59,20 @@ turns:
     installed, Ignite will automatically integrate with that data store, automatically
     will detect all the indexes and put them in memory, or if you can also integrate
     it, put it on top of NoSQL disk-based databases like Mongo, React, Couchbase,
-    or Cassandra for that matter, and it will also work on top of those as well.
-- speaker: M1
-  text: So
+    or Cassandra for that matter, and it will also work on top of those as well. So
     it sounds like an extremely advanced caching layer that provides some direct query
     capabilities that you can save a call to the actual persistent on-disk databases.
-- speaker: S1
-  text: That sounds about right for the data grid portion. However, as I mentioned, Ignite
+    That sounds about right for the data grid portion. However, as I mentioned, Ignite
     is a fabric. Data grid and distributed caching is just one component, and it probably
     is the biggest component within Ignite, and that's where most of the people actually
     will use. But there's also streaming of data, there's also sliding window support,
     there's also distributed map reduce for joint kind of computations, so it provides
     a lot more than just that. But yeah, from a data grid standpoint, it's a fairly
-    feature-rich project.
-- speaker: M1
-  text: Okay, and I'm going to ask you to just move a little bit.
+    feature-rich project. Okay, and I'm going to ask you to just move a little bit.
     The project itself, I mean, how did you go about, is it something that you kind
-    of cooked up from projects you were working on or some thesis? Where did the idea come to exist?
+    of cooked up from projects you were working on or some thesis?
+- speaker: M1
+  text: Where did the idea come to exist?
 - speaker: S1
   text: All right, so actually I'm one of the co-founders of GridGain systems. So
     we started out probably seven or eight years ago, and that time we wanted, we
@@ -94,35 +84,32 @@ turns:
     incubation in Apache, and we are, I'm hoping, approaching the graduation in Apache
     as well.
 - speaker: M1
-  text: So what is the process? I mean, when you have an idea and you want to spin out an open-source project,
-    do you just, did you go straight to Apache? Or was it that you had a project that
-    you released and Apache contacted you and said, "Hey, let's pull this in. How did that, how did you end up with Apache then?"
+  text: So what is the process?
 - speaker: S1
-  text: So, well, I mean, there are two parts to the question. We wanted to join Apache
-    because we wanted to grow community around open-source projects. So once you join
-    Apache, you become part of this Apache process, what they call an Apache way,
-    which is very community friendly. It introduces all sorts of outside contributions.
+  text: I mean, when you have an idea and you want to spin out an open-source project,
+    do you just, did you go straight to Apache? Or was it that you had a project that
+    you released and Apache contacted you and said, "Hey, let's pull this in.
+- speaker: M1
+  text: How did that, how did you end up with Apache then?
+- speaker: S1
+  text: "\" So, well, I mean, there are two parts to the question. We wanted to join
+    Apache because we wanted to grow community around open-source projects. So once
+    you join Apache, you become part of this Apache process, what they call an Apache
+    way, which is very community friendly. It introduces all sorts of outside contributions.
     So right now , believe it or not, we have, it used to be only GridGain commuters,
     we probably have more outside contributors working on Ignite than from the side
     of GridGain. So you get community growth. But however, Apache does not pull the
     code in. It will take your code, it will take your project and make sure you grow
     community around it, make sure you work with it the open-source way. But it will
     not take the code. You're still managing it. So you're still responsible for the
-    project development.
-- speaker: M1
-  text: But it's just that it's kind of sold through the Apache marketplace.
-- speaker: S1
-  text: No, it's actually more of an Apache way. I mean, that's what it's called. It's
+    project development. But it's just that it's kind of sold through the Apache marketplace.
+    No, it's actually more of an Apache way. I mean, that's what it's called. It's
     Apache way, which is very open everything. All the discussions happen in the open.
     All the tickets happen in the open. All the design discussions and future of the
     project is all in the open and everybody is equal. It doesn't belong to one person.
-    It belongs to the community now.
-- speaker: M1
-  text: Okay, and when you describe you're in an incubation
+    It belongs to the community now. Okay, and when you describe you're in an incubation
     phase, how do you go from incubation and what's the difference between incubation
-    and being, well, not an incubation?
-- speaker: S1
-  text: Top-level project, you graduate. So the difference
+    and being, well, not an incubation? Top-level project, you graduate. So the difference
     would be that, from a product standpoint, there's a very little difference. From
     an Apache standpoint, you have to, first of all, license compliance. You have
     to only have certain allowed licenses in your project, like definitely Apache
@@ -132,7 +119,7 @@ turns:
     source community and follow this kind of path, at that point you're ready to graduate.
     And usually that happens when you do like two or three releases under Apache.
     So we're currently on two. I think after the third one we will be ready to graduate.
-    We're already complying. We're already embracing the Apache way.
+    We're already complying. We're already embracing the Apache way."
 - speaker: M1
   text: Okay, well thank you very much for taking the time to speak with me and for
     supporting open-source. Thank you. Thanks.

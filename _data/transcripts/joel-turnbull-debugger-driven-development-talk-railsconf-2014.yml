@@ -1,209 +1,186 @@
 ---
-content: |-
-  Hi, it's Mike with ukeTastic. I'm here at RailsConf 2014 and I'm standing here with
-
-   Joel Turnbull who did a talk on debugger driven development. If I say that
-
-   correctly, debugger driven development. Thank you for taking the time to speak
-
-   with me. So your talk, what was your talk, I mean, what is debugger driven
-
-   development and what were you trying to teach? Okay, yeah, well it was called
-
-   debugger driven development with Pry, so it was called specific to
-
-   that tool and basically it was talk about using a debugger or a debugging
-
-   tool not just to fix your software problems but to actually like leverage
-
-   the runtime and stuff that it provides to actually develop software and like
-
-   drive your development process. So I talked a little bit about that. I demoed
-
-   some of the cool features of Pry and then I kind of demoed a little bit of
-
-   this workflow that I've been playing with and then I did it, I ran the
-
-   same workflow with like an RSpec suite and kind of demoed a Pry command called
-
-   define it that I had created that would do some like help you with this
-
-   workflow that I learned based on doing small talk development. Okay, oh so you're
-
-   actually a small talker? Yeah, yeah. There's not a lot of you guys in the
-
-   world. Yeah, yeah, I mean, so I spent a little over a year in the 2000s
-
-   somewhere actually developing a web application in small talk with a team of
-
-   guys for a company. Was that Faro? Yeah, Faro. Okay. Yep, so yeah, I showed a
-
-   little bit of Faro and showed how effective small talk is in kind of
-
-   driving your development process and getting all of the goofy stuff out of
-
-   the way by like doing some automatic code generation for you and stuff like
-
-   that. Like if you're testing a class that doesn't exist yet, you know, it'll just
-
-   ask you if you want to create it and do it. You know, you don't have to like pop
-
-   open a file and type, you know, class whatever and
-
-   it's just like a one-click thing and it happens and you can just say it helps
-
-   you with your flow, right? You can keep focused on the thing. So a case where I
-
-   would use Define-It, like can you describe that scenario? So in my
-
-   little demo that I had, I was exercising a class called Bowling Game. Okay. And my
-
-   whole, all my demos kind of focused on this like bowling game app kind of thing.
-
-   So, but it's a class that doesn't exist yet. So it's a classic kind of TDD thing
-
-   where the first test is just like, does this, does this class even exist? Like, you
-
-   know, you're just testing that you can new this thing up and it won't error out.
-
-   And then, and then so you move from that and you call your first method on that
-
-   class, which you're asking the bowling game for a score and it should return
-
-   zero. And then there were, the next test was, you know, can you bowl something, like
-
-   call another method bowl and pass in a number of pins you knock down and then
-
-   have the score reflect that. And then the next test was just like an addition of
-
-   two scores. And so I spec'd out, you know, all the things that this bowling game was
-
-   going to do, or at least four of them, without implementing any of the code to
-
-   do it, right? Just in classic TDD style. And then, and then used Pry Rescue in conjunction with this Define-It command.
-
-   That when you, when you call rspec under the umbrella of Pry Rescue, it's gonna
-
-   break and put you into a runtime as soon as it hits that first assertion error or
-
-   that first exception, which in this case was like, there is nothing called bowling
-
-   game. So when you see that, what, the, the, the, the tool, the command that, that I
-
-   created, basically when you, you can type Define-It there and just move on. In the
-
-   background it had, it wrote a file with an empty class definition in it. And then
-
-   you move on to the next test and it says... Did you have to say Define-It bowling game or did it look at what...
-
-   No, it already knew, because you have that information... With the exception... With the exception itself.
-
-   Okay. Yeah, and so Pry allows you to, you have, you have access to all of the
-
-   context of those things and it's very much driven by, like, exceptions,
-
-   especially in the case of try, Pry Rescue and stuff. And so all that stuff is
-
-   available to you. When you, when you define a Pry command like that, you have
-
-   all those things available, all the power of Pry to, to just automatically, you
-
-   know, use those things.
-
-   So, so yeah, just like you said, and then, and then you get to the next test where
-
-   it tries to call score, which is a method that doesn't exist yet, and you get a no
-
-   method error, you know, and, and you use the, the information inside that
-
-   exception Defi, and call Define-It. That's all you have to do is call Define-It
-
-   and it then opens up, up that file, pops you into a method, empty method template,
-
-   you know, based on the name of the method, the
-
-   arguments that it was passed, you know, and, and generates that def score, yeah,
-
-   def score, right? Well, the method signature for you. Yeah, method signature, right?
-
-   Pops you right in the middle of it where you can begin implementing it, right? So
-
-   it's kind of like an auto-mocking kind of thing almost. Yeah, I mean, it was not
-
-   mocking anything. I mean, it's expanding, but I mean, it's like how an auto-mocker will listen for a call and then they
-
-   basically automatically generate the rest. Yeah, yeah, I guess so. Yeah, sure. But yours is more
-
-   interactive where it's like, you don't know what it should return. Yeah. So you open, it
-
-   opens up like the editor where you can implement. Yeah. So return false, return true, return one, two, three. Yeah, so in that case, it's just
-
-   return zero, like TDD, like it expects the score to be zero, and you see that expectation there, like you see the line that
-
-   failed, it says, you know, we expected bowling game new dot score to equal zero. And so you can see what the test is expecting, and you can, and then when you pop into the editor, you can implement what it is. So you're not really guessing, you know exactly the implementation that it expects, you know, you can provide that, you know, when you write the actual method. Right, right. So,
-
-   this, this, this tool you created, is this like a Ruby snippet I would just import, or is it a gem that I can go and I can add to my pride? It's, it is now maybe officially a gem. Okay. I got together today with Conrad Irwin and another guy, John, well, that's okay. I'm spacing out his last name, but as soon as, so he, he, he actually like within the past day added some more
-
-   stuff on top of that, which is really cool. Um, and so, uh, there is like an actual new, um, pride plugin called pride fix. Yeah. Okay. So that's one of the nice things about prize that, I mean, IRB was amazing, but, uh, there seems to be more of like an ecosystem being built around pride. Yeah. Um, where you have pride now, pride debugger, pride, not pride fix, pride and, uh, and another thing, you know, that we're here at RailsConf, uh, I've
-
-   Do you use this in the context of, of a Rails project? Because you can over, you know, you can override the, uh, the IRB console and, and, and, and Rails and attach to pride. Yeah. Absolutely. For this work inside of testing and developing a, uh, a Rails application? Yeah, sure. I mean, um, there's some things to be worked out as far as the fix gem is concerned, uh, specifically. I mean, um, you know, there's a question of, okay, so when I call define it and when a class doesn't exist, where do you put
-
-   the class, right? I mean, right now it just puts it in whatever directory you're in, right? And so in the context of Rails, we might have to add some more functionality to say, oh, pass it an M flag and it'll put it in models or something like that. Or, you know, like generate it and put it in some other, uh, directory that we, we pass in via a flag or something like that. Um, but I did demo, like my first demo was, was an actual Rails app. And so I just wanted to kind of demo some of the, uh,
-
-   um, like really cool features of pride that exist already. And so, you know, I took people about through how to, you know, manually invoke run times with binding dot pry anywhere. Um, I showed that you could, you know, like you said, like these, all these plugins have made price so powerful because it's so extendable and you can do anything you want with it. So I showed the pride debugger plugin, which adds like the, the step and the next and the continue functionality. And
-
-   did you demo the prior C we can see and oh yeah yeah you can have a dot prior C
-
-   and oh yeah you can alias and sure so you can see n instead of next yeah okay
-
-   I thought you said that yeah so my command originally just lived in a prior
-
-   C file you know so that's what I pushed up before my talk and we we just took
-
-   that and put it into an actual library now that you can just fold into your
-
-   projects but that's cool like how you can yeah in prior C you can totally
-
-   configure everything you can define your own commands and more than that and
-
-   stuff like that so yeah finding that pride has been it's completely replaced
-
-   debugger yeah in my in my work as well but yeah being able to before you'd have
-
-   to go into debugger and then you'd have to say P and then the command yeah
-
-   with debugger it I mean without pride it just gives you a pretty it's stack
-
-   you can you can say where am I and it's told yeah it's just like I said that in
-
-   my talk I'd like it's like tiny little things that just turn like a daunting
-
-   user experience that you just don't even want to deal with it until like
-
-   something that really motivates you to like explore and like want to do cool
-
-   things you know yeah it's it's definitely an evolution of IRB it's not
-
-   saying and I guess that's the kind of beauty is it doesn't say IRB is stupid
-
-   it's just no or debugger is stupid it's just saying it's an evolution right yeah
-
-   I think it's real healthy thing to see yeah IRB it's got a very specific
-
-   intention you know it's scaled down for a reason and and it's just meant to like
-
-   provide an interface to the language you know and I mean it does that job
-
-   perfectly right so so yeah well you know I want to say thank you for the time to
-
-   speak with me originally yeah it sounds like it was a real fun talk
-
-   yeah that's man check it out user groups with lots to say interviews and more no
-
-   way sharing great ideas in the tech community fascinating conversations a
-
-   plethora of information find out for yourself today at uke tastic calm
-
-   you
-
-   Thank you.
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Interviewer, UGtastic
+  S1:
+    name: Joel Turnbull
+    role: Debugger Driven Development
+turns:
+- speaker: M1
+  text: Hi, it's Mike with UGtastic. I'm here at RailsConf 2014 and I'm standing here
+    with Joel Turnbull who did a talk on debugger driven development. If I say that
+    correctly, debugger driven development. Thank you for taking the time to speak
+    with me. So your talk, what was your talk, I mean, what is debugger driven development
+    and what were you trying to teach?
+- speaker: S1
+  text: Okay, yeah, well it was called debugger driven development with Pry, so it
+    was called specific to that tool and basically it was talk about using a debugger
+    or a debugging tool not just to fix your software problems but to actually like
+    leverage the runtime and stuff that it provides to actually develop software and
+    like drive your development process. So I talked a little bit about that. I demoed
+    some of the cool features of Pry and then I kind of demoed a little bit of this
+    workflow that I've been playing with and then I did it, I ran the same workflow
+    with like an RSpec suite and kind of demoed a Pry command called define it that
+    I had created that would do some like help you with this workflow that I learned
+    based on doing small talk development.
+- speaker: M1
+  text: Okay, oh so you're actually a small talker?
+- speaker: S1
+  text: Yeah, yeah. There's not a lot of you guys in the world. Yeah, yeah, I mean,
+    so I spent a little over a year in the 2000s somewhere actually developing a web
+    application in small talk with a team of guys for a company.
+- speaker: M1
+  text: Was that Faro?
+- speaker: S1
+  text: Yeah, Faro.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Yep, so yeah, I showed a little bit of Faro and showed how effective small
+    talk is in kind of driving your development process and getting all of the goofy
+    stuff out of the way by like doing some automatic code generation for you and
+    stuff like that. Like if you're testing a class that doesn't exist yet, you know,
+    it'll just ask you if you want to create it and do it. You know, you don't have
+    to like pop open a file and type, you know, class whatever and it's just like
+    a one-click thing and it happens and you can just say it helps you with your flow,
+    right? You can keep focused on the thing.
+- speaker: M1
+  text: So a case where I would use Define-It, like can you describe that scenario?
+- speaker: S1
+  text: So in my little demo that I had, I was exercising a class called Bowling Game.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: And my whole, all my demos kind of focused on this like bowling game app kind
+    of thing. So, but it's a class that doesn't exist yet. So it's a classic kind
+    of TDD thing where the first test is just like, does this, does this class even
+    exist? Like, you know, you're just testing that you can new this thing up and
+    it won't error out. And then, and then so you move from that and you call your
+    first method on that class, which you're asking the bowling game for a score and
+    it should return zero. And then there were, the next test was, you know, can you
+    bowl something, like call another method bowl and pass in a number of pins you
+    knock down and then have the score reflect that. And then the next test was just
+    like an addition of two scores. And so I spec'd out, you know, all the things
+    that this bowling game was going to do, or at least four of them, without implementing
+    any of the code to do it, right? Just in classic TDD style. And then, and then
+    used Pry Rescue in conjunction with this Define-It command. That when you, when
+    you call RSpec under the umbrella of Pry Rescue, it's gonna break and put you
+    into a runtime as soon as it hits that first assertion error or that first exception,
+    which in this case was like, there is nothing called bowling game. So when you
+    see that, what, the, the, the, the tool, the command that, that I created, basically
+    when you, you can type Define-It there and just move on. In the background it
+    had, it wrote a file with an empty class definition in it. And then you move on
+    to the next test and it says... Did you have to say Define-It bowling game or
+    did it look at what... No, it already knew, because you have that information...
+    With the exception... With the exception itself.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Yeah, and so Pry allows you to, you have, you have access to all of the context
+    of those things and it's very much driven by, like, exceptions, especially in
+    the case of try, Pry Rescue and stuff. And so all that stuff is available to you.
+    When you, when you define a Pry command like that, you have all those things available,
+    all the power of Pry to, to just automatically, you know, use those things. So,
+    so yeah, just like you said, and then, and then you get to the next test where
+    it tries to call score, which is a method that doesn't exist yet, and you get
+    a no method error, you know, and, and you use the, the information inside that
+    exception Defi, and call Define-It. That's all you have to do is call Define-It
+    and it then opens up, up that file, pops you into a method, empty method template,
+    you know, based on the name of the method, the arguments that it was passed, you
+    know, and, and generates that def score, yeah, def score, right? Well, the method
+    signature for you.
+- speaker: M1
+  text: Yeah, method signature, right? Pops you right in the middle of it where you
+    can begin implementing it, right?
+- speaker: S1
+  text: So it's kind of like an auto-mocking kind of thing almost. Yeah, I mean, it
+    was not mocking anything. I mean, it's expanding, but I mean, it's like how an
+    auto-mocker will listen for a call and then they basically automatically generate
+    the rest. Yeah, yeah, I guess so. Yeah, sure. But yours is more interactive where
+    it's like, you don't know what it should return.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: So you open, it opens up like the editor where you can implement.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: So return false, return true, return one, two, three. Yeah, so in that case,
+    it's just return zero, like TDD, like it expects the score to be zero, and you
+    see that expectation there, like you see the line that failed, it says, you know,
+    we expected bowling game new dot score to equal zero. And so you can see what
+    the test is expecting, and you can, and then when you pop into the editor, you
+    can implement what it is. So you're not really guessing, you know exactly the
+    implementation that it expects, you know, you can provide that, you know, when
+    you write the actual method. Right, right. So, this, this, this tool you created,
+    is this like a Ruby snippet I would just import, or is it a gem that I can go
+    and I can add to my pride? It's, it is now maybe officially a gem.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: I got together today with Conrad Irwin and another guy, John, well, that's
+    okay. I'm spacing out his last name, but as soon as, so he, he, he actually like
+    within the past day added some more stuff on top of that, which is really cool.
+    Um, and so, uh, there is like an actual new, um, pride plugin called pride fix.
+- speaker: M1
+  text: Yeah. Okay.
+- speaker: S1
+  text: So that's one of the nice things about prize that, I mean, IRB was amazing,
+    but, uh, there seems to be more of like an ecosystem being built around pride.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: Um, where you have pride now, pride debugger, pride, not pride fix, pride
+    and, uh, and another thing, you know, that we're here at RailsConf, uh, I've Do
+    you use this in the context of, of a Rails project? Because you can over, you
+    know, you can override the, uh, the IRB console and, and, and, and Rails and attach
+    to pride.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: Absolutely.
+- speaker: M1
+  text: For this work inside of testing and developing a, uh, a Rails application?
+- speaker: S1
+  text: Yeah, sure. I mean, um, there's some things to be worked out as far as the
+    fix gem is concerned, uh, specifically. I mean, um, you know, there's a question
+    of, okay, so when I call define it and when a class doesn't exist, where do you
+    put the class, right?
+- speaker: M1
+  text: I mean, right now it just puts it in whatever directory you're in, right?
+- speaker: S1
+  text: And so in the context of Rails, we might have to add some more functionality
+    to say, oh, pass it an M flag and it'll put it in models or something like that.
+    Or, you know, like generate it and put it in some other, uh, directory that we,
+    we pass in via a flag or something like that. Um, but I did demo, like my first
+    demo was, was an actual Rails app. And so I just wanted to kind of demo some of
+    the, uh, um, like really cool features of pride that exist already. And so, you
+    know, I took people about through how to, you know, manually invoke run times
+    with binding dot pry anywhere. Um, I showed that you could, you know, like you
+    said, like these, all these plugins have made price so powerful because it's so
+    extendable and you can do anything you want with it. So I showed the pride debugger
+    plugin, which adds like the, the step and the next and the continue functionality.
+    And did you demo the prior C we can see and oh yeah yeah you can have a dot prior
+    C and oh yeah you can alias and sure so you can see n instead of next yeah okay
+    I thought you said that yeah so my command originally just lived in a prior C
+    file you know so that's what I pushed up before my talk and we we just took that
+    and put it into an actual library now that you can just fold into your projects
+    but that's cool like how you can yeah in prior C you can totally configure everything
+    you can define your own commands and more than that and stuff like that so yeah
+    finding that pride has been it's completely replaced debugger yeah in my in my
+    work as well but yeah being able to before you'd have to go into debugger and
+    then you'd have to say P and then the command yeah with debugger it I mean without
+    pride it just gives you a pretty it's stack you can you can say where am I and
+    it's told yeah it's just like I said that in my talk I'd like it's like tiny little
+    things that just turn like a daunting user experience that you just don't even
+    want to deal with it until like something that really motivates you to like explore
+    and like want to do cool things you know yeah it's it's definitely an evolution
+    of IRB it's not saying and I guess that's the kind of beauty is it doesn't say
+    IRB is stupid it's just no or debugger is stupid it's just saying it's an evolution
+    right yeah I think it's real healthy thing to see yeah IRB it's got a very specific
+    intention you know it's scaled down for a reason and and it's just meant to like
+    provide an interface to the language you know and I mean it does that job perfectly
+    right so so yeah well you know I want to say thank you for the time to speak with
+    me originally yeah it sounds like it was a real fun talk yeah that's man check
+    it out [Music] tastic calm you Thank you.
