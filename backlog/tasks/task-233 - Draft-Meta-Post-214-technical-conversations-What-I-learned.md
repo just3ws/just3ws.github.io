@@ -1,9 +1,10 @@
 ---
 id: TASK-233
 title: 'Draft Meta-Post: ''214 technical conversations: What I learned'''
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-05-20 23:56'
+updated_date: '2026-05-20 23:57'
 labels: []
 dependencies: []
 priority: high
