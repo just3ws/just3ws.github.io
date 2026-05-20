@@ -33,6 +33,9 @@ RULES = [
   [/\b[Rr]ails[ -]?[Bb]ridge\b/i, "RailsBridge"],
   
   # --- Languages & Ecosystems ---
+  [/\b[Cc]losure[ -]?[Cc]onf\b/i, "ClojureConf"],
+  [/\b[Ee]nclosure\b/i, "Clojure"],
+  [/\b[Cc]losure\b/i, "Clojure"],
   [/\b[Cc]lojure\b/i, "Clojure"],
   [/\b[Rr]uby[ -]?[Oo]n[ -]?[Rr]ails\b/i, "Ruby on Rails"],
   [/\b[Rr]ubinius\b/i, "Rubinius"],
