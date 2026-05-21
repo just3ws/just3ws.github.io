@@ -7,7 +7,8 @@ NAME_REPAIRS = {
   "Rich Hickey" => [/Richie Hickey/i, /Richie Hicky/i],
   "Adewale Oshineye" => [/Adeo Shinyea/i, /Eddie Oceanea/i],
   "Sandro Mancuso" => [/Sandra Mancuso/i],
-  "DHH" => [/D. H. H./i, /DH H/i],
+  "DHH" => [/\bD\.? ?H\.? ?H\.?\b/i],
+  "Igor Polevoy" => [/\bIgor Fal[ae]voy\b/i, /\bIgor Pol[ao]v[oi]y\b/i],
   "Dave Thomas" => [/Dave Thomas/i, /Dave "pragdave" Thomas/i]
 }
 
