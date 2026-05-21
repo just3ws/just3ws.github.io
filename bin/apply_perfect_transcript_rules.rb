@@ -58,6 +58,7 @@ RULES = [
 
   # --- Companies & Organizations ---
   [/\b[Gg]oto[ -]?[Cc]onf(?:erence)?\b/i, "GOTO Conference"],
+  [/\b(?:eighth|8th)[ -]?light\b/i, "8th Light"],
   [/\b[Rr]ails[ -]?[Cc]onf\b/i, "RailsConf"],
   [/\b[Tt]hought[ -]?[Ww]orks\b/i, "ThoughtWorks"],
   [/\b[Oo]ps[ -]?[Cc]ode\b/i, "Opscode"],
@@ -117,16 +118,23 @@ end
 ARGV.each do |path|
   next unless File.exist?(path)
   begin
-    data = YAML.load_file(path, permitted_classes: [Date, Time], aliases: true)
-    
-    if data["turns"]
-      data["turns"].each { |turn| apply_to_text(turn["text"]) }
-      apply_outro_rules(data["turns"].last["text"]) if data["turns"].last
-    elsif data["content"]
-      apply_to_text(data["content"])
+    if path.end_with?(".yml")
+      data = YAML.load_file(path, permitted_classes: [Date, Time], aliases: true)
+      
+      if data["turns"]
+        data["turns"].each { |turn| turn["text"] = apply_to_text(turn["text"]) }
+        apply_outro_rules(data["turns"].last["text"]) if data["turns"].last
+      elsif data["content"]
+        data["content"] = apply_to_text(data["content"])
+      end
+      
+      File.write(path, data.to_yaml)
+    else
+      # Handle raw text files (txt, srt, vtt)
+      content = File.read(path)
+      updated = apply_to_text(content)
+      File.write(path, updated)
     end
-    
-    File.write(path, data.to_yaml)
   rescue => e
     puts "Error in #{path}: #{e.message}"
   end
