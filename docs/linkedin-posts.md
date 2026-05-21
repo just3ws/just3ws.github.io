@@ -33,16 +33,18 @@ https://www.just3ws.com/2026/05/20/214-technical-conversations-what-i-learned.ht
 
 ## Post 2: The Chicago Movement (Hub Page)
 **Target:** Agile/Craftsmanship community, Chicago Tech
-**Hook:** Software Craftsmanship was more than a movement—it was a convergence of disciplines looking for a better way.
+**Hook:** What happens when an industry conference tells you your technical talks are "too practical"? You start your own.
 
 **Body:**
-If you were in the Chicago tech scene between 2010 and 2015, you witnessed a unique historical moment.
+When the mainstream Agile conference came to Chicago in 2010, they rejected a slew of talks from local innovators for being "too practical" about how to actually build quality software.
 
-It wasn't just about Ruby or JVM. It was a gravity well that brought together like-minded engineers from myriad backgrounds—including the vibrant .NET community.
+In response, the community created its own venue for professional pride and technical excellence: **Software Craftsmanship North America (SCNA)** was born.
 
-My friend Sergio Pereira, leader of Chicago Alt.NET, was at the center of it. When the idea for UGtastic was born at the SCNA conference, Sergio was the very first person to sit down with me. 
+This was the epicenter of a global movement. It brought together diverse disciplines—from Ruby and JVM specialists to the vibrant .NET community at Chicago Alt.NET.
 
-I’ve curated a "Historical Hub" of the interviews that defined this era, capturing the voices of the people who made these technical communities possible.
+My friend Sergio Pereira, leader of Chicago Alt.NET, was at the center of it. When the idea for UGtastic was born at that first SCNA conference, Sergio was the very first person to sit down with me. 
+
+I’ve curated a "Historical Hub" of the interviews that defined this era.
 
 Featuring:
 - Sergio Pereira on the Chicago Alt.NET roots
@@ -52,7 +54,7 @@ Featuring:
 Explore the Chicago Software Craftsmanship Movement Hub:
 https://www.just3ws.com/interviews/chicago-craftsmanship/
 
-#ChicagoTech #SoftwareCraftsmanship #AgileHistory #AltNET #CommunityLeadership
+#ChicagoTech #SoftwareCraftsmanship #AgileHistory #AltNET #CommunityLeadership #SCNA
 
 ---
 
