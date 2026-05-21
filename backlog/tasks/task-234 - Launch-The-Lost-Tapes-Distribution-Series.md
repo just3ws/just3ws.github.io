@@ -1,7 +1,7 @@
 ---
 id: TASK-234
 title: Launch 'The Lost Tapes' Distribution Series
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-05-20 23:56'
 updated_date: '2026-05-21 00:01'
@@ -18,12 +18,12 @@ Develop a social media distribution series ('The Lost Tapes') to share high-fide
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Create a social media thread template based on the 'Engagement Hooks' in video_assets.yml.
-- [ ] #2 Select 5 high-value interviews for the initial 'Lost Tapes' series.
-- [ ] #3 Generate shareable graphics or snippets using the 'insights' field.
+- [x] #1 Create a social media thread template based on the 'Engagement Hooks' in video_assets.yml.
+- [x] #2 Select 5 high-value interviews for the initial 'Lost Tapes' series.
+- [x] #3 Generate shareable graphics or snippets using the 'insights' field.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
