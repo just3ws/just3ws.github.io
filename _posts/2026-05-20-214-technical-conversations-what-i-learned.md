@@ -32,8 +32,8 @@ From [Sergio Pereira's](/interviews/sergio-pereira-chicago-alt-net-software-craf
 ### Why this Archive Exists
 I spent months perfecting this archive because technical memory is fragile. The idea for UGtastic was born at the **Software Craftsmanship North America (SCNA)** conference—a venue that was itself a response to a void in the industry. When the mainstream Agile conference came to Chicago and rejected talks for being "too practical" about the act of building software, the local community realized it was time to "raise the bar."
 
-This local spark was part of a broader shift. From the foundational meeting in **Libertyville, Illinois** in 2008 that drafted the **Software Craftsmanship Manifesto**, to the "Journeyman to Master" apprenticeship metaphor, this movement was a reaction to the prioritization of financial concerns over developer accountability. 
+This local spark was part of a broader shift. Communities like **Chicago Alt.NET** were precursors to this movement—gatherings of like-minded individuals from myriad backgrounds (in this case, the .NET platform) who were searching for better ways to work. 
 
-I wanted to interview the people who made these vibrant tech communities possible. My friend **Sergio Pereira**, the leader of Chicago Alt.NET, was the first person to sit down with me. As a trusted leader who knew the discipline required to run a successful community, his insights set the foundation for the 200+ conversations that followed. By preserving these dialogues with high-fidelity structured transcripts, we ensure that the "why" behind our technical and community decisions isn't lost to time.
+I wanted to interview the people who made these vibrant tech communities possible. My friend **Sergio Pereira**, the leader of Chicago Alt.NET, was the first person to sit down with me. His interview became the blueprint for what UGtastic would become. By preserving these dialogues with high-fidelity structured transcripts, we ensure that the "why" behind our technical and community decisions isn't lost to time.
 
 Explore the full collection of technical dialogues here: [Technical Conversations](/interviews/)

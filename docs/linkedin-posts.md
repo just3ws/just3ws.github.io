@@ -36,20 +36,20 @@ https://www.just3ws.com/2026/05/20/214-technical-conversations-what-i-learned.ht
 **Hook:** What happens when an industry conference tells you your technical talks are "too practical"? You start your own.
 
 **Body:**
-When the mainstream Agile conference came to Chicago in 2010, they rejected a slew of talks from local innovators for being "too practical" about how to actually build quality software.
+When the mainstream Agile conference came to Chicago in 2010, they rejected a slew of talks from local practitioners for being "too practical" about how to actually build software.
 
-In response, the community created its own venue for professional pride and technical excellence: **Software Craftsmanship North America (SCNA)** was born.
+In response, the community created its own venue: **Software Craftsmanship North America (SCNA)**.
 
-This was the epicenter of a global movement. It brought together diverse disciplines—from Ruby and JVM specialists to the vibrant .NET community at Chicago Alt.NET.
+But the movement was bigger than any one platform. It was a "rallying point" for like-minded individuals from myriad communities—including the vibrant .NET developers at Chicago Alt.NET.
 
-My friend Sergio Pereira, leader of Chicago Alt.NET, was at the center of it. When the idea for UGtastic was born at that first SCNA conference, Sergio was the very first person to sit down with me. 
+My friend Sergio Pereira, leader of Chicago Alt.NET, was a precursor to this convergence. When the idea for UGtastic was born at that first SCNA conference, Sergio’s interview was the blueprint for what was to come.
 
 I’ve curated a "Historical Hub" of the interviews that defined this era.
 
 Featuring:
 - Sergio Pereira on the Chicago Alt.NET roots
-- Angelique Martin on the organization of the SCNA gatherings
-- Uncle Bob and Corey Haines on the discipline of craft
+- Dave Hoover on the Apprenticeship Move
+- Robert "Uncle Bob" Martin on the ethics of craft
 
 Explore the Chicago Software Craftsmanship Movement Hub:
 https://www.just3ws.com/interviews/chicago-craftsmanship/
