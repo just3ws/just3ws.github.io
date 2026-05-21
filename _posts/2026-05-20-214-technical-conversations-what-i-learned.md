@@ -5,6 +5,7 @@ description: "A synthesis of a decade of archival technical interviews, distilli
 date: 2026-05-20
 author: Mike Hall
 tags: [leadership, archive, history, craftsmanship, engineering]
+social_teaser: "I spent the last 3 months transcribing 214 technical conversations from the last 20 years. From Rich Hickey to Jez Humble, I distilled 5 durable engineering lessons that are more relevant today than ever. #EngineeringLeadership #TheLostTapes"
 ---
 
 Over the past two decades, I have sat down with the creators, architects, and community leaders who built the foundations of our modern technical landscape. What started as a series of recordings at user groups and conferences like SCNA, GOTO, and RailsConf has evolved into a 214-item forensic archive.
