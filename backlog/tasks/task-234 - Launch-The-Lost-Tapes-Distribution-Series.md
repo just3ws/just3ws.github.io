@@ -1,9 +1,10 @@
 ---
 id: TASK-234
 title: Launch 'The Lost Tapes' Distribution Series
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-05-20 23:56'
+updated_date: '2026-05-21 00:01'
 labels: []
 dependencies: []
 priority: medium
