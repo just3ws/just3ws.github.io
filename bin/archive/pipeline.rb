@@ -3,8 +3,8 @@ require 'yaml'
 require 'fileutils'
 require 'logger'
 
-# --- PIPELINE CONTROLLER ---
-# Usage: ./bin/archive/pipeline.rb [interview_id] [--force] [--stage name]
+# --- PIPELINE CONTROLLER (State-Aware) ---
+# Usage: ./bin/archive/pipeline.rb [id] [--stage name] [--force] [--status] [--only-failed]
 
 class ArchivePipeline
   STAGES = %w[ingest normalize structure enrich validate sync]
@@ -27,6 +27,12 @@ class ArchivePipeline
     end
     
     targets = @target_id ? [@target_id] : all_interview_ids
+    
+    # Filter for failed validation if requested
+    if @options[:only_failed]
+       targets = targets.select { |id| !valid_item?(id) }
+    end
+
     puts "🚀 Starting Archive Pipeline (ETLT) for #{targets.size} items..."
     @logger.info("Pipeline Start: targets=#{targets.size} stage=#{@options[:stage]}")
     
@@ -39,32 +45,12 @@ class ArchivePipeline
 
   private
 
-  def report_archive_status
-    puts "📊 Archive ETLT Status Report"
-    puts "----------------------------"
-    
-    counts = {
-      total: 0,
-      normalized: 0,
-      structured: 0,
-      enriched: 0
-    }
-    
-    all_interview_ids.each do |id|
-      path = "_data/transcripts/#{id}.yml"
-      counts[:total] += 1
-      next unless File.exist?(path)
-      
-      data = YAML.load_file(path, permitted_classes: [Date, Time], aliases: true) rescue next
-      counts[:normalized] += 1 if data["normalized_at"]
-      counts[:structured] += 1 if data["turns"] && data["turns"].size > 1
-      counts[:enriched] += 1 if data["enriched_at"]
-    end
-    
-    puts "Total Items:   #{counts[:total]}"
-    puts "Normalized:    #{counts[:normalized].to_s.ljust(4)} (#{(counts[:normalized].to_f / counts[:total] * 100).round}%)"
-    puts "Structured:    #{counts[:structured].to_s.ljust(4)} (#{(counts[:structured].to_f / counts[:total] * 100).round}%)"
-    puts "Enriched:      #{counts[:enriched].to_s.ljust(4)} (#{(counts[:enriched].to_f / counts[:total] * 100).round}%)"
+  def valid_item?(id)
+    path = "_data/transcripts/#{id}.yml"
+    return false unless File.exist?(path)
+    data = YAML.load_file(path, permitted_classes: [Date, Time], aliases: true) rescue nil
+    return false unless data
+    data["validated_at"] && !data["validation_error"]
   end
 
   def process_item(id)
@@ -74,7 +60,11 @@ class ArchivePipeline
     context = { id: id, path: "_data/transcripts/#{id}.yml" }
     
     STAGES.each do |stage|
+      # If user specified a stage, skip others
       next if @options[:stage] && @options[:stage] != stage
+      
+      # If user didn't specify a stage, check dependencies
+      # We don't run structure if ingest failed, etc.
       
       print "  → Stage: #{stage.ljust(10)}... "
       result = execute_stage(stage, context)
@@ -83,7 +73,7 @@ class ArchivePipeline
         puts "✅"
         @logger.info("  [#{id}] Stage #{stage}: SUCCESS")
       elsif result[:status] == :skipped
-        puts "⏭️ (Already done)"
+        puts "⏭️ (Skip)"
         @logger.info("  [#{id}] Stage #{stage}: SKIPPED")
         @stats[:skipped] += 1
       else
@@ -102,7 +92,7 @@ class ArchivePipeline
       return { status: :failed, message: "Module not found: #{module_path}" }
     end
 
-    # Run the module as a subprocess for isolation
+    # Run the module as a subprocess
     cmd = "ruby #{module_path} #{context[:id]}"
     cmd += " --force" if @options[:force]
     
@@ -122,6 +112,40 @@ class ArchivePipeline
     YAML.load_file("_data/interviews.yml")["items"].map { |i| i["id"] }
   end
 
+  def report_archive_status
+    puts "📊 Archive ETLT Status Report"
+    puts "----------------------------"
+    
+    counts = {
+      total: 0,
+      normalized: 0,
+      structured: 0,
+      enriched: 0,
+      validated: 0,
+      failed: 0
+    }
+    
+    all_interview_ids.each do |id|
+      path = "_data/transcripts/#{id}.yml"
+      counts[:total] += 1
+      next unless File.exist?(path)
+      
+      data = YAML.load_file(path, permitted_classes: [Date, Time], aliases: true) rescue next
+      counts[:normalized] += 1 if data["normalized_at"]
+      counts[:structured] += 1 if data["structured_at"] || (data["turns"] && data["turns"].size > 1)
+      counts[:enriched] += 1 if data["enriched_at"]
+      counts[:validated] += 1 if data["validated_at"] && !data["validation_error"]
+      counts[:failed] += 1 if data["validation_error"]
+    end
+    
+    puts "Total Items:   #{counts[:total]}"
+    puts "Normalized:    #{counts[:normalized].to_s.ljust(4)} (#{(counts[:normalized].to_f / counts[:total] * 100).round}%)"
+    puts "Structured:    #{counts[:structured].to_s.ljust(4)} (#{(counts[:structured].to_f / counts[:total] * 100).round}%)"
+    puts "Enriched:      #{counts[:enriched].to_s.ljust(4)} (#{(counts[:enriched].to_f / counts[:total] * 100).round}%)"
+    puts "Validated:     #{counts[:validated].to_s.ljust(4)} (#{(counts[:validated].to_f / counts[:total] * 100).round}%)"
+    puts "Failed Val:    #{counts[:failed].to_s.ljust(4)}"
+  end
+
   def report_summary
     summary = "\n--- 🏁 Pipeline Summary ---\nSuccess: #{@stats[:success]}\nFailed:  #{@stats[:failed]}\nSkipped: #{@stats[:skipped]}"
     puts summary
@@ -133,6 +157,7 @@ id = ARGV.find { |a| !a.start_with?("-") }
 options = {
   force: ARGV.include?("--force"),
   status: ARGV.include?("--status"),
+  only_failed: ARGV.include?("--only-failed"),
   stage: ARGV.find { |a| a.start_with?("--stage=") }&.split("=")&.last
 }
 
