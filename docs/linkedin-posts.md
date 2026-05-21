@@ -33,24 +33,26 @@ https://www.just3ws.com/2026/05/20/214-technical-conversations-what-i-learned.ht
 
 ## Post 2: The Chicago Movement (Hub Page)
 **Target:** Agile/Craftsmanship community, Chicago Tech
-**Hook:** Why was Chicago the epicenter of the Software Craftsmanship movement in 2010?
+**Hook:** Software Craftsmanship was more than a movement—it was a convergence of disciplines looking for a better way.
 
 **Body:**
-If you were in the Chicago tech scene between 2010 and 2015, you felt it.
+If you were in the Chicago tech scene between 2010 and 2015, you witnessed a unique historical moment.
 
-A community of .NET developers looking for a better way (Chicago Alt.NET). Landmark gatherings at SCNA. Intimate dialogues on the ethics of building software.
+It wasn't just about Ruby or JVM. It was a gravity well that brought together like-minded engineers from myriad backgrounds—including the vibrant .NET community.
 
-I’ve curated a "Historical Hub" of the interviews that defined this era. 
+My friend Sergio Pereira, leader of Chicago Alt.NET, was at the center of it. When the idea for UGtastic was born at the SCNA conference, Sergio was the very first person to sit down with me. 
+
+I’ve curated a "Historical Hub" of the interviews that defined this era, capturing the voices of the people who made these technical communities possible.
 
 Featuring:
-- Sergio Pereira on the Alt.NET roots
-- Angelique Martin on organizing the movement
+- Sergio Pereira on the Chicago Alt.NET roots
+- Angelique Martin on organizing the SCNA gatherings
 - Uncle Bob and Corey Haines on the discipline of craft
 
 Explore the Chicago Software Craftsmanship Movement Hub:
 https://www.just3ws.com/interviews/chicago-craftsmanship/
 
-#ChicagoTech #SoftwareCraftsmanship #AgileHistory #AltNET
+#ChicagoTech #SoftwareCraftsmanship #AgileHistory #AltNET #CommunityLeadership
 
 ---
 

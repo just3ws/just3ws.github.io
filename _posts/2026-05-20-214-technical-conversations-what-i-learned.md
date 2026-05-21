@@ -30,6 +30,8 @@ While often discussed as a "best practice," [Jay Fields](/interviews/jay-fields-
 From [Sergio Pereira's](/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/) work with Chicago Alt.NET to [Angelique Martin's](/interviews/angelique-martin-software-craftsmanship-north-america-2013/) leadership at SCNA, it's clear that the industry's direction is set not by companies, but by the communities where engineers share their craft.
 
 ### Why this Archive Exists
-I spent months perfecting this archive because technical memory is fragile. By preserving these conversations with high-fidelity structured transcripts, we ensure that the "why" behind our architectural decisions isn't lost to time.
+I spent months perfecting this archive because technical memory is fragile. The idea for UGtastic was born at the SCNA conference—I wanted to interview the people who made these vibrant tech communities possible. 
+
+My friend **Sergio Pereira**, the leader of Chicago Alt.NET, was the first person to sit down with me. As a trusted leader who knew the discipline required to run a successful community, his insights set the foundation for the 200+ conversations that followed. By preserving these dialogues with high-fidelity structured transcripts, we ensure that the "why" behind our technical and community decisions isn't lost to time.
 
 Explore the full collection of technical dialogues here: [Technical Conversations](/interviews/)
