@@ -37,6 +37,11 @@ if text.nil? || text.strip.empty?
   exit 1
 end
 
+# PRE-PROCESS: Strip common transcript artifacts that break YAML parsing
+# e.g. "- Hi, I am Mike" -> "Hi, I am Mike"
+text = text.gsub(/^\s*-\s+/, "").gsub(/\n\s*-\s+/, "\n")
+
+
 # Get Guest Name for AI context
 interviews = YAML.load_file("_data/interviews.yml")["items"]
 metadata = interviews.find { |i| i["id"] == id } || {}

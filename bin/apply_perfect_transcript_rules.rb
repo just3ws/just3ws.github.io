@@ -30,6 +30,7 @@ RULES = [
   [/\b[Cc]hicago[ -]?[Rr]uby\b/i, "ChicagoRuby"],
   [/\b[Ww]indy[ -]?[Cc]ity[ -]?[Rr]ails\b/i, "WindyCityRails"],
   [/\b[Cc]hipy\b/i, "ChiPy"],
+  [/\b[Ss]cnn\b/i, "SCNA"],
   [/\b[Ss]cna\b/i, "SCNA"],
   [/\b[Rr]ails[ -]?[Bb]ridge\b/i, "RailsBridge"],
   
