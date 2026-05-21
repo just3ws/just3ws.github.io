@@ -48,7 +48,7 @@ I’ve curated a "Historical Hub" of the interviews that defined this era.
 
 Featuring:
 - Sergio Pereira on the Chicago Alt.NET roots
-- Angelique Martin on organizing the SCNA gatherings
+- Angelique Martin on the organization of the SCNA gatherings
 - Uncle Bob and Corey Haines on the discipline of craft
 
 Explore the Chicago Software Craftsmanship Movement Hub:
