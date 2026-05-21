@@ -7,7 +7,7 @@ require 'logger'
 # Usage: ./bin/archive/pipeline.rb [id] [--stage name] [--force] [--status] [--only-failed]
 
 class ArchivePipeline
-  STAGES = %w[ingest normalize structure enrich validate sync]
+  STAGES = %w[ingest normalize structure restructure enrich validate sync]
   LOG_FILE = "logs/archive_pipeline.log"
   
   def initialize(id = nil, options = {})

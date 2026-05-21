@@ -25,34 +25,32 @@ turns:
     anything that we had in Java. And it was like, okay, Ruby developers enjoy this
     fantastic framework, why don't we have it in Java? Okay, so you were just like,
     how can I make something that's as quick to develop with? And that's where ActiveWeb
-    came from.
+    came from. Right, so you were just like, how can I make something that's as quick
+    to develop with? And that's where ActiveWeb came from. Well, no, that was not
+    my immediate, my immediate reaction to this was, great, somebody must be developing
+    right now. Oh, okay. Yeah, you wanted to see what was out there. And I waited
+    a couple of years from 2007 to 2009, but nothing like that came out. So, I rolled
+    up my sleeves and started developing first ActiveGDPC. Okay, so you started with
+    the database first. Yeah. And was that something that you mostly used for your
+    own projects? Oh, no, no, no. This was from the very beginning, it was used on
+    commercial projects. We were building a massive system for an insurance company,
+    and we had two and a half months to start and finish a massive project. So, if
+    we didn't have an Agile tool, if we even went with something like Hibernate, at
+    the time I was managing a relatively small team, it was a team of four people
+    plus myself. And with ActiveGDPC, by the time we started the project, ActiveGDPC
+    was already working. Right. So, you had to implement the rest. It was 80% or was
+    it...? Well, it was probably 80% of what we needed for that one project. Okay.
+    So, you had to implement the rest kind of on the line. Yes. And it was really
+    funny because, you know, as a developer architect, sometimes you architect things
+    right and sometimes you architect things the wrong way. Right. This one was architected
+    right because when we hit the necessity of
 - speaker: M1
-  text: Well, no, that was not my immediate, my immediate reaction to this was, great,
-    somebody must be developing right now. Oh, okay. Yeah, you wanted to see what
-    was out there. And I waited a couple of years from 2007 to 2009, but nothing like
-    that came out. So, I rolled up my sleeves and started developing first ActiveGDPC.
-    Okay, so you started with the database first. Yeah. And was that something that
-    you mostly used for your own projects?
+  text: Having many-to-many relationship, we didn't have it in ActiveGDPC. And my
+    guys were like, 'Okay, back to Hibernate,' I'm like, 'Wait, we're going'
 - speaker: S1
-  text: Oh, no, no, no. This was from the very beginning, it was used on commercial
-    projects. We were building a massive system for an insurance company, and we had
-    two and a half months to start and finish a massive project. So, if we didn't
-    have an Agile tool, if we even went with something like Hibernate, at the time
-    I was managing a relatively small team, it was a team of four people plus myself.
-    And with ActiveGDPC, by the time we started the project, ActiveGDPC was already
-    working. Right. So, you had to implement the rest. It was 80% or was it...? Well,
-    it was probably 80% of what we needed for that one project. Okay. So, you had
-    to implement the rest kind of on the line. Yes. And it was really funny because,
-    you know, as a developer architect, sometimes you architect things right and sometimes
-    you architect things the wrong way. Right. This one was architected right because
-    when we hit the necessity of having many-to-many relationship, we didn't have
-    it in ActiveGDPC. And my guys were like, 'Okay, back to Hibernate,' I'm like,
-    'Wait, we're going
-- speaker: M1
-  text: When did you first release ActiveGDPC?
-- speaker: S1
-  text: We had it two days from now. Yeah. So, it was kind of battle-tested from the
-    word go, you had the idea and then you immediately put it into production.
+  text: When did you first release ActiveGDPC? We had it two days from now. Yeah.
+    So, it was kind of battle-tested from the word go, you had the idea and then you
+    immediately put it into production.
 - speaker: M1
   text: Is ActiveGDPC Oracle-specific or is it...?
 - speaker: S1
@@ -66,42 +64,37 @@ turns:
     for Microsoft SQL server were donated by the community. Okay, so this was, you
     had already released it and it was out in the wild.
 - speaker: M1
-  text: And what license is it under?
+  text: And what license is it under? Apache. Apache. Okay.
 - speaker: S1
-  text: Apache. Apache. Okay.
+  text: How did people outside of your community get to find out about it? Well, I
+    didn't really do too much effort or any effort to publicize it. I basically threw
+    it out into Google code and that's it. Okay.
 - speaker: M1
-  text: How did people outside of your community get to find out about it?
-- speaker: S1
-  text: Well, I didn't really do too much effort or any effort to publicize it. I
-    basically threw it out into Google code and that's it. Okay. And then I'm assuming
-    that most people who find these projects are people who have had experience in
-    Ruby and Rails and then start Googling like ActiveRecord for Java or things like
-    that.
-- speaker: M1
-  text: So, that similar wording is a little bit intentional because you want people
-    to be able to make that... Yeah. You mean ActiveJDBC? I was thinking what to name
-    this thing. Yeah. I didn't particularly want to name it a funny and nonexistent
+  text: And then I'm assuming that most people who find these projects are people
+    who have had experience in Ruby and Rails and then start Googling like ActiveRecord
+    for Java So, that similar wording is a little bit intentional because you want
+    people to be able to make that... Yeah. You mean ActiveJDBC? I was thinking what
+    to name this thing. Yeah. I didn't particularly want to name it a funny and nonexistent
     name. Right. That nobody would be able to type it. Right. I thought that ActiveRecord
     is a good name. It's also a name of a pattern. But... So, I took the word Active
     because actually, as opposed to like passive objects in Hibernate, it's a lot
     more active. And then I thought on the flip side, it's a very thin veneer on top
     of JDBC. Okay. So, ActiveJDBC and then came about. So, you started with ActiveJDBC.
-    How did you come up with ActiveWeb? What was the impetus for that?
+    How did you come up with ActiveWeb? What was the impetus for that? Well, as soon
+    as we implemented a massive back-end system for that company, we also had to implement
+    about four portals. And to be honest, implementing ActiveJDBC was a lot harder.
+    And I always thought that ActiveWeb would be something like that. Yeah. And it
+    turned out to be very easy to do. I also implemented a number of other frameworks
+    before them to make it easier for people to build web applications. So, I did
+    have experience doing that. Okay. Although they didn't go anywhere. Why did you
+    choose to make these open source tools? Why didn't you try to bundle them up and
+    sell these tools as components or...?
 - speaker: S1
-  text: Well, as soon as we implemented a massive back-end system for that company,
-    we also had to implement about four portals. And to be honest, implementing ActiveJDBC
-    was a lot harder. And I always thought that ActiveWeb would be something like
-    that. Yeah. And it turned out to be very easy to do. I also implemented a number
-    of other frameworks before them to make it easier for people to build web applications.
-    So, I did have experience doing that. Okay. Although they didn't go anywhere.
+  text: Oh. Well, number one reason, I'm not a salesman. But the reality is I used
+    so much from open source community. Linux, all kinds of Java frameworks, you know,
+    Ruby and Rails. I
 - speaker: M1
-  text: Why did you choose to make these open source tools? Why didn't you try to
-    bundle them up and sell these tools as components or...?
-- speaker: S1
-  text: Oh. Well, number one reason, I'm not a salesman. But the reality is
-- speaker: M1
-  text: I used so much from open source community. Linux, all kinds of Java frameworks,
-    you know, Ruby and Rails. I felt that I should give something back. Okay.
+  text: felt that I should give something back. Okay.
 - speaker: S1
   text: And... So, you've put this out on... You've created these projects and you've
     put them out on the Google Code. And then you shared them out on the Google Code.
@@ -137,29 +130,31 @@ turns:
     started using the frameworks. Grew to 12 people within a span of two years, and
     we built, like, four massive websites for members, for insurance companies based
     on ActiveGVC and ActiveWeb for Johnson & Johnson, for Humana, for Discover, for
-    insurance company
+    insurance company Discover. Right. So, that was between... I was with that company
+    between 2009 and 2011, at which point I found
 - speaker: M1
-  text: Discover. Right. So, that was between... I was with that company between 2009
-    and 2011, at which point I found new employment with Groupon. Ah, okay. So, that's
-    where we're at right now. And so, you're using the tools here. I've worked on
-    a project with you. That's... To be open and honest, I've worked on a project
-    with Igor and I have used the tools. They're good for Java. But... No, they are
-    really high quality. And that's... Anybody that I've spoken to that's used them
-    has had the same feedback. But are you using them to build anything outside of
-    Groupon? Yes. I also have my own startup. It's called ExpressPigeon. com. Mm-hmm.
-    Well, ExpressPigeon as in... It's an email marketing system. We'll have a lot.
-    Yeah. So, the entire system is built, of course, on ActiveGVC IQ. Because I personally
-    believe... Not because I built the tools, but I personally believe that without
-    Active... Basically, today in Java environment, you have only two contenders.
-    So, the Play Framework and Active Projects, the ones that I built, which allow
-    you to develop at breakneck speed. Mm-hmm. And maintain high quality of your code
-    versus kind of legacy Hibernate Spring stuff. Yeah. Yeah. And that's... With the
-    testing, you have the JSPEC framework as well. Yeah. So, it's a pretty complete
-    stack. You... It's kind of like with the Rails bundle. And then you have, you
-    know, the Active Record... Uh... Yeah. Active Record and then your... The Rails
-    and then the test units all kind of together. Right. In one piece. Okay. Well,
-    thank you very much for taking the time to sit down with me. Mike, thank you so
-    much. Appreciate it. Thank you so much.
+  text: new employment with Groupon. Ah, okay. So, that's where we're at right now.
+    And so, you're using the tools here. I've worked on a project with you. That's...
+    To be open and honest, I've worked on a project with Igor and I have used the
+    tools. They're good for Java. But... No, they are really high quality. And that's...
+    Anybody that I've spoken to that's used them has had the same feedback.
+- speaker: S1
+  text: But are you using them to build anything outside of Groupon? Yes. I also have
+    my own startup. It's called ExpressPigeon. com. Mm-hmm. Well, ExpressPigeon as
+    in... It's an email marketing system. We'll have a lot. Yeah. So, the entire system
+    is built, of course, on ActiveGVC IQ. Because I personally believe... Not because
+    I built the tools, but I personally believe that without Active... Basically,
+    today in Java environment, you have only two contenders. So, the Play Framework
+    and Active Projects, the ones that I built, which allow you to develop at breakneck
+    speed. Mm-hmm. And maintain high quality of your code versus kind of legacy Hibernate
+    Spring stuff. Yeah. Yeah. And that's... With the testing, you have the JSPEC framework
+    as well. Yeah. So, it's a pretty complete stack. You... It's kind of like with
+    the Rails bundle. And then you have, you know, the Active Record... Uh... Yeah.
+    Active Record and then your... The Rails and then the test units all kind of together.
+    Right. In one piece. Okay.
+- speaker: M1
+  text: Thank you very much for taking the time to sit down with me. Mike, thank you
+    so much. Appreciate it. Thank you so much.
 normalized_at: '2026-05-21T12:21:12-05:00'
 summary: Igor Polavoy, a Java developer, created a family of tools including ActiveWeb,
   ActiveJDBC, JSpec, and HTTP Lite, inspired by the Ruby on Rails framework's speed
@@ -195,5 +190,6 @@ insights:
   type: durable
   confidence: high
 enriched_at: '2026-05-21T12:19:40-05:00'
-validation_error: 'Significant Word Count Drift: Raw=2478, YAML=1750 (29% difference)'
-validated_at: '2026-05-21T13:25:30-05:00'
+validation_error: 'Significant Word Count Drift: Raw=2478, YAML=1768 (29% difference)'
+validated_at: '2026-05-21T13:59:25-05:00'
+restructured_at: '2026-05-21T15:00:27-05:00'

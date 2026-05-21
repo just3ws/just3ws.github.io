@@ -15,10 +15,18 @@ unless File.exist?(path)
   exit 1
 end
 
+def clean_word_count(text)
+  return 0 unless text
+  # Strip VTT/SRT timestamps and tags
+  clean = text.gsub(/\d{2}:\d{2}:\d{2}.\d{3} --> \d{2}:\d{2}:\d{2}.\d{3}/, "")
+  clean = clean.gsub(/<[^>]*>/, "")
+  clean = clean.gsub(/^\d+$/, "") # Strip line numbers from SRT
+  clean.split(/\s+/).reject(&:empty?).size
+end
+
 begin
   data = YAML.load_file(path, permitted_classes: [Date, Time], aliases: true)
   
-  # Idempotency: skip if already validated and not forced
   if data["validated_at"] && !data["validation_error"] && !force
     puts "SKIPPED"
     exit 0
@@ -47,8 +55,8 @@ begin
   
   if source_file && data["turns"]
     raw_text = File.read(source_file)
-    raw_words = raw_text.split(/\s+/).size
-    yaml_words = data["turns"].map { |t| t["text"] }.join(" ").split(/\s+/).size
+    raw_words = clean_word_count(raw_text)
+    yaml_words = clean_word_count(data["turns"].map { |t| t["text"] }.join(" "))
     
     # Tolerance: 15%
     drift = (raw_words - yaml_words).abs.to_f / raw_words
@@ -59,8 +67,8 @@ begin
 
   # 3. Diarization Balance
   if data["turns"]
-    m1_words = data["turns"].select{|t| t["speaker"] == "M1"}.map{|t| t["text"].split(/\s+/).size}.sum
-    total_words = data["turns"].map{|t| t["text"].split(/\s+/).size}.sum
+    m1_words = data["turns"].select{|t| t["speaker"] == "M1"}.map{|t| clean_word_count(t["text"])}.sum
+    total_words = data["turns"].map{|t| clean_word_count(t["text"])}.sum
     
     m1_ratio = m1_words.to_f / total_words
     if m1_ratio > 0.6 && total_words > 200
