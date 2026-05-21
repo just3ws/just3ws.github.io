@@ -138,6 +138,84 @@
   }
 }
 
+/* Editorial Hub Voices */
+.editorial-hub-voices {
+  margin: 6rem 0;
+
+  .voice-card {
+    margin-bottom: 5rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .voice-header {
+    margin-bottom: 2rem;
+    
+    h3 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #111;
+      margin-bottom: 0.5rem;
+    }
+
+    .voice-role {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary, #007bff);
+      font-weight: 700;
+    }
+  }
+
+  .voice-description {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 3rem;
+    max-width: 850px;
+
+    strong {
+      color: #000;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+  }
+}
+
+/* Historical FAQ */
+.historical-faq {
+  margin: 8rem 0;
+  padding: 4rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+
+  .faq-item {
+    margin-bottom: 3rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h4 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #444;
+    }
+  }
+}
+
 .hub-conclusion {
   max-width: 800px;
   margin: 6rem auto;
