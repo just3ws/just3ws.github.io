@@ -1,0 +1,42 @@
+{% assign asset = include.asset %}
+{% if asset %}
+  {% assign preferred = asset.platforms | where: "platform", "youtube" | first %}
+  {% if preferred == nil and asset.primary_platform %}
+    {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
+  {% endif %}
+  {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
+
+  <section class="video-stage">
+    <div class="video-stage-inner">
+      {% if preferred.video_url %}
+        <div class="video-embed">
+          <video controls preload="metadata" poster="{{ preferred.image_url | default: asset.thumbnail }}">
+            <source src="{{ preferred.video_url }}" type="video/mp4">
+          </video>
+        </div>
+      {% elsif preferred.embed_url %}
+        <div class="video-embed">
+          <iframe id="{{ include.embed_id | default: 'asset-embed' }}" src="{{ preferred.embed_url }}" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ asset.title }}" allowfullscreen></iframe>
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="video-details-bar">
+      <div class="indicator-group">
+        {% if asset.transcript_id %}
+          <span class="editorial-badge transcript">Full Transcript Available</span>
+        {% endif %}
+        {% if preferred.duration_minutes %}
+          <span class="editorial-badge duration">{{ preferred.duration_minutes | round }} Minutes</span>
+        {% endif %}
+      </div>
+      <div class="platform-actions">
+        {% for platform in asset.platforms %}
+          {% if platform.url %}
+            <a class="platform-link" href="{{ platform.url }}" target="_blank" rel="noopener">Watch on {{ platform.platform | capitalize }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
