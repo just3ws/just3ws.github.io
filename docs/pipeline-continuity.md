@@ -33,17 +33,30 @@ Each transcript in `_data/transcripts/*.yml` tracks its own state via metadata k
 To resume the restoration of the 95 failed items:
 
 ```bash
-# 1. Ensure Local AI is running
-llama-ctl status
+# 1. Check service health
+zdots-ctl status
+# If llama-server or other services are down:
+zdots-ctl up
 
 # 2. Run the restructure stage only for failed items
+# (Requires llama_cpp service @ http://127.0.0.1:8080)
 ./bin/archive/pipeline.rb --only-failed --stage=restructure
 
 # 3. Re-validate to clear the error state
 ./bin/archive/pipeline.rb --only-failed --stage=validate
+
+# 4. (Optional) Index for semantic search
+# (Requires 'my' database and zdots-ctx)
+./bin/archive/pipeline.rb --only-failed --stage=index
 ```
 
-## 6. Safety Mandates for Future Agents
+## 6. Platform Integration Notes
+- **Local AI:** Restructuring and Enrichment use the `qwen2.5-coder-7b` model via `llama.cpp`. 
+- **Context Database:** The `index` stage loads data into the `my` database via the `zdots-ctx` interface. All writes MUST go through this interface.
+- **Observability:** Pipeline metrics and logs are exported to the local Grafana instance via OpenTelemetry if `otelcol` is active.
+- **Service Control:** Use `zdots-ctl check` to verify the entire stack's health.
+
+## 7. Safety Mandates for Future Agents
 1. **Never "Bulldoze":** Do not use `FORCE=true` on the old `bin/structure_transcript_heuristics.rb` script. Use the modular pipeline instead.
 2. **AI Stability:** The `restructure` module uses 500-word chunks to prevent `llama.cpp` OOM errors.
 3. **Audit First:** Before syncing any batch, run `--stage=validate` to ensure no data was lost.
