@@ -23,12 +23,17 @@ permalink: /interviews/manifesto-signatories/
         <span class="voice-role">Agile Manifesto Signatory / Co-author of "The Pragmatic Programmer"</span>
       </div>
       <p class="voice-description"><strong>The Role:</strong> Dave (PragDave) is one of the primary architects of the Agile movement and a pioneer of the apprenticeship metaphor in software. <strong>The History:</strong> This interview, recorded at SCNA 2013 in Chicago, explores the "Power of Unknown Knowns" and his reflections on technical intuition a decade after the Snowbird meeting.</p>
+      
+      <div class="canonical-wisdom">
+        <h4>Canonical Wisdom</h4>
+        <p>PragDave discusses the concept of 'unknown knowns' and how it applies to becoming proficient in tasks through intuition. He emphasizes that intuition is a result of deep internalization of knowledge, and highlights pair programming as a method to break out of "autopilot" and re-examine technical habits.</p>
+      </div>
+
       {% assign interview = site.data.all_archive_items | where: "id", "dave-thomas-software-craftsmanship-north-america-2013" | first %}
       {% if interview %}
         {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
         {% include video-stage.html asset=asset embed_id="pragdave-embed" %}
         <div class="voice-cta">
-          <p class="cta-invitation">Listen to PragDave's reflections on technical intuition and read the forensic transcript.</p>
           <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
         </div>
       {% endif %}
@@ -40,12 +45,17 @@ permalink: /interviews/manifesto-signatories/
         <span class="voice-role">Agile Manifesto Signatory / Author of "Clean Code"</span>
       </div>
       <p class="voice-description"><strong>The Role:</strong> Uncle Bob was a primary driver behind the "Software Craftsmanship" extension to Agile, proposing the fifth value of 'Craftsmanship over Execution'. <strong>The History:</strong> Recorded at SCNA 2012 in Chicago, this interview captures his ethical call to arms for the software professional.</p>
+      
+      <div class="canonical-wisdom">
+        <h4>Canonical Wisdom</h4>
+        <p>Uncle Bob explains the transition from written work to high-fidelity video as a primary teaching medium. He argues that incorporating personality, body language, and emotion allows for more effective communication of technical principles like "Clean Code."</p>
+      </div>
+
       {% assign interview = site.data.all_archive_items | where: "id", "robert-martin-software-craftsmanship-north-america-2012" | first %}
       {% if interview %}
         {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
         {% include video-stage.html asset=asset embed_id="bob-embed" %}
         <div class="voice-cta">
-          <p class="cta-invitation">Hear the ethical call to arms and read the complete technical record.</p>
           <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
         </div>
       {% endif %}
@@ -56,13 +66,18 @@ permalink: /interviews/manifesto-signatories/
         <h3>Ron Jeffries</h3>
         <span class="voice-role">Agile Manifesto Signatory / Extreme Programming Pioneer</span>
       </div>
-      <p class="voice-description"><strong>The Role:</strong> One of the original proponents of Extreme Programming (XP), Ron has spent decades advocating for technical excellence and simplicity. <strong>The History:</strong> This conversation (with Chet Hendrickson) explores the visual thinking and presentation mastery required of a software professional.</p>
+      <p class="voice-description"><strong>The Role:</strong> One of the original proponents of Extreme Programming (XP), Ron has spent decades advocating for technical excellence and simplicity. <strong>The History:</strong> This conversation explores the visual thinking and presentation mastery required of a software professional.</p>
+      
+      <div class="canonical-wisdom">
+        <h4>Canonical Wisdom</h4>
+        <p>Ron Jeffries discusses the approach to software development through the lens of simplicity and metaphors. He highlights that clear communication and collaboration are the true foundations of technical agility, rather than complex processes.</p>
+      </div>
+
       {% assign interview = site.data.all_archive_items | where: "id", "chet-hendrickson-ron-jefferies-software-craftsmanship-north-america-2013" | first %}
       {% if interview %}
         {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
         {% include video-stage.html asset=asset embed_id="ron-embed" %}
         <div class="voice-cta">
-          <p class="cta-invitation">Discover the intersection of visual thinking and Agile practice.</p>
           <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
         </div>
       {% endif %}
@@ -74,12 +89,17 @@ permalink: /interviews/manifesto-signatories/
         <span class="voice-role">Agile Manifesto Signatory / Testing Specialist</span>
       </div>
       <p class="voice-description"><strong>The Role:</strong> Brian brought a deep focus on testing and the sociological aspects of software development to the Manifesto. <strong>The History:</strong> Recorded at SCNA 2012, this interview highlights the early community-led efforts to redefine professional development.</p>
+      
+      <div class="canonical-wisdom">
+        <h4>Canonical Wisdom</h4>
+        <p>Brian Marick advocates for storytelling as a primary mechanism for concepts to stick with both technical and non-technical audiences. He explains that using humor and visual symbols enhances the long-term retention of architectural principles.</p>
+      </div>
+
       {% assign interview = site.data.all_archive_items | where: "id", "brian-marick-software-craftsmanship-north-america-2012" | first %}
       {% if interview %}
         {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
         {% include video-stage.html asset=asset embed_id="brian-embed" %}
         <div class="voice-cta">
-          <p class="cta-invitation">Explore the foundations of technical community building.</p>
           <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
         </div>
       {% endif %}
@@ -99,14 +119,9 @@ permalink: /interviews/manifesto-signatories/
       <h4>Why is Chicago central to this story?</h4>
       <p>Although the Manifesto was signed in Utah, it was the Chicago community (Alt.NET, 8th Light, Obtiva) that served as the primary laboratory for its evolution into the Craftsmanship movement. Every signatory featured here was interviewed on-site at a Chicago conference.</p>
     </div>
-
-    <div class="faq-item">
-      <h4>How have their views changed since 2001?</h4>
-      <p>In these archival recordings, you'll hear the authors reflect on the "Commercialization of Agile" and their attempts to steer the industry back toward technical excellence and professional accountability.</p>
-    </div>
   </section>
 
   <section class="hub-conclusion">
-    <p>Explore the full forensic archive of 214 technical conversations <a href="/interviews/">here</a>.</p>
+    <p>Explore the full forensic archive of 183 technical conversations <a href="/interviews/">here</a>.</p>
   </section>
 </article>

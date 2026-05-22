@@ -1,152 +1,105 @@
 ---
 layout: minimal
-title: "The Chicago Software Craftsmanship Movement (2010-2015)"
-description: "Exploring the history, leaders, and pivotal interviews from the epicentre of the Software Craftsmanship movement."
-breadcrumb: Chicago Movement
+title: "The History of Software Craftsmanship in Chicago (2010-2015)"
+description: "A comprehensive long-form record of the Technical Renaissance that transformed Chicago into the global epicenter of the Software Craftsmanship movement."
+breadcrumb: Chicago History
 permalink: /interviews/chicago-craftsmanship/
 ---
 
 <article class="page">
   <header class="home-header">
-    <h1>The Chicago Software Craftsmanship Movement <span class="subtitle">A Historical Hub</span></h1>
+    <h1>The Chicago Renaissance <span class="subtitle">A History of Software Craftsmanship</span></h1>
     <h2 class="title">Between 2010 and 2015, Chicago became the manifest epicenter for a new way of thinking about software development.</h2>
-    <p class="home-intro">This curated collection traces the origins of a technical renaissance that could only have happened in Chicago. From the early days of Chicago Alt.NET to the landmark SCNA conferences, these interviews capture the passion, the tradeoffs, and the community that redefined engineering 'craft'. Every in-person interview in this archive was conducted at a Chicago conference, marking this city as the primary laboratory for the movement.</p>
+    <p class="home-intro">This is the chronological story of a movement that redefined engineering 'craft'. It was born out of local necessity, fueled by a unique convergence of .NET, Ruby, and JVM communities, and solidified through a landmark conference that was itself a response to an industry void. Every in-person interview in this archive was conducted at a Chicago conference, marking this city as the primary laboratory for the movement.</p>
   </header>
 
   <section class="editorial-hub-narrative">
-    <h3>The Convergence: Software Craftsmanship</h3>
-    <p>Software Craftsmanship (SC) emerged as a response to the "perceived ills" of the mainstream software industry—specifically the prioritization of financial concerns over developer accountability and technical excellence. Drawing on the guild traditions of medieval Europe and the apprenticeship model, pioneers like <strong>Dave "PragDave" Thomas</strong> and <strong>Andy Hunt</strong> began to re-frame software development as a craft practiced from 'Journeyman to Master'.</p>
-
-    <p>But the movement found its definitive voice here in Illinois. In December 2008, a group of aspiring craftsmen met in <strong>Libertyville, Illinois</strong>, to establish a set of principles that would eventually become the <strong>Software Craftsmanship Manifesto</strong>. This wasn't just theory; it was a response to a void in the industry. When the mainstream Agile conference came to Chicago and rejected practical, technical talks for being "too practical," the community realized it needed its own space to "raise the bar."</p>
-
-    <h3>The Spark: Chicago Alt.NET</h3>
-    <p>A central precursor to this story was <strong>Chicago Alt.NET</strong>. While not a direct driver of the Software Craftsmanship Manifesto, this community was a perfect example of the "rallying point" the movement provided. It represented a gathering of like-minded individuals from myriad communities—including the .NET platform—who were searching for better ways to build quality systems. My friend <strong>Sergio Pereira</strong>, the leader of Chicago Alt.NET, was the embodiment of this cross-pollination. When the idea for <strong>UGtastic</strong> was born at the first SCNA conference, I knew I wanted to interview the people who made these tech communities possible. Sergio agreed to do the very first interview, providing the community blueprint for the 200+ that followed.</p>
-    
-    <h3>The Gathering: SCNA</h3>
-    <p>The <strong>Software Craftsmanship North America</strong> conference, alongside sister communities like the <strong>London Software Craftsmanship Community (LSCC)</strong>, drove a global conversation on technical excellence. From experimenting with "Craftsman Swaps" between Chicago firms like 8th Light and Obtiva, to defining the ethics of our trade, this movement redefined what it means to be a software professional. This archive captures that movement at its local epicenter and historical peak.</p>
-  </section>
-
-  <section class="editorial-hub-voices">
-    <h2 class="section-title">The Definitive Voices</h2>
+    <h2 class="section-title">2008: The Precursor (Alt.NET & Libertyville)</h2>
     <hr class="title-accent">
+    <p>Before the 'Software Craftsmanship' brand went global, it lived in the basements and boardrooms of Chicago. A central precursor was <strong>Chicago Alt.NET</strong>, a group of .NET developers led by <strong>Sergio Pereira</strong> who were searching for better ways to build quality systems on the Microsoft platform. They were the first to cross-pollinate TDD and Agile methodologies into a community that had historically been vendor-driven.</p>
 
-    <div class="voice-card">
+    <div class="voice-card small">
       <div class="voice-header">
         <h3>Sergio Pereira</h3>
-        <span class="voice-role">Precursor / Blueprint for UGtastic</span>
+        <span class="voice-role">Precursor / The Blueprint</span>
       </div>
-      <p class="voice-description"><strong>The Role:</strong> Sergio represents the myriad of practitioners from diverse communities who found a rallying point in Software Craftsmanship. As the leader of Chicago Alt.NET, he is a prime example of the cross-platform search for better ways of working. <strong>The History:</strong> His was the very first UGtastic interview, serving as the blueprint and inspiration for the entire archival project.</p>
-      {% assign interview = site.data.all_archive_items | where: "id", "sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011" | first %}
-      {% if interview %}
-        {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
-        {% include video-asset-player.html asset=asset hide_transcript=true embed_id="sergio-embed" %}
+      <p class="voice-description">Sergio's group was the "gravity well" that brought together like-minded practitioners. His interview was the very first UGtastic recording, providing the community blueprint for everything that followed.</p>
+      {% assign item = site.data.all_archive_items | where: "id", "sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011" | first %}
+      {% if item %}
+        {% include video-stage.html asset=item embed_id="sergio-embed" %}
         <div class="voice-cta">
-          <p class="cta-invitation">Watch the original blueprint interview and read the forensic transcript below.</p>
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
+          <a href="/interviews/{{ item.id }}/" class="editorial-card-button">Watch the First Interview &rarr;</a>
         </div>
       {% endif %}
     </div>
 
-    <div class="voice-card">
-      <div class="voice-header">
-        <h3>Micah Martin</h3>
-        <span class="voice-role">Co-founder of 8th Light / Apprenticeship Pioneer</span>
-      </div>
-      <p class="voice-description"><strong>The Role:</strong> Micah was at the heart of the "Apprenticeship Move," helping to build 8th Light into a cornerstone of the Chicago craft scene. <strong>The History:</strong> This interview explores the discipline of building a firm based on the apprenticeship model and the early culture of SCNA.</p>
-      {% assign interview = site.data.all_archive_items | where: "id", "micah-martin-software-craftsmanship-north-america-2013" | first %}
-      {% if interview %}
-        {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
-        {% include video-asset-player.html asset=asset hide_transcript=true embed_id="micah-embed" %}
-        <div class="voice-cta">
-          <p class="cta-invitation">Discover the history of the apprenticeship model and read the full dialogue.</p>
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
-        </div>
-      {% endif %}
-    </div>
+    <p>In December 2008, this local energy culminated in a foundational meeting in <strong>Libertyville, Illinois</strong>. A small group met to answer a simple question: "What does it mean to be a software professional?" Over three months, their conclusions were distilled into the <strong>Software Craftsmanship Manifesto</strong>, adding "well-crafted software" as a critical extension to Agile values.</p>
 
-    <div class="voice-card">
-      <div class="voice-header">
-        <h3>Dave Hoover</h3>
-        <span class="voice-role">Co-author of "Apprenticeship Patterns"</span>
-      </div>
-      <p class="voice-description"><strong>The Role:</strong> A visionary at firms like Obtiva and 8th Light, Dave formalized the apprenticeship metaphor for the modern era. <strong>The History:</strong> This interview explores GeekFest and the "Apprenticeship Move," revealing how Chicago became a laboratory for developing new engineering talent.</p>
-      {% assign interview = site.data.all_archive_items | where: "id", "dave-hoover-geekfest-geekfest" | first %}
-      {% if interview %}
-        {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
-        {% include video-asset-player.html asset=asset hide_transcript=true embed_id="dave-embed" %}
-        <div class="voice-cta">
-          <p class="cta-invitation">Explore the evolution of mentorship and access the structured transcript.</p>
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
-        </div>
-      {% endif %}
-    </div>
+    <h2 class="section-title">2010: The Catalyst (The Agile Rejection)</h2>
+    <hr class="title-accent">
+    <p>The movement was forced into the spotlight by a singular event: the 2010 Agile conference in Chicago. Mainstream Agile had become "commercialized," focusing more on project management and Jira boards than on the code itself. When the conference rejected a slew of technical talks from local innovators for being <strong>"too practical,"</strong> the community realized the industry had sidelined the act of creation.</p>
+    
+    <p>In response, thought leaders like <strong>Angelique Martin</strong> and the local community created their own venue. <strong>Software Craftsmanship North America (SCNA)</strong> was born—a conference dedicated entirely to technical excellence and professional pride.</p>
 
-    <div class="voice-card">
-      <div class="voice-header">
-        <h3>Robert "Uncle Bob" Martin</h3>
-        <span class="voice-role">Manifesto Signatory / Author of "Clean Code"</span>
-      </div>
-      <p class="voice-description"><strong>The Role:</strong> One of the most influential figures in the movement, Uncle Bob challenged the industry with the "Craftsmanship over Crap" mantra. <strong>The History:</strong> Recorded at SCNA 2012, this conversation captures the ethical responsibility of the software craftsman as the "author of the rules that run the world."</p>
-      {% assign interview = site.data.all_archive_items | where: "id", "robert-martin-software-craftsmanship-north-america-2012" | first %}
-      {% if interview %}
-        {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
-        {% include video-asset-player.html asset=asset hide_transcript=true embed_id="bob-embed" %}
-        <div class="voice-cta">
-          <p class="cta-invitation">Hear the ethical call to arms and read the complete technical record.</p>
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
-        </div>
-      {% endif %}
-    </div>
-
-    <div class="voice-card">
-      <div class="voice-header">
-        <h3>Gary Bernhardt</h3>
-        <span class="voice-role">Creator of Destroy All Software</span>
-      </div>
-      <p class="voice-description"><strong>The Role:</strong> Gary brought a level of technical rigor and "speed-to-feedback" that resonated deeply with the Chicago craft community. <strong>The History:</strong> Recorded at SCNA 2012, this interview highlights the move toward extreme technical competence as a core value of the movement.</p>
-      {% assign interview = site.data.all_archive_items | where: "id", "gary-bernhardt-software-craftsmanship-north-america-2012" | first %}
-      {% if interview %}
-        {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
-        {% include video-asset-player.html asset=asset hide_transcript=true embed_id="gary-embed" %}
-        <div class="voice-cta">
-          <p class="cta-invitation">Deep dive into technical feedback loops and access the verified transcript.</p>
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
-        </div>
-      {% endif %}
-    </div>
-
-    <div class="voice-card">
+    <div class="voice-card small">
       <div class="voice-header">
         <h3>Angelique Martin</h3>
-        <span class="voice-role">SCNA Organizer / Community Architect</span>
+        <span class="voice-role">SCNA Organizer / Architect</span>
       </div>
-      <p class="voice-description"><strong>The Role:</strong> A key organizer who helped build the platform for the Software Craftsmanship North America conferences. <strong>The History:</strong> Her interview reveals the logistics and the "why" behind creating a dedicated venue for technical excellence after the Agile conference rejections.</p>
-      {% assign interview = site.data.all_archive_items | where: "id", "angelique-martin-software-craftsmanship-north-america-2013" | first %}
-      {% if interview %}
-        {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
-        {% include video-asset-player.html asset=asset hide_transcript=true embed_id="angelique-embed" %}
+      <p class="voice-description">Angelique built the platform that gave the movement its voice. Her interview reveals the "Why" behind creating a dedicated space for Technical Excellence.</p>
+      {% assign item = site.data.all_archive_items | where: "id", "angelique-martin-software-craftsmanship-north-america-2013" | first %}
+      {% if item %}
+        {% include video-stage.html asset=item embed_id="angelique-embed" %}
         <div class="voice-cta">
-          <p class="cta-invitation">Go behind the scenes of SCNA and read the full archival record.</p>
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
+          <a href="/interviews/{{ item.id }}/" class="editorial-card-button">Hear the Origin Story &rarr;</a>
         </div>
       {% endif %}
     </div>
 
-    <div class="voice-card">
-      <div class="voice-header">
-        <h3>Corey Haines</h3>
-        <span class="voice-role">Global Evangelist / Manifesto Signatory</span>
-      </div>
-      <p class="voice-description"><strong>The Role:</strong> The "Journeyman" of the movement, Corey traveled the world teaching the discipline of craft. <strong>The History:</strong> This interview captures the shift from "Agile process" back to the technical fundamentals of code and testing.</p>
-      {% assign interview = site.data.all_archive_items | where: "id", "corey-haines-general" | first %}
-      {% if interview %}
-        {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
-        {% include video-asset-player.html asset=asset hide_transcript=true embed_id="corey-embed" %}
-        <div class="voice-cta">
-          <p class="cta-invitation">Trace the journeyman's path and read the high-fidelity dialogue.</p>
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
+    <h2 class="section-title">2011-2015: The Laboratory (The Apprenticeship Move)</h2>
+    <hr class="title-accent">
+    <p>With SCNA established, Chicago became a laboratory for professional development. Firms like <strong>8th Light</strong> and <strong>Obtiva</strong> experimented with radical transparency. They pioneered the <strong>"Craftsman Swap,"</strong> where developers from competing firms would trade places to share techniques and raise the collective bar of the city's talent.</p>
+
+    <div class="editorial-index-grid">
+      <div class="voice-card">
+        <div class="voice-header">
+          <h3>Micah Martin</h3>
+          <span class="voice-role">8th Light Co-founder</span>
         </div>
-      {% endif %}
+        <p class="voice-description">Micah helped build the cornerstone of the Chicago craft scene. This interview explores the discipline of building a firm based on the apprenticeship model.</p>
+        {% assign item = site.data.all_archive_items | where: "id", "micah-martin-software-craftsmanship-north-america-2013" | first %}
+        {% if item %}<a href="/interviews/{{ item.id }}/" class="editorial-card-button">Watch Micah &rarr;</a>{% endif %}
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-header">
+          <h3>Dave Hoover</h3>
+          <span class="voice-role">Author of "Apprenticeship Patterns"</span>
+        </div>
+        <p class="voice-description">Dave formalized the apprenticeship metaphor for the modern era, using GeekFest as a safe space for high-fidelity presentation and learning.</p>
+        {% assign item = site.data.all_archive_items | where: "id", "dave-hoover-geekfest-geekfest" | first %}
+        {% if item %}<a href="/interviews/{{ item.id }}/" class="editorial-card-button">Watch Dave &rarr;</a>{% endif %}
+      </div>
+    </div>
+
+    <h2 class="section-title">The Cultural Pillars</h2>
+    <hr class="title-accent">
+    <p>Beyond the logistics, the Chicago Renaissance was defined by three cultural shifts captured in this archive:</p>
+    <ul>
+      <li><strong>Ethical Accountability:</strong> Robert "Uncle Bob" Martin's call for engineers to be the "authors of the rules that run the world."</li>
+      <li><strong>Technical Rigor:</strong> Gary Bernhardt's insistence on extreme speed-to-feedback and simple, clean designs.</li>
+      <li><strong>The Discipline of Practice:</strong> Corey Haines's Global Day of Code Retreat, where writing the "best code you've ever written" was the only goal.</li>
+    </ul>
+
+    <div class="editorial-index-grid">
+       {% assign item = site.data.all_archive_items | where: "id", "robert-martin-software-craftsmanship-north-america-2012" | first %}
+       {% if item %}{% include interview-card.html interview=item %}{% endif %}
+
+       {% assign item = site.data.all_archive_items | where: "id", "gary-bernhardt-software-craftsmanship-north-america-2012" | first %}
+       {% if item %}{% include interview-card.html interview=item %}{% endif %}
+
+       {% assign item = site.data.all_archive_items | where: "id", "corey-haines-general" | first %}
+       {% if item %}{% include interview-card.html interview=item %}{% endif %}
     </div>
   </section>
 
@@ -155,22 +108,17 @@ permalink: /interviews/chicago-craftsmanship/
     <hr class="title-accent">
     
     <div class="faq-item">
-      <h4>What was the "Libertyville Meeting"?</h4>
-      <p>In December 2008, a small group met in Libertyville, Illinois, to answer a simple question: "What does it mean to be a software professional?" Over three months, their conclusions were distilled into the <strong>Software Craftsmanship Manifesto</strong>, which added "well-crafted software" and "community of professionals" as critical extensions to the original Agile values.</p>
+      <h4>Why was Chicago the only place this could start?</h4>
+      <p>Chicago had a unique density of multi-platform talent. It wasn't just a "Ruby city" or a ".NET city"—it was a community city. The convergence of 8th Light, Obtiva, and a strong user group culture created a critical mass that larger, more siloed tech hubs lacked.</p>
     </div>
 
     <div class="faq-item">
-      <h4>Why was "practicality" so controversial?</h4>
-      <p>By 2010, many felt the mainstream Agile movement had been "commercialized," focusing more on project management and Jira boards than on the code itself. When technical talks were rejected for being "too practical," it was a signal that the act of creation had been sidelined. Software Craftsmanship was the movement that brought the focus back to the editor.</p>
-    </div>
-
-    <div class="faq-item">
-      <h4>What is a "Craftsman Swap"?</h4>
-      <p>Pioneered by Chicago firms like 8th Light and Obtiva, the swap was a radical experiment in transparency and learning. Developers from competing firms would swap places for a period to share techniques, build community, and raise the collective bar of the city's engineering talent.</p>
+      <h4>How did the 'too practical' talks change everything?</h4>
+      <p>By forcing the community to build their own venue (SCNA), the rejection ensured the movement wouldn't be diluted by corporate Agile interests. It solidified the 'Craftsmanship' identity as one of technical autonomy and professional accountability.</p>
     </div>
   </section>
 
   <section class="hub-conclusion">
-    <p>This hub is part of a broader effort to preserve the technical memory of the industry. You can explore the full forensic archive of 214 technical conversations <a href="/interviews/">here</a>.</p>
+    <p>This history is part of a broader effort to preserve technical memory. Explore the full archive of 183 technical conversations <a href="/interviews/">here</a>.</p>
   </section>
 </article>
