@@ -1,5 +1,16 @@
 # Project Agent Instructions
 
+## Agent skills
+
+### Issue tracker
+GitHub issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+Standard triage workflow labels. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+Single-context layout (root-level CONTEXT.md + docs/adr/). See `docs/agents/domain.md`.
+
 ## Registered Skills
 Use these skills by default for this repository:
 
