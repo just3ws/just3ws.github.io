@@ -1,7 +1,21 @@
 
-<!-- BACKLOG.MD MCP GUIDELINES START -->
+<!-- BACKLOG.MD MCP GUIDELINES END -->
+
+<CRITICAL_SAFETY_ADVISORY>
+
+## DESTRUCTIVE OPERATIONS SAFETY
+
+**INCIDENT RECORD (2026-05-25):** A recursive deletion of the home directory was triggered due to an unresolved path variable.
+
+**MANDATORY SAFETY CHECKS:**
+- **Variable Validation:** Before any `rm -rf` or similar destructive command, EXPLICITLY verify that all variables are non-empty and resolve to paths strictly within the intended workspace.
+- **Path Anchoring:** Always anchor paths to the project root or a known-safe subdirectory.
+- **Library Preference:** Prefer language-native file utilities (e.g., Ruby's `FileUtils.rm_rf`) over shell commands when possible, as they provide better inherent safety for empty path arguments.
+
+</CRITICAL_SAFETY_ADVISORY>
 
 <CRITICAL_INSTRUCTION>
+
 
 ## BACKLOG WORKFLOW INSTRUCTIONS
 
