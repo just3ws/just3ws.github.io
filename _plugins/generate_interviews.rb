@@ -66,8 +66,9 @@ module Jekyll
         next unless id # Skip malformed entries
         
         # Look up corresponding video asset
-        video_asset = site.data.dig('video_assets', 'items').find { |a| a['id'] == interview['video_asset_id'] } ||
-                      site.data.dig('video_assets', 'items').find { |a| a['id'] == id }
+        video_assets = site.data.dig('video_assets', 'items') || []
+        video_asset = video_assets.find { |a| a['id'] == interview['video_asset_id'] } ||
+                      video_assets.find { |a| a['id'] == id }
 
         # --- SEO TITLE OPTIMIZATION ---
         # Format: Hook/Subject: Guest Name | Context
