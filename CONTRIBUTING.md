@@ -53,6 +53,7 @@ This project uses a local `Backlog.md` file for task tracking.
 
 - **Static Site Generator**: Jekyll 4.x
 - **CSS**: Minimal custom SCSS in `_sass/`, compiled to `assets/css/site.css`.
+- **Markdown Exports**: The `markdown_export.rb` plugin automatically generates `.md` versions of the resume, portfolio, and history pages during build. These are output to `_site/exports/` and available at `/exports/` for easy sharing and version control integration.
 - **Validation**:
   - `htmlproofer` for link and structure checks.
   - `Playwright` for browser smoke tests.
