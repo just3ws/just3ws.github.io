@@ -7,7 +7,8 @@ Personal resume site at [just3ws.com](https://www.just3ws.com)
 - [HTML](https://www.just3ws.com) - Primary resume
 - [Full History](https://www.just3ws.com/history) - Complete career timeline
 - [Plain Text](https://www.just3ws.com/resume.txt)
-- [Markdown](https://www.just3ws.com/resume.md)
+- **Markdown Exports** - See [`/exports/`](https://www.just3ws.com/exports/) for auto-generated markdown versions
+  - Resume (`resume.md`), Portfolio (`portfolio.md`), History (`history.md`)
 
 ## Archives & Media
 
