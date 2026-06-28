@@ -8,8 +8,12 @@
 {% assign transcript_entry = nil %}
 {% if asset and asset.transcript_id %}
   {% assign transcript_entry = site.data.transcripts[asset.transcript_id] %}
-  {% if transcript_entry and transcript_entry.content %}
-    {% assign has_transcript = true %}
+  {% if transcript_entry %}
+    {% if transcript_entry.content %}
+      {% assign has_transcript = true %}
+    {% elsif transcript_entry.turns and transcript_entry.turns.size > 0 %}
+      {% assign has_transcript = true %}
+    {% endif %}
   {% endif %}
 {% endif %}
 

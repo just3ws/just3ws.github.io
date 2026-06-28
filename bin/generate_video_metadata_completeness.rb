@@ -2,6 +2,7 @@
 
 require "time"
 require_relative "../src/generators/core/yaml_io"
+require_relative "../src/generators/archive_state"
 
 ROOT = File.expand_path("..", __dir__)
 ASSETS_PATH = File.join(ROOT, "_data", "video_assets.yml")
@@ -17,12 +18,12 @@ def present_text?(value)
   !normalize(value).empty?
 end
 
-def status_entry(status, score, reason)
+def status_entry(status, score, reason, extra = {})
   {
     "status" => status,
     "score" => score,
     "reason" => reason
-  }
+  }.merge(extra)
 end
 
 assets = Generators::Core::YamlIo.load(ASSETS_PATH, key: "items")
@@ -32,9 +33,8 @@ interview_by_id = interviews.each_with_object({}) { |item, memo| memo[item["id"]
 rows = assets.map do |asset|
   interview = interview_by_id[asset["interview_id"]]
   transcript_id = normalize(asset["transcript_id"])
-  transcript_path = transcript_id.empty? ? nil : File.join(TRANSCRIPTS_DIR, "#{transcript_id}.yml")
-  transcript_data = transcript_path && File.exist?(transcript_path) ? Generators::Core::YamlIo.load(transcript_path) : nil
-  transcript_content = normalize(transcript_data && transcript_data["content"])
+  transcript_state = transcript_id.empty? ? nil : Generators::ArchiveState.for_id(transcript_id, root: ROOT)
+  transcript_content = transcript_state ? transcript_state.text : ""
 
   ratings = {}
 
@@ -72,14 +72,16 @@ rows = assets.map do |asset|
   ratings["transcript"] =
     if transcript_id.empty?
       status_entry("missing", 0, "no transcript_id on asset")
-    elsif transcript_data.nil?
+    elsif transcript_state.missing?
       status_entry("partial", 1, "transcript_id set but transcript file missing")
+    elsif transcript_state.invalid?
+      status_entry("partial", 1, "transcript YAML parse error", "error" => transcript_state.load_error)
     elsif transcript_content.empty?
-      status_entry("partial", 1, "transcript file exists but content empty")
+      status_entry("partial", 1, "transcript file exists but text empty")
     elsif transcript_content.length < 200
-      status_entry("partial", 1, "transcript content very short")
+      status_entry("partial", 1, "transcript text very short")
     else
-      status_entry("complete", 2, "transcript content present")
+      status_entry("complete", 2, "transcript text present")
     end
 
   if interview
@@ -150,7 +152,8 @@ summary = {
   "score_90_plus" => rows.count { |item| item["overall_score"] >= 90 },
   "score_70_to_89" => rows.count { |item| item["overall_score"] >= 70 && item["overall_score"] < 90 },
   "score_below_70" => rows.count { |item| item["overall_score"] < 70 },
-  "with_transcript_complete" => rows.count { |item| item.dig("ratings", "transcript", "status") == "complete" }
+  "with_transcript_complete" => rows.count { |item| item.dig("ratings", "transcript", "status") == "complete" },
+  "transcript_parse_errors" => rows.count { |item| item.dig("ratings", "transcript", "error").to_s != "" }
 }
 
 report = {
@@ -160,4 +163,4 @@ report = {
 }
 
 Generators::Core::YamlIo.dump(OUTPUT_PATH, report)
-puts "Video metadata completeness generated (videos=#{rows.length})."
+puts "Video metadata completeness generated (videos=#{rows.length}, transcript_parse_errors=#{summary['transcript_parse_errors']})."

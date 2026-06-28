@@ -4,6 +4,7 @@ require "yaml"
 require "date"
 require "time"
 require_relative "../src/generators/core/yaml_io"
+require_relative "../src/generators/archive_state"
 
 ROOT = File.expand_path("..", __dir__)
 INTERVIEWS_PATH = File.join(ROOT, "_data", "interviews.yml")
@@ -24,15 +25,26 @@ completeness = load_yaml(COMPLETENESS_PATH)
 queue = load_yaml(RETRANSCRIBE_QUEUE_PATH).fetch("items", [])
 
 transcripts_with_content = 0
+transcript_parse_errors = []
 assets.each do |asset|
   transcript_id = asset["transcript_id"].to_s.strip
   next if transcript_id.empty?
 
   transcript_path = File.join(ROOT, "_data", "transcripts", "#{transcript_id}.yml")
-  next unless File.file?(transcript_path)
+  transcript_state = Generators::ArchiveState.for_path(transcript_path, id: transcript_id)
+  next if transcript_state.missing?
 
-  transcript = load_yaml(transcript_path)
-  next if transcript["content"].to_s.strip.empty?
+  if transcript_state.invalid?
+    transcript_parse_errors << {
+      "asset_id" => asset["id"],
+      "transcript_id" => transcript_id,
+      "file" => transcript_path.sub("#{ROOT}/", ""),
+      "error" => transcript_state.load_error
+    }
+    next
+  end
+
+  next unless transcript_state.has_transcript?
 
   transcripts_with_content += 1
 end
@@ -49,10 +61,12 @@ out = {
     "interviews_total" => interviews.size,
     "video_assets_total" => assets.size,
     "assets_with_transcript_content" => transcripts_with_content,
+    "transcript_parse_errors" => transcript_parse_errors.size,
     "metadata_score_90_plus" => completeness.dig("summary", "score_90_plus").to_i,
     "metadata_score_70_to_89" => completeness.dig("summary", "score_70_to_89").to_i,
     "metadata_score_below_70" => completeness.dig("summary", "score_below_70").to_i
   },
+  "transcript_parse_errors" => transcript_parse_errors,
   "transcript_retranscribe_queue" => {
     "total" => queue.size,
     "high" => queue_counts["high"],
@@ -70,4 +84,4 @@ out = {
 }
 
 Generators::Core::YamlIo.dump(OUT_PATH, out)
-puts "Generated archive status data (interviews=#{interviews.size}, assets=#{assets.size})."
+puts "Generated archive status data (interviews=#{interviews.size}, assets=#{assets.size}, transcript_parse_errors=#{transcript_parse_errors.size})."

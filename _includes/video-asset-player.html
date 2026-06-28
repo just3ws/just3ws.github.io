@@ -5,7 +5,7 @@
   {% if asset.transcript_id %}
     {% assign transcript_data = site.data.transcripts[asset.transcript_id] %}
     {% if transcript_data %}
-      {% if transcript_data.turns %}
+      {% if transcript_data.turns and transcript_data.turns.size > 0 %}
         {% assign transcript_content = "structured" %}
       {% else %}
         {% assign transcript_content = transcript_data.content %}

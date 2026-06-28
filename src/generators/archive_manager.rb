@@ -4,6 +4,7 @@ require 'yaml'
 require 'date'
 require 'set'
 require 'pathname'
+require_relative 'archive_state'
 
 module Generators
   module ArchiveManager
@@ -90,15 +91,12 @@ module Generators
           if !path.exist?
             report[:missing_files] << { asset_id: id, transcript_id: t_id, path: path.to_s }
           else
-            begin
-              transcript = YAML.safe_load(path.read, permitted_classes: [Date, Time], aliases: true)
-              if !transcript.is_a?(Hash)
-                report[:invalid_files] << { asset_id: id, transcript_id: t_id, path: path.to_s, error: "Not a Hash" }
-              elsif (transcript["content"].to_s.strip.empty?) && (transcript["turns"].nil? || transcript["turns"].empty?)
-                report[:missing_content] << { asset_id: id, transcript_id: t_id, path: path.to_s }
-              end
-            rescue => e
-              report[:invalid_files] << { asset_id: id, transcript_id: t_id, path: path.to_s, error: e.message }
+            transcript_state = Generators::ArchiveState.for_path(path, id: t_id)
+
+            if transcript_state.invalid?
+              report[:invalid_files] << { asset_id: id, transcript_id: t_id, path: path.to_s, error: transcript_state.load_error }
+            elsif !transcript_state.has_transcript?
+              report[:missing_content] << { asset_id: id, transcript_id: t_id, path: path.to_s }
             end
           end
         end
