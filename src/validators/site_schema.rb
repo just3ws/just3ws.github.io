@@ -85,16 +85,20 @@ module Validators
         required(:name).filled(:string)
         optional(:location).maybe(:string)
       end
-      required(:start_date).filled(:string)
+      required(:start_date).filled
       optional(:end_date).maybe(:string)
       required(:summary).filled(:string)
-      required(:context).filled(:string)
-      required(:action).filled(:string)
-      required(:impact).filled(:string)
-      required(:highlights).array(:hash) do
-        required(:text).filled(:string)
-        optional(:label).maybe(:string)
-      end
+      optional(:context).maybe(:string)
+      optional(:action).maybe(:string)
+      optional(:impact).maybe(:string)
+      required(:highlights).value(:array)
+    end
+
+    rule(:highlights).each do
+      next if value.is_a?(String) && !value.strip.empty?
+      next if value.is_a?(Hash) && !value['text'].to_s.strip.empty?
+
+      key([:highlights, index]).failure('must be a string or hash with text')
     end
   end
 end
