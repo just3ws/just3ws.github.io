@@ -2,6 +2,7 @@
 require "set"
 require "time"
 require_relative "../src/generators/core/yaml_io"
+require_relative "../src/generators/archive_state"
 
 ROOT = File.expand_path("..", __dir__)
 
@@ -11,7 +12,6 @@ CONFERENCES_PATH = File.join(ROOT, "_data", "interview_conferences.yml")
 COMMUNITIES_PATH = File.join(ROOT, "_data", "interview_communities.yml")
 ONEOFFS_PATH = File.join(ROOT, "_data", "oneoff_videos.yml")
 SCMC_PATH = File.join(ROOT, "_data", "scmc_videos.yml")
-TRANSCRIPTS_DIR = File.join(ROOT, "_data", "transcripts")
 INDEX_SUMMARIES_PATH = File.join(ROOT, "_data", "index_summaries.yml")
 
 def normalize_space(text)
@@ -105,7 +105,7 @@ def transcript_excerpt(content, max_words: 22)
   "#{excerpt}…"
 end
 
-def build_entity_summary(label:, interviews:, assets_by_id:, transcripts_by_id:)
+def build_entity_summary(label:, interviews:, assets_by_id:)
   count = interviews.size
   years = interviews.map { |i| i["conference_year"] }.compact.uniq.sort
   people = top_values(interviews.flat_map { |i| i["interviewees"] || [] }, max_items: 6)
@@ -151,12 +151,6 @@ oneoffs = Generators::Core::YamlIo.load(ONEOFFS_PATH, key: "items")
 scmc_items = Generators::Core::YamlIo.load(SCMC_PATH, key: "items")
 
 assets_by_id = assets.each_with_object({}) { |asset, h| h[asset["id"]] = asset }
-transcripts_by_id = {}
-Dir.glob(File.join(TRANSCRIPTS_DIR, "*.yml")).sort.each do |path|
-  transcript_id = File.basename(path, ".yml")
-  transcripts_by_id[transcript_id] = Generators::Core::YamlIo.load(path)
-end
-
 conferences = conferences_data["conferences"] || []
 conferences.each do |conf|
   conf_name = conf["conference"] || conf["name"]
@@ -167,8 +161,7 @@ conferences.each do |conf|
   generated = build_entity_summary(
     label: conf["name"].to_s,
     interviews: matching,
-    assets_by_id: assets_by_id,
-    transcripts_by_id: transcripts_by_id
+    assets_by_id: assets_by_id
   )
   conf["summary"] = generated["summary"]
   conf["highlights"] = generated["highlights"]
@@ -185,8 +178,7 @@ communities.each do |community|
   generated = build_entity_summary(
     label: community["name"].to_s,
     interviews: matching,
-    assets_by_id: assets_by_id,
-    transcripts_by_id: transcripts_by_id
+    assets_by_id: assets_by_id
   )
   community["summary"] = generated["summary"]
   community["highlights"] = generated["highlights"]
@@ -213,7 +205,17 @@ all_topics = top_values(
   max_items: 8
 )
 
-assets_with_transcripts = assets.count { |a| !normalize_space(a["transcript_id"]).empty? }
+transcript_states = assets.each_with_object({}) do |asset, states|
+  transcript_id = normalize_space(asset["transcript_id"])
+  next if transcript_id.empty?
+
+  states[transcript_id] ||= Generators::ArchiveState.for_id(transcript_id, root: ROOT)
+end
+assets_with_transcript_content = assets.count do |asset|
+  transcript_id = normalize_space(asset["transcript_id"])
+  !transcript_id.empty? && transcript_states[transcript_id]&.has_transcript?
+end
+transcript_parse_errors = transcript_states.values.count(&:invalid?)
 platforms = top_values(assets.flat_map { |a| (a["platforms"] || []).map { |p| p["platform"] } }, max_items: 6)
 oneoff_topics = top_values(oneoffs.flat_map { |item| Array(item["topic"]) + Array(item["tags"]) }, max_items: 8)
 scmc_speakers = top_values(scmc_items.flat_map { |item| Array(item["speakers"]) }, max_items: 8)
@@ -226,7 +228,7 @@ index_summaries = {
     "interviews" => {
     "summary" => "Interview archive with #{pluralize(interviews.size, 'record')} connected to canonical video assets. Interviewees include #{readable_list(interviewees)}. Topics include #{readable_list(all_topics)}.",
       "highlights" => [
-        "#{assets_with_transcripts} linked video assets currently include transcripts.",
+        "#{assets_with_transcript_content} linked video assets currently include parseable transcript content.",
         "Interview pages are grouped by conference and community indexes for discovery."
       ]
     },
@@ -246,9 +248,11 @@ index_summaries = {
     "videos" => {
       "summary" => "Canonical video index with #{pluralize(assets.size, 'asset')} across #{readable_list(platforms)} publishing platforms.",
       "highlights" => [
-        "#{assets_with_transcripts} assets currently have transcript content attached.",
+        "#{assets_with_transcript_content} assets currently have parseable transcript content attached.",
         "Video detail pages preserve stable IDs and platform-specific watch links."
-      ]
+      ].tap do |highlights|
+        highlights << "#{transcript_parse_errors} transcript YAML parse errors need repair." if transcript_parse_errors.positive?
+      end
     },
     "oneoffs" => {
       "summary" => "One-off index covering standalone talks and recordings linked to canonical video assets.",
