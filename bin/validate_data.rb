@@ -4,6 +4,7 @@
 require 'yaml'
 require 'date'
 require_relative '../src/validators/site_schema'
+require_relative '../src/generators/archive_state'
 
 ROOT = File.expand_path('..', __dir__)
 
@@ -44,6 +45,13 @@ errors.concat(validate_collection(assets, Validators::VideoAssetContract, 'Video
 errors.concat(validate_collection(confs, Validators::ConferenceContract, 'Conference'))
 errors.concat(validate_collection(comms, Validators::CommunityContract, 'Community'))
 errors.concat(validate_collection(positions, Validators::ResumePositionContract, 'ResumePosition'))
+
+Dir.glob(File.join(ROOT, '_data', 'transcripts', '*.yml')).sort.each do |path|
+  transcript = Generators::ArchiveState.for_path(path)
+  next unless transcript.invalid?
+
+  errors << "Transcript [#{transcript.id}] YAML parse error: #{transcript.load_error}"
+end
 
 # 2. Referential Integrity
 interview_ids = interviews.map { |i| i['id'].to_s }.to_set
