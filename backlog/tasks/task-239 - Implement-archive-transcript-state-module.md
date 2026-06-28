@@ -1,9 +1,11 @@
 ---
 id: TASK-239
 title: Implement archive transcript state module
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - codex
 created_date: '2026-06-28 16:24'
+updated_date: '2026-06-28 16:24'
 labels:
   - implementation
 dependencies: []
@@ -29,6 +31,15 @@ Add a reusable native Ruby archive transcript state module for Jekyll archive da
 - [ ] #6 Module returns structured summary data suitable for later summary generation.
 - [ ] #7 Focused RSpec coverage exists for content-only, turns-only, missing, invalid YAML, validation_error, enriched, and indexed states.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Inspect existing generator naming, YAML loading, and transcript-shape conventions in the requested files plus nearby specs/data samples.
+2. Add `Generators::ArchiveState` under `src/generators/archive_state.rb` with a small read-only API for path/id loading, transcript presence/format, text/word count, validation, enrichment, indexing, and summary-friendly structured output.
+3. Add focused RSpec coverage under `spec/src/generators/archive_state_spec.rb` for content-only, turns-only, missing, invalid YAML, validation_error, enriched, and indexed cases.
+4. Run targeted specs: `bundle exec rspec spec/src/generators/core/yaml_io_spec.rb spec/src/generators/archive_state_spec.rb`.
+<!-- SECTION:PLAN:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
