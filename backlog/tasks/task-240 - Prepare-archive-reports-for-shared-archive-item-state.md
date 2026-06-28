@@ -1,9 +1,11 @@
 ---
 id: TASK-240
 title: Prepare archive reports for shared archive item state
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - codex
 created_date: '2026-06-28 16:24'
+updated_date: '2026-06-28 16:24'
 labels: []
 dependencies: []
 documentation:
@@ -32,6 +34,15 @@ Update the archive status, video metadata completeness, transcript loop report, 
 - [ ] #6 Only the named generator/report files are edited unless a tiny targeted spec addition is necessary.
 - [ ] #7 Targeted scripts or specs are run when feasible and results are recorded.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Read the named scripts, archive manager, current generated YAML outputs, and nearby specs/helpers to identify current transcript-content and YAML-error handling patterns.
+2. Patch only the named callers to require the forthcoming `src/generators/archive_state.rb` and call `Generators::ArchiveState` for transcript content checks/normalization/status where the caller needs shared state semantics.
+3. Preserve script output shapes as much as possible while surfacing parse errors where feasible and ensuring invalid YAML is not counted as transcript-complete.
+4. Run targeted scripts/specs that do not require regenerating large data, or run the scripts in a constrained way if feasible, then record results and any module assumptions.
+<!-- SECTION:PLAN:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
