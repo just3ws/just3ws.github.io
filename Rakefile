@@ -110,6 +110,7 @@ namespace :validate do
     :taxonomy_output,
     :archive_surfaces,
     :last_modified_output,
+    :generated_freshness,
     :repo_hygiene,
     :metadata_completeness,
     :seo_output,
@@ -148,6 +149,10 @@ namespace :validate do
 
   task :last_modified_output do
     sh 'ruby ./bin/validate_last_modified_output.rb'
+  end
+
+  task :generated_freshness do
+    sh 'ruby ./bin/validate_generated_freshness.rb'
   end
 
   task :repo_hygiene do

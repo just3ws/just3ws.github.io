@@ -270,5 +270,5 @@ index_summaries = {
   }
 }
 
-Generators::Core::YamlIo.dump(INDEX_SUMMARIES_PATH, index_summaries)
+Generators::Core::YamlIo.dump(INDEX_SUMMARIES_PATH, index_summaries, preserve_generated_at: true)
 puts "Generated context summaries for #{conferences.size} conferences, #{communities.size} communities, and 6 index pages."

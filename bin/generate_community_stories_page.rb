@@ -68,7 +68,7 @@ data = {
   "generated_at" => Time.now.utc.iso8601,
   "tracks" => tracks
 }
-Generators::Core::YamlIo.dump(OUT_DATA_PATH, data)
+Generators::Core::YamlIo.dump(OUT_DATA_PATH, data, preserve_generated_at: true)
 
 FileUtils.mkdir_p(File.dirname(OUT_PAGE_PATH))
 File.write(OUT_PAGE_PATH, <<~HTML)

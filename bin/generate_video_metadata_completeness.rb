@@ -162,5 +162,5 @@ report = {
   "items" => rows.sort_by { |item| [item["overall_score"], item["id"]] }
 }
 
-Generators::Core::YamlIo.dump(OUTPUT_PATH, report)
+Generators::Core::YamlIo.dump(OUTPUT_PATH, report, preserve_generated_at: true)
 puts "Video metadata completeness generated (videos=#{rows.length}, transcript_parse_errors=#{summary['transcript_parse_errors']})."

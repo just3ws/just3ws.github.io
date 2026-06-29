@@ -83,5 +83,5 @@ out = {
   }
 }
 
-Generators::Core::YamlIo.dump(OUT_PATH, out)
+Generators::Core::YamlIo.dump(OUT_PATH, out, preserve_generated_at: true)
 puts "Generated archive status data (interviews=#{interviews.size}, assets=#{assets.size}, transcript_parse_errors=#{transcript_parse_errors.size})."

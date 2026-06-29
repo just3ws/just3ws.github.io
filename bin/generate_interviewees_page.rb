@@ -118,7 +118,7 @@ out_data = {
   },
   "items" => items
 }
-Generators::Core::YamlIo.dump(OUT_DATA_PATH, out_data)
+Generators::Core::YamlIo.dump(OUT_DATA_PATH, out_data, preserve_generated_at: true)
 
 FileUtils.rm_rf(PEOPLE_DIR)
 FileUtils.mkdir_p(PEOPLE_DIR)

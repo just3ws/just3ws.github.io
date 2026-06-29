@@ -66,7 +66,7 @@ out_data = {
   },
   "items" => topic_items
 }
-Generators::Core::YamlIo.dump(OUT_DATA_PATH, out_data)
+Generators::Core::YamlIo.dump(OUT_DATA_PATH, out_data, preserve_generated_at: true)
 
 FileUtils.mkdir_p(File.dirname(OUT_PAGE_PATH))
 File.write(OUT_PAGE_PATH, <<~HTML)
