@@ -118,6 +118,7 @@ namespace :validate do
     :semantic_output,
     :export_parity,
     :report_seo,
+    :seo_metadata_budget,
     :htmlproofer
   ]
 
@@ -177,6 +178,10 @@ namespace :validate do
 
   task :report_seo do
     sh 'ruby ./bin/report_seo_metadata.rb'
+  end
+
+  task :seo_metadata_budget do
+    sh 'ruby ./bin/validate_seo_metadata_budget.rb'
   end
 
   task :htmlproofer do
