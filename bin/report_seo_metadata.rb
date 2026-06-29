@@ -7,16 +7,38 @@ ROOT = File.expand_path('..', __dir__)
 SITE_DIR = File.join(ROOT, '_site')
 DEFAULT_REPORT_PATH = File.join(ROOT, 'tmp', 'seo-metadata-report.json')
 report_path = ENV.fetch('SEO_REPORT_JSON', DEFAULT_REPORT_PATH)
+EXCLUDED_PREFIXES = ['AGENTS.', 'backlog/'].freeze
+EXCLUDED_FILES = ['AGENTS.html'].freeze
+SAMPLE_LIMIT = 10
 
 title_re = /<title[^>]*>(.*?)<\/title>/im
 desc_re = /<meta[^>]*name=["']description["'][^>]*content=["'](.*?)["'][^>]*>/im
 noindex_re = /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i
 
+def excluded_path?(relative)
+  EXCLUDED_FILES.include?(relative) || EXCLUDED_PREFIXES.any? { |prefix| relative.start_with?(prefix) }
+end
+
+def sample_paths(records, limit: SAMPLE_LIMIT)
+  records.first(limit).map { |record| record[:path] }
+end
+
+def duplicate_samples(records, key)
+  grouped = records.group_by { |record| record[key] }
+  grouped.each_with_object({}) do |(value, matches), samples|
+    next if value.nil? || value.empty? || matches.size < 2
+
+    samples[value] = {
+      count: matches.size,
+      paths: sample_paths(matches)
+    }
+  end.sort_by { |_value, data| -data[:count] }.first(SAMPLE_LIMIT).to_h
+end
+
 records = []
 Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
-  next if relative.start_with?('AGENTS.')
-  next if relative == 'AGENTS.html'
+  next if excluded_path?(relative)
 
   html = File.read(path)
   title = html[title_re, 1]&.strip
@@ -39,6 +61,10 @@ desc_outliers = indexable.select { |r| r[:desc].nil? || r[:desc].length < 70 || 
 
 duplicate_titles = title_counts.select { |_k, v| v > 1 }
 duplicate_descs = desc_counts.select { |_k, v| v > 1 }
+title_outlier_samples = sample_paths(title_outliers)
+desc_outlier_samples = sample_paths(desc_outliers)
+duplicate_title_samples = duplicate_samples(indexable, :title)
+duplicate_desc_samples = duplicate_samples(indexable, :desc)
 
 puts 'SEO metadata report:'
 puts "  html_pages=#{records.size}"
@@ -71,6 +97,10 @@ report = {
   desc_outliers: desc_outliers.size,
   duplicate_titles: duplicate_titles.size,
   duplicate_descs: duplicate_descs.size,
+  title_outlier_samples: title_outlier_samples,
+  desc_outlier_samples: desc_outlier_samples,
+  duplicate_title_samples: duplicate_title_samples,
+  duplicate_desc_samples: duplicate_desc_samples,
   generated_at: Time.now.utc.iso8601
 }
 
