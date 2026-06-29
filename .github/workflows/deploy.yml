@@ -23,13 +23,43 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 4.0.2
           bundler-cache: true
-      - name: Build site
-        run: ./bin/pipeline build
+      - name: Run CI gate
+        run: ./bin/pipeline ci
+      - name: Playwright smoke check
+        timeout-minutes: 12
+        run: |
+          set -o pipefail
+          ./bin/pipeline smoke 2>&1 | tee tmp/playwright-smoke.log
+      - name: Upload Playwright smoke log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-playwright-smoke-log
+          path: tmp/playwright-smoke.log
+          if-no-files-found: warn
+      - name: Upload SEO report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-seo-metadata-report
+          path: tmp/seo-metadata-report.json
+          if-no-files-found: error
+      - name: Upload schema coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-schema-coverage-report
+          path: tmp/schema-coverage-report.json
+          if-no-files-found: error
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact

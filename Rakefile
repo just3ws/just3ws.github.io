@@ -16,6 +16,9 @@ task build: ['generate:all'] do
   rm_f '_site/AGENTS.md'
 end
 
+desc 'Regenerate data-driven site sources'
+task generate: ['generate:all']
+
 desc 'Run RSpec tests'
 task :test do
   sh 'bundle exec rspec'
