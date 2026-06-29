@@ -16,6 +16,7 @@ breadcrumb_parent_url: /home/
     <p class="intro">A current operational snapshot of archive completeness and transcript quality pressure.</p>
     {% if status.generated_at %}<p>Generated: {{ status.generated_at }}</p>{% endif %}
   </header>
+  {% include public-archive-note.html %}
 
   {% if status.summary %}
     <section class="index-summary">

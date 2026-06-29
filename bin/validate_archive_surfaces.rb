@@ -72,6 +72,23 @@ required_routes.each do |relative|
   errors << "missing required route output: _site/#{relative}" unless File.file?(path)
 end
 
+public_boundary_routes = [
+  "archive-status/index.html",
+  "interviews/index.html",
+  "videos/index.html"
+]
+public_boundary_marker = "data-public-archive-boundary"
+
+public_boundary_routes.each do |relative|
+  path = File.join(SITE_DIR, relative)
+  next unless File.file?(path)
+
+  html = File.read(path)
+  unless html.include?(public_boundary_marker)
+    errors << "missing public archive boundary note: _site/#{relative}"
+  end
+end
+
 if errors.empty?
   puts "Archive surfaces validation passed."
   exit 0
