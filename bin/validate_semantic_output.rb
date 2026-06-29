@@ -387,6 +387,10 @@ all_html_paths.each do |path|
 
   html = read(path)
   nodes = json_ld_nodes(html, relative, errors)
+  if relative != 'index.html' && relative != 'home/index.html'
+    website_nodes = nodes.select { |node| node.is_a?(Hash) && node_has_type?(node, 'WebSite') }
+    errors << "#{relative} should use WebPage JSON-LD instead of WebSite JSON-LD" if website_nodes.any?
+  end
   coverage[:json_ld_nodes_total] += nodes.size
   typed_pages = Hash.new(false)
 

@@ -61,4 +61,13 @@ RSpec.describe "schema-factory template" do
       expect(template).to include('"@id": "{{ site_url }}/id/video/{{ asset.id }}"')
     end
   end
+
+  context "when falling back to page schema" do
+    it "uses WebSite only for home routes and WebPage elsewhere" do
+      expect(template).to include('page.url == "/" or page.url == "/home/"')
+      expect(template).to include('"@type": "WebSite"')
+      expect(template).to include('"@type": "WebPage"')
+      expect(template).to include('"isPartOf": {')
+    end
+  end
 end

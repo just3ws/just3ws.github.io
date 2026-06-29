@@ -166,10 +166,25 @@
     "uploadDate": "{{ asset.published_date | date: "%Y-%m-%d" }}",
     "url": "{{ site_url }}{{ page.url }}",
     "contentUrl": {{ asset.url | jsonify }}
-  {% else %}
+  {% elsif page.url == "/" or page.url == "/home/" %}
     "@type": "WebSite",
+    "@id": "{{ site_url }}/#website",
     "name": {{ site.title | jsonify }},
     "url": "{{ site_url }}/"
+  {% else %}
+    "@type": "WebPage",
+    "@id": "{{ site_url }}{{ page.url }}",
+    "name": {{ page.title | default: site.title | jsonify }},
+    "url": "{{ site_url }}{{ page.url }}",
+    {% if page.description %}
+    "description": {{ page.description | jsonify }},
+    {% endif %}
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "{{ site_url }}/#website",
+      "name": {{ site.title | jsonify }},
+      "url": "{{ site_url }}/"
+    }
   {% endif %}
 }
 {% endcapture %}
