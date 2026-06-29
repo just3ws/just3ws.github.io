@@ -26,9 +26,21 @@ RSpec.describe "schema-factory template" do
     end
   end
 
+  context "when type is post" do
+    it "defines BlogPosting dates from last-modified data" do
+      expect(template).to include('type == \'post\'')
+      expect(template).to include('"@type": ["Article", "BlogPosting"]')
+      expect(template).to include('"datePublished": "{{ page.date | date_to_xmlschema }}"')
+      expect(template).to include('"dateModified": "{{ date_modified | date_to_xmlschema }}"')
+      expect(template).to include('site.data.last_modified.items')
+    end
+  end
+
   context "when items are provided (ItemList)" do
-    it "defines ItemList schema fields" do
+    it "defines CollectionPage schema fields with an ItemList main entity" do
       expect(template).to include('include.items')
+      expect(template).to include('"@type": "CollectionPage"')
+      expect(template).to include('"mainEntity": {')
       expect(template).to include('"@type": "ItemList"')
       expect(template).to include('"itemListElement": [')
     end

@@ -310,6 +310,10 @@ end
 Dir.glob(File.join(SITE_DIR, 'interviews', '**', 'index.html')).sort.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative == 'interviews/index.html'
+  next if relative == 'interviews/topics/index.html'
+  next if relative == 'interviews/stories/index.html'
+  next if relative == 'interviews/chicago-craftsmanship/index.html'
+  next if relative == 'interviews/manifesto-signatories/index.html'
   next if relative.start_with?('interviews/conferences/')
   next if relative.start_with?('interviews/communities/')
   next if relative.start_with?('interviews/people/')

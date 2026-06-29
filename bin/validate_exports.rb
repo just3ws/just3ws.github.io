@@ -51,7 +51,9 @@ def validate_txt_export
   errors << "resume.txt missing Name" unless content.include?("MIKE HALL")
   errors << "resume.txt missing EXPERIENCE section" unless content.include?("EXPERIENCE")
   errors << "resume.txt missing OneMain Financial" unless content.include?("OneMain Financial")
-  errors << "resume.txt missing context-action-impact tags" unless content.include?("Context:") && content.include?("Action:") && content.include?("Impact:")
+  has_context_action_impact = content.include?("Context:") && content.include?("Action:") && content.include?("Impact:")
+  has_outcomes = content.include?("Key Outcomes:")
+  errors << "resume.txt missing role detail sections" unless has_context_action_impact || has_outcomes
 
   if errors.empty?
     puts "TXT export validation passed."

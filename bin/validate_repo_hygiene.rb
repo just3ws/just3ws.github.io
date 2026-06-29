@@ -19,7 +19,12 @@ def top_level_entries(root)
   Dir.children(root)
     .reject { |entry| entry == "." || entry == ".." }
     .reject { |entry| transient_entries.include?(entry) }
+    .reject { |entry| git_ignored?(root, entry) }
     .sort
+end
+
+def git_ignored?(root, entry)
+  system("git", "check-ignore", "-q", "--", entry, chdir: root)
 end
 
 def docs_href_patterns(root)

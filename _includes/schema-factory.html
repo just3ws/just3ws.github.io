@@ -50,6 +50,25 @@
       {{ profile.contact.linkedin.url | jsonify }},
       {{ profile.contact.github.url | jsonify }}
     ],
+    "subjectOf": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {% for item in site.data.resume.timeline.items %}
+          {% assign position = site.data.resume.positions[item] %}
+          {% if position %}
+            {
+              "@type": "ListItem",
+              "position": {{ forloop.index }},
+              "item": {
+                "@type": "CreativeWork",
+                "name": {{ position.title | jsonify }},
+                "description": {{ position.summary | default: position.description | jsonify }}
+              }
+            }{% unless forloop.last %},{% endunless %}
+          {% endif %}
+        {% endfor %}
+      ]
+    },
     "hasOccupation": [
       {% for item in site.data.resume.timeline.items %}
         {% assign position = site.data.resume.positions[item] %}
@@ -69,12 +88,18 @@
   {% elsif type == 'interview' or include.interview %}
     {% assign interview = include.interview | default: page.interview %}
     {% assign asset = include.asset | default: page.asset %}
+    {% assign date_published = interview.recorded_date | default: asset.published_date | default: page.date %}
     "@type": "CreativeWork",
     "additionalType": "https://schema.org/Interview",
     "@id": "{{ site_url }}/id/interview/{{ interview.id }}",
     "name": {{ interview.title | jsonify }},
     "description": {{ page.description | jsonify }},
-    "datePublished": "{{ interview.recorded_date | date: "%Y-%m-%d" }}",
+    "url": "{{ site_url }}{{ page.url }}",
+    "datePublished": "{{ date_published | date: "%Y-%m-%d" }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ site_url }}{{ page.url }}"
+    },
     "author": {
       "@type": "Person",
       "name": {{ interview.interviewer | default: "Mike Hall" | jsonify }}
@@ -87,27 +112,50 @@
       "uploadDate": "{{ asset.published_date | default: interview.recorded_date | date: "%Y-%m-%d" }}"
     }
     {% endif %}
+  {% elsif type == 'post' %}
+    {% assign last_modified_items = site.data.last_modified.items | default: empty %}
+    {% assign date_modified = last_modified_items[page.path] | default: page.date %}
+    "@type": ["Article", "BlogPosting"],
+    "@id": "{{ site_url }}{{ page.url }}",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ page.description | default: page.excerpt | strip_html | strip | jsonify }},
+    "url": "{{ site_url }}{{ page.url }}",
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ date_modified | date_to_xmlschema }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ site_url }}{{ page.url }}"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Mike Hall",
+      "@id": "{{ site_url }}/id/person/mike-hall"
+    }
   {% elsif include.items %}
-    "@type": "ItemList",
+    "@type": "CollectionPage",
     "name": {{ include.collection_name | default: page.title | jsonify }},
     "description": {{ include.collection_description | default: page.description | jsonify }},
-    "numberOfItems": {{ include.items | size }},
-    "itemListElement": [
-      {% for item in include.items %}
-        {
-          "@type": "ListItem",
-          "position": {{ forloop.index }},
-          "item": {
-            {% assign item_id = item[include.item_id_key] | default: item.id %}
-            {% assign item_name = item[include.item_name_key] | default: item.title %}
-            "@type": {{ include.item_schema_type | default: "CreativeWork" | jsonify }},
-            "@id": "{{ site_url }}{{ include.entity_id_prefix }}{{ item_id }}",
-            "name": {{ item_name | jsonify }},
-            "url": "{{ site_url }}{{ include.url_prefix }}{{ item_id }}/"
-          }
-        }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ]
+    "url": "{{ site_url }}{{ page.url }}",
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": {{ include.items | size }},
+      "itemListElement": [
+        {% for item in include.items %}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "item": {
+              {% assign item_id = item[include.item_id_key] | default: item.id %}
+              {% assign item_name = item[include.item_name_key] | default: item.title %}
+              "@type": {{ include.item_schema_type | default: "CreativeWork" | jsonify }},
+              "@id": "{{ site_url }}{{ include.entity_id_prefix }}{{ item_id }}",
+              "name": {{ item_name | jsonify }},
+              "url": "{{ site_url }}{{ include.url_prefix }}{{ item_id }}/"
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
   {% elsif type == 'video_asset' or include.asset %}
     {% assign asset = include.asset | default: page.asset %}
     "@type": "VideoObject",
@@ -116,6 +164,7 @@
     "description": {{ asset.description | default: page.description | jsonify }},
     "thumbnailUrl": {{ asset.thumbnail | jsonify }},
     "uploadDate": "{{ asset.published_date | date: "%Y-%m-%d" }}",
+    "url": "{{ site_url }}{{ page.url }}",
     "contentUrl": {{ asset.url | jsonify }}
   {% else %}
     "@type": "WebSite",

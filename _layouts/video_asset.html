@@ -5,9 +5,6 @@ layout: minimal
   {% include breadcrumbs.html %}
   {% assign asset = site.data.video_assets.items | where: "id", page.asset_id | first %}
   {% if asset %}
-    <header>
-      <h1>{{ asset.title }}</h1>
-    </header>
     {% include schema-factory.html asset=asset %}
 
     {% include video-asset-player.html asset=asset embed_id="asset-embed" %}

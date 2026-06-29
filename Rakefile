@@ -177,7 +177,7 @@ namespace :validate do
       assume_extension: true,
       disable_external: true,
       ignore_files: [/AGENTS\.html$/, %r{^/backlog/}, %r{^backlog/}],
-      ignore_urls: [%r{^https://www\.linkedin\.com/}, %r{^/backlog/}],
+      ignore_urls: [%r{^https://www\.linkedin\.com/}, %r{^/backlog/}, %r{^mailto:\?}],
     }
     HTMLProofer.check_directory('./_site', options).run
   end

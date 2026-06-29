@@ -120,6 +120,7 @@ out_data = {
 }
 Generators::Core::YamlIo.dump(OUT_DATA_PATH, out_data)
 
+FileUtils.rm_rf(PEOPLE_DIR)
 FileUtils.mkdir_p(PEOPLE_DIR)
 File.write(OUT_INDEX_PATH, <<~HTML)
   ---
