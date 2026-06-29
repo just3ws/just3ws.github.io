@@ -121,6 +121,23 @@ def contains_placeholder?(value)
   end
 end
 
+def null_value_paths(value, prefix = '$')
+  case value
+  when Hash
+    value.flat_map do |key, nested|
+      path = "#{prefix}.#{key}"
+      nested.nil? ? [path] : null_value_paths(nested, path)
+    end
+  when Array
+    value.each_with_index.flat_map do |nested, index|
+      path = "#{prefix}[#{index}]"
+      nested.nil? ? [path] : null_value_paths(nested, path)
+    end
+  else
+    []
+  end
+end
+
 def interview_semantic_node?(node)
   return false unless node.is_a?(Hash)
   return true if node_has_type?(node, 'Interview')
@@ -301,7 +318,7 @@ Dir.glob(File.join(SITE_DIR, 'videos', '**', 'index.html')).sort.each do |path|
   validate_json_ld_type(
     nodes: nodes,
     expected_type: 'VideoObject',
-    required_fields: %w[@id name description url uploadDate],
+    required_fields: %w[@id name description thumbnailUrl url uploadDate],
     context: relative,
     errors: errors
   )
@@ -387,6 +404,12 @@ all_html_paths.each do |path|
 
   html = read(path)
   nodes = json_ld_nodes(html, relative, errors)
+  nodes.each_with_index do |node, index|
+    null_paths = null_value_paths(node)
+    next if null_paths.empty?
+
+    errors << "#{relative} JSON-LD ##{index + 1} contains null values: #{null_paths.first(8).join(', ')}"
+  end
   if relative != 'index.html' && relative != 'home/index.html'
     website_nodes = nodes.select { |node| node.is_a?(Hash) && node_has_type?(node, 'WebSite') }
     errors << "#{relative} should use WebPage JSON-LD instead of WebSite JSON-LD" if website_nodes.any?

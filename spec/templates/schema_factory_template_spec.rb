@@ -59,6 +59,9 @@ RSpec.describe "schema-factory template" do
       expect(template).to include('type == \'video_asset\'')
       expect(template).to include('"@type": "VideoObject"')
       expect(template).to include('"@id": "{{ site_url }}/id/video/{{ asset.id }}"')
+      expect(template).to include('"sameAs": {{ preferred.url | jsonify }}')
+      expect(template).to include('"embedUrl": {{ preferred.embed_url | jsonify }}')
+      expect(template).to include('"contentUrl": {{ preferred.video_url | jsonify }}')
     end
   end
 

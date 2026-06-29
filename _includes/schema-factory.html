@@ -89,6 +89,14 @@
     {% assign interview = include.interview | default: page.interview %}
     {% assign asset = include.asset | default: page.asset %}
     {% assign date_published = interview.recorded_date | default: asset.published_date | default: page.date %}
+    {% assign preferred = nil %}
+    {% if asset %}
+      {% assign preferred = asset.platforms | where: "platform", "youtube" | first %}
+      {% if preferred == nil and asset.primary_platform %}
+        {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
+      {% endif %}
+      {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
+    {% endif %}
     "@type": "CreativeWork",
     "additionalType": "https://schema.org/Interview",
     "@id": "{{ site_url }}/id/interview/{{ interview.id }}",
@@ -109,7 +117,17 @@
       "@type": "VideoObject",
       "name": {{ asset.title | default: interview.title | jsonify }},
       "thumbnailUrl": {{ asset.thumbnail | jsonify }},
-      "uploadDate": "{{ asset.published_date | default: interview.recorded_date | date: "%Y-%m-%d" }}"
+      "uploadDate": "{{ asset.published_date | default: interview.recorded_date | date: "%Y-%m-%d" }}",
+      "url": "{{ site_url }}/videos/{{ asset.id }}/"
+      {% if preferred.url %}
+      ,"sameAs": {{ preferred.url | jsonify }}
+      {% endif %}
+      {% if preferred.embed_url %}
+      ,"embedUrl": {{ preferred.embed_url | jsonify }}
+      {% endif %}
+      {% if preferred.video_url %}
+      ,"contentUrl": {{ preferred.video_url | jsonify }}
+      {% endif %}
     }
     {% endif %}
   {% elsif type == 'post' %}
@@ -158,14 +176,27 @@
     }
   {% elsif type == 'video_asset' or include.asset %}
     {% assign asset = include.asset | default: page.asset %}
+    {% assign preferred = asset.platforms | where: "platform", "youtube" | first %}
+    {% if preferred == nil and asset.primary_platform %}
+      {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
+    {% endif %}
+    {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
     "@type": "VideoObject",
     "@id": "{{ site_url }}/id/video/{{ asset.id }}",
     "name": {{ asset.title | jsonify }},
     "description": {{ asset.description | default: page.description | jsonify }},
     "thumbnailUrl": {{ asset.thumbnail | jsonify }},
     "uploadDate": "{{ asset.published_date | date: "%Y-%m-%d" }}",
-    "url": "{{ site_url }}{{ page.url }}",
-    "contentUrl": {{ asset.url | jsonify }}
+    "url": "{{ site_url }}{{ page.url }}"
+    {% if preferred.url %}
+    ,"sameAs": {{ preferred.url | jsonify }}
+    {% endif %}
+    {% if preferred.embed_url %}
+    ,"embedUrl": {{ preferred.embed_url | jsonify }}
+    {% endif %}
+    {% if preferred.video_url %}
+    ,"contentUrl": {{ preferred.video_url | jsonify }}
+    {% endif %}
   {% elsif page.url == "/" or page.url == "/home/" %}
     "@type": "WebSite",
     "@id": "{{ site_url }}/#website",
