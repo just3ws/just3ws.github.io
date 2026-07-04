@@ -4,7 +4,7 @@ title: Add acoustic diarization to the zdots transcription job
 status: To Do
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:27'
+updated_date: '2026-07-04 14:48'
 labels:
   - pipeline
   - transcription
@@ -86,6 +86,16 @@ Run one interview end-to-end through the modified job (a 2-guest one, e.g. Ethan
 
 Depends on TASK-242 (enrichment routed onto the zdots queue). Produces the acoustic ground truth that TASK-247 fuses into the audit skill's heuristic speaker_map; do NOT do any LLM speaker labeling here (that is 247). This task only adds the acoustic block + schema + validation.
 <!-- SECTION:PLAN:END -->
+
+## Comments
+
+<!-- COMMENTS:BEGIN -->
+author: claude
+created: 2026-07-04 14:48
+---
+Ownership boundary (per target architecture): the acoustic-diarization capability (pyannote pass) is OWNED BY zdots as part of its `transcription` service job — that code lives in the zdots repo. This repo's side of TASK-244 shrinks to: define the additive `diarization` schema block that receives zdots' output, and the validator/spec for it. Same pattern as embedding (TASK-254): zdots computes, this repo consumes. Cross-references TASK-242 (capability boundary).
+---
+<!-- COMMENTS:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
