@@ -1,10 +1,12 @@
 ---
 id: TASK-242
-title: Route direct-LLM enrichment scripts onto the zdots queue
+title: >-
+  Extract generic AI capabilities into zdots; keep only interview-unique
+  orchestration
 status: To Do
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:32'
+updated_date: '2026-07-04 14:48'
 labels:
   - pipeline
   - cleanup
@@ -16,16 +18,20 @@ priority: high
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Several bin scripts call the LLM directly (RubyLLM / local endpoint) with no retry, idempotency, or dedup: cerebral_enrichment, lexical_enrichment, forensic_restructure, generate_pivotal_metadata, local_perfect_transcript, and archive/modules/{enrich,restructure}. Move them onto the durable zdots queue as `distill`/`embed` jobs (fingerprint-deduped, retried, resumable), reusing the existing batch_ztranscribe.rb enqueue pattern. This establishes the canonical async pipeline that the transcription, insight, and publishing tracks all build on.
+Target architecture (per the user): zdots is the transcription/AI **service provider** — it owns the generic heavy lifting (ASR transcription, acoustic diarization, distillation, embedding, semantic search). This repo is a **consumer** that orchestrates zdots jobs and evaluates/automates on the results. Audit the direct-LLM enrichment scripts (cerebral_enrichment, lexical_enrichment, generate_pivotal_metadata, local_perfect_transcript, archive/modules/{enrich,restructure}) and split by ownership: generic transformations move INTO zdots as service capabilities/job types; interview-unique logic (UGtastic brand normalization, interviewee/turn structuring) stays here and consumes zdots output.
+
+NOTE: the original ponytail-audit premise ("route scripts onto the queue") was wrong — these scripts read/write the site's `_data` while zdots jobs operate on the zdots side (Downloads .txt + Postgres). This is a capability-boundary refactor, not a mechanical swap. `ruby_llm` is not a dependency (nothing to shed; scripts POST raw JSON to a local endpoint). The restructure trio that also calls the LLM is in TASK-241's deletion set, not in scope here. Spans two repos (this repo + the zdots platform repo).
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Direct RubyLLM calls in the listed scripts are replaced with zdots enqueue (distill/embed)
-- [ ] #2 Jobs are idempotent (fingerprint) and resumable after interruption
-- [ ] #3 The batch_ztranscribe.rb enqueue pattern is reused, not reinvented
-- [ ] #4 ruby_llm is removed from the site Gemfile if nothing calls it directly anymore
+- [ ] #1 Each direct-LLM enrichment script is classified: generic capability (→ zdots) vs interview-unique (→ stays here, consumes zdots)
+- [ ] #2 Generic transformations are implemented as zdots service capabilities/job types in the zdots repo
+- [ ] #3 This repo's remaining scripts are thin orchestrators that enqueue to zdots and write results back to _data
+- [ ] #4 The repo⇄zdots ownership boundary is documented (what is unique to the interview archive vs a reusable zdots capability)
 <!-- AC:END -->
+
+
 
 ## Implementation Plan
 
