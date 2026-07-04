@@ -34,9 +34,6 @@ namespace :generate do
     :context_summaries,
     :video_completeness,
     :archive_status,
-    # :interview_pages,      # Deprecated by InterviewGenerator plugin
-    # :video_pages,          # Deprecated by VideoAssetGenerator plugin
-    # :taxonomy,             # Deprecated by TaxonomyGenerator plugin
     :topics,
     :interviewees,
     :community_stories,
@@ -57,18 +54,6 @@ namespace :generate do
 
   task :archive_status do
     sh 'ruby ./bin/generate_archive_status.rb'
-  end
-
-  task :interview_pages do
-    sh './bin/generate_interview_pages.rb'
-  end
-
-  task :video_pages do
-    sh 'ruby ./bin/generate_video_asset_pages.rb'
-  end
-
-  task :taxonomy do
-    sh 'ruby ./bin/generate_interview_taxonomy_pages.rb'
   end
 
   task :topics do
