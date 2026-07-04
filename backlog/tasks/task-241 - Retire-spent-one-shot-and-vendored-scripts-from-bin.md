@@ -1,10 +1,10 @@
 ---
 id: TASK-241
 title: Retire spent one-shot and vendored scripts from bin/
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:29'
+updated_date: '2026-07-04 14:47'
 labels:
   - pipeline
   - cleanup
@@ -21,10 +21,10 @@ Remove spent one-shot repair/split scripts (repair_dave_thomas{,_2015}, manual_s
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The 8 named one-shot scripts are removed from bin/
-- [ ] #2 bin/zdots-brain-local and bin/zdots-brain-debug are removed (or relocated to the zdots repo)
-- [ ] #3 The three stale Rakefile tasks are removed or repaired to point at real scripts
-- [ ] #4 rake build and the test suite are green after removal
+- [x] #1 The 8 named one-shot scripts are removed from bin/
+- [x] #2 bin/zdots-brain-local and bin/zdots-brain-debug are removed (or relocated to the zdots repo)
+- [x] #3 The three stale Rakefile tasks are removed or repaired to point at real scripts
+- [x] #4 rake build and the test suite are green after removal
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -79,6 +79,16 @@ bundle exec rake build && bundle exec rspec
 - `git grep` for each deleted basename returns nothing outside `backlog/`.
 - `rake -T` lists tasks with no reference to the removed generators.
 <!-- SECTION:PLAN:END -->
+
+## Comments
+
+<!-- COMMENTS:BEGIN -->
+author: claude
+created: 2026-07-04 14:47
+---
+Executed: `git rm` on all 10 files (8 one-shots + 2 vendored zdots CLIs), removed Rakefile lines 37-39 (commented generate:all refs) and the three orphan task defs (interview_pages/video_pages/taxonomy). Verified: `rake -T` has no dangling refs, `rake build` green, `rspec` 53 examples / 0 failures. Changes are STAGED/working-tree only — NOT committed, awaiting review before commit.
+---
+<!-- COMMENTS:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
