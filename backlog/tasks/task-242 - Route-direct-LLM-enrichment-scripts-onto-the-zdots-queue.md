@@ -4,7 +4,7 @@ title: Route direct-LLM enrichment scripts onto the zdots queue
 status: To Do
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:30'
+updated_date: '2026-07-04 14:32'
 labels:
   - pipeline
   - cleanup
@@ -83,6 +83,19 @@ These scripts author CONTENT into `_data` (summaries, insights, YouTube descript
 - None of the 7 scripts are wired into `rake build` / `generate:all` / `validate:all` (verified against Rakefile) — so `bundle exec rake build` + `bundle exec rspec` stay GREEN regardless; the refactor is orthogonal to the build.
 - Enqueue verification is deferred to implementation (worker not run here): dry-check idempotency by enqueuing twice and confirming the second is an idempotent skip via `zdots-ctx jobs`.
 - AC #4: confirm `git grep -i ruby_llm` returns nothing and Gemfile is unchanged (already true).
+
+### Addendum — complete job-type survey (grounds the "no existing job type" claim)
+Surveyed ALL registered worker job types in `~/.config/zsh/lib/zdots/jobs/`, not just the ones the task named:
+- **distill** → url → Downloads `.txt` → zdots Lesson (fixed prompt).
+- **embed** → `{table,id,text}` → zdots Postgres vector.
+- **transcription** → url → runs yt-transcribe recipe → Downloads.
+- **docs_sync** → `{trace_id}` → rewrites a FIXED list of zdots-repo docs (README.md / docs/architecture.md / GEMINI.md under `Zdots::ZDOTDIR`) from a `SessionResidue`. Does not touch site `_data`, does not restructure transcripts, does not emit SEO → not a fit.
+- **pattern_analysis** → analyzes operational-feedback rows into Recommendations; pure Sequel heuristics, no AI call → unrelated.
+- **ingest_media / transcribe_chunk** → media/transcription-specific (skipped by purpose).
+
+CONCLUSION CONFIRMED: no registered type consumes site-YAML transcript text to produce `turns:` (Bucket B restructure trio) or YouTube SEO metadata (generate_pivotal_metadata). Bucket B recommendation stands — new job types belong in the zdots repo (out of this site repo's scope), or keep those four inline / split TASK-242.
+
+Wording correction on Bucket A: `distill` is the NEAREST-ADJACENT existing type, NOT a clean fit — it shares Bucket B's mismatch shape (reads a Downloads `.txt` not site YAML, fixed prompt, emits a zdots Lesson not the site's `insights`/`youtube_description`). Route to it only for the lesson/semantic-search purpose, with the site-YAML write-back explicitly dropped (per the hard caveat above). It is not a mechanical call-swap.
 <!-- SECTION:PLAN:END -->
 
 ## Definition of Done
