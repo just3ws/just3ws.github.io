@@ -1,10 +1,10 @@
 ---
 id: TASK-243
 title: Inventory Vimeo-only assets and build the migration set
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:48'
+updated_date: '2026-07-04 14:53'
 labels:
   - pipeline
   - vimeo
@@ -23,7 +23,7 @@ Identify every video_asset hosted only on Vimeo (no youtube platform id) and pro
 <!-- AC:BEGIN -->
 - [x] #1 A manifest of all Vimeo-only assets is generated from _data
 - [x] #2 Each entry maps vimeo id → interview slug → current transcript/caption status
-- [ ] #3 The manifest is committed as a review surface (yml or backlog doc) for sign-off before migration
+- [x] #3 The manifest is committed as a review surface (yml or backlog doc) for sign-off before migration
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -92,9 +92,15 @@ created: 2026-07-04 14:48
 ---
 Executed initial inventory: generated `_data/vimeo_migration_manifest.yml` — 27 Vimeo-only assets (platforms has a vimeo entry, no youtube entry), 19 caption-ready (structured transcript with turns), 8 need transcription. Each entry carries asset_id, vimeo_id/url, title, interview_slug, primary_platform, duration_seconds, thumbnail, transcript_status+turns, caption_readiness, youtube_id (null, filled by TASK-253), migration_state (pending). Count matches the independent track-agent survey. NOT committed — awaiting review. AC#3 (commit as review surface) pending the user's commit. Generator should be promoted to bin/ with merge-preserve on migration_state before TASK-253 starts flipping states.
 ---
+
+author: claude
+created: 2026-07-04 14:53
+---
+Manifest committed to master as 62de73b (not pushed) — AC#3 (review surface committed) satisfied. Done. Note: promote the generator to bin/ with merge-preserve on migration_state before TASK-253 begins flipping states.
+---
 <!-- COMMENTS:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
