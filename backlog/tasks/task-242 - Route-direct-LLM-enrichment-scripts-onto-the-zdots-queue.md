@@ -6,12 +6,16 @@ title: >-
 status: To Do
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:48'
+updated_date: '2026-07-04 14:57'
 labels:
   - pipeline
   - cleanup
 milestone: Interview Archive Pipeline
 dependencies: []
+references:
+  - >-
+    zdots repo companion: Z-199 (Expose generic transcript-AI transforms as
+    tenant-consumable zdots services)
 priority: high
 ---
 
@@ -30,8 +34,6 @@ NOTE: the original ponytail-audit premise ("route scripts onto the queue") was w
 - [ ] #3 This repo's remaining scripts are thin orchestrators that enqueue to zdots and write results back to _data
 - [ ] #4 The repo⇄zdots ownership boundary is documented (what is unique to the interview archive vs a reusable zdots capability)
 <!-- AC:END -->
-
-
 
 ## Implementation Plan
 
@@ -103,6 +105,16 @@ CONCLUSION CONFIRMED: no registered type consumes site-YAML transcript text to p
 
 Wording correction on Bucket A: `distill` is the NEAREST-ADJACENT existing type, NOT a clean fit — it shares Bucket B's mismatch shape (reads a Downloads `.txt` not site YAML, fixed prompt, emits a zdots Lesson not the site's `insights`/`youtube_description`). Route to it only for the lesson/semantic-search purpose, with the site-YAML write-back explicitly dropped (per the hard caveat above). It is not a mechanical call-swap.
 <!-- SECTION:PLAN:END -->
+
+## Comments
+
+<!-- COMMENTS:BEGIN -->
+author: claude
+created: 2026-07-04 14:57
+---
+Companion task created in the zdots repo (github.com/just3ws/zdots): **Z-199** — "Expose generic transcript-AI transforms as tenant-consumable zdots services". Its ACs cover the generic structured-distill job type + tenant-facing contract this task's AC#2/#3 depend on. Z-199 is uncommitted in the zdots repo (auto_commit is off there).
+---
+<!-- COMMENTS:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
