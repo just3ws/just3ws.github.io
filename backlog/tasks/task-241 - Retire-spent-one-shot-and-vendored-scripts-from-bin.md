@@ -1,10 +1,10 @@
 ---
 id: TASK-241
 title: Retire spent one-shot and vendored scripts from bin/
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:47'
+updated_date: '2026-07-04 14:53'
 labels:
   - pipeline
   - cleanup
@@ -88,9 +88,15 @@ created: 2026-07-04 14:47
 ---
 Executed: `git rm` on all 10 files (8 one-shots + 2 vendored zdots CLIs), removed Rakefile lines 37-39 (commented generate:all refs) and the three orphan task defs (interview_pages/video_pages/taxonomy). Verified: `rake -T` has no dangling refs, `rake build` green, `rspec` 53 examples / 0 failures. Changes are STAGED/working-tree only — NOT committed, awaiting review before commit.
 ---
+
+author: claude
+created: 2026-07-04 14:53
+---
+Committed to master as 8b922e9 (not pushed). Working tree clean; build + tests green. Done.
+---
 <!-- COMMENTS:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
