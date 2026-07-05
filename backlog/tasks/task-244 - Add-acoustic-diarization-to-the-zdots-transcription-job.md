@@ -4,7 +4,7 @@ title: Add acoustic diarization to the zdots transcription job
 status: To Do
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:48'
+updated_date: '2026-07-05 02:14'
 labels:
   - pipeline
   - transcription
@@ -94,6 +94,18 @@ author: claude
 created: 2026-07-04 14:48
 ---
 Ownership boundary (per target architecture): the acoustic-diarization capability (pyannote pass) is OWNED BY zdots as part of its `transcription` service job — that code lives in the zdots repo. This repo's side of TASK-244 shrinks to: define the additive `diarization` schema block that receives zdots' output, and the validator/spec for it. Same pattern as embedding (TASK-254): zdots computes, this repo consumes. Cross-references TASK-242 (capability boundary).
+---
+
+author: claude
+created: 2026-07-05 02:14
+---
+CORRECTION after validating against real zdots code (scaffold: scratchpad/diarization-scaffold.md): the plan's premise 'pyannote is not installed / add a pyannote pass' is WRONG. Diarization is ~80% built already — `bin/diarize` is a working uv/PEP-723 pyannote/speaker-diarization-3.1 script (MPS→CUDA→CPU, segment-overlap dominant-speaker merge), `yt-transcribe` already has a wired `--diarize` flag, and `HUGGINGFACE_TOKEN` is keychain-loaded in env.sh. ASR stays whisper.cpp/Metal (matches plan).
+
+The REAL remaining work is wiring + output shape, in two mechanisms (one root cause = wav lifetime):
+1. Long/chunked path: cannot just pass --diarize (window mode exits before the diarize block, per-chunk pyannote labels are incompatible, stitch drops the JSON). Add a whole-file `diarized` stage to `ingest_media.rb`'s PIPELINE (the code reserves this hook; gives AC#3 resumability via pipeline_runs).
+2. Short/interactive paths (transcription.rb, ingest_media#transcribe_raw): diarize inline via --diarize, because the recipe deletes the 16k wav right after whisper (line 206).
+
+Output-shape gaps: bin/diarize emits mutated whisper-JSON to `<id>.speaker.json`; the tenant contract needs a self-contained `diarization.json` (engine/model/asr/audio_duration/num_speakers_hint/segments[]). Add a `--num-speakers` arg — the interviewees+1 hint is SITE-side data, so it must be caller-passed. Sidecar location differs by entry point (recipe → ~/Downloads/transcripts/<id>/; queue → ~/.local/state/zdots/ingest-sources/<mid>/, which the site staging glob doesn't cover yet — coordination needed). Unverified risk: first `uv run` pulls multi-GB torch+pyannote and needs a torch wheel for uv's resolved Python (mise pins 3.14.5). This is a zdots-repo change (companion to Z-199 pattern).
 ---
 <!-- COMMENTS:END -->
 
