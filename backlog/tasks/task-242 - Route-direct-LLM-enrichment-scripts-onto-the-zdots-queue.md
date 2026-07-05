@@ -6,7 +6,7 @@ title: >-
 status: To Do
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:57'
+updated_date: '2026-07-05 00:44'
 labels:
   - pipeline
   - cleanup
@@ -113,6 +113,12 @@ author: claude
 created: 2026-07-04 14:57
 ---
 Companion task created in the zdots repo (github.com/just3ws/zdots): **Z-199** — "Expose generic transcript-AI transforms as tenant-consumable zdots services". Its ACs cover the generic structured-distill job type + tenant-facing contract this task's AC#2/#3 depend on. Z-199 is uncommitted in the zdots repo (auto_commit is off there).
+---
+
+author: claude
+created: 2026-07-05 00:44
+---
+Consumer path is now concrete: the zdots `transform` job type landed (Z-199, commit 15b162d) — enqueue `transform` with `{text, profile}`, fetch `{status, result:{output}}` via `zdots-ctx result <job_id>`; profiles are prompt files at `etc/prompts/jobs/transform/<name>.txt` (no code). So AC#2 (generic transforms as zdots job types) is satisfied platform-side. This repo's remaining work shrinks to: (1) author the transcript profiles (insights, SEO, cleanup) in the zdots prompts dir, and (2) thin orchestrators that enqueue `transform` and write the fetched result into `_data`, post-processing tenant-unique bits (UGtastic normalization, speaker_map M1/S1/S2) here. No new zdots job type needed for the enrichment bucket; diarization (TASK-244) remains the one genuine platform gap.
 ---
 <!-- COMMENTS:END -->
 
