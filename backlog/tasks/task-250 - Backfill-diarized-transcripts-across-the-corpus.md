@@ -4,7 +4,7 @@ title: Backfill diarized transcripts across the corpus
 status: To Do
 assignee: []
 created_date: '2026-07-04 03:24'
-updated_date: '2026-07-04 14:28'
+updated_date: '2026-07-05 17:07'
 labels:
   - pipeline
   - transcription
@@ -66,6 +66,21 @@ Run the diarization + labeling pipeline (TASK-244 + TASK-247) across all pending
 
 Depends on TASK-247 (fused labeling). Blocks/unblocks TASK-031–115; feeds TASK-252 (captions). Advances TASK-124/125/022–025 to Done by executing them, not by re-scoping them.
 <!-- SECTION:PLAN:END -->
+
+## Comments
+
+<!-- COMMENTS:BEGIN -->
+author: claude
+created: 2026-07-05 17:07
+---
+Re-transcription pilot (2 HIGH-severity loop-flagged files, identical 16k-mono WAV + bare whisper-cli, model the ONLY variable) — result flips the model choice:
+
+- **large-v3 (max precision) made loops DRAMATICALLY WORSE**: 265-line consecutive repeat, 65% duplicate lines, ended on the 'Subtitles by the Amara.org community' hallucination (272 hits in streaming stdout — genuine, not a write artifact). Confirms the archive-forensics warning about max-accuracy looping on Apple Silicon. Also ~4x slower (305s vs turbo's ~79-116s/file).
+- **turbo (standard) was CLEAN on both**: max consecutive run 1-2, stored loop phrases 0 occurrences, natural endings.
+
+Conclusion: the stored loops are artifacts of the OLD transcription run; **re-running turbo on freshly-downloaded audio fixes them.** DECISION for the backfill of the ~86 flagged entries: use the STANDARD/turbo profile, NOT large-v3. Run serial (GPU contention) — total turbo compute is well under an hour. Then re-run `bin/report_transcript_loops.rb` to confirm scores drop, and re-apply normalize/split/validate before writing back. NB: the #1 queue item `vimeo-38936294` and other `vimeo-*` entries are Vimeo-hosted — they need the Vimeo URL path, not YouTube (ties into the Vimeo migration track). Pilot artifacts: scratchpad/retranscribe-pilot/PILOT_FINDINGS.md.
+---
+<!-- COMMENTS:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
