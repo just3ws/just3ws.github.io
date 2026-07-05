@@ -4,7 +4,7 @@ title: Add acoustic diarization to the zdots transcription job
 status: To Do
 assignee: []
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-05 02:14'
+updated_date: '2026-07-05 17:00'
 labels:
   - pipeline
   - transcription
@@ -106,6 +106,16 @@ The REAL remaining work is wiring + output shape, in two mechanisms (one root ca
 2. Short/interactive paths (transcription.rb, ingest_media#transcribe_raw): diarize inline via --diarize, because the recipe deletes the 16k wav right after whisper (line 206).
 
 Output-shape gaps: bin/diarize emits mutated whisper-JSON to `<id>.speaker.json`; the tenant contract needs a self-contained `diarization.json` (engine/model/asr/audio_duration/num_speakers_hint/segments[]). Add a `--num-speakers` arg — the interviewees+1 hint is SITE-side data, so it must be caller-passed. Sidecar location differs by entry point (recipe → ~/Downloads/transcripts/<id>/; queue → ~/.local/state/zdots/ingest-sources/<mid>/, which the site staging glob doesn't cover yet — coordination needed). Unverified risk: first `uv run` pulls multi-GB torch+pyannote and needs a torch wheel for uv's resolved Python (mise pins 3.14.5). This is a zdots-repo change (companion to Z-199 pattern).
+---
+
+author: claude
+created: 2026-07-05 17:00
+---
+zdots-side wiring landed (STAGED, uncommitted in the zdots repo, awaiting review). Three files: (1) `bin/diarize` — whisper_json now optional; added `--sidecar` (emits a self-contained `diarization.json`: engine/model/asr/audio_duration/num_speakers_hint/segments[]) and `--num-speakers` (used as a min/max bracket, not exact); legacy merge mode preserved. (2) `lib/zdots/jobs/ingest_media.rb` — `diarized` PIPELINE stage (ordered LAST, after distilled), `run_diarized` is opt-in via `ZDOTS_DIARIZE=1` and rescue-wrapped so an unverified pyannote/torch env can't dead-letter the ingest; `diarize_audio` reuses `prep_audio` for the retained 16k wav and writes `diarization.json` beside it. (3) regenerated `docs/generated/ingest-pipeline.mmd`.
+
+Producer contract for the SITE consumer: sidecar is `diarization.json` written to the retention root `~/.local/state/zdots/ingest-sources/<mid>/<...>/` (NOT ~/Downloads) — the site's `stage_completed_transcripts.rb` glob must be extended to cover it (or the job copies to Downloads). num_speakers is caller-passed via job payload `num_speakers` (site: interviewees + 1).
+
+VERIFIED: ruby -c + py_compile clean; the drift-test assertions (mmd matches PIPELINE; every stage bound) PASS under zdots-ruby. NOT verified: the pyannote path is not exercised — gated off by default; first `uv run` must resolve a torch wheel for the mise-pinned Python 3.14.5 (flagged risk). Do one live diarize run, then flip ZDOTS_DIARIZE=1. Short-path inline `--diarize` (recipe + transcription.rb) remains a separate follow-up.
 ---
 <!-- COMMENTS:END -->
 
