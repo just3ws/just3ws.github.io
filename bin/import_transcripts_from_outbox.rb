@@ -57,6 +57,26 @@ def blank?(value)
   value.nil? || value.to_s.strip.empty?
 end
 
+# Locate an additive diarization sidecar for a source transcript file. The
+# stager writes it as `<stem>.diarization.json`; the raw producer writes a
+# literal `diarization.json` next to the transcript. Returns the parsed Hash or
+# nil (never raises on malformed JSON).
+def diarization_block_for(file_path)
+  stem = file_path.sub(/\.[^.]+\z/, "")
+  candidates = [
+    "#{stem}.diarization.json",
+    File.join(File.dirname(file_path), "diarization.json")
+  ]
+
+  sidecar = candidates.find { |candidate| File.file?(candidate) }
+  return nil unless sidecar
+
+  parsed = JSON.parse(File.read(sidecar))
+  parsed.is_a?(Hash) ? parsed : nil
+rescue JSON::ParserError
+  nil
+end
+
 def load_yaml(path, key:)
   parsed = YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true) || {}
   parsed[key] || []
@@ -390,7 +410,10 @@ if options[:apply]
     if transcript_exists && !options[:force]
       report["stats"]["skipped_existing_transcript"] += 1
     else
-      File.write(transcript_path, { "content" => text }.to_yaml)
+      transcript_data = { "content" => text }
+      diarization = diarization_block_for(file_path)
+      transcript_data["diarization"] = diarization if diarization
+      File.write(transcript_path, transcript_data.to_yaml)
       report["stats"]["written_transcripts"] += 1
     end
 

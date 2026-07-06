@@ -133,6 +133,22 @@ module Generators
         turn_texts.size
       end
 
+      def diarization?
+        return false unless loaded?
+
+        !diarization_segments.empty?
+      end
+
+      def diarization_segments
+        block = data["diarization"]
+        return [] unless block.is_a?(Hash)
+
+        segments = block["segments"]
+        return [] unless segments.is_a?(Array)
+
+        segments.select { |segment| segment.is_a?(Hash) }
+      end
+
       def speakers
         return [] unless data["turns"].is_a?(Array)
 

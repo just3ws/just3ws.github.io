@@ -77,6 +77,59 @@ module Validators
     end
   end
 
+  # Additive, backward-compatible diarization block. Legacy transcripts carry
+  # no `diarization` key and are never routed here; when the block is present it
+  # must describe the acoustic engine and its speaker segments. `start`/`end`
+  # are left untyped on purpose (YAML yields Integer for `0` and Float for
+  # `12.4`); the numeric + ordering constraints are enforced in a rule so a
+  # bare Integer timestamp is not rejected by float coercion.
+  class DiarizationSegmentContract < BaseContract
+    params do
+      required(:speaker).filled(:string)
+      required(:start).filled
+      required(:end).filled
+      optional(:text).maybe(:string)
+    end
+
+    rule(:start) do
+      key.failure('must be numeric') unless value.is_a?(Numeric)
+    end
+
+    rule(:end) do
+      key.failure('must be numeric') unless value.is_a?(Numeric)
+    end
+
+    rule(:end, :start) do
+      start_value = values[:start]
+      end_value = values[:end]
+      if start_value.is_a?(Numeric) && end_value.is_a?(Numeric) && end_value < start_value
+        key([:end]).failure('must be greater than or equal to start')
+      end
+    end
+  end
+
+  class DiarizationContract < BaseContract
+    params do
+      required(:engine).filled(:string)
+      required(:segments).array(:hash)
+      optional(:model).maybe(:string)
+      optional(:asr).maybe(:string)
+      # Remaining metadata (generated_at, audio_duration, num_speakers_hint) is
+      # left undeclared on purpose: dry-schema ignores unknown keys, so optional
+      # producer fields never trip validation nor float coercion.
+    end
+
+    rule(:segments).each do |index:|
+      if value.is_a?(Hash)
+        contract = DiarizationSegmentContract.new
+        result = contract.call(value)
+        result.errors.to_h.each do |field, messages|
+          key([:segments, index, field]).failure(Array(messages).join(', '))
+        end
+      end
+    end
+  end
+
   class ResumePositionContract < BaseContract
     params do
       required(:id).filled(:string)

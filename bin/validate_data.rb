@@ -46,11 +46,26 @@ errors.concat(validate_collection(confs, Validators::ConferenceContract, 'Confer
 errors.concat(validate_collection(comms, Validators::CommunityContract, 'Community'))
 errors.concat(validate_collection(positions, Validators::ResumePositionContract, 'ResumePosition'))
 
+diarization_contract = Validators::DiarizationContract.new
 Dir.glob(File.join(ROOT, '_data', 'transcripts', '*.yml')).sort.each do |path|
   transcript = Generators::ArchiveState.for_path(path)
-  next unless transcript.invalid?
+  if transcript.invalid?
+    errors << "Transcript [#{transcript.id}] YAML parse error: #{transcript.load_error}"
+    next
+  end
 
-  errors << "Transcript [#{transcript.id}] YAML parse error: #{transcript.load_error}"
+  # Additive: only transcripts carrying a diarization block are validated
+  # against the diarization schema; absent block leaves the 196 legacy files
+  # untouched.
+  block = transcript.data['diarization']
+  next unless block.is_a?(Hash)
+
+  result = diarization_contract.call(block)
+  next if result.success?
+
+  result.errors.to_h.each do |field, messages|
+    errors << "Transcript [#{transcript.id}] diarization field '#{field}': #{Array(messages).join(', ')}"
+  end
 end
 
 # 2. Referential Integrity

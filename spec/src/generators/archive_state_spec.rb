@@ -47,6 +47,41 @@ RSpec.describe Generators::ArchiveState do
       end
     end
 
+    it "exposes diarization segments when the additive block is present" do
+      Dir.mktmpdir do |dir|
+        path = File.join(dir, "diarized.yml")
+        write_yaml(
+          path,
+          "content" => "Legacy content stays intact.",
+          "diarization" => {
+            "engine" => "pyannote-3.1",
+            "segments" => [
+              { "speaker" => "SPEAKER_00", "start" => 0.0, "end" => 12.4 },
+              { "speaker" => "SPEAKER_01", "start" => 12.4, "end" => 20.0 }
+            ]
+          }
+        )
+
+        state = described_class.for_path(path)
+
+        expect(state).to be_diarization
+        expect(state.diarization_segments.size).to eq(2)
+        expect(state.diarization_segments.first).to include("speaker" => "SPEAKER_00")
+      end
+    end
+
+    it "reports no diarization for transcripts without the block" do
+      Dir.mktmpdir do |dir|
+        path = File.join(dir, "plain.yml")
+        write_yaml(path, "content" => "No diarization here.")
+
+        state = described_class.for_path(path)
+
+        expect(state).not_to be_diarization
+        expect(state.diarization_segments).to eq([])
+      end
+    end
+
     it "reports missing transcript files without attempting to load them" do
       Dir.mktmpdir do |dir|
         path = File.join(dir, "missing.yml")
