@@ -15,503 +15,224 @@ turns:
 - speaker: S1
   text: Okay, so Code Retreat's an event. It's a community-focused sort of directed
     practice event that has been going on for almost four years now. There's all over
-    the world and it's a day that's focused on practice rather than learning a new
+    the world, and it's a day that's focused on practice rather than learning a new
     technology.
 - speaker: M1
-  text: So, you just write code? How do you practice?
+  text: So you just write code? How do you practice?
 - speaker: S1
-  text: So, there's a set format for it. We work on Conway's Game of Life. We work
-    in 45-minute sessions and at the end of the 45 minutes we delete all of the code
-    we did, swap pairs, start again. And we do it about five or six times through
-    the day. And then each session we introduce different constraints, different ideas
-    around object-oriented design, test-driven development, pairing, things like that.
-    So, it's a day of sort of pushing yourself past where you normally code. And I
-    like to say that we take normal sort of clean code constraints and different design
-    ideas and we crank them up to 11. Yeah, I've been to one or maybe two of your
-    events and things like no return values or don't use conditional statements is
-    always interesting.
+  text: So there's a set format for it. We work on Conway's Game of Life. We work
+    in 45-minute sessions, and at the end of the 45 minutes, we delete all of the
+    code we did, swap pairs, start again, and we do it about five or six times through
+    the day. And then each session, we introduce different constraints, different
+    ideas around object-oriented design, test-driven development, pairing, things
+    like that. And so it's a day of sort of pushing yourself past where you normally
+    code. And I like to say that we take normal sort of clean code constraints and
+    different design ideas and we crank them up to 11. Yeah, I've been to one or maybe
+    two of your events and things like no return values or don't use conditional statements
+    is always interesting.
 - speaker: M1
-  text: But for the audience, what languages are you using? I mean, is this like a
-    Ruby specific thing?
+  text: But for the audience, what languages are you using?
 - speaker: S1
-  text: It's language agnostic. So, we ask people to come with a development environment
-    set up, what we call sort of your language of convenience. But the community events
-    are very much if you're interested in trying it in a different language, say you've
-    never done Clojure and somebody there has a Clojure environment set up, then they
-    can, you can pair with them for 45 minutes, so they get a feel for it a little
-    bit.
+  text: this is like a ruby specific thing it's it's language agnostic okay so as
+    long we've had we asked people to come with a development environment set up what
+    we call sort of your language of convenience okay but the community events are
+    very much if you're interested in trying it in a different language say you've
+    never done Clojure and somebody there has a Clojure environment set up then they
+    can you compare with them for 45 minutes sort of get a feel for it a little bit
+    We started off a lot of Java, there's a lot of C# that shows up, a lot of Ruby
+    that shows up, but they're intended to be language agnostic.
 - speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: We started off a lot of Java, there's a lot of C# that shows up, a lot of
-    Ruby that shows up, but they're intended to be language agnostic.
-- speaker: M1
-  text: Yeah. So, what do people do when they can't finish the problem in the 45 minutes
+  text: So what do people do when they can't finish the problem in the 45 minutes
     allocated?
 - speaker: S1
-  text: So, very few people can, and in fact, it's intentionally chosen so that you
-    can't finish the problem. Oh, okay. The goal is to sort of retreat from the normal
-    pressures of finishing.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: We all know that we write our worst code when we have, when we're rushing
-    under constraints and under a time pressure. And the corners we cut, things like
-    that. So, the day is built to allow you sort of that freedom to experiment and
-    try new things. So, the very first one, it's frustrating for people, and by the
-    end of the day, it's frustrating not finishing it. But you're kind of laughing.
-    You're laughing at it. And instead, sort of that pressure to finish goes away
-    and you start to focus on clean code, focus on investigating different design
-    ideas rather than rushing to finish.
-- speaker: M1
-  text: Right. And actually, have you ever had anybody like, just be like, "Oh, Conway's
-    Gamo" and just bang it out?
-- speaker: S1
-  text: I'm just curious.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: We've had, like for the first session, a lot of times people will sort of
-    hack out a solution because they're still in that mindset of wanting to get it
-    done. But, you know, like a lot of us say, it's easy to get something working
-    when you write crap.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And so, the idea of the day is to sort of write the best code you've ever
-    written and see what that looks like and take what you consider great code, take
-    it to the extreme. And, you know, we always talk about going too far, but very
-    few people actually get close to too far.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So, shoot for gold plating. Shoot for gold plating.
-- speaker: M1
-  text: And what happens if you actually go too far? What happens if you refactor
-    too much or you extract too many methods? What does it look like?
-- speaker: S1
-  text: And by taking yourself to that place, you get a better sense for when you
-    are actually building a production system, how far you can go.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And I think that exercise of, like, sometimes when you want to start to refactor
-    and you're looking and saying, "Okay, I'm going to refactor this code," and then
-    you realize you did go too far. You spent half a day, and now you have to back
-    it up. But at this cold retreat, you can say, like, "What if I did this thing
-    I want to try to do? " And it doesn't matter if you went too far because you don't
-    have to backtrack. You just throw it away. You throw it away, and that gives you
-    a good perspective so that when you are working and you're like, "Am I going too
-    far? " Yeah. You'll have an experience of actually doing it so that you can be
-    like, "Well, no. If I go a little farther, it's still okay. " Okay.
-- speaker: M1
-  text: And what was probably -- what's probably the most unique experience you've
-    had?
-- speaker: S1
-  text: Like, do you have, like, a specific -- because we're going to get into the
-    global aspect of it, but the actual edit code retreat, a solution that somebody
-    did, has anybody done something like implemented it in Vim Script or anything
-    like that? Um, we've had people fool around in Bash Script.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Um, I think one team did try it in Vim Script, and, um, it's always interesting
-    -- every code retreat, there's always some sort of interesting approach to it.
-    Um, so there's nothing really that stands out like that was the coolest. I did
-    see, um, at a coder tree in Colorado, where, um, I think on the final session,
-    some people ended up writing a fairly reasonable solution in about six or seven
-    lines of Ruby. Wow.
-- speaker: M1
-  text: And I was like, "Oh, well, what if you need to do this or change this?
-- speaker: S1
-  text: '" And they -- it was actually a really nice, small, scripted solution. We
-    tend -- I tend to encourage people to over-engineer, so make a ton of classes,
-    um, keep very small methods, things like that, to see what it means. We drop that
-    term "over-engineering" all the time, but few people know -- few people could
-    recognize it and understand why that''s a problem. Now, about the global part.
-    Mm-hmm. Now, I mean, I know you -- you started doing these -- these code of treats
-    as kind of a one-off thing, you did them in a few places, but you do one that
-    spans the entire globe in one day. Yeah, so, last year, in 2011, in August, I
-    put out a blog post and said, "Wouldn''t it be cool if we had 20 cities around
-    the world, all on the same day, and we could Skype and stuff? " Yeah. And, um,
-    it sort of took off, and by the -- I think it was December 5th of 2011, we had
-    94 cities, 14 time zones, all doing it around the world on the same day.'
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you tried to -- to hop around -- So, I did Sydney, which was one of the
-    first ones, and then I caught a 6 p. m. flight that landed in Honolulu at 6:45
-    a. m. the same day. So, while the sun was going this way -- You were going hot.
-    Oh, you went the other way. Oh, you went the other way. Oh, wow. And so, I'm going
-    to try to do it again this year.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Um, we're aiming for 200 cities this year. Oh, my gosh. Um, we are already
-    at 60, which is about on track.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And so, we've got two months to go. And that's usually when it starts picking
-    up.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: And, uh, yeah, it's a really great day. There's a lot of -- it sort of brings
-    the community, the global community, because code retreats, just as one-off things,
-    are done all over the world. Pretty much every weekend now, there's at least one
-    or two going on. Oh, wow. Um, a couple weeks ago, there were six of them. Um,
-    a couple weeks ago, there were six of them. Um, a couple weeks ago, there were
-    six of them. Um, a couple weeks ago, there were six of them. Um, a couple weeks
-    ago, there were six of them. Um, a couple weeks ago, there were six of them. Um,
-    a couple weeks ago, there were six of them. Um, a couple weeks ago. Um, a couple
-    weeks ago, there were six of them. Um, a couple weeks ago, there were six of them.
-    Um, a couple weeks ago, there were six of them on a day. And, um, global day is
-    really about bringing -- it's a -- there's two really cool parts about it. One
-    is bringing that global community together all around one event. And then, um,
-    the other aspect is introducing and training new facilitators. Because during
-    the day, the facilitator's role is to introduce new constraints, is to answer
-    questions, help people out, ask questions. Um, and so, it's -- we do trainings.
-    We do facilitator trainings. Yeah, I was kind of about to ask. I mean, if somebody
-    wanted to become a facilitator and was like, "Man, this is really cool. I wish
-    I could do this in my city. " But we're in Anchorage. You know, there's nobody
-    around.
-- speaker: M1
-  text: Uh, you know, how do -- how do they go about doing that? Or participates?
-- speaker: S1
-  text: Oops. Let me, uh -- well, the -- the -- it's built -- the format is very well
-    defined. Uh-huh. And so, it's sort of built so that even if you are a horrible
-    facilitator -- Right. -- if you stick to this format, then it's going to be a
-    great day.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So, it's intentionally made for people to be able to just do it, and follow
-    a script almost. And then for -- as you do more and more, you get more understanding
-    of sort of the subtleties of facilitation, how to introduce the exercises better,
-    things like that. But if people want to do it, I've had lots of people email me
-    with those exact same questions. Like, "I've never done this. I don't -- I don't
-    feel like I'm a great developer," or all of that.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: But it's like, the best way is just to do it.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Um, the -- This isn't a great developer exercise. It's not. It's a path. It's
-    a path. You know, I like to tell everyone that every facilitator that's out there,
-    there's a handful of us who are experienced facilitators, and have done a lot.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: But all of us had our first one.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And I know very specific people who are very active in the community, do a
-    lot of these things. And I remember their first code retreat.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: When they emailed me, and I talked to them.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And, you know, had a Skype call with them, and walked them through some ideas.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And now they're doing them all the time.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And, I mean, with it getting so big, I just wonder also, is it getting so
-    -- is it getting to become a point where there's a code retreat being set up,
-    and you didn't even know about it, and all of a sudden it's like -- Absolutely.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Absolutely. I -- Wow, that's cool. I'm very strict about the format. And so,
-    we have it published. This is the format. Um, I've been sort of iron hand holding
-    the format.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: If you want to do a code retreat, this is the format. If you want to call
-    it a code retreat. If you want to call it a code retreat. If you want to call
-    it a code retreat. I always make sure to tell people that the -- it's not intended
-    to be the only activity that anyone ever does, and it's not the -- it doesn't
-    cover all aspects of development. It has very focused things that it works on.
-    And it's -- there's lots of really important practice-oriented activities people
-    can do. But code retreat is this.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And so, I've been, um, fairly iron handed about that. Um, and -- but now,
-    it's -- I've -- I've -- I've sort of -- as I've sort of curated it, and -- and
-    -- and -- gone. It's -- it's intended to be decentralized.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So, people set them up and do them.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: All the time.
-- speaker: M1
-  text: Very few people now, like, email me and go, "Can I?
-- speaker: S1
-  text: '" Right. Because it''s not about my approval or my, um, influence or anything
-    like that. It''s a local event to bring people together and practice. So, it''s
-    kind of finally grown beyond your -- Yeah. So, that''s -- that has to be a really
-    cool feeling. It''s a wonderful feeling. Early on, I knew, sort of, what everything
-    was doing. And, you know, I -- I pissed a couple people off because they''re like,
-    "Oh, I''m going to do this. " And I''m like, "Well, that''s not a code retreat.
-    " Right. I''d ask you to not call it a code retreat.'
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: But, um, now it's gotten -- it's -- it's sort of reached that level where
-    it's beyond me.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And it's not centered around me. I'm sort of a, uh -- one of my -- one of
-    the guys called me a benevolent dictator.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: I think more instigator.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And I like to curate -- like, I run the code retreat. org site. But, it's
-    not like I'm on there saying what can happen.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And there's enough people now who are experienced facilitators, experienced
-    hosts, who just -- they're off doing it. And, and it -- um, there's not really
-    experimentation around the format. Mm-hmm. But there's more and more experimentation
-    around exercises during the 45 minutes.
-- speaker: M1
-  text: Right. So, um -- I was just going to -- would that be relevant?
-- speaker: S1
-  text: Because I was -- what I was just thinking about is, well, if it's object-oriented,
-    functional programming is very -- much becoming, uh, popular now.
-- speaker: M1
-  text: Yeah. Could somebody do a functional code retreat? Wouldn't that still be
-    a code retreat?
-- speaker: S1
-  text: Absolutely. Absolutely. The -- the format is the 45 minutes, the throwing
-    the code away, Conway's Game of Life. My -- I'm an OO guy.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And I've been doing a lot of, uh, sort of thinking about OO concepts over
-    the last couple years. And so, the code retreats that I facilitate and the exercises
-    that I do focus on, um, sort of the edges of understanding around OO design.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: I don't have a tremendous amount of, like, expertise in functional paradigms.
-    Um, I did -- I've done, you know, a fair share of functional programming. But
-    if somebody had, like, a theme that they wanted to build a code retreat around,
-    and they -- they can make a cohesive set of exercises to do within a format, they
-    could -- Absolutely. So, a perfect example of that is, uh, J. B. Rainsberger,
-    um, started a thing called Legacy Code Retreat. Oh, okay. And, um, it was the
-    first sort of expanding the family of Code Retreat. And so, they don't do Conway's
-    Game of Life. They have a code base that Chet Hendrickson and Patrick Welsh, um,
-    uh, put together. Which is a horrible code base. And so, the -- It takes your
-    real talent to build a real world. Yeah, exactly. Well, it's Chet. Um, and so,
-    the exercises are about writing tests around it, refactoring. And it's still --
-    it's a Legacy Code Retreat. So, the classic Code Retreat, I'm very, um, you know,
-    here's the format. There's no reason you can't come up with something like a,
-    um, um, I think it's Matt Hauser came up with, um, a test automation Code Retreat.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So, they have been experimenting with, uh, doing the Code Retreat format,
-    but around different techniques in, um, test automation.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So, they use a code base and work on different automation tools.
-- speaker: M1
-  text: So, how can we hit this this way? How can we hit it that way? Yeah. Yeah.
-- speaker: S1
-  text: And so, what I, what I'm aiming for, and what I love to see, is an expansion
-    of the Code Retreat family.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: Rather than a, um, if you go to something called Code Retreat, you don't know
-    what you're going to get.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: Because people are doing whatever they want. But if you go to a legacy Code
-    Retreat. You know you're going to get. You know you get this. If you go to a test
-    automation Code Retreat. Brian Merrick for a little while was, um, talking about
-    putting together some exercises on a refactoring Code Retreat. And so, I love
-    this.
-- speaker: M1
-  text: How can you mutate a code base? Yeah. And so, um, but I tell people, I get
-    people asking, like, "Can I use a different problem?
-- speaker: S1
-  text: "\" All of this. And I generally say no. Well, I always say no. But what I
-    want people to do is use, you know, it's been, we've been building and, and sort
-    of fine tuning the format for almost four years now. It's settled. It's good."
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Early on. We know this works. Early on. We did a lot of, um, experimenting
-    around the format. Mm-hmm. And settled on something that works. Mm-hmm. And so,
-    what I want, what I would love people to do is come up with a different set of
-    exercises centered around something specific. Mm-hmm. And then call that a X-coded
-    sheet. Love to see somebody who has more experience with functional languages
-    and knows about functional design. Mm-hmm. Come up with a set of exercises that
-    are really applicable to functional programming.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: To have a sort of a functional code retreat. So, for example, one of the exercises
-    that I love doing that always causes people problems is no return values.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: My favorite. Um, and in a functional language, say you're doing it in Clojure.
-    Mm-hmm. Well, Clojure's got a lot of just data transforms.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And what comes out is it's transformed into some other format. Mm-hmm. And
-    so, the core, a lot of the core is built on data coming in, data going out.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Asking them to say no return values.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: I don't know. Like, I'm not a Clojure guy. Mm-hmm. Um, I've fooled around
-    a little bit. Paired with people. But I don't know if that would give them a valuable
-    thing to practice.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: I know. But at least it would make them try to think about something.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Like, if they're always saying, "It goes this way. It goes this way. It goes
-    this way.
-- speaker: M1
-  text: What if it goes like this?
-- speaker: S1
-  text: "\" You know."
-- speaker: M1
-  text: What if it goes like that?
-- speaker: S1
-  text: I know that in OO, the exercise around no function or no return values is
-    fantastic. Mm-hmm. And it's a really valuable design style that you can use and
-    get better at. Mm-hmm. And in certain cases, it's a much more superior form. In
-    certain cases. In certain cases. And so, one of the ideas is that we tend to have
-    the way we code.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: Um. It's sort of like. Our style. The wagon trail. Where you code this way
-    for so long, you end up with ruts that your wheels go down. And it's effective.
-    And you get to California.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And you find your gold. But what if, if that's your only tool that you can
-    pull out, then, you know. What if a problem, you know.
-- speaker: M1
-  text: What happens when, you know, the wagon wheel falls off? Yeah. Yeah. Yeah.
-- speaker: S1
-  text: And so.
-- speaker: M1
-  text: What happens if you get dysentery? Right. Exactly. Yeah.
-- speaker: S1
-  text: What a problem.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So yeah. That's really the goal of it. And Global Day is about increasing
-    the number of people who are comfortable facilitating, expanding it. After last
-    year. Last year, the majority of the people running them were new.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: New facilitators, new hosts. And that led to an explosion this year of people
-    who had a little bit of experience doing it. So that's where we got every weekend.
-    Somebody doing something. You can go to the event. You can go to the code retreat
-    org site. So that's what I was going to wrap up is say, for people who are interested
-    in participating or running a code retreat, you have a website. Code retreat org
-    is our social network.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: It's built on name. And there's a big banner right now. You can go. There's
-    a page for Global Day. It's at globalday. coderetreat. org.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: But if you go to coderetreat. org, there's a banner you can get to. All the
-    stuff is there. There's an events listing.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So it has both the registered locations for Global Day as well as what's going
-    on this weekend and it could be near your town.
-- speaker: M1
-  text: Okay. Great.
-- speaker: S1
-  text: Well, thank you very much. Thanks so much for talking and keep up the good
-    work. These are great interviews. Thanks.
-normalized_at: '2026-05-21T12:21:50-05:00'
-validation_error: 'Significant Word Count Drift: Raw=4701, YAML=3581 (24% difference)'
-validated_at: '2026-05-21T13:25:30-05:00'
-summary: |
-  Global Day of Code Retreat is a community-focused event where participants work on Conway's Game of Life in 45-minute sessions, deleting code and swapping pairs after each session. The event aims to push participants to write better code and investigate different design ideas by removing the pressure to finish.
-
-  CRITICAL INSIGHTS:
-  - The goal of Code Retreat is to write the best code you've ever written and see what that looks like.
-  - The day is built to allow participants to retreat from the normal pressures of finishing and focus on clean code.
-  - Going too far in refactoring or extracting methods can provide a better sense for when you are actually building a production system.
-  - The global aspect of Global Day of Code Retreat brings the global community together, with events spanning 14 time zones.
-  - Encouraging over-engineering and making small methods helps participants understand why over-engineering is a problem.
-topics:
-- Code Retreat
-- Conway's Game of Life
-- Pair Programming
-- Test-Driven Development
-- Language Agnostic
-insights:
-- statement: The goal of Code Retreat is to write the best code you've ever written
-    and see what that looks like.
-  type: durable
-  confidence: high
-- statement: The day is built to allow participants to retreat from the normal pressures
-    of finishing and focus on clean code.
-  type: durable
-  confidence: high
-- statement: Going too far in refactoring or extracting methods can provide a better
-    sense for when you are actually building a production system.
-  type: durable
-  confidence: high
-- statement: The global aspect of Global Day of Code Retreat brings the global community
-    together, with events spanning 14 time zones.
-  type: durable
-  confidence: high
-- statement: Encouraging over-engineering and making small methods helps participants
-    understand why over-engineering is a problem.
-  type: durable
-  confidence: high
-enriched_at: '2026-05-22T08:32:56-05:00'
-indexed_at: '2026-05-22T12:24:14-05:00'
-zdots_lesson_id: 69783708-d870-4d67-8f80-e4c66b61aef8
+  text: So very few people can, and in fact, it's intentionally chosen so that you
+    can't finish the problem. The goal is to sort of retreat from the normal pressures
+    of finishing. We all know that we write our worst code when we're rushing under
+    constraints and under a time pressure. And the corners we cut, things like that.
+    So the day is built to allow you sort of that freedom to experiment and try new
+    things. So the very first one, it's frustrating for people. And by the end of
+    the day, it's frustrating not finishing it. But you're kind of laughing. You're
+    laughing at it. and instead sort of that pressure to finish goes away and you
+    start to focus on um clean code focus on investigating different design ideas
+    rather than rushing to finish right and actually have you ever had anybody like
+    just be like oh can't wait anymore like you don't put up and just bang it out
+    so i'm just curious we've had like for the first session a lot of times people
+    will sort of hack out a solution because they're still in that mindset of wanting
+    to get it done but you know like a lot of us say it's easy to get something working
+    when you write crap right and so the idea of the day is to sort of write the best
+    code you've ever written right and see what that looks like and take what you
+    consider great code take it to the extreme and you know we always talk about going
+    too far but very few people actually get close to too far so so shoot for gold
+    plating shoot for gold plating and what happens if you actually go too far what
+    happens if you refactor too much or you extract too many methods what does it
+    look like and by taking yourself to that place you get a better sense for when
+    you are actually building a production system how far you can go yeah and i think
+    that that exercise of like sometimes when you want to start to refactor and you're
+    you're looking and saying okay i'm gonna i'm gonna refactor this code and then
+    you realize you did go too far you spent half a day and now you have to back it
+    up but this cold retreat you can see like what if i did this thing i want to try
+    to do and it doesn't matter if you went too far because you don't have to backtrack
+    you just throw it away you throw it away and that gives you a good perspective
+    so that when you are working and you're like am i going too far yeah you'll have
+    an experience of actually doing it so that you can be like well no if i go a little
+    farther it's still okay um and what was probably what's probably the most unique
+    um experience you've had like do you have like a specific because we're going
+    to get into the global aspect but the actual at a code retreat a solution that
+    somebody did has anybody done something like implemented it and then script or
+    anything like that? We've had people fool around in bash scripts. I think one
+    team did try it in vim script and it's always interesting every code retreat there's
+    always some sort of interesting approach to it so there's nothing really that
+    stands out like that was the coolest. I did see at a code retreat in Colorado
+    where I think on the final session some people ended up writing a fairly reasonable
+    solution about six or seven lines of Ruby and I was like oh well what if you need
+    to do this or change this and they it was actually a really nice small scripted
+    solution we tend I tend to encourage people to over engineer so make a ton of
+    classes keep very small methods things like that to see what it means we drop
+    that term over engineering all the time but few people know a few people could
+    recognize it and understand why that's a problem about the global now I mean I
+    know you you started doing these these club treats it's kind of a one-off thing
+    you did them in a few places but you do one that spans the entire globe in one
+    day yeah so last year in 2011 in August I put out a blog post and said wouldn't
+    it be cool if we have 20 cities around the world all on the same day and we could
+    Skype and stuff yeah and it sort of took off and by the I think it was December
+    5th of 2011 we had 94 cities 14 time zones all doing it around the world on the
+    same day and you tried to hop around so I did Sydney which was one of the first
+    ones and then I caught a 6 p. m. flight that landed in Honolulu at 6:45 a. m.
+    the same day so while the Sun was going this way you were going hot the other
+    way and went the other way and so I'm gonna try to do it again this year okay
+    we're aiming for 200 cities this year we are already at 60 which is about on track
+    and so we've got two months to go and that's usually when it starts picking up
+    okay and yeah it's a really great day there's a lot of it sort of brings the community
+    the global community because code retreats just as as one-off things are done
+    all over the world pretty much every weekend now there's at least one or two going
+    on a couple weeks ago there were six of them on a day and global day is really
+    about bringing it's a there's two really cool parts about it one is bringing that
+    global community together all around one event and then the other aspect is introducing
+    and training new facilitators because during the day the facilitators role is
+    to introduce new constraints is to answer questions help people out ask questions
+    and so it's on we do trainings we do facilitator trainings yeah I was about to
+    ask I mean if somebody wanted to become a facilitator and it's like man this is
+    really cool I wish I could do this in my city but we're in Anchorage you know
+    there's nobody around you know how do how do they go about doing so for participants
+    yeah well the it's built the format is very well defined and so it's sort of built
+    so that even if you are a horrible facilitator right if you stick to this format
+    then it's going to be a great day. So it's intentionally made for people to be
+    able to just do it and follow a script almost and then for as you do more and
+    more you get more understanding of sort of the subtleties of facilitation how
+    to introduce the exercises better things like that but if people want to do it
+    I've had lots of people email me with those exact same questions like i've never
+    done this i don't i don't feel like i'm a great developer all of that but it's
+    like the best way is just to do it yeah um the this isn't a great developer exercise
+    it's a path it's a path and you know i like to tell everyone that every facilitator
+    that's out there there's a handful of us who are experienced facilitators and
+    have done a lot right but all of us had our first one yeah and i know very specific
+    people who are very active in the community do a lot of these things and i remember
+    their first code retreat when they emailed me and i talked to them and you know
+    had a skype call with them and walked them through some ideas and now they're
+    doing them all the time yeah and i mean with it getting so big i just wonder also
+    is it getting so is it getting to become a point where there's a code retreat
+    being set up and you didn't even know about it absolutely yeah absolutely i that's
+    cool i'm very strict about the format and so we have it published this is the
+    format um i've been sort of iron hand holding the format that if you want to do
+    a code retreat this is the format if you want to call it a code you want to call
+    it a code retreat i always make sure to tell people that the it's not intended
+    to be the only activity that anyone ever does and it's not the it doesn't cover
+    all aspects of development it has very focused things that it works on and it's
+    there's lots of really important practice oriented activities people can do but
+    coder tree is this right and so i've been um fairly iron handed about that and
+    but now it's sort of as I've sort of curated it and gone it's it's intended to
+    be decentralized okay so people set them up and do them all the time very few
+    people now like email me and go can I right because it's It's not about my approval
+    or my influence or anything like that. It's a local event to bring people together
+    and practice. So it's kind of finally grown beyond your privilege. That has to
+    be a really cool feeling. It's a wonderful feeling. Early on, I knew sort of what
+    everything was doing. And, you know, I pissed a couple people off because they
+    were like, oh, I'm going to do this. I'm like, well, that's not a code retreat.
+    I'd ask you to not call it a code retreat. but um now it's gotten it's it's sort
+    of reached that level where it's beyond me and it's not centered around me i'm
+    sort of a uh one of my one of the guys called me a benevolent dictator yeah i
+    think more instigator yeah and i like to curate like i run the coderetreat. org
+    site but it's not like i'm on there saying what can happen um and there's enough
+    people now who are experienced facilitators experienced hosts who just they're
+    off doing it and there's not really experimentation around the format but there's
+    more and more experimentation around exercises during the 45 minutes so I was
+    gonna would that be relevant because I was what I was just thinking about is well
+    if it's object-oriented functional programming is very much becoming popular now.
+- speaker: M1
+  text: Could somebody do a functional code retreat? Wouldn't that still be a code
+    retreat?
+- speaker: S1
+  text: Absolutely. Absolutely. The format is the 45 minutes, the throwing the code
+    away, Conway's Game of Life. I'm an OO guy, and I've been doing a lot of sort
+    of thinking about OO concepts over the last couple years. And so the code retreats
+    that facilitate and the exercises that I do focus on sort of the edges of understanding
+    around OO design I don't have a tremendous amount of like expertise in functional
+    paradigms I did I've done you know a fair share of fun or something like a theme
+    that they wanted to build a code retreat around and they they can make a cohesive
+    set of exercises to do within a format they could absolutely so a perfect example
+    of that is JB Rainsberger started a thing called legacy code retreat okay and
+    it was the first sort of expanding the family of code retreat and so they don't
+    do counters game of life they have a code base that Chet Hendrickson and Patrick
+    Welsh put together which is a horrible code base and so the the it takes your
+    own yeah exactly well it's chat and so the exercises are about writing tests around
+    it refactoring and it's still it's a legacy code retreat so the classic code retreat
+    I'm very you know here's the format there's no reason you can't come up with something
+    like a it's Matt Hauser came up with a test automation code retreat okay so they
+    we have been experimenting with doing the code retreat format but around different
+    techniques in test automation okay so they use a code base and work on different
+    automation tools well how can we hit this this way how can we get it that way
+    yeah and so what I what I'm aiming for and what I love to see is an expansion
+    of the code retreat family rather than a if you go to something called code retreat
+    you don't know what you're going to get because people are doing whatever they
+    want. But if you go to a legacy code retreat, you know you get this. If you go
+    to a test automation code retreat, Brian Merrick for a little while was talking
+    about putting together some exercises on a refactoring code retreat. And so I
+    love this.
+- speaker: M1
+  text: How can you mutate a code base? Yeah.
+- speaker: S1
+  text: And so, but I tell people, I get people asking like, can I use a different
+    problem or all of this? And I generally say no. Well, I always say no. But what
+    I want people to do is use, you know, it's been, we've been building and sort
+    of fine-tuning the format for almost four years now. It's settled, it's good.
+    Yeah, we know this works. This worked. Early on, we did a lot of experimenting
+    around the format and settled on something that works. And so what I want, what
+    I would love people to do is come up with a different set of exercises centered
+    around something specific and then call that a X coded sheet. I would love to
+    see somebody who has more experience with functional languages and knows about
+    functional design come up with a set of exercises that are really applicable to
+    functional programming. and have a sort of a functional code retreat. So, for
+    example, one of the exercises that I love doing that always causes people problems
+    is no return values. My favorite. And in a functional language, say you're doing
+    it in Clojure, well, Clojure's got a lot of just data transforms. And what comes
+    out is it's transformed into some other format. and so the core a lot of the core
+    is built on data coming in data going out so asking them to say no return values
+    i don't know like i'm not a Clojure guy i've fooled around a little bit paired
+    with people but i don't know if that would give them a valuable thing to practice
+    right i know but at least it would make them try to think about something like
+    if they're always saying it goes this way it goes this way it goes this way what
+    if it goes like this what if it goes like that i know that in oh the exercise
+    around no functional or no return values is fantastic and it's a really valuable
+    design style that you can use and get better at and in certain cases it's a much
+    it's a highly it's a much more superior uh form in certain cases and so one of
+    the ideas is that we tend to have the way we code right um it's sort of like our
+    style the the wagon trail where you code this way for so long you end up with
+    ruts that your wheels go down and it's effective and you get to california and
+    you find your gold but what if if that's your only tool that you can pull out
+    then you know what if a problem what happens when the you know the wagon wheel
+    falls off yeah yeah yeah and so really yeah or what if what happens if you get
+    dysentery right exactly yeah that's a problem yeah um so yeah that's really the
+    goal of it and global day is about um increasing the number of people who are
+    comfortable facilitating expanding it after last year last year the majority of
+    the people running them were new. New facilitators, new hosts. And that led to
+    an explosion this year of people who had a little bit of experience doing it.
+    So that's where we got every weekend. You can go to the event. You can go to the
+    CodeRetreat. org site. So that's what I was going to wrap up is say, for people
+    who are interested in participating or running a CodeRetreat, you have a website.
+    coderetreat. org is our social network it's built on ning um and there's a big
+    banner right now you can go there's a page for global day it's at globalday. coderetreat.
+    org okay but if you go to coderetreat. org there's a banner there's an events
+    listing okay so it has both the uh registered locations for global day as well
+    as what's going on this weekend and it could be near your town okay great well
+    thank you very much thanks so much for uh talking and keep up the good work these
+    are great interviews thanks
