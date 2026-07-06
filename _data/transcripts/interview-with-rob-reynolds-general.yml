@@ -9,3912 +9,558 @@ speaker_map:
 turns:
 - speaker: M1
   text: Hi, it's Mike again with UGtastic. Today I'm sitting down with Rob Reynolds.
-    You might know him as @VerventCoder on Twitter. He's been around in the . NET
+    You might know him as Fervent Coder on Twitter. He's been around in the . NET
     community creating open source software for a few years now. He started with a
-    lot of Chuck Norris themed utilities, Roundhouse and Uppercut. He's even worked
-    on NuGet and now his latest project that he's working on is called Chocolaty.
-    It's kind of like apt for Windows. So Rob, thanks for taking the time to sit down
+    lot of Chuck Norris themed utilities, Roundhouse and Uppercut and he's even worked
+    on Nougat and now his latest project that he's working on is called Chocolaty.
+    It's kind of like apt for windows. So Rob, thanks for taking the time to sit down
     and chat with us today. Thanks for having me. Sure. So we'll work backwards. We'll
     start with Chocolaty and then we'll talk about some of the other projects you've
-    worked with. So what is Chocolaty and why and how did you start to work on it?
-    Sure.
+    worked with. So what is Chocolaty and why and how and why did you start to work
+    on it? Sure.
 - speaker: S1
   text: Chocolaty is your global silent installer/updater. We describe it as kind
-    of like apt-get, but for Windows. And the kind of means this is not an apt-get
-    clone, which a lot of people are like, "Well, this doesn't have apt-get command
-    update. " Well, it's kind of like apt-get. It's basically a global PowerShell
-    execution engine. And the biggest modules in it right now are about getting things
-    installed on your system. But that doesn't mean that's all it has to be used for.
-    You can use it for setting configuration values, setting registry, setting all
-    that. We called it Chocolaty because it builds on top of NuGet's packaging infrastructure.
-    And so this is a global PowerShell execution engine. It knows about packaging
-    and versioning so that you could make a new version of some configuration or an
-    application and then just update the package and somebody could update their system
-    with that. Yeah, and I see like on the Chocolaty. org website that you have, the
-    first example is it looks like it's automating an MSI installer to install Git.
-    So, I mean, you're launching and you're making a new version of Git. So, you're
-    not just installing Git. You're making a new version. You're making a new version
-    of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
+    of like apt-get, but for windows. And the kind of means this is not an apt-get
+    clone, which a lot of people are like, well this doesn't have apt-get command,
+    you know, update, right? Well, it's kind of like apt-get. What it is, is it's
+    basically a global PowerShell execution engine. And the biggest modules in it
+    right now are about getting things installed on your system. That doesn't mean
+    that's all it has to be used for. You can use it for setting configuration values,
+    setting registry, setting all that. We called it Chocolaty because it builds on
+    top of NuGet's packaging infrastructure. And so this is a global PowerShell execution
+    engine that knows about packaging and versioning.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So that you can make a new version of some configuration or an application
+    and then just update the package and somebody could update their system with that.
+- speaker: M1
+  text: Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: And I see like on the Chocolaty. org website that you have, the first example
+    is, it looks like it's automating an MSI installer to install Git.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: So, I mean, you're launching and you're using the existing infrastructure
+    for doing installs. You're not like installing into a separate directory and linking
+    binaries or anything like that. You're instrumenting and making and scripting
+    these installation packages. Correct. And the biggest reason for that is there
+    doesn't have to be a huge buy-in to start using Chocolaty from the consumer and
+    there doesn't have to be a huge buy-in from the creating packages side either
+    because you have this existing infrastructure that's out there. There's MSIs,
+    executables, you know, install shield type, native installers. And Chocolaty hooks
+    right into all that. The other thing is that Chocolaty doesn't do anything different
+    than what you would do as a regular user, especially when it comes to like distribution
+    rights. So, there may be some software out there, let's say something like Resharper,
+    where you're required to go get it from the manufacturer. Chocolaty has the ability
+    to do that for you. It reaches out and gets it, pulls it down, the package instructions
+    tell it that, you know, here's the silent arguments to install it and so they
+    can install it. And when you update, you just call Chocolaty update, saying this
+    was Resharper. And then it reaches out and it gets the newest package, if there
+    is one, and walks back through that same process. So, you can, I mean, some stuff
+    probably doesn't have a friendly upgrade path or reinstall path. I mean, how do
+    you, I mean, do some things you have to say, well, this one's not an upgradeable
+    package at this time, it's an install only, is there a difference between those?
+    You know, if it doesn't, if the native installer doesn't elegantly handle upgrades,
+    then that's usually a problem with, you know, that package, whoever makes that
+    application. But, yes, so Chocolaty, that would be, well, this package doesn't
+    do upgrades very well. In the future, what we're looking at doing for those types
+    of packages is, during an upgrade, we would just have it uninstall the package,
+    or the current application, and then flow through to the actual install.
 - speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
+  text: Okay.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: So, you do get that nice thing, we don't have that right now, that's probably
+    a couple versions up, but it's something that we're thinking about, because we
+    do see some of these native installers, and I don't know, maybe it's just that
+    the person that makes that application doesn't put forth the effort to make sure
+    you have a nice upgrade story, which is kind of sad.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: And, so, I mean, ultimately, what led you to creating, or did you, were you
+    the one that originally created Chocolaty, or? Yes.
 - speaker: M1
-  text: Yeah.
+  text: Okay. So, what prompted that?
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: I was looking for a really good solution to, I mean, at the time, to get the
+    application type executable gems off of Ruby, and this goes back to a bit of history.
+    Before NuGet, there was a project that we worked on called Nu, and it was short
+    for Nubular, and our tagline was, "New, nice package. " But, that used Ruby's
+    infrastructure, and Ruby's infrastructure had both library type gems, which translates
+    into the nice NuGet DLL libraries, and then it also had executables. So, you could
+    set an executable into a gem, and then put that on the path really nicely. And,
+    in trying to get the rest of those off of Ruby gems, at the request of Nick Quanto,
+    I was looking for a good way to have a machine type repository. And so, out of
+    that came the idea of, you know, you've got your vanilla NuGet, and then you've
+    got your Chocolaty NuGet.
 - speaker: M1
-  text: Yeah.
+  text: Right?
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: And, the Chocolaty was for those machine type things. During that period,
+    I realized that we could actually just have it execute PowerShell, much the same
+    way that NuGet does. And, that opened up a world of things that we could do, which
+    brought about the installation, configuration, and updating of software. Which
+    really brought it in line with a nice answer to the question of, you know, this
+    missing package manager for Windows. And, it's not the first time that somebody's
+    tried to do this. I mean, there are other ones out there. We just tried to make
+    it work with the existing infrastructure as best it could. And then, you know,
+    do the trade-offs where necessary. And then, make the experience for the user
+    and the package creator super simple.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: So, it's growing in popularity pretty quickly. Oh, I'm sorry, go ahead. No,
+    what I was about to ask is, so, it would be good for anything from building a
+    new server to, I have a developer workstation. I got my new box, and I want to
+    get all my dev tools on there. Just, luckily, split. I could have my script, my
+    Chocolaty script. And, that'll just install everything for me.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: And, you could set that up. In fact, we do that. In fact, I just got done
+    doing that on a project I'm working on for some new devs. Bringing them on.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: We just have a setup. ps1 script. It's a PowerShell script. Mm-hmm. First
+    thing it does is install Chocolaty. And, it just walks through and starts installing
+    things on the box. If they're already there, it doesn't do anything. The really
+    nice thing is, this is installing everything from service packs for, I'm sorry,
+    for Visual Studio to SQL Server, Express gets installed. And, all of this is completely
+    automated. And, then, they get IIS and IIS extension, I'm sorry, Express. And,
+    then, all of the different things that are needed with IIS. And, this all happens.
+    They can get up and go get a coffee and come back. I was going to say, a Visual
+    Studio install has to be more than a coffee. It takes a little longer than that.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: Walk to Bolivia and get a coffee. The reason we're able to do that is that
+    Chocolaty integrates with other package managers. And, if I wanted to install
+    something that was like Compass, which is on Ruby. Or, Autosave, which is on Node.
+    Mm-hmm. Which are things that we also installed during this. Or, Bash, which is
+    on Cygwin. Or, anything that comes from the web platform installer. So, that's
+    like MVC. Or, any Windows components. All of those, I just change the source that
+    I'm going to. So, when I go to Chocolaty install. And, I'd say like Compass. And,
+    I'd put slash source Ruby. And, if I don't have Ruby installed on that box yet.
+    The first thing it's going to do is install it. And, then, it's going to install
+    Compass. Wow. That's, that sounds pretty, pretty intense.
 - speaker: M1
-  text: Yeah.
+  text: Yeah. It's, you know, and for the end user that becomes such a super simple
+    process, right?
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: Now, if you ever had to install like Dev Kit on a Windows machine. You know,
+    that can be kind of a hairy process.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: We built a, we took basically the instructions that were out on the wiki.
+    Set them into a PowerShell script. Commented them all out. And, then, made that
+    all automated. And, so, when you go to install Dev Kit, we'll install Ruby first
+    if it's not installed. And, then, it installs Dev Kit. So, it's just a one line
+    guy and you got Dev Kit.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: And, take that from how it used to could. How it used to be. Then, you can
+    see that that's quite an improvement on the process.
 - speaker: M1
-  text: Yeah.
+  text: So, do you have like a recipe library that you guys work with?
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: Or, how do people go about building a new, I mean. So, how do you deal with
+    contributors, I guess is the question.
 - speaker: M1
-  text: Yeah.
+  text: Do you have people who are building scripts and they want to contribute them
+    to a main repo?
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: Is there something like a rubygems.
 - speaker: M1
-  text: Yeah.
+  text: org?
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: Yes. Chocolatey. org.
 - speaker: M1
-  text: Yeah.
+  text: And, that is the community, I would say the community official repository,
+    right? What was that repo again?
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: Chocolatey. org. Or, chocolatey. org is where the package is.
 - speaker: M1
-  text: Yeah.
+  text: Chocolatey is spelled E-Y, right?
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: We spell it a little bit more British. Mostly because, to me, it looks more
+    like it should. It doesn't look as weird. And, it was available as a domain. That's
+    very important. Name a product because you can actually buy a domain. And, in
+    this case, that was one of those products. Plus, like I said, it's a play on chocolatey.
+    Chocolatey, NuGet. But, people who want to contribute, how do you go about receiving
+    or are you guys making all of the recipes or how does that work? We have what
+    we consider the helper modules or the utilities, utility modules that you can
+    use. Of course, you don't have to use them. You can write as much as you want
+    into that chocolatey install script. And, then, when the package gets consumed,
+    chocolatey looks for that script. And, if it's there, it just does everything
+    that's listed there. Now, the important thing to note is that chocolatey, by default,
+    is not going to run as an administrator. So, anytime you need administrator access,
+    you're going to have to ask for it in the script.
 - speaker: M1
-  text: Yeah.
+  text: Okay.
+- speaker: S1
+  text: So, as far as, I mean, this sounds like a very intense project.
+- speaker: M1
+  text: I mean, are you working with other open source contributors? And, how do they
+    get involved in helping to contribute to the core of chocolatey? Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
+  text: As far as packages, packages are a different idea. Chocolatey has that distinct
+    separation point where, you know, it's got its core and its utility. And, on the
+    other side, all of the packages, and the packages themselves may or may not have
+    issues. So, that's where a lot of the contributions come from. We have a team
+    of about five folks that are working on chocolatey core and making it better.
+    There's a couple of us, maybe just me at this time, working on the actual chocolatey.
+    org site. We're trying to bring some new features up to that. And, I don't know.
+    So, we got five folks. We got another guy who works, one of those five folks also
+    works on the puppet package for chocolatey. And, on the other side, the chef package
+    is done by another guy. And, he doesn't consider himself part of the core team
+    yet because he hasn't worked on chocolatey itself. And, so, he's just providing
+    that chef package and keeping it updated. And, that's awesome.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So, I interviewed Mandy Walls from Opscode a few days ago. And, she talked
+    about how they can now do Windows Server.
+- speaker: M1
+  text: So, that was something I was about to get at was, does chocolatey integrate
+    with that?
+- speaker: S1
+  text: So, it sounds like it does already.
+- speaker: M1
+  text: So, how did these people come to contribute? I mean, were these people you
+    had already been working with?
+- speaker: S1
+  text: Or, were they people that found chocolatey and were like, hey, this needs
+    to be part of Chef, or Puppet, or X?
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: A lot of it is somebody found it, realized there was a need, and filled the
+    need. And, you know, that's been pretty fantastic. We have a lot of community
+    contributions coming to chocolatey, even when I don't have time to take a look
+    at it. But, I think right now we're sitting at 20 open pull requests, which could
+    be considered healthy, could be considered unhealthy. With work constraints, you
+    know, we're all human beings. So, we only have a certain amount of time. And families.
+    Yeah, and families. Only a finite amount of time to actually go and evaluate these.
+    So, we try to keep that down under, I really like to keep it under 10 pull requests
+    at a time. So, you're using GitHub, obviously, for managing the development and
+    the source code. Yep. And we have the wiki out there that talks about all the
+    commands you can use, and then all of the different, these are the commands that
+    you, I'm sorry, parameters and switches that you can apply to commands. So, some
+    of the really interesting ones are if you want to download a particular package,
+    but you don't like the silent arguments they're using or you want to put it in
+    a different directory, you can actually override the arguments from the command
+    line, which is kind of nice.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: One of the things we're working on as well is, you know, what if there's not
+    a chocolatey package or something, but you want to go ahead and just install it,
+    so you want to speed that thing up. Working on the ability to provide a URL to
+    an MSI or an executable, and then you could pass your silent arguments and just,
+    it'd be kind of a pseudo, it's not really a, there's no package for it, but you
+    get it installed.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: So you wouldn't even need any of that packaging infrastructure built up. Now,
+    you have a history of being involved in these tools. You were involved in the
+    creation of Nu, and which ultimately, well, I mean, did it close down and become
+    NuGet, or was that an entirely new code base when NuGet, I wasn't sure how that's
+    all played out. Okay, so, now I was involved in Nu during the last two reboots.
+    Nu was called NGEM when it was originally devised, and that was Nick, and I can't
+    think of his last name right now, he's out of Iowa, and then David Larrabee and
+    a couple of others, I think Chris Patterson and Drew Sellers were even on the
+    original. And then they renamed it to Nubular, about the time of 2008, and it
+    was like the second reboot. And then there was a third reboot that came about,
+    I want to say in 2009 or early 2010. And that reboot, I got involved with, I helped
+    them with some of the stuff, but I didn't really work with the core guts of it.
+    They're still trying to figure out some of that. And then that kind of went to
+    the wayside again, and then in early July that year, 2010, one of my constituents
+    said, "You know, we could use Ruby as the infrastructure. " Yeah, I've been mentioning
+    that. It's not too far to see that, you know, people that want to use packaging
+    could install Ruby and not complain too much about it. Oh, come on, they're on
+    Windows, of course they can complain. I say that as a Ruby as to, they're known
+    for complaining. So, I say that with good nature, not no, no, no. It was working
+    and we had a video out on it, and it kind of went viral.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And we started getting popular very, very quickly because, you know, it was
+    sorely needed inside of the . NET space for the packaging infrastructure. And
+    then Microsoft contacted us and said, "Hey, we're working on something we've been
+    working on for a while, and we'd like you to help us with that. " And we got to
+    look at where they were at with it, and we thought, "Wow, probably, you know,
+    easily a few months, if not a year ahead of us in what they've done so far. "
+    Plus, you know, they got people that are fitted to this full time where, you know,
+    we were just working on it in our spare time. And so, like, you know, we had two
+    options at that point. We could, you know, kind of move our team to work with
+    them and let news sit down. Or we could continue to work on new and watch new
+    get gain in popularity because it was coming from the Microsoft folks. But possibly
+    we'd be doing some things wrong, you know, that we'd already had experience with,
+    you know, through other packaging infrastructures. And then try to guide, you
+    know, guide the folks in the right direction, areas where, you know, this problem
+    isn't going to work or this isn't a good idea.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: So you guys, while they were technically ahead on their platform, you guys
+    had been through some of the rough patches already and vetted some ideas and found
+    out, oh, yeah, delivering it this way, that has this problem, this problem, this
+    problem. So you were able to provide some... Yeah, and they had started to look
+    at, like, their version of rubygems. org. We were able to help on some of that
+    as well. We really liked the idea of some social aspects and being able to, you
+    know, I'm this user and I have this many packages and they have this many downloads,
+    right? And all of that stuff was kind of there. And they originally set it off
+    out of Orchard and then have since moved to a custom application, which I think
+    has been a really good choice. So they could do more with, you know, not having
+    to wait for Orchard to report in some areas. So, and then the CodePlex, now I'm
+    just drawing a blank.
+- speaker: M1
+  text: It was the CodePlex organization or the CodePlex, what was the name of that?
+- speaker: S1
+  text: It was the CodePlex Foundation. The CodePlex Foundation, yes. So they founded
+    that around that time. Was that directly because of the work you guys were doing
+    with them for NuGet or... Because that was Microsoft trying to say we're going
+    to try to partner with open source developers on the Microsoft platforms and try
+    to work more closely with them. And they renamed it to the OuterCurve Foundation.
+    OuterCurve, okay. OuterCurve Foundation is funded somewhat by Microsoft for the
+    projects that they are putting developers on and for the projects that they think
+    are good. But if you go out to OuterCurveFoundation. org, you're going to find
+    that a lot of those are Microsoft related. Of course, they're all going to be
+    in the Microsoft sphere, but they usually have Microsoft assets on them as well.
+    So they have their time to work on those projects.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So... By the time NuGet went there, I think NuGet was maybe the fourth or
+    fifth project to get accepted into the OuterCurve Foundation. And it was kind
+    of interesting. We had signed some paperwork coming on to help out with NuGet.
+    And this was kind of maybe a little ahead of its time for Microsoft. Microsoft
+    lawyers looked over it. Lawyers at the company I worked for looked over it to
+    make sure that everything was good. But it was really about IP and protection
+    and stuff. And then we had to sign it again when it moved over.
+- speaker: M1
+  text: When it moved to the OuterCurve? Yeah.
+- speaker: S1
+  text: And that allows us to be contributors on a large scale. And today, I think
+    they still ask for folks to sign that if they're going to be contributing large
+    contributions to the code base. Small contributions that don't require anything
+    to be signed. Just pass a code review and make the people on the project happy
+    about it. And it can get put in. So it's one of the... And what we've seen since,
+    you know, Entity Framework is now open source. And so a whole bunch more projects
+    have started to move towards this for Microsoft. And I think that's a good move.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: Especially something that was so controversial. When I was still a DonNet
+    developer, when the Entity Framework was being promoted. I use that as a euphemism
+    for "shove down throats. " But it was being promoted. But it sounds like opening
+    that up is letting maybe some people that have some of those strong opinions actually
+    put fingers to keyboards and try to make things better.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: Instead of just sitting idly by waiting for the next initiative to come out
+    of the mothership. And it's funny to mention that. This really leans to why we
+    went to work on NuGet versus just sit to the side and work on our own project
+    and be a competitor. We didn't want another Entity Framework. So you helped make
+    sure that it went in the right direction. The package management is pretty important.
+    And the guys at Microsoft that were on the project at the time we were on, they're
+    pretty smart guys. We're talking about the ASP .NET team.
+- speaker: M1
+  text: Yeah, Phil Hack and who else was involved with that?
+- speaker: S1
+  text: If you can't say, that's okay. You don't have to name names. But I know Phil
+    Hack was publicly involved with it. David Ebo, David Fowler, Lewin, I can't think
+    of his last name, but he's on Twitter is . NET Junkie. But yeah, these were the
+    guys that were on the project. There were some other people. Oh, yeah, I can't
+    leave without mentioning... Man. I lost my chair of thought. That's okay. There
+    were some pretty good folks on the project.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And I'm going to just jump backwards a little bit further in time. Before
+    Nougat, before Chocolaty, you worked on some other projects. All the Chuck Norris,
+    the Chuck Norris suite of tools, I'll call it. The Uppercut, the... So it sounds
+    like you've had a passion for automation and streamlining workflow and all of
+    that in the . NET. How much... How much... Well, just if you want to really quickly
+    describe what Uppercut was and what Roundhouse was, and just how those influenced
+    and what experiences you got from working on those and people contributing and
+    getting started with those projects and then carried forward into the work. I
+    mean, were those things instrumental in helping you formulate these ideas or build
+    the concepts that were going to be required for the automation that you worked
+    with later in Nougat and Chocolaty? Yeah, I think a lot of it is my foray into
+    open source really came... I mean, to actually contribute in open source came
+    with the Chuck Norris project. Before it was called the Chuck Norris project.
+    We just had this idea of, you know, we have this infrastructure that we'd like
+    to provide so that developers can really ramp up and, you know, be able to focus
+    on what they want to do, which is develop and not really focus on, you know, things
+    like infrastructure. Like, I need to do database migration. Mm-hmm. This expensive
+    process of running the, you know, 20 scripts against the database and then somehow
+    keeping that up to date. And just as an aside, going back to the other conversation,
+    Lewin's last name is Nguyen. Oh, okay. And Matt Osborne were the other two guys.
+    And, of course, Scott Hanselman at the top, looking over this, him and Scott Guthrie.
+    Oh, the big red shirt. And, of course, Scott was pretty instrumental in the entire
+    process of, you know, welcoming non-Microsoftese onto a project and making that
+    happen at Microsoft. Mm-hmm. Back to Chuck Norris. The Chuck Norris project framework
+    for us was a developer infrastructure. When I, when I started, we were working
+    on something that was, we had, at my company, 78 projects, not like Visual Basic
+    or Visual C Sharp, not C Sharp project, but 78 repositories. Mm-hmm. Full-blown
+    projects. Full-blown projects. Full-blown projects. And we needed to, to standardize
+    the way we were building all of these. So we needed to get an automated build
+    on all of them. And, for us, the answer was not to put it on a build server and
+    just point to the solution file and say, "That's your build," because that's nothing
+    more than compile.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: It doesn't run your unit tests. It doesn't, you know, run any analytics on
+    it, like in Depend or InCover or OpenCover or whatever. That, so what we were
+    looking for, and it doesn't do any versioning for you, so what we were looking
+    for was a good way to automate that. And so we started with this, these Nant scripts.
+    And Nant, for those who don't know, is this thing from quite a while ago that's
+    a derivative of Ant, which is an XML build tool for Java. And it was ported to
+    . NET. It still never reached version 1. But it still has not hidden. It was always
+    0. 96 something. 0. 92, I think, is the most recent. Oh, wow. We needed a way
+    to have build scripts. And at the time, we started out with that. And we started
+    to learn that we could template out parts of this. And so we could drop in a,
+    basically, what would be considered templated Nant into this directory. And then
+    we could set up all of our configuration in one particular file. And so we could
+    have the same thing for every project. And then we were like, well, this is pretty
+    interesting. We could open source this. We'd call it Uppercut. The interesting,
+    the really interesting thing about this, Nant, if you're a company that's listening
+    and say, well, why would you open source something? Is that what we open sourced
+    and what it became after it was open source are almost two entirely different
+    products. Because before it was open source, it only had to apply to certain company
+    things. And when it went more open source, it became, like, I would consider two
+    to three hundred percent better. We moved away from, we made some of the configuration
+    stuff better. We started moving into more the ability to write hooks. You needed
+    to customize certain sections, like a pre-post or a replace hook for, like, if
+    you did your versioning in a different way. All of that stuff came once it was
+    open sourced. And the company benefited from it. So you had something that wasn't
+    a core competency that you were just using. I mean, you had created to use in-house.
+    Took that thing that, it's like, this isn't on our bottom line. This is just some
+    stuff. Put it out where other people could use it. They used it. Contributed back
+    to it. And then you reaped those benefits back in-house.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: That's a huge play for why, if you have something that's not, what's the word
+    I'm looking for, that your company needs to protect. You should... Well, that's
+    why I say core competency, because it's not something that the business needs
+    to survive. It's not a revenue generator. It's not really a differentiator. It's
+    not a competitive advantage. I mean, it is a competitive advantage, but it's not
+    something that somebody else couldn't, given the time and resources, create themselves.
+    Really interesting, when it goes open source, it can become a competitive advantage
+    for you. Mm-hmm. Well, when the value comes back. The value starts coming back,
+    you're like, oh, this came out of this place where these people are working. Oh,
+    and yeah, goodwill and recruiting, good old recruiting.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And so, that became the first thing. And then, the second project out of that
+    was, actually, I think Warm Up became the second one. And that was worked on by
+    my buddy Drew Sellers. Mm-hmm. And that is a token replacement tool. And so, you
+    can set up files, folders, some structure, and then check it into source control.
+    And then, be able to generate from that thing, whatever it is that you want. So,
+    you have some sort of standard structure.
+- speaker: M1
+  text: So, when you start, it was your entire solution, all of the packages that
+    you needed, and everything, right? Or, at the time, those were just references,
+    right?
+- speaker: S1
+  text: Everything you needed, and you check that in, and you could actually write
+    unit tests, and you could put an automated build on that, and you could be testing
+    your templates and everything.
+- speaker: M1
+  text: Because it's just, it's a naming convention that changes everything, right?
+- speaker: S1
+  text: And then, when you generate it out, the infrastructure already set up so that
+    two or three days to a week, or whatever, that most people say, "Well, we're setting
+    up the infrastructure for the project. " Yeah.
 - speaker: M1
   text: Yeah. Yeah.
 - speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And you're making a new version of Git. Bye.
-normalized_at: '2026-05-21T12:21:54-05:00'
-validation_error: 'Significant Word Count Drift: Raw=14975, YAML=9076 (39% difference)'
-validated_at: '2026-05-21T13:25:32-05:00'
+  text: And I've used your warm-up. I used warm-up on a few small projects, just because
+    it was able to drop and create a structure, and not have to think too much about
+    it. And move forward, if you go to Chocolate Inn, you read through the Create
+    Packages page at the bottom, some templates that you could install, so that you
+    could use warm-up to quickly generate out your package details, and then just
+    add in the stuff that's necessary from there. Plus, you could get all those little
+    helpers inside of the template, so that you choose what you need and get rid of
+    the rest.
+- speaker: M1
+  text: Yeah. Yeah. Right.
+- speaker: S1
+  text: That was my . We were looking at Tarantino, and Tarantino, for those that
+    don't know, did database migrations with SQL files, which is what we did before.
+    But it didn't really do well with the version. And it didn't really do well with,
+    well, I'd like to do some of the first control, and I'd like to maintain, say,
+    a view, or a stored procedure, or a function, or something else, in the same file.
+- speaker: M1
+  text: Right. Right.
+- speaker: S1
+  text: Because... You're kind of cutting out a little bit. Oh.
+- speaker: M1
+  text: Good to hear? Yeah. Yeah.
+- speaker: S1
+  text: Tarantino would require that you put all of the files into the same folder,
+    this being an up type folder, and then when you made changes to views functions
+    or whatever, that all just became part of the next script. Oh, okay. On the track.
+    And we were looking at making changes, and at the time, I don't think that the
+    maintainers were very receptive to that. Plus, we did contribute back. We made
+    it work with msbuild. We didn't see the... I don't think it's ever been accepted,
+    so... Particular patch. And so, we were like, okay, so clearly this isn't going
+    to be the future that we're going to work with, so we need to implement a different
+    solution. Mm-hmm. Started working on that from ground zero. And by commit 27,
+    I think we were able to be what would be considered the Tarantino features complete.
+    Oh. And... Well, I mean, there was something to have a reference implementation.
+    Yeah, and then we were all the way over 300, so now. Maybe over 400 commits. But,
+    you know, we had these ideas. We wanted to be... We wanted it to have a super
+    simple configuration. It'd be a SQL migration execution engine. So it's not actually
+    a migration framework, which is nice because then you can actually hook any migration
+    framework that can generate SQL files into Roundhouse.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So, like entity framework, SQL Migrator, sorry, Fluent Migrator, those can
+    be created as plug, where it can take the migration code and then have it flipped
+    into a SQL file. The nice thing about that is you give the SQL file to DBAs and
+    they say, yeah, you're next. The other thing that Roundhouse really does well
+    is this concept of global versioning, but the way you want it to work. And so
+    you can pass a XML file or a DLL and say, use this for versioning.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: And so the really nice thing about that is you're now versioning your database.
+    If you're also versioning your code, you can actually be in sync. So when you
+    deploy your code, you deploy your database, you can say, yep, we're on the same
+    version, so we're good.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: All right. Well, it's also nice to know that there was a lot more thought
+    than just being a Rails clone. I think that was, some people thought, well, that's
+    just the active record migrations. But it was solving the same problem, but in
+    its own way and it had its own design influences.
+- speaker: M1
+  text: Yeah. Right.
+- speaker: S1
+  text: And for us also, we were looking at the idea that we needed some Sarbanes-Oxley.
+    So we needed to have Sarbanes-Oxley implemented in all of these different tools.
+    So a lot of the Chuck Norris tools are very compliant with Sarbanes-Oxley. So
+    that goes on, you know who it is that's making the changes, a lot of that stuff.
+- speaker: M1
+  text: And then what is changing and how does this translate back to source control?
+    Okay.
+- speaker: S1
+  text: And that was huge and so we tried to make sure that we designed all of that
+    appropriately.
+- speaker: M1
+  text: Okay. Well, thanks for taking the time to sit down and chat with me today.
+    Well, thanks. Thanks for having me. Sure. Thanks for having me.

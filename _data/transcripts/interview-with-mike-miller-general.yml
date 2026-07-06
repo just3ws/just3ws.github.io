@@ -8,646 +8,512 @@ speaker_map:
     role: developer community and conference conversations
 turns:
 - speaker: M1
-  text: Hi, it's Mike again with NukeTastic. I'm here today again at the GoToChicago
+  text: Hi, it's Mike again with Nuke-tastic. I'm here today again at the GoToChicago
     conference, GoToChicago 2013. I'm sitting down with Mike Miller, who is the founder
-    and chief scientist of Cloudant Technology, or Cloudant?
-- speaker: S1
-  text: Just Cloudant. Cloudant. And their database is a service company. Their specialty
-    is CouchDB and BigCouch.
-- speaker: M1
-  text: So thank you very much for taking the time to sit down, Mike. Thanks for the
-    chance. Okay, the CouchDB, how did Cloudant get to be involved with the CouchDB
-    project?
+    and chief scientist of Cloudens. And they're a database as a service company.
+    Their specialty is CouchDB and BigCouch. So thank you very much for taking the
+    time to sit down Mike. Thanks for the chance. Okay, the CouchDB, how did Cloudens
+    get to be involved with the CouchDB project?
 - speaker: S1
   text: Very good question. Is it okay if I just back up a little bit and give you
     kind of one overall kind of mission statement, like a theme for the company? Absolutely.
-    Yeah, so we started the company because our backgrounds were in big stuff. So
-    we started the company because our backgrounds were in big stuff. So we started
-    big stuff. So we started the company because our backgrounds were in big stuff.
-    So we started science and big data from Large Hadron Collider and CERN. A lot.
-    So some of the biggest data sets in the world. Some big data. Yeah, and we got
-    the feeling that big data was going to be a thing.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: So we started the company because our backgrounds are in big science and big
+    data from Large Hadron Collider and CERN. A lot. So some of the biggest data sets
+    in the world. Some big data. Yeah, we got the feeling that big data was going
+    to be a thing.
 - speaker: M1
   text: Right.
 - speaker: S1
   text: And that if it was a problem for us, it was eventually going to be a problem
     for everybody. I think that's been borne out. But the other thing we learned over
     the last four years since we did Y Combinator is that mobile is also a big thing.
-    And so I think these, I think the founder of Joyent put it best, that mobile and
+    And so I think these, I think the founder of Joint put it best that mobile and
     big data have broken our model of computing.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: So that's what Cloudant is trying to solve. And so we're trying to build a
-    CDN for your database. And so we run that as a service. And if you step back and
-    say, of all the APIs and systems out there that can really deal with big as well
-    as disconnected, you know, that takes you directly and only to CouchDB. So that's
-    how we got integrated with the projects. And so we brought a lot of IP to that
-    project, both internally and in the open source.
+  text: So that's what Cloudens is trying to solve. And so we're trying to build a
+    CDN for your database. And so we run that as, as a service. And if you step back
+    and say of all the APIs and systems out there that can really deal with big as
+    well as disconnected, you know, that takes you directly and only to CouchDB. So
+    that's how we got integrated with the projects. And so we've brought a lot of
+    IP to that project, both internally and in the open source.
 - speaker: M1
   text: Okay.
 - speaker: S1
   text: And that's really the API layer that we're using, you know, for this big vision
-    of solving those two problems. But why do you think Cloudant is so important to
-    CouchDB and why is it so important to CouchDB as well? I think it's really important
-    to CouchDB and why is it so important to CouchDB and why is it so important to
-    CouchDB and why is it so important to CouchDB? I think it's really important to
-    CouchDB and why is it so important to CouchDB and why is it so important to CouchDB
-    and why is it so important to CouchDB and why is it so important to CouchDB and
-    why is it so important to CouchDB? I think it's really important to CouchDB and
-    why is it so important to CouchDB and why is it so important to CouchDB and why
-    is it so important to CouchDB and why is it so important to CouchDB and why is
-    it so important to CouchDB and why is it so important to CouchDB and why is it
-    so important to CouchDB and why is it so important to CouchDB and why is it so
-    important to CouchDB and why is it so important to CouchDB and why is it so important
-    to CouchDB and why is it so important to CouchDB and why is it so important to
-    CouchDB and why is it so important to CouchDB and why is it so important to CouchDB
-    and why is it so important to CouchDB and why is it so important to CouchDB and
-    why is it so important to CouchDB and why is it so important to CouchDB and why
-    is it so important to CouchDB and why is it so important to CouchDB and why is
-    it so important to CouchDB and why is it so important to CouchDB and why is it
-    so important to CouchDB and why is causally disconnected initially, but they can
-    be synchronized at a later point in time, which is, I think, what mobile really
-    requires. And then the other thing is just Couch is, it's pretty radical from
-    the API standpoint if you're used to using a relational database, right? Yeah,
-    it's a very different...
+    of solving those two problems.
 - speaker: M1
-  text: It's totally different, right?
+  text: But why Couch?
 - speaker: S1
-  text: "... approach."
+  text: And even one more question is, is, were you part of the creation of CouchDB
+    or was it something more you saw and you adopted?
 - speaker: M1
-  text: But I think it's very forward-thinking in the sense that, okay, the Internet
-    happened, right?
+  text: Yeah.
 - speaker: S1
-  text: People use JSON, and, you know, everything speaks HTTP.
-- speaker: M1
-  text: Well, briefly, could you just kind of describe why Couch is different?
-- speaker: S1
-  text: So, if somebody's watching and they haven't used Couch at all, a little...
-    Yeah, absolutely. ... maybe comparing, they probably know Mongo, because that's
-    really famous.
-- speaker: M1
-  text: Sure. But Couch, how is it different than Mongo?
-- speaker: S1
-  text: So, I think it's... I've got a couple answers to that. I think number one
-    is that it's a document database, and I think it's maybe the first document database.
-    I think it really coined that phrase.
+  text: So Cloudens has been involved from a pretty early stage. But we, you know,
+    we became friends of the CouchDB community in late 2008.
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: And it's been... It's a pure community project. There is not a company that
-    started and then built it and released it.
+  text: And I think we've been big supporters since. We have a large number of committers
+    actually to the project. I think maybe over half of the committers are actually
+    on the cloud and payroll. It's a big part of their job. But if you step back just
+    technically, you know, we're not necessarily the CouchDB company. The things we
+    love about it are its data model that's really built uniquely from the ground
+    up so that you can have like two disconnected systems. Like one can be my phone
+    and one can be the cloud.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: So, I often compare, you know, Mongo and CouchDB as, like, MySQL and Postgres.
+  text: That have a database and have a document with the same name, right, or the
+    same ID.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: They can be like, they can be causally disconnected initially, but they can
+    be synchronized at a later point in time.
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: Like, CouchDB community is slow, it's deliberate, and it's in it, you know,
+  text: Which is, I think, what mobile really requires. And then the other thing is
+    just Couch is it's pretty radical from the API standpoint if you're used to using
+    a relational database.
+- speaker: M1
+  text: Right. Yeah.
+- speaker: S1
+  text: It's a very different. It's totally different.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: Approach. But I think it's very forward thinking in the sense that, okay,
+    the internet happened.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: People use JSON. And, you know, everything speaks HTTP.
+- speaker: M1
+  text: Well, briefly, could you just kind of describe why Couch is different?
+- speaker: S1
+  text: So if somebody's watching and they haven't used Couch at all, a little, maybe
+    comparing, they probably know Mongo because that's really famous.
+- speaker: M1
+  text: Sure. But Couch, what, how is it different than Mongo?
+- speaker: S1
+  text: So I think it's, it's, um, I've got a couple answers to that. Um, I think
+    number one is that it's a document database and I think it's maybe the first document
+    database. I think it really coined that phrase.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Um, and it's been a pure cloud. Um, there's not a company that started and
+    then built it and released it.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: Um, so I, I often compare, you know, Mongo and CouchDB as like MySQL and Postgres.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Like CouchDB community is slow. It's deliberate. Um, and it's in it, you know,
     for the decades.
 - speaker: M1
   text: Right. Right.
 - speaker: S1
-  text: It's not necessarily, like, "Got to get to market right now. " Yeah. And that
-    defines the culture and the product path a lot. But from the API standpoint, it's
-    very different, right, than a typical database. Just from the way you talk to
-    it, your database...
+  text: It's not necessarily like gotta get to market right now.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: It's like a web server, which is pretty radical if you worked on, like, big
-    enterprise IT.
+  text: Um, and that defines the culture and the product path a lot. Um, but from
+    the API standpoint, it's very different, right, than a typical database. Um, just
+    from the way you talk to it, it's your database is a web server, um, which is
+    pretty radical if you worked in like big enterprise.
 - speaker: M1
   text: Right. Right.
 - speaker: S1
-  text: Like, usually locked on the database. In this case, it's like, "Well, you
-    know, the internet has taught us how to build very secure and high availability,
-    you know, systems, so let's just bake that into the database itself and think
+  text: Like usually lock down the database. In this case, it's like, well, you know,
+    the internet has taught us how to build very secure and high availability, you
+    know, systems. So let's just boil, bake that into the database itself and think
     about, you know, working towards a goal of eliminating the middle tier if you
-    want to, and just let the database do a lot of the things that you generally need.
-    " Well, one thing that I think when somebody first looks at CouchDB, as somebody
-    who's come fresh to it myself...
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: "... is that you don't write queries in the same way. It's more queries up
-    front, and then you start pushing data into the queries than defining a schema
-    or just pushing raw data into a..."
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: It's different.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So the thing about a document database is the idea that in contrast, like,
-    column stores like Cassandra, HBase, or Bigtable, it's not schematized.
+    want to and just let the database do a lot of the things that you generally need.
+    Well, one, well, one thing that I think when somebody first looks at couch though,
+    I, as somebody who's come fresh to it myself, uh, that you don't write queries
+    in the same way, that it's more queries up front and then you start pushing data
+    into the queries than defining a schema or just pushing raw data into, uh, I think.
+    Yeah, it's different. Um, it, so the thing about a document database is the idea
+    that, uh, in contrast, like, uh, column stores, like Cassandra H base or big table,
+    um, it's not schematized.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: And so you don't have to sit down and pre-declare what you're going to put
-    in and be limited in how you can query that later on.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: You don't have to go down downstream in your project. With a document database,
-    the idea is you can always build a new index to do what you need to.
+  text: So you don't have to sit down and pre declare what you're going to put in
+    and be limited in how you can query that later on downstream in your project.
+    With the document database, the idea is you can always build a new index to do
+    what you need to.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: So that's step number one. But step number two is CouchDB is very much from
-    the ground up built to be stable in production, and so things like table scans
-    don't really exist.
+  text: Um, so that's step number one. Um, but step number two is couch DB is very
+    much from the ground up built to be stable in production. And so things like table
+    scans don't really exist.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: Because they're neat when you're starting a project, but in production, they
+  text: Because they're neat when you're starting a project, but in production they
     suck.
 - speaker: M1
   text: Yeah. Right?
 - speaker: S1
-  text: They're the things that make your site go offline.
+  text: They're the things that make your site go offline. Um, and so it's very much
+    about, um, recognizing that disk is cheap. So let's store your data durably. Let's
+    make sure it's always flushed to disk with an F-sync before we succeed a response.
+    Um, let's make sure that you can pre-compute, um, that data using that incremental
+    indexing engine, which is very unique. So that no matter how the data is, like
+    stored, it's prepared in exactly the way your application wants to consume it.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: To load a page, drive an app, leaderboard, like you name it. And then, um,
+    the third thing is, I think it's, and this is where it really differs from all
+    other databases, right? Traditionally, databases are like single cursor and you
+    make that cursor really fast because the database may be running on the exact
+    same server that the application is, right?
+- speaker: M1
+  text: Right. So it's like, oh, can we beep microseconds? Can we get to nanoseconds?
+- speaker: S1
+  text: And that's awesome. But when you're talking to it from your phone, that's
+    a total waste. And what you really want is concurrency. So the, the, the CouchDB
+    philosophy, and this is supported in all the different back ends that implement
+    the API, like whether it's Cloudint or like PouchDB running in your browser, is
+    like all the things you need to load a page in your app, throw them at the database
+    at the same time and deal with those in Ajax fashion, right? Asynchronously as
+    they come back.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: And so it's like, oh, as long as each of those succeeds in, you know, order
+    10 milliseconds, you know, Cloudint we try to do single millisecond.
 - speaker: M1
   text: Yeah.
 - speaker: S1
-  text: And so it's very much about recognizing that disk is cheap, so let's store
-    your data durably. Let's make sure it's always flush to disk with an accurate...
-    F-sync before we succeed a response. Let's make sure that you can pre-compute
-    that data using that incremental indexing engine, which is very unique, so that
-    no matter how the data is stored, it's prepared in exactly the way your application
-    wants to consume it.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: To load a page, drive an app, leaderboard, you name it. And then the third
-    thing is, I think it's... And this is where it really differs from all other databases.
-- speaker: M1
-  text: Right?
-- speaker: S1
-  text: Traditionally, databases are like a single cursor, and you make that cursor
-    really fast because a database may be running on the exact same server that the
-    application is.
-- speaker: M1
-  text: Right? Right. So it's like, "Oh, can we beat microseconds? Can we get to nanoseconds?
-- speaker: S1
-  text: "\" And that's awesome, but when you're talking to it from your phone, that's
-    a total waste."
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: And what you really want is concurrency. So the CouchDB philosophy, and this
-    is supported in all the different backends that implement the API, like whether
-    it's Cloudant or like CouchDB running in your browser, is like all the things
-    you need to load a page in your app, throw them at the database at the same time,
-    and deal with those in Ajax fashion.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: Asynchronously, as they come back.
+  text: Um, then you're fine. Um, and you can, you know, be well under that hundred
+    milliseconds, um, kind of human tolerance for latency.
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: And so it's like, "Oh, as long as each of those succeeds in, you know, order
-    10 milliseconds," you know, in Cloud, when we try to do single millisecond, then
-    you're fine. And you can, you know, be well under that 100 millisecond kind of
-    human tolerance for latency.
+  text: Um, so it's a very different philosophy than single cursor. So I'm really
+    curious about how, so you're, you earlier, you alluded to that the Cloudint employees
+    are committing to the CouchDB project. It isn't a fork. You didn't fork off, uh,
+    the CouchDB and now this is the Cloudint specific, you know, branded and we're
+    going to add some proprietary things. No, you're contributing into the community
+    project. Yeah, I can, I can try to be a little more precise with that. Um, so
+    we've adopted certain portions of CouchDB in our stack. Um, we've taken the API
+    layer, um, and 95% of it, there are certain things we've turned off that we think
+    are unstable in production at scale. So we, we try to make sure that people can
+    go from megabytes to petabytes, right, without surprises, which is a pretty big
+    challenge. Yeah, yeah, it's a big challenge. Um, and we love the, um, persistency,
+    uh, model. Um, so the engine that actually stores data, this unique append-only
+    B+ tree is fantastic because you never lose data. Like, let's say, we take our
+    systems down with the kill-9.
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: So it's a very different philosophy than single cursor. So I'm really curious
-    about how... So earlier you alluded to that the Cloudant employees are committing
-    to the CouchDB project. It isn't a fork. You didn't fork them. You forked off
-    the CouchDB, and now this is the Cloudant-specific, you know, branded. We're going
-    to add some proprietary things. No, you're contributing into the community project.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: I can try to be a little more precise with that.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: So we've adopted certain portions of CouchDB in our stack. We've taken the
-    API layer, and 95% of it, there are certain things we've turned off that we think
-    are unstable in production at scale. So we try to make sure that people can go
-    back and forth between megabytes to petabytes, right, without surprises, which
-    is a pretty big challenge. Yeah, yeah. It's a big challenge. And we love the persistency
-    model. So the engine that actually stores data, this unique append-only B+ tree
-    is fantastic because you never lose data.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: We take our systems down with kill-9.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: There's no graceful shutdown. Yeah, yeah. That's just...
-- speaker: M1
-  text: Right?
-- speaker: S1
-  text: Because it's always consistent. There's no write-ahead lock. So we love that.
-    The stuff in the middle, you know, CouchDB in its current state is a single server
-    application. You can do replicas, you know. So with CloudNode, we brought RIP,
-    which is, like, predominantly inspired by Dynamo, the original Amazon paper.
-- speaker: M1
-  text: Right.
-- speaker: S1
-  text: So like Cassandra, like what you find in React, it is masterless. It's symmetric.
-    No single point of failure. So we put that in between the API and the persistency
-    level, and that's, you know, what we run in our service. So with CloudNode, we'll
+  text: There's no graceful shutdown. Yeah, yeah, there's just, right. Because it's
+    always consistent. There's no right ahead log. So we love that. The stuff in the
+    middle, um, you know, CouchDB, um, in its current state is a single server application.
+    You can do replicas, you know. Um, so with CloudNum, we brought, um, RIP, which
+    is like, um, predominantly inspired by Dynamo, the original Amazon paper. So like
+    Cassandra, like what you find in Reoc, it is masterless, it's symmetric, no single
+    point of failure. So we put that in between the API and the persistency level.
+    Um, and that's, you know, what we run in our service. So with CloudNum, we'll
     take a single machine, then we'll turn that into a three-node, you know, a single
-    CouchDB machine can turn into a three-node cluster where we store your data redundantly,
-    and we just add nodes to that. Our biggest cluster is, like, 250 nodes right now.
-    So it just scales as you need it to, and it's very graceful. So you have a CloudNode
-    build. Yep. But how does that work with attribute patches back to Couch for what
-    you, what, "Hey, this is really good. This is a bug fix. This is going to benefit
-    everybody and ourselves. " So that's what we did initially.
+    CouchDB machine can turn into a three-node cluster where we store your data redundantly.
+    Then we just add nodes to that. And our biggest cluster is like 250 nodes right
+    now. So it just scales as you need it to, and it's very graceful. So you have
+    a CloudNum build. Yep. But, but, but, but, but how does that work with the true
+    patches back to Couch for what you, what, hey, this is really good. This is a
+    bug fix. This is going to benefit everybody and ourselves. So that's what we did,
+    that's what we did initially.
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: And then, so we've had kind of our code base in the CouchDB code base, and
-    we've been contributing, you know, cherry-picking what we can, contributing, and
-    actually all the time trying to help foster CouchDB to hopefully grow in a direction
-    where it would be ready to be, like, a fully clustered service.
+  text: And then, um, so we've had kind of our code base and the CouchDB code base.
+    And, uh, we've been contributing thing, you know, cherry picking what we can,
+    contributing back, and actually all the time trying to, um, help foster CouchDB
+    to hopefully grow in a direction where it'd be ready to be like a fully clustered
+    service.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: And so I think it was about two years ago, then we said, "Okay, the code bases
-    are now close enough, right, that we could make a fork of CouchDB. " Okay. Put
-    our clustering technology back into it with a path of getting that ultimately
+  text: Um, and so I think it was about two years ago, then we said, okay, the code
+    bases are now close enough, right, that we could, um, make a fork of CouchDB.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Put our clustering technology back into it with a path of getting that ultimately
     back into CouchDB.
 - speaker: M1
   text: Okay.
 - speaker: S1
-  text: So that was Big Couch, and that was great. That solved the need for people
-    who were running CouchDB themselves. Mm-hmm. And wanted to, and wanted to be able
-    to, you know, scale beyond, you know, replica sets. And now, actually, just, I
-    think, a month ago, we got to the point where the code bases were close enough
-    that we could then take a lot more of what we had beyond even just Big Couch.
+  text: So that was Big Couch. Um, and, and that was great. That solved the need for
+    people who were running CouchDB themselves, um, and wanted to, and wanted to be
+    able to, you know, scale beyond, you know, replica sets. Um, and now actually
+    just, I think, a month ago, um, we got to the point where the code bases were
+    close enough that we could then take a lot more of what we had, um, beyond even
+    just Big Couch.
 - speaker: M1
   text: Right.
 - speaker: S1
   text: Everything from, like, how we do compaction with multiple file schemes, you
-    know, auto-indexing, and quite a big chunk of our IP.
+    know, um, auto-indexing, uh, and quite a big chunk of our IP.
 - speaker: M1
-  text: Right.
+  text: Right. Right.
 - speaker: S1
-  text: Right, as our board pointed out. So -- And put that back into a branch of
-    CouchDB. So Big Couch is dead. It's no longer being developed on all that work
-    has gone back into a branch of CouchDB, which we call the Nebraska Merge branch.
+  text: As, as our, um, uh, as our board pointed out, and put that back into a branch
+    of CouchDB. So Big Couch is dead. It, it's no longer being developed on it. All
+    that work has gone back into a branch of CouchDB, which we call the Nebraska Merge
+    branch.
 - speaker: M1
   text: Okay.
 - speaker: S1
   text: Because we took our best engineers, took them offline for a week, sent them
-    to one of the engineers' homes in Omaha, I think. Paul Davis' house. And then
-    they just heads down, and there's a great blog post where you can follow, I don't
-    know how many commits it was, 500 to 1,000 commits. Wow, they just cranked it
-    up. They got it back to a point where it's like, "Okay, here's something we can
-    give back to the community. " Now the Apache review process began.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So the review process begins, but the hope -- So that's a serious commitment
-    to the community. Serious commitment, yeah. And so the hope is that when CouchDB
-    2. 0, or if we can do it around that time, comes out, then CouchDB will finally
-    have a fully horizontally clustered story around it. So that kind of goes back
-    to my initial point, like the Postgres style. We tried to do it deliberately and,
-    you know, let the community kind of -- you know, we can say, "Okay, here. Here
-    it is. " You know, sit back, take a poke at it, see if it stands up, and, you
-    know, hopefully the community will accept that as well. Hopefully the community
-    will accept that as a very good thing. So if I'm looking at evaluating a database,
-    I'm looking at all the community options out there. I'm looking at Couch. I'm
-    looking at Mongo. I'm looking at React. I'm looking -- I'm just thinking of some
-    of the ones that are here and are popular, or MySQL.
-- speaker: M1
-  text: Do you have any recommendations for how they can evaluate and look at or get
-    more information? Yeah.
-- speaker: S1
-  text: I think what we try to do is understand what the needs are from the application
-    perspective. And so the things that we look for are, like, scale, predictability
-    in production, which is a big one, I think, if you look at, you know, systems
-    that pick things in memory and require that versus systems that are really built
-    to be all disk from the beginning.
-- speaker: M1
-  text: And then the really big thing is, is there a distributed nature to this? You
-    know?
-- speaker: S1
-  text: The CouchDB model that we're really -- And we really love that model. So there's
-    no global right master.
+    to one of the engineers' homes in Omaha, I think, Paul Davis' house.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: That's like a huge -- that's like saying the speed of light. Well, I said
-    right as if I really understood what that implication was.
+  text: And then they just, heads down, and there's a great blog post where you can
+    follow, I don't know how many commits it was, 500 to 1,000 commits. Wow. They
+    just, they just cranked away. They got it back to a point where it's like, okay,
+    here's something we can give back to the community. Now the Apache review process
+    begins, but the hope-- So it's a serious commitment to, to the community. Serious
+    commitment, yeah. And so the hope is that when CouchDB 2. 0, or if we can do it
+    around that time, comes out, then CouchDB will finally have a, a fully horizontally
+    clustered story around it. Mm-hmm. So that kind of goes back to my initial point,
+    like, the Postgres style. We tried to do it deliberately.
 - speaker: M1
-  text: Yeah.
+  text: Right.
 - speaker: S1
-  text: This is just like, let's step back.
+  text: And, and, you know, let the community kind of, you know, we can say, okay,
+    here, here it is. You know, um, sit back, take a poke at it, um, see if it stands
+    up. And, you know, hopefully the community will accept that as a very good thing.
+    So if, if I'm looking at, uh, evaluating a database, I'm looking at all the community
+    options out there. I'm looking at, uh, Couch. I'm looking at Mongo. I'm looking
+    at, uh, React. I'm looking, I'm just thinking of some of the, uh, ones that are
+    here, uh, and are popular, or MySQL.
 - speaker: M1
-  text: Like, I'm a physicist, right? Yeah.
+  text: Uh, do you have any recommendations for how they can evaluate and, and look
+    at, or get more information?
 - speaker: S1
-  text: Like, you know, Einstein was awesome because he'd be like, here's this thing
-    we always thought was true. And it turns out it's not.
+  text: Yeah, um, I think what we try to do is understand what the needs are from
+    the application perspective. Um, and so the things that we look for are, like,
+    scale, uh, predictability, um, in production, which is a big one, I think, if
+    you look at, you know, systems that peg things in memory and, and require that
+    versus systems that are really built to be all disk from the beginning.
 - speaker: M1
-  text: Okay.
+  text: Um, and then the, the really big thing is, is there a distributed nature to
+    this?
 - speaker: S1
-  text: And because of that, we can do amazing things.
+  text: You know, um, the CouchDB model, um, that we're really, the reason we, we
+    really love that model is there's no global write master.
 - speaker: M1
-  text: Right?
+  text: Right.
+- speaker: S1
+  text: That's like a huge, that's, that's like saying the speed of light. Well, I
+    said right as if I really understood what that implication was. This is just like,
+    let's step back.
+- speaker: M1
+  text: Like, I'm, I'm a physicist, right?
+- speaker: S1
+  text: Um, like, you know, Einstein was awesome because it'd be like, here's this
+    thing we always thought was true. And it turns out it's not.
+- speaker: M1
+  text: Okay. And because of that, we can do amazing things, right?
 - speaker: S1
   text: I can launch satellites. I can do GPS. I can, you know, I can build particle
-    accelerators. All of this is true because -- So it breaks some constraints. Nothing
-    can go faster than the speed of light.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: And that means time's not constant. That was his big thing. Oh, time's not
-    constant.
-- speaker: M1
-  text: Right?
-- speaker: S1
-  text: And so in this case, I think developers are so used to assuming they have
-    to have a global right master.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: But in this disconnected world of mobile devices that are everywhere and,
-    like, you and I travel around the globe, right? Mm-hmm.
-- speaker: M1
-  text: Why do my applications always have to call back to, like, North Virginia?
-- speaker: S1
-  text: Like -- Okay. All right. That's ridiculous. So why can't my phone be the global
-    -- can be, you know, the place where I write information now?
-- speaker: M1
-  text: And then I can synchronize that later, right? Okay.
-- speaker: S1
-  text: And so that is the number one thing that should take you to CouchDB.
-- speaker: M1
-  text: Okay.
-- speaker: S1
-  text: It is the only database that ships with a mobile strategy. So it gets you
-    away from that, I have to have this -- Yeah. -- canonical, this is the -- all
-    that database of record stuff. Three-tier stack, dah, dah, dah.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: I know exactly how to do this. I've done this for 30 years.
-- speaker: M1
-  text: Yeah. Exactly.
-- speaker: S1
-  text: It's -- and in that sense, it's revolutionary. And I think it will take a
-    long time for developers to fully understand the power of that. And that's something
-    that we're trying to help kind of evangelize now. Mm-hmm. But once you release
-    that constraint, it's incredibly free. And you can do some incredible things with
-    it.
-- speaker: M1
-  text: Is CouchDB something that developers can really look at and contribute back
-    to?
-- speaker: S1
-  text: Is there -- are there opportunities maybe for somebody who's not a data scientist
-    to be able to contribute to Couch?
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: Absolutely. You don't have to -- you don't even have to be able to code.
-- speaker: M1
-  text: Yeah.
-- speaker: S1
-  text: So the community is very welcoming. And that's one of the things we really
-    loved about it when we were first looking at kind of API tiers that we could,
-    you know, start to leverage to build this database as a service. And the community
-    continues to be vibrant. There's a great post by, you know, by Noah Slater thanking
-    CouchDB. And he doesn't even -- I don't -- apologies to Noah if he watches and
-    I get this wrong. Because I haven't met him in person.
+    accelerators. All of this is true because, you know, nothing can go faster than
+    the speed of light. And that means time's not constant. That was his big thing.
+    Oh, time's not constant.
 - speaker: M1
   text: Right.
 - speaker: S1
-  text: We've corresponded a lot, you know, through the community. I don't think he
-    even pushes Erlang code.
+  text: And so in this case, I think, um, developers are so used to assuming they
+    have a, have to have a global write master.
 - speaker: M1
-  text: Right?
+  text: Okay.
 - speaker: S1
-  text: So you can jump in with documentation. You can jump in with, you know, being
-    a part of the community, just answering questions about how to use it on email
-    lists. And there's, I think, a lot of people who are interested in CouchDB. And
-    I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important. And I think that's something
-    that's really important. And I think that's something that's really important.
-    And I think that's something that's really important.
-normalized_at: '2026-05-21T12:21:53-05:00'
-validation_error: 'Significant Word Count Drift: Raw=7561, YAML=5726 (24% difference);
-  Turn 127 is too long (17781 chars). Needs forensic splitting.'
-validated_at: '2026-05-21T13:25:32-05:00'
+  text: Um, but in this disconnected world of mobile devices that are everywhere and
+    like you and I travel around the globe, right?
+- speaker: M1
+  text: Why do my applications always have to call back to like North Virginia?
+- speaker: S1
+  text: Like, okay, that's ridiculous.
+- speaker: M1
+  text: So, so why can't my phone be the global room?
+- speaker: S1
+  text: Can be, you know, the place where I write information now and then I can synchronize
+    that later.
+- speaker: M1
+  text: Right. Okay.
+- speaker: S1
+  text: And so that is the number one thing that should take you to CouchDB. It is
+    the only database that ships with the mobile strategy. So it gets you away from
+    that. I have to have this canonical, this is, this is the, all that database of
+    record stuff. Three-tier stack. I know exactly how to do this. I've done this
+    for 30 years. Yeah, exactly. Um, it's, and in that sense, it's revolutionary.
+    And I think it will take a long time for developers to fully understand the power
+    of that. And that's something that we're trying to help kind of evangelize now.
+    Um, but once you release that constraint, it's incredibly freeing and you can
+    do some incredible, uh, things with it.
+- speaker: M1
+  text: Is CouchDB something that, uh, uh, developers can, can really look at and
+    contribute back to?
+- speaker: S1
+  text: Is there, is there, are there opportunities maybe to somebody who's not a
+    data scientist to be able to contribute to Couch? Yeah, absolutely. Um, you don't
+    have to, you don't even have to, to be able to code. Um, so the community is very
+    welcoming and that's one of the things we really, uh, we really loved about it
+    when we were first looking at kind of API tiers that we could, you know, start
+    to leverage to build this database as a service. Um, and the, the community continues
+    to be vibrant. There's a great post, um, by, you know, by Noah Slater, thanking
+    CouchDB. And he doesn't even, I don't, uh, apologies to Noah if he watches and
+    I get this wrong. Um, because I haven't met him in person.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: We've corresponded a lot, you know, through the community.
+- speaker: M1
+  text: Um, I don't think he even pushes Erlang code, right?
+- speaker: S1
+  text: Um, so you can jump in with documentation. You can jump in with, um, you know,
+    being a part of the community, just answering questions about how to use it on
+    email lists. Um, and there's, I think, a real, now you can always write Erlang
+    code if you want to, or now JavaScript, or, you know, grab some portion of that
+    and run with it or be a part of the build process or, or QA. But the community
+    is very welcoming. Um, I can't think of somebody that wanted to contribute and
+    wasn't accepted into the community at one level or another. And then they're very
+    deliberate. People don't immediately become committers, but like, for instance,
+    Russell Branca, a cloud employee, after being a friend of the community long before
+    he started at cloud, and, you know, just became an Apache committer and started,
+    you know, pushing patches. So, it's deliberate.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: And that's, that's, again, it's, it's, it's slow to, to, you know, consider
+    things that people put forward. And that, and that's actually another thing you
+    mentioned that it's an Apache project. It's not, oh, this is an open source thing
+    that's kind of out there. This is underneath the Apache umbrella.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And, and that's been big.
+- speaker: M1
+  text: So, the, the, you know, the project has already survived the loss of its founder,
+    right? Yeah.
+- speaker: S1
+  text: So Damien Katz did an incredible job with the vision, uh, for, for this, you
+    know, for this database, got it into Apache, um, and then, you know, through various,
+    um, twists of fate, ended up, you know, having to leave the project, um, and,
+    and do something else. Um, and, and, you know, there was a lot of worry that the
+    project would die, but that's exactly what Apache, right, brings.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: They, they, they gave it a, a, a, a foundation, a community, like a pre-baked
+    community.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: We're bringing it, it's stable, it's not going anywhere. And the community's
+    big enough and strong enough to survive that, which, you know, sure, it's a dip
+    and a hit, um, but now it's really, um, not just on the rebound, but it's starting
+    to, to thrive again in terms of the number of commits and the amount of activity
+    in the community. And, you know, speaking also of Damien, I remember, and I might
+    be misremembering, but I could have swore there was an article that he had written
+    where he kind of criticized his original work with couch.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: And the now infamous blog post.
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: How, how does that, um, impact what, I mean, is, is he talking about the original
+    couch implementation, but it's, it's changed since now or?
+- speaker: M1
+  text: Yeah.
+- speaker: S1
+  text: I should try to be a little diplomatic since we're on camera. I can give you
+    a different answer over beers, I guess. Um, but first and foremost, I mean, uh,
+    Damien deserves a lot of credit for creating this community and it, it has a lasting,
+    his impression, you know, his, um, his legacy is that it's open and accepting.
+    Um, and I think that's great, um, through business pressures, I think, um, you
+    know, uh, he ended up, um, taking, you know, a lot of his ideas and re-implementing
+    them into a different system.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: So they, he's really transitioned from the CouchDB community and into the
+    memcached community.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Um, a particularly confusing point is that even though it doesn't speak the
+    CouchDB interface, that new company and product has the word Couch in the name.
+    Oh. Um, but it doesn't even speak CouchDB. So it's taken a lot of the ideas and,
+    and kind of, um, um, wedged them, wedged them into, into memcached in a clustered
+    style. But it's a second, second product kind of scenario. It's a second product,
+    yeah. Um, and it's not to say that it's a terrible product. It's a good product
+    for certain use cases. And if you're in like advertising or something like that,
+    like ad serving, I think that's a, it's, it's a great product. But it serves a
+    different purpose in its current form.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: Um, it's been confusing to the community and this is a place where I wish
+    Apache would have been a little more, um, a little more draconian in their protection
+    of brand and trademark than they were. But you know, the community survives it.
+    Well, is there any last, um, as we're wrapping up here, is there any advice you
+    would give to somebody directly, okay, I'm going to, I'm going to use Couch. Do
+    you, should they come to Cloudant or should they look at the, uh, so is, is the
+    common one more like very specific, like you have a use case and you already know
+    what you should do, but maybe brew install CouchDB is good enough for the beginner
+    who's just, yeah, it's a clear, clear distinction. So with Cloudant, we try to
+    be, so we're, we're continuing to stretch the product in a way that Apache project
+    can't just because of the time skills. So if you come to Cloudant, you get full
+    text indexing and search, you get geospatial and we'll continue to expand that
+    product and then contribute those things back in a way to, to the Apache projects,
+    you know, so that they can be taken up at a time scale that's appropriate for
+    Apache. Um, but the distinction is very clear. Um, if, you know, you want database
+    as a service, which I think is the future, I think a decade from now, nobody will
+    run their own databases.
+- speaker: M1
+  text: Okay.
+- speaker: S1
+  text: We don't build our own power plants anymore. We pay for electrons on the wire.
+    Right, right.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: For a reason. But if I just want to get in, but exactly, get used to it. If
+    you need to run it yourself or you just want to play with it, yes, Apache CouchDB
+    is the way to go. And in its current state, it doesn't give you the ability to
+    scale horizontally by just adding machines.
+- speaker: M1
+  text: Right.
+- speaker: S1
+  text: And we think that's critical to you being able to test whether or not this
+    is the right choice. And so that's why we're making sure the project goes in that
+    direction. But just for getting my feel for it. You know, yeah, I would say it's
+    easiest to come in and sign up to Cloudant. Um, but you know, if you're sitting
+    behind a firewall, um, or you just want to play with it on your laptop and you're
+    offline, you should always have the ability to play with it offline. Right, right.
+    Um, you know, with your Mac, go and grab the CouchDB application, drag it to your
+    apps folder and double click it in your live. There's nothing to do. Oh, okay.
+    There's just a regular app. You don't even have to do it. Yeah, couchdb. org downloads.
+    Oh, couchdb. org. All right.
+- speaker: M1
+  text: Well, thank you very much for taking the time to time to sit down with me.
+    Pleasure. Thank you. Appreciate it. Okay, that's fine. Bye.
