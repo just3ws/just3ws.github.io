@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: bin/generate_last_modified.rb derives per-file dates
+          # via `git log -1 --format=%cI`. A shallow (depth-1) checkout collapses
+          # every file to the tip commit's date, so last_modified.yml regenerates
+          # differently than committed and fails validate:generated_freshness.
+          fetch-depth: 0
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
