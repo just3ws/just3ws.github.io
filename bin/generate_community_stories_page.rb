@@ -10,7 +10,9 @@ OUT_DATA_PATH = File.join(ROOT, "_data", "community_stories.yml")
 OUT_PAGE_PATH = File.join(ROOT, "interviews", "stories", "index.html")
 
 interviews = Generators::Core::YamlIo.load(INTERVIEWS_PATH, key: "items")
-sorted = interviews.sort_by { |item| item["recorded_date"].to_s }
+# Tiebreaker on id: recorded_date has ties and sort_by is not stable, so the
+# first(10) track selections below must not depend on sort-impl tie order.
+sorted = interviews.sort_by { |item| [item["recorded_date"].to_s, item["id"].to_s] }
 
 craftsmanship = sorted.select do |item|
   item["conference"].to_s.downcase.include?("software craftsmanship")

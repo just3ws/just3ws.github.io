@@ -44,4 +44,10 @@ end
 warn 'Generated artifact freshness validation failed:'
 warn '  Run `bundle exec rake build` and commit regenerated tracked artifacts.'
 changed.each { |path| warn "  - #{path}" }
+
+# Print the actual drift, not just filenames. Without this the gate is a black
+# box — you see WHICH files differ but not HOW, which turns a CI-only reproduction
+# into guesswork. --no-color keeps the log diff-clean.
+diff, = Open3.capture2('git', '--no-pager', 'diff', '--no-color', '--', *changed, chdir: ROOT)
+warn "\n--- drift diff ---\n#{diff}"
 exit 1
