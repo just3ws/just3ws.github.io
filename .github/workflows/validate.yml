@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: bin/generate_last_modified.rb derives per-file dates
+          # via `git log -1 --format=%cI`. A shallow (depth-1) checkout collapses
+          # every file to the tip commit's date, so last_modified.yml regenerates
+          # differently than committed and fails validate:generated_freshness.
+          fetch-depth: 0
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -26,6 +32,12 @@ jobs:
         run: ./bin/pipeline validate
       - name: Playwright smoke check
         timeout-minutes: 12
+        env:
+          # The first pwcli command cold-fetches @playwright/cli and its browser;
+          # on a fresh runner that exceeds the harness's 20s per-command timeout
+          # and aborts smoke at status 124 before any assertion runs. Loosen the
+          # cap for CI only — local runs keep the fast 20s default.
+          PWCLI_CMD_TIMEOUT: 180s
         run: |
           set -o pipefail
           ./bin/pipeline smoke 2>&1 | tee tmp/playwright-smoke.log

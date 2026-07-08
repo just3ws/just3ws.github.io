@@ -40,7 +40,10 @@ interviews.each do |interview|
 end
 
 topic_items = topics.map do |topic, rows|
-  sorted_rows = rows.sort_by { |row| row["recorded_date"].to_s }.reverse
+  # Tiebreaker on id: recorded_date has ties (e.g. 7 interviews on one date), and
+  # sort_by is not stable, so first(N) sampling below would depend on sort-impl
+  # tie order. Committed output must be a pure function of data — id makes it total.
+  sorted_rows = rows.sort_by { |row| [row["recorded_date"].to_s, row["id"].to_s] }.reverse
   transcript_count = sorted_rows.count do |row|
     asset = assets_by_id[row["video_asset_id"]]
     asset && !asset["transcript_id"].to_s.strip.empty?
