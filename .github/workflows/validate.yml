@@ -32,6 +32,12 @@ jobs:
         run: ./bin/pipeline validate
       - name: Playwright smoke check
         timeout-minutes: 12
+        env:
+          # The first pwcli command cold-fetches @playwright/cli and its browser;
+          # on a fresh runner that exceeds the harness's 20s per-command timeout
+          # and aborts smoke at status 124 before any assertion runs. Loosen the
+          # cap for CI only — local runs keep the fast 20s default.
+          PWCLI_CMD_TIMEOUT: 180s
         run: |
           set -o pipefail
           ./bin/pipeline smoke 2>&1 | tee tmp/playwright-smoke.log
