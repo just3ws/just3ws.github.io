@@ -34,18 +34,18 @@ def resolve_url(transcript_id, by_tid, by_id)
   { 'platform' => plat['platform'], 'asset_id' => plat['asset_id'], 'url' => url }
 end
 
-options = { apply: false, force: false, limit: nil, profile: 'standard' }
+options = { apply: false, force: false, limit: nil, profile: 'standard', tag: nil }
 OptionParser.new do |o|
   o.banner = 'Usage: ruby ./bin/reprocess_retranscribe_queue.rb [options]'
   o.on('--apply', 'Enqueue into the pipeline (default: dry-run, enqueues nothing)') { options[:apply] = true }
   o.on('--force', 'Reprocess sources already ingested (passed to zdots-ingest-media)') { options[:force] = true }
   o.on('--limit N', Integer, 'Only process the first N queue items') { |n| options[:limit] = n }
   o.on('--profile P', 'Whisper profile (default: standard)') { |p| options[:profile] = p }
+  o.on('--tag T', 'Only process assets containing this tag') { |t| options[:tag] = t }
 end.parse!
 
 queue  = YAML.load_file(QUEUE_PATH)['items'] || []
 assets = YAML.load_file(ASSETS_PATH)['items'] || []
-queue  = queue.first(options[:limit]) if options[:limit]
 
 by_tid = {}
 by_id  = {}
@@ -54,6 +54,17 @@ assets.each do |a|
   tid = a['transcript_id']
   by_tid[tid] ||= a if tid && !tid.to_s.empty?
 end
+
+# Filter by tag if requested
+if options[:tag]
+  queue.select! do |item|
+    tid = item['transcript_id']
+    asset = by_tid[tid] || by_id[tid]
+    asset && asset['tags'] && asset['tags'].include?(options[:tag])
+  end
+end
+
+queue  = queue.first(options[:limit]) if options[:limit]
 
 resolved = []
 unresolved = []
