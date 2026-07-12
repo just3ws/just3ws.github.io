@@ -86,13 +86,14 @@ end
 puts "\n#{resolved.size} resolvable / #{queue.size} queue items (#{unresolved.size} unresolved)"
 
 if options[:apply]
-  puts "\nEnqueuing via #{CLI}#{options[:force] ? ' --force' : ''} " \
-       "(idempotent — already-ingested sources skip themselves)…"
+  puts "\nEnqueuing (idempotent — already-ingested sources skip themselves)…"
   resolved.each_with_index do |r, i|
     args = [CLI, r['url'], '--profile', options[:profile]]
     args << '--force' if options[:force]
     puts "[#{i + 1}/#{resolved.size}] #{r['transcript_id']} -> #{r['url']}"
-    system(*args)
+    Bundler.with_unbundled_env do
+      system(*args)
+    end
   end
   puts 'Done. Process with the zdots worker (com.zdots.worker).'
 else
