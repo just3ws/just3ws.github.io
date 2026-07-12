@@ -10,8 +10,9 @@
 require 'yaml'
 require 'optparse'
 
-QUEUE_PATH  = '_data/transcript_retranscribe_queue.yml'
-ASSETS_PATH = '_data/video_assets.yml'
+QUEUE_PATH      = '_data/transcript_retranscribe_queue.yml'
+ASSETS_PATH     = '_data/video_assets.yml'
+INTERVIEWS_PATH = '_data/interviews.yml'
 # Prefer the absolute path (known location); fall back to PATH lookup.
 CLI_ABS = File.expand_path('~/.config/zsh/bin/zdots-ingest-media')
 CLI = File.exist?(CLI_ABS) ? CLI_ABS : 'zdots-ingest-media'
@@ -44,8 +45,9 @@ OptionParser.new do |o|
   o.on('--tag T', 'Only process assets containing this tag') { |t| options[:tag] = t }
 end.parse!
 
-queue  = YAML.load_file(QUEUE_PATH)['items'] || []
-assets = YAML.load_file(ASSETS_PATH)['items'] || []
+queue      = YAML.load_file(QUEUE_PATH)['items'] || []
+assets     = YAML.load_file(ASSETS_PATH)['items'] || []
+interviews = YAML.load_file(INTERVIEWS_PATH)['items'] || []
 
 by_tid = {}
 by_id  = {}
@@ -53,6 +55,19 @@ assets.each do |a|
   by_id[a['id']] = a
   tid = a['transcript_id']
   by_tid[tid] ||= a if tid && !tid.to_s.empty?
+end
+
+# Diarization speaker-count hint per video_asset_id: interviewees + interviewer.
+# Only interviews carry this; talks/solo videos stay unmapped and diarize
+# unconstrained. The hint is a min/max bracket for pyannote, not an exact count.
+speakers_by_asset = {}
+interviews.each do |iv|
+  aid = iv['video_asset_id']
+  next unless aid
+  count = Array(iv['interviewees']).size
+  next if count.zero?
+  count += 1 unless iv['interviewer'].to_s.strip.empty?
+  speakers_by_asset[aid] = count
 end
 
 # Filter by tag if requested
@@ -71,13 +86,20 @@ unresolved = []
 queue.each do |item|
   tid = item['transcript_id']
   hit = resolve_url(tid, by_tid, by_id)
-  hit ? (resolved << { 'transcript_id' => tid }.merge(hit)) : (unresolved << tid)
+  unless hit
+    unresolved << tid
+    next
+  end
+  asset = by_tid[tid] || by_id[tid]
+  num_speakers = asset && speakers_by_asset[asset['id']]
+  resolved << { 'transcript_id' => tid, 'num_speakers' => num_speakers }.merge(hit)
 end
 
 mode = options[:apply] ? 'apply' : 'dry-run'
 puts "reprocess-retranscribe-queue [#{mode}] — #{queue.size} queue items"
 resolved.each do |r|
-  puts "  #{r['transcript_id']}  ->  #{r['platform']} #{r['asset_id']}  ->  #{r['url']}"
+  spk = r['num_speakers'] ? "  [#{r['num_speakers']} spk]" : ''
+  puts "  #{r['transcript_id']}  ->  #{r['platform']} #{r['asset_id']}  ->  #{r['url']}#{spk}"
 end
 unless unresolved.empty?
   puts "\nUNRESOLVED (#{unresolved.size}) — no youtube/vimeo asset:"
@@ -90,6 +112,7 @@ if options[:apply]
   resolved.each_with_index do |r, i|
     args = [CLI, r['url'], '--profile', options[:profile]]
     args << '--force' if options[:force]
+    args += ['--num-speakers', r['num_speakers'].to_s] if r['num_speakers']
     puts "[#{i + 1}/#{resolved.size}] #{r['transcript_id']} -> #{r['url']}"
     Bundler.with_unbundled_env do
       system(*args)
