@@ -1,0 +1,112 @@
+{% comment %}
+  interview-timeline.html — scrubber bar over the video player.
+  Renders from transcript_data.recording (see bin/import_recording_metadata.rb):
+  intro/outro regions, the interview span, and bookmarkable key-moment chapters.
+  Seeking reloads the embed with a start offset (universal — no YouTube/Vimeo JS
+  API, no enablejsapi/origin config); HTML5 <video> seeks via currentTime.
+  Inputs: include.recording, include.asset, include.embed_id.
+{% endcomment %}
+{% assign rec = include.recording %}
+{% if rec and rec.duration_sec and rec.duration_sec > 0 %}
+  {% assign dur = rec.duration_sec %}
+  {% assign preferred = include.asset.platforms | where: "platform", "youtube" | first %}
+  {% if preferred == nil and include.asset.primary_platform %}
+    {% assign preferred = include.asset.platforms | where: "platform", include.asset.primary_platform | first %}
+  {% endif %}
+  {% if preferred == nil %}{% assign preferred = include.asset.platforms | first %}{% endif %}
+
+  {% assign start_pct = rec.interview_start_sec | times: 100.0 | divided_by: dur %}
+  {% assign end_pct = rec.interview_end_sec | times: 100.0 | divided_by: dur %}
+  {% assign span_pct = end_pct | minus: start_pct %}
+
+  <figure class="interview-timeline"
+          data-embed-id="{{ include.embed_id | default: 'asset-embed' }}"
+          data-embed-base="{{ preferred.embed_url }}"
+          data-platform="{{ preferred.platform }}"
+          data-duration="{{ dur }}">
+    <figcaption class="timeline-caption">
+      Jump to a moment
+      {% if rec.intro %}<button type="button" class="timeline-skip" data-seek="{{ rec.interview_start_sec }}">Skip intro&nbsp;▸</button>{% endif %}
+      {% if rec.outro %}<span class="timeline-note">theme song plays at the {% if rec.intro %}start &amp; {% endif %}end</span>{% endif %}
+    </figcaption>
+
+    <div class="timeline-track" role="group" aria-label="Interview timeline — click to jump">
+      {% if rec.intro %}
+        <span class="timeline-region is-intro" style="left:0;width:{{ start_pct }}%" title="Intro / theme song ({{ rec.intro.has_lyrics }})" aria-hidden="true"></span>
+      {% endif %}
+      <span class="timeline-region is-interview" style="left:{{ start_pct }}%;width:{{ span_pct }}%" title="Interview" aria-hidden="true"></span>
+      {% if rec.outro %}
+        <span class="timeline-region is-outro" style="left:{{ end_pct }}%;width:{{ 100 | minus: end_pct }}%" title="Outro / theme song" aria-hidden="true"></span>
+      {% endif %}
+
+      {% for ch in rec.chapters %}
+        {% assign ch_pct = ch.start_sec | times: 100.0 | divided_by: dur %}
+        <button type="button" class="timeline-marker" style="left:{{ ch_pct }}%"
+                data-seek="{{ ch.start_sec }}" aria-label="Jump to: {{ ch.title | escape }}">
+          <span class="marker-tip">{{ ch.title }}</span>
+        </button>
+      {% endfor %}
+    </div>
+
+    {% if rec.chapters and rec.chapters.size > 0 %}
+      <ol class="timeline-chapters">
+        {% for ch in rec.chapters %}
+          {% assign whole = ch.start_sec | floor %}
+          {% assign mm = whole | divided_by: 60 %}
+          {% assign ss = whole | modulo: 60 %}
+          <li>
+            <button type="button" class="chapter-link" data-seek="{{ ch.start_sec }}">
+              <span class="chapter-time">{{ mm }}:{% if ss < 10 %}0{% endif %}{{ ss }}</span>
+              <span class="chapter-title">{{ ch.title }}</span>
+            </button>
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </figure>
+
+  <script>
+    (function () {
+      var fig = document.currentScript.previousElementSibling;
+      while (fig && !fig.classList.contains("interview-timeline")) { fig = fig.previousElementSibling; }
+      if (!fig) return;
+
+      var embed    = document.getElementById(fig.dataset.embedId);
+      var base     = fig.dataset.embedBase || "";
+      var platform = fig.dataset.platform || "";
+
+      // Build a seek URL for iframe players (reload-to-seek — universal, no JS API).
+      function seekUrl(sec) {
+        var s = Math.max(0, Math.floor(sec));
+        if (platform === "vimeo") {
+          var j = base.indexOf("?") === -1 ? "?" : "&";
+          return base + j + "autoplay=1#t=" + s + "s";
+        }
+        // youtube (and any /embed/ style): ?start=SEC&autoplay=1
+        var j2 = base.indexOf("?") === -1 ? "?" : "&";
+        return base + j2 + "start=" + s + "&autoplay=1";
+      }
+
+      function seek(sec) {
+        if (!embed) return;
+        if (embed.tagName === "VIDEO") { embed.currentTime = sec; embed.play && embed.play(); return; }
+        if (base) { embed.setAttribute("src", seekUrl(sec)); }
+      }
+
+      fig.addEventListener("click", function (e) {
+        var el = e.target.closest("[data-seek]");
+        if (!el) return;
+        e.preventDefault();
+        var sec = parseFloat(el.getAttribute("data-seek"));
+        if (isNaN(sec)) return;
+        seek(sec);
+        // Shareable deep link — #t=SEC restores the position on reload.
+        if (history.replaceState) { history.replaceState(null, "", "#t=" + Math.floor(sec)); }
+      });
+
+      // Deep link: land on #t=SEC → seek once the player exists.
+      var m = (location.hash || "").match(/[#&]t=(\d+)/);
+      if (m) { seek(parseInt(m[1], 10)); }
+    })();
+  </script>
+{% endif %}

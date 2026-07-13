@@ -38,6 +38,9 @@
 
     {% if preferred %}
       {% include video-stage.html asset=asset embed_id=include.embed_id %}
+      {% if transcript_data.recording %}
+        {% include interview-timeline.html asset=asset recording=transcript_data.recording embed_id=include.embed_id %}
+      {% endif %}
     {% endif %}
 
     {% unless include.hide_transcript %}
