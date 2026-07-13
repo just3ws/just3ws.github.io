@@ -31,12 +31,14 @@ def assets
   @assets ||= (Generators::Core::YamlIo.load(ASSETS_PATH)["items"] || [])
 end
 
-# transcript_id → the youtube/vimeo asset_id (parent dir of the whisper JSON).
-def asset_id_for(tid)
+# transcript_id → ALL its youtube/vimeo asset_ids. An interview may have several
+# videos; the reprocess may have landed under a different one than the primary,
+# so we try them all when locating the on-disk source.
+def asset_ids_for(tid)
   a = assets.find { |x| x["transcript_id"] == tid || x["id"] == tid }
-  return nil unless a
-  plat = Array(a["platforms"]).find { |p| %w[youtube vimeo].include?(p["platform"]) && p["asset_id"] }
-  plat && plat["asset_id"]
+  return [] unless a
+  Array(a["platforms"]).select { |p| %w[youtube vimeo].include?(p["platform"]) && p["asset_id"] }
+                       .map { |p| p["asset_id"] }
 end
 
 # Whole-file whisper JSON for an asset_id (skip chunk_* and sidecars).
@@ -48,9 +50,33 @@ def whisper_json_for(asset_id)
   end
 end
 
-# Clean interview text: whisper segments whose midpoint is inside the recording
-# boundaries [interview_start_sec, interview_end_sec], joined. Drops the jingle.
-def interview_text(json_path, rec)
+# Stitched transcript text for a chunked long source (no whole-file JSON). Prefer
+# the known-terms-cleaned stitch. Lives at the retention PARENT, named <id>.stitched*.
+def stitched_txt_for(asset_id)
+  glob = File.join(ZDOTS_SOURCES, "**", "#{asset_id}.stitched.cleaned.txt")
+  Dir.glob(glob).first || Dir.glob(File.join(ZDOTS_SOURCES, "**", "#{asset_id}.stitched.txt")).first
+end
+
+# Clean interview text from the fresh ASR, across any of the interview's asset_ids.
+# Preference: whole-file whisper JSON (boundary-trimmed via recording) → stitched
+# .txt (chunked path; no per-segment offsets, so the jingle is dropped downstream
+# by the structurer's content rule, not by timestamp). Returns [text, source_desc].
+def source_text(asset_ids, rec)
+  asset_ids.each do |aid|
+    if (json = whisper_json_for(aid))
+      return [interview_text_from_json(json, rec), "json:#{aid}"]
+    end
+  end
+  asset_ids.each do |aid|
+    if (txt = stitched_txt_for(aid))
+      return [File.read(txt), "stitched:#{aid}"]
+    end
+  end
+  [nil, nil]
+end
+
+# Whisper segments whose midpoint is inside [interview_start_sec, interview_end_sec].
+def interview_text_from_json(json_path, rec)
   doc  = JSON.parse(File.read(json_path))
   segs = doc["transcription"] || doc["segments"] || []
   start_s = (rec && rec["interview_start_sec"]) || 0.0
@@ -78,11 +104,10 @@ def cmd_list
 end
 
 def cmd_prep(tid)
-  aid = asset_id_for(tid) or abort "no youtube/vimeo asset_id for #{tid}"
-  json = whisper_json_for(aid) or abort "no fresh whisper JSON on disk for asset #{aid} (#{tid})"
   data = Generators::Core::YamlIo.load(File.join(TRANSCRIPTS_DIR, "#{tid}.yml"))
-  text = interview_text(json, data["recording"])
-  warn "# asset=#{aid} json=#{json.sub(ZDOTS_SOURCES + '/', '')}"
+  text, src = source_text(asset_ids_for(tid), data["recording"])
+  abort "no fresh ASR on disk for #{tid} (tried #{asset_ids_for(tid).join(',')})" if text.nil?
+  warn "# source=#{src}"
   warn "# existing speaker_map: #{data['speaker_map'].to_json}"
   warn "# recording: start=#{data.dig('recording', 'interview_start_sec')} end=#{data.dig('recording', 'interview_end_sec')} chapters=#{data.dig('recording', 'chapters')&.size}"
   warn "# loop check on fresh text: #{TranscriptSanity.loop_score(text)&.slice('severity', 'score')}"
@@ -104,18 +129,25 @@ def structure_via_claude(text, speaker_map)
     - speaker: M1
       text: >-
         the spoken text
-    Attribute every sentence to whoever is actually speaking. Keep wording faithful
-    (trivial ASR filler cleanup only — do not paraphrase or summarize). If the tail
-    contains theme-song / jingle lyrics ("user groups with lots to say", "plethora
-    of information"), drop it.
+    Attribute every sentence to whoever is actually speaking. Keep wording faithful —
+    do NOT paraphrase or summarize the substance. BUT collapse ASR repetition loops:
+    when whisper has stuttered the SAME sentence/phrase two or more times in a row,
+    keep ONE clean instance and drop the duplicates (this is transcription noise, not
+    speech). If the tail (or head) contains theme-song / jingle lyrics ("user groups
+    with lots to say", "plethora of information", "find out for yourself today"), drop it.
 
     TRANSCRIPT:
     #{text}
   PROMPT
   prompt_file = "/tmp/restructure-prompt-#{Process.pid}.txt"
   File.write(prompt_file, prompt)
-  out = `claude -p "$(cat #{prompt_file})" 2>/dev/null`
+  # </dev/null: claude -p otherwise blocks waiting on stdin. Capture stderr so a
+  # session-limit / auth message surfaces instead of a silent empty parse.
+  out = `claude -p "$(cat #{prompt_file})" </dev/null 2>/tmp/claude-struct-err.log`
   File.delete(prompt_file) rescue nil
+  if out.strip.empty? && File.exist?("/tmp/claude-struct-err.log")
+    warn "claude -p returned nothing: #{File.read('/tmp/claude-struct-err.log').lines.grep(/limit|error|auth/i).first&.strip}"
+  end
   # Strip any preamble/markdown fences: keep from the first "- speaker:" line on,
   # and stop at a closing fence if present.
   lines = out.lines
@@ -129,11 +161,10 @@ rescue StandardError => e
 end
 
 def cmd_auto(tid)
-  aid  = asset_id_for(tid) or abort "no asset_id for #{tid}"
-  json = whisper_json_for(aid) or abort "no fresh whisper JSON for #{tid}"
   data = Generators::Core::YamlIo.load(File.join(TRANSCRIPTS_DIR, "#{tid}.yml"))
-  text = interview_text(json, data["recording"])
-  warn "structuring #{tid} (#{text.length} chars) via claude -p…"
+  text, src = source_text(asset_ids_for(tid), data["recording"])
+  abort "no fresh ASR on disk for #{tid}" if text.nil?
+  warn "structuring #{tid} (#{text.length} chars, #{src}) via claude -p…"
   turns = structure_via_claude(text, data["speaker_map"] || {})
   abort "structuring produced no turns for #{tid}" if turns.nil? || turns.empty?
   tmp = "/tmp/turns-#{tid}.yml"
