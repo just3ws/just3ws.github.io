@@ -9,6 +9,7 @@
 # --apply actually enqueues.
 require 'yaml'
 require 'optparse'
+require 'bundler' # for Bundler.with_unbundled_env when shelling out to zdots-ingest-media
 
 QUEUE_PATH      = '_data/transcript_retranscribe_queue.yml'
 ASSETS_PATH     = '_data/video_assets.yml'
