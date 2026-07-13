@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'yaml'
+require 'json'
 require 'fileutils'
+require_relative 'lib/transcript_sanity'
 
 # Choose one transcript file per video id, preferring the known-terms-corrected
 # `<id>.cleaned.txt` (the /transcriptions learning-loop output) over the raw
@@ -21,16 +23,26 @@ end
 # retention root (~/.local/state/zdots/ingest-sources/<mid>/<...>/). Both write
 # the sidecar as a sibling of the transcript `.txt`, so we key it off that
 # neighbor and stage it as <video_asset_id>.diarization.json.
+# Sanity gate: a mock or degenerate diarization sidecar (the shape that shipped
+# before the HF-token fix — one speaker spanning the whole file) must not reach
+# the site. Refuse to stage it, loudly. Returns :staged / :rejected / :skip.
 def stage_sidecar(txt_file, staging_key, staging_dir)
   sidecar = File.join(File.dirname(txt_file), "diarization.json")
-  return false unless File.exist?(sidecar)
+  return :skip unless File.exist?(sidecar)
 
   dest = File.join(staging_dir, "#{staging_key}.diarization.json")
-  return false if File.exist?(dest)
+  return :skip if File.exist?(dest)
+
+  data = JSON.parse(File.read(sidecar)) rescue nil
+  ok, why = TranscriptSanity.diarization_sane?(data)
+  unless ok
+    warn "  REJECTED diarization for #{staging_key}: #{why}"
+    return :rejected
+  end
 
   FileUtils.cp(sidecar, dest)
   puts "Staged diarization: #{staging_key}.diarization.json"
-  true
+  :staged
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -40,6 +52,8 @@ if __FILE__ == $PROGRAM_NAME
 
   staged_count = 0
   staged_diarization = 0
+  rejected_diarization = 0
+  looping_warnings = 0
   transcript_globs = [
     File.expand_path("~/Downloads/transcripts/*/*.txt"),
     File.expand_path("~/.local/state/zdots/ingest-sources/**/*.txt")
@@ -61,9 +75,16 @@ if __FILE__ == $PROGRAM_NAME
         FileUtils.cp(txt_file, dest_txt)
         puts "Staged: #{video_id} -> #{video_asset_id}.txt"
         staged_count += 1
+        if (s = TranscriptSanity.loop_score(File.read(txt_file))) && s['severity'] == 'high'
+          warn "  WARNING #{video_asset_id}: transcript still looping (score #{s['score']}) — reprocess before publishing"
+          looping_warnings += 1
+        end
       end
 
-      staged_diarization += 1 if stage_sidecar(txt_file, video_asset_id, staging_dir)
+      case stage_sidecar(txt_file, video_asset_id, staging_dir)
+      when :staged then staged_diarization += 1
+      when :rejected then rejected_diarization += 1
+      end
     else
       # Fallback: check if the filename itself is a video_asset_id
       asset_by_id = assets.find { |a| a["id"] == video_id }
@@ -75,11 +96,16 @@ if __FILE__ == $PROGRAM_NAME
           staged_count += 1
         end
 
-        staged_diarization += 1 if stage_sidecar(txt_file, video_id, staging_dir)
+        case stage_sidecar(txt_file, video_id, staging_dir)
+        when :staged then staged_diarization += 1
+        when :rejected then rejected_diarization += 1
+        end
       end
     end
   end
 
   puts "Staged #{staged_count} new transcripts."
   puts "Staged #{staged_diarization} diarization sidecars." if staged_diarization.positive?
+  warn "Rejected #{rejected_diarization} mock/degenerate diarization sidecars." if rejected_diarization.positive?
+  warn "#{looping_warnings} staged transcripts still looping — reprocess before publishing." if looping_warnings.positive?
 end
