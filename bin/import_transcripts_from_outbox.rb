@@ -1,4 +1,20 @@
 #!/usr/bin/env ruby
+#
+# Import flat transcript text from an outbox/staging dir into
+# _data/transcripts/<id>.yml as `{ content: <text> }`.
+#
+# ⚠️  DESTRUCTIVE WITH --force. This writes a FLAT `content` blob and OVERWRITES
+#     the whole file. If a transcript is already STRUCTURED (speaker_map + turns)
+#     or carries a `recording:` block (timeline scrubber data), --force DESTROYS
+#     both — the iMessage-thread display and the scrubber regress to a text blob.
+#     Without --force it SKIPS existing files (safe, but then nothing refreshes).
+#
+#     To refresh an already-structured transcript from reprocessed ASR, do NOT
+#     use this. Re-structure instead: pull the fresh whisper JSON, trim the
+#     theme-song intro/outro via the `recording` boundaries, rebuild speaker
+#     turns, and preserve the `recording` block. (See the DHH restructure,
+#     commit a55a404, for the recipe.)
+#
 require "yaml"
 require "date"
 require "time"
@@ -265,7 +281,7 @@ OptionParser.new do |opts|
   opts.on("--source-dir PATH", "Directory containing transcript files (default: #{DEFAULT_SOURCE_DIR})") { |v| options[:source_dir] = v }
   opts.on("--report-dir PATH", "Directory for import report output (default: #{DEFAULT_REPORT_DIR})") { |v| options[:report_dir] = v }
   opts.on("--apply", "Write transcript files and update _data/video_assets.yml") { options[:apply] = true }
-  opts.on("--force", "Overwrite existing transcript files when applying") { options[:force] = true }
+  opts.on("--force", "DESTRUCTIVE: overwrite existing transcripts with a flat content blob (wipes structured turns + recording block)") { options[:force] = true }
   opts.on("--min-confidence FLOAT", Float, "Minimum confidence for auto-apply (default: 0.8)") { |v| options[:min_confidence] = v }
 end.parse!
 
