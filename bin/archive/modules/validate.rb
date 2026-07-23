@@ -51,7 +51,8 @@ begin
 
   # 2. Word Count Drift (Bork Detection)
   source_dir = "tmp/transcript-id-staging"
-  source_file = Dir.glob("#{source_dir}/#{id}*").first
+  source_file = Dir.glob("#{source_dir}/#{id}.txt").first ||
+                Dir.glob("#{source_dir}/#{id}*").reject { |f| f.end_with?(".json") }.first
   
   if source_file && data["turns"]
     raw_text = File.read(source_file)
