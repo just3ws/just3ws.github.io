@@ -580,5 +580,10 @@ namespace :transcript do
   task :export_subtitles do
     sh 'ruby bin/export_subtitles.rb'
   end
+
+  desc 'Run YouTube captions sync CLI dry-run or upload'
+  task :sync_youtube_captions do
+    sh 'ruby bin/sync_youtube_captions.rb'
+  end
 end
 
