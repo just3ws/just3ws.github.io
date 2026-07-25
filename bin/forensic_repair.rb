@@ -38,7 +38,7 @@ class ForensicRepair
 
       modified = false
 
-      # 1. Fix Long Turns (>3000 chars)
+      # 1. Split Long Turns (>3000 chars) & Collapsed Monologues
       if data["turns"]
         new_turns = []
         data["turns"].each do |turn|
@@ -54,7 +54,7 @@ class ForensicRepair
       end
 
       # 2. Fix Interviewer Overload / Collapsed Single Turn
-      if data["turns"] && (data["turns"].size <= 2 || m1_ratio(data["turns"]) >= 0.85)
+      if data["turns"] && (data["turns"].size <= 3 || m1_ratio(data["turns"]) >= 0.80)
         text_blob = data["turns"].map { |t| t["text"] }.join(" ")
         restructured = parse_dialogue_turns(text_blob)
         if restructured.size > 1 && m1_ratio(restructured) < 0.60
@@ -108,18 +108,34 @@ class ForensicRepair
 
     chunks = []
     current = ""
+    current_speaker = speaker
 
     sentences.each do |s|
-      if (current + s).length > MAX_TURN_CHARS && !current.empty?
-        chunks << current.strip
-        current = s
+      s_clean = s.strip
+      # Check if long turn contains internal speaker transitions (Host question vs Guest answer)
+      if s_clean.match?(/\A(?:so\s+how\s+does\b|how\s+can\b|where\s+can\b|okay\s+great\b|well\s+thanks?\b|what\s+about\b)/i) && speaker == "S1"
+        chunks << { "speaker" => current_speaker, "text" => current.strip } unless current.empty?
+        chunks << { "speaker" => "M1", "text" => s_clean }
+        current = ""
+        current_speaker = "M1"
+        next
+      elsif s_clean.match?(/\A(?:sure\s+yeah\b|yeah\s+so\b|well\s+we\b|my\s+name\b)/i) && current_speaker == "M1"
+        chunks << { "speaker" => "M1", "text" => current.strip } unless current.empty?
+        current = s_clean
+        current_speaker = "S1"
+        next
+      end
+
+      if (current + " " + s_clean).length > MAX_TURN_CHARS && !current.empty?
+        chunks << { "speaker" => current_speaker, "text" => current.strip }
+        current = s_clean
       else
-        current += s
+        current = current.empty? ? s_clean : current + " " + s_clean
       end
     end
-    chunks << current.strip unless current.empty?
 
-    chunks.map { |c| { "speaker" => speaker, "text" => c } }
+    chunks << { "speaker" => current_speaker, "text" => current.strip } unless current.empty?
+    chunks.reject { |c| c["text"].empty? }
   end
 
   def parse_dialogue_turns(text)
@@ -131,8 +147,7 @@ class ForensicRepair
     sentences.each_with_index do |s, idx|
       s_clean = s.strip
 
-      # Transition triggers for Guest (S1) vs Host (M1)
-      s1_trigger = s_clean.match?(/\A(?:well\b|the\s+differences\b|yeah\b|absolutely\b|sure\b|so\s+the\b|our\b|my\b|i\s+(?:think|spent|was|did|work|started|came)\b)/i) && current_text.length > 80
+      s1_trigger = s_clean.match?(/\A(?:well\b|the\s+differences\b|yeah\b|absolutely\b|sure\b|so\s+the\b|our\b|my\b|i\s+(?:think|spent|was|did|work|started|came)\b)/i) && current_text.length > 50
       m1_trigger = s_clean.match?(/\A(?:hi\b|welcome\b|so\s+so\b|right\b|tell\s+me\b|what\b|how\b|can\s+you\b|is\s+there\b|thanks?\b)/i) && current_speaker == "S1"
 
       if current_speaker == "M1" && (s1_trigger || s.include?("?"))
@@ -151,7 +166,6 @@ class ForensicRepair
 
     turns << { "speaker" => current_speaker, "text" => current_text.strip } unless current_text.strip.empty?
     
-    # Merge adjacent turns by same speaker
     merged = []
     turns.each do |t|
       next if t["text"].empty?
