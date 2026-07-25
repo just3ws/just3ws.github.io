@@ -1,0 +1,443 @@
+---
+layout: default
+title: Archive Intelligence & Pattern Dashboard
+description: Deep visual intelligence dashboard analyzing tropes, phrases, eras, durations, and evolving themes across 196 technical oral history interviews.
+breadcrumb: Archive Intelligence
+breadcrumb_parent_name: Home
+breadcrumb_parent_url: /home/
+---
+
+<article class="page intelligence-dashboard">
+  {% include breadcrumbs.html %}
+  
+  <header class="intelligence-header">
+    <span class="badge">Oral History Analytics</span>
+    <h1>Archive Intelligence & Pattern Dashboard</h1>
+    <p class="intro">An interactive visual analysis of 196 technical interviews (~456,000 words) spanning 2011 to 2015. Discover recurring tropes, phrase position arcs, era shifts, and community evolution.</p>
+  </header>
+
+  <!-- Key Metrics Summary Grid -->
+  <section class="intel-grid metrics-grid">
+    <div class="intel-card metric-card">
+      <div class="metric-value" id="stat-total-interviews">196</div>
+      <div class="metric-label">Analyzed Interviews</div>
+    </div>
+    <div class="intel-card metric-card">
+      <div class="metric-value" id="stat-total-words">456k</div>
+      <div class="metric-label">Total Corpus Words</div>
+    </div>
+    <div class="intel-card metric-card">
+      <div class="metric-value" id="stat-avg-words">2,329</div>
+      <div class="metric-label">Avg Words / Interview</div>
+    </div>
+    <div class="intel-card metric-card">
+      <div class="metric-value" id="stat-eras">4 Eras</div>
+      <div class="metric-label">Historical Timeline</div>
+    </div>
+  </section>
+
+  <!-- Era Arc & Timeline Section -->
+  <section class="intel-section">
+    <h2>Historical Eras & Evolution Arc (2011 - 2015)</h2>
+    <p class="section-desc">How the technical focus of the community evolved from early Agile/Craftsmanship to Rails explosion and Polyglot/Microservices architectures.</p>
+    <div class="era-timeline-grid">
+      <div class="era-card era-1">
+        <div class="era-badge">2011 - 2012</div>
+        <h3>The Craftsmanship Dawn</h3>
+        <p>Focus on TDD, Refactoring, Clean Code, early SCNA, and building local developer communities.</p>
+        <div class="era-count">53 Interviews</div>
+      </div>
+      <div class="era-card era-2">
+        <div class="era-badge">2013</div>
+        <h3>SCNA & Community Scaling</h3>
+        <p>Peak Software Craftsmanship North America era. Delving into empathy, mentorship, and junior developer bootcamps.</p>
+        <div class="era-count">88 Interviews</div>
+      </div>
+      <div class="era-card era-3">
+        <div class="era-badge">2014</div>
+        <h3>The Rails Boom & Operations</h3>
+        <p>RailsConf 2014 era. Security (Heartbleed, Brakeman), DevOps, Continuous Delivery, and commercial scaling.</p>
+        <div class="era-count">32 Interviews</div>
+      </div>
+      <div class="era-card era-4">
+        <div class="era-badge">2015</div>
+        <h3>Polyglot, Microservices & GOTO</h3>
+        <p>GOTO Conference Chicago 2015. Shift toward JVM languages (Clojure, Scala), Go, reactive frameworks, and microservices.</p>
+        <div class="era-count">23 Interviews</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Charts Section -->
+  <section class="intel-section">
+    <div class="charts-row">
+      <!-- Trope & Phrase Frequency -->
+      <div class="intel-card chart-card">
+        <h3>Recurring Tropes & Key Phrase Frequency</h3>
+        <div class="chart-container">
+          <canvas id="tropesChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Interview Duration Arc -->
+      <div class="intel-card chart-card">
+        <h3>Interview Duration Arc & Distribution</h3>
+        <div class="chart-container">
+          <canvas id="durationChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Positional Phrase Distribution Heatmap -->
+  <section class="intel-section">
+    <h2>Positional Phrase Heatmap (Where Tropes Occur)</h2>
+    <p class="section-desc">Analysis of phrase position across the timeline of an interview: Intro (0-15%), Technical Core (15-85%), and Outro Sign-off (85-100%).</p>
+    
+    <div class="intel-card table-card">
+      <table class="intel-table" id="positionalTable">
+        <thead>
+          <tr>
+            <th>Trope / Phrase Pattern</th>
+            <th>Intro Phase (0 - 15%)</th>
+            <th>Technical Core (15 - 85%)</th>
+            <th>Outro Sign-off (85 - 100%)</th>
+            <th>Primary Anchor</th>
+          </tr>
+        </thead>
+        <tbody id="positionalTableBody">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Interactive Interview Explorer & Search -->
+  <section class="intel-section">
+    <h2>Corpus Explorer</h2>
+    <div class="explorer-controls">
+      <input type="text" id="searchInput" placeholder="Search by title, speaker, or keyword..." class="search-input" />
+      <select id="eraFilter" class="filter-select">
+        <option value="ALL">All Eras</option>
+        <option value="2011-2012: The Craftsmanship Dawn">2011-2012: Craftsmanship Dawn</option>
+        <option value="2013: SCNA & Community Scaling">2013: SCNA Scaling</option>
+        <option value="2014: The Rails Boom & Operations">2014: Rails Boom</option>
+        <option value="2015: Polyglot, Microservices & GOTO">2015: Polyglot & GOTO</option>
+      </select>
+    </div>
+
+    <div class="intel-card table-card">
+      <table class="intel-table" id="corpusTable">
+        <thead>
+          <tr>
+            <th>Title / ID</th>
+            <th>Era</th>
+            <th>Year</th>
+            <th>Word Count</th>
+            <th>Est Duration</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="corpusTableBody">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+</article>
+
+<style>
+.intelligence-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.intelligence-header {
+  margin-bottom: 2.5rem;
+}
+.intelligence-header h1 {
+  font-size: 2.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.8rem;
+  color: #1e293b;
+}
+.intelligence-header .intro {
+  font-size: 1.15rem;
+  color: #475569;
+  line-height: 1.6;
+}
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 9999px;
+}
+.intel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.intel-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+.metric-card {
+  text-align: center;
+  border-left: 4px solid #0284c7;
+}
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.metric-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+.intel-section {
+  margin-bottom: 3rem;
+}
+.intel-section h2 {
+  font-size: 1.6rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+.section-desc {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+.era-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+.era-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  position: relative;
+}
+.era-card h3 {
+  font-size: 1.15rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+.era-card p {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+}
+.era-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  background: #0284c7;
+  color: #ffffff;
+  border-radius: 4px;
+  display: inline-block;
+}
+.era-count {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0284c7;
+}
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 1.5rem;
+}
+.chart-card {
+  min-height: 380px;
+}
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+.intel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.intel-table th, .intel-table td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+.intel-table th {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+}
+.intel-table tr:hover {
+  background: #f8fafc;
+}
+.explorer-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.search-input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+.filter-select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+.btn-view {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  color: #0284c7;
+  border: 1px solid #0284c7;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn-view:hover {
+  background: #0284c7;
+  color: #ffffff;
+}
+</style>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('/assets/data/archive_intelligence.json')
+    .then(response => response.json())
+    .then(data => {
+      renderDashboard(data);
+    })
+    .catch(err => {
+      console.error("Error loading archive intelligence dataset:", err);
+    });
+
+  function renderDashboard(data) {
+    // 1. Stats
+    document.getElementById('stat-total-interviews').textContent = data.total_transcripts;
+    document.getElementById('stat-total-words').textContent = (data.total_words / 1000).toFixed(0) + 'k';
+    document.getElementById('stat-avg-words').textContent = data.avg_words_per_interview;
+
+    // 2. Tropes Chart
+    const tropesCtx = document.getElementById('tropesChart').getContext('2d');
+    const tropeLabels = Object.keys(data.trope_frequencies);
+    const tropeValues = Object.values(data.trope_frequencies);
+
+    new Chart(tropesCtx, {
+      type: 'bar',
+      data: {
+        labels: tropeLabels,
+        datasets: [{
+          label: 'Occurrences Across Corpus',
+          data: tropeValues,
+          backgroundColor: '#0284c7',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // 3. Duration Chart
+    const durationCtx = document.getElementById('durationChart').getContext('2d');
+    const durationLabels = Object.keys(data.duration_distribution);
+    const durationValues = Object.values(data.duration_distribution);
+
+    new Chart(durationCtx, {
+      type: 'doughnut',
+      data: {
+        labels: durationLabels,
+        datasets: [{
+          data: durationValues,
+          backgroundColor: ['#38bdf8', '#0284c7', '#0369a1', '#0f172a']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // 4. Positional Table
+    const posBody = document.getElementById('positionalTableBody');
+    posBody.innerHTML = '';
+
+    Object.keys(data.positional_phrases).forEach(trope => {
+      const pos = data.positional_phrases[trope];
+      const maxPhase = pos.intro >= pos.middle && pos.intro >= pos.outro ? 'Intro (0-15%)' :
+                       (pos.outro >= pos.middle ? 'Outro Sign-off (85-100%)' : 'Technical Core (15-85%)');
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${trope}</strong></td>
+        <td>${pos.intro} times</td>
+        <td>${pos.middle} times</td>
+        <td>${pos.outro} times</td>
+        <td><span class="badge" style="background:#e0f2fe; color:#0369a1;">${maxPhase}</span></td>
+      `;
+      posBody.appendChild(tr);
+    });
+
+    // 5. Corpus Table Explorer
+    const corpusBody = document.getElementById('corpusTableBody');
+    const searchInput = document.getElementById('searchInput');
+    const eraFilter = document.getElementById('eraFilter');
+
+    function renderCorpusTable() {
+      corpusBody.innerHTML = '';
+      const query = searchInput.value.toLowerCase();
+      const selectedEra = eraFilter.value;
+
+      const filtered = data.transcripts.filter(item => {
+        const matchesQuery = item.title.toLowerCase().includes(query) || item.id.toLowerCase().includes(query);
+        const matchesEra = selectedEra === 'ALL' || item.era === selectedEra;
+        return matchesQuery && matchesEra;
+      });
+
+      filtered.slice(0, 50).forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${item.title}</strong><br><small style="color:#64748b;">${item.id}</small></td>
+          <td><span style="font-size:0.85rem; color:#334155;">${item.era}</span></td>
+          <td>${item.year}</td>
+          <td>${item.word_count.toLocaleString()} words</td>
+          <td>~${item.est_minutes} min</td>
+          <td><a href="/interviews/${item.id}/" class="btn-view">View Interview</a></td>
+        `;
+        corpusBody.appendChild(tr);
+      });
+    }
+
+    searchInput.addEventListener('input', renderCorpusTable);
+    eraFilter.addEventListener('change', renderCorpusTable);
+
+    renderCorpusTable();
+  });
+});
+</script>
