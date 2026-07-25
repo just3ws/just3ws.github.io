@@ -325,14 +325,16 @@ breadcrumb_parent_url: /home/
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  fetch('/assets/data/archive_intelligence.json')
-    .then(response => response.json())
-    .then(data => {
-      renderDashboard(data);
-    })
-    .catch(err => {
-      console.error("Error loading archive intelligence dataset:", err);
-    });
+  const inlineData = {{ site.data.archive_intelligence | jsonify }};
+  
+  if (inlineData && inlineData.total_transcripts) {
+    renderDashboard(inlineData);
+  } else {
+    fetch('/assets/data/archive_intelligence.json')
+      .then(response => response.json())
+      .then(data => renderDashboard(data))
+      .catch(err => console.error("Error loading archive intelligence dataset:", err));
+  }
 
   function renderDashboard(data) {
     // 1. Stats
