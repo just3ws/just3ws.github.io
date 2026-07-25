@@ -53,6 +53,16 @@ class ForensicRepair
         data["turns"] = new_turns if modified
       end
 
+      # 2. Fix Interviewer Overload / Collapsed Single Turn
+      if data["turns"] && (data["turns"].size <= 2 || m1_ratio(data["turns"]) >= 0.85)
+        text_blob = data["turns"].map { |t| t["text"] }.join(" ")
+        restructured = parse_dialogue_turns(text_blob)
+        if restructured.size > 1 && m1_ratio(restructured) < 0.60
+          data["turns"] = restructured
+          modified = true
+        end
+      end
+
       if modified
         data.delete("validation_error")
         File.write(path, data.to_yaml)
@@ -79,10 +89,20 @@ class ForensicRepair
 
   private
 
+  def m1_ratio(turns)
+    m1_words = turns.select { |t| t["speaker"] == "M1" }.map { |t| word_count(t["text"]) }.sum
+    total = turns.map { |t| word_count(t["text"]) }.sum
+    return 0.0 if total.zero?
+    m1_words.to_f / total
+  end
+
+  def word_count(text)
+    text.to_s.split(/\s+/).reject(&:empty?).size
+  end
+
   def split_long_turn(text, speaker)
     return [{ "speaker" => speaker, "text" => text }] if text.length <= MAX_TURN_CHARS
 
-    # Sentence boundary split
     sentences = text.scan(/.*?(?:[.!?]+(?:\s+|\z)|\n+)/)
     sentences = [text] if sentences.empty?
 
@@ -100,6 +120,48 @@ class ForensicRepair
     chunks << current.strip unless current.empty?
 
     chunks.map { |c| { "speaker" => speaker, "text" => c } }
+  end
+
+  def parse_dialogue_turns(text)
+    sentences = text.scan(/.*?[.!?](?:\s+|\z)/)
+    turns = []
+    current_speaker = "M1"
+    current_text = ""
+
+    sentences.each_with_index do |s, idx|
+      s_clean = s.strip
+
+      # Transition triggers for Guest (S1) vs Host (M1)
+      s1_trigger = s_clean.match?(/\A(?:well\b|the\s+differences\b|yeah\b|absolutely\b|sure\b|so\s+the\b|our\b|my\b|i\s+(?:think|spent|was|did|work|started|came)\b)/i) && current_text.length > 80
+      m1_trigger = s_clean.match?(/\A(?:hi\b|welcome\b|so\s+so\b|right\b|tell\s+me\b|what\b|how\b|can\s+you\b|is\s+there\b|thanks?\b)/i) && current_speaker == "S1"
+
+      if current_speaker == "M1" && (s1_trigger || s.include?("?"))
+        current_text += " " + s_clean
+        turns << { "speaker" => "M1", "text" => current_text.strip }
+        current_speaker = "S1"
+        current_text = ""
+      elsif current_speaker == "S1" && m1_trigger
+        turns << { "speaker" => "S1", "text" => current_text.strip } unless current_text.empty?
+        current_speaker = "M1"
+        current_text = s_clean
+      else
+        current_text = current_text.empty? ? s_clean : current_text + " " + s_clean
+      end
+    end
+
+    turns << { "speaker" => current_speaker, "text" => current_text.strip } unless current_text.strip.empty?
+    
+    # Merge adjacent turns by same speaker
+    merged = []
+    turns.each do |t|
+      next if t["text"].empty?
+      if merged.any? && merged.last["speaker"] == t["speaker"]
+        merged.last["text"] += " " + t["text"]
+      else
+        merged << t
+      end
+    end
+    merged
   end
 end
 
