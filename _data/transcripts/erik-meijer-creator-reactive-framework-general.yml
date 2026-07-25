@@ -8,110 +8,39 @@ speaker_map:
     role: developer tools and architecture
 turns:
 - speaker: M1
-  text: Hi, it's Mike again with UGtastic. I'm sitting down at GOTO Chicago with Eric
-    Meyer. Eric Meyer is, well if you've worked with Microsoft technologies over the
-    last decade, you've worked with something that Eric has created or been a part
-    of, from C# to the Azure cloud platform. Now you're away from Microsoft and you're
-    working a lot more on the open source world. Well, first off, thank you for sitting
-    down with me, but can you tell me a little bit about what this platform that you
-    just spoke about, this reactive framework, what is that and what is that? Okay,
-    so I can try to explain that in general terms because that I think is also where
-    you mentioned open source, where the kind of the value of open source comes in.
+  text: Hi, it's Mike again with UGtastic. I'm sitting down at GOTO Chicago with Erik
+    Meijer. Erik Meijer is, well if you've worked with Microsoft technologies over
+    the last decade, you've worked with something that Erik has created or been a
+    part of, from C# to the Azure cloud platform. Now you're away from Microsoft and
+    you're working a lot more on the open source world. Well, first off, thank you
+    for sitting down with me, but can you tell me a little bit about what this platform
+    that you just spoke about, this reactive framework, what is that?
+- speaker: S1
+  text: Okay, so I can try to explain that in general terms because that I think is
+    also where you mentioned open source, where the value of open source comes in.
     So the thing is if you're trying to compose software, in my view, there are four
-    different kinds of effects that as a developer you have that you have to take
-    into account. So let's look at the simple, you know, when you're doing, when you're
-    programming Java and you're calling a method, typically the method returns one
-    value and that method is actually synchronously. So you call, you know, two string
-    and, you know, that call blocks and then returns a single string. Right. Right.
-    So that's kind of the simplest synchronous call that returns one value. So input,
-    wait, output. Yes. Now the second thing that what you do is that if you make a
-    call, synchronous call, and what you get back is a collection of values, like
-    an iterable in Java. Right. So you make a call and now you get back an iterable,
-    but that iterable represents multiple values, but also they are synchronous because
-    you, you call next, next, next, and each call to next is blocking. Right. Okay.
-    But the, the, the, the important thing is that there's two, you know, ways to
-    compose your program. One where you have a single result and one where you have
-    multiple results. And then, you know, when you have multiple results, you loop
-    over that and, and so on. But those are for, for synchronous programs, those are
-    the two kind of main, um, ways to compose your program. Now let's go to the asynchronous
-    case because that's the very important now that we're moving to more kind of,
-    you know, distributed world. When you make a call, you don't want to be blocked
-    because there's like latency, errors, whatever, you know, we all know the kind
-    of fallacies of distributed computing. So what you want to do is you want, you
-    want to make these calls asynchronous. Right. Now, and there's a lot of, uh, talk
-    these days in JavaScript, in many languages about how to deal with asynchronous
-    calls. And in my opinion, when you have an asynchronous call that returns a single
-    value, um, what you do is you return some kind of future or,
-- speaker: S1
-  text: a promise. A promise represents a value that may not be available yet, but
-    will be at some point in the future. It allows you to handle the result of an
-    asynchronous operation in a more structured and predictable way. When you have
-    an asynchronous call that returns a single value, you can return a promise that
-    will resolve to that value once it's available. This allows you to chain multiple
-    asynchronous operations together in a way that's easy to read and understand.
+    different kinds of effects that as a developer you have to take into account.
+    When you're programming Java and calling a method, typically it returns one value
+    synchronously (like toString). That's the simplest call. The second is when you
+    get back a collection of values like an Iterable synchronously (next, next, next).
+    Those are the two main ways to compose synchronous programs. Now for asynchronous
+    programs, when you make a call you don't want to block because of latency or fallacies
+    of distributed computing. When an asynchronous call returns a single value, you
+    return a Future or a Promise (or Task in .NET). What Rx does is complement this
+    picture for when something returns multiple results asynchronously, like a Twitter
+    stream or mouse move events. Rx deals with asynchronous data streams, defining
+    an abstract interface across languages.
 - speaker: M1
-  text: And what about when you have multiple results? How does the reactive framework
-    handle that?
+  text: A lot of the examples you gave were in .NET. Is this a .NET only thing?
 - speaker: S1
-  text: In the reactive framework, multiple results are handled using observables.
-    An observable is a sequence of values that can be subscribed to. When you subscribe
-    to an observable, you receive each value as it becomes available. This allows
-    you to handle multiple results in a more declarative way, without having to manually
-    loop over them. You can also use operators to transform and filter the values
-    as they're emitted.
-- speaker: M1
-  text: So, can you give an example of how you might use the reactive framework in
-    a real-world scenario?
-- speaker: S1
-  text: Sure. Let's say you're building a web application that needs to fetch data
-    from multiple sources, such as a database and an external API. With the reactive
-    framework, you can create observables for each of these sources and then combine
-    them using operators to create a single observable that emits the final result.
-    This allows you to handle the data in a more efficient and scalable way, without
-    having to manually manage multiple asynchronous operations.
-- speaker: M1
-  text: That's really interesting. Thank you for explaining the reactive framework
-    and how it can be used to handle asynchronous operations in a more efficient and
-    scalable way. It's great to see how open source technologies are being used to
-    solve real-world problems.
-- speaker: S1
-  text: Thank you, Mike. I'm glad I could help. If you have any more questions, feel
-    free to ask.
-- speaker: M1
-  text: You know, promise or whatever, how you want to call it. And then .NET, that
-    is, they use the type Task for that. So a Task represents a computation that is
-    asynchronous, that has a single result. So you make a call, you get back this
-    thing that represents, you know, a promise that, you know, there will be a value
-    at some point. Um, now what Rx is, is that it complements, this picture by having,
-    what happens if you have something that returns multiple results asynchronously.
-    So say you make, um, the most natural examples, maybe Twitter, you make a call,
-    you send a query to Twitter, and what you get back is a stream of all the tweets.
-    Right. And you're not asking, give me the next tweet. No, Twitter will kind of,
-    you know, notify you when the next tweet. Just pulls up a buffer, kind of. Well,
-    it just notifies you with events or something, or like your, and even on your
-    local machine, if you're doing, um, events processing, like your mouse moves,
-    or so on, you're not asking the mouse, give me the next mouse move. Right. You
-    get notified, so you get a sequence of, of collections. Sorry. Probably shouldn't
-    drink, uh, soda. It's okay. Um, now, so, so, so what Rx is, is it, it's trying
-    to kind of, you know, deal with asynchronous computations with streams of data,
-    asynchronous data streams. Okay. And, and, and, and if you look at languages like
-    Erlang, they have embraced that, that same paradigm for a long time, right? Where
-    you do message passing, you have two different agents that send messages to each
-    other, um, and, and so what this is trying to do is to define an interface that
-    you can put on, on different services, and then you can glue these things together
-    using this interface. Okay. Uh, a lot of the examples you gave were in, in .NET.
-    Is this a .NET only thing? Ah, that's a very good question. So one of the, um,
-    things is that since this is an, an abstract interface in the sense of abstract,
-    it's a conceptually abstract, there's no language dependency. So we, we, we, um,
-    on the open source side, it's like, you know, rx.codeplex.com. Okay. Where we
-    open source this. We have versions for JavaScript, for .NET, and for C++. The
-    C++ one is not as mature. Right. Um, then Netflix has written a Java implementation.
-    It's a Java implementation. Um, GitHub has written an Objective-C implementation,
-    and in Dart, uh, Google has the Dart streams library, which is also, um, based
-    on these principles. Okay. And then other people have done, like, Python, and,
-    and Ruby, and so there's, like, you know, again, this idea of having asynchronous
-    data streams is not tied at all to a single language, and that's exactly also
-    what I want, because you don't
+  text: Ah, that's a very good question. Since this is a conceptually abstract interface,
+    there's no language dependency. On the open source side (rx.codeplex.com) we have
+    versions for JavaScript, .NET, and C++. Netflix has written a Java implementation
+    (RxJava), GitHub has an Objective-C implementation (ReactiveCocoa), and Google
+    has Dart streams. on these principles. Okay. And then other people have done,
+    like, Python, and, and Ruby, and so there's, like, you know, again, this idea
+    of having asynchronous data streams is not tied at all to a single language, and
+    that's exactly also what I want, because you don't
 - speaker: S1
   text: Understand. So Rx is a way to handle asynchronous data streams in a more functional
     and reactive way. It allows you to work with streams of data in a more declarative
@@ -418,6 +347,4 @@ insights:
   type: durable
   confidence: high
 normalized_at: '2026-05-21T12:22:02-05:00'
-validation_error: 'Interviewer Overload: M1 has 61% of words. Check for collapsed
-  guest turns.'
-validated_at: '2026-07-23T07:38:21-05:00'
+validated_at: '2026-07-25T06:57:58-05:00'
