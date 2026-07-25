@@ -1,0 +1,439 @@
+---
+layout: minimal
+title: "Taxonomy & Knowledge Graph Network"
+description: "Interactive graph network exploring interviewees, conferences, user groups, open-source projects, and technical topics across the UGtastic archive canon."
+---
+
+<div class="intel-hero">
+  <div class="intel-hero-inner">
+    <span class="intel-badge">UGtastic Knowledge Network</span>
+    <h1 class="intel-title">Entity Taxonomy & Knowledge Graph</h1>
+    <p class="intel-subtitle">
+      Explore the interconnected web of <strong>191 interviewees</strong>, <strong>5 conferences</strong>, <strong>7 user groups</strong>, and <strong>10 open-source projects</strong> across the UGtastic oral history archive canon.
+    </p>
+  </div>
+</div>
+
+<div class="intel-container">
+  <!-- Key Metrics Row -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Total Graph Nodes</span>
+      <span class="stat-value" id="stat-nodes">402</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Entity Edges / Connections</span>
+      <span class="stat-value" id="stat-edges">612</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Open Source Projects</span>
+      <span class="stat-value">10</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">User Groups & Conferences</span>
+      <span class="stat-value">12</span>
+    </div>
+  </div>
+
+  <!-- Main Graph & Inspector Grid -->
+  <section class="intel-section">
+    <div class="section-header-editorial">
+      <h2 class="section-title">Interactive Knowledge Graph Network</h2>
+      <hr class="title-accent">
+    </div>
+
+    <!-- Cluster Legend & Filter Bar -->
+    <div class="graph-toolbar">
+      <div class="graph-filters">
+        <label for="filter-type">Filter Entity Type:</label>
+        <select id="filter-type" class="filter-select">
+          <option value="ALL">All Entity Clusters</option>
+          <option value="Interviewee">Interviewees (Speakers)</option>
+          <option value="Conference">Conferences</option>
+          <option value="User Group">User Groups</option>
+          <option value="Open Source Project">Open Source Projects</option>
+          <option value="Technical Topic">Technical Topics</option>
+          <option value="Interview">Interviews</option>
+        </select>
+      </div>
+
+      <div class="graph-legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#ec4899;"></span> Interviewees</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span> Conferences</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#10b981;"></span> User Groups</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> Open Source</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#8b5cf6;"></span> Topics</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#64748b;"></span> Interviews</span>
+      </div>
+    </div>
+
+    <div class="graph-layout">
+      <!-- Graph Canvas Container -->
+      <div class="graph-canvas-container" id="graph-container">
+        <div id="graph-network" style="width:100%; height:600px;"></div>
+      </div>
+
+      <!-- Entity Inspector Sidebar -->
+      <aside class="entity-inspector" id="entity-inspector">
+        <h3 class="inspector-title" id="inspector-name">Select a Node</h3>
+        <span class="inspector-badge" id="inspector-type">Entity Details</span>
+        <p class="inspector-desc" id="inspector-desc">Click any node in the knowledge network to inspect connected interviewees, conferences, open-source projects, and transcripts.</p>
+
+        <div class="inspector-connections" id="inspector-connections-container" style="display:none;">
+          <h4>Connected Entities (<span id="conn-count">0</span>)</h4>
+          <ul class="conn-list" id="conn-list"></ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Entity Taxonomy Directory Table -->
+  <section class="intel-section">
+    <div class="section-header-editorial">
+      <h2 class="section-title">Taxonomy Entity Index</h2>
+      <hr class="title-accent">
+    </div>
+
+    <div class="explorer-controls">
+      <input type="text" id="taxonomySearch" placeholder="Search entity by name or project..." class="search-input" />
+    </div>
+
+    <div class="table-wrapper">
+      <table class="intel-table" id="taxonomyTable">
+        <thead>
+          <tr>
+            <th>Entity Name</th>
+            <th>Type / Cluster</th>
+            <th>Description</th>
+            <th>Connections</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="taxonomyTableBody">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<style>
+.intel-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 3.5rem 1.5rem;
+  border-bottom: 4px solid #0284c7;
+}
+.intel-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.intel-badge {
+  display: inline-block;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.intel-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+.intel-subtitle {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 800px;
+  line-height: 1.6;
+}
+.intel-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+.stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+.graph-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  background: #f8fafc;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+.graph-filters select {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.9rem;
+  background: #ffffff;
+}
+.graph-legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.graph-layout {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .graph-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.graph-canvas-container {
+  background: #0f172a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.entity-inspector {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.inspector-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #0f172a;
+}
+.inspector-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: #0284c7;
+  color: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.inspector-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+}
+.conn-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.conn-list li {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.85rem;
+}
+.conn-list a {
+  color: #0284c7;
+  font-weight: 600;
+  text-decoration: none;
+}
+.conn-list a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<!-- vis-network CDN for Force Graph Network -->
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const inlineData = {{ site.data.knowledge_graph | jsonify }};
+
+  if (inlineData && inlineData.nodes) {
+    initGraph(inlineData);
+  } else {
+    fetch('/assets/data/knowledge_graph.json')
+      .then(res => res.json())
+      .then(data => initGraph(data))
+      .catch(err => console.error("Error loading knowledge graph data:", err));
+  }
+
+  function initGraph(data) {
+    document.getElementById('stat-nodes').textContent = data.total_nodes;
+    document.getElementById('stat-edges').textContent = data.total_links;
+
+    const container = document.getElementById('graph-network');
+
+    const nodesArray = data.nodes.map(n => ({
+      id: n.id,
+      label: n.label,
+      group: n.type,
+      title: `${n.label} (${n.type})`,
+      value: n.val || 10,
+      color: getColorForType(n.type)
+    }));
+
+    const edgesArray = data.links.map(l => ({
+      from: l.source,
+      to: l.target,
+      title: l.relationship
+    }));
+
+    const visData = {
+      nodes: new vis.DataSet(nodesArray),
+      edges: new vis.DataSet(edgesArray)
+    };
+
+    const options = {
+      nodes: {
+        shape: 'dot',
+        font: { size: 12, color: '#f8fafc' },
+        borderWidth: 2
+      },
+      edges: {
+        width: 1,
+        color: { color: '#334155', highlight: '#38bdf8' },
+        smooth: { type: 'continuous' }
+      },
+      physics: {
+        stabilization: false,
+        barnesHut: {
+          gravitationalConstant: -3000,
+          springLength: 95
+        }
+      },
+      interaction: { hover: true }
+    };
+
+    const network = new vis.Network(container, visData, options);
+
+    function getColorForType(type) {
+      switch(type) {
+        case 'Interviewee': return '#ec4899';
+        case 'Conference': return '#0284c7';
+        case 'User Group': return '#10b981';
+        case 'Open Source Project': return '#f59e0b';
+        case 'Technical Topic': return '#8b5cf6';
+        default: return '#64748b';
+      }
+    }
+
+    // Node Click Inspector
+    network.on("click", function(params) {
+      if (params.nodes.length > 0) {
+        const nodeId = params.nodes[0];
+        const node = data.nodes.find(n => n.id === nodeId);
+        if (node) {
+          document.getElementById('inspector-name').textContent = node.label;
+          document.getElementById('inspector-type').textContent = node.type;
+          document.getElementById('inspector-desc').textContent = node.description || `Entity cluster node in the UGtastic canon.`;
+
+          // Find connections
+          const connectedEdges = data.links.filter(l => l.source === nodeId || l.target === nodeId);
+          const connList = document.getElementById('conn-list');
+          connList.innerHTML = '';
+
+          document.getElementById('conn-count').textContent = connectedEdges.length;
+          document.getElementById('inspector-connections-container').style.display = 'block';
+
+          connectedEdges.forEach(link => {
+            const otherId = link.source === nodeId ? link.target : link.source;
+            const otherNode = data.nodes.find(n => n.id === otherId);
+            if (otherNode) {
+              const li = document.createElement('li');
+              li.innerHTML = `<strong>${link.relationship.replace('_', ' ')}:</strong> <a href="${otherNode.url}">${otherNode.label}</a> <small style="color:#64748b;">(${otherNode.type})</small>`;
+              connList.appendChild(li);
+            }
+          });
+        }
+      }
+    });
+
+    // Filter type handler
+    document.getElementById('filter-type').addEventListener('change', function(e) {
+      const selected = e.target.value;
+      if (selected === 'ALL') {
+        visData.nodes.update(nodesArray);
+      } else {
+        const filtered = nodesArray.filter(n => n.group === selected);
+        visData.nodes.clear();
+        visData.nodes.add(filtered);
+      }
+    });
+
+    // Populate Taxonomy Table
+    const tableBody = document.getElementById('taxonomyTableBody');
+    const searchInput = document.getElementById('taxonomySearch');
+
+    function renderTable() {
+      tableBody.innerHTML = '';
+      const query = searchInput.value.toLowerCase();
+
+      const filteredNodes = data.nodes.filter(n => 
+        n.label.toLowerCase().includes(query) || n.type.toLowerCase().includes(query)
+      );
+
+      filteredNodes.slice(0, 60).forEach(n => {
+        const connCount = data.links.filter(l => l.source === n.id || l.target === n.id).length;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${n.label}</strong></td>
+          <td><span class="badge" style="background:${getColorForType(n.type)}; color:#fff; font-size:0.75rem;">${n.type}</span></td>
+          <td>${n.description || 'Taxonomy Entity Node'}</td>
+          <td>${connCount} connections</td>
+          <td><a href="${n.url}" class="btn-view">Inspect</a></td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    searchInput.addEventListener('input', renderTable);
+    renderTable();
+  }
+});
+</script>
