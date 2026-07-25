@@ -1,0 +1,216 @@
+WEBVTT - UGtastic Archival Caption Track
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:37.091
+<v Mike Hall>Hi, I'm Mike, sitting down again with Ryan Briones and Ethan Gunderson. These guys created Gathers Us. It's a website for managing user group events and also the founders of the Chicago DB user group. Thanks, Ryan and Ethan, for sitting down again. We had a little technical snafu beforehand. So what we discussed earlier is that Gathers Us had a pretty interesting origin, that it was based off of a need that you had in creating Chicago DB. Can you describe a little bit about some of the inception of Gathers Us and what that is in?
+
+00:00:37.091 --> 00:00:49.432
+<v Ethan Gunderson, Ryan Briones>I mean, it's used for several user groups. I've used it myself, and I know GeekFest uses it. It's a great success, and you get a lot of sign-ups, I mean, well over 100 each week.
+
+00:00:49.432 --> 00:00:52.344
+<v Mike Hall>How did Gathers Us come out of Chicago DB?
+
+00:00:52.344 --> 00:01:58.692
+<v Ethan Gunderson, Ryan Briones>Well, there were two major things that happened. And one, we were too cheap to use a tool that costs money. There's a couple of them out there, a big one. Which was kind of the biggest impetus for us to create our own, especially when we kind of like had this idea for the group, but we didn't know how it was going to, you know, if it was going to be successful or not. Pay money for something that was just going to be, that wasn't going to like have legs and go on. Kind of the second thing though, a personal gripe of mine is that a lot of other meeting websites in order to attend an event, they force you to sign up and actually have an account with their site before you can attend that event. And so it was another big like design goal with Gathers Us was to make it a dead simple to both create an event and attend an event. Only information you need to provide is your first name, last name, and email. And then, you know, you can attend an event.
+
+00:01:58.692 --> 00:02:01.396
+<v Mike Hall>Do you ever have any problem with spam?
+
+00:02:01.396 --> 00:02:09.230
+<v Ethan Gunderson, Ryan Briones>I mean, because it's so easy to get in there. Yes. I mean, I know you have a CAPTCHA, but. That's the reason why.
+
+00:02:09.230 --> 00:02:12.211
+<v Mike Hall>Okay. And has that actually been effective?
+
+00:02:12.211 --> 00:02:21.709
+<v Ethan Gunderson, Ryan Briones>It hasn't happened since we introduced it. Oh, good. So. But, like you said, it was born out of a need when you were creating Chicago DB.
+
+00:02:21.709 --> 00:02:26.631
+<v Mike Hall>So the question I asked earlier was what database did you end up using?
+
+00:02:26.631 --> 00:02:32.940
+<v Ethan Gunderson, Ryan Briones>I'm considering that you're a database group and that would be kind of a critical question.
+
+00:02:32.940 --> 00:02:35.506
+<v Mike Hall>What database is Gathers Us built on?
+
+00:02:35.506 --> 00:02:44.241
+<v Ethan Gunderson, Ryan Briones>So the database, sorry, the database we used is Mongo for no particular reason whatsoever. Yes. Other than I want an argument.
+
+00:02:44.241 --> 00:02:44.588
+<v Mike Hall>Okay.
+
+00:02:44.588 --> 00:03:35.753
+<v Ethan Gunderson, Ryan Briones>And some of the things that you learn in creating Gathers Us were those things that you were able to bring back to bring back into the meetings. So, you start off, you want to have a user group about databases and about learning database technologies. So you create a site to support that, you pick the database and, you know, did you learn anything about it and were you able to bring that back into what you were sharing with the group? Yeah, we never did anything with the group on it. I did give two talks at Mongo conferences about the data strategies that we used for storing our data. Because at the time, which was probably the biggest pain point using Mongo is that almost none of that was documented. Everyone's using their own.
+
+00:03:35.753 --> 00:03:36.099
+<v Mike Hall>Yeah.
+
+00:03:36.099 --> 00:03:38.249
+<v Ethan Gunderson, Ryan Briones>So you're on the bleeding edge.
+
+00:03:38.249 --> 00:03:38.595
+<v Mike Hall>Yeah.
+
+00:03:38.595 --> 00:03:53.640
+<v Ethan Gunderson, Ryan Briones>Right there. So, and that's the thing about being on the bleeding edge is you bleed. It's painful. So, going into the group, you know, you founded a group about, you said about two years ago and... Two or three years.
+
+00:03:53.640 --> 00:04:02.237
+<v Mike Hall>Yeah. What kind of format did you follow when you were doing actual meetings? What was the typical structure of the meeting?
+
+00:04:02.237 --> 00:05:53.371
+<v Ethan Gunderson, Ryan Briones>Well, kind of, as illustrated as, you know, the inception of Gathersoss is, that was kind of our, like, the reason why we had to create a group like this is because, you know, we essentially decided on using Mongo kind of just out of a, like it might as well have been flipping a coin or something like that. You know, we had no idea why Mongo would be better than any other database. And so, what our goals were, were to design a group that was focused around like this deep learning of, you know, what makes a particular database better than another, understand like the core of that so that we could apply that to our normal day-to-day stuff. And, you know, there's a lot of good talent in Chicago, a lot of people that have had experience both with modern non-relational databases and people that have a lot of experience building applications on relational databases as well. So, we figured that in a selfish way, we could kind of leech off of the knowledge that's here in Chicago and kind of take that to the next level. So, we did that in two different ways. The format of the group was kind of designed around that. Like every user group, we had a portion of the group that's kind of like a face-forward, presentation-style part where someone would talk about technology or something like that. But to start out the night, we would do, we would read these database white papers that would kind of give us some kind of deep knowledge about a particular technology like Dynamo or Big Table or something like that and kind of maybe set the stage for what we were going to talk about later that day.
+
+00:05:53.371 --> 00:05:53.718
+<v Mike Hall>Okay.
+
+00:05:53.718 --> 00:06:39.614
+<v Ethan Gunderson, Ryan Briones>And anything really interesting that you learned from reading these white papers yourself or anything that was kind of surprising about that? So, the biggest thing for me was the realization that basically no new ideas have come out of database theory in the last 35 years. So, things like the Dynamo paper are just a group of ideas presented slightly differently, but they're all 35 years old. And then you also mentioned something about the specificity of some of the original or the modern NoSQL implementations came out of really specific concerns like the Dynamo being the shipping cart back-end from Amazon. Now, it's got millions of things bolted onto it.
+
+00:06:39.614 --> 00:06:40.030
+<v Mike Hall>Right.
+
+00:06:40.030 --> 00:07:01.591
+<v Ethan Gunderson, Ryan Briones>You have full databases that are built around that paper, both from Amazon and from competition. And, you know, looking at the -- trying to cover these technical white papers, it's a very large undertaking even just when you're trying to understand yourself and grab -- get your hands around these white papers.
+
+00:07:01.591 --> 00:07:07.831
+<v Mike Hall>Getting people to read these papers month to month, is that something that was easy to do?
+
+00:07:07.831 --> 00:07:16.359
+<v Ethan Gunderson, Ryan Briones>Did you have lots of people saying, "Yes, I'm going to read this paper" and give an hour-long presentation on its contents?
+
+00:07:16.359 --> 00:07:18.022
+<v Mike Hall>Or was that a challenge?
+
+00:07:18.022 --> 00:07:19.340
+<v Ethan Gunderson, Ryan Briones>It was a challenge.
+
+00:07:19.340 --> 00:07:19.686
+<v Mike Hall>Yeah.
+
+00:07:19.686 --> 00:08:20.419
+<v Ethan Gunderson, Ryan Briones>I mean, most of the time people would not read the paper and kind of one of the things we wanted to do is, you know, it would be rough for us to be the ones that kind of like led the discussion every month and be the only voices in the group. So we tried to get people to volunteer. And we had a couple of good core members that would kind of step up from time to time to do that. But essentially, trying to get people to volunteer to lead the discussion on a particular paper was rough. Yeah, and kind of you joked earlier that maybe you don't necessarily even understand it all yourself and then all of a sudden you're trying to present it to a bunch of other people. Which is probably why we had a hard time getting people to volunteer. Like, no one wants to try to lead a discussion about a topic that they don't truly understand. And a lot of those white papers are hard.
+
+00:08:20.419 --> 00:08:21.597
+<v Mike Hall>Yeah. Yeah. Yeah.
+
+00:08:21.597 --> 00:08:28.114
+<v Ethan Gunderson, Ryan Briones>They're very technical written a lot of time ago. Yes. And very ivory tower-ish. Lots of math.
+
+00:08:28.114 --> 00:08:28.461
+<v Mike Hall>Yeah.
+
+00:08:28.461 --> 00:08:31.789
+<v Ethan Gunderson, Ryan Briones>Yeah, there's a lot of math. That's interesting.
+
+00:08:31.789 --> 00:08:33.314
+<v Mike Hall>Do you have a meeting?
+
+00:08:33.314 --> 00:08:41.634
+<v Ethan Gunderson, Ryan Briones>We're going to get chicken with that. Crap. Go. All right. So the, you know, the papers, it's very hard. It's very hard.
+
+00:08:41.634 --> 00:08:41.980
+<v Mike Hall>Yeah.
+
+00:08:41.980 --> 00:08:48.081
+<v Ethan Gunderson, Ryan Briones>They're very technical written a lot of time ago and very ivory tower-ish. Lots of math.
+
+00:08:48.081 --> 00:08:48.428
+<v Mike Hall>Yeah.
+
+00:08:48.428 --> 00:08:51.825
+<v Ethan Gunderson, Ryan Briones>There's a lot of math. That's interesting. The...
+
+00:08:51.825 --> 00:08:56.401
+<v Mike Hall>Do you have a meeting? We're going to get chicken with that? Yeah.
+
+00:08:56.401 --> 00:09:05.552
+<v Ethan Gunderson, Ryan Briones>You know, the papers, you know, you said they were very tough and the people would be trying to come in and present on these papers.
+
+00:09:05.552 --> 00:09:10.752
+<v Mike Hall>Have you looked at any other formats? Like bringing in vendors or anything?
+
+00:09:10.752 --> 00:09:18.517
+<v Ethan Gunderson, Ryan Briones>Was there anything you learned trying to maybe reach out to a Mongo company or a, like, and get them to come in?
+
+00:09:18.517 --> 00:09:20.597
+<v Mike Hall>Did you do anything like that?
+
+00:09:20.597 --> 00:09:37.305
+<v Ethan Gunderson, Ryan Briones>Yep. We've had people from TenGen. I don't think we've had anyone from Basho. Membase. Membase. The issue that we've kind of had with bringing vendors in is that they're more or less interested in, like, converting you to use their database.
+
+00:09:37.305 --> 00:09:37.721
+<v Mike Hall>Right.
+
+00:09:37.721 --> 00:09:46.179
+<v Ethan Gunderson, Ryan Briones>Which is usually leads to more of, like, a sales pitchy kind of presentation instead of, like, a low-level technical talk.
+
+00:09:46.179 --> 00:09:46.595
+<v Mike Hall>Right?
+
+00:09:46.595 --> 00:09:52.488
+<v Ethan Gunderson, Ryan Briones>Like, it's really hard to get a vendor to tell you the trade-offs that you're making.
+
+00:09:52.488 --> 00:09:54.152
+<v Mike Hall>Right. Yeah. Yeah. Yeah.
+
+00:09:54.152 --> 00:09:59.906
+<v Ethan Gunderson, Ryan Briones>We're the better to use Mongo if you're trying to do X, Y, Z, but we're from React.
+
+00:09:59.906 --> 00:10:00.253
+<v Mike Hall>Yeah.
+
+00:10:00.253 --> 00:10:01.224
+<v Ethan Gunderson, Ryan Briones>It's like, no.
+
+00:10:01.224 --> 00:10:01.570
+<v Mike Hall>Yeah.
+
+00:10:01.570 --> 00:10:05.245
+<v Ethan Gunderson, Ryan Briones>That's totally not in their best interest to do that.
+
+00:10:05.245 --> 00:10:15.644
+<v Mike Hall>Right. Right. But, okay, and what is the future, right? Do you have plans for reviving the group or how is looking forward to the future of ChicagoDB?
+
+00:10:15.644 --> 00:10:37.067
+<v Ethan Gunderson, Ryan Briones>I don't, it hasn't been totally decided yet what will happen. The interest in the group has died out a little bit, and I think that's mostly due to, like, specialized user groups forming. Like, we have React, Hadoop, basically any relatively still popular NoSQL database has its own user group in Chicago now.
+
+00:10:37.067 --> 00:10:37.483
+<v Mike Hall>Right.
+
+00:10:37.483 --> 00:10:53.706
+<v Ethan Gunderson, Ryan Briones>But what I, even though it was really difficult to do, the white papers are still my favorite part about the group. Mm-hmm. And so I've been tossing around the idea of doing a general computer science white paper user group. Oh, okay.
+
+00:10:53.706 --> 00:10:54.053
+<v Mike Hall>Yeah.
+
+00:10:54.053 --> 00:11:14.435
+<v Ethan Gunderson, Ryan Briones>But so you can see the same kind of fracturing. And so I could understand that would be kind of frustrating as, whereas you started with trying to understand the core tenets that could be applied to any of those database systems. Now people have kind of segregated themselves by their platform.
+
+00:11:14.435 --> 00:11:14.851
+<v Mike Hall>Right.
+
+00:11:14.851 --> 00:11:22.408
+<v Ethan Gunderson, Ryan Briones>And as, I could see that might be kind of frustrating or, do you think it's a good thing or? I don't mind it.
+
+00:11:22.408 --> 00:11:22.755
+<v Mike Hall>Yeah.
+
+00:11:22.755 --> 00:11:28.925
+<v Ethan Gunderson, Ryan Briones>Like Ryan said, the whole purpose of the group was so that we could learn. And I learned.
+
+00:11:28.925 --> 00:11:29.272
+<v Mike Hall>Yeah.
+
+00:11:29.272 --> 00:11:32.808
+<v Ethan Gunderson, Ryan Briones>So that's all I care about. Psychology. Psychology.
+
+00:11:32.808 --> 00:11:33.154
+<v Mike Hall>Yeah.
+
+00:11:33.154 --> 00:11:40.018
+<v Ethan Gunderson, Ryan Briones>Psychology. And you can have something very cool out of it. I can have results that's very popular.
+
+00:11:40.018 --> 00:11:49.100
+<v Mike Hall>So, well, thank you very much for sitting down, Ryan. I don't want to keep you guys from your chicken. Thank you very much. Thanks.

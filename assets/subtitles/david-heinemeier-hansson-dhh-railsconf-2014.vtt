@@ -1,0 +1,126 @@
+WEBVTT - UGtastic Archival Caption Track
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:31.013
+<v Mike Hall>Hi, it's Mike with UGtastic. I'm here at RailsConf 2014 and I'm standing here with DHH, David Heinemeier Hansson. If you might know him, he's written a few books, done a few stuff. I think you have something to do with the product that we're using — we're here for the conference about. But we're going to talk about his keynote that he just gave about clarity and being a software writer. Well, first of all, I want to say thank you very much for taking the time to talk with me.
+
+00:00:31.013 --> 00:00:31.336
+<v David Heinemeier Hansson (DHH)>Sure.
+
+00:00:31.336 --> 00:00:36.246
+<v Mike Hall>So, your keynote — what was the gist of what you were trying to communicate?
+
+00:00:36.246 --> 00:01:20.375
+<v David Heinemeier Hansson (DHH)>Sure. So, I think the identity of most programmers is coming from an angle that doesn't fit the development of information technology very well anymore. And that angle is software engineering. I think there's a lot of programmers who create information systems where engineering is actually not the primary thing that they do. What they do is they write. They're software writers. They're trying to achieve a level of clarity, figuring out, first of all, what are they building? It's not like a bridge where you just know, well, it needs to go from there to there, and we need to have this structural bearing, and so on and so forth. A lot of systems are very vaguely defined, right?
+
+00:01:20.375 --> 00:01:20.763
+<v Mike Hall>Right.
+
+00:01:20.763 --> 00:01:26.643
+<v David Heinemeier Hansson (DHH)>So figuring out what you want to build is very much like figuring out what you want to say.
+
+00:01:26.643 --> 00:01:30.519
+<v Mike Hall>Right. It's more elastic than just going from here to there.
+
+00:01:30.519 --> 00:01:53.908
+<v David Heinemeier Hansson (DHH)>It is. And it's more fuzzy, and it's not as objective. It's a much more subjective endeavor. And I find that writing is a much better metaphor than engineering. And within that, one of the main ways that people are driving their development right now is TDD — Test Driven Development. I used to be a big fan, because it sounded like it made a lot of sense to me.
+
+00:01:53.908 --> 00:01:54.296
+<v Mike Hall>Right.
+
+00:01:54.296 --> 00:02:14.390
+<v David Heinemeier Hansson (DHH)>What I've found over the years is that the test-first approach — driving your design through the test — actually didn't make that much sense to me. And I found that a lot of other software that I looked at and discussed with people, that was created through the test-first paradigm, wasn't better. It was worse.
+
+00:02:14.390 --> 00:02:31.124
+<v Mike Hall>And what's interesting, though, is it seems like Rails was very early on in the whole test-driven development, putting that out there and even introducing it as a concept. But now, ten years later, you're feeling like you're backing away from that original...
+
+00:02:31.124 --> 00:02:55.805
+<v David Heinemeier Hansson (DHH)>Yeah. So I think Rails was probably the first framework that just had tests by default. We had a place to put the tests. We generated them through the scaffolds per default. And I think there's still a lot of good to that. It's not that tests are bad — I can't imagine building a modern application today without tests. If you don't have automated tests, you're really in the woods.
+
+00:02:55.805 --> 00:02:56.193
+<v Mike Hall>Right.
+
+00:02:56.193 --> 00:03:00.651
+<v David Heinemeier Hansson (DHH)>But I don't find it as the primary objective of my design discipline.
+
+00:03:00.651 --> 00:03:03.300
+<v Mike Hall>It's a little bit more nuanced than that.
+
+00:03:03.300 --> 00:03:22.425
+<v David Heinemeier Hansson (DHH)>It's more nuanced than that, and mostly it's just: test-first works for me for a tiny minority of the cases of what I do. And for the majority of the cases, test-first — especially when it's focused on the unit instead of the whole system — actually ends up creating more problems than it solves.
+
+00:03:22.425 --> 00:04:01.062
+<v Mike Hall>Okay. And like I was saying, it sounds like you've developed a more nuanced approach. And it seems like some of the interactions with people in the community are a little bit more dogmatic, one way or the other. People are kind of taking a cheeky stance of, ah, test-driven development, that's silly. And then there's the other side, the Bob Martin camp, which is clean code — even kind of had a little shot at the dirty code there in a slide. But listening to your conversation in person versus observing conversations online, it sounds like some of that meaning, that nuance, gets lost sometimes.
+
+00:04:01.062 --> 00:04:08.944
+<v David Heinemeier Hansson (DHH)>Sure. I mean, anything on Twitter is void of nuance. You have 140 characters. The only thing you can put out is absolutes.
+
+00:04:08.944 --> 00:04:09.267
+<v Mike Hall>Yeah.
+
+00:04:09.267 --> 00:04:20.186
+<v David Heinemeier Hansson (DHH)>And they can be influential in sort of starting the discussion and driving it. It won't get at all the nuance. You have to go deeper than just 140 characters, of course.
+
+00:04:20.186 --> 00:04:22.448
+<v Mike Hall>Has the ping pong helped with that?
+
+00:04:22.448 --> 00:05:25.766
+<v David Heinemeier Hansson (DHH)>I think the ping pong helped me crystallize my thoughts on it a bit. The ping pong, basically for people who don't know, was sort of people submitting a piece of code — I did that on Hacker News a few times, and then some guy set up a site for it. And we went over where this code could go. We agreed that the original piece of code was bad, and then people would ping pong on it. Some people would say, oh, the code is bad because of the pattern, or it's not easily testable, or whatever. And I would try to go in a different direction — wherever I applied this ping pong, it was about clarity. How can I make this code clearer, simpler, easier to understand, lower conceptual overhead, all these things? And I ended up in a very different spot. So that's what partly helped me — that we are going in different directions. You end up somewhere else when you go through test-first than when you go through clarity-first. I don't want to call it that, because it sounds ridiculous.
+
+00:05:25.766 --> 00:05:37.977
+<v Mike Hall>Well, I talked to Dan North, and it's the same kind of thing, where they start with an idea, and then it becomes dogma by other people who adopt it, and then they want to have that rigid...
+
+00:05:37.977 --> 00:06:09.572
+<v David Heinemeier Hansson (DHH)>I had a quote by Kent Beck that's incredibly reasonable. It talks about confidence levels in your code — more so than just talking about, well, every piece of code needs to be written with a test failing first. I don't know if it's not realistic, because I'm sure it's the real stuff for somebody. It's certainly not realistic for me. It's not the real for me, and it doesn't arrive at something better. I tried very hard, multiple times, and I didn't find that it took me to a good place.
+
+00:06:09.572 --> 00:06:17.777
+<v Mike Hall>And the one thing I see with the ping pong is at least it gives a concrete A and B that can be talked about and reasoned about.
+
+00:06:17.777 --> 00:06:47.240
+<v David Heinemeier Hansson (DHH)>Yes. Before/after code — I'm really a big fan of that, because it crystallizes a lot of arguments that are otherwise very fluffy. It's very easy to talk about these things in the abstract. I think clarity is almost impossible to talk about in the abstract, because everybody agrees — just, of course, we should have clear code. It's not a controversial term, but when you apply it to an actual piece of code, then it can quite quickly become controversial.
+
+00:06:47.240 --> 00:07:12.244
+<v Mike Hall>Right. Okay, so I wanted to ask a few questions. Some people have contributed ideas for topics. One of those was about your experience releasing Rails as a major project — that it gets used by companies that make billions of dollars, but they don't always give back even a fraction of what they... How have you dealt with it? I mean, it doesn't sound like you're doing too shabby, but...
+
+00:07:12.244 --> 00:08:38.564
+<v David Heinemeier Hansson (DHH)>Not billions of dollars. And I don't need to. And it doesn't bother me at all, actually. There are a lot of people who do feel like, well, they're owed something because they contribute to open source. I think that's an unfortunate perspective to have on what you're doing. If you're doing it for external reasons and external rewards, that's not where I'm doing it. I'm doing it for my own reward. A big part of my own reward is just that I enjoy it. I'm not doing it for somebody else to sort of hand me a payday out of it, and I enjoy sharing it. A side effect of sharing it freely and letting people use it like they want to is that some people could choose to use it to build great things that are of great value. And I don't see any of that value — and that's okay. I'm a big proponent of open source, but there's also a side of open source that I'm not that enthusiastic about. And GPL, to some extent, is that side of it. I am not that enthusiastic about roping people into: you have to either donate code or money or whatever, just because you use something. That doesn't appeal to me, especially on the code part. I don't want the code of somebody who doesn't want to give it — that's going to be, my perspective, probably not very good code. If I need something in Rails that I don't have already, I'll build it my damn self.
+
+00:08:38.564 --> 00:09:05.054
+<v Mike Hall>And actually, since you brought up the GPL, that was going to cover another question. But I do want to ask — Rails is open source, and all of the libraries that are used by it are also open source. You know, omakase selected gems. But Rails itself, that's a trademark. There does seem to be a line between the code's out there and you can use it — but the brand itself. Has that helped keep Rails on the rails?
+
+00:09:05.054 --> 00:10:43.972
+<v David Heinemeier Hansson (DHH)>I think it helps keep Rails being this one thing. It's very easy to dilute it. In the early days, we had a lot of people actually calling their frameworks in other languages Rails. And that's not a great thing. I'm making Rails with a certain mission, with a certain approach to it, and I want people to be able to know what that is. I don't want people to pick something else up that says Rails, they think it's something that I made, and then it's some PHP framework that I really wouldn't want to touch with a ten-foot pole. So I think trademarks are good in sort of removing confusion. That's what they're there for — a certain company or a certain product, they can be that thing. Like, Coca-Cola can sell their cola, and somebody else can't sell their cola and call it Coca-Cola, because the consumer would get confused. I think there's great value in that. You can certainly go overboard, and people do that all the time, and some of that is, unfortunately, part of what trademark law is — that you have to sort of enforce it, otherwise you lose it. That's tricky, to keep that balance. For me, the whole thing about keeping Rails as a trademark is just avoiding that confusion. Not avoiding people. I just don't want somebody to be representing the official Rails if it's not something that I believe in, because that's going to reflect poorly on me. So that's the reason we have it. We haven't really used it for anything else. There's incredibly little economic value being derived from it. It's protecting what Rails is.
+
+00:10:43.972 --> 00:10:56.119
+<v Mike Hall>Okay. And another question — we talked about the GPL, but what are your feelings about companies whose business practices you don't necessarily agree with using your products? Using Rails?
+
+00:10:56.119 --> 00:11:25.194
+<v David Heinemeier Hansson (DHH)>To me, it's like, I'm also paying my taxes, and some of those taxes go to paved roads, and some people who drive on those roads I don't agree with. So what? It really doesn't matter. I can completely distinguish between the technical aspects of what somebody's doing and their otherwise business practices. So to me, there's absolutely no conflict in calling out companies who I think have poor business practices, whether they're using Rails or not.
+
+00:11:25.194 --> 00:11:32.366
+<v Mike Hall>Yeah. But when they come out and they say, oh, we're a Rails shop, and you're like, I wish you didn't say that.
+
+00:11:32.366 --> 00:12:38.333
+<v David Heinemeier Hansson (DHH)>Yeah, I do. To me, Rails is open — it's MIT. You can take it, you can do whatever you want with it. I'm not responsible for anybody who uses Rails, or what they do with it, or the individual members of the Rails community. I don't want that police role. This is not a hierarchy in that sense. It's not like somebody uses Rails as my employee, and I have to be responsible for anything they say on behalf of Rails. Just because somebody uses Rails doesn't mean they're expressing thoughts on behalf of me. That's explicitly why this is MIT — take and do whatever you want with it, no strings attached. Because then there's not that obligation for me to police everybody who uses it, and how they use it, or whether they're good people or they're bad people. It's just a separate thing, and I don't want that as being part of what goes into Rails. It's enough on my shoulders just to run Rails as the vision of the framework. If I also had to be responsible for anybody who chooses to use it and what they do — forget that.
+
+00:12:38.333 --> 00:13:12.447
+<v Mike Hall>Okay. And the last one is a little bit more of a fun question, relative to the theme of UGtastic. During your keynote, you mentioned going as a young boy to see The Gathering back in Denmark. But just to go back in time to when you first were extracting Rails from Basecamp — when you were first extracting it, and you wanted to show it to people, get people to look at it and check it out, and you'd go into user groups: what was the first other user group, or conference, where you presented Rails? And what was the reception?
+
+00:13:12.447 --> 00:14:49.298
+<v David Heinemeier Hansson (DHH)>Yeah, I think I actually first showed it off to some friends who were working at a couple of different companies. And I got like, oh yeah, that sounds interesting — not a whole lot of feedback to it. And then I showed it off at a Danish university. At the university itself, yeah, 30 or 40 people. People were interested, but it was getting the video up that really made people interested in getting it out online. Just meeting with a local group of people didn't really do that much in the beginning. Where I found like-minded people were all over the internet. Like, I posted a video and somebody wrote me — oh, this is really interesting, I want to learn more about this. At that time I was also on the Ruby mailing list, participating a fair amount in that, and on IRC. So for me it was always about the virtual groups. Not so much about meeting in person — even though that's great too. I mean, that's what we're doing here at RailsConf, 1500 people. It's great to do that occasionally. But the bulk of the real work happens remotely, from people just working wherever they are. When you look at the Rails core group and the alumni group, they're from all over the place — all sorts of different countries and cities. If I just had to run Rails out of the programmers available in Copenhagen — no offense to the programmers in Copenhagen — of course it wouldn't be as good. Having the whole world work on something versus having one city, one tiny country work on something. Not the same thing.
+
+00:14:49.298 --> 00:15:07.131
+<v Mike Hall>And I remember that video coming out, because I was actually a Microsoft developer at the time and I didn't like it. But at that point in my life, my career options were limited. And I just remember seeing it going, that's cool. I want to work with that someday. And now I do.
+
+00:15:07.131 --> 00:15:08.488
+<v David Heinemeier Hansson (DHH)>Yeah, that's awesome.
+
+00:15:08.488 --> 00:15:20.699
+<v Mike Hall>The creation and the work — it's very nice. Now I gushed and I forgot what I was going to say. But no — I just want to thank you. I know you're busy and you have to go. Thank you very much.
+
+00:15:20.699 --> 00:15:26.191
+<v David Heinemeier Hansson (DHH)>My pleasure. Absolutely. Thank you for putting this out there. Love talking about it.
+
+00:15:26.191 --> 00:15:28.000
+<v Mike Hall>All right. Thanks, everyone.

@@ -1,0 +1,75 @@
+WEBVTT - UGtastic Archival Caption Track
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:01:03.328
+<v Mike Hall>Hi, it's Mike with UGtastic . I'm here again at RailsConf 2014 and I'm standing here with Justin Collins. Justin is going to be doing a talk tomorrow called "Tales from the Crypt" but he's also the creator of the Brakeman Gem. Well, thank you very much for taking the time to speak with me. First, can we start with the Brakeman Gem?
+
+00:01:03.328 --> 00:01:14.548
+<v Justin Collins>Because I'm a fan, but I'd like you to describe what it is.
+
+00:01:14.548 --> 00:01:15.499
+<v Mike Hall>Sure.
+
+00:01:15.499 --> 00:01:50.491
+<v Justin Collins>So, the Brakeman Gem is a static analysis security tool for Ruby on Rails applications. So, it looks at your source code, finds potential vulnerabilities, and lets you know about them.
+
+00:01:50.491 --> 00:01:51.632
+<v Mike Hall>Great.
+
+00:01:51.632 --> 00:01:58.098
+<v Justin Collins>But wait, it's a dynamic language.
+
+00:01:58.098 --> 00:02:06.086
+<v Mike Hall>How can we do any kind of static analysis?
+
+00:02:06.086 --> 00:03:46.878
+<v Justin Collins>Oh, boy. So, I've talked about that quite a bit. You know, the important thing for a security tool is just finding stuff. And, yes, static analysis security purists may be upset because you can't prove certain things or you can't analyze certain things. But for a security tool, it's really not that important that it be perfect, but just that we're able to identify potential problems inside the source code. So, it's kind of like if you, just because you can't maybe identify everything, it doesn't mean that it's going to work.
+
+00:03:46.878 --> 00:03:47.829
+<v Mike Hall>Yeah.
+
+00:03:47.829 --> 00:04:10.650
+<v Justin Collins>So, it's kind of like if you, just because you can't maybe identify everything, it doesn't mean that it's going to work.
+
+00:04:10.650 --> 00:04:11.601
+<v Mike Hall>Yeah.
+
+00:04:11.601 --> 00:04:34.422
+<v Justin Collins>So, it's kind of like if you, just because you can't maybe identify everything, it doesn't mean that it's going to work.
+
+00:04:34.422 --> 00:04:35.372
+<v Mike Hall>Yeah.
+
+00:04:35.372 --> 00:04:54.770
+<v Justin Collins>It doesn't mean you shouldn't identify problems statically just because you can't identify everything.
+
+00:04:54.770 --> 00:05:04.089
+<v Mike Hall>Exactly. So what inspired you to create Brakeman?
+
+00:05:04.089 --> 00:06:00.380
+<v Justin Collins>It's kind of a long story, but I got an internship on a security team at AT&T Interactive. Knowing nothing about security or Rails, I proposed building a tool that finds vulnerabilities automatically. They let me open source it at the end of my internship, and then I worked for them later on it.
+
+00:06:00.380 --> 00:06:09.889
+<v Mike Hall>So security is something you have a passion about?
+
+00:06:09.889 --> 00:06:54.200
+<v Justin Collins>I fell into it by accident! But creating a tool that helps people allowed me to get into the security community. As a developer, having security knowledge bridges the gap between developers trying to get work done and security teams.
+
+00:06:54.200 --> 00:07:35.087
+<v Mike Hall>Anything that gives insight into what's going on in code is great. You said you can't cover everything—is there a common problem that's too hard to pin down statically that Rails developers should be thinking about?
+
+00:07:35.087 --> 00:08:23.772
+<v Justin Collins>Good question. Helper methods using `html_safe` are a big one. Developers trust helper methods, but if a helper sets `html_safe` while inserting user input, you get cross-site scripting. Check your gems and helpers to make sure they properly escape values.
+
+00:08:23.772 --> 00:08:38.796
+<v Mike Hall>Which brings me to your talk, 'Tales from the Crypt'. I'm presuming encryption?
+
+00:08:38.796 --> 00:09:35.848
+<v Justin Collins>Good assumption, but we're not talking about encryption! To be honest, I didn't notice the pun until after the talk was accepted. We're presenting a developer's worst nightmare—one day in the life of developers facing security problem after security problem, with proactive steps to prevent bad days.
+
+00:09:35.848 --> 00:09:53.914
+<v Mike Hall>I'm looking forward to your talk, and I really appreciate you taking the time to speak with me.
+
+00:09:53.914 --> 00:10:00.000
+<v Justin Collins>No problem, thank you very much!

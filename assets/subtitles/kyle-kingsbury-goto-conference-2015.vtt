@@ -1,0 +1,96 @@
+WEBVTT - UGtastic Archival Caption Track
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:33.161
+<v Mike Hall>Five. Recording now is one, two, three. Okay. Hi, it's Mike with UGtastic . I'm here at GOTO Conference 2015 and I'm sitting here with Kyle Kingsbury who gave the opening keynote and its tagline was Hope Springs Eternal. Did I say that correctly? Okay. Well, thank you very much for taking the time to speak with me. What Hope Springs Eternal? What were you trying to implant as a message for your keynote?
+
+00:00:33.161 --> 00:01:20.860
+<v Kyle Kingsbury>The message is basically that everything is broken and we should be crying in the corner. I came to deliver fire and ashes, but we're wrapping it in a pretty happy package. It's like we're smiling. We're all doomed. So in the previous Jepson talks, I'd gone through a number of databases and had found inconsistencies or cases of data loss. And in this talk, I wanted to come back to some of these databases because people are optimistic that they've fixed certain problems. And I wanted to measure whether or not those problems have been resolved and then see if there were new ones.
+
+00:01:20.860 --> 00:01:21.269
+<v Mike Hall>Okay.
+
+00:01:21.269 --> 00:01:28.946
+<v Kyle Kingsbury>So like the notorious Mongo missed write problem and things like that. So what were some of...
+
+00:01:28.946 --> 00:01:31.397
+<v Mike Hall>Can you tell me your findings?
+
+00:01:31.397 --> 00:01:55.328
+<v Kyle Kingsbury>So MongoDB in particular fixed their majority write issue, where if you would write at the strongest level of consistency, it could occasionally say that it had written data successfully and then lose it. Oh, okay. So that was fixed quickly and it was confirmed to be safe in the latest tests.
+
+00:01:55.328 --> 00:01:55.736
+<v Mike Hall>Okay.
+
+00:01:55.736 --> 00:02:56.423
+<v Kyle Kingsbury>I found a new issue, however, which is that it will allow you to read values from the past. So you can write something and then not see it anymore. And a later time it might show up. Well, I guess that's the eventual part of eventually readable instead of eventually consistent. But it'll show up. So there was just some latency issues that if you wrote and then read too fast, it might get stale data. Or you could also read garbage data. You could make a write that should not have succeeded. It would fail, but you might not know it failed. And then it would be visible for reads to that node. So that's called read uncommitted. So both stale reads and dirty reads are sort of... ... two complementary sides of the same phenomenon in Mongo.
+
+00:02:56.423 --> 00:03:00.343
+<v Mike Hall>Okay. And what were some of the other databases?
+
+00:03:00.343 --> 00:04:03.806
+<v Kyle Kingsbury>Did you look at MySQL and Postgres and Couch and React and all the other databases that are usually come up in these conversations? So I haven't gone to test MySQL with Postgres replication. I did a very simple single node Postgres analysis, but it doesn't show very much interesting beyond two generals. I did come back to look at Elasticsearch in this test, which previously lost data. But when a partition happened that left a node connecting two different components in the network, that particular behavior was known to be an issue, and the ticket was fixed. And in fact, it had reduced the window of data loss significantly. But there's still some time when you can lose writes. Were you the person who authored those blog post articles doing the partition analysis on...
+
+00:04:03.806 --> 00:04:07.073
+<v Mike Hall>Or was it Elasticsearch I'm thinking of?
+
+00:04:07.073 --> 00:04:16.874
+<v Kyle Kingsbury>There was about missing data due to... Some latency inside of certain database scenarios. That could have been me, yeah.
+
+00:04:16.874 --> 00:04:17.283
+<v Mike Hall>Okay.
+
+00:04:17.283 --> 00:04:29.861
+<v Kyle Kingsbury>The Jepson series has been going on for a couple years now. And there's a bunch of blog posts, and there's a paper in ACMQ, and there's the talks as well.
+
+00:04:29.861 --> 00:04:36.804
+<v Mike Hall>Okay. And are there any databases that you're just like, yeah, this database is good?
+
+00:04:36.804 --> 00:06:29.763
+<v Kyle Kingsbury>Or is it always the... Well, it depends. You know, I think depending on what you're building, you're going to need various guarantees. Guarantees and various performance characteristics and various availability characteristics. So for a consistent metadata store, you might pick something like Zookeeper. Maybe etcd, although that's a little newer, so I figure it 'll take a while to iron its mugs. In fact, Zookeeper, you know, over its, what, 10-year history has been ironing out bugs gradually. There was a really nice article from PagerDuty recently that discovered a particular confluence of unchecked checks ums for GCP packets and some weird Xen anomalies that resulted in Zookeeper. So it's like if you have an elbow here and this elbow here, it won't write. Yeah, it's really amazing. These are very difficult to get correct. Yeah, yeah. But Zookeeper, by and large, I think has hammered out a lot of the bugs. Well, and that's one of the things I've heard an interview with one of the Postgres internals DB engine developers. And they basically described that it's, especially with open source development on these tools, it's very hard to get people to work on them that can actually effectively work with these problems because they're hard problems that they're solving. Oh, yes. I mean, so when you're looking at databases, sometimes it feels like the older the better.
+
+00:06:29.763 --> 00:06:33.030
+<v Mike Hall>Does that seem like a reasonable wisdom?
+
+00:06:33.030 --> 00:07:03.741
+<v Kyle Kingsbury>Like if it's been around 20 years, it's probably pretty SOLID. Yeah, and the more use cases it's seen, and as it gets to larger deployments, the more bugs you'll run into enough that it was painful enough that somebody would go and fix it. But conversely, you know, old doesn't necessarily mean safe . There are well-established pieces of software with plenty of bugs in them.
+
+00:07:03.741 --> 00:07:04.149
+<v Mike Hall>Yeah.
+
+00:07:04.149 --> 00:07:05.456
+<v Kyle Kingsbury>Not a pen share.
+
+00:07:05.456 --> 00:07:10.438
+<v Mike Hall>So just the word Jepson, what does that mean? What is Jepson?
+
+00:07:10.438 --> 00:07:18.688
+<v Kyle Kingsbury>And how did, you know, you said it's a series of articles, but it just seems like such a random word.
+
+00:07:18.688 --> 00:07:20.321
+<v Mike Hall>What does that mean?
+
+00:07:20.321 --> 00:08:22.968
+<v Kyle Kingsbury>Carly Rae Jepson is a Canadian pop star. Oh, okay. Who had this famous song, Call Me Maybe. It's all about miscommunication and not knowing if the boy likes you or not. And to me, this speaks to distributed systems where you're sending your operations into the, and hoping that messages come back that they understood you , that they want to meet. That's almost as subtle a pun as UGtastic. UGtastic. User group's UGtastic. But, yeah, it's one of those when you finally hear the definition, you're like, that's awesome. Call me maybe. And it makes total sense when you hear it. Well, the blog posts are calling me Jepson, calling me El asticsearch. Oh, okay. And then the hope springs eternal. That one was a little hard. Yeah, in the previous talk, there was a star.
+
+00:08:22.968 --> 00:08:23.376
+<v Mike Hall>Yeah.
+
+00:08:23.376 --> 00:08:30.727
+<v Kyle Kingsbury>There was a reference about building a Death Star, and so this is sort of playing on that.
+
+00:08:30.727 --> 00:08:31.135
+<v Mike Hall>Okay.
+
+00:08:31.135 --> 00:09:49.545
+<v Kyle Kingsbury>And did you happen to look at any other, like, we have several database providers here, like Neo4j, do your tests look at a variety of types of database stores, or are you mostly focused on NoSQL document stores, or is there a specific vertical style of database that you are focusing on with your Jepson series? I would like to, and I think the tools are capable of analyzing, all sorts of different things. Looking for SQL serializability anomalies is very tricky to do. The analyzer is slow, so it's going to take more work, I think, before I can really do tests on things like Postgres . But basic tests about insert safety and update safety for single rows, I think those should be amenable. And I'm actually hoping to do that in Postgres RDS next. Okay, great. So far, I've done things from consensus services like console and etcd to sort of horizontally scalable key value stores, like Cassandra and React, and then some SQL-style databases like NeoDB.
+
+00:09:49.545 --> 00:09:49.954
+<v Mike Hall>Okay.
+
+00:09:49.954 --> 00:09:51.996
+<v Kyle Kingsbury>So there's a whole gamut.
+
+00:09:51.996 --> 00:10:00.000
+<v Mike Hall>Great. Well, thank you very much for taking the time to speak with me. I appreciate it. Thank you.

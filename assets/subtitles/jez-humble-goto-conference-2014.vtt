@@ -1,0 +1,87 @@
+WEBVTT - UGtastic Archival Caption Track
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:00:28.658
+<v Mike Hall>Hi, it's Mike with UGtastic. I'm here at GOTO Conference 2014. I'm standing here with Jez Humble, who today presented on DevOps. He's got a background as the co-author of the Continuous Delivery book. He also was working on another book that we'll get it to in a minute, and also you're a busy person. He's working on a new conference called FlowCon. But first, thank you for taking the time to speak with me. Thanks for having me. Your talk today was on DevOps. Can you tell us a little bit more about what part of DevOps?
+
+00:00:28.658 --> 00:00:43.836
+<v Jez Humble>DevOps is one of those terms that means a lot of things to different people. You helped write the book on Continuous Delivery, which helped lead into kind of what we call DevOps. Can you tell us a little bit about what that means to you and how that relates to your talk today?
+
+00:00:43.836 --> 00:01:17.808
+<v Mike Hall>Yes, I mean, which is a very big question, and debate rages on how to define DevOps and what DevOps really is. But for me, ultimately, DevOps is about creating a culture in which we're always learning how to get better at creating and evolving and operating great products and services. With a particular focus on collaboration between all the different people involved in doing that, whether that's the engineers, the UX people, the operations people, and all the various groups who are involved in doing that. So it isn't just about deploying. It's about the whole application cycle from from code writing to delivery.
+
+00:01:17.808 --> 00:02:00.877
+<v Jez Humble>Yeah, and you know, even outside that cycle, I mean, the point of continuous delivery is to give you this capability to be able to get changes out fast to users in a low risk way and to make it economic to work in small batches. But once you have that capability, the question then becomes, what do you do with it? And, you know, that I think, you know, the people in the DevOps field will tell you that you use that for creating a feedback loop so that you can make sure that you're working on the right things, so that you're building things that actually delight users and improve the customer experience. And so it kind of feeds into that whole discussion around making building things that are delightful and better serve our customers. And is that what your goal of your talk was?
+
+00:02:00.877 --> 00:02:32.110
+<v Mike Hall>Actually, what was the title of the talk? It was a long one. It was. We have a lot of very long titles. I do, yeah, sorry about that. So, yeah, DevOps Culture and Practices to Create Flow. DevOps Culture and Practices to Create Flow. And flow being? Flow being being able to get ideas out to users as quickly as possible. So, I mean, the question of the thing that is actually doing the flowing was kind of the premise for the talk, right? Because I go back to the Toyota production system and the What is the idea of flow in the context of the Toyota production system?
+
+00:02:32.110 --> 00:02:58.904
+<v Jez Humble>The idea of flow in the context of the Toyota production system is that the customer puts in an order, and you want this car, how fast can you get it to them? Right. So there's this kind of idealized concept of one piece flow of being able to go from customer order all the way through to delivering the vehicle as a single piece of flow with no kind of interruptions and cues or anything like that, which, you know, is unachievable. But the idea is that you're always moving towards that.
+
+00:02:58.904 --> 00:03:02.959
+<v Mike Hall>So, what is the equivalent of that in the context of software development?
+
+00:03:02.959 --> 00:03:13.589
+<v Jez Humble>My contention is that what you should be looking at is check-ins, creating builds, and trying to get those builds out to users as fast and as safely as possible. And how do you actually do that?
+
+00:03:13.589 --> 00:03:34.795
+<v Mike Hall>Some people, that is even at the very beginning of how to write software is a controversial topic right now with TDD. Right. And it's TDD that like we can't even agree on how to write software, much less how to finally get something to that end user. Is that something you've been experienced or having conversations about, like trying to figure out those kind of things with your teams?
+
+00:03:34.795 --> 00:04:12.000
+<v Jez Humble>Absolutely. I mean, one of the things that again, I said in the talk, and I also say in the book, and to anyone who listened to me, frankly, is that you've got to build quality into the product. So the idea that you can somehow write some code, and then there's like quality activity a bit further down where you find out it's any good, that doesn't work. Or you have like a separate quality team. It's the responsibility of the people building the software to build quality in. And one of the ways that you do that is through TDD, by making sure the developers are responsible for writing the tests that show that their software does what users want, and what they expect of it.
+
+00:04:12.000 --> 00:05:23.726
+<v Mike Hall>I mean, TDD is a whole other topic in its own right. And you know, one of the things for me about TDD is, you know, going back to the idea of satisfying the user. What we do in TDD is we put ourselves, it forces us to put ourselves in the perspective of the user of the software. The first thing you do when you write a test is, you know, for when you're starting TDD for a new module or component or class or function, you think about what's the API, because you have to write the test against an API that doesn't exist yet. So you're designing the API, which puts you in the perspective of the user. And that for me is a really important point of TDD. It forces developers to think as a consumer of the software they're about to build, and design an API that's simple to use and simple to test. Yeah, you get that pain early that like, whoa, what comes here? Right. And actually once you've worked out the right test to write, actually writing the code that implements that should be relatively easy. The hard bit is working out what the test should look like. And so that I think actually is very, you know, there's a very lean aspect of that. And just, you know, jumping straight over into, we alluded to a book that you're working on. Is this also in the same vein of topic? Or is this, what is the book?
+
+00:05:23.726 --> 00:05:55.836
+<v Jez Humble>The book is called Lean Enterprise. And the book is about how large companies can innovate at scale. The problem that we have with the Continuous Delivery book is we talk about technical practices and principles, but organizations have trouble implementing them due to architecture, governance, compliance, or budgeting. Big companies that don't treat IT as a competitive advantage treat software as an order-taking cost center. Imagine if software actually was a competitive advantage to your business—Netflix and Google treat software as central to product development and innovation.
+
+00:05:55.836 --> 00:06:14.959
+<v Mike Hall>I can see how all of these things can be daunting for someone adopting them, because terms like lean and flow have multiple meanings in different contexts. When you described flow earlier, I thought of developer flow, but you were talking about product flow. Has it been a challenge making sure people understand these terms in the context you mean?
+
+00:06:14.959 --> 00:06:51.068
+<v Jez Humble>Yeah, it's a huge problem—even understanding the concepts, the names, and how they fit together. People make basic mistakes with this stuff. It's genuinely counterintuitive. A lot of people think lean is about cutting costs. Lean is not about cutting costs; lean is about reducing waste. By reducing waste, we end up with lower costs, but you don't just look for expensive things and cut them out of the budget. Look at Toyota—Japanese culture had jobs for life, so you couldn't fire anyone. The idea with lean was to increase productivity by making people more efficient and effective, freeing up people to work on higher-value growth instead of firing them.
+
+00:06:51.068 --> 00:07:03.836
+<v Mike Hall>Right. A word that has come up in a lot of interviews is empathy—trying to put your mind into the listener's mind. When you're at these presentations, do you often get people surprised, pushing back, or expecting something different?
+
+00:07:03.836 --> 00:07:22.411
+<v Jez Humble>All the time! People expect me to be a continuous delivery guy talking about technical things. But the problem is leadership and culture, so I tend to talk about those things these days. The most I can hope is that people come away with a bunch of ideas they can try out. They didn't get what they asked for, but they got what they needed!
+
+00:07:22.411 --> 00:07:26.521
+<v Mike Hall>That's a great approach. Can you tell me more about the FlowCon conference?
+
+00:07:26.521 --> 00:09:05.205
+<v Jez Humble>FlowConf is obviously something that's related to this topic. But when is it? Where is it? Okay, so this year, it's the week of Labor Day, 3rd of September and 4th of September in San Francisco. You go to flowcon. org, flowcon. org. Okay. And my fabulous British accent. With a w. Yes. F-l-o-w-c-o-n. org. And the idea of the conference is to explore the whole range of stuff that goes into building great products and services. So we talk about UX, we talk about product development, we talk about, you know, deep dive on technical topics, talk about culture, we talk about all those things. And the idea is to emphasize the fact, A, that it's a cross-functional activity. So, you know, we don't have a developer track and a UX track and an OBS track because that kind of goes against the whole principle, which is that we all have to work together and we explore all the different aspects that go into creating great products. Yeah. The developers need to know more about the business, business, or the needs and empathy, have more empathy with what the business needs and the business needs to understand what they're asking. So everybody needs to kind of get apathy. Yeah, exactly. No, and that's absolutely right. I mean, my personal experience, I wanted to design a conference that reflects our industry as I want it to look, not as it looks right now. And I also kind of wanted to think about, you know, what makes a great conference. When I go to a conference, I often will attend topics that I don't know very much about so that I can just get my mind blown. I really enjoy that experience. So I kind of wanted to go to a conference where you could see a bunch of things that were related to what you do, but not directly related, so tangentially related and get an idea of how all this stuff
+
+00:09:05.205 --> 00:09:07.890
+<v Mike Hall>What is the main idea behind the concept of lean?
+
+00:09:07.890 --> 00:09:17.753
+<v Jez Humble>The main idea behind lean is to optimize the entire system, not just a specific part of it. It involves thinking about the whole and the high-level objectives of what you're doing.
+
+00:09:17.753 --> 00:09:21.534
+<v Mike Hall>How does lean thinking help in creating empathy for different people?
+
+00:09:21.534 --> 00:09:33.534
+<v Jez Humble>Lean thinking helps in creating empathy by understanding the needs and objectives of all the different people involved. It encourages thinking about how all these different parts fit together to create a bigger picture.
+
+00:09:33.534 --> 00:09:36.603
+<v Mike Hall>Can you tell me more about the conference you mentioned?
+
+00:09:36.603 --> 00:09:46.411
+<v Jez Humble>The conference is focused on real stories of people doing real things in difficult situations. It's called San Francisco FlowCon. org, and it takes place on September 3rd and 4th.
+
+00:09:46.411 --> 00:09:49.151
+<v Mike Hall>Is there any special offer for early registration?
+
+00:09:49.151 --> 00:09:53.918
+<v Jez Humble>Yes, if you register before May 30th, there's an early bird offer, so you get it cheap.
+
+00:09:53.918 --> 00:09:58.082
+<v Mike Hall>Thank you for taking the time to speak with me. It was great talking to you.
+
+00:09:58.082 --> 00:10:00.000
+<v Jez Humble>Thank you. It was great having you.

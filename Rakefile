@@ -575,5 +575,10 @@ namespace :transcript do
   task :forensic_audit do
     sh './bin/transcript_ops.rb --forensic-audit'
   end
+
+  desc 'Export WebVTT captions (.vtt) and YouTube captions sync manifest'
+  task :export_subtitles do
+    sh 'ruby bin/export_subtitles.rb'
+  end
 end
 

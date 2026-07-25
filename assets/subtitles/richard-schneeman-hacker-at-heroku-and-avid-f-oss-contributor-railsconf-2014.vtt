@@ -1,0 +1,33 @@
+WEBVTT - UGtastic Archival Caption Track
+Kind: captions
+Language: en
+
+00:00:00.000 --> 00:02:17.175
+<v Mike Hall>It's Mike with UGtastic. I'm here at RailsConf 2014 and I'm standing here with Richard Schneeman who gave a talk earlier today called Heroku 2014: A Year in Review. He's also a Rails core contributor and he's created a few libraries over the years. One popular one was Sexton for helping Rails developers see their routes without having to run rake routes and another was Wicked which was a multi-stop form wizard basically. Thank you very much for taking the time to speak with me. Yeah thanks for having me. I appreciate it. So Heroku 2014: A Year in Review. We're only a few months into 2014. How do you do that?
+
+00:02:17.175 --> 00:03:06.691
+<v Richard Schneeman>That's pretty... So Rails is really important to us so I measure my personal years from RailsConf to RailsConf. Oh okay. So it's a RailsConf standard year. It's like the RailsConf calendar. Yeah there's like the Gregorian.
+
+00:03:06.691 --> 00:03:08.476
+<v Mike Hall>Exactly.
+
+00:03:08.476 --> 00:03:41.487
+<v Richard Schneeman>So yeah a lot of really interesting things have happened this past year. We've been majorly focused on performance and a lot of things in that vein.
+
+00:03:41.487 --> 00:03:51.301
+<v Mike Hall>Would you like to hear something about that?
+
+00:03:51.301 --> 00:04:52.193
+<v Richard Schneeman>Yes. Yeah no. Please tell me about your talk. Yeah okay great. So one of the biggest things that we released is PX Dynos. In the past a dyno represents 512 megabytes of ram and with a PX dyno instead you get I want to say it's eight gigabytes of ram and six physical cores.
+
+00:04:52.193 --> 00:04:54.870
+<v Mike Hall>Oh per dyno?
+
+00:04:54.870 --> 00:06:41.041
+<v Richard Schneeman>Six physical cpus yes per dyno. So that in the past you've always been able to scale out very horizontally very easily but if you're either using an application that has a lot of memory use or if you want a lot of concurrency per application. Let's say you want to run a bunch of unicorn workers or puma workers per actual physical dyno than you weren't able to in the past. But now we're focused a lot more on not just fast but consistently fast is kind of the key with that.
+
+00:06:41.041 --> 00:06:56.877
+<v Mike Hall>So do you work with the the dyno team or how what is your role at Ruby?
+
+00:06:56.877 --> 00:10:00.000
+<v Richard Schneeman>Okay so I work with I work with the Ruby task force so Terence Lee and I are on the languages team and we are in charge of the Ruby experience. That means we maintain the build pack whenever you do get push Heroku master and like all bundle install and everything flies by your screen that's uh that's us. Okay so if like deploying is slow. I definitely use your work. Okay great great. Many times many many times. We also luckily um the company thinks it's a big part of that product is actually coming out and interfacing with the community and like finding real world people you know experiencing their pains or experiencing like you know oh I love you know love your work and just figuring out what people like what people don't like how they're working and where we need to go in the future so a lot of that as well.
