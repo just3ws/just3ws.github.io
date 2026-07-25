@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '4.0.5'
+ruby '4.0.6'
 
 gem 'csv'
 
@@ -25,7 +25,6 @@ group :development do
   gem 'mdl', require: false
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
-  gem 'scss_lint', require: false
   gem 'webrick', '~> 1.8'
   gem 'dry-validation', '~> 1.10'
   gem 'image_optim', '~> 0.31'
