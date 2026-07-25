@@ -540,3 +540,40 @@ desc 'Print sitemap coverage summary'
 task :sitemap do
   sh 'ruby ./bin/visualize_sitemap.rb'
 end
+
+namespace :transcript do
+  desc 'Run a single pass of the continuous autonomous virtuous loop'
+  task :loop do
+    sh 'ruby bin/autonomous_virtuous_loop.rb --once'
+  end
+
+  desc 'Run continuous background loop daemon'
+  task :daemon do
+    sh 'ruby bin/autonomous_virtuous_loop.rb --daemon --interval 300'
+  end
+
+  desc 'Full archive ETLT pipeline check'
+  task :pipeline, [:stage, :id] do |_t, args|
+    stage = args[:stage] || 'validate'
+    id = args[:id]
+    cmd = "ruby bin/archive/pipeline.rb --stage #{stage}"
+    cmd += " --id #{id}" if id
+    sh cmd
+  end
+
+  desc 'Index enriched transcripts into zdots-ctx (pgvector)'
+  task :index do
+    sh './bin/transcript_ops.rb --index-enriched'
+  end
+
+  desc 'Backfill theme song intro/outro boundary sidecars'
+  task :boundaries do
+    sh './bin/transcript_ops.rb --backfill-boundaries'
+  end
+
+  desc 'Run complete forensic validation audit across all transcripts'
+  task :forensic_audit do
+    sh './bin/transcript_ops.rb --forensic-audit'
+  end
+end
+
