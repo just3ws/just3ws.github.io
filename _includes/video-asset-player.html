@@ -78,7 +78,23 @@
         </div>
 
         {% if transcript_content == "structured" %}
-          <div class="imessage-thread">
+          {% assign total_dur = transcript_data.recording.duration_sec %}
+          {% if total_dur == nil or total_dur == 0 %}
+            {% assign total_dur = preferred.duration_minutes | times: 60 %}
+          {% endif %}
+          {% if total_dur == nil or total_dur == 0 %}
+            {% assign total_dur = 600 %}
+          {% endif %}
+
+          {% assign total_chars = 0 %}
+          {% for t in transcript_data.turns %}
+            {% assign t_len = t.text | size %}
+            {% assign total_chars = total_chars | plus: t_len %}
+          {% endfor %}
+          {% if total_chars == 0 %}{% assign total_chars = 1 %}{% endif %}
+
+          <div class="imessage-thread sync-transcript-stream" id="sync-transcript-stream">
+            {% assign curr_chars = 0 %}
             {% for turn in transcript_data.turns %}
               {% assign speaker_id = turn.speaker %}
               {% assign speaker_info = transcript_data.speaker_map[speaker_id] %}
@@ -95,12 +111,31 @@
                 {% assign s_role = nil %}
               {% endif %}
 
-              <div class="imessage-turn {% if is_interviewer %}interviewer{% else %}guest subject-{{ speaker_id }}{% endif %}">
+              {% assign start_pct = curr_chars | times: 1.0 | divided_by: total_chars %}
+              {% assign start_sec = start_pct | times: total_dur | round %}
+              {% assign turn_len = turn.text | size %}
+              {% assign curr_chars = curr_chars | plus: turn_len %}
+              {% assign end_pct = curr_chars | times: 1.0 | divided_by: total_chars %}
+              {% assign end_sec = end_pct | times: total_dur | round %}
+
+              {% assign mm = start_sec | divided_by: 60 %}
+              {% assign ss = start_sec | modulo: 60 %}
+
+              <div class="imessage-turn sync-turn {% if is_interviewer %}interviewer{% else %}guest subject-{{ speaker_id }}{% endif %}"
+                   data-turn-idx="{{ forloop.index0 }}"
+                   data-start-sec="{{ start_sec }}"
+                   data-end-sec="{{ end_sec }}"
+                   data-seek="{{ start_sec }}"
+                   data-speaker="{{ s_name | escape }}">
                 <div class="imessage-header">
                   <span class="imessage-name">{{ s_name }}</span>
                   {% if s_role %}
                     <span class="imessage-subtext">{{ s_role }}</span>
                   {% endif %}
+                  <button type="button" class="timestamp-badge" data-seek="{{ start_sec }}" title="Jump video to {{ mm }}:{% if ss < 10 %}0{% endif %}{{ ss }}">
+                    ⏱ {{ mm }}:{% if ss < 10 %}0{% endif %}{{ ss }}
+                  </button>
+                  <span class="speaking-indicator">▶ Speaking</span>
                 </div>
                 <div class="imessage-bubble">
                   <div class="imessage-text">{{ turn.text }}</div>
@@ -137,14 +172,120 @@
 
   <script>
     (function() {
-      var embed = document.getElementById("{{ include.embed_id | default: "asset-embed" }}");
-      if (!embed) return;
-      var buttons = document.querySelectorAll("[data-embed]");
-      buttons.forEach(function(btn) {
-        btn.addEventListener("click", function() {
-          embed.setAttribute("src", btn.getAttribute("data-embed"));
+      var embedId = "{{ include.embed_id | default: 'asset-embed' }}";
+      var embed = document.getElementById(embedId);
+      var stream = document.getElementById("sync-transcript-stream");
+      var ccOverlay = document.getElementById("sync-cc-overlay");
+      var ccTextDisplay = document.getElementById("cc-text-display");
+      var ccSpeakerDisplay = document.getElementById("cc-speaker-display");
+      var btnCc = document.getElementById("btn-toggle-cc");
+      var btnAutoScroll = document.getElementById("btn-toggle-autoscroll");
+      var ccStatusLabel = document.getElementById("cc-status-label");
+      var autoscrollStatusLabel = document.getElementById("autoscroll-status-label");
+
+      var ccEnabled = true;
+      var autoScrollEnabled = true;
+      var activeTurn = null;
+
+      if (btnCc) {
+        btnCc.addEventListener("click", function() {
+          ccEnabled = !ccEnabled;
+          ccStatusLabel.textContent = ccEnabled ? "ON" : "OFF";
+          btnCc.classList.toggle("active", ccEnabled);
+          if (ccOverlay) ccOverlay.style.display = ccEnabled ? "flex" : "none";
         });
-      });
+      }
+
+      if (btnAutoScroll) {
+        btnAutoScroll.addEventListener("click", function() {
+          autoScrollEnabled = !autoScrollEnabled;
+          autoscrollStatusLabel.textContent = autoScrollEnabled ? "ON" : "OFF";
+          btnAutoScroll.classList.toggle("active", autoScrollEnabled);
+        });
+      }
+
+      // Seek Handler
+      function seekTo(sec) {
+        if (!embed) return;
+        if (embed.tagName === "VIDEO") {
+          embed.currentTime = sec;
+          if (embed.paused) embed.play();
+        } else if (embed.tagName === "IFRAME") {
+          var base = embed.getAttribute("src") || "";
+          var cleanBase = base.replace(/[\?&]start=\d+/g, "").replace(/#t=\d+s/g, "");
+          var joiner = cleanBase.indexOf("?") === -1 ? "?" : "&";
+          embed.setAttribute("src", cleanBase + joiner + "start=" + Math.floor(sec) + "&autoplay=1");
+        }
+      }
+
+      // Click to Seek on Transcript Stream
+      if (stream) {
+        stream.addEventListener("click", function(e) {
+          var turnEl = e.target.closest("[data-seek]");
+          if (turnEl) {
+            e.preventDefault();
+            var sec = parseFloat(turnEl.getAttribute("data-seek"));
+            if (!isNaN(sec)) {
+              seekTo(sec);
+              updateActiveTurnByTime(sec + 0.5);
+            }
+          }
+        });
+      }
+
+      // Active Turn Updater
+      function updateActiveTurnByTime(currentTime) {
+        if (!stream) return;
+        var turns = stream.querySelectorAll(".sync-turn");
+        var matched = null;
+
+        turns.forEach(function(turn) {
+          var start = parseFloat(turn.getAttribute("data-start-sec"));
+          var end = parseFloat(turn.getAttribute("data-end-sec"));
+          if (currentTime >= start && currentTime <= end) {
+            matched = turn;
+          }
+        });
+
+        if (!matched && turns.length > 0) {
+          if (currentTime < parseFloat(turns[0].getAttribute("data-start-sec"))) {
+            matched = turns[0];
+          } else {
+            matched = turns[turns.length - 1];
+          }
+        }
+
+        if (matched && matched !== activeTurn) {
+          if (activeTurn) activeTurn.classList.remove("is-speaking");
+          matched.classList.add("is-speaking");
+          activeTurn = matched;
+
+          // Update Closed Caption Overlay
+          var textEl = matched.querySelector(".imessage-text");
+          var speakerName = matched.getAttribute("data-speaker") || "UGtastic Archive";
+          if (textEl && ccTextDisplay) {
+            ccTextDisplay.textContent = textEl.textContent;
+          }
+          if (ccSpeakerDisplay) {
+            ccSpeakerDisplay.textContent = speakerName;
+          }
+
+          // Auto-scroll transcript stream
+          if (autoScrollEnabled && matched) {
+            matched.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        }
+      }
+
+      // Polling Loop for Video Element or YouTube API
+      setInterval(function() {
+        if (!embed) return;
+        var currTime = 0;
+        if (embed.tagName === "VIDEO" && !embed.paused) {
+          currTime = embed.currentTime;
+          updateActiveTurnByTime(currTime);
+        }
+      }, 500);
     })();
   </script>
 {% endif %}
