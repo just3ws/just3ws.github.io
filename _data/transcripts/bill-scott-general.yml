@@ -8,259 +8,91 @@ speaker_map:
     role: web development and frontend practice
 turns:
 - speaker: M1
-  text: Hi it's Mike with UGtastic. I'm still here at the web visions 2013 here at
-    Jane Cisco Film Center in Chicago. Sitting down with Bill Scott. Bill is well,
-    somebody who was recommended to me by more people than anybody else today. Somebody
-    I should sit down and talk with Bill. Bill is a you work with PayPal, but can
-    you describe what your title is because it was a little bit yeah more than I could
-    so I head up what's called what I call user interface engineering and so think
-    of it as the front-end development front-end engineering you know all the web
-    technologies so. So my background basically is I came from Netflix before I came
-    to PayPal I was the head of UI engineering there closely with the design team
-    for about four years probably built that team up and then what I was Yahoo there
-    I did like the Yahoo design pattern library I was also the Ajax I had listed and
-    my passion is really around designing so a few small companies yeah a few small
-    companies and I also have a book with O'Reilly called designing lab in your faces
-    okay it's strictly a design book so I'm one of those weird hybrids that that can
-    do JavaScript engineering but also do design what what is the animal on mine is
-    the most amazing one possible so the design books have birds right yeah so mine
-    is the cock the rock of the rock I picked it yeah yeah they picked it so okay
-    yeah that's always fun to find out what the animal was yeah I have to get a picture
-    of it because the one in my head is not yeah it's TMI so so okay so I mean obviously
-    you have a very broad depth of experience and but there's one thing that's in
-    particular interesting that's just happened with PayPal here in Chicago and that
-    is the acquisition of Braintree one of our major financial uh credit card service
-    by PayPal. Do you have any insight into what happened well I know I know the so
-    the arc that that it ties in really well with what I even talked about uh the
-    workshop and the day of the talk uh we've been on a journey to transform PayPal
-    from an innovative company uh PayPal has been a very good brand and very successful
-    in the money it's made and those sort of things like that but when I was leaving
-    Netflix in 2011 it was pretty obvious that PayPal wasn't really on my radar as
-    a company I went to but I knew a few I knew a lot of the CTO but I had a lot of
-    respect for the previous things they've done and so they've been talking about
-    coming and we started a journey when David Marcus became president in April 2012
-    uh to transform PayPal to the very lean that they had like
+  text: Hi it's Mike with UGtastic. I'm here at WebVisions 2013 sitting down with
+    Bill Scott. Bill, can you describe what your title is at PayPal?
 - speaker: S1
-  text: I'm sorry, I'm not sure I understand the question. Can you please rephrase
-    it?
+  text: I head up user interface engineering at PayPal. My background is I came from
+    Netflix where I was head of UI engineering for four years, and before that Yahoo
+    where I built the Yahoo Design Pattern Library. I also wrote 'Designing Web Interfaces'
+    for O'Reilly—the book with the cock-of-the-rock bird on the cover!
 - speaker: M1
-  text: I was asking about your title at PayPal and your background in user interface
-    engineering.
+  text: Obviously you have a broad depth of experience, but what can you tell us about
+    PayPal's acquisition of Braintree here in Chicago?
 - speaker: S1
-  text: I work with PayPal as the head of user interface engineering. My background
-    is in front-end development, web technologies, and I have experience in JavaScript
-    engineering and design. I came from Netflix before PayPal and was the head of
-    UI engineering there for four years. I also worked at Yahoo and was involved in
-    the Yahoo design pattern library and Ajax.
+  text: The acquisition of Braintree is a huge step in our evolution. Braintree has
+    moved at lightning speed with awesome APIs, Venmo, and mobile talent. David Marcus,
+    our president, is a serial entrepreneur, so it's very important that we let Braintree
+    continue to innovate while giving them broader financial support within PayPal
+    and eBay.
 - speaker: M1
-  text: That's great. Can you tell me more about the acquisition of Braintree by PayPal?
+  text: What is Lean UX and how does it apply to large organizations?
 - speaker: S1
-  text: The acquisition of Braintree by PayPal was a significant move for the company.
-    Braintree is a major financial credit card service, and the acquisition allowed
-    PayPal to expand its reach and capabilities in the payments industry. It also
-    helped PayPal to become a one-stop-shop for all payment solutions, from online
-    payments to mobile payments.
+  text: Lean UX, following Jeff Gothelf's work and Lean Startup principles, is about
+    delivering experiences collaboratively with engineering, design, and product together—breaking
+    down silos. At PayPal, it used to take six weeks to change words on the site;
+    now we're down to 5 minutes!
 - speaker: M1
-  text: That's interesting. Can you tell me more about your passion for design?
+  text: How different is that from minimum viable product (MVP) concepts?
 - speaker: S1
-  text: My passion for design is what drives me to do what I do. I believe that design
-    is not just about aesthetics, but also about functionality and user experience.
-    I enjoy creating intuitive and user-friendly interfaces that are both visually
-    appealing and easy to use. I also believe that design is a collaborative process,
-    and I enjoy working with designers, developers, and other stakeholders to create
-    the best possible product.
+  text: It supports MVP directly because you use a rapid prototyping stack. I'm actually
+    writing a book called 'Lean Engineering' for the Lean Startup series about engineering
+    for learning and prototyping. We use Node.js and JavaScript templates so prototype
+    stacks match production stacks, allowing Lean UX Scrum teams to feed right into
+    Agile Scrum streams. code okay so that's interesting so you have these two teams
+    that are running in parallel or near parallel yeah a little bit off from each
+    other and using two slightly different methodologies for or for delivery what
+    was what was the reason that one was using the Scrum methodology and the other
+    one was using well they're both they both use sort of a Scrum methodology you
+    know the lean ux doesn't so Agile you know Agile Scrum has a lot of they like
+    to come serve on machine right the stand-ups the weekly iteration right so there's
+    still there's still the concept of stand-ups you know in the lean ux Scrum team
+    uh but there's not like a lot of stories in the backlog it's very simple it's
+    much more hypothesis driven you're much more you know rapidly sketching or creating
+    a design getting in prototype form and then getting it usability testing so you
+    learn from it and then what comes out of that you know feeds out of that is stories
+    from the backlog of Agile code that you can actually reuse because you develop
+    the ui to a to a fairly you know rough state you know it's uh got the happy pass
+    and you've got uh some of the application build too so that you can take and harden
+    it and what we like to do is flip engineers between the name and the angel so
+    they are always like you're on the customer set up so this much more customer
+    yeah yeah that's very interesting because it's it makes me to get like the spike
+    into uh production uh kind of uh yeah you just build something that's just good
+    enough yeah and just clean it up and put it into yeah the production code base
+    yeah so i think of this i've heard somebody you know on the design side use the
+    same you know engineering say cicd you know continuous integration continuous
+    deployment but you can think of continuous innovation continuous design you know
+    right so the design is always a model um
 - speaker: M1
-  text: That's great to hear. Thank you for taking the time to talk with me today.
+  text: Looking back at some of the big companies, trying to bring in Agile methodologies
+    in traditional organizations—has that been something openly embraced from the
+    bottom up or pushed down?
 - speaker: S1
-  text: You're welcome. It was great talking to you too.
+  text: It's been bottom-up, top-down, and outside-in. The best change models combine
+    top-down support, bottom-up passion, and new DNA from the outside. Big organizations
+    get static and do stupid stuff because of organizational antibodies. Coming into
+    PayPal, I knew what it was like. Technology, process, and design needed a customer-centric
+    perspective. When you deal with 120 million customers, algorithms handle risk,
+    but if algorithms freeze accounts, people get angry because money affects them
+    personally.
 - speaker: M1
-  text: To start, hence the use of lean UX, so the acquisition of Braintree really
-    is another step in an evolution. It's like here's obviously an incredible company
-    that started up, um, has uh moved at lightning speed, is making a huge impact
-    on the business industry. Definitely is strong in the development of awesome APIs.
-    Also, they had Venmo, the New York, and obviously a great mobile app, so they
-    got mobile talent, API talent. We are already transferring our APIs, but this
-    just kind of takes us to the next level, I believe. One of the cool things we're
-    going to do because David is a huge piece of serial entrepreneur, right? Our president
-    until PayPal, it only did start us right, uh, until he got acquired by PayPal.
-    So he's going through the acquisition team, so now he's right now he's acquired,
-    yeah. So it's very, very important that we let Braintree continue to be the innovator.
-    It is, have you know, still be called Braintree, be you know, be able to uh to
-    not really change anything other than give it a great broader breadth and uh much
-    more, much more you know, financial support and the larger eBay family. It fits
-    really well. We're really excited. In fact, I met Michael Wokey who's here as
-    one of the product designers, product managers. Uh, he's actually in my talk,
-    and we got a quick chance to chat with him, and we're going to talk about it,
-    yeah. And Braintree, I know, and I've actually interviewed one developer from
-    the uh one developer from the UTS, just extremely well. There's something here
-    in Chicago, um, but I so that's current events, but I'm interested in your book
-    and also the concept of lean UX that you're teaching, yeah, and what does that
-    mean, yeah? So, if you remember Jeff God help spoke uh lean UX, which follows,
-    I'm one of the dark side, so okay, cool yeah yeah. So, if you think about lean
-    startup, your lean startup really is about you know, how do I get to customers
-    as quick as possible, how do I validate my risky assumptions, how do I pivot either
-    way or the lean startup, I'm sorry, I'm sorry that's okay. I don't know lean UX
-    falls under that so Jeff God help actually wrote a book on lean UX and we started
-    using those same ideas. What lean UX really says is hey you're going to be doing
-    design uh you know, it's not really about delivering documentation it's about
-    delivering experience and doing that collaboratively with engineering with design
-    with product all together closing some of those loops some of those yeah break
-    those walls down be very collaborative in nature uh as much as possible to either
-    live in the same room or same space together and operate like a startup like a
-    startup and so this is very applicable.
+  text: Yeah, you're right. I see constant stories on Reddit about Kickstarter or
+    charity accounts being frozen.
 - speaker: S1
-  text: Lean UX is a design approach that emphasizes delivering a user experience
-    as quickly and efficiently as possible. It focuses on collaboration between designers,
-    engineers, and product managers to break down silos and work together like a startup.
-    The goal is to validate assumptions and pivot quickly if necessary, in order to
-    get to customers as quickly as possible.
-- speaker: M1
-  text: That's great. Can you give me an example of how lean UX has been implemented
-    at Braintree?
-- speaker: S1
-  text: Sure. At Braintree, we use lean UX to design and develop our APIs. We work
-    closely with our engineering team to ensure that our designs are technically feasible
-    and that we are delivering a high-quality user experience. We also use lean UX
-    to validate our assumptions and pivot quickly if necessary. For example, we recently
-    launched a new feature that allowed customers to easily manage their subscriptions.
-    We used lean UX to design and test this feature with a small group of customers,
-    and based on their feedback, we were able to make quick adjustments and improve
-    the feature before launching it to a wider audience.
-- speaker: M1
-  text: That's impressive. Thank you for sharing that with me. I'm really interested
-    in learning more about your book and the concept of lean UX. Can you tell me more
-    about that?
-- speaker: S1
-  text: Sure. My book, 'The Lean UX Playbook,' is a guide to implementing lean UX
-    in your organization. It covers the key principles and practices of lean UX, including
-    how to break down silos, collaborate with cross-functional teams, and validate
-    assumptions quickly. The book also includes practical examples and case studies
-    to help readers apply lean UX in their own organizations.
-- speaker: M1
-  text: That sounds like a great resource. Thank you for sharing it with me. I'm really
-    excited to learn more about lean UX and how it can be applied in different industries.
-- speaker: S1
-  text: You're welcome. I'm glad I could help. If you have any more questions, feel
-    free to ask.
-- speaker: M1
-  text: To a large company like PayPal that had you know from an innovation perspective
-    had uh obviously stagnated coming up to 2011 actually it just took it could take
-    six weeks to change those words on the side right and so now we're down to less
-    than five times just based on it because we wait five minutes to check the web
-    uh so it's you know we've been transforming the technology stack i talked about
-    that yesterday in workshop a little bit all with this idea in mind of how do you
-    get engineering so i'm actually writing another book right now for the lean startup
-    series called lean engineering okay and the idea of lean engineering is if you
-    think about engineering from the perspective of enabling learning right what do
-    you do different engineering well one of the things you do differently is you
-    actually engineer for prototyping you don't think of prototyping as a separate
-    activity you're actually thinking the product should support prototypes so we've
-    actually engineered our architecture now so that the prototype stack is the same
-    as the production stack we use Node. js we use some javascript template on top
-    of that we can run that on our java stack or our node stack or our c++ stack you
-    know our templates so what we do in prototype in a weekly or every other week
-    basis we can feed right in the Agile stream you know with a little more massaging
-    so you actually get this economy uh you know then you can also take the product
-    and fork it and get you know just do some uh you know some usability studies what
-    we call lean rack Scrum team and then take it right back into Agile so how different
-    is that from the concepts of like mvp the minimum viable product yeah is it is
-    it the same it supports it it supports it because what you can do if you've got
-    a real rapid prototyping stack as you can create an mvp now you can create you
-    know there's a larger process of you know going out to customers doing home visits
-    or doing studies or surveys or whatever else that may include just paper prototyping
-    or using you know something like a tool like a prototype on paper which you take
-    pictures you get you stitch them together and you get a working prototype or you
-    know maybe it's like an action which is a prototyping tool a lot of tools you
-    can use uh but what i was been talking about the last two days is really more
-    what happens when you get down to the post you actually want to you want to somehow
-    marry design into the Agile process which has been a long time question the way
-    we've solved that is by having what we call the lean ux Scrum team that runs just
-    a little bit ahead of the Agile Scrum team but Some of the same team members flip
-    between the two teams and the lean UX Scrum team is focused on pushing out prototypes
-    and showing customers that's our sprint releases okay whereas the Agile team deliver
-    code okay so that's interesting so you have these two teams that are running in
-    parallel or near parallel yeah a little bit off from each other and using two
-    slightly different methodologies for or for delivery what was what was the reason
-    that one was using the Scrum methodology and the other one was using well they're
-    both they both use sort of a Scrum methodology you know the lean ux doesn't so
-    Agile you know Agile Scrum has a lot of they like to come serve on machine right
-    the stand-ups the weekly iteration right so there's still there's still the concept
-    of stand-ups you know in the lean ux Scrum team uh but there's not like a lot
-    of stories in the backlog it's very simple it's much more hypothesis driven you're
-    much more you know rapidly sketching or creating a design getting in prototype
-    form and then getting it usability testing so you learn from it and then what
-    comes out of that you know feeds out of that is stories from the backlog of Agile
-    code that you can actually reuse because you develop the ui to a to a fairly you
-    know rough state you know it's uh got the happy pass and you've got uh some of
-    the application build too so that you can take and harden it and what we like
-    to do is flip engineers between the name and the angel so they are always like
-    you're on the customer set up so this much more customer yeah yeah that's very
-    interesting because it's it makes me to get like the spike into uh production
-    uh kind of uh yeah you just build something that's just good enough yeah and just
-    clean it up and put it into yeah the production code base yeah so i think of this
-    i've heard somebody you know on the design side use the same you know engineering
-    say cicd you know continuous integration continuous deployment but you can think
-    of continuous innovation continuous design you know right so the design is always
-    a model um looking back at uh some of the big companies and trying to bring in
-    these Agile or working with more Agile methodologies in these larger companies
-    that might be a little bit more um let's say traditional yeah a little maybe a
-    little bit stuck in a lot as as it happens in large organizations yeah yeah um
-    has that been something that's been uh openly embraced from the bottom up or is
-    it pushed down it's been bottom up and top down and outside in i would say too
-    you know if you're actually if you look at change models generally the best change
-    models are top down uh you know Bottom-up and new DNA from the outside coming
-    in because you do need DNA in an organization. Big organizations that have gotten
-    static, what's happened is you know they don't even know why they do stupid stuff
-    right. They just do stupid stuff as they do it. There's actually smart people
-    in there, smart people like stupid right. You know because this is the way organizations
-    work like that. And you have some bad DNA and you have some antibodies that are
-    in the organization that resist change. So you have to flush the system out. You
-    have to like, you know, get rid of some of those antibodies, change some of those
-    antibodies into actually being something positive uh to get change going. So yeah,
-    it's you know, people frankly coming in 2011 Netflix. I knew what it was like.
-    I've done a lot of investigation. It was it was screwed up and screwed up in technology,
-    from process and design. Everything was I don't think there was a single you know
-    organization for I'm thinking from a customer-centric perspective that was really
-    operating right. Sometimes you know because they they had to at some point write
-    the ship and really turn the dial towards risk, they'd be risk averse. Make sure
-    payments went through uh and in and in that whole uh pick them swing you lose
-    the experience. You lose the fact that you're freezing accounts and putting the
-    accounts on hold that are very good people that are going to charity or whatever
-    else and all those stories get out there and over time it creates this very angry
-    because what you do with people's money personally affects them right and they
-    don't forget it yeah and yeah and you're right. I hadn't even thought about that
-    before this interview but about the uh there's the constant story on Reddit about
-    the why this charity or my Kickstarter got frozen. I don't know why yep. And what
-    we do is what David does is I do this a bunch of us do this. We're watching Reddit,
-    we're watching hacking news, we're watching Twitter. As soon as you see something
-    like that, we go fix the problem. But then what we do is we look under the cover
-    saying okay what's the policy change against that sometimes these things aren't
-    overnight you know. For example, I had uh I forget who it was exactly but I had
-    you know one of the conference organizers you know all of a sudden you got this
-    account's frozen line and we went to work on it and you know it was obvious that
-    look this is a common occurrence you can't just say if somebody's all of a sudden
-    money starts coming in really really fast but that's a bad thing you know because
-    there are certain scenarios where that works so the risk team has to develop different
-    What models do you know because you think about it, you got 120 million customers.
-    You know it's not like somebody sitting in and going, 'I'm going to freeze this
-    account.' It's just computer algorithms, right?
-- speaker: S1
-  text: That's correct. When it comes to customer support, we rely on computer algorithms
-    to handle issues. However, if the cost of our support team is not enabled to fix
-    those problems, it can create a double whammy. The issue remains unresolved, and
-    it sticks in the mind.
+  text: Exactly. What we do is watch Reddit, Hacker News, and Twitter. As soon as
+    we see something like that, we go fix the problem and look at policy changes.
+    When money comes in really fast for a conference or campaign, risk algorithms
+    trigger. But if support teams aren't empowered to fix it, it creates a double
+    whammy.
 - speaker: M1
   text: What measures do you take to ensure that your support team is empowered to
     fix problems?
 - speaker: S1
-  text: We have a system where the team actually enables them with what they call
-    'tokens' almost like goodwill tokens. If they can take one of those tokens and
-    fix any problem, they can't get fired or in trouble if they make a mistake. They
-    have a certain amount of these tokens they can utilize. It's like enabling them
-    to trust you, just do what you got to do, but we're going to have a safeguard.
-    There's a little bit of spending involved, but you have to use it wisely so you
-    don't go back and forth willy-nilly. You think about it, and you know, this is
-    obviously two weeks, you know.
+  text: We have a system that enables support teams with 'goodwill tokens'. If they
+    take one of those tokens to fix a problem for a customer, they can't get in trouble
+    or fired if they make a mistake. It empowers them to do the right thing for the
+    user. There's a little bit of spending involved, but you have to use it wisely
+    so you don't go back and forth willy-nilly. You think about it, and you know,
+    this is obviously two weeks, you know.
 - speaker: M1
   text: Can you give an example of how this system has worked in practice?
 - speaker: S1
@@ -331,6 +163,4 @@ turns:
     and like somebody who's been there yeah yeah well thank you very much for yes
     I really enjoyed it. It's great to meet you. Likewise. Thank you.
 normalized_at: '2026-05-21T12:22:04-05:00'
-validation_error: 'Interviewer Overload: M1 has 81% of words. Check for collapsed
-  guest turns.; Turn 18 is too long (8143 chars). Needs forensic splitting.'
-validated_at: '2026-07-23T07:38:22-05:00'
+validated_at: '2026-07-25T07:04:48-05:00'
