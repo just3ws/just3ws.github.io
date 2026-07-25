@@ -2,8 +2,7 @@
 require 'yaml'
 require 'json'
 require 'time'
-require 'shellwords'
-require 'tempfile'
+require 'open3'
 
 # --- INDEX MODULE (Load/Transform) ---
 # Indexes enriched transcripts into the zdots-ctx vector database.
@@ -53,11 +52,24 @@ tags_arr << (Array(metadata["interviewees"]).first || "guest").downcase.gsub(/\s
 tags_arr += Array(data["topics"]).first(3)
 tags = tags_arr.uniq.join(" ")
 
-# --- 1. Add Lesson ---
-add_cmd = "zdots-ctx add-lesson #{Shellwords.escape(content)} #{Shellwords.escape(context)} #{Shellwords.escape(tags)}"
-output = `export DATABASE_URL=postgresql:///my && export PSQLRC=/dev/null && #{add_cmd} 2>&1`
+def run_zdots_ctx(*args)
+  env = {
+    "PATH" => "#{File.expand_path('~/.local/share/mise/shims')}:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin",
+    "HOME" => ENV["HOME"] || File.expand_path("~"),
+    "ZDOTDIR" => File.expand_path("~/.config/zsh"),
+    "DATABASE_URL" => "postgresql:///my",
+    "PSQLRC" => "/dev/null"
+  }
+  zsh_dir = File.expand_path("~/.config/zsh")
+  
+  output, status = Open3.capture2e(env, "bundle", "exec", "./bin/zdots-ctx", *args, chdir: zsh_dir)
+  [status.success?, output]
+end
 
-if $?.success?
+# --- 1. Add Lesson ---
+success, output = run_zdots_ctx("add-lesson", content, context, tags)
+
+if success
   # --- 2. Get the new lesson ID ---
   lesson_id = `export DATABASE_URL=postgresql:///my && export PSQLRC=/dev/null && psql -d my -t -A -c "SELECT id FROM lessons ORDER BY created_at DESC LIMIT 1"`.strip
   
@@ -69,16 +81,15 @@ if $?.success?
       text: content
     }.to_json
     
-    enqueue_cmd = "zdots-ctx enqueue embed #{Shellwords.escape(embed_payload)} 10"
-    output = `export DATABASE_URL=postgresql:///my && export PSQLRC=/dev/null && #{enqueue_cmd} 2>&1`
+    enqueue_success, enqueue_output = run_zdots_ctx("enqueue", "embed", embed_payload, "10")
     
-    if $?.success?
+    if enqueue_success
       data["indexed_at"] = Time.now.iso8601
       data["zdots_lesson_id"] = lesson_id
       File.write(path, data.to_yaml)
       puts "SUCCESS"
     else
-      puts "ERROR: Embedding enqueue failed: #{output.strip}"
+      puts "ERROR: Embedding enqueue failed: #{enqueue_output.strip}"
       exit 1
     end
   else

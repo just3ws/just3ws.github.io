@@ -1,62 +1,67 @@
 # Archive Pipeline: Technical Handoff & Continuity Guide
 
 ## 1. Overview
-The archive has been migrated to a modular **ETLT (Extract, Transform, Load, Transform)** pipeline located in `bin/archive/`. This system is designed for high-fidelity technical transcription processing, specifically targeting the 214-item UGtastic/SCNA corpus.
+The archive operates on a modular **ETLT (Extract, Transform, Load, Transform)** pipeline located in `bin/archive/`, integrated with the **zdots / My platform system** (`~/.config/zsh`, `~/my`). This system processes, transcribes, annotates, and indexes the ~207-item UGtastic/SCNA oral history corpus.
 
-## 2. Pipeline Architecture
+## 2. Pipeline Architecture & Modules
 - **Controller:** `bin/archive/pipeline.rb`
+- **Automation CLI:** `bin/transcript_ops.rb`
 - **Modules:** `bin/archive/modules/`
-  - `ingest`: Raw text to YAML.
-  - `normalize`: Lexical perfection (8th Light, ActiveJDBC, Clojure).
-  - `structure`: Heuristic speaker turns (fast, lower fidelity).
-  - `restructure`: **High-Fidelity AI Dialogue Restoration** (uses local `llama.cpp` @ port 8080).
-  - `enrich`: AI-generated summaries and topics.
-  - `validate`: **The Gatekeeper.** Performs forensic word-count drift and diarization audits.
-  - `sync`: Syncs metadata back to global `_data/` files.
+  - `ingest`: Raw transcript text to YAML (`_data/transcripts/<id>.yml`).
+  - `normalize`: Lexical perfection (*8th Light*, *ActiveJDBC*, *Clojure*, *ChiPy*, *SCNA*).
+  - `structure`: Heuristic speaker turns.
+  - `restructure`: High-fidelity AI dialogue restoration and `pyannote.audio` 3.1 neural speaker diarization (`bin/diarize`).
+  - `enrich`: AI-generated summaries, technical topics, and durable wisdom insights.
+  - `validate`: **The Gatekeeper.** Performs forensic word-count drift, turn length, and interviewer overload audits.
+  - `index`: Loads enriched transcripts into `zdots-ctx` / `my` PostgreSQL vector database (`pgvector`) for RAG & semantic search.
+  - `sync`: Syncs transcript metadata back to global `_data/` files.
 
-## 3. State-Awareness & Idempotency
-Each transcript in `_data/transcripts/*.yml` tracks its own state via metadata keys:
-- `normalized_at`: Locked-in spelling/branding.
+## 3. zdots Platform & Context Engine Integration
+The pipeline leverages the local **zdots platform** context system:
+- **Vocabulary Priming (`primed` stage):** Injects metadata and `known_vocabulary` terms into `whisper.cpp` (`large-v3` model) to eliminate mishearings of technical terms at the raw transcription level.
+- **Neural Diarization (`diarized` stage):** Uses `pyannote.audio` 3.1 (`pyannote/speaker-diarization-3.1`) with Metal GPU acceleration on Apple Silicon M4 and speaker count hints (`num_speakers = interviewees + 1`).
+- **Intro/Outro Boundaries:** Uses `zdots-backfill-boundaries` and `etc/theme-songs.yml` to non-destructively generate `.boundaries.json` sidecar annotations for video player intro skipping.
+- **Internal Context Engine (`@context-engine` / `ContextBot`):** Interrogates `zdots-ctx` live during pipeline execution for speaker names, organization terms, and inter-run observations.
+
+## 4. State-Awareness & Idempotency
+Each transcript in `_data/transcripts/*.yml` tracks its processing state:
+- `normalized_at`: Locked-in spelling and branding normalization.
 - `restructured_at`: Locked-in high-fidelity back-and-forth dialogue.
-- `validated_at`: Passed the forensic integrity audit.
-- `validation_error`: Present if the audit failed (e.g., word count drift).
+- `enriched_at`: AI executive summary and technical insights generated.
+- `indexed_at` & `zdots_lesson_id`: Vector embeddings indexed in `my` PostgreSQL database.
+- `validated_at`: Passed forensic integrity audit.
+- `validation_error`: Error message present if the audit failed (e.g. Interviewer Overload).
 
-**CRITICAL:** The pipeline automatically skips "Perfect" (restructured/validated) items unless the `--force` flag is used. This protects manual repairs (e.g., Micah Martin, Sergio Pereira).
-
-## 4. Current State (Audit Report)
-- **Total Archive:** 197-214 items.
-- **Normalized:** ~98% (Technical lexicon is globally applied).
-- **Validated:** ~50%.
-- **Forensic Backlog:** **95 items** currently fail the forensic audit (Significant Word Count Drift or Interviewer Overload).
-
-## 5. Resumption Instructions
-To resume the restoration of the 95 failed items:
+## 5. Rake Automation & CLI Commands
 
 ```bash
-# 1. Check service health
-zdots-ctl status
-# If llama-server or other services are down:
-zdots-ctl up
+# Unified Operations CLI
+./bin/transcript_ops.rb --status              # Full archive & RAG status report
+./bin/transcript_ops.rb --seed-context        # Seed domain vocabulary into zdots-ctx
+./bin/transcript_ops.rb --backfill-boundaries # Generate theme-song boundary sidecars
+./bin/transcript_ops.rb --index-enriched      # Index enriched items into zdots-ctx
+./bin/transcript_ops.rb --forensic-audit      # Run forensic quality audit
+./bin/transcript_ops.rb --all                 # Execute full maintenance & RAG pipeline
 
-# 2. Run the restructure stage only for failed items
-# (Requires llama_cpp service @ http://127.0.0.1:8080)
-./bin/archive/pipeline.rb --only-failed --stage=restructure
-
-# 3. Re-validate to clear the error state
-./bin/archive/pipeline.rb --only-failed --stage=validate
-
-# 4. (Optional) Index for semantic search
-# (Requires 'my' database and zdots-ctx)
-./bin/archive/pipeline.rb --only-failed --stage=index
+# Rake Automation Commands
+bundle exec rake transcript:forensic_audit
+bundle exec rake transcript:boundaries
+bundle exec rake transcript:index
+bundle exec rake transcript:pipeline[stage,id]
 ```
 
-## 6. Platform Integration Notes
-- **Local AI:** Restructuring and Enrichment use the `qwen2.5-coder-7b` model via `llama.cpp`. 
-- **Context Database:** The `index` stage loads data into the `my` database via the `zdots-ctx` interface. All writes MUST go through this interface.
-- **Observability:** Pipeline metrics and logs are exported to the local Grafana instance via OpenTelemetry if `otelcol` is active.
-- **Service Control:** Use `zdots-ctl check` to verify the entire stack's health.
+## 6. Vector RAG & Semantic Search Usage
+Once transcripts are indexed in the `my` database, perform live semantic vector searches:
+
+```bash
+# Query the local context engine
+zdots-ctx query "faster CSV"
+
+# Perform pgvector similarity search over transcript chunks
+zdots-search "Faster CSV"
+```
 
 ## 7. Safety Mandates for Future Agents
-1. **Never "Bulldoze":** Do not use `FORCE=true` on the old `bin/structure_transcript_heuristics.rb` script. Use the modular pipeline instead.
-2. **AI Stability:** The `restructure` module uses 500-word chunks to prevent `llama.cpp` OOM errors.
-3. **Audit First:** Before syncing any batch, run `--stage=validate` to ensure no data was lost.
+1. **Never "Bulldoze":** Do not use `FORCE=true` on heuristic turn splitters. Use neural diarization via `ingest_media` / `bin/diarize`.
+2. **Context First:** Always query `@context-engine` or `zdots-ctx` for speaker names and domain vocabulary before re-transcribing audio.
+3. **Audit First:** Before committing transcript batches, run `bundle exec rake transcript:forensic_audit` and `bundle exec rake validate:data_integrity`.

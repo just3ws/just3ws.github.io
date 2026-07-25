@@ -340,6 +340,30 @@ namespace :transcript do
       puts "\n(Use APPLY=true to save these changes to the YAML file)"
     end
   end
+
+  desc 'Run the Archive ETLT pipeline (usage: rake transcript:pipeline[stage,id])'
+  task :pipeline, [:stage, :id] do |_t, args|
+    cmd = "ruby ./bin/archive/pipeline.rb"
+    cmd += " #{args[:id]}" if args[:id]
+    cmd += " --stage=#{args[:stage]}" if args[:stage]
+    cmd += " --force" if ENV['FORCE'] == 'true'
+    sh cmd
+  end
+
+  desc 'Index enriched transcripts into zdots-ctx / my vector database'
+  task :index do
+    sh 'ruby ./bin/archive/pipeline.rb --stage=index'
+  end
+
+  desc 'Backfill intro/outro boundaries sidecars using theme song detector'
+  task :boundaries do
+    sh 'sh -c "cd ~/.config/zsh && bundle exec ./bin/zdots-backfill-boundaries --apply"'
+  end
+
+  desc 'Run forensic quality audit for turn length, interviewer overload, and word count drift'
+  task :forensic_audit do
+    sh 'ruby ./bin/final_quality_audit.rb'
+  end
 end
 
 namespace :maintenance do
