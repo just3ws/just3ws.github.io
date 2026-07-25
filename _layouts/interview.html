@@ -13,6 +13,7 @@ layout: minimal
     {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
     {% include schema-factory.html interview=interview asset=asset %}
     {% include video-asset-player.html asset=asset embed_id="interview-embed" %}
+    {% include public-archive-note.html %}
 
     <div class="interview-editorial-container" style="padding-bottom: 0; margin-bottom: -2rem;">
       {% include social-share.html %}
