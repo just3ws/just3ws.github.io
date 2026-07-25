@@ -43,11 +43,19 @@ Identify common AI "artifacts."
 
 ## Remediation Strategies
 
-1.  **Minor Drift:** Re-run `normalize` stage.
-2.  **Major Structural Failure:** Run `forensic_restructure` using local AI with smaller chunk sizes (500 words).
-3.  **Diarization Chaos:** Manual split using `bin/repair_...` script based on the raw text baseline.
+1.  **Minor Drift:** Re-run `normalize` stage via `bin/archive/pipeline.rb`.
+2.  **Turn Length & Interviewer Overload:** Run `bin/forensic_repair.rb <id>` for automated sentence boundary turn-splitting.
+3.  **Cross-Dataset ID Typos:** Run `bin/rename_transcript_id.rb <old_id> <new_id>` for verified cross-dataset updates.
+4.  **Major Structural Failure:** Run `bin/diarize` (`pyannote.audio` 3.1) with guest count hints (`num_speakers = interviewees + 1`).
 
-## Tools
-- `bin/archive/pipeline.rb --status`: High-level health check.
-- `bin/archive/modules/validate.rb`: Automated schema and hallucination checks.
-- `wc -w`: Command-line word count verification.
+## Tools & Automation
+
+- `./bin/transcript_ops.rb`: Primary CLI tool (`--status`, `--seed-context`, `--backfill-boundaries`, `--index-enriched`, `--forensic-audit`, `--all`).
+- `bin/forensic_repair.rb`: Automated forensic turn-splitting tool.
+- `bin/rename_transcript_id.rb`: Cross-dataset ID renaming tool.
+- `rake transcript:pipeline`: Full archive ETLT pipeline check.
+- `rake transcript:index`: PostgreSQL RAG vector indexing via `zdots-ctx`.
+- `rake transcript:boundaries`: Theme song intro/outro boundary sidecar generation.
+- `rake transcript:forensic_audit`: Run complete validation audit across all transcripts.
+- `bin/archive/modules/validate.rb`: Automated schema, turn-length, and hallucination checks.
+- `zdots-ctx query "<query>"`: Live semantic search over the `my` database vector store.
