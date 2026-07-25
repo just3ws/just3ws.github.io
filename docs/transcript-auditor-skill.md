@@ -17,6 +17,15 @@ Expert guidance for auditing technical interview transcriptions to ensure struct
 - **Count:** Number of `speaker:` flips.
 - **Red Flag:** A 30-minute interview with only 2-3 turns suggests a "Monolithic Block" error.
 
+## Mike Hall Host Rule & Diarization Anchors
+
+**Non-negotiable Domain Rule:** Mike Hall (`M1`) is ALWAYS the interviewer. If there is ambiguity in speaker attribution:
+1. **Intro Framing (`M1`):** High-confidence host anchor. Opening turns usually feature: *"Hi, I'm Mike with UGtastic,"* establishing location (*"Here at GOTO Chicago / RailsConf"*), introducing who he is standing with, and framing the discussion topic.
+2. **Asking Questions & Interacting (`M1`):** Short prompts, clarifying questions (*"What inspired you to..."*, *"Is there a common problem..."*), and active listening interjections (*"Right," "Exactly"*).
+3. **Outro Sign-off (`M1`):** Closing turns feature: *"Thank you for taking the time to speak with me,"* *"I really appreciate you taking the time,"* and *"Find out more at UGtastic.com."*
+
+---
+
 ## Audit Workflow
 
 ### Phase 1: Structural Scan

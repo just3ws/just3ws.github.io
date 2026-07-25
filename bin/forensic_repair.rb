@@ -147,10 +147,18 @@ class ForensicRepair
     sentences.each_with_index do |s, idx|
       s_clean = s.strip
 
+      # Mike Hall host heuristics: intros, location framing, questions, sign-offs
+      is_mike_hall_intro = s_clean.match?(/\A(?:hi,?\s+i'm\s+mike\s+(?:hall\s+)?with\s+ugtastic|i'm\s+mike|welcome\s+to|here\s+at\s+goto|here\s+at\s+railsconf|standing\s+here\s+with)/i)
+      is_mike_hall_outro = s_clean.match?(/(?:thank\s+you\s+for\s+taking\s+the\s+time|appreciate\s+you\s+taking\s+the\s+time|thanks\s+for\s+speaking\s+with\s+me|ugtastic\.com)/i)
+      
       s1_trigger = s_clean.match?(/\A(?:well\b|the\s+differences\b|yeah\b|absolutely\b|sure\b|so\s+the\b|our\b|my\b|i\s+(?:think|spent|was|did|work|started|came)\b)/i) && current_text.length > 50
-      m1_trigger = s_clean.match?(/\A(?:hi\b|welcome\b|so\s+so\b|right\b|tell\s+me\b|what\b|how\b|can\s+you\b|is\s+there\b|thanks?\b)/i) && current_speaker == "S1"
+      m1_trigger = (is_mike_hall_intro || is_mike_hall_outro || s_clean.match?(/\A(?:hi\b|welcome\b|so\s+so\b|right\b|tell\s+me\b|what\b|how\b|can\s+you\b|is\s+there\b|thanks?\b)/i)) && current_speaker == "S1"
 
-      if current_speaker == "M1" && (s1_trigger || s.include?("?"))
+      if is_mike_hall_intro
+        turns << { "speaker" => "S1", "text" => current_text.strip } unless current_text.empty?
+        current_speaker = "M1"
+        current_text = s_clean
+      elsif current_speaker == "M1" && (s1_trigger || s.include?("?"))
         current_text += " " + s_clean
         turns << { "speaker" => "M1", "text" => current_text.strip }
         current_speaker = "S1"
