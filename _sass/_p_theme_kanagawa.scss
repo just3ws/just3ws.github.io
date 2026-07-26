@@ -1,0 +1,118 @@
+/* _sass/_p_theme_kanagawa.scss — Kanagawa Wave Japanese Woodblock Theme Palette */
+
+:root[data-theme="kanagawa"], body.theme-kanagawa {
+  --color-bg-base: #1f1f28;
+  --color-bg-dark: #16161d;
+  --color-bg-card: #2a2a37;
+  --color-text-main: #dcd7ba;
+  --color-text-muted: #c8c093;
+  --color-primary: #7aa89f;
+  --color-primary-dark: #7e9cd8;
+  --color-accent: #e6c384;
+  --color-success: #98bb6c;
+  --color-warning: #ffa066;
+  --color-danger: #c34043;
+  --color-border: #363646;
+
+  background-color: var(--color-bg-base) !important;
+  color: var(--color-text-main) !important;
+
+  .site-header {
+    background: #16161d !important;
+    border-bottom-color: #363646 !important;
+  }
+
+  .site-nav-brand .brand-label {
+    color: #dcd7ba !important;
+  }
+
+  .nav-link {
+    color: #c8c093 !important;
+    &:hover {
+      background: #2a2a37 !important;
+      color: #7aa89f !important;
+    }
+    &.is-active {
+      background: #2a2a37 !important;
+      border-color: #7aa89f !important;
+      color: #7aa89f !important;
+    }
+  }
+
+  .nav-dropdown-menu {
+    background: #16161d !important;
+    border-color: #363646 !important;
+
+    .dropdown-item {
+      color: #dcd7ba !important;
+      &:hover, &.is-active {
+        background: #2a2a37 !important;
+        color: #7aa89f !important;
+      }
+    }
+  }
+
+  .intel-hero {
+    background: linear-gradient(135deg, #16161d 0%, #1f1f28 100%) !important;
+    border-bottom-color: #7aa89f !important;
+    color: #dcd7ba !important;
+
+    .intel-title { color: #dcd7ba !important; }
+    .intel-subtitle { color: #c8c093 !important; }
+    .intel-badge { background: #7aa89f !important; color: #16161d !important; }
+  }
+
+  .timeline-interview-card, .speaker-profile-card, .result-card, .short-card, .playlist-card, .article-card, .book-card, .curiosity-card, .woven-card, .era-header-card {
+    background: #2a2a37 !important;
+    border-color: #363646 !important;
+    color: #dcd7ba !important;
+
+    &:hover {
+      border-color: #7aa89f !important;
+    }
+
+    h2, h3, h4, .speaker-card-name, .card-interview-title, .result-title, .short-speaker, .playlist-title, .article-title, .book-title, .curiosity-title, .speaker-title-display {
+      color: #dcd7ba !important;
+    }
+
+    p, .card-meta-text, .speaker-card-confs, .short-video-title, .book-desc, .curiosity-summary, .speaker-subtitle-display {
+      color: #c8c093 !important;
+    }
+  }
+
+  .short-quote-box, .woven-quote-box, .era-header-card {
+    background: #16161d !important;
+    border-left-color: #7aa89f !important;
+    color: #dcd7ba !important;
+  }
+
+  .btn-view-timeline, .btn-studio-action, .btn-book-interview, .btn-jump-video, .btn-woven-thread {
+    background: #7aa89f !important;
+    color: #16161d !important;
+    border-color: #7aa89f !important;
+
+    &:hover {
+      background: #7e9cd8 !important;
+      border-color: #7e9cd8 !important;
+      color: #16161d !important;
+    }
+  }
+
+  .woven-word-banner {
+    background: #16161d !important;
+    color: #7aa89f !important;
+    border-color: #7aa89f !important;
+  }
+
+  .chip-btn, .era-btn, .web-btn, .tab-btn {
+    background: #2a2a37 !important;
+    border-color: #363646 !important;
+    color: #dcd7ba !important;
+
+    &:hover, &.active {
+      background: #7aa89f !important;
+      border-color: #7aa89f !important;
+      color: #16161d !important;
+    }
+  }
+}
