@@ -3,6 +3,10 @@ set -e
 
 source .env
 
+# Kill any stale process listening on port 4000 or LiveReload port 35729
+lsof -ti :4000 -i :35729 | xargs kill -9 2>/dev/null || true
+sleep 1
+
 bundle exec jekyll clean --verbose --trace
 
 if command -v open >/dev/null 2>&1; then
