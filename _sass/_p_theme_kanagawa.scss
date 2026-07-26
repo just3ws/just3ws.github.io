@@ -28,13 +28,37 @@
     font-weight: 800;
   }
 
-  /* Secondary & Muted Body Text */
-  p, span, div, .intel-subtitle, .speaker-subtitle-display, .curiosity-summary, .book-desc, .card-meta-text {
-    color: #dcd7ba;
+  /* Secondary & Body Text Across All Pages & Lists */
+  p, span, div, li, ul, ol, .intel-subtitle, .speaker-subtitle-display, .curiosity-summary, .book-desc, .card-meta-text, .intro, .home-list li {
+    color: #dcd7ba !important; /* fujiWhite (14.2:1 contrast ratio) */
   }
 
   .text-muted, .meta-dim, .curiosity-category, .speaker-card-confs {
     color: #c8c093 !important; /* oldWhite AA-safe dim text */
+  }
+
+  /* Archival Restoration Notice Banner */
+  .archive-note {
+    background: #2a2a37 !important;
+    border: 1px solid #e6c384 !important;
+    border-left: 5px solid #e6c384 !important;
+    border-radius: 8px !important;
+    color: #dcd7ba !important;
+    padding: 1.1rem !important;
+
+    p, strong {
+      color: #dcd7ba !important;
+    }
+
+    strong {
+      color: #e6c384 !important; /* carpYellow for emphasis */
+    }
+
+    a {
+      color: #7e9cd8 !important;
+      font-weight: 700;
+      text-decoration: underline !important;
+    }
   }
 
   /* Header & Navigation */
