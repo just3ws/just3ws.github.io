@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: "Charlotte's Web of Wisdom & Tributes"
-description: "Weaving words of craft, honor, and connection across the UGtastic developer interview canon."
+description: "Weaving words of craft, honor, and connection across all 191 speakers in the UGtastic developer interview canon."
 ---
 
 <div class="intel-hero">
@@ -9,12 +9,34 @@ description: "Weaving words of craft, honor, and connection across the UGtastic 
     <span class="intel-badge">UGtastic Web of Wisdom</span>
     <h1 class="intel-title">Charlotte's Web of Wisdom</h1>
     <p class="intel-subtitle">
-      <em>"Spidering the web in the spirit of Charlotte's Web"</em>—weaving words into glowing banners to honor, celebrate, and connect the software practitioners, authors, and community builders of our oral history canon.
+      <em>"Spidering the web in the spirit of Charlotte's Web"</em>—weaving words into glowing banners to honor, celebrate, and connect all <strong>191 software practitioners, creators, authors, and educators</strong> across 207 historical interviews.
     </p>
   </div>
 </div>
 
 <div class="intel-container">
+  <!-- Scrubber & Search Controls -->
+  <section class="intel-section">
+    <div class="explorer-controls" style="margin-bottom:1.5rem;">
+      <input type="text" id="webSearch" placeholder="Search speaker, quote, or topic..." class="search-input" />
+      <div style="font-size:0.95rem; font-weight:800; color:#0284c7; align-self:center;">
+        Woven Tributes: <span id="tributeCount">0</span>
+      </div>
+    </div>
+
+    <div class="timeline-scrubber-card">
+      <div class="scrubber-labels">
+        <button type="button" class="web-btn active" data-word="ALL">All Banners</button>
+        <button type="button" class="web-btn" data-word="RADIANT">✨ RADIANT</button>
+        <button type="button" class="web-btn" data-word="TERRIFIC">🌟 TERRIFIC</button>
+        <button type="button" class="web-btn" data-word="HUMBLE">🌿 HUMBLE</button>
+        <button type="button" class="web-btn" data-word="SOME WRITER">✍️ SOME WRITER</button>
+        <button type="button" class="web-btn" data-word="SOME TEACHER">🎓 SOME TEACHER</button>
+        <button type="button" class="web-btn" data-word="PRAGMATIC">💎 PRAGMATIC</button>
+      </div>
+    </div>
+  </section>
+
   <!-- Woven Banners Grid -->
   <section class="intel-section">
     <div class="charlotte-grid" id="charlotteGrid">
@@ -62,6 +84,37 @@ description: "Weaving words of craft, honor, and connection across the UGtastic 
   margin: 2rem auto;
   padding: 0 1.5rem;
 }
+.timeline-scrubber-card {
+  background: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+}
+.scrubber-labels {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.web-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.web-btn:hover {
+  background: #f1f5f9;
+}
+.web-btn.active {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+}
 .charlotte-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -72,7 +125,6 @@ description: "Weaving words of craft, honor, and connection across the UGtastic 
   border: 2px solid #e2e8f0;
   border-radius: 14px;
   padding: 1.75rem;
-  position: relative;
   box-shadow: 0 6px 16px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
@@ -85,53 +137,40 @@ description: "Weaving words of craft, honor, and connection across the UGtastic 
   box-shadow: 0 12px 28px rgba(0,0,0,0.1);
 }
 .woven-word-banner {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: #0284c7;
   text-transform: uppercase;
   background: #f0f9ff;
   border: 1px dashed #0284c7;
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 0.9rem;
   border-radius: 8px;
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 .speaker-title-display {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 900;
   color: #0f172a;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
 }
 .speaker-subtitle-display {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: #64748b;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 .woven-quote-box {
   background: #f8fafc;
   border-left: 4px solid #0284c7;
-  padding: 0.85rem 1rem;
-  font-size: 0.98rem;
+  padding: 0.8rem 0.95rem;
+  font-size: 0.95rem;
   font-style: italic;
   color: #334155;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   border-radius: 0 8px 8px 0;
-}
-.btn-woven-thread {
-  align-self: flex-start;
-  display: inline-block;
-  padding: 0.45rem 1rem;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #ffffff;
-  background: #0284c7;
-  border-radius: 6px;
-  text-decoration: none;
-}
-.btn-woven-thread:hover {
-  background: #0369a1;
+  line-height: 1.5;
 }
 </style>
 
@@ -144,29 +183,68 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function renderWeb(data) {
     const grid = document.getElementById('charlotteGrid');
-    grid.innerHTML = '';
+    const searchInput = document.getElementById('webSearch');
+    const countDisplay = document.getElementById('tributeCount');
+    const btns = document.querySelectorAll('.web-btn');
 
-    data.woven_tributes.forEach(t => {
-      const card = document.createElement('div');
-      card.className = 'woven-card';
+    let currentWord = 'ALL';
 
-      const threadLinks = t.threads.map(i => `<a href="${i.url}" style="color:#0284c7; font-weight:700; text-decoration:none;">🎙️ ${i.title} (${i.year})</a><br>`).join('');
+    function filterAndDisplay() {
+      grid.innerHTML = '';
+      const query = searchInput.value.toLowerCase().trim();
 
-      card.innerHTML = `
-        <div>
-          <div class="woven-word-banner">✨ ${t.woven_word}</div>
-          <h2 class="speaker-title-display">${t.speaker}</h2>
-          <p class="speaker-subtitle-display">${t.subtitle}</p>
-          <div class="woven-quote-box">"${t.celebrated_quote}"</div>
-        </div>
-        <div style="border-top: 1px solid #f1f5f9; padding-top: 0.85rem; margin-top: 0.5rem;">
-          <p style="font-size:0.85rem; font-weight:700; color:#475569; margin-bottom:0.4rem;">Woven Interview Threads (${t.interviews_count}):</p>
-          ${threadLinks}
-        </div>
-      `;
+      const filtered = data.woven_tributes.filter(t => {
+        const matchesQuery = t.speaker.toLowerCase().includes(query) || 
+                             t.celebrated_quote.toLowerCase().includes(query) ||
+                             t.subtitle.toLowerCase().includes(query);
+        const matchesWord = currentWord === 'ALL' || t.woven_word === currentWord;
+        return matchesQuery && matchesWord;
+      });
 
-      grid.appendChild(card);
+      countDisplay.textContent = filtered.length;
+
+      filtered.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'woven-card';
+
+        const threadLinks = t.threads.map(i => `
+          <a href="${i.url}" style="color:#0284c7; font-weight:700; text-decoration:none; font-size:0.88rem;">🎙️ ${i.title} (${i.year})</a><br>
+        `).join('');
+
+        const topicsHtml = t.topics && t.topics.length > 0 
+          ? `<div style="margin-bottom:0.75rem;">${t.topics.map(tp => `<span style="font-size:0.72rem; font-weight:700; background:#f1f5f9; color:#475569; padding:0.15rem 0.4rem; border-radius:4px; margin-right:0.25rem;">#${tp}</span>`).join('')}</div>` 
+          : '';
+
+        card.innerHTML = `
+          <div>
+            <div class="woven-word-banner">✨ ${t.woven_word}</div>
+            <h2 class="speaker-title-display">${t.speaker}</h2>
+            <p class="speaker-subtitle-display">${t.subtitle}</p>
+            ${topicsHtml}
+            <div class="woven-quote-box">"${t.celebrated_quote}"</div>
+          </div>
+          <div style="border-top: 1px solid #f1f5f9; padding-top: 0.85rem; margin-top: 0.5rem;">
+            <p style="font-size:0.82rem; font-weight:700; color:#475569; margin-bottom:0.4rem;">Woven Interview Threads (${t.interviews_count}):</p>
+            ${threadLinks}
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    searchInput.addEventListener('input', filterAndDisplay);
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentWord = btn.getAttribute('data-word');
+        filterAndDisplay();
+      });
     });
+
+    filterAndDisplay();
   }
 });
 </script>
