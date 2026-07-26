@@ -1,0 +1,277 @@
+---
+layout: minimal
+title: "Historical Era Timeline (2009–2026)"
+description: "Interactive historical timeline scrubbing through 17 years of oral history, software craftsmanship conferences, and developer interviews."
+---
+
+<div class="intel-hero">
+  <div class="intel-hero-inner">
+    <span class="intel-badge">UGtastic Oral History Canon</span>
+    <h1 class="intel-title">Interactive Historical Timeline</h1>
+    <p class="intel-subtitle">
+      Scrub through <strong>17 years of tech evolution (2009–2026)</strong>—from early .NET blogging and Software Craftsmanship (SCNA) to the Rails Boom, Polyglot Systems, and AI-augmented engineering.
+    </p>
+  </div>
+</div>
+
+<div class="intel-container">
+  <!-- Interactive Year Scrubber Bar -->
+  <section class="intel-section">
+    <div class="section-header-editorial">
+      <h2 class="section-title">Era & Year Scrubber</h2>
+      <hr class="title-accent">
+    </div>
+
+    <div class="timeline-scrubber-card">
+      <div class="scrubber-labels">
+        <button type="button" class="era-btn active" data-era="ALL">All Eras (2009-2026)</button>
+        <button type="button" class="era-btn" data-era="era-2009-2010">2009–2010: Blogging & .NET</button>
+        <button type="button" class="era-btn" data-era="era-2011-2012">2011–2012: SCNA Craftsmanship</button>
+        <button type="button" class="era-btn" data-era="era-2013">2013: SCNA & WebVisions</button>
+        <button type="button" class="era-btn" data-era="era-2014">2014: Rails Boom & GOTO</button>
+        <button type="button" class="era-btn" data-era="era-2015-2026">2015–2026: Polyglot & AI</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Cards & Grid -->
+  <section class="intel-section">
+    <div class="timeline-cards-container" id="timeline-cards-container">
+      <!-- Dynamically populated -->
+    </div>
+  </section>
+</div>
+
+<style>
+.intel-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 3.5rem 1.5rem;
+  border-bottom: 4px solid #0284c7;
+}
+.intel-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.intel-badge {
+  display: inline-block;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.intel-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+.intel-subtitle {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 800px;
+  line-height: 1.6;
+}
+.intel-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.timeline-scrubber-card {
+  background: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+}
+.scrubber-labels {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.era-btn {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.era-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+.era-btn.active {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+}
+.timeline-era-block {
+  margin-bottom: 3.5rem;
+}
+.era-header-card {
+  background: #ffffff;
+  border-left: 5px solid #0284c7;
+  border-radius: 0 12px 12px 0;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+}
+.era-tag {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.era-title-display {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0.25rem 0 0.5rem;
+}
+.era-desc-display {
+  font-size: 1.05rem;
+  color: #475569;
+  margin: 0;
+  line-height: 1.5;
+}
+.timeline-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+.timeline-interview-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.timeline-interview-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-color: #38bdf8;
+}
+.card-year-badge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+.card-interview-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+.card-meta-text {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+.btn-view-timeline {
+  align-self: flex-start;
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0284c7;
+  border: 1px solid #0284c7;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn-view-timeline:hover {
+  background: #0284c7;
+  color: #ffffff;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const inlineData = {{ site.data.timeline_archive | jsonify }};
+
+  if (inlineData && inlineData.eras) {
+    renderTimeline(inlineData);
+  } else {
+    fetch('/assets/data/timeline_archive.json')
+      .then(res => res.json())
+      .then(data => renderTimeline(data))
+      .catch(err => console.error("Error loading timeline data:", err));
+  }
+
+  function renderTimeline(data) {
+    const container = document.getElementById('timeline-cards-container');
+    const eraBtns = document.querySelectorAll('.era-btn');
+
+    function displayEra(selectedEra) {
+      container.innerHTML = '';
+
+      const filteredEras = selectedEra === 'ALL' 
+        ? data.eras 
+        : data.eras.filter(e => e.id === selectedEra);
+
+      filteredEras.forEach(era => {
+        const eraItems = data.items.filter(i => i.era_id === era.id);
+        if (eraItems.length === 0) return;
+
+        const eraBlock = document.createElement('div');
+        eraBlock.className = 'timeline-era-block';
+
+        let itemsHtml = eraItems.map(item => `
+          <div class="timeline-interview-card">
+            <div>
+              <span class="card-year-badge">${item.year}</span>
+              <h3 class="card-interview-title">${item.title}</h3>
+              <p class="card-meta-text">
+                👤 ${item.interviewees.join(', ') || 'Featured Guest'}<br>
+                📍 ${item.conference || item.location || 'UGtastic Archive'}
+              </p>
+            </div>
+            <a href="${item.url}" class="btn-view-timeline">View Interview & Transcript</a>
+          </div>
+        `).join('');
+
+        eraBlock.innerHTML = `
+          <div class="era-header-card">
+            <span class="era-tag">${era.years} Archive Era</span>
+            <h2 class="era-title-display">${era.title}</h2>
+            <p class="era-desc-display">${era.description}</p>
+          </div>
+          <div class="timeline-items-grid">
+            ${itemsHtml}
+          </div>
+        `;
+
+        container.appendChild(eraBlock);
+      });
+    }
+
+    eraBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        eraBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        displayEra(btn.getAttribute('data-era'));
+      });
+    });
+
+    displayEra('ALL');
+  }
+});
+</script>

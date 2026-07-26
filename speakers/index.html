@@ -1,0 +1,200 @@
+---
+layout: minimal
+title: "Speaker Directory & Voice Matrix"
+description: "Searchable directory of 191 tech leaders, open-source maintainers, and software craftsmanship speakers across the UGtastic archive canon."
+---
+
+<div class="intel-hero">
+  <div class="intel-hero-inner">
+    <span class="intel-badge">UGtastic Archive Voices</span>
+    <h1 class="intel-title">Speaker Directory & Voice Matrix</h1>
+    <p class="intel-subtitle">
+      Explore profiles, conference appearances, and oral history interviews for <strong>191 software practitioners, creators, and community leaders</strong>.
+    </p>
+  </div>
+</div>
+
+<div class="intel-container">
+  <!-- Controls Bar -->
+  <section class="intel-section">
+    <div class="explorer-controls">
+      <input type="text" id="speakerSearch" placeholder="Search speaker by name or conference..." class="search-input" />
+      <select id="conferenceFilter" class="filter-select">
+        <option value="ALL">All Conferences & Events</option>
+        <option value="SCNA">SCNA (Software Craftsmanship)</option>
+        <option value="RailsConf">RailsConf</option>
+        <option value="GOTO">GOTO Chicago</option>
+        <option value="ChicagoWebConf">ChicagoWebConf</option>
+        <option value="WindyCityRails">WindyCityRails</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Speaker Directory Grid -->
+  <section class="intel-section">
+    <div class="speakers-directory-grid" id="speakersGrid">
+      <!-- Dynamically populated -->
+    </div>
+  </section>
+</div>
+
+<style>
+.intel-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 3.5rem 1.5rem;
+  border-bottom: 4px solid #0284c7;
+}
+.intel-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.intel-badge {
+  display: inline-block;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.intel-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+.intel-subtitle {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 800px;
+  line-height: 1.6;
+}
+.intel-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.speakers-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.speaker-profile-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.speaker-profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: #0284c7;
+}
+.speaker-avatar-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.speaker-card-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+.speaker-card-confs {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+.speaker-interview-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0284c7;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.3rem 0;
+}
+.speaker-interview-link:hover {
+  text-decoration: underline;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const inlineData = {{ site.data.speakers_index_full | jsonify }};
+
+  if (inlineData && inlineData.speakers) {
+    renderSpeakers(inlineData);
+  } else {
+    fetch('/assets/data/speakers_index_full.json')
+      .then(res => res.json())
+      .then(data => renderSpeakers(data))
+      .catch(err => console.error("Error loading speakers data:", err));
+  }
+
+  function renderSpeakers(data) {
+    const grid = document.getElementById('speakersGrid');
+    const searchInput = document.getElementById('speakerSearch');
+    const confFilter = document.getElementById('conferenceFilter');
+
+    function filterAndDisplay() {
+      grid.innerHTML = '';
+      const query = searchInput.value.toLowerCase();
+      const selectedConf = confFilter.value;
+
+      const filtered = data.speakers.filter(s => {
+        const matchesQuery = s.name.toLowerCase().includes(query);
+        const matchesConf = selectedConf === 'ALL' || s.conferences.some(c => c && c.includes(selectedConf));
+        return matchesQuery && matchesConf;
+      });
+
+      filtered.forEach(s => {
+        const initials = s.name.split(' ').map(n => n[0]).join('').substring(0, 2);
+        const card = document.createElement('div');
+        card.className = 'speaker-profile-card';
+
+        const linksHtml = s.interviews.map(i => `
+          <a href="${i.url}" class="speaker-interview-link">🎙️ ${i.title} (${i.year})</a><br>
+        `).join('');
+
+        card.innerHTML = `
+          <div>
+            <div class="speaker-avatar-circle">${initials}</div>
+            <h2 class="speaker-card-name">${s.name}</h2>
+            <p class="speaker-card-confs">
+              📍 ${s.conferences.join(', ') || 'UGtastic Archive'}<br>
+              🗓️ ${s.years.join(', ')}
+            </p>
+          </div>
+          <div style="margin-top: 1rem; border-top: 1px solid #f1f5f9; padding-top: 0.75rem;">
+            ${linksHtml}
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    searchInput.addEventListener('input', filterAndDisplay);
+    confFilter.addEventListener('change', filterAndDisplay);
+
+    filterAndDisplay();
+  }
+});
+</script>

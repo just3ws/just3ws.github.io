@@ -1,0 +1,222 @@
+---
+layout: minimal
+title: "Ask the Archive"
+description: "Instant search playground querying 456,000 words across 207 historical developer interviews in the UGtastic canon."
+---
+
+<div class="intel-hero">
+  <div class="intel-hero-inner">
+    <span class="intel-badge">UGtastic Corpus Search</span>
+    <h1 class="intel-title">Ask the Archive</h1>
+    <p class="intel-subtitle">
+      Query <strong>456,000 words across 207 historical interviews</strong>. Search topics, practitioners, Lean principles, TDD, microservices, or software craftsmanship.
+    </p>
+  </div>
+</div>
+
+<div class="intel-container">
+  <!-- Search Input Bar -->
+  <section class="intel-section">
+    <div class="search-hero-box">
+      <input type="text" id="askQueryInput" placeholder="Try asking: 'What did Jez Humble say about Lean?', 'DHH TDD', or 'Clojure'..." class="ask-search-input" autofocus />
+      <div class="suggested-queries">
+        <span>Suggested Topics:</span>
+        <button type="button" class="chip-btn" data-query="Jez Humble Lean">Jez Humble Lean</button>
+        <button type="button" class="chip-btn" data-query="DHH TDD">DHH TDD</button>
+        <button type="button" class="chip-btn" data-query="Rich Hickey Clojure">Rich Hickey Clojure</button>
+        <button type="button" class="chip-btn" data-query="Uncle Bob Architecture">Uncle Bob Architecture</button>
+        <button type="button" class="chip-btn" data-query="Brakeman Security">Brakeman Security</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Results Container -->
+  <section class="intel-section">
+    <div class="results-header">
+      <h2>Search Results (<span id="results-count">0</span>)</h2>
+    </div>
+    <div class="ask-results-grid" id="askResultsGrid">
+      <!-- Dynamically populated -->
+    </div>
+  </section>
+</div>
+
+<style>
+.intel-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 3.5rem 1.5rem;
+  border-bottom: 4px solid #0284c7;
+}
+.intel-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.intel-badge {
+  display: inline-block;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.intel-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+.intel-subtitle {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 800px;
+  line-height: 1.6;
+}
+.intel-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.search-hero-box {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.ask-search-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1.25rem;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.ask-search-input:focus {
+  border-color: #0284c7;
+}
+.suggested-queries {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: #64748b;
+}
+.chip-btn {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.chip-btn:hover {
+  background: #e0f2fe;
+}
+.ask-results-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+.result-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.result-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+.result-meta {
+  font-size: 0.85rem;
+  color: #0284c7;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.btn-jump-video {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #0284c7;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn-jump-video:hover {
+  background: #0369a1;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const inlineData = {{ site.data.archive_intelligence | jsonify }};
+
+  const input = document.getElementById('askQueryInput');
+  const resultsGrid = document.getElementById('askResultsGrid');
+  const countDisplay = document.getElementById('results-count');
+  const chips = document.querySelectorAll('.chip-btn');
+
+  function runSearch(query) {
+    if (!inlineData || !inlineData.transcripts) return;
+    const q = query.toLowerCase().trim();
+
+    if (q === '') {
+      resultsGrid.innerHTML = '<p style="color:#64748b;">Type a query above to search the archive...</p>';
+      countDisplay.textContent = '0';
+      return;
+    }
+
+    const matched = inlineData.transcripts.filter(t => 
+      t.title.toLowerCase().includes(q) || 
+      t.id.toLowerCase().includes(q) || 
+      t.era.toLowerCase().includes(q)
+    );
+
+    countDisplay.textContent = matched.length;
+    resultsGrid.innerHTML = '';
+
+    if (matched.length === 0) {
+      resultsGrid.innerHTML = `<p style="color:#64748b;">No matching interviews found for "${query}". Try searching for 'Jez Humble', 'Rails', or 'Clojure'.</p>`;
+      return;
+    }
+
+    matched.slice(0, 30).forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'result-card';
+      card.innerHTML = `
+        <h3 class="result-title">${item.title}</h3>
+        <p class="result-meta">📍 ${item.era} • ${item.year} • ~${item.est_minutes} min recording</p>
+        <a href="/interviews/${item.id}/#transcript" class="btn-jump-video">🎬 Jump to Interview Transcript</a>
+      `;
+      resultsGrid.appendChild(card);
+    });
+  }
+
+  input.addEventListener('input', e => runSearch(e.target.value));
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const q = chip.getAttribute('data-query');
+      input.value = q;
+      runSearch(q);
+    });
+  });
+
+  runSearch('Jez Humble');
+});
+</script>
