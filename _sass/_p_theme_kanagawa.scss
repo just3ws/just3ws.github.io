@@ -109,15 +109,51 @@
   }
 
   /* Individual Interview Detail Pages (/interviews/<slug>/) */
+  .page.interview-page, .interview-editorial-container {
+    max-width: 1040px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
   .interview-hero {
     .editorial-title { color: #957fb8 !important; }
     .published-date, .editorial-category { color: #c8c093 !important; }
+  }
+
+  /* Executive Description / Abstract Box Fix */
+  .interview-abstract {
+    background: #2a2a37 !important;
+    border: 1px solid #363646 !important;
+    border-left: 5px solid #7e9cd8 !important;
+    border-radius: 12px !important;
+    color: #dcd7ba !important;
+    padding: 2rem 2.25rem !important;
+    margin-bottom: 3rem !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
+
+    .description-content {
+      color: #dcd7ba !important;
+      font-size: 1.15rem !important;
+      line-height: 1.7 !important;
+
+      a {
+        color: #7e9cd8 !important;
+        font-weight: 700 !important;
+        text-decoration: underline !important;
+
+        &:hover {
+          color: #7aa89f !important;
+        }
+      }
+    }
   }
 
   .speaker-editorial-card {
     background: #2a2a37 !important;
     border: 1px solid #363646 !important;
     color: #dcd7ba !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
 
     .speaker-name-display { color: #957fb8 !important; }
     .speaker-role-label { color: #7aa89f !important; }
