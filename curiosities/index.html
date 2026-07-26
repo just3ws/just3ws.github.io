@@ -1,0 +1,165 @@
+---
+layout: minimal
+title: "Archive Curiosities & Hidden Gems"
+description: "Fascinating topics, historical predictions vs 2026 reality, lost tooling dialects, and open-source lore inside the UGtastic canon."
+---
+
+<div class="intel-hero">
+  <div class="intel-hero-inner">
+    <span class="intel-badge">UGtastic Curiosities</span>
+    <h1 class="intel-title">Archive Curiosities & Hidden Gems</h1>
+    <p class="intel-subtitle">
+      Uncovering the most <strong>fascinating, valuable, and surprising topics</strong> across 17 years of developer oral history—from predictions vs. 2026 reality to open-source lore and forgotten tooling.
+    </p>
+  </div>
+</div>
+
+<div class="intel-container">
+  <!-- Curiosities Grid -->
+  <section class="intel-section">
+    <div class="curiosities-grid" id="curiositiesGrid">
+      <!-- Dynamically populated -->
+    </div>
+  </section>
+</div>
+
+<style>
+.intel-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 3.5rem 1.5rem;
+  border-bottom: 4px solid #0284c7;
+}
+.intel-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.intel-badge {
+  display: inline-block;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.intel-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+.intel-subtitle {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 800px;
+  line-height: 1.6;
+}
+.intel-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.curiosities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.75rem;
+}
+.curiosity-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.curiosity-card:hover {
+  transform: translateY(-3px);
+  border-color: #0284c7;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+.curiosity-category {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+.curiosity-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+.curiosity-summary {
+  font-size: 0.98rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+.curiosity-links {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.85rem;
+}
+.curiosity-links p {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 0.4rem;
+}
+.curiosity-links a {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0284c7;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+.curiosity-links a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('/assets/data/archive_curiosities.json')
+    .then(res => res.json())
+    .then(data => renderCuriosities(data))
+    .catch(err => console.error("Error loading curiosities data:", err));
+
+  function renderCuriosities(data) {
+    const grid = document.getElementById('curiositiesGrid');
+    grid.innerHTML = '';
+
+    data.curiosities.forEach(c => {
+      const card = document.createElement('div');
+      card.className = 'curiosity-card';
+
+      const linksHtml = c.key_interviews.map(i => `
+        <a href="${i.url}">🎙️ ${i.title}</a><br>
+      `).join('');
+
+      card.innerHTML = `
+        <div>
+          <span class="curiosity-category">${c.category}</span>
+          <h2 class="curiosity-title">${c.title}</h2>
+          <p class="curiosity-summary">${c.summary}</p>
+        </div>
+        <div class="curiosity-links">
+          <p>Featured Interviews & Sources:</p>
+          ${linksHtml}
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+  }
+});
+</script>
