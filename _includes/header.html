@@ -37,7 +37,25 @@
                 {% assign is_active = true %}
               {% endif %}
             {% endif %}
-            <a href="{{ href }}" class="nav-link{% if is_active %} is-active{% endif %}" {% if is_active %}aria-current="page"{% endif %}>{{ label }}</a>
+
+            {% if item.children %}
+              <div class="nav-dropdown{% if is_active %} is-active{% endif %}">
+                <a href="{{ href }}" class="nav-link nav-dropdown-toggle{% if is_active %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+                  {{ label }} <span class="dropdown-caret">▾</span>
+                </a>
+                <div class="nav-dropdown-menu" role="menu">
+                  {% for child in item.children %}
+                    {% assign child_active = false %}
+                    {% if current_url == child.href %}
+                      {% assign child_active = true %}
+                    {% endif %}
+                    <a href="{{ child.href }}" class="dropdown-item{% if child_active %} is-active{% endif %}" role="menuitem">{{ child.label }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% else %}
+              <a href="{{ href }}" class="nav-link{% if is_active %} is-active{% endif %}" {% if is_active %}aria-current="page"{% endif %}>{{ label }}</a>
+            {% endif %}
           {% endfor %}
         </div>
       </div>

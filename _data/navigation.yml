@@ -10,42 +10,39 @@ primary:
     - label: Writing
       href: /writing/
       mode: prefix
-    - label: Exports
-      href: /exports/
-      mode: exact
     - label: Portfolio
       href: /portfolio/
       mode: prefix
-    - label: Conversations
+    - label: Archive
       href: /interviews/
       mode: prefix
-    - label: Timeline
-      href: /timeline/
-      mode: prefix
-    - label: Speakers
-      href: /speakers/
-      mode: prefix
-    - label: Ask Archive
-      href: /ask/
-      mode: prefix
-    - label: Studio
-      href: /studio/
-      mode: prefix
-    - label: Web of Wisdom
-      href: /web/
-      mode: prefix
-    - label: Books
-      href: /books/
-      mode: prefix
+      children:
+        - label: 🎙️ All Conversations
+          href: /interviews/
+        - label: ⏱️ Historical Timeline
+          href: /timeline/
+        - label: 👤 Speaker Directory
+          href: /speakers/
+        - label: 💬 Ask the Archive
+          href: /ask/
+        - label: 🎬 Content Studio & Remix Lab
+          href: /studio/
+        - label: 🕸️ Web of Wisdom
+          href: /web/
+        - label: 📚 Books Library
+          href: /books/
     - label: Intelligence
       href: /intelligence/
       mode: prefix
-    - label: Taxonomy
-      href: /taxonomy/
-      mode: prefix
-    - label: Archive Status
-      href: /archive-status/
-      mode: prefix
+      children:
+        - label: 📊 Intelligence Dashboard
+          href: /intelligence/
+        - label: 🕸️ Knowledge Graph
+          href: /taxonomy/
+        - label: 📈 Archive Status
+          href: /archive-status/
+        - label: 📄 Markdown Exports
+          href: /exports/
     - label: Contact
       href: /contact/
       mode: prefix
