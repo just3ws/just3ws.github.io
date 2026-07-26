@@ -1090,7 +1090,12 @@
     .imessage-bubble {
       box-shadow: 0 0 0 3px #0284c7, 0 8px 20px rgba(2, 132, 199, 0.2);
       border-color: #0284c7;
-      background: #f0f9ff;
+      background: #e0f2fe;
+      color: #0f172a !important; /* High contrast dark text for active speaking turn in Light mode */
+    }
+
+    .imessage-text {
+      color: #0f172a !important;
     }
 
     .speaking-indicator {
