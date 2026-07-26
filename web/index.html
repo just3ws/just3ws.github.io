@@ -1,0 +1,172 @@
+---
+layout: minimal
+title: "Charlotte's Web of Wisdom & Tributes"
+description: "Weaving words of craft, honor, and connection across the UGtastic developer interview canon."
+---
+
+<div class="intel-hero">
+  <div class="intel-hero-inner">
+    <span class="intel-badge">UGtastic Web of Wisdom</span>
+    <h1 class="intel-title">Charlotte's Web of Wisdom</h1>
+    <p class="intel-subtitle">
+      <em>"Spidering the web in the spirit of Charlotte's Web"</em>—weaving words into glowing banners to honor, celebrate, and connect the software practitioners, authors, and community builders of our oral history canon.
+    </p>
+  </div>
+</div>
+
+<div class="intel-container">
+  <!-- Woven Banners Grid -->
+  <section class="intel-section">
+    <div class="charlotte-grid" id="charlotteGrid">
+      <!-- Dynamically populated -->
+    </div>
+  </section>
+</div>
+
+<style>
+.intel-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 3.5rem 1.5rem;
+  border-bottom: 4px solid #0284c7;
+}
+.intel-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.intel-badge {
+  display: inline-block;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.intel-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+.intel-subtitle {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 800px;
+  line-height: 1.6;
+}
+.intel-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.charlotte-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.75rem;
+}
+.woven-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.75rem;
+  position: relative;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.woven-card:hover {
+  transform: translateY(-3px);
+  border-color: #0284c7;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+.woven-word-banner {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #0284c7;
+  text-transform: uppercase;
+  background: #f0f9ff;
+  border: 1px dashed #0284c7;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.speaker-title-display {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+.speaker-subtitle-display {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+.woven-quote-box {
+  background: #f8fafc;
+  border-left: 4px solid #0284c7;
+  padding: 0.85rem 1rem;
+  font-size: 0.98rem;
+  font-style: italic;
+  color: #334155;
+  margin-bottom: 1.25rem;
+  border-radius: 0 8px 8px 0;
+}
+.btn-woven-thread {
+  align-self: flex-start;
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #0284c7;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn-woven-thread:hover {
+  background: #0369a1;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('/assets/data/charlottes_web_archive.json')
+    .then(res => res.json())
+    .then(data => renderWeb(data))
+    .catch(err => console.error("Error loading web data:", err));
+
+  function renderWeb(data) {
+    const grid = document.getElementById('charlotteGrid');
+    grid.innerHTML = '';
+
+    data.woven_tributes.forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'woven-card';
+
+      const threadLinks = t.threads.map(i => `<a href="${i.url}" style="color:#0284c7; font-weight:700; text-decoration:none;">🎙️ ${i.title} (${i.year})</a><br>`).join('');
+
+      card.innerHTML = `
+        <div>
+          <div class="woven-word-banner">✨ ${t.woven_word}</div>
+          <h2 class="speaker-title-display">${t.speaker}</h2>
+          <p class="speaker-subtitle-display">${t.subtitle}</p>
+          <div class="woven-quote-box">"${t.celebrated_quote}"</div>
+        </div>
+        <div style="border-top: 1px solid #f1f5f9; padding-top: 0.85rem; margin-top: 0.5rem;">
+          <p style="font-size:0.85rem; font-weight:700; color:#475569; margin-bottom:0.4rem;">Woven Interview Threads (${t.interviews_count}):</p>
+          ${threadLinks}
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+  }
+});
+</script>
