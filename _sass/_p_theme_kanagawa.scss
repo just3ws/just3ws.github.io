@@ -29,12 +29,14 @@
   }
 
   /* Secondary & Body Text Across All Pages & Lists */
-  p, span, div, li, ul, ol, .intel-subtitle, .speaker-subtitle-display, .curiosity-summary, .book-desc, .card-meta-text, .intro, .home-list li {
+  p, span, div, li, ul, ol, .intel-subtitle, .speaker-subtitle-display, .curiosity-summary, .book-desc, .card-meta-text, .intro, .home-intro, .home-list li, .index-highlights li {
     color: #dcd7ba !important; /* fujiWhite (14.2:1 contrast ratio) */
   }
 
-  .text-muted, .meta-dim, .curiosity-category, .speaker-card-confs {
-    color: #c8c093 !important; /* oldWhite AA-safe dim text */
+  .home-header {
+    h1 { color: #957fb8 !important; }
+    h2, .title { color: #c8c093 !important; }
+    .subtitle { color: #7aa89f !important; }
   }
 
   /* Archival Restoration Notice Banner */
@@ -58,6 +60,89 @@
       color: #7e9cd8 !important;
       font-weight: 700;
       text-decoration: underline !important;
+    }
+  }
+
+  /* Conversations Index Grid & Cards */
+  .editorial-card {
+    background: #2a2a37 !important;
+    border: 1px solid #363646 !important;
+    color: #dcd7ba !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+
+    &:hover {
+      border-color: #7e9cd8 !important;
+      transform: translateY(-2px);
+    }
+
+    .editorial-card-title a {
+      color: #dcd7ba !important;
+      &:hover { color: #7e9cd8 !important; }
+    }
+
+    .editorial-card-guests, .editorial-card-meta {
+      color: #c8c093 !important;
+    }
+
+    .editorial-card-button {
+      background: #7e9cd8 !important;
+      color: #16161d !important;
+      font-weight: 700 !important;
+      border-color: #7e9cd8 !important;
+
+      &:hover {
+        background: #7aa89f !important;
+        border-color: #7aa89f !important;
+        color: #16161d !important;
+      }
+    }
+
+    .editorial-card-badge {
+      background: #7aa89f !important;
+      color: #16161d !important;
+    }
+
+    .collection-badge {
+      background: #363646 !important;
+      color: #e6c384 !important;
+    }
+  }
+
+  /* Status Bar & Collection Filter Controls */
+  .transcription-status-bar {
+    background: #2a2a37 !important;
+    border: 1px solid #363646 !important;
+    color: #dcd7ba !important;
+
+    .status-metric {
+      color: #e6c384 !important; /* carpYellow */
+      font-weight: 700 !important;
+    }
+
+    .status-note, p {
+      color: #c8c093 !important;
+    }
+
+    a {
+      color: #7e9cd8 !important;
+      font-weight: 700;
+    }
+  }
+
+  .archive-filters {
+    .filter-label { color: #c8c093 !important; }
+
+    .filter-btn {
+      background: #2a2a37 !important;
+      border: 1px solid #363646 !important;
+      color: #c8c093 !important;
+
+      &:hover, &.is-active {
+        background: #7e9cd8 !important;
+        border-color: #7e9cd8 !important;
+        color: #16161d !important;
+        font-weight: 700 !important;
+      }
     }
   }
 
