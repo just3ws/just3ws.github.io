@@ -600,5 +600,10 @@ namespace :transcript do
   task :sync_zdots_ctx do
     sh 'ruby bin/sync_zdots_ctx.rb'
   end
+
+  desc 'Automate zdots platform AI research queries (zdots-ask & zdots-ctx)'
+  task :zdots_ai_research do
+    sh 'ruby bin/zdots_ai_researcher.rb'
+  end
 end
 
