@@ -160,11 +160,11 @@ breadcrumb_parent_url: /home/
   font-size: 2.4rem;
   margin-top: 0.5rem;
   margin-bottom: 0.8rem;
-  color: #1e293b;
+  color: var(--color-heading, #1e293b);
 }
 .intelligence-header .intro {
   font-size: 1.15rem;
-  color: #475569;
+  color: var(--color-text-muted, #475569);
   line-height: 1.6;
 }
 .badge {
@@ -174,8 +174,8 @@ breadcrumb_parent_url: /home/
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: #e0f2fe;
-  color: #0369a1;
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
   border-radius: 9999px;
 }
 .intel-grid {
@@ -185,24 +185,24 @@ breadcrumb_parent_url: /home/
   margin-bottom: 2.5rem;
 }
 .intel-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
 }
 .metric-card {
   text-align: center;
-  border-left: 4px solid #0284c7;
+  border-left: 4px solid var(--color-primary, #0284c7);
 }
 .metric-value {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-text-main, #0f172a);
 }
 .metric-label {
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--color-text-muted, #64748b);
   margin-top: 0.25rem;
 }
 .intel-section {
@@ -210,11 +210,11 @@ breadcrumb_parent_url: /home/
 }
 .intel-section h2 {
   font-size: 1.6rem;
-  color: #0f172a;
+  color: var(--color-heading, #0f172a);
   margin-bottom: 0.5rem;
 }
 .section-desc {
-  color: #64748b;
+  color: var(--color-text-muted, #64748b);
   margin-bottom: 1.5rem;
 }
 .era-timeline-grid {
@@ -223,8 +223,8 @@ breadcrumb_parent_url: /home/
   gap: 1.25rem;
 }
 .era-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-card, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
   border-radius: 10px;
   padding: 1.25rem;
   position: relative;
@@ -233,89 +233,103 @@ breadcrumb_parent_url: /home/
   font-size: 1.15rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  color: #1e293b;
+  color: var(--color-heading, #1e293b);
 }
 .era-card p {
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--color-text-main, #475569);
   line-height: 1.5;
 }
 .era-badge {
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.2rem 0.5rem;
-  background: #0284c7;
+  background: var(--color-primary, #0284c7);
   color: #ffffff;
   border-radius: 4px;
   display: inline-block;
 }
 .era-count {
-  margin-top: 1rem;
-  font-size: 0.85rem;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #0284c7;
+  color: var(--color-text-muted, #64748b);
 }
 .charts-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 1.5rem;
 }
-.chart-card {
-  min-height: 380px;
+.chart-card h3 {
+  font-size: 1.2rem;
+  color: var(--color-heading, #1e293b);
+  margin-bottom: 1rem;
 }
 .chart-container {
   position: relative;
-  height: 300px;
+  height: 320px;
   width: 100%;
+}
+.table-card {
+  padding: 0;
+  overflow-x: auto;
 }
 .intel-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
-}
-.intel-table th, .intel-table td {
-  padding: 0.85rem 1rem;
   text-align: left;
-  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.9rem;
 }
 .intel-table th {
-  background: #f1f5f9;
-  color: #334155;
+  background: var(--color-bg-card, #f8fafc);
+  padding: 0.85rem 1.25rem;
   font-weight: 600;
+  color: var(--color-heading, #475569);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+.intel-table td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--color-border, #f1f5f9);
+  color: var(--color-text-main, #334155);
 }
 .intel-table tr:hover {
-  background: #f8fafc;
+  background: var(--color-bg-card, #f8fafc);
 }
 .explorer-controls {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 .search-input {
   flex: 1;
+  min-width: 250px;
   padding: 0.6rem 1rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-border, #cbd5e1);
   border-radius: 8px;
   font-size: 0.95rem;
+  background: var(--color-bg-card, #ffffff);
+  color: var(--color-text-main, #0f172a);
 }
 .filter-select {
   padding: 0.6rem 1rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-border, #cbd5e1);
   border-radius: 8px;
   font-size: 0.95rem;
-  background: #ffffff;
+  background: var(--color-bg-card, #ffffff);
+  color: var(--color-text-main, #0f172a);
 }
 .btn-view {
   display: inline-block;
   padding: 0.3rem 0.75rem;
   font-size: 0.85rem;
-  color: #0284c7;
-  border: 1px solid #0284c7;
+  color: var(--color-primary, #0284c7);
+  border: 1px solid var(--color-primary, #0284c7);
   border-radius: 6px;
   text-decoration: none;
 }
 .btn-view:hover {
-  background: #0284c7;
+  background: var(--color-primary, #0284c7);
   color: #ffffff;
 }
 </style>
@@ -325,6 +339,13 @@ breadcrumb_parent_url: /home/
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+  const isKanagawa = document.body.classList.contains('theme-kanagawa');
+
+  if (isKanagawa && typeof Chart !== 'undefined') {
+    Chart.defaults.color = '#dcd7ba';
+    Chart.defaults.borderColor = '#363646';
+  }
+
   const inlineData = {{ site.data.archive_intelligence | jsonify }};
   
   if (inlineData && inlineData.total_transcripts) {
@@ -347,6 +368,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const tropeLabels = Object.keys(data.trope_frequencies);
     const tropeValues = Object.values(data.trope_frequencies);
 
+    const barBg = isKanagawa ? '#7e9cd8' : '#0284c7';
+
     new Chart(tropesCtx, {
       type: 'bar',
       data: {
@@ -354,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function() {
         datasets: [{
           label: 'Occurrences Across Corpus',
           data: tropeValues,
-          backgroundColor: '#0284c7',
+          backgroundColor: barBg,
           borderRadius: 6
         }]
       },
@@ -371,13 +394,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const durationLabels = Object.keys(data.duration_distribution);
     const durationValues = Object.values(data.duration_distribution);
 
+    const donutColors = isKanagawa
+      ? ['#7aa89f', '#7e9cd8', '#957fb8', '#e6c384']
+      : ['#38bdf8', '#0284c7', '#0369a1', '#0f172a'];
+
     new Chart(durationCtx, {
       type: 'doughnut',
       data: {
         labels: durationLabels,
         datasets: [{
           data: durationValues,
-          backgroundColor: ['#38bdf8', '#0284c7', '#0369a1', '#0f172a']
+          backgroundColor: donutColors
         }]
       },
       options: {
@@ -395,13 +422,16 @@ document.addEventListener("DOMContentLoaded", function() {
       const maxPhase = pos.intro >= pos.middle && pos.intro >= pos.outro ? 'Intro (0-15%)' :
                        (pos.outro >= pos.middle ? 'Outro Sign-off (85-100%)' : 'Technical Core (15-85%)');
 
+      const badgeBg = isKanagawa ? '#2a2a37' : '#e0f2fe';
+      const badgeFg = isKanagawa ? '#7aa89f' : '#0369a1';
+
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td><strong>${trope}</strong></td>
         <td>${pos.intro} times</td>
         <td>${pos.middle} times</td>
         <td>${pos.outro} times</td>
-        <td><span class="badge" style="background:#e0f2fe; color:#0369a1;">${maxPhase}</span></td>
+        <td><span class="badge" style="background:${badgeBg}; color:${badgeFg};">${maxPhase}</span></td>
       `;
       posBody.appendChild(tr);
     });
@@ -425,8 +455,8 @@ document.addEventListener("DOMContentLoaded", function() {
       filtered.slice(0, 50).forEach(item => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td><strong>${item.title}</strong><br><small style="color:#64748b;">${item.id}</small></td>
-          <td><span style="font-size:0.85rem; color:#334155;">${item.era}</span></td>
+          <td><strong>${item.title}</strong><br><small style="color:var(--color-text-muted, #64748b);">${item.id}</small></td>
+          <td><span style="font-size:0.85rem;">${item.era}</span></td>
           <td>${item.year}</td>
           <td>${item.word_count.toLocaleString()} words</td>
           <td>~${item.est_minutes} min</td>
