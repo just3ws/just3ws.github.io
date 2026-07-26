@@ -829,3 +829,31 @@ pre code {
     }
   }
 }
+
+/* ==========================================================================
+   A11Y & DESIGN SYSTEM HARMONIZATION
+   ========================================================================== */
+
+:focus-visible {
+  outline: 3px solid #0284c7 !important;
+  outline-offset: 3px !important;
+  border-radius: 4px !important;
+}
+
+/* Minimum 44x44px Tap Target Sizing for Accessibility */
+a, button, select, input, .nav-link, .era-btn, .web-btn, .tab-btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Respect User Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
