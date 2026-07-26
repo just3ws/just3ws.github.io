@@ -172,12 +172,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const card = document.createElement('div');
         card.className = 'speaker-profile-card';
 
-        const educatorBadge = s.is_educator 
-          ? `<span style="font-size:0.75rem; font-weight:800; padding:0.2rem 0.6rem; background:#f0fdf4; color:#166534; border-radius:4px; margin-bottom:0.5rem; display:inline-block;">🎓 Tech Educator & Author</span>` 
+        const quoteHtml = s.featured_quote 
+          ? `<div style="background:#f0f9ff; border-left:3px solid #0284c7; padding:0.6rem 0.8rem; font-size:0.88rem; font-style:italic; color:#0369a1; margin:0.6rem 0; border-radius:0 6px 6px 0;">"${s.featured_quote}"</div>` 
           : '';
 
-        const educatorBioHtml = s.is_educator && s.educator_bio 
-          ? `<p style="font-size:0.85rem; color:#475569; background:#f8fafc; padding:0.6rem; border-radius:6px; margin:0.5rem 0; line-height:1.4;">${s.educator_bio}</p>` 
+        const topicsHtml = s.topics && s.topics.length > 0 
+          ? `<div style="margin:0.5rem 0;">${s.topics.map(t => `<span style="font-size:0.72rem; font-weight:700; background:#f1f5f9; color:#475569; padding:0.15rem 0.4rem; border-radius:4px; margin-right:0.25rem;">#${t}</span>`).join('')}</div>` 
+          : '';
+
+        const contentIdeasHtml = s.content_ideas && s.content_ideas.length > 0
+          ? `<details style="margin-top:0.6rem; font-size:0.82rem; color:#0369a1;"><summary style="cursor:pointer; font-weight:700;">💡 ${s.content_ideas.length} Content & Article Ideas</summary><ul style="padding-left:1.2rem; margin:0.3rem 0;">${s.content_ideas.map(ci => `<li>${ci}</li>`).join('')}</ul></details>`
           : '';
 
         const linksHtml = s.interviews.map(i => `
@@ -190,10 +194,13 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="speaker-avatar-circle">${initials}</div>
             <h2 class="speaker-card-name">${s.name}</h2>
             ${educatorBioHtml}
+            ${quoteHtml}
+            ${topicsHtml}
             <p class="speaker-card-confs">
               📍 ${s.conferences.join(', ') || 'UGtastic Archive'}<br>
               🗓️ ${s.years.join(', ')}
             </p>
+            ${contentIdeasHtml}
           </div>
           <div style="margin-top: 1rem; border-top: 1px solid #f1f5f9; padding-top: 0.75rem;">
             ${linksHtml}
