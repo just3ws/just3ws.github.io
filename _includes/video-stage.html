@@ -54,10 +54,10 @@
     </div>
 
     <!-- Live Closed Caption (CC) Subtitle Box -->
-    <div class="sync-cc-overlay" id="sync-cc-overlay">
+    <div class="sync-cc-overlay" id="sync-cc-overlay" aria-live="polite">
       <span class="cc-badge">LIVE CC</span>
       <span class="cc-speaker" id="cc-speaker-display">UGtastic Archive</span>
-      <p class="cc-text" id="cc-text-display">Press play or click any turn in the transcript to start real-time synchronized playback...</p>
+      <p class="cc-text" id="cc-text-display" aria-live="polite">Press play or click any turn in the transcript to start real-time synchronized playback...</p>
     </div>
   </section>
 {% endif %}
