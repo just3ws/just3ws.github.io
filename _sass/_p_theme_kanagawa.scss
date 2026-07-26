@@ -1,22 +1,43 @@
-/* _sass/_p_theme_kanagawa.scss — Kanagawa Wave Japanese Woodblock Theme Palette */
+/* _sass/_p_theme_kanagawa.scss — Kanagawa Wave Japanese Woodblock Theme Palette
+   Source of truth: ~/.config/zsh/etc/themes/kanagawa-wave.yaml
+*/
 
 :root[data-theme="kanagawa"], body.theme-kanagawa {
-  --color-bg-base: #1f1f28;
-  --color-bg-dark: #16161d;
-  --color-bg-card: #2a2a37;
-  --color-text-main: #dcd7ba;
-  --color-text-muted: #c8c093;
-  --color-primary: #7aa89f;
-  --color-primary-dark: #7e9cd8;
-  --color-accent: #e6c384;
-  --color-success: #98bb6c;
-  --color-warning: #ffa066;
-  --color-danger: #c34043;
-  --color-border: #363646;
+  /* Palette Tokens from my.localhost styleguide */
+  --color-bg-base: #1a1b2f;      /* sumiInk3 */
+  --color-bg-dark: #16161d;      /* sumiInk0 */
+  --color-bg-card: #2a2a37;      /* sumiInk4 */
+  --color-text-main: #dcd7ba;    /* fujiWhite (14.2:1 contrast ratio) */
+  --color-text-muted: #c8c093;   /* oldWhite (9.2:1 AA-safe dim text) */
+  --color-heading: #957fb8;      /* oniViolet (Headings) */
+  --color-primary: #7e9cd8;      /* crystalBlue (The Wave primary accent) */
+  --color-primary-dark: #7aa89f; /* waveAqua2 */
+  --color-accent: #e6c384;       /* carpYellow */
+  --color-success: #98bb6c;      /* springGreen */
+  --color-warning: #ffa066;      /* surimiOrange */
+  --color-danger: #c34043;       /* autumnRed */
+  --color-border: #363646;       /* sumiInk5 */
 
   background-color: var(--color-bg-base) !important;
   color: var(--color-text-main) !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
+  /* Global Headings in Kanagawa Wave */
+  h1, h2, h3, h4, h5, h6, .intel-title, .speaker-title-display, .curiosity-title, .article-title, .book-title, .playlist-title, .short-speaker {
+    color: #957fb8 !important; /* oniViolet from styleguide */
+    font-weight: 800;
+  }
+
+  /* Secondary & Muted Body Text */
+  p, span, div, .intel-subtitle, .speaker-subtitle-display, .curiosity-summary, .book-desc, .card-meta-text {
+    color: #dcd7ba;
+  }
+
+  .text-muted, .meta-dim, .curiosity-category, .speaker-card-confs {
+    color: #c8c093 !important; /* oldWhite AA-safe dim text */
+  }
+
+  /* Header & Navigation */
   .site-header {
     background: #16161d !important;
     border-bottom-color: #363646 !important;
@@ -30,12 +51,12 @@
     color: #c8c093 !important;
     &:hover {
       background: #2a2a37 !important;
-      color: #7aa89f !important;
+      color: #7e9cd8 !important;
     }
     &.is-active {
       background: #2a2a37 !important;
-      border-color: #7aa89f !important;
-      color: #7aa89f !important;
+      border-color: #7e9cd8 !important;
+      color: #7e9cd8 !important;
     }
   }
 
@@ -47,55 +68,37 @@
       color: #dcd7ba !important;
       &:hover, &.is-active {
         background: #2a2a37 !important;
-        color: #7aa89f !important;
+        color: #7e9cd8 !important;
       }
     }
   }
 
+  /* Hero Section */
   .intel-hero {
-    background: linear-gradient(135deg, #16161d 0%, #1f1f28 100%) !important;
-    border-bottom-color: #7aa89f !important;
-    color: #dcd7ba !important;
+    background: linear-gradient(135deg, #16161d 0%, #1a1b2f 100%) !important;
+    border-bottom-color: #7e9cd8 !important;
 
-    .intel-title { color: #dcd7ba !important; }
+    .intel-title { color: #957fb8 !important; }
     .intel-subtitle { color: #c8c093 !important; }
-    .intel-badge { background: #7aa89f !important; color: #16161d !important; }
+    .intel-badge { background: #7e9cd8 !important; color: #16161d !important; }
   }
 
-  .timeline-interview-card, .speaker-profile-card, .result-card, .short-card, .playlist-card, .article-card, .book-card, .curiosity-card, .woven-card, .era-header-card {
+  /* Cards & Containers */
+  .timeline-interview-card, .speaker-profile-card, .result-card, .short-card, .playlist-card, .article-card, .book-card, .curiosity-card, .woven-card, .era-header-card, .timeline-scrubber-card {
     background: #2a2a37 !important;
     border-color: #363646 !important;
     color: #dcd7ba !important;
 
     &:hover {
-      border-color: #7aa89f !important;
-    }
-
-    h2, h3, h4, .speaker-card-name, .card-interview-title, .result-title, .short-speaker, .playlist-title, .article-title, .book-title, .curiosity-title, .speaker-title-display {
-      color: #dcd7ba !important;
-    }
-
-    p, .card-meta-text, .speaker-card-confs, .short-video-title, .book-desc, .curiosity-summary, .speaker-subtitle-display {
-      color: #c8c093 !important;
+      border-color: #7e9cd8 !important;
     }
   }
 
+  /* Quotes & Highlight Boxes */
   .short-quote-box, .woven-quote-box, .era-header-card {
     background: #16161d !important;
-    border-left-color: #7aa89f !important;
+    border-left: 4px solid #7e9cd8 !important;
     color: #dcd7ba !important;
-  }
-
-  .btn-view-timeline, .btn-studio-action, .btn-book-interview, .btn-jump-video, .btn-woven-thread {
-    background: #7aa89f !important;
-    color: #16161d !important;
-    border-color: #7aa89f !important;
-
-    &:hover {
-      background: #7e9cd8 !important;
-      border-color: #7e9cd8 !important;
-      color: #16161d !important;
-    }
   }
 
   .woven-word-banner {
@@ -104,15 +107,44 @@
     border-color: #7aa89f !important;
   }
 
-  .chip-btn, .era-btn, .web-btn, .tab-btn {
-    background: #2a2a37 !important;
-    border-color: #363646 !important;
-    color: #dcd7ba !important;
+  /* Action Buttons & Links */
+  a {
+    color: #7aa89f;
+    &:hover {
+      color: #7e9cd8;
+    }
+  }
 
-    &:hover, &.active {
+  .btn-view-timeline, .btn-studio-action, .btn-book-interview, .btn-jump-video, .btn-woven-thread {
+    background: #7e9cd8 !important;
+    color: #16161d !important;
+    border-color: #7e9cd8 !important;
+    font-weight: 700;
+
+    &:hover {
       background: #7aa89f !important;
       border-color: #7aa89f !important;
       color: #16161d !important;
     }
+  }
+
+  .chip-btn, .era-btn, .web-btn, .tab-btn {
+    background: #2a2a37 !important;
+    border-color: #363646 !important;
+    color: #c8c093 !important;
+
+    &:hover, &.active {
+      background: #7e9cd8 !important;
+      border-color: #7e9cd8 !important;
+      color: #16161d !important;
+    }
+  }
+
+  /* Code Blocks & Mono */
+  code, pre, kbd {
+    font-family: 'FiraCode Nerd Font Mono Ret', 'FiraCode Nerd Font Mono', ui-monospace, monospace !important;
+    background: #16161d !important;
+    color: #7aa89f !important;
+    border-color: #363646 !important;
   }
 }
