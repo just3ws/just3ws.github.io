@@ -108,6 +108,95 @@
     }
   }
 
+  /* Individual Interview Detail Pages (/interviews/<slug>/) */
+  .interview-hero {
+    .editorial-title { color: #957fb8 !important; }
+    .published-date, .editorial-category { color: #c8c093 !important; }
+  }
+
+  .speaker-editorial-card {
+    background: #2a2a37 !important;
+    border: 1px solid #363646 !important;
+    color: #dcd7ba !important;
+
+    .speaker-name-display { color: #957fb8 !important; }
+    .speaker-role-label { color: #7aa89f !important; }
+    .speaker-bio-subtext { color: #c8c093 !important; }
+  }
+
+  .transcript-editorial {
+    .section-title { color: #957fb8 !important; }
+    .title-accent { border-color: #7e9cd8 !important; }
+  }
+
+  /* Transcript Dialogue Turns & Bubbles */
+  .imessage-turn {
+    .imessage-name { color: #957fb8 !important; font-weight: 700 !important; }
+    .imessage-subtext { color: #c8c093 !important; }
+    
+    .timestamp-badge {
+      background: #363646 !important;
+      color: #7aa89f !important;
+      border: 1px solid #363646 !important;
+      &:hover {
+        background: #7e9cd8 !important;
+        color: #16161d !important;
+      }
+    }
+
+    .imessage-bubble {
+      background-color: #2a2a37 !important;
+      border: 1px solid #363646 !important;
+      color: #dcd7ba !important;
+    }
+
+    &.guest .imessage-bubble {
+      background-color: #223249 !important;
+      border: 1px solid #2d4f67 !important;
+      color: #dcd7ba !important;
+    }
+
+    &.interviewer .imessage-bubble {
+      background-color: #2a2a37 !important;
+      border: 1px solid #363646 !important;
+      color: #dcd7ba !important;
+    }
+
+    &.is-speaking {
+      .imessage-bubble {
+        border-color: #7e9cd8 !important;
+        background-color: #16161d !important;
+        box-shadow: 0 0 0 3px #7e9cd8, 0 8px 20px rgba(126, 156, 216, 0.25) !important;
+      }
+
+      .speaking-indicator {
+        color: #7aa89f !important;
+        font-weight: 800 !important;
+      }
+    }
+  }
+
+  /* Related Context & Media Cards */
+  .related-context-card {
+    background: #2a2a37 !important;
+    border: 1px solid #363646 !important;
+    color: #dcd7ba !important;
+
+    .related-tag {
+      background: #363646 !important;
+      color: #7aa89f !important;
+    }
+
+    .related-link-title a {
+      color: #dcd7ba !important;
+      &:hover { color: #7e9cd8 !important; }
+    }
+
+    .related-description {
+      color: #c8c093 !important;
+    }
+  }
+
   /* Status Bar & Collection Filter Controls */
   .transcription-status-bar {
     background: #2a2a37 !important;
