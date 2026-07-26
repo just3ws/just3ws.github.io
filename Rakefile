@@ -595,5 +595,10 @@ namespace :transcript do
   task :enrich_pipeline do
     sh 'ruby bin/enrich_pipeline_with_research.rb'
   end
+
+  desc 'Sync research sidecars & priming terms to zdots-ctx (my PostgreSQL database)'
+  task :sync_zdots_ctx do
+    sh 'ruby bin/sync_zdots_ctx.rb'
+  end
 end
 
