@@ -325,15 +325,15 @@ document.addEventListener("DOMContentLoaded", function() {
       themeBlock.style.marginBottom = '2.5rem';
 
       let quotesHtml = quotes.map(q => `
-        <div style="background:#fff; border-left:4px solid #0284c7; padding:1rem 1.25rem; margin-bottom:0.75rem; border-radius:0 8px 8px 0; box-shadow:0 2px 6px rgba(0,0,0,0.03);">
-          <blockquote style="margin:0 0 0.5rem; font-size:1.05rem; color:#1e293b;">"${q.text}"</blockquote>
-          <span style="font-size:0.85rem; font-weight:700; color:#0284c7;">— ${q.speaker}</span>
-          <span style="font-size:0.85rem; color:#64748b;"> in <a href="${q.url}">${q.video}</a></span>
+        <div style="background:var(--color-bg-card, #ffffff); border-left:4px solid var(--color-primary, #0284c7); padding:1rem 1.25rem; margin-bottom:0.75rem; border-radius:0 8px 8px 0; box-shadow:0 2px 6px rgba(0,0,0,0.03);">
+          <blockquote style="margin:0 0 0.5rem; font-size:1.05rem; color:var(--color-text-main, #1e293b);">"${q.text}"</blockquote>
+          <span style="font-size:0.85rem; font-weight:700; color:var(--color-primary, #0284c7);">— ${q.speaker}</span>
+          <span style="font-size:0.85rem; color:var(--color-text-muted, #64748b);"> in <a href="${q.url}">${q.video}</a></span>
         </div>
       `).join('');
 
       themeBlock.innerHTML = `
-        <h3 style="font-size:1.4rem; font-weight:800; color:#0f172a; margin-bottom:1rem; text-transform:capitalize;">Theme: ${themeKey.replace(/-/g, ' ')}</h3>
+        <h3 style="font-size:1.4rem; font-weight:800; color:var(--color-heading, #0f172a); margin-bottom:1rem; text-transform:capitalize;">Theme: ${themeKey.replace(/-/g, ' ')}</h3>
         ${quotesHtml}
       `;
       quotesContainer.appendChild(themeBlock);
@@ -369,12 +369,12 @@ document.addEventListener("DOMContentLoaded", function() {
       const card = document.createElement('div');
       card.className = 'article-card';
 
-      const tagsHtml = art.tags.map(t => `<span style="font-size:0.75rem; font-weight:700; padding:0.15rem 0.4rem; background:#f1f5f9; color:#475569; border-radius:4px; margin-right:0.3rem;">#${t}</span>`).join('');
+      const tagsHtml = art.tags.map(t => `<span style="font-size:0.75rem; font-weight:700; padding:0.15rem 0.4rem; background:var(--color-bg-base, #f1f5f9); color:var(--color-text-muted, #475569); border-radius:4px; margin-right:0.3rem;">#${t}</span>`).join('');
 
       card.innerHTML = `
-        <span style="font-size:0.8rem; font-weight:800; color:#0284c7; text-transform:uppercase; letter-spacing:0.05em;">${art.category}</span>
+        <span style="font-size:0.8rem; font-weight:800; color:var(--color-primary, #0284c7); text-transform:uppercase; letter-spacing:0.05em;">${art.category}</span>
         <h3 class="article-title" style="margin-top:0.3rem;">${art.title}</h3>
-        <p style="font-size:0.95rem; color:#475569; line-height:1.5; margin-bottom:1rem;">${art.summary}</p>
+        <p style="font-size:0.95rem; color:var(--color-text-muted, #475569); line-height:1.5; margin-bottom:1rem;">${art.summary}</p>
         <div style="margin-bottom:1rem;">${tagsHtml}</div>
         <a href="/ask/" class="btn-studio-action">✍️ Draft Article with AI</a>
       `;

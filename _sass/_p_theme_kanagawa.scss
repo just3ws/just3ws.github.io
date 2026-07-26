@@ -256,4 +256,14 @@
     color: #7aa89f !important;
     border-color: #363646 !important;
   }
+
+  /* Global Override for Legacy Posts with Inline Black/White Styles */
+  [style*="color: black"], [style*="color:black"], [style*="color: #000000"], [style*="color:#000000"] {
+    color: #dcd7ba !important;
+  }
+
+  [style*="background: white"], [style*="background:white"], [style*="background-color: #ffffff"], [style*="background-color:#ffffff"] {
+    background-color: #2a2a37 !important;
+    border-color: #363646 !important;
+  }
 }
