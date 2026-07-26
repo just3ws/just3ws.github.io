@@ -1,0 +1,194 @@
+---
+layout: minimal
+title: "Archival Bibliography & Recommended Reading"
+description: "Books authored and recommended by interviewees across the UGtastic historical software craftsmanship archive."
+---
+
+<div class="intel-hero">
+  <div class="intel-hero-inner">
+    <span class="intel-badge">UGtastic Archival Library</span>
+    <h1 class="intel-title">Books Authored & Recommended</h1>
+    <p class="intel-subtitle">
+      A curated bibliography of seminal books <strong>authored or recommended by UGtastic interviewees</strong>—spanning Continuous Delivery, Clean Code, The Rails Way, Release It!, and Domain-Driven Design.
+    </p>
+  </div>
+</div>
+
+<div class="intel-container">
+  <!-- Filter Controls -->
+  <section class="intel-section">
+    <div class="explorer-controls">
+      <input type="text" id="bookSearch" placeholder="Search book title, author, or guest..." class="search-input" />
+      <select id="typeFilter" class="filter-select">
+        <option value="ALL">All Categories</option>
+        <option value="authored">Authored by Guest</option>
+        <option value="recommended">Recommended in Transcript</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Books Grid -->
+  <section class="intel-section">
+    <div class="books-library-grid" id="booksGrid">
+      <!-- Dynamically populated -->
+    </div>
+  </section>
+</div>
+
+<style>
+.intel-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 3.5rem 1.5rem;
+  border-bottom: 4px solid #0284c7;
+}
+.intel-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.intel-badge {
+  display: inline-block;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.intel-title {
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+}
+.intel-subtitle {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 800px;
+  line-height: 1.6;
+}
+.intel-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+.books-library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+.book-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.book-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: #0284c7;
+}
+.book-type-badge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+.book-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+}
+.book-author {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0284c7;
+  margin-bottom: 0.75rem;
+}
+.book-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+.btn-book-interview {
+  align-self: flex-start;
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0284c7;
+  border: 1px solid #0284c7;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn-book-interview:hover {
+  background: #0284c7;
+  color: #ffffff;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('/assets/data/books_bibliography.json')
+    .then(res => res.json())
+    .then(data => renderBooks(data))
+    .catch(err => console.error("Error loading books data:", err));
+
+  function renderBooks(data) {
+    const grid = document.getElementById('booksGrid');
+    const searchInput = document.getElementById('bookSearch');
+    const typeFilter = document.getElementById('typeFilter');
+
+    function filterAndDisplay() {
+      grid.innerHTML = '';
+      const query = searchInput.value.toLowerCase();
+      const selectedType = typeFilter.value;
+
+      const filtered = data.books.filter(b => {
+        const matchesQuery = b.title.toLowerCase().includes(query) || b.author.toLowerCase().includes(query) || b.guest.toLowerCase().includes(query);
+        const matchesType = selectedType === 'ALL' || b.type === selectedType;
+        return matchesQuery && matchesType;
+      });
+
+      filtered.forEach(b => {
+        const card = document.createElement('div');
+        card.className = 'book-card';
+
+        const typeLabel = b.type === 'authored' ? '✍️ Authored by Guest' : '📖 Recommended Reading';
+
+        card.innerHTML = `
+          <div>
+            <span class="book-type-badge">${typeLabel}</span>
+            <h3 class="book-title">${b.title}</h3>
+            <p class="book-author">By ${b.author}</p>
+            <p class="book-desc">${b.description}</p>
+          </div>
+          <a href="${b.interview_url}" class="btn-book-interview">🎙️ View Interview with ${b.guest}</a>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    searchInput.addEventListener('input', filterAndDisplay);
+    typeFilter.addEventListener('change', filterAndDisplay);
+
+    filterAndDisplay();
+  }
+});
+</script>
