@@ -585,5 +585,15 @@ namespace :transcript do
   task :sync_youtube_captions do
     sh 'ruby bin/sync_youtube_captions.rb'
   end
+
+  desc 'Run 6-vector deep historical research across transcript canon'
+  task :deep_research do
+    sh 'ruby bin/deep_research_interview.rb --all'
+  end
+
+  desc 'Compile research priming vocabulary for transcription pipeline enrichment'
+  task :enrich_pipeline do
+    sh 'ruby bin/enrich_pipeline_with_research.rb'
+  end
 end
 
