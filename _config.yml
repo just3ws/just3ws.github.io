@@ -31,8 +31,15 @@ defaults:
   - scope:
       path: ""
     values:
+      layout: minimal
       sitemap: true
       robots: index,follow
+  - scope:
+      path: "backlog"
+    values:
+      layout: minimal
+      sitemap: false
+      robots: noindex,follow
   # Docs are public by default; operator runbooks are explicitly noindex below.
   - scope:
       path: "backlog/docs"

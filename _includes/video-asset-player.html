@@ -204,17 +204,32 @@
         });
       }
 
-      // Seek Handler
+      // Seek Handler (Smooth YouTube postMessage & HTML5 Video seek)
       function seekTo(sec) {
         if (!embed) return;
         if (embed.tagName === "VIDEO") {
           embed.currentTime = sec;
           if (embed.paused) embed.play();
         } else if (embed.tagName === "IFRAME") {
-          var base = embed.getAttribute("src") || "";
-          var cleanBase = base.replace(/[\?&]start=\d+/g, "").replace(/#t=\d+s/g, "");
-          var joiner = cleanBase.indexOf("?") === -1 ? "?" : "&";
-          embed.setAttribute("src", cleanBase + joiner + "start=" + Math.floor(sec) + "&autoplay=1");
+          try {
+            // PostMessage to YouTube iFrame API (prevents iframe reloads & Playback ID errors)
+            embed.contentWindow.postMessage(JSON.stringify({
+              event: 'command',
+              func: 'seekTo',
+              args: [Math.floor(sec), true]
+            }), '*');
+            embed.contentWindow.postMessage(JSON.stringify({
+              event: 'command',
+              func: 'playVideo',
+              args: []
+            }), '*');
+          } catch (e) {
+            // Fallback for non-postMessage frames
+            var base = embed.getAttribute("src") || "";
+            var cleanBase = base.replace(/[\?&]start=\d+/g, "").replace(/#t=\d+s/g, "");
+            var joiner = cleanBase.indexOf("?") === -1 ? "?" : "&";
+            embed.setAttribute("src", cleanBase + joiner + "start=" + Math.floor(sec) + "&autoplay=1");
+          }
         }
       }
 

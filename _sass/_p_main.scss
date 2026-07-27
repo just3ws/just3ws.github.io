@@ -1,12 +1,12 @@
 @use "p_variables" as *;
 
 /* Editorial & Celebratory UI Overhaul */
-.interview-editorial-container {
-  max-width: 1000px;
+.page.interview-page, .interview-editorial-container {
+  max-width: 1040px !important;
+  width: 100% !important;
   margin: 0 auto;
   padding: 2rem 1rem;
   font-family: var(--font-body, "Inter", -apple-system, sans-serif);
-  color: #1a1a1a;
 }
 
 /* Hero Header */
@@ -280,33 +280,31 @@
 
 /* Interview Abstract / Executive Summary */
 .interview-abstract {
-  background: #fdfdfd;
-  border: 1px solid #eee;
-  border-left: 6px solid #111;
-  padding: 3rem;
-  margin-bottom: 5rem;
-  border-radius: 4px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-}
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-left: 5px solid var(--color-primary, #0284c7);
+  padding: 2rem 2.25rem;
+  margin-bottom: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
-.description-content {
-  font-size: 1.25rem;
-  line-height: 1.7;
-  color: #333;
-  font-weight: 500;
-  white-space: pre-wrap; /* Preserve line breaks from description */
-}
+  .description-content {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--color-text-main, #1e293b);
+    font-weight: 500;
+    white-space: pre-wrap;
 
-.description-content a {
-  color: var(--color-primary, #007bff);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
+    a {
+      color: var(--color-primary, #0284c7);
+      text-decoration: underline;
+      font-weight: 700;
 
-.description-content a:hover {
-  color: #000;
-  text-decoration-thickness: 2px;
+      &:hover {
+        color: #0369a1;
+      }
+    }
+  }
 }
 
 /* Speaker Editorial Grid */
