@@ -35,7 +35,17 @@
 
   <footer class="site-footer no-print">
     <div class="footer-container">
-      <p>&copy; {{ "now" | date: "%Y" }} Mike Hall.</p>
+      <p>
+        &copy; {{ "now" | date: "%Y" }} Mike Hall.
+        {% if site.config.build_info %}
+          <span class="footer-meta-divider">•</span>
+          <span class="footer-build-meta">
+            Updated <time datetime="{{ site.config.build_info.time }}">{{ site.config.build_info.time | date: "%b %d, %Y" }}</time>
+            <span class="footer-meta-divider">•</span>
+            Build <a href="{{ site.config.build_info.repo }}/commit/{{ site.config.build_info.commit }}" target="_blank" rel="noopener" class="footer-commit-link" title="View commit {{ site.config.build_info.commit }} on GitHub"><code>{{ site.config.build_info.commit }}</code></a>
+          </span>
+        {% endif %}
+      </p>
     </div>
   </footer>
 
