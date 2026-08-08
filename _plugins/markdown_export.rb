@@ -62,9 +62,10 @@ module Jekyll
         output << ""
       end
 
-      timeline = site.data.dig('resume', 'timeline')
+      timeline = site.data.dig('resume', 'timeline', 'history') || site.data.dig('resume', 'timeline')
       if timeline
         output << "## Experience"
+        output << ""
         timeline.each do |position_id|
           position = site.data.dig('resume', 'positions', position_id)
           next unless position
@@ -77,8 +78,23 @@ module Jekyll
           output << "### #{title} at #{company}"
           output << "**#{start_date} — #{end_date}**"
           output << ""
-          output << position['description'] if position['description']
+          summary = position['summary'] || position['description']
+          output << summary if summary
           output << ""
+
+          if position['highlights'] && !position['highlights'].empty?
+            output << "**Key Outcomes:**"
+            position['highlights'].each do |h|
+              text = h.is_a?(Hash) ? h['text'] : h
+              output << "- #{text}" if text
+            end
+            output << ""
+          end
+
+          if position['skills'] && !position['skills'].empty?
+            output << "**Skills:** #{position['skills'].join(', ')}"
+            output << ""
+          end
         end
       end
 

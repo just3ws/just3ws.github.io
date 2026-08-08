@@ -43,17 +43,26 @@
     "@type": "Person",
     "@id": "{{ site_url }}/id/person/mike-hall",
     "name": {{ profile.name | default: "Mike Hall" | jsonify }},
+    "givenName": "Mike",
+    "familyName": "Hall",
+    "alternateName": "just3ws",
     "jobTitle": {{ profile.title | default: "Staff Software Engineer" | jsonify }},
     "description": {{ summary.text | strip | jsonify }},
     "url": "{{ site_url }}/",
+    "email": "mailto:{{ profile.contact.email }}",
     "sameAs": [
       {{ profile.contact.linkedin.url | jsonify }},
       {{ profile.contact.github.url | jsonify }}
     ],
+    "knowsAbout": [
+      "Ruby", "Ruby on Rails", "PostgreSQL", "Redis", "SQL", "JavaScript", "C#", "Java",
+      "Clojure", "Linux", "AWS", "OpenTelemetry", "CI/CD", "Platform Modernization",
+      "Incident Leadership", "Observability", "System Resilience"
+    ],
     "subjectOf": {
       "@type": "ItemList",
       "itemListElement": [
-        {% for item in site.data.resume.timeline.items %}
+        {% for item in site.data.resume.timeline.history %}
           {% assign position = site.data.resume.positions[item] %}
           {% if position %}
             {
@@ -70,7 +79,7 @@
       ]
     },
     "hasOccupation": [
-      {% for item in site.data.resume.timeline.items %}
+      {% for item in site.data.resume.timeline.history %}
         {% assign position = site.data.resume.positions[item] %}
         {% if position %}
           {
