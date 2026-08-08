@@ -134,17 +134,23 @@ module Validators
     params do
       required(:id).filled(:string)
       required(:title).filled(:string)
+      optional(:type).maybe(:string)
       required(:company).hash do
         required(:name).filled(:string)
         optional(:location).maybe(:string)
       end
       required(:start_date).filled
+      optional(:start_day).maybe(:integer)
       optional(:end_date).maybe(:string)
+      optional(:end_day).maybe(:integer)
       required(:summary).filled(:string)
       optional(:context).maybe(:string)
       optional(:action).maybe(:string)
       optional(:impact).maybe(:string)
       required(:highlights).value(:array)
+      optional(:skills).array(:string)
+      optional(:related_interviews).array(:string)
+      optional(:related_topics).array(:string)
     end
 
     rule(:highlights).each do
