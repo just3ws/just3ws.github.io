@@ -1,6 +1,14 @@
 # Mike Hall
 
-Personal resume site at [just3ws.com](https://www.just3ws.com)
+## Quick Command Reference
+
+| Action | Command | Description |
+| :--- | :--- | :--- |
+| **Local Dev Server** | `./bin/server` | Clean build + serve at `http://127.0.0.1:4000/` with live-reload |
+| **Simple Site Build** | `bundle exec jekyll build` | Compile Jekyll static site to `_site/` |
+| **Full Build Pipeline** | `./bin/pipeline build` | Regenerate data pages + compile Jekyll site |
+| **Run Full CI** | `./bin/pipeline ci` | Full build, unit tests, and validation checks |
+| **Run Smoke Tests** | `./bin/pipeline smoke` | Browser-based Playwright end-to-end smoke checks |
 
 ## Resume Formats
 

@@ -19,20 +19,21 @@ bundle install
 npm install
 ```
 
-### 2. Local Development
-```bash
-# Run local Jekyll server
-./bin/server
-```
+### 2. Primary Commands
+
+| Action | Command | Description |
+| :--- | :--- | :--- |
+| **Start Local Server** | `./bin/server` | Launches local Jekyll server on `http://127.0.0.1:4000/` |
+| **Simple Build** | `bundle exec jekyll build` | Fast static site build |
+| **Pipeline Build** | `./bin/pipeline build` | Runs data generators + site compilation |
+| **Run CI Checks** | `./bin/pipeline ci` | Runs build, unit tests, and all validator scripts |
+| **Smoke Tests** | `./bin/pipeline smoke` | Runs Playwright browser smoke checks |
 
 ### 3. Build & Validate
 Before submitting changes, ensure the full pipeline passes:
 ```bash
 # Run build, unit tests, and validation
 ./bin/pipeline ci
-
-# Run browser smoke checks
-./bin/pipeline smoke
 ```
 
 ## Pull Request Expectations

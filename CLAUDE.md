@@ -71,7 +71,9 @@ company:
 title: Job Title
 type: Full-time | Contract
 start_date: Month YYYY
+# start_day: DD (optional, for applications/records)
 end_date: Month YYYY
+# end_day: DD (optional, for applications/records)
 context: >-
   Business context for the role (reference only, not displayed)
 scope:

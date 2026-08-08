@@ -33,7 +33,15 @@
                 {% assign is_active = true %}
               {% endif %}
             {% else %}
-              {% if current_url == href or current_url contains href %}
+              {% if current_url == href %}
+                {% assign is_active = true %}
+              {% elsif item.children %}
+                {% for child in item.children %}
+                  {% if current_url == child.href %}
+                    {% assign is_active = true %}
+                  {% endif %}
+                {% endfor %}
+              {% elsif current_url contains href and href != "/" %}
                 {% assign is_active = true %}
               {% endif %}
             {% endif %}
@@ -99,6 +107,51 @@
         updateIcon();
       });
     }
+
+    // Accessible Touch & Click Toggle for Navigation Dropdowns
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach(function(dropdown) {
+      const caret = dropdown.querySelector('.dropdown-caret');
+      if (!caret) return;
+
+      caret.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        
+        dropdowns.forEach(d => {
+          d.classList.remove('is-open');
+          const t = d.querySelector('.nav-dropdown-toggle');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isExpanded) {
+          dropdown.classList.add('is-open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        dropdowns.forEach(d => {
+          d.classList.remove('is-open');
+          const t = d.querySelector('.nav-dropdown-toggle');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        dropdowns.forEach(d => {
+          d.classList.remove('is-open');
+          const t = d.querySelector('.nav-dropdown-toggle');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
   });
 })();
 </script>
