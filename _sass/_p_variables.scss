@@ -37,6 +37,27 @@ $font-family-mono: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
 $font-size-base: 18px; /* Bumped from 16px */
 $line-height-base: 1.7; /* Increased for breathing room */
 
+/* CSS Custom Properties Token Bridge */
+:root {
+  --color-text: #2e3440;
+  --color-muted: #434c5e;
+  --color-meta: #4c566a;
+  --color-border: #d8dee9;
+  --color-surface: #eceff4;
+  --color-surface-2: #e5e9f0;
+  --color-primary: #139c96;
+  --color-primary-hover: #81a1c1;
+  --color-accent: #0284c7;
+
+  --header-height: 4.5rem;
+  --container-max-width: 56.25rem; /* 900px */
+  --transition-speed: 0.2s;
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
+  --shadow-sm: 0 4px 12px rgba(46, 52, 64, 0.03);
+  --shadow-md: 0 12px 32px rgba(46, 52, 64, 0.08);
+}
+
 /* Spacing - Base-8 relative scale (based on 18px root) */
 $space-1: 0.44rem;  /* ~8px */
 $space-2: 0.88rem;  /* ~16px */
