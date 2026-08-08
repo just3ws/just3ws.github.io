@@ -57,7 +57,7 @@ These tasks are derived from recent architectural reviews to improve system main
 | Task ID | Title | Status | Priority |
 | :--- | :--- | :--- | :--- |
 | [task-001](backlog/tasks/task-001-modernize-build-pipeline.md) | Move build to GHA & ignore `_site` | To Do | High |
-| [task-002](backlog/tasks/task-002-consolidate-scripts.md) | Consolidate scripts into Rakefile/CLI | To Do | High |
+| [task-002](backlog/completed/task-002-consolidate-scripts.md) | Consolidate scripts into Rakefile/CLI | Done | High |
 | [task-003](backlog/tasks/task-003-upgrade-jekyll-4.md) | Upgrade to Jekyll 4.x | To Do | Medium |
 | [task-004](backlog/tasks/task-004-jekyll-generators.md) | Implement Jekyll Generator Plugins | To Do | High |
 | [task-005](backlog/tasks/task-005-template-logic-separation.md) | Separate templates from generator logic | To Do | Medium |
