@@ -55,6 +55,13 @@
         {% endif %}
       </div>
     {% endif %}
+    {% if interview.tags and interview.tags.size > 0 %}
+      <div class="card-tags-row" style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin: 0.4rem 0;">
+        {% for tag in interview.tags limit: 4 %}
+          <span class="card-tag-pill" style="font-size: 0.72rem; font-weight: 700; background: #f1f5f9; color: #475569; padding: 0.15rem 0.45rem; border-radius: 4px;">#{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
     <div class="editorial-card-actions">
       <a class="editorial-card-button" href="{{ primary_url }}">Read & Watch</a>
     </div>
