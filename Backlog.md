@@ -59,13 +59,13 @@ These tasks are derived from recent architectural reviews to improve system main
 | [task-001](backlog/tasks/task-001-modernize-build-pipeline.md) | Move build to GHA & ignore `_site` | To Do | High |
 | [task-002](backlog/completed/task-002-consolidate-scripts.md) | Consolidate scripts into Rakefile/CLI | Done | High |
 | [task-003](backlog/tasks/task-003-upgrade-jekyll-4.md) | Upgrade to Jekyll 4.x | To Do | Medium |
-| [task-004](backlog/tasks/task-004-jekyll-generators.md) | Implement Jekyll Generator Plugins | To Do | High |
+| [task-004](backlog/completed/task-004-jekyll-generators.md) | Implement Jekyll Generator Plugins | Done | High |
 | [task-005](backlog/tasks/task-005-template-logic-separation.md) | Separate templates from generator logic | To Do | Medium |
-| [task-006](backlog/tasks/task-006-declarative-validation.md) | Implement declarative data validation | To Do | Medium |
+| [task-006](backlog/completed/task-006-declarative-validation.md) | Implement declarative data validation | Done | Medium |
 | [task-007](backlog/tasks/task-007-scss-migration.md) | Convert CSS to SCSS/SASS | To Do | Medium |
 | [task-008](backlog/tasks/task-008-generator-unit-tests.md) | Add unit tests for generators | To Do | High |
 | [task-009](backlog/tasks/task-009-transcript-pipeline-consolidation.md) | Consolidate Transcript Pipeline | To Do | Medium |
-| [task-010](backlog/tasks/task-010-image-optimization.md) | Implement Image Optimization | To Do | Low |
+| [task-010](backlog/completed/task-010-image-optimization.md) | Implement Image Optimization | Done | Low |
 | [task-011](backlog/completed/task-011-repair-broken-transcript-igor-polevoy.md) | Repair Broken Transcript (Igor Polevoy) | Done | High |
 | [task-021](backlog/completed/task-021-repair-broken-transcript-chet-and-ron.md) | Repair Broken Transcript (Chet & Ron) | Done | High |
 | [task-022](backlog/tasks/task-022%20-%20Repair-Broken-Transcript-%E2%80%94-Ethan-Gunderson-Ryan-Briones-gathers-us.md) | Repair Broken Transcript (Ethan & Ryan) | To Do | High |
