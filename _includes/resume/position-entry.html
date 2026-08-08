@@ -43,4 +43,21 @@
   {%- if include.position.skills %}
   <p><strong>Skills:</strong> {{ include.position.skills | join: ", " }}</p>
   {%- endif %}
+
+  {%- if include.position.related_interviews %}
+  <div class="position-related-archive no-print" style="margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(0, 123, 255, 0.04); border-left: 3px solid #0284c7; border-radius: 4px;">
+    <p style="margin: 0; font-size: 0.85rem; font-weight: 700; color: #0284c7;">🎙️ Related Technical Conversations & Community Artifacts:</p>
+    <ul style="margin: 0.35rem 0 0 1.25rem; font-size: 0.85rem; padding: 0;">
+      {%- for interview_id in include.position.related_interviews %}
+        {%- assign interview_match = site.data.interviews.items | where: "id", interview_id | first %}
+        {%- if interview_match %}
+        <li>
+          <a href="/interviews/{{ interview_match.id }}/" style="font-weight: 600;">{{ interview_match.title }}</a>
+          {% if interview_match.interviewees %}<span style="color: #64748b;"> (feat. {{ interview_match.interviewees | join: ", " }})</span>{% endif %}
+        </li>
+        {%- endif %}
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
 </article>

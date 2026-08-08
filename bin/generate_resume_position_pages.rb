@@ -55,13 +55,17 @@ history.uniq.each do |position_id|
     f.puts '  <span class="resume-actions-label">Position View</span>'
     f.puts '  <a href="/resume.html">Executive Resume</a>'
     f.puts '  <a href="/history/">Complete Career Timeline</a>'
+    f.puts '  <a href="/exports/">Exports & Downloads</a>'
     f.puts "</nav>"
     f.puts
-    f.puts "<article>"
+    f.puts '<article class="page position-detail-page">'
     f.puts "  {% include breadcrumbs.html %}"
     f.puts "  {% include resume/profile-header.html %}"
     f.puts '  <section id="experience">'
-    f.puts "    <h2>Experience</h2>"
+    f.puts '    <div class="position-section-header" style="margin-bottom: 1.5rem;">'
+    f.puts "      <h2>Role & Career Context</h2>"
+    f.puts '      <p class="subtitle" style="color: #64748b; font-size: 0.95rem;">Detailed experience breakdown, architectural achievements, and related archival artifacts.</p>'
+    f.puts '    </div>'
     f.puts "    {% assign position = site.data.resume.positions[#{position_id.to_json}] %}"
     f.puts "    {% if position %}"
     f.puts "    {% include resume/position-entry.html position=position position_id=#{position_id.to_json} link_title=false %}"
