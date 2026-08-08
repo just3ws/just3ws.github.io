@@ -46,7 +46,7 @@ These tasks are derived from the 2026-04-07 System Transformation Plan to harden
 | :--- | :--- | :--- | :--- |
 | [T-1000](backlog/completed/t-1000-consolidate-json-ld.md) | Consolidate JSON-LD Templating | Done | High |
 | [T-1010](backlog/completed/t-1010-normalize-resume-yaml.md) | Normalize Resume YAML Schema | Done | High |
-| [T-1020](backlog/tasks/t-1020-signal-grouping-engine.md) | Implement Signal Grouping Engine | To Do | Medium |
+| [T-1020](backlog/completed/t-1020-signal-grouping-engine.md) | Implement Signal Grouping Engine | Done | Medium |
 | [T-1030](backlog/completed/t-1030-export-parity.md) | Enforce Export Parity (JSON/TXT/HTML) | Done | High |
 | [T-1040](backlog/tasks/t-1040-css-token-audit.md) | Clean up and Audit CSS Tokens | To Do | Low |
 
