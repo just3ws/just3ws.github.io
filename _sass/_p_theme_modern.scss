@@ -21,6 +21,22 @@ body {
   color: $nord0;
 }
 
+/* Progressive Loading & Weighted Entrance Animations */
+@keyframes heroWeightEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page, article, .editorial-card, .speaker-profile-card, .position {
+  animation: heroWeightEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .header-container, .main-container, .footer-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
