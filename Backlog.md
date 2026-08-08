@@ -63,7 +63,7 @@ These tasks are derived from recent architectural reviews to improve system main
 | [task-005](backlog/tasks/task-005-template-logic-separation.md) | Separate templates from generator logic | To Do | Medium |
 | [task-006](backlog/completed/task-006-declarative-validation.md) | Implement declarative data validation | Done | Medium |
 | [task-007](backlog/tasks/task-007-scss-migration.md) | Convert CSS to SCSS/SASS | To Do | Medium |
-| [task-008](backlog/tasks/task-008-generator-unit-tests.md) | Add unit tests for generators | To Do | High |
+| [task-008](backlog/completed/task-008-generator-unit-tests.md) | Add unit tests for generators | Done | High |
 | [task-009](backlog/tasks/task-009-transcript-pipeline-consolidation.md) | Consolidate Transcript Pipeline | To Do | Medium |
 | [task-010](backlog/completed/task-010-image-optimization.md) | Implement Image Optimization | Done | Low |
 | [task-011](backlog/completed/task-011-repair-broken-transcript-igor-polevoy.md) | Repair Broken Transcript (Igor Polevoy) | Done | High |
