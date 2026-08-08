@@ -26,6 +26,18 @@ Individual Architectural Decision Records (ADRs) are stored in `backlog/decision
 
 ---
 
+## Active Backlog (Site Enhancement & Career Alignment DAG)
+
+| Task ID | Title | Status | Priority |
+| :--- | :--- | :--- | :--- |
+| [T-DAG-1](backlog/completed/t-dag-1-career-archive-cross-linking.md) | Canonical Career-to-Archive Cross-Linking Model | Done | High |
+| [T-DAG-2](backlog/completed/t-dag-2-position-page-generator.md) | Position Detail Page Generator & Metadata Enhancement | Done | High |
+| [T-DAG-3](backlog/completed/t-dag-3-speaker-directory-enrichment.md) | Speaker Directory & Voice Matrix Annotations | Done | High |
+| [T-DAG-4](backlog/completed/t-dag-4-active-state-layout-audit.md) | Contextual Active State & Uniform Layout Audit | Done | High |
+| [T-DAG-5](backlog/tasks/t-dag-5-topic-architectural-theme-filters.md) | Topic & Architectural Theme Surface Filters | To Do | High |
+| [T-DAG-6](backlog/tasks/t-dag-6-multiformat-export-alignment.md) | Multi-Format Export Package Alignment (/exports/) | To Do | High |
+| [T-DAG-7](backlog/tasks/t-dag-7-ci-playwright-validation-suite.md) | Automated CI & Playwright Validation Suite | To Do | Medium |
+
 ## Active Backlog (System Transformation - Phase 2)
 
 These tasks are derived from the 2026-04-07 System Transformation Plan to harden the site into a senior technical leadership platform.
