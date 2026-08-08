@@ -158,8 +158,28 @@ assert_resume_structured_data() {
   }" >/dev/null
 }
 
+assert_exports_package() {
+  run_pwcli goto "${BASE_URL}/exports/" >/dev/null
+  run_pwcli eval "() => {
+    const text = document.body.textContent || '';
+    if (!text.includes('Document Exports')) throw new Error('exports page missing title');
+    return true;
+  }" >/dev/null
+}
+
+assert_dropdown_navigation() {
+  run_pwcli goto "${BASE_URL}/" >/dev/null
+  run_pwcli eval "() => {
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    if (dropdowns.length === 0) throw new Error('missing .nav-dropdown elements');
+    return true;
+  }" >/dev/null
+}
+
 assert_root_seo
 assert_home_seo
+assert_exports_package
+assert_dropdown_navigation
 assert_semantic_a11y_contract "/"
 assert_semantic_a11y_contract "/home/"
 assert_resume_structured_data
