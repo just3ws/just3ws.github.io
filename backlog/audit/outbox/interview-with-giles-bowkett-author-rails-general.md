@@ -40,19 +40,18 @@
 
 ### INTERVIEW METADATA
 ---
-id: interview-with-hadi-hariri-general
-title: 'Developer Community And Conference Conversations: Mike Hall Interviews Hadi
-  Hariri'
+id: interview-with-giles-bowkett-author-rails-general
+title: 'Ruby And Rails Practice: Mike Hall Interviews Giles Bowkett'
 interviewees:
-- Hadi Hariri
+- Giles Bowkett
 interviewer: Mike Hall
-topic: developer community and conference conversations
+topic: ruby and rails practice
 conference:
 conference_year:
 community: General
-recorded_date: '2022-01-07'
+recorded_date: '2022-03-10'
 tags: []
-video_asset_id: interview-with-hadi-hariri-general
+video_asset_id: interview-with-giles-bowkett-author-rails-general
 
 ### RAW TRANSCRIPT
 

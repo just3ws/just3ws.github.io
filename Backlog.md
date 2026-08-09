@@ -86,11 +86,11 @@ This milestone tracks the canonical review and optimization of all 197 interview
 | [task-029](backlog/completed/task-029-canonical-review-andrea-magnorsky.md) | Canonical Review (Andrea Magnorsky) | Done | Medium |
 | [task-030](backlog/completed/task-030-canonical-review-angelique-martin.md) | Canonical Review (Angelique Martin) | Done | Medium |
 | [task-050](backlog/completed/task-050-canonical-review-jen-myers.md) | Canonical Review (Jen Myers) | Done | Medium |
-| [task-051](backlog/tasks/task-051%20-%20Canonical-Review-%E2%80%94-Interview-with-James-Edward-Gray-II-interview-with-james-edward-gray-ii-general.md) | Canonical Review (James Edward Gray II) | To Do | Medium |
-| [task-052](backlog/tasks/task-052%20-%20Canonical-Review-%E2%80%94-Interview-with-Ken-Auer-interview-with-ken-auer-general.md) | Canonical Review (Ken Auer) | To Do | Medium |
-| [task-053](backlog/tasks/task-053%20-%20Canonical-Review-%E2%80%94-Interview-with-Giles-Bowkett-author-Rails-interview-with-giles-bowkett-author-rails-general.md) | Canonical Review (Giles Bowkett author "Rails) | To Do | Medium |
-| [task-054](backlog/tasks/task-054%20-%20Canonical-Review-%E2%80%94-Interview-with-Hadi-Hariri-interview-with-hadi-hariri-general.md) | Canonical Review (Hadi Hariri) | To Do | Medium |
-| [task-055](backlog/tasks/task-055%20-%20Canonical-Review-%E2%80%94-Interview-with-Chris-Whitaker-interview-with-chris-whitaker-general.md) | Canonical Review (Chris Whitaker) | To Do | Medium |
+| [task-051](backlog/completed/task-051-canonical-review-james-edward-gray-ii.md) | Canonical Review (James Edward Gray II) | Done | Medium |
+| [task-052](backlog/completed/task-052-canonical-review-ken-auer.md) | Canonical Review (Ken Auer) | Done | Medium |
+| [task-053](backlog/completed/task-053-canonical-review-giles-bowkett.md) | Canonical Review (Giles Bowkett author "Rails) | Done | Medium |
+| [task-054](backlog/completed/task-054-canonical-review-hadi-hariri.md) | Canonical Review (Hadi Hariri) | Done | Medium |
+| [task-055](backlog/completed/task-055-canonical-review-chris-whitaker.md) | Canonical Review (Chris Whitaker) | Done | Medium |
 | [task-056](backlog/completed/task-056-canonical-review-katrina-owen.md) | Canonical Review (Katrina Owen) | Done | Medium |
 | [task-057](backlog/tasks/task-057%20-%20Canonical-Review-%E2%80%94-Interview-with-Matt-Ruby-creator-of-Vooza-interview-with-matt-ruby-creator-of-vooza-general.md) | Canonical Review (Matt Ruby creator of Vooza) | To Do | Medium |
 | [task-058](backlog/tasks/task-058%20-%20Canonical-Review-%E2%80%94-Interview-with-Kresten-Thorup-interview-with-kresten-thorup-general.md) | Canonical Review (Kresten Thorup) | To Do | Medium |

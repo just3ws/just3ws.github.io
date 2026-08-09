@@ -41,7 +41,8 @@
 ### INTERVIEW METADATA
 ---
 id: interview-with-james-edward-gray-ii-general
-title: Interview with James Edward Gray II
+title: 'Developer Community And Conference Conversations: Mike Hall Interviews James
+  Edward Gray II'
 interviewees:
 - James Edward Gray II
 interviewer: Mike Hall
