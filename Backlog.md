@@ -92,10 +92,10 @@ This milestone tracks the canonical review and optimization of all 197 interview
 | [task-054](backlog/completed/task-054-canonical-review-hadi-hariri.md) | Canonical Review (Hadi Hariri) | Done | Medium |
 | [task-055](backlog/completed/task-055-canonical-review-chris-whitaker.md) | Canonical Review (Chris Whitaker) | Done | Medium |
 | [task-056](backlog/completed/task-056-canonical-review-katrina-owen.md) | Canonical Review (Katrina Owen) | Done | Medium |
-| [task-057](backlog/tasks/task-057%20-%20Canonical-Review-%E2%80%94-Interview-with-Matt-Ruby-creator-of-Vooza-interview-with-matt-ruby-creator-of-vooza-general.md) | Canonical Review (Matt Ruby creator of Vooza) | To Do | Medium |
-| [task-058](backlog/tasks/task-058%20-%20Canonical-Review-%E2%80%94-Interview-with-Kresten-Thorup-interview-with-kresten-thorup-general.md) | Canonical Review (Kresten Thorup) | To Do | Medium |
-| [task-059](backlog/tasks/task-059%20-%20Canonical-Review-%E2%80%94-Interview-with-Mandi-Walls-interview-with-mandi-walls-general.md) | Canonical Review (Mandi Walls) | To Do | Medium |
-| [task-060](backlog/tasks/task-060%20-%20Canonical-Review-%E2%80%94-Interview-with-Dean-Wampler-interview-with-dean-wampler-general.md) | Canonical Review (Dean Wampler) | To Do | Medium |
+| [task-057](backlog/completed/task-057-canonical-review-matt-ruby.md) | Canonical Review (Matt Ruby creator of Vooza) | Done | Medium |
+| [task-058](backlog/completed/task-058-canonical-review-kresten-thorup.md) | Canonical Review (Kresten Thorup) | Done | Medium |
+| [task-059](backlog/completed/task-059-canonical-review-mandi-walls.md) | Canonical Review (Mandi Walls) | Done | Medium |
+| [task-060](backlog/completed/task-060-canonical-review-dean-wampler.md) | Canonical Review (Dean Wampler) | Done | Medium |
 | [task-028](backlog/completed/task-028-canonical-review-arthur-kay.md) | Canonical Review (Arthur Kay) | Done | Medium |
 | [task-101](backlog/completed/task-101-canonical-review-angelique-martin-duplicate.md) | Canonical Review (Angelique Martin - Duplicate) | Done | Medium |
 | [task-102](backlog/completed/task-102-canonical-review-dickinson-beehler.md) | Canonical Review (Dickinson & Beehler) | Done | Medium |

@@ -40,19 +40,18 @@
 
 ### INTERVIEW METADATA
 ---
-id: interview-with-mandi-walls-general
-title: 'Developer Community And Conference Conversations: Mike Hall Interviews Mandi
-  Walls'
+id: interview-with-matt-ruby-creator-of-vooza-general
+title: 'Ruby And Rails Practice: Mike Hall Interviews Matt Ruby'
 interviewees:
-- Mandi Walls
+- Matt Ruby
 interviewer: Mike Hall
-topic: developer community and conference conversations
+topic: ruby and rails practice
 conference:
 conference_year:
 community: General
-recorded_date: '2022-01-07'
+recorded_date: '2022-03-10'
 tags: []
-video_asset_id: interview-with-mandi-walls-general
+video_asset_id: interview-with-matt-ruby-creator-of-vooza-general
 
 ### RAW TRANSCRIPT
 
