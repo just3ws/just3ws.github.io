@@ -15,10 +15,8 @@ module Jekyll
     }.freeze
 
     def generate(site)
-      site.pages.each do |page|
-        config = EXPORT_CONFIG[page.url]
-        next unless config
-
+      EXPORT_CONFIG.each do |url, config|
+        page = site.pages.find { |p| p.url == url }
         markdown_content = render_markdown(page, site, config[:data_key])
         write_markdown(site, config[:file], markdown_content)
       end
