@@ -1,6 +1,12 @@
 <article class="position position-ats">
   <header class="position-header">
-    <h3 class="position-title">{{ include.position.title }}</h3>
+    <h3 class="position-title">
+      {%- if include.position.id %}
+      <a href="/resume/positions/{{ include.position.id }}/" style="color: inherit; text-decoration: none;">{{ include.position.title }}</a>
+      {%- else %}
+      {{ include.position.title }}
+      {%- endif %}
+    </h3>
     <p class="position-meta">
       <span class="position-company">{{ include.position.company.name }}</span>
       {%- if include.position.company.location %} | <span>{{ include.position.company.location }}</span>{%- endif %}
