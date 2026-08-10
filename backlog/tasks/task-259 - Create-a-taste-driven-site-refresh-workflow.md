@@ -1,9 +1,11 @@
 ---
 id: TASK-259
 title: Create a taste-driven site refresh workflow
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - Codex
 created_date: '2026-08-10 15:27'
+updated_date: '2026-08-10 15:27'
 labels:
   - agent-skills
 dependencies: []
