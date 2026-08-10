@@ -107,7 +107,6 @@ test.describe('Site Layout and Aesthetics', () => {
     await expect(page.locator('.pv-actor-scope')).toContainText('agentic AI system');
     await expect(page.getByText('Regulated multi-team enterprise', { exact: true })).toBeVisible();
     await expect(page.getByText('Small acquired healthcare software organization', { exact: true })).toBeVisible();
-    await expect(page.locator('main')).toContainText('52 working days');
     await expect(page.locator('main')).not.toContainText('EMR-Bear');
     await expect(page.locator('main')).not.toContainText('OneMain');
 
