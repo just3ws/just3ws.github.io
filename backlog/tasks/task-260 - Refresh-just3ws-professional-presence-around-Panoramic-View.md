@@ -1,11 +1,11 @@
 ---
 id: TASK-260
 title: Refresh just3ws professional presence around Panoramic View
-status: Done
+status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 18:29'
+updated_date: '2026-08-10 19:06'
 labels:
   - site-refresh
   - career-positioning
@@ -98,6 +98,8 @@ Follow-up refinement in progress: make Panoramic View explicitly actor-agnostic,
 Follow-up refinement complete: Panoramic View now explicitly covers human and agentic actors, makes the implemented domain model visible between stakeholder understanding and runtime evidence, and frames the resulting delta as the method's decision surface. Rails platforms are named as the flagship proving ground while applicability remains cross-interface and cross-system.
 
 Revalidation passed: eight Playwright tests; 1,038-page Jekyll build with zero accessibility-hook warnings; full repository validation; HTML-Proofer over 1,018 files and 832 internal links; clean public-safety scan. No commit, push, or deployment was performed.
+
+Follow-up `TASK-260.05` corrects the previously untouched taxonomy palette and stale localhost publication. Source, tests, and webroot publish are complete; final localhost verification waits on the user-run privileged nginx kickstart.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
