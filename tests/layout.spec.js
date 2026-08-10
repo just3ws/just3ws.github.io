@@ -105,8 +105,8 @@ test.describe('Site Layout and Aesthetics', () => {
     await expect(page.locator('.pv-premise')).toContainText('where is the delta?');
     await expect(page.locator('.pv-actor-scope')).toContainText('Rails platforms were the flagship proving ground.');
     await expect(page.locator('.pv-actor-scope')).toContainText('agentic AI system');
-    await expect(page.getByText('Regulated multi-team enterprise', { exact: true })).toBeVisible();
-    await expect(page.getByText('Small acquired healthcare software organization', { exact: true })).toBeVisible();
+    await expect(page.getByText('Legacy System Modernization', { exact: true })).toBeVisible();
+    await expect(page.getByText('Cross-System Integration & Cartography', { exact: true })).toBeVisible();
     await expect(page.locator('main')).not.toContainText('EMR-Bear');
     await expect(page.locator('main')).not.toContainText('OneMain');
 

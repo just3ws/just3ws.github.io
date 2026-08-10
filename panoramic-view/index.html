@@ -158,39 +158,20 @@ permalink: /panoramic-view/
     </div>
   </section>
 
-  <!-- SECTION 5: REAL-WORLD APPLICATION & CASE PROOF -->
+  <!-- SECTION 5: PRACTICE AREAS & LEADERSHIP APPLICATION -->
   <section class="pv-applications" aria-labelledby="applied-scale">
     <div class="pv-section-heading">
-      <p class="pv-kicker">Real-World Application</p>
-      <h2 id="applied-scale">Leadership Value in Action</h2>
-      <p>Anonymized proof of how system cartography stabilizes organizations, recovers knowledge, and guides leadership during critical transitions.</p>
+      <p class="pv-kicker">Practical Application</p>
+      <h2 id="applied-scale">Leadership Practice</h2>
+      <p>How system cartography brings clarity to complex architecture, engineering teams, and strategic transitions.</p>
     </div>
 
     <div class="pv-application-grid">
-      {% for application in pv.applications %}
-        <article class="pv-application" id="application-{{ application.id }}">
-          <p class="pv-card-label">Organization Archetype</p>
-          <h3>{{ application.scale }}</h3>
-          <dl>
-            <div>
-              <dt>Situation & Need</dt>
-              <dd>{{ application.situation }} {{ application.need }}</dd>
-            </div>
-            <div>
-              <dt>Key Questions Answered</dt>
-              <dd>
-                <ul>
-                  {% for question in application.questions %}
-                    <li>{{ question }}</li>
-                  {% endfor %}
-                </ul>
-              </dd>
-            </div>
-            <div>
-              <dt>Outcome & Impact</dt>
-              <dd>{{ application.evidence }}</dd>
-            </div>
-          </dl>
+      {% for practice in pv.practice_areas %}
+        <article class="pv-application">
+          <p class="pv-card-label">Practice Area</p>
+          <h3>{{ practice.title }}</h3>
+          <p>{{ practice.text }}</p>
         </article>
       {% endfor %}
     </div>
