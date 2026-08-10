@@ -1,11 +1,11 @@
 ---
 id: TASK-260.03
 title: Publish the Panoramic View methodology and case study
-status: In Progress
+status: Done
 assignee:
   - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 18:23'
+updated_date: '2026-08-10 18:29'
 labels:
   - site-refresh
   - panoramic-view
@@ -20,6 +20,8 @@ modified_files:
   - tests/layout.spec.js
   - docs/site-refresh/panoramic-view-positioning.md
   - .agents/product-marketing-context.md
+  - home/index.html
+  - _sass/_p_home_refresh.scss
 parent_task_id: TASK-260
 priority: high
 type: enhancement
@@ -63,6 +65,14 @@ Follow-up L1 micro-brief
 - Flagship context: complex Rails platform systems are the primary proving ground; traversal continues with equal fidelity beyond Rails through interfaces, services, integrations, infrastructure, data, and return paths.
 - Main risk: turning intended completeness into an absolute claim. Preserve provenance, contradictions, and unknowns; describe completeness relative to the defined decision scope and available evidence.
 - Authorized files: `_data/panoramic_view.yml`, `panoramic-view/index.html`, `_sass/_p_panoramic_view.scss`, `home/index.html`, `_sass/_p_home_refresh.scss`, `.agents/product-marketing-context.md`, `docs/site-refresh/panoramic-view-positioning.md`, and `tests/layout.spec.js`. Preserve routes, nav, metadata, case-study discretion, both themes, and no-motion behavior.
+
+Completed actor/domain-model refinement. Public copy now treats actor as any participant pursuing a goal through a screen, API, tool, event, or protocol—including humans, organizations, automated services, and agentic AI systems. It reconciles interested-party understanding, the implemented domain model, and observed runtime behavior, with completeness bounded to the defined decision scope and available evidence.
+
+Rails is identified as the flagship proving ground without becoming an applicability boundary: the traversal retains the same fidelity across adjacent interfaces, services, integrations, infrastructure, data, and the return path.
+
+Reviewer gate: desktop and 375px mobile renders preserve hierarchy and bounds; default/Kanagawa styling remains coherent; public-safety scan found no private paths, implementation employer names, coworker names, proprietary counts, or internal political narrative on public surfaces. No blocker, major, or minor findings.
+
+Verification: focused YAML structure assertions passed; eight Playwright layout/browser tests passed; Jekyll generated 1,038 pages with zero accessibility-hook warnings; full bundle exec rake validate passed, including JSON/TXT exports and HTML-Proofer over 1,018 files and 832 internal links. Existing generated-export collision warnings are unchanged.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
@@ -71,4 +81,6 @@ Follow-up L1 micro-brief
 Published a public-safe Panoramic View field guide with Mike's authorship and evidence boundaries, the horizontal journey and vertical browser-to-backend wave, the Simple Loop of Discovery, supporting concepts, tool distinctions, enterprise and small-organization scale lenses, a fully structured anonymized founder-transition case study, an accessible original diagram, explicit limitations, and future work. Added the newly supplied proof that enterprise documentation became independent institutional memory years after creation.
 
 Refined the public definition around business-to-system reconciliation and made its three governing questions explicit.
+
+Follow-up refinement makes the method explicitly actor-agnostic and gives it a concrete three-model reconciliation structure: interested-party understanding, implemented domain model, and observed runtime behavior. It identifies the delta among those views as the decision surface, qualifies completeness by scope and evidence, and names complex Rails platforms as the flagship proving ground while preserving broader applicability.
 <!-- SECTION:FINAL_SUMMARY:END -->
