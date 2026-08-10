@@ -4,10 +4,12 @@ title: Refresh the resume for hands-on Director of Engineering roles
 status: To Do
 assignee: []
 created_date: '2026-08-10 17:11'
+updated_date: '2026-08-10 17:12'
 labels:
   - site-refresh
   - panoramic-view
-dependencies: []
+dependencies:
+  - TASK-260.01
 parent_task_id: TASK-260
 priority: high
 type: enhancement
