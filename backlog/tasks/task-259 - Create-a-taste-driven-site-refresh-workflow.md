@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-10 15:27'
-updated_date: '2026-08-10 15:28'
+updated_date: '2026-08-10 15:32'
 labels:
   - agent-skills
 dependencies: []
@@ -52,4 +52,6 @@ Give maintainers a repo-native, repeatable way to audit and refresh just3ws.com 
 
 <!-- SECTION:NOTES:BEGIN -->
 L2 context brief: closest local analogs are skills/guild-chronicler-copywriter and the transcript skills, all using compact SKILL.md plus agents/openai.yaml. Site architecture is Jekyll/Liquid with SCSS modules, canonical navigation data, shared base/header includes, and Playwright layout smoke tests. Reuse existing Kanagawa/modern theme tokens and accessibility wins. Main risks are importing upstream React/Tailwind/GSAP assumptions, changing IA/SEO/copy while styling, and adding subjective rules without verifiable gates. New names follow existing lowercase-hyphen skill folders and the agents/openai.yaml interface pattern.
+
+Applied the new workflow to the current rendered baseline. Design read: personal portfolio and public-archive hub for hiring managers and technical peers, with a sober editorial/technical language that should preserve the Phalanx Duel focal treatment, direct voice, real historical assets, and Kanagawa theme lineage. Home dials read approximately VARIANCE 3 / MOTION 2 / DENSITY 5; a targeted evolution could move toward 5 / 3 / 4 without turning the archive into a marketing landing page. Evidence: desktop home has clear hierarchy and a strong Phalanx callout but falls back to a generic equal-card exploration grid with an orphaned third card; the 375px screenshot shows the primary nav extending beyond the viewport and clipping multiple links. Recommended first implementation slice is the shared mobile navigation containment/interaction, reviewed separately before home-page recomposition. Visual evidence: tmp/screenshots/home.png, tmp/screenshots/mobile-home.png, tmp/screenshots/resume.png.
 <!-- SECTION:NOTES:END -->
