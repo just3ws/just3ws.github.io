@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-10 18:34'
-updated_date: '2026-08-10 18:39'
+updated_date: '2026-08-10 19:06'
 labels:
   - site-refresh
   - taxonomy
@@ -16,6 +16,13 @@ references:
 documentation:
   - CONTEXT.md
   - docs/adr/0001-public-archive-publication-contract.md
+modified_files:
+  - taxonomy/index.html
+  - _sass/_p_taxonomy.scss
+  - _sass/_p_theme_kanagawa.scss
+  - assets/css/site.scss
+  - _includes/head/base.html
+  - tests/layout.spec.js
 parent_task_id: TASK-260
 priority: high
 type: bug
@@ -56,4 +63,14 @@ Bring the public `/taxonomy/` knowledge-graph page into the refreshed just3ws vi
 L1 context-hunter micro-brief: closest analogs are `_sass/_p_home_refresh.scss` and `_sass/_p_panoramic_view.scss`, which scope page tokens locally and defer Kanagawa overrides to `_sass/_p_theme_kanagawa.scss`. The taxonomy page instead embeds a separate slate/blue/pink CSS block and repeats those colors in graph JavaScript. Main risks are the broad Kanagawa `!important` selectors, keeping categorical graph colors distinguishable, and preserving table/graph behavior while consolidating presentation.
 
 Diagnosis reproduced from the user URL: the default-theme taxonomy title renders dark on a dark hero, the graph/legend/badges use unrelated saturated colors, and the table is visually cramped. Separately, `https://just3ws.localhost/` serves an August 9 static build; `/home/` still contains `Architect & Creator`, so the completed refresh is not visible there.
+
+Correct hypothesis: taxonomy presentation was isolated in a page-local hard-coded CSS block, while graph node colors and generated badges repeated a second hard-coded palette in JavaScript. The default global heading color overrode the hero inheritance, producing dark text on a dark hero; broad Kanagawa `!important` rules created partial theme overrides.
+
+Implemented a scoped taxonomy visual system using the refreshed Nord and Kanagawa tokens; added accessible labeled controls and focus states; unified legend, graph, dynamic badges, inspector, metrics, and table; made graph colors update when `data-theme` changes; added responsive graph/table containment.
+
+Added a build-time version query to the shared stylesheet URL because nginx caches static CSS for seven days and the unversioned URL could make a freshly published build appear unchanged.
+
+Verification completed in source/build: the regression test first failed with title color rgb(46, 52, 64) instead of rgb(236, 239, 244), then passed after the fix. Ten Playwright layout tests pass, including both taxonomy themes, search/filter, focus, graph canvas, and 375px bounds. Jekyll builds 1,039 pages with zero accessibility-hook warnings. Full `bundle exec rake validate` and HTML-Proofer pass over 1,019 files and 832 internal links. Published endpoint was captured successfully after the first sync.
+
+Current external-state blocker: `/opt/homebrew/var/www/just3ws.github.io` contains the final validated build, but the system-domain nginx LaunchDaemon is loaded and not answering. `zsvc restart nginx` requires an interactive sudo password; non-sudo `launchctl kickstart` is denied. User must run `sudo launchctl kickstart -k system/homebrew.mxcl.nginx`, after which the endpoint can be reverified.
 <!-- SECTION:NOTES:END -->
