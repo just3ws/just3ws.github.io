@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 17:12'
+updated_date: '2026-08-10 17:13'
 labels:
   - site-refresh
   - career-positioning
@@ -14,12 +14,6 @@ dependencies: []
 references:
   - 'https://github.com/Leonxlnx/taste-skill'
 documentation:
-  - >-
-    /Users/mike/Desktop/outbox/panoramic-view-original-chatgpt-history-2026-08-10/START-HERE.md
-  - >-
-    /Users/mike/Desktop/outbox/panoramic-view-extraction-2026-08-10/START-HERE.md
-  - >-
-    /Users/mike/Desktop/outbox/emrbear-dev-manager-resume-material-2026-08-10/README.md
   - CONTEXT.md
   - docs/adr/0001-public-archive-publication-contract.md
 priority: high
@@ -50,4 +44,6 @@ Reframe just3ws.com for hiring managers, recruiters, and AI-assisted hiring eval
 
 <!-- SECTION:NOTES:BEGIN -->
 2026-08-10: Mike directed that proof-of-method examples default to organization archetype, scale, situation, need, and questions answered. Company names and internal labels should be used only when necessary and explicitly appropriate.
+
+Private source-package paths and implementation-organization names are intentionally omitted from public planning records. Evidence remains behind the Publication Gate.
 <!-- SECTION:NOTES:END -->
