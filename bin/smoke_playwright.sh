@@ -65,7 +65,7 @@ published_routes="$(ruby -rrexml/document -e '
   doc.elements.each("urlset/url/loc") do |loc|
     path = loc.text.to_s.sub(%r{\Ahttps?://[^/]+}, "")
     path = "/" if path.empty?
-    path = "#{path}/" unless path.end_with?("/")
+    path = "#{path}/" unless path.end_with?("/") || path.include?(".")
     routes << path
   end
   puts routes.uniq.sort
