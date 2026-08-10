@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-10 18:34'
-updated_date: '2026-08-10 19:39'
+updated_date: '2026-08-10 19:44'
 labels:
   - site-refresh
   - taxonomy
@@ -111,4 +111,8 @@ Verification completed in source/build: the regression test first failed with ti
 Current external-state blocker: `/opt/homebrew/var/www/just3ws.github.io` contains the final validated build, but the system-domain nginx LaunchDaemon is loaded and not answering. `zsvc restart nginx` requires an interactive sudo password; non-sudo `launchctl kickstart` is denied. User must run `sudo launchctl kickstart -k system/homebrew.mxcl.nginx`, after which the endpoint can be reverified.
 
 Direction evidence: the current published page is technically corrected but reads as a generic SaaS analytics dashboard—centered dark hero, four equal floating metrics, repeated rounded cards, extensive whitespace, and labels such as “Interactive Knowledge Graph Network” and “Taxonomy Entity Index.” Those choices obscure the archive's human and historical character. Closest useful analogs are the site's refreshed editorial/Panoramic View surfaces, but this page should avoid fake nostalgia: use real counts, restrained texture, and legible technical density. Main implementation risk is broad Kanagawa !important styling combined with graph/table interaction states.
+
+Implemented the approved targeted evolution for /taxonomy/: human-first archive copy, asymmetrical editorial hero, field-note framing, ruled human-scale ledger, secondary graph provenance counts, editorial graph/index headings, integrated inspector, register-style table, restrained paper texture, and matching Kanagawa dark treatment. No routes, data sources, graph algorithms, dependencies, or other pages were changed in this pass.
+
+Verification: Jekyll build succeeds across 1,039 pages with zero accessibility-hook warnings. Focused taxonomy Playwright checks pass; full tests/layout.spec.js passes 10/10. Evidence captured for default/Kanagawa desktop and 375px mobile, including layout bounds, focus, filtering, search, graph canvas, theme toggle, and table rendering. bundle exec rake validate passes data, resources, taxonomy, archive-surface, and last-modified checks, then stops on unrelated generated-resume freshness drift in OneMain/SK Holdings/Tandem caused by concurrent resume copy work; those out-of-scope files were preserved.
 <!-- SECTION:NOTES:END -->
