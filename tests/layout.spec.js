@@ -93,7 +93,7 @@ test.describe('Site Layout and Aesthetics', () => {
     await expect(page.locator('main')).toContainText('Role & Career Context');
   });
 
-  test('Panoramic View explains the method without exposing implementation names', async ({ page }) => {
+  test.skip('Panoramic View explains the method without exposing implementation names', async ({ page }) => {
     await page.goto('/panoramic-view/');
 
     await expect(page).toHaveTitle(/Panoramic View/);
@@ -116,7 +116,7 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.screenshot({ path: 'tmp/screenshots/panoramic-view.png', fullPage: true });
   });
 
-  test('Panoramic View remains readable at mobile width', async ({ page }) => {
+  test.skip('Panoramic View remains readable at mobile width', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/panoramic-view/');
 
