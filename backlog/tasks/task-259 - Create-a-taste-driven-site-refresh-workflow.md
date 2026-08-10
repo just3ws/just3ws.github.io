@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-10 15:27'
-updated_date: '2026-08-10 15:27'
+updated_date: '2026-08-10 15:28'
 labels:
   - agent-skills
 dependencies: []
@@ -38,3 +38,18 @@ Give maintainers a repo-native, repeatable way to audit and refresh just3ws.com 
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Distill the upstream project into a just3ws design contract: preserve its audit-first redesign mode, design-read statement, variance/motion/density dials, anti-repetition rules, and pre-flight checks; reject forced React/Tailwind/GSAP, randomization, placeholder imagery, universal dark-mode, and AIDA assumptions.
+2. Add three repo-local skill packages with agent interfaces: site-refresh-director (current-state audit and refresh brief), site-refresh-builder (bounded Jekyll/Liquid/SCSS implementation), and site-refresh-reviewer (independent visual, accessibility, SEO, and public-safety gate).
+3. Register the skills and their audit -> build -> review handoff contract in AGENTS.md, reusing CONTEXT.md, the publication ADR, the Guild Chronicler voice, existing token/theme files, and current Playwright/pipeline checks.
+4. Validate all skill packages, build the Jekyll site, run the focused layout smoke test where the environment permits, and record objective evidence.
+<!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+L2 context brief: closest local analogs are skills/guild-chronicler-copywriter and the transcript skills, all using compact SKILL.md plus agents/openai.yaml. Site architecture is Jekyll/Liquid with SCSS modules, canonical navigation data, shared base/header includes, and Playwright layout smoke tests. Reuse existing Kanagawa/modern theme tokens and accessibility wins. Main risks are importing upstream React/Tailwind/GSAP assumptions, changing IA/SEO/copy while styling, and adding subjective rules without verifiable gates. New names follow existing lowercase-hyphen skill folders and the agents/openai.yaml interface pattern.
+<!-- SECTION:NOTES:END -->
