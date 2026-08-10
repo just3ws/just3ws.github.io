@@ -16,7 +16,7 @@ unless File.file?(report_path)
   exit 1
 end
 
-report = JSON.parse(File.read(report_path))
+report = JSON.parse(File.read(report_path, encoding: 'UTF-8'))
 
 budgets = {
   'title_outliers' => ENV.fetch('SEO_MAX_TITLE_OUTLIERS', '16').to_i,

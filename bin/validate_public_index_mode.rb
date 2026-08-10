@@ -8,7 +8,7 @@ CANONICAL_HOST = 'https://www.just3ws.com'
 
 
 def read(path)
-  File.read(path)
+  File.read(path, encoding: 'UTF-8')
 end
 
 def robots_content(html)

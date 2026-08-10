@@ -6,7 +6,7 @@ SITE_DIR = File.join(ROOT, '_site')
 CANONICAL_PREFIX = 'https://www.just3ws.com'
 
 def read(path)
-  File.read(path)
+  File.read(path, encoding: 'UTF-8')
 end
 
 def noindex?(html)

@@ -6,7 +6,7 @@ require 'fileutils'
 module Jekyll
   class MarkdownExportGenerator < Generator
     safe true
-    priority :low
+    priority :highest
 
     EXPORT_CONFIG = {
       '/' => { file: 'resume', data_key: 'resume' },
@@ -18,6 +18,17 @@ module Jekyll
       EXPORT_CONFIG.each do |url, config|
         page = site.pages.find { |p| p.url == url }
         markdown_content = render_markdown(page, site, config[:data_key])
+
+        # Write to source directory
+        src_dir = File.join(site.source, "exports")
+        FileUtils.mkdir_p(src_dir)
+        src_file = File.join(src_dir, "#{config[:file]}.md")
+        File.write(src_file, markdown_content)
+
+        # Register StaticFile so Jekyll site.write phase writes/preserves it in destination
+        site.static_files << Jekyll::StaticFile.new(site, site.source, "exports", "#{config[:file]}.md")
+
+        # Write to site destination output directory
         write_markdown(site, config[:file], markdown_content)
       end
     end

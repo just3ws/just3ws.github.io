@@ -57,7 +57,7 @@ relative_posts.each do |relative|
     next
   end
 
-  html = File.read(output_path)
+  html = File.read(output_path, encoding: 'UTF-8')
   modified = extract_date_modified(html)
   if modified.nil? || modified.strip.empty?
     errors << "missing dateModified in #{output_path}"

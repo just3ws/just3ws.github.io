@@ -30,7 +30,7 @@ DISALLOWED_SCHEMA_MARKERS = [
 ].freeze
 
 def read(path)
-  File.read(path)
+  File.read(path, encoding: 'UTF-8')
 end
 
 def match_count(text, regex)

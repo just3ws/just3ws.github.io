@@ -40,7 +40,7 @@ Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if excluded_path?(relative)
 
-  html = File.read(path)
+  html = File.read(path, encoding: 'UTF-8')
   title = html[title_re, 1]&.strip
   desc = html[desc_re, 1]&.strip
   noindex = html.match?(noindex_re)

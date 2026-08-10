@@ -36,7 +36,7 @@ def docs_href_patterns(root)
   candidates.each do |path|
     next unless File.file?(path)
 
-    content = File.read(path)
+    content = File.read(path, encoding: 'UTF-8')
     content.scan(href_regex).flatten.each do |href|
       next unless href.start_with?("/backlog/docs/")
       next if href.start_with?("/backlog/docs/#")
