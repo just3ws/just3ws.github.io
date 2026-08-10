@@ -4,10 +4,13 @@ title: Refresh homepage navigation and visual system for hiring evaluation
 status: To Do
 assignee: []
 created_date: '2026-08-10 17:11'
+updated_date: '2026-08-10 17:12'
 labels:
   - site-refresh
   - panoramic-view
-dependencies: []
+dependencies:
+  - TASK-260.02
+  - TASK-260.03
 parent_task_id: TASK-260
 priority: high
 type: enhancement
