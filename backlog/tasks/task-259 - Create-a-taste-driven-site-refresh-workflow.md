@@ -1,11 +1,11 @@
 ---
 id: TASK-259
 title: Create a taste-driven site refresh workflow
-status: In Progress
+status: Done
 assignee:
   - Codex
 created_date: '2026-08-10 15:27'
-updated_date: '2026-08-10 15:32'
+updated_date: '2026-08-10 15:33'
 labels:
   - agent-skills
 dependencies: []
@@ -15,6 +15,17 @@ documentation:
   - CONTEXT.md
   - CODEX.md
   - docs/adr/0001-public-archive-publication-contract.md
+modified_files:
+  - AGENTS.md
+  - skills/site-refresh-director/SKILL.md
+  - skills/site-refresh-director/agents/openai.yaml
+  - skills/site-refresh-director/references/direction-contract.md
+  - skills/site-refresh-builder/SKILL.md
+  - skills/site-refresh-builder/agents/openai.yaml
+  - skills/site-refresh-builder/references/implementation-contract.md
+  - skills/site-refresh-reviewer/SKILL.md
+  - skills/site-refresh-reviewer/agents/openai.yaml
+  - skills/site-refresh-reviewer/references/review-gate.md
 priority: medium
 type: enhancement
 ---
@@ -27,16 +38,16 @@ Give maintainers a repo-native, repeatable way to audit and refresh just3ws.com 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 A repo-local skill can guide an agent from current-site audit through a bounded visual refresh and verification.
-- [ ] #2 Specialized agent interfaces cover visual direction, implementation, and independent quality review with clear handoff artifacts.
-- [ ] #3 The workflow encodes just3ws.com-specific design, content, accessibility, and public-safety constraints.
-- [ ] #4 The new capabilities are discoverable from the repository agent instructions.
-- [ ] #5 All new skill packages pass structural validation and the repository's relevant documentation and build checks pass.
+- [x] #1 A repo-local skill can guide an agent from current-site audit through a bounded visual refresh and verification.
+- [x] #2 Specialized agent interfaces cover visual direction, implementation, and independent quality review with clear handoff artifacts.
+- [x] #3 The workflow encodes just3ws.com-specific design, content, accessibility, and public-safety constraints.
+- [x] #4 The new capabilities are discoverable from the repository agent instructions.
+- [x] #5 All new skill packages pass structural validation and the repository's relevant documentation and build checks pass.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -55,3 +66,11 @@ L2 context brief: closest local analogs are skills/guild-chronicler-copywriter a
 
 Applied the new workflow to the current rendered baseline. Design read: personal portfolio and public-archive hub for hiring managers and technical peers, with a sober editorial/technical language that should preserve the Phalanx Duel focal treatment, direct voice, real historical assets, and Kanagawa theme lineage. Home dials read approximately VARIANCE 3 / MOTION 2 / DENSITY 5; a targeted evolution could move toward 5 / 3 / 4 without turning the archive into a marketing landing page. Evidence: desktop home has clear hierarchy and a strong Phalanx callout but falls back to a generic equal-card exploration grid with an orphaned third card; the 375px screenshot shows the primary nav extending beyond the viewport and clipping multiple links. Recommended first implementation slice is the shared mobile navigation containment/interaction, reviewed separately before home-page recomposition. Visual evidence: tmp/screenshots/home.png, tmp/screenshots/mobile-home.png, tmp/screenshots/resume.png.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added a three-role, repo-local site refresh workflow derived from Leonxlnx/taste-skill and narrowed to just3ws.com's Jekyll architecture and Public Archive contract. The director produces an evidence-backed Refresh Brief, the builder implements one authorized Jekyll/Liquid/SCSS slice, and the independent reviewer gates rendering, accessibility, SEO, analytics, theme parity, and public safety. Registered all three skills in AGENTS.md and added generated Codex agent interfaces plus focused reference contracts.
+
+Verification: skill-creator quick_validate passed for all three packages; agent interface YAML assertions passed; git diff whitespace check passed; bundle exec jekyll build completed across 1,031 pages with 0 accessibility markup warnings; npx playwright test tests/layout.spec.js passed 4/4. The build still reports the repository's existing generated export destination-collision warnings. Applying the new review workflow to current screenshots identified clipped mobile navigation as the recommended first follow-up slice; no production page styling or navigation behavior was changed in this task.
+<!-- SECTION:FINAL_SUMMARY:END -->
