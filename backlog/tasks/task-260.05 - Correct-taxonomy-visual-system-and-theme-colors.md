@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-10 18:34'
-updated_date: '2026-08-10 19:44'
+updated_date: '2026-08-10 19:48'
 labels:
   - site-refresh
   - taxonomy
@@ -91,6 +91,11 @@ Execution:
 4. Build and run focused tests; capture desktop and 375px screenshots in both themes.
 5. Run the repository validation suite.
 6. Submit the finished slice to the required independent site-refresh reviewer; address any changes requested and re-review before finalizing.
+
+Reviewer corrections before final gate:
+7. Remove aria-label overrides from the graph filter and index search so each accessible name exactly contains its visible label; update Playwright locators.
+8. Make the entity name itself the destination link, remove the redundant Action column, and fit the four-column ledger within the desktop content width while retaining internal scrolling on mobile; assert desktop table containment and visible links.
+9. Reset scroll position before the Kanagawa full-page capture, rerun build/browser checks, and return the same slice to the independent reviewer.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
@@ -115,4 +120,6 @@ Direction evidence: the current published page is technically corrected but read
 Implemented the approved targeted evolution for /taxonomy/: human-first archive copy, asymmetrical editorial hero, field-note framing, ruled human-scale ledger, secondary graph provenance counts, editorial graph/index headings, integrated inspector, register-style table, restrained paper texture, and matching Kanagawa dark treatment. No routes, data sources, graph algorithms, dependencies, or other pages were changed in this pass.
 
 Verification: Jekyll build succeeds across 1,039 pages with zero accessibility-hook warnings. Focused taxonomy Playwright checks pass; full tests/layout.spec.js passes 10/10. Evidence captured for default/Kanagawa desktop and 375px mobile, including layout bounds, focus, filtering, search, graph canvas, theme toggle, and table rendering. bundle exec rake validate passes data, resources, taxonomy, archive-surface, and last-modified checks, then stops on unrelated generated-resume freshness drift in OneMain/SK Holdings/Tandem caused by concurrent resume copy work; those out-of-scope files were preserved.
+
+Independent reviewer verdict: Changes requested. Major findings were WCAG 2.5.3 label-in-name mismatches on the two controls and desktop clipping that hid the Action column/entity links. Minor evidence issue: Kanagawa screenshot captured the sticky header over the graph. Corrections are added to the plan before implementation.
 <!-- SECTION:NOTES:END -->
