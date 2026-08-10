@@ -1,11 +1,11 @@
 ---
 id: TASK-260.03
 title: Publish the Panoramic View methodology and case study
-status: In Progress
+status: Done
 assignee:
   - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 17:30'
+updated_date: '2026-08-10 18:08'
 labels:
   - site-refresh
   - panoramic-view
@@ -16,7 +16,10 @@ modified_files:
   - panoramic-view/index.html
   - _sass/_p_panoramic_view.scss
   - assets/css/site.scss
+  - _data/repo_hygiene.yml
   - tests/layout.spec.js
+  - docs/site-refresh/panoramic-view-positioning.md
+  - .agents/product-marketing-context.md
 parent_task_id: TASK-260
 priority: high
 type: enhancement
@@ -30,16 +33,16 @@ Create public-facing material that explains Panoramic View as Mike Hall's origin
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 A methodology page defines Panoramic View clearly for non-specialists while retaining its technical depth and original metaphors.
-- [ ] #2 The page distinguishes the methodology from observability tools, architecture diagrams, customer-journey analytics, and static documentation.
-- [ ] #3 A sanitized case study follows problem, insight, method, tools, application, evidence, limitations, and future-work structure.
-- [ ] #4 A diagram or interactive artifact shows the left-to-right journey and top-to-bottom request-response wave without proprietary source material.
-- [ ] #5 Every material claim follows the approved public claim ledger and the pages pass relevant build, link, accessibility, and browser checks.
+- [x] #1 A methodology page defines Panoramic View clearly for non-specialists while retaining its technical depth and original metaphors.
+- [x] #2 The page distinguishes the methodology from observability tools, architecture diagrams, customer-journey analytics, and static documentation.
+- [x] #3 A sanitized case study follows problem, insight, method, tools, application, evidence, limitations, and future-work structure.
+- [x] #4 A diagram or interactive artifact shows the left-to-right journey and top-to-bottom request-response wave without proprietary source material.
+- [x] #5 Every material claim follows the approved public claim ledger and the pages pass relevant build, link, accessibility, and browser checks.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -66,4 +69,16 @@ Panoramic View Refresh Brief
 8. Scale lenses: one regulated multi-team enterprise and one small acquired healthcare software organization. Their value is comparative applicability, not named-client prestige.
 9. Responsive and accessibility: diagram has an explanatory caption and equivalent ordered text; all grids collapse to one column; no content overflow at 375px; reduced-motion needs no special handling because no motion is introduced.
 10. Authorized files: `_data/panoramic_view.yml`, `panoramic-view/index.html`, `_sass/_p_panoramic_view.scss`, `assets/css/site.scss`, and focused layout tests. Global navigation and homepage remain TASK-260.04.
+
+Added the user-attested enterprise durability signal in anonymized form: years after creation, colleagues unaware of Mike's authorship used documentation projected from the model to train him on two separate occasions. It is labeled as practical institutional-memory evidence, not converted into a business-impact metric.
+
+Verification: Panoramic View YAML parsed with two scale applications and eight case-study sections; Jekyll built 1,038 pages with zero accessibility warnings; eight focused Playwright tests passed, including method content, implementation-name exclusions, accessible SVG naming, and 375px content-overflow checks; full `bundle exec rake validate` passed data, archive, generated freshness, repository hygiene, SEO/indexability, semantics, exports, SEO budgets, accessibility hooks, and HTML-Proofer link/script/image checks.
+
+Reviewer findings: no blocker, major, or minor issues introduced. The public page names organization archetypes and operating constraints while omitting implementation employers, people, private paths, repositories, proprietary identifiers, topology counts, customers, and political narrative. Existing build warnings about generated export destination collisions and the pre-existing mobile global-nav clipping are outside this slice and remain assigned to TASK-260.04.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Published a public-safe Panoramic View field guide with Mike's authorship and evidence boundaries, the horizontal journey and vertical browser-to-backend wave, the Simple Loop of Discovery, supporting concepts, tool distinctions, enterprise and small-organization scale lenses, a fully structured anonymized founder-transition case study, an accessible original diagram, explicit limitations, and future work. Added the newly supplied proof that enterprise documentation became independent institutional memory years after creation.
+<!-- SECTION:FINAL_SUMMARY:END -->
