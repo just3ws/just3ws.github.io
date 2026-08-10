@@ -1,9 +1,11 @@
 ---
 id: TASK-260
 title: Refresh just3ws professional presence around Panoramic View
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@Codex'
 created_date: '2026-08-10 17:11'
+updated_date: '2026-08-10 17:12'
 labels:
   - site-refresh
   - career-positioning
@@ -43,3 +45,9 @@ Reframe just3ws.com for hiring managers, recruiters, and AI-assisted hiring eval
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+2026-08-10: Mike directed that proof-of-method examples default to organization archetype, scale, situation, need, and questions answered. Company names and internal labels should be used only when necessary and explicitly appropriate.
+<!-- SECTION:NOTES:END -->
