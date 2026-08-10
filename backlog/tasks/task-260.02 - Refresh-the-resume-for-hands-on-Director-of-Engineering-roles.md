@@ -1,10 +1,11 @@
 ---
 id: TASK-260.02
 title: Refresh the resume for hands-on Director of Engineering roles
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 17:13'
+updated_date: '2026-08-10 17:19'
 labels:
   - site-refresh
   - panoramic-view
