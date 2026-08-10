@@ -1,11 +1,11 @@
 ---
 id: TASK-260.05
 title: Correct taxonomy visual system and theme colors
-status: In Progress
+status: Done
 assignee:
   - Codex
 created_date: '2026-08-10 18:34'
-updated_date: '2026-08-10 19:48'
+updated_date: '2026-08-10 19:50'
 labels:
   - site-refresh
   - taxonomy
@@ -36,16 +36,16 @@ Bring the public `/taxonomy/` knowledge-graph page into the refreshed just3ws vi
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The taxonomy page uses a coherent palette consistent with the refreshed professional site in the default theme.
-- [ ] #2 The taxonomy page remains coherent and readable in the Kanagawa theme, including hero, metrics, controls, graph, inspector, legend, table, badges, links, and buttons.
-- [ ] #3 Text, controls, and graph labels preserve accessible contrast and visible focus states.
-- [ ] #4 Graph interaction, entity filtering, taxonomy search, and entity links continue to work.
-- [ ] #5 Desktop and 375px mobile browser checks cover layout bounds and the two theme states.
+- [x] #1 The taxonomy page uses a coherent palette consistent with the refreshed professional site in the default theme.
+- [x] #2 The taxonomy page remains coherent and readable in the Kanagawa theme, including hero, metrics, controls, graph, inspector, legend, table, badges, links, and buttons.
+- [x] #3 Text, controls, and graph labels preserve accessible contrast and visible focus states.
+- [x] #4 Graph interaction, entity filtering, taxonomy search, and entity links continue to work.
+- [x] #5 Desktop and 375px mobile browser checks cover layout bounds and the two theme states.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -122,4 +122,30 @@ Implemented the approved targeted evolution for /taxonomy/: human-first archive 
 Verification: Jekyll build succeeds across 1,039 pages with zero accessibility-hook warnings. Focused taxonomy Playwright checks pass; full tests/layout.spec.js passes 10/10. Evidence captured for default/Kanagawa desktop and 375px mobile, including layout bounds, focus, filtering, search, graph canvas, theme toggle, and table rendering. bundle exec rake validate passes data, resources, taxonomy, archive-surface, and last-modified checks, then stops on unrelated generated-resume freshness drift in OneMain/SK Holdings/Tandem caused by concurrent resume copy work; those out-of-scope files were preserved.
 
 Independent reviewer verdict: Changes requested. Major findings were WCAG 2.5.3 label-in-name mismatches on the two controls and desktop clipping that hid the Action column/entity links. Minor evidence issue: Kanagawa screenshot captured the sticky header over the graph. Corrections are added to the plan before implementation.
+
+Reviewer corrections verified: focused taxonomy checks pass 2/2, full layout suite passes 10/10, taxonomy validator passes, and git diff --check is clean for the scoped files. Independent re-review verdict: Pass with no blocker, major, or minor findings.
+
+Published current _site via bin/install-localhost. https://just3ws.localhost/taxonomy/ returns HTTP 200; response Last-Modified is Mon, 10 Aug 2026 19:48:46 GMT.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Refreshed /taxonomy/ from a generic analytics dashboard into a human-first technical oral-history field map.
+
+What changed:
+- Reframed the hero, section language, and metadata around people, conversations, communities, projects, and the movement of ideas.
+- Replaced floating KPI cards with a ruled archive ledger using evidence-backed counts; graph node/edge totals remain secondary provenance.
+- Introduced a warm paper-and-ink default surface and coherent Kanagawa editorial variant with minimal card chrome, compact density, field-note framing, and register-style table treatment.
+- Preserved graph palette/category behavior, filtering, search, inspection, theme switching, entity destinations, focus visibility, and mobile containment.
+- Corrected independent-review findings by aligning accessible names with visible control labels, linking entity names directly, fitting the complete four-column register at desktop width, and recapturing dark-theme evidence from the page top.
+
+Verification:
+- Jekyll build: 1,039 pages; zero accessibility-hook warnings.
+- Playwright: focused taxonomy 2/2; complete layout suite 10/10.
+- Taxonomy output validator: pass.
+- Desktop and 375px screenshots captured in default and Kanagawa themes.
+- Independent site-refresh review: Pass, no blocker/major/minor findings.
+- Published to the existing localhost webroot; https://just3ws.localhost/taxonomy/ returns HTTP 200 with the current build.
+- Full repository validation reaches and passes taxonomy-related checks, then stops on unrelated concurrent generated-resume freshness drift in OneMain/SK Holdings/Tandem; those out-of-scope files were preserved.
+<!-- SECTION:FINAL_SUMMARY:END -->
