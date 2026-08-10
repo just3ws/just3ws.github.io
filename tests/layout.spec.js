@@ -42,7 +42,7 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.goto('/');
     await expect(page.locator('h1')).toContainText('Mike Hall');
     await expect(page.locator('.resume-header .title')).toHaveText('Hands-on Director of Engineering');
-    await expect(page.locator('#summary')).toContainText('Panoramic View');
+    await expect(page.locator('#summary')).toContainText('platform modernization');
     await expect(page.locator('#experience .position').first()).toContainText('Development Manager');
     await expect(page.locator('#experience .position').first()).toContainText('founder transition');
     
