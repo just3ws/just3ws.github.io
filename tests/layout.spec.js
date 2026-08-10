@@ -10,7 +10,7 @@ test.describe('Site Layout and Aesthetics', () => {
     await expect(page.locator('main')).toContainText('agentic AI system');
     const heroActions = page.locator('.leadership-hero .leadership-actions');
     await expect(heroActions.getByRole('link', { name: 'Review my experience' })).toHaveAttribute('href', '/');
-    await expect(heroActions.getByRole('link', { name: 'Explore Panoramic View' })).toHaveAttribute('href', '/panoramic-view/');
+    await expect(heroActions.getByRole('link', { name: 'Review selected work' })).toHaveAttribute('href', '/portfolio/');
     await expect(page.getByRole('link', { name: 'Complete history' })).toHaveAttribute('href', '/history/');
     await expect(page.getByRole('link', { name: 'Contact Mike' })).toHaveAttribute('href', '/contact/');
 
