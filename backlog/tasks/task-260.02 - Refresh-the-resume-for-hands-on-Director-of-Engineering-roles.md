@@ -1,11 +1,11 @@
 ---
 id: TASK-260.02
 title: Refresh the resume for hands-on Director of Engineering roles
-status: In Progress
+status: Done
 assignee:
   - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 17:21'
+updated_date: '2026-08-10 17:29'
 labels:
   - site-refresh
   - panoramic-view
@@ -14,6 +14,7 @@ dependencies:
 modified_files:
   - index.html
   - resume.html
+  - history.html
   - _data/resume/profile.yml
   - _data/resume/summary.yml
   - _data/resume/ats.yml
@@ -25,6 +26,8 @@ modified_files:
   - _data/resume/positions/sk-holdings.yml
   - _data/resume/positions/phalanx-duel.yml
   - resume/positions/emr-bear/index.html
+  - resume/positions/onemain/index.html
+  - resume/positions/sk-holdings/index.html
   - _includes/json-ld.html
   - _includes/schema-factory.html
   - bin/validate_exports.rb
@@ -42,16 +45,16 @@ Rewrite the site's resume around Mike Hall's current hands-on Director of Engine
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The resume leads with a concise current positioning statement and role-relevant capabilities rather than a generic full-stack label.
-- [ ] #2 Recent experience uses evidence-backed achievement bullets and presents the short direct-hire role as occurring during a founder transition whose leadership responsibility was later consolidated.
-- [ ] #3 The 52-working-day period is used only where it demonstrates bounded velocity and does not imply unverified durability.
-- [ ] #4 Earlier experience is compressed into a readable selected-history layer with access to the complete chronology.
-- [ ] #5 The resume page renders accessibly at desktop and mobile sizes and relevant build and browser checks pass.
+- [x] #1 The resume leads with a concise current positioning statement and role-relevant capabilities rather than a generic full-stack label.
+- [x] #2 Recent experience uses evidence-backed achievement bullets and presents the short direct-hire role as occurring during a founder transition whose leadership responsibility was later consolidated.
+- [x] #3 The 52-working-day period is used only where it demonstrates bounded velocity and does not imply unverified durability.
+- [x] #4 Earlier experience is compressed into a readable selected-history layer with access to the complete chronology.
+- [x] #5 The resume page renders accessibly at desktop and mobile sizes and relevant build and browser checks pass.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -78,4 +81,16 @@ Resume Refresh Brief
 8. Responsive and motion: no new motion. Long role and method language must wrap without horizontal overflow; desktop and 375px screenshots required. Existing global mobile-nav clipping is tracked separately and is not introduced by this slice.
 9. Authorized files: resume entry pages and metadata, canonical `_data/resume/` files, one new position-detail route, resume JSON-LD knowledge terms, export validator, and layout smoke expectations. Exclusions: global navigation, home page, Panoramic View public pages, shared visual theme, private evidence, generated `_site/`, and generated export sources.
 10. Verification: inspect rendered root and position detail; validate generated TXT/JSON exports; run Jekyll build, focused Playwright layout tests with desktop and 375px screenshots, then the full CI pipeline because canonical data and metadata change.
+
+Verification: all resume YAML parsed; Jekyll built 1,037 pages with zero accessibility warnings; JSON and TXT export validation passed; six focused Playwright layout tests passed at desktop and 375px widths; rendered JSON-LD reports Hands-on Director of Engineering and the updated knowledge terms; public-safety scan found no private paths, internal names, political narrative, infrastructure counts, or 52-working-day language in the public resume surface.
+
+Full validation: the exact `./bin/pipeline ci` run stopped at generated-file freshness because the two intentionally regenerated position pages were uncommitted. After temporarily staging only those generated artifacts, cleaning the site, and rebuilding, `bundle exec rake validate` passed data, archive, freshness, hygiene, metadata, SEO, semantic, export, SEO-budget, accessibility, and HTML-Proofer checks. Staging was restored to empty afterward.
+
+Reviewer verdict: PASS for the bounded resume slice. The only visible mobile issue is the pre-existing global navigation clipping already assigned to TASK-260.04; existing generated-export destination-collision warnings remain unchanged.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Reframed the canonical resume for hands-on Director of Engineering evaluation, added the recent founder-transition Development Manager role with evidence-bounded language, strengthened Panoramic View and distributed-team leadership signals, compressed earlier work behind selected history and the complete timeline, updated metadata/JSON-LD/exports, and verified the result across build, export, browser, accessibility, semantic, and link checks.
+<!-- SECTION:FINAL_SUMMARY:END -->
