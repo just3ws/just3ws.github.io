@@ -1,11 +1,11 @@
 ---
 id: TASK-260.03
 title: Publish the Panoramic View methodology and case study
-status: Done
+status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 18:20'
+updated_date: '2026-08-10 18:23'
 labels:
   - site-refresh
   - panoramic-view
@@ -48,35 +48,21 @@ Create public-facing material that explains Panoramic View as Mike Hall's origin
 ## Implementation Plan
 
 <!-- SECTION:PLAN:BEGIN -->
-1. Add a canonical public-safe Panoramic View data model containing the definition, discovery loop, distinctions, enterprise and small-organization applications, evidence boundaries, limitations, and future work.
-2. Build `/panoramic-view/` as a non-specialist-first methodology narrative with technical depth, an accessible browser-to-backend-and-back diagram, and two anonymized scale lenses.
-3. Add dedicated responsive SCSS through the existing Sass entry point, preserving the site's minimal layout, theme variables, semantic headings, and no-motion baseline.
-4. Add focused Playwright assertions for route, content, discretion rules, diagram accessibility, and mobile overflow.
-5. Run public-safety scans, YAML parsing, Jekyll/build/link/accessibility checks, browser tests, and an independent reviewer pass before finalization.
+1. Extend canonical Panoramic View data with an actor definition, three-model reconciliation structure, explicit delta, and public-safe Rails proving-ground statement.
+2. Update the methodology and homepage method block so human and agentic actors are treated consistently and the domain model is visible between business understanding and runtime behavior.
+3. Refine the publication brief and product-marketing context with the same terminology and scope qualifications.
+4. Update focused browser assertions, rebuild, inspect desktop/mobile renderings, run privacy and link/accessibility validation, and complete an independent review pass.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-Panoramic View Refresh Brief
-1. Surface and job: `/panoramic-view/` is the primary proof-of-method page for hiring leaders, recruiters, technical peers, and machine evaluators who need to understand what Mike originated, how it works, and where it applies.
-2. Design read: a method field guide rather than a branded thought-leadership landing page; evidence-led, calm, visually legible, and useful to both non-specialists and engineers.
-3. Context-hunter classification: L2 targeted feature. Reuse the minimal page/breadcrumb pattern from `work-through-conversations/index.html`, the data-driven card composition from `portfolio.html`, and the canonical-data/render split already used across the resume.
-4. Dials: VARIANCE 3, MOTION 1, DENSITY 6. The new route may have a distinct systems-map visual language, but no animation or interaction is required to explain the model.
-5. Preserve: minimal layout, CSS variable themes, semantic HTML, breadcrumb/include conventions, Jekyll SEO front matter, static/no-JavaScript operation, and mobile readability.
-6. Evidence contract: name Mike as author of the general method; use `conceived circa 2021–2022; earliest timestamped exported evidence in 2023`; treat OpenTelemetry as a subordinate instrument; identify Simple Loop as Mike-originated; describe Fault Topography with careful authorship boundaries; publish only approved evidence and uncertainty.
-7. Discretion contract: proof defaults to organization archetype + operating scale/constraints + situation/need + questions answered + artifacts/evidence + limitations. Do not name implementation organizations, coworkers, customers, internal repositories, platform labels, confidential counts, or politics.
-8. Scale lenses: one regulated multi-team enterprise and one small acquired healthcare software organization. Their value is comparative applicability, not named-client prestige.
-9. Responsive and accessibility: diagram has an explanatory caption and equivalent ordered text; all grids collapse to one column; no content overflow at 375px; reduced-motion needs no special handling because no motion is introduced.
-10. Authorized files: `_data/panoramic_view.yml`, `panoramic-view/index.html`, `_sass/_p_panoramic_view.scss`, `assets/css/site.scss`, and focused layout tests. Global navigation and homepage remain TASK-260.04.
-
-Added the user-attested enterprise durability signal in anonymized form: years after creation, colleagues unaware of Mike's authorship used documentation projected from the model to train him on two separate occasions. It is labeled as practical institutional-memory evidence, not converted into a business-impact metric.
-
-Verification: Panoramic View YAML parsed with two scale applications and eight case-study sections; Jekyll built 1,038 pages with zero accessibility warnings; eight focused Playwright tests passed, including method content, implementation-name exclusions, accessible SVG naming, and 375px content-overflow checks; full `bundle exec rake validate` passed data, archive, generated freshness, repository hygiene, SEO/indexability, semantics, exports, SEO budgets, accessibility hooks, and HTML-Proofer link/script/image checks.
-
-Reviewer findings: no blocker, major, or minor issues introduced. The public page names organization archetypes and operating constraints while omitting implementation employers, people, private paths, repositories, proprietary identifiers, topology counts, customers, and political narrative. Existing build warnings about generated export destination collisions and the pre-existing mobile global-nav clipping are outside this slice and remain assigned to TASK-260.04.
-
-Post-completion conceptual refinement from Mike: Panoramic View's central value is reconciling business belief with actual system operation. Added the three governing questions—what the business believes the system does, what evidence shows it actually does, and where vision and reality align, diverge, or remain unknown—and qualified the method's possible scope from supply chain to archival cold storage by available time and mandate.
+Follow-up L1 micro-brief
+- Closest analogs: `_data/panoramic_view.yml` remains canonical; `panoramic-view/index.html` and `home/index.html` already iterate its public definition and governing questions; tests assert the same vocabulary.
+- Chosen model: three realities—interested-party understanding, implemented domain model, and observed runtime behavior—with an explicit delta. Actor means any participant pursuing a goal through an interface, including a human or agentic AI system.
+- Flagship context: complex Rails platform systems are the primary proving ground; traversal continues with equal fidelity beyond Rails through interfaces, services, integrations, infrastructure, data, and return paths.
+- Main risk: turning intended completeness into an absolute claim. Preserve provenance, contradictions, and unknowns; describe completeness relative to the defined decision scope and available evidence.
+- Authorized files: `_data/panoramic_view.yml`, `panoramic-view/index.html`, `_sass/_p_panoramic_view.scss`, `home/index.html`, `_sass/_p_home_refresh.scss`, `.agents/product-marketing-context.md`, `docs/site-refresh/panoramic-view-positioning.md`, and `tests/layout.spec.js`. Preserve routes, nav, metadata, case-study discretion, both themes, and no-motion behavior.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
