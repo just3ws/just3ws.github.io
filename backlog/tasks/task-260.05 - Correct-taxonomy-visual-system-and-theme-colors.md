@@ -1,9 +1,11 @@
 ---
 id: TASK-260.05
 title: Correct taxonomy visual system and theme colors
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - Codex
 created_date: '2026-08-10 18:34'
+updated_date: '2026-08-10 18:34'
 labels:
   - site-refresh
   - taxonomy
