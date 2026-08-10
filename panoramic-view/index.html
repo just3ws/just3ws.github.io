@@ -1,7 +1,7 @@
 ---
 layout: minimal
 title: Panoramic View | System Cartography by Mike Hall
-description: Panoramic View maps business process to system operation, tracing journeys from browser to backend across runtime evidence, data changes, and ownership.
+description: Panoramic View reconciles interested-party understanding, implemented domain models, and observed runtime behavior across complex systems.
 breadcrumb: Panoramic View
 breadcrumb_parent_name: Home
 breadcrumb_parent_url: /home/
@@ -13,6 +13,7 @@ permalink: /panoramic-view/
 <article class="page pv-page">
   {% include breadcrumbs.html %}
 
+  <!-- SECTION 1: HERO & PREMISE -->
   <header class="pv-hero">
     <p class="pv-eyebrow">{{ pv.meta.eyebrow }}</p>
     <h1>{{ pv.meta.title }}</h1>
@@ -27,19 +28,20 @@ permalink: /panoramic-view/
 
   <section class="pv-actor-scope" aria-labelledby="actor-scope-title">
     <article>
-      <p class="pv-kicker">Actor scope</p>
+      <p class="pv-kicker">Actor Scope</p>
       <h2 id="actor-scope-title">{{ pv.actor_scope.title }}</h2>
       <p>{{ pv.actor_scope.text }}</p>
     </article>
     <article>
-      <p class="pv-kicker">Flagship proving ground</p>
+      <p class="pv-kicker">Flagship Context</p>
       <h2>{{ pv.flagship_context.title }}</h2>
       <p>{{ pv.flagship_context.text }}</p>
     </article>
   </section>
 
+  <!-- SECTION 2: THE GOVERNING QUESTIONS & RECONCILIATION -->
   <section class="pv-premise" aria-labelledby="premise-title">
-    <p class="pv-kicker">The governing questions</p>
+    <p class="pv-kicker">The Governing Questions</p>
     <h2 id="premise-title">Where vision meets reality.</h2>
     <ol>
       {% for question in pv.core_questions %}
@@ -59,32 +61,16 @@ permalink: /panoramic-view/
           </article>
         {% endfor %}
       </div>
-      <p>{{ pv.reconciliation.delta }}</p>
+      <p class="pv-delta-note">{{ pv.reconciliation.delta }}</p>
     </div>
   </section>
 
-  <section class="pv-sequence" aria-labelledby="operating-sequence">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">Operating sequence</p>
-      <h2 id="operating-sequence">Stabilize. Understand. Innovate.</h2>
-    </div>
-    <ol class="pv-sequence-list">
-      {% for phase in pv.operating_sequence %}
-        <li>
-          <span class="pv-step-number" aria-hidden="true">0{{ forloop.index }}</span>
-          <h3>{{ phase.name }}</h3>
-          <p>{{ phase.summary }}</p>
-        </li>
-      {% endfor %}
-    </ol>
-    <p class="pv-context-note">Panoramic View runs through all three phases. It is not only the “understand” step.</p>
-  </section>
-
+  <!-- SECTION 3: THE MODEL (JOURNEY & SYSTEM WAVE) -->
   <section class="pv-model" id="the-model" aria-labelledby="model-title">
     <div class="pv-section-heading">
-      <p class="pv-kicker">The model</p>
+      <p class="pv-kicker">The Model</p>
       <h2 id="model-title">A journey across. A system wave down and back.</h2>
-      <p>The interface is the horizon. Every choice reveals terrain beneath it.</p>
+      <p>The interface is the horizon. Every choice reveals the execution terrain beneath it.</p>
     </div>
 
     <figure class="pv-map">
@@ -145,100 +131,53 @@ permalink: /panoramic-view/
         The actor advances horizontally. Each interaction creates a vertical request-response wave whose evidence can be correlated at every layer.
       </figcaption>
     </figure>
-
-    <div class="pv-dimensions">
-      {% for dimension in pv.dimensions %}
-        <article class="pv-dimension">
-          <p class="pv-card-label">{{ dimension.label }}</p>
-          <h3>{{ dimension.name }}</h3>
-          <p>{{ dimension.summary }}</p>
-        </article>
-      {% endfor %}
-    </div>
   </section>
 
-  <section class="pv-loop" aria-labelledby="discovery-loop">
+  <!-- SECTION 4: OPERATING SEQUENCE & SIMPLE LOOP OF DISCOVERY -->
+  <section class="pv-sequence" aria-labelledby="operating-sequence">
     <div class="pv-section-heading">
-      <p class="pv-kicker">A repeatable practice</p>
-      <h2 id="discovery-loop">The Simple Loop of Discovery</h2>
-      <p>Start with a real question. Follow the evidence across system and human boundaries. Preserve what is not yet known.</p>
+      <p class="pv-kicker">Operating Sequence</p>
+      <h2 id="operating-sequence">Stabilize. Understand. Innovate.</h2>
     </div>
-    <ol class="pv-loop-list">
-      {% for step in pv.discovery_loop %}
+    <ol class="pv-sequence-list">
+      {% for phase in pv.operating_sequence %}
         <li>
-          <span class="pv-loop-index">{{ forloop.index }}</span>
-          <div>
-            <h3>{{ step.title }}</h3>
-            <p>{{ step.text }}</p>
-          </div>
+          <span class="pv-step-number" aria-hidden="true">0{{ forloop.index }}</span>
+          <h3>{{ phase.name }}</h3>
+          <p>{{ phase.summary }}</p>
         </li>
       {% endfor %}
     </ol>
   </section>
 
-  <section class="pv-model-first" aria-labelledby="model-first">
+  <section class="pv-loop" aria-labelledby="discovery-loop">
     <div class="pv-section-heading">
-      <p class="pv-kicker">Model first</p>
-      <h2 id="model-first">The artifact is not the method.</h2>
-      <p>The evidence-backed model is primary. Diagrams, inventories, risk assessments, modernization plans, and AI context are projections of it.</p>
-    </div>
-    <div class="pv-projection-grid">
-      {% for projection in pv.projections %}
-        <span>{{ projection }}</span>
-      {% endfor %}
-    </div>
-
-    <div class="pv-toolkit" aria-labelledby="supporting-concepts">
-      <h3 id="supporting-concepts">Supporting concepts</h3>
-      <div class="pv-toolkit-grid">
-        {% for item in pv.toolkit %}
-          <article>
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.text }}</p>
-          </article>
-        {% endfor %}
-      </div>
+      <p class="pv-kicker">Discovery Practice</p>
+      <h2 id="discovery-loop">The Simple Loop of Discovery</h2>
+      <p>Start with a real premise. Follow evidence across boundaries. Update the shared map with explicit confidence and provenance.</p>
     </div>
   </section>
 
-  <section class="pv-distinctions" aria-labelledby="not-the-same">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">Useful distinctions</p>
-      <h2 id="not-the-same">Related practices are inputs or projections.</h2>
-    </div>
-    <div class="pv-distinction-list">
-      {% for item in pv.distinctions %}
-        <article>
-          <h3>{{ item.from }}</h3>
-          <p>{{ item.difference }}</p>
-        </article>
-      {% endfor %}
-    </div>
-  </section>
-
+  <!-- SECTION 5: REAL-WORLD APPLICATION & CASE PROOF -->
   <section class="pv-applications" aria-labelledby="applied-scale">
     <div class="pv-section-heading">
-      <p class="pv-kicker">Applied at different scales</p>
-      <h2 id="applied-scale">The questions travel even when the organization changes.</h2>
-      <p>These accounts are deliberately anonymized. They show the kind of organization, the operating situation, the questions being answered, the evidence used, and the boundary of what can be claimed.</p>
+      <p class="pv-kicker">Real-World Application</p>
+      <h2 id="applied-scale">Leadership Value in Action</h2>
+      <p>Anonymized proof of how system cartography stabilizes organizations, recovers knowledge, and guides leadership during critical transitions.</p>
     </div>
 
     <div class="pv-application-grid">
       {% for application in pv.applications %}
         <article class="pv-application" id="application-{{ application.id }}">
-          <p class="pv-card-label">Organization archetype</p>
+          <p class="pv-card-label">Organization Archetype</p>
           <h3>{{ application.scale }}</h3>
           <dl>
             <div>
-              <dt>Situation</dt>
-              <dd>{{ application.situation }}</dd>
+              <dt>Situation & Need</dt>
+              <dd>{{ application.situation }} {{ application.need }}</dd>
             </div>
             <div>
-              <dt>Need</dt>
-              <dd>{{ application.need }}</dd>
-            </div>
-            <div>
-              <dt>Questions answered</dt>
+              <dt>Key Questions Answered</dt>
               <dd>
                 <ul>
                   {% for question in application.questions %}
@@ -248,12 +187,8 @@ permalink: /panoramic-view/
               </dd>
             </div>
             <div>
-              <dt>Evidence and action</dt>
+              <dt>Outcome & Impact</dt>
               <dd>{{ application.evidence }}</dd>
-            </div>
-            <div class="pv-limit">
-              <dt>Publication boundary</dt>
-              <dd>{{ application.limit }}</dd>
             </div>
           </dl>
         </article>
@@ -261,46 +196,7 @@ permalink: /panoramic-view/
     </div>
   </section>
 
-  <section class="pv-case-study" aria-labelledby="case-study-title">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">{{ pv.case_study.label }}</p>
-      <h2 id="case-study-title">{{ pv.case_study.title }}</h2>
-    </div>
-    <div class="pv-case-grid">
-      {% for section in pv.case_study.sections %}
-        <article>
-          <h3>{{ section.title }}</h3>
-          <p>{{ section.text }}</p>
-        </article>
-      {% endfor %}
-    </div>
-  </section>
-
-  <section class="pv-honesty" aria-labelledby="honest-maturity">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">Honest maturity</p>
-      <h2 id="honest-maturity">What is proven, what is incomplete, what comes next.</h2>
-    </div>
-    <div class="pv-honesty-grid">
-      <div>
-        <h3>Known limitations</h3>
-        <ul>
-          {% for item in pv.limitations %}
-            <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div>
-        <h3>Future work</h3>
-        <ul>
-          {% for item in pv.future_work %}
-            <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </section>
-
+  <!-- FOOTER -->
   <footer class="pv-footer">
     <p class="pv-kicker">Engineering leadership without guesswork</p>
     <h2>Make the system legible. Make the team capable.</h2>
