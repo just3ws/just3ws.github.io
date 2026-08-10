@@ -1,72 +1,151 @@
 ---
 layout: minimal
-title: Mike Hall | Architect, Creator, Human
-description: Personal site of Mike Hall. Creator of Phalanx Duel, technical interviewer, and software architect focused on human agency and technical history.
+title: Mike Hall | Engineering Leadership for Complex Systems
+description: Mike Hall is a hands-on Director of Engineering who stabilizes complex systems, builds capable teams, and created Panoramic View for safer modernization.
 breadcrumb: Home
 canonical_url: https://www.just3ws.com/home/
+body_class: professional-home
 ---
 
-<article class="page">
-  <header class="home-header">
-    <h1>Mike Hall <span class="subtitle">Architect & Creator</span></h1>
-    <p class="home-headline">I build systems that value human agency—whether that's reclaiming a legacy platform or designing tactical card combat.</p>
+{% assign home = site.data.home %}
+{% assign pv = site.data.panoramic_view %}
+
+<article class="page leadership-home">
+  <header class="leadership-hero">
+    <div class="leadership-hero-copy">
+      <p class="leadership-eyebrow">{{ home.hero.eyebrow }}</p>
+      <h1>{{ home.hero.headline }}</h1>
+      <p class="leadership-lede">{{ home.hero.lede }}</p>
+      <div class="leadership-actions" aria-label="Professional profile actions">
+        {% for action in home.hero.actions %}
+          <a class="leadership-action leadership-action-{{ action.style }}" href="{{ action.href }}">{{ action.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <aside class="leadership-pattern" aria-labelledby="operating-pattern-title">
+      <p class="leadership-pattern-label">Operating pattern</p>
+      <h2 id="operating-pattern-title" class="visually-hidden">Stabilize, understand, and innovate</h2>
+      <ol>
+        {% for phase in pv.operating_sequence %}
+          <li>
+            <span>0{{ forloop.index }}</span>
+            <div>
+              <h3>{{ phase.name }}</h3>
+              <p>{{ phase.summary }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ol>
+    </aside>
   </header>
 
-  <section class="home-phalanx-callout" aria-label="Phalanx Duel game callout">
-    <div class="home-phalanx-duel">
-      <img class="phalanx-avatar" src="/assets/images/phalanxduel-avatar.png" alt="Phalanx Duel" width="120" height="120" loading="lazy" decoding="async">
-      <div class="phalanx-info">
-        <h3 class="phalanx-title">Phalanx Duel</h3>
-        <p class="phalanx-description">Deterministic, tactical card combat. My latest project in pure tactical decision-making and product architecture. No luck, no accounts, just strategy.</p>
-        <div class="phalanx-actions">
-          <a href="https://phalanxduel.com" class="phalanx-btn">Start a Duel →</a>
-          <a href="/portfolio/#project-phalanx-duel" class="phalanx-link">Project Details</a>
-        </div>
+  <section class="leadership-through-line" aria-labelledby="through-line-title">
+    <p class="leadership-section-index" aria-hidden="true">01 / Through-line</p>
+    <div>
+      <h2 id="through-line-title">{{ home.through_line.title }}</h2>
+      <p>{{ home.through_line.text }}</p>
+    </div>
+  </section>
+
+  <section class="leadership-method" aria-labelledby="home-method-title">
+    <div class="leadership-method-copy">
+      <p class="leadership-eyebrow">Original methodology</p>
+      <h2 id="home-method-title">Map the business. Trace the system. See the whole.</h2>
+      <p>{{ pv.meta.lede }}</p>
+      <p class="leadership-actor-note">{{ pv.actor_scope.text }}</p>
+      <p class="leadership-method-note">The model is primary. Observability, diagrams, documentation, and AI-assisted analysis are evidence sources or projections—not the method itself.</p>
+      <ul class="leadership-method-questions" aria-label="Panoramic View governing questions">
+        {% for question in pv.core_questions %}
+          <li>{{ question }}</li>
+        {% endfor %}
+      </ul>
+      <a class="leadership-inline-link" href="/panoramic-view/">Explore Panoramic View <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="leadership-wave" aria-hidden="true">
+      <div class="leadership-horizon">
+        <span>enter</span>
+        <span>choose</span>
+        <span>commit</span>
+        <span>result</span>
+        <span>exit</span>
+      </div>
+      <div class="leadership-wave-field">
+        <span class="leadership-layer">interface</span>
+        <span class="leadership-layer">application</span>
+        <span class="leadership-layer">services</span>
+        <span class="leadership-layer">data</span>
+        <i class="leadership-wave-line wave-one"></i>
+        <i class="leadership-wave-line wave-two"></i>
+        <i class="leadership-wave-line wave-three"></i>
       </div>
     </div>
   </section>
 
-  <section class="home-intro">
-    <p>I’ve spent the last two decades at the intersection of technology and community. I’m the person called in when systems become illegible and teams need a path back to sanity. Beyond the technical specs, I’m a father, a historian of technical movements, and a builder of "alive" things—from the <strong>UGtastic</strong> interview archive to the high-stakes tactics of <strong>Phalanx Duel</strong>.</p>
-  </section>
+  <section class="leadership-evidence" aria-labelledby="evidence-title">
+    <div class="leadership-section-heading">
+      <p class="leadership-section-index">02 / Evidence at scale</p>
+      <h2 id="evidence-title">Practical work, not a presentation-layer framework.</h2>
+      <p>The method grew from real systems work. The public proof names the kind of organization and the question being answered while keeping implementation details private.</p>
+    </div>
 
-  <section class="home-patterns">
-    <h2>What I Value</h2>
-    <ul class="home-list">
-      <li><strong>Legibility over Magic</strong>: Software should be understandable by the humans who have to live with it.</li>
-      <li><strong>Agency & Intention</strong>: Every move should matter—in a codebase, in a user group, or in a card game.</li>
-      <li><strong>Archival Continuity</strong>: We stand on the shoulders of giants. I'm dedicated to preserving the "why" behind the DevOps and Craftsmanship movements.</li>
-      <li><strong>Modernization as Reclamation</strong>: Reclaiming the value locked in legacy systems is an act of craftsmanship and respect for what came before.</li>
-    </ul>
-  </section>
-
-  <section class="home-navigation">
-    <h2>Explore the Work</h2>
-    <div class="home-link-grid">
-      <section class="home-link-card">
-        <h3>The Portfolio</h3>
-        <p>A timeline of systems and platforms I've built, from the early days of Chicago Code Camp to Phalanx Duel.</p>
-        <ul class="home-list">
-          <li><a href="/portfolio/">View Digital Archeology</a></li>
-        </ul>
-      </section>
-
-      <section class="home-link-card">
-        <h3>Technical Conversations</h3>
-        <p>A high-bandwidth archive of dialogues with the people who shaped our industry.</p>
-        <ul class="home-list">
-          <li><a href="/interviews/">Browse the Library</a></li>
-          <li><a href="/interviews/stories/">Curated Stories</a></li>
-        </ul>
-      </section>
-
-      <section class="home-link-card">
-        <h3>Writing & Notes</h3>
-        <p>Reflections on technical tradeoffs, leadership, and the rhythm of software development.</p>
-        <ul class="home-list">
-          <li><a href="/writing/">Latest Essays</a></li>
-        </ul>
-      </section>
+    <div class="leadership-evidence-list">
+      {% for item in home.evidence %}
+        <article>
+          <p class="leadership-evidence-context">{{ item.context }}</p>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+          <a href="{{ item.href }}">{{ item.link_label }} <span aria-hidden="true">→</span></a>
+        </article>
+      {% endfor %}
     </div>
   </section>
+
+  <section class="leadership-evaluator" aria-labelledby="evaluation-title">
+    <div class="leadership-section-heading">
+      <p class="leadership-section-index">03 / Evaluate the work</p>
+      <h2 id="evaluation-title">Start with the depth you need.</h2>
+    </div>
+
+    <ol class="leadership-paths">
+      {% for path in home.evaluation_paths %}
+        <li>
+          <a href="{{ path.href }}">
+            <span class="leadership-path-number">{{ path.number }}</span>
+            <span class="leadership-path-copy">
+              <strong>{{ path.title }}</strong>
+              <span>{{ path.text }}</span>
+            </span>
+            <span class="leadership-path-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="leadership-record" aria-labelledby="public-record-title">
+    <div>
+      <p class="leadership-section-index">04 / Public record</p>
+      <h2 id="public-record-title">{{ home.public_record.title }}</h2>
+    </div>
+    <div>
+      <p>{{ home.public_record.text }}</p>
+      <nav class="leadership-record-links" aria-label="Public technical record">
+        {% for item in home.public_record.links %}
+          <a href="{{ item.href }}">{{ item.label }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </section>
+
+  <footer class="leadership-contact">
+    <p class="leadership-eyebrow">{{ home.contact.eyebrow }}</p>
+    <h2>{{ home.contact.title }}</h2>
+    <p>{{ home.contact.text }}</p>
+    <div class="leadership-actions">
+      <a class="leadership-action leadership-action-primary" href="{{ home.contact.primary_href }}">{{ home.contact.primary_label }}</a>
+      <a class="leadership-action leadership-action-secondary" href="{{ home.contact.secondary_href }}">{{ home.contact.secondary_label }}</a>
+    </div>
+  </footer>
 </article>

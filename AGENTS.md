@@ -24,6 +24,19 @@ Use these skills by default for this repository:
 8. `transcript-review-gate` - Review low-confidence transcript mappings before apply.
 9. `transcript-quality-check` - Audit transcript integrity and content quality in canonical data.
 10. `transcript-ops-report` - Summarize transcript ingestion throughput and corpus growth.
+11. `site-refresh-director` - Audit a site surface and produce a bounded, evidence-backed refresh brief.
+12. `site-refresh-builder` - Implement an approved refresh brief in the existing Jekyll/Liquid/SCSS stack.
+13. `site-refresh-reviewer` - Independently gate visual, accessibility, SEO, and public-archive quality.
+
+## Site Refresh Agent Workflow
+
+For visual refresh work, use the three roles in order:
+
+1. `$site-refresh-director` outputs a Refresh Brief and does not edit code.
+2. `$site-refresh-builder` implements one authorized slice and outputs Build Evidence.
+3. `$site-refresh-reviewer` inspects rendered desktop and mobile output and returns `pass` or `changes requested`.
+
+Do not let the builder self-approve a visual change. Preserve routes, navigation labels, canonical content, analytics hooks, accessibility wins, and archive provenance unless the user explicitly expands scope.
 
 ## GitHub Pages / Pipeline Focus
 For this site, prioritize:

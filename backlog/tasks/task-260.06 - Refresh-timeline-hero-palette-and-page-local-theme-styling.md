@@ -1,11 +1,11 @@
 ---
 id: TASK-260.06
 title: Refresh timeline hero palette and page-local theme styling
-status: In Progress
+status: Done
 assignee:
-  - Codex
+  - '@Antigravity'
 created_date: '2026-08-10 19:55'
-updated_date: '2026-08-10 19:55'
+updated_date: '2026-08-10 20:11'
 labels:
   - site-refresh
   - timeline
@@ -29,15 +29,15 @@ Correct the public /timeline/ hero so its color system matches the refreshed jus
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The /timeline/ hero uses the refreshed site palette in the default theme with readable title, badge, and supporting copy.
-- [ ] #2 The /timeline/ hero remains coherent and readable after switching to the Kanagawa theme.
-- [ ] #3 Timeline scrubber controls and generated era/interview cards remain readable, focused, and functional.
-- [ ] #4 Desktop and 375px browser checks cover hero colors, theme switching, filtering, and layout bounds.
+- [x] #1 The /timeline/ hero uses the refreshed site palette in the default theme with readable title, badge, and supporting copy.
+- [x] #2 The /timeline/ hero remains coherent and readable after switching to the Kanagawa theme.
+- [x] #3 Timeline scrubber controls and generated era/interview cards remain readable, focused, and functional.
+- [x] #4 Desktop and 375px browser checks cover hero colors, theme switching, filtering, and layout bounds.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan

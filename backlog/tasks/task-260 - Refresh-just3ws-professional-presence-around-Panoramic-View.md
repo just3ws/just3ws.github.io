@@ -1,11 +1,12 @@
 ---
 id: TASK-260
 title: Refresh just3ws professional presence around Panoramic View
-status: In Progress
+status: Done
 assignee:
   - '@Codex'
+  - '@Antigravity'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 19:06'
+updated_date: '2026-08-10 20:11'
 labels:
   - site-refresh
   - career-positioning

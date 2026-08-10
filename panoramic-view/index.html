@@ -1,0 +1,313 @@
+---
+layout: minimal
+title: Panoramic View | System Cartography by Mike Hall
+description: Panoramic View maps business process to system operation, tracing journeys from browser to backend across runtime evidence, data changes, and ownership.
+breadcrumb: Panoramic View
+breadcrumb_parent_name: Home
+breadcrumb_parent_url: /home/
+permalink: /panoramic-view/
+---
+
+{% assign pv = site.data.panoramic_view %}
+
+<article class="page pv-page">
+  {% include breadcrumbs.html %}
+
+  <header class="pv-hero">
+    <p class="pv-eyebrow">{{ pv.meta.eyebrow }}</p>
+    <h1>{{ pv.meta.title }}</h1>
+    <p class="pv-lede">{{ pv.meta.lede }}</p>
+    <p class="pv-scope">{{ pv.meta.scope }}</p>
+    <p class="pv-origin">{{ pv.meta.origin }}</p>
+    <div class="pv-actions" aria-label="Panoramic View actions">
+      <a class="pv-button" href="#the-model">See the model</a>
+      <a class="pv-text-link" href="/#experience">Review my experience</a>
+    </div>
+  </header>
+
+  <section class="pv-actor-scope" aria-labelledby="actor-scope-title">
+    <article>
+      <p class="pv-kicker">Actor scope</p>
+      <h2 id="actor-scope-title">{{ pv.actor_scope.title }}</h2>
+      <p>{{ pv.actor_scope.text }}</p>
+    </article>
+    <article>
+      <p class="pv-kicker">Flagship proving ground</p>
+      <h2>{{ pv.flagship_context.title }}</h2>
+      <p>{{ pv.flagship_context.text }}</p>
+    </article>
+  </section>
+
+  <section class="pv-premise" aria-labelledby="premise-title">
+    <p class="pv-kicker">The governing questions</p>
+    <h2 id="premise-title">Where vision meets reality.</h2>
+    <ol>
+      {% for question in pv.core_questions %}
+        <li>
+          <span aria-hidden="true">0{{ forloop.index }}</span>
+          <strong>{{ question }}</strong>
+        </li>
+      {% endfor %}
+    </ol>
+    <div class="pv-reconciliation" aria-labelledby="reconciliation-title">
+      <h3 id="reconciliation-title">{{ pv.reconciliation.title }}</h3>
+      <div>
+        {% for model in pv.reconciliation.models %}
+          <article>
+            <h4>{{ model.name }}</h4>
+            <p>{{ model.text }}</p>
+          </article>
+        {% endfor %}
+      </div>
+      <p>{{ pv.reconciliation.delta }}</p>
+    </div>
+  </section>
+
+  <section class="pv-sequence" aria-labelledby="operating-sequence">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">Operating sequence</p>
+      <h2 id="operating-sequence">Stabilize. Understand. Innovate.</h2>
+    </div>
+    <ol class="pv-sequence-list">
+      {% for phase in pv.operating_sequence %}
+        <li>
+          <span class="pv-step-number" aria-hidden="true">0{{ forloop.index }}</span>
+          <h3>{{ phase.name }}</h3>
+          <p>{{ phase.summary }}</p>
+        </li>
+      {% endfor %}
+    </ol>
+    <p class="pv-context-note">Panoramic View runs through all three phases. It is not only the “understand” step.</p>
+  </section>
+
+  <section class="pv-model" id="the-model" aria-labelledby="model-title">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">The model</p>
+      <h2 id="model-title">A journey across. A system wave down and back.</h2>
+      <p>The interface is the horizon. Every choice reveals terrain beneath it.</p>
+    </div>
+
+    <figure class="pv-map">
+      <svg viewBox="0 0 900 470" role="img" aria-labelledby="pv-map-title pv-map-desc">
+        <title id="pv-map-title">Panoramic View journey and system-wave model</title>
+        <desc id="pv-map-desc">An actor moves from stage left to stage right. At each interaction, a request descends from the interface through application, services, and data, then a response rises to become the actor's next presented state.</desc>
+        <defs>
+          <marker id="pv-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" class="pv-svg-arrow"></path>
+          </marker>
+        </defs>
+
+        <g class="pv-svg-layers" aria-hidden="true">
+          <rect x="145" y="95" width="700" height="54" rx="8"></rect>
+          <rect x="145" y="158" width="700" height="54" rx="8"></rect>
+          <rect x="145" y="221" width="700" height="54" rx="8"></rect>
+          <rect x="145" y="284" width="700" height="54" rx="8"></rect>
+          <rect x="145" y="347" width="700" height="54" rx="8"></rect>
+        </g>
+
+        <g class="pv-svg-labels" aria-hidden="true">
+          <text x="30" y="128">Interface</text>
+          <text x="30" y="191">Application</text>
+          <text x="30" y="254">Services</text>
+          <text x="30" y="317">Integration</text>
+          <text x="30" y="380">Data / state</text>
+        </g>
+
+        <path class="pv-svg-journey" d="M 150 58 H 838" marker-end="url(#pv-arrow)"></path>
+        <g class="pv-svg-journey-labels" aria-hidden="true">
+          <text x="148" y="35">Enter stage left</text>
+          <text x="380" y="35">Act · pause · branch</text>
+          <text x="724" y="35">Exit stage right</text>
+        </g>
+
+        <g class="pv-svg-waves" fill="none" marker-end="url(#pv-arrow)" aria-hidden="true">
+          <path d="M 245 105 C 245 210, 245 355, 315 378 C 385 355, 385 210, 385 105"></path>
+          <path d="M 465 105 C 465 210, 465 355, 535 378 C 605 355, 605 210, 605 105"></path>
+          <path d="M 665 105 C 665 210, 665 355, 720 378 C 775 355, 775 210, 775 105"></path>
+        </g>
+
+        <g class="pv-svg-events" aria-hidden="true">
+          <circle cx="245" cy="105" r="7"></circle>
+          <circle cx="385" cy="105" r="7"></circle>
+          <circle cx="465" cy="105" r="7"></circle>
+          <circle cx="605" cy="105" r="7"></circle>
+          <circle cx="665" cy="105" r="7"></circle>
+          <circle cx="775" cy="105" r="7"></circle>
+        </g>
+
+        <g class="pv-svg-wave-labels" aria-hidden="true">
+          <text x="232" y="435">choose</text>
+          <text x="457" y="435">commit</text>
+          <text x="671" y="435">receive</text>
+        </g>
+      </svg>
+      <figcaption>
+        The actor advances horizontally. Each interaction creates a vertical request-response wave whose evidence can be correlated at every layer.
+      </figcaption>
+    </figure>
+
+    <div class="pv-dimensions">
+      {% for dimension in pv.dimensions %}
+        <article class="pv-dimension">
+          <p class="pv-card-label">{{ dimension.label }}</p>
+          <h3>{{ dimension.name }}</h3>
+          <p>{{ dimension.summary }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="pv-loop" aria-labelledby="discovery-loop">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">A repeatable practice</p>
+      <h2 id="discovery-loop">The Simple Loop of Discovery</h2>
+      <p>Start with a real question. Follow the evidence across system and human boundaries. Preserve what is not yet known.</p>
+    </div>
+    <ol class="pv-loop-list">
+      {% for step in pv.discovery_loop %}
+        <li>
+          <span class="pv-loop-index">{{ forloop.index }}</span>
+          <div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="pv-model-first" aria-labelledby="model-first">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">Model first</p>
+      <h2 id="model-first">The artifact is not the method.</h2>
+      <p>The evidence-backed model is primary. Diagrams, inventories, risk assessments, modernization plans, and AI context are projections of it.</p>
+    </div>
+    <div class="pv-projection-grid">
+      {% for projection in pv.projections %}
+        <span>{{ projection }}</span>
+      {% endfor %}
+    </div>
+
+    <div class="pv-toolkit" aria-labelledby="supporting-concepts">
+      <h3 id="supporting-concepts">Supporting concepts</h3>
+      <div class="pv-toolkit-grid">
+        {% for item in pv.toolkit %}
+          <article>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.text }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="pv-distinctions" aria-labelledby="not-the-same">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">Useful distinctions</p>
+      <h2 id="not-the-same">Related practices are inputs or projections.</h2>
+    </div>
+    <div class="pv-distinction-list">
+      {% for item in pv.distinctions %}
+        <article>
+          <h3>{{ item.from }}</h3>
+          <p>{{ item.difference }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="pv-applications" aria-labelledby="applied-scale">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">Applied at different scales</p>
+      <h2 id="applied-scale">The questions travel even when the organization changes.</h2>
+      <p>These accounts are deliberately anonymized. They show the kind of organization, the operating situation, the questions being answered, the evidence used, and the boundary of what can be claimed.</p>
+    </div>
+
+    <div class="pv-application-grid">
+      {% for application in pv.applications %}
+        <article class="pv-application" id="application-{{ application.id }}">
+          <p class="pv-card-label">Organization archetype</p>
+          <h3>{{ application.scale }}</h3>
+          <dl>
+            <div>
+              <dt>Situation</dt>
+              <dd>{{ application.situation }}</dd>
+            </div>
+            <div>
+              <dt>Need</dt>
+              <dd>{{ application.need }}</dd>
+            </div>
+            <div>
+              <dt>Questions answered</dt>
+              <dd>
+                <ul>
+                  {% for question in application.questions %}
+                    <li>{{ question }}</li>
+                  {% endfor %}
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt>Evidence and action</dt>
+              <dd>{{ application.evidence }}</dd>
+            </div>
+            <div class="pv-limit">
+              <dt>Publication boundary</dt>
+              <dd>{{ application.limit }}</dd>
+            </div>
+          </dl>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="pv-case-study" aria-labelledby="case-study-title">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">{{ pv.case_study.label }}</p>
+      <h2 id="case-study-title">{{ pv.case_study.title }}</h2>
+    </div>
+    <div class="pv-case-grid">
+      {% for section in pv.case_study.sections %}
+        <article>
+          <h3>{{ section.title }}</h3>
+          <p>{{ section.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="pv-honesty" aria-labelledby="honest-maturity">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">Honest maturity</p>
+      <h2 id="honest-maturity">What is proven, what is incomplete, what comes next.</h2>
+    </div>
+    <div class="pv-honesty-grid">
+      <div>
+        <h3>Known limitations</h3>
+        <ul>
+          {% for item in pv.limitations %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h3>Future work</h3>
+        <ul>
+          {% for item in pv.future_work %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pv-footer">
+    <p class="pv-kicker">Engineering leadership without guesswork</p>
+    <h2>Make the system legible. Make the team capable.</h2>
+    <p>I use Panoramic View as part of hands-on engineering leadership for complex systems, transitions, and modernization.</p>
+    <div class="pv-actions">
+      <a class="pv-button" href="/contact/">Start a conversation</a>
+      <a class="pv-text-link" href="/">Read the résumé</a>
+    </div>
+  </footer>
+</article>

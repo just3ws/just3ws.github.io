@@ -7,43 +7,48 @@ primary:
     - label: Resume
       href: /
       mode: exact
-    - label: Writing
-      href: /writing/
+    - label: Panoramic View
+      href: /panoramic-view/
       mode: prefix
-    - label: Portfolio
+    - label: Work
       href: /portfolio/
       mode: prefix
+      children:
+        - label: Portfolio
+          href: /portfolio/
+        - label: Writing
+          href: /writing/
+        - label: Now
+          href: /now/
+        - label: Complete History
+          href: /history/
     - label: Archive
       href: /interviews/
       mode: prefix
       children:
-        - label: 🎙️ All Conversations
+        - label: All Conversations
           href: /interviews/
-        - label: ⏱️ Historical Timeline
+        - label: Historical Timeline
           href: /timeline/
-        - label: 👤 Speaker Directory
+        - label: Speaker Directory
           href: /speakers/
-        - label: 💬 Ask the Archive
+        - label: Ask the Archive
           href: /ask/
-        - label: 🎬 Content Studio & Remix Lab
+        - label: Content Studio
           href: /studio/
-        - label: 🕸️ Web of Wisdom
+        - label: Web of Wisdom
           href: /web/
-        - label: 🔮 Archive Curiosities
+        - label: Archive Curiosities
           href: /curiosities/
-        - label: 📚 Books Library
+        - label: Books Library
           href: /books/
-    - label: Intelligence
-      href: /intelligence/
-      mode: prefix
-      children:
-        - label: 📊 Intelligence Dashboard
+        - label: Intelligence Dashboard
           href: /intelligence/
-        - label: 🕸️ Knowledge Graph
+        - label: Knowledge Graph
           href: /taxonomy/
-        - label: 📈 Archive Status
+        - label: Archive Status
           href: /archive-status/
-        - label: 📄 Markdown Exports
+        - label: Markdown Exports
           href: /exports/
     - label: Contact
       href: /contact/

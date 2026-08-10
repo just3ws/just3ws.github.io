@@ -549,23 +549,52 @@ h3 {
     flex-direction: column;
     gap: 0.75rem;
 
-    &-links {
+    .nav-right {
       width: 100%;
-      justify-content: center;
+      min-width: 0;
+    }
+
+    &-links {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.35rem;
+      width: 100%;
+      min-width: 0;
       
       .nav-link {
-        flex: 1;
+        display: flex;
+        width: 100%;
+        min-width: 0;
+        min-height: 2.5rem;
+        align-items: center;
+        justify-content: center;
         text-align: center;
         padding: 0.4rem !important;
+        font-size: 0.72rem;
+        line-height: 1.15;
+        white-space: normal;
       }
 
       .nav-dropdown {
-        position: relative;
+        position: static;
+        width: 100%;
+        min-width: 0;
       }
 
       .nav-dropdown-menu {
-        left: 50%;
-        transform: translateX(-50%);
+        position: fixed !important;
+        top: 10.25rem !important;
+        right: 1rem !important;
+        left: 1rem !important;
+        width: auto;
+        min-width: 0;
+        max-height: calc(100vh - 11.25rem);
+        overflow-y: auto;
+        transform: none !important;
+      }
+
+      .theme-toggle-btn {
+        min-width: 0;
       }
     }
   }

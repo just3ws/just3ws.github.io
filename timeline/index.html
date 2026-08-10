@@ -2,8 +2,10 @@
 layout: minimal
 title: "Historical Era Timeline (2009–2026)"
 description: "Interactive historical timeline scrubbing through 17 years of oral history, software craftsmanship conferences, and developer interviews."
+body_class: timeline-network-page
 ---
 
+<article class="timeline-page">
 <div class="intel-hero">
   <div class="intel-hero-inner">
     <span class="intel-badge">UGtastic Oral History Canon</span>
@@ -42,166 +44,7 @@ description: "Interactive historical timeline scrubbing through 17 years of oral
   </section>
 </div>
 
-<style>
-.intel-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #ffffff;
-  padding: 3.5rem 1.5rem;
-  border-bottom: 4px solid #0284c7;
-}
-.intel-hero-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.intel-badge {
-  display: inline-block;
-  background: #0284c7;
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 800;
-  padding: 0.35rem 0.8rem;
-  border-radius: 9999px;
-  margin-bottom: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.intel-title {
-  font-size: 2.75rem;
-  font-weight: 900;
-  margin-bottom: 0.75rem;
-}
-.intel-subtitle {
-  font-size: 1.15rem;
-  color: #94a3b8;
-  max-width: 800px;
-  line-height: 1.6;
-}
-.intel-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-}
-.timeline-scrubber-card {
-  background: #f8fafc;
-  padding: 1.25rem;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  margin-bottom: 2rem;
-}
-.scrubber-labels {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-.era-btn {
-  padding: 0.55rem 1.1rem;
-  font-size: 0.88rem;
-  font-weight: 700;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #334155;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.era-btn:hover {
-  background: #f1f5f9;
-  border-color: #94a3b8;
-}
-.era-btn.active {
-  background: #0284c7;
-  border-color: #0284c7;
-  color: #ffffff;
-}
-.timeline-era-block {
-  margin-bottom: 3.5rem;
-}
-.era-header-card {
-  background: #ffffff;
-  border-left: 5px solid #0284c7;
-  border-radius: 0 12px 12px 0;
-  padding: 1.5rem 1.75rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  margin-bottom: 1.5rem;
-}
-.era-tag {
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: #0284c7;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-.era-title-display {
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: #0f172a;
-  margin: 0.25rem 0 0.5rem;
-}
-.era-desc-display {
-  font-size: 1.05rem;
-  color: #475569;
-  margin: 0;
-  line-height: 1.5;
-}
-.timeline-items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.25rem;
-}
-.timeline-interview-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.timeline-interview-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border-color: #38bdf8;
-}
-.card-year-badge {
-  align-self: flex-start;
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 0.2rem 0.5rem;
-  background: #e0f2fe;
-  color: #0369a1;
-  border-radius: 4px;
-  margin-bottom: 0.75rem;
-}
-.card-interview-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-.card-meta-text {
-  font-size: 0.88rem;
-  color: #64748b;
-  margin-bottom: 1rem;
-}
-.btn-view-timeline {
-  align-self: flex-start;
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #0284c7;
-  border: 1px solid #0284c7;
-  border-radius: 6px;
-  text-decoration: none;
-}
-.btn-view-timeline:hover {
-  background: #0284c7;
-  color: #ffffff;
-}
-</style>
+</article>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

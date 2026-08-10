@@ -1,0 +1,261 @@
+meta:
+  eyebrow: "An original system-cartography methodology"
+  title: "Panoramic View"
+  lede: >-
+    Panoramic View reconciles a system as interested parties understand it with
+    the domain model that encodes its business concepts and the runtime evidence
+    of how it actually behaves. Follow any actor's journey from left to right;
+    at every step, trace the interaction through the system and back with the
+    same fidelity.
+  scope: >-
+    The unit of inquiry is the intersection of business process and system
+    operation. As time and mandate permit, the map can extend beyond an
+    interface path to upstream supply chain, external partners, operational
+    controls, retention, and archival cold storage.
+  origin: >-
+    Mike Hall conceived Panoramic View circa 2021–2022, drawing on years of
+    production diagnosis, legacy-system ownership, observability, incremental
+    modernization, and organizational knowledge recovery. The earliest
+    timestamped exported evidence is from September 2023.
+
+actor_scope:
+  title: "Any actor. Any interface. The same fidelity."
+  text: >-
+    An actor is any participant pursuing a goal through a system: a human
+    customer or employee, an external organization, an automated service, or an
+    agentic AI system. Each encounters an interface that enacts a business
+    process—whether that interface is a screen, API, tool, event, or protocol.
+
+flagship_context:
+  title: "Rails platforms were the flagship proving ground."
+  text: >-
+    The flagship applications centered on complex Rails platform systems, then
+    traversed beyond Rails itself through actor-facing interfaces, domain rules,
+    services, integrations, infrastructure, data changes, and return paths with
+    the same evidence discipline.
+
+core_questions:
+  - "What do the interested parties understand the system to do?"
+  - "Which business process and goal is the actor pursuing through the interface?"
+  - "How does the implemented domain model encode those concepts, rules, and state changes?"
+  - "What does runtime evidence show the system actually does—and where is the delta?"
+
+reconciliation:
+  title: "Three accounts of one system"
+  models:
+    - name: "Interested-party understanding"
+      text: "The process, outcome, rules, and responsibilities customers, operators, Product, leadership, and other stakeholders believe the system supports."
+    - name: "Implemented domain model"
+      text: "The business concepts, relationships, constraints, decisions, and state transitions encoded in software and data."
+    - name: "Observed runtime behavior"
+      text: "What source, state changes, traces, logs, integrations, and external effects show the system actually does."
+  delta: >-
+    Panoramic View maps the correspondences and gaps among all three. The goal is
+    a complete-enough account for the defined decision scope, with contradictions,
+    confidence, provenance, and unknowns still visible.
+
+operating_sequence:
+  - name: "Stabilize"
+    summary: "Make immediate risk, ownership, and safe operating boundaries visible."
+  - name: "Understand"
+    summary: "Build a shared model of the journey, system behavior, decisions, evidence, and unknowns."
+  - name: "Innovate"
+    summary: "Modernize from an evidence-backed map instead of an aspirational diagram."
+
+dimensions:
+  - name: "The journey moves across"
+    summary: >-
+      The actor enters stage left, moves through a business process, pauses or
+      branches, and eventually exits stage right with an outcome.
+    label: "Horizontal axis"
+  - name: "Each interaction moves down and back"
+    summary: >-
+      A choice descends from the interface through application, service,
+      integration, and data layers. The response rises through those layers and
+      becomes the next state presented to the actor.
+    label: "Vertical axis"
+  - name: "Evidence and meaning travel together"
+    summary: >-
+      Runtime signals, source history, recordings, state changes, and human
+      knowledge are correlated with interested-party understanding, the
+      implemented domain model, actual system operation, ownership, confidence,
+      contradictions, and explicit unknowns.
+    label: "Context axis"
+
+discovery_loop:
+  - title: "Define the premise"
+    text: "Name the actor, intended outcome, starting state, and question the investigation must answer."
+  - title: "Traverse the next interaction"
+    text: "Follow the request and response through every observable technical and business layer."
+  - title: "Cross the boundary"
+    text: "Bring in the person who understands the next ownership, domain, or system boundary."
+  - title: "Capture evidence"
+    text: "Record behavior, state changes, transformations, decisions, absences, provenance, and confidence."
+  - title: "Synthesize and repeat"
+    text: "Update the model, mark contradictions and gaps, then continue until the required path is navigable."
+
+toolkit:
+  - title: "Runtime Reality"
+    text: "What correlated execution evidence shows the system actually did."
+  - title: "Assumed Reality"
+    text: "What interested parties, documents, diagrams, and narratives say before they have been reconciled with the domain model and runtime evidence."
+  - title: "HorizonWalker"
+    text: "A route-and-log traversal concept designed to help regenerate the map from connected evidence."
+  - title: "Fault Topography"
+    text: "A supporting error-cartography practice that places failures in the journeys, layers, and operating context where they occur."
+  - title: "Electric Panoramic"
+    text: "The sequential-visualization pillar: a way to replay the journey and its system waves, not a synonym for the whole methodology."
+
+projections:
+  - "Actor and business-process views"
+  - "System inventories and relationship maps"
+  - "Incident and failure topography"
+  - "Architecture and modernization views"
+  - "Ownership and knowledge-risk views"
+  - "Security, compliance, and quality views"
+  - "Decision-governance views"
+  - "AI-ready context with provenance and uncertainty"
+
+distinctions:
+  - from: "Observability tooling"
+    difference: >-
+      Traces, structured logs, metrics, recordings, and error tracking provide
+      evidence. OpenTelemetry is an important correlation instrument, but no
+      telemetry product is the method itself.
+  - from: "Architecture diagrams"
+    difference: >-
+      A diagram is one projection of the model. Panoramic View retains the
+      evidence, relationships, decisions, confidence, contradictions, and
+      unknowns needed to regenerate many views.
+  - from: "Customer-journey analytics"
+    difference: >-
+      The visible journey is the horizon, not the complete terrain. The method
+      connects each experience to the execution and organizational choices that
+      produced it.
+  - from: "Static documentation"
+    difference: >-
+      Documents can preserve conclusions. Panoramic View is a repeatable
+      discovery and reconciliation practice whose model changes when better
+      evidence arrives.
+
+applications:
+  - id: "enterprise"
+    scale: "Regulated multi-team enterprise"
+    situation: >-
+      Business-critical customer journeys crossed legacy interfaces,
+      applications, middleware, data stores, operational controls, and team
+      boundaries. Each group understood its own segment, but no durable shared
+      model connected the complete experience to system execution.
+    need: >-
+      Replace partial narratives with a correlated account that could support
+      diagnosis, risk review, instrumentation, ownership, and modernization
+      planning under continuous production load.
+    questions:
+      - "Where does the actor enter, branch, and reach a meaningful outcome?"
+      - "What calls what across application and ownership boundaries?"
+      - "Where is data read, transformed, persisted, or transmitted?"
+      - "Which identifiers connect browser behavior to downstream evidence?"
+      - "What evidence is absent, and how confident is each part of the map?"
+    evidence: >-
+      Browser evidence, structured logs, distributed traces, source inspection,
+      incident records, and subject-matter interviews fed a shared working
+      model. Its projections supported incident response, instrumentation
+      standards, modernization planning, and clearer ownership. Years later, on
+      two separate occasions, colleagues who did not know Mike had created the
+      material used documentation produced from the model to train him on the
+      system. The knowledge had become useful independent of its author.
+    limit: >-
+      The public account intentionally omits the employer, internal platforms,
+      proprietary identifiers, team names, repositories, and operating details.
+  - id: "founder-transition"
+    scale: "Small acquired healthcare software organization"
+    situation: >-
+      A regulated, multi-tenant legacy product had to remain operational while
+      its primary source of architectural history was leaving. Documentation,
+      test knowledge, ownership, deployment confidence, infrastructure
+      visibility, and transition authority were fragmented.
+    need: >-
+      Preserve institutional knowledge, create a safe operating picture, help a
+      distributed cross-cultural team work as a cohesive unit, and give
+      leadership a sequenced stabilization and modernization path.
+    questions:
+      - "What does the product actually do for each actor and business process?"
+      - "Which code, schema, infrastructure, and external boundaries support each path?"
+      - "Where is knowledge concentrated, and what will disappear at transition?"
+      - "Which risks have evidence, owners, mitigations, or unresolved dependencies?"
+      - "What can be observed safely without mutating production?"
+      - "What must be true before a release can be validated responsibly?"
+    evidence: >-
+      In 52 working days, the work established structured knowledge capture, a
+      navigable system and domain map, an owned risk model, read-only operational
+      visibility, team and cross-functional rhythms, and a sequenced
+      stabilization path.
+    limit: >-
+      "Established" is the durability boundary. This does not claim a complete
+      organizational transformation, a fully mapped production environment, or
+      long-term outcomes after the transition.
+
+case_study:
+  title: "Founder transition without a trustworthy system map"
+  label: "An anonymized application"
+  sections:
+    - title: "Problem"
+      text: >-
+        A small acquired healthcare software organization was losing
+        founder-held architectural knowledge while operating a regulated legacy
+        product. The distributed team inherited incomplete documentation,
+        fragmented ownership, and unresolved release-validation risk.
+    - title: "Original insight"
+      text: >-
+        Knowledge transfer could not be treated as note-taking. The organization
+        needed a model that connected what users did to business rules, system
+        execution, data changes, infrastructure, ownership, and the evidence
+        supporting each conclusion.
+    - title: "Method"
+      text: >-
+        Apply the Simple Loop of Discovery to priority actor paths. Start with a
+        premise, traverse the next interaction, cross each knowledge boundary,
+        capture evidence and absences, then update the shared map with confidence
+        and provenance attached.
+    - title: "Tools"
+      text: >-
+        Knowledge-transfer sessions, source and schema history, read-only system
+        inspection, operational evidence, structured risk records, visualization,
+        and AI-assisted synthesis were inputs to the model. None was treated as
+        authoritative without corroboration.
+    - title: "Application"
+      text: >-
+        The model became a practical field guide for team collaboration,
+        architectural orientation, operational visibility, risk ownership, and a
+        sequenced stabilization path. Visible decision rhythms helped the team
+        work across language, geography, and organizational boundaries.
+    - title: "Evidence"
+      text: >-
+        Within 52 working days, the engagement established navigable knowledge,
+        read-only visibility, explicit risk and ownership records, team operating
+        rhythms, and a responsible boundary between completed engineering work
+        and unresolved validation.
+    - title: "Limitations"
+      text: >-
+        The available evidence supports what was established during the
+        transition, not its long-term durability. It does not confirm that every
+        designed capability shipped or that the entire model ran against real
+        production traffic.
+    - title: "Future work"
+      text: >-
+        Complete absence instrumentation and decision-asset governance, make
+        projections regenerable from the canonical model, and validate the method
+        through a neutral worked example that reveals no proprietary system.
+
+limitations:
+  - "Absence instrumentation—capturing an expected action or signal that did not occur—remains an explicit gap."
+  - "Decision-asset governance—treating consequential decisions as versioned, owned evidence—remains an explicit gap."
+  - "A designed high-dimensional systems model is not described as shipped without stronger evidence."
+  - "A complete run against real production traffic is not confirmed by the available implementation evidence."
+  - "Any stale artifact must be regenerated before it can support a current-state claim."
+
+future_work:
+  - "Generalize the underlying evidence and relationship schema."
+  - "Complete absence and decision-governance capture."
+  - "Regenerate diagrams, inventories, and risk views from the canonical model."
+  - "Publish a neutral worked example with synthetic systems and data."

@@ -9,48 +9,37 @@ end_date: December 2020
 id: sk-holdings
 
 summary: >
-  Owned backend system stability and performance for a high-traffic Rails
-  platform supporting millions of users, leading modernization and data-layer
-  optimization to improve reliability and delivery under production load.
+  Led backend stability, performance, and modernization for high-traffic Rails
+  products, improving full-text search, campaign delivery pipelines, and data layer
+  reliability while systems remained under production load.
 
 highlights:
   - text: >
-      Critical performance bottlenecks under peak traffic were resolved by
-      replacing expensive reporting queries with Materialized Views and
-      migrating cache and session workloads to Redis, improving response times
-      and isolating transactional databases from non-critical load.
+      Replaced complex, outdated external search dependencies (Sphinx) with native MySQL
+      full-text search and optimized relational queries, simplifying deployment and
+      reducing platform infrastructure footprint.
 
   - text: >
-      Accumulating technical debt across a legacy Rails ecosystem was reduced by
-      leading hands-on upgrades of core Ruby and Rails stacks across multiple
-      applications, maintaining service continuity during high-risk platform
-      transitions.
+      Built and validated high-volume asynchronous messaging pipelines (SendGrid async batching)
+      and managed IP warmup protocols for large-scale marketing campaign operations.
 
   - text: >
-      Slow and unreliable delivery cycles were improved by re-architecting CI/CD
-      pipelines for parallel execution, reducing feedback time and enabling more
-      consistent and predictable releases.
+      Authored complex analytical SQL queries powering data-driven infographics
+      and international media coverage for high-volume content catalogs.
 
   - text: >
-      Limited operational visibility across distributed services was addressed
-      by introducing centralized logging and Prometheus-based monitoring,
-      enabling earlier detection of performance issues and reducing production
-      firefighting.
-
-  - text: >
-      High-volume data synchronization challenges were solved by designing and
-      implementing data pipelines to move and reconcile millions of records
-      across systems, supporting reliable integrations and new business
-      capabilities.
+      Led hands-on Ruby and Rails upgrades across multiple applications,
+      sequencing legacy remediation to maintain service continuity through
+      high-risk platform transitions.
 
 skills:
   - Ruby on Rails
-  - PostgreSQL
   - MySQL
+  - Full-Text Search
   - Redis
   - Sidekiq
-  - Prometheus
+  - SendGrid Async Pipelines
+  - Data Analytics & SQL
   - CI/CD
-  - Data Pipelines
   - System Observability
   - Backend Architecture

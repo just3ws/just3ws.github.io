@@ -1,0 +1,282 @@
+@use "p_variables" as *;
+
+.timeline-network-page {
+  background: #e9e3d8;
+}
+
+.timeline-page {
+  --timeline-ink: #252b2b;
+  --timeline-muted: #625f57;
+  --timeline-border: #b9ad98;
+  --timeline-surface: #e9e2d4;
+  --timeline-surface-2: #f0eadf;
+  --timeline-card: #fbf8f0;
+  --timeline-paper: #f4f0e6;
+  --timeline-accent: #0f7773;
+  --timeline-accent-soft: #d8e8e2;
+
+  width: 100%;
+  padding: clamp(1rem, 3vw, 2.6rem);
+  border-inline: 1px solid color-mix(in srgb, var(--timeline-border) 70%, transparent);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(15, 119, 115, 0.07), transparent 26rem),
+    repeating-linear-gradient(0deg, rgba(37, 43, 43, 0.018) 0, rgba(37, 43, 43, 0.018) 1px, transparent 1px, transparent 2rem),
+    var(--timeline-paper);
+  color: var(--timeline-ink);
+
+  h1,
+  h2,
+  h3,
+  p {
+    max-width: none;
+  }
+}
+
+.timeline-page .intel-hero {
+  padding: clamp(2.25rem, 6vw, 4.5rem) clamp(0.25rem, 2vw, 1.25rem) clamp(2rem, 5vw, 3.25rem);
+  border-top: 5px solid var(--timeline-accent);
+  border-bottom: 1px solid var(--timeline-border);
+  background: linear-gradient(115deg, rgba(251, 248, 240, 0.8), rgba(244, 240, 230, 0.16) 68%);
+}
+
+.timeline-page .intel-hero-inner {
+  max-width: none;
+  margin: 0;
+}
+
+.timeline-page .intel-badge,
+.timeline-page .section-kicker {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--timeline-accent);
+  font-size: 0.67rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.timeline-page .intel-title {
+  margin: 0;
+  color: var(--timeline-ink);
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 860;
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+}
+
+.timeline-page .intel-subtitle {
+  max-width: 48rem;
+  margin: 1.5rem 0 0;
+  color: var(--timeline-muted);
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.timeline-page .intel-subtitle strong {
+  color: var(--timeline-ink);
+}
+
+.timeline-page .intel-container {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.timeline-page .intel-section {
+  margin-block: clamp(3.5rem, 7vw, 5rem);
+}
+
+.timeline-page .section-header-editorial {
+  margin-bottom: 1.25rem;
+}
+
+.timeline-page .section-title {
+  margin: 0;
+  color: var(--timeline-ink);
+  font-size: clamp(1.85rem, 4vw, 3rem);
+  font-weight: 820;
+  letter-spacing: -0.05em;
+  line-height: 1.04;
+  text-transform: none;
+}
+
+.timeline-page .title-accent {
+  width: 4rem;
+  height: 3px;
+  margin: 0.9rem 0 0;
+  border: 0;
+  background: var(--timeline-accent);
+}
+
+.timeline-page .timeline-scrubber-card {
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-block: 1px solid var(--timeline-border);
+  background: transparent;
+}
+
+.timeline-page .scrubber-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.timeline-page .era-btn {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--timeline-border);
+  border-radius: 0.12rem;
+  background: var(--timeline-card);
+  color: var(--timeline-ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+  line-height: 1.3;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.timeline-page .era-btn:hover,
+.timeline-page .era-btn:focus-visible {
+  border-color: var(--timeline-accent);
+  background: var(--timeline-surface-2);
+}
+
+.timeline-page .era-btn:focus,
+.timeline-page .btn-view-timeline:focus,
+.timeline-page .era-btn:focus-visible,
+.timeline-page .btn-view-timeline:focus-visible {
+  outline: 3px solid var(--timeline-accent);
+  outline-offset: 3px;
+}
+
+.timeline-page .era-btn.active {
+  border-color: var(--timeline-accent);
+  background: var(--timeline-accent);
+  color: #fffdf7;
+}
+
+.timeline-page .timeline-era-block {
+  margin-bottom: 3.5rem;
+}
+
+.timeline-page .era-header-card {
+  margin-bottom: 1.35rem;
+  padding: 0.2rem 0 1rem 1rem;
+  border-bottom: 1px solid var(--timeline-border);
+  border-left: 4px solid var(--timeline-accent);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.timeline-page .era-tag {
+  color: var(--timeline-accent);
+  font-size: 0.67rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.timeline-page .era-title-display {
+  margin: 0.3rem 0 0.45rem;
+  color: var(--timeline-ink);
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  font-weight: 850;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.timeline-page .era-desc-display {
+  margin: 0;
+  color: var(--timeline-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.timeline-page .timeline-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 0.9rem;
+}
+
+.timeline-page .timeline-interview-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.1rem;
+  border: 1px solid var(--timeline-border);
+  border-radius: 0.18rem;
+  background: var(--timeline-card);
+  box-shadow: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.timeline-page .timeline-interview-card:hover {
+  border-color: var(--timeline-accent);
+  transform: translateY(-2px);
+}
+
+.timeline-page .card-year-badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 0.7rem;
+  padding: 0.18rem 0.4rem;
+  border-left: 3px solid var(--timeline-accent);
+  background: var(--timeline-accent-soft);
+  color: var(--timeline-accent);
+  font-size: 0.66rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+}
+
+.timeline-page .card-interview-title {
+  margin: 0 0 0.5rem;
+  color: var(--timeline-ink);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.timeline-page .card-meta-text {
+  margin: 0 0 1rem;
+  color: var(--timeline-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.timeline-page .btn-view-timeline {
+  align-self: flex-start;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid currentColor;
+  color: var(--timeline-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.timeline-page .btn-view-timeline:hover {
+  color: var(--timeline-ink);
+}
+
+@media (max-width: 640px) {
+  .timeline-page {
+    padding: 0.8rem;
+  }
+
+  .timeline-page .intel-title {
+    font-size: clamp(2.6rem, 13vw, 3.6rem);
+  }
+
+  .timeline-page .timeline-items-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-page,
+  .timeline-page * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
