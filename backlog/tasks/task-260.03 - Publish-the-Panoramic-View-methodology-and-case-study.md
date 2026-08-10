@@ -4,7 +4,7 @@ title: Publish the Panoramic View methodology and case study
 status: To Do
 assignee: []
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 17:12'
+updated_date: '2026-08-10 17:13'
 labels:
   - site-refresh
   - panoramic-view
@@ -18,7 +18,7 @@ type: enhancement
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Create public-facing material that explains Panoramic View as Mike Hall's original general methodology and uses an anonymized EMR-Bear application as later evidence. Teach the horizontal journey and vertical system-wave model, the discovery loop, instrumentation and governance concepts, current limitations, and future work.
+Create public-facing material that explains Panoramic View as Mike Hall's original general methodology and uses a later, anonymized application at an acquired healthcare software organization as supporting evidence. Teach the horizontal journey and vertical system-wave model, the discovery loop, instrumentation and governance concepts, current limitations, and future work.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
