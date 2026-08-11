@@ -6,8 +6,8 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.goto('/home/');
     await expect(page).toHaveTitle(/Mike Hall/);
     await expect(page.locator('.leadership-eyebrow').first()).toHaveText('Hands-on Director of Engineering');
-    await expect(page.locator('h1')).toContainText('Stabilize what is fragile');
-    await expect(page.locator('main')).toContainText('agentic AI system');
+    await expect(page.locator('h1')).toContainText('Hands-on engineering leadership');
+    await expect(page.locator('main')).toContainText('Phalanx Duel');
     const heroActions = page.locator('.leadership-hero .leadership-actions');
     await expect(heroActions.getByRole('link', { name: 'Review my experience' })).toHaveAttribute('href', '/');
     await expect(heroActions.getByRole('link', { name: 'Review selected work' })).toHaveAttribute('href', '/portfolio/');
@@ -42,7 +42,7 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.goto('/');
     await expect(page.locator('h1')).toContainText('Mike Hall');
     await expect(page.locator('.resume-header .title')).toHaveText('Hands-on Director of Engineering');
-    await expect(page.locator('#summary')).toContainText('platform modernization');
+    await expect(page.locator('#summary')).toContainText('20+ years of experience');
     await expect(page.locator('#experience .position').first()).toContainText('Development Manager');
     await expect(page.locator('#experience .position').first()).toContainText('founder transition');
     

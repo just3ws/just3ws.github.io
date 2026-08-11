@@ -2,7 +2,7 @@
 Hands-on Director of Engineering focused on system legibility, capable teams, operational stability, and evidence-led modernization.
 
 ## Summary
-Hands-on Director of Engineering who brings clarity to complex systems, builds capable engineering teams, and delivers safe platform modernization. Combines deep technical diagnosis and architecture with practical team leadership across regulated enterprise environments, high-growth products, and legacy systems under load. Builds shared operating models that help engineering teams move from isolated silos toward collective ownership, leveraging modern AI tooling to accelerate research and delivery without sacrificing engineering rigor.
+Hands-on Director of Engineering with 20+ years of experience leading platform teams, architecture refactors, and organizational transitions. I specialize in stepping into complex, undocumented, or fragile systems—aligning distributed engineering teams, debugging production reality, and turning ad hoc processes into predictable delivery. Equal parts technical leader, systems architect, and team builder.
 
 ## Skills
 - ["title", "Core Capabilities & Technologies"]
