@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-15 17:10'
-updated_date: '2026-08-15 17:26'
+updated_date: '2026-08-15 17:29'
 labels: []
 dependencies: []
 documentation:
@@ -65,4 +65,6 @@ Positioning refinement from user evidence: Staff candidates in Mike's interviewi
 OMF title interpretation clarified: `Associate Director` was the corporate grade and `Staff Engineer` was the technical job function; the role was not people management. Preserve the exact formal title, describe the work as a `senior technical IC`, and treat Principal as current market positioning rather than a claim about OMF's internal promotion decision.
 
 OMF leadership evidence clarified by Mike: no direct reports. He led software architecture for the Acquisition lane, helped realign team responsibilities with business organizational realities, founded and technically led ACQ Enablement, and led the OpenTelemetry initiative. Resume language now distinguishes technical authority and team topology from people management.
+
+Final title decision: use exactly `Principal Software Engineer` as the single professional identity. Production systems, reliability, modernization, observability, and AI augmentation remain specializations in summary/skills rather than additions to the title. Employer-assigned titles remain unchanged in chronology.
 <!-- SECTION:NOTES:END -->
