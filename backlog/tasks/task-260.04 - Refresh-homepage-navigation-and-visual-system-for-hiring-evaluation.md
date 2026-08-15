@@ -1,11 +1,11 @@
 ---
 id: TASK-260.04
 title: Refresh homepage navigation and visual system for hiring evaluation
-status: In Progress
+status: Done
 assignee:
   - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-15 18:27'
+updated_date: '2026-08-15 18:47'
 labels:
   - site-refresh
   - panoramic-view
@@ -13,15 +13,20 @@ dependencies:
   - TASK-260.02
   - TASK-260.03
 modified_files:
-  - _data/home.yml
-  - home/index.html
-  - _data/navigation.yml
-  - _sass/_p_home_refresh.scss
-  - _sass/_p_theme_modern.scss
-  - _sass/_p_theme_kanagawa.scss
-  - assets/css/site.scss
+  - .agents/product-marketing-context.md
   - _config.yml
+  - _data/home.yml
+  - _data/navigation.yml
   - _includes/head/base.html
+  - _sass/_p_home_refresh.scss
+  - _sass/_p_theme_kanagawa.scss
+  - _sass/_p_theme_modern.scss
+  - about/index.html
+  - assets/css/site.scss
+  - bin/smoke_playwright.sh
+  - docs/site-refresh/panoramic-view-positioning.md
+  - home/index.html
+  - resume.html
   - tests/layout.spec.js
 parent_task_id: TASK-260
 priority: high
@@ -36,16 +41,16 @@ Recompose the homepage and shared presentation so a human or AI evaluator quickl
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The homepage communicates the exact `Principal Software Engineer` identity and a plain-language technical IC value proposition above the fold
-- [ ] #2 Visitors have clear paths to the résumé, selected work, complete history, contact, and the public archive; the unpublished Panoramic View route is not linked
-- [ ] #3 Desktop and mobile heading scales are readable, small text and primary actions meet AA contrast, and the visual system retains its editorial character
-- [ ] #4 Primary navigation and homepage content work without clipping or horizontal overflow at supported mobile widths
-- [ ] #5 Existing public routes remain available and the Jekyll build, scoped internal-link validation, accessibility checks, and Playwright smoke checks pass
+- [x] #1 The homepage communicates the exact `Principal Software Engineer` identity and a plain-language technical IC value proposition above the fold
+- [x] #2 Visitors have clear paths to the résumé, selected work, complete history, contact, and the public archive; the unpublished Panoramic View route is not linked
+- [x] #3 Desktop and mobile heading scales are readable, small text and primary actions meet AA contrast, and the visual system retains its editorial character
+- [x] #4 Primary navigation and homepage content work without clipping or horizontal overflow at supported mobile widths
+- [x] #5 Existing public routes remain available and the Jekyll build, scoped internal-link validation, accessibility checks, and Playwright smoke checks pass
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -84,6 +89,12 @@ Browser and visual verification: all eight Playwright tests passed across refres
 Full validation: after cleaning the generated site, Jekyll built 1,038 pages with zero accessibility warnings and `bundle exec rake validate` passed data, archive, generated freshness, repository hygiene, SEO/indexability, semantics, exports, SEO budgets, and HTML-Proofer checks over 1,018 files and 832 internal links. Existing generated-export destination-collision warnings remain unchanged.
 
 Reviewer verdict: PASS. The homepage now provides one evaluator path from current identity to operating method, multi-scale practical evidence, selected work, complete history, and contact. Repeated generic cards were replaced by editorial rows and system-map motifs; no new scripted motion was added; reduced-motion and both themes are supported; mobile clipping is resolved.
+
+The earlier implementation-note phrase `Hands-on Director of Engineering` is superseded. The permanent public identity is exactly `Principal Software Engineer`; OneMain's historical title remains `Associate Director, Staff Engineer` in that position's source data.
+
+Independent site-refresh review verdict: PASS. Its only minor observation was a mismatch between the stated mobile H1 cap and the test location. The home breakpoint is now 1.85rem and the ≤34px assertion runs in the 375px `/home/` test; the installed-localhost desktop/mobile smoke pair passes 2/2.
+
+Critical-surface A11y, ATS, and search audit completed for `/home/`, `/`, `/portfolio/`, `/history/`, the OneMain role page, `/contact/`, exports, and the print PDF. Resume surfaces are structurally strong. Portfolio slideshow controls, keyboard modal behavior, repeated image alternatives, and proof-oriented positioning remain a separate follow-up rather than an expansion of this homepage slice.
 <!-- SECTION:NOTES:END -->
 
 ## Comments
@@ -94,3 +105,9 @@ created: 2026-08-15 18:27
 User review: `/home/` is materially improved but its header type renders too large and its copy reads unnaturally. Reopened this bounded homepage slice for a typography and voice correction; the previously approved structure, routes, evidence boundaries, and theme behavior remain the baseline.
 ---
 <!-- COMMENTS:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Reframed `/home/` around the exact Principal Software Engineer identity with concise first-person technical-IC copy and restrained editorial typography. Preserved core evaluator and archive routes, removed the link to the unpublished Panoramic View page, aligned active marketing/site metadata, and kept the legacy `/resume.html` alias available but out of search indexing. Updated responsive styling and regression coverage, including a verified ≤34px mobile hero heading. Jekyll built 1,040 pages with zero markup accessibility warnings; scoped metadata, SEO, indexability, semantic, export, link, and Playwright checks passed; independent visual review returned PASS.
+<!-- SECTION:FINAL_SUMMARY:END -->
