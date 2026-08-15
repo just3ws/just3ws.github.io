@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-15 17:10'
-updated_date: '2026-08-15 17:13'
+updated_date: '2026-08-15 17:16'
 labels: []
 dependencies: []
 documentation:
@@ -59,4 +59,6 @@ Silent convention/risk: shared resume YAML fans out to root HTML, /resume.html, 
 Scope boundary: /home/ and the product-marketing context still target Director roles. This task intentionally changes resume surfaces only; broader site positioning is a potential follow-up, not an implicit scope expansion.
 
 User refinement: the resume must remain data-driven by Jekyll. Resume identity and SEO copy will live under `_data/resume`; root and resume pages, JSON-LD, exports, validators, and tests will consume generated data instead of becoming parallel sources of truth.
+
+Positioning refinement from user evidence: Staff candidates in Mike's interviewing experience skewed younger, creating an age/seniority interpretation risk at 50. The public master resume will lead with `Principal Software Engineer — Production Systems & Reliability`; OneMain's exact Staff title remains unchanged. This presents a deliberate terminal-IC specialization, avoids a hedged dual-level headline, and keeps older experience compressed on the main resume.
 <!-- SECTION:NOTES:END -->
