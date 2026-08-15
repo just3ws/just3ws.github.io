@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-15 17:10'
-updated_date: '2026-08-15 17:24'
+updated_date: '2026-08-15 17:26'
 labels: []
 dependencies: []
 documentation:
@@ -63,4 +63,6 @@ User refinement: the resume must remain data-driven by Jekyll. Resume identity a
 Positioning refinement from user evidence: Staff candidates in Mike's interviewing experience skewed younger, creating an age/seniority interpretation risk at 50. The public master resume will lead with `Principal Software Engineer — Production Systems & Reliability`; OneMain's exact Staff title remains unchanged. This presents a deliberate terminal-IC specialization, avoids a hedged dual-level headline, and keeps older experience compressed on the main resume.
 
 OMF title interpretation clarified: `Associate Director` was the corporate grade and `Staff Engineer` was the technical job function; the role was not people management. Preserve the exact formal title, describe the work as a `senior technical IC`, and treat Principal as current market positioning rather than a claim about OMF's internal promotion decision.
+
+OMF leadership evidence clarified by Mike: no direct reports. He led software architecture for the Acquisition lane, helped realign team responsibilities with business organizational realities, founded and technically led ACQ Enablement, and led the OpenTelemetry initiative. Resume language now distinguishes technical authority and team topology from people management.
 <!-- SECTION:NOTES:END -->
