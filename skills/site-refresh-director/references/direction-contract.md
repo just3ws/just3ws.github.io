@@ -6,7 +6,7 @@ This contract adapts the audit-first redesign protocol, three design dials, anti
 
 ## Durable Context
 
-- just3ws.com is a personal brand site, Staff-level engineering record, and public technical archive.
+- just3ws.com is a personal brand site, Principal-level engineering record, and public technical archive.
 - Public material must satisfy `CONTEXT.md` and `docs/adr/0001-public-archive-publication-contract.md`.
 - The site is Jekyll with Liquid, semantic HTML, modular SCSS, vanilla JavaScript, canonical YAML data, and Playwright smoke tests.
 - The established voice is calm, technically literate, systems-aware, builder-respectful, and hype-free.

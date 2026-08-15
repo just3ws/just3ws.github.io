@@ -1,32 +1,45 @@
 # Mike Hall
-Hands-on Director of Engineering focused on system legibility, capable teams, operational stability, and evidence-led modernization.
+Principal Software Engineer
 
 ## Summary
-Hands-on Director of Engineering with 20+ years of experience leading platform teams, architecture refactors, and organizational transitions. I specialize in stepping into complex, undocumented, or fragile systems—aligning distributed engineering teams, debugging production reality, and turning ad hoc processes into predictable delivery. Equal parts technical leader, systems architect, and team builder.
+Principal software engineer who stabilizes complex production systems, leads architecture and modernization, and turns incomplete system knowledge into safe, executable change. Works across Ruby on Rails, PostgreSQL, distributed services, cloud infrastructure, and delivery systems, with deep experience in regulated and legacy environments. Leads through technical evidence: tracing failures end to end, resolving data integrity and reliability risks, establishing observability standards, and aligning multiple teams around clear ownership. Uses AI and automation to expand investigative and delivery capacity while keeping security constraints, source evidence, automated checks, and human judgment explicit.
 
 ## Skills
-- ["title", "Core Capabilities & Technologies"]
-- ["categories", [{"name" => "Engineering Leadership", "items" => ["Distributed & Cross-Cultural Team Leadership", "Organizational Design & Transition Leadership", "Engineering Enablement & Mentorship", "Cross-Functional Decision-Making"]}, {"name" => "Systems & Strategy", "items" => ["Panoramic View & System Cartography", "Platform Architecture & Legacy Modernization", "Incident Leadership & Production Diagnosis", "System Reliability & Risk Management"]}, {"name" => "Delivery & Operations", "items" => ["Observability (OpenTelemetry)", "CI/CD & Production Delivery", "Distributed Systems & Asynchronous Processing", "Data Integrity & Performance"]}, {"name" => "AI-Augmented Engineering", "items" => ["Evidence Gathering & Technical Analysis", "LLM Orchestration & Evaluation", "Human-Reviewed Agent Workflows"]}, {"name" => "Technologies", "items" => ["Ruby on Rails", "PostgreSQL (including pgvector)", "Sidekiq & Redis", "AWS", "Kubernetes, Docker & Linux"]}]]
+- Cross-Team Technical Leadership
+- Platform Architecture & Legacy Modernization
+- Production Systems & Reliability
+- System Cartography & Knowledge Recovery
+- Incident Response & Root Cause Analysis
+- Observability & OpenTelemetry
+- Distributed Systems & Async Processing
+- Data Integrity & Performance
+- Platform Enablement & Developer Productivity
+- AI-Augmented Engineering & Automation
+- Ruby on Rails
+- PostgreSQL & SQL
+- Sidekiq & Redis
+- AWS, Kubernetes & Docker
+- CI/CD
 
 ## Experience
 
 ### Development Manager at EMR-Bear, a MedSuite company
 **May 2026 — August 2026**
 
-Led engineering continuity and system stabilization for a multi-tenant healthcare platform during a founder transition, aligning a distributed U.S.-Mexico engineering team around shared priorities and operational risk visibility.
+Stabilized and mapped a multi-tenant healthcare platform during a founder transition, combining hands-on technical investigation with continuity planning for a distributed U.S.-Mexico engineering team.
 
 **Key Outcomes:**
-- Converted an ad hoc founder transition into structured engineering continuity, establishing clear system ownership, explicit risk management, and a stabilization roadmap for leadership.
-- Worked hands-on with the team, leveraging deep systems experience to reason across delivery, architecture, security, and operations—establishing a clear shared view of dependencies and risk without introducing production mutation.
-- Established 1:1s, daily collaboration, office hours, visible priorities, and decision rhythms for the distributed engineering team, moving work from isolated execution toward shared ownership and self-direction.
+- Built a navigable system inventory and risk model spanning application, infrastructure, deployment, security, and operations, giving engineers and leadership a shared basis for stabilization decisions.
+- Converted an ad hoc founder transition into structured engineering continuity with explicit system ownership, visible operational risk, and a prioritized stabilization path.
 - Made release-readiness dependencies explicit by separating completed engineering work from unresolved test and operational validation, preserving a clear safety boundary around a multi-tenant production system.
+- Established daily collaboration, office hours, visible priorities, and decision rhythms that moved the distributed team from isolated execution toward shared technical ownership.
 
-**Skills:** Engineering Leadership, Distributed Team Leadership, Knowledge Recovery, Legacy System Modernization, System Cartography, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, AI-Augmented Engineering
+**Skills:** Technical Leadership, Knowledge Recovery, Legacy System Modernization, System Cartography, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, AI-Augmented Engineering, Distributed Team Collaboration
 
 ### Associate Director, Staff Engineer at OneMain Financial
 **January 2021 — February 2026**
 
-Led architecture, production stability, and cross-team execution for a business-critical customer platform in a regulated financial enterprise, combining hands-on system diagnosis with modernization, observability, and engineering enablement.
+Served as the senior technical IC and software architecture lead for the Acquisition lane of a regulated financial enterprise, combining hands-on system diagnosis with production stability, modernization, observability, and cross-team technical direction.
 
 
 **Key Outcomes:**
@@ -36,14 +49,14 @@ Led architecture, production stability, and cross-team execution for a business-
 
 - Re-architected state handling across multi-step Rails workflows, correcting a persistent integrity failure and restoring reliable diagnosis and recovery across a business-critical customer journey.
 
-- Created an engineering enablement function that protected platform, reliability, and remediation work from competing feature pressure, then clarified ownership so the work could continue across teams.
+- Realigned Acquisition engineering responsibilities around business ownership and system boundaries, then founded and technically led ACQ Enablement to protect platform reliability, remediation, and modernization work from competing feature pressure.
 
 - Founded and led an OpenTelemetry working group, established observability standards, trained engineering and cybersecurity partners, and transitioned ownership after adoption became self-sustaining.
 
 - Introduced privacy-conscious local AI workflows for analysis and engineering support, increasing investigative leverage while keeping human review, security constraints, and source evidence explicit.
 
 
-**Skills:** Engineering Leadership, Platform Architecture, System Cartography, System Resilience, Incident Leadership, Observability, Legacy System Modernization, Distributed Systems, Ruby on Rails, PostgreSQL, OpenTelemetry, AWS
+**Skills:** Cross-Team Technical Leadership, Platform Architecture, System Cartography, System Resilience, Incident Leadership, Observability, Legacy System Modernization, Distributed Systems, Ruby on Rails, PostgreSQL, OpenTelemetry, AWS
 
 ### Senior Backend Developer at SK Holdings, Inc.
 **January 2019 — December 2020**

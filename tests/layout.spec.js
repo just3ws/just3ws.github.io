@@ -3,14 +3,19 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Site Layout and Aesthetics', () => {
   test('Home page renders correctly', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/home/');
-    await expect(page).toHaveTitle(/Mike Hall/);
-    await expect(page.locator('.leadership-eyebrow').first()).toHaveText('Hands-on Director of Engineering');
-    await expect(page.locator('h1')).toContainText('Hands-on engineering leadership');
+    await expect(page).toHaveTitle(/Mike Hall \| Principal Software Engineer/);
+    await expect(page.locator('.leadership-eyebrow').first()).toHaveText('Principal Software Engineer');
+    await expect(page.locator('h1')).toContainText('complex software systems');
+    await expect(page.locator('main')).not.toContainText('Director of Engineering');
     await expect(page.locator('main')).toContainText('Phalanx Duel');
+    await expect(page.locator('main a[href="/panoramic-view/"]')).toHaveCount(0);
+    const homeHeadingSize = Number.parseFloat(await page.locator('h1').evaluate((element) => getComputedStyle(element).fontSize));
+    expect(homeHeadingSize).toBeLessThanOrEqual(60);
     const heroActions = page.locator('.leadership-hero .leadership-actions');
-    await expect(heroActions.getByRole('link', { name: 'Review my experience' })).toHaveAttribute('href', '/');
-    await expect(heroActions.getByRole('link', { name: 'Review selected work' })).toHaveAttribute('href', '/portfolio/');
+    await expect(heroActions.getByRole('link', { name: 'Read my résumé' })).toHaveAttribute('href', '/');
+    await expect(heroActions.getByRole('link', { name: 'See selected work' })).toHaveAttribute('href', '/portfolio/');
     await expect(page.getByRole('link', { name: 'Complete history' })).toHaveAttribute('href', '/history/');
     await expect(page.getByRole('link', { name: 'Contact Mike' })).toHaveAttribute('href', '/contact/');
 
@@ -39,10 +44,15 @@ test.describe('Site Layout and Aesthetics', () => {
   });
 
   test('Resume renders correctly and is professional', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/');
     await expect(page.locator('h1')).toContainText('Mike Hall');
-    await expect(page.locator('.resume-header .title')).toHaveText('Hands-on Director of Engineering');
-    await expect(page.locator('#summary')).toContainText('20+ years of experience');
+    await expect(page.locator('.resume-header .title')).toHaveText('Principal Software Engineer');
+    await expect(page.locator('#summary')).toContainText('incomplete system knowledge into safe, executable change');
+    await expect(page.locator('.resume-intro')).toBeVisible();
+    await expect(page.locator('.resume-focus-index li')).toHaveCount(4);
+    await expect(page.locator('.resume-focus-index')).toContainText('Production Systems');
+    await expect(page.locator('.resume-quick-exports')).toHaveCount(0);
     await expect(page.locator('#experience .position').first()).toContainText('Development Manager');
     await expect(page.locator('#experience .position').first()).toContainText('founder transition');
     
@@ -59,7 +69,7 @@ test.describe('Site Layout and Aesthetics', () => {
     
     const categoryLabel = page.locator('.skills-category .category-name');
     await expect(categoryLabel.first()).toBeVisible();
-    await expect(categoryLabel.first()).toContainText(/Engineering Leadership/i);
+    await expect(categoryLabel.first()).toContainText(/Technical Leadership/i);
 
     const skillItem = page.locator('.skills-list li');
     await expect(skillItem.first()).toBeVisible();
@@ -69,7 +79,7 @@ test.describe('Site Layout and Aesthetics', () => {
   });
 
   test('Resume remains readable at mobile width', async ({ page }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
+    await page.setViewportSize({ width: 375, height: 812 });
     await page.goto('/');
 
     const resume = page.locator('.ats-resume-content');
@@ -82,6 +92,33 @@ test.describe('Site Layout and Aesthetics', () => {
     expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth + 1);
 
     await page.screenshot({ path: 'tmp/screenshots/mobile-resume.png', fullPage: true });
+  });
+
+  test('Full history uses the shared resume system', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto('/history/');
+
+    await expect(page.locator('.resume-intro')).toBeVisible();
+    await expect(page.locator('.resume-header .title')).toHaveText('Principal Software Engineer');
+    await expect(page.locator('.resume-focus-index li')).toHaveCount(4);
+    await expect(page.getByRole('heading', { name: 'Full Career History' })).toBeVisible();
+    expect(await page.locator('#experience .position').count()).toBeGreaterThan(10);
+    await page.screenshot({ path: 'tmp/screenshots/history.png', fullPage: true });
+  });
+
+  test('Full history remains readable at mobile width', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('/history/');
+
+    const history = page.locator('.resume-history-content');
+    await expect(history).toBeVisible();
+    const metrics = await history.evaluate((element) => ({
+      scrollWidth: element.scrollWidth,
+      clientWidth: element.clientWidth,
+    }));
+    expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth + 1);
+    await page.screenshot({ path: 'tmp/screenshots/mobile-history-top.png' });
+    await page.screenshot({ path: 'tmp/screenshots/mobile-history.png', fullPage: true });
   });
 
   test('Current position detail is linked from the resume', async ({ page }) => {
@@ -208,7 +245,6 @@ test.describe('Site Layout and Aesthetics', () => {
       documentWidth: document.documentElement.scrollWidth,
     }));
     expect(viewportMetrics.documentWidth).toBeLessThanOrEqual(viewportMetrics.viewportWidth + 1);
-
     await page.screenshot({ path: 'tmp/screenshots/mobile-taxonomy.png', fullPage: true });
 
     await page.getByRole('button', { name: 'Toggle Kanagawa Wave Theme' }).click();
@@ -308,6 +344,8 @@ test.describe('Site Layout and Aesthetics', () => {
       documentWidth: document.documentElement.scrollWidth,
     }));
     expect(viewportMetrics.documentWidth).toBeLessThanOrEqual(viewportMetrics.viewportWidth + 1);
+    const homeHeadingSize = Number.parseFloat(await page.locator('h1').evaluate((element) => getComputedStyle(element).fontSize));
+    expect(homeHeadingSize).toBeLessThanOrEqual(34);
 
     const navMetrics = await navLinks.evaluate((element) => ({
       scrollWidth: element.scrollWidth,

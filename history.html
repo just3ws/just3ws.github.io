@@ -1,27 +1,21 @@
 ---
 layout: resume
-title: Mike Hall - Complete Career Timeline
-description: Complete career timeline for Mike Hall, hands-on Director of Engineering, with role progression, leadership context, and technical scope.
+resume_seo_key: history
 permalink: /history/
 person_schema: true
 use_digital_patina: false
+body_class: ats-resume resume-history
 ---
 
-<nav class="resume-actions no-print" aria-label="Career timeline export actions">
-  <span class="resume-actions-label">Timeline Exports</span>
-  <button aria-label="Print or save complete career timeline as PDF" title="Print or save complete career timeline as PDF" onclick="window.print()">Print / PDF</button>
-</nav>
+<article class="ats-resume-content resume-history-content">
+  {% include resume/intro.html %}
 
-<header class="home-header">
-  <h2>Complete Career Timeline <span class="subtitle">Full History</span></h2>
-  <h2 class="title">Technical scope and delivery context across my career.</h2>
-</header>
-
-<article>
-  {% include resume/profile-header.html %}
-
-  <section id="experience">
-    <h2>Full Career History</h2>
+  <section id="experience" aria-labelledby="full-career-history-title">
+    <header class="resume-history-heading">
+      <p class="resume-history-kicker">Complete Career Timeline <span>Full History</span></p>
+      <h2 id="full-career-history-title">Full Career History</h2>
+      <p class="resume-history-deck">Technical scope and delivery context across my career.</p>
+    </header>
     {% for item in site.data.resume.timeline.history %}
     {% assign position = site.data.resume.positions[item] %}
     {% if position %}

@@ -1,18 +1,18 @@
 # Product Marketing Context
 
-*Last updated: 2026-08-10*
+*Last updated: 2026-08-15*
 
 ## Product Overview
 
-**One-liner:** The professional home of Mike Hall, a hands-on Director of Engineering who makes complex systems understandable, engineering teams more capable, and consequential change safer to deliver.
+**One-liner:** The professional home of Mike Hall, a Principal Software Engineer who makes complex production systems easier to understand and safer to change.
 
-**What it does:** The site helps a hiring manager, recruiter, technical executive, or AI-assisted evaluator determine Mike's current fit without reading a 25-year chronology first. It leads with present-tense leadership, demonstrates the Panoramic View system-cartography methodology, offers selected evidence, and preserves the complete career and community archive as deeper proof.
+**What it does:** The site helps a hiring manager, recruiter, technical executive, or AI-assisted evaluator determine Mike's current fit without reading the complete chronology first. It leads with present-tense technical IC work, explains the Panoramic View system-cartography methodology, offers selected evidence, and preserves the complete career and community archive as deeper proof.
 
-**Product category:** Engineering leadership portfolio and public technical archive.
+**Product category:** Principal engineering portfolio and public technical archive.
 
 **Product type:** Personal professional site, evidence portfolio, and long-lived public archive.
 
-**Business model:** Career presence for full-time engineering leadership opportunities. No public pricing or packaged consulting offer is currently defined.
+**Business model:** Career presence for full-time Principal Software Engineer opportunities. No public pricing or packaged consulting offer is currently defined.
 
 ## Target Audience
 
@@ -20,20 +20,20 @@
 
 **Primary decision-makers:**
 
-- CTOs, VPs of Engineering, and senior product or technology leaders hiring a Director or Head of Engineering.
-- Hiring managers seeking a technically deep engineering leader rather than a process-only manager.
+- CTOs, VPs of Engineering, and senior product or technology leaders hiring a Principal Software Engineer.
+- Hiring managers seeking a senior technical IC who can lead architecture and cross-team initiatives without requiring people-management authority.
 - Recruiters evaluating leadership scope, current relevance, role fit, and career continuity.
 - AI-assisted hiring systems extracting role identity, evidence, chronology, and differentiators.
 
-**Secondary audiences:** Staff and Principal engineers evaluating a future leader or peer; Product, Operations, Security, and Quality leaders assessing cross-functional judgment; technical peers exploring Panoramic View or the public archive.
+**Secondary audiences:** Staff and Principal engineers evaluating a future peer; Product, Operations, Security, and Quality leaders assessing cross-functional judgment; technical peers exploring Panoramic View or the public archive.
 
-**Primary use case:** Decide whether Mike should enter a hiring conversation for a hands-on Director of Engineering role.
+**Primary use case:** Decide whether Mike should enter a hiring conversation for a Principal Software Engineer role.
 
 **Jobs to be done:**
 
 - Understand Mike's professional identity and likely operating value in less than two minutes.
 - Verify that his breadth forms a coherent leadership pattern rather than an unfocused list of skills.
-- See evidence that he can stabilize systems, recover shared understanding, develop teams, and lead modernization.
+- See evidence that he can stabilize systems, recover shared understanding, lead architecture, and guide modernization across teams.
 - Explore the depth behind a claim without forcing every visitor through the full history.
 
 **Common situations:**
@@ -48,22 +48,22 @@
 
 | Persona | Cares about | Challenge | Value promised |
 |---|---|---|---|
-| CTO or VP Engineering | Judgment, leverage, risk, organizational lift | Needs a director who can lead people without losing technical depth | A hands-on leader who makes the terrain and tradeoffs visible before committing the organization |
+| CTO or VP Engineering | Judgment, leverage, risk, organizational lift | Needs a principal IC who can lead complex technical work across team boundaries | A hands-on technical leader who makes the terrain and tradeoffs visible before committing the organization |
 | Hiring manager | Scope match, outcomes, credibility | Broad experience and a short recent role require quick interpretation | A focused current identity with bounded, traceable evidence and a calm transition explanation |
-| Recruiter | Searchability, titles, chronology, concise fit | Must map a nonlinear career to an open role quickly | Clear Director-level positioning, current keywords, selected recent experience, and accessible full history |
-| Staff or Principal engineer | Technical credibility and working relationship | Does not want a leader who substitutes status reporting for system understanding | A leader who can investigate deeply, preserve uncertainty, and build shared technical context |
+| Recruiter | Searchability, titles, chronology, concise fit | Must map a nonlinear career to an open role quickly | Clear Principal Software Engineer positioning, current keywords, selected recent experience, and accessible full history |
+| Staff or Principal engineer | Technical credibility and working relationship | Needs a peer who can lead through evidence without relying on reporting authority | A principal IC who can investigate deeply, preserve uncertainty, and build shared technical context |
 | AI hiring evaluator | Structured identity, entities, dates, proof, links | Archive volume can obscure the hiring signal | Semantic headings, consistent terminology, concise summaries, and linked evidence surfaces |
 
 ## Problems & Pain Points
 
-**Core problem:** Mike's professional record is unusually broad and deep, but the current site makes visitors assemble the through-line themselves. The archive and project history can compete with the immediate hiring decision, while a Staff Engineer headline understates his present leadership scope.
+**Core problem:** Mike's professional record is unusually broad and deep, but the site can make visitors assemble the through-line themselves. The archive and project history can compete with the immediate hiring decision, and management-oriented labels misrepresent the technical IC work he wants to do.
 
 **Why alternatives fall short:**
 
 - A conventional chronological résumé compresses the distinctive operating method into disconnected bullets.
 - An executive-brand landing page can sound polished but unprovable.
-- A full technical portfolio can over-index on tools and bury team leadership.
-- An exhaustive 25-year history can trigger age assumptions before current relevance is established.
+- A full technical portfolio can over-index on tools and bury cross-team technical leadership.
+- An exhaustive career history can trigger age assumptions before current relevance is established.
 - Naming confidential implementation contexts can create unnecessary risk without improving the proof.
 
 **What it costs:** Missed interviews, incorrect role matching, skepticism about breadth, and evaluators overlooking the repeatable pattern connecting systems diagnosis, team leadership, observability, modernization, and knowledge recovery.
@@ -72,9 +72,9 @@
 
 ## Competitive Landscape
 
-**Direct:** Other Director of Engineering candidates with conventional people-management résumés. They may present longer management tenure but often show less direct evidence of system-level technical judgment.
+**Direct:** Other Principal Software Engineer candidates with conventional architecture and platform résumés. They may present a narrower title progression but often show less evidence connecting system-level judgment to organization-wide execution.
 
-**Secondary:** Staff or Principal engineers seeking leadership roles. They may show comparable technical depth but less evidence of building team operating systems and cross-functional alignment.
+**Secondary:** Staff engineers seeking broader technical scope. They may show comparable hands-on depth but less evidence of sustained architecture, production, and cross-functional leadership.
 
 **Indirect:** Fractional CTO, transformation consultant, or turnaround-executive positioning. It addresses similar ambiguity and modernization problems but can make Mike appear external, temporary, or crisis-only when he is seeking durable organizational leadership.
 
@@ -104,19 +104,19 @@
 | Objection | Response |
 |---|---|
 | "His background is too broad." | Lead with one role identity and one operating pattern; use the breadth as supporting evidence that he can follow cause and effect across boundaries. |
-| "Is he an IC or a manager?" | Position him as a hands-on Director of Engineering: accountable for teams and outcomes, still capable of deep technical investigation. |
+| "Is he an IC or a manager?" | Position him plainly as a Principal Software Engineer. Management experience supplies organizational fluency; it is not the target job family. |
 | "The recent role was very short." | Present it factually as a direct-hire role during a founder transition; show bounded work completed; explain that leadership was consolidated at the parent-company VP level without grievance or retrospective contract framing. |
 | "Is Panoramic View just observability or customer-journey mapping?" | Explain the two-dimensional system model and evidence discipline; observability is one input, and the customer journey is only the visible horizon. |
 | "Did all of the proposed tooling ship?" | Separate method, implemented capabilities, partial implementations, explicit gaps, and future work. Never turn a design or citation into a shipped claim. |
 | "Is 25+ years of history still relevant?" | Put the current five years and present operating value first; provide selected earlier proof and a separate complete timeline. |
 
-**Anti-persona:** Organizations seeking a process-only manager detached from technical work, a narrow IC with no team or organizational responsibility, a leader expected to manufacture confidence without evidence, or an environment where raising material system risk is treated as disloyalty.
+**Anti-persona:** Roles where direct people management is the primary job, narrow feature-delivery roles with no system or cross-team scope, leaders expected to manufacture confidence without evidence, or environments where raising material system risk is treated as disloyalty.
 
 ## Switching Dynamics
 
 **Push:** Repeated incidents, undocumented systems, fragile ownership, stalled modernization, unclear responsibility, and teams making decisions from conflicting partial narratives.
 
-**Pull:** A leader who can create shared visibility, establish safe operating boundaries, align a team, and connect immediate stabilization to a credible modernization path.
+**Pull:** A principal IC who can create shared visibility, establish safe operating boundaries, align technical work across teams, and connect immediate stabilization to a credible modernization path.
 
 **Habit:** Hiring separately for management, architecture, observability, delivery, and knowledge management while leaving the relationships between those disciplines unowned.
 
@@ -141,7 +141,7 @@
 - "Preserve uncertainty instead of manufacturing confidence."
 - "Enter stage left; exit stage right."
 
-**Words to use:** hands-on Director of Engineering, systems-oriented, evidence-backed, system cartography, Panoramic View, runtime reality, shared understanding, legibility, stabilization, modernization, distributed team, institutional knowledge, safe change, provenance, confidence, known unknowns.
+**Words to use:** Principal Software Engineer, senior technical IC, systems-oriented, evidence-backed, system cartography, Panoramic View, runtime reality, shared understanding, legibility, stabilization, modernization, cross-team technical leadership, institutional knowledge, safe change, provenance, confidence, known unknowns.
 
 **Words to avoid:** guru, ninja, rock star, magician, savior, thought leader, AI visionary, full-stack engineer as the primary identity, customer-acquisition flow outside its original context, single-handedly fixed, transformed everything, fully operationalized when gaps remain, private-equity grievance language, and deficit framing for multilingual teams.
 
@@ -189,9 +189,9 @@
 
 ## Goals
 
-**Primary business goal:** Generate well-matched conversations for hands-on Director of Engineering roles, with Engineering Manager, Head of Engineering, VP of Engineering, and Staff/Principal opportunities remaining discoverable as adjacent fits.
+**Primary business goal:** Generate well-matched conversations for Principal Software Engineer roles centered on architecture, production reliability, modernization, observability, and cross-team technical leadership.
 
-**Primary conversion action:** Contact Mike about a relevant engineering leadership role.
+**Primary conversion action:** Contact Mike about a relevant Principal Software Engineer role.
 
 **Supporting actions:** Read the selected résumé, explore Panoramic View, inspect selected work, download a machine-readable résumé, or enter the complete career and community archive.
 

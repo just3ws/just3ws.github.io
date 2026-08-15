@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 require 'json'
+require 'yaml'
 
 SITE_DIR = "_site" # Default Jekyll output
+PROFILE_PATH = File.expand_path('../_data/resume/profile.yml', __dir__)
+PROFILE_TITLE = YAML.safe_load_file(PROFILE_PATH).fetch('title')
 
 def validate_json_export
   path = File.join(SITE_DIR, "resume.json")
@@ -25,7 +28,7 @@ def validate_json_export
     else
       errors << "Missing current position in resume.json"
     end
-    errors << "Profile title is not current" unless data.dig('profile', 'title') == 'Hands-on Director of Engineering'
+    errors << "Profile title does not match resume data" unless data.dig('profile', 'title') == PROFILE_TITLE
 
     if errors.empty?
       puts "JSON export validation passed."
@@ -54,7 +57,7 @@ def validate_txt_export
   errors << "resume.txt missing Name" unless content.include?("MIKE HALL")
   errors << "resume.txt missing EXPERIENCE section" unless content.include?("EXPERIENCE")
   errors << "resume.txt missing current employer" unless content.include?("EMR-Bear")
-  errors << "resume.txt missing current leadership title" unless content.include?("Hands-on Director of Engineering")
+  errors << "resume.txt missing profile title" unless content.include?(PROFILE_TITLE)
   has_context_action_impact = content.include?("Context:") && content.include?("Action:") && content.include?("Impact:")
   has_outcomes = content.include?("Key Outcomes:")
   errors << "resume.txt missing role detail sections" unless has_context_action_impact || has_outcomes
@@ -69,8 +72,38 @@ def validate_txt_export
   end
 end
 
+def validate_markdown_exports
+  paths = [
+    File.join(SITE_DIR, 'resume.md'),
+    File.join(SITE_DIR, 'exports', 'resume.md')
+  ]
+  errors = []
+
+  paths.each do |path|
+    unless File.exist?(path)
+      errors << "Missing Markdown export: #{path}"
+      next
+    end
+
+    content = File.read(path)
+    errors << "#{path} missing profile title" unless content.include?(PROFILE_TITLE)
+    errors << "#{path} missing skills section" unless content.include?('## Skills') || content.include?('## Core Skills')
+    errors << "#{path} contains serialized Ruby hash output" if content.include?('=>') || content.include?('["categories"')
+  end
+
+  if errors.empty?
+    puts "Markdown export validation passed."
+    true
+  else
+    warn "Markdown export validation failed:"
+    errors.each { |error| warn "  - #{error}" }
+    false
+  end
+end
+
 success = true
 success &= validate_json_export
 success &= validate_txt_export
+success &= validate_markdown_exports
 
 exit(success ? 0 : 1)

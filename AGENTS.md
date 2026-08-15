@@ -1,5 +1,18 @@
 # Project Agent Instructions
 
+## Required Project Context
+
+Before changing this repository:
+
+1. Read `CONTEXT.md` for the public-canon, local-runtime, and publication
+   contracts.
+2. Read `CODEX.md` before evaluating or changing resume content, positioning,
+   titles, or generated resume surfaces.
+
+Do not treat this repository as an isolated Jekyll checkout. Its installed
+localhost site is part of Mike's local system and is a required verification
+surface for user-facing changes.
+
 ## Agent skills
 
 ### Issue tracker

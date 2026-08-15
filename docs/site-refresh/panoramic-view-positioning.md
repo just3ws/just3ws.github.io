@@ -2,15 +2,15 @@
 
 **Status:** Approved-public-artifact draft for the just3ws.com refresh  
 **Audience:** Site maintainers, copywriters, designers, and reviewers  
-**Last updated:** 2026-08-10
+**Last updated:** 2026-08-15
 
 This brief translates private, provenance-tagged research into a public-safe narrative foundation. It intentionally omits private source paths, internal platform labels, coworker names, client details, and operational specifics. A statement appearing here is eligible for drafting, not automatically approved for publication in every context; the claim ledger remains the gate.
 
 ## Positioning decision
 
-**Primary identity:** Hands-on Director of Engineering.
+**Primary identity:** Principal Software Engineer.
 
-**Operating promise:** Mike makes complex systems understandable, engineering teams more capable, and consequential change safer to deliver.
+**Operating promise:** Mike makes complex production systems easier to understand and safer to change.
 
 **Operating sequence:** Stabilize. Understand. Innovate.
 
@@ -24,7 +24,7 @@ Panoramic View is the method that runs through all three phases. It is not only 
 
 ## Master career narrative
 
-Mike Hall is a hands-on Director of Engineering who steps into complex systems and transitions, stabilizes delivery, builds a shared evidence-backed understanding of how the product and organization actually work, and helps teams modernize with confidence. Across regulated enterprises, growing product companies, and small founder-led systems, he has combined deep debugging, architecture, observability, team design, and knowledge recovery rather than treating them as separate disciplines. He created Panoramic View, a system-cartography methodology that follows an actor's journey from left to right and traces each interaction from browser to backend and back, connecting business decisions, code paths, data changes, infrastructure, telemetry, and the resulting experience. His leadership preserves uncertainty and provenance instead of manufacturing confidence, giving teams a durable foundation for safer change.
+Mike Hall is a Principal Software Engineer who works across complex production systems and organizational boundaries. He stabilizes delivery, builds a shared evidence-backed understanding of how a product actually works, and helps teams modernize without losing contact with the code. Across regulated enterprises, growing product companies, and small founder-led systems, he has combined deep debugging, architecture, observability, technical enablement, and knowledge recovery rather than treating them as separate disciplines. He created Panoramic View, a system-cartography methodology that follows an actor's journey from left to right and traces each interaction from browser to backend and back, connecting business decisions, code paths, data changes, infrastructure, telemetry, and the resulting experience. His technical leadership preserves uncertainty and provenance instead of manufacturing confidence, giving teams a durable foundation for safer change.
 
 ## Proof hierarchy
 
@@ -44,7 +44,7 @@ These bullets are deliberately free of invented business-impact metrics. Employe
 ### Current leadership identity
 
 - Created Panoramic View, an evidence-led system-cartography methodology that connects user journeys and business decisions to code paths, infrastructure, data changes, telemetry, ownership, and known unknowns.
-- Leads as a hands-on engineering director across system architecture, production diagnosis, modernization, team operating design, and cross-functional decision-making.
+- Leads as a principal technical IC across system architecture, production diagnosis, modernization, technical enablement, and cross-functional decision-making.
 - Turns fragmented technical and organizational evidence into a shared, navigable model that Product, Engineering, Operations, Security, and Quality can use to plan safer change.
 
 ### Regulated enterprise application
@@ -81,15 +81,15 @@ Do not call the role a contract, fixed-term assignment, or pre-defined bridge ro
 
 ### Recommended hero
 
-**Eyebrow:** Hands-on Director of Engineering
+**Eyebrow:** Principal Software Engineer
 
-**Headline:** Stabilize what is fragile. Understand what is real. Move forward with confidence.
+**Headline:** I make complex software systems easier to understand and safer to change.
 
-**Subheadline:** I lead teams through complex systems and consequential change. My work connects deep technical investigation, shared system understanding, and the operating structures people need to modernize safely.
+**Subheadline:** I work on architecture, production reliability, legacy modernization, and observability. I stay close to the code and help teams agree on what the system does, who owns it, and what to change next.
 
-**Primary action:** Review my experience
+**Primary action:** Read my résumé
 
-**Secondary action:** Explore Panoramic View
+**Secondary action:** See selected work
 
 ### Headline alternatives
 
@@ -107,9 +107,9 @@ Do not call the role a contract, fixed-term assignment, or pre-defined bridge ro
 
 ### Meta content
 
-**Homepage title:** Mike Hall | Hands-on Director of Engineering
+**Homepage title:** Mike Hall | Principal Software Engineer Portfolio
 
-**Homepage description:** Mike Hall is a hands-on Director of Engineering who stabilizes complex systems, builds capable teams, and created Panoramic View, an evidence-led method for safer modernization.
+**Homepage description:** Mike Hall is a Principal Software Engineer who makes complex production systems easier to understand and safer to change.
 
 **Methodology title:** Panoramic View | System Cartography by Mike Hall
 
@@ -312,7 +312,7 @@ The methodology page should teach the general method. Case studies should prove 
 | Content | Intent | Role in hiring journey | Priority |
 |---|---|---|---|
 | Panoramic View methodology | Shareable and identity-defining | Differentiation and technical judgment | Highest |
-| Hands-on Director résumé | Decision | Role fit, chronology, evidence | Highest |
+| Principal Software Engineer résumé | Decision | Role fit, chronology, evidence | Highest |
 | Small-company transition case | Decision and shareable | Speed, team leadership, judgment under ambiguity | High |
 | Enterprise cartography case | Decision and shareable | Scale, cross-team influence, technical depth | High |
 | Neutral worked example | Searchable and educational | Makes the method understandable without confidential evidence | High |

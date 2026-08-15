@@ -189,6 +189,6 @@ run_pwcli goto "${BASE_URL}/" >/dev/null
 run_pwcli eval '() => {
   const text = document.body.textContent || "";
   if (!text.includes("Mike Hall")) throw new Error("resume missing name");
-  if (!text.includes("Staff Software Engineer")) throw new Error("resume missing role");
+  if (!text.includes("Principal Software Engineer")) throw new Error("resume missing role");
   return true;
 }' >/dev/null

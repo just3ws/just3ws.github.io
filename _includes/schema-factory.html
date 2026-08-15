@@ -46,7 +46,7 @@
     "givenName": "Mike",
     "familyName": "Hall",
     "alternateName": "just3ws",
-    "jobTitle": {{ profile.title | default: "Hands-on Director of Engineering" | jsonify }},
+    "jobTitle": {{ profile.title | default: "Software Engineer" | jsonify }},
     "description": {{ summary.text | strip | jsonify }},
     "url": "{{ site_url }}/",
     "email": "mailto:{{ profile.contact.email }}",
@@ -55,8 +55,8 @@
       {{ profile.contact.github.url | jsonify }}
     ],
     "knowsAbout": [
-      "Engineering Leadership", "Panoramic View", "System Cartography", "Organizational Design",
-      "Distributed Team Leadership",
+      "Principal Software Engineering", "Cross-Team Technical Leadership",
+      "Panoramic View", "System Cartography", "Production Systems", "Platform Reliability",
       "Ruby", "Ruby on Rails", "PostgreSQL", "Redis", "SQL", "JavaScript", "C#", "Java",
       "Clojure", "Linux", "AWS", "OpenTelemetry", "CI/CD", "Platform Modernization",
       "Incident Leadership", "Observability", "System Resilience"

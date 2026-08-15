@@ -12,6 +12,30 @@ Assume the audience is:
 
 Optimize for **credibility, clarity, and signal**, not completeness or storytelling.
 
+## Canonical Positioning
+
+- Use **Principal Software Engineer** as Mike's single current professional
+  title and target role. Do not alternate among `Staff / Principal`,
+  `Staff Engineer`, `Hands-on Director`, `Software Architect`, or invented
+  specialty titles on resume surfaces.
+- Treat production systems, platform reliability, legacy modernization,
+  observability, and AI-augmented engineering as areas of specialization, not
+  competing titles.
+- Preserve exact historical employer titles in position records. At OneMain
+  Financial, **Associate Director** was a corporate grade bolted onto the
+  **Staff Engineer** technical job function; it was not a people-management
+  role, and Mike had no direct reports.
+- Present the OneMain role as senior technical IC leadership: software
+  architecture lead for the Acquisition lane, leader of the OpenTelemetry
+  initiative, driver of the responsibility realignment around business and
+  system boundaries, and founder/technical lead of ACQ Enablement.
+- Do not foreground age, total years of experience, or generational framing.
+  Establish Principal-level credibility through recent evidence of scope,
+  leverage, ownership, durability, and influence.
+
+These decisions are durable resume context. Do not reopen or hedge the title
+choice unless Mike explicitly asks to reconsider it.
+
 ---
 
 ## Evaluation Framework
@@ -56,12 +80,23 @@ Call out mismatches directly.
 
 ### Authoritative Inputs
 
+- `_data/resume/profile.yml`
+  → canonical professional title, identity, and resume/history SEO metadata
 - `_data/resume/timeline.yml`
   → ordering and inclusion scope for resume and history surfaces
 - `_data/resume/summary.yml`
   → canonical top-level summary narrative
+- `_data/resume/ats.yml`, `_data/resume/skills.yml`, and
+  `_data/resume/leadership.yml`
+  → canonical capabilities, structured skill groupings, and leadership
+  evidence
 - `_data/resume/positions/*.yml`
   → canonical resume data
+
+Resume pages, metadata, exports, and structured data must derive from these
+canonical files. Do not solve content inconsistency by hardcoding parallel copy
+in a Liquid template or generated output. Follow the installed localhost
+verification contract in `CONTEXT.md` before reporting a resume change complete.
 
 ### Position YAML Schema (Do Not Modify)
 

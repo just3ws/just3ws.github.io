@@ -1,0 +1,22 @@
+{% assign summary = site.data.resume.summary %}
+<div class="resume-intro">
+  {% include resume/profile-header.html %}
+
+  <div class="resume-positioning">
+    <section id="summary" class="resume-summary">
+      <h2>{{ summary.title }}</h2>
+      <p>{{ summary.text }}</p>
+    </section>
+
+    <div class="resume-focus-index">
+      <p class="resume-focus-label">Areas of focus</p>
+      <ul>
+        {% for category_item in site.data.resume.skills.categories %}
+          {% unless category_item.name == "Technologies" %}
+            <li><span aria-hidden="true">0{{ forloop.index }}</span>{{ category_item.name }}</li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

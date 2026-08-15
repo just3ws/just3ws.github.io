@@ -54,7 +54,7 @@ module Jekyll
 
       output = []
       output << "# #{site.config['author']['name']}"
-      output << site.config['description']
+      output << resume.dig('profile', 'title')
       output << ""
 
       if resume['summary']
@@ -63,9 +63,10 @@ module Jekyll
         output << ""
       end
 
-      if resume['skills']
+      skills = resume.dig('ats', 'skills')
+      if skills && !skills.empty?
         output << "## Skills"
-        resume['skills'].each do |skill|
+        skills.each do |skill|
           output << "- #{skill}"
         end
         output << ""

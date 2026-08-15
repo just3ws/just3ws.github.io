@@ -1,69 +1,108 @@
 hero:
-  eyebrow: "Hands-on Director of Engineering"
-  headline: "Hands-on engineering leadership for complex platforms and team transitions."
+  headline: "I make complex software systems easier to understand and safer to change."
   lede: >-
-    I’m a Director of Engineering who gets into the code, figures out how legacy
-    systems actually work, and builds the team culture needed to modernize them safely.
+    I work on architecture, production reliability, legacy modernization, and
+    observability. I stay close to the code and help teams agree on what the system
+    does, who owns it, and what to change next.
   actions:
-    - label: "Review my experience"
+    - label: "Read my résumé"
       href: "/"
       style: "primary"
-    - label: "Review selected work"
+    - label: "See selected work"
       href: "/portfolio/"
       style: "secondary"
 
+operating_pattern:
+  label: "How I work"
+  steps:
+    - name: "Stabilize"
+      summary: "Find the immediate risks and make production safe enough to investigate."
+    - name: "Understand"
+      summary: "Trace the real workflow across code, data, infrastructure, and teams."
+    - name: "Improve"
+      summary: "Use the shared picture to plan and ship safer changes."
+
 through_line:
-  title: "20+ years of technical leadership"
+  label: "What I do"
+  title: "Technical leadership that stays close to the code."
   text: >-
-    Architecture, production debugging, observability, delivery, and team design
-    are deeply connected when systems grow complex. I bridge the gap between business
-    goals and underlying system behavior, helping engineering teams build a shared
-    understanding of their platform and execute safely.
+    My best work starts when no one person has the whole picture. I trace failures end
+    to end, clarify ownership, and turn what I learn into architecture and delivery
+    decisions teams can use.
+
+method:
+  eyebrow: "Panoramic View"
+  title: "Start with what the system actually does."
+  lede: >-
+    Panoramic View is my name for a practical way of working: map the business process,
+    trace what the software actually does, and resolve the differences before changing
+    anything.
+  actor_note: >-
+    The user of the system might be a customer, an employee, an automated process, or
+    an AI agent. The same questions apply.
+  evidence_note: >-
+    Logs, traces, diagrams, documentation, and AI-assisted analysis are inputs to the map.
+    They are not substitutes for understanding the system.
+  questions:
+    - "What does the business expect to happen?"
+    - "What does the software actually do?"
+    - "Where do those views agree, diverge, or remain unknown?"
+
+evidence_intro:
+  label: "Evidence"
+  title: "Examples from real systems."
+  text: >-
+    These are the kinds of problems I have worked through in production. Public
+    descriptions stay high-level where employer and client details are private.
 
 evidence:
-  - context: "Platform Modernization"
-    title: "Unraveling legacy systems"
+  - context: "Legacy modernization"
+    title: "Making an undocumented system legible"
     text: >-
-      Mapping undocumented service dependencies, tracing code paths to database
-      state, and safely upgrading infrastructure under live production traffic.
-    link_label: "Review selected work"
+      Traced service dependencies, code paths, database state, and infrastructure so
+      the team could upgrade a live system without guessing.
+    link_label: "See selected work"
     href: "/portfolio/"
-  - context: "Engineering Leadership & Continuity"
-    title: "Stepping in during transitions"
+  - context: "Technical leadership"
+    title: "Creating clarity during transitions"
     text: >-
-      Aligning distributed teams, establishing clear system ownership, setting up
-      incident response rhythms, and building realistic delivery roadmaps.
-    link_label: "Read executive resume"
+      Clarified system ownership, incident response, and delivery priorities across
+      distributed teams during leadership and organizational change.
+    link_label: "Read the résumé"
     href: "/"
-  - context: "Active Practice"
-    title: "Still designing, building, testing, and shipping"
+  - context: "Active practice"
+    title: "Keeping the practice current"
     text: >-
-      Phalanx Duel is my active engineering laboratory: a tactical card game built
-      around explicit state models, reproducible simulation, accessibility, and modern
-      AI-assisted engineering discipline.
-    link_label: "Review selected work"
+      I use Phalanx Duel as a working laboratory for explicit state models, deterministic
+      simulation, accessibility, and disciplined AI-assisted development.
+    link_label: "See selected work"
     href: "/portfolio/#project-phalanx-duel"
+
+evaluation:
+  label: "Start here"
+  title: "Start wherever you have time."
 
 evaluation_paths:
   - number: "01"
-    title: "Executive Résumé"
-    text: "Current leadership profile, recent position history, core capabilities, and machine-readable exports."
+    title: "Résumé"
+    text: "Current technical profile, recent experience, core capabilities, and machine-readable exports."
     href: "/"
   - number: "02"
     title: "Selected Work"
-    text: "Product laboratories, technical architecture, writing, and active engineering practice."
+    text: "Technical projects, architecture, writing, and active engineering practice."
     href: "/portfolio/"
   - number: "03"
     title: "Complete History"
-    text: "Comprehensive chronology across 25+ years of software engineering and leadership."
+    text: "The full chronology for readers who need more context."
     href: "/history/"
 
 public_record:
-  title: "A public record of technical practice"
+  label: "Public work"
+  title: "I also document the work."
   text: >-
-    Over the years, I have spoken at conferences, written technical guides, organized communities,
-    and interviewed software practitioners. The archive remains here as evidence of that
-    ongoing commitment to the engineering craft.
+    I have written technical guides, spoken at conferences, organized communities, and
+    interviewed software practitioners. The archive is a long-running record of how I
+    learn and contribute.
   links:
     - label: "Technical writing"
       href: "/writing/"
@@ -73,11 +112,11 @@ public_record:
       href: "/intelligence/"
 
 contact:
-  eyebrow: "Engineering Leadership"
-  title: "Let’s start a conversation."
+  eyebrow: "Open to technical IC work"
+  title: "Working on a system that is hard to change?"
   text: >-
-    I am open to hands-on Director of Engineering, Engineering Manager, Head of
-    Engineering, VP of Engineering, and senior technical leadership roles.
+    I am interested in roles where I can work on architecture, production reliability,
+    modernization, and observability while leading technical decisions across teams.
   primary_label: "Contact Mike"
   primary_href: "/contact/"
   secondary_label: "Read the résumé"

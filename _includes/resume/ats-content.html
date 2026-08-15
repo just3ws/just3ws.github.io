@@ -1,12 +1,6 @@
 {% assign ats = site.data.resume.ats %}
 <article class="ats-resume-content">
-  {% include resume/profile-header.html %}
-
-  {% assign summary = site.data.resume.summary %}
-  <section id="summary">
-    <h2>{{ summary.title }}</h2>
-    <p>{{ summary.text }}</p>
-  </section>
+  {% include resume/intro.html %}
 
   <section id="experience">
     <div class="experience-header">

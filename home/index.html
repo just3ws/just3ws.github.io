@@ -1,19 +1,19 @@
 ---
 layout: minimal
-title: Mike Hall | Engineering Leadership for Complex Systems
-description: Mike Hall is a hands-on Director of Engineering who stabilizes complex systems, builds capable teams, and created Panoramic View for safer modernization.
+title: Mike Hall | Principal Software Engineer Portfolio
+description: Mike Hall is a Principal Software Engineer who makes complex production systems easier to understand and safer to change.
 breadcrumb: Home
 canonical_url: https://www.just3ws.com/home/
 body_class: professional-home
 ---
 
 {% assign home = site.data.home %}
-{% assign pv = site.data.panoramic_view %}
+{% assign profile = site.data.resume.profile %}
 
 <article class="page leadership-home">
   <header class="leadership-hero">
     <div class="leadership-hero-copy">
-      <p class="leadership-eyebrow">{{ home.hero.eyebrow }}</p>
+      <p class="leadership-eyebrow">{{ profile.title }}</p>
       <h1>{{ home.hero.headline }}</h1>
       <p class="leadership-lede">{{ home.hero.lede }}</p>
       <div class="leadership-actions" aria-label="Professional profile actions">
@@ -24,10 +24,10 @@ body_class: professional-home
     </div>
 
     <aside class="leadership-pattern" aria-labelledby="operating-pattern-title">
-      <p class="leadership-pattern-label">Operating pattern</p>
-      <h2 id="operating-pattern-title" class="visually-hidden">Stabilize, understand, and innovate</h2>
+      <p class="leadership-pattern-label">{{ home.operating_pattern.label }}</p>
+      <h2 id="operating-pattern-title" class="visually-hidden">How Mike approaches complex systems</h2>
       <ol>
-        {% for phase in pv.operating_sequence %}
+        {% for phase in home.operating_pattern.steps %}
           <li>
             <span>0{{ forloop.index }}</span>
             <div>
@@ -41,7 +41,7 @@ body_class: professional-home
   </header>
 
   <section class="leadership-through-line" aria-labelledby="through-line-title">
-    <p class="leadership-section-index" aria-hidden="true">01 / Through-line</p>
+    <p class="leadership-section-index" aria-hidden="true">01 / {{ home.through_line.label }}</p>
     <div>
       <h2 id="through-line-title">{{ home.through_line.title }}</h2>
       <p>{{ home.through_line.text }}</p>
@@ -50,17 +50,16 @@ body_class: professional-home
 
   <section class="leadership-method" aria-labelledby="home-method-title">
     <div class="leadership-method-copy">
-      <p class="leadership-eyebrow">Original methodology</p>
-      <h2 id="home-method-title">Map the business. Trace the system. See the whole.</h2>
-      <p>{{ pv.meta.lede }}</p>
-      <p class="leadership-actor-note">{{ pv.actor_scope.text }}</p>
-      <p class="leadership-method-note">The model is primary. Observability, diagrams, documentation, and AI-assisted analysis are evidence sources or projections—not the method itself.</p>
+      <p class="leadership-eyebrow">{{ home.method.eyebrow }}</p>
+      <h2 id="home-method-title">{{ home.method.title }}</h2>
+      <p>{{ home.method.lede }}</p>
+      <p class="leadership-actor-note">{{ home.method.actor_note }}</p>
+      <p class="leadership-method-note">{{ home.method.evidence_note }}</p>
       <ul class="leadership-method-questions" aria-label="Panoramic View governing questions">
-        {% for question in pv.core_questions %}
+        {% for question in home.method.questions %}
           <li>{{ question }}</li>
         {% endfor %}
       </ul>
-      <a class="leadership-inline-link" href="/panoramic-view/">Explore Panoramic View <span aria-hidden="true">→</span></a>
     </div>
 
     <div class="leadership-wave" aria-hidden="true">
@@ -85,9 +84,9 @@ body_class: professional-home
 
   <section class="leadership-evidence" aria-labelledby="evidence-title">
     <div class="leadership-section-heading">
-      <p class="leadership-section-index">02 / Evidence at scale</p>
-      <h2 id="evidence-title">Practical work, not a presentation-layer framework.</h2>
-      <p>The method grew from real systems work. The public proof names the kind of organization and the question being answered while keeping implementation details private.</p>
+      <p class="leadership-section-index">02 / {{ home.evidence_intro.label }}</p>
+      <h2 id="evidence-title">{{ home.evidence_intro.title }}</h2>
+      <p>{{ home.evidence_intro.text }}</p>
     </div>
 
     <div class="leadership-evidence-list">
@@ -104,8 +103,8 @@ body_class: professional-home
 
   <section class="leadership-evaluator" aria-labelledby="evaluation-title">
     <div class="leadership-section-heading">
-      <p class="leadership-section-index">03 / Evaluate the work</p>
-      <h2 id="evaluation-title">Start with the depth you need.</h2>
+      <p class="leadership-section-index">03 / {{ home.evaluation.label }}</p>
+      <h2 id="evaluation-title">{{ home.evaluation.title }}</h2>
     </div>
 
     <ol class="leadership-paths">
@@ -126,7 +125,7 @@ body_class: professional-home
 
   <section class="leadership-record" aria-labelledby="public-record-title">
     <div>
-      <p class="leadership-section-index">04 / Public record</p>
+      <p class="leadership-section-index">04 / {{ home.public_record.label }}</p>
       <h2 id="public-record-title">{{ home.public_record.title }}</h2>
     </div>
     <div>

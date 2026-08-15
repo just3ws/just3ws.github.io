@@ -5,6 +5,8 @@ description: Purpose and operating principles behind this long-term software com
 breadcrumb: About
 ---
 
+{% assign profile = site.data.resume.profile %}
+
 <article class="page">
   {% include breadcrumbs.html %}
   <header>
@@ -14,7 +16,7 @@ breadcrumb: About
 
   <section>
     <h2>The Mission</h2>
-    <p>This site serves two primary functions: it is the professional home of Mike Hall, a Staff Software Engineer focused on platform reliability and architecture, and it is a durable archive for historical software community conversations.</p>
+    <p>This site serves two primary functions: it is the professional home of Mike Hall, a {{ profile.title }} focused on platform reliability and architecture, and it is a durable archive for historical software community conversations.</p>
     <ul class="home-list">
       <li><strong>Architecture over Fragments:</strong> Build systems that are easy to navigate and hard to lose, moving beyond hand-edited pages to data-driven generation.</li>
       <li><strong>Durable Preservation:</strong> Preserve the lineage of the software craftsmanship movement through curated interviews, conference recordings, and transcripts.</li>

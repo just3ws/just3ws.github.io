@@ -1,5 +1,12 @@
 {% assign seo_title = page.title | default: "Mike Hall" %}
-{% assign seo_description = page.description | default: "Hands-on Director of Engineering focused on system legibility, capable teams, operational stability, and evidence-led modernization." %}
+{% assign seo_description = page.description | default: "Principal Software Engineer focused on system legibility, production reliability, architecture, observability, and safe modernization." %}
+{% if page.resume_seo_key %}
+  {% assign resume_seo = site.data.resume.profile.seo[page.resume_seo_key] %}
+  {% if resume_seo %}
+    {% assign seo_title = resume_seo.title %}
+    {% assign seo_description = resume_seo.description %}
+  {% endif %}
+{% endif %}
 {% if seo_title.size < 30 %}
   {% assign seo_title = seo_title | append: " | Mike Hall Archive" %}
 {% endif %}
