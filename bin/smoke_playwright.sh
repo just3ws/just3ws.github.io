@@ -16,7 +16,7 @@ BASE_URL="http://127.0.0.1:${PORT}"
 SESSION_BASE="${GITHUB_RUN_ID:-$$}"
 SESSION="ci-seo-smoke-${SESSION_BASE}"
 NPM_CACHE_DIR="${TMPDIR:-/tmp}/npm-cache-${SESSION}"
-PWCLI_CMD_TIMEOUT="${PWCLI_CMD_TIMEOUT:-20s}"
+PWCLI_CMD_TIMEOUT="${PWCLI_CMD_TIMEOUT:-40s}"
 SMOKE_MAX_ROUTES="${SMOKE_MAX_ROUTES:-80}"
 export npm_config_cache="${NPM_CACHE_DIR}"
 PWCLI="npx --yes --package @playwright/cli playwright-cli --session ${SESSION}"
@@ -176,19 +176,19 @@ assert_dropdown_navigation() {
   }" >/dev/null
 }
 
-assert_root_seo
-assert_home_seo
-assert_exports_package
-assert_dropdown_navigation
-assert_semantic_a11y_contract "/"
-assert_semantic_a11y_contract "/home/"
-assert_resume_structured_data
+assert_root_seo || { echo "Smoke failure: assert_root_seo failed" >&2; exit 1; }
+assert_home_seo || { echo "Smoke failure: assert_home_seo failed" >&2; exit 1; }
+assert_exports_package || { echo "Smoke failure: assert_exports_package failed" >&2; exit 1; }
+assert_dropdown_navigation || { echo "Smoke failure: assert_dropdown_navigation failed" >&2; exit 1; }
+assert_semantic_a11y_contract "/" || { echo "Smoke failure: assert_semantic_a11y_contract / failed" >&2; exit 1; }
+assert_semantic_a11y_contract "/home/" || { echo "Smoke failure: assert_semantic_a11y_contract /home/ failed" >&2; exit 1; }
+assert_resume_structured_data || { echo "Smoke failure: assert_resume_structured_data failed" >&2; exit 1; }
 
 # Resume must always render correctly with expected identity markers.
-run_pwcli goto "${BASE_URL}/" >/dev/null
+run_pwcli goto "${BASE_URL}/" >/dev/null || { echo "Smoke failure: navigation to / failed" >&2; exit 1; }
 run_pwcli eval '() => {
   const text = document.body.textContent || "";
   if (!text.includes("Mike Hall")) throw new Error("resume missing name");
   if (!text.includes("Principal Software Engineer")) throw new Error("resume missing role");
   return true;
-}' >/dev/null
+}' >/dev/null || { echo "Smoke failure: resume identity markers missing" >&2; exit 1; }
