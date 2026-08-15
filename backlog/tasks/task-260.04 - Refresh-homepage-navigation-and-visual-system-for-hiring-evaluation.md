@@ -1,11 +1,11 @@
 ---
 id: TASK-260.04
 title: Refresh homepage navigation and visual system for hiring evaluation
-status: Done
+status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-08-10 17:11'
-updated_date: '2026-08-10 18:20'
+updated_date: '2026-08-15 18:27'
 labels:
   - site-refresh
   - panoramic-view
@@ -36,16 +36,16 @@ Recompose the homepage and shared presentation so a human or AI evaluator quickl
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 The homepage communicates the hands-on Director of Engineering positioning and core operating promise above the fold.
-- [x] #2 Visitors have clear paths to the resume, Panoramic View methodology, selected evidence, complete history, and contact action.
-- [x] #3 The visual system uses the approved Panoramic View direction without generic card repetition or inaccessible motion.
-- [x] #4 Primary navigation works without clipping or overflow at supported mobile widths.
-- [x] #5 Existing archive routes remain available and the Jekyll build, internal-link validation, accessibility checks, and Playwright smoke checks pass.
+- [ ] #1 The homepage communicates the exact `Principal Software Engineer` identity and a plain-language technical IC value proposition above the fold
+- [ ] #2 Visitors have clear paths to the résumé, selected work, complete history, contact, and the public archive; the unpublished Panoramic View route is not linked
+- [ ] #3 Desktop and mobile heading scales are readable, small text and primary actions meet AA contrast, and the visual system retains its editorial character
+- [ ] #4 Primary navigation and homepage content work without clipping or horizontal overflow at supported mobile widths
+- [ ] #5 Existing public routes remain available and the Jekyll build, scoped internal-link validation, accessibility checks, and Playwright smoke checks pass
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [x] #1 AC criteria is completed and the change has been verified
+- [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -56,6 +56,8 @@ Recompose the homepage and shared presentation so a human or AI evaluator quickl
 3. Add a dedicated responsive home visual layer and revise the shared mobile navigation into a bounded grid with viewport-contained dropdowns.
 4. Update stale site-level Staff Engineer metadata and add Playwright assertions for evaluator paths, mobile bounds, dropdown operation, reduced-motion-safe behavior, and archive route availability.
 5. Run visual review, privacy/content review, Jekyll and full repository validation, link/accessibility checks, and browser smoke tests.
+
+Follow-up refinement requested 2026-08-15: replace the superseded Director-role homepage copy with the settled Principal Software Engineer identity, rewrite the landing page in plain human language, reduce poster-scale display typography, remove the link to the explicitly unpublished `/panoramic-view/` page, and update active positioning context so the old management target cannot drift back in.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
@@ -84,8 +86,11 @@ Full validation: after cleaning the generated site, Jekyll built 1,038 pages wit
 Reviewer verdict: PASS. The homepage now provides one evaluator path from current identity to operating method, multi-scale practical evidence, selected work, complete history, and contact. Repeated generic cards were replaced by editorial rows and system-map motifs; no new scripted motion was added; reduced-motion and both themes are supported; mobile clipping is resolved.
 <!-- SECTION:NOTES:END -->
 
-## Final Summary
+## Comments
 
-<!-- SECTION:FINAL_SUMMARY:BEGIN -->
-Rebuilt `/home/` as a current hands-on engineering leadership landing page, led by Stabilize–Understand–Innovate and the business-to-system purpose of Panoramic View. Added practical anonymized evidence across enterprise, founder-transition, and current builder contexts; clear routes to resume, method, work, full history, archive, and contact; simplified the primary navigation while preserving all archive destinations; fixed 375px clipping and dropdown bounds; refreshed stale site metadata; and verified the default and Kanagawa visual systems.
-<!-- SECTION:FINAL_SUMMARY:END -->
+<!-- COMMENTS:BEGIN -->
+created: 2026-08-15 18:27
+---
+User review: `/home/` is materially improved but its header type renders too large and its copy reads unnaturally. Reopened this bounded homepage slice for a typography and voice correction; the previously approved structure, routes, evidence boundaries, and theme behavior remain the baseline.
+---
+<!-- COMMENTS:END -->
