@@ -1,9 +1,11 @@
 ---
 id: TASK-261
 title: Reposition resume for Staff and Principal IC roles
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - Codex
 created_date: '2026-08-15 17:10'
+updated_date: '2026-08-15 17:10'
 labels: []
 dependencies: []
 documentation:
