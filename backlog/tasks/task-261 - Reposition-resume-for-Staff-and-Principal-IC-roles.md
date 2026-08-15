@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Codex
 created_date: '2026-08-15 17:10'
-updated_date: '2026-08-15 17:29'
+updated_date: '2026-08-15 17:31'
 labels: []
 dependencies: []
 documentation:
@@ -47,6 +47,8 @@ Rewrite the public resume’s positioning and evidence so it presents Mike as a 
 3. Keep management and community leadership as supporting organizational fluency rather than the primary target role.
 4. Correct the generated Markdown export to consume the flat ATS skill list instead of serializing the structured skills hash, and make export validation load the expected identity from resume YAML rather than hardcoding it.
 5. Regenerate all resume surfaces, run targeted resume/export checks followed by the project build and relevant tests, then inspect rendered desktop/mobile output and the final diff.
+
+Document the resume positioning and installed-localhost publication contract in `AGENTS.md`, `CONTEXT.md`, and `CODEX.md` so future agents do not reopen settled decisions.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
@@ -68,3 +70,12 @@ OMF leadership evidence clarified by Mike: no direct reports. He led software ar
 
 Final title decision: use exactly `Principal Software Engineer` as the single professional identity. Production systems, reliability, modernization, observability, and AI augmentation remain specializations in summary/skills rather than additions to the title. Employer-assigned titles remain unchanged in chronology.
 <!-- SECTION:NOTES:END -->
+
+## Comments
+
+<!-- COMMENTS:BEGIN -->
+created: 2026-08-15 17:31
+---
+Repository context now records the durable single-title decision (`Principal Software Engineer`), the OneMain corporate-grade/technical-function distinction, canonical resume data sources, and the required `bin/install-localhost` verification at `https://just3ws.localhost/`.
+---
+<!-- COMMENTS:END -->
