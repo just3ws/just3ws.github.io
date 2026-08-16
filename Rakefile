@@ -158,6 +158,10 @@ namespace :validate do
     sh 'ruby ./bin/generate_semantic_cross_links.rb'
   end
 
+  task :linkedin_series do
+    sh 'ruby ./bin/generate_linkedin_series.rb'
+  end
+
   task :metadata_completeness do
     sh 'ruby ./bin/validate_metadata_completeness_budget.rb'
   end
