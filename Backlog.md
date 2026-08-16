@@ -37,10 +37,12 @@ Individual Architectural Decision Records (ADRs) are stored in `backlog/decision
 | [T-DAG-5](backlog/completed/t-dag-5-topic-architectural-theme-filters.md) | Topic & Architectural Theme Surface Filters | Done | High |
 | [T-DAG-6](backlog/completed/t-dag-6-multiformat-export-alignment.md) | Multi-Format Export Package Alignment (/exports/) | Done | High |
 | [T-DAG-7](backlog/completed/t-dag-7-ci-playwright-validation-suite.md) | Automated CI & Playwright Validation Suite | Done | Medium |
+| [T-DAG-8](#) | System Cartography Case Studies (OneMain / EMR-Bear) | Done | High |
+| [T-DAG-9](#) | Resume Layout & 50/50 Seam Alignment Audit | Done | High |
 
 ## Active Backlog (System Transformation - Phase 2)
 
-These tasks are derived from the 2026-04-07 System Transformation Plan to harden the site into a senior technical leadership platform.
+These tasks are derived from the System Transformation Plan to harden the site into a senior technical leadership platform.
 
 | Task ID | Title | Status | Priority |
 | :--- | :--- | :--- | :--- |
@@ -56,15 +58,15 @@ These tasks are derived from recent architectural reviews to improve system main
 
 | Task ID | Title | Status | Priority |
 | :--- | :--- | :--- | :--- |
-| [task-001](backlog/tasks/task-001-modernize-build-pipeline.md) | Move build to GHA & ignore `_site` | To Do | High |
+| [task-001](backlog/tasks/task-001-modernize-build-pipeline.md) | Move build to GHA & ignore `_site` | Done | High |
 | [task-002](backlog/completed/task-002-consolidate-scripts.md) | Consolidate scripts into Rakefile/CLI | Done | High |
 | [task-003](backlog/completed/task-003-upgrade-jekyll-4.md) | Upgrade to Jekyll 4.x | Done | Medium |
 | [task-004](backlog/completed/task-004-jekyll-generators.md) | Implement Jekyll Generator Plugins | Done | High |
-| [task-005](backlog/tasks/task-005-template-logic-separation.md) | Separate templates from generator logic | To Do | Medium |
+| [task-005](backlog/tasks/task-005-template-logic-separation.md) | Separate templates from generator logic | Done | Medium |
 | [task-006](backlog/completed/task-006-declarative-validation.md) | Implement declarative data validation | Done | Medium |
-| [task-007](backlog/tasks/task-007-scss-migration.md) | Convert CSS to SCSS/SASS | To Do | Medium |
+| [task-007](backlog/tasks/task-007-scss-migration.md) | Convert CSS to SCSS/SASS | Done | Medium |
 | [task-008](backlog/completed/task-008-generator-unit-tests.md) | Add unit tests for generators | Done | High |
-| [task-009](backlog/tasks/task-009-transcript-pipeline-consolidation.md) | Consolidate Transcript Pipeline | To Do | Medium |
+| [task-009](backlog/tasks/task-009-transcript-pipeline-consolidation.md) | Consolidate Transcript Pipeline | Done | Medium |
 | [task-010](backlog/completed/task-010-image-optimization.md) | Implement Image Optimization | Done | Low |
 | [task-011](backlog/completed/task-011-repair-broken-transcript-igor-polevoy.md) | Repair Broken Transcript (Igor Polevoy) | Done | High |
 | [task-021](backlog/completed/task-021-repair-broken-transcript-chet-and-ron.md) | Repair Broken Transcript (Chet & Ron) | Done | High |
