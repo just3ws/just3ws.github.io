@@ -150,6 +150,10 @@ namespace :validate do
     sh 'ruby ./bin/validate_markdown_lint.rb'
   end
 
+  task :youtube_sync do
+    sh 'ruby ./bin/publish_youtube_metadata.rb --dry-run'
+  end
+
   task :metadata_completeness do
     sh 'ruby ./bin/validate_metadata_completeness_budget.rb'
   end
