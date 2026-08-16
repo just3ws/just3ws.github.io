@@ -9,13 +9,55 @@ body_class: ats-resume
 
 <div class="case-studies-container" style="max-width: 70rem; margin: 0 auto; padding: 2rem 1.5rem; width: 100%; box-sizing: border-box;">
   <article class="ats-resume-content" style="width: 100%;">
-    <header class="case-studies-header" style="margin-bottom: 3rem; text-align: center; width: 100%;">
+    <header class="case-studies-header" style="margin-bottom: 2.5rem; text-align: center; width: 100%;">
       <p style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-primary, #7e9cd8); margin-bottom: 0.5rem;">Empirical Architecture Mapping & System Legibility</p>
-      <h1 style="font-size: 2.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">System Cartography Case Studies</h1>
-      <p style="font-size: 1.125rem; color: var(--color-text-muted, #c8c093); max-width: 54ch; margin: 0 auto;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">System Cartography & Architectural Proof</h1>
+      <p style="font-size: 1.125rem; color: var(--color-text-muted, #c8c093); max-width: 58ch; margin: 0 auto;">
         Empirical architectural discovery, system mapping, and platform risk governance across high-concurrency production systems.
       </p>
     </header>
+
+    <!-- Staff-Level Architectural Proof & System Metrics Visualizer -->
+    <section class="metrics-visualizer" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.75rem; padding: 1.75rem 2rem; margin-bottom: 2.5rem; width: 100%; box-sizing: border-box; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 1rem;">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #7e9cd8); letter-spacing: 0.05em;">Staff & Principal IC Proven Impact</span>
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--color-heading, var(--color-text-main, #dcd7ba)); margin: 0.2rem 0 0;">System Performance & Governance Metrics</h2>
+        </div>
+        <div class="metrics-tabs" role="tablist" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button type="button" class="metric-tab-btn active" data-metric="all" style="background: var(--color-surface-2, rgba(126, 156, 216, 0.15)); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-primary, #7e9cd8); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">All Proofs</button>
+          <button type="button" class="metric-tab-btn" data-metric="reliability" style="background: transparent; color: var(--color-text-muted, #938aa9); border: 1px solid var(--color-border, #363646); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">Reliability</button>
+          <button type="button" class="metric-tab-btn" data-metric="architecture" style="background: transparent; color: var(--color-text-muted, #938aa9); border: 1px solid var(--color-border, #363646); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">Architecture</button>
+          <button type="button" class="metric-tab-btn" data-metric="governance" style="background: transparent; color: var(--color-text-muted, #938aa9); border: 1px solid var(--color-border, #363646); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">Governance</button>
+        </div>
+      </div>
+
+      <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+        <div class="metric-card" data-cat="reliability" style="background: var(--color-bg-base, #1a1b2f); border: 1px solid var(--color-border, #363646); border-radius: 8px; padding: 1.25rem; box-sizing: border-box;">
+          <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-primary, #7e9cd8); text-transform: uppercase;">Observability</span>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--color-heading, #dcd7ba); margin: 0.3rem 0;">-60% MTTR</div>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.4;">Reduced incident diagnosis time via OpenTelemetry distributed tracing across microservices.</p>
+        </div>
+
+        <div class="metric-card" data-cat="reliability" style="background: var(--color-bg-base, #1a1b2f); border: 1px solid var(--color-border, #363646); border-radius: 8px; padding: 1.25rem; box-sizing: border-box;">
+          <span style="font-size: 0.75rem; font-weight: 800; color: #34d399; text-transform: uppercase;">Production Scale</span>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--color-heading, #dcd7ba); margin: 0.3rem 0;">130+ Clinics</div>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.4;">Zero multi-tenant clinical outages during founder transition stabilization.</p>
+        </div>
+
+        <div class="metric-card" data-cat="governance" style="background: var(--color-bg-base, #1a1b2f); border: 1px solid var(--color-border, #363646); border-radius: 8px; padding: 1.25rem; box-sizing: border-box;">
+          <span style="font-size: 0.75rem; font-weight: 800; color: #fbbf24; text-transform: uppercase;">Risk Isolation</span>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--color-heading, #dcd7ba); margin: 0.3rem 0;">36+ Vendors</div>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.4;">Audited third-party SaaS APIs, regulatory compliance boundaries, and release safety gates.</p>
+        </div>
+
+        <div class="metric-card" data-cat="architecture" style="background: var(--color-bg-base, #1a1b2f); border: 1px solid var(--color-border, #363646); border-radius: 8px; padding: 1.25rem; box-sizing: border-box;">
+          <span style="font-size: 0.75rem; font-weight: 800; color: #818cf8; text-transform: uppercase;">Parallel Streams</span>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--color-heading, #dcd7ba); margin: 0.3rem 0;">4 Streams</div>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.4;">Unblocked parallel team execution by decoupling domain model boundaries.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="cartography-framework" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem; width: 100%; box-sizing: border-box;">
       <div style="margin-bottom: 2rem;">
@@ -105,3 +147,34 @@ body_class: ats-resume
     </section>
   </article>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const tabBtns = document.querySelectorAll('.metric-tab-btn');
+  const metricCards = document.querySelectorAll('.metric-card');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-metric');
+
+      tabBtns.forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--color-text-muted, #938aa9)';
+        b.style.borderColor = 'var(--color-border, #363646)';
+      });
+
+      btn.style.background = 'var(--color-surface-2, rgba(126, 156, 216, 0.15))';
+      btn.style.color = 'var(--color-primary, #7e9cd8)';
+      btn.style.borderColor = 'var(--color-primary, #7e9cd8)';
+
+      metricCards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
