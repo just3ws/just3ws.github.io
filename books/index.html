@@ -37,10 +37,11 @@ description: "Books authored and recommended by interviewees across the UGtastic
 
 <style>
 .intel-hero {
-  background: var(--color-bg-card, #1e293b);
-  color: var(--color-text-main, #ffffff);
+  background: var(--color-surface-2, #f8fafc);
+  color: var(--color-text-main, #0f172a);
   padding: 3rem 1.5rem;
-  border-bottom: 3px solid var(--color-primary, #0284c7);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-left: 5px solid var(--color-primary, #0284c7);
   border-radius: 0.75rem;
   margin-bottom: 2rem;
 }
@@ -63,12 +64,12 @@ description: "Books authored and recommended by interviewees across the UGtastic
 .intel-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--color-heading, var(--color-text-main, #ffffff));
+  color: var(--color-heading, #0f172a);
   margin-bottom: 0.75rem;
 }
 .intel-subtitle {
   font-size: 1.1rem;
-  color: var(--color-text-muted, #94a3b8);
+  color: var(--color-text-muted, #475569);
   max-width: 800px;
   line-height: 1.6;
 }
@@ -84,9 +85,9 @@ description: "Books authored and recommended by interviewees across the UGtastic
   flex-wrap: wrap;
 }
 .search-input, .filter-select {
-  background: var(--color-bg-card, #2a2a37);
-  color: var(--color-text-main, #dcd7ba);
-  border: 1px solid var(--color-border, #363646);
+  background: var(--color-bg-card, #ffffff);
+  color: var(--color-text-main, #0f172a);
+  border: 1px solid var(--color-border, #cbd5e1);
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   font-size: 0.95rem;
@@ -97,7 +98,7 @@ description: "Books authored and recommended by interviewees across the UGtastic
   min-width: 260px;
 }
 .search-input:focus, .filter-select:focus {
-  border-color: var(--color-primary, #7e9cd8);
+  border-color: var(--color-primary, #0284c7);
 }
 .books-library-grid {
   display: grid;
@@ -105,28 +106,29 @@ description: "Books authored and recommended by interviewees across the UGtastic
   gap: 1.5rem;
 }
 .book-card {
-  background: var(--color-bg-card, #2a2a37);
-  border: 1px solid var(--color-border, #363646);
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .book-card:hover {
   transform: translateY(-2px);
-  border-color: var(--color-primary, #7e9cd8);
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 .book-type-badge {
   align-self: flex-start;
   font-size: 0.75rem;
   font-weight: 800;
   padding: 0.25rem 0.65rem;
-  background: var(--color-surface-2, rgba(126, 156, 216, 0.15));
-  color: var(--color-primary, #7e9cd8);
-  border: 1px solid var(--color-border, #363646);
+  background: var(--color-surface-2, #e0f2fe);
+  color: var(--color-primary, #0369a1);
+  border: 1px solid var(--color-border, #bae6fd);
   border-radius: 4px;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
@@ -134,19 +136,19 @@ description: "Books authored and recommended by interviewees across the UGtastic
 .book-title {
   font-size: 1.2rem;
   font-weight: 800;
-  color: var(--color-text-main, #dcd7ba);
+  color: var(--color-heading, #0f172a);
   margin-bottom: 0.35rem;
   line-height: 1.35;
 }
 .book-author {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--color-accent, #e6c384);
+  color: var(--color-primary, #0284c7);
   margin-bottom: 0.75rem;
 }
 .book-desc {
   font-size: 0.95rem;
-  color: var(--color-text-muted, #c8c093);
+  color: var(--color-text-muted, #475569);
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
@@ -156,14 +158,14 @@ description: "Books authored and recommended by interviewees across the UGtastic
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-primary, #7e9cd8);
-  border: 1px solid var(--color-primary, #7e9cd8);
+  color: var(--color-primary, #0284c7);
+  border: 1px solid var(--color-primary, #0284c7);
   border-radius: 6px;
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
 }
 .btn-book-interview:hover {
-  background: var(--color-primary, #7e9cd8);
+  background: var(--color-primary, #0284c7);
   color: #ffffff;
 }
 </style>
