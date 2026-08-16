@@ -1,0 +1,77 @@
+---
+layout: minimal
+title: "System Cartography Case Studies — Principal Software Engineer Architecture Portfolio"
+description: "Detailed 4-dimensional system cartography case studies documenting legacy modernization, OpenTelemetry tracing, and platform risk governance under production load."
+breadcrumb: Case Studies
+permalink: /case-studies/
+---
+
+<div class="case-studies-container" style="max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem;">
+  <header class="case-studies-header" style="margin-bottom: 3rem; text-align: center;">
+    <p style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent, #2563eb); margin-bottom: 0.5rem;">Architectural Evidence & System Legibility</p>
+    <h1 style="font-size: 2.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem;">System Cartography Case Studies</h1>
+    <p style="font-size: 1.125rem; color: var(--color-text-muted, #4b5563); max-width: 48ch; margin: 0 auto;">
+      Empirical architectural discovery, boundary realignment, and platform risk governance across high-concurrency systems.
+    </p>
+  </header>
+
+  <section class="cartography-framework" style="background: var(--color-bg-card, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 0.75rem; padding: 2rem; margin-bottom: 4rem;">
+    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">The 4-Dimensional System Cartography Framework</h2>
+    <p style="margin-bottom: 1.5rem; color: var(--color-text-muted, #4b5563);">
+      Before modernizing legacy architecture or deploying major updates, every platform is mapped across four explicit risk dimensions:
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+      <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
+        <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">1. Interaction Surface</h3>
+        <p style="font-size: 0.875rem; color: #64748b; margin: 0;">API contracts, public web endpoints, client boundaries, JWT auth, and external consumer protocols.</p>
+      </div>
+      <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
+        <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">2. Lateral State Dependencies</h3>
+        <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Cross-domain mutations, async queues (Sidekiq/Kafka), transactional boundaries, and database locks.</p>
+      </div>
+      <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
+        <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">3. Full-Stack Topology</h3>
+        <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Kubernetes clusters, ingress routing, cloud infrastructure, and database replication topographies.</p>
+      </div>
+      <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
+        <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">4. Supply Chain Exposure</h3>
+        <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Third-party SaaS APIs, regulatory/HIPAA boundaries, dependency drift, and release verification gates.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-studies-list" style="display: flex; flex-direction: column; gap: 3rem;">
+    {% for cs in site.data.case_studies.case_studies %}
+    <article class="case-study-card" style="border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.75rem; padding: 2.5rem; background: #ffffff; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+      <header style="margin-bottom: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem;">
+        <span style="font-size: 0.875rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">{{ cs.company }} &bull; {{ cs.period }}</span>
+        <h2 style="font-size: 1.75rem; font-weight: 800; color: #0f172a; margin-top: 0.25rem; margin-bottom: 0.5rem;">{{ cs.title }}</h2>
+        <p style="font-size: 1rem; font-weight: 600; color: #3b82f6; margin: 0;">Role: {{ cs.role }} | Domain: {{ cs.domain }}</p>
+      </header>
+
+      <p style="font-size: 1.125rem; color: #334155; line-height: 1.6; margin-bottom: 2rem;">
+        {{ cs.summary }}
+      </p>
+
+      <div style="margin-bottom: 2rem;">
+        <h3 style="font-size: 1.125rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">4-Dimensional Cartography Breakdown</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+          <li style="font-size: 0.95rem; color: #334155;"><strong>Interaction Surface:</strong> {{ cs.dimensions.interaction_surface }}</li>
+          <li style="font-size: 0.95rem; color: #334155;"><strong>Lateral State Dependencies:</strong> {{ cs.dimensions.lateral_state_dependencies }}</li>
+          <li style="font-size: 0.95rem; color: #334155;"><strong>Full-Stack Topology:</strong> {{ cs.dimensions.full_stack_topology }}</li>
+          <li style="font-size: 0.95rem; color: #334155;"><strong>Supply Chain Exposure:</strong> {{ cs.dimensions.supply_chain_exposure }}</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="font-size: 1.125rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">Empirical Outcomes</h3>
+        <ul style="padding-left: 1.25rem; margin: 0; color: #334155; display: flex; flex-direction: column; gap: 0.5rem;">
+          {% for outcome in cs.outcomes %}
+          <li style="font-size: 0.95rem; line-height: 1.5;">{{ outcome }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</div>

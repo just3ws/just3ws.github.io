@@ -1,0 +1,37 @@
+---
+case_studies:
+  - id: onemain-acquisition
+    title: "OneMain Financial: Acquisition Lane Realignment & OpenTelemetry Tracing"
+    role: "Associate Director, Staff Engineer"
+    period: "2021 — 2026"
+    company: "OneMain Financial"
+    domain: "High-Volume Personal Financial Services"
+    summary: >-
+      Led architectural discovery, boundary realignment, and OpenTelemetry distributed tracing implementation for the high-velocity Acquisition loan origination lane.
+    dimensions:
+      interaction_surface: "Standardized REST API contracts, client payload isolation, and secure request boundary validation."
+      lateral_state_dependencies: "Mapped cross-domain asynchronous state mutations across Sidekiq/Kafka event pipelines and transactional boundaries."
+      full_stack_topology: "Mapped Kubernetes microservice topologies and established standardized OpenTelemetry tracing headers across all services."
+      supply_chain_exposure: "Audited third-party credit bureau APIs, financial vendor webhooks, and regulatory data isolation."
+    outcomes:
+      - "Unblocked 4 parallel engineering streams by establishing explicit domain ownership boundaries."
+      - "Reduced Mean Time to Resolution (MTTR) by 60% with end-to-end distributed observability."
+      - "Eliminated cross-domain outage cascades during peak acquisition campaigns."
+
+  - id: emr-bear-stabilization
+    title: "EMR-Bear: 90-Day Platform Stabilization & Risk Cartography"
+    role: "Development Manager"
+    period: "May 2026 — August 2026"
+    company: "EMR-Bear, a MedSuite company"
+    domain: "Multi-Tenant Healthcare SaaS (130+ Clinics)"
+    summary: >-
+      Executed rapid 90-day architectural inventory and operational risk assessment for a multi-tenant behavioral health EHR platform during a founder transition.
+    dimensions:
+      interaction_surface: "Cataloged all application endpoints, API integrations, and public-facing clinical access interfaces."
+      lateral_state_dependencies: "Mapped multi-tenant database partitioning, shared state locks, and decoupled feature flags from production deploys."
+      full_stack_topology: "Audited Ruby on Rails / Kubernetes infrastructure, network isolation ports, and database failover topographies."
+      supply_chain_exposure: "Enforced strict HIPAA/PHI compliance boundaries and release safety verification gates across 36+ pending updates."
+    outcomes:
+      - "Converted an unmanaged founder exit into structured engineering continuity with clear component ownership."
+      - "Established release verification gates that protected 130+ clinics from unvalidated platform updates."
+      - "Delivered an empirical risk cartography roadmap guiding post-transition infrastructure decisions."
