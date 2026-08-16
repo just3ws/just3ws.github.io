@@ -84,10 +84,12 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
 
 <style>
 .intel-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #ffffff;
-  padding: 3.5rem 1.5rem;
-  border-bottom: 4px solid #0284c7;
+  background: var(--color-bg-card, #2a2a37);
+  color: var(--color-text-main, #dcd7ba);
+  padding: 3rem 1.5rem;
+  border-bottom: 3px solid var(--color-primary, #7e9cd8);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
 }
 .intel-hero-inner {
   max-width: 1200px;
@@ -95,7 +97,7 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
 }
 .intel-badge {
   display: inline-block;
-  background: #0284c7;
+  background: var(--color-primary, #7e9cd8);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 800;
@@ -106,13 +108,14 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   text-transform: uppercase;
 }
 .intel-title {
-  font-size: 2.75rem;
-  font-weight: 900;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-heading, var(--color-text-main, #dcd7ba));
   margin-bottom: 0.75rem;
 }
 .intel-subtitle {
-  font-size: 1.15rem;
-  color: #94a3b8;
+  font-size: 1.1rem;
+  color: var(--color-text-muted, #c8c093);
   max-width: 800px;
   line-height: 1.6;
 }
@@ -121,31 +124,57 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   margin: 2rem auto;
   padding: 0 1.5rem;
 }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background: var(--color-bg-card, #2a2a37);
+  border: 1px solid var(--color-border, #363646);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #c8c093);
+  margin-bottom: 0.25rem;
+}
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary, #7e9cd8);
+}
 .studio-tabs {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
   margin-bottom: 2rem;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 2px solid var(--color-border, #363646);
   padding-bottom: 0.75rem;
 }
 .tab-btn {
   padding: 0.6rem 1.2rem;
   font-size: 0.95rem;
   font-weight: 700;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-border, #363646);
   border-radius: 8px;
-  background: #ffffff;
-  color: #334155;
+  background: var(--color-bg-card, #2a2a37);
+  color: var(--color-text-main, #dcd7ba);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 .tab-btn:hover {
-  background: #f1f5f9;
+  background: var(--color-surface-2, rgba(126,156,216,0.15));
 }
 .tab-btn.active {
-  background: #0284c7;
-  border-color: #0284c7;
+  background: var(--color-primary, #7e9cd8);
+  border-color: var(--color-primary, #7e9cd8);
   color: #ffffff;
 }
 .tab-pane {
@@ -160,11 +189,11 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   gap: 1.5rem;
 }
 .short-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-card, #2a2a37);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -174,29 +203,30 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   font-size: 0.75rem;
   font-weight: 800;
   padding: 0.2rem 0.5rem;
-  background: #f0fdf4;
-  color: #166534;
+  background: var(--color-surface-2, rgba(126,156,216,0.15));
+  color: var(--color-primary, #7e9cd8);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 4px;
   margin-bottom: 0.75rem;
 }
 .short-speaker {
   font-size: 1.1rem;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--color-text-main, #dcd7ba);
   margin-bottom: 0.25rem;
 }
 .short-video-title {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--color-text-muted, #c8c093);
   margin-bottom: 1rem;
 }
 .short-quote-box {
-  background: #f8fafc;
-  border-left: 3px solid #0284c7;
+  background: var(--color-bg-base, #1a1b2f);
+  border-left: 3px solid var(--color-primary, #7e9cd8);
   padding: 0.85rem 1rem;
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #334155;
+  color: var(--color-text-main, #dcd7ba);
   margin-bottom: 1rem;
   border-radius: 0 6px 6px 0;
 }
@@ -206,13 +236,13 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   padding: 0.4rem 0.9rem;
   font-size: 0.85rem;
   font-weight: 700;
-  color: #0284c7;
-  border: 1px solid #0284c7;
+  color: var(--color-primary, #7e9cd8);
+  border: 1px solid var(--color-primary, #7e9cd8);
   border-radius: 6px;
   text-decoration: none;
 }
 .btn-studio-action:hover {
-  background: #0284c7;
+  background: var(--color-primary, #7e9cd8);
   color: #ffffff;
 }
 .playlists-grid, .articles-grid {
@@ -221,24 +251,25 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   gap: 1.5rem;
 }
 .playlist-card, .article-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-card, #2a2a37);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 .playlist-title, .article-title {
   font-size: 1.3rem;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--color-text-main, #dcd7ba);
   margin-bottom: 0.5rem;
 }
 .playlist-count-badge {
   font-size: 0.8rem;
   font-weight: 700;
   padding: 0.2rem 0.6rem;
-  background: #e0f2fe;
-  color: #0369a1;
+  background: var(--color-surface-2, rgba(126,156,216,0.15));
+  color: var(--color-primary, #7e9cd8);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 4px;
   display: inline-block;
   margin-bottom: 1rem;
@@ -250,11 +281,11 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
 }
 .playlist-item-list li {
   padding: 0.4rem 0;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--color-border, #363646);
   font-size: 0.9rem;
 }
 .playlist-item-list a {
-  color: #0284c7;
+  color: var(--color-primary, #7e9cd8);
   font-weight: 600;
   text-decoration: none;
 }

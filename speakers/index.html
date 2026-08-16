@@ -41,29 +41,6 @@ description: "Searchable directory of 191 tech leaders, open-source maintainers,
 
 <style>
 .intel-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #ffffff;
-  padding: 3.5rem 1.5rem;
-  border-bottom: 4px solid #0284c7;
-}
-.intel-hero-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.intel-badge {
-  display: inline-block;
-  background: #0284c7;
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 800;
-  padding: 0.35rem 0.8rem;
-  border-radius: 9999px;
-  margin-bottom: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-<style>
-.intel-hero {
   background: var(--color-bg-card, #1e293b);
   color: var(--color-text-main, #ffffff);
   padding: 3rem 1.5rem;
@@ -103,6 +80,46 @@ description: "Searchable directory of 191 tech leaders, open-source maintainers,
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1.5rem;
+}
+.explorer-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--color-bg-card, #2a2a37);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #363646);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-bottom: 2rem;
+}
+.search-input {
+  flex: 1 1 300px;
+  padding: 0.85rem 1.15rem;
+  font-size: 1.05rem;
+  background: var(--color-bg-base, #1a1b2f);
+  color: var(--color-text-main, #dcd7ba);
+  border: 2px solid var(--color-border, #363646);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.search-input:focus {
+  border-color: var(--color-primary, #7e9cd8);
+}
+.filter-select {
+  padding: 0.85rem 1.15rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: var(--color-bg-base, #1a1b2f);
+  color: var(--color-text-main, #dcd7ba);
+  border: 2px solid var(--color-border, #363646);
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.filter-select:focus {
+  border-color: var(--color-primary, #7e9cd8);
 }
 .speakers-directory-grid {
   display: grid;
@@ -178,6 +195,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const grid = document.getElementById('speakersGrid');
     const searchInput = document.getElementById('speakerSearch');
     const confFilter = document.getElementById('conferenceFilter');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialQuery = urlParams.get('q') || urlParams.get('search');
+    if (initialQuery) {
+      searchInput.value = initialQuery;
+    }
 
     function filterAndDisplay() {
       grid.innerHTML = '';

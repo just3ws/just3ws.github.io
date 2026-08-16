@@ -47,18 +47,21 @@
     {% if interview.interviewees and interview.interviewees.size > 0 %}
       <div class="editorial-card-guests">
         {% if interview.collection == "UGtastic" %}
-          Featuring: {{ interview.interviewees | join: ", " }}
+          Featuring: 
         {% elsif interview.collection == "SCMC" %}
-          Speaker: {{ interview.interviewees | join: ", " }}
+          Speaker: 
         {% else %}
-          People: {{ interview.interviewees | join: ", " }}
+          People: 
         {% endif %}
+        {% for guest in interview.interviewees %}
+          <a href="/speakers/?q={{ guest | url_encode }}" style="color:var(--color-text-main, #dcd7ba); font-weight:600; text-decoration:underline; text-decoration-color:var(--color-border, #363646);">{{ guest }}</a>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
       </div>
     {% endif %}
     {% if interview.tags and interview.tags.size > 0 %}
       <div class="card-tags-row" style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin: 0.4rem 0;">
         {% for tag in interview.tags limit: 4 %}
-          <span class="card-tag-pill" style="font-size: 0.72rem; font-weight: 700; background: #f1f5f9; color: #475569; padding: 0.15rem 0.45rem; border-radius: 4px;">#{{ tag }}</span>
+          <a href="/interviews/?q={{ tag | url_encode }}" class="card-tag-pill" style="font-size: 0.72rem; font-weight: 700; background: var(--color-surface-2, rgba(126, 156, 216, 0.15)); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.15rem 0.45rem; border-radius: 4px; text-decoration: none;">#{{ tag }}</a>
         {% endfor %}
       </div>
     {% endif %}

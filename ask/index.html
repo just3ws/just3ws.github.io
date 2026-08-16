@@ -43,10 +43,10 @@ description: "Instant search playground querying 456,000 words across 207 histor
 
 <style>
 .intel-hero {
-  background: var(--color-bg-card, #1e293b);
-  color: var(--color-text-main, #ffffff);
+  background: var(--color-bg-card, #2a2a37);
+  color: var(--color-text-main, #dcd7ba);
   padding: 3rem 1.5rem;
-  border-bottom: 3px solid var(--color-primary, #0284c7);
+  border-bottom: 3px solid var(--color-primary, #7e9cd8);
   border-radius: 0.75rem;
   margin-bottom: 2rem;
 }
@@ -56,7 +56,7 @@ description: "Instant search playground querying 456,000 words across 207 histor
 }
 .intel-badge {
   display: inline-block;
-  background: var(--color-primary, #0284c7);
+  background: var(--color-primary, #7e9cd8);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 800;
@@ -69,12 +69,12 @@ description: "Instant search playground querying 456,000 words across 207 histor
 .intel-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--color-heading, var(--color-text-main, #ffffff));
+  color: var(--color-heading, var(--color-text-main, #dcd7ba));
   margin-bottom: 0.75rem;
 }
 .intel-subtitle {
   font-size: 1.1rem;
-  color: var(--color-text-muted, #94a3b8);
+  color: var(--color-text-muted, #c8c093);
   max-width: 800px;
   line-height: 1.6;
 }
@@ -184,31 +184,38 @@ document.addEventListener("DOMContentLoaded", function() {
     const q = query.toLowerCase().trim();
 
     if (q === '') {
-      resultsGrid.innerHTML = '<p style="color:#64748b;">Type a query above to search the archive...</p>';
+      resultsGrid.innerHTML = '<p style="color:var(--color-text-muted, #c8c093);">Type a query above to search the archive...</p>';
       countDisplay.textContent = '0';
       return;
     }
 
-    const matched = inlineData.transcripts.filter(t => 
-      t.title.toLowerCase().includes(q) || 
-      t.id.toLowerCase().includes(q) || 
-      t.era.toLowerCase().includes(q)
-    );
+    const matched = inlineData.transcripts.filter(t => {
+      const title = (t.title || '').toLowerCase();
+      const id = (t.id || '').toLowerCase();
+      const era = (t.era || '').toLowerCase();
+      return title.includes(q) || id.includes(q) || era.includes(q);
+    });
 
     countDisplay.textContent = matched.length;
     resultsGrid.innerHTML = '';
 
     if (matched.length === 0) {
-      resultsGrid.innerHTML = `<p style="color:#64748b;">No matching interviews found for "${query}". Try searching for 'Jez Humble', 'Rails', or 'Clojure'.</p>`;
+      resultsGrid.innerHTML = `<p style="color:var(--color-text-muted, #c8c093);">No matching interviews found for "${query}". Try searching for 'Jez Humble', 'Rails', or 'Clojure'.</p>`;
       return;
     }
 
     matched.slice(0, 30).forEach(item => {
       const card = document.createElement('div');
       card.className = 'result-card';
+      const rawTitle = item.title || item.id || 'Interview';
+      const cleanTitle = rawTitle.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      const eraStr = item.era || 'UGtastic Archive';
+      const yearStr = item.year || '2013';
+      const mins = item.est_minutes || 5;
+
       card.innerHTML = `
-        <h3 class="result-title">${item.title}</h3>
-        <p class="result-meta">📍 ${item.era} • ${item.year} • ~${item.est_minutes} min recording</p>
+        <h3 class="result-title">${cleanTitle}</h3>
+        <p class="result-meta">📍 ${eraStr} • ${yearStr} • ~${mins} min recording</p>
         <a href="/interviews/${item.id}/#transcript" class="btn-jump-video">🎬 Jump to Interview Transcript</a>
       `;
       resultsGrid.appendChild(card);

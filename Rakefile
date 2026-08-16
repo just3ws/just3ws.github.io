@@ -97,6 +97,7 @@ namespace :validate do
     :last_modified_output,
     :generated_freshness,
     :repo_hygiene,
+    :markdown_lint,
     :metadata_completeness,
     :seo_output,
     :public_index_mode,
@@ -143,6 +144,10 @@ namespace :validate do
 
   task :repo_hygiene do
     sh 'ruby ./bin/validate_repo_hygiene.rb'
+  end
+
+  task :markdown_lint do
+    sh 'ruby ./bin/validate_markdown_lint.rb'
   end
 
   task :metadata_completeness do

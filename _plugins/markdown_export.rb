@@ -120,9 +120,10 @@ module Jekyll
       output << ""
 
       portfolio.each do |project|
-        output << "## #{project['name']}"
-        output << "**Type:** #{project['type']}" if project['type']
-        output << "**Year:** #{project['year']}" if project['year']
+        title = project['title'] || project['name'] || "Project"
+        output << "## #{title}"
+        output << "**Role:** #{project['role']}" if project['role']
+        output << "**Years:** #{project['years'] || project['year']}" if project['years'] || project['year']
         output << ""
         output << project['description'] if project['description']
         output << ""

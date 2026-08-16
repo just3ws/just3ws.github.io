@@ -19,7 +19,7 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
   <section class="intel-section">
     <div class="explorer-controls" style="margin-bottom:1.5rem;">
       <input type="text" id="webSearch" placeholder="Search speaker, quote, or topic..." class="search-input" />
-      <div style="font-size:0.95rem; font-weight:800; color:#0284c7; align-self:center;">
+      <div style="font-size:0.95rem; font-weight:800; color:var(--color-primary, #7e9cd8); align-self:center;">
         Woven Tributes: <span id="tributeCount">0</span>
       </div>
     </div>
@@ -47,10 +47,12 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
 
 <style>
 .intel-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #ffffff;
-  padding: 3.5rem 1.5rem;
-  border-bottom: 4px solid #0284c7;
+  background: var(--color-bg-card, #2a2a37);
+  color: var(--color-text-main, #dcd7ba);
+  padding: 3rem 1.5rem;
+  border-bottom: 3px solid var(--color-primary, #7e9cd8);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
 }
 .intel-hero-inner {
   max-width: 1200px;
@@ -58,7 +60,7 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
 }
 .intel-badge {
   display: inline-block;
-  background: #0284c7;
+  background: var(--color-primary, #7e9cd8);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 800;
@@ -69,13 +71,14 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
   text-transform: uppercase;
 }
 .intel-title {
-  font-size: 2.75rem;
-  font-weight: 900;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-heading, var(--color-text-main, #dcd7ba));
   margin-bottom: 0.75rem;
 }
 .intel-subtitle {
-  font-size: 1.15rem;
-  color: #94a3b8;
+  font-size: 1.1rem;
+  color: var(--color-text-muted, #c8c093);
   max-width: 800px;
   line-height: 1.6;
 }
@@ -85,10 +88,10 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
   padding: 0 1.5rem;
 }
 .timeline-scrubber-card {
-  background: #f8fafc;
+  background: var(--color-bg-card, #2a2a37);
   padding: 1.25rem;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border, #363646);
   margin-bottom: 2rem;
 }
 .scrubber-labels {
@@ -100,19 +103,19 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
   font-weight: 700;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-border, #363646);
   border-radius: 8px;
-  background: #ffffff;
-  color: #334155;
+  background: var(--color-bg-base, #1a1b2f);
+  color: var(--color-text-main, #dcd7ba);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 .web-btn:hover {
-  background: #f1f5f9;
+  background: var(--color-surface-2, rgba(126,156,216,0.15));
 }
 .web-btn.active {
-  background: #0284c7;
-  border-color: #0284c7;
+  background: var(--color-primary, #7e9cd8);
+  border-color: var(--color-primary, #7e9cd8);
   color: #ffffff;
 }
 .charlotte-grid {
@@ -121,11 +124,11 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
   gap: 1.75rem;
 }
 .woven-card {
-  background: #ffffff;
-  border: 2px solid #e2e8f0;
+  background: var(--color-bg-card, #2a2a37);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 14px;
   padding: 1.75rem;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -133,17 +136,17 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
 }
 .woven-card:hover {
   transform: translateY(-3px);
-  border-color: #0284c7;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+  border-color: var(--color-primary, #7e9cd8);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 .woven-word-banner {
   font-size: 1.5rem;
   font-weight: 900;
   letter-spacing: 0.1em;
-  color: #0284c7;
+  color: var(--color-primary, #7e9cd8);
   text-transform: uppercase;
-  background: #f0f9ff;
-  border: 1px dashed #0284c7;
+  background: var(--color-surface-2, rgba(126,156,216,0.15));
+  border: 1px dashed var(--color-primary, #7e9cd8);
   padding: 0.45rem 0.9rem;
   border-radius: 8px;
   display: inline-block;
@@ -151,23 +154,23 @@ description: "Weaving words of craft, honor, and connection across all 191 speak
 }
 .speaker-title-display {
   font-size: 1.35rem;
-  font-weight: 900;
-  color: #0f172a;
+  font-weight: 800;
+  color: var(--color-text-main, #dcd7ba);
   margin-bottom: 0.3rem;
 }
 .speaker-subtitle-display {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #64748b;
+  color: var(--color-text-muted, #c8c093);
   margin-bottom: 0.85rem;
 }
 .woven-quote-box {
-  background: #f8fafc;
-  border-left: 4px solid #0284c7;
+  background: var(--color-bg-base, #1a1b2f);
+  border-left: 4px solid var(--color-primary, #7e9cd8);
   padding: 0.8rem 0.95rem;
   font-size: 0.95rem;
   font-style: italic;
-  color: #334155;
+  color: var(--color-text-main, #dcd7ba);
   margin-bottom: 1rem;
   border-radius: 0 8px 8px 0;
   line-height: 1.5;
@@ -208,11 +211,11 @@ document.addEventListener("DOMContentLoaded", function() {
         card.className = 'woven-card';
 
         const threadLinks = t.threads.map(i => `
-          <a href="${i.url}" style="color:#0284c7; font-weight:700; text-decoration:none; font-size:0.88rem;">🎙️ ${i.title} (${i.year})</a><br>
+          <a href="${i.url}" style="color:var(--color-primary, #7e9cd8); font-weight:700; text-decoration:none; font-size:0.88rem;">🎙️ ${i.title} (${i.year})</a><br>
         `).join('');
 
         const topicsHtml = t.topics && t.topics.length > 0 
-          ? `<div style="margin-bottom:0.75rem;">${t.topics.map(tp => `<span style="font-size:0.72rem; font-weight:700; background:#f1f5f9; color:#475569; padding:0.15rem 0.4rem; border-radius:4px; margin-right:0.25rem;">#${tp}</span>`).join('')}</div>` 
+          ? `<div style="margin-bottom:0.75rem;">${t.topics.map(tp => `<span style="font-size:0.72rem; font-weight:700; background:var(--color-surface-2, rgba(126,156,216,0.15)); color:var(--color-primary, #7e9cd8); border:1px solid var(--color-border, #363646); padding:0.15rem 0.4rem; border-radius:4px; margin-right:0.25rem;">#${tp}</span>`).join('')}</div>` 
           : '';
 
         card.innerHTML = `
@@ -223,8 +226,8 @@ document.addEventListener("DOMContentLoaded", function() {
             ${topicsHtml}
             <div class="woven-quote-box">"${t.celebrated_quote}"</div>
           </div>
-          <div style="border-top: 1px solid #f1f5f9; padding-top: 0.85rem; margin-top: 0.5rem;">
-            <p style="font-size:0.82rem; font-weight:700; color:#475569; margin-bottom:0.4rem;">Woven Interview Threads (${t.interviews_count}):</p>
+          <div style="border-top: 1px solid var(--color-border, #363646); padding-top: 0.85rem; margin-top: 0.5rem;">
+            <p style="font-size:0.82rem; font-weight:700; color:var(--color-text-muted, #c8c093); margin-bottom:0.4rem;">Woven Interview Threads (${t.interviews_count}):</p>
             ${threadLinks}
           </div>
         `;

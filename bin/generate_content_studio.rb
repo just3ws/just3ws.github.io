@@ -143,11 +143,50 @@ class ContentStudioGenerator
       article_concepts: article_concepts
     }
 
+    content_opportunities = {
+      "generated_at" => Time.now.iso8601,
+      "shorts" => shorts_candidates.first(30).map { |s|
+        {
+          "id" => s[:id],
+          "title" => s[:video_title],
+          "kind" => "short",
+          "speaker" => s[:speaker],
+          "rationale" => "Guest wisdom candidate on #{s[:conference]} (#{s[:year]})",
+          "sources" => [{ "slug" => s[:transcript_id], "turn_index" => s[:turn_index] }],
+          "text" => s[:text],
+          "status" => "proposed"
+        }
+      },
+      "articles" => article_concepts.map { |a|
+        {
+          "id" => a[:id],
+          "title" => a[:title],
+          "kind" => "article",
+          "category" => a[:category],
+          "rationale" => a[:summary],
+          "tags" => a[:tags],
+          "status" => "proposed"
+        }
+      },
+      "playlists" => playlists_map.map { |name, items|
+        {
+          "id" => "playlist-#{name.downcase.gsub(/[^a-z0-9]+/, '-')}",
+          "title" => name,
+          "kind" => "playlist",
+          "item_count" => items.size,
+          "status" => "proposed"
+        }
+      }
+    }
+
     FileUtils.mkdir_p(File.dirname(ASSETS_OUTPUT))
     File.write(OUTPUT_DATA, JSON.pretty_generate(data))
     File.write(ASSETS_OUTPUT, JSON.pretty_generate(data))
+    File.write("_data/content_opportunities.yml", content_opportunities.to_yaml)
     puts "✅ Content Studio data generated at #{OUTPUT_DATA} (#{shorts_candidates.size} Shorts candidates, #{article_concepts.size} article ideas)."
+    puts "✅ Content Opportunities backlog generated at _data/content_opportunities.yml."
   end
 end
 
 ContentStudioGenerator.new.run
+

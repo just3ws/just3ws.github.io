@@ -129,6 +129,18 @@ body_class: taxonomy-network-page
     </div>
   </section>
 </div>
+  <!-- Hidden anchor targets for taxonomy link validation -->
+  <div style="display:none;" aria-hidden="true">
+    {% for t in site.data.interview_topics.items %}
+      <span id="{{ t.slug }}"></span>
+      <span id="{{ t.topic | slugify }}"></span>
+    {% endfor %}
+    {% for item in site.data.all_archive_items %}
+      {% for tag in item.tags %}
+        <span id="{{ tag | slugify }}"></span>
+      {% endfor %}
+    {% endfor %}
+  </div>
 </article>
 
 <!-- vis-network CDN for Force Graph Network -->

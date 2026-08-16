@@ -1,16 +1,16 @@
 ---
 layout: minimal
-title: Conversations on Craft
-description: A decade of dialogues with the engineers, authors, and community builders who shaped the modern software landscape.
-breadcrumb: Conversations
+title: Video Archive & Transcripts
+description: Searchable video archive and transcripts of 200+ technical interviews, community sessions, and practitioner presentations.
+breadcrumb: Videos & Transcripts
 ---
 
 <article class="page">
   {% include breadcrumbs.html %}
   <header class="home-header">
-    <h1>Technical Conversations <span class="subtitle">Dialogues on Craft</span></h1>
-    <h2 class="title">A decade of dialogues with the engineers, authors, and community builders who shaped the modern software landscape.</h2>
-    <p class="home-intro">This collection preserves nearly 200 conversations recorded at the inflection points of the Ruby and Software Craftsmanship movements. These aren't just technical interviews; they are snapshots of how we thought about architecture, community, and the ethics of building software during a transformative era.</p>
+    <h1>Video Archive & Transcripts <span class="subtitle">Recorded Dialogues on Craft</span></h1>
+    <h2 class="title">A decade of recorded videos, practitioner sessions, and searchable transcripts featuring 191 tech leaders and community speakers.</h2>
+    <p class="home-intro">This canonical archive preserves nearly 200 recorded video conversations and user group presentations with full, searchable transcripts from the software craftsmanship movement.</p>
   </header>
   {% include public-archive-note.html %}
 
@@ -22,11 +22,15 @@ breadcrumb: Conversations
       <li><strong>Community & Mentorship:</strong> Personal stories on the 'why' behind building communities, the evolution of technical mentorship, and the human side of technical leadership.</li>
       <li><strong>Contextual Forensic History:</strong> Every audited interview features a structured, searchable transcript that reveals the 'why' and 'what' behind the architectural decisions that persist today.</li>
     </ul>
-    <p class="featured-hub-link">
-      <strong>Featured Collections:</strong> 
-      <a href="/interviews/chicago-craftsmanship/">The Chicago Movement (2010-2015) &rarr;</a>
+    <p class="featured-hub-link" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
+      <strong>Explore Media Collections:</strong> 
+      <a href="/scmc/">SCMC Meetup Archive &rarr;</a>
       <span class="meta-divider">|</span>
-      <a href="/interviews/manifesto-signatories/">Signatories of the Agile Manifesto &rarr;</a>
+      <a href="/speakers/">Speaker Directory &rarr;</a>
+      <span class="meta-divider">|</span>
+      <a href="/web/">Woven Tributes &rarr;</a>
+      <span class="meta-divider">|</span>
+      <a href="/intelligence/">Corpus Intelligence &rarr;</a>
     </p>
   </section>
 
@@ -77,6 +81,19 @@ breadcrumb: Conversations
     document.addEventListener('DOMContentLoaded', () => {
       const buttons = document.querySelectorAll('.filter-btn');
       const cards = document.querySelectorAll('.editorial-card');
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = (urlParams.get('q') || urlParams.get('search') || '').toLowerCase();
+
+      if (query) {
+        cards.forEach(card => {
+          const cardText = card.textContent.toLowerCase();
+          if (cardText.includes(query)) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      }
 
       buttons.forEach(btn => {
         btn.addEventListener('click', () => {

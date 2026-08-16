@@ -1,6 +1,6 @@
 # SCMC & UGtastic Content Synthesis Roadmap
 
-This document outlines a structured plan for identifying, synthesizing, and publishing new historical articles and deep-dive posts derived from the intersection of **SCMC (Software Craftsmanship Movement Chicago) meetings**, **UGtastic interviews**, **written blog posts**, and **Mike Hall's career timeline**.
+This document outlines a structured plan for identifying, synthesizing, and publishing new historical articles and deep-dive posts derived from **SCMC (Software Craftsmanship McHenry County) meetings**, **UGtastic interviews**, **written blog posts**, and career history.
 
 ---
 

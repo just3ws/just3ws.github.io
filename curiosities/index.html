@@ -25,10 +25,12 @@ description: "Fascinating topics, historical predictions vs 2026 reality, lost t
 
 <style>
 .intel-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #ffffff;
-  padding: 3.5rem 1.5rem;
-  border-bottom: 4px solid #0284c7;
+  background: var(--color-bg-card, #2a2a37);
+  color: var(--color-text-main, #dcd7ba);
+  padding: 3rem 1.5rem;
+  border-bottom: 3px solid var(--color-primary, #7e9cd8);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
 }
 .intel-hero-inner {
   max-width: 1200px;
@@ -36,7 +38,7 @@ description: "Fascinating topics, historical predictions vs 2026 reality, lost t
 }
 .intel-badge {
   display: inline-block;
-  background: #0284c7;
+  background: var(--color-primary, #7e9cd8);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 800;
@@ -47,13 +49,14 @@ description: "Fascinating topics, historical predictions vs 2026 reality, lost t
   text-transform: uppercase;
 }
 .intel-title {
-  font-size: 2.75rem;
-  font-weight: 900;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-heading, var(--color-text-main, #dcd7ba));
   margin-bottom: 0.75rem;
 }
 .intel-subtitle {
-  font-size: 1.15rem;
-  color: #94a3b8;
+  font-size: 1.1rem;
+  color: var(--color-text-muted, #c8c093);
   max-width: 800px;
   line-height: 1.6;
 }
@@ -68,11 +71,11 @@ description: "Fascinating topics, historical predictions vs 2026 reality, lost t
   gap: 1.75rem;
 }
 .curiosity-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-card, #2a2a37);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 14px;
   padding: 1.75rem;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -80,45 +83,45 @@ description: "Fascinating topics, historical predictions vs 2026 reality, lost t
 }
 .curiosity-card:hover {
   transform: translateY(-3px);
-  border-color: #0284c7;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  border-color: var(--color-primary, #7e9cd8);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 .curiosity-category {
   font-size: 0.78rem;
   font-weight: 800;
-  color: #0284c7;
+  color: var(--color-primary, #7e9cd8);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.5rem;
 }
 .curiosity-title {
   font-size: 1.4rem;
-  font-weight: 900;
-  color: #0f172a;
+  font-weight: 800;
+  color: var(--color-text-main, #dcd7ba);
   margin-bottom: 0.75rem;
   line-height: 1.35;
 }
 .curiosity-summary {
   font-size: 0.98rem;
-  color: #475569;
+  color: var(--color-text-muted, #c8c093);
   line-height: 1.6;
   margin-bottom: 1.25rem;
 }
 .curiosity-links {
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid var(--color-border, #363646);
   padding-top: 0.85rem;
 }
 .curiosity-links p {
   font-size: 0.82rem;
   font-weight: 700;
-  color: #64748b;
+  color: var(--color-text-muted, #c8c093);
   margin-bottom: 0.4rem;
 }
 .curiosity-links a {
   display: inline-block;
   font-size: 0.88rem;
   font-weight: 700;
-  color: #0284c7;
+  color: var(--color-primary, #7e9cd8);
   text-decoration: none;
   margin-bottom: 0.25rem;
 }
