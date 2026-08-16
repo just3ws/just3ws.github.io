@@ -1,15 +1,15 @@
 ---
 layout: minimal
-title: "Editorial Content Studio & Remix Lab"
-description: "Derivative content engine extracting YouTube Shorts, Reels, thematic quote collections, supercut playlists, and article concepts from the UGtastic archive."
+title: "Editorial Content Studio & YouTube Shorts Engine"
+description: "Derivative content engine extracting YouTube Shorts, Reels, timestamped quote compilations, supercut playlists, and YouTube Data API payloads from the UGtastic archive."
 ---
 
 <div class="intel-hero">
   <div class="intel-hero-inner">
-    <span class="intel-badge">UGtastic Content Studio</span>
-    <h1 class="intel-title">Editorial Remix Lab & Content Engine</h1>
+    <span class="intel-badge">UGtastic Content Studio & YouTube Shorts Prep</span>
+    <h1 class="intel-title">YouTube Shorts Studio & Editorial Remix Lab</h1>
     <p class="intel-subtitle">
-      Transforming <strong>456,000 words across 207 historical interviews</strong> into YouTube Shorts, social video reels, thematic quote collections, supercut playlists, and long-form article concepts.
+      Transforming <strong>456,000 words across 207 historical interviews</strong> into YouTube Shorts, social video reels, timestamped segment compilations, and YouTube Data API v3 integration payloads.
     </p>
   </div>
 </div>
@@ -30,8 +30,8 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
       <span class="stat-value">6</span>
     </div>
     <div class="stat-card">
-      <span class="stat-label">Article & Post Outlines</span>
-      <span class="stat-value">4</span>
+      <span class="stat-label">YouTube API Payloads</span>
+      <span class="stat-value" id="stat-api-payloads">318</span>
     </div>
   </div>
 
@@ -39,47 +39,101 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   <section class="intel-section">
     <div class="studio-tabs">
       <button type="button" class="tab-btn active" data-tab="tab-shorts">📱 YouTube Shorts & Reels (318)</button>
+      <button type="button" class="tab-btn" data-tab="tab-playlists">🎬 Supercut Compilation Playlists</button>
       <button type="button" class="tab-btn" data-tab="tab-quotes">💬 Quotable Soundbites</button>
-      <button type="button" class="tab-btn" data-tab="tab-playlists">🎬 Supercut Playlists</button>
-      <button type="button" class="tab-btn" data-tab="tab-articles">✍️ Article & Post Outlines</button>
+      <button type="button" class="tab-btn" data-tab="tab-articles">✍️ Article Outlines</button>
     </div>
 
     <!-- Tab 1: Shorts & Reels -->
     <div class="tab-pane active" id="tab-shorts">
-      <div class="section-header-editorial">
-        <h2 class="section-title">YouTube Shorts & Social Reels Extractions</h2>
-        <hr class="title-accent">
+      <div class="section-header-editorial" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <h2 class="section-title">YouTube Shorts Extractions & API Payloads</h2>
+          <p style="margin:0; font-size:0.95rem; color:var(--color-text-muted, #71717a);">Each extraction is ready with timestamps, screen overlay captions, and YouTube Data API v3 snippet payloads.</p>
+        </div>
+        <button type="button" id="btn-export-all-api" class="btn-studio-primary">📋 Export All YouTube API Payloads (JSON)</button>
       </div>
       <div class="shorts-grid" id="shortsGrid"></div>
     </div>
 
-    <!-- Tab 2: Quotable Soundbites -->
-    <div class="tab-pane" id="tab-quotes">
-      <div class="section-header-editorial">
-        <h2 class="section-title">Thematic Quote Extractions</h2>
-        <hr class="title-accent">
-      </div>
-      <div id="quotesContainer"></div>
-    </div>
-
-    <!-- Tab 3: Supercut Playlists -->
+    <!-- Tab 2: Supercut Playlists -->
     <div class="tab-pane" id="tab-playlists">
       <div class="section-header-editorial">
-        <h2 class="section-title">Supercut Playlists & Video Remixes</h2>
-        <hr class="title-accent">
+        <h2 class="section-title">Supercut Compilation Playlists & Video Remixes</h2>
+        <p style="margin:0; font-size:0.95rem; color:var(--color-text-muted, #71717a);">Interactive compilations with multi-segment timestamp jumping, transition delays, and screen caption overlays.</p>
       </div>
       <div class="playlists-grid" id="playlistsGrid"></div>
+    </div>
+
+    <!-- Tab 3: Quotable Soundbites -->
+    <div class="tab-pane" id="tab-quotes">
+      <div class="section-header-editorial">
+        <h2 class="section-title">Thematic Quote Extractions with Timestamps</h2>
+      </div>
+      <div id="quotesContainer"></div>
     </div>
 
     <!-- Tab 4: Article & Post Outlines -->
     <div class="tab-pane" id="tab-articles">
       <div class="section-header-editorial">
         <h2 class="section-title">Article & Long-Form Post Outlines</h2>
-        <hr class="title-accent">
       </div>
       <div class="articles-grid" id="articlesGrid"></div>
     </div>
   </section>
+</div>
+
+<!-- Interactive Shorts Studio Player & Compilation Modal -->
+<div id="studio-player-modal" class="studio-modal-overlay" style="display:none;" aria-hidden="true">
+  <div class="studio-modal-content">
+    <button type="button" class="studio-modal-close" id="btn-close-modal" aria-label="Close modal">&times;</button>
+    
+    <div class="modal-header-bar">
+      <span class="modal-badge" id="modal-badge-label">🎬 Shorts Studio Player</span>
+      <h2 class="modal-title" id="modal-title-display">Shorts Preview</h2>
+      <p class="modal-meta" id="modal-meta-display">Speaker • Event (Year)</p>
+    </div>
+
+    <div class="player-stage-container">
+      <div class="video-wrapper">
+        <iframe id="studio-iframe-player" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="Shorts Studio Preview"></iframe>
+        
+        <!-- On-Screen Overlay Text Caption for Shorts -->
+        <div class="screen-overlay-caption" id="screen-overlay-caption">
+          <span class="caption-icon">💡</span>
+          <span class="caption-text" id="caption-text-body">Shorts Overlay Caption</span>
+        </div>
+
+        <!-- Compilation Transition Delay Overlay -->
+        <div class="transition-delay-overlay" id="transition-delay-overlay" style="display:none;">
+          <div class="transition-card">
+            <span class="transition-spinner">⏱️</span>
+            <h3>Transitioning to Next Segment</h3>
+            <p id="transition-next-label">Next: Speaker Name</p>
+            <div class="transition-progress-bar"><div class="transition-progress-fill" id="transition-progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-controls-panel">
+        <div class="segment-info-box">
+          <span class="time-badge" id="player-time-badge">⏱️ 0:00 - 0:45 (45s)</span>
+          <div class="quote-preview-text" id="player-quote-preview">"Turn text snippet..."</div>
+        </div>
+
+        <div class="player-actions-row">
+          <button type="button" class="btn-studio-primary" id="btn-replay-segment">🔄 Replay Segment</button>
+          <button type="button" class="btn-studio-action" id="btn-copy-modal-json">📋 Copy YouTube API JSON</button>
+          <button type="button" class="btn-studio-action" id="btn-copy-modal-desc">📝 Copy Description</button>
+        </div>
+
+        <div id="compilation-segment-list-container" style="display:none; margin-top:1rem;">
+          <h4 style="margin:0 0 0.5rem; font-weight:800; font-size:0.9rem; text-transform:uppercase; color:var(--color-primary, #7e9cd8);">Compilation Segments</h4>
+          <ol class="compilation-segment-list" id="compilation-segment-list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -119,15 +173,10 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   max-width: 800px;
   line-height: 1.6;
 }
-.intel-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-}
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
   margin-bottom: 2rem;
 }
 .stat-card {
@@ -137,45 +186,45 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .stat-label {
   font-size: 0.85rem;
-  color: var(--color-text-muted, #c8c093);
-  margin-bottom: 0.25rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #938aa9);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 .stat-value {
-  font-size: 1.8rem;
-  font-weight: 800;
+  font-size: 2.2rem;
+  font-weight: 900;
   color: var(--color-primary, #7e9cd8);
 }
 .studio-tabs {
   display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+  gap: 0.5rem;
   border-bottom: 2px solid var(--color-border, #363646);
-  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 .tab-btn {
-  padding: 0.6rem 1.2rem;
-  font-size: 0.95rem;
+  background: none;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
-  border: 1px solid var(--color-border, #363646);
-  border-radius: 8px;
-  background: var(--color-bg-card, #2a2a37);
-  color: var(--color-text-main, #dcd7ba);
+  color: var(--color-text-muted, #938aa9);
   cursor: pointer;
-  transition: all 0.15s ease;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
 }
 .tab-btn:hover {
-  background: var(--color-surface-2, rgba(126,156,216,0.15));
+  color: var(--color-text-main, #dcd7ba);
 }
 .tab-btn.active {
-  background: var(--color-primary, #7e9cd8);
-  border-color: var(--color-primary, #7e9cd8);
-  color: #ffffff;
+  color: var(--color-primary, #7e9cd8);
+  border-bottom-color: var(--color-primary, #7e9cd8);
 }
 .tab-pane {
   display: none;
@@ -185,112 +234,267 @@ description: "Derivative content engine extracting YouTube Shorts, Reels, themat
 }
 .shorts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
 }
 .short-card {
   background: var(--color-bg-card, #2a2a37);
   border: 1px solid var(--color-border, #363646);
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+}
+.short-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary, #7e9cd8);
+}
+.short-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
 }
 .short-badge {
-  align-self: flex-start;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
   padding: 0.2rem 0.5rem;
   background: var(--color-surface-2, rgba(126,156,216,0.15));
   color: var(--color-primary, #7e9cd8);
   border: 1px solid var(--color-border, #363646);
   border-radius: 4px;
-  margin-bottom: 0.75rem;
+}
+.short-duration-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: #16161d;
+  color: #7e9cd8;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #363646;
 }
 .short-speaker {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: var(--color-text-main, #dcd7ba);
-  margin-bottom: 0.25rem;
+  margin: 0.2rem 0;
+}
+.short-overlay-preview {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e6c384;
+  margin-bottom: 0.5rem;
 }
 .short-video-title {
   font-size: 0.85rem;
-  color: var(--color-text-muted, #c8c093);
-  margin-bottom: 1rem;
+  color: var(--color-text-muted, #938aa9);
+  margin-bottom: 0.75rem;
 }
 .short-quote-box {
-  background: var(--color-bg-base, #1a1b2f);
+  background: var(--color-bg-base, #16161d);
   border-left: 3px solid var(--color-primary, #7e9cd8);
-  padding: 0.85rem 1rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--color-text-main, #dcd7ba);
-  margin-bottom: 1rem;
+  padding: 0.8rem;
   border-radius: 0 6px 6px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text-main, #c8c093);
+  margin-bottom: 1rem;
 }
-.btn-studio-action {
-  align-self: flex-start;
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-primary, #7e9cd8);
-  border: 1px solid var(--color-primary, #7e9cd8);
-  border-radius: 6px;
-  text-decoration: none;
+.card-actions-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
-.btn-studio-action:hover {
+.btn-studio-primary {
   background: var(--color-primary, #7e9cd8);
   color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: opacity 0.2s;
 }
-.playlists-grid, .articles-grid {
+.btn-studio-primary:hover {
+  opacity: 0.9;
+}
+.btn-studio-action {
+  background: var(--color-surface-2, rgba(126,156,216,0.15));
+  color: var(--color-text-main, #dcd7ba);
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--color-border, #363646);
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.btn-studio-action:hover {
+  border-color: var(--color-primary, #7e9cd8);
+  color: var(--color-primary, #7e9cd8);
+}
+.playlists-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 1.5rem;
 }
-.playlist-card, .article-card {
+.playlist-card {
   background: var(--color-bg-card, #2a2a37);
   border: 1px solid var(--color-border, #363646);
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.playlist-title, .article-title {
+.playlist-title {
   font-size: 1.3rem;
   font-weight: 800;
   color: var(--color-text-main, #dcd7ba);
+  margin-bottom: 0.4rem;
+}
+
+/* Modal Overlay Styles */
+.studio-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 15, 20, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.studio-modal-content {
+  background: var(--color-bg-card, #1f1f28);
+  border: 2px solid var(--color-primary, #7e9cd8);
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 1.75rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  color: var(--color-text-main, #dcd7ba);
+}
+.studio-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  color: var(--color-text-muted, #938aa9);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.studio-modal-close:hover {
+  color: #ffffff;
+}
+.player-stage-container {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background: #000000;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--color-border, #363646);
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.screen-overlay-caption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(22, 22, 29, 0.9);
+  border-left: 4px solid #7e9cd8;
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+.transition-delay-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 15, 20, 0.95);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+.transition-card {
+  max-width: 400px;
+}
+.transition-spinner {
+  font-size: 3rem;
+  display: block;
   margin-bottom: 0.5rem;
 }
-.playlist-count-badge {
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  background: var(--color-surface-2, rgba(126,156,216,0.15));
-  color: var(--color-primary, #7e9cd8);
-  border: 1px solid var(--color-border, #363646);
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 1rem;
+.transition-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #363646;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 1rem;
 }
-.playlist-item-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.transition-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #7e9cd8;
+  transition: width 0.1s linear;
 }
-.playlist-item-list li {
-  padding: 0.4rem 0;
-  border-bottom: 1px solid var(--color-border, #363646);
-  font-size: 0.9rem;
+.compilation-segment-list {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
 }
-.playlist-item-list a {
-  color: var(--color-primary, #7e9cd8);
-  font-weight: 600;
-  text-decoration: none;
+.compilation-segment-list li {
+  font-size: 0.88rem;
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+  color: #7e9cd8;
 }
-.playlist-item-list a:hover {
-  text-decoration: underline;
+.compilation-segment-list li.active-segment {
+  font-weight: 800;
+  color: #e6c384;
 }
 </style>
 
@@ -309,7 +513,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function renderStudio(data) {
     // 1. Stats
-    document.getElementById('stat-shorts').textContent = data.total_shorts_candidates;
+    if (document.getElementById('stat-shorts')) {
+      document.getElementById('stat-shorts').textContent = data.total_shorts_candidates;
+    }
+    if (document.getElementById('stat-api-payloads')) {
+      document.getElementById('stat-api-payloads').textContent = data.total_shorts_candidates;
+    }
 
     // 2. Tabs logic
     const tabBtns = document.querySelectorAll('.tab-btn');
@@ -325,92 +534,313 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
-    // 3. Render Shorts / Reels
+    // 3. Render Shorts / Reels Grid
     const shortsGrid = document.getElementById('shortsGrid');
-    shortsGrid.innerHTML = '';
+    if (shortsGrid && data.shorts_candidates) {
+      shortsGrid.innerHTML = '';
 
-    data.shorts_candidates.slice(0, 24).forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'short-card';
-      card.innerHTML = `
-        <div>
-          <span class="short-badge">📱 30-60s Reel Candidate</span>
-          <h3 class="short-speaker">${item.speaker}</h3>
-          <p class="short-video-title">📍 ${item.video_title} (${item.year})</p>
-          <div class="short-quote-box">"${item.text}"</div>
-        </div>
-        <a href="${item.url}" class="btn-studio-action">🎬 Preview in Player</a>
-      `;
-      shortsGrid.appendChild(card);
-    });
+      data.shorts_candidates.slice(0, 36).forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'short-card';
+        card.innerHTML = `
+          <div>
+            <div class="short-header-row">
+              <span class="short-badge">📱 Shorts Candidate</span>
+              <span class="short-duration-badge">⏱️ ${item.duration_formatted || '0:45'}</span>
+            </div>
+            <h3 class="short-speaker">${item.speaker}</h3>
+            <div class="short-overlay-preview">💡 "${item.overlay_text}"</div>
+            <p class="short-video-title">📍 ${item.video_title} (${item.year})</p>
+            <div class="short-quote-box">"${item.text}"</div>
+          </div>
+          <div class="card-actions-row">
+            <button type="button" class="btn-studio-primary btn-play-short" data-id="${item.id}">🎬 Play Short</button>
+            <button type="button" class="btn-studio-action btn-copy-json" data-id="${item.id}">📋 YouTube API JSON</button>
+            <button type="button" class="btn-studio-action btn-copy-desc" data-id="${item.id}">📝 Description</button>
+          </div>
+        `;
+        shortsGrid.appendChild(card);
+      });
 
-    // 4. Render Quotes
-    const quotesContainer = document.getElementById('quotesContainer');
-    quotesContainer.innerHTML = '';
+      // Bind Play Short click events
+      document.querySelectorAll('.btn-play-short').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const sId = btn.getAttribute('data-id');
+          const shortObj = data.shorts_candidates.find(s => s.id === sId);
+          if (shortObj) openShortPlayerModal(shortObj);
+        });
+      });
 
-    Object.keys(data.quotes_by_theme).forEach(themeKey => {
-      const quotes = data.quotes_by_theme[themeKey];
-      if (quotes.length === 0) return;
+      // Bind Copy JSON events
+      document.querySelectorAll('.btn-copy-json').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const sId = btn.getAttribute('data-id');
+          const shortObj = data.shorts_candidates.find(s => s.id === sId);
+          if (shortObj && shortObj.youtube_payload) {
+            navigator.clipboard.writeText(JSON.stringify(shortObj.youtube_payload, null, 2));
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => { btn.textContent = '📋 YouTube API JSON'; }, 2000);
+          }
+        });
+      });
 
-      const themeBlock = document.createElement('div');
-      themeBlock.style.marginBottom = '2.5rem';
+      // Bind Copy Description events
+      document.querySelectorAll('.btn-copy-desc').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const sId = btn.getAttribute('data-id');
+          const shortObj = data.shorts_candidates.find(s => s.id === sId);
+          if (shortObj && shortObj.youtube_payload) {
+            navigator.clipboard.writeText(shortObj.youtube_payload.snippet.description);
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => { btn.textContent = '📝 Description'; }, 2000);
+          }
+        });
+      });
+    }
 
-      let quotesHtml = quotes.map(q => `
-        <div style="background:var(--color-bg-card, #ffffff); border-left:4px solid var(--color-primary, #0284c7); padding:1rem 1.25rem; margin-bottom:0.75rem; border-radius:0 8px 8px 0; box-shadow:0 2px 6px rgba(0,0,0,0.03);">
-          <blockquote style="margin:0 0 0.5rem; font-size:1.05rem; color:var(--color-text-main, #1e293b);">"${q.text}"</blockquote>
-          <span style="font-size:0.85rem; font-weight:700; color:var(--color-primary, #0284c7);">— ${q.speaker}</span>
-          <span style="font-size:0.85rem; color:var(--color-text-muted, #64748b);"> in <a href="${q.url}">${q.video}</a></span>
-        </div>
-      `).join('');
+    // 4. Export All API Payloads button
+    const btnExportAll = document.getElementById('btn-export-all-api');
+    if (btnExportAll) {
+      btnExportAll.addEventListener('click', () => {
+        const allPayloads = data.shorts_candidates.map(s => s.youtube_payload);
+        navigator.clipboard.writeText(JSON.stringify(allPayloads, null, 2));
+        btnExportAll.textContent = '✅ Copied All 318 API Payloads!';
+        setTimeout(() => { btnExportAll.textContent = '📋 Export All YouTube API Payloads (JSON)'; }, 2500);
+      });
+    }
 
-      themeBlock.innerHTML = `
-        <h3 style="font-size:1.4rem; font-weight:800; color:var(--color-heading, #0f172a); margin-bottom:1rem; text-transform:capitalize;">Theme: ${themeKey.replace(/-/g, ' ')}</h3>
-        ${quotesHtml}
-      `;
-      quotesContainer.appendChild(themeBlock);
-    });
-
-    // 5. Render Playlists
+    // 5. Render Supercut Playlists
     const playlistsGrid = document.getElementById('playlistsGrid');
-    playlistsGrid.innerHTML = '';
+    if (playlistsGrid && data.playlists) {
+      playlistsGrid.innerHTML = '';
 
-    data.playlists.forEach(pl => {
-      const card = document.createElement('div');
-      card.className = 'playlist-card';
+      data.playlists.forEach(pl => {
+        const card = document.createElement('div');
+        card.className = 'playlist-card';
 
-      const itemsHtml = pl.items.map(item => `
-        <li><a href="${item.url}">🎬 ${item.title} (${item.year})</a></li>
-      `).join('');
+        const itemsHtml = pl.items.map(item => `
+          <li><a href="${item.url}">🎬 ${item.title} (${item.year})</a></li>
+        `).join('');
 
-      card.innerHTML = `
-        <h3 class="playlist-title">${pl.name}</h3>
-        <span class="playlist-count-badge">${pl.count} Interviews</span>
-        <ul class="playlist-item-list">
-          ${itemsHtml}
-        </ul>
-      `;
-      playlistsGrid.appendChild(card);
-    });
+        card.innerHTML = `
+          <h3 class="playlist-title">${pl.name}</h3>
+          <span class="short-badge" style="margin-bottom:0.75rem;">${pl.count} Core Interviews</span>
+          <p style="font-size:0.9rem; color:var(--color-text-muted, #938aa9);">Includes multi-segment Short extractions with seamless timestamp jumping.</p>
+          <ul class="playlist-item-list" style="margin-bottom:1rem;">${itemsHtml}</ul>
+          <button type="button" class="btn-studio-primary btn-play-compilation" data-name="${pl.name}">🎬 Play Compilation Supercut</button>
+        `;
+        playlistsGrid.appendChild(card);
+      });
 
-    // 6. Render Article Outlines
+      document.querySelectorAll('.btn-play-compilation').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const plName = btn.getAttribute('data-name');
+          const plObj = data.playlists.find(p => p.name === plName);
+          if (plObj && plObj.compilation_segments) {
+            openCompilationPlayerModal(plObj);
+          }
+        });
+      });
+    }
+
+    // 6. Render Quotes
+    const quotesContainer = document.getElementById('quotesContainer');
+    if (quotesContainer && data.quotes_by_theme) {
+      quotesContainer.innerHTML = '';
+
+      Object.keys(data.quotes_by_theme).forEach(themeKey => {
+        const quotes = data.quotes_by_theme[themeKey];
+        if (quotes.length === 0) return;
+
+        const themeBlock = document.createElement('div');
+        themeBlock.style.marginBottom = '2.5rem';
+
+        let quotesHtml = quotes.slice(0, 10).map(q => `
+          <div style="background:var(--color-bg-card, #2a2a37); border-left:4px solid var(--color-primary, #7e9cd8); padding:1rem 1.25rem; margin-bottom:0.75rem; border-radius:0 8px 8px 0;">
+            <blockquote style="margin:0 0 0.5rem; font-size:1rem; color:var(--color-text-main, #dcd7ba);">"${q.text}"</blockquote>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; font-size:0.85rem;">
+              <div>
+                <span style="font-weight:700; color:var(--color-primary, #7e9cd8);">— ${q.speaker}</span>
+                <span style="color:var(--color-text-muted, #938aa9);"> in <a href="${q.url}" style="color:var(--color-text-main, #dcd7ba);">${q.video}</a></span>
+              </div>
+              <span class="short-duration-badge">⏱️ ${q.duration_formatted || '0:35'}</span>
+            </div>
+          </div>
+        `).join('');
+
+        themeBlock.innerHTML = `
+          <h3 style="font-size:1.3rem; font-weight:800; color:var(--color-heading, #dcd7ba); margin-bottom:1rem; text-transform:capitalize;">Theme: ${themeKey.replace(/-/g, ' ')}</h3>
+          ${quotesHtml}
+        `;
+        quotesContainer.appendChild(themeBlock);
+      });
+    }
+
+    // 7. Render Article Outlines
     const articlesGrid = document.getElementById('articlesGrid');
-    articlesGrid.innerHTML = '';
+    if (articlesGrid && data.article_concepts) {
+      articlesGrid.innerHTML = '';
 
-    data.article_concepts.forEach(art => {
-      const card = document.createElement('div');
-      card.className = 'article-card';
+      data.article_concepts.forEach(art => {
+        const card = document.createElement('div');
+        card.className = 'playlist-card';
 
-      const tagsHtml = art.tags.map(t => `<span style="font-size:0.75rem; font-weight:700; padding:0.15rem 0.4rem; background:var(--color-bg-base, #f1f5f9); color:var(--color-text-muted, #475569); border-radius:4px; margin-right:0.3rem;">#${t}</span>`).join('');
+        const tagsHtml = art.tags.map(t => `<span style="font-size:0.75rem; font-weight:700; padding:0.15rem 0.4rem; background:var(--color-surface-2, rgba(126,156,216,0.15)); color:var(--color-primary, #7e9cd8); border-radius:4px; margin-right:0.3rem;">#${t}</span>`).join('');
 
-      card.innerHTML = `
-        <span style="font-size:0.8rem; font-weight:800; color:var(--color-primary, #0284c7); text-transform:uppercase; letter-spacing:0.05em;">${art.category}</span>
-        <h3 class="article-title" style="margin-top:0.3rem;">${art.title}</h3>
-        <p style="font-size:0.95rem; color:var(--color-text-muted, #475569); line-height:1.5; margin-bottom:1rem;">${art.summary}</p>
-        <div style="margin-bottom:1rem;">${tagsHtml}</div>
-        <a href="/ask/" class="btn-studio-action">✍️ Draft Article with AI</a>
-      `;
-      articlesGrid.appendChild(card);
+        card.innerHTML = `
+          <span style="font-size:0.8rem; font-weight:800; color:var(--color-primary, #7e9cd8); text-transform:uppercase;">${art.category}</span>
+          <h3 class="playlist-title" style="margin-top:0.3rem;">${art.title}</h3>
+          <p style="font-size:0.95rem; color:var(--color-text-muted, #938aa9); line-height:1.5; margin-bottom:1rem;">${art.summary}</p>
+          <div style="margin-bottom:1rem;">${tagsHtml}</div>
+          <a href="/ask/" class="btn-studio-action">✍️ Draft Article with AI</a>
+        `;
+        articlesGrid.appendChild(card);
+      });
+    }
+  }
+
+  // --- INTERACTIVE SHORTS PLAYER & COMPILATION MODAL ENGINE ---
+  const modal = document.getElementById('studio-player-modal');
+  const btnClose = document.getElementById('btn-close-modal');
+  const iframe = document.getElementById('studio-iframe-player');
+  const captionBox = document.getElementById('caption-text-body');
+  const transitionOverlay = document.getElementById('transition-delay-overlay');
+  const transitionNextLabel = document.getElementById('transition-next-label');
+  const transitionProgressFill = document.getElementById('transition-progress-fill');
+
+  let currentTimer = null;
+  let activePayload = null;
+
+  if (btnClose) {
+    btnClose.addEventListener('click', closeStudioModal);
+  }
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeStudioModal();
     });
+  }
+
+  function openShortPlayerModal(shortObj) {
+    activePayload = shortObj;
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+
+    document.getElementById('modal-badge-label').textContent = '📱 Shorts Studio Preview';
+    document.getElementById('modal-title-display').textContent = shortObj.video_title;
+    document.getElementById('modal-meta-display').textContent = `${shortObj.speaker} • ${shortObj.conference} (${shortObj.year})`;
+    document.getElementById('player-time-badge').textContent = `⏱️ ${shortObj.duration_formatted} (${shortObj.duration_sec}s snippet)`;
+    document.getElementById('player-quote-preview').textContent = `"${shortObj.text}"`;
+    document.getElementById('compilation-segment-list-container').style.display = 'none';
+
+    // Set caption overlay
+    captionBox.textContent = shortObj.overlay_text || "Shorts Screen Caption";
+
+    // Build embed URL with start_sec
+    let embedSrc = shortObj.embed_url || "https://www.youtube.com/embed/dQw4w9WgXcQ";
+    embedSrc += (embedSrc.includes('?') ? '&' : '?') + `autoplay=1&start=${shortObj.start_sec || 0}&enablejsapi=1`;
+    iframe.src = embedSrc;
+
+    // Bind replay
+    document.getElementById('btn-replay-segment').onclick = () => { iframe.src = embedSrc; };
+    document.getElementById('btn-copy-modal-json').onclick = () => {
+      if (shortObj.youtube_payload) {
+        navigator.clipboard.writeText(JSON.stringify(shortObj.youtube_payload, null, 2));
+        alert('✅ YouTube Data API JSON copied to clipboard!');
+      }
+    };
+    document.getElementById('btn-copy-modal-desc').onclick = () => {
+      if (shortObj.youtube_payload) {
+        navigator.clipboard.writeText(shortObj.youtube_payload.snippet.description);
+        alert('📝 YouTube Description copied to clipboard!');
+      }
+    };
+  }
+
+  function openCompilationPlayerModal(playlistObj) {
+    const segments = playlistObj.compilation_segments || [];
+    if (segments.length === 0) return;
+
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+
+    document.getElementById('modal-badge-label').textContent = '🎬 Compilation Supercut';
+    document.getElementById('modal-title-display').textContent = playlistObj.name;
+    document.getElementById('modal-meta-display').textContent = `${segments.length} Segment Compilation • Auto-jumping player`;
+    
+    const listContainer = document.getElementById('compilation-segment-list-container');
+    const segList = document.getElementById('compilation-segment-list');
+    listContainer.style.display = 'block';
+    segList.innerHTML = '';
+
+    segments.forEach((seg, idx) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${seg.speaker}</strong>: ${seg.overlay_text} (⏱️ ${seg.duration_formatted})`;
+      li.addEventListener('click', () => playCompilationSegment(segments, idx));
+      segList.appendChild(li);
+    });
+
+    playCompilationSegment(segments, 0);
+  }
+
+  function playCompilationSegment(segments, index) {
+    if (index >= segments.length) {
+      alert("🎉 Compilation playlist finished!");
+      return;
+    }
+
+    const seg = segments[index];
+    const lis = document.querySelectorAll('#compilation-segment-list li');
+    lis.forEach((li, idx) => {
+      if (idx === index) li.classList.add('active-segment');
+      else li.classList.remove('active-segment');
+    });
+
+    document.getElementById('player-time-badge').textContent = `Segment ${index + 1} of ${segments.length} • ⏱️ ${seg.duration_formatted}`;
+    document.getElementById('player-quote-preview').textContent = `"${seg.text}"`;
+    captionBox.textContent = seg.overlay_text;
+
+    let embedSrc = seg.embed_url || "https://www.youtube.com/embed/dQw4w9WgXcQ";
+    embedSrc += (embedSrc.includes('?') ? '&' : '?') + `autoplay=1&start=${seg.start_sec || 0}&enablejsapi=1`;
+    iframe.src = embedSrc;
+
+    // Handle duration timeout & transition delay to next segment
+    if (currentTimer) clearTimeout(currentTimer);
+
+    const segmentMs = (seg.duration_sec || 30) * 1000;
+    currentTimer = setTimeout(() => {
+      showTransitionOverlay(segments, index + 1);
+    }, segmentMs);
+  }
+
+  function showTransitionOverlay(segments, nextIndex) {
+    if (nextIndex >= segments.length) {
+      closeStudioModal();
+      return;
+    }
+
+    const nextSeg = segments[nextIndex];
+    transitionNextLabel.textContent = `Next Segment: ${nextSeg.speaker} — "${nextSeg.overlay_text}"`;
+    transitionOverlay.style.display = 'flex';
+    transitionProgressFill.style.width = '0%';
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 10;
+      transitionProgressFill.style.width = `${progress}%`;
+      if (progress >= 100) {
+        clearInterval(interval);
+        transitionOverlay.style.display = 'none';
+        playCompilationSegment(segments, nextIndex);
+      }
+    }, 250); // 2.5 second transition delay
+  }
+
+  function closeStudioModal() {
+    if (currentTimer) clearTimeout(currentTimer);
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    iframe.src = '';
+    transitionOverlay.style.display = 'none';
   }
 });
 </script>
