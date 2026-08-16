@@ -1,9 +1,9 @@
 ---
-id: TASK-059
+id: TASK-060
 title: >-
-  Canonical Review — Interview with Mandi Walls
-  (interview-with-mandi-walls-general)
-status: To Do
+  Canonical Review — Interview with Dean Wampler
+  (interview-with-dean-wampler-general)
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
 labels:

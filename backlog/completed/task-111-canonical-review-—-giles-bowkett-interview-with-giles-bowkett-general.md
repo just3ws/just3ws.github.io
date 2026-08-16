@@ -1,7 +1,7 @@
 ---
 id: TASK-111
 title: Canonical Review — Giles Bowkett (interview-with-giles-bowkett-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:56'
 labels:

@@ -1,9 +1,9 @@
 ---
-id: TASK-051
+id: TASK-057
 title: >-
-  Canonical Review — Interview with James Edward Gray II
-  (interview-with-james-edward-gray-ii-general)
-status: To Do
+  Canonical Review — Interview with Matt Ruby creator of Vooza
+  (interview-with-matt-ruby-creator-of-vooza-general)
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
 labels:

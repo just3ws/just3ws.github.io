@@ -1,9 +1,7 @@
 ---
-id: TASK-053
-title: >-
-  Canonical Review — Interview with Giles Bowkett author "Rails
-  (interview-with-giles-bowkett-author-rails-general)
-status: To Do
+id: TASK-052
+title: Canonical Review — Interview with Ken Auer (interview-with-ken-auer-general)
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
 labels:

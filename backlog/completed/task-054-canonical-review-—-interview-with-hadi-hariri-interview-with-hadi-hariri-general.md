@@ -1,9 +1,9 @@
 ---
-id: TASK-055
+id: TASK-054
 title: >-
-  Canonical Review — Interview with Chris Whitaker
-  (interview-with-chris-whitaker-general)
-status: To Do
+  Canonical Review — Interview with Hadi Hariri
+  (interview-with-hadi-hariri-general)
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
 labels:

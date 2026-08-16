@@ -1,7 +1,7 @@
 ---
 id: TASK-115
 title: Canonical Review — Giles Bowkett (Rails) (interview-with-giles-bowkett-rails)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:56'
 labels:

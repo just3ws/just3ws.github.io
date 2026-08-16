@@ -1,7 +1,7 @@
 ---
 id: TASK-022
 title: Repair Broken Transcript — Ethan Gunderson & Ryan Briones (gathers-us)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:10'
 labels:

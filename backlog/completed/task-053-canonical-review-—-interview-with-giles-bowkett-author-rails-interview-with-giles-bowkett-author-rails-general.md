@@ -1,9 +1,9 @@
 ---
-id: TASK-054
+id: TASK-053
 title: >-
-  Canonical Review — Interview with Hadi Hariri
-  (interview-with-hadi-hariri-general)
-status: To Do
+  Canonical Review — Interview with Giles Bowkett author "Rails
+  (interview-with-giles-bowkett-author-rails-general)
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
 labels:

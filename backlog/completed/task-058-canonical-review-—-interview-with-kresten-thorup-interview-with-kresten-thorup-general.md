@@ -1,9 +1,9 @@
 ---
-id: TASK-060
+id: TASK-058
 title: >-
-  Canonical Review — Interview with Dean Wampler
-  (interview-with-dean-wampler-general)
-status: To Do
+  Canonical Review — Interview with Kresten Thorup
+  (interview-with-kresten-thorup-general)
+status: Done
 assignee: []
 created_date: '2026-04-08 03:39'
 labels:

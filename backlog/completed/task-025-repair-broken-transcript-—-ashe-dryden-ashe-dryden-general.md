@@ -1,7 +1,7 @@
 ---
 id: TASK-025
 title: Repair Broken Transcript — Ashe Dryden (ashe-dryden-general)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-04-08 03:10'
 labels:
