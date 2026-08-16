@@ -133,28 +133,129 @@ permalink: /panoramic-view/
     </figure>
   </section>
 
-  <!-- SECTION 4: OPERATING SEQUENCE & SIMPLE LOOP OF DISCOVERY -->
+  <!-- SECTION 4: INTERACTIVE OPERATING SEQUENCE MATRIX -->
   <section class="pv-sequence" aria-labelledby="operating-sequence">
     <div class="pv-section-heading">
-      <p class="pv-kicker">Operating Sequence</p>
-      <h2 id="operating-sequence">Stabilize. Understand. Innovate.</h2>
+      <p class="pv-kicker">Operating Sequence & Method Matrix</p>
+      <h2 id="operating-sequence">Stabilize • Understand • Improve</h2>
+      <p style="font-size:1.05rem; color:var(--pv-muted, #938aa9); margin-top:0.5rem;">
+        The 3-stage operating sequence for turning production ambiguity into safe, executable change. Click a phase to inspect its empirical focus, key artifacts, and case study evidence.
+      </p>
     </div>
-    <ol class="pv-sequence-list">
-      {% for phase in pv.operating_sequence %}
-        <li>
-          <span class="pv-step-number" aria-hidden="true">0{{ forloop.index }}</span>
-          <h3>{{ phase.name }}</h3>
-          <p>{{ phase.summary }}</p>
-        </li>
-      {% endfor %}
-    </ol>
-  </section>
 
-  <section class="pv-loop" aria-labelledby="discovery-loop">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">Discovery Practice</p>
-      <h2 id="discovery-loop">The Simple Loop of Discovery</h2>
-      <p>Start with a real premise. Follow evidence across boundaries. Update the shared map with explicit confidence and provenance.</p>
+    <!-- Matrix Tab Switcher -->
+    <div class="pv-matrix-switcher" role="tablist" aria-label="Operating sequence phases">
+      <button type="button" class="pv-matrix-tab active" data-phase="stabilize" role="tab" aria-selected="true" aria-controls="panel-stabilize">
+        <span class="step-num">01</span>
+        <strong>Stabilize</strong>
+        <small>Risk & Boundaries</small>
+      </button>
+      <button type="button" class="pv-matrix-tab" data-phase="understand" role="tab" aria-selected="false" aria-controls="panel-understand">
+        <span class="step-num">02</span>
+        <strong>Understand</strong>
+        <small>Map & Reconcile</small>
+      </button>
+      <button type="button" class="pv-matrix-tab" data-phase="improve" role="tab" aria-selected="false" aria-controls="panel-improve">
+        <span class="step-num">03</span>
+        <strong>Improve / Innovate</strong>
+        <small>Safe Modernization</small>
+      </button>
+    </div>
+
+    <!-- Matrix Panels -->
+    <div class="pv-matrix-panels">
+      <div class="pv-matrix-panel active" id="panel-stabilize" role="tabpanel">
+        <div class="pv-panel-card">
+          <div class="pv-panel-header">
+            <h3>Phase 1: Stabilize</h3>
+            <span class="pv-card-badge">Risk Containment</span>
+          </div>
+          <p class="pv-panel-summary">Make immediate operational risk, team ownership, HIPAA / PHI boundaries, and release safety limits visible before altering production code.</p>
+          <div class="pv-panel-grid">
+            <div class="pv-panel-col">
+              <h4>🔍 Empirical Focus</h4>
+              <ul>
+                <li>Contain unmonitored production failures & silent exception swallowing</li>
+                <li>Enforce explicit compliance boundaries & credentials isolation</li>
+                <li>Freeze untracked schema mutations & audit 36+ vendor dependencies</li>
+              </ul>
+            </div>
+            <div class="pv-panel-col">
+              <h4>📄 Key Artifacts</h4>
+              <ul>
+                <li>Supply Chain Exposure Ledger (36+ vendor gates mapped)</li>
+                <li>Zero-Downtime Release & Rollback Gate Schema</li>
+                <li>Continuous Integration & Automated Test Suite</li>
+              </ul>
+            </div>
+          </div>
+          <div class="pv-panel-link-row">
+            <a href="/case-studies/" class="pv-text-link">Review System Cartography Case Studies →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pv-matrix-panel" id="panel-understand" style="display:none;" role="tabpanel">
+        <div class="pv-panel-card">
+          <div class="pv-panel-header">
+            <h3>Phase 2: Understand</h3>
+            <span class="pv-card-badge">System Cartography</span>
+          </div>
+          <p class="pv-panel-summary">Reconcile interested-party understanding with the implemented domain model and observed runtime behavior. Uncover hidden assumptions and structural debt.</p>
+          <div class="pv-panel-grid">
+            <div class="pv-panel-col">
+              <h4>🔍 Empirical Focus</h4>
+              <ul>
+                <li>Trace request-response system waves across UI, application, and storage</li>
+                <li>Identify discrepancies between intended business rules and code execution</li>
+                <li>Document system topology and institutional memory in public-safe form</li>
+              </ul>
+            </div>
+            <div class="pv-panel-col">
+              <h4>📄 Key Artifacts</h4>
+              <ul>
+                <li>4-Dimensional System Cartography Map</li>
+                <li>Actor & Domain Model Reconciliation Ledger</li>
+                <li>Empirical Trace & Telemetry Correlation Matrix</li>
+              </ul>
+            </div>
+          </div>
+          <div class="pv-panel-link-row">
+            <a href="/case-studies/" class="pv-text-link">Review System Cartography Case Studies →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pv-matrix-panel" id="panel-improve" style="display:none;" role="tabpanel">
+        <div class="pv-panel-card">
+          <div class="pv-panel-header">
+            <h3>Phase 3: Improve & Innovate</h3>
+            <span class="pv-card-badge">Modernization</span>
+          </div>
+          <p class="pv-panel-summary">Execute incremental, evidence-backed refactoring, architecture modernization, and performance optimization without disrupting business operations.</p>
+          <div class="pv-panel-grid">
+            <div class="pv-panel-col">
+              <h4>🔍 Empirical Focus</h4>
+              <ul>
+                <li>Strangler Fig migration of legacy monolithic bottlenecks</li>
+                <li>Decouple domain models with explicit interface contracts</li>
+                <li>Accelerate team delivery velocity with automated verification</li>
+              </ul>
+            </div>
+            <div class="pv-panel-col">
+              <h4>📄 Key Artifacts</h4>
+              <ul>
+                <li>Incremental Modernization Roadmap</li>
+                <li>Contract Verification & Playwright Test Suite</li>
+                <li>Executive Pitch Briefs & Modernization Summaries</li>
+              </ul>
+            </div>
+          </div>
+          <div class="pv-panel-link-row">
+            <a href="/case-studies/" class="pv-text-link">Review System Cartography Case Studies →</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -188,3 +289,144 @@ permalink: /panoramic-view/
     </div>
   </footer>
 </article>
+
+<style>
+.pv-matrix-switcher {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+.pv-matrix-tab {
+  background: var(--pv-surface, #2a2a37);
+  border: 2px solid var(--pv-border, #363646);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+  color: var(--pv-ink, #dcd7ba);
+}
+.pv-matrix-tab:hover {
+  border-color: var(--pv-accent, #7e9cd8);
+}
+.pv-matrix-tab.active {
+  border-color: var(--pv-accent, #7e9cd8);
+  background: var(--pv-surface-2, rgba(126,156,216,0.12));
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.pv-matrix-tab .step-num {
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: var(--pv-accent, #7e9cd8);
+}
+.pv-matrix-tab strong {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.pv-matrix-tab small {
+  font-size: 0.82rem;
+  color: var(--pv-muted, #938aa9);
+}
+.pv-panel-card {
+  background: var(--pv-surface, #2a2a37);
+  border: 1px solid var(--pv-border, #363646);
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.pv-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.pv-panel-header h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0;
+}
+.pv-card-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  background: var(--pv-surface-2, rgba(126,156,216,0.15));
+  color: var(--pv-accent, #7e9cd8);
+  border-radius: 4px;
+}
+.pv-panel-summary {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--pv-ink, #dcd7ba);
+  margin-bottom: 1.5rem;
+}
+.pv-panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.pv-panel-col h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--pv-accent, #7e9cd8);
+  margin: 0 0 0.5rem;
+}
+.pv-panel-col ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--pv-muted, #c8c093);
+}
+.pv-panel-link-row {
+  border-top: 1px solid var(--pv-border, #363646);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .pv-matrix-switcher {
+    grid-template-columns: 1fr;
+  }
+  .pv-panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const tabs = document.querySelectorAll('.pv-matrix-tab');
+  const panels = document.querySelectorAll('.pv-matrix-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetPhase = tab.getAttribute('data-phase');
+
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(p => {
+        p.classList.remove('active');
+        p.style.display = 'none';
+      });
+
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      const activePanel = document.getElementById('panel-' + targetPhase);
+      if (activePanel) {
+        activePanel.classList.add('active');
+        activePanel.style.display = 'block';
+      }
+    });
+  });
+});
+</script>
