@@ -153,7 +153,7 @@ assert_resume_structured_data() {
     const jsonLd = Array.from(document.querySelectorAll('script[type=\"application/ld+json\"]'))
       .map((s) => s.textContent || '')
       .join('\\n');
-    if (!jsonLd.includes('\"@type\":\"Person\"')) throw new Error('resume missing Person JSON-LD');
+    if (!/\"@type\"\\s*:\\s*\"Person\"/.test(jsonLd)) throw new Error('resume missing Person JSON-LD');
     return true;
   }" >/dev/null
 }
