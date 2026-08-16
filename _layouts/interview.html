@@ -58,5 +58,37 @@ layout: minimal
         </section>
       </div>
     {% endif %}
+
+    {% assign semantic_data = site.data.semantic_cross_links.cross_links[interview.id] %}
+    {% if semantic_data and semantic_data.related.size > 0 %}
+      <div class="interview-editorial-container" style="padding-top: 0; margin-top: -1.5rem;">
+        <section class="related-context-editorial">
+          <div class="section-header-editorial">
+            <h2 class="section-title">🔗 Related Archival Conversations & Semantic Threads</h2>
+            <hr class="title-accent">
+          </div>
+          <div class="related-context-grid">
+            {% for item in semantic_data.related %}
+              <div class="related-context-card">
+                <span class="related-tag" style="background:var(--color-surface-2, rgba(126,156,216,0.15)); color:var(--color-primary, #7e9cd8); font-weight:800;">
+                  {% if item.kind == 'person' %}🎙️ Same Speaker{% elsif item.kind == 'topic' %}🏷️ Shared Topic{% else %}🧠 Semantic Thread{% endif %} ({{ item.score | times: 100 | round }}% match)
+                </span>
+                <h3 class="related-link-title" style="margin-top:0.4rem;">
+                  <a href="/interviews/{{ item.id }}/">🎬 {{ item.title }}</a>
+                </h3>
+                <p class="related-description">Speaker: <strong>{{ item.speaker }}</strong></p>
+                {% if item.shared_topics and item.shared_topics.size > 0 %}
+                  <div style="margin-top:0.5rem;">
+                    {% for top in item.shared_topics %}
+                      <span style="font-size:0.75rem; font-weight:700; background:var(--color-bg-base, #16161d); color:var(--color-text-muted, #938aa9); padding:0.15rem 0.4rem; border-radius:4px; margin-right:0.25rem;">#{{ top }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+    {% endif %}
   {% endif %}
 </article>

@@ -154,6 +154,10 @@ namespace :validate do
     sh 'ruby ./bin/publish_youtube_metadata.rb --dry-run'
   end
 
+  task :semantic_links do
+    sh 'ruby ./bin/generate_semantic_cross_links.rb'
+  end
+
   task :metadata_completeness do
     sh 'ruby ./bin/validate_metadata_completeness_budget.rb'
   end
