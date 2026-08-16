@@ -43,10 +43,12 @@ description: "Instant search playground querying 456,000 words across 207 histor
 
 <style>
 .intel-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #ffffff;
-  padding: 3.5rem 1.5rem;
-  border-bottom: 4px solid #0284c7;
+  background: var(--color-bg-card, #1e293b);
+  color: var(--color-text-main, #ffffff);
+  padding: 3rem 1.5rem;
+  border-bottom: 3px solid var(--color-primary, #0284c7);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
 }
 .intel-hero-inner {
   max-width: 1200px;
@@ -54,7 +56,7 @@ description: "Instant search playground querying 456,000 words across 207 histor
 }
 .intel-badge {
   display: inline-block;
-  background: #0284c7;
+  background: var(--color-primary, #0284c7);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 800;
@@ -65,13 +67,14 @@ description: "Instant search playground querying 456,000 words across 207 histor
   text-transform: uppercase;
 }
 .intel-title {
-  font-size: 2.75rem;
-  font-weight: 900;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-heading, var(--color-text-main, #ffffff));
   margin-bottom: 0.75rem;
 }
 .intel-subtitle {
-  font-size: 1.15rem;
-  color: #94a3b8;
+  font-size: 1.1rem;
+  color: var(--color-text-muted, #94a3b8);
   max-width: 800px;
   line-height: 1.6;
 }
@@ -81,23 +84,25 @@ description: "Instant search playground querying 456,000 words across 207 histor
   padding: 0 1.5rem;
 }
 .search-hero-box {
-  background: #ffffff;
+  background: var(--color-bg-card, #2a2a37);
   padding: 2rem;
   border-radius: 12px;
-  border: 1px solid #cbd5e1;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border: 1px solid var(--color-border, #363646);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 .ask-search-input {
   width: 100%;
   padding: 1rem 1.25rem;
   font-size: 1.25rem;
-  border: 2px solid #cbd5e1;
+  background: var(--color-bg-base, #1a1b2f);
+  color: var(--color-text-main, #dcd7ba);
+  border: 2px solid var(--color-border, #363646);
   border-radius: 8px;
   outline: none;
   transition: border-color 0.15s ease;
 }
 .ask-search-input:focus {
-  border-color: #0284c7;
+  border-color: var(--color-primary, #7e9cd8);
 }
 .suggested-queries {
   display: flex;
@@ -106,20 +111,22 @@ description: "Instant search playground querying 456,000 words across 207 histor
   flex-wrap: wrap;
   margin-top: 1rem;
   font-size: 0.88rem;
-  color: #64748b;
+  color: var(--color-text-muted, #94a3b8);
 }
 .chip-btn {
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.75rem;
   font-size: 0.82rem;
   font-weight: 600;
-  background: #f1f5f9;
-  color: #0369a1;
-  border: 1px solid #bae6fd;
+  background: var(--color-surface-2, rgba(126, 156, 216, 0.15));
+  color: var(--color-primary, #7e9cd8);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 6px;
   cursor: pointer;
+  transition: background 0.15s ease;
 }
 .chip-btn:hover {
-  background: #e0f2fe;
+  background: var(--color-primary, #7e9cd8);
+  color: #ffffff;
 }
 .ask-results-grid {
   display: flex;
@@ -128,37 +135,38 @@ description: "Instant search playground querying 456,000 words across 207 histor
   margin-top: 1rem;
 }
 .result-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-card, #2a2a37);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .result-title {
   font-size: 1.2rem;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--color-text-main, #dcd7ba);
   margin-bottom: 0.5rem;
 }
 .result-meta {
   font-size: 0.85rem;
-  color: #0284c7;
+  color: var(--color-accent, #e6c384);
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
 .btn-jump-video {
   display: inline-block;
   margin-top: 0.75rem;
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 1rem;
   font-size: 0.85rem;
   font-weight: 700;
   color: #ffffff;
-  background: #0284c7;
+  background: var(--color-primary, #7e9cd8);
   border-radius: 6px;
   text-decoration: none;
+  transition: background 0.15s ease;
 }
 .btn-jump-video:hover {
-  background: #0369a1;
+  opacity: 0.9;
 }
 </style>
 

@@ -46,19 +46,19 @@ permalink: /case-studies/
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
-      <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
+      <div style="background: var(--color-bg-card, #ffffff); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
         <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">1. Interaction Surface</h3>
         <p style="font-size: 0.875rem; color: #64748b; margin: 0;">API contracts, public web endpoints, client boundaries, JWT auth, and external consumer protocols.</p>
       </div>
-      <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
+      <div style="background: var(--color-bg-card, #ffffff); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
         <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">2. Lateral State Dependencies</h3>
         <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Cross-domain mutations, async queues (Sidekiq/Kafka), transactional boundaries, and database locks.</p>
       </div>
-      <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
+      <div style="background: var(--color-bg-card, #ffffff); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
         <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">3. Full-Stack Topology</h3>
         <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Kubernetes clusters, ingress routing, cloud infrastructure, and database replication topographies.</p>
       </div>
-      <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
+      <div style="background: var(--color-bg-card, #ffffff); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
         <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">4. Supply Chain Exposure</h3>
         <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Third-party SaaS APIs, regulatory/HIPAA boundaries, dependency drift, and release verification gates.</p>
       </div>
@@ -67,7 +67,7 @@ permalink: /case-studies/
 
   <section class="case-studies-list" style="display: flex; flex-direction: column; gap: 3rem;">
     {% for cs in site.data.case_studies.case_studies %}
-    <article class="case-study-card" style="border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.75rem; padding: 2.5rem; background: #ffffff; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <article class="case-study-card" style="border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.75rem; padding: 2.5rem; background: var(--color-bg-card, #ffffff); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
       <header style="margin-bottom: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem;">
         <span style="font-size: 0.875rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">{{ cs.company }} &bull; {{ cs.period }}</span>
         <h2 style="font-size: 1.75rem; font-weight: 800; color: #0f172a; margin-top: 0.25rem; margin-bottom: 0.5rem;">{{ cs.title }}</h2>

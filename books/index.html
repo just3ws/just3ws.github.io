@@ -37,10 +37,12 @@ description: "Books authored and recommended by interviewees across the UGtastic
 
 <style>
 .intel-hero {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #ffffff;
-  padding: 3.5rem 1.5rem;
-  border-bottom: 4px solid #0284c7;
+  background: var(--color-bg-card, #1e293b);
+  color: var(--color-text-main, #ffffff);
+  padding: 3rem 1.5rem;
+  border-bottom: 3px solid var(--color-primary, #0284c7);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
 }
 .intel-hero-inner {
   max-width: 1200px;
@@ -48,7 +50,7 @@ description: "Books authored and recommended by interviewees across the UGtastic
 }
 .intel-badge {
   display: inline-block;
-  background: #0284c7;
+  background: var(--color-primary, #0284c7);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 800;
@@ -59,13 +61,14 @@ description: "Books authored and recommended by interviewees across the UGtastic
   text-transform: uppercase;
 }
 .intel-title {
-  font-size: 2.75rem;
-  font-weight: 900;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-heading, var(--color-text-main, #ffffff));
   margin-bottom: 0.75rem;
 }
 .intel-subtitle {
-  font-size: 1.15rem;
-  color: #94a3b8;
+  font-size: 1.1rem;
+  color: var(--color-text-muted, #94a3b8);
   max-width: 800px;
   line-height: 1.6;
 }
@@ -74,70 +77,93 @@ description: "Books authored and recommended by interviewees across the UGtastic
   margin: 2rem auto;
   padding: 0 1.5rem;
 }
+.explorer-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.search-input, .filter-select {
+  background: var(--color-bg-card, #2a2a37);
+  color: var(--color-text-main, #dcd7ba);
+  border: 1px solid var(--color-border, #363646);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  outline: none;
+}
+.search-input {
+  flex: 1;
+  min-width: 260px;
+}
+.search-input:focus, .filter-select:focus {
+  border-color: var(--color-primary, #7e9cd8);
+}
 .books-library-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 1.5rem;
 }
 .book-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-card, #2a2a37);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, border-color 0.15s ease;
 }
 .book-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  border-color: #0284c7;
+  border-color: var(--color-primary, #7e9cd8);
 }
 .book-type-badge {
   align-self: flex-start;
   font-size: 0.75rem;
   font-weight: 800;
-  padding: 0.2rem 0.6rem;
-  background: #e0f2fe;
-  color: #0369a1;
+  padding: 0.25rem 0.65rem;
+  background: var(--color-surface-2, rgba(126, 156, 216, 0.15));
+  color: var(--color-primary, #7e9cd8);
+  border: 1px solid var(--color-border, #363646);
   border-radius: 4px;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
 }
 .book-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--color-text-main, #dcd7ba);
   margin-bottom: 0.35rem;
   line-height: 1.35;
 }
 .book-author {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #0284c7;
+  color: var(--color-accent, #e6c384);
   margin-bottom: 0.75rem;
 }
 .book-desc {
   font-size: 0.95rem;
-  color: #475569;
+  color: var(--color-text-muted, #c8c093);
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
 .btn-book-interview {
   align-self: flex-start;
   display: inline-block;
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 1rem;
   font-size: 0.85rem;
   font-weight: 700;
-  color: #0284c7;
-  border: 1px solid #0284c7;
+  color: var(--color-primary, #7e9cd8);
+  border: 1px solid var(--color-primary, #7e9cd8);
   border-radius: 6px;
   text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 .btn-book-interview:hover {
-  background: #0284c7;
+  background: var(--color-primary, #7e9cd8);
   color: #ffffff;
 }
 </style>
