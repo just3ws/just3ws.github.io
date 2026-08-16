@@ -80,7 +80,7 @@ class ContentStudioGenerator
         overlay_text = derive_overlay_caption(text, s_name)
 
         # Extract Shorts / Reels Candidates
-        if text.match?(/\b(craftsmanship|tdd|lean|code|architecture|empathy|community|testing|design)\b/i) && text.size.between?(120, 500)
+        if text.match?(/\b(craftsmanship|craftsman|craftsmen|tdd|lean|code|architecture|empathy|community|testing|design|agile|refactor|quality|pairing|legacy|open source|mentorship|culture|performance|scaling|deployment|devops|delivery|learning|kata|koan|ruby|java|python|clojure|scala|elixir|web|frontend|backend|database|git|security|software)\b/i) && text.size.between?(100, 650)
           
           youtube_payload = build_youtube_payload(title, s_name, conf, year, idx, text, t_id, start_sec, end_sec, overlay_text)
 
