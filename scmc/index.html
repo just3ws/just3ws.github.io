@@ -1,40 +1,130 @@
 ---
 layout: minimal
-title: SCMC Videos
-description: Software Craftsmanship McHenry County recordings from a practitioner-focused working group.
-breadcrumb: SCMC
+title: "Software Craftsmanship Movement Chicago (SCMC) — Historical Archive & Synthesis"
+description: "A historical synthesis of the Software Craftsmanship Movement Chicago (SCMC), SCNA, user group presentations, and 200+ technical interviews spanning 2008–2026."
+breadcrumb: SCMC History
+permalink: /scmc/
+robots: index,follow
+sitemap: true
 ---
 
-<article class="page">
-  {% include breadcrumbs.html %}
-  <header>
-    <h1>SCMC Videos</h1>
-    <p class="intro">A working-group archive from Software Craftsmanship McHenry County, focused on practical engineering, shared learning, and talks that stood up to real delivery work.</p>
+{% include breadcrumbs.html %}
+
+{% assign scmc_items = site.data.scmc_videos.items %}
+{% include schema-factory.html
+  collection_name="Software Craftsmanship Movement Chicago (SCMC)"
+  collection_description=page.description
+  items=scmc_items
+  item_id_key="video_asset_id"
+  item_name_key="title"
+  url_prefix="/videos/"
+  item_schema_type="CreativeWork"
+  entity_id_prefix="/id/video/"
+%}
+
+<div class="scmc-container" style="max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem;">
+  <header class="scmc-header" style="margin-bottom: 3rem; text-align: center;">
+    <p style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent, #2563eb); margin-bottom: 0.5rem;">Historical Archive & Digital Archeology</p>
+    <h1 style="font-size: 2.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem;">Software Craftsmanship Movement Chicago (SCMC)</h1>
+    <p style="font-size: 1.125rem; color: var(--color-text-muted, #4b5563); max-width: 52ch; margin: 0 auto;">
+      A forensic synthesis of practitioner presentations, technical interviews, and community intersections from the Chicagoland software movement.
+    </p>
   </header>
 
-  <section class="index-summary">
-    <p>SCMC was a place for practitioners to test ideas in public, teach from direct experience, and keep technical standards grounded in day-to-day work.</p>
-    <ul class="index-highlights">
-      <li>This collection includes session recordings and community interviews from that period.</li>
-      <li>Topics span craftsmanship, programming languages, tooling, and implementation tradeoffs.</li>
-      <li>Use this page as a starting point, then follow each item into the full video and transcript context.</li>
-    </ul>
+  <section class="scmc-overview" style="background: var(--color-bg-card, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem;">
+    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #0f172a;">The Origin & Purpose of SCMC</h2>
+    <p style="font-size: 1rem; line-height: 1.6; color: #334155; margin-bottom: 1rem;">
+      In 2009–2010, when mainstream Agile conferences rejected practical software engineering talks for being "too implementation-focused," the Chicago developer community responded by founding <strong>Software Craftsmanship North America (SCNA)</strong> and organizing local unvarnished practitioner meetups: the <strong>Software Craftsmanship Movement Chicago (SCMC)</strong>.
+    </p>
+    <p style="font-size: 1rem; line-height: 1.6; color: #334155; margin: 0;">
+      Organized by Steve Kim, Jim Suchy, Dave Hoover, and a core group of Chicagoland engineers, SCMC served as a monthly unvarnished laboratory where developers shared code, refactoring techniques, language runtimes (Ruby, Clojure, C++, Perl, Java), and automated testing practices.
+    </p>
   </section>
 
-  {% assign items = site.data.scmc_videos.items %}
-  {% include schema-factory.html
-    collection_name="Software Craftsmanship McHenry County"
-    collection_description=page.description
-    items=items
-    item_id_key="video_asset_id"
-    item_name_key="title"
-    url_prefix="/videos/"
-    item_schema_type="CreativeWork"
-    entity_id_prefix="/id/video/"
-  %}
+  <section class="scmc-intersections" style="margin-bottom: 4rem;">
+    <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 1.5rem; color: #0f172a;">Cross-Corpus Intersections: Presentations x Interviews x Career Jobs</h2>
+    <p style="font-size: 1rem; color: #475569; margin-bottom: 2rem;">
+      Below are key community leaders who presented at SCMC / SCNA, stood in front of UGtastic cameras, and directly intersected with Mike Hall's career timeline and technical writing:
+    </p>
 
-  {% for item in items %}
-    {% assign asset = site.data.video_assets.items | where: "id", item.video_asset_id | first %}
-    {% include_cached video-asset-card.html asset=asset %}
-  {% endfor %}
-</article>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+      
+      <div style="background: #ffffff; border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.5rem; padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Robert "Uncle Bob" Martin</h3>
+        <p style="font-size: 0.875rem; color: #2563eb; font-weight: 600; margin-bottom: 0.75rem;">Co-author of Agile Manifesto • SCNA Keynote</p>
+        <ul style="font-size: 0.875rem; color: #475569; padding-left: 1.25rem; margin-bottom: 1rem; line-height: 1.5;">
+          <li><strong>SCMC Meeting:</strong> <em>The A Word: Architecture</em> (Vimeo-30083598, 1,400+ views)</li>
+          <li><strong>UGtastic Interview:</strong> <a href="/interviews/robert-martin-software-craftsmanship-north-america-2012/">Filling the Vessel: Craft of Performance</a></li>
+          <li><strong>Article:</strong> <a href="/2026/05/20/214-technical-conversations-what-i-learned.html">214 Technical Conversations</a></li>
+          <li><strong>Career Link:</strong> Groupon & Obtiva Craftsmanship Era</li>
+        </ul>
+      </div>
+
+      <div style="background: #ffffff; border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.5rem; padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Dave Hoover</h3>
+        <p style="font-size: 0.875rem; color: #2563eb; font-weight: 600; margin-bottom: 0.75rem;">Founder at Obtiva • SCNA Co-organizer</p>
+        <ul style="font-size: 0.875rem; color: #475569; padding-left: 1.25rem; margin-bottom: 1rem; line-height: 1.5;">
+          <li><strong>SCMC Meeting:</strong> Obtiva GeekFest & SCNA Presentations</li>
+          <li><strong>UGtastic Interview:</strong> <a href="/interviews/dave-hoover-geekfest-geekfest/">GeekFest & Apprenticeship</a></li>
+          <li><strong>Article:</strong> <a href="/2024/12/28/what-seasoned-developers-forget-about-starting-out.html">What Seasoned Developers Forget</a></li>
+          <li><strong>Career Link:</strong> Groupon L&D Business Partner & Obtiva</li>
+        </ul>
+      </div>
+
+      <div style="background: #ffffff; border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.5rem; padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Igor Polevoy</h3>
+        <p style="font-size: 0.875rem; color: #2563eb; font-weight: 600; margin-bottom: 0.75rem;">Creator of ActiveJDBC & ActiveWeb</p>
+        <ul style="font-size: 0.875rem; color: #475569; padding-left: 1.25rem; margin-bottom: 1rem; line-height: 1.5;">
+          <li><strong>SCMC Meeting:</strong> <em>ActiveJDBC & ActiveWeb for Java</em> (Vimeo-38936294)</li>
+          <li><strong>UGtastic Interview:</strong> <a href="/interviews/igor-polevoy-general/">Java Development Tools</a></li>
+          <li><strong>Article:</strong> <a href="/2025/01/21/the-power-of-people-not-just-ai.html">The Power of People, Not Just AI</a></li>
+          <li><strong>Career Link:</strong> ReachLocal & ActiveCampaign</li>
+        </ul>
+      </div>
+
+      <div style="background: #ffffff; border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.5rem; padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Sergio Pereira</h3>
+        <p style="font-size: 0.875rem; color: #2563eb; font-weight: 600; margin-bottom: 0.75rem;">Founder of Chicago ALT.NET</p>
+        <ul style="font-size: 0.875rem; color: #475569; padding-left: 1.25rem; margin-bottom: 1rem; line-height: 1.5;">
+          <li><strong>SCMC Meeting:</strong> Chicago ALT.NET Roots & SCNA 2011</li>
+          <li><strong>UGtastic Interview:</strong> <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/">Chicago ALT.NET Community</a></li>
+          <li><strong>Article:</strong> <a href="/2009/03/18/chicagoland-software-developer-user-groups.html">Chicagoland User Groups</a></li>
+          <li><strong>Career Link:</strong> Tandem & Chicago ALT.NET</li>
+        </ul>
+      </div>
+
+      <div style="background: #ffffff; border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.5rem; padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Katrina Owen & Paul Baker</h3>
+        <p style="font-size: 0.875rem; color: #2563eb; font-weight: 600; margin-bottom: 0.75rem;">Creator of Exercism.io & Developer Educators</p>
+        <ul style="font-size: 0.875rem; color: #475569; padding-left: 1.25rem; margin-bottom: 1rem; line-height: 1.5;">
+          <li><strong>SCMC Meeting:</strong> Deliberate Practice & SCNA Presentations</li>
+          <li><strong>UGtastic Interview:</strong> <a href="/interviews/interview-with-katrina-owen-general/">Katrina Owen</a> | <a href="/interviews/paul-baker-general/">Paul Baker</a></li>
+          <li><strong>Article:</strong> <a href="/2025/01/04/practice-vs-repetition-the-key-to-real-growth.html">Practice vs. Repetition</a></li>
+          <li><strong>Career Link:</strong> BenchPrep (Assessment Engine)</li>
+        </ul>
+      </div>
+
+      <div style="background: #ffffff; border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.5rem; padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Corey Haines & Aaron Bedra</h3>
+        <p style="font-size: 0.875rem; color: #2563eb; font-weight: 600; margin-bottom: 0.75rem;">Journeyman Craftsman & Clojure Koans Creator</p>
+        <ul style="font-size: 0.875rem; color: #475569; padding-left: 1.25rem; margin-bottom: 1rem; line-height: 1.5;">
+          <li><strong>SCMC Meeting:</strong> Global Day of Code Retreat & Clojure Koans</li>
+          <li><strong>UGtastic Interview:</strong> <a href="/interviews/corey-haines-general/">Corey Haines</a> | <a href="/interviews/aaron-bedra-general/">Aaron Bedra</a></li>
+          <li><strong>Article:</strong> <a href="/2025/01/10/from-yossarian-to-orr-moving-from-seeing-the-problem-to-solving-it.html">From Yossarian to Orr</a></li>
+          <li><strong>Career Link:</strong> Phalanx Duel (Deterministic Engine)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="scmc-lessons" style="background: #0f172a; color: #f8fafc; border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem;">
+    <h2 style="font-size: 1.5rem; font-weight: 700; color: #38bdf8; margin-bottom: 1rem;">Synthesized Historical Lessons from SCMC</h2>
+    <ol style="font-size: 0.95rem; line-height: 1.6; color: #cbd5e1; padding-left: 1.25rem; margin: 0;">
+      <li style="margin-bottom: 0.75rem;"><strong>Grassroots Meetups Acted as Enterprise R&D Labs:</strong> SCMC meetings provided the experimental ground where TDD, Sidekiq, ActiveJDBC, and AOP patterns were vetted before being adopted by high-growth startups like Groupon and ActiveCampaign.</li>
+      <li style="margin-bottom: 0.75rem;"><strong>Polyglot Runtime Transition:</strong> SCMC sessions bridged the transition from legacy .NET/Java monoliths to dynamic Ruby, Clojure, Python, and Node.js environments across Chicagoland.</li>
+      <li style="margin-bottom: 0.75rem;"><strong>Community Drives Engineering Leadership:</strong> Meetup organizers were the primary architects of the talent pipelines that powered Chicago's 2010–2015 tech surge.</li>
+      <li style="margin-bottom: 0;"><strong>Durable Wisdom Over Hype:</strong> Verbatim video/audio archiving preserves fundamental principles—such as Uncle Bob's "Filling the Vessel" and Corey Haines' practice mindset—that are directly applicable to modern AI-augmented development.</li>
+    </ol>
+  </section>
+</div>
