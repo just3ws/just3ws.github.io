@@ -70,10 +70,10 @@ These tasks are derived from recent architectural reviews to improve system main
 | [task-010](backlog/completed/task-010-image-optimization.md) | Implement Image Optimization | Done | Low |
 | [task-011](backlog/completed/task-011-repair-broken-transcript-igor-polevoy.md) | Repair Broken Transcript (Igor Polevoy) | Done | High |
 | [task-021](backlog/completed/task-021-repair-broken-transcript-chet-and-ron.md) | Repair Broken Transcript (Chet & Ron) | Done | High |
-| [task-022](backlog/tasks/task-022%20-%20Repair-Broken-Transcript-%E2%80%94-Ethan-Gunderson-Ryan-Briones-gathers-us.md) | Repair Broken Transcript (Ethan & Ryan) | To Do | High |
-| [task-023](backlog/tasks/task-023%20-%20Repair-Broken-Transcript-%E2%80%94-Jonathan-Baltz-jonathan-baltz-chicagowebconf-2012.md) | Repair Broken Transcript (Jonathan Baltz) | To Do | High |
-| [task-024](backlog/tasks/task-024%20-%20Repair-Broken-Transcript-%E2%80%94-Dave-Hoover-geekfest-geekfest.md) | Repair Broken Transcript (Dave Hoover) | To Do | High |
-| [task-025](backlog/tasks/task-025%20-%20Repair-Broken-Transcript-%E2%80%94-Ashe-Dryden-ashe-dryden-general.md) | Repair Broken Transcript (Ashe Dryden) | To Do | High |
+| [task-022](backlog/tasks/task-022%20-%20Repair-Broken-Transcript-%E2%80%94-Ethan-Gunderson-Ryan-Briones-gathers-us.md) | Audit & Queue Transcript (Ethan & Ryan) | Done | High |
+| [task-023](backlog/tasks/task-023%20-%20Repair-Broken-Transcript-%E2%80%94-Jonathan-Baltz-jonathan-baltz-chicagowebconf-2012.md) | Audit & Queue Transcript (Jonathan Baltz) | Done | High |
+| [task-024](backlog/tasks/task-024%20-%20Repair-Broken-Transcript-%E2%80%94-Dave-Hoover-geekfest-geekfest.md) | Audit & Queue Transcript (Dave Hoover) | Done | High |
+| [task-025](backlog/tasks/task-025%20-%20Repair-Broken-Transcript-%E2%80%94-Ashe-Dryden-ashe-dryden-general.md) | Audit & Queue Transcript (Ashe Dryden) | Done | High |
 
 ---
 
