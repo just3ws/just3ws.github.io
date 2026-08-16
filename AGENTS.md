@@ -40,6 +40,8 @@ Use these skills by default for this repository:
 11. `site-refresh-director` - Audit a site surface and produce a bounded, evidence-backed refresh brief.
 12. `site-refresh-builder` - Implement an approved refresh brief in the existing Jekyll/Liquid/SCSS stack.
 13. `site-refresh-reviewer` - Independently gate visual, accessibility, SEO, and public-archive quality.
+14. `system-cartographer` - Audit, structure, and generate 4-dimensional System Cartography case studies.
+15. `executive-brief-generator` - Generate tailored 1-page executive pitch briefs for target Principal Engineer roles.
 
 ## Site Refresh Agent Workflow
 
