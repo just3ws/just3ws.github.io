@@ -44,8 +44,16 @@ async function generatePDF() {
     fs.mkdirSync(EXPORTS_DIST_DIR, { recursive: true });
   }
 
-  const pdfPathSrc = path.join(EXPORTS_SRC_DIR, 'resume.pdf');
-  const pdfPathDist = path.join(EXPORTS_DIST_DIR, 'resume.pdf');
+  const pdfFileName = 'mike-hall-principal-software-engineer-resume.pdf';
+  const pdfPathSrc = path.join(EXPORTS_SRC_DIR, pdfFileName);
+  const pdfPathDist = path.join(EXPORTS_DIST_DIR, pdfFileName);
+  const pdfPathLegacySrc = path.join(EXPORTS_SRC_DIR, 'resume.pdf');
+  const pdfPathLegacyDist = path.join(EXPORTS_DIST_DIR, 'resume.pdf');
+
+  // Desktop destinations for recruiter filing convenience
+  const desktopDir = '/Users/mike/Desktop';
+  const desktopPathNamed = path.join(desktopDir, pdfFileName);
+  const desktopPathGeneric = path.join(desktopDir, 'resume.pdf');
 
   console.log('🖨️ Rendering print-optimized PDF package...');
   await page.pdf({
@@ -53,19 +61,30 @@ async function generatePDF() {
     format: 'Letter',
     printBackground: true,
     margin: {
-      top: '0.5in',
-      right: '0.5in',
-      bottom: '0.5in',
-      left: '0.5in',
+      top: '0.4in',
+      right: '0.4in',
+      bottom: '0.4in',
+      left: '0.4in',
     },
   });
 
-  // Copy to site dist
+  // Copy to site dist and legacy fallback path
   fs.copyFileSync(pdfPathSrc, pdfPathDist);
+  fs.copyFileSync(pdfPathSrc, pdfPathLegacySrc);
+  fs.copyFileSync(pdfPathSrc, pdfPathLegacyDist);
+
+  // Copy to Desktop if available
+  if (fs.existsSync(desktopDir)) {
+    fs.copyFileSync(pdfPathSrc, desktopPathNamed);
+    fs.copyFileSync(pdfPathSrc, desktopPathGeneric);
+  }
 
   console.log(`✅ PDF Resume exported successfully:`);
-  console.log(`   - Source: ${pdfPathSrc}`);
-  console.log(`   - Dist:   ${pdfPathDist}`);
+  console.log(`   - Named Slug: ${pdfPathSrc}`);
+  console.log(`   - Site Dist:   ${pdfPathDist}`);
+  if (fs.existsSync(desktopDir)) {
+    console.log(`   - Desktop:     ${desktopPathNamed}`);
+  }
 
   await browser.close();
 }

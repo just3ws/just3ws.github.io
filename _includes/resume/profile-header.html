@@ -3,7 +3,7 @@
 <header class="resume-header">
   <h1>{{ profile.name }}</h1>
   <p class="title">{{ profile.title }}</p>
-  <ul class="contact-info">
+  <ul class="contact-info no-print">
     {%- if profile.location %}
     <li class="contact-item">
       <span class="contact-label">Location</span>
@@ -31,6 +31,10 @@
       <a href="{{ profile.contact.github.url }}" class="contact-value">{{ profile.contact.github.display }}</a>
     </li>
   </ul>
+
+  <div class="print-contact-line print-only" style="display: none;">
+    {{ profile.location.display }} &bull; {{ profile.contact.email }} &bull; {{ profile.contact.phone }} &bull; {{ profile.contact.website.display }} &bull; {{ linkedin_display }} &bull; {{ profile.contact.github.display }}
+  </div>
 
   <div class="resume-quick-actions no-print" style="margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8125rem;">
     <a href="/exports/resume.pdf" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; background: var(--color-accent, #2563eb); color: #ffffff; border-radius: 0.375rem; font-weight: 600; text-decoration: none;">

@@ -372,12 +372,25 @@ body.ats-resume {
   .site-footer,
   .scroll-progress,
   .no-print,
+  .resume-subnav,
+  .subnav,
+  .subnav-group,
+  .subnav-link,
+  .subnav-btn,
   .resume-quick-actions,
   .skip-link,
-  .subnav,
   .theme-toggle-btn,
   #themeToggleBtn {
     display: none !important;
+  }
+
+  .print-only,
+  .print-contact-line {
+    display: block !important;
+    margin-top: 0.25rem !important;
+    font-size: 8.5pt !important;
+    color: #475569 !important;
+    font-weight: 500 !important;
   }
 
   html, body {
@@ -396,85 +409,63 @@ body.ats-resume {
   }
 
   .resume-header {
-    margin-bottom: 0.75rem !important;
-    padding-bottom: 0.5rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 0.4rem !important;
     border-bottom: 2px solid #0f172a !important;
 
     h1 {
-      font-size: 20pt !important;
+      font-size: 18pt !important;
       font-weight: 800 !important;
-      margin-bottom: 0.2rem !important;
+      margin: 0 0 0.1rem 0 !important;
       color: #0f172a !important;
       line-height: 1.1 !important;
     }
 
     .title {
-      font-size: 11pt !important;
+      font-size: 10.5pt !important;
       font-weight: 700 !important;
       color: #0284c7 !important;
-      margin-bottom: 0.4rem !important;
-    }
-  }
-
-  .contact-info {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 0.5rem 1rem !important;
-    margin: 0.4rem 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-  }
-
-  .contact-item {
-    font-size: 8.5pt !important;
-
-    .contact-label {
-      font-weight: 700 !important;
-      color: #64748b !important;
-      margin-right: 0.2rem !important;
-      text-transform: uppercase !important;
-    }
-    .contact-value, a {
-      color: #0f172a !important;
-      text-decoration: none !important;
+      margin: 0 !important;
     }
   }
 
   section, .resume-section {
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.65rem !important;
   }
 
   h2, .section-title {
-    font-size: 11pt !important;
+    font-size: 10.5pt !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
     color: #0f172a !important;
     border-bottom: 1px solid #cbd5e1 !important;
-    padding-bottom: 0.2rem !important;
-    margin-top: 0.75rem !important;
-    margin-bottom: 0.4rem !important;
+    padding-bottom: 0.15rem !important;
+    margin-top: 0.6rem !important;
+    margin-bottom: 0.35rem !important;
     page-break-after: avoid !important;
     break-after: avoid-page !important;
   }
 
   .position-entry, .position, article {
-    margin-bottom: 0.65rem !important;
-    padding-bottom: 0.4rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.3rem !important;
     page-break-inside: avoid !important;
     break-inside: avoid-page !important;
   }
 
   .position-title, .job-title {
     font-weight: 700 !important;
-    font-size: 10pt !important;
+    font-size: 9.5pt !important;
     page-break-after: avoid !important;
     break-after: avoid-page !important;
   }
 
   p, li {
-    font-size: 9.5pt !important;
-    line-height: 1.35 !important;
+    font-size: 9pt !important;
+    line-height: 1.32 !important;
     color: #1e293b !important;
   }
 

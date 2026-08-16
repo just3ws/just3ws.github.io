@@ -15,7 +15,8 @@ Download resume, portfolio, and career history in multiple formats.
 
 ## Resume
 
-- **PDF Resume** - [resume.pdf](/exports/resume.pdf) (Print-optimized vector PDF package)
+- **PDF Resume (Named Recruiter Package)** - [mike-hall-principal-software-engineer-resume.pdf](/exports/mike-hall-principal-software-engineer-resume.pdf) (Print-optimized vector PDF package)
+- **PDF Resume (Standard)** - [resume.pdf](/exports/resume.pdf)
 - **Markdown** - [resume.md](/exports/resume.md) (Clean markdown, ideal for copy-pasting to LinkedIn or portals)
 - **JSON Schema** - [resume.json](/resume.json) (Structured JSON for ATS and API ingestion)
 - **Plain Text** - [resume.txt](/resume.txt) (UTF-8 plain text export)
