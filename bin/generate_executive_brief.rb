@@ -60,12 +60,48 @@ def generate_brief(company_name, role_title)
   MARKDOWN
 
   FileUtils.mkdir_p(OUTPUT_DIR)
-  filename = "brief_#{company_name.downcase.gsub(/[^a-z0-9]/, '_')}.md"
-  out_path = File.join(OUTPUT_DIR, filename)
-  File.write(out_path, brief)
+  slug = company_name.downcase.gsub(/[^a-z0-9]/, '_')
+  
+  brief_path = File.join(OUTPUT_DIR, "brief_#{slug}.md")
+  File.write(brief_path, brief)
 
-  puts "✅ Executive Brief generated successfully:"
-  puts "   - #{out_path}"
+  email_template = <<~EMAIL
+    # Executive Outreach Email Template: #{company_name}
+    **Target Role:** #{role_title}
+
+    ---
+
+    **Subject:** Principal Software Engineer & System Cartographer — #{profile['name']}
+
+    Hi [Hiring Manager / Recruiter Name],
+
+    I'm reaching out regarding the #{role_title} opportunity at #{company_name}. 
+
+    My background is focused on **System Cartography & Platform Architecture** — discovering, mapping, and modernizing complex legacy codepaths, lateral state dependencies, and high-concurrency production systems without disrupting delivery.
+
+    Recently, I've led:
+    - **OpenTelemetry & Microservices Boundary Cartography** at OneMain Financial across high-velocity acquisition channels.
+    - **90-Day Platform Stabilization & Risk Cartography** for EMR-Bear serving 130+ multi-tenant healthcare clinics.
+
+    I put together a tailored 1-page executive brief and case study overview specifically for #{company_name}:
+    - 📄 **1-Page Executive Pitch & Case Studies:** https://www.just3ws.com/case-studies/
+    - 🖨️ **PDF Resume Package:** https://www.just3ws.com/exports/resume.pdf
+
+    Would you be open to a 15-minute conversation this week to discuss how this approach aligns with #{company_name}'s current platform priorities?
+
+    Best regards,
+
+    **#{profile['name']}**
+    #{profile['title']}
+    #{email} | #{location}
+  EMAIL
+
+  email_path = File.join(OUTPUT_DIR, "outreach_email_#{slug}.md")
+  File.write(email_path, email_template)
+
+  puts "✅ Executive Package generated successfully:"
+  puts "   - Brief:    #{brief_path}"
+  puts "   - Outreach: #{email_path}"
 end
 
 if ARGV.include?('--help') || ARGV.include?('-h')

@@ -20,6 +20,31 @@ permalink: /case-studies/
     <p style="margin-bottom: 1.5rem; color: var(--color-text-muted, #4b5563);">
       Before modernizing legacy architecture or deploying major updates, every platform is mapped across four explicit risk dimensions:
     </p>
+    <div class="cartography-matrix-visual" style="margin-bottom: 2rem; padding: 1.5rem; background: #0f172a; color: #f8fafc; border-radius: 0.5rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.8125rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+        <span style="color: #38bdf8; font-weight: 700; font-size: 0.875rem;">SYSTEM CARTOGRAPHY MATRIX [4D PARADIGM]</span>
+        <span style="background: #1e293b; padding: 0.2rem 0.5rem; border-radius: 0.25rem; color: #94a3b8; font-size: 0.75rem;">VERIFIED IC MODEL</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div style="background: #1e293b; padding: 1rem; border-left: 3px solid #38bdf8; border-radius: 0.25rem;">
+          <div style="color: #38bdf8; font-weight: 700; margin-bottom: 0.25rem;">01 // INTERACTION SURFACE</div>
+          <div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.4;">REST / GraphQL / RPC • Auth JWT • Public Gateway</div>
+        </div>
+        <div style="background: #1e293b; padding: 1rem; border-left: 3px solid #818cf8; border-radius: 0.25rem;">
+          <div style="color: #818cf8; font-weight: 700; margin-bottom: 0.25rem;">02 // LATERAL STATE</div>
+          <div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.4;">Async Queues • DB Locks • Event Bus • Cache Invalidation</div>
+        </div>
+        <div style="background: #1e293b; padding: 1rem; border-left: 3px solid #34d399; border-radius: 0.25rem;">
+          <div style="color: #34d399; font-weight: 700; margin-bottom: 0.25rem;">03 // FULL-STACK TOPOLOGY</div>
+          <div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.4;">K8s / Terraform • AWS Ingress • Multi-Region DB</div>
+        </div>
+        <div style="background: #1e293b; padding: 1rem; border-left: 3px solid #fbbf24; border-radius: 0.25rem;">
+          <div style="color: #fbbf24; font-weight: 700; margin-bottom: 0.25rem;">04 // SUPPLY CHAIN</div>
+          <div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.4;">SaaS APIs • HIPAA Rules • Release Safety Gates</div>
+        </div>
+      </div>
+    </div>
+
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
       <div style="background: #ffffff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #e2e8f0);">
         <h3 style="font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">1. Interaction Surface</h3>
