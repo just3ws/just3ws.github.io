@@ -24,13 +24,14 @@ def generate_brief(company_name, role_title)
   data = load_canonical_data
   profile = data[:profile]
   onemain = data[:onemain]
-  emr_bear = data[:emr_bear]
+  email = profile.dig('contact', 'email') || 'just3ws@gmail.com'
+  location = profile.dig('location', 'display') || 'Chicago, IL'
 
   brief = <<~MARKDOWN
     # Executive Pitch Brief: #{company_name}
     **Target Role:** #{role_title}
     **Candidate:** #{profile['name']} — #{profile['title']}
-    **Contact:** #{profile['email']} | #{profile['location']}
+    **Contact:** #{email} | #{location}
 
     ---
 
