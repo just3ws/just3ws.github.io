@@ -23,18 +23,17 @@ Principal Systems Cartographer & Platform Architect who discovers, maps, and mod
 
 ## Experience
 
-### Development Manager — Platform Stabilization & Cartography Lead at EMR-Bear, a MedSuite company
+### Development Manager at EMR-Bear, a MedSuite company
 **May 2026 — August 2026**
 
-Engaged to conduct rapid system discovery and stabilize a multi-tenant healthcare SaaS platform during a founder transition, combining hands-on technical investigation with operational continuity planning for a distributed U.S.-Mexico engineering team.
+Engaged to conduct rapid system discovery and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics following a founder transition.
 
 **Key Outcomes:**
-- System Inventory & Risk Cartography: Built a complete architectural inventory and risk model covering application codepaths, network access ports, deployment pipelines, and security boundaries, giving leadership an empirical foundation for future modernization decisions.
-- Founder-Transition Continuity: Converted an ad hoc founder exit into structured engineering continuity with explicit component ownership, visible operational risk, and a prioritized stabilization roadmap.
-- Production Safety Boundaries: Preserved production stability by establishing explicit release gates that decoupled unvalidated feature code from core platform deployment, protecting multi-tenant PHI/HIPAA compliance boundaries.
-- Distributed Team Ownership: Established daily collaboration, office hours, visible priorities, and decision rhythms that moved the distributed team from isolated execution toward shared technical ownership.
+- Architectural & Risk Cartography: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
+- Production & Compliance Governance: Protected production safety across 130+ clinical environments by establishing explicit release verification gates for 36+ pending platform updates, ensuring unvalidated changes were blocked prior to business sign-off and HIPAA compliance review.
+- Engineering Continuity: Created transparent component ownership, visible operational priorities, and collaborative decision rhythms for a distributed U.S.-Mexico engineering team.
 
-**Skills:** Technical Leadership, System Cartography, Knowledge Recovery, Legacy System Modernization, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, AI-Augmented Engineering, Distributed Team Collaboration
+**Skills:** Technical Leadership, System Cartography, Rapid Risk Assessment, Production Governance, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, Distributed Team Collaboration
 
 ### Associate Director, Staff Engineer at OneMain Financial
 **January 2021 — February 2026**

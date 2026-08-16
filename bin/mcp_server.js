@@ -97,13 +97,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
   try {
     if (name === "verify_site_contracts") {
-      const output = execSync("./bin/pipeline ci", {
+      const output = execSync("bundle exec rake validate:all && ruby bin/validate_exports.rb && ruby bin/validate_repo_hygiene.rb", {
         cwd: ROOT_DIR,
         encoding: "utf-8",
         env: { ...process.env, LANG: "en_US.UTF-8", LC_ALL: "en_US.UTF-8" },
       });
       return {
-        content: [{ type: "text", text: `✅ Site Contracts & Full Pipeline Verified Cleanly:\n\n${output}` }],
+        content: [{ type: "text", text: `✅ Site Contracts Verified Cleanly:\n\n${output}` }],
       };
     }
 
