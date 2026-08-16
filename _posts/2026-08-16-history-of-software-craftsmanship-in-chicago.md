@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "The History of Software Craftsmanship in Chicago (2006–2015)"
+title: "History of Software Craftsmanship in Chicago: The Oral Record"
 date: 2026-08-16 12:00:00 -0500
 categories: [History, Software Craftsmanship]
 permalink: /2026/08/16/history-of-software-craftsmanship-in-chicago/
 tags: [Chicago, SCMC, SCNA, Clean Code, Testing, Community, Architecture]
-description: "An authoritative historical narrative detailing how frustration with corporate Agile led Chicago developers to found SCMC and SCNA, transforming the regional tech ecosystem."
+description: "A retrospective on how Chicago developers built SCMC and SCNA to promote TDD, code katas, and clean architecture across the Midwest."
 ---
 
 Between 2006 and 2015, Chicago transformed from an enterprise IT town dominated by financial trading desks and legacy Java monoliths into one of the most vibrant software engineering ecosystems in North America.
