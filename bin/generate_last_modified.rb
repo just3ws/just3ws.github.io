@@ -20,7 +20,7 @@ items = {}
 
 Dir.glob(File.join(ROOT, '_posts', '**', '*.{md,markdown,html}')).sort.each do |abs_path|
   relative = abs_path.sub("#{ROOT}/", '')
-  modified = git_last_modified_iso8601(relative)
+  modified = git_last_modified_iso8601(relative) || File.mtime(abs_path).iso8601
   items[relative] = modified if modified
 end
 

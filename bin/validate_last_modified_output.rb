@@ -20,6 +20,8 @@ def post_output_path(relative_post_path)
   return nil unless match
 
   year, month, day, slug = match.captures
+  dir_index = File.join(SITE_DIR, year, month, day, slug, "index.html")
+  return dir_index if File.file?(dir_index)
   File.join(SITE_DIR, year, month, day, "#{slug}.html")
 end
 
