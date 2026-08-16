@@ -67,6 +67,17 @@ def generate_brief(company_name, role_title)
   puts "   - #{out_path}"
 end
 
+if ARGV.include?('--help') || ARGV.include?('-h')
+  puts "Usage: ruby bin/generate_executive_brief.rb [COMPANY_NAME] [ROLE_TITLE]"
+  puts ""
+  puts "Generates a tailored 1-page executive pitch brief for target Staff/Principal Engineer roles."
+  puts ""
+  puts "Examples:"
+  puts "  ruby bin/generate_executive_brief.rb Stripe \"Principal Software Engineer\""
+  puts "  ruby bin/generate_executive_brief.rb Datadog \"Staff Platform Architect\""
+  exit 0
+end
+
 if ARGV.empty?
   generate_brief("Target Company", "Principal Software Engineer")
 else

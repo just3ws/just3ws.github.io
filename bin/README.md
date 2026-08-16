@@ -20,16 +20,19 @@ All scripts in `bin/` follow standard prefix naming conventions:
 - `pipeline`: Main pipeline CLI (`./bin/pipeline build`, `./bin/pipeline ci`, etc.).
 - `deploy_status`: Check deployment status.
 
-### 2. Generators (`generate_*`)
+### 2. Executive Pitch & Resume Generators (`generate_*`)
 Scripts that read `_data/*.yml` sources and compile pages/artifacts into Jekyll source:
+- `generate_executive_brief.rb`: Generates custom 1-page executive pitch briefs (`ruby bin/generate_executive_brief.rb "Company" "Title"`).
+- `generate_pdf_resume.js`: Playwright script that renders print-optimized `exports/resume.pdf`.
 - `generate_timeline_data.rb`
 - `generate_speakers_data.rb`
 - `generate_resume_position_pages.rb`
 - `generate_context_summaries.rb`
 
-### 3. Validators (`validate_*`)
+### 3. Validators & MCP Verification (`validate_*`, `verify_*`)
 Quality checks executed by CI (`./bin/pipeline ci`):
-- `validate_exports.rb`: Verifies JSON, Markdown, and text resume exports.
+- `verify_mcp_spec.js`: Stdio MCP protocol self-verification runner.
+- `validate_exports.rb`: Verifies JSON, Markdown, Text, and PDF resume exports.
 - `validate_repo_hygiene.rb`: Enforces repo file tracking policies.
 - `validate_seo_output.rb`: Checks structured metadata and SEO tags.
 - `validate_data_uniqueness.rb`: Checks for duplicate records in YAML data.
