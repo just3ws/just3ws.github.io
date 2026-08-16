@@ -47,6 +47,26 @@ highlights:
       legacy code analysis and engineering support, expanding investigative capacity while
       keeping human review, security constraints, and source evidence explicit.
 
+case_study:
+  title: "De-Risking Legacy Acquisition Workflows & Enterprise Telemetry"
+  challenge: >-
+    Over years of rapid business expansion, high-volume financial customer acquisition flows
+    accumulated implicit lateral state dependencies across multi-service Rails state machines and
+    third-party API integrations, creating silent data corruptions and high incident escalation overhead.
+  cartography_approach:
+    - dimension: "Interaction Surface"
+      detail: "Mapped browser, mobile, automated API, and AI agent entry points across customer acquisition journeys."
+    - dimension: "Lateral & Implicit State Dependencies"
+      detail: "Identified shared global state mutations and uncoupled multi-step Rails state transitions, eliminating data corruptions."
+    - dimension: "Full-Stack Network & Boundary Topology"
+      detail: "Led enterprise OpenTelemetry deployment across legacy microservices, instrumenting third-party API boundaries."
+    - dimension: "Supply Chain & Vulnerability Exposure"
+      detail: "Audited third-party vendor APIs, webhooks, and ingress points to establish real-time boundary observability."
+  outcomes:
+    - "Reduced Mean-Time-To-Detection (MTTD) and mean time to resolution across high-severity acquisition outages."
+    - "Founded and technically led ACQ Enablement team to protect platform reliability, remediation, and modernization work."
+    - "Converted dark system behaviors into measurable telemetry, giving leadership an empirical foundation for architecture decisions."
+
 skills:
   - Cross-Team Technical Leadership
   - Platform Architecture

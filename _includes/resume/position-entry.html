@@ -40,6 +40,48 @@
   </ul>
   {%- endif %}
 
+  {%- if include.position.case_study %}
+  <div class="position-case-study" style="margin-top: 1.5rem; padding: 1.25rem 1.5rem; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #0f766e; border-radius: 6px;">
+    <h4 style="margin: 0 0 0.5rem; font-size: 1rem; color: #0f766e; font-weight: 800; letter-spacing: -0.01em;">
+      📐 Case Study: {{ include.position.case_study.title }}
+    </h4>
+    {% if include.position.case_study.challenge %}
+    <p style="margin: 0 0 1rem; font-size: 0.92rem; line-height: 1.55; color: #334155;">
+      <strong>The System Constraint:</strong> {{ include.position.case_study.challenge }}
+    </p>
+    {% endif %}
+
+    {% if include.position.case_study.cartography_approach %}
+    <div style="margin-bottom: 1rem;">
+      <p style="margin: 0 0 0.5rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b;">
+        Cartography & System Discovery Execution
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 0.75rem;">
+        {% for item in include.position.case_study.cartography_approach %}
+        <div style="padding: 0.75rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px;">
+          <strong style="display: block; font-size: 0.82rem; color: #0f766e; margin-bottom: 0.25rem;">{{ item.dimension }}</strong>
+          <span style="font-size: 0.85rem; color: #334155; line-height: 1.45;">{{ item.detail }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if include.position.case_study.outcomes %}
+    <div>
+      <p style="margin: 0 0 0.35rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b;">
+        Measured Engineering & Business Outcomes
+      </p>
+      <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.88rem; color: #334155;">
+        {% for outcome in include.position.case_study.outcomes %}
+        <li style="margin-bottom: 0.35rem;">{{ outcome }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+  {%- endif %}
+
   {%- if include.position.skills %}
   <p><strong>Skills:</strong> {{ include.position.skills | join: ", " }}</p>
   {%- endif %}
