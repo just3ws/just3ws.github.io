@@ -39,20 +39,18 @@
 <meta name="release-timestamp" content="{{ site.release_timestamp }}">
 {% endif %}
 <meta name="robots" content="{{ robots_directive }}">
+{% assign default_og_image = site_url | append: "/assets/images/og-preview.png" %}
+{% assign og_image = page.image | default: default_og_image %}
 <meta property="og:title" content="{{ seo_title }}">
 <meta property="og:description" content="{{ seo_description }}">
-{% if page.image %}
-<meta property="og:image" content="{{ page.image }}">
-{% endif %}
+<meta property="og:image" content="{{ og_image }}">
 <meta property="og:url" content="{{ canonical_url }}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mike Hall">
-<meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ seo_title }}">
 <meta name="twitter:description" content="{{ seo_description }}">
-{% if page.image %}
-<meta name="twitter:image" content="{{ page.image }}">
-{% endif %}
+<meta name="twitter:image" content="{{ og_image }}">
 <link rel="alternate" type="application/atom+xml" title="{{ site.title }} - Atom Feed" href="/feed.xml" />
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - RSS Feed" href="/rss.xml" />
 <link rel="alternate" type="application/atom+xml" title="{{ site.title }} - Interviews Feed" href="/interviews.xml" />
