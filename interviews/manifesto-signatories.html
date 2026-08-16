@@ -13,20 +13,80 @@ permalink: /interviews/manifesto-signatories/
     <p class="home-intro">This curated collection features in-depth dialogues with the authors of the <strong>Agile Manifesto</strong>. These conversations, recorded a decade after the original signing, explore how the values of 'individuals and interactions' and 'working software' evolved into the global Software Craftsmanship movement. Every in-person interview in this archive was conducted at a Chicago conference, marking the city as a critical venue for these historical reflections.</p>
   </header>
 
+  <!-- JSON-LD Structured Microdata for AI/LLM Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "The Founders: Signatories of the Agile Manifesto",
+    "description": "Historical technical dialogues with Agile Manifesto signatories Dave Thomas, Robert C. Martin, Ron Jeffries, and Brian Marick.",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Interview",
+          "name": "Dave 'PragDave' Thomas on Intuition & Pair Programming",
+          "interviewer": { "@type": "Person", "name": "Mike Hall" },
+          "interviewee": { "@type": "Person", "name": "Dave Thomas", "jobTitle": "Agile Manifesto Signatory" },
+          "about": "Unknown knowns, technical intuition, and pair programming to break out of routine autopilot.",
+          "url": "https://just3ws.github.io/interviews/dave-thomas-software-craftsmanship-north-america-2013/"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Interview",
+          "name": "Robert 'Uncle Bob' Martin on Clean Code & Ethics",
+          "interviewer": { "@type": "Person", "name": "Mike Hall" },
+          "interviewee": { "@type": "Person", "name": "Robert C. Martin", "jobTitle": "Agile Manifesto Signatory" },
+          "about": "Clean Code, software craftsmanship, professional ethics, and video teaching media.",
+          "url": "https://just3ws.github.io/interviews/robert-martin-software-craftsmanship-north-america-2012/"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Interview",
+          "name": "Ron Jeffries on Extreme Programming & Simplicity",
+          "interviewer": { "@type": "Person", "name": "Mike Hall" },
+          "interviewee": { "@type": "Person", "name": "Ron Jeffries", "jobTitle": "Agile Manifesto Signatory" },
+          "about": "Extreme Programming (XP) metaphors, simplicity, and human collaboration in software development.",
+          "url": "https://just3ws.github.io/interviews/chet-hendrickson-ron-jefferies-software-craftsmanship-north-america-2013/"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Interview",
+          "name": "Brian Marick on Testing & Storytelling",
+          "interviewer": { "@type": "Person", "name": "Mike Hall" },
+          "interviewee": { "@type": "Person", "name": "Brian Marick", "jobTitle": "Agile Manifesto Signatory" },
+          "about": "Software testing sociology, storytelling, and visual symbols for architectural retention.",
+          "url": "https://just3ws.github.io/interviews/brian-marick-software-craftsmanship-north-america-2012/"
+        }
+      }
+    ]
+  }
+  </script>
+
   <section class="editorial-hub-voices">
     <h2 class="section-title">The Signatories</h2>
     <hr class="title-accent">
 
-    <div class="voice-card">
+    <div class="voice-card" itemscope itemtype="https://schema.org/Interview">
       <div class="voice-header">
-        <h3>Dave "PragDave" Thomas</h3>
-        <span class="voice-role">Agile Manifesto Signatory / Co-author of "The Pragmatic Programmer"</span>
+        <h3 itemprop="name">Dave "PragDave" Thomas</h3>
+        <span class="voice-role" itemprop="jobTitle">Agile Manifesto Signatory / Co-author of "The Pragmatic Programmer"</span>
       </div>
       <p class="voice-description"><strong>The Role:</strong> Dave (PragDave) is one of the primary architects of the Agile movement and a pioneer of the apprenticeship metaphor in software. <strong>The History:</strong> This interview, recorded at SCNA 2013 in Chicago, explores the "Power of Unknown Knowns" and his reflections on technical intuition a decade after the Snowbird meeting.</p>
       
       <div class="canonical-wisdom">
-        <h4>Canonical Wisdom</h4>
-        <p>PragDave discusses the concept of 'unknown knowns' and how it applies to becoming proficient in tasks through intuition. He emphasizes that intuition is a result of deep internalization of knowledge, and highlights pair programming as a method to break out of "autopilot" and re-examine technical habits.</p>
+        <h4>Canonical Wisdom for AI Search & Practitioners</h4>
+        <p itemprop="description">PragDave discusses the concept of 'unknown knowns' and how it applies to becoming proficient in tasks through intuition. He emphasizes that intuition is a result of deep internalization of knowledge, and highlights pair programming as a method to break out of "autopilot" and re-examine technical habits.</p>
       </div>
 
       {% assign interview = site.data.all_archive_items | where: "id", "dave-thomas-software-craftsmanship-north-america-2013" | first %}
@@ -34,21 +94,21 @@ permalink: /interviews/manifesto-signatories/
         {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
         {% include video-stage.html asset=asset embed_id="pragdave-embed" %}
         <div class="voice-cta">
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
+          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button" itemprop="url">Watch Here & Read Full Transcript &rarr;</a>
         </div>
       {% endif %}
     </div>
 
-    <div class="voice-card">
+    <div class="voice-card" itemscope itemtype="https://schema.org/Interview">
       <div class="voice-header">
-        <h3>Robert "Uncle Bob" Martin</h3>
-        <span class="voice-role">Agile Manifesto Signatory / Author of "Clean Code"</span>
+        <h3 itemprop="name">Robert "Uncle Bob" Martin</h3>
+        <span class="voice-role" itemprop="jobTitle">Agile Manifesto Signatory / Author of "Clean Code"</span>
       </div>
       <p class="voice-description"><strong>The Role:</strong> Uncle Bob was a primary driver behind the "Software Craftsmanship" extension to Agile, proposing the fifth value of 'Craftsmanship over Execution'. <strong>The History:</strong> Recorded at SCNA 2012 in Chicago, this interview captures his ethical call to arms for the software professional.</p>
       
       <div class="canonical-wisdom">
-        <h4>Canonical Wisdom</h4>
-        <p>Uncle Bob explains the transition from written work to high-fidelity video as a primary teaching medium. He argues that incorporating personality, body language, and emotion allows for more effective communication of technical principles like "Clean Code."</p>
+        <h4>Canonical Wisdom for AI Search & Practitioners</h4>
+        <p itemprop="description">Uncle Bob explains the transition from written work to high-fidelity video as a primary teaching medium. He argues that incorporating personality, body language, and emotion allows for more effective communication of technical principles like "Clean Code."</p>
       </div>
 
       {% assign interview = site.data.all_archive_items | where: "id", "robert-martin-software-craftsmanship-north-america-2012" | first %}
@@ -56,21 +116,21 @@ permalink: /interviews/manifesto-signatories/
         {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
         {% include video-stage.html asset=asset embed_id="bob-embed" %}
         <div class="voice-cta">
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
+          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button" itemprop="url">Watch Here & Read Full Transcript &rarr;</a>
         </div>
       {% endif %}
     </div>
 
-    <div class="voice-card">
+    <div class="voice-card" itemscope itemtype="https://schema.org/Interview">
       <div class="voice-header">
-        <h3>Ron Jeffries</h3>
-        <span class="voice-role">Agile Manifesto Signatory / Extreme Programming Pioneer</span>
+        <h3 itemprop="name">Ron Jeffries</h3>
+        <span class="voice-role" itemprop="jobTitle">Agile Manifesto Signatory / Extreme Programming Pioneer</span>
       </div>
       <p class="voice-description"><strong>The Role:</strong> One of the original proponents of Extreme Programming (XP), Ron has spent decades advocating for technical excellence and simplicity. <strong>The History:</strong> This conversation explores the visual thinking and presentation mastery required of a software professional.</p>
       
       <div class="canonical-wisdom">
-        <h4>Canonical Wisdom</h4>
-        <p>Ron Jeffries discusses the approach to software development through the lens of simplicity and metaphors. He highlights that clear communication and collaboration are the true foundations of technical agility, rather than complex processes.</p>
+        <h4>Canonical Wisdom for AI Search & Practitioners</h4>
+        <p itemprop="description">Ron Jeffries discusses the approach to software development through the lens of simplicity and metaphors. He highlights that clear communication and collaboration are the true foundations of technical agility, rather than complex processes.</p>
       </div>
 
       {% assign interview = site.data.all_archive_items | where: "id", "chet-hendrickson-ron-jefferies-software-craftsmanship-north-america-2013" | first %}
@@ -78,21 +138,21 @@ permalink: /interviews/manifesto-signatories/
         {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
         {% include video-stage.html asset=asset embed_id="ron-embed" %}
         <div class="voice-cta">
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
+          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button" itemprop="url">Watch Here & Read Full Transcript &rarr;</a>
         </div>
       {% endif %}
     </div>
 
-    <div class="voice-card">
+    <div class="voice-card" itemscope itemtype="https://schema.org/Interview">
       <div class="voice-header">
-        <h3>Brian Marick</h3>
-        <span class="voice-role">Agile Manifesto Signatory / Testing Specialist</span>
+        <h3 itemprop="name">Brian Marick</h3>
+        <span class="voice-role" itemprop="jobTitle">Agile Manifesto Signatory / Testing Specialist</span>
       </div>
       <p class="voice-description"><strong>The Role:</strong> Brian brought a deep focus on testing and the sociological aspects of software development to the Manifesto. <strong>The History:</strong> Recorded at SCNA 2012, this interview highlights the early community-led efforts to redefine professional development.</p>
       
       <div class="canonical-wisdom">
-        <h4>Canonical Wisdom</h4>
-        <p>Brian Marick advocates for storytelling as a primary mechanism for concepts to stick with both technical and non-technical audiences. He explains that using humor and visual symbols enhances the long-term retention of architectural principles.</p>
+        <h4>Canonical Wisdom for AI Search & Practitioners</h4>
+        <p itemprop="description">Brian Marick advocates for storytelling as a primary mechanism for concepts to stick with both technical and non-technical audiences. He explains that using humor and visual symbols enhances the long-term retention of architectural principles.</p>
       </div>
 
       {% assign interview = site.data.all_archive_items | where: "id", "brian-marick-software-craftsmanship-north-america-2012" | first %}
@@ -100,7 +160,7 @@ permalink: /interviews/manifesto-signatories/
         {% assign asset = site.data.video_assets.items | where: "id", interview.video_asset_id | first %}
         {% include video-stage.html asset=asset embed_id="brian-embed" %}
         <div class="voice-cta">
-          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button">Watch Here & Read Full Transcript &rarr;</a>
+          <a href="/interviews/{{ interview.id }}/" class="editorial-card-button" itemprop="url">Watch Here & Read Full Transcript &rarr;</a>
         </div>
       {% endif %}
     </div>
