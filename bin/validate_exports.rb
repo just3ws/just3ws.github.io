@@ -101,9 +101,37 @@ def validate_markdown_exports
   end
 end
 
+def validate_pdf_export
+  paths = [
+    File.join(SITE_DIR, 'exports', 'resume.pdf')
+  ]
+  errors = []
+
+  paths.each do |path|
+    unless File.exist?(path)
+      errors << "Missing PDF export: #{path}"
+      next
+    end
+
+    if File.size(path) < 10_000
+      errors << "#{path} is smaller than expected (< 10KB)"
+    end
+  end
+
+  if errors.empty?
+    puts "PDF export validation passed."
+    true
+  else
+    warn "PDF export validation failed:"
+    errors.each { |error| warn "  - #{error}" }
+    false
+  end
+end
+
 success = true
 success &= validate_json_export
 success &= validate_txt_export
 success &= validate_markdown_exports
+success &= validate_pdf_export
 
 exit(success ? 0 : 1)
