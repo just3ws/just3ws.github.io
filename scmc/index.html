@@ -1,7 +1,7 @@
 ---
 layout: minimal
-title: "Software Craftsmanship McHenry County (SCMC) — Historical Archive & Synthesis"
-description: "A historical archive and synthesis of Software Craftsmanship McHenry County (SCMC) meetings, practitioner presentations, and UGtastic developer interviews."
+title: "Software Craftsmanship McHenry County (SCMC) — Dedicated Meeting Archive & Synthesis"
+description: "A dedicated historical archive, meeting video canon, practitioner presentations, and UGtastic developer interviews from Software Craftsmanship McHenry County (SCMC)."
 breadcrumb: SCMC History
 permalink: /scmc/
 robots: index,follow
@@ -24,10 +24,10 @@ sitemap: true
 
 <div class="scmc-container" style="max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem;">
   <header class="scmc-header" style="margin-bottom: 3rem; text-align: center;">
-    <p style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-primary, #7e9cd8); margin-bottom: 0.5rem;">Historical Archive & Regional User Group</p>
+    <p style="font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-primary, #7e9cd8); margin-bottom: 0.5rem;">Historical Archive & Dedicated User Group Hub</p>
     <h1 style="font-size: 2.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Software Craftsmanship McHenry County (SCMC)</h1>
     <p style="font-size: 1.125rem; color: var(--color-text-muted, #c8c093); max-width: 54ch; margin: 0 auto 1.5rem auto;">
-      A practitioner archive of user group presentations, technical sessions, and developer community interviews.
+      The dedicated practitioner hub of recorded user group presentations, technical sessions, and developer community interviews.
     </p>
     <nav class="archive-cross-nav" style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;" aria-label="Archive Cross Navigation">
       <a href="/interviews/" style="font-size: 0.875rem; font-weight: 700; background: var(--color-bg-card, #2a2a37); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.4rem 0.85rem; border-radius: 6px; text-decoration: none;">🎙️ All Conversations (200+)</a>
@@ -47,10 +47,26 @@ sitemap: true
     </p>
   </section>
 
-  <section class="scmc-intersections" style="margin-bottom: 4rem;">
-    <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Recorded SCMC Session Presenters</h2>
+  <section class="scmc-video-grid" style="margin-bottom: 4rem;">
+    <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Dedicated SCMC Recorded Meetings & Technical Sessions</h2>
     <p style="font-size: 1rem; color: var(--color-text-muted, #c8c093); margin-bottom: 2rem;">
-      Practitioners and industry figures who gave recorded technical presentations at Software Craftsmanship McHenry County (SCMC) monthly meetings:
+      Browse the complete recorded meeting canon, technical presentations, and transcripts from Software Craftsmanship McHenry County:
+    </p>
+
+    {% assign scmc_meetings = site.data.all_archive_items | where: "collection", "SCMC" | sort: "recorded_date" | reverse %}
+    <div class="editorial-index-grid">
+      {% for interview in scmc_meetings %}
+        {% if interview.video_asset_id %}
+          {% include_cached interview-card.html interview=interview %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="scmc-intersections" style="margin-bottom: 4rem;">
+    <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Featured SCMC Session Presenters</h2>
+    <p style="font-size: 1rem; color: var(--color-text-muted, #c8c093); margin-bottom: 2rem;">
+      Practitioners and guest speakers who gave recorded technical presentations at Software Craftsmanship McHenry County (SCMC) monthly meetings:
     </p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
@@ -102,7 +118,7 @@ sitemap: true
 
       <div style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
         <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-text-main, #dcd7ba); margin-bottom: 0.5rem;">Andy Maleh</h3>
-        <p style="font-size: 0.875rem; color: var(--color-primary, #7e9cd8); font-weight: 600; margin-bottom: 0.75rem;">Creator of Glimmer DSL • JRuby Contributor</p>
+        <p style="font-size: 0.875rem; color: var(--color-primary, #7e9cd8); font-weight: 600; margin-bottom: 0.75rem;">Guest Presenter • Creator of Glimmer DSL</p>
         <ul style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); padding-left: 1.25rem; margin-bottom: 0; line-height: 1.5;">
           <li><strong>SCMC Presentation:</strong> <em>Software Craftsmanship VS Software Engineering</em> (Vimeo-44387717)</li>
         </ul>

@@ -28,7 +28,7 @@ In 2009, local practitioners submitted talk proposals to traditional academic an
 
 > "They told us live pairing, TDD katas, and unit test refactoring were 'too practical' for a stage. So we decided right then: if mainstream conferences won't show real engineering practice, we will build a stage dedicated entirely to it."
 
-That rejection became the rallying cry. **Software Craftsmanship McHenry County (SCMC)** was launched by Mike Hall, Steve Kim, Jim Suchy, and Andy Maleh in Grayslake, IL. Shortly after, Chicago hosted the first **Software Craftsmanship North America (SCNA)** conference—a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
+That rejection became the rallying cry. **Software Craftsmanship McHenry County (SCMC)** was launched by Mike Hall and Ryan Gerry in McHenry County, IL, with early collaboration from 8th Light leaders Steve Kim and Jim Suchy. Shortly after, Chicago hosted the first **Software Craftsmanship North America (SCNA)** conference—a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
 
 ---
 
@@ -38,7 +38,7 @@ The Chicago movement brought together iconic leaders:
 - **Robert "Uncle Bob" Martin**: Delivered seminal keynotes on clean architecture, professional ethics, and code legibility at SCMC and SCNA.
 - **Dave Hoover**: Pioneered software apprenticeship programs in Chicago that trained hundreds of junior developers in TDD.
 - **Steve Kim & Jim Suchy**: Hosted monthly downtown Chicago pairing sessions at 8th Light, bridging urban and suburban communities.
-- **Andy Maleh**: Presented SWT/JRuby desktop interop at SCMC, showing how dynamic languages run safely on JVM threads.
+- **Andy Maleh**: Guest presented *Software Craftsmanship VS Software Engineering* at SCMC, demonstrating Glimmer DSL and SWT desktop tooling on the JVM.
 - **Igor Polevoy**: Demonstrated lightweight ActiveRecord ORM patterns for Java (*ActiveJDBC*) at SCMC to streamline enterprise backends.
 - **Ray Hightower**: Co-organized SCNA and ChicagoRuby, connecting Midwest developers with national keynote speakers.
 
