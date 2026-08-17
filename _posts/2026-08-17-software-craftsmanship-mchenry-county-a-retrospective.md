@@ -60,10 +60,15 @@ In September 2012, SCMC published its core educational philosophy, known as **"3
 
 ---
 
-### Leadership Continuity & Modern Archives
+### Leadership Continuity, Active Meetings & Modern Archives
 
-After running SCMC for two years, Mike Hall handed off primary leadership to **Ryan Gerry** (supported by Mike Roselli). In his [GOTO Conference oral history interview](/interviews/ryan-gerry-goto-conference-2014/), Ryan discussed the dynamics of managing user group topic backlogs, fostering local developer community, and expanding into morning coffee-shop co-working sessions. Related oral history interviews include conversations with [Steve Kim & Jim Suchy](/interviews/steve-kim-jim-suchy-chicago-software-craftsmanship-chicago-software-craftsmanship/) on cross-pollinating suburban and urban groups, and [Aaron Holbrook](/interviews/aaron-holbrook-general/) on local meetup growth.
+After running SCMC for two years, Mike Hall handed off primary leadership to **Ryan Gerry** (supported by Mike Roselli). In his [GOTO Conference oral history interview](/interviews/ryan-gerry-goto-conference-2014/), Ryan discussed managing user group topic backlogs, fostering local developer community, and expanding into morning coffee-shop co-working sessions. 
 
-Today, the complete oral history, verbatim transcripts, and recorded video catalog of Software Craftsmanship McHenry County are preserved on the dedicated [**SCMC Archive Page**](/scmc/) and through the SCMC YouTube channel (`@softwarecraftsmanshipmchen117021`).
+Today, Software Craftsmanship McHenry County **continues to be an active, thriving developer community**, hosting regular technical meetings, hands-on sessions, and peer networking:
 
-By bridging suburban isolation with unvarnished engineering practice, SCMC remains a landmark example of how grass-roots developer communities shape software craftsmanship culture.
+* ⚡ **Active Community Meetings:** Connect with the group and join upcoming events on [**Meetup.com: Software Craftsmanship McHenry County**](https://www.meetup.com/Software-Craftsmanship-McHenry-County/).
+* 🏛️ **Dedicated Archive & Video Canon:** Explore recorded presentations and full transcripts on the dedicated [**SCMC Archive Page**](/scmc/).
+* 📺 **YouTube Video Channel:** Watch recorded session talks on the [**SCMC YouTube Channel**](https://www.youtube.com/@softwarecraftsmanshipmchen117021).
+* 🎙️ **Oral History Citations:** Read verbatim developer community interviews with [Ryan Gerry](/interviews/ryan-gerry-goto-conference-2014/), [Steve Kim & Jim Suchy](/interviews/steve-kim-jim-suchy-chicago-software-craftsmanship-chicago-software-craftsmanship/), and [Aaron Holbrook](/interviews/aaron-holbrook-general/).
+
+By bridging suburban isolation with unvarnished engineering practice, SCMC remains a landmark example of how grass-roots developer communities endure and shape software craftsmanship culture.
