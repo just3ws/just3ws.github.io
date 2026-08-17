@@ -115,6 +115,16 @@ rescue StandardError
   nil
 end
 
+# Resolves a lead's linked posting id, or exits loudly -- a lead that fails to resolve must not
+# silently fall through to the bare-invocation default and evaluate an unrelated posting.
+def resolve_posting_id_from_lead(host, lead_id)
+  html = fetch_lead_html(host, lead_id)
+  return Regexp.last_match(1).to_i if html && html =~ %r{/job_postings/(\d+)}
+
+  warn "Could not resolve a job posting from lead ##{lead_id} at #{host}/admin/leads/#{lead_id}."
+  exit 1
+end
+
 def parse_lead_info(options)
   host = options[:host]
   posting_id = options[:posting_id]
@@ -128,12 +138,8 @@ def parse_lead_info(options)
     end
   end
 
-  if lead_id && !posting_id
-    html = fetch_lead_html(host, lead_id)
-    posting_id = Regexp.last_match(1).to_i if html && html =~ %r{/job_postings/(\d+)}
-  end
-
-  posting_id ||= 5612
+  posting_id ||= resolve_posting_id_from_lead(host, lead_id) if lead_id
+  posting_id ||= 5612 if lead_id.nil? && posting_id.nil?
 
   posting_data = fetch_json("#{host}/api/v0/job_postings/#{posting_id}")
   unless posting_data
