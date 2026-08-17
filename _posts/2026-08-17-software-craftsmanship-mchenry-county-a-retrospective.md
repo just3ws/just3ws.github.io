@@ -38,16 +38,14 @@ To support the growing community, **Follett Software Company** in Woodstock/McHe
 
 ### The Recorded Canon & Keynotes (2011–2013)
 
-SCMC became known for attracting premier speakers to the northwest suburbs and systematically recording session videos for the community:
-
-* **Robert "Uncle Bob" Martin** (Co-author of the Agile Manifesto) presented *"The A Word: Architecture"* (Oct 2011), detailing boundary separation and clean architecture principles.
-* **Andy Lester** (Creator of `ack` and Perl core contributor) delivered a two-part masterclass: *"Enough C To Get Started In F/OSS"* (July 2011).
-* **Igor Polevoy** (Creator of ActiveJDBC & ActiveWeb) presented lightweight Java ORM patterns (March 2012).
-* **Scott Seely** (Software Architect & Author) presented *"Beginner C++ for Expert Programmers"* (March 2012).
-* **Mike Jansen** demonstrated client-side TDD in *"TDD Your JavaScript With Backbone.js"* (Feb 2012).
-* **Andy Maleh** (Creator of Glimmer DSL) presented *"Software Craftsmanship VS Software Engineering"* (June 2012).
-* **Billy Whited** explored semantic web design in *"Front End Craftsmanship"* (Nov 2011).
-* **Michael Buselli** conducted live security demos in *"Blind SQL Injection"* (Aug 2011).
+* **Robert "Uncle Bob" Martin** (Co-author of the Agile Manifesto) presented [*"The A Word: Architecture"*](/interviews/vimeo-30083598/) (Oct 2011), detailing boundary separation and clean architecture principles. (See also his UGtastic interview: [*Filling the Vessel: Craft of Performance*](/interviews/robert-martin-software-craftsmanship-north-america-2012/)).
+* **Andy Lester** (Creator of `ack` and Perl core contributor) delivered a two-part masterclass: [*"Enough C To Get Started In F/OSS (Part 1)"*](/interviews/vimeo-26669252/) and [*(Part 2)*](/interviews/vimeo-26657739/) (July 2011).
+* **Igor Polevoy** (Creator of ActiveJDBC & ActiveWeb) presented [*"ActiveJDBC & ActiveWeb for Java"*](/interviews/vimeo-38936294/) (March 2012).
+* **Scott Seely** (Software Architect & Author) presented [*"Beginner C++ for Expert Programmers"*](/interviews/vimeo-38723757/) (March 2012).
+* **Mike Jansen** demonstrated client-side TDD in [*"TDD Your JavaScript With Backbone.js"*](/interviews/vimeo-37080647/) (Feb 2012).
+* **Andy Maleh** (Creator of Glimmer DSL) guest presented [*"Software Craftsmanship VS Software Engineering"*](/interviews/vimeo-44387717/) (June 2012).
+* **Billy Whited** explored semantic web design in [*"Front End Craftsmanship: Toward a More Meaningful Web"*](/interviews/vimeo-32266297/) (Nov 2011).
+* **Michael Buselli** conducted live security demos in [*"Blind SQL Injection"*](/interviews/vimeo-27889917/) (Aug 2011).
 
 ---
 
@@ -64,8 +62,8 @@ In September 2012, SCMC published its core educational philosophy, known as **"3
 
 ### Leadership Continuity & Modern Archives
 
-After running SCMC for two years, Mike Hall handed off primary leadership to **Ryan Gerry** (supported by Mike Roselli). Under Ryan's stewardship, SCMC expanded into informal morning coffee-shop co-working sessions, giving remote suburban developers a place to connect and collaborate.
+After running SCMC for two years, Mike Hall handed off primary leadership to **Ryan Gerry** (supported by Mike Roselli). In his [GOTO Conference oral history interview](/interviews/ryan-gerry-goto-conference-2014/), Ryan discussed the dynamics of managing user group topic backlogs, fostering local developer community, and expanding into morning coffee-shop co-working sessions. Related oral history interviews include conversations with [Steve Kim & Jim Suchy](/interviews/steve-kim-jim-suchy-chicago-software-craftsmanship-chicago-software-craftsmanship/) on cross-pollinating suburban and urban groups, and [Aaron Holbrook](/interviews/aaron-holbrook-general/) on local meetup growth.
 
-Today, the complete oral history, verbatim transcripts, and recorded video catalog of Software Craftsmanship McHenry County are preserved on the [**SCMC Archive Page**](/scmc/) and through the SCMC YouTube channel (`@softwarecraftsmanshipmchen117021`).
+Today, the complete oral history, verbatim transcripts, and recorded video catalog of Software Craftsmanship McHenry County are preserved on the dedicated [**SCMC Archive Page**](/scmc/) and through the SCMC YouTube channel (`@softwarecraftsmanshipmchen117021`).
 
 By bridging suburban isolation with unvarnished engineering practice, SCMC remains a landmark example of how grass-roots developer communities shape software craftsmanship culture.
