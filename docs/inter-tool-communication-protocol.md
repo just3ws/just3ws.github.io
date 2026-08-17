@@ -1,0 +1,108 @@
+# Inter-Tool Communication Protocol: `just3ws` ↔ `wwworkremote` ↔ `zdots-ctx`
+
+This document defines the inter-tool communication protocol, data interfaces, and bus messaging channels enabling **`just3ws.localhost`** (Candidate History & System Cartography Archive), **`wwworkremote.localhost`** (Job Market Intelligence & Automation Engine), and **`zdots-ctx`** (Personal OS Knowledge Layer & Bus) to exchange context and perform automated career positioning analysis.
+
+---
+
+## Architecture Overview
+
+```
+ ┌────────────────────────────────────────────────────────┐
+ │                    zdots-ctx                           │
+ │     Personal OS Knowledge Layer & Message Bus          │
+ └───────────┬────────────────────────────────┬───────────┘
+             │ (zdots-ctx query)              │ (bus-post / bus-read)
+             ▼                                ▼
+┌──────────────────────────────────────┐  ┌──────────────────────────────────────┐
+│          just3ws.localhost           │  │         wwworkremote.localhost       │
+│  Candidate History & Resume Provider │  │  Job Market Intelligence & Engine    │
+└──────────────────────────────────────┘  └──────────────────────────────────────┘
+   - GET /resume.json                        - GET /api/v0/job_postings
+   - GET /exports/resume.md                  - GET /api/v0/job_postings/:id
+   - GET /exports/history.md                 - GET /admin/leads/:id
+   - MCP Server: ugtastic-archive            - Job Match & Brief Pipelines
+```
+
+---
+
+## 1. Cross-Agent Message Bus Communication (`zdots-ctx bus-*`)
+
+To allow AI agents across sessions, CLI tools, and different workspaces (Antigravity, Claude Code, Codex CLI) to discuss job postings and inter-tool concerns, use the `zdots-ctx` message bus:
+
+* **Dedicated Bus Channel**: `job-leads`
+* **Topic**: `Job search leads, evaluations, and inter-tool agent communication`
+
+### CLI Usage for Agents & Developers
+
+1. **Register Identity** (one-time per agent session):
+   ```bash
+   /Users/mike/.config/zsh/bin/zdots-ctx bus-register agent-antigravity --kind agent
+   ```
+
+2. **Post Lead Evaluation or Discussion**:
+   ```bash
+   /Users/mike/.config/zsh/bin/zdots-ctx bus-post job-leads "Evaluated Lead #112 (Huntress) - High fit. Brief generated." --as agent-antigravity
+   ```
+
+3. **Read Unread / Recent Messages**:
+   ```bash
+   /Users/mike/.config/zsh/bin/zdots-ctx bus-read job-leads
+   ```
+
+4. **Watch Channel for Live Updates**:
+   ```bash
+   /Users/mike/.config/zsh/bin/zdots-ctx bus-watch job-leads
+   ```
+
+---
+
+## 2. Candidate History Endpoints (`just3ws.localhost`)
+
+`just3ws.localhost` exposes machine-readable endpoints derived directly from canonical data (`_data/resume/`):
+
+* **Structured Resume API**: `GET https://just3ws.localhost/resume.json`
+  - Returns complete profile, timeline, position highlights, skills breakdown, and technical leadership records.
+
+* **LLM Context Export**: `GET https://just3ws.localhost/exports/resume.md`
+  - High-density Markdown representation of candidate experience optimized for prompt context injection.
+
+* **Timeline Narrative**: `GET https://just3ws.localhost/exports/history.md`
+  - Complete 20+ year technical career progression.
+
+* **Case Studies & Cartography**: `GET https://just3ws.localhost/exports/portfolio.md`
+  - 4D System Cartography case studies (OneMain Financial, EMR-Bear).
+
+* **Oral History MCP Server**: `https://just3ws.localhost/mcp.json`
+  - MCP tool interface (`bin/ugtastic_mcp_server.rb`) exposing 207 historical developer interviews, transcripts, and 402-node knowledge graph.
+
+---
+
+## 3. Job Market Intelligence API (`wwworkremote.localhost`)
+
+`wwworkremote.localhost` exposes REST endpoints for job leads and market data:
+
+* **List Ingested Postings**: `GET http://localhost:31000/api/v0/job_postings`
+* **Job Posting Detail**: `GET http://localhost:31000/api/v0/job_postings/:id`
+* **Admin Lead Record**: `GET http://localhost:31000/admin/leads/:id`
+
+---
+
+## 4. Automated Evaluation & Brief Generation Tooling
+
+In `just3ws.github.io`, the following CLI tools and agent skills automate inter-tool queries:
+
+* **Evaluation Script**: `ruby bin/evaluate_job_lead.rb --lead <LEAD_ID>`
+* **Rake Task**: `bundle exec rake "job:evaluate[<LEAD_ID>]"`
+* **Agent Skills**:
+  - [`.agents/skills/job-lead-evaluator/SKILL.md`](file:///Users/mike/github.com/just3ws/just3ws.github.io/.agents/skills/job-lead-evaluator/SKILL.md)
+  - [`.agents/skills/executive-brief-generator/SKILL.md`](file:///Users/mike/github.com/just3ws/just3ws.github.io/.agents/skills/executive-brief-generator/SKILL.md)
+
+---
+
+## 5. Calibration & Tone Rules for Inter-Tool Communication
+
+All messages, evaluations, and briefs generated across systems must enforce the following contract:
+
+1. **Zero Fluff & Zero Hype**: Prohibit unevidenced promotional adjectives ("visionary," "transformational," "groundbreaking").
+2. **Understated Fact Density**: State context, constraint, technical action, and verified outcome (-60% MTTR, domain isolation, OpenTelemetry across 36+ services).
+3. **Skeptical Peer Filter**: Distinguish pure IC technical leadership (Staff/Principal Architect) from executive people management (managing managers, HR administration).

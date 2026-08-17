@@ -624,3 +624,18 @@ namespace :transcript do
   end
 end
 
+namespace :job do
+  desc 'Evaluate a job lead from wwworkremote (usage: rake job:evaluate[lead_id])'
+  task :evaluate, [:lead_id] do |_t, args|
+    lead_id = args[:lead_id] || 112
+    sh "ruby bin/evaluate_job_lead.rb --lead #{lead_id}"
+  end
+
+  desc 'Generate an executive brief for a job lead (usage: rake job:brief[lead_id])'
+  task :brief, [:lead_id] do |_t, args|
+    lead_id = args[:lead_id] || 112
+    sh "ruby bin/evaluate_job_lead.rb --lead #{lead_id}"
+  end
+end
+
+
