@@ -15,13 +15,17 @@ Use this skill when preparing tailored application briefs, pitch documents, or c
 
 ## Workflow Protocol
 
-1. **Query Job Market Context (`wwworkremote.localhost`)**:
-   - Fetch job posting or lead data from `http://localhost:31000/api/v0/job_postings/:id` or `http://localhost:31000/admin/leads/:id`.
-   - Identify core platform stack, domain requirements, scale bottlenecks, and level expectations.
+1. **Get the real match analysis first**: `ruby bin/evaluate_job_lead.rb --lead <LEAD_ID> [--escalate]`. This wraps
+   `bin/wwwr match` in `wwworkremote/core` (`LLM::ProfileMatcher`) -- the same scorer the wwworkremote web UI uses,
+   keyed off its own `CareerProfile`. Use its score/tags/analysis as the evidence base for the brief. Don't fetch
+   `admin/leads/:id` or `api/v0/job_postings/:id` directly and don't re-derive fit from `_data/resume/positions/*.yml`
+   by hand -- that's a second, drifting scorer.
 
 2. **Query Personal OS & Canonical Corpus (`zdots-ctx` + `_data/resume/`)**:
-   - Query `/Users/mike/.config/zsh/bin/zdots-ctx query "<topic>"` for strategy guidelines and engineering lessons.
-   - Match role requirements against canonical resume positions (`_data/resume/positions/*.yml`), skills (`_data/resume/ats.yml`), and interview corpus (`_data/interviews.yml`).
+   - Query `/Users/mike/.config/zsh/bin/zdots-ctx query "<topic>"` for strategy guidelines and engineering lessons the
+     scorer doesn't know about.
+   - Pull supporting quotes/highlights from `_data/resume/positions/*.yml` and `_data/interviews.yml` for the case
+     studies and technical-conversation sections below -- as source material for prose, not as a re-scoring input.
 
 3. **Generate Tailored 1-Page Executive Pitch Brief**:
    - **Header**: Target Role, Company Profile, Lead Record Link, Tone Calibration statement.

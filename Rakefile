@@ -625,16 +625,18 @@ namespace :transcript do
 end
 
 namespace :job do
-  desc 'Evaluate a job lead from wwworkremote (usage: rake job:evaluate[lead_id])'
-  task :evaluate, [:lead_id] do |_t, args|
+  desc 'Evaluate a job lead (usage: rake job:evaluate[lead_id], add ,true to escalate)'
+  task :evaluate, %i[lead_id escalate] do |_t, args|
     lead_id = args[:lead_id] || 112
-    sh "ruby bin/evaluate_job_lead.rb --lead #{lead_id}"
+    flag = args[:escalate] ? ' --escalate' : ''
+    sh "ruby bin/evaluate_job_lead.rb --lead #{lead_id}#{flag}"
   end
 
-  desc 'Generate an executive brief for a job lead (usage: rake job:brief[lead_id])'
-  task :brief, [:lead_id] do |_t, args|
+  desc 'Generate an executive brief for a job lead (usage: rake job:brief[lead_id], add ,true to escalate)'
+  task :brief, %i[lead_id escalate] do |_t, args|
     lead_id = args[:lead_id] || 112
-    sh "ruby bin/evaluate_job_lead.rb --lead #{lead_id}"
+    flag = args[:escalate] ? ' --escalate' : ''
+    sh "ruby bin/evaluate_job_lead.rb --lead #{lead_id}#{flag}"
   end
 end
 

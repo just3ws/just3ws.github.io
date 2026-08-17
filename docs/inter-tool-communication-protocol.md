@@ -15,13 +15,17 @@ This document defines the inter-tool communication protocol, data interfaces, an
              ▼                                ▼
 ┌──────────────────────────────────────┐  ┌──────────────────────────────────────┐
 │          just3ws.localhost           │  │         wwworkremote.localhost       │
-│  Candidate History & Resume Provider │  │  Job Market Intelligence & Engine    │
+│  Candidate History & Resume Provider │  │  Job Market Intelligence & Scorer    │
 └──────────────────────────────────────┘  └──────────────────────────────────────┘
    - GET /resume.json                        - GET /api/v0/job_postings
    - GET /exports/resume.md                  - GET /api/v0/job_postings/:id
-   - GET /exports/history.md                 - GET /admin/leads/:id
-   - MCP Server: ugtastic-archive            - Job Match & Brief Pipelines
+   - GET /exports/history.md                 - bin/wwwr match <id> --source=<n> [--escalate]
+   - MCP Server: ugtastic-archive            - LLM::ProfileMatcher / ArtifactGenerator
 ```
+
+Scoring itself is single-sourced in `wwworkremote/core` (`LLM::ProfileMatcher`, keyed off its own `CareerProfile`) --
+not `just3ws`'s `resume.json`. `bin/evaluate_job_lead.rb` here calls `bin/wwwr match` rather than re-implementing fit
+scoring against the just3ws resume export, so there's one scorer instead of two that can drift apart.
 
 ---
 
@@ -77,22 +81,27 @@ To allow AI agents across sessions, CLI tools, and different workspaces (Antigra
 
 ---
 
-## 3. Job Market Intelligence API (`wwworkremote.localhost`)
-
-`wwworkremote.localhost` exposes REST endpoints for job leads and market data:
+## 3. Job Market Intelligence & Scoring (`wwworkremote/core`)
 
 * **List Ingested Postings**: `GET http://localhost:31000/api/v0/job_postings`
 * **Job Posting Detail**: `GET http://localhost:31000/api/v0/job_postings/:id`
-* **Admin Lead Record**: `GET http://localhost:31000/admin/leads/:id`
+* **Fit scoring**: `cd ~/github.com/wwworkremote/core && bin/wwwr match <job_posting_id> --source=<name> [--escalate]`
+  -- the actual entry point for match analysis. `--source` is a required attribution tag (logged, not a credential --
+  everything here is local/single-user). No `--escalate`: read-only, prints whatever analysis is already on file.
+  With `--escalate`: runs a fresh `LLM::ProfileMatcher` scan and persists it (costs LLM tokens). Full contract:
+  `docs/agents/interop.md` in `wwworkremote/core`.
+* `admin/leads/:id` is a browser-session-authenticated admin view, not an API -- don't curl it from another tool.
 
 ---
 
 ## 4. Automated Evaluation & Brief Generation Tooling
 
-In `just3ws.github.io`, the following CLI tools and agent skills automate inter-tool queries:
+In `just3ws.github.io`, the following CLI tools and agent skills automate inter-tool queries. Fit scoring is
+delegated to `bin/wwwr match` above, not reimplemented here.
 
-* **Evaluation Script**: `ruby bin/evaluate_job_lead.rb --lead <LEAD_ID>`
-* **Rake Task**: `bundle exec rake "job:evaluate[<LEAD_ID>]"`
+* **Evaluation Script**: `ruby bin/evaluate_job_lead.rb --lead <LEAD_ID> [--escalate]`
+* **Rake Tasks**: `bundle exec rake "job:evaluate[<LEAD_ID>]"` / `rake "job:evaluate[<LEAD_ID>,true]"` (the second
+  positional arg escalates)
 * **Agent Skills**:
   - [`.agents/skills/job-lead-evaluator/SKILL.md`](file:///Users/mike/github.com/just3ws/just3ws.github.io/.agents/skills/job-lead-evaluator/SKILL.md)
   - [`.agents/skills/executive-brief-generator/SKILL.md`](file:///Users/mike/github.com/just3ws/just3ws.github.io/.agents/skills/executive-brief-generator/SKILL.md)
