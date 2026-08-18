@@ -10,14 +10,18 @@ id: activecampaign
 summary: Owned core system testability and performance at scale, leading legacy modernization
   in a highly coupled CRM platform.
 highlights:
-- Opaque legacy constraints were addressed by isolating critical behaviors behind
-  boundaries, reducing production risk for core changes by 40%.
-- Slow ad-hoc global data access was addressed by introducing testable query patterns
-  and caching strategies, significantly improving query performance.
-- Fragile UI-driven workflows were addressed by hardening the Ember.js frontend test
-  suite, improving reliability and confidence.
-- Slow runtime debugging loops were addressed by establishing test-driven observability,
-  enabling reliable developer feedback.
+  - text: >-
+      Legacy Boundary Isolation: Decoupled critical legacy constraints behind explicit service
+      boundaries, eliminating high-risk direct database dependencies and establishing clean execution paths.
+  - text: >-
+      Data Access & Query Optimization: Replaced ad-hoc global state access with structured query patterns
+      and multi-tier caching strategies, accelerating throughput for high-volume database reads.
+  - text: >-
+      Frontend Test Hardening: Hardened the Ember.js frontend test suite across complex CRM user workflows,
+      enforcing testable state boundaries and reducing regressions in customer-facing flows.
+  - text: >-
+      Test-Driven Observability: Established test-driven observability patterns across legacy PHP codepaths,
+      shortening developer feedback loops during high-risk production debugging.
 skills:
 - PHP
 - MySQL
