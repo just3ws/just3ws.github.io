@@ -6,6 +6,11 @@
       {%- else -%}
       <span>{{ include.position.title }}</span>
       {%- endif -%}
+      {%- if include.position.case_study -%}
+      <a href="/case-studies/" class="evidence-badge no-print" style="display: inline-flex; align-items: center; margin-left: 0.5rem; font-size: 0.725rem; font-weight: 700; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; padding: 0.15rem 0.5rem; border-radius: 9999px; text-decoration: none;" title="Verified 4D System Cartography Case Study">
+        Verified Case Study &rarr;
+      </a>
+      {%- endif -%}
     </h3>
     <p class="position-meta">
       {%- if include.position.company.name -%}

@@ -3,6 +3,15 @@
 <header class="resume-header">
   <h1>{{ profile.name }}</h1>
   <p class="title">{{ profile.title }}</p>
+  {% assign availability = site.data.engagements.availability %}
+  {% if availability %}
+  <div class="availability-status-pill no-print" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">
+    <a href="/engagements/" style="display: inline-flex; align-items: center; gap: 0.45rem; background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 0.8125rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 9999px; text-decoration: none;">
+      <span style="display: inline-block; width: 0.5rem; height: 0.5rem; background-color: #22c55e; border-radius: 50%;"></span>
+      <span>{{ availability.badge | default: "Accepting Advisory & Staff/Principal Engagements" }} &rarr;</span>
+    </a>
+  </div>
+  {% endif %}
   <ul class="contact-info no-print">
     {%- if profile.location %}
     <li class="contact-item">
