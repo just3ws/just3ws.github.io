@@ -55,7 +55,9 @@ body {
   border: 1px solid rgba(216, 222, 233, 0.7);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  max-width: calc(var(--container-max-width) + 2rem);
+  max-width: 70rem;
+  width: calc(100% - 2rem);
+  box-sizing: border-box;
 }
 
 .site-nav {

@@ -37,7 +37,7 @@
                 {% assign is_active = true %}
               {% elsif item.children %}
                 {% for child in item.children %}
-                  {% if current_url == child.href %}
+                  {% if current_url == child.href or current_url contains child.href and child.href != "/" %}
                     {% assign is_active = true %}
                   {% endif %}
                 {% endfor %}
@@ -54,7 +54,7 @@
                 <div class="nav-dropdown-menu" role="menu">
                   {% for child in item.children %}
                     {% assign child_active = false %}
-                    {% if current_url == child.href %}
+                    {% if current_url == child.href or current_url contains child.href and child.href != "/" %}
                       {% assign child_active = true %}
                     {% endif %}
                     <a href="{{ child.href }}" class="dropdown-item{% if child_active %} is-active{% endif %}" role="menuitem">{{ child.label }}</a>

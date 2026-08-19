@@ -208,6 +208,48 @@
     {% if preferred.video_url %}
     ,"contentUrl": {{ preferred.video_url | jsonify }}
     {% endif %}
+  {% elsif page.url == "/engagements/" or page.permalink == "/engagements/" %}
+    "@type": "ProfessionalService",
+    "@id": "{{ site_url }}/engagements/#service",
+    "name": "Fractional Principal Engineering & Technical Advisory",
+    "provider": {
+      "@type": "Person",
+      "name": "Mike Hall",
+      "@id": "{{ site_url }}/id/person/mike-hall"
+    },
+    "areaServed": "Global / Remote",
+    "description": {{ page.description | jsonify }},
+    "url": "{{ site_url }}/engagements/",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Engineering Advisory Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Bounded System Cartography Audit (30-90 Days)",
+            "description": "Full-stack dependency mapping, operational risk modeling, and release verification gates."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fractional Principal Software Engineer",
+            "description": "Hands-on software architecture lead, cross-team alignment, and incident root-cause telemetry."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Architecture Advisory & Risk Retainer",
+            "description": "Architectural review board participation, zero-downtime migration, and vendor security reviews."
+          }
+        }
+      ]
+    }
   {% elsif page.url == "/" or page.url == "/home/" %}
     "@type": "WebSite",
     "@id": "{{ site_url }}/#website",

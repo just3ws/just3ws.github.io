@@ -14,6 +14,7 @@
 
 - [HTML](https://www.just3ws.com) - Primary resume
 - [Full History](https://www.just3ws.com/history) - Complete career timeline
+- [Advisory & Engagements](https://www.just3ws.com/engagements/) - Fractional engineering, 30–90 day system cartography audits, & advisory retainers
 - [Plain Text](https://www.just3ws.com/resume.txt)
 - **Markdown Exports** - See [`/exports/`](https://www.just3ws.com/exports/) for auto-generated markdown versions
   - Resume (`resume.md`), Portfolio (`portfolio.md`), History (`history.md`)
@@ -35,6 +36,7 @@
 - Interview conference metadata lives in `_data/interview_conferences.yml`
 - Interview community metadata lives in `_data/interview_communities.yml`
 - Trusted source registry lives in `_data/resources.yml`
+- Advisory engagement offerings live in `_data/engagements.yml`
 - One-off metadata lives in `_data/oneoff_videos.yml`
 - SCMC metadata lives in `_data/scmc_videos.yml`
 - Canonical taxonomy vocabulary lives in `_data/taxonomy.yml`
@@ -80,7 +82,7 @@
 
 For information on local development, build pipelines, and repository standards, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Full system documentation and operator runbooks are available in the [Docs Index](/backlog/docs/).
+Full system documentation, operator runbooks, and CLI tooling guides are available in [docs/tooling-user-guide.md](docs/tooling-user-guide.md) and the [Docs Index](/backlog/docs/).
 
 ## Development Overview
 

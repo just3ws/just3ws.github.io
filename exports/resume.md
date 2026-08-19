@@ -26,7 +26,7 @@ Principal Systems Cartographer & Platform Architect who discovers, maps, and mod
 ### Development Manager at EMR-Bear, a MedSuite company
 **May 2026 — August 2026**
 
-Engaged to conduct rapid system discovery and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics following a founder transition.
+Engaged on a bounded 90-day interim assignment to conduct rapid system cartography and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics following a founder transition.
 
 **Key Outcomes:**
 - Architectural & Risk Cartography: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.

@@ -1,0 +1,60 @@
+# Executive Pitch Brief: Wealth Management CRM (Series B, $200M Funded)
+
+**Target Role:** Staff Software Engineer — AI Agents, Platform & Rails Architecture  
+**Comp Range:** $150,000 — $240,000 / yr (Remote, Full-time)  
+**Lead Record:** [`wwworkremote` Posting #5049](http://localhost:31000/api/v0/job_postings/5049)  
+**Tone Calibration:** Understated, fact-dense, zero-fluff. Written for VP of Engineering & Technical Leadership.
+
+---
+
+## 1. Mission & Architectural Alignment
+
+The target mandate—**scaling an enterprise financial advisor CRM platform following a $200M funding round, integrating AI agents and workflow automation into core Rails/Postgres architectures**—aligns directly with my experience in **financial enterprise acquisition architecture, local AI workflow orchestration, and high-concurrency Ruby/Postgres platform reliability**.
+
+### Why This Match Works (3 Grounded Signals):
+1. **Financial Enterprise Domain & Compliance Scope**:
+   Served as Senior Technical IC and Software Architecture Lead for the Acquisition lane at OneMain Financial, de-risking multi-step financial workflows, customer interaction surfaces, and third-party API supply chains.
+2. **AI-Augmented Engineering & Agent Workflows**:
+   Designed and implemented local, privacy-conscious AI agent workflows for codebase cartography, domain rule extraction, and deterministic evaluation—expanding engineering investigative capacity while keeping human verification explicit.
+3. **Ruby on Rails, PostgreSQL & Cloud Platform Depth**:
+   25+ years operating production Rails, PostgreSQL (including pgvector), Sidekiq/Redis, AWS, Docker, and Kubernetes under live financial transaction loads.
+
+---
+
+## 2. Fit Matrix & Seniority Calibration
+
+| Dimension | Target Role Expectation | Mike's Grounded Evidence | Fit Evaluation |
+| :--- | :--- | :--- | :--- |
+| **Financial CRM Domain** | Wealth management & financial advisor workflows, high data privacy. | 5 years Acquisition lane architecture at OneMain Financial; regulated fintech compliance experience. | 🟢 **Direct Domain Match** |
+| **AI Agents & LLM Integration** | Modernizing CRM workflows with AI agents & automated tools. | Designed local AI cartography workflows & LLM orchestration with deterministic evaluation. | 🟢 **Core Technical Match** |
+| **Core Stack** | Ruby/Rails, PostgreSQL, React, AWS, Terraform, Docker. | 25+ years Ruby/Rails, PostgreSQL (pgvector), Sidekiq, Redis, AWS/K8s, Linux. | 🟢 **Stack Parity** |
+| **Scale & Growth** | Scaling architecture following $200M growth funding round. | Founded ACQ Enablement team; decoupled core loan acquisition monoliths into resilient microservices. | 🟢 **Growth / Scale Match** |
+
+---
+
+## 3. Proven Case Studies for Engineering Leadership
+
+1. **OneMain Financial Acquisition Lane Realignment & Telemetry (2021–2026)**:
+   - *Challenge*: Scaling high-volume financial customer acquisition flows with implicit lateral state mutations across multi-service Rails state machines.
+   - *Action*: Refactored Rails state transitions, eliminated hidden lateral state mutations, founded ACQ Enablement, and deployed enterprise OpenTelemetry tracing across microservices.
+   - *Outcome*: Reduced MTTR by ~60%, unblocked 4 parallel engineering streams, and eliminated outage cascades.
+   - *Reference*: [case-studies/index.html#onemain-acquisition](https://www.just3ws.com/case-studies/)
+
+2. **EMR-Bear 90-Day Rapid Risk Cartography (2026)**:
+   - *Challenge*: Multi-tenant SaaS platform serving 130+ clinics needed rapid operational risk inventory and release verification governance.
+   - *Action*: Reconstructed end-to-end component dependencies and instituted pipeline release gates protecting production uptime.
+   - *Outcome*: Zero clinical downtime during founder transition; delivered empirical risk roadmap for platform modernization.
+   - *Reference*: [case-studies/index.html#emr-bear-stabilization](https://www.just3ws.com/case-studies/)
+
+---
+
+## 4. Archival Technical Discussions & Provenance
+
+- 👤 **Panoramic View Architecture Discipline**: [The Panoramic View Methodology](https://www.just3ws.com/panoramic-view/)
+- 💼 **Advisory & Fractional Engagement Models**: [Fractional & Advisory Engagements](https://www.just3ws.com/engagements/)
+
+---
+
+## 5. Direct Outreach & Pitch Strategy
+
+- **Core Pitch**: Lead with financial CRM domain parity (OneMain Financial acquisition lane) + direct experience implementing AI agent workflows and OpenTelemetry observability in production Rails/Postgres stacks.

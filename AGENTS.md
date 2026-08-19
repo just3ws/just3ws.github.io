@@ -42,6 +42,7 @@ Use these skills by default for this repository:
 13. `site-refresh-reviewer` - Independently gate visual, accessibility, SEO, and public-archive quality.
 14. `system-cartographer` - Audit, structure, and generate 4-dimensional System Cartography case studies.
 15. `executive-brief-generator` - Generate tailored 1-page executive pitch briefs for target Principal Engineer roles.
+16. `job-lead-evaluator` - Evaluate job leads from wwworkremote against personal OS context and canonical resume data.
 
 ## Site Refresh Agent Workflow
 
