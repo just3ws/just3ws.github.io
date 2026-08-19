@@ -35,9 +35,9 @@
     {% endif %}
 
     {% if breadcrumb_current_url %}
-      <a href="{{ breadcrumb_current_url }}">{{ breadcrumb_current_name }}</a>
+      <a href="{{ breadcrumb_current_url }}" aria-current="page">{{ breadcrumb_current_name }}</a>
     {% else %}
-      <span class="breadcrumbs-current">{{ breadcrumb_current_name }}</span>
+      <span class="breadcrumbs-current" aria-current="page">{{ breadcrumb_current_name }}</span>
     {% endif %}
   {% endif %}
 </nav>

@@ -108,27 +108,49 @@
       });
     }
 
-    // Accessible Touch & Click Toggle for Navigation Dropdowns
+    // Accessible Touch, Focus & Click Toggle for Navigation Dropdowns
     const dropdowns = document.querySelectorAll('.nav-dropdown');
     dropdowns.forEach(function(dropdown) {
-      const caret = dropdown.querySelector('.dropdown-caret');
-      if (!caret) return;
+      const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+      if (!toggle) return;
 
-      caret.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        
+      function toggleMenu(show) {
+        const isCurrentlyOpen = dropdown.classList.contains('is-open');
+        const nextState = show !== undefined ? show : !isCurrentlyOpen;
+
         dropdowns.forEach(d => {
           d.classList.remove('is-open');
           const t = d.querySelector('.nav-dropdown-toggle');
           if (t) t.setAttribute('aria-expanded', 'false');
         });
 
-        if (!isExpanded) {
+        if (nextState) {
           dropdown.classList.add('is-open');
           toggle.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      toggle.addEventListener('click', function(e) {
+        // If clicking caret or dropdown toggle, handle toggle
+        if (e.target.classList.contains('dropdown-caret') || e.target === toggle) {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
+
+      toggle.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu(true);
+          const firstChild = dropdown.querySelector('.dropdown-item');
+          if (firstChild) firstChild.focus();
+        }
+      });
+
+      dropdown.addEventListener('focusout', function(e) {
+        if (!dropdown.contains(e.relatedTarget)) {
+          dropdown.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
         }
       });
     });
