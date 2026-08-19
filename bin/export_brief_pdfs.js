@@ -7,7 +7,13 @@
 
 const fs = require('fs');
 const path = require('path');
-const { chromium } = require('playwright');
+let chromium;
+try {
+  ({ chromium } = require('playwright'));
+} catch (err) {
+  console.warn('⚠️ [Brief PDF Exporter] Playwright module not available in this environment. Skipping PDF re-rendering (pre-built PDFs in exports/ will be preserved).');
+  process.exit(0);
+}
 const http = require('http');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
