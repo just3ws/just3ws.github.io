@@ -384,4 +384,27 @@ test.describe('Site Layout and Aesthetics', () => {
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'kanagawa');
     await page.screenshot({ path: 'tmp/screenshots/brief-nextpatient-kanagawa.png', fullPage: true });
   });
+
+  test('Command Palette (Cmd+K) opens, filters sitemap index, and navigates', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto('/home/');
+
+    // Press Meta+K to open palette
+    await page.keyboard.press('Meta+k');
+    const backdrop = page.locator('#cmdPaletteBackdrop');
+    await expect(backdrop).toHaveClass(/is-open/);
+
+    // Type 'groupon position' in search input
+    const input = page.locator('#cmdPaletteInput');
+    await input.fill('groupon position');
+
+    // Wait for Groupon position item to appear
+    const item = page.locator('#cmdPaletteResults .cmd-item', { hasText: 'Groupon' }).first();
+    await expect(item).toBeVisible();
+
+    // Click item to navigate
+    await item.click();
+    await page.waitForURL(/\/resume\/positions\/groupon\//);
+    await expect(page.locator('h1')).toContainText('Resume Position: Groupon');
+  });
 });

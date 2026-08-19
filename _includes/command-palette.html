@@ -118,21 +118,27 @@
 
     if (!backdrop || !input) return;
 
-    // Asynchronously load the full 300+ item sitemap index
     function loadSearchCatalog() {
-      if (isCatalogLoaded) return;
-      fetch('/assets/data/site-search-index.json')
+      if (isCatalogLoaded) return Promise.resolve();
+      return fetch('/assets/data/site-search-index.json')
         .then(res => res.json())
         .then(data => {
           searchCatalog = data || [];
           isCatalogLoaded = true;
-          if (input.value.trim()) {
+          if (input && input.value.trim()) {
             filterResults(input.value);
           }
         })
         .catch(err => {
           console.warn('Full search catalog index load failed, falling back to static items', err);
         });
+    }
+
+    // Preload index in idle time
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadSearchCatalog);
+    } else {
+      setTimeout(loadSearchCatalog, 200);
     }
 
     function openPalette() {
@@ -155,7 +161,6 @@
     function renderDynamicMatches(matches, q) {
       resultsUl.innerHTML = '';
 
-      // Always prepend Theme toggle if query matches "theme"
       if (!q || 'toggle theme kanagawa dark light mode appearance colorscheme'.includes(q)) {
         const themeLi = document.createElement('li');
         themeLi.innerHTML = `
@@ -187,7 +192,6 @@
         resultsUl.appendChild(li);
       });
 
-      // Bind click handlers to theme commands
       resultsUl.querySelectorAll('.cmd-item[data-cmd="toggle-theme"]').forEach(item => {
         item.addEventListener('click', function(e) {
           e.preventDefault();
@@ -215,7 +219,6 @@
       const q = query.toLowerCase().trim();
 
       if (!q && !isCatalogLoaded) {
-        // Render initial static HTML items
         renderInitialStaticItems();
         return;
       }
@@ -228,7 +231,6 @@
         });
         renderDynamicMatches(matches, q);
       } else {
-        // Fallback filter over initial static items
         let count = 0;
         let first = null;
         initialItems.forEach(item => {
