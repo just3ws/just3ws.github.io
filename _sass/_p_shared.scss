@@ -3,7 +3,9 @@
 /* Shared Placeholders and Mixins */
 
 %minimal-styles {
-  max-width: 50rem;
+  max-width: var(--container-max-width, 84rem);
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: $space-4 $space-2;
 }
