@@ -8,6 +8,8 @@ Before changing this repository:
    contracts.
 2. Read `CODEX.md` before evaluating or changing resume content, positioning,
    titles, or generated resume surfaces.
+3. Read `docs/career-strategy-audhd-principal-engineering.md` for title-to-scale
+   role calibration and interview positioning strategies.
 
 Do not treat this repository as an isolated Jekyll checkout. Its installed
 localhost site is part of Mike's local system and is a required verification
