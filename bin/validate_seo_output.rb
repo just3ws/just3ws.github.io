@@ -46,6 +46,21 @@ html_files.each do |path|
   unless canonical.start_with?(CANONICAL_PREFIX)
     errors << "#{relative} has non-canonical-host href: #{canonical}"
   end
+
+  # SEO Best Practice 1: Every indexable page must have exactly one <h1> tag
+  h1_count = html.scan(/<h1[\s>]/i).size
+  if h1_count == 0
+    errors << "#{relative} has zero <h1> tags"
+  elsif h1_count > 1
+    errors << "#{relative} has multiple (#{h1_count}) <h1> tags"
+  end
+
+  # SEO Best Practice 2: All <img> tags must have an alt attribute
+  html.scan(/<img\s+[^>]*>/i).each do |img_tag|
+    unless img_tag.match?(/alt=["']/i) || img_tag.match?(/role=["']presentation["']/i) || img_tag.match?(/aria-hidden=["']true["']/i)
+      errors << "#{relative} has image missing alt attribute: #{img_tag[0..60]}"
+    end
+  end
 end
 
 sitemap_path = File.join(SITE_DIR, 'sitemap.xml')

@@ -91,6 +91,12 @@
             "occupationLocation": {
               "@type": "AdministrativeArea",
               "name": {{ position.company.location | default: "Remote" | jsonify }}
+            },
+            "hiringOrganization": {
+              "@type": "Organization",
+              "name": {{ position.company.name | jsonify }}
+              {% if position.company.url %},"url": {{ position.company.url | jsonify }}{% endif %}
+              {% if position.company.sameAs %},"sameAs": {{ position.company.sameAs | jsonify }}{% endif %}
             }
           }{% unless forloop.last %},{% endunless %}
         {% endif %}
