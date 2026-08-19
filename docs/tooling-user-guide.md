@@ -106,4 +106,27 @@ Agents and subagents operating in this workspace rely on registered skills to pe
 1. **`job-lead-evaluator`** (`.agents/skills/job-lead-evaluator/SKILL.md`): Evaluates job leads from `wwworkremote.localhost` against personal OS context and canonical resume data.
 2. **`executive-brief-generator`** (`.agents/skills/executive-brief-generator/SKILL.md`): Formats 1-page executive pitch briefs for specific Principal Engineer opportunities.
 3. **`system-cartographer`** (`.agents/skills/system-cartographer/SKILL.md`): Audits legacy codebases and structures 4-dimensional cartography breakdowns.
-4. **`site-refresh-builder`** & **`site-refresh-reviewer`**: Governs liquid template and SCSS updates using a strict Director -> Builder -> Reviewer workflow.
+4. **`prose-humanity-auditor`** (`.agents/skills/prose-humanity-auditor/SKILL.md`): Audits technical writing across site Markdown, YAML data, and resume surfaces for plain language, cognitive load (<20 wps), and zero AI jargon.
+5. **`site-refresh-builder`** & **`site-refresh-reviewer`**: Governs liquid template and SCSS updates using a strict Director -> Builder -> Reviewer workflow.
+
+---
+
+## 7. Executive Brief PDF Exporter & Lightweight CI Parity (`bin/export_brief_pdfs.js`)
+
+### Why Use It
+Generates print-optimized 1-page PDF pitch briefs under `exports/briefs/pdfs/` for all executive briefs created in `exports/briefs/`. 
+
+### CI Dependency Safety Pattern
+To prevent CI pipeline build failures on lightweight containers (where Node browser dependencies like Playwright are not installed during the static compilation phase), headless exporter scripts wrap browser imports in a graceful fallback:
+
+```javascript
+let chromium;
+try {
+  ({ chromium } = require('playwright'));
+} catch (err) {
+  console.warn('⚠️ [Brief PDF Exporter] Playwright module not available in this environment. Skipping PDF re-rendering (pre-built PDFs in exports/ will be preserved).');
+  process.exit(0);
+}
+```
+
+This pattern ensures static site builds (`rake build`) remain 100% reliable on light CI jobs while preserving pre-rendered vector PDF artifacts tracked in git.
