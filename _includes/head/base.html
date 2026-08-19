@@ -57,6 +57,9 @@
 <link rel="shortcut icon" href="/favicon.ico">
 {% assign theme_stylesheet = include.theme_stylesheet | default: "/assets/css/site.css" %}
 {% assign asset_version = site.time | date: "%s" %}
+<script>
+(function(){try{if(localStorage.getItem('ugtastic_theme')==='kanagawa'){document.documentElement.setAttribute('data-theme','kanagawa');}}catch(e){}})();
+</script>
 <link rel="stylesheet" href="{{ theme_stylesheet }}?v={{ asset_version }}">
 {% if page.stylesheets and page.stylesheets.size > 0 %}
   {% for stylesheet in page.stylesheets %}
