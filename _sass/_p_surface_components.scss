@@ -291,3 +291,62 @@ body.ats-resume {
     text-decoration: underline;
   }
 }
+
+/* ==========================================================================
+   5. KINETIC MICRO-INTERACTIONS & GLASSMORPHISM ACCENTS
+   ========================================================================== */
+.editorial-card,
+.speaker-profile-card,
+.position-ats,
+.service-card,
+.matrix-node,
+.pillar-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    transform: translateY(-3px) scale(1.005);
+    box-shadow: 0 12px 32px rgba(126, 156, 216, 0.16), 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Glassmorphism Header & Card Accents */
+.site-header,
+.glass-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Animated Kanagawa Wave Shimmer Gradient for Active Titles & Accents */
+@keyframes kanagawa-wave-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.wave-shimmer-accent {
+  background: linear-gradient(90deg, #7e9cd8, #957fb8, #e6c384, #7aa89f, #7e9cd8);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: kanagawa-wave-flow 6s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-card,
+  .speaker-profile-card,
+  .position-ats,
+  .service-card,
+  .matrix-node,
+  .pillar-card {
+    transition: none !important;
+    &:hover {
+      transform: none !important;
+    }
+  }
+
+  .wave-shimmer-accent {
+    animation: none !important;
+  }
+}
