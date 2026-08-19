@@ -33,6 +33,16 @@ Optimize for **credibility, clarity, and signal**, not completeness or storytell
   Establish Principal-level credibility through recent evidence of scope,
   leverage, ownership, durability, and influence.
 
+### Title-to-Scale Spectrum & Role Calibration
+
+- **Company Scale Fluidity**: Recognize that title scope varies non-linearly with organizational scale:
+  - *15–50 people*: CTO / VP of Engineering (hands-on architecture + team building).
+  - *100–300 people*: Director / Staff Engineer / Team Lead.
+  - *500–2,000+ people*: Principal Software Engineer / Technical Lead.
+- **Single Public Anchor**: `Principal Software Engineer` remains the universal anchor across all public resume surfaces to prevent overqualification flags when applying for hands-on Team Lead / Staff roles and underqualification flags when applying for executive roles.
+- **Role Calibration via Executive Briefs**: Use target executive pitch briefs (`exports/briefs/`) and cover letters—not resume title edits—to calibrate scope for each target role (Team Lead, Staff IC, or CTO/Director).
+- **30-Second Framing Strategy**: When asked why applying across role tiers, frame scope as scale-dependent: care is given to technical challenge, team leverage, and mission over title badges.
+
 These decisions are durable resume context. Do not reopen or hedge the title
 choice unless Mike explicitly asks to reconsider it.
 

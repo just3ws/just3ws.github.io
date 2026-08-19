@@ -58,4 +58,24 @@ Use these non-risky assessment questions during technical leadership interviews:
 
 ---
 
-*Captured on 2026-08-16 for personal reference and ongoing career alignment.*
+## 5. Title-to-Scale Spectrum & Role Calibration Strategy
+
+### 5.1 Navigating Title Scope Across Organizational Scale
+Senior technical leaders face friction mapping experience across titles ranging from hands-on Team Lead to CTO:
+
+| Organization Scale | Equivalent Title Scope | Day-to-Day Focus |
+| :--- | :--- | :--- |
+| **15–50 people** | **CTO / VP Engineering** | Hands-on architecture, Rails/Elixir foundations, CI/CD, pair-programming, hiring, team enablement. |
+| **100–300 people** | **Director / Staff / Team Lead** | Domain ownership, team velocity, pairing, code review standards, cross-team unblocking. |
+| **500–2,000+ people** | **Principal Software Engineer** | Multi-team architecture, OpenTelemetry adoption, zero-downtime database migrations, executive stakeholder alignment. |
+
+### 5.2 Eliminating Hiring Manager Friction
+* **The Overqualification Concern (CTO → Team Lead)**: Solved by anchoring publicly as **"Principal Software Engineer"**, proving hands-on technical passion and team enablement without management bloat.
+* **The Scope Concern (Senior Dev → CTO)**: Solved by using tailored **Executive Pitch Briefs** (`exports/briefs/`) to highlight past CTO experience (KloboMedia), Engineering L&D Partner leadership (Groupon), and architecture governance.
+
+### 5.3 30-Second Interview Framing (No Ego, High Signal)
+> *"Scope depends on the company. At a 30-person startup, title inflates to CTO even though the day-to-day work is architecture and code leadership. At a growing org, Team Lead or Staff Engineer is where the highest technical leverage happens—where the hardest engineering decisions get made and where team velocity is built. I care about the mission, the team, and the technical challenge, not defending a title badge."*
+
+---
+
+*Captured on 2026-08-19 for personal reference and ongoing career alignment.*
