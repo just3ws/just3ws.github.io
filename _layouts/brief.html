@@ -16,7 +16,11 @@ layout: base
   <div class="brief-header" style="margin-bottom: 2rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1.5rem;">
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
       <span class="status-badge" style="display: inline-block; background-color: #0f766e; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">Executive Pitch Brief</span>
-      <div class="brief-action-buttons no-print" style="display: flex; gap: 0.5rem;">
+      <div class="brief-action-buttons no-print" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        {% assign pdf_slug = page.url | split: '/' | last %}
+        <a href="/exports/briefs/pdfs/{{ pdf_slug }}-executive-brief-mike-hall.pdf" download style="padding: 0.35rem 0.75rem; font-size: 0.8125rem; font-weight: 600; background: #0f766e; color: #ffffff; border-radius: 0.375rem; text-decoration: none;">
+          Download PDF 📄
+        </a>
         <button id="copy-brief-btn" onclick="navigator.clipboard.writeText(window.location.href); this.innerText='Link Copied! ✓'; setTimeout(() => this.innerText='Share Brief Link 🔗', 2000);" style="cursor: pointer; padding: 0.35rem 0.75rem; font-size: 0.8125rem; font-weight: 600; background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; border-radius: 0.375rem;">
           Share Brief Link 🔗
         </button>
