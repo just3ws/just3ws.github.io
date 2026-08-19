@@ -43,6 +43,8 @@ Use these skills by default for this repository:
 14. `system-cartographer` - Audit, structure, and generate 4-dimensional System Cartography case studies.
 15. `executive-brief-generator` - Generate tailored 1-page executive pitch briefs for target Principal Engineer roles.
 16. `job-lead-evaluator` - Evaluate job leads from wwworkremote against personal OS context and canonical resume data.
+17. `prose-humanity-auditor` - Audit technical prose across site Markdown, YAML data, and resume surfaces for plain language, neuroinclusive readability, cognitive load, and zero AI jargon.
+
 
 ## Site Refresh Agent Workflow
 
