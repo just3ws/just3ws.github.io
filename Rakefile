@@ -37,8 +37,13 @@ namespace :generate do
     :topics,
     :interviewees,
     :community_stories,
-    :resume_positions
+    :resume_positions,
+    :executive_briefs
   ]
+
+  task :executive_briefs do
+    sh 'ruby ./bin/generate_executive_brief_pages.rb'
+  end
 
   task :sync_links do
     sh './bin/sync_interview_asset_links.rb'

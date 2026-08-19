@@ -1,0 +1,25 @@
+---
+layout: base
+---
+
+<nav class="resume-actions no-print" aria-label="Brief actions" style="margin-bottom: 2rem;">
+  <span class="resume-actions-label">Executive Brief</span>
+  <a href="/exports/">All Exports</a>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/engagements/">Advisory Engagements</a>
+  <a href="/contact/">Contact Mike</a>
+</nav>
+
+<article class="page brief-page" style="max-width: 54rem; margin: 0 auto; padding: 1rem 0;">
+  {% include breadcrumbs.html %}
+  
+  <div class="brief-header" style="margin-bottom: 2rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1.5rem;">
+    <span class="status-badge" style="display: inline-block; background-color: #0f766e; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">Executive Pitch Brief</span>
+    <h1 style="margin: 0.25rem 0 0.5rem 0; font-size: 2rem; font-weight: 800; color: #0f172a;">{{ page.brief_company | default: page.title }}</h1>
+    <p class="subtitle" style="color: #475569; font-size: 1.1rem; margin: 0; font-weight: 500;">{{ page.brief_role | default: page.description }}</p>
+  </div>
+
+  <div class="brief-body markdown-body" style="font-size: 1.05rem; line-height: 1.7; color: #1e293b;">
+    {{ content }}
+  </div>
+</article>
