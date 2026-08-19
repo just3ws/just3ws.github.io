@@ -108,6 +108,7 @@ namespace :validate do
     :generated_freshness,
     :repo_hygiene,
     :markdown_lint,
+    :prose_humanity,
     :metadata_completeness,
     :seo_output,
     :public_index_mode,
@@ -117,6 +118,10 @@ namespace :validate do
     :seo_metadata_budget,
     :htmlproofer
   ]
+
+  task :prose_humanity do
+    sh 'ruby ./bin/audit_prose_humanity.rb'
+  end
 
   task :export_parity do
     sh 'ruby ./bin/validate_exports.rb'

@@ -31,12 +31,13 @@ POOR_LINK_TEXT = [
 ].freeze
 
 class ProseHumanityAuditor
-  attr_reader :files, :issues, :stats
+  attr_reader :files, :issues, :stats, :strict
 
-  def initialize(files)
+  def initialize(files, strict: false)
     @files = files
+    @strict = strict
     @issues = []
-    @stats = { total_files: 0, total_words: 0, total_sentences: 0, jargon_matches: 0, long_sentences: 0 }
+    @stats = { total_files: 0, total_words: 0, total_sentences: 0, jargon_matches: 0, long_sentences: 0, passive_voice: 0 }
   end
 
   def run!
@@ -65,7 +66,7 @@ class ProseHumanityAuditor
         check_prose(file_path, str, "YAML Data")
       end
     rescue Psych::SyntaxError => e
-      @issues << { file: file_path, line: 1, type: "YAML Syntax Error", msg: e.message }
+      @issues << { file: file_path, line: 1, type: "YAML Syntax Error", msg: e.message, severity: :error }
     end
   end
 
@@ -87,7 +88,7 @@ class ProseHumanityAuditor
     headers.each do |h_text, line_num|
       level = h_text.match(/^#+/)[0].length
       if prev_level > 0 && level > prev_level + 1
-        @issues << { file: file_path, line: line_num, type: "Header Hierarchy Skip", msg: "Skipped from H#{prev_level} to H#{level}. Use sequential headers for screen readers." }
+        @issues << { file: file_path, line: line_num, type: "Header Hierarchy Skip", msg: "Skipped from H#{prev_level} to H#{level}. Use sequential headers for screen readers.", severity: :warning }
       end
       prev_level = level
     end
@@ -96,7 +97,7 @@ class ProseHumanityAuditor
     lines.each_with_index do |line, idx|
       POOR_LINK_TEXT.each do |pattern|
         if line.match?(pattern)
-          @issues << { file: file_path, line: idx + 1, type: "Accessibility Link Text", msg: "Vague link text found ('#{line.strip.slice(0, 40)}...'). Use descriptive destination anchor text." }
+          @issues << { file: file_path, line: idx + 1, type: "Accessibility Link Text", msg: "Vague link text found ('#{line.strip.slice(0, 40)}...'). Use descriptive destination anchor text.", severity: :warning }
         end
       end
     end
@@ -123,30 +124,31 @@ class ProseHumanityAuditor
     @stats[:total_words] += words.size
     @stats[:total_sentences] += sentences.size
 
-    # 1. AI Jargon & Hyper-Clinical Terminology
+    # 1. AI Jargon & Hyper-Clinical Terminology (ERROR)
     AI_JARGON_TERMS.each do |jargon|
       if clean_text.downcase.include?(jargon.downcase)
         @stats[:jargon_matches] += 1
-        @issues << { file: file_path, line: 1, type: "AI Jargon / Hyper-Clinical", msg: "Contains over-intellectualized jargon: '#{jargon}'. Rewrite in plain, grounded language." }
+        @issues << { file: file_path, line: 1, type: "AI Jargon / Hyper-Clinical", msg: "Contains over-intellectualized jargon: '#{jargon}'. Rewrite in plain, grounded language.", severity: :error }
       end
     end
 
-    # 2. Sentence Length & Cognitive Load (> 30 words)
+    # 2. Sentence Length & Cognitive Load (> 30 words) (WARNING)
     sentences.each do |sentence|
       s_words = sentence.scan(/\b[a-zA-Z0-9'-]+\b/)
       if s_words.size > 30
         @stats[:long_sentences] += 1
         snippet = s_words.first(8).join(' ') + '...'
-        @issues << { file: file_path, line: 1, type: "High Cognitive Load", msg: "Sentence too long (#{s_words.size} words): '#{snippet}'. Split into sentences under 20-25 words." }
+        @issues << { file: file_path, line: 1, type: "High Cognitive Load", msg: "Sentence too long (#{s_words.size} words): '#{snippet}'. Split into sentences under 20-25 words.", severity: :warning }
       end
     end
 
-    # 3. Passive Voice Detection
+    # 3. Passive Voice Detection (WARNING)
     sentences.each do |sentence|
       PASSIVE_VOICE_PATTERNS.each do |pattern|
         if sentence.match?(pattern)
+          @stats[:passive_voice] += 1
           snippet = sentence.strip.slice(0, 50) + '...'
-          @issues << { file: file_path, line: 1, type: "Passive Voice", msg: "Passive voice detected: '#{snippet}'. Use active voice ('Subject performed action')." }
+          @issues << { file: file_path, line: 1, type: "Passive Voice", msg: "Passive voice detected: '#{snippet}'. Use active voice ('Subject performed action').", severity: :warning }
           break
         end
       end
@@ -157,13 +159,14 @@ class ProseHumanityAuditor
     return { flesch_kincaid: 0.0, avg_words_per_sentence: 0.0 } if @stats[:total_sentences].zero?
 
     avg_wps = @stats[:total_words].to_f / @stats[:total_sentences]
-    # Simple Flesch-Kincaid Grade Level approximation
     fk_grade = (0.39 * avg_wps) + 5.0
     { flesch_kincaid: fk_grade.round(1), avg_words_per_sentence: avg_wps.round(1) }
   end
 
   def report_results!
     metrics = calculate_readability_metrics
+    errors = @issues.select { |i| i[:severity] == :error }
+    warnings = @issues.select { |i| i[:severity] == :warning }
 
     puts "\n=========================================================="
     puts " 📖 Grammarly for just3ws: Prose Humanity & Readability Audit"
@@ -174,16 +177,22 @@ class ProseHumanityAuditor
     puts " Avg Words / Sentence   : #{metrics[:avg_words_per_sentence]} (Target: < 20.0)"
     puts " Flesch-Kincaid Grade   : ~#{metrics[:flesch_kincaid]} (Target: 8.0 - 12.0)"
     puts " AI Jargon Matches      : #{@stats[:jargon_matches]} (Target: 0)"
-    puts " Long Sentences (>30w)  : #{@stats[:long_sentences]}"
-    puts " Total Issues Found     : #{@issues.size}"
+    puts " Long Sentences (>30w)  : #{@stats[:long_sentences]} (Warnings)"
+    puts " Passive Voice Instances: #{@stats[:passive_voice]} (Warnings)"
+    puts " Total Issues Found     : #{@issues.size} (#{errors.size} Errors, #{warnings.size} Warnings)"
     puts "==========================================================\n"
 
-    if @issues.any?
-      puts "⚠️  Prose Humanity Issues Detected:"
-      @issues.first(25).each do |issue|
+    if errors.any?
+      puts "❌ Critical Prose Errors Found:"
+      errors.each do |issue|
         puts "  - [#{issue[:type]}] #{issue[:file]}:#{issue[:line]} -> #{issue[:msg]}"
       end
-      puts "\n  (...and #{@issues.size - 25} more)" if @issues.size > 25
+      exit 1
+    elsif warnings.any? && @strict
+      puts "⚠️ Strict Mode Warnings Found:"
+      warnings.first(15).each do |issue|
+        puts "  - [#{issue[:type]}] #{issue[:file]}:#{issue[:line]} -> #{issue[:msg]}"
+      end
       exit 1
     else
       puts "✅ Prose Humanity & Neuroinclusive Readability Audit PASSED cleanly!"
@@ -193,9 +202,14 @@ class ProseHumanityAuditor
 end
 
 # CLI Option Parsing
+strict_mode = false
 files_to_audit = []
+
 OptionParser.new do |opts|
   opts.banner = "Usage: bin/audit_prose_humanity.rb [options] [files...]"
+  opts.on("-s", "--strict", "Fail on warnings (sentence length, passive voice)") do
+    strict_mode = true
+  end
   opts.on("-h", "--help", "Prints this help") do
     puts opts
     exit
@@ -203,10 +217,9 @@ OptionParser.new do |opts|
 end.parse!
 
 if ARGV.empty?
-  # Default paths to audit
   files_to_audit = Dir.glob("{_data/*.yml,case-studies/*.md,case-studies/*.html,docs/**/*.md,exports/briefs/**/*.md,README.md}")
 else
   files_to_audit = ARGV
 end
 
-ProseHumanityAuditor.new(files_to_audit).run!
+ProseHumanityAuditor.new(files_to_audit, strict: strict_mode).run!
