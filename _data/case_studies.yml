@@ -1,56 +1,55 @@
 ---
 case_studies:
   - id: onemain-acquisition
-    title: "OneMain Financial: Acquisition Lane Realignment & OpenTelemetry Tracing"
+    title: "OneMain Financial: Loan Origination Realignment & OpenTelemetry Tracing"
     role: "Associate Director, Staff Engineer"
     period: "2021 — 2026"
     company: "OneMain Financial"
     domain: "High-Volume Personal Financial Services"
     summary: >-
-      Led architectural discovery, boundary realignment, and OpenTelemetry distributed tracing implementation for the high-velocity Acquisition loan origination lane.
+      Led team boundaries realignment and implemented OpenTelemetry distributed tracing across high-volume loan application services.
     dimensions:
-      interaction_surface: "Standardized REST API contracts, client payload isolation, and secure request boundary validation."
-      lateral_state_dependencies: "Mapped cross-domain asynchronous state mutations across Sidekiq/Kafka event pipelines and transactional boundaries."
-      full_stack_topology: "Mapped Kubernetes microservice topologies and established standardized OpenTelemetry tracing headers across all services."
-      supply_chain_exposure: "Audited third-party credit bureau APIs, financial vendor webhooks, and regulatory data isolation."
+      interaction_surface: "REST API contracts, clean payload isolation, and request validation boundaries."
+      lateral_state_dependencies: "Mapped asynchronous background jobs across Sidekiq/Kafka event pipelines and database transactions."
+      full_stack_topology: "Mapped Kubernetes microservices and standardized OpenTelemetry tracing headers across all services."
+      supply_chain_exposure: "Audited third-party credit bureau APIs, vendor webhooks, and regulatory compliance data boundaries."
     outcomes:
-      - "Unblocked 4 parallel engineering streams by establishing explicit domain ownership boundaries."
-      - "Reduced Mean Time to Resolution (MTTR) by 60% with end-to-end distributed observability."
-      - "Eliminated cross-domain outage cascades during peak acquisition campaigns."
+      - "Unblocked 4 parallel engineering teams by establishing clear service ownership boundaries."
+      - "Cut Mean Time to Resolution (MTTR) by 60% with end-to-end distributed tracing."
+      - "Prevented cross-service outage cascades during high-traffic loan campaigns."
 
   - id: emr-bear-stabilization
-    title: "EMR-Bear: 90-Day Platform Stabilization & Risk Cartography"
+    title: "EMR-Bear: 90-Day Platform Stabilization & Risk Assessment"
     role: "Development Manager"
     period: "May 2026 — August 2026"
     company: "EMR-Bear, a MedSuite company"
     domain: "Multi-Tenant Healthcare SaaS (130+ Clinics)"
     summary: >-
-      Executed rapid 90-day architectural inventory and operational risk assessment for a multi-tenant behavioral health EHR platform during a founder transition.
+      Executed a 90-day engineering inventory and risk assessment for a multi-tenant behavioral health EHR platform during a founder transition.
     dimensions:
-      interaction_surface: "Cataloged all application endpoints, API integrations, and public-facing clinical access interfaces."
-      lateral_state_dependencies: "Mapped multi-tenant database partitioning, shared state locks, and decoupled feature flags from production deploys."
-      full_stack_topology: "Audited Ruby on Rails / Kubernetes infrastructure, network isolation ports, and database failover topographies."
-      supply_chain_exposure: "Enforced strict regulatory compliance boundaries, third-party vendor isolation, and release safety verification gates."
+      interaction_surface: "Cataloged all API endpoints, background jobs, and public clinical access interfaces."
+      lateral_state_dependencies: "Mapped multi-tenant database partitioning, shared locks, and separated feature flags from deploys."
+      full_stack_topology: "Audited Ruby on Rails and Kubernetes infrastructure, network security, and database failover setups."
+      supply_chain_exposure: "Enforced HIPAA regulatory boundaries, third-party vendor isolation, and safe release verification steps."
     outcomes:
-      - "Converted an unmanaged founder exit into structured engineering continuity with clear component ownership."
-      - "Established release verification gates that protected multi-tenant clinical operations from unvalidated platform updates."
-      - "Delivered an empirical risk cartography roadmap guiding post-transition infrastructure decisions."
+      - "Turned an unmanaged founder exit into structured engineering continuity with clear component ownership."
+      - "Created release safety gates that protected 130+ medical clinics from unvalidated platform updates."
+      - "Delivered a clear risk assessment roadmap guiding post-transition infrastructure decisions."
 
   - id: phalanx-duel-engine
-    title: "Phalanx: Duel — Server-Authoritative Combat Engine & Explainable State Architecture"
+    title: "Phalanx: Duel — Tabletop Rules to Multiplayer Engine"
     role: "Creator, Principal Architect"
     period: "2022 — 2026"
     company: "Phalanx: Duel"
-    domain: "Server-Authoritative Tactical Multiplayer Engine (phalanxduel.com)"
+    domain: "Multiplayer Tactical Game & Engine (phalanxduel.com)"
     summary: >-
-      Designed and shipped a server-authoritative multiplayer combat platform evolving from a 2022 Camp Tesomas notebook prototype into a production TypeScript monorepo with Go/Swift SDKs and OpenTelemetry distributed tracing.
+      Designed a tactical card game at Boy Scout Camp Tesomas in 2022, prototyped the rules in Ruby, and built it into a live multiplayer WebSockets engine with Go CLI and SwiftUI mobile clients.
     dimensions:
-      interaction_surface: "WebSocket protocol specifications, TypeScript SDK, Go CLI client (duel-cli), and native SwiftUI game client."
-      lateral_state_dependencies: "8-stage turn state machine, engine-authored arithmetic witnesses, and zero-side-effect combat resolution formulas."
-      full_stack_topology: "Docker containerization, Node.js WebSockets server engine, PostgreSQL persistence, and Glicko-2 competitive matchmaking."
-      supply_chain_exposure: "Open-source AGPLv3 legal/technical licensing, OpenTelemetry distributed tracing headers, and independent replay verification."
+      interaction_surface: "WebSockets server API, TypeScript SDK, Go CLI client (duel-cli), and native SwiftUI iOS app."
+      lateral_state_dependencies: "Strict 8-stage turn state machine with step-by-step combat calculations for live previews and game replays."
+      full_stack_topology: "Node.js WebSockets server, PostgreSQL database, Docker containers, and Glicko-2 competitive matchmaking."
+      supply_chain_exposure: "AGPLv3 open-source codebase, OpenTelemetry tracing across server/CLI, and 40+ operational documentation guides."
     outcomes:
-      - "Engineered engine-authored arithmetic witnesses driving live previews, combat narration, observer replay streams, and post-match audit proofs."
-      - "Achieved 100% deterministic state machine execution and formal combat assurance across TypeScript, Go, and Ruby implementations."
-      - "Shipped live production platform (phalanxduel.com) with automated CI/CD container promotion and 40+ architectural wiki runbooks."
-
+      - "Built an explainable battle engine that outputs exact combat math for live damage previews and spectator replays."
+      - "Kept game state 100% synchronized across WebSockets with zero client desync across TypeScript, Go, and Ruby."
+      - "Shipped live production platform (phalanxduel.com) with automated container deploys."
