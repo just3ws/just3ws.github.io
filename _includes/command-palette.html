@@ -1,0 +1,237 @@
+<div id="cmdPaletteBackdrop" class="cmd-palette-backdrop no-print" role="dialog" aria-modal="true" aria-label="Command Palette">
+  <div class="cmd-palette-card">
+    <div class="cmd-palette-header">
+      <span class="cmd-icon">⚡</span>
+      <input type="text" id="cmdPaletteInput" placeholder="Type a surface or command (e.g., advisory, resume, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces">
+      <button type="button" id="cmdPaletteClose" class="cmd-close-btn" aria-label="Close command palette">&times;</button>
+    </div>
+
+    <ul id="cmdPaletteResults" class="cmd-palette-results">
+      <li>
+        <a href="/engagements/" class="cmd-item is-selected" data-search="advisory engagements fractional consulting availability services">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🟢</span>
+            <span class="cmd-item-title">Fractional & Advisory Engagements</span>
+          </div>
+          <span class="cmd-item-badge">/engagements</span>
+        </a>
+      </li>
+      <li>
+        <a href="/resume.html" class="cmd-item" data-search="resume executive cv positions history experience ats print">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">📄</span>
+            <span class="cmd-item-title">Executive Resume (ATS & Vector Print)</span>
+          </div>
+          <span class="cmd-item-badge">/resume</span>
+        </a>
+      </li>
+      <li>
+        <a href="/exports/briefs/nextpatient-staff-software-engineer/" class="cmd-item" data-search="nextpatient pitch brief staff software engineer pitch legacy ruby rails">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🚀</span>
+            <span class="cmd-item-title">NextPatient Staff Software Engineer Brief</span>
+          </div>
+          <span class="cmd-item-badge">/briefs</span>
+        </a>
+      </li>
+      <li>
+        <a href="/exports/briefs/financial-crm-staff-engineer-ai-agents/" class="cmd-item" data-search="financial crm pitch brief staff software engineer ai agents rails platform">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">📈</span>
+            <span class="cmd-item-title">Financial CRM Staff Engineer Pitch Brief</span>
+          </div>
+          <span class="cmd-item-badge">/briefs</span>
+        </a>
+      </li>
+      <li>
+        <a href="/panoramic-view/" class="cmd-item" data-search="system cartography panoramic view 4d architecture topology failure modes stabilization">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🧭</span>
+            <span class="cmd-item-title">4D System Cartography Framework</span>
+          </div>
+          <span class="cmd-item-badge">/cartography</span>
+        </a>
+      </li>
+      <li>
+        <a href="/timeline/" class="cmd-item" data-search="timeline career history eras milestones software craftsmanship groupon benchprep">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">📜</span>
+            <span class="cmd-item-title">10-Year Career Timeline</span>
+          </div>
+          <span class="cmd-item-badge">/timeline</span>
+        </a>
+      </li>
+      <li>
+        <a href="/taxonomy/" class="cmd-item" data-search="taxonomy technical skills categories domains systems infrastructure ruby postgres">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🏷️</span>
+            <span class="cmd-item-title">System Engineering Taxonomy</span>
+          </div>
+          <span class="cmd-item-badge">/taxonomy</span>
+        </a>
+      </li>
+      <li>
+        <a href="/interviews/" class="cmd-item" data-search="interviews ugtastic oral history archive podcast developer community chicago">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🎙️</span>
+            <span class="cmd-item-title">UGtastic Oral History Archive</span>
+          </div>
+          <span class="cmd-item-badge">/interviews</span>
+        </a>
+      </li>
+      <li>
+        <div class="cmd-item" data-cmd="toggle-theme" data-search="theme toggle kanagawa dark light mode wave appearance switch">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🌊</span>
+            <span class="cmd-item-title">Toggle Theme (Kanagawa Wave / Minimal)</span>
+          </div>
+          <span class="cmd-item-badge">/theme</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="cmd-palette-footer">
+      <div class="cmd-shortcuts">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+        <span><kbd>↵</kbd> Select</span>
+        <span><kbd>ESC</kbd> Close</span>
+      </div>
+      <div>just3ws-cli v2.0</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const backdrop = document.getElementById('cmdPaletteBackdrop');
+    const input = document.getElementById('cmdPaletteInput');
+    const closeBtn = document.getElementById('cmdPaletteClose');
+    const triggerBtn = document.getElementById('cmdPaletteTrigger');
+    const items = Array.from(document.querySelectorAll('#cmdPaletteResults .cmd-item'));
+
+    if (!backdrop || !input) return;
+
+    function openPalette() {
+      backdrop.classList.add('is-open');
+      input.value = '';
+      filterResults('');
+      setTimeout(() => input.focus(), 50);
+    }
+
+    function closePalette() {
+      backdrop.classList.remove('is-open');
+    }
+
+    function toggleTheme() {
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) btn.click();
+    }
+
+    function filterResults(query) {
+      const q = query.toLowerCase().trim();
+      let firstVisible = null;
+
+      items.forEach(item => {
+        const text = (item.getAttribute('data-search') || '') + ' ' + item.textContent;
+        const matches = !q || text.toLowerCase().includes(q);
+        item.style.display = matches ? 'flex' : 'none';
+        item.classList.remove('is-selected');
+
+        if (matches && !firstVisible) {
+          firstVisible = item;
+        }
+      });
+
+      if (firstVisible) {
+        firstVisible.classList.add('is-selected');
+      }
+    }
+
+    function getVisibleItems() {
+      return items.filter(item => item.style.display !== 'none');
+    }
+
+    function getSelectedIndex() {
+      const visible = getVisibleItems();
+      return visible.findIndex(item => item.classList.contains('is-selected'));
+    }
+
+    function setSelected(index) {
+      const visible = getVisibleItems();
+      if (!visible.length) return;
+      let newIdx = index;
+      if (newIdx < 0) newIdx = visible.length - 1;
+      if (newIdx >= visible.length) newIdx = 0;
+
+      visible.forEach(item => item.classList.remove('is-selected'));
+      visible[newIdx].classList.add('is-selected');
+      visible[newIdx].scrollIntoView({ block: 'nearest' });
+    }
+
+    // Keyboard trigger (⌘K or Ctrl+K)
+    document.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (backdrop.classList.contains('is-open')) {
+          closePalette();
+        } else {
+          openPalette();
+        }
+      } else if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
+        closePalette();
+      }
+    });
+
+    if (triggerBtn) {
+      triggerBtn.addEventListener('click', openPalette);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closePalette);
+    }
+
+    backdrop.addEventListener('click', function(e) {
+      if (e.target === backdrop) closePalette();
+    });
+
+    input.addEventListener('input', function() {
+      filterResults(this.value);
+    });
+
+    input.addEventListener('keydown', function(e) {
+      const visible = getVisibleItems();
+      const currentIdx = getSelectedIndex();
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setSelected(currentIdx + 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setSelected(currentIdx - 1);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const selected = visible[currentIdx] || visible[0];
+        if (selected) {
+          if (selected.getAttribute('data-cmd') === 'toggle-theme') {
+            toggleTheme();
+            closePalette();
+          } else if (selected.href) {
+            window.location.href = selected.href;
+          }
+        }
+      }
+    });
+
+    items.forEach(item => {
+      item.addEventListener('click', function(e) {
+        if (this.getAttribute('data-cmd') === 'toggle-theme') {
+          e.preventDefault();
+          toggleTheme();
+          closePalette();
+        }
+      });
+    });
+  });
+})();
+</script>
