@@ -2,7 +2,7 @@
 Principal Software Engineer
 
 ## Summary
-Principal Systems Cartographer & Platform Architect who discovers, maps, and modernizes critical software assets. Helps leadership make confident decisions about aging, undocumented architectures by constructing end-to-end dependency models—from browser and AI-agent interaction surfaces down through lateral state couplings, backend microservices, network access boundaries, and supply-chain risks. Works across Ruby on Rails, PostgreSQL, distributed services, and cloud infrastructure, combining technical cartography with OpenTelemetry observability, zero-downtime safety boundaries, and privacy-conscious AI-augmented investigation.
+Principal Software Engineer who modernizes high-consequence production systems. Helps engineering leaders make confident decisions about aging architectures by establishing clear domain ownership, OpenTelemetry distributed tracing, zero-downtime safety, and practical AI engineering across Ruby on Rails, PostgreSQL, and cloud infrastructure.
 
 ## Skills
 - Cross-Team Technical Leadership
