@@ -2,13 +2,14 @@
   <div class="cmd-palette-card">
     <div class="cmd-palette-header">
       <span class="cmd-icon">⚡</span>
-      <input type="text" id="cmdPaletteInput" placeholder="Type a surface or command (e.g., advisory, resume, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces">
+      <input type="text" id="cmdPaletteInput" placeholder="Search surfaces, positions, articles, topics (e.g., rails, groupon, advisory, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces and content">
       <button type="button" id="cmdPaletteClose" class="cmd-close-btn" aria-label="Close command palette">&times;</button>
     </div>
 
     <ul id="cmdPaletteResults" class="cmd-palette-results">
+      <!-- 1. Primary Site Surfaces -->
       <li>
-        <a href="/engagements/" class="cmd-item is-selected" data-search="advisory engagements fractional consulting availability services">
+        <a href="/engagements/" class="cmd-item is-selected" data-search="advisory engagements fractional consulting availability services staff principal leadership architect">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">🟢</span>
             <span class="cmd-item-title">Fractional & Advisory Engagements</span>
@@ -17,7 +18,7 @@
         </a>
       </li>
       <li>
-        <a href="/resume.html" class="cmd-item" data-search="resume executive cv positions history experience ats print">
+        <a href="/resume.html" class="cmd-item" data-search="resume executive cv positions history experience ats print vector canonical profile">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">📄</span>
             <span class="cmd-item-title">Executive Resume (ATS & Vector Print)</span>
@@ -26,25 +27,7 @@
         </a>
       </li>
       <li>
-        <a href="/exports/briefs/nextpatient-staff-software-engineer/" class="cmd-item" data-search="nextpatient pitch brief staff software engineer pitch legacy ruby rails">
-          <div class="cmd-item-left">
-            <span class="cmd-item-icon">🚀</span>
-            <span class="cmd-item-title">NextPatient Staff Software Engineer Brief</span>
-          </div>
-          <span class="cmd-item-badge">/briefs</span>
-        </a>
-      </li>
-      <li>
-        <a href="/exports/briefs/financial-crm-staff-engineer-ai-agents/" class="cmd-item" data-search="financial crm pitch brief staff software engineer ai agents rails platform">
-          <div class="cmd-item-left">
-            <span class="cmd-item-icon">📈</span>
-            <span class="cmd-item-title">Financial CRM Staff Engineer Pitch Brief</span>
-          </div>
-          <span class="cmd-item-badge">/briefs</span>
-        </a>
-      </li>
-      <li>
-        <a href="/panoramic-view/" class="cmd-item" data-search="system cartography panoramic view 4d architecture topology failure modes stabilization">
+        <a href="/panoramic-view/" class="cmd-item" data-search="system cartography panoramic view 4d architecture topology failure modes stabilization modernization playbook">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">🧭</span>
             <span class="cmd-item-title">4D System Cartography Framework</span>
@@ -53,7 +36,7 @@
         </a>
       </li>
       <li>
-        <a href="/timeline/" class="cmd-item" data-search="timeline career history eras milestones software craftsmanship groupon benchprep">
+        <a href="/timeline/" class="cmd-item" data-search="timeline career history eras milestones software craftsmanship groupon benchprep Chicago">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">📜</span>
             <span class="cmd-item-title">10-Year Career Timeline</span>
@@ -62,7 +45,7 @@
         </a>
       </li>
       <li>
-        <a href="/taxonomy/" class="cmd-item" data-search="taxonomy technical skills categories domains systems infrastructure ruby postgres">
+        <a href="/taxonomy/" class="cmd-item" data-search="taxonomy technical skills categories domains systems infrastructure ruby postgres legacy observability architecture">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">🏷️</span>
             <span class="cmd-item-title">System Engineering Taxonomy</span>
@@ -71,7 +54,7 @@
         </a>
       </li>
       <li>
-        <a href="/interviews/" class="cmd-item" data-search="interviews ugtastic oral history archive podcast developer community chicago">
+        <a href="/interviews/" class="cmd-item" data-search="interviews ugtastic oral history archive podcast developer community chicago speakers transcripts">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">🎙️</span>
             <span class="cmd-item-title">UGtastic Oral History Archive</span>
@@ -79,8 +62,68 @@
           <span class="cmd-item-badge">/interviews</span>
         </a>
       </li>
+
+      <!-- 2. Target Executive Pitch Briefs -->
       <li>
-        <div class="cmd-item" data-cmd="toggle-theme" data-search="theme toggle kanagawa dark light mode wave appearance switch">
+        <a href="/exports/briefs/nextpatient-staff-software-engineer/" class="cmd-item" data-search="nextpatient pitch brief staff software engineer legacy integration ruby rails healthcare platform">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🚀</span>
+            <span class="cmd-item-title">NextPatient — Staff Software Engineer Brief</span>
+          </div>
+          <span class="cmd-item-badge">Brief</span>
+        </a>
+      </li>
+      <li>
+        <a href="/exports/briefs/financial-crm-staff-engineer-ai-agents/" class="cmd-item" data-search="financial crm pitch brief staff software engineer ai agents wealth management series b rails platform">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">📈</span>
+            <span class="cmd-item-title">Financial CRM — Staff Engineer Pitch Brief</span>
+          </div>
+          <span class="cmd-item-badge">Brief</span>
+        </a>
+      </li>
+      <li>
+        <a href="/exports/briefs/huntress-principal-software-engineer-soc-experience-ruby-rails/" class="cmd-item" data-search="huntress pitch brief principal software engineer soc experience ruby rails cybersecurity">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🛡️</span>
+            <span class="cmd-item-title">Huntress — Principal Software Engineer Brief</span>
+          </div>
+          <span class="cmd-item-badge">Brief</span>
+        </a>
+      </li>
+
+      <!-- 3. Dynamic Career Positions -->
+      {% for pos_entry in site.data.resume.positions %}
+        {% assign pos = pos_entry[1] %}
+        {% if pos.company and pos.title %}
+          <li>
+            <a href="/resume/positions/{{ pos_entry[0] }}/" class="cmd-item" data-search="position experience {{ pos.company }} {{ pos.title }} {{ pos.dates }} {{ pos.summary }}">
+              <div class="cmd-item-left">
+                <span class="cmd-item-icon">🏢</span>
+                <span class="cmd-item-title">{{ pos.company }} — {{ pos.title }}</span>
+              </div>
+              <span class="cmd-item-badge">{{ pos.dates | default: "Position" }}</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      <!-- 4. Dynamic Recent Posts -->
+      {% for post in site.posts limit:12 %}
+        <li>
+          <a href="{{ post.url }}" class="cmd-item" data-search="article post blog {{ post.title }} {{ post.categories | join: ' ' }} {{ post.tags | join: ' ' }}">
+            <div class="cmd-item-left">
+              <span class="cmd-item-icon">✍️</span>
+              <span class="cmd-item-title">{{ post.title }}</span>
+            </div>
+            <span class="cmd-item-badge">{{ post.date | date: "%Y" }}</span>
+          </a>
+        </li>
+      {% endfor %}
+
+      <!-- 5. Theme Command Action -->
+      <li>
+        <div class="cmd-item" data-cmd="toggle-theme" data-search="theme toggle kanagawa dark light mode wave appearance switch colorscheme">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">🌊</span>
             <span class="cmd-item-title">Toggle Theme (Kanagawa Wave / Minimal)</span>
@@ -96,7 +139,7 @@
         <span><kbd>↵</kbd> Select</span>
         <span><kbd>ESC</kbd> Close</span>
       </div>
-      <div>just3ws-cli v2.0</div>
+      <div id="cmdPaletteStatus">Search 50+ surfaces & positions</div>
     </div>
   </div>
 </div>
@@ -108,6 +151,7 @@
     const input = document.getElementById('cmdPaletteInput');
     const closeBtn = document.getElementById('cmdPaletteClose');
     const triggerBtn = document.getElementById('cmdPaletteTrigger');
+    const statusEl = document.getElementById('cmdPaletteStatus');
     const items = Array.from(document.querySelectorAll('#cmdPaletteResults .cmd-item'));
 
     if (!backdrop || !input) return;
@@ -130,26 +174,36 @@
 
     function filterResults(query) {
       const q = query.toLowerCase().trim();
+      let visibleCount = 0;
       let firstVisible = null;
 
       items.forEach(item => {
         const text = (item.getAttribute('data-search') || '') + ' ' + item.textContent;
         const matches = !q || text.toLowerCase().includes(q);
-        item.style.display = matches ? 'flex' : 'none';
+        item.parentElement.style.display = matches ? 'block' : 'none';
         item.classList.remove('is-selected');
 
-        if (matches && !firstVisible) {
-          firstVisible = item;
+        if (matches) {
+          visibleCount++;
+          if (!firstVisible) firstVisible = item;
         }
       });
 
       if (firstVisible) {
         firstVisible.classList.add('is-selected');
       }
+
+      if (statusEl) {
+        if (q) {
+          statusEl.textContent = visibleCount + ' matching result' + (visibleCount === 1 ? '' : 's');
+        } else {
+          statusEl.textContent = 'Search 50+ surfaces & positions';
+        }
+      }
     }
 
     function getVisibleItems() {
-      return items.filter(item => item.style.display !== 'none');
+      return items.filter(item => item.parentElement.style.display !== 'none');
     }
 
     function getSelectedIndex() {
