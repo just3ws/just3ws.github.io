@@ -56,6 +56,8 @@ brief_files.each do |file_path|
     f.puts "breadcrumb_parent_url: /exports/"
     f.puts "brief_company: #{Generators::Core::Text.yaml_quote(company)}"
     f.puts "brief_role: #{Generators::Core::Text.yaml_quote(role)}"
+    f.puts "sitemap: true"
+    f.puts "robots: index,follow"
     f.puts "body_class: ats-resume"
     f.puts "---"
     f.puts
