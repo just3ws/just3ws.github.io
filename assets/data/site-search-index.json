@@ -103,13 +103,16 @@ permalink: /assets/data/site-search-index.json
   },
   {% for pos_id in site.data.resume.timeline.history %}
     {% assign pos = site.data.resume.positions[pos_id] %}
-    {% if pos and pos.company and pos.title %}
+    {% if pos and pos.title %}
+      {% assign comp_name = pos.company.name | default: pos.company %}
+      {% assign title_str = comp_name | append: " — " | append: pos.title %}
+      {% assign kw_str = "position experience " | append: comp_name | append: " " | append: pos.title | append: " " | append: pos.dates | append: " " | append: pos.summary %}
       {
-        "title": {{ pos.company | append: " — " | append: pos.title | jsonify }},
+        "title": {{ title_str | jsonify }},
         "url": "/resume/positions/{{ pos_id }}/",
         "badge": {{ pos.dates | default: "Position" | jsonify }},
         "icon": "🏢",
-        "keywords": {{ "position experience " | append: pos.company | append: " " | append: pos.title | append: " " | append: pos.dates | append: " " | append: pos.summary | jsonify }}
+        "keywords": {{ kw_str | jsonify }}
       },
     {% endif %}
   {% endfor %}

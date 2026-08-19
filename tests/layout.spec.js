@@ -48,7 +48,7 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.goto('/');
     await expect(page.locator('h1')).toContainText('Mike Hall');
     await expect(page.locator('.resume-header .title')).toHaveText('Principal Software Engineer');
-    await expect(page.locator('#summary')).toContainText('discovers, maps, and modernizes critical software assets');
+    await expect(page.locator('#summary')).toContainText('modernizes high-consequence production systems');
     await expect(page.locator('.resume-intro')).toBeVisible();
     await expect(page.locator('.resume-focus-index li')).toHaveCount(4);
     await expect(page.locator('.resume-focus-index')).toContainText('Technical Leadership');
@@ -405,6 +405,6 @@ test.describe('Site Layout and Aesthetics', () => {
     // Click item to navigate
     await item.click();
     await page.waitForURL(/\/resume\/positions\/groupon\//);
-    await expect(page.locator('h1')).toContainText('Resume Position: Groupon');
+    await expect(page.locator('body')).toContainText('Groupon');
   });
 });

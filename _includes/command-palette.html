@@ -224,18 +224,20 @@
       }
 
       if (isCatalogLoaded && searchCatalog.length > 0) {
+        const terms = q.split(/\s+/).filter(Boolean);
         const matches = searchCatalog.filter(entry => {
-          if (!q) return true;
+          if (!terms.length) return true;
           const text = (entry.title + ' ' + (entry.keywords || '') + ' ' + (entry.badge || '')).toLowerCase();
-          return text.includes(q);
+          return terms.every(term => text.includes(term));
         });
         renderDynamicMatches(matches, q);
       } else {
+        const terms = q.split(/\s+/).filter(Boolean);
         let count = 0;
         let first = null;
         initialItems.forEach(item => {
-          const text = (item.getAttribute('data-search') || '') + ' ' + item.textContent;
-          const m = !q || text.toLowerCase().includes(q);
+          const text = ((item.getAttribute('data-search') || '') + ' ' + item.textContent).toLowerCase();
+          const m = !terms.length || terms.every(term => text.includes(term));
           item.parentElement.style.display = m ? 'block' : 'none';
           item.classList.remove('is-selected');
           if (m) {
