@@ -1,0 +1,115 @@
+---
+layout: null
+permalink: /assets/data/site-search-index.json
+---
+[
+  {
+    "title": "Fractional & Advisory Engagements",
+    "url": "/engagements/",
+    "badge": "Advisory",
+    "icon": "🟢",
+    "keywords": "advisory engagements fractional consulting availability services staff principal leadership architect"
+  },
+  {
+    "title": "Executive Resume (ATS & Vector Print)",
+    "url": "/resume.html",
+    "badge": "Resume",
+    "icon": "📄",
+    "keywords": "resume executive cv positions history experience ats print vector canonical profile"
+  },
+  {
+    "title": "4D System Cartography Framework",
+    "url": "/panoramic-view/",
+    "badge": "Cartography",
+    "icon": "🧭",
+    "keywords": "system cartography panoramic view 4d architecture topology failure modes stabilization modernization playbook"
+  },
+  {
+    "title": "10-Year Career Timeline",
+    "url": "/timeline/",
+    "badge": "Timeline",
+    "icon": "📜",
+    "keywords": "timeline career history eras milestones software craftsmanship groupon benchprep chicago"
+  },
+  {
+    "title": "System Engineering Taxonomy",
+    "url": "/taxonomy/",
+    "badge": "Taxonomy",
+    "icon": "🏷️",
+    "keywords": "taxonomy technical skills categories domains systems infrastructure ruby postgres legacy observability architecture"
+  },
+  {
+    "title": "UGtastic Oral History Archive",
+    "url": "/interviews/",
+    "badge": "Interviews",
+    "icon": "🎙️",
+    "keywords": "interviews ugtastic oral history archive podcast developer community chicago speakers transcripts"
+  },
+  {
+    "title": "NextPatient — Staff Software Engineer Pitch Brief",
+    "url": "/exports/briefs/nextpatient-staff-software-engineer/",
+    "badge": "Brief",
+    "icon": "🚀",
+    "keywords": "nextpatient pitch brief staff software engineer legacy integration ruby rails healthcare platform"
+  },
+  {
+    "title": "Financial CRM — Staff Engineer Pitch Brief",
+    "url": "/exports/briefs/financial-crm-staff-engineer-ai-agents/",
+    "badge": "Brief",
+    "icon": "📈",
+    "keywords": "financial crm pitch brief staff software engineer ai agents wealth management series b rails platform"
+  },
+  {
+    "title": "Huntress — Principal Software Engineer Pitch Brief",
+    "url": "/exports/briefs/huntress-principal-software-engineer-soc-experience-ruby-rails/",
+    "badge": "Brief",
+    "icon": "🛡️",
+    "keywords": "huntress pitch brief principal software engineer soc experience ruby rails cybersecurity"
+  },
+  {
+    "title": "Follett — Senior Director Software Development Brief",
+    "url": "/exports/briefs/follett-senior-director/",
+    "badge": "Brief",
+    "icon": "🏛️",
+    "keywords": "follett pitch brief senior director software development enterprise education platform"
+  },
+  {% for pos_id in site.data.resume.timeline.history %}
+    {% assign pos = site.data.resume.positions[pos_id] %}
+    {% if pos and pos.company and pos.title %}
+      {
+        "title": {{ pos.company | append: " — " | append: pos.title | jsonify }},
+        "url": "/resume/positions/{{ pos_id }}/",
+        "badge": {{ pos.dates | default: "Position" | jsonify }},
+        "icon": "🏢",
+        "keywords": {{ "position experience " | append: pos.company | append: " " | append: pos.title | append: " " | append: pos.dates | append: " " | append: pos.summary | jsonify }}
+      },
+    {% endif %}
+  {% endfor %}
+  {% for interviewee in site.data.interviewees_index.interviewees %}
+    {
+      "title": {{ "Interview: " | append: interviewee.name | jsonify }},
+      "url": {{ interviewee.url | jsonify }},
+      "badge": "Interview",
+      "icon": "🎙️",
+      "keywords": {{ "interview speaker oral history " | append: interviewee.name | append: " " | append: interviewee.title | append: " " | append: interviewee.company | jsonify }}
+    },
+  {% endfor %}
+  {% for topic in site.data.interview_topics.topics %}
+    {
+      "title": {{ "Topic: " | append: topic.title | jsonify }},
+      "url": "/interviews/topics/#{{ topic.slug }}",
+      "badge": "Topic",
+      "icon": "💡",
+      "keywords": {{ "interview topic theme " | append: topic.title | append: " " | append: topic.description | jsonify }}
+    },
+  {% endfor %}
+  {% for post in site.posts %}
+    {
+      "title": {{ post.title | jsonify }},
+      "url": {{ post.url | jsonify }},
+      "badge": {{ post.date | date: "%Y" | jsonify }},
+      "icon": "✍️",
+      "keywords": {{ "article post writing " | append: post.title | append: " " | append: post.categories | join: " " | append: " " | append: post.tags | join: " " | jsonify }}
+    }{% if forloop.last == false %},{% endif %}
+  {% endfor %}
+]

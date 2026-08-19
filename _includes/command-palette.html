@@ -2,12 +2,12 @@
   <div class="cmd-palette-card">
     <div class="cmd-palette-header">
       <span class="cmd-icon">⚡</span>
-      <input type="text" id="cmdPaletteInput" placeholder="Search surfaces, positions, articles, topics (e.g., rails, groupon, advisory, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces and content">
+      <input type="text" id="cmdPaletteInput" placeholder="Search 300+ surfaces, positions, articles, interviewees (e.g., rails, groupon, advisory, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces and content">
       <button type="button" id="cmdPaletteClose" class="cmd-close-btn" aria-label="Close command palette">&times;</button>
     </div>
 
     <ul id="cmdPaletteResults" class="cmd-palette-results">
-      <!-- 1. Primary Site Surfaces -->
+      <!-- Primary Default List (Fast Initial Render) -->
       <li>
         <a href="/engagements/" class="cmd-item is-selected" data-search="advisory engagements fractional consulting availability services staff principal leadership architect">
           <div class="cmd-item-left">
@@ -62,8 +62,6 @@
           <span class="cmd-item-badge">/interviews</span>
         </a>
       </li>
-
-      <!-- 2. Target Executive Pitch Briefs -->
       <li>
         <a href="/exports/briefs/nextpatient-staff-software-engineer/" class="cmd-item" data-search="nextpatient pitch brief staff software engineer legacy integration ruby rails healthcare platform">
           <div class="cmd-item-left">
@@ -83,46 +81,6 @@
         </a>
       </li>
       <li>
-        <a href="/exports/briefs/huntress-principal-software-engineer-soc-experience-ruby-rails/" class="cmd-item" data-search="huntress pitch brief principal software engineer soc experience ruby rails cybersecurity">
-          <div class="cmd-item-left">
-            <span class="cmd-item-icon">🛡️</span>
-            <span class="cmd-item-title">Huntress — Principal Software Engineer Brief</span>
-          </div>
-          <span class="cmd-item-badge">Brief</span>
-        </a>
-      </li>
-
-      <!-- 3. Dynamic Career Positions (Strictly Linked Position Pages) -->
-      {% for pos_id in site.data.resume.timeline.history %}
-        {% assign pos = site.data.resume.positions[pos_id] %}
-        {% if pos and pos.company and pos.title %}
-          <li>
-            <a href="/resume/positions/{{ pos_id }}/" class="cmd-item" data-search="position experience {{ pos.company }} {{ pos.title }} {{ pos.dates }} {{ pos.summary }}">
-              <div class="cmd-item-left">
-                <span class="cmd-item-icon">🏢</span>
-                <span class="cmd-item-title">{{ pos.company }} — {{ pos.title }}</span>
-              </div>
-              <span class="cmd-item-badge">{{ pos.dates | default: "Position" }}</span>
-            </a>
-          </li>
-        {% endif %}
-      {% endfor %}
-
-      <!-- 4. Dynamic Recent Posts -->
-      {% for post in site.posts limit:12 %}
-        <li>
-          <a href="{{ post.url }}" class="cmd-item" data-search="article post blog {{ post.title }} {{ post.categories | join: ' ' }} {{ post.tags | join: ' ' }}">
-            <div class="cmd-item-left">
-              <span class="cmd-item-icon">✍️</span>
-              <span class="cmd-item-title">{{ post.title }}</span>
-            </div>
-            <span class="cmd-item-badge">{{ post.date | date: "%Y" }}</span>
-          </a>
-        </li>
-      {% endfor %}
-
-      <!-- 5. Theme Command Action -->
-      <li>
         <div class="cmd-item" data-cmd="toggle-theme" data-search="theme toggle kanagawa dark light mode wave appearance switch colorscheme">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">🌊</span>
@@ -139,7 +97,7 @@
         <span><kbd>↵</kbd> Select</span>
         <span><kbd>ESC</kbd> Close</span>
       </div>
-      <div id="cmdPaletteStatus">Search 50+ surfaces & positions</div>
+      <div id="cmdPaletteStatus">Search 300+ sitemap index items</div>
     </div>
   </div>
 </div>
@@ -152,14 +110,36 @@
     const closeBtn = document.getElementById('cmdPaletteClose');
     const triggerBtn = document.getElementById('cmdPaletteTrigger');
     const statusEl = document.getElementById('cmdPaletteStatus');
-    const items = Array.from(document.querySelectorAll('#cmdPaletteResults .cmd-item'));
+    const resultsUl = document.getElementById('cmdPaletteResults');
+    const initialItems = Array.from(resultsUl.querySelectorAll('.cmd-item'));
+
+    let searchCatalog = [];
+    let isCatalogLoaded = false;
 
     if (!backdrop || !input) return;
+
+    // Asynchronously load the full 300+ item sitemap index
+    function loadSearchCatalog() {
+      if (isCatalogLoaded) return;
+      fetch('/assets/data/site-search-index.json')
+        .then(res => res.json())
+        .then(data => {
+          searchCatalog = data || [];
+          isCatalogLoaded = true;
+          if (input.value.trim()) {
+            filterResults(input.value);
+          }
+        })
+        .catch(err => {
+          console.warn('Full search catalog index load failed, falling back to static items', err);
+        });
+    }
 
     function openPalette() {
       backdrop.classList.add('is-open');
       input.value = '';
       filterResults('');
+      loadSearchCatalog();
       setTimeout(() => input.focus(), 50);
     }
 
@@ -172,38 +152,113 @@
       if (btn) btn.click();
     }
 
-    function filterResults(query) {
-      const q = query.toLowerCase().trim();
-      let visibleCount = 0;
-      let firstVisible = null;
+    function renderDynamicMatches(matches, q) {
+      resultsUl.innerHTML = '';
 
-      items.forEach(item => {
-        const text = (item.getAttribute('data-search') || '') + ' ' + item.textContent;
-        const matches = !q || text.toLowerCase().includes(q);
-        item.parentElement.style.display = matches ? 'block' : 'none';
-        item.classList.remove('is-selected');
+      // Always prepend Theme toggle if query matches "theme"
+      if (!q || 'toggle theme kanagawa dark light mode appearance colorscheme'.includes(q)) {
+        const themeLi = document.createElement('li');
+        themeLi.innerHTML = `
+          <div class="cmd-item" data-cmd="toggle-theme" data-search="theme toggle kanagawa dark light mode wave appearance switch colorscheme">
+            <div class="cmd-item-left">
+              <span class="cmd-item-icon">🌊</span>
+              <span class="cmd-item-title">Toggle Theme (Kanagawa Wave / Minimal)</span>
+            </div>
+            <span class="cmd-item-badge">/theme</span>
+          </div>
+        `;
+        resultsUl.appendChild(themeLi);
+      }
 
-        if (matches) {
-          visibleCount++;
-          if (!firstVisible) firstVisible = item;
-        }
+      matches.slice(0, 18).forEach(entry => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = entry.url;
+        a.className = 'cmd-item';
+        a.setAttribute('data-search', entry.keywords || '');
+        a.innerHTML = `
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">${entry.icon || '🔗'}</span>
+            <span class="cmd-item-title">${escapeHtml(entry.title)}</span>
+          </div>
+          <span class="cmd-item-badge">${escapeHtml(entry.badge || '')}</span>
+        `;
+        li.appendChild(a);
+        resultsUl.appendChild(li);
       });
 
-      if (firstVisible) {
-        firstVisible.classList.add('is-selected');
+      // Bind click handlers to theme commands
+      resultsUl.querySelectorAll('.cmd-item[data-cmd="toggle-theme"]').forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleTheme();
+          closePalette();
+        });
+      });
+
+      const visible = getVisibleItems();
+      if (visible.length > 0) {
+        visible[0].classList.add('is-selected');
       }
 
       if (statusEl) {
-        if (q) {
-          statusEl.textContent = visibleCount + ' matching result' + (visibleCount === 1 ? '' : 's');
-        } else {
-          statusEl.textContent = 'Search 50+ surfaces & positions';
-        }
+        statusEl.textContent = matches.length + ' matching sitemap result' + (matches.length === 1 ? '' : 's');
       }
     }
 
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function filterResults(query) {
+      const q = query.toLowerCase().trim();
+
+      if (!q && !isCatalogLoaded) {
+        // Render initial static HTML items
+        renderInitialStaticItems();
+        return;
+      }
+
+      if (isCatalogLoaded && searchCatalog.length > 0) {
+        const matches = searchCatalog.filter(entry => {
+          if (!q) return true;
+          const text = (entry.title + ' ' + (entry.keywords || '') + ' ' + (entry.badge || '')).toLowerCase();
+          return text.includes(q);
+        });
+        renderDynamicMatches(matches, q);
+      } else {
+        // Fallback filter over initial static items
+        let count = 0;
+        let first = null;
+        initialItems.forEach(item => {
+          const text = (item.getAttribute('data-search') || '') + ' ' + item.textContent;
+          const m = !q || text.toLowerCase().includes(q);
+          item.parentElement.style.display = m ? 'block' : 'none';
+          item.classList.remove('is-selected');
+          if (m) {
+            count++;
+            if (!first) first = item;
+          }
+        });
+        if (first) first.classList.add('is-selected');
+        if (statusEl) statusEl.textContent = count + ' matching result' + (count === 1 ? '' : 's');
+      }
+    }
+
+    function renderInitialStaticItems() {
+      resultsUl.innerHTML = '';
+      initialItems.forEach(item => {
+        item.classList.remove('is-selected');
+        item.parentElement.style.display = 'block';
+        resultsUl.appendChild(item.parentElement);
+      });
+      if (initialItems.length) initialItems[0].classList.add('is-selected');
+      if (statusEl) statusEl.textContent = 'Search 300+ sitemap index items';
+    }
+
     function getVisibleItems() {
-      return items.filter(item => item.parentElement.style.display !== 'none');
+      return Array.from(resultsUl.querySelectorAll('.cmd-item')).filter(item => item.parentElement.style.display !== 'none');
     }
 
     function getSelectedIndex() {
@@ -275,16 +330,6 @@
           }
         }
       }
-    });
-
-    items.forEach(item => {
-      item.addEventListener('click', function(e) {
-        if (this.getAttribute('data-cmd') === 'toggle-theme') {
-          e.preventDefault();
-          toggleTheme();
-          closePalette();
-        }
-      });
     });
   });
 })();
