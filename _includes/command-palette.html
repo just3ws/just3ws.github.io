@@ -92,12 +92,12 @@
         </a>
       </li>
 
-      <!-- 3. Dynamic Career Positions -->
-      {% for pos_entry in site.data.resume.positions %}
-        {% assign pos = pos_entry[1] %}
-        {% if pos.company and pos.title %}
+      <!-- 3. Dynamic Career Positions (Strictly Linked Position Pages) -->
+      {% for pos_id in site.data.resume.timeline.history %}
+        {% assign pos = site.data.resume.positions[pos_id] %}
+        {% if pos and pos.company and pos.title %}
           <li>
-            <a href="/resume/positions/{{ pos_entry[0] }}/" class="cmd-item" data-search="position experience {{ pos.company }} {{ pos.title }} {{ pos.dates }} {{ pos.summary }}">
+            <a href="/resume/positions/{{ pos_id }}/" class="cmd-item" data-search="position experience {{ pos.company }} {{ pos.title }} {{ pos.dates }} {{ pos.summary }}">
               <div class="cmd-item-left">
                 <span class="cmd-item-icon">🏢</span>
                 <span class="cmd-item-title">{{ pos.company }} — {{ pos.title }}</span>
