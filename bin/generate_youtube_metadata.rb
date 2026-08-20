@@ -2,16 +2,19 @@
 # frozen_string_literal: true
 
 # bin/generate_youtube_metadata.rb
-# Generates humane, high-signal YouTube video titles, descriptions, chapters,
-# and tags from canonical transcript YAML and research JSON data.
+# Generates 1:1 parity metadata for YouTube and local site video pages:
+# 1. Enriches _data/video_assets.yml with canonical titles, descriptions, chapters, and tags.
+# 2. Generates _data/youtube_metadata_staged.json for YouTube Data API v3 upload.
 
 require 'json'
 require 'yaml'
 require 'fileutils'
 require 'optparse'
+require_relative '../src/generators/core/yaml_io'
 
 class YouTubeMetadataGenerator
   MANIFEST_FILE = "_data/youtube_captions_manifest.json"
+  VIDEO_ASSETS_FILE = "_data/video_assets.yml"
   OUTPUT_STAGING_FILE = "_data/youtube_metadata_staged.json"
   TRANSCRIPTS_DIR = "_data/transcripts"
   RESEARCH_DIR = "_data/research"
@@ -21,78 +24,104 @@ class YouTubeMetadataGenerator
   end
 
   def run
-    puts "🎬 YouTube Metadata & Chapter Generator (Humane Voice)"
+    puts "🎬 [1:1 Parity] YouTube & Site Video Metadata Generator"
     puts "=========================================================="
 
-    unless File.exist?(MANIFEST_FILE)
-      puts "❌ Error: #{MANIFEST_FILE} not found."
+    unless File.exist?(MANIFEST_FILE) && File.exist?(VIDEO_ASSETS_FILE)
+      puts "❌ Error: Required data files missing."
       exit 1
     end
 
     manifest = JSON.parse(File.read(MANIFEST_FILE))
-    items = manifest["items"] || []
+    manifest_items = manifest["items"] || []
+    manifest_by_video_id = manifest_items.each_with_object({}) { |i, h| h[i["youtube_video_id"]] = i }
+    manifest_by_transcript_id = manifest_items.each_with_object({}) { |i, h| h[i["transcript_id"]] = i }
 
-    if @options[:video_id]
-      items = items.select { |i| i["youtube_video_id"] == @options[:video_id] }
-    end
+    video_assets_data = Generators::Core::YamlIo.load(VIDEO_ASSETS_FILE) || {}
+    assets = video_assets_data["items"] || []
 
-    if @options[:limit] && @options[:limit] > 0
-      items = items.first(@options[:limit])
-    end
-
-    puts "Total Candidates: #{items.size}"
     staged_records = []
+    updated_assets_count = 0
 
-    items.each_with_index do |item, idx|
-      t_id = item["transcript_id"]
-      v_id = item["youtube_video_id"]
+    assets.each do |asset|
+      t_id = asset["transcript_id"] || asset["interview_id"] || asset["id"]
+      yt_platform = (asset["platforms"] || []).find { |p| p["platform"] == "youtube" }
+      v_id = yt_platform ? yt_platform["asset_id"] : nil
+
+      # If video ID wasn't in platforms, check manifest
+      if v_id.nil? && manifest_by_transcript_id[t_id]
+        v_id = manifest_by_transcript_id[t_id]["youtube_video_id"]
+      end
+
+      next unless t_id
 
       t_file = File.join(TRANSCRIPTS_DIR, "#{t_id}.yml")
       r_file = File.join(RESEARCH_DIR, "#{t_id}.json")
 
-      next unless File.exist?(t_file)
-
-      t_data = YAML.safe_load(File.read(t_file)) || {}
+      t_data = File.exist?(t_file) ? (Generators::Core::YamlIo.load(t_file) || {}) : {}
       r_data = File.exist?(r_file) ? (JSON.parse(File.read(r_file)) || {}) : {}
 
-      record = generate_video_package(t_id, v_id, t_data, r_data)
-      staged_records << record
+      # Generate 1:1 standard metadata
+      package = generate_video_package(t_id, v_id, asset, t_data, r_data)
 
-      puts "[#{idx + 1}/#{items.size}] #{record[:title]} (#{record[:chapters].size} chapters)"
+      # 1. Update the canonical video_assets.yml object
+      asset["title"] = package[:title]
+      asset["description"] = package[:description]
+      asset["tags"] = package[:tags]
+      asset["chapters"] = package[:chapters] if package[:chapters].any?
+
+      if yt_platform
+        yt_platform["title_on_platform"] = package[:title]
+        yt_platform["description"] = package[:description]
+      end
+
+      updated_assets_count += 1
+
+      if v_id
+        staged_records << package
+      end
     end
 
+    # Write enriched video_assets.yml
+    Generators::Core::YamlIo.dump(VIDEO_ASSETS_FILE, video_assets_data)
+    puts "✅ Updated #{updated_assets_count} video asset records in #{VIDEO_ASSETS_FILE} (1:1 Parity)"
+
+    # Write staged YouTube payload
     File.write(OUTPUT_STAGING_FILE, JSON.pretty_generate(staged_records))
+    puts "✅ Staged #{staged_records.size} YouTube API upload packages in #{OUTPUT_STAGING_FILE}"
     puts "=========================================================="
-    puts "✅ Staged #{staged_records.size} video packages in #{OUTPUT_STAGING_FILE}"
-    puts "💡 Run with `--preview` or review #{OUTPUT_STAGING_FILE} directly."
+    puts "🎉 Video pages on just3ws.com and YouTube payloads are now in 100% metadata parity!"
   end
 
   private
 
-  def generate_video_package(transcript_id, video_id, transcript_data, research_data)
+  def generate_video_package(transcript_id, video_id, asset, transcript_data, research_data)
     speaker_map = transcript_data["speaker_map"] || {}
     primary_speaker = speaker_map.values.find { |s| s["role"] != "Interviewer, UGtastic" && s["name"] != "Mike Hall" }
-    guest_name = primary_speaker ? primary_speaker["name"] : "Technical Conversation"
+    guest_name = primary_speaker ? primary_speaker["name"] : extract_guest_from_title(asset["title"])
 
-    summary = transcript_data["summary"] || ""
+    raw_summary = transcript_data["summary"] || asset["description"] || ""
+    summary = clean_summary(raw_summary)
     turns = transcript_data["turns"] || []
 
     dimensions = research_data["dimensions"] || {}
     topics = dimensions["topics"] || []
     context = dimensions["historical_context_at_recording"] || ""
 
-    # 1. Humane Title Generation (Clean, zero clickbait)
-    main_topic = topics.first || "Software Architecture"
+    # Standardized Title (Under 100 chars)
+    main_topic = topics.first || asset["topic"] || "Software Craftsmanship"
+    main_topic = main_topic.to_s.split('-').map(&:capitalize).join(' ') if main_topic.include?('-')
+
     title = "#{guest_name} on #{main_topic} | Technical Conversation Archive"
     title = title[0...99] if title.length > 100
 
-    # 2. Chapters Generation from Timestamps
+    # Chapters from dialogue turns
     chapters = extract_chapters(turns)
 
-    # 3. Grounded Description
+    # 1:1 Canonical Description
     description = build_description(guest_name, summary, context, transcript_id, chapters, topics)
 
-    # 4. Tags
+    # Clean Tags
     tags = (["Software Craftsmanship", "Programming", "Architecture", guest_name] + topics).uniq.take(15)
 
     {
@@ -106,12 +135,27 @@ class YouTubeMetadataGenerator
     }
   end
 
+  def extract_guest_from_title(title)
+    return "Technical Conversation" if title.nil?
+    if title =~ /Interviews ([^|]+)/
+      $1.strip
+    elsif title =~ /w\/([^(]+)/
+      $1.strip
+    else
+      title.split(':').first.strip
+    end
+  end
+
+  def clean_summary(text)
+    return "" if text.nil?
+    text.to_s.gsub(/CRITICAL INSIGHTS:.*$/m, '').strip
+  end
+
   def extract_chapters(turns)
     chapters = []
-    # YouTube requires first chapter at 00:00
-    chapters << { time: "00:00", title: "Introduction & Context" }
+    chapters << { "time" => "00:00", "title" => "Introduction & Context" }
 
-    current_interval = 180 # Every 3 minutes or topic shift
+    current_interval = 180 # Every 3 minutes
     last_seconds = 0
 
     turns.each do |turn|
@@ -123,8 +167,8 @@ class YouTubeMetadataGenerator
         speaker_name = turn["speaker_name"] || "Discussion"
         preview_text = clean_chapter_text(turn["text"])
         chapters << {
-          time: format_seconds_to_timestamp(seconds),
-          title: "#{speaker_name}: #{preview_text}"
+          "time" => format_seconds_to_timestamp(seconds),
+          "title" => "#{speaker_name}: #{preview_text}"
         }
         last_seconds = seconds
       end
@@ -144,7 +188,7 @@ class YouTubeMetadataGenerator
     lines << ""
     lines << "⏱️ CHAPTERS:"
     chapters.each do |ch|
-      lines << "#{ch[:time]} - #{ch[:title]}"
+      lines << "#{ch['time']} - #{ch['title']}"
     end
     lines << ""
     lines << "🏷️ TOPICS: #{topics.join(', ')}" unless topics.empty?
@@ -176,12 +220,4 @@ class YouTubeMetadataGenerator
   end
 end
 
-options = {}
-OptionParser.new do |opts|
-  opts.banner = "Usage: ruby bin/generate_youtube_metadata.rb [options]"
-  opts.on("--limit N", Integer, "Limit number of videos processed") { |v| options[:limit] = v }
-  opts.on("--video-id ID", String, "Target specific YouTube Video ID") { |v| options[:video_id] = v }
-  opts.on("--preview", "Print preview of generated packages") { options[:preview] = true }
-end.parse!
-
-YouTubeMetadataGenerator.new(options).run
+YouTubeMetadataGenerator.new.run
