@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "System Cartography: Part 4 — Finding the Seam: How the Panoramic View Powers the Strangler Fig"
-date: "2026-08-27"
+date: "2026-08-20"
 description: "The Strangler Fig pattern is the gold standard for legacy system modernization, but it fails if you cut in the wrong place. Here is how the Panoramic View identifies clean architectural seams for zero-risk service extraction."
 tags:
   - System Cartography

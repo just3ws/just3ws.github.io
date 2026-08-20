@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Forensic Engineering: Restoring 214 Lost Technical Conversations with Local AI"
-date: "2026-08-23"
+date: "2026-08-20"
 description: "Over a decade of software engineering history was trapped in low-bitrate MP3s, dead RSS feeds, and deprecated hosting platforms. Here is how I used local AI (Whisper and LLM pipelines) to perform digital archeology and restore 214 high-bandwidth technical interviews."
 tags:
   - AI Engineering

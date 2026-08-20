@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "The Evolution of Async Jobs: From Resque and Cron to Sidekiq and Modern Event Streams"
-date: "2026-08-22"
+date: "2026-08-20"
 description: "Background queues are the invisible nervous system of web architectures. Here is how managing high-volume email engines, scheduled tasks, and event workers evolved from fork-heavy Resque processes to thread-safe Sidekiq pools."
 tags:
   - Architecture

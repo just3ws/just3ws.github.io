@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "System Cartography: Part 1 — The Executive Legibility Gap and the Map of Business Decisions"
-date: "2026-08-24"
+date: "2026-08-20"
 description: "In every mature company, Product, Engineering, and Leadership have three conflicting mental models of how the system works. Here is why mapping decision locations is the prerequisite for accurate staffing, modernizations, and capital decisions."
 tags:
   - System Cartography

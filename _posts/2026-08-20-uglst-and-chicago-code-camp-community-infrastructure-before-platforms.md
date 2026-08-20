@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "UGl.st and Chicago Code Camp: Community Infrastructure Before Centralized Platforms Took Over"
-date: "2026-08-21"
+date: "2026-08-20"
 description: "Before Meetup, Eventbrite, and Discord consolidated developer communities into walled gardens, grassroots tech scenes ran on custom-built directory services, speaker management scripts, and local craft. Here is how we built community infrastructure in Chicago."
 tags:
   - Community

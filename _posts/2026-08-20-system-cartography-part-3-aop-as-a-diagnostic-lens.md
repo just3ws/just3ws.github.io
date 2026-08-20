@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "System Cartography: Part 3 — Aspect-Oriented Programming as a Diagnostic Lens"
-date: "2026-08-26"
+date: "2026-08-20"
 description: "How do you audit an undocumented, multi-million-line legacy system without risking production outages? Aspect-Oriented Programming (AOP) provides the non-invasive method interceptors needed to illuminate hidden decision paths."
 tags:
   - System Cartography
