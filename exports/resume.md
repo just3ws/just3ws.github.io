@@ -142,16 +142,17 @@ Owned end-to-end platform architecture, leading high-throughput data integration
 
 **Skills:** Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, Amazon RDS, Heroku, DigitalOcean, Twitter API, Facebook Graph API, Instagram API
 
-### Core Team Lead at Coderwall
+### Open-Source Transition Lead at Coderwall
 **January 2014 — December 2014**
 
-Owned platform modernization and open-source transition, leading infrastructure cost reduction in a community-driven ecosystem.
+Hired as a contractor to lead Coderwall's transition from a closed-source platform to an open-source project, extracting billing and scoring algorithms into separate services and guiding developer community onboarding.
 
 **Key Outcomes:**
+- Closed-source codebase was converted to open source by establishing an open-source core stub, securing private assets, and defining clean API boundaries.
+- Proprietary business logic was isolated by extracting billing and badge scoring algorithms into a separate backend service with API stubs.
+- Developer community onboarding and contributor engagement were guided as a technical evangelist and open-source community lead.
 - High background processing costs on Heroku were addressed by replacing Resque with Sidekiq, materially reducing operational overhead.
-- Complex and costly data queries were addressed by migrating from MongoDB to PostgreSQL, simplifying the technical stack and improving maintainability.
-- Unstable search performance was addressed by upgrading and optimizing Elasticsearch queries, improving search relevance.
-- Stagnant proprietary growth was addressed by relaunching the platform as an open-source project, guiding a diverse contributor community.
+- Data architecture complexity was addressed by migrating from MongoDB to PostgreSQL, simplifying maintenance for community contributors.
 
 **Skills:** Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, ElasticSearch, AWS S3, Heroku, JavaScript, Backbone.js, MongoDB
 

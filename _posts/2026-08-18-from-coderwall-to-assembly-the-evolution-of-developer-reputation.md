@@ -2,7 +2,7 @@
 layout: "post"
 title: "From Coderwall to Assembly: What 2012 Taught Us About Developer Reputation and Collective Ownership"
 date: "2026-08-18"
-description: "Reflecting on Coderwall and Assembly: how we built developer achievement badges, collective equity micro-funding, and what software teams can learn today."
+description: "Reflecting on my contract work open-sourcing Coderwall and Assembly: service extraction, developer evangelism, and what those projects teach us about software craft today."
 tags:
   - Developer Tools
   - Community
@@ -12,27 +12,29 @@ tags:
   - Retrospective
 ---
 
-Looking back at the early 2010s, developer tools were going through a quiet renaissance. We were moving past static resume bullet points and asking a simpler question: *How do developers actually show what they build, and how can they build software together as a community?*
+Looking back at the early 2010s, developer tools were going through a quiet renaissance. Platforms were moving past static resume bullet points and asking a simpler question: *How do developers actually show what they build, and how can they build software together as a community?*
 
-Two projects from that era defined a big chunk of my thinking on product architecture and community incentives: **Coderwall** and **Assembly** (`Assembly Made`). 
+Two projects from that era shaped a big chunk of my thinking on service extraction, open-source transitions, and community engineering: **Coderwall** and **Assembly** (`Assembly Made`). Both were created by Matt Deiters, and I was brought on as a contractor to help open-source them.
 
-Re-reading my notes and looking at archived snapshots from 2012 to 2015, I'm struck by how many of the challenges we wrestled with back then are resurfacing today in modern open-source, AI workflows, and micro-grant platforms.
+Looking at archived snapshots from 2012 to 2015, I'm struck by how many of the challenges we worked through back then are resurfacing today in modern open-source, AI workflows, and micro-grant platforms.
 
-Here is what we tried, what broke, and what those experiments teach us about software craft today.
+Here is what I saw from the inside, what broke, and what those projects teach us about software craft today.
 
 ---
 
-### 🏅 Coderwall: Gamifying Craft & Public Proof
+### 🏅 Coderwall: Open-Sourcing a Community Platform
 
-When [Coderwall](https://github.com/just3ws/just3ws.github.io/blob/master/_data/resume/positions/coderwall.yml) started, developer profiles were dry. Most platforms treated software engineering like clerical data entry. Coderwall took the opposite approach: treat code as craft, and make achievements visible.
+I was brought on as a contractor at [Coderwall](https://github.com/just3ws/just3ws.github.io/blob/master/_data/resume/positions/coderwall.yml) to lead the conversion of their closed-source web platform into an open-source codebase. Up to that point, Coderwall had established a novel approach to developer identity: integrating with GitHub, Twitter, and public repositories to issue achievement badges (*"Forked 50 repos"*, *"Ruby Polyglot"*, *"Early Adopter"*) based on peer recognition and verified activity.
 
-We built automated integrations with GitHub, Twitter, and public repositories to issue achievement badges—everything from open-source contribution milestones to specialized language usage (*"Forked 50 repos"*, *"Ruby Polyglot"*, *"Early Adopter"*). 
-
-What made Coderwall work wasn't just the gamification; it was **peer recognition**. Developers didn't display badges to brag. They displayed them because it gave their peers a high-bandwidth signal of what they actually cared about building.
+My engineering mandate was clear:
+1. **Secure & Isolate Core Assets**: Extract key private functionality—specifically the proprietary billing engines and the scoring algorithms used for badge qualification—into separate backend services with clean API contracts and open-source core stubs.
+2. **Open-Source Transition**: Convert the monolithic codebase into a public project without exposing private business logic or sensitive keys.
+3. **Developer Evangelism & Community Leadership**: Work directly with external developers as they learned the platform, guiding contributors through open-source documentation, pull requests, and architectural onboarding.
 
 #### 🔧 Technical Trade-offs & Lessons:
-- **Activity Feed Scaling**: Aggregating real-time API events across thousands of active developers meant balancing cache invalidation with instant badge unlocks. We learned early that stale achievement counts destroyed user trust faster than slow page loads.
-- **Signal vs. Noise**: Gamification creates an incentive for noise if you aren't careful. As soon as badges carried status, people tried to game the criteria. We had to tune event filters to reward real engineering substance over raw commit volume.
+- **Service Boundaries & API Extraction**: Separating billing and badge-scoring algorithms into private services with clean API contracts allowed us to open-source the platform core safely. It forced disciplined interface boundaries where open-source stubs handled public routes while sensitive calculation rules remained protected.
+- **Infrastructure Overhead**: Running high-volume event aggregation on Heroku was costly. Replacing Resque with Sidekiq and migrating MongoDB data models into PostgreSQL significantly reduced operational costs while simplifying the stack for incoming open-source contributors.
+- **Community Signal**: Working as a developer evangelist taught me that open-source contributors need high-bandwidth legibility. Transparent API stubs and clear architectural boundaries matter just as much as good documentation.
 
 ---
 
@@ -40,11 +42,11 @@ What made Coderwall work wasn't just the gamification; it was **peer recognition
 
 By 2013, badge reputation was proven, but a bigger problem emerged: *How do independent developers collaborate on open-source products and share in the financial upside?*
 
-That question led to **Assembly** (`Assembly Made`). 
+That question led Matt Deiters to build **Assembly** (`Assembly Made`). I continued contracting with the team to help with the open-source engineering work.
 
 Assembly was a platform where anyone could propose a software product, contributors could submit code or design, and the community voted on features. Revenue generated by the product was automatically distributed back to contributors based on their verified commits and design contributions ("App Coins" and bounty shares).
 
-This was years before Patreon, Gitcoin, or Web3 micro-grants. We were attempting to build a transparent, community-owned software incubator on standard web rails.
+This was years before Patreon, Gitcoin, or Web3 micro-grants. The team was attempting to build a transparent, community-owned software incubator on standard web rails.
 
 ```
 [ Idea / Proposal ] ➔ [ Community Votes ] ➔ [ Code / Design Contributions ] ➔ [ Revenue Distribution ]
@@ -52,7 +54,7 @@ This was years before Patreon, Gitcoin, or Web3 micro-grants. We were attempting
 
 #### 🔧 Technical & Product Lessons:
 - **Decentralized Handoff Friction**: Software product vision needs focused technical direction. When governance is 100% decentralized without a clear Principal IC or lead architect, decision paralysis kicks in.
-- **Contribution Calibration**: Measuring the value of a 5-line security patch versus a 500-line UI redesign is hard. Line counts are a terrible metric for engineering impact. We learned that human peer review was the only durable way to grade real value.
+- **Contribution Calibration**: Measuring the value of a 5-line security patch versus a 500-line UI redesign is hard. Line counts are a terrible metric for engineering impact. The team learned that human peer review was the only durable way to grade real value.
 
 ---
 
