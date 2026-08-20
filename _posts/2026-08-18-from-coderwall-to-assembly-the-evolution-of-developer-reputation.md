@@ -1,75 +1,108 @@
 ---
 layout: "post"
-title: "From Coderwall to Assembly: What 2012 Taught Us About Developer Reputation and Collective Ownership"
+title: "From Coderwall to Assembly: What the Open-Source Transition Taught Me About Security, Service Extraction, and Developer Communities"
 date: "2026-08-18"
-description: "Reflecting on my contract work open-sourcing Coderwall and Assembly: service extraction, developer evangelism, and what those projects teach us about software craft today."
+description: "What I learned as the #1 contributor to the Coderwall open-source codebase: security hardening a closed platform for public release, extracting proprietary billing into service stubs, and leading a developer community through a MongoDB-to-PostgreSQL migration."
 tags:
   - Developer Tools
   - Community
-  - Product Architecture
+  - Open Source
   - Coderwall
   - Assembly
   - Retrospective
+  - Security
 ---
 
-Looking back at the early 2010s, developer tools were going through a quiet renaissance. Platforms were moving past static resume bullet points and asking a simpler question: *How do developers actually show what they build, and how can they build software together as a community?*
+In 2014, Matt Deiters hired me as a contractor to open-source [Coderwall](https://github.com/coderwall/coderwall-legacy), his Y Combinator-backed developer reputation platform. Coderwall had launched in 2012 and grown into a professional network for software engineers — badges, protips, team profiles — but it was closed-source and running on aging infrastructure. The job was to take a proprietary Rails monolith, secure it for public exposure, extract the parts that couldn't go public, and help a community of external developers learn the codebase.
 
-Two projects from that era shaped a big chunk of my thinking on service extraction, open-source transitions, and community engineering: **Coderwall** and **Assembly** (`Assembly Made`). Both were created by Matt Deiters, and I was brought on as a contractor to help open-source them.
-
-Looking at archived snapshots from 2012 to 2015, I'm struck by how many of the challenges we worked through back then are resurfacing today in modern open-source, AI workflows, and micro-grant platforms.
-
-Here is what I saw from the inside, what broke, and what those projects teach us about software craft today.
+I ended up as the [#1 contributor to `coderwall/coderwall-legacy`](https://github.com/coderwall/coderwall-legacy) with 634 commits — roughly half the repository's total history. Here is what that work actually looked like.
 
 ---
 
-### 🏅 Coderwall: Open-Sourcing a Community Platform
+### 🔐 Phase 1: Security Hardening Before Going Public
 
-I was brought on as a contractor at [Coderwall](https://github.com/just3ws/just3ws.github.io/blob/master/_data/resume/positions/coderwall.yml) to lead the conversion of their closed-source web platform into an open-source codebase. Up to that point, Coderwall had established a novel approach to developer identity: integrating with GitHub, Twitter, and public repositories to issue achievement badges (*"Forked 50 repos"*, *"Ruby Polyglot"*, *"Early Adopter"*) based on peer recognition and verified activity.
+Before a single line of code could go on GitHub, the codebase needed a security audit. This was a production application with real users, real credentials, and real payment data. Shipping it to a public repo without hardening it first would have been reckless.
 
-My engineering mandate was clear:
-1. **Secure & Isolate Core Assets**: Extract key private functionality—specifically the proprietary billing engines and the scoring algorithms used for badge qualification—into separate backend services with clean API contracts and open-source core stubs.
-2. **Open-Source Transition**: Convert the monolithic codebase into a public project without exposing private business logic or sensitive keys.
-3. **Developer Evangelism & Community Leadership**: Work directly with external developers as they learned the platform, guiding contributors through open-source documentation, pull requests, and architectural onboarding.
+In the first two weeks I patched:
+- **SQL injection** in the badge and opportunity models
+- **DOS via Symbol injection** in the admin controller
+- **XSS through unwhitelisted comment parameters** that could hijack user sessions
+- **Unsafe dynamic class generation** where badge achievement types were instantiated directly from user-supplied strings
+- **Render path vulnerabilities** where arbitrary templates could be requested
+- **Missing strong_parameters** across multiple controllers
 
-#### 🔧 Technical Trade-offs & Lessons:
-- **Service Boundaries & API Extraction**: Separating billing and badge-scoring algorithms into private services with clean API contracts allowed us to open-source the platform core safely. It forced disciplined interface boundaries where open-source stubs handled public routes while sensitive calculation rules remained protected.
-- **Infrastructure Overhead**: Running high-volume event aggregation on Heroku was costly. Replacing Resque with Sidekiq and migrating MongoDB data models into PostgreSQL significantly reduced operational costs while simplifying the stack for incoming open-source contributors.
-- **Community Signal**: Working as a developer evangelist taught me that open-source contributors need high-bandwidth legibility. Transparent API stubs and clear architectural boundaries matter just as much as good documentation.
-
----
-
-### 🌐 Assembly: Collective Equity & Micro-Funding Before Its Time
-
-By 2013, badge reputation was proven, but a bigger problem emerged: *How do independent developers collaborate on open-source products and share in the financial upside?*
-
-That question led Matt Deiters to build **Assembly** (`Assembly Made`). I continued contracting with the team to help with the open-source engineering work.
-
-Assembly was a platform where anyone could propose a software product, contributors could submit code or design, and the community voted on features. Revenue generated by the product was automatically distributed back to contributors based on their verified commits and design contributions ("App Coins" and bounty shares).
-
-This was years before Patreon, Gitcoin, or Web3 micro-grants. The team was attempting to build a transparent, community-owned software incubator on standard web rails.
-
-```
-[ Idea / Proposal ] ➔ [ Community Votes ] ➔ [ Code / Design Contributions ] ➔ [ Revenue Distribution ]
-```
-
-#### 🔧 Technical & Product Lessons:
-- **Decentralized Handoff Friction**: Software product vision needs focused technical direction. When governance is 100% decentralized without a clear Principal IC or lead architect, decision paralysis kicks in.
-- **Contribution Calibration**: Measuring the value of a 5-line security patch versus a 500-line UI redesign is hard. Line counts are a terrible metric for engineering impact. The team learned that human peer review was the only durable way to grade real value.
+Each fix had to work without breaking the live production app. The closed-source version was still serving traffic while I hardened it for public release.
 
 ---
 
-### 💡 Durable Insights for Today’s AI Era
+### 🔧 Phase 2: Extracting Proprietary Services
 
-Why do these 2012–2015 retrospectives matter today?
+Coderwall's business logic included proprietary billing engines (purchased bundles, Peepcode integrations) and the scoring algorithms behind badge qualification. None of that could go into a public repository.
 
-1. **Reputation Matters More When Boilerplate is Free**: In an era where AI agents generate thousands of lines of boilerplate in seconds, raw commit volume is meaningless. The lessons from Coderwall apply directly: *what matters is verified craft, system legibility, and architectural judgment.*
-2. **Community Ownership Requires Technical Direction**: Assembly proved that micro-funding and collective contributions work best when paired with clear system cartography. Tools don't replace leadership; they amplify it.
-3. **Keep the Human Signal in the Loop**: Whether rewarding open-source maintainers or evaluating candidate experience, human peer recognition remains the signal in the noise.
+The extraction work included:
+- **Ripping out PurchasedBundle functionality** and the Peepcode integration
+- **Removing proprietary analytics** (Leftronic, Exceptional) and monitoring configs
+- **Converting environment management** from Figaro (which baked secrets into the repo) to Dotenv (which kept them out)
+- **Establishing API stubs** so the open-source core could reference external services without exposing their implementations
+
+I also wrote the [LICENSE](https://github.com/coderwall/coderwall-legacy) and [CONTRIBUTING.md](https://github.com/coderwall/coderwall-legacy), set up Travis CI, added CodeClimate, and generated ERD diagrams — the scaffolding that let external developers actually contribute.
 
 ---
 
-### 🔗 Historical Archive Links
+### 🗃️ Phase 3: MongoDB to PostgreSQL Migration
 
-- **Coderwall Position Record**: [View Position Detail](/resume/#coderwall)
-- **Chicago Code Camp & UGtastic Archive**: [View Community Retrospective](/2026/05/07/the-durable-insights-of-ugtastic.html)
-- **Technical Interview Archive**: [Explore 214 Restored Conversations](/interviews/)
+Coderwall's original data layer was MongoDB via Mongoid. For the open-source transition, we needed something more accessible to contributors and cheaper to operate. I led a two-phase migration:
+
+- **[PR #227](https://github.com/coderwall/coderwall-legacy/pull/227)**: Migrate team data from Mongoid to ActiveRecord
+- **[PR #226](https://github.com/coderwall/coderwall-legacy/pull/226)**: Convert remaining Mongoid references to ActiveRecord
+
+This ran in parallel with converting background processing from Resque to Sidekiq, and moving scheduled tasks from Rake into Clockwork jobs and Sidekiq workers — all aimed at reducing the Heroku bill and simplifying the operational surface for community maintainers.
+
+---
+
+### 👥 Phase 4: Developer Evangelism & Community Management
+
+The open-source transition wasn't just a code exercise. External developers started showing up — filing issues, submitting pull requests, asking questions. Someone had to review their work, merge the good stuff, and help people navigate a large Rails codebase they'd never seen before.
+
+Over the contract I merged **30+ community pull requests**, including:
+- Bug fixes for team creation, job posting locations, and protip rendering
+- A complete jQuery optimization pass from an external contributor
+- Sitemap generation
+- Ghost-banning implementation for spam control
+- Docker-backed resource provisioning
+- Resume upload and job application UX improvements
+
+I maintained the Vagrant development environment, wrote setup documentation, and added links to YouTube tutorial videos. The goal was to make it possible for someone to clone the repo and have a working local instance within an hour.
+
+---
+
+### 🌐 Assembly: The Bigger Picture
+
+Both Coderwall and Assembly (`Assembly Made`) were Matt Deiters' projects. Assembly was a platform for collective open-source product development — propose a product, contribute code or design, and share in the revenue via "App Coins." This was years before Patreon, Gitcoin, or Web3 micro-grants.
+
+I contributed to the [Assembly org](https://github.com/assemblymade) as well — setting up the [coderwall-badges](https://github.com/assemblymade/coderwall-badges) image repository (the original DrawIt badge artwork), Vagrant configuration for the meta repo, and nGram search indexing.
+
+The lesson from Assembly that stuck with me: **community ownership of software products works best when there's clear technical direction.** When governance is 100% decentralized without a lead architect, decision paralysis kills momentum faster than any technical debt.
+
+---
+
+### 💡 What This Work Taught Me
+
+1. **Security hardening before open-sourcing is non-negotiable.** Every closed-source codebase carries assumptions about who can read it. Those assumptions become vulnerabilities the moment you push to a public repo.
+
+2. **Service extraction is architecture, not refactoring.** Pulling billing and scoring out of a monolith forces you to define real interface boundaries — what the open-source stub exposes, what stays private, and how the two communicate.
+
+3. **Open-source transitions need a developer evangelist, not just a developer.** Writing CONTRIBUTING.md isn't enough. Someone has to review PRs, answer questions, maintain the dev environment, and make contributors feel like their work matters.
+
+4. **Line counts are a terrible metric for engineering impact.** A 5-line SQL injection fix protects every user in the database. A 500-line UI redesign might not. The Coderwall community learned this firsthand.
+
+---
+
+### 🔗 Verifiable History
+
+- **GitHub Repository**: [`coderwall/coderwall-legacy`](https://github.com/coderwall/coderwall-legacy) — 856 ⭐, 304 forks
+- **Contributor Ranking**: `just3ws` — 634 commits (#1 of all contributors)
+- **MongoDB→Postgres PRs**: [#227](https://github.com/coderwall/coderwall-legacy/pull/227), [#226](https://github.com/coderwall/coderwall-legacy/pull/226)
+- **Badge Assets**: [`assemblymade/coderwall-badges`](https://github.com/assemblymade/coderwall-badges) — created by just3ws
+- **Position Record**: [View Position Detail](/resume/#coderwall)
+- **Related Post**: [The Durable Insights of UGtastic](/2026/05/07/the-durable-insights-of-ugtastic.html)

@@ -145,16 +145,17 @@ Owned end-to-end platform architecture, leading high-throughput data integration
 ### Open-Source Transition Lead at Coderwall
 **January 2014 — December 2014**
 
-Hired as a contractor to lead Coderwall's transition from a closed-source platform to an open-source project, extracting billing and scoring algorithms into separate services and guiding developer community onboarding.
+Hired as a contractor by founder Matt Deiters to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
 
 **Key Outcomes:**
-- Closed-source codebase was converted to open source by establishing an open-source core stub, securing private assets, and defining clean API boundaries.
-- Proprietary business logic was isolated by extracting billing and badge scoring algorithms into a separate backend service with API stubs.
-- Developer community onboarding and contributor engagement were guided as a technical evangelist and open-source community lead.
-- High background processing costs on Heroku were addressed by replacing Resque with Sidekiq, materially reducing operational overhead.
-- Data architecture complexity was addressed by migrating from MongoDB to PostgreSQL, simplifying maintenance for community contributors.
+- Security vulnerabilities were identified and closed before public release, including SQL injection in badge and opportunity models, DOS via Symbol injection in admin controllers, XSS through unwhitelisted comment parameters, and unsafe dynamic class generation from user input.
+- Proprietary billing engines and badge-scoring algorithms were extracted into separate backend services with clean API stubs, enabling the platform core to go public without exposing private business logic or credentials.
+- Platform data layer was migrated from MongoDB to PostgreSQL in a two-phase migration, simplifying the stack for incoming open-source contributors.
+- Background processing was modernized by converting legacy Rake tasks and Clockwork jobs to Sidekiq workers, and replacing Resque, materially reducing Heroku operational costs.
+- Open-source scaffolding was established including LICENSE, CONTRIBUTING.md, Travis CI integration, CodeClimate, Vagrant development environments, and ERD documentation for contributor onboarding.
+- Developer evangelism and community management included merging 30+ community pull requests, writing contributor guidance, maintaining development environments, and coordinating with external developers learning the platform.
 
-**Skills:** Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, ElasticSearch, AWS S3, Heroku, JavaScript, Backbone.js, MongoDB
+**Skills:** Ruby, Ruby on Rails, PostgreSQL, Redis, Sidekiq, ElasticSearch, AWS S3, Heroku, JavaScript, Backbone.js, MongoDB, Vagrant, Travis CI
 
 ### Senior Software Developer at Upcity
 **October 2013 — February 2014**
