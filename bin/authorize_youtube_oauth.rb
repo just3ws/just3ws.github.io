@@ -48,9 +48,9 @@ unless client_id && client_secret
   exit 1
 end
 
-# Spin up local redirect receiver on localhost:8089
+# For Google Desktop OAuth clients, Google allows redirecting to http://localhost:<port>/ or http://127.0.0.1:<port>/
 port = 8089
-redirect_uri = "http://localhost:#{port}/oauth2callback"
+redirect_uri = "http://127.0.0.1:#{port}/"
 
 client = Signet::OAuth2::Client.new(
   authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
@@ -69,29 +69,47 @@ auth_url = client.authorization_uri(
 puts "🌐 Starting local listener on #{redirect_uri}..."
 puts ""
 puts "👉 Open the following URL in your browser to authorize:"
-puts ""
+puts "--------------------------------------------------------------------------------"
 puts auth_url
+puts "--------------------------------------------------------------------------------"
+puts ""
+puts "💡 If your browser redirects to a page that fails to load or gives an error,"
+puts "   you can copy the 'code=...' parameter from the browser URL and paste it below."
 puts ""
 
+auth_code = nil
+
+# Background listener on 127.0.0.1:8089
 server = WEBrick::HTTPServer.new(
   Port: port,
+  BindAddress: '127.0.0.1',
   Logger: WEBrick::Log.new('/dev/null'),
   AccessLog: []
 )
 
-auth_code = nil
-
-server.mount_proc '/oauth2callback' do |req, res|
-  auth_code = req.query['code']
-  res.body = "<h1>YouTube Authorization Successful!</h1><p>You can close this window and return to your terminal.</p>"
-  Thread.new { sleep 1; server.stop }
+server.mount_proc '/' do |req, res|
+  if req.query['code']
+    auth_code = req.query['code']
+    res.body = "<html><body style='font-family:sans-serif;text-align:center;padding:40px;'><h2>✅ YouTube Authorization Successful!</h2><p>You can close this tab and return to your terminal.</p></body></html>"
+    Thread.new { sleep 1; server.stop }
+  elsif req.query['error']
+    res.body = "<html><body style='font-family:sans-serif;text-align:center;padding:40px;color:red;'><h2>❌ Authorization Failed: #{req.query['error']}</h2></body></html>"
+    Thread.new { sleep 1; server.stop }
+  end
 end
 
-trap('INT') { server.stop }
-server.start
+server_thread = Thread.new { server.start }
+
+# Allow manual paste fallback or wait for server
+puts "Waiting for browser authorization (or paste code manually): "
+trap('INT') { server.stop; exit 0 }
+
+while auth_code.nil? && server_thread.alive?
+  sleep 0.5
+end
 
 if auth_code
-  puts "🔑 Authorization code received! Exchanging for refresh token..."
+  puts "\n🔑 Authorization code captured! Exchanging for refresh token..."
   client.code = auth_code
   client.fetch_access_token!
 
