@@ -122,9 +122,11 @@ class YouTubeMetadataPublisher
         video_id: v_id,
         transcript_id: item["transcript_id"],
         title: item["title"],
+        description: item["description"],
+        chapters: item["chapters"] || [],
+        tags: item["tags"] || [],
         chapters_count: (item["chapters"] || []).size,
         tags_count: (item["tags"] || []).size,
-        description_preview: item["description"][0..100].gsub("\n", " ") + "...",
         status: "ready_to_update"
       }
     end
@@ -140,6 +142,24 @@ class YouTubeMetadataPublisher
     FileUtils.mkdir_p("tmp")
     File.write(REPORT_JSON, JSON.pretty_generate(report))
 
+    rendered_diffs = diffs.map do |d|
+      chapters_list = d[:chapters].map { |c| "    - `#{c['time']}` #{c['title']}" }.join("\n")
+      tags_list = d[:tags].map { |t| "`#{t}`" }.join(", ")
+      indented_desc = d[:description].lines.map { |l| "    #{l}" }.join
+
+      <<~ENTRY
+        ### 🎬 Video: `#{d[:video_id]}` (`#{d[:transcript_id]}`)
+        - **Title**: `#{d[:title]}`
+        - **Tags**: #{tags_list}
+        - **Chapters (#{d[:chapters_count]})**:
+        #{chapters_list}
+        - **Description**:
+        ```markdown
+        #{d[:description]}
+        ```
+      ENTRY
+    end.join("\n---\n\n")
+
     md_report = <<~MD
       # 📺 YouTube Data API Metadata Sync Dry-Run Report
 
@@ -147,9 +167,11 @@ class YouTubeMetadataPublisher
       - **Target Video Packages**: `#{staged_items.size}`
       - **Estimated Quota Usage**: `#{report[:estimated_apply_quota_units]} / 10,000 daily units`
 
-      ## Video Metadata Staged for 1:1 Update
+      ---
 
-      #{diffs.take(15).map { |d| "* **#{d[:video_id]}** (`#{d[:transcript_id]}`)\n  - **Title**: *#{d[:title]}*\n  - **Chapters**: #{d[:chapters_count]} chapters\n  - **Tags**: #{d[:tags_count]} tags" }.join("\n\n")}
+      ## Detailed Video Metadata Packages
+
+      #{rendered_diffs}
 
       ---
       *To apply these updates to YouTube, run:*
