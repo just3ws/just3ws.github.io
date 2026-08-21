@@ -95,25 +95,27 @@ class YouTubeMetadataGenerator
 
   private
 
-  def generate_video_package(transcript_id, video_id, asset, transcript_data, research_data)
+  def generate_video_package(transcript_id, video_id, asset, transcript_data, _research_data)
     speaker_map = transcript_data["speaker_map"] || {}
     primary_speaker = speaker_map.values.find { |s| s["role"] != "Interviewer, UGtastic" && s["name"] != "Mike Hall" }
     guest_name = primary_speaker ? primary_speaker["name"] : extract_guest_from_title(asset["title"])
+    guest_role = primary_speaker ? primary_speaker["role"] : nil
 
     raw_summary = transcript_data["summary"] || asset["description"] || ""
     summary = clean_summary(raw_summary)
     turns = transcript_data["turns"] || []
 
-    dimensions = research_data["dimensions"] || {}
-    topics = dimensions["topics"] || []
-    communities = dimensions["communities"] || []
-    context = dimensions["historical_context_at_recording"] || ""
-    year = research_data["year"] || extract_year(transcript_id)
-
-    # Standardized High-Signal Title
-    event_label = determine_event_label(communities, transcript_id, year)
-    main_topic = topics.first || asset["topic"] || "Software Craftsmanship"
-    main_topic = main_topic.to_s.split('-').map(&:capitalize).join(' ') if main_topic.include?('-')
+    year = extract_year(transcript_id) || extract_year(asset["published_date"]) || 2013
+    event_label = determine_event_label([], transcript_id, year)
+    
+    # Topic strictly from guest role, asset topic, or transcript turns
+    main_topic = if guest_role && !guest_role.empty? && guest_role.length <= 40
+                   guest_role.capitalize
+                 elsif asset["topic"]
+                   asset["topic"].to_s.split('-').map(&:capitalize).join(' ')
+                 else
+                   "Software Craftsmanship"
+                 end
 
     title = "#{guest_name} on #{main_topic} | #{event_label}"
     title = title[0...99] if title.length > 100
@@ -121,13 +123,11 @@ class YouTubeMetadataGenerator
     # Chapters from dialogue turns
     chapters = extract_chapters(turns)
 
-    guest_role = primary_speaker ? primary_speaker["role"] : nil
-
-    # 1:1 Canonical Description
-    description = build_description(guest_name, guest_role, summary, context, event_label, transcript_id, chapters, topics)
-
     # Clean Tags
-    tags = (["Software Craftsmanship", "Programming", "Architecture", guest_name] + topics).uniq.take(15)
+    tags = ["Software Craftsmanship", "Programming", "Architecture", guest_name, event_label.split.first].compact.uniq.take(15)
+
+    # 1:1 Canonical Description strictly from verified transcript facts
+    description = build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags)
 
     {
       transcript_id: transcript_id,
@@ -140,10 +140,10 @@ class YouTubeMetadataGenerator
     }
   end
 
-  def determine_event_label(communities, transcript_id, year)
+  def determine_event_label(_communities, transcript_id, year)
     slug = transcript_id.to_s.downcase
 
-    conf_name = if slug.include?("software-craftsmanship-north-america") || slug.include?("scna") || communities.include?("SCNA")
+    conf_name = if slug.include?("software-craftsmanship-north-america") || slug.include?("scna")
                   "SCNA"
                 elsif slug.include?("railsconf")
                   "RailsConf"
@@ -173,7 +173,7 @@ class YouTubeMetadataGenerator
   end
 
   def extract_year(str)
-    if str =~ /(20\d{2})/
+    if str.to_s =~ /(20\d{2})/
       $1.to_i
     else
       nil
@@ -189,11 +189,6 @@ class YouTubeMetadataGenerator
     else
       title.split(':').first.strip
     end
-  end
-
-  def clean_summary(text)
-    return "" if text.nil?
-    text.to_s.gsub(/CRITICAL INSIGHTS:.*$/m, '').strip
   end
 
   def extract_chapters(turns)
@@ -222,7 +217,7 @@ class YouTubeMetadataGenerator
     chapters
   end
 
-  def build_description(guest_name, guest_role, summary, context, event_label, transcript_id, chapters, topics)
+  def build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags)
     lines = []
     lines << summary unless summary.empty?
     lines << ""
@@ -232,11 +227,7 @@ class YouTubeMetadataGenerator
     lines << "• Mike Hall (Interviewer, UGtastic)"
     lines << ""
     lines << "📍 HISTORICAL CONTEXT:"
-    if context && !context.empty?
-      lines << "#{context} Recorded as part of #{event_label} and the UGtastic Technical Conversation Archive."
-    else
-      lines << "Recorded at #{event_label}. Part of the UGtastic Technical Conversation Archive documenting the software craftsmanship, Ruby, and distributed systems movements."
-    end
+    lines << "Recorded at #{event_label}. Part of the UGtastic Technical Conversation Archive documenting the software craftsmanship, Ruby, and distributed systems movements."
     lines << ""
     lines << "⏱️ CHAPTERS:"
     chapters.each do |ch|
@@ -246,7 +237,7 @@ class YouTubeMetadataGenerator
     lines << "📖 INTERACTIVE TRANSCRIPT & NOTES:"
     lines << "https://www.just3ws.com/interviews/#{transcript_id}/"
     lines << ""
-    lines << "🏷️ TOPICS: #{topics.join(', ')}" unless topics.empty?
+    lines << "🏷️ TOPICS: #{tags.join(', ')}" unless tags.empty?
     lines << ""
     lines << "Curated and restored by Mike Hall (https://www.just3ws.com)"
     lines.join("\n")
