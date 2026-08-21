@@ -10,11 +10,14 @@ require 'json'
 require 'fileutils'
 require 'optparse'
 
+require_relative 'lib/youtube_client'
+
 class YouTubeCaptionsSyncer
   MANIFEST_FILE = "_data/youtube_captions_manifest.json"
 
   def initialize(options)
     @options = options
+    @client = YouTubeClient.new if @options[:upload]
   end
 
   def run
@@ -68,35 +71,55 @@ class YouTubeCaptionsSyncer
 
     puts "======================================================="
     puts "Summary: #{valid_count} ready for sync, #{missing_vtt_count} missing files."
-
-    unless @options[:upload]
-      puts "\n💡 API OAuth Instructions:"
-      puts "  To perform live uploads to YouTube Data API v3:"
-      puts "  1. Set YOUTUBE_OAUTH_TOKEN or YOUTUBE_CLIENT_SECRET_FILE environment variable."
-      puts "  2. Run: ruby bin/sync_youtube_captions.rb --upload [--limit 10] [--video-id <id>]"
-    end
   end
 
   private
 
   def upload_caption_track(video_id, vtt_path, transcript_id)
-    token = ENV['YOUTUBE_OAUTH_TOKEN']
-    if token.nil? || token.empty?
-      puts "   ⚠️ Skipped #{video_id}: YOUTUBE_OAUTH_TOKEN not set in environment."
+    unless @client && @client.authenticated?
+      puts "   ⚠️ Cannot upload #{video_id}: YouTube API not authenticated."
       return
     end
 
-    # Curl request to YouTube Data API v3 captions.insert endpoint
-    cmd = [
-      "curl -s -X POST",
-      "-H 'Authorization: Bearer #{token}'",
-      "-H 'Content-Type: application/json'",
-      "-d '{\"snippet\":{\"videoId\":\"#{video_id}\",\"language\":\"en\",\"name\":\"English (UGtastic Archival Subtitles)\",\"isDraft\":false}}'",
-      "'https://www.googleapis.com/youtube/v3/captions?part=snippet'"
-    ].join(" ")
+    @client.fetch_access_token! if @client.access_token.nil?
 
-    puts "   🚀 Uploading caption track for #{video_id}..."
-    # Execution requires authenticated OAuth token
+    metadata = {
+      snippet: {
+        videoId: video_id,
+        language: "en",
+        name: "English (Technical Conversation Archive)",
+        isDraft: false
+      }
+    }
+
+    uri = URI("https://www.googleapis.com/upload/youtube/v3/captions?part=snippet&uploadType=multipart")
+    boundary = "----RubyMultipartBoundary#{SecureRandom.hex(8)}"
+
+    body = []
+    body << "--#{boundary}\r\n"
+    body << "Content-Type: application/json; charset=UTF-8\r\n\r\n"
+    body << "#{metadata.to_json}\r\n"
+    body << "--#{boundary}\r\n"
+    body << "Content-Type: text/vtt\r\n\r\n"
+    body << File.read(vtt_path)
+    body << "\r\n--#{boundary}--\r\n"
+
+    req = Net::HTTP::Post.new(uri)
+    req["Authorization"] = "Bearer #{@client.access_token}"
+    req["Content-Type"] = "multipart/related; boundary=#{boundary}"
+    req.body = body.join
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    res = http.request(req)
+
+    if res.code.to_i == 200
+      puts "   ✅ [#{video_id}] Successfully uploaded WebVTT caption track to YouTube!"
+    else
+      puts "   ⚠️ [#{video_id}] Upload response: #{res.code} - #{res.body[0..120]}"
+    end
+  rescue StandardError => e
+    puts "   ❌ [#{video_id}] Error uploading captions: #{e.message}"
   end
 end
 
