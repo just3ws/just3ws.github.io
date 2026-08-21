@@ -48,9 +48,10 @@ unless client_id && client_secret
   exit 1
 end
 
-# For Google Desktop OAuth clients, Google allows redirecting to http://localhost:<port>/ or http://127.0.0.1:<port>/
+# For Google Desktop OAuth clients with redirect_uris: ["http://localhost"],
+# Google requires the exact origin "http://localhost:<port>/" or "http://localhost"
 port = 8089
-redirect_uri = "http://127.0.0.1:#{port}/"
+redirect_uri = "http://localhost:#{port}/"
 
 client = Signet::OAuth2::Client.new(
   authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
