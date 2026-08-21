@@ -121,8 +121,10 @@ class YouTubeMetadataGenerator
     # Chapters from dialogue turns
     chapters = extract_chapters(turns)
 
+    guest_role = primary_speaker ? primary_speaker["role"] : nil
+
     # 1:1 Canonical Description
-    description = build_description(guest_name, summary, context, transcript_id, chapters, topics)
+    description = build_description(guest_name, guest_role, summary, context, event_label, transcript_id, chapters, topics)
 
     # Clean Tags
     tags = (["Software Craftsmanship", "Programming", "Architecture", guest_name] + topics).uniq.take(15)
@@ -220,24 +222,44 @@ class YouTubeMetadataGenerator
     chapters
   end
 
-  def build_description(guest_name, summary, context, transcript_id, chapters, topics)
+  def build_description(guest_name, guest_role, summary, context, event_label, transcript_id, chapters, topics)
     lines = []
     lines << summary unless summary.empty?
     lines << ""
-    lines << "Recorded as part of the Technical Conversation Archive and UGtastic historical movement."
-    lines << context unless context.empty?
+    lines << "---"
+    lines << "🎙️ SPEAKERS:"
+    lines << "• #{guest_name}#{guest_role && !guest_role.empty? ? " (#{guest_role})" : ""}"
+    lines << "• Mike Hall (Interviewer, UGtastic)"
     lines << ""
-    lines << "📖 Interactive Transcript & Notes: https://www.just3ws.com/interviews/#{transcript_id}/"
+    lines << "📍 HISTORICAL CONTEXT:"
+    if context && !context.empty?
+      lines << "#{context} Recorded as part of #{event_label} and the UGtastic Technical Conversation Archive."
+    else
+      lines << "Recorded at #{event_label}. Part of the UGtastic Technical Conversation Archive documenting the software craftsmanship, Ruby, and distributed systems movements."
+    end
     lines << ""
     lines << "⏱️ CHAPTERS:"
     chapters.each do |ch|
       lines << "#{ch['time']} - #{ch['title']}"
     end
     lines << ""
+    lines << "📖 INTERACTIVE TRANSCRIPT & NOTES:"
+    lines << "https://www.just3ws.com/interviews/#{transcript_id}/"
+    lines << ""
     lines << "🏷️ TOPICS: #{topics.join(', ')}" unless topics.empty?
     lines << ""
     lines << "Curated and restored by Mike Hall (https://www.just3ws.com)"
     lines.join("\n")
+  end
+
+  def clean_summary(text)
+    return "" if text.nil?
+    # Remove AI bullet dumps, old emojis, and hashtags
+    cleaned = text.to_s.gsub(/CRITICAL INSIGHTS:.*$/m, '')
+    cleaned = cleaned.gsub(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/, '')
+    cleaned = cleaned.gsub(/#\w+/, '') # Remove hashtags
+    cleaned = cleaned.gsub(/Recorded as part of the Technical Conversation Archive.*/m, '') # Remove duplicates
+    cleaned.strip
   end
 
   def parse_time_to_seconds(str)
