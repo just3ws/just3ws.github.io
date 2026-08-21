@@ -1,9 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# bin/authorize_youtube_oauth.rb
-# Local interactive OAuth 2.0 handshake helper to obtain YouTube API refresh tokens.
-
 require 'json'
 require 'fileutils'
 require 'net/http'
@@ -26,14 +23,7 @@ puts "=========================================================="
 FileUtils.mkdir_p(CREDENTIALS_DIR)
 
 unless File.exist?(CLIENT_SECRET_FILE)
-  puts "⚠️  Client secret file not found at #{CLIENT_SECRET_FILE}"
-  puts ""
-  puts "To set up:"
-  puts "1. Go to Google Cloud Console (https://console.cloud.google.com/)"
-  puts "2. Enable YouTube Data API v3"
-  puts "3. Create OAuth 2.0 Client ID (Desktop Application)"
-  puts "4. Download JSON and save as #{CLIENT_SECRET_FILE}"
-  puts "=========================================================="
+  puts "❌ Missing #{CLIENT_SECRET_FILE}"
   exit 1
 end
 
@@ -43,15 +33,9 @@ installed_config = raw_secret["installed"] || raw_secret["web"] || {}
 client_id = installed_config["client_id"]
 client_secret = installed_config["client_secret"]
 
-unless client_id && client_secret
-  puts "❌ Invalid client_secret.json format. Missing client_id or client_secret."
-  exit 1
-end
-
-# For Google Desktop OAuth clients with redirect_uris: ["http://localhost"],
-# Google requires the exact origin "http://localhost:<port>/" or "http://localhost"
-port = 8089
-redirect_uri = "http://localhost:#{port}/"
+# Bind to port 8080 (standard Google Desktop client redirect target)
+port = 8080
+redirect_uri = "http://localhost:#{port}"
 
 client = Signet::OAuth2::Client.new(
   authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
@@ -67,23 +51,21 @@ auth_url = client.authorization_uri(
   prompt: 'consent'
 ).to_s
 
-puts "🌐 Starting local listener on #{redirect_uri}..."
 puts ""
-puts "👉 Open the following URL in your browser to authorize:"
+puts "👉 1. Open the following URL in your browser:"
 puts "--------------------------------------------------------------------------------"
 puts auth_url
 puts "--------------------------------------------------------------------------------"
 puts ""
-puts "💡 If your browser redirects to a page that fails to load or gives an error,"
-puts "   you can copy the 'code=...' parameter from the browser URL and paste it below."
-puts ""
+puts "⏳ Waiting for authorization callback on #{redirect_uri}..."
+puts "💡 (Or copy the 'code=...' parameter from your browser URL and paste it below if needed)"
+print "Paste code here (optional): "
 
 auth_code = nil
 
-# Background listener on 127.0.0.1:8089
+# Background listener on port 8080
 server = WEBrick::HTTPServer.new(
   Port: port,
-  BindAddress: '127.0.0.1',
   Logger: WEBrick::Log.new('/dev/null'),
   AccessLog: []
 )
@@ -101,8 +83,7 @@ end
 
 server_thread = Thread.new { server.start }
 
-# Allow manual paste fallback or wait for server
-puts "Waiting for browser authorization (or paste code manually): "
+# Allow manual input or listener
 trap('INT') { server.stop; exit 0 }
 
 while auth_code.nil? && server_thread.alive?
@@ -122,8 +103,8 @@ if auth_code
   }
 
   File.write(CREDENTIALS_FILE, JSON.pretty_generate(oauth_data))
-  puts "✅ Refresh token saved securely to #{CREDENTIALS_FILE}"
-  puts "🎉 You are now ready to run `ruby bin/sync_youtube_captions.rb --upload`!"
+  puts "✅ SUCCESS! Refresh token saved to #{CREDENTIALS_FILE}"
+  puts "🎉 You can now run YouTube sync commands!"
 else
   puts "❌ Failed to capture authorization code."
 end
