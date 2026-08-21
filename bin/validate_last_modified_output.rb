@@ -19,6 +19,21 @@ def post_output_path(relative_post_path)
   match = filename.match(/\A(\d{4})-(\d{2})-(\d{2})-(.+)\.(md|markdown|html)\z/)
   return nil unless match
 
+  full_path = File.join(ROOT, relative_post_path)
+  if File.file?(full_path)
+    content = File.read(full_path, encoding: 'UTF-8')
+    if content =~ /\A---\s*\n(.*?)\n---\s*\n/m
+      fm = (YAML.safe_load(Regexp.last_match(1), permitted_classes: [Date, Time], aliases: true) rescue {}) || {}
+      if fm.is_a?(Hash) && fm['permalink']
+        perm = fm['permalink'].sub(%r{\A/}, '').sub(%r{/\z}, '')
+        dir_idx = File.join(SITE_DIR, perm, 'index.html')
+        return dir_idx if File.file?(dir_idx)
+        file_html = File.join(SITE_DIR, "#{perm}.html")
+        return file_html if File.file?(file_html)
+      end
+    end
+  end
+
   year, month, day, slug = match.captures
   dir_index = File.join(SITE_DIR, year, month, day, slug, "index.html")
   return dir_index if File.file?(dir_index)
