@@ -106,13 +106,16 @@ class YouTubeMetadataGenerator
 
     dimensions = research_data["dimensions"] || {}
     topics = dimensions["topics"] || []
+    communities = dimensions["communities"] || []
     context = dimensions["historical_context_at_recording"] || ""
+    year = research_data["year"] || extract_year(transcript_id)
 
-    # Standardized Title (Under 100 chars)
+    # Standardized High-Signal Title
+    event_label = determine_event_label(communities, transcript_id, year)
     main_topic = topics.first || asset["topic"] || "Software Craftsmanship"
     main_topic = main_topic.to_s.split('-').map(&:capitalize).join(' ') if main_topic.include?('-')
 
-    title = "#{guest_name} on #{main_topic} | Technical Conversation Archive"
+    title = "#{guest_name} on #{main_topic} | #{event_label}"
     title = title[0...99] if title.length > 100
 
     # Chapters from dialogue turns
@@ -133,6 +136,46 @@ class YouTubeMetadataGenerator
       tags: tags,
       generated_at: Time.now.utc.iso8601
     }
+  end
+
+  def determine_event_label(communities, transcript_id, year)
+    slug = transcript_id.to_s.downcase
+
+    conf_name = if slug.include?("software-craftsmanship-north-america") || slug.include?("scna") || communities.include?("SCNA")
+                  "SCNA"
+                elsif slug.include?("railsconf")
+                  "RailsConf"
+                elsif slug.include?("windycityrails")
+                  "WindyCityRails"
+                elsif slug.include?("chicagowebconf")
+                  "ChicagoWebConf"
+                elsif slug.include?("chicago-code-camp")
+                  "Chicago Code Camp"
+                elsif slug.include?("goto")
+                  "GOTO"
+                elsif slug.include?("webvisions")
+                  "WebVisions"
+                elsif slug.include?("pechakucha")
+                  "PechaKucha"
+                else
+                  nil
+                end
+
+    if conf_name && year
+      "#{conf_name} #{year}"
+    elsif conf_name
+      conf_name
+    else
+      "UGtastic Archive"
+    end
+  end
+
+  def extract_year(str)
+    if str =~ /(20\d{2})/
+      $1.to_i
+    else
+      nil
+    end
   end
 
   def extract_guest_from_title(title)
