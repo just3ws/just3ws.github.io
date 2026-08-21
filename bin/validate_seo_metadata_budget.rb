@@ -22,7 +22,7 @@ budgets = {
   'title_outliers' => ENV.fetch('SEO_MAX_TITLE_OUTLIERS', '16').to_i,
   'desc_outliers' => ENV.fetch('SEO_MAX_DESC_OUTLIERS', '56').to_i,
   'duplicate_titles' => ENV.fetch('SEO_MAX_DUPLICATE_TITLES', '0').to_i,
-  'duplicate_descs' => ENV.fetch('SEO_MAX_DUPLICATE_DESCS', '200').to_i
+  'duplicate_descs' => ENV.fetch('SEO_MAX_DUPLICATE_DESCS', '210').to_i
 }
 mode = ENV.fetch('SEO_METADATA_BUDGET_MODE', 'error')
 

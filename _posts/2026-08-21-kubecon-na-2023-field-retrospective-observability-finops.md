@@ -94,5 +94,5 @@ KubeCon NA 2023 demonstrated that our discipline is maturing:
 ---
 
 *Related Reading:*
-- [System Cartography: Finding the Seam and the Strangler Fig](/2026/08/20/system-cartography-part-4-finding-the-seam-and-the-strangler-fig/)
-- [From PostSharp to Modern Observability: What AOP Taught Us](/2026/08/20/from-postsharp-to-modern-observability-what-aop-taught-us/)
+- [System Cartography: Finding the Seam and the Strangler Fig](/2026/08/20/system-cartography-part-4-finding-the-seam-and-the-strangler-fig.html)
+- [From PostSharp to Modern Observability: What AOP Taught Us](/2026/08/20/from-postsharp-to-modern-observability-what-aop-taught-us.html)
