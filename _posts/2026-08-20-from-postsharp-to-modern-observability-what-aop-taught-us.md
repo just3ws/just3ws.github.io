@@ -10,6 +10,10 @@ tags:
   - OpenTelemetry
   - Retrospective
   - History
+permalink: /ai/2026/08/20/from-postsharp-to-modern-observability-what-aop-taught-us/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 In December 2009, I published a technical tutorial and presentation on [Clean AOP using Post# Multicast Syntax](/2009/12/27/clean-aop-using-post-multicast-syntax.html). At the time, enterprise .NET development was wrestling with a massive explosion of boilerplate.

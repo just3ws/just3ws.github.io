@@ -3,9 +3,12 @@ layout: post
 title: "KubeCon NA 2023 Field Retrospective: Telemetry Pipelines, Structured Logs, and Cloud Cost Realities"
 date: 2026-08-21 08:00:00 -0500
 categories: [Architecture, Observability, Retrospective]
-permalink: /2026/08/21/kubecon-na-2023-field-retrospective-observability-finops/
 tags: [KubeCon, CNCF, Observability, OpenTelemetry, Fluent Bit, Structured Logging, FinOps, Architecture]
 description: "A four-day technical field retrospective from KubeCon North America 2023 in Chicago—breaking down CI/CD telemetry, Kubernetes WG Structured Logging, Fluent Bit pipelines, and FinOps postmortems."
+permalink: /ai/2026/08/21/kubecon-na-2023-field-retrospective-observability-finops/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 In November 2023, over 9,000 engineers gathered at McCormick Place in Chicago for **KubeCon + CloudNativeCon North America 2023**. 

@@ -10,6 +10,10 @@ tags:
   - Ruby on Rails
   - Retrospective
   - Coderwall
+permalink: /ai/2026/08/20/the-clean-break-migrating-mongodb-to-postgresql-under-load/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 Around 2012, early-stage startups flocked to document databases. The promise was alluring: schema-less JSON storage, instant prototyping, and no upfront migration planning. Coderwall's early data layer was built on MongoDB using the `Mongoid` ODM.

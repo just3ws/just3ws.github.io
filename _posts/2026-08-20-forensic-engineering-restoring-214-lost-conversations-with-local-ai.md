@@ -10,6 +10,10 @@ tags:
   - Audio Engineering
   - Python
   - UGtastic
+permalink: /ai/2026/08/20/forensic-engineering-restoring-214-lost-conversations-with-local-ai/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 Between 2006 and 2014, the software engineering industry went through one of its most innovative eras. The Ruby on Rails ecosystem was rewriting how web applications were built, the Software Craftsmanship movement was formalizing automated testing and pair programming, and DevOps was transforming operations into code.

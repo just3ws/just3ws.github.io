@@ -10,6 +10,10 @@ tags:
   - Architecture
   - Retrospective
   - History
+permalink: /ai/2026/08/20/uglst-and-chicago-code-camp-community-infrastructure-before-platforms/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 Between 2010 and 2014, regional developer communities were exploding. In Chicago and across the Midwest, user groups met weekly in library basements, university auditoriums, and startup offices. There was a dedicated user group for everything: Ruby, Python, JVM, Scala, Agile craftsmanship, mobile development, and DevOps.

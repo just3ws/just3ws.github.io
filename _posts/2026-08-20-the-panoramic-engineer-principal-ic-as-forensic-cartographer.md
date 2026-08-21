@@ -9,6 +9,10 @@ tags:
   - Career Strategy
   - Panoramic View
   - Retrospective
+permalink: /ai/2026/08/20/the-panoramic-engineer-principal-ic-as-forensic-cartographer/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 Over the past two decades, the role of the senior software engineer has undergone three distinct evolutionary phases:

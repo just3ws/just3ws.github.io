@@ -10,6 +10,10 @@ tags:
   - Ruby on Rails
   - Architecture
   - UGtastic
+permalink: /ai/2026/08/20/security-at-the-seam-brakeman-railsconf-and-monolith-audits/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 At RailsConf 2014 in Chicago, the Ruby on Rails ecosystem was reaching peak enterprise adoption. Companies around the world were running multi-million-dollar businesses on Rails monoliths.

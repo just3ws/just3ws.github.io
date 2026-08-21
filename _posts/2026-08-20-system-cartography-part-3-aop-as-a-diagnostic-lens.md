@@ -9,6 +9,10 @@ tags:
   - Architecture
   - Ruby on Rails
   - Panoramic View
+permalink: /ai/2026/08/20/system-cartography-part-3-aop-as-a-diagnostic-lens/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 When stepping into a complex, undocumented legacy codebase, engineers face a dangerous paradox:

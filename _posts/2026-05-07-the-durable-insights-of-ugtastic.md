@@ -9,6 +9,10 @@ tags:
   - Software Craftsmanship
   - Community
   - UGtastic
+permalink: /ai/2026/05/07/the-durable-insights-of-ugtastic/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 While digging through the UGtastic video archives to prepare them for republication, I’ve been struck by how many of these conversations—recorded over a decade ago—feel like they were scripted for today.

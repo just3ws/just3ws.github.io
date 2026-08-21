@@ -24,6 +24,16 @@ layout: minimal
       <p><strong>Archive note:</strong> {{ page.archive_note }}</p>
     </aside>
     {% endif %}
+    {% if page.ai_generated or page.url contains '/ai/' %}
+    <aside class="ai-generated-banner" style="background: rgba(230, 195, 132, 0.12); border-left: 4px solid #e6c384; padding: 1.25rem; border-radius: 0 8px 8px 0; margin-top: 1.5rem; margin-bottom: 0.5rem;">
+      <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #e6c384; letter-spacing: 0.05em; margin-bottom: 0.35rem;">
+        🤖 AI-Generated Technical Synthesis
+      </div>
+      <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #dcd7ba); margin: 0;">
+        <strong>Provenance Disclosure:</strong> This entire article was generated using AI assistance as a synthetic exploration of archive transcripts, interview metadata, and technical notes. It is preserved under the <a href="/ai/" style="color: #7e9cd8; font-weight: 700;">AI Syntheses Section</a> and is not an original human-authored essay by Mike Hall.
+      </p>
+    </aside>
+    {% endif %}
   </header>
   <div class="post-body{% if page.tags contains 'linkedin' %} linkedin-article-body{% endif %}">
     {{ content }}

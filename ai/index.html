@@ -1,0 +1,65 @@
+---
+layout: minimal
+title: "AI-Generated Technical Syntheses & Archive Explorations"
+description: "An isolated index of technical articles, retrospectives, and architecture summaries generated with AI assistance from primary archive materials."
+breadcrumb: AI Syntheses
+permalink: /ai/
+robots: noindex,follow
+sitemap: false
+---
+
+<article class="page">
+  {% include breadcrumbs.html %}
+  
+  <header class="home-header">
+    <div style="display: inline-block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #e6c384; letter-spacing: 0.05em; background: rgba(230, 195, 132, 0.12); padding: 0.25rem 0.6rem; border-radius: 4px; margin-bottom: 0.5rem;">
+      🤖 Machine-Assisted Explorations
+    </div>
+    <h1 style="margin-top: 0.25rem;">AI-Generated Technical Syntheses</h1>
+    <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-text-muted, #c8c093); margin-top: 0.75rem;">
+      This section isolates articles, case retrospectives, and architecture notes generated with AI assistance. 
+    </p>
+  </header>
+
+  <!-- Clear Provenance Disclosure Box -->
+  <div style="background: var(--color-bg-card, #2a2a37); border-left: 4px solid #e6c384; padding: 1.5rem; border-radius: 0 10px 10px 0; margin-bottom: 2.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    <h2 style="font-size: 1.15rem; font-weight: 800; color: #e6c384; margin: 0 0 0.5rem;">
+      Ethical Provenance & Transparency Disclosure
+    </h2>
+    <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #dcd7ba); margin-bottom: 0.75rem;">
+      To ensure 100% transparency and avoid misattributing machine-generated prose as original human writing:
+    </p>
+    <ul style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-muted, #c8c093); margin: 0; padding-left: 1.25rem;">
+      <li><strong>AI-Generated Syntheses:</strong> All articles in this section were composed with LLM assistance using historical interview transcripts, conference notes, and codebase data as seed inputs.</li>
+      <li><strong>Separation from Primary Works:</strong> Mike Hall’s original first-person blog essays (2006–2015) remain exclusively in the primary <a href="/writing/" style="color: var(--color-primary, #7e9cd8); font-weight: 700;">Writing Archive</a>.</li>
+      <li><strong>Interview Transcripts:</strong> Word-for-word interviews and conference recordings are curated separately in the <a href="/interviews/" style="color: var(--color-primary, #7e9cd8); font-weight: 700;">Interview Archive</a>.</li>
+      <li><strong>Index Status:</strong> All pages in this section carry <code>noindex</code> tags to prevent search engines from confusing exploratory AI summaries with canonical human writing.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin-bottom: 1.25rem;">
+      AI-Synthesized Articles & Retrospectives
+    </h2>
+    <ul class="post-list">
+      {% assign ai_posts = site.posts | where: "ai_generated", true %}
+      {% for post in ai_posts %}
+        <li class="post-row" style="margin-bottom: 1.5rem;">
+          <div class="post-title-row">
+            <a class="post-link" href="{{ post.url }}" style="font-weight: 700;">{{ post.title }}</a>
+            <span class="post-date">{{ post.date | date: "%b %Y" }}</span>
+          </div>
+          {% if post.description %}
+            <p class="post-excerpt" style="font-size: 0.95rem; color: var(--color-text-muted, #c8c093); margin: 0.35rem 0 0.5rem 0;">{{ post.description }}</p>
+          {% endif %}
+          <div class="post-metadata-row" style="font-size: 0.85rem; color: var(--color-text-muted, #938aa9);">
+            <span style="display: inline-block; background: rgba(230, 195, 132, 0.15); color: #e6c384; padding: 0.1rem 0.4rem; border-radius: 3px; font-weight: 700; margin-right: 0.5rem;">AI-Generated</span>
+            {% if post.tags %}
+              <span>{{ post.tags | join: ", " }}</span>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>

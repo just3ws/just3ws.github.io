@@ -10,6 +10,10 @@ tags:
   - Ruby on Rails
   - Performance
   - Retrospective
+permalink: /ai/2026/08/20/the-evolution-of-async-jobs-from-resque-to-sidekiq/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 Every web application begins as a synchronous request-response loop. A browser sends an HTTP request, the database executes a query, HTML renders, and a response is returned.

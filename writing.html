@@ -13,13 +13,19 @@ permalink: /writing/
     <h2 class="title">A long-running archive of engineering notes, technical tradeoffs, and leadership reflections.</h2>
   </header>
 
+  <div style="background: var(--color-bg-card, #2a2a37); border-left: 4px solid #e6c384; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin-bottom: 2rem;">
+    <p style="font-size: 0.95rem; margin: 0; color: var(--color-text-muted, #c8c093);">
+      Looking for machine-assisted explorations and archive retrospectives? Visit the <a href="/ai/" style="color: #e6c384; font-weight: 700;">AI-Generated Technical Syntheses Hub &rarr;</a>
+    </p>
+  </div>
+
   <section>
     <h2>Recent Reflections (2024-Present)</h2>
     <p>Current essays on leadership, mentorship, decision-making, and building through industry change.</p>
     <ul class="post-list">
       {% for post in site.posts %}
         {% assign year = post.date | date: "%Y" | plus: 0 %}
-        {% if year >= 2024 %}
+        {% if year >= 2024 and post.ai_generated != true %}
         <li class="post-row">
           <div class="post-title-row">
             <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>

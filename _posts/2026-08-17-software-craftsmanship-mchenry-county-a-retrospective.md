@@ -3,9 +3,12 @@ layout: post
 title: "Software Craftsmanship McHenry County: A Historical Retrospective"
 date: 2026-08-17 08:00:00 -0500
 categories: [History, Software Craftsmanship]
-permalink: /2026/08/17/software-craftsmanship-mchenry-county-a-retrospective/
 tags: [SCMC, McHenry, Chicago, Community, User Groups, History, TDD, Clean Code]
 description: "A comprehensive historical retrospective on Software Craftsmanship McHenry County (SCMC)—from its 2009 origins as the McHenry Cloud Developer’s Group to its role in shaping Chicagoland developer culture."
+permalink: /ai/2026/08/17/software-craftsmanship-mchenry-county-a-retrospective/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 Between 2009 and 2015, Chicagoland experienced a remarkable developer renaissance. While downtown Chicago hosted major tech meetups and burgeoning startups, a parallel community movement took root 50 miles northwest in suburban Illinois: **Software Craftsmanship McHenry County (SCMC)**, also known as **SCMcHenry**.

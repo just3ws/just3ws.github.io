@@ -11,6 +11,10 @@ tags:
   - Assembly
   - Retrospective
   - Security
+permalink: /ai/2026/08/18/from-coderwall-to-assembly-the-evolution-of-developer-reputation/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 In 2014, Matt Deiters hired me as a contractor to open-source [Coderwall](https://github.com/coderwall/coderwall-legacy), his Y Combinator-backed developer reputation platform. Coderwall had launched in 2012 and grown into a professional network for software engineers — badges, protips, team profiles — but it was closed-source and running on aging infrastructure. The job was to take a proprietary Rails monolith, secure it for public exposure, extract the parts that couldn't go public, and help a community of external developers learn the codebase.

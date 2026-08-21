@@ -9,6 +9,10 @@ tags:
   - Leadership
   - Enterprise
   - Panoramic View
+permalink: /ai/2026/08/20/system-cartography-part-1-the-executive-legibility-gap/
+ai_generated: true
+robots: noindex,follow
+sitemap: false
 ---
 
 In every mature technology enterprise, there is a quiet, ongoing disconnect between three groups of people:
