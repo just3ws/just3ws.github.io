@@ -3,6 +3,7 @@ layout: post
 title: "AdequateRecord, J2EE Escapes, and Giving 110 Percent with Aaron Patterson"
 date: 2026-08-21 14:00:00 -0500
 categories: [engineering-history, ruby-on-rails, open-source]
+permalink: /2026/08/21/adequate-record-and-giving-110-percent-with-aaron-patterson/
 tags: [railsconf, aaron-patterson, activerecord, ruby, open-source, performance]
 author: Mike Hall
 description: "A look back at RailsConf 2014 with Aaron Patterson (@tenderlove)—unveiling AdequateRecord, Perl origins, and the evolution of Rails query performance."
