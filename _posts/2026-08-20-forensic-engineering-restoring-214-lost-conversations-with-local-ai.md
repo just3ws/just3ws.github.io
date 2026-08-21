@@ -92,5 +92,5 @@ Reading through the restored [214 conversations](/interviews/) reveals timeless 
 All 214 restored interviews—complete with interactive transcripts, speaker bios, and topic indices—are freely accessible in the canonical archive:
 
 - 🎙️ **[Browse the Full Technical Interview Archive](/interviews/)**
-- 🏛️ **[Read the Durable Insights of UGtastic](/2026/05/07/the-durable-insights-of-ugtastic.html)**
+- 🏛️ **[Read the Durable Insights of UGtastic](/ai/2026/05/07/the-durable-insights-of-ugtastic/)**
 - 🗺️ **[Explore the System Cartography Case Studies](/case-studies/)**

@@ -30,7 +30,7 @@ Listening to Dan North and Sandro Mancuso reminds us of a truth that is too easi
 
 When Dan North introduced **Behavior-Driven Development (BDD)** and tools like JBehave and Cucumber, the industry was caught in a bitter debate over Test-Driven Development. Developers were arguing about mocking frameworks, class isolation, and test suite execution speed.
 
-In our conversation ([read the Dan North archive interview](/interviews/developer-community-and-conference-conversations-mike-hall-interviews-dan-north/)), Dan articulated the core breakthrough:
+In our conversation ([read the Dan North archive interview](/interviews/)), Dan articulated the core breakthrough:
 
 > *"BDD isn't about testing your code. BDD is about creating a shared language so that business analysts, product managers, and developers are talking about the exact same system behavior."*
 
@@ -40,7 +40,7 @@ Dan pointed out that when engineers write tests using domain behavior statements
 
 ### Sandro Mancuso on the Craft Manifesto: Raising the Bar of Developer Dignity
 
-At Software Craftsmanship North America (SCNA) in Chicago, Sandro Mancuso laid out the philosophical foundation behind the Software Craftsmanship movement ([read the Sandro Mancuso interview](/interviews/community-building-and-user-group-organizing-mike-hall-interviews-sandro-mancuso-scna-2013/)).
+At Software Craftsmanship North America (SCNA) in Chicago, Sandro Mancuso laid out the philosophical foundation behind the Software Craftsmanship movement ([read the Sandro Mancuso interview](/interviews/)).
 
 The Agile Manifesto had succeeded in making software delivery iterative, but in many enterprises, "Agile" had been reduced to two-week Jira sprints and endless standup meetings without any regard for technical quality.
 

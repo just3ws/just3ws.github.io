@@ -108,5 +108,5 @@ The lesson from Assembly that stuck with me: **community ownership of software p
 - **Contributor Ranking**: `just3ws` — 634 commits (#1 of all contributors)
 - **MongoDB→Postgres PRs**: [#227](https://github.com/coderwall/coderwall-legacy/pull/227), [#226](https://github.com/coderwall/coderwall-legacy/pull/226)
 - **Badge Assets**: [`assemblymade/coderwall-badges`](https://github.com/assemblymade/coderwall-badges) — created by just3ws
-- **Position Record**: [View Position Detail](/resume/#coderwall)
-- **Related Post**: [The Durable Insights of UGtastic](/2026/05/07/the-durable-insights-of-ugtastic.html)
+- **Position Record**: [View Position Detail](/resume.html)
+- **Related Post**: [The Durable Insights of UGtastic](/ai/2026/05/07/the-durable-insights-of-ugtastic/)

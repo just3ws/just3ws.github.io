@@ -37,7 +37,7 @@ In mid-2010, the group rebranded to **Software Craftsmanship McHenry County (SCM
 
 To support the growing community, **Follett Software Company** in Woodstock/McHenry, IL provided a permanent meeting home with projector facilities and guest Wi-Fi. Additional corporate support for food and beverages came from **8th Light** and **Groupon**. Transitioning meeting coordination to **Meetup.com** resulted in a ~50% surge in discoverability and member attendance.
 
-![SCMC Relational Stores and ORM Architecture technical session in 2010](/assets/images/craftsmanship/scmc-relational-stores-architecture-2010.jpg)
+
 *Primary Archival Artifact (July 2010): An early technical session covering relational database design, ORMs, and persistence boundaries.*
 
 ---

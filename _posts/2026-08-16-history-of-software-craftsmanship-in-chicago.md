@@ -33,7 +33,7 @@ In 2009, local practitioners submitted talk proposals to traditional academic an
 
 That rejection became the rallying cry. **Software Craftsmanship McHenry County (SCMC)** was launched by Mike Hall and Ryan Gerry in McHenry County, IL, with early collaboration from 8th Light leaders Steve Kim and Jim Suchy. Shortly after, Chicago hosted the first **Software Craftsmanship North America (SCNA)** conference—a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
 
-![Software Craftsmanship North America 2010 conference hall with sponsor tables](/assets/images/craftsmanship/scna-2010-conference-hall-sponsors.jpg)
+
 *Primary Archival Artifact (October 2010): The main hall at SCNA 2010 in Chicago, featuring sponsor tables for 8th Light, Obtiva, and Agile Alliance.*
 
 ---
@@ -48,7 +48,7 @@ The Chicago movement brought together iconic leaders:
 - **Igor Polevoy**: Demonstrated lightweight ActiveRecord ORM patterns for Java (*ActiveJDBC*) at SCMC to streamline enterprise backends.
 - **Ray Hightower**: Co-organized SCNA and ChicagoRuby, connecting Midwest developers with national keynote speakers.
 
-![Uncle Bob Martin delivering State keynote at SCNA 2010](/assets/images/craftsmanship/scna-2010-uncle-bob-martin-state-keynote.jpg)
+
 *Robert "Uncle Bob" Martin presenting his talk on "State" and clean boundaries from the SCNA 2010 stage in Chicago.*
 
 ---
@@ -57,7 +57,7 @@ The Chicago movement brought together iconic leaders:
 
 The craftsmanship movement created the talent engine for Chicago’s tech boom. Companies like Groupon, Obtiva, Braintree, Belly, ActiveCampaign, and BenchPrep grew rapidly because they hired developers trained in rigorous TDD, continuous deployment, and clean architecture.
 
-![Chicago Software Craftsmanship open space fishbowl circle in August 2011](/assets/images/craftsmanship/chicago-craftsmanship-open-space-fishbowl-2011.jpg)
+
 *Fishbowl Circle (August 2011): Chicago practitioners in an open-space circle discussing apprentice mentorship and sustainable code quality in a downtown loft.*
 
 By treating code quality as a core business asset rather than a secondary concern, Chicago engineering teams achieved high release safety and rapid feature velocity without accumulating unmanageable technical debt.

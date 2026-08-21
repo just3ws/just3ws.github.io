@@ -69,8 +69,8 @@ When organizations embrace Panoramic Engineering:
 ### 📚 The Complete Retrospective & Craft Series
 
 Explore the full series across the canonical archive:
-- 🧵 **Part 1**: [From PostSharp to Modern Observability](/2026/08/20/from-postsharp-to-modern-observability-what-aop-taught-us.html)
-- ⚡ **Part 2**: [The Zero-Dollar Conference: Chicago Code Camp Retrospective](/2026/08/20/the-zero-dollar-conference-chicago-code-camp-retrospective.html)
-- 🧠 **Part 3**: [The Human Side of Software Craftsmanship: Dan North & Sandro Mancuso](/2026/08/20/the-human-side-of-software-craftsmanship-dan-north-sandro-mancuso.html)
-- 🔒 **Part 4**: [Security at the Seam: Brakeman & RailsConf 2014](/2026/08/20/security-at-the-seam-brakeman-railsconf-and-monolith-audits.html)
-- 🗺️ **Part 5**: [The Panoramic Engineer: Principal IC as Forensic Cartographer](/2026/08/20/the-panoramic-engineer-principal-ic-as-forensic-cartographer.html)
+- 🧵 **Part 1**: [From PostSharp to Modern Observability](/ai/2026/08/20/from-postsharp-to-modern-observability-what-aop-taught-us/)
+- ⚡ **Part 2**: [The Zero-Dollar Conference: Chicago Code Camp Retrospective](/ai/2026/08/20/the-zero-dollar-conference-chicago-code-camp-retrospective/)
+- 🧠 **Part 3**: [The Human Side of Software Craftsmanship: Dan North & Sandro Mancuso](/ai/2026/08/20/the-human-side-of-software-craftsmanship-dan-north-sandro-mancuso/)
+- 🔒 **Part 4**: [Security at the Seam: Brakeman & RailsConf 2014](/ai/2026/08/20/security-at-the-seam-brakeman-railsconf-and-monolith-audits/)
+- 🗺️ **Part 5**: [The Panoramic Engineer: Principal IC as Forensic Cartographer](/ai/2026/08/20/the-panoramic-engineer-principal-ic-as-forensic-cartographer/)
