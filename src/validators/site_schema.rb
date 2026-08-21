@@ -160,4 +160,36 @@ module Validators
       key([:highlights, index]).failure('must be a string or hash with text')
     end
   end
+
+  class YouTubeStagedMetadataContract < BaseContract
+    params do
+      required(:transcript_id).filled(:string)
+      required(:youtube_video_id).filled(:string)
+      required(:title).filled(:string)
+      required(:description).filled(:string)
+      required(:chapters).array(:hash)
+      required(:tags).array(:string)
+      required(:generated_at).filled(:string)
+    end
+
+    rule(:title) do
+      key.failure('must not exceed 100 characters') if value.length > 100
+      key.failure('must include event delimiter |') unless value.include?('|')
+    end
+
+    rule(:description) do
+      key.failure('must include interactive transcript URL') unless value.include?('https://www.just3ws.com/interviews/')
+      key.failure('must include speakers section') unless value.include?('🎙️ SPEAKERS:')
+      key.failure('must include chapters section') unless value.include?('⏱️ CHAPTERS:')
+      key.failure('must not contain raw social media hashtags') if value.match?(/#\w+/)
+    end
+
+    rule(:chapters) do
+      if value.empty?
+        key.failure('must contain at least one chapter')
+      elsif value.first['time'] != '00:00'
+        key.failure('first chapter must start at 00:00')
+      end
+    end
+  end
 end

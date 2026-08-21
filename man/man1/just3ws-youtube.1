@@ -1,0 +1,45 @@
+.TH JUST3WS-YOUTUBE 1 "August 2026" "just3ws" "User Commands"
+.SH NAME
+just3ws-youtube \- manage, generate, and synchronize YouTube video metadata and subtitles
+.SH SYNOPSIS
+.B ruby bin/generate_youtube_metadata.rb
+.br
+.B ruby bin/publish_youtube_metadata.rb
+[\fB\-\-dry-run\fR] [\fB\-\-apply\fR] [\fB\-\-limit\fR \fIN\fR] [\fB\-\-video-id\fR \fIID\fR] [\fB\-\-check-auth\fR]
+.br
+.B ruby bin/sync_youtube_captions.rb
+[\fB\-\-upload\fR] [\fB\-\-limit\fR \fIN\fR] [\fB\-\-video-id\fR \fIID\fR] [\fB\-\-force\fR]
+.SH DESCRIPTION
+.B just3ws-youtube
+is a suite of namespaced CLI utilities to maintain 1:1 metadata parity between the local Jekyll technical interview archive and YouTube video assets. It manages OAuth 2.0 authentication, validates payloads against strict Dry-Validation schemas, generates humane titles and chapter timestamps from dialogue turns, and executes rate-limited batch updates.
+.SH UTILITIES
+.TP
+.B bin/authorize_youtube_oauth.rb
+Interactive Google Cloud OAuth 2.0 authorization listener to obtain persistent refresh tokens.
+.TP
+.B bin/generate_youtube_metadata.rb
+Parses canonical transcripts and research dimensions to produce 1:1 titles, descriptions with speaker credits and chapter timestamps, and tags. Writes to \fI_data/video_assets.yml\fR and \fI_data/youtube_metadata_staged.json\fR.
+.TP
+.B bin/publish_youtube_metadata.rb
+Dry-run diff reporter and YouTube Data API v3 video snippet publisher. Supports quota budget enforcement and state checkpointing.
+.TP
+.B bin/sync_youtube_captions.rb
+Batch uploader for WebVTT timed subtitle caption tracks with exponential backoff on 429/500 errors.
+.SH FILES
+.TP
+.I _data/youtube_metadata_staged.json
+Staged video packages containing 1:1 metadata.
+.TP
+.I tmp/youtube_metadata_sync_state.json
+Persistent state checkpoint for video updates.
+.TP
+.I tmp/youtube_captions_sync_state.json
+Persistent state checkpoint for subtitle uploads.
+.TP
+.I .credentials/youtube_oauth.json
+Persistent OAuth2 credentials and refresh tokens (gitignored).
+.SH SEE ALSO
+.BR rspec (1),
+.BR jekyll (1)
+.SH AUTHORS
+Mike Hall (https://www.just3ws.com)
