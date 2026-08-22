@@ -1,4 +1,4 @@
-# Executive Pitch Brief: Coder — Staff Software Engineer (Agentic Engineering)
+# Executive Pitch Brief: Coder (Staff Software Engineer, Agentic Engineering)
 
 **Candidate:** Mike Hall (`Just3Ws`) · Principal Software Engineer  
 **Target Role:** Staff Software Engineer, Agentic Engineering (Posting #6596)  
@@ -39,7 +39,7 @@ I design systems where agent capabilities are **verifiable, context-budgeted, co
 ---
 
 ## 🔗 Authoritative Verification Links
-* **Portfolio & Cartography:** [just3ws.com/portfolio](https://www.just3ws.com/portfolio)
+* **Portfolio & Architecture Case Studies:** [just3ws.com/portfolio](https://www.just3ws.com/portfolio)
 * **Canonical Résumé:** [just3ws.com/resume](https://www.just3ws.com/resume)
 * **GitHub Profile:** [github.com/just3ws](https://github.com/just3ws)
 * **Archive & System Proofs:** [just3ws.com/interviews](https://www.just3ws.com/interviews)

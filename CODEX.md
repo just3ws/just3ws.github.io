@@ -58,7 +58,7 @@ All resume content must be evaluated against at least one of the following dimen
 - **Durability**: whether the impact outlived the project or role
 - **Influence**: decisions shaped without relying on formal authority
 
-If a bullet or summary does not clearly demonstrate at least one dimension:
+If a bullet or summary does not demonstrate at least one dimension:
 
 - recommend deletion, or
 - rewrite to make the signal explicit.

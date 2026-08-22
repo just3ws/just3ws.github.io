@@ -9,15 +9,10 @@ id: klobomedia
 summary: Owned end-to-end platform architecture, leading high-throughput data integration
   for an early-stage social media startup.
 highlights:
-- Evolving third-party API constraints were addressed by architecting a resilient
-  platform integrating Twitter, Facebook, and Instagram APIs, enabling unified social
-  impact measurement.
-- High-volume data processing bottlenecks were addressed by designing a high-throughput
-  pipeline using Sidekiq Enterprise, generating real-time recommendations.
-- Heterogeneous social media data was addressed by implementing a PostgreSQL JSONB
-  storage strategy, enabling flexible querying.
-- Multi-cloud infrastructure needs were addressed by building and securing production
-  environments across DigitalOcean, Heroku, and AWS with automated deployment pipelines.
+- Architected a social analytics platform integrating Twitter, Facebook, and Instagram APIs, delivering unified audience engagement metrics.
+- Designed an asynchronous ingestion pipeline using Sidekiq Enterprise and Redis, processing real-time social streams under burst traffic.
+- Implemented a PostgreSQL JSONB document storage architecture, allowing fast schema evolution across heterogeneous third-party API payloads.
+- Automated multi-cloud deployment pipelines across Heroku and AWS, establishing reproducible staging and production infrastructure.
 skills:
 - Ruby
 - Ruby on Rails

@@ -8,7 +8,7 @@ Principal Software Engineer who modernizes high-consequence production systems. 
 - Cross-Team Technical Leadership
 - Platform Architecture & Legacy Modernization
 - Production Systems & Reliability
-- System Cartography & Knowledge Recovery
+- Architecture Discovery & Technical Debt Reduction
 - Incident Response & Root Cause Analysis
 - Observability & OpenTelemetry
 - Distributed Systems & Async Processing
@@ -27,27 +27,27 @@ Principal Software Engineer who modernizes high-consequence production systems. 
 ### Development Manager at EMR-Bear, a MedSuite company
 **May 2026 — August 2026**
 
-Engaged on a bounded 90-day interim assignment to conduct rapid system cartography and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics following a founder transition.
+Engaged on a bounded 90-day interim assignment to conduct rapid architecture discovery, platform stabilization, and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics following a founder transition.
 
 **Key Outcomes:**
-- Architectural & Risk Cartography: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
+- Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
 - Production & Compliance Governance: Protected production stability across 130+ clinical environments by establishing release verification gates across the deployment pipeline, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
 - Engineering Continuity: Created transparent component ownership, visible operational priorities, and collaborative decision rhythms for a distributed U.S.-Mexico engineering team.
 
-**Skills:** Technical Leadership, System Cartography, Rapid Risk Assessment, Production Governance, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, Distributed Team Collaboration
+**Skills:** Technical Leadership, Architecture Discovery, Rapid Risk Assessment, Production Governance, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, Distributed Team Collaboration
 
 ### Associate Director, Staff Engineer at OneMain Financial
 **January 2021 — February 2026**
 
-Served as Senior Technical IC and Software Architecture Lead for the Acquisition lane of a regulated financial enterprise, combining hands-on system cartography with production stability, modernization, observability, and cross-team technical direction.
+Served as Senior Technical IC and Software Architecture Lead for the Acquisition lane of a regulated financial enterprise, combining hands-on legacy modernization with production stability, OpenTelemetry observability, and cross-team technical direction.
 
 
 **Key Outcomes:**
-- Full-Stack Dependency Cartography: Reconstructed end-to-end customer journeys spanning browser interaction surfaces, API gateways, application middleware, and legacy database layers, establishing a unified operational risk model for incident response and change governance.
+- Legacy Architecture Discovery & Dependency Mapping: Reconstructed end-to-end customer journeys spanning browser interaction surfaces, API gateways, application middleware, and legacy database layers, establishing a unified operational risk model for incident response and change governance.
 
 - Incident Response & Technical Escalation: Served as final escalation point for high-severity outages, translating live root-cause investigations into stronger telemetry, explicit component ownership, and reusable system knowledge.
 
-- Lateral State Coupling De-risking: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
+- State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
 
 - Platform Enablement & Responsibility Realignment: Realigned Acquisition engineering around explicit business boundaries, then founded and technically led ACQ Enablement to protect platform reliability, remediation, and modernization work from feature pressure.
 
@@ -56,7 +56,7 @@ Served as Senior Technical IC and Software Architecture Lead for the Acquisition
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
-**Skills:** Cross-Team Technical Leadership, Platform Architecture, System Cartography, Lateral State Dependency Mapping, System Resilience, Incident Leadership, Observability, OpenTelemetry, Legacy System Modernization, Distributed Systems, Ruby on Rails, PostgreSQL, AWS
+**Skills:** Cross-Team Technical Leadership, Platform Architecture, Legacy Modernization, Architecture Discovery, Dependency Mapping, System Resilience, Incident Leadership, Observability, OpenTelemetry, Distributed Systems, Ruby on Rails, PostgreSQL, AWS
 
 ### Senior Backend Developer at SK Holdings, Inc.
 **January 2019 — December 2020**

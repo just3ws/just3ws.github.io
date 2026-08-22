@@ -10,14 +10,10 @@ id: reachlocal
 summary: Owned API design and modernization strategy, leading incremental legacy migration
   for a high-volume digital marketing platform.
 highlights:
-- A high-risk legacy rewrite was addressed by evaluating feasibility and proposing
-  an incremental modernization strategy, preventing a massive project failure.
-- Tight backend constraints were addressed by designing a two-tier frontend architecture,
-  separating user experience iteration from legacy system limitations.
-- Brittle internal integrations were addressed by designing and building an API Gateway,
-  safely exposing selected internal services through secure interfaces.
-- Operational and maintenance risks were addressed by introducing code quality and
-  security tooling, improving platform reliability.
+- Evaluated technical feasibility and architected an incremental modernization roadmap, replacing a high-risk full rewrite with a safe Strangler-Fig migration.
+- Designed a decoupled two-tier frontend architecture, isolating user experience delivery from legacy backend database constraints.
+- Built an internal API Gateway to safely expose legacy services through standardized, authenticated interfaces.
+- Introduced automated static analysis and security scanning into the CI/CD pipeline, raising overall codebase health.
 skills:
 - Platform Architecture
 - API Gateway Design
