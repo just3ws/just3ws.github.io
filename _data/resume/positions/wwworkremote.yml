@@ -1,17 +1,17 @@
 ---
 company:
-  name: Independent
-  location: Remote
-title: AI-Augmented Rails Systems Engineer (WWWorkRemote)
+  name: WWWorkRemote
+  location: Independent Project
+title: Creator
 type: Project
-start_date: 2025
+start_date: 2021
 end_date: Present
 id: wwworkremote
 
 summary: >
-  Built a Rails-based data platform using PostgreSQL and vector search to
-  ingest, normalize, and analyze large volumes of job data with controlled
-  AI-assisted workflows.
+  Rails 8 platform for multi-source job ingestion, semantic matching, and
+  application automation, built as a working laboratory for local-first LLM
+  orchestration and treating scraped third-party text as hostile input.
 
 highlights:
   - text: >
@@ -25,25 +25,38 @@ highlights:
       job requirements.
 
   - text: >
-      AI Model Orchestration: Designed a provider-agnostic LLM orchestration layer to normalize
-      multi-model execution, enforce schema compliance, and maintain deterministic outputs across providers.
+      Local-First AI Orchestration: Designed a provider-agnostic LLM orchestration layer behind
+      a YAML-driven model registry, local-first by default (llama.cpp/Ollama primary, hosted
+      Claude as fallback), so routine inference never leaves the machine while a stronger
+      hosted model can be selected per call site.
 
   - text: >
-      Prompt Security & Guardrails: Implemented a multi-stage input sanitation pipeline featuring heuristic
-      scanning and normalization to eliminate prompt injection risks and malformed payloads in AI workflows.
+      Prompt Injection Defense: Built a four-stage guardrails pipeline (normalize, weighted
+      heuristic scan, risk classify, output validate) screening every untrusted scraped document
+      before it reaches a model, scoring known injection patterns plus an instruction-density
+      heuristic -- a posture most ingestion pipelines skip entirely.
 
   - text: >
-      Static Signal Integration: Injected static analysis rules and architectural constraints into model context windows,
-      preventing drift between generated outputs and system security contracts.
+      Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider
+      adapters that extracts postings from live ATS pages and captures the full application
+      lifecycle -- questions asked and answers given -- back into the platform.
+
+  - text: >
+      Static Signal Integration: Injected static analysis rules and architectural constraints into
+      model context windows, preventing drift between generated outputs and system security
+      contracts.
 
 skills:
   - Ruby on Rails
   - PostgreSQL
   - pgvector
+  - Vector Search & Embeddings
+  - LLM Orchestration
+  - Prompt Injection Defense
+  - Local Inference
+  - Chrome Extensions (MV3)
   - API Design
   - Data Pipelines
   - System Design
-  - AI-Orchestration
-  - Prompt Safety
   - OpenTelemetry
   - Distributed Systems

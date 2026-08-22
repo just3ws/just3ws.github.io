@@ -15,6 +15,7 @@ Principal Software Engineer who modernizes high-consequence production systems. 
 - Data Integrity & Performance
 - Platform Enablement & Developer Productivity
 - AI-Augmented Engineering & Automation
+- LLM Orchestration & MCP Tooling
 - Ruby on Rails
 - PostgreSQL & SQL
 - Sidekiq & Redis
