@@ -277,7 +277,7 @@ The methodology page should teach the general method. Case studies should prove 
 | Production-traffic validation | Not established by the supplied extraction | Explicit unknown; high confidence that status is unknown | Omit any positive production-run claim |
 | Absence instrumentation | Important part of the method; not implemented in the later extraction | Doctrine and repeated gap records; high | Publish as an explicit limitation and future direction |
 | Decision-asset governance | Defined extension; registry and complete implementation not confirmed | Doctrine and absence search; medium-high | Publish as developing work, not shipped capability |
-| AI contribution | AI accelerated analysis, synthesis, and artifact production; Mike supplied the operating judgment and originated the methodology | Mike statement plus repository process evidence; high at general level | Publish concretely; avoid “AI thought leader” language |
+| AI contribution | AI accelerated analysis, synthesis, and artifact production; Mike supplied the operating judgment and originated the methodology | Mike statement plus repository process evidence; high at general level | Publish concretely; avoid vague AI influencer language |
 | Internal politics, layoffs, testing disputes, and named individuals | Not necessary to prove the method | Private first-person account and internal material | Omit from the public site |
 | Private paths, repositories, tools, infrastructure, customers, and vendors | Not necessary to prove portability | Private source material | Omit or generalize by class |
 
