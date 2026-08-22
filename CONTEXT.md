@@ -35,6 +35,14 @@ not belong in this repository.
 - **Provenance**: The source lineage for an Archive Item: original URLs, recovered
   metadata, source files, transformation steps, approval notes, and confidence
   limits.
+- **3-Tier Content Classification**: The strict categorization separating human
+  and machine authorship:
+  - *Tier 1 (Organic Writing)*: 100% human-authored essays and practice notes in
+    `/writing/`.
+  - *Tier 2 (Forensic Transcripts)*: Word-for-word primary source dialogues in
+    `/interviews/` (AI used strictly for verbatim transcription and timecode alignment).
+  - *Tier 3 (Quarantined AI Syntheses)*: Machine-assisted exploratory retrospectives
+    quarantined under `/ai/` with `noindex,follow` headers and clear provenance banners.
 - **Public Safety**: The requirement that public artifacts exclude private,
   sensitive, raw, misleading, or unapproved material and preserve the stated
   publication contract.
@@ -71,11 +79,14 @@ hand-edit `_site/` or other generated artifacts to make that verification pass.
    is recovered, transformed, AI-assisted, or confidence-limited.
 4. Keep Transcript State visible and honest. Do not hide validation failures by
    presenting low-confidence transcript output as fully canonical.
-5. Run the appropriate Jekyll, link, data, and smoke checks before shipping
+5. Enforce the 3-Tier Content Classification: never pass off AI-generated articles
+   as human essays. Quarantine synthetic compositions under `/ai/` with explicit
+   provenance banners, hallucination caveats, and `noindex,follow` headers.
+6. Run the appropriate Jekyll, link, data, and smoke checks before shipping
    public archive changes.
-6. When safety is uncertain, keep the material private or mark it as pending
+7. When safety is uncertain, keep the material private or mark it as pending
    review instead of publishing it.
-7. For user-facing changes, complete the installed-local-site workflow and
+8. For user-facing changes, complete the installed-local-site workflow and
    verify `https://just3ws.localhost/` before reporting completion.
 
 ## Key References
