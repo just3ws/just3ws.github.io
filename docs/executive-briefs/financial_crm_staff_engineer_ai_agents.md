@@ -1,7 +1,7 @@
 # Executive Pitch Brief: Wealth Management CRM (Series B, $200M Funded)
 
-**Target Role:** Staff Software Engineer — AI Agents, Platform & Rails Architecture  
-**Comp Range:** $150,000 — $240,000 / yr (Remote, Full-time)  
+**Target Role:** Staff Software Engineer: AI Agents, Platform & Rails Architecture  
+**Comp Range:** $150,000: $240,000 / yr (Remote, Full-time)  
 **Lead Record:** [`wwworkremote` Posting #5049](http://localhost:31000/api/v0/job_postings/5049)  
 **Tone Calibration:** Understated, fact-dense, zero-fluff. Written for VP of Engineering & Technical Leadership.
 
@@ -9,13 +9,13 @@
 
 ## 1. Mission & Architectural Alignment
 
-The target mandate—**scaling an enterprise financial advisor CRM platform following a $200M funding round, integrating AI agents and workflow automation into core Rails/Postgres architectures**—aligns directly with my experience in **financial enterprise acquisition architecture, local AI workflow orchestration, and high-concurrency Ruby/Postgres platform reliability**.
+The target mandate: **scaling an enterprise financial advisor CRM platform following a $200M funding round, integrating AI agents and workflow automation into core Rails/Postgres architectures**: aligns directly with my experience in **financial enterprise acquisition architecture, local AI workflow orchestration, and high-concurrency Ruby/Postgres platform reliability**.
 
 ### Why This Match Works (3 Grounded Signals):
 1. **Financial Enterprise Domain & Compliance Scope**:
    Served as Senior Technical IC and Software Architecture Lead for the Acquisition lane at OneMain Financial, de-risking multi-step financial workflows, customer interaction surfaces, and third-party API supply chains.
 2. **AI-Augmented Engineering & Agent Workflows**:
-   Designed and implemented local, privacy-conscious AI agent workflows for codebase cartography, domain rule extraction, and deterministic evaluation—expanding engineering investigative capacity while keeping human verification explicit.
+   Designed and implemented local, privacy-conscious AI agent workflows for codebase cartography, domain rule extraction, and deterministic evaluation: expanding engineering investigative capacity while keeping human verification explicit.
 3. **Ruby on Rails, PostgreSQL & Cloud Platform Depth**:
    25+ years operating production Rails, PostgreSQL (including pgvector), Sidekiq/Redis, AWS, Docker, and Kubernetes under live financial transaction loads.
 

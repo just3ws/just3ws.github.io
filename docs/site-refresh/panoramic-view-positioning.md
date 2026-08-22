@@ -101,7 +101,7 @@ Do not call the role a contract, fixed-term assignment, or pre-defined bridge ro
 
 **Title:** Panoramic View
 
-**Summary:** A system-cartography methodology that reconciles interested-party understanding, the implemented domain model, and observed runtime behavior. It follows any actor's complete journey—including a human or agentic AI system—and traces each interaction through business process, system boundaries, data changes, evidence, and response with the same fidelity.
+**Summary:** A system-cartography methodology that reconciles interested-party understanding, the implemented domain model, and observed runtime behavior. It follows any actor's complete journey: including a human or agentic AI system: and traces each interaction through business process, system boundaries, data changes, evidence, and response with the same fidelity.
 
 **Action:** See the method
 
@@ -123,7 +123,7 @@ Panoramic View reconciles a system as interested parties understand it with the 
 
 The unit of inquiry is the intersection of business process and system operation. As time and mandate permit, the map can extend beyond an interface path to upstream supply chain, external partners, operational controls, retention, and archival cold storage.
 
-An actor is any participant pursuing a goal through a system: a human customer or employee, an external organization, an automated service, or an agentic AI system. Each encounters an interface that enacts a business process—whether a screen, API, tool, event, or protocol.
+An actor is any participant pursuing a goal through a system: a human customer or employee, an external organization, an automated service, or an agentic AI system. Each encounters an interface that enacts a business process: whether a screen, API, tool, event, or protocol.
 
 The flagship applications centered on complex Rails platform systems, then traversed beyond Rails itself through actor-facing interfaces, domain rules, services, integrations, infrastructure, data changes, and return paths with the same evidence discipline. Rails is the primary proving ground, not an applicability boundary.
 
@@ -132,7 +132,7 @@ The governing questions are:
 1. What do the interested parties understand the system to do?
 2. Which business process and goal is the actor pursuing through the interface?
 3. How does the implemented domain model encode those concepts, rules, and state changes?
-4. What does runtime evidence show the system actually does—and where is the delta?
+4. What does runtime evidence show the system actually does: and where is the delta?
 
 Panoramic View maps the correspondences and gaps among interested-party understanding, the implemented domain model, and observed runtime behavior. The goal is a complete-enough account for the defined decision scope without discarding contradictions, hiding unknowns, or manufacturing certainty.
 
@@ -365,7 +365,7 @@ graph TD
 
 | Page | URL | Parent | Navigation | Priority |
 |---|---|---|---|---|
-| Professional profile and selected résumé | `/` | — | Header: Resume | Highest |
+| Professional profile and selected résumé | `/` |: | Header: Resume | Highest |
 | Panoramic View | `/panoramic-view/` | `/` | Header: Method | Highest |
 | Enterprise archetype case | `/panoramic-view/enterprise-systems/` | `/panoramic-view/` | Contextual | High |
 | Founder-transition archetype case | `/panoramic-view/founder-transition/` | `/panoramic-view/` | Contextual | High |

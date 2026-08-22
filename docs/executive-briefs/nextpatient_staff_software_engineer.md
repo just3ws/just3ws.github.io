@@ -1,8 +1,8 @@
 # Executive Pitch Brief: NextPatient
 
-**Target Role:** Staff Software Engineer — Legacy Integration & Platform Architecture (Ruby/Rails)  
+**Target Role:** Staff Software Engineer: Legacy Integration & Platform Architecture (Ruby/Rails)  
 **Company:** NextPatient  
-**Comp Range:** $250,000 — $300,000 / yr (Remote, Full-time)  
+**Comp Range:** $250,000: $300,000 / yr (Remote, Full-time)  
 **Lead Record:** [`wwworkremote` Posting #5048](http://localhost:31000/api/v0/job_postings/5048)  
 **Tone Calibration:** Understated, fact-dense, zero-fluff. Written for engineering leadership & technical screeners.
 
@@ -10,13 +10,13 @@
 
 ## 1. Mission & Architectural Alignment
 
-NextPatient’s mandate—**decoupling modern patient experiences (scheduling, check-in, waitlists, payments) from dated, legacy doctor’s office EHR systems**—is a direct match for my 25+ year track record in **System Cartography, legacy subsystem decoupling, and zero-downtime platform safety**.
+NextPatient’s mandate: **decoupling modern patient experiences (scheduling, check-in, waitlists, payments) from dated, legacy doctor’s office EHR systems**: is a direct match for my 25+ year track record in **System Cartography, legacy subsystem decoupling, and zero-downtime platform safety**.
 
 ### Why This Match Works (3 Grounded Signals):
 1. **Legacy Healthcare System Integration**:
    Recently conducted a 90-day system cartography and operational risk assessment for EMR-Bear (a multi-tenant healthcare SaaS serving 130+ clinics following a founder transition). Established release verification gates across deployment pipelines to protect clinical uptime and HIPAA compliance boundaries.
 2. **Strangler-Fig Decoupling & API Boundary Design**:
-   At OneMain Financial, refactored high-volume financial customer acquisition flows spanning legacy database layers, multi-service Rails state machines, and third-party API supply chains—eliminating hidden lateral state mutations and reducing outage MTTR by 60%.
+   At OneMain Financial, refactored high-volume financial customer acquisition flows spanning legacy database layers, multi-service Rails state machines, and third-party API supply chains: eliminating hidden lateral state mutations and reducing outage MTTR by 60%.
 3. **OpenTelemetry & Dark Telemetry Illumination**:
    Founded and technically led the enterprise OpenTelemetry initiative at OneMain, converting dark legacy microservice behavior into empirical telemetry and quantifiable risk governance.
 

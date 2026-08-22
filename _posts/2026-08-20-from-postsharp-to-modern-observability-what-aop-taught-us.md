@@ -18,7 +18,7 @@ sitemap: false
 
 In December 2009, I published a technical tutorial and presentation on [Clean AOP using Post# Multicast Syntax](/2009/12/27/clean-aop-using-post-multicast-syntax.html). At the time, enterprise .NET development was wrestling with a massive explosion of boilerplate.
 
-Every time a team added a new cross-cutting requirement—performance profiling, audit logging, security authorization, or caching—developers had to manually decorate hundreds of classes and methods with repetitive custom attributes.
+Every time a team added a new cross-cutting requirement, performance profiling, audit logging, security authorization, or caching, developers had to manually decorate hundreds of classes and methods with repetitive custom attributes.
 
 If a developer forgot to add a `[RequireLicense]` or `[AuditLog]` attribute on a newly created controller, the system silently failed to enforce security.
 
@@ -29,7 +29,7 @@ PostSharp introduced a breakthrough mechanism: **Multicast Aspect Attributes**. 
 [assembly: AuditTrailAspect(AttributeTargetMembers = "Execute*")]
 ```
 
-Looking back from 2026, the lessons from compiler-level AOP weaving did not just solve a .NET maintenance headache—they laid the foundation for modern distributed tracing, OpenTelemetry, and clean architectural seams.
+Looking back from 2026, the lessons from compiler-level AOP weaving did not just solve a .NET maintenance headache, they laid the foundation for modern distributed tracing, OpenTelemetry, and clean architectural seams.
 
 ---
 
@@ -64,7 +64,7 @@ The source code stayed 100% clean, while the compiled binary guaranteed that eve
 
 Today, the principles of Aspect-Oriented Programming are everywhere, even if the acronym "AOP" is spoken less frequently:
 
-- **OpenTelemetry & Distributed Tracing**: Modern OTel auto-instrumentation agents in Java, Node.js, and Python work exactly like AOP bytecode weavers—dynamically intercepting HTTP and database calls at the runtime boundary to inject distributed trace headers.
+- **OpenTelemetry & Distributed Tracing**: Modern OTel auto-instrumentation agents in Java, Node.js, and Python work exactly like AOP bytecode weavers, dynamically intercepting HTTP and database calls at the runtime boundary to inject distributed trace headers.
 - **Ruby `Module#prepend` & Rack Middleware**: In Rails, clean middleware and method prepend shims allow teams to measure request durations and enforce tenant isolation without polluting controller actions.
 - **Python Decorators & TypeScript Metadata**: Modern web frameworks rely on method decorators to attach authentication policies and OpenAPI validation schemas declaratively.
 

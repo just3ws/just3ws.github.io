@@ -1,4 +1,4 @@
-# Outreach Package: NextPatient (Staff Software Engineer — $250k–$300k)
+# Outreach Package: NextPatient (Staff Software Engineer: $250k–$300k)
 
 **Target Recruiter:** Sarah Fox (Senior Technical Recruiter | Ex-AWS, Ex-Groupon)  
 **Target Role:** Staff Software Engineer - Showcase Platform (Ruby/Rails)  
@@ -9,7 +9,7 @@
 
 ## 📧 Email / LinkedIn Message Copy (Ready to Send)
 
-**Subject:** Staff Engineer — Legacy Integration & System Cartography (Ex-Groupon / 130+ Clinical SaaS)
+**Subject:** Staff Engineer: Legacy Integration & System Cartography (Ex-Groupon / 130+ Clinical SaaS)
 
 Hi Sarah,
 

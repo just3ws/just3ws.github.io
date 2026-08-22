@@ -55,5 +55,5 @@ The mission is to transform the 183-item technical interview archive from a stat
 - **Decision:** (Personal Brand) Working with Mike Hall, Staff-level Leadership Insights.
 
 ## 6. Distribution (LinkedIn Friendly)
-- **Series:** "The Lost Tapes" — Weekly high-fidelity snippet + hook.
-- **Series:** "Durable Wisdom" — 1 technical insight from the `insights` field paired with a modern engineering tradeoff.
+- **Series:** "The Lost Tapes": Weekly high-fidelity snippet + hook.
+- **Series:** "Durable Wisdom": 1 technical insight from the `insights` field paired with a modern engineering tradeoff.

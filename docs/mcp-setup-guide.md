@@ -1,6 +1,6 @@
 # UGtastic Archive Model Context Protocol (MCP) Integration Guide
 
-The **UGtastic Archive** is 100% **MCP-ready**! Any AI assistant or agent client supporting the Model Context Protocol (MCP)—including Claude Desktop, Antigravity, Cursor, Windsurf, or custom LLM pipelines—can connect directly to this repository to inspect, search, and reason over the entire **207-interview canon (~456,000 words)**.
+The **UGtastic Archive** is 100% **MCP-ready**! Any AI assistant or agent client supporting the Model Context Protocol (MCP): including Claude Desktop, Antigravity, Cursor, Windsurf, or custom LLM pipelines: can connect directly to this repository to inspect, search, and reason over the entire **207-interview canon (~456,000 words)**.
 
 ---
 

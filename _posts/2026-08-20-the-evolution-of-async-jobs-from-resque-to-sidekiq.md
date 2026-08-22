@@ -30,7 +30,7 @@ Looking back at the architectural transition from **Resque** and **Clockwork** t
 
 In the early 2010s, Github's `Resque` was the industry standard for Ruby background processing. Backed by Redis, Resque had an elegant operational model: for every job popped off a Redis list, the master worker process called `fork()`, executed the job in an isolated child process, and exited.
 
-Forking provided complete memory isolation—if a job leaked memory or crashed with a segmentation fault, the parent worker survived. 
+Forking provided complete memory isolation, if a job leaked memory or crashed with a segmentation fault, the parent worker survived. 
 
 However, at scale, fork-based architectures hit severe bottlenecks:
 1. **Fork Overhead**: Spawning a new child process per job consumed significant CPU cycles and kernel resources under high job throughput.

@@ -23,8 +23,7 @@ This document defines the inter-tool communication protocol, data interfaces, an
    - MCP Server: ugtastic-archive            - LLM::ProfileMatcher / ArtifactGenerator
 ```
 
-Scoring itself is single-sourced in `wwworkremote/core` (`LLM::ProfileMatcher`, keyed off its own `CareerProfile`) --
-not `just3ws`'s `resume.json`. `bin/evaluate_job_lead.rb` here calls `bin/wwwr match` rather than re-implementing fit
+Scoring itself is single-sourced in `wwworkremote/core` (`LLM::ProfileMatcher`, keyed off its own `CareerProfile`): not `just3ws`'s `resume.json`. `bin/evaluate_job_lead.rb` here calls `bin/wwwr match` rather than re-implementing fit
 scoring against the just3ws resume export, so there's one scorer instead of two that can drift apart.
 
 ---
@@ -85,12 +84,10 @@ To allow AI agents across sessions, CLI tools, and different workspaces (Antigra
 
 * **List Ingested Postings**: `GET http://localhost:31000/api/v0/job_postings`
 * **Job Posting Detail**: `GET http://localhost:31000/api/v0/job_postings/:id`
-* **Fit scoring**: `cd ~/github.com/wwworkremote/core && bin/wwwr match <job_posting_id> --source=<name> [--escalate]`
-  -- the actual entry point for match analysis. `--source` is a required attribution tag (logged, not a credential --
-  everything here is local/single-user). No `--escalate`: read-only, prints whatever analysis is already on file.
+* **Fit scoring**: `cd ~/github.com/wwworkremote/core && bin/wwwr match <job_posting_id> --source=<name> [--escalate]`: the actual entry point for match analysis. `--source` is a required attribution tag (logged, not a credential: everything here is local/single-user). No `--escalate`: read-only, prints whatever analysis is already on file.
   With `--escalate`: runs a fresh `LLM::ProfileMatcher` scan and persists it (costs LLM tokens). Full contract:
   `docs/agents/interop.md` in `wwworkremote/core`.
-* `admin/leads/:id` is a browser-session-authenticated admin view, not an API -- don't curl it from another tool.
+* `admin/leads/:id` is a browser-session-authenticated admin view, not an API: don't curl it from another tool.
 
 ---
 

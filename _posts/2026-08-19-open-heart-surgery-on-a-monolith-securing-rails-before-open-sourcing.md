@@ -2,7 +2,7 @@
 layout: "post"
 title: "Open-Heart Surgery on a Monolith: What 9 Security Patches in 14 Days Taught Me About Open-Sourcing Rails"
 date: "2026-08-19"
-description: "When taking a high-traffic closed-source Rails monolith open-source, the biggest challenge isn't the open-source license—it's the implicit assumptions baked into private code. Here is how we audited and secured Coderwall before making the repository public."
+description: "When taking a high-traffic closed-source Rails monolith open-source, the biggest challenge isn't the open-source license, it's the implicit assumptions baked into private code. Here is how we audited and secured Coderwall before making the repository public."
 tags:
   - Security
   - Ruby on Rails
@@ -134,7 +134,7 @@ Why do these 2014 Rails security audits matter in 2026?
 
 1. **Private code always carries false assumptions of safety.** Internal tooling and microservices often skip defensive parameter validation because they operate behind a VPC. The moment you expose an internal API to an external partner or an autonomous AI agent, those unverified inputs become immediate vulnerabilities.
 2. **Whitelisting beats blacklisting every single time.** Whether mapping badge classes in Ruby or routing tool calls to AI subagents, never let user-controlled strings dynamically resolve to executable runtime methods without an explicit, immutable lookup table.
-3. **Open-source preparation forces architectural clarity.** Stripping proprietary secrets and establishing clean `.env` contracts didn't just make Coderwall safe to publish—it made the application faster, easier to test, and significantly cheaper to run.
+3. **Open-source preparation forces architectural clarity.** Stripping proprietary secrets and establishing clean `.env` contracts didn't just make Coderwall safe to publish, it made the application faster, easier to test, and significantly cheaper to run.
 
 ---
 

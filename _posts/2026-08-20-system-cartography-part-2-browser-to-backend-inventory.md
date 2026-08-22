@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "System Cartography: Part 2 — The Browser-to-Backend Inventory: Tracing the Seams of a Decision"
+title: "System Cartography: Part 2 :  The Browser-to-Backend Inventory: Tracing the Seams of a Decision"
 date: "2026-08-20"
 description: "A single user interaction touches dozens of hidden checkpoints before a database transaction commits. Here is how conducting an end-to-end browser-to-backend inventory reveals where system boundaries actually exist."
 tags:
@@ -15,7 +15,7 @@ robots: noindex,follow
 sitemap: false
 ---
 
-When a customer clicks a button in a web application—whether submitting an order, applying for an enterprise loan, or transferring funds—product requirements typically describe a single step: *"User confirms action."*
+When a customer clicks a button in a web application, whether submitting an order, applying for an enterprise loan, or transferring funds, product requirements typically describe a single step: *"User confirms action."*
 
 To software engineers and system architects, that single button click initiates a multi-layered traversal through an expansive technology stack.
 

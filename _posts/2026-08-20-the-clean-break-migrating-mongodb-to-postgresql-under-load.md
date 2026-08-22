@@ -68,7 +68,7 @@ Once core entities were synced and verified, we severed the remaining Mongoid de
 
 ### Unlocking High Performance with Smarter Postgres Indexing
 
-Moving to PostgreSQL didn't just solve data integrity—it radically improved query performance and reduced hosting costs on Heroku.
+Moving to PostgreSQL didn't just solve data integrity, it radically improved query performance and reduced hosting costs on Heroku.
 
 Instead of running separate search infrastructure for simple string lookups, we leveraged native PostgreSQL indexing capabilities:
 
@@ -92,7 +92,7 @@ The lessons from Coderwall's database migration remain crystal clear:
 
 1. **Every system eventually becomes relational.** If entities reference each other, you are building a relational graph. Trying to manage foreign keys and referential integrity in application code will always be slower and more bug-prone than letting a battle-tested relational engine enforce ACID guarantees.
 2. **Operational simplicity wins.** Consolidating from a multi-database setup (MongoDB + Redis + Postgres) down to PostgreSQL and Redis simplified the local onboarding setup for open-source contributors and cut production dyno costs immediately.
-3. **Good schema design is an engineering superpower.** Strict database types and constraints don't slow down development—they prevent silent data corruption and give future maintainers a clear contract of how the system actually works.
+3. **Good schema design is an engineering superpower.** Strict database types and constraints don't slow down development, they prevent silent data corruption and give future maintainers a clear contract of how the system actually works.
 
 ---
 

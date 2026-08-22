@@ -4,7 +4,7 @@ title: "KubeCon NA 2023 Field Retrospective: Telemetry Pipelines, Structured Log
 date: 2026-08-21 08:00:00 -0500
 categories: [Architecture, Observability, Retrospective]
 tags: [KubeCon, CNCF, Observability, OpenTelemetry, Fluent Bit, Structured Logging, FinOps, Architecture]
-description: "A four-day technical field retrospective from KubeCon North America 2023 in Chicago—breaking down CI/CD telemetry, Kubernetes WG Structured Logging, Fluent Bit pipelines, and FinOps postmortems."
+description: "A four-day technical field retrospective from KubeCon North America 2023 in Chicago, breaking down CI/CD telemetry, Kubernetes WG Structured Logging, Fluent Bit pipelines, and FinOps postmortems."
 permalink: /ai/2026/08/21/kubecon-na-2023-field-retrospective-observability-finops/
 ai_generated: true
 robots: noindex,follow
@@ -19,7 +19,7 @@ Here is my four-day technical field retrospective, drawn from primary session no
 
 ---
 
-### Day 0: Observability Day — Treating CI/CD as a Distributed System
+### Day 0: Observability Day, Treating CI/CD as a Distributed System
 
 Observability Day made one point unmistakably clear: your deployment pipeline is a mission-critical distributed system, yet most engineering organizations still debug builds by scrolling through megabytes of unindexed terminal output.
 
@@ -36,7 +36,7 @@ Key takeaways from the session:
 
 ---
 
-### Day 1: Kubernetes Core — The Push for Structured Logging
+### Day 1: Kubernetes Core, The Push for Structured Logging
 
 In the main conference track, the Kubernetes **Working Group for Structured Logging** (`#wg-structured-logging`) presented a crucial update on migrating the Kubernetes control plane away from free-form string printing.
 
@@ -53,7 +53,7 @@ Why structured logging matters for cluster reliability:
 
 ---
 
-### Day 2: Fluent Bit — The Universal Telemetry Workhorse
+### Day 2: Fluent Bit, The Universal Telemetry Workhorse
 
 On Day 2, technical deep dives centered on **Fluent Bit** and its evolution from a lightweight log forwarder into a unified telemetry processor handling logs, metrics, and distributed traces.
 
@@ -70,7 +70,7 @@ Core architectural strengths highlighted:
 
 ---
 
-### Day 3: FinOps & Cloud Cost Postmortems — Engineering the Bottom Line
+### Day 3: FinOps & Cloud Cost Postmortems, Engineering the Bottom Line
 
 The closing day focused heavily on cloud unit economics. Multiple organizations shared candid incident retrospectives detailing runaway cloud bills and unexpected data transfer spikes.
 

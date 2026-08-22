@@ -32,7 +32,7 @@ This strategy document outlines our methodology for conducting deep archival res
 - **Key Themes:** Continuous Delivery, Lean manufacturing in software, Ruby on Rails 4, static security analysis, log aggregation, graph databases.
 - **Key Figures:** Jez Humble, Obie Fernandez, Rich Hickey, Justin Collins (Brakeman), Kiyoto Tamura (Fluentd), Rafael França, Tim Bray, Michael T. Nygard.
 - **Key Communities & Events:** RailsConf 2014 (Chicago), GOTO Chicago 2014.
-- **Historical Significance:** The peak polyglot era—linking Lean manufacturing principles (Jez Humble) with modern open-source tool maintainers (Brakeman, Fluentd, Ember.js).
+- **Historical Significance:** The peak polyglot era: linking Lean manufacturing principles (Jez Humble) with modern open-source tool maintainers (Brakeman, Fluentd, Ember.js).
 
 ### Era 5: Polyglot Architecture & Modern AI (2015–2026)
 - **Key Themes:** Jepsen distributed systems testing, V8 engine internals, C# language evolution, AI-augmented developer pairing and vector search.

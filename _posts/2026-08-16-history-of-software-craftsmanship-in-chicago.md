@@ -25,13 +25,13 @@ In Chicago, **Dave Hoover** (co-founder of Obtiva) and early software craftsmans
 
 ---
 
-### Chapter 2: "Too Practical" — The Rejection That Launched SCNA
+### Chapter 2: "Too Practical": The Rejection That Launched SCNA
 
 In 2009, local practitioners submitted talk proposals to traditional academic and enterprise software conferences. The feedback came back blunt: *"Your talks are too hands-on. Showing live refactoring, TDD katas, and ORM internals is too tactical and practical for a professional conference."*
 
 > "They told us live pairing, TDD katas, and unit test refactoring were 'too practical' for a stage. So we decided right then: if mainstream conferences won't show real engineering practice, we will build a stage dedicated entirely to it."
 
-That rejection became the rallying cry. **Software Craftsmanship McHenry County (SCMC)** was launched by Mike Hall and Ryan Gerry in McHenry County, IL, with early collaboration from 8th Light leaders Steve Kim and Jim Suchy. Shortly after, Chicago hosted the first **Software Craftsmanship North America (SCNA)** conference—a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
+That rejection became the rallying cry. **Software Craftsmanship McHenry County (SCMC)** was launched by Mike Hall and Ryan Gerry in McHenry County, IL, with early collaboration from 8th Light leaders Steve Kim and Jim Suchy. Shortly after, Chicago hosted the first **Software Craftsmanship North America (SCNA)** conference, a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
 
 
 *Primary Archival Artifact (October 2010): The main hall at SCNA 2010 in Chicago, featuring sponsor tables for 8th Light, Obtiva, and Agile Alliance.*

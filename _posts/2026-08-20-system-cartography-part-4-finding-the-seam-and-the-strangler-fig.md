@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "System Cartography: Part 4 — Finding the Seam: How the Panoramic View Powers the Strangler Fig"
+title: "System Cartography: Part 4 :  Finding the Seam: How the Panoramic View Powers the Strangler Fig"
 date: "2026-08-20"
 description: "The Strangler Fig pattern is the gold standard for legacy system modernization, but it fails if you cut in the wrong place. Here is how the Panoramic View identifies clean architectural seams for zero-risk service extraction."
 tags:
@@ -21,7 +21,7 @@ Yet in practice, many Strangler Fig initiatives fail.
 
 They do not fail because the concept is flawed. They fail because teams cut the system at the **wrong architectural seams**.
 
-If you attempt to extract a service along an arbitrary folder boundary—without understanding the lateral state dependencies, shared database locks, and hidden side effects—you end up creating a distributed monolith that is far more fragile than the original codebase.
+If you attempt to extract a service along an arbitrary folder boundary, without understanding the lateral state dependencies, shared database locks, and hidden side effects, you end up creating a distributed monolith that is far more fragile than the original codebase.
 
 The **Panoramic View** is what makes the Strangler Fig pattern actually work.
 

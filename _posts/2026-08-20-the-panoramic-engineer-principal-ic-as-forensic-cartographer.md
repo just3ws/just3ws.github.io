@@ -62,7 +62,7 @@ Just as we recovered [214 historical technical conversations](/interviews/) to p
 When organizations embrace Panoramic Engineering:
 - **Modernization projects succeed**: Complex legacy platforms transition incrementally and safely via verified seams.
 - **Developer velocity accelerates**: Engineers work inside bounded contexts with zero fear of breaking unmapped downstream dependencies.
-- **Technology serves humanity**: Software becomes what it was always meant to be—a disciplined craft that solves real human problems with elegance, clarity, and care.
+- **Technology serves humanity**: Software becomes what it was always meant to be, a disciplined craft that solves real human problems with elegance, clarity, and care.
 
 ---
 

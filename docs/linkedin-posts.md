@@ -40,7 +40,7 @@ When the mainstream Agile conference came to Chicago in 2010, they rejected a sl
 
 In response, the community created its own venue: **Software Craftsmanship North America (SCNA)**.
 
-But the movement was bigger than any one platform. It was a "rallying point" for like-minded individuals from myriad communities—including the vibrant .NET developers at Chicago Alt.NET.
+But the movement was bigger than any one platform. It was a "rallying point" for like-minded individuals from myriad communities: including the vibrant .NET developers at Chicago Alt.NET.
 
 My friend Sergio Pereira, leader of Chicago Alt.NET, was a precursor to this convergence. When the idea for UGtastic was born at that first SCNA conference, Sergio’s interview was the blueprint for what was to come.
 
@@ -60,7 +60,7 @@ https://www.just3ws.com/interviews/chicago-craftsmanship/
 
 ## Post 3: The 'Lost Tapes' Hook (Rich Hickey)
 **Target:** JVM / Functional Programming community
-**Hook:** "Power isn't derived from complexity, but from the orthogonality of simple parts." — Rich Hickey
+**Hook:** "Power isn't derived from complexity, but from the orthogonality of simple parts.": Rich Hickey
 
 **Body:**
 Back in 2013, I sat down with the creator of Clojure to discuss the language's original vision.

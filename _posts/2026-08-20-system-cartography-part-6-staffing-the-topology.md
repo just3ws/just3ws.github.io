@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "System Cartography: Part 6 — Staffing the Topology: Reversing Conway's Law for Real Engineering Velocity"
+title: "System Cartography: Part 6 :  Staffing the Topology: Reversing Conway's Law for Real Engineering Velocity"
 date: "2026-08-20"
 description: "Organizations inevitably produce software architectures that mimic their communication structures. Here is how mapping real system decision density allows leadership to reverse Conway's Law and allocate headcount where it actually matters."
 tags:

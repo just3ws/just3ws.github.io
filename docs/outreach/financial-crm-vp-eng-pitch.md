@@ -1,7 +1,7 @@
-# Outreach Package: Financial CRM (Staff Engineer — $150k–$240k)
+# Outreach Package: Financial CRM (Staff Engineer: $150k–$240k)
 
 **Target Contact:** VP of Engineering / Hiring Manager  
-**Target Role:** Staff/Sr Engineer ($150k–$240k) — Agents, AI, Ruby, Rails  
+**Target Role:** Staff/Sr Engineer ($150k–$240k): Agents, AI, Ruby, Rails  
 **Lead Record:** [`wwworkremote` Lead #5049](http://localhost:31000/admin/leads/5049)  
 **Status in Pipeline:** Staged for Outbound Outreach (`favorited`)  
 
@@ -9,7 +9,7 @@
 
 ## 📧 Email / Application Note Copy (Ready to Send)
 
-**Subject:** Staff Engineer (AI Agents & Rails Architecture) — System Cartography Proof
+**Subject:** Staff Engineer (AI Agents & Rails Architecture): System Cartography Proof
 
 Hi Team,
 

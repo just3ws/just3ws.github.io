@@ -15,7 +15,7 @@ robots: noindex,follow
 sitemap: false
 ---
 
-While digging through the UGtastic video archives to prepare them for republication, I’ve been struck by how many of these conversations—recorded over a decade ago—feel like they were scripted for today.
+While digging through the UGtastic video archives to prepare them for republication, I’ve been struck by how many of these conversations, recorded over a decade ago, feel like they were scripted for today.
 
 Back in 2012-2014, we were at the "start" of two massive shifts: the **DevOps movement** and the **Software Craftsmanship movement**. At the time, we were debating how to bridge the gap between "Dev" and "Ops," and whether "Craftsmanship" was just a fancy word for "doing your job well." 
 
@@ -38,7 +38,7 @@ We often think of "modern" architecture as a post-cloud invention, but the found
 **[Jez Humble](/interviews/jez-humble-goto-conference-2014/)** was already defining DevOps not as a set of tools, but as a **cultural movement** focused on continuous learning. Looking at where we are now, the teams that succeeded were the ones that took Jez's cultural advice to heart, while those who just "bought a tool" are still struggling with the same handoff friction we discussed ten years ago.
 
 ### 💡 The Art of Practice
-The Software Craftsmanship movement brought "practice" to the forefront. **[Corey Haines](/interviews/corey-haines-general/)** introduced the "throwaway" constraint of the Code Retreat—deleting your code every 45 minutes to focus entirely on design. 
+The Software Craftsmanship movement brought "practice" to the forefront. **[Corey Haines](/interviews/corey-haines-general/)** introduced the "throwaway" constraint of the Code Retreat, deleting your code every 45 minutes to focus entirely on design. 
 
 In our current era of AI-generated boilerplate, the value of **internalized intuition** (what **[Dave Thomas](/interviews/dave-thomas-goto-conference-and-community-goto-conference-and-community/)** calls "Unknown Knowns") has never been higher. If we let the machines do all the thinking, we lose the "tacit knowledge" that only comes from deep, deliberate practice.
 
@@ -53,4 +53,4 @@ Republishing these legacy videos isn't just about nostalgia. It’s about **cont
 
 I hope you enjoy watching these interviews from a "simpler time" in technology. I am profoundly grateful to every single person who took the time to sit down (or more often, stand) with me to discuss what excited them. They shared their work and their hope that others could take these lessons and build better products. 
 
-The "Sound of Tokens" might be the new rhythmic backdrop of our work, but the wisdom in these archives remains the signal in the noise. Stay tuned—the process is in flight, and there is much more to come.
+The "Sound of Tokens" might be the new rhythmic backdrop of our work, but the wisdom in these archives remains the signal in the noise. Stay tuned, the process is in flight, and there is much more to come.

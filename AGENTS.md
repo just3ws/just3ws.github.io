@@ -46,6 +46,7 @@ Use these skills by default for this repository:
 15. `executive-brief-generator` - Generate tailored 1-page executive pitch briefs for target Principal Engineer roles.
 16. `job-lead-evaluator` - Evaluate job leads from wwworkremote against personal OS context and canonical resume data.
 17. `prose-humanity-auditor` - Audit technical prose across site Markdown, YAML data, and resume surfaces for plain language, neuroinclusive readability, cognitive load, and zero AI jargon.
+18. `no-em-dashes` - Enforce em-dash-free writing across prose, case studies, briefs, and documentation to eliminate machine-writing cadence and maintain authentic human voice.
 
 
 ## Site Refresh Agent Workflow

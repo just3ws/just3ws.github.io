@@ -20,7 +20,7 @@ Drive technical authority and traffic to the forensic archive by sharing high-fi
 
 ### 1. Rich Hickey: The Lost Tapes #1
 **Hook:** "Power isn't derived from complexity, but from the orthogonality of simple parts."
-**Insight:** Rich Hickey's original vision for Clojure wasn't just about LISP—it was a radical re-imagining of how simple data structures could solve massive concurrency problems.
+**Insight:** Rich Hickey's original vision for Clojure wasn't just about LISP: it was a radical re-imagining of how simple data structures could solve massive concurrency problems.
 **CTA:** Read the full forensic transcript: https://www.just3ws.com/interviews/rich-hickey-creator-of-clojure-general/
 **Hashtags:** #Clojure #FunctionalProgramming #RichHickey
 
@@ -38,7 +38,7 @@ Drive technical authority and traffic to the forensic archive by sharing high-fi
 
 ### 4. Robert "Uncle Bob" Martin: The Lost Tapes #4
 **Hook:** "We are the authors of the rules that run the world."
-**Insight:** Uncle Bob on the ethical responsibility of the software craftsman. Technical excellence isn't just about code—it's about the social contract between the engineer and society.
+**Insight:** Uncle Bob on the ethical responsibility of the software craftsman. Technical excellence isn't just about code: it's about the social contract between the engineer and society.
 **CTA:** Explore the ethics of craft: https://www.just3ws.com/interviews/robert-martin-software-craftsmanship-north-america-2012/
 **Hashtags:** #CleanCode #UncleBob #SCNA
 

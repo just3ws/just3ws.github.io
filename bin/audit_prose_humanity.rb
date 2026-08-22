@@ -30,6 +30,14 @@ POOR_LINK_TEXT = [
   /\blink\b/i
 ].freeze
 
+EM_DASH_PATTERNS = [
+  /[^\s\-\|]—[^\s\-\|]/,       # Word—word (unspaced em dash)
+  /\s+—\s+/,                  # Spaced em dash
+  /\s+--\s+/,                 # Spaced double hyphen
+  /\b[a-zA-Z]+--[a-zA-Z]+\b/,  # Word--word
+  /\s+-\s+(?=[a-zA-Z])/       # Spaced single hyphen acting as dash
+].freeze
+
 class ProseHumanityAuditor
   attr_reader :files, :issues, :stats, :strict
 
@@ -37,7 +45,7 @@ class ProseHumanityAuditor
     @files = files
     @strict = strict
     @issues = []
-    @stats = { total_files: 0, total_words: 0, total_sentences: 0, jargon_matches: 0, long_sentences: 0, passive_voice: 0 }
+    @stats = { total_files: 0, total_words: 0, total_sentences: 0, jargon_matches: 0, long_sentences: 0, passive_voice: 0, em_dashes: 0 }
   end
 
   def run!
@@ -153,6 +161,15 @@ class ProseHumanityAuditor
         end
       end
     end
+
+    # 4. Em Dash & Machine Punctuation Detection (WARNING)
+    prose_without_tables = clean_text.lines.reject { |l| l.strip.start_with?('|') || l.strip.match?(/\A---+\z/) }.join("\n")
+    EM_DASH_PATTERNS.each do |pattern|
+      prose_without_tables.scan(pattern).each do |match|
+        @stats[:em_dashes] += 1
+        @issues << { file: file_path, line: 1, type: "Em Dash / Machine Punctuation", msg: "Contains em dash or spaced dash pattern ('#{match.strip}'). Recast sentence using colon, period, comma, or parentheses.", severity: :warning }
+      end
+    end
   end
 
   def calculate_readability_metrics
@@ -177,6 +194,7 @@ class ProseHumanityAuditor
     puts " Avg Words / Sentence   : #{metrics[:avg_words_per_sentence]} (Target: < 20.0)"
     puts " Flesch-Kincaid Grade   : ~#{metrics[:flesch_kincaid]} (Target: 8.0 - 12.0)"
     puts " AI Jargon Matches      : #{@stats[:jargon_matches]} (Target: 0)"
+    puts " Em Dashes Detected     : #{@stats[:em_dashes]} (Warnings)"
     puts " Long Sentences (>30w)  : #{@stats[:long_sentences]} (Warnings)"
     puts " Passive Voice Instances: #{@stats[:passive_voice]} (Warnings)"
     puts " Total Issues Found     : #{@issues.size} (#{errors.size} Errors, #{warnings.size} Warnings)"
@@ -207,7 +225,7 @@ files_to_audit = []
 
 OptionParser.new do |opts|
   opts.banner = "Usage: bin/audit_prose_humanity.rb [options] [files...]"
-  opts.on("-s", "--strict", "Fail on warnings (sentence length, passive voice)") do
+  opts.on("-s", "--strict", "Fail on warnings (sentence length, passive voice, em dashes)") do
     strict_mode = true
   end
   opts.on("-h", "--help", "Prints this help") do
@@ -217,7 +235,7 @@ OptionParser.new do |opts|
 end.parse!
 
 if ARGV.empty?
-  files_to_audit = Dir.glob("{_data/*.yml,case-studies/*.md,case-studies/*.html,docs/**/*.md,exports/briefs/**/*.md,README.md}")
+  files_to_audit = Dir.glob("{_data/*.yml,case-studies/*.md,case-studies/*.html,docs/**/*.md,exports/briefs/**/*.md,_posts/**/*.md,ai/**/*.html,chicago-craftsmanship/*.html,panoramic-view/*.html,README.md}").reject { |f| f.include?('vendor/') || f.include?('_site/') }
 else
   files_to_audit = ARGV
 end

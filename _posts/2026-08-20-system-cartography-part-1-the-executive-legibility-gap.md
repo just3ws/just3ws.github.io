@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "System Cartography: Part 1 — The Executive Legibility Gap and the Map of Business Decisions"
+title: "System Cartography: Part 1 :  The Executive Legibility Gap and the Map of Business Decisions"
 date: "2026-08-20"
 description: "In every mature company, Product, Engineering, and Leadership have three conflicting mental models of how the system works. Here is why mapping decision locations is the prerequisite for accurate staffing, modernizations, and capital decisions."
 tags:
@@ -31,7 +31,7 @@ It is almost never a talent problem. **It is an architectural legibility problem
 
 As companies grow, documentation drifts from reality. The official product specifications describe how the business *believes* the application behaves.
 
-The actual business rules—pricing tier overrides, tax exemptions, retry backoffs, compliance gates, and fraud heuristics—do not live in the product specs. They are scattered across:
+The actual business rules, pricing tier overrides, tax exemptions, retry backoffs, compliance gates, and fraud heuristics, do not live in the product specs. They are scattered across:
 - Ad-hoc `before_action` filters in Rails controllers.
 - Unmonitored cron jobs and background workers.
 - Raw SQL stored procedures and database triggers.
@@ -77,4 +77,4 @@ When decision locations are explicitly mapped, three critical organizational cap
 
 ---
 
-*In Part 2 of this series, we will trace a single user intent across the entire technology stack—from the browser DOM event down to the database row lock—inventorying every decision seam along the way.*
+*In Part 2 of this series, we will trace a single user intent across the entire technology stack, from the browser DOM event down to the database row lock, inventorying every decision seam along the way.*

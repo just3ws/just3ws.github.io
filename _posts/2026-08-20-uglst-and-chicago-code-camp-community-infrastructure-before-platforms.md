@@ -22,7 +22,7 @@ Back then, you couldn't rely on centralized corporate platforms to discover or o
 
 If a developer community wanted high-bandwidth coordination, we had to build our own software. 
 
-Two projects from that era—**Chicago Code Camp** (2010–2012) and **UGl.st** (The User Group List, 2014)—taught me that community infrastructure requires thoughtful software architecture, clear incentives, and radical simplicity.
+Two projects from that era: **Chicago Code Camp** (2010–2012) and **UGl.st** (The User Group List, 2014), taught me that community infrastructure requires thoughtful software architecture, clear incentives, and radical simplicity.
 
 ---
 
@@ -45,7 +45,7 @@ Running a 500+ person technical event on a zero-dollar software budget forced cr
 
 By 2014, a new challenge emerged. Hundreds of independent user groups were active across the country, but they operated in silos. A developer visiting a new city or looking to pick up functional programming had no simple way to find active, verified local meetups.
 
-That friction led me to build **UGl.st** (`ugl.st` — *The User-Group List*).
+That friction led me to build **UGl.st** (`ugl.st`: *The User-Group List*).
 
 UGl.st was designed as a lightweight, open discovery engine for user group organizers:
 - **Organizer Self-Service**: Group leaders could claim and verify their groups without paying recurring subscription fees.

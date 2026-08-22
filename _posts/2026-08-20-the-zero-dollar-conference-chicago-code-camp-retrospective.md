@@ -65,7 +65,7 @@ If our event schedule had relied on a heavy client-side single-page app or dynam
 We designed the site to be **100% statically pre-rendered**:
 - The complete schedule grid, speaker bios, room maps, and sponsor listings were compiled into lean, static HTML and CSS files.
 - Assets were cached aggressively with local storage fallbacks.
-- When an attendee pulled out their phone between sessions, the schedule loaded instantaneously—even with one bar of 3G cellular service.
+- When an attendee pulled out their phone between sessions, the schedule loaded instantaneously, even with one bar of 3G cellular service.
 
 ---
 
@@ -75,7 +75,7 @@ Running Chicago Code Camp proved that constraints breed architectural clarity:
 
 1. **Lightweight beats complex**: When resources are constrained, static pre-rendering and clean HTML will outperform over-engineered dynamic microservices every time.
 2. **Process integrity matters**: Automated blind evaluation removes human bias and builds trust in community platforms.
-3. **Software exists to serve human connection**: The purpose of the technology was not to keep people staring at screens—it was to get attendees into rooms where they could learn from peers and build lasting professional relationships.
+3. **Software exists to serve human connection**: The purpose of the technology was not to keep people staring at screens, it was to get attendees into rooms where they could learn from peers and build lasting professional relationships.
 
 ---
 

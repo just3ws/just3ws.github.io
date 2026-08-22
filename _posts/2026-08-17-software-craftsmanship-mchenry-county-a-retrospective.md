@@ -4,7 +4,7 @@ title: "Software Craftsmanship McHenry County: A Historical Retrospective"
 date: 2026-08-17 08:00:00 -0500
 categories: [History, Software Craftsmanship]
 tags: [SCMC, McHenry, Chicago, Community, User Groups, History, TDD, Clean Code]
-description: "A comprehensive historical retrospective on Software Craftsmanship McHenry County (SCMC)—from its 2009 origins as the McHenry Cloud Developer’s Group to its role in shaping Chicagoland developer culture."
+description: "A comprehensive historical retrospective on Software Craftsmanship McHenry County (SCMC), from its 2009 origins as the McHenry Cloud Developer’s Group to its role in shaping Chicagoland developer culture."
 permalink: /ai/2026/08/17/software-craftsmanship-mchenry-county-a-retrospective/
 ai_generated: true
 robots: noindex,follow
@@ -15,7 +15,7 @@ Between 2009 and 2015, Chicagoland experienced a remarkable developer renaissanc
 
 Founded in late 2009 to solve geographic isolation for suburban engineers, remote workers, and daily commuters, SCMC grew into an 800+ member community. It served as a hands-on laboratory where developers practiced Test-Driven Development (TDD), refactoring, polyglot architecture, and clean code principles.
 
-Here is the definitive historical retrospective of SCMC—its origins, educational mechanics, recorded archives, and enduring legacy.
+Here is the definitive historical retrospective of SCMC, its origins, educational mechanics, recorded archives, and enduring legacy.
 
 ---
 
@@ -25,7 +25,7 @@ In 2009, software developers living in McHenry, Lake, and northern Kane counties
 
 On **December 28, 2009**, Mike Hall organized the first meeting of what was initially called the **McHenry Cloud Developer’s Group**. The group's goal was simple: create an accessible, zero-pressure space for local developers to share technical knowledge and collaborate.
 
-The earliest meetings were roving and informal—held in public library meeting rooms, coffee shops (Panera Bread), and local bars. Initial sessions focused on early cloud infrastructure, featuring presentations on Google App Engine, Microsoft Azure, and Amazon Web Services (presented by Ryan Gerry in March 2010).
+The earliest meetings were roving and informal, held in public library meeting rooms, coffee shops (Panera Bread), and local bars. Initial sessions focused on early cloud infrastructure, featuring presentations on Google App Engine, Microsoft Azure, and Amazon Web Services (presented by Ryan Gerry in March 2010).
 
 ---
 

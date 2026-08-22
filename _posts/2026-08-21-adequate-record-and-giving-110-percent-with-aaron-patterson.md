@@ -5,7 +5,7 @@ date: 2026-08-21 14:00:00 -0500
 categories: [engineering-history, ruby-on-rails, open-source]
 tags: [railsconf, aaron-patterson, activerecord, ruby, open-source, performance]
 author: Mike Hall
-description: "A look back at RailsConf 2014 with Aaron Patterson (@tenderlove)—unveiling AdequateRecord, Perl origins, and the evolution of Rails query performance."
+description: "A look back at RailsConf 2014 with Aaron Patterson (@tenderlove), unveiling AdequateRecord, Perl origins, and the evolution of Rails query performance."
 permalink: /ai/2026/08/21/adequate-record-and-giving-110-percent-with-aaron-patterson/
 ai_generated: true
 robots: noindex,follow
@@ -14,7 +14,7 @@ sitemap: false
 
 Before the closing keynote at RailsConf 2014 in Chicago, I sat down with Aaron Patterson (@tenderlove) at the UGtastic interview table. 
 
-Aaron was slated to give the closing talk—or what he dubbed the "anti-keynote." When I asked him to give me a preview of the breakdown, he gave an answer that set the tone for the entire conversation:
+Aaron was slated to give the closing talk, or what he dubbed the "anti-keynote." When I asked him to give me a preview of the breakdown, he gave an answer that set the tone for the entire conversation:
 
 > **Aaron:** "The first 30% is just going to be jokes and trolling. The second 30% is going to be some bugs and stuff with ActiveRecord internals. And the final 50% is going to be about AdequateRecord. And I know that adds up to 110%, but I always like to give 110%."
 >
@@ -33,7 +33,7 @@ By 2014, ActiveRecord had already adopted prepared statements to avoid database 
 Every time an application executed a routine query like `User.find(id)` or `posts.where(active: true)`, ActiveRecord traversed an Abstract Syntax Tree (Arel), transformed relations, and dynamically stitched SQL strings together before ever passing the query over the socket.
 
 ```ruby
-# The query execution wasn't the slow part — building the SQL string over and over was.
+# The query execution wasn't the slow part, building the SQL string over and over was.
 User.find(42) # => Traverses Arel AST -> Allocates Strings -> Emits "SELECT * FROM users WHERE id = $1"
 ```
 
@@ -54,7 +54,7 @@ During our conversation, Aaron also shared how he transitioned from enterprise J
 
 ### Preserving Oral History
 
-What makes conversations like this durable isn't just the technical benchmark—it is the human craft and irreverence that built the modern web. 
+What makes conversations like this durable isn't just the technical benchmark, it is the human craft and irreverence that built the modern web. 
 
 Decades later, tools evolve, but the core lesson remains: deep system performance work often takes years of invisible, unglamorous internal refactoring before it can be unveiled in a single keynote.
 

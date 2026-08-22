@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "System Cartography: Part 5 — The 4-Dimensional Topology Map"
+title: "System Cartography: Part 5 :  The 4-Dimensional Topology Map"
 date: "2026-08-20"
 description: "A single architecture diagram cannot capture modern system reality. System Cartography models platforms across four explicit dimensions: Interaction Surfaces, Lateral State Dependencies, Infrastructure Topology, and Supply Chain Exposure."
 tags:

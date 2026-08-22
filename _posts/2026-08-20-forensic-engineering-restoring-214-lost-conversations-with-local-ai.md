@@ -65,7 +65,7 @@ To process hundreds of hours of raw audio without shipping unreleased media to t
 Before transcription, raw audio tracks were normalized using FFmpeg: applying a gentle high-pass filter (80Hz) to eliminate microphone rumble, dynamic range compression to balance speaker volumes, and automated silence trimming.
 
 #### 2. Local Whisper Transcription
-Audio chunks were processed using OpenAI's `whisper` models running locally via `whisper.cpp` and Metal GPU acceleration. Running locally allowed infinite retries with customized prompt engineering—seeding the model with specific software engineering terminology to prevent phonetic misspellings.
+Audio chunks were processed using OpenAI's `whisper` models running locally via `whisper.cpp` and Metal GPU acceleration. Running locally allowed infinite retries with customized prompt engineering, seeding the model with specific software engineering terminology to prevent phonetic misspellings.
 
 #### 3. Structured Dialogue Formatting with Local LLMs
 Raw transcripts lack paragraph structure, punctuation nuance, and clean speaker separation. We passed raw transcription chunks through local LLMs with strict system prompts:
@@ -77,7 +77,7 @@ Raw transcripts lack paragraph structure, punctuation nuance, and clean speaker 
 
 ### Preserving the Human Voice of Software Craft
 
-The real goal of this restoration was never just generating text files—it was preserving the **human culture** of our industry.
+The real goal of this restoration was never just generating text files, it was preserving the **human culture** of our industry.
 
 Reading through the restored [214 conversations](/interviews/) reveals timeless engineering truths:
 
@@ -89,7 +89,7 @@ Reading through the restored [214 conversations](/interviews/) reveals timeless 
 
 ### 💡 Explore the Archive
 
-All 214 restored interviews—complete with interactive transcripts, speaker bios, and topic indices—are freely accessible in the canonical archive:
+All 214 restored interviews, complete with interactive transcripts, speaker bios, and topic indices, are freely accessible in the canonical archive:
 
 - 🎙️ **[Browse the Full Technical Interview Archive](/interviews/)**
 - 🏛️ **[Read the Durable Insights of UGtastic](/ai/2026/05/07/the-durable-insights-of-ugtastic/)**

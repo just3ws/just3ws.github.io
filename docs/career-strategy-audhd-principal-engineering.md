@@ -74,7 +74,7 @@ Senior technical leaders face friction mapping experience across titles ranging 
 * **The Scope Concern (Senior Dev → CTO)**: Solved by using tailored **Executive Pitch Briefs** (`exports/briefs/`) to highlight past CTO experience (KloboMedia), Engineering L&D Partner leadership (Groupon), and architecture governance.
 
 ### 5.3 30-Second Interview Framing (No Ego, High Signal)
-> *"Scope depends on the company. At a 30-person startup, title inflates to CTO even though the day-to-day work is architecture and code leadership. At a growing org, Team Lead or Staff Engineer is where the highest technical leverage happens—where the hardest engineering decisions get made and where team velocity is built. I care about the mission, the team, and the technical challenge, not defending a title badge."*
+> *"Scope depends on the company. At a 30-person startup, title inflates to CTO even though the day-to-day work is architecture and code leadership. At a growing org, Team Lead or Staff Engineer is where the highest technical leverage happens: where the hardest engineering decisions get made and where team velocity is built. I care about the mission, the team, and the technical challenge, not defending a title badge."*
 
 ---
 
