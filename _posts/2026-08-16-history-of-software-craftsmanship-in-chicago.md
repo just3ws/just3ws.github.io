@@ -31,10 +31,9 @@ In 2009, local practitioners submitted talk proposals to traditional academic an
 
 > "They told us live pairing, TDD katas, and unit test refactoring were 'too practical' for a stage. We decided right then: if mainstream conferences won't show real engineering practice, we will build a stage dedicated entirely to it."
 
-That rejection became the rallying cry. Mike Hall and Ryan Gerry launched **Software Craftsmanship McHenry County (SCMC)** in McHenry County, IL, with early collaboration from 8th Light leaders Steve Kim and Jim Suchy. Shortly after, Chicago hosted the first **Software Craftsmanship North America (SCNA)** conference, a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
+That rejection became the rallying cry across the Chicago developer community, leading organizers to launch the first **Software Craftsmanship North America (SCNA)** conference. It was a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
 
-
-*Primary Archival Artifact (October 2010): The main hall at SCNA 2010 in Chicago, featuring sponsor tables for 8th Light, Obtiva, and Agile Alliance.*
+A mutual friend invited me to attend that inaugural SCNA. That single introduction altered my career: I met Dave Hoover and the team, leading directly to my recruitment into Obtiva shortly after. Energized by the movement's focus on deliberate practice, Ryan Gerry and I founded **Software Craftsmanship McHenry County (SCMC)** in the northwest suburbs, partnering with 8th Light leaders Steve Kim and Jim Suchy to bring hands-on katas, peer pairing, and practitioner keynotes to the suburban developer community.
 
 ---
 
