@@ -122,6 +122,61 @@ class YouTubeClient
     end
   end
 
+  # Fetch all Playlists on Channel
+  def get_channel_playlists
+    fetch_access_token! if @access_token.nil?
+
+    playlists = []
+    page_token = nil
+
+    loop do
+      url = "#{API_BASE}/playlists?part=snippet,contentDetails&mine=true&maxResults=50"
+      url += "&pageToken=#{page_token}" if page_token
+      uri = URI(url)
+      res = make_request(uri)
+
+      if res.is_a?(Net::HTTPSuccess)
+        data = JSON.parse(res.body)
+        playlists.concat(data["items"] || [])
+        page_token = data["nextPageToken"]
+        break unless page_token
+      else
+        break
+      end
+    end
+
+    playlists
+  end
+
+  # Fetch all video IDs in a playlist
+  def get_playlist_video_ids(playlist_id)
+    fetch_access_token! if @access_token.nil?
+
+    video_ids = []
+    page_token = nil
+
+    loop do
+      url = "#{API_BASE}/playlistItems?part=snippet,contentDetails&playlistId=#{playlist_id}&maxResults=50"
+      url += "&pageToken=#{page_token}" if page_token
+      uri = URI(url)
+      res = make_request(uri)
+
+      if res.is_a?(Net::HTTPSuccess)
+        data = JSON.parse(res.body)
+        (data["items"] || []).each do |item|
+          v_id = item.dig("contentDetails", "videoId") || item.dig("snippet", "resourceId", "videoId")
+          video_ids << v_id if v_id
+        end
+        page_token = data["nextPageToken"]
+        break unless page_token
+      else
+        break
+      end
+    end
+
+    video_ids.uniq
+  end
+
   # Add Video / Short to Playlist
   def add_playlist_item(playlist_id, video_id)
     fetch_access_token! if @access_token.nil?

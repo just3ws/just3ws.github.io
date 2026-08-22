@@ -31,6 +31,8 @@ class YouTubeMetadataPublisher
     
     if @mode == :check_auth
       run_auth_check
+    elsif @mode == :sync_playlists
+      run_sync_playlists
     elsif @mode == :dry_run
       run_dry_run
     elsif @mode == :apply
@@ -44,12 +46,14 @@ class YouTubeMetadataPublisher
 
   def parse_mode(args)
     return :check_auth if args.include?("--check-auth")
+    return :sync_playlists if args.include?("--sync-playlists")
     return :apply if args.include?("--apply")
     :dry_run
   end
 
   def parse_options(args)
-    opts = { limit: 0, video_id: nil, force: false }
+    opts = { limit: 0, video_id: nil, force: false, sync_playlists: false }
+    opts[:sync_playlists] = true if args.include?("--sync-playlists")
     args.each_with_index do |arg, i|
       opts[:limit] = args[i + 1].to_i if arg == "--limit"
       opts[:video_id] = args[i + 1] if arg == "--video-id"
@@ -63,12 +67,13 @@ class YouTubeMetadataPublisher
       Usage: ruby bin/publish_youtube_metadata.rb [options]
 
       Options:
-        --dry-run      Perform read-only diff against YouTube state & output report (default)
-        --apply        Apply staged 1:1 titles, descriptions, chapters, and tags to YouTube
-        --limit N      Limit batch size (default: all)
-        --video-id ID  Target specific YouTube video ID
-        --force        Force re-sync of already updated videos
-        --check-auth   Connect to YouTube Data API & print authenticated channel quota status
+        --dry-run          Perform read-only diff against YouTube state & output report (default)
+        --apply            Apply staged 1:1 titles, descriptions, chapters, and tags to YouTube
+        --sync-playlists   Ensure all videos belong to 'UGtastic Interviews' and event playlists
+        --limit N          Limit batch size (default: all)
+        --video-id ID      Target specific YouTube video ID
+        --force            Force re-sync of already updated videos
+        --check-auth       Connect to YouTube Data API & print authenticated channel quota status
     USAGE
   end
 
@@ -261,6 +266,101 @@ class YouTubeMetadataPublisher
     save_sync_state
     puts "======================================================="
     puts "Execution Summary: #{success_count} videos updated. State saved to #{STATE_FILE}."
+  end
+
+  PLAYLIST_MAPPINGS = {
+    "software-craftsmanship-north-america-2011" => "Software Craftsmanship North America 2011 Interviews",
+    "scna-2011" => "Software Craftsmanship North America 2011 Interviews",
+    "software-craftsmanship-north-america-2012" => "Software Craftsmanship North America 2012 Interviews",
+    "scna-2012" => "Software Craftsmanship North America 2012 Interviews",
+    "software-craftsmanship-north-america-2013" => "Software Craftsmanship North America 2013 Interviews",
+    "scna-2013" => "Software Craftsmanship North America 2013 Interviews",
+    "railsconf-2014" => "RailsConf 2014 Interviews",
+    "railsconf" => "RailsConf 2014 Interviews",
+    "windycityrails" => "WindyCityRails 2011 Interviews",
+    "chicagowebconf" => "ChicagoWebConf 2012 Interviews",
+    "goto-conference-2013" => "GOTO Conference 2013 Interviews",
+    "goto-conference-2014" => "GOTO Conference 2014 Interviews",
+    "goto-conference-2015" => "GOTO Conference 2015 Interviews",
+    "webvisions" => "WebVisions 2013 Interviews"
+  }.freeze
+
+  def run_sync_playlists
+    puts "📑 [Playlist Sync] Fetching channel playlists and video memberships..."
+    staged_items = JSON.parse(File.read(STAGED_METADATA_FILE)) rescue []
+    if staged_items.empty?
+      puts "❌ Error: #{STAGED_METADATA_FILE} missing."
+      return
+    end
+
+    all_playlists = @client.get_channel_playlists
+    playlist_map = all_playlists.each_with_object({}) { |pl, h| h[pl.dig("snippet", "title")] = pl["id"] }
+
+    master_title = "UGtastic Interviews"
+    master_pl_id = playlist_map[master_title]
+    unless master_pl_id
+      puts "➕ Creating Master Playlist: #{master_title}"
+      created = @client.create_playlist(master_title, "Oral history interviews from the UGtastic technical conversation archive (2009–2015) documenting software craftsmanship, Ruby, and agile engineering.")
+      master_pl_id = created["id"]
+      playlist_map[master_title] = master_pl_id
+    end
+
+    puts "Master Playlist: '#{master_title}' (ID: #{master_pl_id})"
+    master_vids = @client.get_playlist_video_ids(master_pl_id)
+    puts "Current Master Playlist Items: #{master_vids.size}"
+
+    event_vids_cache = {}
+    added_master = 0
+    added_event = 0
+
+    staged_items.each_with_index do |item, idx|
+      v_id = item["youtube_video_id"]
+      t_id = item["transcript_id"]
+      next unless v_id
+
+      # 1. Master Playlist Check
+      unless master_vids.include?(v_id)
+        puts "[#{idx + 1}/#{staged_items.size}] Adding #{v_id} (#{item['title']}) to #{master_title}..."
+        begin
+          @client.add_playlist_item(master_pl_id, v_id)
+          master_vids << v_id
+          added_master += 1
+          sleep 0.5
+        rescue StandardError => e
+          puts "   ❌ Failed to add to master playlist: #{e.message}"
+        end
+      end
+
+      # 2. Event/Conference Playlist Check
+      event_match = PLAYLIST_MAPPINGS.find { |k, _title| t_id.to_s.downcase.include?(k) }
+      if event_match
+        event_title = event_match[1]
+        event_pl_id = playlist_map[event_title]
+        unless event_pl_id
+          puts "➕ Creating Conference Playlist: #{event_title}"
+          created = @client.create_playlist(event_title, "Interviews recorded on-site at #{event_title}. Part of the UGtastic technical conversation archive.")
+          event_pl_id = created["id"]
+          playlist_map[event_title] = event_pl_id
+        end
+
+        event_vids_cache[event_pl_id] ||= @client.get_playlist_video_ids(event_pl_id)
+
+        unless event_vids_cache[event_pl_id].include?(v_id)
+          puts "[#{idx + 1}/#{staged_items.size}] Adding #{v_id} (#{item['title']}) to #{event_title}..."
+          begin
+            @client.add_playlist_item(event_pl_id, v_id)
+            event_vids_cache[event_pl_id] << v_id
+            added_event += 1
+            sleep 0.5
+          rescue StandardError => e
+            puts "   ❌ Failed to add to event playlist: #{e.message}"
+          end
+        end
+      end
+    end
+
+    puts "======================================================="
+    puts "✅ Playlist Sync Complete: Added #{added_master} to Master, #{added_event} to Conference playlists."
   end
 
   def load_sync_state
