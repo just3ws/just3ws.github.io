@@ -1,0 +1,55 @@
+---
+company:
+  name: Agent Tooling (MCP Servers & Agent Workflows)
+  location: Independent Project
+title: Creator
+type: Project
+start_date: 2026
+end_date: Present
+id: agent-tooling
+
+summary: >
+  Built and operate three MCP (Model Context Protocol) servers that expose live
+  system state as callable tools to any MCP client, alongside the Claude Code
+  skills, context-isolated subagents, and commit-time checks that keep agent
+  work bounded and reviewable.
+
+highlights:
+  - text: >
+      Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
+      knowledge suite that agents both query and write back to, so methodologies and lessons
+      learned in one session are retrievable in the next rather than re-derived.
+
+  - text: >
+      Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
+      (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent
+      diagnoses a running system from observed behavior instead of inferring from source.
+
+  - text: >
+      Compliance-Safe Observability: Telemetry reaches agents already PHI-scrubbed at the
+      OpenTelemetry ingest edge, keeping a compliance-sensitive platform debuggable by an AI
+      without exposing protected data.
+
+  - text: >
+      Local Inference Tooling: Built llama-mcp, exposing a local llama.cpp inference stack as
+      callable tools for interrogation and validation, keeping routine inference on-box.
+
+  - text: >
+      Context as a Budgeted Resource: Designed context-isolated subagents that keep
+      high-volume audit work out of the main conversation's context window, with per-client
+      registration tooling and pre-commit hooks that reject any agent asset that isn't
+      self-describing.
+
+skills:
+  - Model Context Protocol (MCP)
+  - Agentic Workflow Design
+  - Claude Code
+  - Anthropic API
+  - LLM Tool Design
+  - PostgreSQL
+  - OpenTelemetry
+  - OpenObserve
+  - llama.cpp
+  - Local Inference
+  - PHI Scrubbing & Compliance
+  - Ruby
