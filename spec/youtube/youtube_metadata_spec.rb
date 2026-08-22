@@ -33,7 +33,7 @@ RSpec.describe "YouTube Metadata & 1:1 Parity Suite" do
       desc = item["description"]
       expect(desc).not_to match(/#\w+/), "Description should not contain social media hashtags"
       expect(desc).to include("https://www.just3ws.com/interviews/")
-      expect(desc).to include("🎙️ SPEAKERS:")
+      expect(desc).to match(/🎙️ SPEAKERS:|🏛️ ORAL HISTORY RECORD:/)
       expect(desc).to include("⏱️ CHAPTERS:")
     end
   end

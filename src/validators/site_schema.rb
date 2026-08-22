@@ -179,7 +179,7 @@ module Validators
 
     rule(:description) do
       key.failure('must include interactive transcript URL') unless value.include?('https://www.just3ws.com/interviews/')
-      key.failure('must include speakers section') unless value.include?('🎙️ SPEAKERS:')
+      key.failure('must include speakers or oral history section') unless value.include?('🎙️ SPEAKERS:') || value.include?('🏛️ ORAL HISTORY RECORD:')
       key.failure('must include chapters section') unless value.include?('⏱️ CHAPTERS:')
       key.failure('must not contain raw social media hashtags') if value.match?(/#\w+/)
     end

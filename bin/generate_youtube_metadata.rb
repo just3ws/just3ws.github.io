@@ -225,36 +225,41 @@ class YouTubeMetadataGenerator
   def build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, spoken_intro = nil)
     lines = []
     
-    # Authentic Mike Hall with UGtastic opening hook
-    opening_hook = clean_spoken_intro(spoken_intro, guest_name, event_label, guest_role)
-    lines << opening_hook
+    # Historical archive banner
+    lines << "📼 FROM THE UGTASTIC ARCHIVE (Recorded on-site at #{event_label})"
     lines << ""
 
-    # Concise discussion summary
-    if !summary.empty? && summary != opening_hook
+    # Authentic Mike Hall spoken opening from the recording
+    opening_hook = clean_spoken_intro(spoken_intro, guest_name, event_label, guest_role)
+    lines << "\"#{opening_hook}\""
+    lines << ""
+
+    # Historical discussion summary & era context
+    if !summary.empty? && !summary.start_with?("Hi,") && !summary.start_with?("Hi ") && summary != opening_hook
       lines << summary
       lines << ""
     end
+    lines << "Recorded during the 2009–2015 software craftsmanship and developer community movements, this archival interview captures early ideas, debates, and community organizing in real time."
+    lines << ""
 
     lines << "---"
-    lines << "🎙️ SPEAKERS:"
-    lines << "• #{guest_name}#{guest_role && !guest_role.empty? ? " (#{guest_role})" : ""}"
-    lines << "• Mike Hall (Interviewer, UGtastic)"
-    lines << ""
-    lines << "📍 HISTORICAL CONTEXT:"
-    lines << "Recorded at #{event_label}. Part of the UGtastic Technical Conversation Archive documenting the software craftsmanship, Ruby, and distributed systems movements."
+    lines << "🏛️ ORAL HISTORY RECORD:"
+    lines << "• Series: UGtastic Technical Conversation Archive (2009–2015)"
+    lines << "• Recorded: #{event_label}"
+    lines << "• Guest: #{guest_name}#{guest_role && !guest_role.empty? ? " (#{guest_role})" : ""}"
+    lines << "• Interviewer: Mike Hall (UGtastic / https://www.just3ws.com)"
     lines << ""
     lines << "⏱️ CHAPTERS:"
     chapters.each do |ch|
       lines << "#{ch['time']} - #{ch['title']}"
     end
     lines << ""
-    lines << "📖 INTERACTIVE TRANSCRIPT & NOTES:"
+    lines << "📖 FULL TRANSCRIPT & RESTORATION:"
     lines << "https://www.just3ws.com/interviews/#{transcript_id}/"
     lines << ""
     lines << "🏷️ TOPICS: #{tags.join(', ')}" unless tags.empty?
     lines << ""
-    lines << "Curated and restored by Mike Hall (https://www.just3ws.com)"
+    lines << "Restored and preserved by Mike Hall (https://www.just3ws.com)"
     lines.join("\n")
   end
 
@@ -278,8 +283,14 @@ class YouTubeMetadataGenerator
 
   def clean_summary(text)
     return "" if text.nil?
-    # Remove AI bullet dumps, old emojis, and hashtags
-    cleaned = text.to_s.gsub(/CRITICAL INSIGHTS:.*$/m, '')
+    # Strip metadata blocks and previous generation markers
+    cleaned = text.to_s.split('---').first.to_s
+    cleaned = cleaned.gsub(/📼\s*FROM THE UGTASTIC ARCHIVE.*/m, '')
+    cleaned = cleaned.gsub(/Recovered from WITC metadata archive.*/m, '')
+    cleaned = cleaned.gsub(/CRITICAL INSIGHTS:.*$/m, '')
+    cleaned = cleaned.gsub(/SPEAKERS:.*$/m, '')
+    cleaned = cleaned.gsub(/HISTORICAL CONTEXT:.*$/m, '')
+    cleaned = cleaned.gsub(/CHAPTERS:.*$/m, '')
     cleaned = cleaned.gsub(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/, '')
     cleaned = cleaned.gsub(/#\w+/, '') # Remove hashtags
     cleaned = cleaned.gsub(/Recorded as part of the Technical Conversation Archive.*/m, '') # Remove duplicates
