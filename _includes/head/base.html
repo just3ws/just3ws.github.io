@@ -1,5 +1,5 @@
-{% assign seo_title = page.title | default: "Mike Hall" %}
-{% assign seo_description = page.description | default: "Principal Software Engineer focused on system legibility, production reliability, architecture, observability, and safe modernization." %}
+{% assign seo_title = page.title | default: "Mike Hall" | strip_html | strip_newlines | replace: '"', '' %}
+{% assign seo_description = page.description | default: "Principal Software Engineer focused on system legibility, production reliability, architecture, observability, and safe modernization." | strip_html | strip_newlines | replace: '"', '' | replace: '“', '' | replace: '”', '' %}
 {% if page.resume_seo_key %}
   {% assign resume_seo = site.data.resume.profile.seo[page.resume_seo_key] %}
   {% if resume_seo %}
@@ -8,16 +8,16 @@
   {% endif %}
 {% endif %}
 {% if seo_title.size < 30 %}
-  {% assign seo_title = seo_title | append: " | Mike Hall Archive" %}
+  {% assign seo_title = seo_title | append: " | Mike Hall Technical Archive" %}
 {% endif %}
 {% if seo_title.size > 70 %}
   {% assign seo_title = seo_title | truncate: 70, "…" %}
 {% endif %}
 {% if seo_description.size < 70 %}
-  {% assign seo_description = seo_description | append: " This page is part of Mike Hall's curated engineering archive and resume." %}
+  {% assign seo_description = seo_description | append: " Curated from Mike Hall's engineering archive." %}
 {% endif %}
-{% if seo_description.size > 160 %}
-  {% assign seo_description = seo_description | truncate: 160, "…" %}
+{% if seo_description.size > 155 %}
+  {% assign seo_description = seo_description | truncate: 155, "…" %}
 {% endif %}
 {% assign site_url = site.url | default: "https://www.just3ws.com" %}
 {% if site_url == "" or site_url contains "localhost" %}
@@ -32,7 +32,7 @@
   {% assign robots_directive = "index,follow" %}
 {% endif %}
 <title>{{ seo_title }}</title>
-<meta name="description" content="{{ seo_description | escape }}">
+<meta name="description" content="{{ seo_description }}">
 <meta name="author" content="Mike Hall">
 <link rel="canonical" href="{{ canonical_url }}">
 {% if site.release_timestamp %}
@@ -41,15 +41,15 @@
 <meta name="robots" content="{{ robots_directive }}">
 {% assign default_og_image = site_url | append: "/assets/images/og-preview.png" %}
 {% assign og_image = page.image | default: default_og_image %}
-<meta property="og:title" content="{{ seo_title | escape }}">
-<meta property="og:description" content="{{ seo_description | escape }}">
+<meta property="og:title" content="{{ seo_title }}">
+<meta property="og:description" content="{{ seo_description }}">
 <meta property="og:image" content="{{ og_image }}">
 <meta property="og:url" content="{{ canonical_url }}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mike Hall">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ seo_title | escape }}">
-<meta name="twitter:description" content="{{ seo_description | escape }}">
+<meta name="twitter:title" content="{{ seo_title }}">
+<meta name="twitter:description" content="{{ seo_description }}">
 <meta name="twitter:image" content="{{ og_image }}">
 <link rel="alternate" type="application/atom+xml" title="{{ site.title }} - Atom Feed" href="/feed.xml" />
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - RSS Feed" href="/rss.xml" />

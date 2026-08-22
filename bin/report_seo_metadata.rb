@@ -12,7 +12,7 @@ EXCLUDED_FILES = ['AGENTS.html'].freeze
 SAMPLE_LIMIT = 10
 
 title_re = /<title[^>]*>(.*?)<\/title>/im
-desc_re = /<meta[^>]*name=["']description["'][^>]*content=["'](.*?)["'][^>]*>/im
+desc_re = /<meta[^>]*name=["']description["'][^>]*content=(?:"([^"]*)"|'([^']*)')[^>]*>/im
 noindex_re = /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i
 
 def excluded_path?(relative)
@@ -42,7 +42,7 @@ Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
 
   html = File.read(path, encoding: 'UTF-8')
   title = html[title_re, 1]&.strip
-  desc = html[desc_re, 1]&.strip
+  desc = (html[desc_re, 1] || html[desc_re, 2])&.strip
   noindex = html.match?(noindex_re)
   records << { path: relative, title: title, desc: desc, noindex: noindex }
 end
