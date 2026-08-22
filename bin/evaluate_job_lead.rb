@@ -167,41 +167,61 @@ def parse_lead_info(options)
   }
 end
 
+require_relative "../src/collaboration/peer_mutex"
+
 info = parse_lead_info(options)
-match_output = fetch_match(info[:posting_id], escalate: options[:escalate])
-zdots_res = query_zdots_ctx("Principal")
 
-report = <<~MARKDOWN
-  # Job Lead Evaluation: #{info[:company]}
+CareerOS::PeerMutex.with_lock(caller_name: "just3ws-lead-evaluator") do
+  match_output = fetch_match(info[:posting_id], escalate: options[:escalate])
+  zdots_res = query_zdots_ctx("Principal")
 
-  **Target Role:** #{info[:title]}
-  **Lead Record:** [`wwworkremote` Lead ##{info[:lead_id] || 'N/A'}](http://localhost:31000/admin/leads/#{info[:lead_id]}) / [Posting ##{info[:posting_id]}](http://localhost:31000/api/v0/job_postings/#{info[:posting_id]})
-  **Company Profile:** #{info[:company]}
+  report = <<~MARKDOWN
+    # Job Lead Evaluation: #{info[:company]}
 
-  ---
+    **Target Role:** #{info[:title]}
+    **Lead Record:** [`wwworkremote` Lead ##{info[:lead_id] || 'N/A'}](http://localhost:31000/admin/leads/#{info[:lead_id]}) / [Posting ##{info[:posting_id]}](http://localhost:31000/api/v0/job_postings/#{info[:posting_id]})
+    **Company Profile:** #{info[:company]}
 
-  ## Match Analysis (wwworkremote / LLM::ProfileMatcher)
+    ---
 
-  #{match_output || '_bin/wwwr match unavailable -- is wwworkremote/core checked out at ~/github.com/wwworkremote/core?_'}
+    ## Match Analysis (wwworkremote / LLM::ProfileMatcher)
 
-  ---
+    #{match_output || '_bin/wwwr match unavailable -- is wwworkremote/core checked out at ~/github.com/wwworkremote/core?_'}
 
-  ## Personal Strategy Calibration (zdots-ctx)
+    ---
 
-  #{zdots_res || '_no zdots-ctx signal for "Principal"_'}
-MARKDOWN
+    ## Personal Strategy Calibration (zdots-ctx)
 
-FileUtils.mkdir_p(options[:out_dir])
-slug = "#{info[:company].downcase.gsub(/[^a-z0-9]/, '_')}_#{info[:title].downcase.gsub(/[^a-z0-9]/, '_')}"
-out_path = File.join(options[:out_dir], "#{slug}.md")
+    #{zdots_res || '_no zdots-ctx signal for "Principal"_'}
+  MARKDOWN
 
-File.write(out_path, report)
+  FileUtils.mkdir_p(options[:out_dir])
+  slug = "#{info[:company].downcase.gsub(/[^a-z0-9]/, '_')}_#{info[:title].downcase.gsub(/[^a-z0-9]/, '_')}"
+  out_path = File.join(options[:out_dir], "#{slug}.md")
 
-if options[:json]
-  puts JSON.pretty_generate({ info: info, match_output: match_output, report_path: out_path })
-else
-  puts "Evaluation completed:"
-  puts "   - Role: #{info[:title]} at #{info[:company]}"
-  puts "   - Match: #{match_output ? match_output.lines.first&.strip : 'unavailable'}"
-  puts "   - Report Saved: #{out_path}"
+  File.write(out_path, report)
+
+  # Update shared peer state
+  state = CareerOS::PeerMutex.read_state
+  state["active_evaluations"] ||= {}
+  state["active_evaluations"][info[:posting_id].to_s] = {
+    "company" => info[:company],
+    "title" => info[:title],
+    "evaluated_at" => Time.now.iso8601,
+    "brief_path" => out_path
+  }
+  CareerOS::PeerMutex.update_state!(state)
+
+  # Broadcast to zdots-ctx bus
+  msg = "LEAD_EVALUATED: Posting ##{info[:posting_id]} (#{info[:company]} - #{info[:title]}) -> Brief: #{out_path}"
+  CareerOS::PeerMutex.broadcast_bus("job-leads", msg, as: "agent-just3ws")
+
+  if options[:json]
+    puts JSON.pretty_generate({ info: info, match_output: match_output, report_path: out_path })
+  else
+    puts "Evaluation completed under CareerOS Peer Mutex:"
+    puts "   - Role: #{info[:title]} at #{info[:company]}"
+    puts "   - Match: #{match_output ? match_output.lines.first&.strip : 'unavailable'}"
+    puts "   - Report Saved: #{out_path}"
+  end
 end
