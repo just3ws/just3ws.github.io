@@ -126,8 +126,11 @@ class YouTubeMetadataGenerator
     # Clean Tags
     tags = ["Software Craftsmanship", "Programming", "Architecture", guest_name, event_label.split.first].compact.uniq.take(15)
 
-    # 1:1 Canonical Description strictly from verified transcript facts
-    description = build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags)
+    mike_key = speaker_map.find { |_k, v| v["name"] == "Mike Hall" || v["role"] == "Interviewer, UGtastic" }&.first || "M1"
+    first_mike_turn = turns.find { |t| t["speaker"] == mike_key }
+
+    # 1:1 Canonical Description in Mike Hall with UGtastic authentic voice
+    description = build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, first_mike_turn ? first_mike_turn["text"] : nil)
 
     {
       transcript_id: transcript_id,
@@ -217,10 +220,20 @@ class YouTubeMetadataGenerator
     chapters
   end
 
-  def build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags)
+  def build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, spoken_intro = nil)
     lines = []
-    lines << summary unless summary.empty?
+    
+    # Authentic Mike Hall with UGtastic opening hook
+    opening_hook = clean_spoken_intro(spoken_intro, guest_name, event_label, guest_role)
+    lines << opening_hook
     lines << ""
+
+    # Concise discussion summary
+    if !summary.empty? && summary != opening_hook
+      lines << summary
+      lines << ""
+    end
+
     lines << "---"
     lines << "🎙️ SPEAKERS:"
     lines << "• #{guest_name}#{guest_role && !guest_role.empty? ? " (#{guest_role})" : ""}"
@@ -243,6 +256,24 @@ class YouTubeMetadataGenerator
     lines.join("\n")
   end
 
+  def clean_spoken_intro(text, guest_name, event_label, guest_role)
+    if text
+      cleaned = text.gsub(/\[.*?\]/, '').gsub(/\s+/, ' ').strip
+      cleaned = cleaned.gsub(/\b(?:Utesc|Ute\s*TASC|Hugtastic|Ugtastic)\b/i, 'UGtastic')
+      if cleaned =~ /\A(?:Hi|Hello|Hey|Good\s+(?:morning|afternoon|evening)|I\x27m\s+Mike|Welcome\s+to)/i
+        sentences = cleaned.split(/(?<=[.!?])\s+/)
+        intro = sentences.take(2).join(' ').strip
+        if intro.length > 220
+          intro = intro[0...200].sub(/\s+\S*\z/, '') + '.'
+        end
+        return intro if intro.length >= 25 && !intro.downcase.include?('testing')
+      end
+    end
+
+    role_phrase = (guest_role && !guest_role.empty?) ? " to discuss #{guest_role}" : ""
+    "Hi, it's Mike with UGtastic. In this conversation recorded on-site at #{event_label}, I sit down with #{guest_name}#{role_phrase}."
+  end
+
   def clean_summary(text)
     return "" if text.nil?
     # Remove AI bullet dumps, old emojis, and hashtags
@@ -250,7 +281,10 @@ class YouTubeMetadataGenerator
     cleaned = cleaned.gsub(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/, '')
     cleaned = cleaned.gsub(/#\w+/, '') # Remove hashtags
     cleaned = cleaned.gsub(/Recorded as part of the Technical Conversation Archive.*/m, '') # Remove duplicates
-    cleaned.strip
+    cleaned = cleaned.gsub(/Don't miss this!/i, '')
+    cleaned = cleaned.gsub(/Check it out!/i, '')
+    cleaned = cleaned.gsub(/\s+/, ' ').strip
+    cleaned
   end
 
   def parse_time_to_seconds(str)
