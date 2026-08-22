@@ -112,3 +112,18 @@ All messages, evaluations, and briefs generated across systems must enforce the 
 1. **Zero Fluff & Zero Hype**: Prohibit unevidenced promotional adjectives ("visionary," "transformational," "groundbreaking").
 2. **Understated Fact Density**: State context, constraint, technical action, and verified outcome (-60% MTTR, domain isolation, OpenTelemetry across 36+ services).
 3. **Skeptical Peer Filter**: Distinguish pure IC technical leadership (Staff/Principal Architect) from executive people management (managing managers, HR administration).
+
+---
+
+## 6. Collaboration Mutex & State Registry (`CareerOS::PeerMutex`)
+
+To prevent race conditions, duplicate LLM token expenditure, and state drift during cross-repo evaluations, `just3ws` and `wwworkremote` coordinate through the shared `CareerOS::PeerMutex`:
+
+* **File Mutex Lock**: `~/.local/state/career-os/mutex.lock` (re-entrant OS `flock` with timeout).
+* **State Registry**: `~/.local/state/career-os/state.json`
+  - Tracks candidate profile sync timestamp (`last_synced_at`, canonical endpoints).
+  - Records active lead evaluations and brief output locations.
+  - Maintains peer heartbeats (`agent-just3ws`, `agent-wwworkremote`).
+* **Sync CLI**: `bin/sync_career_peer.rb`
+  - Atomically updates candidate state under lock and broadcasts `PROFILE_SYNC_EVENT` to the `job-leads` channel.
+
