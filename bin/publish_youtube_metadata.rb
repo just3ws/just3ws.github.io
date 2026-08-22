@@ -13,6 +13,8 @@ require 'yaml'
 require 'fileutils'
 require_relative 'lib/youtube_client'
 
+$stdout.sync = true
+
 class YouTubeMetadataPublisher
   STAGED_METADATA_FILE = "_data/youtube_metadata_staged.json"
   STATE_FILE           = "tmp/youtube_metadata_sync_state.json"
@@ -207,14 +209,17 @@ class YouTubeMetadataPublisher
     end
 
     unless @options[:force]
-      staged_items = staged_items.reject { |i| @sync_state[i["youtube_video_id"]] == "synced" }
+      staged_items = staged_items.reject do |i|
+        state = @sync_state[i["youtube_video_id"]]
+        state == "synced" || (state.is_a?(Hash) && state["status"] == "synced")
+      end
     end
 
     if @options[:limit] > 0
       staged_items = staged_items.first(@options[:limit])
     end
 
-    puts "Target Queue Size: #{staged_items.size}"
+    puts "Target Queue Size: #{staged_items.size} (Total in archive: #{JSON.parse(File.read(STAGED_METADATA_FILE)).size rescue 180})"
     puts "-------------------------------------------------------"
 
     success_count = 0
@@ -251,11 +256,19 @@ class YouTubeMetadataPublisher
         @client.update_video(v_id, update_payload)
         puts "   ✅ [#{v_id}] Metadata, chapters, and tags updated successfully!"
         success_count += 1
-        @sync_state[v_id] = "synced"
+        @sync_state[v_id] = {
+          "status" => "synced",
+          "synced_at" => Time.now.utc.iso8601,
+          "title" => item["title"],
+          "fingerprint" => YouTubeClient.fingerprint(update_payload["snippet"])
+        }
+        save_sync_state
         sleep 1.0 # Polite rate limiting
       rescue StandardError => e
         if e.message.include?("quotaExceeded")
-          puts "🛑 Halting execution: YouTube API daily quota exceeded. Will resume safely next run."
+          puts "🛑 Halting execution: YouTube API daily quota exceeded."
+          puts "📅 YouTube API quota resets daily at midnight Pacific Time (07:00 UTC / 02:00 CDT)."
+          puts "💡 Run `ruby bin/publish_youtube_metadata.rb --apply` to automatically resume the remaining un-synced queue."
           quota_exceeded = true
         else
           puts "   ❌ [#{v_id}] Update failed: #{e.message}"
@@ -266,6 +279,7 @@ class YouTubeMetadataPublisher
     save_sync_state
     puts "======================================================="
     puts "Execution Summary: #{success_count} videos updated. State saved to #{STATE_FILE}."
+    puts "Total Synced to date: #{@sync_state.size} videos."
   end
 
   PLAYLIST_MAPPINGS = {
