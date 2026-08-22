@@ -36,7 +36,7 @@ interviews.each do |i|
   end
 
   # 3. CTA Link Audit
-  if desc.include?("just3ws.github.io/interviews/") || desc.include?("UGtastic.com")
+  if desc.include?("just3ws.com/interviews/") || desc.include?("just3ws.github.io/interviews/") || desc.include?("UGtastic.com")
     results[:has_cta_link] << i["id"]
   else
     results[:missing_cta_link] << i["id"]
