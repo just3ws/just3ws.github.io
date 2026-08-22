@@ -88,7 +88,7 @@ Instead of running separate search infrastructure for simple string lookups, we 
 
 In 2026, the tech industry is experiencing a similar wave of hype around specialized document engines, vector databases, and schemaless storage for AI workflows.
 
-The lessons from Coderwall's database migration remain crystal clear:
+The lessons from Coderwall's database migration remain unambiguous:
 
 1. **Every system eventually becomes relational.** If entities reference each other, you are building a relational graph. Trying to manage foreign keys and referential integrity in application code will always be slower and more bug-prone than letting a battle-tested relational engine enforce ACID guarantees.
 2. **Operational simplicity wins.** Consolidating from a multi-database setup (MongoDB + Redis + Postgres) down to PostgreSQL and Redis simplified the local onboarding setup for open-source contributors and cut production dyno costs immediately.

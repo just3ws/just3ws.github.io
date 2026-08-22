@@ -45,9 +45,9 @@ In our current era of AI-generated boilerplate, the value of **internalized intu
 ### 🤝 The Long Road to Republication
 This project is deeply personal. I’ve wanted to get back to these archives for years, but the sheer volume of material made it a daunting task. It was only recently that modern AI tools enabled me to finally recover, transcribe, and analyze these hours of conversation. 
 
-It is still very much a work in progress. While I’m retaining the original Vimeo links wherever possible, I am steadily migrating the entire library to YouTube. It’s a heavy lift that has taken a significant amount of time, and honestly, if I waited for every single video to be perfect, they would stay locked away for another decade. It has been long enough.
+It remains an active work in progress. While I’m retaining the original Vimeo links wherever possible, I am steadily migrating the entire library to YouTube. It’s a heavy lift that has taken a significant amount of time, and honestly, if I waited for every single video to be perfect, they would stay locked away for another decade. It has been long enough.
 
-So, please pardon the dust. You’ll find that some interviews are fully transcribed and analyzed, while others are still pending. Some early transcripts need a second pass to meet the quality standards I’m aiming for, but the process is finally coming together.
+Please pardon the dust. You’ll find that some interviews are fully transcribed and analyzed, while others are still pending. Some early transcripts need a second pass to meet the quality standards I’m aiming for, but the process is finally coming together.
 
 Republishing these legacy videos isn't just about nostalgia. It’s about **continuity**. We often talk about "internet minutes" being the speed of our industry, but these durable insights prove that certain truths move much slower. They are the bedrock. By sharing what **[Adrian Cockcroft](/interviews/adrian-cockcroft-goto-conference-2014/)**, **[Rebecca Parsons](/interviews/rebecca-parsons-goto-conference-2015/)**, and **[Avdi Grimm](/interviews/avdi-grimm-general/)** were talking about at the frontier, I want to bridge the gap for a new generation of developers entering a field that feels more chaotic than ever.
 
