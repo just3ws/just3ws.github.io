@@ -1,0 +1,9 @@
+extends: existence
+message: "Passive voice detected ('%s'). Prefer active voice ('Subject performed action')."
+level: warning
+ignorecase: true
+tokens:
+  - was \w+ed by
+  - were \w+ed by
+  - is being \w+ed
+  - has been \w+ed

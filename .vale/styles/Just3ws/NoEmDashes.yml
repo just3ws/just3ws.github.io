@@ -1,0 +1,10 @@
+extends: existence
+message: "Do not use em dashes or double hyphens ('%s'). Recast sentence using a colon, period, comma, or parentheses."
+link: "https://github.com/just3ws/just3ws.github.io/blob/master/.agents/skills/no-em-dashes/SKILL.md"
+level: error
+scope: raw
+raw:
+  - '[^\s\-\|]—[^\s\-\|]'
+  - '\s+—\s+'
+  - '\s+--\s+'
+  - '\b[a-zA-Z]+--[a-zA-Z]+\b'

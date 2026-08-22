@@ -17,8 +17,8 @@ sitemap: false
 
 Over the past two decades, the role of the senior software engineer has undergone three distinct evolutionary phases:
 
-1. **The Syntax Craftsman (2000–2010)**: Success was measured by deep mastery of object-oriented design patterns, compiler internals, and writing clean, highly optimized algorithms.
-2. **The Full-Stack Integrator (2010–2022)**: Success was measured by connecting APIs, deploying cloud microservices, and balancing frontend single-page apps with backend databases.
+1. **The Syntax Craftsman (2000–2010)**: Success centered on deep mastery of object-oriented design patterns, compiler internals, and writing clean, highly optimized algorithms.
+2. **The Full-Stack Integrator (2010–2022)**: Success required connecting APIs, deploying cloud microservices, and balancing frontend single-page apps with backend databases.
 3. **The Panoramic Cartographer (2024 & Beyond)**: In the era of autonomous AI coding agents and distributed cloud architectures, writing boilerplate syntax has a marginal cost of zero.
 
 Today, the primary bottleneck in technology enterprises is no longer *how fast can we write code?*

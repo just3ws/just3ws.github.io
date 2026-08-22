@@ -109,6 +109,7 @@ namespace :validate do
     :repo_hygiene,
     :markdown_lint,
     :prose_humanity,
+    :vale,
     :metadata_completeness,
     :seo_output,
     :public_index_mode,
@@ -121,6 +122,14 @@ namespace :validate do
 
   task :prose_humanity do
     sh 'ruby ./bin/audit_prose_humanity.rb'
+  end
+
+  task :vale do
+    if system('which vale > /dev/null 2>&1')
+      sh 'vale _posts/2026-*.md case-studies/ docs/'
+    else
+      puts 'Skipping Vale audit: vale binary not found on PATH.'
+    end
   end
 
   task :export_parity do

@@ -79,7 +79,7 @@ When engineering teams and product leaders walk through this 7-layer inventory t
 
 - **Assumptions Vanish**: Product managers immediately see why a "simple checkout change" touches four different services, a background worker, and a third-party webhook.
 - **True Costs Emerge**: Engineering leadership can identify the exact bottlenecks causing latency and reliability issues.
-- **Seams Become Visible**: By identifying where boundaries naturally exist between layers, we pinpoint the exact locations where we can intercept, measure, and safely extract legacy code.
+- **Seams Become Visible**: By identifying where boundaries exist between layers, we pinpoint the exact locations where we can intercept, measure, and safely extract legacy code.
 
 ---
 

@@ -19,7 +19,7 @@ Revisiting these dialogues through a forensic lens, using high-fidelity AI trans
 Here are five durable technical insights synthesized from a decade of technical conversations.
 
 ## 1. Simplicty is the Foundation of Power
-In my conversations with creators like [Rich Hickey](/interviews/rich-hickey-creator-of-clojure-general/), the recurring theme is that power isn't derived from complexity, but from the orthogonality of simple parts. When you design for simplicity, the capacity to scale and adapt "falls out" of the system naturally.
+In my conversations with creators like [Rich Hickey](/interviews/rich-hickey-creator-of-clojure-general/), the recurring theme is that power isn't derived from complexity, but from the orthogonality of simple parts. When you design for simplicity, the capacity to scale and adapt follows as a direct result.
 
 ## 2. Portability as an Engineering Discipline
 [Amitai Schlair](/interviews/amitai-schlair-software-craftsmanship-north-america-2013/) highlighted the extreme portability of NetBSD as a hallmark of craftsmanship. The discipline required to support hardware ranging from ancient Macintoshes to modern servers forces a coherence in design that most "modern" systems never achieve.

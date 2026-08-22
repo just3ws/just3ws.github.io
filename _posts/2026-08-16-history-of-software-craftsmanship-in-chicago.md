@@ -13,13 +13,13 @@ sitemap: false
 
 Between 2006 and 2015, Chicago transformed from an enterprise IT town dominated by financial trading desks and legacy Java monoliths into one of the most vibrant software engineering ecosystems in North America.
 
-This transformation was catalyzed by an organic developer uprising known as the **Software Craftsmanship Movement**. Frustrated by "Agile-in-name-only" management bureaucracy and academic conferences that ignored real-world coding practice, a dedicated circle of practitioners built their own communities: **Software Craftsmanship McHenry County (SCMC)**, **Chicago Software Craftsmanship**, and **Software Craftsmanship North America (SCNA)**.
+An organic developer uprising known as the **Software Craftsmanship Movement** catalyzed this transformation. Frustrated by "Agile-in-name-only" management bureaucracy and academic conferences that ignored real-world coding practice, a dedicated circle of practitioners built their own communities: **Software Craftsmanship McHenry County (SCMC)**, **Chicago Software Craftsmanship**, and **Software Craftsmanship North America (SCNA)**.
 
 ---
 
 ### Chapter 1: The Frustration & The Catalyst (2006–2008)
 
-By 2006, the original promise of Extreme Programming (XP) and Test-Driven Development (TDD) was being sanitized by enterprise consulting firms. "Agile" had become synonymous with daily standups and burndown charts, while actual code quality, refactoring, and automated testing were sidelined.
+By 2006, enterprise consulting firms were diluting the original promise of Extreme Programming (XP) and Test-Driven Development (TDD). "Agile" had become synonymous with daily standups and burndown charts, while actual code quality, refactoring, and automated testing were sidelined.
 
 In Chicago, **Dave Hoover** (co-founder of Obtiva) and early software craftsmanship advocates began hosting informal coding katas outside business hours. Instead of listening to lectures, developers brought laptops, paired up, and practiced TDD exercises in Ruby and Java.
 
@@ -31,7 +31,7 @@ In 2009, local practitioners submitted talk proposals to traditional academic an
 
 > "They told us live pairing, TDD katas, and unit test refactoring were 'too practical' for a stage. So we decided right then: if mainstream conferences won't show real engineering practice, we will build a stage dedicated entirely to it."
 
-That rejection became the rallying cry. **Software Craftsmanship McHenry County (SCMC)** was launched by Mike Hall and Ryan Gerry in McHenry County, IL, with early collaboration from 8th Light leaders Steve Kim and Jim Suchy. Shortly after, Chicago hosted the first **Software Craftsmanship North America (SCNA)** conference, a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
+That rejection became the rallying cry. Mike Hall and Ryan Gerry launched **Software Craftsmanship McHenry County (SCMC)** in McHenry County, IL, with early collaboration from 8th Light leaders Steve Kim and Jim Suchy. Shortly after, Chicago hosted the first **Software Craftsmanship North America (SCNA)** conference, a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
 
 
 *Primary Archival Artifact (October 2010): The main hall at SCNA 2010 in Chicago, featuring sponsor tables for 8th Light, Obtiva, and Agile Alliance.*
