@@ -66,7 +66,7 @@ class YouTubeMetadataGenerator
 
       # 1. Update the canonical video_assets.yml object
       asset["title"] = package[:title]
-      asset["description"] = package[:description]
+      asset["description"] = package[:site_description]
       asset["tags"] = package[:tags]
       asset["chapters"] = package[:chapters] if package[:chapters].any?
 
@@ -131,12 +131,14 @@ class YouTubeMetadataGenerator
 
     # 1:1 Canonical Description in Mike Hall with UGtastic authentic voice
     description = build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, first_mike_turn ? first_mike_turn["text"] : nil)
+    site_description = summary.empty? ? clean_spoken_intro(first_mike_turn ? first_mike_turn["text"] : nil, guest_name, event_label, guest_role) : summary
 
     {
       transcript_id: transcript_id,
       youtube_video_id: video_id,
       title: title,
       description: description,
+      site_description: site_description,
       chapters: chapters,
       tags: tags,
       generated_at: Time.now.utc.iso8601
