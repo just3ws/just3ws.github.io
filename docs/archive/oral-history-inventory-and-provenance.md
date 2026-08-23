@@ -50,7 +50,7 @@ Phase 3: Apple Final Cut Pro X (2012–2015)
 #### The Dave Thomas (GOTO Conferences) Sponsorship Story
 In early 2012, **Dave Thomas** (founder of YOW! conferences, board member of Trifork/GOTO, and prominent Smalltalk/OO pioneer; not "PragDave" Thomas) visited Chicago to scout locations and evaluate the local technical ecosystem for launching the first **GOTO Chicago** conference.
 
-**Dave Hoover** (co-author of *Apprenticeship Patterns* and founder at Obtiva/8th Light) connected Dave Thomas with Mike Hall. Mike met Dave at a Chicago Starbucks for a spontaneous standup interview ([YouTube: `RaCRLFLgbR4`](https://youtu.be/RaCRLFLgbR4), [Archive Record](/interviews/dave-thomas-goto-conference-and-community-goto-conference-and-community/)).
+**Dave Hoover** (co-author of *Apprenticeship Patterns* and founder at Obtiva/8th Light) connected Dave Thomas with Mike Hall. Because Dave was in town with limited time, Mike met him on short notice at a Chicago Starbucks for a standup interview ([YouTube: `RaCRLFLgbR4`](https://youtu.be/RaCRLFLgbR4), [Archive Record](/interviews/dave-thomas-goto-conference-and-community-goto-conference-and-community/)).
 
 During this conversation, Dave shared the founding history of the JAOO and GOTO conferences by Trifork in Aarhus, Denmark, explaining their philosophy of independent, vendor-free program committees and community collaboration. Dave was so impressed by Mike's grassroots dedication to recording the software community that he became a UGtastic sponsor, providing the funding that allowed Mike to purchase his first **Apple Final Cut Pro** license (retiring iMovie and ffmpeg workflows). 
 
