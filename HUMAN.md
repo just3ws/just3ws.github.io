@@ -1,6 +1,6 @@
 # HUMAN.md — Action Items & Decisions for Mike Hall
 
-This document tracks decisions, verifications, and input needed from Mike (human) to guide automated synchronization and historical archiving. 
+This document tracks decisions, verifications, and input needed from Mike (human) to guide automated synchronization and historical archiving.
 
 > **Instructions for Mike:**
 > Fill in your answers inline under each `[Your Answer:]` prompt. When you are ready for Antigravity to process your answers, simply say *"Read in HUMAN.md"* in the chat.
@@ -12,7 +12,7 @@ This document tracks decisions, verifications, and input needed from Mike (human
 All 182 staged YouTube packages have been regenerated with your authentic, warm, conversational Mike Hall opening format (*"Hi, it's Mike with UGtastic! In this conversation recorded on-site at [Event]..."*) with zero quote marks.
 
 - [ ] **Question 1.1:** Would you like to run `ruby bin/publish_youtube_metadata.rb --apply --force` right now to push these new descriptions to all 180+ videos on YouTube (processing as many as the daily quota allows and resuming tomorrow)?
-  - **[Your Answer:]** 
+  - **[Your Answer:]**
 
 ---
 
@@ -26,10 +26,10 @@ Three video records in `_data/video_assets.yml` returned a `404 Video not found`
 *(Note: We have high-resolution Vimeo master recordings for all three of these in the archive).*
 
 - [ ] **Question 2.1:** Are these 3 videos set to private/unlisted on your YouTube channel, or were they removed/hosted exclusively on Vimeo?
-  - **[Your Answer:]** 
+  - **[Your Answer:]**
 
 - [ ] **Question 2.2:** Should we mark their primary streaming platform in `video_assets.yml` as Vimeo?
-  - **[Your Answer:]** 
+  - **[Your Answer:]**
 
 ---
 
@@ -45,7 +45,7 @@ During the channel audit, we found 7 video IDs on your YouTube channel that appe
 - `9_4d6IBt_uI` — Adewale Oshineye (Original: `GGhUZTBA6L4`)
 
 - [ ] **Question 3.1:** Would you like to leave both copies on YouTube as-is, or is there a preferred set of video IDs you want canonicalized in `_data/video_assets.yml`?
-  - **[Your Answer:]** 
+  - **[Your Answer:]**
 
 ---
 
@@ -60,7 +60,7 @@ In the 6 McHenry County Software Craftsmanship meetup recordings (hosted on Vime
 6. `vimeo-44387717.yml`: Software engineering definition discussion
 
 - [ ] **Question 4.1:** Should we update the speaker maps in these 6 transcripts to replace the generic placeholder `Guest` with these identified names and roles?
-  - **[Your Answer:]** 
+  - **[Your Answer:]**
 
 ---
 
@@ -71,5 +71,5 @@ Two items in the media archive are personal skatepark / BMX clips:
 2. `killer-skatepark-evansville-in-july-2022-general.yml`
 
 - [ ] **Question 5.1:** Should we set the speaker/creator on these two personal clips to **Mike Hall** and classify them under personal/BMX archive taxonomy?
-  - **[Your Answer:]** 
+  - **[Your Answer:]** SKATEBOARDING! Technically I rode a BMX bike before I skated but so did every Midwestern boy growing up in the '80s. These skateboarding videos are my fun videos, no lessons except what they were. I'll eventually be uploading my old terrible skate videos for fun.
 

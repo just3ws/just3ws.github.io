@@ -98,8 +98,8 @@ class YouTubeMetadataGenerator
   def generate_video_package(transcript_id, video_id, asset, transcript_data, _research_data)
     speaker_map = transcript_data["speaker_map"] || {}
     primary_speaker = speaker_map.values.find { |s| s["role"] != "Interviewer, UGtastic" && s["name"] != "Mike Hall" }
-    guest_name = primary_speaker ? primary_speaker["name"] : extract_guest_from_title(asset["title"])
-    guest_role = primary_speaker ? primary_speaker["role"] : nil
+    guest_name = primary_speaker ? primary_speaker["name"] : (speaker_map.values.first&.dig("name") || "Mike Hall")
+    guest_role = primary_speaker ? primary_speaker["role"] : (speaker_map.values.first&.dig("role") || "Skateboarding")
 
     raw_summary = transcript_data["summary"] || asset["description"] || ""
     summary = clean_summary(raw_summary)
@@ -267,7 +267,7 @@ class YouTubeMetadataGenerator
     location_phrase = if event_label && event_label != "UGtastic Archive"
                         "on-site at #{event_label}"
                       else
-                        "in the Chicago tech community"
+                        "in the community"
                       end
 
     topic_phrase = if guest_role && !guest_role.empty?
@@ -276,7 +276,11 @@ class YouTubeMetadataGenerator
                      "to talk about their engineering work and what is important to them"
                    end
 
-    "Hi, it's Mike with UGtastic! In this conversation recorded #{location_phrase}, I sit down with #{guest_name} #{topic_phrase}."
+    if guest_name == "Mike Hall"
+      "Hi, it's Mike with UGtastic! In this archival clip recorded #{location_phrase}, I'm sharing some fun skateboarding footage from the archive."
+    else
+      "Hi, it's Mike with UGtastic! In this conversation recorded #{location_phrase}, I sit down with #{guest_name} #{topic_phrase}."
+    end
   end
 
   def clean_summary_body(summary, guest_name)
