@@ -53,7 +53,7 @@ Using Aspect-Oriented diagnostic tracing and runtime observation, the Panoramic 
 They build the defensive architecture: static AST linting gates, immutable standing refusals, and pre-commit verification shims that allow both human teams and AI subagents to innovate fearlessly without risking data corruption.
 
 #### Pillar 4: Stewarding Cultural & Technical Memory
-Just as we recovered [214 historical technical conversations](/interviews/) to preserve the oral history of software craftsmanship, the Principal Engineer ensures that the *why* behind architectural decisions is never lost to organizational turnover.
+Just as we recovered [207 historical technical conversations](/interviews/) to preserve the oral history of software craftsmanship, the Principal Engineer ensures that the *why* behind architectural decisions is never lost to organizational turnover.
 
 ---
 

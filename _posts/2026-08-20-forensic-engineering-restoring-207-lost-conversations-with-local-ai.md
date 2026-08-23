@@ -1,8 +1,8 @@
 ---
 layout: "post"
-title: "Forensic Engineering: Restoring 214 Lost Technical Conversations with Local AI"
+title: "Forensic Engineering: Restoring 207 Lost Technical Conversations with Local AI"
 date: "2026-08-20"
-description: "Over a decade of software engineering history was trapped in low-bitrate MP3s, dead RSS feeds, and deprecated hosting platforms. Here is how I used local AI (Whisper and LLM pipelines) to perform digital archeology and restore 214 high-bandwidth technical interviews."
+description: "Over a decade of software engineering history was trapped in low-bitrate MP3s, dead RSS feeds, and deprecated hosting platforms. Here is how I used local AI (Whisper and LLM pipelines) to perform digital archeology and restore 207 high-bandwidth technical interviews."
 tags:
   - AI Engineering
   - Digital Archeology
@@ -10,7 +10,9 @@ tags:
   - Audio Engineering
   - Python
   - UGtastic
-permalink: /ai/2026/08/20/forensic-engineering-restoring-214-lost-conversations-with-local-ai/
+permalink: /ai/2026/08/20/forensic-engineering-restoring-207-lost-conversations-with-local-ai/
+redirect_from:
+  - /ai/2026/08/20/forensic-engineering-restoring-214-lost-conversations-with-local-ai/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
@@ -22,7 +24,7 @@ During that time, through **UGtastic** and community conferences across North Am
 
 Over the following decade, much of that history quietly disappeared from the public internet. Podcast hosts shut down, RSS feeds broke, domain names expired, and audio files were scattered across archived hard drives.
 
-In 2026, I undertook a project in **Forensic Digital Archeology**: recovering, transcribing, structuring, and publishing all **214 technical conversations** on [just3ws.com/interviews/](/interviews/) using open-source, local AI pipelines.
+In 2026, I undertook a project in **Forensic Digital Archeology**: recovering, transcribing, structuring, and publishing all **207 technical conversations** on [just3ws.com/interviews/](/interviews/) using open-source, local AI pipelines.
 
 Here is how the forensic pipeline was built.
 
@@ -79,7 +81,7 @@ Raw transcripts lack paragraph structure, punctuation nuance, and clean speaker 
 
 The real goal of this restoration was never just generating text files, it was preserving the **human culture** of our industry.
 
-Reading through the restored [214 conversations](/interviews/) reveals timeless engineering truths:
+Reading through the restored [207 conversations](/interviews/) reveals timeless engineering truths:
 
 - **Tools change, but human collaboration remains the bottleneck.** Discussions from 2011 about balancing technical debt versus feature velocity sound identical to debates happening in 2026 engineering teams.
 - **Craftsmanship is a discipline of care.** The early advocates for TDD, continuous integration, and clean code weren't pursuing perfection for its own sake; they were building systems that gave developers confidence to make bold changes.
@@ -89,7 +91,7 @@ Reading through the restored [214 conversations](/interviews/) reveals timeless 
 
 ### 💡 Explore the Archive
 
-All 214 restored interviews, complete with interactive transcripts, speaker bios, and topic indices, are freely accessible in the canonical archive:
+All 207 restored interviews, complete with interactive transcripts, speaker bios, and topic indices, are freely accessible in the canonical archive:
 
 - 🎙️ **[Browse the Full Technical Interview Archive](/interviews/)**
 - 🏛️ **[Read the Durable Insights of UGtastic](/ai/2026/05/07/the-durable-insights-of-ugtastic/)**
