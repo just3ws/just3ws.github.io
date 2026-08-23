@@ -267,6 +267,7 @@ class YouTubeMetadataGenerator
     if text
       cleaned = text.gsub(/\[.*?\]/, '').gsub(/\s+/, ' ').strip
       cleaned = cleaned.gsub(/\b(?:Utesc|Ute\s*TASC|Hugtastic|Ugtastic)\b/i, 'UGtastic')
+      cleaned = cleaned.gsub(/\bBoggess\b/i, 'Baugues')
       if cleaned =~ /\A(?:Hi|Hello|Hey|Good\s+(?:morning|afternoon|evening)|I\x27m\s+Mike|Welcome\s+to)/i
         sentences = cleaned.split(/(?<=[.!?])\s+/)
         intro = sentences.take(2).join(' ').strip
@@ -293,6 +294,7 @@ class YouTubeMetadataGenerator
     cleaned = cleaned.gsub(/CHAPTERS:.*$/m, '')
     cleaned = cleaned.gsub(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/, '')
     cleaned = cleaned.gsub(/#\w+/, '') # Remove hashtags
+    cleaned = cleaned.gsub(/\bBoggess\b/i, 'Baugues')
     cleaned = cleaned.gsub(/Recorded as part of the Technical Conversation Archive.*/m, '') # Remove duplicates
     cleaned = cleaned.gsub(/Don't miss this!/i, '')
     cleaned = cleaned.gsub(/Check it out!/i, '')
