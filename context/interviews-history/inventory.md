@@ -4,9 +4,13 @@
 
 This archive contains interview footage, transcripts, and metadata from **UGtastic** (later "WHOIS Tech Community"), a video interview series documenting the tech community, particularly user groups, conference speakers, and software craftsmanship practitioners. The project was created and hosted by **Michael D. Hall** (Mike Hall).
 
-**Archive Scope:** ~2012-2015
+**Archive Scope:** 2009–2015
 **Primary Focus:** Tech community leaders, conference interviews, user group organizers
-**Total Interviews Documented:** 190+ unique interviews
+**Total Interviews Documented:** 207 unique interviews (100% transcript & subtitle coverage)
+
+### Production Evolution & Sponsorship Provenance
+- **Toolchain Evolution:** The series began with raw camera footage encoded and demuxed via custom Bash scripts and `ffmpeg`, transitioned to Apple `iMovie` (2011–2012), and graduated to **Apple Final Cut Pro X** (2012–2015).
+- **The Dave Thomas Sponsorship:** In early 2012, **Dave Thomas** (GOTO / YOW! conferences founder, Trifork board; not "PragDave" Thomas) visited Chicago to scout locations for launching GOTO Chicago. Connected by Dave Hoover, Mike Hall met Dave at a Starbucks for a standup interview (`RaCRLFLgbR4`). Impressed by UGtastic's community recording mission, Dave Thomas provided sponsorship funds that allowed Mike to purchase his first Apple Final Cut Pro license, and opened the doors for UGtastic to serve as an on-site interview partner for GOTO Chicago (2013–2015).
 
 ---
 
