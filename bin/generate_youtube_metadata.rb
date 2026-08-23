@@ -109,8 +109,8 @@ class YouTubeMetadataGenerator
     event_label = determine_event_label([], transcript_id, year)
     
     # Topic strictly from guest role, asset topic, or transcript turns
-    main_topic = if guest_role && !guest_role.empty? && guest_role.length <= 40
-                   guest_role.capitalize
+    main_topic = if guest_role && !guest_role.empty? && guest_role.length <= 60
+                   guest_role.split(' ').map { |w| %w[and or of in on with for at the to].include?(w.downcase) ? w.downcase : w.capitalize }.join(' ')
                  elsif asset["topic"]
                    asset["topic"].to_s.split('-').map(&:capitalize).join(' ')
                  else
