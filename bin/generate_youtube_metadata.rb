@@ -224,28 +224,27 @@ class YouTubeMetadataGenerator
 
   def build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, spoken_intro = nil)
     lines = []
-    
-    # Historical archive banner
-    lines << "📼 FROM THE UGTASTIC ARCHIVE (Recorded on-site at #{event_label})"
+
+    # 1. Warm, friendly greeting in Mike Hall's authentic UGtastic voice
+    lines << generate_warm_opener(guest_name, guest_role, event_label, summary)
     lines << ""
 
-    # Authentic Mike Hall spoken opening from the recording
-    opening_hook = clean_spoken_intro(spoken_intro, guest_name, event_label, guest_role)
-    lines << "\"#{opening_hook}\""
-    lines << ""
-
-    # Historical discussion summary & era context
-    if !summary.empty? && !summary.start_with?("Hi,") && !summary.start_with?("Hi ") && summary != opening_hook
-      lines << summary
+    # 2. Discussion context & what was important to the guest
+    body = clean_summary_body(summary, guest_name)
+    if body && !body.empty?
+      lines << body
       lines << ""
     end
+
+    # 3. Archival era context
     lines << "Recorded during the 2009–2015 software craftsmanship and developer community movements, this archival interview captures early ideas, debates, and community organizing in real time."
     lines << ""
 
+    # 4. Structured Oral History Record
     lines << "---"
     lines << "🏛️ ORAL HISTORY RECORD:"
     lines << "• Series: UGtastic Technical Conversation Archive (2009–2015)"
-    lines << "• Recorded: #{event_label}"
+    lines << "• Location: #{event_label}"
     lines << "• Guest: #{guest_name}#{guest_role && !guest_role.empty? ? " (#{guest_role})" : ""}"
     lines << "• Interviewer: Mike Hall (UGtastic / https://www.just3ws.com)"
     lines << ""
@@ -254,32 +253,46 @@ class YouTubeMetadataGenerator
       lines << "#{ch['time']} - #{ch['title']}"
     end
     lines << ""
-    lines << "📖 FULL TRANSCRIPT & RESTORATION:"
+    lines << "📖 FULL INTERACTIVE TRANSCRIPT & AUDIO:"
     lines << "https://www.just3ws.com/interviews/#{transcript_id}/"
     lines << ""
     lines << "🏷️ TOPICS: #{tags.join(', ')}" unless tags.empty?
     lines << ""
     lines << "Restored and preserved by Mike Hall (https://www.just3ws.com)"
+
     lines.join("\n")
   end
 
-  def clean_spoken_intro(text, guest_name, event_label, guest_role)
-    if text
-      cleaned = text.gsub(/\[.*?\]/, '').gsub(/\s+/, ' ').strip
-      cleaned = cleaned.gsub(/\b(?:Utesc|Ute\s*TASC|Hugtastic|Ugtastic)\b/i, 'UGtastic')
-      cleaned = cleaned.gsub(/\bBoggess\b/i, 'Baugues')
-      if cleaned =~ /\A(?:Hi|Hello|Hey|Good\s+(?:morning|afternoon|evening)|I\x27m\s+Mike|Welcome\s+to)/i
-        sentences = cleaned.split(/(?<=[.!?])\s+/)
-        intro = sentences.take(2).join(' ').strip
-        if intro.length > 220
-          intro = intro[0...200].sub(/\s+\S*\z/, '') + '.'
-        end
-        return intro if intro.length >= 25 && !intro.downcase.include?('testing')
-      end
-    end
+  def generate_warm_opener(guest_name, guest_role, event_label, summary)
+    location_phrase = if event_label && event_label != "UGtastic Archive"
+                        "on-site at #{event_label}"
+                      else
+                        "in the Chicago tech community"
+                      end
 
-    role_phrase = (guest_role && !guest_role.empty?) ? " to discuss #{guest_role}" : ""
-    "Hi, it's Mike with UGtastic. In this conversation recorded on-site at #{event_label}, I sit down with #{guest_name}#{role_phrase}."
+    topic_phrase = if guest_role && !guest_role.empty?
+                     "to discuss #{guest_role.downcase}"
+                   else
+                     "to talk about their engineering work and what is important to them"
+                   end
+
+    "Hi, it's Mike with UGtastic! In this conversation recorded #{location_phrase}, I sit down with #{guest_name} #{topic_phrase}."
+  end
+
+  def clean_summary_body(summary, guest_name)
+    return nil if summary.nil? || summary.empty?
+    cleaned = clean_summary(summary)
+    return nil if cleaned.empty?
+
+    # Remove all duplicated spoken opening fragments
+    cleaned = cleaned.gsub(/(?:Hi|Hello|Hey),?\s*(?:it's|I'm)?\s*Mike\b[^.!?]*[.!?]/i, '')
+    cleaned = cleaned.gsub(/I'm\s+(?:standing|sitting)\s+here\s+with\s+[^.!?]*[.!?]/i, '')
+    cleaned = cleaned.gsub(/I'm\s+(?:here|sitting\s+down)\s+(?:at|with)\s+[^.!?]*[.!?]/i, '')
+    cleaned = cleaned.gsub(/\A(?:In this video|In this interview)\s+[^.!?]*[.!?]/i, '')
+    cleaned = cleaned.gsub(/\s+/, ' ').strip
+
+    return nil if cleaned.empty? || cleaned.length < 20
+    cleaned
   end
 
   def clean_summary(text)
