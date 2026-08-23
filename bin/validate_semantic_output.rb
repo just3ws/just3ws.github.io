@@ -225,6 +225,9 @@ all_html_paths.each do |path|
   next if relative == 'resume-minimal.html' || relative == 'resume-minimal/index.html'
 
   html = read(path)
+  # Skip jekyll-redirect-from redirect stubs
+  next if html.include?('<meta http-equiv="refresh"')
+
   checked += 1
   coverage[:html_pages_checked] += 1
 
