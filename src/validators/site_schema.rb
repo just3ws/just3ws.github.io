@@ -10,7 +10,14 @@ module Validators
   class PlatformContract < BaseContract
     params do
       required(:platform).filled(:string)
-      required(:url).filled(:string)
+      optional(:url).maybe(:string)
+      optional(:path).maybe(:string)
+      optional(:asset_id).maybe(:string)
+      optional(:video_url).maybe(:string)
+      optional(:image_url).maybe(:string)
+      optional(:title_on_platform).maybe(:string)
+      optional(:published_date).maybe(:string)
+      optional(:description).maybe(:string)
       optional(:embed_url).maybe(:string)
     end
   end
@@ -43,7 +50,7 @@ module Validators
       optional(:tags).array(:string)
     end
 
-    rule(:platforms).each do
+    rule(:platforms).each do |index|
       if value.is_a?(Hash)
         contract = PlatformContract.new
         result = contract.call(value)
