@@ -188,8 +188,8 @@ Owned core backend systems for fraud and taxonomy, leading global engineering en
 
 **Key Outcomes:**
 - Built merchant analytics tools in Ruby and CouchDB, surfacing market insights for global sales operations.
-- Designed analytical fraud detection queries in Vertica and Hadoop, increasing transaction risk evaluation throughput by 10x.
-- Implemented a centralized merchant taxonomy service in Java and MySQL, eliminating categorization drift across distributed product teams.
+- Designed analytical fraud detection queries in Vertica and conducted exploratory spikes on Hadoop and Clojure-based anomaly detection tools.
+- Implemented a centralized merchant taxonomy service in Java (ActiveWeb/ActiveJDBC) and MySQL, eliminating categorization drift across distributed product teams.
 - Redesigned the global engineering onboarding curriculum, standardizing technical practices and shortening time-to-first-commit for new hires.
 
 **Skills:** Ruby, Java, Clojure, CouchDB, Vertica, Hadoop, MySQL, Redis, JavaScript, Bash
