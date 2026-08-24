@@ -1,0 +1,30 @@
+---
+layout: base
+---
+<nav class="resume-subnav no-print" aria-label="Resume variant actions">
+  <div class="subnav-group">
+    <a href="/" class="subnav-link">← Main Resume</a>
+    <span>Variants:</span>
+    {% assign archetypes = site.data.resume.archetypes %}
+    {% for pair in archetypes %}
+      {% assign a = pair[1] %}
+      {% assign slug = a.file_slug %}
+      {% assign href = "/resumes/" | append: slug | append: "/" %}
+      {% assign is_current = page.url | remove_trailing_slash %}
+      {% assign this_href = href | remove_trailing_slash %}
+      {% if is_current == this_href %}
+        <span class="subnav-link is-current" aria-current="page">{{ a.title | split: "/" | first | strip }}</span>
+      {% else %}
+        <a href="{{ href }}" class="subnav-link" title="{{ a.target_tier }}">{{ a.title | split: "/" | first | strip }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="subnav-group">
+    <a href="{{ page.url | replace: '/', '' | prepend: '/resumes/' | append: '' }}.md" class="subnav-link">MD</a>
+    <button onclick="window.print()" class="subnav-btn">Print PDF</button>
+  </div>
+</nav>
+
+<article class="ats-resume-content archetype-resume-content">
+  {{ content }}
+</article>

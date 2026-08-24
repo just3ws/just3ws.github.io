@@ -1,5 +1,6 @@
 ---
-layout: resume
+layout: archetype-resume
+body_class: ats-resume
 title: "Founding Staff Engineer (0-to-1 Product & AI Systems)"
 description: "Hands-on Founding Staff Engineer who translates product ambiguity into robust, production-ready software. Combines full-stack web development (Rails, P"
 permalink: /resumes/mike-hall-founding-staff-engineer/

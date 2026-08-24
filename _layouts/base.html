@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  {% if page.layout == 'resume' %}
+  {% if page.layout == 'resume' or page.layout == 'archetype-resume' %}
     {% include head/critical-resume.html %}
   {% endif %}
 
   {% assign theme_css = "/assets/css/site.css" %}
-  {% if page.layout == 'resume' %}
+  {% if page.layout == 'resume' or page.layout == 'archetype-resume' %}
     {% assign theme_css = "/assets/css/resume.css" %}
   {% endif %}
 

@@ -35,7 +35,8 @@ archetypes.each do |key, config|
   
   front_matter = [
     "---",
-    "layout: resume",
+    "layout: archetype-resume",
+    "body_class: ats-resume",
     "title: #{config['title'].inspect}",
     "description: #{config['summary'][0..150].strip.inspect}",
     "permalink: /resumes/#{slug}/",
