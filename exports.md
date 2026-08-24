@@ -21,6 +21,16 @@ Download resume, portfolio, and career history in multiple formats.
 - **JSON Schema** - [resume.json](/resume.json) (Structured JSON for ATS and API ingestion)
 - **Plain Text** - [resume.txt](/resume.txt) (UTF-8 plain text export)
 
+## Tailored Archetype Resumes
+
+Bespoke markdown resumes tailored for specific engagement tiers and role archetypes:
+
+- **Principal Systems Architect** &mdash; [principal-software-engineer.md](/exports/resumes/principal-software-engineer.md) (High-consequence legacy modernization, distributed tracing, cross-domain governance)
+- **Staff Platform & Enablement Lead** &mdash; [staff-platform-lead.md](/exports/resumes/staff-platform-lead.md) (Developer velocity, team consolidation & attrition rescue, verification gates)
+- **Senior / Lead Ruby on Rails Contractor** &mdash; [senior-ruby-rails-contractor.md](/exports/resumes/senior-ruby-rails-contractor.md) (Zero-ramp-up IC execution, state machines, async pipelines, TDD)
+- **Founding Staff Engineer (0-to-1 Product & AI)** &mdash; [founding-staff-engineer.md](/exports/resumes/founding-staff-engineer.md) (High agency, pgvector semantic search, local LLM orchestration, MV3 extensions)
+- **Staff Observability & Resilience Specialist** &mdash; [observability-resilience-specialist.md](/exports/resumes/observability-resilience-specialist.md) (OpenTelemetry Working Group, distributed trace propagation, incident triage)
+
 ## Executive Pitch Briefs
 
 Tailored 1-page executive pitch documents mapping 4D System Cartography case studies to specific target role mandates:
