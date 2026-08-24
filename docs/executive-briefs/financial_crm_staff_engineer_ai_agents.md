@@ -2,7 +2,6 @@
 
 **Target Role:** Staff Software Engineer: AI Agents, Platform & Rails Architecture  
 **Comp Range:** $150,000: $240,000 / yr (Remote, Full-time)  
-**Lead Record:** [`wwworkremote` Posting #5049](http://localhost:31000/api/v0/job_postings/5049)  
 **Tone Calibration:** Understated, fact-dense, zero-fluff. Written for VP of Engineering & Technical Leadership.
 
 ---

@@ -3,7 +3,6 @@
 **Target Role:** Staff Software Engineer: Legacy Integration & Platform Architecture (Ruby/Rails)  
 **Company:** NextPatient  
 **Comp Range:** $250,000: $300,000 / yr (Remote, Full-time)  
-**Lead Record:** [`wwworkremote` Posting #5048](http://localhost:31000/api/v0/job_postings/5048)  
 **Tone Calibration:** Understated, fact-dense, zero-fluff. Written for engineering leadership & technical screeners.
 
 ---

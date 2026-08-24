@@ -41,9 +41,10 @@ brief_files.each do |file_path|
   FileUtils.mkdir_p(dir)
   out_path = File.join(dir, "index.html")
 
-  # Strip top level markdown title to prevent double titles
+  # Strip top level markdown title to prevent double titles and sanitize internal lead records
   body_content = content.sub(/^#\s+Executive Pitch Brief:[^\n]+\n/i, "")
                         .sub(/^#\s+Job Lead Evaluation:[^\n]+\n/i, "")
+                        .gsub(/^\*\*Lead Record:\*\*.*$\n?/i, "")
 
   File.open(out_path, "w") do |f|
     f.puts "---"
@@ -56,8 +57,8 @@ brief_files.each do |file_path|
     f.puts "breadcrumb_parent_url: /exports/"
     f.puts "brief_company: #{Generators::Core::Text.yaml_quote(company)}"
     f.puts "brief_role: #{Generators::Core::Text.yaml_quote(role)}"
-    f.puts "sitemap: true"
-    f.puts "robots: index,follow"
+    f.puts "sitemap: false"
+    f.puts "robots: noindex,nofollow"
     f.puts "body_class: ats-resume"
     f.puts "---"
     f.puts

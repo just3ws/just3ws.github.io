@@ -21,13 +21,6 @@ Download resume, portfolio, and career history in multiple formats.
 - **JSON Schema** - [resume.json](/resume.json) (Structured JSON for ATS and API ingestion)
 - **Plain Text** - [resume.txt](/resume.txt) (UTF-8 plain text export)
 
-## Executive Pitch Briefs
-
-Tailored 1-page executive pitch documents mapping 4D System Cartography case studies to specific target role mandates:
-- **NextPatient** ($250k–$300k, Staff Software Engineer — Legacy Integration) — [Web Brief](/exports/briefs/nextpatient-staff-software-engineer/)
-- **Financial CRM** ($150k–$240k, Staff Engineer — AI Agents & Rails Architecture) — [Web Brief](/exports/briefs/financial-crm-staff-engineer-ai-agents/)
-- **Huntress** (Principal Software Engineer — SOC Experience) — [Web Brief](/exports/briefs/huntress-principal-software-engineer-soc-experience-ruby-rails/)
-
 ## Portfolio
 
 - **HTML** - [Project portfolio](/portfolio/) (interactive with timeline)

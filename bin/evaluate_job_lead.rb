@@ -179,7 +179,6 @@ CareerOS::PeerMutex.with_lock(caller_name: "just3ws-lead-evaluator") do
     # Job Lead Evaluation: #{info[:company]}
 
     **Target Role:** #{info[:title]}
-    **Lead Record:** [`wwworkremote` Lead ##{info[:lead_id] || 'N/A'}](http://localhost:31000/admin/leads/#{info[:lead_id]}) / [Posting ##{info[:posting_id]}](http://localhost:31000/api/v0/job_postings/#{info[:posting_id]})
     **Company Profile:** #{info[:company]}
 
     ---

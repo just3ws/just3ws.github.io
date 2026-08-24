@@ -1,7 +1,6 @@
 # Job Lead Evaluation: Huntress
 
 **Target Role:** Principal Software Engineer, SOC Experience (Ruby/Rails)  
-**Lead Record:** [`wwworkremote` Lead #112](http://localhost:31000/admin/leads/112) / [Posting #5612](http://localhost:31000/api/v0/job_postings/5612)  
 **Company Profile:** Huntress  
 **Tone Calibration:** Understated, zero-fluff, honest level assessment.
 
