@@ -32,11 +32,13 @@ module Jekyll
         write_markdown(site, config[:file], markdown_content)
       end
 
-      # Preserve and copy archetype resumes
-      resumes_dir = File.join(site.source, "exports", "resumes")
-      if Dir.exist?(resumes_dir)
-        Dir.glob(File.join(resumes_dir, "*.md")).each do |rf|
-          site.static_files << Jekyll::StaticFile.new(site, site.source, "exports/resumes", File.basename(rf))
+      # Preserve and copy archetype resumes to /resumes/ and /exports/resumes/
+      ['resumes', 'exports/resumes'].each do |rel_dir|
+        source_dir = File.join(site.source, rel_dir)
+        if Dir.exist?(source_dir)
+          Dir.glob(File.join(source_dir, "*.md")).each do |rf|
+            site.static_files << Jekyll::StaticFile.new(site, site.source, rel_dir, File.basename(rf))
+          end
         end
       end
     end

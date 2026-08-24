@@ -6,8 +6,10 @@ require 'fileutils'
 
 ROOT_DIR = File.expand_path('..', __dir__)
 DATA_DIR = File.join(ROOT_DIR, '_data', 'resume')
+RESUMES_DIR = File.join(ROOT_DIR, 'resumes')
 EXPORTS_DIR = File.join(ROOT_DIR, 'exports', 'resumes')
 
+FileUtils.mkdir_p(RESUMES_DIR)
 FileUtils.mkdir_p(EXPORTS_DIR)
 
 profile = YAML.load_file(File.join(DATA_DIR, 'profile.yml'))
@@ -24,11 +26,12 @@ end
 
 linkedin_display = profile['contact']['linkedin']['url'].sub(%r{\Ahttps?://(www\.)?}, '')
 
-puts "Generating #{archetypes.length} tailored archetype resumes...\n\n"
+puts "Generating #{archetypes.length} tailored archetype resumes under resumes/ and exports/resumes/...\n\n"
 
 archetypes.each do |key, config|
   slug = config['file_slug']
-  target_file = File.join(EXPORTS_DIR, "#{slug}.md")
+  target_file = File.join(RESUMES_DIR, "#{slug}.md")
+  export_file = File.join(EXPORTS_DIR, "#{slug}.md")
   
   lines = []
   lines << "# #{profile['name']}"
@@ -72,7 +75,6 @@ archetypes.each do |key, config|
     lines << "**#{dates}**#{loc ? " | #{loc}" : ""}"
     lines << ""
     
-    # Archetype specific focus summary or position summary
     if entry['focus']
       lines << "**Target Focus:** #{entry['focus']}"
       lines << ""
@@ -149,8 +151,10 @@ archetypes.each do |key, config|
     lines << ""
   end
   
-  File.write(target_file, lines.join("\n"))
-  puts "  ✅ Generated: exports/resumes/#{slug}.md (#{File.size(target_file)} bytes)"
+  content = lines.join("\n")
+  File.write(target_file, content)
+  File.write(export_file, content)
+  puts "  ✅ Generated: resumes/#{slug}.md"
 end
 
 puts "\nAll archetype resumes generated successfully."
