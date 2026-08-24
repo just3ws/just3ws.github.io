@@ -1,7 +1,8 @@
 ---
 layout: base
 ---
-{% assign slug = page.permalink | remove: "/" | split: "/" | last %}
+{% assign slug = page.url | remove_first: "/resumes/" | remove: "/" %}
+
 <nav class="resume-subnav no-print" aria-label="Resume variant actions">
   <div class="subnav-group">
     <a href="/" class="subnav-link">← Main Resume</a>
@@ -25,6 +26,4 @@ layout: base
   </div>
 </nav>
 
-<article class="ats-resume-content archetype-resume-content">
-  {{ content }}
-</article>
+{% include archetype-resume-content.html %}

@@ -41,6 +41,7 @@ archetypes.each do |key, config|
     "---",
     "layout: archetype-resume",
     "body_class: ats-resume",
+    "archetype_key: #{key}",
     "title: #{config['title'].inspect}",
     "description: #{config['summary'][0..150].strip.inspect}",
     "permalink: /resumes/#{slug}/",

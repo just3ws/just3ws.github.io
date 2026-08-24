@@ -1,6 +1,7 @@
 ---
 layout: archetype-resume
 body_class: ats-resume
+archetype_key: principal_systems_architect
 title: "Principal Software Engineer / Systems Architect"
 description: "Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines"
 permalink: /resumes/mike-hall-principal-software-engineer/
