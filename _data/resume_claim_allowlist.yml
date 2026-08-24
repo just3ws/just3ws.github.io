@@ -15,11 +15,16 @@ allowed:
     position (ch-robinson) starts December 1999, so 2026 is 27 years. The
     claim is conservative against its own source. Verified 2026-08-24.
 
-pending:
-  "36+": >-
-    No source anywhere in _data/resume/ or _data/case_studies.yml, and used
-    two different ways: "36+ services" for the OneMain OpenTelemetry rollout
-    (docs/executive-briefs/follett-senior-director.md:22) and "36+ Vendors"
-    for third-party risk isolation on the /case-studies page, which was
-    removed 2026-08-24 with the withdrawn EMR-Bear case study. One of those
-    framings is wrong and neither is sourced. Raised with the operator.
+pending: {}
+# Resolved 2026-08-24 and removed from this register:
+#
+#   "36+" — a ghost. The operator identified it as the count of pending
+#   platform updates awaiting verification at EMR-Bear, which is what the
+#   original sentence said ("release verification gates for 36+ pending
+#   platform updates"). Generated prose then mutated it into "36+ services"
+#   for the OneMain OpenTelemetry rollout and "36+ vendors" for supply-chain
+#   risk, neither of which it ever meant. Both mutations are pulled, including
+#   from the two generator instructions that kept re-injecting it
+#   (.agents/skills/executive-brief-generator/SKILL.md and
+#   docs/inter-tool-communication-protocol.md). The number is not restored
+#   anywhere: the current source data does not carry it.

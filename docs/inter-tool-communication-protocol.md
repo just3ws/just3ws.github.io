@@ -110,7 +110,7 @@ delegated to `bin/wwwr match` above, not reimplemented here.
 All messages, evaluations, and briefs generated across systems must enforce the following contract:
 
 1. **Zero Fluff & Zero Hype**: Prohibit unevidenced promotional adjectives ("visionary," "transformational," "groundbreaking").
-2. **Understated Fact Density**: State context, constraint, technical action, and verified outcome (-60% MTTR, domain isolation, OpenTelemetry across 36+ services).
+2. **Understated Fact Density**: State context, constraint, technical action, and verified outcome (-60% MTTR, domain isolation, OpenTelemetry across the service mesh).
 3. **Skeptical Peer Filter**: Distinguish pure IC technical leadership (Staff/Principal Architect) from executive people management (managing managers, HR administration).
 
 ---

@@ -18,6 +18,8 @@
 #   ruby bin/validate_resume_claims.rb            # gate: exit 1 on unattested
 #   ruby bin/validate_resume_claims.rb --explain  # adjudicate findings via gemini
 
+require 'json'
+require 'net/http'
 require 'set'
 require 'yaml'
 
@@ -91,23 +93,57 @@ def pending_hit(claim, rel, lineno)
   nil
 end
 
+GEMINI_MODEL = ENV.fetch('GEMINI_MODEL', 'gemini-flash-latest')
+
 def explain(results)
-  prompt = <<~PROMPT
+  # Deliberately does NOT shell out to the gemini CLI. That CLI is pinned to
+  # selectedAuthType "oauth-personal" in ~/.gemini/settings.json, so it ignores
+  # GEMINI_API_KEY, opens a browser auth prompt, and still exits 0 -- its status
+  # cannot be trusted to mean the adjudication happened. Calling the API with
+  # the key keeps this opt-in per run instead of changing a global auth setting
+  # that every other Gemini caller on the box shares.
+  key = ENV['GEMINI_API_KEY']
+  return warn_missing_key unless key
+
+  answer = gemini_verdicts(key, results)
+  return warn("\ngemini adjudication unavailable; findings above stand.") unless answer
+
+  warn "\nGemini (advisory, not a gate):"
+  warn answer
+end
+
+def warn_missing_key
+  warn "\n--explain needs GEMINI_API_KEY, which is not in the environment."
+  warn 'It currently lives only in wwworkremote/core/.env.local, which nothing here reads.'
+  warn 'Keychain is how the rest of the platform holds secrets:'
+  warn '  export GEMINI_API_KEY="$(security find-generic-password -s zdots -a GEMINI_API_KEY -w)"'
+end
+
+def gemini_verdicts(key, results)
+  uri = URI("https://generativelanguage.googleapis.com/v1beta/models/#{GEMINI_MODEL}:generateContent")
+  req = Net::HTTP::Post.new(uri)
+  req['content-type'] = 'application/json'
+  req['x-goog-api-key'] = key
+  req.body = { contents: [ { parts: [ { text: adjudication_prompt(results) } ] } ] }.to_json
+
+  res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true, read_timeout: 60) { |http| http.request(req) }
+  return warn("gemini HTTP #{res.code}") && nil unless res.is_a?(Net::HTTPSuccess)
+
+  JSON.parse(res.body).dig('candidates', 0, 'content', 'parts', 0, 'text')&.strip
+rescue StandardError => e
+  warn "gemini call failed: #{e.class}: #{e.message}"
+  nil
+end
+
+def adjudication_prompt(results)
+  <<~PROMPT
     These quantified claims appear on public career surfaces but no number in the
-    resume source data backs them. For each, say KEEP (a general/industry/quoted
-    statement, not a self-attributed outcome) or PULL (reads as Mike's own
-    result and needs a source). One line each, no preamble.
+    resume source data backs them. For each, answer KEEP (a general/industry or
+    quoted statement, not a self-attributed outcome) or PULL (reads as this
+    person's own result and needs a source). One line each, no preamble.
 
     #{results.map { |r| "#{r[:claim]} -- #{r[:file]}:#{r[:line]} -- #{r[:text]}" }.join("\n")}
   PROMPT
-  # stdin from /dev/null on purpose: an unauthenticated gemini CLI prompts
-  # "Opening authentication page in your browser [Y/n]" and would otherwise
-  # hang forever. Advisory only -- the gate above has already decided.
-  ok = system('gemini', '-p', prompt, in: File::NULL)
-  return if ok
-
-  warn "\ngemini adjudication unavailable -- findings above stand on their own."
-  warn "If the CLI is not signed in yet, run `gemini` once interactively first."
 end
 
 results = findings

@@ -10,7 +10,7 @@ Use this skill when preparing tailored application briefs, pitch documents, or c
 ## Tone & Level Calibration Rules
 
 - **Zero Hype / Zero Fluff**: Prohibit promotional adjectives ("visionary," "transformational," "industry-leading").
-- **Understated Fact-Density**: State context, constraint, concrete engineering action, and verified outcome (e.g. reduced MTTR by 60%, realigned acquisition domain boundaries, standardized OpenTelemetry across 36+ services).
+- **Understated Fact-Density**: State context, constraint, concrete engineering action, and verified outcome (e.g. reduced MTTR by 60%, realigned acquisition domain boundaries, standardized OpenTelemetry across the service mesh).
 - **Skeptical Peer Filter**: Write for an experienced Staff/Principal hiring manager who penalizes puffery and rewards crisp, quiet engineering signal.
 
 ## Workflow Protocol

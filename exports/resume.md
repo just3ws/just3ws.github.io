@@ -24,14 +24,14 @@ Principal Software Engineer who modernizes high-consequence production systems. 
 
 ## Experience
 
-### Development Manager at EMR-Bear, a MedSuite company
+### Development Manager — Founder Transition & Acquisition Handoff at EMR-Bear, a MedSuite company
 **May 2026 — August 2026**
 
 Engaged on a bounded 90-day interim assignment to conduct rapid architecture discovery, platform stabilization, and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics following a founder transition.
 
 **Key Outcomes:**
 - Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
-- Production & Compliance Governance: Protected production stability across 130+ clinical environments by establishing release verification gates across the deployment pipeline, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
+- Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
 - Engineering Continuity: Created transparent component ownership, visible operational priorities, and collaborative decision rhythms for a distributed U.S.-Mexico engineering team.
 
 **Skills:** Technical Leadership, Architecture Discovery, Rapid Risk Assessment, Production Governance, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, Distributed Team Collaboration
@@ -92,7 +92,7 @@ Owned core system testability and performance at scale, leading legacy moderniza
 ### Principal Consultant at Tandem
 **August 2018 — August 2018**
 
-Owned strategic technical assessment and on-site operational evaluation, leading architectural realignment and scope correction for a high-risk federal software program (DoD MEPS).
+Owned strategic technical assessment and on-site operational evaluation, leading architectural realignment and scope correction for a high-risk federal software program (DoD MEPS). Brought in to an over-committed engagement following an engineering-team departure.
 
 
 **Key Outcomes:**
@@ -133,7 +133,7 @@ Owned API design and modernization strategy, leading incremental legacy migratio
 ### CTO at KloboMedia
 **March 2014 — September 2016**
 
-Owned end-to-end platform architecture, leading high-throughput data integration for an early-stage social media startup.
+Owned end-to-end platform architecture, leading high-throughput data integration for an early-stage social media startup. The product, TheSocReport, ended when the upstream data taps closed — Twitter's firehose shutdown and the closing of Facebook's and Instagram's user-intelligence APIs removed the inputs the analytics depended on.
 
 **Key Outcomes:**
 - Architected a social analytics platform integrating Twitter, Facebook, and Instagram APIs, delivering unified audience engagement metrics.

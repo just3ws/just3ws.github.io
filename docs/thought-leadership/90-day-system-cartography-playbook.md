@@ -24,7 +24,7 @@ Here is the **4-Dimensional System Cartography Playbook** I used to stabilize a 
 ### 4. Dimension 4: Measured Operational Proof (The Non-Negotiable Contract)
 - **Outcome**: 
   - Reduced MTTR by **60%**.
-  - **Zero clinical downtime** across 130+ clinics during a 90-day founder transition.
+  - Release verification gates on a platform **servicing 130+ clinics**, during a 90-day founder transition.
   - Reduced background queue backlog by **85%**.
 
 ---
