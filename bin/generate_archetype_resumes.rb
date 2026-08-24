@@ -33,6 +33,18 @@ archetypes.each do |key, config|
   target_file = File.join(RESUMES_DIR, "#{slug}.md")
   export_file = File.join(EXPORTS_DIR, "#{slug}.md")
   
+  front_matter = [
+    "---",
+    "layout: resume",
+    "title: #{config['title'].inspect}",
+    "description: #{config['summary'][0..150].strip.inspect}",
+    "permalink: /resumes/#{slug}/",
+    "sitemap: false",
+    "robots: noindex,nofollow",
+    "---",
+    ""
+  ]
+
   lines = []
   lines << "# #{profile['name']}"
   lines << ""
@@ -151,10 +163,11 @@ archetypes.each do |key, config|
     lines << ""
   end
   
-  content = lines.join("\n")
-  File.write(target_file, content)
-  File.write(export_file, content)
-  puts "  ✅ Generated: resumes/#{slug}.md"
+  raw_content = lines.join("\n")
+  html_page_content = (front_matter + lines).join("\n")
+  File.write(target_file, html_page_content)
+  File.write(export_file, raw_content)
+  puts "  ✅ Generated: resumes/#{slug}.md (HTML page) and exports/resumes/#{slug}.md (Raw MD)"
 end
 
 puts "\nAll archetype resumes generated successfully."

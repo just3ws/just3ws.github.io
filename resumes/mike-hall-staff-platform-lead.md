@@ -1,3 +1,12 @@
+---
+layout: resume
+title: "Staff Software Engineer / Platform & Enablement Lead"
+description: "Staff Software Engineer and Platform Lead who multiplies engineering velocity and system reliability. Proven track record of merging attrition-impacted"
+permalink: /resumes/mike-hall-staff-platform-lead/
+sitemap: false
+robots: noindex,nofollow
+---
+
 # Mike Hall
 
 **Staff Software Engineer / Platform & Enablement Lead**

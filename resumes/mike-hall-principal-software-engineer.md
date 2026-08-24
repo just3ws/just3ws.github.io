@@ -1,3 +1,12 @@
+---
+layout: resume
+title: "Principal Software Engineer / Systems Architect"
+description: "Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines"
+permalink: /resumes/mike-hall-principal-software-engineer/
+sitemap: false
+robots: noindex,nofollow
+---
+
 # Mike Hall
 
 **Principal Software Engineer / Systems Architect**

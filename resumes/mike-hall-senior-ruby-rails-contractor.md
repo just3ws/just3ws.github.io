@@ -1,3 +1,12 @@
+---
+layout: resume
+title: "Senior / Lead Ruby on Rails Developer (Contract / High-Velocity IC)"
+description: "Senior Ruby on Rails contractor with 18+ years of production Rails and PostgreSQL expertise. Delivers immediate, zero-ramp-up business value for legacy"
+permalink: /resumes/mike-hall-senior-ruby-rails-contractor/
+sitemap: false
+robots: noindex,nofollow
+---
+
 # Mike Hall
 
 **Senior / Lead Ruby on Rails Developer (Contract / High-Velocity IC)**

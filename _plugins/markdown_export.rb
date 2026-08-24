@@ -177,4 +177,20 @@ module Jekyll
       Jekyll.logger.info "Markdown Export:", "Generated #{output_file}"
     end
   end
+
+  Jekyll::Hooks.register :site, :post_write do |site|
+    # Copy raw markdown resumes to destination exports/resumes/ and resumes/
+    src_resumes_dir = File.join(site.source, 'exports', 'resumes')
+    if Dir.exist?(src_resumes_dir)
+      dest_exports_dir = File.join(site.dest, 'exports', 'resumes')
+      dest_resumes_dir = File.join(site.dest, 'resumes')
+      FileUtils.mkdir_p(dest_exports_dir)
+      FileUtils.mkdir_p(dest_resumes_dir)
+
+      Dir.glob(File.join(src_resumes_dir, '*.md')).each do |src_file|
+        FileUtils.cp(src_file, File.join(dest_exports_dir, File.basename(src_file)))
+        FileUtils.cp(src_file, File.join(dest_resumes_dir, File.basename(src_file)))
+      end
+    end
+  end
 end

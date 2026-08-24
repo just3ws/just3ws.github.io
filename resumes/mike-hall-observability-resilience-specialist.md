@@ -1,3 +1,12 @@
+---
+layout: resume
+title: "Staff Observability & Resilience Architect"
+description: "Observability and Resilience Architect specializing in illuminating dark telemetry, enterprise OpenTelemetry rollouts, and deep incident root cause tri"
+permalink: /resumes/mike-hall-observability-resilience-specialist/
+sitemap: false
+robots: noindex,nofollow
+---
+
 # Mike Hall
 
 **Staff Observability & Resilience Architect**
