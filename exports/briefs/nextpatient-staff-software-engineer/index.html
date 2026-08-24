@@ -30,7 +30,7 @@ NextPatient’s mandate: **decoupling modern patient experiences (scheduling, ch
 1. **Legacy Healthcare System Integration**:
    Recently conducted a 90-day system cartography and operational risk assessment for EMR-Bear (a multi-tenant healthcare SaaS serving 130+ clinics following a founder transition). Established release verification gates across deployment pipelines to protect clinical uptime and HIPAA compliance boundaries.
 2. **Strangler-Fig Decoupling & API Boundary Design**:
-   At OneMain Financial, refactored high-volume financial customer acquisition flows spanning legacy database layers, multi-service Rails state machines, and third-party API supply chains: eliminating hidden lateral state mutations and reducing outage MTTR by 60%.
+   At OneMain Financial, refactored high-volume financial customer acquisition flows spanning legacy database layers, multi-service Rails state machines, and third-party API supply chains: eliminating hidden lateral state mutations and eliminating cross-service blind spots.
 3. **OpenTelemetry & Dark Telemetry Illumination**:
    Founded and technically led the enterprise OpenTelemetry initiative at OneMain, converting dark legacy microservice behavior into empirical telemetry and quantifiable risk governance.
 
@@ -58,7 +58,7 @@ NextPatient’s mandate: **decoupling modern patient experiences (scheduling, ch
 2. **OneMain Financial Acquisition Lane Realignment (2021–2026)**:
    - *Challenge*: Implicit lateral state mutations across multi-step Rails state machines caused persistent data corruptions in high-volume loan acquisition flows.
    - *Action*: Refactored workflow state transitions, founded ACQ Enablement to protect remediation work, and deployed enterprise OpenTelemetry tracing across microservice boundaries.
-   - *Outcome*: Reduced MTTR by ~60%, unblocked 4 parallel engineering streams, and eliminated outage cascades.
+   - *Outcome*: Established end-to-end distributed tracing, unblocked 4 parallel engineering streams, and eliminated outage cascades.
    - *Reference*: [case-studies/index.html#onemain-acquisition](https://www.just3ws.com/case-studies/)
 
 ---

@@ -51,7 +51,7 @@ Served as Senior Technical IC and Software Architecture Lead for the Acquisition
 
 - Platform Enablement & Responsibility Realignment: Realigned Acquisition engineering around explicit business boundaries, then founded and technically led ACQ Enablement to protect platform reliability, remediation, and modernization work from feature pressure.
 
-- Observability & Boundary Instrumentation: Founded and led an enterprise OpenTelemetry initiative, instrumenting legacy microservices and third-party API supply-chain boundaries to convert dark system behavior into quantifiable telemetry and reduced MTTD.
+- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume Instant Prequalification flows, connecting onemain_frontend, Rails acquisition services, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
 
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 

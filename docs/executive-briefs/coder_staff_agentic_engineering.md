@@ -23,7 +23,7 @@ I design systems where agent capabilities are **verifiable, context-budgeted, co
 * **Provider-Agnostic Design:** Decoupled agent harnesses from single LLM vendors, allowing transparent fallbacks between local on-device models (`llama.cpp`) and frontier APIs.
 
 ### 2. High-Reliability Telemetry & Incident Escalation
-* **Production Provenance (`OneMain Financial`):** Founded and led the enterprise OpenTelemetry initiative across high-traffic Acquisition lanes. Refactored multi-service state machines to eliminate silent lateral state mutations, cutting outage MTTR by 60%.
+* **Production Provenance (`OneMain Financial`):** Founded and led the enterprise OpenTelemetry initiative across high-traffic Acquisition lanes. Refactored multi-service state machines to eliminate silent lateral state mutations, eliminating blind spots across service boundaries.
 * **Observability-Driven AI:** Built `o2-mcp` to pipe live OpenObserve telemetry (spans, traces, failed jobs) directly to agents with automated PHI-scrubbing at the OTel ingest edge, enabling safe root-cause diagnosis without data exposure.
 
 ### 3. Deterministic State Machines & Complex Workflows
