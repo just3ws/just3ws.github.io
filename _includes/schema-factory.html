@@ -134,7 +134,9 @@
     ,"subjectOf": {
       "@type": "VideoObject",
       "name": {{ asset.title | default: interview.title | jsonify }},
-      "thumbnailUrl": {{ asset.thumbnail | jsonify }},
+      {% assign subject_thumb = asset.thumbnail | default: preferred.image_url | default: "/assets/og-preview.png" %}
+      {% unless subject_thumb contains "://" %}{% assign subject_thumb = site_url | append: subject_thumb %}{% endunless %}
+      "thumbnailUrl": {{ subject_thumb | jsonify }},
       "uploadDate": "{{ asset.published_date | default: interview.recorded_date | date: "%Y-%m-%d" }}",
       "url": "{{ site_url }}/videos/{{ asset.id }}/"
       {% if preferred.url %}
@@ -199,11 +201,13 @@
       {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
     {% endif %}
     {% if preferred == nil %}{% assign preferred = asset.platforms | first %}{% endif %}
+    {% assign asset_thumb = asset.thumbnail | default: preferred.image_url | default: "/assets/og-preview.png" %}
+    {% unless asset_thumb contains "://" %}{% assign asset_thumb = site_url | append: asset_thumb %}{% endunless %}
     "@type": "VideoObject",
     "@id": "{{ site_url }}/id/video/{{ asset.id }}",
     "name": {{ asset.title | jsonify }},
     "description": {{ asset.description | default: page.description | jsonify }},
-    "thumbnailUrl": {{ asset.thumbnail | jsonify }},
+    "thumbnailUrl": {{ asset_thumb | jsonify }},
     "uploadDate": "{{ asset.published_date | date: "%Y-%m-%d" }}",
     "url": "{{ site_url }}{{ page.url }}"
     {% if preferred.url %}
