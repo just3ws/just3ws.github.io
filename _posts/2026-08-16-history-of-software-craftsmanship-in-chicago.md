@@ -33,7 +33,7 @@ In 2009, local practitioners submitted talk proposals to traditional academic an
 
 That rejection became the rallying cry across the Chicago developer community, leading organizers to launch the first **Software Craftsmanship North America (SCNA)** conference. It was a landmark gathering that rejected slides-only presentations in favor of live code execution, pairing, and architectural debate.
 
-A mutual friend invited me to attend that inaugural SCNA. That single introduction altered my career: I met Dave Hoover and the team, leading directly to my recruitment into Obtiva shortly after. Energized by the movement's focus on deliberate practice, Ryan Gerry and I founded **Software Craftsmanship McHenry County (SCMC)** in the northwest suburbs, partnering with 8th Light leaders Steve Kim and Jim Suchy to bring hands-on katas, peer pairing, and practitioner keynotes to the suburban developer community.
+Obtiva and 8th Light organized that first SCNA together, and I had joined Obtiva that August. Energized by the movement's focus on deliberate practice, Ryan Gerry and I founded **Software Craftsmanship McHenry County (SCMC)** in the northwest suburbs, partnering with 8th Light leaders Steve Kim and Jim Suchy to bring hands-on katas, peer pairing, and practitioner keynotes to the suburban developer community.
 
 ---
 
