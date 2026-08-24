@@ -33,5 +33,5 @@ Track transcript ingestion progress across days/weeks.
   - duplicate transcript reuse
 
 ## Commands
-- `./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox`
+- `./bin/transcripts dry-run --source-dir "$HOME/ai/outbox"`
 - `./bin/transcripts audit`

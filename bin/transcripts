@@ -1,7 +1,13 @@
 #!/usr/bin/env sh
 set -eu
 
-SOURCE_DIR="/Volumes/Dock_1TB/vimeo/outbox"
+if [ -n "${AI_OUTBOX_DIR:-}" ]; then
+  SOURCE_DIR="$AI_OUTBOX_DIR"
+elif [ -d "$HOME/ai/outbox" ]; then
+  SOURCE_DIR="$HOME/ai/outbox"
+else
+  SOURCE_DIR="/Volumes/Dock_1TB/vimeo/outbox"
+fi
 REPORT_DIR="tmp"
 OUTPUT_DIR="tmp/transcript-id-staging"
 MIN_CONFIDENCE="0.9"
@@ -25,7 +31,7 @@ Commands:
   help      Show this help.
 
 Options (for prepare/dry-run/ingest):
-  --source-dir PATH         Source transcript directory (default: /Volumes/Dock_1TB/vimeo/outbox)
+  --source-dir PATH         Source transcript directory (default: $HOME/ai/outbox)
   --report-dir PATH         Report output directory (default: tmp)
   --output-dir PATH         Prepare output directory (default: tmp/transcript-id-staging)
   --min-confidence FLOAT    Auto-apply threshold (default: 0.9)

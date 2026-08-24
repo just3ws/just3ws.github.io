@@ -10,7 +10,7 @@ require "date"
 ROOT = File.expand_path("..", __dir__)
 IMPORTER = File.join(ROOT, "bin", "import_transcripts_from_outbox.rb")
 ASSETS_PATH = File.join(ROOT, "_data", "video_assets.yml")
-DEFAULT_SOURCE_DIR = "/Volumes/Dock_1TB/vimeo/outbox"
+DEFAULT_SOURCE_DIR = ENV["AI_OUTBOX_DIR"] || (Dir.exist?(File.expand_path("~/ai/outbox")) ? File.expand_path("~/ai/outbox") : "/Volumes/Dock_1TB/vimeo/outbox")
 DEFAULT_OUTPUT_DIR = File.join(ROOT, "tmp", "transcript-id-staging")
 DEFAULT_REPORT_DIR = File.join(ROOT, "tmp")
 

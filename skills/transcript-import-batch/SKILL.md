@@ -9,7 +9,7 @@ description: Batch transcript ingestion workflow for /Volumes outbox sources int
 Run a repeatable, low-risk transcript ingestion batch.
 
 ## Use When
-- New transcript files arrive in `/Volumes/Dock_1TB/vimeo/outbox`.
+- New transcript files arrive in `$HOME/ai/outbox`.
 - You need to ingest many files quickly and safely.
 
 ## Inputs
@@ -19,11 +19,11 @@ Run a repeatable, low-risk transcript ingestion batch.
 
 ## Commands
 1. Dry-run mapping report:
-   - `./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
+   - `./bin/transcripts dry-run --source-dir "$HOME/ai/outbox" --min-confidence 0.9`
 2. Apply high-confidence mappings:
-   - `./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.9`
+   - `./bin/transcripts ingest --source-dir "$HOME/ai/outbox" --min-confidence 0.9`
 3. Optional auto-commit:
-   - `./bin/transcripts ingest --source-dir /Volumes/Dock_1TB/vimeo/outbox --auto-commit`
+   - `./bin/transcripts ingest --source-dir "$HOME/ai/outbox" --auto-commit`
 
 ## Safety Rules
 - Dry-run first unless explicitly told otherwise.

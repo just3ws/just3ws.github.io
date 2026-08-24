@@ -28,7 +28,7 @@ ASSETS_PATH = File.join(ROOT, "_data", "video_assets.yml")
 INTERVIEWS_PATH = File.join(ROOT, "_data", "interviews.yml")
 TRANSCRIPTS_DIR = File.join(ROOT, "_data", "transcripts")
 
-DEFAULT_SOURCE_DIR = "/Volumes/Dock_1TB/vimeo/outbox"
+DEFAULT_SOURCE_DIR = ENV["AI_OUTBOX_DIR"] || (Dir.exist?(File.expand_path("~/ai/outbox")) ? File.expand_path("~/ai/outbox") : "/Volumes/Dock_1TB/vimeo/outbox")
 DEFAULT_REPORT_DIR = File.join(ROOT, "tmp")
 
 SUPPORTED_EXTENSIONS = %w[.txt .md .srt .vtt]
