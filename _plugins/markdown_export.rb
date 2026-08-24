@@ -25,21 +25,8 @@ module Jekyll
         src_file = File.join(src_dir, "#{config[:file]}.md")
         File.write(src_file, markdown_content)
 
-        # Register StaticFile so Jekyll site.write phase writes/preserves it in destination
-        site.static_files << Jekyll::StaticFile.new(site, site.source, "exports", "#{config[:file]}.md")
-
         # Write to site destination output directory
         write_markdown(site, config[:file], markdown_content)
-      end
-
-      # Preserve and copy archetype resumes to /resumes/ and /exports/resumes/
-      ['resumes', 'exports/resumes'].each do |rel_dir|
-        source_dir = File.join(site.source, rel_dir)
-        if Dir.exist?(source_dir)
-          Dir.glob(File.join(source_dir, "*.md")).each do |rf|
-            site.static_files << Jekyll::StaticFile.new(site, site.source, rel_dir, File.basename(rf))
-          end
-        end
       end
     end
 
