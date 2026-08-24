@@ -38,9 +38,14 @@ namespace :generate do
     :interviewees,
     :community_stories,
     :resume_positions,
+    :archetype_resumes,
     :executive_briefs,
     :brief_pdfs
   ]
+
+  task :archetype_resumes do
+    sh 'ruby ./bin/generate_archetype_resumes.rb'
+  end
 
   task :executive_briefs do
     sh 'ruby ./bin/generate_executive_brief_pages.rb'
