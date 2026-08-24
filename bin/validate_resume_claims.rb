@@ -124,7 +124,7 @@ def gemini_verdicts(key, results)
   req = Net::HTTP::Post.new(uri)
   req['content-type'] = 'application/json'
   req['x-goog-api-key'] = key
-  req.body = { contents: [ { parts: [ { text: adjudication_prompt(results) } ] } ] }.to_json
+  req.body = { contents: [ { role: "user", parts: [ { text: adjudication_prompt(results) } ] } ] }.to_json
 
   res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true, read_timeout: 60) { |http| http.request(req) }
   return warn("gemini HTTP #{res.code}") && nil unless res.is_a?(Net::HTTPSuccess)
