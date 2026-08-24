@@ -103,6 +103,7 @@ end
 namespace :validate do
   desc 'Run all validation scripts'
   task all: [
+    :surface_exposure,
     :data_uniqueness,
     :data_integrity,
     :audit_transcripts,
@@ -125,6 +126,10 @@ namespace :validate do
     :seo_metadata_budget,
     :htmlproofer
   ]
+
+  task :surface_exposure do
+    sh 'ruby ./bin/audit_surface_exposure.rb'
+  end
 
   task :prose_humanity do
     sh 'ruby ./bin/audit_prose_humanity.rb'
