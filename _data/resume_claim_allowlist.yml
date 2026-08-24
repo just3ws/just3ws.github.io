@@ -1,0 +1,25 @@
+---
+# Register for bin/validate_resume_claims.rb.
+#
+# `allowed` — the claim is backed by the career data, just not as that literal
+# number (a rounding, or a figure derived from dates). Each needs the source.
+# `pending` — no source found. Reported as a warning on every run, and stays
+# reported until it is sourced, reworded, or pulled. Not silent, not fatal.
+
+allowed:
+  "820+": >-
+    Rounds down the 823 SCMC members recorded in
+    _data/resume/leadership.yml:8. Verified 2026-08-24.
+  "25+": >-
+    Derived from the dates rather than stated as a number: the earliest
+    position (ch-robinson) starts December 1999, so 2026 is 27 years. The
+    claim is conservative against its own source. Verified 2026-08-24.
+
+pending:
+  "36+": >-
+    No source anywhere in _data/resume/ or _data/case_studies.yml, and used
+    two different ways: "36+ services" for the OneMain OpenTelemetry rollout
+    (docs/executive-briefs/follett-senior-director.md:22) and "36+ Vendors"
+    for third-party risk isolation on the /case-studies page, which was
+    removed 2026-08-24 with the withdrawn EMR-Bear case study. One of those
+    framings is wrong and neither is sourced. Raised with the operator.

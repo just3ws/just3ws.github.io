@@ -115,6 +115,7 @@ namespace :validate do
     :public_index_mode,
     :semantic_output,
     :export_parity,
+    :resume_claims,
     :report_seo,
     :seo_metadata_budget,
     :htmlproofer
@@ -134,6 +135,13 @@ namespace :validate do
 
   task :export_parity do
     sh 'ruby ./bin/validate_exports.rb'
+  end
+
+  # Provenance gate: quantified career claims must resolve to a position file
+  # or a case_study block. Generated prose invents numbers -- three published
+  # posts claimed a 214-interview archive that has always held 207.
+  task :resume_claims do
+    sh 'ruby ./bin/validate_resume_claims.rb'
   end
 
   task :data_uniqueness do
