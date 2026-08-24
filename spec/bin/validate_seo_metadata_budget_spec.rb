@@ -8,7 +8,7 @@ RSpec.describe 'validate_seo_metadata_budget' do
     expect(script).to include("ENV.fetch('SEO_MAX_TITLE_OUTLIERS', '16')")
     expect(script).to include("ENV.fetch('SEO_MAX_DESC_OUTLIERS', '56')")
     expect(script).to include("ENV.fetch('SEO_MAX_DUPLICATE_TITLES', '0')")
-    expect(script).to include("ENV.fetch('SEO_MAX_DUPLICATE_DESCS', '200')")
+    expect(script).to include("ENV.fetch('SEO_MAX_DUPLICATE_DESCS', '210')")
   end
 
   it 'fails by default when budgets are exceeded' do
