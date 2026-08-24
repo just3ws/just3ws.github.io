@@ -2,7 +2,9 @@
 # frozen_string_literal: true
 
 require 'yaml'
+require 'json'
 require 'fileutils'
+require 'time'
 
 ROOT_DIR = File.expand_path('..', __dir__)
 DATA_DIR = File.join(ROOT_DIR, '_data', 'resume')
@@ -31,7 +33,9 @@ puts "Generating #{archetypes.length} tailored archetype resumes under resumes/ 
 archetypes.each do |key, config|
   slug = config['file_slug']
   target_file = File.join(RESUMES_DIR, "#{slug}.md")
-  export_file = File.join(EXPORTS_DIR, "#{slug}.md")
+  export_md   = File.join(EXPORTS_DIR, "#{slug}.md")
+  export_json = File.join(EXPORTS_DIR, "#{slug}.json")
+  export_txt  = File.join(EXPORTS_DIR, "#{slug}.txt")
   
   front_matter = [
     "---",
@@ -75,6 +79,7 @@ archetypes.each do |key, config|
   lines << "## Experience & Leadership"
   lines << ""
   
+  featured_positions_data = []
   config['featured_positions'].each do |entry|
     pos = positions[entry['id']]
     next unless pos
@@ -105,8 +110,19 @@ archetypes.each do |key, config|
       end
       lines << ""
     end
+
+    featured_positions_data << {
+      'id'         => entry['id'],
+      'title'      => pos['title'],
+      'company'    => comp_name,
+      'location'   => loc,
+      'dates'      => dates,
+      'focus'      => entry['focus'] || pos['summary'],
+      'highlights' => (pos['highlights'] || []).map { |h| h.is_a?(Hash) ? h['text'] : h.to_s }
+    }
   end
   
+  selected_projects_data = []
   if config['selected_projects'] && !config['selected_projects'].empty?
     lines << "---"
     lines << ""
@@ -129,9 +145,17 @@ archetypes.each do |key, config|
         end
         lines << ""
       end
+      selected_projects_data << {
+        'id'         => proj_entry['id'],
+        'title'      => proj['title'],
+        'dates'      => dates,
+        'summary'    => proj['summary'],
+        'highlights' => (proj['highlights'] || []).map { |h| h.is_a?(Hash) ? h['text'] : h.to_s }
+      }
     end
   end
   
+  additional_experience_data = []
   if config['additional_experience'] && !config['additional_experience'].empty?
     lines << "---"
     lines << ""
@@ -144,6 +168,13 @@ archetypes.each do |key, config|
       dates = "#{pos['start_date']} - #{pos['end_date'] || 'Present'}"
       summary_text = pos['summary'] || ""
       lines << "- **#{pos['title']}**, #{comp_name} (#{dates}): #{summary_text.strip}"
+      additional_experience_data << {
+        'id'      => add_entry['id'],
+        'title'   => pos['title'],
+        'company' => comp_name,
+        'dates'   => dates,
+        'summary' => summary_text.strip
+      }
     end
     lines << ""
   end
@@ -167,8 +198,108 @@ archetypes.each do |key, config|
   raw_content = lines.join("\n")
   html_page_content = (front_matter + lines).join("\n")
   File.write(target_file, html_page_content)
-  File.write(export_file, raw_content)
-  puts "  ✅ Generated: resumes/#{slug}.md (HTML page) and exports/resumes/#{slug}.md (Raw MD)"
+  File.write(export_md, raw_content)
+
+  # ── JSON export ───────────────────────────────────────────────────────────────
+  json_data = {
+    'meta' => {
+      'generated_at' => Time.now.utc.iso8601,
+      'archetype'    => key,
+      'slug'         => slug,
+      'target_tier'  => config['target_tier']
+    },
+    'basics' => {
+      'name'     => profile['name'],
+      'title'    => config['title'],
+      'location' => profile.dig('location', 'display'),
+      'email'    => profile['contact']['email'],
+      'phone'    => profile['contact']['phone'],
+      'website'  => profile['contact']['website']['url'],
+      'linkedin' => profile['contact']['linkedin']['url'],
+      'github'   => profile['contact']['github']['url']
+    },
+    'summary'               => config['summary'],
+    'core_skills'           => config['core_skills'],
+    'experience'            => featured_positions_data,
+    'projects'              => selected_projects_data,
+    'additional_experience' => additional_experience_data,
+    'earlier_experience'    => ats['earlier_experience']
+  }
+  File.write(export_json, JSON.pretty_generate(json_data))
+
+  # ── Plaintext export ──────────────────────────────────────────────────────────
+  sep  = "=" * 80
+  dash = "-" * 80
+  wrap = ->(text, width = 80) {
+    text.to_s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n").rstrip
+  }
+
+  txt_lines = []
+  txt_lines << profile['name'].upcase
+  txt_lines << config['title']
+  txt_lines << profile.dig('location', 'display').to_s
+  txt_lines << ""
+  txt_lines << "Email:    #{profile['contact']['email']}"
+  txt_lines << "Phone:    #{profile['contact']['phone']}"
+  txt_lines << "Website:  #{profile['contact']['website']['url']}"
+  txt_lines << "LinkedIn: #{profile['contact']['linkedin']['url']}"
+  txt_lines << "GitHub:   #{profile['contact']['github']['url']}"
+  txt_lines << ""
+  txt_lines << sep
+  txt_lines << "PROFESSIONAL SUMMARY"
+  txt_lines << sep
+  txt_lines << wrap.call(config['summary'])
+  txt_lines << ""
+  txt_lines << sep
+  txt_lines << "CORE SKILLS"
+  txt_lines << sep
+  txt_lines << wrap.call(config['core_skills'].join(", "))
+  txt_lines << ""
+  txt_lines << sep
+  txt_lines << "EXPERIENCE"
+  txt_lines << sep
+
+  featured_positions_data.each do |pos|
+    txt_lines << dash
+    txt_lines << pos['title'].upcase
+    txt_lines << "#{pos['company']}#{pos['location'] ? " | #{pos['location']}" : ""}"
+    txt_lines << pos['dates']
+    txt_lines << ""
+    txt_lines << wrap.call(pos['focus']) if pos['focus']
+    txt_lines << ""
+    if pos['highlights'] && !pos['highlights'].empty?
+      txt_lines << "Key Outcomes:"
+      pos['highlights'].each { |h| txt_lines << "  * #{wrap.call(h, 76).gsub("\n", "\n    ")}" }
+    end
+    txt_lines << ""
+  end
+
+  unless additional_experience_data.empty?
+    txt_lines << dash
+    txt_lines << "ADDITIONAL EXPERIENCE"
+    txt_lines << dash
+    additional_experience_data.each do |e|
+      txt_lines << "* #{e['title']} | #{e['company']} (#{e['dates']})"
+      txt_lines << "  #{wrap.call(e['summary'], 76).gsub("\n", "\n  ")}" unless e['summary'].to_s.empty?
+    end
+    txt_lines << ""
+  end
+
+  if ats['earlier_experience']
+    earlier = ats['earlier_experience']
+    txt_lines << dash
+    txt_lines << earlier['title'].upcase
+    txt_lines << earlier['dates']
+    txt_lines << ""
+    txt_lines << wrap.call(earlier['summary'])
+    earlier['items'].each { |item| txt_lines << "* #{item['label']}: #{item['summary']}" }
+    txt_lines << ""
+  end
+
+  txt_lines << sep
+  File.write(export_txt, txt_lines.join("\n"))
+
+  puts "  ✅ Generated: resumes/#{slug}.md | exports/resumes/#{slug}.{md,json,txt}"
 end
 
 puts "\nAll archetype resumes generated successfully."

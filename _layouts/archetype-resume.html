@@ -1,26 +1,26 @@
 ---
 layout: base
 ---
+{% assign slug = page.permalink | remove: "/" | split: "/" | last %}
 <nav class="resume-subnav no-print" aria-label="Resume variant actions">
   <div class="subnav-group">
     <a href="/" class="subnav-link">← Main Resume</a>
     <span>Variants:</span>
-    {% assign archetypes = site.data.resume.archetypes %}
-    {% for pair in archetypes %}
+    {% for pair in site.data.resume.archetypes %}
       {% assign a = pair[1] %}
-      {% assign slug = a.file_slug %}
-      {% assign href = "/resumes/" | append: slug | append: "/" %}
-      {% assign is_current = page.url | remove_trailing_slash %}
-      {% assign this_href = href | remove_trailing_slash %}
-      {% if is_current == this_href %}
-        <span class="subnav-link is-current" aria-current="page">{{ a.title | split: "/" | first | strip }}</span>
+      {% assign variant_url = "/resumes/" | append: a.file_slug | append: "/" %}
+      {% if page.url == variant_url %}
+        <span class="subnav-link is-current" aria-current="page">{{ a.title | split: "/" | first | strip | truncate: 22, "" }}</span>
       {% else %}
-        <a href="{{ href }}" class="subnav-link" title="{{ a.target_tier }}">{{ a.title | split: "/" | first | strip }}</a>
+        <a href="{{ variant_url }}" class="subnav-link" title="{{ a.target_tier }}">{{ a.title | split: "/" | first | strip | truncate: 22, "" }}</a>
       {% endif %}
     {% endfor %}
   </div>
   <div class="subnav-group">
-    <a href="{{ page.url | replace: '/', '' | prepend: '/resumes/' | append: '' }}.md" class="subnav-link">MD</a>
+    <span>Download:</span>
+    <a href="/resumes/{{ slug }}.md" class="subnav-link">MD</a>
+    <a href="/resumes/{{ slug }}.json" class="subnav-link">JSON</a>
+    <a href="/resumes/{{ slug }}.txt" class="subnav-link">TXT</a>
     <button onclick="window.print()" class="subnav-btn">Print PDF</button>
   </div>
 </nav>
