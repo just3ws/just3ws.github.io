@@ -31,7 +31,7 @@ repo's registered identity is `agent-just3ws`:
   `export ZDOTS_BUS_PARTICIPANT=agent-just3ws`.
 - `job-leads` channel — just3ws <-> wwworkremote coordination.
 - `general` channel — cross-cutting platform ops; also reaches Mike
-  (`mike`) and `claude-code-main`.
+  (`mike`) and `zdots` (formerly `claude-code-main`).
 - Bus problems get filed as a `zdots-issue` — this repo's agents don't
   patch zdots infrastructure directly.
 
