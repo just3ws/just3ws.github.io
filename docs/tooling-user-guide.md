@@ -107,7 +107,9 @@ Agents and subagents operating in this workspace rely on registered skills to pe
 2. **`executive-brief-generator`** (`.agents/skills/executive-brief-generator/SKILL.md`): Formats 1-page executive pitch briefs for specific Principal Engineer opportunities.
 3. **`system-cartographer`** (`.agents/skills/system-cartographer/SKILL.md`): Audits legacy codebases and structures 4-dimensional cartography breakdowns.
 4. **`prose-humanity-auditor`** (`.agents/skills/prose-humanity-auditor/SKILL.md`): Audits technical writing across site Markdown, YAML data, and resume surfaces for plain language, cognitive load (<20 wps), and zero AI jargon.
-5. **`site-refresh-builder`** & **`site-refresh-reviewer`**: Governs liquid template and SCSS updates using a strict Director -> Builder -> Reviewer workflow.
+5. **`no-em-dashes`** (`.agents/skills/no-em-dashes/SKILL.md`): Enforces em-dash-free writing across prose, case studies, briefs, and documentation.
+
+These 5 are the only skills in this directory with real `SKILL.md` content. `site-refresh-builder`/`site-refresh-reviewer` and the other 13 skills AGENTS.md names under "Registered Skills" have no file here — they exist only as `.claude/agents/*.md` subagent personas (TASK-262), a different mechanism (a spawned subagent, not a loaded skill). Don't assume every AGENTS.md-named skill has a matching file in this directory.
 
 ---
 

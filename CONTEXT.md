@@ -97,3 +97,9 @@ hand-edit `_site/` or other generated artifacts to make that verification pass.
   validation gate.
 - `docs/adr/0001-public-archive-publication-contract.md` records the public
   archive publication contract.
+- `AGENTS.md`'s System Identity section records this repo's standing peer
+  relationship: `wwworkremote.localhost` consumes Public Canon
+  (`resume.json`, `/exports/resume.md`, `/exports/portfolio.md`) via
+  `CareerOS::PeerMutex` to drive job-search decisions for Mike. That
+  relationship does not change what belongs in Public Canon, but it is a
+  live downstream consumer of it, not just this site's own display copy.

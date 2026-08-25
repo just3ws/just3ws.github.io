@@ -50,7 +50,12 @@ Standard triage workflow labels. See `docs/agents/triage-labels.md`.
 Single-context layout (root-level CONTEXT.md + docs/adr/). See `docs/agents/domain.md`.
 
 ## Registered Skills
-Use these skills by default for this repository:
+Use these skills by default for this repository. **Status**: 5 of the 18
+below have real `SKILL.md` content in `.agents/skills/` (marked ✓; see
+`docs/tooling-user-guide.md` §6) — the other 13 have no skill file anywhere.
+All 18 also have `.claude/agents/*.md` subagent persona coverage (TASK-262),
+which is a separate mechanism (a spawned subagent, not a loaded skill) and
+does not require a `.agents/skills/` file to exist.
 
 1. `gh-fix-ci` - Diagnose and fix failing GitHub Actions checks.
 2. `gh-address-comments` - Process and resolve PR review comments.
@@ -65,11 +70,11 @@ Use these skills by default for this repository:
 11. `site-refresh-director` - Audit a site surface and produce a bounded, evidence-backed refresh brief.
 12. `site-refresh-builder` - Implement an approved refresh brief in the existing Jekyll/Liquid/SCSS stack.
 13. `site-refresh-reviewer` - Independently gate visual, accessibility, SEO, and public-archive quality.
-14. `system-cartographer` - Audit, structure, and generate 4-dimensional System Cartography case studies.
-15. `executive-brief-generator` - Generate tailored 1-page executive pitch briefs for target Principal Engineer roles.
-16. `job-lead-evaluator` - Evaluate job leads from wwworkremote against personal OS context and canonical resume data.
-17. `prose-humanity-auditor` - Audit technical prose across site Markdown, YAML data, and resume surfaces for plain language, neuroinclusive readability, cognitive load, and zero AI jargon.
-18. `no-em-dashes` - Enforce em-dash-free writing across prose, case studies, briefs, and documentation to eliminate machine-writing cadence and maintain authentic human voice.
+14. `system-cartographer` ✓ - Audit, structure, and generate 4-dimensional System Cartography case studies.
+15. `executive-brief-generator` ✓ - Generate tailored 1-page executive pitch briefs for target Principal Engineer roles.
+16. `job-lead-evaluator` ✓ - Evaluate job leads from wwworkremote against personal OS context and canonical resume data.
+17. `prose-humanity-auditor` ✓ - Audit technical prose across site Markdown, YAML data, and resume surfaces for plain language, neuroinclusive readability, cognitive load, and zero AI jargon.
+18. `no-em-dashes` ✓ - Enforce em-dash-free writing across prose, case studies, briefs, and documentation to eliminate machine-writing cadence and maintain authentic human voice.
 
 
 ## Site Refresh Agent Workflow
