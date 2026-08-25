@@ -24,7 +24,7 @@ Chicago, IL
 
 ## Professional Summary
 
-Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines 20+ years of hands-on production experience with OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
+Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines 20+ years across software engineering and platform architecture with OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
 
 ---
 
@@ -40,14 +40,14 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Progressed from Digital Origination Team Lead to Software Architect, founding the ACQ Enablement team and leading the OpenTelemetry Working Group to establish the Enterprise Trace across high-volume Instant Prequalification flows (Rails, MuleSoft, Mainframe).
+**Target Focus:** Progressed from Digital Origination Team Lead to Software Architect, founding the ACQ Enablement team and leading the OpenTelemetry Working Group to establish the Enterprise Trace across high-volume customer acquisition flows (Rails, MuleSoft, Mainframe).
 
 **Key Outcomes:**
 - Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
 
 - ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team to protect core engineering concerns from product feature pressure: driving platform stabilization, legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.
 
-- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume Instant Prequalification flows, connecting onemain_frontend, Rails acquisition services, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
+- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
 
 - State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
 

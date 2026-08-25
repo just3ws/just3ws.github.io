@@ -13,7 +13,7 @@ Chicago, IL
 
 ## Professional Summary
 
-Senior Ruby on Rails contractor with 18+ years of production Rails and PostgreSQL expertise. Delivers immediate, zero-ramp-up business value for legacy upgrades, complex state machine refactorings, database optimization, asynchronous background processing, and third-party API integrations with strict TDD/RSpec discipline.
+Senior Ruby on Rails contractor with 17+ years of production Rails and PostgreSQL expertise. Delivers immediate, zero-ramp-up business value for legacy upgrades, complex state machine refactorings, database optimization, asynchronous background processing, and third-party API integrations with strict TDD/RSpec discipline.
 
 ---
 
@@ -36,7 +36,7 @@ Ruby on Rails (Full-Lifecycle 2.x through 8.x), PostgreSQL & MySQL Query Optimiz
 
 - ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team to protect core engineering concerns from product feature pressure: driving platform stabilization, legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.
 
-- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume Instant Prequalification flows, connecting onemain_frontend, Rails acquisition services, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
+- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
 
 - State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
 

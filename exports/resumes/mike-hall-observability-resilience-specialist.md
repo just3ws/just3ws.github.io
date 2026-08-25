@@ -29,14 +29,14 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Founded and led enterprise OpenTelemetry Working Group (OTel WG); built the Enterprise Trace connecting onemain_frontend, Rails acquisition services, MuleSoft APIs, and IBM mainframes.
+**Target Focus:** Founded and led enterprise OpenTelemetry Working Group (OTel WG); built the Enterprise Trace connecting a complex Rails distributed monolith, MuleSoft APIs, and IBM mainframes.
 
 **Key Outcomes:**
 - Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
 
 - ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team to protect core engineering concerns from product feature pressure: driving platform stabilization, legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.
 
-- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume Instant Prequalification flows, connecting onemain_frontend, Rails acquisition services, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
+- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
 
 - State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
 

@@ -11,9 +11,9 @@ layout: base
       {% assign a = pair[1] %}
       {% assign variant_url = "/resumes/" | append: a.file_slug | append: "/" %}
       {% if page.url == variant_url %}
-        <span class="subnav-link is-current" aria-current="page">{{ a.title | split: "/" | first | strip | truncate: 22, "" }}</span>
+        <span class="subnav-link is-current" aria-current="page">{{ a.short_label }}</span>
       {% else %}
-        <a href="{{ variant_url }}" class="subnav-link" title="{{ a.target_tier }}">{{ a.title | split: "/" | first | strip | truncate: 22, "" }}</a>
+        <a href="{{ variant_url }}" class="subnav-link" title="{{ a.target_tier }}">{{ a.short_label }}</a>
       {% endif %}
     {% endfor %}
   </div>

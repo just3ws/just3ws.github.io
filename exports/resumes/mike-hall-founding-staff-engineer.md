@@ -25,6 +25,40 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 ## Experience & Leadership
 
+### Associate Director, Staff Engineer at OneMain Financial
+
+**January 2021 - February 2026** | Remote
+
+**Target Focus:** Introduced local AI exploration workflows for legacy code discovery and chartered ACQ Enablement for rapid platform modernization.
+
+**Key Outcomes:**
+- Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
+
+- ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team to protect core engineering concerns from product feature pressure: driving platform stabilization, legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.
+
+- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
+
+- State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
+
+- Incident Response & Technical Escalation: Served as final escalation point for high-severity outages, translating live root-cause investigations into stronger telemetry, explicit component ownership, and reusable system knowledge.
+
+- AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
+
+
+### Creator & Principal Architect at Phalanx Duel
+
+**2022 - Present** | Independent Project
+
+**Target Focus:** Built deterministic head-to-head strategy game in Ruby with hotwire interactions and zero-drift game state resolution.
+
+**Key Outcomes:**
+- Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.
+
+- Built replay validation, adversarial coverage, and CI verification gates so state transitions can be checked across the complete lifecycle.
+
+- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated checks, and human-reviewed outputs rather than treating model output as authority.
+
+
 ### Creator at WWWorkRemote
 
 **2021 - Present** | Independent Project
@@ -62,50 +96,6 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 - Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.
 
-
-### Creator & Principal Architect at Phalanx Duel
-
-**2022 - Present** | Independent Project
-
-**Target Focus:** Built deterministic head-to-head strategy game in Ruby with hotwire interactions and zero-drift game state resolution.
-
-**Key Outcomes:**
-- Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.
-
-- Built replay validation, adversarial coverage, and CI verification gates so state transitions can be checked across the complete lifecycle.
-
-- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated checks, and human-reviewed outputs rather than treating model output as authority.
-
-
-### Associate Director, Staff Engineer at OneMain Financial
-
-**January 2021 - February 2026** | Remote
-
-**Target Focus:** Introduced local AI exploration workflows for legacy code discovery and chartered ACQ Enablement for rapid platform modernization.
-
-**Key Outcomes:**
-- Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
-
-- ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team to protect core engineering concerns from product feature pressure: driving platform stabilization, legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.
-
-- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume Instant Prequalification flows, connecting onemain_frontend, Rails acquisition services, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
-
-- State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
-
-- Incident Response & Technical Escalation: Served as final escalation point for high-severity outages, translating live root-cause investigations into stronger telemetry, explicit component ownership, and reusable system knowledge.
-
-- AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
-
-
-### Senior .NET Developer at TicketsNow
-
-**November 2005 - March 2007** | Crystal Lake, IL
-
-**Target Focus:** Architected real-time inventory locking and transaction reconciliation service, preventing race conditions on concurrent ticket purchases ($2M+ protected revenue).
-
-**Key Outcomes:**
-- Architected a real-time inventory locking and transaction reconciliation service, preventing race conditions on concurrent ticket sales and generating $2M+ in protected revenue.
-- Introduced and led Scrum agile practices for the core transaction engineering team, improving sprint delivery predictability.
 
 ---
 
@@ -172,6 +162,7 @@ Recorded, and later restored, an archive of 214 technical interviews with practi
 - **Senior Software Developer**, ReachLocal (March 2015 - November 2016): Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform.
 - **Senior Backend Developer**, SK Holdings, Inc. (January 2019 - December 2020): Led backend stability, performance, and modernization for high-traffic Rails products, improving full-text search, campaign delivery pipelines, and data layer reliability while systems remained under production load.
 - **Engineering Learning & Development Business Partner**, Groupon (July 2011 - May 2013): Owned core backend systems for fraud and taxonomy, leading global engineering enablement during hyper-growth.
+- **Senior .NET Developer**, TicketsNow (November 2005 - March 2007): Owned real-time inventory systems, leading transactional integrity and iterative delivery for revenue-critical operations.
 
 ---
 
