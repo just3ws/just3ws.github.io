@@ -32,7 +32,6 @@ Engaged on a bounded 90-day interim assignment to conduct rapid architecture dis
 **Key Outcomes:**
 - Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
 - Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
-- Engineering Continuity: Created transparent component ownership, visible operational priorities, and collaborative decision rhythms for a distributed U.S.-Mexico engineering team.
 
 **Skills:** Technical Leadership, Architecture Discovery, Rapid Risk Assessment, Production Governance, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, Distributed Team Collaboration
 
@@ -49,10 +48,6 @@ Served as Senior Technical IC and Software Architecture Lead for the Acquisition
 
 - Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
 
-- State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
-
-- Incident Response & Technical Escalation: Served as final escalation point for high-severity outages, translating live root-cause investigations into stronger telemetry, explicit component ownership, and reusable system knowledge.
-
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
@@ -66,10 +61,6 @@ Led backend stability, performance, and modernization for high-traffic Rails pro
 
 **Key Outcomes:**
 - Search Infrastructure Simplification: Replaced legacy external search clusters (Sphinx) with native MySQL full-text search and optimized relational indices, eliminating external service dependencies and reducing platform infrastructure footprint.
-
-- High-Volume Messaging Pipelines: Designed and validated asynchronous batch delivery pipelines via SendGrid and Sidekiq, enforcing IP warmup protocols and deliverability safety for large-scale campaign operations.
-
-- Data Engine & Analytics: Engineered complex relational analytical queries across multi-million row content catalogs, powering real-time data visualizations and international media publishing.
 
 - Zero-Downtime Platform Upgrades: Led Ruby and Rails framework upgrades across multiple core applications, sequencing database migrations and dependency updates to maintain uptime during platform modernization.
 
