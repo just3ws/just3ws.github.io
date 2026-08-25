@@ -141,7 +141,7 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 
 - **Senior Software Developer**, ReachLocal (March 2015 - November 2016): Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform.
 - **Senior Software Developer**, BenchPrep (March 2017 - February 2018): Owned enterprise assessment workflows, leading correctness and platform security in a high-concurrency environment.
-- **Open-Source Transition Lead**, Coderwall (January 2014 - December 2014): Hired as a contractor by founder Matt Deiters to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
+- **Open-Source Transition Lead**, Coderwall (January 2014 - December 2014): Hired as a contractor by the founder to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
 - **Principal Consultant**, Tandem (August 2018 - August 2018): Owned strategic technical assessment and on-site operational evaluation, leading architectural realignment and scope correction for a high-risk federal software program (DoD MEPS). Brought in to an over-committed engagement following an engineering-team departure.
 
 ---

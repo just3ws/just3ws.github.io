@@ -16,7 +16,7 @@ robots: noindex,follow
 sitemap: false
 ---
 
-When Matt Deiters brought me on as a contractor in 2014 to help open-source [Coderwall](https://github.com/coderwall/coderwall-legacy), the codebase was already a high-traffic production application. Developers from all over the world used it daily to showcase achievements, post technical protips, and search for engineering jobs.
+When Coderwall's founder brought me on as a contractor in 2014 to help open-source [Coderwall](https://github.com/coderwall/coderwall-legacy), the codebase was already a high-traffic production application. Developers from all over the world used it daily to showcase achievements, post technical protips, and search for engineering jobs.
 
 Opening the repository wasn't just a matter of changing a GitHub toggle from private to public. 
 

@@ -17,7 +17,7 @@ robots: noindex,follow
 sitemap: false
 ---
 
-In 2014, Matt Deiters hired me as a contractor to open-source [Coderwall](https://github.com/coderwall/coderwall-legacy), his Y Combinator-backed developer reputation platform. Coderwall had launched in 2012 and grown into a professional network for software engineers, badges, protips, team profiles, but it was closed-source and running on aging infrastructure. The job was to take a proprietary Rails monolith, secure it for public exposure, extract the parts that couldn't go public, and help a community of external developers learn the codebase.
+In 2014, Coderwall's founder hired me as a contractor to open-source [Coderwall](https://github.com/coderwall/coderwall-legacy), a Y Combinator-backed developer reputation platform. Coderwall had launched in 2012 and grown into a professional network for software engineers, badges, protips, team profiles, but it was closed-source and running on aging infrastructure. The job was to take a proprietary Rails monolith, secure it for public exposure, extract the parts that couldn't go public, and help a community of external developers learn the codebase.
 
 I ended up as the [#1 contributor to `coderwall/coderwall-legacy`](https://github.com/coderwall/coderwall-legacy) with 634 commits, roughly half the repository's total history. Here is what that work actually looked like.
 
@@ -82,7 +82,7 @@ I maintained the Vagrant development environment, wrote setup documentation, and
 
 ### 🌐 Assembly: The Bigger Picture
 
-Both Coderwall and Assembly (`Assembly Made`) were Matt Deiters' projects. Assembly was a platform for collective open-source product development, propose a product, contribute code or design, and share in the revenue via "App Coins." This was years before Patreon, Gitcoin, or Web3 micro-grants.
+Both Coderwall and Assembly (`Assembly Made`) were the same founder's projects. Assembly was a platform for collective open-source product development, propose a product, contribute code or design, and share in the revenue via "App Coins." This was years before Patreon, Gitcoin, or Web3 micro-grants.
 
 I contributed to the [Assembly org](https://github.com/assemblymade) as well, setting up the [coderwall-badges](https://github.com/assemblymade/coderwall-badges) image repository (the original DrawIt badge artwork), Vagrant configuration for the meta repo, and nGram search indexing.
 

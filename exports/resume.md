@@ -137,7 +137,7 @@ Owned end-to-end platform architecture, leading high-throughput data integration
 ### Open-Source Transition Lead at Coderwall
 **January 2014 — December 2014**
 
-Hired as a contractor by founder Matt Deiters to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
+Hired as a contractor by the founder to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
 
 **Key Outcomes:**
 - Security vulnerabilities were identified and closed before public release, including SQL injection in badge and opportunity models, DOS via Symbol injection in admin controllers, XSS through unwhitelisted comment parameters, and unsafe dynamic class generation from user input.

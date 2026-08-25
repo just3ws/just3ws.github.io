@@ -20,7 +20,7 @@ Around 2012, early-stage startups flocked to document databases. The promise was
 
 For the initial launch, MongoDB worked well enough. But by 2014, as Coderwall grew into a mature developer network with hundreds of thousands of user profiles, teams, protips, and badge endorsements, the cracks in the document model became impossible to ignore.
 
-As part of leading the open-source transition for Matt Deiters, one of my core mandates was moving the entire data plane to PostgreSQL. Here is why the document model failed under load, and how we pulled off a zero-downtime relational migration.
+As part of leading the open-source transition for Coderwall's founder, one of my core mandates was moving the entire data plane to PostgreSQL. Here is why the document model failed under load, and how we pulled off a zero-downtime relational migration.
 
 ---
 
