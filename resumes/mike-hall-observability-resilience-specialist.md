@@ -67,30 +67,6 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 - Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
 - Engineering Continuity: Created transparent component ownership, visible operational priorities, and collaborative decision rhythms for a distributed U.S.-Mexico engineering team.
 
-### Engineering Learning & Development Business Partner at Groupon
-
-**July 2011 - May 2013** | Chicago, IL
-
-**Target Focus:** Engineered fraud detection queries in Vertica and conducted exploratory anomaly detection spikes in Hadoop and Clojure.
-
-**Key Outcomes:**
-- Built merchant analytics tools in Ruby and CouchDB, surfacing market insights for global sales operations.
-- Designed analytical fraud detection queries in Vertica and conducted exploratory spikes on Hadoop and Clojure-based anomaly detection tools.
-- Implemented a centralized merchant taxonomy service in Java (ActiveWeb/ActiveJDBC) and MySQL, eliminating categorization drift across distributed product teams.
-- Redesigned the global engineering onboarding curriculum, standardizing technical practices and shortening time-to-first-commit for new hires.
-
-### Senior Software Developer at ActiveCampaign
-
-**September 2018 - December 2018** | Chicago, IL
-
-**Target Focus:** Decoupled high-throughput campaign message queues and engineered database split under continuous production monitoring.
-
-**Key Outcomes:**
-- Legacy Boundary Isolation: Decoupled critical legacy constraints behind explicit service boundaries, eliminating high-risk direct database dependencies and establishing clean execution paths.
-- Data Access & Query Optimization: Replaced ad-hoc global state access with structured query patterns and multi-tier caching strategies, accelerating throughput for high-volume database reads.
-- Frontend Test Hardening: Hardened the Ember.js frontend test suite across complex CRM user workflows, enforcing testable state boundaries and reducing regressions in customer-facing flows.
-- Test-Driven Observability: Established test-driven observability patterns across legacy PHP codepaths, shortening developer feedback loops during high-risk production debugging.
-
 ### Creator at WWWorkRemote
 
 **2021 - Present** | Independent Project
@@ -110,6 +86,30 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 - Static Signal Integration: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and system security contracts.
 
+
+### Senior Software Developer at ActiveCampaign
+
+**September 2018 - December 2018** | Chicago, IL
+
+**Target Focus:** Decoupled high-throughput campaign message queues and engineered database split under continuous production monitoring.
+
+**Key Outcomes:**
+- Legacy Boundary Isolation: Decoupled critical legacy constraints behind explicit service boundaries, eliminating high-risk direct database dependencies and establishing clean execution paths.
+- Data Access & Query Optimization: Replaced ad-hoc global state access with structured query patterns and multi-tier caching strategies, accelerating throughput for high-volume database reads.
+- Frontend Test Hardening: Hardened the Ember.js frontend test suite across complex CRM user workflows, enforcing testable state boundaries and reducing regressions in customer-facing flows.
+- Test-Driven Observability: Established test-driven observability patterns across legacy PHP codepaths, shortening developer feedback loops during high-risk production debugging.
+
+### Engineering Learning & Development Business Partner at Groupon
+
+**July 2011 - May 2013** | Chicago, IL
+
+**Target Focus:** Engineered fraud detection queries in Vertica and conducted exploratory anomaly detection spikes in Hadoop and Clojure.
+
+**Key Outcomes:**
+- Built merchant analytics tools in Ruby and CouchDB, surfacing market insights for global sales operations.
+- Designed analytical fraud detection queries in Vertica and conducted exploratory spikes on Hadoop and Clojure-based anomaly detection tools.
+- Implemented a centralized merchant taxonomy service in Java (ActiveWeb/ActiveJDBC) and MySQL, eliminating categorization drift across distributed product teams.
+- Redesigned the global engineering onboarding curriculum, standardizing technical practices and shortening time-to-first-commit for new hires.
 
 ---
 

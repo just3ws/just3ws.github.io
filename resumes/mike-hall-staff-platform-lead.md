@@ -67,6 +67,22 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 - Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
 - Engineering Continuity: Created transparent component ownership, visible operational priorities, and collaborative decision rhythms for a distributed U.S.-Mexico engineering team.
 
+### Senior Backend Developer at SK Holdings, Inc.
+
+**January 2019 - December 2020** | Chicago, IL
+
+**Target Focus:** Standardized asynchronous Sidekiq delivery pipelines and automated CI/CD deployment routines.
+
+**Key Outcomes:**
+- Search Infrastructure Simplification: Replaced legacy external search clusters (Sphinx) with native MySQL full-text search and optimized relational indices, eliminating external service dependencies and reducing platform infrastructure footprint.
+
+- High-Volume Messaging Pipelines: Designed and validated asynchronous batch delivery pipelines via SendGrid and Sidekiq, enforcing IP warmup protocols and deliverability safety for large-scale campaign operations.
+
+- Data Engine & Analytics: Engineered complex relational analytical queries across multi-million row content catalogs, powering real-time data visualizations and international media publishing.
+
+- Zero-Downtime Platform Upgrades: Led Ruby and Rails framework upgrades across multiple core applications, sequencing database migrations and dependency updates to maintain uptime during platform modernization.
+
+
 ### Principal Consultant at Tandem
 
 **August 2018 - August 2018** | Chicago, IL
@@ -91,22 +107,6 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 - Developed commercial B2B sales and product catalog services for Sears, opening new enterprise revenue channels.
 
 - Engineered deal-processing services and fraud analysis pipelines at Groupon, stabilizing backend transaction infrastructure during extreme hyper-growth.
-
-
-### Senior Backend Developer at SK Holdings, Inc.
-
-**January 2019 - December 2020** | Chicago, IL
-
-**Target Focus:** Standardized asynchronous Sidekiq delivery pipelines and automated CI/CD deployment routines.
-
-**Key Outcomes:**
-- Search Infrastructure Simplification: Replaced legacy external search clusters (Sphinx) with native MySQL full-text search and optimized relational indices, eliminating external service dependencies and reducing platform infrastructure footprint.
-
-- High-Volume Messaging Pipelines: Designed and validated asynchronous batch delivery pipelines via SendGrid and Sidekiq, enforcing IP warmup protocols and deliverability safety for large-scale campaign operations.
-
-- Data Engine & Analytics: Engineered complex relational analytical queries across multi-million row content catalogs, powering real-time data visualizations and international media publishing.
-
-- Zero-Downtime Platform Upgrades: Led Ruby and Rails framework upgrades across multiple core applications, sequencing database migrations and dependency updates to maintain uptime during platform modernization.
 
 
 ---
