@@ -2,7 +2,7 @@
 layout: archetype-resume
 body_class: ats-resume
 archetype_key: observability_resilience_specialist
-title: "Staff Observability & Resilience Architect"
+title: "Mike Hall - Staff Observability and Resilience Architect"
 description: "Observability and Resilience Architect specializing in illuminating dark telemetry, enterprise OpenTelemetry rollouts, and deep incident root cause tri"
 permalink: /resumes/mike-hall-observability-resilience-specialist/
 sitemap: false

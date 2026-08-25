@@ -28,6 +28,23 @@ end
 
 linkedin_display = profile['contact']['linkedin']['url'].sub(%r{\Ahttps?://(www\.)?}, '')
 
+# Browsers derive the "Print to PDF" filename from <title>. Keep it plain:
+# leads with the candidate's name and avoids characters FAT32/NTFS forbid
+# or that just look sloppy in a saved filename (parens, slashes, ampersands).
+def filename_safe_title(name, title)
+  clean = title.to_s
+                .gsub('&', 'and')
+                .gsub(%r{[\\/]}, ' - ')
+                .gsub(/[()]/, '')
+                .gsub(/[:*?"<>|]/, '')
+                .gsub(/\s{2,}/, ' ')
+                .strip
+  full = "#{name} - #{clean}"
+  return full if full.length <= 68
+
+  full[0...68].sub(/\s+\S*\z/, '').sub(/[\s\-,]+\z/, '')
+end
+
 puts "Generating #{archetypes.length} tailored archetype resumes under resumes/ and exports/resumes/...\n\n"
 
 archetypes.each do |key, config|
@@ -42,7 +59,7 @@ archetypes.each do |key, config|
     "layout: archetype-resume",
     "body_class: ats-resume",
     "archetype_key: #{key}",
-    "title: #{config['title'].inspect}",
+    "title: #{filename_safe_title(profile['name'], config['title']).inspect}",
     "description: #{config['summary'][0..150].strip.inspect}",
     "permalink: /resumes/#{slug}/",
     "sitemap: false",

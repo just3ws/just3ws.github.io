@@ -7,7 +7,7 @@ RSpec.describe "head base template" do
   it "normalizes SEO title length bounds" do
     expect(template).to include("{% if seo_title.size < 30 %}")
     expect(template).to include("{% if seo_title.size > 70 %}")
-    expect(template).to include('| append: " | Mike Hall Technical Archive"')
+    expect(template).to include('| append: " - Mike Hall Technical Archive"')
     expect(template).to include('| truncate: 70, "…"')
   end
 

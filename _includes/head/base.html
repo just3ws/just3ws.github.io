@@ -8,7 +8,7 @@
   {% endif %}
 {% endif %}
 {% if seo_title.size < 30 %}
-  {% assign seo_title = seo_title | append: " | Mike Hall Technical Archive" %}
+  {% assign seo_title = seo_title | append: " - Mike Hall Technical Archive" %}
 {% endif %}
 {% if seo_title.size > 70 %}
   {% assign seo_title = seo_title | truncate: 70, "…" %}

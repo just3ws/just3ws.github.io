@@ -2,7 +2,7 @@
 layout: archetype-resume
 body_class: ats-resume
 archetype_key: senior_ruby_rails_contractor
-title: "Senior / Lead Ruby on Rails Developer (Contract / High-Velocity IC)"
+title: "Mike Hall - Senior - Lead Ruby on Rails Developer Contract"
 description: "Senior Ruby on Rails contractor with 17+ years of production Rails and PostgreSQL expertise. Delivers immediate, zero-ramp-up business value for legacy"
 permalink: /resumes/mike-hall-senior-ruby-rails-contractor/
 sitemap: false

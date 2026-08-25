@@ -2,7 +2,7 @@
 layout: archetype-resume
 body_class: ats-resume
 archetype_key: staff_platform_enablement
-title: "Staff Software Engineer / Platform & Enablement Lead"
+title: "Mike Hall - Staff Software Engineer - Platform and Enablement Lead"
 description: "Staff Software Engineer and Platform Lead who multiplies engineering velocity and system reliability. Proven track record of merging attrition-impacted"
 permalink: /resumes/mike-hall-staff-platform-lead/
 sitemap: false
