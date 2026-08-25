@@ -4,7 +4,7 @@
     <span>Variants:</span>
     {% for pair in site.data.resume.archetypes %}
       {% assign a = pair[1] %}
-      <a href="/resumes/{{ a.file_slug }}/" class="subnav-link" title="{{ a.target_tier }}">{{ a.title | split: "/" | first | strip | truncate: 22, "" }}</a>
+      <a href="/resumes/{{ a.file_slug }}/" class="subnav-link" title="{{ a.target_tier }}">{{ a.short_label }}</a>
     {% endfor %}
   </div>
   <div class="subnav-group">
