@@ -4,7 +4,7 @@ title: Add Claude Code persona subagent roster for this repo
 status: In Progress
 assignee: []
 created_date: '2026-08-25 16:47'
-updated_date: '2026-08-25 17:01'
+updated_date: '2026-08-25 17:32'
 labels: []
 dependencies: []
 type: chore
@@ -43,4 +43,6 @@ Created 21 files under .claude/agents/*.md, all with plain name/description/tool
 BLOCKER on AC #6: attempted to smoke-test by invoking the new build-release-operator subagent via the Agent tool. It failed — 'Agent type not found. Available agents: claude, claude-code-guide, Explore, general-purpose, Plan, statusline-setup' — the original 6 built-ins only. The Agent tool's subagent_type list appears fixed at session start, not polled live, contradicting an earlier (already-flagged-as-unverified) claim that new agent files are auto-detected without a restart. Files are confirmed correctly created and formatted; discoverability itself needs verification in a fresh Claude Code session, which this session cannot perform. Leaving AC #6 unchecked and status as In Progress until Mike confirms in a new session.
 
 AC#6 blocked, root cause identified: this Claude Code session's `Agent` tool subagent_type roster is fixed at process start and does not rescan `.claude/agents/` mid-session — confirmed by re-testing `build-release-operator` after a full context compaction/continue, which still returned only the 6 built-in types (claude, claude-code-guide, Explore, general-purpose, Plan, statusline-setup). Ruled out as causes: all 21 persona files confirmed present in `.claude/agents/` with correct filenames; no `.claude/settings.json` exists; `.claude/settings.local.json` contains only a Bash/Read permission allowlist, nothing that restricts or filters subagent types. This narrows the blocker to session-lifecycle behavior of the Agent tool itself, not a file or config defect on this repo's side. Verification requires a genuinely new `claude` process (new terminal invocation in this repo) attempting to invoke one of the 21 personas directly — this cannot be performed from inside an existing session, however long-running or compacted. Handed to Mike to run that check; if a fresh process still can't see them, next suspects are the installed Claude Code CLI version or a `claude-code-guide` lookup on subagent-file discovery requirements.
+
+Correction to the AC#6 root-cause note above: it's not a universal hard rule. Confirmed via the zdots bus (job-leads/general, 2026-08-25) that agent-wwworkremote's 12 new personas in wwworkremote/core showed up in that session's Agent-tool listing immediately after being written, no restart needed -- verified for real against their git log (b5522475), not just their say-so. So this repo's specific block (build-release-operator and siblings still invisible after a full compaction/continue) is session/timing-dependent behavior, not evidence that fresh-process verification is the only path. Still recommend Mike test a fresh `claude` process here as the reliable fallback, but don't treat same-session failure as proof it can never work same-session.
 <!-- SECTION:NOTES:END -->
