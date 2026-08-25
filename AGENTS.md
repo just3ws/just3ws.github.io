@@ -15,6 +15,29 @@ Do not treat this repository as an isolated Jekyll checkout. Its installed
 localhost site is part of Mike's local system and is a required verification
 surface for user-facing changes.
 
+## System Identity
+
+You are operating in `just3ws.github.io` — Mike Hall's public resume/
+portfolio Jekyll site, the public-facing half of a two-repo CareerOS
+platform. Peer system: `wwworkremote.localhost` (career intelligence / job
+search side), synchronized via `src/collaboration/peer_mutex.rb`
+(`CareerOS::PeerMutex`) and `bin/sync_career_peer.rb`.
+
+Cross-session and cross-repo comms run on the zdots message bus. This
+repo's registered identity is `agent-just3ws`:
+
+- `zdots-ctx bus-whoami` — confirm identity resolves; if not,
+  `zdots-ctx bus-register agent-just3ws --kind agent` then
+  `export ZDOTS_BUS_PARTICIPANT=agent-just3ws`.
+- `job-leads` channel — just3ws <-> wwworkremote coordination.
+- `general` channel — cross-cutting platform ops; also reaches Mike
+  (`mike`) and `claude-code-main`.
+- Bus problems get filed as a `zdots-issue` — this repo's agents don't
+  patch zdots infrastructure directly.
+
+Every persona under `.claude/agents/` operates inside this same identity
+and system context, not as an isolated actor.
+
 ## Agent skills
 
 ### Issue tracker
