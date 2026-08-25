@@ -4,7 +4,7 @@ title: Add Claude Code persona subagent roster for this repo
 status: In Progress
 assignee: []
 created_date: '2026-08-25 16:47'
-updated_date: '2026-08-25 16:52'
+updated_date: '2026-08-25 17:01'
 labels: []
 dependencies: []
 type: chore
@@ -41,4 +41,6 @@ Separately, this repo has an established peer relationship with a sibling system
 Created 21 files under .claude/agents/*.md, all with plain name/description/tools frontmatter (no permissionMode/hooks fields, per a security flag on unverified research earlier in the session). Mapped all 18 AGENTS.md-named skills to 13 files (folded pairwise/quadwise where they're one pipeline: browser-qa=playwright+screenshot, security-reviewer=security-best-practices+security-threat-model, forensic-archivist=all 4 transcript-* skills). Added 8 net-new: seo-structure-consultant, accessibility-auditor, career-strategist, backlog-coordinator, build-release-operator, research-apprentice, privacy-consent-auditor, peer-liaison. Verified via grep that every file's name: field matches its filename.
 
 BLOCKER on AC #6: attempted to smoke-test by invoking the new build-release-operator subagent via the Agent tool. It failed — 'Agent type not found. Available agents: claude, claude-code-guide, Explore, general-purpose, Plan, statusline-setup' — the original 6 built-ins only. The Agent tool's subagent_type list appears fixed at session start, not polled live, contradicting an earlier (already-flagged-as-unverified) claim that new agent files are auto-detected without a restart. Files are confirmed correctly created and formatted; discoverability itself needs verification in a fresh Claude Code session, which this session cannot perform. Leaving AC #6 unchecked and status as In Progress until Mike confirms in a new session.
+
+AC#6 blocked, root cause identified: this Claude Code session's `Agent` tool subagent_type roster is fixed at process start and does not rescan `.claude/agents/` mid-session — confirmed by re-testing `build-release-operator` after a full context compaction/continue, which still returned only the 6 built-in types (claude, claude-code-guide, Explore, general-purpose, Plan, statusline-setup). Ruled out as causes: all 21 persona files confirmed present in `.claude/agents/` with correct filenames; no `.claude/settings.json` exists; `.claude/settings.local.json` contains only a Bash/Read permission allowlist, nothing that restricts or filters subagent types. This narrows the blocker to session-lifecycle behavior of the Agent tool itself, not a file or config defect on this repo's side. Verification requires a genuinely new `claude` process (new terminal invocation in this repo) attempting to invoke one of the 21 personas directly — this cannot be performed from inside an existing session, however long-running or compacted. Handed to Mike to run that check; if a fresh process still can't see them, next suspects are the installed Claude Code CLI version or a `claude-code-guide` lookup on subagent-file discovery requirements.
 <!-- SECTION:NOTES:END -->
