@@ -40,7 +40,7 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Progressed from Digital Origination Team Lead to Software Architect, founding the ACQ Enablement team and leading the OpenTelemetry Working Group to establish the Enterprise Trace across high-volume customer acquisition flows (Rails, MuleSoft, Mainframe).
+**Target Focus:** Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, converting to Associate Director, Staff Engineer upon corporate architecture track restructuring, while founding the ACQ Enablement team and leading the OpenTelemetry Working Group to establish the Enterprise Trace across high-volume customer acquisition flows (Rails, MuleSoft, Mainframe).
 
 **Key Outcomes:**
 - Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
