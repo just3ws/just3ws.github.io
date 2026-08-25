@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-25T01:32:11Z",
+    "generated_at": "2026-08-25T12:30:15Z",
     "archetype": "senior_ruby_rails_contractor",
     "slug": "mike-hall-senior-ruby-rails-contractor",
     "target_tier": "Contract / Immediate Execution / Ruby on Rails Specialist"
@@ -38,8 +38,6 @@
         "Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.\n",
         "ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team to protect core engineering concerns from product feature pressure: driving platform stabilization, legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.\n",
         "Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.\n",
-        "State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.\n",
-        "Incident Response & Technical Escalation: Served as final escalation point for high-severity outages, translating live root-cause investigations into stronger telemetry, explicit component ownership, and reusable system knowledge.\n",
         "AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.\n"
       ]
     },
@@ -52,8 +50,6 @@
       "focus": "Sequenced zero-downtime Ruby and Rails version upgrades, optimized MySQL full-text search indices, and built batch Sidekiq/SendGrid delivery pipelines.",
       "highlights": [
         "Search Infrastructure Simplification: Replaced legacy external search clusters (Sphinx) with native MySQL full-text search and optimized relational indices, eliminating external service dependencies and reducing platform infrastructure footprint.\n",
-        "High-Volume Messaging Pipelines: Designed and validated asynchronous batch delivery pipelines via SendGrid and Sidekiq, enforcing IP warmup protocols and deliverability safety for large-scale campaign operations.\n",
-        "Data Engine & Analytics: Engineered complex relational analytical queries across multi-million row content catalogs, powering real-time data visualizations and international media publishing.\n",
         "Zero-Downtime Platform Upgrades: Led Ruby and Rails framework upgrades across multiple core applications, sequencing database migrations and dependency updates to maintain uptime during platform modernization.\n"
       ]
     },
@@ -131,8 +127,6 @@
       "highlights": [
         "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n",
         "Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.\n",
-        "Compliance-Safe Observability: Telemetry reaches agents already PHI-scrubbed at the OpenTelemetry ingest edge, keeping a compliance-sensitive platform debuggable by an AI without exposing protected data.\n",
-        "Local Inference Tooling: Built llama-mcp, exposing a local llama.cpp inference stack as callable tools for interrogation and validation, keeping routine inference on-box.\n",
         "Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.\n"
       ]
     }

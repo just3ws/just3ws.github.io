@@ -38,10 +38,6 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 - Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
 
-- State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.
-
-- Incident Response & Technical Escalation: Served as final escalation point for high-severity outages, translating live root-cause investigations into stronger telemetry, explicit component ownership, and reusable system knowledge.
-
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
@@ -54,7 +50,6 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 **Key Outcomes:**
 - Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
 - Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
-- Engineering Continuity: Created transparent component ownership, visible operational priorities, and collaborative decision rhythms for a distributed U.S.-Mexico engineering team.
 
 ### Creator at WWWorkRemote
 
@@ -114,10 +109,6 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 
 - Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.
 
-- Compliance-Safe Observability: Telemetry reaches agents already PHI-scrubbed at the OpenTelemetry ingest edge, keeping a compliance-sensitive platform debuggable by an AI without exposing protected data.
-
-- Local Inference Tooling: Built llama-mcp, exposing a local llama.cpp inference stack as callable tools for interrogation and validation, keeping routine inference on-box.
-
 - Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.
 
 
@@ -136,25 +127,6 @@ Recorded, and later restored, an archive of 214 technical interviews with practi
 - Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference, Software Craftsmanship North America, RailsConf, and WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso, and Micah Martin.
 
 - Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.
-
-
-### Creator (WWWorkRemote)
-**2021 - Present**
-
-Rails 8 platform for multi-source job ingestion, semantic matching, and application automation, built as a working laboratory for local-first LLM orchestration and treating scraped third-party text as hostile input.
-
-
-- Data Ingestion & Normalization: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.
-
-- Semantic Search & Matching: Implemented vector search embeddings via pgvector, enabling high-precision semantic matching between complex candidate profiles and job requirements.
-
-- Local-First AI Orchestration: Designed a provider-agnostic LLM orchestration layer behind a YAML-driven model registry, local-first by default (llama.cpp/Ollama primary, hosted Claude as fallback), so routine inference never leaves the machine while a stronger hosted model can be selected per call site.
-
-- Prompt Injection Defense: Built a four-stage guardrails pipeline (normalize, weighted heuristic scan, risk classify, output validate) screening every untrusted scraped document before it reaches a model, scoring known injection patterns plus an instruction-density heuristic to secure ingestion against hostile inputs.
-
-- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider adapters that extracts postings from live ATS pages and captures the full application lifecycle (questions asked and answers given) back into the platform.
-
-- Static Signal Integration: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and system security contracts.
 
 
 ---

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-25T01:32:11Z",
+    "generated_at": "2026-08-25T12:30:15Z",
     "archetype": "founding_staff_fullstack",
     "slug": "mike-hall-founding-staff-engineer",
     "target_tier": "Early-Stage / High Agency / 0-to-1 Product & AI Engineering"
@@ -38,8 +38,6 @@
         "Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.\n",
         "ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team to protect core engineering concerns from product feature pressure: driving platform stabilization, legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.\n",
         "Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.\n",
-        "State Machine Refactoring & Data Integrity: Refactored fragile multi-step Rails workflow state machines, eliminating hidden lateral state mutations across asynchronous boundaries and resolving persistent data integrity failures in core acquisition flows.\n",
-        "Incident Response & Technical Escalation: Served as final escalation point for high-severity outages, translating live root-cause investigations into stronger telemetry, explicit component ownership, and reusable system knowledge.\n",
         "AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.\n"
       ]
     },
@@ -97,36 +95,7 @@
       "highlights": [
         "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n",
         "Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.\n",
-        "Compliance-Safe Observability: Telemetry reaches agents already PHI-scrubbed at the OpenTelemetry ingest edge, keeping a compliance-sensitive platform debuggable by an AI without exposing protected data.\n",
-        "Local Inference Tooling: Built llama-mcp, exposing a local llama.cpp inference stack as callable tools for interrogation and validation, keeping routine inference on-box.\n",
         "Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.\n"
-      ]
-    },
-    {
-      "id": "wwworkremote",
-      "title": "Creator",
-      "dates": "2021 - Present",
-      "summary": "Rails 8 platform for multi-source job ingestion, semantic matching, and application automation, built as a working laboratory for local-first LLM orchestration and treating scraped third-party text as hostile input.\n",
-      "highlights": [
-        "Data Ingestion & Normalization: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.\n",
-        "Semantic Search & Matching: Implemented vector search embeddings via pgvector, enabling high-precision semantic matching between complex candidate profiles and job requirements.\n",
-        "Local-First AI Orchestration: Designed a provider-agnostic LLM orchestration layer behind a YAML-driven model registry, local-first by default (llama.cpp/Ollama primary, hosted Claude as fallback), so routine inference never leaves the machine while a stronger hosted model can be selected per call site.\n",
-        "Prompt Injection Defense: Built a four-stage guardrails pipeline (normalize, weighted heuristic scan, risk classify, output validate) screening every untrusted scraped document before it reaches a model, scoring known injection patterns plus an instruction-density heuristic to secure ingestion against hostile inputs.\n",
-        "Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider adapters that extracts postings from live ATS pages and captures the full application lifecycle (questions asked and answers given) back into the platform.\n",
-        "Static Signal Integration: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and system security contracts.\n"
-      ]
-    },
-    {
-      "id": "technical-conversation-archive",
-      "title": "Creator & Forensic Engineer",
-      "dates": "2011 - Present",
-      "summary": "Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link two decades of primary-source material into a searchable knowledge graph.\n",
-      "highlights": [
-        "Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that transcribes, diarizes, and structures long-form interview audio entirely on-device, keeping a large private media corpus off third-party inference services.\n",
-        "Schema-Validated Content Platform: Runs on a contract-validated data layer: every interview, asset, and transcript is checked against an explicit schema at build time, with referential-integrity checks that fail the build rather than publishing broken data.\n",
-        "Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge graph, and semantic cross-links across the corpus, turning an unstructured media archive into navigable, individually indexed pages.\n",
-        "Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference, Software Craftsmanship North America, RailsConf, and WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso, and Micah Martin.\n",
-        "Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.\n"
       ]
     }
   ],

@@ -46,6 +46,18 @@ Optimize for **credibility, clarity, and signal**, not completeness or storytell
 These decisions are durable resume context. Do not reopen or hedge the title
 choice unless Mike explicitly asks to reconsider it.
 
+### Archetype Variant Pages — Explicit Exception
+
+The single-title rule above governs the **canonical resume** (`/`, its
+exports, and `/history/`). The `/resumes/` archetype variants
+(`_data/resume/archetypes.yml`) are a deliberate, separate exception: each
+variant intentionally carries its own persona-specific title (e.g. "Staff
+Software Engineer / Platform & Enablement Lead", "Founding Staff Engineer
+(0-to-1 Product & AI Systems)") to target a specific role tier or audience.
+This is allowed *only* on `/resumes/*` pages. Do not let archetype titles
+leak onto the canonical resume, and do not treat an archetype title as
+justification for retitling the canonical resume.
+
 ---
 
 ## Evaluation Framework
