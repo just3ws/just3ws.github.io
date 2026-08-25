@@ -24,13 +24,13 @@ Chicago, IL
 
 ## Professional Summary
 
-Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines 20+ years of hands-on system cartography with OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
+Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines 20+ years of hands-on production experience with OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
 
 ---
 
 ## Core Competencies & Skills
 
-Enterprise Systems Cartography & Legacy Modernization, Cross-Domain Boundary Architecture & Governance, OpenTelemetry & Distributed Trace Context Propagation, High-Consequence Incident Escalation & Root Cause Analysis, Zero-Downtime Data Migrations & Schema Partitioning, Ruby on Rails, PostgreSQL, Sidekiq & Redis, AWS, Docker, Kubernetes & CI/CD Pipelines, Privacy-Conscious Local AI Orchestration & Tooling
+Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture & Governance, OpenTelemetry & Distributed Trace Context Propagation, High-Consequence Incident Escalation & Root Cause Analysis, Zero-Downtime Data Migrations & Schema Partitioning, Ruby on Rails, PostgreSQL, Sidekiq & Redis, AWS, Docker, Kubernetes & CI/CD Pipelines, Privacy-Conscious Local AI Orchestration & Tooling
 
 ---
 
@@ -60,7 +60,7 @@ Enterprise Systems Cartography & Legacy Modernization, Cross-Domain Boundary Arc
 
 **May 2026 - August 2026** | Remote
 
-**Target Focus:** Conducted rapid 90-day architecture discovery, compliance verification, and operational risk assessment for a multi-tenant healthcare SaaS servicing 130+ clinics following founder transition.
+**Target Focus:** Conducted rapid architecture discovery, compliance verification, and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics through a founder transition and acquisition handoff.
 
 **Key Outcomes:**
 - Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
