@@ -2,7 +2,7 @@
 Principal Software Engineer
 
 ## Summary
-Principal Software Engineer who modernizes high-consequence production systems. Helps engineering leaders make confident decisions about aging architectures by establishing clear domain ownership, OpenTelemetry distributed tracing, zero-downtime safety, and practical AI engineering across Ruby on Rails, PostgreSQL, and cloud infrastructure.
+Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines 20+ years across software engineering and platform architecture with OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
 
 ## Skills
 - Cross-Team Technical Leadership
