@@ -763,7 +763,39 @@
   }
 }
 
-/* Transcription Status Bar */
+/* Transcript Issue Report Button */
+.transcript-report {
+  margin: -1.5rem 0 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.report-issue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  color: var(--color-text-muted, #888);
+  background: transparent;
+  border: 1px solid var(--color-border, #ddd);
+  transition: all 0.15s ease;
+}
+
+.report-issue-btn svg {
+  flex-shrink: 0;
+}
+
+.report-issue-btn:hover {
+  color: var(--color-warning, #e07b39);
+  border-color: var(--color-warning, #e07b39);
+  background: rgba(224, 123, 57, 0.06);
+}
+
+
 .transcription-status-bar {
   margin: 2rem 0;
   padding: 1.5rem;

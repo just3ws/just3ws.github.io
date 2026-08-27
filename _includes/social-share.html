@@ -30,3 +30,17 @@
     </a>
   </div>
 </div>
+
+{% assign issue_page_url = site.url | append: page.url %}
+{% assign issue_title = page.title | prepend: "Transcript issue: " | url_encode %}
+{% assign issue_body = "**Page:** " | append: issue_page_url | append: "%0A%0A**Issue description:**%0A%0A(Please describe the typo, duplication, misattribution, or other content error you noticed.)" | url_encode %}
+<div class="transcript-report no-print">
+  <a href="https://github.com/just3ws/just3ws.github.io/issues/new?labels=transcript-error&title={{ issue_title }}&body={{ issue_body }}"
+     class="report-issue-btn"
+     target="_blank"
+     rel="noopener"
+     title="Report a typo or content error in this transcript">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+    Report transcript issue
+  </a>
+</div>

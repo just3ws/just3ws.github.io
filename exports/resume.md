@@ -70,20 +70,20 @@ Led backend stability, performance, and modernization for high-traffic Rails pro
 ### Senior Software Developer at ActiveCampaign
 **September 2018 — December 2018**
 
-Owned core system testability and performance at scale, leading legacy modernization in a highly coupled CRM platform.
+Short-term senior contract on the Contacts team of a large-scale PHP/MySQL CRM platform. Focused on testability, performance, and change safety inside a tightly coupled legacy backend while extending the Ember.js frontend test suite.
 
 **Key Outcomes:**
-- Legacy Boundary Isolation: Decoupled critical legacy constraints behind explicit service boundaries, eliminating high-risk direct database dependencies and establishing clean execution paths.
-- Data Access & Query Optimization: Replaced ad-hoc global state access with structured query patterns and multi-tier caching strategies, accelerating throughput for high-volume database reads.
-- Frontend Test Hardening: Hardened the Ember.js frontend test suite across complex CRM user workflows, enforcing testable state boundaries and reducing regressions in customer-facing flows.
-- Test-Driven Observability: Established test-driven observability patterns across legacy PHP codepaths, shortening developer feedback loops during high-risk production debugging.
+- Testable Query Patterns: Replaced ad-hoc global data access functions with structured, cacheable query patterns in the PHP backend, improving performance and enabling reliable automated testing where none existed before.
+- Legacy Boundary Isolation: Identified and isolated structural constraints in the core contact management subsystem, reducing risk for incremental change without requiring large-scale rewrites.
+- Frontend Test Hardening: Learned Ember.js to extend and harden the existing frontend test suite across complex contact workflows, improving UI reliability and developer confidence.
+- Reusable Pagination Constructs: Refactored shared Ember.js pagination and interaction logic into reusable mixins, eliminating duplication across contact list views.
 
 **Skills:** PHP, MySQL, Ember.js, JavaScript, Legacy System Modernization, Backend System Architecture, Automated Testing, Performance Optimization
 
 ### Principal Consultant at Tandem
 **August 2018 — August 2018**
 
-Owned strategic technical assessment and on-site operational evaluation, leading architectural realignment and scope correction for a high-risk federal software program (DoD MEPS). Brought in to an over-committed engagement following an engineering-team departure.
+Single-month engagement: brought in to an over-committed federal software program (DoD MEPS) following an engineering-team departure to conduct on-site operational assessment and deliver architectural recommendations directly to executive leadership.
 
 
 **Key Outcomes:**
