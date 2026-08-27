@@ -3,10 +3,11 @@ layout: archetype-resume
 body_class: ats-resume
 archetype_key: staff_platform_enablement
 title: "Mike Hall - Staff Software Engineer - Platform and Enablement Lead"
-description: "Staff Software Engineer and Platform Lead who multiplies engineering velocity and system reliability. Proven track record of merging attrition-impacted"
+description: "Staff Software Engineer and Platform Lead who multiplies engineering velocity and system reliability. Proven track record of merging attrition-impacted teams into high-performing units, founding developer enablement teams, building automated verification gates, and unblocking product teams from technical debt friction."
+canonical_url: https://www.just3ws.com/resumes/mike-hall-staff-platform-lead/
 permalink: /resumes/mike-hall-staff-platform-lead/
-sitemap: false
-robots: noindex,nofollow
+sitemap: true
+robots: index,follow
 ---
 
 # Mike Hall
@@ -52,7 +53,7 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
-### Development Manager — Founder Transition & Acquisition Handoff at EMR-Bear, a MedSuite company
+### Interim Architecture & Operational Risk Lead at EMR-Bear, a MedSuite company
 
 **May 2026 - August 2026** | Remote
 
@@ -69,7 +70,7 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 **Target Focus:** Standardized asynchronous Sidekiq delivery pipelines and automated CI/CD deployment routines.
 
 **Key Outcomes:**
-- Search Infrastructure Simplification: Replaced legacy external search clusters (Sphinx) with native MySQL full-text search and optimized relational indices, eliminating external service dependencies and reducing platform infrastructure footprint.
+- Search Modernization & Infrastructure De-Risking: Eliminated external cluster failure modes and lowered operating footprint by transitioning legacy Sphinx infrastructure to optimized MySQL full-text search and relational indices under live production traffic.
 
 - Zero-Downtime Platform Upgrades: Led Ruby and Rails framework upgrades across multiple core applications, sequencing database migrations and dependency updates to maintain uptime during platform modernization.
 
@@ -104,7 +105,7 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 
 ## Selected Production Projects
 
-### Creator (Agent Tooling (MCP Servers & Agent Workflows))
+### Principal Architect (Local AI Orchestration & Developer Runtime)
 **2026 - Present**
 
 Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
@@ -117,7 +118,7 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 - Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.
 
 
-### Creator & Forensic Engineer (Technical Conversation Archive)
+### Principal Engineer & Curator (Technical Conversation Archive)
 **2011 - Present**
 
 Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link two decades of primary-source material into a searchable knowledge graph.
@@ -134,7 +135,7 @@ Recorded, and later restored, an archive of 214 technical interviews with practi
 - Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.
 
 
-### Creator (WWWorkRemote)
+### Principal Architect (WWWorkRemote)
 **2021 - Present**
 
 Rails 8 platform for multi-source job ingestion, semantic matching, and application automation, built as a working laboratory for local-first LLM orchestration and treating scraped third-party text as hostile input.
@@ -160,7 +161,7 @@ Rails 8 platform for multi-source job ingestion, semantic matching, and applicat
 - **Senior Software Developer**, BenchPrep (March 2017 - February 2018): Owned enterprise assessment workflows, leading correctness and platform security in a high-concurrency environment.
 - **Senior Software Developer**, ReachLocal (March 2015 - November 2016): Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform.
 - **Open-Source Transition Lead**, Coderwall (January 2014 - December 2014): Hired as a contractor by the founder to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
-- **Engineering Learning & Development Business Partner**, Groupon (July 2011 - May 2013): Owned core backend systems for fraud and taxonomy, leading global engineering enablement during hyper-growth.
+- **Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)**, Groupon (July 2011 - May 2013): Owned core backend systems for fraud and taxonomy, leading global engineering enablement during hyper-growth.
 
 ---
 

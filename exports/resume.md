@@ -24,7 +24,7 @@ Principal Software Engineer specializing in high-consequence legacy modernizatio
 
 ## Experience
 
-### Development Manager — Founder Transition & Acquisition Handoff at EMR-Bear, a MedSuite company
+### Interim Architecture & Operational Risk Lead at EMR-Bear, a MedSuite company
 **May 2026 — August 2026**
 
 Engaged on a bounded 90-day interim assignment to conduct rapid architecture discovery, platform stabilization, and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics following a founder transition.
@@ -60,7 +60,7 @@ Led backend stability, performance, and modernization for high-traffic Rails pro
 
 
 **Key Outcomes:**
-- Search Infrastructure Simplification: Replaced legacy external search clusters (Sphinx) with native MySQL full-text search and optimized relational indices, eliminating external service dependencies and reducing platform infrastructure footprint.
+- Search Modernization & Infrastructure De-Risking: Eliminated external cluster failure modes and lowered operating footprint by transitioning legacy Sphinx infrastructure to optimized MySQL full-text search and relational indices under live production traffic.
 
 - Zero-Downtime Platform Upgrades: Led Ruby and Rails framework upgrades across multiple core applications, sequencing database migrations and dependency updates to maintain uptime during platform modernization.
 
@@ -75,7 +75,7 @@ Short-term senior contract on the Contacts team of a large-scale PHP/MySQL CRM p
 **Key Outcomes:**
 - Testable Query Patterns: Replaced ad-hoc global data access functions with structured, cacheable query patterns in the PHP backend, improving performance and enabling reliable automated testing where none existed before.
 - Legacy Boundary Isolation: Identified and isolated structural constraints in the core contact management subsystem, reducing risk for incremental change without requiring large-scale rewrites.
-- Frontend Test Hardening: Learned Ember.js to extend and harden the existing frontend test suite across complex contact workflows, improving UI reliability and developer confidence.
+- Frontend Test Hardening & Boundary Verification: Hardened Ember.js frontend test coverage across core contact management workflows, creating verification gates that allowed safe refactoring of legacy PHP data paths without regression.
 - Reusable Pagination Constructs: Refactored shared Ember.js pagination and interaction logic into reusable mixins, eliminating duplication across contact list views.
 
 **Skills:** PHP, MySQL, Ember.js, JavaScript, Legacy System Modernization, Backend System Architecture, Automated Testing, Performance Optimization
@@ -172,7 +172,7 @@ Owned core business system development, leading AWS deployment modernization and
 
 **Skills:** Ruby, Ruby on Rails, AWS EC2, AWS RDS, PostgreSQL, Redis, Resque, Capistrano, NGINX, Sidekiq, Logentries
 
-### Engineering Learning & Development Business Partner at Groupon
+### Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems) at Groupon
 **July 2011 — May 2013**
 
 Owned core backend systems for fraud and taxonomy, leading global engineering enablement during hyper-growth.

@@ -41,11 +41,11 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
-### Creator & Principal Architect at Phalanx Duel
+### Principal Architect at Phalanx Duel
 
 **2022 - Present** | Independent Project
 
-**Target Focus:** Built deterministic head-to-head strategy game in Ruby with hotwire interactions and zero-drift game state resolution.
+**Target Focus:** Built a server-authoritative deterministic game platform in TypeScript and Node.js: pure rules engine, append-only action ledger, WebSocket real-time sync, and property-based Truth Gate verification gates across the full state lifecycle.
 
 **Key Outcomes:**
 - Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.
@@ -55,7 +55,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 - Uses controlled agent workflows with bounded tasks, acceptance criteria, automated checks, and human-reviewed outputs rather than treating model output as authority.
 
 
-### Creator at WWWorkRemote
+### Principal Architect at WWWorkRemote
 
 **2021 - Present** | Independent Project
 
@@ -75,7 +75,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 - Static Signal Integration: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and system security contracts.
 
 
-### Creator & Forensic Engineer at Technical Conversation Archive
+### Principal Engineer & Curator at Technical Conversation Archive
 
 **2011 - Present** | Independent Project
 
@@ -97,7 +97,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 ## Selected Production Projects
 
-### Creator (Agent Tooling (MCP Servers & Agent Workflows))
+### Principal Architect (Local AI Orchestration & Developer Runtime)
 **2026 - Present**
 
 Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
@@ -117,7 +117,7 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 - **Open-Source Transition Lead**, Coderwall (January 2014 - December 2014): Hired as a contractor by the founder to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
 - **Senior Software Developer**, ReachLocal (March 2015 - November 2016): Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform.
 - **Senior Backend Developer**, SK Holdings, Inc. (January 2019 - December 2020): Led backend stability, performance, and modernization for high-traffic Rails products, improving full-text search, campaign delivery pipelines, and data layer reliability while systems remained under production load.
-- **Engineering Learning & Development Business Partner**, Groupon (July 2011 - May 2013): Owned core backend systems for fraud and taxonomy, leading global engineering enablement during hyper-growth.
+- **Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)**, Groupon (July 2011 - May 2013): Owned core backend systems for fraud and taxonomy, leading global engineering enablement during hyper-growth.
 - **Senior .NET Developer**, TicketsNow (November 2005 - March 2007): Owned real-time inventory systems, leading transactional integrity and iterative delivery for revenue-critical operations.
 
 ---

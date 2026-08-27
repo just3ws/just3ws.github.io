@@ -6,6 +6,12 @@
     {% assign seo_title = resume_seo.title %}
     {% assign seo_description = resume_seo.description %}
   {% endif %}
+{% elsif page.archetype_key %}
+  {% assign archetype = site.data.resume.archetypes[page.archetype_key] %}
+  {% if archetype %}
+    {% assign seo_title = "Mike Hall - " | append: archetype.title %}
+    {% assign seo_description = archetype.summary %}
+  {% endif %}
 {% endif %}
 {% if seo_title.size < 30 %}
   {% assign seo_title = seo_title | append: " - Mike Hall Technical Archive" %}

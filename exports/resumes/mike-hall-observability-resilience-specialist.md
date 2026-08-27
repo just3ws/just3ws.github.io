@@ -41,7 +41,7 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
-### Development Manager — Founder Transition & Acquisition Handoff at EMR-Bear, a MedSuite company
+### Interim Architecture & Operational Risk Lead at EMR-Bear, a MedSuite company
 
 **May 2026 - August 2026** | Remote
 
@@ -51,7 +51,7 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 - Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
 - Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
 
-### Creator at WWWorkRemote
+### Principal Architect at WWWorkRemote
 
 **2021 - Present** | Independent Project
 
@@ -75,15 +75,15 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 **September 2018 - December 2018** | Chicago, IL
 
-**Target Focus:** Decoupled high-throughput campaign message queues and engineered database split under continuous production monitoring.
+**Target Focus:** Made previously opaque PHP backend behavior observable through structured query patterns and test coverage, improving change safety and developer feedback loops.
 
 **Key Outcomes:**
-- Legacy Boundary Isolation: Decoupled critical legacy constraints behind explicit service boundaries, eliminating high-risk direct database dependencies and establishing clean execution paths.
-- Data Access & Query Optimization: Replaced ad-hoc global state access with structured query patterns and multi-tier caching strategies, accelerating throughput for high-volume database reads.
-- Frontend Test Hardening: Hardened the Ember.js frontend test suite across complex CRM user workflows, enforcing testable state boundaries and reducing regressions in customer-facing flows.
-- Test-Driven Observability: Established test-driven observability patterns across legacy PHP codepaths, shortening developer feedback loops during high-risk production debugging.
+- Testable Query Patterns: Replaced ad-hoc global data access functions with structured, cacheable query patterns in the PHP backend, improving performance and enabling reliable automated testing where none existed before.
+- Legacy Boundary Isolation: Identified and isolated structural constraints in the core contact management subsystem, reducing risk for incremental change without requiring large-scale rewrites.
+- Frontend Test Hardening & Boundary Verification: Hardened Ember.js frontend test coverage across core contact management workflows, creating verification gates that allowed safe refactoring of legacy PHP data paths without regression.
+- Reusable Pagination Constructs: Refactored shared Ember.js pagination and interaction logic into reusable mixins, eliminating duplication across contact list views.
 
-### Engineering Learning & Development Business Partner at Groupon
+### Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems) at Groupon
 
 **July 2011 - May 2013** | Chicago, IL
 
@@ -99,7 +99,7 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 ## Selected Production Projects
 
-### Creator (Agent Tooling (MCP Servers & Agent Workflows))
+### Principal Architect (Local AI Orchestration & Developer Runtime)
 **2026 - Present**
 
 Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
@@ -112,7 +112,7 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 - Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.
 
 
-### Creator & Forensic Engineer (Technical Conversation Archive)
+### Principal Engineer & Curator (Technical Conversation Archive)
 **2011 - Present**
 
 Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link two decades of primary-source material into a searchable knowledge graph.

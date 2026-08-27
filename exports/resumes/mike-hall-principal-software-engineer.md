@@ -41,7 +41,7 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
-### Development Manager — Founder Transition & Acquisition Handoff at EMR-Bear, a MedSuite company
+### Interim Architecture & Operational Risk Lead at EMR-Bear, a MedSuite company
 
 **May 2026 - August 2026** | Remote
 
@@ -58,7 +58,7 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 **Target Focus:** Modernized search and asynchronous messaging pipelines under live production load, executing zero-downtime Rails framework upgrades and database relational indexing.
 
 **Key Outcomes:**
-- Search Infrastructure Simplification: Replaced legacy external search clusters (Sphinx) with native MySQL full-text search and optimized relational indices, eliminating external service dependencies and reducing platform infrastructure footprint.
+- Search Modernization & Infrastructure De-Risking: Eliminated external cluster failure modes and lowered operating footprint by transitioning legacy Sphinx infrastructure to optimized MySQL full-text search and relational indices under live production traffic.
 
 - Zero-Downtime Platform Upgrades: Led Ruby and Rails framework upgrades across multiple core applications, sequencing database migrations and dependency updates to maintain uptime during platform modernization.
 
@@ -67,19 +67,19 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 
 **September 2018 - December 2018** | Chicago, IL
 
-**Target Focus:** Architected the multi-database PostgreSQL and MySQL partition split, decoupling monolithic campaign dispatch queues with dual-write synchronization shims.
+**Target Focus:** Improved testability and performance inside a tightly coupled PHP/MySQL CRM backend, introducing structured query patterns and cache strategies, and hardening the Ember.js frontend test suite across core contact management workflows.
 
 **Key Outcomes:**
-- Legacy Boundary Isolation: Decoupled critical legacy constraints behind explicit service boundaries, eliminating high-risk direct database dependencies and establishing clean execution paths.
-- Data Access & Query Optimization: Replaced ad-hoc global state access with structured query patterns and multi-tier caching strategies, accelerating throughput for high-volume database reads.
-- Frontend Test Hardening: Hardened the Ember.js frontend test suite across complex CRM user workflows, enforcing testable state boundaries and reducing regressions in customer-facing flows.
-- Test-Driven Observability: Established test-driven observability patterns across legacy PHP codepaths, shortening developer feedback loops during high-risk production debugging.
+- Testable Query Patterns: Replaced ad-hoc global data access functions with structured, cacheable query patterns in the PHP backend, improving performance and enabling reliable automated testing where none existed before.
+- Legacy Boundary Isolation: Identified and isolated structural constraints in the core contact management subsystem, reducing risk for incremental change without requiring large-scale rewrites.
+- Frontend Test Hardening & Boundary Verification: Hardened Ember.js frontend test coverage across core contact management workflows, creating verification gates that allowed safe refactoring of legacy PHP data paths without regression.
+- Reusable Pagination Constructs: Refactored shared Ember.js pagination and interaction logic into reusable mixins, eliminating duplication across contact list views.
 
-### Engineering Learning & Development Business Partner at Groupon
+### Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems) at Groupon
 
 **July 2011 - May 2013** | Chicago, IL
 
-**Target Focus:** Designed analytical fraud detection queries in Vertica, spiked anomaly detection in Clojure/Hadoop, and implemented a centralized merchant taxonomy service in Java and MySQL.
+**Target Focus:** Implemented a centralized merchant taxonomy service in Java and MySQL, engineered analytical fraud detection in Vertica, and led global technical onboarding curricula during hyper-growth.
 
 **Key Outcomes:**
 - Built merchant analytics tools in Ruby and CouchDB, surfacing market insights for global sales operations.
@@ -91,7 +91,7 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 
 ## Selected Production Projects
 
-### Creator (WWWorkRemote)
+### Principal Architect (WWWorkRemote)
 **2021 - Present**
 
 Rails 8 platform for multi-source job ingestion, semantic matching, and application automation, built as a working laboratory for local-first LLM orchestration and treating scraped third-party text as hostile input.
@@ -110,7 +110,7 @@ Rails 8 platform for multi-source job ingestion, semantic matching, and applicat
 - Static Signal Integration: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and system security contracts.
 
 
-### Creator & Forensic Engineer (Technical Conversation Archive)
+### Principal Engineer & Curator (Technical Conversation Archive)
 **2011 - Present**
 
 Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link two decades of primary-source material into a searchable knowledge graph.
@@ -127,7 +127,7 @@ Recorded, and later restored, an archive of 214 technical interviews with practi
 - Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.
 
 
-### Creator (Agent Tooling (MCP Servers & Agent Workflows))
+### Principal Architect (Local AI Orchestration & Developer Runtime)
 **2026 - Present**
 
 Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
@@ -147,7 +147,7 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 - **Senior Software Developer**, BenchPrep (March 2017 - February 2018): Owned enterprise assessment workflows, leading correctness and platform security in a high-concurrency environment.
 - **Senior Software Developer**, ReachLocal (March 2015 - November 2016): Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform.
 - **Open-Source Transition Lead**, Coderwall (January 2014 - December 2014): Hired as a contractor by the founder to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
-- **Principal Consultant**, Tandem (August 2018 - August 2018): Owned strategic technical assessment and on-site operational evaluation, leading architectural realignment and scope correction for a high-risk federal software program (DoD MEPS). Brought in to an over-committed engagement following an engineering-team departure.
+- **Principal Consultant**, Tandem (August 2018 - August 2018): Single-month engagement: brought in to an over-committed federal software program (DoD MEPS) following an engineering-team departure to conduct on-site operational assessment and deliver architectural recommendations directly to executive leadership.
 
 ---
 

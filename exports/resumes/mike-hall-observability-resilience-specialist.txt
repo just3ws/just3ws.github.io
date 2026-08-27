@@ -62,7 +62,7 @@ Key Outcomes:
     source evidence explicit.
 
 --------------------------------------------------------------------------------
-DEVELOPMENT MANAGER — FOUNDER TRANSITION & ACQUISITION HANDOFF
+INTERIM ARCHITECTURE & OPERATIONAL RISK LEAD
 EMR-Bear, a MedSuite company | Remote
 May 2026 - August 2026
 
@@ -79,7 +79,7 @@ Key Outcomes:
     sign-off.
 
 --------------------------------------------------------------------------------
-CREATOR
+PRINCIPAL ARCHITECT
 WWWorkRemote | Independent Project
 2021 - Present
 
@@ -116,25 +116,28 @@ SENIOR SOFTWARE DEVELOPER
 ActiveCampaign | Chicago, IL
 September 2018 - December 2018
 
-Decoupled high-throughput campaign message queues and engineered database split
-under continuous production monitoring.
+Made previously opaque PHP backend behavior observable through structured query
+patterns and test coverage, improving change safety and developer feedback
+loops.
 
 Key Outcomes:
-  * Legacy Boundary Isolation: Decoupled critical legacy constraints behind
-    explicit service boundaries, eliminating high-risk direct database
-    dependencies and establishing clean execution paths.
-  * Data Access & Query Optimization: Replaced ad-hoc global state access with
-    structured query patterns and multi-tier caching strategies, accelerating
-    throughput for high-volume database reads.
-  * Frontend Test Hardening: Hardened the Ember.js frontend test suite across
-    complex CRM user workflows, enforcing testable state boundaries and reducing
-    regressions in customer-facing flows.
-  * Test-Driven Observability: Established test-driven observability patterns
-    across legacy PHP codepaths, shortening developer feedback loops during
-    high-risk production debugging.
+  * Testable Query Patterns: Replaced ad-hoc global data access functions with
+    structured, cacheable query patterns in the PHP backend, improving
+    performance and enabling reliable automated testing where none existed
+    before.
+  * Legacy Boundary Isolation: Identified and isolated structural constraints in
+    the core contact management subsystem, reducing risk for incremental change
+    without requiring large-scale rewrites.
+  * Frontend Test Hardening & Boundary Verification: Hardened Ember.js frontend
+    test coverage across core contact management workflows, creating
+    verification gates that allowed safe refactoring of legacy PHP data paths
+    without regression.
+  * Reusable Pagination Constructs: Refactored shared Ember.js pagination and
+    interaction logic into reusable mixins, eliminating duplication across
+    contact list views.
 
 --------------------------------------------------------------------------------
-ENGINEERING LEARNING & DEVELOPMENT BUSINESS PARTNER
+SOFTWARE ENGINEER & TECHNICAL ONBOARDING LEAD (FRAUD & TAXONOMY SYSTEMS)
 Groupon | Chicago, IL
 July 2011 - May 2013
 

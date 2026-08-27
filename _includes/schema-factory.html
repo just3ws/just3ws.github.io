@@ -103,6 +103,54 @@
         {% endif %}
       {% endfor %}
     ]
+  {% elsif type == 'archetype-resume' or page.archetype_key %}
+    {% assign profile = site.data.resume.profile %}
+    {% assign key = page.archetype_key %}
+    {% assign archetype = site.data.resume.archetypes[key] %}
+    "@type": "ProfilePage",
+    "@id": "{{ site_url }}{{ page.url }}#profilepage",
+    "name": {{ page.title | jsonify }},
+    "description": {{ archetype.summary | default: page.description | jsonify }},
+    "url": "{{ site_url }}{{ page.url }}",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "{{ site_url }}/id/person/mike-hall#{{ key }}",
+      "name": {{ profile.name | default: "Mike Hall" | jsonify }},
+      "givenName": "Mike",
+      "familyName": "Hall",
+      "alternateName": "just3ws",
+      "jobTitle": {{ archetype.title | default: profile.title | jsonify }},
+      "description": {{ archetype.summary | strip | jsonify }},
+      "url": "{{ site_url }}{{ page.url }}",
+      "email": "mailto:{{ profile.contact.email }}",
+      "sameAs": [
+        {{ profile.contact.linkedin.url | jsonify }},
+        {{ profile.contact.github.url | jsonify }}
+      ],
+      "knowsAbout": {{ archetype.core_skills | jsonify }},
+      "hasOccupation": [
+        {% for entry in archetype.featured_positions %}
+          {% assign position = site.data.resume.positions[entry.id] %}
+          {% if position %}
+            {
+              "@type": "Occupation",
+              "name": {{ position.title | jsonify }},
+              "description": {{ entry.focus | default: position.summary | jsonify }},
+              "occupationLocation": {
+                "@type": "AdministrativeArea",
+                "name": {{ position.company.location | default: "Remote" | jsonify }}
+              },
+              "hiringOrganization": {
+                "@type": "Organization",
+                "name": {{ position.company.name | jsonify }}
+                {% if position.company.url %},"url": {{ position.company.url | jsonify }}{% endif %}
+                {% if position.company.sameAs %},"sameAs": {{ position.company.sameAs | jsonify }}{% endif %}
+              }
+            }{% unless forloop.last %},{% endunless %}
+          {% endif %}
+        {% endfor %}
+      ]
+    }
   {% elsif type == 'interview' or include.interview %}
     {% assign interview = include.interview | default: page.interview %}
     {% assign asset = include.asset | default: page.asset %}

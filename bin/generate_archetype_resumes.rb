@@ -60,10 +60,11 @@ archetypes.each do |key, config|
     "body_class: ats-resume",
     "archetype_key: #{key}",
     "title: #{filename_safe_title(profile['name'], config['title']).inspect}",
-    "description: #{config['summary'][0..150].strip.inspect}",
+    "description: #{config['summary'].strip.inspect}",
+    "canonical_url: https://www.just3ws.com/resumes/#{slug}/",
     "permalink: /resumes/#{slug}/",
-    "sitemap: false",
-    "robots: noindex,nofollow",
+    "sitemap: true",
+    "robots: index,follow",
     "---",
     ""
   ]
