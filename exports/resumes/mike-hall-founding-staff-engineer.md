@@ -19,7 +19,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 ## Core Competencies & Skills
 
-0-to-1 Full-Stack Architecture & Rapid Prototyping, Local-First AI Orchestration (llama.cpp, Ollama, Claude API), Vector Embeddings & Semantic Search (PostgreSQL pgvector), Prompt Injection Defense & Multi-Stage Guardrails, Manifest V3 Chrome Extension Development, Contract-Validated Data Pipelines & Schema Enforcement, Ruby on Rails, Node.js, WebSockets & Real-Time Sync, High Agency, Autonomous Problem Solving
+0-to-1 Full-Stack Architecture & Rapid Prototyping, Local-First AI Orchestration (llama.cpp, whisper.cpp, Claude API), Vector Embeddings & Semantic Search (PostgreSQL pgvector), Prompt Injection Defense & Multi-Stage Guardrails, Manifest V3 Chrome Extension Development, Contract-Validated Data Pipelines & Schema Enforcement, Ruby on Rails, Node.js, WebSockets & Real-Time Sync, High Agency, Autonomous Problem Solving
 
 ---
 
