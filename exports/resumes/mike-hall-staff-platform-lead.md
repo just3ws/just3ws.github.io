@@ -29,16 +29,18 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Merged two attrition-impacted teams into one unified delivery unit in the Acquisition Lane; founded ACQ Enablement to establish systemic cartography across customer journeys and protect platform modernization, documentation, and cybersecurity remediation from feature pressure.
+**Target Focus:** Merged two attrition-impacted teams into one unified delivery unit in the Acquisition Lane; founded ACQ Enablement to drive PII remediation, systemic cartography, and infrastructure support for ACQ Growth teams, while stewarding a 3-year enterprise community enablement arc (Geekfest and OTel WG) transitioned sustainably to SRE.
 
 **Key Outcomes:**
-- Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
+- Technical Leadership & Platform Realignment: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified delivery unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
 
-- ACQ Enablement & Funnel State Mapping: Founded and technically led the ACQ Enablement team to establish systemic cartography across customer journeys: inventorying the intersection of business decisions, customer actions, system state transitions, and source code execution paths. Built high-fidelity funnel lifecycle signals (entry, exit, error) with complete runtime attribution (A/B test variants, feature flags, configuration states) to accelerate cybersecurity investigations and create safety gates for continuous legacy modernization.
+- ACQ Enablement & System Cartography: Founded and technically led the ACQ Enablement team to establish systemic cartography across customer journeys: inventorying the intersection of business decisions, customer actions, system state transitions, and source code execution paths. Drove PII remediation, cybersecurity forensic signal mapping, and platform infrastructure support to enable ACQ Growth teams to safely integrate with enterprise cloud modernization initiatives.
 
-- Observability & Enterprise Origination Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across the end-to-end loan application and digital origination lifecycle, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends. Leveraged distributed telemetry and state mapping to diagnose and resolve a persistent multi-service defect impacting 4% of traffic, eliminating silent application loss at final underwriting and e-sign stages.
+- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing, diagnosing and eliminating a persistent multi-service defect that caused 4% silent traffic loss at late-stage e-signing.
 
-- AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
+- Sustained Community Enablement & SRE Handoff: Drove a dedicated 3-year cultural and technical enablement initiative: founded Geekfest@OMF (weekly recorded technical brown-bag sessions across the enterprise for 1 year) before evolving the forum into the weekly OpenTelemetry Working Group (OTel WG), scaling voluntary attendance to 40+ cross-lane engineers. Mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable, self-sustaining community of practice while returning to Acquisition Lane architecture representation.
+
+- Applied AI & Innovation Leadership: Placed in two corporate hackathons (building early conversational agents with Rasa and automated schema inference tools with Bonsai Buckaroos). Introduced local LLM orchestration and privacy-conscious AI developer workflows at Geekfest@OMF, establishing early evidence-based patterns for legacy code discovery and developer productivity.
 
 
 ### Principal Architect at Local AI Orchestration & Developer Runtime
