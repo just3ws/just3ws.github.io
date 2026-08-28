@@ -284,12 +284,15 @@ section {
 }
 
 .video-embed {
-  margin-bottom: 1rem;
+  margin: 1.75rem 0;
   background: $nord0;
   border-radius: 0.5rem;
   padding: 0.25rem;
+  overflow: hidden;
+  max-width: 100%;
 
   iframe {
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     height: auto;
