@@ -41,12 +41,12 @@ Ruby on Rails (Full-Lifecycle 2.x through 8.x), PostgreSQL & MySQL Query Optimiz
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Refactored multi-step Rails acquisition workflow state machines, eliminating lateral state corruptions in high-volume customer prequalification pipelines.
+**Target Focus:** Architected and delivered the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes) and refactored multi-step Rails workflow state machines, eliminating lateral state corruptions across high-volume customer prequalification pipelines.
 
 **Key Outcomes:**
-- Technical Leadership & Platform Realignment: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified delivery unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
+- Originations IC Delivery & Team Realignment: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes vs multi-day ACH). Progressed to Software Architect for the Acquisition Lane, consolidating two attrition-impacted teams into a unified, high-velocity delivery unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
 
-- ACQ Enablement & System Cartography: Founded and technically led the ACQ Enablement team to establish systemic cartography across customer journeys: inventorying the intersection of business decisions, customer actions, system state transitions, and source code execution paths. Drove PII remediation, cybersecurity forensic signal mapping, and platform infrastructure support to enable ACQ Growth teams to safely integrate with enterprise cloud modernization initiatives.
+- ACQ Enablement & System Cartography: Founded and technically led the ACQ Enablement team to establish systemic cartography across seven customer acquisition channels (Authenticated PQ, Direct Mail, Email, Fast Track Renewal, Full Apply, IPQ Wizard, Paid Search, and Affiliate API). Mapped the intersection of business decisions, customer actions, system state transitions, and source code execution paths while driving PII remediation, cybersecurity forensic mapping, and platform modernization for ACQ Growth teams.
 
 - Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing, diagnosing and eliminating a persistent multi-service defect that caused 4% silent traffic loss at late-stage e-signing.
 
