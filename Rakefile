@@ -128,6 +128,7 @@ namespace :validate do
     :export_parity,
     :resume_claims,
     :resume_quality,
+    :ats_benchmarks,
     :report_seo,
     :seo_metadata_budget,
     :htmlproofer
@@ -135,6 +136,10 @@ namespace :validate do
 
   task :resume_quality do
     sh 'ruby ./bin/validate_resume_quality.rb'
+  end
+
+  task :ats_benchmarks do
+    sh 'ruby ./bin/benchmark_ats_keywords.rb --fail-under=85.0 --min-archetype=75.0'
   end
 
   task :surface_exposure do
@@ -689,6 +694,13 @@ namespace :job do
     lead_id = args[:lead_id] || 112
     flag = args[:escalate] ? ' --escalate' : ''
     sh "ruby bin/evaluate_job_lead.rb --lead #{lead_id}#{flag}"
+  end
+end
+
+namespace :benchmark do
+  desc 'Run ATS Parser and Keyword Density benchmark suite'
+  task :ats do
+    sh 'ruby ./bin/benchmark_ats_keywords.rb'
   end
 end
 
