@@ -139,7 +139,7 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 - **Senior Software Developer**, BenchPrep (March 2017 - February 2018): Owned enterprise assessment workflows, leading correctness and platform security in a high-concurrency environment.
 - **Senior Software Developer**, ReachLocal (March 2015 - November 2016): Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform.
 - **Open-Source Transition Lead**, Coderwall (January 2014 - December 2014): Hired as a contractor by the founder to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
-- **Principal Consultant**, Tandem (August 2018 - August 2018): Single-month engagement: brought in to an over-committed federal software program (DoD MEPS) following an engineering-team departure to conduct on-site operational assessment and deliver architectural recommendations directly to executive leadership.
+- **Principal Consultant**, Tandem (August 2018 - August 2018): Conducted an on-site architectural and operational assessment for an at-risk federal software program (DoD MEPS), delivering viability analysis and risk mitigation recommendations directly to executive leadership.
 
 ---
 

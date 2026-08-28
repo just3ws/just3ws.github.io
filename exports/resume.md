@@ -148,8 +148,7 @@ Short-term senior contract on the Contacts team of a large-scale PHP/MySQL CRM p
 ### Principal Consultant at Tandem
 **August 2018 — August 2018**
 
-Single-month engagement: brought in to an over-committed federal software program (DoD MEPS) following an engineering-team departure to conduct on-site operational assessment and deliver architectural recommendations directly to executive leadership.
-
+Conducted an on-site architectural and operational assessment for an at-risk federal software program (DoD MEPS), delivering viability analysis and risk mitigation recommendations directly to executive leadership.
 
 **Key Outcomes:**
 - Conducted an on-site, end-to-end operational walkthrough at military processing facilities (Des Plaines MEPS), identifying critical disconnects between enlistment workflows and proposed software models.
