@@ -32,18 +32,22 @@ module Jekyll
         end
       end
 
-      # 3. Inject dynamic git build metadata
-      sha = `git rev-parse --short HEAD`.strip rescue 'master'
-      commit_time = `git log -1 --format=%cI`.strip rescue Time.now.iso8601
+      # 3. Inject dynamic git build metadata (evergreen across local and CI/CD deploys)
+      raw_sha = ENV['GITHUB_SHA'] ? ENV['GITHUB_SHA'][0..7] : (`git rev-parse --short HEAD`.strip rescue '')
+      sha = (raw_sha.nil? || raw_sha.empty?) ? 'master' : raw_sha
+
+      raw_time = `git log -1 --format=%cI`.strip rescue ''
+      commit_time = (raw_time.nil? || raw_time.empty?) ? Time.now.iso8601 : raw_time
+
       build_data = {
-        'commit' => sha.empty? ? 'master' : sha,
-        'time' => commit_time.empty? ? Time.now.iso8601 : commit_time,
+        'commit' => sha,
+        'time' => commit_time,
         'repo' => 'https://github.com/just3ws/just3ws.github.io'
       }
       site.config['build_info'] = build_data
       site.data['build_info'] = build_data
 
-      Jekyll.logger.info "✅ [Jekyll Hook: post_read]", "Data validation passed cleanly (Build Commit: #{site.config['build_info']['commit']})."
+      Jekyll.logger.info "✅ [Jekyll Hook: post_read]", "Data validation passed cleanly (Build Commit: #{sha}, Time: #{commit_time})."
     end
 
     Jekyll::Hooks.register :site, :post_render do |site|
