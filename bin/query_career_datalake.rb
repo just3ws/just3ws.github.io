@@ -20,39 +20,129 @@ data = JSON.parse(File.read(DATALAKE_FILE))
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: bin/query_career_datalake.rb [options]"
+  opts.separator ""
+  opts.separator "CareerOS Datalake Query Engine (20+ Years, 29 Roles, 136 Skills, 156 Writings, 211 Interviews)"
+  opts.separator ""
+  opts.separator "Query Options:"
 
-  opts.on("--tech SKILL", "Query technology provenance and historical usage") do |v|
+  opts.on("-t", "--tech SKILL", "Query technology provenance, active era, and historical roles") do |v|
     options[:tech] = v
   end
 
-  opts.on("--company NAME", "Query deep position details for a company") do |v|
+  opts.on("-c", "--company NAME", "Query deep position details, summary, and highlights for a company") do |v|
     options[:company] = v
   end
 
-  opts.on("--search QUERY", "Full-text search across positions, posts, and interviews") do |v|
+  opts.on("-s", "--search QUERY", "Full-text search across positions, case studies, posts, and interviews") do |v|
     options[:search] = v
   end
 
-  opts.on("--archetype SLUG", "Retrieve archetype strategy and empathy bridge") do |v|
+  opts.on("-a", "--archetype SLUG", "Retrieve archetype strategy, reader psychology, and empathy bridge") do |v|
     options[:archetype] = v
   end
 
-  opts.on("--interviewee NAME", "Search oral history interviews by guest name") do |v|
+  opts.on("-i", "--interviewee NAME", "Search oral history interviews by guest name or topic") do |v|
     options[:interviewee] = v
   end
 
-  opts.on("--era YEARS", "Filter writings and milestones by year range (e.g. 2009-2015)") do |v|
+  opts.on("-e", "--era YEARS", "Filter writings and milestones by year range (e.g. '2009-2015')") do |v|
     options[:era] = v
   end
 
-  opts.on("--stats", "Display summary datalake statistics") do
+  opts.on("--stats", "Display high-level datalake statistics and entity counts") do
     options[:stats] = true
   end
 
-  opts.on("--json", "Format output as JSON") do
+  opts.on("-j", "--json", "Format output as structured JSON (pipeable to jq or LLM prompts)") do
     options[:json] = true
   end
+
+  opts.on("-m", "--man", "Display comprehensive manual and agent integration guide") do
+    options[:man] = true
+  end
+
+  opts.on_tail("-h", "--help", "Show this help message") do
+    puts opts
+    exit 0
+  end
 end.parse!
+
+if options[:man]
+  puts <<~MAN
+    ================================================================================
+     NAME
+         query_career_datalake.rb — CareerOS Datalake & Provenance Query Interface
+
+     SYNOPSIS
+         bin/query_career_datalake.rb [OPTIONS]
+
+     DESCRIPTION
+         query_career_datalake.rb provides real-time, deterministic query access
+         over the entire 20+ year technical career archive in just3ws.github.io.
+         It synthesizes 29 positions, 136 technology skills, 156 blog articles (2006–2026),
+         211 technical interviews/transcripts, 4D system cartography case studies, and
+         5 tailored archetype reader empathy strategies into structured output.
+
+     OPTIONS
+         -t, --tech <skill>
+             Searches the technology provenance matrix. Returns first seen year,
+             last seen year, total role occurrences, and specific companies/roles where
+             the skill was applied.
+
+         -c, --company <name>
+             Retrieves full position dossier for a company or role slug (e.g. 'onemain',
+             'groupon', 'activecampaign', 'sk-holdings', 'phalanx-duel').
+
+         -s, --search <query>
+             Performs multi-corpus full-text search across positions, case studies,
+             blog articles, and oral history interviews.
+
+         -a, --archetype <slug>
+             Retrieves tailored positioning strategy, target tier, audience psychology,
+             and cover-letter empathy bridges for any of the 5 resume archetypes:
+             - principal_systems_architect
+             - staff_platform_enablement
+             - observability_resilience_specialist
+             - founding_staff_fullstack
+             - senior_ruby_rails_contractor
+
+         -e, --era <years>
+             Filters writings, milestones, and interviews within a year range (e.g. '2009-2015').
+
+         -i, --interviewee <name>
+             Searches the 211-video oral history canon for guest interviews (e.g. 'Aaron Patterson',
+             'Jez Humble', 'Dave Thomas', 'Adrian Cockcroft').
+
+         -j, --json
+             Emits raw formatted JSON for downstream consumption by scripts, wwworkremote,
+             or LLM prompt injection.
+
+         --stats
+             Prints high-level dataset metrics.
+
+     EXAMPLES
+         Query technology provenance for OpenTelemetry:
+             $ bin/query_career_datalake.rb --tech "OpenTelemetry"
+
+         Pipe JSON technology provenance into jq:
+             $ bin/query_career_datalake.rb --tech "pgvector" --json | jq .
+
+         Look up company highlights for OneMain Financial:
+             $ bin/query_career_datalake.rb --company "OneMain"
+
+         Retrieve archetype reader profile strategy:
+             $ bin/query_career_datalake.rb --archetype "principal"
+
+         Full-text search across the 20-year corpus:
+             $ bin/query_career_datalake.rb --search "legacy modernization"
+
+     INTEGRATION & MCP
+         This CLI is mirrored by the CareerOS MCP Server (bin/career_datalake_mcp_server.rb)
+         and machine-readable endpoints (https://just3ws.localhost/career_datalake.json).
+    ================================================================================
+  MAN
+  exit 0
+end
 
 results = {}
 
