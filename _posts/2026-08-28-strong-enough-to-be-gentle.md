@@ -14,7 +14,8 @@ permalink: /2026/08/28/strong-enough-to-be-gentle/
 
 > "If you're going to be a hero, be a real hero.  
 > Don't be a Hollywood hero type, with all the BS, and all the yelling, and screaming, and trying to be tough.  
-> Be strong enough to be gentle." - Peter Cullen (1941-2026)
+> Be strong enough to be gentle."  
+> <cite><span class="cite-author">Peter Cullen (1941-2026)</span> <span class="cite-source">Recounting the words of his brother, Captain Larry Cullen, USMC</span></cite>
 
 <div class="video-embed">
   <iframe src="https://www.youtube.com/embed/9kPc38l71qg" title="Peter Cullen on auditioning for Optimus Prime and Larry Cullen's advice" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
@@ -34,5 +35,6 @@ Optimus Prime was inspirational to a generation to push through no matter the co
 
 The voice, the look, the determination, the safety. We're losing a lot of good ones these days, and there's a lot of Megatron and Decepticon nonsense going down. But remember...
 
-> Megatron: Now, we need a truce. All I want is to be back in charge. Besides, who would you be without me, Prime?  
-> Optimus Prime: Time to find out!
+> **Megatron:** Now, we need a truce. All I want is to be back in charge. Besides, who would you be without me, Prime?  
+> **Optimus Prime:** Time to find out!  
+> <cite><span class="cite-source">Transformers: Dark of the Moon (2011)</span></cite>

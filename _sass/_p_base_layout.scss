@@ -736,15 +736,16 @@ section {
   }
 
   blockquote {
-    margin: 2rem 0;
-    padding: 1.25rem 1.75rem;
-    border-left: 4px solid var(--color-primary, #5e81ac);
+    margin: 2.25rem 0;
+    padding: 1.5rem 2rem;
+    border-left: 4px solid var(--color-primary, #0284c7);
     background: var(--color-surface, rgba(216, 222, 233, 0.35));
     border-radius: 0 0.5rem 0.5rem 0;
-    color: var(--color-text-main, #2e3440);
+    color: var(--color-heading, #0f172a);
     font-style: italic;
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    position: relative;
 
     p {
       margin: 0 0 0.75rem;
@@ -753,12 +754,49 @@ section {
       }
     }
 
+    strong {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--color-primary, #0284c7);
+    }
+
     cite, footer {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
       font-style: normal;
       font-size: 0.9375rem;
       color: var(--color-text-muted, #4c566a);
-      margin-top: 0.75rem;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 1.25rem;
+        height: 2px;
+        background: var(--color-primary, #0284c7);
+        border-radius: 1px;
+        margin-right: 0.25rem;
+      }
+
+      .cite-author {
+        font-weight: 700;
+        color: var(--color-text-main, #2e3440);
+      }
+
+      .cite-source {
+        font-weight: 400;
+        color: var(--color-text-muted, #4c566a);
+        opacity: 0.85;
+
+        &::before {
+          content: "· ";
+          margin-right: 0.2rem;
+        }
+      }
     }
   }
 
