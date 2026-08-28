@@ -12,44 +12,27 @@ tags:
 permalink: /2026/08/28/strong-enough-to-be-gentle/
 ---
 
-When Peter Cullen went to audition for the role of a transforming robotic truck in 1984, he had no idea he was stepping into a character that would define heroism for generations.
+> "If you're going to be a hero, be a real hero.
+> Don't be a Hollywood hero type, with all the BS, and all the yelling, and screaming, and trying to be tough.
+> Be strong enough to be gentle." - Peter Cullen (1941-2026)
 
-Before heading into the casting room, he asked his older brother, Larry Cullen, a decorated US Marine Corps officer who had served in Vietnam, for advice on how to play a commander.
+<div class="video-embed">
+  <iframe src="https://www.youtube.com/embed/9kPc38l71qg" title="Peter Cullen on auditioning for Optimus Prime and Larry Cullen's advice" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
 
-Larry looked at him and offered advice that changed everything:
+I grew up in the age of Optimus Prime, my dad drove a cabover, just like Optimus. Then came 1986 and Transformers: The Movie. I begged my mom to let me rent the VHS from the grocery store. I didn't get to rent it that week. I had what I now understand was an autistic meltdown in the store. Transformers were a big deal -- bigger than He-Man, Star Wars, and GI Joe for one reason, Optimus Prime. Worth considering that Transformers had gone from being a cartoon short shown during The Bozo Show -- Chicago institution, Cookie the Clown was my guy -- and some episodes would show a short cartoon for the kids, Transformers being my favorite. So I was primed for Optimus from a young age. If anyone else had been the voice then I don't think I'd feel the same connection that would lead to writing this in remembrance of Mr. Cullen's work.
 
-> "Peter, if you're going to be a hero, be a real hero. Don't be a Hollywood tough guy, shouting and yelling and screaming. Be strong enough to be gentle."
+A few weeks later, I finally got the video, somehow. Imagine, 10 year old Mike, movie is in the VCR -- TV is set to channel 3 -- You've got the Touch! -- Me, Grimlock, love challenge -- Megatron must be stopped. No matter the cost. -- the cost -- I still get teary-eyed thinking about the feeling -- nobody prepared me for what had just happened. American boys of that generation didn't get much training in our feelings. But I think of that moment. It was a toy series. It was a show to make us buy toys. But, there were humans like Peter in the mix  who knew what the mission was and who he was speaking to and what they needed to hear. We learned that there is a cost to heroism. Sometimes the bad guys do win and everyone left has to figure it out on their own and step up. In 2026, we're at the kind of moment Optimus was preparing us for forty years ago. Even the strongest and most reliable of us is mortal and can be taken down.
 
-When Peter stepped up to the microphone, he dropped the bravado. He did not yell. He found a calm, steady cadence that resonated from the chest: dignified, warm, and unshakable.
+Even now, so many decades later, they're still trying to sell us toys. The trick is that he made it hard for them. They tried a dark Optimus, but that's not who he was, not his voice. We knew. He was the voice of a calm, caring leader, a true champion. He never belittled the smaller Autobots, Optimus was a leader who found the value in all his teammates and brought out their strengths. They all had a place and a way to contribute. He was kind to the Decepticons -- he knew they could change -- he showed mercy but he brooked NO bullshit. You hurt someone and that voice was the last voice you ever wanted to hear. "One shall stand, one shall fall" and "I thought you were made of sterner stuff", iconic.
 
-That voice became Optimus Prime.
+Optimus Prime was inspirational to a generation to push through no matter the cost. You men need that now more than ever. There a lot of disenfranchised young men who need that voice, that same inspiration.
 
----
+<div class="video-embed">
+  <iframe src="https://www.youtube.com/embed/37Yl9UgYyf0?start=7" title="Optimus Prime: Time to find out!" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
 
-### Strength Without Pretense
+The voice, the look, the determination, the safety. We're losing a lot of good ones these days, and there's a lot of Megatron and Decepticon nonsense going down. But remember...
 
-The world is full of loud leadership. It is easy to confuse volume with conviction, authority with control, and technical brilliance with sharpness toward others.
-
-Yet the characters and leaders who leave a permanent mark operate from the opposite foundation.
-
-Optimus Prime was a towering, heavily armed warrior who carried the weight of an entire civilization on his shoulders. But his default posture was never domination. His default posture was protection, patience, and restraint.
-
-He was powerful, yet gentle.
-
----
-
-### The Anatomy of Quiet Strength
-
-In engineering, systems architecture, and team leadership, Larry Cullen's words hold extraordinary weight:
-
-1. **Restraint Under Pressure**: Anyone can react with anger or panic during an outage or critical architectural failure. The highest form of strength is calm, measured steadiness that creates safety for everyone around you.
-2. **Elevating Others Over Defending Ego**: Seniority is not measured by winning technical debates or proving you are the smartest person in the room. It is measured by how effectively you lift others up, explain complex ideas simply, and mentor with generosity.
-3. **Gentleness Requires Confidence**: Aggression and gatekeeping are often shields for insecurity. It takes deep competence, self-assurance, and emotional security to be gentle, approachable, and kind.
-
----
-
-### The Enduring Legacy
-
-For over four decades, Peter Cullen brought heart, humanity, and soul to steel and circuitry. He proved that true power does not need to shout. It speaks with warmth, acts with integrity, and stands firm in defense of those who need it most.
-
-Be strong enough to be gentle.
+> Megatron: Now, we need a truce. All I want is to be back in charge. Besides, who would you be without me, Prime?  
+> Optimus Prime: Time to find out!
