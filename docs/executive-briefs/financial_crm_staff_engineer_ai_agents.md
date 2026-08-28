@@ -39,11 +39,11 @@ The target mandate: **scaling an enterprise financial advisor CRM platform follo
    - *Outcome*: Established end-to-end distributed tracing, unblocked 4 parallel engineering streams, and eliminated outage cascades.
    - *Reference*: [case-studies/index.html#onemain-acquisition](https://www.just3ws.com/case-studies/)
 
-2. **EMR-Bear 90-Day Rapid Risk Cartography (2026)**:
-   - *Challenge*: Multi-tenant SaaS platform serving 130+ clinics needed rapid operational risk inventory and release verification governance.
-   - *Action*: Reconstructed end-to-end component dependencies and instituted pipeline release gates protecting production uptime.
-   - *Outcome*: Zero clinical downtime during founder transition; delivered empirical risk roadmap for platform modernization.
-   - *Reference*: [case-studies/index.html#emr-bear-stabilization](https://www.just3ws.com/case-studies/)
+2. **ActiveCampaign CRM Architecture Modernization & Query Optimization**:
+   - *Challenge*: Tightly coupled PHP/MySQL backend and Ember.js frontend scaling rapidly through high customer growth with complex relational contact workflows.
+   - *Action*: Introduced structured query patterns, caching strategies, and hardened unit and end-to-end test suites across core CRM workflows.
+   - *Outcome*: Restored testability, reduced regression cycles, and accelerated developer velocity across contact and deal pipelines.
+   - *Reference*: [history/index.html#activecampaign](https://www.just3ws.com/history/)
 
 ---
 

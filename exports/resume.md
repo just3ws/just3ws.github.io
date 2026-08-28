@@ -24,17 +24,6 @@ Principal Software Engineer specializing in high-consequence legacy modernizatio
 
 ## Experience
 
-### Interim Architecture & Operational Risk Lead at EMR-Bear, a MedSuite company
-**May 2026 — August 2026**
-
-Engaged on a bounded 90-day interim assignment to conduct rapid architecture discovery, platform stabilization, and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics following a founder transition.
-
-**Key Outcomes:**
-- Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
-- Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
-
-**Skills:** Technical Leadership, Architecture Discovery, Rapid Risk Assessment, Production Governance, Ruby on Rails, Kubernetes, Production Observability, Security & Risk Analysis, Distributed Team Collaboration
-
 ### Associate Director, Staff Engineer at OneMain Financial
 **January 2021 — February 2026**
 

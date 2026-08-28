@@ -182,7 +182,7 @@ class CareerDatalakeMCPServer
               inputSchema: {
                 type: "object",
                 properties: {
-                  company: { type: "string", description: "Company name or slug (e.g. 'onemain', 'emr-bear', 'groupon', 'activecampaign', 'sk-holdings')" }
+                  company: { type: "string", description: "Company name or slug (e.g. 'onemain', 'groupon', 'activecampaign', 'sk-holdings')" }
                 },
                 required: ["company"]
               }

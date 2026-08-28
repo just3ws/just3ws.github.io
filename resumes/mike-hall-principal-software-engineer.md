@@ -53,16 +53,6 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
-### Interim Architecture & Operational Risk Lead at EMR-Bear, a MedSuite company
-
-**May 2026 - August 2026** | Remote
-
-**Target Focus:** Conducted rapid architecture discovery, compliance verification, and operational risk assessment for a multi-tenant healthcare SaaS platform serving 130+ clinics through a founder transition and acquisition handoff.
-
-**Key Outcomes:**
-- Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
-- Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
-
 ### Senior Backend Developer at SK Holdings, Inc.
 
 **January 2019 - December 2020** | Chicago, IL

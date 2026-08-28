@@ -145,7 +145,7 @@ git_epochs = [
   {
     "epoch" => "2021 - 2026",
     "theme" => "Enterprise Observability, Distributed Monolith Modernization & OTel",
-    "description" => "Founded enterprise OpenTelemetry Working Group at OneMain Financial, built the Enterprise Trace connecting Rails, MuleSoft, and IBM Mainframes; served as Interim Architecture & Operational Risk Lead at EMR-Bear."
+    "description" => "Founded enterprise OpenTelemetry Working Group at OneMain Financial, built the Enterprise Trace connecting Rails, MuleSoft, and IBM Mainframes; architects privacy-conscious local AI developer runtimes."
   },
   {
     "epoch" => "2026 - Present",

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-28T00:18:46Z",
+    "generated_at": "2026-08-28T00:36:06Z",
     "archetype": "staff_platform_enablement",
     "slug": "mike-hall-staff-platform-lead",
     "target_tier": "Staff IC / Developer Platform / Engineering Enablement"
@@ -42,15 +42,16 @@
       ]
     },
     {
-      "id": "emr-bear",
-      "title": "Interim Architecture & Operational Risk Lead",
-      "company": "EMR-Bear, a MedSuite company",
-      "location": "Remote",
-      "dates": "May 2026 - August 2026",
-      "focus": "Established deployment verification gates blocking unvalidated changes prior to HIPAA review; unified distributed U.S.-Mexico engineering rhythms.",
+      "id": "agent-tooling",
+      "title": "Principal Architect",
+      "company": "Local AI Orchestration & Developer Runtime",
+      "location": "Independent Project",
+      "dates": "2026 - Present",
+      "focus": "Built context-isolated subagents, automated pre-commit verification gates, and telemetry-driven diagnostic tooling for AI developer runtimes.",
       "highlights": [
-        "Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.",
-        "Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off."
+        "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n",
+        "Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.\n",
+        "Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.\n"
       ]
     },
     {

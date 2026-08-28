@@ -22,7 +22,7 @@ This document outlines a structured plan for identifying, synthesizing, and publ
 - **Primary Source Data:** `katrina-owen-general`, `corey-haines-general`, `2025-01-04-practice-vs-repetition` blog post.
 
 ### Article Candidate 4: "Architecture Beyond Hype: The A Word Keynote Synthesis"
-- **Intersection:** SCMC Keynote `The A Word: Architecture` (Uncle Bob Martin) x UGtastic interview `robert-martin-software-craftsmanship-north-america-2012` x OneMain & EMR-Bear case studies (`/case-studies/`).
+- **Intersection:** SCMC Keynote `The A Word: Architecture` (Uncle Bob Martin) x UGtastic interview `robert-martin-software-craftsmanship-north-america-2012` x OneMain case studies (`/case-studies/`).
 - **Core Narrative:** Comparing Uncle Bob's 2011 SCMC architecture warnings with modern 4D System Cartography principles (Interaction Surface, Lateral State Dependencies, Full-Stack Topologies, Supply Chain Exposure).
 - **Primary Source Data:** `vimeo-30083598` (Uncle Bob Martin), `_data/case_studies.yml`, `2026-05-20-214-technical-conversations` post.
 

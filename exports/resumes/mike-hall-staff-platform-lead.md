@@ -41,15 +41,19 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
-### Interim Architecture & Operational Risk Lead at EMR-Bear, a MedSuite company
+### Principal Architect at Local AI Orchestration & Developer Runtime
 
-**May 2026 - August 2026** | Remote
+**2026 - Present** | Independent Project
 
-**Target Focus:** Established deployment verification gates blocking unvalidated changes prior to HIPAA review; unified distributed U.S.-Mexico engineering rhythms.
+**Target Focus:** Built context-isolated subagents, automated pre-commit verification gates, and telemetry-driven diagnostic tooling for AI developer runtimes.
 
 **Key Outcomes:**
-- Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
-- Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
+- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.
+
+- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.
+
+- Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.
+
 
 ### Senior Backend Developer at SK Holdings, Inc.
 

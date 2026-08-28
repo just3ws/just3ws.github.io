@@ -16,8 +16,8 @@ def load_canonical_data
   profile = YAML.safe_load_file(File.join(DATA_DIR, 'profile.yml'))
   summary = YAML.safe_load_file(File.join(DATA_DIR, 'summary.yml'))
   onemain = YAML.safe_load_file(File.join(DATA_DIR, 'positions', 'onemain.yml'))
-  emr_bear = YAML.safe_load_file(File.join(DATA_DIR, 'positions', 'emr-bear.yml'))
-  { profile: profile, summary: summary, onemain: onemain, emr_bear: emr_bear }
+  activecampaign = YAML.safe_load_file(File.join(DATA_DIR, 'positions', 'activecampaign.yml'))
+  { profile: profile, summary: summary, onemain: onemain, activecampaign: activecampaign }
 end
 
 def generate_brief(company_name, role_title)
@@ -30,7 +30,7 @@ def generate_brief(company_name, role_title)
   brief = <<~MARKDOWN
     # Executive Pitch Brief: #{company_name}
     **Target Role:** #{role_title}
-    **Candidate:** #{profile['name']} — #{profile['title']}
+    **Candidate:** #{profile['name']} : #{profile['title']}
     **Contact:** #{email} | #{location}
 
     ---
@@ -47,9 +47,9 @@ def generate_brief(company_name, role_title)
     1. **OneMain Financial (Associate Director, Staff Engineer):**
        - Architected Acquisition software boundaries and led OpenTelemetry tracing across high-velocity microservices.
        - Restructured developer platform capabilities, reducing delivery friction and preventing production outages.
-    2. **EMR-Bear (Development Manager — Contract):**
-       - Executed 90-day system discovery and operational risk cartography for a multi-tenant SaaS platform serving 130+ clinics following a founder exit.
-       - Governed release safety across 36+ pending updates while preserving HIPAA compliance boundaries.
+    2. **ActiveCampaign (Software Engineer):**
+       - Modernized tightly coupled CRM query patterns and hardened automated verification test suites across core contact management workflows.
+       - Restored developer velocity and enabled safe refactoring of mission-critical customer data paths.
 
     ## Relevant Technical Interviews & Writing
     - [Software Craftsmanship & Distributed Media](https://just3ws.localhost/interviews/)
@@ -71,17 +71,17 @@ def generate_brief(company_name, role_title)
 
     ---
 
-    **Subject:** Principal Software Engineer & System Cartographer — #{profile['name']}
+    **Subject:** Principal Software Engineer & System Cartographer : #{profile['name']}
 
     Hi [Hiring Manager / Recruiter Name],
 
     I'm reaching out regarding the #{role_title} opportunity at #{company_name}. 
 
-    My background is focused on **System Cartography & Platform Architecture** — discovering, mapping, and modernizing complex legacy codepaths, lateral state dependencies, and high-concurrency production systems without disrupting delivery.
+    My background is focused on **System Cartography & Platform Architecture** : discovering, mapping, and modernizing complex legacy codepaths, lateral state dependencies, and high-concurrency production systems without disrupting delivery.
 
     Recently, I've led:
     - **OpenTelemetry & Microservices Boundary Cartography** at OneMain Financial across high-velocity acquisition channels.
-    - **90-Day Platform Stabilization & Risk Cartography** for EMR-Bear serving 130+ multi-tenant healthcare clinics.
+    - **Local AI Orchestration & Developer Runtime Architecture** building context-isolated agent tooling and pre-commit verification gates.
 
     I put together a tailored 1-page executive brief and case study overview specifically for #{company_name}:
     - 📄 **1-Page Executive Pitch & Case Studies:** https://www.just3ws.com/case-studies/

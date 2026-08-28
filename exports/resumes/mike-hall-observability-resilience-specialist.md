@@ -41,15 +41,19 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
 
-### Interim Architecture & Operational Risk Lead at EMR-Bear, a MedSuite company
+### Principal Architect at Local AI Orchestration & Developer Runtime
 
-**May 2026 - August 2026** | Remote
+**2026 - Present** | Independent Project
 
-**Target Focus:** Constructed operational risk model, mapped telemetry gaps, and established deployment gates for multi-tenant healthcare SaaS platform.
+**Target Focus:** Built telemetry-driven diagnosis MCP server exposing distributed traces and error budgets directly to AI agent runtimes.
 
 **Key Outcomes:**
-- Architecture Discovery & Operational Risk Assessment: Built a rapid 90-day system inventory and risk model spanning application codepaths, infrastructure dependencies, access boundaries, and operational risks.
-- Production & Compliance Governance: Established release verification gates across the deployment pipeline of a platform servicing 130+ clinics, blocking unvalidated changes prior to HIPAA compliance review and business sign-off.
+- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.
+
+- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.
+
+- Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.
+
 
 ### Principal Architect at WWWorkRemote
 

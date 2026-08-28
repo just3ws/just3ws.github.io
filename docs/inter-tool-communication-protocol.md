@@ -88,7 +88,7 @@ To allow AI agents across sessions, CLI tools, and different workspaces (Antigra
   - Complete 20+ year technical career progression.
 
 * **Case Studies & Cartography**: `GET https://just3ws.localhost/exports/portfolio.md`
-  - 4D System Cartography case studies (OneMain Financial, EMR-Bear, Phalanx Duel, WWWorkRemote).
+  - 4D System Cartography case studies (OneMain Financial, Phalanx Duel, WWWorkRemote).
 
 * **Archetype Strategy & Reader Profiles**: `GET https://just3ws.localhost/reports/archetype-reader-profiles/`
   - Interactive report detailing target tier psychology, unstated pressures, wants vs needs, and empathy bridges.

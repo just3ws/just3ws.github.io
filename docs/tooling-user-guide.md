@@ -7,7 +7,7 @@ This guide provides clear instructions on **why** and **how** to use the primary
 ## 1. Executive Pitch Brief Generator (`bin/generate_executive_brief.rb`)
 
 ### Why Use It
-When applying for Staff/Principal Engineer or Platform Architect roles, engineering leadership and recruiters respond far more effectively to a tailored 1-page executive pitch than a generic resume. This tool reads canonical YAML data (`_data/resume/`) and generates a custom executive brief mapping your 4D System Cartography case studies (OneMain Financial, EMR-Bear) directly to the target company's platform scaling challenges.
+When applying for Staff/Principal Engineer or Platform Architect roles, engineering leadership and recruiters respond far more effectively to a tailored 1-page executive pitch than a generic resume. This tool reads canonical YAML data (`_data/resume/`) and generates a custom executive brief mapping your 4D System Cartography case studies (OneMain Financial, Phalanx Duel, WWWorkRemote) directly to the target company's platform scaling challenges.
 
 ### How to Use It
 ```bash

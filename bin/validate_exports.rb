@@ -20,13 +20,13 @@ def validate_json_export
     errors << "Missing 'profile' in resume.json" unless data['profile']
     errors << "Missing 'positions' in resume.json" unless data['positions']
     
-    # Check the current position and public positioning.
-    if data['positions'] && data['positions']['emr-bear']
-      pos = data['positions']['emr-bear']
-      errors << "Current position missing 'title' in JSON" unless pos['title']
-      errors << "Current position missing 'company' in JSON" unless pos['company']
+    # Check the key anchor positions and public positioning.
+    if data['positions'] && data['positions']['onemain']
+      pos = data['positions']['onemain']
+      errors << "OneMain position missing 'title' in JSON" unless pos['title']
+      errors << "OneMain position missing 'company' in JSON" unless pos['company']
     else
-      errors << "Missing current position in resume.json"
+      errors << "Missing OneMain position in resume.json"
     end
     errors << "Profile title does not match resume data" unless data.dig('profile', 'title') == PROFILE_TITLE
 
@@ -56,7 +56,7 @@ def validate_txt_export
   
   errors << "resume.txt missing Name" unless content.include?("MIKE HALL")
   errors << "resume.txt missing EXPERIENCE section" unless content.include?("EXPERIENCE")
-  errors << "resume.txt missing current employer" unless content.include?("EMR-Bear")
+  errors << "resume.txt missing OneMain Financial" unless content.include?("OneMain Financial")
   errors << "resume.txt missing profile title" unless content.include?(PROFILE_TITLE)
   has_context_action_impact = content.include?("Context:") && content.include?("Action:") && content.include?("Impact:")
   has_outcomes = content.include?("Key Outcomes:")
