@@ -704,4 +704,14 @@ namespace :benchmark do
   end
 end
 
+namespace :localhost do
+  desc 'Sync built _site to /opt/homebrew/var/www/just3ws.github.io with proper permissions'
+  task :sync do
+    webroot = '/opt/homebrew/var/www/just3ws.github.io'
+    sh "mkdir -p #{webroot}"
+    sh "rsync -a --delete _site/ #{webroot}/"
+    sh "chmod o+x $(dirname #{webroot}) && chmod -R o+rX #{webroot}"
+  end
+end
+
 
