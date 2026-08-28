@@ -12,8 +12,8 @@ tags:
 permalink: /2026/08/28/strong-enough-to-be-gentle/
 ---
 
-> "If you're going to be a hero, be a real hero.
-> Don't be a Hollywood hero type, with all the BS, and all the yelling, and screaming, and trying to be tough.
+> "If you're going to be a hero, be a real hero.  
+> Don't be a Hollywood hero type, with all the BS, and all the yelling, and screaming, and trying to be tough.  
 > Be strong enough to be gentle." - Peter Cullen (1941-2026)
 
 <div class="video-embed">
