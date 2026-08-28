@@ -127,10 +127,15 @@ namespace :validate do
     :semantic_output,
     :export_parity,
     :resume_claims,
+    :resume_quality,
     :report_seo,
     :seo_metadata_budget,
     :htmlproofer
   ]
+
+  task :resume_quality do
+    sh 'ruby ./bin/validate_resume_quality.rb'
+  end
 
   task :surface_exposure do
     sh 'ruby ./bin/audit_surface_exposure.rb'
