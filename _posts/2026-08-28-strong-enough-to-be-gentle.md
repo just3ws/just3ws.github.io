@@ -12,9 +12,9 @@ tags:
 permalink: /2026/08/28/strong-enough-to-be-gentle/
 ---
 
-> "If you're going to be a hero, be a real hero.  
-> Don't be a Hollywood hero type, with all the BS, and all the yelling, and screaming, and trying to be tough.  
-> Be strong enough to be gentle."  
+> If you're going to be a hero, be a real hero.
+> Don't be a Hollywood hero type, with all the BS, and all the yelling, and screaming, and trying to be tough.
+> Be strong enough to be gentle.
 > <cite><span class="cite-author">Peter Cullen (1941-2026)</span> <span class="cite-source">Recounting the words of his brother, Captain Larry Cullen, USMC</span></cite>
 
 <div class="video-embed">
@@ -27,7 +27,7 @@ A few weeks later, I finally got the video, somehow. Imagine, 10 year old Mike, 
 
 Even now, so many decades later, they're still trying to sell us toys. The trick is that he made it hard for them. They tried a dark Optimus, but that's not who he was, not his voice. We knew. He was the voice of a calm, caring leader, a true champion. He never belittled the smaller Autobots, Optimus was a leader who found the value in all his teammates and brought out their strengths. They all had a place and a way to contribute. He was kind to the Decepticons -- he knew they could change -- he showed mercy but he brooked NO bullshit. You hurt someone and that voice was the last voice you ever wanted to hear. "One shall stand, one shall fall" and "I thought you were made of sterner stuff", iconic.
 
-Optimus Prime was inspirational to a generation to push through no matter the cost. You men need that now more than ever. There a lot of disenfranchised young men who need that voice, that same inspiration.
+Optimus Prime was inspirational to a generation to push through no matter the cost. Young men need that now more than ever. There are a lot of disenfranchised young men who need that voice, that same inspiration.
 
 <div class="video-embed">
   <iframe src="https://www.youtube.com/embed/37Yl9UgYyf0?start=7" title="Optimus Prime: Time to find out!" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
@@ -35,6 +35,8 @@ Optimus Prime was inspirational to a generation to push through no matter the co
 
 The voice, the look, the determination, the safety. We're losing a lot of good ones these days, and there's a lot of Megatron and Decepticon nonsense going down. But remember...
 
-> **Megatron:** Now, we need a truce. All I want is to be back in charge. Besides, who would you be without me, Prime?  
-> **Optimus Prime:** Time to find out!  
+> **Megatron:** Now, we need a truce. All I want is to be back in charge. Besides, who would you be without me, Prime?
+> **Optimus Prime:** Time to find out!
 > <cite><span class="cite-source">Transformers: Dark of the Moon (2011)</span></cite>
+
+And in a world of Unicrons, Megatrons, Soundwaves, Shockwaves, and Starscreams there are also Larrys and Peters who we need to listen for.
