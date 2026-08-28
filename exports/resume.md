@@ -101,13 +101,13 @@ Recorded, and later restored, an archive of 214 technical interviews with practi
 ### Associate Director, Staff Engineer at OneMain Financial
 **January 2021 — February 2026**
 
-Served as Senior Technical IC and Software Architecture Lead for the Acquisition lane of a regulated financial enterprise, establishing system cartography and observability across the end-to-end loan application and origination lifecycle, while guiding legacy modernization, cybersecurity investigations, and cross-team platform reliability.
+Served as Senior Technical IC and Software Architecture Lead for the Acquisition lane of a regulated financial enterprise, establishing end-to-end architecture discovery and distributed observability across the loan application and digital origination lifecycle, while guiding legacy modernization, cybersecurity investigations, and cross-team platform reliability.
 
 
 **Key Outcomes:**
 - Originations IC Delivery & Team Realignment: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes vs multi-day ACH). Progressed to Software Architect for the Acquisition Lane, consolidating two attrition-impacted teams into a unified, high-velocity delivery unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
 
-- ACQ Enablement & System Cartography: Founded and technically led the ACQ Enablement team to establish systemic cartography across seven customer acquisition channels (Authenticated PQ, Direct Mail, Email, Fast Track Renewal, Full Apply, IPQ Wizard, Paid Search, and Affiliate API). Mapped the intersection of business decisions, customer actions, system state transitions, and source code execution paths while driving PII remediation, cybersecurity forensic mapping, and platform modernization for ACQ Growth teams.
+- ACQ Enablement & Architecture Discovery: Founded and technically led the ACQ Enablement team to establish end-to-end system mapping across seven heterogeneous acquisition channels spanning direct-to-consumer web/mobile funnels, direct mail campaigns, partner affiliate APIs, and authenticated renewal workflows. Mapped the intersection of business decisions, customer actions, system state transitions, and source code execution paths while driving PII remediation, cybersecurity forensic mapping, and platform modernization for ACQ Growth teams.
 
 - Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing, diagnosing and eliminating a persistent multi-service defect that caused 4% silent traffic loss at late-stage e-signing.
 
