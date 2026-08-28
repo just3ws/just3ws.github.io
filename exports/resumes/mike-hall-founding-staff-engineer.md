@@ -19,7 +19,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 ## Core Competencies & Skills
 
-0-to-1 Full-Stack Architecture & Rapid Prototyping, Local-First AI Orchestration (llama.cpp, whisper.cpp, Claude API), Vector Embeddings & Semantic Search (PostgreSQL pgvector), Prompt Injection Defense & Multi-Stage Guardrails, Manifest V3 Chrome Extension Development, Contract-Validated Data Pipelines & Schema Enforcement, Ruby on Rails, Node.js, WebSockets & Real-Time Sync, High Agency, Autonomous Problem Solving
+0-to-1 Full-Stack Architecture & Rapid Prototyping, Local-First AI Orchestration (llama.cpp, whisper.cpp, Claude API), Vector Embeddings & Semantic Search (PostgreSQL pgvector), Prompt Injection Defense & Multi-Stage Guardrails, AI Agent Workflows & MCP Server Integration (Python, Node.js), Automated Schema Inference & Dynamic JSON Pipelines, Ruby on Rails, Node.js, WebSockets & Real-Time Sync, High Agency, Autonomous Problem Solving
 
 ---
 
@@ -29,7 +29,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Introduced local AI exploration workflows for legacy code discovery and chartered ACQ Enablement for rapid platform modernization.
+**Target Focus:** Placed in two corporate hackathons (Rasa workflow bot and Bonsai Buckaroos schema inference tool), introduced local LLM orchestration and privacy-conscious AI workflows at Geekfest, and chartered ACQ Enablement for rapid platform modernization.
 
 **Key Outcomes:**
 - Originations IC Delivery & Team Realignment: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes vs multi-day ACH). Progressed to Software Architect for the Acquisition Lane, consolidating two attrition-impacted teams into a unified, high-velocity delivery unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.

@@ -19,7 +19,7 @@ Staff Software Engineer and Platform Lead who multiplies engineering velocity an
 
 ## Core Competencies & Skills
 
-Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & Attrition Rescue, Automated Verification Gates & CI/CD Pipelines, Architecture Discovery & Technical Debt Reduction, Distributed Tracing & Service Legibility, Ruby on Rails, PostgreSQL & Event-Driven Systems, Test-Driven Development (TDD) & Clean Refactoring, Incident Leadership & Blameless Post-Mortems
+Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & Attrition Rescue, Automated Verification Gates & CI/CD Pipelines, Architecture Discovery & Technical Debt Reduction, Distributed Tracing & Service Legibility, Ruby on Rails, PostgreSQL & Event-Driven Systems, Docker, Kubernetes & Infrastructure Automation, Working Groups, Technical Governance & SRE Alignment
 
 ---
 

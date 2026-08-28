@@ -189,7 +189,7 @@ Owned API design and modernization strategy, leading incremental legacy migratio
 ### CTO at KloboMedia
 **March 2014 — September 2016**
 
-Owned end-to-end platform architecture, leading high-throughput data integration for an early-stage social media startup. The product, TheSocReport, ended when the upstream data taps closed — Twitter's firehose shutdown and the closing of Facebook's and Instagram's user-intelligence APIs removed the inputs the analytics depended on.
+Owned end-to-end platform architecture, leading high-throughput data integration for an early-stage social media startup. The product, TheSocReport, ended when the upstream data taps closed: Twitter's firehose shutdown and the closing of Facebook's and Instagram's user-intelligence APIs removed the inputs the analytics depended on.
 
 **Key Outcomes:**
 - Architected a social analytics platform integrating Twitter, Facebook, and Instagram APIs, delivering unified audience engagement metrics.
