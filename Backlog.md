@@ -37,7 +37,7 @@ Individual Architectural Decision Records (ADRs) are stored in `backlog/decision
 | [T-DAG-5](backlog/completed/t-dag-5-topic-architectural-theme-filters.md) | Topic & Architectural Theme Surface Filters | Done | High |
 | [T-DAG-6](backlog/completed/t-dag-6-multiformat-export-alignment.md) | Multi-Format Export Package Alignment (/exports/) | Done | High |
 | [T-DAG-7](backlog/completed/t-dag-7-ci-playwright-validation-suite.md) | Automated CI & Playwright Validation Suite | Done | Medium |
-| [T-DAG-8](#) | System Cartography Case Studies (OneMain / EMR-Bear) | Done | High |
+| [T-DAG-8](#) | System Cartography Case Studies (OneMain / Phalanx Duel) | Done | High |
 | [T-DAG-9](#) | Resume Layout & 50/50 Seam Alignment Audit | Done | High |
 
 ## Active Backlog (System Transformation - Phase 2)

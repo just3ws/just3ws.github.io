@@ -1,0 +1,31 @@
+---
+layout: resume
+title: "Resume Position: Principal Architect at Local AI Orchestration &…"
+description: "Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code…"
+permalink: /resume/positions/agent-tooling/
+breadcrumb: "Principal Architect at Local AI Orchestration & Developer Runtime"
+breadcrumb_parent_name: Resume
+breadcrumb_parent_url: /resume.html
+---
+
+<nav class="resume-actions no-print" aria-label="Position page actions">
+  <span class="resume-actions-label">Position View</span>
+  <a href="/resume.html">Executive Resume</a>
+  <a href="/history/">Complete Career Timeline</a>
+  <a href="/exports/">Exports & Downloads</a>
+</nav>
+
+<article class="page position-detail-page">
+  {% include breadcrumbs.html %}
+  {% include resume/profile-header.html %}
+  <section id="experience">
+    <div class="position-section-header" style="margin-bottom: 1.5rem;">
+      <h2>Role & Career Context</h2>
+      <p class="subtitle" style="color: #64748b; font-size: 0.95rem;">Detailed experience breakdown, architectural achievements, and related archival artifacts.</p>
+    </div>
+    {% assign position = site.data.resume.positions["agent-tooling"] %}
+    {% if position %}
+    {% include resume/position-entry.html position=position position_id="agent-tooling" link_title=false %}
+    {% endif %}
+  </section>
+</article>

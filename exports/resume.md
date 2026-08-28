@@ -24,6 +24,80 @@ Principal Software Engineer specializing in high-consequence legacy modernizatio
 
 ## Experience
 
+### Principal Architect at Local AI Orchestration & Developer Runtime
+**2026 — Present**
+
+Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
+
+
+**Key Outcomes:**
+- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.
+
+- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.
+
+- Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.
+
+
+**Skills:** Model Context Protocol (MCP), Agentic Workflow Design, Claude Code, Anthropic API, LLM Tool Design, PostgreSQL, OpenTelemetry, OpenObserve, llama.cpp, whisper.cpp, Local Inference, PHI Scrubbing & Compliance, Ruby
+
+### Principal Architect at Phalanx Duel
+**2022 — Present**
+
+Designing and building a real-time tactical game platform as a current hands-on laboratory for deterministic systems, product architecture, and controlled AI-assisted engineering.
+
+
+**Key Outcomes:**
+- Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.
+
+- Built replay validation, adversarial coverage, and CI verification gates so state transitions can be checked across the complete lifecycle.
+
+- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated checks, and human-reviewed outputs rather than treating model output as authority.
+
+
+**Skills:** TypeScript, Node.js, PostgreSQL, WebSockets, API Design, Distributed Systems, Deterministic Simulation, CI/CD, System Verification, AI-Augmented Development
+
+### Principal Architect at WWWorkRemote
+**2021 — Present**
+
+Rails 8 platform for multi-source job ingestion, semantic matching, and application automation, built as a working laboratory for local-first LLM orchestration and treating scraped third-party text as hostile input.
+
+
+**Key Outcomes:**
+- Data Ingestion & Normalization: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.
+
+- Semantic Search & Matching: Implemented vector search embeddings via pgvector, enabling high-precision semantic matching between complex candidate profiles and job requirements.
+
+- Local-First AI Orchestration: Designed a provider-agnostic LLM orchestration layer behind a YAML-driven model registry, local-first by default (llama.cpp/Ollama primary, hosted Claude as fallback), so routine inference never leaves the machine while a stronger hosted model can be selected per call site.
+
+- Prompt Injection Defense: Built a four-stage guardrails pipeline (normalize, weighted heuristic scan, risk classify, output validate) screening every untrusted scraped document before it reaches a model, scoring known injection patterns plus an instruction-density heuristic to secure ingestion against hostile inputs.
+
+- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider adapters that extracts postings from live ATS pages and captures the full application lifecycle (questions asked and answers given) back into the platform.
+
+- Static Signal Integration: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and system security contracts.
+
+
+**Skills:** Ruby on Rails, PostgreSQL, pgvector, Vector Search & Embeddings, LLM Orchestration, Prompt Injection Defense, Local Inference, Chrome Extensions (MV3), API Design, Data Pipelines, System Design, OpenTelemetry, Distributed Systems
+
+### Principal Engineer & Curator at Technical Conversation Archive
+**2011 — Present**
+
+Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link two decades of primary-source material into a searchable knowledge graph.
+
+
+**Key Outcomes:**
+- Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that transcribes, diarizes, and structures long-form interview audio entirely on-device, keeping a large private media corpus off third-party inference services.
+
+- Schema-Validated Content Platform: Runs on a contract-validated data layer: every interview, asset, and transcript is checked against an explicit schema at build time, with referential-integrity checks that fail the build rather than publishing broken data.
+
+- Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge graph, and semantic cross-links across the corpus, turning an unstructured media archive into navigable, individually indexed pages.
+
+- Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference, Software Craftsmanship North America, RailsConf, and WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso, and Micah Martin.
+
+- Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.
+
+
+**Skills:** Local-First AI Inference, Whisper & Speech-to-Text, LLM-Assisted Content Structuring, Knowledge Graph Construction, Semantic Search & Taxonomy, Schema Validation & Data Contracts, Digital Preservation, Ruby, Jekyll, SEO & Information Architecture
+
 ### Associate Director, Staff Engineer at OneMain Financial
 **January 2021 — February 2026**
 
