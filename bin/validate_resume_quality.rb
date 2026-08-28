@@ -301,6 +301,23 @@ class ResumeQualityValidator
 end
 
 if __FILE__ == $PROGRAM_NAME
+  require 'optparse'
+
+  options = {}
+  OptionParser.new do |opts|
+    opts.banner = "Usage: bin/validate_resume_quality.rb [options]"
+    opts.separator ""
+    opts.separator "Automated Resume Quality, ATS Parser Emulation & Competency Validator"
+    opts.separator ""
+    opts.on("-q", "--quiet", "Suppress non-essential output") do
+      options[:quiet] = true
+    end
+    opts.on_tail("-h", "--help", "Show this help message") do
+      puts opts
+      exit 0
+    end
+  end.parse!
+
   validator = ResumeQualityValidator.new
   success = validator.run
   exit(success ? 0 : 1)

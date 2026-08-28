@@ -36,7 +36,7 @@ Implemented in `bin/validate_resume_quality.rb` and executed as part of the mast
 | **2. ATS Ingestion Emulation** | Simulates standard ATS ingestion engines across `exports/resumes/*.txt`. | Fails if contact info (name, email, phone, location) or required section headers (`PROFESSIONAL SUMMARY`, `CORE SKILLS`, `EXPERIENCE`) fail to parse. |
 | **3. Structured JSON Schema** | Validates `exports/resumes/*.json` against JSON Resume schema. | Fails if `basics`/`profile` or `experience`/`positions` root keys are missing or malformed. |
 | **4. Schema.org Linked Data** | Extracts `<script type="application/ld+json">` from rendered `_site/index.html`. | Fails if Googlebot-compatible `Person` or `Occupation` schema graph is invalid or missing. |
-| **5. Strict Zero-Em-Dash Rule** | Scans all 38 YAML position records, Markdown resumes, and text exports. | Fails on any Unicode em dash (`—`) or double-hyphen (`--`), enforcing `no-em-dashes`. |
+| **5. Strict Zero-Em-Dash Rule** | Scans all 38 YAML position records, Markdown resumes, and text exports. | Fails on any Unicode em dash (`: `) or double-hyphen (`--`), enforcing `no-em-dashes`. |
 | **6. Career Datalake Parity** | Compares canonical positions with `career_datalake.json` index. | Fails on any highlight drift, missing position ID, or stale delivery evidence. |
 
 ---

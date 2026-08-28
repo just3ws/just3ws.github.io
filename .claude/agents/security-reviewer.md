@@ -1,6 +1,6 @@
 ---
 name: security-reviewer
-description: Run focused security reviews and produce threat models for pipeline/content flows — JS/TS/Ruby-adjacent patterns. Use before merging anything that touches auth, external input, or the build pipeline's trust boundaries.
+description: Run focused security reviews and produce threat models for pipeline/content flows: JS/TS/Ruby-adjacent patterns. Use before merging anything that touches auth, external input, or the build pipeline's trust boundaries.
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -20,12 +20,12 @@ transcript ingestion from an outbox), and the two MCP servers
 
 Focus areas specific to this repo:
 - Anything that shells out (`system`, backticks, `Bash` tool calls inside
-  generator scripts) — check for command injection from untrusted input
+  generator scripts): check for command injection from untrusted input
   (wayback content, YouTube metadata, transcript text).
-- The localhost/production surface split (`_plugins/localhost_gate.rb`) —
+- The localhost/production surface split (`_plugins/localhost_gate.rb`) : 
   verify nothing gated as localhost-only leaks into `_site/` production
   output.
-- `CONTEXT.md`'s Public Canon vs Private Context boundary — flag anything
+- `CONTEXT.md`'s Public Canon vs Private Context boundary: flag anything
   that could pull unpublished material from `$HOME/my` into the public
   build.
 - OWASP-relevant patterns in any JS/TS (MCP server) or Ruby (generators,

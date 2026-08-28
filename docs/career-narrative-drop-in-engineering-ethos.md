@@ -29,15 +29,44 @@ Technical mastery alone does not transform organizations. Across two decades, Mi
 
 ## 3. The 3-Year OneMain Transformation Arc
 
+```mermaid
+graph LR
+    classDef stage fill:#161b22,stroke:#30363d,stroke-width:1px,color:#c9d1d9;
+    classDef lead fill:#0d1117,stroke:#58a6ff,stroke-width:2px,color:#58a6ff;
+
+    G1["1. Geekfest@OMF (Nov 2022)<br/>• Weekly recorded brown bags<br/>• Psychologically safe talks<br/>• Coached 1st-time speakers"]:::stage
+    G2["2. Applied AI & Topics (Nov 2023)<br/>• Local LLM demos before hype<br/>• Confluent Kafka guest talks<br/>• Hackathon placements (Rasa)"]:::stage
+    G3["3. OTel Working Group (July 2024)<br/>• Scaled to 40+ engineers<br/>• Enterprise Trace architecture<br/>• 4% traffic recovery at e-sign"]:::lead
+    G4["4. Durable SRE Handoff (Early 2025)<br/>• Mentored SRE facilitator<br/>• Self-sustaining practice<br/>• Re-anchored in ACQ Lane"]:::stage
+
+    G1 --> G2 --> G3 --> G4
 ```
-Nov 2022                Nov 2023                 July 2024                 Early 2025
-   │                       │                        │                          │
-   ▼                       ▼                        ▼                          ▼
-Geekfest@OMF Launched  ──> Local AI & Kafka Demos ──> OTel WG (Fridays 1:30) ──> SRE Handoff
-• First meeting:       • Local LLMs before hype  • Scaled to 40+ people   • Mentored SRE lead
-  2022-11-01           • Confluent Kafka guest   • EMC/SRE alignment      • Re-anchored in
-• Weekly recorded      • Mentored 1st-time       • Enterprise Trace         Acquisition Lane
-  brown bags             speakers                  (Rails/Mule/Mainframe)
+
+```mermaid
+graph TD
+    classDef chan fill:#161b22,stroke:#30363d,stroke-width:1px,color:#c9d1d9;
+    classDef hub fill:#0d1117,stroke:#58a6ff,stroke-width:2px,color:#58a6ff;
+    classDef recov fill:#161b22,stroke:#3fb950,stroke-width:1px,color:#3fb950;
+
+    C1["1. Web / Mobile Direct-to-Consumer"]:::chan
+    C2["2. Direct Mail Campaigns"]:::chan
+    C3["3. Partner Affiliate APIs"]:::chan
+    C4["4. Authenticated Renewal Workflows"]:::chan
+
+    HUB["4D Architecture Discovery Engine<br/>(Business Decisions × Customer Actions × State Transitions × Code Paths)"]:::hub
+
+    C1 --> HUB
+    C2 --> HUB
+    C3 --> HUB
+    C4 --> HUB
+
+    HUB --> T1["Rails Distributed Monolith"]:::chan
+    HUB --> T2["MuleSoft API Gateway"]:::chan
+    HUB --> T3["IBM Mainframe Backend"]:::chan
+
+    T1 --> REC["Enterprise Trace & SRE Alignment<br/>• 4% Silent Traffic Drop Eliminated<br/>• Speedfunds Debit Disbursement Shipped"]:::recov
+    T2 --> REC
+    T3 --> REC
 ```
 
 ### Key Milestones Recovered from Historical Archives

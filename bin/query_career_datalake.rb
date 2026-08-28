@@ -71,7 +71,7 @@ if options[:man]
   puts <<~MAN
     ================================================================================
      NAME
-         query_career_datalake.rb — CareerOS Datalake & Provenance Query Interface
+         query_career_datalake.rb: CareerOS Datalake & Provenance Query Interface
 
      SYNOPSIS
          bin/query_career_datalake.rb [OPTIONS]
@@ -79,7 +79,7 @@ if options[:man]
      DESCRIPTION
          query_career_datalake.rb provides real-time, deterministic query access
          over the entire 20+ year technical career archive in just3ws.github.io.
-         It synthesizes 29 positions, 136 technology skills, 156 blog articles (2006–2026),
+         It synthesizes 29 positions, 136 technology skills, 156 blog articles (2006-2026),
          211 technical interviews/transcripts, 4D system cartography case studies, and
          5 tailored archetype reader empathy strategies into structured output.
 

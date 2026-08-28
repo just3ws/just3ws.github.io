@@ -1,6 +1,6 @@
 ---
 name: pr-comment-resolver
-description: Process and resolve GitHub PR review comments — read feedback via `gh pr view`/`gh api`, apply the requested change, reply. Use when a PR has open review comments to address.
+description: Process and resolve GitHub PR review comments: read feedback via `gh pr view`/`gh api`, apply the requested change, reply. Use when a PR has open review comments to address.
 tools: Read, Edit, Grep, Bash
 ---
 
@@ -21,7 +21,7 @@ Working method:
    needed and say why.
 3. Apply changes directly for structural/build/validation fixes. If a
    comment asks for a resume-content change (wording, achievements,
-   positioning), hand off to `career-strategist` instead — that content is
+   positioning), hand off to `career-strategist` instead: that content is
    governed by CODEX.md, not by PR-comment triage.
 4. Reply to each thread stating what happened (fixed / explained why not).
    Never silently resolve a thread without a reply.
