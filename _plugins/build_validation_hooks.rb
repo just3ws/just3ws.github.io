@@ -35,11 +35,13 @@ module Jekyll
       # 3. Inject dynamic git build metadata
       sha = `git rev-parse --short HEAD`.strip rescue 'master'
       commit_time = `git log -1 --format=%cI`.strip rescue Time.now.iso8601
-      site.config['build_info'] = {
+      build_data = {
         'commit' => sha.empty? ? 'master' : sha,
         'time' => commit_time.empty? ? Time.now.iso8601 : commit_time,
         'repo' => 'https://github.com/just3ws/just3ws.github.io'
       }
+      site.config['build_info'] = build_data
+      site.data['build_info'] = build_data
 
       Jekyll.logger.info "✅ [Jekyll Hook: post_read]", "Data validation passed cleanly (Build Commit: #{site.config['build_info']['commit']})."
     end

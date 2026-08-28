@@ -543,6 +543,60 @@ h3 {
   border-top: 1px solid $nord4;
   color: $nord3;
   font-size: 0.875rem;
+
+  .footer-container p {
+    margin: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .footer-meta-divider {
+    color: $nord4;
+    user-select: none;
+    opacity: 0.6;
+  }
+
+  .footer-build-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: inherit;
+    opacity: 0.8;
+    font-size: 0.8125rem;
+
+    .footer-build-label {
+      text-transform: uppercase;
+      font-size: 0.6875rem;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+
+    .footer-commit-link {
+      color: inherit;
+      text-decoration: none;
+
+      code {
+        font-family: var(--font-mono, monospace);
+        font-size: 0.75rem;
+        padding: 0.1rem 0.3rem;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: border-color 0.15s ease, color 0.15s ease;
+      }
+
+      &:hover code {
+        border-color: $nord8;
+        color: $nord8;
+      }
+    }
+
+    time {
+      color: inherit;
+    }
+  }
 }
 
 /* Mobile Adjustments */

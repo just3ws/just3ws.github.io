@@ -38,12 +38,13 @@
     <div class="footer-container">
       <p>
         &copy; {{ "now" | date: "%Y" }} Mike Hall.
-        {% if site.config.build_info %}
+        {% assign build = site.data.build_info | default: site.build_info %}
+        {% if build %}
           <span class="footer-meta-divider">•</span>
           <span class="footer-build-meta">
-            Updated <time datetime="{{ site.config.build_info.time }}">{{ site.config.build_info.time | date: "%b %d, %Y" }}</time>
+            <span class="footer-build-label">build</span> <a href="{{ build.repo }}/commit/{{ build.commit }}" target="_blank" rel="noopener" class="footer-commit-link" title="View commit {{ build.commit }} on GitHub"><code>{{ build.commit }}</code></a>
             <span class="footer-meta-divider">•</span>
-            Build <a href="{{ site.config.build_info.repo }}/commit/{{ site.config.build_info.commit }}" target="_blank" rel="noopener" class="footer-commit-link" title="View commit {{ site.config.build_info.commit }} on GitHub"><code>{{ site.config.build_info.commit }}</code></a>
+            <time datetime="{{ build.time }}">{{ build.time | date: "%b %d, %Y" }}</time>
           </span>
         {% endif %}
       </p>
