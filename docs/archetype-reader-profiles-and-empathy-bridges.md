@@ -94,9 +94,9 @@ When an engineering leader reads your resume, they bring their own organizationa
 * **What they WANT:** Prettier dashboards and smarter alert routing to Slack.
 * **What they NEED:** **Trace Context Continuity & Dark Telemetry Illumination**. An architect who understands distributed trace context propagation (W3C Trace Context), OTel Collector pipeline processing, edge PII sanitization, and how to give on-call engineers immediate diagnostic clarity during major incidents.
 
-### Perception vs. Reality Gap
+#### Perception vs. Reality Gap
 * **The Surface Resume Line:** *"Founded and led enterprise OpenTelemetry Working Group (OTel WG); built Enterprise Trace."*
-* **The Reality & Magnitude:** Architected end-to-end distributed trace propagation connecting legacy Rails monoliths, MuleSoft middleware, and mainframe backends, reducing incident triage from hours of cross-team debate to minutes of deterministic analysis.
+* **The Reality & Magnitude:** Architected end-to-end distributed trace propagation connecting legacy Rails monoliths, MuleSoft middleware, and mainframe backends across the loan origination lifecycle, isolating and resolving a multi-service defect that silently dropped 4% of customer applications at the e-sign boundary.
 
 ### Empathy Bridge & Synthesis Playbook
 * **The Known Knowns:** OpenTelemetry, distributed tracing, metrics, structured logging, APM systems.
@@ -108,55 +108,45 @@ When an engineering leader reads your resume, they bring their own organizationa
 ---
 
 ## 4. Founding Staff Engineer (0-to-1 Product & AI Systems)
+### Target Audience Profile
+* **The Reader:** Startup Founder, CTO of an early-stage startup (Seed to Series B), or Head of Applied AI Products.
+* **Their Internal Anxiety:** *"We need someone who can build from 0 to 1 with extreme autonomy, without over-engineering or getting stuck in analysis paralysis."*
+* **Their Skepticism:** Enterprise titles (Director, Architect) can trigger alarms for early-stage founders who worry about hiring a hands-off architect rather than a direct builder.
 
-### The Reader Profile
-* **Target Audience:** Startup Founder, CTO of an early-stage startup (Seed to Series B), or Head of Applied AI Products.
-* **Cognitive State:** Intense urgency to achieve product-market fit, high cash burn pressure, and anxiety over shipping brittle "AI wrapper" features that fail under real customer usage.
-* **Organizational Pressure:** Must deliver rapid product iterations to users while ensuring the underlying platform does not accumulate fatal technical debt or unsustainable inference costs.
-
-### What They Bring vs. What They Expect
-* **What they bring:** Fear of hiring an enterprise engineer who requires large teams, multiple design committees, and months of onboarding before shipping a single line of working code.
-* **What they expect on the surface:** Hype keywords: "LangChain", "LLM Fine-tuning", "Full Stack Ninja", "Fast-paced agile execution."
-
-### What They Want vs. What They Really Need
-* **What they WANT:** A 10x developer who can ship 20 AI features in a single week.
-* **What they NEED:** **High-Agency Systems Pragmatism & Deterministic Safety**. A veteran builder who can take raw ambiguity, select the right local or hosted model primitives, engineer prompt injection defenses, establish deterministic state machines, and ship durable full-stack software that stands up to adversarial production traffic.
+### What They Ask for vs. What They Need
+* **What they WANT:** Hype keywords: "LangChain", "LLM Fine-tuning", "Full Stack Ninja", "Fast-paced agile execution."
+* **What they NEED:** **Resilient 0-to-1 Systems & Pragmatic AI Architecture**. A hands-on builder who uses pgvector, local llama.cpp/whisper.cpp runtimes, prompt injection defenses, deterministic state machines, and property-based verification gates to ship real products that survive production.
 
 ### Perception vs. Reality Gap
-* **The Surface Resume Line:** *"Architected WWWorkRemote & Phalanx Duel as independent systems."*
-* **The Reality & Magnitude:** Designed and delivered complete production platforms from zero: multi-source ingestion pipelines, pgvector semantic search, four-stage prompt injection guardrails, server-authoritative deterministic state engines, and local C/C++ inference runtimes (llama.cpp, whisper.cpp) with full autonomy.
+* **The Surface Resume Line:** *"Principal Architect, Phalanx Duel & WWWorkRemote."*
+* **The Reality & Magnitude:** Took complex product and game specifications from raw paper prototypes to live production WebSockets multiplayer platforms and multi-model AI parsing pipelines with automated test suites.
 
 ### Empathy Bridge & Synthesis Playbook
-* **The Known Knowns:** Full-stack development (Rails, TypeScript, PostgreSQL), AI integrations, rapid feature delivery.
-* **The Known Unknowns:** How to manage high cloud LLM inference bills and protect customer data from prompt injection attacks.
-* **The Unknown Unknowns:** Unchecked non-deterministic model outputs will silently corrupt downstream database workflows without server-authoritative validation gates.
+* **The Known Knowns:** Full-stack development, React, Rails, PostgreSQL, WebSockets.
+* **The Known Unknowns:** How to integrate AI capabilities without massive cloud inference bills, security leaks, or hallucination traps.
+* **The Unknown Unknowns:** Brittle third-party API dependencies and unvalidated LLM outputs will break silently in production without strict contract testing and property verification gates.
 * **The Resonant Message:**
-  > *"I thrive in 0-to-1 ambiguity. I build production-grade, local-first AI and full-stack systems with strict verification gates, so your startup moves at maximum velocity without accumulating fatal architectural debt or uncontrolled cloud inference costs."*
+  > *"I build production software with high agency and zero hand-holding. Whether building real-time multiplayer game engines from paper rules or air-gapped local AI workflows, I combine rapid 0-to-1 prototyping with the automated verification gates required to keep shipping safely."*
 
 ---
 
 ## 5. Senior / Lead Ruby on Rails Developer (Contract / High-Velocity IC)
+### Target Audience Profile
+* **The Reader:** Engineering Manager, Director of Engineering, or Staff Tech Lead with an overloaded roadmap.
+* **Their Internal Anxiety:** *"Our sprint velocity is stalling, our tech debt is mounting, and our engineers are burned out."*
+* **Their Skepticism:** Contractors often require weeks of hand-holding, write sloppy unmaintainable code, and vanish when things break in production.
 
-### The Reader Profile
-* **Target Audience:** VP of Engineering, Director of Development, or Technical Lead facing an urgent delivery deadline, a stalled Rails version upgrade, or a critical performance bottleneck.
-* **Cognitive State:** Under immediate operational pressure. Every week of project delay burns client goodwill or costs tens of thousands in lost revenue.
-* **Organizational Pressure:** Needs immediate, hands-on Individual Contributor execution without the bandwidth to provide extensive onboarding or hand-holding.
-
-### What They Bring vs. What They Expect
-* **What they bring:** Skepticism toward contractors who write fragile, unmaintainable code, pad billable hours, or leave the in-house team with messy architectural debt.
-* **What they expect on the surface:** A standard Rails/RSpec resume listing gem libraries, database names, and past client projects.
-
-### What They Want vs. What They Really Need
-* **What they WANT:** Extra hands on the keyboard to knock out a backlog of Jira tickets.
-* **What they NEED:** **Surgical, Zero-Ramp-Up IC Precision**. A senior practitioner who can drop into a 15-year-old codebase on day one, understand complex domain models, eliminate lateral state corruptions, sequence zero-downtime database migrations, and write clean RSpec coverage without breaking adjacent systems.
+### What They Ask for vs. What They Need
+* **What they WANT:** A fast coder to burn down tickets in Jira.
+* **What they NEED:** **Zero-Ramp-Up Surgical Execution & Senior TDD Discipline**. A veteran engineer who can jump into a 15-year-old legacy Rails monolith, understand complex business domain models without hand-holding, write rigorous RSpec suites, refactor safely, and ship clean PRs on day one.
 
 ### Perception vs. Reality Gap
-* **The Surface Resume Line:** *"Senior Ruby on Rails contractor; 17+ years Rails and PostgreSQL experience."*
-* **The Reality & Magnitude:** Deep mastery across Rails 2.x through 8.x; refactored high-consequence state machines in multi-step lending funnels, resolved legacy database table locks, and safely modernized tightly coupled CRM backends with strict TDD discipline.
+* **The Surface Resume Line:** *"Senior Software Developer / Consultant across 15+ environments."*
+* **The Reality & Magnitude:** Modernized production Rails monoliths across dozens of live commercial deployments, executing zero-downtime upgrades, database optimizations, and complex state machine refactorings without disrupting revenue.
 
 ### Empathy Bridge & Synthesis Playbook
-* **The Known Knowns:** Senior-level Ruby on Rails, PostgreSQL, Sidekiq, Redis, RSpec, API integrations.
-* **The Known Unknowns:** How to sequence breaking database migrations or major framework upgrades without taking downtime.
+* **The Known Knowns:** Ruby on Rails, PostgreSQL, Sidekiq, RSpec, Redis, Docker.
+* **The Known Unknowns:** Why legacy codebase upgrades stall out and how to safely refactor without breaking untested edge cases.
 * **The Unknown Unknowns:** Hidden race conditions and fragile shared state in background job queues that cause intermittent production data corruption.
 * **The Resonant Message:**
   > *"I require zero ramp-up time. Give me your most complex state machine bug, your slowest database queries, or your stalled legacy upgrade. I write thorough RSpec test coverage, isolate the risk, and deliver clean, production-verified code from day one."*
@@ -169,6 +159,6 @@ When an engineering leader reads your resume, they bring their own organizationa
 | :--- | :--- | :--- | :--- |
 | **Principal Systems Architect** | VP of Engineering / Chief Architect | *"A risky rewrite will destroy platform revenue."* | 20+ years of zero-downtime legacy modernization, boundary governance, and mainframe/cloud mediation. |
 | **Staff Platform Lead** | Director of Platform / Head of DevEx | *"Our best engineers are quitting due to technical debt."* | Founded ACQ Enablement, merged attrition-impacted squads, and established automated CI verification gates. |
-| **Staff Observability Architect** | VP of Infrastructure / Head of SRE | *"We are flying blind during critical outages."* | Founded OpenTelemetry Working Group, built Enterprise Trace across 3 distinct tiers, and scrubbed edge PII. |
+| **Staff Observability Architect** | VP of Infrastructure / Head of SRE | *"We are flying blind during critical outages."* | Founded OpenTelemetry Working Group, built Enterprise Trace across 3 distinct tiers, and resolved 4% origination e-sign failure. |
 | **Founding Staff Engineer** | Startup Founder / Early-Stage CTO | *"We will burn our runway on fragile AI hype."* | 0-to-1 builder: pgvector, local llama.cpp/whisper.cpp runtimes, Truth Gates, and server-authoritative state. |
 | **Senior Rails Contractor** | Engineering Director / Team Lead | *"Contractors take too long to ramp up and break things."* | 17+ years Rails 2.x-8.x expertise, surgical state machine refactoring, and zero-downtime database migrations. |

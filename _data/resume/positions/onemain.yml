@@ -16,8 +16,9 @@ id: onemain
 
 summary: >
   Served as Senior Technical IC and Software Architecture Lead for the Acquisition
-  lane of a regulated financial enterprise, combining hands-on legacy modernization with
-  production stability, OpenTelemetry observability, and cross-team technical direction.
+  lane of a regulated financial enterprise, establishing system cartography and observability across
+  the end-to-end loan application and origination lifecycle, while guiding legacy modernization,
+  cybersecurity investigations, and cross-team platform reliability.
 
 highlights:
   - text: >
@@ -27,15 +28,20 @@ highlights:
       corporate architecture track restructuring.
 
   - text: >
-      ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team
-      to protect core engineering concerns from product feature pressure: driving platform stabilization,
-      legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.
+      ACQ Enablement & Funnel State Mapping: Founded and technically led the ACQ Enablement team
+      to establish systemic cartography across customer journeys: inventorying the intersection of business
+      decisions, customer actions, system state transitions, and source code execution paths. Built high-fidelity
+      funnel lifecycle signals (entry, exit, error) with complete runtime attribution (A/B test variants,
+      feature flags, configuration states) to accelerate cybersecurity investigations and create safety gates
+      for continuous legacy modernization.
 
   - text: >
-      Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG)
-      to establish the Enterprise Trace across high-volume customer acquisition flows,
-      connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends
-      to eliminate blind spots and align engineering around real-time service maps.
+      Observability & Enterprise Origination Trace: Founded and led the OpenTelemetry
+      Working Group (OTel WG) to establish the Enterprise Trace across the end-to-end loan
+      application and digital origination lifecycle, connecting a complex Rails distributed monolith,
+      MuleSoft, and IBM mainframe backends. Leveraged distributed telemetry and state mapping to diagnose
+      and resolve a persistent multi-service defect impacting 4% of traffic, eliminating silent application loss
+      at final underwriting and e-sign stages.
 
   - text: >
       AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for
@@ -45,24 +51,25 @@ highlights:
 case_study:
   title: "De-Risking Legacy Acquisition Workflows & Enterprise Telemetry"
   challenge: >-
-    Over years of rapid business expansion, high-volume financial customer acquisition flows
-    accumulated implicit lateral state dependencies across multi-service Rails state machines and
-    third-party API integrations, creating silent data corruptions and high incident escalation overhead.
+    Over years of rapid business expansion, high-volume financial customer loan application and origination flows
+    accumulated implicit lateral state dependencies across multi-service Rails state machines, MuleSoft APIs, and
+    IBM mainframe backends. A persistent, dark failure mode silently corrupted state and dropped 4% of applications
+    during late-stage document preparation and e-signing.
   cartography_approach:
     - dimension: "Interaction Surface"
-      detail: "Mapped browser, mobile, automated API, and AI agent entry points across customer acquisition journeys."
+      detail: "Mapped browser, mobile, automated API, and partner ingress points across customer application and origination funnels, establishing explicit entry, exit, and error lifecycle telemetry."
     - dimension: "Lateral & Implicit State Dependencies"
-      detail: "Identified shared global state mutations and uncoupled multi-step Rails state transitions, eliminating data corruptions."
+      detail: "Inventoried the intersection of business rules, customer actions, and system state changes, attributing runtime context (A/B test variants, feature flags, configuration states) to isolate lateral state mutations."
     - dimension: "Full-Stack Network & Boundary Topology"
-      detail: "Led enterprise OpenTelemetry deployment across legacy microservices, instrumenting third-party API boundaries."
+      detail: "Led enterprise OpenTelemetry deployment across Rails microservices, MuleSoft integration layers, and IBM mainframes to establish the unified Enterprise Trace."
     - dimension: "Supply Chain & Vulnerability Exposure"
-      detail: "Audited third-party vendor APIs, webhooks, and ingress points to establish real-time boundary observability."
+      detail: "Audited third-party credit bureau APIs, e-sign vendor webhooks, and boundary ingress points, providing real-time causal event chains for cybersecurity and fraud investigations."
   outcomes:
-    - "Established end-to-end distributed tracing across Acquisition microservices, transforming dark multi-service failures into legible traces and accelerating root-cause diagnosis."
-    - "Unblocked Acquisition engineering teams by establishing clear service ownership boundaries."
-    - "Prevented cross-service outage cascades during high-traffic loan campaigns."
-    - "Founded and technically led ACQ Enablement team to protect platform reliability, remediation, and modernization work."
-    - "Converted dark system behaviors into measurable telemetry, giving leadership an empirical foundation for architecture decisions."
+    - "Diagnosed and resolved a persistent multi-service defect affecting 4% of origination traffic, preventing complete application loss during final document preparation and e-signing."
+    - "Established end-to-end distributed tracing across Acquisition and Origination tiers, transforming dark multi-service failures into legible traces and accelerating root-cause diagnosis."
+    - "Provided high-fidelity causal telemetry for cybersecurity and fraud investigations, tracing anomalous patterns back to exact execution paths and state mutations."
+    - "Unblocked continuous legacy modernization by establishing verified state change gates across distributed Rails services."
+    - "Founded and technically led ACQ Enablement team to protect platform reliability, remediation, and architectural governance."
 
 skills:
   - Cross-Team Technical Leadership

@@ -41,14 +41,14 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Founded and led enterprise OpenTelemetry Working Group (OTel WG); built the Enterprise Trace connecting a complex Rails distributed monolith, MuleSoft APIs, and IBM mainframes.
+**Target Focus:** Founded and led enterprise OpenTelemetry Working Group (OTel WG); built the Enterprise Trace across the end-to-end loan application and origination lifecycle (Rails, MuleSoft, IBM Mainframe), diagnosing and resolving a multi-service defect impacting 4% of traffic.
 
 **Key Outcomes:**
 - Technical Leadership & Team Consolidation: Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, merging two attrition-impacted teams into a unified, high-functioning engineering unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
 
-- ACQ Enablement Founding & Engineering Mandates: Founded and technically led the ACQ Enablement team to protect core engineering concerns from product feature pressure: driving platform stabilization, legacy modernization, system process mapping, architecture documentation, PII remediation, and fraud investigations.
+- ACQ Enablement & Funnel State Mapping: Founded and technically led the ACQ Enablement team to establish systemic cartography across customer journeys: inventorying the intersection of business decisions, customer actions, system state transitions, and source code execution paths. Built high-fidelity funnel lifecycle signals (entry, exit, error) with complete runtime attribution (A/B test variants, feature flags, configuration states) to accelerate cybersecurity investigations and create safety gates for continuous legacy modernization.
 
-- Observability & Enterprise Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across high-volume customer acquisition flows, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends to eliminate blind spots and align engineering around real-time service maps.
+- Observability & Enterprise Origination Trace: Founded and led the OpenTelemetry Working Group (OTel WG) to establish the Enterprise Trace across the end-to-end loan application and digital origination lifecycle, connecting a complex Rails distributed monolith, MuleSoft, and IBM mainframe backends. Leveraged distributed telemetry and state mapping to diagnose and resolve a persistent multi-service defect impacting 4% of traffic, eliminating silent application loss at final underwriting and e-sign stages.
 
 - AI-Augmented Systems Investigation: Introduced privacy-conscious local AI workflows for legacy code analysis and engineering support, expanding investigative capacity while keeping human review, security constraints, and source evidence explicit.
 
