@@ -66,6 +66,21 @@ To allow AI agents across sessions, CLI tools, and different workspaces (Antigra
 * **Structured Resume API**: `GET https://just3ws.localhost/resume.json`
   - Returns complete profile, timeline, position highlights, skills breakdown, and technical leadership records.
 
+* **Career Datalake Master Manifest**: `GET https://just3ws.localhost/career_datalake.json`
+  - Complete 550+ KB unified datalake containing candidate profile, all 29 positions, 5 archetype strategies, 4D case studies, technology provenance matrix (136 skills), 156 blog posts (2006 to 2026), 211 technical interviews, and 402-node knowledge graph.
+
+* **Career Datalake JSONL Stream**: `GET https://just3ws.localhost/career_datalake.jsonl`
+  - Line-delimited JSON format optimized for streaming, vector embedding generation, and fast semantic indexing.
+
+* **Career Datalake Query CLI**: `ruby bin/query_career_datalake.rb [options]`
+  - Fast CLI engine for deep context retrieval:
+    - `--tech <skill>`: Technology provenance and all roles where a skill was used.
+    - `--company <name>`: Deep position highlights and engineering context.
+    - `--search <query>`: Full-text search across positions, case studies, posts, and interviews.
+    - `--archetype <slug>`: Strategy and reader empathy bridge for a target tier.
+    - `--interviewee <name>`: Interview and transcript records for specific guests.
+    - `--json`: Formats output as raw JSON for inter-script pipelines.
+
 * **LLM Context Export**: `GET https://just3ws.localhost/exports/resume.md`
   - High-density Markdown representation of candidate experience optimized for prompt context injection.
 
@@ -73,10 +88,13 @@ To allow AI agents across sessions, CLI tools, and different workspaces (Antigra
   - Complete 20+ year technical career progression.
 
 * **Case Studies & Cartography**: `GET https://just3ws.localhost/exports/portfolio.md`
-  - 4D System Cartography case studies (OneMain Financial, EMR-Bear).
+  - 4D System Cartography case studies (OneMain Financial, EMR-Bear, Phalanx Duel, WWWorkRemote).
 
-* **Oral History MCP Server**: `https://just3ws.localhost/mcp.json`
-  - MCP tool interface (`bin/ugtastic_mcp_server.rb`) exposing 207 historical developer interviews, transcripts, and 402-node knowledge graph.
+* **Archetype Strategy & Reader Profiles**: `GET https://just3ws.localhost/reports/archetype-reader-profiles/`
+  - Interactive report detailing target tier psychology, unstated pressures, wants vs needs, and empathy bridges.
+
+* **CareerOS MCP Server**: `bin/career_datalake_mcp_server.rb`
+  - Model Context Protocol STDIO server exposing callable tools (`query_career_history`, `get_technology_provenance`, `get_position_dossier`, `get_archetype_strategy`, `query_oral_history`, `query_transcript`) and resources (`career://datalake/*`, `ugtastic://archive/*`).
 
 ---
 

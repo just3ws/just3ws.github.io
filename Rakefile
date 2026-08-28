@@ -39,9 +39,14 @@ namespace :generate do
     :community_stories,
     :resume_positions,
     :archetype_resumes,
+    :career_datalake,
     :executive_briefs,
     :brief_pdfs
   ]
+
+  task :career_datalake do
+    sh 'ruby ./bin/generate_career_datalake.rb'
+  end
 
   task :archetype_resumes do
     sh 'ruby ./bin/generate_archetype_resumes.rb'

@@ -98,10 +98,18 @@ module CareerOS
 
       def default_state
         {
-          "version" => "1.0.0",
+          "version" => "1.1.0",
           "last_updated_at" => Time.now.iso8601,
           "candidate_profile" => {
             "source" => "https://just3ws.localhost/resume.json",
+            "datalake_json_url" => "https://just3ws.localhost/career_datalake.json",
+            "datalake_jsonl_url" => "https://just3ws.localhost/career_datalake.jsonl",
+            "exports_url" => "https://just3ws.localhost/exports/resume.md",
+            "portfolio_url" => "https://just3ws.localhost/exports/portfolio.md",
+            "history_url" => "https://just3ws.localhost/exports/history.md",
+            "strategy_url" => "https://just3ws.localhost/reports/archetype-reader-profiles/",
+            "query_cli" => "/Users/mike/github.com/just3ws/just3ws.github.io/bin/query_career_datalake.rb",
+            "mcp_server" => "/Users/mike/github.com/just3ws/just3ws.github.io/bin/career_datalake_mcp_server.rb",
             "last_synced_at" => nil
           },
           "active_evaluations" => {},

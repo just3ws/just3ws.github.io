@@ -25,9 +25,12 @@ Download resume, portfolio, and career history in multiple formats.
 
 - **HTML** - [Project portfolio](/portfolio/) (interactive with timeline)
 
-## Career History
+## Career History & Datalake
 
 - **HTML** - [Complete timeline](/history/) (full experience breakdown)
+- **Unified Datalake (JSON)** - [career_datalake.json](/career_datalake.json) (Complete 20+ year corpus, positions, writings, interviews, tech matrix)
+- **Streaming Datalake (JSONL)** - [career_datalake.jsonl](/career_datalake.jsonl) (Line-delimited JSON for vector ingestion and AI pipelines)
+- **LLM Context Markdown** - [exports/resume.md](/exports/resume.md) (Prompt-optimized markdown format)
 
 ---
 

@@ -128,10 +128,54 @@ def validate_pdf_export
   end
 end
 
+def validate_career_datalake_export
+  paths = [
+    File.join(SITE_DIR, 'career_datalake.json'),
+    File.join(SITE_DIR, 'exports', 'career_datalake.json')
+  ]
+  errors = []
+
+  paths.each do |path|
+    unless File.exist?(path)
+      errors << "Missing datalake JSON export: #{path}"
+      next
+    end
+
+    begin
+      data = JSON.parse(File.read(path))
+      errors << "#{path} missing 'meta'" unless data['meta']
+      errors << "#{path} missing 'positions'" unless data['positions'] && data['positions'].size >= 25
+      errors << "#{path} missing 'technology_provenance'" unless data['technology_provenance'] && data['technology_provenance'].size >= 50
+      errors << "#{path} missing 'publications_and_writings'" unless data['publications_and_writings'] && data['publications_and_writings'].size >= 100
+      errors << "#{path} missing 'oral_history_corpus'" unless data['oral_history_corpus'] && data['oral_history_corpus'].size >= 150
+    rescue JSON::ParserError => e
+      errors << "#{path} invalid JSON: #{e.message}"
+    end
+  end
+
+  jsonl_path = File.join(SITE_DIR, 'career_datalake.jsonl')
+  if File.exist?(jsonl_path)
+    line_count = File.readlines(jsonl_path).size
+    errors << "career_datalake.jsonl has fewer than 200 lines (#{line_count})" if line_count < 200
+  else
+    errors << "Missing datalake JSONL export: #{jsonl_path}"
+  end
+
+  if errors.empty?
+    puts "Career Datalake export validation passed."
+    true
+  else
+    warn "Career Datalake export validation failed:"
+    errors.each { |error| warn "  - #{error}" }
+    false
+  end
+end
+
 success = true
 success &= validate_json_export
 success &= validate_txt_export
 success &= validate_markdown_exports
 success &= validate_pdf_export
+success &= validate_career_datalake_export
 
 exit(success ? 0 : 1)
