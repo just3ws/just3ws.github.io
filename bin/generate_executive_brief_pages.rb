@@ -24,7 +24,11 @@ brief_files.each do |file_path|
   role = "Principal Software Engineer"
   
   if content =~ /^# Executive Pitch Brief:\s*(.+)$/i || content =~ /^# Job Lead Evaluation:\s*(.+)$/i
-    company = Regexp.last_match(1).strip
+    company = Regexp.last_match(1).strip.gsub(/\s*\(.*?\)$/, "").strip
+  end
+
+  if content =~ /\*\*Company:\*\*\s*(.+)$/i
+    company = Regexp.last_match(1).strip.gsub(/\s*\(Remote.*?\)/i, "").strip
   end
 
   if content =~ /\*\*Target Role:\*\*\s*(.+)$/i
