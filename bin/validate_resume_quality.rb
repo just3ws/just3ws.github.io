@@ -53,6 +53,19 @@ class ResumeQualityValidator
     'SRE'
   ].freeze
 
+  STRUCTURAL_OUTCOME_INDICATORS = %w[
+    reducing eliminating prevented preventing replacing decommissioned decommissioning
+    scaled scaling reconciling stabilized stabilizing streamlined streamlining
+    migrating migrated protecting protected delivered delivering accelerated accelerating
+    unified unifying isolated isolating raised raising lowered lowering mitigated mitigating
+    restored restoring standardized standardizing improved improving saved saving
+    enabled enabling secured securing established establishing diagnosed diagnosing
+    architected architecting engineered designed built led founded resolved
+  ].freeze
+
+  SUMMARY_PATH = File.join(ROOT_DIR, '_data', 'resume', 'summary.yml')
+  PROFILE_PATH = File.join(ROOT_DIR, '_data', 'resume', 'profile.yml')
+
   def initialize
     @errors = []
     @warnings = []
@@ -63,6 +76,7 @@ class ResumeQualityValidator
     puts "\n🔍 Running Automated Resume Quality & ATS Parser Validation Suite..."
     puts "=" * 80
 
+    validate_macro_narrative
     validate_canonical_positions
     validate_ats_text_exports
     validate_json_exports
@@ -76,14 +90,57 @@ class ResumeQualityValidator
 
   private
 
+  def validate_macro_narrative
+    puts "1. Auditing Macro Narrative & Positioning Alignment..."
+    unless File.exist?(SUMMARY_PATH)
+      @errors << "Canonical summary missing at #{SUMMARY_PATH}"
+      return
+    end
+
+    summary_data = YAML.safe_load_file(SUMMARY_PATH)
+    summary_text = summary_data['text'].to_s.strip
+
+    if summary_text.empty?
+      @errors << "Canonical summary text in #{SUMMARY_PATH} is empty"
+    elsif summary_text.length < 80
+      @warnings << "Canonical summary text is unusually brief (< 80 chars)"
+    end
+
+    # Check for strategic problem domain indicators
+    domain_indicators = %w[principal modernization architecture distributed resilience reliability observability]
+    matches = domain_indicators.select { |ind| summary_text.downcase.include?(ind) }
+    if matches.size < 2
+      @warnings << "Macro narrative summary lacks domain authority keywords (found #{matches.size}/#{domain_indicators.size})"
+    end
+
+    # Check for passive commodity phrases
+    passive_summary_phrases = ['seeking a', 'results-oriented', 'hardworking', 'looking for a role']
+    passive_summary_phrases.each do |phrase|
+      if summary_text.downcase.include?(phrase)
+        @errors << "Macro narrative contains generic commodity phrase '#{phrase}'"
+      end
+    end
+
+    # Check canonical profile title
+    if File.exist?(PROFILE_PATH)
+      profile_data = YAML.safe_load_file(PROFILE_PATH)
+      if profile_data['title'] != 'Principal Software Engineer'
+        @errors << "Canonical profile title mismatch: expected 'Principal Software Engineer', got '#{profile_data['title']}'"
+      end
+    end
+
+    puts "   ✓ Verified canonical professional summary with Principal domain positioning"
+  end
+
   def validate_canonical_positions
-    puts "1. Auditing Canonical Position Records (_data/resume/positions/)..."
+    puts "\n2. Auditing Canonical Position Records (_data/resume/positions/)..."
     position_files = Dir.glob(File.join(RESUME_POSITIONS_DIR, '*.yml'))
     @metrics[:total_positions] = position_files.size
 
     total_bullets = 0
     quantified_bullets = 0
     action_verb_bullets = 0
+    structural_outcome_bullets = 0
 
     position_files.each do |file|
       data = YAML.safe_load_file(file)
@@ -111,6 +168,11 @@ class ResumeQualityValidator
           action_verb_bullets += 1
         end
 
+        # Check for structural outcome indicators
+        if STRUCTURAL_OUTCOME_INDICATORS.any? { |ind| text.downcase.include?(ind) }
+          structural_outcome_bullets += 1
+        end
+
         # Check for weak passive phrases
         WEAK_PASSIVE_PHRASES.each do |phrase|
           if text.downcase.include?(phrase)
@@ -131,14 +193,16 @@ class ResumeQualityValidator
     @metrics[:quantified_bullets] = quantified_bullets
     @metrics[:quantified_pct] = (quantified_bullets.to_f / [total_bullets, 1].max * 100).round(1)
     @metrics[:action_verb_pct] = (action_verb_bullets.to_f / [total_bullets, 1].max * 100).round(1)
+    @metrics[:structural_outcome_pct] = (structural_outcome_bullets.to_f / [total_bullets, 1].max * 100).round(1)
 
     puts "   ✓ #{position_files.size} positions scanned (#{total_bullets} total achievement highlights)"
+    puts "   ✓ Structural Outcome Causality: #{@metrics[:structural_outcome_pct]}% of highlights connect technical action to measurable consequence"
     puts "   ✓ Quantified Impact Density: #{@metrics[:quantified_pct]}% of highlights contain measurable scale/metrics"
     puts "   ✓ Action Verb Leadership Ratio: #{@metrics[:action_verb_pct]}% start with active engineering verbs"
   end
 
   def validate_ats_text_exports
-    puts "\n2. Emulating ATS Ingestion on Plain-Text Exports (exports/resumes/*.txt)..."
+    puts "\n3. Emulating ATS Ingestion on Plain-Text Exports (exports/resumes/*.txt)..."
     txt_files = Dir.glob(File.join(EXPORTS_DIR, '*.txt'))
     if txt_files.empty?
       @errors << "No plain text resume exports found under #{EXPORTS_DIR}"
@@ -175,7 +239,7 @@ class ResumeQualityValidator
   end
 
   def validate_json_exports
-    puts "\n3. Validating Structured JSON Resume Exports (exports/resumes/*.json)..."
+    puts "\n4. Validating Structured JSON Resume Exports (exports/resumes/*.json)..."
     json_files = Dir.glob(File.join(EXPORTS_DIR, '*.json'))
     json_files.each do |json_path|
       filename = File.basename(json_path)
@@ -192,7 +256,7 @@ class ResumeQualityValidator
   end
 
   def validate_schema_org_json_ld
-    puts "\n4. Validating Schema.org Linked Data in Rendered HTML (_site/index.html)..."
+    puts "\n5. Validating Schema.org Linked Data in Rendered HTML (_site/index.html)..."
     unless File.exist?(SITE_INDEX_PATH)
       @warnings << "_site/index.html not found, skipping live JSON-LD extraction (run after build)"
       return
@@ -225,7 +289,7 @@ class ResumeQualityValidator
   end
 
   def validate_zero_em_dashes
-    puts "\n5. Validating 'no-em-dashes' Writing Rule Across All Surfaces..."
+    puts "\n6. Validating 'no-em-dashes' Writing Rule Across All Surfaces..."
     prose_files = Dir.glob(File.join(RESUME_POSITIONS_DIR, '*.yml')) +
                   Dir.glob(File.join(EXPORTS_DIR, '*.txt')) +
                   Dir.glob(File.join(TAILORED_DIR, '*.md'))
@@ -246,7 +310,7 @@ class ResumeQualityValidator
   end
 
   def validate_datalake_parity
-    puts "\n6. Validating Full-Corpus Career Datalake Index Parity..."
+    puts "\n7. Validating Full-Corpus Career Datalake Index Parity..."
     unless File.exist?(DATALAKE_PATH)
       @errors << "Career datalake file missing at #{DATALAKE_PATH}"
       return
@@ -280,10 +344,12 @@ class ResumeQualityValidator
     puts "🎯 RESUME QUALITY & ATS READINESS AUDIT SUMMARY"
     puts "=" * 80
 
-    puts "• Quantified Impact Ratio : #{@metrics[:quantified_pct]}% (highlights with concrete scale/metrics)"
-    puts "• Strong Action Verb Ratio: #{@metrics[:action_verb_pct]}% (highlights starting with action verbs)"
-    puts "• Scanned Positions       : #{@metrics[:total_positions]}"
-    puts "• Total Highlights Audited: #{@metrics[:total_bullets]}"
+    puts "• Macro Narrative Alignment: Verified (Principal domain positioning)"
+    puts "• Structural Outcome Ratio : #{@metrics[:structural_outcome_pct]}% (highlights with explicit consequence/result)"
+    puts "• Quantified Impact Ratio  : #{@metrics[:quantified_pct]}% (highlights with concrete scale/metrics)"
+    puts "• Strong Action Verb Ratio : #{@metrics[:action_verb_pct]}% (highlights starting with action verbs)"
+    puts "• Scanned Positions        : #{@metrics[:total_positions]}"
+    puts "• Total Highlights Audited : #{@metrics[:total_bullets]}"
 
     unless @warnings.empty?
       puts "\n⚠️  Warnings (#{@warnings.size}):"

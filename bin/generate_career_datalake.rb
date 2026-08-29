@@ -154,18 +154,60 @@ git_epochs = [
   }
 ]
 
+# 6. Narrative Synthesis Baseline (3-Act Story & Cover Letter Engine)
+narrative_synthesis = {
+  "framework" => "3-Act Career Narrative & Cover Letter Synthesis",
+  "narrative_acts" => {
+    "act_1_foundation" => {
+      "title" => "The Autodidact & Craftsman (First Principles)",
+      "theme" => "Curiosity, testing discipline, and community leadership",
+      "summary" => "Built an engineering foundation from first principles through self-directed learning, software craftsmanship, and community organizing. Grounded in test-driven development, deterministic state transitions, and clear documentation.",
+      "anchors" => [
+        "Groupon (Technical Onboarding & Fraud Systems)",
+        "Obtiva (Software Craftsmanship & Agile Consultancy)",
+        "WindyCityRails / GOTO Conferences (Oral History & Tech Archive)"
+      ]
+    },
+    "act_2_crucible" => {
+      "title" => "The High-Consequence Stabilizer (The Crucible)",
+      "theme" => "Untangling complexity, eliminating dark failure modes, and building team enablement",
+      "summary" => "Appointed Software Architect for the Acquisition Lane at OneMain Financial with an executive mandate to untangle multi-channel lending monoliths, decouple Acquisition and Originations boundaries, eliminate 4% silent traffic loss at e-signing, and build an automated 5-phase PII deletion engine across 30+ tables, while founding Geekfest and leading the OpenTelemetry Working Group across a 3-year enablement arc transitioned to SRE.",
+      "anchors" => [
+        "OneMain Financial (Acquisition Lane Architect & AD Staff)",
+        "Speedfunds Instant Loan Disbursement",
+        "Enterprise OpenTelemetry Distributed Trace",
+        "5-Phase Automated PII Remediation Engine"
+      ]
+    },
+    "act_3_offering" => {
+      "title" => "The Present Offering (Calm Systems Leadership)",
+      "theme" => "Deterministic engineering, local-first AI orchestration, and platform resilience",
+      "summary" => "Delivers calm, deterministic engineering leadership to organizations tackling legacy modernization, distributed telemetry, and complex state machines. Bridges human developers with AI-augmented workflows and property-based verification gates.",
+      "anchors" => [
+        "wwworkremote (Multi-source ingestion, pgvector search, prompt injection defense)",
+        "Phalanx Duel (Deterministic rules engine, replayable ledger, Truth Gates)",
+        "CareerOS MCP Tools & Distributed Datalake"
+      ]
+    }
+  },
+  "cover_letter_synthesis_blueprint" => {
+    "step_1_hook" => "Diagnose target company platform pain and state value proposition as Principal Software Engineer de-risking high-consequence transitions.",
+    "step_2_proofs" => "Select 2-3 matching proofs from Act 2 (Speedfunds, 7 acquisition channels, 5-phase PII engine, OTel distributed trace, 4% traffic loss fix).",
+    "step_3_philosophy" => "State operating model: System Cartography (mapping state before invasive changes), automated verification gates, and team enablement.",
+    "step_4_call_to_action" => "Invite a 20-minute direct, peer-level conversation on architectural roadmap and production stability."
+  }
+}
+
 # Master Datalake Hash
 datalake = {
   "meta" => {
-    "generated_at" => Time.now.utc.iso8601,
     "version" => "1.0.0",
-    "author" => "Mike Hall",
-    "canonical_site" => "https://www.just3ws.com",
-    "localhost_site" => "https://just3ws.localhost",
+    "generated_at" => Time.now.utc.iso8601,
+    "system" => "CareerOS Master Datalake",
+    "canonical_url" => "https://just3ws.localhost/career_datalake.json",
     "endpoints" => {
-      "json_manifest" => "https://just3ws.localhost/career_datalake.json",
-      "jsonl_stream" => "https://just3ws.localhost/career_datalake.jsonl",
-      "resume_json" => "https://just3ws.localhost/resume.json",
+      "datalake_json" => "https://just3ws.localhost/career_datalake.json",
+      "datalake_jsonl" => "https://just3ws.localhost/career_datalake.jsonl",
       "exports_resume_md" => "https://just3ws.localhost/exports/resume.md",
       "exports_history_md" => "https://just3ws.localhost/exports/history.md",
       "exports_portfolio_md" => "https://just3ws.localhost/exports/portfolio.md",
@@ -185,6 +227,7 @@ datalake = {
   "archetypes" => archetypes_data,
   "positions" => positions,
   "case_studies" => case_studies_data,
+  "narrative_synthesis" => narrative_synthesis,
   "technology_provenance" => tech_provenance.sort_by { |k, v| -v["total_occurrences"] }.to_h,
   "publications_and_writings" => posts,
   "oral_history_corpus" => interviews_list,
@@ -215,6 +258,7 @@ File.open(jsonl_out, 'w') do |f|
   datalake["archetypes"].each { |k, v| f.puts JSON.generate({ "type" => "archetype", "id" => k, "data" => v }) }
   datalake["positions"].each { |k, v| f.puts JSON.generate({ "type" => "position", "id" => k, "data" => v }) }
   datalake["case_studies"].each { |k, v| f.puts JSON.generate({ "type" => "case_study", "id" => k, "data" => v }) }
+  f.puts JSON.generate({ "type" => "narrative_synthesis", "data" => datalake["narrative_synthesis"] })
   datalake["technology_provenance"].each { |k, v| f.puts JSON.generate({ "type" => "technology", "name" => k, "data" => v }) }
   datalake["publications_and_writings"].each { |p| f.puts JSON.generate({ "type" => "publication", "id" => p["slug"], "data" => p }) }
   datalake["oral_history_corpus"].each { |i| f.puts JSON.generate({ "type" => "interview", "id" => i["id"], "data" => i }) }

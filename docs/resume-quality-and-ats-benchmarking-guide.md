@@ -26,18 +26,19 @@ This repository operates an automated, multi-tiered resume verification and ATS 
 
 ---
 
-## 2. The 6 Automated Validation Layers (`bundle exec rake validate:resume_quality`)
+## 2. The 7 Automated Validation Layers (`bundle exec rake validate:resume_quality`)
 
-Implemented in `bin/validate_resume_quality.rb` and executed as part of the master `validate:all` gate:
+Implemented in `bin/validate_resume_quality.rb` and executed as part of the master `validate:all` gate (see also `docs/resume-narrative-and-storytelling-guide.md` for narrative mechanics):
 
 | Validation Layer | Implementation | Pass/Fail Criteria |
 | :--- | :--- | :--- |
-| **1. Canonical Positions Audit** | Scans all YAML files in `_data/resume/positions/*.yml`. | Fails if summary is missing, if passive phrases (`responsible for`, `helped to`) are present, or if AI buzzwords (`tapestry`, `multifaceted`) are detected. |
-| **2. ATS Ingestion Emulation** | Simulates standard ATS ingestion engines across `exports/resumes/*.txt`. | Fails if contact info (name, email, phone, location) or required section headers (`PROFESSIONAL SUMMARY`, `CORE SKILLS`, `EXPERIENCE`) fail to parse. |
-| **3. Structured JSON Schema** | Validates `exports/resumes/*.json` against JSON Resume schema. | Fails if `basics`/`profile` or `experience`/`positions` root keys are missing or malformed. |
-| **4. Schema.org Linked Data** | Extracts `<script type="application/ld+json">` from rendered `_site/index.html`. | Fails if Googlebot-compatible `Person` or `Occupation` schema graph is invalid or missing. |
-| **5. Strict Zero-Em-Dash Rule** | Scans all 38 YAML position records, Markdown resumes, and text exports. | Fails on any Unicode em dash (`: `) or double-hyphen (`--`), enforcing `no-em-dashes`. |
-| **6. Career Datalake Parity** | Compares canonical positions with `career_datalake.json` index. | Fails on any highlight drift, missing position ID, or stale delivery evidence. |
+| **1. Macro Narrative Alignment** | Audits `_data/resume/summary.yml` and `_data/resume/profile.yml`. | Fails if summary text is missing/empty, lacks Principal domain positioning, contains generic commodity phrases, or if profile title drifts. |
+| **2. Canonical Positions & Causality** | Scans all YAML files in `_data/resume/positions/*.yml`. | Fails if summary is missing, if passive phrases (`responsible for`, `helped to`) are present, or if AI buzzwords (`tapestry`, `multifaceted`) are detected. Tracks structural outcome causality ratio. |
+| **3. ATS Ingestion Emulation** | Simulates standard ATS ingestion engines across `exports/resumes/*.txt`. | Fails if contact info (name, email, phone, location) or required section headers (`PROFESSIONAL SUMMARY`, `CORE SKILLS`, `EXPERIENCE`) fail to parse. |
+| **4. Structured JSON Schema** | Validates `exports/resumes/*.json` against JSON Resume schema. | Fails if `basics`/`profile` or `experience`/`positions` root keys are missing or malformed. |
+| **5. Schema.org Linked Data** | Extracts `<script type="application/ld+json">` from rendered `_site/index.html`. | Fails if Googlebot-compatible `Person` or `Occupation` schema graph is invalid or missing. |
+| **6. Strict Zero-Em-Dash Rule** | Scans all 38 YAML position records, Markdown resumes, and text exports. | Fails on any Unicode em dash or double-hyphen (`--`), enforcing `no-em-dashes`. |
+| **7. Career Datalake Parity** | Compares canonical positions with `career_datalake.json` index. | Fails on any highlight drift, missing position ID, or stale delivery evidence. |
 
 ---
 

@@ -100,6 +100,12 @@ class CareerDatalakeMCPServer
               description: "5 tailored archetype strategies, reader profiles, and cover-letter empathy anchors."
             },
             {
+              uri: "career://datalake/narrative-synthesis",
+              name: "CareerOS 3-Act Narrative & Cover Letter Synthesis Baseline",
+              mimeType: "application/json",
+              description: "Canonical 3-Act Career Narrative (Foundation, Crucible, Offering) and Cover Letter Synthesis Blueprint."
+            },
+            {
               uri: "ugtastic://archive/intelligence",
               name: "UGtastic Corpus Intelligence & Tropes",
               mimeType: "application/json",
@@ -126,6 +132,8 @@ class CareerDatalakeMCPServer
         content = JSON.pretty_generate(@data["technology_provenance"] || {})
       when "career://datalake/archetypes"
         content = JSON.pretty_generate(@data["archetypes"] || {})
+      when "career://datalake/narrative-synthesis"
+        content = JSON.pretty_generate(@data["narrative_synthesis"] || {})
       when "ugtastic://archive/intelligence"
         content = File.exist?(INTELLIGENCE_FILE) ? File.read(INTELLIGENCE_FILE) : "{}"
       when "ugtastic://archive/knowledge-graph"
@@ -219,6 +227,16 @@ class CareerDatalakeMCPServer
                 },
                 required: ["transcript_id"]
               }
+            },
+            {
+              name: "get_narrative_synthesis_baseline",
+              description: "Retrieves the canonical 3-Act Career Narrative (Foundation, Crucible, Offering) and Cover Letter Synthesis Blueprint for synthesizing custom pitch memos and cover letters against target job leads.",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  focus_domain: { type: "string", description: "Optional focus area to filter proof points (e.g. 'modernization', 'observability', 'ai_systems', 'leadership', 'general')" }
+                }
+              }
             }
           ]
         }
@@ -230,6 +248,23 @@ class CareerDatalakeMCPServer
       result_text = ""
 
       case name
+      when "get_narrative_synthesis_baseline"
+        domain = (arguments["focus_domain"] || "general").to_s.downcase
+        baseline = @data["narrative_synthesis"] || {}
+        result_text = JSON.pretty_generate({
+          framework: baseline["framework"],
+          narrative_acts: baseline["narrative_acts"],
+          cover_letter_synthesis_blueprint: baseline["cover_letter_synthesis_blueprint"],
+          focus_domain: domain,
+          verified_proof_points: [
+            "Speedfunds instant loan disbursement (minutes vs multi-day ACH)",
+            "Architecture discovery across 7 heterogeneous acquisition channels",
+            "5-phase automated PII deletion engine across 30+ tables and legacy clarity_ orphans",
+            "Elimination of 4% silent traffic loss defect at late-stage e-signing",
+            "3-year enterprise community arc (Geekfest and OTel WG) transitioned sustainably to SRE"
+          ]
+        })
+
       when "query_career_history"
         q = arguments["query"].to_s.downcase
         pos_hits = @data["positions"].select { |k, v| JSON.generate(v).downcase.include?(q) }

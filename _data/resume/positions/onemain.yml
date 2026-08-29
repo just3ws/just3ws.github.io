@@ -15,25 +15,25 @@ end_day:
 id: onemain
 
 summary: >
-  Served as Senior Technical IC and Software Architecture Lead for the Acquisition
-  lane of a regulated financial enterprise, establishing end-to-end architecture discovery and distributed observability
-  across the loan application and digital origination lifecycle, while guiding legacy modernization,
-  cybersecurity investigations, and cross-team platform reliability.
+  Appointed as Senior Technical IC and Software Architecture Lead for the Acquisition
+  lane of a regulated financial enterprise with an executive mandate to untangle multi-channel lending
+  workflows, decouple boundaries between Acquisition and Originations, and establish enterprise distributed observability,
+  while guiding legacy modernization, cybersecurity investigations, and cross-team platform reliability.
 
 highlights:
   - text: >
       Originations IC Delivery & Team Realignment: Led the Originations Verification squad through consecutive
       Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline
-      (funding to debit cards in minutes vs multi-day ACH). Progressed to Software Architect for the Acquisition
-      Lane, consolidating two attrition-impacted teams into a unified, high-velocity delivery unit before converting
+      (funding to debit cards in minutes vs multi-day ACH). Appointed Software Architect for the Acquisition
+      Lane to resolve systemic fragility, consolidating two attrition-impacted teams into a unified, high-velocity delivery unit before converting
       to Associate Director, Staff Engineer upon corporate architecture track restructuring.
 
   - text: >
       ACQ Enablement & Architecture Discovery: Founded and technically led the ACQ Enablement team to
       establish end-to-end system mapping across seven heterogeneous acquisition channels spanning direct-to-consumer
-      web/mobile funnels, direct mail campaigns, partner affiliate APIs, and authenticated renewal workflows. Mapped the
-      intersection of business decisions, customer actions, system state transitions, and source code execution paths while
-      driving PII remediation, cybersecurity forensic mapping, and platform modernization for ACQ Growth teams.
+      web/mobile funnels, direct mail campaigns, partner affiliate APIs, and authenticated renewal workflows. Architected
+      an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, cataloging legacy clarity_
+      orphan data, eliminating multi-service state machine corruptions, and embedding automated compliance into production Rails code.
 
   - text: >
       Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails
@@ -66,13 +66,14 @@ case_study:
     - dimension: "Interaction Surface"
       detail: "Mapped browser, mobile, automated API, and partner ingress points across customer application and origination funnels, establishing explicit entry, exit, and error lifecycle telemetry."
     - dimension: "Lateral & Implicit State Dependencies"
-      detail: "Inventoried the intersection of business rules, customer actions, and system state changes, attributing runtime context (A/B test variants, feature flags, configuration states) to isolate lateral state mutations."
+      detail: "Inventoried the intersection of business rules, customer actions, and system state changes; mapped 40+ applicant database tables, isolated legacy clarity_ and underwriting_ orphan data, and architected an automated 5-phase PII deletion engine."
     - dimension: "Full-Stack Network & Boundary Topology"
       detail: "Led enterprise OpenTelemetry deployment across Rails microservices, MuleSoft integration layers, and IBM mainframes to establish the unified Enterprise Trace, aligning EMC operational alerts with distributed telemetry."
     - dimension: "Supply Chain & Vulnerability Exposure"
       detail: "Audited third-party credit bureau APIs, e-sign vendor webhooks, and boundary ingress points, providing real-time causal event chains for cybersecurity and fraud investigations."
   outcomes:
     - "Diagnosed and resolved a persistent multi-service defect affecting 4% of origination traffic, preventing complete application loss during final document preparation and e-signing."
+    - "Engineered an automated 5-phase PII remediation engine across 30+ tables, eliminating legacy orphan references without disrupting live application state."
     - "Established end-to-end distributed tracing across Acquisition and Origination tiers, connecting Rails, MuleSoft, and Mainframe backends to accelerate root-cause diagnosis for Incident Command."
     - "Partnered with Cybersecurity and Enterprise Monitoring Center (EMC) to bridge immediate operational monitoring with long-term distributed telemetry and causal event attribution."
     - "Unblocked continuous legacy modernization by establishing verified state change gates across distributed Rails services."

@@ -78,4 +78,42 @@ Senior technical leaders face friction mapping experience across titles ranging 
 
 ---
 
-*Captured on 2026-08-19 for personal reference and ongoing career alignment.*
+## 6. Progressive Disclosure: Revealing Exactly the Right Amount of Detail
+
+AuDHD engineers naturally process systems with comprehensive forensic depth. When communicating with recruiters and engineering leaders, uncurated data dumps cause cognitive overload. The **Progressive Disclosure Architecture** calibrates information density across 3 distinct tiers:
+
+```
++-------------------------------------------------------------------------+
+| LEVEL 1: THE SCAN (15 Seconds)  --> Headline & Verifiable Business Result|
+| LEVEL 2: THE MEMO (2 Minutes)   --> Architectural Context & Mechanism   |
+| LEVEL 3: THE DEEP DIVE (On Dem) --> Complete Forensic Reality & Schemas |
++-------------------------------------------------------------------------+
+```
+
+### The 3 Information Tiers
+
+1. **Level 1 (The 15-Second Scan):** For recruiters and executives.
+   * *Formula:* One sentence stating the core problem, the scale, and the bottom-line business outcome.
+   * *Example:* "Appointed Acquisition Lane Architect at OneMain Financial, decoupling lending funnels and eliminating a 4% silent traffic loss bug at late-stage e-signing."
+
+2. **Level 2 (The 2-Minute Architectural Memo):** For hiring managers and Staff IC reviewers.
+   * *Formula:* Context + Constraint + Technical Mechanism + Structural Result.
+   * *Example:* The 5 canonical highlights in `_data/resume/positions/onemain.yml`.
+
+3. **Level 3 (The Forensic Deep Dive):** For deep technical rounds and whiteboard sessions.
+   * *Formula:* Raw schema details, database table archaeology (`clarity_`, `underwriting_`), regex patterns, and distributed trace context headers.
+   * *Rule:* Revealed **only when explicitly requested**.
+
+### The "Answer, Frame, and Pause" Interview Rhythm
+
+When asked an open-ended architecture question:
+1. Deliver the Level 1 headline (15 seconds).
+2. Outline the Level 2 architectural mechanism (45 seconds).
+3. **Set the hook and pause:**
+   > *"I can dive deeper into the database archaeology of the 5-phase PII engine, or we can look at how we traced distributed state across MuleSoft and Rails. Which direction would you prefer to explore?"*
+
+This rhythm keeps the interviewer in control, protects cognitive bandwidth, and demonstrates mastery without overwhelming the conversation.
+
+---
+
+*Updated on 2026-08-29 for personal reference and ongoing career alignment.*

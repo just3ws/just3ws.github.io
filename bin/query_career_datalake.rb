@@ -49,6 +49,10 @@ OptionParser.new do |opts|
     options[:era] = v
   end
 
+  opts.on("-n", "--narrative", "Retrieve the canonical 3-Act Career Narrative and Cover Letter Synthesis Blueprint") do
+    options[:narrative] = true
+  end
+
   opts.on("--stats", "Display high-level datalake statistics and entity counts") do
     options[:stats] = true
   end
@@ -148,6 +152,8 @@ results = {}
 
 if options[:stats]
   results = data["meta"]
+elsif options[:narrative]
+  results = data["narrative_synthesis"] || {}
 elsif options[:tech]
   query = options[:tech].downcase
   matches = data["technology_provenance"].select do |k, v|
@@ -238,6 +244,24 @@ else
       puts "   Roles Used In :"
       v["roles_used"].each do |r|
         puts "     - #{r['company']} (#{r['title']}, #{r['start_date']} - #{r['end_date']})"
+      end
+    end
+  elsif results["framework"]
+    puts "\n📖 #{results['framework'].upcase}"
+    puts "================================================================================"
+    if results["narrative_acts"]
+      results["narrative_acts"].each do |act_key, act|
+        puts "\n🎭 #{act['title'].upcase}"
+        puts "   Theme  : #{act['theme']}"
+        puts "   Summary: #{act['summary']}"
+        puts "   Anchors: #{act['anchors']&.join('; ')}"
+      end
+    end
+    if results["cover_letter_synthesis_blueprint"]
+      puts "\n📝 COVER LETTER & PITCH SYNTHESIS BLUEPRINT"
+      puts "--------------------------------------------------------------------------------"
+      results["cover_letter_synthesis_blueprint"].each do |step, desc|
+        puts "   * #{step.tr('_', ' ').capitalize}: #{desc}"
       end
     end
   elsif results["company_matches"]

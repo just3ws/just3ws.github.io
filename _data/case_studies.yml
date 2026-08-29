@@ -1,22 +1,23 @@
 ---
 case_studies:
   - id: onemain-acquisition
-    title: "OneMain Financial: Loan Origination Realignment & OpenTelemetry Tracing"
+    title: "OneMain Financial: Acquisition Modernization, PII Remediation & Enterprise Telemetry"
     role: "Associate Director, Staff Engineer"
     period: "2021: 2026"
     company: "OneMain Financial"
     domain: "High-Volume Personal Financial Services"
     summary: >-
-      Led team boundaries realignment and implemented OpenTelemetry distributed tracing across high-volume loan application services.
+      Served as Software Architect for the Acquisition Lane with an executive mandate to untangle multi-channel lending funnels, decouple boundaries between Acquisition and Originations, engineer an automated 5-phase PII deletion engine across 30+ tables, and deploy enterprise OpenTelemetry distributed tracing.
     dimensions:
-      interaction_surface: "REST API contracts, clean payload isolation, and request validation boundaries."
-      lateral_state_dependencies: "Mapped asynchronous background jobs across Sidekiq/Kafka event pipelines and database transactions."
-      full_stack_topology: "Mapped Kubernetes microservices and standardized OpenTelemetry tracing headers across all services."
-      supply_chain_exposure: "Audited third-party credit bureau APIs, vendor webhooks, and regulatory compliance data boundaries."
+      interaction_surface: "Mapped browser, mobile, automated API, and affiliate partner ingress points across seven heterogeneous acquisition funnels."
+      lateral_state_dependencies: "Mapped 40+ applicant database tables, isolated legacy clarity_ and underwriting_ orphan data, and architected an automated 5-phase PII deletion engine."
+      full_stack_topology: "Led enterprise OpenTelemetry deployment across Rails microservices, MuleSoft integration layers, and IBM mainframes to establish the unified Enterprise Trace."
+      supply_chain_exposure: "Audited third-party credit bureau APIs, e-sign vendor webhooks, and boundary ingress points, providing real-time causal event chains for cybersecurity and fraud investigations."
     outcomes:
-      - "Unblocked Acquisition engineering teams by establishing clear service ownership boundaries."
-      - "Established end-to-end distributed tracing with OpenTelemetry, eliminating blind spots across service boundaries."
-      - "Prevented cross-service outage cascades during high-traffic loan campaigns."
+      - "Diagnosed and resolved a persistent multi-service defect affecting 4% of origination traffic, preventing complete application loss during final document preparation and e-signing."
+      - "Engineered an automated 5-phase PII remediation engine across 30+ tables, eliminating legacy orphan references without disrupting live application state."
+      - "Established end-to-end distributed tracing across Acquisition and Origination tiers, accelerating root-cause diagnosis for Incident Command."
+      - "Founded and technically led ACQ Enablement while leading a 3-year enterprise community arc (Geekfest and OTel WG) transitioned sustainably to SRE."
 
   - id: phalanx-duel-engine
     title: "Phalanx: Duel: Tabletop Rules to Multiplayer Engine"

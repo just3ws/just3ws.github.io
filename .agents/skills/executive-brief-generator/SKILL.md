@@ -15,20 +15,22 @@ Use this skill when preparing tailored application briefs, pitch documents, or c
 
 ## Workflow Protocol
 
-1. **Get the real match analysis first**: `ruby bin/evaluate_job_lead.rb --lead <LEAD_ID> [--escalate]`. This wraps
-   `bin/wwwr match` in `wwworkremote/core` (`LLM::ProfileMatcher`) -- the same scorer the wwworkremote web UI uses,
-   keyed off its own `CareerProfile`. Use its score/tags/analysis as the evidence base for the brief. Don't fetch
-   `admin/leads/:id` or `api/v0/job_postings/:id` directly and don't re-derive fit from `_data/resume/positions/*.yml`
-   by hand -- that's a second, drifting scorer.
+1. **Query Canonical 3-Act Narrative & Datalake via MCP or CLI**:
+   - Query CareerOS MCP tool `get_narrative_synthesis_baseline` (or `ruby bin/query_career_datalake.rb --narrative --json`) to retrieve the baseline 3-act narrative and proof points:
+     * **Act 1 (The Foundation):** Autodidact, Software Craftsmanship, TDD, Community Leadership (Groupon, Obtiva, WindyCityRails).
+     * **Act 2 (The Crucible):** High-Consequence Stabilizer (OneMain Acquisition Lane Architect, Speedfunds, 5-phase PII remediation engine, 4% traffic loss fix, 3-year OTel WG enablement arc).
+     * **Act 3 (The Offering):** Calm, deterministic systems leadership for modern distributed platforms (local AI orchestration, pgvector search, property-based verification gates).
 
-2. **Query Personal OS & Canonical Corpus (`zdots-ctx` + `_data/resume/`)**:
-   - Query `/Users/mike/.config/zsh/bin/zdots-ctx query "<topic>"` for strategy guidelines and engineering lessons the
-     scorer doesn't know about.
-   - Pull supporting quotes/highlights from `_data/resume/positions/*.yml` and `_data/interviews.yml` for the case
-     studies and technical-conversation sections below -- as source material for prose, not as a re-scoring input.
+2. **Get Match Analysis & Company Pain from wwworkremote**:
+   - Run `ruby bin/evaluate_job_lead.rb --lead <LEAD_ID> [--escalate]` to obtain the match analysis from `wwworkremote/core`.
+   - Identify the company's core platform risk: legacy monolith refactoring, high concurrency, data privacy compliance, or distributed tracing.
 
-3. **Generate Tailored 1-Page Executive Pitch Brief**:
-   - **Header**: Target Role, Company Profile, Lead Record Link, Tone Calibration statement.
-   - **Strategic Alignment (3 Bullet Points)**: Match Mike's direct experience (Ruby/Rails, distributed systems, OpenTelemetry, domain isolation) to target company challenges.
-   - **Proven Case Studies (2 Bullet Points)**: Detail system cartography and platform outcomes (OneMain Acquisition lane, EMR-Bear 90-day risk assessment).
-   - **Relevant Technical Conversations**: 2 curated links to recorded technical discussions from `_data/interviews.yml`.
+3. **Query Personal OS & Canonical Corpus (`zdots-ctx` + `_data/resume/`)**:
+   - Query `/Users/mike/.config/zsh/bin/zdots-ctx query "<topic>"` for personal strategy guidelines and lessons.
+   - Pull supporting highlights from `_data/resume/positions/*.yml` and `_data/interviews.yml`.
+
+4. **Synthesize Tailored 1-Page Executive Pitch Brief or Cover Memo**:
+   - **Hook (Act 3 Offering):** Anchor as the Principal Software Engineer specializing in de-risking their specific platform transition.
+   - **Proven Proof Points (Act 2 Crucible):** Select 2 to 3 matching historical outcomes (OneMain Acquisition lane, 5-phase PII engine, 4% traffic loss fix, enterprise OTel trace).
+   - **Operating Philosophy (Act 1 Foundation):** Ground in System Cartography (mapping state before code changes), automated verification gates, and team enablement.
+   - **Direct Call to Action:** Offer a 20-minute peer-level technical conversation on architecture and platform stability.

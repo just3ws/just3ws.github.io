@@ -10,7 +10,7 @@ Assume the audience is:
 - senior individual contributors,
 - recruiters screening for Staff+ signal.
 
-Optimize for **credibility, clarity, and signal**, not completeness or storytelling.
+Optimize for **credibility, clarity, and structural signal**, rejecting emotional storytelling, fluff, and task-logging.
 
 ## Canonical Positioning
 
@@ -57,6 +57,35 @@ Software Engineer / Platform & Enablement Lead", "Founding Staff Engineer
 This is allowed *only* on `/resumes/*` pages. Do not let archetype titles
 leak onto the canonical resume, and do not treat an archetype title as
 justification for retitling the canonical resume.
+
+---
+
+## Narrative & Storytelling Architecture (The 4 Levels of Resume Signal)
+
+In technical Staff and Principal resume evaluation, narrative does not mean creative prose or marketing fluff. Narrative is the structural through-line that explains who the candidate is, proves career progression, and grounds technical decisions in measurable consequence.
+
+All resume surfaces must reflect the 4 narrative tiers:
+
+### 1. Macro Narrative (The Through-Line & Core Identity)
+- **Purpose**: Establishes a singular, authoritative mental model within 15 seconds.
+- **Rule**: Frame the candidate as a specialist solving a high-value class of problems (for example, legacy modernization, platform reliability, distributed observability) rather than a commodity generalist listing disconnected tools.
+- **Evaluation Check**: Summary must answer: *What high-impact problem domain does this candidate own?*
+
+### 2. Meso Narrative (The Progression Arc & Trajectory)
+- **Purpose**: Demonstrates increasing autonomy, organizational reach, and systemic leverage over time.
+- **Rule**: Position progression must show evolution across the 5 Staff+ dimensions (Scope, Leverage, Ownership, Durability, Influence).
+- **Evaluation Check**: Transition from executing local module tasks (Senior) to cross-lane architecture, governance, and organizational multiplier impact (Staff/Principal).
+
+### 3. Micro Narrative (Bullet-Level Causality & Context-to-Impact Arc)
+- **Purpose**: Transforms isolated tasks into compact architectural case studies.
+- **Formula**: `[Strong Action Verb] + [Architectural / Domain Context] + [Technical / Operational Intervention] + [Measurable Consequence / Structural Outcome]`
+- **Rule**: Every highlight must connect technical action to business, system, or team consequence.
+- **Evaluation Check**: Reject flat activity bullets ("Worked on API", "Helped team with CI"). Require explicit consequence ("reducing late-stage e-signing traffic loss by 4%").
+
+### 4. Strategic Curation & Subtraction
+- **Purpose**: Focuses hiring manager attention on high-signal evidence by removing noise.
+- **Rule**: The last 5 to 7 years must carry 70% to 80% of total resume weight. Earlier roles must be compressed to 1 to 3 concise highlights.
+- **Evaluation Check**: Aggressively remove commodity task lists, outdated framework details, and low-leverage activities.
 
 ---
 
