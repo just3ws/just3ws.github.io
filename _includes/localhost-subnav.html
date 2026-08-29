@@ -1,0 +1,322 @@
+{% assign is_localhost_only = false %}
+{% if page.localhost_only == true or page.url contains '/exports/' or page.url contains '/tools/' or page.url contains '/reports/' or page.url contains '/backlog/' %}
+  {% assign is_localhost_only = true %}
+{% endif %}
+
+<nav id="localhost-scope-nav" class="localhost-subnav no-print" aria-label="Environment Scope & Localhost Navigation">
+  <div class="localhost-nav-container">
+    <div class="localhost-scope-status">
+      {% if is_localhost_only %}
+        <span class="scope-pill scope-pill-localhost" title="This page is private and only available on just3ws.localhost (stripped from public just3ws.com builds).">
+          <span class="scope-dot scope-dot-localhost"></span>
+          <span class="scope-text">🔒 LOCALHOST ONLY</span>
+        </span>
+        <span class="scope-domain-label">[just3ws.localhost]</span>
+        <span class="scope-desc-label">Private Internal Surface</span>
+      {% else %}
+        <span class="scope-pill scope-pill-public" title="This page is part of the public canon and deploys to just3ws.com.">
+          <span class="scope-dot scope-dot-public"></span>
+          <span class="scope-text">🌐 PUBLIC CANON</span>
+        </span>
+        <span class="scope-domain-label">[just3ws.com]</span>
+        <span class="scope-desc-label">Public Deployment Surface</span>
+      {% endif %}
+    </div>
+
+    <div class="localhost-nav-links">
+      <!-- Localhost Hub Dropdown: Executive Pitch Briefs -->
+      <div class="lh-dropdown">
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/exports/briefs/' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+          <span>🎯 Pitch Briefs</span>
+          <span class="lh-caret">▾</span>
+        </button>
+        <div class="lh-dropdown-menu" role="menu">
+          <div class="lh-menu-header">Executive Pitch Briefs (Localhost)</div>
+          <a href="/exports/briefs/huntress-principal-software-engineer-soc-experience-ruby-rails/" class="lh-menu-item{% if page.url contains 'huntress' %} is-active{% endif %}" role="menuitem">
+            <strong>Huntress</strong> · Principal Engineer (SOC / Rails)
+          </a>
+          <a href="/exports/briefs/coder-staff-agentic-engineering/" class="lh-menu-item{% if page.url contains 'coder' %} is-active{% endif %}" role="menuitem">
+            <strong>Coder</strong> · Staff Engineer (Agentic Platform)
+          </a>
+          <a href="/exports/briefs/financial-crm-staff-engineer-ai-agents/" class="lh-menu-item{% if page.url contains 'financial-crm' %} is-active{% endif %}" role="menuitem">
+            <strong>Financial CRM</strong> · Staff Engineer (AI Agents)
+          </a>
+          <a href="/exports/briefs/nextpatient-staff-software-engineer/" class="lh-menu-item{% if page.url contains 'nextpatient' %} is-active{% endif %}" role="menuitem">
+            <strong>NextPatient</strong> · Staff Engineer (Rails / EHR)
+          </a>
+        </div>
+      </div>
+
+      <!-- Localhost Hub Dropdown: Tailored Archetype Resumes -->
+      <div class="lh-dropdown">
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/resumes/' or page.url contains '/reports/archetype' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+          <span>📄 Archetypes</span>
+          <span class="lh-caret">▾</span>
+        </button>
+        <div class="lh-dropdown-menu" role="menu">
+          <div class="lh-menu-header">5 Tailored Role Archetypes</div>
+          <a href="/resumes/mike-hall-principal-software-engineer/" class="lh-menu-item" role="menuitem">
+            <strong>Principal Systems Architect</strong>
+          </a>
+          <a href="/resumes/mike-hall-staff-platform-lead/" class="lh-menu-item" role="menuitem">
+            <strong>Staff Platform & Enablement Lead</strong>
+          </a>
+          <a href="/resumes/mike-hall-observability-resilience-specialist/" class="lh-menu-item" role="menuitem">
+            <strong>Observability & Resilience Specialist</strong>
+          </a>
+          <a href="/resumes/mike-hall-founding-staff-engineer/" class="lh-menu-item" role="menuitem">
+            <strong>Founding Staff Engineer (AI Systems)</strong>
+          </a>
+          <a href="/resumes/mike-hall-senior-ruby-rails-contractor/" class="lh-menu-item" role="menuitem">
+            <strong>Senior Ruby on Rails Contractor</strong>
+          </a>
+          <div class="lh-menu-divider"></div>
+          <a href="/reports/archetype-reader-profiles/" class="lh-menu-item" role="menuitem">
+            <strong>Strategy & Reader Profiles</strong> →
+          </a>
+        </div>
+      </div>
+
+      <!-- Localhost Hub Dropdown: Datalake & API Endpoints -->
+      <div class="lh-dropdown">
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/exports/' and is_localhost_only %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+          <span>📊 Datalake APIs</span>
+          <span class="lh-caret">▾</span>
+        </button>
+        <div class="lh-dropdown-menu" role="menu">
+          <div class="lh-menu-header">CareerOS Datalake Endpoints</div>
+          <a href="/career_datalake.json" target="_blank" class="lh-menu-item" role="menuitem">
+            <strong>JSON Manifest</strong> (career_datalake.json)
+          </a>
+          <a href="/career_datalake.jsonl" target="_blank" class="lh-menu-item" role="menuitem">
+            <strong>JSONL Stream</strong> (career_datalake.jsonl)
+          </a>
+          <a href="/exports/" class="lh-menu-item" role="menuitem">
+            <strong>All Exports Index</strong> (/exports/)
+          </a>
+          <a href="/panoramic-view/" class="lh-menu-item" role="menuitem">
+            <strong>Panoramic View Methodology</strong> (/panoramic-view/)
+          </a>
+        </div>
+      </div>
+
+      <!-- Public Canon Switcher -->
+      <div class="lh-dropdown">
+        <button type="button" class="lh-dropdown-btn{% unless is_localhost_only %} is-active{% endunless %}" aria-haspopup="true" aria-expanded="false">
+          <span>🌐 Public Canon</span>
+          <span class="lh-caret">▾</span>
+        </button>
+        <div class="lh-dropdown-menu" role="menu">
+          <div class="lh-menu-header">Public Surfaces (just3ws.com)</div>
+          <a href="/" class="lh-menu-item" role="menuitem">🏠 <strong>Home / Resume</strong></a>
+          <a href="/case-studies/" class="lh-menu-item" role="menuitem">🗺️ <strong>Case Studies</strong></a>
+          <a href="/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith/" class="lh-menu-item" role="menuitem">✍️ <strong>System Cartography Essay</strong></a>
+          <a href="/interviews/" class="lh-menu-item" role="menuitem">🎙️ <strong>Oral History Archive</strong></a>
+          <a href="/engagements/" class="lh-menu-item" role="menuitem">💼 <strong>Advisory Engagements</strong></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+.localhost-subnav {
+  background: var(--lh-nav-bg, #12131f);
+  border-bottom: 1px solid var(--lh-nav-border, #282a3e);
+  color: var(--lh-nav-text, #c8c093);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  padding: 0.4rem 1.25rem;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.localhost-nav-container {
+  max-width: 76rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.localhost-scope-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.scope-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  font-weight: 800;
+  font-size: 0.725rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.scope-pill-localhost {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.scope-pill-public {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.scope-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.scope-dot-localhost {
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.scope-dot-public {
+  background: #6366f1;
+  box-shadow: 0 0 6px #6366f1;
+}
+
+.scope-domain-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  color: #938aa9;
+}
+
+.scope-desc-label {
+  font-size: 0.75rem;
+  color: #727169;
+}
+
+.localhost-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.lh-dropdown {
+  position: relative;
+}
+
+.lh-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--lh-nav-border, #282a3e);
+  color: var(--lh-nav-text, #c8c093);
+  padding: 0.25rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.lh-dropdown-btn:hover,
+.lh-dropdown-btn.is-active {
+  background: rgba(126, 156, 216, 0.15);
+  border-color: #7e9cd8;
+  color: #7e9cd8;
+}
+
+.lh-caret {
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+.lh-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 17rem;
+  background: #1f1f28;
+  border: 1px solid #363646;
+  border-radius: 8px;
+  padding: 0.4rem 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.lh-dropdown:hover .lh-dropdown-menu,
+.lh-dropdown:focus-within .lh-dropdown-menu,
+.lh-dropdown.is-open .lh-dropdown-menu {
+  display: block;
+}
+
+.lh-menu-header {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #727169;
+  border-bottom: 1px solid #282a3e;
+  margin-bottom: 0.25rem;
+}
+
+.lh-menu-item {
+  display: block;
+  padding: 0.4rem 0.85rem;
+  color: #dcd7ba;
+  text-decoration: none;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.lh-menu-item:hover,
+.lh-menu-item.is-active {
+  background: rgba(126, 156, 216, 0.15);
+  color: #7e9cd8;
+}
+
+.lh-menu-item strong {
+  color: #e6c384;
+}
+
+.lh-menu-divider {
+  height: 1px;
+  background: #282a3e;
+  margin: 0.3rem 0;
+}
+
+@media (max-width: 768px) {
+  .scope-desc-label {
+    display: none;
+  }
+  .localhost-nav-container {
+    justify-content: center;
+  }
+  .localhost-scope-status {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
+
+<script>
+(function() {
+  document.addEventListener("DOMContentLoaded", function() {
+    const isLocalhost = window.location.hostname.includes("localhost") || window.location.hostname === "127.0.0.1";
+    const domainLabel = document.querySelector(".scope-domain-label");
+    if (domainLabel && isLocalhost) {
+      domainLabel.textContent = "[" + window.location.host + "]";
+    }
+  });
+})();
+</script>
