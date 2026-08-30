@@ -22,6 +22,9 @@ class VideoUploader
     file_size = File.size(file_path)
     puts "🎬 [Upload] Starting resumable upload for: #{File.basename(file_path)} (#{file_size / (1024 * 1024)} MB)"
 
+    # Step 0: Ensure fresh OAuth access token
+    @client.fetch_access_token!
+
     # Step 1: Initiate resumable upload session
     init_uri = URI("https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status")
     http = Net::HTTP.new(init_uri.host, init_uri.port)
@@ -45,28 +48,43 @@ class VideoUploader
 
     puts "🚀 [Upload] Session initialized. Uploading file binary stream..."
 
-    # Step 2: Upload binary content
-    upload_uri = URI(location)
-    upload_http = Net::HTTP.new(upload_uri.host, upload_uri.port)
-    upload_http.use_ssl = true
-    upload_http.read_timeout = 600 # 10 minutes timeout for large files
+    # Step 2: Upload binary content with retry handling
+    retries = 0
+    max_retries = 3
 
-    upload_req = Net::HTTP::Put.new(upload_uri)
-    upload_req["Content-Type"] = "video/mp4"
-    upload_req["Content-Length"] = file_size.to_s
-    
-    File.open(file_path, 'rb') do |file|
-      upload_req.body_stream = file
-      upload_res = upload_http.request(upload_req)
+    begin
+      upload_uri = URI(location)
+      upload_http = Net::HTTP.new(upload_uri.host, upload_uri.port)
+      upload_http.use_ssl = true
+      upload_http.open_timeout = 60
+      upload_http.read_timeout = 1800 # 30 minutes timeout for 500MB+ files
 
-      if upload_res.is_a?(Net::HTTPSuccess) || upload_res.code == "200" || upload_res.code == "201"
-        data = JSON.parse(upload_res.body)
-        new_video_id = data["id"]
-        puts "✅ [Success] Video uploaded successfully! Video ID: #{new_video_id}"
-        puts "   Link: https://youtu.be/#{new_video_id}"
-        return data
+      upload_req = Net::HTTP::Put.new(upload_uri)
+      upload_req["Content-Type"] = "video/mp4"
+      upload_req["Content-Length"] = file_size.to_s
+      
+      File.open(file_path, 'rb') do |file|
+        upload_req.body_stream = file
+        upload_res = upload_http.request(upload_req)
+
+        if upload_res.is_a?(Net::HTTPSuccess) || upload_res.code == "200" || upload_res.code == "201"
+          data = JSON.parse(upload_res.body)
+          new_video_id = data["id"]
+          puts "✅ [Success] Video uploaded successfully! Video ID: #{new_video_id}"
+          puts "   Link: https://youtu.be/#{new_video_id}"
+          return data
+        else
+          raise "Upload failed (#{upload_res.code}): #{upload_res.body}"
+        end
+      end
+    rescue OpenSSL::SSL::SSLError, Errno::ECONNRESET, Errno::EPIPE, Net::ReadTimeout => e
+      retries += 1
+      if retries <= max_retries
+        puts "⚠️ [Retry #{retries}/#{max_retries}] Network glitch (#{e.class}: #{e.message}). Retrying binary transfer in 5s..."
+        sleep 5
+        retry
       else
-        raise "Upload failed (#{upload_res.code}): #{upload_res.body}"
+        raise e
       end
     end
   end
