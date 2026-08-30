@@ -2,572 +2,572 @@ WEBVTT - UGtastic Archival Caption Track
 Kind: captions
 Language: en
 
-00:00:00.000 --> 00:00:11.339
+00:00:00.000 --> 00:02:10.342
 <v Mike Hall>All right, so, now that we're recording, I can say hi, welcome to Software Craftsmanship in McHenry County, um, everybody, this is Igor Polevoy, he's here to talk to us about, you know, Active Web and Active JDBC, they're his open source frameworks and tools that he started, but before we get started, you know, I just thought, we did this a couple months ago, we kind of went around and said, introduce ourselves at the end of the meeting, I thought maybe this month we could do it at the beginning of the meeting, so I'll just start, hi, I'm Mike, I founded Software Craftsmanship in McHenry County with Jim Suchy and Ryan Gerry, who's not here tonight, um, you might have noticed that I have this very, very nice shirt on, it is that time of year again, it is, we're wrapping up for Chicago Code Camp, we have a call for speakers out, so our CFP is up at chicagocodecamp.com, so I had to recommend everybody going here and submitting talks, and then, registration will be open soon, next month, I believe we're going to be doing micro frameworks, with Luen and Min Meng, please spread the word on that, those guys are awesome, they've gone and done this talk, that, can't remember, it was one of the major Microsoft conferences, but it was extremely well received, but they do this hands-on lab, so it's going to be really cool, next month, so, you know, I'll go on to the right, so Igor, you can introduce yourself, and then Jim, and then, you don't have to stand up, if you don't want to, I want to be in the view, okay.
 
-00:00:11.339 --> 00:00:14.198
+00:02:10.342 --> 00:02:43.226
 <v Igor Polevoy>Hi everyone, my name is Igor, I've been writing software for a number of years, and being mostly in the Java camp, so my presentation tonight is going to be about two open source frameworks that I developed in order to assist people to write web applications, or just applications as well as web applications, faster, be more productive, and basically, write less code, and be smarter.
 
-00:00:14.198 --> 00:00:15.564
+00:02:43.226 --> 00:02:58.942
 <v Mike Hall>And, uh, you know, anybody, just feel free to, you know, whatever you're working on, whatever you're doing, whatever you want to promote, like, certain things that Jim's involved with.
 
-00:00:15.564 --> 00:00:18.148
+00:02:58.942 --> 00:03:28.666
 <v S2>I'm Jim Suchy, I work at 8th Light, we're a consulting company in Libertyville, downtown, and I'm consulting downtown for a payment processor, I also co-organize the Chicago Crossship Group, which we're meeting next Tuesday, Aaron Bedre is going to talk about testing and closure, so you guys are in the area, we're the one that is, let's come out.
 
-00:00:18.148 --> 00:00:20.309
+00:03:28.666 --> 00:03:53.522
 <v Mike Hall>And, uh, just so you know, Aaron Bedre is a closure superstar working for Groupon now, who's our sponsor for this month's pizza. And he's also the author of Programming Closure, sorry, second version, yeah, let's do it all the way, so he's definitely, haha, one to pay attention to. Raphael?
 
-00:00:20.309 --> 00:00:21.594
+00:03:53.522 --> 00:04:08.299
 <v S3>My name is Raphael Richard, um, I'm actually not so much in the industry as you guys are, I'm starting up a company doing Android and iPhone development, games and so forth.
 
-00:00:21.594 --> 00:00:21.831
+00:04:08.299 --> 00:04:11.032
 <v Mike Hall>So next month, it's going to be?
 
-00:00:21.831 --> 00:00:26.183
+00:04:11.032 --> 00:05:01.084
 <v S3>Well, actually, I was a business systems analyst in the 90s, I got started on 8-bit Commodore 64's way back when. So, in the 90s, I was doing C++ C, in the visual basic, and I worked over at Alport Marine Corporation, and how life changes things that went off into a whole 'n other industry, and opened up a detective agency, and so forth. So, now I'm getting the bug again with all this iPhone and Android stuff, it reminds me so much of, you know, the old days of programming the 8-bit machines, you know what I mean? Even though it's not 8-bit, of course, it's 9-bit. They added one.
 
-00:00:26.183 --> 00:00:26.213
+00:05:01.084 --> 00:05:01.426
 <v Mike Hall>Jim?
 
-00:00:26.213 --> 00:00:28.760
+00:05:01.426 --> 00:05:30.723
 <v S4>Uh, I'm Jim Taranski, I work for a company called Insight Development Group. Um, we build a CRM and iPhone app for looping contractors. I'm trying to get into job development and Android development. So, maybe we can expand on that, but also, personally, I just want to go in the middle of this stuff. We're just trying to learn something new.
 
-00:00:28.760 --> 00:00:28.841
+00:05:30.723 --> 00:05:31.663
 <v Mike Hall>Cool. Yuri?
 
-00:00:28.841 --> 00:00:30.066
+00:05:31.663 --> 00:05:45.756
 <v S5>Uh, my name is Yuri Kozervisky, and I'm a consultant for Pollet Corporation, Pollet Software Company. And I'm a J2E developer, with different expertise in J2E areas.
 
-00:00:30.066 --> 00:00:30.549
+00:05:45.756 --> 00:05:51.308
 <v Mike Hall>You in this, uh... Right here. Yeah, yeah. I like it. Good. Good.
 
-00:00:30.549 --> 00:00:32.413
+00:05:51.308 --> 00:06:12.747
 <v S6>My turn. Sure. I'm Sion. I work for Sears, I lead the mobile web development team there. I'm a front-end developer, also JSP, JPD, but mostly HTML5, CSS3, JavaScript, and I was around the 90s, and I was around the 80s, but I applied in code back then.
 
-00:00:32.413 --> 00:00:34.522
+00:06:12.747 --> 00:06:37.004
 <v S7>Um, well enough. Philip Birmingham. I work at BMO Harris Bank, doing nothing interesting. I'm basically trying to keep my hand in by coming to meetings like this, also doing, you know, personal projects, Rails, JavaScript, Canvas, HTML5, stuff like that. Just whatever seems like fun.
 
-00:00:34.522 --> 00:00:34.648
+00:06:37.004 --> 00:06:38.456
 <v Mike Hall>That sounds cool.
 
-00:00:34.648 --> 00:00:36.995
+00:06:38.456 --> 00:07:05.447
 <v S7>Yeah. It is. It's a lot of fun. I'm working on something in Rails right now to set up a phone for using Twilio, because it sounds like fun. Um, that's basically it. Like I said, I'm looking to make a career change soon, or a job change soon. I determined to be today, so I think I'll actually be coding professional.
 
-00:00:36.995 --> 00:00:37.700
+00:07:05.447 --> 00:07:13.562
 <v Mike Hall>All right, just a little insider tip. We had somebody from Twilio submitting talks to CodeCamp.
 
-00:00:37.700 --> 00:00:37.782
+00:07:13.562 --> 00:07:14.501
 <v S7>Oh, really?
 
-00:00:37.782 --> 00:00:38.146
+00:07:14.501 --> 00:07:18.686
 <v Mike Hall>So we will most likely have at least one session.
 
-00:00:38.146 --> 00:00:38.346
+00:07:18.686 --> 00:07:20.993
 <v S7>Okay. All right. Excellent.
 
-00:00:38.346 --> 00:00:38.658
+00:07:20.993 --> 00:07:24.580
 <v Mike Hall>Jeremy, do you want to introduce yourself?
 
-00:00:38.658 --> 00:00:39.393
+00:07:24.580 --> 00:07:33.036
 <v S8>Sure. I'm Jeremy. I currently mostly, I don't have an actual job yet, but I will be interning here.
 
-00:00:39.393 --> 00:00:39.712
+00:07:33.036 --> 00:07:36.709
 <v Mike Hall>Oh, that's great. Excellent. It's exciting.
 
-00:00:39.712 --> 00:00:39.920
+00:07:36.709 --> 00:07:39.100
 <v S8>We can edit that out, right?
 
-00:00:39.920 --> 00:00:40.195
+00:07:39.100 --> 00:07:42.261
 <v Mike Hall>No. No, I've done editing last month.
 
-00:00:40.195 --> 00:00:47.680
+00:07:42.261 --> 00:09:08.358
 <v S9>Oh, now I gotta go and log that in my food log now. I'm gonna get busted. Um, hi, I'm Ralph Eiden. I'm a developer here at Polysoftware as well. Been here for a while. Mainly do Java work, although in my other interests with embedded processors, Arduino and PIC and all kinds of different things, I have my hands on a lot of different things. So one of the things of interest to me that I'm working on now is compiler design. And I'm reworking for the nth time, an expression parser that is like the granddaddy of everything. It's just, you know, you just kind of hand it to anything and it kind of knows what it does. So we'll be putting that up on the project board and that's all finished. It's interesting because that technology I wrote way back, probably in the early eighties and it just seems to keep getting different generations. I was looking at my first Java version in 1998 and then we revamped it again and it's not now. Now we got to really completely do this differently. So we simplified it.
 
-00:00:47.680 --> 00:00:53.242
+00:09:08.358 --> 00:10:12.333
 <v Mike Hall>Cool. All right. Well, before I cede the floor to Igor, I'm going to start, I just, I'm going to put out a call for help. You know, I promote the group as much as I can. I've got the meetup.com site now, which has been great. We had a few people who have learned about us through meetup.com. But the way people learn about us is a lot of word of mouth, blog, Twitter, you're at work here. There's a lot of empty seats. This room should be full. But let people know about these meetings. We have really great content. We have Igor coming in, you know, from way out in the north suburbs. We need your help. You guys are the ones that are going to make this group really big. So without any further ado, I'll just go ahead and hand the floor with Igor.
 
-00:00:53.242 --> 00:01:22.425
-<v Igor Polevoy>Um, so ActiveJDBC equals equals ActiveRecord for Java. So the idea is this. So tonight I'm going to be presenting two frameworks that I developed over the course of several years. The first one is ActiveJDBC. So ActiveJDBC is ActiveRecord for Java. You've probably heard that ActiveRecord, there's an ActiveRecord pattern, there's ActiveRecord technology in Ruby on Rails, right? Some people call hibernate ActiveRecord one way or the other. ActiveRecord is a thing that connects an object to a record in the database. That's the whole idea. So basically any ORM, technically speaking, could be called ActiveRecord. Now, however, the ActiveRecord phrase probably has been more popularized by Ruby on Rails because of the way the ORM is implemented there. The part of the Ruby on Rails that actually does integration between your code and a database is called ActiveRecord. Okay, they just took the name pattern and applied that name to a framework. So, I was doing Java developing for a number of years and I sparingly used Hibernate here and there. Mostly, whenever I would have to do, like, a massive database project, I usually use just JDBC, because I was kind of leery of trusting my well-being into some framework. And nonetheless, Hibernate's been the staple of Java development for a number of years, and it seems to be popular, and working. But if you look at the API on how to use the Hibernate, or any other, you know, like, second-in-command in Java, would get IPadges. Probably heard of that one, too. If you look at their APIs, they're like, okay, all I want to do is put data in a database, and pull data from database. Even using just JDBC, things seem to be simpler than with Hibernate, for Iodapus. For example, a few months ago, there was somebody started blogging tutorials on developer, on DZone slash links, you know, how to set up a project with Hibernate. The whole world was to save something in the database and read that, basically one table, one column, one insert, and one read. So that entire example was 200 lines of code. Properties, files, XML, and Java all together. It just bothers me. A couple of things about me. Who the heck is Igor Palloy? I've been developing Java software for a number of years. I did C, C++ first, and then switched promptly briefly to VV, and then started doing volumes of visual C++. When Java came out, basically I switched to Java, and I've been doing Java ever since. I've been wearing different hats. I've been a developer, an architect, a manager, back to developer, and then, for the past five years, I've been all of them at the same time. Right now, I'm working for Groupon. I also teach some Java and Rails types at institutes of professional development, and I've seen a lot of IT projects. Some failed, some successful. All right. So the question is, why would somebody go and develop another ORM for Java? If you look for a database framework for Java, you'll probably find 30 or 40, most of which you probably haven't heard of. So you've probably heard of, what, JPA, which is a layer on top of Hibernate, then you've probably heard of JDO, then you've heard of Iodatus, and that's it, right? What else is out there? Oh, Toplink. But, you know, we can only count a few of them. But if you really look for open source implementation, there's like 20 or 30 more. So why would I want to create another one? Because when I learned, I intuitively didn't want to use many of them, or any of them, and I used just JDBC for years and years and years, until I learned Ruby on Rails. And I'm like, oh my god, this is the right way to do integration with the database. So, dissatisfaction, you know, Hibernate is very powerful, but complicated. How many people actually use Hibernate in their projects? All right. Three people? Okay. What do you think of Hibernate? Very powerful, but complicated. Yes. Especially the configuration aspect. That's just nuts.
+00:10:12.333 --> 00:15:47.241
+<v Igor Polevoy>Um, so ActiveJDBC equals equals ActiveRecord for Java. So the idea is this. So tonight I'm going to be presenting two frameworks that I developed over the course of several years. The first one is ActiveJDBC. So ActiveJDBC is active record for Java. You've probably heard that ActiveRecord, there's an ActiveRecord pattern, there's ActiveRecord technology in Ruby on Rails, right? Some people call hibernate ActiveRecord one way or the other. ActiveRecord is a thing that connects an object to a record in the database. That's the whole idea. So basically any ORM, technically speaking, could be called ActiveRecord. Now, however, the ActiveRecord phrase probably has been more popularized by Ruby on Rails because of the way the ORM is implemented there. The part of the Ruby on Rails that actually does integration between your code and a database is called ActiveRecord. Okay, they just took the name pattern and applied that name to a framework. So, I was doing Java developing for a number of years and I sparingly used Hibernate here and there. Mostly, whenever I would have to do, like, a massive database project, I usually use just JDBC, because I was kind of leery of trusting my well-being into some framework. And nonetheless, Hibernate's been the staple of Java development for a number of years, and it seems to be popular, and working. But if you look at the API on how to use the Hibernate, or any other, you know, like, second-in-command in Java, would get IPadges. Probably heard of that one, too. If you look at their APIs, they're like, okay, all I want to do is put data in a database, and pull data from database. Even using just JDBC, things seem to be simpler than with Hibernate, for Iodapus. For example, a few months ago, there was somebody started blogging tutorials on developer, on DZone slash links, you know, how to set up a project with Hibernate. The whole world was to save something in the database and read that, basically one table, one column, one insert, and one read. So that entire example was 200 lines of code. Properties, files, XML, and Java all together. It just bothers me. A couple of things about me. Who the heck is Igor Palloy? I've been developing Java software for a number of years. I did C, C++ first, and then switched promptly briefly to VV, and then started doing volumes of visual C++. When Java came out, basically I switched to Java, and I've been doing Java ever since. I've been wearing different hats. I've been a developer, an architect, a manager, back to developer, and then, for the past five years, I've been all of them at the same time. Right now, I'm working for Groupon. I also teach some Java and Rails types at institutes of professional development, and I've seen a lot of IT projects. Some failed, some successful. All right. So the question is, why would somebody go and develop another ORM for Java? If you look for a database framework for Java, you'll probably find 30 or 40, most of which you probably haven't heard of. So you've probably heard of, what, JPA, which is a layer on top of Hibernate, then you've probably heard of JDO, then you've heard of Iodatus, and that's it, right? What else is out there? Oh, Toplink. But, you know, we can only count a few of them. But if you really look for open source implementation, there's like 20 or 30 more. So why would I want to create another one? Because when I learned, I intuitively didn't want to use many of them, or any of them, and I used just JDBC for years and years and years, until I learned Ruby on Rails. And I'm like, oh my god, this is the right way to do integration with the database. So, dissatisfaction, you know, Hibernate is very powerful, but complicated. How many people actually use Hibernate in their projects? All right. Three people? Okay. What do you think of Hibernate? Very powerful, but complicated. Yes. Especially the configuration aspect. That's just nuts.
 
-00:01:22.425 --> 00:01:25.395
+00:15:47.241 --> 00:16:21.407
 <v S10>Yeah, but sometimes, let's say, I was maintaining a project a couple of years ago that was on Hibernate, and we just could not understand why it wouldn't. And then it turned out that somebody turned down a specific property in some property file that basically limited the size of every select to X number of rows. So, you go to the database and say, I have 100 rows there. Why is it returning three?
 
-00:01:25.395 --> 00:01:48.496
+00:16:21.407 --> 00:20:46.959
 <v Igor Polevoy>So, things like that. So, GPA, different configuration for every platform. Again, GPA is just a small subset of Hibernate anyway. So, there's no object created. I actually claim that they're not object created. Why? Because all other frameworks, they require a third party class to operate on this class. So, you guys probably heard of a notion of anti-patterns. There are patterns, things that we want to repeat, right? There are also anti-patterns, things that we repeat but we shouldn't. Right? So, one of the anti-patterns that is classically represented by Hibernate is called an event data model. An event data model is when you, basically, when you work with Hibernate, you create your entity. Then you create your DAO. Then you create your DTOs. Then, in your entity, you write a whole bunch of setters and getters and that entity doesn't really do anything. Basically, for all intents and purposes, your entity is nothing more than a hash table. It's a bag of values that has no idea what to do with them. And other code is responsible for operating on those values, correct? I mean, that's what Hibernate feels to me. So, when you start seeing some active GDBC APIs, you'll understand what I'm talking about. Basically, in active GDBC, there are no third party classes. There are no XML files. There are no property files. It's absolutely clean, basically. You write your entity in one line of code. So, DHH, David Henson is the guy who developed Ruby on Rails. I believe he's a great API designer. And the idea of writing an ActiveRecord is, the ActiveRecord itself is pretty complex. But using it is very easy. So, active GDBC follows the same principles. Also, active GDBC does not solve every problem under the sign. It only provides 80%. And then it stops. And basically, it says, beyond that, we're not going to solve every problem out there, because we don't know what they are. Well, it also depends on a simple schema. And usually, complicated DB schemas are either wrong design or some legacy they use. So, if necessity is a mother, then the laziness is a father. So, you could say that, although, I could tell you, writing something like that is no picnic. It is very complicated. So, these are the design principles. I mean, it's not complicated complicated. The entire source code of active GDBC is not that big. It's about 15,000 lines of code. It is lightweight and fast. The JAR file is 120K in size, has no dependencies, works twice faster than Hibernate, and it doesn't require setup. All right. Principle number one, should infer metadata from database. You probably saw Hibernate entities where it says, this thing is mapped to that table. This instance variable is mapped to that column. This instance variable has many of those things. One to many relationships, many to many relationships, and so on. Right? Active GDBC is absolutely free of that. You already have that data documented in the database. So, when you start up your project, Active GDC goes into the database, reads the schema metadata, and configures itself accordingly. That's why it requires no configuration.
 
-00:01:48.496 --> 00:01:49.179
+00:20:46.959 --> 00:20:54.817
 <v S10>Things that can be in the database, they can look exactly the same, but in the data model...
 
-00:01:49.179 --> 00:01:55.135
+00:20:54.817 --> 00:22:03.319
 <v Igor Polevoy>You can override. In Active GDC, you can override these things. Basically, there's a number of conventions that it expects, naming conventions. For example, if you have a table called people, and you have your entity called person, it will map automatically. Actually, it does even that kind of a, you know, people, person, geese, goose, it does regular, singular to plural, inflections of English language, and it also knows about most common exceptions, like geese, goose, people, person. So, if you follow conventions, you don't need configuration. If you don't follow conventions, you need to put some annotations. I'm talking about, like, one-to-one mapping versus one-to-many. It does not support one-to-one mapping. It supports one-to-many, and many-to-many, as well as polymorphic associations.
 
-00:01:55.135 --> 00:01:56.390
+00:22:03.319 --> 00:22:17.754
 <v S10>What kind of composition? Like, you have an object, and that object has two children. Like, object A has object B and object C, and you put them in two different tables.
 
-00:01:56.390 --> 00:01:56.516
+00:22:17.754 --> 00:22:19.206
 <v Igor Polevoy>Yeah, no problem.
 
-00:01:56.516 --> 00:01:57.296
+00:22:19.206 --> 00:22:28.175
 <v S10>And then how does it know that there could be only one object C in object A and one object B in object A?
 
-00:01:57.296 --> 00:01:57.919
+00:22:28.175 --> 00:22:35.350
 <v Igor Polevoy>Because it finds, let's say, you have a person, and then you have an address, right?
 
-00:01:57.919 --> 00:01:57.949
+00:22:35.350 --> 00:22:35.691
 <v S10>Yes.
 
-00:01:57.949 --> 00:02:00.823
+00:22:35.691 --> 00:23:08.746
 <v Igor Polevoy>Let's say you have addresses table. We'll get to it, but, you know, if we're running ahead, the addresses table will be expected to have a person ID column in it. And if it finds it, then it automatically sets a relationship between a person and address, and basically it says, this person has many addresses. So this table, people can have many types of relationships with other tables.
 
-00:02:00.823 --> 00:02:01.521
+00:23:08.746 --> 00:23:16.775
 <v S10>Yeah, but that would mean that the person can have multiple addresses. That's not always true.
 
-00:02:01.521 --> 00:02:01.840
+00:23:16.775 --> 00:23:20.448
 <v Igor Polevoy>Well, why don't, maybe when we get to code—
 
-00:02:01.840 --> 00:02:02.174
+00:23:20.448 --> 00:23:24.292
 <v S10>You're talking about one-to-one relationship?
 
-00:02:02.174 --> 00:02:46.082
+00:23:24.292 --> 00:31:49.174
 <v Igor Polevoy>Yeah, good. It does not support one-to-one relationship, because I can't really fathom how it's represented in the database. All right. So it should be very easy to work with, remove, code, the minimum. No configuration, just conventions. Conventions are overritable in code. Not in property files or XML. You do not need to learn another language. No HQL or any finicky thing. It's good. If you know Java and you know SQL, you can use ActiveJVC, and you will have to write very, very little about SQL, and it's going to be readable. Code must be lightweight and intuitive. You should read like English. There's a lot of English-like phrases that you write in ActiveJVC using so-called fluent interfaces. No sessions, because ActiveJVC does not require a third-party object to operate on models. I'm going to start calling them models from now on. Think of an MVC. A model is your data. So what in Hibernate is called an entity, in Active JVC is called a model. Since models operate on self, there is no need for a third-party object, and there is no session. You just call methods on the model itself, and you're done. And models are, you know, you don't have to attach them. You have no persistent manager, again, not a third-party object, and no classes outside your own model. Basically, I collapse entire architecture from DAO, DTO, an entity into one class, model. You will see that. It's very, very easy and simple. Models are lightweight, and they have no transient fields. Basically, you can take a model, you can serialize, you can deserialize it back, and save it again if you want. It's gonna be the same, no proxy. I invented the new term. What you write is what you get. Well, in some other frameworks, sometimes you write one thing, but at the end, you say, hey, session, get me this thing, and you think you get that thing, but it actually is a subclass. Okay, no setters and getters. Well, that's what I thought back then, but now I'm kind of in between. Basically, you can have your setters and others, but certainly no DAOs and DTO. They're mostly general. Active JDBC is there. If, let's say, you try to get something, or put something in the database, and you have exception coming from JDBC driver, so duplicate records or something, you see the stack trace. The stack trace is usually four or five lines. So, it tells you the depth of the framework. So, fast. I have a simple test that stores 50,000 records in MySQL database and reads them. One on active JDBC, one on Hibernate. Active JDBC is about 40% faster. And active JDBC is about 40% slower than JDBC, which tells you that Hibernate is about four times slower than JDBC. It also has caching implemented, back then when I did the slide, it was OScache right now, so OScache and HCache. All right, the size is about a company. It requires primary keys, exactly the same way as ActiveRecord. Basically, you have auto-incremented integer field that's been implemented as you enter your records. So, writing a model is pretty simple. You write it like this. Public class person extends model. This will automatically map to a people table. And, as you can see, the class is empty. Maps to people. No necessary details about this table from David. Who knows? Immediately ready for correction. So, what kind of operation? As you can see, I didn't write anything, and I have nothing in it. But, I can start writing code like this. Person dot where. What's name equal John? And I got a list of people. And then, I'll just iterate through this. So this should be pretty easy. Any questions about this? When I show people this, they actually don't believe me, ask me to write code and show them how this works. We'll actually write a simple credit location using FWGBC and active web in this presentation. So, you can select those associations. For example, if I have another model, address extends model. And obviously fable addresses has a column person ID. As you can see, there's also inflection. The point key is not people ID. It's person ID. It's all done right. Then you can say a person find first, and then provide a specific value. Basically find first, runs the scale, but limits the results to one. But the point is this. Once you get your person, you can say person get bold and pass what association you're actually interested in. Because a person can have many addresses. A person can have many books. A person may have many other things such articles, whatever. So, the interesting thing is that active IDC supports three types of associations. One to many, many to many, and polymorphic. Quite similar to ActiveRecord in rails. And the APIs to get all these things are identical. So, even if I have, let's say, a doctor-patient, with doctor-patients table in between, where a doctor treats many patients, and a patient visits many doctors. It would still be saying, doctor, get all patients, or vice versa patients, you get all doctors, and you get your stuff. Basically, this is, in my opinion, a lot more, oh. Because I don't really care how that thing is done. Well, I care to a certain extent. But, once I'm working on the level of my models, I'm thinking about my objects, and not about records. Here's an example of syntactic fluid interfaces. Person where H is greater than 21, limit for you offset 20, order by H. So, the where method returns a special object called lazy list, which has all this stuff. And each one of these methods returns that same lazy list. So, that means, as many times as you call and you configure, you further filter your query, it simply configures that lazy list. And that lazy list, which is also implementation of a list interface, Java util list, doesn't actually go through the database. You're just configuring. That's until you start iterating through that list. When you start iterating through the list, then it goes through the database. So, in a sense, it's lazy in that sense.
 
-00:02:46.082 --> 00:02:46.505
+00:31:49.174 --> 00:31:54.043
 <v S10>All right. So you'd say, so what, I can write this query?
 
-00:02:46.505 --> 00:02:46.609
+00:31:54.043 --> 00:31:55.238
 <v Igor Polevoy>Yes. Go ahead.
 
-00:02:46.609 --> 00:02:46.840
+00:31:55.238 --> 00:31:57.886
 <v S10>Do it for Oracle, for instance.
 
-00:02:46.840 --> 00:02:46.914
+00:31:57.886 --> 00:31:58.740
 <v Igor Polevoy>Good luck.
 
-00:02:46.914 --> 00:02:47.448
+00:31:58.740 --> 00:32:04.890
 <v S10>Do it for, uh, what's it called? SQL server. And every one is different.
 
-00:02:47.448 --> 00:02:59.389
+00:32:04.890 --> 00:34:22.236
 <v Igor Polevoy>MySQL is one, you know, basically, we support about five or six databases. All major databases supported. MySQL, PostgreSQL, Oracle, H2, MesaSql, and something else. I may be some, but, SQL server. Yes. But it's all recorded on the website implementation. One way or the other, you have one API to operate. The thing that I was mentioning before is that you have to write a little bit of snippets of SQL there. This is actual SQL. This is the part of SQL which people usually write after a where clause. That's why it says person where H greater than 21. If I just read this expression and you didn't know I was reading code, you would have thought I'm talking. This is just standard language. That's the goal. Well, if you just need to create a new data, my person class doesn't have anything, but it inherits the model, right? That's why I have a whole bunch of methods that I can use. And so I'm using, basically, these are setters. These are dynamic setters. And dynamic setters, basically, it says, first parameter is the name, the column. And the second one is the value. This is really not the name, the column. It's the name of an attribute. Think of ActiveJDBC as a hash map on steroids with lots and lots of semantic knowledge about the data. There are so many ways to create new data. You can create data like this because the set method returns this. You can create it like this, create hit, first name, basically, name, value, name, value, name, value. The created method, of course, expects an even number of arguments, and first, third, and basically every odd argument is a name of an entity.
 
-00:02:59.389 --> 00:02:59.775
+00:34:22.236 --> 00:34:26.677
 <v S10>Can I take string to one? Does it take any mistakes?
 
-00:02:59.775 --> 00:03:18.621
+00:34:26.677 --> 00:38:03.373
 <v Igor Polevoy>Oh, it takes any object. Whatever object that will be accepted by your driver and the database, this parameter is safe. This parameter is up to you. But then you can write your own setter and getter and wrap this thing around it. By the way, there are setters and getters, these are dynamic setters and getters. These are generic setters and getters. But there are setters and getters that actually do conversion of value into a specific type. Let's say there's a get string, get timestamp, get integer, get float, and so forth. But those conversions are actually pretty advanced. First, it tries to find out if it's that type. Then it tries to find out if it's a superclass, let's say, for dates and timestamps and stuff. If that doesn't happen, then it converts that to a string and tries to parse that into a string. If that doesn't happen, then it throws in a certain size, I can't do it. But it's also transparent to things like clobs. You can say get string and pass a name of a column, which actually is a clob. You're going to get a fully read clob into your string. Just be careful. You know, if your clob is large, you're going to run out of there. Validations. Validations are declarative. Basically, this is in the style of ActiveRecord, which is really cool. I think that the slide is, there is a missing point. So the idea here is that I'm saying that this thing needs to validate presence of first name and last name. Meaning, this model will be throwing an exception if you try to save it into a database, but when either one of this is missing, and you're going to get error messages. All right. A little bit more validation. This is a more advanced set of validation rules. Basically we're saying that the total shouldn't be just present. I want this to be a number. And I also allowed it to be null. But if it's a number, I want it to be greater than zero and less than a hundred. Maybe it's a percentage or something. And I want it to be an integer. Oh, by the way, here I'm also operating a default message. Now, the value that I put into message, basically every validation method accepts, also has this message method attached to it, that you can use to pass in either a verbatim message or a key from a resource number. So the whole thing is actually internationalized. And the validation framework is just so advanced here. It's dynamic. You can carry it on messages, within, on values, within messages and so forth. It's actually pretty good. All right. So anybody here familiar with saving, with Ruby on Rails?
 
-00:03:18.621 --> 00:03:18.658
+00:38:03.373 --> 00:38:03.800
 <v S10>Yeah.
 
-00:03:18.658 --> 00:03:25.245
+00:38:03.800 --> 00:39:19.562
 <v Igor Polevoy>Well, okay. And you probably know the difference between save and save bang. So the save basically returns bullet and says, I was saved or I wasn't saved. It's very convenient for a web project where you say, save this thing, or you say, if not saved, show an error page. If saved, it just go the normal way. Save bang on the other hand, if there's a problem, it's a validation problem, it'll throw an exception. All right. Example of one to many relationship. Say I have a user extends model and I have address extends model. And all I have to do is that the addresses table needs to have a column user. After that, I can start writing my code and the two. So by the way, if you try to say user dot get all books dot class, and there's no relationship to books, then you're going to get an exception saying, I don't have association to that thing. However, I do have these associations.
 
-00:03:25.245 --> 00:03:25.453
+00:39:19.562 --> 00:39:21.954
 <v S10>Is that a runtime exception?
 
-00:03:25.453 --> 00:03:25.624
+00:39:21.954 --> 00:39:23.918
 <v Igor Polevoy>Yes. It's an exception.
 
-00:03:25.624 --> 00:03:26.054
+00:39:23.918 --> 00:39:28.872
 <v S10>What do you mean? Runtime? Do you have to catch it or not?
 
-00:03:26.054 --> 00:03:26.492
+00:39:28.872 --> 00:39:33.912
 <v Igor Polevoy>Oh, you don't have to catch it. Nothing needs to be caught.
 
-00:03:26.492 --> 00:03:26.923
+00:39:33.912 --> 00:39:38.866
 <v S10>You mean if it's a checked exception or runtime exception?
 
-00:03:26.923 --> 00:03:35.930
+00:39:38.866 --> 00:41:22.473
 <v Igor Polevoy>Yes. It's a runtime exception. Okay. Many to many. Same, I think I mentioned this before. Let's say you have a table of doctors, then you have a table of patients, then you have model doctor, then you have a model patient. And then you have doctor's patients, which will have columns doctor and patient tables. So, and by the way, this doctor's patients table could be called patients. It doesn't really matter. The framework basically says, okay, for this state, I'm going to find all possible variations of all relationships that I'm looking for. So if it finds it, it will just configure it. And then I can do things like that. Patient dot get all, doctor, or the mirror of that, you know, doctor get all that patient. The get all method returns all results, all related records. But the get method has multiple parameters. So you can filter down what exactly. All right. So this is kind of a summary of moving API across multiple types of relationships. Let's say one too many, many too many polymorphic. It's the same, removing, it's also the same. And you can see that the framework is very symmetrical in a sense. Once you learn the API, if you expect it should be like that, it probably will be like that.
 
-00:03:35.930 --> 00:03:36.287
+00:41:22.473 --> 00:41:26.573
 <v S10>You can see a couple words. What is polymorphic?
 
-00:03:36.287 --> 00:03:40.735
+00:41:26.573 --> 00:42:17.650
 <v Igor Polevoy>Polymorphic association is when you have, let's say in one too many relationships, you have a parent and you have children. Let's say you have an article and you have tags. You have articles and tags, right? The problem is, let's say I want to tag articles, but I also want to tag products. Now my tags, do I create another different table for product tags? So the polymorphic association allows to use the same table, but to have children there that belongs to parents of different types. So, which is a pretty typical scenario. ActiveRecord supports it right out of the box and so does after GDC.
 
-00:03:40.735 --> 00:03:41.336
+00:42:17.650 --> 00:42:24.569
 <v S10>So when you process, you say, here's my IDE and the data and then how is my type?
 
-00:03:41.336 --> 00:03:47.878
+00:42:24.569 --> 00:43:39.819
 <v Igor Polevoy>I may have a slide on that. But they also have more generic fields. There are three fields that obviously is the primary key, but there are also two more, created that and updated that. If your table has them, ActiveJDBC will use them. And when the new record is inserted, they both have the same value, but then if you read that value and then change something in your own model and then save it again, updated will have the last updated value. It's really convenient. All right. Caching. It's pretty simple. We put a cache notation. We're done. Of course, OS cache. Both OS cache and EH cache support clustering, and they use a variety of techniques. They use J groups, J use messaging. So you can configure clustering, configure caching in closed cluster. It's not something that's trivial, but it's also not part of the ActiveJDBC. It's really part of the integrated framework.
 
-00:03:47.878 --> 00:03:48.420
+00:43:39.819 --> 00:43:46.054
 <v S10>And that's not something that I have to run a daemon for service? That's—
 
-00:03:48.420 --> 00:04:10.838
+00:43:46.054 --> 00:48:03.919
 <v Igor Polevoy>No, no, no, no. This is called near cache. That means if I have multiple nodes in my cluster, then each node will have its own private cache. However, whenever there is a destructive operation that goes through ActiveJDBC, the cache for that table and its related tables is blown away. And that event is propagated to other nodes in the cluster and they blow away those caches as well. There's no daemon. Life cycle callbacks. You can implement these methods, and do whatever you want, they're gonna be called from framework. It's a callback example. User extends model. Before save, we say that the password has to be encrypted. So we encrypt the thing before we actually save. Pretty convenient. So framework actually allows you to put code in the right places. Now, this is pretty interesting. The include is a very powerful method. The notion of lazy eager is completely different between ActiveGDVC and Hibernate. Hibernate was designed during the times of client-server programming, in 1998, 1999, the first version. Today, 90% of stuff is done for the good. So that type of lazy eager is not needed anymore, and I think just complicates management. ActiveGDVC is just plainly lazy. In fact, it's more lazy than Hibernate, because once you get, let's say, a list of things that are related, let's say, user get all addresses. You call that method again, you go to the database again, unless you turn on cache. Now, here, I can send user find all order by ID. I find my users. That's fine. But I can also do that include addresses. Let's say, if I wanted to display on my webpage, users and their addresses. Let's say, many addresses per user. I could go a trivial path, where I get all my users, and for each user, I get all addresses. That means I'm gonna do n+1 queries per database. I'm gonna get all users, and then for each user, one more query for addresses. On the other hand, if I do include addresses, pretty much you're telling the framework to do two queries, regardless how many objects there are. First, get all users, and then get all addresses of those users. At which point, when you start doing user dot get addresses, you're gonna get them from cache. The difference is, and by the way, include takes a var args, so you can also include parent type relationship and child type relationship in one call. In that case, you're gonna have three, just go to place. One for each name. Logging. Logging is also quite advanced. If you say dash deactivate.c.log, if you just say log, okay, it's gonna be logging. Or you can provide your regular expression. Basically, you filter out what you wanna see in your log. The other thing that's interesting is that there's API in the framework that you can call to test a new expression to change logging on the file. Well, there's a lot more about ActiveGVC. I just don't want to. I want to jam everything within one hour. Any questions about ActiveGVC? It seems magical. That's good. But if you pick under the hood, you'll see that there's no magic. Go ahead.
 
-00:04:10.838 --> 00:04:10.980
+00:48:03.919 --> 00:48:05.542
 <v S10>What license is it?
 
-00:04:10.980 --> 00:04:11.098
+00:48:05.542 --> 00:48:06.908
 <v Igor Polevoy>It's Apache two.
 
-00:04:11.098 --> 00:04:11.967
+00:48:06.908 --> 00:48:16.902
 <v S10>Three. I'm just trying to frame the question I have in here and kind of a real life problem. Let me get back to that.
 
-00:04:11.967 --> 00:04:12.442
+00:48:16.902 --> 00:48:22.368
 <v Igor Polevoy>All right. That's all right. No problem. So guys, any questions?
 
-00:04:12.442 --> 00:04:12.725
+00:48:22.368 --> 00:48:25.614
 <v S10>How long did this take you to the end?
 
-00:04:12.725 --> 00:04:21.918
+00:48:25.614 --> 00:50:11.356
 <v Igor Polevoy>It's an ongoing—well, basically, there was one really, really hard problem to solve, which is a person doesn't wear. Since static methods are not in Java, it has a post-compile process for instrumentation. So it took me a while to figure it out. So a lot of people kind of dislike it, but once you move it in your day-to-day process, like, I don't notice it. You click on the button and everything just happens. So I started in prototyping that in September of '09. I had a working prototype in October. By November, I had most of the implementation done. So I started in January 1st, it was more of the uranium production powering website for instrumentation. Since then, I've added more features, but I would say that over the past maybe a year, a year and a half, I'm not adding any more features. I'm just fixing bugs here and there. And then I'm accepting contributions from others. So, for instance, the original implementation had only support for three databases. First, MySQL and Oracle, and then all others were added by other people. Part of the validation framework was added by people in Brazil. Then H2 support was added by some guy from Japan. So there's a number of people. But I would say that API is pretty much similar.
 
-00:04:21.918 --> 00:04:22.326
+00:50:11.356 --> 00:50:16.054
 <v S10>And the documentation, were you able to get on the web?
 
-00:04:22.326 --> 00:04:24.435
+00:50:16.054 --> 00:50:40.312
 <v Igor Polevoy>Yeah, I was able to get on the web, you can Google ActiveJVC. The docs are all there. There's also Google Groups support forum where you can ask questions, and the people, me and a bunch of other people, will go and answer. They're pretty quick to answer questions. Usually, same day.
 
-00:04:24.435 --> 00:04:26.477
+00:50:40.312 --> 00:51:03.801
 <v S2>And I'm actually with the same team as Igor, and I've actually had to use this on days where Igor was not there. And I was able to figure it out. And I'm not a Java guy. So the docs are good. I'll give you credit for that. Most open source projects don't have that much time.
 
-00:04:26.477 --> 00:04:27.316
+00:51:03.801 --> 00:51:13.452
 <v S10>Yeah, just looking at it off of the website, I looked at it briefly last night. That seemed very straightforward.
 
-00:04:27.316 --> 00:04:34.200
+00:51:13.452 --> 00:52:32.631
 <v Igor Polevoy>Yeah, thanks. Hence the magical. My memory is not that good. So if I develop a feature and I don't document it, I wouldn't remember how to use it. Some of the really complicated SQL. See, I mostly develop ActiveJVC because I'm really bad at SQL. Oh, it's one of many reasons. So some of the SQL was provided by other people. So I used SQL as a template, basically filled in my dynamic values. That's why I said, I need to do this and this. I remember that the most complicated SQL is for Oracle to support limit offset and something else. And I didn't write it. But the developer on my team actually was good at SQL. So I did that thing. And I tested it against a table with millions and millions of records and it was good. Basically, the response was flat, speed was amazing, no problem. But then somebody in the community said that specifically it could be optimized. You actually have to be on Oracle to be able to do that.
 
-00:04:34.200 --> 00:04:35.952
+00:52:32.631 --> 00:52:52.789
 <v S6>Sorry, I can't answer your question. Can you pass in any hints to SQL for transactions? With SQL server, I can say, just basically do a fast forward read only cursor. I can pass that hint along with a query. Can I do anything like that?
 
-00:04:35.952 --> 00:04:38.922
+00:52:52.789 --> 00:53:26.954
 <v Igor Polevoy>No, you can't do that. See, we would have to go back to my original slide where I say provides 80% of the typical functionality and the 20 other percent. On the one hand, I don't feel is ORM. On the other hand, I don't feel is the right thing to provide by a framework. Because if you have to have that fine-tuned access to a specific function of your database, God forbid to depend on the framework.
 
-00:04:38.922 --> 00:04:39.650
+00:53:26.954 --> 00:53:35.325
 <v S6>But a lot of frameworks do provide a way to send arbitrary SQL and then return back like an array.
 
-00:04:39.650 --> 00:04:39.940
+00:53:35.325 --> 00:53:38.656
 <v Igor Polevoy>Oh yeah. ActiveNHC can do that as well.
 
-00:04:39.940 --> 00:04:40.370
+00:53:38.656 --> 00:53:43.610
 <v S6>So I could, if I had to do a specialized query, I could...
 
-00:04:40.370 --> 00:04:47.944
+00:53:43.610 --> 00:55:10.732
 <v Igor Polevoy>Oh yeah, you can freehand your SQL. You can just say person.findbySQL and write your SQL. As long as it conforms to a person. As long as the result will bring the columns for this model. If not, there's a lower level API class called base. Base, you say base, that's fine. And just find, provide whatever SQL you want. From there, you get a list of maps. And by the way, the find method can also get a record listener. Because, you know, the first implementation returns the entire result set in memory, you get the list, which is eager. The other one is not lazy, but it's like a cursor. It's scrolling in half, and you get one record at the time, but you get in the form of a Java hash map, or Java map, where keys are columns from that table, and values are values from that problem. So it's kind of a convenience thing, but the nice thing about it is, like, in one line of code, you can write a quote-unquote loop that will parse millions of records from your table without having to spam anything. Does that answer?
 
-00:04:47.944 --> 00:04:48.056
+00:55:10.732 --> 00:55:12.014
 <v S6>Yeah, that did.
 
-00:04:48.056 --> 00:04:48.680
+00:55:12.014 --> 00:55:19.188
 <v Igor Polevoy>It also doesn't have support for stored procedures. You just, this was kind of like—
 
-00:04:48.680 --> 00:04:49.170
+00:55:19.188 --> 00:55:24.826
 <v S6>Actually, that was the one that I was trying to inform on my list.
 
-00:04:49.170 --> 00:04:49.482
+00:55:24.826 --> 00:55:28.413
 <v Igor Polevoy>No, because stored procedures are not ORM.
 
-00:04:49.482 --> 00:04:51.360
+00:55:28.413 --> 00:55:50.023
 <v S6>Yeah, I know, but that's something, like, they're really popular in SQL Server, so I'm just going to say, another way to, like, I know in length of SQL and things like that, I could define mappings to stored procedures, but they were a special case, so.
 
-00:04:51.360 --> 00:04:52.838
+00:55:50.023 --> 00:56:07.020
 <v Igor Polevoy>Yes, but the thing is that you can write that stored procedure management code inside the model and wrap it as a service, and off you go. In other words, the model itself is a good place to put that.
 
-00:04:52.838 --> 00:04:53.150
+00:56:07.020 --> 00:56:10.608
 <v S6>Or I could just do the base and then exec.
 
-00:04:53.150 --> 00:04:53.581
+00:56:10.608 --> 00:56:15.562
 <v Igor Polevoy>Yeah, within that model, you probably would use the bases.
 
-00:04:53.581 --> 00:04:53.796
+00:56:15.562 --> 00:56:18.039
 <v S6>Does this work with the base?
 
-00:04:53.796 --> 00:04:57.286
+00:56:18.039 --> 00:56:58.183
 <v Igor Polevoy>No. Active JDBC uses the so-called dry principle. Meaning, if something is provided by an underlying system, it will not provide that. And transaction, you know, will fall into that kind of way. It has a couple methods to start and stop transaction, to roll back. But those are convenience methods. Basically, you can say, start transaction, you do a lot of active JDBC code, then you save. But those are the same normal calls. They're just a little bit more convenient.
 
-00:04:57.286 --> 00:04:57.546
+00:56:58.183 --> 00:57:01.173
 <v S6>But whose model is it? Model model?
 
-00:04:57.546 --> 00:05:07.132
+00:57:01.173 --> 00:58:51.442
 <v Igor Polevoy>It's not model. There's a class called DB. Classical DB or base. Basically, active JDBC actually also provides ability to map, at runtime, models that are mapped to different schemas, even to different database. Let's say I have an example where within one system I'm using models, one set of models belong to MySQL schema and the other to Oracle. You can do that. So, for something like that, you obviously need to have two database connections. One to one database, one to another. In that case, you use a class called DB. If you only need one, then you use base. Basically, the base and DB are similar. There's a page and we can describe you what they're for. The point is, the base class will have methods to start this connection. But underneath, you'll see that it's doing nothing other than connections set of a commit false. So, basically, you're in full control of what's happening if you're using standard connection that you open to work on the pool. If, however, you're working within JPW container, then you're under the same principles as any other code. Imagine that you rip out all the active JDBC code and plug in JDBC code. The same exact reason. And so, if you're writing your active JDBC code within, let's say, enterprise Java B, then you automatically have connections.
 
-00:05:07.132 --> 00:05:09.078
+00:58:51.442 --> 00:59:13.821
 <v S6>Oh, I'm kind of interested in, I'm not a Rails developer. Rails is new to me. I just started dabbling in it. I know it's been around a while. But this, Rails provide transactions or methods for doing transactions and access things toward procedures and so forth.
 
-00:05:09.078 --> 00:05:10.088
+00:59:13.821 --> 00:59:25.437
 <v Igor Polevoy>I haven't had to do it. I mean, just comparing this to, excuse me. I haven't had to do it. It's really not in the culture for us to use.
 
-00:05:10.088 --> 00:05:10.927
+00:59:25.437 --> 00:59:35.089
 <v S6>No, sir. It's what we used to do. Five years. The last time I used a certain procedure was when I was doing that.
 
-00:05:10.927 --> 00:05:11.009
+00:59:35.089 --> 00:59:36.028
 <v Igor Polevoy>Yeah. Okay.
 
-00:05:11.009 --> 00:05:11.580
+00:59:36.028 --> 00:59:42.605
 <v S6>It didn't seem like it would mesh well with it. Well, as far as transactions.
 
-00:05:11.580 --> 00:05:14.187
+00:59:42.605 --> 01:00:12.586
 <v Igor Polevoy>But as far as transactions, yeah, they do separate transactions. You can do transactions. For instance, in active web and in Rails, whenever you run the test, each test is run in the context of a transaction, which is rolled back at the end of the test. Which leaves your database in a good state for the next test. And active web does the same thing.
 
-00:05:14.187 --> 00:05:14.558
+01:00:12.586 --> 01:00:16.856
 <v S10>Is it all written in Java? Active web. Active jvc.
 
-00:05:14.558 --> 00:05:14.684
+01:00:16.856 --> 01:00:18.308
 <v Igor Polevoy>Yes. It's a Java.
 
-00:05:14.684 --> 00:05:19.407
+01:00:18.308 --> 01:01:12.632
 <v S10>I'll tell you what's confusing because I'm stuck in the grabbing entity and then model. And then once you've got the entity, you pass the value object, which is just a POJO that you don't touch. And then that's kind of a read-only kind of thing. And that's not what we're dealing with here. So that's part of my confusion. But that also gets other confusion on my part because a lot of times we will have getters and setters that act on the value objects which will do various things which will then translate into something else that could get put down into the database. It looks like right here we're a little closer to the database.
 
-00:05:19.407 --> 00:05:19.919
+01:01:12.632 --> 01:01:18.525
 <v Igor Polevoy>Yes. In other words if I set this. Closer to another. Right. Exactly.
 
-00:05:19.919 --> 00:05:21.152
+01:01:18.525 --> 01:01:32.704
 <v S10>Okay. The other thing is, so when you're doing a getter or anything, you're actually providing the column name or the attribute name, right? That's generally how you—
 
-00:05:21.152 --> 00:05:21.189
+01:01:32.704 --> 01:01:33.131
 <v Igor Polevoy>Yeah.
 
-00:05:21.189 --> 00:05:21.382
+01:01:33.131 --> 01:01:35.352
 <v S10>As if it were a hash name.
 
-00:05:21.382 --> 00:05:22.541
+01:01:35.352 --> 01:01:48.676
 <v Igor Polevoy>Yeah. But it probably got backed up by that. But the name corresponds to the name of the column. Because internally, well, it doesn't say a hash name on it.
 
-00:05:22.541 --> 00:05:25.154
+01:01:48.676 --> 01:02:18.742
 <v S10>See, that's the other thing, too, where I'm just going back from mindset where everything is being driven by a database that has been constructed. And the other way is, you know, we can have it hyphenate away and just have that generated. I think your approach is really a better approach to take because it allows you to consider what you're building.
 
-00:05:25.154 --> 00:05:27.122
+01:02:18.742 --> 01:02:41.377
 <v Igor Polevoy>Exactly. In ActiveJDBC, unlike Hibernate, it will not generate tables. It will read them and configure itself. That means the tables have to exist. That means you are forced to write an SQL. That means you are forced to think, which violates the laziness principle.
 
-00:05:27.122 --> 00:05:27.159
+01:02:41.377 --> 01:02:41.804
 <v S10>Yeah.
 
-00:05:27.159 --> 00:05:32.276
+01:02:41.804 --> 01:03:40.654
 <v Igor Polevoy>Well, there's a lot of violations here. And people are like, hey, no property files. Or no setters and getters. Or the last guy hit a belt to the where method because it was static. Like, we're not allowed to write static methods. Why? So it's not conforming to kind of quote-unquote standard Java practice, which I personally find pitiful, unfortunately. Java developers are stuck in the style of code that was quote-unquote popularized 10 years ago. And they still go with it without kind of looking outside. I was a sinner just like that until I learned Ruby and Rails. And then you start to realize that, you know, all that garbage code that I've been writing is actually garbage code.
 
-00:05:32.276 --> 00:05:32.884
+01:03:40.654 --> 01:03:47.658
 <v S10>And realizing you never have to worry about forgetting to move to the next record.
 
-00:05:32.884 --> 00:05:32.944
+01:03:47.658 --> 01:03:48.341
 <v Igor Polevoy>Exactly.
 
-00:05:32.944 --> 00:05:35.439
+01:03:48.341 --> 01:04:16.955
 <v S10>You have some interesting logging information that you show. Are you going to show us some code? The one thing I wanted to ask is, is there like a way just to log the—no, I meant like, are you going to like show the output? Is there a way to log just queries? Like, I always like to see ActiveRecord. What is the sequence that's being—
 
-00:05:35.439 --> 00:05:36.011
+01:04:16.955 --> 01:04:23.532
 <v Igor Polevoy>Yeah, yeah. What we have to do is provide a regular expression here in which—
 
-00:05:36.011 --> 00:05:36.293
+01:04:23.532 --> 01:04:26.778
 <v S10>But that will just log select methods?
 
-00:05:36.293 --> 00:05:38.261
+01:04:26.778 --> 01:04:49.412
 <v Igor Polevoy>Select the text. Basically it says everything that will be logged can be filtered by this regular expression. So you can knock yourself out and write whatever complicated expression just catch, you know, it says I want to cache, select, and insert, but not updates.
 
-00:05:38.261 --> 00:05:38.810
+01:04:49.412 --> 01:04:55.733
 <v S10>Cool. And prepared. It looks like it supports prepared statements as well.
 
-00:05:38.810 --> 00:05:39.426
+01:04:55.733 --> 01:05:02.822
 <v Igor Polevoy>Yes, it does. It actually caches prepared statements. It has a little cache inside.
 
-00:05:39.426 --> 00:05:39.783
+01:05:02.822 --> 01:05:06.922
 <v S10>So that gives us some safety for cell injection.
 
-00:05:39.783 --> 00:05:46.934
+01:05:06.922 --> 01:06:29.176
 <v Igor Polevoy>Yes. All right. All clear with Dr. GBC. Actually, I've interviewed people using this thing after months of day in and day out. And, you know, the reaction was like, there's nothing to talk about. Like, when you have comfortable shoes, you don't think about shoes, you just focus on where you're going. And if you have uncomfortable shoes, you constantly think about those shoes. So that was a relief for me to hear that. All right, what I'd like to do now is I'd like to show you a little bit of active UGVC code, which is also part of my example part, as well. But it's probably going to be pretty cool to see. The example that I'm going to show you is an example from active web. I'd like to show you that example first, even though you don't know anything about active web, but this little example has a snippet of active UGVC. And I just wanted to show you what it looks like in real life. Aim active well. Does everybody see that? Can I make the font bigger?
 
-00:05:46.934 --> 00:05:47.565
+01:06:29.176 --> 01:06:36.436
 <v S10>Make it a little bigger. Cold fusion? Yeah, it's up next to the middle. Is it better?
 
-00:05:47.565 --> 00:05:53.454
+01:06:36.436 --> 01:07:44.169
 <v Igor Polevoy>Yeah. Can everybody read this? Okay. Cool. So, this being an active web project, let's say I want to create a new table, new model. First, let me see if I don't have any. That's what most of our code looks like. Basically, I'm creating two brand new databases. Okay. I'm going to do it with my project. I have a script here to create a so-called migration. Are you guys familiar with the notion of migrations? All right. Script. New migration. What table do I want to create? Articles. Let's say I want to create an article. Create articles table. All right. This little script will create an empty file. Once I have this empty file, let's see. This is 100% Java. The migrations are part of active web project, which you haven't seen yet. But I'm using active web with migrations to show that.
 
-00:05:53.454 --> 00:05:53.944
+01:07:44.169 --> 01:07:49.807
 <v S10>You don't want to appear it on active jdc. I'm using shell script.
 
-00:05:53.944 --> 00:06:27.441
+01:07:49.807 --> 01:14:15.024
 <v Igor Polevoy>Yeah. But that shell script is a Maven command. I'll show you. It's going to see the output. He's hanging for projects. Maven. This is the content of my shell script. At the end, DB migration use. I'm using a database migration Maven plugin. So once I have this file, the file is empty. As you can see, the file has this weird name where it prepended a timestamp to create article-stable text that I provide. I'll just go ahead and create a table. I have code conveniently prepared for me by someone. And then I'm running a second script. Script MigrateDB, which is a different goal on the same plugin. Which is going to run two migrations for me. One against the simple development. The other one against the simple testing. Both of these are configured in like one unit of the file. But the process is exactly the same or similar to Ruby on Rails. You create your migration. Then you run migration script. That migration goes into a database. So at this point, I can go ahead and create my model. Models. Create a new Java class. Particle. Extends model. First one. Okay. Import. All right. I have an empty one. I'm going to go ahead and create a new model. The next step would be, well, let's say I want in this model, how many people here are familiar with R-SPAN? Two? A little bit? Okay. This is a test. I'm writing a test immediately. My model doesn't have anything, but I'm writing a test. This test is nothing more than a JUnit test. But it's written in a style that's very different and foreign to Java. Should validate fields. As you can see, my method is not called test something. It says should something. Should validate fields. Meaning, I should start working with validations. Article A equals new article. And here, I will say the article should not be valid. All right. Let's say you don't know Java. You don't know what's happening here. But you can at least read this and understand what this is. Right? Because it's kind of like English. If you just read a sentence, the article should not be valid. Why should it not be valid? Because probably it's missing something. Right? Like content, author, something. So let's run this test. And the test says method is valid, should it return false, but it returns true. What happened here, a little bit of JSpec magic. We actually developed three frameworks. ActiveJVC, ActiveWeb, and JSpec. And what you see over here is JSpec. Basically, JSpec is a set of assertions that are written as expectations instead of assertions. I could say something like assert true. I could write it like this. Actually, it serves exactly the same purpose. However, this is harder to read and counterintuitive and also leads to poor TDD or no TDD, where this is a specification of mine. Or kind of documentation of my specification. My BA said that the article should have these columns filled. Otherwise it's no article. So I'm documenting here the article should not be valid. But it's failing because article is valid. Why is it valid? Because it has no revisions. I'll just say, static, let it be present, these things. Alright. Now if I run the test, the article is not going to be valid because I'm asking that these things should be present, but they're not present. Therefore, the test that says the article should not be valid is correct. So all I have to do is do things like, in this article, set, yes. The valid, basically, it looks for, it uses JavaBeans conventions to look for methods, let start with is valid, has valid, you know, things like that. If it finds one, it executes it, and then uses that for relating expression. So there's a little bit of magic there, but not much. Author, let's say. I'm going to execute this, still not valid, but now, I can say, after I sent all these things, the article should be valid. And here is, so this is the style of development we have with ActiveGNC. As you can see, my article class has still very little code. So you guys have any questions about this? I would like to proceed to active web because we're seriously running out of time. Unless you guys give me another... Here? Yeah? Okay. Sure. All right. So what do you guys think? Now that you've kind of touched... There's a lot more, of course, to the framework because it's been developed for more than two years. We've been in production, powered insurance companies, probably a few public websites. But we haven't developed something like that, you know, in style of ActiveRecord because it didn't exist in Java. So what's your first reaction?
 
-00:06:27.441 --> 00:06:31.183
+01:14:15.024 --> 01:14:58.073
 <v S10>There's a lot that I like. I like the fact that it's sort of a declarative type of thing. For example, with your validations, there's not a lot of fluff or things that you need to do to make the plumbing work. You know, to be able to do that. The only thing that jumps out at me, and it's just really a process problem for a user, would be to... They've got to know what the field means. You know, you have to know if there's an author. I think people that are just like... Like our lazy people that I...
 
-00:06:31.183 --> 00:06:33.077
+01:14:58.073 --> 01:15:19.853
 <v Igor Polevoy>That is true. He has an answer for that. That's why you can encapsulate them in setters and getters like that, that actually have names and actual types. Set content takes the same. Right? Of course, in my simple example, every column here is text. But...
 
-00:06:33.077 --> 00:06:34.339
+01:15:19.853 --> 01:15:34.374
 <v S10>Now, I'm sorry. Was that something... There's no auto... There is no generation. But you do have the automated generated docs. The doc? How are you generating those docs?
 
-00:06:34.339 --> 00:06:34.822
+01:15:34.374 --> 01:15:39.925
 <v Igor Polevoy>Copy paste. From the SQL. Basically, this is what I do sometimes.
 
-00:06:34.822 --> 00:06:35.520
+01:15:39.925 --> 01:15:47.954
 <v Mike Hall>I know what Igor is talking about. Well, that isn't automatically generated? I thought it was.
 
-00:06:35.520 --> 00:06:36.500
+01:15:47.954 --> 01:15:59.229
 <v Igor Polevoy>No. It wasn't. I do this. We should be able to, at some point, be able to get to the underlying. But it's actually not that trivial.
 
-00:06:36.500 --> 00:06:37.918
+01:15:59.229 --> 01:16:15.543
 <v Mike Hall>As you might... I'm not saying that's a bad thing at all, because there is a certain... Now that I have this thing in here, I can go to another place, click on my article and see what it has.
 
-00:06:37.918 --> 00:06:39.151
+01:16:15.543 --> 01:16:29.722
 <v Igor Polevoy>I mean, something like mapping between Java code and the database. Even though it seems so lightweight and easy in active GPC, still, you have to pay attention to it.
 
-00:06:39.151 --> 00:06:40.688
+01:16:29.722 --> 01:16:47.403
 <v Mike Hall>Yeah. Because I could see... Well, even like, you know, you were like, aye, we're in the heat of the moment. There's typos that we put in. And you won't really see them until you run the test that you wrote.
 
-00:06:40.688 --> 00:06:45.938
+01:16:47.403 --> 01:17:47.790
 <v Igor Polevoy>That's kind of... Code generation is not a trivial thing. Number one, the code generator might not be part of the framework, so it has to have the ability to go to the database and retrieve all that metadata, generate all that code, and then find source code. And where in source code do you stick it in? You have to assign, like, a region inside your class, where code that is generated is... And then if somebody messes, like, header and folder, then it's generated... And this is kind of strapping the style of, like, you know, Ruby and Python, where you don't generally have that kind of tooling, where it's going to give you intelligence and auto-completion. And that's why we lean so heavily on tests.
 
-00:06:45.938 --> 00:06:46.421
+01:17:47.790 --> 01:17:53.342
 <v Mike Hall>Which is always a good thing. Even if you've got auto-completion.
 
-00:06:46.421 --> 00:06:49.012
+01:17:53.342 --> 01:18:23.152
 <v Igor Polevoy>Yeah. Absolutely. But, let's say, I know that some Rails developers write models in this style. They actually have setters and getters in this style. But most people that have those really wish they didn't have to do that. See, really, what we want is to... Unless we need to actually have a getter or a setter that operates differently than just...
 
-00:06:49.012 --> 00:06:53.631
+01:18:23.152 --> 01:19:16.279
 <v S6>I don't think that's even really easily supported in Java. I know that in order to get that in .NET with the .NET 4.0 and the dynamic, and having IntelliSense on the dynamic keyword, and I don't even think everything is... I don't think it picks up. It's been a while. I only started .NET 4.0 when it first came out, and I was playing around with the dynamic keywords, so you could have things like that where it's like, it does inflection, and the studio will go and figure out what you're trying to talk to, looking at config files and stuff like that. It took a lot, and it took changing the framework itself to just...
 
-00:06:53.631 --> 00:06:54.589
+01:19:16.279 --> 01:19:27.298
 <v Igor Polevoy>Yeah, but there's no really good way to doing it. And then, either it's like, due to reflection or instrumented when it's just...
 
-00:06:54.589 --> 00:06:54.916
+01:19:27.298 --> 01:19:31.056
 <v S6>Yeah, but then you can't compile against it.
 
-00:06:54.916 --> 00:06:55.331
+01:19:31.056 --> 01:19:35.839
 <v Igor Polevoy>You can add... In Java, you can add anything at runtime.
 
-00:06:55.331 --> 00:06:55.762
+01:19:35.839 --> 01:19:40.793
 <v S6>That's the other, yeah. But how do you compile against it?
 
-00:06:55.762 --> 00:06:56.438
+01:19:40.793 --> 01:19:48.566
 <v Igor Polevoy>But Ruby, Python being interpreted languages, there's no compiler. No compiler, no problem.
 
-00:06:56.438 --> 00:06:57.180
+01:19:48.566 --> 01:19:57.107
 <v S6>So that's what I mean, we come around to the... This isn't really a bad way to do it at all, really.
 
-00:06:57.180 --> 00:06:59.460
+01:19:57.107 --> 01:20:23.329
 <v Igor Polevoy>No, I mean, you have to... Today, I'm contemplating whether to write a generated, co-generated or not. But today, if you want getters and setters, you have to plug it like this. So basically, you need to wrap the dynamic setters and getters with your own static, static in a sense that static wouldn't have.
 
-00:06:59.460 --> 00:07:00.789
+01:20:23.329 --> 01:20:38.618
 <v S10>I don't know anything about Hibernate or anything like that. I've not used those tools at all. You would write this in Hibernate one way to use it. That's what I was going to ask.
 
-00:07:00.789 --> 00:07:01.391
+01:20:38.618 --> 01:20:45.537
 <v Igor Polevoy>Yeah, because in Hibernate, you would do... This would be like a pojo, a value...
 
-00:07:01.391 --> 00:07:02.267
+01:20:45.537 --> 01:20:55.616
 <v S10>It's the first thing you do. Right. You lay it out. You put your getters and setters and then pass them in and get it.
 
-00:07:02.267 --> 00:07:03.299
+01:20:55.616 --> 01:21:07.488
 <v Igor Polevoy>So you do... But at least with this, you get some dynamic, you know, the string names. With this, you have an option of having them or not.
 
-00:07:03.299 --> 00:07:03.529
+01:21:07.488 --> 01:21:10.136
 <v S10>Or not, yeah. Without having...
 
-00:07:03.529 --> 00:07:52.457
+01:21:10.136 --> 01:30:32.929
 <v Igor Polevoy>All right. Guys, I'd like to proceed to Active Web. So if ActiveJDBC is the stand-alone ORM that could be used in any generic Java project, then Active Web is the rest of Ruby on Rails, which is a web framework for building web applications in Java. In a very fast dynamic way, very similar to Ruby on Rails. And it also follows the same principle as ActiveJDBC. The convention exists. I mean, conventions, no configuration. Convention-based configuration. If you know conventions, most conventions are the same as Ruby on Rails. So people switching between, let's say, Ruby on Rails and Active Web would feel right at home. In fact, most people who are using Active JDBC are people who are kind of former Ruby developers forced back into Java and looking for alternatives to DaggerNet because they kept there. All right, so Active Web. I was thinking, instead of running through slides, I was thinking maybe running a simple project and show you how things work, first dynamically, and then we will build on that article example, basically build a product location for articles in this little program. All right, Active Web is a Maven project. Anybody who's not familiar with Maven will have to learn Maven because you can't use Active Web without Maven. It's all defensive. However, those who do know Maven feel right at home. Maven could be perceived by many people as the best thing since sliced bread versus the worst thing that came to Java. I tend to belong closer to the first camp. I think it's a great system once you master knowledge to use it. Okay, those familiar with Maven will feel right at home until they open the Java folder. Once they open the Java folder, they will receive this app. Under app, there is a config package and there's a controllers package. Now, you say, why app, not why come, my company, my project, yada, yada? Because I said so. Because it's app controllers, app config. Why? Because people would be looking for the same thing everywhere. And the question is, why do you even need come, company, that project, yada, yada? You need, originally, I mean, C++ didn't have namespaces. But then they figured out, okay, maybe Java needs namespaces because then you can have a class that has the same name in two different packages. Great. Now, if you're building a common project and you're floating that project across your organization, I could see why that would be useful. But a web application cannot be shared by another project, right? It's impossible. Because the controllers that make up this web application only belong here and nowhere else. Therefore, app controllers. So everybody's familiar with the notion of what a controller is? Those who are not, a controller in ActiveWeb is the same as in Rails, the same as in Spring MVC. Basically, it's a software component which takes an HTTP request and processes. That's it. All right. Once we open controllers, you see books controller, glitens controller, and com controller. Now, I started my application. ActiveWeb also runs on top of JD container. So you have in your pom configured the JD container, and then you can start your application by running that plugin, Maven plugin. The great thing about Maven is just you have plugins. Once I accessed my application, localhost 8, the ActiveWebSimple, that's the name of my build, I got this interesting page. So immediately, you see that it has on top some sort of header, underneath it has footer, and once I navigate from one page to another, header and footer don't change. Doesn't matter what's happening here right now, but header and footer don't change. You've probably heard of site mesh or tiles in Java, right, for doing layouts, websites header, footer, menu system. So it's all built into ActiveWeb. You don't have to build it. So the whole idea of ActiveWeb is that you have one framework. It does everything you need. It does logging. It does testing. It does layout. It does AJAX. It does unobtrusive JavaScript. Everything you need is right there. Well, maybe not everything, but maybe, again, 80% of what you will need is there. So guess what? I'm going to type something here. Let's say McHenry. All right, I get 404 not found. Obviously, there's nothing in the application that has that. However, I get this interesting exception that says McHenry controller is missing. Ooh, cool. Guess what? I'm going to go ahead and add that controller into my controller's package. Yes. All right, McHenry controller. How about this, Mc underscore him. And now I have nicely named the controller that is easy to read for me. All right, I'm going to copy that, and I'm going to create a controller with this name. So it does interpolation of underscores and dashes into a camel case for Java. New Java class. All right. Refresh this page. It says, McHenry controller is not a controller. Are you sure it extends AppController? Of course, it doesn't, I forgot. All right, it extends that controller. Now it says McHenry controller, the index action is missing. Right? It's a method. So methods that are called directly from HTTP request are called actions. I refresh now and I get my Kennedy template. By the way, the active web doesn't use JSP, it uses free-marker templates. If you're not familiar with free-marker, it's a template engine similar to the last, a bit more powerful. Which is something I did not develop. It's an open source project I've used. All right. So as you can see, did you guys see what just happened? I started my container. Then without restarting the container, I added a new class that didn't even exist at the time of the start. Then I added the method. Then I extended the class and then I added the method. So what's happening here? The framework automatically finds new code, compiles it on the fly, and links it dynamically into a running application. Without you having to constantly starting this stuff. Those who are building web applications, I hope, are relieved to find out that it's possible to do the job. In Ruby, of course, it's possible because Ruby doesn't compile anything. It's an interpretive language. However, let's do something interesting here. So let's say we respond. I wish I knew about the fact. By the way, if I have code that wouldn't compile, I'm going to get a compiler exception. Right? It tells me exactly what the problem is. Right? All right. Expression there. And I get a little McHenry. How about that? I have a perfectly working web application without almost having to lift a finger. No configuration. And I have properly matched URLs to code. What do you think of that?
 
-00:07:52.457 --> 00:07:53.014
+01:30:32.929 --> 01:30:39.335
 <v S10>It's not that I want a pattern stronger. I'm just curious about the action.
 
-00:07:53.014 --> 00:07:58.605
+01:30:39.335 --> 01:31:43.652
 <v Igor Polevoy>All right. Let's make it a web service. Let's return something similar. So far, so good. But in sources, we see that it's still a message for a long. However, all we have to do is what? We have content type, right? Of course, we're going to build a more advanced web service in like 10 minutes. So far, so good. By the way, this response thing is absolutely fantastic for building AJAX applications because you respond with JSON and that's how it works. So far, I'm going back to that same step where it says missing a template. Build it all and create that template. The templates are under WebApp, WebInf, Views. Here, I'm going to have to create a new directory with the same name as the controller. Is that correct? I would let you know for a while.
 
-00:07:58.605 --> 00:07:59.341
+01:31:43.652 --> 01:31:52.108
 <v Mike Hall>Hi, I'm Mike. I'm Igor's spell checker. I see you're typing a template. Do you need help with that?
 
-00:07:59.341 --> 00:08:05.719
+01:31:52.108 --> 01:33:05.478
 <v Igor Polevoy>That would be awesome. Alright, now I have my page properly displayed in the layout, we'll touch in a second later, you know, with how the layouts work, and now I have an entire location fall through, however, I'd like to make it a little bit more than name, name equals e-word. Alright, in my controller, I'll say, this means that, take a request parameter, named name, and stick the value as a second parameter for this method, view, and the view says, basically, object on the right, under this name, I'll have to, come here, name equals name, there you go, my name is Igor, right, alright, so, getting parameters is very easy, getting uploaded files is exactly the same, you get uploaded files, sending files, just about, you know, I'm gonna walk you through a slight different location called kitchen sink, which shows more features, but so far, so good.
 
-00:08:05.719 --> 00:08:06.343
+01:33:05.478 --> 01:33:12.653
 <v S10>Okay, and you're using Jetty right now, can this work with any other Java container?
 
-00:08:06.343 --> 00:08:22.627
+01:33:12.653 --> 01:36:19.966
 <v Igor Polevoy>Yes, this builds into war files, okay, the WAR file which then is deployed because it's just, there's nothing special about it, the Jetty is only for development. In fact, the project that I managed I run on that logic. I originally started on the last page, then I got it on the logic. The other website that I'm working on, we developed on Jetty, but then we deployed the top cap. All right. So, let's build a little more on the basis that we were here. So, I have this article, it's already working. Let me copy-paste. Well, let me first do this. Running a container is fine, but how do I have a test for a controller? Controllers. I'm going into test Java app controllers, and here I'm going to write a test for my controller. Actually, McHenry controller spec. Extends controller spec. Here, we're going with conventions. Now, let's go ahead. Test public. Make sure that we're going on that in this page. Of course, the name should be a little bit more descriptive. Now, let's go ahead and check it out. Alright. There's a lot going on here. I'll explain line by line. This is a spec, which is a specification which is a combination of behavior. Same as JUnit test. I'm just using a different name. However, the name of it is made of the name of a controller and suffix spec. That means when I say request, it will run request for that controller derived from the name of my test. I don't have to say which controller it is. I'm also saying that send an HTTP GET request to index action of that controller. And also, please, integrate views, which means generate HTML from you. When I run this test, look what's going to happen. What just happened? Ah, name. Of course. The view expects name, but I didn't, the parameter name. Remember? Free marketer is not forgiving in terms of null values. Hello? I got my HTML. Now that I have my HTML, I can do anything I want. I can use, if this is XHTML, I can use a small parser to absolutely evaluate and they apply the kind of your XML. In addition to that, I can do things like that. A val name should equal job. Basically, it says a value that was passed from controller into view by name name should have a value job. And this test will pass.
 
-00:08:22.627 --> 00:08:23.103
+01:36:19.966 --> 01:36:25.433
 <v S10>Is there a difference between the function A and the function B?
 
-00:08:23.103 --> 00:08:26.125
+01:36:25.433 --> 01:37:00.196
 <v Igor Polevoy>The function A and the function B, there is absolutely no difference. Whichever is more convenient in terms of English, I can say B. There's also a value name should equal job. Whichever one is more convenient to read and more kind of plays out. And that's the way you're used to hearing. All right. So, as you can see, I can easily write tests that cover just about any piece of functionality in my system.
 
-00:08:26.125 --> 00:08:26.667
+01:37:00.196 --> 01:37:06.431
 <v Mike Hall>Do you want to show us how you handle verbs and then show Express Pigeon?
 
-00:08:26.667 --> 00:08:26.986
+01:37:06.431 --> 01:37:10.104
 <v Igor Polevoy>I can't show Express Pigeon, but I do that.
 
-00:08:26.986 --> 00:08:27.395
+01:37:10.104 --> 01:37:14.802
 <v S10>What version do you do? The headline is the first post.
 
-00:08:27.395 --> 00:08:50.362
+01:37:14.802 --> 01:41:38.987
 <v Igor Polevoy>Ah, okay. Well, let's say I'm doing this. Instead of doing GIF, I'm setting a post. When I run this test, it's going to fail. Because of this exception. You cannot access action McHenry controller with index with HTTP post because it's configured. Yep. Ah, I love that. Of course I can go into McHenry controller and put annotation post on it. And then it will succeed. Of course, I won't be able to run it in the browser unless I write a form that actually sends a post. So, it's very restful. And it's very convenient. And that's pretty much what you expect. And exceptions that you get from it. It's probably exactly what's happening. Sometimes what you should do next. Okay. The other thing that I'd like to show you is partials. Actually, pretty cool control. So, I'm going to start my container again. I'm done with this. Of course, you use just a simple naming command, and I just have it integrated with my IDE. It's pretty cool. All right. Going back to my Kennedy controller. In here, I'm going to post. It's okay that I already started the container. Let me compile. And in here, I'll just say this. I could write it like this, like, I could use, basically I need a list, I need to show you how I can iterate through various collections. I could write it like this, or I can use a list method from java-like library, which is another library that I wrote, collections. In here, I'll just say, okay. This produces a list. That's all. Names. So, there is a collection of something, and you can get that collection, ooh, actually, you know what, I'm not going to do that, instead, I'm going to write, articles controller, instead of that, because I have it all done, articles controller, here, in articles controller, and I'm going to copy this and stick it in here. Now that you know how most of these things work, I'll show you how the real communication. Views, Practicals, New Word. Yes. And I have to do Article and Spacer. New. That's real. That should be pretty simple. All right. At which point I should be able to just say articles here. OK. I know why. There's app control and config class. Configuration is done in Java code. There's a lot of control over. Compiler helps you. Basically, this one says, there's an architecture for filters in active web, which allows you, a filter is something similar to a servlet filter. But a controller filter has the methods, before, after, and an exception. The before methods execute before a controller gets executed, and after methods are executed after a controller gets executed, and an exception executed whenever there's an exception coming from the controller. So usually we have a catch-all filter that catches exceptions from all controllers and then displays on the page. But here, I'm saying, I'm wiring a DB connection filter, which will open the database connection before the controller and close it after the controller. And now, before it was wired only to the books controller, but now it's wired to books and articles controller. So that exception I got was because I didn't have a database connection. So that's it.
 
-00:08:50.362 --> 00:08:50.971
+01:41:38.987 --> 01:41:45.991
 <v Mike Hall>I think you wanted to just copy it too fast. This does work. I know. I've seen it.
 
-00:08:50.971 --> 00:09:07.634
+01:41:45.991 --> 01:44:57.660
 <v Igor Polevoy>Oh, there you go. So, the idea is this. First of all, let's not look at how I put an article there as I've been performed, and we'll look at that. But let's look at the index method, because index method is where I have, which gives me a list of articles, right? Supposedly. Articles, and I get the list of articles. So, how do I find articles? Article find for order by grid map, meaning, get me the articles, the latest article first, right? And then I stick the result of that into articles. So, that's classic-like integration between active GPC and active web. Very, very easy, and quite like usual one line of code. A lot of people who write, they kind of complain that they don't actually see active GPC code because it's usually one line of code to be done. So, but where does it go from here? Index actually has this interesting line of code. Render partial article, collection articles, and spacer, spacer. What's that? That's kind of weird. First of all, let's add another article there. Now, I have one article, and I have another article, and I have a horizontal line in between. This happened because this render partial, basically it doesn't pull it. It says, find a partial page called article. Partials use underscore in front. So, if I say article here, it's going to be looking for underscore article in here. Pass collection articles in it, and then use spacer partial page, which is this one, to interleave iteration. Basically, in between each one, stick the content from this one. Of course, all partials are dynamic, and whatever the variables that you pass from controller are still available, and you can make any of those partials as you want. The article itself looks like this. Article author, article title, article content. So, displaying data, like in grids, or in some sort of way on the page is very, very easy. And also, refactoring your HTML. HTML designers actually like this a lot, because they can say, here in this partial, I have kind of a header of my table. Here I have footer, and then between I have spacer. That they break it down, and they know where to look for things. And on the other hand, this render partial is my loop, right? But it's a kind of a loop instead of this. Does that make sense?
 
-00:09:07.634 --> 00:09:07.679
+01:44:57.660 --> 01:44:58.173
 <v S10>Right.
 
-00:09:07.679 --> 00:09:13.359
+01:44:58.173 --> 01:46:03.515
 <v Igor Polevoy>I'm working on this pretty advanced project, where we built an entire public website for mass email marketing and communication called Express Pigeon. You can check it out in about 10 minutes, ExpressPigeon.com. But the idea is that it's a website built on ActiveGDVC, ActiveWeb, and GWT. By the way, ActiveGDVC also integrates with GWT. Anybody heard of GWT? Google Web Toolkit? So, the nice thing about GWT, you can write client-side code, you refresh a page, and then you see the changes. But with ActiveWeb, you can use, it does the client side and the server side, because the back-end functionality is actually no control over your space. So, it's a pretty large system. I've been working about a year and a half in the project, and Mike is referring to that.
 
-00:09:13.359 --> 00:09:14.303
+01:46:03.515 --> 01:46:14.362
 <v Mike Hall>But, I mean, you're using your own tool to build that, and it's not just you, you have a team of guys working on that, so it's—
 
-00:09:14.303 --> 00:09:20.258
+01:46:14.362 --> 01:47:22.864
 <v Igor Polevoy>There's a team of developers working on this fairly large project, and we've been working for a year and a half, but this is not the first production system that I worked on, where I actually used that equipment. There's works for a company called Discovery of Vitality, where we put together a rather large system, multiple websites, backend functionality, Windows Engine, Horizontal is a scalable JMS system, all built-in active, in active services integrated with Johnson & Johnson, three websites for Vitality. One website for FIMAN, it's about three, four hundred thousand members that use that website at the end of the day, so it's not, in other words, active web and active DBC. They're serious, you know, absolutely ready for production. It's not a particular project they had in the Facebook.
 
-00:09:20.258 --> 00:09:22.300
+01:47:22.864 --> 01:47:46.353
 <v Mike Hall>I think that's important, you know, I think they always point out, when you're looking at these projects, it's like, oh, I'm sure somebody wrote this thing, it's cool, you know, but, then it's actually out there and other developers have had to learn how to use it, you know.
 
-00:09:22.300 --> 00:09:25.642
+01:47:46.353 --> 01:48:24.789
 <v Igor Polevoy>Yeah, absolutely. You live with it. The teams that I managed, that use this stuff, pretty much everybody is using the same stuff for their own, you know, projects, they don't want to use hibernate struts or spring, precisely because it is so much easier to use. So the idea is to take the productivity of Ruby developer and transport that to job. And I can reassure you that we were able to achieve the goal, which had been proven in real production.
 
-00:09:25.642 --> 00:09:25.916
+01:48:24.789 --> 01:48:27.950
 <v Mike Hall>Cool. We're up at a little over 8:30.
 
-00:09:25.916 --> 00:09:29.050
+01:48:27.950 --> 01:49:03.994
 <v S10>Okay, I do have one quick question. And this is because I've actually done things like this, just as kind of a research project. So I can appreciate what is needed to make some of the magic happen in there. When you go in and you go ahead and let's say change your controller class and save it, what gets deployed down the surface? Is it the Java file that gets recompiled or are you letting the IDE compile it and then...
 
-00:09:29.050 --> 00:09:31.181
+01:49:03.994 --> 01:49:28.508
 <v Igor Polevoy>There's no IDE compilation here. The framework, on the request, it says, okay, I need to run this controller. And then it says, am I in compilation mode? Yes. In development mode. In production, that doesn't happen. Then it says, okay, where is that Java file? You can compile it into...
 
-00:09:31.181 --> 00:09:32.830
+01:49:28.508 --> 01:49:47.470
 <v S10>Oh, okay. So this is like what Play does in that. But when you, okay, you know, you're gonna get to the production mode. My, where I'm trying to go with this is that when I deploy this, do I need to deploy the Java source?
 
-00:09:32.830 --> 00:09:32.852
+01:49:47.470 --> 01:49:47.726
 <v Igor Polevoy>No.
 
-00:09:32.852 --> 00:09:33.082
+01:49:47.726 --> 01:49:50.374
 <v S10>Okay. So that's the next thing.
 
-00:09:33.082 --> 00:09:33.810
+01:49:50.374 --> 01:49:58.745
 <v Igor Polevoy>No, absolutely not. It deploys as just about any Java program out there. It doesn't really matter.
 
-00:09:33.810 --> 00:09:35.325
+01:49:58.745 --> 01:50:16.169
 <v S10>That was one of the things is, you know, there's things here that, like the Play framework and others touch on. I think this is a lot more straightforward than things like that. But that was one of the...
 
-00:09:35.325 --> 00:09:42.045
+01:50:16.169 --> 01:51:33.469
 <v Igor Polevoy>Yes, but Play framework also compiles more code than Active Web. Play framework compiles non-controller classes work. And there's also instrumentation. This one only compiles controller in the process of controller. So if you have services, it's not gonna compile back. And there's a lot of stuff that's going on. And even Rails doesn't pick up lib. You have to restart. Well, I could tell you that Active Web does more than Rails and less than Rails, in a sense. You cannot add a controller to a project after Rails server started. You can modify its code, but it has to exist at the time, because that's when it sets up routes. In Active Web, routing is updated. Oh, by the way, routes, I'm showing you routes. Basically, you can do pretty advanced routing in Active Web. And routes are defined in Java. And they're recompiled on each request as well. So you can play with routes in a lot of situations.
 
-00:09:42.045 --> 00:09:44.763
+01:51:33.469 --> 01:52:04.730
 <v Mike Hall>That's nice. And the nuance between production and development mode. It's the development mode that you're seeing here. So you can kind of do something and immediately see it. And that's really kind of nice. There's a lot of magic that's going on to compiling and redeploying it. Well, when you actually go ahead and ship it into production mode, you're not exposed.
 
-00:09:44.763 --> 00:09:44.881
+01:52:04.730 --> 01:52:06.097
 <v Igor Polevoy>It's turned off.
 
-00:09:44.881 --> 00:09:46.144
+01:52:06.097 --> 01:52:20.617
 <v Mike Hall>Right, it turns off. Absolutely. So really where you need the speed boost and productivity is during the development phase where you want to kind of try this and do that.
 
-00:09:46.144 --> 00:09:50.525
+01:52:20.617 --> 01:53:11.012
 <v Igor Polevoy>Absolutely. In fact, the parameter, it's just a Java system property called active reload. If that thing is missing, and of course we don't have it in production. But even if you had it in production, there's no source to compile it. It's all binary. As in, that's the major difference between play and active web, is that active web goes with standards. It's built in service, built into a war file, and drops into any container, and it can gradually be introduced into an existing web project. Whereas play cannot because it doesn't use server API. But this one's built in public service.
 
-00:09:50.525 --> 00:09:50.829
+01:53:11.012 --> 01:53:14.514
 <v Mike Hall>Yeah. Looks nice. It's a good preference.
 
-00:09:50.829 --> 00:09:51.267
+01:53:14.514 --> 01:53:19.553
 <v S10>What's the advantage of using this versus Rails and jQuery?
 
-00:09:51.267 --> 00:09:59.399
+01:53:19.553 --> 01:54:53.081
 <v Igor Polevoy>The advantage of this, Rails applications are plagued with many problems on one hand. In other words, jRuby. With jRuby, you're gonna hit many problems where you can't use a native gem. And you have to find a comparable gem that is written for jRuby, which is going to have different set of bugs and potentially have different hit. Actually, the project that I've managed comprised about six, seven Java projects and two URLs projects. We ran and removed projects for about two years. And you're in Ruby and then switched passages because you're running into some issues. The other thing is, this is Java. So if you want to stay in Java and not move to Ruby, then you may use ActiveRuby. And biggest advantage in my personal opinion is Java at runtime absolutely kills Ruby. I mean, there's, like, 90 degrees. To have a comparable level of throughput, you need to have about ten times as much hosting. Right? About ten times as much hosting for a little bit compared to Java. Java is a runtime king. And, of course, ActiveRuby has nothing to do with it, but ActiveRuby is all about productivity.
 
-00:09:59.399 --> 00:09:59.970
+01:54:53.081 --> 01:54:59.658
 <v Mike Hall>Okay. Well, if nobody has any more questions, thank you for coming out, Igor.
 
-00:09:59.970 --> 00:10:00.000
+01:54:59.658 --> 01:55:00.000
 <v Igor Polevoy>Yep.

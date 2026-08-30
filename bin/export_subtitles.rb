@@ -25,7 +25,7 @@ class SubtitleExporter
     video_assets.each do |asset|
       pref = asset["platforms"]&.find { |p| p["platform"] == "youtube" } || asset["platforms"]&.first
       if pref
-        yt_id = pref["video_id"]
+        yt_id = pref["asset_id"] || pref["video_id"]
         if yt_id.nil? || yt_id.empty?
           embed_u = pref["embed_url"].to_s
           url_u = pref["url"].to_s

@@ -2,71 +2,89 @@ WEBVTT - UGtastic Archival Caption Track
 Kind: captions
 Language: en
 
-00:00:00.000 --> 00:00:23.804
+00:00:00.000 --> 00:00:28.260
 <v Mike Hall>Hi, it's Mike with UGtastic . I'm here at GOTO Conference 2015, and I'm sitting here with Vyacheslav Egorov, who gave a talk on benchmarking JS. Thank you very much for taking the time to speak with me. When you talk about benchmarking JS, are you talking about client-side JS?
 
-00:00:23.804 --> 00:00:27.757
+00:00:28.260 --> 00:00:32.954
 <v Vyacheslav Egorov>I mean, JS lives in a lot of different places.
 
-00:00:27.757 --> 00:00:32.913
+00:00:32.954 --> 00:00:39.075
 <v Mike Hall>Is this Node? Is this browser JS? What are you benchmarking?
 
-00:00:32.913 --> 00:00:53.108
+00:00:39.075 --> 00:01:03.051
 <v Vyacheslav Egorov>So, I don't have any particular focus. I'm just looking at the pure JavaScript performance. So, it doesn't matter if you run your JavaScript on the client-side or server-side. Basically, no matter where you are, my talk applies to you.
 
-00:00:53.108 --> 00:00:53.538
+00:01:03.051 --> 00:01:03.561
 <v Mike Hall>Okay.
 
-00:00:53.538 --> 00:00:59.811
+00:01:03.561 --> 00:01:11.008
 <v Vyacheslav Egorov>So, you know, even if I'm in V8 or Rhino or whatever, it's going to be...
 
-00:00:59.811 --> 00:01:13.303
+00:01:11.008 --> 00:01:27.026
 <v Mike Hall>Okay, so, when you talk, what techniques and tools were you talking about? Where did this talk come from? What experiences did you have that led you to this?
 
-00:01:13.303 --> 00:02:57.027
-<v Vyacheslav Egorov>Well, I used to work on the V8 team, and when you work on a team of the VM engineers, you usually get different questions from the users, in this case, JavaScript developers, who don't completely understand what happens inside the VM and how they should measure performance of their code. And that's what this talk is based on. Basically, I monitor different social media, and I see people posting different benchmarks, and I look what happens there, and I explain why these benchmarks are usually incorrect. And that's, yeah, that's basically my experience. So, what is some of the things that you see that are incorrect, and like, what are some of the maybe some quick tips that maybe, or articles people should read or try to understand better about JavaScript performance? I think the biggest issue is that people still think that JavaScript implementations are very dumb, but these implementations are quite smart. So, I think that that's the main thing that they should know about that, and they should always account for the very advanced optimizations that the GIS engines are capable of doing now. So, there is no really single tip. They should just try to understand what 's happening on the side.
+00:01:27.026 --> 00:02:23.955
+<v Vyacheslav Egorov>Well, I used to work on the V8 team, and when you work on a team of the VM engineers, you usually get different questions from the users, in this case, JavaScript developers, who don't completely understand what happens inside the VM and how they should measure performance of their code. And that's what this talk is based on. Basically, I monitor different social media, and I see people posting different benchmarks, and I look what happens there, and I explain why these benchmarks are usually incorrect. And that's, yeah, that's basically my experience.
 
-00:02:57.027 --> 00:02:57.456
+00:02:23.955 --> 00:02:43.238
+<v Mike Hall>So, what are some of the things that you see that are incorrect, and like, what are some quick tips, or articles people should read or try to understand better about JavaScript performance?
+
+00:02:43.238 --> 00:03:27.210
+<v Vyacheslav Egorov>I think the biggest issue is that people still think that JavaScript implementations are very dumb, but these implementations are quite smart. So, I think that that's the main thing that they should know about that, and they should always account for the very advanced optimizations that the JS engines are capable of doing now. So, there is no really single tip. They should just try to understand what is happening on the inside.
+
+00:03:27.210 --> 00:03:27.720
 <v Mike Hall>Okay.
 
-00:02:57.456 --> 00:03:36.815
-<v Vyacheslav Egorov>Now, I mean, do, if you're dealing with V8 optimization, I mean, because one of the things is JavaScript is one that's run anywhere, and it runs on V8 or Rhino or different browsers, or, you know, does the wisdom of this is good for JavaScript apply generally everywhere, or do you find people maybe benchmarking, and you say, oh, you did that benchmark on V8, try it on a different VM, and you'll see that it gets much different performance characteristics.
+00:03:27.720 --> 00:04:03.632
+<v Mike Hall>Now, if you're dealing with V8 optimization, one of the things is that JavaScript runs anywhere, on V8, Rhino, different browsers. Does the wisdom of "this is good for JavaScript performance" apply generally everywhere? Or do you find people benchmarking on V8, and then when they try a different VM they see very different performance characteristics?
 
-00:03:36.815 --> 00:03:39.736
-<v Mike Hall>Is that a pretty common situation?
+00:04:03.632 --> 00:04:33.627
+<v Vyacheslav Egorov>Sometimes that happens, but these days, the implementations really converge on, they apply the same techniques, so it's quite often that you see the same performance characteristics across all of the platforms you use. That's why this talk is quite universal, and this issue is quite universal.
 
-00:03:39.736 --> 00:06:33.154
-<v Vyacheslav Egorov>Sometimes that happens, but these days, the implementations really converge on, they apply the same techniques, so it's quite often that you see the same performance characteristics across all of the platforms you use. That's why this talk is quite universal, and this issue is quite universal. Okay, and when you're looking at the way JavaScript is being implemented, I mean, I've heard, I'm hearing on Twitter, there's a number of people that are tweeting about , you know, if you're doing, if you're trying to implement a class structure in JavaScript, you know, I'm just talking about writing JavaScript, you know, don't reimplement the classical inheritance structure inside of JavaScript versus, you know, using the polymorph ic capabilities of JavaScript and the prototypal, that's actually the word I was trying to say, prototype, it's the end of the day, guys, sorry, the prototypal inheritance and using different ways of structuring your application, does that often not just play into the way people reason about writing JavaScript, but its performance, that, you know, if I'm implementing a class in JavaScript, you know, is that generally gonna perform worse or better than if I do something that's more of a native structure? So the thing is that JavaScript engines, they evolve naturally, so they follow the paths that people are using, so they optimize for the patterns that people are using. In this sense, if you use, for example, constructors and prototypes, this is actually the most performant way of writing JavaScript, especially if you keep everything, like, kind of static, and yeah, you just follow the common patterns and then you will be safe. Okay, okay, and as far as working on the V8 engine itself, that, I didn't realize it before our conversation, that, how did you get involved in working on actually the V8, which has become something of a industry change? Not just with a Chrome browser, but with Node being built on that. I mean, you're working on some pretty intense technology.
+00:04:33.627 --> 00:05:30.046
+<v Mike Hall>Okay, and when you're looking at the way JavaScript is being implemented, I mean, I've heard people on Twitter tweeting about, you know, if you're trying to implement a class structure in JavaScript, don't reimplement the classical inheritance structure, use the prototypal inheritance and different ways of structuring your application. Does that play into the way people reason about writing JavaScript, and its performance? If I'm implementing a class in JavaScript, is that generally gonna perform worse or better than if I do something more native?
 
-00:06:33.154 --> 00:06:40.372
-<v Mike Hall>How did you get involved in working on that team, and what were you doing with them?
+00:05:30.046 --> 00:06:12.998
+<v Vyacheslav Egorov>So the thing is that JavaScript engines evolve naturally, so they follow the paths that people are using, so they optimize for the patterns that people are using. In this sense, if you use, for example, constructors and prototypes, this is actually the most performant way of writing JavaScript, especially if you keep everything, like, kind of static. Yeah, you just follow the common patterns and then you will be safe.
 
-00:06:40.372 --> 00:08:27.791
-<v Vyacheslav Egorov>So, well, I stopped working on V8 three years ago, but I was doing the Java VM before back in Russia, and then V8 people were searching for, like, a person with a compiler background, and they hired me, so I joined the team, and I worked on different parts of the V8, so from garbage collection to compiler infrastructure, and yeah, so that's what I was doing. So, basically, I have the background in this, and that background seems to fit with what the team needed. Right, okay, and you know, you described earlier about two things, you know, one is that the JavaScript implementations are much smarter than people give them credit for, and that the current patterns are, are, of how people write their applications are being used in the JavaScript, and how they're being used to, to derive the future of, of, how these JVMs, excuse me, JVMs, I don't know, JSVMs work. I mean, is there something in the direction that you just see as a common pattern that people are using that you kind of wish they would just move away from, though? Like, even though we have classical inheritance structure, or what we call classical, you know, class and inheritance, but if they just maybe wrote their JavaScript this other way, it would be a lot more efficient.
+00:06:12.998 --> 00:06:43.299
+<v Mike Hall>Okay, and as far as working on the V8 engine itself, I didn't realize it before our conversation. How did you get involved in working on V8, which has become something of an industry change? Not just with Chrome, but with Node being built on that. You're working on some pretty intense technology.
 
-00:08:27.791 --> 00:08:28.307
-<v Mike Hall>Right.
+00:06:43.299 --> 00:07:23.904
+<v Vyacheslav Egorov>So, well, I stopped working on V8 three years ago, but I was doing the Java VM before back in Russia, and then V8 people were searching for a person with a compiler background, and they hired me, so I joined the team. I worked on different parts of V8, from garbage collection to compiler infrastructure. So I have the background in this, and that background seems to fit with what the team needed.
 
-00:08:28.307 --> 00:08:36.987
+00:07:23.904 --> 00:08:16.140
+<v Mike Hall>Right. Okay, you described two things earlier. One is that JavaScript implementations are much smarter than people give them credit for, and that the current patterns of how people write their applications are being used to derive how these JS VMs work. Is there something, a common pattern that people are using, that you kind of wish they would just move away from? Like, even though we have classical class and inheritance, but if they wrote their JavaScript a different way, it would be a lot more efficient?
+
+00:08:16.140 --> 00:08:26.444
 <v Vyacheslav Egorov>And they might get a lot more native, and they might get a lot more benefits that they don't see now.
 
-00:08:36.987 --> 00:08:41.971
+00:08:26.444 --> 00:08:32.362
 <v Mike Hall>Is there anything, any advice or observations you've made?
 
-00:08:41.971 --> 00:09:19.439
+00:08:32.362 --> 00:09:16.844
 <v Vyacheslav Egorov>No, I actually have an opposite issue. So, the, the JavaScript VMs, even though they are quite smart, they still, because they evolve by following what people do, they are very focused. So, what I really want them to do is to start expanding this area of fast JavaScript and support, like, different corners of the language they do not support well, or they just fall to the slow path, and so on. So, it's actually the other way around.
 
-00:09:19.439 --> 00:09:19.868
-<v Mike Hall>Yeah.
+00:09:16.844 --> 00:09:18.374
+<v Vyacheslav Egorov>Not the people.
 
-00:09:19.868 --> 00:09:32.415
-<v Vyacheslav Egorov>Not the people. So, the, the... Well, no, you're saying you wish they would do more of, be aware of these other types of structures. Yes, exactly.
+00:09:18.374 --> 00:09:28.577
+<v Mike Hall>Well, no, you're saying you wish they would do more of, be aware of these other types of structures?
 
-00:09:32.415 --> 00:09:33.360
-<v Mike Hall>Yeah. Yeah.
+00:09:28.577 --> 00:09:29.903
+<v Vyacheslav Egorov>Yes, exactly.
 
-00:09:33.360 --> 00:09:48.055
-<v Vyacheslav Egorov>So, you, you are a little bit frustrated with it. Hey, we're just going to do this one type of structure, but JavaScript is so much more than that. Precisely. Okay, great.
+00:09:29.903 --> 00:09:46.329
+<v Mike Hall>Yeah. Yeah. So you are a little bit frustrated with it, like, "Hey, we're just going to do this one type of structure, but JavaScript is so much more than that."
 
-00:09:48.055 --> 00:10:00.000
-<v Mike Hall>Well, thank you very much for taking the time to speak with me. Thank you for speaking with me. Yes, I appreciate it. All right, thank you.
+00:09:46.329 --> 00:09:47.349
+<v Vyacheslav Egorov>Precisely.
+
+00:09:47.349 --> 00:09:55.103
+<v Mike Hall>Okay, great. Well, thank you very much for taking the time to speak with me.
+
+00:09:55.103 --> 00:09:57.858
+<v Vyacheslav Egorov>Thank you. I appreciate it.
+
+00:09:57.858 --> 00:10:00.000
+<v Mike Hall>All right, thank you.

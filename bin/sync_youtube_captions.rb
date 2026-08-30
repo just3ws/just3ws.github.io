@@ -12,6 +12,8 @@ require 'optparse'
 
 require_relative 'lib/youtube_client'
 
+$stdout.sync = true
+
 class YouTubeCaptionsSyncer
   MANIFEST_FILE = "_data/youtube_captions_manifest.json"
   STATE_FILE = "tmp/youtube_captions_sync_state.json"

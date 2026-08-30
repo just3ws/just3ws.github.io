@@ -2,257 +2,257 @@ WEBVTT - UGtastic Archival Caption Track
 Kind: captions
 Language: en
 
-00:00:00.000 --> 00:00:27.044
+00:00:00.000 --> 00:00:27.047
 <v Mike Hall>Hi it's Mike with UGtastic. I'm at RailsConf 2014 and I'm sitting here with Alexander Dima who's going to be giving a talk this afternoon on how to cheaply and easily improve your memory footprint for your Ruby applications by moving up to Ruby 2. 1. Thank you for taking the time to speak with me. Thank you for having me. Yeah. Good to meet you Mike. So the talk title I couldn't quite recall it. It's a long title. What is the gist of the talk?
 
-00:00:27.044 --> 00:00:37.390
+00:00:27.047 --> 00:00:37.394
 <v Alexander Dymo>So the talk is about two things mainly. Ruby 2. 1 and memory optimization. And the gist of my talk is that in fact what Ruby 2. 1 does is that it optimizes memory for you.
 
-00:00:37.390 --> 00:00:37.693
+00:00:37.394 --> 00:00:37.697
 <v Mike Hall>Okay.
 
-00:00:37.693 --> 00:01:16.777
+00:00:37.697 --> 00:01:16.785
 <v Alexander Dymo>So you can do it either yourself or you can upgrade to Ruby 2. 1 or both. Like the copy on write implementation and things like that. And most importantly the generational garbage collection of course. Okay can you kind of maybe explain what those are because I even I have a fumbling understanding of what the copy on write really does. So what copy on write does is that if you fork your process you will not you will not have to copy your memory. So you don't immediately allocate the memory but you don't. You allocate the memory, you fork your process, you have now two processes that use the same memory and they use it until you modify it.
 
-00:01:16.777 --> 00:01:17.080
+00:01:16.785 --> 00:01:17.088
 <v Mike Hall>Okay.
 
-00:01:17.080 --> 00:01:40.797
+00:01:17.088 --> 00:01:40.807
 <v Alexander Dymo>And only then you actually allocate more memory. Okay so you're saying okay I'm gonna fork this process and the VM knows okay there's this handle I have to have and then you start to write to it. That's okay now I'm gonna allocate it. This handle is operated by, this is handled by operating system. Oh it's by the OS level. So it's on the OS level so you don't have to do anything with this.
 
-00:01:40.797 --> 00:01:41.099
+00:01:40.807 --> 00:01:41.109
 <v Mike Hall>Okay.
 
-00:01:41.099 --> 00:01:43.519
+00:01:41.109 --> 00:01:43.530
 <v Alexander Dymo>You just need to be copy and write safe.
 
-00:01:43.519 --> 00:01:43.882
+00:01:43.530 --> 00:01:43.893
 <v Mike Hall>Right.
 
-00:01:43.882 --> 00:01:47.391
+00:01:43.893 --> 00:01:47.402
 <v Alexander Dymo>That's what, that actually was introduced in 2. 0 already.
 
-00:01:47.391 --> 00:01:47.694
+00:01:47.402 --> 00:01:47.705
 <v Mike Hall>Okay.
 
-00:01:47.694 --> 00:02:06.208
+00:01:47.705 --> 00:02:06.220
 <v Alexander Dymo>Is that something, if you said they had to be copy and write safe, is that something that developers, Rubyists need to change the way they go about writing code? Not at all. Unless they use of course C extensions. Oh okay. Not at all. Ruby does it for you. Okay so if you're using native Ruby or Ruby core.
 
-00:02:06.208 --> 00:02:06.510
+00:02:06.220 --> 00:02:06.523
 <v Mike Hall>Yeah.
 
-00:02:06.510 --> 00:02:09.112
+00:02:06.523 --> 00:02:09.125
 <v Alexander Dymo>You're gonna be fine. You're gonna be fine.
 
-00:02:09.112 --> 00:02:09.414
+00:02:09.125 --> 00:02:09.427
 <v Mike Hall>Okay.
 
-00:02:09.414 --> 00:02:20.244
+00:02:09.427 --> 00:02:20.258
 <v Alexander Dymo>Okay but if it's, if you're using a gem with with C extensions you might want to look at that. You might want to investigate. You might want to investigate. But usually it's okay.
 
-00:02:20.244 --> 00:02:20.547
+00:02:20.258 --> 00:02:20.561
 <v Mike Hall>Okay.
 
-00:02:20.547 --> 00:02:23.209
+00:02:20.561 --> 00:02:23.223
 <v Alexander Dymo>And you mentioned the the garbage collector.
 
-00:02:23.209 --> 00:02:27.565
+00:02:23.223 --> 00:02:27.580
 <v Mike Hall>There's been arguments recently about, you know, is it production ready?
 
-00:02:27.565 --> 00:02:42.509
+00:02:27.580 --> 00:02:42.525
 <v Alexander Dymo>There's been kind of a snarky article about that. You know maybe you can tell us a little bit more about what you're gonna be talking about with the garbage collector. All right. Spoiler. This is gonna come out after your talk. It's not a spoiler.
 
-00:02:42.509 --> 00:02:42.811
+00:02:42.525 --> 00:02:42.828
 <v Mike Hall>Yeah.
 
-00:02:42.811 --> 00:02:45.655
+00:02:42.828 --> 00:02:45.672
 <v Alexander Dymo>What you get from to one is a huge improvement.
 
-00:02:45.655 --> 00:02:45.957
+00:02:45.672 --> 00:02:45.974
 <v Mike Hall>Okay.
 
-00:02:45.957 --> 00:02:52.431
+00:02:45.974 --> 00:02:52.449
 <v Alexander Dymo>So it is definitely production ready and the improvement I usually see is about 40% speed up just for free.
 
-00:02:52.431 --> 00:02:56.485
+00:02:52.449 --> 00:02:56.503
 <v Mike Hall>Yeah. Have you dug into what is different about it versus previous?
 
-00:02:56.485 --> 00:03:26.070
+00:02:56.503 --> 00:03:26.091
 <v Alexander Dymo>So the only difference is how long GC takes usually. So in old Ruby's you had this huge memory allocated for your batches. And the garbage collection had to go through all this memory and see if there are some objects to delete or to collect. And in 2. 1 it usually goes through only new objects that were created after the last GC. So usually you have like a limited set of objects that the garbage collection goes through. That's why it takes less time. And in Ruby it's called minor GC.
 
-00:03:26.070 --> 00:03:30.003
+00:03:26.091 --> 00:03:30.024
 <v Mike Hall>Okay. Minor GC is that's that's the new garbage collection? Yeah.
 
-00:03:30.003 --> 00:03:39.441
+00:03:30.024 --> 00:03:39.463
 <v Alexander Dymo>So basically the minor GC is what is collecting new objects and the major GC is the good old-fashioned GC that collects everything. Just cleans up the hole.
 
-00:03:39.441 --> 00:03:39.744
+00:03:39.463 --> 00:03:39.766
 <v Mike Hall>Yeah.
 
-00:03:39.744 --> 00:03:49.908
+00:03:39.766 --> 00:03:49.931
 <v Alexander Dymo>So that's why the garbage collection in 2. 1 is actually called generational. Because you have these two generations. One is new objects and another one is old objects.
 
-00:03:49.908 --> 00:03:50.211
+00:03:49.931 --> 00:03:50.234
 <v Mike Hall>Yeah.
 
-00:03:50.211 --> 00:03:54.083
+00:03:50.234 --> 00:03:54.106
 <v Alexander Dymo>And 2. 2 will have three generations. So it will be even faster.
 
-00:03:54.083 --> 00:03:58.076
+00:03:54.106 --> 00:03:58.100
 <v Mike Hall>So what got you digging into into the internals of Ruby like this?
 
-00:03:58.076 --> 00:04:06.667
+00:03:58.100 --> 00:04:06.692
 <v Alexander Dymo>Well we had a bad experience with memory usage. For example like if you deploy on Heroku you have 500 megs limit. And it's quite low for Ruby.
 
-00:04:06.667 --> 00:04:06.970
+00:04:06.692 --> 00:04:06.995
 <v Mike Hall>Yeah.
 
-00:04:06.970 --> 00:04:14.533
+00:04:06.995 --> 00:04:14.558
 <v Alexander Dymo>It's so easy to take 500 megs. And if you do that there are two ways. You either stop using Heroku or by there you'll PX. PX.
 
-00:04:14.533 --> 00:04:14.835
+00:04:14.558 --> 00:04:14.861
 <v Mike Hall>Yeah.
 
-00:04:14.835 --> 00:04:20.099
+00:04:14.861 --> 00:04:20.125
 <v Alexander Dymo>Which is like two gigs I think for Dyno. Or it was a large number. It's a large number.
 
-00:04:20.099 --> 00:04:20.401
+00:04:20.125 --> 00:04:20.428
 <v Mike Hall>Yeah.
 
-00:04:20.401 --> 00:04:35.950
+00:04:20.428 --> 00:04:35.978
 <v Alexander Dymo>If you go listen to the interview with Schneems that's that's he he says the number. And basically what you don't want to do is you don't want to spend that much money on hardware. So instead you can just optimize memory. And it's quite easy to do actually.
 
-00:04:35.950 --> 00:04:36.253
+00:04:35.978 --> 00:04:36.281
 <v Mike Hall>Yeah.
 
-00:04:36.253 --> 00:04:41.456
+00:04:36.281 --> 00:04:41.484
 <v Alexander Dymo>You know looking at it have you done any digging to compare your metrics using Ruby 2.
 
-00:04:41.456 --> 00:04:47.748
+00:04:41.484 --> 00:04:47.777
 <v Mike Hall>1 versus using JRuby? Is it something like you've looked at or are you fully invested in MRI Ruby? Yeah.
 
-00:04:47.748 --> 00:04:51.862
+00:04:47.777 --> 00:04:51.892
 <v Alexander Dymo>At this point fully invested in MRI and not really wanted to switch.
 
-00:04:51.862 --> 00:04:52.165
+00:04:51.892 --> 00:04:52.194
 <v Mike Hall>Okay.
 
-00:04:52.165 --> 00:05:01.422
+00:04:52.194 --> 00:05:01.452
 <v Alexander Dymo>The reason is that I wrote several Rails applications Rails 2 application Rails 3 applications Rails 4 application and none of them worked with JRuby so.
 
-00:05:01.422 --> 00:05:01.724
+00:05:01.452 --> 00:05:01.755
 <v Mike Hall>Okay.
 
-00:05:01.724 --> 00:05:03.963
+00:05:01.755 --> 00:05:03.994
 <v Alexander Dymo>That's that's the way it goes for me.
 
-00:05:03.963 --> 00:05:04.265
+00:05:03.994 --> 00:05:04.296
 <v Mike Hall>Okay.
 
-00:05:04.265 --> 00:05:28.829
+00:05:04.296 --> 00:05:28.862
 <v Alexander Dymo>I can say I I have gotten a few out there and and it's worked for me but everybody's you know there's that old saying everybody's mileage and it all depends on what we're doing. Yeah and what we're using because I'm I'm using C extensions a lot. My proprietary extensions too. That's why I cannot use JRuby and that's why I'm not quite interested in it. So you you have a more of an engineering background.
 
-00:05:28.829 --> 00:05:29.132
+00:05:28.862 --> 00:05:29.165
 <v Mike Hall>Yeah.
 
-00:05:29.132 --> 00:05:46.556
+00:05:29.165 --> 00:05:46.591
 <v Alexander Dymo>More of more of the the DHH rather you're you actually do have an engineering background. Well if software engineering. If we use DHH classification yeah it's software engineer. We'll just leave it at that. But but you've you've been you've obviously been digging into C code for a while.
 
-00:05:46.556 --> 00:05:46.859
+00:05:46.591 --> 00:05:46.894
 <v Mike Hall>Yeah.
 
-00:05:46.859 --> 00:06:38.225
+00:05:46.894 --> 00:06:38.265
 <v Alexander Dymo>Has that really helped you with your Ruby understanding C so you can look at it be like oh okay I see what the abstractions are. Right and I actually done a lot of C++ programming in the past and I enjoyed that unlike most people. You were a different breed then. Yeah so that's why I'm okay when I see the problem with the Ruby I just go ahead and read the source code. Yeah that's what I did. So so again going to kind of what the theme of the original keynote was is is the reading of the source code and and having you know building up some additional skills outside of of simply being a Rubyist. You know not just saying oh I'm a Rubyist and I I know Ruby but knowing how some of that lower level languages works. It's been yeah it's it's worth the investment. It is a good investment definitely because you you come to understand how it works.
 
-00:06:38.225 --> 00:06:38.528
+00:06:38.265 --> 00:06:38.568
 <v Mike Hall>Yeah.
 
-00:06:38.528 --> 00:06:40.827
+00:06:38.568 --> 00:06:40.867
 <v Alexander Dymo>And why it behaves the way it behaves.
 
-00:06:40.827 --> 00:06:41.129
+00:06:40.867 --> 00:06:41.170
 <v Mike Hall>Yeah.
 
-00:06:41.129 --> 00:06:47.966
+00:06:41.170 --> 00:06:48.007
 <v Alexander Dymo>That's important when you when we optimize things. Like to really optimize you need to understand why it is slow.
 
-00:06:47.966 --> 00:06:48.329
+00:06:48.007 --> 00:06:48.370
 <v Mike Hall>Right.
 
-00:06:48.329 --> 00:06:52.927
+00:06:48.370 --> 00:06:52.969
 <v Alexander Dymo>Without this you you just cannot optimize. Yeah and avoid the cargo culting.
 
-00:06:52.927 --> 00:06:53.230
+00:06:52.969 --> 00:06:53.271
 <v Mike Hall>Yeah.
 
-00:06:53.230 --> 00:07:12.954
+00:06:53.271 --> 00:07:12.997
 <v Alexander Dymo>Because that was I do understand that also the memory like the old Twitter environment variables that people would use to override the garbage collector or memory or the number of objects that can be allocated between garbage collection right. But that's also been fixed in 2. 0 or 2. 1. 2. 1 actually increased memory limits.
 
-00:07:12.954 --> 00:07:13.256
+00:07:12.997 --> 00:07:13.300
 <v Mike Hall>Yeah.
 
-00:07:13.256 --> 00:07:22.029
+00:07:13.300 --> 00:07:22.073
 <v Alexander Dymo>So like most people do not want to tweak these variables anymore and what I've seen recently that some people do and they do it in the wrong way.
 
-00:07:22.029 --> 00:07:22.392
+00:07:22.073 --> 00:07:22.436
 <v Mike Hall>Right.
 
-00:07:22.392 --> 00:07:36.005
+00:07:22.436 --> 00:07:36.051
 <v Alexander Dymo>So if you have that those old GC environment variables and you're upgrading to 2. 1 you might want to look at taking those outs or determining what they are the new defaults are. Yeah and then like that's the part of my talk.
 
-00:07:36.005 --> 00:07:36.307
+00:07:36.051 --> 00:07:36.353
 <v Mike Hall>Yeah.
 
-00:07:36.307 --> 00:07:39.937
+00:07:36.353 --> 00:07:39.984
 <v Alexander Dymo>About new defaults and like do I really want to change them.
 
-00:07:39.937 --> 00:07:40.603
+00:07:39.984 --> 00:07:40.649
 <v Mike Hall>Yeah. Okay.
 
-00:07:40.603 --> 00:07:48.771
+00:07:40.649 --> 00:07:48.818
 <v Alexander Dymo>And by the way speaking about cargo cult and another way that Ruby community and especially Rails community don't want to learn is SQL.
 
-00:07:48.771 --> 00:07:49.436
+00:07:48.818 --> 00:07:49.484
 <v Mike Hall>Yeah. Yeah.
 
-00:07:49.436 --> 00:08:00.387
+00:07:49.484 --> 00:08:00.436
 <v Alexander Dymo>And SQL has been there for 40 years and web frameworks come and go come and go and SQL is still here and it's such a good investment if you want to improve your performance as well.
 
-00:08:00.387 --> 00:08:01.416
+00:08:00.436 --> 00:08:01.464
 <v Mike Hall>Yeah. Yeah. Yeah.
 
-00:08:01.416 --> 00:08:10.733
+00:08:01.464 --> 00:08:10.783
 <v Alexander Dymo>It's still sitting on the porch giving the old those little those little web frameworks that are rolling by under skating boards and they're roller shoes.
 
-00:08:10.733 --> 00:08:11.399
+00:08:10.783 --> 00:08:11.448
 <v Mike Hall>Yeah. Yeah.
 
-00:08:11.399 --> 00:08:16.602
+00:08:11.448 --> 00:08:16.652
 <v Alexander Dymo>I understand that using barrel sounds cool but at the end it's the same plain old SQL.
 
-00:08:16.602 --> 00:08:16.965
+00:08:16.652 --> 00:08:17.015
 <v Mike Hall>Right.
 
-00:08:16.965 --> 00:08:18.175
+00:08:17.015 --> 00:08:18.225
 <v Alexander Dymo>But written in Ruby.
 
-00:08:18.175 --> 00:08:18.538
+00:08:18.225 --> 00:08:18.588
 <v Mike Hall>Right.
 
-00:08:18.538 --> 00:08:19.990
+00:08:18.588 --> 00:08:20.040
 <v Alexander Dymo>It's generating the SQL.
 
-00:08:19.990 --> 00:08:20.292
+00:08:20.040 --> 00:08:20.343
 <v Mike Hall>Yeah.
 
-00:08:20.292 --> 00:09:08.573
+00:08:20.343 --> 00:09:08.628
 <v Alexander Dymo>It's just like you know you're people people complain about using CoffeeScript because they say oh it's just generating JavaScript that a long time ago people were saying oh why am I using an ORM it's just generating SQL. Mm-hmm. And you know it there's there's a lot of things that are going on in the world there's pros and cons to that is that right okay you can write code a little bit faster now with the ORM but we forgot about SQL I wonder if that's going to be the future with all these abstractions on JavaScript we're going to have people that don't even know JavaScript because they only know these abstractions. I don't know it's a question maybe we'll find out well the next 20 years. It's more like another question of whether you need to choose between two but you'd rather use both.
 
-00:09:08.573 --> 00:09:08.936
+00:09:08.628 --> 00:09:08.992
 <v Mike Hall>Right.
 
-00:09:08.936 --> 00:09:38.098
+00:09:08.992 --> 00:09:38.096
 <v Alexander Dymo>When appropriate and I think some things are just not good to do in Ruby and Ruby will take enormous time to to do calculations for example if you have large data sets so that's why you should not forget completely about SQL because this is the thing you want to use at some point I'm not going to say that okay just forget about ActiveRecord yeah yeah do not use any models but let's have a toolbox. And they have more than one tool right yeah you just need to have several tools.
 
-00:09:38.098 --> 00:10:00.000
+00:09:38.096 --> 00:10:00.000
 <v Mike Hall>Sometimes you just need a hammer yeah yeah all right well thank you very much for taking the time to speak with me. Thank you very much for having me thanks thanks user groups with lots to say interviews and more no way sharing great ideas in the tech community fascinating conversations a plethora of information find out for yourself today at ucdastic. com you
