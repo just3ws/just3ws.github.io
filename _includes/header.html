@@ -70,11 +70,6 @@
           <button id="cmdPaletteTrigger" type="button" class="nav-link cmd-palette-btn" aria-label="Open Command Palette (⌘K)" title="Open Command Palette (⌘K)">
             <span>⌘K</span>
           </button>
-
-          <!-- Kanagawa Wave Theme Toggle Switcher -->
-          <button id="themeToggleBtn" type="button" class="nav-link theme-toggle-btn" aria-label="Toggle Kanagawa Wave Theme" title="Toggle Kanagawa Wave Theme">
-            <span id="themeToggleIcon">🌊</span>
-          </button>
         </div>
       </div>
     </nav>
@@ -83,35 +78,7 @@
 
 <script>
 (function() {
-  const savedTheme = localStorage.getItem('ugtastic_theme');
-  if (savedTheme === 'kanagawa') {
-    document.documentElement.setAttribute('data-theme', 'kanagawa');
-    document.body.classList.add('theme-kanagawa');
-  }
-
   document.addEventListener("DOMContentLoaded", function() {
-    const btn = document.getElementById('themeToggleBtn');
-    const icon = document.getElementById('themeToggleIcon');
-
-    function updateIcon() {
-      const isKanagawa = document.body.classList.contains('theme-kanagawa');
-      if (icon) icon.textContent = isKanagawa ? '☀️' : '🌊';
-    }
-
-    if (btn) {
-      updateIcon();
-      btn.addEventListener('click', function() {
-        const isKanagawa = document.body.classList.toggle('theme-kanagawa');
-        if (isKanagawa) {
-          document.documentElement.setAttribute('data-theme', 'kanagawa');
-          localStorage.setItem('ugtastic_theme', 'kanagawa');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-          localStorage.removeItem('ugtastic_theme');
-        }
-        updateIcon();
-      });
-    }
 
     // Accessible Touch, Focus & Click Toggle for Navigation Dropdowns
     const dropdowns = document.querySelectorAll('.nav-dropdown');
