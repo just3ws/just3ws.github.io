@@ -85,7 +85,7 @@ class VimeoToYouTubeMigrator
       next if item["migration_state"] == "completed" && item["youtube_id"] && !item["youtube_id"].to_s.empty?
 
       vid_id = item["vimeo_id"].to_s
-      matching_file = available_files.find { |f| f.include?("_#{vid_id}.mp4") || f.include?("#{vid_id}.mp4") }
+      matching_file = available_files.find { |f| f.include?(vid_id) }
 
       if !matching_file && CUSTOM_PATTERNS[item["asset_id"]]
         matching_file = available_files.find do |f|

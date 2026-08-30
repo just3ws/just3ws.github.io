@@ -24,12 +24,23 @@ def post_output_path(relative_post_path)
     content = File.read(full_path, encoding: 'UTF-8')
     if content =~ /\A---\s*\n(.*?)\n---\s*\n/m
       fm = (YAML.safe_load(Regexp.last_match(1), permitted_classes: [Date, Time], aliases: true) rescue {}) || {}
-      if fm.is_a?(Hash) && fm['permalink']
-        perm = fm['permalink'].sub(%r{\A/}, '').sub(%r{/\z}, '')
-        dir_idx = File.join(SITE_DIR, perm, 'index.html')
-        return dir_idx if File.file?(dir_idx)
-        file_html = File.join(SITE_DIR, "#{perm}.html")
-        return file_html if File.file?(file_html)
+      if fm.is_a?(Hash)
+        if fm['permalink']
+          perm = fm['permalink'].sub(%r{\A/}, '').sub(%r{/\z}, '')
+          dir_idx = File.join(SITE_DIR, perm, 'index.html')
+          return dir_idx if File.file?(dir_idx)
+          file_html = File.join(SITE_DIR, "#{perm}.html")
+          return file_html if File.file?(file_html)
+        end
+        if fm['categories']
+          cats = fm['categories'].is_a?(Array) ? fm['categories'] : [fm['categories']]
+          cat_path = cats.map(&:to_s).join('/')
+          year, month, day, slug = match.captures
+          cat_file = File.join(SITE_DIR, cat_path, year, month, day, "#{slug}.html")
+          return cat_file if File.file?(cat_file)
+          cat_dir = File.join(SITE_DIR, cat_path, year, month, day, slug, 'index.html')
+          return cat_dir if File.file?(cat_dir)
+        end
       end
     end
   end
@@ -37,7 +48,14 @@ def post_output_path(relative_post_path)
   year, month, day, slug = match.captures
   dir_index = File.join(SITE_DIR, year, month, day, slug, "index.html")
   return dir_index if File.file?(dir_index)
-  File.join(SITE_DIR, year, month, day, "#{slug}.html")
+  file_direct = File.join(SITE_DIR, year, month, day, "#{slug}.html")
+  return file_direct if File.file?(file_direct)
+
+  # Fallback: glob search in _site for #{slug}.html
+  glob_match = Dir.glob(File.join(SITE_DIR, '**', "#{slug}.html")).first
+  return glob_match if glob_match && File.file?(glob_match)
+
+  file_direct
 end
 
 def parse_iso8601(value)
