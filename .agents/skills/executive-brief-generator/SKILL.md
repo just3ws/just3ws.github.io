@@ -28,9 +28,16 @@ Use this skill when preparing tailored application briefs, pitch documents, or c
 3. **Query Personal OS & Canonical Corpus (`zdots-ctx` + `_data/resume/`)**:
    - Query `/Users/mike/.config/zsh/bin/zdots-ctx query "<topic>"` for personal strategy guidelines and lessons.
    - Pull supporting highlights from `_data/resume/positions/*.yml` and `_data/interviews.yml`.
+   - Reference `docs/career-strategy-audhd-principal-engineering.md` for role calibration and boundary criteria.
 
 4. **Synthesize Tailored 1-Page Executive Pitch Brief or Cover Memo**:
    - **Hook (Act 3 Offering):** Anchor as the Principal Software Engineer specializing in de-risking their specific platform transition.
    - **Proven Proof Points (Act 2 Crucible):** Select 2 to 3 matching historical outcomes (OneMain Acquisition lane, 5-phase PII engine, 4% traffic loss fix, enterprise OTel trace).
    - **Operating Philosophy (Act 1 Foundation):** Ground in System Cartography (mapping state before code changes), automated verification gates, and team enablement.
    - **Direct Call to Action:** Offer a 20-minute peer-level technical conversation on architecture and platform stability.
+
+5. **Generate Direct Outreach Copy & Interview Prep (`docs/direct-hiring-manager-outreach-playbook.md`)**:
+   - **Cold Outreach Note (~65 words):** Level 1 Scan value proposition + link to 1-page brief on just3ws.com + zero-pressure close.
+   - **Warm Peer Referral Note:** Low-friction check-in with shared context + link to 1-page brief.
+   - **30-Second Interview Calibration Script:** Follow the "Answer, Frame, and Pause" progressive disclosure rule.
+   - Output via CLI `ruby bin/generate_executive_brief.rb -c <company> -r <role> --json` or MCP tool `generate_executive_brief`.

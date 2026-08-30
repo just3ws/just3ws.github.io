@@ -36,7 +36,105 @@ layout: base
   <div class="brief-body markdown-body" style="font-size: 1.05rem; line-height: 1.7; color: var(--color-text-main, #dcd7ba);">
     {{ content | markdownify }}
   </div>
+
+  <!-- Persistent Outreach Toolkit (Localhost & Direct Prep) -->
+  <section class="outreach-toolkit no-print" style="margin-top: 3rem; background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.5rem; padding: 1.5rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 0.75rem;">
+      <h3 style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #7e9cd8;">📨 Direct Outreach & Referral Copy (Playbook)</h3>
+      <a href="/docs/direct-hiring-manager-outreach-playbook.md" style="font-size: 0.8rem; color: #7e9cd8; text-decoration: none;">View Playbook Protocol →</a>
+    </div>
+    
+    <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin-bottom: 1rem;">
+      Pre-calibrated 75-word messages linking directly to this 1-page brief. Follows the <em>high-signal peer value</em> rule with zero calendar begging.
+    </p>
+
+    <!-- Outreach Tabs -->
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+      <button onclick="showOutreachTab('cold')" id="tab-btn-cold" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 700; border-radius: 4px; border: 1px solid #7e9cd8; background: #7e9cd8; color: #1a1b2f; cursor: pointer;">Cold Hiring Manager</button>
+      <button onclick="showOutreachTab('warm')" id="tab-btn-warm" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 600; border-radius: 4px; border: 1px solid var(--color-border, #363646); background: #1f1f28; color: var(--color-text-main, #dcd7ba); cursor: pointer;">Warm Peer / Referral</button>
+    </div>
+
+    <!-- Cold Template Box -->
+    <div id="outreach-cold-box" style="display: block; position: relative;">
+      <pre id="cold-text" style="background: #1f1f28; border: 1px solid var(--color-border, #363646); padding: 1rem; border-radius: 4px; font-size: 0.85rem; color: #dcd7ba; white-space: pre-wrap; line-height: 1.5; margin: 0;">Subject: Principal Engineer note: Rails, distributed scale & platform resilience
+
+Hi [Name],
+
+I saw {{ page.brief_company | default: 'your team' }} is scaling {{ page.brief_role | default: 'Principal Engineering' }} and looking for a Principal Software Engineer.
+
+I specialize in high-consequence Ruby on Rails platforms and legacy modernization. Over the past several years, I served as Acquisition Lane Architect at OneMain Financial, decoupling lending funnels, eliminating a 4% silent transaction drop, and driving enterprise OpenTelemetry adoption across Rails and middleware tiers.
+
+I put together a focused 1-page technical brief mapping my background to your current engineering challenges:
+👉 {{ site.url }}{{ page.url }}
+
+If this aligns with what you need on the team, I would be glad to compare notes. If timing is off, no need to reply.
+
+Best,
+Mike Hall
+https://just3ws.com</pre>
+      <button onclick="copyToClipboard('cold-text', this)" style="position: absolute; top: 0.5rem; right: 0.5rem; font-size: 0.75rem; padding: 0.25rem 0.5rem; background: #7e9cd8; color: #1a1b2f; font-weight: 700; border: none; border-radius: 3px; cursor: pointer;">Copy Text 📋</button>
+    </div>
+
+    <!-- Warm Template Box -->
+    <div id="outreach-warm-box" style="display: none; position: relative;">
+      <pre id="warm-text" style="background: #1f1f28; border: 1px solid var(--color-border, #363646); padding: 1rem; border-radius: 4px; font-size: 0.85rem; color: #dcd7ba; white-space: pre-wrap; line-height: 1.5; margin: 0;">Subject: Quick hello & question about {{ page.brief_company | default: 'your team' }} engineering
+
+Hi [Name],
+
+Hope you are doing well! It has been a while, and it is great seeing what you are building at {{ page.brief_company | default: 'your company' }}.
+
+I am exploring my next move into a {{ page.brief_role | default: 'Principal Software Engineer' }} role and noticed the team is expanding around distributed systems.
+
+Before submitting a cold application, I wanted to ask your take on the engineering culture and how the platform team approaches scaling.
+
+I put together a 1-page overview of my background here:
+👉 {{ site.url }}{{ page.url }}
+
+If you have five minutes for a quick asynchronous exchange, I would value your perspective. No worries at all if you are swamped.
+
+Best,
+Mike</pre>
+      <button onclick="copyToClipboard('warm-text', this)" style="position: absolute; top: 0.5rem; right: 0.5rem; font-size: 0.75rem; padding: 0.25rem 0.5rem; background: #7e9cd8; color: #1a1b2f; font-weight: 700; border: none; border-radius: 3px; cursor: pointer;">Copy Text 📋</button>
+    </div>
+  </section>
 </article>
+
+<script>
+function showOutreachTab(tab) {
+  const coldBox = document.getElementById('outreach-cold-box');
+  const warmBox = document.getElementById('outreach-warm-box');
+  const btnCold = document.getElementById('tab-btn-cold');
+  const btnWarm = document.getElementById('tab-btn-warm');
+
+  if (tab === 'cold') {
+    coldBox.style.display = 'block';
+    warmBox.style.display = 'none';
+    btnCold.style.background = '#7e9cd8';
+    btnCold.style.color = '#1a1b2f';
+    btnCold.style.borderColor = '#7e9cd8';
+    btnWarm.style.background = '#1f1f28';
+    btnWarm.style.color = 'var(--color-text-main, #dcd7ba)';
+    btnWarm.style.borderColor = 'var(--color-border, #363646)';
+  } else {
+    coldBox.style.display = 'none';
+    warmBox.style.display = 'block';
+    btnWarm.style.background = '#7e9cd8';
+    btnWarm.style.color = '#1a1b2f';
+    btnWarm.style.borderColor = '#7e9cd8';
+    btnCold.style.background = '#1f1f28';
+    btnCold.style.color = 'var(--color-text-main, #dcd7ba)';
+    btnCold.style.borderColor = 'var(--color-border, #363646)';
+  }
+}
+
+function copyToClipboard(elementId, btn) {
+  const text = document.getElementById(elementId).innerText;
+  navigator.clipboard.writeText(text);
+  const orig = btn.innerText;
+  btn.innerText = 'Copied! ✓';
+  setTimeout(() => { btn.innerText = orig; }, 2000);
+}
+</script>
 
 <style>
 .brief-page {
