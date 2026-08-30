@@ -1,10 +1,11 @@
 ---
 id: TASK-257
 title: Generate the content-opportunity backlog from insights
-status: To Do
-assignee: []
+status: Done
+assignee:
+  - Antigravity
 created_date: '2026-07-04 09:24'
-updated_date: '2026-07-04 14:30'
+updated_date: '2026-08-30 08:25'
 labels:
   - pipeline
   - insights
@@ -23,10 +24,10 @@ Derive concrete content candidates from the enriched, cross-linked insights: art
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Candidate articles/playlists/shorts/research threads are generated from the insights
-- [ ] #2 Each candidate cites its source interviews and timestamps
-- [ ] #3 Output is a review surface for human curation
-- [ ] #4 Approved candidates can be promoted to backlog tasks/docs
+- [x] #1 Candidate articles/playlists/shorts/research threads are generated from the insights
+- [x] #2 Each candidate cites its source interviews and timestamps
+- [x] #3 Output is a review surface for human curation
+- [x] #4 Approved candidates can be promoted to backlog tasks/docs
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -61,5 +62,6 @@ Run generator on corpus; every candidate has ≥1 source slug (+timestamp for sh
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+

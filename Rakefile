@@ -41,7 +41,8 @@ namespace :generate do
     :archetype_resumes,
     :career_datalake,
     :executive_briefs,
-    :brief_pdfs
+    :brief_pdfs,
+    :content_opportunities
   ]
 
   task :career_datalake do
@@ -58,6 +59,10 @@ namespace :generate do
 
   task :brief_pdfs do
     sh 'node ./bin/export_brief_pdfs.js'
+  end
+
+  task :content_opportunities do
+    sh 'ruby ./bin/generate_content_opportunities.rb'
   end
 
   task :sync_links do
