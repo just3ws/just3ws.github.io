@@ -68,7 +68,7 @@ In September 2012, SCMC published its core educational philosophy, known as **"3
 
 ### Leadership Continuity, Active Meetings & Modern Archives
 
-After running SCMC for two years, Mike Hall handed off primary leadership to **Ryan Gerry** (supported by Mike Roselli). In his [GOTO Conference oral history interview](/interviews/ryan-gerry-goto-conference-2014/), Ryan discussed managing user group topic backlogs, fostering local developer community, and expanding into morning coffee-shop co-working sessions. 
+Ryan Gerry and his team have sustained and guided SCMC for over a decade, keeping the community active and vibrant. In his [GOTO Conference oral history interview](/interviews/ryan-gerry-goto-conference-2014/), Ryan discussed managing user group topic backlogs, fostering local developer community, and expanding into morning coffee-shop co-working sessions. 
 
 Today, Software Craftsmanship McHenry County **continues to be an active, thriving developer community**, hosting regular technical meetings, hands-on sessions, and peer networking:
 
