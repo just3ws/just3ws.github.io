@@ -7,48 +7,49 @@ localhost_only: true
 body_class: content-opportunities-page
 ---
 
-<div class="content-opportunities-container" style="max-width: 76rem; margin: 0 auto; padding: 2rem 1.25rem;">
-  <header style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 1.5rem;">
+<div class="content-opportunities-container" style="max-width: 80rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: var(--font-sans-ui, system-ui, sans-serif); color: var(--color-text-main, #1e232a);">
+  
+  <header style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 1.5rem;">
     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-      <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+      <span style="background: rgba(15, 118, 110, 0.1); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
         🔒 Localhost Review Surface
       </span>
-      <span style="color: var(--color-text-muted, #727169); font-size: 0.85rem;">Generated: {{ site.data.content_opportunities.generated_at | date: "%B %d, %Y" }}</span>
+      <span style="color: var(--color-text-muted, #64748b); font-size: 0.85rem;">Generated: {{ site.data.content_opportunities.generated_at | date: "%B %d, %Y" }}</span>
     </div>
-    <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin: 0 0 0.5rem 0;">Archive Content Opportunities Hub</h1>
-    <p style="font-size: 1.05rem; color: var(--color-text-muted, #c8c093); max-width: 50rem; line-height: 1.6; margin: 0;">
+    <h1 style="font-size: 2.25rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif);">Archive Content Opportunities Hub</h1>
+    <p style="font-size: 1.05rem; color: var(--color-text-muted, #525866); max-width: 50rem; line-height: 1.6; margin: 0;">
       Curate and promote downstream technical essays, YouTube Shorts, conference playlists, and durable engineering wisdom derived from 211 oral history interviews.
     </p>
   </header>
 
   <!-- Metric Overview Cards -->
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-    <div style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); padding: 1rem; border-radius: 0.5rem; text-align: center;">
-      <div style="font-size: 1.75rem; font-weight: 800; color: #7e9cd8;">{{ site.data.content_opportunities.articles.size | default: 0 }}</div>
-      <div style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted, #c8c093); text-transform: uppercase;">Articles (TASK-237)</div>
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: var(--radius-md, 0.5rem); text-align: center; box-shadow: var(--shadow-sm);">
+      <div style="font-size: 1.75rem; font-weight: 800; color: var(--color-primary, #0f766e);">{{ site.data.content_opportunities.articles.size | default: 0 }}</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">Articles (TASK-237)</div>
     </div>
-    <div style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); padding: 1rem; border-radius: 0.5rem; text-align: center;">
-      <div style="font-size: 1.75rem; font-weight: 800; color: #818cf8;">{{ site.data.content_opportunities.playlists.size | default: 0 }}</div>
-      <div style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted, #c8c093); text-transform: uppercase;">Playlists (TASK-258)</div>
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: var(--radius-md, 0.5rem); text-align: center; box-shadow: var(--shadow-sm);">
+      <div style="font-size: 1.75rem; font-weight: 800; color: #2563eb;">{{ site.data.content_opportunities.playlists.size | default: 0 }}</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">Playlists (TASK-258)</div>
     </div>
-    <div style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); padding: 1rem; border-radius: 0.5rem; text-align: center;">
-      <div style="font-size: 1.75rem; font-weight: 800; color: #f472b6;">{{ site.data.content_opportunities.shorts.size | default: 0 }}</div>
-      <div style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted, #c8c093); text-transform: uppercase;">Shorts (TASK-258)</div>
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: var(--radius-md, 0.5rem); text-align: center; box-shadow: var(--shadow-sm);">
+      <div style="font-size: 1.75rem; font-weight: 800; color: #db2777;">{{ site.data.content_opportunities.shorts.size | default: 0 }}</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">Shorts (TASK-258)</div>
     </div>
-    <div style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); padding: 1rem; border-radius: 0.5rem; text-align: center;">
-      <div style="font-size: 1.75rem; font-weight: 800; color: #34d399;">{{ site.data.content_opportunities.linkedin_durable_wisdom.size | default: 0 }}</div>
-      <div style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted, #c8c093); text-transform: uppercase;">Wisdom (TASK-238)</div>
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: var(--radius-md, 0.5rem); text-align: center; box-shadow: var(--shadow-sm);">
+      <div style="font-size: 1.75rem; font-weight: 800; color: #059669;">{{ site.data.content_opportunities.linkedin_durable_wisdom.size | default: 0 }}</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">Wisdom (TASK-238)</div>
     </div>
-    <div style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); padding: 1rem; border-radius: 0.5rem; text-align: center;">
-      <div style="font-size: 1.75rem; font-weight: 800; color: #fbbf24;">{{ site.data.content_opportunities.ai_discovery.size | default: 0 }}</div>
-      <div style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted, #c8c093); text-transform: uppercase;">AI Tooling (TASK-236)</div>
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: var(--radius-md, 0.5rem); text-align: center; box-shadow: var(--shadow-sm);">
+      <div style="font-size: 1.75rem; font-weight: 800; color: #d97706;">{{ site.data.content_opportunities.ai_discovery.size | default: 0 }}</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">AI Tooling (TASK-236)</div>
     </div>
   </div>
 
   <!-- Curation Protocol Instructions -->
-  <div style="background: rgba(126, 156, 216, 0.08); border: 1px solid rgba(126, 156, 216, 0.25); border-radius: 0.5rem; padding: 1.25rem; margin-bottom: 2rem;">
-    <h3 style="font-size: 1rem; font-weight: 700; color: #7e9cd8; margin: 0 0 0.5rem 0;">🛠️ Curation & Promotion Workflow</h3>
-    <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem; color: var(--color-text-main, #dcd7ba); line-height: 1.6;">
+  <div style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); border-radius: var(--radius-md, 0.5rem); padding: 1.25rem; margin-bottom: 2rem;">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0;">🛠️ Curation & Promotion Workflow</h3>
+    <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem; color: var(--color-text-main, #1e232a); line-height: 1.6;">
       <li>Review candidate cards below across categories.</li>
       <li>To approve an item, edit <code>_data/content_opportunities.yml</code> and change <code>status: proposed</code> to <code>status: approved</code>.</li>
       <li>Run <code>ruby bin/promote_content_opportunities.rb</code> to automatically generate draft backlog tasks in <code>backlog/tasks/</code>.</li>
@@ -57,36 +58,36 @@ body_class: content-opportunities-page
   </div>
 
   <!-- Category Filter Navigation Tabs -->
-  <div class="category-tabs" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 1rem;">
-    <button class="cat-tab-btn is-active" data-target="all" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 700; font-size: 0.85rem; cursor: pointer; border: 1px solid #7e9cd8; background: #7e9cd8; color: #1a1b2f;">All Categories</button>
-    <button class="cat-tab-btn" data-target="articles" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #363646); background: var(--color-bg-card, #2a2a37); color: var(--color-text-main, #dcd7ba);">📖 Long-Form Articles</button>
-    <button class="cat-tab-btn" data-target="playlists" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #363646); background: var(--color-bg-card, #2a2a37); color: var(--color-text-main, #dcd7ba);">🎬 Video Playlists</button>
-    <button class="cat-tab-btn" data-target="shorts" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #363646); background: var(--color-bg-card, #2a2a37); color: var(--color-text-main, #dcd7ba);">⚡ YouTube Shorts</button>
-    <button class="cat-tab-btn" data-target="wisdom" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #363646); background: var(--color-bg-card, #2a2a37); color: var(--color-text-main, #dcd7ba);">💎 Durable Wisdom</button>
-    <button class="cat-tab-btn" data-target="ai-disc" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #363646); background: var(--color-bg-card, #2a2a37); color: var(--color-text-main, #dcd7ba);">🤖 AI & Tooling</button>
-    <button class="cat-tab-btn" data-target="research" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #363646); background: var(--color-bg-card, #2a2a37); color: var(--color-text-main, #dcd7ba);">🔬 Research Threads</button>
+  <div class="category-tabs" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 1rem;">
+    <button class="cat-tab-btn is-active" data-target="all" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 700; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-primary, #0f766e); background: var(--color-primary, #0f766e); color: #ffffff;">All Categories</button>
+    <button class="cat-tab-btn" data-target="articles" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #e3dfd7); background: #ffffff; color: var(--color-text-main, #1e232a);">📖 Long-Form Articles</button>
+    <button class="cat-tab-btn" data-target="playlists" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #e3dfd7); background: #ffffff; color: var(--color-text-main, #1e232a);">🎬 Video Playlists</button>
+    <button class="cat-tab-btn" data-target="shorts" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #e3dfd7); background: #ffffff; color: var(--color-text-main, #1e232a);">⚡ YouTube Shorts</button>
+    <button class="cat-tab-btn" data-target="wisdom" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #e3dfd7); background: #ffffff; color: var(--color-text-main, #1e232a);">💎 Durable Wisdom</button>
+    <button class="cat-tab-btn" data-target="ai-disc" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #e3dfd7); background: #ffffff; color: var(--color-text-main, #1e232a);">🤖 AI & Tooling</button>
+    <button class="cat-tab-btn" data-target="research" style="padding: 0.4rem 0.85rem; border-radius: 5px; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--color-border, #e3dfd7); background: #ffffff; color: var(--color-text-main, #1e232a);">🔬 Research Threads</button>
   </div>
 
   <!-- Candidates Grid Container -->
-  <div id="candidates-container" style="display: flex; flex-direction: column; gap: 1.5rem;">
+  <div id="candidates-container" style="display: flex; flex-direction: column; gap: 2rem;">
     
     <!-- Articles Section -->
     <div class="candidate-section" data-cat="articles">
-      <h2 style="font-size: 1.35rem; font-weight: 700; color: #7e9cd8; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 0.5rem;">📖 Long-Form Historical & Architecture Articles (Feeds TASK-237)</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--color-heading, #0f172a); margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; font-family: var(--font-serif-editorial, Georgia, serif);">📖 Long-Form Historical & Architecture Articles (Feeds TASK-237)</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem;">
         {% for item in site.data.content_opportunities.articles %}
-        <div class="candidate-card" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.5rem; padding: 1.25rem;">
+        <div class="candidate-card" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: var(--radius-md, 0.5rem); padding: 1.25rem; box-shadow: var(--shadow-sm);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(126, 156, 216, 0.15); color: #7e9cd8; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.feeds_task }}</span>
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #fbbf24;">Status: {{ item.status }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(15, 118, 110, 0.1); color: #0f766e; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.feeds_task }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #d97706;">Status: {{ item.status }}</span>
           </div>
-          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-heading, #dcd7ba); margin: 0 0 0.5rem 0;">{{ item.title }}</h3>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0 0 1rem 0; line-height: 1.5;">{{ item.rationale }}</p>
-          <div style="font-size: 0.8rem; color: var(--color-text-muted, #727169);">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif);">{{ item.title }}</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted, #525866); margin: 0 0 1rem 0; line-height: 1.5;">{{ item.rationale }}</p>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b);">
             <strong>Cited Interviews:</strong>
             <ul style="margin: 0.35rem 0 0 1rem; padding: 0;">
               {% for src in item.sources %}
-              <li><a href="/interviews/{{ src.slug }}/" style="color: #7e9cd8; text-decoration: none;">{{ src.speaker | default: src.title | default: src.slug }}</a></li>
+              <li><a href="/interviews/{{ src.slug }}/" style="color: var(--color-primary, #0f766e); text-decoration: none; font-weight: 600;">{{ src.speaker | default: src.title | default: src.slug }}</a></li>
               {% endfor %}
             </ul>
           </div>
@@ -97,21 +98,21 @@ body_class: content-opportunities-page
 
     <!-- Playlists Section -->
     <div class="candidate-section" data-cat="playlists">
-      <h2 style="font-size: 1.35rem; font-weight: 700; color: #818cf8; margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 0.5rem;">🎬 Conference & Thematic Playlists (Feeds TASK-258)</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--color-heading, #0f172a); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; font-family: var(--font-serif-editorial, Georgia, serif);">🎬 Conference & Thematic Playlists (Feeds TASK-258)</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem;">
         {% for item in site.data.content_opportunities.playlists %}
-        <div class="candidate-card" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.5rem; padding: 1.25rem;">
+        <div class="candidate-card" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: var(--radius-md, 0.5rem); padding: 1.25rem; box-shadow: var(--shadow-sm);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(129, 140, 248, 0.15); color: #818cf8; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.feeds_task }}</span>
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #fbbf24;">Status: {{ item.status }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(37, 99, 235, 0.1); color: #2563eb; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.feeds_task }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #d97706;">Status: {{ item.status }}</span>
           </div>
-          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-heading, #dcd7ba); margin: 0 0 0.5rem 0;">{{ item.title }}</h3>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0 0 1rem 0;">{{ item.rationale }}</p>
-          <div style="font-size: 0.8rem; color: var(--color-text-muted, #727169);">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif);">{{ item.title }}</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted, #525866); margin: 0 0 1rem 0;">{{ item.rationale }}</p>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b);">
             <strong>Featured Speakers:</strong>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.35rem;">
               {% for src in item.sources %}
-              <a href="/interviews/{{ src.slug }}/" style="background: rgba(255, 255, 255, 0.05); padding: 0.15rem 0.45rem; border-radius: 3px; color: #dcd7ba; text-decoration: none; font-size: 0.75rem;">{{ src.speaker | default: src.slug }}</a>
+              <a href="/interviews/{{ src.slug }}/" style="background: var(--color-bg-subtle, #f4f0e8); padding: 0.15rem 0.45rem; border-radius: 3px; color: var(--color-text-main, #1e232a); text-decoration: none; font-size: 0.75rem; font-weight: 600;">{{ src.speaker | default: src.slug }}</a>
               {% endfor %}
             </div>
           </div>
@@ -122,23 +123,23 @@ body_class: content-opportunities-page
 
     <!-- Shorts Section -->
     <div class="candidate-section" data-cat="shorts">
-      <h2 style="font-size: 1.35rem; font-weight: 700; color: #f472b6; margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 0.5rem;">⚡ YouTube Shorts Candidates (Feeds TASK-258)</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--color-heading, #0f172a); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; font-family: var(--font-serif-editorial, Georgia, serif);">⚡ YouTube Shorts Candidates (Feeds TASK-258)</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem;">
         {% for item in site.data.content_opportunities.shorts %}
-        <div class="candidate-card" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.5rem; padding: 1.25rem;">
+        <div class="candidate-card" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: var(--radius-md, 0.5rem); padding: 1.25rem; box-shadow: var(--shadow-sm);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(244, 114, 182, 0.15); color: #f472b6; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.speaker }}</span>
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #fbbf24;">Status: {{ item.status }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(219, 39, 119, 0.1); color: #db2777; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.speaker }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #d97706;">Status: {{ item.status }}</span>
           </div>
-          <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--color-heading, #dcd7ba); margin: 0 0 0.5rem 0;">{{ item.title }}</h3>
-          <blockquote style="font-size: 0.875rem; font-style: italic; color: #dcd7ba; border-left: 3px solid #f472b6; padding-left: 0.75rem; margin: 0.75rem 0; line-height: 1.5;">
+          <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif);">{{ item.title }}</h3>
+          <blockquote style="font-size: 0.9rem; font-style: italic; color: var(--color-text-main, #1e232a); border-left: 3px solid #db2777; background: var(--color-bg-subtle, #f4f0e8); padding: 0.75rem; border-radius: 0 4px 4px 0; margin: 0.75rem 0; line-height: 1.5;">
             "{{ item.text }}"
           </blockquote>
-          <div style="font-size: 0.775rem; color: var(--color-text-muted, #727169); display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-size: 0.775rem; color: var(--color-text-muted, #64748b); display: flex; justify-content: space-between; align-items: center;">
             {% for src in item.sources %}
-            <a href="/interviews/{{ src.slug }}/" style="color: #7e9cd8; text-decoration: none;">View Turn #{{ src.turn_index }} in Interview →</a>
+            <a href="/interviews/{{ src.slug }}/" style="color: var(--color-primary, #0f766e); text-decoration: none; font-weight: 600;">View Turn #{{ src.turn_index }} in Interview →</a>
             {% endfor %}
-            <code>{{ item.id }}</code>
+            <code style="font-size: 0.7rem; background: var(--color-bg-subtle, #f4f0e8);">{{ item.id }}</code>
           </div>
         </div>
         {% endfor %}
@@ -147,19 +148,19 @@ body_class: content-opportunities-page
 
     <!-- Durable Wisdom Section -->
     <div class="candidate-section" data-cat="wisdom">
-      <h2 style="font-size: 1.35rem; font-weight: 700; color: #34d399; margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 0.5rem;">💎 Durable Engineering Wisdom (Feeds TASK-238)</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--color-heading, #0f172a); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; font-family: var(--font-serif-editorial, Georgia, serif);">💎 Durable Engineering Wisdom (Feeds TASK-238)</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem;">
         {% for item in site.data.content_opportunities.linkedin_durable_wisdom %}
-        <div class="candidate-card" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.5rem; padding: 1.25rem;">
+        <div class="candidate-card" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: var(--radius-md, 0.5rem); padding: 1.25rem; box-shadow: var(--shadow-sm);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.speaker }}</span>
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #fbbf24;">Status: {{ item.status }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(5, 150, 105, 0.1); color: #059669; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.speaker }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #d97706;">Status: {{ item.status }}</span>
           </div>
-          <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--color-heading, #dcd7ba); margin: 0 0 0.5rem 0;">{{ item.statement }}</h3>
-          <p style="font-size: 0.85rem; color: #c8c093; margin: 0.5rem 0; line-height: 1.5;"><strong>Lessons for Today:</strong> {{ item.lessons_for_now }}</p>
-          <div style="font-size: 0.775rem; color: var(--color-text-muted, #727169); margin-top: 0.5rem;">
+          <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif);">{{ item.statement }}</h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted, #525866); margin: 0.5rem 0; line-height: 1.5;"><strong>Lessons for Today:</strong> {{ item.lessons_for_now }}</p>
+          <div style="font-size: 0.775rem; color: var(--color-text-muted, #64748b); margin-top: 0.5rem;">
             {% for src in item.sources %}
-            <a href="/interviews/{{ src.slug }}/" style="color: #7e9cd8; text-decoration: none;">Source: {{ src.title | default: src.slug }} →</a>
+            <a href="/interviews/{{ src.slug }}/" style="color: var(--color-primary, #0f766e); text-decoration: none; font-weight: 600;">Source: {{ src.title | default: src.slug }} →</a>
             {% endfor %}
           </div>
         </div>
@@ -169,19 +170,19 @@ body_class: content-opportunities-page
 
     <!-- AI & Tooling Discovery Section -->
     <div class="candidate-section" data-cat="ai-disc">
-      <h2 style="font-size: 1.35rem; font-weight: 700; color: #fbbf24; margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 0.5rem;">🤖 AI Discovery & Developer Tooling (Feeds TASK-236)</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--color-heading, #0f172a); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; font-family: var(--font-serif-editorial, Georgia, serif);">🤖 AI Discovery & Developer Tooling (Feeds TASK-236)</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem;">
         {% for item in site.data.content_opportunities.ai_discovery %}
-        <div class="candidate-card" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.5rem; padding: 1.25rem;">
+        <div class="candidate-card" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: var(--radius-md, 0.5rem); padding: 1.25rem; box-shadow: var(--shadow-sm);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(251, 191, 36, 0.15); color: #fbbf24; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.speaker }}</span>
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #fbbf24;">Status: {{ item.status }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(217, 119, 6, 0.1); color: #d97706; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.speaker }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #d97706;">Status: {{ item.status }}</span>
           </div>
-          <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--color-heading, #dcd7ba); margin: 0 0 0.5rem 0;">{{ item.title }}</h3>
-          <p style="font-size: 0.85rem; color: #dcd7ba; margin: 0.5rem 0; line-height: 1.5;">{{ item.statement }}</p>
-          <div style="font-size: 0.775rem; color: var(--color-text-muted, #727169); margin-top: 0.5rem;">
+          <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif);">{{ item.title }}</h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-main, #1e232a); margin: 0.5rem 0; line-height: 1.5;">{{ item.statement }}</p>
+          <div style="font-size: 0.775rem; color: var(--color-text-muted, #64748b); margin-top: 0.5rem;">
             {% for src in item.sources %}
-            <a href="/interviews/{{ src.slug }}/" style="color: #7e9cd8; text-decoration: none;">Source: {{ src.title | default: src.slug }} →</a>
+            <a href="/interviews/{{ src.slug }}/" style="color: var(--color-primary, #0f766e); text-decoration: none; font-weight: 600;">Source: {{ src.title | default: src.slug }} →</a>
             {% endfor %}
           </div>
         </div>
@@ -191,21 +192,21 @@ body_class: content-opportunities-page
 
     <!-- Research Threads Section -->
     <div class="candidate-section" data-cat="research">
-      <h2 style="font-size: 1.35rem; font-weight: 700; color: #38bdf8; margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #363646); padding-bottom: 0.5rem;">🔬 Technical Research Threads</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--color-heading, #0f172a); margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; font-family: var(--font-serif-editorial, Georgia, serif);">🔬 Technical Research Threads</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem;">
         {% for item in site.data.content_opportunities.research_threads %}
-        <div class="candidate-card" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.5rem; padding: 1.25rem;">
+        <div class="candidate-card" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: var(--radius-md, 0.5rem); padding: 1.25rem; box-shadow: var(--shadow-sm);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.topic }}</span>
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #fbbf24;">Status: {{ item.status }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(37, 99, 235, 0.1); color: #2563eb; padding: 0.15rem 0.5rem; border-radius: 4px;">{{ item.topic }}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #d97706;">Status: {{ item.status }}</span>
           </div>
-          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-heading, #dcd7ba); margin: 0 0 0.5rem 0;">{{ item.title }}</h3>
-          <p style="font-size: 0.85rem; color: #c8c093; margin: 0 0 1rem 0; line-height: 1.5;">{{ item.rationale }}</p>
-          <div style="font-size: 0.8rem; color: var(--color-text-muted, #727169);">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif);">{{ item.title }}</h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted, #525866); margin: 0 0 1rem 0; line-height: 1.5;">{{ item.rationale }}</p>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b);">
             <strong>Corpus Seed Interviews:</strong>
             <ul style="margin: 0.35rem 0 0 1rem; padding: 0;">
               {% for src in item.sources %}
-              <li><a href="/interviews/{{ src.slug }}/" style="color: #7e9cd8; text-decoration: none;">{{ src.speaker | default: src.title | default: src.slug }}</a></li>
+              <li><a href="/interviews/{{ src.slug }}/" style="color: var(--color-primary, #0f766e); text-decoration: none; font-weight: 600;">{{ src.speaker | default: src.title | default: src.slug }}</a></li>
               {% endfor %}
             </ul>
           </div>
@@ -226,14 +227,14 @@ document.addEventListener("DOMContentLoaded", function() {
     tab.addEventListener("click", function() {
       tabs.forEach(t => {
         t.classList.remove("is-active");
-        t.style.background = "var(--color-bg-card, #2a2a37)";
-        t.style.color = "var(--color-text-main, #dcd7ba)";
-        t.style.borderColor = "var(--color-border, #363646)";
+        t.style.background = "#ffffff";
+        t.style.color = "var(--color-text-main, #1e232a)";
+        t.style.borderColor = "var(--color-border, #e3dfd7)";
       });
       this.classList.add("is-active");
-      this.style.background = "#7e9cd8";
-      this.style.color = "#1a1b2f";
-      this.style.borderColor = "#7e9cd8";
+      this.style.background = "var(--color-primary, #0f766e)";
+      this.style.color = "#ffffff";
+      this.style.borderColor = "var(--color-primary, #0f766e)";
 
       const target = this.getAttribute("data-target");
       sections.forEach(sec => {

@@ -1,71 +1,114 @@
-/* Color palette - Nord-inspired */
-$nord0: #2e3440;
-$nord1: #3b4252;
-$nord2: #434c5e;
-$nord3: #4c566a;
-$nord4: #d8dee9;
-$nord5: #e5e9f0;
-$nord6: #eceff4;
-$nord7: #8fbcbb;
-$nord8: #88c0d0;
-$nord9: #81a1c1;
-$nord10: #5e81ac;
-$nord11: #bf616a;
-$nord12: #d08770;
-$nord13: #ebcb8b;
-$nord14: #a3be8c;
-$nord15: #b48ead;
+/* _sass/_p_variables.scss — Digital Patina & Editorial Craft Design Tokens */
 
-$avatar-teal: #139c96;
-$avatar-yellow: #fefca5;
-$avatar-brown: #51302d;
+/* Core Warm Paper & Sumi Ink Palette */
+$paper-canvas: #faf8f5;    /* Warm book paper / linen canvas */
+$paper-card: #ffffff;      /* Crisp pure card sheet */
+$paper-subtle: #f4f0e8;    /* Soft recessed paper background */
+$paper-code: #f3f4f6;      /* Clean monospace background */
 
-$text: $nord0;
-$muted: $nord2;
-$meta: $nord3;
-$border: $nord4;
-$surface: $nord6;
-$surface-2: $nord5;
-$link: $avatar-teal;
-$link-hover: $nord9;
-$accent: $avatar-teal;
-$accent-highlight: $avatar-yellow;
+$ink-main: #1e232a;        /* Deep sumi ink (15.5:1 contrast) */
+$ink-heading: #0f172a;     /* Pure slate ink */
+$ink-muted: #525866;       /* Refined slate (7.8:1 contrast) */
+$ink-meta: #64748b;        /* Subtle metadata grey */
 
-/* Typography */
-$font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-mono: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
-$font-size-base: 18px; /* Bumped from 16px */
-$line-height-base: 1.7; /* Increased for breathing room */
+$border-book: #e3dfd7;     /* Refined bookbinding border */
+$border-subtle: #eeebe3;   /* Soft paper divider */
+
+$teal-craftsman: #0f766e;  /* Deep craftsman teal accent */
+$teal-hover: #115e59;
+$amber-accent: #b45309;    /* Warm leather / amber highlight */
+$cobalt-link: #1d4ed8;     /* High-contrast accessible link */
+$cobalt-hover: #1e40af;
+
+/* Legacy Variable Compatibility Layer */
+$nord0: $ink-main;
+$nord1: $ink-heading;
+$nord2: $ink-muted;
+$nord3: $ink-meta;
+$nord4: $border-book;
+$nord5: $border-subtle;
+$nord6: $paper-canvas;
+$nord7: $teal-craftsman;
+$nord8: $teal-hover;
+$nord9: $cobalt-link;
+$nord10: $cobalt-hover;
+$nord11: #dc2626;
+$nord12: #ea580c;
+$nord13: #d97706;
+$nord14: #059669;
+$nord15: #7c3aed;
+
+/* Avatar legacy tokens */
+$avatar-teal: $teal-craftsman;
+$avatar-yellow: #fef08a;
+$avatar-brown: #78350f;
+
+/* SCSS Sass Variables */
+$text: $ink-main;
+$muted: $ink-muted;
+$meta: $ink-meta;
+$border: $border-book;
+$surface: $paper-subtle;
+$surface-2: $paper-canvas;
+$link: $teal-craftsman;
+$link-hover: $teal-hover;
+$accent: $teal-craftsman;
+$accent-highlight: $amber-accent;
+
+/* Typography Stacks */
+$font-family-serif: "Charter", "Bitstream Charter", "Iowan Old Style", "Apple Garamond", "Baskerville", "Source Serif Pro", Georgia, serif;
+$font-family-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-mono: "SF Mono", "Fira Code", Consolas, "Liberation Mono", Menlo, monospace;
+
+$font-family-base: $font-family-sans;
+$font-family-editorial: $font-family-serif;
+$font-size-base: 18px;
+$line-height-base: 1.75;
 
 /* CSS Custom Properties Token Bridge */
 :root {
-  --color-bg-base: #ffffff;
+  --color-bg-base: #faf8f5;
+  --color-bg-canvas: #faf8f5;
   --color-bg-card: #ffffff;
-  --color-text-main: #2e3440;
-  --color-text-muted: #4c566a;
+  --color-bg-subtle: #f4f0e8;
+  --color-bg-code: #f3f4f6;
+
+  --color-text-main: #1e232a;
+  --color-text: #1e232a;
+  --color-text-muted: #525866;
+  --color-muted: #525866;
+  --color-meta: #64748b;
   --color-heading: #0f172a;
-  --color-text: #2e3440;
-  --color-muted: #434c5e;
-  --color-meta: #4c566a;
-  --color-border: #d8dee9;
-  --color-surface: #eceff4;
-  --color-surface-2: #f1f5f9;
-  --color-primary: #0284c7;
-  --color-primary-hover: #0369a1;
-  --color-accent: #0284c7;
+
+  --color-border: #e3dfd7;
+  --color-border-subtle: #eeebe3;
+  --color-surface: #f4f0e8;
+  --color-surface-2: #faf8f5;
+
+  --color-primary: #0f766e;
+  --color-primary-hover: #115e59;
+  --color-accent: #b45309;
+  --color-link: #0f766e;
+  --color-link-hover: #115e59;
+
+  --font-serif-editorial: #{$font-family-serif};
+  --font-sans-ui: #{$font-family-sans};
+  --font-mono-code: #{$font-family-mono};
 
   --header-height: 4.5rem;
   --container-max-width: 84rem;          /* ~1344px fluid container */
   --container-fluid-max-width: 90rem;    /* ~1440px wide canvas */
   --container-document-max-width: 54rem; /* ~864px ATS/Print paper sheet */
+  --container-reading-max-width: 52rem;  /* ~832px optimal reading measure */
   --transition-speed: 0.2s;
   --radius-lg: 0.75rem;
   --radius-md: 0.5rem;
-  --shadow-sm: 0 4px 12px rgba(46, 52, 64, 0.03);
-  --shadow-md: 0 12px 32px rgba(46, 52, 64, 0.08);
+  --radius-sm: 0.25rem;
+  --shadow-sm: 0 2px 8px rgba(30, 35, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(30, 35, 42, 0.08);
 }
 
-/* Spacing - Base-8 relative scale (based on 18px root) */
+/* Spacing - Base-8 relative scale */
 $space-1: 0.44rem;  /* ~8px */
 $space-2: 0.88rem;  /* ~16px */
 $space-3: 1.33rem;  /* ~24px */

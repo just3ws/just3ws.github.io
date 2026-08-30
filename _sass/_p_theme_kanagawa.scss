@@ -1,728 +1,147 @@
-/* _sass/_p_theme_kanagawa.scss — Kanagawa Wave Japanese Woodblock Theme Palette
-   Source of truth: ~/.config/zsh/etc/themes/kanagawa-wave.yaml
+/* _sass/_p_theme_kanagawa.scss — Refined Editorial Craft Theme Module
+   Unifies typography, warm book paper, callout cards, and accessible contrasts.
 */
 
-:root[data-theme="kanagawa"], body.theme-kanagawa {
-  /* Palette Tokens from my.localhost styleguide */
-  --color-bg-base: #1a1b2f;      /* sumiInk3 */
-  --color-bg-dark: #16161d;      /* sumiInk0 */
-  --color-bg-card: #2a2a37;      /* sumiInk4 */
-  --color-text-main: #dcd7ba;    /* fujiWhite (14.2:1 contrast ratio) */
-  --color-text-muted: #c8c093;   /* oldWhite (9.2:1 AA-safe dim text) */
-  --color-heading: #957fb8;      /* oniViolet (Headings) */
-  --color-primary: #7e9cd8;      /* crystalBlue (The Wave primary accent) */
-  --color-primary-dark: #7aa89f; /* waveAqua2 */
-  --color-accent: #e6c384;       /* carpYellow */
-  --color-success: #98bb6c;      /* springGreen */
-  --color-warning: #ffa066;      /* surimiOrange */
-  --color-danger: #c34043;       /* autumnRed */
-  --color-border: #363646;       /* sumiInk5 */
+@use "p_variables" as *;
 
-  background-color: var(--color-bg-base) !important;
+/* Editorial Headings & Typography */
+h1, h2, h3, h4, h5, h6,
+.intel-title, .speaker-title-display, .curiosity-title,
+.article-title, .book-title, .playlist-title, .short-speaker,
+.post-title, .entry-title {
+  font-family: var(--font-serif-editorial);
+  color: var(--color-heading);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+/* Post & Article Prose Typography */
+.post-content, .brief-body, .article-body, .story-content, .markdown-body {
+  font-family: var(--font-serif-editorial);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.8;
+  color: var(--color-text-main);
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.65rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  ul, ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.75rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid var(--color-primary);
+    background: var(--color-bg-subtle);
+    padding: 1.25rem 1.5rem;
+    margin: 1.75rem 0;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-style: italic;
+    color: var(--color-text-main);
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-family: var(--font-sans-ui);
+    font-size: 0.9375rem;
+
+    th, td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      text-align: left;
+    }
+
+    th {
+      background: var(--color-bg-subtle);
+      font-weight: 700;
+      color: var(--color-heading);
+    }
+
+    tr:nth-child(even) {
+      background: rgba(0, 0, 0, 0.015);
+    }
+  }
+}
+
+/* Universal Mobile Responsive Code & ASCII Blocks */
+pre, .highlight pre, pre code, .ascii-box {
+  font-family: var(--font-mono-code) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  background: var(--color-bg-code) !important;
   color: var(--color-text-main) !important;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 1.1rem 1.25rem !important;
+  margin: 1.5rem 0 !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+  word-wrap: normal !important;
+  -webkit-overflow-scrolling: touch !important;
+  max-width: 100% !important;
+}
 
-  /* Global Headings in Kanagawa Wave */
-  h1, h2, h3, h4, h5, h6, .intel-title, .speaker-title-display, .curiosity-title, .article-title, .book-title, .playlist-title, .short-speaker {
-    color: #957fb8 !important; /* oniViolet from styleguide */
-    font-weight: 800;
+code {
+  font-family: var(--font-mono-code);
+  font-size: 0.875em;
+  background: var(--color-bg-subtle);
+  color: var(--color-text-main);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* Archival Restoration Callout Banner */
+.archive-note {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-text-main);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+
+  p, strong {
+    color: var(--color-text-main);
   }
 
-  /* Secondary & Body Text Across All Pages & Lists */
-  p, span, div, li, ul, ol, .intel-subtitle, .speaker-subtitle-display, .curiosity-summary, .book-desc, .card-meta-text, .intro, .home-intro, .home-list li, .index-highlights li {
-    color: #dcd7ba !important; /* fujiWhite (14.2:1 contrast ratio) */
-  }
-
-  .home-header {
-    h1 { color: #957fb8 !important; }
-    h2, .title { color: #c8c093 !important; }
-    .subtitle { color: #7aa89f !important; }
-  }
-
-  /* Archival Restoration Notice Banner */
-  .archive-note {
-    background: #2a2a37 !important;
-    border: 1px solid #e6c384 !important;
-    border-left: 5px solid #e6c384 !important;
-    border-radius: 8px !important;
-    color: #dcd7ba !important;
-    padding: 1.1rem !important;
-
-    p, strong {
-      color: #dcd7ba !important;
-    }
-
-    strong {
-      color: #e6c384 !important; /* carpYellow for emphasis */
-    }
-
-    a {
-      color: #7e9cd8 !important;
-      font-weight: 700;
-      text-decoration: underline !important;
-    }
-  }
-
-  /* Conversations Index Grid & Cards */
-  .editorial-card {
-    background: #2a2a37 !important;
-    border: 1px solid #363646 !important;
-    color: #dcd7ba !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-
-    &:hover {
-      border-color: #7e9cd8 !important;
-      transform: translateY(-2px);
-    }
-
-    .editorial-card-title a {
-      color: #dcd7ba !important;
-      &:hover { color: #7e9cd8 !important; }
-    }
-
-    .editorial-card-guests, .editorial-card-meta {
-      color: #c8c093 !important;
-    }
-
-    .editorial-card-button {
-      background: #7e9cd8 !important;
-      color: #16161d !important;
-      font-weight: 700 !important;
-      border-color: #7e9cd8 !important;
-
-      &:hover {
-        background: #7aa89f !important;
-        border-color: #7aa89f !important;
-        color: #16161d !important;
-      }
-    }
-
-    .editorial-card-badge {
-      background: #7aa89f !important;
-      color: #16161d !important;
-    }
-
-    .collection-badge {
-      background: #363646 !important;
-      color: #e6c384 !important;
-    }
-  }
-
-  /* Individual Interview Detail Pages (/interviews/<slug>/) */
-  .page.interview-page, .interview-editorial-container {
-    max-width: 1040px !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-  }
-
-  .interview-hero {
-    .editorial-title { color: #957fb8 !important; }
-    .published-date, .editorial-category { color: #c8c093 !important; }
-  }
-
-  /* Executive Description / Abstract Box Fix */
-  .interview-abstract {
-    background: #2a2a37 !important;
-    border: 1px solid #363646 !important;
-    border-left: 5px solid #7e9cd8 !important;
-    border-radius: 12px !important;
-    color: #dcd7ba !important;
-    padding: 2rem 2.25rem !important;
-    margin-bottom: 3rem !important;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
-
-    .description-content {
-      color: #dcd7ba !important;
-      font-size: 1.15rem !important;
-      line-height: 1.7 !important;
-
-      a {
-        color: #7e9cd8 !important;
-        font-weight: 700 !important;
-        text-decoration: underline !important;
-
-        &:hover {
-          color: #7aa89f !important;
-        }
-      }
-    }
-  }
-
-  .speaker-editorial-card {
-    background: #2a2a37 !important;
-    border: 1px solid #363646 !important;
-    color: #dcd7ba !important;
-    border-radius: 12px !important;
-    padding: 1.5rem !important;
-
-    .speaker-name-display { color: #957fb8 !important; }
-    .speaker-role-label { color: #7aa89f !important; }
-    .speaker-bio-subtext { color: #c8c093 !important; }
-  }
-
-  .transcript-editorial {
-    .section-title { color: #957fb8 !important; }
-    .title-accent { border-color: #7e9cd8 !important; }
-  }
-
-  /* Transcript Dialogue Turns & Bubbles */
-  .imessage-turn {
-    .imessage-name { color: #957fb8 !important; font-weight: 700 !important; }
-    .imessage-subtext { color: #c8c093 !important; }
-    
-    .timestamp-badge {
-      background: #363646 !important;
-      color: #7aa89f !important;
-      border: 1px solid #363646 !important;
-      &:hover {
-        background: #7e9cd8 !important;
-        color: #16161d !important;
-      }
-    }
-
-    .imessage-bubble {
-      background-color: #2a2a37 !important;
-      border: 1px solid #363646 !important;
-      color: #dcd7ba !important;
-    }
-
-    &.guest .imessage-bubble {
-      background-color: #223249 !important;
-      border: 1px solid #2d4f67 !important;
-      color: #dcd7ba !important;
-    }
-
-    &.interviewer .imessage-bubble {
-      background-color: #2a2a37 !important;
-      border: 1px solid #363646 !important;
-      color: #dcd7ba !important;
-    }
-
-    &.is-speaking {
-      .imessage-bubble, .imessage-text {
-        border-color: #7e9cd8 !important;
-        background-color: #16161d !important;
-        color: #dcd7ba !important;
-        box-shadow: 0 0 0 3px #7e9cd8, 0 8px 20px rgba(126, 156, 216, 0.25) !important;
-      }
-
-      .speaking-indicator {
-        color: #7aa89f !important;
-        font-weight: 800 !important;
-      }
-    }
-  }
-
-  /* Related Context & Media Cards */
-  .related-context-card {
-    background: #2a2a37 !important;
-    border: 1px solid #363646 !important;
-    color: #dcd7ba !important;
-
-    .related-tag {
-      background: #363646 !important;
-      color: #7aa89f !important;
-    }
-
-    .related-link-title a {
-      color: #dcd7ba !important;
-      &:hover { color: #7e9cd8 !important; }
-    }
-
-    .related-description {
-      color: #c8c093 !important;
-    }
-  }
-
-  /* Status Bar & Collection Filter Controls */
-  .transcription-status-bar {
-    background: #2a2a37 !important;
-    border: 1px solid #363646 !important;
-    color: #dcd7ba !important;
-
-    .status-metric {
-      color: #e6c384 !important; /* carpYellow */
-      font-weight: 700 !important;
-    }
-
-    .status-note, p {
-      color: #c8c093 !important;
-    }
-
-    a {
-      color: #7e9cd8 !important;
-      font-weight: 700;
-    }
-  }
-
-  .archive-filters {
-    .filter-label { color: #c8c093 !important; }
-
-    .filter-btn {
-      background: #2a2a37 !important;
-      border: 1px solid #363646 !important;
-      color: #c8c093 !important;
-
-      &:hover, &.is-active {
-        background: #7e9cd8 !important;
-        border-color: #7e9cd8 !important;
-        color: #16161d !important;
-        font-weight: 700 !important;
-      }
-    }
-  }
-
-  /* Header & Navigation */
-  .site-header {
-    background: #16161d !important;
-    border-bottom-color: #363646 !important;
-  }
-
-  .site-nav-brand .brand-label {
-    color: #dcd7ba !important;
-  }
-
-  .nav-link {
-    color: #c8c093 !important;
-    &:hover {
-      background: #2a2a37 !important;
-      color: #7e9cd8 !important;
-    }
-    &.is-active {
-      background: #2a2a37 !important;
-      border-color: #7e9cd8 !important;
-      color: #7e9cd8 !important;
-    }
-  }
-
-  .nav-dropdown-menu {
-    background: #16161d !important;
-    border-color: #363646 !important;
-
-    .dropdown-item {
-      color: #dcd7ba !important;
-      &:hover, &.is-active {
-        background: #2a2a37 !important;
-        color: #7e9cd8 !important;
-      }
-    }
-  }
-
-  /* Hero Section */
-  .intel-hero {
-    background: linear-gradient(135deg, #16161d 0%, #1a1b2f 100%) !important;
-    border-bottom-color: #7e9cd8 !important;
-
-    .intel-title { color: #957fb8 !important; }
-    .intel-subtitle { color: #c8c093 !important; }
-    .intel-badge { background: #7e9cd8 !important; color: #16161d !important; }
-  }
-
-  /* Cards & Containers */
-  .timeline-interview-card, .speaker-profile-card, .result-card, .short-card, .playlist-card, .article-card, .book-card, .curiosity-card, .woven-card, .era-header-card, .timeline-scrubber-card {
-    background: #2a2a37 !important;
-    border-color: #363646 !important;
-    color: #dcd7ba !important;
-
-    &:hover {
-      border-color: #7e9cd8 !important;
-    }
-  }
-
-  /* Quotes & Highlight Boxes */
-  .short-quote-box, .woven-quote-box, .era-header-card {
-    background: #16161d !important;
-    border-left: 4px solid #7e9cd8 !important;
-    color: #dcd7ba !important;
-  }
-
-  .woven-word-banner {
-    background: #16161d !important;
-    color: #7aa89f !important;
-    border-color: #7aa89f !important;
-  }
-
-  /* Action Buttons & Links */
-  a {
-    color: #7aa89f;
-    &:hover {
-      color: #7e9cd8;
-    }
-  }
-
-  .btn-view-timeline, .btn-studio-action, .btn-book-interview, .btn-jump-video, .btn-woven-thread {
-    background: #7e9cd8 !important;
-    color: #16161d !important;
-    border-color: #7e9cd8 !important;
+  strong {
+    color: var(--color-heading);
     font-weight: 700;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
 
     &:hover {
-      background: #7aa89f !important;
-      border-color: #7aa89f !important;
-      color: #16161d !important;
+      color: var(--color-primary-hover);
     }
-  }
-
-  .chip-btn, .era-btn, .web-btn, .tab-btn {
-    background: #2a2a37 !important;
-    border-color: #363646 !important;
-    color: #c8c093 !important;
-
-    &:hover, &.active {
-      background: #7e9cd8 !important;
-      border-color: #7e9cd8 !important;
-      color: #16161d !important;
-    }
-  }
-
-  /* Timeline editorial surface */
-  .timeline-network-page {
-    background: #1a1b2f !important;
-  }
-
-  .timeline-page {
-    --timeline-ink: #dcd7ba;
-    --timeline-muted: #c8c093;
-    --timeline-border: #54546d;
-    --timeline-surface: #2a2a37;
-    --timeline-surface-2: #223249;
-    --timeline-card: #1f1f28;
-    --timeline-paper: #1f1f28;
-    --timeline-accent: #e6c384;
-    --timeline-accent-soft: #413b38;
-
-    border-color: var(--timeline-border) !important;
-    background:
-      radial-gradient(circle at 12% 8%, rgba(126, 156, 216, 0.08), transparent 26rem),
-      repeating-linear-gradient(0deg, rgba(220, 215, 186, 0.018) 0, rgba(220, 215, 186, 0.018) 1px, transparent 1px, transparent 2rem),
-      var(--timeline-paper) !important;
-    color: var(--timeline-ink) !important;
-
-    .intel-hero {
-      border-color: var(--timeline-accent) var(--timeline-border) var(--timeline-border) !important;
-      background: linear-gradient(115deg, rgba(42, 42, 55, 0.72), rgba(31, 31, 40, 0.12) 68%) !important;
-    }
-
-    .intel-title,
-    .section-title,
-    .era-title-display,
-    .card-interview-title {
-      color: var(--timeline-ink) !important;
-    }
-
-    .intel-badge,
-    .section-kicker,
-    .era-tag,
-    .card-year-badge,
-    .btn-view-timeline {
-      color: var(--timeline-accent) !important;
-    }
-
-    .intel-subtitle,
-    .era-desc-display,
-    .card-meta-text {
-      color: var(--timeline-muted) !important;
-    }
-
-    .intel-subtitle strong {
-      color: var(--timeline-ink) !important;
-    }
-
-    .title-accent {
-      background: var(--timeline-accent) !important;
-    }
-
-    .timeline-scrubber-card,
-    .era-header-card {
-      border-color: var(--timeline-border) !important;
-      background: transparent !important;
-    }
-
-    .era-btn {
-      border-color: var(--timeline-border) !important;
-      background: var(--timeline-card) !important;
-      color: var(--timeline-ink) !important;
-
-      &:hover,
-      &:focus-visible {
-        border-color: var(--timeline-accent) !important;
-        background: var(--timeline-surface-2) !important;
-      }
-
-      &.active {
-        border-color: var(--timeline-accent) !important;
-        background: var(--timeline-accent) !important;
-        color: #16161d !important;
-      }
-    }
-
-    .timeline-interview-card {
-      border-color: var(--timeline-border) !important;
-      background: var(--timeline-card) !important;
-      color: var(--timeline-ink) !important;
-
-      &:hover {
-        border-color: var(--timeline-accent) !important;
-      }
-    }
-
-    .card-year-badge {
-      border-color: var(--timeline-accent) !important;
-      background: var(--timeline-accent-soft) !important;
-    }
-
-    .btn-view-timeline:focus-visible {
-      outline-color: var(--timeline-accent) !important;
-    }
-  }
-
-  /* Taxonomy and knowledge graph */
-  .taxonomy-page {
-    --taxonomy-ink: #dcd7ba;
-    --taxonomy-muted: #c8c093;
-    --taxonomy-border: #54546d;
-    --taxonomy-surface: #2a2a37;
-    --taxonomy-surface-2: #223249;
-    --taxonomy-card: #1f1f28;
-    --taxonomy-paper: #1f1f28;
-    --taxonomy-accent: #e6c384;
-    --taxonomy-canvas: #16161d;
-    --taxonomy-on-accent: #16161d;
-    --taxonomy-graph-label: #dcd7ba;
-    --taxonomy-graph-edge: #54546d;
-    --taxonomy-interviewee: #d27e99;
-    --taxonomy-conference: #7e9cd8;
-    --taxonomy-community: #98bb6c;
-    --taxonomy-project: #e6c384;
-    --taxonomy-topic: #957fb8;
-    --taxonomy-interview: #c8c093;
-
-    background:
-      radial-gradient(circle at 12% 8%, rgba(126, 156, 216, 0.09), transparent 26rem),
-      radial-gradient(circle at 88% 42%, rgba(230, 195, 132, 0.07), transparent 22rem),
-      repeating-linear-gradient(0deg, rgba(220, 215, 186, 0.018) 0, rgba(220, 215, 186, 0.018) 1px, transparent 1px, transparent 2rem),
-      var(--taxonomy-paper) !important;
-    border-color: var(--taxonomy-border) !important;
-    color: var(--taxonomy-ink) !important;
-
-    .intel-hero {
-      background: linear-gradient(115deg, rgba(42, 42, 55, 0.72), rgba(31, 31, 40, 0.12) 68%) !important;
-      border-color: var(--taxonomy-accent) var(--taxonomy-border) var(--taxonomy-border) !important;
-    }
-
-    .intel-title {
-      color: var(--taxonomy-ink) !important;
-    }
-
-    .intel-title span,
-    .intel-badge,
-    .section-kicker,
-    .field-note-label,
-    .field-note-path i,
-    .stat-value,
-    .inspector-badge {
-      color: var(--taxonomy-accent) !important;
-    }
-
-    .intel-badge {
-      padding: 0 !important;
-      border-radius: 0 !important;
-      background: transparent !important;
-    }
-
-    .intel-subtitle,
-    .section-intro,
-    .stat-label,
-    .network-scale-note,
-    .graph-filters label,
-    .search-label,
-    .inspector-desc,
-    .conn-type,
-    .intel-table th {
-      color: var(--taxonomy-muted) !important;
-    }
-
-    .intel-field-note,
-    .intel-field-note > p,
-    .field-note-path,
-    .network-scale-note span,
-    .section-title,
-    .inspector-title,
-    .legend-item,
-    .entity-badge,
-    .conn-list li,
-    .intel-table td {
-      color: var(--taxonomy-ink) !important;
-    }
-
-    .intel-field-note::before {
-      border-color: var(--taxonomy-paper) !important;
-      background: var(--taxonomy-accent) !important;
-    }
-
-    .stats-grid,
-    .stat-card,
-    .intel-field-note,
-    .field-note-path,
-    .section-intro,
-    .graph-toolbar,
-    .entity-inspector,
-    .conn-list li,
-    .intel-table th,
-    .intel-table td {
-      border-color: var(--taxonomy-border) !important;
-    }
-
-    .filter-select,
-    .search-input,
-    .table-wrapper {
-      border-color: var(--taxonomy-border) !important;
-      background: var(--taxonomy-card) !important;
-    }
-
-    .stat-card {
-      background: transparent !important;
-    }
-
-    .intel-table th {
-      background: var(--taxonomy-surface) !important;
-    }
-
-    .graph-toolbar {
-      background: transparent !important;
-    }
-
-    .graph-canvas-container {
-      border-color: var(--taxonomy-border) !important;
-      background: var(--taxonomy-canvas) !important;
-    }
-
-    .entity-inspector {
-      background: color-mix(in srgb, var(--taxonomy-surface) 72%, transparent) !important;
-    }
-
-    .filter-select,
-    .search-input {
-      color: var(--taxonomy-ink) !important;
-    }
-
-    .entity-badge {
-      background: color-mix(in srgb, var(--taxonomy-cluster-color, var(--taxonomy-accent)) 13%, transparent) !important;
-      color: var(--taxonomy-ink) !important;
-    }
-
-    .intel-table tbody tr:hover {
-      background: var(--taxonomy-surface-2) !important;
-    }
-
-    .conn-list a,
-    .entity-link {
-      color: var(--taxonomy-accent) !important;
-    }
-
-    .entity-link:hover {
-      background: transparent !important;
-      color: var(--taxonomy-ink) !important;
-    }
-  }
-
-  /* Professional landing page and Panoramic View */
-  .leadership-home {
-    --leadership-ink: #dcd7ba;
-    --leadership-muted: #c8c093;
-    --leadership-border: #363646;
-    --leadership-surface: #2a2a37;
-    --leadership-surface-2: #16161d;
-    --leadership-accent: #7e9cd8;
-    --leadership-accent-text: #a8c0ef;
-    --leadership-action-bg: #7e9cd8;
-    --leadership-action-ink: #16161d;
-  }
-
-  .pv-page {
-    --pv-ink: #dcd7ba;
-    --pv-muted: #c8c093;
-    --pv-border: #363646;
-    --pv-surface: #2a2a37;
-    --pv-surface-2: #16161d;
-    --pv-accent: #7e9cd8;
-  }
-
-  .leadership-pattern,
-  .leadership-record,
-  .leadership-contact,
-  .pv-hero,
-  .pv-model-first,
-  .pv-honesty,
-  .pv-footer,
-  .pv-application .pv-limit {
-    background: #2a2a37 !important;
-  }
-
-  .pv-dimension,
-  .pv-toolkit-grid article,
-  .pv-application,
-  .pv-case-grid article,
-  .pv-honesty-grid > div {
-    background: #2a2a37 !important;
-  }
-
-  .pv-svg-layers rect,
-  .pv-projection-grid span {
-    fill: #16161d !important;
-    background: #16161d !important;
-  }
-
-  /* Code Blocks & Mono */
-  code, pre, kbd {
-    font-family: 'FiraCode Nerd Font Mono Ret', 'FiraCode Nerd Font Mono', ui-monospace, monospace !important;
-    background: #16161d !important;
-    color: #7aa89f !important;
-    border-color: #363646 !important;
-  }
-
-  /* Global Override for Legacy Posts with Inline Black/White Styles */
-  [style*="color: black"], [style*="color:black"], [style*="color: #000000"], [style*="color:#000000"] {
-    color: #dcd7ba !important;
-  }
-
-  [style*="background: white"], [style*="background:white"], [style*="background-color: #ffffff"], [style*="background-color:#ffffff"] {
-    background-color: #2a2a37 !important;
-    border-color: #363646 !important;
-  }
-
-  /* Executive Briefs & Availability Status Pill in Kanagawa Dark Mode */
-  .brief-page {
-    background: #1a1b2f !important;
-    color: #dcd7ba !important;
-    h1, h2, h3, h4 { color: #957fb8 !important; }
-    p, li { color: #dcd7ba !important; }
-    .subtitle { color: #c8c093 !important; }
-    .brief-header { border-bottom-color: #363646 !important; }
-    #copy-brief-btn {
-      background: #2a2a37 !important;
-      color: #dcd7ba !important;
-      border-color: #363646 !important;
-    }
-  }
-
-  .availability-status-pill a {
-    background: #1c3427 !important;
-    border-color: #276749 !important;
-    color: #98bb6c !important;
-  }
-
-  .position-case-study {
-    background: #2a2a37 !important;
-    border-color: #363646 !important;
-    border-left-color: #7aa89f !important;
-    h4 { color: #7aa89f !important; }
-    p, span, li { color: #dcd7ba !important; }
-  }
-
-  .btn-resume-action {
-    background: #2a2a37 !important;
-    color: #dcd7ba !important;
-    border-color: #363646 !important;
   }
 }
