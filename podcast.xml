@@ -1,0 +1,49 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UGtastic: Technical Conversations &amp; Oral History</title>
+    <link>{{ site.url }}/interviews/</link>
+    <language>en-us</language>
+    <copyright>&#xA9; {{ site.time | date: "%Y" }} Mike Hall</copyright>
+    <itunes:subtitle>Recorded Dialogues on Software Craftsmanship and Architecture</itunes:subtitle>
+    <itunes:author>Mike Hall</itunes:author>
+    <itunes:summary>A decade of technical interviews, community sessions, and practitioner conversations with leaders from Agile, DevOps, and the Software Craftsmanship movements.</itunes:summary>
+    <description>A decade of technical interviews, community sessions, and practitioner conversations with leaders from Agile, DevOps, and the Software Craftsmanship movements.</description>
+    <itunes:owner>
+      <itunes:name>Mike Hall</itunes:name>
+      <itunes:email>mike@just3ws.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="{{ site.url }}/assets/images/og-preview.png" />
+    <itunes:category text="Technology">
+      <itunes:category text="Software How-To" />
+      <itunes:category text="Tech News" />
+    </itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <atom:link href="{{ site.url }}/podcast.xml" rel="self" type="application/rss+xml" />
+    {% assign interviews = site.data.interviews.items | sort: "recorded_date" | reverse %}
+    {% for interview in interviews limit:50 %}
+    <item>
+      <title>{{ interview.title | xml_escape }}</title>
+      <itunes:title>{{ interview.title | xml_escape }}</itunes:title>
+      {% if interview.interviewees %}
+      <itunes:author>{{ interview.interviewees | join: ", " | xml_escape }} &amp; Mike Hall</itunes:author>
+      {% else %}
+      <itunes:author>Mike Hall</itunes:author>
+      {% endif %}
+      <itunes:subtitle>{{ interview.topic | default: interview.title | xml_escape }}</itunes:subtitle>
+      <itunes:summary>{{ interview.title | xml_escape }}. Recorded on-site by Mike Hall during the Software Craftsmanship movement.</itunes:summary>
+      <description><![CDATA[{{ interview.title }} - Recorded on-site by Mike Hall. View interactive transcript and video at {{ site.url }}/interviews/{{ interview.id }}/]]></description>
+      <link>{{ site.url }}/interviews/{{ interview.id }}/</link>
+      <guid isPermaLink="false">{{ site.url }}/interviews/{{ interview.id }}/</guid>
+      <pubDate>{{ interview.recorded_date | default: site.time | date: "%a, %d %b %Y 12:00:00 -0500" }}</pubDate>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

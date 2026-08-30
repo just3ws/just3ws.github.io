@@ -1,10 +1,10 @@
 ---
 id: TASK-267
 title: IronLanguages podcast (2010) retrospective and digital archive integration
-status: Todo
+status: Done
 assignee: []
 created_date: '2026-08-30 17:52'
-updated_date: '2026-08-30 17:52'
+updated_date: '2026-08-30 18:29'
 labels:
   - archive
   - podcast
@@ -46,14 +46,14 @@ Preserve, structure, and highlight the historical 2010 IronLanguages Podcast arc
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Audit and index all IronLanguages podcast episodes, republished posts, and audio assets in `_data/interviews.yml` and career datalake.
-- [ ] #2 Create a dedicated archival retrospective page (`/podcasts/ironlanguages/`) connecting the 2010 posts, audio streams, and historical context.
-- [ ] #3 Document the bridge from .NET/IronRuby dynamic language exploration to the Chicago software craftsmanship movement.
-- [ ] #4 Enforce strict zero em dashes and plain language prose across all written retrospective copy.
+- [x] #1 Audit and index all IronLanguages podcast episodes, republished posts, and audio assets in `_data/interviews.yml` and career datalake.
+- [x] #2 Create a dedicated archival retrospective page (`/podcasts/ironlanguages/`) connecting the 2010 posts, audio streams, and historical context.
+- [x] #3 Document the bridge from .NET/IronRuby dynamic language exploration to the Chicago software craftsmanship movement.
+- [x] #4 Enforce strict zero em dashes and plain language prose across all written retrospective copy.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 IronLanguages episodes are integrated into site navigation and search catalog.
-- [ ] #2 `bundle exec rspec` and `bundle exec jekyll build` compile cleanly with 0 errors.
+- [x] #1 IronLanguages episodes are integrated into site navigation and search catalog.
+- [x] #2 `bundle exec rspec` and `bundle exec jekyll build` compile cleanly with 0 errors.
 <!-- DOD:END -->
