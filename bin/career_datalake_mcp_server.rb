@@ -237,6 +237,22 @@ class CareerDatalakeMCPServer
                   focus_domain: { type: "string", description: "Optional focus area to filter proof points (e.g. 'modernization', 'observability', 'ai_systems', 'leadership', 'general')" }
                 }
               }
+            },
+            {
+              name: "generate_executive_brief",
+              description: "Generates a tailored 1-page executive pitch brief and interview prep sheet on just3ws.localhost using the 3-Act Narrative baseline, 4D System Cartography evidence, and Progressive Disclosure.",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  company: { type: "string", description: "Target company name (e.g. 'Huntress', 'Coder', 'NextPatient')" },
+                  role: { type: "string", description: "Target role title (default: 'Principal Software Engineer')" },
+                  domain: { type: "string", description: "Target engineering domain (e.g. 'SOC / Rails', 'Platform Architecture', 'Legacy Modernization')" },
+                  comp_range: { type: "string", description: "Optional compensation range (e.g. '$200,000 to $260,000 / yr')" },
+                  target_tier: { type: "string", description: "Target archetype tier: 'principal', 'staff', 'founding', 'contractor', 'observability'" },
+                  company_mandate: { type: "string", description: "Company mandate or engineering challenge description" }
+                },
+                required: ["company"]
+              }
             }
           ]
         }
@@ -248,6 +264,30 @@ class CareerDatalakeMCPServer
       result_text = ""
 
       case name
+      when "generate_executive_brief"
+        company = arguments["company"].to_s.strip
+        role = arguments["role"] || "Principal Software Engineer"
+        domain = arguments["domain"] || "#{role} Platform Architecture"
+        tier = arguments["target_tier"] || "principal"
+        comp = arguments["comp_range"]
+        mandate = arguments["company_mandate"] || "scaling high-reliability production platforms and modernizing critical legacy architectures"
+
+        cmd = [
+          "ruby",
+          File.join(ROOT, "bin", "generate_executive_brief.rb"),
+          "-c", company,
+          "-r", role,
+          "-d", domain,
+          "-t", tier,
+          "-m", mandate,
+          "--json"
+        ]
+        cmd += ["--comp", comp] if comp && !comp.empty?
+
+        require "shellwords"
+        out = `#{cmd.shelljoin}`
+        result_text = out.strip
+
       when "get_narrative_synthesis_baseline"
         domain = (arguments["focus_domain"] || "general").to_s.downcase
         baseline = @data["narrative_synthesis"] || {}
