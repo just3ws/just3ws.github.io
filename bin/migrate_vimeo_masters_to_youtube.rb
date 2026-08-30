@@ -116,10 +116,46 @@ class VimeoToYouTubeMigrator
   def build_youtube_payload(item)
     asset_id = item["asset_id"]
     asset_record = (@video_assets["items"] || []).find { |a| a["id"] == asset_id } || {}
-    
+    vimeo_platform = (asset_record["platforms"] || []).find { |p| p["platform"] == "vimeo" } || {}
+
+    # Refine title: prefer clean speaker + topic syntax
     title = asset_record["title"] || item["title"]
-    description_text = asset_record["description"] || "Archival technical conversation from the UGtastic archive."
+    if vimeo_platform["title_on_platform"] && !vimeo_platform["title_on_platform"].empty?
+      raw_title = vimeo_platform["title_on_platform"]
+      if raw_title.include?("w/") || raw_title.include?("w-")
+        title = "#{raw_title} | UGtastic Archive"
+      elsif !title.include?("|")
+        title = "#{title} | UGtastic Archive"
+      end
+    end
+
+    # Explicit override mappings for SCMC and special presentations
+    custom_titles = {
+      "vimeo-30083598" => "Uncle Bob Martin: The A Word - Architecture | SCMC 2011",
+      "vimeo-26657739" => "Andy Lester: Enough C To Get Started In F/OSS (Part 1) | SCMC 2011",
+      "vimeo-26669252" => "Andy Lester: Enough C To Get Started In F/OSS (Part 2) | SCMC 2011",
+      "vimeo-27889917" => "Michael Buselli: Blind SQL Injection Attacks & Defense | SCMC 2011",
+      "vimeo-29430473" => "Eric Smith: HTML5 Canvas and JavaScript Game Development | SCMC 2011",
+      "vimeo-32266297" => "Billy Whited: Front End Craftsmanship - Toward a More Meaningful Web | SCMC 2011",
+      "vimeo-37080647" => "Mike Jansen: TDD Your JavaScript With Backbone.js | SCMC 2012",
+      "vimeo-38723757" => "Scott Seely: Beginner C++ for Expert Programmers | SCMC 2012",
+      "mike-hall-introduction-to-aop-with-postsharp" => "Mike Hall: Introduction to AOP with PostSharp | Chicago Code Camp 2009"
+    }
+
+    title = custom_titles[asset_id] if custom_titles[asset_id]
+
+    description_text = vimeo_platform["description"] || asset_record["description"] || "Archival technical presentation from the UGtastic and Software Craftsmanship community archive."
     transcript_id = asset_record["transcript_id"] || item["transcript_id"]
+
+    event_name = asset_record["event"]
+    event_name ||= "Software Craftsmanship McHenry County (SCMC)" if asset_id.start_with?("vimeo-")
+    event_name ||= "Chicago Code Camp 2009" if asset_id.include?("chicago-code-camp") || asset_id.include?("postsharp")
+    event_name ||= "UGtastic Archive"
+
+    speaker_name = asset_record["speaker"]
+    if speaker_name.nil? || speaker_name.empty? || speaker_name == "Guest"
+      speaker_name = title[/^([^:]+):/, 1] || title[/w[\/-]([A-Za-z\s]+)/, 1] || "Community Speaker"
+    end
 
     description = <<~DESC.strip
       #{title}
@@ -131,9 +167,9 @@ class VimeoToYouTubeMigrator
       ---
       🏛️ ORAL HISTORY RECORD:
       • Series: UGtastic Technical Conversation Archive (2009–2015)
-      • Speaker: #{asset_record["speaker"] || "Community Guest"}
-      • Event: #{asset_record["event"] || "UGtastic Archive"}
-      • Interviewer: Mike Hall (UGtastic / https://www.just3ws.com)
+      • Speaker: #{speaker_name}
+      • Event: #{event_name}
+      • Interviewer / Host: Mike Hall (UGtastic / https://www.just3ws.com)
 
       ⏱️ CHAPTERS:
       00:00 - Introduction & Context
@@ -141,7 +177,7 @@ class VimeoToYouTubeMigrator
       📖 FULL INTERACTIVE TRANSCRIPT & AUDIO:
       https://www.just3ws.com/interviews/#{transcript_id || asset_id}/
 
-      🏷️ TOPICS: Software Craftsmanship, Programming, Architecture, UGtastic
+      🏷️ TOPICS: Software Craftsmanship, Programming, Architecture, #{speaker_name}, UGtastic
 
       Restored and preserved by Mike Hall (https://www.just3ws.com)
     DESC
