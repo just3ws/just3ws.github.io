@@ -126,7 +126,7 @@ Ensure your language signals active technical mastery:
 
 ### Rule 4: Eliminate All AI Jargon
 Avoid machine-generated filler words:
-* ❌ *"I am a passionate, results-oriented innovator thrilled to leverage synergies..."*
+* ❌ *"I am an ambitious innovator thrilled to leverage enterprise frameworks..."*
 * ✅ *"I specialize in high-consequence Ruby on Rails platforms and zero-downtime database migrations."*
 
 ### Rule 5: Zero Em Dashes

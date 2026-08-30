@@ -1,3 +1,4 @@
+{% unless jekyll.environment == "production" %}
 {% assign is_localhost_only = false %}
 {% if page.localhost_only == true or page.url contains '/exports/' or page.url contains '/tools/' or page.url contains '/reports/' or page.url contains '/backlog/' %}
   {% assign is_localhost_only = true %}
@@ -326,3 +327,4 @@
   });
 })();
 </script>
+{% endunless %}
