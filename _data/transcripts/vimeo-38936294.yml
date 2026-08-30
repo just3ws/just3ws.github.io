@@ -142,17 +142,17 @@ turns:
     are going to make this group really big. So without any further ado, I'll just
     go ahead and hand the floor with Igor.
 - speaker: S1
-  text: Um, so active GDC equals equals active record for Java. So the idea is this.
+  text: Um, so ActiveJDBC equals equals ActiveRecord for Java. So the idea is this.
     So tonight I'm going to be presenting two frameworks that I developed over the
-    course of several years. The first one is active GDC. So active GDC is active
-    record for Java. You've probably heard that active record, there's an active record
-    pattern, there's active record technology in Ruby on Rails, right? Some people
-    call hibernate active record one way or the other. Active record is a thing that
+    course of several years. The first one is ActiveJDBC. So ActiveJDBC is active
+    record for Java. You've probably heard that ActiveRecord, there's an ActiveRecord
+    pattern, there's ActiveRecord technology in Ruby on Rails, right? Some people
+    call hibernate ActiveRecord one way or the other. ActiveRecord is a thing that
     connects an object to a record in the database. That's the whole idea. So basically
-    any ORM, technically speaking, could be called active record. Now, however, the
-    active record phrase probably has been more popularized by Ruby on Rails because
+    any ORM, technically speaking, could be called ActiveRecord. Now, however, the
+    ActiveRecord phrase probably has been more popularized by Ruby on Rails because
     of the way the ORM is implemented there. The part of the Ruby on Rails that actually
-    does integration between your code and a database is called active record. Okay,
+    does integration between your code and a database is called ActiveRecord. Okay,
     they just took the name pattern and applied that name to a framework. So, I was
     doing Java developing for a number of years and I sparingly used Hibernate here
     and there. Mostly, whenever I would have to do, like, a massive database project,
@@ -217,7 +217,7 @@ turns:
     files. There are no property files. It's absolutely clean, basically. You write
     your entity in one line of code. So, DHH, David Henson is the guy who developed
     Ruby on Rails. I believe he's a great API designer. And the idea of writing an
-    active record is, the active record itself is pretty complex. But using it is
+    ActiveRecord is, the ActiveRecord itself is pretty complex. But using it is
     very easy. So, active GDBC follows the same principles. Also, active GDBC does
     not solve every problem under the sign. It only provides 80%. And then it stops.
     And basically, it says, beyond that, we're not going to solve every problem out
@@ -314,7 +314,7 @@ turns:
     which tells you that Hibernate is about four times slower than JDBC. It also has
     caching implemented, back then when I did the slide, it was OScache right now,
     so OScache and HCache. All right, the size is about a company. It requires primary
-    keys, exactly the same way as active record. Basically, you have auto-incremented
+    keys, exactly the same way as ActiveRecord. Basically, you have auto-incremented
     integer field that's been implemented as you enter your records. So, writing a
     model is pretty simple. You write it like this. Public class person extends model.
     This will automatically map to a people table. And, as you can see, the class
@@ -335,7 +335,7 @@ turns:
     you're actually interested in. Because a person can have many addresses. A person
     can have many books. A person may have many other things such articles, whatever.
     So, the interesting thing is that active IDC supports three types of associations.
-    One to many, many to many, and polymorphic. Quite similar to active record in
+    One to many, many to many, and polymorphic. Quite similar to ActiveRecord in
     rails. And the APIs to get all these things are identical. So, even if I have,
     let's say, a doctor-patient, with doctor-patients table in between, where a doctor
     treats many patients, and a patient visits many doctors. It would still be saying,
@@ -378,7 +378,7 @@ turns:
     I can use. And so I'm using, basically, these are setters. These are dynamic setters.
     And dynamic setters, basically, it says, first parameter is the name, the column.
     And the second one is the value. This is really not the name, the column. It's
-    the name of an attribute. Think of active GDC as a hash map on steroids with lots
+    the name of an attribute. Think of ActiveJDBC as a hash map on steroids with lots
     and lots of semantic knowledge about the data. There are so many ways to create
     new data. You can create data like this because the set method returns this. You
     can create it like this, create hit, first name, basically, name, value, name,
@@ -402,7 +402,7 @@ turns:
     and pass a name of a column, which actually is a clob. You're going to get a fully
     read clob into your string. Just be careful. You know, if your clob is large,
     you're going to run out of there. Validations. Validations are declarative. Basically,
-    this is in the style of active record, which is really cool. I think that the
+    this is in the style of ActiveRecord, which is really cool. I think that the
     slide is, there is a missing point. So the idea here is that I'm saying that this
     thing needs to validate presence of first name and last name. Meaning, this model
     will be throwing an exception if you try to save it into a database, but when
@@ -469,7 +469,7 @@ turns:
     to tag articles, but I also want to tag products. Now my tags, do I create another
     different table for product tags? So the polymorphic association allows to use
     the same table, but to have children there that belongs to parents of different
-    types. So, which is a pretty typical scenario. Active record supports it right
+    types. So, which is a pretty typical scenario. ActiveRecord supports it right
     out of the box and so does after GDC.
 - speaker: S10
   text: So when you process, you say, here's my IDE and the data and then how is my
@@ -477,7 +477,7 @@ turns:
 - speaker: S1
   text: I may have a slide on that. But they also have more generic fields. There
     are three fields that obviously is the primary key, but there are also two more,
-    created that and updated that. If your table has them, active GDC will use them.
+    created that and updated that. If your table has them, ActiveJDBC will use them.
     And when the new record is inserted, they both have the same value, but then if
     you read that value and then change something in your own model and then save
     it again, updated will have the last updated value. It's really convenient. All
@@ -485,13 +485,13 @@ turns:
     OS cache. Both OS cache and EH cache support clustering, and they use a variety
     of techniques. They use J groups, J use messaging. So you can configure clustering,
     configure caching in closed cluster. It's not something that's trivial, but it's
-    also not part of the active GDC. It's really part of the integrated framework.
+    also not part of the ActiveJDBC. It's really part of the integrated framework.
 - speaker: S10
   text: And that's not something that I have to run a daemon for service? That's—
 - speaker: S1
   text: No, no, no, no. This is called near cache. That means if I have multiple nodes
     in my cluster, then each node will have its own private cache. However, whenever
-    there is a destructive operation that goes through active GDC, the cache for that
+    there is a destructive operation that goes through ActiveJDBC, the cache for that
     table and its related tables is blown away. And that event is propagated to other
     nodes in the cluster and they blow away those caches as well. There's no daemon.
     Life cycle callbacks. You can implement these methods, and do whatever you want,
@@ -718,7 +718,7 @@ turns:
     I think your approach is really a better approach to take because it allows you
     to consider what you're building.
 - speaker: S1
-  text: Exactly. In ActiveGDPC, unlike Hibernate, it will not generate tables. It
+  text: Exactly. In ActiveJDBC, unlike Hibernate, it will not generate tables. It
     will read them and configure itself. That means the tables have to exist. That
     means you are forced to write an SQL. That means you are forced to think, which
     violates the laziness principle.
@@ -743,7 +743,7 @@ turns:
   text: You have some interesting logging information that you show. Are you going
     to show us some code? The one thing I wanted to ask is, is there like a way just
     to log the—no, I meant like, are you going to like show the output? Is there a
-    way to log just queries? Like, I always like to see active record. What is the
+    way to log just queries? Like, I always like to see ActiveRecord. What is the
     sequence that's being—
 - speaker: S1
   text: Yeah, yeah. What we have to do is provide a regular expression here in which—
@@ -845,7 +845,7 @@ turns:
     So what do you guys think? Now that you've kind of touched... There's a lot more,
     of course, to the framework because it's been developed for more than two years.
     We've been in production, powered insurance companies, probably a few public websites.
-    But we haven't developed something like that, you know, in style of active record
+    But we haven't developed something like that, you know, in style of ActiveRecord
     because it didn't exist in Java. So what's your first reaction?
 - speaker: S10
   text: There's a lot that I like. I like the fact that it's sort of a declarative
@@ -946,11 +946,11 @@ turns:
 - speaker: S10
   text: Or not, yeah. Without having...
 - speaker: S1
-  text: All right. Guys, I'd like to proceed to Active Web. So if ActiveGDPC is the
+  text: All right. Guys, I'd like to proceed to Active Web. So if ActiveJDBC is the
     stand-alone ORM that could be used in any generic Java project, then Active Web
     is the rest of Ruby on Rails, which is a web framework for building web applications
     in Java. In a very fast dynamic way, very similar to Ruby on Rails. And it also
-    follows the same principle as ActiveGDPC. The convention exists. I mean, conventions,
+    follows the same principle as ActiveJDBC. The convention exists. I mean, conventions,
     no configuration. Convention-based configuration. If you know conventions, most
     conventions are the same as Ruby on Rails. So people switching between, let's
     say, Ruby on Rails and Active Web would feel right at home. In fact, most people

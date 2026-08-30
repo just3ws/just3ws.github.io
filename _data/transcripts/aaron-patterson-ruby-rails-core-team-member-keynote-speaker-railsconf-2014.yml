@@ -18,7 +18,7 @@ turns:
 - speaker: S1
   text: Yeah, well, first, I guess the first 30% is just going to be like jokes and
     trolling. The second 30% is going to be, I don't know, some bugs and stuff. With
-    like, you know, active record internals, and the final 60% is going to be, excuse
+    like, you know, ActiveRecord internals, and the final 60% is going to be, excuse
     me, the final 50% is going to be about adequate record. And I know that adds up
     to 110%, but I always like to give 110%. It's 100%, just don't add it. Don't add.
     So yeah, it's just going to be like, I don't know, jokes, bugs, and then adequate
@@ -28,16 +28,16 @@ turns:
 - speaker: S1
   text: It's a project I've been working on. I've been working on it for a very long
     time, but I didn't really have a name for it. But what it is, it's just a set
-    of patches on top of active record. Like, it's just stuff that I've been doing
-    on top of active record, specifically for performance, like performance improvements
-    to active record.
+    of patches on top of ActiveRecord. Like, it's just stuff that I've been doing
+    on top of ActiveRecord, specifically for performance, like performance improvements
+    to ActiveRecord.
 - speaker: M1
   text: Is it like just more of a streamlining of the internals or?
 - speaker: S1
   text: Well, it's been, so basically I've been refactoring the internals for a very
     long, like I've had this idea for the performance improvement. And what the main
     performance improvement is, is basically SQL statement generation caching. So
-    actually the string that you pass to the database, or that active record passes
+    actually the string that you pass to the database, or that ActiveRecord passes
     to the database, like the actual SQL statement, it caches the generation of that.
     So we only do that once and your queries end up being faster from that. But I've
     been working on basically internal refactoring for literally years just to get
@@ -49,7 +49,7 @@ turns:
   text: Well, that sounds like, like what, in other database engines where you can
     lean on some of that query caching inside of it, you're pulling some of that capability
     out into, into the Ruby layer, the app layer, so it can... Yeah, yeah. We are,
-    we actually already do, so active record actually already does query caching,
+    we actually already do, so ActiveRecord actually already does query caching,
     like uses prepared statements and does cache query, yeah, cache query execution.
     So we do that. The problem though, is that even though we, even though we use
     those prepared statements, we still have to generate the SQL statement in order

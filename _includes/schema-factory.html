@@ -37,7 +37,7 @@
       }
       {% endif %}
     ]
-  {% elsif type == 'resume' %}
+  {% elsif type == 'resume' or page.person_schema == true or page.url == '/' or page.url == '/resume/' %}
     {% assign profile = site.data.resume.profile %}
     {% assign summary = site.data.resume.summary %}
     "@type": "Person",

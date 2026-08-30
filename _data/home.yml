@@ -1,16 +1,19 @@
 hero:
   headline: "I make complex software systems easier to understand and safer to change."
   lede: >-
-    I work on architecture, production reliability, legacy modernization, and
-    observability. I stay close to the code and help teams agree on what the system
-    does, who owns it, and what to change next.
+    Principal Systems Architect & Platform Engineer specializing in high-consequence
+    Ruby on Rails platforms, distributed OpenTelemetry observability, and legacy modernization.
+    I stay close to the code, untangle monolithic dependencies, and help teams ship with confidence.
   actions:
-    - label: "Read my résumé"
-      href: "/"
+    - label: "📄 Read Full Résumé (ATS)"
+      href: "/resume/"
       style: "primary"
-    - label: "See selected work"
-      href: "/portfolio/"
+    - label: "🎯 5 Target Role Archetypes"
+      href: "/reports/archetype-reader-profiles/"
       style: "secondary"
+    - label: "🏛️ 20-Year Archive"
+      href: "/interviews/"
+      style: "subtle"
 
 operating_pattern:
   label: "How I work"
@@ -26,17 +29,17 @@ through_line:
   label: "What I do"
   title: "Technical leadership that stays close to the code."
   text: >-
-    My best work starts when no one person has the whole picture. I trace failures end
-    to end, clarify ownership, and turn what I learn into architecture and delivery
-    decisions teams can use.
+    My best work starts when no one person has the whole picture. Over the past 20+ years,
+    I have served as Acquisition Lane Architect at OneMain Financial, CTO of venture-backed startups,
+    and steward of distributed platforms. I trace failures end to end, clarify ownership, and turn
+    what I learn into architecture decisions teams can trust.
 
 method:
   eyebrow: "Panoramic View"
   title: "Start with what the system actually does."
   lede: >-
-    Panoramic View is my name for a practical way of working: map the business process,
-    trace what the software actually does, and resolve the differences before changing
-    anything.
+    Panoramic View is my practical framework for legacy modernization: map the business process,
+    trace what the software actually does across runtime boundaries, and resolve the differences before changing anything.
   actor_note: >-
     The user of the system might be a customer, an employee, an automated process, or
     an AI agent. The same questions apply.
@@ -49,75 +52,83 @@ method:
     - "Where do those views agree, diverge, or remain unknown?"
 
 evidence_intro:
-  label: "Evidence"
-  title: "Examples from real systems."
+  label: "Architecture Retrospectives"
+  title: "Cornerstone Case Studies & Production Proof."
   text: >-
-    These are the kinds of problems I have worked through in production. Public
-    descriptions stay high-level where employer and client details are private.
+    Real-world architectural interventions from high-consequence financial and distributed platforms.
+    Every case study details the structural problem, technical mechanism, and verified outcome.
 
 evidence:
-  - context: "Legacy modernization"
-    title: "Making an undocumented system legible"
+  - context: "Monolith Modernization"
+    title: "System Cartography: Mapping a 10-Year Monolith"
     text: >-
-      Traced service dependencies, code paths, database state, and infrastructure so
-      the team could upgrade a live system without guessing.
-    link_label: "See selected work"
-    href: "/portfolio/"
-  - context: "Technical leadership"
-    title: "Creating clarity during transitions"
+      How we mapped 10 years of undocumented Rails dependencies, decoupled seven lending funnels,
+      and created a living 4D architecture map without stalling active delivery.
+    link_label: "Read Case Study"
+    href: "/architecture/legacy-modernization/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html"
+  - context: "Database Engineering & Compliance"
+    title: "Database Archaeology: Safe Multi-Table PII Purge Engine"
     text: >-
-      Clarified system ownership, incident response, and delivery priorities across
-      distributed teams during leadership and organizational change.
-    link_label: "Read the résumé"
-    href: "/"
-  - context: "Active practice"
-    title: "Keeping the practice current"
+      Engineered a 5-phase zero-downtime deletion engine with strict lock-timeout budgets and WAL replication lag
+      throttling across high-throughput PostgreSQL production clusters.
+    link_label: "Read Case Study"
+    href: "/architecture/database/2026/08/29/database-archaeology-safely-purging-sensitive-records.html"
+  - context: "Distributed Observability"
+    title: "Hunting the 4% Defect: Distributed Tracing with OpenTelemetry"
     text: >-
-      I use Phalanx Duel as a working laboratory for explicit state models, deterministic
-      state transitions, accessibility, and disciplined AI-assisted development.
-    link_label: "See selected work"
-    href: "/portfolio/#project-phalanx-duel"
+      Uncovered and fixed a silent 4% transaction loss between Rails and MuleSoft middleware tiers
+      by rolling out enterprise OpenTelemetry trace waterfalls and synthetic canary probes.
+    link_label: "Read Case Study"
+    href: "/architecture/observability/2026/08/30/hunting-the-4-percent-defect-distributed-tracing.html"
+  - context: "Fintech State Machines"
+    title: "Instant Money: Real-Time Debit Disbursement Architecture"
+    text: >-
+      Designed Speedfunds two-phase state verification gates and idempotent ledger webhooks to safely
+      disburse funds in real time without uncommitted read risks.
+    link_label: "Read Case Study"
+    href: "/architecture/fintech/2026/08/30/instant-money-real-time-debit-disbursement-architecture.html"
 
 evaluation:
-  label: "Start here"
+  label: "Evaluation Paths"
   title: "Start wherever you have time."
 
 evaluation_paths:
   - number: "01"
-    title: "Résumé"
-    text: "Current technical profile, recent experience, core capabilities, and machine-readable exports."
-    href: "/"
+    title: "Full Résumé & ATS Exports"
+    text: "Canonical ATS plain-text parse, structured JSON-LD credentials, and complete 28-position career history."
+    href: "/resume/"
   - number: "02"
-    title: "Selected Work"
-    text: "Technical projects, architecture, writing, and active engineering practice."
-    href: "/portfolio/"
+    title: "5 Tailored Role Archetypes"
+    text: "Tailored resumes for Huntress SOC, Coder Platform Enablement, Telemetry Specialist, Fintech, and AI Systems."
+    href: "/reports/archetype-reader-profiles/"
   - number: "03"
-    title: "Complete History"
-    text: "The full chronology for readers who need more context."
-    href: "/history/"
+    title: "20-Year Oral History Archive"
+    text: "211 technical interviews with software pioneers (Uncle Bob, DHH, Corey Haines) and Chicago craftsmanship roots."
+    href: "/interviews/"
 
 public_record:
   label: "Public work"
-  title: "I also document the work."
+  title: "Documenting the craft for two decades."
   text: >-
-    I have written technical guides, spoken at conferences, organized communities, and
-    interviewed software practitioners. The archive is a long-running record of how I
-    learn and contribute.
+    I have written technical guides, spoken at conferences, founded grassroots engineering communities (SCMC, Geekfest),
+    and recorded oral histories of modern software development.
   links:
-    - label: "Technical writing"
+    - label: "Architecture Retrospectives"
       href: "/writing/"
-    - label: "Conversation archive"
+    - label: "Conversation Archive (211 Interviews)"
       href: "/interviews/"
-    - label: "Archive intelligence"
+    - label: "Ask the Archive AI"
+      href: "/ask/"
+    - label: "Corpus Intelligence"
       href: "/intelligence/"
 
 contact:
-  eyebrow: "Open to technical IC work"
-  title: "Working on a system that is hard to change?"
+  eyebrow: "Open to Principal & Staff IC Roles"
+  title: "Navigating a complex platform transition?"
   text: >-
-    I am interested in roles where I can work on architecture, production reliability,
-    modernization, and observability while leading technical decisions across teams.
+    I am actively exploring Principal Software Engineer, Staff Platform Architect, and Observability Specialist roles.
+    Let's talk about your platform scaling challenges.
   primary_label: "Contact Mike"
   primary_href: "/contact/"
-  secondary_label: "Read the résumé"
-  secondary_href: "/"
+  secondary_label: "Read Full Résumé"
+  secondary_href: "/resume/"

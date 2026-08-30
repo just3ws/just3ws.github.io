@@ -1,13 +1,189 @@
 ---
-layout: resume
-resume_seo_key: resume
-person_schema: true
-resume_canonical: true
+layout: minimal
+title: "Mike Hall | Principal Systems Architect & Platform Engineer"
+description: "Mike Hall is a Principal Systems Architect specializing in high-consequence Ruby on Rails platforms, distributed OpenTelemetry observability, and legacy modernization."
+breadcrumb: Home
 canonical_url: https://www.just3ws.com/
-use_digital_patina: false
-body_class: ats-resume
+person_schema: true
+body_class: professional-home
 ---
 
-{% include resume/ats-content.html %}
+{% assign home = site.data.home %}
+{% assign profile = site.data.resume.profile %}
 
-<!-- release {{ site.release_timestamp | default: "unknown" }} -->
+<article class="page leadership-home">
+  
+  <!-- Hero Section -->
+  <header class="leadership-hero">
+    <div class="leadership-hero-copy">
+      <p class="leadership-eyebrow">{{ profile.title | default: "Principal Systems Architect & Platform Engineer" }}</p>
+      <h1>{{ home.hero.headline }}</h1>
+      <p class="leadership-lede">{{ home.hero.lede }}</p>
+      <div class="leadership-actions" aria-label="Professional profile actions">
+        {% for action in home.hero.actions %}
+          <a class="leadership-action leadership-action-{{ action.style }}" href="{{ action.href }}">{{ action.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <aside class="leadership-pattern" aria-labelledby="operating-pattern-title">
+      <p class="leadership-pattern-label">{{ home.operating_pattern.label }}</p>
+      <h2 id="operating-pattern-title" class="visually-hidden">How Mike approaches complex systems</h2>
+      <ol>
+        {% for phase in home.operating_pattern.steps %}
+          <li>
+            <span>0{{ forloop.index }}</span>
+            <div>
+              <h3>{{ phase.name }}</h3>
+              <p>{{ phase.summary }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ol>
+    </aside>
+  </header>
+
+  <!-- Unambiguous Résumé & Credentials Access Hub -->
+  <section class="leadership-credentials-hub" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); border-radius: var(--radius-md, 0.5rem); padding: 1.5rem; margin: 2.5rem 0; box-shadow: var(--shadow-sm);">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border-subtle, #eeebe3); padding-bottom: 0.75rem;">
+      <div>
+        <span style="background: rgba(15, 118, 110, 0.1); color: #0f766e; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Hiring & Credentials Hub</span>
+        <h2 style="font-size: 1.35rem; font-weight: 700; color: var(--color-heading, #0f172a); margin: 0.35rem 0 0 0; font-family: var(--font-serif-editorial, Georgia, serif);">Looking for Mike's Résumé & Tailored Archetypes?</h2>
+      </div>
+      <a href="/resume/" class="leadership-action leadership-action-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">View Full Canonical Résumé (ATS) →</a>
+    </div>
+    
+    <p style="font-size: 0.95rem; color: var(--color-text-muted, #525866); margin-bottom: 1rem; line-height: 1.6;">
+      Access the complete 28-position career history, verified factual claims, ATS plain-text exports, or explore tailored role archetypes with 1-page executive briefs:
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; font-family: var(--font-sans-ui, system-ui, sans-serif); font-size: 0.85rem;">
+      <a href="/resumes/mike-hall-principal-software-engineer/" style="display: block; padding: 0.65rem 0.85rem; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 4px; color: var(--color-text-main, #1e232a); text-decoration: none; font-weight: 600;">
+        🎯 Principal Systems Architect <span style="color: var(--color-text-muted, #64748b); font-size: 0.75rem; display: block; font-weight: 400;">Financial Monolith Modernization</span>
+      </a>
+      <a href="/resumes/mike-hall-staff-platform-lead/" style="display: block; padding: 0.65rem 0.85rem; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 4px; color: var(--color-text-main, #1e232a); text-decoration: none; font-weight: 600;">
+        🛠️ Staff Platform Lead <span style="color: var(--color-text-muted, #64748b); font-size: 0.75rem; display: block; font-weight: 400;">Developer Enablement & Workspaces</span>
+      </a>
+      <a href="/resumes/mike-hall-observability-resilience-specialist/" style="display: block; padding: 0.65rem 0.85rem; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 4px; color: var(--color-text-main, #1e232a); text-decoration: none; font-weight: 600;">
+        📊 Observability & Resilience <span style="color: var(--color-text-muted, #64748b); font-size: 0.75rem; display: block; font-weight: 400;">Enterprise Telemetry & OpenTelemetry</span>
+      </a>
+      <a href="/resumes/mike-hall-founding-staff-engineer/" style="display: block; padding: 0.65rem 0.85rem; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 4px; color: var(--color-text-main, #1e232a); text-decoration: none; font-weight: 600;">
+        🤖 Founding Staff Engineer <span style="color: var(--color-text-muted, #64748b); font-size: 0.75rem; display: block; font-weight: 400;">AI Systems & Autonomous Agents</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Through-Line Section -->
+  <section class="leadership-through-line" aria-labelledby="through-line-title">
+    <p class="leadership-section-index" aria-hidden="true">01 / {{ home.through_line.label }}</p>
+    <div>
+      <h2 id="through-line-title">{{ home.through_line.title }}</h2>
+      <p>{{ home.through_line.text }}</p>
+    </div>
+  </section>
+
+  <!-- Method: Panoramic View -->
+  <section class="leadership-method" aria-labelledby="home-method-title">
+    <div class="leadership-method-copy">
+      <p class="leadership-eyebrow">{{ home.method.eyebrow }}</p>
+      <h2 id="home-method-title">{{ home.method.title }}</h2>
+      <p>{{ home.method.lede }}</p>
+      <p class="leadership-actor-note">{{ home.method.actor_note }}</p>
+      <p class="leadership-method-note">{{ home.method.evidence_note }}</p>
+      <ul class="leadership-method-questions" aria-label="Panoramic View governing questions">
+        {% for question in home.method.questions %}
+          <li>{{ question }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="leadership-wave" aria-hidden="true">
+      <div class="leadership-horizon">
+        <span>enter</span>
+        <span>choose</span>
+        <span>commit</span>
+        <span>result</span>
+        <span>exit</span>
+      </div>
+      <div class="leadership-wave-field">
+        <span class="leadership-layer">interface</span>
+        <span class="leadership-layer">application</span>
+        <span class="leadership-layer">services</span>
+        <span class="leadership-layer">data</span>
+        <i class="leadership-wave-line wave-one"></i>
+        <i class="leadership-wave-line wave-two"></i>
+        <i class="leadership-wave-line wave-three"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture Case Studies / Production Proof -->
+  <section class="leadership-evidence" aria-labelledby="evidence-title">
+    <div class="leadership-section-heading">
+      <p class="leadership-section-index">02 / {{ home.evidence_intro.label }}</p>
+      <h2 id="evidence-title">{{ home.evidence_intro.title }}</h2>
+      <p>{{ home.evidence_intro.text }}</p>
+    </div>
+
+    <div class="leadership-evidence-list">
+      {% for item in home.evidence %}
+        <article>
+          <p class="leadership-evidence-context">{{ item.context }}</p>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+          <a href="{{ item.href }}">{{ item.link_label }} <span aria-hidden="true">→</span></a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Evaluation Paths -->
+  <section class="leadership-evaluator" aria-labelledby="evaluation-title">
+    <div class="leadership-section-heading">
+      <p class="leadership-section-index">03 / {{ home.evaluation.label }}</p>
+      <h2 id="evaluation-title">{{ home.evaluation.title }}</h2>
+    </div>
+
+    <ol class="leadership-paths">
+      {% for path in home.evaluation_paths %}
+        <li>
+          <a href="{{ path.href }}">
+            <span class="leadership-path-number">{{ path.number }}</span>
+            <span class="leadership-path-copy">
+              <strong>{{ path.title }}</strong>
+              <span>{{ path.text }}</span>
+            </span>
+            <span class="leadership-path-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <!-- Public Record & 20-Year Archive -->
+  <section class="leadership-record" aria-labelledby="public-record-title">
+    <div>
+      <p class="leadership-section-index">04 / {{ home.public_record.label }}</p>
+      <h2 id="public-record-title">{{ home.public_record.title }}</h2>
+    </div>
+    <div>
+      <p>{{ home.public_record.text }}</p>
+      <nav class="leadership-record-links" aria-label="Public technical record">
+        {% for item in home.public_record.links %}
+          <a href="{{ item.href }}">{{ item.label }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <footer class="leadership-contact">
+    <p class="leadership-eyebrow">{{ home.contact.eyebrow }}</p>
+    <h2>{{ home.contact.title }}</h2>
+    <p>{{ home.contact.text }}</p>
+    <div class="leadership-actions">
+      <a class="leadership-action leadership-action-primary" href="{{ home.contact.primary_href }}">{{ home.contact.primary_label }}</a>
+      <a class="leadership-action leadership-action-secondary" href="{{ home.contact.secondary_href }}">{{ home.contact.secondary_label }}</a>
+    </div>
+  </footer>
+</article>

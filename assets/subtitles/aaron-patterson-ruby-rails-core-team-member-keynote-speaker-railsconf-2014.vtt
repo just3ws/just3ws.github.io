@@ -6,25 +6,25 @@ Language: en
 <v Mike Hall>Hi, it's Mike with UGtastic, and I'm at RailsConf 2014, and I'm standing here with Aaron Patterson. You might know him as TenderLove on Twitter and GitHub and all those social places, but he's going to be giving the footnote to the conference tonight. I can't really call it the keynote, because it's at the end. I don't know what to call it. The anti-keynotes. Yeah, the anti-keynotes. Well, thank you very much for taking the time to speak with me. Can you tell me a little bit about what your talk is going to be about?
 
 00:00:26.542 --> 00:00:53.492
-<v Aaron Patterson>Yeah, well, first, I guess the first 30% is just going to be like jokes and trolling. The second 30% is going to be, I don't know, some bugs and stuff. With like, you know, active record internals, and the final 60% is going to be, excuse me, the final 50% is going to be about adequate record. And I know that adds up to 110%, but I always like to give 110%. It's 100%, just don't add it. Don't add. So yeah, it's just going to be like, I don't know, jokes, bugs, and then adequate record is what we're going to be talking about.
+<v Aaron Patterson>Yeah, well, first, I guess the first 30% is just going to be like jokes and trolling. The second 30% is going to be, I don't know, some bugs and stuff. With like, you know, ActiveRecord internals, and the final 60% is going to be, excuse me, the final 50% is going to be about adequate record. And I know that adds up to 110%, but I always like to give 110%. It's 100%, just don't add it. Don't add. So yeah, it's just going to be like, I don't know, jokes, bugs, and then adequate record is what we're going to be talking about.
 
 00:00:53.492 --> 00:00:55.017
 <v Mike Hall>Okay. What is adequate record?
 
 00:00:55.017 --> 00:01:12.102
-<v Aaron Patterson>It's a project I've been working on. I've been working on it for a very long time, but I didn't really have a name for it. But what it is, it's just a set of patches on top of active record. Like, it's just stuff that I've been doing on top of active record, specifically for performance, like performance improvements to active record.
+<v Aaron Patterson>It's a project I've been working on. I've been working on it for a very long time, but I didn't really have a name for it. But what it is, it's just a set of patches on top of ActiveRecord. Like, it's just stuff that I've been doing on top of ActiveRecord, specifically for performance, like performance improvements to ActiveRecord.
 
 00:01:12.102 --> 00:01:15.102
 <v Mike Hall>Is it like just more of a streamlining of the internals or?
 
 00:01:15.102 --> 00:01:49.169
-<v Aaron Patterson>Well, it's been, so basically I've been refactoring the internals for a very long, like I've had this idea for the performance improvement. And what the main performance improvement is, is basically SQL statement generation caching. So actually the string that you pass to the database, or that active record passes to the database, like the actual SQL statement, it caches the generation of that. So we only do that once and your queries end up being faster from that. But I've been working on basically internal refactoring for literally years just to get to the point where I could do, I could have this particular thing, but I never had a name for it until recently.
+<v Aaron Patterson>Well, it's been, so basically I've been refactoring the internals for a very long, like I've had this idea for the performance improvement. And what the main performance improvement is, is basically SQL statement generation caching. So actually the string that you pass to the database, or that ActiveRecord passes to the database, like the actual SQL statement, it caches the generation of that. So we only do that once and your queries end up being faster from that. But I've been working on basically internal refactoring for literally years just to get to the point where I could do, I could have this particular thing, but I never had a name for it until recently.
 
 00:01:49.169 --> 00:01:50.034
 <v Mike Hall>Oh, really? Yeah.
 
 00:01:50.034 --> 00:02:32.797
-<v Aaron Patterson>Well, that sounds like, like what, in other database engines where you can lean on some of that query caching inside of it, you're pulling some of that capability out into, into the Ruby layer, the app layer, so it can... Yeah, yeah. We are, we actually already do, so active record actually already does query caching, like uses prepared statements and does cache query, yeah, cache query execution. So we do that. The problem though, is that even though we, even though we use those prepared statements, we still have to generate the SQL statement in order to look up the prepared statement and then do that. So we've had, we've always had this overhead before querying the database of like building up, you know, building up the query before we go out. So this basically eliminates that overhead is part of the stuff I've been working on.
+<v Aaron Patterson>Well, that sounds like, like what, in other database engines where you can lean on some of that query caching inside of it, you're pulling some of that capability out into, into the Ruby layer, the app layer, so it can... Yeah, yeah. We are, we actually already do, so ActiveRecord actually already does query caching, like uses prepared statements and does cache query, yeah, cache query execution. So we do that. The problem though, is that even though we, even though we use those prepared statements, we still have to generate the SQL statement in order to look up the prepared statement and then do that. So we've had, we've always had this overhead before querying the database of like building up, you know, building up the query before we go out. So this basically eliminates that overhead is part of the stuff I've been working on.
 
 00:02:32.797 --> 00:02:33.051
 <v Mike Hall>Yeah.
