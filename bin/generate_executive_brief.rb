@@ -186,7 +186,43 @@ end
 
 html_slug = File.basename(out_markdown_path, ".md").downcase.gsub(/[^a-z0-9]+/, "-").gsub(/^-+|-+$/, "")
 localhost_url = "https://just3ws.localhost/exports/briefs/#{html_slug}/"
+public_url = "https://just3ws.com/briefs/#{html_slug}/"
 pdf_path = "exports/briefs/pdfs/#{html_slug}-executive-brief-mike-hall.pdf"
+
+cold_outreach_message = <<~MSG.strip
+  Hi [Name],
+
+  I saw #{company} is scaling #{domain} and looking for a #{role}.
+
+  I specialize in high-consequence Ruby on Rails platforms and distributed architecture. Over the past several years, I served as Acquisition Lane Architect at OneMain Financial, decoupling lending funnels, eliminating a 4% silent transaction drop, and driving enterprise OpenTelemetry adoption across Rails and middleware tiers.
+
+  I put together a focused 1-page technical brief mapping my background to your current engineering challenges:
+  👉 #{public_url}
+
+  If this aligns with what you need on the team, I would be glad to compare notes. If timing is off, no need to reply.
+
+  Best,
+  Mike Hall
+  https://just3ws.com
+MSG
+
+warm_referral_message = <<~MSG.strip
+  Hi [Name],
+
+  Hope you are doing well! It has been a while, and it is great seeing what you are building at #{company}.
+
+  I am exploring my next move into a #{role} / Platform Architecture role and noticed #{company} is expanding around #{domain}.
+
+  Before submitting a cold application, I wanted to ask your take on the engineering culture and how the platform team approaches distributed scale.
+
+  I put together a 1-page overview of my background here:
+  👉 #{public_url}
+
+  If you have five minutes for a quick asynchronous exchange, I would value your perspective. No worries at all if you are swamped.
+
+  Best,
+  Mike
+MSG
 
 if options[:json]
   puts JSON.pretty_generate({
@@ -196,13 +232,21 @@ if options[:json]
     tier: tier,
     markdown_path: out_markdown_path,
     localhost_url: localhost_url,
+    public_url: public_url,
     pdf_path: pdf_path,
     calibration_script: calibration_script,
-    calibration_hook: calibration_hook
+    calibration_hook: calibration_hook,
+    cold_outreach_message: cold_outreach_message,
+    warm_referral_message: warm_referral_message
   })
 else
   puts "✅ Generated Executive Pitch Brief:"
-  puts "   • Markdown : #{out_markdown_path}"
-  puts "   • Localhost: #{localhost_url}"
-  puts "   • PDF Export: #{pdf_path}" if options[:generate_pdf]
+  puts "   • Markdown   : #{out_markdown_path}"
+  puts "   • Localhost  : #{localhost_url}"
+  puts "   • Public URL : #{public_url}"
+  puts "   • PDF Export : #{pdf_path}" if options[:generate_pdf]
+  puts "\n📨 Calibrated Cold Outreach Snippet:"
+  puts "--------------------------------------------------"
+  puts cold_outreach_message
+  puts "--------------------------------------------------"
 end
