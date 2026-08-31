@@ -14,7 +14,7 @@ When joining OneMain Financial in early 2021, the digital lending platform was u
 In 2022, Director Lance Smith appointed Mike Hall as **Software Architect for the Acquisition Lane** with an explicit executive mandate:
 1. **Untangle the Monolith:** Map seven heterogeneous customer acquisition channels processing hundreds of millions in loan volume.
 2. **Decouple Lane Boundaries:** Establish clean domain isolation between Acquisition and digital Originations.
-3. **Eliminate Dark Failure Modes:** Diagnose and fix a persistent, unmonitored defect silently dropping 4% of loan applications during final e-signing.
+3. **Eliminate Dark Failure Modes:** Diagnose and fix a persistent, unmonitored CookieOverflow defect silently dropping 4% of digital loan applications during offer selection and e-signing.
 4. **Deploy Enterprise Observability:** Build the Enterprise Trace connecting Rails, MuleSoft, and Mainframe backends.
 5. **Foster Durable Enablement:** Create an internal community of practice to upskill cross-lane engineers and transition ongoing governance to SRE.
 
@@ -42,8 +42,8 @@ In 2022, Director Lance Smith appointed Mike Hall as **Software Architect for th
                                     |
                                     v
 +-------------------------------------------------------------------------+
-| CHAPTER 4: ILLUMINATING DARK TELEMETRY & THE 4% TRAFFIC FIX             |
-| OpenTelemetry deployment across Rails, MuleSoft, and Mainframe.         |
+| CHAPTER 4: ENTERPRISE RESILIENCE & THE 4% COOKIEOVERFLOW FIX            |
+| Rescued CookieOverflow & migrated Rails sessions to AWS DynamoDB.       |
 +-------------------------------------------------------------------------+
                                     |
                                     v
@@ -76,10 +76,10 @@ In 2022, Director Lance Smith appointed Mike Hall as **Software Architect for th
 
 ---
 
-### Chapter 4: Enterprise OpenTelemetry & Eliminating the 4% Silent Loss
-* **The Challenge:** A persistent, dark failure mode silently corrupted application state and dropped 4% of loan applicants during final document preparation and electronic signing. Logs provided no cross-service causality between Rails and MuleSoft APIs.
-* **The Technical Intervention:** Led the enterprise OpenTelemetry deployment across Rails services, MuleSoft middleware, and Mainframe backends. Partnered with Cybersecurity, SRE, Incident Command, and the Enterprise Monitoring Center (EMC) to establish the unified **Enterprise Trace**.
-* **The Structural Result:** Reconstructed the causal event chain, isolated the race condition in the document preparation service, and eliminated the 4% traffic loss defect, protecting millions in annual origination volume.
+### Chapter 4: Enterprise Resilience & Eliminating the 4% CookieOverflow Defect
+* **The Challenge:** A persistent, dark failure mode silently corrupted application state and dropped 4% of digital loan applicants between offer selection and electronic signing. Client-side session cookie bloat from multi-variant Optimizely experiments, marketing attribution tags, and soft-pull calculations was repeatedly breaching the 4KB RFC 6265 limit, triggering Rails `CookieOverflow` exceptions.
+* **The Technical Intervention:** Introduced defensive rescue middleware (`rescue_cookie_overflow_errors.rb`) to safeguard in-flight traffic. Architected and executed the platform migration from client-side `CookieStore` to server-side session storage backed by AWS DynamoDB (`aws-sessionstore-dynamodb`), coordinating blue/green deployment across Digital Acquisition, Originations, Communications, UI Platform, and DevOps.
+* **The Structural Result:** Completely eliminated the 4% lost-application failure mode with zero downtime and zero incidents, recovering millions in annual origination volume while unblocking high-cardinality Optimizely experimentation.
 
 ---
 
@@ -103,7 +103,7 @@ These 8 article concepts translate the OneMain Financial architectural milestone
 +-----------------------------------------------------------------------------------------------+
 | 1. System Cartography: Mapping 10-Year Monoliths | 5. Instant Money: Real-Time Debit Pipelines|
 | 2. Database Archaeology: Multi-Table PII Purging | 6. Conway's Law: Growth vs Enablement Teams|
-| 3. Eliminating Dark Failure Modes (4% Bug Fix)   | 7. Communities of Practice: The 3-Year Arc |
+| 3. Hunting the 4% Defect: Rails CookieOverflow   | 7. Communities of Practice: The 3-Year Arc |
 | 4. Enterprise OTel: Rails to Mainframe Tracing   | 8. Practical Local AI for Legacy Discovery |
 +-----------------------------------------------------------------------------------------------+
 ```
@@ -122,10 +122,10 @@ These 8 article concepts translate the OneMain Financial architectural milestone
 
 ---
 
-### Article 3: Hunting the 4% Defect: How Distributed Tracing Solves Silent Multi-Service Failures
-* **Target Audience:** SREs, Incident Commanders, Platform Architects.
-* **Core Thesis:** The most dangerous software bugs are silent failure modes that drop traffic without throwing 500 errors. Only end-to-end distributed trace propagation illuminates these dark failure states.
-* **Key Proof Points:** Reconstructing the e-signing document preparation causal chain across Rails, MuleSoft, and Mainframe tiers.
+### Article 3: Hunting the 4% Defect: Resolving Rails Cookie Overflow at Enterprise Scale
+* **Target Audience:** SREs, Incident Commanders, Platform Architects, Senior Rails Engineers.
+* **Core Thesis:** The most dangerous software bugs are silent failure modes that drop traffic without throwing 500 errors. Client-side session cookie bloat can silently destroy customer conversion funnels unless session state is decoupled into resilient server-side storage.
+* **Key Proof Points:** Diagnosing `ActionDispatch::Cookies::CookieOverflow` across 7 acquisition channels, implementing defensive rescue middleware, and executing a zero-downtime migration to AWS DynamoDB session storage.
 
 ---
 

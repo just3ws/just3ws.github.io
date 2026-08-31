@@ -29,14 +29,16 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Founded and led enterprise OpenTelemetry Working Group (OTel WG), partnering with Cybersecurity, EMC, and Incident Command to build the Enterprise Trace across Rails, MuleSoft, and Mainframe backends, diagnosing and resolving a multi-service defect impacting 4% of origination traffic.
+**Target Focus:** Founded and led enterprise OpenTelemetry Working Group (OTel WG), partnering with Cybersecurity, EMC, and Incident Command to build the Enterprise Trace across Rails, MuleSoft, and Mainframe backends, establishing distributed trace visibility across complex multi-tier lending workflows.
 
 **Key Outcomes:**
 - Originations IC Delivery & Team Realignment: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes vs multi-day ACH). Appointed Software Architect for the Acquisition Lane to resolve systemic fragility, consolidating two attrition-impacted teams into a unified, high-velocity delivery unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
 
 - ACQ Enablement & Architecture Discovery: Founded and technically led the ACQ Enablement team to establish end-to-end system mapping across seven heterogeneous acquisition channels spanning direct-to-consumer web/mobile funnels, direct mail campaigns, partner affiliate APIs, and authenticated renewal workflows. Architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, cataloging legacy clarity_ orphan data, eliminating multi-service state machine corruptions, and embedding automated compliance into production Rails code.
 
-- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing, diagnosing and eliminating a persistent multi-service defect that caused 4% silent traffic loss at late-stage e-signing.
+- Enterprise Resilience & DynamoDB Session Remediation: Architected and delivered the platform migration from client-side cookie storage to server-side DynamoDB session storage across all Rails applications, diagnosing and eliminating a critical CookieOverflow defect that silently dropped 4% of digital loan applications during late-stage offer selection and e-signing; coordinated cross-lane blue/green deployment with zero downtime and zero incidents.
+
+- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing across end-to-end multi-tier lending workflows.
 
 - Sustained Community Enablement & SRE Handoff: Drove a dedicated 3-year cultural and technical enablement initiative: founded Geekfest@OMF (weekly recorded technical brown-bag sessions across the enterprise for 1 year) before evolving the forum into the weekly OpenTelemetry Working Group (OTel WG), scaling voluntary attendance to 40+ cross-lane engineers. Mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable, self-sustaining community of practice while returning to Acquisition Lane architecture representation.
 

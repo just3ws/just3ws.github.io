@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-08-31T01:20:51Z",
+    "generated_at": "2026-08-31T13:02:25Z",
     "system": "CareerOS Master Datalake",
     "canonical_url": "https://just3ws.localhost/career_datalake.json",
     "endpoints": {
@@ -18,7 +18,7 @@
       "total_articles": 165,
       "total_interviews": 184,
       "total_knowledge_graph_nodes": 402,
-      "total_technologies_tracked": 130
+      "total_technologies_tracked": 131
     }
   },
   "candidate_profile": {
@@ -84,7 +84,7 @@
       "featured_positions": [
         {
           "id": "onemain",
-          "focus": "Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, converting to Associate Director, Staff Engineer upon corporate architecture track restructuring, while founding the ACQ Enablement team and leading the OpenTelemetry Working Group to establish the Enterprise Trace across the end-to-end loan application and origination lifecycle (Rails, MuleSoft, Mainframe), resolving a multi-service defect impacting 4% of traffic."
+          "focus": "Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, converting to Associate Director, Staff Engineer upon corporate architecture track restructuring, while founding the ACQ Enablement team, resolving a 4% application drop via DynamoDB session remediation, and leading the OpenTelemetry Working Group to establish the Enterprise Trace across Rails, MuleSoft, and Mainframe backends."
         },
         {
           "id": "sk-holdings",
@@ -333,7 +333,7 @@
       "featured_positions": [
         {
           "id": "onemain",
-          "focus": "Founded and led enterprise OpenTelemetry Working Group (OTel WG), partnering with Cybersecurity, EMC, and Incident Command to build the Enterprise Trace across Rails, MuleSoft, and Mainframe backends, diagnosing and resolving a multi-service defect impacting 4% of origination traffic."
+          "focus": "Founded and led enterprise OpenTelemetry Working Group (OTel WG), partnering with Cybersecurity, EMC, and Incident Command to build the Enterprise Trace across Rails, MuleSoft, and Mainframe backends, establishing distributed trace visibility across complex multi-tier lending workflows."
         },
         {
           "id": "agent-tooling",
@@ -873,7 +873,10 @@
           "text": "ACQ Enablement & Architecture Discovery: Founded and technically led the ACQ Enablement team to establish end-to-end system mapping across seven heterogeneous acquisition channels spanning direct-to-consumer web/mobile funnels, direct mail campaigns, partner affiliate APIs, and authenticated renewal workflows. Architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, cataloging legacy clarity_ orphan data, eliminating multi-service state machine corruptions, and embedding automated compliance into production Rails code.\n"
         },
         {
-          "text": "Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing, diagnosing and eliminating a persistent multi-service defect that caused 4% silent traffic loss at late-stage e-signing.\n"
+          "text": "Enterprise Resilience & DynamoDB Session Remediation: Architected and delivered the platform migration from client-side cookie storage to server-side DynamoDB session storage across all Rails applications, diagnosing and eliminating a critical CookieOverflow defect that silently dropped 4% of digital loan applications during late-stage offer selection and e-signing; coordinated cross-lane blue/green deployment with zero downtime and zero incidents.\n"
+        },
+        {
+          "text": "Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing across end-to-end multi-tier lending workflows.\n"
         },
         {
           "text": "Sustained Community Enablement & SRE Handoff: Drove a dedicated 3-year cultural and technical enablement initiative: founded Geekfest@OMF (weekly recorded technical brown-bag sessions across the enterprise for 1 year) before evolving the forum into the weekly OpenTelemetry Working Group (OTel WG), scaling voluntary attendance to 40+ cross-lane engineers. Mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable, self-sustaining community of practice while returning to Acquisition Lane architecture representation.\n"
@@ -884,7 +887,7 @@
       ],
       "case_study": {
         "title": "De-Risking Legacy Acquisition Workflows & Enterprise Telemetry",
-        "challenge": "Over years of rapid business expansion, high-volume financial customer loan application and origination flows accumulated implicit lateral state dependencies across multi-service Rails state machines, MuleSoft APIs, and IBM mainframe backends. A persistent, dark failure mode silently corrupted state and dropped 4% of applications during late-stage document preparation and e-signing.",
+        "challenge": "Over years of rapid business expansion, high-volume financial customer loan application and origination flows accumulated implicit lateral state dependencies across multi-service Rails state machines, MuleSoft APIs, and IBM mainframe backends. Client-side session cookie bloat caused a persistent CookieOverflow defect that silently corrupted state and dropped 4% of digital applications between offer selection and e-signing.",
         "cartography_approach": [
           {
             "dimension": "Interaction Surface",
@@ -904,7 +907,7 @@
           }
         ],
         "outcomes": [
-          "Diagnosed and resolved a persistent multi-service defect affecting 4% of origination traffic, preventing complete application loss during final document preparation and e-signing.",
+          "Diagnosed and resolved a persistent CookieOverflow defect affecting 4% of digital applicant traffic by implementing custom rescue middleware and migrating Rails session state to AWS DynamoDB with zero downtime.",
           "Engineered an automated 5-phase PII remediation engine across 30+ tables, eliminating legacy orphan references without disrupting live application state.",
           "Established end-to-end distributed tracing across Acquisition and Origination tiers, connecting Rails, MuleSoft, and Mainframe backends to accelerate root-cause diagnosis for Incident Command.",
           "Partnered with Cybersecurity and Enterprise Monitoring Center (EMC) to bridge immediate operational monitoring with long-term distributed telemetry and causal event attribution.",
@@ -920,6 +923,7 @@
         "Dependency Mapping",
         "System Resilience",
         "Incident Leadership",
+        "DynamoDB",
         "Observability",
         "OpenTelemetry",
         "Distributed Systems",
@@ -1328,7 +1332,7 @@
           "supply_chain_exposure": "Audited third-party credit bureau APIs, e-sign vendor webhooks, and boundary ingress points, providing real-time causal event chains for cybersecurity and fraud investigations."
         },
         "outcomes": [
-          "Diagnosed and resolved a persistent multi-service defect affecting 4% of origination traffic, preventing complete application loss during final document preparation and e-signing.",
+          "Diagnosed and resolved a persistent CookieOverflow defect affecting 4% of digital applicant traffic by implementing custom rescue middleware and migrating Rails session state to AWS DynamoDB with zero downtime.",
           "Engineered an automated 5-phase PII remediation engine across 30+ tables, eliminating legacy orphan references without disrupting live application state.",
           "Established end-to-end distributed tracing across Acquisition and Origination tiers, accelerating root-cause diagnosis for Incident Command.",
           "Founded and technically led ACQ Enablement while leading a 3-year enterprise community arc (Geekfest and OTel WG) transitioned sustainably to SRE."
@@ -2209,32 +2213,6 @@
       ],
       "total_occurrences": 3
     },
-    "Active Server Pages (ASP)": {
-      "skill": "Active Server Pages (ASP)",
-      "first_seen_year": 2006,
-      "last_seen_year": 2006,
-      "roles_used": [
-        {
-          "company": "Integrated Performance Solutions, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "November 2003",
-          "end_date": "July 2004"
-        },
-        {
-          "company": "New Labor Strategies, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "June 2002",
-          "end_date": "November 2003"
-        },
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "July 2000",
-          "end_date": "October 2001"
-        }
-      ],
-      "total_occurrences": 3
-    },
     "Platform Architecture": {
       "skill": "Platform Architecture",
       "first_seen_year": 2006,
@@ -2257,6 +2235,32 @@
           "title": "Principal Consultant",
           "start_date": "August 2018",
           "end_date": "August 2018"
+        }
+      ],
+      "total_occurrences": 3
+    },
+    "Active Server Pages (ASP)": {
+      "skill": "Active Server Pages (ASP)",
+      "first_seen_year": 2006,
+      "last_seen_year": 2006,
+      "roles_used": [
+        {
+          "company": "Integrated Performance Solutions, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "November 2003",
+          "end_date": "July 2004"
+        },
+        {
+          "company": "New Labor Strategies, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "June 2002",
+          "end_date": "November 2003"
+        },
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "July 2000",
+          "end_date": "October 2001"
         }
       ],
       "total_occurrences": 3
@@ -2347,6 +2351,26 @@
       ],
       "total_occurrences": 2
     },
+    "Secure API Design": {
+      "skill": "Secure API Design",
+      "first_seen_year": 2006,
+      "last_seen_year": 2006,
+      "roles_used": [
+        {
+          "company": "BenchPrep",
+          "title": "Senior Software Developer",
+          "start_date": "March 2017",
+          "end_date": "February 2018"
+        },
+        {
+          "company": "ReachLocal",
+          "title": "Senior Software Developer",
+          "start_date": "March 2015",
+          "end_date": "November 2016"
+        }
+      ],
+      "total_occurrences": 2
+    },
     "Heroku": {
       "skill": "Heroku",
       "first_seen_year": 2006,
@@ -2367,22 +2391,22 @@
       ],
       "total_occurrences": 2
     },
-    "Secure API Design": {
-      "skill": "Secure API Design",
+    "CI/CD": {
+      "skill": "CI/CD",
       "first_seen_year": 2006,
-      "last_seen_year": 2006,
+      "last_seen_year": 2026,
       "roles_used": [
         {
-          "company": "BenchPrep",
-          "title": "Senior Software Developer",
-          "start_date": "March 2017",
-          "end_date": "February 2018"
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022",
+          "end_date": "Present"
         },
         {
-          "company": "ReachLocal",
-          "title": "Senior Software Developer",
-          "start_date": "March 2015",
-          "end_date": "November 2016"
+          "company": "SK Holdings, Inc.",
+          "title": "Senior Backend Developer",
+          "start_date": "January 2019",
+          "end_date": "December 2020"
         }
       ],
       "total_occurrences": 2
@@ -2427,26 +2451,6 @@
       ],
       "total_occurrences": 2
     },
-    "CI/CD": {
-      "skill": "CI/CD",
-      "first_seen_year": 2006,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022",
-          "end_date": "Present"
-        },
-        {
-          "company": "SK Holdings, Inc.",
-          "title": "Senior Backend Developer",
-          "start_date": "January 2019",
-          "end_date": "December 2020"
-        }
-      ],
-      "total_occurrences": 2
-    },
     "Scrum": {
       "skill": "Scrum",
       "first_seen_year": 2006,
@@ -2487,22 +2491,22 @@
       ],
       "total_occurrences": 2
     },
-    "System Resilience": {
-      "skill": "System Resilience",
-      "first_seen_year": 2006,
-      "last_seen_year": 2006,
+    "API Design": {
+      "skill": "API Design",
+      "first_seen_year": 2021,
+      "last_seen_year": 2026,
       "roles_used": [
         {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
-          "start_date": "January 2021",
-          "end_date": "February 2026"
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022",
+          "end_date": "Present"
         },
         {
-          "company": "Tandem",
-          "title": "Principal Consultant",
-          "start_date": "August 2018",
-          "end_date": "August 2018"
+          "company": "WWWorkRemote",
+          "title": "Principal Architect",
+          "start_date": "2021",
+          "end_date": "Present"
         }
       ],
       "total_occurrences": 2
@@ -2527,26 +2531,6 @@
       ],
       "total_occurrences": 2
     },
-    "Legacy System Modernization": {
-      "skill": "Legacy System Modernization",
-      "first_seen_year": 2006,
-      "last_seen_year": 2006,
-      "roles_used": [
-        {
-          "company": "ActiveCampaign",
-          "title": "Senior Software Developer",
-          "start_date": "September 2018",
-          "end_date": "December 2018"
-        },
-        {
-          "company": "ReachLocal",
-          "title": "Senior Software Developer",
-          "start_date": "March 2015",
-          "end_date": "November 2016"
-        }
-      ],
-      "total_occurrences": 2
-    },
     "Capistrano": {
       "skill": "Capistrano",
       "first_seen_year": 2006,
@@ -2567,22 +2551,22 @@
       ],
       "total_occurrences": 2
     },
-    "API Design": {
-      "skill": "API Design",
-      "first_seen_year": 2021,
-      "last_seen_year": 2026,
+    "Legacy System Modernization": {
+      "skill": "Legacy System Modernization",
+      "first_seen_year": 2006,
+      "last_seen_year": 2006,
       "roles_used": [
         {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022",
-          "end_date": "Present"
+          "company": "ActiveCampaign",
+          "title": "Senior Software Developer",
+          "start_date": "September 2018",
+          "end_date": "December 2018"
         },
         {
-          "company": "WWWorkRemote",
-          "title": "Principal Architect",
-          "start_date": "2021",
-          "end_date": "Present"
+          "company": "ReachLocal",
+          "title": "Senior Software Developer",
+          "start_date": "March 2015",
+          "end_date": "November 2016"
         }
       ],
       "total_occurrences": 2
@@ -2627,8 +2611,28 @@
       ],
       "total_occurrences": 2
     },
-    "Observability": {
-      "skill": "Observability",
+    "System Resilience": {
+      "skill": "System Resilience",
+      "first_seen_year": 2006,
+      "last_seen_year": 2006,
+      "roles_used": [
+        {
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "January 2021",
+          "end_date": "February 2026"
+        },
+        {
+          "company": "Tandem",
+          "title": "Principal Consultant",
+          "start_date": "August 2018",
+          "end_date": "August 2018"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "DynamoDB": {
+      "skill": "DynamoDB",
       "first_seen_year": 2006,
       "last_seen_year": 2006,
       "roles_used": [
@@ -2651,6 +2655,20 @@
           "title": "Senior Backend Developer",
           "start_date": "January 2019",
           "end_date": "December 2020"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Observability": {
+      "skill": "Observability",
+      "first_seen_year": 2006,
+      "last_seen_year": 2006,
+      "roles_used": [
+        {
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "January 2021",
+          "end_date": "February 2026"
         }
       ],
       "total_occurrences": 1
@@ -2725,6 +2743,20 @@
       ],
       "total_occurrences": 1
     },
+    "Data Migration Strategy": {
+      "skill": "Data Migration Strategy",
+      "first_seen_year": 2006,
+      "last_seen_year": 2006,
+      "roles_used": [
+        {
+          "company": "ReachLocal",
+          "title": "Senior Software Developer",
+          "start_date": "March 2015",
+          "end_date": "November 2016"
+        }
+      ],
+      "total_occurrences": 1
+    },
     "Node.js": {
       "skill": "Node.js",
       "first_seen_year": 2022,
@@ -2753,20 +2785,6 @@
       ],
       "total_occurrences": 1
     },
-    "Data Migration Strategy": {
-      "skill": "Data Migration Strategy",
-      "first_seen_year": 2006,
-      "last_seen_year": 2006,
-      "roles_used": [
-        {
-          "company": "ReachLocal",
-          "title": "Senior Software Developer",
-          "start_date": "March 2015",
-          "end_date": "November 2016"
-        }
-      ],
-      "total_occurrences": 1
-    },
     "React": {
       "skill": "React",
       "first_seen_year": 2006,
@@ -2777,20 +2795,6 @@
           "title": "Senior Software Developer",
           "start_date": "March 2015",
           "end_date": "November 2016"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Deterministic Simulation": {
-      "skill": "Deterministic Simulation",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022",
-          "end_date": "Present"
         }
       ],
       "total_occurrences": 1
@@ -2825,6 +2829,20 @@
     },
     "System Verification": {
       "skill": "System Verification",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022",
+          "end_date": "Present"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Deterministic Simulation": {
+      "skill": "Deterministic Simulation",
       "first_seen_year": 2022,
       "last_seen_year": 2026,
       "roles_used": [
@@ -6593,24 +6611,24 @@
       "url": "/2026/08/30/from-geekfest-to-sre-sustainable-engineering-communities/"
     },
     {
-      "slug": "hunting-the-4-percent-defect-distributed-tracing",
+      "slug": "hunting-the-4-percent-defect-rails-cookie-overflow",
       "date": "2026-08-30",
       "year": 2026,
-      "title": "Hunting the 4% Defect: How Distributed Tracing Solves Silent Multi-Service Failures",
+      "title": "Hunting the 4% Defect: Resolving Rails Cookie Overflow at Enterprise Scale",
       "categories": [
         "Architecture",
-        "Observability"
+        "Ruby on Rails"
       ],
       "tags": [
-        "opentelemetry",
-        "distributed-systems",
-        "observability",
-        "incident-response",
         "ruby-on-rails",
+        "dynamodb",
+        "session-storage",
+        "architecture",
+        "incident-response",
         "reliability"
       ],
-      "excerpt": "The most dangerous software bugs never throw 500 errors. Here is how we used OpenTelemetry distributed tracing to diagnose and eliminate a silent 4% transaction drop across multi-service boundaries.",
-      "url": "/2026/08/30/hunting-the-4-percent-defect-distributed-tracing/"
+      "excerpt": "When 4% of customer loan applications were silently lost in production, the root cause was not a server crash. Here is how we diagnosed Rails CookieOverflow and migrated to DynamoDB session storage.",
+      "url": "/2026/08/30/hunting-the-4-percent-defect-rails-cookie-overflow/"
     },
     {
       "slug": "instant-money-real-time-debit-disbursement-architecture",

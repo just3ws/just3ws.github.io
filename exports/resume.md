@@ -109,14 +109,16 @@ Appointed as Senior Technical IC and Software Architecture Lead for the Acquisit
 
 - ACQ Enablement & Architecture Discovery: Founded and technically led the ACQ Enablement team to establish end-to-end system mapping across seven heterogeneous acquisition channels spanning direct-to-consumer web/mobile funnels, direct mail campaigns, partner affiliate APIs, and authenticated renewal workflows. Architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, cataloging legacy clarity_ orphan data, eliminating multi-service state machine corruptions, and embedding automated compliance into production Rails code.
 
-- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing, diagnosing and eliminating a persistent multi-service defect that caused 4% silent traffic loss at late-stage e-signing.
+- Enterprise Resilience & DynamoDB Session Remediation: Architected and delivered the platform migration from client-side cookie storage to server-side DynamoDB session storage across all Rails applications, diagnosing and eliminating a critical CookieOverflow defect that silently dropped 4% of digital loan applications during late-stage offer selection and e-signing; coordinated cross-lane blue/green deployment with zero downtime and zero incidents.
+
+- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing across end-to-end multi-tier lending workflows.
 
 - Sustained Community Enablement & SRE Handoff: Drove a dedicated 3-year cultural and technical enablement initiative: founded Geekfest@OMF (weekly recorded technical brown-bag sessions across the enterprise for 1 year) before evolving the forum into the weekly OpenTelemetry Working Group (OTel WG), scaling voluntary attendance to 40+ cross-lane engineers. Mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable, self-sustaining community of practice while returning to Acquisition Lane architecture representation.
 
 - Applied AI & Innovation Leadership: Placed in two corporate hackathons (building early conversational agents with Rasa and automated schema inference tools with Bonsai Buckaroos). Introduced local LLM orchestration and privacy-conscious AI developer workflows at Geekfest@OMF, establishing early evidence-based patterns for legacy code discovery and developer productivity.
 
 
-**Skills:** Cross-Team Technical Leadership, Platform Architecture, Legacy Modernization, Architecture Discovery, Dependency Mapping, System Resilience, Incident Leadership, Observability, OpenTelemetry, Distributed Systems, Ruby on Rails, PostgreSQL, AWS
+**Skills:** Cross-Team Technical Leadership, Platform Architecture, Legacy Modernization, Architecture Discovery, Dependency Mapping, System Resilience, Incident Leadership, DynamoDB, Observability, OpenTelemetry, Distributed Systems, Ruby on Rails, PostgreSQL, AWS
 
 ### Senior Backend Developer at SK Holdings, Inc.
 **January 2019 — December 2020**

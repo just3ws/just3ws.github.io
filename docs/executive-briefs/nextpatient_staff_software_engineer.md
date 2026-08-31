@@ -37,7 +37,7 @@ NextPatient’s mandate: **decoupling modern patient experiences (scheduling, ch
 1. **OneMain Financial Acquisition Lane Realignment (2021 to 2026)**:
    - *Challenge*: Implicit lateral state mutations across multi-step Rails state machines caused persistent data corruptions in high-volume loan acquisition flows.
    - *Action*: Refactored workflow state transitions, mapped seven acquisition channels, engineered an automated 5-phase PII deletion engine across 30+ tables, founded ACQ Enablement, and deployed enterprise OpenTelemetry tracing across microservice boundaries.
-   - *Outcome*: Diagnosed and eliminated a persistent 4% silent traffic drop at e-signing, unblocked engineering streams, and built the Enterprise Trace.
+   - *Outcome*: Diagnosed and eliminated a persistent 4% silent traffic drop via DynamoDB session storage remediation, unblocked engineering streams, and built the Enterprise Trace.
    - *Reference*: [case-studies/index.html#onemain-acquisition](https://www.just3ws.com/case-studies/)
 
 2. **SK Holdings & Real Estate Platform Modernization**:
@@ -50,7 +50,7 @@ NextPatient’s mandate: **decoupling modern patient experiences (scheduling, ch
 
 ## 4. 💬 30-Second Interview Calibration (The "Answer, Frame, and Pause" Rule)
 
-> *"I specialize in strangler-fig modernization: connecting modern user interfaces and SaaS platforms to fragile legacy backends without disrupting live production operations. At OneMain Financial, I led the Acquisition architecture, mapping seven ingress channels, eliminating a 4% silent traffic drop at e-signing with OpenTelemetry, and safely purging legacy PII across 30+ tables. NextPatient faces the classic challenge of modernizing clinical patient workflows against legacy EHR systems, and my background is built specifically to de-risk those integrations."*
+> *"I specialize in strangler-fig modernization: connecting modern user interfaces and SaaS platforms to fragile legacy backends without disrupting live production operations. At OneMain Financial, I led the Acquisition architecture, mapping seven ingress channels, eliminating a 4% silent traffic drop via DynamoDB session remediation, and safely purging legacy PII across 30+ tables. NextPatient faces the classic challenge of modernizing clinical patient workflows against legacy EHR systems, and my background is built specifically to de-risk those integrations."*
 > 
 > *(Pause & Hook): "I can dive deeper into how we decoupled multi-step Rails workflows, or we can look at how we safely migrated legacy database records. Which direction would you prefer to explore?"*
 

@@ -39,9 +39,9 @@ January 2021 - February 2026
 Progressed from Digital Origination Team Lead to Software Architect for the
 Acquisition Lane, converting to Associate Director, Staff Engineer upon
 corporate architecture track restructuring, while founding the ACQ Enablement
-team and leading the OpenTelemetry Working Group to establish the Enterprise
-Trace across the end-to-end loan application and origination lifecycle (Rails,
-MuleSoft, Mainframe), resolving a multi-service defect impacting 4% of traffic.
+team, resolving a 4% application drop via DynamoDB session remediation, and
+leading the OpenTelemetry Working Group to establish the Enterprise Trace across
+Rails, MuleSoft, and Mainframe backends.
 
 Key Outcomes:
   * Originations IC Delivery & Team Realignment: Led the Originations
@@ -60,13 +60,19 @@ Key Outcomes:
     engine and data migration across 30+ tables, cataloging legacy clarity_
     orphan data, eliminating multi-service state machine corruptions, and
     embedding automated compliance into production Rails code.
+  * Enterprise Resilience & DynamoDB Session Remediation: Architected and
+    delivered the platform migration from client-side cookie storage to
+    server-side DynamoDB session storage across all Rails applications,
+    diagnosing and eliminating a critical CookieOverflow defect that silently
+    dropped 4% of digital loan applications during late-stage offer selection
+    and e-signing; coordinated cross-lane blue/green deployment with zero
+    downtime and zero incidents.
   * Enterprise Trace & Operational Alignment: Architected distributed telemetry
     across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe
     backends. Partnered directly with Cybersecurity, the Enterprise Monitoring
     Center (EMC), SRE, and Incident Command to align immediate operational
-    monitoring with long-term distributed tracing, diagnosing and eliminating a
-    persistent multi-service defect that caused 4% silent traffic loss at
-    late-stage e-signing.
+    monitoring with long-term distributed tracing across end-to-end multi-tier
+    lending workflows.
   * Sustained Community Enablement & SRE Handoff: Drove a dedicated 3-year
     cultural and technical enablement initiative: founded Geekfest@OMF (weekly
     recorded technical brown-bag sessions across the enterprise for 1 year)

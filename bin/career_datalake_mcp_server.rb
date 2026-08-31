@@ -300,7 +300,7 @@ class CareerDatalakeMCPServer
             "Speedfunds instant loan disbursement (minutes vs multi-day ACH)",
             "Architecture discovery across 7 heterogeneous acquisition channels",
             "5-phase automated PII deletion engine across 30+ tables and legacy clarity_ orphans",
-            "Elimination of 4% silent traffic loss defect at late-stage e-signing",
+            "Elimination of 4% silent traffic loss defect via DynamoDB session storage remediation",
             "3-year enterprise community arc (Geekfest and OTel WG) transitioned sustainably to SRE"
           ]
         })

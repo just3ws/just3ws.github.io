@@ -36,11 +36,16 @@ highlights:
       orphan data, eliminating multi-service state machine corruptions, and embedding automated compliance into production Rails code.
 
   - text: >
+      Enterprise Resilience & DynamoDB Session Remediation: Architected and delivered the platform migration
+      from client-side cookie storage to server-side DynamoDB session storage across all Rails applications,
+      diagnosing and eliminating a critical CookieOverflow defect that silently dropped 4% of digital loan applications
+      during late-stage offer selection and e-signing; coordinated cross-lane blue/green deployment with zero downtime and zero incidents.
+
+  - text: >
       Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails
       distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the
       Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with
-      long-term distributed tracing, diagnosing and eliminating a persistent multi-service defect that caused 4% silent
-      traffic loss at late-stage e-signing.
+      long-term distributed tracing across end-to-end multi-tier lending workflows.
 
   - text: >
       Sustained Community Enablement & SRE Handoff: Drove a dedicated 3-year cultural and technical
@@ -60,8 +65,8 @@ case_study:
   challenge: >-
     Over years of rapid business expansion, high-volume financial customer loan application and origination flows
     accumulated implicit lateral state dependencies across multi-service Rails state machines, MuleSoft APIs, and
-    IBM mainframe backends. A persistent, dark failure mode silently corrupted state and dropped 4% of applications
-    during late-stage document preparation and e-signing.
+    IBM mainframe backends. Client-side session cookie bloat caused a persistent CookieOverflow defect that silently
+    corrupted state and dropped 4% of digital applications between offer selection and e-signing.
   cartography_approach:
     - dimension: "Interaction Surface"
       detail: "Mapped browser, mobile, automated API, and partner ingress points across customer application and origination funnels, establishing explicit entry, exit, and error lifecycle telemetry."
@@ -72,7 +77,7 @@ case_study:
     - dimension: "Supply Chain & Vulnerability Exposure"
       detail: "Audited third-party credit bureau APIs, e-sign vendor webhooks, and boundary ingress points, providing real-time causal event chains for cybersecurity and fraud investigations."
   outcomes:
-    - "Diagnosed and resolved a persistent multi-service defect affecting 4% of origination traffic, preventing complete application loss during final document preparation and e-signing."
+    - "Diagnosed and resolved a persistent CookieOverflow defect affecting 4% of digital applicant traffic by implementing custom rescue middleware and migrating Rails session state to AWS DynamoDB with zero downtime."
     - "Engineered an automated 5-phase PII remediation engine across 30+ tables, eliminating legacy orphan references without disrupting live application state."
     - "Established end-to-end distributed tracing across Acquisition and Origination tiers, connecting Rails, MuleSoft, and Mainframe backends to accelerate root-cause diagnosis for Incident Command."
     - "Partnered with Cybersecurity and Enterprise Monitoring Center (EMC) to bridge immediate operational monitoring with long-term distributed telemetry and causal event attribution."
@@ -87,6 +92,7 @@ skills:
   - Dependency Mapping
   - System Resilience
   - Incident Leadership
+  - DynamoDB
   - Observability
   - OpenTelemetry
   - Distributed Systems

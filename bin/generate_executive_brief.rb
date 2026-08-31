@@ -113,11 +113,11 @@ FileUtils.mkdir_p(options[:out_dir])
 
 # Construct 30-second interview calibration script based on tier and company
 calibration_script = <<~TEXT.strip
-  "I specialize in high-consequence Ruby on Rails and distributed platforms where uptime, data integrity, and deep observability are non-negotiable. At OneMain Financial, I led the Acquisition architecture: mapping seven ingress channels, eliminating a 4% silent traffic drop at e-signing with OpenTelemetry distributed tracing, and safely purging legacy PII across 30+ database tables. #{company} needs calm, deterministic systems leadership for #{domain.downcase}, and my background is built specifically to de-risk those platforms."
+  "I specialize in high-consequence Ruby on Rails and distributed platforms where uptime, data integrity, and deep observability are non-negotiable. At OneMain Financial, I led the Acquisition architecture: mapping seven ingress channels, eliminating a 4% silent traffic drop via DynamoDB session remediation, and safely purging legacy PII across 30+ database tables. #{company} needs calm, deterministic systems leadership for #{domain.downcase}, and my background is built specifically to de-risk those platforms."
 TEXT
 
 calibration_hook = <<~TEXT.strip
-  "I can dive deeper into how we traced distributed state across Rails and backend gateways, or we can look at how we built the 5-phase database deletion engine. Which direction would you prefer to explore?"
+  "I can dive deeper into how we migrated Rails session storage to DynamoDB, or we can look at how we built the 5-phase database deletion engine. Which direction would you prefer to explore?"
 TEXT
 
 # Generate Markdown Content
@@ -148,7 +148,7 @@ markdown_content = <<~MARKDOWN
 
   ### 2. Deep Observability, Distributed Tracing & Incident Command
   * **Enterprise Trace Deployment:** Led the enterprise OpenTelemetry deployment across distributed Rails services, MuleSoft APIs, and Mainframe backends. Standardized W3C trace context headers to bridge siloed logs into causal event chains.
-  * **Eliminating Silent Outages:** Partnered with Cybersecurity, SRE, and Incident Command to diagnose and eliminate a persistent multi-service defect that caused 4% silent traffic loss at late-stage document signing.
+  * **Eliminating Silent Outages:** Diagnosed and eliminated a persistent CookieOverflow defect that silently dropped 4% of digital loan applications during offer selection and e-signing, implementing custom rescue middleware and migrating Rails session storage to AWS DynamoDB.
   * **Community Enablement:** Founded Geekfest@OMF and the weekly OpenTelemetry Working Group, scaling cross-lane participation to 40+ engineers before transitioning ongoing facilitation sustainably to SRE.
 
   ### 3. Agent Tooling, Telemetry & Developer Acceleration
