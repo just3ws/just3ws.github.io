@@ -69,9 +69,11 @@ async function generatePDFs() {
     try {
       console.log(`🌐 Navigating to ${localUrl}...`);
       await page.goto(localUrl, { waitUntil: 'networkidle', timeout: 15000 });
+      await page.waitForSelector('.resume-intro', { timeout: 5000 });
     } catch (err) {
       console.warn(`⚠️ Local Nginx fallback to local _site file: ${err.message}`);
       await page.goto(fileUrl, { waitUntil: 'networkidle', timeout: 15000 });
+      await page.waitForSelector('.resume-intro', { timeout: 5000 });
     }
 
     const pdfName = `${target.slug}-resume.pdf`;
@@ -86,10 +88,10 @@ async function generatePDFs() {
       format: 'Letter',
       printBackground: true,
       margin: {
-        top: '0.35in',
-        right: '0.35in',
-        bottom: '0.35in',
-        left: '0.35in',
+        top: '0.3in',
+        right: '0.3in',
+        bottom: '0.3in',
+        left: '0.3in',
       },
     });
 
