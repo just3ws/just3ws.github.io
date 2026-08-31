@@ -1,20 +1,22 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS  —  last updated 2026-08-31
+     CURRENT FOCUS - last updated 2026-08-31
      Cold-start resume state, canonical for every agent tool. Whoever closes
-     a session rewrites this block in place — step one, before the wrap-up.
+     a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
      contradicts them, trust them and fix the block.
 
-     THIS REPO IS PUBLIC. This block is committed and world-readable — keep
+     THIS REPO IS PUBLIC. This block is committed and world-readable - keep
      it to "what content/feature is being built". Anything about employment
      status, targeting, or career narrative goes ONLY in the local deep
      handoff, never here.
 
-       In flight: verify against Backlog (`backlog/tasks/`). Recent threads:
-       the podcast/IronLanguages/UGtastic canonical-review task batch, and
-       portfolio polish (skills viz / UX / visual-integrity — tasks 12-14).
+       In flight: verify against Backlog (`backlog/tasks/`).
+       Recent threads:
+       - Remediation of 4% Defect narrative to authentic Cookie Overflow & AWS DynamoDB session store migration.
+       - Full verification suite passing 100% (HTML-Proofer, ATS benchmarks @ 89.2%, 0 em dashes).
+       - Executive Briefs Hub generated at /exports/briefs/ with vector PDFs.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/YYYY-MM-DD-just3ws*.md
+         ~/.config/adots/handoffs/2026-08-31-2.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
