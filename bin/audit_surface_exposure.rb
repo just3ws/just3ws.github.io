@@ -25,26 +25,26 @@ puts bold("=====================================================================
 errors = []
 warnings = []
 
-# 1. Inspect Localhost-Only Briefs
+# 1. Inspect Unlisted Executive Briefs (Direct Recruiter & Hiring Manager Delivery)
 brief_sources = Dir.glob(File.join(ROOT, 'docs', 'executive-briefs', '*.md')).sort
 brief_exports = Dir.glob(File.join(ROOT, 'exports', 'briefs', '*', 'index.html')).sort
 
-puts cyan("1. Localhost-Only Surfaces (Targeted Pitch Briefs & Evaluations)")
+puts cyan("1. Unlisted Delivery Surfaces (Targeted Pitch Briefs & Evaluations)")
 puts "   Source directory : docs/executive-briefs/ (#{brief_sources.size} briefs)"
 puts "   Generated HTML   : exports/briefs/ (#{brief_exports.size} pages)"
 
 brief_exports.each do |b|
   rel = Pathname.new(b).relative_path_from(Pathname.new(ROOT))
   content = File.read(b)
-  has_localhost_flag = content.include?("localhost_only: true")
   has_noindex = content.include?("robots: noindex,nofollow")
-  has_leak = content.include?("localhost:31000")
+  has_no_sitemap = content.include?("sitemap: false")
+  has_leak = content.include?("localhost:31000") || content.include?("just3ws.localhost")
 
-  if has_localhost_flag && has_noindex && !has_leak
-    puts "   #{green('✓')} #{rel} [localhost_only: true, noindex, safe]"
+  if has_noindex && has_no_sitemap && !has_leak
+    puts "   #{green('✓')} #{rel} [unlisted, noindex, no-sitemap, safe]"
   else
-    errors << "Brief #{rel} missing isolation headers or contains leaked localhost URL"
-    puts "   #{red('✗')} #{rel} (Flag: #{has_localhost_flag}, Noindex: #{has_noindex}, LeakedURL: #{has_leak})"
+    errors << "Brief #{rel} missing noindex/sitemap isolation or contains leaked localhost URL"
+    puts "   #{red('✗')} #{rel} (Noindex: #{has_noindex}, NoSitemap: #{has_no_sitemap}, LeakedURL: #{has_leak})"
   end
 end
 
@@ -80,16 +80,7 @@ if Dir.exist?(SITE_DIR)
   site_private_notes = Dir.glob(File.join(SITE_DIR, '{HUMAN.*,GEMINI.*,CONTRIBUTING.*,.env*}'))
   is_prod = ENV['JEKYLL_ENV'] == 'production'
 
-  if is_prod
-    if site_briefs.empty?
-      puts "   #{green('✓')} Production Build: 0 private briefs present in _site/ (100% isolated)"
-    else
-      errors << "Production _site contains leaked briefs: #{site_briefs.join(', ')}"
-      puts "   #{red('✗')} Leaked briefs found in production _site/"
-    end
-  else
-    puts "   #{yellow('ℹ')} Localhost Build (development mode): #{site_briefs.size} brief assets served to https://just3ws.localhost/"
-  end
+  puts "   #{green('✓')} Brief Assets Built: #{site_briefs.size} brief assets deployed (unlisted & noindex)"
 
   if site_private_notes.empty?
     puts "   #{green('✓')} Private Notes & Guides: 0 leaked files in _site/"

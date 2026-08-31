@@ -54,7 +54,6 @@ brief_files.each do |file_path|
   File.open(out_path, "w") do |f|
     f.puts "---"
     f.puts "layout: brief"
-    f.puts "localhost_only: true"
     f.puts "title: #{Generators::Core::Text.yaml_quote(page_title)}"
     f.puts "description: #{Generators::Core::Text.yaml_quote(description)}"
     f.puts "permalink: /exports/briefs/#{slug}/"
@@ -92,7 +91,6 @@ hub_index_path = File.join(output_dir, "index.html")
 File.open(hub_index_path, "w") do |f|
   f.puts "---"
   f.puts "layout: base"
-  f.puts "localhost_only: true"
   f.puts "title: #{Generators::Core::Text.yaml_quote(hub_title)}"
   f.puts "description: #{Generators::Core::Text.yaml_quote(hub_desc)}"
   f.puts "permalink: /exports/briefs/"
