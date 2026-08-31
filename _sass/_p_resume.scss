@@ -368,6 +368,15 @@ body.ats-resume {
 
 /* Print styles */
 @media print {
+  @page {
+    margin: 0.3in 0.3in 0.3in 0.3in;
+    size: letter portrait;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
   .site-header,
   .site-footer,
   .scroll-progress,
@@ -380,96 +389,281 @@ body.ats-resume {
   .resume-quick-actions,
   .skip-link,
   .theme-toggle-btn,
-  #themeToggleBtn {
+  #themeToggleBtn,
+  .home-navigation,
+  .home-link-grid,
+  .availability-status-pill,
+  .resume-focus-index {
     display: none !important;
   }
 
   .print-only,
-  .print-contact-line {
+  .print-contact-line,
+  body.ats-resume .print-contact-line,
+  body.resume .print-contact-line,
+  body .print-contact-line {
     display: block !important;
-    margin-top: 0.25rem !important;
-    font-size: 8.5pt !important;
-    color: #475569 !important;
+    font-size: 7.5pt !important;
+    color: #334155 !important;
+    margin: 0.1rem 0 !important;
     font-weight: 500 !important;
   }
 
-  html, body {
+  html,
+  body,
+  body.ats-resume,
+  body.resume {
     background: #ffffff !important;
     color: #0f172a !important;
-    font-size: 9.5pt !important;
-    line-height: 1.35 !important;
+    font-size: 8pt !important;
+    line-height: 1.22 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  .main-container, .resume-container {
+  .main-container,
+  .resume-container,
+  .ats-resume-content,
+  body.ats-resume .ats-resume-content,
+  body.resume .ats-resume-content {
     max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  .resume-header {
-    margin-top: 0 !important;
-    margin-bottom: 0.5rem !important;
-    padding-top: 0 !important;
-    padding-bottom: 0.4rem !important;
-    border-bottom: 2px solid #0f172a !important;
+  .resume-intro,
+  body.ats-resume .resume-intro,
+  body.resume .resume-intro {
+    display: block !important;
+    grid-template-columns: none !important;
+    margin: 0 0 0.25rem 0 !important;
+    padding: 0 0 0.2rem 0 !important;
+    border: none !important;
+    border-bottom: 1.5px solid #0f172a !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .resume-header,
+  body.ats-resume .resume-header,
+  body.resume .resume-header {
+    border-bottom: none !important;
+    margin: 0 0 0.1rem 0 !important;
+    padding: 0 !important;
 
     h1 {
-      font-size: 18pt !important;
+      font-size: 14pt !important;
       font-weight: 800 !important;
       margin: 0 0 0.1rem 0 !important;
       color: #0f172a !important;
-      line-height: 1.1 !important;
+      line-height: 1.05 !important;
     }
 
     .title {
-      font-size: 10.5pt !important;
+      font-size: 9pt !important;
       font-weight: 700 !important;
-      color: #0284c7 !important;
-      margin: 0 !important;
+      color: #0369a1 !important;
+      margin: 0 0 0.15rem 0 !important;
     }
   }
 
-  section, .resume-section {
-    margin-bottom: 0.65rem !important;
+  .resume-positioning,
+  body.ats-resume .resume-positioning,
+  body.resume .resume-positioning {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  h2, .section-title {
-    font-size: 10.5pt !important;
+  .resume-summary,
+  body.ats-resume .resume-summary,
+  body.resume .resume-summary {
+    margin: 0.15rem 0 0 0 !important;
+
+    h2 {
+      display: none !important;
+    }
+
+    p {
+      font-size: 7.8pt !important;
+      line-height: 1.2 !important;
+      margin: 0 !important;
+      color: #1e293b !important;
+    }
+  }
+
+  /* Allow sections and position containers to flow naturally across page breaks */
+  section,
+  .resume-section,
+  article,
+  .position,
+  .position-ats,
+  .position-entry,
+  .positions-list,
+  .experience-content,
+  #experience,
+  #selected-projects,
+  #skills,
+  #additional-experience,
+  #earlier-experience,
+  body.ats-resume section,
+  body.ats-resume article,
+  body.ats-resume .position,
+  body.ats-resume .position-ats,
+  body.ats-resume .positions-list,
+  body.ats-resume .experience-content,
+  body.ats-resume #experience,
+  body.ats-resume #selected-projects,
+  body.ats-resume #skills,
+  body.ats-resume #additional-experience,
+  body.ats-resume #earlier-experience {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin-bottom: 0.22rem !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Headings: keep with next element, prevent orphan headings */
+  h2,
+  .section-title,
+  .experience-header,
+  body.ats-resume h2,
+  body.ats-resume .section-title,
+  body.ats-resume .experience-header {
+    font-size: 8.5pt !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.04em !important;
     color: #0f172a !important;
     border-bottom: 1px solid #cbd5e1 !important;
-    padding-bottom: 0.15rem !important;
-    margin-top: 0.6rem !important;
-    margin-bottom: 0.35rem !important;
+    padding-bottom: 0.08rem !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.15rem !important;
+    break-after: avoid !important;
     page-break-after: avoid !important;
-    break-after: avoid-page !important;
+
+    &::after {
+      display: none !important;
+    }
   }
 
-  .position-entry, .position, article {
-    margin-bottom: 0.5rem !important;
-    padding-bottom: 0.3rem !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid-page !important;
+  .position-header,
+  .position-title,
+  .job-title,
+  body.ats-resume .position-header,
+  body.ats-resume .position-title,
+  body.ats-resume .job-title {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    margin-top: 0.2rem !important;
+    margin-bottom: 0.06rem !important;
   }
 
-  .position-title, .job-title {
+  .position-title,
+  .job-title,
+  body.ats-resume .position-title,
+  body.ats-resume .job-title {
     font-weight: 700 !important;
-    font-size: 9.5pt !important;
-    page-break-after: avoid !important;
-    break-after: avoid-page !important;
+    font-size: 8.2pt !important;
+    color: #0f172a !important;
   }
 
-  p, li {
-    font-size: 9pt !important;
-    line-height: 1.32 !important;
+  .position-meta,
+  body.ats-resume .position-meta {
+    font-size: 7.2pt !important;
+    color: #475569 !important;
+    margin-bottom: 0.08rem !important;
+  }
+
+  /* Individual bullets: prevent cutting single bullet in half */
+  .achievement-highlights,
+  .skills-list,
+  body.ats-resume .achievement-highlights,
+  body.ats-resume .skills-list {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin-top: 0.12rem !important;
+    margin-bottom: 0.12rem !important;
+    padding-left: 0.95rem !important;
+  }
+
+  .achievement-highlights > li,
+  .achievement-highlights li,
+  .ats-supporting-list > li,
+  .ats-supporting-list li,
+  .skills-list > li,
+  .skills-list li,
+  body.ats-resume .achievement-highlights > li,
+  body.ats-resume .achievement-highlights li,
+  body.ats-resume .ats-supporting-list > li,
+  body.ats-resume .ats-supporting-list li,
+  body.ats-resume .skills-list > li,
+  body.ats-resume .skills-list li {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 0.1rem !important;
+    font-size: 7.6pt !important;
+    line-height: 1.18 !important;
+    padding: 0 !important;
+  }
+
+  p,
+  li,
+  body.ats-resume p,
+  body.ats-resume li {
+    font-size: 7.6pt !important;
+    line-height: 1.18 !important;
     color: #1e293b !important;
+    orphans: 2;
+    widows: 2;
   }
 
-  .skills-list li {
-    font-size: 8.5pt !important;
+  .skills-dashboard,
+  body.ats-resume .skills-dashboard {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.3rem !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin-top: 0.15rem !important;
+  }
+
+  .skills-category,
+  body.ats-resume .skills-category {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    padding: 0.2rem 0.25rem !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+
+    .category-name {
+      font-size: 7.2pt !important;
+      margin-bottom: 0.08rem !important;
+      padding-bottom: 0.08rem !important;
+    }
+  }
+
+  .skills-list,
+  body.ats-resume .skills-list {
+    padding-left: 0.65rem !important;
+    display: block !important;
+    list-style: disc !important;
+
+    li {
+      font-size: 6.8pt !important;
+      line-height: 1.12 !important;
+      margin-bottom: 0.05rem !important;
+      display: list-item !important;
+      padding-left: 0 !important;
+
+      &::before {
+        display: none !important;
+      }
+    }
   }
 }

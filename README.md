@@ -7,6 +7,8 @@
 
 > Principal Systems Architect and Staff Platform Lead with 20+ years of verifiable experience leading legacy modernizations, system cartography audits, production reliability engineering, and autonomous agent systems across high-scale fintech, healthcare, and enterprise platforms.
 
+> **Available for hire:** Mike Hall is open to Principal Software Engineer, Staff Platform Architect, observability/resilience, legacy modernization, and founding AI/MCP engineering engagements. [View the Principal resume](https://www.just3ws.com/resumes/mike-hall-principal-software-engineer/) or [start a conversation](https://www.just3ws.com/contact/).
+
 ---
 
 ## 🎯 Quick Command Reference
@@ -42,6 +44,14 @@ The canonical career history is entirely data-driven from `_data/resume/`, valid
 * **[4D System Cartography Framework](https://www.just3ws.com/panoramic-view/)** — Operational blueprint for mapping multi-decade monoliths across Static Code Topology, Runtime Dynamics, Historical Telemetry, and Organizational Ownership.
 * **[Flagship Modernization Essay](https://www.just3ws.com/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith/)** — Practical field guide on safely refactoring legacy codebases.
 * **[Production Case Studies](https://www.just3ws.com/case-studies/)** — Verifiable case studies from OneMain Financial ($1B+ debit network), EMR Bear (HIPAA/PHI clinical telemetry), Groupon (hypergrowth polyglot scaling), and ActiveCampaign.
+
+## ⚔️ Phalanx Duel: A Current Architecture Laboratory
+
+Phalanx Duel is Mike’s hands-on proof project for deterministic systems, product architecture, replay integrity, and controlled AI-assisted engineering. It combines a TypeScript rules engine, server-authoritative multiplayer, replayable action logs, CI verification gates, and an observable browser client.
+
+* **[Play Phalanx Duel](https://play.phalanxduel.com/)**
+* **[Phalanx Duel repository](https://github.com/phalanxduel/phalanxduel)**
+* **[Architecture and craftsmanship brief](https://github.com/phalanxduel/phalanxduel/blob/main/docs/talks/phalanx-duel-commercial-and-user-group.md)**
 
 ---
 

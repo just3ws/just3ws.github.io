@@ -2,7 +2,8 @@
 
 /**
  * bin/generate_pdf_resume.js
- * Generates an executive PDF resume package from the installed local site.
+ * Generates print-optimized vector PDF resume packages for all archetypes
+ * and the canonical resume from the installed local site.
  */
 
 const { chromium } = require('playwright');
@@ -13,8 +14,40 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 const SITE_DIR = path.join(ROOT_DIR, '_site');
 const EXPORTS_SRC_DIR = path.join(ROOT_DIR, 'exports');
 const EXPORTS_DIST_DIR = path.join(SITE_DIR, 'exports');
+const EXPORTS_RESUMES_SRC = path.join(EXPORTS_SRC_DIR, 'resumes');
+const EXPORTS_RESUMES_DIST = path.join(EXPORTS_DIST_DIR, 'resumes');
+const DESKTOP_DIR = '/Users/mike/Desktop';
 
-async function generatePDF() {
+const RESUME_TARGETS = [
+  {
+    slug: 'mike-hall-principal-software-engineer',
+    path: '/resumes/mike-hall-principal-software-engineer/',
+    isCanonical: true,
+    desktopFriendlyName: 'Mike Hall - Principal Systems Architect & Software Engineer Resume.pdf'
+  },
+  {
+    slug: 'mike-hall-senior-ruby-rails-contractor',
+    path: '/resumes/mike-hall-senior-ruby-rails-contractor/',
+    desktopFriendlyName: 'Mike Hall - Senior _ Lead Ruby on Rails Developer (Contract _ High-Velocity IC).pdf'
+  },
+  {
+    slug: 'mike-hall-staff-platform-lead',
+    path: '/resumes/mike-hall-staff-platform-lead/',
+    desktopFriendlyName: 'Mike Hall - Staff Platform & Enablement Lead Resume.pdf'
+  },
+  {
+    slug: 'mike-hall-founding-staff-engineer',
+    path: '/resumes/mike-hall-founding-staff-engineer/',
+    desktopFriendlyName: 'Mike Hall - Founding Staff Engineer (AI & 0-to-1) Resume.pdf'
+  },
+  {
+    slug: 'mike-hall-observability-resilience-specialist',
+    path: '/resumes/mike-hall-observability-resilience-specialist/',
+    desktopFriendlyName: 'Mike Hall - Staff Observability & Resilience Architect Resume.pdf'
+  }
+];
+
+async function generatePDFs() {
   console.log('📄 Launching Google Chrome for PDF generation...');
   const launchOptions = { headless: true };
   if (fs.existsSync('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')) {
@@ -22,74 +55,81 @@ async function generatePDF() {
   }
   const browser = await chromium.launch(launchOptions);
   const context = await browser.newContext();
-  const page = await context.newPage();
-
-  // Target local URL or fallback to rendered _site file
-  const localUrl = 'https://just3ws.localhost/';
-  const fileUrl = `file://${path.join(SITE_DIR, 'index.html')}`;
-
-  try {
-    console.log(`🌐 Navigating to ${localUrl}...`);
-    await page.goto(localUrl, { waitUntil: 'networkidle', timeout: 15000 });
-  } catch (err) {
-    console.warn(`⚠️ Local Nginx fallback to local _site file: ${err.message}`);
-    await page.goto(fileUrl, { waitUntil: 'networkidle', timeout: 15000 });
-  }
 
   // Ensure directories exist
-  if (!fs.existsSync(EXPORTS_SRC_DIR)) {
-    fs.mkdirSync(EXPORTS_SRC_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(EXPORTS_DIST_DIR)) {
-    fs.mkdirSync(EXPORTS_DIST_DIR, { recursive: true });
-  }
-
-  const pdfFileName = 'mike-hall-principal-software-engineer-resume.pdf';
-  const pdfPathSrc = path.join(EXPORTS_SRC_DIR, pdfFileName);
-  const pdfPathDist = path.join(EXPORTS_DIST_DIR, pdfFileName);
-  const pdfPathLegacySrc = path.join(EXPORTS_SRC_DIR, 'resume.pdf');
-  const pdfPathLegacyDist = path.join(EXPORTS_DIST_DIR, 'resume.pdf');
-
-  // Desktop destinations for recruiter filing convenience
-  const desktopDir = '/Users/mike/Desktop';
-  const desktopPathNamed = path.join(desktopDir, pdfFileName);
-  const desktopPathGeneric = path.join(desktopDir, 'resume.pdf');
-
-  console.log('🖨️ Rendering print-optimized PDF package...');
-  await page.pdf({
-    path: pdfPathSrc,
-    format: 'Letter',
-    printBackground: true,
-    margin: {
-      top: '0.4in',
-      right: '0.4in',
-      bottom: '0.4in',
-      left: '0.4in',
-    },
+  [EXPORTS_SRC_DIR, EXPORTS_DIST_DIR, EXPORTS_RESUMES_SRC, EXPORTS_RESUMES_DIST].forEach(dir => {
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   });
 
-  // Copy to site dist and legacy fallback path
-  fs.copyFileSync(pdfPathSrc, pdfPathDist);
-  fs.copyFileSync(pdfPathSrc, pdfPathLegacySrc);
-  fs.copyFileSync(pdfPathSrc, pdfPathLegacyDist);
+  for (const target of RESUME_TARGETS) {
+    const page = await context.newPage();
+    const localUrl = `https://just3ws.localhost${target.path}`;
+    const fileUrl = `file://${path.join(SITE_DIR, target.path, 'index.html')}`;
 
-  // Copy to Desktop if available
-  if (fs.existsSync(desktopDir)) {
-    fs.copyFileSync(pdfPathSrc, desktopPathNamed);
-    fs.copyFileSync(pdfPathSrc, desktopPathGeneric);
-  }
+    try {
+      console.log(`🌐 Navigating to ${localUrl}...`);
+      await page.goto(localUrl, { waitUntil: 'networkidle', timeout: 15000 });
+    } catch (err) {
+      console.warn(`⚠️ Local Nginx fallback to local _site file: ${err.message}`);
+      await page.goto(fileUrl, { waitUntil: 'networkidle', timeout: 15000 });
+    }
 
-  console.log(`✅ PDF Resume exported successfully:`);
-  console.log(`   - Named Slug: ${pdfPathSrc}`);
-  console.log(`   - Site Dist:   ${pdfPathDist}`);
-  if (fs.existsSync(desktopDir)) {
-    console.log(`   - Desktop:     ${desktopPathNamed}`);
+    const pdfName = `${target.slug}-resume.pdf`;
+    const pdfPathSrc = path.join(EXPORTS_SRC_DIR, pdfName);
+    const pdfPathDist = path.join(EXPORTS_DIST_DIR, pdfName);
+    const pdfPathArchetypeSrc = path.join(EXPORTS_RESUMES_SRC, `${target.slug}.pdf`);
+    const pdfPathArchetypeDist = path.join(EXPORTS_RESUMES_DIST, `${target.slug}.pdf`);
+
+    console.log(`🖨️ Rendering vector PDF package for ${target.slug}...`);
+    await page.pdf({
+      path: pdfPathSrc,
+      format: 'Letter',
+      printBackground: true,
+      margin: {
+        top: '0.35in',
+        right: '0.35in',
+        bottom: '0.35in',
+        left: '0.35in',
+      },
+    });
+
+    // Copy to site dist and archetype exports folder
+    fs.copyFileSync(pdfPathSrc, pdfPathDist);
+    fs.copyFileSync(pdfPathSrc, pdfPathArchetypeSrc);
+    fs.copyFileSync(pdfPathSrc, pdfPathArchetypeDist);
+
+    // If canonical, copy to legacy paths
+    if (target.isCanonical) {
+      const canonicalSrc = path.join(EXPORTS_SRC_DIR, 'resume.pdf');
+      const canonicalDist = path.join(EXPORTS_DIST_DIR, 'resume.pdf');
+      fs.copyFileSync(pdfPathSrc, canonicalSrc);
+      fs.copyFileSync(pdfPathSrc, canonicalDist);
+      if (fs.existsSync(DESKTOP_DIR)) {
+        fs.copyFileSync(pdfPathSrc, path.join(DESKTOP_DIR, 'resume.pdf'));
+        fs.copyFileSync(pdfPathSrc, path.join(DESKTOP_DIR, 'mike-hall-principal-software-engineer-resume.pdf'));
+      }
+    }
+
+    // Copy to Desktop with human-friendly title
+    if (fs.existsSync(DESKTOP_DIR) && target.desktopFriendlyName) {
+      const desktopDest = path.join(DESKTOP_DIR, target.desktopFriendlyName);
+      fs.copyFileSync(pdfPathSrc, desktopDest);
+      console.log(`   - Desktop:     ${desktopDest}`);
+    }
+
+    console.log(`✅ ${target.slug} PDF exported successfully:`);
+    console.log(`   - Named Slug:  ${pdfPathSrc}`);
+    console.log(`   - Site Dist:   ${pdfPathDist}`);
+
+    await page.close();
   }
 
   await browser.close();
+  console.log('\n🎉 All resume PDFs rendered and exported cleanly.');
 }
 
-generatePDF().catch((err) => {
+generatePDFs().catch((err) => {
   console.error('❌ PDF generation failed:', err);
   process.exit(1);
 });
+

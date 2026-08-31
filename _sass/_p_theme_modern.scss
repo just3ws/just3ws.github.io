@@ -677,6 +677,11 @@ h3 {
 
 /* Print Overrides */
 @media print {
+  @page {
+    margin: 0.3in 0.3in 0.3in 0.3in;
+    size: letter portrait;
+  }
+
   .site-header, .resume-subnav, .home-navigation, .home-link-grid, .no-print {
     display: none !important;
   }
@@ -690,90 +695,94 @@ h3 {
     padding: 0 !important;
     box-shadow: none !important;
     transform: none !important;
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.22rem !important;
   }
 
   h2 {
-    margin-top: 1rem !important;
-    margin-bottom: 0.5rem !important;
-  }
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.15rem !important;
 
-  h2::after {
-    display: none;
+    &::after {
+      display: none !important;
+    }
   }
 
   section {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.22rem !important;
   }
 
   h2,
   h3,
   .position-header {
-    break-after: avoid;
-    page-break-after: avoid;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
   }
 
   .position-ats,
-  .skills-category,
   #summary,
   #additional-experience,
-  #earlier-experience {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
+  #earlier-experience,
   .achievement-highlights,
   .skills-list {
-    break-inside: auto;
-    page-break-inside: auto;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
   }
 
   .achievement-highlights {
-    margin-top: 0.5rem !important;
+    margin-top: 0.12rem !important;
   }
 
   .achievement-highlights > li,
   .skills-list > li,
   .ats-supporting-list > li {
-    break-inside: avoid;
-    page-break-inside: avoid;
-    orphans: 3;
-    widows: 3;
-    margin-bottom: 0.5rem !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    orphans: 2;
+    widows: 2;
+    margin-bottom: 0.1rem !important;
+    font-size: 7.6pt !important;
+    line-height: 1.18 !important;
   }
 
   p {
-    orphans: 3;
-    widows: 3;
+    orphans: 2;
+    widows: 2;
+    font-size: 7.6pt !important;
+    line-height: 1.18 !important;
   }
 
   .skills-dashboard {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1rem !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.3rem !important;
   }
 
   .skills-category {
-    padding: 1rem !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    padding: 0.2rem 0.25rem !important;
     border: 1px solid #d8dee9 !important;
     box-shadow: none !important;
   }
 
   .skills-category .category-name {
-    margin-bottom: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+    margin-bottom: 0.08rem !important;
+    padding-bottom: 0.08rem !important;
+    font-size: 7.2pt !important;
   }
 
   .skills-list {
     list-style: disc !important;
-    padding-left: 1.25rem !important;
+    padding-left: 0.65rem !important;
     display: block !important;
   }
 
   .skills-list li {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: 0.05rem !important;
     padding-left: 0 !important;
     display: list-item !important;
+    font-size: 6.8pt !important;
+    line-height: 1.12 !important;
   }
 
   .skills-list li::before {
