@@ -122,6 +122,31 @@ class YouTubeClient
     end
   end
 
+  # Update Playlist Snippet & Metadata
+  def update_playlist(playlist_id, title, description, privacy_status = "public")
+    fetch_access_token! if @access_token.nil?
+
+    uri = URI("#{API_BASE}/playlists?part=snippet,status")
+    payload = {
+      "id" => playlist_id,
+      "snippet" => {
+        "title" => title,
+        "description" => description,
+        "defaultLanguage" => "en"
+      },
+      "status" => {
+        "privacyStatus" => privacy_status
+      }
+    }
+
+    res = make_request(uri, method: :put, body: payload)
+    if res.is_a?(Net::HTTPSuccess)
+      JSON.parse(res.body)
+    else
+      raise "YouTube API Error updating playlist #{playlist_id} (#{res.code}): #{res.body}"
+    end
+  end
+
   # Fetch all Playlists on Channel
   def get_channel_playlists
     fetch_access_token! if @access_token.nil?
@@ -200,6 +225,19 @@ class YouTubeClient
     end
   end
 
+  # Delete an item from a playlist by playlistItemId
+  def delete_playlist_item(playlist_item_id)
+    fetch_access_token! if @access_token.nil?
+
+    uri = URI("#{API_BASE}/playlistItems?id=#{playlist_item_id}")
+    res = make_request(uri, method: :delete)
+    if res.is_a?(Net::HTTPSuccess) || res.code.to_i == 204
+      true
+    else
+      raise "YouTube API Error deleting playlist item #{playlist_item_id} (#{res.code}): #{res.body}"
+    end
+  end
+
   # Generate Fingerprint for Fingerprint-Idempotent Diff Safety
   def self.fingerprint(snippet)
     return "" unless snippet
@@ -236,6 +274,8 @@ class YouTubeClient
             Net::HTTP::Post.new(uri)
           when :put
             Net::HTTP::Put.new(uri)
+          when :delete
+            Net::HTTP::Delete.new(uri)
           else
             Net::HTTP::Get.new(uri)
           end
