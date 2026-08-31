@@ -100,15 +100,15 @@ async function generatePDFs() {
     fs.copyFileSync(pdfPathSrc, pdfPathArchetypeSrc);
     fs.copyFileSync(pdfPathSrc, pdfPathArchetypeDist);
 
-    // If canonical, copy to legacy paths
+    // If canonical, keep exports/resume.pdf for internal backward compatibility
     if (target.isCanonical) {
       const canonicalSrc = path.join(EXPORTS_SRC_DIR, 'resume.pdf');
       const canonicalDist = path.join(EXPORTS_DIST_DIR, 'resume.pdf');
       fs.copyFileSync(pdfPathSrc, canonicalSrc);
       fs.copyFileSync(pdfPathSrc, canonicalDist);
-      if (fs.existsSync(DESKTOP_DIR)) {
-        fs.copyFileSync(pdfPathSrc, path.join(DESKTOP_DIR, 'resume.pdf'));
-        fs.copyFileSync(pdfPathSrc, path.join(DESKTOP_DIR, 'mike-hall-principal-software-engineer-resume.pdf'));
+      const genericDesktop = path.join(DESKTOP_DIR, 'resume.pdf');
+      if (fs.existsSync(genericDesktop)) {
+        try { fs.unlinkSync(genericDesktop); } catch (e) {}
       }
     }
 

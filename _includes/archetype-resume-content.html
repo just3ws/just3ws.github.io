@@ -59,6 +59,19 @@
       <div class="print-contact-line print-only" style="display: none;">
         {{ profile.location.display }} &bull; {{ profile.contact.email }} &bull; {{ profile.contact.phone }} &bull; {{ profile.contact.website.display }} &bull; {{ linkedin_display }} &bull; {{ profile.contact.github.display }}
       </div>
+
+      <div class="resume-quick-actions no-print" style="margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8125rem;">
+        <a href="/exports/{{ a.file_slug }}-resume.pdf" download="Mike-Hall-{{ a.short_label | slugify }}-Resume.pdf" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; background: var(--color-accent, #2563eb); color: #ffffff; border-radius: 0.375rem; font-weight: 600; text-decoration: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          PDF Resume ({{ a.short_label }})
+        </a>
+        <a href="/case-studies/" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; background: var(--color-bg-card, #f1f5f9); color: var(--color-text, #1e293b); border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.375rem; font-weight: 600; text-decoration: none;">
+          Case Studies &rarr;
+        </a>
+        <a href="/exports/" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; background: var(--color-bg-card, #f1f5f9); color: var(--color-text, #1e293b); border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.375rem; font-weight: 600; text-decoration: none;">
+          All Formats
+        </a>
+      </div>
     </header>
 
     <div class="resume-positioning">
