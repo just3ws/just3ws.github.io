@@ -35,7 +35,7 @@ Use evidence in this order. A lower tier may support a higher-tier claim but mus
 3. **Repository or runtime evidence.** Establishes that an artifact, behavior, or implementation existed at a point in time.
 4. **Corroborating human testimony.** Useful for leadership and team effects when the speaker has direct knowledge and publication consent.
 5. **Prior AI synthesis accepted into a working repository.** Useful but derivative; never present it as Mike's own wording or independent proof.
-6. **Current synthesis and inference.** Use to organize the story, clearly label uncertainty, and never convert absence into certainty.
+6. **Current synthesis and inference.** Use to organize the story, explicitly label uncertainty, and never convert absence into certainty.
 
 ## Resume-ready achievement language
 
@@ -175,7 +175,7 @@ The model is primary. Every diagram, inventory, report, or AI context window is 
 
 Explain that browser recordings, structured logs, OpenTelemetry, error tracking, database inventories, source history, visualization, and AI-assisted analysis provide evidence or projections. None of them is Panoramic View by itself.
 
-### 7. Where it has been applied
+### 7. Applications across organization archetypes
 
 Describe organization archetypes rather than naming implementation sites:
 

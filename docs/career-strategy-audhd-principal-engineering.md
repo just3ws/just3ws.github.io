@@ -80,7 +80,7 @@ Senior technical leaders face friction mapping experience across titles ranging 
 
 ## 6. Progressive Disclosure: Revealing Exactly the Right Amount of Detail
 
-AuDHD engineers naturally process systems with comprehensive forensic depth. When communicating with recruiters and engineering leaders, uncurated data dumps cause cognitive overload. The **Progressive Disclosure Architecture** calibrates information density across 3 distinct tiers:
+AuDHD engineers process systems with comprehensive forensic depth. When communicating with recruiters and engineering leaders, uncurated data dumps cause cognitive overload. The **Progressive Disclosure Architecture** calibrates information density across 3 distinct tiers:
 
 ```
 +-------------------------------------------------------------------------+

@@ -83,7 +83,7 @@ Individually, each piece of data was small (a few dozen to a few hundred bytes).
 +-------------------------------------------------------------------------+
 ```
 
-When the payload exceeded 4KB, Rails triggered `ActionDispatch::Cookies::CookieOverflow`. Depending on browser behavior and exact request paths, the browser either dropped the oversized cookie or Rails failed to persist session updates. The customer session was wiped, leaving backend records in an inconsistent, orphaned state and forcing 4% of digital borrowers out of the funnel.
+When the payload exceeded 4KB, Rails triggered `ActionDispatch::Cookies::CookieOverflow`. Depending on browser behavior and exact request paths, the browser either dropped the oversize cookie or Rails failed to persist session updates. The customer session was wiped, leaving backend records in an inconsistent, orphaned state and forcing 4% of digital borrowers out of the funnel.
 
 ---
 
