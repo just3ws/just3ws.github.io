@@ -1,8 +1,14 @@
 name: Build and Validate Site
 
 on:
-  push:
   pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -10,55 +16,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Full history: bin/generate_last_modified.rb derives per-file dates
-          # via `git log -1 --format=%cI`. A shallow (depth-1) checkout collapses
-          # every file to the tip commit's date, so last_modified.yml regenerates
-          # differently than committed and fails validate:generated_freshness.
           fetch-depth: 0
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '4.0.6'
           bundler-cache: true
-      - name: Build site
-        run: ./bin/pipeline build
-      - name: Run tests
-        run: ./bin/pipeline test
-      - name: Validate site output
-        run: ./bin/pipeline validate
-      - name: Playwright smoke check
-        timeout-minutes: 12
-        env:
-          # The first pwcli command cold-fetches @playwright/cli and its browser;
-          # on a fresh runner that exceeds the harness's 20s per-command timeout
-          # and aborts smoke at status 124 before any assertion runs. Loosen the
-          # cap for CI only — local runs keep the fast 20s default.
-          PWCLI_CMD_TIMEOUT: 180s
-        run: |
-          set -o pipefail
-          ./bin/pipeline smoke 2>&1 | tee tmp/playwright-smoke.log
-      - name: Upload Playwright smoke log
-        if: always()
+      - name: Run CI gate
+        run: ./bin/pipeline ci
+      - name: Upload failure diagnostics
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-smoke-log
-          path: tmp/playwright-smoke.log
+          name: validation-failure-logs
+          path: |
+            tmp/seo-metadata-report.json
+            tmp/schema-coverage-report.json
           if-no-files-found: warn
-      - name: Upload SEO report artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: seo-metadata-report
-          path: tmp/seo-metadata-report.json
-          if-no-files-found: error
-      - name: Upload schema coverage artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: schema-coverage-report
-          path: tmp/schema-coverage-report.json
-          if-no-files-found: error
