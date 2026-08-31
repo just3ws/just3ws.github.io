@@ -15,12 +15,16 @@
   {%- if include.position.highlights %}
   <ul class="achievement-highlights">
     {%- for highlight in include.position.highlights %}
+    {%- assign h_text = highlight.text | default: highlight -%}
     <li>
-      {%- if highlight.text %}
-        {{ highlight.text }}
-      {%- else %}
-        {{ highlight }}
-      {%- endif %}
+      {%- if h_text contains ": " -%}
+        {%- assign h_parts = h_text | split: ": " -%}
+        {%- assign h_lead = h_parts | first -%}
+        {%- assign h_rest = h_text | remove_first: h_lead | remove_first: ": " -%}
+        <strong>{{ h_lead }}:</strong> {{ h_rest }}
+      {%- else -%}
+        {{ h_text }}
+      {%- endif -%}
     </li>
     {%- endfor %}
   </ul>

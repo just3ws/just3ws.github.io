@@ -582,42 +582,85 @@ body.ats-resume {
 
   /* Individual bullets: prevent cutting single bullet in half */
   .achievement-highlights,
+  body.ats-resume .achievement-highlights {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    list-style: disc !important;
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    margin-top: 0.08rem !important;
+    margin-bottom: 0.1rem !important;
+    padding-left: 1.1rem !important;
+    margin-left: 0 !important;
+  }
+
   .skills-list,
-  body.ats-resume .achievement-highlights,
   body.ats-resume .skills-list {
     break-inside: auto !important;
     page-break-inside: auto !important;
-    margin-top: 0.12rem !important;
-    margin-bottom: 0.12rem !important;
+    margin-top: 0.08rem !important;
+    margin-bottom: 0.1rem !important;
     padding-left: 0.95rem !important;
   }
 
   .achievement-highlights > li,
   .achievement-highlights li,
+  body.ats-resume .achievement-highlights > li,
+  body.ats-resume .achievement-highlights li {
+    display: list-item !important;
+    list-style: disc !important;
+    list-style-type: disc !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 0.1rem !important;
+    font-size: 7.35pt !important;
+    line-height: 1.16 !important;
+    color: #334155 !important;
+    padding: 0 !important;
+
+    &::marker {
+      color: #0f172a !important;
+      font-size: 1.15em !important;
+    }
+
+    strong {
+      color: #0f172a !important;
+      font-weight: 700 !important;
+    }
+  }
+
   .ats-supporting-list > li,
   .ats-supporting-list li,
   .skills-list > li,
   .skills-list li,
-  body.ats-resume .achievement-highlights > li,
-  body.ats-resume .achievement-highlights li,
   body.ats-resume .ats-supporting-list > li,
   body.ats-resume .ats-supporting-list li,
   body.ats-resume .skills-list > li,
   body.ats-resume .skills-list li {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
-    margin-bottom: 0.1rem !important;
-    font-size: 7.6pt !important;
-    line-height: 1.18 !important;
+    margin-bottom: 0.08rem !important;
+    font-size: 7.35pt !important;
+    line-height: 1.16 !important;
     padding: 0 !important;
+  }
+
+  .position,
+  body.ats-resume .position {
+    margin-bottom: 0.28rem !important;
+  }
+
+  .position-header,
+  body.ats-resume .position-header {
+    margin-bottom: 0.05rem !important;
   }
 
   p,
   li,
   body.ats-resume p,
   body.ats-resume li {
-    font-size: 7.6pt !important;
-    line-height: 1.18 !important;
+    font-size: 7.35pt !important;
+    line-height: 1.16 !important;
     color: #1e293b !important;
     orphans: 2;
     widows: 2;
