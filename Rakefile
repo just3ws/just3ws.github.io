@@ -610,6 +610,13 @@ task :deploy_status do
   sh './bin/deploy_status'
 end
 
+namespace :deploy do
+  desc 'Monitor active GitHub Actions deployment with learned metrics and ETA'
+  task :monitor do
+    sh 'ruby ./bin/monitor_deployment.rb'
+  end
+end
+
 desc 'Run Playwright smoke checks'
 task :smoke do
   sh './bin/smoke_playwright.sh'
