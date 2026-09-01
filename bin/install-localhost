@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# bin/install-localhost — serve this site persistently at https://just3ws.localhost
+# bin/install-localhost — serve this site persistently at https://www.just3ws.localhost
+#                         (bare just3ws.localhost 301s to it, mirroring prod)
 #
 # Installs the project-owned nginx vhost (nginx/just3ws.localhost.conf) into the
 # Homebrew nginx servers/ dir, mirroring how my.localhost / zdots.localhost are
@@ -17,7 +18,6 @@ VHOST_SRC="$REPO/nginx/just3ws.localhost.conf"
 NGINX_PREFIX="/opt/homebrew/etc/nginx"
 VHOST_DST="$NGINX_PREFIX/servers/just3ws.conf"
 CERT="$NGINX_PREFIX/certs/zdots-local.pem"
-KEY="$NGINX_PREFIX/certs/zdots-local-key.pem"
 # Web root nginx-as-nobody can read (a 700 home dir can't be served directly).
 WEBROOT="/opt/homebrew/var/www/just3ws.github.io"
 
@@ -39,32 +39,33 @@ chmod -R o+rX "$WEBROOT"
 info "Installing vhost → $VHOST_DST"
 cp "$VHOST_SRC" "$VHOST_DST"
 
-# Does the shared cert already cover just3ws.localhost?
-cert_has_host=false
-if [ -f "$CERT" ] && openssl x509 -in "$CERT" -noout -ext subjectAltName 2>/dev/null | grep -q "just3ws.localhost"; then
-  cert_has_host=true
+# Does the shared cert already cover BOTH just3ws hosts?
+cert_ok=false
+if [ -f "$CERT" ]; then
+  sans="$(openssl x509 -in "$CERT" -noout -ext subjectAltName 2>/dev/null)"
+  if grep -q "just3ws.localhost" <<<"$sans" && grep -q "www.just3ws.localhost" <<<"$sans"; then
+    cert_ok=true
+  fi
 fi
 
 echo
-if [ "$cert_has_host" = true ]; then
-  info "TLS cert already covers just3ws.localhost ✓"
+if [ "$cert_ok" = true ]; then
+  info "TLS cert already covers just3ws.localhost + www.just3ws.localhost ✓"
 else
-  warn "TLS cert does NOT yet cover just3ws.localhost. Regenerate it (keychain prompt):"
-  cat <<EOF
+  warn "TLS cert is missing just3ws.localhost and/or www.just3ws.localhost."
+  info "zdots' nginx-regen-certs scans every deployed vhost's server_name, so with"
+  info "this vhost now installed it will pick both up automatically (keychain prompt):"
+  cat <<'EOF'
 
-  mkcert -cert-file "$CERT" \\
-         -key-file  "$KEY" \\
-         llama.localhost embed.localhost o2.localhost zdots.localhost \\
-         my.localhost my.local dev.my.local zdots.local \\
-         just3ws.localhost localhost 127.0.0.1
+  nginx-regen-certs          # unions the new names into the cert, validates, reloads
+  # or, to rebuild the SAN list purely from live vhosts:
+  nginx-regen-certs --prune
 
-  (Persistent: also add just3ws.localhost to the mkcert SAN list in
-   ~/.config/zsh/bin/bootstrap so a future cert regen keeps it.)
 EOF
 fi
 
 echo
-info "Then validate + reload nginx (sudo):"
+info "If you regenerated the cert above, nginx was already reloaded. Otherwise:"
 cat <<'EOF'
 
   nginx -t
