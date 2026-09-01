@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-25T14:59:47-05:00",
-  "total_nodes": 402,
-  "total_links": 612,
+  "generated_at": "2026-09-01T14:49:48-05:00",
+  "total_nodes": 403,
+  "total_links": 615,
   "clusters": {
     "Conference": {
       "color": "#0284c7",
@@ -1408,7 +1408,7 @@
     },
     {
       "id": "ray-hightower-chicagoruby-software-craftsmanship-north-america-2011",
-      "label": "Chicagoruby: Mike Hall Interviews Ray Hightower | SCNA 2011",
+      "label": "ChicagoRuby: Mike Hall Interviews Ray Hightower | SCNA 2011",
       "type": "Interview",
       "group": 6,
       "url": "/interviews/ray-hightower-chicagoruby-software-craftsmanship-north-america-2011/",
@@ -3117,6 +3117,24 @@
       "description": "UGtastic oral history recording"
     },
     {
+      "id": "person-greg-baugues",
+      "label": "Greg Baugues",
+      "type": "Interviewee",
+      "group": 5,
+      "url": "/interviews/interview-with-greg-baugues-on-mental-health-in-tech-at-railsconf-2014/",
+      "val": 15,
+      "description": "Featured speaker & practitioner"
+    },
+    {
+      "id": "interview-with-greg-baugues-on-mental-health-in-tech-at-railsconf-2014",
+      "label": "Interview with Greg Baugues on Mental Health in Tech | RailsConf 2014",
+      "type": "Interview",
+      "group": 6,
+      "url": "/interviews/interview-with-greg-baugues-on-mental-health-in-tech-at-railsconf-2014/",
+      "val": 12,
+      "description": "UGtastic oral history recording"
+    },
+    {
       "id": "person-aaron-patterson",
       "label": "Aaron Patterson",
       "type": "Interviewee",
@@ -3475,15 +3493,6 @@
       "url": "/interviews/trisha-gee-goto-conference-2015/",
       "val": 12,
       "description": "UGtastic oral history recording"
-    },
-    {
-      "id": "person-greg-baugues",
-      "label": "Greg Baugues",
-      "type": "Interviewee",
-      "group": 5,
-      "url": "/interviews/greg-baugues-goto-conference-2015/",
-      "val": 15,
-      "description": "Featured speaker & practitioner"
     },
     {
       "id": "greg-baugues-goto-conference-2015",
@@ -4170,6 +4179,12 @@
       "target": "interview-with-mike-miller-general",
       "relationship": "featured_in",
       "weight": 2
+    },
+    {
+      "source": "interview-with-mike-miller-general",
+      "target": "conf-goto-chicago",
+      "relationship": "recorded_at",
+      "weight": 3
     },
     {
       "source": "interview-with-mike-miller-general",
@@ -6672,6 +6687,18 @@
       "target": "proj-heroku",
       "relationship": "discusses_project",
       "weight": 2
+    },
+    {
+      "source": "person-greg-baugues",
+      "target": "interview-with-greg-baugues-on-mental-health-in-tech-at-railsconf-2014",
+      "relationship": "featured_in",
+      "weight": 2
+    },
+    {
+      "source": "interview-with-greg-baugues-on-mental-health-in-tech-at-railsconf-2014",
+      "target": "conf-railsconf",
+      "relationship": "recorded_at",
+      "weight": 3
     },
     {
       "source": "person-aaron-patterson",

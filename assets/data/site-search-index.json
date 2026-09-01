@@ -46,11 +46,39 @@ permalink: /assets/data/site-search-index.json
     "keywords": "taxonomy technical skills categories domains systems infrastructure ruby postgres legacy observability architecture"
   },
   {
-    "title": "UGtastic Oral History Archive",
+    "title": "UGtastic & WHOIS Tech Oral History Archive",
     "url": "/interviews/",
     "badge": "Interviews",
     "icon": "🎙️",
-    "keywords": "interviews ugtastic oral history archive podcast developer community chicago speakers transcripts"
+    "keywords": "interviews ugtastic whois tech community oral history archive podcast developer community chicago speakers transcripts"
+  },
+  {
+    "title": "Speakers & Interviewees Directory",
+    "url": "/speakers/",
+    "badge": "Speakers",
+    "icon": "👤",
+    "keywords": "speakers interviewees directory oral history ugtastic whois tech community chicago software craftsmanship"
+  },
+  {
+    "title": "Interview Topics & Thematic Threads",
+    "url": "/interviews/topics/",
+    "badge": "Topics",
+    "icon": "💡",
+    "keywords": "interview topics thematic index themes oral history ugtastic whois tech community"
+  },
+  {
+    "title": "The Chicago Software Craftsmanship Renaissance (2008–2015)",
+    "url": "/chicago-craftsmanship/",
+    "badge": "Monograph",
+    "icon": "🏛️",
+    "keywords": "chicago software craftsmanship renaissance monograph history obtiva 8th light groupon chicagoruby windycityrails corey haines dave hoover uncle bob"
+  },
+  {
+    "title": "SCMC: Software Craftsmanship Mc Archive",
+    "url": "/scmc/",
+    "badge": "SCMC",
+    "icon": "🏛️",
+    "keywords": "scmc software craftsmanship mc meetup chicago 8th light pairing katas presentations"
   },
   {
     "title": "System Cartography Case Studies",
@@ -58,13 +86,6 @@ permalink: /assets/data/site-search-index.json
     "badge": "Case Studies",
     "icon": "🧭",
     "keywords": "case studies 4d system cartography legacy modernization onemain emr bear groupon activecampaign sk holdings"
-  },
-  {
-    "title": "Advisory & Technical Engagements",
-    "url": "/engagements/",
-    "badge": "Engagements",
-    "icon": "🤝",
-    "keywords": "engagements advisory consulting staff principal software engineer architecture discovery"
   },
   {
     "title": "4D Case Study: Actor Scope & Process Alignment",
@@ -80,12 +101,26 @@ permalink: /assets/data/site-search-index.json
     "icon": "🧭",
     "keywords": "4d case study reconciliation delta domain model runtime evidence business process architecture"
   },
+  {
+    "title": "Executive Pitch Briefs Hub",
+    "url": "/exports/briefs/",
+    "badge": "Briefs",
+    "icon": "📑",
+    "keywords": "executive pitch briefs wayfinder target principal engineer roles outreach"
+  },
+  {
+    "title": "Career Datalake & API Endpoints",
+    "url": "/career_datalake.json",
+    "badge": "API",
+    "icon": "📊",
+    "keywords": "career datalake json api mcp tools query history skills knowledge graph"
+  },
   {% for pos_id in site.data.resume.timeline.history %}
     {% assign pos = site.data.resume.positions[pos_id] %}
     {% if pos and pos.title %}
       {% assign comp_name = pos.company.name | default: pos.company %}
       {% assign title_str = comp_name | append: " — " | append: pos.title %}
-      {% assign kw_str = "position experience " | append: comp_name | append: " " | append: pos.title | append: " " | append: pos.dates | append: " " | append: pos.summary %}
+      {% assign kw_str = "position experience " | append: comp_name | append: " " | append: pos.title | append: " " | append: pos.dates | append: " " | append: pos.summary | append: " " | append: pos.skills | join: " " %}
       {
         "title": {{ title_str | jsonify }},
         "url": "/resume/positions/{{ pos_id }}/",
@@ -95,31 +130,64 @@ permalink: /assets/data/site-search-index.json
       },
     {% endif %}
   {% endfor %}
-  {% for interviewee in site.data.interviewees_index.interviewees %}
+  {% for interview in site.data.interviews.items %}
+    {% assign interviewees_str = interview.interviewees | join: ", " %}
+    {% assign title_str = interview.title | default: interviewees_str %}
+    {% assign conf_badge = interview.conference | default: "Interview" %}
+    {% if interview.conference_year %}
+      {% assign conf_badge = conf_badge | append: " " | append: interview.conference_year %}
+    {% endif %}
+    {% assign kw_str = "interview oral history ugtastic whois tech community " | append: interview.title | append: " " | append: interviewees_str | append: " " | append: interview.topic | append: " " | append: interview.conference | append: " " | append: interview.community | append: " " | append: interview.tags | join: " " %}
     {
-      "title": {{ "Interview: " | append: interviewee.name | jsonify }},
-      "url": {{ interviewee.url | jsonify }},
-      "badge": "Interview",
+      "title": {{ title_str | jsonify }},
+      "url": "/interviews/{{ interview.id }}/",
+      "badge": {{ conf_badge | jsonify }},
       "icon": "🎙️",
-      "keywords": {{ "interview speaker oral history " | append: interviewee.name | append: " " | append: interviewee.title | append: " " | append: interviewee.company | jsonify }}
+      "keywords": {{ kw_str | jsonify }}
     },
   {% endfor %}
-  {% for topic in site.data.interview_topics.topics %}
+  {% for interviewee in site.data.interviewees_index.items %}
+    {% assign title_str = "Speaker: " | append: interviewee.name %}
+    {% assign kw_str = "speaker interviewee oral history ugtastic whois tech community " | append: interviewee.name | append: " " | append: interviewee.profile_summary %}
     {
-      "title": {{ "Topic: " | append: topic.title | jsonify }},
+      "title": {{ title_str | jsonify }},
+      "url": "/speakers/?q={{ interviewee.name | cgi_escape }}",
+      "badge": "Speaker",
+      "icon": "👤",
+      "keywords": {{ kw_str | jsonify }}
+    },
+  {% endfor %}
+  {% for topic in site.data.interview_topics.items %}
+    {% assign title_str = "Topic: " | append: topic.topic | capitalize %}
+    {% assign kw_str = "interview topic theme oral history ugtastic whois tech community " | append: topic.topic | append: " " | append: topic.slug %}
+    {
+      "title": {{ title_str | jsonify }},
       "url": "/interviews/topics/#{{ topic.slug }}",
       "badge": "Topic",
       "icon": "💡",
-      "keywords": {{ "interview topic theme " | append: topic.title | append: " " | append: topic.description | jsonify }}
+      "keywords": {{ kw_str | jsonify }}
+    },
+  {% endfor %}
+  {% for video in site.data.scmc_videos.items %}
+    {% assign speakers_str = video.speakers | join: ", " %}
+    {% assign title_str = "SCMC: " | append: video.title %}
+    {% assign kw_str = "scmc software craftsmanship chicago meetup " | append: video.title | append: " " | append: speakers_str | append: " " | append: video.tags | join: " " %}
+    {
+      "title": {{ title_str | jsonify }},
+      "url": "/scmc/",
+      "badge": "SCMC",
+      "icon": "🏛️",
+      "keywords": {{ kw_str | jsonify }}
     },
   {% endfor %}
   {% for post in site.posts %}
+    {% assign kw_str = "article post writing blog " | append: post.title | append: " " | append: post.categories | join: " " | append: " " | append: post.tags | join: " " %}
     {
       "title": {{ post.title | jsonify }},
       "url": {{ post.url | jsonify }},
       "badge": {{ post.date | date: "%Y" | jsonify }},
       "icon": "✍️",
-      "keywords": {{ "article post writing " | append: post.title | append: " " | append: post.categories | join: " " | append: " " | append: post.tags | join: " " | jsonify }}
+      "keywords": {{ kw_str | jsonify }}
     }{% if forloop.last == false %},{% endif %}
   {% endfor %}
 ]

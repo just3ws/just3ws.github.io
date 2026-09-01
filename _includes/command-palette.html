@@ -2,7 +2,7 @@
   <div class="cmd-palette-card">
     <div class="cmd-palette-header">
       <span class="cmd-icon">⚡</span>
-      <input type="text" id="cmdPaletteInput" placeholder="Search 300+ surfaces, positions, articles, interviewees (e.g., rails, groupon, advisory, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces and content">
+      <input type="text" id="cmdPaletteInput" placeholder="Search 650+ surfaces, positions, articles, interviews, speakers (e.g., ray hightower, rails, groupon, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces and content">
       <button type="button" id="cmdPaletteClose" class="cmd-close-btn" aria-label="Close command palette">&times;</button>
     </div>
 
@@ -97,7 +97,7 @@
         <span><kbd>↵</kbd> Select</span>
         <span><kbd>ESC</kbd> Close</span>
       </div>
-      <div id="cmdPaletteStatus">Search 300+ sitemap index items</div>
+      <div id="cmdPaletteStatus">Search 650+ archive & site index items</div>
     </div>
   </div>
 </div>
@@ -258,7 +258,7 @@
         resultsUl.appendChild(item.parentElement);
       });
       if (initialItems.length) initialItems[0].classList.add('is-selected');
-      if (statusEl) statusEl.textContent = 'Search 300+ sitemap index items';
+      if (statusEl) statusEl.textContent = 'Search 650+ archive & site index items';
     }
 
     function getVisibleItems() {

@@ -1,25 +1,26 @@
 ---
-name: "Transcript / Speaker / Timestamp Correction"
-about: "Report errors in video transcripts, speaker attributions, timestamp offsets, or speaker names."
+name: "Transcript / Speaker / Metadata Issue"
+about: "Report errors in video transcripts, speaker attributions, brand casing, descriptions, or timestamps."
 title: "fix(transcript): [Short description of issue or video title]"
 labels: ["transcript-correction", "triage-needed"]
 assignees: []
 ---
 
 ## 🎬 Video & Transcript Identification
-- **Video Title or URL:** 
-- **Transcript ID or Slug:** (e.g., `interview-with-jez-humble-goto-conference-2014` or `/interviews/jez-humble-goto-conference-2014/`)
+- **Page URL:** 
+- **Video Title:** 
+- **Transcript ID / Slug:** (e.g., `ray-hightower-chicagoruby-software-craftsmanship-north-america-2011`)
 
-## 🔍 Type of Correction
-- [ ] **Speaker Attribution Error** (e.g., Wrong speaker assigned to dialogue turn)
-- [ ] **Speaker Name / Spelling Correction** (e.g., Phonetic spelling fix or missing full name)
-- [ ] **Timestamp Drift / Timing Sync** (e.g., Audio out of sync with transcript turn)
-- [ ] **Transcription Text Error** (e.g., Misheard technical terms, code dialects, or typos)
-- [ ] **Missing Dialogue / Audio Segment**
+## 🔍 Type of Issue (Select all that apply)
+- [ ] **Transcript ASR / Phonetic Error** (e.g., misspelled name, wrong tech term, missed word)
+- [ ] **Speaker Attribution / Turn Boundary** (e.g., wrong speaker assigned, merged turns)
+- [ ] **Title / Brand Casing** (e.g., ChicagoRuby, WindyCityRails, UGtastic, WHOIS Tech Community)
+- [ ] **Description / Summary Copy** (e.g., duplicated text, inaccurate summary)
+- [ ] **Chapters / Timecodes** (e.g., timestamp drift, missing or inaccurate chapter)
+- [ ] **Other / Archival Context**
 
-## ⏱ Time Range
-- **Start Time:** `MM:SS`
-- **End Time:** `MM:SS`
+## ⏱ Time Range / Specific Timecode
+- **Timecode:** `MM:SS` (e.g., `03:45`)
 
 ## 📝 Current Text vs. Proposed Correction
 
@@ -30,4 +31,4 @@ assignees: []
 > 
 
 ## 💡 Additional Context or Verification Source
-*(Provide any links, conference schedules, speaker bios, or historical context that verifies this correction.)*
+*(Provide any links, speaker profiles, conference schedules, or community records that verify this correction.)*

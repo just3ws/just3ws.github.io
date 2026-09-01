@@ -110,9 +110,29 @@ class YouTubeMetadataGenerator
     
     # Topic strictly from guest role, asset topic, or transcript turns
     main_topic = if guest_role && !guest_role.empty? && guest_role.length <= 60
-                   guest_role.split(' ').map { |w| %w[and or of in on with for at the to].include?(w.downcase) ? w.downcase : w.capitalize }.join(' ')
+                   guest_role.split(' ').map do |w|
+                     if w =~ /[a-z][A-Z]/
+                       w
+                     elsif %w[and or of in on with for at the to].include?(w.downcase)
+                       w.downcase
+                     elsif %w[scna scmc goto api aws ci cd].include?(w.downcase)
+                       w.upcase
+                     else
+                       w.capitalize
+                     end
+                   end.join(' ')
                  elsif asset["topic"]
-                   asset["topic"].to_s.split('-').map(&:capitalize).join(' ')
+                   asset["topic"].to_s.split('-').map do |w|
+                     if w =~ /[a-z][A-Z]/
+                       w
+                     elsif %w[and or of in on with for at the to].include?(w.downcase)
+                       w.downcase
+                     elsif %w[scna scmc goto api aws ci cd].include?(w.downcase)
+                       w.upcase
+                     else
+                       w.capitalize
+                     end
+                   end.join(' ')
                  else
                    "Software Craftsmanship"
                  end
@@ -120,8 +140,8 @@ class YouTubeMetadataGenerator
     title = "#{guest_name} on #{main_topic} | #{event_label}"
     title = title[0...99] if title.length > 100
 
-    # Chapters from dialogue turns
-    chapters = extract_chapters(turns)
+    # Chapters from dialogue turns or curated recording chapters
+    chapters = extract_chapters(transcript_data)
 
     # Clean Tags
     tags = ["Software Craftsmanship", "Programming", "Architecture", guest_name, event_label.split.first].compact.uniq.take(15)
@@ -196,7 +216,20 @@ class YouTubeMetadataGenerator
     end
   end
 
-  def extract_chapters(turns)
+  def extract_chapters(transcript_data)
+    curated_chapters = transcript_data.dig("recording", "chapters")
+    if curated_chapters && curated_chapters.is_a?(Array) && !curated_chapters.empty?
+      return curated_chapters.map.with_index do |ch, idx|
+        start_sec = (ch["start_sec"] || 0).to_i
+        start_sec = 0 if idx.zero? # YouTube requirement: first chapter must start at 00:00
+        {
+          "time" => format_seconds_to_timestamp(start_sec),
+          "title" => ch["title"]
+        }
+      end
+    end
+
+    turns = transcript_data["turns"] || []
     chapters = []
     chapters << { "time" => "00:00", "title" => "Introduction & Context" }
 
@@ -271,7 +304,7 @@ class YouTubeMetadataGenerator
                       end
 
     topic_phrase = if guest_role && !guest_role.empty?
-                     "to discuss #{guest_role.downcase}"
+                     "to discuss #{guest_role}"
                    else
                      "to talk about their engineering work and what is important to them"
                    end
@@ -281,6 +314,17 @@ class YouTubeMetadataGenerator
     else
       "Hi, it's Mike with UGtastic! In this conversation recorded #{location_phrase}, I sit down with #{guest_name} #{topic_phrase}."
     end
+  end
+
+  def clean_spoken_intro(spoken_text, guest_name, event_label, guest_role)
+    if spoken_text && !spoken_text.empty?
+      clean = spoken_text.gsub(/(?:Hi|Hello|Hey),?\s*(?:it's|I'm)?\s*Mike\b[^.!?]*[.!?]/i, '')
+      clean = clean.gsub(/I'm\s+(?:standing|sitting)\s+here\s+with\s+[^.!?]*[.!?]/i, '')
+      clean = clean.gsub(/I'm\s+(?:here|sitting\s+down)\s+(?:at|with)\s+[^.!?]*[.!?]/i, '')
+      clean = clean.gsub(/\s+/, ' ').strip
+      return clean unless clean.empty? || clean.length < 15
+    end
+    "Mike Hall sits down with #{guest_name} on-site at #{event_label} to discuss #{guest_role} and software craftsmanship."
   end
 
   def clean_summary_body(summary, guest_name)
@@ -313,6 +357,7 @@ class YouTubeMetadataGenerator
     cleaned = cleaned.gsub(/#\w+/, '') # Remove hashtags
     cleaned = cleaned.gsub(/\bBoggess\b/i, 'Baugues')
     cleaned = cleaned.gsub(/Recorded as part of the Technical Conversation Archive.*/m, '') # Remove duplicates
+    cleaned = cleaned.gsub(/Don't miss out!/i, '')
     cleaned = cleaned.gsub(/Don't miss this!/i, '')
     cleaned = cleaned.gsub(/Check it out!/i, '')
     cleaned = cleaned.gsub(/\s+/, ' ').strip

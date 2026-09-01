@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-08-31
+     CURRENT FOCUS - last updated 2026-09-01
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,11 +12,13 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
-       - Remediation of public and localhost surfaces to 100% clean role archetypes (0 target company leaks).
-       - Streamlined resume highlights to concise, high-signal 20-30 word bullets (composite ATS benchmark @ 90.6%).
-       - Full verification suite passing 100% (15 suites, HTML-Proofer across 1,103 files, 0 em dashes).
+       - Restored and validated Ray Hightower ChicagoRuby SCNA 2011 interview with verbatim turns, curated summary, and 8 chapters.
+       - Codified permanent canonical naming standards (ChicagoRuby, WindyCityRails, UGtastic, WHOIS Tech Community) in docs/style-guide-and-canonical-naming.md.
+       - Expanded Cmd+K command palette search catalog to 669 items covering all interviews, speakers, topics, posts, and positions.
+       - Implemented transcript "Report Issue" action button with pre-filled GitHub issue template on all interview pages.
+       - 100% test suite and ATS benchmarks passing (77 examples, composite ATS @ 90.6%, zero em dashes).
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-08-31-4.md
+         ~/.config/adots/handoffs/2026-09-01-1.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
@@ -35,6 +37,8 @@ Before changing this repository:
    titles, or generated resume surfaces.
 3. Read `docs/career-strategy-audhd-principal-engineering.md` for title-to-scale
    role calibration and interview positioning strategies.
+4. Read `docs/style-guide-and-canonical-naming.md` for permanent canonical naming,
+   casing, and compound word standards across all content, data, and transcripts.
 
 Do not treat this repository as an isolated Jekyll checkout. Its installed
 localhost site is part of Mike's local system and is a required verification

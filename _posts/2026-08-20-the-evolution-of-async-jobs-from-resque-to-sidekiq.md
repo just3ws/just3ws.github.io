@@ -28,7 +28,7 @@ Looking back at the architectural transition from **Resque** and **Clockwork** t
 
 ### The Cost of Forking: The Resque Era
 
-In the early 2010s, Github's `Resque` was the industry standard for Ruby background processing. Backed by Redis, Resque had an elegant operational model: for every job popped off a Redis list, the master worker process called `fork()`, executed the job in an isolated child process, and exited.
+In the early 2010s, GitHub's `Resque` was the industry standard for Ruby background processing. Backed by Redis, Resque had an elegant operational model: for every job popped off a Redis list, the master worker process called `fork()`, executed the job in an isolated child process, and exited.
 
 Forking provided complete memory isolation, if a job leaked memory or crashed with a segmentation fault, the parent worker survived. 
 

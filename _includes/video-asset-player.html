@@ -72,9 +72,46 @@
       {% endif %}
 
       <section class="transcript-editorial" id="transcript">
-        <div class="section-header-editorial">
-          <h2 class="section-title">The Conversation</h2>
-          <hr class="title-accent">
+        {% capture issue_title %}[Transcript Issue] {{ asset.title | default: page.title }}{% endcapture %}
+        {% capture issue_body %}### 📍 Page / Transcript Reference
+- **URL**: https://www.just3ws.com{{ page.url }}
+- **Title**: {{ asset.title | default: page.title }}
+- **Transcript ID**: {{ asset.transcript_id | default: page.interview_id }}
+
+---
+
+### ⚠️ Issue Category (Select all that apply)
+- [ ] **Transcript ASR / Phonetic Error** (e.g., misspelled name, wrong tech term, missed word)
+- [ ] **Speaker Attribution / Turn Boundary** (e.g., wrong speaker assigned, merged turns)
+- [ ] **Title / Brand Casing** (e.g., ChicagoRuby, WindyCityRails, UGtastic, WHOIS Tech Community)
+- [ ] **Description / Summary Copy** (e.g., duplicated text, inaccurate summary)
+- [ ] **Chapters / Timecodes** (e.g., timestamp drift, missing or inaccurate chapter)
+- [ ] **Other / Archival Context**
+
+---
+
+### 🔍 Details & Timecode
+<!-- Describe the issue. If referencing a specific moment, include the timecode (e.g., 03:45). -->
+
+
+### 💡 Suggested Correction
+<!-- What should the text or attribution say instead? -->
+{% endcapture %}
+        {% assign encoded_title = issue_title | url_encode %}
+        {% assign encoded_body = issue_body | url_encode %}
+        {% assign issue_url = "https://github.com/just3ws/just3ws.github.io/issues/new?title=" | append: encoded_title | append: "&body=" | append: encoded_body | append: "&labels=transcript-correction,triage-needed" %}
+
+        <div class="transcript-header-bar">
+          <div class="section-header-editorial">
+            <h2 class="section-title">The Conversation</h2>
+            <hr class="title-accent">
+          </div>
+          <div class="transcript-actions">
+            <a href="{{ issue_url }}" target="_blank" rel="noopener noreferrer" class="transcript-report-btn" title="Report a transcript, speaker, or metadata issue on GitHub">
+              <span class="report-icon">🚩</span>
+              <span>Report Issue</span>
+            </a>
+          </div>
         </div>
 
         {% if transcript_content == "structured" %}

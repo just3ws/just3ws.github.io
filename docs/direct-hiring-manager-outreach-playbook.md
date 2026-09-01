@@ -69,7 +69,7 @@ Subject: Quick hello & question about [Company] engineering
 
 Hi [Name],
 
-Hope you are doing well. It has been a while since [shared context, e.g. our time at X / SCNA / the Chicago Ruby community], and it is great seeing what you are building at [Company].
+Hope you are doing well. It has been a while since [shared context, e.g. our time at X / SCNA / the ChicagoRuby community], and it is great seeing what you are building at [Company].
 
 I am exploring my next move into a Principal Software Engineer / Platform Architecture role. I noticed [Company]'s team is expanding around [specific area, e.g. telemetry infrastructure / core API platforms].
 

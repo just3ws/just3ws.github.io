@@ -97,6 +97,9 @@ hand-edit `_site/` or other generated artifacts to make that verification pass.
   validation gate.
 - `docs/adr/0001-public-archive-publication-contract.md` records the public
   archive publication contract.
+- `docs/style-guide-and-canonical-naming.md` defines permanent canonical naming,
+  casing, and compound word standards across all site content, transcripts,
+  data files, and search indexes.
 - `AGENTS.md`'s System Identity section records this repo's standing peer
   relationship: `wwworkremote.localhost` consumes Public Canon
   (`resume.json`, `/exports/resume.md`, `/exports/portfolio.md`) via
