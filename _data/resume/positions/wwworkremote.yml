@@ -15,36 +15,32 @@ summary: >
 
 highlights:
   - text: >
-      Data Ingestion & Normalization: Built a multi-source Rails ingestion pipeline
+      Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline
       and PostgreSQL storage schema, unifying fragmented job market datasets for structured
       downstream analysis.
 
   - text: >
-      Semantic Search & Matching: Implemented vector search embeddings via pgvector,
+      Semantic Search & Embeddings: Implemented vector search embeddings via pgvector,
       enabling high-precision semantic matching between complex candidate profiles and
       job requirements.
 
   - text: >
-      Local-First AI Orchestration: Designed a provider-agnostic LLM orchestration layer behind
-      a YAML-driven model registry, local-first by default (llama.cpp/Ollama primary, hosted
-      Claude as fallback), so routine inference never leaves the machine while a stronger
-      hosted model can be selected per call site.
+      Local-First AI Orchestration: Designed provider-agnostic LLM orchestration layer
+      (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first inference for
+      sensitive data with per-call model routing.
 
   - text: >
-      Prompt Injection Defense: Built a four-stage guardrails pipeline (normalize, weighted
-      heuristic scan, risk classify, output validate) screening every untrusted scraped document
-      before it reaches a model, scoring known injection patterns plus an instruction-density
-      heuristic to secure ingestion against hostile inputs.
+      Prompt Injection Defense: Built a 4-stage guardrails pipeline screening untrusted scraped
+      text via weighted heuristics and instruction-density scoring before model ingestion.
 
   - text: >
       Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider
-      adapters that extracts postings from live ATS pages and captures the full application
-      lifecycle (questions asked and answers given) back into the platform.
+      adapters that extracts postings from live ATS pages and captures full application lifecycles.
 
   - text: >
-      Static Signal Integration: Injected static analysis rules and architectural constraints into
-      model context windows, preventing drift between generated outputs and system security
-      contracts.
+      Architectural Constraint Injection: Injected static analysis rules and architectural
+      constraints into model context windows, preventing drift between generated outputs and
+      security contracts.
 
 skills:
   - Ruby on Rails

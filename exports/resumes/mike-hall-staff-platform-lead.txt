@@ -41,49 +41,32 @@ discovery, and infrastructure support for ACQ Growth teams, while stewarding a
 sustainably to SRE.
 
 Key Outcomes:
-  * Originations IC Delivery & Team Realignment: Led the Originations
-    Verification squad through consecutive Exceeds Expectations ratings,
-    architecting and shipping the Speedfunds instant loan disbursement pipeline
-    (funding to debit cards in minutes vs multi-day ACH). Appointed Software
-    Architect for the Acquisition Lane to resolve systemic fragility,
-    consolidating two attrition-impacted teams into a unified, high-velocity
-    delivery unit before converting to Associate Director, Staff Engineer upon
-    corporate architecture track restructuring.
-  * ACQ Enablement & Architecture Discovery: Founded and technically led the ACQ
-    Enablement team to establish end-to-end system mapping across seven
-    heterogeneous acquisition channels spanning direct-to-consumer web/mobile
-    funnels, direct mail campaigns, partner affiliate APIs, and authenticated
-    renewal workflows. Architected an automated 5-phase PII Remediation deletion
-    engine and data migration across 30+ tables, cataloging legacy clarity_
-    orphan data, eliminating multi-service state machine corruptions, and
-    embedding automated compliance into production Rails code.
-  * Enterprise Resilience & DynamoDB Session Remediation: Architected and
-    delivered the platform migration from client-side cookie storage to
-    server-side DynamoDB session storage across all Rails applications,
-    diagnosing and eliminating a critical CookieOverflow defect that silently
-    dropped 4% of digital loan applications during late-stage offer selection
-    and e-signing; coordinated cross-lane blue/green deployment with zero
-    downtime and zero incidents.
+  * Originations IC Delivery & Speedfunds: Led the Originations Verification
+    squad through consecutive Exceeds Expectations ratings, architecting and
+    shipping the Speedfunds instant loan disbursement pipeline (funding to debit
+    cards in minutes). Appointed Software Architect for the Acquisition Lane,
+    later converting to Associate Director, Staff Engineer.
+  * ACQ Enablement & Architecture Discovery: Founded the ACQ Enablement team and
+    mapped seven heterogeneous acquisition channels; architected an automated
+    5-phase PII Remediation deletion engine and data migration across 30+
+    tables, eliminating legacy state machine corruptions.
+  * Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and
+    eliminated a critical CookieOverflow defect that caused 4% silent traffic
+    loss of digital loan applications during e-signing; architected
+    zero-downtime blue/green migration to DynamoDB session store with zero
+    incidents.
   * Enterprise Trace & Operational Alignment: Architected distributed telemetry
     across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe
-    backends. Partnered directly with Cybersecurity, the Enterprise Monitoring
-    Center (EMC), SRE, and Incident Command to align immediate operational
-    monitoring with long-term distributed tracing across end-to-end multi-tier
-    lending workflows.
-  * Sustained Community Enablement & SRE Handoff: Drove a dedicated 3-year
-    cultural and technical enablement initiative: founded Geekfest@OMF (weekly
-    recorded technical brown-bag sessions across the enterprise for 1 year)
-    before evolving the forum into the weekly OpenTelemetry Working Group (OTel
-    WG), scaling voluntary attendance to 40+ cross-lane engineers. Mentored and
-    partnered with SRE leads to transition ongoing operational facilitation,
-    establishing a durable, self-sustaining community of practice while
-    returning to Acquisition Lane architecture representation.
+    backends; partnered directly with Cybersecurity, EMC, SRE, and Incident
+    Command to align monitoring with end-to-end distributed tracing.
+  * Community Enablement & SRE Handoff: Founded weekly Geekfest and scaled the
+    enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored
+    and partnered with SRE leads to transition ongoing operational facilitation,
+    establishing a durable community of practice.
   * Applied AI & Innovation Leadership: Placed in two corporate hackathons
-    (building early conversational agents with Rasa and automated schema
-    inference tools with Bonsai Buckaroos). Introduced local LLM orchestration
-    and privacy-conscious AI developer workflows at Geekfest@OMF, establishing
-    early evidence-based patterns for legacy code discovery and developer
-    productivity.
+    building conversational agents with Rasa and Bonsai Buckaroos schema
+    inference tools; pioneered local LLM orchestration and privacy-conscious AI
+    developer tooling at Geekfest.
 
 --------------------------------------------------------------------------------
 PRINCIPAL ARCHITECT
@@ -116,13 +99,13 @@ Standardized asynchronous Sidekiq delivery pipelines and automated CI/CD
 deployment routines.
 
 Key Outcomes:
-  * Search Modernization & Infrastructure De-Risking: Eliminated external
-    cluster failure modes and lowered operating footprint by transitioning
-    legacy Sphinx infrastructure to optimized MySQL full-text search and
-    relational indices under live production traffic.
-  * Zero-Downtime Platform Upgrades: Led Ruby and Rails framework upgrades
-    across multiple core applications, sequencing database migrations and
-    dependency updates to maintain uptime during platform modernization.
+  * Search Infrastructure Modernization: Eliminated external cluster failure
+    modes and reduced operating footprint by migrating legacy Sphinx to
+    optimized MySQL full-text search and relational indices under live
+    production traffic.
+  * Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across
+    core applications, sequencing database migrations to ensure zero downtime
+    during platform modernization.
 
 --------------------------------------------------------------------------------
 PRINCIPAL CONSULTANT
@@ -133,12 +116,12 @@ Led client architecture modernizations, pairing and mentoring engineering teams
 in TDD, automated testing discipline, and continuous delivery.
 
 Key Outcomes:
-  * Conducted an on-site, end-to-end operational walkthrough at military
-    processing facilities (Des Plaines MEPS), identifying critical disconnects
-    between enlistment workflows and proposed software models.
-  * Evaluated program viability and delivered definitive architectural
-    recommendations directly to executive leadership, mitigating severe
-    contractual and delivery risks.
+  * Federal Program Viability Assessment: Conducted on-site operational research
+    at DoD military processing facilities (MEPS), identifying critical
+    disconnects between enlistment workflows and proposed software models.
+  * Executive Architecture Advisory: Delivered architectural risk analysis
+    directly to executive leadership, defining remediation paths to mitigate
+    contractual and delivery liabilities.
 
 --------------------------------------------------------------------------------
 SOFTWARE ENGINEER
@@ -149,13 +132,15 @@ Delivered high-stakes consulting architectures, training client teams in Ruby on
 Rails, agile delivery rhythms, and software craftsmanship.
 
 Key Outcomes:
-  * Built self-service reporting platforms for Leapfrog Online, allowing
-    business stakeholders to query and export data warehouse analytics without
-    engineering bottlenecks.
-  * Developed commercial B2B sales and product catalog services for Sears,
-    opening new enterprise revenue channels.
-  * Engineered deal-processing services and fraud analysis pipelines at Groupon,
-    stabilizing backend transaction infrastructure during extreme hyper-growth.
+  * Self-Service Analytics Platforms: Built reporting platforms for Leapfrog
+    Online, enabling business stakeholders to query and export data warehouse
+    analytics autonomously.
+  * Enterprise B2B Catalog Services: Developed commercial B2B sales and product
+    catalog integration services for Sears, opening new enterprise revenue
+    streams.
+  * Hypergrowth Transaction Pipelines: Engineered deal-processing services and
+    fraud analysis pipelines at Groupon, stabilizing backend transaction
+    infrastructure during extreme user growth.
 
 --------------------------------------------------------------------------------
 ADDITIONAL EXPERIENCE

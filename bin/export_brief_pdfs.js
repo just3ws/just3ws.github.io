@@ -35,11 +35,15 @@ if (briefDirs.length === 0) {
   process.exit(0);
 }
 
-// Start temporary static HTTP server on _site directory
-const PORT = 4188;
+// Start temporary static HTTP server on random available port
 const server = http.createServer((req, res) => {
-  let filePath = path.join(SITE_DIR, req.url);
-  if (filePath.endsWith('/')) filePath += 'index.html';
+  let relativeUrl = decodeURIComponent(req.url.split('?')[0]);
+  if (relativeUrl.endsWith('/')) relativeUrl += 'index.html';
+
+  let filePath = path.join(ROOT_DIR, relativeUrl);
+  if (!fs.existsSync(filePath)) {
+    filePath = path.join(SITE_DIR, relativeUrl);
+  }
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
@@ -48,14 +52,15 @@ const server = http.createServer((req, res) => {
       return;
     }
     const ext = path.extname(filePath);
-    const contentType = ext === '.html' ? 'text/html' : ext === '.css' ? 'text/css' : 'text/plain';
+    const contentType = ext === '.html' ? 'text/html' : ext === '.css' ? 'text/css' : ext === '.svg' ? 'image/svg+xml' : 'text/plain';
     res.writeHead(200, { 'Content-Type': contentType });
     res.end(data);
   });
 });
 
-server.listen(PORT, async () => {
-  console.log(`🚀 [Brief PDF Exporter] Generating PDFs across ${briefDirs.length} brief pages...`);
+server.listen(0, async () => {
+  const port = server.address().port;
+  console.log(`🚀 [Brief PDF Exporter] Generating PDFs across ${briefDirs.length} brief pages on port ${port}...`);
 
   let browser;
   try {
@@ -68,11 +73,11 @@ server.listen(PORT, async () => {
   let generatedCount = 0;
 
   for (const slug of briefDirs) {
-    const url = `http://localhost:${PORT}/exports/briefs/${slug}/`;
+    const url = `http://localhost:${port}/exports/briefs/${slug}/`;
     const pdfPath = path.join(PDF_OUTPUT_DIR, `${slug}-executive-brief-mike-hall.pdf`);
 
     try {
-      await page.goto(url, { waitUntil: 'networkidle' });
+      await page.goto(url, { waitUntil: 'load', timeout: 5000 });
 
       // Emulate print media
       await page.emulateMedia({ media: 'print' });

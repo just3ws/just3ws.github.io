@@ -44,17 +44,17 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 **Target Focus:** Placed in two corporate hackathons (Rasa workflow bot and Bonsai Buckaroos schema inference tool), introduced local LLM orchestration and privacy-conscious AI workflows at Geekfest, and chartered ACQ Enablement for rapid platform modernization.
 
 **Key Outcomes:**
-- Originations IC Delivery & Team Realignment: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes vs multi-day ACH). Appointed Software Architect for the Acquisition Lane to resolve systemic fragility, consolidating two attrition-impacted teams into a unified, high-velocity delivery unit before converting to Associate Director, Staff Engineer upon corporate architecture track restructuring.
+- Originations IC Delivery & Speedfunds: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
 
-- ACQ Enablement & Architecture Discovery: Founded and technically led the ACQ Enablement team to establish end-to-end system mapping across seven heterogeneous acquisition channels spanning direct-to-consumer web/mobile funnels, direct mail campaigns, partner affiliate APIs, and authenticated renewal workflows. Architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, cataloging legacy clarity_ orphan data, eliminating multi-service state machine corruptions, and embedding automated compliance into production Rails code.
+- ACQ Enablement & Architecture Discovery: Founded the ACQ Enablement team and mapped seven heterogeneous acquisition channels; architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, eliminating legacy state machine corruptions.
 
-- Enterprise Resilience & DynamoDB Session Remediation: Architected and delivered the platform migration from client-side cookie storage to server-side DynamoDB session storage across all Rails applications, diagnosing and eliminating a critical CookieOverflow defect that silently dropped 4% of digital loan applications during late-stage offer selection and e-signing; coordinated cross-lane blue/green deployment with zero downtime and zero incidents.
+- Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical CookieOverflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.
 
-- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends. Partnered directly with Cybersecurity, the Enterprise Monitoring Center (EMC), SRE, and Incident Command to align immediate operational monitoring with long-term distributed tracing across end-to-end multi-tier lending workflows.
+- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
 
-- Sustained Community Enablement & SRE Handoff: Drove a dedicated 3-year cultural and technical enablement initiative: founded Geekfest@OMF (weekly recorded technical brown-bag sessions across the enterprise for 1 year) before evolving the forum into the weekly OpenTelemetry Working Group (OTel WG), scaling voluntary attendance to 40+ cross-lane engineers. Mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable, self-sustaining community of practice while returning to Acquisition Lane architecture representation.
+- Community Enablement & SRE Handoff: Founded weekly Geekfest and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
 
-- Applied AI & Innovation Leadership: Placed in two corporate hackathons (building early conversational agents with Rasa and automated schema inference tools with Bonsai Buckaroos). Introduced local LLM orchestration and privacy-conscious AI developer workflows at Geekfest@OMF, establishing early evidence-based patterns for legacy code discovery and developer productivity.
+- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest.
 
 
 ### Principal Architect at Phalanx Duel
@@ -78,17 +78,17 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 **Target Focus:** Architected multi-source Rails ingestion pipeline, pgvector semantic search, local-first YAML model registry, 4-stage prompt injection defense, and 16-adapter MV3 Chrome extension.
 
 **Key Outcomes:**
-- Data Ingestion & Normalization: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.
+- Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.
 
-- Semantic Search & Matching: Implemented vector search embeddings via pgvector, enabling high-precision semantic matching between complex candidate profiles and job requirements.
+- Semantic Search & Embeddings: Implemented vector search embeddings via pgvector, enabling high-precision semantic matching between complex candidate profiles and job requirements.
 
-- Local-First AI Orchestration: Designed a provider-agnostic LLM orchestration layer behind a YAML-driven model registry, local-first by default (llama.cpp/Ollama primary, hosted Claude as fallback), so routine inference never leaves the machine while a stronger hosted model can be selected per call site.
+- Local-First AI Orchestration: Designed provider-agnostic LLM orchestration layer (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first inference for sensitive data with per-call model routing.
 
-- Prompt Injection Defense: Built a four-stage guardrails pipeline (normalize, weighted heuristic scan, risk classify, output validate) screening every untrusted scraped document before it reaches a model, scoring known injection patterns plus an instruction-density heuristic to secure ingestion against hostile inputs.
+- Prompt Injection Defense: Built a 4-stage guardrails pipeline screening untrusted scraped text via weighted heuristics and instruction-density scoring before model ingestion.
 
-- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider adapters that extracts postings from live ATS pages and captures the full application lifecycle (questions asked and answers given) back into the platform.
+- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider adapters that extracts postings from live ATS pages and captures full application lifecycles.
 
-- Static Signal Integration: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and system security contracts.
+- Architectural Constraint Injection: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and security contracts.
 
 
 ### Principal Engineer & Curator at Technical Conversation Archive

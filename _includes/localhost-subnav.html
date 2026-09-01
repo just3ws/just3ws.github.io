@@ -25,28 +25,10 @@
     </div>
 
     <div class="localhost-nav-links">
-      <!-- Localhost Hub Dropdown: Executive Pitch Briefs -->
-      <div class="lh-dropdown">
-        <button type="button" class="lh-dropdown-btn{% if page.url contains '/exports/briefs/' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
-          <span>🎯 Pitch Briefs</span>
-          <span class="lh-caret">▾</span>
-        </button>
-        <div class="lh-dropdown-menu" role="menu">
-          <div class="lh-menu-header">Executive Pitch Briefs (Localhost)</div>
-          <a href="/exports/briefs/huntress-principal-software-engineer-soc-experience-ruby-rails/" class="lh-menu-item{% if page.url contains 'huntress' %} is-active{% endif %}" role="menuitem">
-            <strong>Huntress</strong> · Principal Engineer (SOC / Rails)
-          </a>
-          <a href="/exports/briefs/coder-staff-agentic-engineering/" class="lh-menu-item{% if page.url contains 'coder' %} is-active{% endif %}" role="menuitem">
-            <strong>Coder</strong> · Staff Engineer (Agentic Platform)
-          </a>
-          <a href="/exports/briefs/financial-crm-staff-engineer-ai-agents/" class="lh-menu-item{% if page.url contains 'financial-crm' %} is-active{% endif %}" role="menuitem">
-            <strong>Financial CRM</strong> · Staff Engineer (AI Agents)
-          </a>
-          <a href="/exports/briefs/nextpatient-staff-software-engineer/" class="lh-menu-item{% if page.url contains 'nextpatient' %} is-active{% endif %}" role="menuitem">
-            <strong>NextPatient</strong> · Staff Engineer (Rails / EHR)
-          </a>
-        </div>
-      </div>
+      <!-- Localhost Hub Link: Executive Pitch Briefs -->
+      <a href="/exports/briefs/" class="lh-dropdown-btn{% if page.url contains '/exports/briefs/' %} is-active{% endif %}" style="text-decoration: none;">
+        <span>🎯 Executive Briefs Hub</span>
+      </a>
 
       <!-- Localhost Hub Dropdown: Tailored Archetype Resumes -->
       <div class="lh-dropdown">

@@ -15,21 +15,12 @@ summary: >-
 
 highlights:
   - text: >-
-      Testable Query Patterns: Replaced ad-hoc global data access functions with
-      structured, cacheable query patterns in the PHP backend, improving performance
-      and enabling reliable automated testing where none existed before.
+      Legacy Query Modernization: Replaced ad-hoc global data access with structured,
+      cacheable query patterns in the PHP backend, enabling unit testability and sub-second
+      query execution.
   - text: >-
-      Legacy Boundary Isolation: Identified and isolated structural constraints in
-      the core contact management subsystem, reducing risk for incremental change
-      without requiring large-scale rewrites.
-  - text: >-
-      Frontend Test Hardening & Boundary Verification: Hardened Ember.js frontend
-      test coverage across core contact management workflows, creating verification
-      gates that allowed safe refactoring of legacy PHP data paths without regression.
-  - text: >-
-      Reusable Pagination Constructs: Refactored shared Ember.js pagination and
-      interaction logic into reusable mixins, eliminating duplication across
-      contact list views.
+      Frontend Verification Gates: Hardened Ember.js automated test suites across core CRM
+      contact workflows, creating safety gates that enabled non-breaking legacy PHP refactoring.
 
 skills:
   - PHP

@@ -14,24 +14,16 @@ summary: "Hired as a contractor by the founder to lead the open-source
   modernization, and community leadership as the top contributor to the
   open-source codebase."
 highlights:
-- Security vulnerabilities were identified and closed before public release,
-  including SQL injection in badge and opportunity models, DOS via Symbol
-  injection in admin controllers, XSS through unwhitelisted comment parameters,
-  and unsafe dynamic class generation from user input.
-- Proprietary billing engines and badge-scoring algorithms were extracted into
-  separate backend services with clean API stubs, enabling the platform core
-  to go public without exposing private business logic or credentials.
-- Platform data layer was migrated from MongoDB to PostgreSQL in a two-phase
-  migration, simplifying the stack for incoming open-source contributors.
-- Background processing was modernized by converting legacy Rake tasks and
-  Clockwork jobs to Sidekiq workers, and replacing Resque, materially reducing
-  Heroku operational costs.
-- Open-source scaffolding was established including LICENSE, CONTRIBUTING.md,
-  Travis CI integration, CodeClimate, Vagrant development environments, and
-  ERD documentation for contributor onboarding.
-- Developer evangelism and community management included merging 30+ community
-  pull requests, writing contributor guidance, maintaining development
-  environments, and coordinating with external developers learning the platform.
+  - text: >-
+      Open-Source Transition & Security Hardening: Led open-source transition for a YC-backed
+      developer network (856 GitHub stars, 304 forks), closing critical SQL injection, XSS,
+      and Symbol DoS vulnerabilities before public release.
+  - text: >-
+      Proprietary Service Decoupling: Extracted proprietary billing engines and scoring algorithms
+      into isolated backend services with clean API stubs, safeguarding business logic.
+  - text: >-
+      Database Migration & Sidekiq Modernization: Executed two-phase database migration from
+      MongoDB to PostgreSQL and converted legacy Resque jobs to Sidekiq, cutting operational costs.
 skills:
 - Ruby
 - Ruby on Rails

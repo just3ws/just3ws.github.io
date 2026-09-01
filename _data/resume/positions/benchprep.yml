@@ -10,16 +10,15 @@ id: benchprep
 summary: Owned enterprise assessment workflows, leading correctness and platform security
   in a high-concurrency environment.
 highlights:
-- Critical assessment calculation errors were addressed by analyzing and optimizing
-  complex PostgreSQL queries, improving accuracy and reducing response times.
-- Vulnerable submission pipelines were addressed by implementing JWT-based response
-  verification, preventing tampering and enforcing once-only processing.
-- Unsafe third-party integrations were addressed by designing a secure cross-origin
-  API for embedded clients, establishing explicit trust boundaries.
-- High-concurrency performance bottlenecks were addressed by optimizing database interactions,
-  reducing operational risk under heavy load.
-- Rework and unclear requirements were addressed by introducing lightweight team practices,
-  improving delivery reliability.
+  - text: >-
+      Assessment Query Optimization: Optimized complex PostgreSQL calculations across
+      high-stakes exam scoring engines, eliminating calculation drift and reducing query latency.
+  - text: >-
+      JWT Response Verification: Implemented JWT-based cryptographic payload signing and once-only
+      processing, securing exam submission pipelines against client-side tampering.
+  - text: >-
+      Secure Embedded Client APIs: Designed secure cross-origin API boundaries for embedded
+      enterprise assessment clients, establishing explicit authentication and trust contracts.
 skills:
 - Ruby
 - Ruby on Rails

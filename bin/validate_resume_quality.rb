@@ -331,7 +331,7 @@ class ResumeQualityValidator
       @errors << "Career datalake OneMain entry missing 'Speedfunds' delivery highlight"
     end
 
-    unless highlights_text.include?('seven heterogeneous acquisition channels')
+    unless highlights_text =~ /(seven|7)\s+(heterogeneous\s+)?acquisition channels/i
       @errors << "Career datalake OneMain entry missing 7 acquisition channels highlight"
     end
 
