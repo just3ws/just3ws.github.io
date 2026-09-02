@@ -21,9 +21,9 @@ worked with software systems.
 
 At sixteen, with my mother's permission, I enlisted in the Illinois Army
 National Guard. She would not let me take an infantry combat role, so the
-recruiter proposed 91B, the Army's legacy Combat Medic specialty. That path
-gave me the opportunity to earn EMT-A certification through Advanced Individual
-Training.
+recruiter proposed MOS 91B10, Medical Specialist, commonly called a Combat
+Medic at the time. That path gave me the opportunity to earn EMT-A
+certification through Advanced Individual Training.
 
 At seventeen, I attended Basic Training at Fort Leonard Wood in the summer of
 1993. I loved it. The work was demanding, the objectives were concrete, and the
@@ -32,8 +32,8 @@ finished what was put in front of me, and tried to bring the soldier behind me
 forward when I could.
 
 Between Basic Training and AIT, I became an Eagle Scout. In 1994, I completed my
-91B training at Fort Sam Houston in Texas and graduated with a 92.7 average. The
-training also gave me the EMT-A certification I had chosen that path to earn.
+91B10 training at Fort Sam Houston in Texas and graduated with a 92.7 average.
+The training also gave me the EMT-A certification I had chosen that path to earn.
 
 That experience taught me something I still use: clarity is not the absence of
 difficulty. Clarity is knowing the objective, the constraints, the available
