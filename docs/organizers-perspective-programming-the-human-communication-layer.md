@@ -13,6 +13,21 @@ larger than the code. It includes team boundaries, incentives, ownership,
 vocabulary, meeting structures, feedback paths, and the people who carry
 context from one part of the organization to another.
 
+The work also needs a reference point. In Ruby that might be `self`. In
+JavaScript it might be `this`. In a Unix shell it can be `$HOME`. On a long
+trail, it is the place where the towel is. Different systems use different
+names for the thing that answers, “Where am I?”
+
+```mermaid
+flowchart LR
+    A[Current reference] --> B[Choose a bearing]
+    B --> C[Move into the system]
+    C --> D[Observe what is actually there]
+    D --> E[Return with evidence]
+    E --> A2[Changed reference]
+    A2 --> B
+```
+
 ## Orienteering before the metaphor
 
 The orienteering metaphor is not something I invented to describe my work after
@@ -277,6 +292,29 @@ The code is still important. So are Kafka topics, GraphQL boundaries, traces,
 incident records, security controls, and governance decisions. But none of
 those mechanisms can compensate for a communication system that cannot carry
 the necessary context.
+
+## The human judgment seam
+
+This document is an AI-augmented, human-led synthesis. A human sat down and
+guided the AI through the conversation that produced it. Mike supplied the
+field experience, source memories, intent, corrections, uncertainty, and final
+judgment. AI assistance helped search, organize, compare, draft, and diagram.
+It did not witness the events, fill gaps in memory, or acquire authority to
+publish claims on its own.
+
+That distinction is part of the operating model. The tool can make a map easier
+to draw, but the human must decide whether the map matches the terrain.
+
+```mermaid
+flowchart TD
+    A[Human experience and intent] --> B[AI-assisted search and organization]
+    B --> C[Draft prose and diagrams]
+    C --> D[Human review of truth, tone, and uncertainty]
+    D --> E{Ready to publish?}
+    E -->|No| F[Ask, verify, revise, or leave unpublished]
+    F --> B
+    E -->|Yes| G[Publish with provenance]
+```
 
 The Organizer's Perspective is the habit of seeing both systems at once. Set
 up a repeatable interaction. Watch what happens. Help the system communicate.

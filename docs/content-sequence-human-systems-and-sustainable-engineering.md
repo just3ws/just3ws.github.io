@@ -41,6 +41,22 @@ The same principle applies to collaboration. Too much process creates drag. Too
 little structure hides important work. The right model gives people enough
 clarity to act and enough slack to think, inspect, and adjust.
 
+The sequence also has a recurring orientation motif. Every system needs a
+current “here” before it can choose a “there.” In code, that reference may be
+`self` or `this`. In a Unix environment, it may be `$HOME`. In Douglas Adams's
+universe, it is knowing where your towel is. The reference is not the whole
+system. It is the place from which the next decision can be made.
+
+```mermaid
+flowchart LR
+    H[Here: current state] --> Q[Ask what is true now]
+    Q --> B[Choose the next bearing]
+    B --> T[There: temporary target]
+    T --> E[Return with evidence]
+    E --> N[Here: updated state]
+    N --> Q
+```
+
 ## Voice and shape
 
 The writing should sound like a person thinking carefully in public. Mike's
@@ -354,3 +370,33 @@ That distinction is part of the method. The tooling handles repeatable work,
 while a human decides what is true enough to publish, what needs a qualifier,
 what should remain an open question, and what no longer belongs in the evergreen
 corpus.
+
+## Ethical publication protocol
+
+The articles in this sequence are AI-augmented, human-led writing. A human sat
+down and guided the AI through the process. The human author supplies the
+experience, source material, intent, corrections, interpretation, and final
+approval. AI assistance may help retrieve public archive material, identify
+relationships, propose an outline, draft connective prose, and generate
+diagrams. It must not be presented as a witness, a participant, or an
+independent authority.
+
+When the archive is incomplete, the writing should preserve that boundary. Do
+not turn a plausible connection into a fact. Do not silently repair a memory
+with a guess. Ask the author when a missing name, date, role, sequence, or
+causal claim would change the story. Mark reconstruction as reconstruction.
+Keep private source material outside the public canon. Link to primary public
+evidence when a claim depends on it. Let the final article show enough of its
+provenance that readers can understand how it came to exist.
+
+```mermaid
+flowchart TD
+    A[Conversation and public source material] --> B[AI organizes relationships]
+    B --> C[Human checks voice and factual boundaries]
+    C --> D{Ambiguity changes meaning?}
+    D -->|Yes| E[Ask the human author]
+    E --> C
+    D -->|No| F[Keep a qualifier or proceed]
+    F --> G[Human approves public artifact]
+    G --> H[Publish with provenance]
+```
