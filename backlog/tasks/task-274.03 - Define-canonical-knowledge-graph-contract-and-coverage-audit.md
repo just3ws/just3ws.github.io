@@ -1,9 +1,11 @@
 ---
 id: TASK-274.03
 title: Define canonical knowledge graph contract and coverage audit
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - agent-just3ws
 created_date: '2026-09-02 16:49'
+updated_date: '2026-09-02 16:50'
 labels:
   - knowledge-graph
   - architecture
@@ -39,3 +41,19 @@ Create the repository-owned graph contract and deterministic audit for public co
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Inspect existing graph JSON shapes, public data collections, JSON-LD output, and representative specs.
+2. Define a source-provenance graph schema in docs with stable IDs and explicit EXTRACTED, INFERRED, and AMBIGUOUS edge confidence.
+3. Implement a deterministic Ruby generator/auditor that reads source collections and rendered JSON-LD where available, emits graph JSON plus a human-readable audit summary, and never reads secret files.
+4. Add a primary pipeline command and focused RSpec coverage for representative content relationships and invalid graph structures.
+5. Run targeted graph tests, Jekyll build, generated freshness, Markdown/YAML/prose checks, and record evidence.
+<!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Research baseline: existing graph generation is split across bin/generate_knowledge_graph.rb, bin/generate_semantic_cross_links.rb, and bin/visualize_semantic_graph.rb. The existing taxonomy graph is regex-driven and has fixed node categories. Graphify extraction found 1,014 code, 1,541 docs, 15 papers, and 155 images, but semantic extraction could not complete because the local llama endpoint exits after binding. Deterministic graph work will proceed independently.
+<!-- SECTION:NOTES:END -->
