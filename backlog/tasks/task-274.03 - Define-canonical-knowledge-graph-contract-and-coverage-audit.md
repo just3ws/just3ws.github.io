@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - agent-just3ws
 created_date: '2026-09-02 16:49'
-updated_date: '2026-09-02 16:50'
+updated_date: '2026-09-02 16:55'
 labels:
   - knowledge-graph
   - architecture
@@ -56,4 +56,14 @@ Create the repository-owned graph contract and deterministic audit for public co
 
 <!-- SECTION:NOTES:BEGIN -->
 Research baseline: existing graph generation is split across bin/generate_knowledge_graph.rb, bin/generate_semantic_cross_links.rb, and bin/visualize_semantic_graph.rb. The existing taxonomy graph is regex-driven and has fixed node categories. Graphify extraction found 1,014 code, 1,541 docs, 15 papers, and 155 images, but semantic extraction could not complete because the local llama endpoint exits after binding. Deterministic graph work will proceed independently.
+
+Implemented docs/architecture/knowledge-graph-contract.md with source layers, stable IDs, relationships, confidence, provenance, and integrity rules.
+
+Implemented bin/audit_knowledge_graph.rb and _data/knowledge_graph_audit.json. Baseline is structurally valid at 403 nodes and 615 edges, with 2 orphan user-group nodes, 0 duplicate IDs, and 0 dangling endpoints. Coverage gaps are now explicit: transcripts, posts, positions, engagements, case studies, and most topics are not first-class graph nodes yet.
+
+Added ./bin/pipeline knowledge-graph and focused RSpec coverage in spec/bin/audit_knowledge_graph_spec.rb.
+
+Added bin/www-graphify with local endpoint http://127.0.0.1:11500/v1, model alias local, one worker, and 12,000-token default budget. Local llama is currently unstable and exits after binding, so semantic extraction remains pending.
+
+Added graph-aware Cmd+K loading of assets/data/knowledge_graph.json. Search now considers graph node labels, types, descriptions, and neighboring relationship context, then deduplicates graph results against the catalog.
 <!-- SECTION:NOTES:END -->
