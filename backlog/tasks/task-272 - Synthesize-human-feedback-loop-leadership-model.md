@@ -2,8 +2,10 @@
 id: TASK-272
 title: Synthesize human feedback-loop leadership model
 status: In Progress
-assignee: []
+assignee:
+  - agent-just3ws
 created_date: '2026-09-02 04:24'
+updated_date: '2026-09-02 04:24'
 labels: []
 dependencies: []
 documentation:
@@ -37,3 +39,13 @@ Capture the evidence-backed leadership operating model developed across OneMain 
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Refine docs/career-narrative-drop-in-engineering-ethos.md with a new public-safe operating-model section after the existing OneMain transformation arc.
+2. Describe the mentorship relay as a fidelity loop: coach the mid-senior, supervise their engagement with the junior-mid engineer, then use the junior-mid's teach-back to assess message fidelity and adjust the next iteration.
+3. Connect ACQ Enablement, Panoramic View, OTel WG, SME delegation, and handoff through shared interfaces, named ownership, regular feedback, and distributed cognitive load.
+4. Use only archive-corroborated public-safe evidence and clearly separate current firsthand framing from historical metrics. Avoid names, private channels, internal URLs, and sensitive incident details.
+5. Run the prose auditor, em-dash scan, and targeted repository validation. Record results before finalization.
+<!-- SECTION:PLAN:END -->
