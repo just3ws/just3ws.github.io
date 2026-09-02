@@ -20,8 +20,9 @@ the fact. I learned to navigate through changing conditions long before I
 worked with software systems.
 
 At sixteen, with my mother's permission, I enlisted in the Illinois Army
-National Guard. She would not approve a combat role, so I chose 91B, a mechanic
-role that also gave me a path to EMT-A certification through Advanced Individual
+National Guard. She would not let me take an infantry combat role, so the
+recruiter proposed 91B, the Army's legacy Combat Medic specialty. That path
+gave me the opportunity to earn EMT-A certification through Advanced Individual
 Training.
 
 At seventeen, I attended Basic Training at Fort Leonard Wood in the summer of
