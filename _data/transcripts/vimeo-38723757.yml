@@ -232,12 +232,12 @@ turns:
     them, where JavaScript is sort of a semicolon terminated language. The other thing
     that it does, which is kind of interesting, is it has some of the old basics that
     you're used to seeing. So, for example, I can do loops. So say for integer i equals
-    zero, i less than 10, increment i. And one of the things you'll see in here is
+    zero, I less than 10, increment I. And one of the things you'll see in here is
     that you can identify an old C++ program and how they write their for loops. Interesting
     thing about C++ or C in general is that a C++ program will do this optimization
     that makes no sense to anybody except someone who's really dug deep into C++.
     What we're doing in here is i++ or plus plus i, which does -- so when you do the
-    plus plus i, what's happening is you're saying increment the thing, don't return
+    plus plus I, what's happening is you're saying increment the thing, don't return
     r value. If I do i++, what you're saying is you have to do the increment generate
     a return value that can be assigned to something else which generates some wasted
     code on the back end. And if you're talking back in the days where we had chips
@@ -310,8 +310,8 @@ turns:
     and it just goes through LSCMC 0 through 9. So real exciting stuff. We have a
     loop. As you can imagine, we have other constructs that you would expect as well.
     So I can rewrite this thing, for example, as a do while int i equals 0, do, and
-    then here we could get rid of this, while i, i, sorry, less than 10. And if I
-    want to make the i get incremented, all I would do is I would say in here. Again,
+    then here we could get rid of this, while I, I, sorry, less than 10. And if I
+    want to make the I get incremented, all I would do is I would say in here. Again,
     run this one here is currently running. Run again. And ta-da. So exact same program.
     The other thing you'll see in here is when you see a C++ program to do some of
     this kind of stuff, you'll see some interesting ADMs from these folks. Again,
@@ -326,19 +326,19 @@ turns:
   text: Does that actually compound or are going to be issues?
 - speaker: S1
   text: That may actually give me some fits. Okay, let's have to do a temp variable
-    here to make it a little clearer. So if i is equal to 5, we want to process it.
+    here to make it a little clearer. So if I is equal to 5, we want to process it.
     If i equals 5, STD, call them CL, have a 5. So we're going to do that, close off
     the brace, get rid of this goofy one. And the weird thing you're going to have
-    in here is that we're going to see if i is equal to 5, it's going to say have
+    in here is that we're going to see if I is equal to 5, it's going to say have
     a 5. Now it's going to be a little bit odd here, and I think this is going to
     wind up running forever. That'll show this to you. The reason why this runs forever
-    is because we say if i equals 5, we're actually doing an assignment here. The
+    is because we say if I equals 5, we're actually doing an assignment here. The
     bad thing that's happening in this particular statement is we're actually saying
-    if the result of this expression is not 0, do this work. i equal 5, yield to 5,
+    if the result of this expression is not 0, do this work. I equal 5, yield to 5,
     5 is not 0, print things out. Because of this little code block in this particular
     thing, you'll see a couple interesting things happen in languages. First off,
     there are languages out there, a number of the functional languages have this
-    that i know of, F# i know has it, F# is the only thing I know at the top of my
+    that I know of, F# I know has it, F# is the only thing I know at the top of my
     head for sure has it, is that you'll actually say this particular item here is
     not a boolean. It doesn't yield a boolean expression. I think python has this
     as well. And it'll actually puke, you'll say try again, give me a boolean expression
@@ -353,7 +353,7 @@ turns:
     No, you're saying just go ahead and go. Yeah, no, you can do that. That would
     actually work. But the other thing I was trying to show was just the infiniteness
     of the whole thing. So what you'll see C++ programmers do defensively is they'll
-    say 5 equal i, because if you put the constant value on the left and the variable
+    say 5 equal I, because if you put the constant value on the left and the variable
     piece on the right, what you get instead is you get what we call a build. I get
     a compilation error saying the left operator must be an L value, it must be assignable.
     So again, I saw this a lot more in 2001 through 2004. I haven't seen this habit
@@ -369,7 +369,7 @@ turns:
   text: Yeah.
 - speaker: S1
   text: Well, you know, it's that you're putting the assignments after. If 5 equal
-    i, i equals 5.
+    I, I equals 5.
 - speaker: M1
   text: Yeah.
 - speaker: S1
@@ -1317,9 +1317,9 @@ turns:
     It's ugly, but you can do it. Class T, yeah. Say, double... I can have like an
     implementation of this one where I specialize for int i. And then what I would
     do is I... I'll do int, this is a horrible implementation. Let's just assume this
-    is a good one. Factorial of i minus one. And then there's a way to say that when
-    i is equal to one. And that's the part that I can't remember. But I can then say
-    when i is equal to one, do the special order. If you just return to one, and then
+    is a good one. Factorial of I minus one. And then there's a way to say that when
+    I is equal to one. And that's the part that I can't remember. But I can then say
+    when I is equal to one, do the special order. If you just return to one, and then
     the pilot will do the rest of the work. Expand it all out. And make things happen.
     The thing I don't remember is how to do the factorial for the exact case of one.
     This is the specialization for when type of class T for factorial is an integer.

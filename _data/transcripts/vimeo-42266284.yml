@@ -43,111 +43,111 @@ turns:
     the developers to write it the testers to test it we have to write the test it's
     a heck of a lot more expensive to write unit tests on 25 or 30 functions in a
     string helper than it might be doing up there too we also have opportunity costs
-    and i'll talk a little bit about that a little bit later that's maybe not something
+    and I'll talk a little bit about that a little bit later that's maybe not something
     that's quite so readily apparent but if we're building this really cool street
     helper class we may not be building something that maybe because of five that
     that perhaps might have a little more direct value to them and of course this
     all causes stress and angst on us because we always have the you know what deadlines
     that we have the other thing we do is we don't want to build complex solutions
-    for intellectual challenges boy i really like to come up with some really clever
+    for intellectual challenges boy I really like to come up with some really clever
     things and it is very stimulating for me but as you know it is almost certainly
-    and in fact i will probably willing to stand it will always be more expensive
-    to do a solution like that i've never come to the case where complexity is actually
-    cost us but more importantly it kind of creates domain experts you know if i i
-    need to carry away on something like that i got this fantastic uh expression analyzer
+    and in fact I will probably willing to stand it will always be more expensive
+    to do a solution like that I've never come to the case where complexity is actually
+    cost us but more importantly it kind of creates domain experts you know if I I
+    need to carry away on something like that I got this fantastic uh expression analyzer
     or whatever the case might be this is the greatest thing in the world the trouble
-    is is i'm the only one that understands and what that happens is that now no one
+    is is I'm the only one that understands and what that happens is that now no one
     wants to maintain your code and you don't want to be in a situation where people
     are drawing straws to see who's going to have to fix your stuff it may be very
-    good code i'm not saying that it's a bad thing but it's complicated and we don't
+    good code I'm not saying that it's a bad thing but it's complicated and we don't
     really want to want to go and have to be the only person in the face of the earth
     that's going to be able to understand what we're building so xp and experience
     says these kind of things that we talk about make sense um we also if you notice
     and then kind of struck me first it's what is the thing that could possibly work
-    not what could work and i'm still kind of kind of determined terms with that a
-    little bit but the wisdom behind this and i think it makes a lot of sense is that
+    not what could work and I'm still kind of kind of determined terms with that a
+    little bit but the wisdom behind this and I think it makes a lot of sense is that
     we as engineers we're actually building something we're not going to build something
     that we think is going to work we really kind of really believe that we're building
     a thing that is going to work and what saves us this is our tests that we write
     that we all write tests right we're going to do that because that will give us
     the assurance that we have built what we're looking for so that is really good
-    and i and i absolutely believe that that was very helpful and it's true but so
-    here we go i say this now because jim is here and i can get stoned and when those
-    pizza and there's the panel so i'm going to do this um i will say that what follows
-    here is based upon observations that i have made your mileage may vary and uh
-    certainly um your experiences will be different but i would like to go ahead and
+    and I and I absolutely believe that that was very helpful and it's true but so
+    here we go I say this now because jim is here and I can get stoned and when those
+    pizza and there's the panel so I'm going to do this um I will say that what follows
+    here is based upon observations that I have made your mileage may vary and uh
+    certainly um your experiences will be different but I would like to go ahead and
     give that some other uh not some other but some some brief practice to this okay
-    one of the things we should do and i see this a lot is that we tend to treat this
+    one of the things we should do and I see this a lot is that we tend to treat this
     or can't treat this as if this is more a dogma or a rigid type of thing you know
-    i want to do this i don't know we're going to do the simplest thing that could
+    I want to do this I don't know we're going to do the simplest thing that could
     possibly work and even uh ward cunningham one of the you know proponents of xp
     even kind of came to that conclusion as well so we have to kind of guard from
     from doing that um the the do is the simplest thing you possibly work is powerful
     but we don't want to get so rigid in our thinking that we cannot consider other
-    things in the face of the facts of your head because i believe that at the end
+    things in the face of the facts of your head because I believe that at the end
     of the day and at some level we really do need to consider what is the simplest
-    thing that will work now i will tell you that that is going to vary to the very
-    different degrees but what i'm saying here is that some of them unless we're building
+    thing that will work now I will tell you that that is going to vary to the very
+    different degrees but what I'm saying here is that some of them unless we're building
     something very simple and something very very well understood it's hard to come
     into a vacuum and build a particular feature that is integrating with a complex
     system um without having some sort of intuition of where we're going that doesn't
     mean we have to understand everything we have to design things to the nth degree
-    but i believe that you do need to know something about where we're going contrast
-    this with um taking your car to an auto mechanic i've got a problem with my car
-    the automatic the auto mechanic says what's the simplest thing that i can do and
-    he says well i can start changing these parts up now maybe he has a good idea
+    but I believe that you do need to know something about where we're going contrast
+    this with um taking your car to an auto mechanic I've got a problem with my car
+    the automatic the auto mechanic says what's the simplest thing that I can do and
+    he says well I can start changing these parts up now maybe he has a good idea
     that the parts is going to change are the ones we're going to do that need to
     be changing and if that didn't work we'll try some other things and get over to
     the top approach and perhaps at the end of the day we'll have that thing fixed
     we'll have my car fixed but although that was the simplest thing for me or for
-    him maybe my bill that would be wouldn't be fun so this is where i'm kind of coming
-    from when i say it there has to be some awareness whoops okay so what i'm saying
+    him maybe my bill that would be wouldn't be fun so this is where I'm kind of coming
+    from when I say it there has to be some awareness whoops okay so what I'm saying
     here is that doing the simplest thing that could possibly work doesn't excuse
     us from thinking about what is needed considering the bigger picture very easy
-    to be near-sighted as i just said if we're focused on doing a particular story
+    to be near-sighted as I just said if we're focused on doing a particular story
     that we're only focusing on the media now for many of the things we do this is
     perfectly valid and perfectly the right thing to do we're we're building a form
     and we understand all that stuff this this makes sense maybe you need to be focused
-    on i'm taking care of that but a lot of the things that i work on are very complex
-    systems and even though i might be working in a section that may not be overly
-    complex i know that it's part of a larger system and if i went and i built something
-    without having to know pretty much where i want to be going with it i'm going
-    to build something wrong no matter if it's the simplest way or not um i've got
-    a couple examples i'm going to skip over these right now but the one thing though
+    on I'm taking care of that but a lot of the things that I work on are very complex
+    systems and even though I might be working in a section that may not be overly
+    complex I know that it's part of a larger system and if I went and I built something
+    without having to know pretty much where I want to be going with it I'm going
+    to build something wrong no matter if it's the simplest way or not um I've got
+    a couple examples I'm going to skip over these right now but the one thing though
     that is kind of handy is that we don't really set out to do the wrong thing and
     perhaps what we did at that particular point of time was not the wrong thing um
     we had a internationalization project uh i18m conversion project and um this was
-    in a product that we did in java and i started working with java um the year that
+    in a product that we did in java and I started working with java um the year that
     it came out in 97 or something and really started getting into it heavily in 98
     and one of the tenants there is that you want to be able to use uh your strings
     in resource files because it allows you to go ahead and do that and it has again
     now probably preaching to the converter because we're all doing that but back
-    then we weren't and when i went down to the team that was working and building
+    then we weren't and when I went down to the team that was working and building
     our java product the team had made the decision that you know we don't really
     need to do that we don't have a need for an internationalized product right now
-    now at some level i knew that was going nowhere because we were already shipping
+    now at some level I knew that was going nowhere because we were already shipping
     the product in there a similar product in two or two other languages but you know
     what is the system that can work now would make sense they didn't need to do that
     but the problem with that is over the time this code base went to hundreds of
     thousands of thousands of lines and when the customer finally said yes this has
     got to be internationalized this became a huge problem now again was that decision
     not to put resources in the file bad or wrong probably not you know nothing is
-    you know that i just want to try to say everything is great but i can tell you
+    you know that I just want to try to say everything is great but I can tell you
     one thing it ended up to be a very expensive decision for us so why do we care
     about these things well it's cost um the uh the v factor that we have with the
     internationalization was huge um and we had actually it actually ended up taking
     a long time because we couldn't do it all in one phase we actually had to do it
-    over multiple phases and that kind of speaks to what i was talking about the opportunity
+    over multiple phases and that kind of speaks to what I was talking about the opportunity
     costs because when we get into a situation like that um where we cannot deliver
     what the customer needs um they're not happy or they're not they're not the light
-    i like the delightment because they're dazzling hopefully dazzling with my brains
+    I like the delightment because they're dazzling hopefully dazzling with my brains
     but it certainly does somewhere and the competitive market that we're in right
     now if we are doing things that are not helping achieve those goals our competitors
     are doing the simplest thing that could possibly work does not give us a license
     to be lazy do stupid things that annoy the customer or make something or making
-    somebody else's problem okay one of the things i'm going to talk about this with
+    somebody else's problem okay one of the things I'm going to talk about this with
     some real examples a little bit our library functions if you're writing library
-    functions or services i believe that we as developers have a little higher standard
+    functions or services I believe that we as developers have a little higher standard
     to keep up to in terms of writing code that can be documented for people to use
     at the very least we have to be smart and not annoy the customer so for example
     if we have a function that takes a um a path um the first thing maybe that the
@@ -157,9 +157,9 @@ turns:
     handle it don't do the simplest thing and just let the thing blow up handle the
     ultimate doing stupid things that annoy the customer is the famous windows must
     be restarted when you go ahead and you go and do an update and sometimes you really
-    have to do that i mean if you're going into the driver system or if you're replacing
+    have to do that I mean if you're going into the driver system or if you're replacing
     a lot of system dls or you know you've got to do it there's no other way around
-    but i will tell you knowing uh with some certainty because i was working with
+    but I will tell you knowing uh with some certainty because I was working with
     some microsoft engineers is that the code base has gotten so complicated that
     developers really don't know if what they just did would be something that would
     cause a side effect that would do it and the simplest thing that would work for
@@ -168,11 +168,11 @@ turns:
     drives and they're not the only ones that use but this is 150 is losing time and
     money now it's not the developers time and you know they got they got their thing
     done for expediency but it's annoying and of course cutting corners to be able
-    to move on to something that i really want to get sick and tired of doing this
-    sort and i want to build this network or something like that and in my desire
-    to do that i will do things like i'm going to just do something that i know kind
+    to move on to something that I really want to get sick and tired of doing this
+    sort and I want to build this network or something like that and in my desire
+    to do that I will do things like I'm going to just do something that I know kind
     of works it may not be exactly what the customer wants but it will sort of kind
-    of get the story passed and i believe you're something else okay and of course
+    of get the story passed and I believe you're something else okay and of course
     doing the simplest thing possible does not give us the freedom to discard practices
     that we value you know when school budgets are tight the first thing that tends
     to go are the things that have proven that have been effective in improving the
@@ -180,8 +180,8 @@ turns:
     gifted programs of music things like this study after study says these are really
     effective tools to help your students perform better better for us probably the
     corner area would be well things like uh tests or design design goes really fast
-    and again when i say design i'm not talking about the all the encompassing alpha
-    and omega but i'm just talking about understanding the context of what we're trying
+    and again when I say design I'm not talking about the all the encompassing alpha
+    and omega but I'm just talking about understanding the context of what we're trying
     to do and things like documentation so real quick some real life examples that
     we have a service uh actually it works with a partner and it transfers data from
     one application into our product and they're giving duplicates so we have to be
@@ -200,11 +200,11 @@ turns:
     and have a process there that sounds really easy to do the simplest thing that
     we could do there is just and that's exactly what we ended up doing until we got
     out into the field and it turned out that somebody wasn't sending pristine data
-    so i went back in and parsing xml and says hey you got bad xml oh my goodness
-    she's got bad xml i'll log that put it back in the queue and the other um whatever
+    so I went back in and parsing xml and says hey you got bad xml oh my goodness
+    she's got bad xml I'll log that put it back in the queue and the other um whatever
     100 millisecondsator picks up hey you got bad xml and then pretty soon we got
-    a this full of bad xml messages so i don't know it seemed like it here's one that's
-    an old one i don't think we would do this nowadays but here's a situation where
+    a this full of bad xml messages so I don't know it seemed like it here's one that's
+    an old one I don't think we would do this nowadays but here's a situation where
     we have a web client the web client has got to call a session later to get some
     information usually from a database so what do we return do we return the status
     and the raw data and really in this day and age that's what we're going to do
@@ -212,9 +212,9 @@ turns:
     the q2 to the client and from this particular piece of code as architectures many
     years ago they decided that it would be really good just to return to hml because
     it would save the developers that put the code together have to worry about that
-    where that bit me was i was actually integrating a service and i actually have
+    where that bit me was I was actually integrating a service and I actually have
     these wonderful facade calls it well these marvelous things and one of them is
-    a function that does exactly what i need but i get a string there and that string
+    a function that does exactly what I need but I get a string there and that string
     happens to be or better each team out no status code and no context for me to
     be able to figure out what this intent was call this function it'll do whatever
     it's supposed to do on the other end and then the results would be displayed on
@@ -234,13 +234,13 @@ turns:
     and the first service is actually going in and it read some data off of the database
     and for a particular entity and it wanted to uh get that information um get that
     information from the second service they went to the second service so the service
-    is hey you know i don't have a an index entry for that so what the first application
+    is hey you know I don't have a an index entry for that so what the first application
     did is they went out and sent an index they said add this index to it um the second
     service actually did have that record in there and actually threw an error because
-    it's a duplicate there's a duplicate entry and i'm not explaining this right but
+    it's a duplicate there's a duplicate entry and I'm not explaining this right but
     essentially the core issue was that probably a smart thing instead of just rejecting
     this error you know just rejecting the uh call and just dying uh just go ahead
-    and say you want me to add this hey i've already got it man and then hand back
+    and say you want me to add this hey I've already got it man and then hand back
     the uh the records back through logging all that information so that we have a
     trail and say hey you know that application under here is thinking that we don't
     have the information but because we didn't do that because the simplest thing
@@ -254,12 +254,12 @@ turns:
     um you know things that we do in the paper because they're our customers and they
     um let our peers know especially that that we've written code that we know you
     know we can demonstrate that it works but they take time and you bet they do um
-    you know people that have written it uh i don't know what your metrics are but
-    the kind of code that i work in i never spend less than one in one time for every
-    five minutes i do spending code i'm probably spending five minutes writing tests
-    actually i'm probably spending more time than that because i'm like i write you
-    at a lower system level so i need to be able to handle all sorts of failure cases
-    and edge cases so i'm driving a lot of tests and that's kind of a hard pill draw
+    you know people that have written it uh I don't know what your metrics are but
+    the kind of code that I work in I never spend less than one in one time for every
+    five minutes I do spending code I'm probably spending five minutes writing tests
+    actually I'm probably spending more time than that because I'm like I write you
+    at a lower system level so I need to be able to handle all sorts of failure cases
+    and edge cases so I'm driving a lot of tests and that's kind of a hard pill draw
     on people we were talking to run here and they were thinking uh well eat the wrong
     that's not probably that but they thought it was eight parts of coding and you
     can't do it but the thing is you short strip yourself on that and you have just
@@ -272,15 +272,15 @@ turns:
     lightning talk is you know like we want to guard against treating the maximum
     as a document right no absolutes you know especially not it should never be able
     to do the simplest impossible um it should be more like what is the simplest impossible
-    it's about balance as i just tell you i think the examples i made it's not planted
+    it's about balance as I just tell you I think the examples I made it's not planted
     but it's about balance even simple has costs and sometimes simple's costs are
     greater than not so simple and don't be afraid to push back and discover what
     something needs for your best and that's where you say but what is the simplest
-    thing that could possibly work and he tells me and i come back and i say well
-    i think this we get the debate it's not a matter of keeps right your walk or whatever
+    thing that could possibly work and he tells me and I come back and I say well
+    I think this we get the debate it's not a matter of keeps right your walk or whatever
     but it's a matter of being understanding and you know what more times than not
     the truth is exactly don't annoy you don't annoy your custody don't annoy your
-    custody don't i hate that because i get annoyed and i have to restart my way so
+    custody don't I hate that because I get annoyed and I have to restart my way so
     just don't do it alone and don't make it a problem for some of these but any intelligent
     fool can make things bigger don't do it you know what happens to be violent in
     this world but it does make a touch with us a lot of courage to be able to move
