@@ -169,6 +169,26 @@ The loop applies to technical principals, event-driven systems, domain
 boundaries, incident review, security work, governance, and Communities of
 Practice. The domain changes. The operating pattern remains recognizable.
 
+### Translation lesson: from wolf report to huntsman question
+
+Applied engineering often begins with concrete observations: a tree is down, a
+lamp is out, a monitor shows a failed request. Product and marketing work often
+begins with uncertain behavior: one experience outperformed another, a forecast
+was wrong, or a customer pattern is difficult to explain deterministically. The
+groups can be equally intelligent while using different evidence and incentive
+systems.
+
+The practical translation is to connect the concern to the other group’s known
+operating system. Instead of announcing, “I saw a wolf,” ask, “How do I contact
+the local huntsman?” That gives the people who understand the village a concrete
+place to start. Once the connection is made, the risk story can be explained in
+terms of their responsibilities, including what must happen next and what will
+remain possible once the issue is handled.
+
+This is a useful lesson for the hub essay and the coordination-loop series. The
+goal is not to hide the wolf. It is to make the concern actionable in the
+language of the people who can respond.
+
 ## Inspiration inbox: additional lesson candidates
 
 The private inspiration inbox adds a useful companion thread. It describes the
@@ -243,6 +263,7 @@ Before publication:
 | P1 | **The Weekly Coordination Loop for Broad Changes** | Initiative owners and delivery leads | Playbook excerpt | Searchable | `Capture Successful Project Processes`; `Work Ambition Assessment` | Needs human draft |
 | P1 | **Panoramic View Before Target State** | Architects working in mature systems | Case study | Searchable and shareable | `Panoramic View Analysis`; public system cartography material | Existing related material |
 | P1 | **When Conway's Law Describes the Incident** | Architecture and organization leaders | Essay | Shareable | `Tao and Reverse Conway`; `Work Ambition Assessment` | Existing related draft needs human revision |
+| P1 | **The Wolf and the Huntsman Question** | Staff+ engineers and cross-functional leaders | Field lesson | Translate operational risk into an actionable request that another group can own | Archive reflections on engineering and product incentives | Needs human draft |
 | P2 | **ACQ Enablement as a Boundary Team** | Platform and product engineering leaders | Case study | Searchable | Public `onemain.yml`; public retrospective; `OMF LinkedIn Update Review` | Existing public material |
 | P2 | **A Community Lifecycle: Catalyst, Working Group, Stewardship** | Engineering community organizers | Framework | Searchable | `Geekfest@OMF sessions recap`; public OTel material | Existing related draft needs human revision |
 | P2 | **AI Is Useful, but Humans Still Make Systems Legible** | Broad engineering audience | Short LinkedIn essay | Shareable | `OTel WG Readout`; current archive synthesis | Needs human draft |
