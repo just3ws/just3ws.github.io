@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-09-02 20:57'
-updated_date: '2026-09-02 21:11'
+updated_date: '2026-09-02 21:15'
 labels:
   - timeline
   - visualization
@@ -22,6 +22,14 @@ documentation:
   - >-
     backlog/tasks/task-260.06 -
     Refresh-timeline-hero-palette-and-page-local-theme-styling.md
+modified_files:
+  - timeline/index.html
+  - _sass/_p_timeline.scss
+  - _data/resume/positions/sentinel.yml
+  - career_datalake.json
+  - career_datalake.jsonl
+  - exports/career_datalake.json
+  - exports/career_datalake.jsonl
 priority: high
 type: enhancement
 ---
@@ -80,3 +88,13 @@ Added source-control and community context bands: Visual SourceSafe, SourceGear 
 
 Rebuilt and published the generated output to /opt/homebrew/var/www/just3ws.github.io with elevated install access. HTTPS verification remains blocked because nginx reload requires an interactive sudo password in this environment.
 <!-- SECTION:NOTES:END -->
+
+## Comments
+
+<!-- COMMENTS:BEGIN -->
+author: Codex
+created: 2026-09-02 21:15
+---
+2026-09-02: Applied Sentinel chronology correction. Sentinel is now the first Visual SourceSafe record, explicitly documenting the JSP to Active Server Pages and Microsoft Access transition; Trippe remains the continuation. Regenerated the career datalake and verified queries for Visual SourceSafe (Sentinel and Trippe), JSP (Sentinel), and Subversion (BDI). Widened the exhibit to the full viewport with a horizontally scrollable 112rem canvas, and expanded the timeline domain from 2009–2026 to 1990–2026 so the Windows and Linux origin eras are visible. Jekyll build passes across 1159 pages; local publish copied successfully, but nginx is not currently serving HTTPS in this session because the service reload requires the machine's interactive authorization.
+---
+<!-- COMMENTS:END -->
