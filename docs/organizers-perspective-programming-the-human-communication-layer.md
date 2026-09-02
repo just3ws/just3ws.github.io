@@ -13,6 +13,79 @@ larger than the code. It includes team boundaries, incentives, ownership,
 vocabulary, meeting structures, feedback paths, and the people who carry
 context from one part of the organization to another.
 
+## Orienteering before the metaphor
+
+The orienteering metaphor is not something I invented to describe my work after
+the fact. I learned to navigate through changing conditions long before I
+worked with software systems.
+
+I became an Eagle Scout. At sixteen, with my mother's permission, I enlisted in
+the Illinois Army National Guard. She would not approve a combat role, so I
+chose 91B, a mechanic role that also gave me a path to EMT-A certification
+through Advanced Individual Training. I completed that training with a 92.7
+average.
+
+At seventeen, I attended Basic Training at Fort Leonard Wood in the summer of
+1993. I loved it. The work was demanding, the objectives were concrete, and the
+feedback was immediate. I was not the best at everything, but I leaned in,
+finished what was put in front of me, and tried to bring the soldier behind me
+forward when I could.
+
+That experience taught me something I still use: clarity is not the absence of
+difficulty. Clarity is knowing the objective, the constraints, the available
+signals, and the next action.
+
+## Learning to test a system without breaking its purpose
+
+During an opposing-force exercise, I found smoke grenades and received
+permission from the Drill Sergeant to use them. I pulled my group together,
+flanked the line, coordinated movement, created confusion with the smoke and a
+false gas alarm, and led the group through the opening.
+
+In another exercise, I was effective at making the opposing soldiers trigger
+their training equipment before they could trigger mine. I hid beneath an
+obstacle in the mud and surprised soldiers as they crossed it.
+
+The Drill Sergeant corrected me. The exercise was meant to give those soldiers
+a fighting chance to complete the obstacle and learn from the encounter. My
+approach was effective against the exercise, but it was not calibrated to the
+exercise's training purpose.
+
+That correction became part of my engineering method. When I encounter a
+system, I look for the boundary where a small intervention reveals how the
+system actually behaves. Then I ask whether the intervention is producing the
+learning the system needs. The goal is not merely to defeat the current
+configuration. The goal is to make the next iteration more capable.
+
+## The painted rock is a control point
+
+This is why I think about AI-assisted engineering as orienteering. I may know
+the destination without knowing every turn. I set a bearing, move toward a
+visible landmark, check my position against the terrain, and choose the next
+leg.
+
+When an automated workflow starts moving faster than I can understand, I do not
+treat slowing down as failure. I use an interactive conversation as a map
+check. It gives me time to recover context, test assumptions, inspect confidence
+signals, and choose the next marker.
+
+I think of those markers as painted rocks on a trail. I place one far enough
+ahead to make progress, move to it, walk until I catch my breath, then place the
+next one. The rhythm is:
+
+1. Set a bearing from the intended outcome.
+2. Move quickly while the route and signals remain clear.
+3. Stop before the workflow outruns human integration.
+4. Reconcile the map with the terrain and the evidence.
+5. Establish the next visible marker.
+
+The principle is simple: bias toward clarity over momentum. Automation should
+accelerate work only while intent, context, and confidence remain legible.
+
+This is the same loop I use in architecture discovery, mentorship, community
+handoffs, and system migration. The terrain changes. The navigation discipline
+does not.
+
 ## The transcript is a field lesson, not an interview
 
 The source is a single-speaker transcription of my 2013 PechaKucha presentation.
