@@ -13,6 +13,15 @@ permalink: /ai/2026/09/02/what-aspect-oriented-programming-is/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+content_type: explainer
+source_kind: ai-augmented-human-led
+context_wiki:
+  concepts: [pointcut, join-point, advice, instrumentation, opentelemetry]
+  related:
+    - /ai/2026/09/01/aop-opentelemetry-strangler-fig/
+    - /ai/2026/08/20/system-cartography-part-3-aop-as-a-diagnostic-lens/
+  graph:
+    role: explainer
 ---
 
 _Editorial note: This is an AI-augmented, human-led exploratory article. Mike

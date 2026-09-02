@@ -13,6 +13,12 @@ permalink: /ai/2026/09/01/aop-opentelemetry-strangler-fig/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+content_type: field-note
+source_kind: ai-augmented-human-led
+context_wiki:
+  concepts: [aspect-oriented-programming, instrumentation, opentelemetry, strangler-fig, system-cartography]
+  graph:
+    role: bridge
 ---
 
 Aspect-Oriented Programming is often introduced as a way to reduce repeated

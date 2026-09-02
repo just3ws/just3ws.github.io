@@ -47,7 +47,21 @@ layout: minimal
     </aside>
     {% endif %}
   </header>
+  <aside class="concept-wiki-tools" aria-label="Context wiki tools">
+    <div class="concept-wiki-tools-row">
+      <span class="concept-wiki-mark" aria-hidden="true">⌘</span>
+      <span><strong>Context wiki</strong> · every strange word is a door</span>
+      <button type="button" class="concept-definitions-toggle" aria-expanded="false" aria-controls="conceptDefinitions">
+        Show definitions
+      </button>
+    </div>
+    <div id="conceptDefinitions" class="concept-definitions" hidden>
+      <p class="concept-definitions-intro">A pocket glossary for this page. Follow a term for the longer trail.</p>
+      <div class="concept-definitions-list"></div>
+    </div>
+  </aside>
   <div class="post-body{% if page.tags contains 'linkedin' %} linkedin-article-body{% endif %}">
     {{ content }}
   </div>
 </article>
+<div id="conceptPreview" class="concept-preview" role="status" aria-live="polite" hidden></div>

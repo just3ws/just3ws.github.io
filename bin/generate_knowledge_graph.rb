@@ -9,11 +9,14 @@
 require 'yaml'
 require 'json'
 require 'fileutils'
+require 'date'
 
 class KnowledgeGraphGenerator
   TRANSCRIPTS_DIR = "_data/transcripts"
   INTERVIEWS_FILE = "_data/interviews.yml"
   ASSETS_FILE = "_data/video_assets.yml"
+  CONCEPTS_FILE = "_data/concepts.yml"
+  POSTS_DIR = "_posts"
   OUTPUT_DATA = "_data/knowledge_graph.json"
   ASSETS_OUTPUT_DATA = "assets/data/knowledge_graph.json"
 
@@ -106,6 +109,51 @@ class KnowledgeGraphGenerator
       add_node(nodes, node_ids, "topic-#{topic_name.downcase.tr('^a-z0-9', '-')}", topic_name, "Technical Topic", 4, "/intelligence/", val: 18, description: "Core engineering discipline & methodology")
     end
 
+    # 1b. Register the public context wiki as a graph layer. These nodes are
+    # curated, article-backed vocabulary rather than model-inferred guesses.
+    concepts = File.exist?(CONCEPTS_FILE) ? YAML.load_file(CONCEPTS_FILE, aliases: true) : []
+    concepts.each do |concept|
+      concept_id = concept["graph_id"] || "concept-#{concept['slug']}"
+      add_node(nodes, node_ids, concept_id, concept["label"], "Concept", 7, concept["url"], val: 14, description: concept["definition"])
+    end
+    concepts.each do |concept|
+      source = concept["graph_id"] || "concept-#{concept['slug']}"
+      Array(concept["related"]).each do |related_slug|
+        related = concepts.find { |candidate| candidate["slug"] == related_slug }
+        next unless related
+
+        target = related["graph_id"] || "concept-#{related_slug}"
+        add_link(links, source, target, "related_concept", 2)
+      end
+    end
+
+    # Article frontmatter can add explicit graph context without requiring a
+    # second registry. This keeps relationship intent close to the prose while
+    # still producing a deterministic graph artifact.
+    Dir[File.join(POSTS_DIR, '*')].each do |path|
+      raw = File.read(path)
+      next unless raw.start_with?("---")
+
+      frontmatter = raw.split(/^---\s*$/, 3)[1]
+      metadata = YAML.safe_load(frontmatter, permitted_classes: [Date, Time], aliases: true) || {}
+      wiki = metadata["context_wiki"]
+      next unless wiki.is_a?(Hash)
+
+      filename = File.basename(path).sub(/\.(md|html)\z/, '')
+      article_id = "article-#{filename.downcase.tr('^a-z0-9', '-')}"
+      article_url = metadata["permalink"] || "/#{filename.sub(/\A\d{4}-\d{2}-\d{2}-/, '')}/"
+      add_node(nodes, node_ids, article_id, metadata["title"] || filename, "Archive Article", 8, article_url, val: 16, description: metadata["description"].to_s)
+
+      Array(wiki["concepts"]).each do |slug|
+        concept = concepts.find { |candidate| candidate["slug"] == slug.to_s }
+        next unless concept
+
+        add_link(links, article_id, concept["graph_id"] || "concept-#{concept['slug']}", "explains", 3)
+      end
+    rescue Psych::Exception => error
+      warn "Skipping invalid frontmatter in #{path}: #{error.message}"
+    end
+
     # 2. Process Interviews & Connect Nodes
     interviews_raw.each do |interview|
       id = interview["id"]
@@ -173,7 +221,9 @@ class KnowledgeGraphGenerator
         "Open Source Project" => { color: "#f59e0b", group: 3 },
         "Technical Topic" => { color: "#8b5cf6", group: 4 },
         "Interviewee" => { color: "#ec4899", group: 5 },
-        "Interview" => { color: "#64748b", group: 6 }
+        "Interview" => { color: "#64748b", group: 6 },
+        "Concept" => { color: "#0f766e", group: 7 },
+        "Archive Article" => { color: "#b45309", group: 8 }
       },
       nodes: nodes,
       links: links

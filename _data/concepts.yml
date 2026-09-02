@@ -1,0 +1,100 @@
+# Public concept registry for the context wiki layer.
+#
+# Each concept points to a real article in the archive. The short definition is
+# deliberately separate from the article so a reader can get a small foothold
+# without leaving the page.
+- slug: aspect-oriented-programming
+  label: Aspect-Oriented Programming
+  aliases: [AOP, Aspect-Oriented Programming]
+  definition: A way to describe behavior that crosses many parts of a program, then apply it at selected boundaries.
+  url: /ai/2026/09/02/what-aspect-oriented-programming-is/
+  graph_id: topic-aspect-oriented-programming
+  related: [pointcut, join-point, advice, instrumentation, opentelemetry]
+
+- slug: pointcut
+  label: pointcut
+  aliases: [pointcut, pointcuts]
+  definition: The rule that selects the places in a program where an aspect is allowed to run.
+  url: /ai/2026/08/20/system-cartography-part-3-aop-as-a-diagnostic-lens/
+  graph_id: concept-pointcut
+  related: [join-point, advice, aspect-oriented-programming]
+
+- slug: join-point
+  label: join point
+  aliases: [join point, join points, join-point]
+  definition: A meaningful moment in execution, such as entering a method, leaving it, or handling an error.
+  url: /ai/2026/08/20/system-cartography-part-3-aop-as-a-diagnostic-lens/
+  graph_id: concept-join-point
+  related: [pointcut, advice, instrumentation]
+
+- slug: advice
+  label: advice
+  aliases: [advice]
+  definition: The behavior an aspect runs at a selected join point, often before, after, or when an error occurs.
+  url: /ai/2026/09/02/what-aspect-oriented-programming-is/
+  graph_id: concept-advice
+  related: [pointcut, join-point, aspect-oriented-programming]
+
+- slug: instrumentation
+  label: instrumentation
+  aliases: [instrumentation, instrumented]
+  definition: Adding measurements or signals to a system so its behavior can be observed while it runs.
+  url: /2026/08/30/rolling-out-opentelemetry-in-the-real-world.html
+  graph_id: concept-instrumentation
+  related: [opentelemetry, golden-signals, strangler-fig]
+
+- slug: opentelemetry
+  label: OpenTelemetry
+  aliases: [OpenTelemetry, OTel]
+  definition: An open standard and set of tools for producing traces, metrics, and logs that describe system behavior.
+  url: /2026/08/30/rolling-out-opentelemetry-in-the-real-world.html
+  graph_id: proj-opentelemetry
+  related: [instrumentation, golden-signals, system-cartography]
+
+- slug: strangler-fig
+  label: Strangler Fig pattern
+  aliases: [Strangler Fig, strangler fig pattern, strangler pattern]
+  definition: An incremental migration approach that routes one capability at a time to a new system while the old system remains useful.
+  url: /ai/2026/09/01/aop-opentelemetry-strangler-fig/
+  graph_id: concept-strangler-fig
+  related: [instrumentation, system-cartography, opentelemetry]
+
+- slug: conways-law
+  label: Conway's Law
+  aliases: [Conway's Law, Conway Law]
+  definition: The systems an organization builds tend to reflect the communication paths through which the organization works.
+  url: /2026/08/30/conways-law-in-the-trenches-growth-vs-enablement.html
+  graph_id: topic-conways-law
+  related: [reverse-conway-maneuver, system-cartography]
+
+- slug: reverse-conway-maneuver
+  label: Reverse Conway Maneuver
+  aliases: [Reverse Conway Maneuver, reverse Conway maneuver]
+  definition: Shaping team boundaries and communication paths so the system that emerges has the architecture the organization needs.
+  url: /2026/08/30/conways-law-in-the-trenches-growth-vs-enablement.html
+  graph_id: concept-reverse-conway-maneuver
+  related: [conways-law, system-cartography]
+
+- slug: golden-signals
+  label: Golden Signals
+  aliases: [Golden Signals, golden signals]
+  definition: "Four useful starting measures for service health: latency, traffic, errors, and saturation."
+  url: /2026/08/30/rolling-out-opentelemetry-in-the-real-world.html
+  graph_id: topic-golden-signals
+  related: [opentelemetry, instrumentation, slo]
+
+- slug: slo
+  label: service-level objective
+  aliases: [SLO, SLOs, service-level objective, service-level objectives]
+  definition: A target for a measurable service outcome, including the boundary where the system is too hot or too cold.
+  url: /2026/08/30/rolling-out-opentelemetry-in-the-real-world.html
+  graph_id: concept-slo
+  related: [golden-signals, opentelemetry]
+
+- slug: system-cartography
+  label: System Cartography
+  aliases: [System Cartography, system cartography]
+  definition: A disciplined way to map a living system across code, runtime behavior, ownership, and organizational context before changing it.
+  url: /2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html
+  graph_id: topic-system-cartography
+  related: [conways-law, strangler-fig, opentelemetry]

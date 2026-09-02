@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-02T11:54:02-05:00",
-  "total_nodes": 403,
-  "total_links": 615,
+  "generated_at": "2026-09-02T14:23:21-05:00",
+  "total_nodes": 419,
+  "total_links": 667,
   "clusters": {
     "Conference": {
       "color": "#0284c7",
@@ -26,6 +26,14 @@
     "Interview": {
       "color": "#64748b",
       "group": 6
+    },
+    "Concept": {
+      "color": "#0f766e",
+      "group": 7
+    },
+    "Archive Article": {
+      "color": "#b45309",
+      "group": 8
     }
   },
   "nodes": [
@@ -280,6 +288,150 @@
       "url": "/intelligence/",
       "val": 18,
       "description": "Core engineering discipline & methodology"
+    },
+    {
+      "id": "topic-aspect-oriented-programming",
+      "label": "Aspect-Oriented Programming",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/09/02/what-aspect-oriented-programming-is/",
+      "val": 14,
+      "description": "A way to describe behavior that crosses many parts of a program, then apply it at selected boundaries."
+    },
+    {
+      "id": "concept-pointcut",
+      "label": "pointcut",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/08/20/system-cartography-part-3-aop-as-a-diagnostic-lens/",
+      "val": 14,
+      "description": "The rule that selects the places in a program where an aspect is allowed to run."
+    },
+    {
+      "id": "concept-join-point",
+      "label": "join point",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/08/20/system-cartography-part-3-aop-as-a-diagnostic-lens/",
+      "val": 14,
+      "description": "A meaningful moment in execution, such as entering a method, leaving it, or handling an error."
+    },
+    {
+      "id": "concept-advice",
+      "label": "advice",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/09/02/what-aspect-oriented-programming-is/",
+      "val": 14,
+      "description": "The behavior an aspect runs at a selected join point, often before, after, or when an error occurs."
+    },
+    {
+      "id": "concept-instrumentation",
+      "label": "instrumentation",
+      "type": "Concept",
+      "group": 7,
+      "url": "/2026/08/30/rolling-out-opentelemetry-in-the-real-world.html",
+      "val": 14,
+      "description": "Adding measurements or signals to a system so its behavior can be observed while it runs."
+    },
+    {
+      "id": "proj-opentelemetry",
+      "label": "OpenTelemetry",
+      "type": "Concept",
+      "group": 7,
+      "url": "/2026/08/30/rolling-out-opentelemetry-in-the-real-world.html",
+      "val": 14,
+      "description": "An open standard and set of tools for producing traces, metrics, and logs that describe system behavior."
+    },
+    {
+      "id": "concept-strangler-fig",
+      "label": "Strangler Fig pattern",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/09/01/aop-opentelemetry-strangler-fig/",
+      "val": 14,
+      "description": "An incremental migration approach that routes one capability at a time to a new system while the old system remains useful."
+    },
+    {
+      "id": "topic-conways-law",
+      "label": "Conway's Law",
+      "type": "Concept",
+      "group": 7,
+      "url": "/2026/08/30/conways-law-in-the-trenches-growth-vs-enablement.html",
+      "val": 14,
+      "description": "The systems an organization builds tend to reflect the communication paths through which the organization works."
+    },
+    {
+      "id": "concept-reverse-conway-maneuver",
+      "label": "Reverse Conway Maneuver",
+      "type": "Concept",
+      "group": 7,
+      "url": "/2026/08/30/conways-law-in-the-trenches-growth-vs-enablement.html",
+      "val": 14,
+      "description": "Shaping team boundaries and communication paths so the system that emerges has the architecture the organization needs."
+    },
+    {
+      "id": "topic-golden-signals",
+      "label": "Golden Signals",
+      "type": "Concept",
+      "group": 7,
+      "url": "/2026/08/30/rolling-out-opentelemetry-in-the-real-world.html",
+      "val": 14,
+      "description": "Four useful starting measures for service health: latency, traffic, errors, and saturation."
+    },
+    {
+      "id": "concept-slo",
+      "label": "service-level objective",
+      "type": "Concept",
+      "group": 7,
+      "url": "/2026/08/30/rolling-out-opentelemetry-in-the-real-world.html",
+      "val": 14,
+      "description": "A target for a measurable service outcome, including the boundary where the system is too hot or too cold."
+    },
+    {
+      "id": "topic-system-cartography",
+      "label": "System Cartography",
+      "type": "Concept",
+      "group": 7,
+      "url": "/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html",
+      "val": 14,
+      "description": "A disciplined way to map a living system across code, runtime behavior, ownership, and organizational context before changing it."
+    },
+    {
+      "id": "article-2026-09-02-aop-opentelemetry-strangler-fig",
+      "label": "AOP as the Bridge Between OpenTelemetry and the Strangler Fig",
+      "type": "Archive Article",
+      "group": 8,
+      "url": "/ai/2026/09/01/aop-opentelemetry-strangler-fig/",
+      "val": 16,
+      "description": "A field lesson on how Aspect-Oriented Programming makes cross-cutting behavior visible, supports OpenTelemetry, and helps teams find safer seams for incremental modernization."
+    },
+    {
+      "id": "article-2026-09-02-aop-uses-misuses-and-boundaries",
+      "label": "AOP's Uses, Misuses, and Boundaries",
+      "type": "Archive Article",
+      "group": 8,
+      "url": "/ai/2026/09/02/aop-uses-misuses-and-boundaries/",
+      "val": 16,
+      "description": "When Aspect-Oriented Programming clarifies a system, when it hides control flow, and how to choose a boundary without creating invisible behavior."
+    },
+    {
+      "id": "article-2026-09-02-ruby-block-aop-shaped-boundary",
+      "label": "A Simple Ruby Block as an AOP-Shaped Boundary",
+      "type": "Archive Article",
+      "group": 8,
+      "url": "/ai/2026/09/02/ruby-block-aop-shaped-boundary/",
+      "val": 16,
+      "description": "A small Ruby example showing how a block can make before, operation, exit, and error behavior explicit at a reusable boundary."
+    },
+    {
+      "id": "article-2026-09-02-what-aspect-oriented-programming-is",
+      "label": "What Aspect-Oriented Programming Is",
+      "type": "Archive Article",
+      "group": 8,
+      "url": "/ai/2026/09/02/what-aspect-oriented-programming-is/",
+      "val": 16,
+      "description": "A plain-language introduction to aspects, join points, pointcuts, advice, and cross-cutting concerns, grounded in Mike Hall's PostSharp work."
     },
     {
       "id": "person-pat-paasch",
@@ -3658,6 +3810,318 @@
     }
   ],
   "links": [
+    {
+      "source": "topic-aspect-oriented-programming",
+      "target": "concept-pointcut",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-aspect-oriented-programming",
+      "target": "concept-join-point",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-aspect-oriented-programming",
+      "target": "concept-advice",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-aspect-oriented-programming",
+      "target": "concept-instrumentation",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-aspect-oriented-programming",
+      "target": "proj-opentelemetry",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-pointcut",
+      "target": "concept-join-point",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-pointcut",
+      "target": "concept-advice",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-pointcut",
+      "target": "topic-aspect-oriented-programming",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-join-point",
+      "target": "concept-pointcut",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-join-point",
+      "target": "concept-advice",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-join-point",
+      "target": "concept-instrumentation",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-advice",
+      "target": "concept-pointcut",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-advice",
+      "target": "concept-join-point",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-advice",
+      "target": "topic-aspect-oriented-programming",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-instrumentation",
+      "target": "proj-opentelemetry",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-instrumentation",
+      "target": "topic-golden-signals",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-instrumentation",
+      "target": "concept-strangler-fig",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "proj-opentelemetry",
+      "target": "concept-instrumentation",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "proj-opentelemetry",
+      "target": "topic-golden-signals",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "proj-opentelemetry",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-strangler-fig",
+      "target": "concept-instrumentation",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-strangler-fig",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-strangler-fig",
+      "target": "proj-opentelemetry",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-conways-law",
+      "target": "concept-reverse-conway-maneuver",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-conways-law",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-reverse-conway-maneuver",
+      "target": "topic-conways-law",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-reverse-conway-maneuver",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-golden-signals",
+      "target": "proj-opentelemetry",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-golden-signals",
+      "target": "concept-instrumentation",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-golden-signals",
+      "target": "concept-slo",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-slo",
+      "target": "topic-golden-signals",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-slo",
+      "target": "proj-opentelemetry",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-system-cartography",
+      "target": "topic-conways-law",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-system-cartography",
+      "target": "concept-strangler-fig",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-system-cartography",
+      "target": "proj-opentelemetry",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "article-2026-09-02-aop-opentelemetry-strangler-fig",
+      "target": "topic-aspect-oriented-programming",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-aop-opentelemetry-strangler-fig",
+      "target": "concept-instrumentation",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-aop-opentelemetry-strangler-fig",
+      "target": "proj-opentelemetry",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-aop-opentelemetry-strangler-fig",
+      "target": "concept-strangler-fig",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-aop-opentelemetry-strangler-fig",
+      "target": "topic-system-cartography",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-aop-uses-misuses-and-boundaries",
+      "target": "topic-aspect-oriented-programming",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-aop-uses-misuses-and-boundaries",
+      "target": "concept-instrumentation",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-aop-uses-misuses-and-boundaries",
+      "target": "proj-opentelemetry",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-aop-uses-misuses-and-boundaries",
+      "target": "concept-advice",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-ruby-block-aop-shaped-boundary",
+      "target": "topic-aspect-oriented-programming",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-ruby-block-aop-shaped-boundary",
+      "target": "concept-instrumentation",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-ruby-block-aop-shaped-boundary",
+      "target": "concept-advice",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-what-aspect-oriented-programming-is",
+      "target": "concept-pointcut",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-what-aspect-oriented-programming-is",
+      "target": "concept-join-point",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-what-aspect-oriented-programming-is",
+      "target": "concept-advice",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-what-aspect-oriented-programming-is",
+      "target": "concept-instrumentation",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-what-aspect-oriented-programming-is",
+      "target": "proj-opentelemetry",
+      "relationship": "explains",
+      "weight": 3
+    },
     {
       "source": "person-pat-paasch",
       "target": "pat-paasch-clark-sell-anglebracket-anglebracket",

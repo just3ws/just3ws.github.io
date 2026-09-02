@@ -1,0 +1,85 @@
+/* Context wiki links and their small, optional trail markers. */
+.concept-wiki-tools {
+  max-width: 770px;
+  margin: 1.5rem auto 1rem;
+  color: var(--color-text-muted, #64706c);
+  font-size: 0.88rem;
+}
+
+.concept-wiki-tools-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--color-border, #d8dedb);
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--color-bg-card, #fff) 88%, var(--color-primary, #0f766e));
+}
+
+.concept-wiki-mark {
+  color: var(--color-primary, #0f766e);
+  font-family: ui-monospace, monospace;
+  font-weight: 800;
+}
+
+.concept-definitions-toggle {
+  margin-left: auto;
+  border: 1px solid var(--color-primary, #0f766e);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  color: var(--color-primary, #0f766e);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.concept-definitions-toggle:hover,
+.concept-definitions-toggle:focus-visible {
+  color: var(--color-bg-card, #fff);
+  background: var(--color-primary, #0f766e);
+}
+
+.concept-definitions {
+  margin-top: 0.55rem;
+  padding: 0.85rem;
+  border-left: 3px solid var(--color-accent, #b45309);
+  background: var(--color-bg-subtle, #f7f5ef);
+}
+
+.concept-definitions-intro { margin: 0 0 0.7rem; }
+.concept-definition-item { display: grid; grid-template-columns: minmax(9rem, 0.35fr) 1fr; gap: 0.8rem; padding: 0.35rem 0; }
+.concept-definition-item a { font-weight: 800; color: var(--color-primary, #0f766e); }
+
+.concept-link {
+  color: var(--color-primary, #0f766e);
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+.concept-link:hover,
+.concept-link:focus-visible { text-decoration-style: solid; }
+
+.concept-preview {
+  position: fixed;
+  z-index: 10001;
+  width: max-content;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--color-primary, #0f766e);
+  border-radius: 0.65rem;
+  background: var(--color-bg-card, #fff);
+  color: var(--color-text-main, #1e232a);
+  box-shadow: 0 12px 30px rgba(30, 35, 42, 0.18);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.concept-preview p { margin: 0.35rem 0; }
+.concept-preview-read { color: var(--color-text-muted, #64706c); font-size: 0.76rem; }
+
+@media (max-width: 640px) {
+  .concept-definitions-toggle { margin-left: 0; }
+  .concept-definition-item { grid-template-columns: 1fr; gap: 0.15rem; }
+}

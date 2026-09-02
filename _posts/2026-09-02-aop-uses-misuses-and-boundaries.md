@@ -14,6 +14,12 @@ permalink: /ai/2026/09/02/aop-uses-misuses-and-boundaries/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+content_type: field-note
+source_kind: ai-augmented-human-led
+context_wiki:
+  concepts: [aspect-oriented-programming, instrumentation, opentelemetry, advice]
+  graph:
+    role: boundary-guide
 ---
 
 _Editorial note: This is an AI-augmented, human-led exploratory article. Mike
