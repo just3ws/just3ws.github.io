@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - agent-just3ws
 created_date: '2026-09-02 16:49'
-updated_date: '2026-09-02 16:55'
+updated_date: '2026-09-02 17:13'
 labels:
   - knowledge-graph
   - architecture
@@ -66,4 +66,6 @@ Added ./bin/pipeline knowledge-graph and focused RSpec coverage in spec/bin/audi
 Added bin/www-graphify with local endpoint http://127.0.0.1:11500/v1, model alias local, one worker, and 12,000-token default budget. Local llama is currently unstable and exits after binding, so semantic extraction remains pending.
 
 Added graph-aware Cmd+K loading of assets/data/knowledge_graph.json. Search now considers graph node labels, types, descriptions, and neighboring relationship context, then deduplicates graph results against the catalog.
+
+Added the lived-orienteering origin story to docs/organizers-perspective-programming-the-human-communication-layer.md: Eagle Scout background, Illinois Army National Guard 91B and EMT-A path, 1993 Fort Leonard Wood Basic Training, team-lift behavior, OpFor initiative, calibrated exercise difficulty, and the painted-rock clarity cadence for AI workflows. Vale, Markdown lint, and diff checks pass.
 <!-- SECTION:NOTES:END -->
