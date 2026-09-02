@@ -22,10 +22,14 @@ This document establishes the permanent canonical naming, casing, and compound w
 | :--- | :--- | :--- | :--- |
 | **ChicagoRuby** | `ChicagoRuby` | Single word, CamelCase. | Chicago's primary Ruby user group founded by Ray Hightower, Matt Polito, etc. |
 | **ChicagoDB** | `ChicagoDB` | Single word, CamelCase. | NoSQL / polyglot database meetup founded by Ethan Gunderson and Ryan Briones (birthed Gathers.us). |
-| **ChicagoCraftsmanship / SCMC** | `SCMC` | All-caps acronym: `SCMC` (Software Craftsmanship Mc). | Chicago pairing and kata meetup hosted at 8th Light. |
-| **ChiPy** | `ChiPy` | CamelCase abbreviation for Chicago Python Users Group. | |
+| **Gathers.us** | `Gathers.us` | Lowercase domain name, or `GathersUs`. | Event coordination platform created by Ethan Gunderson and Ryan Briones out of ChicagoDB. |
+| **SCMC** | `SCMC` | All-caps acronym: `SCMC` (Software Craftsmanship McHenry County). | Grassroots pairing and study meetup founded by Mike Hall and Ryan Gerry in McHenry County, IL. |
+| **ChicagoCraftsmanship** | `ChicagoCraftsmanship` | Single word, CamelCase. | Chicago pairing and kata meetup hosted at 8th Light. |
+| **ChiPy** | `ChiPy` | CamelCase abbreviation for Chicago Python Users Group. | Primary Chicago Python user group. |
 | **Geekfest (Obtiva)** | `Geekfest` | Single word, capitalized. | Original weekly technical study group and apprenticeship forum created by Dave Hoover, Kevin Taylor, and the Obtiva team. Mike Hall does not claim to have created Geekfest. |
 | **Geekfest@OMF** | `Geekfest@OMF` | Single word with `@OMF` enterprise suffix. | The internal enterprise technical community created by Mike Hall while at OneMain Financial (OMF), bringing that weekly study format inside the enterprise. |
+| **8th Light University (8LU)** | `8th Light University` / `8LU` | Title Case `8th Light University` or acronym `8LU`. | Weekly presentation and knowledge sharing forum founded by Micah Martin and Mike Jansen at 8th Light. |
+| **LCNUG** | `LCNUG` | All-caps acronym: `LCNUG` (Lake County .NET User Group). | Northern Illinois .NET user group. |
 | **Coderetreat** | `Coderetreat` | Single word, lowercase 'r' (coined by Corey Haines), or `Global Day of Coderetreat` (GDCR). | Never hyphenated or split as "Code Retreat". |
 
 ---
