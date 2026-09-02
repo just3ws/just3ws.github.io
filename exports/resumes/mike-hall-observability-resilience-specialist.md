@@ -40,9 +40,9 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 - Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
 
-- Community Enablement & SRE Handoff: Founded weekly Geekfest and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
+- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
 
-- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest.
+- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
 
 
 ### Principal Architect at Local AI Orchestration & Developer Runtime

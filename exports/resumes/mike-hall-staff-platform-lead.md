@@ -29,7 +29,7 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Merged two attrition-impacted teams into one unified delivery unit in the Acquisition Lane; founded ACQ Enablement to drive PII remediation, architecture discovery, and infrastructure support for ACQ Growth teams, while stewarding a 3-year enterprise community enablement arc (Geekfest and OTel WG) transitioned sustainably to SRE.
+**Target Focus:** Merged two attrition-impacted teams into one unified delivery unit in the Acquisition Lane; founded ACQ Enablement to drive PII remediation, architecture discovery, and infrastructure support for ACQ Growth teams, while stewarding a 3-year enterprise community enablement arc (Geekfest@OMF and OTel WG) transitioned sustainably to SRE.
 
 **Key Outcomes:**
 - Originations IC Delivery & Speedfunds: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
@@ -40,9 +40,9 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 
 - Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
 
-- Community Enablement & SRE Handoff: Founded weekly Geekfest and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
+- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
 
-- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest.
+- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
 
 
 ### Principal Architect at Local AI Orchestration & Developer Runtime

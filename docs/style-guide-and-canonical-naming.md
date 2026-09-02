@@ -24,7 +24,8 @@ This document establishes the permanent canonical naming, casing, and compound w
 | **ChicagoDB** | `ChicagoDB` | Single word, CamelCase. | NoSQL / polyglot database meetup founded by Ethan Gunderson and Ryan Briones (birthed Gathers.us). |
 | **ChicagoCraftsmanship / SCMC** | `SCMC` | All-caps acronym: `SCMC` (Software Craftsmanship Mc). | Chicago pairing and kata meetup hosted at 8th Light. |
 | **ChiPy** | `ChiPy` | CamelCase abbreviation for Chicago Python Users Group. | |
-| **GeekFest** | `GeekFest` | Single word, CamelCase. | Weekly study group founded by Dave Hoover at Obtiva (later Groupon). |
+| **Geekfest (Obtiva)** | `Geekfest` | Single word, capitalized. | Original weekly technical study group and apprenticeship forum created by Dave Hoover, Kevin Taylor, and the Obtiva team. Mike Hall does not claim to have created Geekfest. |
+| **Geekfest@OMF** | `Geekfest@OMF` | Single word with `@OMF` enterprise suffix. | The internal enterprise technical community created by Mike Hall while at Options Monster / OneMain Financial (OMF), bringing that weekly study format inside the enterprise. |
 | **Coderetreat** | `Coderetreat` | Single word, lowercase 'r' (coined by Corey Haines), or `Global Day of Coderetreat` (GDCR). | Never hyphenated or split as "Code Retreat". |
 
 ---

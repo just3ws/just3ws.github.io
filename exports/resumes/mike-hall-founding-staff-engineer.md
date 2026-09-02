@@ -29,7 +29,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Placed in two corporate hackathons (Rasa workflow bot and Bonsai Buckaroos schema inference tool), introduced local LLM orchestration and privacy-conscious AI workflows at Geekfest, and chartered ACQ Enablement for rapid platform modernization.
+**Target Focus:** Placed in two corporate hackathons (Rasa workflow bot and Bonsai Buckaroos schema inference tool), introduced local LLM orchestration and privacy-conscious AI workflows at Geekfest@OMF, and chartered ACQ Enablement for rapid platform modernization.
 
 **Key Outcomes:**
 - Originations IC Delivery & Speedfunds: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
@@ -40,9 +40,9 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 - Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
 
-- Community Enablement & SRE Handoff: Founded weekly Geekfest and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
+- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
 
-- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest.
+- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
 
 
 ### Principal Architect at Phalanx Duel

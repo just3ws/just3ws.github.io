@@ -40,7 +40,7 @@ To build an engineering culture that outlasts individual champions, you must des
 
 In the beginning, energy must be concentrated. You cannot create a vibrant culture by assigning committee mandates.
 
-During my career, I founded **Geekfest@OMF** to bridge knowledge silos between disparate application squads.
+During my career, inspired by the weekly Geekfest format pioneered by Dave Hoover and Kevin Taylor at Obtiva, I created **Geekfest@OMF** to bridge knowledge silos between disparate application squads at Options Monster and OneMain Financial.
 
 In Phase 1, the founder's role is to act as the energetic catalyst:
 * **The No-Friction Format:** Keep entry friction near zero. Avoid mandatory attendance, rigid slide decks, or formal approval gates.
@@ -62,7 +62,7 @@ Discussions are enjoyable, but organizational leverage requires **building share
 ```
 
 ### The Working Group Evolution:
-At OneMain Financial, as Geekfest expanded, we spun up focused working groups, including the **OpenTelemetry Working Group**:
+At OneMain Financial, as Geekfest@OMF expanded, we spun up focused working groups, including the **OpenTelemetry Working Group**:
 1. **Live Cross-Team Pairing:** Rather than lecturing about distributed tracing, we paired with engineers from different squads on their active staging pull requests.
 2. **Internal Helper Gems:** When multiple squads hit the same friction point (e.g. propagating W3C trace headers across legacy gateways), the working group authored shared internal libraries to solve it once for everyone.
 3. **Cross-Lane Representation:** We recruited rotating co-hosts from Platform, Growth, Security, and Core backend squads, deliberately diluting single-person dependency.
