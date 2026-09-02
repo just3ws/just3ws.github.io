@@ -26,6 +26,19 @@ OpenTelemetry needs consistent instrumentation at meaningful boundaries. The
 Strangler Fig needs evidence about boundaries before a team moves behavior out
 of a legacy system. AOP can help with both.
 
+This article is part of a short AOP series based on my single-speaker
+presentation. I am the presenter and the only speaker in the presentation.
+
+The preserved transcript contains only two introductory turns, so the series
+uses the transcript, my historical Post# article, and the other public source
+material below without pretending to reproduce unpreserved sections.
+
+The series continues with:
+
+- [What Aspect-Oriented Programming Is](/ai/2026/09/02/what-aspect-oriented-programming-is/)
+- [AOP's Uses, Misuses, and Boundaries](/ai/2026/09/02/aop-uses-misuses-and-boundaries/)
+- [A Simple Ruby Block as an AOP-Shaped Boundary](/ai/2026/09/02/ruby-block-aop-shaped-boundary/)
+
 ## The original problem: behavior crosses domain boundaries
 
 My 2009 talk, [Introduction to AOP with PostSharp](/videos/mike-hall-introduction-to-aop-with-postsharp/), focused on cross-cutting concerns in C# code. Logging, caching, and security did not belong to one business class, yet every relevant operation needed them.
@@ -140,6 +153,9 @@ Fig uses that evidence to move ownership through verified intermediate steps.
 
 The durable practice is simple: make boundaries observable before asking teams
 to trust them.
+
+The next article makes the boundary concrete in Ruby, where a block can express
+the operation being surrounded by authorization, telemetry, or cleanup.
 
 ## Provenance
 
