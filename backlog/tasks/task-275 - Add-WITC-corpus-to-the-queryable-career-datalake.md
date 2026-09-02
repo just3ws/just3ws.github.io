@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - agent-just3ws
 created_date: '2026-09-02 20:21'
-updated_date: '2026-09-02 20:23'
+updated_date: '2026-09-02 20:28'
 labels: []
 dependencies: []
 references:
@@ -53,10 +53,16 @@ Build a provenance-preserving, manifest-driven ingestion path for the public-saf
 5. Extend the CareerOS MCP server with bounded WITC discovery/query operations and a resource describing the corpus contract.
 6. Add fixtures and tests for supported formats, temporal metadata, exclusions, duplicate handling, provenance, dry-run/apply validation, query behavior, and bounded results.
 7. Document reproducible commands, temporal interpretation, source limitations, privacy boundary, local-cache behavior, and how to use the corpus with the existing local-LLM ask workflow.
+
+8. Extend the temporal artifact into an evidence-linked archive atlas model: eras, event/conference series, local evidence records, site routes, and verified external archive links, with explicit citation status and no invented URLs.
+
+9. Provide an interactive-friendly JSON representation and documented overlay semantics so a site timeline can render parallel series without collapsing recording, publication, preservation, and curation time.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
 Discovery completed. WITC is a 174G mixed archive with existing _output catalog/inventory artifacts. The reference ChatGPT archive mechanism is /Users/mike/my/lib/archive_search.py: SQLite documents + FTS5 + optional threads, local cache, deterministic retrieval, and optional local-LLM synthesis. Use a separate WITC corpus rather than merging raw WITC into career_datalake.json. Temporal fields must distinguish source/event/upload/file timestamps and must not imply that a later archive/conversion date is the event date.
+
+User expanded the goal to a visual, rich, interactive archive atlas with horizontal timeline overlays for conferences and series, links back to eras/context, and attributed local/external evidence including Wayback/Internet Archive targets. Treat external links as verified-or-unknown metadata, never inferred fact.
 <!-- SECTION:NOTES:END -->
