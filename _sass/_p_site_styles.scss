@@ -6,3 +6,52 @@
 }
 
 /* De-fragmented styles: Navigation moved to p_theme_modern */
+
+/* Mermaid diagrams replace the Markdown fallback code block after page load. */
+.post-body,
+.page-content {
+  .mermaid-diagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0;
+    min-height: 14rem;
+    padding: 1.75rem 2rem;
+    overflow-x: auto;
+    border: 1px solid var(--color-border, #d9e1df);
+    border-radius: var(--radius-lg, 0.75rem);
+    background:
+      linear-gradient(135deg, rgba(15, 118, 110, 0.045), transparent 42%),
+      var(--color-bg-subtle, #f4f0e8);
+    box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));
+  }
+
+  .mermaid-diagram svg {
+    width: 100%;
+    min-width: min(44rem, 100%);
+    max-width: 84rem;
+    height: auto;
+  }
+
+  .mermaid-diagram-error {
+    display: block;
+    white-space: pre-wrap;
+    font-family: var(--font-mono, ui-monospace, monospace);
+  }
+}
+
+@media (max-width: 700px) {
+  .post-body,
+  .page-content {
+    .mermaid-diagram {
+      margin-inline: 0;
+      padding: 1rem 0.75rem;
+      min-height: 10rem;
+    }
+
+    .mermaid-diagram svg {
+      min-width: 100%;
+    }
+  }
+}

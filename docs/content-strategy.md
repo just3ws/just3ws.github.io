@@ -26,3 +26,16 @@
 ## 4. Distribution Strategy
 - **LinkedIn/X Threads:** Using "The Lost Tapes" hook for individual high-value interviews.
 - **Engineering Insights:** Injecting curated insights into current Mike Hall technical writing.
+
+## 5. Field Lessons Program
+
+The archive also supports a connected series of first-person lessons about
+technical leadership as an engineering discipline. The program covers
+mentorship, communication design, system discovery, observability, and durable
+ownership. The working plan is documented in
+[Field Lessons: Engineering Principles in Practice](field-lessons-content-plan.md).
+
+The primary editorial rule is simple: each lesson must connect a principle to
+a real operating situation, a visible mechanism, and an outcome that can be
+verified. Archive-derived claims remain evidence-backed notes until Mike has
+reviewed and rewritten the piece in his own voice.

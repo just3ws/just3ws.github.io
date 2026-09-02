@@ -146,6 +146,18 @@ permalink: /assets/data/site-search-index.json
       "keywords": {{ kw_str | jsonify }}
     },
   {% endfor %}
+  {% for video in site.data.video_assets.items %}
+    {% assign title_str = video.title | default: video.id %}
+    {% assign kw_str = "video transcript one-off archive " | append: video.title | append: " " | append: video.topic | append: " " | append: video.tags | join: " " %}
+    {
+      "title": {{ title_str | jsonify }},
+      "url": "/videos/{{ video.id }}/",
+      "badge": "Video",
+      "icon": "🎥",
+      "keywords": {{ kw_str | jsonify }}
+    }{% if forloop.last == false %},{% endif %}
+  {% endfor %}
+  ,
   {% for interviewee in site.data.interviewees_index.items %}
     {% assign title_str = "Speaker: " | append: interviewee.name %}
     {% assign kw_str = "speaker interviewee oral history ugtastic whois tech community " | append: interviewee.name | append: " " | append: interviewee.profile_summary %}
@@ -165,18 +177,6 @@ permalink: /assets/data/site-search-index.json
       "url": "/interviews/topics/#{{ topic.slug }}",
       "badge": "Topic",
       "icon": "💡",
-      "keywords": {{ kw_str | jsonify }}
-    },
-  {% endfor %}
-  {% for video in site.data.scmc_videos.items %}
-    {% assign speakers_str = video.speakers | join: ", " %}
-    {% assign title_str = "SCMC: " | append: video.title %}
-    {% assign kw_str = "scmc software craftsmanship chicago meetup " | append: video.title | append: " " | append: speakers_str | append: " " | append: video.tags | join: " " %}
-    {
-      "title": {{ title_str | jsonify }},
-      "url": "/scmc/",
-      "badge": "SCMC",
-      "icon": "🏛️",
       "keywords": {{ kw_str | jsonify }}
     },
   {% endfor %}

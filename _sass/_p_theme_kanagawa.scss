@@ -90,7 +90,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Universal Mobile Responsive Code & ASCII Blocks */
-pre, .highlight pre, pre code, .ascii-box {
+pre, .highlight pre, .ascii-box {
   font-family: var(--font-mono-code) !important;
   font-size: 0.875rem !important;
   line-height: 1.5 !important;
@@ -105,6 +105,17 @@ pre, .highlight pre, pre code, .ascii-box {
   word-wrap: normal !important;
   -webkit-overflow-scrolling: touch !important;
   max-width: 100% !important;
+}
+
+/* Keep the code child from adding a second padded box inside the pre element. */
+pre code {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  color: inherit !important;
 }
 
 code {

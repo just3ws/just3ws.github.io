@@ -54,19 +54,58 @@
       {% endif %}
 
       {% if transcript_data.speaker_map %}
+        {% assign speaker_count = transcript_data.speaker_map.size %}
+        {% assign single_speaker = true %}
+        {% assign first_speaker_name = "" %}
+        {% for speaker in transcript_data.speaker_map %}
+          {% assign current_speaker_name = speaker[1].name | default: speaker[1] %}
+          {% if first_speaker_name == "" %}
+            {% assign first_speaker_name = current_speaker_name %}
+          {% elsif current_speaker_name != first_speaker_name %}
+            {% assign single_speaker = false %}
+          {% endif %}
+        {% endfor %}
+        {% assign presentation_mode = false %}
+        {% if asset.content_type == "presentation" %}
+          {% assign presentation_mode = true %}
+        {% elsif asset.content_type != "interview" %}
+          {% for speaker in transcript_data.speaker_map %}
+            {% assign role = speaker[1].role | default: "" %}
+            {% if role contains "Presenter" or role contains "Speaker" %}
+              {% assign presentation_mode = true %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% assign single_presenter_mode = false %}
+        {% if presentation_mode and single_speaker %}
+          {% assign single_presenter_mode = true %}
+        {% endif %}
         <section class="speakers-editorial-grid">
+          {% assign rendered_speaker_names = "|" %}
           {% for speaker in transcript_data.speaker_map %}
             {% assign s_id = speaker[0] %}
             {% assign s_info = speaker[1] %}
-            {% assign is_host = false %}
-            {% if s_id == "M1" or s_info.role contains "Interviewer" %}
-              {% assign is_host = true %}
+            {% assign rendered_speaker_key = speaker[1].name | default: speaker[1] | prepend: "|" | append: "|" %}
+            {% unless rendered_speaker_names contains rendered_speaker_key %}
+            {% assign is_interviewer = false %}
+            {% assign is_presenter = false %}
+            {% assign is_organizer = false %}
+            {% if single_presenter_mode %}
+              {% assign is_presenter = true %}
+            {% elsif s_info.role contains "Interviewer" or s_info.role contains "Host" %}
+              {% assign is_interviewer = true %}
+            {% elsif s_info.role contains "Presenter" or s_info.role contains "Speaker" %}
+              {% assign is_presenter = true %}
+            {% elsif s_info.role contains "Organizer" %}
+              {% assign is_organizer = true %}
             {% endif %}
-            <div class="speaker-editorial-card {% if is_host %}is-host{% endif %}">
-              <span class="speaker-role-label">{% if is_host %}The Interviewer{% else %}The Guest{% endif %}</span>
+            <div class="speaker-editorial-card {% if is_interviewer %}is-host{% elsif is_presenter %}is-presenter{% elsif is_organizer %}is-organizer{% endif %}">
+              <span class="speaker-role-label">{% if single_presenter_mode %}The Presenter{% elsif is_interviewer %}The Interviewer{% elsif is_presenter %}The Presenter{% elsif is_organizer %}The Organizer{% else %}The Guest{% endif %}</span>
               <h2 class="speaker-name-display">{{ s_info.name | default: s_info }}</h2>
               <p class="speaker-bio-subtext">{{ s_info.role }}</p>
             </div>
+              {% assign rendered_speaker_names = rendered_speaker_names | append: s_info.name | append: "|" %}
+            {% endunless %}
           {% endfor %}
         </section>
       {% endif %}
@@ -103,7 +142,7 @@
 
         <div class="transcript-header-bar">
           <div class="section-header-editorial">
-            <h2 class="section-title">The Conversation</h2>
+            <h2 class="section-title">{% if presentation_mode or single_speaker %}The Presentation{% else %}The Conversation{% endif %}</h2>
             <hr class="title-accent">
           </div>
           <div class="transcript-actions">
@@ -136,10 +175,18 @@
               {% assign speaker_id = turn.speaker %}
               {% assign speaker_info = transcript_data.speaker_map[speaker_id] %}
               {% assign is_interviewer = false %}
+              {% assign is_presenter = false %}
+              {% assign is_organizer = false %}
 
               {% if speaker_info %}
-                {% if speaker_id == "M1" or speaker_info.role contains "Interviewer" %}
+                {% if single_presenter_mode %}
+                  {% assign is_presenter = true %}
+                {% elsif speaker_info.role contains "Interviewer" or speaker_info.role contains "Host" %}
                   {% assign is_interviewer = true %}
+                {% elsif speaker_info.role contains "Presenter" or speaker_info.role contains "Speaker" %}
+                  {% assign is_presenter = true %}
+                {% elsif speaker_info.role contains "Organizer" %}
+                  {% assign is_organizer = true %}
                 {% endif %}
                 {% assign s_name = speaker_info.name | default: speaker_info %}
                 {% assign s_role = speaker_info.role %}
@@ -158,7 +205,7 @@
               {% assign mm = start_sec | divided_by: 60 %}
               {% assign ss = start_sec | modulo: 60 %}
 
-              <div class="imessage-turn sync-turn {% if is_interviewer %}interviewer{% else %}guest subject-{{ speaker_id }}{% endif %}"
+              <div class="imessage-turn sync-turn {% if is_interviewer %}interviewer{% elsif is_presenter %}presenter{% elsif is_organizer %}organizer{% else %}guest{% endif %} subject-{{ speaker_id }}"
                    data-turn-idx="{{ forloop.index0 }}"
                    data-start-sec="{{ start_sec }}"
                    data-end-sec="{{ end_sec }}"

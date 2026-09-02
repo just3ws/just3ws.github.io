@@ -2,7 +2,7 @@
   <div class="cmd-palette-card">
     <div class="cmd-palette-header">
       <span class="cmd-icon">⚡</span>
-      <input type="text" id="cmdPaletteInput" placeholder="Search 650+ surfaces, positions, articles, interviews, speakers (e.g., ray hightower, rails, groupon, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces and content">
+      <input type="text" id="cmdPaletteInput" placeholder="Search archive surfaces, positions, articles, interviews, speakers (e.g., ray hightower, rails, groupon, cartography)..." autocomplete="off" spellcheck="false" aria-label="Search site surfaces and content">
       <button type="button" id="cmdPaletteClose" class="cmd-close-btn" aria-label="Close command palette">&times;</button>
     </div>
 
@@ -80,15 +80,6 @@
           <span class="cmd-item-badge">/engagements</span>
         </a>
       </li>
-      <li>
-        <div class="cmd-item" data-cmd="toggle-theme" data-search="theme toggle kanagawa dark light mode wave appearance switch colorscheme">
-          <div class="cmd-item-left">
-            <span class="cmd-item-icon">🌊</span>
-            <span class="cmd-item-title">Toggle Theme (Kanagawa Wave / Minimal)</span>
-          </div>
-          <span class="cmd-item-badge">/theme</span>
-        </div>
-      </li>
     </ul>
 
     <div class="cmd-palette-footer">
@@ -97,7 +88,7 @@
         <span><kbd>↵</kbd> Select</span>
         <span><kbd>ESC</kbd> Close</span>
       </div>
-      <div id="cmdPaletteStatus">Search 650+ archive & site index items</div>
+      <div id="cmdPaletteStatus">Search archive and site content</div>
     </div>
   </div>
 </div>
@@ -153,27 +144,8 @@
       backdrop.classList.remove('is-open');
     }
 
-    function toggleTheme() {
-      const btn = document.getElementById('themeToggleBtn');
-      if (btn) btn.click();
-    }
-
     function renderDynamicMatches(matches, q) {
       resultsUl.innerHTML = '';
-
-      if (!q || 'toggle theme kanagawa dark light mode appearance colorscheme'.includes(q)) {
-        const themeLi = document.createElement('li');
-        themeLi.innerHTML = `
-          <div class="cmd-item" data-cmd="toggle-theme" data-search="theme toggle kanagawa dark light mode wave appearance switch colorscheme">
-            <div class="cmd-item-left">
-              <span class="cmd-item-icon">🌊</span>
-              <span class="cmd-item-title">Toggle Theme (Kanagawa Wave / Minimal)</span>
-            </div>
-            <span class="cmd-item-badge">/theme</span>
-          </div>
-        `;
-        resultsUl.appendChild(themeLi);
-      }
 
       matches.slice(0, 18).forEach(entry => {
         const li = document.createElement('li');
@@ -192,21 +164,13 @@
         resultsUl.appendChild(li);
       });
 
-      resultsUl.querySelectorAll('.cmd-item[data-cmd="toggle-theme"]').forEach(item => {
-        item.addEventListener('click', function(e) {
-          e.preventDefault();
-          toggleTheme();
-          closePalette();
-        });
-      });
-
       const visible = getVisibleItems();
       if (visible.length > 0) {
         visible[0].classList.add('is-selected');
       }
 
       if (statusEl) {
-        statusEl.textContent = matches.length + ' matching sitemap result' + (matches.length === 1 ? '' : 's');
+        statusEl.textContent = matches.length + ' matching archive result' + (matches.length === 1 ? '' : 's');
       }
     }
 
@@ -258,7 +222,7 @@
         resultsUl.appendChild(item.parentElement);
       });
       if (initialItems.length) initialItems[0].classList.add('is-selected');
-      if (statusEl) statusEl.textContent = 'Search 650+ archive & site index items';
+      if (statusEl) statusEl.textContent = 'Search archive and site content';
     }
 
     function getVisibleItems() {
@@ -326,10 +290,7 @@
         e.preventDefault();
         const selected = visible[currentIdx] || visible[0];
         if (selected) {
-          if (selected.getAttribute('data-cmd') === 'toggle-theme') {
-            toggleTheme();
-            closePalette();
-          } else if (selected.href) {
+          if (selected.href) {
             window.location.href = selected.href;
           }
         }

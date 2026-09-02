@@ -32,6 +32,10 @@
       <link rel="stylesheet" href="{{ stylesheet }}">
     {% endfor %}
   {% endif %}
+
+  {% if content contains 'language-mermaid' %}
+    <script type="module" src="/assets/js/mermaid-init.js"></script>
+  {% endif %}
 </head>
 <body class="layout-{{ page.layout }}{% if page.body_class %} {{ page.body_class }}{% endif %}">
   <a href="#main-content" class="skip-link">Skip to main content</a>

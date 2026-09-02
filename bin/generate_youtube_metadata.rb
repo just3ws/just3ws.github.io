@@ -97,9 +97,22 @@ class YouTubeMetadataGenerator
 
   def generate_video_package(transcript_id, video_id, asset, transcript_data, _research_data)
     speaker_map = transcript_data["speaker_map"] || {}
+    single_mike_presenter = speaker_map.values.any? && speaker_map.values.all? { |s| s["name"] == "Mike Hall" }
+    presentation_mode = if asset["content_type"]
+                          asset["content_type"] == "presentation"
+                        else
+                          speaker_map.values.any? do |s|
+                            role = s["role"].to_s
+                            role.include?("Presenter") || role.include?("Speaker")
+                          end
+                        end
     primary_speaker = speaker_map.values.find { |s| s["role"] != "Interviewer, UGtastic" && s["name"] != "Mike Hall" }
     guest_name = primary_speaker ? primary_speaker["name"] : (speaker_map.values.first&.dig("name") || "Mike Hall")
-    guest_role = primary_speaker ? primary_speaker["role"] : (speaker_map.values.first&.dig("role") || "Skateboarding")
+    guest_role = if single_mike_presenter
+                   "Presenter"
+                 else
+                   primary_speaker ? primary_speaker["role"] : (speaker_map.values.first&.dig("role") || "Skateboarding")
+                 end
 
     raw_summary = transcript_data["summary"] || asset["description"] || ""
     summary = clean_summary(raw_summary)
@@ -137,7 +150,18 @@ class YouTubeMetadataGenerator
                    "Software Craftsmanship"
                  end
 
-    title = "#{guest_name} on #{main_topic} | #{event_label}"
+    presentation_title = (asset["platforms"] || []).map { |p| p["title_on_platform"] }.compact.find { |t| t.to_s.strip != "" }
+    title = if single_mike_presenter && asset["title"].to_s.strip != "" && asset["title"] !~ /\bon\s+(Interviewer|Host|Guest|Speaker)\b/i
+              asset["title"].to_s.strip
+            elsif single_mike_presenter && presentation_title
+              presentation_topic = presentation_title.sub(/\s+w\/.*\z/i, '').strip
+              "Mike Hall | #{presentation_topic} | #{event_label}"
+            elsif presentation_mode && primary_speaker && presentation_title
+              presentation_topic = presentation_title.sub(/\s+w\/.*\z/i, '').strip
+              "#{guest_name} | #{presentation_topic} | #{event_label}"
+            else
+              "#{guest_name} on #{main_topic} | #{event_label}"
+            end
     title = title[0...99] if title.length > 100
 
     # Chapters from dialogue turns or curated recording chapters
@@ -150,7 +174,7 @@ class YouTubeMetadataGenerator
     first_mike_turn = turns.find { |t| t["speaker"] == mike_key }
 
     # 1:1 Canonical Description in Mike Hall with UGtastic authentic voice
-    description = build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, first_mike_turn ? first_mike_turn["text"] : nil)
+    description = build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, first_mike_turn ? first_mike_turn["text"] : nil, single_mike_presenter, presentation_mode)
     site_description = summary.empty? ? clean_spoken_intro(first_mike_turn ? first_mike_turn["text"] : nil, guest_name, event_label, guest_role) : summary
 
     {
@@ -255,11 +279,11 @@ class YouTubeMetadataGenerator
     chapters
   end
 
-  def build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, spoken_intro = nil)
+  def build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, spoken_intro = nil, single_mike_presenter = false, presentation_mode = false)
     lines = []
 
     # 1. Warm, friendly greeting in Mike Hall's authentic UGtastic voice
-    lines << generate_warm_opener(guest_name, guest_role, event_label, summary)
+    lines << generate_warm_opener(guest_name, guest_role, event_label, summary, single_mike_presenter, presentation_mode)
     lines << ""
 
     # 2. Discussion context & what was important to the guest
@@ -278,8 +302,15 @@ class YouTubeMetadataGenerator
     lines << "🏛️ ORAL HISTORY RECORD:"
     lines << "• Series: UGtastic Technical Conversation Archive (2009–2015)"
     lines << "• Location: #{event_label}"
-    lines << "• Guest: #{guest_name}#{guest_role && !guest_role.empty? ? " (#{guest_role})" : ""}"
-    lines << "• Interviewer: Mike Hall (UGtastic / https://www.just3ws.com)"
+    if single_mike_presenter
+      lines << "• Presenter: Mike Hall (UGtastic / https://www.just3ws.com)"
+    elsif presentation_mode
+      lines << "• Presenter: #{guest_name}#{guest_role && !guest_role.empty? ? " (#{guest_role})" : ""}"
+      lines << "• Organizer: Mike Hall (SCMC / UGtastic)"
+    else
+      lines << "• Guest: #{guest_name}#{guest_role && !guest_role.empty? ? " (#{guest_role})" : ""}"
+      lines << "• Interviewer: Mike Hall (UGtastic / https://www.just3ws.com)"
+    end
     lines << ""
     lines << "⏱️ CHAPTERS:"
     chapters.each do |ch|
@@ -296,7 +327,7 @@ class YouTubeMetadataGenerator
     lines.join("\n")
   end
 
-  def generate_warm_opener(guest_name, guest_role, event_label, summary)
+  def generate_warm_opener(guest_name, guest_role, event_label, summary, single_mike_presenter = false, presentation_mode = false)
     location_phrase = if event_label && event_label != "UGtastic Archive"
                         "on-site at #{event_label}"
                       else
@@ -309,7 +340,11 @@ class YouTubeMetadataGenerator
                      "to talk about their engineering work and what is important to them"
                    end
 
-    if guest_name == "Mike Hall"
+    if single_mike_presenter
+      "Hi, it's Mike with UGtastic! In this presentation, I'm sharing what I learned about #{guest_role.downcase}."
+    elsif presentation_mode
+      "Hi, it's Mike with UGtastic! This presentation captures #{guest_name} sharing #{guest_role.downcase}."
+    elsif guest_name == "Mike Hall"
       "Hi, it's Mike with UGtastic! In this archival clip recorded #{location_phrase}, I'm sharing some fun skateboarding footage from the archive."
     else
       "Hi, it's Mike with UGtastic! In this conversation recorded #{location_phrase}, I sit down with #{guest_name} #{topic_phrase}."
