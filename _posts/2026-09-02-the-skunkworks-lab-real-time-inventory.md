@@ -16,10 +16,10 @@ tags:
 archive_note: "This is a first-person reconstruction from memory, archival notes, and the canonical TicketsNow position record. Some leadership titles and project details remain approximate."
 ---
 
-_Editorial note: This is an AI-augmented, human-led article. Mike Hall supplied
-the memories, direction, corrections, and final judgment. AI assistance helped
-organize the material and clarify its structure. The human author remains
-responsible for the account._
+_Editorial note: A human sat down and guided the AI through this process. Mike
+Hall supplied the memories, direction, corrections, and final judgment. AI
+assistance helped organize the material and clarify its structure. The human
+author remains responsible for the account._
 
 I remember being made fun of by .NET developers for doing Ruby.
 
