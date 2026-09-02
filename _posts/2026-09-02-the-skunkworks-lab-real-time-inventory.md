@@ -22,6 +22,25 @@ It was silly, but it was also how I learned that tools become part of a social
 identity. People were not only arguing about syntax. They were telling one
 another what kind of developer they believed themselves to be.
 
+This was the Battle Vest era of community laptop stickers. When you opened
+your lid at a meetup, you were telling the room a lot about yourself to anyone
+who had eyes to read. The laptop was a workstation, but it was also a social
+map. A sticker could tell somebody where you had been, what you cared about,
+and which conversation might be worth starting.
+
+I got one of those stickers from Corey Haines at Geekfest. I had come to the
+Obtiva office from Crystal Lake, where I lived near the train station. I had
+optimized my life around working in Chicago because working in the Loop felt
+like making it. I was commuting to Evanston every day for the Leapfrog
+Marketing engagement. That was no trivial commute. I digress, but the commute
+is part of the story. I was spending a lot of energy getting to the place where
+the work happened.
+
+Then I put the sticker on my Dell Studio XPS laptop. I was running Windows
+Server and was annoyed that I had to upgrade to Windows 7 or something like
+that. I do not remember the exact version. I remember the laptop, the sticker,
+and the feeling that my tools were saying something about me.
+
 My first automation work at TicketsNow used WatiN. That was how Ruby entered my
 field of view. Matt Deiters was there doing consulting work through
 ThoughtWorks, and he was doing this Ruby thing I was just hearing about. This
@@ -29,7 +48,8 @@ was before Coderwall, and before Matt and I eventually met through that part of
 the community.
 
 I was still working primarily in .NET. The language was not the point. The
-problem was the point.
+problem was the point. I was leading the Real Time project, and the business
+had a problem that did not care which language I preferred.
 
 ## The business problem was a race
 
@@ -70,7 +90,9 @@ I do remember the tension. Two Enterprise Architects had probably hoped one of
 them would receive the role. Then someone new arrived and announced a problem
 for the organization to solve.
 
-I was competitive. I dug into it and fought like hell.
+I was competitive. I dug into it and fought like hell. That did not mean I had
+the answer. It meant I was willing to keep learning until I could explain a
+credible path to people who owned the parts I did not.
 
 ## The skunkworks approach
 
@@ -103,7 +125,9 @@ flowchart LR
 ```
 
 I was learning the technology while building the case for the technology. The
-technical work and the organizational work were the same project.
+technical work and the organizational work were the same project. I had to make
+the architecture understandable to networking, operations, analysts, business
+leaders, and the engineers who would keep it running.
 
 ## Build the lab before asking people to trust it
 
@@ -138,7 +162,8 @@ flowchart TD
 The important thing was not that I had built a clever test rig. The important
 thing was that the organization could see the system learning. A failed test
 was not a private embarrassment. It was a new fact that the team could work
-with.
+with. The monitor created a shared understanding without requiring everyone to
+stand in the lab and ask me for a status report.
 
 ## When the number became real
 
@@ -192,6 +217,11 @@ I was the skunkworks guy. I did not have the perfect title or a complete plan
 when I started. I had a concrete business problem, enough curiosity to keep
 pulling the thread, and the willingness to make the system visible while it was
 still becoming real.
+
+Skunkworks did not mean working alone. It meant creating enough room to move
+while building the relationships needed to make the result belong to the wider
+organization. The lab, the meetings, the presentation, the load tests, and the
+Scrum rhythm were all part of that work.
 
 The project taught me several things that I still use:
 
