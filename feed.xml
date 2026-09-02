@@ -4,10 +4,10 @@ layout: null
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
-  <link href="{{ site.url }}/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="{{ site.url }}/" rel="alternate" type="text/html" />
+  <link href="{{ site.url }}{{ site.baseurl }}/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="{{ site.url }}{{ site.baseurl }}/" rel="alternate" type="text/html" />
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>{{ site.url }}/feed.xml</id>
+  <id>{{ site.url }}{{ site.baseurl }}/feed.xml</id>
   <title type="html">{{ site.title | xml_escape }}</title>
   <subtitle>{{ site.description | xml_escape }}</subtitle>
   {% if site.author %}
@@ -20,11 +20,11 @@ layout: null
   {% for post in site.posts limit:20 %}
   <entry>
     <title type="html">{{ post.title | smartify | xml_escape }}</title>
-    <link href="{{ site.url }}{{ post.url }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
+    <link href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
     <published>{{ post.date | date_to_xmlschema }}</published>
     <updated>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</updated>
-    <id>{{ site.url }}{{ post.id | xml_escape }}</id>
-    <content type="html" xml:base="{{ site.url }}{{ post.url }}">{{ post.content | xml_escape }}</content>
+    <id>{{ site.url }}{{ site.baseurl }}{{ post.url }}</id>
+    <content type="html" xml:base="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.content | xml_escape }}</content>
     {% assign post_author = post.author | default: site.author %}
     {% if post_author %}
     <author>
@@ -37,9 +37,7 @@ layout: null
     {% for tag in post.tags %}
     <category term="{{ tag | xml_escape }}" />
     {% endfor %}
-    {% if post.description %}
-    <summary type="html">{{ post.description | xml_escape }}</summary>
-    {% endif %}
+    <summary type="html">{{ post.description | default: post.excerpt | strip_html | strip_newlines | xml_escape }}</summary>
   </entry>
   {% endfor %}
 </feed>
