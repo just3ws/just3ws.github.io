@@ -2,8 +2,10 @@
 id: TASK-275
 title: Add WITC corpus to the queryable career datalake
 status: In Progress
-assignee: []
+assignee:
+  - agent-just3ws
 created_date: '2026-09-02 20:21'
+updated_date: '2026-09-02 20:23'
 labels: []
 dependencies: []
 references:
@@ -40,3 +42,21 @@ Build a provenance-preserving, manifest-driven ingestion path for the public-saf
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Define a manifest-driven WITC source contract with safe text/metadata formats, hard exclusions for credentials, secrets, VCS internals, media, caches, generated outputs, and other non-contextual noise, plus relative-path provenance.
+2. Implement a deterministic importer that scans the configured WITC root, supports dry-run and apply/validation, records source path, project/repository identity, source kind, timestamps, SHA-256, size, and stable document/thread IDs, and preserves duplicates as distinct provenance records.
+3. Produce a local SQLite corpus matching the existing archive-search contract: documents, FTS5, threads, and corpus metadata. Keep the generated database out of git and avoid embedding the absolute volume path in committed content.
+4. Add a repo-local query interface with WITC-only and additive combined search modes, bounded result limits, date filters, stats, and source inspection. Reuse the existing query semantics where practical.
+5. Extend the CareerOS MCP server with bounded WITC discovery/query operations and a resource describing the corpus contract.
+6. Add fixtures and tests for supported formats, temporal metadata, exclusions, duplicate handling, provenance, dry-run/apply validation, query behavior, and bounded results.
+7. Document reproducible commands, temporal interpretation, source limitations, privacy boundary, local-cache behavior, and how to use the corpus with the existing local-LLM ask workflow.
+<!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Discovery completed. WITC is a 174G mixed archive with existing _output catalog/inventory artifacts. The reference ChatGPT archive mechanism is /Users/mike/my/lib/archive_search.py: SQLite documents + FTS5 + optional threads, local cache, deterministic retrieval, and optional local-LLM synthesis. Use a separate WITC corpus rather than merging raw WITC into career_datalake.json. Temporal fields must distinguish source/event/upload/file timestamps and must not imply that a later archive/conversion date is the event date.
+<!-- SECTION:NOTES:END -->
