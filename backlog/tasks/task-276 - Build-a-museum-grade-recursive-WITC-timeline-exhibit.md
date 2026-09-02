@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-09-02 20:57'
-updated_date: '2026-09-02 21:15'
+updated_date: '2026-09-02 23:33'
 labels:
   - timeline
   - visualization
@@ -75,6 +75,8 @@ Design direction:
 7. Build, run timeline and layout tests, inspect desktop and mobile screenshots, run prose and diff checks, and verify the installed localhost route when the site runtime is available.
 
 Primary files: timeline/index.html, _sass/_p_timeline.scss, tests/layout.spec.js. Reuse docs/witc-archive-atlas.json and _data/timeline_archive.json without changing their schemas.
+
+Add a domain-registration and domain-use layer to the waterfall view. Separate current canonical domain, historical project domains, and candidate domains whose ownership is not yet proven. Use evidence links, Wayback captures, and explicit confidence labels so registration, use, and ownership are never conflated. Style the layer using trace-waterfall conventions: spans, lanes, overlap, gaps, and drill-down evidence.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
@@ -87,6 +89,8 @@ Validation: Jekyll build passed across 1159 pages with 0 accessibility markup wa
 Added source-control and community context bands: Visual SourceSafe, SourceGear Vault, Subversion, Git and Mercurial, IBM ClearCase/JPMorgan Chase, GitHub, GitLab, and the 2012 WindyCityRails TOML community moment. Archive query confirmed Visual SourceSafe in Trippe (2001) and Subversion plus CruiseControl.NET in BDI (2008–2009); other recalled bands remain labeled era-level personal chronology.
 
 Rebuilt and published the generated output to /opt/homebrew/var/www/just3ws.github.io with elevated install access. HTTPS verification remains blocked because nginx reload requires an interactive sudo password in this environment.
+
+2026-09-02: User identified the OpenTelemetry trace waterfall as the strongest interaction model for the life timeline. Domain history will be represented as parallel evidence spans, not as a claim of continuous ownership. Current sources identify just3ws.com, ugtastic.com, UGl.st, whoistech.com, and ironlanguages.net as distinct candidates with different evidence strength.
 <!-- SECTION:NOTES:END -->
 
 ## Comments
