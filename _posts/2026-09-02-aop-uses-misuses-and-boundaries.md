@@ -24,8 +24,9 @@ the diagrams. It did not become the author or fill gaps in the source._
 _Source note: The canonical AOP presentation transcript is a single-speaker
 transcript of my presentation by me, Mike Hall. It currently preserves only two
 introductory turns. The historical Post# article and the linked public archive
-material provide the concrete examples. Interpretive sections are labeled by
-their language and are not presented as unpreserved transcript text._
+material provide the concrete examples. Historical dates remain attached to
+their sources. They establish lineage, not identity between separate events.
+Interpretive sections are not presented as unpreserved transcript text._
 
 AOP is useful when a concern genuinely crosses boundaries. It is dangerous when
 the boundary is only in the programmer's head.

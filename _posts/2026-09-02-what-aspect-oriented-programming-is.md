@@ -23,8 +23,9 @@ the diagrams. It did not become the author or fill gaps in the source._
 _Source note: The canonical archive transcript is a single-speaker transcript
 of my AOP presentation by me, Mike Hall. It currently preserves only two
 introductory turns. This explanation also draws on my 2009 Post# article and
-the public AOP and OpenTelemetry material linked below. It is not presented as
-a verbatim reconstruction of the unpreserved sections._
+the public AOP and OpenTelemetry material linked below. The historical items
+are lineage references, not claims that separate talks or posts were the same
+event. This is not a verbatim reconstruction of unpreserved sections._
 
 When I introduced AOP with PostSharp, I was talking about a problem that shows
 up as soon as a codebase becomes large enough: some behaviors matter in many

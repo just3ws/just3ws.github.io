@@ -31,7 +31,10 @@ presentation. I am the presenter and the only speaker in the presentation.
 
 The preserved transcript contains only two introductory turns, so the series
 uses the transcript, my historical Post# article, and the other public source
-material below without pretending to reproduce unpreserved sections.
+material below without pretending to reproduce unpreserved sections. The dates
+remain historical source metadata. Earlier material is part of the lineage of
+ideas I continue to work with, not evidence that separate artifacts were one
+event.
 
 The series continues with:
 
