@@ -171,6 +171,11 @@ Practice. The domain changes. The operating pattern remains recognizable.
 
 ### Translation lesson: from wolf report to huntsman question
 
+This extends [The Boy Who Told the Truth](/2025/02/01/the-boy-who-told-the-truth.html),
+which argues that the village often blames the messenger after ignoring a warning.
+The newer lesson keeps that critique and adds an engineering question: what
+communication path would let the village act before the wolf arrives?
+
 Applied engineering often begins with concrete observations: a tree is down, a
 lamp is out, a monitor shows a failed request. Product and marketing work often
 begins with uncertain behavior: one experience outperformed another, a forecast
