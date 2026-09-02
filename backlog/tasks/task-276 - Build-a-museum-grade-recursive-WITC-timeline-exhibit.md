@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-09-02 20:57'
-updated_date: '2026-09-02 20:57'
+updated_date: '2026-09-02 21:09'
 labels:
   - timeline
   - visualization
@@ -68,3 +68,11 @@ Design direction:
 
 Primary files: timeline/index.html, _sass/_p_timeline.scss, tests/layout.spec.js. Reuse docs/witc-archive-atlas.json and _data/timeline_archive.json without changing their schemas.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Implemented the first museum-grade exhibit slice in timeline/index.html and _sass/_p_timeline.scss. The page now uses a full-width open canvas with a cosmic orientation field, corpus intelligence metrics, epoch focus, horizontal zoom levels, pan controls, archive and preservation lanes, foundational Chicago Code Camp and SCMC threads, 28 career position lanes, 7 technology intersection lanes, and 14 recalled life/tool era bands. It loads knowledge_graph.json and exposes 419 graph nodes and 667 relationships, with nearby graph nodes in selected-thread details.
+
+Validation: Jekyll build passed across 1159 pages with 0 accessibility markup warnings. Headless browser runtime check passed with no page errors, 60 lanes, 28 career lanes, 7 technology lanes, 14 context lanes, 7 corpus/graph stats, and no mobile overflow at 375px. bin/install-localhost copied the build to /opt/homebrew/var/www/just3ws.github.io and installed the vhost. Final HTTPS verification is pending nginx reload because the environment cannot answer sudo.
+<!-- SECTION:NOTES:END -->
