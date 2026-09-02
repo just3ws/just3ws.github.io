@@ -19,17 +19,20 @@ The orienteering metaphor is not something I invented to describe my work after
 the fact. I learned to navigate through changing conditions long before I
 worked with software systems.
 
-I became an Eagle Scout. At sixteen, with my mother's permission, I enlisted in
-the Illinois Army National Guard. She would not approve a combat role, so I
-chose 91B, a mechanic role that also gave me a path to EMT-A certification
-through Advanced Individual Training. I completed that training with a 92.7
-average.
+At sixteen, with my mother's permission, I enlisted in the Illinois Army
+National Guard. She would not approve a combat role, so I chose 91B, a mechanic
+role that also gave me a path to EMT-A certification through Advanced Individual
+Training.
 
 At seventeen, I attended Basic Training at Fort Leonard Wood in the summer of
 1993. I loved it. The work was demanding, the objectives were concrete, and the
 feedback was immediate. I was not the best at everything, but I leaned in,
 finished what was put in front of me, and tried to bring the soldier behind me
 forward when I could.
+
+Between Basic Training and AIT, I became an Eagle Scout. In 1994, I completed my
+91B training at Fort Sam Houston in Texas and graduated with a 92.7 average. The
+training also gave me the EMT-A certification I had chosen that path to earn.
 
 That experience taught me something I still use: clarity is not the absence of
 difficulty. Clarity is knowing the objective, the constraints, the available
