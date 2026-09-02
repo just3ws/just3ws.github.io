@@ -341,3 +341,16 @@ The resulting body of work can support the consulting offering: building
 internal technical communities, mentoring systems, durable ownership models,
 observability seams, and knowledge practices that remain useful after the
 original organizer moves on.
+
+## Provenance and authorship
+
+Every article in this sequence should carry the same clear statement of
+provenance: these are AI-augmented, human-led articles. Mike supplies the
+source memories, field experience, intent, corrections, and final judgment.
+AI assistance helps search, organize, compare, draft, and diagram the material.
+It does not become the author or the authority.
+
+That distinction is part of the method. The tooling handles repeatable work,
+while a human decides what is true enough to publish, what needs a qualifier,
+what should remain an open question, and what no longer belongs in the evergreen
+corpus.
