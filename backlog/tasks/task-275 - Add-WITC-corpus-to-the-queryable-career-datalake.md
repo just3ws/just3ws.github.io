@@ -1,11 +1,11 @@
 ---
 id: TASK-275
 title: Add WITC corpus to the queryable career datalake
-status: In Progress
+status: Done
 assignee:
   - agent-just3ws
 created_date: '2026-09-02 20:21'
-updated_date: '2026-09-02 20:28'
+updated_date: '2026-09-02 20:31'
 labels: []
 dependencies: []
 references:
@@ -17,6 +17,17 @@ documentation:
   - CONTEXT.md
   - docs/career-datalake-and-mcp-guide.md
   - docs/corpus-metrics.md
+modified_files:
+  - bin/build_witc_corpus.rb
+  - bin/query_witc_corpus.rb
+  - bin/build_witc_timeline.rb
+  - bin/build_witc_atlas.rb
+  - bin/career_datalake_mcp_server.rb
+  - archive-atlas/index.html
+  - docs/witc-corpus.md
+  - docs/witc-temporal-timeline.md
+  - docs/witc-archive-atlas.json
+  - spec/bin/witc_corpus_spec.rb
 priority: high
 type: feature
 ---
@@ -29,18 +40,18 @@ Build a provenance-preserving, manifest-driven ingestion path for the public-saf
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The WITC source inventory reports counts, formats, date ranges, and source paths without reading excluded secret or credential files
-- [ ] #2 A deterministic corpus artifact preserves source path, source repository or project identity, timestamps when available, content hash, and provenance metadata
-- [ ] #3 The query interface can search WITC records separately and in a combined corpus without silently deduplicating or overwriting existing career data
-- [ ] #4 The MCP interface exposes WITC corpus discovery and query operations with bounded result sizes
-- [ ] #5 The importer supports dry-run and validation before any generated datalake artifact is replaced
-- [ ] #6 Documentation describes the source contract, exclusion rules, reproducibility, and known limitations
-- [ ] #7 Automated tests cover supported formats, exclusion rules, provenance fields, duplicate handling, and query behavior
+- [x] #1 The WITC source inventory reports counts, formats, date ranges, and source paths without reading excluded secret or credential files
+- [x] #2 A deterministic corpus artifact preserves source path, source repository or project identity, timestamps when available, content hash, and provenance metadata
+- [x] #3 The query interface can search WITC records separately and in a combined corpus without silently deduplicating or overwriting existing career data
+- [x] #4 The MCP interface exposes WITC corpus discovery and query operations with bounded result sizes
+- [x] #5 The importer supports dry-run and validation before any generated datalake artifact is replaced
+- [x] #6 Documentation describes the source contract, exclusion rules, reproducibility, and known limitations
+- [x] #7 Automated tests cover supported formats, exclusion rules, provenance fields, duplicate handling, and query behavior
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -65,4 +76,14 @@ Build a provenance-preserving, manifest-driven ingestion path for the public-saf
 Discovery completed. WITC is a 174G mixed archive with existing _output catalog/inventory artifacts. The reference ChatGPT archive mechanism is /Users/mike/my/lib/archive_search.py: SQLite documents + FTS5 + optional threads, local cache, deterministic retrieval, and optional local-LLM synthesis. Use a separate WITC corpus rather than merging raw WITC into career_datalake.json. Temporal fields must distinguish source/event/upload/file timestamps and must not imply that a later archive/conversion date is the event date.
 
 User expanded the goal to a visual, rich, interactive archive atlas with horizontal timeline overlays for conferences and series, links back to eras/context, and attributed local/external evidence including Wayback/Internet Archive targets. Treat external links as verified-or-unknown metadata, never inferred fact.
+
+Full source scan completed without reading excluded credential-like files. The initial invalid UTF-8 failure was corrected by normalizing only the searchable copy while hashing original bytes.
+
+Atlas page built successfully into _site/archive-atlas/index.html and atlas JSON copied into _site/docs/witc-archive-atlas.json. Local HTTPS server was not running for the final curl check.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented a local WITC/UGtastic archive corpus and temporal atlas. Added bin/build_witc_corpus.rb with dry-run/apply modes, hard exclusions, UTF-8 search normalization, stable SHA-256-based IDs, source/project provenance, typed temporal metadata, SQLite documents + FTS5 + threads, and atomic replacement. Added bin/query_witc_corpus.rb with WITC-only and additive all-corpus search, bounded excerpts/results, filters, and stats. Added WITC resources and bounded query/stats tools to the CareerOS MCP server. Added bin/build_witc_timeline.rb and bin/build_witc_atlas.rb, generated docs/witc-temporal-timeline.md and docs/witc-archive-atlas.json, and added archive-atlas/index.html with interactive epoch controls and parallel historical lanes. Added docs/witc-corpus.md and fixture coverage in spec/bin/witc_corpus_spec.rb. Full build produced 1,155 pages; WITC build produced 5,114 records across 51 threads; Markdown lint passed; 4 focused specs passed; syntax and diff checks passed. Live localhost curl was unavailable because the local server was not running, but built assets were verified directly. External Wayback and Internet Archive URLs are intentionally labeled discovery links and require individual verification before citation.
+<!-- SECTION:FINAL_SUMMARY:END -->
