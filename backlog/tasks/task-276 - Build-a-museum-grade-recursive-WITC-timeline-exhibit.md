@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-09-02 20:57'
-updated_date: '2026-09-02 23:34'
+updated_date: '2026-09-02 23:42'
 labels:
   - timeline
   - visualization
@@ -93,6 +93,8 @@ Rebuilt and published the generated output to /opt/homebrew/var/www/just3ws.gith
 2026-09-02: User identified the OpenTelemetry trace waterfall as the strongest interaction model for the life timeline. Domain history will be represented as parallel evidence spans, not as a claim of continuous ownership. Current sources identify just3ws.com, ugtastic.com, UGl.st, whoistech.com, and ironlanguages.net as distinct candidates with different evidence strength.
 
 Added a domain-span layer with just3ws.com, ugtastic.com, ugl.st, ironlanguages.net, and the historical whoistech.com signal. Each lane states whether evidence shows registration, public use, project authorship, or only a historical configuration note. Current RDAP records verified for just3ws.com, ugtastic.com, and whoistech.com on 2026-09-02.
+
+2026-09-02: User identified a no-signal era as a meaningful timeline feature. The waterfall must represent quiet intervals without equating absent public artifacts with inactivity, failure, or personal collapse. Future artifact spans should distinguish no public signal, quiet interval, and unobserved interval based on evidence coverage.
 <!-- SECTION:NOTES:END -->
 
 ## Comments
