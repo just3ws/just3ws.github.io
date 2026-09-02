@@ -65,7 +65,11 @@ Name the system principle only after the reader has seen it in the field.
 A possible opening for the first article:
 
 > I got the sticker at Geekfest. Corey Haines was handing them out at the
-> Obtiva office, and I put mine on a Dell Studio XPS laptop. I had come in from
+> Obtiva office, and I put mine on a Dell Studio XPS laptop. This was the Battle
+> Vest era of community stickers. With the lid up, you were telling the room a
+> lot about yourself to anyone who had eyes to read.
+>
+> I had come in from
 > Crystal Lake, where I lived near the train station, because I had optimized my
 > life around working in Chicago. Working in the Loop felt like making it.
 >
@@ -94,6 +98,12 @@ event from ACQ Mapping, OTel WG, mentorship, incident review, or migration work.
 Mike had traveled daily from Crystal Lake to Evanston while working on the
 Leapfrog Marketing engagement. The sticker went onto a Dell Studio XPS laptop
 running Windows Server during the transition to Windows 7.
+
+This was the Battle Vest era of community laptop stickers. With the lid up, a
+speaker was telling the room a great deal about their tools, affiliations,
+values, and interests. People who knew how to read those signals could find
+one another before the conversation began. The laptop was part workstation and
+part social map.
 
 **Lesson:** Tools do not remove the need for judgment. Faster typing does not
 solve unclear intent, missing context, poor feedback, or a system nobody can
