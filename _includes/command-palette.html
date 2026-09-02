@@ -106,6 +106,8 @@
 
     let searchCatalog = [];
     let isCatalogLoaded = false;
+    let knowledgeGraph = { nodes: [], links: [] };
+    let isGraphLoaded = false;
 
     if (!backdrop || !input) return;
 
@@ -122,14 +124,32 @@
         })
         .catch(err => {
           console.warn('Full search catalog index load failed, falling back to static items', err);
+      });
+    }
+
+    function loadKnowledgeGraph() {
+      if (isGraphLoaded) return Promise.resolve();
+      return fetch('/assets/data/knowledge_graph.json')
+        .then(res => res.json())
+        .then(data => {
+          knowledgeGraph = data || { nodes: [], links: [] };
+          isGraphLoaded = true;
+          if (input && input.value.trim()) {
+            filterResults(input.value);
+          }
+        })
+        .catch(err => {
+          console.warn('Knowledge graph load failed, continuing with catalog search', err);
         });
     }
 
     // Preload index in idle time
     if ('requestIdleCallback' in window) {
       requestIdleCallback(loadSearchCatalog);
+      requestIdleCallback(loadKnowledgeGraph);
     } else {
       setTimeout(loadSearchCatalog, 200);
+      setTimeout(loadKnowledgeGraph, 250);
     }
 
     function openPalette() {
@@ -137,6 +157,7 @@
       input.value = '';
       filterResults('');
       loadSearchCatalog();
+      loadKnowledgeGraph();
       setTimeout(() => input.focus(), 50);
     }
 
@@ -170,13 +191,49 @@
       }
 
       if (statusEl) {
-        statusEl.textContent = matches.length + ' matching archive result' + (matches.length === 1 ? '' : 's');
+        const graphCount = matches.filter(entry => entry.source === 'knowledge-graph').length;
+        const graphNote = graphCount ? ` · ${graphCount} graph relation${graphCount === 1 ? '' : 's'}` : '';
+        statusEl.textContent = matches.length + ' matching archive result' + (matches.length === 1 ? '' : 's') + graphNote;
       }
     }
 
     function escapeHtml(str) {
       if (!str) return '';
       return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function graphMatches(query) {
+      if (!isGraphLoaded || !knowledgeGraph.nodes || !query) return [];
+
+      const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+      const nodes = knowledgeGraph.nodes;
+      const links = knowledgeGraph.links || knowledgeGraph.edges || [];
+      const labels = Object.fromEntries(nodes.map(node => [node.id, node.label || node.id]));
+      const neighborText = {};
+      links.forEach(link => {
+        const source = link.source;
+        const target = link.target;
+        const relation = link.relationship || link.kind || 'related to';
+        neighborText[source] = (neighborText[source] || '') + ` ${relation} ${labels[target] || target}`;
+        neighborText[target] = (neighborText[target] || '') + ` ${relation} ${labels[source] || source}`;
+      });
+
+      return nodes.map(node => {
+        const text = `${node.label || ''} ${node.id || ''} ${node.type || ''} ${node.description || ''}`.toLowerCase();
+        const context = `${text} ${neighborText[node.id] || ''}`;
+        const direct = terms.every(term => text.includes(term));
+        const contextual = !direct && terms.every(term => context.includes(term));
+        if (!direct && !contextual) return null;
+        return {
+          title: node.label || node.id,
+          url: node.url || '/archive-status/',
+          badge: `Graph · ${node.type || 'Related'}`,
+          icon: '🕸️',
+          keywords: `${node.type || ''} ${node.description || ''} ${neighborText[node.id] || ''}`,
+          source: 'knowledge-graph',
+          rank: direct ? 0 : 1
+        };
+      }).filter(Boolean).sort((a, b) => a.rank - b.rank).slice(0, 12);
     }
 
     function filterResults(query) {
@@ -194,7 +251,15 @@
           const text = (entry.title + ' ' + (entry.keywords || '') + ' ' + (entry.badge || '')).toLowerCase();
           return terms.every(term => text.includes(term));
         });
-        renderDynamicMatches(matches, q);
+        const catalogMatches = matches.map(entry => ({ ...entry, source: 'catalog', rank: 1 }));
+        const relatedMatches = graphMatches(q);
+        const seenUrls = new Set();
+        const combined = [...relatedMatches, ...catalogMatches].filter(entry => {
+          if (seenUrls.has(entry.url)) return false;
+          seenUrls.add(entry.url);
+          return true;
+        });
+        renderDynamicMatches(combined, q);
       } else {
         const terms = q.split(/\s+/).filter(Boolean);
         let count = 0;

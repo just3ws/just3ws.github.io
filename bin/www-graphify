@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+# Configure Graphify for the local zdots inference service, then delegate.
+set -eu
+
+GRAPHIFY_MODEL="${GRAPHIFY_MODEL:-local}"
+GRAPHIFY_ENDPOINT="${GRAPHIFY_ENDPOINT:-http://127.0.0.1:11500/v1}"
+GRAPHIFY_TOKEN_BUDGET="${GRAPHIFY_TOKEN_BUDGET:-12000}"
+GRAPHIFY_CONCURRENCY="${GRAPHIFY_CONCURRENCY:-1}"
+
+export OLLAMA_BASE_URL="$GRAPHIFY_ENDPOINT"
+export OLLAMA_MODEL="$GRAPHIFY_MODEL"
+export OLLAMA_API_KEY="${OLLAMA_API_KEY:-local}"
+
+case "${1:-}" in
+  extract)
+    shift
+    exec graphify extract . --backend ollama --model "$GRAPHIFY_MODEL" \
+      --max-concurrency "$GRAPHIFY_CONCURRENCY" --token-budget "$GRAPHIFY_TOKEN_BUDGET" "$@"
+    ;;
+  *)
+    exec graphify "$@"
+    ;;
+esac

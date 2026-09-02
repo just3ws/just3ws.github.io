@@ -6,6 +6,12 @@ require 'fileutils'
 desc 'Run the full CI pipeline (build, test, validate)'
 task ci: ['build', 'test', 'validate']
 
+desc 'Audit the canonical archive relationship graph'
+task :knowledge_graph do
+  sh 'ruby ./bin/generate_knowledge_graph.rb'
+  sh 'ruby ./bin/audit_knowledge_graph.rb'
+end
+
 desc 'Build the site (generate + jekyll build)'
 task build: ['generate:all'] do
   sh 'ruby ./bin/generate_last_modified.rb'
@@ -725,5 +731,4 @@ namespace :localhost do
     sh "chmod o+x $(dirname #{webroot}) && chmod -R o+rX #{webroot}"
   end
 end
-
 

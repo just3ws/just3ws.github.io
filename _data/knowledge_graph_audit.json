@@ -1,0 +1,64 @@
+{
+  "schema_version": "knowledge-graph-audit.v1",
+  "graph_source": "_data/knowledge_graph.json",
+  "graph_generated_at": "2026-09-02T11:54:02-05:00",
+  "node_count": 403,
+  "edge_count": 615,
+  "node_counts_by_type": {
+    "Conference": 5,
+    "Interview": 184,
+    "Interviewee": 191,
+    "Open Source Project": 10,
+    "Technical Topic": 6,
+    "User Group": 7
+  },
+  "expected_counts_by_type": {
+    "Case Study": 2,
+    "Engagement": 4,
+    "Interview": 184,
+    "Interviewee": 191,
+    "Position": 28,
+    "Post": 168,
+    "Technical Topic": 73,
+    "Transcript": 212
+  },
+  "coverage_gaps": {
+    "Transcript": {
+      "expected": 212,
+      "actual": 0,
+      "missing": 212
+    },
+    "Post": {
+      "expected": 168,
+      "actual": 0,
+      "missing": 168
+    },
+    "Position": {
+      "expected": 28,
+      "actual": 0,
+      "missing": 28
+    },
+    "Engagement": {
+      "expected": 4,
+      "actual": 0,
+      "missing": 4
+    },
+    "Case Study": {
+      "expected": 2,
+      "actual": 0,
+      "missing": 2
+    },
+    "Technical Topic": {
+      "expected": 73,
+      "actual": 6,
+      "missing": 67
+    }
+  },
+  "duplicate_node_ids": {},
+  "missing_edge_endpoints": [],
+  "orphan_node_ids": [
+    "ug-denver-sc",
+    "ug-pittsburgh-sc"
+  ],
+  "status": "ok"
+}

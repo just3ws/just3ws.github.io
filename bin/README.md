@@ -15,6 +15,17 @@ This directory contains executable tools and drivers for building, validating, a
 
 All scripts in `bin/` follow standard prefix naming conventions:
 
+The preferred public driver names use a domain prefix. `www-graphify` is the
+repository wrapper for Graphify and supplies the local model alias, loopback
+endpoint, one-worker limit, and conservative token budget. Override those
+defaults with `GRAPHIFY_MODEL`, `GRAPHIFY_ENDPOINT`,
+`GRAPHIFY_CONCURRENCY`, or `GRAPHIFY_TOKEN_BUDGET` when needed.
+
+```sh
+./bin/www-graphify extract --mode deep --no-cluster
+graphify query "Which archive themes connect to OpenTelemetry?"
+```
+
 ### 1. Unified Drivers & CLI Tools
 - `server`: Local dev server launcher.
 - `pipeline`: Main pipeline CLI (`./bin/pipeline build`, `./bin/pipeline ci`, etc.).
