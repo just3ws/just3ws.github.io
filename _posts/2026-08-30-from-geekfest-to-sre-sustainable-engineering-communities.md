@@ -40,7 +40,7 @@ To build an engineering culture that outlasts individual champions, you must des
 
 In the beginning, energy must be concentrated. You cannot create a vibrant culture by assigning committee mandates.
 
-During my career, inspired by the weekly Geekfest format pioneered by Dave Hoover and Kevin Taylor at Obtiva, I created **Geekfest@OMF** to bridge knowledge silos between disparate application squads at Options Monster and OneMain Financial.
+During my career, inspired by the weekly Geekfest format pioneered by Dave Hoover and Kevin Taylor at Obtiva, I created **Geekfest@OMF** to bridge knowledge silos between disparate application squads at OneMain Financial (OMF).
 
 In Phase 1, the founder's role is to act as the energetic catalyst:
 * **The No-Friction Format:** Keep entry friction near zero. Avoid mandatory attendance, rigid slide decks, or formal approval gates.
