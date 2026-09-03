@@ -1,10 +1,9 @@
-# Mike Hall, Principal Software Engineer
+# Mike Hall, Software Engineer
 
 [![CI Pipeline](https://github.com/just3ws/just3ws.github.io/actions/workflows/build-and-validate.yml/badge.svg)](https://github.com/just3ws/just3ws.github.io/actions)
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
-I modernize high-consequence production systems by making their behavior,
-boundaries, and ownership easier to understand.
+I make complex production software easier to understand and safer to change.
 
 My work combines legacy modernization, production reliability, distributed
 observability, system cartography, and carefully bounded AI-assisted tooling.
@@ -12,7 +11,7 @@ observability, system cartography, and carefully bounded AI-assisted tooling.
 ## Start here
 
 - [Website and portfolio](https://www.just3ws.com/)
-- [Principal Software Engineer resume](https://www.just3ws.com/resumes/mike-hall-principal-software-engineer/)
+- [Targeted Principal Software Engineer resume](https://www.just3ws.com/resumes/mike-hall-principal-software-engineer/)
 - [Career timeline](https://www.just3ws.com/timeline/)
 - [Architecture case studies](https://www.just3ws.com/case-studies/)
 - [Advisory and consulting engagements](https://www.just3ws.com/engagements/)
