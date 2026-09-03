@@ -70,29 +70,38 @@ module Jekyll
         output << ""
       end
 
-      timeline = site.data.dig('resume', 'timeline', 'history') || site.data.dig('resume', 'timeline')
-      if timeline
+      ats = resume['ats'] || {}
+      public_entries = Array(ats['positions']).map { |entry| entry['id'] }
+      public_entries += Array(ats.dig('selected_projects', 'items')).map { |entry| entry['id'] }
+      public_entries = public_entries.compact.uniq
+      if public_entries.any?
         output << "## Experience"
         output << ""
-        timeline.each do |position_id|
+        public_entries.each do |position_id|
           position = site.data.dig('resume', 'positions', position_id)
           next unless position
 
           company = position.dig('company', 'name')
           title = position['title']
-          start_date = DateDisplay.human(position['start_date'])
-          end_date = DateDisplay.human(position['end_date'])
+          is_recent = position['start_date'].to_s >= '2018-01-01'
 
           output << "### #{title} at #{company}"
-          output << "**#{start_date} — #{end_date}**"
+          if is_recent
+            start_date = DateDisplay.human(position['start_date'])
+            end_date = DateDisplay.human(position['end_date'])
+            output << "**#{start_date} - #{end_date}**"
+          else
+            output << "**Selected project**" if position['type'].to_s.casecmp('project').zero?
+          end
           output << ""
-          summary = position['summary'] || position['description']
+          summary = position['public_summary'] || position['summary'] || position['description']
           output << summary if summary
           output << ""
 
-          if position['highlights'] && !position['highlights'].empty?
+          highlights = position['public_highlights'] || position['highlights']
+          if highlights && !highlights.empty?
             output << "**Key Outcomes:**"
-            position['highlights'].each do |h|
+            highlights.each do |h|
               text = h.is_a?(Hash) ? h['text'] : h
               output << "- #{text}" if text
             end

@@ -14,13 +14,21 @@
     </p>
   </header>
 
-  {%- if include.position.summary %}
-  <p>{{ include.position.summary }}</p>
+  {%- assign display_summary = include.position.summary -%}
+  {%- if include.public_surface and include.position.public_summary -%}
+    {%- assign display_summary = include.position.public_summary -%}
+  {%- endif -%}
+  {%- if display_summary %}
+  <p>{{ display_summary }}</p>
   {%- endif %}
 
-  {%- if include.position.highlights %}
+  {%- assign display_highlights = include.position.highlights -%}
+  {%- if include.public_surface and include.position.public_highlights -%}
+    {%- assign display_highlights = include.position.public_highlights -%}
+  {%- endif -%}
+  {%- if display_highlights %}
   <ul class="achievement-highlights">
-    {%- for highlight in include.position.highlights %}
+    {%- for highlight in display_highlights %}
     <li>
       {%- if highlight.text %}
         {{ highlight.text }}

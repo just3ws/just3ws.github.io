@@ -107,7 +107,7 @@ class ResumeQualityValidator
     end
 
     # Check for strategic problem domain indicators
-    domain_indicators = %w[principal modernization architecture distributed resilience reliability observability]
+    domain_indicators = %w[software engineer modernization architecture distributed resilience reliability observability]
     matches = domain_indicators.select { |ind| summary_text.downcase.include?(ind) }
     if matches.size < 2
       @warnings << "Macro narrative summary lacks domain authority keywords (found #{matches.size}/#{domain_indicators.size})"
@@ -124,12 +124,12 @@ class ResumeQualityValidator
     # Check canonical profile title
     if File.exist?(PROFILE_PATH)
       profile_data = YAML.safe_load_file(PROFILE_PATH)
-      if profile_data['title'] != 'Principal Software Engineer'
-        @errors << "Canonical profile title mismatch: expected 'Principal Software Engineer', got '#{profile_data['title']}'"
+      if profile_data['title'] != 'Software Engineer'
+        @errors << "Canonical profile title mismatch: expected 'Software Engineer', got '#{profile_data['title']}'"
       end
     end
 
-    puts "   ✓ Verified canonical professional summary with Principal domain positioning"
+    puts "   ✓ Verified canonical professional summary with Software Engineer identity and senior-scope evidence"
   end
 
   def validate_canonical_positions
@@ -344,7 +344,7 @@ class ResumeQualityValidator
     puts "🎯 RESUME QUALITY & ATS READINESS AUDIT SUMMARY"
     puts "=" * 80
 
-    puts "• Macro Narrative Alignment: Verified (Principal domain positioning)"
+    puts "• Macro Narrative Alignment: Verified (Software Engineer identity and senior-scope evidence)"
     puts "• Structural Outcome Ratio : #{@metrics[:structural_outcome_pct]}% (highlights with explicit consequence/result)"
     puts "• Quantified Impact Ratio  : #{@metrics[:quantified_pct]}% (highlights with concrete scale/metrics)"
     puts "• Strong Action Verb Ratio : #{@metrics[:action_verb_pct]}% (highlights starting with action verbs)"

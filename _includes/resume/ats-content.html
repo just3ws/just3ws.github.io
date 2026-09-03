@@ -11,7 +11,7 @@
       {% for position_item in ats.positions %}
         {% assign position_data = site.data.resume.positions[position_item.id] %}
         {% if position_data %}
-          {% include position.html position=position_data %}
+          {% include position.html position=position_data public_surface=true %}
         {% endif %}
       {% endfor %}
     </div>
@@ -37,7 +37,7 @@
         {% assign project_data = site.data.resume.positions[project_item.id] %}
         {% if project_data %}
           <!-- DEBUG: {{ project_data.title }} -->
-          {% include project.html project=project_data %}
+          {% include project.html project=project_data public_surface=true %}
         {% endif %}
       {% endfor %}
     </div>
@@ -61,8 +61,7 @@
         {% if add_position %}
           <li>
             <strong>{{ add_position.title }}, {{ add_position.company.name }}</strong>
-            <span class="ats-supporting-meta"> | {{ add_position.start_date | human_date }} - {{ add_position.end_date | human_date }}{% if add_position.company.location %} | {{ add_position.company.location }}{% endif %}</span>
-            : {{ add_position.summary | default: add_entry.summary }}
+            : {{ add_entry.summary | default: add_position.public_summary | default: add_position.summary }}
           </li>
         {% endif %}
       {% endfor %}

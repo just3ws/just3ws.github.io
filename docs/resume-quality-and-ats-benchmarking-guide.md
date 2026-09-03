@@ -32,7 +32,7 @@ Implemented in `bin/validate_resume_quality.rb` and executed as part of the mast
 
 | Validation Layer | Implementation | Pass/Fail Criteria |
 | :--- | :--- | :--- |
-| **1. Macro Narrative Alignment** | Audits `_data/resume/summary.yml` and `_data/resume/profile.yml`. | Fails if summary text is missing/empty, lacks Principal domain positioning, contains generic commodity phrases, or if profile title drifts. |
+| **1. Macro Narrative Alignment** | Audits `_data/resume/summary.yml` and `_data/resume/profile.yml`. | Fails if summary text is missing/empty, lacks software-engineering scope, contains generic commodity phrases, or if profile title drifts. |
 | **2. Canonical Positions & Causality** | Scans all YAML files in `_data/resume/positions/*.yml`. | Fails if summary is missing, if passive phrases (`responsible for`, `helped to`) are present, or if AI buzzwords (`tapestry`, `multifaceted`) are detected. Tracks structural outcome causality ratio. |
 | **3. ATS Ingestion Emulation** | Simulates standard ATS ingestion engines across `exports/resumes/*.txt`. | Fails if contact info (name, email, phone, location) or required section headers (`PROFESSIONAL SUMMARY`, `CORE SKILLS`, `EXPERIENCE`) fail to parse. |
 | **4. Structured JSON Schema** | Validates `exports/resumes/*.json` against JSON Resume schema. | Fails if `basics`/`profile` or `experience`/`positions` root keys are missing or malformed. |

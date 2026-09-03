@@ -4,17 +4,25 @@
     <p class="position-meta">
       <span class="position-company">{{ include.project.company.name }}</span>
       {%- if include.project.company.location %} | <span>{{ include.project.company.location }}</span>{%- endif %}
-      <span class="position-dates"> | <time>{{ include.project.start_date | human_date }}</time> - <time>{{ include.project.end_date | human_date }}</time></span>
+      {%- unless include.public_surface %}<span class="position-dates"> | <time>{{ include.project.start_date | human_date }}</time> - <time>{{ include.project.end_date | human_date }}</time></span>{%- endunless %}
     </p>
   </header>
 
-  {%- if include.project.summary %}
-  <p>{{ include.project.summary }}</p>
+  {%- assign display_summary = include.project.summary -%}
+  {%- if include.public_surface and include.project.public_summary -%}
+    {%- assign display_summary = include.project.public_summary -%}
+  {%- endif -%}
+  {%- if display_summary %}
+  <p>{{ display_summary }}</p>
   {%- endif %}
 
-  {%- if include.project.highlights %}
+  {%- assign display_highlights = include.project.highlights -%}
+  {%- if include.public_surface and include.project.public_highlights -%}
+    {%- assign display_highlights = include.project.public_highlights -%}
+  {%- endif -%}
+  {%- if display_highlights %}
   <ul class="achievement-highlights">
-    {%- for highlight in include.project.highlights %}
+    {%- for highlight in display_highlights %}
     {%- assign h_text = highlight.text | default: highlight -%}
     <li>
       {%- if h_text contains ": " -%}
