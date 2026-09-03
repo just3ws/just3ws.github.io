@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-03 05:06'
-updated_date: '2026-09-03 12:39'
+updated_date: '2026-09-03 18:30'
 labels:
   - timeline
   - ux
@@ -15,6 +15,13 @@ documentation:
   - timeline/index.html
   - _sass/_p_timeline.scss
   - docs/witc-temporal-timeline.md
+modified_files:
+  - timeline/index.html
+  - _sass/_p_timeline.scss
+  - tests/layout.spec.js
+  - bin/audit_public_surface.rb
+  - bin/generate_wbm_asset_backlog.rb
+  - docs/witc-corpus.md
 parent_task_id: TASK-284
 priority: high
 type: enhancement
@@ -67,3 +74,13 @@ Changed files: timeline/index.html; _sass/_p_timeline.scss; docs/witc-temporal-t
 
 Build evidence: four default story lanes; five off-by-default combinable context overlays; visible purpose, summary, instructions, evidence links, and semantic key; individual keyboard-operable marks; Arrow/Home/End navigation; equivalent hover/focus previews; sticky lane labels; text-supported time semantics; removed track/zeitgeist visitor language; neutralized absolute source path. Jekyll build passed with 928 pages and zero markup warnings. Focused Playwright checks passed 2 of 2 before two final style-only corrections; final repeat was interrupted. Independent review required.
 <!-- SECTION:NOTES:END -->
+
+## Comments
+
+<!-- COMMENTS:BEGIN -->
+author: agent-just3ws
+created: 2026-09-03 18:30
+---
+2026-09-03 review: independent gate returned changes requested. Added a non-scrolling, keyboard-readable evidence route for the four primary lanes, removed the redundant tabindex focus stop from the scroll region, narrowed the financial-identifier detector false positive, and removed absolute archive paths from newly added public docs/tool output. Build passed, focused Ruby specs passed, graphify refreshed. Strict public-surface audit remains blocked by 213 high-risk review candidates, 48 medium findings, and 813 quarantined recollections across the current public corpus. Browser rerun remains required before completion.
+---
+<!-- COMMENTS:END -->
