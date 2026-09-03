@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-03 05:06'
-updated_date: '2026-09-03 05:09'
+updated_date: '2026-09-03 12:39'
 labels:
   - timeline
   - ux
@@ -57,3 +57,13 @@ Refresh Brief accepted from the site-refresh director.
 8. Update focused layout/browser assertions, build, install locally, and gather desktop/mobile evidence.
 9. Hand Build Evidence to an independent site-refresh reviewer.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Builder completed the approved slice.
+
+Changed files: timeline/index.html; _sass/_p_timeline.scss; docs/witc-temporal-timeline.md; tests/layout.spec.js.
+
+Build evidence: four default story lanes; five off-by-default combinable context overlays; visible purpose, summary, instructions, evidence links, and semantic key; individual keyboard-operable marks; Arrow/Home/End navigation; equivalent hover/focus previews; sticky lane labels; text-supported time semantics; removed track/zeitgeist visitor language; neutralized absolute source path. Jekyll build passed with 928 pages and zero markup warnings. Focused Playwright checks passed 2 of 2 before two final style-only corrections; final repeat was interrupted. Independent review required.
+<!-- SECTION:NOTES:END -->
