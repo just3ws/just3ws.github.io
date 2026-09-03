@@ -1,0 +1,9 @@
+<div class="deferred-embed" data-deferred-embed data-embed-src="{{ include.src | escape }}" data-embed-title="{{ include.title | escape }}">
+  {% if include.image %}<img src="{{ include.image }}" alt="" loading="lazy">{% endif %}
+  <div class="deferred-embed-copy">
+    <p><strong>{{ include.title }}</strong></p>
+    <p>Loading this player connects your browser to {{ include.provider | default: "an external video service" }}.</p>
+    <button type="button" data-load-embed>Load external player</button>
+    <noscript><a href="{{ include.src }}" target="_blank" rel="noopener noreferrer">Open the recording on {{ include.provider | default: "the external service" }}</a></noscript>
+  </div>
+</div>

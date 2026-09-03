@@ -39,7 +39,7 @@
         <a href="/timeline/" class="cmd-item" data-search="timeline career history eras milestones software craftsmanship groupon benchprep Chicago">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">📜</span>
-            <span class="cmd-item-title">10-Year Career Timeline</span>
+            <span class="cmd-item-title">Career Timeline</span>
           </div>
           <span class="cmd-item-badge">/timeline</span>
         </a>
@@ -311,10 +311,19 @@
       visible[newIdx].scrollIntoView({ block: 'nearest' });
     }
 
-    // Keyboard trigger (⌘K or Ctrl+K)
-    document.addEventListener('keydown', function(e) {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    // Standardize on Cmd+Shift+K on macOS and Ctrl+Shift+K on Windows/Linux.
+    // Firefox reserves plain Cmd+K for web search, and browser-level shortcuts
+    // may not reach the page. Capture the safe page-level binding early while
+    // keeping the visible palette button available as a universal fallback.
+    window.addEventListener('keydown', function(e) {
+      const isSafePaletteShortcut =
+        (e.metaKey || e.ctrlKey) &&
+        e.shiftKey &&
+        e.key.toLowerCase() === 'k';
+
+      if (isSafePaletteShortcut) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         if (backdrop.classList.contains('is-open')) {
           closePalette();
         } else {
@@ -323,7 +332,7 @@
       } else if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
         closePalette();
       }
-    });
+    }, true);
 
     if (triggerBtn) {
       triggerBtn.addEventListener('click', openPalette);

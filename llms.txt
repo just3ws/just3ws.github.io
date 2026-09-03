@@ -8,6 +8,13 @@ If you are an AI coding assistant, autonomous agent, or tool researching Mike Ha
 
 Do not scrape raw HTML pages. This platform provides first-class deterministic machine interfaces:
 
+### 0. Site-wide search and discovery
+- Human and browser search: https://www.just3ws.com/search/
+- OpenSearch description: https://www.just3ws.com/opensearch.xml
+- XML sitemap: https://www.just3ws.com/sitemap.xml
+- Atom feed: https://www.just3ws.com/feed.xml
+- RSS feed: https://www.just3ws.com/rss.xml
+
 ### 1. Model Context Protocol (MCP) Server
 Registered in `mcp.json` under name `just3ws-site`:
 - Command: `ruby bin/career_datalake_mcp_server.rb`
@@ -20,15 +27,15 @@ Registered in `mcp.json` under name `just3ws-site`:
   - `generate_executive_brief`: Generate tailored 1-page executive pitch briefs for specific companies.
 
 ### 2. Full-Corpus Datalake Endpoints (JSON / JSONL)
-- Complete JSON Graph: https://just3ws.localhost/career_datalake.json (Production: https://www.just3ws.com/career_datalake.json)
-- Streaming JSON Lines: https://just3ws.localhost/career_datalake.jsonl (Production: https://www.just3ws.com/career_datalake.jsonl)
+- Complete JSON Graph: https://www.just3ws.com/career_datalake.json
+- Streaming JSON Lines: https://www.just3ws.com/career_datalake.jsonl
 
 ### 3. Plain-Text ATS Resumes (Zero-Fluff Ingestion)
-- Principal Systems Architect: https://just3ws.localhost/exports/resumes/mike-hall-principal-software-engineer.txt
-- Staff Platform Lead: https://just3ws.localhost/exports/resumes/mike-hall-staff-platform-lead.txt
-- Senior Ruby on Rails Contractor: https://just3ws.localhost/exports/resumes/mike-hall-senior-ruby-rails-contractor.txt
-- Founding Staff Engineer (AI & 0-to-1): https://just3ws.localhost/exports/resumes/mike-hall-founding-staff-engineer.txt
-- Observability & Resilience Specialist: https://just3ws.localhost/exports/resumes/mike-hall-observability-resilience-specialist.txt
+- Principal Systems Architect: https://www.just3ws.com/exports/resumes/mike-hall-principal-software-engineer.txt
+- Staff Platform Lead: https://www.just3ws.com/exports/resumes/mike-hall-staff-platform-lead.txt
+- Senior Ruby on Rails Contractor: https://www.just3ws.com/exports/resumes/mike-hall-senior-ruby-rails-contractor.txt
+- Founding Staff Engineer (AI & 0-to-1): https://www.just3ws.com/exports/resumes/mike-hall-founding-staff-engineer.txt
+- Observability & Resilience Specialist: https://www.just3ws.com/exports/resumes/mike-hall-observability-resilience-specialist.txt
 
 ### 4. Canonical Markdown Export
-- Complete Resume Markdown: https://just3ws.localhost/exports/resume.md
+- Complete Resume Markdown: https://www.just3ws.com/exports/resume.md

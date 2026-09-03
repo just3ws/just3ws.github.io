@@ -4,7 +4,7 @@ bin/download_vimeo_masters_direct.py
 
 Authenticates with Vimeo using Chrome session cookies, extracts high-res progressive MP4
 playback links from the Vimeo API v3 endpoint, and streams the videos directly to
-/Volumes/Dock_1TB/vimeo/videos/.
+the configured Vimeo directory.
 """
 
 import os
@@ -14,7 +14,7 @@ import json
 import http.cookiejar
 from curl_cffi import requests
 
-TARGET_DIR = "/Volumes/Dock_1TB/vimeo/videos"
+TARGET_DIR = os.environ.get("VIMEO_VIDEOS_DIR", "")
 COOKIES_FILE = "tmp/vimeo_cookies.txt"
 
 VIMEO_VIDEOS = [

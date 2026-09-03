@@ -3,6 +3,7 @@
 require 'jekyll'
 require 'fileutils'
 require_relative '../src/generators/core/text'
+require_relative '../lib/date_display'
 
 module Jekyll
   class TaxonomyGenerator < Generator
@@ -50,7 +51,7 @@ module Jekyll
           'link' => "/interviews/conferences/#{item["slug"]}/",
           'summary' => item["summary"],
           'location' => item["location"],
-          'dates' => (item["start_date"] && item["end_date"]) ? "#{item["start_date"]} – #{item["end_date"]}" : nil,
+          'dates' => (item["start_date"] && item["end_date"]) ? "#{DateDisplay.human(item["start_date"])} – #{DateDisplay.human(item["end_date"])}" : nil,
           'count_label' => interview_count_label(item["interview_count"])
         }
       end

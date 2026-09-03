@@ -13,8 +13,8 @@ import sqlite3
 import argparse
 import time
 
-DEFAULT_SOURCE = "/Volumes/Dock_1TB/chatgpt-dump-2026-03"
-DEFAULT_DB = "/Volumes/Dock_1TB/chatgpt-dump-2026-03/chatgpt_corpus.db"
+DEFAULT_SOURCE = os.environ.get("CHATGPT_DUMP_DIR", "")
+DEFAULT_DB = os.environ.get("CHATGPT_CORPUS_DB", "")
 
 
 def init_db(db_path):

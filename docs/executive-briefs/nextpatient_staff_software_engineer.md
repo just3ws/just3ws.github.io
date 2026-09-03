@@ -9,7 +9,7 @@
 
 ## 1. Mission & Architectural Alignment
 
-NextPatient’s mandate: **decoupling modern patient experiences (scheduling, check-in, waitlists, payments) from dated, legacy doctor’s office EHR systems**: is a direct match for my 25+ year track record in **System Cartography, legacy subsystem decoupling, and zero-downtime platform safety**.
+NextPatient’s mandate: **decoupling modern patient experiences (scheduling, check-in, waitlists, payments) from dated, legacy doctor’s office EHR systems**: is a direct match for my track record in **System Cartography, legacy subsystem decoupling, and zero-downtime platform safety**.
 
 ### Why This Match Works (3 Grounded Signals):
 1. **High-Consequence System Integration & Uptime Protection**:
@@ -26,7 +26,7 @@ NextPatient’s mandate: **decoupling modern patient experiences (scheduling, ch
 | Dimension | NextPatient Expectation | Mike's Grounded Evidence | Fit Evaluation |
 | :--- | :--- | :--- | :--- |
 | **Legacy Integration** | Plug modern SaaS into legacy EHRs without breaking live clinical operations. | Strangler-fig API decoupling across financial monoliths; zero-downtime data migrations. | 🟢 **Direct Match** |
-| **Backend & Stack** | Heavy Ruby on Rails, PostgreSQL, background jobs, zero-downtime migrations. | 25+ years Ruby/Rails, PostgreSQL (including pgvector), Sidekiq/Redis, AWS/Kubernetes. | 🟢 **Core Stack Match** |
+| **Backend & Stack** | Heavy Ruby on Rails, PostgreSQL, background jobs, zero-downtime migrations. | Ruby/Rails, PostgreSQL (including pgvector), Sidekiq/Redis, AWS/Kubernetes. | 🟢 **Core Stack Match** |
 | **Platform Ownership** | Staff IC leadership, responsibility realignment, developer velocity enablement. | Founded and technically led ACQ Enablement team at OneMain; led cross-team architecture reviews. | 🟢 **Staff/Principal IC Match** |
 | **Culture & Alumni** | High technical autonomy, async documentation, craftsmanship rigor. | Groupon alumnus; founded Software Craftsmanship McHenry County (820+ members); author of *Panoramic View*. | 🟢 **Cultural Parity** |
 

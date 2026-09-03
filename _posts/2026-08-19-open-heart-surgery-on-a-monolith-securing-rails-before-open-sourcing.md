@@ -14,6 +14,8 @@ permalink: /ai/2026/08/19/open-heart-surgery-on-a-monolith-securing-rails-before
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 When Coderwall's founder brought me on as a contractor in 2014 to help open-source [Coderwall](https://github.com/coderwall/coderwall-legacy), the codebase was already a high-traffic production application. Developers from all over the world used it daily to showcase achievements, post technical protips, and search for engineering jobs.

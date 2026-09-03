@@ -12,6 +12,8 @@ redirect_from:
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Over the past two decades, I have sat down with the creators, architects, and community leaders who built the foundations of our modern technical landscape. What started as a series of recordings at user groups and conferences like SCNA, GOTO, and RailsConf has evolved into a 207-item forensic archive.

@@ -13,6 +13,8 @@ permalink: /ai/2026/08/20/the-panoramic-engineer-principal-ic-as-forensic-cartog
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Over the past two decades, the role of the senior software engineer has undergone three distinct evolutionary phases:

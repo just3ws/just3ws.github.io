@@ -3,7 +3,7 @@
 
 # bin/migrate_vimeo_masters_to_youtube.rb — Vimeo Master MP4 -> YouTube Uploader
 #
-# Reads _data/vimeo_migration_manifest.yml, matches master MP4s in /Volumes/Dock_1TB/vimeo/videos/,
+# Reads _data/vimeo_migration_manifest.yml and matches master MP4s in the configured Vimeo directory,
 # prepares rich canonical metadata, uploads via YouTube API v3, and writes returned YouTube IDs
 # into _data/video_assets.yml and _data/vimeo_migration_manifest.yml.
 
@@ -18,12 +18,13 @@ $stdout.sync = true
 class VimeoToYouTubeMigrator
   MANIFEST_PATH = "_data/vimeo_migration_manifest.yml"
   VIDEO_ASSETS_PATH = "_data/video_assets.yml"
-  VIMEO_VIDEOS_DIR = "/Volumes/Dock_1TB/vimeo/videos"
+  VIMEO_VIDEOS_DIR = ENV.fetch("VIMEO_VIDEOS_DIR", "")
 
   def initialize(options = {})
     @options = options
     @manifest = YAML.load_file(MANIFEST_PATH)
     @video_assets = YAML.load_file(VIDEO_ASSETS_PATH)
+    abort "Set VIMEO_VIDEOS_DIR before running this migration" if VIMEO_VIDEOS_DIR.empty?
     @uploader = VideoUploader.new unless @options[:dry_run]
   end
 

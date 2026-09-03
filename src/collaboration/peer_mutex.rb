@@ -108,8 +108,8 @@ module CareerOS
             "portfolio_url" => "https://just3ws.localhost/exports/portfolio.md",
             "history_url" => "https://just3ws.localhost/exports/history.md",
             "strategy_url" => "https://just3ws.localhost/reports/archetype-reader-profiles/",
-            "query_cli" => "/Users/mike/github.com/just3ws/just3ws.github.io/bin/query_career_datalake.rb",
-            "mcp_server" => "/Users/mike/github.com/just3ws/just3ws.github.io/bin/career_datalake_mcp_server.rb",
+            "query_cli" => File.expand_path("../../bin/query_career_datalake.rb", __dir__),
+            "mcp_server" => File.expand_path("../../bin/career_datalake_mcp_server.rb", __dir__),
             "last_synced_at" => nil
           },
           "active_evaluations" => {},

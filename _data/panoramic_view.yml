@@ -90,6 +90,53 @@ discovery_loop:
   - title: "Synthesize and repeat"
     text: "Update the model, mark contradictions and gaps, then continue until the required path is navigable."
 
+vocabulary:
+  title: "Words that help us talk about the work"
+  lede: >-
+    I found many of these ideas by doing the work before I knew their established
+    names. Start with the plain-language idea. Use the related terms when they
+    help you find the conversation or explain it to someone else.
+  note: >-
+    These terms overlap, but they are not interchangeable. The plain-language
+    description is the source of meaning here.
+  mappings:
+    - plain: "The system already has a rhythm."
+      related: "Operational cadence, feedback control, and phase alignment"
+      meaning: "Observe the repeated movement before changing it. Look for drift, breaks, and changes in tempo."
+    - plain: "Follow the actor's journey through the system."
+      related: "Service blueprinting, value-stream mapping, and domain storytelling"
+      meaning: "Connect the actor's goal and visible experience to the work, decisions, and systems behind it."
+    - plain: "Each choice creates a wave down and back."
+      related: "Distributed tracing and request-response flow"
+      meaning: "Trace a request through interfaces, application code, services, integrations, data, and the response that returns."
+    - plain: "Compare what people believe with what the system does."
+      related: "Model reconciliation and socio-technical sensemaking"
+      meaning: "Place stakeholder understanding, the implemented domain model, and runtime evidence beside one another."
+    - plain: "Bring in the person who understands the next boundary."
+      related: "Boundary spanning and cross-functional collaboration"
+      meaning: "Treat ownership and context as part of the system map, not as private knowledge outside it."
+    - plain: "Give different groups a map they can use together."
+      related: "Boundary object"
+      meaning: "Create a shared artifact that Product, Engineering, Operations, and leadership can each read from their own perspective."
+    - plain: "Observe, adjust, and observe again."
+      related: "Closed-loop control and double-loop learning"
+      meaning: "Change the action, then question the assumptions and goals when the result does not match the intended outcome."
+    - plain: "Learn what normal looks like before extracting anything."
+      related: "Behavioral baseline and service characterization"
+      meaning: "Measure the current pattern before modernization so the later change can be compared with evidence."
+    - plain: "The system can run too hot or too cold."
+      related: "Control band, setpoint, deadband, and SLO boundaries"
+      meaning: "Define a useful operating range with upper and lower signals instead of treating only failure as important."
+    - plain: "Keep uncertainty visible."
+      related: "Provenance, confidence tracking, and explicit unknowns"
+      meaning: "Record where a claim came from, how strong it is, and what remains unresolved."
+    - plain: "Communication paths become architecture."
+      related: "Conway's Law and socio-technical congruence"
+      meaning: "Compare the dependencies in the software with the communication and ownership structure around it."
+    - plain: "Hotpath mapping is one view of the larger map."
+      related: "Critical-path analysis and journey prioritization"
+      meaning: "Use frequency, business importance, or risk to choose where to begin without mistaking the first slice for the whole system."
+
 practice_areas:
   - title: "Legacy System Modernization"
     text: >-

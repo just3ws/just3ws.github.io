@@ -5,11 +5,16 @@ require 'yaml'
 require 'json'
 require 'fileutils'
 require 'time'
+require_relative '../lib/date_display'
 
 ROOT_DIR = File.expand_path('..', __dir__)
 DATA_DIR = File.join(ROOT_DIR, '_data', 'resume')
 RESUMES_DIR = File.join(ROOT_DIR, 'resumes')
 EXPORTS_DIR = File.join(ROOT_DIR, 'exports', 'resumes')
+
+def human_date(value)
+  DateDisplay.human(value)
+end
 
 FileUtils.mkdir_p(RESUMES_DIR)
 FileUtils.mkdir_p(EXPORTS_DIR)
@@ -105,7 +110,7 @@ archetypes.each do |key, config|
     
     comp_name = pos.dig('company', 'name') || pos['company']
     loc = pos.dig('company', 'location')
-    dates = "#{pos['start_date']} - #{pos['end_date'] || 'Present'}"
+    dates = "#{human_date(pos['start_date'])} - #{human_date(pos['end_date'])}"
     
     lines << "### #{pos['title']} at #{comp_name}"
     lines << ""
@@ -151,7 +156,7 @@ archetypes.each do |key, config|
       proj = positions[proj_entry['id']]
       next unless proj
       proj_name = proj.dig('company', 'name') || proj['company'] || proj['title']
-      dates = "#{proj['start_date']} - #{proj['end_date'] || 'Present'}"
+      dates = "#{human_date(proj['start_date'])} - #{human_date(proj['end_date'])}"
       lines << "### #{proj['title']} (#{proj_name})"
       lines << "**#{dates}**"
       lines << ""
@@ -184,7 +189,7 @@ archetypes.each do |key, config|
       pos = positions[add_entry['id']]
       next unless pos
       comp_name = pos.dig('company', 'name') || pos['company']
-      dates = "#{pos['start_date']} - #{pos['end_date'] || 'Present'}"
+      dates = "#{human_date(pos['start_date'])} - #{human_date(pos['end_date'])}"
       summary_text = pos['summary'] || ""
       lines << "- **#{pos['title']}**, #{comp_name} (#{dates}): #{summary_text.strip}"
       additional_experience_data << {

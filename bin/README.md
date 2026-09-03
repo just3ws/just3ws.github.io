@@ -6,8 +6,9 @@ This directory contains executable tools and drivers for building, validating, a
 
 | Command | Usage | Description |
 | :--- | :--- | :--- |
-| [`./bin/server`](file:///Users/mike/github.com/just3ws/just3ws.github.io/bin/server) | `./bin/server` | Launches local Jekyll development server on `http://127.0.0.1:4000/` with live-reload. |
-| [`./bin/pipeline`](file:///Users/mike/github.com/just3ws/just3ws.github.io/bin/pipeline) | `./bin/pipeline <command>` | Unified runner (`generate`, `build`, `test`, `validate`, `smoke`, `ci`). |
+| [`./bin/server`](server) | `./bin/server` | Launches local Jekyll development server on `http://127.0.0.1:4000/` with live-reload. |
+| [`./bin/pipeline`](pipeline) | `./bin/pipeline <command>` | Unified runner (`generate`, `build`, `test`, `validate`, `smoke`, `ci`). |
+| `audit_public_surface.rb` | `ruby bin/audit_public_surface.rb --help` | Scan publishable prose and built output for privacy, provenance, quarantine, and topology risks. |
 
 ---
 
@@ -53,3 +54,18 @@ Automated data processing and archival tools:
 - `import_transcripts_from_outbox.rb`: Batch ingest transcripts.
 - `enrich_speaker_profiles.rb`: Deep research and speaker enrichment.
 - `audit_metadata.rb`: Comprehensive metadata completeness audit.
+- `audit_public_surface.rb`: Redacted editorial and built-site publication gate. Use `--strict` before release.
+
+The public-surface auditor is intentionally conservative. It does not prove that
+content is safe. It finds review boundaries that require a human decision.
+
+```mermaid
+flowchart LR
+  A[Private notes and source records] --> B[Sanitized public canon]
+  B --> C[Jekyll build]
+  C --> D[Built-site topology audit]
+  D -->|clean| E[Release review]
+  D -->|finding| F[Local redacted queue]
+  F --> G[Verify, rewrite, generalize, or hold]
+  G --> B
+```

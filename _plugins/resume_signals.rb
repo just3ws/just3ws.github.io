@@ -1,4 +1,6 @@
 module Jekyll
+  require_relative '../lib/date_display'
+
   module ResumeSignals
     def group_by_signal(positions)
       signals = {}
@@ -9,7 +11,7 @@ module Jekyll
         highlights = data['highlights'] || []
         company_name = data.dig('company', 'name') || id
         position_title = data['title'] || 'Engineering Leadership'
-        date_str = "#{data['start_date']} — #{data['end_date'] || 'Present'}"
+        date_str = "#{DateDisplay.human(data['start_date'])} - #{DateDisplay.human(data['end_date'])}"
 
         highlights.each do |h|
           text = h.is_a?(Hash) ? h['text'] : h.to_s

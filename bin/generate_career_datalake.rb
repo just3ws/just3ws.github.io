@@ -8,6 +8,7 @@ require 'date'
 require 'fileutils'
 
 ROOT = File.expand_path('..', __dir__)
+SITE_URL = ENV.fetch('PUBLIC_SITE_URL', 'https://www.just3ws.com').sub(%r{/$}, '')
 
 def safe_yaml_load(content)
   YAML.safe_load(content, permitted_classes: [Date, Time], aliases: true) || {}
@@ -41,7 +42,7 @@ Dir.glob(File.join(ROOT, '_data', 'resume', 'positions', '*.yml')).sort.each do 
   positions[slug] = data
 
   start_yr = (data["start_date"].to_s[0..3].to_i rescue 0)
-  end_yr = data["end_date"].to_s == "Present" ? Time.now.year : (data["end_date"].to_s[0..3].to_i rescue start_yr)
+  end_yr = data["end_date"].to_s.empty? || data["end_date"].to_s == "Present" ? Time.now.year : (data["end_date"].to_s[0..3].to_i rescue start_yr)
   start_yr = 2006 if start_yr == 0
   end_yr = start_yr if end_yr == 0
 
@@ -53,7 +54,9 @@ Dir.glob(File.join(ROOT, '_data', 'resume', 'positions', '*.yml')).sort.each do 
       "company" => data.dig("company", "name") || slug,
       "title" => data["title"],
       "start_date" => data["start_date"].to_s,
-      "end_date" => data["end_date"].to_s
+      # This is machine-readable data, so retain the canonical null rather
+      # than leaking the human display word Present into the datalake.
+      "end_date" => data["end_date"]
     }
     entry["total_occurrences"] += 1
   end
@@ -204,14 +207,14 @@ datalake = {
     "version" => "1.0.0",
     "generated_at" => Time.now.utc.iso8601,
     "system" => "CareerOS Master Datalake",
-    "canonical_url" => "https://just3ws.localhost/career_datalake.json",
+    "canonical_url" => "#{SITE_URL}/career_datalake.json",
     "endpoints" => {
-      "datalake_json" => "https://just3ws.localhost/career_datalake.json",
-      "datalake_jsonl" => "https://just3ws.localhost/career_datalake.jsonl",
-      "exports_resume_md" => "https://just3ws.localhost/exports/resume.md",
-      "exports_history_md" => "https://just3ws.localhost/exports/history.md",
-      "exports_portfolio_md" => "https://just3ws.localhost/exports/portfolio.md",
-      "strategy_guide" => "https://just3ws.localhost/reports/archetype-reader-profiles/"
+      "datalake_json" => "#{SITE_URL}/career_datalake.json",
+      "datalake_jsonl" => "#{SITE_URL}/career_datalake.jsonl",
+      "exports_resume_md" => "#{SITE_URL}/exports/resume.md",
+      "exports_history_md" => "#{SITE_URL}/exports/history.md",
+      "exports_portfolio_md" => "#{SITE_URL}/exports/portfolio.md",
+      "strategy_guide" => "#{SITE_URL}/reports/archetype-reader-profiles/"
     },
     "stats" => {
       "total_positions" => positions.size,

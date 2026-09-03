@@ -47,7 +47,7 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 ### Principal Architect at Local AI Orchestration & Developer Runtime
 
-**2026 - Present** | Independent Project
+**January 2026 - Present** | Independent Project
 
 **Target Focus:** Built telemetry-driven diagnosis MCP server exposing distributed traces and error budgets directly to AI agent runtimes.
 
@@ -61,7 +61,7 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 ### Principal Architect at WWWorkRemote
 
-**2021 - Present** | Independent Project
+**January 2021 - Present** | Independent Project
 
 **Target Focus:** Built comprehensive error tracking and validation guardrails for continuous document ingestion and model inference.
 
@@ -106,7 +106,7 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 ## Selected Production Projects
 
 ### Principal Architect (Local AI Orchestration & Developer Runtime)
-**2026 - Present**
+**January 2026 - Present**
 
 Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
 
@@ -119,9 +119,9 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 
 
 ### Principal Engineer & Curator (Technical Conversation Archive)
-**2011 - Present**
+**January 2011 - Present**
 
-Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link two decades of primary-source material into a searchable knowledge graph.
+Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link a longitudinal record of primary-source material into a searchable knowledge graph.
 
 
 - Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that transcribes, diarizes, and structures long-form interview audio entirely on-device, keeping a large private media corpus off third-party inference services.
@@ -146,11 +146,11 @@ Recorded, and later restored, an archive of 214 technical interviews with practi
 
 ---
 
-## Career Foundations
+## Earlier Experience
 
 **1999 - 2011**
 
-Built and operated enterprise integrations, transactional systems, and early web products across consulting and product organizations, establishing the production discipline and community-centered craftsmanship that still shape my leadership.
+Built and operated enterprise integrations, transactional systems, and early web products across consulting and product organizations, establishing the production discipline and community-centered craftsmanship that inform my leadership today.
 
 - **Revenue-critical commerce**: Designed real-time inventory, locking, and fulfillment services for a high-volume ticket marketplace later acquired by a major industry operator.
 - **Consulting and software craftsmanship**: Delivered systems across client environments while mentoring engineers, adopting Ruby and Rails, and helping build Chicago's craftsmanship community.

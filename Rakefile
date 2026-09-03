@@ -120,6 +120,7 @@ namespace :validate do
   desc 'Run all validation scripts'
   task all: [
     :surface_exposure,
+    :public_surface,
     :data_uniqueness,
     :data_integrity,
     :audit_transcripts,
@@ -131,8 +132,11 @@ namespace :validate do
     :repo_hygiene,
     :markdown_lint,
     :prose_humanity,
+    :ai_disclosures,
     :vale,
     :metadata_completeness,
+    :position_dates,
+    :timeline_links,
     :seo_output,
     :public_index_mode,
     :semantic_output,
@@ -161,6 +165,10 @@ namespace :validate do
     sh 'ruby ./bin/audit_prose_humanity.rb'
   end
 
+  task :ai_disclosures do
+    sh 'ruby ./bin/validate_ai_disclosures.rb'
+  end
+
   task :vale do
     if system('which vale > /dev/null 2>&1')
       sh 'vale _posts/2026-*.md case-studies/ docs/'
@@ -171,6 +179,14 @@ namespace :validate do
 
   task :export_parity do
     sh 'ruby ./bin/validate_exports.rb'
+  end
+
+  task :position_dates do
+    sh 'ruby ./bin/validate_position_dates.rb'
+  end
+
+  task :timeline_links do
+    sh 'ruby ./bin/validate_timeline_links.rb'
   end
 
   # Provenance gate: quantified career claims must resolve to a position file
@@ -515,6 +531,16 @@ namespace :semantic do
 end
 
 namespace :audit do
+  desc 'Audit publishable content for privacy and oversharing review candidates'
+  task :public_surface do
+    sh 'ruby ./bin/audit_public_surface.rb'
+  end
+
+  desc 'Strict publication gate for privacy and evidence review candidates'
+  task :public_surface_strict do
+    sh 'ruby ./bin/audit_public_surface.rb --strict'
+  end
+
   desc 'Prepare an audit prompt for ChatGPT'
   task :prepare, [:slug] do |_t, args|
     slug = args[:slug]
@@ -731,4 +757,3 @@ namespace :localhost do
     sh "chmod o+x $(dirname #{webroot}) && chmod -R o+rX #{webroot}"
   end
 end
-

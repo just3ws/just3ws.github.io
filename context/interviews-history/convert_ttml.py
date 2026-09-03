@@ -49,8 +49,9 @@ def slugify(name):
     return name.lower()
 
 def main():
-    source_dir = Path('/Volumes/Dock_1TB/WITC/consolidated/Uploads from WHOIS Tech Community')
-    output_dir = Path('/Volumes/Dock_1TB/WITC/_output/transcripts')
+    archive_root = Path(os.environ.get('WITC_CORPUS_DIR', ''))
+    source_dir = archive_root / 'consolidated/Uploads from WHOIS Tech Community'
+    output_dir = archive_root / '_output/transcripts'
 
     converted = 0
     errors = []

@@ -3,6 +3,9 @@ layout: post
 title: "System Cartography: How to Map a 10-Year Monolith Without Losing Your Mind"
 date: "2026-08-29"
 description: "When entering an opaque, high-consequence legacy system, refactoring before mapping is a recipe for disaster. Here is the 4-dimensional System Cartography framework for empirical codebase discovery."
+ai_assisted: true
+human_led: true
+source_kind: ai-augmented-human-led
 categories:
   - Architecture
   - Systems Engineering

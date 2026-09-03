@@ -47,7 +47,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 ### Principal Architect at Phalanx Duel
 
-**2022 - Present** | Independent Project
+**January 2022 - Present** | Independent Project
 
 **Target Focus:** Built a server-authoritative deterministic game platform in TypeScript and Node.js: pure rules engine, append-only action ledger, WebSocket real-time sync, and property-based Truth Gate verification gates across the full state lifecycle.
 
@@ -61,7 +61,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 ### Principal Architect at WWWorkRemote
 
-**2021 - Present** | Independent Project
+**January 2021 - Present** | Independent Project
 
 **Target Focus:** Architected multi-source Rails ingestion pipeline, pgvector semantic search, local-first YAML model registry, 4-stage prompt injection defense, and 16-adapter MV3 Chrome extension.
 
@@ -81,7 +81,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 ### Principal Engineer & Curator at Technical Conversation Archive
 
-**2011 - Present** | Independent Project
+**January 2011 - Present** | Independent Project
 
 **Target Focus:** Built local-only Whisper transcription pipeline, semantic taxonomy cross-linking, and build-time schema enforcement gates for a multi-decade tech interview media corpus.
 
@@ -102,7 +102,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 ## Selected Production Projects
 
 ### Principal Architect (Local AI Orchestration & Developer Runtime)
-**2026 - Present**
+**January 2026 - Present**
 
 Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
 
@@ -126,11 +126,11 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 
 ---
 
-## Career Foundations
+## Earlier Experience
 
 **1999 - 2011**
 
-Built and operated enterprise integrations, transactional systems, and early web products across consulting and product organizations, establishing the production discipline and community-centered craftsmanship that still shape my leadership.
+Built and operated enterprise integrations, transactional systems, and early web products across consulting and product organizations, establishing the production discipline and community-centered craftsmanship that inform my leadership today.
 
 - **Revenue-critical commerce**: Designed real-time inventory, locking, and fulfillment services for a high-volume ticket marketplace later acquired by a major industry operator.
 - **Consulting and software craftsmanship**: Delivered systems across client environments while mentoring engineers, adopting Ruby and Rails, and helping build Chicago's craftsmanship community.

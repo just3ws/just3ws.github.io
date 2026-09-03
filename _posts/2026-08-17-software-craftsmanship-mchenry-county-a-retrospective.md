@@ -9,6 +9,8 @@ permalink: /ai/2026/08/17/software-craftsmanship-mchenry-county-a-retrospective/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Between 2009 and 2015, Chicagoland experienced a remarkable developer renaissance. While downtown Chicago hosted major tech meetups and burgeoning startups, a parallel community movement took root 50 miles northwest in suburban Illinois: **Software Craftsmanship McHenry County (SCMC)**, also known as **SCMcHenry**.

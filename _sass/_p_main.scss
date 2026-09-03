@@ -61,6 +61,56 @@
     padding: 0;
     background: transparent;
   }
+
+  .deferred-embed {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 16rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #17233d, #243c61);
+    color: #fff;
+    text-align: center;
+  }
+
+  .deferred-embed > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .35;
+  }
+
+  .deferred-embed-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 32rem;
+    padding: 1.5rem;
+  }
+
+  .deferred-embed-copy p { margin: .5rem 0; }
+
+  .deferred-embed-copy button {
+    margin-top: .75rem;
+    padding: .7rem 1rem;
+    border: 1px solid rgba(255,255,255,.7);
+    border-radius: .4rem;
+    background: #f0bd72;
+    color: #17233d;
+    cursor: pointer;
+    font-weight: 800;
+  }
+
+  .deferred-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
 }
 
 .video-details-bar {

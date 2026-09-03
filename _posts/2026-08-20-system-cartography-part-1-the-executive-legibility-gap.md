@@ -13,6 +13,8 @@ permalink: /ai/2026/08/20/system-cartography-part-1-the-executive-legibility-gap
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 In every mature technology enterprise, there is a quiet, ongoing disconnect between three groups of people:

@@ -13,6 +13,8 @@ permalink: /ai/2026/08/20/system-cartography-part-2-browser-to-backend-inventory
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 When a customer clicks a button in a web application, whether submitting an order, applying for an enterprise loan, or transferring funds, product requirements typically describe a single step: *"User confirms action."*

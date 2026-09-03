@@ -21,8 +21,8 @@
       {%- endif -%}
       <span class="position-dates">
         {%- if include.position.company.name or include.position.company.location %} | {% endif -%}
-        <time>{{ include.position.start_date }}</time> -
-        <time>{{ include.position.end_date | default: "Present" }}</time>
+        <time>{{ include.position.start_date | human_date }}</time> -
+        <time>{{ include.position.end_date | human_date }}</time>
       </span>
     </p>
   </header>

@@ -3,6 +3,9 @@ layout: post
 title: "Hunting the 4% Defect: Resolving Rails Cookie Overflow at Enterprise Scale"
 date: "2026-08-30"
 description: "When 4% of customer loan applications were silently lost in production, the root cause was not a server crash. Here is how we diagnosed Rails CookieOverflow and migrated to DynamoDB session storage."
+ai_assisted: true
+human_led: true
+source_kind: ai-augmented-human-led
 categories:
   - Architecture
   - Ruby on Rails

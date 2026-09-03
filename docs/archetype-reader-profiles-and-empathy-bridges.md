@@ -157,8 +157,8 @@ When an engineering leader reads your resume, they bring their own organizationa
 
 | Archetype | Primary Decision-Maker | Their Deepest Fear | Your Decisive Proof Point |
 | :--- | :--- | :--- | :--- |
-| **Principal Systems Architect** | VP of Engineering / Chief Architect | *"A risky rewrite will destroy platform revenue."* | 20+ years of zero-downtime legacy modernization, boundary governance, and mainframe/cloud mediation. |
+| **Principal Systems Architect** | VP of Engineering / Chief Architect | *"A risky rewrite will destroy platform revenue."* | Zero-downtime legacy modernization, boundary governance, and mainframe/cloud mediation. |
 | **Staff Platform Lead** | Director of Platform / Head of DevEx | *"Our best engineers are quitting due to technical debt."* | Founded ACQ Enablement, merged attrition-impacted squads, and established automated CI verification gates. |
 | **Staff Observability Architect** | VP of Infrastructure / Head of SRE | *"We are flying blind during critical outages."* | Founded OpenTelemetry Working Group, built Enterprise Trace across 3 distinct tiers, and resolved 4% origination e-sign failure. |
 | **Founding Staff Engineer** | Startup Founder / Early-Stage CTO | *"We will burn our runway on fragile AI hype."* | 0-to-1 builder: pgvector, local llama.cpp/whisper.cpp runtimes, Truth Gates, and server-authoritative state. |
-| **Senior Rails Contractor** | Engineering Director / Team Lead | *"Contractors take too long to ramp up and break things."* | 17+ years Rails 2.x-8.x expertise, surgical state machine refactoring, and zero-downtime database migrations. |
+| **Senior Rails Contractor** | Engineering Director / Team Lead | *"Contractors take too long to ramp up and break things."* | Deep Rails 2.x-8.x expertise, surgical state machine refactoring, and zero-downtime database migrations. |

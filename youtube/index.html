@@ -1,0 +1,128 @@
+---
+layout: minimal
+title: "UGtastic on YouTube"
+description: "The current YouTube home for the UGtastic and WHOIS Tech Community archive."
+body_class: youtube-channel-page
+---
+
+<article class="page youtube-channel">
+  {% include breadcrumbs.html %}
+  <header class="youtube-channel-hero">
+    <p class="youtube-eyebrow">Channel status · archive sync</p>
+    <h1>UGtastic on YouTube</h1>
+    <p class="youtube-lede">The channel is up. Its playlists are the public video shelf, and this site is the searchable, contextual archive beside it.</p>
+    <div class="youtube-actions">
+      <a class="youtube-primary-action" href="https://www.youtube.com/@whoistechcmty" target="_blank" rel="noopener">Open the YouTube channel</a>
+      <a href="/videos/">Browse the local video archive</a>
+      <a href="/archive-atlas/">Explore the Archive Atlas</a>
+    </div>
+  </header>
+
+  <section class="youtube-status-grid" aria-label="Channel archive status">
+    <div><strong>{{ site.data.video_assets.items.size }}</strong><span>canonical video assets</span></div>
+    <div><strong>207</strong><span>captioned archive records</span></div>
+    <div><strong>10</strong><span>conference playlist groups</span></div>
+    <div><strong>1:1</strong><span>site and YouTube metadata model</span></div>
+  </section>
+
+  <section class="youtube-section" aria-labelledby="youtube-playlists-heading">
+    <div class="youtube-section-heading">
+      <div>
+        <p class="youtube-eyebrow">Follow a thread</p>
+        <h2 id="youtube-playlists-heading">Synced playlist shelves</h2>
+        <p>These are the archive's public grouping points. The Atlas uses the same conference-series vocabulary so a playlist can lead into dates, transcripts, speakers, and related work.</p>
+      </div>
+    </div>
+    <div class="youtube-playlist-grid">
+      {% for playlist in site.data.interview_related_videos.conference_playlists %}
+        {% for link in playlist.links %}
+          <a class="youtube-playlist-card" href="{{ link.url }}" target="_blank" rel="noopener">
+            <span>{{ playlist.conference }} {{ playlist.conference_year }}</span>
+            <strong>{{ link.label }}</strong>
+            <small>Official YouTube playlist ↗</small>
+          </a>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="youtube-section" aria-labelledby="youtube-updates-heading">
+    <div class="youtube-section-heading">
+      <div>
+        <p class="youtube-eyebrow">The latest shelf moves</p>
+        <h2 id="youtube-updates-heading">Recent archive updates</h2>
+        <p>These entries are generated from the canonical video inventory. A site page remains the place for the full transcript, provenance, and context.</p>
+      </div>
+    </div>
+    <div class="youtube-video-grid">
+      {% assign youtube_assets = site.data.video_assets.items | sort: 'published_date' | reverse %}
+      {% assign youtube_count = 0 %}
+      {% for asset in youtube_assets %}
+        {% assign youtube = asset.platforms | where: "platform", "youtube" | first %}
+        {% if youtube and youtube_count < 24 %}
+          {% assign youtube_count = youtube_count | plus: 1 %}
+          <article class="youtube-video-card">
+            {% if youtube.asset_id %}<a href="https://www.youtube.com/watch?v={{ youtube.asset_id }}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/{{ youtube.asset_id }}/hqdefault.jpg" alt="" loading="lazy"></a>{% endif %}
+            <div class="youtube-video-card-body">
+              <p class="youtube-video-date">{{ asset.published_date | default: "Archive record" }}</p>
+              <h3>{{ asset.title | default: asset.id }}</h3>
+              <p>{{ asset.description | default: "Preserved video record with linked transcript and source context." | truncate: 150 }}</p>
+              <div class="youtube-video-links">
+                {% if asset.transcript_id %}<a href="/interviews/{{ asset.transcript_id }}/">Read transcript</a>{% endif %}
+                <a href="https://www.youtube.com/watch?v={{ youtube.asset_id }}" target="_blank" rel="noopener">Watch on YouTube</a>
+              </div>
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <aside class="youtube-integrity-note">
+    <h2>Notice something that needs correction?</h2>
+    <p>Every generated YouTube description includes a pre-filled report link. It identifies the YouTube surface, video ID, matching site transcript, and transcript ID, so an issue can be traced to where it was found.</p>
+    <a href="/interviews/">Open a transcript and use Report Issue</a>
+  </aside>
+  <section class="youtube-platform-lineage" aria-labelledby="youtube-lineage-heading">
+    <p class="youtube-eyebrow">Platform lineage</p>
+    <h2 id="youtube-lineage-heading">Vimeo first, YouTube now</h2>
+    <p>The early recordings used Vimeo because YouTube's licensing and platform conditions were difficult to work with at the time. The original platform choice is part of the archive's history. YouTube is a later public distribution and synchronization surface, while the site keeps the transcript, provenance, and platform relationships together.</p>
+  </section>
+</article>
+
+<style>
+  .youtube-channel { max-width: 92rem; margin: 0 auto; padding: 2rem 1.25rem 5rem; color: #17233d; }
+  .youtube-channel-hero { padding: clamp(2rem, 6vw, 5rem); border-radius: 1rem; background: linear-gradient(125deg, #17233d, #253e64 60%, #087f78); color: #fff; }
+  .youtube-eyebrow { margin: 0 0 .65rem; color: #087f78; font: 800 .72rem/1.2 system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+  .youtube-channel-hero .youtube-eyebrow { color: #8fe3d7; }
+  .youtube-channel h1 { margin: 0 0 1rem; font: 700 clamp(2.4rem, 6vw, 5.2rem)/1 Georgia, serif; letter-spacing: -.04em; }
+  .youtube-lede { max-width: 52rem; margin: 0; color: rgba(255,255,255,.82); font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.65; }
+  .youtube-actions { display: flex; flex-wrap: wrap; gap: .75rem 1rem; margin-top: 2rem; align-items: center; }
+  .youtube-actions a { color: #fff; text-underline-offset: .2em; }
+  .youtube-primary-action { padding: .7rem 1rem; border-radius: .4rem; background: #f0bd72; color: #17233d !important; font-weight: 800; text-decoration: none; }
+  .youtube-status-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 2rem 0; overflow: hidden; border: 1px solid #d8dee9; border-radius: .8rem; background: #d8dee9; }
+  .youtube-status-grid div { display: grid; gap: .25rem; padding: 1.25rem; background: #fff; }
+  .youtube-status-grid strong { font: 700 2rem/1 Georgia, serif; color: #087f78; }
+  .youtube-status-grid span { color: #5e718c; font-size: .82rem; }
+  .youtube-section { margin-top: 2rem; padding: 1.5rem; border: 1px solid #d8dee9; border-radius: .9rem; background: rgba(255,255,255,.78); }
+  .youtube-section h2 { margin: 0 0 .5rem; font: 700 1.8rem/1.1 Georgia, serif; }
+  .youtube-section-heading p:last-child { max-width: 58rem; color: #5e718c; line-height: 1.6; }
+  .youtube-playlist-grid, .youtube-video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .youtube-playlist-card { display: grid; gap: .45rem; padding: 1rem; border: 1px solid #c8d3e2; border-radius: .6rem; background: #f7fafc; color: #17233d; text-decoration: none; }
+  .youtube-playlist-card:hover, .youtube-playlist-card:focus-visible { border-color: #087f78; transform: translateY(-2px); }
+  .youtube-playlist-card span, .youtube-video-date { color: #087f78; font: 800 .7rem/1.2 system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+  .youtube-playlist-card small { color: #6d7d95; }
+  .youtube-video-card { overflow: hidden; border: 1px solid #d8dee9; border-radius: .6rem; background: #fff; }
+  .youtube-video-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #e9eef5; }
+  .youtube-video-card-body { padding: 1rem; }
+  .youtube-video-card h3 { margin: .4rem 0; font-size: 1rem; line-height: 1.3; }
+  .youtube-video-card p { color: #5e718c; font-size: .86rem; line-height: 1.5; }
+  .youtube-video-links { display: flex; flex-wrap: wrap; gap: .7rem; font-size: .82rem; font-weight: 800; }
+  .youtube-integrity-note { margin-top: 2rem; padding: 1.5rem; border-left: 3px solid #f0bd72; background: #fff8ed; }
+  .youtube-integrity-note h2 { margin: 0 0 .5rem; font: 700 1.4rem Georgia, serif; }
+  .youtube-integrity-note p { max-width: 62rem; color: #5e718c; line-height: 1.6; }
+  .youtube-platform-lineage { margin-top: 2rem; padding: 1.5rem; border: 1px solid #b9d6d2; border-radius: .9rem; background: #effaf7; }
+  .youtube-platform-lineage h2 { margin: 0 0 .5rem; font: 700 1.5rem Georgia, serif; }
+  .youtube-platform-lineage p:last-child { max-width: 62rem; margin-bottom: 0; color: #425b68; line-height: 1.65; }
+  @media (max-width: 700px) { .youtube-status-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>

@@ -103,7 +103,7 @@ publication.
 
 The public repository documents vocabulary priming, resumable processing,
 transcript staging, and audit work in [the pipeline continuity guide](/docs/pipeline-continuity.md)
-and [the transcript operations runbook](/docs/runbooks/transcript-ops-runbook.md).
+and [the public-surface audit guide](/docs/public-surface-audit/).
 The resulting [Interview Archive](/interviews/) lets a reader move from a
 published transcript back toward the recording and its context.
 

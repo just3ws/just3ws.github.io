@@ -6,7 +6,7 @@ if [ -n "${AI_OUTBOX_DIR:-}" ]; then
 elif [ -d "$HOME/ai/outbox" ]; then
   SOURCE_DIR="$HOME/ai/outbox"
 else
-  SOURCE_DIR="/Volumes/Dock_1TB/vimeo/outbox"
+  SOURCE_DIR="${VIMEO_OUTBOX_DIR:-}"
 fi
 REPORT_DIR="tmp"
 OUTPUT_DIR="tmp/transcript-id-staging"
@@ -42,8 +42,8 @@ Options (for prepare/dry-run/ingest):
   --skip-validate           Skip full pipeline validate after ingest.
 
 Examples:
-  ./bin/transcripts prepare --source-dir /Volumes/Dock_1TB/vimeo/outbox --min-confidence 0.8
-  ./bin/transcripts dry-run --source-dir /Volumes/Dock_1TB/vimeo/outbox
+  ./bin/transcripts prepare --source-dir "$VIMEO_OUTBOX_DIR" --min-confidence 0.8
+  ./bin/transcripts dry-run --source-dir "$VIMEO_OUTBOX_DIR"
   ./bin/transcripts ingest --source-dir tmp/transcript-id-staging --auto-commit
 USAGE
 }

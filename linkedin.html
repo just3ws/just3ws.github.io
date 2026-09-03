@@ -39,7 +39,7 @@ breadcrumb: LinkedIn Export
             <h3>{{ position.title }} — {{ position.company.name }}</h3>
           </div>
           <div class="linkedin-meta">
-            <span class="linkedin-dates">{{ position.start_date }} – {{ position.end_date | default: "Present" }}</span>
+            <span class="linkedin-dates">{{ position.start_date | human_date }} – {{ position.end_date | human_date }}</span>
             {% if position.company.location %}
             <span class="linkedin-location">{{ position.company.location }}</span>
             {% endif %}

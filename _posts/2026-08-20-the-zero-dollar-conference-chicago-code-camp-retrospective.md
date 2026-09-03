@@ -13,6 +13,8 @@ permalink: /ai/2026/08/20/the-zero-dollar-conference-chicago-code-camp-retrospec
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Between 2010 and 2012, Chicago Code Camp was one of the largest free technical community events in the Midwest. Every year, over 500 software engineers gathered on a Saturday morning for six concurrent tracks covering everything from Ruby and the JVM to mobile architecture and agile testing.

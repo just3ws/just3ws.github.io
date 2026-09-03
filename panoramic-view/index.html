@@ -22,6 +22,7 @@ permalink: /panoramic-view/
     <p class="pv-origin">{{ pv.meta.origin }}</p>
     <div class="pv-actions" aria-label="Panoramic View actions">
       <a class="pv-button" href="#the-model">See the model</a>
+      <a class="pv-text-link" href="#vocabulary">Learn the vocabulary</a>
       <a class="pv-text-link" href="/resume/">Review my experience</a>
     </div>
   </header>
@@ -133,7 +134,27 @@ permalink: /panoramic-view/
     </figure>
   </section>
 
-  <!-- SECTION 4: INTERACTIVE OPERATING SEQUENCE MATRIX -->
+  <!-- SECTION 4: FIELD VOCABULARY -->
+  <section class="pv-vocabulary" id="vocabulary" aria-labelledby="vocabulary-title">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">Field Vocabulary</p>
+      <h2 id="vocabulary-title">Start with the idea. Add the term when it helps.</h2>
+      <p>{{ pv.vocabulary.lede }}</p>
+    </div>
+    <p class="pv-vocabulary-note">{{ pv.vocabulary.note }}</p>
+    <div class="pv-vocabulary-grid">
+      {% for mapping in pv.vocabulary.mappings %}
+        <article class="pv-vocabulary-card">
+          <p class="pv-vocabulary-plain">{{ mapping.plain }}</p>
+          <p class="pv-vocabulary-label">You may also hear:</p>
+          <h3>{{ mapping.related }}</h3>
+          <p>{{ mapping.meaning }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- SECTION 5: INTERACTIVE OPERATING SEQUENCE MATRIX -->
   <section class="pv-sequence" aria-labelledby="operating-sequence">
     <div class="pv-section-heading">
       <p class="pv-kicker">Operating Sequence & Method Matrix</p>

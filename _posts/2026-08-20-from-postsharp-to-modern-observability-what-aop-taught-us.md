@@ -14,6 +14,8 @@ permalink: /ai/2026/08/20/from-postsharp-to-modern-observability-what-aop-taught
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 In December 2009, I published a technical tutorial and presentation on [Clean AOP using Post# Multicast Syntax](/2009/12/27/clean-aop-using-post-multicast-syntax.html). At the time, enterprise .NET development was wrestling with a massive explosion of boilerplate.

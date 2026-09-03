@@ -43,6 +43,23 @@ body_class: professional-home
     </aside>
   </header>
 
+  <section class="leadership-visitor-paths" aria-labelledby="visitor-paths-title">
+    <div class="leadership-section-heading">
+      <p class="leadership-section-index">Choose your way in</p>
+      <h2 id="visitor-paths-title">Start with the question you brought.</h2>
+      <p>You do not need to understand the whole archive before finding something useful. Choose the path that best matches why you are here.</p>
+    </div>
+    <div class="leadership-visitor-path-grid">
+      {% for path in home.visitor_paths %}
+        <a class="leadership-visitor-path" href="{{ path.href }}">
+          <strong>{{ path.title }}</strong>
+          <span>{{ path.text }}</span>
+          <b>{{ path.label }} <span aria-hidden="true">↗</span></b>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
   <!-- Unambiguous Résumé & Credentials Access Hub -->
   <section class="leadership-credentials-hub" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); border-radius: var(--radius-md, 0.5rem); padding: 1.5rem; margin: 2.5rem 0; box-shadow: var(--shadow-sm);">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border-subtle, #eeebe3); padding-bottom: 0.75rem;">
@@ -160,14 +177,15 @@ body_class: professional-home
     </ol>
   </section>
 
-  <!-- Public Record & 20-Year Archive -->
+  <!-- Public record and technical conversation archive -->
+  {% assign archive_status = site.data.archive_status.summary %}
   <section class="leadership-record" aria-labelledby="public-record-title">
     <div>
       <p class="leadership-section-index">04 / {{ home.public_record.label }}</p>
       <h2 id="public-record-title">{{ home.public_record.title }}</h2>
     </div>
     <div>
-      <p>{{ home.public_record.text }}</p>
+      <p>{{ home.public_record.text }} The current index contains {{ archive_status.interviews_total }} interviews across {{ archive_status.video_assets_total }} recorded assets.</p>
       <nav class="leadership-record-links" aria-label="Public technical record">
         {% for item in home.public_record.links %}
           <a href="{{ item.href }}">{{ item.label }}</a>

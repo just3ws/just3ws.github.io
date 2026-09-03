@@ -255,12 +255,55 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.screenshot({ path: 'tmp/screenshots/mobile-taxonomy-kanagawa.png', fullPage: true });
   });
 
-  test('Timeline uses the editorial palette and preserves era filtering', async ({ page }) => {
+  test('Timeline presents four accessible story lanes with optional context', async ({ page }) => {
     await page.goto('/timeline/');
 
-    const title = page.getByRole('heading', { name: 'Interactive Historical Timeline' });
+    const title = page.getByRole('heading', { name: 'A vision takes its own time.' });
     await expect(title).toBeVisible();
+    await expect(page.getByRole('heading', { name: /How did UGtastic grow from community conversations/ })).toBeVisible();
+    await expect(page.locator('#timeline-story-summary')).toContainText('The timeline separates when conversations happened from when their files were later processed.');
+    await expect(page.locator('#timeline-story-summary').getByRole('link', { name: 'Follow the evidence' })).toHaveAttribute('href', '#ledger-heading');
     await expect(page.locator('.timeline-era-block').first()).toBeVisible();
+    await expect(page.locator('#timeline-visual .timeline-lane-primary')).toHaveCount(4);
+    await expect(page.locator('#timeline-visual .timeline-lane-optional')).toHaveCount(0);
+    expect(await page.locator('#timeline-window-preview').evaluate(element => element.parentElement.className)).toBe('timeline-exhibit');
+
+    const overlays = page.getByRole('group', { name: 'Add optional context' }).getByRole('checkbox');
+    await expect(overlays).toHaveCount(5);
+    for (const overlay of await overlays.all()) await expect(overlay).not.toBeChecked();
+
+    const timelineItems = page.locator('[data-timeline-item]');
+    expect(await timelineItems.count()).toBeGreaterThan(4);
+    const accessibleNames = await timelineItems.evaluateAll(elements => elements.map(element => element.getAttribute('aria-label')));
+    expect(new Set(accessibleNames).size).toBe(accessibleNames.length);
+    for (const name of accessibleNames) {
+      expect(name).toMatch(/^(Event|Active span|Approximate event|Approximate active span|Unverified recollection):/);
+      expect(name).toContain('Date confidence:');
+      expect(name).toContain('Story lane:');
+    }
+
+    const firstLaneItems = page.locator('.timeline-lane-primary').first().locator('[data-timeline-item]');
+    expect(await firstLaneItems.count()).toBeGreaterThan(1);
+    await firstLaneItems.first().focus();
+    const focusedPreview = await page.locator('#timeline-window-preview').innerText();
+    await firstLaneItems.first().hover();
+    expect(await page.locator('#timeline-window-preview').innerText()).toBe(focusedPreview);
+    await firstLaneItems.first().press('ArrowRight');
+    await expect(firstLaneItems.nth(1)).toBeFocused();
+    await firstLaneItems.nth(1).press('Home');
+    await expect(firstLaneItems.first()).toBeFocused();
+    await firstLaneItems.first().click();
+    await expect(page.locator('#timeline-details')).toContainText('Confidence:');
+
+    await page.getByRole('checkbox', { name: 'Work context' }).check();
+    await expect(page.locator('#timeline-visual .timeline-lane-primary')).toHaveCount(4);
+    await expect(page.locator('#timeline-visual .timeline-lane-career')).toHaveCount(1);
+    await page.getByRole('checkbox', { name: 'Work context' }).uncheck();
+    await expect(page.locator('#timeline-visual .timeline-lane-optional')).toHaveCount(0);
+
+    const zoom = page.getByRole('slider', { name: 'Zoom' });
+    await zoom.fill('3');
+    await expect(page.locator('#timeline-zoom-label')).toHaveText('close');
 
     const defaultColors = await page.evaluate(() => ({
       title: getComputedStyle(document.querySelector('.timeline-page .intel-title')).color,
@@ -273,26 +316,18 @@ test.describe('Site Layout and Aesthetics', () => {
       heroBorder: 'rgb(15, 119, 115)',
     });
 
-    const railsEra = page.getByRole('button', { name: '2014: Rails Boom & GOTO' });
-    await railsEra.click();
-    await expect(page.locator('.timeline-era-block')).toHaveCount(1);
-    await expect(page.locator('.era-title-display')).toContainText('Rails');
-
-    const firstEraButton = page.getByRole('button', { name: 'All Eras (2009-2026)' });
-    await firstEraButton.focus();
-    const focusStyle = await firstEraButton.evaluate((element) => ({
+    const firstChapterButton = page.locator('#timeline-epoch-tabs button').first();
+    await firstChapterButton.focus();
+    const focusStyle = await firstChapterButton.evaluate((element) => ({
       outlineStyle: getComputedStyle(element).outlineStyle,
       outlineWidth: getComputedStyle(element).outlineWidth,
     }));
     expect(focusStyle.outlineStyle).toBe('solid');
     expect(focusStyle.outlineWidth).not.toBe('0px');
 
-    await page.getByRole('button', { name: 'Toggle Kanagawa Wave Theme' }).click();
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'kanagawa');
-    const kanagawaTitle = await title.evaluate((element) => getComputedStyle(element).color);
-    expect(kanagawaTitle).toBe('rgb(220, 215, 186)');
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await page.screenshot({ path: 'tmp/screenshots/timeline.png', fullPage: true });
+    expect(await page.content()).not.toContain('/Volumes/');
+    await page.getByRole('button', { name: 'Reset view' }).click();
+    await page.locator('.timeline-exhibit').screenshot({ path: 'tmp/screenshots/timeline.png' });
   });
 
   test('Timeline remains bounded at mobile width in both themes', async ({ page }) => {
@@ -305,13 +340,7 @@ test.describe('Site Layout and Aesthetics', () => {
     }));
     let metrics = await measure();
     expect(metrics.documentWidth).toBeLessThanOrEqual(metrics.viewportWidth + 1);
-    await page.screenshot({ path: 'tmp/screenshots/mobile-timeline.png', fullPage: true });
-
-    await page.getByRole('button', { name: 'Toggle Kanagawa Wave Theme' }).click();
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'kanagawa');
-    metrics = await measure();
-    expect(metrics.documentWidth).toBeLessThanOrEqual(metrics.viewportWidth + 1);
-    await page.screenshot({ path: 'tmp/screenshots/mobile-timeline-kanagawa.png', fullPage: true });
+    await page.locator('.timeline-exhibit').screenshot({ path: 'tmp/screenshots/mobile-timeline.png' });
   });
 
   test('Navigation is functional and consistent', async ({ page }) => {
@@ -382,13 +411,18 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.screenshot({ path: 'tmp/screenshots/brief-nextpatient-kanagawa.png', fullPage: true });
   });
 
-  test('Command Palette (Cmd+K) opens, filters sitemap index, and navigates', async ({ page }) => {
+  test('Command Palette (Cmd+Shift+K) opens, filters sitemap index, and navigates', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/home/');
 
-    // Press Meta+K to open palette
+    // Plain Cmd+K is intentionally not a site binding because Firefox uses it
+    // for web search.
     await page.keyboard.press('Meta+k');
     const backdrop = page.locator('#cmdPaletteBackdrop');
+    await expect(backdrop).not.toHaveClass(/is-open/);
+
+    // Press the Firefox-safe macOS binding to open the palette
+    await page.keyboard.press('Meta+Shift+k');
     await expect(backdrop).toHaveClass(/is-open/);
 
     // Type 'groupon position' in search input

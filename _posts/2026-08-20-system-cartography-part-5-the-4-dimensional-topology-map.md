@@ -13,6 +13,8 @@ permalink: /ai/2026/08/20/system-cartography-part-5-the-4-dimensional-topology-m
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Most enterprise architecture diagrams are flat and static. They show neat little boxes connected by clean arrows: a web app talks to an API, which talks to a database.

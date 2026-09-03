@@ -1,0 +1,66 @@
+---
+layout: minimal
+title: Site Search
+description: Search Mike Hall's technical archive, articles, interviews, case studies, and engineering history.
+permalink: /search/
+---
+
+<article class="page search-page">
+  <header>
+    <h1>Search the technical archive</h1>
+    <p class="intro">Search articles, interviews, speakers, case studies, positions, and archive concepts. Results link to their canonical pages.</p>
+  </header>
+
+  <form id="site-search-form" role="search">
+    <label for="site-search-input">Search this site</label>
+    <div class="search-form-row">
+      <input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="Try UGl.st, OpenTelemetry, Trek, or legacy migration">
+      <button type="submit">Search</button>
+    </div>
+  </form>
+  <p id="site-search-status" aria-live="polite">Loading the archive index...</p>
+  <ol id="site-search-results" class="home-list"></ol>
+</article>
+
+<style>
+  .search-page { max-width: 58rem; margin: 0 auto; padding: 3rem 1.25rem 6rem; }
+  .search-form-row { display: flex; gap: .6rem; margin-top: .5rem; }
+  .search-form-row input { flex: 1; min-width: 0; padding: .75rem 1rem; border: 1px solid #b8c4d2; border-radius: .5rem; font-size: 1rem; }
+  .search-form-row button { padding: .75rem 1rem; border: 0; border-radius: .5rem; background: #087f78; color: white; font-weight: 700; }
+  #site-search-status { color: #5e718c; }
+  #site-search-results li { margin: .9rem 0; }
+  #site-search-results a { color: #087f78; font-weight: 700; }
+  #site-search-results small { display: block; color: #5e718c; }
+  @media (max-width: 600px) { .search-form-row { display: block; } .search-form-row button { margin-top: .5rem; } }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('site-search-form');
+  const input = document.getElementById('site-search-input');
+  const status = document.getElementById('site-search-status');
+  const results = document.getElementById('site-search-results');
+  let catalog = [];
+
+  const escapeHtml = value => String(value || '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+  fetch('/assets/data/site-search-index.json').then(response => response.json()).then(data => {
+    catalog = data.filter(item => item && item.url);
+    const query = new URLSearchParams(window.location.search).get('q') || '';
+    input.value = query;
+    render(query);
+  }).catch(() => { status.textContent = 'The local search index could not be loaded.'; });
+
+  function render(raw) {
+    const query = raw.trim().toLowerCase();
+    const terms = query.split(/\s+/).filter(Boolean);
+    const matches = catalog.filter(item => {
+      const haystack = `${item.title} ${item.badge || ''} ${item.keywords || ''}`.toLowerCase();
+      return terms.every(term => haystack.includes(term));
+    });
+    status.textContent = query ? `${matches.length} result${matches.length === 1 ? '' : 's'} for “${raw.trim()}”` : `${catalog.length} indexed surfaces`;
+    results.innerHTML = matches.slice(0, 100).map(item => `<li><a href="${escapeHtml(item.url)}">${escapeHtml(item.icon || '🔗')} ${escapeHtml(item.title)}</a><small>${escapeHtml(item.badge || '')} · ${escapeHtml(item.keywords || '')}</small></li>`).join('');
+  }
+
+  form.addEventListener('submit', event => { event.preventDefault(); const query = input.value.trim(); history.replaceState({}, '', query ? `/search/?q=${encodeURIComponent(query)}` : '/search/'); render(query); });
+});
+</script>

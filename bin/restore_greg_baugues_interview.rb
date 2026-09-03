@@ -13,7 +13,7 @@ require_relative 'lib/youtube_client'
 
 $stdout.sync = true
 
-VIDEO_PATH = "/Volumes/Dock_1TB/WITC/YouTube/Uploads from Mike Hall/_mp4/Interview with Greg Baugues on Mental Health in Tech at RailsConf 2014___aCUPJbziujI.mp4"
+VIDEO_PATH = ENV.fetch("GREG_BAUGUES_VIDEO_PATH", "")
 
 dry_run = ARGV.include?("--dry-run")
 

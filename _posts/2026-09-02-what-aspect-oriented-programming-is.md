@@ -13,6 +13,8 @@ permalink: /ai/2026/09/02/what-aspect-oriented-programming-is/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 content_type: explainer
 source_kind: ai-augmented-human-led
 context_wiki:

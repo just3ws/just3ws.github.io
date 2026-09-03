@@ -9,7 +9,7 @@ require_relative "../src/generators/core/yaml_io"
 ROOT = Pathname(__dir__).join("..").expand_path
 ASSETS_PATH = ROOT.join("_data", "video_assets.yml")
 INTERVIEWS_PATH = ROOT.join("_data", "interviews.yml")
-WITC_METADATA_DIR = Pathname("/Volumes/Dock_1TB/WITC/_output/metadata")
+WITC_METADATA_DIR = Pathname(ENV.fetch("WITC_METADATA_DIR", "/path/to/WITC/_output/metadata"))
 
 MISSING_IDS = %w[
   PeyzIoZh6tw

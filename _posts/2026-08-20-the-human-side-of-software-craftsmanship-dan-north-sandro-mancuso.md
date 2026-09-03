@@ -14,6 +14,8 @@ permalink: /ai/2026/08/20/the-human-side-of-software-craftsmanship-dan-north-san
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Between 2011 and 2014, through **UGtastic**, I had the privilege of conducting and recording over 200 high-bandwidth conversations with the practitioners who shaped modern software development.

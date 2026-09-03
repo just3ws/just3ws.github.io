@@ -3,6 +3,9 @@ layout: post
 title: "From Geekfest to SRE: The 3-Year Lifecycle of a Sustainable Engineering Community"
 date: "2026-08-30"
 description: "Grassroots engineering communities often die when their founders move on. Here is the 3-phase framework for turning a grassroots meetup into permanent institutional capability."
+ai_assisted: true
+human_led: true
+source_kind: ai-augmented-human-led
 categories:
   - Leadership
   - Culture

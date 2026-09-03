@@ -4,7 +4,7 @@
     <p class="position-meta">
       <span class="position-company">{{ include.project.company.name }}</span>
       {%- if include.project.company.location %} | <span>{{ include.project.company.location }}</span>{%- endif %}
-      <span class="position-dates"> | <time>{{ include.project.start_date }}</time> - <time>{{ include.project.end_date | default: "Present" }}</time></span>
+      <span class="position-dates"> | <time>{{ include.project.start_date | human_date }}</time> - <time>{{ include.project.end_date | human_date }}</time></span>
     </p>
   </header>
 

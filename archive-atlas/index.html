@@ -1,0 +1,405 @@
+---
+layout: minimal
+title: "WITC Archive Atlas"
+description: "A temporal, evidence-linked map of the UGtastic and WHOIS Tech Community archive."
+body_class: archive-atlas-page
+---
+
+<article class="archive-atlas">
+  <header class="atlas-hero">
+    <p class="atlas-kicker">WHOIS Tech Community archive</p>
+    <h1>WITC Archive Atlas</h1>
+    <p class="atlas-lede">A horizontal map of recording, community events, captioning, preservation, and later curation. Select an era, then open a series to follow its evidence trail.</p>
+    <p class="atlas-relation"><strong>How this relates to the Timeline:</strong> the <a href="/timeline/">Timeline</a> is the full career and life waterfall. This Atlas is its explorable WITC projection, where archive threads can be read alongside career, technology, and community layers.</p>
+    <div class="atlas-orientation" aria-label="How to read the atlas">
+      <span><b>01</b> Find the era</span>
+      <span><b>02</b> Follow a lane</span>
+      <span><b>03</b> Open the evidence</span>
+      <a href="#atlas-gallery"><b>04</b> View the artifacts</a>
+    </div>
+  </header>
+
+  <section class="atlas-scene" aria-labelledby="atlas-scene-heading">
+    <div class="atlas-scene-copy">
+      <p class="atlas-kicker">Scene graph · organizer's perspective</p>
+      <h2 id="atlas-scene-heading">Think atlas, not index.</h2>
+      <p>The archive is a place with landmarks, orbits, crossings, and quiet space between signals. There is a little VRML and Second Life in the instinct: do not flatten a world into a list when people can navigate it as a place.</p>
+    </div>
+    <div class="atlas-orbital-scene" role="img" aria-label="A spatial archive scene connecting record, community, preserve, and return">
+      <div class="atlas-orbit atlas-orbit-one"></div>
+      <div class="atlas-orbit atlas-orbit-two"></div>
+      <div class="atlas-orbit atlas-orbit-three"></div>
+      <div class="atlas-scene-sun">WITC<br><small>archive</small></div>
+      <span class="atlas-scene-node atlas-scene-node-record">record</span>
+      <span class="atlas-scene-node atlas-scene-node-community">community</span>
+      <span class="atlas-scene-node atlas-scene-node-preserve">preserve</span>
+      <span class="atlas-scene-node atlas-scene-node-return">return</span>
+    </div>
+  </section>
+
+  <section class="atlas-panel" aria-labelledby="atlas-eras-heading">
+    <h2 id="atlas-eras-heading">Epochs</h2>
+    <div id="atlas-eras" class="atlas-eras" role="tablist" aria-label="Archive epochs"></div>
+  </section>
+
+  <section class="atlas-panel" aria-labelledby="atlas-map-heading">
+    <div class="atlas-section-heading">
+      <div>
+        <h2 id="atlas-map-heading">Parallel history</h2>
+        <p>Each lane is a different kind of time. The archive becomes easier to understand when production and preservation do not occupy the same lane.</p>
+      </div>
+      <span id="atlas-range" class="atlas-range"></span>
+    </div>
+    <div class="atlas-map-tools">
+      <label for="atlas-zoom">Timeline scale <input id="atlas-zoom" type="range" min="0" max="4" value="1" step="1"><output id="atlas-zoom-label" for="atlas-zoom">expanded</output></label>
+      <span class="atlas-map-hint">Scroll horizontally. Distance is part of the record.</span>
+    </div>
+    <div class="atlas-layer-legend" aria-label="Archive layer key">
+      <span><i class="atlas-swatch atlas-swatch-record"></i>recording and production</span>
+      <span><i class="atlas-swatch atlas-swatch-community"></i>community and conference</span>
+      <span><i class="atlas-swatch atlas-swatch-conference"></i>conference playlists</span>
+      <span><i class="atlas-swatch atlas-swatch-preserve"></i>captioning and preservation</span>
+      <span><i class="atlas-swatch atlas-swatch-curation"></i>curation and return</span>
+    </div>
+    <div id="atlas-overlays" class="atlas-overlays" role="tablist" aria-label="Atlas overlays">
+      <button type="button" role="tab" aria-selected="false" data-overlay="archive">Archive threads</button>
+      <button type="button" role="tab" aria-selected="false" data-overlay="career">Career path</button>
+      <button type="button" role="tab" aria-selected="false" data-overlay="technology">Technology eras</button>
+      <button type="button" role="tab" aria-selected="false" data-overlay="community">Community signals</button>
+      <button type="button" role="tab" aria-selected="true" data-overlay="conference">Conference playlists</button>
+      <button type="button" role="tab" aria-selected="false" data-overlay="community-interviews">Community interviews</button>
+      <button type="button" role="tab" aria-selected="false" data-overlay="media">Media identity</button>
+      <button type="button" role="tab" aria-selected="false" data-overlay="context">Historical context</button>
+      <button type="button" role="tab" aria-selected="false" data-overlay="all">All layers</button>
+    </div>
+    <div id="atlas-axis" class="atlas-axis" aria-hidden="true"><span>2011</span><span>2013</span><span>2015</span><span>2018</span><span>2021</span><span>2026</span></div>
+    <div id="atlas-map" class="atlas-map" aria-live="polite"></div>
+    <p class="atlas-scale-note"><strong>Reading the distance:</strong> the map is deliberately wider than the viewport. A quiet interval is still information. It can show preparation, recovery, or time when the work was happening elsewhere.</p>
+    <aside class="atlas-preservation-note" aria-labelledby="atlas-preservation-heading">
+      <h3 id="atlas-preservation-heading">A quiet signal is not always an empty one</h3>
+      <p>The small lost-media boundary belongs to experimental Skype recordings that were separate from the in-person interview program. Skype variable-bitrate streams, frame-rate drift, and synchronization work could make those experiments difficult to preserve or reconcile. To the best of current knowledge, the in-person interviews are present. The Atlas keeps that confidence qualified until each source record is independently checked, and does not invent a date, speaker, or recovery status where evidence is incomplete.</p>
+    </aside>
+  </section>
+
+  <section class="atlas-panel" aria-labelledby="atlas-evidence-heading">
+    <h2 id="atlas-evidence-heading">Evidence trail</h2>
+    <div id="atlas-details" class="atlas-details"><p>Select a lane above to inspect its local evidence and external discovery links.</p></div>
+  </section>
+
+  <section id="atlas-gallery" class="atlas-panel atlas-gallery-panel" aria-labelledby="atlas-gallery-heading">
+    <div class="atlas-section-heading">
+      <div>
+        <h2 id="atlas-gallery-heading">Artifacts in orbit</h2>
+        <p>A small visual sample of the UGtastic production archive. The dates below come from the asset filenames. The images are evidence of the archive's visual surface, not a claim that every design change happened on that exact day.</p>
+      </div>
+    </div>
+    <div class="atlas-gallery">
+      {% assign atlas_gallery_assets = "batch-3/ugtastic-20120616110405.png|batch-3/ugtastic-20120717082432.png|batch-2/ugtastic-20130104123545.png|ugtastic-20130307081827.png|batch-2/ugtastic-20130629083524.png|ugtastic-20130708045226.png|batch-3/ugtastic-20131001174806.png|ugtastic-20140105115755.png|batch-3/ugtastic-20140313235944.png|ugtastic-20140515085029.png|batch-2/ugtastic-20140922113756.png|batch-2/ugtastic-20150415064144.png" | split: "|" %}
+      {% for asset in atlas_gallery_assets %}
+        {% assign asset_name = asset | split: '/' | last %}
+        {% assign asset_date = asset_name | remove: 'ugtastic-' | remove: '.png' %}
+        <figure class="atlas-gallery-item">
+          <img src="{{ '/assets/images/portfolio/' | append: asset | relative_url }}" alt="UGtastic archive asset dated {{ asset_date | slice: 0, 4 }}-{{ asset_date | slice: 4, 2 }}-{{ asset_date | slice: 6, 2 }}" loading="lazy">
+          <figcaption><span>{{ asset_date | slice: 0, 4 }}-{{ asset_date | slice: 4, 2 }}-{{ asset_date | slice: 6, 2 }}</span><small>UGtastic archive asset</small></figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  </section>
+</article>
+
+<style>
+  .archive-atlas-page .main-container { max-width: none; padding-left: 0; padding-right: 0; }
+  .archive-atlas { max-width: none; margin: 0 auto; padding: 3rem clamp(1.25rem, 4vw, 5rem) 6rem; color: #17233d; }
+  .atlas-hero { position: relative; overflow: hidden; padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem) 3rem; border-radius: 1.25rem; background: radial-gradient(circle at 85% 18%, rgba(73, 105, 169, .34), transparent 22rem), linear-gradient(120deg, #17233d 0%, #243c61 55%, #087f78 150%); color: #fff; box-shadow: 0 1.5rem 4rem rgba(23,35,61,.18); }
+  .atlas-kicker { color: #087f78; font: 700 .8rem/1.2 system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+  .atlas-hero .atlas-kicker { color: #8fe3d7; }
+  .atlas-hero h1 { margin: .5rem 0 1rem; font: 700 clamp(2.5rem, 7vw, 6rem)/.98 Georgia, serif; letter-spacing: -.045em; }
+  .atlas-lede { max-width: 54rem; margin: 0; color: rgba(255,255,255,.82); font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.7; }
+  .atlas-relation { max-width: 60rem; margin: 1.25rem 0 0; padding-left: 1rem; border-left: 3px solid #f0bd72; color: rgba(255,255,255,.72); font-size: .92rem; line-height: 1.6; }
+  .atlas-relation a { color: #fff; font-weight: 800; text-underline-offset: .2em; }
+  .atlas-orientation { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; margin-top: 2.25rem; color: rgba(255,255,255,.75); font: 700 .78rem/1.3 system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; }
+  .atlas-orientation b { margin-right: .35rem; color: #f0bd72; font-family: ui-monospace, monospace; }
+  .atlas-orientation a { color: inherit; text-underline-offset: .2em; }
+  .atlas-scene { display: grid; grid-template-columns: minmax(18rem, .8fr) minmax(28rem, 1.2fr); gap: 2rem; align-items: center; min-height: 23rem; margin-top: 2rem; padding: 2rem clamp(1.25rem, 4vw, 4rem); overflow: hidden; border: 1px solid rgba(73,105,169,.35); border-radius: 1rem; background: radial-gradient(circle at 68% 48%, rgba(8,127,120,.18), transparent 18rem), #101c35; color: #fff; }
+  .atlas-scene-copy { max-width: 30rem; }
+  .atlas-scene-copy .atlas-kicker { color: #8fe3d7; }
+  .atlas-scene-copy h2 { margin: .4rem 0 1rem; color: #fff; font: 700 clamp(2rem, 5vw, 3.5rem)/1 Georgia, serif; letter-spacing: -.04em; }
+  .atlas-scene-copy p:last-child { color: rgba(255,255,255,.76); line-height: 1.65; }
+  .atlas-orbital-scene { position: relative; width: min(100%, 34rem); aspect-ratio: 1.25; margin: 0 auto; perspective: 900px; transform-style: preserve-3d; }
+  .atlas-orbit { position: absolute; top: 50%; left: 50%; width: 80%; height: 58%; border: 1px solid rgba(143,227,215,.45); border-radius: 50%; transform-style: preserve-3d; transform: translate(-50%, -50%) rotateX(62deg) rotateZ(-18deg); box-shadow: 0 0 2rem rgba(8,127,120,.12); animation: atlas-orbit-drift 18s linear infinite; }
+  .atlas-orbit-one { width: 45%; height: 35%; border-color: rgba(240,189,114,.6); }
+  .atlas-orbit-two { width: 68%; height: 48%; transform: translate(-50%, -50%) rotateX(62deg) rotateZ(38deg); }
+  .atlas-orbit-three { width: 94%; height: 66%; transform: translate(-50%, -50%) rotateX(62deg) rotateZ(78deg); border-color: rgba(72,105,169,.7); }
+  .atlas-scene-sun { position: absolute; top: 50%; left: 50%; display: grid; place-content: center; width: 6.2rem; height: 6.2rem; transform: translate(-50%, -50%); border: 1px solid #f0bd72; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe7b0, #bd7d32 58%, #70451c); color: #17233d; font: 800 1rem/1.05 Georgia, serif; text-align: center; box-shadow: 0 0 2.5rem rgba(240,189,114,.45); }
+  .atlas-scene-sun small { font: 700 .65rem/1.2 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+  .atlas-scene-node { position: absolute; padding: .35rem .55rem; border: 1px solid rgba(255,255,255,.42); border-radius: .35rem; background: rgba(16,28,53,.88); color: #fff; font: 700 .72rem/1 system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase; box-shadow: 0 .4rem 1rem rgba(0,0,0,.22); }
+  .atlas-scene-node-record { top: 10%; left: 47%; color: #8fe3d7; }
+  .atlas-scene-node-community { top: 45%; right: 2%; color: #a9c4ff; }
+  .atlas-scene-node-preserve { bottom: 5%; left: 29%; color: #ffc08f; }
+  .atlas-scene-node-return { top: 28%; left: 1%; color: #f0bd72; }
+  .atlas-panel { margin-top: 2rem; padding: 1.5rem; border: 1px solid #d8dee9; border-radius: 1rem; background: rgba(255,255,255,.74); box-shadow: 0 12px 35px rgba(23,35,61,.06); }
+  .atlas-panel h2 { margin-top: 0; font: 700 1.7rem Georgia, serif; }
+  .atlas-eras { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .atlas-era { padding: .65rem .8rem; border: 1px solid #b5c4d8; border-radius: 999px; background: #f7fafc; color: #17233d; cursor: pointer; font-weight: 700; text-align: left; }
+  .atlas-era small { display: block; margin-top: .25rem; color: #6d7d95; font-size: .72rem; font-weight: 500; }
+  .atlas-era[aria-selected="true"], .atlas-era:focus-visible { border-color: #087f78; background: #dff4ef; outline: 3px solid rgba(8,127,120,.2); }
+  .atlas-section-heading { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+  .atlas-section-heading p { margin-top: -.5rem; color: #5e718c; }
+  .atlas-range { white-space: nowrap; padding: .4rem .65rem; border-radius: .4rem; background: #17233d; color: white; font: 700 .8rem system-ui, sans-serif; }
+  .atlas-map-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; margin: 1.25rem 0 .8rem; color: #30425f; font: 700 .82rem/1.4 system-ui, sans-serif; }
+  .atlas-map-tools label { display: inline-flex; align-items: center; gap: .65rem; }
+  .atlas-map-tools input { accent-color: #087f78; }
+  .atlas-map-tools output { min-width: 5.5rem; color: #087f78; }
+  .atlas-map-hint { color: #6d7d95; font-weight: 500; }
+  .atlas-layer-legend { display: flex; flex-wrap: wrap; gap: .55rem 1.15rem; padding: .8rem 0 1.1rem; color: #5e718c; font: 700 .72rem/1.3 system-ui, sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+  .atlas-layer-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+  .atlas-overlays { display: flex; flex-wrap: wrap; gap: .5rem; margin: .2rem 0 1rem; }
+  .atlas-overlays button { padding: .55rem .75rem; border: 1px solid #b5c4d8; border-radius: .35rem; background: transparent; color: #30425f; cursor: pointer; font: 700 .78rem/1.2 system-ui, sans-serif; }
+  .atlas-overlays button[aria-selected="true"], .atlas-overlays button:focus-visible { border-color: #087f78; background: #dff4ef; color: #087f78; outline: 3px solid rgba(8,127,120,.15); }
+  .atlas-swatch { width: .65rem; height: .65rem; border-radius: 50%; display: inline-block; }
+  .atlas-swatch-record { background: #087f78; }
+  .atlas-swatch-community { background: #4869a9; }
+  .atlas-swatch-preserve { background: #ac5c35; }
+  .atlas-swatch-curation { background: #bd7d32; }
+  .atlas-swatch-career { background: #4869a9; }
+  .atlas-swatch-technology { background: #087f78; }
+  .atlas-swatch-community { background: #ac5c35; }
+  .atlas-swatch-conference { background: #d26b42; }
+  .atlas-swatch-media { background: #8b5fbf; }
+  .atlas-swatch-context { background: #bd7d32; }
+  .atlas-axis { display: grid; grid-template-columns: minmax(14rem, 19rem) repeat(6, minmax(12rem, 1fr)); gap: 1rem; min-width: 86rem; padding: 0 0 .35rem; color: #6d7d95; font: 700 .72rem/1.2 ui-monospace, monospace; }
+  .atlas-axis span:nth-child(1) { grid-column: 2; }
+  .atlas-axis span:nth-child(2) { grid-column: 3; }
+  .atlas-axis span:nth-child(3) { grid-column: 4; }
+  .atlas-axis span:nth-child(4) { grid-column: 5; }
+  .atlas-axis span:nth-child(5) { grid-column: 6; }
+  .atlas-axis span:nth-child(6) { grid-column: 7; }
+  .atlas-map { --atlas-canvas-width: 86rem; display: grid; gap: .75rem; min-width: var(--atlas-canvas-width); overflow-x: auto; padding: .5rem 0 1.25rem; background: linear-gradient(180deg, rgba(247,250,252,.8), rgba(255,255,255,0)); }
+  .atlas-lane { display: grid; grid-template-columns: minmax(14rem, 19rem) minmax(60rem, 1fr); align-items: center; gap: 1rem; min-width: var(--atlas-canvas-width); }
+  .atlas-lane-label { position: sticky; left: 0; z-index: 2; align-self: stretch; display: flex; flex-direction: column; justify-content: center; color: #30425f; font-weight: 700; background: rgba(255,255,255,.96); box-shadow: .75rem 0 .9rem -.9rem rgba(23,35,61,.35); }
+  .atlas-lane-label small { display: block; margin-top: .2rem; color: #6d7d95; font-weight: 400; }
+  .atlas-track { position: relative; min-height: 3.2rem; border-top: 2px solid #c6d2e0; border-bottom: 1px solid #e1e7ef; background: repeating-linear-gradient(90deg, transparent 0, transparent calc(20% - 1px), #e8edf4 20%); }
+  .atlas-bar { position: absolute; top: .75rem; height: 1.7rem; min-width: 2rem; padding: .25rem .6rem; border: 0; border-radius: .4rem; background: #087f78; color: white; cursor: pointer; font-size: .82rem; font-weight: 800; white-space: nowrap; box-shadow: 0 4px 10px rgba(8,127,120,.2); transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
+  .atlas-bar:hover, .atlas-bar:focus-visible { z-index: 3; transform: translateY(-.15rem) scale(1.02); filter: brightness(1.08); box-shadow: 0 .5rem 1.2rem rgba(8,127,120,.3); outline: 2px solid rgba(8,127,120,.35); outline-offset: 2px; }
+  .atlas-lane-career .atlas-bar { background: #4869a9; }
+  .atlas-lane-technology .atlas-bar { background: #087f78; }
+  .atlas-lane-community .atlas-bar { background: #ac5c35; }
+  .atlas-lane-conference .atlas-bar { background: #d26b42; }
+  .atlas-lane-community-interview .atlas-bar { background: #6f8f46; }
+  .atlas-lane-context .atlas-bar { background: #bd7d32; }
+  .atlas-lane-media .atlas-bar { background: #8b5fbf; }
+  .atlas-lane-archive .atlas-bar { background: #087f78; }
+  .atlas-bar:nth-child(3n) { background: #4869a9; }
+  .atlas-bar:nth-child(3n+1) { background: #ac5c35; }
+  .atlas-details { line-height: 1.65; }
+  .atlas-details ul { padding-left: 1.2rem; }
+  .atlas-details code { overflow-wrap: anywhere; }
+  .atlas-details a { color: #087f78; }
+  .atlas-scale-note { margin: 1rem 0 0; max-width: 70rem; color: #5e718c; font-size: .9rem; line-height: 1.6; }
+  .atlas-preservation-note { margin-top: 1.25rem; padding: 1rem 1.1rem; border-left: 3px solid #8b5fbf; background: #f7f3fb; color: #30425f; }
+  .atlas-preservation-note h3 { margin: 0 0 .35rem; color: #503b70; font: 700 1.05rem Georgia, serif; }
+  .atlas-preservation-note p { max-width: 70rem; margin: 0; line-height: 1.6; }
+  .atlas-gallery-panel { overflow: hidden; }
+  .atlas-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
+  .atlas-gallery-item { min-width: 0; margin: 0; overflow: hidden; border: 1px solid #d8dee9; border-radius: .7rem; background: #f7fafc; }
+  .atlas-gallery-item img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #e9eef5; }
+  .atlas-gallery-item figcaption { display: flex; flex-direction: column; gap: .2rem; padding: .7rem .75rem .8rem; color: #30425f; font: 700 .78rem/1.2 ui-monospace, monospace; }
+  .atlas-gallery-item figcaption small { color: #6d7d95; font: 500 .72rem/1.3 system-ui, sans-serif; }
+  @keyframes atlas-orbit-drift { from { transform: translate(-50%, -50%) rotateX(62deg) rotateZ(-18deg); } to { transform: translate(-50%, -50%) rotateX(62deg) rotateZ(342deg); } }
+  @media (prefers-reduced-motion: reduce) { .atlas-orbit { animation: none; } .atlas-bar { transition: none; } }
+  @media (max-width: 700px) { .archive-atlas { padding-top: 1rem; } .atlas-panel { padding: 1rem; } .atlas-section-heading { display: block; } .atlas-range { display: inline-block; } .atlas-scene { grid-template-columns: 1fr; padding: 1.5rem 1rem; } .atlas-orbital-scene { width: 100%; } }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('/docs/witc-archive-atlas.json')
+    .then(response => response.json())
+    .then(renderAtlas)
+    .catch(error => { document.getElementById('atlas-details').textContent = `Atlas data unavailable: ${error.message}`; });
+
+  function renderAtlas(data) {
+    const eras = document.getElementById('atlas-eras');
+    const map = document.getElementById('atlas-map');
+    const details = document.getElementById('atlas-details');
+    const range = document.getElementById('atlas-range');
+    const zoom = document.getElementById('atlas-zoom');
+    const zoomLabel = document.getElementById('atlas-zoom-label');
+    const axis = document.getElementById('atlas-axis');
+    const overlays = document.getElementById('atlas-overlays');
+    const archiveMin = 2011;
+    const archiveMax = 2026;
+    let scaleMin = archiveMin;
+    let scaleMax = archiveMax;
+    let active = null;
+    let activeOverlay = 'conference';
+
+    const careerSeries = [
+      {% for position_id in site.data.resume.timeline.history %}
+        {% assign position = site.data.resume.positions[position_id] %}
+        { id: {{ position.id | prepend: 'career-' | jsonify }}, label: {{ position.company.name | jsonify }}, start: {{ position.start_date | jsonify }}, end: {{ position.end_date | default: '2026' | jsonify }}, kind: 'career', precision: {{ position.date_precision | default: 'career record' | jsonify }}, description: {{ position.title | append: ' at ' | append: position.company.name | jsonify }}, evidence: [{ source_path: {{ position.id | append: ' position record' | jsonify }}, timestamp: {{ position.start_date | jsonify }}, timestamp_kind: 'career record', url: {{ position.url | default: '' | jsonify }} }] },
+      {% endfor %}
+    ];
+    const technologySeries = [
+      { id: 'technology-dotnet', label: '.NET and Visual Studio', start: '2001', end: '2011', kind: 'technology', precision: 'era', description: 'The Microsoft development surface from ASP and Visual Studio through the .NET years.', evidence: [{ source_path: 'Career and writing archive', timestamp: '2001 to 2011', timestamp_kind: 'era synthesis', url: '/search/?q=.NET' }] },
+      { id: 'technology-ruby', label: 'Ruby and Rails', start: '2008', end: '2026', kind: 'technology', precision: 'era', description: 'The Ruby and Rails layer crossing work, community, craftsmanship, and later platform systems.', evidence: [{ source_path: 'Career and writing archive', timestamp: '2008 to 2026', timestamp_kind: 'era synthesis', url: '/search/?q=Ruby' }] },
+      { id: 'technology-github', label: 'GitHub', start: '2012', end: '2026', kind: 'technology', precision: 'account-to-present', description: 'The public collaboration layer spanning the account record through the current archive.', evidence: [{ source_path: 'Public platform history', timestamp: '2012 to 2026', timestamp_kind: 'platform era', url: '/timeline/' }] },
+      { id: 'technology-ai', label: 'LLM and local AI', start: '2023', end: '2026', kind: 'technology', precision: 'release-era', description: 'The recent tool layer connecting local inference, transcription, graphing, and editorial workflows.', evidence: [{ source_path: 'AI-assisted archive tooling', timestamp: '2023 to 2026', timestamp_kind: 'tool era', url: '/ai/' }] }
+    ];
+    const communitySeries = [
+      { id: 'community-scmc', label: 'SCMC', start: '2009', end: '2014', kind: 'community', precision: 'public history range', description: 'Software Craftsmanship McHenry County, the local practice community that carried the work through family, work, and geography.', evidence: [{ source_path: 'SCMC archive', timestamp: '2009 to 2014', timestamp_kind: 'public history', url: '/scmc/' }] },
+      { id: 'community-code-camp', label: 'Chicago Code Camp', start: '2010', end: '2012', kind: 'community', precision: 'public history range', description: 'A foundational conference and community signal before and alongside the UGtastic recording practice.', evidence: [{ source_path: 'Chicago Code Camp retrospective', timestamp: '2010 to 2012', timestamp_kind: 'public narrative', url: '/search/?q=Chicago%20Code%20Camp' }] },
+      { id: 'community-ugtastic', label: 'UGtastic launch and production', start: '2011', end: '2015', kind: 'community', precision: 'archive range', description: 'The recording practice launched at SCNA 2011, then grew through conference and community coverage. UGl.st is represented as the later discovery and coordination substrate.', evidence: [{ source_path: 'UGtastic archive atlas', timestamp: '2011 to 2015', timestamp_kind: 'archive range', url: '/interviews/' }] },
+      { id: 'community-otel', label: 'OpenTelemetry community', start: '2023', end: '2026', kind: 'community', precision: 'initiative range', description: 'A later community operating model where durable ownership and handoff became part of the engineering design.', evidence: [{ source_path: 'OpenTelemetry field notes', timestamp: '2023 to 2026', timestamp_kind: 'initiative range', url: '/search/?q=OpenTelemetry' }] }
+    ];
+    const conferenceSeries = [
+      {% for conference in site.data.interview_conferences.conferences %}
+        { id: {{ conference.slug | prepend: 'conference-' | jsonify }}, label: {{ conference.name | jsonify }}, start: {% if conference.start_date %}{{ conference.start_date | jsonify }}{% else %}{{ conference.year | append: '-01-01' | jsonify }}{% endif %}, end: {% if conference.end_date %}{{ conference.end_date | jsonify }}{% else %}{{ conference.year | append: '-12-31' | jsonify }}{% endif %}, plotStart: {{ conference.year | append: '-01-01' | jsonify }}, plotEnd: {{ conference.year | append: '-12-31' | jsonify }}, kind: 'conference', precision: {% if conference.start_date %}'event-date'{% else %}'year-level archive record'{% endif %}, description: {{ conference.description | default: conference.summary | jsonify }}, evidence: [{ source_path: {{ conference.slug | append: ' playlist record' | jsonify }}, timestamp: {% if conference.start_date %}{{ conference.start_date | jsonify }}{% else %}{{ conference.year | append: '-01-01' | jsonify }}{% endif %}, timestamp_kind: 'conference playlist', url: '/interviews/conferences/' }] },
+      {% endfor %}
+    ];
+    const communityInterviewRecords = [
+      {% for interview in site.data.interviews.items %}
+        {% if interview.community and interview.community != 'General' and interview.recorded_date %}
+          {% if interview.conference == nil or interview.conference == '' %}
+          { id: {{ interview.id | prepend: 'community-interview-' | jsonify }}, label: {{ interview.community | jsonify }}, start: {{ interview.recorded_date | jsonify }}, end: {{ interview.recorded_date | jsonify }}, title: {{ interview.title | jsonify }}, url: {{ interview.id | prepend: '/interviews/' | append: '/' | jsonify }} },
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    ];
+    const mediaSeries = [
+      { id: 'media-identity', label: 'UGtastic identity', start: '2012', end: '2015', kind: 'media', precision: 'archive range', description: 'The evolving visual and editorial identity of the recording project across its active production years.', evidence: [{ source_path: 'UGtastic archive assets', timestamp: '2012 to 2015', timestamp_kind: 'asset history', url: '/videos/' }] },
+      { id: 'media-intro', label: 'Intro and outro eras', start: '2012', end: '2015', kind: 'media', precision: 'asset range', description: 'Opening and closing treatments, music, and the repeated cues that made separate recordings feel like a series.', evidence: [{ source_path: 'Intro and outro boundary notes', timestamp: '2012 to 2015', timestamp_kind: 'media history', url: '/videos/' }] },
+      { id: 'media-whois', label: 'WHOIS Tech Community rebrand', start: '2014', end: '2016', kind: 'media', precision: 'rebrand range', description: 'The attempted move from UGtastic toward WHOIS Tech Community, preserved here as a transition rather than a clean replacement.', evidence: [{ source_path: 'WHOIS Tech Community archive', timestamp: '2014 to 2016', timestamp_kind: 'brand history', url: '/archive-atlas/' }] },
+      { id: 'media-preservation', label: 'Transcription and preservation tooling', start: '2016', end: '2026', kind: 'media', precision: 'tooling range', description: 'The long return from manual transcription through local speech tooling, corpus construction, and evidence-linked curation.', evidence: [{ source_path: 'Archive pipeline history', timestamp: '2016 to 2026', timestamp_kind: 'preservation history', url: '/search/?q=transcription' }] },
+      { id: 'media-platform-lineage', label: 'Vimeo-first distribution to YouTube', start: '2011', end: '2026', kind: 'media', precision: 'platform lineage', description: 'Vimeo was the original distribution surface because YouTube licensing conditions were difficult at the time. YouTube is represented as a later public synchronization surface. Exact transition dates remain attached to individual platform records.', evidence: [{ source_path: 'Video platform records', timestamp: '2011 to 2026', timestamp_kind: 'platform lineage', url: '/youtube/' }] }
+    ];
+    const contextSeries = [
+      { id: 'context-social', label: 'Before and after social platforms', start: '2008', end: '2015', kind: 'context', precision: 'industry context', description: 'The transition from blogs, SMS, and early Twitter into a denser platform-mediated public technical community.', evidence: [{ source_path: 'Career timeline context markers', timestamp: '2008 to 2015', timestamp_kind: 'contextual era', url: '/timeline/' }] },
+      { id: 'context-cloud', label: 'Cloud and distributed systems', start: '2010', end: '2020', kind: 'context', precision: 'industry context', description: 'The period in which cloud platforms, asynchronous systems, and service boundaries became ordinary parts of the engineering landscape.', evidence: [{ source_path: 'Technology era markers', timestamp: '2010 to 2020', timestamp_kind: 'contextual era', url: '/timeline/' }] },
+      { id: 'context-pandemic', label: 'COVID-19 disruption', start: '2020', end: '2022', kind: 'context', precision: 'historical period', description: 'A historical condition that changed how communities, work, and technical collaboration could happen.', evidence: [{ source_path: 'Historical context marker', timestamp: '2020 to 2022', timestamp_kind: 'historical period', url: '/timeline/' }] },
+      { id: 'context-llm', label: 'The LLM inflection', start: '2023', end: '2026', kind: 'context', precision: 'release-era context', description: 'The shift from AI as an interesting frontier to AI as an integrated instrument in the archive and engineering workflow.', evidence: [{ source_path: 'LLM and local AI timeline marker', timestamp: '2023 to 2026', timestamp_kind: 'technology context', url: '/ai/' }] }
+    ];
+
+    function seriesForOverlay() {
+      const archiveSeries = data.series.map(series => ({ ...series, kind: 'archive' }));
+      if (activeOverlay === 'career') return careerSeries;
+      if (activeOverlay === 'technology') return technologySeries;
+      if (activeOverlay === 'community') return communitySeries;
+      if (activeOverlay === 'conference') return conferenceSeries;
+      if (activeOverlay === 'community-interviews') return groupedCommunityInterviews();
+      if (activeOverlay === 'media') return mediaSeries;
+      if (activeOverlay === 'context') return contextSeries;
+      if (activeOverlay === 'all') return archiveSeries.concat(careerSeries, technologySeries, communitySeries, conferenceSeries, mediaSeries, contextSeries);
+      return archiveSeries;
+    }
+
+    function groupedCommunityInterviews() {
+      const groups = new Map();
+      communityInterviewRecords.forEach(record => {
+        if (!groups.has(record.label)) groups.set(record.label, []);
+        groups.get(record.label).push(record);
+      });
+      return Array.from(groups, ([label, records]) => {
+        const sorted = [...records].sort((a, b) => timelineValue(a.start) - timelineValue(b.start));
+        return { id: `community-group-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, label, start: sorted[0].start, end: sorted[sorted.length - 1].end, kind: 'community-interview', precision: 'recorded-date', description: `${records.length} community interview records associated with ${label}.`, evidence: records.slice(0, 8).map(record => ({ source_path: record.title, timestamp: record.start, timestamp_kind: 'recorded date', url: record.url })) };
+      });
+    }
+
+    eras.innerHTML = data.eras.map(era => `<button class="atlas-era" role="tab" aria-selected="${era.id === active}" title="${era.context}" data-era="${era.id}">${era.label}<small>${era.start} to ${era.end}</small></button>`).join('');
+
+    function timelineValue(value) {
+      const text = String(value);
+      if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+        const date = new Date(`${text}T00:00:00Z`);
+        const year = date.getUTCFullYear();
+        const yearStart = Date.UTC(year, 0, 1);
+        const nextYear = Date.UTC(year + 1, 0, 1);
+        return year + ((date.getTime() - yearStart) / (nextYear - yearStart));
+      }
+      return Number(text);
+    }
+    function position(value) { return Math.max(0, Math.min(100, ((timelineValue(value) - scaleMin) / (scaleMax - scaleMin)) * 100)); }
+    function updateDomain() {
+      if (activeOverlay === 'conference') {
+        scaleMin = 2011;
+        scaleMax = 2016;
+        axis.innerHTML = ['2011', '2012', '2013', '2014', '2015', '2016'].map(year => `<span>${year}</span>`).join('');
+      } else {
+        scaleMin = archiveMin;
+        scaleMax = archiveMax;
+        axis.innerHTML = ['2011', '2014', '2017', '2020', '2023', '2026'].map(year => `<span>${year}</span>`).join('');
+      }
+    }
+    function updateScale() {
+      const levels = ['compact', 'expanded', 'wide', 'museum', 'cosmic'];
+      const level = Number(zoom.value);
+      const canvasWidth = `${86 + level * 28}rem`;
+      map.style.setProperty('--atlas-canvas-width', canvasWidth);
+      axis.style.minWidth = canvasWidth;
+      zoomLabel.value = levels[level];
+      zoomLabel.textContent = levels[level];
+    }
+    function groupedConferenceSeries(series) {
+      const groups = new Map();
+      series.forEach(item => {
+        const family = item.label.replace(/\s+\d{4}$/, '');
+        if (!groups.has(family)) groups.set(family, []);
+        groups.get(family).push(item);
+      });
+      return Array.from(groups, ([label, segments]) => ({ label, segments }));
+    }
+    function draw() {
+      const selected = data.eras.find(era => era.id === active);
+      const selectedStart = selected ? Number(selected.start) : scaleMin;
+      const selectedEnd = selected ? Number(selected.end) : scaleMax;
+      range.textContent = selected ? `${selected.start} to ${selected.end}` : `${scaleMin} to ${scaleMax}, full archive`;
+      range.title = selected ? selected.context : 'Full archive range';
+      const visibleSeries = seriesForOverlay().filter(series => Number(String(series.end).slice(0, 4)) >= selectedStart && Number(String(series.start).slice(0, 4)) <= selectedEnd);
+      if (activeOverlay === 'conference') {
+        map.innerHTML = groupedConferenceSeries(visibleSeries).map(group => {
+          const starts = group.segments.map(item => String(item.start));
+          const ends = group.segments.map(item => String(item.end));
+          const rows = [];
+          [...group.segments].sort((a, b) => timelineValue(a.plotStart) - timelineValue(b.plotStart)).forEach(series => {
+            const row = rows.findIndex(items => timelineValue(items[items.length - 1].plotEnd) < timelineValue(series.plotStart));
+            if (row === -1) rows.push([series]);
+            else rows[row].push(series);
+          });
+          const trackHeight = Math.max(3.2, rows.length * 2.05);
+          const bars = rows.flatMap((items, row) => items.map(series => {
+            const left = position(series.plotStart);
+            const width = Math.max(3, position(series.plotEnd) - left);
+            return `<button class="atlas-bar" title="Open ${series.label} evidence" style="top:${.65 + row * 2}rem;left:${left}%;width:${width}%" data-series="${series.id}">${series.label}</button>`;
+          })).join('');
+          const evidenceCount = group.segments.reduce((total, item) => total + item.evidence.length, 0);
+          return `<div class="atlas-lane atlas-lane-conference"><div class="atlas-lane-label">${group.label}<small>${starts.sort()[0]} to ${ends.sort().reverse()[0]}, ${group.segments.length} playlist years, ${evidenceCount} linked records</small></div><div class="atlas-track" style="min-height:${trackHeight}rem">${bars}</div></div>`;
+        }).join('');
+      } else {
+        map.innerHTML = visibleSeries.map(series => {
+          const left = position(series.start);
+          const width = Math.max(3, position(series.end) - left);
+          return `<div class="atlas-lane atlas-lane-${series.kind}"><div class="atlas-lane-label">${series.label}<small>${series.start} to ${series.end}, ${series.evidence.length} linked local records</small></div><div class="atlas-track"><button class="atlas-bar" title="Open ${series.label} evidence" style="left:${left}%;width:${width}%" data-series="${series.id}">${series.label}</button></div></div>`;
+        }).join('');
+      }
+      map.querySelectorAll('[data-series]').forEach(button => button.addEventListener('click', () => showSeries(button.dataset.series)));
+      const preferred = activeOverlay === 'archive' || activeOverlay === 'all' ? 'ugtastic-production' : seriesForOverlay()[0]?.id;
+      showSeries(preferred || seriesForOverlay()[0]?.id);
+    }
+    function showSeries(id) {
+      const series = seriesForOverlay().find(item => item.id === id);
+      if (!series) return;
+      details.innerHTML = `<h3>${series.label}</h3><p>${series.description}</p><p><strong>Time precision:</strong> ${series.precision}. Local evidence below retains its own timestamp kind.</p><ul>${series.evidence.slice(0, 8).map(item => `<li><code>${item.source_path}</code> <small>${item.timestamp} (${item.timestamp_kind})</small></li>`).join('')}</ul><p><a href="/videos/">Browse video archive</a> · <a href="/interviews/">Browse interview archive</a> · <a href="https://web.archive.org/web/*/http://ugtastic.com/*" rel="noopener">Search Wayback captures</a></p>`;
+    }
+    eras.querySelectorAll('[data-era]').forEach(button => button.addEventListener('click', () => { active = button.dataset.era; eras.querySelectorAll('[data-era]').forEach(item => item.setAttribute('aria-selected', item === button)); draw(); }));
+    zoom.addEventListener('input', updateScale);
+    overlays.querySelectorAll('[data-overlay]').forEach(button => button.addEventListener('click', () => {
+      activeOverlay = button.dataset.overlay;
+      overlays.querySelectorAll('[data-overlay]').forEach(item => item.setAttribute('aria-selected', item === button));
+      updateDomain();
+      draw();
+    }));
+    updateDomain();
+    updateScale();
+    draw();
+  }
+});
+</script>

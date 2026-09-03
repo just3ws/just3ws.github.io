@@ -163,6 +163,8 @@ exclude:
   - "LICENSE"
 
   # Project documentation (not site content)
+  - "Backlog.md"
+  - "CONTEXT.md"
   - "CLAUDE.md"
   - "CODEX.md"
   - "AGENTS.md"
@@ -172,6 +174,24 @@ exclude:
   - "HUMAN.local.md"
   - ".human"
   - "CONTRIBUTING.md"
+  - "mcp.json"
+  - "package.json"
+  - "package-lock.json"
+  - "playwright.config.js"
+  - "backlog"
+  - "docs/agents"
+  - "docs/runbooks"
+  - "docs/mcp-setup-guide.md"
+  - "docs/career-datalake-and-mcp-guide.md"
+  - "docs/inter-tool-communication-protocol.md"
+  - "docs/executive-brief-generator-protocol.md"
+  # Local archive inventory and corpus-generation notes contain machine paths
+  # and operational recovery details. The public Atlas is the safe projection.
+  - "docs/video-archive-platform-and-migration-inventory.md"
+  - "docs/witc-corpus.md"
+  - "docs/witc-temporal-timeline.md"
+  - "docs/video-archive-platform-and-migration-inventory.html"
+  - "docs/witc-corpus.html"
   - "TRANSCRIPTION_PROMPT.md"
   - "current_job.txt"
   - "tmp_block.txt"
@@ -181,6 +201,17 @@ exclude:
 
   # Local / runtime
   - "bin"
+  # Repository implementation, graph caches, corpus databases, and test
+  # evidence are not public content. Public graph projections live under
+  # assets/data/ and public archive views live under their own routes.
+  - "graphify-out"
+  - "src"
+  - "lib"
+  - "spec"
+  - "tests"
+  - "lake"
+  - "logs"
+  - "scratch"
   - "nginx"
   - "tmp"
   - "working-assets"

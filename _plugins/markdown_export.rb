@@ -2,6 +2,7 @@
 
 require 'jekyll'
 require 'fileutils'
+require_relative '../lib/date_display'
 
 module Jekyll
   class MarkdownExportGenerator < Generator
@@ -79,8 +80,8 @@ module Jekyll
 
           company = position.dig('company', 'name')
           title = position['title']
-          start_date = position['start_date']
-          end_date = position['end_date'] || 'Present'
+          start_date = DateDisplay.human(position['start_date'])
+          end_date = DateDisplay.human(position['end_date'])
 
           output << "### #{title} at #{company}"
           output << "**#{start_date} — #{end_date}**"
@@ -145,8 +146,8 @@ module Jekyll
 
           company = position.dig('company', 'name')
           title = position['title']
-          start_date = position['start_date']
-          end_date = position['end_date'] || 'Present'
+          start_date = DateDisplay.human(position['start_date'])
+          end_date = DateDisplay.human(position['end_date'])
 
           output << "## #{title}"
           output << "**#{company}** | #{start_date} — #{end_date}"

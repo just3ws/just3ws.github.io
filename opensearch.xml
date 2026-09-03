@@ -1,0 +1,12 @@
+---
+layout: null
+permalink: /opensearch.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Mike Hall Archive</ShortName>
+  <Description>Search Mike Hall's technical archive, articles, interviews, and engineering history.</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Url type="text/html" template="{{ site.url }}/search/?q={searchTerms}" />
+  <Url type="application/opensearchdescription+xml" rel="self" template="{{ site.url }}/opensearch.xml" />
+</OpenSearchDescription>

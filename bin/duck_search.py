@@ -12,7 +12,7 @@ import os
 import duckdb
 import argparse
 
-DEFAULT_DUCK_DB = "/Volumes/Dock_1TB/chatgpt-dump-2026-03/chatgpt_corpus.duckdb"
+DEFAULT_DUCK_DB = os.environ.get("CHATGPT_DUCK_DB", "")
 
 
 def run_fts(query, db_path, limit=10):

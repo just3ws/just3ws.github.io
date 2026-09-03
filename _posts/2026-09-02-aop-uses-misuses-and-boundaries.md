@@ -14,6 +14,8 @@ permalink: /ai/2026/09/02/aop-uses-misuses-and-boundaries/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 content_type: field-note
 source_kind: ai-augmented-human-led
 context_wiki:

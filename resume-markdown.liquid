@@ -38,7 +38,7 @@ sitemap: true
 {% if position and entry %}
 ### {{ position.title }} at {{ position.company.name }}
 
-**{{ position.start_date }} - {{ position.end_date | default: "Present" }}**{% if position.company.location %} | {{ position.company.location }}{% endif %}
+**{{ position.start_date | human_date }} - {{ position.end_date | human_date }}**{% if position.company.location %} | {{ position.company.location }}{% endif %}
 
 {% if position.context %}
 **Context:** {{ position.context }}
@@ -65,7 +65,7 @@ sitemap: true
 ## {{ ats.additional_experience.title }}
 {% for item in ats.additional_experience.items %}
 {% assign position = site.data.resume.positions[item.id] %}
-- **{{ position.title }}**, {{ position.company.name }} ({{ position.start_date }} - {{ position.end_date | default: "Present" }}{% if position.company.location %}, {{ position.company.location }}{% endif %}): {{ position.summary | default: item.summary }}
+- **{{ position.title }}**, {{ position.company.name }} ({{ position.start_date | human_date }} - {{ position.end_date | human_date }}{% if position.company.location %}, {{ position.company.location }}{% endif %}): {{ position.summary | default: item.summary }}
 {% endfor %}
 
 ---

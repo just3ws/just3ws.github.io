@@ -18,8 +18,8 @@ CareerOS::PeerMutex.with_lock(caller_name: "agent-just3ws") do
   state["candidate_profile"]["portfolio_url"] = "https://just3ws.localhost/exports/portfolio.md"
   state["candidate_profile"]["history_url"] = "https://just3ws.localhost/exports/history.md"
   state["candidate_profile"]["strategy_url"] = "https://just3ws.localhost/reports/archetype-reader-profiles/"
-  state["candidate_profile"]["query_cli"] = "/Users/mike/github.com/just3ws/just3ws.github.io/bin/query_career_datalake.rb"
-  state["candidate_profile"]["mcp_server"] = "/Users/mike/github.com/just3ws/just3ws.github.io/bin/career_datalake_mcp_server.rb"
+  state["candidate_profile"]["query_cli"] = File.expand_path("query_career_datalake.rb", __dir__)
+  state["candidate_profile"]["mcp_server"] = File.expand_path("career_datalake_mcp_server.rb", __dir__)
   
   CareerOS::PeerMutex.update_state!(state)
   puts "✅ [CareerOS Peer Mutex] State updated in #{CareerOS::PeerMutex::STATE_FILE}"

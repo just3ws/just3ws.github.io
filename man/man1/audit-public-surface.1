@@ -1,0 +1,41 @@
+.TH AUDIT-PUBLIC-SURFACE 1 "September 2026" "just3ws" "User Commands"
+.SH NAME
+audit-public-surface \- review public content and built output for privacy and topology risks
+.SH SYNOPSIS
+.B ruby bin/audit_public_surface.rb
+[B\-\-jsonR] [B\-\-strictR] [B\-\-verboseR] [B\-\-report-dirR IPATHR]
+.br
+.B ruby bin/audit_public_surface.rb
+B\-\-decideR IID=DECISIONR
+.br
+.B ruby bin/audit_public_surface.rb
+B\-\-completionR Izsh|bashR
+.SH DESCRIPTION
+The auditor reviews documented public-content roots and the built I_site/R boundary. It detects credential-shaped values, direct personal data, health and family context, private workplace details, uncertain recollections, local paths, internal project files, backlog routes, and quarantined AI pages missing noindex metadata.
+.PP
+Normal mode creates a redacted local review queue. Strict mode fails on critical findings and unresolved high-risk or quarantined findings. A finding is a review prompt, not a verdict. Human judgment remains the publication gate.
+.SH WORKFLOW
+.nf
+source -> sanitize -> build -> audit -> human decision -> publish
+                                      |                 |
+                                      +-> hold ----------+
+.fi
+.SH FILES
+.TP
+.I tmp/public-surface-audit/report.json
+Local redacted report. This path is ignored and must not be published.
+.TP
+.I tmp/public-surface-audit/decisions.json
+Local decisions keyed by finding identifier.
+.SH EXAMPLES
+.nf
+ruby bin/audit_public_surface.rb
+ruby bin/audit_public_surface.rb --strict --json
+ruby bin/audit_public_surface.rb --decide ID=generalize
+ruby bin/audit_public_surface.rb --completion zsh > /tmp/_audit_public_surface
+.fi
+.SH SEE ALSO
+.BR jekyll (1),
+.BR just3ws-youtube (1)
+.SH AUTHORS
+Mike Hall (https://www.just3ws.com)

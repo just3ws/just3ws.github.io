@@ -15,7 +15,7 @@ BLOG_INVENTORY_PATH = ROOT.join("docs", "wayback", "blog-import-inventory.md")
 UGTASTIC_CONTEXT_PATH = ROOT.join("docs", "wayback", "ugtastic-interview-context.yml")
 OUT_YAML = ROOT.join("docs", "wayback", "wbm-derived-assets.yml")
 OUT_MD = ROOT.join("docs", "wayback", "wbm-spider-backlog.md")
-WITC_OUTPUT_DIR = Pathname("/Volumes/Dock_1TB/WITC/_output")
+WITC_OUTPUT_DIR = Pathname(ENV.fetch("WITC_OUTPUT_DIR", "tmp/witc-output"))
 ASSETS_PATH = ROOT.join("_data", "video_assets.yml")
 
 WAYBACK_PREFIX = %r{\Ahttps?://web\.archive\.org/web/\d{14}[a-z_]*/}i
@@ -172,12 +172,11 @@ unmatched_ugtastic = unmatched_ugtastic_context(UGTASTIC_CONTEXT_PATH)
 external_domains = likely_external_domains(host_counts)
 witc = witc_analysis
 
-vol_doc_exists = Dir.exist?("/Volumes/Doc")
+vol_doc_exists = Dir.exist?(ENV.fetch("MIKE_ARCHIVE_DOCS_DIR", ""))
 dock_candidates = [
-  "/Volumes/Dock_1TB/mike.hall/doc",
-  "/Volumes/Dock_1TB/mike.hall/Documents",
-  "/Volumes/Dock_1TB/WITC",
-  "/Volumes/Dock_1TB/vimeo"
+  ENV.fetch("MIKE_ARCHIVE_DOCS_DIR", "configured archive root / documents"),
+  ENV.fetch("WITC_CORPUS_DIR", "configured archive root / WITC"),
+  ENV.fetch("VIMEO_VIDEOS_DIR", "configured archive root / vimeo")
 ].select { |path| Dir.exist?(path) }
 
 dataset = {

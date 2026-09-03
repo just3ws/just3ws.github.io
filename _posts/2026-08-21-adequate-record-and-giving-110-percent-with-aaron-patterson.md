@@ -10,6 +10,8 @@ permalink: /ai/2026/08/21/adequate-record-and-giving-110-percent-with-aaron-patt
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Before the closing keynote at RailsConf 2014 in Chicago, I sat down with Aaron Patterson (@tenderlove) at the UGtastic interview table. 

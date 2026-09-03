@@ -147,6 +147,7 @@ module Validators
         optional(:location).maybe(:string)
       end
       required(:start_date).filled
+      required(:date_precision).filled(:string)
       optional(:start_day).maybe(:integer)
       optional(:end_date).maybe(:string)
       optional(:end_day).maybe(:integer)
@@ -158,6 +159,18 @@ module Validators
       optional(:skills).array(:string)
       optional(:related_interviews).array(:string)
       optional(:related_topics).array(:string)
+    end
+
+    rule(:start_date) do
+      key.failure('must be an ISO 8601 calendar date (YYYY-MM-DD)') unless value.is_a?(String) && value.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+    end
+
+    rule(:end_date) do
+      key.failure('must be an ISO 8601 calendar date (YYYY-MM-DD) or null') unless value.nil? || (value.is_a?(String) && value.match?(/\A\d{4}-\d{2}-\d{2}\z/))
+    end
+
+    rule(:date_precision) do
+      key.failure('must be year, month, or day') unless %w[year month day].include?(value)
     end
 
     rule(:highlights).each do

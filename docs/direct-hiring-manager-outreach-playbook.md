@@ -98,7 +98,7 @@ Hi [Name],
 
 I have been following [Company]'s progress with [product or technical milestone]. Building [specific domain, e.g. automated workflow engines / multi-tenant agent platforms] at this stage requires getting core data models and developer velocity right from day one.
 
-I bring 20+ years of full-stack engineering, past startup CTO experience (KloboMedia), and enterprise modernization leadership (OneMain Financial). I specialize in pairing with founders to build clean Rails architectures, robust CI/CD verification gates, and deterministic state engines that scale without rewrites.
+I bring full-stack engineering experience, past startup CTO experience (KloboMedia), and enterprise modernization leadership (OneMain Financial). I specialize in pairing with founders to build clean Rails architectures, robust CI/CD verification gates, and deterministic state engines that scale without rewrites.
 
 Here is a 1-page pitch brief tailored to your current stage:
 👉 https://just3ws.com/briefs/[company-slug]/

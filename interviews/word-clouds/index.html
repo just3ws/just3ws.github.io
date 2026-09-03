@@ -1,0 +1,97 @@
+---
+layout: minimal
+title: Interview Word Clouds
+description: Explore the recurring language and subjects across the UGtastic and technical conversation archives.
+breadcrumb: Interview Word Clouds
+breadcrumb_parent_name: Interviews
+breadcrumb_parent_url: /interviews/
+---
+
+<article class="page word-cloud-page">
+  {% include breadcrumbs.html %}
+  <header class="word-cloud-hero">
+    <p class="section-kicker">Semantic weather map</p>
+    <h1>What were people talking about?</h1>
+    <p>Choose a body of conversations, then follow the words that recur. Size shows frequency in the selected transcript corpus. It is a way into the archive, not a substitute for reading the record.</p>
+  </header>
+
+  <section class="word-cloud-controls" aria-label="Word cloud controls">
+    <label for="word-cloud-scope">Corpus</label>
+    <select id="word-cloud-scope">
+      <option value="all">Whole archive and collections</option>
+      <option value="conference">Conference series</option>
+      <option value="community">Community interviews</option>
+      <option value="presentation">Presentations and talks</option>
+      <option value="interview">Individual conversations</option>
+    </select>
+    <label for="word-cloud-group">View</label>
+    <select id="word-cloud-group"></select>
+  </section>
+
+  <section class="word-cloud-stage" aria-labelledby="word-cloud-heading">
+    <div class="word-cloud-stage-heading">
+      <div>
+        <p class="section-kicker" id="word-cloud-kind">Archive</p>
+        <h2 id="word-cloud-heading">UGtastic oral history</h2>
+      </div>
+      <span id="word-cloud-count"></span>
+    </div>
+    <svg id="word-cloud" role="img" aria-labelledby="word-cloud-heading word-cloud-description" viewBox="0 0 1000 560"></svg>
+    <p id="word-cloud-description" class="visually-hidden">Words in the selected transcript corpus, sized by recurrence.</p>
+    <div id="word-cloud-items" class="word-cloud-items"></div>
+  </section>
+
+  <p class="word-cloud-note">The first pass is deterministic and provenance-aware. Stopwords are removed, titles and curated topics receive a small discovery weight, and every cloud points back to its source conversations.</p>
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.7/build/d3.layout.cloud.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const data = {{ site.data.interview_wordclouds | jsonify }};
+  const scope = document.getElementById('word-cloud-scope');
+  const group = document.getElementById('word-cloud-group');
+  const svg = document.getElementById('word-cloud');
+  const heading = document.getElementById('word-cloud-heading');
+  const kind = document.getElementById('word-cloud-kind');
+  const count = document.getElementById('word-cloud-count');
+  const items = document.getElementById('word-cloud-items');
+  const palettes = { archive: ['#0f766e', '#d97706'], conference: ['#315ea8', '#b45309'], community: ['#0f766e', '#7c3aed'], presentation: ['#b45309', '#315ea8'], interview: ['#334155', '#0f766e'] };
+  const labels = { archive: 'Archive', conference: 'Conference', community: 'Community', presentation: 'Presentation', interview: 'Conversation' };
+  const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
+  const groupsFor = selected => selected === 'all' ? data.groups : selected === 'interview' ? data.interviews : data.groups.filter(item => item.kind === selected);
+
+  function renderOptions() {
+    const choices = groupsFor(scope.value);
+    group.innerHTML = choices.map(item => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.label)} · ${item.count}</option>`).join('');
+    renderCloud(choices[0]);
+  }
+
+  function renderCloud(selected) {
+    if (!selected) return;
+    const colors = palettes[selected.kind] || palettes.archive;
+    heading.textContent = selected.label;
+    kind.textContent = labels[selected.kind] || 'Archive';
+    count.textContent = `${selected.count} conversation${selected.count === 1 ? '' : 's'}`;
+    const max = Math.max(...selected.words.map(word => word.weight), 1);
+    const min = Math.min(...selected.words.map(word => word.weight), max);
+    const width = 1000;
+    const height = 560;
+    const words = selected.words.map((word, index) => ({ ...word, index, size: 18 + ((word.weight - min) / Math.max(max - min, 0.01)) * 50 }));
+    svg.innerHTML = '';
+    if (window.d3 && d3.layout && d3.layout.cloud) {
+      d3.layout.cloud().size([width, height]).words(words).padding(6).rotate((word, index) => index % 7 === 0 ? -6 : index % 5 === 0 ? 6 : 0).font('system-ui').fontSize(word => word.size).on('end', placed => {
+        svg.innerHTML = placed.map(word => {
+          const color = colors[word.index % colors.length];
+          return `<a href="#word-cloud-items"><title>${escapeHtml(word.text)} appears ${word.count} times</title><text x="${(width / 2 + word.x).toFixed(1)}" y="${(height / 2 + word.y).toFixed(1)}" text-anchor="middle" fill="${color}" font-size="${word.size.toFixed(1)}" font-weight="${word.index < 8 ? 800 : 600}" transform="rotate(${word.rotate} ${(width / 2 + word.x).toFixed(1)} ${(height / 2 + word.y).toFixed(1)})">${escapeHtml(word.text)}</text></a>`;
+        }).join('');
+      }).start();
+    }
+    items.innerHTML = selected.items.map(item => `<article><span>${escapeHtml(item.recorded_date || 'Date unlisted')}</span><h3><a href="/interviews/${escapeHtml(item.id)}/">${escapeHtml(item.title)}</a></h3><p>${escapeHtml(item.topic || 'Technical conversation')}</p></article>`).join('');
+  }
+
+  scope.addEventListener('change', renderOptions);
+  group.addEventListener('change', () => renderCloud([...data.groups, ...data.interviews].find(item => item.id === group.value)));
+  renderOptions();
+});
+</script>

@@ -96,6 +96,42 @@ Provides a single, standardized entry point for all site build, test, and deploy
 ./bin/pipeline ci
 ```
 
+## 6. Public Surface Auditor (`bin/audit_public_surface.rb`)
+
+The public site is an edited surface. This audit checks both the source content
+roots and the generated `_site/` boundary before publication. It reports
+credential-shaped values, personal and health context, uncertain recollections,
+local paths, internal files, backlog routes, and AI pages missing quarantine
+metadata. Reports are redacted and remain under `tmp/`.
+
+```bash
+# Inventory review candidates
+ruby bin/audit_public_surface.rb --json
+
+# Publication gate
+ruby bin/audit_public_surface.rb --strict
+
+# Inspect the operator surfaces
+ruby bin/audit_public_surface.rb --help
+ruby bin/audit_public_surface.rb --man
+ruby bin/audit_public_surface.rb --completion zsh
+```
+
+```mermaid
+flowchart TD
+  A[Private context] --> B[Human curation]
+  B --> C[Public canon]
+  C --> D[Jekyll build]
+  D --> E[Source and _site audit]
+  E -->|critical or unresolved| F[Local redacted queue]
+  F --> B
+  E -->|strict pass| G[Release]
+```
+
+The audit is a decision aid, not an automated consent or truth engine. When a
+detail is uncertain, identifying, or not clearly yours to publish, hold it or
+generalize it while preserving the useful lesson.
+
 ---
 
 ## 6. Registered Agent Skills (`.agents/skills/`)

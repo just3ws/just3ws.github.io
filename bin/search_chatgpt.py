@@ -13,7 +13,7 @@ import sqlite3
 import argparse
 from datetime import datetime
 
-DEFAULT_DB = "/Volumes/Dock_1TB/chatgpt-dump-2026-03/chatgpt_corpus.db"
+DEFAULT_DB = os.environ.get("CHATGPT_CORPUS_DB", "")
 
 
 def search(query, db_path, limit=10, role=None):

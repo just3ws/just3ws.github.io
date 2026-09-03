@@ -13,6 +13,8 @@ permalink: /ai/2026/08/20/system-cartography-part-6-staffing-the-topology/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 In 1967, Melvin Conway made an observation that has shaped software engineering for six decades:

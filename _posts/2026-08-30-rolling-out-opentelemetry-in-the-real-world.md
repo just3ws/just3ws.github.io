@@ -3,6 +3,9 @@ layout: post
 title: "Rolling Out OpenTelemetry in the Real World: Lessons from Rails to Mainframe"
 date: "2026-08-30"
 description: "Enterprise observability is not about installing a vendor agent. Here is the operational playbook for standardizing OpenTelemetry distributed tracing across heterogeneous legacy stacks."
+ai_assisted: true
+human_led: true
+source_kind: ai-augmented-human-led
 categories:
   - Architecture
   - Observability

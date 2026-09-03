@@ -2,7 +2,7 @@
 Principal Software Engineer
 
 ## Summary
-Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines 20+ years across software engineering and platform architecture with OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
+Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
 
 ## Skills
 - Cross-Team Technical Leadership
@@ -25,7 +25,7 @@ Principal Software Engineer specializing in high-consequence legacy modernizatio
 ## Experience
 
 ### Principal Architect at Local AI Orchestration & Developer Runtime
-**2026 — Present**
+**January 2026 — Present**
 
 Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
 
@@ -41,7 +41,7 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 **Skills:** Model Context Protocol (MCP), Agentic Workflow Design, Claude Code, Anthropic API, LLM Tool Design, PostgreSQL, OpenTelemetry, OpenObserve, llama.cpp, whisper.cpp, Local Inference, PHI Scrubbing & Compliance, Ruby
 
 ### Principal Architect at Phalanx Duel
-**2022 — Present**
+**January 2022 — Present**
 
 Designing and building a real-time tactical game platform as a current hands-on laboratory for deterministic systems, product architecture, and controlled AI-assisted engineering.
 
@@ -57,7 +57,7 @@ Designing and building a real-time tactical game platform as a current hands-on 
 **Skills:** TypeScript, Node.js, PostgreSQL, WebSockets, API Design, Distributed Systems, Deterministic Simulation, CI/CD, System Verification, AI-Augmented Development
 
 ### Principal Architect at WWWorkRemote
-**2021 — Present**
+**January 2021 — Present**
 
 Rails 8 platform for multi-source job ingestion, semantic matching, and application automation, built as a working laboratory for local-first LLM orchestration and treating scraped third-party text as hostile input.
 
@@ -79,9 +79,9 @@ Rails 8 platform for multi-source job ingestion, semantic matching, and applicat
 **Skills:** Ruby on Rails, PostgreSQL, pgvector, Vector Search & Embeddings, LLM Orchestration, Prompt Injection Defense, Local Inference, Chrome Extensions (MV3), API Design, Data Pipelines, System Design, OpenTelemetry, Distributed Systems
 
 ### Principal Engineer & Curator at Technical Conversation Archive
-**2011 — Present**
+**January 2011 — Present**
 
-Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link two decades of primary-source material into a searchable knowledge graph.
+Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link a longitudinal record of primary-source material into a searchable knowledge graph.
 
 
 **Key Outcomes:**
@@ -380,8 +380,9 @@ Owned custom web delivery and early OCR prototyping, leading cross-platform impl
 **Key Outcomes:**
 - Designed an early-stage OCR pipeline using Unix shell scripting and pattern extraction, parsing and digitizing semi-structured paper receipts into relational databases.
 - Delivered custom web applications and database integrations for enterprise clients, including Harley-Davidson.
+- Transitioned from JSP to Active Server Pages and Microsoft Access while learning the source-control and delivery practices of the Windows web stack.
 
-**Skills:** Java, Active Server Pages (ASP), Microsoft SQL Server, JavaScript, HTML, CSS, VBScript
+**Skills:** Java, JSP, Active Server Pages (ASP), Microsoft Access, Visual SourceSafe, Microsoft SQL Server, JavaScript, HTML, CSS, VBScript
 
 ### System Administrator at C.H. Robinson
 **December 1999 — July 2000**

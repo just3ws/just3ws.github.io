@@ -106,7 +106,7 @@
               <p class="position-meta">
                 <span class="position-company">{{ position.company.name }}</span>
                 {%- if position.company.location %} | <span>{{ position.company.location }}</span>{%- endif %}
-                <span class="position-dates"> | <time>{{ position.start_date }}</time> - <time>{{ position.end_date | default: "Present" }}</time></span>
+                <span class="position-dates"> | <time>{{ position.start_date | human_date }}</time> - <time>{{ position.end_date | human_date }}</time></span>
               </p>
             </header>
 
@@ -186,7 +186,7 @@
         {% if add_pos %}
         <li>
           <strong>{{ add_pos.title }}, {{ add_pos.company.name }}</strong>
-          <span class="ats-supporting-meta"> | {{ add_pos.start_date }} - {{ add_pos.end_date | default: "Present" }}{% if add_pos.company.location %} | {{ add_pos.company.location }}{% endif %}</span>:
+          <span class="ats-supporting-meta"> | {{ add_pos.start_date | human_date }} - {{ add_pos.end_date | human_date }}{% if add_pos.company.location %} | {{ add_pos.company.location }}{% endif %}</span>:
           {{ add_pos.summary }}
         </li>
         {% endif %}

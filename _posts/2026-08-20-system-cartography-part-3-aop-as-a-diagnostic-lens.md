@@ -13,6 +13,8 @@ permalink: /ai/2026/08/20/system-cartography-part-3-aop-as-a-diagnostic-lens/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 When stepping into a complex, undocumented legacy codebase, engineers face a dangerous paradox:

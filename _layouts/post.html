@@ -24,24 +24,31 @@ layout: minimal
       <p><strong>Archive note:</strong> {{ page.archive_note }}</p>
     </aside>
     {% endif %}
+    {% if page.public_curation %}
+    <aside class="archive-note" role="note" aria-label="Public curation note">
+      <p><strong>Public curation:</strong> This is a curated public account. It keeps the lesson and historical context while generalizing or omitting private details about family members and other people. <a href="/docs/public-artifact-curation-policy/">Read the public artifact curation policy</a>.</p>
+    </aside>
+    {% endif %}
     {% if page.continuation_title and page.continuation_url %}
     <aside class="continuation-note">
       <p><strong>Contemplation continues:</strong> <a href="{{ page.continuation_url }}">{{ page.continuation_title }}</a></p>
     </aside>
     {% endif %}
-    {% if page.ai_generated or page.url contains '/ai/' %}
-    <aside class="ai-quarantine-banner" style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-accent, #b45309); padding: 1.25rem 1.5rem; border-radius: 0 var(--radius-md, 0.5rem) var(--radius-md, 0.5rem) 0; margin-top: 1.5rem; margin-bottom: 1.5rem;">
+    {% assign ai_quarantined = false %}
+    {% if page.ai_generated or page.url contains '/ai/' %}{% assign ai_quarantined = true %}{% endif %}
+    {% if page.ai_assisted or ai_quarantined %}
+    <aside class="ai-quarantine-banner" role="note" aria-label="AI content disclosure" style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-accent, #b45309); padding: 1.25rem 1.5rem; border-radius: 0 var(--radius-md, 0.5rem) var(--radius-md, 0.5rem) 0; margin-top: 1.5rem; margin-bottom: 1.5rem;">
       <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 800; text-transform: uppercase; color: var(--color-accent, #b45309); font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: var(--font-sans-ui, system-ui, sans-serif);">
-        <span>⚠️</span> <span>Experimental Archive Recovery · AI-Generated Synthesis</span>
+        <span>⚠️</span> <span>{% if ai_quarantined %}Experimental Archive Recovery · {% endif %}AI-Augmented Human-Led Article</span>
       </div>
       
       <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #1e232a); margin: 0 0 0.75rem 0;">
-        <strong>Notice & Ethical Provenance:</strong> This article is part of an ongoing experimental effort using local AI and LLM reasoning to reconstruct, organize, and synthesize technical themes across a 20-year archival corpus (including conference recordings, user group transcripts, and project notes).
+        <strong>AI disclosure and provenance:</strong> Mike Hall led this article. He supplied the subject, source material, corrections, and editorial judgment. AI assistance helped organize and draft the material, but it is not an independent source of historical authority. <a href="/docs/ai-content-disclosure-and-provenance.html" style="color: var(--color-primary, #0f766e); font-weight: 700;">Read the publication policy</a>.
       </p>
 
       <ul style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted, #525866); margin: 0; padding-left: 1.25rem;">
-        <li><strong>Synthetic Authorship:</strong> The narrative, structure, and prose were generated using AI assistance. It is not an organic first-person essay written by Mike Hall.</li>
-        <li><strong>Quarantined & Non-Canonical:</strong> This content is isolated under the <code>/ai/</code> section and excluded from search indexing (<code>noindex</code>) to prevent misattribution.</li>
+        <li><strong>Human responsibility:</strong> Mike Hall approved the published result. AI output is treated as a draft and organizing aid, not as a witness, speaker, author, or source.</li>
+        {% if ai_quarantined %}<li><strong>Quarantined & Non-Canonical:</strong> This content is isolated under the <code>/ai/</code> section and excluded from search indexing (<code>noindex</code>) to prevent misattribution.</li>{% endif %}
         <li><strong>Accuracy Caveat:</strong> While grounded in primary archival data, large language models can hallucinate timeline details, session specifics, or technical nuances. Please consult primary source transcripts in the <a href="/interviews/" style="color: var(--color-primary, #0f766e); font-weight: 700;">Interview Archive</a> for exact historical records.</li>
       </ul>
     </aside>

@@ -85,9 +85,10 @@ company:
   location: City, ST
 title: Job Title
 type: Full-time | Contract
-start_date: Month YYYY
+start_date: "YYYY-MM-DD"
 # start_day: DD (optional, for applications/records)
-end_date: Month YYYY
+end_date: "YYYY-MM-DD" # null for an ongoing position
+# date_precision: year | month | day (required when the normalized date is approximate)
 # end_day: DD (optional, for applications/records)
 context: >-
   Business context for the role (reference only, not displayed)

@@ -63,7 +63,8 @@ def main():
     seen_titles = set()
 
     # Process Vimeo metadata
-    vimeo_dir = Path('/Volumes/Dock_1TB/WITC/Vimeo')
+    archive_root = Path(os.environ.get('WITC_CORPUS_DIR', ''))
+    vimeo_dir = archive_root / 'Vimeo'
     for json_file in vimeo_dir.glob('*.json'):
         data = parse_vimeo_json(json_file)
         if data and data['title']:
@@ -81,7 +82,7 @@ def main():
                 seen_titles.add(title)
 
     # Process YouTube metadata
-    youtube_dir = Path('/Volumes/Dock_1TB/WITC/YouTube/Uploads from Mike Hall/_json')
+    youtube_dir = archive_root / 'YouTube/Uploads from Mike Hall/_json'
     for json_file in youtube_dir.glob('*.json'):
         data = parse_youtube_json(json_file)
         if data and data['title']:
@@ -101,7 +102,7 @@ def main():
                 seen_titles.add(title)
 
     # Check for transcript availability
-    transcript_dir = Path('/Volumes/Dock_1TB/WITC/_output/transcripts')
+    transcript_dir = archive_root / '_output/transcripts'
     transcript_files = {f.stem.lower() for f in transcript_dir.glob('*.txt')}
 
     for item in catalog:
@@ -116,7 +117,7 @@ def main():
     catalog.sort(key=lambda x: x['subject'].lower())
 
     # Write full catalog
-    output_path = Path('/Volumes/Dock_1TB/WITC/_output/catalog.json')
+    output_path = archive_root / '_output/catalog.json'
     with open(output_path, 'w') as f:
         json.dump(catalog, f, indent=2)
 
@@ -124,7 +125,7 @@ def main():
     print(f"With transcripts: {sum(1 for c in catalog if c.get('has_transcript'))}")
 
     # Also create simplified CSV for easy viewing
-    csv_path = Path('/Volumes/Dock_1TB/WITC/_output/catalog.csv')
+    csv_path = archive_root / '_output/catalog.csv'
     with open(csv_path, 'w') as f:
         f.write('subject,event,source,has_transcript\n')
         for item in catalog:

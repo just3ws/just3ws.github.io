@@ -9,6 +9,8 @@ permalink: /ai/2026/08/21/kubecon-na-2023-field-retrospective-observability-fino
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 In November 2023, over 9,000 engineers gathered at McCormick Place in Chicago for **KubeCon + CloudNativeCon North America 2023**. 

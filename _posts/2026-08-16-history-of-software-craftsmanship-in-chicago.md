@@ -9,6 +9,8 @@ permalink: /ai/2026/08/16/history-of-software-craftsmanship-in-chicago/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Between 2006 and 2015, Chicago transformed from an enterprise IT town dominated by financial trading desks and legacy Java monoliths into one of the most vibrant software engineering ecosystems in North America.

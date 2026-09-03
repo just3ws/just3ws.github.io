@@ -13,6 +13,8 @@ permalink: /ai/2026/08/20/system-cartography-part-4-finding-the-seam-and-the-str
 ai_generated: true
 robots: noindex,follow
 sitemap: false
+human_led: true
+source_kind: ai-augmented-human-led
 ---
 
 Martin Fowler’s **Strangler Fig Application** pattern is widely celebrated as the safest way to modernize legacy software: instead of rebuilding a monolith from scratch in an all-or-nothing rewrite, you gradually replace specific capabilities with new services until the old system has been completely eclipsed.

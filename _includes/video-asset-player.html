@@ -53,6 +53,17 @@
         </section>
       {% endif %}
 
+      {% if transcript_data %}
+        <aside class="archive-note transcript-provenance-note" data-transcript-provenance>
+          <p>
+            <strong>Transcript provenance:</strong>
+            This is a best-faith effort to preserve the recorded words, speaker attribution, turn boundaries, and timing of this historical archive. AI assistance may be used in service of fidelity. The recording and its player timestamps remain the primary evidence, and the transcript should be checked against them for independent verification.
+            {% if preferred.url %}<a href="{{ preferred.url }}" target="_blank" rel="noopener noreferrer">Open the source recording</a>.{% endif %}
+            <a href="/docs/ai-content-disclosure-and-provenance.html">Read the transcript standard</a>.
+          </p>
+        </aside>
+      {% endif %}
+
       {% if transcript_data.speaker_map %}
         {% assign speaker_count = transcript_data.speaker_map.size %}
         {% assign single_speaker = true %}
@@ -111,11 +122,14 @@
       {% endif %}
 
       <section class="transcript-editorial" id="transcript">
+        {% assign youtube_source = asset.platforms | where: "platform", "youtube" | first %}
         {% capture issue_title %}[Transcript Issue] {{ asset.title | default: page.title }}{% endcapture %}
         {% capture issue_body %}### 📍 Page / Transcript Reference
 - **URL**: https://www.just3ws.com{{ page.url }}
+- **Reported from**: Site transcript
 - **Title**: {{ asset.title | default: page.title }}
 - **Transcript ID**: {{ asset.transcript_id | default: page.interview_id }}
+{% if youtube_source and youtube_source.asset_id %}- **Related YouTube video**: https://www.youtube.com/watch?v={{ youtube_source.asset_id }}{% endif %}
 
 ---
 

@@ -95,7 +95,7 @@ if __FILE__ == $PROGRAM_NAME
 
   queue = [
     {
-      file: "/Volumes/Dock_1TB/WITC/BUCKET/WebVision/WHOIS Tech Community - 171 - WHOIS Tech Community - 171 - Jason Cranford Teague.mp4",
+      file: ENV.fetch("WEBVISIONS_171_VIDEO_PATH", ""),
       transcript_id: "interview-with-jason-cranford-teague-general",
       payload: {
         "snippet" => {
@@ -136,7 +136,7 @@ if __FILE__ == $PROGRAM_NAME
       }
     },
     {
-      file: "/Volumes/Dock_1TB/WITC/BUCKET/WebVision/WHOIS Tech Community - 176 - WHOIS Tech Community - 176 - Jennifer Jones.mp4",
+      file: ENV.fetch("WEBVISIONS_176_VIDEO_PATH", ""),
       transcript_id: "interview-with-jennifer-jones-general",
       payload: {
         "snippet" => {

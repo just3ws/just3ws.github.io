@@ -345,7 +345,8 @@
 .pv-toolkit-grid,
 .pv-application-grid,
 .pv-case-grid,
-.pv-honesty-grid {
+.pv-honesty-grid,
+.pv-vocabulary-grid {
   display: grid;
   gap: 1rem;
 }
@@ -360,11 +361,52 @@
 .pv-distinction-list article,
 .pv-application,
 .pv-case-grid article,
-.pv-honesty-grid > div {
+.pv-honesty-grid > div,
+.pv-vocabulary-card {
   min-width: 0;
   border: 1px solid var(--pv-border);
   border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.54);
+}
+
+.pv-vocabulary-note {
+  max-width: 58rem;
+  margin: 1.25rem 0;
+  color: var(--pv-muted);
+  font-size: 0.95rem;
+}
+
+.pv-vocabulary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.5rem;
+}
+
+.pv-vocabulary-card {
+  padding: 1.35rem;
+
+  .pv-vocabulary-plain {
+    margin: 0 0 0.8rem;
+    color: var(--pv-accent);
+    font-weight: 800;
+  }
+
+  .pv-vocabulary-label {
+    margin: 0 0 0.25rem;
+    color: var(--pv-muted);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1.05rem;
+  }
+
+  p:last-child {
+    margin: 0;
+    color: var(--pv-muted);
+  }
 }
 
 .pv-dimension {
@@ -613,7 +655,8 @@
   .pv-toolkit-grid,
   .pv-application-grid,
   .pv-case-grid,
-  .pv-honesty-grid {
+  .pv-honesty-grid,
+  .pv-vocabulary-grid {
     grid-template-columns: 1fr;
   }
 

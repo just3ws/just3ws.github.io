@@ -6,6 +6,7 @@
 # Supports querying positions, technology provenance, oral history, case studies, and writings.
 
 require 'json'
+require_relative '../lib/date_display'
 require 'optparse'
 
 ROOT = File.expand_path('..', __dir__)
@@ -243,7 +244,7 @@ else
       puts "   Total Contexts: #{v['total_occurrences']} roles"
       puts "   Roles Used In :"
       v["roles_used"].each do |r|
-        puts "     - #{r['company']} (#{r['title']}, #{r['start_date']} - #{r['end_date']})"
+        puts "     - #{r['company']} (#{r['title']}, #{DateDisplay.human(r['start_date'])} - #{DateDisplay.human(r['end_date'])})"
       end
     end
   elsif results["framework"]
@@ -267,7 +268,7 @@ else
   elsif results["company_matches"]
     results["company_matches"].each do |k, v|
       puts "\n🏢 COMPANY: #{v.dig('company', 'name') || k} (#{v['title']})"
-      puts "   Tenure : #{v['start_date']} - #{v['end_date']} [Type: #{v['type']}]"
+      puts "   Tenure : #{DateDisplay.human(v['start_date'])} - #{DateDisplay.human(v['end_date'])} [Type: #{v['type']}]"
       puts "   Summary: #{v['summary']}"
       if v["skills"]
         puts "   Skills : #{v['skills'].join(', ')}"

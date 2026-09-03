@@ -36,7 +36,8 @@ layout: minimal
                   {% if link.description %}<p class="related-description">{{ link.description }}</p>{% endif %}
                   {% if link.embed_url %}
                     <div class="related-embed">
-                      <iframe src="{{ link.embed_url }}" width="100%" height="250" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="{{ link.label }}"></iframe>
+                      {% assign related_provider = link.embed_url | split: '/' | slice: 2 | first | split: '.' | first | capitalize %}
+                      {% include deferred-embed.html src=link.embed_url title=link.label provider=related_provider %}
                     </div>
                   {% endif %}
                 </div>

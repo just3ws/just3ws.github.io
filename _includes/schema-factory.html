@@ -313,7 +313,12 @@
     "@type": "WebSite",
     "@id": "{{ site_url }}/#website",
     "name": {{ site.title | jsonify }},
-    "url": "{{ site_url }}/"
+    "url": "{{ site_url }}/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ site_url }}/search/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   {% else %}
     "@type": "WebPage",
     "@id": "{{ site_url }}{{ page.url }}",

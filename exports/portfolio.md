@@ -4,7 +4,7 @@
 **Role:** Curator & Forensic Engineer
 **Years:** 2006 - 2026
 
-A high-fidelity restoration of 214 technical interviews from the Ruby, JVM, and Software Craftsmanship movements. I used local AI (Whisper/LLM) to perform forensic transcription, dialogue restructuring, and SEO optimization to preserve two decades of technical memory.
+A high-fidelity restoration of 214 technical interviews from the Ruby, JVM, and Software Craftsmanship movements. I used local AI (Whisper/LLM) to perform forensic transcription, dialogue restructuring, and SEO optimization to preserve technical memory across a changing industry.
 
 ## Phalanx Duel
 **Role:** Creator & Architect

@@ -10,6 +10,7 @@ require 'json'
 require 'yaml'
 require 'date'
 require 'time'
+require 'sqlite3'
 
 class CareerDatalakeMCPServer
   ROOT = File.expand_path("..", __dir__)
@@ -17,6 +18,7 @@ class CareerDatalakeMCPServer
   TRANSCRIPTS_DIR = File.join(ROOT, "_data", "transcripts")
   INTELLIGENCE_FILE = File.join(ROOT, "_data", "archive_intelligence.json")
   GRAPH_FILE = File.join(ROOT, "_data", "knowledge_graph.json")
+  WITC_DB = ENV.fetch("WITC_CORPUS_DB", File.join(ROOT, "lake", "witc", "corpus.db"))
 
   def initialize
     ensure_datalake_freshness
@@ -116,6 +118,12 @@ class CareerDatalakeMCPServer
               name: "UGtastic Entity Knowledge Graph Network",
               mimeType: "application/json",
               description: "402 nodes and 612 edges linking interviewees, conferences, user groups, and open source projects."
+            },
+            {
+              uri: "witc://archive/manifest",
+              name: "WITC Local Corpus Manifest",
+              mimeType: "application/json",
+              description: "Provenance and safety metadata for the local WHOIS Tech Community and UGtastic SQLite corpus."
             }
           ]
         }
@@ -138,6 +146,8 @@ class CareerDatalakeMCPServer
         content = File.exist?(INTELLIGENCE_FILE) ? File.read(INTELLIGENCE_FILE) : "{}"
       when "ugtastic://archive/knowledge-graph"
         content = File.exist?(GRAPH_FILE) ? File.read(GRAPH_FILE) : "{}"
+      when "witc://archive/manifest"
+        content = witc_manifest
       else
         content = JSON.generate({ error: "Resource not found: #{uri}" })
       end
@@ -227,6 +237,24 @@ class CareerDatalakeMCPServer
                 },
                 required: ["transcript_id"]
               }
+            },
+            {
+              name: "query_witc_corpus",
+              description: "Searches the local WITC/UGtastic SQLite corpus with bounded, provenance-preserving results.",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  query: { type: "string", description: "Search terms" },
+                  kind: { type: "string", description: "Optional source kind: transcript, metadata, documentation, or source" },
+                  limit: { type: "integer", description: "Maximum results, capped at 100" }
+                },
+                required: ["query"]
+              }
+            },
+            {
+              name: "get_witc_corpus_stats",
+              description: "Returns counts and time bounds for the local WITC/UGtastic corpus.",
+              inputSchema: { type: "object", properties: {} }
             },
             {
               name: "get_narrative_synthesis_baseline",
@@ -353,6 +381,12 @@ class CareerDatalakeMCPServer
           result_text = JSON.generate({ error: "Transcript ID '#{t_id}' not found." })
         end
 
+      when "query_witc_corpus"
+        result_text = JSON.pretty_generate(query_witc(arguments["query"], arguments["kind"], arguments["limit"]))
+
+      when "get_witc_corpus_stats"
+        result_text = JSON.pretty_generate(witc_stats)
+
       else
         result_text = JSON.generate({ error: "Unknown tool name '#{name}'" })
       end
@@ -380,6 +414,52 @@ class CareerDatalakeMCPServer
         }
       }
     end
+  end
+
+  def witc_db
+    return nil unless File.file?(WITC_DB)
+    db = SQLite3::Database.new(WITC_DB)
+    db.results_as_hash = true
+    db
+  end
+
+  def witc_manifest
+    db = witc_db
+    return JSON.generate({ "corpus" => "witc", "available" => false, "database" => WITC_DB }) unless db
+    rows = db.execute("SELECT key, value FROM corpus_metadata").to_h do |r|
+      value = begin
+        JSON.parse(r["value"])
+      rescue JSON::ParserError
+        r["value"]
+      end
+      [r["key"], value]
+    end
+    db.close
+    JSON.pretty_generate(rows.merge("available" => true, "database" => WITC_DB))
+  end
+
+  def witc_stats
+    db = witc_db
+    return { "corpus" => "witc", "available" => false, "database" => WITC_DB } unless db
+    result = { "corpus" => "witc", "available" => true, "database" => WITC_DB, "documents" => db.get_first_value("SELECT COUNT(*) FROM documents"), "threads" => db.get_first_value("SELECT COUNT(*) FROM threads"), "by_kind" => db.execute("SELECT source_kind, COUNT(*) AS count FROM documents GROUP BY source_kind").to_h { |r| [r["source_kind"], r["count"]] } }
+    db.close
+    result
+  end
+
+  def query_witc(query, kind, requested_limit)
+    db = witc_db
+    return { "corpus" => "witc", "available" => false, "database" => WITC_DB } unless db
+    requested = requested_limit.to_i
+    limit = [[requested, 1].max, 100].min
+    limit = 20 if requested.zero?
+    clauses = ["documents_fts MATCH ?"]
+    params = [query.to_s]
+    if kind && !kind.to_s.empty?
+      clauses << "d.source_kind = ?"; params << kind.to_s
+    end
+    rows = db.execute("SELECT d.id, substr(d.content, 1, 1600) AS excerpt, d.source_path, d.project, d.source_kind, d.created_at, d.time_kind, d.sha256 FROM documents_fts f JOIN documents d ON d.id = f.doc_ref WHERE #{clauses.join(' AND ')} ORDER BY bm25(documents_fts), d.created_at LIMIT ?", params + [limit])
+    db.close
+    { "corpus" => "witc", "query" => query, "count" => rows.size, "records" => rows.map { |r| r.merge("created_at_iso" => Time.at(r["created_at"]).utc.iso8601) } }
   end
 end
 

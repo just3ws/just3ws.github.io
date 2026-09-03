@@ -52,6 +52,8 @@
     <div class="footer-container">
       <p>
         &copy; {{ "now" | date: "%Y" }} Mike Hall.
+        <span class="footer-meta-divider">•</span>
+        <a href="/privacy/">Privacy</a>
         {% assign build = site.data.build_info | default: site.build_info %}
         {% if build %}
           <span class="footer-meta-divider">•</span>
@@ -61,6 +63,9 @@
             <time datetime="{{ build.time }}">{{ build.time | date: "%b %d, %Y" }}</time>
           </span>
         {% endif %}
+      </p>
+      <p class="footer-signature">
+        ⌘⇧K / Ctrl+Shift+K · Shift toward knowledge
       </p>
     </div>
   </footer>
@@ -78,5 +83,6 @@
     });
   </script>
   <script src="/assets/js/concept-wiki.js" defer></script>
+  <script src="/assets/js/deferred-embeds.js" defer></script>
 </body>
 </html>

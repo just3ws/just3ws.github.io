@@ -3,7 +3,7 @@ layout: archetype-resume
 body_class: ats-resume
 archetype_key: senior_ruby_rails_contractor
 title: "Mike Hall - Senior - Lead Ruby on Rails Developer Contract"
-description: "Senior Ruby on Rails contractor with 17+ years of production Rails and PostgreSQL expertise. Delivers immediate, zero-ramp-up business value for legacy upgrades, complex state machine refactorings, database optimization, asynchronous background processing, and third-party API integrations with strict TDD/RSpec discipline."
+description: "Senior Ruby on Rails contractor with deep production Rails and PostgreSQL expertise. Delivers immediate, low-ramp-up business value for legacy upgrades, complex state machine refactorings, database optimization, asynchronous background processing, and third-party API integrations with strict TDD/RSpec discipline."
 canonical_url: https://www.just3ws.com/resumes/mike-hall-senior-ruby-rails-contractor/
 permalink: /resumes/mike-hall-senior-ruby-rails-contractor/
 sitemap: true
@@ -25,7 +25,7 @@ Chicago, IL
 
 ## Professional Summary
 
-Senior Ruby on Rails contractor with 17+ years of production Rails and PostgreSQL expertise. Delivers immediate, zero-ramp-up business value for legacy upgrades, complex state machine refactorings, database optimization, asynchronous background processing, and third-party API integrations with strict TDD/RSpec discipline.
+Senior Ruby on Rails contractor with deep production Rails and PostgreSQL expertise. Delivers immediate, low-ramp-up business value for legacy upgrades, complex state machine refactorings, database optimization, asynchronous background processing, and third-party API integrations with strict TDD/RSpec discipline.
 
 ---
 
@@ -105,7 +105,7 @@ Ruby on Rails (Full-Lifecycle 2.x through 8.x), PostgreSQL & MySQL Query Optimiz
 ## Selected Production Projects
 
 ### Principal Architect (WWWorkRemote)
-**2021 - Present**
+**January 2021 - Present**
 
 Rails 8 platform for multi-source job ingestion, semantic matching, and application automation, built as a working laboratory for local-first LLM orchestration and treating scraped third-party text as hostile input.
 
@@ -124,7 +124,7 @@ Rails 8 platform for multi-source job ingestion, semantic matching, and applicat
 
 
 ### Principal Architect (Phalanx Duel)
-**2022 - Present**
+**January 2022 - Present**
 
 Designing and building a real-time tactical game platform as a current hands-on laboratory for deterministic systems, product architecture, and controlled AI-assisted engineering.
 
@@ -137,7 +137,7 @@ Designing and building a real-time tactical game platform as a current hands-on 
 
 
 ### Principal Architect (Local AI Orchestration & Developer Runtime)
-**2026 - Present**
+**January 2026 - Present**
 
 Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.
 
@@ -160,11 +160,11 @@ Built and operate three MCP (Model Context Protocol) servers that expose live sy
 
 ---
 
-## Career Foundations
+## Earlier Experience
 
 **1999 - 2011**
 
-Built and operated enterprise integrations, transactional systems, and early web products across consulting and product organizations, establishing the production discipline and community-centered craftsmanship that still shape my leadership.
+Built and operated enterprise integrations, transactional systems, and early web products across consulting and product organizations, establishing the production discipline and community-centered craftsmanship that inform my leadership today.
 
 - **Revenue-critical commerce**: Designed real-time inventory, locking, and fulfillment services for a high-volume ticket marketplace later acquired by a major industry operator.
 - **Consulting and software craftsmanship**: Delivered systems across client environments while mentoring engineers, adopting Ruby and Rails, and helping build Chicago's craftsmanship community.

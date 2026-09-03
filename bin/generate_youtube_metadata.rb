@@ -10,6 +10,7 @@ require 'json'
 require 'yaml'
 require 'fileutils'
 require 'optparse'
+require 'uri'
 require_relative '../src/generators/core/yaml_io'
 
 class YouTubeMetadataGenerator
@@ -174,6 +175,7 @@ class YouTubeMetadataGenerator
     first_mike_turn = turns.find { |t| t["speaker"] == mike_key }
 
     # 1:1 Canonical Description in Mike Hall with UGtastic authentic voice
+    @current_video_id = video_id
     description = build_description(guest_name, guest_role, summary, event_label, transcript_id, chapters, tags, first_mike_turn ? first_mike_turn["text"] : nil, single_mike_presenter, presentation_mode)
     site_description = summary.empty? ? clean_spoken_intro(first_mike_turn ? first_mike_turn["text"] : nil, guest_name, event_label, guest_role) : summary
 
@@ -323,8 +325,29 @@ class YouTubeMetadataGenerator
     lines << "🏷️ TOPICS: #{tags.join(', ')}" unless tags.empty?
     lines << ""
     lines << "Restored and preserved by Mike Hall (https://www.just3ws.com)"
+    lines << ""
+    lines << "🚩 REPORT A CORRECTION:"
+    lines << "If you notice an issue in this YouTube video, transcript, attribution, metadata, or description, please report it with the source clearly marked."
+    lines << youtube_issue_url(transcript_id, event_label, @current_video_id)
 
     lines.join("\n")
+  end
+
+  def youtube_issue_url(transcript_id, event_label, video_id)
+    title = "YouTube archive issue: #{event_label} (#{transcript_id})"
+    body = <<~BODY
+      ### Source
+      - Surface: YouTube video or description
+      - YouTube URL: https://www.youtube.com/watch?v=#{video_id}
+      - Site transcript: https://www.just3ws.com/interviews/#{transcript_id}/
+      - Transcript ID: #{transcript_id}
+
+      ### Issue description
+      <!-- Please describe the problem and include a timestamp when relevant. -->
+
+      ### Suggested correction
+    BODY
+    "https://github.com/just3ws/just3ws.github.io/issues/new?labels=transcript-correction%2Ctriage-needed&title=#{URI.encode_www_form_component(title)}&body=#{URI.encode_www_form_component(body)}"
   end
 
   def generate_warm_opener(guest_name, guest_role, event_label, summary, single_mike_presenter = false, presentation_mode = false)

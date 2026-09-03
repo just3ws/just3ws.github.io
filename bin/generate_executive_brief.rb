@@ -144,7 +144,7 @@ markdown_content = <<~MARKDOWN
   ### 1. High-Consequence Platform Architecture & Modernization
   * **Acquisition Lane Architecture (OneMain Financial):** Appointed Software Architect for an acquisition engine processing hundreds of millions in financial throughput. Mapped seven heterogeneous ingress channels, refactored multi-step Rails state machines, and decoupled service boundaries between Acquisition and Originations.
   * **Database Archaeology & Safety:** Architected an automated 5-phase PII remediation deletion engine across 30+ tables, safely purging legacy orphan records under production traffic without table locks.
-  * **Craftsmanship Foundations:** 20+ years of production Ruby on Rails expertise (2.x through 8.x), strict TDD discipline, and relational data modeling in PostgreSQL.
+  * **Craftsmanship Foundations:** Production Ruby on Rails expertise (2.x through 8.x), strict TDD discipline, and relational data modeling in PostgreSQL.
 
   ### 2. Deep Observability, Distributed Tracing & Incident Command
   * **Enterprise Trace Deployment:** Led the enterprise OpenTelemetry deployment across distributed Rails services, MuleSoft APIs, and Mainframe backends. Standardized W3C trace context headers to bridge siloed logs into causal event chains.

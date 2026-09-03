@@ -1,120 +1,979 @@
 ---
 layout: minimal
-title: "Historical Era Timeline (2009–2026)"
-description: "Interactive historical timeline scrubbing through 17 years of oral history, software craftsmanship conferences, and developer interviews."
+title: "Historical Era Timeline (1999–2026)"
+description: "A recursive, provenance-aware timeline of Mike Hall's career, communities, tools, and the WHOIS Tech Community archive."
 body_class: timeline-network-page
 ---
 
 <article class="timeline-page">
-<div class="intel-hero">
-  <div class="intel-hero-inner">
-    <span class="intel-badge">UGtastic Oral History Canon</span>
-    <h1 class="intel-title">Interactive Historical Timeline</h1>
-    <p class="intel-subtitle">
-      Scrub through <strong>17 years of tech evolution (2009–2026)</strong>, from early .NET blogging and Software Craftsmanship (SCNA) to the Rails Boom, Polyglot Systems, and AI-augmented engineering.
-    </p>
-  </div>
-</div>
-
-<div class="intel-container">
-  <!-- Interactive Year Scrubber Bar -->
-  <section class="intel-section">
-    <div class="section-header-editorial">
-      <h2 class="section-title">Era & Year Scrubber</h2>
-      <hr class="title-accent">
+  <header class="intel-hero timeline-hero">
+    <div class="timeline-hero-inner">
+      <p class="intel-badge">UGtastic · UGl.st · WHOIS Tech Community</p>
+      <h1 class="intel-title">A vision takes<br>its own time.</h1>
+      <p class="intel-subtitle">A recursive history of recording, community, preservation, and return. Start with the wide sky. Follow a thread. Find the evidence.</p>
+      <nav class="timeline-trail" aria-label="Archive trails">
+        <a href="/search/?q=UGtastic">UGtastic</a>
+        <span aria-hidden="true">↗</span>
+        <a href="/archive-atlas/">WITC Archive Atlas</a>
+        <span aria-hidden="true">↗</span>
+        <a href="/videos/">Recordings</a>
+      </nav>
     </div>
+    <div class="timeline-hero-orbit" aria-hidden="true">
+      <span class="orbit-dot orbit-dot-one"></span>
+      <span class="orbit-dot orbit-dot-two"></span>
+      <span class="orbit-dot orbit-dot-three"></span>
+      <span class="orbit-ring orbit-ring-one"></span>
+      <span class="orbit-ring orbit-ring-two"></span>
+      <span class="orbit-ring orbit-ring-three"></span>
+    </div>
+  </header>
 
-    <div class="timeline-scrubber-card">
-      <div class="scrubber-labels">
-        <button type="button" class="era-btn active" data-era="ALL">All Eras (2009-2026)</button>
-        <button type="button" class="era-btn" data-era="era-2009-2010">2009–2010: Blogging & .NET</button>
-        <button type="button" class="era-btn" data-era="era-2011-2012">2011–2012: SCNA Craftsmanship</button>
-        <button type="button" class="era-btn" data-era="era-2013">2013: SCNA & WebVisions</button>
-        <button type="button" class="era-btn" data-era="era-2014">2014: Rails Boom & GOTO</button>
-        <button type="button" class="era-btn" data-era="era-2015-2026">2015–2026: Polyglot & AI</button>
+  <section class="timeline-orientation" aria-labelledby="orientation-heading">
+    <div class="timeline-section-heading">
+      <div>
+        <p class="section-kicker">The organizer's perspective</p>
+        <h2 id="orientation-heading">One project. Many kinds of time.</h2>
+      </div>
+      <p class="timeline-orientation-copy">The record is not a single line. A conversation happened, a file was saved, a caption was corrected, and a future reader found it. Each event leaves a different signal.</p>
+    </div>
+    <div class="timeline-constellation" id="timeline-constellation" role="img" aria-label="Archive layers connected across time">
+      <div class="constellation-line constellation-line-a"></div>
+      <div class="constellation-line constellation-line-b"></div>
+      <div class="constellation-node constellation-node-a"><span>record</span></div>
+      <div class="constellation-node constellation-node-b"><span>community</span></div>
+      <div class="constellation-node constellation-node-c"><span>preserve</span></div>
+      <div class="constellation-node constellation-node-d"><span>return</span></div>
+      <p class="constellation-caption">The archive grows by returning to what was already here.</p>
+    </div>
+  </section>
+
+  <section class="timeline-intelligence" aria-labelledby="intelligence-heading">
+    <div class="timeline-section-heading compact-heading">
+      <div>
+        <p class="section-kicker">Corpus intelligence</p>
+        <h2 id="intelligence-heading">What the archive can prove</h2>
+      </div>
+      <p class="timeline-data-note">Evidence is not certainty. Dates retain their source meaning. <a href="/interviews/word-clouds/">Explore the archive word clouds</a>.</p>
+    </div>
+    <div class="timeline-stats" id="timeline-stats"></div>
+    <div class="timeline-graph-signal" id="timeline-graph-signal"></div>
+  </section>
+
+  <section class="timeline-exhibit" aria-labelledby="exhibit-heading">
+    <div class="timeline-section-heading exhibit-heading">
+      <div>
+        <p class="section-kicker">The long view</p>
+        <h2 id="exhibit-heading">The archive as a living sky</h2>
+      </div>
+      <div class="timeline-controls">
+        <button type="button" class="timeline-pan" id="timeline-pan-left" aria-label="Pan timeline earlier">←</button>
+        <button type="button" class="timeline-pan" id="timeline-pan-right" aria-label="Pan timeline later">→</button>
+        <label class="timeline-zoom-control" for="timeline-zoom">Zoom <input id="timeline-zoom" type="range" min="0" max="4" value="0" step="1"><span id="timeline-zoom-label">wide</span></label>
+        <button type="button" class="timeline-reset" id="timeline-reset">Reset view</button>
+        <span id="timeline-selection" class="timeline-selection">UGtastic story · 2011–2026</span>
       </div>
     </div>
-  </section>
 
-  <!-- Timeline Cards & Grid -->
-  <section class="intel-section">
-    <div class="timeline-cards-container" id="timeline-cards-container">
-      <!-- Dynamically populated -->
+    <aside class="timeline-story-summary" id="timeline-story-summary" aria-labelledby="timeline-question">
+      <p class="section-kicker">The question this timeline answers</p>
+      <h3 id="timeline-question">How did UGtastic grow from community conversations into an archive that could be preserved, rediscovered, and understood years later?</h3>
+      <p>UGtastic began with community and conference interviews in 2011. Recording expanded through 2015. Later work preserved captions and files, followed by a return to transcription, indexing, and curation. The timeline separates when conversations happened from when their files were later processed.</p>
+      <p class="timeline-summary-links"><a href="/interviews/">Browse the interviews</a> · <a href="/archive-atlas/">Read the archive method</a> · <a href="#ledger-heading">Follow the evidence</a></p>
+    </aside>
+
+    <div class="timeline-epoch-tabs" id="timeline-epoch-tabs" aria-label="Jump to an archive chapter"></div>
+
+    <fieldset class="timeline-overlay-controls" id="timeline-overlay-controls">
+      <legend>Add optional context</legend>
+      <p>These layers can be combined. They are not required to understand the UGtastic story.</p>
+      <div class="timeline-overlay-options">
+        <label><input type="checkbox" value="work"> Work context</label>
+        <label><input type="checkbox" value="technology"> Technology context</label>
+        <label><input type="checkbox" value="related"> Related projects and domains</label>
+        <label><input type="checkbox" value="industry"> Industry context</label>
+        <label><input type="checkbox" value="personal"> Curated personal context</label>
+      </div>
+    </fieldset>
+
+    <div class="timeline-semantic-key" aria-labelledby="timeline-key-heading">
+      <strong id="timeline-key-heading">How to read the marks</strong>
+      <ul>
+        <li><span class="timeline-key-symbol timeline-key-event" aria-hidden="true"></span><strong>Event:</strong> a dated occurrence or group of recordings.</li>
+        <li><span class="timeline-key-symbol timeline-key-span" aria-hidden="true"></span><strong>Active span:</strong> work supported across a stated interval.</li>
+        <li><span class="timeline-key-symbol timeline-key-approximate" aria-hidden="true"></span><strong>Approximate:</strong> the source supports a year or range, not an exact day.</li>
+        <li><span class="timeline-key-symbol timeline-key-uncertain" aria-hidden="true"></span><strong>Unverified recollection:</strong> useful context that still needs independent support.</li>
+        <li><span class="timeline-key-symbol timeline-key-quiet" aria-hidden="true"></span><strong>Quiet space:</strong> no dated archive signal for that lane. It does not prove nothing happened.</li>
+      </ul>
     </div>
-  </section>
-</div>
 
+    <p class="timeline-canvas-instructions" id="timeline-canvas-instructions">Scroll horizontally to move through time. Tab reaches each item. When an item has focus, use Left and Right to move through its lane, Up and Down to move between lanes, and Home or End to reach the lane boundaries.</p>
+    <div class="timeline-window-preview" id="timeline-window-preview" role="status" aria-live="polite">
+      <strong>Current window · 2011 to 2026</strong>
+      <span>Focus, hover, or select a mark for context. Select it to open its evidence below.</span>
+    </div>
+    <div class="timeline-visual-shell" role="region" aria-label="UGtastic archive timeline" aria-describedby="timeline-canvas-instructions" tabindex="0">
+      <div class="timeline-axis-note"><span>1999</span><span>2004</span><span>2009</span><span>2014</span><span>2019</span><span>2026</span></div>
+      <div class="timeline-visual" id="timeline-visual"></div>
+      <p class="timeline-visual-caption">Horizontal position shows the strongest date supported by the public record. The canvas remains expansive so distance can carry meaning. Open space means only that this archive has no dated signal for that lane.</p>
+    </div>
+    <div class="timeline-current-summary" id="timeline-current-summary"></div>
+  </section>
+
+  <section class="timeline-section timeline-ledger-section" aria-labelledby="ledger-heading">
+    <div class="timeline-section-heading compact-heading">
+      <div>
+        <p class="section-kicker">Choose a thread</p>
+        <h2 id="ledger-heading">The evidence ledger</h2>
+      </div>
+      <p class="timeline-data-note">Select an item above to inspect its dates, confidence, and supporting records.</p>
+    </div>
+    <div class="timeline-details" id="timeline-details"><p>Choose a timeline item to inspect its evidence.</p></div>
+  </section>
+
+  <section class="timeline-section" aria-labelledby="era-heading">
+    <div class="timeline-section-heading compact-heading">
+      <div>
+        <p class="section-kicker">Public archive index</p>
+        <h2 id="era-heading">Conversations by era</h2>
+      </div>
+      <p class="timeline-data-note">The original interview index remains available as a human-readable trail.</p>
+    </div>
+    <div class="timeline-scrubber-card">
+      <div class="scrubber-labels" id="era-buttons" aria-label="Conversation eras"></div>
+    </div>
+    <div class="timeline-cards-container" id="timeline-cards-container"></div>
+  </section>
+
+  <footer class="timeline-method-note">
+    <p><strong>How to read this:</strong> The WITC corpus contains searchable documents, not a claim that every document is a recording. File modification, upload, conversion, captioning, and curation dates remain distinct. The source files and public recordings are the evidence.</p>
+    <p><a href="/archive-atlas/">Open the full WITC Archive Atlas</a> · <a href="https://web.archive.org/web/*/http://ugtastic.com/*" rel="noopener">Search Wayback captures</a></p>
+  </footer>
 </article>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const inlineData = {{ site.data.timeline_archive | jsonify }};
+document.addEventListener('DOMContentLoaded', () => {
+  const interviewData = {{ site.data.timeline_archive | jsonify }};
+  const careerData = [
+    {% for position_id in site.data.resume.timeline.history %}
+      {% assign position = site.data.resume.positions[position_id] %}
+      {
+        id: {{ position.id | jsonify }},
+        company: {{ position.company.name | jsonify }},
+        title: {{ position.title | jsonify }},
+        type: {{ position.type | jsonify }},
+        start: {{ position.start_date | jsonify }},
+        end: {{ position.end_date | default: "Present" | jsonify }},
+        summary: {{ position.summary | strip_newlines | jsonify }},
+        skills: {{ position.skills | default: empty | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+  const conferenceData = {{ site.data.interview_conferences.conferences | default: empty | jsonify }};
+  const timelineVisual = document.getElementById('timeline-visual');
+  const details = document.getElementById('timeline-details');
+  const selection = document.getElementById('timeline-selection');
+  const stats = document.getElementById('timeline-stats');
+  const tabs = document.getElementById('timeline-epoch-tabs');
+  const currentSummary = document.getElementById('timeline-current-summary');
+  const eras = document.getElementById('era-buttons');
+  const windowPreview = document.getElementById('timeline-window-preview');
+  const overlayControls = document.getElementById('timeline-overlay-controls');
+  const minYear = 1999;
+  const maxYear = 2026;
+  const defaultZoomLevel = 0;
+  const defaultViewCenter = 2018.5;
+  let atlas;
+  let activeEra = 'ALL';
+  let activeItem = null;
+  let zoomLevel = defaultZoomLevel;
+  let viewCenter = defaultViewCenter;
+  const activeOverlays = new Set();
+  let graph;
+  let timelineSeries = [];
+  let renderedItems = new Map();
 
-  if (inlineData && inlineData.eras) {
-    renderTimeline(inlineData);
-  } else {
-    fetch('/assets/data/timeline_archive.json')
-      .then(res => res.json())
-      .then(data => renderTimeline(data))
-      .catch(err => console.error("Error loading timeline data:", err));
+  Promise.all([
+    Promise.resolve(interviewData),
+    fetch('/docs/witc-archive-atlas.json').then(response => response.json()),
+    fetch('/assets/data/knowledge_graph.json').then(response => response.json())
+  ]).then(([interviews, archiveAtlas, knowledgeGraph]) => {
+    atlas = archiveAtlas;
+    graph = knowledgeGraph;
+    timelineSeries = primaryStoryThreads(interviews, atlas).concat(contextThreads()).concat(technologyThreads()).concat(practiceThreads()).concat(foundationalThreads()).concat(projectThreads()).concat(careerThreads()).concat(domainThreads());
+    renderStats(interviews, atlas, graph);
+    renderEpochs(atlas);
+    bindOverlayControls();
+    updateZoomControls();
+    renderVisual(atlas);
+    renderInterviewEraButtons(interviews);
+    renderInterviewCards(interviews, 'ALL');
+  }).catch(error => {
+    details.innerHTML = `<p role="alert">The archive view could not load: ${escapeHtml(error.message)}</p>`;
+  });
+
+  function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
   }
 
-  function renderTimeline(data) {
-    const container = document.getElementById('timeline-cards-container');
-    const eraBtns = document.querySelectorAll('.era-btn');
+  function renderStats(interviews, data, knowledgeGraph) {
+    const counts = data.series.reduce((total, series) => total + series.evidence.length, 0);
+    const layerCount = data.time_semantics.layers.length;
+    const values = [
+      [data.corpus.documents.toLocaleString(), 'searchable documents'],
+      [data.corpus.threads.toLocaleString(), 'archive threads'],
+      [interviews.total_interviews.toLocaleString(), 'indexed conversations'],
+      [counts.toLocaleString(), 'linked evidence records'],
+      [layerCount.toLocaleString(), 'temporal layers'],
+      [knowledgeGraph.total_nodes.toLocaleString(), 'graph nodes'],
+      [knowledgeGraph.total_links.toLocaleString(), 'graph relationships']
+    ];
+    stats.innerHTML = values.map(([value, label]) => `<div class="timeline-stat"><strong>${value}</strong><span>${label}</span></div>`).join('');
+    document.getElementById('timeline-graph-signal').innerHTML = `<strong>Graph signal:</strong> ${knowledgeGraph.total_nodes.toLocaleString()} named nodes and ${knowledgeGraph.total_links.toLocaleString()} relationships connect interviews, people, conferences, user groups, projects, topics, and concepts. Select a thread to follow its nearby constellation.`;
+  }
 
-    function displayEra(selectedEra) {
-      container.innerHTML = '';
+  function foundationalThreads() {
+    return [
+      { id: 'chicago-code-camp-foundation', label: 'Chicago Code Camp · foundation', start: '2010', end: '2012', kind: 'foundation', precision: 'public narrative range', description: 'A formative regional conference layer before the later UGtastic production arc. It belongs in the history as an organizing practice and community signal.', evidence: [{ source_path: 'The Zero-Dollar Conference retrospective', timestamp: '2010–2012', timestamp_kind: 'public narrative' }, { source_path: 'UGl.st and Chicago Code Camp retrospective', timestamp: '2010–2014', timestamp_kind: 'public narrative' }] },
+      { id: 'scmc-foundation', label: 'SCMC · Software Craftsmanship McHenry County', start: '2009', end: '2014', kind: 'foundation', precision: 'public history plus recording range', description: 'The far-suburban practice community founded in late 2009. Its meetings, talks, and relationships overlap the conference and interview layers.', evidence: [{ source_path: 'SCMC dedicated archive', timestamp: '2009–2014', timestamp_kind: 'public history', url: '/scmc/' }, { source_path: 'SCMC and UGtastic synthesis roadmap', timestamp: '2011–2014', timestamp_kind: 'archive synthesis' }] }
+    ];
+  }
 
-      const filteredEras = selectedEra === 'ALL' 
-        ? data.eras 
-        : data.eras.filter(e => e.id === selectedEra);
+  function primaryStoryThreads(interviews, data) {
+    const archiveSeries = Object.fromEntries(data.series.map(series => [series.id, series]));
+    const foundations = foundationalThreads();
+    const communityEvidence = foundations.flatMap(series => series.evidence);
+    const communityItems = [
+      {
+        id: 'community-regional-groundwork',
+        label: 'Regional community groundwork',
+        start: 2011,
+        end: 2014,
+        precision: 'year-level public history',
+        description: 'SCMC, Chicago Code Camp, and neighboring communities supplied relationships, practice, and places to listen before and during UGtastic production.',
+        evidence: communityEvidence
+      },
+      timelineItemFromSeries(archiveSeries['ugl-st'], {
+        id: 'community-ugl-st',
+        label: 'UGl.st organizer discovery',
+        description: 'UGl.st explored how organizers and participants could discover technical communities. The record distinguishes the early intent from the later public capture.'
+      })
+    ].filter(Boolean);
+    const interviewItems = conferenceInterviewItems(interviews);
+    const publishingItems = [
+      timelineItemFromSeries(archiveSeries['ugtastic-production'], {
+        id: 'publishing-ugtastic',
+        label: 'Record and publish UGtastic'
+      }),
+      timelineItemFromSeries(archiveSeries['caption-consolidation'], {
+        id: 'preservation-captions',
+        label: 'Preserve captions and archive files'
+      })
+    ].filter(Boolean);
+    const returnItems = [
+      timelineItemFromSeries(archiveSeries['local-curation'], {
+        id: 'return-local-curation',
+        label: 'Return to transcription, indexing, and curation'
+      })
+    ].filter(Boolean);
 
-      filteredEras.forEach(era => {
-        const eraItems = data.items.filter(i => i.era_id === era.id);
-        if (eraItems.length === 0) return;
+    return [
+      storyLane('story-community', 'Community activity', 'Organizers, user groups, and the relationships that made the conversations possible.', communityItems),
+      storyLane('story-interviews', 'Interviews and events', 'Conference recording groups placed by the strongest public date available.', interviewItems),
+      storyLane('story-publishing', 'Publishing and preservation', 'The active recording period followed by work that kept captions and files usable.', publishingItems),
+      storyLane('story-return', 'Return and curation', 'Later work that made the surviving record searchable, connected, and easier to verify.', returnItems)
+    ];
+  }
 
-        const eraBlock = document.createElement('div');
-        eraBlock.className = 'timeline-era-block';
+  function storyLane(id, label, description, segments) {
+    const starts = segments.map(segment => Number(segment.start)).filter(Number.isFinite);
+    const ends = segments.map(segment => Number(segment.end)).filter(Number.isFinite);
+    return {
+      id,
+      label,
+      start: Math.min(...starts),
+      end: Math.max(...ends),
+      kind: 'story',
+      primary: true,
+      precision: 'mixed public archive evidence',
+      description,
+      evidence: segments.flatMap(segment => segment.evidence || []),
+      segments
+    };
+  }
 
-        let itemsHtml = eraItems.map(item => `
-          <div class="timeline-interview-card">
-            <div>
-              <span class="card-year-badge">${item.year}</span>
-              <h3 class="card-interview-title">${item.title}</h3>
-              <p class="card-meta-text">
-                👤 ${item.interviewees.join(', ') || 'Featured Guest'}<br>
-                📍 ${item.conference || item.location || 'UGtastic Archive'}
-              </p>
-            </div>
-            <a href="${item.url}" class="btn-view-timeline">View Interview & Transcript</a>
-          </div>
-        `).join('');
+  function timelineItemFromSeries(series, overrides = {}) {
+    if (!series) return null;
+    return {
+      id: overrides.id || series.id,
+      label: overrides.label || series.label,
+      start: Number(series.start),
+      end: Number(series.end),
+      precision: series.precision || 'year-level archive evidence',
+      description: overrides.description || series.description,
+      evidence: series.evidence || [],
+      url: overrides.url
+    };
+  }
 
-        eraBlock.innerHTML = `
-          <div class="era-header-card">
-            <span class="era-tag">${era.years} Archive Era</span>
-            <h2 class="era-title-display">${era.title}</h2>
-            <p class="era-desc-display">${era.description}</p>
-          </div>
-          <div class="timeline-items-grid">
-            ${itemsHtml}
-          </div>
-        `;
+  function conferenceInterviewItems(interviews) {
+    const groups = (interviews.items || []).filter(row => row.conference && Number(row.year) >= 2011).reduce((result, row) => {
+      const key = `${row.conference}-${row.year}`;
+      (result[key] ||= { conference: row.conference, year: Number(row.year), rows: [] }).rows.push(row);
+      return result;
+    }, {});
+    return Object.values(groups).sort((left, right) => left.year - right.year || left.conference.localeCompare(right.conference)).map(group => ({
+      id: `interviews-${group.conference}-${group.year}`.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      label: `${group.conference} ${group.year}`,
+      start: group.year,
+      end: group.year,
+      precision: 'year-level recording date',
+      description: `${group.rows.length} recorded interview${group.rows.length === 1 ? '' : 's'} associated with ${group.conference} in ${group.year}.`,
+      evidence: group.rows.map(row => ({ source_path: row.title, timestamp: String(group.year), timestamp_kind: 'year-level recording date', url: row.url }))
+    }));
+  }
 
-        container.appendChild(eraBlock);
-      });
-    }
+  function communityThreads(interviews) {
+    const rows = (interviews.items || []).filter(row => row.community && !row.community.match(/^general$/i));
+    return Object.entries(rows.reduce((groups, row) => {
+      (groups[row.community] ||= []).push(row);
+      return groups;
+    }, {})).map(([community, items]) => {
+      const dated = items.map(row => ({ ...row, start: timelineDateValue(row.recorded_date) || Number(row.year), end: timelineDateValue(row.recorded_date) || Number(row.year) })).filter(row => row.start);
+      return {
+        id: `community-interviews-${community.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+        label: `${community} · interviews`,
+        start: Math.min(...dated.map(row => row.start)),
+        end: Math.max(...dated.map(row => row.end)),
+        kind: 'community',
+        precision: 'recorded dates, retained at month level where available',
+        description: `Community interviews for ${community}, grouped into a named lane so the community signal can be followed without confusing it with a conference series.`,
+        evidence: dated.map(row => ({ source_path: row.title, timestamp: displayTimelineDate(row.start), timestamp_kind: 'recorded interview', url: row.url })),
+        segments: dated.map(row => ({ label: displayTimelineDate(row.start), detail: row.title, start: row.start, end: row.end, url: row.url }))
+      };
+    }).filter(series => series.start).sort((left, right) => left.start - right.start);
+  }
 
-    eraBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        eraBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        displayEra(btn.getAttribute('data-era'));
-      });
+  function careerThreads() {
+    const positions = careerData.filter(position => position.type !== 'Project').map(position => {
+      const start = timelineDateValue(position.start);
+      const end = timelineDateValue(position.end) || maxYear;
+      return {
+        id: position.id,
+        company: position.company,
+        title: position.title,
+        start,
+        end,
+        start_label: displayDate(position.start),
+        end_label: displayDate(position.end),
+        evidence: [{ source_path: `${position.company} position record`, timestamp: `${displayDate(position.start)} to ${displayDate(position.end)}`, timestamp_kind: 'resume chronology', url: `/resume/positions/${position.id}/` }],
+        skills: position.skills || []
+      };
+    }).filter(position => position.start).sort((left, right) => left.start - right.start);
+    if (!positions.length) return [];
+    return [{
+      id: 'career-history',
+      label: 'Career history',
+      start: Math.min(...positions.map(position => position.start)),
+      end: Math.max(...positions.map(position => position.end)),
+      kind: 'career',
+      precision: 'position dates, retained at month level where the source provides it',
+      description: 'Employment is shown as one continuous career lane. Select or hover a segment to identify the organization and role without turning every job into a separate row.',
+      evidence: positions.flatMap(position => position.evidence),
+      segments: positions.map(position => ({ label: position.company, detail: position.title, start: position.start, end: position.end, start_label: position.start_label, end_label: position.end_label, url: `/resume/positions/${position.id}/` }))
+    }];
+  }
+
+  function projectThreads() {
+    const projects = careerData.filter(position => position.type === 'Project').map(position => ({
+      company: position.company,
+      title: position.title,
+      start: timelineDateValue(position.start),
+      end: timelineDateValue(position.end) || maxYear,
+      start_label: displayDate(position.start),
+      end_label: displayDate(position.end),
+      id: position.id
+    })).filter(project => project.start).sort((left, right) => left.start - right.start);
+    if (!projects.length) return [];
+    return [{
+      id: 'independent-project-history',
+      label: 'Independent project history',
+      start: Math.min(...projects.map(project => project.start)),
+      end: Math.max(...projects.map(project => project.end)),
+      kind: 'project',
+      precision: 'project dates, retained at month level where the source provides it',
+      description: 'Independent projects are separated from employment history. Their segments show the project sequence while hover and selection provide the role and evidence details.',
+      evidence: projects.map(project => ({ source_path: `${project.company} project record`, timestamp: `${project.start_label} to ${project.end_label}`, timestamp_kind: 'project chronology', url: `/resume/positions/${project.id}/` })),
+      segments: projects.map(project => ({ label: project.company, detail: project.title, start: project.start, end: project.end, start_label: project.start_label, end_label: project.end_label, url: `/resume/positions/${project.id}/` }))
+    }];
+  }
+
+  function technologyThreads() {
+    const definitions = [
+      ['Microsoft / ASP', /microsoft|asp\.net|active server pages|biztalk/i],
+      ['.NET / C#', /\.net|c#/i],
+      ['Visual Basic / VBA', /visual basic|vba/i],
+      ['Visual SourceSafe', /visual sourcesafe/i],
+      ['Subversion', /subversion/i],
+      ['Ruby / Rails', /ruby/i],
+      ['Java', /java/i],
+      ['Clojure', /clojure/i],
+      ['PHP', /php/i],
+      ['Go / Golang', /golang|\bgo\b/i],
+      ['OpenTelemetry', /opentelemetry|opencensus|openmetrics/i]
+    ];
+    return definitions.map(([label, pattern]) => {
+      const positions = careerData.filter(position => pattern.test(`${position.company} ${position.title} ${position.summary} ${(position.skills || []).join(' ')}`)).map(position => ({ ...position, start: timelineDateValue(position.start), end: timelineDateValue(position.end) || maxYear, start_label: displayDate(position.start), end_label: displayDate(position.end) }));
+      if (!positions.length) return null;
+      return {
+        id: `technology-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+        label,
+        start: Math.min(...positions.map(position => position.start)),
+        end: Math.max(...positions.map(position => position.end)),
+        kind: 'technology',
+        precision: 'career record range',
+        description: `A technology thread crossing ${positions.length} position record${positions.length === 1 ? '' : 's'} in the career chronology. The overlap shows where a language or platform intersected with the work, not a claim that it was the only technology in use.`,
+        evidence: positions.map(position => ({ source_path: `${position.company} position record`, timestamp: `${position.start_label}–${position.end_label}`, timestamp_kind: 'resume chronology', url: `/resume/positions/${position.id}/` }))
+      };
+    }).filter(Boolean).sort((left, right) => left.start - right.start);
+  }
+
+  function practiceThreads() {
+    return [
+      {
+        id: 'practice-scrum',
+        label: 'Scrum · iterative delivery',
+        start: 2004.58,
+        end: 2007.17,
+        kind: 'practice',
+        precision: 'position records, month-level range',
+        description: 'Scrum appears in the Motorola and TicketsNow position records as a practical delivery discipline for cross-functional and revenue-critical teams.',
+        evidence: [
+          { source_path: 'Motorola position record', timestamp: 'August 2004 to May 2005', timestamp_kind: 'resume chronology', url: '/resume/positions/motorola/' },
+          { source_path: 'TicketsNow position record', timestamp: 'November 2005 to March 2007', timestamp_kind: 'resume chronology', url: '/resume/positions/ticketsnow/' }
+        ]
+      },
+      {
+        id: 'practice-xp',
+        label: 'Extreme Programming · XP practices',
+        start: 2007,
+        end: 2010,
+        kind: 'practice',
+        precision: 'contemporary writing and practice evidence',
+        description: 'XP enters the record through contemporary writing about testing tools and the later practice of intensive pairing. The thread marks influence and experimentation, not a claim of formal certification.',
+        evidence: [
+          { source_path: 'If yer code ain’t tested, the waterfallists win', timestamp: '2007-07-19', timestamp_kind: 'contemporary article', url: '/2007/07/19/if-yer-code-ain-t-tested-the-waterfallists-win.html' },
+          { source_path: 'Pair Programming', timestamp: '2010-01-28', timestamp_kind: 'contemporary article', url: '/2010/01/28/pair-programming.html' }
+        ]
+      },
+      {
+        id: 'practice-tdd-bdd',
+        label: 'TDD and BDD · shared examples',
+        start: 2009,
+        end: 2014,
+        kind: 'practice',
+        precision: 'community and interview evidence',
+        description: 'Test-driven development and behavior-driven development form a practice thread across Chicago craftsmanship communities, conference conversations, and hands-on learning.',
+        evidence: [
+          { source_path: 'History of Software Craftsmanship in Chicago', timestamp: '2009 to 2014', timestamp_kind: 'public historical account', url: '/2026/08/16/history-of-software-craftsmanship-in-chicago.html' },
+          { source_path: 'Dan North and Sandro Mancuso interview synthesis', timestamp: '2026-08-20', timestamp_kind: 'archive synthesis', url: '/2026/08/20/the-human-side-of-software-craftsmanship-dan-north-sandro-mancuso.html' }
+        ]
+      }
+    ];
+  }
+
+  function contextThreads() {
+    const bands = [
+      ['Microsoft web and .NET tools', 1999, 2009, 'Visual InterDev, ASP, Visual Basic, Visual Studio .NET, SourceSafe, Vault, and CodePlex belong to one grouped Microsoft working surface. The archive keeps the individual tools in the evidence record without stacking them as separate eras.', [{ label: 'Visual InterDev and ASP', start: 1999, end: 2001 }, { label: 'Visual Basic and Access', start: 2001, end: 2003 }, { label: 'Visual Studio .NET and C#', start: 2003, end: 2009 }]],
+      ['Ruby, Rails, and craftsmanship', 2009, 2018, 'Ruby and Rails become the dominant community and practice language, alongside the Software Craftsmanship movement and the communities that made the work legible.'],
+      ['Community publishing and video', 2009, 2015, 'Twitter, Vimeo, UGtastic, conferences, and user groups form one public conversation layer. This is where recording and community participation reinforce each other.'],
+      ['Distributed source collaboration', 2008, 2026, 'Subversion, Git, Mercurial, GitHub, GitLab, and TOML are grouped as a change in how work was shared, reviewed, and made durable.'],
+      ['Linux and Apple working surfaces', 2009, 2026, 'Linux returns as a practical home while Apple becomes the primary archive and development surface. The two are treated as one workstation transition lane, not a pile of device eras.'],
+      ['Remote and locally orchestrated work', 2014, 2026, 'Distributed work, local automation, and the current archive tooling become a single operating condition. The detailed career chronology remains below in its own lane.']
+    ];
+    return bands.map(([label, start, end, description, segments]) => ({
+      id: `context-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+      label,
+      start,
+      end,
+      kind: 'context',
+      precision: 'era-level personal chronology',
+      description,
+      segments,
+      evidence: [{ source_path: 'Mike Hall career timeline context', timestamp: `${start}–${end}`, timestamp_kind: 'recalled era band', url: '/history/' }]
+    }));
+  }
+
+  function domainThreads() {
+    return [
+      {
+        id: 'domain-just3ws-com',
+        label: 'just3ws.com · personal web identity',
+        start: 2000,
+        end: 2026,
+        kind: 'domain',
+        precision: 'public RDAP registration plus public site evidence',
+        description: 'The canonical personal domain appears in public site records and current site configuration. The public RDAP record shows a 2000 registration and a current 2026 expiration date, but does not expose the registrant name.',
+        evidence: [
+          { source_path: 'Verisign RDAP registration record', timestamp: '2000 to 2026', timestamp_kind: 'public registration record', url: 'https://rdap.verisign.com/com/v1/domain/just3ws.com' },
+          { source_path: 'Current canonical site and CNAME', timestamp: 'current', timestamp_kind: 'public site configuration', url: 'https://www.just3ws.com/' }
+        ]
+      },
+      {
+        id: 'domain-ugtastic-com',
+        label: 'ugtastic.com · UGtastic project domain',
+        start: 2011,
+        end: 2015,
+        kind: 'domain',
+        precision: 'public project use with registration record',
+        description: 'UGtastic was the technical media project and public recording home. The domain has a 2011 public registration record and archived project use through the active production period. Current registrant identity is not exposed by RDAP.',
+        evidence: [
+          { source_path: 'Verisign RDAP registration record', timestamp: '2011 registration; 2026 expiration shown', timestamp_kind: 'public registration record', url: 'https://rdap.verisign.com/com/v1/domain/ugtastic.com' },
+          { source_path: 'UGtastic Wayback capture', timestamp: '2012', timestamp_kind: 'archived public use', url: 'https://web.archive.org/web/20120414040704/https://www.ugtastic.com/' },
+          { source_path: 'UGtastic portfolio record', timestamp: '2012 to 2014', timestamp_kind: 'public project chronology', url: '/portfolio/' }
+        ]
+      },
+      {
+        id: 'domain-ugl-st',
+        label: 'ugl.st · User-Group List domain',
+        start: 2014,
+        end: 2014,
+        kind: 'domain',
+        precision: 'archived public use; ownership not independently verified',
+        description: 'UGl.st was the User-Group List, a discovery tool for communities. The archive proves public use and identifies Mike as its creator. It does not, by itself, prove the registration account or a continuing renewal.',
+        evidence: [
+          { source_path: 'UGl.st Wayback capture', timestamp: '2014', timestamp_kind: 'archived public use', url: 'https://web.archive.org/web/20140111160057/http://ugl.st/' },
+          { source_path: 'UGl.st portfolio record', timestamp: '2014', timestamp_kind: 'public project chronology', url: '/portfolio/' }
+        ]
+      },
+      {
+        id: 'domain-ironlanguages-net',
+        label: 'ironlanguages.net · IronLanguages podcast domain',
+        start: 2010,
+        end: 2012,
+        kind: 'domain',
+        precision: 'archived public use; ownership not independently verified',
+        description: 'IronLanguages was an earlier podcast and publishing thread. The archive contains posts, episode pages, and contact links using the domain. Those records establish use, not the registrar account or a current renewal.',
+        evidence: [
+          { source_path: 'IronLanguages episode and domain update posts', timestamp: '2010', timestamp_kind: 'archived public use', url: '/2010/06/28/minor-updates-itunes-and-ironlanguages-net.html' },
+          { source_path: 'IronLanguages Wayback references', timestamp: '2010 to 2012', timestamp_kind: 'archived source links', url: 'https://web.archive.org/web/*/http://ironlanguages.net/*' }
+        ]
+      },
+      {
+        id: 'domain-whoistech-historical',
+        label: 'whoistech.com · historical community name',
+        start: 2012,
+        end: 2014,
+        kind: 'domain',
+        precision: 'historical traffic note; current registration is a separate signal',
+        description: 'The project configuration identifies whoistech.com as a historical community traffic domain. A current RDAP record shows a 2025 registration, so the historical use and the current registration must remain separate until older registration evidence is found.',
+        evidence: [
+          { source_path: 'Public domain history', timestamp: 'historical', timestamp_kind: 'public project record', url: '/timeline/' },
+          { source_path: 'Verisign RDAP registration record', timestamp: '2025 to 2027', timestamp_kind: 'current public registration record', url: 'https://rdap.verisign.com/com/v1/domain/whoistech.com' }
+        ]
+      }
+    ];
+  }
+
+  function contextualGates() {
+    return [
+      { id: 'gate-y2k', label: 'Y2K switchover', start: 2000, end: 2000, kind: 'historical condition', description: 'A shared date boundary for systems that had treated the year as two digits.', evidence: [{ source_path: 'Public historical date marker', timestamp: '2000-01-01', timestamp_kind: 'calendar date' }] },
+      { id: 'gate-agile-manifesto', label: 'Agile Manifesto · Snowbird', start: 2001.11, end: 2001.12, kind: 'industry movement', description: 'Seventeen people met at Snowbird from February 11 to 13, 2001 and signed the Agile Manifesto. The timeline marks the meeting and ratification window as a shared industry event.', evidence: [{ source_path: 'Agile Manifesto history', timestamp: '2001-02-11 to 2001-02-13', timestamp_kind: 'public historical record', url: 'https://agilemanifesto.org/history.html' }] },
+      { id: 'gate-dotnet-launch', label: '.NET 1.0 launch', start: 2002.12, end: 2002.12, kind: 'platform shift', description: 'Microsoft launched Visual Studio .NET and the .NET Framework on February 13, 2002. This is the launch marker for the .NET era, distinct from the 2000 public beta and platform announcements.', evidence: [{ source_path: 'Microsoft launch announcement', timestamp: '2002-02-13', timestamp_kind: 'public product launch', url: 'https://news.microsoft.com/source/2002/02/13/microsoft-launches-xml-web-services-revolution-with-visual-studio-net-and-net-framework/' }] },
+      { id: 'gate-911', label: 'September 11', start: 2001.69, end: 2001.69, kind: 'historical condition', description: 'A historical context marker for September 11, 2001. The timeline records the date without assigning a personal or political interpretation.', evidence: [{ source_path: 'Public historical date marker', timestamp: '2001-09-11', timestamp_kind: 'calendar date' }] },
+      { id: 'gate-facebook', label: 'Facebook era begins', start: 2004, end: 2004, kind: 'platform shift', description: 'A marker for the transition into a new kind of social publishing and networked identity.', evidence: [{ source_path: 'Public platform history marker', timestamp: '2004', timestamp_kind: 'year-level context' }] },
+      { id: 'gate-twitter', label: 'Twitter era begins', start: 2006, end: 2006, kind: 'platform shift', description: 'A marker for the short-form public communication layer that later intersected with community organizing and personal publishing.', evidence: [{ source_path: 'Public platform history marker', timestamp: '2006', timestamp_kind: 'year-level context' }] },
+      { id: 'gate-cloud', label: 'Cloud platform era', start: 2006, end: 2006, kind: 'industry shift', description: 'A marker for widely available cloud infrastructure and the change it introduced to how teams imagined deployment and scale.', evidence: [{ source_path: 'Public platform history marker', timestamp: '2006', timestamp_kind: 'year-level context' }] },
+      { id: 'gate-alt-net', label: 'ALT.NET conversation', start: 2007.75, end: 2007.76, kind: 'community movement', description: 'ALT.NET emerged as a developer-organized conversation in 2007. The October 5 to 7, 2007 Austin conference is the clearest dated public marker. The exact publication date of a formal ALT.NET manifesto remains unverified.', evidence: [{ source_path: 'ALT.NET conference coverage', timestamp: '2007-10-05 to 2007-10-07', timestamp_kind: 'public conference record', url: 'https://www.infoq.com/news/2007/10/fowler-alt.net/' }, { source_path: 'ALT.NET values as reported by the community', timestamp: '2007', timestamp_kind: 'contemporary secondary record', url: 'https://www.imaginativeuniversal.com/blog/2007/10/06/sassy-net-fall-fashions-for-net-programmers/' }] },
+      { id: 'gate-iphone', label: 'iPhone announced', start: 2007.02, end: 2007.02, kind: 'platform shift', description: 'A marker for the smartphone interface shift that changed the shape of personal computing and mobile product work.', evidence: [{ source_path: 'Public product announcement marker', timestamp: '2007-01-09', timestamp_kind: 'calendar date' }] },
+      { id: 'gate-2008', label: '2008 financial crisis', start: 2008, end: 2009, kind: 'historical condition', description: 'A broad historical interval that changed budgets, hiring, risk tolerance, and the conditions in which technology work was evaluated.', evidence: [{ source_path: 'Public historical interval marker', timestamp: '2008 to 2009', timestamp_kind: 'year-level context' }] },
+      { id: 'gate-android', label: 'Android public era', start: 2008, end: 2008, kind: 'platform shift', description: 'A marker for the arrival of a major alternative smartphone platform and the widening of the mobile application landscape.', evidence: [{ source_path: 'Public platform history marker', timestamp: '2008', timestamp_kind: 'year-level context' }] },
+      { id: 'gate-chatgpt', label: 'ChatGPT public research preview', start: 2022.912, end: 2022.912, kind: 'AI platform shift', description: 'OpenAI introduced ChatGPT as a public research preview on November 30, 2022. This marks the point at which conversational large language model tools became a broadly accessible part of everyday technical work, a potential tipping point in the archive’s human-led AI-assisted practice.', evidence: [{ source_path: 'OpenAI, Introducing ChatGPT', timestamp: '2022-11-30', timestamp_kind: 'public product release', url: 'https://openai.com/index/chatgpt/' }] },
+      { id: 'gate-llama', label: 'LLaMA release', start: 2023.148, end: 2023.148, kind: 'AI platform shift', description: 'Meta announced LLaMA on February 24, 2023, emphasizing smaller foundation models and broader research access. This is a separate gate from ChatGPT: it marks the expanding path toward open and locally operated model workflows.', evidence: [{ source_path: 'Meta AI, Introducing LLaMA', timestamp: '2023-02-24', timestamp_kind: 'public research release', url: 'https://ai.meta.com/blog/large-language-model-llama-meta-ai/' }] },
+      { id: 'gate-covid', label: 'COVID-19 disruption', start: 2020, end: 2022, kind: 'historical condition', description: 'A broad interval marking a major change in how people worked, met, traveled, and maintained community. The marker describes conditions, not a political position.', evidence: [{ source_path: 'Public historical interval marker', timestamp: '2020 to 2022', timestamp_kind: 'year-level context' }] },
+      { id: 'gate-craftsmanship', label: 'Software Craftsmanship movement', start: 2009, end: 2014, kind: 'community movement', description: 'A movement layer connecting practice, mentorship, conferences, user groups, and the community work that preceded and accompanied UGtastic.', evidence: [{ source_path: 'Software Craftsmanship Chicago history', timestamp: '2009 to 2014', timestamp_kind: 'public narrative range' }, { source_path: 'Software Craftsmanship Manifesto', timestamp: 'drafted March 2009', timestamp_kind: 'public historical record', url: 'https://manifesto.softwarecraftsmanship.org/' }] },
+      { id: 'gate-mike-craft-signature', label: 'Craft signature recalled · #167?', start: 2009.2, end: 2009.2, kind: 'personal recollection', description: 'Mike recalls signing the Software Craftsmanship Manifesto near its initial publication and remembers a signature number around 167. The public signature record has not been independently recovered, so this remains a clearly labeled recollection rather than a verified date.', evidence: [{ source_path: 'Mike Hall recollection', timestamp: 'date and signature number pending verification', timestamp_kind: 'unverified personal recollection' }] },
+      { id: 'gate-ruby-2', label: 'Ruby 2.x begins', start: 2013.15, end: 2020.98, kind: 'language release era', description: 'Ruby 2.0.0 was released on February 24, 2013. This band represents the Ruby 2.x release era and its overlap with the Ruby and Rails work in the archive.', evidence: [{ source_path: 'Ruby official release record', timestamp: 'Ruby 2.0.0 · 2013-02-24', timestamp_kind: 'public release record', url: 'https://www.ruby-lang.org/en/news/2013/02/24/ruby-2-0-0-p0-is-released/' }] },
+      { id: 'gate-ruby-3', label: 'Ruby 3.x begins', start: 2020.98, end: 2025.98, kind: 'language release era', description: 'Ruby 3.0.0 was released on December 25, 2020. This band marks the next major Ruby language era.', evidence: [{ source_path: 'Ruby official release record', timestamp: 'Ruby 3.0.0 · 2020-12-25', timestamp_kind: 'public release record', url: 'https://www.ruby-lang.org/en/news/2020/12/25/ruby-3-0-0-released/' }] },
+      { id: 'gate-ruby-4', label: 'Ruby 4.x begins', start: 2025.98, end: 2026, kind: 'language release era', description: 'The current timeline includes the Ruby 4.x era as a current snapshot. Exact version milestones should remain linked to the official release ledger as the series develops.', evidence: [{ source_path: 'Ruby official release ledger', timestamp: 'current release ledger', timestamp_kind: 'public release index', url: 'https://www.ruby-lang.org/en/downloads/releases/' }] },
+      { id: 'gate-rails-1', label: 'Rails 1.x begins', start: 2005.95, end: 2007.95, kind: 'framework release era', description: 'Rails 1.0 was released on December 13, 2005, establishing the first major Rails era.', evidence: [{ source_path: 'Ruby on Rails release announcement', timestamp: 'Rails 1.0 · 2005-12-13', timestamp_kind: 'public release record', url: 'https://rubyonrails.org/2005/12/13/rails-1-0-party-like-its-one-oh-oh' }] },
+      { id: 'gate-rails-2', label: 'Rails 2.x begins', start: 2007.98, end: 2010.65, kind: 'framework release era', description: 'Rails 2.x marks the next framework era. The band is intentionally year-level until each release milestone is added from the official release ledger.', evidence: [{ source_path: 'Rails official release ledger', timestamp: '2007 to 2010', timestamp_kind: 'public release index', url: 'https://www.rubyonrails.org/releases' }] },
+      { id: 'gate-rails-3', label: 'Rails 3.x begins', start: 2010.65, end: 2013.48, kind: 'framework release era', description: 'Rails 3.x marks the framework era associated with the archive’s early Ruby community and Rails practice work.', evidence: [{ source_path: 'Rails official release ledger', timestamp: '2010 to 2013', timestamp_kind: 'public release index', url: 'https://www.rubyonrails.org/releases' }] },
+      { id: 'gate-rails-4', label: 'Rails 4.x begins', start: 2013.48, end: 2016.5, kind: 'framework release era', description: 'Rails 4.x marks the framework era that overlaps later UGtastic and software-craftsmanship work.', evidence: [{ source_path: 'Rails official release ledger', timestamp: '2013 to 2016', timestamp_kind: 'public release index', url: 'https://www.rubyonrails.org/releases' }] },
+      { id: 'gate-groupon-ipo', label: 'Groupon IPO', start: 2011.84, end: 2011.84, kind: 'career context', description: 'Groupon priced its IPO on November 3, 2011 and began trading on November 4, 2011. The marker provides public company context for the Groupon career era without adding private employment detail.', evidence: [{ source_path: 'Groupon investor announcement', timestamp: '2011-11-03 pricing; 2011-11-04 first trading', timestamp_kind: 'public company record', url: 'https://investor.groupon.com/press-releases/press-release-details/2011/Groupon-Announces-Pricing-of-Initial-Public-Offering/' }] }
+    ].concat(conferenceGates());
+  }
+
+  function yearFraction(value) {
+    const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!match) return Number(value) || null;
+    const date = new Date(`${match[1]}-${match[2]}-${match[3]}T00:00:00Z`);
+    const yearStart = Date.UTC(Number(match[1]), 0, 1);
+    const nextYear = Date.UTC(Number(match[1]) + 1, 0, 1);
+    return Number(match[1]) + (date.getTime() - yearStart) / (nextYear - yearStart);
+  }
+
+  function conferenceGates() {
+    return conferenceData.filter(conference => conference.start_date && conference.end_date).map(conference => ({
+      id: `gate-conference-${conference.slug}`,
+      label: conference.name,
+      start: yearFraction(conference.start_date),
+      end: yearFraction(conference.end_date),
+      kind: 'conference record',
+      description: conference.description || `${conference.name} conference record in the interview archive.`,
+      evidence: [{ source_path: 'Interview conference index', timestamp: `${conference.start_date} to ${conference.end_date}`, timestamp_kind: 'archive conference record', url: '/interviews/' }]
+    }));
+  }
+
+  function yearFrom(value) {
+    const match = String(value || '').match(/(19|20)\d{2}/);
+    return match ? Number(match[0]) : null;
+  }
+
+  function renderEpochs(data) {
+    tabs.innerHTML = data.eras.map(era => `<button type="button" class="timeline-epoch-tab" aria-pressed="false" data-era="${escapeHtml(era.id)}"><span>${escapeHtml(era.label)}</span><small>${escapeHtml(era.start)} to ${escapeHtml(era.end)}</small></button>`).join('');
+    tabs.querySelectorAll('[data-era]').forEach(tab => tab.addEventListener('click', () => {
+      activeEra = tab.dataset.era;
+      tabs.querySelectorAll('[data-era]').forEach(item => { item.classList.toggle('is-active', item === tab); item.setAttribute('aria-pressed', item === tab); });
+      const era = data.eras.find(item => item.id === activeEra);
+      selection.textContent = `${era.label} · ${era.start} to ${era.end}`;
+      viewCenter = (Number(era.start) + Number(era.end)) / 2;
+      zoomLevel = Math.min(2, zoomLevel + 1);
+      updateZoomControls();
+      renderVisual(data);
+    }));
+  }
+
+  function bindOverlayControls() {
+    overlayControls.querySelectorAll('input[type="checkbox"]').forEach(input => input.addEventListener('change', () => {
+      if (input.checked) activeOverlays.add(input.value); else activeOverlays.delete(input.value);
+      activeItem = null;
+      if (atlas) renderVisual(atlas);
+    }));
+  }
+
+  function overlayForSeries(series) {
+    if (series.kind === 'career') return 'work';
+    if (series.kind === 'technology' || series.kind === 'practice') return 'technology';
+    if (series.kind === 'project' || series.kind === 'domain') return 'related';
+    if (series.kind === 'context' || series.kind === 'foundation') return 'personal';
+    return null;
+  }
+
+  function viewDomain() {
+    const spans = [15, 12, 8, 5, 3];
+    const span = spans[zoomLevel];
+    return { start: Math.max(minYear, Math.min(maxYear - span, viewCenter - span / 2)), end: Math.min(maxYear, Math.max(minYear + span, viewCenter + span / 2)) };
+  }
+
+  function position(year) {
+    const domain = viewDomain();
+    return Math.max(0, Math.min(100, ((Number(year) - domain.start) / (domain.end - domain.start)) * 100));
+  }
+
+  function renderVisual(data) {
+    const domain = viewDomain();
+    updateWindowPreview(domain);
+    renderedItems = new Map();
+    const primaryLanes = timelineSeries.filter(series => series.primary);
+    const optionalLanes = timelineSeries.filter(series => !series.primary && activeOverlays.has(overlayForSeries(series)) && Number(series.end) >= domain.start && Number(series.start) <= domain.end);
+    const visible = primaryLanes.concat(optionalLanes);
+    const visibleGates = activeOverlays.has('industry') ? contextualGates().filter(gate => gate.end >= domain.start && gate.start <= domain.end) : [];
+    const gateOverlay = stackGates(visibleGates).map(gate => {
+      const left = position(gate.start);
+      const width = Math.max(0.12, position(gate.end) - left);
+      const gateKind = String(gate.kind || 'context').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const edgeClass = left > 86 ? ' is-edge-right' : '';
+      const gateDate = dateRangeLabel(gate);
+      const gateName = `Context event: ${gate.label}. ${gateDate}. Date confidence: ${gate.evidence[0]?.timestamp_kind || 'public context'}. Optional industry context.`;
+      return `<div class="timeline-gate timeline-gate-${gateKind}" style="left:${left}%;--gate-stack:${gate.stack}"><span class="timeline-gate-line" style="width:${width}%" aria-hidden="true"></span><button type="button" class="timeline-gate-button${edgeClass}" data-gate="${escapeHtml(gate.id)}" aria-label="${escapeHtml(gateName)}" aria-controls="timeline-details"><span>${escapeHtml(gate.label)}</span></button></div>`;
+    }).join('');
+    let optionalHeadingRendered = false;
+    const lanes = visible.map((series, laneIndex) => {
+      const items = normalizeSeriesItems(series).filter(item => Number(item.end) >= domain.start && Number(item.start) <= domain.end);
+      const stacked = stackTimelineItems(items);
+      const laneClass = series.primary ? 'timeline-lane-primary' : `timeline-lane-optional timeline-lane-${series.kind}`;
+      const optionalHeading = !series.primary && !optionalHeadingRendered ? '<div class="timeline-lane-group"><span>Optional context</span><small>Additional layers selected above</small></div>' : '';
+      if (!series.primary) optionalHeadingRendered = true;
+      const marks = stacked.items.map(item => {
+        const key = `${series.id}::${item.id}`;
+        const start = Math.max(Number(item.start), domain.start);
+        const end = Math.min(Number(item.end), domain.end);
+        const meaning = temporalMeaning(item);
+        const left = position(start);
+        const width = meaning.base === 'event' ? 0 : Math.max(0.45, position(end) - left);
+        const dateLabel = dateRangeLabel(item);
+        const accessibleName = `${meaning.label}: ${item.label}. ${dateLabel}. Date confidence: ${item.precision}. Story lane: ${series.label}.`;
+        renderedItems.set(key, { ...item, key, laneId: series.id, laneLabel: series.label, laneIndex, meaning });
+        return `<button type="button" class="timeline-item-button timeline-item-${meaning.base}${meaning.approximate ? ' is-approximate' : ''}${meaning.uncertain ? ' is-uncertain' : ''}" style="left:${left}%;width:${width}%;--item-row:${item.stack}" data-timeline-item="${escapeHtml(key)}" data-lane-index="${laneIndex}" data-start="${escapeHtml(item.start)}" aria-label="${escapeHtml(accessibleName)}" aria-controls="timeline-details"><span class="timeline-item-visible-label"><small>${escapeHtml(meaning.label)}</small><strong>${escapeHtml(item.label)}</strong><span>${escapeHtml(dateLabel)}</span></span></button>`;
+      }).join('');
+      const quiet = marks ? '' : '<p class="timeline-quiet-period">No dated archive signal in this window</p>';
+      return `${optionalHeading}<section class="timeline-lane ${laneClass}" data-lane="${escapeHtml(series.id)}" aria-labelledby="lane-${escapeHtml(series.id)}"><div class="timeline-lane-label"><strong id="lane-${escapeHtml(series.id)}">${escapeHtml(series.label)}</strong><small>${escapeHtml(series.description)}</small></div><div class="timeline-track" style="--track-rows:${Math.max(1, stacked.rows)}">${marks}${quiet}</div></section>`;
+    }).join('');
+    timelineVisual.innerHTML = `<div class="timeline-gate-overlay" aria-label="Optional industry context">${gateOverlay}</div>${lanes}`;
+    const visibleYears = `${Math.round(domain.start)} to ${Math.round(domain.end)}`;
+    document.querySelector('.timeline-axis-note').innerHTML = axisLabels(domain).map(label => `<span>${label}</span>`).join('');
+    const overlayNames = [...activeOverlays].map(value => overlayControls.querySelector(`input[value="${value}"]`)?.parentElement.textContent.trim()).filter(Boolean);
+    currentSummary.innerHTML = `<strong>Current view: ${visibleYears}</strong><p>The four primary story lanes remain visible. ${overlayNames.length ? `Optional context shown: ${escapeHtml(overlayNames.join(', '))}.` : 'No optional context is shown.'} The evidence ledger below provides the same source path without hover or horizontal scrolling.</p>`;
+    bindTimelineItemControls();
+    timelineVisual.querySelectorAll('[data-gate]').forEach(button => button.addEventListener('click', () => showGate(button.dataset.gate)));
+    timelineVisual.querySelectorAll('[data-gate]').forEach(button => {
+      button.addEventListener('mouseenter', () => previewGate(button.dataset.gate));
+      button.addEventListener('focus', () => previewGate(button.dataset.gate));
     });
-
-    displayEra('ALL');
+    if (activeItem && renderedItems.has(activeItem)) showTimelineItem(activeItem);
   }
+
+  function normalizeSeriesItems(series) {
+    const sourceItems = series.segments?.length ? series.segments : [series];
+    return sourceItems.map((item, index) => ({
+      id: item.id || `${series.id}-${index + 1}`,
+      label: item.label || series.label,
+      start: Number(item.start ?? series.start),
+      end: Number(item.end ?? series.end),
+      start_label: item.start_label,
+      end_label: item.end_label,
+      precision: item.precision || series.precision || 'date precision not stated',
+      description: item.description || item.detail || series.description,
+      evidence: item.evidence || series.evidence || [],
+      url: item.url
+    }));
+  }
+
+  function temporalMeaning(item) {
+    const precision = String(item.precision || '').toLowerCase();
+    const uncertain = /unverified|recollection|uncertain/.test(precision);
+    const approximate = uncertain || /year|era|range|intent|mixed/.test(precision);
+    const base = Number(item.start) === Number(item.end) ? 'event' : 'span';
+    const label = uncertain ? 'Unverified recollection' : approximate ? `Approximate ${base === 'event' ? 'event' : 'active span'}` : base === 'event' ? 'Event' : 'Active span';
+    return { base, approximate, uncertain, label };
+  }
+
+  function dateRangeLabel(item) {
+    const start = item.start_label || displayTimelineDate(item.start);
+    const end = item.end_label || displayTimelineDate(item.end);
+    return Number(item.start) === Number(item.end) ? start : `${start} to ${end}`;
+  }
+
+  function stackTimelineItems(items) {
+    const rowEnds = [];
+    const stacked = [...items].sort((left, right) => Number(left.start) - Number(right.start) || Number(left.end) - Number(right.end)).map(item => {
+      const start = Number(item.start);
+      const collisionEnd = Math.max(Number(item.end), start + 0.12);
+      let stack = rowEnds.findIndex(end => end < start);
+      if (stack === -1) stack = rowEnds.length;
+      rowEnds[stack] = collisionEnd;
+      return { ...item, stack };
+    });
+    return { items: stacked, rows: rowEnds.length };
+  }
+
+  function bindTimelineItemControls() {
+    const buttons = [...timelineVisual.querySelectorAll('[data-timeline-item]')];
+    buttons.forEach(button => {
+      const key = button.dataset.timelineItem;
+      button.addEventListener('click', () => showTimelineItem(key));
+      button.addEventListener('mouseenter', () => previewTimelineItem(key));
+      button.addEventListener('focus', () => previewTimelineItem(key));
+      button.addEventListener('keydown', event => moveTimelineFocus(event, buttons));
+    });
+  }
+
+  function moveTimelineFocus(event, buttons) {
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+    const current = event.currentTarget;
+    const laneIndex = Number(current.dataset.laneIndex);
+    const laneButtons = buttons.filter(button => Number(button.dataset.laneIndex) === laneIndex).sort((left, right) => Number(left.dataset.start) - Number(right.dataset.start));
+    const currentIndex = laneButtons.indexOf(current);
+    let target;
+    if (event.key === 'ArrowLeft') target = laneButtons[Math.max(0, currentIndex - 1)];
+    if (event.key === 'ArrowRight') target = laneButtons[Math.min(laneButtons.length - 1, currentIndex + 1)];
+    if (event.key === 'Home') target = laneButtons[0];
+    if (event.key === 'End') target = laneButtons[laneButtons.length - 1];
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      const direction = event.key === 'ArrowUp' ? -1 : 1;
+      const targetLane = laneIndex + direction;
+      const candidates = buttons.filter(button => Number(button.dataset.laneIndex) === targetLane);
+      target = candidates.sort((left, right) => Math.abs(Number(left.dataset.start) - Number(current.dataset.start)) - Math.abs(Number(right.dataset.start) - Number(current.dataset.start)))[0];
+    }
+    if (!target) return;
+    event.preventDefault();
+    target.focus();
+    target.scrollIntoView({ block: 'nearest', inline: 'center', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+
+  function axisLabels(domain) {
+    const span = domain.end - domain.start;
+    if (span <= 2.5) {
+      const firstMonth = Math.ceil(domain.start * 12);
+      const labels = [];
+      for (let month = firstMonth; month < domain.end * 12 && labels.length < 6; month += 3) labels.push(formatMonth(month));
+      labels.unshift(formatMonth(firstMonth));
+      labels.push(formatMonth(Math.floor(domain.end * 12)));
+      return [...new Set(labels)].slice(0, 6);
+    }
+    const step = span <= 4 ? 1 : span <= 8 ? 2 : span <= 12 ? 3 : 4;
+    const labels = [];
+    for (let year = Math.ceil(domain.start / step) * step; year < domain.end; year += step) labels.push(year);
+    labels.unshift(Math.round(domain.start));
+    labels.push(Math.round(domain.end));
+    return [...new Set(labels)].slice(0, 6);
+  }
+
+  function formatMonth(index) {
+    const year = Math.floor(index / 12);
+    const month = index % 12;
+    return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(Date.UTC(year, month, 1)));
+  }
+
+  function displayTimelineDate(value) {
+    if (typeof value === 'number' && !Number.isInteger(value)) return formatMonth(Math.round(value * 12));
+    return displayDate(value);
+  }
+
+  function timelineDateValue(value) {
+    const text = String(value || '').trim();
+    const iso = text.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (iso) return Number(iso[1]) + (Number(iso[2]) - 1) / 12;
+    const match = text.match(/^(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})$/i);
+    if (!match) return yearFrom(text) || null;
+    const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    return Number(match[2]) + months.indexOf(match[1].toLowerCase()) / 12;
+  }
+
+  function displayDate(value) {
+    const text = String(value || '').trim();
+    const iso = text.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!iso) return text || 'Present';
+    return new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+      .format(new Date(Date.UTC(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]))));
+  }
+
+  function stackGates(gates) {
+    const lastLeftByStack = [];
+    return gates.sort((left, right) => position(left.start) - position(right.start)).map(gate => {
+      const left = position(gate.start);
+      let stack = lastLeftByStack.findIndex(lastLeft => left - lastLeft >= 8);
+      if (stack === -1) stack = lastLeftByStack.length;
+      lastLeftByStack[stack] = left;
+      return { ...gate, stack };
+    });
+  }
+
+  function updateZoomControls() {
+    const spans = ['wide', 'regional', 'focused', 'close', 'detail'];
+    document.getElementById('timeline-zoom').value = zoomLevel;
+    document.getElementById('timeline-zoom-label').textContent = spans[zoomLevel];
+  }
+
+  function overlaps(series, era) {
+    return era && Number(series.end) >= Number(era.start) && Number(series.start) <= Number(era.end);
+  }
+
+  function showTimelineItem(key) {
+    const item = renderedItems.get(key);
+    if (!item) return;
+    activeItem = key;
+    const evidence = item.evidence.slice(0, 10);
+    const graphNeighbors = relatedGraphItems(item);
+    const evidenceList = evidence.length ? `<ol class="evidence-list">${evidence.map(record => `<li>${record.url ? `<a href="${escapeHtml(record.url)}">` : ''}<code>${escapeHtml(record.source_path)}</code>${record.url ? '</a>' : ''}<span>${escapeHtml(record.timestamp)} · ${escapeHtml(record.timestamp_kind)}</span></li>`).join('')}</ol>` : '<p>No linked evidence is currently available for this contextual item.</p>';
+    details.innerHTML = `<div class="detail-heading"><div><p class="section-kicker">${escapeHtml(item.meaning.label)} · ${escapeHtml(item.laneLabel)}</p><h3>${escapeHtml(item.label)}</h3></div><span class="detail-count">${item.evidence.length} linked records</span></div><p>${escapeHtml(item.description)}</p><p class="detail-precision"><strong>Date:</strong> ${escapeHtml(dateRangeLabel(item))}. <strong>Confidence:</strong> ${escapeHtml(item.precision)}. ${escapeHtml(atlas.time_semantics.rule)}</p>${evidenceList}${graphNeighbors.length ? `<div class="graph-neighbors"><p class="section-kicker">Nearby graph nodes</p><ul>${graphNeighbors.map(node => `<li><a href="${escapeHtml(node.url || '#')}">${escapeHtml(node.label)}</a><span>${escapeHtml(node.type)}</span></li>`).join('')}</ul></div>` : ''}<p class="detail-links">${item.url ? `<a href="${escapeHtml(item.url)}">Open this record</a> · ` : ''}<a href="/videos/">Browse recordings</a> · <a href="/interviews/">Browse transcripts</a> · <a href="/search/?q=${encodeURIComponent(item.label)}">Search this topic</a> · <a href="https://web.archive.org/web/*/http://ugtastic.com/*" rel="noopener">Search Wayback</a></p>`;
+    timelineVisual.querySelectorAll('[data-timeline-item]').forEach(button => {
+      const selected = button.dataset.timelineItem === key;
+      button.classList.toggle('is-selected', selected);
+      if (selected) button.setAttribute('aria-current', 'true'); else button.removeAttribute('aria-current');
+    });
+  }
+
+  function updateWindowPreview(domain) {
+    const span = domain.end - domain.start;
+    const scale = (600 / (maxYear - minYear)).toFixed(1);
+    windowPreview.innerHTML = `<strong>Current window · ${Math.round(domain.start)} to ${Math.round(domain.end)}</strong><span>${scale}rem per year on the wide canvas · ${span.toFixed(1)} years visible. Focus, hover, or select a mark for context.</span>`;
+  }
+
+  function previewTimelineItem(key) {
+    const item = renderedItems.get(key);
+    if (!item) return;
+    const links = item.evidence.filter(record => record.url).slice(0, 2).map(record => `<a href="${escapeHtml(record.url)}">${escapeHtml(record.source_path)}</a>`).join(' · ');
+    windowPreview.innerHTML = `<strong>${escapeHtml(item.meaning.label)} · ${escapeHtml(item.label)}</strong><span>${escapeHtml(dateRangeLabel(item))} · ${escapeHtml(item.precision)} · ${escapeHtml(item.laneLabel)}</span>${links ? `<small>Evidence: ${links}</small>` : '<small>Select this mark to inspect its evidence.</small>'}`;
+  }
+
+  function previewGate(id) {
+    const gate = contextualGates().find(item => item.id === id);
+    if (!gate) return;
+    const links = gate.evidence.filter(item => item.url).slice(0, 2).map(item => `<a href="${escapeHtml(item.url)}">${escapeHtml(item.source_path)}</a>`).join(' · ');
+    const neighbors = relatedGraphItems(gate).slice(0, 3).map(item => `<a href="${escapeHtml(item.url || '#')}">${escapeHtml(item.label)}</a>`).join(' · ');
+    windowPreview.innerHTML = `<strong>${escapeHtml(gate.label)}</strong><span>${escapeHtml(gate.start)}${gate.end !== gate.start ? ` to ${escapeHtml(gate.end)}` : ''} · ${escapeHtml(gate.kind)}</span>${links ? `<small>Evidence: ${links}</small>` : ''}${neighbors ? `<small>Related corpus and career context: ${neighbors}</small>` : ''}`;
+  }
+
+  function showGate(id) {
+    const gate = contextualGates().find(item => item.id === id);
+    if (!gate) return;
+    activeItem = null;
+    const evidence = gate.evidence.map(item => `<li>${item.url ? `<a href="${escapeHtml(item.url)}">` : ''}<code>${escapeHtml(item.source_path)}</code>${item.url ? '</a>' : ''}<span>${escapeHtml(item.timestamp)} · ${escapeHtml(item.timestamp_kind)}</span></li>`).join('');
+    details.innerHTML = `<div class="detail-heading"><div><p class="section-kicker">Contextual gate · ${escapeHtml(gate.kind)}</p><h3>${escapeHtml(gate.label)}</h3></div><span class="detail-count">${escapeHtml(gate.start)}${gate.end !== gate.start ? ` to ${escapeHtml(gate.end)}` : ''}</span></div><p>${escapeHtml(gate.description)}</p><p class="detail-precision"><strong>Reading rule:</strong> This marker supplies context. It does not claim that the event caused any adjacent lane to change.</p><ol class="evidence-list">${evidence}</ol>`;
+    timelineVisual.querySelectorAll('[data-timeline-item]').forEach(button => { button.classList.remove('is-selected'); button.removeAttribute('aria-current'); });
+  }
+
+  function relatedGraphItems(series) {
+    if (!graph) return [];
+    const terms = series.label.toLowerCase().split(/[^a-z0-9]+/).filter(term => term.length > 3 && !['production', 'foundation', 'archive', 'community'].includes(term));
+    return graph.nodes.filter(node => terms.some(term => `${node.label} ${node.description || ''} ${node.url || ''}`.toLowerCase().includes(term))).slice(0, 8);
+  }
+
+  function renderInterviewEraButtons(data) {
+    const all = { id: 'ALL', years: '1999–2026', title: 'All eras' };
+    eras.removeAttribute('role');
+    eras.innerHTML = [all, ...data.eras].map((era, index) => `<button type="button" class="era-btn${index === 0 ? ' active' : ''}" aria-pressed="${index === 0}" data-era="${escapeHtml(era.id)}">${escapeHtml(era.title || `All eras (${era.years})`)}<small>${escapeHtml(era.years)}</small></button>`).join('');
+    eras.querySelectorAll('[data-era]').forEach(button => button.addEventListener('click', () => {
+      eras.querySelectorAll('[data-era]').forEach(item => { item.classList.toggle('active', item === button); item.setAttribute('aria-pressed', item === button); });
+      renderInterviewCards(data, button.dataset.era);
+    }));
+  }
+
+  function renderInterviewCards(data, selectedEra) {
+    const container = document.getElementById('timeline-cards-container');
+    container.innerHTML = '';
+    const filteredEras = selectedEra === 'ALL' ? data.eras : data.eras.filter(era => era.id === selectedEra);
+    filteredEras.forEach(era => {
+      const items = data.items.filter(item => item.era_id === era.id);
+      if (!items.length) return;
+      const block = document.createElement('div');
+      block.className = 'timeline-era-block';
+      block.innerHTML = `<div class="era-header-card"><span class="era-tag">${escapeHtml(era.years)} archive era</span><h3 class="era-title-display">${escapeHtml(era.title)}</h3><p class="era-desc-display">${escapeHtml(era.description)}</p></div><div class="timeline-items-grid">${items.slice(0, 24).map(item => `<article class="timeline-interview-card"><div><span class="card-year-badge">${escapeHtml(item.year)}</span><h4 class="card-interview-title">${escapeHtml(item.title)}</h4><p class="card-meta-text">${escapeHtml(item.interviewees.join(', ') || 'Featured guest')}<br>${escapeHtml(item.conference || item.location || 'UGtastic archive')}</p></div><a href="${escapeHtml(item.url)}" class="btn-view-timeline">View transcript</a></article>`).join('')}</div>${items.length > 24 ? `<p class="timeline-more-note">Showing 24 of ${items.length} conversations in this era. <a href="/interviews/">Browse the full interview archive</a>.</p>` : ''}`;
+      container.appendChild(block);
+    });
+  }
+
+  document.getElementById('timeline-reset').addEventListener('click', () => {
+    activeEra = 'ALL';
+    activeItem = null;
+    activeOverlays.clear();
+    zoomLevel = defaultZoomLevel;
+    viewCenter = defaultViewCenter;
+    tabs.querySelectorAll('[data-era]').forEach(tab => { tab.classList.remove('is-active'); tab.setAttribute('aria-pressed', 'false'); });
+    overlayControls.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = false; });
+    selection.textContent = 'UGtastic story · 2011–2026';
+    updateZoomControls();
+    if (atlas) renderVisual(atlas);
+  });
+
+  document.getElementById('timeline-zoom').addEventListener('input', event => {
+    zoomLevel = Number(event.target.value);
+    updateZoomControls();
+    if (atlas) renderVisual(atlas);
+  });
+
+  document.getElementById('timeline-pan-left').addEventListener('click', () => {
+    const domain = viewDomain();
+    viewCenter = Math.max(minYear + (domain.end - domain.start) / 2, viewCenter - (domain.end - domain.start) * 0.35);
+    if (atlas) renderVisual(atlas);
+  });
+
+  document.getElementById('timeline-pan-right').addEventListener('click', () => {
+    const domain = viewDomain();
+    viewCenter = Math.min(maxYear - (domain.end - domain.start) / 2, viewCenter + (domain.end - domain.start) * 0.35);
+    if (atlas) renderVisual(atlas);
+  });
 });
 </script>

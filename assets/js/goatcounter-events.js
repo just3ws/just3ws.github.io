@@ -27,7 +27,12 @@
   }
 
   function normalizeTitle(url) {
-    var value = (url && url.href) ? url.href : String(url || '');
+    var value = '';
+    if (url && url.hostname) {
+      value = url.origin + (url.pathname || '/');
+    } else {
+      value = String(url || '').split(/[?#]/)[0];
+    }
     return value.length > 220 ? value.slice(0, 220) : value;
   }
 
@@ -49,12 +54,12 @@
     }
 
     if (href.indexOf('mailto:') === 0) {
-      trackEvent('mailto_click', href.replace(/^mailto:/i, ''));
+      trackEvent('mailto_click', 'Public contact link');
       return;
     }
 
     if (href.indexOf('tel:') === 0) {
-      trackEvent('tel_click', href.replace(/^tel:/i, ''));
+      trackEvent('tel_click', 'Public phone link');
       return;
     }
 
