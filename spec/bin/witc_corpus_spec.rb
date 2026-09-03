@@ -20,7 +20,10 @@ RSpec.describe "WITC corpus tooling" do
       File.write(File.join(dir, "project", ".env"), "DO_NOT_INDEX=secret\n")
       File.write(File.join(dir, "project", "cache", "ignored.md"), "DO_NOT_INDEX\n")
       db_path = File.join(dir, "corpus.db")
-      clean_ruby = ["env", "-i", "PATH=#{ENV.fetch('PATH')}", "HOME=#{ENV.fetch('HOME')}", "ruby"]
+      # Keep the environment-cleanliness assertion while loading the locked
+      # project dependencies. A bare Ruby process finds sqlite3 on developer
+      # machines with a global gem, but not on the GitHub Actions runner.
+      clean_ruby = ["env", "-i", "PATH=#{ENV.fetch('PATH')}", "HOME=#{ENV.fetch('HOME')}", "bundle", "exec", "ruby"]
       output, status = Open3.capture2(*clean_ruby, BUILDER, "--source", dir, "--output", db_path, "--apply")
       expect(status).to be_success
       expect(output).to include('"scanned_records": 3')
