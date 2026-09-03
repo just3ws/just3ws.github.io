@@ -4,6 +4,7 @@ title: Build public-surface oversharing audit
 status: In Progress
 assignee: []
 created_date: '2026-09-03 01:00'
+updated_date: '2026-09-03 01:01'
 labels:
   - security
   - editorial
@@ -40,3 +41,21 @@ Create a repeatable repository-local audit for the public website surface. It mu
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Define a safe scan manifest for publishable repository surfaces, with explicit exclusions for secrets, environment files, private handoffs, VCS/dependency/build trees, generated caches, and credentials.
+2. Implement a Ruby audit command that walks only the manifest, parses line locations, applies categorized detectors for credentials, direct personal data, high-risk private-context terms, and public-claim uncertainty, and reports redacted evidence.
+3. Add risk and confidence scoring plus allowlist/context rules so ordinary historical wording is not treated as exposure by default. Keep review candidates separate from hard failures.
+4. Provide text and JSON output modes, nonzero exit behavior only for configured high-risk findings, and a documented baseline/ignore mechanism that records an editorial decision without copying sensitive values.
+5. Add RSpec coverage using in-memory fixtures or temporary files, never real secrets or private source material.
+6. Document usage and interpretation in the existing public artifact curation policy and tooling guide.
+7. Run the focused specs, the audit against the current repository, Markdown/YAML checks, and the site build. Review the resulting report manually for false positives and redaction quality.
+<!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Task entered In Progress. Current repository already has targeted surface exposure and corpus exclusion logic, but no general public-content oversharing classifier. The implementation will complement, not replace, those validators.
+<!-- SECTION:NOTES:END -->
