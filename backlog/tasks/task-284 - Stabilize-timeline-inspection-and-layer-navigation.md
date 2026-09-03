@@ -5,6 +5,7 @@ status: In Progress
 assignee:
   - agent-just3ws
 created_date: '2026-09-03 02:22'
+updated_date: '2026-09-03 02:22'
 labels:
   - timeline
   - ux
@@ -37,3 +38,13 @@ Improve human navigability of the wide historical timeline. The hover/selection 
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Move the hover/selection preview out of `.timeline-visual-shell`, keep a fixed-height reading rail, and retain the existing graph/evidence links.
+2. Add a layer filter tablist that maps to the existing `series.kind` taxonomy, with All layers as the reset state.
+3. Apply the filter in the existing render path and reset it with the existing Reset view control, preserving zoom and horizontal canvas sizing.
+4. Add regression assertions for the inspector location, filter count, and career-layer filtering.
+5. Build the site, run focused browser coverage if the sandbox permits the configured test server, and run static diff checks.
+<!-- SECTION:PLAN:END -->
