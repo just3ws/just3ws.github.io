@@ -4,7 +4,7 @@ title: Quarantine uncertain public recollections
 status: Done
 assignee: []
 created_date: '2026-09-03 01:06'
-updated_date: '2026-09-03 01:08'
+updated_date: '2026-09-03 01:16'
 labels:
   - security
   - editorial
@@ -62,10 +62,14 @@ Added --strict and rake audit:public_surface_strict. Normal audit exits successf
 Added policy guidance for authenticity without transgression and for safe, slow, soft review. The review process explicitly follows 'Slow is smooth. Smooth is fast.'
 
 Verification: 5 focused RSpec examples pass, Markdown lint passes across 449 files, syntax and diff checks pass. Current built-surface scan covers 2,670 files, reports 1,188 non-quarantine findings, 5,553 quarantined passages, and 0 critical findings. Normal audit exits 0; strict gate exits 1 as intended because unresolved review and quarantine material remains.
+
+Refined source-backed transcript handling: uncertainty in canonical transcript and linked rendered recording surfaces is reported as recorded_uncertainty, not quarantined, preserving the spoken wording as evidence without restating it as certainty.
+
+Verification after refinement: 6 focused RSpec examples pass. Built-surface scan covers 2,670 files with 1,188 ordinary findings, 1,884 quarantined author recollections, 3,669 recorded-uncertainty markers, and 0 critical findings. Normal audit exits 0; strict gate remains 1 because unresolved high-risk and quarantine findings remain.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
 
 <!-- SECTION:FINAL_SUMMARY:BEGIN -->
-Separated uncertain recollections from ordinary public-surface findings by adding a redacted quarantine stream to the audit's text and JSON outputs. Added a strict publication gate that fails on unresolved high-risk findings or quarantine while preserving non-failing diagnostic mode for ordinary review. Expanded the curation policy with authenticity without transgression and a safe, slow, soft review model grounded in the zdots PHI boundary principle. Synthetic regression coverage, Markdown lint, syntax checks, and the live built-surface audit pass. The strict gate remains intentionally red because the current archive still contains unresolved human review candidates.
+Separated uncertain author recollections from source-backed transcript language. JSON and text reports now provide ordinary findings, quarantine, and recorded_uncertainty collections. Transcript uncertainty remains faithful recorded speech tied to the source recording, while rhetorical uncertainty in essays and metadata remains quarantined. Strict publication gating still fails until high-risk and quarantined material receives human review. Six focused RSpec examples pass, Markdown lint passes across 449 files, syntax and diff checks pass, and the live built-surface scan reports zero critical findings.
 <!-- SECTION:FINAL_SUMMARY:END -->
