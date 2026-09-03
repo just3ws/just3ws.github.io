@@ -29,21 +29,14 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Progressed from Digital Origination Team Lead to Software Architect for the Acquisition Lane, converting to Associate Director, Staff Engineer upon corporate architecture track restructuring, while founding the ACQ Enablement team, resolving a 4% application drop via DynamoDB session remediation, and leading the OpenTelemetry Working Group to establish the Enterprise Trace across Rails, MuleSoft, and Mainframe backends.
+**Target Focus:** Led modernization of complex customer workflows, resolved a silent application-completion defect, and established distributed observability across application and integration boundaries.
 
 **Key Outcomes:**
-- Originations IC Delivery & Speedfunds: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
-
-- ACQ Enablement & Architecture Discovery: Founded the ACQ Enablement team and mapped seven heterogeneous acquisition channels; architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, eliminating legacy state machine corruptions.
-
-- Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical CookieOverflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.
-
-- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
-
-- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
-
-- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
-
+- Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.
+- Built data-risk remediation and architecture-discovery practices that made legacy dependencies visible and safer to change.
+- Diagnosed a production state-management defect affecting application completion and moved the system to a more durable session design without interrupting service.
+- Established distributed observability across application and integration boundaries, improving the evidence available during incident response.
+- Built communities of practice, mentoring loops, and handoff mechanisms that distributed technical ownership beyond a single engineer.
 
 ### Senior Backend Developer at SK Holdings, Inc.
 
@@ -52,10 +45,8 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 **Target Focus:** Modernized search and asynchronous messaging pipelines under live production load, executing zero-downtime Rails framework upgrades and database relational indexing.
 
 **Key Outcomes:**
-- Search Infrastructure Modernization: Eliminated external cluster failure modes and reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text search and relational indices under live production traffic.
-
-- Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across core applications, sequencing database migrations to ensure zero downtime during platform modernization.
-
+- Improved search and asynchronous delivery systems while production traffic continued to flow.
+- Led framework and database upgrades with a staged approach designed to protect service continuity.
 
 ### Senior Software Developer at ActiveCampaign
 
@@ -64,8 +55,8 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 **Target Focus:** Improved testability and performance inside a tightly coupled PHP/MySQL CRM backend, introducing structured query patterns and cache strategies, and hardening the Ember.js frontend test suite across core contact management workflows.
 
 **Key Outcomes:**
-- Legacy Query Modernization: Replaced ad-hoc global data access with structured, cacheable query patterns in the PHP backend, enabling unit testability and sub-second query execution.
-- Frontend Verification Gates: Hardened Ember.js automated test suites across core CRM contact workflows, creating safety gates that enabled non-breaking legacy PHP refactoring.
+- Replaced fragile data-access patterns with structured, testable queries and improved performance.
+- Strengthened automated verification around core customer workflows, enabling safer refactoring.
 
 ### Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems) at Groupon
 

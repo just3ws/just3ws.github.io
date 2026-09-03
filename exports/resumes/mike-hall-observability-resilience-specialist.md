@@ -29,21 +29,14 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Founded and led enterprise OpenTelemetry Working Group (OTel WG), partnering with Cybersecurity, EMC, and Incident Command to build the Enterprise Trace across Rails, MuleSoft, and Mainframe backends, establishing distributed trace visibility across complex multi-tier lending workflows.
+**Target Focus:** Established distributed observability across application and integration boundaries, connecting system signals to incident response and safer change.
 
 **Key Outcomes:**
-- Originations IC Delivery & Speedfunds: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
-
-- ACQ Enablement & Architecture Discovery: Founded the ACQ Enablement team and mapped seven heterogeneous acquisition channels; architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, eliminating legacy state machine corruptions.
-
-- Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical CookieOverflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.
-
-- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
-
-- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
-
-- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
-
+- Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.
+- Built data-risk remediation and architecture-discovery practices that made legacy dependencies visible and safer to change.
+- Diagnosed a production state-management defect affecting application completion and moved the system to a more durable session design without interrupting service.
+- Established distributed observability across application and integration boundaries, improving the evidence available during incident response.
+- Built communities of practice, mentoring loops, and handoff mechanisms that distributed technical ownership beyond a single engineer.
 
 ### Principal Architect at Local AI Orchestration & Developer Runtime
 
@@ -52,12 +45,8 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 **Target Focus:** Built telemetry-driven diagnosis MCP server exposing distributed traces and error budgets directly to AI agent runtimes.
 
 **Key Outcomes:**
-- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.
-
-- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.
-
-- Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.
-
+- Built tools that make technical context reusable across sessions without treating generated output as authority.
+- Added observable diagnostics and bounded review steps to keep automated engineering work understandable and reversible.
 
 ### Principal Architect at WWWorkRemote
 
@@ -66,18 +55,8 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 **Target Focus:** Built comprehensive error tracking and validation guardrails for continuous document ingestion and model inference.
 
 **Key Outcomes:**
-- Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.
-
-- Semantic Search & Embeddings: Implemented vector search embeddings via pgvector, enabling high-precision semantic matching between complex candidate profiles and job requirements.
-
-- Local-First AI Orchestration: Designed provider-agnostic LLM orchestration layer (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first inference for sensitive data with per-call model routing.
-
-- Prompt Injection Defense: Built a 4-stage guardrails pipeline screening untrusted scraped text via weighted heuristics and instruction-density scoring before model ingestion.
-
-- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider adapters that extracts postings from live ATS pages and captures full application lifecycles.
-
-- Architectural Constraint Injection: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and security contracts.
-
+- Unified fragmented sources into a searchable data model for downstream analysis.
+- Designed local-first AI workflows with explicit safety boundaries around untrusted input and sensitive context.
 
 ### Senior Software Developer at ActiveCampaign
 
@@ -86,8 +65,8 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 **Target Focus:** Made previously opaque PHP backend behavior observable through structured query patterns and test coverage, improving change safety and developer feedback loops.
 
 **Key Outcomes:**
-- Legacy Query Modernization: Replaced ad-hoc global data access with structured, cacheable query patterns in the PHP backend, enabling unit testability and sub-second query execution.
-- Frontend Verification Gates: Hardened Ember.js automated test suites across core CRM contact workflows, creating safety gates that enabled non-breaking legacy PHP refactoring.
+- Replaced fragile data-access patterns with structured, testable queries and improved performance.
+- Strengthened automated verification around core customer workflows, enabling safer refactoring.
 
 ### Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems) at Groupon
 

@@ -111,6 +111,8 @@ archetypes.each do |key, config|
     comp_name = pos.dig('company', 'name') || pos['company']
     loc = pos.dig('company', 'location')
     dates = "#{human_date(pos['start_date'])} - #{human_date(pos['end_date'])}"
+    display_summary = pos['public_summary'] || pos['summary']
+    display_highlights = pos['public_highlights'] || pos['highlights']
     
     lines << "### #{pos['title']} at #{comp_name}"
     lines << ""
@@ -120,14 +122,14 @@ archetypes.each do |key, config|
     if entry['focus']
       lines << "**Target Focus:** #{entry['focus']}"
       lines << ""
-    elsif pos['summary']
-      lines << pos['summary']
+    elsif display_summary
+      lines << display_summary
       lines << ""
     end
     
-    if pos['highlights'] && !pos['highlights'].empty?
+    if display_highlights && !display_highlights.empty?
       lines << "**Key Outcomes:**"
-      pos['highlights'].each do |h|
+      display_highlights.each do |h|
         text = h.is_a?(Hash) ? h['text'] : h.to_s
         label = h.is_a?(Hash) ? h['label'] : nil
         lines << "- #{text}#{label ? " [#{label}]" : ""}"
@@ -141,8 +143,8 @@ archetypes.each do |key, config|
       'company'    => comp_name,
       'location'   => loc,
       'dates'      => dates,
-      'focus'      => entry['focus'] || pos['summary'],
-      'highlights' => (pos['highlights'] || []).map { |h| h.is_a?(Hash) ? h['text'] : h.to_s }
+      'focus'      => entry['focus'] || display_summary,
+      'highlights' => (display_highlights || []).map { |h| h.is_a?(Hash) ? h['text'] : h.to_s }
     }
   end
   

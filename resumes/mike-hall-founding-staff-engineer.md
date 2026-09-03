@@ -41,21 +41,14 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Placed in two corporate hackathons (Rasa workflow bot and Bonsai Buckaroos schema inference tool), introduced local LLM orchestration and privacy-conscious AI workflows at Geekfest@OMF, and chartered ACQ Enablement for rapid platform modernization.
+**Target Focus:** Built practical AI prototypes with a hackathon team, introduced local-first workflows, and helped establish safer ways to apply emerging tools to platform work.
 
 **Key Outcomes:**
-- Originations IC Delivery & Speedfunds: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
-
-- ACQ Enablement & Architecture Discovery: Founded the ACQ Enablement team and mapped seven heterogeneous acquisition channels; architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, eliminating legacy state machine corruptions.
-
-- Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical CookieOverflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.
-
-- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
-
-- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
-
-- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and Bonsai Buckaroos schema inference tools; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
-
+- Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.
+- Built data-risk remediation and architecture-discovery practices that made legacy dependencies visible and safer to change.
+- Diagnosed a production state-management defect affecting application completion and moved the system to a more durable session design without interrupting service.
+- Established distributed observability across application and integration boundaries, improving the evidence available during incident response.
+- Built communities of practice, mentoring loops, and handoff mechanisms that distributed technical ownership beyond a single engineer.
 
 ### Principal Architect at Phalanx Duel
 
@@ -64,12 +57,8 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 **Target Focus:** Built a server-authoritative deterministic game platform in TypeScript and Node.js: pure rules engine, append-only action ledger, WebSocket real-time sync, and property-based Truth Gate verification gates across the full state lifecycle.
 
 **Key Outcomes:**
-- Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.
-
-- Built replay validation, adversarial coverage, and CI verification gates so state transitions can be checked across the complete lifecycle.
-
-- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated checks, and human-reviewed outputs rather than treating model output as authority.
-
+- Designed replayable state transitions so complex outcomes remain reproducible and independently reviewable.
+- Built verification gates that test system behavior across the full lifecycle.
 
 ### Principal Architect at WWWorkRemote
 
@@ -78,18 +67,8 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 **Target Focus:** Architected multi-source Rails ingestion pipeline, pgvector semantic search, local-first YAML model registry, 4-stage prompt injection defense, and 16-adapter MV3 Chrome extension.
 
 **Key Outcomes:**
-- Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.
-
-- Semantic Search & Embeddings: Implemented vector search embeddings via pgvector, enabling high-precision semantic matching between complex candidate profiles and job requirements.
-
-- Local-First AI Orchestration: Designed provider-agnostic LLM orchestration layer (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first inference for sensitive data with per-call model routing.
-
-- Prompt Injection Defense: Built a 4-stage guardrails pipeline screening untrusted scraped text via weighted heuristics and instruction-density scoring before model ingestion.
-
-- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider adapters that extracts postings from live ATS pages and captures full application lifecycles.
-
-- Architectural Constraint Injection: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and security contracts.
-
+- Unified fragmented sources into a searchable data model for downstream analysis.
+- Designed local-first AI workflows with explicit safety boundaries around untrusted input and sensitive context.
 
 ### Principal Engineer & Curator at Technical Conversation Archive
 
