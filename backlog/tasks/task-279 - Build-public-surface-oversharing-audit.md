@@ -1,10 +1,10 @@
 ---
 id: TASK-279
 title: Build public-surface oversharing audit
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-09-03 01:00'
-updated_date: '2026-09-03 01:01'
+updated_date: '2026-09-03 01:05'
 labels:
   - security
   - editorial
@@ -27,19 +27,19 @@ Create a repeatable repository-local audit for the public website surface. It mu
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The audit scans the documented public-content surfaces while explicitly excluding secrets, environment files, credentials, private handoffs, dependency/vendor trees, and other non-public inputs.
-- [ ] #2 Findings classify at least risk level, confidence, category, file location, and a safe explanation of why review is recommended.
-- [ ] #3 The report redacts matched values and never prints full tokens, credentials, email addresses, phone numbers, private URLs, or other sensitive values.
-- [ ] #4 The audit distinguishes likely sensitive exposure from contextual language that is merely candid, historical, uncertain, or editorially awkward.
-- [ ] #5 The tool supports a machine-readable report and a human-readable summary suitable for CI and local editorial review.
-- [ ] #6 The tool has regression coverage for representative secret, personal-data, speculative-claim, and safe historical-content cases.
-- [ ] #7 Usage and curation guidance are documented, including the rule that the tool flags review candidates and does not make publication decisions.
-- [ ] #8 The implementation passes the repository's relevant build, lint, test, and safety checks without modifying unrelated work.
+- [x] #1 The audit scans the documented public-content surfaces while explicitly excluding secrets, environment files, credentials, private handoffs, dependency/vendor trees, and other non-public inputs.
+- [x] #2 Findings classify at least risk level, confidence, category, file location, and a safe explanation of why review is recommended.
+- [x] #3 The report redacts matched values and never prints full tokens, credentials, email addresses, phone numbers, private URLs, or other sensitive values.
+- [x] #4 The audit distinguishes likely sensitive exposure from contextual language that is merely candid, historical, uncertain, or editorially awkward.
+- [x] #5 The tool supports a machine-readable report and a human-readable summary suitable for CI and local editorial review.
+- [x] #6 The tool has regression coverage for representative secret, personal-data, speculative-claim, and safe historical-content cases.
+- [x] #7 Usage and curation guidance are documented, including the rule that the tool flags review candidates and does not make publication decisions.
+- [x] #8 The implementation passes the repository's relevant build, lint, test, and safety checks without modifying unrelated work.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -58,4 +58,18 @@ Create a repeatable repository-local audit for the public website surface. It mu
 
 <!-- SECTION:NOTES:BEGIN -->
 Task entered In Progress. Current repository already has targeted surface exposure and corpus exclusion logic, but no general public-content oversharing classifier. The implementation will complement, not replace, those validators.
+
+Implemented bin/audit_public_surface.rb with an explicit public-content manifest and exclusions for secrets, environment files, credentials, private handoffs, VCS, dependencies, caches, and build trees.
+
+The auditor emits redacted JSON or a summarized human report. Critical credential-shaped findings fail with exit 1; contextual findings remain human review candidates.
+
+Aligned the policy with zdots PHI lessons: scrub/filter at the boundary before AI, capture, indexing, or storage. The site auditor is a complementary public-artifact review, not the canonical PHI scrubber.
+
+Verification: synthetic RSpec fixtures pass for credential detection, personal-data detection, uncertainty detection, excluded paths, and redaction. Repository scan covers 1,026 files, reports 2,764 candidates, and reports 0 critical findings. Markdown lint passes across 448 files. Ruby syntax and git diff check pass. Rake audit:public_surface exits 0.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added a repository-local public-surface oversharing audit and integrated it with the existing editorial policy and Rake tasks. The auditor scans only documented public-content roots, explicitly excludes private and credential-shaped paths, redacts evidence in reports, classifies findings by category, risk, and confidence, and separates urgent credential findings from contextual review candidates. The policy now carries the zdots boundary lesson that PHI filtering must happen before AI, capture, indexing, or storage. Focused RSpec coverage uses synthetic fixtures and the live repository scan found zero critical findings. Remaining medium and high findings are intentionally a human curation queue, not automatic publication decisions.
+<!-- SECTION:FINAL_SUMMARY:END -->
