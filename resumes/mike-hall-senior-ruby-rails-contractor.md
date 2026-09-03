@@ -2,8 +2,8 @@
 layout: archetype-resume
 body_class: ats-resume
 archetype_key: senior_ruby_rails_contractor
-title: "Mike Hall - Senior - Lead Ruby on Rails Developer Contract"
-description: "Senior Ruby on Rails contractor with deep production Rails and PostgreSQL expertise. Delivers immediate, low-ramp-up business value for legacy upgrades, complex state machine refactorings, database optimization, asynchronous background processing, and third-party API integrations with strict TDD/RSpec discipline."
+title: "Mike Hall - Senior - Lead Software Engineer, Ruby on Rails"
+description: "Senior software engineer focused on Ruby on Rails infrastructure, PostgreSQL, legacy modernization, and production reliability. Delivers business value through complex state machine refactoring, database optimization, asynchronous processing, third-party integrations, and disciplined testing."
 canonical_url: https://www.just3ws.com/resumes/mike-hall-senior-ruby-rails-contractor/
 permalink: /resumes/mike-hall-senior-ruby-rails-contractor/
 sitemap: true
@@ -12,7 +12,7 @@ robots: index,follow
 
 # Mike Hall
 
-**Senior / Lead Ruby on Rails Developer (Contract / High-Velocity IC)**
+**Senior / Lead Software Engineer, Ruby on Rails**
 Chicago, IL
 
 - Email: [mike@just3ws.com](mailto:mike@just3ws.com)
@@ -25,7 +25,7 @@ Chicago, IL
 
 ## Professional Summary
 
-Senior Ruby on Rails contractor with deep production Rails and PostgreSQL expertise. Delivers immediate, low-ramp-up business value for legacy upgrades, complex state machine refactorings, database optimization, asynchronous background processing, and third-party API integrations with strict TDD/RSpec discipline.
+Senior software engineer focused on Ruby on Rails infrastructure, PostgreSQL, legacy modernization, and production reliability. Delivers business value through complex state machine refactoring, database optimization, asynchronous processing, third-party integrations, and disciplined testing.
 
 ---
 
@@ -41,7 +41,7 @@ Ruby on Rails (Full-Lifecycle 2.x through 8.x), PostgreSQL & MySQL Query Optimiz
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Architected and delivered the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes) and refactored multi-step Rails workflow state machines, eliminating lateral state corruptions across high-volume customer prequalification pipelines.
+**Target Focus:** Architected and delivered an instant loan disbursement pipeline (funding to debit cards in minutes) and refactored multi-step Rails workflow state machines, eliminating lateral state corruptions across high-volume customer prequalification pipelines.
 
 **Key Outcomes:**
 - Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.

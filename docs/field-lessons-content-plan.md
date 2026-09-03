@@ -263,13 +263,13 @@ Before publication:
 | P0 | **The Communication Layer Is Part of the Architecture** | Principal engineers and engineering leaders | Hub essay | Shareable thought leadership | `Panoramic View Analysis`; `Work Ambition Assessment`; current synthesis | Needs human draft |
 | P0 | **OpenTelemetry Starts With a Conversation** | Platform, SRE, and application engineers | Case study | Searchable and shareable | `OTel WG Readout`; `OTel Collaboration Value`; `Geekfest@OMF sessions recap` | Existing related drafts need human revision |
 | P0 | **How to Hand Off a Working Group Without Losing Its Purpose** | Community founders and platform leaders | Case study | Searchable | `OTel WG sunset plan`; `Geekfest@OMF sessions recap`; public OTel outcomes | Existing related draft needs human revision |
-| P1 | **The Mentorship Relay in ACQ Enablement** | Technical leads and managers | Anonymous case study | Shareable | Current firsthand clarification; `Applicant PII Remediation Summary`; `Mid-Year Review Summary` | Evidence review required |
+| P1 | **The Mentorship Relay in Acquisition Lane Enablement** | Technical leads and managers | Anonymous case study | Shareable | Current firsthand clarification; `Applicant PII Remediation Summary`; `Mid-Year Review Summary` | Evidence review required |
 | P1 | **SME Delegation: Representing a Team Without Becoming Its Bottleneck** | Staff+ engineers and managers | Practical guide | Searchable | `Mid-year review discussion`; `OMF Technical Leadership Overview`; current clarification | Evidence review required |
 | P1 | **The Weekly Coordination Loop for Broad Changes** | Initiative owners and delivery leads | Playbook excerpt | Searchable | `Capture Successful Project Processes`; `Work Ambition Assessment` | Needs human draft |
 | P1 | **Panoramic View Before Target State** | Architects working in mature systems | Case study | Searchable and shareable | `Panoramic View Analysis`; public system cartography material | Existing related material |
 | P1 | **When Conway's Law Describes the Incident** | Architecture and organization leaders | Essay | Shareable | `Tao and Reverse Conway`; `Work Ambition Assessment` | Existing related draft needs human revision |
 | P1 | **The Wolf and the Huntsman Question** | Staff+ engineers and cross-functional leaders | Field lesson | Translate operational risk into an actionable request that another group can own | Archive reflections on engineering and product incentives | Needs human draft |
-| P2 | **ACQ Enablement as a Boundary Team** | Platform and product engineering leaders | Case study | Searchable | Public `onemain.yml`; public retrospective; `OMF LinkedIn Update Review` | Existing public material |
+| P2 | **Acquisition Lane Enablement as a Boundary Team** | Platform and product engineering leaders | Case study | Searchable | Public `onemain.yml`; public retrospective; `OMF LinkedIn Update Review` | Existing public material |
 | P2 | **A Community Lifecycle: Catalyst, Working Group, Stewardship** | Engineering community organizers | Framework | Searchable | `Geekfest@OMF sessions recap`; public OTel material | Existing related draft needs human revision |
 | P2 | **AI Is Useful, but Humans Still Make Systems Legible** | Broad engineering audience | Short LinkedIn essay | Shareable | `OTel WG Readout`; current archive synthesis | Needs human draft |
 
@@ -283,7 +283,7 @@ organizational case.
 
 ### Phase 2: Prove it in field cases
 
-Publish the ACQ Enablement, Panoramic View, and OpenTelemetry pieces. Each case
+Publish the Acquisition Lane enablement, Panoramic View, and OpenTelemetry pieces. Each case
 should follow the same structure:
 
 1. What changed or became unsafe?
@@ -322,7 +322,7 @@ field case and one concrete practice.
 - Exact dates for each transition.
 - Exact attendance totals by period.
 - Whether the three communities should be named or described generically.
-- The specific ACQ Enablement participants and their responsibilities.
+- The specific enablement participants and their responsibilities.
 - Any business, customer, security, or incident metric not already present in
   the public canon.
 - Any statement that attributes a decision or reaction to a named colleague.
@@ -374,8 +374,8 @@ Evidence and publication status:
 
 - Keep the public identity anchor as **Software Engineer**. Describe Staff or
   Principal scope through outcomes and ownership when relevant.
-- Use canonical names such as OpenTelemetry, OTel WG, ACQ Enablement, and
-  Geekfest@OMF.
+- Use canonical names such as OpenTelemetry, the OpenTelemetry Working Group,
+  and Geekfest@OMF. Define organizational terms when they first appear.
 - Do not invent metrics or turn an assistant's inference into historical fact.
 - Do not include internal ticket URLs, private names, confidential systems, or
   sensitive customer details.

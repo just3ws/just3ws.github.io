@@ -177,7 +177,7 @@ narrative_synthesis = {
       "summary" => "Appointed Software Architect for the Acquisition Lane at OneMain Financial with an executive mandate to untangle multi-channel lending monoliths, decouple Acquisition and Originations boundaries, eliminate 4% silent traffic loss at e-signing, and build an automated 5-phase PII deletion engine across 30+ tables, while founding Geekfest and leading the OpenTelemetry Working Group across a 3-year enablement arc transitioned to SRE.",
       "anchors" => [
         "OneMain Financial (Acquisition Lane Architect & AD Staff)",
-        "Speedfunds Instant Loan Disbursement",
+        "Instant Loan Disbursement",
         "Enterprise OpenTelemetry Distributed Trace",
         "5-Phase Automated PII Remediation Engine"
       ]
@@ -195,7 +195,7 @@ narrative_synthesis = {
   },
   "cover_letter_synthesis_blueprint" => {
     "step_1_hook" => "Diagnose target company platform pain and state value proposition as Principal Software Engineer de-risking high-consequence transitions.",
-    "step_2_proofs" => "Select 2-3 matching proofs from Act 2 (Speedfunds, 7 acquisition channels, 5-phase PII engine, OTel distributed trace, 4% traffic loss fix).",
+    "step_2_proofs" => "Select 2-3 matching proofs from Act 2 (instant loan disbursement, 7 acquisition channels, privacy deletion engine, OpenTelemetry distributed trace, 4% traffic loss fix).",
     "step_3_philosophy" => "State operating model: System Cartography (mapping state before invasive changes), automated verification gates, and team enablement.",
     "step_4_call_to_action" => "Invite a 20-minute direct, peer-level conversation on architectural roadmap and production stability."
   }

@@ -28,7 +28,7 @@ const RESUME_TARGETS = [
   {
     slug: 'mike-hall-senior-ruby-rails-contractor',
     path: '/resumes/mike-hall-senior-ruby-rails-contractor/',
-    desktopFriendlyName: 'Mike Hall - Senior _ Lead Ruby on Rails Developer (Contract _ High-Velocity IC).pdf'
+    desktopFriendlyName: 'Mike Hall - Senior _ Lead Software Engineer, Ruby on Rails.pdf'
   },
   {
     slug: 'mike-hall-staff-platform-lead',
@@ -134,4 +134,3 @@ generatePDFs().catch((err) => {
   console.error('❌ PDF generation failed:', err);
   process.exit(1);
 });
-

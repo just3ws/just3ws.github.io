@@ -51,8 +51,8 @@ Implemented in `bin/benchmark_ats_keywords.rb`, this engine tests generated resu
 | **Huntress Model** | Principal Software Engineer (Ruby/Rails & SOC Experience) | **>= 90%** | Rails platform architecture, OpenTelemetry, incident escalation, cybersecurity threat attribution, p99 reliability, PostgreSQL. |
 | **Coder Model** | Staff Platform Engineer (Developer Enablement) | **>= 85%** | Platform enablement, Docker, Kubernetes, CI/CD, internal open source, working groups, automated verification gates. |
 | **Enterprise Telemetry** | Observability & Resilience Specialist | **>= 95%** | Enterprise Trace, distributed tracing, MuleSoft/Mainframe boundaries, EMC/SRE alignment, 4% traffic loss recovery, root cause analysis. |
-| **Fintech Modernizer** | Principal Systems Architect (Acquisition & Core Modernization) | **>= 85%** | Multi-channel acquisition funnels, Speedfunds instant disbursement, state machines, PII remediation, zero-downtime data migrations. |
-| **Founding Staff AI** | Founding Staff Engineer (AI Systems & Developer Tooling) | **>= 75%** | Local LLM orchestration, workflow agents, JSON Schema inference, Bonsai Buckaroos, Rasa, MCP server tooling. |
+| **Fintech Modernizer** | Principal Systems Architect (Acquisition & Core Modernization) | **>= 85%** | Multi-channel acquisition funnels, instant disbursement, state machines, privacy remediation, zero-downtime data migrations. |
+| **Founding Staff AI** | Founding Staff Engineer (AI Systems & Developer Tooling) | **>= 75%** | Local LLM orchestration, workflow agents, JSON Schema inference, hackathon prototypes, Rasa, MCP server tooling. |
 
 ---
 

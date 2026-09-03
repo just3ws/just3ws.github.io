@@ -41,7 +41,7 @@ Platform Enablement & Developer Productivity, Team Consolidation, Mentorship & A
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Realigned ownership across the Acquisition (ACQ) Lane, the digital front door for customer applications and account workflows, founded an engineering enablement function, and built durable community and handoff mechanisms through Geekfest@OMF and the OpenTelemetry Working Group.
+**Target Focus:** Realigned ownership across the Acquisition Lane, the digital front door for customer applications and account workflows, founded a Team Topologies-informed engineering enablement function, and built durable community and handoff mechanisms through Geekfest@OMF and the OpenTelemetry Working Group.
 
 **Key Outcomes:**
 - Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.

@@ -67,7 +67,7 @@ When an engineering leader reads your resume, they bring their own organizationa
 * **What they NEED:** An **Engineering Force Multiplier & Cultural Stabilizer**. A staff leader who pairs directly with product developers, diagnoses the root causes of daily friction, establishes automated verification gates, and rebuilds team confidence following organizational attrition.
 
 ### Perception vs. Reality Gap
-* **The Surface Resume Line:** *"Founded ACQ Enablement team; merged two squads into one unified delivery unit."*
+* **The Surface Resume Line:** *"Founded an Acquisition Lane enablement team and merged two squads into one unified delivery unit."*
 * **The Reality & Magnitude:** Rescued two demoralized, attrition-depleted engineering teams, establishing automated build verification gates and documentation rhythms that insulated platform health from product roadmap thrash.
 
 ### Empathy Bridge & Synthesis Playbook
@@ -130,11 +130,11 @@ When an engineering leader reads your resume, they bring their own organizationa
 
 ---
 
-## 5. Senior / Lead Ruby on Rails Developer (Contract / High-Velocity IC)
+## 5. Senior / Lead Software Engineer, Ruby on Rails
 ### Target Audience Profile
 * **The Reader:** Engineering Manager, Director of Engineering, or Staff Tech Lead with an overloaded roadmap.
 * **Their Internal Anxiety:** *"Our sprint velocity is stalling, our tech debt is mounting, and our engineers are burned out."*
-* **Their Skepticism:** Contractors often require weeks of hand-holding, write sloppy unmaintainable code, and vanish when things break in production.
+* **Their Skepticism:** A short-term hire may require weeks of hand-holding, write difficult-to-maintain code, or disappear when things break in production.
 
 ### What They Ask for vs. What They Need
 * **What they WANT:** A fast coder to burn down tickets in Jira.
@@ -158,7 +158,7 @@ When an engineering leader reads your resume, they bring their own organizationa
 | Archetype | Primary Decision-Maker | Their Deepest Fear | Your Decisive Proof Point |
 | :--- | :--- | :--- | :--- |
 | **Principal Systems Architect** | VP of Engineering / Chief Architect | *"A risky rewrite will destroy platform revenue."* | Zero-downtime legacy modernization, boundary governance, and mainframe/cloud mediation. |
-| **Staff Platform Lead** | Director of Platform / Head of DevEx | *"Our best engineers are quitting due to technical debt."* | Founded ACQ Enablement, merged attrition-impacted squads, and established automated CI verification gates. |
+| **Staff Platform Lead** | Director of Platform / Head of DevEx | *"Our best engineers are quitting due to technical debt."* | Founded an Acquisition Lane enablement team, merged attrition-impacted squads, and established automated CI verification gates. |
 | **Staff Observability Architect** | VP of Infrastructure / Head of SRE | *"We are flying blind during critical outages."* | Founded OpenTelemetry Working Group, built Enterprise Trace across 3 distinct tiers, and resolved 4% origination e-sign failure. |
 | **Founding Staff Engineer** | Startup Founder / Early-Stage CTO | *"We will burn our runway on fragile AI hype."* | 0-to-1 builder: pgvector, local llama.cpp/whisper.cpp runtimes, Truth Gates, and server-authoritative state. |
-| **Senior Rails Contractor** | Engineering Director / Team Lead | *"Contractors take too long to ramp up and break things."* | Deep Rails 2.x-8.x expertise, surgical state machine refactoring, and zero-downtime database migrations. |
+| **Senior Rails Engineer** | Engineering Director / Team Lead | *"We need someone who can improve a Rails system without disrupting delivery."* | Deep Rails 2.x-8.x expertise, careful state machine refactoring, and zero-downtime database migrations. |

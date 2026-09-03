@@ -23,7 +23,7 @@ nurturing open, high-trust engineering communities:
 | **2009–2010 (Chicago Roots)** | Founded **Software Craftsmanship McHenry County (SCMC)** & McHenry County Cloud Developers; organized for **Chicago Code Camp** and **Chicago Alt.NET**. | Built regional grassroots developer communities centered on TDD, software craftsmanship, and continuous learning. |
 | **2011–2013 (Groupon / Obtiva)** | Talent Development Business Partner for Engineering & Senior IC. | Redesigned technical onboarding curricula, mentored junior engineers, and bridged technical execution with management training during hyper-growth. |
 | **2022–2023 (OneMain Financial: Year 1)** | Founded & Coordinated **Geekfest@OMF**. | Hosted and recorded weekly open brown-bag sessions across the enterprise for 1 year straight; introduced local LLMs, Go, deep Rails debugging, and coached first-time speakers. |
-| **2024–2025 (OneMain Financial: Years 2–3)** | Founded & Led **OpenTelemetry Working Group (OTel WG)**. | Scaled voluntary weekly attendance to 40+ cross-lane engineers; aligned EMC, SRE, Cybersecurity, and Incident Command around the Enterprise Trace, recovering 4% dropped origination traffic. |
+| **2024–2025 (OneMain Financial: Years 2–3)** | Founded & Led the **OpenTelemetry Working Group**. | Scaled voluntary weekly attendance to 40+ engineers across the organization; aligned monitoring, SRE, Cybersecurity, and Incident Command around distributed tracing, recovering 4% dropped origination traffic. |
 | **2025 (OneMain Financial: Handoff)** | Sustainable SRE Transition. | Coached and mentored an SRE engineer over 6 months to assume permanent operational facilitation, establishing a durable practice while pivoting back to Acquisition Lane architecture. |
 | **2026 (Local-First AI Era)** | Local AI Orchestration & CareerOS Platform. | Building open, deterministic agent runtimes, semantic career datalakes, and privacy-conscious local developer tooling. |
 
@@ -66,14 +66,14 @@ graph TD
     HUB --> T2["MuleSoft API Gateway"]:::chan
     HUB --> T3["IBM Mainframe Backend"]:::chan
 
-    T1 --> REC["Enterprise Trace & SRE Alignment<br/>• 4% Silent Traffic Drop Eliminated<br/>• Speedfunds Debit Disbursement Shipped"]:::recov
+    T1 --> REC["Enterprise Trace & SRE Alignment<br/>• 4% Silent Traffic Drop Eliminated<br/>• Instant Debit Disbursement Shipped"]:::recov
     T2 --> REC
     T3 --> REC
 ```
 
 ### Key Milestones Recovered from Historical Archives
 1. **Geekfest Inception (Nov 1, 2022):** Weekly forum designed to dismantle engineering silos and create psychological safety for peers and contractors. Dedicated sessions coached junior engineers through their first technical talks.
-2. **Applied AI & Hackathon Placement:** Placed in two enterprise hackathons (conversational agents with **Rasa** and schema inference with **Bonsai Buckaroos**). Demonstrated local LLMs and prompt engineering long before commercial enterprise tooling existed.
+2. **Applied AI & Hackathon Placement:** Placed in two enterprise hackathons, building conversational agents with **Rasa** and a schema-inference prototype with a small team. Demonstrated local LLMs and prompt engineering before commercial enterprise tooling was widely available.
 3. **The "Panoramic View" Virtuous Loop:** Connected Product, QA, Application Engineering, Analytics, EMC, and SRE into a closed feedback loop: simulating business scenarios in lower environments, validating alerts, and feeding real-time trace context to Incident Command.
 4. **Platform Stewardship Warning:** Authored the architectural warning framework when vertical lanes threatened shared horizontal platforms, designing the two-tier "Internal Open Source" and "Implementation Service" models.
 5. **Durable Handoff:** Engineered the OTel WG so that it was never contingent on a single individual, successfully transitioning leadership to SRE.

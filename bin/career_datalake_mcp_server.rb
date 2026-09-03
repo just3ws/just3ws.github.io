@@ -325,7 +325,7 @@ class CareerDatalakeMCPServer
           cover_letter_synthesis_blueprint: baseline["cover_letter_synthesis_blueprint"],
           focus_domain: domain,
           verified_proof_points: [
-            "Speedfunds instant loan disbursement (minutes vs multi-day ACH)",
+            "Instant loan disbursement (minutes vs multi-day ACH)",
             "Architecture discovery across 7 heterogeneous acquisition channels",
             "5-phase automated PII deletion engine across 30+ tables and legacy clarity_ orphans",
             "Elimination of 4% silent traffic loss defect via DynamoDB session storage remediation",

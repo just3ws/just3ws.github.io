@@ -48,7 +48,7 @@ class ResumeQualityValidator
     'Architecture Discovery',
     'Rails',
     'PostgreSQL',
-    'Speedfunds',
+    'instant disbursement',
     'Enablement',
     'SRE'
   ].freeze
@@ -325,10 +325,10 @@ class ResumeQualityValidator
       return
     end
 
-    # Verify Speedfunds and 7 acquisition channels are present in datalake
+    # Verify the instant disbursement and 7 acquisition channels are present in datalake
     highlights_text = (onemain['highlights'] || []).map { |h| h.is_a?(Hash) ? h['text'] : h.to_s }.join(' ')
-    unless highlights_text.include?('Speedfunds')
-      @errors << "Career datalake OneMain entry missing 'Speedfunds' delivery highlight"
+    unless highlights_text.match?(/instant\s+(?:loan\s+)?disbursement/i)
+      @errors << "Career datalake OneMain entry missing instant disbursement highlight"
     end
 
     unless highlights_text =~ /(seven|7)\s+(heterogeneous\s+)?acquisition channels/i

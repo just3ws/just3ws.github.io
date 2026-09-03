@@ -137,7 +137,7 @@ graph TD
 | Metric / Check | Target Threshold | Current State | Verification Method |
 | :--- | :--- | :--- | :--- |
 | **ATS Section Parse Rate** | 100% | 100% | `bin/validate_resume_quality.rb` |
-| **Quantified Impact Highlights** | >60% of bullets | Verified (Speedfunds, 4% traffic, 7 channels, $2M) | `bin/validate_resume_claims.rb` |
+| **Quantified Impact Highlights** | >60% of bullets | Verified (instant disbursement, 4% traffic, 7 channels, $2M) | `bin/validate_resume_claims.rb` |
 | **Zero Em Dashes** | 0 violations across corpus | 0 violations (38 files clean) | `bin/validate_resume_quality.rb` |
 | **Schema.org Person Linked Data** | Valid JSON-LD, 0 errors | 100% Valid | Google Rich Results / Schema Validator |
 | **Parity Across 5 Formats** | 100% synchronized | 100% synchronized (YAML, MD, TXT, JSON, PDF) | `bin/validate_exports.rb` |

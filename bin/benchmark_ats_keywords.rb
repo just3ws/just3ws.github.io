@@ -92,11 +92,11 @@ TARGET_PROFILES = {
     tier: "Principal IC / Systems Architecture",
     resume_file: "mike-hall-principal-software-engineer.txt",
     required_keywords: %w[
-      Rails PostgreSQL Speedfunds Acquisition Originations Funnel
+      Rails PostgreSQL Instant Disbursement Acquisition Originations Funnel
       State API Architecture Sidekiq Redis
     ],
     architecture_competencies: [
-      "Speedfunds",
+      "Instant Disbursement",
       "Seven Heterogeneous Acquisition Channels",
       "Architecture Discovery",
       "PII Remediation",
@@ -104,7 +104,7 @@ TARGET_PROFILES = {
     ],
     leadership_competencies: [
       "Software Architect",
-      "ACQ Enablement",
+      "Acquisition Lane enablement",
       "Exceeds Expectations",
       "Associate Director"
     ]
@@ -120,7 +120,6 @@ TARGET_PROFILES = {
     architecture_competencies: [
       "Local LLM Orchestration",
       "Schema Inference",
-      "Bonsai Buckaroos",
       "Rasa",
       "Context-Isolated"
     ],

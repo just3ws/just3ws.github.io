@@ -2,7 +2,7 @@
 layout: post
 title: "Hunting the 4% Defect: Resolving Rails Cookie Overflow at Enterprise Scale"
 date: "2026-08-30"
-description: "When 4% of customer loan applications were silently lost in production, the root cause was not a server crash. Here is how we diagnosed Rails CookieOverflow and migrated to DynamoDB session storage."
+description: "When 4% of customer loan applications were silently lost in production, the root cause was not a server crash. Here is how we diagnosed a Rails session-cookie overflow and migrated to DynamoDB session storage."
 ai_assisted: true
 human_led: true
 source_kind: ai-augmented-human-led
@@ -36,7 +36,7 @@ They are silent failure modes: edge-case state corruptions that return HTTP 200 
 | [CookieStore]      --> Serialized session cookie grows: 1KB -> 2KB -> 3KB...
 |         │
 |         v (Breaches RFC 6265 4,096-byte limit)
-| [CookieOverflow]   --> Cookie truncated or reset -> 4% TRAFFIC SILENTLY LOST
+| [Session-cookie overflow] --> Cookie truncated or reset -> 4% TRAFFIC SILENTLY LOST
 +-------------------------------------------------------------------------+
 ```
 
@@ -86,7 +86,7 @@ Individually, each piece of data was small (a few dozen to a few hundred bytes).
 +-------------------------------------------------------------------------+
 ```
 
-When the payload exceeded 4KB, Rails triggered `ActionDispatch::Cookies::CookieOverflow`. Depending on browser behavior and exact request paths, the browser either dropped the oversize cookie or Rails failed to persist session updates. The customer session was wiped, leaving backend records in an inconsistent, orphaned state and forcing 4% of digital borrowers out of the funnel.
+When the payload exceeded 4KB, Rails triggered its session-cookie overflow error. Depending on browser behavior and exact request paths, the browser either dropped the oversize cookie or Rails failed to persist session updates. The customer session was wiped, leaving backend records in an inconsistent, orphaned state and forcing 4% of digital borrowers out of the funnel.
 
 ---
 
@@ -99,7 +99,7 @@ To identify why transactions were dropping, we audited the Rails Rack middleware
 app/middleware/populate_request_store.rb
 app/middleware/time_travel.rb
 app/middleware/rescue_cookie_overflow_errors.rb
-actionpack/lib/action_dispatch/middleware/cookies.rb: in `set_cookie`: CookieOverflow
+actionpack/lib/action_dispatch/middleware/cookies.rb: in `set_cookie`: session-cookie overflow
 ```
 
 The investigation revealed that attempting to fix the issue by selectively pruning session keys was a fragile strategy. Every new product feature, affiliate partnership, or A/B testing campaign risked pushing the session over the 4KB edge again.
@@ -110,7 +110,7 @@ The platform required a structural architectural fix: separating session storage
 
 ## 4. The Two-Phase Architectural Remediation
 
-We resolved the CookieOverflow defect through a two-phase technical strategy:
+We resolved the session-cookie overflow defect through a two-phase technical strategy:
 
 ```
 +-------------------------------------------------------------------------+

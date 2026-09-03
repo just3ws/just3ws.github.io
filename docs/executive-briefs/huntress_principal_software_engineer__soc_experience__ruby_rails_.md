@@ -24,7 +24,7 @@ I bring calm, deterministic systems leadership to teams where platform reliabili
 
 ### 2. Deep Observability, Distributed Tracing & Incident Command
 * **Enterprise Trace Deployment:** Led the enterprise OpenTelemetry deployment across distributed Rails services, MuleSoft APIs, and Mainframe backends. Standardized W3C trace context headers to bridge siloed logs into causal event chains.
-* **Eliminating Silent Outages:** Diagnosed and eliminated a persistent CookieOverflow defect that silently dropped 4% of digital loan applications during offer selection and e-signing, implementing custom rescue middleware and migrating Rails session storage to AWS DynamoDB.
+* **Eliminating Silent Outages:** Diagnosed and eliminated a persistent session-cookie overflow defect that silently dropped 4% of digital loan applications during offer selection and e-signing, implementing custom rescue middleware and migrating Rails session storage to AWS DynamoDB.
 * **Community Enablement:** Founded Geekfest@OMF and the weekly OpenTelemetry Working Group, scaling cross-lane participation to 40+ engineers before transitioning ongoing facilitation sustainably to SRE.
 
 ### 3. Cyber & Fraud Detection Systems

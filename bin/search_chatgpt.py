@@ -75,7 +75,7 @@ def search(query, db_path, limit=10, role=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Query ChatGPT corpus using SQLite FTS5.")
-    parser.add_argument("query", help="Search terms (e.g. 'OpenTelemetry', 'ACQ Enablement')")
+    parser.add_argument("query", help="Search terms (e.g. 'OpenTelemetry', 'enablement')")
     parser.add_argument("--db", default=DEFAULT_DB, help=f"Corpus database path (default: {DEFAULT_DB})")
     parser.add_argument("--limit", type=int, default=10, help="Max results to display (default: 10)")
     parser.add_argument("--role", choices=["user", "assistant", "system", "tool"], help="Filter by author role")

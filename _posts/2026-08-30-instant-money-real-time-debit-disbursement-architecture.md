@@ -49,7 +49,7 @@ Push-to-card payment rails (such as Visa Direct and Mastercard Send via enterpri
 2. **Network Timeout Ambiguity:** If your API gateway times out waiting for the card network response after 30 seconds, you do not know if the money left the building or if the request dropped before authorization.
 3. **Double-Spend Hazards:** If an anxious borrower repeatedly taps the "Accept Funds" button or a browser fires retry payloads during a mobile connection drop, a naive payment service risks disbursing the loan twice.
 
-During the architecture and delivery of the **Speedfunds** real-time card disbursement initiative at OneMain Financial, our primary objective was reducing funding latency from days to minutes while maintaining mathematical certainty against double-disbursements.
+During the architecture and delivery of a real-time card disbursement initiative at OneMain Financial, our primary objective was reducing funding latency from days to minutes while maintaining mathematical certainty against double-disbursements.
 
 ---
 

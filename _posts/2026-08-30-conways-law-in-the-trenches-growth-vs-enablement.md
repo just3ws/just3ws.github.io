@@ -29,6 +29,8 @@ When leadership asks why velocity has cratered, the answers usually sound techni
 
 In reality, technical debt is often a symptom. The root cause is **Conway's Law in reverse**: your team topology is forcing engineers with competing incentives to work in the exact same blast radius.
 
+I use *enablement* in the practical sense described by Team Topologies. An enabling team helps stream-aligned teams build the understanding and capability they need to work more independently. It is not a permanent queue for every difficult ticket, and it is not a second product team competing for the same delivery goals. Its success is measured by the capability it leaves behind: clearer boundaries, safer paths, reusable tools, and less cognitive load for the teams doing the day-to-day product work.
+
 ```
 +-------------------------------------------------------------------------+
 |                  THE DUAL-SQUAD TEAM TOPOLOGY MODEL                     |
@@ -60,9 +62,9 @@ To restore velocity, you must decouple your team topology.
 
 ## 2. The Solution: Founding the Enablement Squad
 
-During our acquisition lane scaling at OneMain Financial, our feature squads faced mounting friction from legacy monolith dependencies. To break the deadlock, we restructured our engineering topology by establishing **ACQ Enablement**.
+During our acquisition lane scaling at OneMain Financial, our feature squads faced mounting friction from legacy monolith dependencies. To break the deadlock, we restructured our engineering topology by establishing an Acquisition Lane enablement team.
 
-Instead of treating platform modernization as an unfunded background task, we split our engineers into two complementary archetypes:
+Instead of treating platform modernization as an unfunded background task, we split the work into two complementary team responsibilities. In Team Topologies language, the product-facing groups were stream-aligned teams and the modernization group was an enabling team with a clear service relationship to them:
 
 ### 1. Growth Squads (The Explorers):
 * **Mandate:** Maximize conversion efficiency, run A/B experiments, and integrate new partner acquisition channels.
@@ -70,13 +72,13 @@ Instead of treating platform modernization as an unfunded background task, we sp
 
 ### 2. The Enablement Squad (The Stabilizers):
 * **Mandate:** Discover system cartography, decouple fragile boundaries, harden CI/CD verification gates, and build self-service developer tooling.
-* **Operating Contract:** Enablement acts as internal consultants and platform multipliers. They do not own end-user features; they own the safety and velocity of the Growth squads.
+* **Operating Contract:** Enablement acts as an internal capability-building partner and platform multiplier. It does not become the permanent owner of every end-user feature. It helps the Growth squads understand and safely cross difficult boundaries, then hands capability and ownership back to them.
 
 ---
 
 ## 3. The 3 Core Responsibilities of an Enablement Squad
 
-An effective Enablement squad is not a passive DevOps team that handles Jira tickets; it is an active architectural strike team.
+An effective Enablement squad is not a passive ticket queue or a permanent architectural strike team. It is a time-bounded, collaborative capability-building function that works alongside the teams it serves.
 
 ```
 +-------------------------------------------------------------------------+
@@ -110,7 +112,7 @@ Never evaluate an Enablement squad by story points completed. Measure them by **
 * **Change Failure Rate:** Did incidents caused by feature releases decrease across all lanes?
 * **Cross-Team Blockers:** Did Growth squad pull requests stall waiting on infrastructure approvals?
 
-At OneMain Financial, establishing ACQ Enablement unblocked four parallel feature streams, eliminated recurring outage cascades, and restored developer morale across the acquisition organization.
+At OneMain Financial, establishing the enablement team unblocked four parallel feature streams, eliminated recurring outage cascades, and restored developer morale across the acquisition organization.
 
 ---
 

@@ -179,7 +179,7 @@ flowchart TD
 
 The technical form changes by situation. It might be a working group for
 OpenTelemetry, an SME network for Communities of Practice, a boundary team for
-ACQ Enablement, an incident review loop, or a coordination mechanism around an
+an Acquisition Lane enablement team, an incident review loop, or a coordination mechanism around an
 event bus, a domain gateway, governance, or security remediation.
 
 The operating principle remains stable: create a communication structure that

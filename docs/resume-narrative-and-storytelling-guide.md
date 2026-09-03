@@ -151,7 +151,7 @@ For candidate storytelling, cover notes, and executive pitch briefs, the reposit
 When applying to specific job leads, AI agents and peer systems synthesize a 1-page executive pitch memo:
 
 1. **Step 1 (Hook / Act 3 Offering):** Diagnose the hiring company's platform risk (such as monolith refactoring, high concurrency, or distributed tracing) and state candidate value as a Principal IC who de-risks complex transitions.
-2. **Step 2 (Proofs / Act 2 Crucible):** Select 2 to 3 matching historical outcomes (for example: Speedfunds instant loan funding, 7 acquisition channels mapped, 5-phase PII deletion engine across 30+ tables, or 4% silent traffic loss elimination).
+2. **Step 2 (Proofs / Act 2 Crucible):** Select 2 to 3 matching historical outcomes (for example: instant loan funding, seven acquisition channels mapped, a five-phase privacy deletion engine, or elimination of a 4% silent traffic loss).
 3. **Step 3 (Operating Philosophy / Act 1 Foundation):** Ground in System Cartography (mapping state transitions before writing invasive code), automated verification gates, and durable team enablement.
 4. **Step 4 (Peer Call-to-Action):** Offer a 20-minute direct, peer-level technical conversation on architecture and platform stability.
 

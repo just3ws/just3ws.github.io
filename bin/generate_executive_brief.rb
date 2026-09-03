@@ -142,13 +142,13 @@ markdown_content = <<~MARKDOWN
   ## 🏗️ Direct Architectural Match & Evidence
 
   ### 1. High-Consequence Platform Architecture & Modernization
-  * **Acquisition Lane Architecture (OneMain Financial):** Appointed Software Architect for an acquisition engine processing hundreds of millions in financial throughput. Mapped seven heterogeneous ingress channels, refactored multi-step Rails state machines, and decoupled service boundaries between Acquisition and Originations.
+  * **Acquisition Lane Architecture (OneMain Financial):** Appointed Software Architect for the customer-facing application and account workflow, processing hundreds of millions in financial throughput. Mapped seven heterogeneous ingress channels, refactored multi-step Rails state machines, and decoupled service boundaries between Acquisition and Originations.
   * **Database Archaeology & Safety:** Architected an automated 5-phase PII remediation deletion engine across 30+ tables, safely purging legacy orphan records under production traffic without table locks.
   * **Craftsmanship Foundations:** Production Ruby on Rails expertise (2.x through 8.x), strict TDD discipline, and relational data modeling in PostgreSQL.
 
   ### 2. Deep Observability, Distributed Tracing & Incident Command
   * **Enterprise Trace Deployment:** Led the enterprise OpenTelemetry deployment across distributed Rails services, MuleSoft APIs, and Mainframe backends. Standardized W3C trace context headers to bridge siloed logs into causal event chains.
-  * **Eliminating Silent Outages:** Diagnosed and eliminated a persistent CookieOverflow defect that silently dropped 4% of digital loan applications during offer selection and e-signing, implementing custom rescue middleware and migrating Rails session storage to AWS DynamoDB.
+  * **Eliminating Silent Outages:** Diagnosed and eliminated a persistent session-cookie overflow defect that silently dropped 4% of digital loan applications during offer selection and e-signing, implementing custom rescue middleware and migrating Rails session storage to AWS DynamoDB.
   * **Community Enablement:** Founded Geekfest@OMF and the weekly OpenTelemetry Working Group, scaling cross-lane participation to 40+ engineers before transitioning ongoing facilitation sustainably to SRE.
 
   ### 3. Agent Tooling, Telemetry & Developer Acceleration
