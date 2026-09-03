@@ -29,7 +29,7 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Led modernization of complex customer workflows, resolved a silent application-completion defect, and established distributed observability across application and integration boundaries.
+**Target Focus:** Led modernization of the Acquisition (ACQ) Lane, the digital front door for customer applications and account workflows, delivered the Speedfunds instant disbursement workflow, applied Architecture Discovery to a silent application-completion defect, and aligned distributed observability with SRE operations.
 
 **Key Outcomes:**
 - Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.

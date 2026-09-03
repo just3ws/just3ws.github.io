@@ -41,7 +41,7 @@ OpenTelemetry Working Group Leadership & Governance, Distributed Trace Context P
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Established distributed observability across application and integration boundaries, connecting system signals to incident response and safer change.
+**Target Focus:** Founded and led the OpenTelemetry Working Group, establishing distributed observability across application and integration boundaries and connecting system signals to incident response and safer change.
 
 **Key Outcomes:**
 - Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.

@@ -29,7 +29,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 
 **January 2021 - February 2026** | Remote
 
-**Target Focus:** Built practical AI prototypes with a hackathon team, introduced local-first workflows, and helped establish safer ways to apply emerging tools to platform work.
+**Target Focus:** Built practical AI prototypes with a hackathon team, introduced local-first workflows through Geekfest@OMF, and helped establish safer ways to apply emerging tools to platform work.
 
 **Key Outcomes:**
 - Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.
