@@ -29,6 +29,7 @@ group :development do
   gem 'dry-validation', '~> 1.10'
   gem 'image_optim', '~> 0.31'
   gem 'image_optim_pack', '~> 0.6'
+  gem 'sqlite3', '~> 2.0'
 end
 
 gem 'faraday-retry', '~> 2.4'
