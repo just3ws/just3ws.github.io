@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-09-02 20:57'
-updated_date: '2026-09-03 00:05'
+updated_date: '2026-09-03 00:07'
 labels:
   - timeline
   - visualization
@@ -99,6 +99,8 @@ Added a domain-span layer with just3ws.com, ugtastic.com, ugl.st, ironlanguages.
 2026-09-02: User identified a no-signal era as a meaningful timeline feature. The waterfall must represent quiet intervals without equating absent public artifacts with inactivity, failure, or personal collapse. Future artifact spans should distinguish no public signal, quiet interval, and unobserved interval based on evidence coverage.
 
 2026-09-02: User defined momentous milestones as vertical gates through the waterfall. These markers provide historical context across concurrent lanes. Initial public-safe anchors will include Y2K, Agile Manifesto, 9/11, Facebook, Twitter, cloud-era launches, iPhone, Android, 2008 financial crisis, COVID, and selected community movements. Broad events remain ranges where appropriate.
+
+Implemented and built the contextual-gate overlay. Selectable vertical markers now cross the waterfall for Y2K, Agile Manifesto, September 11, Facebook, Twitter, cloud platforms, iPhone, Android, the 2008 financial crisis, COVID-19 disruption, and the Software Craftsmanship movement. The detail panel states that context is not causation. Jekyll build passed across 1176 pages, accessibility audit reported 0 warnings, and the generated timeline script passed syntax validation. Local install completed; nginx reload remains dependent on interactive local authorization.
 <!-- SECTION:NOTES:END -->
 
 ## Comments
