@@ -1,10 +1,10 @@
 ---
 id: TASK-281
 title: Add local public-surface review queue
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-09-03 01:18'
-updated_date: '2026-09-03 01:18'
+updated_date: '2026-09-03 01:19'
 labels:
   - security
   - editorial
@@ -26,19 +26,19 @@ Provide a local-only, redacted review queue for public-surface audit findings. T
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 A local ignored report is generated in tmp and includes stable finding IDs, category, risk, confidence, source file and line, redacted excerpt, and decision state.
-- [ ] #2 The report separates ordinary findings, author recollection quarantine, and source-backed recorded uncertainty.
-- [ ] #3 The queue supports recording one of pending, verify, rewrite, generalize, recorded, or hold without storing raw sensitive values.
-- [ ] #4 The strict gate fails for unresolved high-risk or quarantined findings and passes only when each such item has an allowed recorded decision.
-- [ ] #5 The report contains actionable source links or file and line references for each item.
-- [ ] #6 Regression tests cover report generation, stable IDs, redaction, and decision filtering.
-- [ ] #7 Documentation explains where review occurs and confirms that the queue is local-only and excluded from publication.
-- [ ] #8 Focused tests, lint, and the audit pass.
+- [x] #1 A local ignored report is generated in tmp and includes stable finding IDs, category, risk, confidence, source file and line, redacted excerpt, and decision state.
+- [x] #2 The report separates ordinary findings, author recollection quarantine, and source-backed recorded uncertainty.
+- [x] #3 The queue supports recording one of pending, verify, rewrite, generalize, recorded, or hold without storing raw sensitive values.
+- [x] #4 The strict gate fails for unresolved high-risk or quarantined findings and passes only when each such item has an allowed recorded decision.
+- [x] #5 The report contains actionable source links or file and line references for each item.
+- [x] #6 Regression tests cover report generation, stable IDs, redaction, and decision filtering.
+- [x] #7 Documentation explains where review occurs and confirms that the queue is local-only and excluded from publication.
+- [x] #8 Focused tests, lint, and the audit pass.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -57,4 +57,18 @@ Provide a local-only, redacted review queue for public-surface audit findings. T
 
 <!-- SECTION:NOTES:BEGIN -->
 Task entered In Progress. Current CLI output is not a sufficient judgment surface. This task adds a local-only queue without publishing review findings.
+
+Added local ignored report queue at tmp/public-surface-audit with report.json, README.md, and decisions.json. Reports contain stable IDs and redacted source references.
+
+Added --decide ID=DECISION with validated decisions: pending, verify, rewrite, generalize, recorded, hold. Strict publication behavior treats rewrite, generalize, and recorded as completed public-safe actions; hold remains blocking.
+
+Verified isolation: git check-ignore maps all queue files to .gitignore tmp/, Jekyll _config excludes tmp, and no _site copy exists.
+
+Verification: 7 focused RSpec examples pass, Markdown lint passes across 450 files, syntax and diff checks pass, normal full audit exits 0, strict gate exits 1 while unresolved findings remain.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Built the local-only judgment surface for public-surface review. The audit now writes redacted JSON and Markdown reports under ignored tmp/public-surface-audit, assigns stable finding IDs, records only decisions and timestamps, and provides source file and line references. The strict gate consumes decisions and remains blocked for pending, verify, or hold states on high-risk and quarantined material. Source-backed recorded uncertainty remains informational. Isolation was verified through git ignore rules, Jekyll exclusion, and absence from _site. Seven focused RSpec examples, Markdown lint, syntax checks, and the normal audit pass. The strict gate remains intentionally red until human review is complete.
+<!-- SECTION:FINAL_SUMMARY:END -->
