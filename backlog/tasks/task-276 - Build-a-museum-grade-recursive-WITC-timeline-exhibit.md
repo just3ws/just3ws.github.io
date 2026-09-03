@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@Codex'
 created_date: '2026-09-02 20:57'
-updated_date: '2026-09-02 23:42'
+updated_date: '2026-09-03 00:05'
 labels:
   - timeline
   - visualization
@@ -77,6 +77,8 @@ Design direction:
 Primary files: timeline/index.html, _sass/_p_timeline.scss, tests/layout.spec.js. Reuse docs/witc-archive-atlas.json and _data/timeline_archive.json without changing their schemas.
 
 Add a domain-registration and domain-use layer to the waterfall view. Separate current canonical domain, historical project domains, and candidate domains whose ownership is not yet proven. Use evidence links, Wayback captures, and explicit confidence labels so registration, use, and ownership are never conflated. Style the layer using trace-waterfall conventions: spans, lanes, overlap, gaps, and drill-down evidence.
+
+Add a vertical contextual-gate overlay to the trace waterfall. Represent historical conditions, industry movements, platform shifts, and personal or project gates as selectable markers that intersect the horizontal lanes. Preserve neutral descriptions, date precision, source links, and an explicit no-causation rule.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
@@ -95,6 +97,8 @@ Rebuilt and published the generated output to /opt/homebrew/var/www/just3ws.gith
 Added a domain-span layer with just3ws.com, ugtastic.com, ugl.st, ironlanguages.net, and the historical whoistech.com signal. Each lane states whether evidence shows registration, public use, project authorship, or only a historical configuration note. Current RDAP records verified for just3ws.com, ugtastic.com, and whoistech.com on 2026-09-02.
 
 2026-09-02: User identified a no-signal era as a meaningful timeline feature. The waterfall must represent quiet intervals without equating absent public artifacts with inactivity, failure, or personal collapse. Future artifact spans should distinguish no public signal, quiet interval, and unobserved interval based on evidence coverage.
+
+2026-09-02: User defined momentous milestones as vertical gates through the waterfall. These markers provide historical context across concurrent lanes. Initial public-safe anchors will include Y2K, Agile Manifesto, 9/11, Facebook, Twitter, cloud-era launches, iPhone, Android, 2008 financial crisis, COVID, and selected community movements. Broad events remain ranges where appropriate.
 <!-- SECTION:NOTES:END -->
 
 ## Comments
