@@ -97,7 +97,7 @@ DETECTORS = [
                pattern: /(?<!\d)(?:\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}(?!\d)/,
                explanation: "A phone number is directly identifying. Keep it only when it is an intentional public contact channel."),
   Detector.new(id: "financial-or-government-identifier", category: "personal-data", risk: "critical", confidence: "medium",
-               pattern: /\b(?:SSN|social\s+security|MRN|medical\s+record\s+number)\b.{0,40}\b\d{3}[ -]\d{2}[ -]\d{4}\b|\b(?:account|routing|credit\s+card|tax\s+id|passport)\b.{0,40}\b\d{4,}\b/i,
+               pattern: /\b(?:SSN|social\s+security|MRN|medical\s+record\s+number)\b.{0,40}\b\d{3}[ -]\d{2}[ -]\d{4}\b|\b(?:routing|credit\s+card|tax\s+id|passport|account\s+(?:number|no\.?|id))\b.{0,40}\b\d{4,}\b/i,
                explanation: "A financial or government identifier requires immediate removal or verification against the public source."),
   Detector.new(id: "health-or-care-context", category: "private-context", risk: "high", confidence: "medium",
                pattern: /\b(?:diagnos(?:is|ed)|medical|hospital|NICU|pneumonia|treatment|medication|therapy|health\s+condition|patient|care\s+location)\b/i,

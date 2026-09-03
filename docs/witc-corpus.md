@@ -6,7 +6,7 @@ type: guide
 
 # WITC corpus
 
-The WITC corpus is a local, searchable representation of the archive rooted at `/Volumes/Dock_1TB/WITC`. It uses the same portable shape as the ChatGPT archive: SQLite documents, an FTS5 index, optional threads, and deterministic command-line retrieval.
+The WITC corpus is a local, searchable representation of the archive configured through `WITC_CORPUS_DIR`. It uses the same portable shape as the ChatGPT archive: SQLite documents, an FTS5 index, optional threads, and deterministic command-line retrieval.
 
 The corpus is intentionally separate from `career_datalake.json`. WITC contains interviews, captions, metadata, source repositories, production notes, generated exports, and historical backups. Keeping it as a named corpus preserves provenance and prevents duplicate physical artifacts from overwriting canonical career entities.
 

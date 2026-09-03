@@ -263,6 +263,9 @@ test.describe('Site Layout and Aesthetics', () => {
     await expect(page.getByRole('heading', { name: /How did UGtastic grow from community conversations/ })).toBeVisible();
     await expect(page.locator('#timeline-story-summary')).toContainText('The timeline separates when conversations happened from when their files were later processed.');
     await expect(page.locator('#timeline-story-summary').getByRole('link', { name: 'Follow the evidence' })).toHaveAttribute('href', '#ledger-heading');
+    await expect(page.locator('#timeline-story-evidence')).toContainText('Start with the evidence');
+    await expect(page.locator('#timeline-story-evidence-list .timeline-story-evidence-lane')).toHaveCount(4);
+    await expect(page.locator('.timeline-visual-shell')).not.toHaveAttribute('tabindex', '0');
     await expect(page.locator('.timeline-era-block').first()).toBeVisible();
     await expect(page.locator('#timeline-visual .timeline-lane-primary')).toHaveCount(4);
     await expect(page.locator('#timeline-visual .timeline-lane-optional')).toHaveCount(0);

@@ -82,6 +82,15 @@ body_class: timeline-network-page
       <p class="timeline-summary-links"><a href="/interviews/">Browse the interviews</a> · <a href="/archive-atlas/">Read the archive method</a> · <a href="#ledger-heading">Follow the evidence</a></p>
     </aside>
 
+    <section class="timeline-story-evidence" id="timeline-story-evidence" aria-labelledby="story-evidence-heading">
+      <div>
+        <p class="section-kicker">A readable route through the map</p>
+        <h3 id="story-evidence-heading">Start with the evidence</h3>
+        <p>These are the same primary story items shown in the canvas. Open a record here without finding a mark or scrolling sideways.</p>
+      </div>
+      <div id="timeline-story-evidence-list" class="timeline-story-evidence-list"></div>
+    </section>
+
     <div class="timeline-epoch-tabs" id="timeline-epoch-tabs" aria-label="Jump to an archive chapter"></div>
 
     <fieldset class="timeline-overlay-controls" id="timeline-overlay-controls">
@@ -112,7 +121,7 @@ body_class: timeline-network-page
       <strong>Current window · 2011 to 2026</strong>
       <span>Focus, hover, or select a mark for context. Select it to open its evidence below.</span>
     </div>
-    <div class="timeline-visual-shell" role="region" aria-label="UGtastic archive timeline" aria-describedby="timeline-canvas-instructions" tabindex="0">
+    <div class="timeline-visual-shell" role="region" aria-label="UGtastic archive timeline" aria-describedby="timeline-canvas-instructions">
       <div class="timeline-axis-note"><span>1999</span><span>2004</span><span>2009</span><span>2014</span><span>2019</span><span>2026</span></div>
       <div class="timeline-visual" id="timeline-visual"></div>
       <p class="timeline-visual-caption">Horizontal position shows the strongest date supported by the public record. The canvas remains expansive so distance can carry meaning. Open space means only that this archive has no dated signal for that lane.</p>
@@ -205,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderEpochs(atlas);
     bindOverlayControls();
     updateZoomControls();
+    renderStoryEvidence();
     renderVisual(atlas);
     renderInterviewEraButtons(interviews);
     renderInterviewCards(interviews, 'ALL');
@@ -300,6 +310,21 @@ document.addEventListener('DOMContentLoaded', () => {
       evidence: segments.flatMap(segment => segment.evidence || []),
       segments
     };
+  }
+
+  function renderStoryEvidence() {
+    const container = document.getElementById('timeline-story-evidence-list');
+    const lanes = timelineSeries.filter(series => series.primary);
+    container.innerHTML = lanes.map(lane => {
+      const items = (lane.segments || []).slice(0, 5);
+      const records = items.map(item => {
+        const date = dateRangeLabel(item);
+        const link = item.url || (item.evidence || []).find(record => record.url)?.url;
+        const label = escapeHtml(item.label || lane.label);
+        return `<li>${link ? `<a href="${escapeHtml(link)}">${label}</a>` : `<strong>${label}</strong>`}<span>${escapeHtml(date)}</span></li>`;
+      }).join('');
+      return `<section class="timeline-story-evidence-lane"><h4>${escapeHtml(lane.label)}</h4><ol>${records || '<li><span>No dated evidence in the current archive projection.</span></li>'}</ol></section>`;
+    }).join('');
   }
 
   function timelineItemFromSeries(series, overrides = {}) {

@@ -172,12 +172,11 @@ unmatched_ugtastic = unmatched_ugtastic_context(UGTASTIC_CONTEXT_PATH)
 external_domains = likely_external_domains(host_counts)
 witc = witc_analysis
 
-vol_doc_exists = Dir.exist?(ENV.fetch("MIKE_ARCHIVE_DOCS_DIR", ""))
-dock_candidates = [
-  ENV.fetch("MIKE_ARCHIVE_DOCS_DIR", "configured archive root / documents"),
-  ENV.fetch("WITC_CORPUS_DIR", "configured archive root / WITC"),
-  ENV.fetch("VIMEO_VIDEOS_DIR", "configured archive root / vimeo")
-].select { |path| Dir.exist?(path) }
+configured_sources = {
+  "documents" => ENV.fetch("MIKE_ARCHIVE_DOCS_DIR", "").then { |path| !path.empty? && Dir.exist?(path) },
+  "WITC corpus" => ENV.fetch("WITC_CORPUS_DIR", "").then { |path| !path.empty? && Dir.exist?(path) },
+  "Vimeo videos" => ENV.fetch("VIMEO_VIDEOS_DIR", "").then { |path| !path.empty? && Dir.exist?(path) }
+}
 
 dataset = {
   "generated_at" => Time.now.utc.strftime("%Y-%m-%d %H:%M:%S UTC"),
@@ -191,11 +190,7 @@ dataset = {
   "media_asset_urls" => media_urls,
   "domain_frequency" => host_counts.sort_by { |host, count| [-count, host] }.to_h,
   "external_domain_candidates" => external_domains.map { |host, count| { "host" => host, "count" => count } },
-  "volumes_doc" => {
-    "requested_path" => "/Volumes/Doc",
-    "exists" => vol_doc_exists,
-    "nearby_candidates" => dock_candidates
-  },
+  "configured_source_status" => configured_sources,
   "witc_output_analysis" => witc
 }
 
@@ -246,15 +241,9 @@ external_domains.first(30).each do |host, count|
 end
 md << "\n"
 
-md << "## `/Volumes/Doc` Check\n\n"
-if vol_doc_exists
-  md << "- `/Volumes/Doc` exists and can be scanned in a follow-up pass.\n"
-else
-  md << "- `/Volumes/Doc` was not found on this machine.\n"
-  unless dock_candidates.empty?
-    md << "- Nearby likely source locations found:\n"
-    dock_candidates.each { |path| md << "  - `#{path}`\n" }
-  end
+md << "## Configured local source checks\n\n"
+configured_sources.each do |label, present|
+  md << "- #{label}: #{present ? 'available' : 'not configured or not present'}\n"
 end
 
 md << "\n## WITC `_output` Preservation Candidates\n\n"

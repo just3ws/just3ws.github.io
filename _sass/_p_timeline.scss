@@ -275,6 +275,15 @@
 .timeline-story-summary h3 { max-width: 60rem; margin: 0; color: #fffdf7; font-size: clamp(1.25rem, 2.3vw, 2rem); line-height: 1.3; }
 .timeline-story-summary > p:not(.section-kicker) { max-width: 62rem; margin: 1rem 0 0; color: rgba(244, 240, 230, 0.82); font-size: 0.92rem; line-height: 1.65; }
 .timeline-story-summary a { color: #9ce4d7; }
+.timeline-story-evidence { display: grid; grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr); gap: 2rem; margin-top: 1.25rem; padding: 1.25rem; border: 1px solid rgba(244, 240, 230, 0.2); background: rgba(244, 240, 230, 0.06); color: #fffdf7; }
+.timeline-story-evidence h3 { margin: 0; color: #fffdf7; font-size: clamp(1.15rem, 2vw, 1.6rem); }
+.timeline-story-evidence p:not(.section-kicker) { max-width: 32rem; margin: 0.65rem 0 0; color: rgba(244, 240, 230, 0.76); font-size: 0.82rem; line-height: 1.55; }
+.timeline-story-evidence-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem 1.25rem; }
+.timeline-story-evidence-lane { min-width: 0; }
+.timeline-story-evidence-lane h4 { margin: 0 0 0.35rem; color: #9ce4d7; font: 800 0.7rem/1.3 system-ui, sans-serif; letter-spacing: 0.07em; text-transform: uppercase; }
+.timeline-story-evidence-lane ol { display: grid; gap: 0.3rem; margin: 0; padding-left: 1.1rem; color: rgba(244, 240, 230, 0.82); font-size: 0.75rem; line-height: 1.4; }
+.timeline-story-evidence-lane a { color: #fffdf7; text-decoration: underline; text-decoration-color: #9ce4d7; text-underline-offset: 0.15em; }
+.timeline-story-evidence-lane span { display: block; color: rgba(244, 240, 230, 0.62); font-size: 0.68rem; }
 .timeline-summary-links { font-weight: 750; }
 
 .timeline-overlay-controls { margin: 0 0 1.4rem; padding: 1rem; border: 1px solid rgba(244, 240, 230, 0.24); }
@@ -425,6 +434,8 @@
 .timeline-method-note p { max-width: 55rem; }
 
 @media (max-width: 800px) {
+  .timeline-story-evidence { grid-template-columns: 1fr; }
+  .timeline-story-evidence-list { grid-template-columns: 1fr; }
   .timeline-hero { min-height: 0; padding-block: 4rem 5rem; }
   .timeline-hero-orbit { top: 70%; right: -7rem; width: 26rem; opacity: 0.65; }
   .timeline-orientation { grid-template-columns: 1fr; }
