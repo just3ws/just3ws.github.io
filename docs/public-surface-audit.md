@@ -20,6 +20,11 @@ project files, backlog routes, and AI pages missing quarantine metadata.
 It redacts matched values in its local report. It never reads environment files,
 credentials, private handoffs, dependency trees, or build caches.
 
+The release suite also runs `validate_public_positioning.rb`. That smaller
+deterministic gate protects reader-facing titles and terminology from drifting
+back toward opaque internal names during artifact generation. It does not scan
+or rewrite historical transcripts.
+
 ## The release loop
 
 ```mermaid
@@ -45,6 +50,7 @@ ruby bin/audit_public_surface.rb --help
 ruby bin/audit_public_surface.rb --json
 ruby bin/audit_public_surface.rb --strict
 ruby bin/audit_public_surface.rb --man
+ruby bin/validate_public_positioning.rb
 ```
 
 The report lives under `tmp/public-surface-audit/` and is intentionally local.

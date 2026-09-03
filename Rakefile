@@ -120,6 +120,7 @@ namespace :validate do
   desc 'Run all validation scripts'
   task all: [
     :surface_exposure,
+    :public_positioning,
     :'audit:public_surface',
     :data_uniqueness,
     :data_integrity,
@@ -159,6 +160,10 @@ namespace :validate do
 
   task :surface_exposure do
     sh 'ruby ./bin/audit_surface_exposure.rb'
+  end
+
+  task :public_positioning do
+    sh 'ruby ./bin/validate_public_positioning.rb'
   end
 
   task :prose_humanity do
