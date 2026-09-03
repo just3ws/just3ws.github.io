@@ -7,6 +7,13 @@ description: Audits technical prose across site Markdown, YAML data, resume, and
 
 Use this skill whenever authoring, editing, or evaluating resume content, case studies, technical summaries, executive pitch briefs, or website copy on `just3ws.com`. It ensures all writing is **human-centered, neuroinclusive, plain-spoken, and free of hyper-clinical AI jargon**.
 
+Treat the archive and the hiring surface differently. A personal passage can be
+TMI without being harmful or improper. Preserve the author's voice and the
+historical record when the detail is theirs to tell. Recommend subtraction or
+generalization when a detail adds exposure but not meaning. Escalate only when it
+creates a concrete privacy, consent, health, identification, or professional
+reputation risk.
+
 ---
 
 ## 🎯 Core Principles of Humane Technical Writing
@@ -44,3 +51,23 @@ Use this skill whenever authoring, editing, or evaluating resume content, case s
 3. **Refactor & Verify**:
    - Rewrite any flagged jargon or high-cognitive-load sentences into plain, grounded language.
    - Run `verify_site_contracts` to ensure formatting and link parity pass 100% clean.
+
+## Editorial boundary pass
+
+Before changing a passage, classify its destination:
+
+- **Archive:** Keep meaningful dates, quotations, and technical history when the
+  source is public and the detail is yours to publish.
+- **Hiring surface:** Lead with current capability, outcomes, and scope. Remove
+  unnecessary graduation dates, total-career-year claims, and exact tenure.
+- **Personal essay:** Keep the lesson and voice. Generalize family, health,
+  financial, and life-stage details that do not carry the lesson.
+- **Third-party remembrance or interview:** Confirm that names, health details,
+  family details, and contact information are appropriate to reproduce. A public
+  source does not require reproducing every detail from it.
+
+Run a rotated read before publication. Read the passage as the author, a busy
+reader, a person named in it, a recruiter, and a search or social preview. Ask
+whether each view can find the context, evidence, correction path, and a clear
+way to connect. Do not confuse emotional vividness with reader value, and do not
+confuse personal awkwardness with an ethical violation.
