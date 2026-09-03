@@ -160,7 +160,7 @@ Recorded, and later restored, an archive of 214 technical interviews with practi
 
 ## Earlier Experience
 
-**1999 - 2011**
+**Selected earlier experience**
 
 Built and operated enterprise integrations, transactional systems, and early web products across consulting and product organizations, establishing the production discipline and community-centered craftsmanship that inform my leadership today.
 

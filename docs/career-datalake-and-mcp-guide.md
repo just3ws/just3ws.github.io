@@ -6,7 +6,7 @@ This manual documents the architecture, data structures, CLI options, MCP tools,
 
 ## 1. System Architecture & Capabilities
 
-The CareerOS Datalake synthesizes Mike Hall's entire **20+ year technical career archive** into queryable, deterministic datasets:
+The CareerOS Datalake synthesizes Mike Hall's technical career archive into queryable, deterministic datasets:
 
 * **29 Positions:** From early web & .NET systems (2006) to Groupon, ActiveCampaign, OneMain Financial, and 2026 Local AI Orchestration.
 * **136 Technologies Tracked:** Provenance matrix recording first active year, last active year, role occurrences, and context.

@@ -85,7 +85,7 @@ To allow AI agents across sessions, CLI tools, and different workspaces (Antigra
   - High-density Markdown representation of candidate experience optimized for prompt context injection.
 
 * **Timeline Narrative**: `GET https://just3ws.localhost/exports/history.md`
-  - Complete 20+ year technical career progression.
+  - Complete technical career progression.
 
 * **Case Studies & Cartography**: `GET https://just3ws.localhost/exports/portfolio.md`
   - 4D System Cartography case studies (OneMain Financial, Phalanx Duel, WWWorkRemote).
@@ -144,4 +144,3 @@ To prevent race conditions, duplicate LLM token expenditure, and state drift dur
   - Maintains peer heartbeats (`agent-just3ws`, `agent-wwworkremote`).
 * **Sync CLI**: `bin/sync_career_peer.rb`
   - Atomically updates candidate state under lock and broadcasts `PROFILE_SYNC_EVENT` to the `job-leads` channel.
-

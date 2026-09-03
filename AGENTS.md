@@ -108,7 +108,7 @@ does not require a `.agents/skills/` file to exist.
 
 ## Career Datalake & MCP Server Interface
 
-This repository provides full-corpus deterministic query interfaces over 20+ years of career history (29 positions, 136 skills, 156 blog posts, 211 interviews, and 402 knowledge graph nodes):
+This repository provides full-corpus deterministic query interfaces over the career archive (29 positions, 136 skills, 156 blog posts, 211 interviews, and 402 knowledge graph nodes):
 
 * **CLI Query Engine:** `ruby bin/query_career_datalake.rb [options]` (supports `--tech`, `--company`, `--search`, `--archetype`, `--era`, `--interviewee`, `--json`, and `--man`).
 * **MCP Server:** `ruby bin/career_datalake_mcp_server.rb` registered in `mcp.json` (tools: `query_career_history`, `get_technology_provenance`, `get_position_dossier`, `get_archetype_strategy`, `query_oral_history`, `query_transcript`).

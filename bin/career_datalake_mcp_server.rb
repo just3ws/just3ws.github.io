@@ -3,7 +3,7 @@
 
 # bin/career_datalake_mcp_server.rb
 # Model Context Protocol (MCP) Server for CareerOS Datalake & Oral History Archive.
-# Exposes resources and tools over 20+ years of career history, 29 positions,
+# Exposes resources and tools over the career archive, 29 positions,
 # 156 technical articles, 211 developer interviews, and 402-node knowledge graph.
 
 require 'json'
@@ -174,7 +174,7 @@ class CareerDatalakeMCPServer
           tools: [
             {
               name: "query_career_history",
-              description: "Searches across 20+ years of positions, case studies, 156 blog articles, and technical milestones for a keyword or topic.",
+              description: "Searches across positions, case studies, technical articles, and technical milestones for a keyword or topic.",
               inputSchema: {
                 type: "object",
                 properties: {

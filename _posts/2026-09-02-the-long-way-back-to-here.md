@@ -50,13 +50,12 @@ Software Craftsmanship McHenry County was not abandoned because the work stopped
 mattering. I had too much happening at once. Some of it was work. Much of it was
 life. Life events arrive without consulting your roadmap.
 
-I was helping raise three children while beginning a family of my own. Those
-years also included deaths in the family and a period when one of my children
-needed extended medical care. I will keep the private medical and family details
-with the people who lived them.
+I was helping raise a growing family. Those years also included grief and a
+family health crisis. I will keep the private medical and family details with
+the people who lived them.
 
-In that period, I remember a winter drive between home and care. Home to the
-hospital. Hospital to home. Back and forth through the cold.
+In that period, I remember repeated winter travel between home and care. Back
+and forth through the cold.
 
 That motion is still one of the best pictures I have for that period of my life.
 There was a here. Then there was a there. Then there was the road between them.
@@ -117,8 +116,8 @@ knowing what I was doing. Someone visiting the house looked at DOS with some
 disdain and said he used Unix. I asked what he used Unix for. I was stubborn before
 I was knowledgeable. I did not know the path yet, but I was already looking for it.
 
-In sixth grade, I think, I made little halfpipe animations in BASIC on an Apple IIe.
-In high school, I used Macintosh computers. I remember the clean rooms, the air
+Early in my education, I made little halfpipe animations in BASIC on an Apple IIe.
+Later, I used Macintosh computers. I remember the clean rooms, the air
 conditioning, and the ceremony of opening a file. Sometimes the teacher figured it
 out alongside us.
 
@@ -127,10 +126,10 @@ a switch, a manual, a person trying to understand the next step.
 
 ## The shop was a laboratory
 
-At the end of the 1990s, I was working in my father’s shop. I had assembled
+Early in my career, I was working in my father’s shop. I had assembled
 computers on contract, including work I remember as being for GE Medical, and that
-work had dried up. I was doing truck maintenance and odd jobs. I worked for room,
-board, and food.
+work had dried up. I was doing truck maintenance and odd jobs under difficult
+financial constraints.
 
 The work was real. A truck came back and there was a sequence waiting for me:
 
@@ -166,9 +165,9 @@ My father told me I would come back crawling and begging for him to take me back
 
 I never did.
 
-That does not mean I never returned to him as a son. Aneta, my partner and the
-mother of my children, persisted when I was not ready. We reconnected before he
-died. She helped make me more complete than I could have been alone.
+That does not mean I never returned to him as a son. My partner persisted when I
+was not ready. We reconnected before he died. She helped make me more complete
+than I could have been alone.
 
 I negotiated training with C.H. Robinson. The original plan involved MCSE training.
 The training was poor, so I pushed for a refund and turned toward Java instead. That

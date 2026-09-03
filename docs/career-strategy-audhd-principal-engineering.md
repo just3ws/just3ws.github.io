@@ -27,7 +27,7 @@ AuDHD combines ADHD (novelty-seeking, interest-driven intensity, high agency) an
 | **Deep Hyperfocus** | **System Cartography:** Unraveling multi-million-line legacy codebases, mapping state dependencies, and solving complex architectural puzzles that overwhelm standard dev cycles. |
 | **Pattern Recognition & Edge-Case Processing** | **Deterministic Engineering & Safety:** An intuitive radar for subtle race conditions, failure modes, and state corruption before code reaches production. |
 | **Direct & Truth-Seeking Communication** | **Architectural Clarity & Transparency:** Writing explicit, unambiguous ADRs and design documentation so teams never operate on unstated assumptions. |
-| **Interest-Driven Technical Curiosity** | **Deep Craftsmanship & Mastery:** 20-year commitment to mastering runtimes, software history, and platform resilience. |
+| **Interest-Driven Technical Curiosity** | **Deep Craftsmanship & Mastery:** Sustained commitment to mastering runtimes, software history, and platform resilience. |
 
 ---
 

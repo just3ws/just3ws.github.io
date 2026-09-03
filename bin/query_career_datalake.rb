@@ -22,7 +22,7 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: bin/query_career_datalake.rb [options]"
   opts.separator ""
-  opts.separator "CareerOS Datalake Query Engine (20+ Years, 29 Roles, 136 Skills, 156 Writings, 211 Interviews)"
+  opts.separator "CareerOS Datalake Query Engine (29 Roles, 136 Skills, 156 Writings, 211 Interviews)"
   opts.separator ""
   opts.separator "Query Options:"
 
@@ -83,7 +83,7 @@ if options[:man]
 
      DESCRIPTION
          query_career_datalake.rb provides real-time, deterministic query access
-         over the entire 20+ year technical career archive in just3ws.github.io.
+         over the technical career archive in just3ws.github.io.
          It synthesizes 29 positions, 136 technology skills, 156 blog articles (2006-2026),
          211 technical interviews/transcripts, 4D system cartography case studies, and
          5 tailored archetype reader empathy strategies into structured output.

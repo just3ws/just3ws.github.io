@@ -58,6 +58,15 @@ exposure rather than understanding.
 - Workplace lessons remain public-safe. Internal identifiers, customer details, and unresolved disputes do not become public examples by default.
 - A public archive can preserve a source without publishing every detail from that source.
 - A disclosure note explains the curation. It does not replace the curation.
+- Hiring-facing pages lead with current capability, relevant outcomes, and scope.
+  They do not need graduation dates, birth dates, total-career-year claims, or
+  exact tenure in older roles.
+- Historical dates remain appropriate in the archive when they establish the
+  provenance or sequence of a public event. The archive is not the same surface
+  as a resume.
+- Use Software Engineer as the identity. Use Staff or Principal only when
+  describing the scope of a role, a target posting, or a documented historical
+  title.
 
 This policy is an editorial safety standard, not legal advice. When the boundary
 is unclear, hold the detail for review and publish the lesson without it.

@@ -372,7 +372,8 @@ Evidence and publication status:
 
 ## Editorial guardrails
 
-- Keep the public title anchor as **Principal Software Engineer**.
+- Keep the public identity anchor as **Software Engineer**. Describe Staff or
+  Principal scope through outcomes and ownership when relevant.
 - Use canonical names such as OpenTelemetry, OTel WG, ACQ Enablement, and
   Geekfest@OMF.
 - Do not invent metrics or turn an assistant's inference into historical fact.

@@ -12,9 +12,11 @@ In software engineering, Mike Hall operates by that exact discipline:
 
 ---
 
-## 2. The 20-Year Discipline: Building High-Trust Community Wherever You Operate
+## 2. The Discipline: Building High-Trust Community Wherever You Operate
 
-Technical mastery alone does not transform organizations. Across two decades, Mike has paired deep individual technical execution with a continuous practice of founding and nurturing open, high-trust engineering communities:
+Technical mastery alone does not transform organizations. Mike has paired deep
+individual technical execution with a continuous practice of founding and
+nurturing open, high-trust engineering communities:
 
 | Era / Company | Community & Enablement Initiative | Impact & Durability |
 | :--- | :--- | :--- |

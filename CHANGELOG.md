@@ -27,7 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 - **4D System Cartography Framework:** Published architectural modernization methodology at `/panoramic-view/` and `/case-studies/`.
-- **Career Datalake & MCP Server:** Released `career_datalake_mcp_server.rb` exposing 20+ years of career history, skills, and oral history via MCP tools.
+- **Career Datalake & MCP Server:** Released `career_datalake_mcp_server.rb` exposing career history, skills, and oral history via MCP tools.
 - **Automated Resume Quality & ATS Suite:** Added `bin/validate_resume_quality.rb` and `bin/benchmark_ats_keywords.rb` asserting >=85% composite score across 5 Staff+/Principal archetypes.
 - **Wayfinder Executive Brief Generator:** Built `bin/generate_executive_brief.rb` with vector PDF compilation for tailored 1-page recruiter packages.
 

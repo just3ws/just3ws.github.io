@@ -1,4 +1,4 @@
-# CODEX.md — Resume Evaluation & Editing Contract
+# CODEX.md: Resume Evaluation & Editing Contract
 
 ## Role
 
@@ -14,10 +14,10 @@ Optimize for **credibility, clarity, and structural signal**, rejecting emotiona
 
 ## Canonical Positioning
 
-- Use **Principal Software Engineer** as Mike's single current professional
-  title and target role. Do not alternate among `Staff / Principal`,
-  `Staff Engineer`, `Hands-on Director`, `Software Architect`, or invented
-  specialty titles on resume surfaces.
+- Use **Software Engineer** as Mike's identity and public anchor. Staff and
+  Principal describe the scope of a role when relevant, not a separate identity
+  or a claim of status. Do not alternate among inflated or invented specialty
+  titles on core resume surfaces.
 - Treat production systems, platform reliability, legacy modernization,
   observability, and AI-augmented engineering as areas of specialization, not
   competing titles.
@@ -39,14 +39,17 @@ Optimize for **credibility, clarity, and structural signal**, rejecting emotiona
   - *15–50 people*: CTO / VP of Engineering (hands-on architecture + team building).
   - *100–300 people*: Director / Staff Engineer / Team Lead.
   - *500–2,000+ people*: Principal Software Engineer / Technical Lead.
-- **Single Public Anchor**: `Principal Software Engineer` remains the universal anchor across all public resume surfaces to prevent overqualification flags when applying for hands-on Team Lead / Staff roles and underqualification flags when applying for executive roles.
+- **Single Public Anchor**: `Software Engineer` remains the universal identity
+  across core public surfaces. Scope is shown through outcomes, ownership,
+  technical leverage, and influence. Target-specific resume variants may still
+  use the title from the role they are calibrated for.
 - **Role Calibration via Executive Briefs**: Use target executive pitch briefs (`exports/briefs/`) and cover letters (not resume title edits) to calibrate scope for each target role (Team Lead, Staff IC, or CTO/Director).
 - **30-Second Framing Strategy**: When asked why applying across role tiers, frame scope as scale-dependent: care is given to technical challenge, team leverage, and mission over title badges.
 
 These decisions are durable resume context. Do not reopen or hedge the title
 choice unless Mike explicitly asks to reconsider it.
 
-### Archetype Variant Pages — Explicit Exception
+### Archetype Variant Pages: Explicit Exception
 
 The single-title rule above governs the **canonical resume** (`/`, its
 exports, and `/history/`). The `/resumes/` archetype variants
@@ -256,4 +259,4 @@ This contract encodes the way Staff and Principal hiring committees actually eva
 3. **Credibility is protected.**
    No invented metrics, no inflated authority, no soft language.
 
-With this in place, Codex behaves like a skeptical peer reviewer in a hiring loop—not a copy editor trying to be nice.
+With this in place, Codex behaves like a skeptical peer reviewer in a hiring loop, not a copy editor trying to be nice.

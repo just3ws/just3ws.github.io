@@ -211,7 +211,7 @@ bundle exec rake validate:ats_benchmarks
 ## 10. CareerOS Datalake Query Engine (`bin/query_career_datalake.rb`)
 
 ### Why Use It
-Provides deterministic, instantaneous command-line search across 20+ years of technical history (29 positions, 136 skills, 156 articles, 211 oral history interviews, 4D case studies, and archetype positioning strategies).
+Provides deterministic, instantaneous command-line search across the technical history archive (29 positions, 136 skills, 156 articles, 211 oral history interviews, 4D case studies, and archetype positioning strategies).
 
 ### How to Use It
 ```bash

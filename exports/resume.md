@@ -1,8 +1,8 @@
 # Mike Hall
-Principal Software Engineer
+Software Engineer
 
 ## Summary
-Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
+Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.
 
 ## Skills
 - Cross-Team Technical Leadership

@@ -1,5 +1,5 @@
 {% assign seo_title = page.title | default: "Mike Hall" | strip_html | strip_newlines | replace: '"', '' %}
-{% assign seo_description = page.description | default: "Principal Software Engineer focused on system legibility, production reliability, architecture, observability, and safe modernization." | strip_html | strip_newlines | replace: '"', '' | replace: '“', '' | replace: '”', '' %}
+{% assign seo_description = page.description | default: "Software Engineer focused on system legibility, production reliability, architecture, observability, and safe modernization." | strip_html | strip_newlines | replace: '"', '' | replace: '“', '' | replace: '”', '' %}
 {% if page.resume_seo_key %}
   {% assign resume_seo = site.data.resume.profile.seo[page.resume_seo_key] %}
   {% if resume_seo %}

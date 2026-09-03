@@ -1,6 +1,6 @@
 # CareerOS Datalake & UGtastic Archive Model Context Protocol (MCP) Guide
 
-This repository exposes its entire **20+ year engineering datalake** and **211-interview oral history corpus (~456,000 words)** via standard Model Context Protocol (MCP) STDIO servers.
+This repository exposes its engineering datalake and **211-interview oral history corpus (~456,000 words)** via standard Model Context Protocol (MCP) STDIO servers.
 
 Any MCP client: including **Claude Code**, **Claude Desktop**, **Antigravity**, **Cursor**, **Windsurf**, or custom agent pipelines: can connect directly to inspect, query, and reason over Mike Hall's complete career provenance.
 
@@ -18,7 +18,7 @@ The repository configuration is defined in [`mcp.json`](file:///Users/mike/githu
       "args": [
         "/Users/mike/github.com/just3ws/just3ws.github.io/bin/career_datalake_mcp_server.rb"
       ],
-      "description": "Model Context Protocol (MCP) server exposing 20+ years of career datalake history, 29 positions, technology provenance matrix, 156 technical writings, case studies, and reader empathy strategies."
+      "description": "Model Context Protocol (MCP) server exposing career datalake history, positions, technology provenance, technical writing, case studies, and reader empathy strategies."
     },
     "ugtastic-archive": {
       "command": "ruby",
