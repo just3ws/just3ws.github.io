@@ -142,7 +142,10 @@ Panoramic View maps the correspondences and gaps among interested-party understa
 - The visible interface is only the horizon; every actor choice creates a vertical wave through technical and organizational layers.
 - The complete view must show both the journey across time and the repeated descent and return of each interaction.
 - The practical boundary is organizational scope and available time: the same model can continue upstream into supply chain and downstream through the complete data lifecycle.
-- The method was conceived circa 2021–2022; the earliest timestamped exported evidence is from September 2023.
+- Mike Hall conceived Panoramic View circa 2021–2022, drawing on years of
+  production diagnosis, legacy-system ownership, observability, incremental
+  modernization, and organizational knowledge recovery. The earliest
+  timestamped exported evidence is from September 2023.
 
 ### 3. The two-dimensional model
 
