@@ -120,7 +120,7 @@ namespace :validate do
   desc 'Run all validation scripts'
   task all: [
     :surface_exposure,
-    :public_surface,
+    :'audit:public_surface',
     :data_uniqueness,
     :data_integrity,
     :audit_transcripts,

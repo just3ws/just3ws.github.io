@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-09-03T18:38:14Z",
+    "generated_at": "2026-09-03T18:59:40Z",
     "system": "CareerOS Master Datalake",
     "canonical_url": "https://www.just3ws.com/career_datalake.json",
     "endpoints": {
@@ -389,6 +389,15 @@
       "date_precision": "month",
       "id": "activecampaign",
       "summary": "Short-term senior contract on the Contacts team of a large-scale PHP/MySQL CRM platform. Focused on testability, performance, and change safety inside a tightly coupled legacy backend while extending the Ember.js frontend test suite.",
+      "public_summary": "Software Engineer on a large CRM platform, focused on testability, performance, and safer change inside a legacy backend.",
+      "public_highlights": [
+        {
+          "text": "Replaced fragile data-access patterns with structured, testable queries and improved performance."
+        },
+        {
+          "text": "Strengthened automated verification around core customer workflows, enabling safer refactoring."
+        }
+      ],
       "highlights": [
         {
           "text": "Legacy Query Modernization: Replaced ad-hoc global data access with structured, cacheable query patterns in the PHP backend, enabling unit testability and sub-second query execution."
@@ -424,6 +433,15 @@
       "date_precision": "year",
       "id": "agent-tooling",
       "summary": "Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.\n",
+      "public_summary": "Built local-first tools that help engineers and AI systems work with clear context boundaries, observable behavior, and human-reviewed change.",
+      "public_highlights": [
+        {
+          "text": "Built tools that make technical context reusable across sessions without treating generated output as authority."
+        },
+        {
+          "text": "Added observable diagnostics and bounded review steps to keep automated engineering work understandable and reversible."
+        }
+      ],
       "highlights": [
         {
           "text": "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n"
@@ -890,6 +908,24 @@
       "end_day": null,
       "id": "onemain",
       "summary": "Appointed as Senior Technical IC and Software Architecture Lead for the Acquisition lane of a regulated financial enterprise with an executive mandate to untangle multi-channel lending workflows, decouple boundaries between Acquisition and Originations, and establish enterprise distributed observability, while guiding legacy modernization, cybersecurity investigations, and cross-team platform reliability.\n",
+      "public_summary": "Software Engineer and architecture lead who helped make regulated customer workflows easier to understand, safer to change, and more observable across organizational boundaries.",
+      "public_highlights": [
+        {
+          "text": "Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries."
+        },
+        {
+          "text": "Built data-risk remediation and architecture-discovery practices that made legacy dependencies visible and safer to change."
+        },
+        {
+          "text": "Diagnosed a production state-management defect affecting application completion and moved the system to a more durable session design without interrupting service."
+        },
+        {
+          "text": "Established distributed observability across application and integration boundaries, improving the evidence available during incident response."
+        },
+        {
+          "text": "Built communities of practice, mentoring loops, and handoff mechanisms that distributed technical ownership beyond a single engineer."
+        }
+      ],
       "highlights": [
         {
           "text": "Originations IC Delivery & Speedfunds: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping the Speedfunds instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.\n"
@@ -969,6 +1005,15 @@
       "date_precision": "year",
       "id": "phalanx-duel",
       "summary": "Designing and building a real-time tactical game platform as a current hands-on laboratory for deterministic systems, product architecture, and controlled AI-assisted engineering.\n",
+      "public_summary": "Building a real-time tactical game as a laboratory for deterministic systems, product architecture, and carefully bounded AI-assisted engineering.",
+      "public_highlights": [
+        {
+          "text": "Designed replayable state transitions so complex outcomes remain reproducible and independently reviewable."
+        },
+        {
+          "text": "Built verification gates that test system behavior across the full lifecycle."
+        }
+      ],
       "highlights": [
         {
           "text": "Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.\n"
@@ -1104,6 +1149,15 @@
       "date_precision": "month",
       "id": "sk-holdings",
       "summary": "Led backend stability, performance, and modernization for high-traffic Rails products, improving full-text search, campaign delivery pipelines, and data layer reliability while systems remained under production load.\n",
+      "public_summary": "Software Engineer focused on backend stability, performance, and safe modernization for high-traffic Rails products.",
+      "public_highlights": [
+        {
+          "text": "Improved search and asynchronous delivery systems while production traffic continued to flow."
+        },
+        {
+          "text": "Led framework and database upgrades with a staged approach designed to protect service continuity."
+        }
+      ],
       "highlights": [
         {
           "text": "Search Infrastructure Modernization: Eliminated external cluster failure modes and reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text search and relational indices under live production traffic.\n"
@@ -1324,6 +1378,15 @@
       "date_precision": "month",
       "id": "wwworkremote",
       "summary": "Rails 8 platform for multi-source job ingestion, semantic matching, and application automation, built as a working laboratory for local-first LLM orchestration and treating scraped third-party text as hostile input.\n",
+      "public_summary": "Building a Rails platform for structured research, semantic search, and human-directed automation.",
+      "public_highlights": [
+        {
+          "text": "Unified fragmented sources into a searchable data model for downstream analysis."
+        },
+        {
+          "text": "Designed local-first AI workflows with explicit safety boundaries around untrusted input and sensitive context."
+        }
+      ],
       "highlights": [
         {
           "text": "Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.\n"
