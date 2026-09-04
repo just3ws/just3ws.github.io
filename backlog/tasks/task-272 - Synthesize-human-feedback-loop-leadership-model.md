@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-02 04:24'
-updated_date: '2026-09-04 15:48'
+updated_date: '2026-09-04 15:54'
 labels: []
 dependencies: []
 documentation:
@@ -53,3 +53,11 @@ Capture the evidence-backed leadership operating model developed across OneMain 
 4. Refine docs/career-narrative-drop-in-engineering-ethos.md with the OMF evidence arc and lesson/methodology language, preserving the distinction between contemporaneous event records and Mike's later recollection.
 5. Run targeted prose, TMI, public-surface, Jekyll, semantic, and installed-localhost verification. Regenerate graphify output after source changes.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Public GitHub scan completed for follow-up developer-cred planning. Verified account metadata: 38 public repositories, 48 public gists, 63 followers, 25 following. Strong public proof candidates include Coderwall legacy (856 stars, 303 forks), nerd-font-cheatsheets (129 stars, 25 forks), and contributions or issue/PR history in Rails, cdnjs, Janus, Coderwall, and other public repositories. Clojure evidence includes public clojure-exercises-001 and semantic CSV commits. RubyGems ownership was not verified because the package API was unavailable, so it remains a hold until corroborated.
+
+The developer-cred idea is intentionally not folded into this OMF implementation. Recommended follow-up: add a canonical public evidence dataset and a dedicated /developer-cred/ or /open-source/ surface, with selected gists and contribution links grouped by engineering signal. Avoid publishing raw commit volume or unreviewed funny comments.
+<!-- SECTION:NOTES:END -->
