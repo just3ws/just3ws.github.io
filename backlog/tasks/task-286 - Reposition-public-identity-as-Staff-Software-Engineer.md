@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - agent-just3ws
 created_date: '2026-09-04 19:48'
-updated_date: '2026-09-04 19:48'
+updated_date: '2026-09-04 19:49'
 labels:
   - positioning
   - resume
@@ -26,6 +26,7 @@ modified_files:
   - docs/public-artifact-curation-policy.md
   - docs/professional-public-topology-plan.md
   - docs/site-refresh/panoramic-view-positioning.md
+  - bin/validate_resume_quality.rb
 priority: high
 type: enhancement
 ---
@@ -62,3 +63,9 @@ The current public system anchors Mike Hall as Software Engineer and treats Staf
 4. Preserve all historical position titles and evidence, including Associate Director, Staff Engineer, Principal Architect, CTO, and other exact records.
 5. Run prose checks and targeted resume/data validation. Inspect the diff to ensure unrelated generated timestamp changes remain untouched.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Resume validator had a stale hardcoded Software Engineer identity expectation. Updated it to assert Staff Software Engineer and report hands-on IC scope, which is part of keeping the canonical positioning contract internally consistent.
+<!-- SECTION:NOTES:END -->
