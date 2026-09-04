@@ -25,7 +25,7 @@ flowchart TD
 
 ## Method map
 
-- IEA discovery loop: Inventory → Evaluate → Address.
+- IEA discovery sequence: Inventory → Evaluate → Address. Each pass carries learning into the next.
 - Confidence loop: know the customer path → make informed decisions → iterate with confidence.
 - Modernization loop: fix what is broken → upgrade what works → stabilize the system → enable change.
 - Supporting modernization synthesis: Stabilize → Understand → Improve → Measure again → increase confidence → enable safer change. This is not the named method.

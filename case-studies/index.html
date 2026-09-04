@@ -48,21 +48,18 @@ body_class: ats-resume
 
     <section class="cartography-framework" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem; width: 100%; box-sizing: border-box;">
       <div style="margin-bottom: 2rem;">
-        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Mike's IEA discovery loop</h2>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Mike's IEA discovery sequence</h2>
         <p style="margin-bottom: 1.25rem; color: var(--color-text-main, #dcd7ba); font-size: 1.05rem; line-height: 1.65;">
           In the 2023 Acquisition architecture initiative, I used IEA to turn uncertainty about customer journeys and event data into an actionable record. <strong>System Cartography</strong> extends that evidence-first practice when reconciling what people think a system does with what it actually does.
         </p>
         <p style="margin: 0 0 1.25rem; color: var(--color-text-muted, #c8c093); font-size: 0.95rem; line-height: 1.6;">Acquisition (ACQ) was the customer-facing path through application and account workflows. The initiative aimed to make ACQ the highest-confidence source for analytics data in OMF by documenting flags, experiments, events, customer journeys, code assets, and team knowledge, then evaluating gaps and addressing them.</p>
 
         <pre><code class="language-mermaid">flowchart TD
-  subgraph L["IEA discovery loop"]
-    A[Inventory] --> B[Evaluate]
-    B --> C[Address]
-    C -. verify and repeat .-> A
-  end
-  classDef loop fill:#e6f4f1,stroke:#0f766e,color:#1e232a
-  class A,B,C loop</code></pre>
-        <p style="margin: 0; color: var(--color-text-muted, #c8c093); line-height: 1.6;"><strong>Outcome:</strong> We know where our customers are going. We can make informed decisions. We iterate with confidence.</p>
+  A[Inventory] --> B[Evaluate]
+  B --> C[Address]
+  classDef sequence fill:#e6f4f1,stroke:#0f766e,color:#1e232a
+  class A,B,C sequence</code></pre>
+        <p style="margin: 0; color: var(--color-text-muted, #c8c093); line-height: 1.6;"><strong>Outcome:</strong> We know where our customers are going. We can make informed decisions. We iterate with confidence. Each new pass starts with what the last pass taught us.</p>
 
         <div style="text-align: left; margin-bottom: 2rem;">
           <a href="/panoramic-view/" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 700; background: var(--color-surface-2, rgba(126, 156, 216, 0.15)); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none;">
@@ -122,9 +119,7 @@ body_class: ats-resume
             <h4 id="{{ cs.id }}-historical-method" style="font-size: 1.05rem; color: var(--color-heading, #dcd7ba); margin: 0 0 0.45rem;">{{ cs.historical_method.name }}</h4>
             <p style="font-size: 0.9rem; line-height: 1.5; color: var(--color-text-main, #dcd7ba); margin: 0 0 0.8rem;">{{ cs.historical_method.summary }}</p>
             <pre><code class="language-mermaid">flowchart LR
-  I[Inventory] --> E[Evaluate]
-  E --> A[Address]
-  A -. verify and repeat .-> I</code></pre>
+  I[Inventory] --> E[Evaluate] --> A[Address]</code></pre>
             <ol style="display: grid; gap: 0.55rem; padding: 0; margin: 0; list-style: none;">
               {% for step in cs.historical_method.steps %}
               <li style="display: grid; grid-template-columns: 2rem minmax(6rem, 0.3fr) minmax(12rem, 1fr); gap: 0.65rem; align-items: baseline; border-left: 2px solid var(--color-text-muted, #938aa9); padding: 0.2rem 0 0.2rem 0.65rem;">

@@ -91,12 +91,12 @@ Routes: `/panoramic-view/` and the methodology section of `/`
 Use the following public method map. These are Mike's methods, applied in
 different contexts. Do not collapse them into one invented master framework.
 
-### Discovery
+### Discovery sequence
 
 > Inventory → Evaluate → Address
 
-IEA is the discovery loop used in the Acquisition Technical Architecture
-Initiative.
+IEA is the linear discovery sequence used in the Acquisition Technical
+Architecture Initiative. Each pass informs the next pass.
 
 ### Related synthesis
 
