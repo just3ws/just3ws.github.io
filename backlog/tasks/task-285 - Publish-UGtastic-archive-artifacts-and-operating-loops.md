@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-04 16:02'
-updated_date: '2026-09-04 16:38'
+updated_date: '2026-09-04 16:48'
 labels:
   - archive
   - public-surface
@@ -65,6 +65,8 @@ Added an archive observatory to `/ugtastic/`: Liquid-driven interview-era count 
 Tooled `bin/analyze_ugtastic_audio.rb` to inspect the recovered 105-file MP3 export without transcription. Generated `_data/ugtastic_audio_inventory.json` with ffprobe metadata and conservative ffmpeg boundary candidates. Current aggregate: 105 stereo files, 20.28 hours, 100 at 44.1 kHz, 4 at 16 kHz, 1 at 48 kHz, 27 leading candidates, 4 trailing candidates. Integrated measured inventory and formula into `/ugtastic/`, with uncertainty boundaries stated explicitly. Rebuilt, reran semantic and SEO checks, reran TMI with 864 passes, refreshed graphify, and reinstalled localhost output.
 
 Added `bin/analyze_ugtastic_production.rb` and `_data/ugtastic_production_analysis.json`. Compared 105 audio exports with 91 finished videos: 89 normalized filename joins, all 91 finished videos contain audio, and 20 Final Cut event files were inspected. Named Life of Riley and UGtastic Outro references appear in the event records; four event files contain intro overlay references. Page now labels confidence and keeps exact placement as an open waveform or spectral matching step.
+
+Publication boundary correction: raw WITC and Vimeo media are not used for episode-level audio labels unless confirmed identical to published interviews. Removed local WITC audio player, unconfirmed end-card asset, and raw-media-derived `_data` ledgers from public surface; moved generated ledgers and local media copies to `tmp/ugtastic-raw-analysis-quarantine/`. Kept public SoundCloud embeds only. Updated Suzi Lindner attribution to commissioned jingle, written and performed by Suzi, with rights acquired through the paid Fiverr package. No existing boundary sidecars were found, so no episode timings were promoted.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
