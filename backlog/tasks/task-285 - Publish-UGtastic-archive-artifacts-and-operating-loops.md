@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-04 16:02'
-updated_date: '2026-09-04 16:22'
+updated_date: '2026-09-04 16:27'
 labels:
   - archive
   - public-surface
@@ -59,6 +59,8 @@ Implemented /ugtastic/ as a focused public archive exhibit. The page features re
 Confirmed direct SoundCloud provenance from Mike: https://soundcloud.com/ugtastic. Updated the exhibit's SoundCloud link from a search URL to the direct UGtastic profile.
 
 Follow-up correction and enrichment: removed Creative Studios lockups from the public asset set; added direct SoundCloud widget and recovered UGtastic Outro slate. Added production evidence section based on Final Cut references to Life of Riley - reverse stereo, UGtastic Outro v2..11, named intro overlays, and 105 recovered interview MP3 exports.
+
+Added an archive observatory to `/ugtastic/`: Liquid-driven interview-era count bars from `_data/timeline_archive.json`, four evidence-backed intersection cards, and a four-clock production-language map covering recording, production, preservation, and curation. Linked to `/timeline/` and `/archive-atlas/`. Rebuilt and reran semantic, SEO, TMI, and graphify checks.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
