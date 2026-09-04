@@ -50,8 +50,9 @@ body_class: ats-resume
       <div style="margin-bottom: 2rem;">
         <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Mike's IEA discovery loop</h2>
         <p style="margin-bottom: 1.25rem; color: var(--color-text-main, #dcd7ba); font-size: 1.05rem; line-height: 1.65;">
-          In the Acquisition (ACQ) Technical Architecture Initiative, I used IEA to turn uncertainty about customer journeys and event data into an actionable record. <strong>System Cartography</strong> extends that evidence-first practice when reconciling what people think a system does with what it actually does.
+          In the 2023 Acquisition architecture initiative, I used IEA to turn uncertainty about customer journeys and event data into an actionable record. <strong>System Cartography</strong> extends that evidence-first practice when reconciling what people think a system does with what it actually does.
         </p>
+        <p style="margin: 0 0 1.25rem; color: var(--color-text-muted, #c8c093); font-size: 0.95rem; line-height: 1.6;">Acquisition (ACQ) was the customer-facing path through application and account workflows. The initiative aimed to make ACQ the highest-confidence source for analytics data in OMF by documenting flags, experiments, events, customer journeys, code assets, and team knowledge, then evaluating gaps and addressing them.</p>
 
         <pre><code class="language-mermaid">flowchart TD
   subgraph L["IEA discovery loop"]
@@ -71,23 +72,24 @@ body_class: ats-resume
       </div>
 
       <!-- 4-Dimensional Mapping Matrix Grid -->
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">The 4-Dimensional Mapping Matrix</h3>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Four questions that make the system legible</h3>
+      <p style="font-size: 0.92rem; line-height: 1.55; color: var(--color-text-muted, #c8c093); margin: 0 0 1rem;">The technical names are useful shorthand. These are the questions they answer.</p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; width: 100%;">
         <div style="background: var(--color-bg-base, #1a1b2f); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #363646); box-sizing: border-box;">
-          <h4 style="font-size: 1rem; font-weight: 700; color: var(--color-primary, #7e9cd8); margin-bottom: 0.5rem;">01 // Interaction Surface</h4>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">API contracts, public web endpoints, client boundaries, JWT auth, and external consumer protocols.</p>
+          <h4 style="font-size: 1rem; font-weight: 700; color: var(--color-primary, #7e9cd8); margin-bottom: 0.5rem;">01 // Where does work enter? <small>(interaction surface)</small></h4>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">Requests from browsers, mobile clients, APIs, and external consumers.</p>
         </div>
         <div style="background: var(--color-bg-base, #1a1b2f); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #363646); box-sizing: border-box;">
-          <h4 style="font-size: 1rem; font-weight: 700; color: #818cf8; margin-bottom: 0.5rem;">02 // Lateral State Dependencies</h4>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">Cross-domain mutations, async queues (Sidekiq/Kafka), transactional boundaries, and database locks.</p>
+          <h4 style="font-size: 1rem; font-weight: 700; color: #818cf8; margin-bottom: 0.5rem;">02 // What else changes? <small>(lateral state dependencies)</small></h4>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">Changes crossing domains, queues, transactions, databases, and locks.</p>
         </div>
         <div style="background: var(--color-bg-base, #1a1b2f); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #363646); box-sizing: border-box;">
-          <h4 style="font-size: 1rem; font-weight: 700; color: #34d399; margin-bottom: 0.5rem;">03 // Full-Stack Topology</h4>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">Kubernetes clusters, ingress routing, cloud infrastructure, and database replication topographies.</p>
+          <h4 style="font-size: 1rem; font-weight: 700; color: #34d399; margin-bottom: 0.5rem;">03 // What path does it take? <small>(full-stack topology)</small></h4>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">The route from the first request through applications, services, infrastructure, and data.</p>
         </div>
         <div style="background: var(--color-bg-base, #1a1b2f); padding: 1.25rem; border-radius: 0.5rem; border: 1px solid var(--color-border, #363646); box-sizing: border-box;">
-          <h4 style="font-size: 1rem; font-weight: 700; color: #fbbf24; margin-bottom: 0.5rem;">04 // Supply Chain Exposure</h4>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">Third-party SaaS APIs, regulatory compliance boundaries, dependency drift, and release verification gates.</p>
+          <h4 style="font-size: 1rem; font-weight: 700; color: #fbbf24; margin-bottom: 0.5rem;">04 // Who else is involved? <small>(supply chain exposure)</small></h4>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">External providers, shared dependencies, compliance boundaries, and release checks.</p>
         </div>
       </div>
     </section>
