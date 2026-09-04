@@ -114,6 +114,28 @@ body_class: ats-resume
           <p style="font-size: 0.82rem; color: var(--color-text-muted, #c8c093); margin-bottom: 1.25rem;">{{ cs.quote_provenance }}</p>
           <p style="font-size: 1rem; font-weight: 800; color: var(--color-primary, #7e9cd8); text-align: center; line-height: 1.7; margin: 0 0 1.25rem;">{{ cs.methodology_lesson }}</p>
 
+          {% if cs.historical_method %}
+          <section class="historical-method" aria-labelledby="{{ cs.id }}-historical-method" style="border: 1px solid var(--color-border, #363646); border-radius: 0.55rem; padding: 1.15rem; margin: 0 0 1.25rem; background: var(--color-bg-card, #2a2a37);">
+            <p style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-text-muted, #c8c093); letter-spacing: 0.08em; margin: 0 0 0.35rem;">Earlier documented method · {{ cs.historical_method.period }}</p>
+            <h4 id="{{ cs.id }}-historical-method" style="font-size: 1.05rem; color: var(--color-heading, #dcd7ba); margin: 0 0 0.45rem;">{{ cs.historical_method.name }}</h4>
+            <p style="font-size: 0.9rem; line-height: 1.5; color: var(--color-text-main, #dcd7ba); margin: 0 0 0.8rem;">{{ cs.historical_method.summary }}</p>
+            <pre><code class="language-mermaid">flowchart LR
+  I[Inventory] --> E[Evaluate]
+  E --> A[Address]
+  A -. verify and repeat .-> I</code></pre>
+            <ol style="display: grid; gap: 0.55rem; padding: 0; margin: 0; list-style: none;">
+              {% for step in cs.historical_method.steps %}
+              <li style="display: grid; grid-template-columns: 2rem minmax(6rem, 0.3fr) minmax(12rem, 1fr); gap: 0.65rem; align-items: baseline; border-left: 2px solid var(--color-text-muted, #938aa9); padding: 0.2rem 0 0.2rem 0.65rem;">
+                <span style="color: var(--color-primary, #7e9cd8); font-size: 0.72rem; font-weight: 800;">0{{ forloop.index }}</span>
+                <strong style="color: var(--color-heading, #dcd7ba);">{{ step.name }}</strong>
+                <span style="font-size: 0.83rem; line-height: 1.4; color: var(--color-text-main, #dcd7ba);">{{ step.action }} <strong style="color: var(--color-text-muted, #c8c093);">Gate:</strong> {{ step.gate }}</span>
+              </li>
+              {% endfor %}
+            </ol>
+            <p style="font-size: 0.78rem; line-height: 1.45; color: var(--color-text-muted, #c8c093); margin: 0.85rem 0 0;">{{ cs.historical_method.source_note }}</p>
+          </section>
+          {% endif %}
+
           <pre><code class="language-mermaid">flowchart LR
   A[Stabilize] --> B[Understand]
   B --> C[Improve]
