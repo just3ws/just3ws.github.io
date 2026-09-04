@@ -68,6 +68,8 @@ The current public system anchors Mike Hall as Software Engineer and treats Staf
 
 <!-- SECTION:NOTES:BEGIN -->
 Resume validator had a stale hardcoded Software Engineer identity expectation. Updated it to assert Staff Software Engineer and report hands-on IC scope, which is part of keeping the canonical positioning contract internally consistent.
+
+Positioning refinement: distinguish levels of software engineering abstraction from collaboration models. Do not describe teams of ICs as a system layer. State that Mike works from code and runtime behavior through business and organizational boundaries, and collaborates with IC teams to accomplish business objectives.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
