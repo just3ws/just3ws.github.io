@@ -1,11 +1,11 @@
 ---
 id: TASK-286
 title: Reposition public identity as Staff Software Engineer
-status: In Progress
+status: Done
 assignee:
   - agent-just3ws
 created_date: '2026-09-04 19:48'
-updated_date: '2026-09-04 19:51'
+updated_date: '2026-09-04 19:52'
 labels:
   - positioning
   - resume
@@ -70,10 +70,14 @@ The current public system anchors Mike Hall as Software Engineer and treats Staf
 Resume validator had a stale hardcoded Software Engineer identity expectation. Updated it to assert Staff Software Engineer and report hands-on IC scope, which is part of keeping the canonical positioning contract internally consistent.
 
 Positioning refinement: distinguish levels of software engineering abstraction from collaboration models. Do not describe teams of ICs as a system layer. State that Mike works from code and runtime behavior through business and organizational boundaries, and collaborates with IC teams to accomplish business objectives.
+
+Refined the wording after review to keep abstractions and collaboration models distinct. Canonical text now says Mike works at multiple levels of software engineering, from code and runtime behavior through business and organizational boundaries, and collaborates with teams of individual contributors.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
 
 <!-- SECTION:FINAL_SUMMARY:BEGIN -->
 Repositioned the canonical public identity as Staff Software Engineer, explicitly rooted in hands-on software engineering. Updated the profile, summary, voice guide, resume contract, career strategy, public curation policy, topology plan, and Panoramic View positioning to describe work across code, runtime systems, business boundaries, and teams of individual contributors. Principal is now documented as a scale-dependent target calibration rather than the default identity. Updated the resume quality validator to enforce the new canonical title. Historical position titles and evidence were not changed. Verification: bundle exec rake validate:resume_quality passed; bundle exec jekyll build passed across 935 pages; rendered homepage and resume metadata, Schema.org jobTitle, and visible heading show Staff Software Engineer; prose audit passed with 0 errors and 0 AI-jargon matches; git diff --check passed. The strict public-surface audit reports existing pending archive-wide findings unrelated to this positioning change. The full pipeline build remains blocked only at the PDF exporter because the sandbox cannot bind its local listener.
+
+Refinement: separated software engineering abstraction levels from collaboration models in the canonical summary, contracts, strategy, voice, topology, and positioning brief. The rendered site now states both dimensions clearly.
 <!-- SECTION:FINAL_SUMMARY:END -->
