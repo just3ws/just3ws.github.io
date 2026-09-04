@@ -48,26 +48,20 @@ body_class: ats-resume
 
     <section class="cartography-framework" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem; width: 100%; box-sizing: border-box;">
       <div style="margin-bottom: 2rem;">
-        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">The Operating Sequence: Stabilize • Understand • Improve</h2>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">The six-step operating loop</h2>
         <p style="margin-bottom: 1.25rem; color: var(--color-text-main, #dcd7ba); font-size: 1.05rem; line-height: 1.65;">
-          When entering a complex production system, legacy codebase, or founder transition, technical decision-making requires empirical evidence rather than guesswork. <strong>System Cartography</strong> is the empirical architecture mapping discipline of the <strong>Panoramic View</strong> methodology: reconciling stakeholder mental models with actual runtime behavior.
+          When entering a complex production system, legacy codebase, or founder transition, I use this loop to turn uncertainty into safer change. <strong>System Cartography</strong> helps reconcile what people think the system does with what it actually does.
         </p>
 
-        <!-- 3 Operating Pillars -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; width: 100%;">
-          <div style="background: var(--color-bg-base, #1a1b2f); padding: 1.25rem; border-left: 4px solid var(--color-primary, #7e9cd8); border-radius: 0.5rem; box-sizing: border-box;">
-            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary, #7e9cd8); margin-bottom: 0.35rem;">1. STABILIZE</h3>
-            <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">Establish safe delivery boundaries, protect critical business operations, and contain immediate operational risk.</p>
-          </div>
-          <div style="background: var(--color-bg-base, #1a1b2f); padding: 1.25rem; border-left: 4px solid #818cf8; border-radius: 0.5rem; box-sizing: border-box;">
-            <h3 style="font-size: 1.05rem; font-weight: 700; color: #818cf8; margin-bottom: 0.35rem;">2. UNDERSTAND</h3>
-            <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">Trace interactions from browser to database, map lateral state dependencies, and build a shared, evidence-backed model.</p>
-          </div>
-          <div style="background: var(--color-bg-base, #1a1b2f); padding: 1.25rem; border-left: 4px solid #34d399; border-radius: 0.5rem; box-sizing: border-box;">
-            <h3 style="font-size: 1.05rem; font-weight: 700; color: #34d399; margin-bottom: 0.35rem;">3. IMPROVE</h3>
-            <p style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093); margin: 0; line-height: 1.5;">Modernize with confidence, eliminate outage cascades, and empower engineering teams with sustainable architecture.</p>
-          </div>
-        </div>
+        <pre><code class="language-mermaid">flowchart LR
+  A[Stabilize] --> B[Understand]
+  B --> C[Improve]
+  C --> D[Measure]
+  D --> E[Increase confidence]
+  E --> F[Enable safer change]
+  F -. next change .-> A
+  classDef loop fill:#e6f4f1,stroke:#0f766e,color:#1e232a
+  class A,B,C,D,E,F loop</code></pre>
 
         <div style="text-align: left; margin-bottom: 2rem;">
           <a href="/panoramic-view/" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 700; background: var(--color-surface-2, rgba(126, 156, 216, 0.15)); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none;">

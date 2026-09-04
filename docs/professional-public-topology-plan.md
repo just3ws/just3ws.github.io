@@ -92,9 +92,7 @@ Use one primary public loop:
 
 > Stabilize → Understand → Improve → Measure → Increase confidence → Enable safer change
 
-Describe the three-step form as a compression of the larger loop:
-
-> Stabilize → Understand → Improve
+Use three inspection views only as a navigation device. Do not present “Stabilize, Understand, Improve” as Mike's operating model.
 
 Use Acquisition's Inventory → Evaluate → Address loop as a historical example. Do not present it as a competing universal framework.
 
