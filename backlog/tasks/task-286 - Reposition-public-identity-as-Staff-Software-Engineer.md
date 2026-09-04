@@ -5,7 +5,7 @@ status: Done
 assignee:
   - agent-just3ws
 created_date: '2026-09-04 19:48'
-updated_date: '2026-09-04 20:35'
+updated_date: '2026-09-04 20:43'
 labels:
   - positioning
   - resume
@@ -74,6 +74,8 @@ Positioning refinement: distinguish levels of software engineering abstraction f
 Refined the wording after review to keep abstractions and collaboration models distinct. Canonical text now says Mike works at multiple levels of software engineering, from code and runtime behavior through business and organizational boundaries, and collaborates with teams of individual contributors.
 
 Applied final wording refinement: homepage and canonical summary now use the stronger Staff framing and explicitly say Mike works with and across teams of individual contributors. The homepage also names business usefulness as an outcome.
+
+Hygiene pass found and removed a remaining default-positioning crumb in CODEX.md: Principal-level credibility is no longer the default; Staff-level evidence is primary and Principal is target-level translation only. Contradiction scan is clean for active guidance and historical position files remain unchanged.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
@@ -84,4 +86,6 @@ Repositioned the canonical public identity as Staff Software Engineer, explicitl
 Refinement: separated software engineering abstraction levels from collaboration models in the canonical summary, contracts, strategy, voice, topology, and positioning brief. The rendered site now states both dimensions clearly.
 
 Final wording update applied after review. Homepage and canonical summary now lead with Staff Software Engineer, separate system abstraction from collaboration model, and state business usefulness directly.
+
+Hygiene pass removed the last active guidance contradiction by making Staff-level evidence primary in CODEX.md. A contradiction scan found no remaining default-identity crumbs in active guidance.
 <!-- SECTION:FINAL_SUMMARY:END -->
