@@ -12,13 +12,13 @@ This brief translates private, provenance-tagged research into a public-safe nar
 
 **Operating promise:** Mike makes complex production systems easier to understand and safer to change.
 
-**Operating sequence:** Stabilize. Understand. Innovate.
+**Operating sequence:** Stabilize. Understand. Improve.
 
 The sequence should be made concrete wherever it appears:
 
 1. **Stabilize what is fragile.** Establish safe boundaries, restore visibility, clarify ownership, and reduce immediate operational risk.
 2. **Understand the whole system.** Connect the actor's journey, business decisions, code paths, infrastructure, data changes, human knowledge, and runtime evidence.
-3. **Innovate with confidence.** Modernize architecture, delivery, tooling, and team practices from an evidence-backed model rather than an aspirational diagram.
+3. **Improve with confidence.** Repair, upgrade, and modernize architecture, delivery, tooling, and team practices from an evidence-backed model rather than an aspirational diagram.
 
 Panoramic View is the method that runs through all three phases. It is not only an observability practice and not only the middle “Understand” step.
 

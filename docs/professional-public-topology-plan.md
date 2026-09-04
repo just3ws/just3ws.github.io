@@ -88,13 +88,39 @@ OMF is one major case. It should not stand in for the whole identity.
 
 Routes: `/panoramic-view/` and the methodology section of `/`
 
-Use one primary public loop:
+Use the following public method map. These are Mike's methods, applied in
+different contexts. Do not collapse them into one invented master framework.
 
-> Stabilize → Understand → Improve → Measure → Increase confidence → Enable safer change
+### Discovery
 
-Use three inspection views only as a navigation device. Do not present “Stabilize, Understand, Improve” as Mike's operating model.
+> Inventory → Evaluate → Address
 
-Use Acquisition's Inventory → Evaluate → Address loop as a historical example. Do not present it as a competing universal framework.
+IEA is the discovery loop used in the Acquisition Technical Architecture
+Initiative.
+
+### Operating practice
+
+> Stabilize → Understand → Improve
+
+This is the operating loop. The fuller operational excellence expression is:
+
+> Stabilize → Understand → Improve → Measure again → increase confidence → enable safer change
+
+Measure again, increased confidence, and safer change describe what the loop
+produces and enables. They are part of the full expression, not reasons to
+replace the three-part operating loop with a different framework.
+
+### Investigation
+
+Panoramic mapping is the investigation technique: define the premise or state,
+perform the action, identify the layers crossed, find the subject-matter expert
+when blocked, repeat, bind action to result, document the state change, and
+follow the consequences.
+
+### Enterprise application
+
+OpenTelemetry is an enterprise application of these methods. It is evidence and
+correlation infrastructure, not the methodology itself.
 
 Each method page should include:
 
