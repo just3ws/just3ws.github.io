@@ -55,19 +55,7 @@ Create a public UGtastic archive artifacts page that presents recovered branding
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-Implemented /ugtastic/ as a visual archive artifacts wall with 12 recovered dated screenshots, explicit artifact provenance, six-stage Notice → Name → Share → Preserve → Return → Apply formula with gates, and the two Mike-authored modernization quotes with recollection provenance.
-
-Linked the new page from /archive-atlas/. Verified installed route at https://just3ws.localhost/ugtastic/ with browser accessibility inspection.
-
-Verification: bundle exec jekyll build passed with 932 pages; bin/install-localhost passed; semantic output passed checked=908; SEO output passed indexable=863 and noindex=50; TMI sitemap audit passed 864/864; git diff --check passed; graphify update completed.
-
-The repository-wide strict public-surface audit remains nonzero because of pre-existing findings elsewhere. No findings matched ugtastic/index.html or the new archive-atlas link. No private contact data, PHI, workplace secrets, or unverified badge claims were added.
-
-Correction pass: removed the generic methodology loop, modernization quotes, and generic wall-reading legend from /ugtastic/. The exhibit now contains only recovered UGtastic visual and audio artifacts plus links into the archive and a pointer to the separate case-study methodology.
-
-Inventory from /Volumes/Dock_1TB/WITC found logo variants, header mark, GitHub avatar, user-group badge/avatar, favicon, dated screenshots, and Life of Riley.mp3. Copied only selected public-facing assets into assets/images/ugtastic-branding/ and assets/audio/ugtastic/.
-
-Installed browser verification after cache-busting confirmed the corrected page. nginx reload itself remains unavailable without interactive sudo, but bin/install-localhost completed and the installed server served the refreshed output.
+Implemented /ugtastic/ as a focused public archive exhibit. The page features recovered UGtastic logos, identity marks, avatars, a user-group badge mark, dated screenshots, a local Life of Riley audio player, SoundCloud search, WHOIS Tech Community, GitHub, interview, timeline, and Archive Atlas links. Modernization quotes, formulas, diagrams, and gates remain on the profile and case-study surfaces. Source assets were selected from /Volumes/Dock_1TB/WITC and copied into the public repository only after filename and media inspection.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
