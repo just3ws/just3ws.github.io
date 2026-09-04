@@ -26,13 +26,14 @@ case_studies:
     company: "Phalanx: Duel"
     domain: "Multiplayer Tactical Game & Engine (phalanxduel.com)"
     summary: >-
-      Designed a tactical card game at Boy Scout Camp Tesomas in 2022, prototyped the rules in Ruby, and built it into a live multiplayer WebSockets engine with Go CLI and SwiftUI mobile clients.
+      Designed a tactical card duel at Boy Scout Camp Tesomas in 2022 and prototyped its combat rules in Ruby. Rebuilt it as a server-authoritative TypeScript engine, with a deterministic engine package kept separate from the transport layer, a Go CLI, a TypeScript SDK, and an experimental SwiftUI client, now running live at phalanxduel.com.
     dimensions:
-      interaction_surface: "WebSockets server API, TypeScript SDK, Go CLI client (duel-cli), and native SwiftUI iOS app."
-      lateral_state_dependencies: "Strict 8-stage turn state machine with step-by-step combat calculations for live previews and game replays."
-      full_stack_topology: "Node.js WebSockets server, PostgreSQL database, Docker containers, and Glicko-2 competitive matchmaking."
-      supply_chain_exposure: "AGPLv3 open-source codebase, OpenTelemetry tracing across server/CLI, and 40+ operational documentation guides."
+      interaction_surface: "WebSocket protocol (createMatch, joinMatch, watchMatch, action, authenticate) paired with an OpenAPI 3.0 REST surface for matchmaking, ladder, and replay, a TypeScript SDK, a Go CLI (duel-cli), and an experimental SwiftUI iOS client, all built against one shared schema contract."
+      lateral_state_dependencies: "8-stage turn state machine (StartTurn through EndTurn) enforcing Target Chain, Boundary, and Carryover combat semantics, with Postgres storing match state, action history, and transaction logs as JSONB alongside Glicko-2 Elo snapshots tracked per ladder category."
+      full_stack_topology: "TypeScript monorepo separating a transport-only server from a deterministic, transport-free engine package, backed by Postgres via Drizzle, Docker-built deploys, Sentry error tracking, and an OTel Collector feeding OTel/LGTM observability across the server and Go client."
+      supply_chain_exposure: "AGPLv3 open-source codebase with 40+ operational wiki and docs guides, an independent combat verifier that checks 2,355,388 declared finite cases and pins a SHA-256 result digest, and CI-gated rule, replay, and playthrough verification ahead of every release."
     outcomes:
-      - "Built an explainable battle engine that outputs exact combat math for live damage previews and spectator replays."
-      - "Kept game state 100% synchronized across WebSockets with zero client desync across TypeScript, Go, and Ruby."
-      - "Shipped live production platform (phalanxduel.com) with automated container deploys."
+      - "Built an explainable battle engine that records a versioned, step-by-step combat calculation for every attack, with named operands, ordered operators, and stable PD-RULE identifiers, driving live damage previews, narration, and spectator replay."
+      - "Verified the combat engine against an independent reference checker covering 2,355,388 declared finite cases, pinning a SHA-256 result digest as a bounded correctness proof."
+      - "Kept game state synchronized across WebSocket and REST paths for TypeScript, Go, and Swift clients, using role-specific projections and knowledge-safety tests that keep hidden hand and deck information out of what any client can see."
+      - "Shipped a live production platform (phalanxduel.com) with an automated release pipeline that builds an immutable GHCR container image, promotes it after health and readiness checks, and rolls back to the last known-good image on failure."

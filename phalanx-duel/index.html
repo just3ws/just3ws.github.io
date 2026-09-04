@@ -20,7 +20,14 @@ source_kind: ai-augmented-human-led
     <p style="font-size: 1.2rem; line-height: 1.6; color: var(--color-text-muted, #c8c093); margin: 0;">Start with cards at a table. Then follow one outcome through a deterministic game engine, a server boundary, and replay evidence.</p>
   </header>
 
-  <section aria-labelledby="start-playing" style="border-top: 3px solid var(--color-primary, #7e9cd8); padding: 1.75rem 0 2.25rem;">
+  <section aria-labelledby="what-is-it" style="border-top: 3px solid var(--color-primary, #7e9cd8); padding: 1.75rem 0 2.25rem;">
+    <h2 id="what-is-it" style="font-size: 1.7rem; margin: 0 0 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">What Phalanx Duel is</h2>
+    <p style="max-width: 65ch; line-height: 1.65; color: var(--color-text-main, #dcd7ba);">Phalanx Duel is a two-player tactical card duel built on a standard 52-card deck. There is no die roll and no shuffle mid-match: once decks are drawn, every outcome follows from the cards on the table and the choices each player makes. The rules are meant to be legible enough to run at a table with two decks of playing cards, and precise enough to run identically inside a deterministic game engine.</p>
+    <p style="max-width: 65ch; line-height: 1.65; color: var(--color-text-main, #dcd7ba);">It started on a rainy week at Boy Scout Camp Tesomas in July 2022: a standard deck, a notebook, and formation sketches worked out across friendly tabletop matches. A Ruby prototype made the combat rules executable. The current engine is a TypeScript, server-authoritative rebuild of that same tabletop core, with a web client, a Go CLI, live multiplayer matches, and replay evidence for every game. Version 1.5.0 is live in production at <a href="https://phalanxduel.com" style="color: var(--color-primary, #7e9cd8); text-decoration: underline;">phalanxduel.com</a>, with a Glicko-2 ranked ladder in beta.</p>
+    <p style="max-width: 65ch; line-height: 1.65; color: var(--color-text-main, #dcd7ba);">This page is the companion to a talk at Software Craftsmanship McHenry County. The tabletop rules below are the same rules the engine enforces: what you can verify by hand at a table is what the server verifies on every turn.</p>
+  </section>
+
+  <section aria-labelledby="start-playing" style="padding: 0.5rem 0 2.25rem;">
     <h2 id="start-playing" style="font-size: 1.7rem; margin: 0 0 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Play a face-to-face duel</h2>
     <p style="max-width: 65ch; line-height: 1.65; color: var(--color-text-main, #dcd7ba);">The Classic format uses two standard 52-card decks, one per player. Draw 12 cards each, build a face-up two-rank formation across four columns, then let P1 make the first attack. Damage moves through the targeted column before it can reach Life Points.</p>
     <p style="max-width: 65ch; line-height: 1.65; color: var(--color-text-main, #dcd7ba);">The two-page guide is deliberately light on ink and takes a new table from setup through a complete duel, including suit boundaries, special cards, reinforcement, passes, and winning at 0 LP.</p>
@@ -43,14 +50,23 @@ source_kind: ai-augmented-human-led
     <p style="margin: 1.25rem 0 0;"><a href="/assets/downloads/phalanx-duel-scmc-2026-presentation.pptx" style="font-weight: 700; color: var(--color-primary, #7e9cd8); text-decoration: underline;">Download the editable presentation (PPTX)</a></p>
   </section>
 
-  <section aria-labelledby="rules-at-a-glance" style="padding: 0.5rem 0;">
-    <h2 id="rules-at-a-glance" style="font-size: 1.7rem; margin: 0 0 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Rules at a glance</h2>
-    <ul style="max-width: 65ch; line-height: 1.7; color: var(--color-text-main, #dcd7ba); padding-left: 1.25rem;">
-      <li>Only front-rank cards attack. Choose any opposing column.</li>
-      <li>When a card is destroyed, remaining damage continues. Diamonds reduce carryover between cards; Hearts can reduce the final carryover before Life Points; Clubs double one eligible overflow; Spades double damage into Life Points.</li>
-      <li>The defender may reinforce only the attacked column, then draws up to four cards and takes the next attack turn.</li>
-      <li>Empty decks do not lose the game. Three consecutive passes or five total passes by a player result in a forfeit.</li>
-    </ul>
+  <section aria-labelledby="how-it-plays" style="padding: 0.5rem 0;">
+    <h2 id="how-it-plays" style="font-size: 1.7rem; margin: 0 0 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">How a duel plays</h2>
+    <h3 style="font-size: 1.15rem; margin: 1.25rem 0 0.5rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Setup</h3>
+    <p style="max-width: 65ch; line-height: 1.65; color: var(--color-text-main, #dcd7ba);">Each player uses a full 52-card deck and draws 12 cards into a hand. Cards go face-up into a formation of four columns, two ranks deep: a front rank that can be attacked and can attack, and a back rank held in reserve. Player 1 attacks first.</p>
+    <h3 style="font-size: 1.15rem; margin: 1.25rem 0 0.5rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">A turn, in order</h3>
+    <ol style="max-width: 65ch; line-height: 1.7; color: var(--color-text-main, #dcd7ba); padding-left: 1.25rem;">
+      <li>Deploy new cards from hand into open formation slots, if any.</li>
+      <li>Attack with a front-rank card into any opposing column.</li>
+      <li>Damage resolves down that column, front card first.</li>
+      <li>Destroyed cards clear and the column collapses to close the gap.</li>
+      <li>The defender may reinforce, but only the column that was just attacked.</li>
+      <li>Both players draw back toward a four-card hand.</li>
+    </ol>
+    <h3 style="font-size: 1.15rem; margin: 1.25rem 0 0.5rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Suits carry the damage</h3>
+    <p style="max-width: 65ch; line-height: 1.65; color: var(--color-text-main, #dcd7ba);">When a card is destroyed, damage does not simply stop: it carries into the next card in that column, and the suits involved decide how much survives. Diamonds reduce carryover between cards. Hearts can reduce the final carryover before it reaches Life Points. Clubs double one eligible overflow. Spades double whatever damage reaches Life Points.</p>
+    <h3 style="font-size: 1.15rem; margin: 1.25rem 0 0.5rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Winning</h3>
+    <p style="max-width: 65ch; line-height: 1.65; color: var(--color-text-main, #dcd7ba);">A duel ends when a player's Life Points reach 0. Running out of cards is not a loss on its own; a player who cannot or will not attack must pass instead, and three consecutive passes or five total passes by one player end the match as a forfeit.</p>
   </section>
 
   <p style="margin-top: 2.5rem; font-size: 0.95rem; color: var(--color-text-muted, #c8c093);">The player material reflects the Phalanx Duel v3.0 Classic rules. For the canonical rules reference, see <a href="https://phalanxduel.com/learn/rules/" style="color: var(--color-primary, #7e9cd8); text-decoration: underline;">phalanxduel.com/learn/rules</a>; the full engineering rule contract lives with the game source.</p>
