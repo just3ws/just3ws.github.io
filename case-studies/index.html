@@ -116,7 +116,7 @@ body_class: ats-resume
 
           {% if cs.historical_method %}
           <section class="historical-method" aria-labelledby="{{ cs.id }}-historical-method" style="border: 1px solid var(--color-border, #363646); border-radius: 0.55rem; padding: 1.15rem; margin: 0 0 1.25rem; background: var(--color-bg-card, #2a2a37);">
-            <p style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-text-muted, #c8c093); letter-spacing: 0.08em; margin: 0 0 0.35rem;">Earlier documented method · {{ cs.historical_method.period }}</p>
+            <p style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--color-text-muted, #c8c093); letter-spacing: 0.08em; margin: 0 0 0.35rem;">Mike's method applied here · {{ cs.historical_method.period }}</p>
             <h4 id="{{ cs.id }}-historical-method" style="font-size: 1.05rem; color: var(--color-heading, #dcd7ba); margin: 0 0 0.45rem;">{{ cs.historical_method.name }}</h4>
             <p style="font-size: 0.9rem; line-height: 1.5; color: var(--color-text-main, #dcd7ba); margin: 0 0 0.8rem;">{{ cs.historical_method.summary }}</p>
             <pre><code class="language-mermaid">flowchart LR
