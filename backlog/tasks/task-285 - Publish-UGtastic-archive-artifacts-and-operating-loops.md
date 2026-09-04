@@ -24,9 +24,8 @@ modified_files:
   - assets/images/ugtastic-branding/ugtastic-github-avatar.png
   - assets/images/ugtastic-branding/user-group-avatar-fallback.png
   - assets/images/ugtastic-branding/ugtastic-favicon.png
-  - assets/images/ugtastic-branding/logo.png
-  - assets/images/ugtastic-branding/logo-black.png
   - assets/images/ugtastic-branding/logo-small.png
+  - assets/images/ugtastic-branding/ugtastic-outro-slate.png
   - assets/audio/ugtastic/life-of-riley.mp3
 type: feature
 ---
