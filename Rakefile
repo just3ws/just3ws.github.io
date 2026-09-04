@@ -762,3 +762,66 @@ namespace :localhost do
     sh "chmod o+x $(dirname #{webroot}) && chmod -R o+rX #{webroot}"
   end
 end
+
+namespace :audit do
+  desc 'Run TMI / PII / PHI / *ism audit across the full sitemap (human output, medium+ severity)'
+  task :tmi do
+    sh 'ruby bin/tmi_audit_sitemap.rb --severity medium'
+  end
+
+  desc 'Run TMI audit and emit full JSON report to tmp/tmi_audit.json'
+  task :tmi_json do
+    sh 'mkdir -p tmp && ruby bin/tmi_audit_sitemap.rb --json --severity medium > tmp/tmi_audit.json'
+    puts 'Report written to tmp/tmi_audit.json'
+  end
+
+  desc 'TMI audit — hiring surfaces only (strictest gate, all severities)'
+  task :tmi_hiring do
+    sh 'ruby bin/tmi_audit_sitemap.rb --url-filter "/(resume|resumes|exports|history)/" --severity low'
+  end
+
+  desc 'Dry-run: find source files missing sitemap:false that have noindex in HTML'
+  task :sitemap_exclusions_dry do
+    sh 'ruby bin/tmi_fix_sitemap_exclusions.rb --dry-run --verbose'
+  end
+
+  desc 'Fix: add sitemap:false front matter to all noindex/private source files'
+  task :fix_sitemap_exclusions do
+    sh 'ruby bin/tmi_fix_sitemap_exclusions.rb --verbose'
+  end
+
+  desc 'Full automation pipeline: fix exclusions → build → run audit → report'
+  task :tmi_pipeline do
+    puts '=== Step 1: Fix sitemap exclusions ==='
+    sh 'ruby bin/tmi_fix_sitemap_exclusions.rb --verbose'
+    puts "\n=== Step 2: Rebuild site ==="
+    sh 'bundle exec jekyll build 2>&1 | tail -3'
+    puts "\n=== Step 3: Run full TMI audit ==="
+    sh 'ruby bin/tmi_audit_sitemap.rb --severity medium'
+    puts "\n=== Step 4: Emit JSON report ==="
+    sh 'mkdir -p tmp && ruby bin/tmi_audit_sitemap.rb --json --severity medium > tmp/tmi_audit.json'
+    puts 'Pipeline complete. Report at tmp/tmi_audit.json'
+  end
+
+  desc 'CI gate: fail if any quarantine findings exist on hiring surfaces'
+  task :tmi_gate do
+    require 'json'
+    require 'open3'
+    out, _err, status = Open3.capture3(
+      'ruby bin/tmi_audit_sitemap.rb --json --severity medium ' \
+      '--url-filter "/(resume|resumes|exports|history)/"'
+    )
+    data  = JSON.parse(out)
+    quars = data['results'].select { |r| r['decision'] == 'quarantine' }
+    if quars.empty?
+      puts "TMI gate: PASS (0 quarantine findings on hiring surfaces)"
+    else
+      warn "TMI gate: FAIL — #{quars.size} quarantine finding(s) on hiring surfaces:"
+      quars.each do |r|
+        guards = r['findings'].map { |f| f['guard'] }.uniq.join(',')
+        warn "  [#{guards}] #{r['url'].sub('https://www.just3ws.com', '')}"
+      end
+      exit 1
+    end
+  end
+end

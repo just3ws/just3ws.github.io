@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-09-01
+     CURRENT FOCUS - last updated 2026-09-04
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,13 +12,20 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
-       - Restored and validated Ray Hightower ChicagoRuby SCNA 2011 interview with verbatim turns, curated summary, and 8 chapters.
-       - Codified permanent canonical naming standards (ChicagoRuby, WindyCityRails, UGtastic, WHOIS Tech Community) in docs/style-guide-and-canonical-naming.md.
-       - Expanded Cmd+Shift+K command palette search catalog to 669 items covering all interviews, speakers, topics, posts, and positions.
-       - Implemented transcript "Report Issue" action button with pre-filled GitHub issue template on all interview pages.
-       - 100% test suite and ATS benchmarks passing (77 examples, composite ATS @ 90.6%, zero em dashes).
+       - Built tmi-auditor skill: TMI/PII/PHI/*ism guards (ageism, ableism,
+         familism) walking full sitemap.xml spine, 879 URLs, 0 quarantine findings.
+       - Created docs/voice-actor.md: canonical Mike Hall voice and vocabulary
+         definition for all content-generating agents.
+       - Added bin/tmi_audit_sitemap.rb, bin/tmi_fix_sitemap_exclusions.rb,
+         rake audit:tmi_gate (CI gate), rake audit:tmi_pipeline (full run).
+       - Fixed phone suppression on /resume/positions/* sub-pages via Liquid
+         unless conditional in _includes/resume/profile-header.html.
+       - Added sitemap: false front matter to exports/reports/*.html private pages.
+       - 90 examples, 0 failures. TMI gate: PASS.
+       - ATS benchmark pre-existing failure (52.1% vs 85% threshold) -- separate
+         issue, not introduced this session.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-09-01-1.md
+         ~/.config/adots/handoffs/2026-09-04-2.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's

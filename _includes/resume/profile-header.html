@@ -23,10 +23,12 @@
       <span class="contact-label">Email</span>
       <a href="mailto:{{ profile.contact.email }}" class="contact-value">{{ profile.contact.email }}</a>
     </li>
+    {% unless page.url contains '/resume/positions/' %}
     <li class="contact-item">
       <span class="contact-label">Phone</span>
       <a href="tel:{{ profile.contact.phone_tel }}" class="contact-value">{{ profile.contact.phone }}</a>
     </li>
+    {% endunless %}
     <li class="contact-item">
       <span class="contact-label">Web</span>
       <a href="{{ profile.contact.website.url }}" class="contact-value">{{ profile.contact.website.display }}</a>
@@ -41,9 +43,11 @@
     </li>
   </ul>
 
+  {% unless page.url contains '/resume/positions/' %}
   <div class="print-contact-line print-only" style="display: none;">
     {{ profile.location.display }} &bull; {{ profile.contact.email }} &bull; {{ profile.contact.phone }} &bull; {{ profile.contact.website.display }} &bull; {{ linkedin_display }} &bull; {{ profile.contact.github.display }}
   </div>
+  {% endunless %}
 
   <div class="resume-quick-actions no-print" style="margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8125rem;">
     <a href="/exports/mike-hall-principal-software-engineer-resume.pdf" download="Mike-Hall-Principal-Software-Engineer-Resume.pdf" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; background: var(--color-accent, #2563eb); color: #ffffff; border-radius: 0.375rem; font-weight: 600; text-decoration: none;">
