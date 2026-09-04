@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-04 16:02'
-updated_date: '2026-09-04 16:16'
+updated_date: '2026-09-04 16:22'
 labels:
   - archive
   - public-surface
@@ -58,6 +58,8 @@ Create a public UGtastic archive artifacts page that presents recovered branding
 Implemented /ugtastic/ as a focused public archive exhibit. The page features recovered UGtastic logos, identity marks, avatars, a user-group badge mark, dated screenshots, a local Life of Riley audio player, SoundCloud search, WHOIS Tech Community, GitHub, interview, timeline, and Archive Atlas links. Modernization quotes, formulas, diagrams, and gates remain on the profile and case-study surfaces. Source assets were selected from /Volumes/Dock_1TB/WITC and copied into the public repository only after filename and media inspection.
 
 Confirmed direct SoundCloud provenance from Mike: https://soundcloud.com/ugtastic. Updated the exhibit's SoundCloud link from a search URL to the direct UGtastic profile.
+
+Follow-up correction and enrichment: removed Creative Studios lockups from the public asset set; added direct SoundCloud widget and recovered UGtastic Outro slate. Added production evidence section based on Final Cut references to Life of Riley - reverse stereo, UGtastic Outro v2..11, named intro overlays, and 105 recovered interview MP3 exports.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
