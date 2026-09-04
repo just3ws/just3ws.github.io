@@ -14,6 +14,8 @@ PUBLIC_FILES = [
   "_data/resume/archetypes.yml",
   "_data/case_studies.yml",
   "_data/engagements.yml",
+  "career_datalake.json",
+  "exports/career_datalake.json",
   "resumes",
   "exports/resumes",
   "_site/index.html",
@@ -25,8 +27,13 @@ FORBIDDEN_PUBLIC_PHRASES = {
   "Speedfunds" => "use a descriptive instant-disbursement phrase",
   "Bonsai Buckaroos" => "describe the prototype or hackathon context",
   "ACQ Enablement" => "spell out Acquisition Lane enablement",
+  "ACQ Technical Architecture Initiatives" => "use a reader-facing description such as Acquisition architecture initiative",
   "Senior Ruby on Rails Contractor" => "use the broad Senior / Lead Software Engineer title",
   "High-Velocity IC" => "describe delivery context without title inflation"
+}.freeze
+
+FORBIDDEN_PUBLIC_PATTERNS = {
+  /\bACQ\b/ => "spell out Acquisition; do not publish the internal acronym without reader-facing expansion"
 }.freeze
 
 REQUIRED_PUBLIC_PHRASES = {
@@ -61,6 +68,10 @@ files.each do |path|
     next unless content.match?(Regexp.new(Regexp.escape(phrase), Regexp::IGNORECASE))
 
     errors << "#{relative}: contains #{phrase.inspect}; #{remedy}"
+  end
+
+  FORBIDDEN_PUBLIC_PATTERNS.each do |pattern, remedy|
+    errors << "#{relative}: contains an unexplained internal acronym matching #{pattern.inspect}; #{remedy}" if content.match?(pattern)
   end
 end
 

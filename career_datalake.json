@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-09-04T14:27:22Z",
+    "generated_at": "2026-09-04T17:28:30Z",
     "system": "CareerOS Master Datalake",
     "canonical_url": "https://www.just3ws.com/career_datalake.json",
     "endpoints": {
@@ -1434,6 +1434,48 @@
         "company": "OneMain Financial",
         "domain": "High-Volume Personal Financial Services",
         "summary": "Served as Software Architect for the Acquisition Lane, the customer-facing path through application and account workflows, with an executive mandate to untangle multi-channel lending funnels, decouple boundaries between Acquisition and Originations, engineer an automated 5-phase PII deletion engine across 30+ tables, and deploy enterprise OpenTelemetry distributed tracing.",
+        "modernization_thesis": "Modernization became possible only after the system became understandable. The work restored reliable signal, mapped actual behavior, and created safer conditions for change across a shared Rails platform.",
+        "modernization_quote": "“Fix what’s broken, upgrade the stuff that works, and stabilize the system to allow change. That is the real path to modernization.”",
+        "quote_provenance": "Mike's retrospective recollection, recorded November 20, 2025, referring to his OMF Tech ELT presentation. A May 15, 2025 record independently confirms the presentation and its substance.",
+        "methodology_lesson": "Innovation is repairing broken systems so they can be understood, improved, and moved forward. The operating loop is Stabilize, Understand, Improve, Measure, Increase confidence, and Enable safer change.",
+        "operating_model": [
+          {
+            "name": "Stabilize",
+            "action": "Restore reliable signal and contain the immediate operational risk.",
+            "gate": "Can the team make a bounded change without losing the ability to tell what happened?"
+          },
+          {
+            "name": "Understand",
+            "action": "Map customer journeys, dependencies, ownership, and actual runtime behavior.",
+            "gate": "Does the evidence connect the business path to code, data, infrastructure, and responsible teams?"
+          },
+          {
+            "name": "Improve",
+            "action": "Apply targeted fixes, standards, upgrades, and clearer workflows.",
+            "gate": "Is the intervention small enough to verify and strong enough to reduce the known risk?"
+          },
+          {
+            "name": "Measure",
+            "action": "Compare the new signal with the baseline and check for unintended effects.",
+            "gate": "Did the measured behavior improve, remain safe, or reveal a new unknown?"
+          },
+          {
+            "name": "Increase confidence",
+            "action": "Turn verified results into shared documentation, ownership, and repeatable practice.",
+            "gate": "Can another team explain the result and operate the system without relying on one expert?"
+          },
+          {
+            "name": "Enable safer change",
+            "action": "Use the increased confidence to make the next migration, extraction, or upgrade safer.",
+            "gate": "What is now safe to change next, and what evidence will prove it?"
+          }
+        ],
+        "evidence_notes": [
+          "Geekfest@OMF created a recurring forum for shared technical learning beginning November 1, 2022.",
+          "An Acquisition architecture initiative used Inventory, Evaluate, and Address to improve confidence in customer journeys and event data during 2023.",
+          "The OpenTelemetry Working Group established a common model for system behavior across heterogeneous platforms during 2024 and 2025.",
+          "The May 15, 2025 Tech ELT record connects observability, ownership, and modernization."
+        ],
         "dimensions": {
           "interaction_surface": "Mapped browser, mobile, automated API, and affiliate partner ingress points across seven heterogeneous acquisition funnels.",
           "lateral_state_dependencies": "Mapped 40+ applicant database tables, isolated legacy clarity_ and underwriting_ orphan data, and architected an automated 5-phase PII deletion engine.",
@@ -1454,17 +1496,18 @@
         "period": "2022: 2026",
         "company": "Phalanx: Duel",
         "domain": "Multiplayer Tactical Game & Engine (phalanxduel.com)",
-        "summary": "Designed a tactical card game at Boy Scout Camp Tesomas in 2022, prototyped the rules in Ruby, and built it into a live multiplayer WebSockets engine with Go CLI and SwiftUI mobile clients.",
+        "summary": "Designed a tactical card duel at Boy Scout Camp Tesomas in 2022 and prototyped its combat rules in Ruby. Rebuilt it as a server-authoritative TypeScript engine, with a deterministic engine package kept separate from the transport layer, a Go CLI, a TypeScript SDK, and an experimental SwiftUI client, now running live at phalanxduel.com.",
         "dimensions": {
-          "interaction_surface": "WebSockets server API, TypeScript SDK, Go CLI client (duel-cli), and native SwiftUI iOS app.",
-          "lateral_state_dependencies": "Strict 8-stage turn state machine with step-by-step combat calculations for live previews and game replays.",
-          "full_stack_topology": "Node.js WebSockets server, PostgreSQL database, Docker containers, and Glicko-2 competitive matchmaking.",
-          "supply_chain_exposure": "AGPLv3 open-source codebase, OpenTelemetry tracing across server/CLI, and 40+ operational documentation guides."
+          "interaction_surface": "WebSocket protocol (createMatch, joinMatch, watchMatch, action, authenticate) paired with an OpenAPI 3.0 REST surface for matchmaking, ladder, and replay, a TypeScript SDK, a Go CLI (duel-cli), and an experimental SwiftUI iOS client, all built against one shared schema contract.",
+          "lateral_state_dependencies": "8-stage turn state machine (StartTurn through EndTurn) enforcing Target Chain, Boundary, and Carryover combat semantics, with Postgres storing match state, action history, and transaction logs as JSONB alongside Glicko-2 Elo snapshots tracked per ladder category.",
+          "full_stack_topology": "TypeScript monorepo separating a transport-only server from a deterministic, transport-free engine package, backed by Postgres via Drizzle, Docker-built deploys, Sentry error tracking, and an OTel Collector feeding OTel/LGTM observability across the server and Go client.",
+          "supply_chain_exposure": "AGPLv3 open-source codebase with 40+ operational wiki and docs guides, an independent combat verifier that checks 2,355,388 declared finite cases and pins a SHA-256 result digest, and CI-gated rule, replay, and playthrough verification ahead of every release."
         },
         "outcomes": [
-          "Built an explainable battle engine that outputs exact combat math for live damage previews and spectator replays.",
-          "Kept game state 100% synchronized across WebSockets with zero client desync across TypeScript, Go, and Ruby.",
-          "Shipped live production platform (phalanxduel.com) with automated container deploys."
+          "Built an explainable battle engine that records a versioned, step-by-step combat calculation for every attack, with named operands, ordered operators, and stable PD-RULE identifiers, driving live damage previews, narration, and spectator replay.",
+          "Verified the combat engine against an independent reference checker covering 2,355,388 declared finite cases, pinning a SHA-256 result digest as a bounded correctness proof.",
+          "Kept game state synchronized across WebSocket and REST paths for TypeScript, Go, and Swift clients, using role-specific projections and knowledge-safety tests that keep hidden hand and deck information out of what any client can see.",
+          "Shipped a live production platform (phalanxduel.com) with an automated release pipeline that builds an immutable GHCR container image, promotes it after health and readiness checks, and rolls back to the last known-good image on failure."
         ]
       }
     ]

@@ -60,6 +60,31 @@ body_class: professional-home
     </div>
   </section>
 
+  <section class="leadership-profile-map" aria-labelledby="profile-map-title" style="margin: 2.5rem 0;">
+    <div class="leadership-section-heading">
+      <p class="leadership-section-index">The shape of the work</p>
+      <h2 id="profile-map-title">One practice. Four ways it appears.</h2>
+      <p>I build, repair, explain, and preserve systems. The projects below are different expressions of the same practice.</p>
+    </div>
+    <pre><code class="language-mermaid">flowchart LR
+  M[Mike Hall<br/>Software Engineer] --> B[Build]
+  M --> R[Repair]
+  M --> E[Explain]
+  M --> P[Preserve]
+  B --> B1[Ruby and Rails]
+  B --> B2[Products and tools]
+  R --> R1[Legacy systems]
+  R --> R2[Safer change]
+  E --> E1[Diagrams and standards]
+  E --> E2[Observability and teaching]
+  P --> P1[Communities]
+  P --> P2[UGtastic and oral history]
+  classDef mike fill:#f7efe1,stroke:#b45309,color:#1e232a,stroke-width:2px
+  classDef path fill:#e6f4f1,stroke:#0f766e,color:#1e232a
+  class M mike
+  class B,R,E,P,B1,B2,R1,R2,E1,E2,P1,P2 path</code></pre>
+  </section>
+
   <!-- Unambiguous Résumé & Credentials Access Hub -->
   <section class="leadership-credentials-hub" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); border-radius: var(--radius-md, 0.5rem); padding: 1.5rem; margin: 2.5rem 0; box-shadow: var(--shadow-sm);">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border-subtle, #eeebe3); padding-bottom: 0.75rem;">
@@ -112,6 +137,7 @@ body_class: professional-home
           <li>{{ question }}</li>
         {% endfor %}
       </ul>
+      <p class="leadership-method-formula" aria-label="Modernization operating formula">{{ home.method.formula }}</p>
     </div>
 
     <div class="leadership-wave" aria-hidden="true">

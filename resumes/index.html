@@ -1,7 +1,7 @@
 ---
 layout: base
 title: "Resume Variants"
-description: "Tailored resume variants for specific role targets — Principal IC, Staff Platform, Founding Staff, Observability, and Senior Rails."
+description: "Tailored resume variants for specific role targets: Principal IC, Staff Platform, Founding Staff, Observability, and Senior Rails."
 permalink: /resumes/
 sitemap: false
 robots: noindex,nofollow
@@ -14,11 +14,39 @@ body_class: ats-resume
   <header style="margin-bottom: 2rem;">
     <h1 style="margin-bottom: 0.35rem;">Resume Variants</h1>
     <p style="color: var(--color-text-muted, #64748b); margin: 0;">
-      Tailored versions of the resume for specific role targets.
-      Each variant shares the same positions and highlights — the summary, ordering, and focus change to match the role.
+      One Mike Hall. Five capability lenses.
+      Each variant shares the same career record. The summary, ordering, and focus change to match the problem a hiring team needs solved.
       <a href="/" style="color: var(--color-accent, #2563eb);">← Back to main resume</a>
     </p>
   </header>
+
+  <section aria-labelledby="persona-model" style="margin-bottom: 2rem; padding: 1.25rem; border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.5rem; background: var(--color-bg-subtle, #f8fafc);">
+    <h2 id="persona-model" style="font-size: 1.25rem; margin: 0 0 0.5rem;">The shared professional identity</h2>
+    <p style="margin: 0 0 0.85rem; line-height: 1.6;">I build, repair, explain, and preserve software systems. These resumes change the reader's entry point without changing the person or the evidence.</p>
+    <p style="margin: 0; font-weight: 700; color: var(--color-accent, #2563eb); line-height: 1.7;">Stabilize → Understand → Improve → Measure → Increase confidence → Enable safer change</p>
+  </section>
+
+  <section aria-labelledby="persona-map" style="margin-bottom: 2rem;">
+    <h2 id="persona-map" style="font-size: 1.25rem; margin-bottom: 0.5rem;">How the lenses connect</h2>
+    <p style="margin: 0 0 0.75rem; line-height: 1.6;">The role titles change for the reader. The underlying capabilities and evidence remain connected.</p>
+    <pre><code class="language-mermaid">flowchart TB
+  M[One Mike Hall] --> A[Principal Systems Architect]
+  M --> B[Staff Platform and Enablement Lead]
+  M --> C[Staff Observability and Resilience Architect]
+  M --> D[Founding Staff Engineer]
+  M --> E[Senior and Lead Rails Engineer]
+  A --> A1[Boundaries and modernization]
+  B --> B1[Leverage and handoffs]
+  C --> C1[Signal and diagnosis]
+  D --> D1[Ambiguity to working software]
+  E --> E1[Production craftsmanship]
+  classDef root fill:#f7efe1,stroke:#b45309,color:#1e232a,stroke-width:2px
+  classDef lens fill:#e6f4f1,stroke:#0f766e,color:#1e232a
+  classDef proof fill:#f4f6f5,stroke:#8c9a96,color:#1e232a
+  class M root
+  class A,B,C,D,E lens
+  class A1,B1,C1,D1,E1 proof</code></pre>
+  </section>
 
   <div style="display: grid; gap: 1.25rem;">
     {% for pair in site.data.resume.archetypes %}
@@ -35,6 +63,10 @@ body_class: ats-resume
         </header>
 
         <p style="margin: 0; font-size: 0.9375rem; line-height: 1.6;">{{ a.summary | truncate: 200 }}</p>
+
+        <p style="margin: 0; font-size: 0.875rem; line-height: 1.5;"><strong>What this lens shows:</strong> {{ a.identity_lens }}</p>
+
+        <p style="margin: 0; font-size: 0.8125rem; color: var(--color-text-muted, #64748b);">Evidence: <a href="{{ a.evidence_path }}">{{ a.evidence_path }}</a></p>
 
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.25rem;">
           <a href="/resumes/{{ slug }}/" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.85rem; background: var(--color-accent, #2563eb); color: #fff; border-radius: 0.375rem; font-weight: 600; font-size: 0.8125rem; text-decoration: none;">

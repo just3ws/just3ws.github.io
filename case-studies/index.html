@@ -111,6 +111,43 @@ body_class: ats-resume
           {{ cs.summary }}
         </p>
 
+        {% if cs.operating_model %}
+        <section class="case-study-operating-model" aria-labelledby="{{ cs.id }}-operating-model" style="background: var(--color-bg-base, #1a1b2f); border: 1px solid var(--color-border, #363646); border-radius: 0.65rem; padding: 1.5rem; margin-bottom: 1.75rem;">
+          <p style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #7e9cd8); letter-spacing: 0.08em; margin-bottom: 0.45rem;">Modernization lesson and method</p>
+          <h3 id="{{ cs.id }}-operating-model" style="font-size: 1.3rem; font-weight: 800; color: var(--color-heading, var(--color-text-main, #dcd7ba)); margin-bottom: 0.65rem;">{{ cs.modernization_thesis }}</h3>
+          {% if cs.distinctive_contribution %}<p style="font-size: 0.98rem; line-height: 1.55; color: var(--color-text-main, #dcd7ba); margin: 0 0 0.9rem;"><strong style="color: var(--color-primary, #7e9cd8);">What was distinctively Mike's:</strong> {{ cs.distinctive_contribution }} <a href="/docs/omf-distinctive-contributions/">Read the evidence</a>.</p>{% endif %}
+          <blockquote style="border-left: 3px solid var(--color-primary, #7e9cd8); margin: 0 0 0.65rem; padding: 0.15rem 0 0.15rem 1rem; color: var(--color-text-main, #dcd7ba); font-size: 1.05rem; line-height: 1.55;">{{ cs.modernization_quote }}</blockquote>
+          <p style="font-size: 0.82rem; color: var(--color-text-muted, #c8c093); margin-bottom: 1.25rem;">{{ cs.quote_provenance }}</p>
+          <p style="font-size: 1rem; font-weight: 800; color: var(--color-primary, #7e9cd8); text-align: center; line-height: 1.7; margin: 0 0 1.25rem;">{{ cs.methodology_lesson }}</p>
+
+          <pre><code class="language-mermaid">flowchart LR
+  A[Stabilize] --> B[Understand]
+  B --> C[Improve]
+  C --> D[Measure]
+  D --> E[Increase confidence]
+  E --> F[Enable safer change]
+  F -. next bounded change .-> A</code></pre>
+          <p class="operating-model-formula" aria-label="Six-step modernization operating loop" style="margin: 0 0 1.25rem; padding: 0.85rem 1rem; border: 1px solid var(--color-border, #363646); border-radius: 0.45rem; color: var(--color-primary, #7e9cd8); font-weight: 800; text-align: center; line-height: 1.7;">Stabilize → Understand → Improve → Measure → Increase confidence → Enable safer change</p>
+
+          <ol style="display: grid; gap: 0.65rem; padding: 0; margin: 0; list-style: none;">
+            {% for phase in cs.operating_model %}
+            <li style="display: grid; grid-template-columns: 2.5rem minmax(7rem, 0.35fr) minmax(14rem, 1fr); gap: 0.75rem; align-items: baseline; border-left: 3px solid var(--color-primary, #7e9cd8); padding: 0.3rem 0 0.3rem 0.8rem;">
+              <span style="color: var(--color-primary, #7e9cd8); font-size: 0.75rem; font-weight: 800;">0{{ forloop.index }}</span>
+              <strong style="color: var(--color-heading, #dcd7ba);">{{ phase.name }}</strong>
+              <span style="font-size: 0.88rem; line-height: 1.45; color: var(--color-text-main, #dcd7ba);">{{ phase.action }} <strong style="color: var(--color-text-muted, #c8c093);">Gate:</strong> {{ phase.gate }}</span>
+            </li>
+            {% endfor %}
+          </ol>
+
+          <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--color-border, #363646);">
+            <h4 style="font-size: 0.95rem; color: var(--color-heading, #dcd7ba); margin-bottom: 0.5rem;">Evidence trail</h4>
+            <ul style="margin: 0; padding-left: 1.1rem; color: var(--color-text-muted, #c8c093); font-size: 0.82rem; line-height: 1.5;">
+              {% for note in cs.evidence_notes %}<li>{{ note }}</li>{% endfor %}
+            </ul>
+          </div>
+        </section>
+        {% endif %}
+
         <div style="margin-bottom: 1.75rem;">
           <h3 style="font-size: 1.125rem; font-weight: 700; color: var(--color-heading, var(--color-text-main, #dcd7ba)); margin-bottom: 0.85rem;">4-Dimensional Cartography Breakdown</h3>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem;">
