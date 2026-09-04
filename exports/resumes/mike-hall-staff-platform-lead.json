@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-04T12:48:40Z",
+    "generated_at": "2026-09-04T13:46:14Z",
     "archetype": "staff_platform_enablement",
     "slug": "mike-hall-staff-platform-lead",
     "target_tier": "Staff IC / Developer Platform / Engineering Enablement"
@@ -33,13 +33,14 @@
       "company": "OneMain Financial",
       "location": "Remote",
       "dates": "January 2021 - February 2026",
-      "focus": "Realigned ownership across the Acquisition Lane, the digital front door for customer applications and account workflows, founded a Team Topologies-informed engineering enablement function, and built durable community and handoff mechanisms through Geekfest@OMF and the OpenTelemetry Working Group.",
+      "focus": "Consolidated two attrition-impacted teams within the Acquisition Lane, the digital front door for customer applications and account workflows, founded a Team Topologies-informed engineering enablement function, and built durable community and handoff mechanisms through Geekfest@OMF and the OpenTelemetry Working Group.",
       "highlights": [
-        "Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.",
-        "Built data-risk remediation and architecture-discovery practices that made legacy dependencies visible and safer to change.",
-        "Diagnosed a production state-management defect affecting application completion and moved the system to a more durable session design without interrupting service.",
-        "Established distributed observability across application and integration boundaries, improving the evidence available during incident response.",
-        "Built communities of practice, mentoring loops, and handoff mechanisms that distributed technical ownership beyond a single engineer."
+        "Originations IC Delivery & Instant Disbursement: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping an instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.\n",
+        "Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team and mapped seven heterogeneous acquisition channels; architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, eliminating legacy state machine corruptions.\n",
+        "Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical session-cookie overflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.\n",
+        "Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.\n",
+        "Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.\n",
+        "Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and a schema inference prototype; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.\n"
       ]
     },
     {
@@ -50,8 +51,9 @@
       "dates": "January 2026 - Present",
       "focus": "Built context-isolated subagents, automated pre-commit verification gates, and telemetry-driven diagnostic tooling for AI developer runtimes.",
       "highlights": [
-        "Built tools that make technical context reusable across sessions without treating generated output as authority.",
-        "Added observable diagnostics and bounded review steps to keep automated engineering work understandable and reversible."
+        "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n",
+        "Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.\n",
+        "Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.\n"
       ]
     },
     {
@@ -62,8 +64,8 @@
       "dates": "January 2019 - December 2020",
       "focus": "Standardized asynchronous Sidekiq delivery pipelines and automated CI/CD deployment routines.",
       "highlights": [
-        "Improved search and asynchronous delivery systems while production traffic continued to flow.",
-        "Led framework and database upgrades with a staged approach designed to protect service continuity."
+        "Search Infrastructure Modernization: Eliminated external cluster failure modes and reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text search and relational indices under live production traffic.\n",
+        "Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across core applications, sequencing database migrations to ensure zero downtime during platform modernization.\n"
       ]
     },
     {
