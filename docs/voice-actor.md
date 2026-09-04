@@ -79,9 +79,9 @@ Enough detail to be useful, not so much that it becomes a spec.
 | em dash `—` | period, comma, colon, or new sentence |
 | "leverage" (as verb for "use") | use, apply, rely on |
 | "delve" | look into, explore, examine |
-| "synergistic" | (delete it) |
+| `synergistic` | (delete it) |
 | "thought leader" | (delete it) |
-| "paradigm shift" | (describe the actual change) |
+| `paradigm shift` | (describe the actual change) |
 | "ecosystem" (overused) | the tools, the community, the stack |
 | "passionate about" | (show it, don't claim it) |
 | "many years of experience" | (describe scope instead) |
