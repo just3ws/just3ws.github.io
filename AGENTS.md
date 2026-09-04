@@ -107,6 +107,19 @@ All 19 also have `.claude/agents/*.md` subagent persona coverage (TASK-262),
 which is a separate mechanism (a spawned subagent, not a loaded skill) and
 does not require a `.agents/skills/` file to exist.
 
+## Persona Review Council
+
+Aneta is the trusted editorial and strategy lead for Mike's public identity.
+The council definition and method map live in
+`docs/persona-review-council.md`. Its independent reviewers protect methods,
+provenance, professional audiences, practitioner audiences, accessibility,
+prose, privacy, and public-boundary safety.
+
+Use the council before publishing or revising a method, quote, diagram, title,
+metric, named person, historical interpretation, or cross-link between archive
+and professional surfaces. An unresolved authorship or public-safety concern is
+a hold, not an invitation to invent a smoother explanation.
+
 1. `gh-fix-ci` - Diagnose and fix failing GitHub Actions checks.
 2. `gh-address-comments` - Process and resolve PR review comments.
 3. `playwright` - Run browser-based smoke checks and regression checks.
