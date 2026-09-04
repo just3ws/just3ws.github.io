@@ -48,20 +48,20 @@ body_class: ats-resume
 
     <section class="cartography-framework" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem; width: 100%; box-sizing: border-box;">
       <div style="margin-bottom: 2rem;">
-        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Mike's operational excellence loop</h2>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">Mike's IEA discovery loop</h2>
         <p style="margin-bottom: 1.25rem; color: var(--color-text-main, #dcd7ba); font-size: 1.05rem; line-height: 1.65;">
-          When entering a complex production system, legacy codebase, or founder transition, I use this loop to turn uncertainty into safer change. <strong>System Cartography</strong> helps reconcile what people think the system does with what it actually does.
+          In the ACQ Technical Architecture Initiative, I used IEA to turn uncertainty about customer journeys and event data into an actionable record. <strong>System Cartography</strong> extends that evidence-first practice when reconciling what people think a system does with what it actually does.
         </p>
 
         <pre><code class="language-mermaid">flowchart TD
-  subgraph L["Active loop"]
-    A[Stabilize] --> B[Understand]
-    B --> C[Improve]
-    C -. next change .-> A
+  subgraph L["IEA discovery loop"]
+    A[Inventory] --> B[Evaluate]
+    B --> C[Address]
+    C -. verify and repeat .-> A
   end
-  C --> D[Measure again]
-  D --> E[Increase confidence]
-  E --> F[Enable safer change]
+  C --> D[Know the customer path]
+  D --> E[Make informed decisions]
+  E --> F[Iterate with confidence]
   classDef loop fill:#e6f4f1,stroke:#0f766e,color:#1e232a
   class A,B,C,D,E,F loop</code></pre>
 
@@ -138,8 +138,10 @@ body_class: ats-resume
           </section>
           {% endif %}
 
+          <p style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted, #938aa9); margin: 0 0 0.55rem;">Related modernization synthesis</p>
+          <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text-muted, #c8c093); margin: 0 0 0.85rem;">This later synthesis describes what the evidence-first work makes possible. It is not a replacement for the IEA method documented in the ACQ initiative.</p>
           <pre><code class="language-mermaid">flowchart TD
-  subgraph L["Active loop"]
+  subgraph L["Supporting synthesis"]
     A[Stabilize] --> B[Understand]
     B --> C[Improve]
     C -. next bounded change .-> A
@@ -147,7 +149,7 @@ body_class: ats-resume
   C --> D[Measure again]
   D --> E[Increase confidence]
   E --> F[Enable safer change]</code></pre>
-          <p class="operating-model-formula" aria-label="Mike's operational excellence loop" style="margin: 0 0 1.25rem; padding: 0.85rem 1rem; border: 1px solid var(--color-border, #363646); border-radius: 0.45rem; color: var(--color-primary, #7e9cd8); font-weight: 800; text-align: center; line-height: 1.7;">Stabilize → Understand → Improve → Measure again → increase confidence → enable safer change</p>
+          <p class="operating-model-formula" aria-label="Supporting modernization synthesis" style="margin: 0 0 1.25rem; padding: 0.85rem 1rem; border: 1px solid var(--color-border, #363646); border-radius: 0.45rem; color: var(--color-primary, #7e9cd8); font-weight: 800; text-align: center; line-height: 1.7;">Stabilize → Understand → Improve → Measure again → increase confidence → enable safer change</p>
 
           <p style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted, #c8c093); margin: 0 0 0.55rem;">The active work</p>
           <ol style="display: grid; gap: 0.65rem; padding: 0; margin: 0 0 1.1rem; list-style: none;">

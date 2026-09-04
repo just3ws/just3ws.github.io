@@ -76,7 +76,7 @@ This is stronger than presenting Mike as someone who merely adopted OpenTelemetr
 - **Homepage:** Use one short statement about making systems understandable before making them change. Feature the [OMF modernization case study](/case-studies/).
 - **Case studies:** Put this distinction near the beginning of the OMF story, before the detailed technology inventory.
 - **Resume:** Use evidence bullets that show system explanation, cross-team translation, prerequisite repair, and durable learning systems.
-- **Methodology page:** Show the Stabilize → Understand → Improve → Measure → Increase confidence → Enable safer change loop as a reusable practice, with the OMF case as evidence.
+- **Methodology page:** Lead with Mike's documented Inventory → Evaluate → Address method. The modernization sequence may appear as a supporting synthesis, with the OMF case as evidence.
 - **Archive surfaces:** Keep Geekfest and UGtastic as historical proof of the learning and community pattern, not as substitutes for the professional case study.
 
 ## Evidence limits

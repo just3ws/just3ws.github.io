@@ -98,17 +98,17 @@ different contexts. Do not collapse them into one invented master framework.
 IEA is the discovery loop used in the Acquisition Technical Architecture
 Initiative.
 
-### Operating practice
+### Related synthesis
 
-> Stabilize → Understand → Improve
-
-This is the operating loop. The fuller operational excellence expression is:
+The following sequence is a later synthesis across the work. It is useful as an
+interpretive guide, but it is not the named method Mike documented in the ACQ
+initiative:
 
 > Stabilize → Understand → Improve → Measure again → increase confidence → enable safer change
 
-Measure again, increased confidence, and safer change describe what the loop
-produces and enables. They are part of the full expression, not reasons to
-replace the three-part operating loop with a different framework.
+Measure again, increased confidence, and safer change describe what the work can
+produce and enable. They should not be presented as a separate method authored
+by Mike.
 
 ### Investigation
 

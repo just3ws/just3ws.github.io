@@ -28,7 +28,7 @@ flowchart TD
 - IEA discovery loop: Inventory → Evaluate → Address.
 - Confidence loop: know the customer path → make informed decisions → iterate with confidence.
 - Modernization loop: fix what is broken → upgrade what works → stabilize the system → enable change.
-- Operational excellence loop: Stabilize → Understand → Improve → Measure again → increase confidence → enable safer change.
+- Supporting modernization synthesis: Stabilize → Understand → Improve → Measure again → increase confidence → enable safer change. This is not the named method.
 - Panoramic mapping: the investigation technique.
 - OpenTelemetry: an enterprise application of the methods.
 

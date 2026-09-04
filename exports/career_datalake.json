@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-09-04T17:28:30Z",
+    "generated_at": "2026-09-04T18:23:31Z",
     "system": "CareerOS Master Datalake",
     "canonical_url": "https://www.just3ws.com/career_datalake.json",
     "endpoints": {
@@ -70,6 +70,8 @@
       "short_label": "Principal",
       "title": "Principal Software Engineer / Systems Architect",
       "target_tier": "Principal IC / Systems Architecture / Legacy Modernization",
+      "identity_lens": "Shows how I see system boundaries, sequence high-risk change, and protect production systems.",
+      "evidence_path": "/case-studies/",
       "summary": "Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure.",
       "core_skills": [
         "Platform Architecture & Legacy Modernization",
@@ -131,6 +133,8 @@
       "short_label": "Staff Platform",
       "title": "Staff Software Engineer / Platform & Enablement Lead",
       "target_tier": "Staff IC / Developer Platform / Engineering Enablement",
+      "identity_lens": "Shows how I create leverage through shared practices, enablement, mentorship, and durable handoffs.",
+      "evidence_path": "/case-studies/",
       "summary": "Staff Software Engineer and Platform Lead who multiplies engineering velocity and system reliability. Proven track record of merging attrition-impacted teams into high-performing units, founding developer enablement teams, building automated verification gates, and unblocking product teams from technical debt friction.",
       "core_skills": [
         "Platform Enablement & Developer Productivity",
@@ -196,6 +200,8 @@
       "short_label": "Senior Software Engineer",
       "title": "Senior / Lead Software Engineer, Ruby on Rails",
       "target_tier": "Senior / Lead IC / Ruby on Rails Infrastructure",
+      "identity_lens": "Shows hands-on software craftsmanship inside difficult production codebases.",
+      "evidence_path": "/writing/",
       "summary": "Senior software engineer focused on Ruby on Rails infrastructure, PostgreSQL, legacy modernization, and production reliability. Delivers business value through complex state machine refactoring, database optimization, asynchronous processing, third-party integrations, and disciplined testing.",
       "core_skills": [
         "Ruby on Rails (Full-Lifecycle 2.x through 8.x)",
@@ -261,6 +267,8 @@
       "short_label": "Founding Staff",
       "title": "Founding Staff Engineer (0-to-1 Product & AI Systems)",
       "target_tier": "Early-Stage / High Agency / 0-to-1 Product & AI Engineering",
+      "identity_lens": "Shows how I turn ambiguity into working software with tight feedback and explicit verification.",
+      "evidence_path": "/phalanx-duel/",
       "summary": "Hands-on Founding Staff Engineer who translates product ambiguity into robust, production-ready software. Combines full-stack web development (Rails, PostgreSQL, modern JS/TypeScript) with practical local-first AI engineering (pgvector embeddings, local LLM orchestration, prompt injection defense, and browser automation).",
       "core_skills": [
         "0-to-1 Full-Stack Architecture & Rapid Prototyping",
@@ -319,6 +327,8 @@
       "short_label": "Observability",
       "title": "Staff Observability & Resilience Architect",
       "target_tier": "Observability / Site Reliability / System Telemetry",
+      "identity_lens": "Shows how I turn dark system behavior into useful signal, diagnosis, and safer decisions.",
+      "evidence_path": "/panoramic-view/",
       "summary": "Observability and Resilience Architect specializing in illuminating dark telemetry, enterprise OpenTelemetry rollouts, and deep incident root cause triage. Eliminates cross-service blind spots by engineering end-to-end distributed trace propagation across legacy microservices and modern cloud infrastructure.",
       "core_skills": [
         "OpenTelemetry Working Group Leadership & Governance",
@@ -1435,9 +1445,33 @@
         "domain": "High-Volume Personal Financial Services",
         "summary": "Served as Software Architect for the Acquisition Lane, the customer-facing path through application and account workflows, with an executive mandate to untangle multi-channel lending funnels, decouple boundaries between Acquisition and Originations, engineer an automated 5-phase PII deletion engine across 30+ tables, and deploy enterprise OpenTelemetry distributed tracing.",
         "modernization_thesis": "Modernization became possible only after the system became understandable. The work restored reliable signal, mapped actual behavior, and created safer conditions for change across a shared Rails platform.",
+        "distinctive_contribution": "Mike's distinctive contribution was making system behavior explainable, connecting evidence to ownership, creating repeated learning practices, and protecting the prerequisites that made safer modernization possible.",
         "modernization_quote": "“Fix what’s broken, upgrade the stuff that works, and stabilize the system to allow change. That is the real path to modernization.”",
         "quote_provenance": "Mike's retrospective recollection, recorded November 20, 2025, referring to his OMF Tech ELT presentation. A May 15, 2025 record independently confirms the presentation and its substance.",
-        "methodology_lesson": "Innovation is repairing broken systems so they can be understood, improved, and moved forward. The operating loop is Stabilize, Understand, Improve, Measure, Increase confidence, and Enable safer change.",
+        "methodology_lesson": "Innovation is repairing broken systems so they can be understood, improved, and moved forward. Mike's documented method is Inventory, Evaluate, Address. The modernization sequence is a later synthesis of what that work makes possible.",
+        "historical_method": {
+          "name": "Inventory → Evaluate → Address",
+          "period": "2023",
+          "summary": "This is Mike's IEA discovery loop applied to the Acquisition domain in 2023: establish what exists, decide what is trustworthy and relevant, then take the smallest useful corrective action. The six-part modernization sequence is a broader synthesis across IEA, Panoramic View, and OpenTelemetry work.",
+          "source_note": "The documented initiative used a quotation attributed to Rear Admiral Grace Murray Hopper, “One accurate measurement is worth a thousand expert opinions.” The attribution belongs to that source record, not to Mike.",
+          "steps": [
+            {
+              "name": "Inventory",
+              "action": "Record feature flags, experiments, events, customer journeys, code assets, and the knowledge held by teams.",
+              "gate": "Can we describe what exists and where the evidence comes from?"
+            },
+            {
+              "name": "Evaluate",
+              "action": "Test relevance, viability, data quality, knowledge gaps, and the boundary of the Acquisition domain.",
+              "gate": "Do we know which signals and responsibilities can be trusted?"
+            },
+            {
+              "name": "Address",
+              "action": "Flatten unnecessary flags, end weak experiments, instrument systems, remove low-confidence events, and cross-train teams.",
+              "gate": "Did the intervention improve confidence without hiding the remaining uncertainty?"
+            }
+          ]
+        },
         "operating_model": [
           {
             "name": "Stabilize",
@@ -1455,7 +1489,7 @@
             "gate": "Is the intervention small enough to verify and strong enough to reduce the known risk?"
           },
           {
-            "name": "Measure",
+            "name": "Measure again",
             "action": "Compare the new signal with the baseline and check for unintended effects.",
             "gate": "Did the measured behavior improve, remain safe, or reveal a new unknown?"
           },
