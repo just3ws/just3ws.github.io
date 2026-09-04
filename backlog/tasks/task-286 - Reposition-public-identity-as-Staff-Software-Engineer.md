@@ -52,3 +52,13 @@ The current public system anchors Mike Hall as Software Engineer and treats Staf
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Update canonical public profile and summary so the default identity is Staff Software Engineer, explicitly rooted in software engineering.
+2. Update the resume and voice contracts to describe Staff work as hands-on technical leadership across systems, business objectives, and teams of individual contributors, with no people-management implication.
+3. Update career strategy, public curation guidance, topology, and Panoramic View positioning so Staff is the default identity and Principal is a scale-dependent target calibration.
+4. Preserve all historical position titles and evidence, including Associate Director, Staff Engineer, Principal Architect, CTO, and other exact records.
+5. Run prose checks and targeted resume/data validation. Inspect the diff to ensure unrelated generated timestamp changes remain untouched.
+<!-- SECTION:PLAN:END -->
