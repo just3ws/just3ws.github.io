@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-04 16:02'
-updated_date: '2026-09-04 16:05'
+updated_date: '2026-09-04 16:15'
 labels:
   - archive
   - public-surface
@@ -19,23 +19,32 @@ documentation:
 modified_files:
   - ugtastic/index.html
   - archive-atlas/index.html
+  - assets/images/ugtastic-branding/ugtastic-760x333.png
+  - assets/images/ugtastic-branding/header-logo.png
+  - assets/images/ugtastic-branding/ugtastic-github-avatar.png
+  - assets/images/ugtastic-branding/user-group-avatar-fallback.png
+  - assets/images/ugtastic-branding/ugtastic-favicon.png
+  - assets/images/ugtastic-branding/logo.png
+  - assets/images/ugtastic-branding/logo-black.png
+  - assets/images/ugtastic-branding/logo-small.png
+  - assets/audio/ugtastic/life-of-riley.mp3
 type: feature
 ---
 
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Create a public UGtastic archive artifacts page that presents recovered branding assets, badges, avatars, quotes, provenance, and the progression from community archive practices to current modernization loops. Keep public copy concise and apply TMI and provenance filters.
+Create a public UGtastic archive artifacts page that presents recovered branding assets, badges, avatars, screenshots, audio, and public archive links. Keep the modernization process, Mike-authored quotes, formulas, and gates on the broader profile and case-study surfaces instead of the UGtastic exhibit.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 Dedicated public UGtastic artifacts route is discoverable from an existing archive surface
-- [x] #2 Recovered logos badges avatars and visual assets are presented with dates and provenance limits
-- [x] #3 Mike-authored quotes and the modernization operating loop are connected to the archive without AI-authorship ambiguity
-- [x] #4 Page includes accessible formula or diagram treatment with steps and gates
-- [x] #5 Public surface contains no private contact data workplace secrets PHI or unnecessary personal detail
-- [x] #6 Installed localhost route is verified after build
+- [ ] #1 Dedicated public UGtastic artifacts route is discoverable from an existing archive surface
+- [ ] #2 Recovered logos badges avatars screenshots and audio are presented with source-aware labels
+- [ ] #3 The UGtastic page stays focused on archive artifacts and links, without unrelated modernization methodology content
+- [ ] #4 Modernization quotes formulas diagrams and gates remain available on the broader profile and case-study surfaces
+- [ ] #5 Public surface contains no private contact data workplace secrets PHI or unnecessary personal detail
+- [ ] #6 Installed localhost route is verified after build
 <!-- AC:END -->
 
 ## Definition of Done
@@ -53,6 +62,12 @@ Linked the new page from /archive-atlas/. Verified installed route at https://ju
 Verification: bundle exec jekyll build passed with 932 pages; bin/install-localhost passed; semantic output passed checked=908; SEO output passed indexable=863 and noindex=50; TMI sitemap audit passed 864/864; git diff --check passed; graphify update completed.
 
 The repository-wide strict public-surface audit remains nonzero because of pre-existing findings elsewhere. No findings matched ugtastic/index.html or the new archive-atlas link. No private contact data, PHI, workplace secrets, or unverified badge claims were added.
+
+Correction pass: removed the generic methodology loop, modernization quotes, and generic wall-reading legend from /ugtastic/. The exhibit now contains only recovered UGtastic visual and audio artifacts plus links into the archive and a pointer to the separate case-study methodology.
+
+Inventory from /Volumes/Dock_1TB/WITC found logo variants, header mark, GitHub avatar, user-group badge/avatar, favicon, dated screenshots, and Life of Riley.mp3. Copied only selected public-facing assets into assets/images/ugtastic-branding/ and assets/audio/ugtastic/.
+
+Installed browser verification after cache-busting confirmed the corrected page. nginx reload itself remains unavailable without interactive sudo, but bin/install-localhost completed and the installed server served the refreshed output.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
