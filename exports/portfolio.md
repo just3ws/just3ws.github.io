@@ -10,7 +10,7 @@ A high-fidelity restoration of 214 technical interviews from the Ruby, JVM, and 
 **Role:** Creator & Architect
 **Years:** 2024 - Present
 
-Deterministic, tactical card combat. My latest project in pure tactical decision-making and product architecture. No luck, no accounts, just strategy.
+Tactical card combat built around a familiar 52-card vocabulary, compact formations, and replayable rules. A hands-on laboratory for rules engines, observable state transitions, and product architecture.
 
 ## Chicago Code Camp
 **Role:** Co-Organizer & Web Lead
