@@ -78,6 +78,44 @@ graph TD
 4. **Platform Stewardship Warning:** Authored the architectural warning framework when vertical lanes threatened shared horizontal platforms, designing the two-tier "Internal Open Source" and "Implementation Service" models.
 5. **Durable Handoff:** Engineered the OTel WG so that it was never contingent on a single individual, successfully transitioning leadership to SRE.
 
+### The Modernization Lesson
+
+Mike's retrospective recollection of the OMF Tech ELT presentation, recorded
+November 20, 2025, is direct:
+
+> “Fix what’s broken, upgrade the stuff that works, and stabilize the system to allow change. That is the real path to modernization.”
+
+The recollection refers to the presentation. A May 15, 2025 record independently
+confirms the event and its substance. This is Mike's quote, preserved as a later
+recollection rather than rewritten as an artificial slogan.
+
+The related framing is:
+
+> “Innovation is repairing broken systems so they can be understood, improved, and moved forward.”
+
+This is a faithful recollection and synthesis of the idea. The related modernization synthesis is a loop:
+
+```text
+Stabilize → Understand → Improve → Measure again → Increase confidence → Enable safer change
+```
+
+Each step has a gate. Stabilize restores enough signal to investigate. Understand
+maps customer journeys, dependencies, ownership, and runtime behavior. Improve
+applies a bounded intervention. Measure again checks the result against reality.
+Increased confidence becomes shared documentation and ownership. That evidence
+defines what can be changed safely next.
+
+This is why modernization is not synonymous with replacement. It is the
+disciplined creation of conditions in which systems can be safely changed.
+
+The public case-study evidence follows four linked interventions: Geekfest@OMF
+made shared technical learning routine; ACQ mapping and the Inventory, Evaluate,
+and Address loop improved confidence in customer journeys and event data; the
+OpenTelemetry Working Group created a common model of behavior across
+heterogeneous systems; and the Rails remediation path used that understanding
+to support safer change. The result is a repeatable operating model, not a tool
+adoption story.
+
 ---
 
 ## 4. The Staff+/Principal Value Proposition

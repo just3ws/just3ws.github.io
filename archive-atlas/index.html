@@ -9,7 +9,8 @@ body_class: archive-atlas-page
   <header class="atlas-hero">
     <p class="atlas-kicker">WHOIS Tech Community archive</p>
     <h1>WITC Archive Atlas</h1>
-    <p class="atlas-lede">A horizontal map of recording, community events, captioning, preservation, and later curation. Select an era, then open a series to follow its evidence trail.</p>
+    <p class="atlas-lede">A horizontal map of recording, community events, captioning, preservation, and later curation. Start with the scene, choose an era, then open a series to follow its evidence trail.</p>
+    <p class="atlas-relation"><strong>Visual companion:</strong> <a href="/ugtastic/">UGtastic Archive Artifacts</a> is the wall of recovered branding, screenshots, and the ideas that connect the archive to current modernization practice.</p>
     <p class="atlas-relation"><strong>How this relates to the Timeline:</strong> the <a href="/timeline/">Timeline</a> is the full career and life waterfall. This Atlas is its explorable WITC projection, where archive threads can be read alongside career, technology, and community layers.</p>
     <div class="atlas-orientation" aria-label="How to read the atlas">
       <span><b>01</b> Find the era</span>
@@ -18,6 +19,15 @@ body_class: archive-atlas-page
       <a href="#atlas-gallery"><b>04</b> View the artifacts</a>
     </div>
   </header>
+
+  <nav class="atlas-exhibit-map" aria-label="Atlas sections">
+    <span>Read the atlas</span>
+    <a href="#atlas-scene-heading">Find your bearings</a>
+    <a href="#atlas-eras-heading">Choose an era</a>
+    <a href="#atlas-map-heading">Follow a lane</a>
+    <a href="#atlas-evidence-heading">Open the evidence</a>
+    <a href="#atlas-gallery-heading">View the artifacts</a>
+  </nav>
 
   <section class="atlas-scene" aria-labelledby="atlas-scene-heading">
     <div class="atlas-scene-copy">
@@ -113,13 +123,16 @@ body_class: archive-atlas-page
   .atlas-hero { position: relative; overflow: hidden; padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem) 3rem; border-radius: 1.25rem; background: radial-gradient(circle at 85% 18%, rgba(73, 105, 169, .34), transparent 22rem), linear-gradient(120deg, #17233d 0%, #243c61 55%, #087f78 150%); color: #fff; box-shadow: 0 1.5rem 4rem rgba(23,35,61,.18); }
   .atlas-kicker { color: #087f78; font: 700 .8rem/1.2 system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
   .atlas-hero .atlas-kicker { color: #8fe3d7; }
-  .atlas-hero h1 { margin: .5rem 0 1rem; font: 700 clamp(2.5rem, 7vw, 6rem)/.98 Georgia, serif; letter-spacing: -.045em; }
+  .atlas-hero h1 { margin: .5rem 0 1rem; color: #fff; font: 700 clamp(2.5rem, 7vw, 6rem)/.98 Georgia, serif; letter-spacing: -.045em; }
   .atlas-lede { max-width: 54rem; margin: 0; color: rgba(255,255,255,.82); font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.7; }
   .atlas-relation { max-width: 60rem; margin: 1.25rem 0 0; padding-left: 1rem; border-left: 3px solid #f0bd72; color: rgba(255,255,255,.72); font-size: .92rem; line-height: 1.6; }
   .atlas-relation a { color: #fff; font-weight: 800; text-underline-offset: .2em; }
   .atlas-orientation { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; margin-top: 2.25rem; color: rgba(255,255,255,.75); font: 700 .78rem/1.3 system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; }
   .atlas-orientation b { margin-right: .35rem; color: #f0bd72; font-family: ui-monospace, monospace; }
   .atlas-orientation a { color: inherit; text-underline-offset: .2em; }
+  .atlas-exhibit-map { display: flex; flex-wrap: wrap; gap: .7rem 1rem; align-items: center; margin-top: 1rem; padding: .8rem 1rem; border: 1px solid #d8dee9; border-radius: .6rem; background: #fff; box-shadow: 0 .4rem 1.25rem rgba(23,35,61,.05); }
+  .atlas-exhibit-map span { margin-right: .25rem; color: #6d7d95; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  .atlas-exhibit-map a { color: #086e68; font-size: .88rem; font-weight: 800; text-underline-offset: .18em; }
   .atlas-scene { display: grid; grid-template-columns: minmax(18rem, .8fr) minmax(28rem, 1.2fr); gap: 2rem; align-items: center; min-height: 23rem; margin-top: 2rem; padding: 2rem clamp(1.25rem, 4vw, 4rem); overflow: hidden; border: 1px solid rgba(73,105,169,.35); border-radius: 1rem; background: radial-gradient(circle at 68% 48%, rgba(8,127,120,.18), transparent 18rem), #101c35; color: #fff; }
   .atlas-scene-copy { max-width: 30rem; }
   .atlas-scene-copy .atlas-kicker { color: #8fe3d7; }
