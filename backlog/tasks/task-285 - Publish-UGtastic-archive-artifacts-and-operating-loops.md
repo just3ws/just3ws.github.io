@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-04 16:02'
-updated_date: '2026-09-04 16:32'
+updated_date: '2026-09-04 16:38'
 labels:
   - archive
   - public-surface
@@ -63,6 +63,8 @@ Follow-up correction and enrichment: removed Creative Studios lockups from the p
 Added an archive observatory to `/ugtastic/`: Liquid-driven interview-era count bars from `_data/timeline_archive.json`, four evidence-backed intersection cards, and a four-clock production-language map covering recording, production, preservation, and curation. Linked to `/timeline/` and `/archive-atlas/`. Rebuilt and reran semantic, SEO, TMI, and graphify checks.
 
 Tooled `bin/analyze_ugtastic_audio.rb` to inspect the recovered 105-file MP3 export without transcription. Generated `_data/ugtastic_audio_inventory.json` with ffprobe metadata and conservative ffmpeg boundary candidates. Current aggregate: 105 stereo files, 20.28 hours, 100 at 44.1 kHz, 4 at 16 kHz, 1 at 48 kHz, 27 leading candidates, 4 trailing candidates. Integrated measured inventory and formula into `/ugtastic/`, with uncertainty boundaries stated explicitly. Rebuilt, reran semantic and SEO checks, reran TMI with 864 passes, refreshed graphify, and reinstalled localhost output.
+
+Added `bin/analyze_ugtastic_production.rb` and `_data/ugtastic_production_analysis.json`. Compared 105 audio exports with 91 finished videos: 89 normalized filename joins, all 91 finished videos contain audio, and 20 Final Cut event files were inspected. Named Life of Riley and UGtastic Outro references appear in the event records; four event files contain intro overlay references. Page now labels confidence and keeps exact placement as an open waveform or spectral matching step.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
