@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@agent-just3ws'
 created_date: '2026-09-02 04:24'
-updated_date: '2026-09-04 15:54'
+updated_date: '2026-09-04 15:55'
 labels: []
 dependencies: []
 documentation:
@@ -60,4 +60,6 @@ Capture the evidence-backed leadership operating model developed across OneMain 
 Public GitHub scan completed for follow-up developer-cred planning. Verified account metadata: 38 public repositories, 48 public gists, 63 followers, 25 following. Strong public proof candidates include Coderwall legacy (856 stars, 303 forks), nerd-font-cheatsheets (129 stars, 25 forks), and contributions or issue/PR history in Rails, cdnjs, Janus, Coderwall, and other public repositories. Clojure evidence includes public clojure-exercises-001 and semantic CSV commits. RubyGems ownership was not verified because the package API was unavailable, so it remains a hold until corroborated.
 
 The developer-cred idea is intentionally not folded into this OMF implementation. Recommended follow-up: add a canonical public evidence dataset and a dedicated /developer-cred/ or /open-source/ surface, with selected gists and contribution links grouped by engineering signal. Avoid publishing raw commit volume or unreviewed funny comments.
+
+Verification: bundle exec jekyll build passed with 931 pages. bin/install-localhost published _site successfully. Installed localhost case-study AX inspection confirmed the OMF quote, provenance note, six-stage formula, six ordered steps, six gates, and evidence trail. Installed localhost homepage inspection confirmed the full formula and six operating-pattern stages. validate_semantic_output passed (907 checked); validate_seo_output passed (862 indexable, 50 noindex); targeted TMI audit passed all 879 sitemap URLs with 0 findings. Public-surface strict remains nonzero because pre-existing heuristic findings remain across the repository, including two existing case-study outcome matches; no new finding was introduced by the added modernization prose.
 <!-- SECTION:NOTES:END -->
