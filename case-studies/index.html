@@ -48,18 +48,20 @@ body_class: ats-resume
 
     <section class="cartography-framework" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem; width: 100%; box-sizing: border-box;">
       <div style="margin-bottom: 2rem;">
-        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">The six-step operating loop</h2>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">The operating loop</h2>
         <p style="margin-bottom: 1.25rem; color: var(--color-text-main, #dcd7ba); font-size: 1.05rem; line-height: 1.65;">
           When entering a complex production system, legacy codebase, or founder transition, I use this loop to turn uncertainty into safer change. <strong>System Cartography</strong> helps reconcile what people think the system does with what it actually does.
         </p>
 
-        <pre><code class="language-mermaid">flowchart LR
-  A[Stabilize] --> B[Understand]
-  B --> C[Improve]
+        <pre><code class="language-mermaid">flowchart TD
+  subgraph L["Active loop"]
+    A[Stabilize] --> B[Understand]
+    B --> C[Improve]
+    C -. next change .-> A
+  end
   C --> D[Measure]
   D --> E[Increase confidence]
   E --> F[Enable safer change]
-  F -. next change .-> A
   classDef loop fill:#e6f4f1,stroke:#0f766e,color:#1e232a
   class A,B,C,D,E,F loop</code></pre>
 
@@ -136,19 +138,33 @@ body_class: ats-resume
           </section>
           {% endif %}
 
-          <pre><code class="language-mermaid">flowchart LR
-  A[Stabilize] --> B[Understand]
-  B --> C[Improve]
+          <pre><code class="language-mermaid">flowchart TD
+  subgraph L["Active loop"]
+    A[Stabilize] --> B[Understand]
+    B --> C[Improve]
+    C -. next bounded change .-> A
+  end
   C --> D[Measure]
   D --> E[Increase confidence]
-  E --> F[Enable safer change]
-  F -. next bounded change .-> A</code></pre>
-          <p class="operating-model-formula" aria-label="Six-step modernization operating loop" style="margin: 0 0 1.25rem; padding: 0.85rem 1rem; border: 1px solid var(--color-border, #363646); border-radius: 0.45rem; color: var(--color-primary, #7e9cd8); font-weight: 800; text-align: center; line-height: 1.7;">Stabilize → Understand → Improve → Measure → Increase confidence → Enable safer change</p>
+  E --> F[Enable safer change]</code></pre>
+          <p class="operating-model-formula" aria-label="Mike's operating loop" style="margin: 0 0 1.25rem; padding: 0.85rem 1rem; border: 1px solid var(--color-border, #363646); border-radius: 0.45rem; color: var(--color-primary, #7e9cd8); font-weight: 800; text-align: center; line-height: 1.7;">Stabilize → Understand → Improve → Measure → Increase confidence → Enable safer change</p>
 
-          <ol style="display: grid; gap: 0.65rem; padding: 0; margin: 0; list-style: none;">
-            {% for phase in cs.operating_model %}
+          <p style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted, #c8c093); margin: 0 0 0.55rem;">The active work</p>
+          <ol style="display: grid; gap: 0.65rem; padding: 0; margin: 0 0 1.1rem; list-style: none;">
+            {% for phase in cs.operating_model limit:3 %}
             <li style="display: grid; grid-template-columns: 2.5rem minmax(7rem, 0.35fr) minmax(14rem, 1fr); gap: 0.75rem; align-items: baseline; border-left: 3px solid var(--color-primary, #7e9cd8); padding: 0.3rem 0 0.3rem 0.8rem;">
               <span style="color: var(--color-primary, #7e9cd8); font-size: 0.75rem; font-weight: 800;">0{{ forloop.index }}</span>
+              <strong style="color: var(--color-heading, #dcd7ba);">{{ phase.name }}</strong>
+              <span style="font-size: 0.88rem; line-height: 1.45; color: var(--color-text-main, #dcd7ba);">{{ phase.action }} <strong style="color: var(--color-text-muted, #c8c093);">Gate:</strong> {{ phase.gate }}</span>
+            </li>
+            {% endfor %}
+          </ol>
+
+          <p style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted, #c8c093); margin: 0 0 0.55rem;">What the work makes possible</p>
+          <ol style="display: grid; gap: 0.65rem; padding: 0; margin: 0; list-style: none;">
+            {% for phase in cs.operating_model offset:3 %}
+            <li style="display: grid; grid-template-columns: 2.5rem minmax(7rem, 0.35fr) minmax(14rem, 1fr); gap: 0.75rem; align-items: baseline; border-left: 3px solid var(--color-text-muted, #938aa9); padding: 0.3rem 0 0.3rem 0.8rem;">
+              <span style="color: var(--color-primary, #7e9cd8); font-size: 0.75rem; font-weight: 800;">0{{ forloop.index | plus: 3 }}</span>
               <strong style="color: var(--color-heading, #dcd7ba);">{{ phase.name }}</strong>
               <span style="font-size: 0.88rem; line-height: 1.45; color: var(--color-text-main, #dcd7ba);">{{ phase.action }} <strong style="color: var(--color-text-muted, #c8c093);">Gate:</strong> {{ phase.gate }}</span>
             </li>
