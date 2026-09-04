@@ -12,6 +12,23 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - Deploy was stuck ~2 days (last green 42da2e92, 2026-09-02) behind a
+         stack of gates each hidden behind the one before it in `rake ci`.
+         Fixed and pushed as d1feda2a; run 33880797073 completed success:
+         - repo_hygiene: allowlisted the new phalanx-duel/ top-level dir.
+         - prose_humanity: docs/voice-actor.md's own banned-words table was
+           tripping the jargon filter it defines; backticked the two terms.
+         - semantic_output: phalanx-duel/index.html had a nested <main>
+           inside the base layout's <main>; exports/reports/*.html gained
+           frontmatter (for sitemap:false) that let the default layout wrap
+           two already-complete HTML docs, now `layout: none`; new
+           interviews/word-clouds/index.html is an aggregate page, added to
+           the validator's interview-JSON-LD skip list.
+         - ats_benchmarks (52.1% -> 89.9%): 054e1de3 had switched
+           bin/generate_archetype_resumes.rb to read canonical-only
+           public_* fields for all 5 role-targeted archetypes, collapsing
+           them onto one shared thin voice. Reverted the generator to read
+           summary/highlights directly; canonical /resume/ voice unchanged.
        - Built tmi-auditor skill: TMI/PII/PHI/*ism guards (ageism, ableism,
          familism) walking full sitemap.xml spine, 879 URLs, 0 quarantine findings.
        - Created docs/voice-actor.md: canonical Mike Hall voice and vocabulary
@@ -20,10 +37,7 @@
          rake audit:tmi_gate (CI gate), rake audit:tmi_pipeline (full run).
        - Fixed phone suppression on /resume/positions/* sub-pages via Liquid
          unless conditional in _includes/resume/profile-header.html.
-       - Added sitemap: false front matter to exports/reports/*.html private pages.
        - 90 examples, 0 failures. TMI gate: PASS.
-       - ATS benchmark pre-existing failure (52.1% vs 85% threshold) -- separate
-         issue, not introduced this session.
        Deep handoff (local-only, never commit):
          ~/.config/adots/handoffs/2026-09-04-2.md
 
