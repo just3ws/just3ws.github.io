@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+set -eu
+
+echo "[pre-commit] Running fast validation gates..."
+bundle exec rake validate:fast

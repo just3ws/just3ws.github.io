@@ -32,6 +32,8 @@ graphify query "Which archive themes connect to OpenTelemetry?"
 - `pipeline`: Main pipeline CLI (`./bin/pipeline build`, `./bin/pipeline ci`,
   `./bin/pipeline verify`, etc.). Local `ci` regenerates artifacts. The
   committed-artifact `verify` path is the GitHub Actions gate.
+- `install-git-hooks`: Installs the repository-managed `.githooks/` path for
+  fail-fast pre-commit and pre-push validation.
 - `deploy_status`: Check deployment status.
 
 ### 2. Executive Pitch & Resume Generators (`generate_*`)

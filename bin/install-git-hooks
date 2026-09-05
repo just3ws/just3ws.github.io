@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+set -eu
+
+git config core.hooksPath .githooks
+echo "Installed repository hooks at .githooks/"
+echo "  pre-commit: validate:fast"
+echo "  pre-push:   validate:fast, validate:artifacts"

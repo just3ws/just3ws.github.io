@@ -81,6 +81,10 @@ Run `./bin/pipeline ci` locally before committing generated changes. GitHub
 Actions uses `./bin/pipeline verify` to build, test, and validate the
 committed artifacts without regenerating them.
 
+Install the local fail-fast hooks once with `./bin/install-git-hooks`. The
+pre-commit hook runs the fast checks. The pre-push hook also verifies generated
+artifact freshness before a branch reaches GitHub.
+
 Local archive roots and corpus databases belong in ignored local configuration.
 They are never required for the public site build.
 
