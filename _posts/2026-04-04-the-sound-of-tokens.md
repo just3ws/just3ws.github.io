@@ -9,12 +9,8 @@ tags:
   - ROI
   - linkedin
   - republished
-permalink: /ai/2026/04/04/the-sound-of-tokens/
-ai_generated: true
-robots: noindex,follow
-sitemap: false
-human_led: true
-source_kind: ai-augmented-human-led
+redirect_from:
+  - /ai/2026/04/04/the-sound-of-tokens/
 ---
 It's the 80's and you're an early adapter, young, impressionable, lacking life experience. You just stepped into an arcade, the cool kids place. The pressure is on. Money weighs heavy in your pocket. Countless choices and possibilities await. It feels great to be a kid.  
 You get in line to trade your $ you earned mowing neighbors' yards. The machine dispenses tokens with a rapid and rhythmic sound. You will remember this sound for the rest of your life.  

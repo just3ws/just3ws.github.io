@@ -52,8 +52,16 @@ the recent writing run. Articles published from 2026-08-29 onward that were
 created with substantial AI assistance are classified as exploratory AI
 syntheses, even when Mike supplied the memories, evidence, direction, and
 final judgment. They live under `/ai/`, receive the standard visible notice,
-use `noindex,follow`, and stay out of the sitemap. The arcade reflection “The
-Sound of Tokens” remains under `/ai/` for the same provenance reason.
+use `noindex,follow`, and stay out of the sitemap.
+
+The early LinkedIn essays from late 2024 and early 2025 are a different case.
+Mike developed them through interactive ChatGPT prompting and human editorial
+direction. They remain public and indexable, but now carry the same visible
+ethics notice and an explicit historical-production note. “The Sound of
+Tokens” is restored to the public archive as a human-led personal essay with
+its former `/ai/` route retained as a redirect. “From Y2K Panic to AI Anxiety”
+remains quarantined because its personal detail exceeds the public lesson's
+useful surface area.
 
 ## What the notice means
 

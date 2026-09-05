@@ -6,7 +6,8 @@ require "yaml"
 
 ROOT = File.expand_path("..", __dir__)
 LAYOUT = File.join(ROOT, "_layouts", "post.html")
-POSTS = Dir[File.join(ROOT, "_posts", "*.md")].sort
+POSTS = Dir[File.join(ROOT, "_posts", "*.md")] + Dir[File.join(ROOT, "_posts", "*.html")]
+POSTS.sort!
 
 def frontmatter(path)
   source = File.read(path)
