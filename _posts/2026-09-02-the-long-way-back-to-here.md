@@ -12,6 +12,13 @@ tags:
   - career
   - beginnings
 source_kind: ai-augmented-human-led
+ai_generated: true
+human_led: true
+permalink: /ai/2026/09/02/the-long-way-back-to-here/
+redirect_from:
+  - /2026/09/02/the-long-way-back-to-here.html
+robots: noindex,follow
+sitemap: false
 public_curation: true
 archive_sources:
   - "/2012/01/22/re-getting-back-on-the-bike/"

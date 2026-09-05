@@ -3,6 +3,14 @@ layout: post
 title: "The Skunkworks Lab: From .NET Teasing to Real-Time Inventory"
 date: 2026-09-02
 description: "A field story from TicketsNow about learning Ruby, solving distributed inventory problems, and carrying an architecture from a pitch through production."
+permalink: /ai/2026/09/02/the-skunkworks-lab-real-time-inventory/
+redirect_from:
+  - /2026/09/02/the-skunkworks-lab-real-time-inventory.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 tags:
   - TicketsNow
   - real-time systems

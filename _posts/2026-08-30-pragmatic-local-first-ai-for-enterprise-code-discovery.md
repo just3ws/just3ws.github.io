@@ -3,9 +3,15 @@ layout: post
 title: "Pragmatic Local-First AI for Enterprise Code Discovery"
 date: "2026-08-30"
 description: "Dumping 500k lines of legacy code into cloud LLM prompts leaks IP and produces hallucinations. Here is how to architect a deterministic, local-first code discovery engine."
+permalink: /ai/2026/08/30/pragmatic-local-first-ai-for-enterprise-code-discovery/
+redirect_from:
+  - /2026/08/30/pragmatic-local-first-ai-for-enterprise-code-discovery.html
 ai_assisted: true
+ai_generated: true
 human_led: true
 source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 categories:
   - Architecture
   - AI

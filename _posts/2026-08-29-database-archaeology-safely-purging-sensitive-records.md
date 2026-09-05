@@ -3,9 +3,15 @@ layout: post
 title: "Database Archaeology: Safely Purging Sensitive Records from Active Schemas"
 date: "2026-08-29"
 description: "When compliance mandates require deleting millions of sensitive records from a 10-year-old relational database, naive DELETE queries will take down production. Here is the 5-phase deletion engine pattern."
+permalink: /ai/2026/08/29/database-archaeology-safely-purging-sensitive-records/
+redirect_from:
+  - /2026/08/29/database-archaeology-safely-purging-sensitive-records.html
 ai_assisted: true
+ai_generated: true
 human_led: true
 source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 categories:
   - Architecture
   - Databases

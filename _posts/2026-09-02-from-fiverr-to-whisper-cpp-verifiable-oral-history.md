@@ -4,10 +4,15 @@ title: "From Fiverr to whisper.cpp: Building a Verifiable Oral History Pipeline"
 date: "2026-09-02"
 redirect_from:
   - /from-fiverr-to-whisper-cpp-verifiable-oral-history/
+  - /2026/09/02/from-fiverr-to-whisper-cpp-verifiable-oral-history.html
 description: "The long path from expensive, lossy outsourced transcription to a local, resumable, human-reviewed pipeline for preserving technical conversations."
 ai_assisted: true
+ai_generated: true
 human_led: true
 source_kind: ai-augmented-human-led
+permalink: /ai/2026/09/02/from-fiverr-to-whisper-cpp-verifiable-oral-history/
+robots: noindex,follow
+sitemap: false
 categories:
   - Oral History
   - AI

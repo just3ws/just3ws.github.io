@@ -3,9 +3,15 @@ layout: post
 title: "Restoring a Hidden 4% of Customer Applications"
 date: "2026-08-30"
 description: "A silent session-state failure caused 4% of customer loan applications to drop out. I traced it to oversized Rails session cookies, added a defensive seam, and moved session storage to DynamoDB."
+permalink: /ai/2026/08/30/hunting-the-4-percent-defect-rails-cookie-overflow/
+redirect_from:
+  - /2026/08/30/hunting-the-4-percent-defect-rails-cookie-overflow.html
 ai_assisted: true
+ai_generated: true
 human_led: true
 source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 categories:
   - Architecture
   - Ruby on Rails

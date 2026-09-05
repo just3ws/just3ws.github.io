@@ -3,6 +3,14 @@ layout: post
 title: "my: The Knowledge Layer That Remembers"
 date: 2026-09-02
 description: "A public-safe description of the vault, derived index, gateway, and curation loop behind a local-first knowledge system."
+permalink: /ai/2026/09/02/my-the-knowledge-layer-that-remembers/
+redirect_from:
+  - /2026/09/02/my-the-knowledge-layer-that-remembers.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 tags:
   - my
   - knowledge management

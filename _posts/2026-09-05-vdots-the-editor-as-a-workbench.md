@@ -3,6 +3,14 @@ layout: post
 title: "vdots: The Editor as a Workbench"
 date: 2026-09-02
 description: "How an editor configuration becomes a readable seam between human intent, language tooling, and repeatable feedback."
+permalink: /ai/2026/09/02/vdots-the-editor-as-a-workbench/
+redirect_from:
+  - /2026/09/02/vdots-the-editor-as-a-workbench.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 tags:
   - vdots
   - Neovim

@@ -3,9 +3,15 @@ layout: post
 title: "Conway's Law in the Trenches: Why We Split Growth and Enablement Squads"
 date: "2026-08-30"
 description: "When engineering velocity stalls, bad code is rarely the primary culprit. Here is how aligning team topologies into Growth and Enablement squads unblocks feature delivery."
+permalink: /ai/2026/08/30/conways-law-in-the-trenches-growth-vs-enablement/
+redirect_from:
+  - /2026/08/30/conways-law-in-the-trenches-growth-vs-enablement.html
 ai_assisted: true
+ai_generated: true
 human_led: true
 source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 categories:
   - Architecture
   - Leadership

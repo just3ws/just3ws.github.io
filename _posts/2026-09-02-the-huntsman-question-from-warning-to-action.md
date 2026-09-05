@@ -3,6 +3,14 @@ layout: "post"
 title: "The Huntsman Question: From Warning to Action"
 date: "2026-09-02"
 description: "A continuation of The Boy Who Told the Truth about translating an operational warning into an actionable path without blaming the messenger."
+permalink: /ai/2026/09/02/the-huntsman-question-from-warning-to-action/
+redirect_from:
+  - /2026/09/02/the-huntsman-question-from-warning-to-action.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 tags:
   - Technical Communication
   - Engineering Leadership

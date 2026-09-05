@@ -47,6 +47,14 @@ assistance and quarantine. It does not mean that AI is the author. Where the
 human-led relationship is known, the article also records `human_led: true` and
 `source_kind: ai-augmented-human-led`.
 
+For this archive, “Strong Enough to be Gentle” is the last organic article in
+the recent writing run. Articles published from 2026-08-29 onward that were
+created with substantial AI assistance are classified as exploratory AI
+syntheses, even when Mike supplied the memories, evidence, direction, and
+final judgment. They live under `/ai/`, receive the standard visible notice,
+use `noindex,follow`, and stay out of the sitemap. The arcade reflection “The
+Sound of Tokens” remains under `/ai/` for the same provenance reason.
+
 ## What the notice means
 
 The site notice is intentionally plain:

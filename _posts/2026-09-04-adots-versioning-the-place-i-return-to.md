@@ -3,6 +3,14 @@ layout: post
 title: "adots: Versioning the Place I Return To"
 date: 2026-09-02
 description: "A field note on treating home configuration as durable infrastructure with explicit safety boundaries."
+permalink: /ai/2026/09/02/adots-versioning-the-place-i-return-to/
+redirect_from:
+  - /2026/09/02/adots-versioning-the-place-i-return-to.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 tags:
   - adots
   - dotfiles

@@ -3,6 +3,14 @@ layout: post
 title: "Ultimately, There Is Only Here"
 date: 2026-09-02
 description: "A note on basecamp, motion, and the small human references that help us find our way through changing systems."
+permalink: /ai/2026/09/02/ultimately-there-is-only-here/
+redirect_from:
+  - /2026/09/02/ultimately-there-is-only-here.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 tags:
   - systems thinking
   - orientation

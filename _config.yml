@@ -135,6 +135,12 @@ defaults:
     values:
       sitemap: false
       robots: noindex,follow
+  # AI-assisted exploratory writing is quarantined under /ai/.
+  - scope:
+      path: "ai"
+    values:
+      sitemap: false
+      robots: noindex,follow
   - scope:
       path: "linkedin.html"
       type: "pages"

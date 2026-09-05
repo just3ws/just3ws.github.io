@@ -351,6 +351,8 @@ end
 Dir.glob(File.join(SITE_DIR, '[0-9][0-9][0-9][0-9]', '**', '*.html')).sort.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   html = read(path)
+  next if html.include?('<meta http-equiv="refresh"')
+
   nodes = json_ld_nodes(html, relative, errors)
   validate_json_ld_type(
     nodes: nodes,

@@ -3,9 +3,15 @@ layout: post
 title: "Instant Money: Architecting Real-Time Card Disbursements Under Strict Compliance"
 date: "2026-08-30"
 description: "Transitioning loan disbursement from multi-day ACH to sub-5-minute push-to-card pipelines requires deterministic state gates and zero-drift reconciliation. Here is the architecture."
+permalink: /ai/2026/08/30/instant-money-real-time-debit-disbursement-architecture/
+redirect_from:
+  - /2026/08/30/instant-money-real-time-debit-disbursement-architecture.html
 ai_assisted: true
+ai_generated: true
 human_led: true
 source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 categories:
   - Architecture
   - Fintech

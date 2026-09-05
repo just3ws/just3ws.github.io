@@ -4,9 +4,15 @@ title: "The Archive I Could Finally Build"
 date: "2026-09-02"
 description: "What UGtastic, Dead Rabbit Radio, the Fluffle transcription experiment, Raspberry Pi processing, and local AI taught me about preserving oral history."
 ai_assisted: true
+ai_generated: true
 human_led: true
 public_curation: true
 source_kind: ai-augmented-human-led
+permalink: /ai/2026/09/02/the-archive-i-could-finally-build/
+redirect_from:
+  - /2026/09/02/the-archive-i-could-finally-build.html
+robots: noindex,follow
+sitemap: false
 categories:
   - Oral History
   - Engineering Practice

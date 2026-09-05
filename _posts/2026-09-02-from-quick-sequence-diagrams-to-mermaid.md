@@ -3,6 +3,14 @@ layout: "post"
 title: "From Quick Sequence Diagrams to Mermaid"
 date: "2026-09-02"
 description: "A reflection on the evolution from a small sequence diagram editor to Mermaid, and why text-native diagrams make technical communication more faithful, collaborative, and human."
+permalink: /ai/2026/09/02/from-quick-sequence-diagrams-to-mermaid/
+redirect_from:
+  - /2026/09/02/from-quick-sequence-diagrams-to-mermaid.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 tags:
   - Mermaid
   - Sequence Diagrams

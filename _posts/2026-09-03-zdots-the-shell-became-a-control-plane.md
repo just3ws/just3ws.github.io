@@ -3,6 +3,14 @@ layout: post
 title: "When Dotfiles Became a Control Plane"
 date: 2026-09-02
 description: "How zdots grew from shell configuration into a local control plane for services, observability, AI, and durable work."
+permalink: /ai/2026/09/02/zdots-the-shell-became-a-control-plane/
+redirect_from:
+  - /2026/09/02/zdots-the-shell-became-a-control-plane.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 tags:
   - zdots
   - local-first AI
