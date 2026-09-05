@@ -88,9 +88,21 @@ repo's registered identity is `agent-just3ws`:
 Every persona under `.claude/agents/` operates inside this same identity
 and system context, not as an isolated actor.
 
+## Panoramic View Labs (PVL) Platform Identity
+
+Canonical naming is permanent. Read this before using any Panoramic View term in prose, code, or agent output.
+
+- **Panoramic View** is a technique (the system-cartography method). It is not an initiative name.
+- **Panoramic View Labs** (short code `PVL`, pronounced "Pavel") is the initiative name. Use it when referring to the organizational umbrella, not the method.
+- **Pavel** is the name of the Panoramic View specialist agent. Named from the PVL pronunciation.
+- **zdots** is the root local-system platform for the Panoramic View initiative. All PVL capabilities live in and depend on zdots, not just3ws or wwworkremote.
+
+Full disambiguation rules: `docs/style-guide-and-canonical-naming.md` §7.
+
 ## Agent skills
 
 ### Issue tracker
+
 GitHub issues. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels

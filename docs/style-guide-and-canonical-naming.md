@@ -91,3 +91,24 @@ This document establishes the permanent canonical naming, casing, and compound w
 1. **Zero Em Dashes:** Never use em dashes (`—` or `&mdash;`) in prose, case studies, briefs, or documentation. Use commas, parentheticals, colons, or clean separate sentences.
 2. **Plain Technical Language:** Avoid AI jargon, hollow superlatives ("testament to", "delve", "leverage" when "use" suffices), and buzzword padding.
 3. **Verbatim Historical Transcripts:** Historical transcripts preserve exact spoken words while correcting ASR phonetic errors against attested proper nouns and community records.
+
+---
+
+## 7. Panoramic View Platform Canonical Naming
+
+These identities are permanently fixed. Every agent, document, and generated surface must use them exactly.
+
+| Entity | Canonical Form | Short Code | Anti-Patterns | Context |
+| :--- | :--- | :--- | :--- | :--- |
+| **Panoramic View** | `Panoramic View` | N/A | `PanoramicView`, `panoramic-view` in prose | The technique and system-cartography method. A method, not an initiative or brand. Always referred to as "the Panoramic View technique" or "the Panoramic View method" when the distinction matters. |
+| **Panoramic View Labs** | `Panoramic View Labs` | `PVL` (pronounced "Pavel") | `Panoramic View Initiative`, `PV Labs` | The initiative name and organizational umbrella for all Panoramic View work. Never use `Panoramic View` alone when referring to the initiative. |
+| **PVL** | `PVL` | spoken: "Pavel" | `pvl`, `Pvl` | Short code for Panoramic View Labs. Pronounced like the name "Pavel". Use in code identifiers, directory names, bus channels, and CLI shorthand. |
+| **Pavel** | `Pavel` | N/A | `PVL agent`, `PV agent` | The canonical name of the Panoramic View specialist agent. Named from the PVL pronunciation. |
+| **zdots** | `zdots` | N/A | `z-dots`, `ZDots` | The root local-system platform and runtime for the Panoramic View initiative and all PVL capabilities. zdots is not owned by just3ws or wwworkremote; it is the underlying infrastructure layer both depend on. |
+
+### Disambiguation rules
+
+- **Method vs. initiative:** "Panoramic View" alone always refers to the technique. "Panoramic View Labs" (or `PVL`) always refers to the initiative. Never use "Panoramic View" where "Panoramic View Labs" is meant.
+- **zdots as root:** Any reference to "where PVL lives" or "what runs PVL" should name zdots, not just3ws or wwworkremote.
+- **Agent name:** When an agent role is "Panoramic View specialist," its name is Pavel, not "PV Agent" or "PVL Agent."
+
