@@ -63,7 +63,7 @@ recovers source evidence and seams. The Fool tests assumptions. The Hierophant
 defines the contract. Watercourse chooses the least-forced path. The Commissar
 turns the agreed response into bounded action and verification.
 
-The full operating contract is in the [Council Operating Model](/docs/agents/council-operating-model/).
+The full operating contract is maintained in `docs/agents/council-operating-model.md` for repository agents.
 
 ```mermaid
 flowchart TD
