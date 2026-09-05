@@ -14,10 +14,15 @@ Optimize for **credibility, clarity, and structural signal**, rejecting emotiona
 
 ## Canonical Positioning
 
-- Use **Software Engineer** as Mike's identity and public anchor. Staff and
-  Principal describe the scope of a role when relevant, not a separate identity
-  or a claim of status. Do not alternate among inflated or invented specialty
-  titles on core resume surfaces.
+- Use **Staff Software Engineer** as Mike's identity, rooted in the profession
+  of software engineering. He works at multiple levels, from code and runtime
+  behavior through business and organizational boundaries. He works with and
+  across teams of individual contributors. Staff names the way he operates:
+  hands-on technical leadership that helps IC teams accomplish business
+  objectives and leaves durable ownership behind.
+- Use **Principal** as a scale-dependent target calibration or documented
+  historical title, not as the default public identity. Do not alternate among
+  inflated or invented specialty titles on core resume surfaces.
 - Treat production systems, platform reliability, legacy modernization,
   observability, and AI-augmented engineering as areas of specialization, not
   competing titles.
@@ -30,8 +35,9 @@ Optimize for **credibility, clarity, and structural signal**, rejecting emotiona
   initiative, driver of the responsibility realignment around business and
   system boundaries, and founder/technical lead of ACQ Enablement.
 - Do not foreground age, total years of experience, or generational framing.
-  Establish Principal-level credibility through recent evidence of scope,
-  leverage, ownership, durability, and influence.
+  Establish Staff-level credibility through recent evidence of scope, leverage,
+  ownership, durability, and influence. Translate that scope to Principal only
+  when the target organization's leveling system calls for it.
 
 ### Title-to-Scale Spectrum & Role Calibration
 
@@ -39,10 +45,15 @@ Optimize for **credibility, clarity, and structural signal**, rejecting emotiona
   - *15–50 people*: CTO / VP of Engineering (hands-on architecture + team building).
   - *100–300 people*: Director / Staff Engineer / Team Lead.
   - *500–2,000+ people*: Principal Software Engineer / Technical Lead.
-- **Single Public Anchor**: `Software Engineer` remains the universal identity
-  across core public surfaces. Scope is shown through outcomes, ownership,
-  technical leverage, and influence. Target-specific resume variants may still
+- **Single Public Anchor**: `Staff Software Engineer` remains the universal
+  professional identity across core public surfaces, rooted in software
+  engineering. Scope is shown through outcomes, ownership, technical leverage,
+  and influence. Target-specific resume variants may still
   use the title from the role they are calibrated for.
+- **Short Form**: Declare `Staff Software Engineer` in full at first mention.
+  Use `Staff Engineer` afterward when the software-engineering context is
+  established. Use `Software Engineer` for the underlying profession or an
+  exact historical title.
 - **Role Calibration via Executive Briefs**: Use target executive pitch briefs (`exports/briefs/`) and cover letters (not resume title edits) to calibrate scope for each target role (Team Lead, Staff IC, or CTO/Director).
 - **30-Second Framing Strategy**: When asked why applying across role tiers, frame scope as scale-dependent: care is given to technical challenge, team leverage, and mission over title badges.
 

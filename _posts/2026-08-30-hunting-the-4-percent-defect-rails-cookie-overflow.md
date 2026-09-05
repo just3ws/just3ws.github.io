@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Hunting the 4% Defect: Resolving Rails Cookie Overflow at Enterprise Scale"
+title: "Restoring a Hidden 4% of Customer Applications"
 date: "2026-08-30"
-description: "When 4% of customer loan applications were silently lost in production, the root cause was not a server crash. Here is how we diagnosed a Rails session-cookie overflow and migrated to DynamoDB session storage."
+description: "A silent session-state failure caused 4% of customer loan applications to drop out. I traced it to oversized Rails session cookies, added a defensive seam, and moved session storage to DynamoDB."
 ai_assisted: true
 human_led: true
 source_kind: ai-augmented-human-led
@@ -17,6 +17,12 @@ tags:
   - incident-response
   - reliability
 ---
+
+A silent session-state failure was causing 4% of customer loan applications to
+drop out. The application returned successful HTTP responses, but customers
+lost progress late in the flow. I traced the defect to oversized Rails session
+cookies, added a defensive middleware seam, and moved session storage to
+DynamoDB.
 
 In software engineering, catastrophic failures are surprisingly easy to debug.
 
@@ -36,7 +42,7 @@ They are silent failure modes: edge-case state corruptions that return HTTP 200 
 | [CookieStore]      --> Serialized session cookie grows: 1KB -> 2KB -> 3KB...
 |         │
 |         v (Breaches RFC 6265 4,096-byte limit)
-| [Session-cookie overflow] --> Cookie truncated or reset -> 4% TRAFFIC SILENTLY LOST
+| [Session-cookie overflow] --> Cookie truncated or reset -> 4% APPLICATIONS LOST
 +-------------------------------------------------------------------------+
 ```
 

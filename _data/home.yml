@@ -1,9 +1,11 @@
 hero:
   headline: "I make complex software systems easier to understand and safer to change."
   lede: >-
-    I help teams make complex production software easier to understand and safer
-    to change. When systems span teams, services, and years of accumulated
-    decisions, I turn uncertainty into a shared picture and a practical next step.
+    I am a Staff Software Engineer rooted in hands-on software engineering. I
+    work at multiple levels of the system, from code and runtime behavior
+    through business and organizational boundaries. I work with and across
+    teams of individual contributors to make difficult systems clearer, safer
+    to change, and more useful to the business.
   actions:
     - label: "📄 Read Full Résumé (ATS)"
       href: "/resume/"
@@ -34,14 +36,15 @@ visitor_paths:
     href: "/archive-atlas/"
 
 operating_pattern:
-  label: "IEA: How I work"
+  label: "What I do"
+  note: "SUI is the what. IEA is a key part of the how."
   steps:
-    - name: "Inventory"
-      summary: "Make the environment, customer journey, code, data, and team knowledge visible."
-    - name: "Evaluate"
-      summary: "Decide what matters, what is viable, what can be trusted, and where the boundaries are."
-    - name: "Address"
-      summary: "Take executable steps to resolve the need, then verify what changed."
+    - name: "Stabilize"
+      summary: "Find the immediate risks and make production safe enough to investigate."
+    - name: "Understand"
+      summary: "Trace the real workflow across code, data, infrastructure, and teams."
+    - name: "Improve"
+      summary: "Use the shared picture to plan and ship safer changes."
 
 through_line:
   label: "What I do"
@@ -92,10 +95,10 @@ evidence:
     link_label: "Read Case Study"
     href: "/2026/08/29/database-archaeology-safely-purging-sensitive-records.html"
   - context: "Enterprise Rails Resilience"
-    title: "Hunting the 4% Defect: Rails Cookie Overflow & DynamoDB"
+    title: "Restoring a Hidden 4% of Customer Applications"
     text: >-
-      Diagnosed and resolved a silent 4% customer application drop caused by session cookie bloat
-      by engineering custom overflow middleware and migrating to DynamoDB session storage.
+      Diagnosed and resolved a silent 4% customer application drop caused by oversized Rails session cookies,
+      defensive middleware, and a migration to DynamoDB session storage.
     link_label: "Read Case Study"
     href: "/2026/08/30/hunting-the-4-percent-defect-rails-cookie-overflow.html"
   - context: "Fintech State Machines"

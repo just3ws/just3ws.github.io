@@ -100,10 +100,10 @@ Standard triage workflow labels. See `docs/agents/triage-labels.md`.
 Single-context layout (root-level CONTEXT.md + docs/adr/). See `docs/agents/domain.md`.
 
 ## Registered Skills
-Use these skills by default for this repository. **Status**: 6 of the 19
+Use these skills by default for this repository. **Status**: 8 of the 21
 below have real `SKILL.md` content in `.agents/skills/` (marked ✓; see
 `docs/tooling-user-guide.md` §6) — the other 13 have no skill file anywhere.
-All 19 also have `.claude/agents/*.md` subagent persona coverage (TASK-262),
+All 21 also have `.claude/agents/*.md` subagent persona coverage (TASK-262),
 which is a separate mechanism (a spawned subagent, not a loaded skill) and
 does not require a `.agents/skills/` file to exist.
 
@@ -139,6 +139,8 @@ a hold, not an invitation to invent a smoother explanation.
 17. `prose-humanity-auditor` ✓ - Audit technical prose across site Markdown, YAML data, and resume surfaces for plain language, neuroinclusive readability, cognitive load, and zero AI jargon.
 18. `no-em-dashes` ✓ - Enforce em-dash-free writing across prose, case studies, briefs, and documentation to eliminate machine-writing cadence and maintain authentic human voice.
 19. `public-surface-auditor` ✓ - Audit the rendered public boundary for privacy, provenance, quarantine, and internal topology leaks before publication.
+20. `tmi-auditor` ✓ - Audit public-facing content for oversharing, discrimination-vector signals, and PII/PHI exposure.
+21. `canonical-surface-steward` ✓ - Keep canonical identity, shorthand, agents, skills, documentation, CLI help, validators, and generated surfaces synchronized.
 
 ## Career Datalake & MCP Server Interface
 

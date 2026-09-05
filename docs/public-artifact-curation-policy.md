@@ -64,8 +64,9 @@ exposure rather than understanding.
 - Historical dates remain appropriate in the archive when they establish the
   provenance or sequence of a public event. The archive is not the same surface
   as a resume.
-- Use Software Engineer as the identity. Use Staff or Principal only when
-  describing the scope of a role, a target posting, or a documented historical
+- Use Staff Software Engineer as the professional identity, rooted in the
+  profession of software engineering. Use Principal when describing a target
+  posting, a scale-dependent role calibration, or a documented historical
   title.
 
 This policy is an editorial safety standard, not legal advice. When the boundary

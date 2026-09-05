@@ -1,8 +1,8 @@
 # Mike Hall
-Software Engineer
+Staff Software Engineer
 
 ## Summary
-I help teams make complex production software easier to understand and safer to change. I connect business goals to system behavior, use evidence to find the important boundary, and help people agree on a practical next step across legacy systems, platforms, and teams.
+I am a Staff Software Engineer rooted in the profession of software engineering. I work at multiple levels of software engineering, from code and runtime behavior through business and organizational boundaries. I work with and across teams of individual contributors to turn business objectives into clear technical decisions, safer change, and durable ownership. As a Staff Engineer, I use evidence to make complex production software easier to understand and help teams accomplish the work that matters.
 
 ## Skills
 - Cross-Team Technical Leadership

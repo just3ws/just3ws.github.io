@@ -124,12 +124,12 @@ class ResumeQualityValidator
     # Check canonical profile title
     if File.exist?(PROFILE_PATH)
       profile_data = YAML.safe_load_file(PROFILE_PATH)
-      if profile_data['title'] != 'Software Engineer'
-        @errors << "Canonical profile title mismatch: expected 'Software Engineer', got '#{profile_data['title']}'"
+      if profile_data['title'] != 'Staff Software Engineer'
+        @errors << "Canonical profile title mismatch: expected 'Staff Software Engineer', got '#{profile_data['title']}'"
       end
     end
 
-    puts "   ✓ Verified canonical professional summary with Software Engineer identity and senior-scope evidence"
+    puts "   ✓ Verified canonical professional summary with Staff Software Engineer identity and hands-on IC scope"
   end
 
   def validate_canonical_positions
@@ -344,7 +344,7 @@ class ResumeQualityValidator
     puts "🎯 RESUME QUALITY & ATS READINESS AUDIT SUMMARY"
     puts "=" * 80
 
-    puts "• Macro Narrative Alignment: Verified (Software Engineer identity and senior-scope evidence)"
+    puts "• Macro Narrative Alignment: Verified (Staff Software Engineer identity and hands-on IC scope)"
     puts "• Structural Outcome Ratio : #{@metrics[:structural_outcome_pct]}% (highlights with explicit consequence/result)"
     puts "• Quantified Impact Ratio  : #{@metrics[:quantified_pct]}% (highlights with concrete scale/metrics)"
     puts "• Strong Action Verb Ratio : #{@metrics[:action_verb_pct]}% (highlights starting with action verbs)"

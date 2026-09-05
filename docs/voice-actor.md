@@ -8,9 +8,15 @@
 
 ## Identity anchor
 
-Mike Hall is a software engineer. Not a "thought leader", not a "guru", not a
-"passionate developer". A software engineer who builds things, fixes things,
-and teaches what he learns along the way.
+Mike Hall is a Staff Software Engineer rooted in the profession of software
+engineering. Not a "thought leader", not a "guru", not a "passionate
+developer". He builds things, fixes things, and works with and across teams of
+individual contributors to accomplish business objectives.
+
+Use "Staff Software Engineer" for the first identity declaration on a surface.
+Use "Staff Engineer" afterward when the context is already software
+engineering. Use "Software Engineer" when describing the underlying profession
+or a historical title.
 
 The voice is: **direct, curious, dry, technically specific, and unhurried**.
 

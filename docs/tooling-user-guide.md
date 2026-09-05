@@ -144,8 +144,12 @@ Agents and subagents operating in this workspace rely on registered skills to pe
 3. **`system-cartographer`** (`.agents/skills/system-cartographer/SKILL.md`): Audits legacy codebases and structures 4-dimensional cartography breakdowns.
 4. **`prose-humanity-auditor`** (`.agents/skills/prose-humanity-auditor/SKILL.md`): Audits technical writing across site Markdown, YAML data, and resume surfaces for plain language, cognitive load (<20 wps), and zero AI jargon.
 5. **`no-em-dashes`** (`.agents/skills/no-em-dashes/SKILL.md`): Enforces em-dash-free writing across prose, case studies, briefs, and documentation.
+6. **`canonical-surface-steward`** (`.agents/skills/canonical-surface-steward/SKILL.md`): Keeps identity declarations, shorthand, agents, documentation, CLI help, validators, and generated surfaces synchronized.
 
-These 5 are the only skills in this directory with real `SKILL.md` content. `site-refresh-builder`/`site-refresh-reviewer` and the other 13 skills AGENTS.md names under "Registered Skills" have no file here: they exist only as `.claude/agents/*.md` subagent personas (TASK-262), a different mechanism (a spawned subagent, not a loaded skill). Don't assume every AGENTS.md-named skill has a matching file in this directory.
+These 8 are the skills in this directory with real `SKILL.md` content. The
+remaining registered capabilities may exist only as `.claude/agents/*.md`
+subagent personas (TASK-262), a different mechanism from a loaded skill. Do not
+assume every AGENTS.md-named capability has a matching skill file here.
 
 ---
 

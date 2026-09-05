@@ -372,8 +372,9 @@ Evidence and publication status:
 
 ## Editorial guardrails
 
-- Keep the public identity anchor as **Software Engineer**. Describe Staff or
-  Principal scope through outcomes and ownership when relevant.
+- Keep the public identity anchor as **Staff Software Engineer**, rooted in the
+  profession of software engineering. Use Staff Engineer as the short form.
+  Describe Principal scope through outcomes and ownership when relevant.
 - Use canonical names such as OpenTelemetry, the OpenTelemetry Working Group,
   and Geekfest@OMF. Define organizational terms when they first appear.
 - Do not invent metrics or turn an assistant's inference into historical fact.

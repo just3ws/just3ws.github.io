@@ -22,7 +22,8 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: bin/query_career_datalake.rb [options]"
   opts.separator ""
-  opts.separator "CareerOS Datalake Query Engine (29 Roles, 136 Skills, 156 Writings, 211 Interviews)"
+  opts.separator "CareerOS Datalake Query Engine for Mike Hall, Staff Software Engineer"
+  opts.separator "(29 Roles, 136 Skills, 156 Writings, 211 Interviews)"
   opts.separator ""
   opts.separator "Query Options:"
 
@@ -84,6 +85,9 @@ if options[:man]
      DESCRIPTION
          query_career_datalake.rb provides real-time, deterministic query access
          over the technical career archive in just3ws.github.io.
+         The canonical professional identity is Staff Software Engineer, rooted
+         in hands-on software engineering. Staff Engineer is the approved short
+         form after the full identity is established.
          It synthesizes 29 positions, 136 technology skills, 156 blog articles (2006-2026),
          211 technical interviews/transcripts, 4D system cartography case studies, and
          5 tailored archetype reader empathy strategies into structured output.

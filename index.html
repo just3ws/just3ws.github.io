@@ -28,7 +28,8 @@ body_class: professional-home
 
     <aside class="leadership-pattern" aria-labelledby="operating-pattern-title">
       <p class="leadership-pattern-label">{{ home.operating_pattern.label }}</p>
-      <h2 id="operating-pattern-title" class="visually-hidden">How Mike approaches complex systems</h2>
+      <h2 id="operating-pattern-title" class="visually-hidden">Make complex systems safer to change</h2>
+      <p class="leadership-pattern-note">{{ home.operating_pattern.note }}</p>
       <ol>
         {% for phase in home.operating_pattern.steps %}
           <li>
@@ -67,7 +68,7 @@ body_class: professional-home
       <p>I build, repair, explain, and preserve systems. The projects below are different expressions of the same practice.</p>
     </div>
     <pre><code class="language-mermaid">flowchart LR
-  M[Mike Hall<br/>Software Engineer] --> B[Build]
+  M["Mike Hall | Staff Software Engineer"] --> B[Build]
   M --> R[Repair]
   M --> E[Explain]
   M --> P[Preserve]

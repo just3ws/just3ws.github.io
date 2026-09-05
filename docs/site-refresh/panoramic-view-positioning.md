@@ -8,11 +8,13 @@ This brief translates private, provenance-tagged research into a public-safe nar
 
 ## Positioning decision
 
-**Primary identity:** Principal Software Engineer.
+**Primary identity:** Staff Software Engineer.
 
 **Operating promise:** Mike makes complex production systems easier to understand and safer to change.
 
-**Operating sequence:** Stabilize. Understand. Improve.
+**Operating shape:** SUI is a what: Stabilize. Understand. Improve.
+
+**Method:** IEA is a how: Inventory. Evaluate. Address. It is a key part of how SUI happens, not a replacement for the work itself.
 
 The sequence should be made concrete wherever it appears:
 
@@ -24,7 +26,7 @@ Panoramic View is the method that runs through all three phases. It is not only 
 
 ## Master career narrative
 
-Mike Hall is a Principal Software Engineer who works across complex production systems and organizational boundaries. He stabilizes delivery, builds a shared evidence-backed understanding of how a product actually works, and helps teams modernize without losing contact with the code. Across regulated enterprises, growing product companies, and small founder-led systems, he has combined deep debugging, architecture, observability, technical enablement, and knowledge recovery rather than treating them as separate disciplines. He created Panoramic View, a system-cartography methodology that follows an actor's journey from left to right and traces each interaction from browser to backend and back, connecting business decisions, code paths, data changes, infrastructure, telemetry, and the resulting experience. His technical leadership preserves uncertainty and provenance instead of manufacturing confidence, giving teams a durable foundation for safer change.
+Mike Hall is a Staff Software Engineer rooted in hands-on software engineering. As a Staff Engineer, he works at multiple levels, from code and runtime behavior through business and organizational boundaries. He works with and across teams of individual contributors to turn business objectives into clearer technical decisions, safer change, and durable ownership. Across regulated enterprises, growing product companies, and small founder-led systems, he has combined deep debugging, architecture, observability, technical enablement, and knowledge recovery rather than treating them as separate disciplines. He created Panoramic View, a system-cartography methodology that follows an actor's journey from left to right and traces each interaction from browser to backend and back, connecting business decisions, code paths, data changes, infrastructure, telemetry, and the resulting experience. His technical leadership preserves uncertainty and provenance instead of manufacturing confidence, giving teams a durable foundation for safer change.
 
 ## Proof hierarchy
 
@@ -44,7 +46,8 @@ These bullets are deliberately free of invented business-impact metrics. Employe
 ### Current leadership identity
 
 - Created Panoramic View, an evidence-led system-cartography methodology that connects user journeys and business decisions to code paths, infrastructure, data changes, telemetry, ownership, and known unknowns.
-- Leads as a principal technical IC across system architecture, production diagnosis, modernization, technical enablement, and cross-functional decision-making.
+- Leads as a Staff Engineer across system architecture, production diagnosis, modernization, technical enablement, and cross-functional decision-making.
+- Collaborates with teams of individual contributors while staying close to the code and accountable for technical outcomes.
 - Turns fragmented technical and organizational evidence into a shared, navigable model that Product, Engineering, Operations, Security, and Quality can use to plan safer change.
 
 ### Regulated enterprise application
@@ -81,7 +84,7 @@ Do not call the role a contract, fixed-term assignment, or pre-defined bridge ro
 
 ### Recommended hero
 
-**Eyebrow:** Principal Software Engineer
+**Eyebrow:** Staff Software Engineer
 
 **Headline:** I make complex software systems easier to understand and safer to change.
 
@@ -107,9 +110,9 @@ Do not call the role a contract, fixed-term assignment, or pre-defined bridge ro
 
 ### Meta content
 
-**Homepage title:** Mike Hall | Principal Software Engineer Portfolio
+**Homepage title:** Mike Hall | Staff Software Engineer Portfolio
 
-**Homepage description:** Mike Hall is a Principal Software Engineer who makes complex production systems easier to understand and safer to change.
+**Homepage description:** Mike Hall is a Staff Software Engineer who makes complex production systems easier to understand and safer to change.
 
 **Methodology title:** Panoramic View | System Cartography by Mike Hall
 

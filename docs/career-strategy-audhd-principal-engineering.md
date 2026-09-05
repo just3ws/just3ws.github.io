@@ -1,6 +1,13 @@
-# Neurodivergent (AuDHD) Principal Engineering Career Strategy Guide
+# Neurodivergent (AuDHD) Staff Software Engineering Career Strategy Guide
 
-This document captures operational guidelines, role evaluation criteria, interview assessment strategies, and environmental positioning for **AuDHD / Neurodivergent Principal Software Engineers & Platform Architects**.
+This document captures operational guidelines, role evaluation criteria, interview assessment strategies, and environmental positioning for **AuDHD / Neurodivergent Staff Software Engineers**.
+
+The professional root is software engineering. Staff describes the scope and
+working method: hands-on engineering at multiple levels of the system, from
+code and runtime behavior through business and organizational boundaries. The
+collaboration model is working with and across teams of individual contributors.
+Principal
+is a scale-dependent target calibration, not the default identity.
 
 ---
 
@@ -10,7 +17,7 @@ AuDHD combines ADHD (novelty-seeking, interest-driven intensity, high agency) an
 
 ### 🟢 High-Yield Working Environments
 * **Async-First & Documentation-Driven:** Organizations where engineering decision-making happens through written RFCs, ADRs (Architecture Decision Records), and design docs rather than constant pop-up meetings and Slack chatter.
-* **High-Autonomy Principal IC Roles:** Direct ownership of bounded technical domains (*System Cartography, Legacy Modernization, Performance Optimization*) where evaluation is based on concrete system outcomes rather than performative presence.
+* **High-Autonomy Staff IC Roles:** Direct ownership of bounded technical domains (*System Cartography, Legacy Modernization, Performance Optimization*) where evaluation is based on concrete system outcomes rather than performative presence.
 * **Deep Work Cultures:** Formal calendar protection (e.g., dedicated no-meeting focus blocks).
 
 ### 🔴 Burnout Risks & Red Flags
@@ -20,9 +27,9 @@ AuDHD combines ADHD (novelty-seeking, interest-driven intensity, high agency) an
 
 ---
 
-## 2. Reframing AuDHD Cognitive Traits as Principal Engineering Strengths
+## 2. Reframing AuDHD Cognitive Traits as Staff Engineering Strengths
 
-| Cognitive Trait | Principal Engineering Positioning |
+| Cognitive Trait | Staff Engineering Positioning |
 | :--- | :--- |
 | **Deep Hyperfocus** | **System Cartography:** Unraveling multi-million-line legacy codebases, mapping state dependencies, and solving complex architectural puzzles that overwhelm standard dev cycles. |
 | **Pattern Recognition & Edge-Case Processing** | **Deterministic Engineering & Safety:** An intuitive radar for subtle race conditions, failure modes, and state corruption before code reaches production. |
@@ -70,11 +77,11 @@ Senior technical leaders face friction mapping experience across titles ranging 
 | **500–2,000+ people** | **Principal Software Engineer** | Multi-team architecture, OpenTelemetry adoption, zero-downtime database migrations, executive stakeholder alignment. |
 
 ### 5.2 Eliminating Hiring Manager Friction
-* **The Overqualification Concern (CTO → Team Lead)**: Solved by anchoring publicly as **"Principal Software Engineer"**, proving hands-on technical passion and team enablement without management bloat.
+* **The Overqualification Concern (CTO → Team Lead)**: Solved by anchoring publicly as **"Staff Software Engineer"**, proving hands-on technical capability and team enablement without management bloat.
 * **The Scope Concern (Senior Dev → CTO)**: Solved by using tailored **Executive Pitch Briefs** (`exports/briefs/`) to highlight past CTO experience (KloboMedia), Engineering L&D Partner leadership (Groupon), and architecture governance.
 
 ### 5.3 30-Second Interview Framing (No Ego, High Signal)
-> *"Scope depends on the company. At a 30-person startup, title inflates to CTO even though the day-to-day work is architecture and code leadership. At a growing org, Team Lead or Staff Engineer is where the highest technical leverage happens: where the hardest engineering decisions get made and where team velocity is built. I care about the mission, the team, and the technical challenge, not defending a title badge."*
+> *"My professional root is software engineering. I work best as a Staff Software Engineer at multiple levels of the system, from code and runtime behavior through business boundaries. As a Staff Engineer, I work with and across teams of ICs, stay close to the code, clarify difficult engineering decisions, and connect them to business objectives. At a larger organization, that scope may calibrate to Principal. I care about the mission, the team, and the technical challenge, not defending a title badge."*
 
 ---
 

@@ -122,7 +122,7 @@ These 8 article concepts translate the OneMain Financial architectural milestone
 
 ---
 
-### Article 3: Hunting the 4% Defect: Resolving Rails Cookie Overflow at Enterprise Scale
+### Article 3: Restoring a Hidden 4% of Customer Applications
 * **Target Audience:** SREs, Incident Commanders, Platform Architects, Senior Rails Engineers.
 * **Core Thesis:** The most dangerous software bugs are silent failure modes that drop traffic without throwing 500 errors. Client-side session cookie bloat can silently destroy customer conversion funnels unless session state is decoupled into resilient server-side storage.
 * **Key Proof Points:** Diagnosing a Rails session-cookie overflow across seven acquisition channels, implementing defensive rescue middleware, and executing a zero-downtime migration to AWS DynamoDB session storage.

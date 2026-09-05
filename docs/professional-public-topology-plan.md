@@ -9,6 +9,18 @@ permalink: /docs/professional-public-topology-plan/
 
 The site should present one person with a consistent way of working, not a collection of unrelated frameworks or employer summaries.
 
+## Professional identity
+
+> I am a Staff Software Engineer rooted in the profession of software engineering.
+
+I work at multiple levels of software engineering, from code and runtime
+behavior through business and organizational boundaries. I work with and
+across teams of individual contributors to turn business objectives into clear
+technical decisions, safer change, and durable ownership.
+
+As a Staff Engineer, I stay close to the code while helping teams make durable
+technical decisions.
+
 ## Public promise
 
 > I build, repair, explain, and preserve software systems.

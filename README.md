@@ -1,9 +1,13 @@
-# Mike Hall, Software Engineer
+# Mike Hall, Staff Software Engineer
 
 [![CI Pipeline](https://github.com/just3ws/just3ws.github.io/actions/workflows/build-and-validate.yml/badge.svg)](https://github.com/just3ws/just3ws.github.io/actions)
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
-I make complex production software easier to understand and safer to change.
+I am a Staff Software Engineer rooted in hands-on software engineering. I work
+at multiple levels of the system, from code and runtime behavior through
+business and organizational boundaries. I work with and across teams of
+individual contributors to make difficult systems clearer, safer to change,
+and more useful to the business.
 
 My work combines legacy modernization, production reliability, distributed
 observability, system cartography, and carefully bounded AI-assisted tooling.
@@ -50,6 +54,11 @@ conferences, and engineering practice across the Midwest and beyond.
 - [Interactive career and technology timeline](https://www.just3ws.com/timeline/)
 - [SCMC archive](https://www.just3ws.com/scmc/)
 - [Archive methodology](https://www.just3ws.com/docs/public-artifact-curation-policy/)
+
+Canonical identity maintenance is coordinated by Zarathustra and the
+`canonical-surface-steward` skill. The Hierophant, Fool, Commissar, and
+Watercourse personas handle canon, contradiction checks, process, and minimal
+change.
 
 The archive distinguishes organic writing, source-backed transcripts, and
 AI-assisted syntheses. AI may help preserve, search, or organize the record.
