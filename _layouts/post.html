@@ -4,12 +4,21 @@ layout: minimal
 {% include schema-factory.html %}
 {% include breadcrumbs.html %}
 
-<article class="post{% if page.tags contains 'linkedin' %} post-linkedin{% endif %}">
+{% assign ai_quarantined = false %}
+{% if page.ai_generated or page.url contains '/ai/' %}{% assign ai_quarantined = true %}{% endif %}
+{% assign article_provenance = 'organic' %}
+{% if page.ai_assisted or ai_quarantined %}{% assign article_provenance = 'ai-assisted' %}{% endif %}
+
+<article class="post post-provenance-{{ article_provenance }}{% if page.tags contains 'linkedin' %} post-linkedin{% endif %}" data-provenance="{{ article_provenance }}">
   <header class="post-header">
     <h1>{{ page.title }}</h1>
     <p class="post-meta">
       {{ page.date | date: "%B %Y" }}{% if page.tags %} · {{ page.tags | join: ", " }}{% endif %}
       · <a href="https://github.com/just3ws/just3ws.github.io/blob/master/{{ page.path }}" target="_blank" rel="noopener">View Markdown</a>
+    </p>
+    <p class="post-provenance-marker" aria-label="{% if article_provenance == 'ai-assisted' %}AI-assisted human-led article{% else %}Organic human-authored article{% endif %}">
+      <span aria-hidden="true">{% if article_provenance == 'ai-assisted' %}🤖{% else %}✦{% endif %}</span>
+      <span>{% if article_provenance == 'ai-assisted' %}AI-assisted human-led{% else %}Human-authored{% endif %}</span>
     </p>
     {% if page.originally_published_on and page.original_url %}
     <aside class="archive-note">
@@ -34,8 +43,6 @@ layout: minimal
       <p><strong>Contemplation continues:</strong> <a href="{{ page.continuation_url }}">{{ page.continuation_title }}</a></p>
     </aside>
     {% endif %}
-    {% assign ai_quarantined = false %}
-    {% if page.ai_generated or page.url contains '/ai/' %}{% assign ai_quarantined = true %}{% endif %}
     {% if page.ai_assisted or ai_quarantined %}
     <aside class="ai-quarantine-banner" role="note" aria-label="AI content disclosure" style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-accent, #b45309); padding: 1.25rem 1.5rem; border-radius: 0 var(--radius-md, 0.5rem) var(--radius-md, 0.5rem) 0; margin-top: 1.5rem; margin-bottom: 1.5rem;">
       <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 800; text-transform: uppercase; color: var(--color-accent, #b45309); font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-family: var(--font-sans-ui, system-ui, sans-serif);">
