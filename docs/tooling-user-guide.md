@@ -92,8 +92,11 @@ Provides a single, standardized entry point for all site build, test, and deploy
 # Launch local development server on http://127.0.0.1:4000/
 ./bin/server
 
-# Execute full CI parity check locally
+# Regenerate locally, then run the full CI gate
 ./bin/pipeline ci
+
+# Verify committed artifacts without regeneration, matching GitHub Actions
+./bin/pipeline verify
 ```
 
 ## 6. Public Surface Auditor (`bin/audit_public_surface.rb`)

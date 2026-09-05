@@ -29,7 +29,9 @@ graphify query "Which archive themes connect to OpenTelemetry?"
 
 ### 1. Unified Drivers & CLI Tools
 - `server`: Local dev server launcher.
-- `pipeline`: Main pipeline CLI (`./bin/pipeline build`, `./bin/pipeline ci`, etc.).
+- `pipeline`: Main pipeline CLI (`./bin/pipeline build`, `./bin/pipeline ci`,
+  `./bin/pipeline verify`, etc.). Local `ci` regenerates artifacts. The
+  committed-artifact `verify` path is the GitHub Actions gate.
 - `deploy_status`: Check deployment status.
 
 ### 2. Executive Pitch & Resume Generators (`generate_*`)
@@ -42,7 +44,7 @@ Scripts that read `_data/*.yml` sources and compile pages/artifacts into Jekyll 
 - `generate_context_summaries.rb`
 
 ### 3. Validators & MCP Verification (`validate_*`, `verify_*`)
-Quality checks executed by CI (`./bin/pipeline ci`):
+Quality checks executed by CI (`./bin/pipeline verify`):
 - `verify_mcp_spec.js`: Stdio MCP protocol self-verification runner.
 - `validate_exports.rb`: Verifies JSON, Markdown, Text, and PDF resume exports.
 - `validate_repo_hygiene.rb`: Enforces repo file tracking policies.

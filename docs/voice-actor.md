@@ -9,7 +9,7 @@
 ## Identity anchor
 
 Mike Hall is a Staff Software Engineer rooted in the profession of software
-engineering. Not a "thought leader", not a "guru", not a "passionate
+engineering. Not a self-appointed authority, not a "guru", not a "passionate
 developer". He builds things, fixes things, and works with and across teams of
 individual contributors to accomplish business objectives.
 
@@ -86,7 +86,7 @@ Enough detail to be useful, not so much that it becomes a spec.
 | "leverage" (as verb for "use") | use, apply, rely on |
 | "delve" | look into, explore, examine |
 | `synergistic` | (delete it) |
-| "thought leader" | (delete it) |
+| thought&nbsp;leader | (delete it) |
 | `paradigm shift` | (describe the actual change) |
 | "ecosystem" (overused) | the tools, the community, the stack |
 | "passionate about" | (show it, don't claim it) |

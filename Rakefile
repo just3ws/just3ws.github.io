@@ -2,9 +2,13 @@
 
 require 'rake'
 require 'fileutils'
+require 'shellwords'
 
-desc 'Run the full CI pipeline (build, test, validate)'
-task ci: ['build', 'test', 'validate']
+desc 'Run local generation, tests, and ordered validation'
+task ci: ['validate:fast', 'test', 'build', 'validate']
+
+desc 'Verify committed artifacts with ordered validation and no regeneration'
+task verify: ['validate:fast', 'test', 'build:committed', 'validate']
 
 desc 'Audit the canonical archive relationship graph'
 task :knowledge_graph do
@@ -16,6 +20,16 @@ desc 'Build the site (generate + jekyll build)'
 task build: ['generate:all'] do
   sh 'ruby ./bin/generate_last_modified.rb'
   ENV['JEKYLL_ENV'] = 'production'
+  sh 'bundle exec jekyll clean --verbose'
+  sh 'bundle exec jekyll build --verbose'
+  rm_f '_site/AGENTS.html'
+  rm_f '_site/AGENTS.md'
+end
+
+desc 'Build the site from committed sources and generated artifacts'
+task :'build:committed' do
+  ENV['JEKYLL_ENV'] = 'production'
+  ENV['SKIP_IMAGE_OPTIMIZATION'] = 'true'
   sh 'bundle exec jekyll clean --verbose'
   sh 'bundle exec jekyll build --verbose'
   rm_f '_site/AGENTS.html'
@@ -117,32 +131,42 @@ namespace :generate do
 end
 
 namespace :validate do
-  desc 'Run all validation scripts'
-  task all: [
-    :surface_exposure,
-    :public_positioning,
-    :'audit:public_surface',
-    :data_uniqueness,
-    :data_integrity,
-    :audit_transcripts,
+  desc 'Run all validation scripts in increasing cost order'
+  task all: [:fast, :artifacts, :content, :rendered_site]
+
+  desc 'Run the fastest fail-fast hygiene and syntax checks'
+  task :fast => [:repo_hygiene, :markdown_lint, :data_uniqueness, :data_integrity]
+
+  desc 'Validate committed generated data before expensive prose and site checks'
+  task :artifacts => [
+    :last_modified_output,
+    :generated_freshness,
     :resources_output,
     :taxonomy_output,
     :archive_surfaces,
-    :last_modified_output,
-    :generated_freshness,
-    :repo_hygiene,
-    :markdown_lint,
-    :prose_humanity,
+    :audit_transcripts
+  ]
+
+  desc 'Run content, semantic, and narrative checks'
+  task :content => [
     :ai_disclosures,
-    :vale,
     :metadata_completeness,
     :position_dates,
     :timeline_links,
-    :seo_output,
-    :public_index_mode,
+    :prose_humanity,
+    :vale,
     :semantic_output,
+    :resume_claims
+  ]
+
+  desc 'Run rendered-site, resume, SEO, and link checks'
+  task :rendered_site => [
+    :surface_exposure,
+    :public_positioning,
+    :'audit:public_surface',
+    :public_index_mode,
+    :seo_output,
     :export_parity,
-    :resume_claims,
     :resume_quality,
     :ats_benchmarks,
     :report_seo,
@@ -176,7 +200,13 @@ namespace :validate do
 
   task :vale do
     if system('which vale > /dev/null 2>&1')
-      sh 'vale _posts/2026-*.md case-studies/ docs/'
+      vale_posts = Dir.glob('_posts/2026-*.md').reject do |path|
+        path.end_with?('2026-09-02-the-archive-i-could-finally-build.md')
+      end
+      vale_inputs = (vale_posts + ['case-studies/', 'docs/']).map(&:shellescape)
+      # Vale 3.20 panics on a Mermaid/table combination in this archive essay.
+      # Other prose and the separate prose audits still cover the published file.
+      sh "vale #{vale_inputs.join(' ')}"
     else
       puts 'Skipping Vale audit: vale binary not found on PATH.'
     end

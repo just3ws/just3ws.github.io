@@ -4,7 +4,10 @@ require 'image_optim'
 require 'image_optim_pack'
 
 Jekyll::Hooks.register :site, :post_write do |site|
-  next if Jekyll.env == 'development' # Skip in development for speed
+  # Verification builds consume committed assets. Re-optimizing them here is
+  # expensive and does not change tracked source, so the committed-artifact
+  # pipeline can opt out while full local builds retain the quality pass.
+  next if Jekyll.env == 'development' || ENV['SKIP_IMAGE_OPTIMIZATION'] == 'true'
 
   image_optim = ImageOptim.new(
     advpng: false, # slow

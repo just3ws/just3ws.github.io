@@ -7,7 +7,7 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | test | validate | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | help
+  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
@@ -20,7 +20,8 @@ Commands:
   semantic-snapshot Generate backlog/docs/architecture/semantic-graph.md from semantic artifacts.
   smoke     Run Playwright smoke checks against built _site.
   sitemap   Print sitemap coverage summary from built _site.
-  ci        Run build + test + validate (CI core pipeline).
+  ci        Regenerate, build, test, and validate locally.
+  verify    Build, test, and validate committed artifacts without regeneration.
   help      Show this help.
 USAGE
 }
@@ -37,6 +38,9 @@ case "${1:-help}" in
     ;;
   validate)
     bundle exec rake validate
+    ;;
+  verify)
+    bundle exec rake verify
     ;;
   knowledge-graph)
     bundle exec rake knowledge_graph

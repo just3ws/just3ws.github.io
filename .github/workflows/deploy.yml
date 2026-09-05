@@ -40,7 +40,7 @@ jobs:
           ruby-version: '4.0.6'
           bundler-cache: true
       - name: Run CI gate
-        run: ./bin/pipeline ci
+        run: ./bin/pipeline verify
       - name: Upload failure diagnostics
         if: failure()
         uses: actions/upload-artifact@v4

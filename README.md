@@ -77,6 +77,10 @@ ruby bin/audit_public_surface.rb --strict
 ruby bin/query_career_datalake.rb --help
 ```
 
+Run `./bin/pipeline ci` locally before committing generated changes. GitHub
+Actions uses `./bin/pipeline verify` to build, test, and validate the
+committed artifacts without regenerating them.
+
 Local archive roots and corpus databases belong in ignored local configuration.
 They are never required for the public site build.
 

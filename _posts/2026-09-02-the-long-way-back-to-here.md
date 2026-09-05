@@ -166,8 +166,8 @@ My father told me I would come back crawling and begging for him to take me back
 I never did.
 
 That does not mean I never returned to him as a son. My partner persisted when I
-was not ready. We reconnected before he died. She helped make me more complete
-than I could have been alone.
+was not ready. We reconnected before he died. She helped me become someone I
+could not have become alone.
 
 I negotiated training with C.H. Robinson. The original plan involved MCSE training.
 The training was poor, so I pushed for a refund and turned toward Java instead. That
