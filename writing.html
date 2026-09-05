@@ -26,11 +26,12 @@ permalink: /writing/
       {% for post in site.posts %}
         {% assign year = post.date | date: "%Y" | plus: 0 %}
         {% if year >= 2024 and post.ai_generated != true %}
-        <li class="post-row">
+        <li class="post-row{% if post.ai_assisted %} post-row-provenance-ai-assisted{% else %} post-row-provenance-organic{% endif %}">
           <div class="post-title-row">
             <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
             <span class="post-date">{{ post.date | date: "%b %Y" }}</span>
           </div>
+          <span class="post-provenance-inline" aria-label="{% if post.ai_assisted %}AI-assisted human-led article{% else %}Organic human-authored article{% endif %}">{% if post.ai_assisted %}🤖 AI-assisted human-led{% else %}✦ Human-authored{% endif %}</span>
           {% if post.description %}
             <p class="post-excerpt">{{ post.description }}</p>
           {% endif %}
@@ -59,12 +60,13 @@ permalink: /writing/
     <ul class="post-list">
       {% for post in site.posts %}
         {% assign year = post.date | date: "%Y" | plus: 0 %}
-        {% if year >= 2013 and year <= 2016 %}
-        <li class="post-row">
+        {% if year >= 2013 and year <= 2016 and post.ai_generated != true %}
+        <li class="post-row{% if post.ai_assisted %} post-row-provenance-ai-assisted{% else %} post-row-provenance-organic{% endif %}">
           <div class="post-title-row">
             <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
             <span class="post-date">{{ post.date | date: "%b %Y" }}</span>
           </div>
+          <span class="post-provenance-inline" aria-label="{% if post.ai_assisted %}AI-assisted human-led article{% else %}Organic human-authored article{% endif %}">{% if post.ai_assisted %}🤖 AI-assisted human-led{% else %}✦ Human-authored{% endif %}</span>
           {% if post.description %}
             <p class="post-excerpt">{{ post.description }}</p>
           {% endif %}
@@ -93,12 +95,13 @@ permalink: /writing/
     <ul class="post-list">
       {% for post in site.posts %}
         {% assign year = post.date | date: "%Y" | plus: 0 %}
-        {% if year >= 2009 and year <= 2012 %}
-        <li class="post-row">
+        {% if year >= 2009 and year <= 2012 and post.ai_generated != true %}
+        <li class="post-row{% if post.ai_assisted %} post-row-provenance-ai-assisted{% else %} post-row-provenance-organic{% endif %}">
           <div class="post-title-row">
             <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
             <span class="post-date">{{ post.date | date: "%b %Y" }}</span>
           </div>
+          <span class="post-provenance-inline" aria-label="{% if post.ai_assisted %}AI-assisted human-led article{% else %}Organic human-authored article{% endif %}">{% if post.ai_assisted %}🤖 AI-assisted human-led{% else %}✦ Human-authored{% endif %}</span>
           {% if post.description %}
             <p class="post-excerpt">{{ post.description }}</p>
           {% endif %}
@@ -127,12 +130,13 @@ permalink: /writing/
     <ul class="post-list">
       {% for post in site.posts %}
         {% assign year = post.date | date: "%Y" | plus: 0 %}
-        {% if year <= 2008 %}
-        <li class="post-row">
+        {% if year <= 2008 and post.ai_generated != true %}
+        <li class="post-row{% if post.ai_assisted %} post-row-provenance-ai-assisted{% else %} post-row-provenance-organic{% endif %}">
           <div class="post-title-row">
             <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
             <span class="post-date">{{ post.date | date: "%b %Y" }}</span>
           </div>
+          <span class="post-provenance-inline" aria-label="{% if post.ai_assisted %}AI-assisted human-led article{% else %}Organic human-authored article{% endif %}">{% if post.ai_assisted %}🤖 AI-assisted human-led{% else %}✦ Human-authored{% endif %}</span>
           {% if post.description %}
             <p class="post-excerpt">{{ post.description }}</p>
           {% endif %}
