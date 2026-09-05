@@ -111,6 +111,9 @@ Standard triage workflow labels. See `docs/agents/triage-labels.md`.
 ### Domain docs
 Single-context layout (root-level CONTEXT.md + docs/adr/). See `docs/agents/domain.md`.
 
+### Agent RACI Matrix
+Cross-persona task ownership, review obligations, and decision authority are defined in `docs/agents/agent-raci-matrix.md`.
+
 ## Registered Skills
 Use these skills by default for this repository. **Status**: 8 of the 21
 below have real `SKILL.md` content in `.agents/skills/` (marked ✓; see

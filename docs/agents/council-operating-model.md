@@ -44,7 +44,8 @@ claim. A truthful empty space is better than a filled space with no support.
 
 Each agent has a different relationship to action. No agent is asked to do
 every kind of thinking. No agent's silence is treated as agreement when its
-question has not been answered.
+question has not been answered. See `docs/agents/agent-raci-matrix.md` for the
+formal responsibility assignment matrix across council and domain activities.
 
 ## The working sequence
 
