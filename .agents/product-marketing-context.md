@@ -1,18 +1,18 @@
 # Product Marketing Context
 
-*Last updated: 2026-08-15*
+*Last updated: 2026-09-05*
 
 ## Product Overview
 
-**One-liner:** The professional home of Mike Hall, a Principal Software Engineer who makes complex production systems easier to understand and safer to change.
+**One-liner:** The professional home of Mike Hall, a Staff Software Engineer who makes complex production systems easier to understand and safer to change.
 
 **What it does:** The site helps a hiring manager, recruiter, technical executive, or AI-assisted evaluator determine Mike's current fit without reading the complete chronology first. It leads with present-tense technical IC work, explains the Panoramic View system-cartography methodology, offers selected evidence, and preserves the complete career and community archive as deeper proof.
 
-**Product category:** Principal engineering portfolio and public technical archive.
+**Product category:** Staff engineering portfolio and public technical archive.
 
 **Product type:** Personal professional site, evidence portfolio, and long-lived public archive.
 
-**Business model:** Career presence for full-time Principal Software Engineer opportunities. No public pricing or packaged consulting offer is currently defined.
+**Business model:** Career presence for Staff Software Engineer opportunities, with Principal Engineer as a scale-dependent target calibration. No public pricing or packaged consulting offer is currently defined.
 
 ## Target Audience
 
@@ -20,14 +20,14 @@
 
 **Primary decision-makers:**
 
-- CTOs, VPs of Engineering, and senior product or technology leaders hiring a Principal Software Engineer.
+- CTOs, VPs of Engineering, and senior product or technology leaders hiring a Staff Software Engineer or a scale-equivalent Principal Engineer.
 - Hiring managers seeking a senior technical IC who can lead architecture and cross-team initiatives without requiring people-management authority.
 - Recruiters evaluating leadership scope, current relevance, role fit, and career continuity.
 - AI-assisted hiring systems extracting role identity, evidence, chronology, and differentiators.
 
 **Secondary audiences:** Staff and Principal engineers evaluating a future peer; Product, Operations, Security, and Quality leaders assessing cross-functional judgment; technical peers exploring Panoramic View or the public archive.
 
-**Primary use case:** Decide whether Mike should enter a hiring conversation for a Principal Software Engineer role.
+**Primary use case:** Decide whether Mike should enter a hiring conversation for a Staff Engineer role or a scale-equivalent Principal Engineer role.
 
 **Jobs to be done:**
 
@@ -50,7 +50,7 @@
 |---|---|---|---|
 | CTO or VP Engineering | Judgment, leverage, risk, organizational lift | Needs a principal IC who can lead complex technical work across team boundaries | A hands-on technical leader who makes the terrain and tradeoffs visible before committing the organization |
 | Hiring manager | Scope match, outcomes, credibility | Broad experience and a short recent role require quick interpretation | A focused current identity with bounded, traceable evidence and a calm transition explanation |
-| Recruiter | Searchability, titles, chronology, concise fit | Must map a nonlinear career to an open role quickly | Clear Principal Software Engineer positioning, current keywords, selected recent experience, and accessible full history |
+| Recruiter | Searchability, titles, chronology, concise fit | Must map a nonlinear career to an open role quickly | Clear Staff Software Engineer positioning, current keywords, selected recent experience, and accessible full history |
 | Staff or Principal engineer | Technical credibility and working relationship | Needs a peer who can lead through evidence without relying on reporting authority | A principal IC who can investigate deeply, preserve uncertainty, and build shared technical context |
 | AI hiring evaluator | Structured identity, entities, dates, proof, links | Archive volume can obscure the hiring signal | Semantic headings, consistent terminology, concise summaries, and linked evidence surfaces |
 
@@ -72,7 +72,7 @@
 
 ## Competitive Landscape
 
-**Direct:** Other Principal Software Engineer candidates with conventional architecture and platform résumés. They may present a narrower title progression but often show less evidence connecting system-level judgment to organization-wide execution.
+**Direct:** Other Staff and Principal Software Engineer candidates with conventional architecture and platform résumés. They may present a narrower title progression but often show less evidence connecting system-level judgment to organization-wide execution.
 
 **Secondary:** Staff engineers seeking broader technical scope. They may show comparable hands-on depth but less evidence of sustained architecture, production, and cross-functional leadership.
 
@@ -104,7 +104,7 @@
 | Objection | Response |
 |---|---|
 | "His background is too broad." | Lead with one role identity and one operating pattern; use the breadth as supporting evidence that he can follow cause and effect across boundaries. |
-| "Is he an IC or a manager?" | Position him plainly as a Principal Software Engineer. Management experience supplies organizational fluency; it is not the target job family. |
+| "Is he an IC or a manager?" | Position him plainly as a Staff Software Engineer. Management experience supplies organizational fluency; it is not the target job family. |
 | "The recent role was very short." | Present it factually as a direct-hire role during a founder transition; show bounded work completed; explain that leadership was consolidated at the parent-company VP level without grievance or retrospective contract framing. |
 | "Is Panoramic View just observability or customer-journey mapping?" | Explain the two-dimensional system model and evidence discipline; observability is one input, and the customer journey is only the visible horizon. |
 | "Did all of the proposed tooling ship?" | Separate method, implemented capabilities, partial implementations, explicit gaps, and future work. Never turn a design or citation into a shipped claim. |
@@ -116,7 +116,7 @@
 
 **Push:** Repeated incidents, undocumented systems, fragile ownership, stalled modernization, unclear responsibility, and teams making decisions from conflicting partial narratives.
 
-**Pull:** A principal IC who can create shared visibility, establish safe operating boundaries, align technical work across teams, and connect immediate stabilization to a credible modernization path.
+**Pull:** A Staff Engineer who can create shared visibility, establish safe operating boundaries, align technical work across teams, and connect immediate stabilization to a credible modernization path. At larger organizations, that scope may calibrate to Principal.
 
 **Habit:** Hiring separately for management, architecture, observability, delivery, and knowledge management while leaving the relationships between those disciplines unowned.
 
@@ -141,7 +141,7 @@
 - "Preserve uncertainty instead of manufacturing confidence."
 - "Enter stage left; exit stage right."
 
-**Words to use:** Principal Software Engineer, senior technical IC, systems-oriented, evidence-backed, system cartography, Panoramic View, runtime reality, shared understanding, legibility, stabilization, modernization, cross-team technical leadership, institutional knowledge, safe change, provenance, confidence, known unknowns.
+**Words to use:** Staff Software Engineer, Staff Engineer, senior technical IC, systems-oriented, evidence-backed, system cartography, Panoramic View, runtime reality, shared understanding, legibility, stabilization, modernization, cross-team technical leadership, institutional knowledge, safe change, provenance, confidence, known unknowns. Use Principal Software Engineer when calibrating to a target organization's level.
 
 **Words to avoid:** guru, ninja, rock star, magician, savior, thought leader, AI visionary, full-stack engineer as the primary identity, customer-acquisition flow outside its original context, single-handedly fixed, transformed everything, fully operationalized when gaps remain, private-equity grievance language, and deficit framing for multilingual teams.
 
@@ -189,9 +189,9 @@
 
 ## Goals
 
-**Primary business goal:** Generate well-matched conversations for Principal Software Engineer roles centered on architecture, production reliability, modernization, observability, and cross-team technical leadership.
+**Primary business goal:** Generate well-matched conversations for Staff Engineer roles and scale-equivalent Principal Engineer roles centered on architecture, production reliability, modernization, observability, and cross-team technical leadership.
 
-**Primary conversion action:** Contact Mike about a relevant Principal Software Engineer role.
+**Primary conversion action:** Contact Mike about a relevant Staff Engineer or scale-equivalent Principal Engineer role.
 
 **Supporting actions:** Read the selected résumé, explore Panoramic View, inspect selected work, download a machine-readable résumé, or enter the complete career and community archive.
 

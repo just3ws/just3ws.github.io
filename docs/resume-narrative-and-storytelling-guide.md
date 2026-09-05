@@ -48,7 +48,7 @@ Without a clear through-line, a resume reads like a disjointed catalog of random
   > *(Reviewer reaction: Generic commodity profile without distinct domain authority).*
 
 * **Strong (Authoritative Domain Specialist):**
-  > *"Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations."*
+  > *"Staff Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations."*
   > *(Reviewer reaction: Clear mental model of candidate's strategic domain and tier).*
 
 ---

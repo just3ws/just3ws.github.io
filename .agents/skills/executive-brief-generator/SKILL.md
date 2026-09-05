@@ -31,7 +31,7 @@ Use this skill when preparing tailored application briefs, pitch documents, or c
    - Reference `docs/career-strategy-audhd-principal-engineering.md` for role calibration and boundary criteria.
 
 4. **Synthesize Tailored 1-Page Executive Pitch Brief or Cover Memo**:
-   - **Hook (Act 3 Offering):** Anchor as the Principal Software Engineer specializing in de-risking their specific platform transition.
+   - **Hook (Act 3 Offering):** Anchor Mike as a Staff Software Engineer, then calibrate the scope to the target role, including Principal Software Engineer when that is the employer's level.
    - **Proven Proof Points (Act 2 Crucible):** Select 2 to 3 matching historical outcomes (OneMain Acquisition lane, 5-phase PII engine, 4% traffic loss fix, enterprise OTel trace).
    - **Operating Philosophy (Act 1 Foundation):** Ground in System Cartography (mapping state before code changes), automated verification gates, and team enablement.
    - **Direct Call to Action:** Offer a 20-minute peer-level technical conversation on architecture and platform stability.

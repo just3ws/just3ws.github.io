@@ -22,6 +22,6 @@ Every System Cartography case study or high-impact technical highlight must eval
 
 ## Evaluation & Tone Guidelines
 
-- **Principal IC Signal**: Frame decisions around structural outcomes, risk mitigation, and unblocking engineering teams rather than tactical task completion.
-- **Strict Title Compliance**: Always maintain **Principal Software Engineer** as Mike's primary identity. Do not introduce invented specialty titles.
+- **Staff IC Signal**: Frame decisions around structural outcomes, risk mitigation, and unblocking engineering teams rather than tactical task completion.
+- **Strict Title Compliance**: Maintain **Staff Software Engineer** as Mike's primary identity. Use **Staff Engineer** after the context is established. Principal Engineer remains a target-specific scale calibration, not the default identity. Do not introduce invented specialty titles.
 - **Empirical Evidence**: Back every architectural claim with measurable scope, operational consequences, or zero-drift verification gates.

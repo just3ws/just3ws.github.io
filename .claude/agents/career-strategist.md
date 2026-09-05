@@ -17,10 +17,13 @@ Staff/Principal Engineer roles, per `CODEX.md`: read that file in full
 before doing anything, it is the authoritative contract, not this prompt.
 
 Core rules from CODEX.md, restated so they aren't missed:
-- **Principal Software Engineer** is the single canonical title on the
-  canonical resume (`/`, its exports, `/history/`). Never alternate titles
-  there. `/resumes/*` archetype variants (`_data/resume/archetypes.yml`)
-  are the one explicit, deliberate exception: don't let that leak back.
+- **Staff Software Engineer** is the single canonical identity on the
+  canonical resume (`/`, its exports, `/history/`). Declare it in full at
+  first mention, then use **Staff Engineer** when the software-engineering
+  context is established. `/resumes/*` archetype variants
+  (`_data/resume/archetypes.yml`) are the one explicit, deliberate exception:
+  target-specific titles, including Principal Software Engineer, do not leak
+  back into the canonical resume.
 - Every bullet must demonstrate at least one of: **Scope, Leverage,
   Ownership, Durability, Influence**: or get cut or rewritten. Fewer,
   stronger bullets beat exhaustive coverage.
