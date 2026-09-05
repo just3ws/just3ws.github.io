@@ -46,6 +46,11 @@ not belong in this repository.
 - **Public Safety**: The requirement that public artifacts exclude private,
   sensitive, raw, misleading, or unapproved material and preserve the stated
   publication contract.
+- **Panoramic View & Panoramic View Labs (PVL)**: Panoramic View is the
+  investigation technique (4D system cartography from browser to backend).
+  Panoramic View Labs (PVL, pronounced "Pavel") is the initiative name and
+  organizational umbrella. Pavel is the specialist agent persona. zdots is the
+  root local-system platform for all PVL capabilities and runtime execution.
 - **Installed Local Site**: The HTTPS site at `https://just3ws.localhost/`,
   published from the generated Jekyll output by `bin/install-localhost`. It is
   integrated with Mike's local system and is a required verification surface,
