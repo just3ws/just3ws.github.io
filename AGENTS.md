@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-09-04
+     CURRENT FOCUS - last updated 2026-09-05
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,34 +12,24 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
-       - Deploy was stuck ~2 days (last green 42da2e92, 2026-09-02) behind a
-         stack of gates each hidden behind the one before it in `rake ci`.
-         Fixed and pushed as d1feda2a; run 33880797073 completed success:
-         - repo_hygiene: allowlisted the new phalanx-duel/ top-level dir.
-         - prose_humanity: docs/voice-actor.md's own banned-words table was
-           tripping the jargon filter it defines; backticked the two terms.
-         - semantic_output: phalanx-duel/index.html had a nested <main>
-           inside the base layout's <main>; exports/reports/*.html gained
-           frontmatter (for sitemap:false) that let the default layout wrap
-           two already-complete HTML docs, now `layout: none`; new
-           interviews/word-clouds/index.html is an aggregate page, added to
-           the validator's interview-JSON-LD skip list.
-         - ats_benchmarks (52.1% -> 89.9%): 054e1de3 had switched
-           bin/generate_archetype_resumes.rb to read canonical-only
-           public_* fields for all 5 role-targeted archetypes, collapsing
-           them onto one shared thin voice. Reverted the generator to read
-           summary/highlights directly; canonical /resume/ voice unchanged.
+       - Deploy 33976676086 completed success (commit 3468f51c):
+         - Canonical naming locked: Panoramic View is a technique;
+           Panoramic View Labs (PVL, pronounced "Pavel") is the initiative;
+           Pavel is the specialist agent; zdots is the root local system
+           platform for all PVL capabilities. Added to docs/style-guide-and-canonical-naming.md §7.
+         - Registered Pavel specialist persona in .claude/agents/pavel.md.
+         - Authored docs/agents/agent-raci-matrix.md formalizing task
+           ownership, review obligations, and decision authority across
+           the Persona Review Council, Site Refresh Triad, and specialist auditors.
+         - Linked RACI matrix across AGENTS.md, docs/persona-review-council.md,
+           and docs/agents/council-operating-model.md.
        - Built tmi-auditor skill: TMI/PII/PHI/*ism guards (ageism, ableism,
          familism) walking full sitemap.xml spine, 879 URLs, 0 quarantine findings.
        - Created docs/voice-actor.md: canonical Mike Hall voice and vocabulary
          definition for all content-generating agents.
-       - Added bin/tmi_audit_sitemap.rb, bin/tmi_fix_sitemap_exclusions.rb,
-         rake audit:tmi_gate (CI gate), rake audit:tmi_pipeline (full run).
-       - Fixed phone suppression on /resume/positions/* sub-pages via Liquid
-         unless conditional in _includes/resume/profile-header.html.
-       - 90 examples, 0 failures. TMI gate: PASS.
+       - 90 examples, 0 failures. All pre-push and CI gates green.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-09-04-2.md
+         ~/.config/adots/handoffs/2026-09-05-3.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
