@@ -17,6 +17,16 @@ When facing complex legacy platform modernizations, core ledger extractions, and
 
 Each working group operated with deep domain authority. They verified ground truth from primary artifacts before reporting findings up to technical steering. Mike's strategy decentralized investigation while maintaining rigorous architectural coherence across multiple squads.
 
+### The ADKAR Change Management Foundation
+
+The SME working group model succeeded because Mike paired deep technical systems design with the ADKAR change management framework (Awareness, Desire, Knowledge, Ability, Reinforcement):
+
+- **Awareness:** Cartography and OpenTelemetry made hidden runtime failure modes visible across service boundaries.
+- **Desire:** Geekfest@OMF built grassroots engineering excitement for craftsmanship and shared learning.
+- **Knowledge:** Working groups produced actionable RFCs and lightweight IEA sequences.
+- **Ability:** Enablement squads paired directly with delivery teams to implement changes safely.
+- **Reinforcement:** Automated CI assertions, observability baselines, and SRE handoffs ensured changes endured.
+
 ### Persona Review Council 7-Pillar SME Delegation
 
 The Persona Review Council (`docs/persona-review-council.md` and `docs/agents/agent-raci-matrix.md`) mirrors this exact structure across seven specialized operational pillars:

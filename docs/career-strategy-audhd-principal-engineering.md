@@ -161,4 +161,30 @@ During interviews, you never have to "sell" yourself or improvise social banter:
 
 ---
 
-*Updated on 2026-08-30 for personal reference and ongoing career alignment.*
+## 8. The ADKAR Bridge: Balancing Systems Mastery with Human Adoption
+
+### 8.1 The "Overleverage of Systems" Tendency
+AuDHD systems thinkers have an instinctive drive to utilize systems to their utmost capacity. Creating comprehensive frameworks, multi-tiered agent councils, deterministic schemas, and deep taxonomies provides cognitive clarity, psychological safety, and immense operating leverage.
+
+However, an uncurated presentation of deep systemic structures can overwhelm outside collaborators, hiring managers, and delivery squads. The system itself becomes a barrier before others understand its value.
+
+### 8.2 Bridging the Gap with ADKAR
+To make technical systems stick across large organizations, Mike pairs systems design with the **ADKAR** change management model (Awareness, Desire, Knowledge, Ability, Reinforcement). This was the exact leadership mechanism Mike used to scale platform modernization at OneMain Financial:
+
+1. **Awareness (Make the Seams Visible):** Use System Cartography, distributed tracing, and baseline error budgets to expose hidden runtime failure modes (such as the 4% session cookie overflow or orphan database records) without blame.
+2. **Desire (Build Grassroots Enthusiasm):** Instead of mandating change from above, foster genuine excitement for software craftsmanship. At OMF, Mike founded Geekfest@OMF to create a vibrant community forum where engineers actively wanted to learn modern practices.
+3. **Knowledge (Codify Clear Working Models):** Provide lightweight, practical operating loops like IEA (Inventory, Evaluate, Address) and targeted Architecture Decision Records (ADRs) rather than massive abstract manuals.
+4. **Ability (Enable Hands-on Execution):** Form cross-functional SME working groups and enablement squads to pair directly with product engineers, removing friction through reusable middleware and safe database recipes.
+5. **Reinforcement (Sustain Through Operational Telemetry):** Embed automated CI gates, trace assertions, and SLO baselines, then transition ongoing stewardship to SRE so improvements endure.
+
+### 8.3 ADKAR for Public Career Surfaces
+Apply this same sequence to portfolio visitors, interviewers, and recruiters:
+- **Awareness:** Immediate role clarity (Staff Software Engineer, 25 years).
+- **Desire:** Concrete production case studies with quantified impact.
+- **Knowledge:** Progressive disclosure of the architectural mechanics.
+- **Ability:** Demonstrating how Mike collaborates with and enables squads.
+- **Reinforcement:** Verifiable historical archives and green CI suites.
+
+---
+
+*Updated on 2026-09-06 for personal reference and ongoing career alignment.*
