@@ -238,3 +238,41 @@ ruby bin/query_career_datalake.rb --archetype "principal_systems_architect"
 # Emit raw structured JSON for tool chaining or prompt injection
 ruby bin/query_career_datalake.rb --tech "Rails" --json
 ```
+
+---
+
+## 11. Automated Resume Claims & Attestation Gate (`bin/validate_resume_claims.rb`)
+
+### Why Use It
+Prevents hallucinated numbers, metric drift, or unattested scale claims from appearing on public resume and case study surfaces. Scans percentage, multiplier, and scale claims against canonical sources (`_data/resume/` and `_data/case_studies.yml`) or the allowlist registry (`_data/resume_claim_allowlist.yml`).
+
+### How to Use It
+```bash
+# Run strict gate (exits non-zero if unattested metrics exist)
+ruby bin/validate_resume_claims.rb
+
+# Run automated AI semantic adjudication on pending findings
+ruby bin/validate_resume_claims.rb --explain
+```
+
+---
+
+## 12. WITC Corpus SQLite Query Engine (`bin/query_witc_corpus.rb`)
+
+### Why Use It
+Enables full-text search across the complete historical oral history and developer interview corpus indexed in `lake/witc/corpus.db` (117MB SQLite FTS5 database).
+
+### How to Use It
+```bash
+# View corpus volume and document distribution statistics
+ruby bin/query_witc_corpus.rb --stats
+
+# Run full-text search across all documents
+ruby bin/query_witc_corpus.rb --search "distributed tracing" --limit 10
+
+# Filter search by source kind (transcript, source, documentation, metadata)
+ruby bin/query_witc_corpus.rb --search "database migration" --kind transcript
+
+# Emit structured JSON for subagent ingestion
+ruby bin/query_witc_corpus.rb --search "chaos engineering" --json
+```

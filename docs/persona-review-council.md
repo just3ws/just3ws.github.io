@@ -63,7 +63,7 @@ recovers source evidence and seams. The Fool tests assumptions. The Hierophant
 defines the contract. Watercourse chooses the least-forced path. The Commissar
 turns the agreed response into bounded action and verification.
 
-The full operating contract is maintained in `docs/agents/council-operating-model.md`, and the cross-agent responsibility assignment matrix is defined in `docs/agents/agent-raci-matrix.md`.
+The full operating contract is maintained in `docs/agents/council-operating-model.md`, the cross-agent responsibility assignment matrix is defined in `docs/agents/agent-raci-matrix.md`, and the SME working group delegation and multi-archive verification procedures are codified in `docs/sme-delegation-and-multi-archive-playbook.md`.
 
 ```mermaid
 flowchart TD
