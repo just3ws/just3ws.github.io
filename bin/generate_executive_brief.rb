@@ -142,7 +142,7 @@ markdown_content = <<~MARKDOWN
   ## 🏗️ Direct Architectural Match & Evidence
 
   ### 1. High-Consequence Platform Architecture & Modernization
-  * **Acquisition Lane Architecture (OneMain Financial):** Appointed Software Architect for the customer-facing application and account workflow, processing hundreds of millions in financial throughput. Mapped seven heterogeneous ingress channels, refactored multi-step Rails state machines, and decoupled service boundaries between Acquisition and Originations.
+  * **Acquisition Lane Architecture (OneMain Financial):** Appointed Software Architect for the customer-facing application and account workflow, processing hundreds of millions in financial throughput. Mapped the entire loan acquisition and origination pipeline end-to-end from visit to booked loan (desktop browser to mainframe and back again at each step) and the Affiliate API at the same depth, identifying seven distinct lending funnels through a dedicated tracking initiative.
   * **Database Archaeology & Safety:** Architected an automated 5-phase PII remediation deletion engine across 30+ tables, safely purging legacy orphan records under production traffic without table locks.
   * **Craftsmanship Foundations:** Production Ruby on Rails expertise (2.x through 8.x), strict TDD discipline, and relational data modeling in PostgreSQL.
 

@@ -17,9 +17,11 @@ id: onemain
 
 summary: >
   Appointed as Senior Technical IC and Software Architecture Lead for the Acquisition
-  lane of a regulated financial enterprise with an executive mandate to untangle multi-channel lending
-  workflows, decouple boundaries between Acquisition and Originations, and establish enterprise distributed observability,
-  while guiding legacy modernization, cybersecurity investigations, and cross-team platform reliability.
+  lane of a regulated financial enterprise. Mapped the entire loan acquisition and origination pipeline end-to-end
+  from visit to booked loan using the Panoramic View technique of longitudinal and latitudinal analysis from desktop
+  browser to mainframe and back again at each step, and applied the same depth to the Affiliate API. Engineered an automated
+  5-phase PII deletion engine across 30+ tables, deployed enterprise distributed observability, and guided
+  cross-team platform reliability.
 
 public_summary: >-
   Software Engineer and architecture lead who helped make regulated customer
@@ -52,9 +54,10 @@ highlights:
       for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
 
   - text: >
-      Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team and mapped
-      seven heterogeneous acquisition channels; architected an automated 5-phase PII Remediation
-      deletion engine and data migration across 30+ tables, eliminating legacy state machine corruptions.
+      Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team;
+      mapped the loan acquisition and origination pipeline end-to-end from visit to booked loan (desktop browser
+      to mainframe and back again at each step) and the Affiliate API at the same depth, identifying seven distinct lending funnels
+      with a tracking initiative; architected an automated 5-phase PII remediation deletion engine across 30+ tables.
 
   - text: >
       Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical
@@ -85,17 +88,17 @@ case_study:
     corrupted state and dropped 4% of digital applications between offer selection and e-signing.
   cartography_approach:
     - dimension: "Interaction Surface"
-      detail: "Mapped browser, mobile, automated API, and partner ingress points across customer application and origination funnels, establishing explicit entry, exit, and error lifecycle telemetry."
+      detail: "Mapped the entire loan acquisition and origination pipeline end-to-end from initial visit to booked loan across browser, mobile, and Affiliate API ingress points, identifying seven distinct lending funnels through a dedicated tracking initiative."
     - dimension: "Lateral & Implicit State Dependencies"
       detail: "Inventoried the intersection of business rules, customer actions, and system state changes; mapped 40+ applicant database tables, isolated legacy clarity_ and underwriting_ orphan data, and architected an automated 5-phase PII deletion engine."
     - dimension: "Full-Stack Network & Boundary Topology"
-      detail: "Led enterprise OpenTelemetry deployment across Rails microservices, MuleSoft integration layers, and IBM mainframes to establish the unified Enterprise Trace, aligning EMC operational alerts with distributed telemetry."
+      detail: "Conducted longitudinal and latitudinal analysis across the process sequence, tracing each step from desktop browser down through Rails services and MuleSoft integration layers to IBM mainframe backends and back again to establish the unified Enterprise Trace."
     - dimension: "Supply Chain & Vulnerability Exposure"
       detail: "Audited third-party credit bureau APIs, e-sign vendor webhooks, and boundary ingress points, providing real-time causal event chains for cybersecurity and fraud investigations."
   outcomes:
     - "Diagnosed and resolved a persistent session-cookie overflow defect affecting 4% of digital applicant traffic by implementing custom rescue middleware and migrating Rails session state to AWS DynamoDB with zero downtime."
     - "Engineered an automated 5-phase PII remediation engine across 30+ tables, eliminating legacy orphan references without disrupting live application state."
-    - "Established end-to-end distributed tracing across Acquisition and Origination tiers, connecting Rails, MuleSoft, and Mainframe backends to accelerate root-cause diagnosis for Incident Command."
+    - "Mapped the entire loan acquisition and origination pipeline end-to-end from visit to booked loan, connecting desktop browser, Rails, MuleSoft, and mainframe backends with distributed tracing to accelerate root-cause diagnosis for Incident Command."
     - "Partnered with Cybersecurity and Enterprise Monitoring Center (EMC) to bridge immediate operational monitoring with long-term distributed telemetry and causal event attribution."
     - "Unblocked continuous legacy modernization by establishing verified state change gates across distributed Rails services."
     - "Founded and technically led Acquisition Lane enablement for privacy remediation, modernization, and growth-team support, while leading a 3-year enterprise community arc through Geekfest@OMF and the OpenTelemetry Working Group, then transitioning stewardship to SRE."

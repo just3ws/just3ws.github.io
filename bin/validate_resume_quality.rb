@@ -331,8 +331,8 @@ class ResumeQualityValidator
       @errors << "Career datalake OneMain entry missing instant disbursement highlight"
     end
 
-    unless highlights_text =~ /(seven|7)\s+(heterogeneous\s+)?acquisition channels/i
-      @errors << "Career datalake OneMain entry missing 7 acquisition channels highlight"
+    unless highlights_text =~ /(seven|7)\s+(?:heterogeneous\s+|distinct\s+)?(?:acquisition channels|lending funnels)/i
+      @errors << "Career datalake OneMain entry missing 7 lending funnels highlight"
     end
 
     count = positions.is_a?(Hash) ? positions.size : positions.count

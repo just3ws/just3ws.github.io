@@ -174,7 +174,7 @@ narrative_synthesis = {
     "act_2_crucible" => {
       "title" => "The High-Consequence Stabilizer (The Crucible)",
       "theme" => "Untangling complexity, eliminating dark failure modes, and building team enablement",
-      "summary" => "Appointed Software Architect for the Acquisition Lane at OneMain Financial with an executive mandate to untangle multi-channel lending monoliths, decouple Acquisition and Originations boundaries, eliminate 4% silent traffic loss at e-signing, and build an automated 5-phase PII deletion engine across 30+ tables, while founding Geekfest and leading the OpenTelemetry Working Group across a 3-year enablement arc transitioned to SRE.",
+      "summary" => "Appointed Software Architect for the Acquisition Lane at OneMain Financial. Mapped the entire loan acquisition and origination pipeline end-to-end from visit to booked loan using longitudinal and latitudinal analysis from desktop browser to mainframe and the Affiliate API, eliminated 4% silent traffic loss at e-signing, and built an automated 5-phase PII deletion engine across 30+ tables, while founding Geekfest and leading the OpenTelemetry Working Group across a 3-year enablement arc transitioned to SRE.",
       "anchors" => [
         "OneMain Financial (Acquisition Lane Architect & AD Staff)",
         "Instant Loan Disbursement",

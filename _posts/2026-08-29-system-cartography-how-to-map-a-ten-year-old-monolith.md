@@ -53,7 +53,7 @@ System Cartography is the discipline of creating empirical, evidence-backed arch
 
 Most software documentation reflects what developers *intended* to build. System Cartography captures what the runtime *actually executes*. It is the foundational practice of the **Panoramic View**: reconciling stakeholder mental models, product requirement assumptions, and runtime execution paths into a single source of truth.
 
-When I served as Software Architect for the Acquisition Lane at OneMain Financial, we faced an acquisition engine handling hundreds of millions in consumer loan volume. Before attempting to modernize or decouple boundaries between Acquisition and Originations, we built a 4-dimensional cartography map.
+When I served as Software Architect for the Acquisition Lane at OneMain Financial, we faced an acquisition engine handling hundreds of millions in consumer loan volume. Before attempting major modernization, we mapped the entire loan acquisition and origination pipeline end-to-end from visit to booked loan using the Panoramic View technique of longitudinal and latitudinal analysis.
 
 ---
 

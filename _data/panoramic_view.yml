@@ -23,12 +23,13 @@ actor_scope:
     process, whether that interface is a screen, API, tool, event, or protocol.
 
 flagship_context:
-  title: "Rails platforms were the flagship proving ground."
+  title: "From desktop browser to mainframe and back again."
   text: >-
-    The flagship applications centered on complex Rails platform systems, then
-    traversed beyond Rails itself through actor-facing interfaces, domain rules,
-    services, integrations, infrastructure, data changes, and return paths with
-    the same evidence discipline.
+    The flagship proving ground was a high-volume personal lending platform. Mike mapped
+    the entire loan acquisition and origination pipeline end-to-end from initial visit to booked loan,
+    conducting longitudinal analysis across the process sequence and latitudinal analysis from desktop
+    browser down through Rails services and MuleSoft integrations to IBM mainframe backends and back again
+    at each step. The Affiliate API was mapped with the same depth and process.
 
 core_questions:
   - "What do the interested parties understand the system to do?"
@@ -87,16 +88,18 @@ operating_sequence:
     summary: "Improve from an evidence-backed map instead of an aspirational diagram."
 
 dimensions:
-  - name: "The journey moves across"
+  - name: "The journey moves across (longitudinal)"
     summary: >-
-      The actor enters stage left, moves through a business process, pauses or
-      branches, and eventually exits stage right with an outcome.
+      The actor enters stage left, moves through a business process sequence,
+      pauses or branches, and eventually exits stage right with an outcome.
+      Longitudinal analysis maps this horizontal progression end-to-end.
     label: "Horizontal axis"
-  - name: "Each interaction moves down and back"
+  - name: "Each interaction moves down and back (latitudinal)"
     summary: >-
       A choice descends from the interface through application, service,
       integration, and data layers. The response rises through those layers and
-      becomes the next state presented to the actor.
+      becomes the next state presented to the actor. Latitudinal analysis traces
+      this full-stack depth at each step.
     label: "Vertical axis"
   - name: "Evidence and meaning travel together"
     summary: >-
@@ -132,11 +135,11 @@ vocabulary:
       related: "Operational cadence, feedback control, and phase alignment"
       meaning: "Observe the repeated movement before changing it. Look for drift, breaks, and changes in tempo."
     - plain: "Follow the actor's journey through the system."
-      related: "Service blueprinting, value-stream mapping, and domain storytelling"
-      meaning: "Connect the actor's goal and visible experience to the work, decisions, and systems behind it."
+      related: "Longitudinal analysis, service blueprinting, and value-stream mapping"
+      meaning: "Connect the actor's goal and visible experience to the work, decisions, and systems behind it across the process sequence."
     - plain: "Each choice creates a wave down and back."
-      related: "Distributed tracing and request-response flow"
-      meaning: "Trace a request through interfaces, application code, services, integrations, data, and the response that returns."
+      related: "Latitudinal analysis, distributed tracing, and request-response flow"
+      meaning: "Trace a request down through interfaces, application code, services, integrations, data, and the response that returns back."
     - plain: "Compare what people believe with what the system does."
       related: "Model reconciliation and socio-technical sensemaking"
       meaning: "Place stakeholder understanding, the implemented domain model, and runtime evidence beside one another."
