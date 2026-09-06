@@ -31,7 +31,7 @@
          resolution report in docs/adversarial-content-audit-resolution.md.
        - 90 examples, 0 failures. All fast and content validation gates clean.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-09-06-2.md
+         ~/.config/adots/handoffs/2026-09-06-4.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
