@@ -22,8 +22,8 @@ Through successive council revisions (commits `11793213`, `a69f6bb4`, `68301de8`
 - **Resolution:** Retired SUI acronym shorthand from the homepage hero aside. Replaced with plain language: *"A repeatable operating loop for making systems safe to change."* Retained IEA strictly as the concrete discovery sequence (Inventory → Evaluate → Address) without dogma.
 
 ### Finding 2: Claim Attribution and Evidence Discipline
-- **Challenge:** Complex quantitative metrics (e.g., 10M+ PII records purged across 7 funnels) risked sounding like solo execution.
-- **Resolution:** Codified the 6-Level Claim Attribution Matrix (`docs/sme-delegation-and-multi-archive-playbook.md`). Updated case studies to distinguish architectural design from enablement squad execution. Verified by `bin/validate_resume_claims.rb` (0 pending claims).
+- **Challenge:** Complex quantitative metrics (e.g., 10M+ PII records purged, 7 lending funnels mapped) risked sounding like solo execution or exaggerated scope.
+- **Resolution:** Codified the 6-Level Claim Attribution Matrix (`docs/sme-delegation-and-multi-archive-playbook.md`). Updated case studies to distinguish architectural design from enablement squad execution. Calibrated the lending funnel claim from "decoupled" to accurately reflect identifying and mapping seven lending funnels through a tracking initiative. Verified by `bin/validate_resume_claims.rb` (0 pending claims).
 
 ### Finding 3: Professional Identity Over-Segmentation
 - **Challenge:** Multiple resume variants and titles (Principal Systems Architect, Staff Platform Lead) created confusion regarding canonical identity.

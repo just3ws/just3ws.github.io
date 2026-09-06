@@ -45,7 +45,7 @@ Hi [Name],
 
 I saw [Company] is scaling [specific domain, e.g. core payment services / developer platform / SOC ingestion] and looking for a Principal Software Engineer.
 
-I specialize in high-consequence Ruby on Rails platforms and legacy modernization. Over the past several years, I served as Acquisition Lane Architect at OneMain Financial, decoupling core lending funnels, eliminating a 4% silent transaction loss bug, and driving enterprise OpenTelemetry adoption across Rails and middleware tiers.
+I specialize in high-consequence Ruby on Rails platforms and legacy modernization. Over the past several years, I served as Acquisition Lane Architect at OneMain Financial, identifying and mapping seven lending funnels through a tracking initiative, eliminating a 4% silent transaction loss bug, and driving enterprise OpenTelemetry adoption across Rails and middleware tiers.
 
 I put together a focused 1-page technical brief mapping my background to your current engineering challenges:
 👉 https://just3ws.com/briefs/[company-slug]/ (or PDF attached)

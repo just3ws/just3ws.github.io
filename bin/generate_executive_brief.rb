@@ -194,7 +194,7 @@ cold_outreach_message = <<~MSG.strip
 
   I saw #{company} is scaling #{domain} and looking for a #{role}.
 
-  I specialize in high-consequence Ruby on Rails platforms and distributed architecture. Over the past several years, I served as Acquisition Lane Architect at OneMain Financial, decoupling lending funnels, eliminating a 4% silent transaction drop, and driving enterprise OpenTelemetry adoption across Rails and middleware tiers.
+  I specialize in high-consequence Ruby on Rails platforms and distributed architecture. Over the past several years, I served as Acquisition Lane Architect at OneMain Financial, identifying and mapping seven lending funnels through a tracking initiative, eliminating a 4% silent transaction drop, and driving enterprise OpenTelemetry adoption across Rails and middleware tiers.
 
   I put together a focused 1-page technical brief mapping my background to your current engineering challenges:
   👉 #{public_url}

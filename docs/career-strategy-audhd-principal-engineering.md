@@ -101,7 +101,7 @@ AuDHD engineers process systems with comprehensive forensic depth. When communic
 
 1. **Level 1 (The 15-Second Scan):** For recruiters and executives.
    * *Formula:* One sentence stating the core problem, the scale, and the bottom-line business outcome.
-   * *Example:* "Appointed Acquisition Lane Architect at OneMain Financial, decoupling lending funnels and eliminating a 4% silent traffic loss bug at late-stage e-signing."
+   * *Example:* "Appointed Acquisition Lane Architect at OneMain Financial, identifying and mapping seven lending funnels through a tracking initiative and eliminating a 4% silent traffic loss bug at late-stage e-signing."
 
 2. **Level 2 (The 2-Minute Architectural Memo):** For hiring managers and Staff IC reviewers.
    * *Formula:* Context + Constraint + Technical Mechanism + Structural Result.
