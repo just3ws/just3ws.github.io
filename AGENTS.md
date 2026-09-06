@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-09-05
+     CURRENT FOCUS - last updated 2026-09-06
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,22 +12,14 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
-       - Deploy 33976676086 completed success (commit 3468f51c):
-         - Canonical naming locked: Panoramic View is a technique;
-           Panoramic View Labs (PVL, pronounced "Pavel") is the initiative;
-           Pavel is the specialist agent; zdots is the root local system
-           platform for all PVL capabilities. Added to docs/style-guide-and-canonical-naming.md §7.
-         - Registered Pavel specialist persona in .claude/agents/pavel.md.
-         - Authored docs/agents/agent-raci-matrix.md formalizing task
-           ownership, review obligations, and decision authority across
-           the Persona Review Council, Site Refresh Triad, and specialist auditors.
-         - Linked RACI matrix across AGENTS.md, docs/persona-review-council.md,
-           and docs/agents/council-operating-model.md.
-       - Built tmi-auditor skill: TMI/PII/PHI/*ism guards (ageism, ableism,
-         familism) walking full sitemap.xml spine, 879 URLs, 0 quarantine findings.
-       - Created docs/voice-actor.md: canonical Mike Hall voice and vocabulary
-         definition for all content-generating agents.
-       - 90 examples, 0 failures. All pre-push and CI gates green.
+       - Configured professional scheduling via Calendly (calendly.com/just3ws)
+         across profile data (_data/resume/profile.yml) and contact surfaces.
+       - Refreshed /engagements/ surface: structured the canonical IEA discovery
+         process (Inventory / Inquire, Evaluate / Engage, Address / Apply) as a
+         responsive 3-step linear flow with humane, peer-to-peer technical leadership framing.
+       - Integrated immediate 30-minute discovery call booking CTAs up front
+         in the hero card and aligned consultation options at the footer.
+       - 90 examples, 0 failures. 0 a11y warnings. All pre-push and CI gates green.
        Deep handoff (local-only, never commit):
          ~/.config/adots/handoffs/2026-09-05-3.md
 

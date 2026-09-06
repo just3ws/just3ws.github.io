@@ -1,6 +1,6 @@
 ---
 layout: minimal
-title: "Fractional Principal Engineering & Technical Advisory — Mike Hall"
+title: "Fractional Principal Engineering & Technical Advisory | Mike Hall"
 description: "High-leverage technical advisory, system cartography, and fractional engineering leadership for technical leaders navigating platform transitions."
 breadcrumb: Engagements
 permalink: /engagements/
@@ -13,7 +13,7 @@ body_class: ats-resume
 
     {% assign eng = site.data.engagements %}
 
-    <header class="engagements-header" style="margin-bottom: 2.5rem; text-align: center; width: 100%;">
+    <header class="engagements-header" style="margin-bottom: 2rem; text-align: center; width: 100%;">
       {% if eng.status.available %}
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 9999px; padding: 0.35rem 0.9rem; margin-bottom: 1rem;">
           <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #34d399; display: inline-block;"></span>
@@ -22,19 +22,85 @@ body_class: ats-resume
       {% endif %}
 
       <h1 style="font-size: 2.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">{{ eng.title }}</h1>
-      <p style="font-size: 1.125rem; color: var(--color-text-muted, #c8c093); max-width: 60ch; margin: 0 auto; line-height: 1.6;">
-        {{ eng.subtitle }}
+      <p style="font-size: 1.15rem; color: var(--color-text-main, #dcd7ba); max-width: 64ch; margin: 0 auto 0.5rem auto; line-height: 1.6; font-weight: 500;">
+        I help technical leaders turn opaque, high-risk codebases into understandable, observable, and reliably shippable systems.
+      </p>
+      <p style="font-size: 0.975rem; color: var(--color-text-muted, #c8c093); max-width: 60ch; margin: 0 auto; line-height: 1.5;">
+        Senior technical advisory, legacy architecture discovery, and fractional engineering leadership for founders, CTOs, and engineering leaders navigating platform transitions.
       </p>
     </header>
 
-    <section class="engagements-start-here" aria-labelledby="engagements-start-heading" style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #7e9cd8); border-radius: 0.5rem; padding: 1.5rem 1.75rem; margin-bottom: 2.5rem;">
-      <h2 id="engagements-start-heading" style="font-size: 1.4rem; font-weight: 800; margin: 0 0 0.5rem; color: var(--color-heading, var(--color-text-main, #dcd7ba));">How we start</h2>
-      <p style="font-size: 1rem; color: var(--color-text-muted, #c8c093); max-width: 60ch; margin: 0 0 1.25rem; line-height: 1.6;">Bring the situation as it is. The first step is a shared map, not a predetermined prescription.</p>
-      <ol style="display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; margin: 0; padding: 0; list-style: none; counter-reset: start-step;">
-        <li style="counter-increment: start-step; color: var(--color-text-main, #dcd7ba);"><strong style="display: block; color: var(--color-primary, #7e9cd8);">01 · Describe</strong><span>Share the system, pressure, and decision in front of you.</span></li>
-        <li style="counter-increment: start-step; color: var(--color-text-main, #dcd7ba);"><strong style="display: block; color: var(--color-primary, #7e9cd8);">02 · Map</strong><span>Trace behavior, ownership, communication, and risk.</span></li>
-        <li style="counter-increment: start-step; color: var(--color-text-main, #dcd7ba);"><strong style="display: block; color: var(--color-primary, #7e9cd8);">03 · Act</strong><span>Leave with a practical next move and a way to know it worked.</span></li>
+    <!-- Immediate How to Engage Section: The IEA Process -->
+    <section class="engagements-start-here" aria-labelledby="engagements-start-heading" style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-primary, #7e9cd8); border-radius: 0.75rem; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-primary, #7e9cd8);">
+          {{ eng.iea_process.tagline | default: "The IEA Method: Inventory, Evaluate, Address" }}
+        </span>
+        <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #c8c093); background: var(--color-bg-base, #1a1b2f); padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid var(--color-border, #363646);">
+          {{ eng.iea_process.badge | default: "How We Work" }}
+        </span>
+      </div>
+
+      <h2 id="engagements-start-heading" style="font-size: 1.55rem; font-weight: 800; margin: 0 0 0.85rem; color: var(--color-heading, var(--color-text-main, #dcd7ba)); line-height: 1.35;">
+        "{{ eng.iea_process.question | default: 'What part of your system are you currently most afraid to touch?' }}"
+      </h2>
+      <p style="font-size: 1rem; color: var(--color-text-muted, #c8c093); max-width: 66ch; margin: 0 0 1.75rem; line-height: 1.6;">
+        {{ eng.iea_process.intro | default: "Every production system eventually outgrows the people who built it. Carrying anxiety about an opaque codebase or a fragile deployment is not a personal failure; it is the natural consequence of shipping under real business pressure. We start with a confidential conversation between technical peers: no slides, no formal RFP, and no judgment." }}
+      </p>
+
+      <style>
+        .iea-process-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+          margin: 0 0 1.75rem 0;
+          padding: 0;
+          list-style: none;
+        }
+        @media (max-width: 860px) {
+          .iea-process-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+        }
+      </style>
+
+      <ol class="iea-process-grid" role="list">
+        {% for step in eng.iea_process.steps %}
+          <li style="background: var(--color-bg-base, #1a1b2f); border: 1px solid var(--color-border, #363646); border-radius: 8px; padding: 1.4rem; color: var(--color-text-main, #dcd7ba); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.4rem;">
+                <strong style="color: var(--color-primary, #7e9cd8); font-size: 1.1rem; font-weight: 800;">{{ step.step }} · {{ step.name }}</strong>
+              </div>
+              <div style="font-size: 0.775rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #34d399; margin-bottom: 0.75rem;">
+                {{ step.focus }}
+              </div>
+              <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted, #c8c093); margin: 0;">
+                {{ step.description }}
+              </p>
+            </div>
+          </li>
+        {% endfor %}
       </ol>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; border-top: 1px solid var(--color-border, #363646); padding-top: 1.5rem;">
+        <div>
+          <div style="font-size: 1.05rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin-bottom: 0.2rem;">
+            Ready to explore the pressure in your system?
+          </div>
+          <div style="font-size: 0.875rem; color: var(--color-text-muted, #c8c093);">
+            No formal RFP required. Start with a 30-minute discovery conversation.
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+          <a href="{{ site.data.resume.profile.contact.calendly.url | default: 'https://calendly.com/just3ws' }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-primary, #7e9cd8); color: #16161d; padding: 0.75rem 1.4rem; border-radius: 8px; font-weight: 800; font-size: 0.95rem; text-decoration: none;">
+            📅 Book a 30-Minute Technical Discovery &rarr;
+          </a>
+          <a href="mailto:{{ eng.contact.email }}?subject={{ eng.contact.subject | url_encode }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--color-text-main, #dcd7ba); border: 1px solid var(--color-border, #363646); padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none;">
+            ✉️ Send a Direct Email
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Problem Scenarios Section -->
@@ -91,10 +157,13 @@ body_class: ats-resume
       </p>
 
       <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; align-items: center;">
-        <a href="mailto:{{ eng.contact.email }}?subject={{ eng.contact.subject | url_encode }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-primary, #7e9cd8); color: #16161d; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 800; font-size: 1rem; text-decoration: none;">
+        <a href="{{ site.data.resume.profile.contact.calendly.url | default: 'https://calendly.com/just3ws' }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-primary, #7e9cd8); color: #16161d; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 800; font-size: 1rem; text-decoration: none;">
+          📅 Book a 30-Minute Discovery Call &rarr;
+        </a>
+        <a href="mailto:{{ eng.contact.email }}?subject={{ eng.contact.subject | url_encode }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--color-text-main, #dcd7ba); border: 1px solid var(--color-border, #363646); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none;">
           ✉️ Email Direct Inquiry &rarr;
         </a>
-        <a href="/case-studies/" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--color-text-main, #dcd7ba); border: 1px solid var(--color-border, #363646); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none;">
+        <a href="/case-studies/" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--color-text-muted, #c8c093); border: 1px solid var(--color-border, #363646); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none;">
           🔍 View Case Studies
         </a>
       </div>
