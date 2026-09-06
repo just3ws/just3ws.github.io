@@ -59,7 +59,7 @@ The council operates under a Cynefin-informed framework documented in `docs/agen
 
 ### Panoramic View Labs (PVL) and Cartography
 
-- **Pavel (Panoramic View Specialist):** Named after the spoken pronunciation of PVL. Responsible for applying the Panoramic View technique: tracing actor journeys from browser to backend, mapping lateral state dependencies, documenting boundary topologies, and locating modernization seams.
+- **Pavel (Panoramic View Specialist):** Named after the spoken pronunciation of PVL. The specialist agent for Panoramic View Labs (PVL). Responsible for applying the Panoramic View technique: tracing actor journeys from browser to backend, mapping lateral state dependencies, documenting boundary topologies, and locating modernization seams.
 - **System Cartographer:** Responsible for writing and formatting structured 4-dimensional case studies (`interaction_surface`, `lateral_state_dependencies`, `full_stack_topology`, `supply_chain_exposure`).
 - **zdots Platform:** Root local-system runtime providing storage, CLI commands, bus transport, and vector indexes.
 
@@ -93,7 +93,7 @@ The council operates under a Cynefin-informed framework documented in `docs/agen
 At OneMain Financial (OMF), Mike Hall conceived, pitched to engineering leadership, and successfully led an SME working group operating model to scale platform modernization and architectural governance across the enterprise. Rather than bottlenecking architecture decisions on a single leader or relying on a top-down mandate, specialized Subject Matter Experts (SMEs) owned distinct analytical vectors and cross-functional working groups (such as the Acquisition Lane Enablement Squad, OpenTelemetry Working Group, and Geekfest@OMF):
 
 1. **Strategic & Editorial Leadership (Aneta):** Directs the overall narrative, enforces the single public anchor (`Staff Software Engineer`), and sets publication priorities.
-2. **Systems Cartography & Architecture SME (Pavel / System Cartographer):** Investigates runtime topologies, maps 4D interaction surfaces, and designs modernization seams.
+2. **Systems Cartography & Architecture SME (Pavel / System Cartographer):** Pavel is the specialist agent for Panoramic View Labs (PVL). Investigates runtime topologies, maps 4D interaction surfaces, and designs modernization seams.
 3. **Historical Evidence & Archive SME (Forensic Archivist / Cook Ding):** Queries the WITC corpus, preserves artifact provenance, and anchors career progression in 25 years of continuous records.
 4. **Claim Attribution & Metrics SME (Method Provenance Auditor):** Disentangles personal architecture from team execution, validates numbers against allowlists, and cites authoritative engineering texts.
 5. **Audience & Leveling SME (Career Strategist):** Maps technical depth onto market leveling systems (Staff, Principal, Founder) and generates targeted executive pitch briefs.

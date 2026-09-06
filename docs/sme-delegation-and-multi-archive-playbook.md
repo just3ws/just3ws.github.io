@@ -34,7 +34,7 @@ The Persona Review Council (`docs/persona-review-council.md` and `docs/agents/ag
 | Pillar | SME Persona | Focus Domain | Key Artifacts and Interfaces |
 | :--- | :--- | :--- | :--- |
 | **1. Strategic Direction** | **Aneta** | Public narrative, editorial authority, and strategic alignment | `docs/persona-review-council.md`, `CODEX.md` |
-| **2. System Cartography** | **Pavel / System Cartographer** | 4D cartography, legacy modernization, and topology mapping | `panoramic-view/`, `_data/case_studies.yml` |
+| **2. System Cartography** | **Pavel (PVL Specialist) / System Cartographer** | 4D cartography, legacy modernization, and topology mapping | `panoramic-view/`, `_data/case_studies.yml` |
 | **3. Historical Archive** | **Forensic Archivist / Cook Ding** | Primary source extraction, oral history corpus, and community records | `lake/witc/corpus.db`, `bin/query_witc_corpus.rb` |
 | **4. Method Provenance** | **Method Provenance Auditor** | Quantitative claim verification, metrics audit, and literature links | `bin/validate_resume_claims.rb`, `_data/books_bibliography.json` |
 | **5. Market Leveling** | **Career Strategist / Professional Advocate** | Staff IC calibration, recruiter clarity, and ATS benchmarks | `bin/benchmark_ats_keywords.rb`, `bin/validate_resume_quality.rb` |
