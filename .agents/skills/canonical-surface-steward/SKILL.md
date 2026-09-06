@@ -27,11 +27,29 @@ tests, generates, or previews it.
 
 ## Canonical shorthand rule
 
-Declare the full identity at first mention. Use the approved short form only
-after context is established. Use the profession name for the underlying craft,
-and preserve historical or target-specific titles exactly.
+Declare the full identity (`Staff Software Engineer`) at first mention. Use the approved short form (`Staff Engineer`) only after context is established. Use the profession name (`Software Engineer`) for the underlying craft, and preserve historical or target-specific titles exactly.
+
+## Adversarial Audit & Quality Standards
+
+1. **Single Public Anchor:**
+   - Universal public identity across core pages (`/`, `/resume/`, `/case-studies/`, structured data) is **Staff Software Engineer**.
+   - Specialized titles (e.g. Principal Systems Architect, Staff Platform Lead) belong exclusively on `/resumes/*` archetype pages and targeted executive briefs.
+   - Canonical resume download targets must point to `/exports/resume.pdf` (`Mike-Hall-Staff-Software-Engineer-Resume.pdf`), never an archetype variant.
+
+2. **Information Architecture (Evidence Before Methodology):**
+   - Structure narrative flow as: **Proposition → Concrete Evidence → Deeper Methodology**.
+   - Present verifiable architectural case studies and production proof before introducing conceptual frameworks or abstract diagrams.
+
+3. **Taxonomy & Acronym Discipline:**
+   - Eliminate internal acronym shorthand (such as "SUI") from visitor-facing headers and hero cards.
+   - Maintain clean conceptual hierarchy: **Panoramic View** is the system cartography technique; **Inventory → Evaluate → Address (IEA)** is the operational discovery loop.
+
+4. **Claim Attribution & Evidentiary Provenance:**
+   - Distinguish personally architected solutions from squad leadership, team implementation, and enterprise business scale.
+   - Every quantitative metric must be verified against `_data/resume_claim_allowlist.yml` via `ruby bin/validate_resume_claims.rb`.
 
 ## Required evidence
 
 Report the source of truth, files updated, preserved exceptions, validation
 results, generated-output status, and any pre-existing audit findings.
+

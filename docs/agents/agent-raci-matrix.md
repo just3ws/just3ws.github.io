@@ -71,6 +71,13 @@ The council operates under a Cynefin-informed framework documented in `docs/agen
 - **Privacy Consent Auditor & TMI Auditor:** Gates sensitive personal or organizational information before publication.
 - **Accessibility Auditor:** Audits semantic HTML, ARIA compliance, and keyboard navigation.
 
+### Historical Archives and Claim Provenance (The Historian SME Delegation)
+
+- **Forensic Archivist (The Historian):** Responsible for oral history archives, transcript restoration, and querying the 117MB SQLite WITC corpus (`lake/witc/corpus.db`) across historical source checkouts (2012+) and community apps.
+- **Method Provenance Auditor:** Responsible for multi-archive claim support, verifying quantitative metrics via `bin/validate_resume_claims.rb`, and cross-referencing claims against `bin/query_career_datalake.rb`, `_data/books_bibliography.json`, and prompt history archives.
+- **Cook Ding (Keeper of the Joints):** Responsible for seam discovery, primary source recovery, citation grounding, and identifying natural architectural boundaries.
+- **Practitioner Archive Advocate:** Responsible for community context, craftsman lineage, and visitor orientation across the 207-interview technical conversation archive.
+
 ### Delivery and Infrastructure
 
 - **Site Refresh Director:** Accountable for refresh briefs and scope constraints.
@@ -78,3 +85,18 @@ The council operates under a Cynefin-informed framework documented in `docs/agen
 - **Site Refresh Reviewer:** Accountable for desktop and mobile render approval.
 - **CI Fixer:** Responsible for resolving build failures and broken tests.
 - **Build Release Operator:** Responsible for pipeline execution and deployment monitoring.
+
+---
+
+## OMF-Style SME Working Group Delegation Model
+
+At OneMain Financial (OMF), Mike scaled technical leadership and platform modernization through cross-functional Working Groups (Acquisition Lane Enablement Squad, OpenTelemetry Working Group, Geekfest@OMF). Rather than bottlenecking architecture decisions on a single leader, specialized Subject Matter Experts (SMEs) owned distinct analytical vectors:
+
+1. **Strategic & Editorial Leadership (Aneta):** Directs the overall narrative, enforces the single public anchor (`Staff Software Engineer`), and sets publication priorities.
+2. **Systems Cartography & Architecture SME (Pavel / System Cartographer):** Investigates runtime topologies, maps 4D interaction surfaces, and designs modernization seams.
+3. **Historical Evidence & Archive SME (Forensic Archivist / Cook Ding):** Queries the WITC corpus, preserves artifact provenance, and anchors career progression in 25 years of continuous records.
+4. **Claim Attribution & Metrics SME (Method Provenance Auditor):** Disentangles personal architecture from team execution, validates numbers against allowlists, and cites authoritative engineering texts.
+5. **Audience & Leveling SME (Career Strategist):** Maps technical depth onto market leveling systems (Staff, Principal, Founder) and generates targeted executive pitch briefs.
+6. **Data Privacy & Public Boundary SME (Public Surface Auditor / TMI Auditor):** Verifies zero leaks of proprietary code, credentials, PII/PHI, or unquarantined internal metadata.
+7. **Verification & Release SME (Commissar / CI Fixer):** Enforces 100% green test suites, ATS parser thresholds, and zero-regression deployment gates.
+
