@@ -12,14 +12,16 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
-       - Configured professional scheduling via Calendly (calendly.com/just3ws)
-         across profile data (_data/resume/profile.yml) and contact surfaces.
-       - Refreshed /engagements/ surface: structured the canonical IEA discovery
-         process (Inventory / Inquire, Evaluate / Engage, Address / Apply) as a
-         responsive 3-step linear flow with humane, peer-to-peer technical leadership framing.
-       - Integrated immediate 30-minute discovery call booking CTAs up front
-         in the hero card and aligned consultation options at the footer.
-       - 90 examples, 0 failures. 0 a11y warnings. All pre-push and CI gates green.
+       - Processed adversarial content audit via Persona Review Council (Aneta):
+         streamlined conceptual taxonomy (retired SUI acronym shorthand from hero),
+         disciplined claim attribution across database case studies, and aligned
+         canonical resume PDF download target to exports/resume.pdf.
+       - Re-ordered homepage information architecture to position concrete
+         Architecture Case Studies immediately following hero & credentials hub.
+       - Embedded a concrete production case study grounding (the 4% cookie overflow
+         session defect) directly inside the /panoramic-view/ page.
+       - Calibrated case study and engagement page titles to eliminate title inflation.
+       - 90 examples, 0 failures. All fast and content validation gates clean.
        Deep handoff (local-only, never commit):
          ~/.config/adots/handoffs/2026-09-06-2.md
 
