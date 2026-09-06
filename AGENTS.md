@@ -21,7 +21,7 @@
          in the hero card and aligned consultation options at the footer.
        - 90 examples, 0 failures. 0 a11y warnings. All pre-push and CI gates green.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-09-05-3.md
+         ~/.config/adots/handoffs/2026-09-06-2.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
