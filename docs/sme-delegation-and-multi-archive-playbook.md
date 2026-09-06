@@ -4,18 +4,18 @@ This playbook defines the Subject Matter Expert (SME) working group delegation m
 
 ---
 
-## 1. The OMF-Style SME Delegation Model
+## 1. The SME Working Group Delegation Model (Conceived & Proven at OneMain Financial)
 
-### Background and Context
+### Conceived, Pitched, and Executed by Mike Hall
 
-At OneMain Financial (OMF), complex legacy platform modernizations, core ledger extractions, and multi-region database migrations were never executed through monolithic architectural decisions or isolated individual contributors. Instead, technical leadership delegated specialized domains to focused SME working groups:
+When facing complex legacy platform modernizations, core ledger extractions, and multi-region database migrations at OneMain Financial (OMF), Mike Hall recognized that large-scale platform evolution cannot succeed as a monolithic top-down mandate or an isolated individual contributor bottleneck. Mike conceived and pitched this exact operating strategy to OMF engineering leadership: establishing empowered, specialized Subject Matter Expert (SME) working groups:
 
 1. **Architecture and Cartography:** Mapping distributed state, boundaries, and dependencies.
 2. **Core Ledger and Persistence:** Verifying data integrity, transaction safety, and schema invariants.
 3. **Reliability and Telemetry:** Tracing transactions, monitoring error budgets, and quantifying baseline latency.
 4. **Governance and Compliance:** Auditing regulatory boundaries, data protection, and external audit readiness.
 
-Each working group operated with deep domain authority. They verified ground truth from primary artifacts before reporting findings up to technical steering.
+Each working group operated with deep domain authority. They verified ground truth from primary artifacts before reporting findings up to technical steering. Mike's strategy decentralized investigation while maintaining rigorous architectural coherence across multiple squads.
 
 ### Persona Review Council 7-Pillar SME Delegation
 

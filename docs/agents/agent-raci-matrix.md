@@ -88,9 +88,9 @@ The council operates under a Cynefin-informed framework documented in `docs/agen
 
 ---
 
-## OMF-Style SME Working Group Delegation Model
+## Mike Hall's SME Working Group Delegation Model (Proven at OneMain Financial)
 
-At OneMain Financial (OMF), Mike scaled technical leadership and platform modernization through cross-functional Working Groups (Acquisition Lane Enablement Squad, OpenTelemetry Working Group, Geekfest@OMF). Rather than bottlenecking architecture decisions on a single leader, specialized Subject Matter Experts (SMEs) owned distinct analytical vectors:
+At OneMain Financial (OMF), Mike Hall conceived, pitched to engineering leadership, and successfully led an SME working group operating model to scale platform modernization and architectural governance across the enterprise. Rather than bottlenecking architecture decisions on a single leader or relying on a top-down mandate, specialized Subject Matter Experts (SMEs) owned distinct analytical vectors and cross-functional working groups (such as the Acquisition Lane Enablement Squad, OpenTelemetry Working Group, and Geekfest@OMF):
 
 1. **Strategic & Editorial Leadership (Aneta):** Directs the overall narrative, enforces the single public anchor (`Staff Software Engineer`), and sets publication priorities.
 2. **Systems Cartography & Architecture SME (Pavel / System Cartographer):** Investigates runtime topologies, maps 4D interaction surfaces, and designs modernization seams.

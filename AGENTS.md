@@ -21,10 +21,11 @@
        - Embedded a concrete production case study grounding (the 4% cookie overflow
          session defect) directly inside the /panoramic-view/ page.
        - Calibrated case study and engagement page titles to eliminate title inflation.
-       - Codified OMF-style Subject Matter Expert (SME) delegation model across
-         Persona Review Council (7 operational pillars) and codified Historian
-         6-tier multi-archive query playbook and 6-level attribution matrix in
-         docs/sme-delegation-and-multi-archive-playbook.md and tooling user guide.
+       - Codified Mike Hall's SME working group delegation strategy (pitched and
+         proven at OneMain Financial) across Persona Review Council (7 operational
+         pillars) and codified Historian 6-tier multi-archive query playbook and
+         6-level attribution matrix in docs/sme-delegation-and-multi-archive-playbook.md
+         and tooling user guide.
        - 90 examples, 0 failures. All fast and content validation gates clean.
        Deep handoff (local-only, never commit):
          ~/.config/adots/handoffs/2026-09-06-2.md
@@ -100,7 +101,7 @@ Standard triage workflow labels. See `docs/agents/triage-labels.md`.
 Single-context layout (root-level CONTEXT.md + docs/adr/). See `docs/agents/domain.md`.
 
 ### Agent RACI Matrix
-Cross-persona task ownership, review obligations, and decision authority are defined in `docs/agents/agent-raci-matrix.md`. The OMF-style SME working group delegation model and multi-archive claim verification playbook are codified in `docs/sme-delegation-and-multi-archive-playbook.md`.
+Cross-persona task ownership, review obligations, and decision authority are defined in `docs/agents/agent-raci-matrix.md`. Mike Hall's SME working group delegation strategy (proven at OneMain Financial) and the multi-archive claim verification playbook are codified in `docs/sme-delegation-and-multi-archive-playbook.md`.
 
 ## Registered Skills
 Use these skills by default for this repository. **Status**: 8 of the 21
