@@ -46,7 +46,7 @@ Ruby on Rails (Full-Lifecycle 2.x through 8.x), PostgreSQL & MySQL Query Optimiz
 **Key Outcomes:**
 - Originations IC Delivery & Instant Disbursement: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping an instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
 
-- Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team and mapped seven heterogeneous acquisition channels; architected an automated 5-phase PII Remediation deletion engine and data migration across 30+ tables, eliminating legacy state machine corruptions.
+- Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team; mapped the loan acquisition and origination pipeline end-to-end from visit to booked loan (desktop browser to mainframe and back again at each step) and the Affiliate API at the same depth, identifying seven distinct lending funnels with a tracking initiative; architected an automated 5-phase PII remediation deletion engine across 30+ tables.
 
 - Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical session-cookie overflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.
 

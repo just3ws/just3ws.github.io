@@ -36,6 +36,9 @@
          same depth, identifying seven lending funnels via a tracking initiative.
        - Reinforced core mission across case studies, positioning, and resume:
          recovered lost knowledge and made it actionable.
+       - Synchronized exports/resume.md, canonical public_highlights, and all 5 tailored
+         archetype resumes (resumes/*.md, exports/resumes/*) with end-to-end pipeline mapping
+         and knowledge recovery outcomes.
        - 90 examples, 0 failures. All fast, content, ATS benchmark, and quality validation gates clean.
        Deep handoff (local-only, never commit):
          ~/.config/adots/handoffs/2026-09-06-4.md

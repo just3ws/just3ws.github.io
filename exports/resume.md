@@ -27,10 +27,10 @@ I am a Staff Software Engineer rooted in the profession of software engineering.
 ### Associate Director, Staff Engineer at OneMain Financial
 **January 2021 - February 2026**
 
-Software Engineer and architecture lead who helped make regulated customer workflows easier to understand, safer to change, and more observable across organizational boundaries.
+Software Engineer and architecture lead who recovered lost knowledge and made it actionable, helping make regulated customer workflows easier to understand, safer to change, and more observable across organizational boundaries.
 
 **Key Outcomes:**
-- Led modernization of high-consequence customer workflows, aligning engineering, product, and operations around explicit system boundaries.
+- Mapped the loan acquisition and origination pipeline end-to-end from visit to booked loan across browser, mainframe, and Affiliate API, identifying seven distinct lending funnels.
 - Built data-risk remediation and architecture-discovery practices that made legacy dependencies visible and safer to change.
 - Diagnosed a production state-management defect affecting application completion and moved the system to a more durable session design without interrupting service.
 - Established distributed observability across application and integration boundaries, improving the evidence available during incident response.
