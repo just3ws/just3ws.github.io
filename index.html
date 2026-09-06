@@ -62,31 +62,6 @@ body_class: professional-home
     </div>
   </section>
 
-  <section class="leadership-profile-map" aria-labelledby="profile-map-title" style="margin: 2.5rem 0;">
-    <div class="leadership-section-heading">
-      <p class="leadership-section-index">The shape of the work</p>
-      <h2 id="profile-map-title">One practice. Four ways it appears.</h2>
-      <p>I build, repair, explain, and preserve systems. The projects below are different expressions of the same practice.</p>
-    </div>
-    <pre><code class="language-mermaid">flowchart LR
-  M["Mike Hall | Staff Software Engineer"] --> B[Build]
-  M --> R[Repair]
-  M --> E[Explain]
-  M --> P[Preserve]
-  B --> B1[Ruby and Rails]
-  B --> B2[Products and tools]
-  R --> R1[Legacy systems]
-  R --> R2[Safer change]
-  E --> E1[Diagrams and standards]
-  E --> E2[Observability and teaching]
-  P --> P1[Communities]
-  P --> P2[UGtastic and oral history]
-  classDef mike fill:#f7efe1,stroke:#b45309,color:#1e232a,stroke-width:2px
-  classDef path fill:#e6f4f1,stroke:#0f766e,color:#1e232a
-  class M mike
-  class B,R,E,P,B1,B2,R1,R2,E1,E2,P1,P2 path</code></pre>
-  </section>
-
   <!-- Unambiguous Résumé & Credentials Access Hub -->
   <section class="leadership-credentials-hub" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); border-radius: var(--radius-md, 0.5rem); padding: 1.5rem; margin: 2.5rem 0; box-shadow: var(--shadow-sm);">
     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border-subtle, #eeebe3); padding-bottom: 0.75rem;">
@@ -120,12 +95,23 @@ body_class: professional-home
     </div>
   </section>
 
-  <!-- Through-Line Section -->
-  <section class="leadership-through-line" aria-labelledby="through-line-title">
-    <p class="leadership-section-index" aria-hidden="true">01 / {{ home.through_line.label }}</p>
-    <div>
-      <h2 id="through-line-title">{{ home.through_line.title }}</h2>
-      <p>{{ home.through_line.text }}</p>
+  <!-- Architecture Case Studies / Production Proof -->
+  <section class="leadership-evidence" aria-labelledby="evidence-title">
+    <div class="leadership-section-heading">
+      <p class="leadership-section-index">01 / {{ home.evidence_intro.label }}</p>
+      <h2 id="evidence-title">{{ home.evidence_intro.title }}</h2>
+      <p>{{ home.evidence_intro.text }}</p>
+    </div>
+
+    <div class="leadership-evidence-list">
+      {% for item in home.evidence %}
+        <article>
+          <p class="leadership-evidence-context">{{ item.context }}</p>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+          <a href="{{ item.href }}">{{ item.link_label }} <span aria-hidden="true">→</span></a>
+        </article>
+      {% endfor %}
     </div>
   </section>
 
@@ -165,54 +151,46 @@ body_class: professional-home
     </div>
   </section>
 
-  <!-- Architecture Case Studies / Production Proof -->
-  <section class="leadership-evidence" aria-labelledby="evidence-title">
-    <div class="leadership-section-heading">
-      <p class="leadership-section-index">02 / {{ home.evidence_intro.label }}</p>
-      <h2 id="evidence-title">{{ home.evidence_intro.title }}</h2>
-      <p>{{ home.evidence_intro.text }}</p>
-    </div>
-
-    <div class="leadership-evidence-list">
-      {% for item in home.evidence %}
-        <article>
-          <p class="leadership-evidence-context">{{ item.context }}</p>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.text }}</p>
-          <a href="{{ item.href }}">{{ item.link_label }} <span aria-hidden="true">→</span></a>
-        </article>
-      {% endfor %}
+  <!-- Through-Line Section -->
+  <section class="leadership-through-line" aria-labelledby="through-line-title">
+    <p class="leadership-section-index" aria-hidden="true">02 / {{ home.through_line.label }}</p>
+    <div>
+      <h2 id="through-line-title">{{ home.through_line.title }}</h2>
+      <p>{{ home.through_line.text }}</p>
     </div>
   </section>
 
-  <!-- Evaluation Paths -->
-  <section class="leadership-evaluator" aria-labelledby="evaluation-title">
+  <!-- Profile Map -->
+  <section class="leadership-profile-map" aria-labelledby="profile-map-title" style="margin: 2.5rem 0;">
     <div class="leadership-section-heading">
-      <p class="leadership-section-index">03 / {{ home.evaluation.label }}</p>
-      <h2 id="evaluation-title">{{ home.evaluation.title }}</h2>
+      <p class="leadership-section-index">The shape of the work</p>
+      <h2 id="profile-map-title">One practice. Four ways it appears.</h2>
+      <p>I build, repair, explain, and preserve systems. The projects below are different expressions of the same practice.</p>
     </div>
-
-    <ol class="leadership-paths">
-      {% for path in home.evaluation_paths %}
-        <li>
-          <a href="{{ path.href }}">
-            <span class="leadership-path-number">{{ path.number }}</span>
-            <span class="leadership-path-copy">
-              <strong>{{ path.title }}</strong>
-              <span>{{ path.text }}</span>
-            </span>
-            <span class="leadership-path-arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-      {% endfor %}
-    </ol>
+    <pre><code class="language-mermaid">flowchart LR
+  M["Mike Hall | Staff Software Engineer"] --> B[Build]
+  M --> R[Repair]
+  M --> E[Explain]
+  M --> P[Preserve]
+  B --> B1[Ruby and Rails]
+  B --> B2[Products and tools]
+  R --> R1[Legacy systems]
+  R --> R2[Safer change]
+  E --> E1[Diagrams and standards]
+  E --> E2[Observability and teaching]
+  P --> P1[Communities]
+  P --> P2[UGtastic and oral history]
+  classDef mike fill:#f7efe1,stroke:#b45309,color:#1e232a,stroke-width:2px
+  classDef path fill:#e6f4f1,stroke:#0f766e,color:#1e232a
+  class M mike
+  class B,R,E,P,B1,B2,R1,R2,E1,E2,P1,P2 path</code></pre>
   </section>
 
   <!-- Public record and technical conversation archive -->
   {% assign archive_status = site.data.archive_status.summary %}
   <section class="leadership-record" aria-labelledby="public-record-title">
     <div>
-      <p class="leadership-section-index">04 / {{ home.public_record.label }}</p>
+      <p class="leadership-section-index">03 / {{ home.public_record.label }}</p>
       <h2 id="public-record-title">{{ home.public_record.title }}</h2>
     </div>
     <div>

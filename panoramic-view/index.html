@@ -92,6 +92,31 @@ permalink: /panoramic-view/
       </div>
       <p class="pv-delta-note">{{ pv.reconciliation.delta }}</p>
     </div>
+
+    {% if pv.example_case_study %}
+    <div class="pv-case-grounding" style="margin-top: 2.5rem; background: var(--pv-surface, #2a2a37); border: 1px solid var(--pv-border, #363646); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+      <p class="pv-kicker" style="margin-bottom: 0.5rem;">{{ pv.example_case_study.eyebrow }}</p>
+      <h3 style="font-size: 1.5rem; font-weight: 800; margin: 0 0 0.75rem; color: var(--color-heading, var(--pv-ink, #dcd7ba));">{{ pv.example_case_study.title }}</h3>
+      <p style="font-size: 1.05rem; line-height: 1.6; color: var(--pv-ink, #dcd7ba); margin-bottom: 1.5rem;">{{ pv.example_case_study.problem }}</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+        {% for step in pv.example_case_study.reconciliation %}
+        <div style="background: var(--color-bg-base, #1a1b2f); border: 1px solid var(--pv-border, #363646); border-radius: 8px; padding: 1.25rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--pv-accent, #7e9cd8); margin: 0 0 0.5rem;">{{ step.perspective }}</h4>
+          <p style="font-size: 0.88rem; line-height: 1.55; color: var(--pv-muted, #c8c093); margin: 0;">{{ step.finding }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      
+      <p style="font-size: 0.98rem; line-height: 1.6; color: var(--pv-ink, #dcd7ba); margin-bottom: 1.25rem;">
+        <strong>The Resolution:</strong> {{ pv.example_case_study.outcome }}
+      </p>
+      
+      <div>
+        <a href="{{ pv.example_case_study.link_href }}" class="pv-text-link" style="font-weight: 700;">{{ pv.example_case_study.link_label }}</a>
+      </div>
+    </div>
+    {% endif %}
   </section>
 
   <!-- SECTION 3: THE MODEL (JOURNEY & SYSTEM WAVE) -->

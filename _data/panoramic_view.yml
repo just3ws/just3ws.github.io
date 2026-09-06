@@ -50,6 +50,34 @@ reconciliation:
     a complete-enough account for the defined decision scope, with contradictions,
     confidence, provenance, and unknowns still visible.
 
+example_case_study:
+  eyebrow: "Production Grounding"
+  title: "In Practice: Resolving the 4% Customer Application Drop"
+  problem: >-
+    A high-volume financial platform experienced a mysterious 4% drop in customer
+    applications between loan offer selection and final e-signing. Stakeholders
+    assumed users were abandoning the funnel out of personal hesitation.
+  reconciliation:
+    - perspective: "Interested-party understanding"
+      finding: >-
+        Product and executive leadership assumed customer hesitation, attributing the
+        loss to user friction or marketing drop-off.
+    - perspective: "Implemented domain model"
+      finding: >-
+        The multi-step loan application wizard stored experiment flags, credit tier
+        metadata, and applicant state directly in encrypted client-side session cookies.
+    - perspective: "Observed runtime behavior"
+      finding: >-
+        Runtime telemetry revealed silent HTTP drops. Accumulating session data pushed
+        header sizes past the 4KB boundary, causing Rack middleware to drop sessions
+        silently before application error handlers fired.
+  outcome: >-
+    By reconciling what stakeholders assumed with what the runtime evidence proved, Mike
+    designed rescue middleware to capture truncated requests and architected a zero-downtime
+    migration to DynamoDB server-side session storage, permanently restoring the missing 4% of customer applications.
+  link_href: "/2026/08/30/hunting-the-4-percent-defect-rails-cookie-overflow.html"
+  link_label: "Read the Full Production Case Study →"
+
 operating_sequence:
   - name: "Stabilize"
     summary: "Make immediate risk, ownership, and safe operating boundaries visible."
