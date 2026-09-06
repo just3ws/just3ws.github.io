@@ -26,6 +26,9 @@
          pillars) and codified Historian 6-tier multi-archive query playbook and
          6-level attribution matrix in docs/sme-delegation-and-multi-archive-playbook.md
          and tooling user guide.
+       - Codified the ADKAR change management bridge for systems thinking in
+         docs/career-strategy-audhd-principal-engineering.md and compiled full
+         resolution report in docs/adversarial-content-audit-resolution.md.
        - 90 examples, 0 failures. All fast and content validation gates clean.
        Deep handoff (local-only, never commit):
          ~/.config/adots/handoffs/2026-09-06-2.md

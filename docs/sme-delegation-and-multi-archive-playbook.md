@@ -1,6 +1,6 @@
 # SME Working Group Delegation & Multi-Archive Claim Verification Playbook
 
-This playbook defines the Subject Matter Expert (SME) working group delegation model and the comprehensive multi-archive claim verification procedures for this repository. It codifies the operational pattern developed during complex legacy modernizations (such as OneMain Financial) and equips repository agents, notably the Historian and Method Provenance Auditor, to verify technical claims against canonical historical sources.
+This playbook defines the Subject Matter Expert (SME) working group delegation model and the comprehensive multi-archive claim verification procedures for this repository. It codifies the operational pattern conceived, pitched, and executed by Mike Hall during complex legacy modernizations at OneMain Financial and equips repository agents, notably the Historian and Method Provenance Auditor, to verify technical claims against canonical historical sources. The full audit findings and resolutions are documented in `docs/adversarial-content-audit-resolution.md`.
 
 ---
 
