@@ -12,36 +12,22 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
-       - Processed adversarial content audit via Persona Review Council (Aneta):
-         streamlined conceptual taxonomy (retired SUI acronym shorthand from hero),
-         disciplined claim attribution across database case studies, and aligned
-         canonical resume PDF download target to exports/resume.pdf.
-       - Re-ordered homepage information architecture to position concrete
-         Architecture Case Studies immediately following hero & credentials hub.
-       - Embedded a concrete production case study grounding (the 4% cookie overflow
-         session defect) directly inside the /panoramic-view/ page.
-       - Calibrated case study and engagement page titles to eliminate title inflation.
-       - Codified Mike Hall's SME working group delegation strategy (pitched and
-         proven at OneMain Financial) across Persona Review Council (7 operational
-         pillars) and codified Historian 6-tier multi-archive query playbook and
-         6-level attribution matrix in docs/sme-delegation-and-multi-archive-playbook.md
-         and tooling user guide.
-       - Codified the ADKAR change management bridge for systems thinking in
-         docs/career-strategy-audhd-principal-engineering.md and compiled full
-         resolution report in docs/adversarial-content-audit-resolution.md.
-       - Calibrated OneMain Financial architecture scope to exact primary-source truth:
-         mapped the entire loan acquisition and origination pipeline end-to-end from
-         visit to booked loan using Panoramic View longitudinal and latitudinal analysis
-         from desktop browser to mainframe and back again, and the Affiliate API at the
-         same depth, identifying seven lending funnels via a tracking initiative.
-       - Reinforced core mission across case studies, positioning, and resume:
-         recovered lost knowledge and made it actionable.
-       - Synchronized exports/resume.md, canonical public_highlights, and all 5 tailored
-         archetype resumes (resumes/*.md, exports/resumes/*) with end-to-end pipeline mapping
-         and knowledge recovery outcomes.
-       - 90 examples, 0 failures. All fast, content, ATS benchmark, and quality validation gates clean.
+       - Verified and closed TASK-284.01 (Make timeline conceptually accessible):
+         confirmed four default story lanes, five optional combinable overlays,
+         visible plain-language visitor question, non-hover evidence ledger,
+         and individual keyboard-operable timeline items. All 7 ACs satisfied;
+         Playwright browser regression checks passed 2 of 2 clean.
+       - Tasked out option #1: TASK-266 (low-cognitive-load outreach for target
+         Staff/Principal leads) into structured subtasks (TASK-266.01, TASK-266.02,
+         TASK-266.03) staged for future activation.
+       - Tasked out option #3: TASK-265 (promote and publish approved archive content
+         opportunities) into structured subtasks (TASK-265.01, TASK-265.02,
+         TASK-265.03) staged for future editorial release.
+       - Aligned engagements page title expectation in tests/layout.spec.js.
+       - 90 examples, 0 failures. All fast, content, ATS benchmark (86.8%), and
+         quality validation gates clean.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-09-06-4.md
+         ~/.config/adots/handoffs/2026-09-06-5.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's

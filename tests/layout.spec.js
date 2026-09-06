@@ -393,7 +393,7 @@ test.describe('Site Layout and Aesthetics', () => {
   test('Engagements page renders correctly with availability status and service packages', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/engagements/');
-    await expect(page).toHaveTitle(/Fractional Principal Engineering & Technical Advisory/);
+    await expect(page).toHaveTitle(/Technical Advisory & Platform Modernization Engagements/);
     await expect(page.locator('h1')).toContainText('Fractional Principal Engineering');
     await expect(page.locator('.engagements-header')).toBeVisible();
     await expect(page.locator('.engagements-models')).toBeVisible();

@@ -4,7 +4,7 @@ title: Promote and publish approved archive content opportunities
 status: In Progress
 assignee: []
 created_date: '2026-08-30 09:15'
-updated_date: '2026-08-30 16:38'
+updated_date: '2026-09-06 16:58'
 labels:
   - content
   - editorial
@@ -12,6 +12,10 @@ labels:
 milestone: Editorial Content Studio
 dependencies:
   - TASK-257
+subtasks:
+  - TASK-265.01
+  - TASK-265.02
+  - TASK-265.03
 priority: medium
 ---
 
@@ -19,6 +23,11 @@ priority: medium
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
 Review the 80 content candidates generated in `_data/content_opportunities.yml` and accessible via `https://just3ws.localhost/reports/content-opportunities/`. Promote approved candidates (derived historical essays, YouTube Shorts scripts, conference playlists, and LinkedIn durable wisdom posts) into active publication tasks using `bin/promote_content_opportunities.rb`.
+
+Staged for active writing and release at a later date. The promotion engine generated 10 initial candidate tasks (`task-candidate-*.md`), now organized into three structured implementation subtasks:
+- `TASK-265.01`: Format promoted retrospective essays for posts publication
+- `TASK-265.02`: Package promoted conference playlists into curated exhibits
+- `TASK-265.03`: Verify editorial prose and claim attribution across promoted content
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
