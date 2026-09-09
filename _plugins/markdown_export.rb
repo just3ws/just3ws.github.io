@@ -33,6 +33,18 @@ module Jekyll
 
     private
 
+    def wrap_markdown(output, width: 88)
+      output.flat_map do |line|
+        next [line] if line.empty? || line.match?(/^\#{1,6}\s/) || line.match?(/^\*\*[^:]+:\*\*\s*$/)
+
+        prefix = line.start_with?('- ') ? '- ' : ''
+        text = prefix.empty? ? line : line.delete_prefix(prefix)
+        wrapped = text.scan(/.{1,#{width - prefix.length}}(?:\s+|\z)/).map(&:strip)
+        wrapped = [text] if wrapped.empty?
+        [prefix + wrapped.first] + wrapped.drop(1).map { |part| (' ' * prefix.length) + part }
+      end
+    end
+
     def render_markdown(page, site, data_key)
       case data_key
       when 'resume'
@@ -115,7 +127,7 @@ module Jekyll
         end
       end
 
-      output.join("\n")
+      wrap_markdown(output).join("\n")
     end
 
     def render_portfolio_markdown(site)
@@ -136,7 +148,7 @@ module Jekyll
         output << ""
       end
 
-      output.join("\n")
+      wrap_markdown(output).join("\n")
     end
 
     def render_history_markdown(site)
@@ -175,7 +187,7 @@ module Jekyll
         end
       end
 
-      output.join("\n")
+      wrap_markdown(output).join("\n")
     end
 
     def write_markdown(site, filename, content)

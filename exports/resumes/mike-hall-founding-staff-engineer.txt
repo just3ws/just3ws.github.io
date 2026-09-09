@@ -11,11 +11,11 @@ GitHub:   https://github.com/just3ws
 ================================================================================
 PROFESSIONAL SUMMARY
 ================================================================================
-Hands-on Founding Staff Engineer who translates product ambiguity into robust,
-production-ready software. Combines full-stack web development (Rails,
-PostgreSQL, modern JS/TypeScript) with practical local-first AI engineering
-(pgvector embeddings, local LLM orchestration, prompt injection defense, and
-browser automation).
+Hands-on Founding Staff Engineer who translates product ambiguity into
+robust, production-ready software. Combines full-stack web development
+(Rails, PostgreSQL, modern JS/TypeScript) with practical local-first AI
+engineering (pgvector embeddings, local LLM orchestration, prompt injection
+defense, and browser automation).
 
 ================================================================================
 CORE SKILLS
@@ -45,6 +45,7 @@ Key Outcomes:
     architecting and shipping an instant loan disbursement pipeline (funding to
     debit cards in minutes). Appointed Software Architect for the Acquisition
     Lane, later converting to Associate Director, Staff Engineer.
+
   * Acquisition Workflow Enablement & Architecture Discovery: Founded the
     Acquisition Lane enablement team; mapped the loan acquisition and
     origination pipeline end-to-end from visit to booked loan (desktop browser
@@ -52,23 +53,28 @@ Key Outcomes:
     depth, identifying seven distinct lending funnels with a tracking
     initiative; architected an automated 5-phase PII remediation deletion engine
     across 30+ tables.
+
   * Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and
     eliminated a critical session-cookie overflow defect that caused 4% silent
     traffic loss of digital loan applications during e-signing; architected
     zero-downtime blue/green migration to DynamoDB session store with zero
     incidents.
+
   * Enterprise Trace & Operational Alignment: Architected distributed telemetry
     across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe
     backends; partnered directly with Cybersecurity, EMC, SRE, and Incident
     Command to align monitoring with end-to-end distributed tracing.
+
   * Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled
     the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers;
     mentored and partnered with SRE leads to transition ongoing operational
     facilitation, establishing a durable community of practice.
+
   * Applied AI & Innovation Leadership: Placed in two corporate hackathons
     building conversational agents with Rasa and a schema inference prototype;
     pioneered local LLM orchestration and privacy-conscious AI developer tooling
     at Geekfest@OMF.
+
 
 --------------------------------------------------------------------------------
 PRINCIPAL ARCHITECT
@@ -84,11 +90,14 @@ Key Outcomes:
   * Designed a deterministic engine with replayable action logs and
     server-authoritative state transitions, making complex outcomes reproducible
     and independently verifiable.
+
   * Built replay validation, adversarial coverage, and CI verification gates so
     state transitions can be checked across the complete lifecycle.
+
   * Uses controlled agent workflows with bounded tasks, acceptance criteria,
     automated checks, and human-reviewed outputs rather than treating model
     output as authority.
+
 
 --------------------------------------------------------------------------------
 PRINCIPAL ARCHITECT
@@ -103,21 +112,27 @@ Key Outcomes:
   * Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline
     and PostgreSQL storage schema, unifying fragmented job market datasets for
     structured downstream analysis.
+
   * Semantic Search & Embeddings: Implemented vector search embeddings via
     pgvector, enabling high-precision semantic matching between complex
     candidate profiles and job requirements.
+
   * Local-First AI Orchestration: Designed provider-agnostic LLM orchestration
     layer (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first
     inference for sensitive data with per-call model routing.
+
   * Prompt Injection Defense: Built a 4-stage guardrails pipeline screening
     untrusted scraped text via weighted heuristics and instruction-density
     scoring before model ingestion.
+
   * Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16
     provider adapters that extracts postings from live ATS pages and captures
     full application lifecycles.
+
   * Architectural Constraint Injection: Injected static analysis rules and
     architectural constraints into model context windows, preventing drift
     between generated outputs and security contracts.
+
 
 --------------------------------------------------------------------------------
 PRINCIPAL ENGINEER & CURATOR
@@ -133,20 +148,25 @@ Key Outcomes:
     that transcribes, diarizes, and structures long-form interview audio
     entirely on-device, keeping a large private media corpus off third-party
     inference services.
+
   * Schema-Validated Content Platform: Runs on a contract-validated data layer:
     every interview, asset, and transcript is checked against an explicit schema
     at build time, with referential-integrity checks that fail the build rather
     than publishing broken data.
+
   * Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy,
     knowledge graph, and semantic cross-links across the corpus, turning an
     unstructured media archive into navigable, individually indexed pages.
+
   * Primary-Source Capture: Conducted the original interviews on-site at GOTO
     Conference, Software Craftsmanship North America, RailsConf, and
     WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway,
     Corey Haines, Sandro Mancuso, and Micah Martin.
+
   * Digital Archaeology: Recovered and reconstructed material from defunct
     platforms and web archives, reconciling incomplete metadata across sources
     to restore provenance for recordings that would otherwise have been lost.
+
 
 --------------------------------------------------------------------------------
 ADDITIONAL EXPERIENCE
@@ -158,19 +178,25 @@ ADDITIONAL EXPERIENCE
   Delivered security hardening, proprietary service extraction, infrastructure
   modernization, and community leadership as the top contributor to the
   open-source codebase.
+
 * Senior Software Developer | ReachLocal (March 2015 - November 2016)
   Owned API design and modernization strategy, leading incremental legacy
   migration for a high-volume digital marketing platform.
+
 * Senior Backend Developer | SK Holdings, Inc. (January 2019 - December 2020)
   Led backend stability, performance, and modernization for high-traffic Rails
   products, improving full-text search, campaign delivery pipelines, and data
   layer reliability while systems remained under production load.
-* Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems) | Groupon (July 2011 - May 2013)
+
+* Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems) |
+Groupon (July 2011 - May 2013)
   Owned core backend systems for fraud and taxonomy, leading global
   engineering enablement during hyper-growth.
+
 * Senior .NET Developer | TicketsNow (November 2005 - March 2007)
   Owned real-time inventory systems, leading transactional integrity and
   iterative delivery for revenue-critical operations.
+
 
 --------------------------------------------------------------------------------
 EARLIER EXPERIENCE
@@ -180,8 +206,20 @@ Built and operated enterprise integrations, transactional systems, and early web
 products across consulting and product organizations, establishing the
 production discipline and community-centered craftsmanship that inform my
 leadership today.
-* Revenue-critical commerce: Designed real-time inventory, locking, and fulfillment services for a high-volume ticket marketplace later acquired by a major industry operator.
-* Consulting and software craftsmanship: Delivered systems across client environments while mentoring engineers, adopting Ruby and Rails, and helping build Chicago's craftsmanship community.
-* Enterprise and operational systems: Built integration and operational software across large organizations, grounded in .NET, SQL, messaging, production support, and direct user needs.
+* Revenue-critical commerce: Designed real-time inventory, locking, and
+  fulfillment services for a high-volume ticket
+  marketplace later acquired by a major
+  industry operator.
+
+* Consulting and software craftsmanship: Delivered systems across client environments
+  while mentoring engineers, adopting Ruby and
+  Rails, and helping build Chicago's
+  craftsmanship community.
+
+* Enterprise and operational systems: Built integration and operational software
+  across large organizations, grounded in .NET,
+  SQL, messaging, production support, and
+  direct user needs.
+
 
 ================================================================================

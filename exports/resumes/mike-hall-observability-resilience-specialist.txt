@@ -46,6 +46,7 @@ Key Outcomes:
     architecting and shipping an instant loan disbursement pipeline (funding to
     debit cards in minutes). Appointed Software Architect for the Acquisition
     Lane, later converting to Associate Director, Staff Engineer.
+
   * Acquisition Workflow Enablement & Architecture Discovery: Founded the
     Acquisition Lane enablement team; mapped the loan acquisition and
     origination pipeline end-to-end from visit to booked loan (desktop browser
@@ -53,23 +54,28 @@ Key Outcomes:
     depth, identifying seven distinct lending funnels with a tracking
     initiative; architected an automated 5-phase PII remediation deletion engine
     across 30+ tables.
+
   * Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and
     eliminated a critical session-cookie overflow defect that caused 4% silent
     traffic loss of digital loan applications during e-signing; architected
     zero-downtime blue/green migration to DynamoDB session store with zero
     incidents.
+
   * Enterprise Trace & Operational Alignment: Architected distributed telemetry
     across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe
     backends; partnered directly with Cybersecurity, EMC, SRE, and Incident
     Command to align monitoring with end-to-end distributed tracing.
+
   * Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled
     the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers;
     mentored and partnered with SRE leads to transition ongoing operational
     facilitation, establishing a durable community of practice.
+
   * Applied AI & Innovation Leadership: Placed in two corporate hackathons
     building conversational agents with Rasa and a schema inference prototype;
     pioneered local LLM orchestration and privacy-conscious AI developer tooling
     at Geekfest@OMF.
+
 
 --------------------------------------------------------------------------------
 PRINCIPAL ARCHITECT
@@ -84,14 +90,17 @@ Key Outcomes:
     PostgreSQL knowledge suite that agents both query and write back to, so
     methodologies and lessons learned in one session are retrievable in the next
     rather than re-derived.
+
   * Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve
     telemetry (errors, slow spans, failed jobs, distributed traces) as
     agent-callable tools, so an agent diagnoses a running system from observed
     behavior instead of inferring from source.
+
   * Context as a Budgeted Resource: Designed context-isolated subagents that
     keep high-volume audit work out of the main conversation's context window,
     with per-client registration tooling and pre-commit hooks that reject any
     agent asset that isn't self-describing.
+
 
 --------------------------------------------------------------------------------
 PRINCIPAL ARCHITECT
@@ -105,21 +114,27 @@ Key Outcomes:
   * Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline
     and PostgreSQL storage schema, unifying fragmented job market datasets for
     structured downstream analysis.
+
   * Semantic Search & Embeddings: Implemented vector search embeddings via
     pgvector, enabling high-precision semantic matching between complex
     candidate profiles and job requirements.
+
   * Local-First AI Orchestration: Designed provider-agnostic LLM orchestration
     layer (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first
     inference for sensitive data with per-call model routing.
+
   * Prompt Injection Defense: Built a 4-stage guardrails pipeline screening
     untrusted scraped text via weighted heuristics and instruction-density
     scoring before model ingestion.
+
   * Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16
     provider adapters that extracts postings from live ATS pages and captures
     full application lifecycles.
+
   * Architectural Constraint Injection: Injected static analysis rules and
     architectural constraints into model context windows, preventing drift
     between generated outputs and security contracts.
+
 
 --------------------------------------------------------------------------------
 SENIOR SOFTWARE DEVELOPER
@@ -134,9 +149,11 @@ Key Outcomes:
   * Legacy Query Modernization: Replaced ad-hoc global data access with
     structured, cacheable query patterns in the PHP backend, enabling unit
     testability and sub-second query execution.
+
   * Frontend Verification Gates: Hardened Ember.js automated test suites across
     core CRM contact workflows, creating safety gates that enabled non-breaking
     legacy PHP refactoring.
+
 
 --------------------------------------------------------------------------------
 SOFTWARE ENGINEER & TECHNICAL ONBOARDING LEAD (FRAUD & TAXONOMY SYSTEMS)
@@ -150,14 +167,18 @@ Key Outcomes:
   * Centralized Taxonomy Service: Implemented merchant taxonomy service in Java
     and MySQL, eliminating categorization drift across distributed product teams
     during hypergrowth.
+
   * Analytical Fraud Detection: Built analytical fraud detection queries in
     Vertica and conducted exploratory spikes on Hadoop and Clojure for
     transaction anomaly scoring.
+
   * Merchant Analytics Pipelines: Built high-throughput merchant analytics tools
     in Ruby and CouchDB, surfacing market insights for global sales operations.
+
   * Global Engineering Enablement: Redesigned technical onboarding curricula,
     standardizing engineering practices and shortening time-to-first-commit for
     100+ global engineering hires.
+
 
 --------------------------------------------------------------------------------
 ADDITIONAL EXPERIENCE
@@ -166,15 +187,19 @@ ADDITIONAL EXPERIENCE
   Led backend stability, performance, and modernization for high-traffic Rails
   products, improving full-text search, campaign delivery pipelines, and data
   layer reliability while systems remained under production load.
+
 * Senior Software Developer | BenchPrep (March 2017 - February 2018)
   Owned enterprise assessment workflows, leading correctness and platform
   security in a high-concurrency environment.
+
 * Senior Software Developer | ReachLocal (March 2015 - November 2016)
   Owned API design and modernization strategy, leading incremental legacy
   migration for a high-volume digital marketing platform.
+
 * Senior .NET Developer | TicketsNow (November 2005 - March 2007)
   Owned real-time inventory systems, leading transactional integrity and
   iterative delivery for revenue-critical operations.
+
 
 --------------------------------------------------------------------------------
 EARLIER EXPERIENCE
@@ -184,8 +209,20 @@ Built and operated enterprise integrations, transactional systems, and early web
 products across consulting and product organizations, establishing the
 production discipline and community-centered craftsmanship that inform my
 leadership today.
-* Revenue-critical commerce: Designed real-time inventory, locking, and fulfillment services for a high-volume ticket marketplace later acquired by a major industry operator.
-* Consulting and software craftsmanship: Delivered systems across client environments while mentoring engineers, adopting Ruby and Rails, and helping build Chicago's craftsmanship community.
-* Enterprise and operational systems: Built integration and operational software across large organizations, grounded in .NET, SQL, messaging, production support, and direct user needs.
+* Revenue-critical commerce: Designed real-time inventory, locking, and
+  fulfillment services for a high-volume ticket
+  marketplace later acquired by a major
+  industry operator.
+
+* Consulting and software craftsmanship: Delivered systems across client environments
+  while mentoring engineers, adopting Ruby and
+  Rails, and helping build Chicago's
+  craftsmanship community.
+
+* Enterprise and operational systems: Built integration and operational software
+  across large organizations, grounded in .NET,
+  SQL, messaging, production support, and
+  direct user needs.
+
 
 ================================================================================

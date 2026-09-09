@@ -219,6 +219,19 @@ archetypes.each do |key, config|
     lines << ""
   end
   
+  wrap_markdown = lambda do |source_lines, width = 88|
+    source_lines.flat_map do |line|
+      next [line] if line.empty? || line.match?(/^\#{1,6}\s/) || line.match?(/^\*\*[^:]+:\*\*\s*$/)
+
+      prefix = line.start_with?('- ') ? '- ' : ''
+      text = prefix.empty? ? line : line.delete_prefix(prefix)
+      wrapped = text.scan(/.{1,#{width - prefix.length}}(?:\s+|\z)/).map(&:strip)
+      wrapped = [text] if wrapped.empty?
+      [prefix + wrapped.first] + wrapped.drop(1).map { |part| (' ' * prefix.length) + part }
+    end
+  end
+
+  lines = wrap_markdown.call(lines)
   raw_content = lines.join("\n")
   html_page_content = (front_matter + lines).join("\n")
   File.write(target_file, html_page_content)
@@ -272,7 +285,7 @@ archetypes.each do |key, config|
   txt_lines << sep
   txt_lines << "PROFESSIONAL SUMMARY"
   txt_lines << sep
-  txt_lines << wrap.call(config['summary'])
+  txt_lines << wrap.call(config['summary'], 76)
   txt_lines << ""
   txt_lines << sep
   txt_lines << "CORE SKILLS"
@@ -293,7 +306,10 @@ archetypes.each do |key, config|
     txt_lines << ""
     if pos['highlights'] && !pos['highlights'].empty?
       txt_lines << "Key Outcomes:"
-      pos['highlights'].each { |h| txt_lines << "  * #{wrap.call(h, 76).gsub("\n", "\n    ")}" }
+      pos['highlights'].each do |h|
+        txt_lines << "  * #{wrap.call(h, 76).gsub("\n", "\n    ")}"
+        txt_lines << ""
+      end
     end
     txt_lines << ""
   end
@@ -303,8 +319,9 @@ archetypes.each do |key, config|
     txt_lines << "ADDITIONAL EXPERIENCE"
     txt_lines << dash
     additional_experience_data.each do |e|
-      txt_lines << "* #{e['title']} | #{e['company']} (#{e['dates']})"
+      txt_lines << wrap.call("* #{e['title']} | #{e['company']} (#{e['dates']})", 80)
       txt_lines << "  #{wrap.call(e['summary'], 76).gsub("\n", "\n  ")}" unless e['summary'].to_s.empty?
+      txt_lines << ""
     end
     txt_lines << ""
   end
@@ -316,7 +333,10 @@ archetypes.each do |key, config|
     txt_lines << earlier['dates']
     txt_lines << ""
     txt_lines << wrap.call(earlier['summary'])
-    earlier['items'].each { |item| txt_lines << "* #{item['label']}: #{item['summary']}" }
+    earlier['items'].each do |item|
+      txt_lines << "* #{item['label']}: #{wrap.call(item['summary'], 45).gsub("\n", "\n  ")}"
+      txt_lines << ""
+    end
     txt_lines << ""
   end
 

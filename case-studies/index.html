@@ -25,9 +25,9 @@ body_class: ats-resume
           <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--color-heading, var(--color-text-main, #dcd7ba)); margin: 0.2rem 0 0;">System Performance & Governance Metrics</h2>
         </div>
         <div class="metrics-tabs" role="tablist" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <button type="button" class="metric-tab-btn active" data-metric="all" style="background: var(--color-surface-2, rgba(126, 156, 216, 0.15)); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-primary, #7e9cd8); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">All Proofs</button>
-          <button type="button" class="metric-tab-btn" data-metric="reliability" style="background: transparent; color: var(--color-text-muted, #938aa9); border: 1px solid var(--color-border, #363646); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">Reliability</button>
-          <button type="button" class="metric-tab-btn" data-metric="architecture" style="background: transparent; color: var(--color-text-muted, #938aa9); border: 1px solid var(--color-border, #363646); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">Architecture</button>
+          <button type="button" class="metric-tab-btn active" data-metric="all" aria-selected="true" style="background: var(--color-surface-2, rgba(126, 156, 216, 0.15)); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-primary, #7e9cd8); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">All Proofs</button>
+          <button type="button" class="metric-tab-btn" data-metric="reliability" aria-selected="false" style="background: transparent; color: var(--color-text-muted, #938aa9); border: 1px solid var(--color-border, #363646); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">Reliability</button>
+          <button type="button" class="metric-tab-btn" data-metric="architecture" aria-selected="false" style="background: transparent; color: var(--color-text-muted, #938aa9); border: 1px solid var(--color-border, #363646); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;">Architecture</button>
         </div>
       </div>
 
@@ -65,8 +65,6 @@ body_class: ats-resume
           <h3 id="{{ cs.id }}-operating-model" style="font-size: 1.3rem; font-weight: 800; color: var(--color-heading, var(--color-text-main, #dcd7ba)); margin-bottom: 0.65rem;">{{ cs.modernization_thesis }}</h3>
           {% if cs.distinctive_contribution %}<p style="font-size: 0.98rem; line-height: 1.55; color: var(--color-text-main, #dcd7ba); margin: 0 0 0.9rem;"><strong style="color: var(--color-primary, #7e9cd8);">What was distinctively Mike's:</strong> {{ cs.distinctive_contribution }} <a href="/docs/omf-distinctive-contributions/">Read the evidence</a>.</p>{% endif %}
           <blockquote style="border-left: 3px solid var(--color-primary, #7e9cd8); margin: 0 0 0.65rem; padding: 0.15rem 0 0.15rem 1rem; color: var(--color-text-main, #dcd7ba); font-size: 1.05rem; line-height: 1.55;">{{ cs.modernization_quote }}</blockquote>
-          <p style="font-size: 0.82rem; color: var(--color-text-muted, #c8c093); margin-bottom: 1.25rem;">{{ cs.quote_provenance }}</p>
-          <p style="font-size: 1rem; font-weight: 800; color: var(--color-primary, #7e9cd8); text-align: center; line-height: 1.7; margin: 0 0 1.25rem;">{{ cs.methodology_lesson }}</p>
 
           {% if cs.historical_method %}
           <section class="historical-method" aria-labelledby="{{ cs.id }}-historical-method" style="border: 1px solid var(--color-border, #363646); border-radius: 0.55rem; padding: 1.15rem; margin: 0 0 1.25rem; background: var(--color-bg-card, #2a2a37);">
@@ -84,7 +82,6 @@ body_class: ats-resume
               </li>
               {% endfor %}
             </ol>
-            <p style="font-size: 0.78rem; line-height: 1.45; color: var(--color-text-muted, #c8c093); margin: 0.85rem 0 0;">{{ cs.historical_method.source_note }}</p>
           </section>
           {% endif %}
 
@@ -104,7 +101,7 @@ body_class: ats-resume
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.85rem; margin-top: 0.9rem;">
               <div style="border-left: 3px solid var(--color-primary, #7e9cd8); padding-left: 0.75rem;">
                 <strong style="color: var(--color-heading, #dcd7ba);">Languages and frameworks</strong>
-                <p style="font-size: 0.84rem; line-height: 1.45; color: var(--color-text-muted, #c8c093); margin: 0.3rem 0 0;">The target was OpenTelemetry's official compatibility support, whether the system used Ruby, TypeScript, or another language. Each language and framework could then follow a staged path toward that target. In the recorded Ruby and Rails decision, this created room to introduce OTel before the larger framework upgrade. The public record does not need every version number to show the architectural decision.</p>
+            <p style="font-size: 0.84rem; line-height: 1.45; color: var(--color-text-muted, #c8c093); margin: 0.3rem 0 0;">The target was OpenTelemetry compatibility across Ruby, TypeScript, and other systems. That staged path allowed OTel to arrive before a larger framework upgrade.</p>
               </div>
               <div style="border-left: 3px solid #34d399; padding-left: 0.75rem;">
                 <strong style="color: var(--color-heading, #dcd7ba);">Infrastructure ownership</strong>
@@ -113,8 +110,6 @@ body_class: ats-resume
             </div>
             <p style="font-size: 0.78rem; line-height: 1.45; color: var(--color-text-muted, #938aa9); margin: 0.9rem 0 0;">Mike-authored, contemporaneous evidence: [2024-Q2] <em>OTel WG Lane Data</em>, conversation <code>30e0f497-d7be-480f-a74e-8b4e3a4fba95</code>. The Ruby and Rails compatibility path comes from [2025-Q2] <em>OTel Ruby Upgrade Strategy</em>, conversation <code>68201200-5934-8003-bb56-747d16a06b5c</code>.</p>
           </section>
-
-          <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text-muted, #c8c093); margin: 0 0 1rem;">The modernization lesson is direct: fix what is broken, upgrade what works, and stabilize the system to allow change. The IEA record is the method. This sentence describes the result it supports.</p>
 
           <p style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted, #c8c093); margin: 0 0 0.55rem;">The active work</p>
           <ol style="display: grid; gap: 0.65rem; padding: 0; margin: 0 0 1.1rem; list-style: none;">
@@ -227,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const cat = btn.getAttribute('data-metric');
 
       tabBtns.forEach(b => {
+        b.setAttribute('aria-selected', 'false');
         b.style.background = 'transparent';
         b.style.color = 'var(--color-text-muted, #938aa9)';
         b.style.borderColor = 'var(--color-border, #363646)';
@@ -235,6 +231,7 @@ document.addEventListener("DOMContentLoaded", function() {
       btn.style.background = 'var(--color-surface-2, rgba(126, 156, 216, 0.15))';
       btn.style.color = 'var(--color-primary, #7e9cd8)';
       btn.style.borderColor = 'var(--color-primary, #7e9cd8)';
+      btn.setAttribute('aria-selected', 'true');
 
       metricCards.forEach(card => {
         if (cat === 'all' || card.getAttribute('data-cat') === cat) {
