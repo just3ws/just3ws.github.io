@@ -1,7 +1,6 @@
 # Mike Hall, Staff Software Engineer
 
-[![CI Pipeline](https://github.com/just3ws/just3ws.github.io/actions/workflows/build-and-validate.yml/badge.svg)](https://github.com/just3ws/just3ws.github.io/actions)
-[![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
+[![Deploy](https://github.com/just3ws/just3ws.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/just3ws/just3ws.github.io/actions/workflows/deploy.yml)
 
 I am a Staff Software Engineer rooted in hands-on software engineering. I work
 at multiple levels of the system, from code and runtime behavior through
