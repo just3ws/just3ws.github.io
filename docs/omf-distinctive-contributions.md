@@ -29,13 +29,13 @@ Mike treated OpenTelemetry as a shared language across Rails, MuleSoft, AWS, Apo
 
 > “We’re performing an inventory to find common data across the various applications and map that to a single Log Data Model.”
 
-Mike-authored contemporaneous working record: [2024-Q2] *OTel WG Lane Data*, conversation `30e0f497-d7be-480f-a74e-8b4e3a4fba95`.
+Mike-authored contemporaneous working record: [2024-Q2] *OTel WG Lane Data*.
 
 ### 3. Protecting the prerequisites of modernization
 
 Mike recognized that Ruby and Rails standardization, restored logging, instrumentation, and dependency discovery had to precede safe migration or decomposition. He focused on improving the system's ability to tell the truth before asking it to change.
 
-Evidence: [2025-Q2] *OTel Ruby Upgrade Strategy*, conversation `68201200-5934-8003-bb56-747d16a06b5c`.
+Evidence: [2025-Q2] *OTel Ruby Upgrade Strategy*.
 
 ### 4. Creating repeated learning systems
 

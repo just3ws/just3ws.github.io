@@ -239,7 +239,7 @@ Next step
 - [2023-Q1] *Geekfest interests*, conversation `51e353af-10ce-41b0-b15b-11c4e9620861`, Mike-authored record of recurring technical community work.
 - [2023-Q4] *Resume Improvement with GPT*, conversation `27555ea2-dca6-469d-b3de-d7ebba540755`, Mike-authored description of craftsmanship, collaboration, user-groups, and Geekfest.
 - [2023-Q4] *Acquisition Technical Architecture Initiatives*, conversation `5f2e7f02-0633-402c-b1bf-5818a74b835b`, documented architecture and confidence work.
-- [2024-Q2] *OTel WG Lane Data*, conversation `30e0f497-d7be-480f-a74e-8b4e3a4fba95`, contemporaneous observability working record.
+- [2024-Q2] *OTel WG Lane Data*, contemporaneous observability working record.
 - [2025-Q1] *Resume Entry Update*, conversation `678c7493-1308-8003-9471-8af7c73423f8`, Mike-authored account of UGtastic's scale and historical importance.
 - [2025-Q4] *Disruptive tech impact*, conversation `691ef4e0-bb94-8328-8367-be04185b3927`, Mike-authored retrospective recollection of the modernization statement.
 

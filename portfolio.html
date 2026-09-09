@@ -67,7 +67,7 @@ permalink: /portfolio/
 </article>
 
 <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
-  <span class="modal-close">×</span>
+  <button type="button" class="modal-close" aria-label="Close image preview">×</button>
   <div class="modal-content">
     <img id="modal-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Expanded Preview">
   </div>
@@ -197,6 +197,9 @@ permalink: /portfolio/
     color: white;
     font-size: 3rem;
     cursor: pointer;
+    background: transparent;
+    border: 0;
+    line-height: 1;
   }
 
   .modal-content img {
