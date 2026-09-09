@@ -93,7 +93,7 @@ They are never required for the public site build.
 - [Public artifact curation policy](docs/public-artifact-curation-policy.md)
 - [AI content disclosure and provenance](docs/ai-content-disclosure-and-provenance.md)
 - [Public surface audit](docs/public-surface-audit.md)
-- [Changelog](CHANGELOG.md)
+- [Changelog](docs/archive/CHANGELOG.md)
 
 ## Security and privacy
 
