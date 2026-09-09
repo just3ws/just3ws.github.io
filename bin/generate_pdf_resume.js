@@ -49,11 +49,9 @@ const RESUME_TARGETS = [
 
 async function generatePDFs() {
   console.log('📄 Launching Google Chrome for PDF generation...');
-  const launchOptions = { headless: true };
-  if (fs.existsSync('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')) {
-    launchOptions.executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-  }
-  const browser = await chromium.launch(launchOptions);
+  // Prefer Playwright's pinned browser so PDF output stays reproducible across
+  // local Chrome upgrades and avoids coupling generation to a GUI install.
+  const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext();
 
   // Ensure directories exist
