@@ -12,6 +12,14 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - Aligned site archetypes and PDF exports with Staff to Senior/Lead breadth
+         (bc4d193a): updated `_data/resume/archetypes.yml` (Staff Software Engineer /
+         Systems Architect), `navigation.yml`, `home.yml`, `engagements.yml`, and
+         availability badges. Updated `bin/generate_pdf_resume.js` to render the
+         canonical Staff Software Engineer resume to `exports/resume.pdf` directly
+         from `/resume.html`, aligned all desktop PDF packages, and added
+         `./bin/regenerate_resumes` CLI pipeline runner. All 90 RSpec specs,
+         resume quality checks, and ATS benchmark (88.2%) clean.
        - Shifted default messaging to Staff Engineer as primary target
          (8c01c6fe): CODEX.md now foregrounds Staff as the evaluation frame;
          outreach playbook templates updated to Staff Engineer by default with
