@@ -30,6 +30,7 @@ Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative.start_with?('AGENTS.')
   next if relative.start_with?('backlog/')
+  next if relative.start_with?('exports/')
 
   html = read(path)
   robots = robots_content(html)

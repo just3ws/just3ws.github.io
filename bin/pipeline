@@ -7,7 +7,7 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | help
+  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | resumes | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
@@ -22,6 +22,7 @@ Commands:
   sitemap   Print sitemap coverage summary from built _site.
   ci        Regenerate, build, test, and validate locally.
   verify    Build, test, and validate committed artifacts without regeneration.
+  resumes   Regenerate PDF resumes to $HOME/Desktop/resumes.
   help      Show this help.
 USAGE
 }
@@ -62,6 +63,9 @@ case "${1:-help}" in
     ;;
   ci)
     bundle exec rake ci
+    ;;
+  resumes|resume-pdfs)
+    bundle exec rake resumes
     ;;
   help|-h|--help)
     usage

@@ -2,8 +2,8 @@
 layout: archetype-resume
 body_class: ats-resume
 archetype_key: principal_systems_architect
-title: "Mike Hall - Principal Software Engineer - Systems Architect"
-description: "Principal Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure."
+title: "Mike Hall - Staff Software Engineer - Systems Architect"
+description: "Staff Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure."
 canonical_url: https://www.just3ws.com/resumes/mike-hall-principal-software-engineer/
 permalink: /resumes/mike-hall-principal-software-engineer/
 sitemap: true
@@ -12,7 +12,7 @@ robots: index,follow
 
 # Mike Hall
 
-**Principal Software Engineer / Systems Architect**
+**Staff Software Engineer / Systems Architect**
 Chicago, IL
 
 - Email: [mike@just3ws.com](mailto:mike@just3ws.com)
@@ -25,7 +25,7 @@ Chicago, IL
 
 ## Professional Summary
 
-Principal Software Engineer specializing in high-consequence legacy modernization,
+Staff Software Engineer specializing in high-consequence legacy modernization,
 distributed systems architecture, and platform resilience. Combines hands-on software
 engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane
 boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL,

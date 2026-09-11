@@ -1,6 +1,6 @@
 # Mike Hall
 
-**Principal Software Engineer / Systems Architect**
+**Staff Software Engineer / Systems Architect**
 Chicago, IL
 
 - Email: [mike@just3ws.com](mailto:mike@just3ws.com)
@@ -13,7 +13,7 @@ Chicago, IL
 
 ## Professional Summary
 
-Principal Software Engineer specializing in high-consequence legacy modernization,
+Staff Software Engineer specializing in high-consequence legacy modernization,
 distributed systems architecture, and platform resilience. Combines hands-on software
 engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane
 boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL,

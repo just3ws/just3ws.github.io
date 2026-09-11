@@ -26,6 +26,7 @@ html_files.each do |path|
   relative = path.sub("#{SITE_DIR}/", '')
   next if relative.start_with?('AGENTS.')
   next if relative.start_with?('backlog/')
+  next if relative.start_with?('exports/')
 
   html = read(path)
   canonical = canonical_href(html)

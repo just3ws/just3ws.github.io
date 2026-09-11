@@ -346,4 +346,233 @@ archetypes.each do |key, config|
   puts "  ✅ Generated: resumes/#{slug}.md | exports/resumes/#{slug}.{md,json,txt}"
 end
 
+# ── Generate ATS Import-Optimized Resume (HTML & TXT) ─────────────────────────
+puts "\nGenerating ATS-first import resume (optimized strictly for ATS parseability)..."
+
+ats_html_path = File.join(EXPORTS_DIR, 'ats-import-resume.html')
+ats_txt_path  = File.join(EXPORTS_DIR, 'ats-import-resume.txt')
+
+principal_config = archetypes['principal_systems_architect']
+summary_text = principal_config['summary'].strip
+skills_text = principal_config['core_skills'].join(', ')
+
+# Build featured positions for ATS
+ats_positions_html = []
+principal_config['featured_positions'].each do |entry|
+  pos = positions[entry['id']]
+  next unless pos
+
+  comp_name = pos.dig('company', 'name') || pos['company']
+  loc = pos.dig('company', 'location')
+  dates = "#{human_date(pos['start_date'])} - #{human_date(pos['end_date'])}"
+  bullets = (pos['highlights'] || []).map do |h|
+    text = h.is_a?(Hash) ? h['text'] : h.to_s
+    "<li>#{text}</li>"
+  end.join("\n      ")
+
+  summary_p = entry['focus'] || pos['summary']
+
+  ats_positions_html << <<~HTML
+    <div class="job-entry">
+      <div class="job-title">#{pos['title'].upcase}</div>
+      <div class="job-company">#{comp_name}</div>
+      <div class="job-meta">#{loc ? "#{loc} | " : ""}#{dates}</div>
+      #{summary_p ? "<p class=\"job-summary\">#{summary_p}</p>" : ""}
+      <ul class="job-bullets">
+        #{bullets}
+      </ul>
+    </div>
+  HTML
+end
+
+# Build additional experience for ATS
+ats_additional_html = []
+(principal_config['additional_experience'] || []).each do |entry|
+  pos = positions[entry['id']]
+  next unless pos
+  comp_name = pos.dig('company', 'name') || pos['company']
+  dates = "#{human_date(pos['start_date'])} - #{human_date(pos['end_date'])}"
+  summary_text_entry = pos['summary'] || entry['summary'] || ""
+
+  ats_additional_html << <<~HTML
+    <div class="additional-entry">
+      <strong>#{pos['title']}</strong> | #{comp_name} (#{dates})
+      #{summary_text_entry.empty? ? "" : "<br>#{summary_text_entry}"}
+    </div>
+  HTML
+end
+
+# Build earlier experience for ATS
+ats_earlier_html = []
+if ats['earlier_experience']
+  earlier = ats['earlier_experience']
+  ats_earlier_html << "<p>#{earlier['summary']}</p>"
+  earlier['items'].each do |item|
+    ats_earlier_html << "<div class=\"additional-entry\"><strong>#{item['label']}:</strong> #{item['summary']}</div>"
+  end
+end
+
+ats_document_html = <<~HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#{profile['name']} - Resume (ATS Import)</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.45in;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.35;
+      color: #000000;
+      background: #ffffff;
+      padding: 0.25in;
+      max-width: 8.5in;
+      margin: 0 auto;
+    }
+    .candidate-header {
+      margin-bottom: 10pt;
+      padding-bottom: 6pt;
+      border-bottom: 1.5px solid #000000;
+    }
+    h1.candidate-name {
+      font-size: 18pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5pt;
+      margin-bottom: 2pt;
+    }
+    .candidate-title {
+      font-size: 11pt;
+      font-weight: bold;
+      margin-bottom: 4pt;
+    }
+    .contact-line {
+      font-size: 9pt;
+      line-height: 1.4;
+      color: #111111;
+    }
+    .contact-line a {
+      color: #000000;
+      text-decoration: none;
+    }
+    h2.section-heading {
+      font-size: 10.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 1px solid #000000;
+      margin-top: 12pt;
+      margin-bottom: 5pt;
+      padding-bottom: 1pt;
+      letter-spacing: 0.5pt;
+    }
+    p {
+      margin-bottom: 5pt;
+      font-size: 9.5pt;
+    }
+    .skills-block {
+      margin-bottom: 6pt;
+      font-size: 9.5pt;
+      line-height: 1.35;
+    }
+    .job-entry {
+      margin-bottom: 9pt;
+      page-break-inside: avoid;
+    }
+    .job-title {
+      font-size: 10pt;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .job-company {
+      font-size: 9.5pt;
+      font-weight: bold;
+    }
+    .job-meta {
+      font-size: 9pt;
+      color: #222222;
+      margin-bottom: 2pt;
+    }
+    .job-summary {
+      font-size: 9.5pt;
+      margin-bottom: 3pt;
+    }
+    ul.job-bullets {
+      margin: 2pt 0 5pt 16pt;
+      padding: 0;
+    }
+    ul.job-bullets li {
+      font-size: 9pt;
+      line-height: 1.35;
+      margin-bottom: 2pt;
+    }
+    .additional-entry {
+      margin-bottom: 4pt;
+      font-size: 9pt;
+      line-height: 1.35;
+    }
+  </style>
+</head>
+<body>
+  <header class="candidate-header">
+    <h1 class="candidate-name">#{profile['name']}</h1>
+    <div class="candidate-title">#{principal_config['title']}</div>
+    <div class="contact-line">
+      #{profile.dig('location', 'display')} &nbsp;|&nbsp;
+      Email: <a href="mailto:#{profile['contact']['email']}">#{profile['contact']['email']}</a> &nbsp;|&nbsp;
+      Phone: #{profile['contact']['phone']} &nbsp;|&nbsp;
+      Website: #{profile['contact']['website']['url']} &nbsp;|&nbsp;
+      LinkedIn: #{profile['contact']['linkedin']['url']} &nbsp;|&nbsp;
+      GitHub: #{profile['contact']['github']['url']}
+    </div>
+  </header>
+
+  <section>
+    <h2 class="section-heading">PROFESSIONAL SUMMARY</h2>
+    <p>#{summary_text}</p>
+  </section>
+
+  <section>
+    <h2 class="section-heading">CORE SKILLS</h2>
+    <p class="skills-block">#{skills_text}</p>
+  </section>
+
+  <section>
+    <h2 class="section-heading">EXPERIENCE</h2>
+    #{ats_positions_html.join("\n")}
+  </section>
+
+  <section>
+    <h2 class="section-heading">ADDITIONAL EXPERIENCE</h2>
+    #{ats_additional_html.join("\n")}
+  </section>
+
+  <section>
+    <h2 class="section-heading">EARLIER EXPERIENCE</h2>
+    #{ats_earlier_html.join("\n")}
+  </section>
+</body>
+</html>
+HTML
+
+File.write(ats_html_path, ats_document_html)
+
+# Also write the dedicated ATS plaintext file
+principal_txt_src = File.join(EXPORTS_DIR, "#{principal_config['file_slug']}.txt")
+if File.exist?(principal_txt_src)
+  FileUtils.cp(principal_txt_src, ats_txt_path)
+end
+
+puts "  ✅ Generated: exports/resumes/ats-import-resume.html"
+puts "  ✅ Generated: exports/resumes/ats-import-resume.txt"
+
 puts "\nAll archetype resumes generated successfully."

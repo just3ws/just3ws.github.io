@@ -47,6 +47,9 @@ end
 desc 'Validate the built site'
 task validate: ['validate:all']
 
+desc 'Regenerate PDF resumes to $HOME/Desktop/resumes'
+task resumes: ['generate:resume_pdfs']
+
 namespace :generate do
   desc 'Run all generation scripts (Legacy disk-based scripts are mostly deprecated by plugins)'
   task all: [
@@ -79,6 +82,11 @@ namespace :generate do
 
   task :brief_pdfs do
     sh 'node ./bin/export_brief_pdfs.js'
+  end
+
+  desc 'Generate vector PDF resume packages for all archetypes to $HOME/Desktop/resumes'
+  task :resume_pdfs do
+    sh './bin/regenerate_resumes'
   end
 
   task :content_opportunities do

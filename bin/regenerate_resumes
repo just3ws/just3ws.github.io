@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# bin/regenerate_resumes
+# Regenerates tailored archetype resumes and exports print-optimized PDF packages to $HOME/Desktop/resumes.
+set -euo pipefail
+
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$REPO_DIR"
+
+usage() {
+  cat <<'USAGE'
+Usage: ./bin/regenerate_resumes [options] [destination_dir]
+
+Regenerates resume metadata and renders print-optimized vector PDF resumes
+to $HOME/Desktop/resumes (or specified directory).
+
+Options:
+  -d, --dest <dir>   Target directory for PDF resumes (default: $HOME/Desktop/resumes)
+  -b, --build        Rebuild Jekyll site and sync to localhost before PDF generation
+  -h, --help         Show this help message
+
+Examples:
+  ./bin/regenerate_resumes
+  ./bin/regenerate_resumes --dest ~/Desktop/resumes
+  ./bin/regenerate_resumes --build
+USAGE
+}
+
+DO_BUILD=false
+FORWARD_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    -b|--build)
+      DO_BUILD=true
+      shift
+      ;;
+    *)
+      FORWARD_ARGS+=("$1")
+      shift
+      ;;
+  esac
+done
+
+echo "🔄 [1/2] Syncing resume archetypes from _data/resume/..."
+bundle exec ruby bin/generate_archetype_resumes.rb
+
+if [ "$DO_BUILD" = true ]; then
+  echo "🔨 Rebuilding Jekyll site and syncing to localhost..."
+  bundle exec rake build:committed
+  bundle exec rake localhost:sync
+fi
+
+echo ""
+echo "📄 [2/2] Rendering vector PDF resumes..."
+if [ ${#FORWARD_ARGS[@]} -gt 0 ]; then
+  node bin/generate_pdf_resume.js "${FORWARD_ARGS[@]}"
+else
+  node bin/generate_pdf_resume.js
+fi

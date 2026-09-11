@@ -45,21 +45,33 @@ ruby bin/evaluate_job_lead.rb --posting 5048 --escalate
 
 ---
 
-## 3. Headless Chrome PDF Exporter (`bin/generate_pdf_resume.js`)
+## 3. PDF Resume Exporters (`bin/regenerate_resumes`, `bin/generate_pdf_resume.js`)
 
 ### Why Use It
-Recruiters and hiring portals often require a traditional PDF attachment. Rather than manually exporting from a web browser, this automated Playwright script uses local Google Chrome to render a crisp, print-optimized 2-page PDF resume (`exports/resume.pdf`).
+Recruiters and hiring portals often require a traditional PDF attachment. Rather than manually exporting from a web browser, this automated Playwright workflow renders crisp, print-optimized PDF packages for all 5 resume archetypes and exports them directly to `$HOME/Desktop/resumes` (with repository mirrors in `exports/resumes/` and `_site/exports/`).
 
 ### How to Use It
 ```bash
-# Generate the PDF export
-node bin/generate_pdf_resume.js
+# Regenerate archetype metadata and export PDFs to $HOME/Desktop/resumes
+./bin/regenerate_resumes
+
+# Or via Rake
+bundle exec rake resumes
+
+# Or via the pipeline runner
+./bin/pipeline resumes
+
+# Or run the direct Node script (supports custom destination)
+node bin/generate_pdf_resume.js --dest ~/Desktop/resumes
 
 # Validate PDF export integrity and file size budget in CI
 ruby bin/validate_exports.rb
 ```
 
-**Output Location:** `exports/resume.pdf`
+**Output Locations:**
+- Desktop: `$HOME/Desktop/resumes/` (human-friendly named PDFs for all archetypes)
+- Repository exports: `exports/` and `exports/resumes/`
+- Site distribution: `_site/exports/`
 
 ---
 

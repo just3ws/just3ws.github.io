@@ -39,7 +39,8 @@ graphify query "Which archive themes connect to OpenTelemetry?"
 ### 2. Executive Pitch & Resume Generators (`generate_*`)
 Scripts that read `_data/*.yml` sources and compile pages/artifacts into Jekyll source:
 - `generate_executive_brief.rb`: Generates custom 1-page executive pitch briefs (`ruby bin/generate_executive_brief.rb "Company" "Title"`).
-- `generate_pdf_resume.js`: Playwright script that renders print-optimized `exports/resume.pdf`.
+- `generate_pdf_resume.js`: Playwright script that renders print-optimized PDF packages to `$HOME/Desktop/resumes` and `exports/`.
+- `regenerate_resumes`: High-level wrapper script that syncs archetype metadata and renders PDF resumes.
 - `generate_timeline_data.rb`
 - `generate_speakers_data.rb`
 - `generate_resume_position_pages.rb`
