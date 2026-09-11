@@ -12,6 +12,12 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - Migrated systems architect archetype slug to staff_systems_architect
+         and mike-hall-staff-systems-architect across data, routes, datalake,
+         exports, and navigation. Fixed variable scoping bug in
+         `bin/generate_archetype_resumes.rb` and synced full PDF exports to
+         desktop and `exports/`. All 90 RSpec specs, resume quality checks,
+         ATS benchmark (88.2%), Jekyll production build, and HTML-Proofer clean.
        - Aligned site archetypes and PDF exports with Staff to Senior/Lead breadth
          (bc4d193a): updated `_data/resume/archetypes.yml` (Staff Software Engineer /
          Systems Architect), `navigation.yml`, `home.yml`, `engagements.yml`, and

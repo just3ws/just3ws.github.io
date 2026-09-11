@@ -14,7 +14,7 @@ observability, system cartography, and carefully bounded AI-assisted tooling.
 ## Start here
 
 - [Website and portfolio](https://www.just3ws.com/)
-- [Targeted Principal Software Engineer resume](https://www.just3ws.com/resumes/mike-hall-principal-software-engineer/)
+- [Targeted Staff Systems Architect resume](https://www.just3ws.com/resumes/mike-hall-staff-systems-architect/)
 - [Career timeline](https://www.just3ws.com/timeline/)
 - [Architecture case studies](https://www.just3ws.com/case-studies/)
 - [Advisory and consulting engagements](https://www.just3ws.com/engagements/)

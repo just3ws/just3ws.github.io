@@ -12,7 +12,7 @@ KEY_LOCATION = "https://#{HOST}/#{KEY}.txt"
 URLS = [
   "https://#{HOST}/",
   "https://#{HOST}/resume/",
-  "https://#{HOST}/resumes/mike-hall-principal-software-engineer/",
+  "https://#{HOST}/resumes/mike-hall-staff-systems-architect/",
   "https://#{HOST}/resumes/mike-hall-staff-platform-lead/",
   "https://#{HOST}/resumes/mike-hall-senior-ruby-rails-contractor/",
   "https://#{HOST}/resumes/mike-hall-founding-staff-engineer/",

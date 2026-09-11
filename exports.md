@@ -16,7 +16,7 @@ Download resume, portfolio, and career history in multiple formats.
 ## Resume
 
 - **PDF Resume (Staff Software Engineer - Canonical)** - [resume.pdf](/exports/resume.pdf) (Print-optimized vector PDF package)
-- **PDF Resume (Staff Systems Architect)** - [mike-hall-principal-software-engineer-resume.pdf](/exports/mike-hall-principal-software-engineer-resume.pdf)
+- **PDF Resume (Staff Systems Architect)** - [mike-hall-staff-systems-architect-resume.pdf](/exports/mike-hall-staff-systems-architect-resume.pdf)
 - **Markdown** - [resume.md](/exports/resume.md) (Clean markdown, ideal for copy-pasting to LinkedIn or portals)
 - **JSON Schema** - [resume.json](/resume.json) (Structured JSON for ATS and API ingestion)
 - **Plain Text** - [resume.txt](/resume.txt) (UTF-8 plain text export)

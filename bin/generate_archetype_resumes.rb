@@ -352,13 +352,13 @@ puts "\nGenerating ATS-first import resume (optimized strictly for ATS parseabil
 ats_html_path = File.join(EXPORTS_DIR, 'ats-import-resume.html')
 ats_txt_path  = File.join(EXPORTS_DIR, 'ats-import-resume.txt')
 
-principal_config = archetypes['principal_systems_architect']
-summary_text = principal_config['summary'].strip
-skills_text = principal_config['core_skills'].join(', ')
+systems_config = archetypes['staff_systems_architect'] || archetypes['principal_systems_architect']
+summary_text = systems_config['summary'].strip
+skills_text = systems_config['core_skills'].join(', ')
 
 # Build featured positions for ATS
 ats_positions_html = []
-principal_config['featured_positions'].each do |entry|
+systems_config['featured_positions'].each do |entry|
   pos = positions[entry['id']]
   next unless pos
 
@@ -387,7 +387,7 @@ end
 
 # Build additional experience for ATS
 ats_additional_html = []
-(principal_config['additional_experience'] || []).each do |entry|
+(systems_config['additional_experience'] || []).each do |entry|
   pos = positions[entry['id']]
   next unless pos
   comp_name = pos.dig('company', 'name') || pos['company']
@@ -525,7 +525,7 @@ ats_document_html = <<~HTML
 <body>
   <header class="candidate-header">
     <h1 class="candidate-name">#{profile['name']}</h1>
-    <div class="candidate-title">#{principal_config['title']}</div>
+    <div class="candidate-title">#{systems_config['title']}</div>
     <div class="contact-line">
       #{profile.dig('location', 'display')} &nbsp;|&nbsp;
       Email: <a href="mailto:#{profile['contact']['email']}">#{profile['contact']['email']}</a> &nbsp;|&nbsp;
@@ -567,9 +567,9 @@ HTML
 File.write(ats_html_path, ats_document_html)
 
 # Also write the dedicated ATS plaintext file
-principal_txt_src = File.join(EXPORTS_DIR, "#{principal_config['file_slug']}.txt")
-if File.exist?(principal_txt_src)
-  FileUtils.cp(principal_txt_src, ats_txt_path)
+systems_txt_src = File.join(EXPORTS_DIR, "#{systems_config['file_slug']}.txt")
+if File.exist?(systems_txt_src)
+  FileUtils.cp(systems_txt_src, ats_txt_path)
 end
 
 puts "  ✅ Generated: exports/resumes/ats-import-resume.html"

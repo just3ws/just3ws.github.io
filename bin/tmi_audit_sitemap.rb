@@ -62,7 +62,7 @@ VERIFIED_PAGES = {
   'https://www.just3ws.com/history/'                                         => 'intentional public contact (phone)',
   'https://www.just3ws.com/resumes/mike-hall-founding-staff-engineer/'       => 'intentional public contact (phone)',
   'https://www.just3ws.com/resumes/mike-hall-observability-resilience-specialist/' => 'intentional public contact (phone)',
-  'https://www.just3ws.com/resumes/mike-hall-principal-software-engineer/'   => 'intentional public contact (phone)',
+  'https://www.just3ws.com/resumes/mike-hall-staff-systems-architect/'       => 'intentional public contact (phone)',
   'https://www.just3ws.com/resumes/mike-hall-senior-ruby-rails-contractor/'  => 'intentional public contact (phone)',
   'https://www.just3ws.com/resumes/mike-hall-staff-platform-lead/'           => 'intentional public contact (phone)',
   # WindyCityRails 2012 interview: "my husband David Kinney and I run the

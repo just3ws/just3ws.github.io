@@ -67,8 +67,8 @@ const RESUME_TARGETS = [
     desktopFriendlyName: 'Mike Hall - Staff Software Engineer Resume.pdf'
   },
   {
-    slug: 'mike-hall-principal-software-engineer',
-    path: '/resumes/mike-hall-principal-software-engineer/',
+    slug: 'mike-hall-staff-systems-architect',
+    path: '/resumes/mike-hall-staff-systems-architect/',
     desktopFriendlyName: 'Mike Hall - Staff Systems Architect & Software Engineer Resume.pdf'
   },
   {

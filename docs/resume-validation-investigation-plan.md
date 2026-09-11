@@ -76,7 +76,7 @@ graph TD
 
 #### Actions:
 1. **PDF & Plain-Text Extraction Test:**
-   * Ingest `exports/mike-hall-principal-software-engineer-resume.pdf` and `exports/resumes/mike-hall-principal-software-engineer.txt` into **Jobscan** and **Resume Worded**.
+   * Ingest `exports/mike-hall-staff-systems-architect-resume.pdf` and `exports/resumes/mike-hall-staff-systems-architect.txt` into **Jobscan** and **Resume Worded**.
    * Verify that contact information, dates, company names, position titles, and bullet lists parse into their dedicated ATS fields without merging or truncation.
 2. **Benchmark Against Target Role Archetypes:**
    * Test against 5 benchmark job descriptions representing target roles:
@@ -147,6 +147,6 @@ graph TD
 
 ## 5. Next Concrete Steps
 
-1. **Option Evaluation Run:** Conduct a manual sample run on Jobscan / Resume Worded using `exports/mike-hall-principal-software-engineer-resume.pdf` to establish our baseline ATS percentage score.
+1. **Option Evaluation Run:** Conduct a manual sample run on Jobscan / Resume Worded using `exports/mike-hall-staff-systems-architect-resume.pdf` to establish our baseline ATS percentage score.
 2. **JSON Resume Schema Exporter:** Add optional JSON Resume v1.0.0 mapping to `bin/generate_archetype_resumes.rb` if broader tooling integration is desired.
 3. **Vale Style Expansion:** Add a dedicated Vale rule file for Principal Engineering action verbs in `.vale/styles/Just3Ws/`.

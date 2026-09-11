@@ -1,11 +1,11 @@
 ---
 layout: archetype-resume
 body_class: ats-resume
-archetype_key: principal_systems_architect
+archetype_key: staff_systems_architect
 title: "Mike Hall - Staff Software Engineer - Systems Architect"
 description: "Staff Software Engineer specializing in high-consequence legacy modernization, distributed systems architecture, and platform resilience. Combines hands-on software engineering with platform architecture, OpenTelemetry distributed tracing, cross-lane boundary mediation, and zero-downtime data migrations across Ruby on Rails, PostgreSQL, and cloud infrastructure."
-canonical_url: https://www.just3ws.com/resumes/mike-hall-principal-software-engineer/
-permalink: /resumes/mike-hall-principal-software-engineer/
+canonical_url: https://www.just3ws.com/resumes/mike-hall-staff-systems-architect/
+permalink: /resumes/mike-hall-staff-systems-architect/
 sitemap: true
 robots: index,follow
 ---

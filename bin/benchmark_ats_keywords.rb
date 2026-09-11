@@ -19,7 +19,7 @@ TARGET_PROFILES = {
   huntress_staff_rails: {
     name: "Staff Software Engineer (Ruby/Rails & SOC Experience - Huntress Model)",
     tier: "Staff IC / Systems Architect",
-    resume_file: "mike-hall-principal-software-engineer.txt",
+    resume_file: "mike-hall-staff-systems-architect.txt",
     required_keywords: %w[
       Ruby Rails PostgreSQL OpenTelemetry Distributed Architecture
       Cybersecurity Incident Trace SRE Latency Redis Sidekiq
@@ -90,7 +90,7 @@ TARGET_PROFILES = {
   fintech_staff_modernizer: {
     name: "Staff Software Engineer (Financial Acquisition & Modernization)",
     tier: "Staff IC / Systems Architecture",
-    resume_file: "mike-hall-principal-software-engineer.txt",
+    resume_file: "mike-hall-staff-systems-architect.txt",
     required_keywords: %w[
       Rails PostgreSQL Instant Disbursement Acquisition Originations Funnel
       State API Architecture Sidekiq Redis
