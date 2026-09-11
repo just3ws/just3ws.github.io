@@ -1,33 +1,32 @@
 hero:
-  headline: "I make complex software systems easier to understand and safer to change."
+  headline: "I make difficult production systems understandable and safe to change."
   lede: >-
-    I am a Staff Software Engineer rooted in hands-on software engineering. I
-    work at multiple levels of the system, from code and runtime behavior
-    through business and organizational boundaries. I work with and across
-    teams of individual contributors to make difficult systems clearer, safer
-    to change, and more useful to the business.
+    I am a Staff Software Engineer who helps teams modernize valuable systems
+    they cannot afford to rewrite. I trace opaque production behavior, hidden
+    coupling, distributed failures, and risky transactional workflows to make
+    the next safe decision visible.
   actions:
     - label: "📄 Read Full Résumé (ATS)"
       href: "/resume/"
       style: "primary"
-    - label: "🎯 5 Target Role Archetypes"
-      href: "/resumes/"
+    - label: "See the Work"
+      href: "/case-studies/"
       style: "secondary"
-    - label: "🏛️ Technical Conversation Archive"
-      href: "/interviews/"
+    - label: "Contact Mike"
+      href: "/contact/"
       style: "subtle"
 
 visitor_paths:
   - title: "I am hiring or evaluating a technical leader"
-    text: "Start with the résumé, then inspect the production case studies behind it."
-    label: "Résumé and proof"
+    text: "See the problem class, production evidence, and career scope in one pass."
+    label: "Work and career"
     href: "/resume/"
   - title: "I need help with a difficult platform transition"
-    text: "See how an advisory engagement turns uncertainty into a practical next step."
+    text: "See how system mapping turns uncertainty into a practical next step."
     label: "Engagements"
     href: "/engagements/"
   - title: "I want to understand how Mike thinks"
-    text: "Begin with Panoramic View, the method for connecting business intent to system behavior."
+    text: "Begin with the method for connecting business intent to system behavior."
     label: "Explore the method"
     href: "/panoramic-view/"
   - title: "I am here for the history"
@@ -82,30 +81,30 @@ evidence_intro:
 evidence:
   - context: "Monolith Modernization"
     title: "System Cartography: Mapping a 10-Year Monolith"
-    text: >-
-      Conceived the cartography strategy to map 10 years of undocumented Rails dependencies, identified and mapped seven lending funnels with a tracking initiative,
-      and enabled squads to deliver without downtime.
+    problem: "A valuable Rails platform had a decade of undocumented dependencies and seven lending funnels that were difficult to trace."
+    intervention: "Mapped the runtime and business paths, then gave squads a shared picture for making changes."
+    result: "Teams could modernize without a rewrite or planned downtime."
     link_label: "Read Case Study"
     href: "/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html"
   - context: "Database Engineering & Compliance"
     title: "Database Archaeology: Safe Multi-Table PII Purge Engine"
-    text: >-
-      Architected a 5-phase zero-downtime deletion strategy and led the enablement team in executing lock-timeout
-      budgets and WAL replication throttling across production PostgreSQL clusters.
+    problem: "Sensitive records were spread across legacy PostgreSQL tables with dependencies that were not safe to guess at."
+    intervention: "Mapped the references and designed a five-phase deletion strategy with lock-timeout budgets and replication controls."
+    result: "The team could remove data while protecting live application state."
     link_label: "Read Case Study"
     href: "/2026/08/29/database-archaeology-safely-purging-sensitive-records.html"
   - context: "Enterprise Rails Resilience"
     title: "Restoring a Hidden 4% of Customer Applications"
-    text: >-
-      Diagnosed and resolved a silent 4% customer application drop caused by oversized Rails session cookies,
-      defensive middleware, and a migration to DynamoDB session storage.
+    problem: "Four percent of customer applications disappeared silently at the boundary between Rails sessions and downstream storage."
+    intervention: "Followed the request path through oversized cookies, defensive middleware, and the DynamoDB migration."
+    result: "Removed the hidden failure mode and restored the missing applications."
     link_label: "Read Case Study"
     href: "/2026/08/30/hunting-the-4-percent-defect-rails-cookie-overflow.html"
   - context: "Fintech State Machines"
     title: "Instant Money: Real-Time Debit Disbursement Architecture"
-    text: >-
-      Designed two-phase state verification gates and idempotent ledger webhooks to safely
-      disburse funds in real time without uncommitted read risks.
+    problem: "Real-time disbursement had to coordinate transactional state without trusting uncommitted reads."
+    intervention: "Designed two-phase state verification gates and idempotent ledger webhooks."
+    result: "Funds could move quickly while the ledger remained consistent and replayable."
     link_label: "Read Case Study"
     href: "/2026/08/30/instant-money-real-time-debit-disbursement-architecture.html"
 

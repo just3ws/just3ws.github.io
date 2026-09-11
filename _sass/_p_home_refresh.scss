@@ -431,6 +431,35 @@
   }
 }
 
+.leadership-evidence-proof {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0 1.15rem;
+}
+
+.leadership-evidence-proof div {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--leadership-border);
+}
+
+.leadership-evidence-proof dt {
+  color: var(--leadership-accent-text);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.leadership-evidence-proof dd {
+  margin: 0;
+  color: var(--leadership-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 .leadership-paths {
   margin: 0;
   padding: 0;

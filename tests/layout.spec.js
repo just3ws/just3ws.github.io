@@ -5,19 +5,17 @@ test.describe('Site Layout and Aesthetics', () => {
   test('Home page renders correctly', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/home/');
-    await expect(page).toHaveTitle(/Mike Hall \| Principal Software Engineer/);
-    await expect(page.locator('.leadership-eyebrow').first()).toHaveText('Principal Software Engineer');
-    await expect(page.locator('h1')).toContainText('complex software systems');
+    await expect(page).toHaveTitle(/Mike Hall \| Staff Software Engineer/);
+    await expect(page.locator('.leadership-eyebrow').first()).toHaveText('Staff Software Engineer');
+    await expect(page.locator('h1')).toContainText('difficult production systems');
     await expect(page.locator('main')).not.toContainText('Director of Engineering');
-    await expect(page.locator('main')).toContainText('Phalanx Duel');
+    await expect(page.locator('main')).toContainText('System Cartography');
     await expect(page.locator('main a[href="/panoramic-view/"]')).toHaveCount(0);
     const homeHeadingSize = Number.parseFloat(await page.locator('h1').evaluate((element) => getComputedStyle(element).fontSize));
     expect(homeHeadingSize).toBeLessThanOrEqual(60);
     const heroActions = page.locator('.leadership-hero .leadership-actions');
-    await expect(heroActions.getByRole('link', { name: 'Read my résumé' })).toHaveAttribute('href', '/');
-    await expect(heroActions.getByRole('link', { name: 'See selected work' })).toHaveAttribute('href', '/portfolio/');
-    await expect(page.getByRole('link', { name: 'Complete history' })).toHaveAttribute('href', '/history/');
-    await expect(page.getByRole('link', { name: 'Contact Mike' })).toHaveAttribute('href', '/contact/');
+    await expect(heroActions.getByRole('link', { name: '📄 Read Full Résumé (ATS)' })).toHaveAttribute('href', '/resume/');
+    await expect(heroActions.getByRole('link', { name: 'See the Work' })).toHaveAttribute('href', '/case-studies/');
 
     // Screenshot for visual audit
     await page.screenshot({ path: 'tmp/screenshots/home.png', fullPage: true });

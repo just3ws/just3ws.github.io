@@ -75,7 +75,11 @@ body_class: professional-home
         <article>
           <p class="leadership-evidence-context">{{ item.context }}</p>
           <h3>{{ item.title }}</h3>
-          <p>{{ item.text }}</p>
+          <dl class="leadership-evidence-proof">
+            <div><dt>Problem</dt><dd>{{ item.problem }}</dd></div>
+            <div><dt>Intervention</dt><dd>{{ item.intervention }}</dd></div>
+            <div><dt>Result</dt><dd>{{ item.result }}</dd></div>
+          </dl>
           <a href="{{ item.href }}">{{ item.link_label }} <span aria-hidden="true">→</span></a>
         </article>
       {% endfor %}
