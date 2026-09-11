@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-09-06
+     CURRENT FOCUS - last updated 2026-09-11
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,22 +12,21 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - Shifted default messaging to Staff Engineer as primary target
+         (8c01c6fe): CODEX.md now foregrounds Staff as the evaluation frame;
+         outreach playbook templates updated to Staff Engineer by default with
+         a note to adapt to Principal only when a posting uses that title;
+         ATS benchmark profiles renamed from Principal IC to Staff IC tiers;
+         resume narrative pitch memo Step 1 updated to Staff IC; career
+         strategy doc opening clarified. All pre-commit hooks and ATS
+         benchmark (88.2%) passed.
        - Verified and closed TASK-284.01 (Make timeline conceptually accessible):
          confirmed four default story lanes, five optional combinable overlays,
          visible plain-language visitor question, non-hover evidence ledger,
          and individual keyboard-operable timeline items. All 7 ACs satisfied;
          Playwright browser regression checks passed 2 of 2 clean.
-       - Tasked out option #1: TASK-266 (low-cognitive-load outreach for target
-         Staff/Principal leads) into structured subtasks (TASK-266.01, TASK-266.02,
-         TASK-266.03) staged for future activation.
-       - Tasked out option #3: TASK-265 (promote and publish approved archive content
-         opportunities) into structured subtasks (TASK-265.01, TASK-265.02,
-         TASK-265.03) staged for future editorial release.
-       - Aligned engagements page title expectation in tests/layout.spec.js.
-       - 90 examples, 0 failures. All fast, content, ATS benchmark (86.8%), and
-         quality validation gates clean.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-09-06-5.md
+         ~/.config/adots/handoffs/2026-09-11-just3ws-staff-messaging.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
