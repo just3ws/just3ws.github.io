@@ -43,6 +43,16 @@ state, replayable action logs, WebSockets, and human-led AI-assisted engineering
 - [Source repository](https://github.com/phalanxduel/phalanxduel)
 - [Architecture and craftsmanship brief](https://github.com/phalanxduel/phalanxduel/blob/main/docs/talks/phalanx-duel-commercial-and-user-group.md)
 
+## Current system: WWWorkRemote
+
+[WWWorkRemote](https://github.com/wwworkremote/wwworkremote) is a local-first,
+human-supervised job search system. It turns job postings into an actionable
+pipeline: ingest, search, match, triage, prepare applications, record receipts,
+and carry promising leads through follow-up and interview preparation.
+
+- [Source repository](https://github.com/wwworkremote/wwworkremote)
+- [Project context and résumé evidence](https://www.just3ws.com/resume/)
+
 ## The public archive
 
 The site preserves a growing oral history of software communities, technical

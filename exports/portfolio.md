@@ -17,6 +17,13 @@ Tactical card combat built around a familiar 52-card vocabulary, compact formati
 replayable rules. A hands-on laboratory for rules engines, observable state transitions,
 and product architecture.
 
+## WWWorkRemote
+**Role:** Principal Architect
+**Years:** 2021 - Present
+
+A local-first, human-supervised job search system for ingesting, searching, ranking,
+triaging, and advancing job leads through applications and interview preparation.
+
 ## Chicago Code Camp
 **Role:** Co-Organizer & Web Lead
 **Years:** 2010 - 2012
