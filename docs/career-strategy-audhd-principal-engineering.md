@@ -1,6 +1,6 @@
 # Neurodivergent (AuDHD) Staff Software Engineering Career Strategy Guide
 
-This document captures operational guidelines, role evaluation criteria, interview assessment strategies, and environmental positioning for **AuDHD / Neurodivergent Staff Software Engineers**.
+This document captures operational guidelines, role evaluation criteria, interview assessment strategies, and environmental positioning for **AuDHD / Neurodivergent Staff Software Engineers**. Principal Engineer is a scale-dependent calibration, not the default target identity.
 
 The professional root is software engineering. Staff describes the scope and
 working method: hands-on engineering at multiple levels of the system, from

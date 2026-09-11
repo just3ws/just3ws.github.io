@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 # bin/benchmark_ats_keywords.rb
-# Benchmarks resume exports against target Staff+/Principal job profiles,
+# Benchmarks resume exports against target Staff-level job profiles,
 # measuring ATS section extraction, keyword density, and leadership impact.
 
 require 'json'
@@ -16,9 +16,9 @@ TAILORED_DIR = File.join(ROOT_DIR, 'resumes')
 OUTPUT_REPORT_PATH = File.join(ROOT_DIR, 'tmp', 'ats_benchmark_results.json')
 
 TARGET_PROFILES = {
-  huntress_principal_rails: {
-    name: "Principal Software Engineer (Ruby/Rails & SOC Experience - Huntress Model)",
-    tier: "Principal IC / Systems Architect",
+  huntress_staff_rails: {
+    name: "Staff Software Engineer (Ruby/Rails & SOC Experience - Huntress Model)",
+    tier: "Staff IC / Systems Architect",
     resume_file: "mike-hall-principal-software-engineer.txt",
     required_keywords: %w[
       Ruby Rails PostgreSQL OpenTelemetry Distributed Architecture
@@ -87,9 +87,9 @@ TARGET_PROFILES = {
       "SRE Handoff"
     ]
   },
-  fintech_principal_modernizer: {
-    name: "Principal Systems Architect (Financial Acquisition & Modernization)",
-    tier: "Principal IC / Systems Architecture",
+  fintech_staff_modernizer: {
+    name: "Staff Software Engineer (Financial Acquisition & Modernization)",
+    tier: "Staff IC / Systems Architecture",
     resume_file: "mike-hall-principal-software-engineer.txt",
     required_keywords: %w[
       Rails PostgreSQL Instant Disbursement Acquisition Originations Funnel

@@ -8,12 +8,12 @@ A high-signal, zero-fluff communication framework for engaging Engineering Direc
 
 Hiring managers receive dozens of generic recruiter inquiries and template applications daily. Most outreach fails because it follows a transactional pattern:
 
-* ❌ *"Hi, I saw you are hiring for a Principal Engineer. I have attached my 4-page resume and would love to get 30 minutes on your calendar this week to discuss how I can help."*
+* ❌ *"Hi, I saw you are hiring for a Staff Engineer. I have attached my 4-page resume and would love to get 30 minutes on your calendar this week to discuss how I can help."*
 
 This fails because it creates work for the hiring manager and presumes they have time to evaluate an uncurated resume.
 
 ### The High-Signal Principle
-High-performing Principal Engineers do not ask for favors; they provide immediate clarity. High-signal outreach treats the hiring manager as an engineering peer:
+High-performing Staff Engineers do not ask for favors; they provide immediate clarity. High-signal outreach treats the hiring manager as an engineering peer:
 
 * ✅ **Acknowledge specific context:** Cite their exact stack, technical challenge, or team expansion.
 * ✅ **Provide Level 1 proof:** Deliver a single sentence demonstrating verifiable high-consequence outcomes.
@@ -36,14 +36,14 @@ High-performing Principal Engineers do not ask for favors; they provide immediat
 ## 2. Template A: Cold Outreach to VP / Director of Engineering
 
 **Target Audience:** VP of Engineering, Head of Platform, Director of Engineering.  
-**Use Case:** Direct outreach for open Staff/Principal Software Engineer or Platform Architect roles.
+**Use Case:** Direct outreach for open Staff Software Engineer or Platform Lead roles; adapt subject line when a posting explicitly uses "Principal".
 
 ```markdown
-Subject: Principal Engineer note: Rails, distributed scale & platform resilience
+Subject: Staff Engineer note: Rails, distributed scale & platform resilience
 
 Hi [Name],
 
-I saw [Company] is scaling [specific domain, e.g. core payment services / developer platform / SOC ingestion] and looking for a Principal Software Engineer.
+I saw [Company] is scaling [specific domain, e.g. core payment services / developer platform / SOC ingestion] and looking for a Staff Software Engineer.
 
 I specialize in high-consequence Ruby on Rails platforms and legacy modernization. Over the past several years, I served as Acquisition Lane Architect at OneMain Financial, identifying and mapping seven lending funnels through a tracking initiative, eliminating a 4% silent transaction loss bug, and driving enterprise OpenTelemetry adoption across Rails and middleware tiers.
 
@@ -71,7 +71,7 @@ Hi [Name],
 
 Hope you are doing well. It has been a while since [shared context, e.g. our time at X / SCNA / the ChicagoRuby community], and it is great seeing what you are building at [Company].
 
-I am exploring my next move into a Principal Software Engineer / Platform Architecture role. I noticed [Company]'s team is expanding around [specific area, e.g. telemetry infrastructure / core API platforms].
+I am exploring my next move as a Staff Software Engineer / Platform Lead. I noticed [Company]'s team is expanding around [specific area, e.g. telemetry infrastructure / core API platforms].
 
 Before submitting a cold application, I wanted to ask your take on the engineering culture and how the platform team approaches [e.g. distributed systems / developer enablement].
 
