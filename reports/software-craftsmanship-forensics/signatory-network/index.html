@@ -1,0 +1,234 @@
+---
+layout: base
+title: "Signatory Network Map: SCM Manifesto × UGtastic × SCMC"
+description: "Cross-reference of 27,601 Software Craftsmanship Manifesto signatories against 191 UGtastic interviewees and 11 SCMC presenters — identifying the people who signed the manifesto and then showed up in Mike Hall's interview archive or at SCMC meetings."
+permalink: /reports/software-craftsmanship-forensics/signatory-network/
+localhost_only: true
+body_class: report-signatory-network
+---
+
+{% assign map = site.data.research.signatory_network_map %}
+{% assign matches = map.signatory_matches %}
+{% assign overlaps = map.ugtastic_scmc_cross_matches %}
+{% assign summary = map.summary %}
+
+<div class="report-container" style="max-width: 68rem; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: var(--font-sans-ui, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif); color: var(--color-text-main, #1e232a); line-height: 1.65;">
+
+  <!-- Header -->
+  <header style="margin-bottom: 2.5rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1.75rem;">
+    <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+      <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.35); font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">
+        🔒 Localhost Research Report
+      </span>
+      <span style="background: rgba(37, 99, 235, 0.1); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+        DuckDB Datalake
+      </span>
+      <span style="background: rgba(217, 119, 6, 0.1); color: #d97706; border: 1px solid rgba(217, 119, 6, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+        Network Analysis
+      </span>
+      <span style="color: var(--color-text-muted, #64748b); font-size: 0.85rem; margin-left: auto;">
+        October 2026
+      </span>
+    </div>
+
+    <nav style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-bottom: 1rem;">
+      <a href="/reports/software-craftsmanship-forensics/" style="color: #0f766e; text-decoration: none;">← SCM Forensics Report</a>
+      <span style="margin: 0 0.4rem;">›</span>
+      <span>Signatory Network Map</span>
+    </nav>
+
+    <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0 0 0.75rem 0; font-family: var(--font-serif-editorial, Georgia, serif); letter-spacing: -0.02em;">
+      Signatory Network Map:<br>
+      <span style="color: var(--color-primary, #0f766e);">SCM Manifesto × UGtastic × SCMC</span>
+    </h1>
+    <p style="font-size: 1.1rem; color: var(--color-text-muted, #525866); max-width: 54rem; margin: 0; line-height: 1.6;">
+      Of the 27,601 confirmed Software Craftsmanship Manifesto signatories in the datalake, <strong>{{ summary.signatories_matched_total }}</strong> appear in Mike Hall's UGtastic interview archive or presented at SCMC meetings — connecting the written pledge to lived practice across Chicago-area developer communities.
+    </p>
+  </header>
+
+  <!-- Metric tiles -->
+  <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2.5rem;">
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #0f766e;">{{ summary.signatories_matched_total }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">Signatories Matched</div>
+    </div>
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #2563eb;">{{ summary.signatories_with_ugtastic_interview }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">UGtastic Interviews</div>
+    </div>
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #d97706;">{{ summary.signatories_with_scmc_presentation }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">SCMC Presenters</div>
+    </div>
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #7c3aed;">{{ summary.signatories_with_both_connections }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">Both Connections</div>
+    </div>
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #059669;">27,601</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">Total Signatories</div>
+    </div>
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #0891b2;">{{ summary.coverage_rate_pct }}%</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">Interview Coverage</div>
+    </div>
+  </section>
+
+  <!-- Methodology note -->
+  <section style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #0f766e; border-radius: 0 0.5rem 0.5rem 0; padding: 1.25rem 1.5rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: #0f172a;">Methodology</h2>
+    <p style="font-size: 0.875rem; color: #334155; margin: 0; line-height: 1.6;">
+      27,601 SCM Manifesto signatories were loaded from the zdots DuckDB datalake (<code>scm_signatories</code> table, hydrated via the public REST API across 307 pages). Names were normalized and matched against <strong>191 UGtastic interviewees</strong> (<code>_data/interviews.yml</code>, 184 recorded conversations) and <strong>11 SCMC presenters</strong> (<code>_data/scmc_videos.yml</code>) using variant expansion — stripping parentheticals, middle initials, and quotes to maximize recall without false positives. The <strong>{{ summary.coverage_rate_pct }}%</strong> figure reflects what fraction of people Mike interviewed are verifiable SCM Manifesto signatories.
+    </p>
+  </section>
+
+  <!-- UGtastic ↔ SCMC Cross-Matches -->
+  {% if overlaps.size > 0 %}
+  <section style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      UGtastic × SCMC Dual Presence
+    </h2>
+    <p style="color: var(--color-text-muted, #525866); margin-bottom: 1.25rem; font-size: 0.9rem;">
+      {{ summary.ugtastic_scmc_cross_matches }} people appear in <em>both</em> the UGtastic interview archive and SCMC presentations — interviewed by Mike Hall and also presenting at the McHenry County user group he organized.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+      {% for person in overlaps %}
+      <div style="border: 1px solid #e2e8f0; border-top: 3px solid #7c3aed; border-radius: 0.375rem; padding: 1rem; background: #fafafa;">
+        <div style="font-weight: 700; font-size: 1rem; color: #0f172a; margin-bottom: 0.75rem;">{{ person.name }}</div>
+        <div style="margin-bottom: 0.5rem;">
+          <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb;">🎙️ UGtastic</span>
+          {% for iv in person.ugtastic_interviews limit: 2 %}
+          <div style="font-size: 0.8rem; color: #334155; margin-top: 0.25rem; line-height: 1.4;">
+            {% if iv.id %}<a href="/interviews/{{ iv.id }}/" style="color: #0f766e; text-decoration: none;">{{ iv.title | truncate: 70 }}</a>{% else %}{{ iv.title | truncate: 70 }}{% endif %}
+          </div>
+          {% endfor %}
+          {% if person.ugtastic_interviews.size > 2 %}
+          <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">+ {{ person.ugtastic_interviews.size | minus: 2 }} more</div>
+          {% endif %}
+        </div>
+        <div>
+          <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #d97706;">🏠 SCMC</span>
+          {% for pres in person.scmc_presentations %}
+          <div style="font-size: 0.8rem; color: #334155; margin-top: 0.25rem; line-height: 1.4;">
+            {% if pres.video_asset_id %}<a href="/videos/{{ pres.video_asset_id }}/" style="color: #0f766e; text-decoration: none;">{{ pres.title | truncate: 70 }}</a>{% else %}{{ pres.title | truncate: 70 }}{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- Full signatory match table -->
+  <section style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      Matched Signatories ({{ summary.signatories_matched_total }})
+    </h2>
+    <p style="color: var(--color-text-muted, #525866); margin-bottom: 1.25rem; font-size: 0.9rem;">
+      Sorted by signatory number (earliest signers first). The signatory number is the immutable database primary key from the SCM Manifesto ledger — the order in which each person signed relative to the full historical corpus.
+    </p>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+        <thead>
+          <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+            <th style="padding: 0.6rem 0.75rem; text-align: left; font-weight: 700; color: #475569; white-space: nowrap;">#</th>
+            <th style="padding: 0.6rem 0.75rem; text-align: left; font-weight: 700; color: #475569;">Name</th>
+            <th style="padding: 0.6rem 0.75rem; text-align: left; font-weight: 700; color: #475569;">Connection</th>
+            <th style="padding: 0.6rem 0.75rem; text-align: left; font-weight: 700; color: #475569;">Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for person in matches %}
+          {% assign row_bg = forloop.index | modulo: 2 %}
+          <tr style="border-bottom: 1px solid #f1f5f9; {% if row_bg == 0 %}background: #fafafa;{% endif %}">
+            <td style="padding: 0.6rem 0.75rem; font-family: ui-monospace, monospace; font-size: 0.8rem; color: #64748b; white-space: nowrap;">
+              #{{ person.signatory_number }}
+            </td>
+            <td style="padding: 0.6rem 0.75rem; font-weight: 600; color: #0f172a;">
+              {{ person.signatory_name }}
+              {% if person.location %}
+              <div style="font-size: 0.75rem; font-weight: 400; color: #94a3b8;">{{ person.location }}</div>
+              {% endif %}
+            </td>
+            <td style="padding: 0.6rem 0.75rem;">
+              {% for type in person.connection_types %}
+                {% if type == 'ugtastic_interviewee' %}
+                <span style="display: inline-block; background: rgba(37, 99, 235, 0.1); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.25); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; margin: 0.1rem;">🎙️ UGtastic</span>
+                {% endif %}
+                {% if type == 'scmc_presenter' %}
+                <span style="display: inline-block; background: rgba(217, 119, 6, 0.1); color: #d97706; border: 1px solid rgba(217, 119, 6, 0.25); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; margin: 0.1rem;">🏠 SCMC</span>
+                {% endif %}
+              {% endfor %}
+            </td>
+            <td style="padding: 0.6rem 0.75rem; color: #334155; font-size: 0.8rem; max-width: 28rem;">
+              {% for iv in person.connections.ugtastic_interviews limit: 1 %}
+                {% if iv.id %}
+                <a href="/interviews/{{ iv.id }}/" style="color: #0f766e; text-decoration: none; line-height: 1.4; display: block;">{{ iv.title | truncate: 75 }}</a>
+                {% else %}
+                <span style="line-height: 1.4; display: block;">{{ iv.title | truncate: 75 }}</span>
+                {% endif %}
+                {% if iv.conference %}<span style="font-size: 0.75rem; color: #94a3b8;">{{ iv.conference }} {{ iv.recorded_date | slice: 0, 4 }}</span>{% elsif iv.community %}<span style="font-size: 0.75rem; color: #94a3b8;">{{ iv.community }}</span>{% endif %}
+              {% endfor %}
+              {% if person.connections.ugtastic_interviews.size > 1 %}
+              <span style="font-size: 0.75rem; color: #94a3b8; display: block; margin-top: 0.2rem;">+ {{ person.connections.ugtastic_interviews.size | minus: 1 }} more</span>
+              {% endif %}
+              {% for pres in person.connections.scmc_presentations limit: 1 %}
+                {% if pres.video_asset_id %}
+                <a href="/videos/{{ pres.video_asset_id }}/" style="color: #d97706; text-decoration: none; line-height: 1.4; display: block; margin-top: 0.2rem;">{{ pres.title | truncate: 75 }}</a>
+                {% else %}
+                <span style="line-height: 1.4; display: block; color: #d97706; margin-top: 0.2rem;">{{ pres.title | truncate: 75 }}</span>
+                {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Insight callout -->
+  <section style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      What This Map Reveals
+    </h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+
+      <div style="border: 1px solid #e2e8f0; border-top: 3px solid #0f766e; border-radius: 0.375rem; padding: 1.25rem; background: #fafafa;">
+        <h3 style="font-size: 1rem; margin: 0 0 0.5rem 0; color: #0f766e;">Pledge → Practice</h3>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0; line-height: 1.5;">
+          The {{ summary.coverage_rate_pct }}% rate — {{ summary.signatories_matched_total }} out of 191 UGtastic guests being verifiable signatories — suggests Mike's archive disproportionately captured people who had formally committed to the Craftsmanship movement, not just people who were nearby or available.
+        </p>
+      </div>
+
+      <div style="border: 1px solid #e2e8f0; border-top: 3px solid #2563eb; border-radius: 0.375rem; padding: 1.25rem; background: #fafafa;">
+        <h3 style="font-size: 1rem; margin: 0 0 0.5rem 0; color: #2563eb;">Early Signers Over-represented</h3>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0; line-height: 1.5;">
+          The matched signatories skew heavily toward low signatory numbers — several appear in the first 600 of 27,601. These were people who signed in 2009–2010, at the founding moment, and who Mike was actively recording 2011–2015 at SCNA, GOTO, and local events.
+        </p>
+      </div>
+
+      <div style="border: 1px solid #e2e8f0; border-top: 3px solid #d97706; border-radius: 0.375rem; padding: 1.25rem; background: #fafafa;">
+        <h3 style="font-size: 1rem; margin: 0 0 0.5rem 0; color: #d97706;">SCMC as Local Nexus</h3>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0; line-height: 1.5;">
+          {{ summary.signatories_with_scmc_presentation }} signatory-matched SCMC presenters represent a direct pipeline: practitioners who pledged their craft online, then drove to McHenry County to share it in-person. The 4 UGtastic × SCMC overlaps are people who did all three: signed, presented locally, and were recorded.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Data sources -->
+  <section style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1.25rem 1.5rem; font-size: 0.85rem; color: #475569;">
+    <strong style="display: block; margin-bottom: 0.5rem; color: #0f172a;">Data Sources &amp; Provenance</strong>
+    <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
+      <li><strong>SCM Signatories:</strong> 27,601 records from <code>~/.local/state/zdots/datalake.duckdb</code> (<code>scm_signatories</code> table), hydrated from the <a href="/reports/software-craftsmanship-forensics/" style="color: #0f766e;">full forensic investigation</a> via 307 API pages</li>
+      <li><strong>UGtastic Interviews:</strong> 184 interviews, 191 interviewees — <code>_data/interviews.yml</code></li>
+      <li><strong>SCMC Presentations:</strong> 11 recorded speakers — <code>_data/scmc_videos.yml</code></li>
+      <li><strong>Network Map Data:</strong> <code>_data/research/signatory_network_map.json</code> (generated {{ map.generated_at | slice: 0, 10 }})</li>
+    </ul>
+  </section>
+
+</div>
