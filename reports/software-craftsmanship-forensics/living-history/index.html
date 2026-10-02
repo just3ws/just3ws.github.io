@@ -1,0 +1,369 @@
+---
+layout: base
+title: "The Living History of Software Craftsmanship: SCMC, UGtastic, and the Architecture of Community (2009–2026)"
+description: "A lived, primary-source chronicle tracing the Software Craftsmanship movement from the 2008 Libertyville Summit through the founding of SCMC and UGtastic, to its vital re-emergence in the 2026 Age of AI. By Mike Hall, Signatory #106."
+permalink: /reports/software-craftsmanship-forensics/living-history/
+localhost_only: true
+body_class: report-living-history
+---
+
+{% assign data = site.data.research.agile_scm_intersection %}
+{% assign sum  = data.summary %}
+{% assign scmc_videos = site.data.scmc_videos.items %}
+
+<div class="report-container" style="max-width: 72rem; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: var(--font-sans-ui, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif); color: var(--color-text-main, #1e232a); line-height: 1.7;">
+
+  <!-- Header -->
+  <header style="margin-bottom: 2.5rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1.75rem;">
+    <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+      <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.35); font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">
+        🔒 Localhost Research Epic
+      </span>
+      <span style="background: rgba(37, 99, 235, 0.1); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+        Primary Source History
+      </span>
+      <span style="background: rgba(124, 58, 237, 0.1); color: #7c3aed; border: 1px solid rgba(124, 58, 237, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+        17-Year Living Canon
+      </span>
+      <span style="color: var(--color-text-muted, #64748b); font-size: 0.85rem; margin-left: auto;">
+        October 2026 · By Mike Hall (Signatory #106)
+      </span>
+    </div>
+
+    <nav style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-bottom: 1rem;">
+      <a href="/reports/software-craftsmanship-forensics/" style="color: #0f766e; text-decoration: none;">← SCM Forensics Report</a>
+      <span style="margin: 0 0.4rem;">›</span>
+      <a href="/reports/software-craftsmanship-forensics/signatory-network/" style="color: #0f766e; text-decoration: none;">Signatory Network Map</a>
+      <span style="margin: 0 0.4rem;">›</span>
+      <a href="/reports/software-craftsmanship-forensics/agile-manifesto-intersection/" style="color: #0f766e; text-decoration: none;">Agile Intersection</a>
+      <span style="margin: 0 0.4rem;">›</span>
+      <span>Living History &amp; Origin Epic</span>
+    </nav>
+
+    <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0 0 0.75rem 0; font-family: var(--font-serif-editorial, Georgia, serif); letter-spacing: -0.02em; line-height: 1.2;">
+      The Living History of Software Craftsmanship:<br>
+      <span style="color: var(--color-primary, #0f766e);">SCMC, UGtastic, and the Architecture of Community</span>
+    </h1>
+    <p style="font-size: 1.2rem; color: var(--color-text-muted, #525866); max-width: 56rem; margin: 0; line-height: 1.6; font-style: italic;">
+      "I wanted to learn how to build a user-group community—and that curiosity was what bore up UGtastic. SCMC was the suburban laboratory; UGtastic was the roving broadcast. Seventeen years later, SCMC still meets, the archive preserves the voices of the founders, and in the Age of AI, the need for Software Craftsmanship has never been more urgent."
+    </p>
+  </header>
+
+  <!-- Author Anchor Badge -->
+  <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 5px solid #0f766e; border-radius: 0.5rem; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #0f766e; letter-spacing: 0.05em;">Lived Witness &amp; Primary Source Author</div>
+      <div style="font-size: 1.15rem; font-weight: 800; color: #0f172a;">Michael D. Hall · SCM Signatory #106 · SCMC Co-Founder · UGtastic Creator</div>
+      <div style="font-size: 0.85rem; color: #64748b; margin-top: 0.2rem;">Signed Friday, March 6, 2009 at 7:06:59 PM CST (Crystal Lake, IL) · 184 Interviews · 11 SCMC Sessions</div>
+    </div>
+    <div style="display: flex; gap: 0.5rem;">
+      <a href="/scmc/" style="font-size: 0.82rem; font-weight: 700; background: #0f766e; color: #fff; padding: 0.4rem 0.8rem; border-radius: 0.375rem; text-decoration: none;">SCMC Hub &rarr;</a>
+      <a href="/interviews/" style="font-size: 0.82rem; font-weight: 700; background: #2563eb; color: #fff; padding: 0.4rem 0.8rem; border-radius: 0.375rem; text-decoration: none;">UGtastic Canon &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Section 1: The Dual Engine -->
+  <section style="margin-bottom: 3rem;">
+    <h2 style="font-size: 1.6rem; font-weight: 800; color: #0f172a; margin: 0 0 1rem 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">
+      1. The Dual Engine: SCMC as Laboratory, UGtastic as Curriculum
+    </h2>
+    <p>
+      In early 2009, when the Software Craftsmanship Manifesto appeared on the web, I was living in Crystal Lake, Illinois. I signed the ledger on March 6 as <strong>Signatory #106</strong>. But reading a manifesto in a web browser was fundamentally passive. The manifesto spoke of <em>"a community of professionals"</em> and <em>"practicing it and helping others learn the craft."</em> That required real people in physical rooms.
+    </p>
+    <p>
+      I didn't know how to build a thriving technical user community. So I designed a two-handed strategy:
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+      <div style="background: rgba(15, 118, 110, 0.04); border: 1px solid rgba(15, 118, 110, 0.25); border-radius: 0.5rem; padding: 1.5rem;">
+        <div style="font-size: 0.8rem; font-weight: 800; color: #0f766e; text-transform: uppercase; margin-bottom: 0.35rem;">The Local Laboratory</div>
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0 0 0.75rem 0;">Software Craftsmanship McHenry County (SCMC)</h3>
+        <p style="font-size: 0.9rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.6;">
+          Founded in late 2009 with Ryan Gerry and Jim Suchy. Suburban developers had a two-hour train ride into downtown Chicago if they wanted to attend meetups. SCMC was our answer: a language-agnostic, polyglot space where engineers gathered to write code, critique architecture, and practice katas without corporate sponsorship or downtown pretension.
+        </p>
+        <div style="font-size: 0.82rem; color: #0f766e; font-weight: 700;">
+          Started in Panera backrooms &rarr; Permanent home at Follett &rarr; Active today (820+ members).
+        </div>
+      </div>
+
+      <div style="background: rgba(37, 99, 235, 0.04); border: 1px solid rgba(37, 99, 235, 0.25); border-radius: 0.5rem; padding: 1.5rem;">
+        <div style="font-size: 0.8rem; font-weight: 800; color: #2563eb; text-transform: uppercase; margin-bottom: 0.35rem;">The Field Inquiry &amp; Broadcast</div>
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0 0 0.75rem 0;">UGtastic: User Group Fantastic</h3>
+        <p style="font-size: 0.9rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.6;">
+          To understand how great user groups worked, I packed broadcast cameras, shotgun microphones, and portable lights and traveled to conferences (SCNA, GOTO, Ruby events). I interviewed organizers, authors, and practitioners specifically about the craft of community building. What started as personal research became the definitive video archive of the movement.
+        </p>
+        <div style="font-size: 0.82rem; color: #2563eb; font-weight: 700;">
+          184 in-depth interviews &rarr; 191 interviewees &rarr; Fully transcribed with AI vector search.
+        </div>
+      </div>
+    </div>
+
+    <p>
+      The recurring tag across the UGtastic archive—<a href="/interviews/topics/community-building-and-user-group-organizing/" style="color: #0f766e; font-weight: 700; text-decoration: underline;">"Community Building and User-group Organizing"</a>—was not an accidental editorial classification. It was the core research curriculum. SCMC was where we tried the ideas; UGtastic was where we asked the world's best practitioners how they did it.
+    </p>
+  </section>
+
+  <!-- Section 2: Chronological Graph & Timeline -->
+  <section style="margin-bottom: 3rem;">
+    <h2 style="font-size: 1.6rem; font-weight: 800; color: #0f172a; margin: 0 0 1rem 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">
+      2. The Master Timeline: From Snowbird to the Age of AI (2001–2026)
+    </h2>
+    <p>
+      The story spans twenty-five years across four distinct phases: the original Agile declaration, the Software Craftsmanship corrective, the living community decade, and the modern re-evaluation in the era of generative AI:
+    </p>
+
+    <div style="border-left: 3px solid #0f766e; padding-left: 1.5rem; margin: 2rem 0; display: flex; flex-direction: column; gap: 1.75rem;">
+      
+      <!-- 2001 -->
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 1.1rem; font-weight: 800; color: #0f766e;">February 2001</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">Snowbird, Utah</span>
+        </div>
+        <div style="font-weight: 700; color: #0f172a; font-size: 1.05rem; margin-top: 0.2rem;">The Agile Manifesto Drafted</div>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0.3rem 0 0 0;">
+          Seventeen practitioners (including Robert C. Martin, Brian Marick, Ron Jeffries, Jon Kern, Dave "pragdave" Thomas) author the 38-word manifesto against heavyweight waterfall bureaucracy. Over the next two decades, 19,090 community members sign the online petition.
+        </p>
+      </div>
+
+      <!-- 2008 -->
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 1.1rem; font-weight: 800; color: #0f766e;">December 13, 2008</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #d97706; text-transform: uppercase;">Libertyville, Illinois (8th Light)</span>
+        </div>
+        <div style="font-weight: 700; color: #0f172a; font-size: 1.05rem; margin-top: 0.2rem;">The Software Craftsmanship Summit</div>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0.3rem 0 0 0;">
+          Spurred by Uncle Bob's "Craftsmanship over Crap" blog post, ~30 developers convene at 8th Light's suburban Chicago office. Frustrated that corporate Agile discarded technical excellence (TDD, refactoring, code quality) in favor of certification mills and velocity charts, they resolve to formulate a manifesto for programmers.
+        </p>
+      </div>
+
+      <!-- 2009: Manifesto -->
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 1.1rem; font-weight: 800; color: #0f766e;">March 2009</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #7c3aed; text-transform: uppercase;">manifesto.softwarecraftsmanship.org</span>
+        </div>
+        <div style="font-weight: 700; color: #0f172a; font-size: 1.05rem; margin-top: 0.2rem;">Manifesto Published · Mike Hall Registers as #106</div>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0.3rem 0 0 0;">
+          Doug Bradbury synthesizes "The New Left Side". The authors take the first positions: #1 Bradbury, #2 Haines, #3 Pagel, #4 Micah Martin, #5 Uncle Bob, #6 Chelimsky. On Friday, March 6 at 7:06 PM CST, Mike Hall registers from Crystal Lake, IL as Signatory #106. The ledger eventually reaches 27,601 confirmed records.
+        </p>
+      </div>
+
+      <!-- Late 2009: SCMC -->
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 1.1rem; font-weight: 800; color: #0f766e;">Late 2009</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Crystal Lake &amp; McHenry, IL</span>
+        </div>
+        <div style="font-weight: 700; color: #0f172a; font-size: 1.05rem; margin-top: 0.2rem;">SCMC Founded by Mike Hall, Ryan Gerry, and Jim Suchy</div>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0.3rem 0 0 0;">
+          Initial meetings held at Panera Bread and upstairs at Duke's Alehouse in Crystal Lake. Ryan Gerry secures permanent meeting facilities at Follett Software Company in McHenry, providing projectors and a consistent gathering space for hands-on technical sessions.
+        </p>
+      </div>
+
+      <!-- 2011-2015: UGtastic -->
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 1.1rem; font-weight: 800; color: #0f766e;">2011–2015</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">Chicago (SCNA), GOTO, Regional Events</span>
+        </div>
+        <div style="font-weight: 700; color: #0f172a; font-size: 1.05rem; margin-top: 0.2rem;">The UGtastic Broadcast Era</div>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0.3rem 0 0 0;">
+          Mike Hall records 184 interviews across SCNA and GOTO Conferences. Key interviews recorded: Uncle Bob Martin on performance, Dave "pragdave" Thomas on intuition, Ron Jeffries &amp; Chet Hendrickson on visual thinking, Brian Marick on presentation mastery, Micah Martin on user groups, and Corey Haines on code retreats. Uncle Bob presents <em>"The A Word: Architecture"</em> at SCMC (Oct 5, 2011).
+        </p>
+      </div>
+
+      <!-- 2015-2025: SCMC Endurance -->
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 1.1rem; font-weight: 800; color: #0f766e;">2015–2025</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">McHenry County, IL</span>
+        </div>
+        <div style="font-weight: 700; color: #0f172a; font-size: 1.05rem; margin-top: 0.2rem;">The Sustained Community: 17 Years of Ryan Gerry's Stewardship</div>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0.3rem 0 0 0;">
+          While many regional user groups collapsed under conference consolidation or COVID-19 remote fatigue, SCMC persevered. Ryan Gerry and the leadership team maintained monthly meetings, growing the community to over 820 Meetup members.
+        </p>
+      </div>
+
+      <!-- September 2026: Phalanx Duel Presentation -->
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 1.1rem; font-weight: 800; color: #0f766e;">September 15, 2026</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #d97706; text-transform: uppercase;">SCMC Monthly Meeting</span>
+        </div>
+        <div style="font-weight: 700; color: #0f172a; font-size: 1.05rem; margin-top: 0.2rem;">Mike Hall Returns to Present at SCMC: "Phalanx Duel: Make the Rules Legible"</div>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0.3rem 0 0 0;">
+          Presenting seventeen years after co-founding the group, demonstrating deterministic game state rules, system legibility, and architectural traceability—connecting physical tactical games to modern software cartography.
+        </p>
+      </div>
+
+      <!-- October 2026: Datalake Forensic Reconstruction -->
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+          <span style="font-size: 1.1rem; font-weight: 800; color: #0f766e;">October 2026</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #7c3aed; text-transform: uppercase;">Platform &amp; Datalake Cartography</span>
+        </div>
+        <div style="font-weight: 700; color: #0f172a; font-size: 1.05rem; margin-top: 0.2rem;">Full Forensic Hydration in DuckDB &amp; AI-Era Reassessment</div>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0.3rem 0 0 0;">
+          27,601 SCM signatories, 19,090 Agile signatories, and 184 UGtastic transcripts are united into an immutable DuckDB datalake and indexed into pgvector, establishing the empirical foundation for the book on the movement.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 3: The Personality of SCMC -->
+  <section style="margin-bottom: 3rem;">
+    <h2 style="font-size: 1.6rem; font-weight: 800; color: #0f172a; margin: 0 0 1rem 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">
+      3. The Distinct Personality and Leadership Vision of SCMC
+    </h2>
+    <p>
+      Technical communities are fragile. Most tech meetups have a half-life of eighteen months: they launch with enthusiasm, exhaust their initial speaker pool, lose their sponsor, and vanish. SCMC did not vanish. It is in its seventeenth consecutive year.
+    </p>
+    <p>
+      SCMC survived because of a distinct culture established by Ryan Gerry, Jim Suchy, and myself in the early days:
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+      <div style="background: #fff; border: 1px solid #e2e8f0; border-top: 3px solid #0f766e; border-radius: 0.375rem; padding: 1.25rem;">
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem 0;">Suburban Independence</h4>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0; line-height: 1.5;">
+          We rejected the assumption that serious software engineering only happened inside the Chicago Loop. Engineers who lived in McHenry, Lake, Kane, and Cook counties had real craft problems to solve. SCMC gave them a home where they didn't have to battle Metra schedules to talk about code.
+        </p>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e2e8f0; border-top: 3px solid #2563eb; border-radius: 0.375rem; padding: 1.25rem;">
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem 0;">Polyglot by Principle</h4>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0; line-height: 1.5;">
+          SCMC was never a "Ruby meetup" or a ".NET group" or a "Java shop." Look at the 11 preserved presentations: Scott Seely taught modern C++; Peter Krawczyk taught jQuery for Perl developers; Igor Polevoy taught ActiveJDBC for Java; Billy Whited taught front-end CSS architecture. Craftsmanship was about design, testing, and legibility, regardless of language syntax.
+        </p>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e2e8f0; border-top: 3px solid #d97706; border-radius: 0.375rem; padding: 1.25rem;">
+        <h4 style="font-size: 1.05rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem 0;">Ryan Gerry's Sustained Stewardship</h4>
+        <p style="font-size: 0.88rem; color: #475569; margin: 0; line-height: 1.5;">
+          A user group requires someone who shows up, turns on the lights, tests the HDMI cables, and welcomes the newcomer standing awkwardly at the door. Ryan Gerry did that month after month, year after year. SCMC's endurance is a testament to the unglamorous, faithful stewardship that true community requires.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Craftsmanship in the Age of AI -->
+  <section style="background: rgba(124, 58, 237, 0.04); border: 2px solid rgba(124, 58, 237, 0.25); border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem;">
+    <h2 style="font-size: 1.6rem; font-weight: 800; color: #0f172a; margin: 0 0 0.75rem 0;">
+      4. Software Craftsmanship in the Age of AI (2026 &amp; Beyond)
+    </h2>
+    <p style="font-size: 1.05rem; color: #475569; margin: 0 0 1.25rem 0; line-height: 1.6;">
+      In 2026, generative AI models can generate syntax at 100 tokens per second. They can write a function, stub a test, and spin up an API endpoint before a human developer finishes reading the prompt. Many voices claim that programming is over, that craftsmanship is an obsolete nostalgia, and that "good enough" AI code will replace engineering rigor.
+    </p>
+    <p style="font-size: 1.05rem; color: #0f172a; font-weight: 700; margin: 0 0 1.25rem 0;">
+      They are making the exact same error the Agile certification movement made in 2005: confusing the generation of artifacts with the stewardship of a living system.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; font-size: 0.9rem;">
+      <div style="background: #fff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
+        <strong style="color: #7c3aed; display: block; margin-bottom: 0.4rem;">Working Software vs. Well-Crafted Software</strong>
+        <p style="margin: 0; color: #475569; line-height: 1.5;">
+          AI excels at producing code that runs once. But code that merely "works" degrades quickly if its contracts, state boundaries, and data flows are unexamined. In the AI era, <strong>well-crafted software</strong> means code that is legible to future humans and models, verifiable by deterministic tests, and architecturally bounded.
+        </p>
+      </div>
+
+      <div style="background: #fff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
+        <strong style="color: #7c3aed; display: block; margin-bottom: 0.4rem;">Responding to Change vs. Steadily Adding Value</strong>
+        <p style="margin: 0; color: #475569; line-height: 1.5;">
+          AI makes code cheap to generate, which creates an explosion of technical debt. <strong>Steadily adding value</strong> means exercising restraint: applying the Ponytail Principle, pruning dead abstractions, and refusing to check in code whose failure modes you cannot explain.
+        </p>
+      </div>
+
+      <div style="background: #fff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
+        <strong style="color: #7c3aed; display: block; margin-bottom: 0.4rem;">Individuals &amp; Interactions vs. Community of Professionals</strong>
+        <p style="margin: 0; color: #475569; line-height: 1.5;">
+          Prompting an LLM in isolation is not engineering. A <strong>community of professionals</strong> provides the social immune system: peer review, ethical pushback, architectural debate, and mentorship. The machines don't have ethics; the community must.
+        </p>
+      </div>
+
+      <div style="background: #fff; padding: 1.25rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
+        <strong style="color: #7c3aed; display: block; margin-bottom: 0.4rem;">Customer Collaboration vs. Productive Partnerships</strong>
+        <p style="margin: 0; color: #475569; line-height: 1.5;">
+          When non-technical stakeholders believe AI will deliver features instantly for free, the craftsman's role is to be a <strong>productive partner</strong>: someone who can explain why system legibility, data integrity, and observable control planes matter for the company's survival.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: The Book Scaffolding -->
+  <section style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 0.75rem; padding: 2rem; margin-bottom: 3rem;">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+      <span style="background: #0f172a; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">
+        Author's Blueprint
+      </span>
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0;">
+        The Scaffolding for the Book: Five Movements
+      </h2>
+    </div>
+    <p style="font-size: 0.95rem; color: #525866; margin: 0 0 1.5rem 0;">
+      This lived, documented record forms the primary-source backbone of the book on the Software Craftsmanship movement:
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem;">
+      <div style="background: #fff; padding: 1rem 1.25rem; border-radius: 0.375rem; border-left: 4px solid #0f766e;">
+        <strong style="color: #0f172a;">Movement I: The Rupture at Snowbird and the Crisis of Quality (2001–2008)</strong>
+        <p style="color: #64748b; margin: 0.25rem 0 0 0;">How Agile's commercial victory led to the abandonment of engineering discipline, and how "Uncle Bob" Martin's December 2008 ultimatum sparked the Libertyville Summit.</p>
+      </div>
+
+      <div style="background: #fff; padding: 1rem 1.25rem; border-radius: 0.375rem; border-left: 4px solid #2563eb;">
+        <strong style="color: #0f172a;">Movement II: The Libertyville Summit and the 27,601-Name Ledger (2008–2009)</strong>
+        <p style="color: #64748b; margin: 0.25rem 0 0 0;">The behind-the-scenes drafting of the manifesto at 8th Light, the formulation of "The New Left Side," and the launch of the public ledger where Signatory #106 anchored a suburban voice.</p>
+      </div>
+
+      <div style="background: #fff; padding: 1rem 1.25rem; border-left: 4px solid #d97706;">
+        <strong style="color: #0f172a;">Movement III: The Laboratory in McHenry County (2009–2012)</strong>
+        <p style="color: #64748b; margin: 0.25rem 0 0 0;">Founding SCMC, moving from Panera and Duke's Alehouse to Follett, and the culture of suburban craftsmanship that proved engineering rigor does not require a downtown zip code.</p>
+      </div>
+
+      <div style="background: #fff; padding: 1rem 1.25rem; border-left: 4px solid #7c3aed;">
+        <strong style="color: #0f172a;">Movement IV: The Chronicler's Microphone: 184 Voices (2011–2015)</strong>
+        <p style="color: #64748b; margin: 0.25rem 0 0 0;">Recording UGtastic at SCNA and GOTO: interviewing Uncle Bob, Dave "pragdave" Thomas, Ron Jeffries, Brian Marick, Micah Martin, Dave Hoover, and Corey Haines on the lived reality of software as a craft.</p>
+      </div>
+
+      <div style="background: #fff; padding: 1rem 1.25rem; border-left: 4px solid #059669;">
+        <strong style="color: #0f172a;">Movement V: The Manifesto in the Age of Generative AI (2026 &amp; Beyond)</strong>
+        <p style="color: #64748b; margin: 0.25rem 0 0 0;">Why automated syntax generation makes craftsmanship mandatory rather than obsolete, and how human communities of professionals will govern the software architectures of tomorrow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Network & Wiki Index Cross-Links -->
+  <section style="border-top: 2px solid var(--color-border, #e3dfd7); padding-top: 2rem;">
+    <h3 style="font-size: 1.2rem; font-weight: 800; color: #0f172a; margin: 0 0 1rem 0;">
+      Fully-Linked Research &amp; Archival Artifacts
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+      <a href="/reports/software-craftsmanship-forensics/" style="display: block; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; text-decoration: none; background: #fff;">
+        <div style="font-size: 0.72rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Forensic Investigation</div>
+        <div style="font-weight: 700; color: #0f172a; margin: 0.2rem 0;">Archaeological Cartography &amp; Signatory #106</div>
+        <div style="font-size: 0.8rem; color: #64748b;">The technical decomposition of softwarecraftsmanship.org and the immutable ledger.</div>
+      </a>
+
+      <a href="/reports/software-craftsmanship-forensics/signatory-network/" style="display: block; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; text-decoration: none; background: #fff;">
+        <div style="font-size: 0.72rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">Network Analysis</div>
+        <div style="font-weight: 700; color: #0f172a; margin: 0.2rem 0;">Signatory Network Map (SCM × UGtastic × SCMC)</div>
+        <div style="font-size: 0.8rem; color: #64748b;">54 signatories cross-referenced with UGtastic interviews and SCMC presentations.</div>
+      </a>
+
+      <a href="/reports/software-craftsmanship-forensics/agile-manifesto-intersection/" style="display: block; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; text-decoration: none; background: #fff;">
+        <div style="font-size: 0.72rem; font-weight: 700; color: #7c3aed; text-transform: uppercase;">Three-Way Cartography</div>
+        <div style="font-weight: 700; color: #0f172a; margin: 0.2rem 0;">Agile × Craftsmanship: Authors &amp; Signatories</div>
+        <div style="font-size: 0.8rem; color: #64748b;">17 Agile Authors, 9 SCM Authors, 1,853 Shared Signatories, Dave Thomas Disambiguation.</div>
+      </a>
+
+      <a href="/scmc/" style="display: block; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; text-decoration: none; background: #fff;">
+        <div style="font-size: 0.72rem; font-weight: 700; color: #d97706; text-transform: uppercase;">Dedicated Hub</div>
+        <div style="font-weight: 700; color: #0f172a; margin: 0.2rem 0;">SCMC Meeting Canon &amp; Presentation Archives</div>
+        <div style="font-size: 0.8rem; color: #64748b;">11 preserved video recordings from Uncle Bob, Andy Lester, Scott Seely, Mike Jansen.</div>
+      </a>
+    </div>
+  </section>
+
+</div>
