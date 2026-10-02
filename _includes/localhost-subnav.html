@@ -26,6 +26,9 @@
 
     <div class="localhost-nav-links">
       <!-- Localhost Hub Link: Executive Pitch Briefs -->
+      <a href="/dashboard/" class="lh-dropdown-btn{% if page.url contains '/dashboard/' %} is-active{% endif %}" style="text-decoration: none;">
+        <span>⚡ Dashboard</span>
+      </a>
       <a href="/exports/briefs/" class="lh-dropdown-btn{% if page.url contains '/exports/briefs/' %} is-active{% endif %}" style="text-decoration: none;">
         <span>🎯 Executive Briefs Hub</span>
       </a>
@@ -86,6 +89,9 @@
           <div class="lh-menu-divider"></div>
           <a href="/reports/content-opportunities/" class="lh-menu-item{% if page.url contains '/reports/content-opportunities/' %} is-active{% endif %}" role="menuitem">
             <strong>Content Opportunities Hub</strong> (/reports/content-opportunities/)
+          </a>
+          <a href="/reports/software-craftsmanship-forensics/" class="lh-menu-item{% if page.url contains '/reports/software-craftsmanship-forensics/' %} is-active{% endif %}" role="menuitem">
+            <strong>SCM Forensics Report</strong> (/reports/software-craftsmanship-forensics/) 📜
           </a>
         </div>
       </div>

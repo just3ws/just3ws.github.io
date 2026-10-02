@@ -43,7 +43,7 @@ That is what zdots is. That is what it took seventeen years to build.
 ## Software Craftsmanship, 2009
 
 In March 2009, Mike was the 106th signatory of the Software Craftsmanship
-Manifesto. That same spring, he founded the Software Craftsmanship McHenry
+Manifesto.[^scm-signatory] That same spring, he founded the Software Craftsmanship McHenry
 County user group, a practitioner community in the northern Illinois suburbs.
 
 He was working at 8th Light and Obtiva during that period. The manifesto was
@@ -204,3 +204,5 @@ to say.
 _The UGtastic archive is available at [just3ws.localhost/interviews](/interviews/).
 The SCMC community history lives at [just3ws.localhost/scmc](/scmc/).
 The platform source is at [github.com/just3ws/zdots](https://github.com/just3ws/zdots)._
+
+[^scm-signatory]: Verified against the live [manifesto.softwarecraftsmanship.org](https://manifesto.softwarecraftsmanship.org) search API: listed as **Michael D. Hall, Crystal Lake, IL**, signatory **#106** (`id: 106`), signed on **Friday, March 6, 2009 at 7:06:59 PM CST** (`2009-03-07T01:06:59.000Z`).

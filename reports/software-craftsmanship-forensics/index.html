@@ -1,0 +1,372 @@
+---
+layout: base
+title: "Forensic Analysis: Software Craftsmanship Manifesto & Domain Cartography"
+description: "Comprehensive archaeological and timeline analysis of softwarecraftsmanship.org, signatory ledger drift (106th signatory), subdomains, and 17-year link decay."
+permalink: /reports/software-craftsmanship-forensics/
+localhost_only: true
+body_class: report-software-craftsmanship-forensics
+---
+
+<div class="report-container" style="max-width: 68rem; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: var(--font-sans-ui, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif); color: var(--color-text-main, #1e232a); line-height: 1.65;">
+
+  <!-- Header & Metadata Badge -->
+  <header style="margin-bottom: 2.5rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1.75rem;">
+    <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+      <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.35); font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">
+        🔒 Localhost Research Report
+      </span>
+      <span style="background: rgba(37, 99, 235, 0.1); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+        DuckDB Datalake Hydrated
+      </span>
+      <span style="background: rgba(217, 119, 6, 0.1); color: #d97706; border: 1px solid rgba(217, 119, 6, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+        Hister Indexed
+      </span>
+      <span style="color: var(--color-text-muted, #64748b); font-size: 0.85rem; margin-left: auto;">
+        October 02, 2026
+      </span>
+    </div>
+
+    <h1 style="font-size: 2.4rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0 0 0.75rem 0; font-family: var(--font-serif-editorial, Georgia, serif); letter-spacing: -0.02em;">
+      Archaeological Cartography: <br><span style="color: var(--color-primary, #0f766e);">softwarecraftsmanship.org</span> & The Signatory Ledger
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--color-text-muted, #525866); max-width: 52rem; margin: 0; line-height: 1.6;">
+      Forensic timeline reconstruction, technical stack decomposition, and archival comparison of the 17-year living monument of the Software Craftsmanship movement (2009–2026).
+    </p>
+  </header>
+
+  <!-- High-Level Metric Tiles -->
+  <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 2.5rem;">
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
+      <div style="font-size: 2rem; font-weight: 800; color: var(--color-primary, #0f766e);">#106</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">Mike Hall Canonical ID</div>
+      <div style="font-size: 0.75rem; color: #059669; margin-top: 0.25rem;">March 6, 2009 (7:06 PM CST)</div>
+    </div>
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
+      <div style="font-size: 2rem; font-weight: 800; color: #2563eb;">37,842</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">Latest Lifetime ID</div>
+      <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem;">Signed October 2, 2026</div>
+    </div>
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
+      <div style="font-size: 2rem; font-weight: 800; color: #0891b2;">27,601</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">Active Confirmed Ledger</div>
+      <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem;">307 API Pages Ingested</div>
+    </div>
+    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
+      <div style="font-size: 2rem; font-weight: 800; color: #dc2626;">28.6%</div>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase;">Link Decay Rate</div>
+      <div style="font-size: 0.75rem; color: #dc2626; margin-top: 0.25rem;">10 of 35 Curated Links Dead</div>
+    </div>
+  </section>
+
+  <!-- Section 1: The Mike Hall Verification Anchor -->
+  <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      1. Canonical Signature Verification
+    </h2>
+    <p>
+      While the public web application renders unnumbered pagination tables, the internal search API preserves immutable primary keys and exact ISO-8601 UTC timestamps:
+    </p>
+
+    <div style="background: #0f172a; color: #e2e8f0; padding: 1.25rem; border-radius: 0.5rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.875rem; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #64748b;">// GET https://manifesto.softwarecraftsmanship.org/signatories/search?name=Hall</span>
+{
+  <span style="color: #38bdf8;">"id"</span>: <span style="color: #f59e0b;">106</span>,
+  <span style="color: #38bdf8;">"number"</span>: <span style="color: #f59e0b;">106</span>,
+  <span style="color: #38bdf8;">"name"</span>: <span style="color: #34d399;">"Michael D. Hall"</span>,
+  <span style="color: #38bdf8;">"location"</span>: <span style="color: #34d399;">"Crystal Lake, IL"</span>,
+  <span style="color: #38bdf8;">"signed_on"</span>: <span style="color: #a78bfa;">"2009-03-07T01:06:59.000Z"</span>
+}
+    </div>
+
+    <ul style="margin: 0; padding-left: 1.25rem;">
+      <li><strong>Local Creation Time:</strong> <strong>Friday, March 6, 2009 at 7:06:59 PM CST</strong> (Central Standard Time).</li>
+      <li><strong>Canonical Signatory Rank:</strong> <strong>106th signatory</strong> in the immutable database ledger.</li>
+      <li><strong>Registered Identity:</strong> Signed as <code>Michael D. Hall</code>, situated in <code>Crystal Lake, IL</code>.</li>
+    </ul>
+  </section>
+
+  <!-- Section 2: Timeline Discrepancies & Ledger Drift -->
+  <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      2. Forensic Timeline: The Mystery of Positions #106, #102, and #101
+    </h2>
+    <p>
+      A comparative audit between the <strong>earliest Internet Archive Wayback snapshot (March 10, 2009)</strong> and the <strong>2026 live database</strong> answers why different surfaces reported different ranks over time:
+    </p>
+
+    <div style="background: var(--color-bg-subtle, #f8fafc); border-left: 4px solid var(--color-primary, #0f766e); padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.375rem 0.375rem 0;">
+      <h3 style="font-size: 1.05rem; margin: 0 0 0.5rem 0; color: #0f172a;">The Core Findings:</h3>
+      <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.7;">
+        <li>
+          <strong>The Double-Submission Bug of 2009:</strong> In the initial March 10, 2009 HTML page, early signatory <strong>Cory Foy (Tampa, FL)</strong> was accidentally rendered <em>twice</em> (occupying both row #28 and row #32). This shifted all subsequent signatories back by +1. Thus, Mike Hall was visually displayed at row <strong>#102</strong>.
+        </li>
+        <li>
+          <strong>Asynchronous Email Confirmation Gap:</strong> When Mike signed at 7:06 PM on March 6, database auto-increment assigned <code>id: 106</code>. Submissions #101 through #105 were sitting in the database in a pending transactional state awaiting email confirmation tokens.
+        </li>
+        <li>
+          <strong>The SPA Consolidation (2011–2014):</strong> When 8th Light rebuilt the site as a Backbone.js SPA, the duplicate Cory Foy entry at #28 was purged and consolidated at #31. The removal of this duplicate shifted all subsequent rows forward by -1 (Joseph Leddy from #29→#28, Nathaniel Talbott from #101→#100, and <strong>Michael D. Hall from #102→#101</strong>).
+        </li>
+      </ol>
+    </div>
+
+    <!-- Comparative Table -->
+    <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Archival Drift Analysis Table</h3>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem; text-align: left;">
+        <thead>
+          <tr style="background: #f1f5f9; border-bottom: 2px solid #cbd5e1;">
+            <th style="padding: 0.6rem 0.75rem;">Signatory</th>
+            <th style="padding: 0.6rem 0.75rem; text-align: center;">2009 Snapshot Rank</th>
+            <th style="padding: 0.6rem 0.75rem; text-align: center;">2026 Table Rank</th>
+            <th style="padding: 0.6rem 0.75rem; text-align: center;">Canonical DB ID</th>
+            <th style="padding: 0.6rem 0.75rem;">Forensic Cause / Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 0.6rem 0.75rem; font-weight: 700;">Doug Bradbury</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#1</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#1</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">1</td>
+            <td style="padding: 0.6rem 0.75rem;">Primary Author / 8th Light Founder</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 0.6rem 0.75rem; font-weight: 700;">Robert C. Martin</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#5</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#5</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">5</td>
+            <td style="padding: 0.6rem 0.75rem;">Signed March 6, 2009 at 20:36 UTC</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e2e8f0; background: #fffbeb;">
+            <td style="padding: 0.6rem 0.75rem; font-weight: 700; color: #b45309;">Cory Foy</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center; font-weight: 700; color: #dc2626;">#28 & #32</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center; font-weight: 700;">#31</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">31</td>
+            <td style="padding: 0.6rem 0.75rem;"><strong>Double-Submission:</strong> Rendered twice in 2009; deduped in Rails rewrite.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 0.6rem 0.75rem; font-weight: 700;">Joseph Leddy</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#29</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#28</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">28</td>
+            <td style="padding: 0.6rem 0.75rem;">Shifted forward by -1 after Cory Foy deduplication.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 0.6rem 0.75rem; font-weight: 700;">Nathaniel Talbott</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#101</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#100</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">100</td>
+            <td style="padding: 0.6rem 0.75rem;">Shifted forward by -1 after deduplication.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e2e8f0; background: #f0fdf4;">
+            <td style="padding: 0.6rem 0.75rem; font-weight: 800; color: #15803d;">Michael D. Hall</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center; font-weight: 800;">#102</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center; font-weight: 800;">#101</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center; font-weight: 800; color: #047857;">106</td>
+            <td style="padding: 0.6rem 0.75rem;"><strong>Canonical DB ID 106.</strong> Rank 102 in 2009 HTML, Rank 101 in SPA table.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 0.6rem 0.75rem; font-weight: 700; color: #64748b;">Casey Charlton</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">#120</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center; color: #dc2626;">Purged</td>
+            <td style="padding: 0.6rem 0.75rem; text-align: center;">120</td>
+            <td style="padding: 0.6rem 0.75rem;">Withdrawn signature; deleted via confirmation removal workflow.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 3: Technical Stack & Infrastructure Archeology -->
+  <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      3. Technical Stack & Infrastructure Archeology
+    </h2>
+    <p>
+      Inspecting static assets (e.g. <code>javascripts/setup.js</code>) and DNS routes identifies the complete runtime environment:
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+      <div style="border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 1rem;">
+        <h4 style="margin: 0 0 0.5rem 0; color: #0f766e;">Hosting & Operator</h4>
+        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.875rem;">
+          <li><strong>Owner:</strong> 8th Light, Inc.</li>
+          <li><strong>Staging Seam:</strong> <code>scmanifesto-staging.8thlight.com</code></li>
+          <li><strong>Hosting:</strong> AWS Elastic Beanstalk (<code>us-east-1</code>)</li>
+          <li><strong>DNS:</strong> DNSimple Anycast Nameservers</li>
+        </ul>
+      </div>
+
+      <div style="border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 1rem;">
+        <h4 style="margin: 0 0 0.5rem 0; color: #2563eb;">Runtime Stack</h4>
+        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.875rem;">
+          <li><strong>Backend:</strong> Ruby on Rails JSON API</li>
+          <li><strong>Frontend:</strong> Backbone.js 1.3.3 + Underscore.js</li>
+          <li><strong>DOM/Ajax:</strong> jQuery 3.6.0 (security bump ~2021)</li>
+          <li><strong>Metrics Visualization:</strong> D3.js v3</li>
+          <li><strong>CSS Template:</strong> Dieter Schneider (2006)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Curated Reading List & Link Rot Audit -->
+  <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      4. Curated Reading List: 17-Year Link Decay Audit
+    </h2>
+    <p>
+      The manifesto site curates 35 canonical reference links across foundational literature, essays, and community resources. A live HTTP probing suite reveals an overall <strong>28.6% decay rate</strong>:
+    </p>
+
+    <div style="overflow-x: auto; margin-top: 1rem;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+        <thead>
+          <tr style="background: #f1f5f9; border-bottom: 2px solid #cbd5e1;">
+            <th style="padding: 0.5rem 0.75rem;">Resource Name</th>
+            <th style="padding: 0.5rem 0.75rem;">Section</th>
+            <th style="padding: 0.5rem 0.75rem; text-align: center;">HTTP Status</th>
+            <th style="padding: 0.5rem 0.75rem;">Observed State</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">The Pragmatic Programmer</td>
+            <td style="padding: 0.5rem 0.75rem;">Background</td>
+            <td style="padding: 0.5rem 0.75rem; text-align: center; color: #16a34a; font-weight: 700;">200 OK</td>
+            <td style="padding: 0.5rem 0.75rem;">Amazon book listing active</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Apprenticeship Patterns</td>
+            <td style="padding: 0.5rem 0.75rem;">Background</td>
+            <td style="padding: 0.5rem 0.75rem; text-align: center; color: #16a34a; font-weight: 700;">200 OK</td>
+            <td style="padding: 0.5rem 0.75rem;">O'Reilly Chimera lab active</td>
+          </tr>
+          <tr style="background: #fef2f2;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Unskilled and Unaware (Dunning-Kruger)</td>
+            <td style="padding: 0.5rem 0.75rem;">Background</td>
+            <td style="padding: 0.5rem 0.75rem; text-align: center; color: #dc2626; font-weight: 700;">404 Not Found</td>
+            <td style="padding: 0.5rem 0.75rem;">jerwood-no.org.uk domain dead</td>
+          </tr>
+          <tr style="background: #fef2f2;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">What's all this nonsense about Katas?</td>
+            <td style="padding: 0.5rem 0.75rem;">Food for thought</td>
+            <td style="padding: 0.5rem 0.75rem; text-align: center; color: #dc2626; font-weight: 700;">404 Not Found</td>
+            <td style="padding: 0.5rem 0.75rem;">Uncle Bob's Google Sites page broken</td>
+          </tr>
+          <tr style="background: #fef2f2;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">A Call for Apprenticeship (Dave Hoover)</td>
+            <td style="padding: 0.5rem 0.75rem;">Food for thought</td>
+            <td style="padding: 0.5rem 0.75rem; text-align: center; color: #dc2626; font-weight: 700;">404 Not Found</td>
+            <td style="padding: 0.5rem 0.75rem;">redsquirrel.com legacy CGI script dead</td>
+          </tr>
+          <tr style="background: #fef2f2;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">The Ultimate Code Kata (Coding Horror)</td>
+            <td style="padding: 0.5rem 0.75rem;">Food for thought</td>
+            <td style="padding: 0.5rem 0.75rem; text-align: center; color: #dc2626; font-weight: 700;">DNS Err</td>
+            <td style="padding: 0.5rem 0.75rem;">codinghorror.com link unresolvable</td>
+          </tr>
+          <tr style="background: #fef2f2;">
+            <td style="padding: 0.5rem 0.75rem; font-weight: 600;">The UK Mailing List</td>
+            <td style="padding: 0.5rem 0.75rem;">Conferences</td>
+            <td style="padding: 0.5rem 0.75rem; text-align: center; color: #dc2626; font-weight: 700;">404 Not Found</td>
+            <td style="padding: 0.5rem 0.75rem;">groups.google.co.uk redirect dead</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 5: Querying the Local Datalake -->
+  <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      5. Local Datalake & Hister Integration
+    </h2>
+    <p>
+      The complete archaeological dataset is persisted locally in the zdots DuckDB datalake and local search engine:
+    </p>
+
+    <div style="background: #1e293b; color: #f8fafc; padding: 1.25rem; border-radius: 0.5rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.85rem; line-height: 1.6;">
+<span style="color: #94a3b8;"># Query Mike Hall's canonical record in DuckDB</span>
+$ duckdb -light-mode ~/.local/state/zdots/datalake.duckdb \
+  <span style="color: #38bdf8;">"SELECT id, signatory_number, name, signed_on FROM scm_signatories WHERE id = 106;"</span>
+
+<span style="color: #94a3b8;"># Search local hister index</span>
+$ hister search <span style="color: #38bdf8;">"softwarecraftsmanship"</span>
+    </div>
+  </section>
+
+  <!-- Section 6: Panoramic View Investigation Methodologies -->
+  <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
+      6. Panoramic View Investigation Methodologies
+    </h2>
+    <p>
+      This investigation was conducted using the <strong>Panoramic View</strong> system-cartography discipline, coordinated by <strong>Pavel</strong> within the <strong>Panoramic View Labs (PVL)</strong> initiative on the <strong>zdots</strong> platform. The methodology applies four rigorous forensic phases to reconstruct truth without speculative assumptions:
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+      
+      <!-- Phase 1 -->
+      <div style="border: 1px solid #e2e8f0; border-top: 3px solid #0f766e; border-radius: 0.375rem; padding: 1.25rem; background: #fafafa;">
+        <h3 style="font-size: 1.05rem; margin: 0 0 0.5rem 0; color: #0f766e;">Phase I: Non-Destructive Probing</h3>
+        <p style="font-size: 0.875rem; color: #475569; margin: 0 0 0.5rem 0; line-height: 1.5;">
+          <strong>Principle:</strong> <em>"Snake in a Can"</em> — Shake before opening. Never hypothesize when deterministic interfaces can be interrogated directly.
+        </p>
+        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8125rem; color: #334155; line-height: 1.5;">
+          <li>Targeted the public REST API across all 307 pages without brute-forcing (retrieved 27,601 records).</li>
+          <li>Queried DNS authoritative nameservers (DNSimple Anycast) and HTTP response headers without intrusive scans.</li>
+          <li>Audited raw client-side JavaScript assets (<code>setup.js</code>, <code>manifesto.js</code>) to reveal hidden staging seams (<code>scmanifesto-staging.8thlight.com</code>).</li>
+        </ul>
+      </div>
+
+      <!-- Phase 2 -->
+      <div style="border: 1px solid #e2e8f0; border-top: 3px solid #2563eb; border-radius: 0.375rem; padding: 1.25rem; background: #fafafa;">
+        <h3 style="font-size: 1.05rem; margin: 0 0 0.5rem 0; color: #2563eb;">Phase II: Archival Stratigraphy</h3>
+        <p style="font-size: 0.875rem; color: #475569; margin: 0 0 0.5rem 0; line-height: 1.5;">
+          <strong>Principle:</strong> <em>Historical Stratigraphy</em> — Treat digital systems as sedimentary layers spanning distinct operational eras.
+        </p>
+        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8125rem; color: #334155; line-height: 1.5;">
+          <li>Interrogated Wayback Machine CDX indices to pinpoint the earliest snapshot (March 10, 2009 at 06:55 UTC).</li>
+          <li>Parsed the raw 2009 table DOM (1,244 static HTML <code>&lt;td&gt;</code> tags) to establish ground truth at launch.</li>
+          <li>Dissected the transition from 2009 server-rendered Rails views to ~2011–2014 Backbone.js single-page architecture.</li>
+        </ul>
+      </div>
+
+      <!-- Phase 3 -->
+      <div style="border: 1px solid #e2e8f0; border-top: 3px solid #d97706; border-radius: 0.375rem; padding: 1.25rem; background: #fafafa;">
+        <h3 style="font-size: 1.05rem; margin: 0 0 0.5rem 0; color: #d97706;">Phase III: Diff & Anomaly Resolution</h3>
+        <p style="font-size: 0.875rem; color: #475569; margin: 0 0 0.5rem 0; line-height: 1.5;">
+          <strong>Principle:</strong> <em>The Blink Test</em> — Prove the causal mechanism behind every discrepancy rather than accepting surface readings.
+        </p>
+        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8125rem; color: #334155; line-height: 1.5;">
+          <li>Detected the Cory Foy double-render bug (#28 & #32) in 2009, proving why all subsequent rows were shifted by +1.</li>
+          <li>Uncovered the difference between visual table rank (<code>ROW_NUMBER()</code> over active confirmed rows) and immutable database primary keys (<code>id: 106</code>).</li>
+          <li>Discovered the internal search API (<code>/signatories/search</code>) that preserves original timestamps stripped by public pagination.</li>
+        </ul>
+      </div>
+
+      <!-- Phase 4 -->
+      <div style="border: 1px solid #e2e8f0; border-top: 3px solid #059669; border-radius: 0.375rem; padding: 1.25rem; background: #fafafa;">
+        <h3 style="font-size: 1.05rem; margin: 0 0 0.5rem 0; color: #059669;">Phase IV: Datalake & Search Grounding</h3>
+        <p style="font-size: 0.875rem; color: #475569; margin: 0 0 0.5rem 0; line-height: 1.5;">
+          <strong>Principle:</strong> <em>Durable Knowledge</em> — Don't leave forensic evidence in ephemeral terminal logs; hydrate structured datalakes.
+        </p>
+        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8125rem; color: #334155; line-height: 1.5;">
+          <li>Hydrated DuckDB (<code>scm_signatories</code>, <code>scm_snapshot_2009</code>, <code>scm_rank_drift</code>, <code>scm_reading_links</code>).</li>
+          <li>Audited link decay with live timeouts and status code logging (28.6% dead link rate).</li>
+          <li>Indexed public URLs into the local <code>hister</code> search engine for rapid semantic and lexical query.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Methodology Summary Box -->
+    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 0.5rem; padding: 1rem 1.25rem; font-size: 0.875rem; color: #334155;">
+      <strong>Architectural Takeaway:</strong>
+      A system is not just what its current front-end renders; it is the sum of its database constraints, historical migrations, transactional confirmation semantics, and infrastructure seams. Panoramic View cartography cuts through 17 years of UI abstraction to anchor verifiable engineering history.
+    </div>
+  </section>
+
+</div>
+
