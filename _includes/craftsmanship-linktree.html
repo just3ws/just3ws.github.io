@@ -1,0 +1,139 @@
+<div class="craftsmanship-corpus-nav" style="margin-top: 3.5rem; padding: 2rem 1.5rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.75rem; box-shadow: var(--shadow-sm, 0 2px 6px rgba(0,0,0,0.04));">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1rem;">
+    <div>
+      <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary, #0f766e); margin-bottom: 0.25rem;">
+        Navigational Directory • Living Research Corpus
+      </div>
+      <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0;">
+        Software Craftsmanship &amp; Chicago Oral History
+      </h3>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b);">
+      Archival Lead: <strong>Mike Hall</strong> (Signatory #106 • SCMC Co-Founder • UGtastic)
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+    <!-- Cluster 1: Monograph & Narrative -->
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🏙️</span> Monograph &amp; Origins
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <a href="/chicago-craftsmanship/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url contains '/chicago-craftsmanship/' and page.url != '/interviews/chicago-craftsmanship/' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url contains '/chicago-craftsmanship/' and page.url != '/interviews/chicago-craftsmanship/' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">Chicago History Monograph</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #059669; text-transform: uppercase;">Public</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            2006–2015 historical narrative: the catalyst, "Too Practical" talk rejection, and the SCNA stage.
+          </div>
+        </a>
+
+        <a href="/interviews/chicago-craftsmanship/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url == '/interviews/chicago-craftsmanship/' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url == '/interviews/chicago-craftsmanship/' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">The Chicago Renaissance Archive</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #059669; text-transform: uppercase;">Public</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            Curated oral history videos: Sergio Pereira, Angelique Martin, Micah Martin, Dave Hoover, Uncle Bob.
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Cluster 2: Forensic Cartography & Datalakes -->
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #0f766e; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🔍</span> Forensics &amp; Datalake
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <a href="/reports/software-craftsmanship-forensics/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url == '/reports/software-craftsmanship-forensics/' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url == '/reports/software-craftsmanship-forensics/' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">Signatory Ledger Forensics</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Localhost</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            27,601 signatories ingested into DuckDB, Mike Hall #106 verification anchor, 28.6% link decay.
+          </div>
+        </a>
+
+        <a href="/reports/software-craftsmanship-forensics/signatory-network/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url contains '/signatory-network/' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url contains '/signatory-network/' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">Signatory Network Map</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Localhost</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            SCM Manifesto × 191 UGtastic interviewees × 11 SCMC presenters (54 verified crossovers).
+          </div>
+        </a>
+
+        <a href="/reports/software-craftsmanship-forensics/agile-manifesto-intersection/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url contains '/agile-manifesto-intersection/' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url contains '/agile-manifesto-intersection/' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">Agile × SCM Intersection</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Localhost</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            17 Snowbird authors, 9 Summit authors, 1,853 cross-signatories, and Dave Thomas disambiguation.
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Cluster 3: Living History & Community -->
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #d97706; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🏛️</span> Living History &amp; Community
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <a href="/reports/software-craftsmanship-forensics/living-history/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url contains '/living-history/' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url contains '/living-history/' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">Living History Epic (2001–2026)</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Localhost</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            Master 25-year timeline, dual engine (SCMC local lab + UGtastic roving stage), and 5-movement book blueprint.
+          </div>
+        </a>
+
+        <a href="/scmc/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url contains '/scmc/' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url contains '/scmc/' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">SCMC Community Hub</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #059669; text-transform: uppercase;">Public</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            17-year continuous meeting archive, recordings at Follett, and ongoing meetup community.
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Cluster 4: Philosophy, State & The Age of AI -->
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #7c3aed; display: flex; align-items: center; gap: 0.4rem;">
+        <span>🤖</span> Philosophy &amp; Age of AI
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <a href="/ai/2026/10/02/the-four-waves-of-craft-dhh-uncle-bob-ai/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url contains 'the-four-waves-of-craft' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url contains 'the-four-waves-of-craft' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">The Four Waves of Craft</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #7c3aed; text-transform: uppercase;">Essay</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            DHH vs Uncle Bob across Snowbird, Libertyville, "TDD is Dead", and writing code with LLMs.
+          </div>
+        </a>
+
+        <a href="/phalanx-duel/" style="display: block; padding: 0.85rem; border-radius: 0.5rem; border: 1px solid {% if page.url contains '/phalanx-duel/' %}var(--color-primary, #0f766e){% else %}var(--color-border, #e2e8f0){% endif %}; background: {% if page.url contains '/phalanx-duel/' %}rgba(15, 118, 110, 0.06){% else %}transparent{% endif %}; text-decoration: none; color: inherit;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong style="font-size: 0.92rem; color: var(--color-heading, #0f172a);">Phalanx Duel Engine</strong>
+            <span style="font-size: 0.65rem; font-weight: 700; color: #059669; text-transform: uppercase;">Artifact</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-top: 0.25rem; line-height: 1.4;">
+            SCMC presentation artifact: legible deterministic state transitions and rules mechanics in practice.
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

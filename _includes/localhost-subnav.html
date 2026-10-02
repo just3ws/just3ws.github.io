@@ -90,8 +90,45 @@
           <a href="/reports/content-opportunities/" class="lh-menu-item{% if page.url contains '/reports/content-opportunities/' %} is-active{% endif %}" role="menuitem">
             <strong>Content Opportunities Hub</strong> (/reports/content-opportunities/)
           </a>
-          <a href="/reports/software-craftsmanship-forensics/" class="lh-menu-item{% if page.url contains '/reports/software-craftsmanship-forensics/' %} is-active{% endif %}" role="menuitem">
-            <strong>SCM Forensics Report</strong> (/reports/software-craftsmanship-forensics/) 📜
+        </div>
+      </div>
+
+      <!-- Localhost Hub Dropdown: Craftsmanship Corpus -->
+      <div class="lh-dropdown">
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/reports/software-craftsmanship' or page.url contains '/chicago-craftsmanship' or page.url contains '/scmc' or page.url contains 'the-four-waves-of-craft' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+          <span>📜 Craftsmanship Corpus</span>
+          <span class="lh-caret">▾</span>
+        </button>
+        <div class="lh-dropdown-menu" role="menu">
+          <div class="lh-menu-header">Forensic Datalakes & Research</div>
+          <a href="/reports/software-craftsmanship-forensics/" class="lh-menu-item{% if page.url == '/reports/software-craftsmanship-forensics/' %} is-active{% endif %}" role="menuitem">
+            <strong>SCM Forensics & Signatory #106</strong>
+          </a>
+          <a href="/reports/software-craftsmanship-forensics/signatory-network/" class="lh-menu-item{% if page.url contains '/signatory-network/' %} is-active{% endif %}" role="menuitem">
+            <strong>Signatory Network (SCM × UGtastic × SCMC)</strong>
+          </a>
+          <a href="/reports/software-craftsmanship-forensics/agile-manifesto-intersection/" class="lh-menu-item{% if page.url contains '/agile-manifesto-intersection/' %} is-active{% endif %}" role="menuitem">
+            <strong>Agile × SCM Manifesto Intersection</strong>
+          </a>
+          <a href="/reports/software-craftsmanship-forensics/living-history/" class="lh-menu-item{% if page.url contains '/living-history/' %} is-active{% endif %}" role="menuitem">
+            <strong>Living History Epic (2001–2026)</strong>
+          </a>
+          <div class="lh-menu-divider"></div>
+          <div class="lh-menu-header">Monographs & Community Hubs</div>
+          <a href="/chicago-craftsmanship/" class="lh-menu-item{% if page.url contains '/chicago-craftsmanship/' and page.url != '/interviews/chicago-craftsmanship/' %} is-active{% endif %}" role="menuitem">
+            <strong>Chicago History Monograph (2006–2015)</strong>
+          </a>
+          <a href="/interviews/chicago-craftsmanship/" class="lh-menu-item{% if page.url == '/interviews/chicago-craftsmanship/' %} is-active{% endif %}" role="menuitem">
+            <strong>Chicago Renaissance Video Canon</strong>
+          </a>
+          <a href="/scmc/" class="lh-menu-item{% if page.url contains '/scmc/' %} is-active{% endif %}" role="menuitem">
+            <strong>SCMC Community Hub (17 Years)</strong>
+          </a>
+          <a href="/ai/2026/10/02/the-four-waves-of-craft-dhh-uncle-bob-ai/" class="lh-menu-item{% if page.url contains 'the-four-waves-of-craft' %} is-active{% endif %}" role="menuitem">
+            <strong>The Four Waves of Craft (DHH, Uncle Bob, AI)</strong>
+          </a>
+          <a href="/phalanx-duel/" class="lh-menu-item{% if page.url contains '/phalanx-duel/' %} is-active{% endif %}" role="menuitem">
+            <strong>Phalanx Duel (Tactical Rules Engine)</strong>
           </a>
         </div>
       </div>
