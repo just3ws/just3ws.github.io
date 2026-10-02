@@ -1,0 +1,366 @@
+---
+# The Community Pastiche & Oral History Timeline (2005–2026)
+# Curated and narrated by Mike Hall (Signatory #106 • SCMC Co-Founder • UGtastic Host)
+# Backing data store for the Oral History & Community Evolution Series.
+# Extensible schema: entries can be appended, enriched with transcripts, or pruned over time.
+
+metadata:
+  title: "The Community Pastiche: A Lived History of Grassroots Software Craftsmanship"
+  curator: "Mike Hall"
+  first_episode: "sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011"
+  description: >
+    A chronological, provenance-backed record of the individuals, user groups, zero-dollar
+    conferences, and hallway conversations that built the Chicago tech renaissance and
+    the broader craftsmanship movement. Beyond the keynote circuit, this preserves the
+    essential contributions of the practitioners who made the rooms possible.
+
+eras:
+  - id: "precursor"
+    name: "The Precursor: .NET, Real-Time Systems & Alternate Paths"
+    years: "2005–2008"
+    summary: "Breaking out of corporate Microsoft monoliths. WatiN to WatiR at TicketsNow, testing friction, and finding kindred spirits in Chicago Alt.NET."
+  - id: "catalyst"
+    name: "The Catalyst: Libertyville, The Manifesto & The 8th Light Seam"
+    years: "2008–2009"
+    summary: "BDI remote delivery, Ray Hightower's ambassadorship, Pair Friday in Libertyville, signing the Manifesto as #106, and the 'Too Practical' conference rejection."
+  - id: "dual-engine"
+    name: "The Dual Engine: SCMC, CDG & The Traveling Microphone"
+    years: "2009–2011"
+    summary: "Meeting Ryan Gerry at SCNA 2009, launching CDG in Panera and libraries, formalizing SCMC at Follett with Jim Suchy, and recording the first UGtastic interviews."
+  - id: "zero-dollar"
+    name: "Zero-Dollar Infrastructure & Open Rails"
+    years: "2010–2014"
+    summary: "Chicago Code Camp on static Rails and blind CFPs, UGl.st open directory, scaling user groups without corporate gatekeepers, and conference hallway archives."
+  - id: "continuous-room"
+    name: "The 17-Year Continuous Room & The Age of AI"
+    years: "2014–2026"
+    summary: "Ryan Gerry's enduring stewardship of SCMC, GOTO retrospectives, Phalanx Duel deterministic rules, and rewatching the archive to anchor software craft in the era of generative AI."
+
+events:
+  - id: "ticketsnow-watin-watir"
+    year: "2005–2007"
+    date_display: "Nov 2005 – Mar 2007"
+    era: "precursor"
+    title: "TicketsNow: WatiN, WatiR & Real-Time Distributed Inventory"
+    resume_anchor: "ticketsnow"
+    location: "Crystal Lake, IL"
+    communities:
+      - "TicketsNow"
+      - "ThoughtWorks"
+    unsung_heroes:
+      - name: "Matt Deiters"
+        role: "ThoughtWorks Consultant at TicketsNow"
+        note: "Consulting on site and experimenting with Ruby before founding Coderwall. Exposed Mike to the emerging Ruby ecosystem."
+    narrative: >
+      While leading the Real-Time Inventory Locking service at TicketsNow to prevent concurrency race conditions across EventInventory broker clients, Mike needed browser automation tools. Evaluating WatiN (Web Application Testing in .NET) led directly to its parent Ruby project, WatiR. It was the first spark showing that developer tooling outside the Redmond ecosystem offered radically faster feedback loops.
+    primary_sources:
+      - title: "The Skunkworks Lab: From .NET Teasing to Real-Time Inventory"
+        url: "/ai/2026/09/02/the-skunkworks-lab-real-time-inventory/"
+        kind: "article"
+
+  - id: "chicago-altnet-sergio"
+    year: "2007–2008"
+    date_display: "2007 – 2008"
+    era: "precursor"
+    title: "Chicago Alt.NET: The First Room and First Stage"
+    resume_anchor: "brightstar"
+    location: "Sears Tower (Willis Tower), Chicago, IL"
+    communities:
+      - "Chicago Alt.NET"
+    unsung_heroes:
+      - name: "Sergio Pereira"
+        role: "Founder & Organizer, Chicago Alt.NET"
+        note: "Curated monthly meetings at Redpoint Technologies in the Sears Tower; pushed enterprise developers toward TDD, BDD, NHibernate, and open discourse."
+      - name: "Eduardo"
+        role: "Co-organizer, Chicago Alt.NET"
+        note: "Helped curate speaker lineups and facilitate monthly discussions."
+    narrative: >
+      Chicago Alt.NET was the very first technical user group Mike ever attended, and the first stage where he ever spoke. Meeting on the second Wednesday of every month at Redpoint Technologies in the Sears Tower, Sergio Pereira created a safe harbor for .NET developers who refused to accept that Microsoft was the only authority on software quality. It became the blueprint for everything Mike built later.
+    series_cue: "SERIES LAUNCHPAD: Episode 1 rewinds to this formative room, analyzing Sergio's philosophy on community curation and why open discourse mattered."
+    primary_sources:
+      - title: "Chicago Alt.net: Mike Hall Interviews Sergio Pereira | SCNA 2011"
+        url: "/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/"
+        kind: "interview"
+        video_id: "sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011"
+
+  - id: "bdi-ray-hightower-cucumber"
+    year: "2008"
+    date_display: "Late 2008"
+    era: "catalyst"
+    title: "Ray Hightower: The Ambassador & The Restaurant Seam"
+    resume_anchor: "bdi"
+    location: "Midway Restaurant, Chicagoland"
+    communities:
+      - "ChicagoRuby"
+      - "WisdomGroup"
+      - "BDI"
+    unsung_heroes:
+      - name: "Ray Hightower"
+        role: "Founder, ChicagoRuby & WisdomGroup"
+        note: "Welcoming ambassador who demystified Ruby, demonstrated Cucumber, and pointed Mike to 8th Light's open doors in Libertyville."
+    narrative: >
+      While operating as remote Principal Developer at Business Decisions, Inc. (BDI), managing a multi-tenant 360 HR system and coordinating engineers in Uruguay, Mike met Ray Hightower at a restaurant between their locations. Ray was the first true community ambassador: he didn't just mention Ruby; he opened his laptop, demonstrated Cucumber, and told Mike about open gatherings happening at 8th Light up in Lake County.
+    primary_sources:
+      - title: "The Long Way Back to Here (Ray as Ambassador)"
+        url: "/ai/2026/09/02/the-long-way-back-to-here/"
+        kind: "article"
+      - title: "ChicagoRuby: Mike Hall Interviews Ray Hightower | SCNA 2011"
+        url: "/interviews/ray-hightower-chicagoruby-software-craftsmanship-north-america-2011/"
+        kind: "interview"
+
+  - id: "8th-light-pair-friday"
+    year: "2008–2009"
+    date_display: "Winter 2008 – Early 2009"
+    era: "catalyst"
+    title: "8th Light's 'Pair Friday': Terminal Workbench & Carl Sagan"
+    resume_anchor: "bdi"
+    location: "8th Light Offices, Libertyville, IL"
+    communities:
+      - "8th Light"
+    unsung_heroes:
+      - name: "Micah Martin"
+        role: "Co-Founder & CTO, 8th Light"
+        note: "Pioneered 'Pair Friday' where anyone could sit with craftsmen on open-source code; later evolved into 8th Light University (8LU)."
+      - name: "Eric Smith & Eric Meyer"
+        role: "Craftsmen, 8th Light"
+        note: "Key practitioners present at the Libertyville tables pairing and demonstrating test-driven development."
+      - name: "Colin Jones"
+        role: "8th Light Apprentice (later SCM Signatory #15)"
+        note: "Demonstrated the apprenticeship model in live practice; later prominent Clojure author and SCNA speaker."
+      - name: "Jim Suchy"
+        role: "8th Light Craftsman"
+        note: "Bridged the gap between 8th Light and grassroots groups, co-founding both Chicago Software Craftsmanship and SCMC."
+    narrative: >
+      Walking into 8th Light’s small Libertyville office for Pair Friday was stepping into another technical dimension for a Microsoft-focused developer. Macs sat on desks, RSpec and Vim ran in the terminal, tmux was revealed, and MelodySheep's Carl Sagan remixes played in the background. It proved that engineering was not a corporate compliance activity, but an apprenticeship-based craft.
+    primary_sources:
+      - title: "Community Building: Mike Hall Interviews Micah Martin | SCNA 2013"
+        url: "/interviews/micah-martin-software-craftsmanship-north-america-2013/"
+        kind: "interview"
+      - title: "8th Light University: Mike Hall Interviews Mike Jansen | SCNA 2012"
+        url: "/interviews/mike-jansen-software-craftsmanship-north-america-2012/"
+        kind: "interview"
+
+  - id: "manifesto-signing-106"
+    year: "2009"
+    date_display: "March 6, 2009"
+    era: "catalyst"
+    title: "Signing the Manifesto for Software Craftsmanship as #106"
+    resume_anchor: "bdi"
+    location: "Crystal Lake, IL"
+    communities:
+      - "Software Craftsmanship Movement"
+    unsung_heroes:
+      - name: "Doug Bradbury"
+        role: "Lead Author, SCM Manifesto & 8th Light Co-Founder"
+        note: "Authored 'The New Left Side' and established the 4 craftsmanship values extending Agile."
+    narrative: >
+      On Friday, March 6, 2009, at 7:06:59 PM CST (UTC 2009-03-07T01:06:59Z), Mike Hall registered on the newly launched public ledger of manifesto.softwarecraftsmanship.org as Signatory #106 ('Michael D. Hall, Crystal Lake, IL'). Drafters #1–#6 (Bradbury, Haines, Pagel, M. Martin, Uncle Bob, Chelimsky) had just published the site.
+    primary_sources:
+      - title: "Archaeological Cartography: softwarecraftsmanship.org & Signatory #106"
+        url: "/reports/software-craftsmanship-forensics/"
+        kind: "report"
+
+  - id: "scna-2009-dave-hoover-obtiva"
+    year: "2009"
+    date_display: "August – October 2009"
+    era: "dual-engine"
+    title: "SCNA 2009, Dave Hoover & The Obtiva Apprenticeship"
+    resume_anchor: "obtiva"
+    location: "Chicago, IL"
+    communities:
+      - "SCNA"
+      - "Obtiva"
+      - "Geekfest"
+    unsung_heroes:
+      - name: "Dave Hoover"
+        role: "Co-Founder, Obtiva & Author of 'Apprenticeship Patterns'"
+        note: "Pioneered Geekfest in 2007; built the apprenticeship model that trained hundreds of Midwest engineers in TDD and Ruby."
+      - name: "Kevin Taylor"
+        role: "Co-Founder, Obtiva"
+        note: "Helped formalize internal study groups into public community mini-conferences."
+    narrative: >
+      When traditional corporate conferences rejected hands-on refactoring talks for being 'too practical,' 8th Light and Obtiva teamed up to launch Software Craftsmanship North America (SCNA 2009). At the conference, an esteemed local recruiter introduced Mike to Dave Hoover. Mike joined Obtiva in August 2009, diving into Geekfest study groups and consulting engagements at Leapfrog Online, Sears, and Groupon.
+    primary_sources:
+      - title: "Geekfest and Apprenticeship: Mike Hall Interviews Dave Hoover"
+        url: "/interviews/dave-hoover-geekfest-geekfest/"
+        kind: "interview"
+
+  - id: "scna-2009-ryan-gerry-cdg"
+    year: "2009"
+    date_display: "October 2009"
+    era: "dual-engine"
+    title: "The SCNA Table Meeting: Mike Hall & Ryan Gerry Launch CDG"
+    resume_anchor: "obtiva"
+    location: "Chicago & McHenry County, IL"
+    communities:
+      - "SCNA"
+      - "CDG (Cloud Developers Group)"
+    unsung_heroes:
+      - name: "Ryan Gerry"
+        role: "Co-Founder, CDG & 17-Year SCMC Steward"
+        note: "Met Mike at an SCNA table; co-founded CDG and went on to sustain SCMC continuously for over a decade and a half."
+    narrative: >
+      At SCNA 2009, Mike walked up to a table and introduced himself to Ryan Gerry: 'Hi, I'm Mike. Where are you from?' They discovered they lived 15 minutes apart in far northwest McHenry County—an area 50 miles outside Chicago with zero technical user groups. They decided right then to build one, launching CDG (Cloud Developers Group). Without corporate backing, they met in public library meeting rooms, Panera Bread backrooms, and upstairs at Duke's Alehouse in Crystal Lake.
+    primary_sources:
+      - title: "GOTO 2014 Retrospective: Mike Hall Interviews Ryan Gerry"
+        url: "/interviews/ryan-gerry-goto-conference-2014/"
+        kind: "interview"
+
+  - id: "scmc-founding-follett"
+    year: "2010"
+    date_display: "2010"
+    era: "dual-engine"
+    title: "Founding SCMC: Jim Suchy & Follett Software Company"
+    resume_anchor: "obtiva"
+    location: "McHenry / Woodstock, IL"
+    communities:
+      - "SCMC (Software Craftsmanship McHenry County)"
+      - "Follett Software Company"
+      - "8th Light"
+      - "Groupon"
+    unsung_heroes:
+      - name: "Jim Suchy"
+        role: "8th Light Craftsman & SCMC Co-Founder"
+        note: "Partnered with Mike and Ryan to bring hands-on katas and downtown craftsmanship rigor to the northwest suburbs."
+      - name: "Ryan Gerry"
+        role: "Lead Organizer, SCMC"
+        note: "Secured permanent meeting facilities at Follett Software Company, ensuring high-fidelity projectors, guest Wi-Fi, and steady attendance."
+    narrative: >
+      After 18 months of CDG, cloud computing ran its course and the group pivoted to deliberate coding practice, rebranding as Software Craftsmanship McHenry County (SCMC). Bringing in Jim Suchy from 8th Light provided deep kata curriculum. Ryan Gerry secured a permanent home at Follett Software Company in McHenry. 8th Light, Follett, and Groupon sponsored food, and moving the group to Meetup.com triggered a 50% attendance explosion.
+    primary_sources:
+      - title: "Software Craftsmanship McHenry County: Dedicated Community Hub"
+        url: "/scmc/"
+        kind: "hub"
+
+  - id: "chicago-code-camp"
+    year: "2010–2012"
+    date_display: "2010 – 2012"
+    era: "zero-dollar"
+    title: "Chicago Code Camp: The 500-Person Zero-Dollar Conference"
+    resume_anchor: "obtiva"
+    location: "Chicagoland"
+    communities:
+      - "Chicago Code Camp"
+    unsung_heroes:
+      - name: "The Chicago Code Camp Organizing Circle"
+        role: "Grassroots Conference Committee"
+        note: "Volunteers who delivered 6 concurrent tracks on a $0 software budget, using static HTML generators, spotty Wi-Fi workarounds, and blind CFPs."
+    narrative: >
+      Between 2010 and 2012, Chicago Code Camp gathered over 500 software engineers on Saturday mornings for six concurrent tracks on everything from Ruby and JVM to mobile and testing. As co-organizer and web lead, Mike designed the event websites and built a custom Anonymized Blind Review Engine so speakers were selected purely on merit, not celebrity clout.
+    primary_sources:
+      - title: "The Zero-Dollar Conference: Chicago Code Camp Retrospective"
+        url: "/ai/2026/08/20/the-zero-dollar-conference-chicago-code-camp-retrospective/"
+        kind: "article"
+
+  - id: "ugtastic-watir-charley-baker"
+    year: "2011"
+    date_display: "November 2011"
+    era: "dual-engine"
+    title: "UGtastic at SCNA 2011: Interviewing Watir Maintainer Charley Baker"
+    resume_anchor: "obtiva"
+    location: "SCNA 2011, Chicago, IL"
+    communities:
+      - "UGtastic"
+      - "SCNA"
+      - "Watir Community"
+    unsung_heroes:
+      - name: "Charley Baker"
+        role: "Watir Maintainer & Denver Community Builder"
+        note: "Sustained Watir alongside Bret Pettichord; built out the Denver Obtiva/Groupon office and bridged cross-language communities."
+    narrative: >
+      Six years after first discovering WatiR while evaluating WatiN at TicketsNow, Mike sat down with Charley Baker at SCNA 2011 with the UGtastic camera. Baker discussed maintaining the open-source Watir testing framework, unifying fractured Java, .NET, and Ruby groups in Colorado, and proving that community building was the real engine of technical talent.
+    primary_sources:
+      - title: "Denver Community & Watir Maintainer: Mike Hall Interviews Charley Baker | SCNA 2011"
+        url: "/interviews/charler-baker-denver-community-software-craftsmanship-north-america-2011/"
+        kind: "interview"
+
+  - id: "coderwall-matt-deiters"
+    year: "2012"
+    date_display: "2012"
+    era: "zero-dollar"
+    title: "Coderwall & Developer Identity: Reconnecting with Matt Deiters"
+    resume_anchor: "coderwall"
+    location: "San Francisco & Remote"
+    communities:
+      - "Coderwall"
+      - "Viewpoints"
+    unsung_heroes:
+      - name: "Matt Deiters"
+        role: "Founder, Coderwall"
+        note: "Created the badge-based developer achievement platform celebrating open-source commits and community participation."
+    narrative: >
+      Reconnecting years after their initial paths crossed at TicketsNow, Mike collaborated with Matt Deiters around Coderwall. The platform captured the cultural zeitgeist of the era: laptop stickers and git achievements as verifiable markers of a developer's real-world craftsmanship and open-source contributions.
+    primary_sources:
+      - title: "From Coderwall to Assembly: The Evolution of Developer Reputation"
+        url: "/ai/2026/08/18/from-coderwall-to-assembly-the-evolution-of-developer-reputation/"
+        kind: "article"
+
+  - id: "uglst-decentralized-directory"
+    year: "2014"
+    date_display: "2014"
+    era: "zero-dollar"
+    title: "UGl.st: The Open User-Group Directory Before Centralized Silos"
+    resume_anchor: "reachlocal"
+    location: "Global Web Rails"
+    communities:
+      - "UGl.st"
+      - "UGtastic"
+    unsung_heroes:
+      - name: "Grassroots Meetup Organizers Globally"
+        role: "Local Community Stewards"
+        note: "The hundreds of organizers listed on UGl.st running independent monthly meetings without ad trackers or platform rent-seeking."
+    narrative: >
+      Seeing how proprietary platform algorithms, paywalls, and spam were threatening independent community discoverability, Mike built UGl.st (The User-Group List). Designed as a lightweight, open static directory, it emphasized verified location data, cadence, and direct organizer contacts rather than engagement metrics.
+    primary_sources:
+      - title: "UGl.st and Chicago Code Camp: Community Infrastructure Before Platforms"
+        url: "/ai/2026/08/20/uglst-and-chicago-code-camp-community-infrastructure-before-platforms/"
+        kind: "article"
+
+  - id: "scmc-continuous-room-follett"
+    year: "2014–2026"
+    date_display: "2014 – Present"
+    era: "continuous-room"
+    title: "The 17-Year Continuous Room: Ryan Gerry's SCMC Stewardship"
+    resume_anchor: "sk-holdings"
+    location: "Follett Software, McHenry, IL"
+    communities:
+      - "SCMC"
+      - "Meetup.com (820+ members)"
+    unsung_heroes:
+      - name: "Ryan Gerry"
+        role: "Continuous Lead Organizer, SCMC"
+        note: "Kept the monthly meeting rhythm alive for over 15 consecutive years, through venue shifts, hybrid pandemic setups, and technology cycles."
+      - name: "Mike Rosselli"
+        role: "Co-organizer, SCMC"
+        note: "Helped Ryan keep the topic backlog stocked and the suburban community engaged."
+    narrative: >
+      While hundreds of user groups flickered out or were absorbed by corporate marketing machines, SCMC persisted continuously for over 17 years. Meeting monthly at Follett Software Company, the group maintained an open, vendor-neutral table for polyglot katas, architecture retrospectives, and practitioner keynotes.
+    primary_sources:
+      - title: "Software Craftsmanship McHenry County: A Retrospective"
+        url: "/ai/2026/08/17/software-craftsmanship-mchenry-county-a-retrospective/"
+        kind: "article"
+
+  - id: "phalanx-duel-and-the-rewatch"
+    year: "2026"
+    date_display: "September – October 2026"
+    era: "continuous-room"
+    title: "Phalanx Duel & The Rewatch: Carrying Craftsmanship into the Age of AI"
+    resume_anchor: "sk-holdings"
+    location: "SCMC (Follett) & just3ws.com"
+    communities:
+      - "SCMC"
+      - "UGtastic Archival Series"
+    unsung_heroes:
+      - name: "The Community Pastiche"
+        role: "Generations of Midwestern Practitioners"
+        note: "The engineers whose oral histories and meeting records are now preserved in pgvector, DuckDB, and open web transcripts."
+    narrative: >
+      In September 2026, Mike returned to the SCMC presentation stage to deliver 'Phalanx Duel: Make the Rules Legible,' demonstrating deterministic state engines and rule verification in the AI era. In October 2026, the retrospective series launches with a comprehensive rewatch of the first UGtastic interview with Sergio Pereira—synthesizing 20 years of lived community lessons to ensure the unsung contributions of Midwest software craftsmanship are never forgotten.
+    series_cue: "CURRENT EPISODE: Setting the stage with Sergio Pereira (Chicago Alt.NET), connecting WatiN, TicketsNow, BDI, 8th Light Pair Friday, and the inaugural SCNA."
+    primary_sources:
+      - title: "The Four Waves of Craft: DHH, Uncle Bob, and Writing Software in the Age of AI"
+        url: "/ai/2026/10/02/the-four-waves-of-craft-dhh-uncle-bob-ai/"
+        kind: "article"
+      - title: "Phalanx Duel Presentation Materials"
+        url: "/phalanx-duel/"
+        kind: "artifact"
