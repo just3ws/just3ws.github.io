@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-09-11
+     CURRENT FOCUS - last updated 2026-10-02
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,35 +12,28 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - VIDEO SERIES PLATFORM NARRATIVE (2026-10-02): 5-part series
+         "The Observable Control Plane" blueprint approved by Mike (zdots
+         session). Capstone post drafted:
+         `_posts/2026-10-02-without-zdots-there-was-nothing.md`
+         — Tier 3 AI-augmented, routes to /ai/2026/10/02/..., Jekyll build
+         clean. Connects 2009 SCMC founding, 2010 UGtastic interview archive,
+         just3ws.localhost archive pipeline, phalanxduel.com telemetry, and
+         zdots multi-agent mesh into a single platform origin story.
+         Series blueprint: /Users/mike/.gemini/antigravity-cli/brain/
+           0e5b4dee-44a7-4486-846e-ebb7264cfcf6/video_series_blueprint.md
+         Bus handoff posted to #general (msg 3d65f2da).
+         Next: stage + commit the post; consider cross-link in /ugtastic/
+         and /scmc/ index pages; consider /ai/ index page aggregating
+         Tier 3 posts for discoverability.
        - Migrated systems architect archetype slug to staff_systems_architect
          and mike-hall-staff-systems-architect across data, routes, datalake,
          exports, and navigation. Fixed variable scoping bug in
          `bin/generate_archetype_resumes.rb` and synced full PDF exports to
          desktop and `exports/`. All 90 RSpec specs, resume quality checks,
          ATS benchmark (88.2%), Jekyll production build, and HTML-Proofer clean.
-       - Aligned site archetypes and PDF exports with Staff to Senior/Lead breadth
-         (bc4d193a): updated `_data/resume/archetypes.yml` (Staff Software Engineer /
-         Systems Architect), `navigation.yml`, `home.yml`, `engagements.yml`, and
-         availability badges. Updated `bin/generate_pdf_resume.js` to render the
-         canonical Staff Software Engineer resume to `exports/resume.pdf` directly
-         from `/resume.html`, aligned all desktop PDF packages, and added
-         `./bin/regenerate_resumes` CLI pipeline runner. All 90 RSpec specs,
-         resume quality checks, and ATS benchmark (88.2%) clean.
-       - Shifted default messaging to Staff Engineer as primary target
-         (8c01c6fe): CODEX.md now foregrounds Staff as the evaluation frame;
-         outreach playbook templates updated to Staff Engineer by default with
-         a note to adapt to Principal only when a posting uses that title;
-         ATS benchmark profiles renamed from Principal IC to Staff IC tiers;
-         resume narrative pitch memo Step 1 updated to Staff IC; career
-         strategy doc opening clarified. All pre-commit hooks and ATS
-         benchmark (88.2%) passed.
-       - Verified and closed TASK-284.01 (Make timeline conceptually accessible):
-         confirmed four default story lanes, five optional combinable overlays,
-         visible plain-language visitor question, non-hover evidence ledger,
-         and individual keyboard-operable timeline items. All 7 ACs satisfied;
-         Playwright browser regression checks passed 2 of 2 clean.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-09-11-just3ws-staff-messaging.md
+         ~/.config/adots/handoffs/2026-10-02.md (zdots session — cross-ref)
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
