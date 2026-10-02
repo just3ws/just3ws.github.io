@@ -1,0 +1,411 @@
+---
+layout: base
+title: "Agile × Craftsmanship: The Manifesto Intersection"
+description: "Cross-ecosystem cartography mapping 17 Agile Manifesto authors, ~19,090 Agile signatories, 9 Software Craftsmanship authors, 27,601 SCM signatories, and Mike Hall's UGtastic interview archive. Differentiating authors from signatories and resolving identity collisions like Dave 'pragdave' Thomas vs Dave Thomas."
+permalink: /reports/software-craftsmanship-forensics/agile-manifesto-intersection/
+localhost_only: true
+body_class: report-agile-intersection
+---
+
+{% assign data = site.data.research.agile_scm_intersection %}
+{% assign sum  = data.summary %}
+{% assign int_metrics = sum.intersection_metrics %}
+{% assign dave_case = data.disambiguations.dave_thomas_case_study %}
+{% assign agile_authors = data.agile_manifesto_authors %}
+{% assign scm_authors = data.scm_manifesto_authors %}
+{% assign trifecta = data.trifecta_signatories %}
+{% assign craft_first = data.craftsmanship_first_signatories %}
+{% assign sig_sample = data.scm_agile_signatory_sample %}
+
+<div class="report-container" style="max-width: 72rem; margin: 0 auto; padding: 2.5rem 1.25rem; font-family: var(--font-sans-ui, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif); color: var(--color-text-main, #1e232a); line-height: 1.65;">
+
+  <!-- Header -->
+  <header style="margin-bottom: 2.5rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1.75rem;">
+    <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+      <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.35); font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">
+        🔒 Localhost Research Report
+      </span>
+      <span style="background: rgba(37, 99, 235, 0.1); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+        DuckDB Datalake
+      </span>
+      <span style="background: rgba(124, 58, 237, 0.1); color: #7c3aed; border: 1px solid rgba(124, 58, 237, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+        Author &amp; Signatory Cartography
+      </span>
+      <span style="color: var(--color-text-muted, #64748b); font-size: 0.85rem; margin-left: auto;">
+        October 2026
+      </span>
+    </div>
+
+    <nav style="font-size: 0.8rem; color: var(--color-text-muted, #64748b); margin-bottom: 1rem;">
+      <a href="/reports/software-craftsmanship-forensics/" style="color: #0f766e; text-decoration: none;">← SCM Forensics Report</a>
+      <span style="margin: 0 0.4rem;">›</span>
+      <a href="/reports/software-craftsmanship-forensics/signatory-network/" style="color: #0f766e; text-decoration: none;">Signatory Network Map</a>
+      <span style="margin: 0 0.4rem;">›</span>
+      <span>Agile Manifesto Intersection</span>
+    </nav>
+
+    <h1 style="font-size: 2.3rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0 0 0.75rem 0; font-family: var(--font-serif-editorial, Georgia, serif); letter-spacing: -0.02em;">
+      Agile × Craftsmanship:<br>
+      <span style="color: var(--color-primary, #0f766e);">Authors, Signatories &amp; Network Intersections</span>
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--color-text-muted, #525866); max-width: 56rem; margin: 0; line-height: 1.6;">
+      Both manifestos were historic declarations of intent. But understanding their relationship requires separating <strong>Authors</strong> (the drafting circles who convened in 2001 and 2008) from <strong>Signatories</strong> (the thousands who subsequently endorsed them online). This cartography maps the two movements across 27,601 SCM signatories, 19,090 Agile signatories, and Mike Hall's UGtastic interview archive.
+    </p>
+  </header>
+
+  <!-- Metric tiles -->
+  <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-bottom: 2.5rem;">
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #0f766e;">{{ sum.software_craftsmanship_manifesto.signatories_total | number_with_delimiter }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">SCM Signatories</div>
+      <div style="font-size: 0.7rem; color: #0f766e; margin-top: 0.2rem;">{{ sum.software_craftsmanship_manifesto.authors_total }} Summit Authors</div>
+    </div>
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #2563eb;">{{ sum.agile_manifesto.signatories_total | number_with_delimiter }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">Agile Signatories</div>
+      <div style="font-size: 0.7rem; color: #2563eb; margin-top: 0.2rem;">{{ sum.agile_manifesto.authors_total }} Snowbird Authors</div>
+    </div>
+    <div style="background: var(--color-bg-card, #fff); border: 2px solid rgba(15, 118, 110, 0.4); padding: 1.25rem; border-radius: 0.5rem; text-align: center; background: rgba(15, 118, 110, 0.04);">
+      <div style="font-size: 2rem; font-weight: 800; color: #0f766e;">{{ int_metrics.scm_in_agile_signatories }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">SCM ∩ Agile Signatories</div>
+      <div style="font-size: 0.7rem; color: #0f766e; margin-top: 0.2rem;">6.7% Crossover Rate</div>
+    </div>
+    <div style="background: rgba(124, 58, 237, 0.06); border: 2px solid rgba(124, 58, 237, 0.35); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #7c3aed;">{{ int_metrics.all_three_ecosystems_trifecta }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">The Trifecta</div>
+      <div style="font-size: 0.7rem; color: #7c3aed; margin-top: 0.2rem;">Both Manifestos + UGtastic</div>
+    </div>
+    <div style="background: var(--color-bg-card, #fff); border: 1px solid var(--color-border, #e3dfd7); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+      <div style="font-size: 2rem; font-weight: 800; color: #d97706;">{{ int_metrics.craftsmanship_first_ugtastic_only }}</div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #525866); text-transform: uppercase; margin-top: 0.25rem;">Craftsmanship First</div>
+      <div style="font-size: 0.7rem; color: #d97706; margin-top: 0.2rem;">SCM+UGtastic (Not Agile)</div>
+    </div>
+  </section>
+
+  <!-- Authors vs Signatories Taxonomy Card -->
+  <section style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 5px solid #2563eb; border-radius: 0.5rem; padding: 1.5rem 1.75rem; margin-bottom: 2.5rem;">
+    <h2 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0 0 0.75rem 0;">
+      Foundational Taxonomy: Authors vs. Signatories
+    </h2>
+    <p style="font-size: 0.95rem; color: #475569; margin: 0 0 1rem 0;">
+      A common fallacy in software history is conflating the individuals who <em>authored</em> a manifesto with the general public who later <em>signed</em> it. A person can be an author, a signatory, both, or neither:
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; font-size: 0.88rem;">
+      <div style="background: #fff; padding: 1rem; border-radius: 0.375rem; border: 1px solid #e2e8f0;">
+        <strong style="color: #2563eb; display: block; margin-bottom: 0.35rem;">Agile Manifesto (Feb 2001, Snowbird)</strong>
+        <ul style="margin: 0; padding-left: 1.2rem; color: #64748b; line-height: 1.6;">
+          <li><strong>17 Authors:</strong> Met in Snowbird, Utah to draft and sign the original statement. Most never entered their names into the subsequent public web form.</li>
+          <li><strong>~19,090 Signatories:</strong> Community members who endorsed the text via <code>agilemanifesto.org</code> over the subsequent two decades.</li>
+        </ul>
+      </div>
+      <div style="background: #fff; padding: 1rem; border-radius: 0.375rem; border: 1px solid #e2e8f0;">
+        <strong style="color: #0f766e; display: block; margin-bottom: 0.35rem;">Software Craftsmanship (Dec 2008 / March 2009)</strong>
+        <ul style="margin: 0; padding-left: 1.2rem; color: #64748b; line-height: 1.6;">
+          <li><strong>9 Core Authors/Drafters:</strong> Convened at 8th Light in Libertyville, IL (Dec 13, 2008); drafted by Doug Bradbury ("The New Left Side", Feb 2009).</li>
+          <li><strong>27,601 Signatories:</strong> The public ledger where the authors themselves took the first spots (#1 Doug Bradbury, #2 Corey Haines, #3 Paul Pagel, #4 Micah Martin, #5 Robert C. Martin, #6 David Chelimsky).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dave Thomas Disambiguation Section -->
+  <section style="background: rgba(245, 158, 11, 0.05); border: 2px solid rgba(245, 158, 11, 0.3); border-radius: 0.75rem; padding: 1.75rem 2rem; margin-bottom: 2.5rem;">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+      <span style="background: #d97706; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">
+        Identity Case Study
+      </span>
+      <h2 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0;">
+        Disambiguating the Two "Dave Thomas" Figures
+      </h2>
+    </div>
+    <p style="font-size: 0.95rem; color: #525866; margin: 0 0 1.25rem 0;">
+      Two distinct titans of modern software engineering share the name <strong>Dave Thomas</strong>. Both were recorded by Mike Hall for the UGtastic archive, but their positions in the manifesto ecosystem are entirely different. Conflating them distorts both histories.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <!-- Person 1: Pragdave -->
+      <div style="background: #fff; border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 0.5rem; padding: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.03);">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0;">
+            Dave "pragdave" Thomas
+          </h3>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: rgba(37, 99, 235, 0.1); padding: 0.2rem 0.5rem; border-radius: 9999px;">
+            Agile Author (Snowbird)
+          </span>
+        </div>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.5;">
+          Co-author of <em>The Pragmatic Programmer</em> (1999), co-founder of The Pragmatic Bookshelf, and early champion of Ruby and Elixir. One of the 17 original Snowbird authors who created the Agile Manifesto in February 2001. Did not sign via the public web form.
+        </p>
+        <div style="border-top: 1px solid #f1f5f9; padding-top: 0.6rem; font-size: 0.8rem;">
+          <div style="margin-bottom: 0.35rem;">
+            <strong style="color: #0f172a;">Agile Role:</strong> <span style="color: #2563eb; font-weight: 600;">Author Only</span> (Original 17)
+          </div>
+          <div style="margin-bottom: 0.35rem;">
+            <strong style="color: #0f172a;">SCM Role:</strong> <span style="color: #64748b;">Not a Signatory</span>
+          </div>
+          <div>
+            <strong style="color: #0f172a;">UGtastic Interview:</strong>
+            <a href="/interviews/dave-thomas-software-craftsmanship-north-america-2013/" style="color: #d97706; text-decoration: none; font-weight: 600; display: block; margin-top: 0.2rem;">
+              🎙 SCNA 2013: "The Power of Unknown Knowns: PragDave Thomas on Intuition and the Beginner's Mind"
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Person 2: Bedarra / OTI -->
+      <div style="background: #fff; border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 0.5rem; padding: 1.25rem; box-shadow: 0 2px 4px rgba(0,0,0,0.03);">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0;">
+            Dave Thomas (Bedarra / OTI)
+          </h3>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #0f766e; background: rgba(15, 118, 110, 0.1); padding: 0.2rem 0.5rem; border-radius: 9999px;">
+            Agile Web Signatory
+          </span>
+        </div>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.5;">
+          Founder of Object Technology International (OTI, creators of ENVY/Developer and the foundation of Eclipse), founder of Bedarra Research, and YOW! Conference founder. Signed the Agile Manifesto public ledger on page 5 under Bedarra Corp: <em>"Software is built by people supported by tools..."</em>
+        </p>
+        <div style="border-top: 1px solid #f1f5f9; padding-top: 0.6rem; font-size: 0.8rem;">
+          <div style="margin-bottom: 0.35rem;">
+            <strong style="color: #0f172a;">Agile Role:</strong> <span style="color: #0f766e; font-weight: 600;">Signatory Only</span> (Page 000000005.html)
+          </div>
+          <div style="margin-bottom: 0.35rem;">
+            <strong style="color: #0f172a;">SCM Role:</strong> <span style="color: #64748b;">Not a Signatory</span>
+          </div>
+          <div>
+            <strong style="color: #0f172a;">UGtastic Interviews:</strong>
+            <a href="/interviews/dave-thomas-goto-conference-and-community-goto-conference-and-community/" style="color: #d97706; text-decoration: none; font-weight: 600; display: block; margin-top: 0.2rem;">
+              🎙 GOTO Conference: "Independent Tech: Dave Thomas on GOTO Conferences, Vendor Influence, and Community Values"
+            </a>
+            <a href="/interviews/dave-thomas-goto-conference-2015/" style="color: #d97706; text-decoration: none; font-weight: 600; display: block; margin-top: 0.2rem;">
+              🎙 GOTO 2015: "Conference Speaking And Presentation Skills: Mike Hall Interviews Dave Thomas"
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 17 Agile Manifesto Authors Matrix -->
+  <section style="margin-bottom: 2.5rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0 0 0.5rem 0;">
+      The 17 Agile Manifesto Authors: Cross-Ecosystem Matrix
+    </h2>
+    <p style="font-size: 0.95rem; color: #525866; margin: 0 0 1.25rem 0;">
+      How did the 17 Snowbird creators engage with the Software Craftsmanship Manifesto eight years later, and who appeared in Mike Hall's Chicago-era interview archive?
+    </p>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--color-border, #e3dfd7); background: #f8fafc;">
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #475569; font-weight: 700;">Agile Author</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #475569; font-weight: 700;">SCM Authorship</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #475569; font-weight: 700;">SCM Signatory Rank</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #475569; font-weight: 700;">UGtastic Archive Presence</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for author in agile_authors %}
+            <tr style="border-bottom: 1px solid var(--color-border, #e3dfd7); {% if author.ugtastic_interviewee or author.scm_signatory %}background: rgba(15, 118, 110, 0.02);{% endif %}">
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0f172a;">
+                {{ author.name }}
+                {% if author.name contains 'pragdave' %}
+                  <span style="font-size: 0.72rem; color: #d97706; display: block; font-weight: normal;">(Pragmatic Programmer)</span>
+                {% endif %}
+              </td>
+              <td style="padding: 0.75rem 1rem;">
+                {% if author.scm_author %}
+                  <span style="background: rgba(15, 118, 110, 0.15); color: #0f766e; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 0.25rem;">
+                    ✓ 2008 Summit Author
+                  </span>
+                {% else %}
+                  <span style="color: #94a3b8; font-size: 0.8rem;">—</span>
+                {% endif %}
+              </td>
+              <td style="padding: 0.75rem 1rem;">
+                {% if author.scm_signatory %}
+                  {% for rec in author.scm_signatory_records %}
+                    <span style="font-weight: 700; color: #0f766e;">#{{ rec.number }}</span>
+                    <span style="color: #64748b; font-size: 0.75rem;">({{ rec.location }})</span>
+                  {% endfor %}
+                {% else %}
+                  <span style="color: #94a3b8; font-size: 0.8rem;">Not signed</span>
+                {% endif %}
+              </td>
+              <td style="padding: 0.75rem 1rem;">
+                {% if author.ugtastic_interviewee %}
+                  {% for inv in author.ugtastic_interviews %}
+                    <a href="/interviews/{{ inv.id }}/" style="display: block; font-size: 0.78rem; color: #d97706; text-decoration: none; margin-bottom: 0.2rem;">
+                      🎙 {{ inv.title | truncate: 60 }}
+                    </a>
+                  {% endfor %}
+                {% else %}
+                  <span style="color: #94a3b8; font-size: 0.8rem;">Not in archive</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- The 9 SCM Authors Matrix -->
+  <section style="margin-bottom: 2.5rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0 0 0.5rem 0;">
+      The 9 Software Craftsmanship Manifesto Authors
+    </h2>
+    <p style="font-size: 0.95rem; color: #525866; margin: 0 0 1.25rem 0;">
+      Convened at the December 13, 2008 Summit in Libertyville, Illinois (hosted by 8th Light) and formulated in early 2009 by Doug Bradbury. Here is how the SCM founders connect to the Agile Manifesto and UGtastic archive:
+    </p>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--color-border, #e3dfd7); background: #f8fafc;">
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #475569; font-weight: 700;">SCM Author</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #475569; font-weight: 700;">SCM Signatory #</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #475569; font-weight: 700;">Agile Manifesto Status</th>
+            <th style="text-align: left; padding: 0.75rem 1rem; color: #475569; font-weight: 700;">UGtastic Archive Presence</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for author in scm_authors %}
+            <tr style="border-bottom: 1px solid var(--color-border, #e3dfd7);">
+              <td style="padding: 0.75rem 1rem; font-weight: 600; color: #0f172a;">
+                {{ author.name }}
+                {% if author.note %}
+                  <div style="font-size: 0.72rem; color: #64748b; font-weight: normal; margin-top: 0.15rem;">{{ author.note }}</div>
+                {% endif %}
+              </td>
+              <td style="padding: 0.75rem 1rem;">
+                {% if author.scm_signatory %}
+                  {% for rec in author.scm_signatory_records %}
+                    <span style="font-weight: 700; color: #0f766e;">#{{ rec.number }}</span>
+                    <span style="color: #64748b; font-size: 0.75rem;">({{ rec.location }})</span>
+                  {% endfor %}
+                {% else %}
+                  <span style="color: #94a3b8;">—</span>
+                {% endif %}
+              </td>
+              <td style="padding: 0.75rem 1rem;">
+                {% if author.agile_author %}
+                  <span style="background: rgba(37, 99, 235, 0.15); color: #2563eb; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 0.25rem;">
+                    ✓ Agile Author (Snowbird)
+                  </span>
+                {% elsif author.agile_signatory %}
+                  <span style="color: #2563eb; font-weight: 600; font-size: 0.8rem;">✓ Agile Signatory</span>
+                {% else %}
+                  <span style="color: #94a3b8; font-size: 0.8rem;">Not signed</span>
+                {% endif %}
+              </td>
+              <td style="padding: 0.75rem 1rem;">
+                {% if author.ugtastic_interviewee %}
+                  {% for inv in author.ugtastic_interviews %}
+                    <a href="/interviews/{{ inv.id }}/" style="display: block; font-size: 0.78rem; color: #d97706; text-decoration: none; margin-bottom: 0.2rem;">
+                      🎙 {{ inv.title | truncate: 60 }}
+                    </a>
+                  {% endfor %}
+                {% else %}
+                  <span style="color: #94a3b8; font-size: 0.8rem;">Not in archive</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- The Trifecta section -->
+  <section style="margin-bottom: 2.5rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0 0 0.5rem 0;">
+      The Trifecta: Signed Both Manifestos &amp; In UGtastic Archive
+    </h2>
+    <p style="font-size: 0.95rem; color: #525866; margin: 0 0 1.25rem 0;">
+      These practitioners signed <strong>both the Agile Manifesto and Software Craftsmanship Manifesto</strong>, and were recorded in Mike Hall's archive. Notice the pronounced low-signatory skew: almost all signed SCM during the 2009–2010 founding era.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+      {% assign seen_trifecta = "" | split: "" %}
+      {% for m in trifecta %}
+        {% unless seen_trifecta contains m.signatory_name %}
+          {% assign seen_trifecta = seen_trifecta | push: m.signatory_name %}
+          <div style="background: rgba(124, 58, 237, 0.04); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 0.5rem; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.35rem;">
+              <span style="font-size: 1.05rem; font-weight: 700; color: #0f172a;">{{ m.signatory_name }}</span>
+              <span style="font-size: 0.75rem; font-weight: 700; color: #0f766e;">SCM #{{ m.signatory_number }}</span>
+            </div>
+            {% if m.location %}
+              <div style="font-size: 0.78rem; color: #64748b; margin-bottom: 0.5rem;">📍 {{ m.location }}</div>
+            {% endif %}
+            <div style="font-size: 0.78rem; color: #2563eb; margin-bottom: 0.5rem;">
+              ✓ Agile Manifesto signatory
+            </div>
+            {% for inv in m.connections.ugtastic_interviews limit: 2 %}
+              <div style="font-size: 0.75rem; color: #d97706; margin-bottom: 0.2rem;">
+                🎙 <a href="/interviews/{{ inv.id }}/" style="color: #d97706; text-decoration: none;">{{ inv.title | truncate: 65 }}</a>
+              </div>
+            {% endfor %}
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Craftsmanship First (SCM + UGtastic, Not Agile) -->
+  <section style="margin-bottom: 2.5rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0 0 0.5rem 0;">
+      Craftsmanship First: SCM Signatories Who Did Not Sign Agile
+    </h2>
+    <p style="font-size: 0.95rem; color: #525866; margin: 0 0 1.25rem 0;">
+      <strong>{{ int_metrics.craftsmanship_first_ugtastic_only }}</strong> UGtastic interviewees appear in the SCM datalake but did <em>not</em> sign the Agile Manifesto web form. This cohort represents the developers whose primary alignment was with the Craftsmanship movement rather than Agile orthodoxy.
+    </p>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--color-border, #e3dfd7); background: #f8fafc;">
+            <th style="text-align: left; padding: 0.6rem 0.8rem; color: #475569; font-weight: 700;">SCM #</th>
+            <th style="text-align: left; padding: 0.6rem 0.8rem; color: #475569; font-weight: 700;">Name</th>
+            <th style="text-align: left; padding: 0.6rem 0.8rem; color: #475569; font-weight: 700;">Location</th>
+            <th style="text-align: left; padding: 0.6rem 0.8rem; color: #475569; font-weight: 700;">UGtastic Interview</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% assign seen_craft = "" | split: "" %}
+          {% for m in craft_first %}
+            {% unless seen_craft contains m.signatory_name %}
+              {% assign seen_craft = seen_craft | push: m.signatory_name %}
+              <tr style="border-bottom: 1px solid var(--color-border, #e3dfd7);">
+                <td style="padding: 0.6rem 0.8rem; font-weight: 700; color: #0f766e;">#{{ m.signatory_number }}</td>
+                <td style="padding: 0.6rem 0.8rem; font-weight: 600; color: #0f172a;">{{ m.signatory_name }}</td>
+                <td style="padding: 0.6rem 0.8rem; color: #64748b; font-size: 0.8rem;">{{ m.location }}</td>
+                <td style="padding: 0.6rem 0.8rem;">
+                  {% for inv in m.connections.ugtastic_interviews limit: 1 %}
+                    <a href="/interviews/{{ inv.id }}/" style="color: #d97706; text-decoration: none; font-size: 0.78rem;">
+                      🎙 {{ inv.title | truncate: 65 }}
+                    </a>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endunless %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Provenance & Tooling -->
+  <section style="border-top: 1px solid var(--color-border, #e3dfd7); padding-top: 1.5rem; font-size: 0.85rem; color: #64748b;">
+    <strong style="display: block; color: #0f172a; margin-bottom: 0.5rem;">Pipeline Automation &amp; Tooling</strong>
+    <p style="margin: 0 0 0.5rem 0;">
+      This dataset is compiled dynamically using <code>bin/build_manifesto_network.rb</code> in the repository root. It executes full-table extraction against the local DuckDB datalake, applies name variant expansion and disambiguation filters, strips Mojibake / control codes, and outputs Psych-validated JSON to <code>_data/research/agile_scm_intersection.json</code>.
+    </p>
+    <div style="font-family: ui-monospace, Menlo, Monaco, monospace; font-size: 0.78rem; background: #f8fafc; padding: 0.5rem 0.75rem; border-radius: 0.25rem; border: 1px solid #e2e8f0; display: inline-block;">
+      $ ruby bin/build_manifesto_network.rb
+    </div>
+  </section>
+
+</div>
