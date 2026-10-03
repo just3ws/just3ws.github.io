@@ -1,0 +1,105 @@
+#!/usr/bin/env ruby
+# bin/pi-ctx-just3ws — compact knowledge-base brief for Pi (zpi) sessions.
+#
+# Prints ~15 lines / ~200 tokens summarizing the just3ws.github.io corpus
+# state, graph health, and available query surfaces. Designed to be injected
+# into Pi's system prompt by zpi() or called from Pi's bash tool.
+#
+# Usage:
+#   bin/pi-ctx-just3ws              # compact brief (default)
+#   bin/pi-ctx-just3ws --json       # machine-readable JSON
+#   bin/pi-ctx-just3ws --graph      # add knowledge graph node-type breakdown
+#
+# Output is intentionally capped. Pi has a 32k context window; every token
+# here costs reasoning headroom. Keep it dense.
+
+require 'json'
+require 'yaml'
+require 'date'
+
+ROOT = File.expand_path('..', __dir__)
+
+def load_json(rel)
+  path = File.join(ROOT, rel)
+  return {} unless File.exist?(path)
+  JSON.parse(File.read(path))
+rescue JSON::ParserError
+  {}
+end
+
+def load_yaml(rel)
+  path = File.join(ROOT, rel)
+  return {} unless File.exist?(path)
+  YAML.safe_load(File.read(path)) || {}
+rescue => _e
+  {}
+end
+
+def count_files(glob)
+  Dir.glob(File.join(ROOT, glob)).count
+end
+
+# --- corpus counts ---
+audit     = load_json('_data/knowledge_graph_audit.json')
+kg        = load_json('_data/knowledge_graph.json')
+speakers  = load_json('_data/speakers_index_full.json')
+skills_d  = load_yaml('_data/resume/skills.yml')
+
+node_count   = audit['node_count'] || kg.dig('nodes')&.length || 0
+edge_count   = audit['edge_count'] || kg.dig('links')&.length || 0
+orphan_count = Array(audit['orphan_node_ids']).length
+kg_status    = audit['status'] || 'unknown'
+
+speaker_count    = speakers['total_speakers'] || 0
+educator_count   = speakers['total_educators'] || 0
+interview_count  = kg.dig('nodes')&.count { |n| n['type'] == 'Interview' } || 0
+
+post_count     = count_files('_posts/*.md')
+position_count = count_files('_data/resume/positions/*.yml')
+skill_count    = Array(skills_d).length rescue 0
+
+research_count = count_files('_data/research/*.json')
+
+gaps = audit['coverage_gaps'] || {}
+gap_summary = gaps.map { |type, g| "#{type}:#{g['missing']}" }.join(' ')
+
+# --- graph node-type breakdown (for --graph flag) ---
+node_by_type = Hash.new(0)
+Array(kg['nodes']).each { |n| node_by_type[n['type']] += 1 }
+
+json_mode  = ARGV.include?('--json')
+graph_mode = ARGV.include?('--graph')
+
+if json_mode
+  puts JSON.pretty_generate({
+    repo: 'just3ws.github.io',
+    generated_at: Time.now.iso8601,
+    corpus: {
+      knowledge_graph: { nodes: node_count, edges: edge_count, orphans: orphan_count, status: kg_status },
+      posts: post_count,
+      positions: position_count,
+      interviews: interview_count,
+      speakers: speaker_count,
+      educators: educator_count,
+      research_files: research_count
+    },
+    coverage_gaps: gaps,
+    node_types: node_by_type,
+    query_cli: 'ruby bin/query_career_datalake.rb --help (use --man for full docs)',
+    audit_cli: 'ruby bin/audit_knowledge_graph.rb'
+  })
+else
+  puts "## just3ws corpus brief"
+  puts "kg: nodes=#{node_count} edges=#{edge_count} orphans=#{orphan_count} status=#{kg_status}"
+  puts "posts=#{post_count} positions=#{position_count} interviews=#{interview_count}"
+  puts "speakers=#{speaker_count} educators=#{educator_count} research=#{research_count}"
+  puts "gaps: #{gap_summary.empty? ? 'none' : gap_summary}" unless gap_summary.empty?
+
+  if graph_mode
+    puts "node-types:"
+    node_by_type.sort_by { |_, c| -c }.each { |t, c| puts "  #{t}: #{c}" }
+  end
+
+  puts "query: ruby bin/query_career_datalake.rb [--tech|--company|--search|--archetype|--interviewee|--era|--stats|--json]"
+  puts "audit: ruby bin/audit_knowledge_graph.rb"
+end
