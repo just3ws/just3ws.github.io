@@ -24,7 +24,7 @@ sitemap: false
   <!-- Ethical Provenance & Quarantine Banner -->
   <div style="background: var(--color-bg-card, #2a2a37); border-left: 5px solid #e6c384; padding: 1.5rem; border-radius: 0 10px 10px 0; margin-bottom: 2.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
     <h2 style="font-size: 1.2rem; font-weight: 800; color: #e6c384; margin: 0 0 0.6rem;">
-      Ethical Framework & 3-Tier Content Classification
+      Ethical Framework &amp; 3-Tier Content Classification
     </h2>
     <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #dcd7ba); margin-bottom: 1rem;">
       To guarantee 100% provenance clarity and ensure AI reasoning is never conflated with organic human writing, the site enforces strict categorization:
@@ -52,15 +52,40 @@ sitemap: false
     </div>
 
     <ul style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-muted, #c8c093); margin: 0; padding-left: 1.25rem;">
-      <li><strong>Accuracy Caveat & Hallucination Notice:</strong> Large language models can hallucinate timeline details, attendee attributions, or technical specifics. Always cross-reference against primary source records in the <a href="/interviews/" style="color: #7e9cd8; font-weight: 700;">Interview Archive</a>.</li>
+      <li><strong>Accuracy Caveat &amp; Hallucination Notice:</strong> Large language models can hallucinate timeline details, attendee attributions, or technical specifics. Always cross-reference against primary source records in the <a href="/interviews/" style="color: #7e9cd8; font-weight: 700;">Interview Archive</a>.</li>
       <li><strong>Search Engine Quarantine:</strong> All pages in this section include <code>noindex,follow</code> tags to avoid polluting public web indices.</li>
     </ul>
   </div>
 
-  <section>
-    <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin-bottom: 1.25rem;">
-      AI-Assisted Articles & Retrospectives ({{ site.posts | where: "ai_generated", true | size }})
-    </h2>
+  <section style="margin-bottom: 2.5rem;">
+    <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.25rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin: 0;">AI-Assisted Articles &amp; Retrospectives</h2>
+      <span style="font-size: 0.85rem; color: var(--color-text-muted, #c8c093);">{{ site.posts | where: "ai_generated", true | size }} posts</span>
+    </div>
+
+    <!-- Pinned: The Sound Above series -->
+    <div style="background: var(--color-bg-card, #2a2a37); border: 1px solid #f4c84f; border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem;">
+      <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #f4c84f; margin: 0 0 0.5rem;">Pinned series &middot; The Sound Above</p>
+      <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #dcd7ba); max-width: 65ch; margin: 0 0 1.1rem;">Three posts grounding the UGtastic oral history rewatch series in the Chicago craft movement and the platform that makes the production stack possible.</p>
+      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+        {% assign all_ai = site.posts | where: "ai_generated", true %}
+        {% for post in all_ai %}
+          {% if post.url contains '2026/10/02' %}
+            <li style="padding: 0.75rem 1rem; border: 1px solid var(--color-border, #363646); border-radius: 0.45rem; background: var(--color-bg-base, #1a1b2f);">
+              <a href="{{ post.url }}" style="font-weight: 700; color: var(--color-primary, #7e9cd8); text-decoration: none; font-size: 0.95rem;">{{ post.title }}</a>
+              {% if post.description %}<p style="font-size: 0.85rem; color: var(--color-text-muted, #c8c093); margin: 0.3rem 0 0; line-height: 1.45;">{{ post.description }}</p>{% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+        <a href="/ugtastic/" style="font-size: 0.82rem; font-weight: 700; color: #f4c84f; border: 1px solid #f4c84f; padding: 0.3rem 0.65rem; border-radius: 4px; text-decoration: none;">UGtastic archive &rarr;</a>
+        <a href="/scmc/" style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.3rem 0.65rem; border-radius: 4px; text-decoration: none;">SCMC archive &rarr;</a>
+        <a href="/interviews/" style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.3rem 0.65rem; border-radius: 4px; text-decoration: none;">211 interviews &rarr;</a>
+      </div>
+    </div>
+
+    <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text-muted, #c8c093); margin: 0 0 1rem; letter-spacing: 0.03em;">Full corpus &mdash; all Tier 3 posts</h3>
     <ul class="post-list">
       {% assign ai_posts = site.posts | where: "ai_generated", true %}
       {% for post in ai_posts %}
