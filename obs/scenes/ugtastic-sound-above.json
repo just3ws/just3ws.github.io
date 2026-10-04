@@ -1,0 +1,578 @@
+{
+  "name": "The Sound Above - UGtastic Rewatch",
+  "version": 2,
+  "current_scene": "01. Starting Soon",
+  "current_program_scene": "01. Starting Soon",
+  "current_transition": "Fade",
+  "transition_duration": 300,
+  "scene_order": [
+    { "name": "01. Starting Soon" },
+    { "name": "02. Monologue / Full Camera" },
+    { "name": "03. Reaction - Video Focus" },
+    { "name": "04. Split Screen - Video & Research" },
+    { "name": "05. Workbench - Code & Terminal" },
+    { "name": "06. Guest & Co-Host Discussion" },
+    { "name": "07. Intermission / BRB" },
+    { "name": "08. Outro & Next Stream" }
+  ],
+  "quick_transitions": [
+    { "id": 1, "name": "Cut", "duration": 300, "hotkeys": [], "fade_to_black": false },
+    { "id": 2, "name": "Fade", "duration": 300, "hotkeys": [], "fade_to_black": false }
+  ],
+  "AuxAudioDevice1": {
+    "name": "Mic/Aux",
+    "id": "coreaudio_input_capture",
+    "versioned_id": "coreaudio_input_capture",
+    "uuid": "4365e5f6-a221-4901-adf3-859126475621",
+    "settings": {
+      "device_id": "default"
+    },
+    "mixers": 3,
+    "sync": 0,
+    "volume": 1.0,
+    "balance": 0.5,
+    "enabled": true,
+    "muted": false,
+    "filters": [
+      {
+        "id": "noise_suppress_filter_v2",
+        "versioned_id": "noise_suppress_filter_v2",
+        "name": "Noise Suppression (RNNoise)",
+        "enabled": true,
+        "settings": {
+          "method": "rnnoise"
+        }
+      },
+      {
+        "id": "compressor_filter",
+        "versioned_id": "compressor_filter",
+        "name": "Vocal Compressor",
+        "enabled": true,
+        "settings": {
+          "ratio": 4.0,
+          "threshold": -18.0,
+          "attack_time": 6,
+          "release_time": 60,
+          "output_gain": 3.0
+        }
+      },
+      {
+        "id": "limiter_filter",
+        "versioned_id": "limiter_filter",
+        "name": "Safety Limiter",
+        "enabled": true,
+        "settings": {
+          "threshold": -1.5,
+          "release_time": 60
+        }
+      }
+    ]
+  },
+  "DesktopAudioDevice1": {
+    "name": "Desktop Audio",
+    "id": "coreaudio_output_capture",
+    "versioned_id": "coreaudio_output_capture",
+    "uuid": "4365e5f6-a221-4901-adf3-859126475622",
+    "settings": {
+      "device_id": "default"
+    },
+    "mixers": 5,
+    "sync": 0,
+    "volume": 0.8,
+    "balance": 0.5,
+    "enabled": true,
+    "muted": false
+  },
+  "sources": [
+    {
+      "name": "Dark Slate Background",
+      "uuid": "b1a2c3d4-0001-4000-8000-000000000001",
+      "id": "color_source_v3",
+      "versioned_id": "color_source_v3",
+      "settings": {
+        "color": 4279045389,
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "name": "Host Camera",
+      "uuid": "b1a2c3d4-0002-4000-8000-000000000002",
+      "id": "av_capture_input",
+      "versioned_id": "av_capture_input",
+      "settings": {
+        "device": "default",
+        "use_preset": true,
+        "preset": "AVCaptureSessionPreset1920x1080"
+      }
+    },
+    {
+      "name": "Video Window (Orion)",
+      "uuid": "b1a2c3d4-0003-4000-8000-000000000003",
+      "id": "window_capture",
+      "versioned_id": "window_capture",
+      "settings": {
+        "method": 1,
+        "type": "window",
+        "owner_name": "Orion",
+        "show_cursor": true
+      }
+    },
+    {
+      "name": "Research Window (just3ws.localhost)",
+      "uuid": "b1a2c3d4-0004-4000-8000-000000000004",
+      "id": "window_capture",
+      "versioned_id": "window_capture",
+      "settings": {
+        "method": 1,
+        "type": "window",
+        "show_cursor": true
+      }
+    },
+    {
+      "name": "Workbench Terminal",
+      "uuid": "b1a2c3d4-0005-4000-8000-000000000005",
+      "id": "window_capture",
+      "versioned_id": "window_capture",
+      "settings": {
+        "method": 1,
+        "type": "window",
+        "show_cursor": true
+      }
+    },
+    {
+      "name": "Guest / Co-Host Window",
+      "uuid": "b1a2c3d4-0006-4000-8000-000000000006",
+      "id": "window_capture",
+      "versioned_id": "window_capture",
+      "settings": {
+        "method": 1,
+        "type": "window",
+        "show_cursor": true
+      }
+    },
+    {
+      "name": "Video Application Audio (Orion)",
+      "uuid": "b1a2c3d4-0007-4000-8000-000000000007",
+      "id": "sck_audio_capture",
+      "versioned_id": "sck_audio_capture",
+      "settings": {
+        "application": "com.kagi.kagimacOS",
+        "type": "application"
+      },
+      "mixers": 5,
+      "volume": 0.85,
+      "enabled": true
+    },
+    {
+      "name": "Overlay: Lower Third",
+      "uuid": "b1a2c3d4-0008-4000-8000-000000000008",
+      "id": "browser_source",
+      "versioned_id": "browser_source",
+      "settings": {
+        "is_local_file": true,
+        "local_file": "/Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third.html",
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "reroute_audio": false
+      }
+    },
+    {
+      "name": "Overlay: Now Watching HUD",
+      "uuid": "b1a2c3d4-0009-4000-8000-000000000009",
+      "id": "browser_source",
+      "versioned_id": "browser_source",
+      "settings": {
+        "is_local_file": true,
+        "local_file": "/Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/now-watching.html",
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "reroute_audio": false
+      }
+    },
+    {
+      "name": "Overlay: Starting Screen",
+      "uuid": "b1a2c3d4-0010-4000-8000-000000000010",
+      "id": "browser_source",
+      "versioned_id": "browser_source",
+      "settings": {
+        "is_local_file": true,
+        "local_file": "/Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/stream-starting.html",
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "reroute_audio": false
+      }
+    },
+    {
+      "name": "Overlay: BRB Screen",
+      "uuid": "b1a2c3d4-0011-4000-8000-000000000011",
+      "id": "browser_source",
+      "versioned_id": "browser_source",
+      "settings": {
+        "is_local_file": true,
+        "local_file": "/Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/stream-brb.html",
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "reroute_audio": false
+      }
+    },
+    {
+      "name": "Overlay: Outro Screen",
+      "uuid": "b1a2c3d4-0012-4000-8000-000000000012",
+      "id": "browser_source",
+      "versioned_id": "browser_source",
+      "settings": {
+        "is_local_file": true,
+        "local_file": "/Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/stream-outro.html",
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "reroute_audio": false
+      }
+    },
+    {
+      "name": "01. Starting Soon",
+      "uuid": "a1b2c3d4-0001-4000-8000-000000000001",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 2,
+        "items": [
+          {
+            "name": "Dark Slate Background",
+            "id": 1,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Overlay: Starting Screen",
+            "id": 2,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          }
+        ]
+      }
+    },
+    {
+      "name": "02. Monologue / Full Camera",
+      "uuid": "a1b2c3d4-0002-4000-8000-000000000002",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 3,
+        "items": [
+          {
+            "name": "Dark Slate Background",
+            "id": 1,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Host Camera",
+            "id": 2,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 1920.0, "y": 1080.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Overlay: Lower Third",
+            "id": 3,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          }
+        ]
+      }
+    },
+    {
+      "name": "03. Reaction - Video Focus",
+      "uuid": "a1b2c3d4-0003-4000-8000-000000000003",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 6,
+        "items": [
+          {
+            "name": "Dark Slate Background",
+            "id": 1,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Video Window (Orion)",
+            "id": 2,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 1920.0, "y": 1080.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Video Application Audio (Orion)",
+            "id": 3,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Host Camera",
+            "id": 4,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 1420.0, "y": 740.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 460.0, "y": 300.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Overlay: Now Watching HUD",
+            "id": 5,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Overlay: Lower Third",
+            "id": 6,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          }
+        ]
+      }
+    },
+    {
+      "name": "04. Split Screen - Video & Research",
+      "uuid": "a1b2c3d4-0004-4000-8000-000000000004",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 6,
+        "items": [
+          {
+            "name": "Dark Slate Background",
+            "id": 1,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Video Window (Orion)",
+            "id": 2,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 30.0, "y": 90.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 910.0, "y": 512.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Research Window (just3ws.localhost)",
+            "id": 3,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 980.0, "y": 90.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 910.0, "y": 512.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Video Application Audio (Orion)",
+            "id": 4,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Host Camera",
+            "id": 5,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 760.0, "y": 660.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 400.0, "y": 270.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Overlay: Lower Third",
+            "id": 6,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          }
+        ]
+      }
+    },
+    {
+      "name": "05. Workbench - Code & Terminal",
+      "uuid": "a1b2c3d4-0005-4000-8000-000000000005",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 4,
+        "items": [
+          {
+            "name": "Dark Slate Background",
+            "id": 1,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Workbench Terminal",
+            "id": 2,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 1920.0, "y": 1080.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Host Camera",
+            "id": 3,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 1440.0, "y": 740.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 440.0, "y": 300.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Overlay: Lower Third",
+            "id": 4,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          }
+        ]
+      }
+    },
+    {
+      "name": "06. Guest & Co-Host Discussion",
+      "uuid": "a1b2c3d4-0006-4000-8000-000000000006",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 4,
+        "items": [
+          {
+            "name": "Dark Slate Background",
+            "id": 1,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Host Camera",
+            "id": 2,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 50.0, "y": 160.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 880.0, "y": 620.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Guest / Co-Host Window",
+            "id": 3,
+            "visible": true,
+            "locked": false,
+            "pos": { "x": 990.0, "y": 160.0 },
+            "scale": { "x": 1.0, "y": 1.0 },
+            "bounds": { "x": 880.0, "y": 620.0 },
+            "bounds_type": 2
+          },
+          {
+            "name": "Overlay: Lower Third",
+            "id": 4,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          }
+        ]
+      }
+    },
+    {
+      "name": "07. Intermission / BRB",
+      "uuid": "a1b2c3d4-0007-4000-8000-000000000007",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 2,
+        "items": [
+          {
+            "name": "Dark Slate Background",
+            "id": 1,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Overlay: BRB Screen",
+            "id": 2,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          }
+        ]
+      }
+    },
+    {
+      "name": "08. Outro & Next Stream",
+      "uuid": "a1b2c3d4-0008-4000-8000-000000000008",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "id_counter": 2,
+        "items": [
+          {
+            "name": "Dark Slate Background",
+            "id": 1,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          },
+          {
+            "name": "Overlay: Outro Screen",
+            "id": 2,
+            "visible": true,
+            "locked": true,
+            "pos": { "x": 0.0, "y": 0.0 },
+            "scale": { "x": 1.0, "y": 1.0 }
+          }
+        ]
+      }
+    }
+  ]
+}

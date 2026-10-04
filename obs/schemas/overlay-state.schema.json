@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://just3ws.com/schemas/obs/overlay-state.schema.json",
+  "title": "OverlayState",
+  "description": "Schema for live state synchronized across OBS Studio browser source overlays.",
+  "type": "object",
+  "required": ["episode", "stream"],
+  "properties": {
+    "episode": {
+      "type": "object",
+      "required": ["number", "title", "interviewee", "conference", "year", "era", "sound_above_prompt"],
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Episode sequence number."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the episode or discussion topic."
+        },
+        "interviewee": {
+          "type": "string",
+          "description": "Name of the featured practitioner or speaker."
+        },
+        "role": {
+          "type": "string",
+          "description": "Professional or historical role of the interviewee."
+        },
+        "conference": {
+          "type": "string",
+          "description": "Conference or user group event where the interview occurred."
+        },
+        "location": {
+          "type": "string",
+          "description": "Geographical location of the event."
+        },
+        "year": {
+          "type": "string",
+          "pattern": "^[0-9]{4}$",
+          "description": "Year of the recording."
+        },
+        "era": {
+          "type": "string",
+          "description": "Historical craftsmanship era name."
+        },
+        "sound_above_prompt": {
+          "type": "string",
+          "description": "The Sound Above philosophical inquiry or central quotation."
+        },
+        "companion_links": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" },
+          "description": "Reference URLs on just3ws.localhost or canonical archives."
+        }
+      }
+    },
+    "stream": {
+      "type": "object",
+      "required": ["series_title", "series_subtitle", "host"],
+      "properties": {
+        "series_title": {
+          "type": "string",
+          "description": "Master series title."
+        },
+        "series_subtitle": {
+          "type": "string",
+          "description": "Series subtitle and positioning statement."
+        },
+        "host": {
+          "type": "string",
+          "description": "Name and credentials of the stream host."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["offline", "starting", "live", "brb", "ended"],
+          "description": "Current lifecycle status of the stream."
+        },
+        "topic": {
+          "type": "string",
+          "description": "High-level summary topic of the current stream segment."
+        }
+      }
+    }
+  }
+}

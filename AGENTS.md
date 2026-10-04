@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-02
+     CURRENT FOCUS - last updated 2026-10-04
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,28 +12,31 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - THE SOUND ABOVE OBS PROJECT (2026-10-04): Full OBS Studio project
+         created at `obs/` for the UGtastic oral history rewatch series.
+         8-scene collection (Apple M4 hardware profile, 1080p60, apple_h264),
+         macOS Golden Gate native audio (DesktopAudioDevice1 + sck_audio_capture),
+         5 HTML overlays with craftsmanship-theme palette, 21-episode sequence
+         manifest across 5 eras. Automation: `bundle exec rake validate:obs`
+         (35 assertions, 7 gates). Man page: `man/man1/obs-livestream.1`.
+         New skill: `oral-history-broadcaster` in `.agents/skills/` and
+         `.claude/agents/`. Repo hygiene updated (obs/ in allowed_directories
+         + Jekyll exclude list). All validation gates clean.
+         Next: commit atomically; stage capstone post; cross-link /ugtastic/
+         and /scmc/ index pages with series navigation.
        - VIDEO SERIES PLATFORM NARRATIVE (2026-10-02): 5-part series
-         "The Observable Control Plane" blueprint approved by Mike (zdots
-         session). Capstone post drafted:
+         "The Observable Control Plane" blueprint approved. Capstone post drafted:
          `_posts/2026-10-02-without-zdots-there-was-nothing.md`
          — Tier 3 AI-augmented, routes to /ai/2026/10/02/..., Jekyll build
-         clean. Connects 2009 SCMC founding, 2010 UGtastic interview archive,
-         just3ws.localhost archive pipeline, phalanxduel.com telemetry, and
-         zdots multi-agent mesh into a single platform origin story.
-         Series blueprint: /Users/mike/.gemini/antigravity-cli/brain/
+         clean. Series blueprint: /Users/mike/.gemini/antigravity-cli/brain/
            0e5b4dee-44a7-4486-846e-ebb7264cfcf6/video_series_blueprint.md
-         Bus handoff posted to #general (msg 3d65f2da).
-         Next: stage + commit the post; consider cross-link in /ugtastic/
-         and /scmc/ index pages; consider /ai/ index page aggregating
+         Next: stage + commit the post; consider /ai/ index page aggregating
          Tier 3 posts for discoverability.
        - Migrated systems architect archetype slug to staff_systems_architect
-         and mike-hall-staff-systems-architect across data, routes, datalake,
-         exports, and navigation. Fixed variable scoping bug in
-         `bin/generate_archetype_resumes.rb` and synced full PDF exports to
-         desktop and `exports/`. All 90 RSpec specs, resume quality checks,
-         ATS benchmark (88.2%), Jekyll production build, and HTML-Proofer clean.
+         across data, routes, datalake, exports, and navigation.
+         All 90 RSpec specs, ATS benchmark (88.2%), Jekyll build clean.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-10-02.md (zdots session — cross-ref)
+         ~/.config/adots/handoffs/2026-10-04.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
@@ -109,10 +112,10 @@ Single-context layout (root-level CONTEXT.md + docs/adr/). See `docs/agents/doma
 Cross-persona task ownership, review obligations, and decision authority are defined in `docs/agents/agent-raci-matrix.md`. Mike Hall's SME working group delegation strategy (proven at OneMain Financial) and the multi-archive claim verification playbook are codified in `docs/sme-delegation-and-multi-archive-playbook.md`.
 
 ## Registered Skills
-Use these skills by default for this repository. **Status**: 8 of the 21
+Use these skills by default for this repository. **Status**: 9 of the 22
 below have real `SKILL.md` content in `.agents/skills/` (marked ✓; see
 `docs/tooling-user-guide.md` §6) — the other 13 have no skill file anywhere.
-All 21 also have `.claude/agents/*.md` subagent persona coverage (TASK-262),
+All 22 also have `.claude/agents/*.md` subagent persona coverage (TASK-262),
 which is a separate mechanism (a spawned subagent, not a loaded skill) and
 does not require a `.agents/skills/` file to exist.
 
@@ -150,6 +153,7 @@ a hold, not an invitation to invent a smoother explanation.
 19. `public-surface-auditor` ✓ - Audit the rendered public boundary for privacy, provenance, quarantine, and internal topology leaks before publication.
 20. `tmi-auditor` ✓ - Audit public-facing content for oversharing, discrimination-vector signals, and PII/PHI exposure.
 21. `canonical-surface-steward` ✓ - Keep canonical identity, shorthand, agents, skills, documentation, CLI help, validators, and generated surfaces synchronized.
+22. `oral-history-broadcaster` ✓ - Direct, validate, cue, and audit live oral history rewatch broadcasts, OBS Studio production scene contracts, dynamic HTML overlays, and "Sound Above" commentary arcs across the UGtastic and Chicago Software Craftsmanship corpus.
 
 ## Career Datalake & MCP Server Interface
 

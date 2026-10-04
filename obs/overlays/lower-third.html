@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lower Third: The Sound Above</title>
+  <link rel="stylesheet" href="css/craftsmanship-theme.css">
+  <style>
+    body {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+    }
+
+    .lower-third-container {
+      position: absolute;
+      left: 60px;
+      bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 900px;
+      animation: slide-up 0.5s ease-out;
+    }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .main-card {
+      padding: 16px 24px;
+      border-left: 4px solid var(--border-strong);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .interviewee-name {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .event-tag {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-amber);
+      font-weight: 500;
+    }
+
+    .role-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .sound-above-prompt {
+      margin-top: 4px;
+      font-size: 13px;
+      color: #cbd5e1;
+      font-style: italic;
+      border-top: 1px solid rgba(229, 169, 93, 0.15);
+      padding-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="lower-third-container">
+    <div class="header-bar">
+      <div class="pill-badge">
+        <span class="indicator-dot"></span>
+        <span id="series-title">THE SOUND ABOVE</span>
+      </div>
+      <span class="mono-label" id="episode-tag">EPISODE 01</span>
+      <span class="mono-label" id="era-tag">THE CHICAGO CRUCIBLE</span>
+    </div>
+
+    <div class="stream-panel main-card">
+      <div class="interviewee-name">
+        <span id="interviewee">Sergio Pereira</span>
+        <span class="event-tag" id="event-context">SCNA 2011 (Chicago, IL)</span>
+      </div>
+      <div class="role-desc" id="role">Founder, Chicago Alt.NET : Grassroots Practitioner</div>
+      <div class="sound-above-prompt" id="prompt">
+        "Who inspired the pioneers before the movement had a name? Breaking free from monolithic frameworks."
+      </div>
+    </div>
+  </div>
+
+  <script src="js/overlay-controller.js"></script>
+  <script>
+    new OverlayController({
+      stateUrl: "overlay-state.json",
+      onUpdate: (state) => {
+        const ep = state.episode;
+        document.getElementById("interviewee").textContent = ep.interviewee;
+        document.getElementById("event-context").textContent = `${ep.conference} (${ep.year})`;
+        document.getElementById("role").textContent = `${ep.role} : ${ep.title}`;
+        document.getElementById("prompt").textContent = `"${ep.sound_above_prompt}"`;
+        document.getElementById("episode-tag").textContent = `EPISODE ${String(ep.number).padStart(2, '0')}`;
+        document.getElementById("era-tag").textContent = ep.era.toUpperCase();
+        document.getElementById("series-title").textContent = state.stream.series_title.toUpperCase();
+      }
+    });
+  </script>
+</body>
+</html>

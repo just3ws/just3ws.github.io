@@ -247,6 +247,11 @@ namespace :validate do
     sh 'ruby ./bin/validate_data.rb'
   end
 
+  desc 'Validate OBS Studio configuration, hardware profiles, overlays, and runtime contracts'
+  task :obs do
+    sh 'ruby ./bin/validate_obs_setup.rb'
+  end
+
   task :audit_transcripts => 'transcript:audit'
 
   task :resources_output do

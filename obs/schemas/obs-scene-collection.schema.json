@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://just3ws.com/schemas/obs/obs-scene-collection.schema.json",
+  "title": "ObsSceneCollection",
+  "description": "Structural contract for OBS Studio Scene Collection JSON files.",
+  "type": "object",
+  "required": [
+    "name",
+    "version",
+    "current_scene",
+    "current_program_scene",
+    "scene_order",
+    "sources",
+    "AuxAudioDevice1"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the scene collection."
+    },
+    "version": {
+      "type": "integer",
+      "description": "OBS scene schema version (typically 2)."
+    },
+    "current_scene": {
+      "type": "string",
+      "description": "Active preview scene name."
+    },
+    "current_program_scene": {
+      "type": "string",
+      "description": "Active program output scene name."
+    },
+    "scene_order": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "AuxAudioDevice1": {
+      "type": "object",
+      "required": ["name", "id", "mixers", "volume", "enabled"],
+      "properties": {
+        "name": { "type": "string" },
+        "id": { "type": "string" },
+        "mixers": { "type": "integer" },
+        "volume": { "type": "number" },
+        "enabled": { "type": "boolean" },
+        "filters": { "type": "array" }
+      }
+    },
+    "DesktopAudioDevice1": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "id": { "type": "string" },
+        "mixers": { "type": "integer" },
+        "volume": { "type": "number" },
+        "enabled": { "type": "boolean" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "id"],
+        "properties": {
+          "name": { "type": "string" },
+          "id": { "type": "string" },
+          "settings": { "type": "object" }
+        }
+      }
+    }
+  }
+}

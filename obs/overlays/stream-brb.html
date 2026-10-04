@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intermission: The Sound Above</title>
+  <link rel="stylesheet" href="css/craftsmanship-theme.css">
+  <style>
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: radial-gradient(circle at 50% 50%, #131a24 0%, #0a0d13 80%, #040608 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px;
+      font-family: var(--font-sans);
+    }
+
+    .brb-box {
+      max-width: 840px;
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brb-badge {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--text-amber);
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+    }
+
+    p.subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .topic-pill {
+      margin-top: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      background: rgba(229, 169, 93, 0.12);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-amber);
+    }
+
+    .footer-note {
+      margin-top: 32px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #64748b;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="stream-panel brb-box">
+    <div class="pill-badge">
+      <span class="indicator-dot"></span>
+      <span>SHORT INTERMISSION</span>
+    </div>
+
+    <h1>Holding the Thread</h1>
+
+    <p class="subtitle">
+      Stepping away from the workbench for a moment.
+      The discussion will resume shortly.
+    </p>
+
+    <div class="topic-pill" id="brb-topic">
+      Current Rewatch: Sergio Pereira (SCNA 2011)
+    </div>
+
+    <div class="footer-note">
+      THE SOUND ABOVE : HOSTED BY MIKE HALL (#106)
+    </div>
+  </div>
+
+  <script src="js/overlay-controller.js"></script>
+  <script>
+    new OverlayController({
+      stateUrl: "overlay-state.json",
+      onUpdate: (state) => {
+        const ep = state.episode;
+        document.getElementById("brb-topic").textContent = `Current Rewatch: ${ep.interviewee} (${ep.conference})`;
+      }
+    });
+  </script>
+</body>
+</html>

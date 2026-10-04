@@ -1,0 +1,111 @@
+.TH OBS-LIVESTREAM 1 "October 2026" "just3ws" "User Commands"
+.SH NAME
+obs-livestream \- manage, validate, and broadcast UGtastic oral history rewatch livestreams
+.SH SYNOPSIS
+.B bundle exec rake validate:obs
+.br
+.B ruby bin/validate_obs_setup.rb
+[\fB\-\-live\fR] [\fB\-\-help\fR]
+.br
+.B obs/scripts/install-obs-config.sh
+[\fB\-\-dry-run\fR] [\fB\-\-help\fR]
+.br
+.B obs/scripts/update-overlay-state.sh
+[\fB\-\-episode\fR \fIN\fR] [\fB\-\-guest\fR \fINAME\fR] [\fB\-\-conference\fR \fICONF\fR] [\fB\-\-prompt\fR \fITEXT\fR] [\fB\-\-help\fR]
+.br
+.B obs/scripts/test-audio-routing.sh
+[\fB\-\-help\fR]
+.SH DESCRIPTION
+.B obs-livestream
+is the automation and configuration suite for the "The Sound Above" oral history rewatch stream. Hosted by Mike Hall (Software Craftsmanship Signatory #106), the series reviews over 200 UGtastic interviews (2010\[en]2015), early Chicago software craftsmanship history, and the evolution of developer identity as the industry transitions into the AI era.
+.PP
+The toolchain provides declarative OBS Studio 32 scene collections, Apple Silicon M4 hardware-accelerated encoding profiles, native macOS Golden Gate digital sound capture, interactive HTML/CSS/JS browser overlays, and automated contract testing.
+.SH PRODUCTION SCENES
+The scene collection defines eight purpose-built broadcast scenes:
+.TP
+.B 01. Starting Soon
+Ambient slate title screen with live episode card, quote carousel, and animated pulse indicator.
+.TP
+.B 02. Monologue / Full Camera
+Full-screen host camera with lower-third HUD for framing historical context and opening thesis.
+.TP
+.B 03. Reaction \- Video Focus
+Large-format Orion browser window capture (80% canvas) paired with host camera picture-in-picture in the lower right, Now Watching HUD, and isolated application audio.
+.TP
+.B 04. Split Screen \- Video & Research
+Side-by-side comparison: Orion video playback on the left, secondary research browser or terminal on the right showing transcripts or timeline data on just3ws.localhost.
+.TP
+.B 05. Workbench \- Code & Terminal
+Full-screen terminal window capture (18pt font minimum) with host camera inset for code analysis, git archaeology, and zdots platform tooling demonstrations.
+.TP
+.B 06. Guest & Co-Host Discussion
+Two-up side-by-side camera boxes with shared screen inset for retrospective discussions with community veterans.
+.TP
+.B 07. Intermission / BRB
+Standby card ("Holding the Thread") displaying the active topic while stepping away from the workbench.
+.TP
+.B 08. Outro & Next Stream
+Closing credits, archive resource links, and next episode preview.
+.SH AUDIO ARCHITECTURE (MACOS GOLDEN GATE)
+OBS on macOS Golden Gate (Darwin 27) utilizes native ScreenCaptureKit and CoreAudio capture:
+.IP \(bu 2
+.B Per-Application Audio (\fIsck_audio_capture\fR):
+Taps the digital PCM stream of the Orion browser directly. Completely isolates video playback while automatically filtering out Mail chimes, Slack dings, terminal bells, and Spotify.
+.IP \(bu 2
+.B Desktop Audio (\fIcoreaudio_output_capture\fR):
+Taps default system output at a locked 48,000 Hz sample rate without requiring third-party virtual audio loopback drivers (Soundflower and BlackHole are obsolete).
+.IP \(bu 2
+.B 4-Track Master Recording:
+Advanced recording captures four independent, synchronized audio tracks simultaneously into hybrid MOV containers: Track 1 (Composite Stream Mix), Track 2 (Host Mic Isolated), Track 3 (Orion Video Isolated), Track 4 (Guest Isolated).
+.SH OVERLAYS
+Browser overlays in \fIobs/overlays/\fR poll \fIobs/overlays/overlay-state.json\fR every 2.5 seconds:
+.TP
+.B lower-third.html
+Renders interviewee name, event, year, role, and the central Sound Above philosophical prompt.
+.TP
+.B now-watching.html
+Renders floating metadata card with recording indicator, era pill, and episode topic.
+.TP
+.B stream-starting.html
+Pre-stream title card with animated pulse and rotating quotes from craftsmanship literature.
+.SH FILES
+.TP
+.I obs/scenes/ugtastic-sound-above.json
+Declarative OBS Studio 32 scene collection.
+.TP
+.I obs/profiles/The Sound Above/basic.ini
+Hardware-tuned OBS profile for Apple Silicon M4.
+.TP
+.I obs/overlays/overlay-state.json
+Live state synchronized to browser sources.
+.TP
+.I obs/curation/sequence-manifest.json
+21-episode master curation sequence.
+.TP
+.I ~/Library/Application Support/obs-studio/
+Installed OBS Studio configuration target.
+.SH EXAMPLES
+.nf
+# Validate all OBS contracts and macOS environment:
+bundle exec rake validate:obs
+
+# Probe running OBS instance and WebSocket socket:
+ruby bin/validate_obs_setup.rb --live
+
+# Cue Episode 1 (Sergio Pereira):
+./obs/scripts/update-overlay-state.sh --episode 1
+
+# Synchronize repo configuration to OBS Studio:
+./obs/scripts/install-obs-config.sh
+
+# Run audio diagnostic and sample rate check:
+./obs/scripts/test-audio-routing.sh
+.fi
+.SH SEE ALSO
+.BR just3ws-youtube (1),
+.BR audit-public-surface (1),
+.BR jekyll (1)
+.SH AUTHORS
+Mike Hall (https://www.just3ws.com)
+.br
+Software Craftsmanship Signatory #106

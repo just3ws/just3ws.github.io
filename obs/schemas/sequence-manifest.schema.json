@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://just3ws.com/schemas/obs/sequence-manifest.schema.json",
+  "title": "SequenceManifest",
+  "description": "Schema for the curated UGtastic rewatch episode sequence manifest.",
+  "type": "object",
+  "required": ["project", "curator", "total_episodes", "episodes"],
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Project title."
+    },
+    "curator": {
+      "type": "string",
+      "description": "Host and curator name with credentials."
+    },
+    "total_episodes": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total number of planned episodes in the manifest."
+    },
+    "manifesto_anchor": {
+      "type": "string",
+      "description": "Historical anchor to the Software Craftsmanship Manifesto."
+    },
+    "primary_archive_route": {
+      "type": "string",
+      "description": "Default web path to the local interview archive."
+    },
+    "episodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "number",
+          "era_id",
+          "era_name",
+          "interviewee",
+          "slug",
+          "conference",
+          "year",
+          "title",
+          "sound_above_inquiry",
+          "chicago_context",
+          "ai_era_parallel",
+          "status"
+        ],
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Sequential episode number."
+          },
+          "era_id": {
+            "type": "string",
+            "description": "Identifier matching the community timeline era."
+          },
+          "era_name": {
+            "type": "string",
+            "description": "Human-readable era name and date span."
+          },
+          "interviewee": {
+            "type": "string",
+            "description": "Full name of the interviewee or focus practitioner."
+          },
+          "slug": {
+            "type": "string",
+            "description": "Archive interview slug matching _data/interviews.yml."
+          },
+          "conference": {
+            "type": "string",
+            "description": "Conference or user group where the interview was recorded."
+          },
+          "year": {
+            "type": "integer",
+            "description": "Year of the recording."
+          },
+          "location": {
+            "type": "string",
+            "description": "City and state of the event."
+          },
+          "title": {
+            "type": "string",
+            "description": "Episode narrative title."
+          },
+          "sound_above_inquiry": {
+            "type": "string",
+            "description": "Core question probing earlier influences and inspirations."
+          },
+          "chicago_context": {
+            "type": "string",
+            "description": "Specific historical connections to Chicago software community."
+          },
+          "ai_era_parallel": {
+            "type": "string",
+            "description": "Connection to modern multi-agent systems and AI engineering."
+          },
+          "companion_video": {
+            "type": "string",
+            "description": "Related keynote or historical video for split-screen rewatching."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["planned", "cued", "recorded", "published"],
+            "description": "Production lifecycle status of the episode."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Now Watching HUD: The Sound Above</title>
+  <link rel="stylesheet" href="css/craftsmanship-theme.css">
+  <style>
+    body {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+    }
+
+    .now-watching-card {
+      position: absolute;
+      top: 40px;
+      right: 50px;
+      width: 440px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-left: 3px solid var(--border-strong);
+      animation: fade-in 0.4s ease-out;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hud-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hud-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .hud-event {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-amber);
+    }
+
+    .hud-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .hud-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 6px;
+      border-top: 1px solid rgba(229, 169, 93, 0.15);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="stream-panel now-watching-card">
+    <div class="hud-header">
+      <div class="pill-badge">
+        <span class="indicator-dot"></span>
+        <span>NOW WATCHING</span>
+      </div>
+      <span class="mono-label" id="hud-era">THE CHICAGO CRUCIBLE</span>
+    </div>
+
+    <div class="hud-title">
+      <span id="hud-interviewee">Sergio Pereira</span>
+      <span class="hud-event" id="hud-conference">SCNA 2011</span>
+    </div>
+
+    <div class="hud-meta" id="hud-topic">
+      Escaping corporate silos: Building Chicago Alt.NET and grassroots community before commercial platforms.
+    </div>
+
+    <div class="hud-footer">
+      <span>UGTASTIC ARCHIVE REWATCH</span>
+      <span>HOST: MIKE HALL (#106)</span>
+    </div>
+  </div>
+
+  <script src="js/overlay-controller.js"></script>
+  <script>
+    new OverlayController({
+      stateUrl: "overlay-state.json",
+      onUpdate: (state) => {
+        const ep = state.episode;
+        document.getElementById("hud-interviewee").textContent = ep.interviewee;
+        document.getElementById("hud-conference").textContent = `${ep.conference} (${ep.year})`;
+        document.getElementById("hud-topic").textContent = ep.title;
+        document.getElementById("hud-era").textContent = ep.era.toUpperCase();
+      }
+    });
+  </script>
+</body>
+</html>

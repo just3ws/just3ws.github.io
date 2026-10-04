@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stream Starting Soon: The Sound Above</title>
+  <link rel="stylesheet" href="css/craftsmanship-theme.css">
+  <style>
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: radial-gradient(circle at 50% 40%, #161f2c 0%, #0d1117 75%, #05070a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 90px 120px;
+      font-family: var(--font-sans);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .series-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text-amber);
+      background: rgba(229, 169, 93, 0.1);
+    }
+
+    .series-titles h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-main);
+      text-transform: uppercase;
+    }
+
+    .series-titles p {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .center-stage {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 1050px;
+    }
+
+    .status-alert {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-amber);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .episode-headline {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .episode-details-card {
+      padding: 24px 32px;
+      border-left: 4px solid var(--border-strong);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 900px;
+    }
+
+    .guest-line {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-amber);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .event-chip {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(229, 169, 93, 0.15);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-amber);
+    }
+
+    .quote-box {
+      margin-top: 10px;
+      font-size: 18px;
+      font-style: italic;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 24px;
+      border-top: 1px solid rgba(229, 169, 93, 0.2);
+    }
+
+    .footer-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .footer-value {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="series-brand">
+      <div class="brand-mark">SA</div>
+      <div class="series-titles">
+        <h1 id="brand-title">The Sound Above</h1>
+        <p>UGtastic Oral History Rewatch : Craftsmanship in the Age of AI</p>
+      </div>
+    </div>
+    <div class="pill-badge">
+      <span class="indicator-dot"></span>
+      <span>STREAM STARTING SOON</span>
+    </div>
+  </div>
+
+  <div class="center-stage">
+    <div class="status-alert">
+      <span>CRAFTING THE WORKBENCH</span>
+      <span>//</span>
+      <span id="start-era">THE CHICAGO CRUCIBLE</span>
+    </div>
+
+    <h2 class="episode-headline" id="start-title">
+      The First Room: Chicago Alt.NET & Escaping Corporate Silos
+    </h2>
+
+    <div class="stream-panel episode-details-card">
+      <div class="guest-line">
+        <span id="start-guest">Sergio Pereira</span>
+        <span class="event-chip" id="start-event">SCNA 2011</span>
+      </div>
+      <div class="quote-box" id="start-prompt">
+        "Who inspired the pioneers before the movement had a name? Breaking free from monolithic frameworks through grassroots community."
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="footer-item">
+      <span class="footer-label">Host & Curator</span>
+      <span class="footer-value">Mike Hall (Software Craftsmanship Signatory #106)</span>
+    </div>
+    <div class="footer-item">
+      <span class="footer-label">Digital Archive</span>
+      <span class="footer-value">just3ws.localhost/interviews</span>
+    </div>
+    <div class="footer-item">
+      <span class="footer-label">Platform Origin</span>
+      <span class="footer-value">Chicago Software Craftsmanship (2009–2026)</span>
+    </div>
+  </div>
+
+  <script src="js/overlay-controller.js"></script>
+  <script>
+    new OverlayController({
+      stateUrl: "overlay-state.json",
+      onUpdate: (state) => {
+        const ep = state.episode;
+        document.getElementById("start-title").textContent = ep.title;
+        document.getElementById("start-guest").textContent = ep.interviewee;
+        document.getElementById("start-event").textContent = `${ep.conference} (${ep.year})`;
+        document.getElementById("start-prompt").textContent = `"${ep.sound_above_prompt}"`;
+        document.getElementById("start-era").textContent = ep.era.toUpperCase();
+      }
+    });
+  </script>
+</body>
+</html>
