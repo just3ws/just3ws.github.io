@@ -141,6 +141,31 @@ body_class: ugtastic-artifacts-page
       <a href="/case-studies/"><strong>Modernization work</strong><span>The formulas and operating loops live here, on the profile side of the site.</span></a>
     </div>
   </section>
+
+  <section class="ugtastic-panel ugtastic-sound-above-nav" aria-labelledby="sound-above-heading">
+    <p class="ugtastic-kicker">07 · The rewatch series</p>
+    <h2 id="sound-above-heading">The Sound Above</h2>
+    <p class="ugtastic-intro">A live oral history rewatch series revisiting the 211 UGtastic interviews through a 2026 lens. 21 episodes. 5 eras. Each session asks: what were these people actually building, and what does it mean now?</p>
+    <div class="ugtastic-sound-above-grid">
+      <a href="/ai/2026/10/02/without-zdots-there-was-nothing/">
+        <strong>Origin story</strong>
+        <span>Without zdots there was nothing &mdash; the platform origin post that connects this archive to the live production stack.</span>
+      </a>
+      <a href="/interviews/">
+        <strong>211 interviews</strong>
+        <span>The full UGtastic oral history corpus. Every conversation the series was built from.</span>
+      </a>
+      <a href="/scmc/">
+        <strong>SCMC archive</strong>
+        <span>Software Craftsmanship McHenry County &mdash; the local user group where many of these conversations started.</span>
+      </a>
+      <a href="/timeline/">
+        <strong>Community timeline</strong>
+        <span>5 eras of Chicago craft community, mapped across recordings, preservation, and return paths.</span>
+      </a>
+    </div>
+    <p class="ugtastic-source" style="margin-top: 1.25rem;">The Sound Above is produced live in OBS Studio using a craftsmanship-theme production stack. Scene collection, overlays, and episode sequence: <code>obs/</code> in the site repository.</p>
+  </section>
 </article>
 
 <style>
@@ -225,4 +250,12 @@ body_class: ugtastic-artifacts-page
   .ugtastic-play-grid { grid-template-columns: repeat(4, 1fr); margin-top: 1.5rem; }
   @media (max-width: 800px) { .ugtastic-artifacts-hero, .ugtastic-soundtrack { grid-template-columns: 1fr; } .ugtastic-identity-grid { grid-template-columns: repeat(2, 1fr); } .ugtastic-screens-grid { grid-template-columns: repeat(2, 1fr); } .ugtastic-production-grid, .ugtastic-play-grid, .ugtastic-intersection-grid, .ugtastic-language-notes, .ugtastic-audio-stats, .ugtastic-analysis-notes, .ugtastic-production-stats, .ugtastic-confidence-grid { grid-template-columns: repeat(2, 1fr); } .ugtastic-era-row { grid-template-columns: minmax(10rem, .9fr) minmax(8rem, 2fr) 2rem; } }
   @media (max-width: 520px) { .ugtastic-identity-grid, .ugtastic-screens-grid, .ugtastic-production-grid, .ugtastic-play-grid, .ugtastic-intersection-grid, .ugtastic-language-notes, .ugtastic-audio-stats, .ugtastic-analysis-notes, .ugtastic-production-stats, .ugtastic-confidence-grid { grid-template-columns: 1fr; } .ugtastic-identity-card.identity-wide { grid-column: auto; } .ugtastic-era-row { grid-template-columns: 1fr 2rem; }.ugtastic-era-track { grid-column: 1 / -1; grid-row: 2; }.ugtastic-era-count { grid-column: 2; grid-row: 1; }.ugtastic-time-track { grid-template-columns: 1fr; }.ugtastic-time-segment { min-height: 3.5rem; } }
+  .ugtastic-sound-above-nav { border-top-color: #f4c84f; background: #fffdf4; }
+  .ugtastic-sound-above-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-top: 1.5rem; }
+  .ugtastic-sound-above-grid a { display: flex; flex-direction: column; gap: .35rem; padding: 1rem; border: 1px solid #ecd39b; border-radius: .5rem; background: #fff; color: #086e68; text-decoration: none; }
+  .ugtastic-sound-above-grid a:hover { border-color: #f4c84f; background: #fffaf0; }
+  .ugtastic-sound-above-grid strong { color: #17233d; font-size: .92rem; }
+  .ugtastic-sound-above-grid span { color: #4f6078; font-size: .82rem; line-height: 1.45; }
+  @media (max-width: 800px) { .ugtastic-sound-above-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .ugtastic-sound-above-grid { grid-template-columns: 1fr; } }
 </style>
