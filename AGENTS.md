@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-04
+     CURRENT FOCUS - last updated 2026-10-05
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,6 +12,16 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - VIDEO PLAYER & CHAPTER TIMELINE RESTORATION (2026-10-05):
+         Restored interactive timeline scrubber bars and deferred embed video seeking.
+         Fixed player element lookup across video-stage.html, deferred-embed.html,
+         interview-timeline.html, and video-asset-player.html.
+         Exposed window.loadDeferredEmbed and window.seekDeferredEmbed in
+         assets/js/deferred-embeds.js to allow seeking into deferred YouTube/Vimeo
+         embeds directly from transcript turn timestamps and chapter links.
+         Added 13 verified chapters to Sergio Pereira interview transcript and
+         calibrated DHH RailsConf 2014 chapters across the full 928-second span.
+         All gates clean (fast validation, rspec, obs, archive validation).
        - THE SOUND ABOVE OBS PROJECT (2026-10-04): Full OBS Studio project
          created at `obs/` for the UGtastic oral history rewatch series.
          8-scene collection (Apple M4 hardware profile, 1080p60, apple_h264),
@@ -27,8 +37,8 @@
        - VIDEO SERIES PLATFORM NARRATIVE (2026-10-02): 5-part series
          "The Observable Control Plane" blueprint approved. Capstone post drafted:
          `_posts/2026-10-02-without-zdots-there-was-nothing.md`
-         — Tier 3 AI-augmented, routes to /ai/2026/10/02/..., Jekyll build
-         clean. Series blueprint: /Users/mike/.gemini/antigravity-cli/brain/
+         (Tier 3 AI-augmented, routes to /ai/2026/10/02/..., Jekyll build
+         clean). Series blueprint: /Users/mike/.gemini/antigravity-cli/brain/
            0e5b4dee-44a7-4486-846e-ebb7264cfcf6/video_series_blueprint.md
          Next: stage + commit the post; consider /ai/ index page aggregating
          Tier 3 posts for discoverability.
@@ -36,7 +46,7 @@
          across data, routes, datalake, exports, and navigation.
          All 90 RSpec specs, ATS benchmark (88.2%), Jekyll build clean.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-10-04.md
+         ~/.config/adots/handoffs/2026-10-05.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
