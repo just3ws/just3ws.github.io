@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Camera Background: The Sound Above</title>
+  <link rel="stylesheet" href="css/craftsmanship-theme.css">
+  <style>
+    body {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      background: #0d1117;
+      overflow: hidden;
+    }
+
+    /* ─── Base gradient layer ─────────────────────────────────────────── */
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 900px 600px at 15% 50%, rgba(229, 169, 93, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 800px at 85% 20%, rgba(30, 40, 55, 0.8) 0%, transparent 60%),
+        linear-gradient(165deg, #0d1117 0%, #111822 40%, #0a0f16 100%);
+    }
+
+    /* ─── Subtle grid / graph-paper texture ─────────────────────────── */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(229, 169, 93, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(229, 169, 93, 0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ─── Vignette to push edges dark, keep face zone bright ─────────── */
+    .bg-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 80% 80% at 50% 50%,
+        transparent 40%,
+        rgba(0, 0, 0, 0.55) 100%
+      );
+    }
+
+    /* ─── Amber accent bar — left edge ─────────────────────────────── */
+    .accent-left-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #e5a95d 30%,
+        #e5a95d 70%,
+        transparent 100%
+      );
+      opacity: 0.7;
+    }
+
+    /* ─── Scanline shimmer (ultra-subtle CRT nod) ──────────────────── */
+    .bg-scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.06) 3px,
+        rgba(0, 0, 0, 0.06) 4px
+      );
+      pointer-events: none;
+    }
+
+    /* ─── Floating geometric code-fragment decorations ──────────────── */
+    .code-fragment {
+      position: absolute;
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      color: rgba(229, 169, 93, 0.12);
+      letter-spacing: 0.04em;
+      line-height: 1.8;
+      white-space: pre;
+      pointer-events: none;
+      animation: fragment-drift linear infinite;
+    }
+
+    @keyframes fragment-drift {
+      0%   { transform: translateY(0px);   opacity: 0; }
+      8%   { opacity: 1; }
+      92%  { opacity: 1; }
+      100% { transform: translateY(-40px); opacity: 0; }
+    }
+
+    .frag-1 { top: 120px;  left: 80px;  animation-duration: 45s; animation-delay: 0s; }
+    .frag-2 { top: 300px;  left: 1600px; animation-duration: 60s; animation-delay: -15s; }
+    .frag-3 { top: 650px;  left: 1750px; animation-duration: 50s; animation-delay: -8s; }
+    .frag-4 { top: 800px;  left: 100px;  animation-duration: 55s; animation-delay: -22s; }
+
+    /* ─── Corner sigil — bottom-right brand mark ─────────────────────── */
+    .corner-sigil {
+      position: absolute;
+      right: 48px;
+      bottom: 38px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      opacity: 0.35;
+    }
+
+    .sigil-label {
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #e5a95d;
+    }
+
+    .sigil-line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to left, #e5a95d, transparent);
+    }
+
+    /* ─── Top-right subtle era marker ────────────────────────────────── */
+    .era-watermark {
+      position: absolute;
+      top: 40px;
+      right: 60px;
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(229, 169, 93, 0.28);
+      text-align: right;
+    }
+
+    /* ─── Ambient amber glow orb — upper left behind speaker ─────────── */
+    .glow-orb {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      left: -80px;
+      top: 180px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at center,
+        rgba(229, 169, 93, 0.07) 0%,
+        transparent 70%
+      );
+      animation: orb-breathe 8s ease-in-out infinite;
+    }
+
+    @keyframes orb-breathe {
+      0%, 100% { transform: scale(1);    opacity: 1; }
+      50%       { transform: scale(1.08); opacity: 0.8; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Layer order: gradient → grid → orb → scanlines → vignette → accent → decorations -->
+
+  <div class="bg-gradient"></div>
+  <div class="bg-grid"></div>
+  <div class="glow-orb"></div>
+  <div class="bg-scanlines"></div>
+  <div class="bg-vignette"></div>
+  <div class="accent-left-bar"></div>
+
+  <!-- Ambient code fragments — far left and far right edges only, never face zone -->
+  <div class="code-fragment frag-1">module Craftsmanship
+  extend ActiveSupport::Concern
+  included do
+    validates :intention, presence: true
+  end
+end</div>
+
+  <div class="code-fragment frag-2">class ObservableSystem
+  def initialize(observer)
+    @bus = EventBus.new
+    @observer = observer
+  end
+end</div>
+
+  <div class="code-fragment frag-3">  # zdots platform
+  # panoramic view labs
+  # 2026 — PVL</div>
+
+  <div class="code-fragment frag-4">rake validate:resume_quality
+→ ATS score: 88.2%
+→ zero em-dashes ✓
+→ schema.org Person ✓</div>
+
+  <!-- Bottom-right corner sigil -->
+  <div class="corner-sigil">
+    <span class="sigil-label">The Sound Above</span>
+    <div class="sigil-line"></div>
+    <span class="sigil-label">UGtastic Oral History</span>
+  </div>
+
+  <!-- Top-right era watermark — updates via overlay-controller if needed -->
+  <div class="era-watermark" id="era-watermark">
+    The Chicago Crucible
+  </div>
+
+  <script src="js/overlay-controller.js"></script>
+  <script>
+    // Optional: wire to overlay-state.json so era label stays in sync
+    // with the Now Watching HUD. Remove the try/catch to make it mandatory.
+    try {
+      new OverlayController({
+        stateUrl: "overlay-state.json",
+        onUpdate: (state) => {
+          const el = document.getElementById("era-watermark");
+          if (el && state.episode && state.episode.era) {
+            el.textContent = state.episode.era;
+          }
+        }
+      });
+    } catch (e) {
+      // OverlayController unavailable in standalone preview — era label static
+    }
+  </script>
+</body>
+</html>
