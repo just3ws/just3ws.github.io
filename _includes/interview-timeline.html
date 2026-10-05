@@ -71,26 +71,72 @@
       while (fig && !fig.classList.contains("interview-timeline")) { fig = fig.previousElementSibling; }
       if (!fig) return;
 
-      var embed    = document.getElementById(fig.dataset.embedId);
       var base     = fig.dataset.embedBase || "";
       var platform = fig.dataset.platform || "";
 
-      // Build a seek URL for iframe players (reload-to-seek — universal, no JS API).
+      function getPlayer() {
+        var id = fig.dataset.embedId || "asset-embed";
+        var el = document.getElementById(id);
+        if (el) {
+          var inner = el.querySelector("iframe, video");
+          if (inner) return inner;
+          return el;
+        }
+        var stage = document.querySelector(".video-stage");
+        if (stage) {
+          var v = stage.querySelector("video, iframe");
+          if (v) return v;
+          var def = stage.querySelector("[data-deferred-embed]");
+          if (def) return def;
+        }
+        return null;
+      }
+
       function seekUrl(sec) {
         var s = Math.max(0, Math.floor(sec));
         if (platform === "vimeo") {
           var j = base.indexOf("?") === -1 ? "?" : "&";
           return base + j + "autoplay=1#t=" + s + "s";
         }
-        // youtube (and any /embed/ style): ?start=SEC&autoplay=1
         var j2 = base.indexOf("?") === -1 ? "?" : "&";
         return base + j2 + "start=" + s + "&autoplay=1";
       }
 
       function seek(sec) {
-        if (!embed) return;
-        if (embed.tagName === "VIDEO") { embed.currentTime = sec; embed.play && embed.play(); return; }
-        if (base) { embed.setAttribute("src", seekUrl(sec)); }
+        var p = getPlayer();
+        if (!p) return;
+        if (p.hasAttribute && p.hasAttribute("data-deferred-embed")) {
+          if (window.loadDeferredEmbed) {
+            window.loadDeferredEmbed(p, sec);
+          }
+          return;
+        }
+        if (p.tagName === "VIDEO") {
+          p.currentTime = sec;
+          if (p.paused && p.play) p.play();
+          return;
+        }
+        if (p.tagName === "IFRAME") {
+          if (window.seekDeferredEmbed) {
+            window.seekDeferredEmbed(p, sec);
+          } else {
+            try {
+              p.contentWindow.postMessage(JSON.stringify({
+                event: 'command',
+                func: 'seekTo',
+                args: [Math.floor(sec), true]
+              }), '*');
+              p.contentWindow.postMessage(JSON.stringify({
+                event: 'command',
+                func: 'playVideo',
+                args: []
+              }), '*');
+            } catch (e) {}
+            if (platform === "vimeo" || !base.includes("youtube.com")) {
+              p.setAttribute("src", seekUrl(sec));
+            }
+          }
+        }
       }
 
       fig.addEventListener("click", function (e) {

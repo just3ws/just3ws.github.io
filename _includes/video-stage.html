@@ -10,7 +10,7 @@
     <div class="video-stage-inner">
       {% if preferred.video_url %}
         <div class="video-embed">
-          <video controls preload="metadata" poster="{{ preferred.image_url | default: asset.thumbnail }}">
+          <video id="{{ include.embed_id | default: 'asset-embed' }}" controls preload="metadata" poster="{{ preferred.image_url | default: asset.thumbnail }}">
             <source src="{{ preferred.video_url }}" type="video/mp4">
           </video>
         </div>
@@ -25,7 +25,7 @@
         {% endunless %}
         <div class="video-embed">
           {% assign provider = preferred.platform | capitalize %}
-          {% include deferred-embed.html src=embed_src title=asset.title provider=provider image=preferred.image_url %}
+          {% include deferred-embed.html id=include.embed_id src=embed_src title=asset.title provider=provider image=preferred.image_url %}
         </div>
       {% endif %}
     </div>

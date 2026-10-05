@@ -1,4 +1,4 @@
-<div class="deferred-embed" data-deferred-embed data-embed-src="{{ include.src | escape }}" data-embed-title="{{ include.title | escape }}">
+<div class="deferred-embed" id="{{ include.id | default: 'asset-embed' }}" data-deferred-embed data-embed-id="{{ include.id | default: 'asset-embed' }}" data-embed-src="{{ include.src | escape }}" data-embed-title="{{ include.title | escape }}">
   {% if include.image %}<img src="{{ include.image }}" alt="" loading="lazy">{% endif %}
   <div class="deferred-embed-copy">
     <p><strong>{{ include.title }}</strong></p>

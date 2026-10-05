@@ -271,7 +271,6 @@
   <script>
     (function() {
       var embedId = "{{ include.embed_id | default: 'asset-embed' }}";
-      var embed = document.getElementById(embedId);
       var stream = document.getElementById("sync-transcript-stream");
       var ccOverlay = document.getElementById("sync-cc-overlay");
       var ccTextDisplay = document.getElementById("cc-text-display");
@@ -284,6 +283,23 @@
       var ccEnabled = true;
       var autoScrollEnabled = true;
       var activeTurn = null;
+
+      function getEmbed() {
+        var el = document.getElementById(embedId);
+        if (el) {
+          var inner = el.querySelector("iframe, video");
+          if (inner) return inner;
+          return el;
+        }
+        var stage = document.querySelector(".video-stage");
+        if (stage) {
+          var v = stage.querySelector("video, iframe");
+          if (v) return v;
+          var def = stage.querySelector("[data-deferred-embed]");
+          if (def) return def;
+        }
+        return null;
+      }
 
       if (btnCc) {
         btnCc.addEventListener("click", function() {
@@ -304,29 +320,40 @@
 
       // Seek Handler (Smooth YouTube postMessage & HTML5 Video seek)
       function seekTo(sec) {
-        if (!embed) return;
-        if (embed.tagName === "VIDEO") {
-          embed.currentTime = sec;
-          if (embed.paused) embed.play();
-        } else if (embed.tagName === "IFRAME") {
-          try {
-            // PostMessage to YouTube iFrame API (prevents iframe reloads & Playback ID errors)
-            embed.contentWindow.postMessage(JSON.stringify({
-              event: 'command',
-              func: 'seekTo',
-              args: [Math.floor(sec), true]
-            }), '*');
-            embed.contentWindow.postMessage(JSON.stringify({
-              event: 'command',
-              func: 'playVideo',
-              args: []
-            }), '*');
-          } catch (e) {
-            // Fallback for non-postMessage frames
-            var base = embed.getAttribute("src") || "";
-            var cleanBase = base.replace(/[\?&]start=\d+/g, "").replace(/#t=\d+s/g, "");
-            var joiner = cleanBase.indexOf("?") === -1 ? "?" : "&";
-            embed.setAttribute("src", cleanBase + joiner + "start=" + Math.floor(sec) + "&autoplay=1");
+        var el = getEmbed();
+        if (!el) return;
+        if (el.hasAttribute && el.hasAttribute("data-deferred-embed")) {
+          if (window.loadDeferredEmbed) {
+            window.loadDeferredEmbed(el, sec);
+          }
+          return;
+        }
+        if (el.tagName === "VIDEO") {
+          el.currentTime = sec;
+          if (el.paused && el.play) el.play();
+        } else if (el.tagName === "IFRAME") {
+          if (window.seekDeferredEmbed) {
+            window.seekDeferredEmbed(el, sec);
+          } else {
+            try {
+              // PostMessage to YouTube iFrame API (prevents iframe reloads & Playback ID errors)
+              el.contentWindow.postMessage(JSON.stringify({
+                event: 'command',
+                func: 'seekTo',
+                args: [Math.floor(sec), true]
+              }), '*');
+              el.contentWindow.postMessage(JSON.stringify({
+                event: 'command',
+                func: 'playVideo',
+                args: []
+              }), '*');
+            } catch (e) {
+              // Fallback for non-postMessage frames
+              var base = el.getAttribute("src") || "";
+              var cleanBase = base.replace(/[\?&]start=\d+/g, "").replace(/#t=\d+s/g, "");
+              var joiner = cleanBase.indexOf("?") === -1 ? "?" : "&";
+              el.setAttribute("src", cleanBase + joiner + "start=" + Math.floor(sec) + "&autoplay=1");
+            }
           }
         }
       }
@@ -392,13 +419,23 @@
 
       // Polling Loop for Video Element or YouTube API
       setInterval(function() {
-        if (!embed) return;
+        var el = getEmbed();
+        if (!el) return;
         var currTime = 0;
-        if (embed.tagName === "VIDEO" && !embed.paused) {
-          currTime = embed.currentTime;
+        if (el.tagName === "VIDEO" && !el.paused) {
+          currTime = el.currentTime;
           updateActiveTurnByTime(currTime);
         }
       }, 500);
+
+      window.addEventListener("message", function(event) {
+        try {
+          var data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+          if (data && data.event === "infoDelivery" && data.info && typeof data.info.currentTime === "number") {
+            updateActiveTurnByTime(data.info.currentTime);
+          }
+        } catch (_) {}
+      });
     })();
   </script>
 {% endif %}
