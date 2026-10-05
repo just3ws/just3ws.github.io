@@ -19,12 +19,40 @@
       flex-direction: column;
       gap: 8px;
       max-width: 900px;
-      animation: slide-up 0.5s ease-out;
+      animation: gravity-slide-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @keyframes slide-up {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes gravity-slide-up {
+      0% {
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+      }
+      70% {
+        transform: translateY(-2px) scale(1.004);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .fcp-credo-banner {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-amber);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.92;
+      margin-left: 2px;
+    }
+
+    .fcp-credo-banner .credo-dot {
+      color: var(--border-strong);
+      font-weight: 800;
     }
 
     .header-bar {
@@ -82,7 +110,11 @@
         <span id="series-title">THE SOUND ABOVE</span>
       </div>
       <span class="mono-label" id="episode-tag">EPISODE 01</span>
-      <span class="mono-label" id="era-tag">THE CHICAGO CRUCIBLE</span>
+      <div class="fcp-credo-banner">
+        <span>WHO MAKE TECH COMMUNITY</span>
+        <span class="credo-dot">·</span>
+        <span>ONE INTERVIEW AT A TIME</span>
+      </div>
     </div>
 
     <div class="stream-panel main-card">
