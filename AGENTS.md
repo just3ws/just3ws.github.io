@@ -12,6 +12,18 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - YOUTUBE CAPTION SYNC & OBS REWATCH AUDIT (2026-10-05):
+         Audited YouTube captions pipeline against YouTube Data API v3.
+         Diagnosed why Sergio Pereira (qOHdZKz1WFw) defaulted to YouTube ASR:
+         the August 30 caption sync paused at video 48/207 due to API quota limits.
+         Uploaded high-fidelity 44-turn WebVTT caption track to YouTube via
+         bin/sync_youtube_captions.rb and verified serving status.
+         Audited OBS Studio setup for Episode 1 rewatch (35 assertions passing,
+         all 8 production scenes, 4-track audio capture routing, Golden Gate
+         SCK audio capture, craftsmanship overlays cued to Episode 1).
+         Audited Scott Seely interviews (CLQfARayJV0 and pzpyJMpCwso): identified
+         collapsed turns, missing recording blocks, duplicate sentences, and
+         Whisper hallucination loops in queue for remediation.
        - VIDEO PLAYER & CHAPTER TIMELINE RESTORATION (2026-10-05):
          Restored interactive timeline scrubber bars and deferred embed video seeking.
          Fixed player element lookup across video-stage.html, deferred-embed.html,
