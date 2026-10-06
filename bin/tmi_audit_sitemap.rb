@@ -65,6 +65,8 @@ VERIFIED_PAGES = {
   'https://www.just3ws.com/resumes/mike-hall-staff-systems-architect/'       => 'intentional public contact (phone)',
   'https://www.just3ws.com/resumes/mike-hall-senior-ruby-rails-contractor/'  => 'intentional public contact (phone)',
   'https://www.just3ws.com/resumes/mike-hall-staff-platform-lead/'           => 'intentional public contact (phone)',
+  'https://www.just3ws.com/exports/resumes/ats-import-resume.html'            => 'intentional public contact (phone)',
+  'https://www.just3ws.com/exports/resumes/ats-import-resume.pdf'             => 'intentional public contact (phone)',
   # WindyCityRails 2012 interview: "my husband David Kinney and I run the
   # conference" is a verbatim quote from the speaker about herself. Archive
   # oral history — not our PII to redact.
