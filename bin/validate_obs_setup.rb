@@ -176,10 +176,10 @@ class ObsSetupValidator
     end
 
     # Encoder contract: Apple VT Hardware Encoder
-    if ini_content.include?('Encoder=apple_h264')
-      pass('Video encoder set to apple_h264 (Apple Silicon M4 hardware acceleration)')
+    if ini_content.include?('Encoder=com.apple.videotoolbox.videoencoder.ave.avc') || ini_content.include?('Encoder=apple_h264')
+      pass('Video encoder set to Apple VideoToolbox H264 (Apple Silicon M4 hardware acceleration)')
     else
-      fail('Video encoder is not set to apple_h264')
+      fail('Video encoder is not set to Apple VideoToolbox H264 (com.apple.videotoolbox.videoencoder.ave.avc)')
     end
 
     # Audio contract: 48 kHz & Multitrack recording
@@ -237,6 +237,36 @@ class ObsSetupValidator
         end
       rescue JSON::ParserError => e
         fail("overlay-state.json JSON syntax error: #{e.message}")
+      end
+    end
+
+    validate_theme_parity_with_site
+  end
+
+  # The stream theme and the website share one palette. These tokens must be
+  # identical hex values in _sass/_p_variables.scss and the OBS theme CSS.
+  SHARED_THEME_TOKENS = %w[paper-canvas ink-main ink-heading teal-craftsman amber-accent].freeze
+
+  def validate_theme_parity_with_site
+    scss_path = File.join(ROOT, '_sass', '_p_variables.scss')
+    css_path = File.join(OBS_DIR, 'overlays', 'css', 'craftsmanship-theme.css')
+    unless File.file?(scss_path) && File.file?(css_path)
+      fail('Theme parity check cannot run: site variables or OBS theme CSS is missing')
+      return
+    end
+
+    scss = File.read(scss_path)
+    css = File.read(css_path)
+
+    SHARED_THEME_TOKENS.each do |token|
+      site_hex = scss[/^\$#{Regexp.escape(token)}:\s*(#[0-9a-fA-F]{6})/, 1]
+      obs_hex = css[/--#{Regexp.escape(token)}:\s*(#[0-9a-fA-F]{6})/, 1]
+      if site_hex.nil? || obs_hex.nil?
+        fail("Theme token '#{token}' not found in both site SCSS and OBS CSS")
+      elsif site_hex.downcase == obs_hex.downcase
+        pass("Theme token '#{token}' matches site (#{site_hex.downcase})")
+      else
+        fail("Theme drift on '#{token}': site #{site_hex} vs OBS #{obs_hex}")
       end
     end
   end

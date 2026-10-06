@@ -8,7 +8,7 @@
     body {
       width: 1920px;
       height: 1080px;
-      background: radial-gradient(circle at 50% 50%, #131a24 0%, #0a0d13 80%, #040608 100%);
+      background: radial-gradient(circle at 50% 40%, #fffdfa 0%, #fbf8f2 50%, #f3ece0 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -16,60 +16,81 @@
       text-align: center;
       padding: 100px;
       font-family: var(--font-sans);
+      color: var(--ink-main);
     }
 
     .brb-box {
-      max-width: 840px;
-      padding: 48px 56px;
+      max-width: 860px;
+      padding: 52px 64px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(227, 223, 215, 0.95);
+      box-shadow: 0 16px 40px rgba(45, 35, 20, 0.08), 0 4px 12px rgba(45, 35, 20, 0.04);
+      border-radius: var(--radius-lg);
+    }
+
+    .brand-cube-logo {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(45, 35, 20, 0.12));
     }
 
     .brb-badge {
       font-family: var(--font-mono);
       font-size: 13px;
       letter-spacing: 0.15em;
-      color: var(--text-amber);
+      color: var(--teal-craftsman);
       text-transform: uppercase;
+      font-weight: 700;
     }
 
     h1 {
-      font-size: 48px;
+      font-size: 46px;
       font-weight: 800;
       letter-spacing: -0.01em;
-      color: var(--text-main);
+      color: var(--ink-heading);
+      font-family: var(--font-display);
+      margin: 0;
     }
 
     p.subtitle {
       font-size: 18px;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0;
     }
 
     .topic-pill {
-      margin-top: 8px;
-      padding: 10px 20px;
+      margin-top: 6px;
+      padding: 10px 22px;
       border-radius: var(--radius-sm);
-      background: rgba(229, 169, 93, 0.12);
-      border: 1px solid var(--border-subtle);
+      background: rgba(15, 118, 110, 0.08);
+      border: 1px solid rgba(15, 118, 110, 0.25);
       font-family: var(--font-mono);
       font-size: 14px;
-      color: var(--text-amber);
+      color: var(--teal-craftsman);
+      font-weight: 600;
     }
 
     .footer-note {
-      margin-top: 32px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: #64748b;
-      letter-spacing: 0.05em;
+      margin-top: 24px;
+      font-family: var(--font-heritage);
+      font-size: 11.5px;
+      color: var(--amber-accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
     }
   </style>
 </head>
 <body>
   <div class="stream-panel brb-box">
+    <img class="brand-cube-logo" src="assets/ugtastic-cube-logo.png" alt="UGtastic">
     <div class="pill-badge">
       <span class="indicator-dot"></span>
       <span>SHORT INTERMISSION</span>
@@ -87,7 +108,7 @@
     </div>
 
     <div class="footer-note">
-      THE SOUND ABOVE : HOSTED BY MIKE HALL (#106)
+      WHOIS TECH COMMUNITY · LEARNING ABOUT PEOPLE · ONE INTERVIEW AT A TIME
     </div>
   </div>
 

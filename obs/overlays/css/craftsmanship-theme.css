@@ -1,27 +1,57 @@
 /*
   The Sound Above: Stream Overlays Theme
-  Aesthetic: Chicago Software Craftsmanship & Terminal Workbench
-  Design Principles: High contrast, warm amber accents, zero distracting gamer neon.
+  Shared theme contract with the website (_sass/_p_variables.scss).
+
+  Source of truth: the site's "Digital Patina & Editorial Craft" tokens.
+  The stream is the dark-surface rendering of the same palette:
+    - Site paper (#faf8f5) becomes the text colour on sumi ink backgrounds.
+    - Site craftsman teal is the structural accent (rules, edges, pills).
+    - Site leather amber is the kicker and "live" accent, lifted for dark contrast.
+    - Charter (site editorial serif) carries names and headlines.
+    - Inter (site UI sans) carries body copy.
+    - Avenir and the UGtastic red and navy are heritage only: the WHOIS Tech
+      Community credo line and the logo mark. Never primary UI.
+
+  Drift guard: bin/validate_obs_setup.rb asserts the shared tokens below
+  match _sass/_p_variables.scss exactly.
 */
 
 :root {
-  --bg-primary: rgba(13, 17, 23, 0.94);
-  --bg-card: rgba(22, 27, 34, 0.88);
-  --bg-pill: rgba(229, 169, 93, 0.12);
-  --border-subtle: rgba(229, 169, 93, 0.3);
-  --border-strong: #e5a95d;
-  --text-main: #f0f6fc;
-  --text-muted: #8b949e;
-  --text-amber: #e5a95d;
-  --text-copper: #f59e0b;
-  --accent-glow: rgba(229, 169, 93, 0.2);
-  --font-sans: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-display: "Avenir Next", "Avenir", -apple-system, sans-serif;
-  --font-mono: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  --shadow-elevation: 0 12px 32px rgba(0, 0, 0, 0.55);
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Shared with the site, identical hex values (validated) */
+  --paper-canvas: #faf8f5;
+  --ink-main: #1e232a;
+  --ink-heading: #0f172a;
+  --teal-craftsman: #0f766e;
+  --amber-accent: #b45309;
+
+  /* Warm, lively light craftsmanship palette */
+  --bg-primary: rgba(250, 248, 245, 0.96);
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-pill: rgba(15, 118, 110, 0.08);
+  --border-subtle: rgba(227, 223, 215, 0.95);
+  --border-strong: var(--teal-craftsman);
+  --text-main: var(--ink-main);
+  --text-heading: var(--ink-heading);
+  --text-muted: #525866;
+  --text-amber: var(--amber-accent);
+  --text-copper: #c2410c;
+  --accent-glow: rgba(15, 118, 110, 0.15);
+
+  /* UGtastic heritage marks, from the original cube logo */
+  --heritage-red: #c81d25;
+  --heritage-navy: #0d2c4a;
+  --heritage-gold: #e2c07a;
+
+  /* Typography: site stacks first, Avenir reserved for heritage lines */
+  --font-display: "Charter", "Bitstream Charter", "Iowan Old Style", "Apple Garamond", "Baskerville", "Source Serif Pro", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heritage: "Avenir Next", "Avenir", var(--font-sans);
+  --font-mono: "SF Mono", "Fira Code", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --shadow-elevation: 0 16px 40px rgba(45, 35, 20, 0.08), 0 4px 12px rgba(45, 35, 20, 0.04);
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
 }
 
 * {
@@ -93,4 +123,28 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+/* Editorial display type, matching the site's heading treatment */
+h1, h2,
+.interviewee-name,
+.episode-headline,
+.hud-title,
+.guest-line {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+/* Heritage lines keep the original Avenir broadcast voice */
+.heritage-type,
+.fcp-credo-banner {
+  font-family: var(--font-heritage);
+}
+
+/* Small UGtastic logo mark used on starting and outro screens */
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
 }

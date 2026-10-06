@@ -6,6 +6,8 @@
    4. Editorial & Woven Tributes Surface (.surface-editorial / .archive-note)
 */
 
+@use "p_variables" as *;
+
 /* ==========================================================================
    1. EXECUTIVE & RESUME SURFACE COMPONENTS
    ========================================================================== */
@@ -429,5 +431,97 @@ body.ats-resume {
 
   .wave-shimmer-accent {
     animation: none !important;
+  }
+}
+
+/* Stream surface: The Sound Above
+   The website rendering of the OBS stream theme (obs/overlays/css/craftsmanship-theme.css).
+   Shared hex values live in _p_variables.scss and are checked by validate:obs.
+   Dark sumi ink surface, paper text, teal structure, lifted leather amber kickers. */
+.stream-card {
+  --stream-ink: #{$ink-heading};
+  --stream-surface: #{$ink-main};
+  --stream-teal: #2dd4bf;
+  --stream-amber: #e5a95d;
+  --stream-muted: #a8b0bd;
+
+  background: var(--stream-surface);
+  color: $paper-canvas;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-left: 4px solid var(--stream-teal);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+
+  .stream-kicker {
+    font-family: var(--font-mono-code);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--stream-amber);
+    margin: 0 0 0.5rem;
+  }
+
+  .stream-lede {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 65ch;
+    color: $paper-canvas;
+    margin: 0 0 1.1rem;
+  }
+
+  .stream-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .stream-item {
+    padding: 0.75rem 1rem;
+    background: var(--stream-ink);
+    border: 1px solid rgba(45, 212, 191, 0.2);
+    border-radius: var(--radius-sm);
+
+    a {
+      font-family: var(--font-serif-editorial);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--stream-teal);
+      text-decoration: none;
+
+      &:hover { text-decoration: underline; }
+    }
+
+    p {
+      font-size: 0.85rem;
+      color: var(--stream-muted);
+      margin: 0.3rem 0 0;
+      line-height: 1.45;
+    }
+  }
+
+  .stream-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+
+    a {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--stream-teal);
+      border: 1px solid rgba(45, 212, 191, 0.3);
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+
+      &:hover { border-color: var(--stream-teal); }
+      &.is-primary { color: var(--stream-amber); border-color: var(--stream-amber); }
+    }
   }
 }
