@@ -103,7 +103,7 @@ This document establishes the permanent canonical naming, casing, and compound w
    - **Front-Load Bottom Lines:** Deliver the core conclusion or action in the first 5 to 8 words.
    - **Sentence Length Cap:** Keep sentences under 20 to 25 words. Split compound runaway thoughts.
    - **Accessible Reading Grade:** Target Flesch-Kincaid Grade level 8.0 to 12.0. Avoid bloated academic phrasing.
-   - **Zero AI Jargon:** Never use synthetic buzzwords or clinical padding ("testament to", "delve", "leverage", "formal combat assurance", "arithmetic witnesses"). Write in an authentic human voice.
+   - **Zero AI Jargon:** Never use synthetic buzzwords or clinical padding (such as claims of "formal verification combat proof", "calculation witnesses", "testament to", "delve", or "leverage"). Write in an authentic human voice.
 3. **Accessibility (A11y) in Content & Markup:**
    - **Descriptive Link Text:** Never write "click here", "read more", or raw naked URLs as anchor text. Always use meaningful destination labels (e.g., "[Interactive Transcript with Verified Chapters](/interviews/...)" or "[Mike Hall Interviews DHH on Software Writing](/interviews/...)").
    - **Semantic Heading Hierarchy:** Maintain strict sequential order (`h1` -> `h2` -> `h3`). Never skip heading levels for visual styling.
