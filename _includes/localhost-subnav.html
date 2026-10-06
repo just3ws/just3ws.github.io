@@ -29,14 +29,15 @@
       <a href="/dashboard/" class="lh-dropdown-btn{% if page.url contains '/dashboard/' %} is-active{% endif %}" style="text-decoration: none;">
         <span>⚡ Dashboard</span>
       </a>
-      <a href="/exports/briefs/" class="lh-dropdown-btn{% if page.url contains '/exports/briefs/' %} is-active{% endif %}" style="text-decoration: none;">
-        <span>🎯 Executive Briefs Hub</span>
+      <!-- Rewatch Broadcast Direct Link -->
+      <a href="/series/the-sound-above/episode-01/" class="lh-dropdown-btn{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" style="text-decoration: none;">
+        <span>📺 The Sound Above (Rewatch)</span>
       </a>
 
-      <!-- Localhost Hub Dropdown: Tailored Archetype Resumes -->
+      <!-- Localhost Hub Dropdown: Tailored Archetype Resumes & Archive -->
       <div class="lh-dropdown">
-        <button type="button" class="lh-dropdown-btn{% if page.url contains '/resumes/' or page.url contains '/reports/archetype' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
-          <span>📄 Archetypes</span>
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/resumes/' or page.url contains '/reports/archetype' or page.url contains '/exports/briefs/' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+          <span>📄 Archetypes &amp; Archive</span>
           <span class="lh-caret">▾</span>
         </button>
         <div class="lh-dropdown-menu" role="menu">
@@ -45,10 +46,10 @@
             <strong>Staff Systems Architect</strong>
           </a>
           <a href="/resumes/mike-hall-staff-platform-lead/" class="lh-menu-item" role="menuitem">
-            <strong>Staff Platform & Enablement Lead</strong>
+            <strong>Staff Platform &amp; Enablement Lead</strong>
           </a>
           <a href="/resumes/mike-hall-observability-resilience-specialist/" class="lh-menu-item" role="menuitem">
-            <strong>Observability & Resilience Specialist</strong>
+            <strong>Observability &amp; Resilience Specialist</strong>
           </a>
           <a href="/resumes/mike-hall-founding-staff-engineer/" class="lh-menu-item" role="menuitem">
             <strong>Founding Staff Engineer (AI Systems)</strong>
@@ -57,11 +58,15 @@
             <strong>Senior Software Engineer, Ruby on Rails</strong>
           </a>
           <div class="lh-menu-divider"></div>
+          <div class="lh-menu-header">Cold Storage &amp; Strategy Archive</div>
+          <a href="/exports/briefs/" class="lh-menu-item{% if page.url contains '/exports/briefs/' %} is-active{% endif %}" role="menuitem">
+            <strong>Executive Briefs Hub (Cold Storage Archive)</strong> 📦
+          </a>
           <a href="/reports/archetype-reader-profiles/" class="lh-menu-item" role="menuitem">
-            <strong>Strategy & Reader Profiles</strong> →
+            <strong>Strategy &amp; Reader Profiles</strong> →
           </a>
           <a href="/strategy/calm-positioning/" class="lh-menu-item{% if page.url contains '/strategy/calm-positioning/' %} is-active{% endif %}" role="menuitem">
-            <strong>Calm Positioning & Outreach Guide</strong> ☕
+            <strong>Calm Positioning &amp; Outreach Guide</strong> ☕
           </a>
         </div>
       </div>
@@ -114,7 +119,10 @@
             <strong>Living History Epic (2001–2026)</strong>
           </a>
           <div class="lh-menu-divider"></div>
-          <div class="lh-menu-header">Monographs & Community Hubs</div>
+          <div class="lh-menu-header">Rewatch Series &amp; Monographs</div>
+          <a href="/series/the-sound-above/episode-01/" class="lh-menu-item{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" role="menuitem">
+            <strong>The Sound Above (Oral History Rewatch)</strong> 📺
+          </a>
           <a href="/chicago-craftsmanship/" class="lh-menu-item{% if page.url contains '/chicago-craftsmanship/' and page.url != '/interviews/chicago-craftsmanship/' %} is-active{% endif %}" role="menuitem">
             <strong>Chicago History Monograph (2006–2015)</strong>
           </a>
@@ -145,6 +153,7 @@
         <div class="lh-dropdown-menu" role="menu">
           <div class="lh-menu-header">Public Surfaces (just3ws.com)</div>
           <a href="/" class="lh-menu-item" role="menuitem">🏠 <strong>Home / Resume</strong></a>
+          <a href="/series/the-sound-above/episode-01/" class="lh-menu-item" role="menuitem">📺 <strong>The Sound Above (Rewatch)</strong></a>
           <a href="/case-studies/" class="lh-menu-item" role="menuitem">🗺️ <strong>Case Studies</strong></a>
           <a href="/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html" class="lh-menu-item" role="menuitem">✍️ <strong>System Cartography Essay</strong></a>
           <a href="/interviews/" class="lh-menu-item" role="menuitem">🎙️ <strong>Oral History Archive</strong></a>
