@@ -26,17 +26,17 @@ _Editorial note: Mike Hall supplied the primary-source interview transcripts, hi
 
 ## The Corridor and the Keynote
 
-In April 2014, I stood in the corridor at RailsConf in Chicago with a microphone in my hand, talking to **David Heinemeier Hansson (DHH)**. He had just stepped off stage from delivering one of the most explosive keynotes in the history of the Ruby community—the speech that ignited the firestorm declaring "TDD is Dead."
+In April 2014, I stood in the corridor at RailsConf in Chicago with a microphone in my hand, talking to **David Heinemeier Hansson (DHH)**. He had just stepped off stage from delivering one of the most explosive keynotes in the history of the Ruby community: the speech that ignited the firestorm declaring "TDD is Dead."
 
 When I asked him what he was trying to communicate, he didn't talk about test suites or mocks. He talked about identity and metaphor:
 
 > _"I think the identity of most programmers is coming from an angle that doesn't fit the development of information technology very well anymore. And that angle is software engineering. What they do is they write. They're software writers. They're trying to achieve a level of clarity... Figuring out what you want to build is very much like figuring out what you want to say."_  
-> — [Mike Hall Interviews David Heinemeier Hansson on Clarity and Software Writing (RailsConf 2014)](/interviews/david-heinemeier-hansson-dhh-railsconf-2014/)
+> [Mike Hall Interviews David Heinemeier Hansson on Clarity and Software Writing (RailsConf 2014)](/interviews/david-heinemeier-hansson-dhh-railsconf-2014/)
 
-Two years earlier, at the Gleacher Center for Software Craftsmanship North America (SCNA 2012), I sat down with **Robert C. Martin ("Uncle Bob")**. In that interview, Uncle Bob spoke with the passionate intensity of an evangelist defending the sanctity of the trade:
+Two years earlier, at the University of Chicago's Gleacher Center downtown for Software Craftsmanship North America (SCNA 2012), I sat down with **Robert C. Martin ("Uncle Bob")**. In that interview, Uncle Bob spoke with the passionate intensity of an evangelist defending the sanctity of the trade:
 
 > _"I fly all over the doggone place and give talks and yell at people and encourage them to be professional and talk about solid principles and techniques... It's just another creative outlet. Just another way for me to spread my message around the world."_  
-> — [Filling the Vessel: Robert 'Uncle Bob' Martin on the Craft of Performance and Clean Coders (SCNA 2012)](/interviews/robert-martin-software-craftsmanship-north-america-2012/)
+> [Filling the Vessel: Robert 'Uncle Bob' Martin on the Craft of Performance and Clean Coders (SCNA 2012)](/interviews/robert-martin-software-craftsmanship-north-america-2012/)
 
 A year before that, on October 5, 2011, Uncle Bob had driven out to Follett Software Company in McHenry County to deliver a keynote to our suburban user group, **Software Craftsmanship McHenry County (SCMC)**: an unvarnished lecture titled [_The A Word: Architecture_](/scmc/).
 
@@ -89,7 +89,7 @@ I signed that ledger on March 6, 2009 as **Signatory #106**. We started SCMC in 
 ### Wave 3: The "TDD is Dead" Collision (2014)
 By 2014, the Craftsmanship movement had developed its own dogmas. Unit-test isolation, test-first design, mock-heavy architectures, and hexagonal purity were increasingly treated as moral imperatives.
 
-DHH stepped into RailsConf 2014 and shattered that consensus. In our corridor conversation right after his talk, he told me that driving design through unit tests produced *"test-induced design damage"*—fragmented, over-abstracted code that destroyed clarity. He advocated for system-level integration tests and treating software like prose: expressive, cohesive, and subjective.
+DHH stepped into RailsConf 2014 and shattered that consensus. In our corridor conversation right after his talk, he told me that driving design through unit tests produced *"test-induced design damage"*: fragmented, over-abstracted code that destroyed clarity. He advocated for system-level integration tests and treating software like prose: expressive, cohesive, and subjective.
 
 The ensuing debate between DHH, Martin Fowler, and Kent Beck was not a fight about whether tests matter; it was a fight over **metaphor**. Is software an engineering discipline governed by clinical contracts, or a literary craft governed by clarity and human readability?
 
@@ -120,7 +120,7 @@ Uncle Bob's demand for professional rigor is the only thing standing between the
 
 An LLM has no skin in the game. It does not go on call at 3:00 AM when a race condition corrupts an account balance. It does not face regulatory auditors when PHI leaks into a telemetry pipe. It does not care if an architecture rots.
 
-If you accept code from an AI agent without understanding its lateral dependencies, failure modes, and test contracts, you are not practicing software development; you are laundering technical debt. The craftsman's vow—to take responsibility for the system—becomes *more* critical when code generation is effortless.
+If you accept code from an AI agent without understanding its lateral dependencies, failure modes, and test contracts, you are not practicing software development; you are laundering technical debt. The craftsman's vow, to take responsibility for the system, becomes *more* critical when code generation is effortless.
 
 ### 3. The New Synthesis: System Cartography & Legible Rules
 When I returned to SCMC on September 15, 2026 to present [_Phalanx Duel: Make the Rules Legible_](/phalanx-duel/), I was demonstrating what software development must look like in the age of intelligent agents.
@@ -130,7 +130,7 @@ In *Phalanx Duel*, the card game rules are deterministic, visible, and traceably
 That is the future of Software Craftsmanship:
 *   **Not typing every character by hand**, but **governing the boundaries**.
 *   **System Cartography:** Understanding the 4D topology of your data models, service boundaries, and state machines so clearly that you can guide an AI agent to execute precise, bounded surgery.
-*   **The Blink Test:** Refusing to trust any code—human or synthetic—until it has proven itself green, red, and green again under rigorous regression checks.
+*   **The Blink Test:** Refusing to trust any code, human or synthetic, until it has proven itself green, red, and green again under rigorous regression checks.
 *   **Deterministic Restraint:** Applying the Ponytail Principle to refuse speculative abstractions, whether dreamed up by an over-eager engineer or hallucinated by a 70B parameter model.
 
 ---

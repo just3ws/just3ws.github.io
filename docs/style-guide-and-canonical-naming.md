@@ -51,6 +51,14 @@ This document establishes the permanent canonical naming, casing, and compound w
 | **LoneStarRuby** | `LoneStarRuby` / `Lone Star Ruby Conf` | Texas regional Ruby conference. |
 | **Cascadia Ruby** | `Cascadia Ruby` | Pacific Northwest regional Ruby conference. |
 
+### Venues & Locations
+
+| Venue | Canonical Form | Location | Historical Context |
+| :--- | :--- | :--- | :--- |
+| **Gleacher Center** | `Gleacher Center` | 450 N Cityfront Plaza Dr, Chicago, IL | University of Chicago Booth School of Business downtown conference center on the Chicago River. Host venue for SCNA 2012. |
+| **Sears Tower / Willis Tower** | `Sears Tower` / `Willis Tower` | 233 S Wacker Dr, Chicago, IL | Meeting location for Chicago Alt.NET (hosted at Redpoint Technologies on the 84th floor). |
+| **Follett Software Company** | `Follett Software Company` | McHenry, IL | Suburban venue and sponsor that hosted SCMC meetings, including Uncle Bob's October 2011 "The A Word: Architecture" keynote. |
+
 ---
 
 ## 4. Companies & Consultancies
@@ -88,11 +96,21 @@ This document establishes the permanent canonical naming, casing, and compound w
 
 ---
 
-## 6. Prose & Writing Rules
+## 6. Prose, Accessibility (A11y), & Readability Rules
 
-1. **Zero Em Dashes:** Never use em dashes (`—` or `&mdash;`) in prose, case studies, briefs, or documentation. Use commas, parentheticals, colons, or clean separate sentences.
-2. **Plain Technical Language:** Avoid AI jargon, hollow superlatives ("testament to", "delve", "leverage" when "use" suffices), and buzzword padding.
-3. **Verbatim Historical Transcripts:** Historical transcripts preserve exact spoken words while correcting ASR phonetic errors against attested proper nouns and community records.
+1. **Zero Em Dashes:** Never use em dashes (`—` or `&mdash;`) or stand-in double hyphens in prose, case studies, briefs, or documentation. Structure sentences directly using commas, colons, parentheses, or clean separate sentences.
+2. **Neuroinclusive Readability & Plain Language:**
+   - **Front-Load Bottom Lines:** Deliver the core conclusion or action in the first 5 to 8 words.
+   - **Sentence Length Cap:** Keep sentences under 20 to 25 words. Split compound runaway thoughts.
+   - **Accessible Reading Grade:** Target Flesch-Kincaid Grade level 8.0 to 12.0. Avoid bloated academic phrasing.
+   - **Zero AI Jargon:** Never use synthetic buzzwords or clinical padding ("testament to", "delve", "leverage", "formal combat assurance", "arithmetic witnesses"). Write in an authentic human voice.
+3. **Accessibility (A11y) in Content & Markup:**
+   - **Descriptive Link Text:** Never write "click here", "read more", or raw naked URLs as anchor text. Always use meaningful destination labels (e.g., "[Interactive Transcript with Verified Chapters](/interviews/...)" or "[Mike Hall Interviews DHH on Software Writing](/interviews/...)").
+   - **Semantic Heading Hierarchy:** Maintain strict sequential order (`h1` -> `h2` -> `h3`). Never skip heading levels for visual styling.
+   - **Alt Text on Non-Decorative Images:** Provide descriptive alternative text explaining content and context.
+   - **Color Contrast & Touch Targets:** Maintain WCAG 2.1 AA contrast ratios (minimum 4.5:1 for normal text) and minimum 44x44px interactive tap targets.
+   - **Screen Reader Landmarks:** Keep video frames, players, and transcripts accessible with proper `title`, `aria-label`, and landmark roles.
+4. **Verbatim Historical Transcripts:** Historical transcripts preserve exact spoken words while correcting ASR phonetic errors against attested proper nouns and community records.
 
 ---
 
