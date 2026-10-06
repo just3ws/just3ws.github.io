@@ -25,12 +25,12 @@ os.makedirs(OUT, exist_ok=True)
 rng = random.Random(42)
 
 # ── Palette ──────────────────────────────────────────────────────────────────
-# Sampled from the actual photo: warm cream/linen curtain
-LINEN_BASE   = (230, 222, 210)   # warm off-white
-LINEN_SHADOW = (195, 188, 176)   # fold shadow
-LINEN_LIGHT  = (245, 240, 232)   # highlight
-WARM_GOLD    = (255, 220, 140)   # morning sunbeam core
-WARM_GLOW    = (255, 235, 180)   # morning sunbeam halo
+# Sampled directly from room photos: warm off-white linen drape
+LINEN_BASE   = (212, 208, 200)   # warm natural linen
+LINEN_SHADOW = (185, 180, 172)   # gentle fold shadow
+LINEN_LIGHT  = (232, 228, 222)   # soft highlight
+WARM_GOLD    = (250, 242, 225)   # subtle morning window diffuse light
+WARM_GLOW    = (255, 248, 235)   # morning window glow halo
 
 
 def make_noise_layer(w, h, scale=4, seed=0):
