@@ -9,9 +9,15 @@ just3ws-youtube \- manage, generate, and synchronize YouTube video metadata and 
 .br
 .B ruby bin/sync_youtube_captions.rb
 [\fB\-\-upload\fR] [\fB\-\-limit\fR \fIN\fR] [\fB\-\-video-id\fR \fIID\fR] [\fB\-\-force\fR]
+.br
+.B ruby bin/sync_youtube_rewatch_playlist.rb
+[\fB\-\-apply\fR] [\fB\-\-help\fR]
+.br
+.B ruby bin/generate_rewatch_thumbnail.rb
+[\fB\-\-episode\fR \fIN\fR] [\fB\-\-all\fR] [\fB\-\-help\fR]
 .SH DESCRIPTION
 .B just3ws-youtube
-is a suite of namespaced CLI utilities to maintain 1:1 metadata parity between the local Jekyll technical interview archive and YouTube video assets. It manages OAuth 2.0 authentication, validates payloads against strict Dry-Validation schemas, generates humane titles and chapter timestamps from dialogue turns, and executes rate-limited batch updates.
+is a suite of namespaced CLI utilities to maintain 1:1 metadata parity between the local Jekyll technical interview archive and YouTube video assets. It manages OAuth 2.0 authentication, validates payloads against strict Dry-Validation schemas, generates humane titles and chapter timestamps from dialogue turns, curates thematic rewatch playlists, generates coordinated 720p/1080p thumbnails, and executes rate-limited batch updates.
 .SH UTILITIES
 .TP
 .B bin/authorize_youtube_oauth.rb
@@ -25,6 +31,12 @@ Dry-run diff reporter and YouTube Data API v3 video snippet publisher. Supports 
 .TP
 .B bin/sync_youtube_captions.rb
 Batch uploader for WebVTT timed subtitle caption tracks with exponential backoff on 429/500 errors.
+.TP
+.B bin/sync_youtube_rewatch_playlist.rb
+Synchronizes and curates the official public rewatch playlist for "The Sound Above", linking interview archives with sequence manifest order and grounded community descriptions.
+.TP
+.B bin/generate_rewatch_thumbnail.rb
+Generates coordinated 1080p master and 720p YouTube thumbnails using craftsmanship-theme styling, authentic UGtastic cube branding, and episode metadata.
 .SH FILES
 .TP
 .I _data/youtube_metadata_staged.json

@@ -51,8 +51,12 @@ def run
   options = { apply: false }
   OptionParser.new do |opts|
     opts.banner = "Usage: bin/sync_youtube_rewatch_playlist.rb [options]"
-    opts.on("--apply", "Apply changes to YouTube (default is dry-run)") do
+    opts.on("-a", "--apply", "Apply changes to YouTube (default is dry-run)") do
       options[:apply] = true
+    end
+    opts.on("-h", "--help", "Show help and usage information") do
+      puts opts
+      exit 0
     end
   end.parse!
 

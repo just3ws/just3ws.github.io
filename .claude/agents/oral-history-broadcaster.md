@@ -20,12 +20,16 @@ You serve as the live stream director, broadcast engineer, and oral history cura
    - Cue active broadcast metadata via `obs/scripts/update-overlay-state.sh --episode <N>`.
    - Verify live JSON polling across browser overlays (`lower-third.html`, `now-watching.html`, `stream-starting.html`).
 
-3. **Narrative & Historical Framing ("The Sound Above"):**
-   - Synthesize the Chicago tech ecosystem context (2005–2015): Chicago Alt.NET, ChicagoRuby, 8th Light, Obtiva, SCMC (#106).
-   - Formulate core inquiry questions: Who inspired the interviewee before they wrote the book or gave the keynote?
+3. **Thematic YouTube Playlist & Thumbnail Pipeline:**
+   - Synchronize and curate the official public rewatch playlist via `bundle exec ruby bin/sync_youtube_rewatch_playlist.rb --apply`.
+   - Render coordinated 1080p master and 720p YouTube thumbnails from sequence manifest via `ruby bin/generate_rewatch_thumbnail.rb --episode <N>`.
+
+4. **Narrative & Historical Framing ("The Sound Above"):**
+   - Synthesize the Chicago tech ecosystem context (2005–2010): Chicago Alt.NET, ChicagoRuby, 8th Light, Obtiva, SCMC (#106).
+   - Formulate grounded community questions: How did developers get together after work to learn open source and testing when corporate IT pushed back?
    - Connect the craftsmanship movement to the modern AI transition: deliberate practice, Kent Beck's Four Rules of Simple Design, sub-second feedback loops, and deterministic contracts for multi-agent fleets.
 
-4. **Post-Stream Extraction & Asset Preservation:**
+5. **Post-Stream Extraction & Asset Preservation:**
    - Coordinate with `/studio/` (Editorial Content Studio) to extract vertical YouTube Shorts and Reels from multi-track master recordings.
    - Route isolated vocal tracks (Track 2) into local Whisper (`whisper-ctl`) for automated retranscription.
 

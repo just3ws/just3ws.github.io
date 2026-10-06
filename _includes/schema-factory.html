@@ -196,6 +196,11 @@
       {% if preferred.video_url %}
       ,"contentUrl": {{ preferred.video_url | jsonify }}
       {% endif %}
+      ,"isPartOf": {
+        "@type": "CreativeWorkSeries",
+        "name": "The Sound Above: UGtastic Oral History Rewatch Series",
+        "url": "https://www.youtube.com/playlist?list=PLVcmLmfz2uyA"
+      }
     }
     {% endif %}
   {% elsif type == 'post' %}
@@ -267,6 +272,14 @@
     {% if preferred.video_url %}
     ,"contentUrl": {{ preferred.video_url | jsonify }}
     {% endif %}
+    {% if asset.transcript_id %}
+    ,"transcript": "{{ site_url }}/interviews/{{ asset.transcript_id }}/"
+    {% endif %}
+    ,"isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "The Sound Above: UGtastic Oral History Rewatch Series",
+      "url": "https://www.youtube.com/playlist?list=PLVcmLmfz2uyA"
+    }
   {% elsif page.url == "/engagements/" or page.permalink == "/engagements/" %}
     "@type": "ProfessionalService",
     "@id": "{{ site_url }}/engagements/#service",
