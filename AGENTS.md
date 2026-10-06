@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-05
+     CURRENT FOCUS - last updated 2026-10-06
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -12,6 +12,17 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
+       - REWATCH SERIES LAUNCH & REPOSITORY TIDY (2026-10-06):
+         Pre-flight audit complete for 'The Sound Above' rewatch broadcast.
+         Enforced strict canonical casing for Alt.NET across data catalogs,
+         career datalake, and style guide. Created series mirror page at
+         series/the-sound-above/episode-01.html with Schema.org VideoObject
+         linked to YouTube playlist PLVcmLmfz2uyA and interactive transcript.
+         Clarified Gleacher Center historical venue and added a11y, heading
+         hierarchy, and readability rules to style guide. Cleansed em dashes
+         from 2026-10-02 post. Pruned repo hygiene allowed files and excluded
+         AGENT.md from Jekyll build. All validation gates passing (validate:fast,
+         validate:obs 40/40 assertions, rspec 90/90, resume_quality, benchmark:ats 88.2%).
        - YOUTUBE CAPTION SYNC & OBS REWATCH AUDIT (2026-10-05):
          Audited YouTube captions pipeline against YouTube Data API v3.
          Diagnosed why Sergio Pereira (qOHdZKz1WFw) defaulted to YouTube ASR:
@@ -44,21 +55,14 @@
          New skill: `oral-history-broadcaster` in `.agents/skills/` and
          `.claude/agents/`. Repo hygiene updated (obs/ in allowed_directories
          + Jekyll exclude list). All validation gates clean.
-         Next: commit atomically; stage capstone post; cross-link /ugtastic/
-         and /scmc/ index pages with series navigation.
        - VIDEO SERIES PLATFORM NARRATIVE (2026-10-02): 5-part series
          "The Observable Control Plane" blueprint approved. Capstone post drafted:
          `_posts/2026-10-02-without-zdots-there-was-nothing.md`
          (Tier 3 AI-augmented, routes to /ai/2026/10/02/..., Jekyll build
          clean). Series blueprint: /Users/mike/.gemini/antigravity-cli/brain/
            0e5b4dee-44a7-4486-846e-ebb7264cfcf6/video_series_blueprint.md
-         Next: stage + commit the post; consider /ai/ index page aggregating
-         Tier 3 posts for discoverability.
-       - Migrated systems architect archetype slug to staff_systems_architect
-         across data, routes, datalake, exports, and navigation.
-         All 90 RSpec specs, ATS benchmark (88.2%), Jekyll build clean.
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-10-05.md
+         ~/.config/adots/handoffs/2026-10-06.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
