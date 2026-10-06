@@ -107,7 +107,7 @@ class YouTubeClient
       "snippet" => {
         "title" => title,
         "description" => description,
-        "defaultLanguage" => "en"
+        "defaultLanguage" => "en-US"
       },
       "status" => {
         "privacyStatus" => privacy_status
@@ -132,7 +132,7 @@ class YouTubeClient
       "snippet" => {
         "title" => title,
         "description" => description,
-        "defaultLanguage" => "en"
+        "defaultLanguage" => "en-US"
       },
       "status" => {
         "privacyStatus" => privacy_status

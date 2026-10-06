@@ -12,21 +12,23 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        Recent threads:
-       - BROADCAST AUTOMATION & REWATCH PLAYLIST SYNC (2026-10-06):
-         Configured live YouTube broadcast automation, overlay deduplication, and oral history playlist expansion.
-         Created bin/manage_youtube_broadcasts.rb to automate live broadcast creation,
-         stream key binding, 1080p thumbnail upload, and sequence manifest tracking across
-         the 21 rewatch episodes. Resolved OBS OAuth Broadcast Mode setup for Episode 01 (eGXG7Qu4G1E).
-         Eliminated duplicate event year string interpolations ('SCNA 2011 (2011)') across
-         lower-third, now-watching, stream-starting overlays, and update-overlay-state CLI.
-         Cleaned internal localhost URLs from broadcast descriptions and overlays to canonical
-         just3ws.com public links. Synchronized YouTube playlist PLVcmLmfz2uyA to 20 videos,
-         incorporating Rich Hickey (Clojure), Steve Klabnik (WindyCityRails 2012), Robert Martin (SCNA 2012),
-         and Yehuda Katz / Tom Dale (Ember / client-side architecture).
-         Contextualized Steve Klabnik in interviewee_signals.yml and transcript metadata regarding
-         the 2012 Rails crossroads between client-side state and enterprise JRuby just prior
-         to his historic leadership on Rust. All validation suites passing (validate:fast,
-         validate:obs 40/40 assertions, transcript audit 212/212 assets intact).
+       - BROADCAST AUTOMATION, COMMUNITY SYNTHESIS & PLAYLIST EXPANSION (2026-10-06):
+         Expanded YouTube playlist PLVcmLmfz2uyA to 31 videos cutting across national conferences
+         and local Chicago developer communities with calibrated Title Case titles and en-US localization.
+         Integrated key community figures: Sandro Mancuso (LSCC / SCNA 2012), Greg Baugues (mental health
+         in tech at RailsConf 2014), Trek Glowacki (Chicago Ember.js co-organizer at Groupon HQ),
+         Brian Ray (ChiPy / Chicago Python user group), Coraline Ada Ehmke (artis and leadership at RailsConf 2014),
+         Andy Lester (ack, open-source ergonomics at ChicagoWebConf 2012), James Edward Gray II
+         (FasterCSV, Ruby Rogues, and accessible developer education), and Ryan Gerry (SCMC, Follett,
+         and suburban craftsmanship). Codified playlist sync CLI tooling in bin/sync_youtube_rewatch_playlist.rb
+         and integrated `rake sync_rewatch_playlist` / `rake rewatch:apply`.
+         Created channel banner asset assets/images/youtube-channel-banner-2048x1152.png with safe-area
+         alignment, two-tone card architecture, and Digital Patina / Craftsmanship theme palette.
+         Contextualized Greg Baugues, Andy Lester, James Edward Gray II, and Ryan Gerry in interviewee_signals.yml.
+         All validation suites passing cleanly (validate:fast).
+
+
+
        - REWATCH SERIES LAUNCH & REPOSITORY TIDY (2026-10-06):
          Pre-flight audit and white-glove review complete for 'The Sound Above' rewatch broadcast.
          Enforced strict canonical casing for Alt.NET across data catalogs,

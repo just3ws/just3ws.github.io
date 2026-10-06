@@ -50,6 +50,36 @@ task validate: ['validate:all']
 desc 'Regenerate PDF resumes to $HOME/Desktop/resumes'
 task resumes: ['generate:resume_pdfs']
 
+desc 'Sync and audit The Sound Above rewatch playlist (PLVcmLmfz2uyA)'
+task :sync_rewatch_playlist, [:mode] do |_t, args|
+  # Allow passing args like `rake sync_rewatch_playlist[apply]` or through ARGV separator `rake sync_rewatch_playlist -- --apply`
+  cli_args = []
+  if args[:mode].to_s =~ /apply/i || ENV['APPLY'] == 'true'
+    cli_args << '--apply'
+    cli_args << '--calibrate-titles'
+  end
+  # Forward any trailing options passed after '--'
+  if (sep_idx = ARGV.index('--'))
+    cli_args.concat(ARGV[(sep_idx + 1)..])
+  end
+  cmd = "ruby bin/sync_youtube_rewatch_playlist.rb #{cli_args.join(' ')}".strip
+  sh cmd
+end
+
+namespace :rewatch do
+  desc 'Sync and audit The Sound Above rewatch playlist (PLVcmLmfz2uyA)'
+  task :sync do
+    sh 'ruby bin/sync_youtube_rewatch_playlist.rb'
+  end
+
+  desc 'Apply rewatch playlist sync and calibrate titles live'
+  task :apply do
+    sh 'ruby bin/sync_youtube_rewatch_playlist.rb --apply --calibrate-titles'
+  end
+end
+
+
+
 namespace :generate do
   desc 'Run all generation scripts (Legacy disk-based scripts are mostly deprecated by plugins)'
   task all: [
@@ -751,6 +781,12 @@ namespace :transcript do
   task :sync_youtube_captions do
     sh 'ruby bin/sync_youtube_captions.rb'
   end
+
+  desc 'Sync and audit The Sound Above rewatch playlist (PLVcmLmfz2uyA)'
+  task :sync_rewatch_playlist do
+    sh 'ruby bin/sync_youtube_rewatch_playlist.rb'
+  end
+
 
   desc 'Run 6-vector deep historical research across transcript canon'
   task :deep_research do
