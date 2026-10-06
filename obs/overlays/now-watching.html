@@ -110,7 +110,9 @@
       onUpdate: (state) => {
         const ep = state.episode;
         document.getElementById("hud-interviewee").textContent = ep.interviewee;
-        document.getElementById("hud-conference").textContent = `${ep.conference} (${ep.year})`;
+        const confText = ep.conference || "";
+        const yearStr = String(ep.year || "");
+        document.getElementById("hud-conference").textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
         document.getElementById("hud-topic").textContent = ep.title;
         document.getElementById("hud-era").textContent = ep.era.toUpperCase();
       }

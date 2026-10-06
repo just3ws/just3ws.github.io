@@ -147,7 +147,9 @@
       onUpdate: (state) => {
         const ep = state.episode;
         document.getElementById("interviewee").textContent = ep.interviewee;
-        document.getElementById("event-context").textContent = `${ep.conference} (${ep.year})`;
+        const confText = ep.conference || "";
+        const yearStr = String(ep.year || "");
+        document.getElementById("event-context").textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
         document.getElementById("role").textContent = `${ep.role} : ${ep.title}`;
         document.getElementById("prompt").textContent = `"${ep.sound_above_prompt}"`;
         document.getElementById("episode-tag").textContent = `EPISODE ${String(ep.number).padStart(2, '0')}`;

@@ -88,9 +88,10 @@ File.write(STATE_PATH, JSON.pretty_generate(current_state))
 puts "=================================================================="
 puts "🎬 Overlay State Updated Successfully!"
 puts "=================================================================="
-puts "Episode:     ##{current_state["episode"]["number"]} : #{current_state["episode"]["title"]}"
-puts "Interviewee: #{current_state["episode"]["interviewee"]}"
-puts "Event:       #{current_state["episode"]["conference"]} (#{current_state["episode"]["year"]})"
+conf_disp = current_state["episode"]["conference"].to_s
+year_disp = current_state["episode"]["year"].to_s
+event_label = (conf_disp.include?(year_disp) || year_disp.empty?) ? conf_disp : "#{conf_disp} (#{year_disp})"
+puts "Event:       #{event_label}"
 puts "Era:         #{current_state["episode"]["era"]}"
 puts "Prompt:      #{current_state["episode"]["sound_above_prompt"]}"
 puts "------------------------------------------------------------------"

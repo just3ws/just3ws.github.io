@@ -196,7 +196,7 @@
     </div>
     <div class="footer-item">
       <span class="footer-label">Digital Archive</span>
-      <span class="footer-value">just3ws.localhost/interviews</span>
+      <span class="footer-value">just3ws.com/interviews</span>
     </div>
     <div class="footer-item">
       <span class="footer-label">Platform Origin</span>
@@ -212,7 +212,9 @@
         const ep = state.episode;
         document.getElementById("start-title").textContent = ep.title;
         document.getElementById("start-guest").textContent = ep.interviewee;
-        document.getElementById("start-event").textContent = `${ep.conference} (${ep.year})`;
+        const confText = ep.conference || "";
+        const yearStr = String(ep.year || "");
+        document.getElementById("start-event").textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
         document.getElementById("start-prompt").textContent = `"${ep.sound_above_prompt}"`;
         document.getElementById("start-era").textContent = ep.era.toUpperCase();
       }
