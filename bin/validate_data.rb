@@ -6,6 +6,13 @@ require 'date'
 require_relative '../src/validators/site_schema'
 require_relative '../src/generators/archive_state'
 
+if ARGV.include?('-h') || ARGV.include?('--help')
+  puts 'Usage: bin/validate_data.rb [options]'
+  puts 'Validates declarative YAML schema and referential integrity across interviews, assets, conferences, communities, transcripts, and positions.'
+  puts '  -h, --help    Show this message and exit'
+  exit 0
+end
+
 ROOT = File.expand_path('..', __dir__)
 
 def load_yaml(path, key)

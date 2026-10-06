@@ -3,6 +3,13 @@
 require "yaml"
 require "pathname"
 
+if ARGV.include?("-h") || ARGV.include?("--help")
+  puts "Usage: bin/validate_repo_hygiene.rb [options]"
+  puts "Validates repository top-level entries, allowed files, and internal docs link consistency."
+  puts "  -h, --help    Show this message and exit"
+  exit 0
+end
+
 ROOT = File.expand_path("..", __dir__)
 CONFIG_PATH = File.join(ROOT, "_data", "repo_hygiene.yml")
 

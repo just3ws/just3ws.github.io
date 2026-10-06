@@ -2,6 +2,13 @@
 require 'yaml'
 require 'date'
 
+if ARGV.include?('-h') || ARGV.include?('--help')
+  puts 'Usage: bin/validate_data_uniqueness.rb [options]'
+  puts 'Validates that identifiers and generated slugs across interviews, video assets, conferences, and communities are unique.'
+  puts '  -h, --help    Show this message and exit'
+  exit 0
+end
+
 ROOT = File.expand_path('..', __dir__)
 
 def load_yaml(path, key)
