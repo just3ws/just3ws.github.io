@@ -17,14 +17,48 @@ require_relative "lib/youtube_client"
 PLAYLIST_TITLE = "The Sound Above: UGtastic Oral History Rewatch (Chicago Software Craftsmanship)"
 
 PLAYLIST_DESCRIPTION = <<~DESC.strip
-The Sound Above is an oral history rewatch and commentary series curated by Mike Hall (Software Craftsmanship Manifesto Signatory #106).
+The Sound Above is an oral history rewatch and commentary series curated and hosted by Mike Hall (Software Craftsmanship Manifesto Signatory #106, SCMC Co-Founder, UGtastic Host).
 
-This series revisits the UGtastic and WHOIS Tech Community archives (2009-2015), fulfilling the original mission: raising awareness of the people who make technical community possible, one interview at a time.
+This series revisits the UGtastic and WHOIS Tech Community archives recorded between 2009 and 2015. It fulfills the original mission of the project: raising awareness of the people who make technical community possible, one conversation at a time.
 
-Now standing in 2026 facing the AI transition, we look back to look forward. How did grassroots developers in Chicago break free from corporate silos, cultivate deliberate practice, mentor apprentices, and build durable local communities before cloud platforms and code synthesis existed? What principles from the Chicago Software Craftsmanship movement (Alt.NET, ChicagoRuby, 8th Light, Obtiva, SCNA, CodeRetreat) will guide us as software engineering evolves into orchestrating autonomous agents?
+Now standing in 2026 facing the upheaval of AI code synthesis and autonomous development tools, we look back to look forward. How did grassroots developers in Chicago break free from corporate silos, cultivate deliberate practice, mentor apprentices, and build durable local communities before cloud platforms and automated models existed? What principles from the Chicago Software Craftsmanship era will guide us as software engineering evolves into orchestrating autonomous agents?
 
-Archive & Transcripts: https://www.just3ws.com/interviews/
-Curator: Mike Hall (https://www.just3ws.com)
+TIMELINE & CURATED MOVEMENTS:
+• Movement 1: The Chicago Crucible (2005–2010)
+  Ep 01: Sergio Pereira · Chicago Alt.NET at the Sears Tower
+  Ep 02: Ray Hightower · ChicagoRuby and Grassroots Hospitality
+  Ep 03: Micah Martin & Mike Jansen · 8th Light and Apprenticeship
+  Ep 04: Dave Hoover · Obtiva, Geekfest, and Apprenticeship Patterns
+  Ep 05: Steve Kim & Jim Suchy · Chicago Software Craftsmanship & SCMC
+
+• Movement 2: The Practice and the Dojo (2010–2012)
+  Ep 06: Corey Haines · CodeRetreat and Deliberate Practice
+  Ep 07: Charley Baker · Watir, Browser Automation, and Toolmaking
+  Ep 08: Tim Ottinger · Clean Code and Daily Practice
+  Ep 09: Andrea Magnorsky · Game Jams and Cross-Platform Curiosity
+  Ep 10: Gary Bernhardt · Fast Feedback Loops and Boundaries
+
+• Movement 3: The Philosophy and Deliberate Discovery (2012–2014)
+  Ep 11: Dan North · BDD, Communication, and Deliberate Discovery
+  Ep 12: Dave "pragdave" Thomas · Unlearning Dogma
+  Ep 13: Hadi Hariri · Humility and the Truck Driver's Wisdom
+  Ep 14: Sarah Gray · Community Growth and Inclusion
+  Ep 15: Sandi Metz · Practical Object-Oriented Design (POODR)
+
+• Movement 4: The Architecture and Testing Reckoning (2014–2016)
+  Ep 16: David Heinemeier Hansson (DHH) · The Corridor Keynote on Clarity
+  Ep 17: Matt Deiters · Code Provenance and Developer Identity
+  Ep 18: Jason Cranford Teague · Preserving Technical Wisdom
+
+• Movement 5: The AI Horizon and The Observable Control Plane (2026)
+  Ep 19: Capstone · Without zdots, There Was Nothing
+  Ep 20: Phalanx Duel · Legible Rules to Multiplayer Engine
+  Ep 21: The Sound Above Community Roundtable
+
+Interactive Transcripts & Research: https://www.just3ws.com/interviews/
+Episode 01 Series Mirror: https://www.just3ws.com/series/the-sound-above/episode-01/
+Chicago Community Timeline: https://www.just3ws.com/timeline/community/
+Curated by Mike Hall (https://www.just3ws.com)
 DESC
 
 # Mapping manifest episodes to canonical YouTube video IDs
