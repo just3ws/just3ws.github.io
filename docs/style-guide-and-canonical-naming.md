@@ -21,6 +21,8 @@ This document establishes the permanent canonical naming, casing, and compound w
 | Community / User Group | Canonical Form | Casing / Format | Notes |
 | :--- | :--- | :--- | :--- |
 | **ChicagoRuby** | `ChicagoRuby` | Single word, CamelCase. | Chicago's primary Ruby user group founded by Ray Hightower, Matt Polito, etc. |
+| **Alt.NET** | `Alt.NET` | Mixed case: capitalized `Alt` + dot + all-caps `NET`. Never `Alt.net` or `ALT.NET`. | Grassroots movement exploring open-source and agile alternatives within the .NET ecosystem. |
+| **Chicago Alt.NET** | `Chicago Alt.NET` | Title Case `Chicago` + space + `Alt.NET`. | Chicago user group founded by Sergio Pereira meeting at Willis / Sears Tower. |
 | **ChicagoDB** | `ChicagoDB` | Single word, CamelCase. | NoSQL / polyglot database meetup founded by Ethan Gunderson and Ryan Briones (birthed Gathers.us). |
 | **Gathers.us** | `Gathers.us` | Lowercase domain name, or `GathersUs`. | Event coordination platform created by Ethan Gunderson and Ryan Briones out of ChicagoDB. |
 | **SCMC** | `SCMC` | All-caps acronym: `SCMC` (Software Craftsmanship McHenry County). | Grassroots pairing and study meetup founded by Mike Hall and Ryan Gerry in McHenry County, IL. |
