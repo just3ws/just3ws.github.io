@@ -96,36 +96,38 @@ else
   exit 1
 fi
 
-# 4. Install Profile
-PROFILE_SRC_DIR="${OBS_PROJECT_DIR}/profiles/The Sound Above"
-PROFILE_DEST_DIR="${OBS_SUPPORT_DIR}/basic/profiles/The Sound Above"
+# 4. Install Profiles (Production & Staging)
+for PROFILE_NAME in "The Sound Above" "The Sound Above - Staging"; do
+  PROFILE_SRC_DIR="${OBS_PROJECT_DIR}/profiles/${PROFILE_NAME}"
+  PROFILE_DEST_DIR="${OBS_SUPPORT_DIR}/basic/profiles/${PROFILE_NAME}"
 
-if [[ -d "${PROFILE_SRC_DIR}" ]]; then
-  if [[ "${DRY_RUN}" == "true" ]]; then
-    echo "ℹ [dry-run] Would install Profile to: ${PROFILE_DEST_DIR}"
+  if [[ -d "${PROFILE_SRC_DIR}" ]]; then
+    if [[ "${DRY_RUN}" == "true" ]]; then
+      echo "ℹ [dry-run] Would install Profile to: ${PROFILE_DEST_DIR}"
+    else
+      if [[ -d "${PROFILE_DEST_DIR}" ]]; then
+        echo "ℹ Backing up existing profile '${PROFILE_NAME}'..."
+        cp -r "${PROFILE_DEST_DIR}" "${PROFILE_DEST_DIR}_bak_${BACKUP_TIMESTAMP}"
+      else
+        mkdir -p "${PROFILE_DEST_DIR}"
+      fi
+
+      cp "${PROFILE_SRC_DIR}/basic.ini" "${PROFILE_DEST_DIR}/basic.ini"
+      
+      # Only copy service.json if one doesn't already exist (preserve user stream key)
+      if [[ ! -f "${PROFILE_DEST_DIR}/service.json" ]]; then
+        cp "${PROFILE_SRC_DIR}/service.json" "${PROFILE_DEST_DIR}/service.json"
+      else
+        echo "ℹ Preserving existing service.json in profile '${PROFILE_NAME}'"
+      fi
+
+      echo "✓ Installed Profile: '${PROFILE_NAME}'"
+    fi
   else
-    if [[ -d "${PROFILE_DEST_DIR}" ]]; then
-      echo "ℹ Backing up existing profile..."
-      cp -r "${PROFILE_DEST_DIR}" "${PROFILE_DEST_DIR}_bak_${BACKUP_TIMESTAMP}"
-    else
-      mkdir -p "${PROFILE_DEST_DIR}"
-    fi
-
-    cp "${PROFILE_SRC_DIR}/basic.ini" "${PROFILE_DEST_DIR}/basic.ini"
-    
-    # Only copy service.json if one doesn't already exist (preserve user stream key)
-    if [[ ! -f "${PROFILE_DEST_DIR}/service.json" ]]; then
-      cp "${PROFILE_SRC_DIR}/service.json" "${PROFILE_DEST_DIR}/service.json"
-    else
-      echo "ℹ Preserving existing service.json in profile"
-    fi
-
-    echo "✓ Installed Profile: 'The Sound Above'"
+    echo "❌ Error: Profile source directory not found at ${PROFILE_SRC_DIR}"
+    exit 1
   fi
-else
-  echo "❌ Error: Profile source directory not found at ${PROFILE_SRC_DIR}"
-  exit 1
-fi
+done
 
 echo "------------------------------------------------------------------"
 if [[ "${DRY_RUN}" == "true" ]]; then
@@ -135,7 +137,8 @@ else
   echo "------------------------------------------------------------------"
   echo "To activate in OBS Studio:"
   echo " 1. If OBS is running, restart OBS Studio or switch from the menus:"
-  echo "    - Profile Menu -> Select 'The Sound Above'"
+  echo "    - Profile Menu -> Select 'The Sound Above - Staging' (for testing/sandbox)"
+  echo "    - Profile Menu -> Select 'The Sound Above' (for production broadcast)"
   echo "    - Scene Collection Menu -> Select 'The Sound Above - UGtastic Rewatch'"
   echo " 2. In Scene 03/04, click 'Video Window (Orion)' to confirm your browser window."
   echo " 3. Verify 'Video Application Audio (Orion)' captures browser playback."

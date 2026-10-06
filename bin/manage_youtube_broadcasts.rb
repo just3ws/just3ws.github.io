@@ -30,15 +30,153 @@ class YouTubeBroadcastManager
     @http.use_ssl = true
   end
 
-  def get_stream_key_id
+  def get_stream_key_id(name_hint: nil)
     uri = URI("https://www.googleapis.com/youtube/v3/liveStreams?part=snippet,cdn,status&mine=true")
     req = Net::HTTP::Get.new(uri)
     req["Authorization"] = "Bearer #{@client.access_token}"
     res = @http.request(req)
     data = JSON.parse(res.body)
-    stream = data["items"]&.first
-    raise "No liveStream found on channel!" unless stream
-    stream["id"]
+    items = data["items"] || []
+    raise "No liveStream found on channel!" if items.empty?
+
+    if name_hint
+      stream = items.find { |s| s.dig("snippet", "title").to_s.downcase.include?(name_hint.downcase) }
+      return stream["id"] if stream
+    end
+
+    items.first["id"]
+  end
+
+  def get_or_create_staging_stream
+    uri = URI("https://www.googleapis.com/youtube/v3/liveStreams?part=snippet,cdn,status&mine=true")
+    req = Net::HTTP::Get.new(uri)
+    req["Authorization"] = "Bearer #{@client.access_token}"
+    res = @http.request(req)
+    data = JSON.parse(res.body)
+    items = data["items"] || []
+
+    staging_stream = items.find { |s| s.dig("snippet", "title").to_s.downcase.include?("staging") }
+    return staging_stream if staging_stream
+
+    # Create new staging stream
+    payload = {
+      "snippet" => {
+        "title" => "The Sound Above: Staging & Testing Stream Key (Private/Unlisted)"
+      },
+      "cdn" => {
+        "frameRate" => "60fps",
+        "ingestionType" => "rtmp",
+        "resolution" => "1080p"
+      }
+    }
+    uri_post = URI("https://www.googleapis.com/youtube/v3/liveStreams?part=snippet,cdn,status")
+    req_post = Net::HTTP::Post.new(uri_post)
+    req_post["Authorization"] = "Bearer #{@client.access_token}"
+    req_post["Content-Type"] = "application/json"
+    req_post.body = JSON.generate(payload)
+    res_post = @http.request(req_post)
+    raise "Failed to create staging stream: #{res_post.body}" unless res_post.is_a?(Net::HTTPSuccess)
+    JSON.parse(res_post.body)
+  end
+
+  def create_staging_broadcast
+    staging_stream = get_or_create_staging_stream
+    stream_id = staging_stream["id"]
+    stream_key = staging_stream.dig("cdn", "ingestionInfo", "streamName")
+
+    title = "The Sound Above — Staging & Dry Run Sandbox"
+    description = "Internal testing and staging broadcast for The Sound Above oral history stream. Automated dry run sandbox."
+    sched_time = (Time.now + 3600).utc.iso8601
+
+    payload = {
+      "snippet" => {
+        "title" => title,
+        "description" => description,
+        "scheduledStartTime" => sched_time
+      },
+      "status" => {
+        "privacyStatus" => "private",
+        "selfDeclaredMadeForKids" => false
+      },
+      "contentDetails" => {
+        "enableDvr" => true,
+        "enableContentEncryption" => false,
+        "enableEmbed" => true,
+        "recordFromStart" => true,
+        "startWithSlate" => false,
+        "latencyPreference" => "low",
+        "enableAutoStart" => true,
+        "enableAutoStop" => false
+      }
+    }
+
+    uri = URI("https://www.googleapis.com/youtube/v3/liveBroadcasts?part=snippet,status,contentDetails")
+    req = Net::HTTP::Post.new(uri)
+    req["Authorization"] = "Bearer #{@client.access_token}"
+    req["Content-Type"] = "application/json"
+    req.body = JSON.generate(payload)
+    res = @http.request(req)
+    raise "Failed to create staging broadcast: #{res.body}" unless res.is_a?(Net::HTTPSuccess)
+    bc = JSON.parse(res.body)
+    bc_id = bc["id"]
+    puts "✓ Created Staging Broadcast: #{bc_id} ('#{title}') [privacy: private]"
+
+    # Bind stream
+    uri_bind = URI("https://www.googleapis.com/youtube/v3/liveBroadcasts/bind?id=#{bc_id}&part=id,contentDetails,snippet&streamId=#{stream_id}")
+    req_bind = Net::HTTP::Post.new(uri_bind)
+    req_bind["Authorization"] = "Bearer #{@client.access_token}"
+    res_bind = @http.request(req_bind)
+    raise "Failed to bind staging broadcast: #{res_bind.body}" unless res_bind.is_a?(Net::HTTPSuccess)
+    puts "✓ Bound staging broadcast #{bc_id} to staging stream key #{stream_id}"
+
+    # Sync to local OBS Staging profile if directory exists
+    sync_obs_profile_key("The Sound Above - Staging", stream_key)
+
+    puts "\n🎉 Staging Broadcast Ready!"
+    puts "   Broadcast ID: #{bc_id}"
+    puts "   Studio URL:   https://studio.youtube.com/video/#{bc_id}/livestreaming"
+    puts "   Stream Key:   #{stream_key}"
+    bc_id
+  end
+
+  def sync_obs_profile_key(profile_name, stream_key)
+    obs_profile_dir = File.expand_path("~/Library/Application Support/obs-studio/basic/profiles/#{profile_name}")
+    return unless Dir.exist?(obs_profile_dir)
+
+    service_file = File.join(obs_profile_dir, "service.json")
+    service_data = {
+      "type" => "rtmp_common",
+      "settings" => {
+        "service" => "YouTube - RTMPS",
+        "server" => "rtmps://a.rtmps.youtube.com:443/live2",
+        "key" => stream_key,
+        "bwtest" => false,
+        "protocol" => "RTMPS"
+      }
+    }
+    File.write(service_file, JSON.pretty_generate(service_data) + "\n")
+    puts "✓ Updated active OBS Profile '#{profile_name}' service.json with stream key"
+  end
+
+  def list_broadcasts
+    uri = URI("https://www.googleapis.com/youtube/v3/liveBroadcasts?part=snippet,status,contentDetails&mine=true")
+    req = Net::HTTP::Get.new(uri)
+    req["Authorization"] = "Bearer #{@client.access_token}"
+    res = @http.request(req)
+    raise "Failed to fetch broadcasts: #{res.body}" unless res.is_a?(Net::HTTPSuccess)
+    data = JSON.parse(res.body)
+    items = data["items"] || []
+
+    puts "=================================================================="
+    puts " 📺 YOUTUBE LIVE BROADCAST STATUS (#{items.size} found)"
+    puts "=================================================================="
+    items.each do |b|
+      puts "ID: #{b['id']} | Status: #{b.dig('status', 'lifeCycleStatus')} | Privacy: #{b.dig('status', 'privacyStatus')}"
+      puts "   Title: #{b.dig('snippet', 'title')}"
+      puts "   Bound Stream ID: #{b.dig('contentDetails', 'boundStreamId')}"
+      puts "   Studio URL: https://studio.youtube.com/video/#{b['id']}/livestreaming"
+      puts "------------------------------------------------------------------"
+    end
   end
 
   def create_episode_broadcast(ep_num, privacy: "unlisted", start_time: nil)
@@ -167,6 +305,14 @@ if __FILE__ == $0
       options[:episode] = v
     end
 
+    opts.on("-s", "--staging", "Create private staging and testing sandbox broadcast") do
+      options[:staging] = true
+    end
+
+    opts.on("-l", "--list", "List existing live broadcasts and their status") do
+      options[:list] = true
+    end
+
     opts.on("-p", "--privacy STATUS", "Privacy status: unlisted, public, private (default: unlisted)") do |v|
       options[:privacy] = v
     end
@@ -189,7 +335,11 @@ if __FILE__ == $0
 
   mgr = YouTubeBroadcastManager.new
 
-  if options[:thumb_file] && options[:broadcast_id]
+  if options[:list]
+    mgr.list_broadcasts
+  elsif options[:staging]
+    mgr.create_staging_broadcast
+  elsif options[:thumb_file] && options[:broadcast_id]
     mgr.upload_thumbnail(options[:broadcast_id], options[:thumb_file])
   elsif options[:episode]
     mgr.create_episode_broadcast(options[:episode], privacy: options[:privacy])

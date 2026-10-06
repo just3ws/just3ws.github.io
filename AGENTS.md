@@ -11,21 +11,22 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       Recent threads:
-       - BROADCAST AUTOMATION, COMMUNITY SYNTHESIS & PLAYLIST EXPANSION (2026-10-06):
-         Expanded YouTube playlist PLVcmLmfz2uyA to 31 videos cutting across national conferences
-         and local Chicago developer communities with calibrated Title Case titles and en-US localization.
-         Integrated key community figures: Sandro Mancuso (LSCC / SCNA 2012), Greg Baugues (mental health
-         in tech at RailsConf 2014), Trek Glowacki (Chicago Ember.js co-organizer at Groupon HQ),
-         Brian Ray (ChiPy / Chicago Python user group), Coraline Ada Ehmke (artis and leadership at RailsConf 2014),
-         Andy Lester (ack, open-source ergonomics at ChicagoWebConf 2012), James Edward Gray II
-         (FasterCSV, Ruby Rogues, and accessible developer education), and Ryan Gerry (SCMC, Follett,
-         and suburban craftsmanship). Codified playlist sync CLI tooling in bin/sync_youtube_rewatch_playlist.rb
-         and integrated `rake sync_rewatch_playlist` / `rake rewatch:apply`.
-         Created channel banner asset assets/images/youtube-channel-banner-2048x1152.png with safe-area
-         alignment, two-tone card architecture, and Digital Patina / Craftsmanship theme palette.
-         Contextualized Greg Baugues, Andy Lester, James Edward Gray II, and Ryan Gerry in interviewee_signals.yml.
-         All validation suites passing cleanly (validate:fast).
+       - STAGING & PRODUCTION BROADCAST ARCHITECTURE AND OBS STABILITY (2026-10-06):
+         Diagnosed OBS Studio startup crashes and output errors from macOS crash reports:
+         resolved CoreAudio / AVFoundation device mismatch by anchoring Host Camera to
+         the verified hardware device ID ('0x1124000046d082d', HD Pro Webcam C920) and
+         correcting profile pointer in user.ini. Corrected RTMP scheme across profile templates
+         and active configurations to eliminate 'No :// in url!' output failures.
+         Architected and provisioned a two-tier broadcast infrastructure:
+         1. Production: 'The Sound Above' profile bound to scheduled live broadcasts (e.g. Episode 01).
+         2. Staging / Testing: 'The Sound Above - Staging' profile provisioned with a dedicated
+         independent stream key (AyLLkogK2UnjpGmyCTwjiw1791324736228478) and private sandbox broadcast
+         (dErMdzxi_qo) for repeatable safe pre-flight testing without alerting subscribers.
+         Enhanced bin/manage_youtube_broadcasts.rb with `--staging` and `--list` flags and automatic
+         OBS profile stream key syncing. Integrated Rake workflow tasks `rake rewatch:staging`,
+         `rake rewatch:broadcasts`, and `rake rewatch:prod[episode]`. Updated install-obs-config.sh
+         to synchronize both production and staging profiles. Validated with validate:obs (40/40 assertions)
+         and validate:fast.
 
 
 

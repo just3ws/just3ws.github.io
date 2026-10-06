@@ -76,6 +76,22 @@ namespace :rewatch do
   task :apply do
     sh 'ruby bin/sync_youtube_rewatch_playlist.rb --apply --calibrate-titles'
   end
+
+  desc 'Provision or inspect unlisted/private staging test broadcast & sync OBS Staging profile'
+  task :staging do
+    sh 'ruby bin/manage_youtube_broadcasts.rb --staging'
+  end
+
+  desc 'List active live broadcasts across production and staging'
+  task :broadcasts do
+    sh 'ruby bin/manage_youtube_broadcasts.rb --list'
+  end
+
+  desc 'Create and stage production episode broadcast (usage: rake rewatch:prod[1])'
+  task :prod, [:episode] do |_t, args|
+    ep = args[:episode] || 1
+    sh "ruby bin/manage_youtube_broadcasts.rb --episode #{ep}"
+  end
 end
 
 
