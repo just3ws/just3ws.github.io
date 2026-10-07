@@ -315,7 +315,7 @@ def build_html(item)
         <div class="meta-group">
           <div class="meta-item">
             <span class="meta-label">Broadcaster</span>
-            <span class="meta-val">Mike Hall (Signatory #106)</span>
+            <span class="meta-val">Mike Hall</span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Archive</span>

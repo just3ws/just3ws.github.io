@@ -192,7 +192,7 @@
   <div class="bottom-bar">
     <div class="footer-item">
       <span class="footer-label" id="footer-host-label">Host & Curator</span>
-      <span class="footer-value" id="footer-host-val">Mike Hall (Software Craftsmanship Signatory #106)</span>
+      <span class="footer-value" id="footer-host-val">Mike Hall</span>
     </div>
     <div class="footer-item">
       <span class="footer-label" id="footer-route-label">Digital Archive</span>
@@ -222,7 +222,7 @@
         const routeLabel = document.getElementById("footer-route-label");
         const routeVal = document.getElementById("footer-route-val");
 
-        hostVal.textContent = state.stream.host || "Mike Hall (Software Craftsmanship Signatory #106)";
+        hostVal.textContent = state.stream.host || "Mike Hall";
 
         if (type === "errata") {
           const err = state.errata || {};

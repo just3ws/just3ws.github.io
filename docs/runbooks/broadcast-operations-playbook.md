@@ -1,6 +1,6 @@
 # Broadcast Operations Playbook
 
-This playbook establishes unambiguous, sequential operating procedures for live video broadcasting across all three production archetypes for Mike Hall (Software Craftsmanship Signatory #106).
+This playbook establishes unambiguous, sequential operating procedures for live video broadcasting across all three production archetypes for Mike Hall (Staff Software Engineer and UGtastic Host).
 It coordinates the unified CLI (`bin/broadcast`), OBS Studio 32, hardware encoding on Apple Silicon M4, native audio capture on macOS Golden Gate, interactive HTML overlays, and YouTube live scheduling.
 
 ---

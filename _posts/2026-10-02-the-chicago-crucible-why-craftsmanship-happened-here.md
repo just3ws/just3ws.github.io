@@ -183,5 +183,5 @@ That discipline was born in Chicago. Rewatching Sergio Pereira is not nostalgia;
 * **Series Episode 1:** [Sergio Pereira Interview Verbatim Transcript & Video Stage](/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/)
 * **Foundational Monograph:** [The Chicago Software Craftsmanship Movement (2006–2015)](/chicago-craftsmanship/)
 * **Community Hub:** [Software Craftsmanship McHenry County (17-Year Canon)](/scmc/)
-* **Forensic Audit:** [Signatory Ledger Forensics & Signatory #106](/reports/software-craftsmanship-forensics/)
+* **Forensic Audit:** [Signatory Ledger Forensics](/reports/software-craftsmanship-forensics/)
 * **Philosophical Essay:** [The Four Waves of Craft: DHH, Uncle Bob, and Writing Software in the Age of AI](/ai/2026/10/02/the-four-waves-of-craft-dhh-uncle-bob-ai/)

@@ -2,7 +2,7 @@
 
 ## Executive Overview and Master Curation Guide
 
-Curated and hosted by Mike Hall (Software Craftsmanship Signatory #106, SCMC Co-Founder, UGtastic Host).
+Curated and hosted by Mike Hall (SCMC Co-Founder, UGtastic Host).
 
 This curation guide provides the complete thematic sequencing, historical context, discussion prompts, and technical production notes for livestreaming the UGtastic oral history rewatch series.
 
@@ -104,7 +104,7 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Location**: Chicago, IL
 - **Slug**: `ryan-gerry-goto-conference-2014`
 - **The Sound Above Inquiry**: What sustained a monthly practitioner meetup in McHenry County for seventeen straight years without corporate sponsorship or speaker fees?
-- **Chicago Context**: Mike Hall, Jim Suchy, and Ryan Gerry founded SCMC in spring 2009 following Manifesto Signatory #106, hosted at Follett and Panera Bread.
+- **Chicago Context**: Mike Hall, Jim Suchy, and Ryan Gerry founded SCMC in spring 2009 following the Software Craftsmanship Manifesto, hosted at Follett and Panera Bread.
 - **AI Era Parallel**: Grassroots community rooms provide psychological safety to test ideas, fail safely, and evaluate AI tooling with skeptical peer review.
 - **Companion Video**: Uncle Bob Martin: 2011 SCMC Keynote (Follett)
 - **Status**: planned

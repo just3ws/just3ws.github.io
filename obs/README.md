@@ -8,7 +8,7 @@ This directory houses the complete, version-controlled OBS Studio project config
 
 ## 1. Project Vision and Narrative Arc
 
-Hosted by Mike Hall (Software Craftsmanship Signatory #106, Co-Founder of Software Craftsmanship McHenry County, and Host of UGtastic).
+Hosted by Mike Hall (Co-Founder of Software Craftsmanship McHenry County, and Host of UGtastic).
 
 ### The Core Inquiry: "The Sound Above"
 

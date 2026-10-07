@@ -22,7 +22,7 @@ require_relative "lib/youtube_client"
 PLAYLIST_TITLE = "The Sound Above: UGtastic Oral History Rewatch (Chicago Software Craftsmanship)"
 
 PLAYLIST_DESCRIPTION = <<~DESC.strip
-The Sound Above is an oral history rewatch and commentary series curated and hosted by Mike Hall (Software Craftsmanship Manifesto Signatory #106, SCMC Co-Founder, UGtastic Host).
+The Sound Above is an oral history rewatch and commentary series curated and hosted by Mike Hall (SCMC Co-Founder, UGtastic Host).
 
 This series revisits the UGtastic and WHOIS Tech Community archives recorded between 2009 and 2015. It fulfills the original mission of the project: raising awareness of the people who make technical community possible, one conversation at a time.
 

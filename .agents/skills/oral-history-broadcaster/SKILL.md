@@ -5,7 +5,7 @@ description: Directs, validates, cues, and audits live video broadcasts across a
 
 # Oral History Broadcaster Skill
 
-Use this skill when preparing, curating, validating, or directing livestreams for Mike Hall (Software Craftsmanship Signatory #106).
+Use this skill when preparing, curating, validating, or directing livestreams for Mike Hall (Staff Software Engineer and UGtastic Host).
 This covers the entire tri-archetype broadcast architecture:
 1. **The Sound Above**: Forensic oral history rewatch series across 31 curated episodes.
 2. **Errata**: Solo broadcasts including book readings, concept breakdowns, live terminal workbench demonstrations, oral memoirs, and physical memorabilia showcases.

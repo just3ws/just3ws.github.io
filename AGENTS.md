@@ -11,6 +11,19 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - CANONICAL IDENTITY REFINEMENT & SIGNATORY #106 DE-EMPHASIS (2026-10-07):
+         Eliminated intrusive 'Signatory #106' branding where it was erroneously elevated
+         to primary profile identity, job title, curator tagline, or bio badge:
+         - Retained the March 6, 2009 ledger record as factual historical context and evidence
+           in forensics reports and origin essays.
+         - Restored canonical professional identity across public and tooling surfaces:
+           Staff Software Engineer, UGtastic Creator/Host, and SCMC Co-Founder.
+         - Updated Community Timeline, SCMC practitioner hub, local nav, live broadcast overlays,
+           manual pages (`broadcast.1`, `obs-livestream.1`), operations runbooks, thumbnail generators,
+           and curator manifests (`sequence-manifest.json`, `errata-manifest.json`).
+         - Zero em dashes maintained. All gates passing: validate:fast, validate:obs (44/44),
+           rspec (97/97), and resume_quality.
+
        - COMMUNITY TIMELINE CRAFTSMANSHIP OVERHAUL & ITERM2 INTEGRATION (2026-10-07):
          Overhauled `/timeline/community/` into full alignment with the site's canonical
          Digital Patina & Editorial Craft design tokens:
