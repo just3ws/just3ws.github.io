@@ -61,6 +61,7 @@ class ObsSetupValidator
     validate_overlays_and_theme
     validate_curation_manifest
     validate_scripts
+    validate_path_portability
     validate_macos_environment
     validate_installed_state
     probe_live_obs if @live_mode
@@ -326,8 +327,32 @@ class ObsSetupValidator
     end
   end
 
+  def validate_path_portability
+    puts "\n6. Validating Path Portability across Configuration & Schemas..."
+    # Check overlays, schemas, and curation manifests for hardcoded user paths
+    scan_patterns = [
+      File.join(OBS_DIR, 'schemas', '*.json'),
+      File.join(OBS_DIR, 'curation', '*.json'),
+      File.join(OBS_DIR, 'overlays', 'overlay-state.json')
+    ]
+
+    hardcoded_found = []
+    Dir.glob(scan_patterns).each do |file|
+      content = File.read(file)
+      if content.match?(%r{/Users/[a-zA-Z0-9._-]+})
+        hardcoded_found << File.basename(file)
+      end
+    end
+
+    if hardcoded_found.empty?
+      pass('All OBS schemas, states, and manifests are free of hardcoded user directory paths')
+    else
+      fail("Hardcoded user home path (/Users/<user>) detected in: #{hardcoded_found.join(', ')}")
+    end
+  end
+
   def validate_macos_environment
-    puts "\n6. Validating macOS Golden Gate & Hardware Environment..."
+    puts "\n7. Validating macOS Golden Gate & Hardware Environment..."
 
     # Check OBS App
     if File.directory?('/Applications/OBS.app')
@@ -356,7 +381,7 @@ class ObsSetupValidator
   end
 
   def validate_installed_state
-    puts "\n7. Validating Installed State in ~/Library/Application Support/obs-studio..."
+    puts "\n8. Validating Installed State in ~/Library/Application Support/obs-studio..."
     installed_scene = File.join(APP_SUPPORT_OBS, 'basic', 'scenes', 'The Sound Above - UGtastic Rewatch.json')
     installed_profile = File.join(APP_SUPPORT_OBS, 'basic', 'profiles', 'The Sound Above', 'basic.ini')
 
@@ -374,7 +399,7 @@ class ObsSetupValidator
   end
 
   def probe_live_obs
-    puts "\n8. Probing Running OBS Studio Instance (Live Mode)..."
+    puts "\n9. Probing Running OBS Studio Instance (Live Mode)..."
     obs_pids = `pgrep -x OBS 2>/dev/null`.strip.split("\n")
 
     if obs_pids.empty?

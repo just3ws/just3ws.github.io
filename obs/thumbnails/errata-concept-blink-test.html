@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Errata - The Blink Test Thumbnail</title>
+  <link rel="stylesheet" href="../overlays/css/craftsmanship-theme.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background-color: var(--paper-canvas);
+      background-image: 
+        radial-gradient(ellipse at 88% 18%, rgba(15, 118, 110, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 12% 85%, rgba(180, 83, 9, 0.07) 0%, transparent 60%),
+        linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      color: var(--ink-main);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 64px 80px 56px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border-soft);
+      padding-bottom: 24px;
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    .series-title {
+      font-family: var(--font-serif);
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--teal-craftsman);
+      letter-spacing: -0.02em;
+    }
+
+    .series-colon {
+      font-size: 32px;
+      color: var(--amber-accent);
+      font-family: var(--font-mono);
+      margin-right: 4px;
+    }
+
+    .series-tagline {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge-mode {
+      background: rgba(15, 118, 110, 0.12);
+      border: 1.5px solid var(--teal-craftsman);
+      color: var(--teal-craftsman);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 1720px;
+    }
+
+    .kicker-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .kicker-mode {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--amber-accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .kicker-year {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.05);
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    .thumb-title {
+      font-family: var(--font-serif);
+      font-size: 72px;
+      line-height: 1.1;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: -0.03em;
+    }
+
+    .citation-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border-soft);
+      border-left: 10px solid var(--amber-accent);
+      border-radius: 12px;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.07);
+    }
+
+    .citation-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .citation-text {
+      font-family: var(--font-serif);
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--teal-craftsman);
+      letter-spacing: -0.01em;
+    }
+
+    .citation-subtitle {
+      font-family: var(--font-body);
+      font-size: 22px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .prompt-card {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px dashed var(--border-soft);
+      border-radius: 10px;
+      padding: 20px 28px;
+    }
+
+    .prompt-text {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      line-height: 1.35;
+      font-style: italic;
+      color: var(--ink-main);
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1.5px solid var(--border-soft);
+      padding-top: 20px;
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .credo-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .credo-bold {
+      font-weight: 700;
+      color: var(--teal-craftsman);
+      text-transform: uppercase;
+    }
+
+    .meta-group {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meta-label {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .meta-val {
+      color: var(--ink-main);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand-cluster">
+      <span class="series-title">Errata</span>
+      <span class="series-colon">:</span>
+      <span class="series-tagline">Marginalia, Readings & Demonstrations</span>
+    </div>
+    <div class="badge-mode">CONCEPT MODE</div>
+  </header>
+
+  <main>
+    <div class="kicker-row">
+      <span class="kicker-mode">Systems Architecture & Cartography</span>
+      <span class="kicker-year">2026</span>
+    </div>
+
+    <h1 class="thumb-title">The Blink Test</h1>
+
+    <div class="citation-card">
+      <div class="citation-info">
+        <span class="citation-text">Mike Hall, Craftsmanship & System Cartography (2026)</span>
+        <span class="citation-subtitle">Cognitive Load and Sub-Second Code Comprehension</span>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <p class="prompt-text">"Can an engineer landing on a codebase comprehend the boundaries, blast radius, and invariants in three glances?"</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="credo-cluster">
+      <span class="credo-bold">Errata</span>
+      <span>·</span>
+      <span>Craftsmanship, Invariants & Ephemera</span>
+    </div>
+    <div class="meta-group">
+      <div class="meta-item">
+        <span class="meta-label">Broadcaster</span>
+        <span class="meta-val">Mike Hall (Signatory #106)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Archive</span>
+        <span class="meta-val">just3ws.com</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Topic</span>
+        <span class="meta-val">Visual ergonomics, naming precision, </span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
