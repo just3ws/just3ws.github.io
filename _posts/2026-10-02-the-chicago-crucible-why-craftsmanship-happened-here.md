@@ -179,7 +179,7 @@ That discipline was born in Chicago. Rewatching Sergio Pereira is not nostalgia;
 ---
 
 ### Connected Records & Further Exploration
-* **Interactive Timeline:** [The Community Pastiche Timeline (2005–2026)](/timeline/community/)
+* **Interactive Timeline:** [The Community Pastiche Timeline](/timeline/community/)
 * **Series Episode 1:** [Sergio Pereira Interview Verbatim Transcript & Video Stage](/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/)
 * **Foundational Monograph:** [The Chicago Software Craftsmanship Movement (2006–2015)](/chicago-craftsmanship/)
 * **Community Hub:** [Software Craftsmanship McHenry County (17-Year Canon)](/scmc/)

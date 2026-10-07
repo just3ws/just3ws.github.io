@@ -11,16 +11,17 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - CANONICAL IDENTITY REFINEMENT & SIGNATORY #106 DE-EMPHASIS (2026-10-07):
-         Eliminated intrusive 'Signatory #106' branding where it was erroneously elevated
-         to primary profile identity, job title, curator tagline, or bio badge:
+       - CANONICAL IDENTITY REFINEMENT & DATE SPAN PURGE (2026-10-07):
+         Eliminated intrusive 'Signatory #106' branding and purged artificial '2005-2026' date callouts:
+         - Removed spurious '2005-2026' and '(2005-2010)' ranges across Community Timeline, subnav,
+           blog links, OBS sequence manifests, thumbnail templates, and overlay states.
+         - Restored clean movement names across all six broadcast movements: The Chicago Crucible,
+           The Practice and the Dojo, The Human Communication Layer & Inclusion, Philosophy, Empathy &
+           Craftsmanship, The Architecture and Testing Reckoning, and The AI Horizon & The Observable Control Plane.
          - Retained the March 6, 2009 ledger record as factual historical context and evidence
            in forensics reports and origin essays.
          - Restored canonical professional identity across public and tooling surfaces:
            Staff Software Engineer, UGtastic Creator/Host, and SCMC Co-Founder.
-         - Updated Community Timeline, SCMC practitioner hub, local nav, live broadcast overlays,
-           manual pages (`broadcast.1`, `obs-livestream.1`), operations runbooks, thumbnail generators,
-           and curator manifests (`sequence-manifest.json`, `errata-manifest.json`).
          - Zero em dashes maintained. All gates passing: validate:fast, validate:obs (44/44),
            rspec (97/97), and resume_quality.
 

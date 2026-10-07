@@ -16,7 +16,7 @@ In January 2025, Mike Hall authored the foundational essay titled "The Sound Abo
 
 When listening to great musicians, jazz players, or painters, we often ask: who inspired them before they became household names? What records were playing in their apartments when they were teenagers? Who was their teacher before they stepped onto the main stage?
 
-In software engineering, the same truth applies. The industry is currently undergoing a massive transformation with the arrival of large language models, agentic workflows, and automated code generation. As we navigate questions about the identity and future of software development, the grassroots lessons from the Software Craftsmanship era (2005 to 2015) have never been more urgent.
+In software engineering, the same truth applies. The industry is currently undergoing a massive transformation with the arrival of large language models, agentic workflows, and automated code generation. As we navigate questions about the identity and future of software development, the grassroots lessons from the Software Craftsmanship era have never been more urgent.
 
 The Software Craftsmanship movement became global, but its deepest roots are planted firmly in Chicago:
 - The 2008 Libertyville Summit that drafted the Software Craftsmanship Manifesto
@@ -38,18 +38,18 @@ This rewatch series is not passive nostalgia. It is an active forensic investiga
 The original UGtastic videos were recorded opportunistically in conference hallways, hotel lobbies, and meetup backrooms between 2010 and 2015. They were published across Vimeo, Tumblr, and early video platforms in the order they were edited, not in a coherent narrative arc.
 
 This curation reworks the archive into 31 curated sessions across six cohesive thematic movements:
-1. **Movement 1: The Chicago Crucible (2005 to 2010)**: The pre-manifesto rooms, breaking out of corporate Microsoft monoliths, and founding grassroots communities.
-2. **Movement 2: The Practice and the Dojo (2010 to 2012)**: Deliberate practice, code katas, browser automation roots, and the pursuit of sub-second feedback loops.
-3. **Movement 3: The Human Communication Layer and Inclusion (2012 to 2013)**: Mentorship hospitality, overcoming developer shame, RailsBridge pipelines, and deliberate discovery.
-4. **Movement 4: Philosophy, Empathy and Craftsmanship (2013 to 2014)**: Humility, mental health in tech, social contracts, and passing the torch.
-5. **Movement 5: The Architecture and Testing Reckoning (2014 to 2016)**: The "TDD is Dead" corridor debates, client-side frameworks, and deconstructing complexity.
-6. **Movement 6: The AI Horizon and The Observable Control Plane (2026)**: Applying seventeen years of craftsmanship disciplines to multi-agent fleets, sovereign inference, and deterministic system cartography.
+1. **Movement 1: The Chicago Crucible**: The pre-manifesto rooms, breaking out of corporate Microsoft monoliths, and founding grassroots communities.
+2. **Movement 2: The Practice and the Dojo**: Deliberate practice, code katas, browser automation roots, and the pursuit of sub-second feedback loops.
+3. **Movement 3: The Human Communication Layer and Inclusion**: Mentorship hospitality, overcoming developer shame, RailsBridge pipelines, and deliberate discovery.
+4. **Movement 4: Philosophy, Empathy and Craftsmanship**: Humility, mental health in tech, social contracts, and passing the torch.
+5. **Movement 5: The Architecture and Testing Reckoning**: The "TDD is Dead" corridor debates, client-side frameworks, and deconstructing complexity.
+6. **Movement 6: The AI Horizon and The Observable Control Plane**: Applying seventeen years of craftsmanship disciplines to multi-agent fleets, sovereign inference, and deterministic system cartography.
 
 ---
 
 ## The Six Curated Movements
 
-### The Chicago Crucible (2005–2010)
+### The Chicago Crucible
 
 #### Episode 01: Sergio Pereira: The First Room: Chicago Alt.NET & Escaping Corporate Monoliths
 - **Interviewee**: Sergio Pereira
@@ -110,7 +110,7 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Status**: planned
 
 
-### The Practice and the Dojo (2010–2012)
+### The Practice and the Dojo
 
 #### Episode 06: Corey Haines: Cranking Design to 11: Deliberate Practice & The Four Rules
 - **Interviewee**: Corey Haines
@@ -179,7 +179,7 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Status**: planned
 
 
-### The Human Communication Layer & Inclusion (2012–2013)
+### The Human Communication Layer & Inclusion
 
 #### Episode 12: Ginny Hendry: A Legacy of Learning: Community Hospitality, RailsBridge & In Memoriam
 - **Interviewee**: Ginny Hendry
@@ -248,7 +248,7 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Status**: planned
 
 
-### Philosophy, Empathy & Craftsmanship (2013–2014)
+### Philosophy, Empathy & Craftsmanship
 
 #### Episode 18: Hadi Hariri: The Truck Driver's Wisdom: Developer Humility & Tooling Craft
 - **Interviewee**: Hadi Hariri
@@ -317,7 +317,7 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Status**: planned
 
 
-### The Architecture and Testing Reckoning (2014–2016)
+### The Architecture and Testing Reckoning
 
 #### Episode 24: David Heinemeier Hansson (DHH): The Chicago Corridor: Software as Writing & The TDD Reckoning
 - **Interviewee**: David Heinemeier Hansson (DHH)
@@ -375,7 +375,7 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Status**: planned
 
 
-### The AI Horizon & The Observable Control Plane (2026)
+### The AI Horizon & The Observable Control Plane
 
 #### Episode 29: Jason Cranford Teague: The Living Document: Authorship, Provenance & Tech Media Evolution
 - **Interviewee**: Jason Cranford Teague

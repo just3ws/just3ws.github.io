@@ -35,7 +35,7 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
     "conference": "SCNA 2011",
     "location": "Chicago, IL",
     "year": "2011",
-    "era": "The Chicago Crucible (2005–2010)",
+    "era": "The Chicago Crucible",
     "sound_above_prompt": "Who inspired the engineers breaking free from enterprise Microsoft silos? How did grassroots peer groups form before commercial developer platforms existed?",
     "companion_links": [
       "https://just3ws.localhost/timeline/community/",
@@ -97,12 +97,12 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
 
 The file `obs/curation/sequence-manifest.json` defines the entire 31-episode curriculum across six chronological and thematic movements:
 
-1. `chicago-crucible`: The Chicago Crucible (2005–2010)
-2. `practice-and-dojo`: The Practice and the Dojo (2010–2012)
-3. `human-communication-layer`: The Human Communication Layer & Inclusion (2012–2013)
-4. `philosophy-and-empathy`: Philosophy, Empathy & Craftsmanship (2013–2014)
-5. `architecture-reckoning`: The Architecture and Testing Reckoning (2014–2016)
-6. `observable-control-plane`: The AI Horizon & The Observable Control Plane (2026)
+1. `chicago-crucible`: The Chicago Crucible
+2. `practice-and-dojo`: The Practice and the Dojo
+3. `human-communication-layer`: The Human Communication Layer & Inclusion
+4. `philosophy-and-empathy`: Philosophy, Empathy & Craftsmanship
+5. `architecture-reckoning`: The Architecture and Testing Reckoning
+6. `observable-control-plane`: The AI Horizon & The Observable Control Plane
 
 ### Episode Record Schema
 
@@ -110,7 +110,7 @@ The file `obs/curation/sequence-manifest.json` defines the entire 31-episode cur
 {
   "number": 1,
   "era_id": "chicago-crucible",
-  "era_name": "The Chicago Crucible (2005–2010)",
+  "era_name": "The Chicago Crucible",
   "interviewee": "Sergio Pereira",
   "slug": "sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011",
   "conference": "SCNA 2011",

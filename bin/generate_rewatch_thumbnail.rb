@@ -38,7 +38,7 @@ def build_html(ep)
   num_str = format("%02d", ep["number"])
   guest = ep["interviewee"]
   title = ep["title"]
-  era = ep["era_name"] || "The Chicago Community (2005–2010)"
+  era = ep["era_name"] || "The Chicago Crucible"
   event = "#{ep['conference']} · #{ep['location'] || 'Chicago, IL'}"
   prompt = ep["sound_above_inquiry"] || ep["ai_era_parallel"]
   role = ep["chicago_context"] ? "Community Practitioner · #{ep['chicago_context'].split('.').first}" : "Community Practitioner"
