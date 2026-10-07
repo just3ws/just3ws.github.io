@@ -1,0 +1,37 @@
+/* ==UserStyle==
+@name         The Sound Above: Craftsman Broadcast Style
+@namespace    just3ws.com/obs/orion
+@version      1.0.0
+@description  Clean, high-legibility broadcast theme for Orion during livestreams and rewatch sessions.
+@author       Mike Hall (just3ws.com)
+==/UserStyle== */
+
+/* Root Craftsmanship Theme Tokens */
+:root {
+  --tsa-paper: #faf8f5;
+  --tsa-ink: #1e232a;
+  --tsa-heading: #0f172a;
+  --tsa-teal: #0f766e;
+  --tsa-amber: #b45309;
+}
+
+/* Hide web clutter, ads, and distracting popovers during broadcast */
+div[class*="cookie-banner"],
+div[class*="consent-banner"],
+div[class*="newsletter-popup"],
+div[id*="cookie-notice"],
+#onetrust-banner-sdk {
+  display: none !important;
+}
+
+/* Clean, crisp font smoothing for high-DPI video downscaling */
+html, body {
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* Highlight important archival quotes with craftsman amber accent */
+mark, ::selection {
+  background: rgba(180, 83, 9, 0.25) !important;
+  color: inherit !important;
+}
