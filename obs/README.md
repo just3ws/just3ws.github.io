@@ -194,12 +194,12 @@ file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third
 
 ## 7. Companion Documentation & Playbooks
 
-- **[Broadcast Operations Playbook](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/runbooks/broadcast-operations-playbook.md)**: Sequential pre-flight, live switching, and teardown runbook for all three broadcast archetypes.
-- **[Curation Sequence Guide](file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/curation/rewatch-curation-sequence.md)**: Full 31-episode roadmap across six movements.
-- **[Reaction and Coding Setup](file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/docs/reaction-and-coding-setup.md)**: Window scaling, Retina ergonomics, and privacy boundaries.
-- **[macOS Audio Routing](file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/docs/audio-routing-macos.md)**: ScreenCaptureKit audio setup, vocal processing, and multitrack recording.
-- **[Broadcast CLI Manual (`broadcast.1`)](file:///Users/mike/github.com/just3ws/just3ws.github.io/man/man1/broadcast.1)**: UNIX manual page for `bin/broadcast`.
-- **[OBS Livestream Manual (`obs-livestream.1`)](file:///Users/mike/github.com/just3ws/just3ws.github.io/man/man1/obs-livestream.1)**: UNIX manual page for OBS hardware contracts.
+- **[Broadcast Operations Playbook](../docs/runbooks/broadcast-operations-playbook.md)**: Sequential pre-flight, live switching, and teardown runbook for all three broadcast archetypes.
+- **[Curation Sequence Guide](curation/rewatch-curation-sequence.md)**: Full 31-episode roadmap across six movements.
+- **[Reaction and Coding Setup](docs/reaction-and-coding-setup.md)**: Window scaling, Retina ergonomics, and privacy boundaries.
+- **[macOS Audio Routing](docs/audio-routing-macos.md)**: ScreenCaptureKit audio setup, vocal processing, and multitrack recording.
+- **[Broadcast CLI Manual (`broadcast.1`)](../man/man1/broadcast.1)**: UNIX manual page for `bin/broadcast`.
+- **[OBS Livestream Manual (`obs-livestream.1`)](../man/man1/obs-livestream.1)**: UNIX manual page for OBS hardware contracts.
 
 ---
 
@@ -208,18 +208,18 @@ file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third
 To understand how the broader CareerOS and just3ws system is constructed, read the repository documentation in this sequence:
 
 ### Layer 1: Core System Architecture, Platform Topology & Boundaries
-1. **[CONTEXT.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/CONTEXT.md)**: The foundational public-canon contract, private-context boundary (`$HOME/my`), 3-tier content classification (Organic Writing, Forensic Transcripts, Quarantined AI Syntheses), and the installed localhost runtime contract (`https://just3ws.localhost/`).
-2. **[AGENTS.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/AGENTS.md)**: System identity across the two-repo CareerOS platform (`just3ws.github.io` and `wwworkremote.localhost`), `zdots` message bus registration (`agent-just3ws`), Persona Review Council, and registered skills.
-3. **[docs/style-guide-and-canonical-naming.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/style-guide-and-canonical-naming.md)**: Permanent naming standards, disambiguation (Panoramic View vs. PVL vs. Pavel), Chicago community lineages, and the strict zero em-dash writing rule.
-4. **[docs/inter-tool-communication-protocol.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/inter-tool-communication-protocol.md)**: Bus messaging channels (`job-leads`, `general`), peer synchronization mutex (`CareerOS::PeerMutex`), and inter-agent coordination.
+1. **[CONTEXT.md](../CONTEXT.md)**: The foundational public-canon contract, private-context boundary (`$HOME/my`), 3-tier content classification (Organic Writing, Forensic Transcripts, Quarantined AI Syntheses), and the installed localhost runtime contract (`https://just3ws.localhost/`).
+2. **[AGENTS.md](../AGENTS.md)**: System identity across the two-repo CareerOS platform (`just3ws.github.io` and `wwworkremote.localhost`), `zdots` message bus registration (`agent-just3ws`), Persona Review Council, and registered skills.
+3. **[docs/style-guide-and-canonical-naming.md](../docs/style-guide-and-canonical-naming.md)**: Permanent naming standards, disambiguation (Panoramic View vs. PVL vs. Pavel), Chicago community lineages, and the strict zero em-dash writing rule.
+4. **[docs/inter-tool-communication-protocol.md](../docs/inter-tool-communication-protocol.md)**: Bus messaging channels (`job-leads`, `general`), peer synchronization mutex (`CareerOS::PeerMutex`), and inter-agent coordination.
 
 ### Layer 2: Positioning Strategy, Career Canon & Datalake Query Engine
-5. **[CODEX.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/CODEX.md)**: Senior career coach and hiring-loop evaluation contract: Mike Hall's canonical professional identity as **Staff Software Engineer**, title-to-scale calibration, and anti-inflation principles.
-6. **[docs/career-strategy-audhd-principal-engineering.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/career-strategy-audhd-principal-engineering.md)**: AuDHD cognitive strategy guide: translating hyperfocus into 4D System Cartography, pattern recognition into runtime edge-case handling, and async documentation discipline.
-7. **[docs/career-datalake-and-mcp-guide.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/career-datalake-and-mcp-guide.md)**: Full-corpus query engine over 29 positions, 136 technologies with active year spans, 156 articles, 211 interview transcripts, and 402 knowledge graph nodes via CLI (`bin/query_career_datalake.rb`) and MCP server.
-8. **[docs/resume-narrative-and-storytelling-guide.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/resume-narrative-and-storytelling-guide.md)** and **[docs/resume-quality-and-ats-benchmarking-guide.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/resume-quality-and-ats-benchmarking-guide.md)**: Structural storytelling across 5 resume archetypes, plain-text ATS parseability simulation, and automated keyword match gating.
+5. **[CODEX.md](../CODEX.md)**: Senior career coach and hiring-loop evaluation contract: Mike Hall's canonical professional identity as **Staff Software Engineer**, title-to-scale calibration, and anti-inflation principles.
+6. **[docs/career-strategy-audhd-principal-engineering.md](../docs/career-strategy-audhd-principal-engineering.md)**: AuDHD cognitive strategy guide: translating hyperfocus into 4D System Cartography, pattern recognition into runtime edge-case handling, and async documentation discipline.
+7. **[docs/career-datalake-and-mcp-guide.md](../docs/career-datalake-and-mcp-guide.md)**: Full-corpus query engine over 29 positions, 136 technologies with active year spans, 156 articles, 211 interview transcripts, and 402 knowledge graph nodes via CLI (`bin/query_career_datalake.rb`) and MCP server.
+8. **[docs/resume-narrative-and-storytelling-guide.md](../docs/resume-narrative-and-storytelling-guide.md)** and **[docs/resume-quality-and-ats-benchmarking-guide.md](../docs/resume-quality-and-ats-benchmarking-guide.md)**: Structural storytelling across 5 resume archetypes, plain-text ATS parseability simulation, and automated keyword match gating.
 
 ### Layer 3: Engineering Automation, Operations & Broadcasting
-9. **[docs/tooling-user-guide.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/tooling-user-guide.md)**: Operational guide for executable CLI tooling: Executive Brief Generator (`bin/generate_executive_brief.rb`), Job Lead Evaluator (`bin/evaluate_job_lead.rb`), and automated PDF resume pipelines.
-10. **[docs/runbooks/broadcast-operations-playbook.md](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/runbooks/broadcast-operations-playbook.md)**: Operations runbook for live video broadcasting across all three archetypes (Rewatch, Errata, Dialogue), pre-flight checks, 4-track CoreAudio capture, and post-stream Whisper transcription.
-11. **[man/man1/broadcast.1](file:///Users/mike/github.com/just3ws/just3ws.github.io/man/man1/broadcast.1)** and **[man/man1/obs-livestream.1](file:///Users/mike/github.com/just3ws/just3ws.github.io/man/man1/obs-livestream.1)**: UNIX man page references for terminal commands, CLI options, and hardware contracts.
+9. **[docs/tooling-user-guide.md](../docs/tooling-user-guide.md)**: Operational guide for executable CLI tooling: Executive Brief Generator (`bin/generate_executive_brief.rb`), Job Lead Evaluator (`bin/evaluate_job_lead.rb`), and automated PDF resume pipelines.
+10. **[docs/runbooks/broadcast-operations-playbook.md](../docs/runbooks/broadcast-operations-playbook.md)**: Operations runbook for live video broadcasting across all three archetypes (Rewatch, Errata, Dialogue), pre-flight checks, 4-track CoreAudio capture, and post-stream Whisper transcription.
+11. **[man/man1/broadcast.1](../man/man1/broadcast.1)** and **[man/man1/obs-livestream.1](../man/man1/obs-livestream.1)**: UNIX man page references for terminal commands, CLI options, and hardware contracts.

@@ -86,7 +86,8 @@ if [[ -f "${SCENE_SRC}" ]]; then
     fi
 
     # Dynamically ensure local file paths point to current workspace root
-    sed "s|/Users/mike/github.com/just3ws/just3ws.github.io|${OBS_PROJECT_DIR}/..|g" \
+    CURRENT_WORKSPACE="$(cd "${OBS_PROJECT_DIR}/.." && pwd)"
+    sed "s|/Users/[^/][^/]*/github.com/just3ws/just3ws.github.io|${CURRENT_WORKSPACE}|g; s|/Users/mike/|${HOME}/|g" \
       "${SCENE_SRC}" > "${SCENE_DEST}"
     
     echo "✓ Installed Scene Collection: 'The Sound Above - UGtastic Rewatch'"
@@ -112,7 +113,9 @@ for PROFILE_NAME in "The Sound Above" "The Sound Above - Staging"; do
         mkdir -p "${PROFILE_DEST_DIR}"
       fi
 
-      cp "${PROFILE_SRC_DIR}/basic.ini" "${PROFILE_DEST_DIR}/basic.ini"
+      # Dynamically adjust recording target paths to current user's $HOME/Movies
+      sed "s|/Users/[^/][^/]*/Movies|${HOME}/Movies|g; s|/Users/mike/|${HOME}/|g" \
+        "${PROFILE_SRC_DIR}/basic.ini" > "${PROFILE_DEST_DIR}/basic.ini"
       
       # Only copy service.json if one doesn't already exist (preserve user stream key)
       if [[ ! -f "${PROFILE_DEST_DIR}/service.json" ]]; then
