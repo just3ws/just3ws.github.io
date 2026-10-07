@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - ADAM LEAR NAME & GENDER AFFIRMATION & SCNA 2011 SWISSOTEL HISTORICAL VENUE (2026-10-07):
+         Handled Adam Lear name transition with accuracy and respect, and recorded SCNA 2011 venue context:
+         - Verified that interviewee Anna Lear transitioned to Adam Lear (software developer at Stack Overflow).
+         - Updated speaker attribution to Adam Lear in `_data/transcripts/interview-with-anna-lear-general.yml`
+           with respectful historical context: 'Adam Lear · Community Manager, Stack Exchange (recorded as Anna Lear)'.
+         - Updated interviewee list in `_data/interviews.yml` and catalog description/tags in `_data/video_assets.yml`.
+         - Preserved the verbatim 2013 spoken audio and historical transcript text unchanged.
+         - Recorded primary provenance for SCNA 2011 (November 18-19, 2011 held at the Swissotel Chicago downtown
+           on the Chicago River) in `docs/style-guide-and-canonical-naming.md` and `series/the-sound-above/episode-01.html`.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly:
+           validate:fast, validate:obs (44/44 assertions), and rspec (97/97).
+
        - HISTORICAL RECORDING DATE RESTORATION & ERRATA BEHIND-THE-SCENES BROADCASTS (2026-10-07):
          Resolved archival date distortion on interview pages and expanded Errata broadcast archetype:
          - Diagnosed and fixed interview hero header date conflation: pages previously displayed
