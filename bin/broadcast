@@ -1,0 +1,388 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# ==============================================================================
+# bin/broadcast
+#
+# Unified broadcast director and automation interface for Mike Hall.
+# Directs three broadcast archetypes:
+#   1. Rewatch:  "The Sound Above" (UGtastic oral history rewatch series)
+#   2. Errata:   "Errata" (readings, concepts, live demos, stories, artifacts)
+#   3. Dialogue: "The Room" (invited guest dialogues and roundtables)
+#
+# Enforces zero em dashes, hardware contracts, and overlay synchronization.
+# ==============================================================================
+
+require "json"
+require "optparse"
+require "fileutils"
+
+ROOT_DIR = File.expand_path("..", __dir__)
+OBS_DIR = File.join(ROOT_DIR, "obs")
+SEQUENCE_MANIFEST = File.join(OBS_DIR, "curation", "sequence-manifest.json")
+ERRATA_MANIFEST = File.join(OBS_DIR, "curation", "errata-manifest.json")
+OVERLAY_STATE = File.join(OBS_DIR, "overlays", "overlay-state.json")
+VALIDATOR_SCRIPT = File.join(ROOT_DIR, "bin", "validate_obs_setup.rb")
+
+def load_json(path)
+  return nil unless File.exist?(path)
+  JSON.parse(File.read(path))
+rescue JSON::ParserError => e
+  warn "Error reading JSON from #{path}: #{e.message}"
+  nil
+end
+
+def write_json(path, data)
+  File.write(path, JSON.pretty_generate(data) + "\n")
+end
+
+def print_status
+  state = load_json(OVERLAY_STATE)
+  unless state
+    puts "No active overlay state found at #{OVERLAY_STATE}"
+    return
+  end
+
+  type = (state["broadcast_type"] || "rewatch").to_s.downcase
+  puts "=================================================================="
+  puts " 🎙️ BROADCAST ORCHESTRATION STATUS"
+  puts "=================================================================="
+  puts "Archetype:       #{type.upcase}"
+  puts "Series Title:    #{state.dig('stream', 'series_title')}"
+  puts "Series Subtitle: #{state.dig('stream', 'series_subtitle')}"
+  puts "Host:            #{state.dig('stream', 'host')}"
+  puts "Live Topic:      #{state.dig('stream', 'topic')}"
+  puts "Status:          #{state.dig('stream', 'status') || 'ready'}"
+  puts "------------------------------------------------------------------"
+
+  case type
+  when "errata"
+    err = state["errata"] || {}
+    puts "Mode:            #{err['mode']&.upcase}"
+    puts "Title:           #{err['title']}"
+    puts "Subtitle:        #{err['subtitle']}"
+    puts "Citation:        #{err['citation']}"
+    puts "Excerpt/Thesis:  #{err['excerpt_or_thesis']}"
+    puts "Artifact Year:   #{err['artifact_year']}" if err['artifact_year']
+  when "dialogue"
+    dia = state["dialogue"] || {}
+    guests = (dia["guests"] || []).map do |g|
+      label = g["name"].to_s
+      label += " (#{g['role']})" if g["role"] && !g["role"].empty?
+      label += " [#{g['affiliation']}]" if g["affiliation"] && !g["affiliation"].empty?
+      label
+    end
+    puts "Guests:          #{guests.empty? ? 'None cued' : guests.join(', ')}"
+    puts "Topic:           #{dia['topic']}"
+    puts "Prompt Question: #{dia['prompt']}"
+  else
+    ep = state["episode"] || {}
+    puts "Episode:         ##{ep['number']} - #{ep['title']}"
+    puts "Interviewee:     #{ep['interviewee']}"
+    puts "Conference:      #{ep['conference']} (#{ep['year']})"
+    puts "Era:             #{ep['era']}"
+    puts "Sound Above Q:   #{ep['sound_above_prompt']}"
+  end
+  puts "=================================================================="
+end
+
+def list_curated_catalog
+  seq = load_json(SEQUENCE_MANIFEST)
+  err = load_json(ERRATA_MANIFEST)
+
+  puts "=================================================================="
+  puts " 📚 CURATED BROADCAST CATALOG"
+  puts "=================================================================="
+  puts ""
+  puts "--- ARCHETYPE 1: THE SOUND ABOVE (31 EPISODES) ---"
+  if seq && seq["episodes"]
+    seq["episodes"].each do |ep|
+      status_pill = ep["youtube_broadcast_id"] ? "[Live ID: #{ep['youtube_broadcast_id']}]" : "[Planned]"
+      puts format("  #%02d: %-25s | %-16s | %s %s",
+                  ep["number"],
+                  ep["interviewee"][0..24],
+                  ep["conference"][0..15],
+                  ep["title"][0..35],
+                  status_pill)
+    end
+  else
+    puts "  Sequence manifest unavailable."
+  end
+
+  puts ""
+  puts "--- ARCHETYPE 2: ERRATA PRE-CUED ENTRIES ---"
+  if err && err["items"]
+    err["items"].each do |item|
+      puts format("  %-38s | %-8s | %s",
+                  item["id"],
+                  item["mode"],
+                  item["title"][0..40])
+    end
+  else
+    puts "  Errata manifest unavailable."
+  end
+  puts "=================================================================="
+end
+
+def cue_rewatch(episode_num, overrides = {})
+  seq = load_json(SEQUENCE_MANIFEST)
+  state = load_json(OVERLAY_STATE) || {}
+
+  unless seq && seq["episodes"]
+    warn "Cannot cue episode: sequence manifest not found."
+    exit 1
+  end
+
+  ep = seq["episodes"].find { |e| e["number"].to_i == episode_num.to_i }
+  unless ep
+    warn "Episode ##{episode_num} not found in sequence manifest (1 to #{seq['episodes'].size})."
+    exit 1
+  end
+
+  state["broadcast_type"] = "rewatch"
+  state["stream"] ||= {}
+  state["stream"]["series_title"] = overrides[:series] || "The Sound Above"
+  state["stream"]["series_subtitle"] = "UGtastic Rewatch: Learning About People in Tech (2009-2026)"
+  state["stream"]["host"] = "Mike Hall (Software Craftsmanship #106)"
+  state["stream"]["status"] = "live"
+  state["stream"]["topic"] = "Rewatching #{ep['interviewee']} (#{ep['conference']}): #{ep['title']}"
+
+  state["episode"] = {
+    "number" => ep["number"],
+    "title" => overrides[:title] || ep["title"],
+    "interviewee" => overrides[:guest] || ep["interviewee"],
+    "role" => ep["role"] || "Community Practitioner",
+    "conference" => overrides[:conference] || ep["conference"],
+    "location" => ep["location"] || "Chicago, IL",
+    "year" => (overrides[:year] || ep["year"]).to_s,
+    "era" => overrides[:era] || ep["era_name"],
+    "sound_above_prompt" => overrides[:prompt] || ep["sound_above_inquiry"],
+    "companion_links" => [
+      "https://just3ws.localhost/timeline/community/",
+      "https://just3ws.localhost/scmc/"
+    ]
+  }
+
+  write_json(OVERLAY_STATE, state)
+  puts "Successfully cued Episode ##{ep['number']} (#{ep['interviewee']}) for rewatch broadcast."
+  print_status
+end
+
+def cue_errata(options)
+  state = load_json(OVERLAY_STATE) || {}
+  err_manifest = load_json(ERRATA_MANIFEST)
+
+  target_item = nil
+  if options[:cue_id] && err_manifest && err_manifest["items"]
+    target_item = err_manifest["items"].find { |it| it["id"] == options[:cue_id] }
+    unless target_item
+      warn "Errata cue ID '#{options[:cue_id]}' not found in errata manifest."
+      exit 1
+    end
+  end
+
+  mode = options[:mode] || target_item&.dig("mode") || "concept"
+  title = options[:title] || target_item&.dig("title") || "Untitled Insight"
+  subtitle = options[:subtitle] || target_item&.dig("subtitle") || "Marginalia and Demonstrations"
+  citation = options[:citation] || target_item&.dig("citation") || "Personal Archive"
+  excerpt = options[:prompt] || target_item&.dig("excerpt_or_thesis") || ""
+  year = (options[:year] || target_item&.dig("year") || "2026").to_s
+
+  state["broadcast_type"] = "errata"
+  state["stream"] ||= {}
+  state["stream"]["series_title"] = options[:series] || "Errata"
+  state["stream"]["series_subtitle"] = "Marginalia, Readings & Demonstrations"
+  state["stream"]["host"] = "Mike Hall (Software Craftsmanship #106)"
+  state["stream"]["status"] = "live"
+  state["stream"]["topic"] = "#{title} (#{mode})"
+
+  state["errata"] = {
+    "mode" => mode,
+    "title" => title,
+    "subtitle" => subtitle,
+    "citation" => citation,
+    "excerpt_or_thesis" => excerpt,
+    "artifact_year" => year
+  }
+
+  write_json(OVERLAY_STATE, state)
+  puts "Successfully cued Errata broadcast [#{mode.upcase}]: #{title}."
+  print_status
+end
+
+def cue_dialogue(options)
+  state = load_json(OVERLAY_STATE) || {}
+
+  guest_name = options[:guest] || "Invited Guest"
+  role = options[:subtitle] || "Collaborator"
+  affiliation = options[:conference] || ""
+  topic = options[:title] || "Software Craftsmanship Dialogue"
+  prompt = options[:prompt] || "Exploring shared engineering history and modern craft disciplines."
+
+  state["broadcast_type"] = "dialogue"
+  state["stream"] ||= {}
+  state["stream"]["series_title"] = options[:series] || "The Room"
+  state["stream"]["series_subtitle"] = "Invitational Conversations & Peer Inquiry"
+  state["stream"]["host"] = "Mike Hall (Software Craftsmanship #106)"
+  state["stream"]["status"] = "live"
+  state["stream"]["topic"] = topic
+
+  state["dialogue"] = {
+    "guests" => [
+      {
+        "name" => guest_name,
+        "role" => role,
+        "affiliation" => affiliation
+      }
+    ],
+    "topic" => topic,
+    "prompt" => prompt
+  }
+
+  write_json(OVERLAY_STATE, state)
+  puts "Successfully cued Dialogue broadcast with #{guest_name}: #{topic}."
+  print_status
+end
+
+options = {}
+opt_parser = OptionParser.new do |opts|
+  opts.banner = "Usage: bin/broadcast [archetype] [options]"
+  opts.separator ""
+  opts.separator "Unified live broadcast director for Mike Hall (Software Craftsmanship #106)."
+  opts.separator "Directs and cues three distinct broadcast archetypes:"
+  opts.separator "  1. --rewatch <N>   The Sound Above (oral history review series, 1 to 31)"
+  opts.separator "  2. --errata        Errata (solo readings, concepts, live demos, artifacts)"
+  opts.separator "  3. --dialogue      The Room (invited guest conversations and peer inquiry)"
+  opts.separator ""
+  opts.separator "Archetype Selectors & Cues:"
+  opts.on("-r", "--rewatch [EPISODE]", Integer, "Cue oral history rewatch episode from sequence-manifest.json") do |ep|
+    options[:archetype] = "rewatch"
+    options[:episode] = ep
+  end
+
+  opts.on("-e", "--errata", "Direct an Errata solo broadcast (reading, concept, demo, artifact)") do
+    options[:archetype] = "errata"
+  end
+
+  opts.on("-d", "--dialogue", "Direct a Dialogue broadcast with invited peers or guests") do
+    options[:archetype] = "dialogue"
+  end
+
+  opts.on("--cue ID", String, "Cue pre-configured entry from errata-manifest.json by ID") do |id|
+    options[:cue_id] = id
+    options[:archetype] ||= "errata"
+  end
+
+  opts.separator ""
+  opts.separator "Metadata Modifiers:"
+  opts.on("-m", "--mode MODE", %w[reading concept demo story artifact], "Errata mode: reading, concept, demo, story, artifact") do |m|
+    options[:mode] = m
+    options[:archetype] ||= "errata"
+  end
+
+  opts.on("-t", "--title TITLE", String, "Broadcast topic, chapter title, or episode heading") do |t|
+    options[:title] = t
+  end
+
+  opts.on("-s", "--subtitle SUBTITLE", String, "Contextual subtitle, book section, or role") do |s|
+    options[:subtitle] = s
+  end
+
+  opts.on("-g", "--guest NAME", String, "Guest or interviewee name") do |g|
+    options[:guest] = g
+  end
+
+  opts.on("-c", "--citation CITATION", String, "Book citation, author provenance, or artifact source") do |cit|
+    options[:citation] = cit
+  end
+
+  opts.on("-p", "--prompt PROMPT", String, "Central inquiry question, book excerpt, or thesis") do |p|
+    options[:prompt] = p
+  end
+
+  opts.on("-y", "--year YEAR", String, "Year or era label (e.g. 2011, 2008)") do |y|
+    options[:year] = y
+  end
+
+  opts.on("--conference CONF", String, "Conference name, venue, or guest affiliation") do |conf|
+    options[:conference] = conf
+  end
+
+  opts.on("--era ERA", String, "Historical era name") do |era|
+    options[:era] = era
+  end
+
+  opts.on("--series SERIES", String, "Override series title banner") do |ser|
+    options[:series] = ser
+  end
+
+  opts.separator ""
+  opts.separator "Operations & Validation:"
+  opts.on("--status", "Display active broadcast archetype and overlay HUD status") do
+    options[:status] = true
+  end
+
+  opts.on("--list", "List all 31 rewatch episodes and pre-curated Errata entries") do
+    options[:list] = true
+  end
+
+  opts.on("--validate", "Execute automated OBS setup and contract validation suite") do
+    options[:validate] = true
+  end
+
+  opts.on("--man", "Display comprehensive broadcast operations manual") do
+    options[:man] = true
+  end
+
+  opts.on_tail("-h", "--help", "Show this help message") do
+    puts opts
+    exit 0
+  end
+end
+
+opt_parser.parse!
+
+if options[:man]
+  man_path = File.join(ROOT_DIR, "man", "man1", "broadcast.1")
+  if File.exist?(man_path)
+    system("man #{man_path} 2>/dev/null") || system("cat #{man_path}")
+  else
+    puts "Manual page available at man/man1/broadcast.1"
+  end
+  exit 0
+end
+
+if options[:validate]
+  puts "Running automated broadcast validation..."
+  success = system("ruby #{VALIDATOR_SCRIPT}")
+  exit(success ? 0 : 1)
+end
+
+if options[:list]
+  list_curated_catalog
+  exit 0
+end
+
+if options[:status]
+  print_status
+  exit 0
+end
+
+case options[:archetype]
+when "rewatch"
+  if options[:episode]
+    cue_rewatch(options[:episode], options)
+  else
+    warn "Error: Please specify episode number: bin/broadcast --rewatch <NUMBER>"
+    exit 1
+  end
+when "errata"
+  cue_errata(options)
+when "dialogue"
+  cue_dialogue(options)
+else
+  # If no action specified, print active status
+  print_status
+  puts ""
+  puts "Run 'bin/broadcast --help' for commands, or 'bin/broadcast --list' to view catalog."
+end

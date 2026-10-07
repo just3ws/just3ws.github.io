@@ -1,0 +1,186 @@
+.TH BROADCAST 1 "October 2026" "just3ws" "User Commands"
+.SH NAME
+broadcast \- direct, configure, and automate live video broadcasts across all three production archetypes
+.SH SYNOPSIS
+.B bin/broadcast
+[\fB\-\-rewatch\fR \fIN\fR]
+[\fB\-\-errata\fR]
+[\fB\-\-dialogue\fR]
+[\fB\-\-cue\fR \fIID\fR]
+[\fB\-\-mode\fR \fIMODE\fR]
+[\fB\-\-title\fR \fITITLE\fR]
+[\fB\-\-subtitle\fR \fISUBTITLE\fR]
+[\fB\-\-guest\fR \fINAME\fR]
+[\fB\-\-citation\fR \fICITATION\fR]
+[\fB\-\-prompt\fR \fIPROMPT\fR]
+[\fB\-\-year\fR \fIYEAR\fR]
+[\fB\-\-conference\fR \fICONF\fR]
+[\fB\-\-status\fR]
+[\fB\-\-list\fR]
+[\fB\-\-validate\fR]
+[\fB\-\-man\fR]
+[\fB\-\-help\fR]
+.SH DESCRIPTION
+.B broadcast
+is the unified broadcast director and orchestration engine for Mike Hall (Software Craftsmanship Signatory #106).
+It manages live state across three distinct production archetypes, synchronizing HUD overlays in OBS Studio, YouTube scheduled metadata, and multi-track audio recording targets.
+.PP
+Every broadcast operates under strict craftsmanship constraints: zero em dashes, 1080p60 unscaled canvas resolution, Apple Silicon hardware encoding, and isolated application audio capture on macOS Golden Gate.
+.SH BROADCAST ARCHETYPES
+.TP
+.B 1. Rewatch (\-\-rewatch <N>)
+.I "The Sound Above: UGtastic Oral History Rewatch Series"
+.br
+A 31-episode curriculum reviewing over 200 UGtastic interviews (2009 to 2015) and the roots of the Chicago Software Craftsmanship movement.
+Focuses on historical context, who inspired the interviewees before their keynotes, and what those practices teach us in the modern AI era.
+.TP
+.B 2. Errata (\-\-errata)
+.I "Errata: Marginalia, Readings & Demonstrations"
+.br
+Solo broadcasts featuring book readings, concept breakdowns, live terminal workbench demonstrations, personal memoirs, and physical archival memorabilia showcases.
+Modes include:
+.B reading
+(annotated book excerpts),
+.B concept
+(system cartography, cognitive load, architecture),
+.B demo
+(hands-on live coding, TDD cadence, sub-second feedback loops),
+.B story
+(first-person oral memoirs of early user groups), and
+.B artifact
+(physical badges, conference programs, and ephemera).
+.TP
+.B 3. Dialogue (\-\-dialogue)
+.I "The Room: Invitational Conversations & Peer Inquiry"
+.br
+Invited guest discussions, collegial pair programming, and community roundtables exploring shared engineering history and technical craftsmanship.
+.SH OPTIONS
+.TP
+.BR \-r ", " \-\-rewatch " [" \fIEPISODE\fR "]"
+Cue oral history rewatch episode from \fIobs/curation/sequence-manifest.json\fR (episodes 1 to 31).
+.TP
+.BR \-e ", " \-\-errata
+Direct an Errata solo broadcast. Automatically switches overlays to Errata layout.
+.TP
+.BR \-d ", " \-\-dialogue
+Direct a Dialogue broadcast with invited peers or guests.
+.TP
+.BI \-\-cue " ID"
+Cue a pre-configured topic from \fIobs/curation/errata-manifest.json\fR by ID (e.g. \fIerrata-concept-blink-test\fR).
+.TP
+.BR \-m ", " \-\-mode " " \fIMODE\fR
+Errata mode: \fBreading\fR, \fBconcept\fR, \fBdemo\fR, \fBstory\fR, or \fBartifact\fR.
+.TP
+.BR \-t ", " \-\-title " " \fITITLE\fR
+Set the broadcast topic, chapter heading, or essay title.
+.TP
+.BR \-s ", " \-\-subtitle " " \fISUBTITLE\fR
+Set the contextual subtitle, role description, or book section.
+.TP
+.BR \-g ", " \-\-guest " " \fINAME\fR
+Set interviewee or invited guest name.
+.TP
+.BR \-c ", " \-\-citation " " \fICITATION\fR
+Set bibliographic citation, author credit, or physical archive provenance.
+.TP
+.BR \-p ", " \-\-prompt " " \fIPROMPT\fR
+Set the central philosophical question, book excerpt, or discussion thesis.
+.TP
+.BR \-y ", " \-\-year " " \fIYEAR\fR
+Set historical year or artifact era (e.g. 2008, 2011).
+.TP
+.BI \-\-conference " CONF"
+Set conference name, venue, or guest institutional affiliation.
+.TP
+.BI \-\-era " ERA"
+Override historical era label.
+.TP
+.BI \-\-series " SERIES"
+Override the series title banner displayed in OBS overlays.
+.TP
+.B \-\-status
+Inspect active broadcast archetype, host, topic, and live overlay values.
+.TP
+.B \-\-list
+Display the complete 31-episode rewatch catalog and pre-curated Errata entries.
+.TP
+.B \-\-validate
+Run the automated OBS Studio setup, scene collection, and hardware contract test suite.
+.TP
+.B \-\-man
+Display this manual page.
+.TP
+.BR \-h ", " \-\-help
+Display command usage summary and exit.
+.SH OVERLAYS & LIVE SYNCHRONIZATION
+When \fBbroadcast\fR updates the live state in \fIobs/overlays/overlay-state.json\fR, all browser source overlays in OBS Studio dynamically update within 2.5 seconds:
+.IP \(bu 2
+\fBlower-third.html\fR: Renders guest credentials, citations, and core prompts.
+.IP \(bu 2
+\fBnow-watching.html\fR: Displays the active topic badge, era tag, and live indicator.
+.IP \(bu 2
+\fBstream-starting.html\fR: Pre-stream countdown and thematic quote carousel.
+.IP \(bu 2
+\fBstream-outro.html\fR: Concluding credits and next episode preview.
+.SH AUDIO ARCHITECTURE (MACOS GOLDEN GATE)
+OBS Studio operates with 4-track isolated master recording:
+.IP \(bu 2
+\fBTrack 1\fR: Composite stream mix (Mic + Application Audio + Overlays).
+.IP \(bu 2
+\fBTrack 2\fR: Host microphone isolated with RNNoise suppression and compressor.
+.IP \(bu 2
+\fBTrack 3\fR: Browser video playback isolated via ScreenCaptureKit (\fIsck_audio_capture\fR).
+.IP \(bu 2
+\fBTrack 4\fR: Remote guest audio isolated for post-production balancing.
+.SH EXAMPLES
+.nf
+# Check active broadcast status:
+bin/broadcast --status
+
+# List all curated episodes and errata items:
+bin/broadcast --list
+
+# Cue Episode 1 rewatch (Sergio Pereira):
+bin/broadcast --rewatch 1
+
+# Cue a pre-configured Errata concept broadcast:
+bin/broadcast --cue errata-concept-blink-test
+
+# Direct an ad-hoc live code refactoring demo:
+bin/broadcast --errata --mode demo \\
+  --title "Beck's Four Rules of Simple Design" \\
+  --prompt "Refactoring legacy Ruby to intention-revealing code live."
+
+# Direct an invited guest dialogue:
+bin/broadcast --dialogue \\
+  --guest "Corey Haines" \\
+  --subtitle "Author, Understanding the 4 Rules of Simple Design" \\
+  --title "Deliberate Practice in the Age of AI"
+
+# Verify all OBS and audio contracts:
+bin/broadcast --validate
+.fi
+.SH FILES
+.TP
+.I bin/broadcast
+Primary broadcast CLI orchestrator.
+.TP
+.I obs/curation/sequence-manifest.json
+Master 31-episode curriculum for The Sound Above.
+.TP
+.I obs/curation/errata-manifest.json
+Curated catalog for Errata readings, concepts, and artifacts.
+.TP
+.I obs/overlays/overlay-state.json
+Live state polled by OBS browser sources.
+.TP
+.I obs/scenes/ugtastic-sound-above.json
+Declarative OBS Studio 32 scene collection contract.
+.SH SEE ALSO
+.BR obs-livestream (1),
+.BR just3ws-youtube (1),
+.BR audit-public-surface (1)
+.SH AUTHORS
+Mike Hall (https://www.just3ws.com)
+.br
+Staff Software Engineer, Signatory #106

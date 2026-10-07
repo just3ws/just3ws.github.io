@@ -80,20 +80,25 @@ Hardware-tuned OBS profile for Apple Silicon M4.
 Live state synchronized to browser sources.
 .TP
 .I obs/curation/sequence-manifest.json
-21-episode master curation sequence.
+31-episode master curation sequence.
+.TP
+.I obs/curation/errata-manifest.json
+Curated catalog for Errata readings, concepts, live demos, and artifacts.
 .TP
 .I ~/Library/Application Support/obs-studio/
 Installed OBS Studio configuration target.
 .SH EXAMPLES
 .nf
+# Direct broadcasts via unified CLI:
+bin/broadcast --status
+bin/broadcast --rewatch 1
+bin/broadcast --errata --cue errata-concept-blink-test
+
 # Validate all OBS contracts and macOS environment:
 bundle exec rake validate:obs
 
 # Probe running OBS instance and WebSocket socket:
 ruby bin/validate_obs_setup.rb --live
-
-# Cue Episode 1 (Sergio Pereira):
-./obs/scripts/update-overlay-state.sh --episode 1
 
 # Synchronize repo configuration to OBS Studio:
 ./obs/scripts/install-obs-config.sh
@@ -102,10 +107,11 @@ ruby bin/validate_obs_setup.rb --live
 ./obs/scripts/test-audio-routing.sh
 .fi
 .SH SEE ALSO
+.BR broadcast (1),
 .BR just3ws-youtube (1),
 .BR audit-public-surface (1),
 .BR jekyll (1)
 .SH AUTHORS
 Mike Hall (https://www.just3ws.com)
 .br
-Software Craftsmanship Signatory #106
+Staff Software Engineer, Signatory #106

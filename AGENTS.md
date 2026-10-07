@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-06
+     CURRENT FOCUS - last updated 2026-10-07
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,21 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - UNIFIED BROADCAST DIRECTOR & AI-ASSISTED TOOLING SUITE (2026-10-07):
+         Created unified live broadcast CLI (`bin/broadcast`) and manual (`man/man1/broadcast.1`)
+         to orchestrate all three broadcast archetypes:
+         - Archetype 1 ('The Sound Above'): Forensic oral history rewatches (Episodes 1 to 31).
+         - Archetype 2 ('Errata'): Solo broadcasts (readings, concepts, live demos, stories, artifacts)
+           backed by pre-curated catalog in `obs/curation/errata-manifest.json`.
+         - Archetype 3 ('The Room'): Invited peer dialogues and community roundtables.
+         Updated `obs-livestream.1` man page to reflect 31 episodes and `bin/broadcast` CLI integration.
+         Created comprehensive, unambiguous `docs/runbooks/broadcast-operations-playbook.md`
+         defining sequential pre-flight, live execution, and post-stream teardown checklists.
+         Updated `oral-history-broadcaster` agent and skill definitions across `.agents/skills/`
+         and `.claude/agents/` to equip autonomous AI assistants for broadcast setup and verification.
+         Zero em dashes maintained. All validation gates passing cleanly: validate:obs (40/40),
+         validate:fast, rspec (97/97), resume_quality, and benchmark:ats (88.2%).
+
        - TRI-ARCHETYPE BROADCAST ARCHITECTURE & 'ERRATA' TEMPLATE (2026-10-06):
          Established polymorphic broadcast architecture across three core archetypes:
          - Archetype 1 ('The Sound Above'): Forensic oral history rewatches and commentary.
