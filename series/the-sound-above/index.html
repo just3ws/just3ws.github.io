@@ -51,12 +51,28 @@ body_class: surface-editorial
     </div>
   </aside>
 
+  <section aria-labelledby="follow-along" style="margin-bottom: 3rem;">
+    <h2 id="follow-along" style="font-size: 1.4rem; font-weight: 800; color: var(--color-heading, #0f172a); margin-bottom: 1rem;">How to Follow Along</h2>
+    <ol style="display: grid; gap: 0.75rem; padding-left: 1.25rem; margin: 0; font-size: 0.98rem; line-height: 1.6; color: var(--color-text, #1e232a);">
+      <li><strong>Read the context first.</strong> Start with the <a href="/chicago-craftsmanship/">Chicago Craftsmanship Monograph</a> and the <a href="/timeline/community/">Community Timeline</a>. Each episode card below lists its core inquiry and AI-era parallel.</li>
+      <li><strong>Watch the broadcast.</strong> Use the <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener">YouTube playlist</a> or the episode page. Episode pages embed the video with a chapter list.</li>
+      <li><strong>Read the verified transcript.</strong> Every archived episode links to a searchable transcript that seeks into the video.</li>
+      <li><strong>Explore the guest.</strong> The <a href="/speakers/">Speaker Directory</a> lists every interview a guest gave, and the <a href="/interviews/">Video Archive</a> holds the full corpus.</li>
+    </ol>
+    {% assign jump_movements = site.data.sound_above_sequence.episodes | group_by: "era_name" %}
+    <nav aria-label="Jump to movement" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem;">
+      {% for m in jump_movements %}
+        <a href="#movement-{{ forloop.index }}" class="filter-btn" style="text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.85rem;">{{ forloop.index }}. {{ m.name }}</a>
+      {% endfor %}
+    </nav>
+  </section>
+
   {% assign episodes = site.data.sound_above_sequence.episodes %}
   {% assign movements = episodes | group_by: "era_name" %}
 
   <div class="series-curriculum" style="display: flex; flex-direction: column; gap: 3rem;">
     {% for movement in movements %}
-      <section class="series-movement-section">
+      <section class="series-movement-section" id="movement-{{ forloop.index }}">
         <div style="border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
           <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent, #b45309);">
             Movement {{ forloop.index }} of {{ movements.size }}
@@ -115,7 +131,7 @@ body_class: surface-editorial
                   </span>
                 {% endif %}
 
-                {% if ep.slug %}
+                {% if ep.slug and ep.number < 36 %}
                   <a href="/interviews/{{ ep.slug }}/" style="font-size: 0.8rem; color: var(--color-text-muted, #525866); text-decoration: underline;" title="Read verified transcript">
                     Transcript
                   </a>

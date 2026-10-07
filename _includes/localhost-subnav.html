@@ -30,9 +30,25 @@
         <span>⚡ Dashboard</span>
       </a>
       <!-- Rewatch Broadcast Direct Link -->
-      <a href="/series/the-sound-above/episode-01/" class="lh-dropdown-btn{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" style="text-decoration: none;">
-        <span>📺 The Sound Above (Rewatch)</span>
-      </a>
+      <div class="lh-dropdown">
+        <a href="/series/the-sound-above/" class="lh-dropdown-btn{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" style="text-decoration: none;" aria-haspopup="true" aria-expanded="false">
+          <span>📺 The Sound Above</span>
+          <span class="lh-caret">▾</span>
+        </a>
+        <div class="lh-dropdown-menu" role="menu">
+          <div class="lh-menu-header">Rewatch Broadcast Kit</div>
+          <a href="/series/the-sound-above/" class="lh-menu-item" role="menuitem"><strong>All 37 Episodes</strong> (curriculum hub)</a>
+          <a href="/series/the-sound-above/episode-01/" class="lh-menu-item{% if page.url contains '/episode-01/' %} is-active{% endif %}" role="menuitem"><strong>Episode 1:</strong> Sergio Pereira</a>
+          <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" class="lh-menu-item" role="menuitem"><strong>Episode 1 Transcript</strong> with chapters</a>
+          <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener" class="lh-menu-item" role="menuitem"><strong>YouTube Playlist</strong> ↗</a>
+          <div class="lh-menu-divider"></div>
+          <div class="lh-menu-header">Read Along Context</div>
+          <a href="/chicago-craftsmanship/" class="lh-menu-item" role="menuitem"><strong>Chicago History Monograph</strong></a>
+          <a href="/timeline/community/" class="lh-menu-item" role="menuitem"><strong>Community Timeline</strong></a>
+          <a href="/speakers/" class="lh-menu-item" role="menuitem"><strong>Speaker Directory</strong></a>
+          <a href="/interviews/" class="lh-menu-item" role="menuitem"><strong>Video Archive</strong> (201 items)</a>
+        </div>
+      </div>
 
       <!-- Localhost Hub Dropdown: Tailored Archetype Resumes & Archive -->
       <div class="lh-dropdown">
@@ -120,7 +136,7 @@
           </a>
           <div class="lh-menu-divider"></div>
           <div class="lh-menu-header">Rewatch Series &amp; Monographs</div>
-          <a href="/series/the-sound-above/episode-01/" class="lh-menu-item{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" role="menuitem">
+          <a href="/series/the-sound-above/" class="lh-menu-item{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" role="menuitem">
             <strong>The Sound Above (Oral History Rewatch)</strong> 📺
           </a>
           <a href="/chicago-craftsmanship/" class="lh-menu-item{% if page.url contains '/chicago-craftsmanship/' and page.url != '/interviews/chicago-craftsmanship/' %} is-active{% endif %}" role="menuitem">
@@ -153,7 +169,7 @@
         <div class="lh-dropdown-menu" role="menu">
           <div class="lh-menu-header">Public Surfaces (just3ws.com)</div>
           <a href="/" class="lh-menu-item" role="menuitem">🏠 <strong>Home / Resume</strong></a>
-          <a href="/series/the-sound-above/episode-01/" class="lh-menu-item" role="menuitem">📺 <strong>The Sound Above (Rewatch)</strong></a>
+          <a href="/series/the-sound-above/" class="lh-menu-item" role="menuitem">📺 <strong>The Sound Above (Rewatch)</strong></a>
           <a href="/case-studies/" class="lh-menu-item" role="menuitem">🗺️ <strong>Case Studies</strong></a>
           <a href="/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html" class="lh-menu-item" role="menuitem">✍️ <strong>System Cartography Essay</strong></a>
           <a href="/interviews/" class="lh-menu-item" role="menuitem">🎙️ <strong>Oral History Archive</strong></a>
