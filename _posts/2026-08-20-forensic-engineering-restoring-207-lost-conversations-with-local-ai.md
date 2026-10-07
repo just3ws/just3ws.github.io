@@ -13,6 +13,10 @@ tags:
 permalink: /ai/2026/08/20/forensic-engineering-restoring-207-lost-conversations-with-local-ai/
 redirect_from:
   - /ai/2026/08/20/forensic-engineering-restoring-214-lost-conversations-with-local-ai/
+  - /2026/08/20/forensic-engineering-restoring-214-lost-conversations-with-local-ai.html
+  - /2026/08/20/forensic-engineering-restoring-214-lost-conversations-with-local-ai/
+  - /2026/08/20/forensic-engineering-restoring-207-lost-conversations-with-local-ai.html
+  - /2026/08/20/forensic-engineering-restoring-207-lost-conversations-with-local-ai/
 ai_generated: true
 robots: noindex,follow
 sitemap: false

@@ -9,6 +9,10 @@ social_teaser: "I spent the last 3 months transcribing 207 technical conversatio
 permalink: /ai/2026/05/20/207-technical-conversations-what-i-learned/
 redirect_from:
   - /ai/2026/05/20/214-technical-conversations-what-i-learned/
+  - /2026/05/20/214-technical-conversations-what-i-learned.html
+  - /2026/05/20/214-technical-conversations-what-i-learned/
+  - /2026/05/20/207-technical-conversations-what-i-learned.html
+  - /2026/05/20/207-technical-conversations-what-i-learned/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
