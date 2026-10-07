@@ -11,6 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - THE SOUND ABOVE 37-EPISODE CURRICULUM HUB & ARCHIVE AUDIT (2026-10-07):
+         Built dedicated series curriculum hub page and clarified exact archive counts:
+         - Verified ground-truth archive metrics across the corpus: 201 total items (184 UGtastic interviews,
+           12 SCMC recordings, 5 one-off community presentations), 191 unique UGtastic interviewees (199 total speakers),
+           and 6 conferences (SCNA, GOTO, RailsConf, WindyCityRails, ChicagoWebConf, WebVisions) spanning 2011 to 2015.
+         - Created comprehensive series curriculum overview at `/series/the-sound-above/` (`series/the-sound-above/index.html`)
+           displaying all 37 episodes grouped across 6 historical movements, with guest names, conferences,
+           years, core inquiry prompts, AI-era parallels, and links to verified interactive transcripts.
+         - Updated global navigation (`_data/navigation.yml`) and interviews spotlight (`interviews/index.html`)
+           to link to the 37-episode curriculum overview.
+         - Exposed `_data/sound_above_sequence.json` for deterministic template rendering.
+         - Maintained 100% em-dash-free compliance across all additions. All validation gates passing cleanly:
+           validate:fast, validate:obs (44/44 assertions), and rspec (98/98).
+
        - INTERVIEWS ARCHIVE EDITORIAL REVIEW & NAVIGATION TIDY (2026-10-07):
          Overhauled `/interviews/` and archive components into full alignment with the site's
          canonical Digital Patina & Editorial Craft design tokens:

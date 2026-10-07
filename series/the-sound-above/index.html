@@ -1,0 +1,132 @@
+---
+layout: minimal
+title: "The Sound Above: 37-Episode UGtastic Oral History Rewatch Series"
+description: "A 37-episode forensic oral history rewatch series exploring the Software Craftsmanship movement across six historical movements, from the Chicago Crucible to the AI horizon."
+permalink: /series/the-sound-above/
+breadcrumb: The Sound Above
+body_class: surface-editorial
+---
+
+<article class="page series-overview-page">
+  {% include breadcrumbs.html %}
+
+  <header class="home-header" style="margin-bottom: 2.5rem;">
+    <div style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-primary, #0f766e); margin-bottom: 0.5rem;">
+      Living Oral History Curriculum · 37-Episode Forensic Rewatch
+    </div>
+    <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; color: var(--color-heading, #0f172a); line-height: 1.15; margin-bottom: 0.75rem;">
+      The Sound Above <span class="subtitle" style="display: block; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; color: var(--color-text-muted, #525866); margin-top: 0.25rem;">UGtastic Oral History Rewatch Series</span>
+    </h1>
+    <p class="home-intro" style="font-size: 1.1rem; line-height: 1.7; color: var(--color-text, #1e232a); max-width: 52rem; margin: 0;">
+      A chronological rewatch and technical commentary sequence hosted by Mike Hall (UGtastic creator and SCMC co-founder), examining how the Software Craftsmanship movement tackled testing, apprenticeship, system boundaries, and developer community from the Chicago Crucible to the AI horizon.
+    </p>
+  </header>
+
+  <!-- Context & Provenance Banner -->
+  <aside class="surface-editorial" style="margin-bottom: 3rem; border-left: 4px solid var(--color-primary, #0f766e);">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+      <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary, #0f766e);">
+        Broadcast Architecture &amp; Provenance
+      </span>
+      <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener" style="font-size: 0.85rem; font-weight: 700; color: var(--color-accent, #b45309); text-decoration: none;">
+        Follow YouTube Live Playlist &rarr;
+      </a>
+    </div>
+    <div style="font-size: 0.95rem; color: var(--color-text, #1e232a); line-height: 1.6;">
+      <strong>Historical Context:</strong> Launched on-site at Software Craftsmanship North America (SCNA 2011) at the Swissotel Chicago on the Chicago River. Recorded between 2011 and 2015 when Mike Hall was a Senior Software Developer. Each broadcast couples the original unvarnished oral history session with contemporary systems-level analysis, forensic transcripts, and AI-era architectural parallels.
+    </div>
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
+      <a href="/series/the-sound-above/episode-01/" class="filter-btn is-active" style="text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0.9rem;">
+        📺 Start with Episode 01: Sergio Pereira
+      </a>
+      <a href="/chicago-craftsmanship/" class="filter-btn" style="text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0.9rem;">
+        🏙️ Chicago Craftsmanship Monograph
+      </a>
+      <a href="/timeline/community/" class="filter-btn" style="text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0.9rem;">
+        ⏱️ Chicago Community Timeline
+      </a>
+      <a href="/interviews/" class="filter-btn" style="text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0.9rem;">
+        🎥 Full Video Archive (201 Items)
+      </a>
+    </div>
+  </aside>
+
+  {% assign episodes = site.data.sound_above_sequence.episodes %}
+  {% assign movements = episodes | group_by: "era_name" %}
+
+  <div class="series-curriculum" style="display: flex; flex-direction: column; gap: 3rem;">
+    {% for movement in movements %}
+      <section class="series-movement-section">
+        <div style="border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
+          <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent, #b45309);">
+            Movement {{ forloop.index }} of {{ movements.size }}
+          </div>
+          <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0.25rem 0 0;">
+            {{ movement.name }}
+          </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+          {% for ep in movement.items %}
+            <article class="editorial-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1.5rem; box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                  <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-primary, #0f766e); text-transform: uppercase; letter-spacing: 0.05em;">
+                    Episode {{ ep.number | prepend: "00" | slice: -2, 2 }}
+                  </span>
+                  <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                    {{ ep.conference }} ({{ ep.year }})
+                  </span>
+                </div>
+
+                <h3 style="font-size: 1.15rem; font-weight: 800; line-height: 1.35; margin: 0 0 0.5rem; color: var(--color-heading, #0f172a);">
+                  {% if ep.number == 1 %}
+                    <a href="/series/the-sound-above/episode-01/" style="color: inherit; text-decoration: none;">{{ ep.title }}</a>
+                  {% else %}
+                    {{ ep.title }}
+                  {% endif %}
+                </h3>
+
+                <div style="font-size: 0.88rem; font-weight: 600; color: var(--color-primary, #0f766e); margin-bottom: 0.75rem;">
+                  Featuring: {{ ep.interviewee }}
+                </div>
+
+                <p style="font-size: 0.88rem; line-height: 1.55; color: var(--color-text, #1e232a); margin-bottom: 0.75rem;">
+                  <strong>Inquiry:</strong> {{ ep.sound_above_inquiry }}
+                </p>
+
+                <p style="font-size: 0.82rem; line-height: 1.5; color: var(--color-text-muted, #525866); margin: 0 0 1rem;">
+                  <strong>AI-Era Parallel:</strong> {{ ep.ai_era_parallel }}
+                </p>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--color-border, #eeebe3); padding-top: 0.75rem; margin-top: auto;">
+                {% if ep.number == 1 %}
+                  <a href="/series/the-sound-above/episode-01/" style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #0f766e); text-decoration: none;">
+                    Watch Episode 1 &rarr;
+                  </a>
+                {% elsif ep.youtube_broadcast_id %}
+                  <a href="https://www.youtube.com/watch?v={{ ep.youtube_broadcast_id }}" target="_blank" rel="noopener" style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--color-accent, #b45309); text-decoration: none;">
+                    Broadcast Scheduled &rarr;
+                  </a>
+                {% else %}
+                  <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted, #64748b); text-transform: uppercase;">
+                    Curated in Catalog
+                  </span>
+                {% endif %}
+
+                {% if ep.slug %}
+                  <a href="/interviews/{{ ep.slug }}/" style="font-size: 0.8rem; color: var(--color-text-muted, #525866); text-decoration: underline;" title="Read verified transcript">
+                    Transcript
+                  </a>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+
+  {% include craftsmanship-linktree.html %}
+</article>
