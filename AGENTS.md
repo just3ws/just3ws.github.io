@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - 31-EPISODE ORAL HISTORY SEQUENCE EXPANSION (2026-10-06):
+         Expanded 'The Sound Above' oral history rewatch series to 31 episodes across 6 distinct movements:
+         - Added Ginny Hendry (Episode 12, 'A Legacy of Learning: Community Hospitality, RailsBridge & In Memoriam')
+           with delicate, honorable focus on her lifelong mentorship, 8th Light owner tribute, and Chicago RailsBridge leadership.
+         - Added Leon Gersing (Episode 13, 'Hold Yourself to a Standard, But Let There Be Joy: Overcoming Developer Shame')
+           with radical empathy, vulnerability, and developer joy framing from SCNA 2012.
+         - Curated full 31-episode roadmap across 6 movements in obs/curation/sequence-manifest.json and rewatch-curation-sequence.md.
+         - Updated YouTube rewatch playlist synchronization tool (bin/sync_youtube_rewatch_playlist.rb) with all 31 sessions.
+         - Maintained 100% em-dash-free compliance and strict canonical contracts.
+         - All validation gates passing cleanly: validate:obs (40/40 assertions), validate:fast, rspec (97/97),
+           resume_quality, and benchmark:ats (88.2%).
+
        - MOVEMENT 1 BROADCAST STAGING & DETERMINISTIC THUMBNAILS (2026-10-06):
          Generated 1080p and 720p craftsmanship-theme thumbnails and scheduled live broadcasts
          for all 5 episodes of Movement 1 ('The Chicago Crucible'):

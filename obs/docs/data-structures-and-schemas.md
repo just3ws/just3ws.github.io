@@ -13,7 +13,7 @@ All declarative data in this project is bounded by JSON Schema draft 2020-12 def
 | Schema File | Target Data File | Primary Purpose |
 | :--- | :--- | :--- |
 | `obs/schemas/overlay-state.schema.json` | `obs/overlays/overlay-state.json` | Real-time browser source HUD state |
-| `obs/schemas/sequence-manifest.schema.json` | `obs/curation/sequence-manifest.json` | Curated 21-episode historical roadmap |
+| `obs/schemas/sequence-manifest.schema.json` | `obs/curation/sequence-manifest.json` | Curated 31-episode historical roadmap |
 | `obs/schemas/obs-scene-collection.schema.json` | `obs/scenes/ugtastic-sound-above.json` | OBS Studio 32 production scene contract |
 
 ---
@@ -67,13 +67,14 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
 
 ## 3. Sequence Manifest Data Structure
 
-The file `obs/curation/sequence-manifest.json` defines the entire 21-episode curriculum across five chronological and thematic movements:
+The file `obs/curation/sequence-manifest.json` defines the entire 31-episode curriculum across six chronological and thematic movements:
 
 1. `chicago-crucible`: The Chicago Crucible (2005–2010)
 2. `practice-and-dojo`: The Practice and the Dojo (2010–2012)
-3. `philosophy-and-discovery`: The Philosophy and Deliberate Discovery (2012–2014)
-4. `reckoning`: The Architecture and Testing Reckoning (2014–2016)
-5. `ai-horizon`: The AI Horizon and The Observable Control Plane (2026)
+3. `human-communication-layer`: The Human Communication Layer & Inclusion (2012–2013)
+4. `philosophy-and-empathy`: Philosophy, Empathy & Craftsmanship (2013–2014)
+5. `architecture-reckoning`: The Architecture and Testing Reckoning (2014–2016)
+6. `observable-control-plane`: The AI Horizon & The Observable Control Plane (2026)
 
 ### Episode Record Schema
 

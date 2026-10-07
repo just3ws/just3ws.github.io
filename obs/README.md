@@ -66,7 +66,7 @@ obs/
 │   ├── stream-brb.html               # Intermission card: "Holding the Thread"
 │   └── stream-outro.html             # Closing credits with archive links and summary
 ├── curation/
-│   ├── rewatch-curation-sequence.md  # 21-episode master curation guide & thematic movements
+│   ├── rewatch-curation-sequence.md  # 31-episode master curation guide & thematic movements
 │   └── sequence-manifest.json        # Machine-readable episode roadmap and metadata
 ├── scripts/
 │   ├── install-obs-config.sh         # Installs scenes & profile to ~/Library/Application Support/
@@ -173,6 +173,6 @@ file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third
 
 ## 7. Companion Documentation
 
-- **[Curation Sequence Guide](file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/curation/rewatch-curation-sequence.md)**: Full 21-episode roadmap across the five movements.
+- **[Curation Sequence Guide](file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/curation/rewatch-curation-sequence.md)**: Full 31-episode roadmap across six movements.
 - **[Reaction and Coding Setup](file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/docs/reaction-and-coding-setup.md)**: Window scaling, Retina ergonomics, and privacy boundaries.
 - **[macOS Audio Routing](file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/docs/audio-routing-macos.md)**: ScreenCaptureKit audio setup, vocal processing, and multitrack recording.
