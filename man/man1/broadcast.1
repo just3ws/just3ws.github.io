@@ -37,7 +37,7 @@ Focuses on historical context, who inspired the interviewees before their keynot
 .B 2. Errata (\-\-errata)
 .I "Errata: Marginalia, Readings & Demonstrations"
 .br
-Solo broadcasts featuring book readings, concept breakdowns, live terminal workbench demonstrations, personal memoirs, and physical archival memorabilia showcases.
+Solo broadcasts featuring book readings, concept breakdowns, live terminal workbench demonstrations, personal memoirs, physical archival memorabilia showcases, and behind the scenes studio and systems engineering walkthroughs.
 Modes include:
 .B reading
 (annotated book excerpts),
@@ -46,9 +46,11 @@ Modes include:
 .B demo
 (hands-on live coding, TDD cadence, sub-second feedback loops),
 .B story
-(first-person oral memoirs of early user groups), and
+(first-person oral memoirs of early user groups),
 .B artifact
-(physical badges, conference programs, and ephemera).
+(physical badges, conference programs, and ephemera), and
+.B bts
+(behind the scenes studio tours, broadcast engineering, OBS and Golden Gate audio routing, toolchain architecture, and live agent pairing walkthroughs).
 .TP
 .B 3. Dialogue (\-\-dialogue)
 .I "The Room: Invitational Conversations & Peer Inquiry"
@@ -69,7 +71,10 @@ Direct a Dialogue broadcast with invited peers or guests.
 Cue a pre-configured topic from \fIobs/curation/errata-manifest.json\fR by ID (e.g. \fIerrata-concept-blink-test\fR).
 .TP
 .BR \-m ", " \-\-mode " " \fIMODE\fR
-Errata mode: \fBreading\fR, \fBconcept\fR, \fBdemo\fR, \fBstory\fR, or \fBartifact\fR.
+Errata mode: \fBreading\fR, \fBconcept\fR, \fBdemo\fR, \fBstory\fR, \fBartifact\fR, or \fBbts\fR.
+.TP
+.B \-\-bts
+Shortcut to configure an Errata behind-the-scenes broadcast engineering session.
 .TP
 .BR \-t ", " \-\-title " " \fITITLE\fR
 Set the broadcast topic, chapter heading, or essay title.

@@ -177,6 +177,9 @@ The overlay engine dynamically adapts across three distinct broadcast archetypes
 
 # Archival Memorabilia or Story
 ./obs/scripts/update-overlay-state.sh --errata --mode artifact --title "The 2008 Sears Tower Meeting Badges" --citation "Chicago Alt.NET Archive" --year "2008" --prompt "Physical tokens from the room where it started."
+
+# Behind the Scenes Studio Tour & Broadcast Systems Engineering
+./obs/scripts/update-overlay-state.sh --errata --mode bts --title "Inside The Control Plane: OBS & Golden Gate Audio" --citation "Broadcast Rig Architecture" --prompt "Hardware-isolated CoreAudio routing and low-latency streaming."
 ```
 
 ### Archetype 3: Invited Guest Conversations ("The Room")

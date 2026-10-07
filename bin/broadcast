@@ -7,7 +7,7 @@
 # Unified broadcast director and automation interface for Mike Hall.
 # Directs three broadcast archetypes:
 #   1. Rewatch:  "The Sound Above" (UGtastic oral history rewatch series)
-#   2. Errata:   "Errata" (readings, concepts, live demos, stories, artifacts)
+#   2. Errata:   "Errata" (readings, concepts, live demos, stories, artifacts, behind the scenes)
 #   3. Dialogue: "The Room" (invited guest dialogues and roundtables)
 #
 # Enforces zero em dashes, hardware contracts, and overlay synchronization.
@@ -142,8 +142,8 @@ def cue_rewatch(episode_num, overrides = {})
   state["broadcast_type"] = "rewatch"
   state["stream"] ||= {}
   state["stream"]["series_title"] = overrides[:series] || "The Sound Above"
-  state["stream"]["series_subtitle"] = "UGtastic Rewatch: Learning About People in Tech (2009-2026)"
-  state["stream"]["host"] = "Mike Hall (Software Craftsmanship #106)"
+  state["stream"]["series_subtitle"] = "UGtastic Rewatch: Learning About People in Tech"
+  state["stream"]["host"] = "Mike Hall (Staff Software Engineer & SCMC Co-Founder)"
   state["stream"]["status"] = "live"
   state["stream"]["topic"] = "Rewatching #{ep['interviewee']} (#{ep['conference']}): #{ep['title']}"
 
@@ -192,7 +192,7 @@ def cue_errata(options)
   state["stream"] ||= {}
   state["stream"]["series_title"] = options[:series] || "Errata"
   state["stream"]["series_subtitle"] = "Marginalia, Readings & Demonstrations"
-  state["stream"]["host"] = "Mike Hall (Software Craftsmanship #106)"
+  state["stream"]["host"] = "Mike Hall (Staff Software Engineer & SCMC Co-Founder)"
   state["stream"]["status"] = "live"
   state["stream"]["topic"] = "#{title} (#{mode})"
 
@@ -223,7 +223,7 @@ def cue_dialogue(options)
   state["stream"] ||= {}
   state["stream"]["series_title"] = options[:series] || "The Room"
   state["stream"]["series_subtitle"] = "Invitational Conversations & Peer Inquiry"
-  state["stream"]["host"] = "Mike Hall (Software Craftsmanship #106)"
+  state["stream"]["host"] = "Mike Hall (Staff Software Engineer & SCMC Co-Founder)"
   state["stream"]["status"] = "live"
   state["stream"]["topic"] = topic
 
@@ -248,10 +248,10 @@ options = {}
 opt_parser = OptionParser.new do |opts|
   opts.banner = "Usage: bin/broadcast [archetype] [options]"
   opts.separator ""
-  opts.separator "Unified live broadcast director for Mike Hall (Software Craftsmanship #106)."
+  opts.separator "Unified live broadcast director for Mike Hall (Staff Software Engineer & SCMC Co-Founder)."
   opts.separator "Directs and cues three distinct broadcast archetypes:"
   opts.separator "  1. --rewatch <N>   The Sound Above (oral history review series, 1 to 31)"
-  opts.separator "  2. --errata        Errata (solo readings, concepts, live demos, artifacts)"
+  opts.separator "  2. --errata        Errata (solo readings, concepts, live demos, artifacts, behind the scenes)"
   opts.separator "  3. --dialogue      The Room (invited guest conversations and peer inquiry)"
   opts.separator ""
   opts.separator "Archetype Selectors & Cues:"
@@ -260,7 +260,7 @@ opt_parser = OptionParser.new do |opts|
     options[:episode] = ep
   end
 
-  opts.on("-e", "--errata", "Direct an Errata solo broadcast (reading, concept, demo, artifact)") do
+  opts.on("-e", "--errata", "Direct an Errata solo broadcast (reading, concept, demo, artifact, bts)") do
     options[:archetype] = "errata"
   end
 
@@ -275,8 +275,13 @@ opt_parser = OptionParser.new do |opts|
 
   opts.separator ""
   opts.separator "Metadata Modifiers:"
-  opts.on("-m", "--mode MODE", %w[reading concept demo story artifact], "Errata mode: reading, concept, demo, story, artifact") do |m|
+  opts.on("-m", "--mode MODE", %w[reading concept demo story artifact bts], "Errata mode: reading, concept, demo, story, artifact, bts") do |m|
     options[:mode] = m
+    options[:archetype] ||= "errata"
+  end
+
+  opts.on("--bts", "Shortcut for Errata behind-the-scenes broadcast engineering mode") do
+    options[:mode] = "bts"
     options[:archetype] ||= "errata"
   end
 

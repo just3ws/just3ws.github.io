@@ -34,7 +34,7 @@ parser = OptionParser.new do |opts|
     options[:archetype] = "dialogue"
   end
 
-  opts.on("-m", "--mode MODE", %w[reading concept demo story artifact], "Errata mode: reading, concept, demo, story, artifact") do |m|
+  opts.on("-m", "--mode MODE", %w[reading concept demo story artifact bts], "Errata mode: reading, concept, demo, story, artifact, bts") do |m|
     options[:mode] = m
   end
 

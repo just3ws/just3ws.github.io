@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - HISTORICAL RECORDING DATE RESTORATION & ERRATA BEHIND-THE-SCENES BROADCASTS (2026-10-07):
+         Resolved archival date distortion on interview pages and expanded Errata broadcast archetype:
+         - Diagnosed and fixed interview hero header date conflation: pages previously displayed
+           the 2022 YouTube archival re-upload date instead of the primary historical event date.
+         - Updated `_includes/video-asset-player.html` and `_layouts/interview.html` to resolve
+           `archive_item.recorded_date` (e.g. November 19, 2011 for Sergio Pereira) and display
+           event context (e.g. 'Recorded at SCNA 2011'), falling back safely through Vimeo and YouTube metadata.
+         - Expanded the Errata broadcast archetype to explicitly support and document Behind the Scenes (BTS)
+           broadcasts (studio tours, broadcast engineering, OBS and Golden Gate CoreAudio routing, toolchains).
+         - Updated `bin/broadcast` CLI (--bts flag, --mode bts), `man/man1/broadcast.1`,
+           `obs/schemas/overlay-state.schema.json`, `obs/scripts/update-overlay-state.sh`,
+           `obs/overlays/lower-third.html` (dynamic 'STUDIO OPS' credo banner), and `obs/README.md`.
+         - Added curated BTS entries to `obs/curation/errata-manifest.json` and thumbnail generation support in
+           `bin/generate_errata_thumbnail.rb`.
+         - Replaced lingering 'Software Craftsmanship #106' broadcast host defaults with canonical professional
+           identity: 'Mike Hall (Staff Software Engineer & SCMC Co-Founder)'.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly:
+           validate:fast, validate:obs (44/44 assertions), rspec (97/97), and resume_quality.
+
        - CANONICAL IDENTITY REFINEMENT & DATE SPAN PURGE (2026-10-07):
          Eliminated intrusive 'Signatory #106' branding and purged artificial '2005-2026' date callouts:
          - Removed spurious '2005-2026' and '(2005-2010)' ranges across Community Timeline, subnav,

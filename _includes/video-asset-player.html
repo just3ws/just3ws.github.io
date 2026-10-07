@@ -27,8 +27,18 @@
       <div class="hero-content">
         <h1 class="editorial-title">{{ asset.title }}</h1>
         <div class="hero-meta">
-          {% if preferred.published_date %}
-            <time class="published-date">{{ preferred.published_date | date: "%B %d, %Y" }}</time>
+          {% assign archive_item = include.interview %}
+          {% if archive_item == nil and site.data.all_archive_items %}
+            {% assign archive_item = site.data.all_archive_items | where: "video_asset_id", asset.id | first %}
+          {% endif %}
+          {% assign vimeo_platform = asset.platforms | where: "platform", "vimeo" | first %}
+          {% assign display_date = archive_item.recorded_date | default: asset.published_date | default: vimeo_platform.published_date | default: preferred.published_date %}
+          {% if archive_item.conference %}
+            <span class="editorial-event">Recorded at {{ archive_item.conference }}{% if archive_item.conference_year %} {{ archive_item.conference_year }}{% endif %}</span>
+            <span class="meta-divider">•</span>
+          {% endif %}
+          {% if display_date %}
+            <time class="published-date">{{ display_date | date: "%B %d, %Y" }}</time>
           {% endif %}
           <span class="meta-divider">•</span>
           <span class="editorial-category">UGtastic Archive</span>

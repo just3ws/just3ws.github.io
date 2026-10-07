@@ -141,6 +141,13 @@ bin/broadcast --errata --mode artifact \
   --subtitle "Physical Ephemera Showcase" \
   --year "2008" \
   --prompt "Before dedicated meetup spaces, developers met on the 84th floor of the Sears Tower."
+
+# Behind the Scenes (BTS) Studio & Systems Engineering Mode:
+bin/broadcast --errata --bts \
+  --title "Inside The Control Plane: OBS Studio & Golden Gate Audio" \
+  --subtitle "Broadcast Engineering & 4-Track Routing Walkthrough" \
+  --citation "Broadcast Rig Architecture & System Blueprint" \
+  --prompt "How hardware-isolated macOS CoreAudio routing and Apple Silicon VideoToolbox power deterministic streaming."
 ```
 
 ### Option C: Cueing an Invited Guest Dialogue

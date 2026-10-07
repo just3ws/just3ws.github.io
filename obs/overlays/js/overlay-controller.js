@@ -92,7 +92,7 @@ class OverlayController {
       stream: {
         series_title: this.overrides.series || stream.series_title || (broadcastType === "errata" ? "Errata" : (broadcastType === "dialogue" ? "The Room" : "The Sound Above")),
         series_subtitle: stream.series_subtitle || (broadcastType === "errata" ? "Marginalia, Readings & Demonstrations" : (broadcastType === "dialogue" ? "Invitational Conversations & Peer Inquiry" : "UGtastic Rewatch & Craftsmanship in the Age of AI")),
-        host: this.overrides.host || stream.host || "Mike Hall (Software Craftsmanship #106)",
+        host: this.overrides.host || stream.host || "Mike Hall (Staff Software Engineer & SCMC Co-Founder)",
         topic: this.overrides.topic || stream.topic || ""
       }
     };

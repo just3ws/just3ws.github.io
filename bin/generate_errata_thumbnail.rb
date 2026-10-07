@@ -54,6 +54,7 @@ def build_html(item)
                 when "demo"     then "Live Terminal Workbench & Code Kata"
                 when "artifact" then "Physical Archival Artifact Showcase"
                 when "story"    then "First-Person Oral History Memoir"
+                when "bts"      then "Behind the Scenes & Systems Engineering"
                 else                 "Systems Architecture & Cartography"
                 end
 

@@ -255,10 +255,17 @@
         if (type === "errata") {
           const err = state.errata || {};
           seriesEl.textContent = (state.stream.series_title || "ERRATA").toUpperCase();
-          tagEl.textContent = (err.mode || "MARGINALIA").toUpperCase();
-          credo1.textContent = "MARGINALIA";
-          credo2.textContent = "CLOSE READINGS & ESSAYS";
-          credo3.textContent = "MIKE HALL";
+          if (err.mode === "bts") {
+            tagEl.textContent = "BEHIND THE SCENES";
+            credo1.textContent = "STUDIO OPS";
+            credo2.textContent = "SYSTEMS & RIG ARCHITECTURE";
+            credo3.textContent = "MIKE HALL";
+          } else {
+            tagEl.textContent = (err.mode || "MARGINALIA").toUpperCase();
+            credo1.textContent = "MARGINALIA";
+            credo2.textContent = "CLOSE READINGS & ESSAYS";
+            credo3.textContent = "MIKE HALL";
+          }
           nameEl.textContent = err.title;
           ctxEl.textContent = err.citation || "Field Notes";
           roleEl.textContent = err.subtitle || "Insights, Demonstrations & Archival Study";
