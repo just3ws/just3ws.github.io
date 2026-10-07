@@ -7,6 +7,8 @@
 # ==============================================================================
 
 require 'json'
+require 'yaml'
+require 'date'
 require 'fileutils'
 require 'socket'
 require 'optparse'
@@ -293,17 +295,35 @@ class ObsSetupValidator
       manifest = JSON.parse(File.read(manifest_path))
       episodes = manifest['episodes'] || []
 
-      if episodes.size == 37
-        pass("Manifest contains exactly 37 curated episodes across 6 movements")
+      if episodes.size == 35
+        pass("Manifest contains exactly 35 curated interview episodes across 6 movements")
       else
-        fail("Expected 37 episodes, found #{episodes.size}")
+        fail("Expected 35 interview episodes, found #{episodes.size}")
       end
 
       numbers = episodes.map { |e| e['number'] }
-      if numbers == (1..37).to_a
-        pass('Episode numbering is sequential and complete (1 to 37)')
+      if numbers == (1..35).to_a
+        pass('Episode numbering is sequential and complete (1 to 35)')
       else
-        fail('Episode numbers are not sequential 1 to 37')
+        fail('Episode numbers are not sequential 1 to 35')
+      end
+
+      codas = manifest['codas'] || []
+      if codas.size == 2 && codas.all? { |c| c['kind'] == 'coda' }
+        pass('Manifest contains 2 codas (non-interview closing broadcasts) kept separate from episodes')
+      else
+        fail("Expected 2 codas with kind 'coda', found #{codas.size}")
+      end
+
+      interviews_path = File.join(ROOT, '_data', 'interviews.yml')
+      if File.file?(interviews_path)
+        known = YAML.safe_load(File.read(interviews_path), permitted_classes: [Date, Time], aliases: true)['items'].map { |i| i['id'] }
+        missing = episodes.reject { |e| known.include?(e['slug']) }.map { |e| "##{e['number']} #{e['slug']}" }
+        if missing.empty?
+          pass('Every episode maps to a real UGtastic interview in _data/interviews.yml')
+        else
+          fail("Episodes that are not archive interviews: #{missing.join(', ')}")
+        end
       end
 
       sample_ep = episodes.first

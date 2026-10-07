@@ -64,6 +64,9 @@ body_class: surface-editorial
       {% for m in jump_movements %}
         <a href="#movement-{{ forloop.index }}" class="filter-btn" style="text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.85rem;">{{ forloop.index }}. {{ m.name }}</a>
       {% endfor %}
+      {% if site.data.sound_above_sequence.codas %}
+        <a href="#series-codas" class="filter-btn" style="text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.85rem;">Codas (Finale)</a>
+      {% endif %}
     </nav>
   </section>
 
@@ -142,6 +145,64 @@ body_class: surface-editorial
         </div>
       </section>
     {% endfor %}
+
+    {% if site.data.sound_above_sequence.codas %}
+      <section class="series-movement-section" id="series-codas">
+        <div style="border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
+          <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent, #b45309);">
+            Closing Broadcasts · Series Codas
+          </div>
+          <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0.25rem 0 0;">
+            Codas: Synthesis &amp; The Future of Craft
+          </h2>
+          <p style="font-size: 0.95rem; color: var(--color-text-muted, #525866); margin: 0.5rem 0 0;">
+            Non-interview closing broadcasts: a live demonstration and an open community roundtable to conclude the oral history sequence.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+          {% for coda in site.data.sound_above_sequence.codas %}
+            <article class="editorial-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1.5rem; box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                  <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-accent, #b45309); text-transform: uppercase; letter-spacing: 0.05em;">
+                    Coda {{ coda.number }}
+                  </span>
+                  <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                    {{ coda.conference }} ({{ coda.year }})
+                  </span>
+                </div>
+
+                <h3 style="font-size: 1.15rem; font-weight: 800; line-height: 1.35; margin: 0 0 0.5rem; color: var(--color-heading, #0f172a);">
+                  {{ coda.title }}
+                </h3>
+
+                <div style="font-size: 0.88rem; font-weight: 600; color: var(--color-primary, #0f766e); margin-bottom: 0.75rem;">
+                  Featuring: {{ coda.interviewee }}
+                </div>
+
+                <p style="font-size: 0.88rem; line-height: 1.55; color: var(--color-text, #1e232a); margin-bottom: 0.75rem;">
+                  <strong>Inquiry:</strong> {{ coda.sound_above_inquiry }}
+                </p>
+
+                <p style="font-size: 0.82rem; line-height: 1.5; color: var(--color-text-muted, #525866); margin: 0 0 1rem;">
+                  <strong>AI-Era Parallel:</strong> {{ coda.ai_era_parallel }}
+                </p>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--color-border, #eeebe3); padding-top: 0.75rem; margin-top: auto;">
+                <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-accent, #b45309); text-transform: uppercase;">
+                  Broadcast Proposal
+                </span>
+                <span style="font-size: 0.8rem; color: var(--color-text-muted, #64748b);">
+                  Series Finale
+                </span>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
   </div>
 
   {% include craftsmanship-linktree.html %}

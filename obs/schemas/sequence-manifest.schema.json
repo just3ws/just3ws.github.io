@@ -4,7 +4,12 @@
   "title": "SequenceManifest",
   "description": "Schema for the curated UGtastic rewatch episode sequence manifest.",
   "type": "object",
-  "required": ["project", "curator", "total_episodes", "episodes"],
+  "required": [
+    "project",
+    "curator",
+    "total_episodes",
+    "episodes"
+  ],
   "properties": {
     "project": {
       "type": "string",
@@ -17,7 +22,7 @@
     "total_episodes": {
       "type": "integer",
       "minimum": 1,
-      "description": "Total number of planned episodes in the manifest."
+      "description": "Total number of interview episodes in the manifest (codas are counted separately)."
     },
     "manifesto_anchor": {
       "type": "string",
@@ -102,8 +107,53 @@
           },
           "status": {
             "type": "string",
-            "enum": ["planned", "cued", "recorded", "published"],
+            "enum": [
+              "planned",
+              "cued",
+              "recorded",
+              "published"
+            ],
             "description": "Production lifecycle status of the episode."
+          }
+        }
+      }
+    },
+    "total_codas": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of codas: non-interview closing broadcasts kept apart from the interview episodes."
+    },
+    "codas_note": {
+      "type": "string"
+    },
+    "codas": {
+      "type": "array",
+      "description": "Non-interview closing broadcasts (host demonstration, open roundtable). Not rewatches.",
+      "items": {
+        "type": "object",
+        "required": [
+          "number",
+          "kind",
+          "title",
+          "interviewee",
+          "status"
+        ],
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "const": "coda"
+          },
+          "title": {
+            "type": "string"
+          },
+          "interviewee": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
           }
         }
       }
