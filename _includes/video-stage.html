@@ -1,5 +1,10 @@
 {% assign asset = include.asset %}
 {% if asset %}
+  {% if asset.platforms == nil and asset.video_asset_id %}
+    {% assign asset = site.data.video_assets.items | where: "id", asset.video_asset_id | first %}
+  {% elsif asset.platforms == nil %}
+    {% assign asset = site.data.video_assets.items | where: "id", asset.id | first %}
+  {% endif %}
   {% assign preferred = asset.platforms | where: "platform", "youtube" | first %}
   {% if preferred == nil and asset.primary_platform %}
     {% assign preferred = asset.platforms | where: "platform", asset.primary_platform | first %}
@@ -46,9 +51,13 @@
         </button>
       </div>
       <div class="platform-actions">
+        {% assign yt_platform = asset.platforms | where: "platform", "youtube" | first %}
+        {% if yt_platform.url %}
+          <a class="platform-link" href="{{ yt_platform.url }}" target="_blank" rel="noopener">Watch on YouTube</a>
+        {% endif %}
         {% for platform in asset.platforms %}
-          {% if platform.url %}
-            <a class="platform-link" href="{{ platform.url }}" target="_blank" rel="noopener">Watch on {{ platform.platform | capitalize }}</a>
+          {% if platform.platform != "youtube" and platform.url %}
+            <a class="platform-link" href="{{ platform.url }}" target="_blank" rel="noopener">Watch on {{ platform.platform | capitalize }} (Archive)</a>
           {% endif %}
         {% endfor %}
       </div>
