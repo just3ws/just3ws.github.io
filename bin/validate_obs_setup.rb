@@ -138,6 +138,14 @@ class ObsSetupValidator
         fail('No ScreenCaptureKit audio source (sck_audio_capture) found in scene sources')
       end
 
+      # Check Workbench Terminal window capture binding
+      workbench_source = sources.find { |s| s['name'] == 'Workbench Terminal' }
+      if workbench_source && workbench_source.dig('settings', 'owner_name') == 'iTerm2'
+        pass("Workbench Terminal window capture owner set to 'iTerm2'")
+      else
+        fail("Workbench Terminal source missing or owner_name is not 'iTerm2'")
+      end
+
     rescue JSON::ParserError => e
       fail("JSON syntax error in scene collection: #{e.message}")
     end
@@ -381,9 +389,18 @@ class ObsSetupValidator
   end
 
   def validate_installed_state
-    puts "\n8. Validating Installed State in ~/Library/Application Support/obs-studio..."
+    puts "\n8. Validating Installed State in ~/Library/Application Support/..."
     installed_scene = File.join(APP_SUPPORT_OBS, 'basic', 'scenes', 'The Sound Above - UGtastic Rewatch.json')
     installed_profile = File.join(APP_SUPPORT_OBS, 'basic', 'profiles', 'The Sound Above', 'basic.ini')
+    iterm2_profile_repo = File.join(OBS_DIR, 'iterm2', 'the-sound-above.json')
+    iterm2_support = File.expand_path('~/Library/Application Support/iTerm2')
+    iterm2_installed_profile = File.join(iterm2_support, 'DynamicProfiles', 'the-sound-above.json')
+
+    if File.file?(iterm2_profile_repo)
+      pass("iTerm2 profile definition exists in obs/iterm2/the-sound-above.json")
+    else
+      fail("iTerm2 profile definition missing: #{iterm2_profile_repo}")
+    end
 
     if File.file?(installed_scene)
       pass("Scene collection installed in OBS: 'The Sound Above - UGtastic Rewatch.json'")
@@ -395,6 +412,14 @@ class ObsSetupValidator
       pass("Profile installed in OBS: 'The Sound Above'")
     else
       fail("Profile not installed in OBS Application Support. Run: ./obs/scripts/install-obs-config.sh")
+    end
+
+    if Dir.exist?(iterm2_support)
+      if File.file?(iterm2_installed_profile)
+        pass("iTerm2 Dynamic Profile installed: 'the-sound-above.json'")
+      else
+        warn("iTerm2 Dynamic Profile not yet copied to #{iterm2_installed_profile}")
+      end
     end
   end
 

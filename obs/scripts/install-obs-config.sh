@@ -132,18 +132,35 @@ for PROFILE_NAME in "The Sound Above" "The Sound Above - Staging"; do
   fi
 done
 
+# 5. Install iTerm2 Dynamic Profile
+ITERM2_SUPPORT_DIR="${HOME}/Library/Application Support/iTerm2"
+ITERM2_PROFILE_SRC="${OBS_PROJECT_DIR}/iterm2/the-sound-above.json"
+ITERM2_PROFILE_DEST="${ITERM2_SUPPORT_DIR}/DynamicProfiles/the-sound-above.json"
+
+if [[ -f "${ITERM2_PROFILE_SRC}" && -d "${ITERM2_SUPPORT_DIR}" ]]; then
+  if [[ "${DRY_RUN}" == "true" ]]; then
+    echo "ℹ [dry-run] Would install iTerm2 Dynamic Profile to: ${ITERM2_PROFILE_DEST}"
+  else
+    mkdir -p "${ITERM2_SUPPORT_DIR}/DynamicProfiles"
+    cp "${ITERM2_PROFILE_SRC}" "${ITERM2_PROFILE_DEST}"
+    echo "✓ Installed iTerm2 Dynamic Profile: 'The Sound Above'"
+  fi
+fi
+
 echo "------------------------------------------------------------------"
 if [[ "${DRY_RUN}" == "true" ]]; then
   echo "✅ Dry-run check completed successfully! No files were modified."
 else
   echo "✅ Installation Complete!"
   echo "------------------------------------------------------------------"
-  echo "To activate in OBS Studio:"
+  echo "To activate in OBS Studio & iTerm2:"
   echo " 1. If OBS is running, restart OBS Studio or switch from the menus:"
   echo "    - Profile Menu -> Select 'The Sound Above - Staging' (for testing/sandbox)"
   echo "    - Profile Menu -> Select 'The Sound Above' (for production broadcast)"
   echo "    - Scene Collection Menu -> Select 'The Sound Above - UGtastic Rewatch'"
   echo " 2. In Scene 03/04, click 'Video Window (Orion)' to confirm your browser window."
-  echo " 3. Verify 'Video Application Audio (Orion)' captures browser playback."
+  echo " 3. In Scene 05, confirm 'Workbench Terminal' captures your iTerm2 window."
+  echo " 4. In iTerm2, open a new window or tab with Profile -> 'The Sound Above'."
+  echo " 5. Verify 'Video Application Audio (Orion)' captures browser playback."
 fi
 echo "=================================================================="

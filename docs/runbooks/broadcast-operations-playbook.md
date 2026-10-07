@@ -280,3 +280,28 @@ When presenting web archives, transcripts, and timeline pages during a broadcast
    - `https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home` (Chicago Alt.NET 2008 archive)
    - `https://www.slideshare.net/chicagoaltnet` (Chicago Alt.NET slide decks)
 
+### 7.4 iTerm2 Profile: "The Sound Above" Configuration & Dynamic Profiles
+
+Scene 05 (`05. Workbench - Code & Terminal`) presents code, shell operations, and git histories. To maintain broadcast visual hierarchy and prevent compression artifacts, use the dedicated iTerm2 profile:
+
+1. **Profile Specifications & Visual Hierarchy**:
+   - **Profile Name**: `The Sound Above`
+   - **Font**: `Fira Code Nerd Font`, 18pt regular with ligatures enabled. 18pt is calibrated for 1080p full-screen and downscaled mobile streaming.
+   - **Cursor**: Solid box cursor (`Cursor Type: Box`), non-blinking (`Blinking Cursor: False`). ScreenCaptureKit window captures can drop blinking cursors on keyframe boundaries. A solid cursor guarantees constant visibility.
+   - **Colors**:
+     - Background: `#1a1a2f` / sumi dark slate (`#1e232a`)
+     - Foreground: `#faf8f5` canvas parchment
+     - Amber Highlight / Accent: `#b45309`
+     - Craftsman Teal Accent: `#0f766e`
+   - **Badge**: Top-right corner displays `The Sound Above` watermark at 50% opacity, providing instant visual confirmation of the active broadcast context.
+
+2. **Automated Dynamic Profile Synchronization**:
+   - The canonical profile definition is tracked in version control at `obs/iterm2/the-sound-above.json`.
+   - Running `./obs/scripts/install-obs-config.sh` automatically copies this profile to `~/Library/Application Support/iTerm2/DynamicProfiles/the-sound-above.json`.
+   - iTerm2 detects changes to dynamic profile JSON files immediately without requiring an application restart.
+
+3. **OBS Window Binding**:
+   - Scene 05's `Workbench Terminal` window capture source is configured to match `owner_name: iTerm2`.
+   - Because window capture hooks the window buffer directly, terminal activity in Space 2 is captured at 60 fps without displaying other applications or notification popups.
+
+
