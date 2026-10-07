@@ -24,7 +24,7 @@ Specifically calibrated to prevent profile edge tearing, hair bleeding, and gree
 |---|---|---|---|
 | `smooth-warm-vellum.jpg` | Warm Paper & Vellum | `--paper-canvas` (`#faf8f5`) | Matches warm cream room light; completely eliminates edge bleeding against light clothing or hair |
 | `smooth-craftsman-slate.jpg` | Dark Sumi Ink Slate | `--ink-main` (`#1e232a`) | Dramatic dark studio look; matches the OBS background palette seamlessly |
-| `smooth-sage-teal.jpg` | Muted Craftsman Teal | `--teal-craftsman` (`#0f766e`) | Subtle architectural studio wash; compliments warm skin tones and blue office chair |
+| `smooth-sage-teal.jpg` | Muted Craftsman Teal | `--teal-craftsman` (`#0f766e`) | Subtle architectural studio wash; complements warm skin tones and blue office chair |
 | `smooth-amber-studio.jpg` | Warm Amber & Clay | `--amber-accent` (`#b45309`) | Muted leather/terracotta tone; soft warm dusk ambience |
 
 ### Architectural Workshop & Library Backdrops
