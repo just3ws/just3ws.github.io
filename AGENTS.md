@@ -11,6 +11,23 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - COMMUNITY TIMELINE CRAFTSMANSHIP OVERHAUL & ITERM2 INTEGRATION (2026-10-07):
+         Overhauled `/timeline/community/` into full alignment with the site's canonical
+         Digital Patina & Editorial Craft design tokens:
+         - Eliminated legacy silver borders (#363646) and low-contrast pastel tones (#7e9cd8, #c8c093).
+         - Applied warm book paper canvas (#faf8f5), pure cards (#ffffff), subtle paper (#f4f0e8),
+           deep sumi ink (#1e232a), slate headings (#0f172a), craftsman teal (#0f766e),
+           and warm amber accents (#b45309).
+         - Replaced inline hex color attributes with semantic classes in `_sass/_p_timeline.scss`.
+         - Updated `.surface-editorial` and `.archive-note` in `_sass/_p_surface_components.scss`.
+         - Integrated `The Sound Above (Broadcast)` iTerm2 profile (`obs/iterm2/the-sound-above.json`),
+           resolved dynamic profile GUID collision with fresh unique UUID, and bound Scene 05
+           (`05. Workbench - Code & Terminal`) window capture owner to `iTerm2`.
+         - Documented Section 8 in `docs/style-guide-and-canonical-naming.md` establishing design
+           tokens and contrast hierarchy across site, OBS overlays, Orion, and iTerm2.
+         - Maintained 100% zero em dashes across all code and documentation. All gates passing:
+           validate:fast, validate:obs (44/44 assertions), rspec (97/97), and resume_quality.
+
        - UNIFIED BROADCAST DIRECTOR & AI-ASSISTED TOOLING SUITE (2026-10-07):
          Created unified live broadcast CLI (`bin/broadcast`) and manual (`man/man1/broadcast.1`)
          to orchestrate all three broadcast archetypes:
@@ -125,7 +142,7 @@
          clean). Series blueprint: /Users/mike/.gemini/antigravity-cli/brain/
            0e5b4dee-44a7-4486-846e-ebb7264cfcf6/video_series_blueprint.md
        Deep handoff (local-only, never commit):
-         ~/.config/adots/handoffs/2026-10-06.md
+         ~/.config/adots/handoffs/2026-10-07.md
 
      Close ritual: rewrite this block + commit; write the deep handoff for
      anything personal or unfinished. Reference impl: wwworkremote/core's
