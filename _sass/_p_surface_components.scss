@@ -351,27 +351,33 @@ body.ats-resume {
    ========================================================================== */
 .surface-editorial,
 .archive-note {
-  background: var(--color-bg-card, #2a2a37);
-  border: 1px solid var(--color-border, #363646);
-  border-left: 5px solid var(--color-accent, #e6c384);
-  border-radius: 0.5rem;
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e3dfd7);
+  border-left: 4px solid var(--color-accent, #b45309);
+  border-radius: var(--radius-md, 0.5rem);
   padding: 1.25rem 1.5rem;
   margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));
 
   p {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: var(--color-text-main, #dcd7ba);
+    color: var(--color-text-main, #1e232a);
     margin: 0;
   }
 
   strong {
-    color: var(--color-accent, #e6c384);
+    color: var(--color-heading, #0f172a);
+    font-weight: 700;
   }
 
   a {
-    color: var(--color-primary, #7e9cd8);
+    color: var(--color-primary, #0f766e);
     text-decoration: underline;
+
+    &:hover {
+      color: var(--color-primary-hover, #115e59);
+    }
   }
 }
 

@@ -132,3 +132,45 @@ These identities are permanently fixed. Every agent, document, and generated sur
 - **zdots as root:** Any reference to "where PVL lives" or "what runs PVL" should name zdots, not just3ws or wwworkremote.
 - **Agent name:** When an agent role is "Panoramic View specialist," its name is Pavel, not "PV Agent" or "PVL Agent."
 
+---
+
+## 8. Digital Patina & Craftsmanship Design Tokens (Stream & Site Theming)
+
+All surfaces surfaced on stream, in presentation browsers, in terminals, and on the public website share an identical, cohesive visual identity anchored by the "Digital Patina & Editorial Craft" palette.
+
+### 8.1 Core Color Tokens & WCAG Contrast Hierarchy
+
+| Token Name | Hex Value | Web SCSS Variable | OBS Overlay Token | Role & Accessibility Contract |
+| :--- | :--- | :--- | :--- | :--- |
+| **Paper Canvas** | `#faf8f5` | `$paper-canvas` / `--color-bg-base` | `--paper-canvas` | Warm linen book paper background (14.9:1 contrast against ink text) |
+| **Pure Card** | `#ffffff` | `$paper-card` / `--color-bg-card` | `--bg-card` | Crisp pure sheet for elevated cards and modules (15.8:1 contrast) |
+| **Subtle Paper** | `#f4f0e8` | `$paper-subtle` / `--color-bg-subtle` | `--bg-pill` | Recessed paper tone for filter bars, cues, and metadata chips |
+| **Sumi Ink Main** | `#1e232a` | `$ink-main` / `--color-text-main` | `--ink-main` | Primary editorial body text (14.9:1 against canvas; 15.8:1 against card) |
+| **Slate Heading** | `#0f172a` | `$ink-heading` / `--color-heading` | `--ink-heading` | Display headlines and titles (16.8:1 against canvas; 17.8:1 against card) |
+| **Muted Ink** | `#525866` | `$ink-muted` / `--color-text-muted` | `--text-muted` | Secondary metadata and captions (6.7:1 against canvas; WCAG AAA compliant) |
+| **Book Border** | `#e3dfd7` | `$border-book` / `--color-border` | `--border-subtle` | Warm bookbinding dividers and card perimeters |
+| **Craftsman Teal** | `#0f766e` | `$teal-craftsman` / `--color-primary` | `--teal-craftsman` | Primary accent, interactive buttons, timeline markers (5.2:1 against canvas) |
+| **Teal Hover** | `#115e59` | `$teal-hover` / `--color-primary-hover` | N/A | High-contrast interactive hover state (6.6:1 against canvas) |
+| **Amber Accent** | `#b45309` | `$amber-accent` / `--color-accent` | `--amber-accent` | Dates, spotlights, active tags, and live stream indicators (4.7:1 against canvas) |
+
+### 8.2 Application Surface Integration Matrix
+
+1. **Jekyll Website (`just3ws.localhost` & `just3ws.com`)**:
+   - Variables defined in `_sass/_p_variables.scss` and scoped in `_sass/_p_timeline.scss`.
+   - Typography uses Charter for editorial headlines and Inter for clean UI measurement.
+   - All interactive controls provide a minimum 44px tap target with high-contrast `:focus-visible` rings.
+
+2. **OBS Studio Live Overlays (`obs/overlays/`)**:
+   - Configured in `obs/overlays/css/craftsmanship-theme.css`.
+   - Dark sumi ink background (`#1e232a`) with light canvas text (`#faf8f5`) and teal/amber borders.
+   - Verified continuously by `bin/validate_obs_setup.rb` against the site's SCSS variables.
+
+3. **Orion Browser Profile ("The Sound Above")**:
+   - Custom stylesheet located at `obs/browser-themes/the-sound-above-orion.css`.
+   - Injects antialiasing fixes, suppresses banners, and highlights text selection in craftsman amber (`rgba(180, 83, 9, 0.25)`).
+
+4. **iTerm2 Profile ("The Sound Above (Broadcast)")**:
+   - Dynamic profile JSON located at `obs/iterm2/the-sound-above.json` (installed to `~/Library/Application Support/iTerm2/DynamicProfiles/the-sound-above.json`).
+   - Calibrated with sumi dark slate background, canvas text, 18pt Fira Code, and a solid box non-blinking cursor to prevent ScreenCaptureKit keyframe dropouts.
+
+

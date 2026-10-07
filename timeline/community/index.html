@@ -13,87 +13,87 @@ body_class: surface-editorial community-timeline-surface
 {% assign eras = data.eras %}
 {% assign events = data.events %}
 
-<article class="community-timeline-container" style="max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem; font-family: var(--font-sans-ui, system-ui, sans-serif); color: var(--color-text-main, #dcd7ba);">
+<article class="community-timeline-container">
 
   <!-- Hero Header -->
-  <header style="margin-bottom: 2.5rem; border-bottom: 2px solid var(--color-border, #363646); padding-bottom: 1.75rem;">
-    <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
-      <span style="background: rgba(126, 156, 216, 0.15); color: #7e9cd8; border: 1px solid rgba(126, 156, 216, 0.35); font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">
+  <header class="community-timeline-header">
+    <div class="header-badges">
+      <span class="badge-primary">
         🎙️ Oral History &amp; Community Pastiche
       </span>
-      <span style="background: rgba(15, 118, 110, 0.2); color: #7e9cd8; border: 1px solid #7e9cd8; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 9999px;">
+      <span class="badge-curator">
         Curated by Mike Hall (Signatory #106)
       </span>
-      <span style="color: var(--color-text-muted, #938aa9); font-size: 0.85rem; margin-left: auto;">
+      <span class="header-span">
         2005 – 2026
       </span>
     </div>
 
-    <h1 style="font-size: 2.4rem; font-weight: 800; line-height: 1.2; margin: 0 0 1rem 0; color: var(--color-heading, #dcd7ba);">
+    <h1>
       The Community Pastiche
     </h1>
-    <p style="font-size: 1.15rem; color: var(--color-text-muted, #c8c093); line-height: 1.6; margin: 0 0 1.25rem 0;">
+    <p class="header-lede">
       A living, extensible timeline of the individuals, user groups, zero-dollar conferences, and hallway conversations that built the Chicago software craftsmanship renaissance. Beyond the celebrity keynote circuit, this preserves the essential contributions of the practitioners who made the rooms possible.
     </p>
 
     <!-- Quick Navigation Jumps -->
-    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-      <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" style="font-size: 0.82rem; font-weight: 700; background: var(--color-primary, #7e9cd8); color: var(--color-bg-base, #16161d); padding: 0.35rem 0.75rem; border-radius: 6px; text-decoration: none;">
+    <div class="header-nav-jumps">
+      <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" class="is-primary">
         ⚡ Rewatch Ep 1: Sergio Pereira
       </a>
-      <a href="/chicago-craftsmanship/" style="font-size: 0.82rem; font-weight: 700; background: var(--color-bg-card, #2a2a37); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.35rem 0.75rem; border-radius: 6px; text-decoration: none;">
+      <a href="/chicago-craftsmanship/" class="is-secondary">
         🏙️ Chicago Monograph
       </a>
-      <a href="/scmc/" style="font-size: 0.82rem; font-weight: 700; background: var(--color-bg-card, #2a2a37); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.35rem 0.75rem; border-radius: 6px; text-decoration: none;">
+      <a href="/scmc/" class="is-secondary">
         🏛️ SCMC 17-Year Hub
       </a>
-      <a href="/reports/software-craftsmanship-forensics/" style="font-size: 0.82rem; font-weight: 700; background: var(--color-bg-card, #2a2a37); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.35rem 0.75rem; border-radius: 6px; text-decoration: none;">
+      <a href="/reports/software-craftsmanship-forensics/" class="is-secondary">
         🔍 SCM Forensics
       </a>
     </div>
   </header>
 
   <!-- Spotlight Callout: Series Launchpad / Episode 1 -->
-  <section style="background: linear-gradient(135deg, rgba(126, 156, 216, 0.12), rgba(42, 42, 55, 0.8)); border: 2px solid var(--color-primary, #7e9cd8); border-radius: 12px; padding: 1.75rem; margin-bottom: 2.5rem; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-      <span style="background: #e6c384; color: #16161d; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">
+  <section class="timeline-spotlight-card">
+    <div class="spotlight-kicker-row">
+      <span class="spotlight-pill">
         Series Launchpad • Episode 1
       </span>
-      <span style="font-size: 0.82rem; color: #7e9cd8; font-weight: 700;">
+      <span class="spotlight-sub">
         Rewatching the First UGtastic Interview
       </span>
     </div>
 
-    <h2 style="font-size: 1.5rem; font-weight: 800; margin: 0 0 0.75rem 0; color: var(--color-heading, #dcd7ba);">
+    <h2>
       Sergio Pereira, Chicago Alt.NET &amp; The SCNA Context
     </h2>
-    <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #dcd7ba); margin: 0 0 1rem 0;">
-      <em>"The first user group I ever went to was Chicago Alt.NET. And the first user group I ever spoke at was Chicago Alt.NET. That's why I wanted to interview you first."</em> — Mike Hall to Sergio Pereira at SCNA 2011.
+    <p class="spotlight-quote">
+      "The first user group I ever went to was Chicago Alt.NET. And the first user group I ever spoke at was Chicago Alt.NET. That's why I wanted to interview you first." (Mike Hall to Sergio Pereira at SCNA 2011)
     </p>
-    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-text-muted, #c8c093); margin: 0 0 1.25rem 0;">
+    <p class="spotlight-narrative">
       Meeting on the 2nd Wednesday of each month on the 50th floor of the Sears Tower at Redpoint Technologies, Sergio Pereira created the template for cross-platform peer learning in Chicago. By bringing TDD, BDD, and open-source practices to an enterprise .NET town, Alt.NET laid the groundwork for everything that followed: BDI, 8th Light's Pair Friday, SCNA, CDG, and SCMC.
     </p>
-    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-      <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; background: var(--color-primary, #7e9cd8); color: var(--color-bg-base, #16161d); padding: 0.5rem 0.9rem; border-radius: 6px; text-decoration: none;">
+    <div class="spotlight-actions">
+      <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" class="is-primary">
         <span>🎬</span> Watch the First Interview (with Verbatim Transcript) &rarr;
       </a>
-      <a href="/ai/2026/09/02/the-skunkworks-lab-real-time-inventory/" style="display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; background: var(--color-bg-card, #2a2a37); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.5rem 0.9rem; border-radius: 6px; text-decoration: none;">
+      <a href="/ai/2026/09/02/the-skunkworks-lab-real-time-inventory/" class="is-secondary">
         <span>📖</span> Read the TicketsNow Origin Story
       </a>
     </div>
   </section>
 
   <!-- Interactive Controls: Filter by Era & Community -->
-  <section style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 10px; padding: 1.25rem; margin-bottom: 2.5rem;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
-      <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary, #7e9cd8);">
+  <section class="timeline-filter-panel">
+    <div class="filter-row-top">
+      <span class="filter-label">
         Filter Timeline by Era or Community
       </span>
-      <input type="text" id="timeline-search" placeholder="Search people, places, topics..." style="background: var(--color-bg-base, #16161d); border: 1px solid var(--color-border, #363646); color: #dcd7ba; padding: 0.4rem 0.75rem; border-radius: 6px; font-size: 0.85rem; width: 100%; max-width: 280px;" aria-label="Search timeline">
+      <input type="text" id="timeline-search" class="search-input" placeholder="Search people, places, topics..." aria-label="Search timeline">
     </div>
 
     <!-- Era Buttons -->
-    <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+    <div class="era-buttons-row">
       <button type="button" class="tl-filter-btn is-active" data-era="all">All Eras (14 Milestones)</button>
       {% for era in eras %}
         <button type="button" class="tl-filter-btn" data-era="{{ era.id }}">{{ era.name | truncate: 28 }}</button>
@@ -101,8 +101,8 @@ body_class: surface-editorial community-timeline-surface
     </div>
 
     <!-- Community Tag Pills -->
-    <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; font-size: 0.78rem;">
-      <span style="color: var(--color-text-muted, #938aa9); align-self: center; margin-right: 0.3rem;">Communities:</span>
+    <div class="tags-row">
+      <span class="tags-label">Communities:</span>
       <button type="button" class="tl-tag-btn" data-tag="Chicago Alt.NET">Chicago Alt.NET</button>
       <button type="button" class="tl-tag-btn" data-tag="8th Light">8th Light (Pair Friday)</button>
       <button type="button" class="tl-tag-btn" data-tag="SCMC">SCMC</button>
@@ -116,61 +116,61 @@ body_class: surface-editorial community-timeline-surface
   </section>
 
   <!-- The Timeline Milestones Feed -->
-  <section class="timeline-feed" style="position: relative; padding-left: 1.75rem; border-left: 2px solid var(--color-border, #363646);">
+  <section class="timeline-feed">
 
     {% for event in events %}
-      <article class="timeline-event-card" data-era="{{ event.era }}" data-communities="{{ event.communities | join: ' ' }}" style="margin-bottom: 2.5rem; position: relative;">
+      <article class="timeline-event-card" data-era="{{ event.era }}" data-communities="{{ event.communities | join: ' ' }}">
         <!-- Timeline Marker Dot -->
-        <span style="position: absolute; left: calc(-1.75rem - 7px); top: 1.25rem; width: 12px; height: 12px; border-radius: 50%; background: var(--color-primary, #7e9cd8); border: 2px solid var(--color-bg-base, #16161d);"></span>
+        <span class="marker-dot"></span>
 
-        <div style="background: var(--color-bg-card, #2a2a37); border: 1px solid var(--color-border, #363646); border-radius: 10px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <div class="card-body">
           <!-- Top Badges -->
-          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <div class="card-meta-row">
             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-              <span style="font-size: 0.78rem; font-weight: 800; color: #e6c384; text-transform: uppercase; letter-spacing: 0.05em;">
+              <span class="event-date">
                 {{ event.date_display }}
               </span>
               {% if event.location %}
-                <span style="font-size: 0.75rem; color: var(--color-text-muted, #938aa9);">
+                <span class="event-location">
                   📍 {{ event.location }}
                 </span>
               {% endif %}
             </div>
             {% if event.resume_anchor %}
-              <span style="font-size: 0.7rem; font-weight: 700; color: #7e9cd8; background: rgba(126, 156, 216, 0.12); padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">
+              <span class="career-anchor-pill">
                 Career Anchor: {{ event.resume_anchor }}
               </span>
             {% endif %}
           </div>
 
-          <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0 0 0.75rem 0; color: var(--color-heading, #dcd7ba);">
+          <h3 class="event-title">
             {{ event.title }}
           </h3>
 
           <!-- Narrative -->
-          <p style="font-size: 0.95rem; line-height: 1.65; color: var(--color-text-main, #dcd7ba); margin: 0 0 1rem 0;">
+          <p class="event-narrative">
             {{ event.narrative }}
           </p>
 
           <!-- Series Cue (if present) -->
           {% if event.series_cue %}
-            <div style="background: rgba(230, 195, 132, 0.1); border-left: 3px solid #e6c384; padding: 0.6rem 0.85rem; border-radius: 0 6px 6px 0; margin-bottom: 1rem; font-size: 0.85rem; color: #e6c384;">
+            <div class="series-cue-box">
               <strong>Series Anchor:</strong> {{ event.series_cue }}
             </div>
           {% endif %}
 
           <!-- Unsung Heroes / Community Practitioners -->
           {% if event.unsung_heroes and event.unsung_heroes.size > 0 %}
-            <div style="margin-bottom: 1rem; border-top: 1px solid var(--color-border, #363646); padding-top: 0.75rem;">
-              <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #7e9cd8; letter-spacing: 0.05em; margin-bottom: 0.4rem;">
+            <div class="unsung-section">
+              <div class="unsung-kicker">
                 Key Practitioners &amp; Unsung Contributors:
               </div>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem;">
+              <div class="unsung-grid">
                 {% for hero in event.unsung_heroes %}
-                  <div style="background: var(--color-bg-base, #16161d); padding: 0.6rem 0.75rem; border-radius: 6px; font-size: 0.82rem; border: 1px solid rgba(255,255,255,0.04);">
-                    <strong style="color: #dcd7ba;">{{ hero.name }}</strong>
-                    <span style="color: #938aa9; display: block; font-size: 0.75rem; margin-top: 0.1rem;">{{ hero.role }}</span>
-                    <span style="color: #c8c093; display: block; font-size: 0.78rem; margin-top: 0.25rem; line-height: 1.35;">{{ hero.note }}</span>
+                  <div class="unsung-card">
+                    <strong>{{ hero.name }}</strong>
+                    <span class="hero-role">{{ hero.role }}</span>
+                    <span class="hero-note">{{ hero.note }}</span>
                   </div>
                 {% endfor %}
               </div>
@@ -178,10 +178,10 @@ body_class: surface-editorial community-timeline-surface
           {% endif %}
 
           <!-- Communities & Conferences Pills -->
-          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.85rem;">
-            <span style="font-size: 0.72rem; color: var(--color-text-muted, #938aa9);">Communities:</span>
+          <div class="communities-row">
+            <span class="communities-label">Communities:</span>
             {% for comm in event.communities %}
-              <span style="font-size: 0.72rem; font-weight: 700; background: rgba(255,255,255,0.06); color: #dcd7ba; padding: 0.15rem 0.45rem; border-radius: 4px;">
+              <span class="community-badge">
                 {{ comm }}
               </span>
             {% endfor %}
@@ -189,10 +189,10 @@ body_class: surface-editorial community-timeline-surface
 
           <!-- Primary Sources & Evidence -->
           {% if event.primary_sources and event.primary_sources.size > 0 %}
-            <div style="border-top: 1px dashed var(--color-border, #363646); padding-top: 0.6rem; display: flex; gap: 0.6rem; flex-wrap: wrap; font-size: 0.82rem;">
-              <span style="color: var(--color-text-muted, #938aa9); align-self: center;">Evidence &amp; Artifacts:</span>
+            <div class="evidence-row">
+              <span class="evidence-label">Evidence &amp; Artifacts:</span>
               {% for src in event.primary_sources %}
-                <a href="{{ src.url }}" style="color: var(--color-primary, #7e9cd8); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <a href="{{ src.url }}">
                   <span>{% if src.kind == 'interview' %}🎙️{% elsif src.kind == 'report' %}🔍{% elsif src.kind == 'hub' %}🏛️{% else %}📄{% endif %}</span>
                   {{ src.title }} &rarr;
                 </a>
@@ -209,45 +209,6 @@ body_class: surface-editorial community-timeline-surface
   {% include craftsmanship-linktree.html %}
 
 </article>
-
-<style>
-.tl-filter-btn {
-  background: var(--color-bg-base, #16161d);
-  color: var(--color-text-muted, #938aa9);
-  border: 1px solid var(--color-border, #363646);
-  padding: 0.35rem 0.65rem;
-  border-radius: 6px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.tl-filter-btn:hover, .tl-filter-btn.is-active {
-  background: var(--color-primary, #7e9cd8);
-  color: var(--color-bg-base, #16161d);
-  border-color: var(--color-primary, #7e9cd8);
-}
-
-.tl-tag-btn {
-  background: transparent;
-  color: #c8c093;
-  border: 1px solid var(--color-border, #363646);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.72rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-.tl-tag-btn:hover, .tl-tag-btn.is-active {
-  background: rgba(126, 156, 216, 0.2);
-  color: #7e9cd8;
-  border-color: #7e9cd8;
-}
-
-.timeline-event-card.is-hidden {
-  display: none !important;
-}
-</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
