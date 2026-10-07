@@ -17,6 +17,18 @@ Real room
 
 ## Available Background Variants
 
+### Smooth Studio Gradients (Zero Edge Tearing & Highest Segmentation Cleanliness)
+Specifically calibrated to prevent profile edge tearing, hair bleeding, and green-screen-style halo fringes. These use continuous photographic radial vignettes with film micro-grain to match the lighting curve of your webcam.
+
+| File | Palette Tone | Harmonized CSS Token | Key Characteristic |
+|---|---|---|---|
+| `smooth-warm-vellum.jpg` | Warm Paper & Vellum | `--paper-canvas` (`#faf8f5`) | Matches warm cream room light; completely eliminates edge bleeding against light clothing or hair |
+| `smooth-craftsman-slate.jpg` | Dark Sumi Ink Slate | `--ink-main` (`#1e232a`) | Dramatic dark studio look; matches the OBS background palette seamlessly |
+| `smooth-sage-teal.jpg` | Muted Craftsman Teal | `--teal-craftsman` (`#0f766e`) | Subtle architectural studio wash; compliments warm skin tones and blue office chair |
+| `smooth-amber-studio.jpg` | Warm Amber & Clay | `--amber-accent` (`#b45309`) | Muted leather/terracotta tone; soft warm dusk ambience |
+
+### Architectural Workshop & Library Backdrops
+
 | File | Theme & Aesthetic | When to Use |
 |---|---|---|
 | `craftsman-study-bookshelf.jpg` | Quartersawn oak library study, vintage books, gentle f/2.2 bokeh | Archetype 1 rewatches, historical commentary, deep research |
