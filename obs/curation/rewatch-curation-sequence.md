@@ -58,6 +58,9 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Slug**: `sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011`
 - **The Sound Above Inquiry**: Who inspired the engineers breaking free from enterprise Microsoft silos? How did grassroots peer groups form before commercial developer platforms existed?
 - **Chicago Context**: Chicago Alt.NET was the precursor room for dozens of Chicago developers who later founded startups, consultancy practices, and user groups.
+- **Forensic Primary Sources**:
+  - [November 12, 2008 Meeting Archive (Wayback Machine)](https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home): Mike Hall presenting NHaml alongside Adam Tybor on Spark at Redpoint Technologies (Sears Tower).
+  - [Chicago Alt.NET Slide Decks (SlideShare Archive)](https://www.slideshare.net/chicagoaltnet): Historical slide decks from Sergio Pereira and Chicago community speakers.
 - **AI Era Parallel**: Just as Alt.NET questioned monolithic enterprise frameworks, modern engineers must question monolithic cloud AI abstractions and reclaim local control.
 - **Companion Video**: None (Primary Oral History Focus)
 - **Status**: cued
