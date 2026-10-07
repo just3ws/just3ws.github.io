@@ -83,7 +83,7 @@
     <div class="hud-header">
       <div class="pill-badge">
         <span class="indicator-dot"></span>
-        <span>NOW WATCHING</span>
+        <span id="hud-badge-label">NOW WATCHING</span>
       </div>
       <span class="mono-label" id="hud-era">THE CHICAGO CRUCIBLE</span>
     </div>
@@ -98,8 +98,8 @@
     </div>
 
     <div class="hud-footer">
-      <span>WHOIS TECH COMMUNITY REWATCH</span>
-      <span>HOST: MIKE HALL (#106)</span>
+      <span id="hud-footer-series">WHOIS TECH COMMUNITY REWATCH</span>
+      <span id="hud-footer-host">HOST: MIKE HALL (#106)</span>
     </div>
   </div>
 
@@ -108,13 +108,54 @@
     new OverlayController({
       stateUrl: "overlay-state.json",
       onUpdate: (state) => {
-        const ep = state.episode;
-        document.getElementById("hud-interviewee").textContent = ep.interviewee;
-        const confText = ep.conference || "";
-        const yearStr = String(ep.year || "");
-        document.getElementById("hud-conference").textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
-        document.getElementById("hud-topic").textContent = ep.title;
-        document.getElementById("hud-era").textContent = ep.era.toUpperCase();
+        const type = state.broadcast_type || "rewatch";
+        const badgeEl = document.getElementById("hud-badge-label");
+        const eraEl = document.getElementById("hud-era");
+        const titleEl = document.getElementById("hud-interviewee");
+        const confEl = document.getElementById("hud-conference");
+        const topicEl = document.getElementById("hud-topic");
+        const footSeries = document.getElementById("hud-footer-series");
+        const footHost = document.getElementById("hud-footer-host");
+
+        footHost.textContent = `HOST: ${(state.stream.host || "MIKE HALL").toUpperCase()}`;
+
+        if (type === "errata") {
+          const err = state.errata || {};
+          const modeMap = {
+            reading: "NOW READING",
+            concept: "SYSTEM CONCEPT",
+            demo: "ON THE WORKBENCH",
+            story: "FIELD NOTES",
+            artifact: "ARCHIVAL ARTIFACT"
+          };
+          badgeEl.textContent = modeMap[err.mode] || "ERRATA";
+          eraEl.textContent = (err.artifact_year || "2026").toUpperCase();
+          titleEl.textContent = err.title || "Errata";
+          confEl.textContent = err.citation || "";
+          topicEl.textContent = err.subtitle || err.excerpt_or_thesis || "";
+          footSeries.textContent = "ERRATA // MARGINALIA & ESSAYS";
+        } else if (type === "dialogue") {
+          const dia = state.dialogue || {};
+          const guests = dia.guests || [];
+          badgeEl.textContent = "IN CONVERSATION";
+          eraEl.textContent = "THE ROOM";
+          titleEl.textContent = guests.map(g => g.name).join(" & ") || "Dialogue";
+          const firstGuest = guests[0] || {};
+          confEl.textContent = firstGuest.affiliation || firstGuest.role || "Discussion";
+          topicEl.textContent = dia.topic || "";
+          footSeries.textContent = "INVITATIONAL CONVERSATIONS";
+        } else {
+          // Default: Rewatch
+          const ep = state.episode;
+          badgeEl.textContent = "NOW WATCHING";
+          titleEl.textContent = ep.interviewee;
+          const confText = ep.conference || "";
+          const yearStr = String(ep.year || "");
+          confEl.textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
+          topicEl.textContent = ep.title;
+          eraEl.textContent = ep.era.toUpperCase();
+          footSeries.textContent = "WHOIS TECH COMMUNITY REWATCH";
+        }
       }
     });
   </script>

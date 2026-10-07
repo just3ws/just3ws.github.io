@@ -153,20 +153,40 @@ Verify microphone permissions and audio device sample rates:
 
 ---
 
-## 6. Real-Time Overlay Overrides
+## 6. Real-Time Overlay Overrides & Broadcast Archetypes
 
-You can override overlay text on the fly without restarting OBS by passing CLI flags:
+The overlay engine dynamically adapts across three distinct broadcast archetypes:
+
+### Archetype 1: Oral History Rewatch ("The Sound Above")
 ```bash
-# Update the interviewee name and event
-./obs/scripts/update-overlay-state.sh --guest "Uncle Bob Martin" --conference "SCMC 2011" --year "2011"
+# Cue Episode 1 from the sequence manifest
+./obs/scripts/update-overlay-state.sh --rewatch --episode 1
 
-# Update the active discussion thesis
-./obs/scripts/update-overlay-state.sh --prompt "Professionalism vs Speed: The 2011 SCMC Keynote"
+# Manual override for a rewatch interview
+./obs/scripts/update-overlay-state.sh --rewatch --guest "Uncle Bob Martin" --conference "SCMC 2011" --year "2011" --prompt "Professionalism vs Speed: The 2011 SCMC Keynote"
+```
+
+### Archetype 2: Personal Insights, Readings & Demos ("Errata")
+```bash
+# Book Reading or Close Study
+./obs/scripts/update-overlay-state.sh --errata --mode reading --title "The Cat Ate My Source Code" --citation "The Pragmatic Programmer (1999)" --prompt "Provide options, don't make lame excuses."
+
+# Systems Architecture Concept or Live Code Demo
+./obs/scripts/update-overlay-state.sh --errata --mode demo --title "The Blink Test: Deterministic Verification" --citation "The Observable Control Plane" --prompt "Green, Red, Green again before any claim of success is accepted."
+
+# Archival Memorabilia or Story
+./obs/scripts/update-overlay-state.sh --errata --mode artifact --title "The 2008 Sears Tower Meeting Badges" --citation "Chicago Alt.NET Archive" --year "2008" --prompt "Physical tokens from the room where it started."
+```
+
+### Archetype 3: Invited Guest Conversations ("The Room")
+```bash
+# Cue a peer dialogue or community roundtable
+./obs/scripts/update-overlay-state.sh --dialogue --guest "Ryan Gerry" --conference "SCMC Co-Founder" --title "17 Years of Sub-Second Feedback Loops" --prompt "How did suburban craftsmanship sustain continuous monthly meetings for seventeen years?"
 ```
 
 You can also pass URL parameters directly in OBS browser source properties:
 ```
-file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third.html?interviewee=Dan+North&conference=SCNA+2013
+file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third.html?type=errata&mode=reading&title=The+Pragmatic+Programmer&citation=Hunt+%26+Thomas
 ```
 
 ---

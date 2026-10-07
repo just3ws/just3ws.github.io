@@ -133,49 +133,107 @@
       <img class="brand-logo" src="assets/ugtastic-cube-logo.png" alt="UGtastic">
       <div class="pill-badge">
         <span class="indicator-dot"></span>
-        <span>STREAM CONCLUDED</span>
+        <span id="outro-badge">STREAM CONCLUDED</span>
       </div>
     </div>
-    <span class="mono-label">THE SOUND ABOVE : EPISODE COMPLETE</span>
+    <span class="mono-label" id="outro-series-tag">THE SOUND ABOVE : BROADCAST COMPLETE</span>
   </div>
 
   <div class="outro-content">
-    <h1>Carrying the Sound Forward</h1>
+    <h1 id="outro-title">Carrying the Sound Forward</h1>
 
     <div class="stream-panel quote-card">
-      <div class="quote-text">
+      <div class="quote-text" id="outro-quote">
         "If we want the next generation to care about the sound above, to find inspiration in the values and stories that shaped us, we must first help them thrive. Only then can we inspire them to look up, to hear the echoes of the past and add their own notes to the sound of the future."
       </div>
-      <div class="quote-author">
+      <div class="quote-author" id="outro-author">
         Mike Hall : "The Sound Above: Bridging Inspiration and Understanding in Tech" (2025)
       </div>
     </div>
 
-    <div class="mission-note">
-      <strong>The Heritage Mission:</strong> UGtastic is an ongoing oral history series of interviews with user-group and conference organizers, F/OSS contributors, noted authors, speakers, and tech community influencers. Learning about people, one interview at a time.
+    <div class="mission-note" id="outro-mission">
+      <strong>The Heritage Mission:</strong> UGtastic is an ongoing oral history series of interviews with user-group and conference organizers, F/OSS contributors, noted authors, speakers, and tech community influencers. Learning about people, one conversation at a time.
     </div>
 
     <div class="resource-links">
       <div class="stream-panel link-card">
-        <span class="link-title">The Complete Archive</span>
-        <span class="link-desc">just3ws.com/interviews</span>
+        <span class="link-title" id="link-1-title">The Complete Archive</span>
+        <span class="link-desc" id="link-1-url">just3ws.com/interviews</span>
       </div>
       <div class="stream-panel link-card">
-        <span class="link-title">Community Timeline</span>
-        <span class="link-desc">just3ws.com/timeline/community</span>
+        <span class="link-title" id="link-2-title">Community Timeline</span>
+        <span class="link-desc" id="link-2-url">just3ws.com/timeline/community</span>
       </div>
       <div class="stream-panel link-card">
-        <span class="link-title">SCMC Living History</span>
-        <span class="link-desc">just3ws.com/scmc</span>
+        <span class="link-title" id="link-3-title">SCMC Living History</span>
+        <span class="link-desc" id="link-3-url">just3ws.com/scmc</span>
       </div>
     </div>
   </div>
 
   <div class="bottom-bar">
-    <span>Chicago Software Craftsmanship Oral History Project (2009–2026)</span>
-    <span>WHOIS TECH COMMUNITY · THE SOUND ABOVE</span>
+    <span id="bottom-bar-left">Chicago Software Craftsmanship Oral History Project (2009–2026)</span>
+    <span id="bottom-bar-right">WHOIS TECH COMMUNITY · THE SOUND ABOVE</span>
   </div>
 
   <script src="js/overlay-controller.js"></script>
+  <script>
+    new OverlayController({
+      stateUrl: "overlay-state.json",
+      onUpdate: (state) => {
+        const type = state.broadcast_type || "rewatch";
+        const tag = document.getElementById("outro-series-tag");
+        const title = document.getElementById("outro-title");
+        const quote = document.getElementById("outro-quote");
+        const author = document.getElementById("outro-author");
+        const mission = document.getElementById("outro-mission");
+        const l1Title = document.getElementById("link-1-title");
+        const l1Url = document.getElementById("link-1-url");
+        const l2Title = document.getElementById("link-2-title");
+        const l2Url = document.getElementById("link-2-url");
+        const bLeft = document.getElementById("bottom-bar-left");
+        const bRight = document.getElementById("bottom-bar-right");
+
+        if (type === "errata") {
+          const err = state.errata || {};
+          tag.textContent = "ERRATA // MARGINALIA & ESSAYS";
+          title.textContent = "Closing the Margin";
+          quote.textContent = err.excerpt_or_thesis || "The discipline of software craftsmanship is not in the tools we generate, but in the clarity of the mental model we leave behind.";
+          author.textContent = err.citation ? `${err.citation} : Errata Close Reading` : "Mike Hall : Errata Field Notes";
+          mission.innerHTML = `<strong>Errata Field Notes:</strong> Independent essays, book passages, concept dissections, and physical memorabilia from 25 years of engineering craft.`;
+          l1Title.textContent = "Essays & Notes";
+          l1Url.textContent = "just3ws.com/essays";
+          l2Title.textContent = "Career Datalake";
+          l2Url.textContent = "just3ws.com/resume";
+          bLeft.textContent = "Errata · Independent Technical Broadcast";
+          bRight.textContent = "MIKE HALL · CRAFTSMANSHIP & MARGINALIA";
+        } else if (type === "dialogue") {
+          const dia = state.dialogue || {};
+          tag.textContent = "THE ROOM // DIALOGUE COMPLETE";
+          title.textContent = "Keeping the Conversation Open";
+          quote.textContent = dia.prompt || "Software engineering is a human communication discipline. True community is maintained one conversation at a time.";
+          author.textContent = "Mike Hall & Guest Practitioners : The Room";
+          mission.innerHTML = `<strong>The Room:</strong> Invitational, unvarnished conversations with peers, collaborators, and mentors exploring systems and craft.`;
+          l1Title.textContent = "Archive & Interviews";
+          l1Url.textContent = "just3ws.com/interviews";
+          bLeft.textContent = "The Room · Collegial Engineering Dialogue";
+          bRight.textContent = "CRAFTSMANSHIP & PEER INQUIRY";
+        } else {
+          // Default: The Sound Above Rewatch
+          tag.textContent = "THE SOUND ABOVE : EPISODE COMPLETE";
+          title.textContent = "Carrying the Sound Forward";
+          quote.textContent = "\"If we want the next generation to care about the sound above, to find inspiration in the values and stories that shaped us, we must first help them thrive. Only then can we inspire them to look up, to hear the echoes of the past and add their own notes to the sound of the future.\"";
+          author.textContent = "Mike Hall : \"The Sound Above: Bridging Inspiration and Understanding in Tech\" (2025)";
+          mission.innerHTML = `<strong>The Heritage Mission:</strong> UGtastic is an ongoing oral history series of interviews with user-group and conference organizers, F/OSS contributors, noted authors, speakers, and tech community influencers. Learning about people, one conversation at a time.`;
+          l1Title.textContent = "The Complete Archive";
+          l1Url.textContent = "just3ws.com/interviews";
+          l2Title.textContent = "Community Timeline";
+          l2Url.textContent = "just3ws.com/timeline/community";
+          bLeft.textContent = "Chicago Software Craftsmanship Oral History Project (2009–2026)";
+          bRight.textContent = "WHOIS TECH COMMUNITY · THE SOUND ABOVE";
+        }
+      }
+    });
+  </script>
 </body>
 </html>

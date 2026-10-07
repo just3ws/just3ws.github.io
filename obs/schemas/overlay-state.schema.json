@@ -6,6 +6,70 @@
   "type": "object",
   "required": ["episode", "stream"],
   "properties": {
+    "broadcast_type": {
+      "type": "string",
+      "enum": ["rewatch", "errata", "dialogue"],
+      "default": "rewatch",
+      "description": "Broadcast archetype: rewatch (The Sound Above), errata (solos/readings/demos), or dialogue (invited guests)."
+    },
+    "errata": {
+      "type": "object",
+      "description": "Metadata for Errata broadcasts: readings, concept breakdowns, demos, or archival artifacts.",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["reading", "concept", "demo", "story", "artifact"],
+          "description": "Specific Errata presentation mode."
+        },
+        "title": {
+          "type": "string",
+          "description": "Topic, essay title, or chapter name."
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Secondary contextual subtitle."
+        },
+        "citation": {
+          "type": "string",
+          "description": "Author, book, paper, or provenance citation."
+        },
+        "excerpt_or_thesis": {
+          "type": "string",
+          "description": "Text excerpt being read aloud, thesis statement, or core inquiry."
+        },
+        "artifact_year": {
+          "type": "string",
+          "description": "Year or era associated with the artifact or concept."
+        }
+      }
+    },
+    "dialogue": {
+      "type": "object",
+      "description": "Metadata for invited guest conversations and community roundtables.",
+      "properties": {
+        "guests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "role": { "type": "string" },
+              "affiliation": { "type": "string" }
+            }
+          },
+          "description": "List of invited conversation participants."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Discussion topic or pair workbench mandate."
+        },
+        "prompt": {
+          "type": "string",
+          "description": "Guiding conversation question."
+        }
+      }
+    },
     "episode": {
       "type": "object",
       "required": ["number", "title", "interviewee", "conference", "year", "era", "sound_above_prompt"],

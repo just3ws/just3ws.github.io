@@ -118,13 +118,13 @@
         <span id="series-title">THE SOUND ABOVE</span>
       </div>
       <span class="mono-label" id="episode-tag">EPISODE 01</span>
-      <div class="fcp-credo-banner">
+      <div class="fcp-credo-banner" id="credo-banner">
         <img class="credo-logo" src="assets/ugtastic-cube-logo.png" alt="UGtastic">
-        <span>WHOIS TECH COMMUNITY</span>
+        <span id="credo-line-1">WHOIS TECH COMMUNITY</span>
         <span class="credo-dot">·</span>
-        <span>LEARNING ABOUT PEOPLE</span>
+        <span id="credo-line-2">LEARNING ABOUT PEOPLE</span>
         <span class="credo-dot">·</span>
-        <span>ONE INTERVIEW AT A TIME</span>
+        <span id="credo-line-3">ONE CONVERSATION AT A TIME</span>
       </div>
     </div>
 
@@ -145,16 +145,68 @@
     new OverlayController({
       stateUrl: "overlay-state.json",
       onUpdate: (state) => {
-        const ep = state.episode;
-        document.getElementById("interviewee").textContent = ep.interviewee;
-        const confText = ep.conference || "";
-        const yearStr = String(ep.year || "");
-        document.getElementById("event-context").textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
-        document.getElementById("role").textContent = `${ep.role} : ${ep.title}`;
-        document.getElementById("prompt").textContent = `"${ep.sound_above_prompt}"`;
-        document.getElementById("episode-tag").textContent = `EPISODE ${String(ep.number).padStart(2, '0')}`;
-        document.getElementById("era-tag").textContent = ep.era.toUpperCase();
-        document.getElementById("series-title").textContent = state.stream.series_title.toUpperCase();
+        const type = state.broadcast_type || "rewatch";
+        const seriesEl = document.getElementById("series-title");
+        const tagEl = document.getElementById("episode-tag");
+        const nameEl = document.getElementById("interviewee");
+        const ctxEl = document.getElementById("event-context");
+        const roleEl = document.getElementById("role");
+        const promptEl = document.getElementById("prompt");
+        const credo1 = document.getElementById("credo-line-1");
+        const credo2 = document.getElementById("credo-line-2");
+        const credo3 = document.getElementById("credo-line-3");
+
+        if (type === "errata") {
+          const err = state.errata || {};
+          seriesEl.textContent = (state.stream.series_title || "ERRATA").toUpperCase();
+          tagEl.textContent = (err.mode || "MARGINALIA").toUpperCase();
+          credo1.textContent = "MARGINALIA";
+          credo2.textContent = "CLOSE READINGS & ESSAYS";
+          credo3.textContent = "MIKE HALL";
+          nameEl.textContent = err.title;
+          ctxEl.textContent = err.citation || "Field Notes";
+          roleEl.textContent = err.subtitle || "Insights, Demonstrations & Archival Study";
+          if (err.excerpt_or_thesis) {
+            promptEl.style.display = "block";
+            promptEl.textContent = `"${err.excerpt_or_thesis}"`;
+          } else {
+            promptEl.style.display = "none";
+          }
+        } else if (type === "dialogue") {
+          const dia = state.dialogue || {};
+          const guests = dia.guests || [];
+          const guestNames = guests.map(g => g.name).join(" & ");
+          seriesEl.textContent = (state.stream.series_title || "THE ROOM").toUpperCase();
+          tagEl.textContent = "DIALOGUE";
+          credo1.textContent = "PEER INQUIRY";
+          credo2.textContent = "CRAFTSMANSHIP";
+          credo3.textContent = "COLLEGIAL EXCHANGE";
+          nameEl.textContent = guestNames || "Guest Conversation";
+          const firstGuest = guests[0] || {};
+          ctxEl.textContent = firstGuest.affiliation || firstGuest.role || "Discussion";
+          roleEl.textContent = dia.topic || "Architectural & Craftsmanship Dialogue";
+          if (dia.prompt) {
+            promptEl.style.display = "block";
+            promptEl.textContent = `"${dia.prompt}"`;
+          } else {
+            promptEl.style.display = "none";
+          }
+        } else {
+          // Default: The Sound Above Rewatch
+          const ep = state.episode;
+          seriesEl.textContent = (state.stream.series_title || "THE SOUND ABOVE").toUpperCase();
+          tagEl.textContent = `EPISODE ${String(ep.number).padStart(2, '0')}`;
+          credo1.textContent = "WHOIS TECH COMMUNITY";
+          credo2.textContent = "LEARNING ABOUT PEOPLE";
+          credo3.textContent = "ONE INTERVIEW AT A TIME";
+          nameEl.textContent = ep.interviewee;
+          const confText = ep.conference || "";
+          const yearStr = String(ep.year || "");
+          ctxEl.textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
+          roleEl.textContent = `${ep.role} : ${ep.title}`;
+          promptEl.style.display = "block";
+          promptEl.textContent = `"${ep.sound_above_prompt}"`;
+        }
       }
     });
   </script>

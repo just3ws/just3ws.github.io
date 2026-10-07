@@ -11,6 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - TRI-ARCHETYPE BROADCAST ARCHITECTURE & 'ERRATA' TEMPLATE (2026-10-06):
+         Established polymorphic broadcast architecture across three core archetypes:
+         - Archetype 1 ('The Sound Above'): Forensic oral history rewatches and commentary.
+         - Archetype 2 ('Errata'): Personal insights, book readings, live code demonstrations,
+           concept breakdowns, and physical archival memorabilia / artifact showcases.
+         - Archetype 3 ('The Room'): Invited guest conversations, collegial peer dialogues, and roundtables.
+         Updated overlay state schema (obs/schemas/overlay-state.schema.json) and controller
+         (obs/overlays/js/overlay-controller.js) to dynamically configure lower-third HUDs,
+         reading citation cards, starting title screens, and outros.
+         Enhanced CLI cueing tool (obs/scripts/update-overlay-state.sh) with --errata, --rewatch,
+         --dialogue, and fine-grained mode flags (--mode reading|concept|demo|story|artifact).
+         Zero em dashes maintained. All validation gates passing cleanly: validate:obs (40/40),
+         validate:fast, rspec (97/97), resume_quality, and benchmark:ats (88.2%).
+
        - 31-EPISODE ORAL HISTORY SEQUENCE EXPANSION (2026-10-06):
          Expanded 'The Sound Above' oral history rewatch series to 31 episodes across 6 distinct movements:
          - Added Ginny Hendry (Episode 12, 'A Legacy of Learning: Community Hospitality, RailsBridge & In Memoriam')

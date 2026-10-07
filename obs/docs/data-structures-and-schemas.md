@@ -26,15 +26,16 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
 
 ```json
 {
+  "broadcast_type": "rewatch",
   "episode": {
     "number": 1,
     "title": "The First Room: Chicago Alt.NET & Escaping Corporate Monoliths",
     "interviewee": "Sergio Pereira",
-    "role": "Founder, Chicago Alt.NET",
+    "role": "Chicago Alt.NET Organizer",
     "conference": "SCNA 2011",
     "location": "Chicago, IL",
     "year": "2011",
-    "era": "The Chicago Crucible (2008–2010)",
+    "era": "The Chicago Crucible (2005–2010)",
     "sound_above_prompt": "Who inspired the engineers breaking free from enterprise Microsoft silos? How did grassroots peer groups form before commercial developer platforms existed?",
     "companion_links": [
       "https://just3ws.localhost/timeline/community/",
@@ -43,16 +44,43 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
   },
   "stream": {
     "series_title": "The Sound Above",
-    "series_subtitle": "UGtastic Oral History Rewatch & Craftsmanship in the Age of AI",
-    "host": "Mike Hall (Signatory #106)",
+    "series_subtitle": "UGtastic Rewatch: Learning About People in Tech (2009–2026)",
+    "host": "Mike Hall (Software Craftsmanship #106)",
     "status": "live",
-    "topic": "Rewatching Sergio Pereira (SCNA 2011): Community Before Platforms"
+    "topic": "Rewatching Sergio Pereira (SCNA 2011): The First Room: Chicago Alt.NET & Escaping Corporate Monoliths"
+  },
+  "errata": {
+    "mode": "reading",
+    "title": "The Cat Ate My Source Code",
+    "subtitle": "Marginalia & Systems Study",
+    "citation": "The Pragmatic Programmer (1999)",
+    "excerpt_or_thesis": "Provide options, don't make lame excuses.",
+    "artifact_year": "1999"
+  },
+  "dialogue": {
+    "guests": [
+      {
+        "name": "Ryan Gerry",
+        "role": "Co-Founder, SCMC",
+        "affiliation": "Follett / Suburban Craftsmanship"
+      }
+    ],
+    "topic": "17 Years of Sub-Second Feedback Loops",
+    "prompt": "How did suburban craftsmanship sustain continuous monthly meetings for 17 years?"
   }
 }
 ```
 
+### Broadcast Archetypes
+
+1. **`rewatch` (The Sound Above)**: Oral history rewatch and forensic reaction. Drives `episode` fields, archival timeline cross-referencing, and historical questions.
+2. **`errata` (Errata Solo / Marginalia)**: Personal insights, book readings, architectural concept breakdowns, code demonstrations, and physical artifact shows. Drives `errata` fields (`mode`, `citation`, `excerpt_or_thesis`).
+3. **`dialogue` (The Room / Invitational Conversations)**: Collegial discussions, pair workbench investigations, and community roundtables. Drives `dialogue` fields (`guests`, `topic`, `prompt`).
+
 ### Field Definitions
 
+- `broadcast_type` (Enum): `rewatch`, `errata`, `dialogue`.
+- `errata.mode` (Enum): `reading`, `concept`, `demo`, `story`, `artifact`.
 - `episode.number` (Integer, >= 1): Sequence number matching the manifest.
 - `episode.title` (String): Episode title displayed on title cards and lower thirds.
 - `episode.interviewee` (String): Full name of the featured practitioner.

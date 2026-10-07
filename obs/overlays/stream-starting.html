@@ -158,18 +158,18 @@
       <img class="brand-logo" src="assets/ugtastic-avatar.png" alt="UGtastic logo">
       <div class="series-titles">
         <h1 id="brand-title">The Sound Above</h1>
-        <p>UGtastic Rewatch · Learning About People in Tech (2009–2026)</p>
+        <p id="brand-subtitle">UGtastic Rewatch · Learning About People in Tech (2009–2026)</p>
       </div>
     </div>
     <div class="pill-badge">
       <span class="indicator-dot"></span>
-      <span>STREAM STARTING SOON</span>
+      <span id="start-badge-label">STREAM STARTING SOON</span>
     </div>
   </div>
 
   <div class="center-stage">
     <div class="status-alert">
-      <span>CRAFTING COMMUNITY</span>
+      <span id="start-kicker-1">CRAFTING COMMUNITY</span>
       <span>//</span>
       <span id="start-era">THE CHICAGO COMMUNITY</span>
     </div>
@@ -191,16 +191,16 @@
 
   <div class="bottom-bar">
     <div class="footer-item">
-      <span class="footer-label">Host & Curator</span>
-      <span class="footer-value">Mike Hall (Software Craftsmanship Signatory #106)</span>
+      <span class="footer-label" id="footer-host-label">Host & Curator</span>
+      <span class="footer-value" id="footer-host-val">Mike Hall (Software Craftsmanship Signatory #106)</span>
     </div>
     <div class="footer-item">
-      <span class="footer-label">Digital Archive</span>
-      <span class="footer-value">just3ws.com/interviews</span>
+      <span class="footer-label" id="footer-route-label">Digital Archive</span>
+      <span class="footer-value" id="footer-route-val">just3ws.com/interviews</span>
     </div>
     <div class="footer-item">
-      <span class="footer-label">Platform Origin</span>
-      <span class="footer-value">Chicago Software Craftsmanship (2009–2026)</span>
+      <span class="footer-label" id="footer-origin-label">Platform Origin</span>
+      <span class="footer-value" id="footer-origin-val">Chicago Software Craftsmanship (2009–2026)</span>
     </div>
   </div>
 
@@ -209,14 +209,63 @@
     new OverlayController({
       stateUrl: "overlay-state.json",
       onUpdate: (state) => {
-        const ep = state.episode;
-        document.getElementById("start-title").textContent = ep.title;
-        document.getElementById("start-guest").textContent = ep.interviewee;
-        const confText = ep.conference || "";
-        const yearStr = String(ep.year || "");
-        document.getElementById("start-event").textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
-        document.getElementById("start-prompt").textContent = `"${ep.sound_above_prompt}"`;
-        document.getElementById("start-era").textContent = ep.era.toUpperCase();
+        const type = state.broadcast_type || "rewatch";
+        const brandTitle = document.getElementById("brand-title");
+        const brandSub = document.getElementById("brand-subtitle");
+        const kicker1 = document.getElementById("start-kicker-1");
+        const eraEl = document.getElementById("start-era");
+        const titleEl = document.getElementById("start-title");
+        const guestEl = document.getElementById("start-guest");
+        const eventEl = document.getElementById("start-event");
+        const promptEl = document.getElementById("start-prompt");
+        const hostVal = document.getElementById("footer-host-val");
+        const routeLabel = document.getElementById("footer-route-label");
+        const routeVal = document.getElementById("footer-route-val");
+
+        hostVal.textContent = state.stream.host || "Mike Hall (Software Craftsmanship Signatory #106)";
+
+        if (type === "errata") {
+          const err = state.errata || {};
+          brandTitle.textContent = state.stream.series_title || "Errata";
+          brandSub.textContent = state.stream.series_subtitle || "Marginalia, Readings & Field Notes";
+          kicker1.textContent = "MARGINALIA & ESSAYS";
+          eraEl.textContent = (err.mode || "READING").toUpperCase();
+          titleEl.textContent = err.title || "Errata Solo";
+          guestEl.textContent = err.citation || "Mike Hall";
+          eventEl.textContent = err.artifact_year || "2026";
+          promptEl.textContent = err.excerpt_or_thesis ? `"${err.excerpt_or_thesis}"` : (err.subtitle || "");
+          routeLabel.textContent = "Writing & Notes";
+          routeVal.textContent = "just3ws.com/essays";
+        } else if (type === "dialogue") {
+          const dia = state.dialogue || {};
+          const guests = dia.guests || [];
+          brandTitle.textContent = state.stream.series_title || "The Room";
+          brandSub.textContent = state.stream.series_subtitle || "Invitational Conversations & Peer Inquiry";
+          kicker1.textContent = "PEER DIALOGUE";
+          eraEl.textContent = "CRAFTSMANSHIP";
+          titleEl.textContent = dia.topic || "Conversation";
+          guestEl.textContent = guests.map(g => g.name).join(" & ") || "Guest Practitioner";
+          const firstGuest = guests[0] || {};
+          eventEl.textContent = firstGuest.affiliation || firstGuest.role || "Discussion";
+          promptEl.textContent = dia.prompt ? `"${dia.prompt}"` : "";
+          routeLabel.textContent = "Broadcast Series";
+          routeVal.textContent = "just3ws.com";
+        } else {
+          // Default: Rewatch
+          const ep = state.episode;
+          brandTitle.textContent = state.stream.series_title || "The Sound Above";
+          brandSub.textContent = state.stream.series_subtitle || "UGtastic Rewatch · Learning About People in Tech (2009–2026)";
+          kicker1.textContent = "CRAFTING COMMUNITY";
+          eraEl.textContent = ep.era.toUpperCase();
+          titleEl.textContent = ep.title;
+          guestEl.textContent = ep.interviewee;
+          const confText = ep.conference || "";
+          const yearStr = String(ep.year || "");
+          eventEl.textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
+          promptEl.textContent = `"${ep.sound_above_prompt}"`;
+          routeLabel.textContent = "Digital Archive";
+          routeVal.textContent = "just3ws.com/interviews";
+        }
       }
     });
   </script>
