@@ -22,6 +22,8 @@
            in forensics reports and origin essays.
          - Restored canonical professional identity across public and tooling surfaces:
            Staff Software Engineer, UGtastic Creator/Host, and SCMC Co-Founder.
+         - Purged employer names (BDI, TicketsNow) from community initiatives and milestone lists,
+           restoring pure practitioner rooms: 8th Light Pair Friday, SCNA, CDG, and SCMC.
          - Zero em dashes maintained. All gates passing: validate:fast, validate:obs (44/44),
            rspec (97/97), and resume_quality.
 
