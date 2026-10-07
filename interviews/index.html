@@ -22,42 +22,64 @@ breadcrumb: Videos & Transcripts
       <li><strong>Community & Mentorship:</strong> Personal stories on the 'why' behind building communities, the evolution of technical mentorship, and the human side of technical leadership.</li>
       <li><strong>Contextual Forensic History:</strong> Every audited interview features a structured, searchable transcript that reveals the 'why' and 'what' behind the architectural decisions that persist today.</li>
     </ul>
-    <p class="featured-hub-link" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
-      <strong>Explore Media Collections:</strong> 
-      <a href="/scmc/">SCMC Meetup Archive &rarr;</a>
-      <span class="meta-divider">|</span>
-      <a href="/podcasts/ironlanguages/">IronLanguages (2010) &rarr;</a>
-      <span class="meta-divider">|</span>
-      <a href="/speakers/">Speaker Directory &rarr;</a>
-      <span class="meta-divider">|</span>
-      <a href="/podcast.xml">Podcast Feed (RSS) &rarr;</a>
-      <span class="meta-divider">|</span>
-      <a href="/intelligence/">Corpus Intelligence &rarr;</a>
-    </p>
   </section>
 
+  <aside class="surface-editorial" style="margin: 2rem 0 2.5rem; display: flex; flex-direction: column; gap: 0.75rem; border-left: 4px solid var(--color-primary, #0f766e);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+      <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary, #0f766e);">
+        Featured Broadcast Series · Living Oral History
+      </span>
+      <a href="/series/the-sound-above/episode-01/" style="font-size: 0.85rem; font-weight: 700; color: var(--color-accent, #b45309); text-decoration: none;">
+        Start Rewatch with Episode 1 &rarr;
+      </a>
+    </div>
+    <div style="font-size: 1.15rem; font-weight: 800; color: var(--color-heading, #0f172a); line-height: 1.35;">
+      The Sound Above: 37-Episode Forensic Rewatch Series
+    </div>
+    <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text, #1e232a); margin: 0;">
+      A chronological rewatch and technical commentary across 6 historical movements, examining how the Software Craftsmanship movement tackled testing, architecture, and community from the Chicago Crucible to the AI horizon.
+    </p>
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-top: 0.25rem;">
+      <a href="/series/the-sound-above/episode-01/" class="filter-btn is-active" style="text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0.9rem;">
+        📺 Watch Episode 01: Sergio Pereira
+      </a>
+      <a href="/chicago-craftsmanship/" class="filter-btn" style="text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0.9rem;">
+        🏙️ Chicago History Monograph
+      </a>
+      <a href="/timeline/community/" class="filter-btn" style="text-decoration: none; font-size: 0.82rem; padding: 0.35rem 0.9rem;">
+        ⏱️ Community Pastiche Timeline
+      </a>
+    </div>
+  </aside>
 
   {% assign interviews = site.data.all_archive_items | where_exp: "i", "i.video_asset_id" | sort: "recorded_date" | reverse %}
 
   <section class="transcription-status-bar">
     <span class="status-metric">Archive Status: {{ site.data.archive_transcribed_count }} of {{ interviews.size }} Items Transcribed</span>
     <p class="status-note">
-      This collection is a work in progress. If you spot errors in transcription or have archival context to add, please contact 
+      This collection is an active preservation effort. If you spot transcription errata or have historical context to add, please contact 
       <a href="mailto:mike@just3ws.com">Mike Hall</a>, reach out on 
       <a href="https://www.linkedin.com/in/just3ws/" target="_blank" rel="noopener">LinkedIn</a>, or 
       <a href="https://github.com/just3ws/just3ws.github.io/issues" target="_blank" rel="noopener">submit an issue</a> on GitHub.
     </p>
   </section>
 
-  <nav class="archive-filters no-print" aria-label="Archive Collections">
-    <span class="filter-label">Browse Collections & Themes:</span>
-    <div class="filter-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-      <button class="filter-btn is-active" data-filter="all">All Media</button>
-      <button class="filter-btn" data-filter="UGtastic">UGtastic (Interviews)</button>
-      <button class="filter-btn" data-filter="SCMC">SCMC (Filter)</button>
-      <a href="/scmc/" class="filter-btn" style="text-decoration: none; border-color: var(--color-primary, #7e9cd8);">🏛️ SCMC Dedicated Hub</a>
-      <a href="/speakers/" class="filter-btn" style="text-decoration: none;">👤 Speaker Directory</a>
-      <a href="/taxonomy/" class="filter-btn" style="text-decoration: none;">🕸️ Knowledge Graph</a>
+  <nav class="archive-filters no-print" aria-label="Archive Collections & Discovery" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+      <span class="filter-label">Filter In-Page Archive:</span>
+      <div class="filter-group" role="group" aria-label="Filter media cards">
+        <button class="filter-btn is-active" data-filter="all">All Media ({{ interviews.size }})</button>
+        <button class="filter-btn" data-filter="UGtastic">UGtastic Interviews</button>
+        <button class="filter-btn" data-filter="SCMC">SCMC Meetups</button>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-top: 0.75rem; border-top: 1px dashed var(--color-border, #e3dfd7);">
+      <span style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted, #525866);">Corpus Guides:</span>
+      <a href="/speakers/" class="filter-btn" style="text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.85rem;">👤 Speaker Directory</a>
+      <a href="/scmc/" class="filter-btn" style="text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.85rem;">🏛️ SCMC 17-Year Hub</a>
+      <a href="/taxonomy/" class="filter-btn" style="text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.85rem;">🕸️ Topics &amp; Graph</a>
+      <a href="/intelligence/" class="filter-btn" style="text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.85rem;">📊 Corpus Intelligence</a>
+      <a href="/podcasts/ironlanguages/" class="filter-btn" style="text-decoration: none; font-size: 0.8rem; padding: 0.3rem 0.85rem;">🎙️ IronLanguages</a>
     </div>
   </nav>
 

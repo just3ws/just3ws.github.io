@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - INTERVIEWS ARCHIVE EDITORIAL REVIEW & NAVIGATION TIDY (2026-10-07):
+         Overhauled `/interviews/` and archive components into full alignment with the site's
+         canonical Digital Patina & Editorial Craft design tokens:
+         - Fixed archive card date distortion: cards in `_includes/interview-card.html` now
+           prioritize `recorded_date` over the 2022 YouTube platform re-upload date, correctly
+           rendering primary historical dates (e.g. 'Nov 2011' for SCNA 2011 sessions).
+         - Replaced legacy Bootstrap/pastel blue fallbacks (`#007bff`, `#0284c7`, `#2196f3`, `#e3f2fd`,
+           `#7e9cd8`, `#363646`, `#2a2a37`) in `_sass/_p_main.scss` and `_sass/_p_surface_components.scss`
+           with warm book paper canvas (`#faf8f5`), pure cards (`#ffffff`), subtle paper (`#f4f0e8`),
+           craftsman teal (`#0f766e`), warm amber (`#b45309`), and sumi ink (`#1e232a`).
+         - Added prominent editorial spotlight for 'The Sound Above' 37-episode rewatch series
+           directly on `/interviews/`, linking to Episode 1, the Chicago Monograph, and the Community Timeline.
+         - Tidied navigation hierarchy: separated in-page collection filtering (All Media, UGtastic, SCMC)
+           from cross-corpus exploration guides (Speaker Directory, SCMC 17-Year Hub, Knowledge Graph,
+           Corpus Intelligence, IronLanguages).
+         - Updated `series/the-sound-above/episode-01.html` styles to match digital patina tokens.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly:
+           validate:fast, validate:obs (44/44 assertions), and rspec (98/98).
+
        - CAREEROS DATALAKE LESSONS & 37-EPISODE CURRICULUM RETENTION (2026-10-07):
          Retained historical conference, role, and oral history curriculum lessons into CareerOS datalake:
          - Updated `bin/generate_career_datalake.rb` to persist `oral_history_curriculum` directly into

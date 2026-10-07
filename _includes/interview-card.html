@@ -32,10 +32,10 @@
         <span class="collection-badge">{{ interview.collection }}</span>
         <span class="meta-dot">•</span>
       {% endif %}
-      {% if preferred.published_date %}
-        <time>{{ preferred.published_date | date: "%b %Y" }}</time>
-      {% elsif asset.published_date %}
-        <time>{{ asset.published_date | date: "%b %Y" }}</time>
+      {% assign vimeo_platform = asset.platforms | where: "platform", "vimeo" | first %}
+      {% assign display_date = interview.recorded_date | default: asset.published_date | default: vimeo_platform.published_date | default: preferred.published_date %}
+      {% if display_date %}
+        <time>{{ display_date | date: "%b %Y" }}</time>
       {% endif %}
       {% if preferred.duration_minutes %}
         <span class="meta-dot">•</span> {{ preferred.duration_minutes | round }} min
@@ -54,14 +54,14 @@
           People: 
         {% endif %}
         {% for guest in interview.interviewees %}
-          <a href="/speakers/?q={{ guest | url_encode }}" style="color:var(--color-text-main, #dcd7ba); font-weight:600; text-decoration:underline; text-decoration-color:var(--color-border, #363646);">{{ guest }}</a>{% unless forloop.last %}, {% endunless %}
+          <a href="/speakers/?q={{ guest | url_encode }}" style="color:var(--color-heading, #0f172a); font-weight:600; text-decoration:underline; text-decoration-color:var(--color-border, #e3dfd7);">{{ guest }}</a>{% unless forloop.last %}, {% endunless %}
         {% endfor %}
       </div>
     {% endif %}
     {% if interview.tags and interview.tags.size > 0 %}
       <div class="card-tags-row" style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin: 0.4rem 0;">
         {% for tag in interview.tags limit: 4 %}
-          <a href="/interviews/?q={{ tag | url_encode }}" class="card-tag-pill" style="font-size: 0.72rem; font-weight: 700; background: var(--color-surface-2, rgba(126, 156, 216, 0.15)); color: var(--color-primary, #7e9cd8); border: 1px solid var(--color-border, #363646); padding: 0.15rem 0.45rem; border-radius: 4px; text-decoration: none;">#{{ tag }}</a>
+          <a href="/interviews/?q={{ tag | url_encode }}" class="card-tag-pill" style="font-size: 0.72rem; font-weight: 700; background: var(--color-surface, #f4f0e8); color: var(--color-primary, #0f766e); border: 1px solid var(--color-border, #e3dfd7); padding: 0.15rem 0.45rem; border-radius: 4px; text-decoration: none;">#{{ tag }}</a>
         {% endfor %}
       </div>
     {% endif %}
