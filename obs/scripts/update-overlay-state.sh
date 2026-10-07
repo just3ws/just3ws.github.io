@@ -78,6 +78,14 @@ parser = OptionParser.new do |opts|
     options[:series] = s
   end
 
+  opts.on("--autohide SECONDS", Integer, "Auto-hide lower third after N seconds (0 to disable)") do |sec|
+    options[:autohide] = sec
+  end
+
+  opts.on("--layout LAYOUT", %w[standard minimal], "Lower third layout presentation (standard or minimal)") do |lay|
+    options[:layout] = lay
+  end
+
   opts.on("-h", "--help", "Show this help message") do
     puts opts
     exit 0
@@ -88,6 +96,10 @@ parser.parse!
 
 manifest = JSON.parse(File.read(MANIFEST_PATH))
 current_state = JSON.parse(File.read(STATE_PATH))
+
+# Update layout and auto-hide if provided
+current_state["lower_third_layout"] = options[:layout] if options[:layout]
+current_state["lower_third_autohide"] = options[:autohide] if options[:autohide]
 
 # Update broadcast archetype if provided or inferred
 if options[:archetype]
@@ -132,7 +144,7 @@ elsif current_state["broadcast_type"] == "dialogue"
 else
   # Rewatch
   current_state["stream"]["series_title"] = options[:series] || "The Sound Above"
-  current_state["stream"]["series_subtitle"] = "UGtastic Rewatch: Learning About People in Tech (2009–2026)"
+  current_state["stream"]["series_subtitle"] = "UGtastic Rewatch: Learning About People in Tech (2009 to 2026)"
 
   if options[:episode]
     ep = manifest["episodes"].find { |item| item["number"] == options[:episode] }

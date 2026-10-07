@@ -12,6 +12,17 @@
       "default": "rewatch",
       "description": "Broadcast archetype: rewatch (The Sound Above), errata (solos/readings/demos), or dialogue (invited guests)."
     },
+    "lower_third_autohide": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Optional auto-hide delay in seconds before lower-third card transitions off-screen."
+    },
+    "lower_third_layout": {
+      "type": "string",
+      "enum": ["standard", "minimal"],
+      "default": "standard",
+      "description": "Lower-third layout presentation: standard card or minimal top HUD status bar."
+    },
     "errata": {
       "type": "object",
       "description": "Metadata for Errata broadcasts: readings, concept breakdowns, demos, or archival artifacts.",

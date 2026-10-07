@@ -20,6 +20,66 @@
       gap: 8px;
       max-width: 900px;
       animation: gravity-slide-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lower-third-container.dismissed {
+      opacity: 0 !important;
+      transform: translateY(32px) scale(0.98) !important;
+      pointer-events: none;
+    }
+
+    /* Minimal HUD mode for Scene 05: Workbench (unobtrusive single-line status card) */
+    .lower-third-container.mode-minimal {
+      bottom: auto;
+      top: 36px;
+      left: 60px;
+      max-width: 1100px;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--teal-craftsman);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-elevation);
+      padding: 8px 18px;
+    }
+
+    .lower-third-container.mode-minimal .header-bar {
+      margin-bottom: 0;
+      gap: 10px;
+    }
+
+    .lower-third-container.mode-minimal .fcp-credo-banner {
+      display: none;
+    }
+
+    .lower-third-container.mode-minimal .main-card {
+      padding: 0;
+      border-left: none;
+      background: transparent;
+      box-shadow: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .lower-third-container.mode-minimal .interviewee-name {
+      font-size: 17px;
+      gap: 8px;
+    }
+
+    .lower-third-container.mode-minimal .event-tag {
+      font-size: 13px;
+    }
+
+    .lower-third-container.mode-minimal .role-desc {
+      font-size: 13px;
+    }
+
+    .lower-third-container.mode-minimal .sound-above-prompt {
+      display: none !important;
     }
 
     @keyframes gravity-slide-up {
@@ -142,6 +202,29 @@
 
   <script src="js/overlay-controller.js"></script>
   <script>
+    const container = document.querySelector(".lower-third-container");
+    const params = new URLSearchParams(window.location.search);
+    const autohideParam = params.get("autohide");
+    const layoutParam = params.get("layout") || params.get("mode");
+
+    if (layoutParam === "minimal") {
+      container.classList.add("mode-minimal");
+    }
+
+    let hideTimer = null;
+    function scheduleAutoHide(seconds) {
+      if (!seconds || seconds <= 0) return;
+      if (hideTimer) clearTimeout(hideTimer);
+      container.classList.remove("dismissed");
+      hideTimer = setTimeout(() => {
+        container.classList.add("dismissed");
+      }, seconds * 1000);
+    }
+
+    if (autohideParam) {
+      scheduleAutoHide(parseInt(autohideParam, 10));
+    }
+
     new OverlayController({
       stateUrl: "overlay-state.json",
       onUpdate: (state) => {
@@ -155,6 +238,19 @@
         const credo1 = document.getElementById("credo-line-1");
         const credo2 = document.getElementById("credo-line-2");
         const credo3 = document.getElementById("credo-line-3");
+
+        // Dynamic autohide or layout via state if provided
+        const activeLayout = layoutParam || state.lower_third_layout;
+        if (activeLayout === "minimal") {
+          container.classList.add("mode-minimal");
+        } else if (!layoutParam) {
+          container.classList.remove("mode-minimal");
+        }
+
+        const autohideSec = autohideParam ? parseInt(autohideParam, 10) : state.lower_third_autohide;
+        if (autohideSec) {
+          scheduleAutoHide(autohideSec);
+        }
 
         if (type === "errata") {
           const err = state.errata || {};
