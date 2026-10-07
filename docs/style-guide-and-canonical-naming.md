@@ -13,6 +13,7 @@ This document establishes the permanent canonical naming, casing, and compound w
 | **just3ws** | `just3ws` / `just3ws.com` | All lowercase `just3ws` (World Wide Web / "just 3 w's"). | Public portfolio, canonical resume, and historical datalake. |
 | **wwworkremote** | `wwworkremote` / `wwworkremote.com` | All lowercase `wwworkremote`. | Peer career intelligence and job search evaluation platform. |
 | **CareerOS** | `CareerOS` | CamelCase `CareerOS` (capital `C` and `OS`). | The two-repo synchronized platform connecting `just3ws` and `wwworkremote`. |
+| **Historical Host Calibration** | Senior Software Developer (2009–2015) | Distinguish historical recording era from modern Staff role. | When referencing Mike Hall during the UGtastic interview and recording era (2009–2015), describe his role factually as Senior Software Developer and UGtastic Host. Staff Software Engineer applies to modern engineering identity. |
 
 ---
 

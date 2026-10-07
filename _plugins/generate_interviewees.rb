@@ -31,6 +31,16 @@ module Jekyll
           'interviewee' => person
         })
       end
+
+      # Historical alias redirect for Adam Lear (formerly recorded as Anna Lear)
+      if people.any? { |p| p['slug'] == 'adam-lear' }
+        site.pages << IntervieweeRedirectPage.new(
+          site,
+          site.source,
+          'anna-lear',
+          '/interviews/people/adam-lear/'
+        )
+      end
     end
   end
 
@@ -63,6 +73,41 @@ module Jekyll
       self.process(@name)
       self.read_yaml(File.join(base, '_layouts'), 'interviewee_detail.html')
       self.data.merge!(data)
+    end
+  end
+
+  class IntervieweeRedirectPage < Page
+    def initialize(site, base, slug, target_url)
+      @site = site
+      @base = base
+      @dir = "interviews/people/#{slug}"
+      @name = 'index.html'
+
+      self.process(@name)
+      self.data = {
+        'layout' => nil,
+        'sitemap' => false,
+        'title' => 'Redirecting...'
+      }
+      self.content = <<~HTML
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>Redirecting...</title>
+          <link rel="canonical" href="#{target_url}">
+          <meta http-equiv="refresh" content="0; url=#{target_url}">
+        </head>
+        <body>
+          <h1>Redirecting...</h1>
+          <p><a href="#{target_url}">Click here if you are not redirected.</a></p>
+        </body>
+        </html>
+      HTML
+    end
+
+    def render(_layouts, _site_payload)
+      self.output = self.content
     end
   end
 end

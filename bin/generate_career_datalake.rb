@@ -138,7 +138,7 @@ git_epochs = [
   {
     "epoch" => "2009 - 2015",
     "theme" => "Software Craftsmanship, Community Infrastructure & Ruby on Rails",
-    "description" => "Co-founded Chicago Code Camp, hosted 200+ UGtastic interviews across RailsConf, GOTO, and SCNA, engineered high-velocity Rails, PHP, Java, and Vertica systems at Groupon and Obtiva."
+    "description" => "Co-founded Chicago Code Camp, recorded 200+ UGtastic interviews across RailsConf, GOTO, and SCNA (launched at SCNA 2011 at Swissotel Chicago) as a Senior Software Developer, engineered high-velocity Rails, PHP, Java, and Vertica systems at Groupon and Obtiva."
   },
   {
     "epoch" => "2016 - 2020",
@@ -156,6 +156,24 @@ git_epochs = [
     "description" => "Architected Phalanx Duel (deterministic rules engine, append-only ledger), WWWorkRemote (pgvector, 4-stage prompt defense), and local AI runtime with llama.cpp and whisper.cpp."
   }
 ]
+
+# 9. Oral History Rewatch Curriculum & Broadcast Catalog
+sequence_file = File.join(ROOT, 'obs', 'curation', 'sequence-manifest.json')
+sequence_data = File.exist?(sequence_file) ? JSON.parse(File.read(sequence_file)) : {}
+
+errata_file = File.join(ROOT, 'obs', 'curation', 'errata-manifest.json')
+errata_data = File.exist?(errata_file) ? JSON.parse(File.read(errata_file)) : {}
+
+oral_history_curriculum = {
+  "project" => sequence_data["project"] || "The Sound Above: UGtastic Oral History Rewatch Series",
+  "curator" => sequence_data["curator"] || "Mike Hall",
+  "total_episodes" => sequence_data["total_episodes"] || (sequence_data["episodes"]&.size || 37),
+  "manifesto_anchor" => sequence_data["manifesto_anchor"] || "Software Craftsmanship Manifesto (March 6, 2009)",
+  "historical_host_role" => "Senior Software Developer (2009-2015 recording era); Staff Software Engineer (modern identity)",
+  "launch_provenance" => "Officially launched on-site at SCNA 2011 (November 18-19, 2011 at Swissotel Chicago)",
+  "episodes" => sequence_data["episodes"] || [],
+  "errata_catalog" => errata_data["items"] || []
+}
 
 # 6. Narrative Synthesis Baseline (3-Act Story & Cover Letter Engine)
 narrative_synthesis = {
@@ -234,6 +252,7 @@ datalake = {
   "technology_provenance" => tech_provenance.sort_by { |k, v| -v["total_occurrences"] }.to_h,
   "publications_and_writings" => posts,
   "oral_history_corpus" => interviews_list,
+  "oral_history_curriculum" => oral_history_curriculum,
   "knowledge_graph" => {
     "node_count" => kg_data["nodes"]&.size || 0,
     "link_count" => kg_data["links"]&.size || 0,
@@ -262,6 +281,7 @@ File.open(jsonl_out, 'w') do |f|
   datalake["positions"].each { |k, v| f.puts JSON.generate({ "type" => "position", "id" => k, "data" => v }) }
   datalake["case_studies"].each { |k, v| f.puts JSON.generate({ "type" => "case_study", "id" => k, "data" => v }) }
   f.puts JSON.generate({ "type" => "narrative_synthesis", "data" => datalake["narrative_synthesis"] })
+  f.puts JSON.generate({ "type" => "oral_history_curriculum", "data" => datalake["oral_history_curriculum"] })
   datalake["technology_provenance"].each { |k, v| f.puts JSON.generate({ "type" => "technology", "name" => k, "data" => v }) }
   datalake["publications_and_writings"].each { |p| f.puts JSON.generate({ "type" => "publication", "id" => p["slug"], "data" => p }) }
   datalake["oral_history_corpus"].each { |i| f.puts JSON.generate({ "type" => "interview", "id" => i["id"], "data" => i }) }

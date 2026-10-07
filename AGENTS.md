@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - CAREEROS DATALAKE LESSONS & 37-EPISODE CURRICULUM RETENTION (2026-10-07):
+         Retained historical conference, role, and oral history curriculum lessons into CareerOS datalake:
+         - Updated `bin/generate_career_datalake.rb` to persist `oral_history_curriculum` directly into
+           `career_datalake.json`, `career_datalake.jsonl`, `exports/career_datalake.json`, and `exports/career_datalake.jsonl`.
+         - Recorded official UGtastic launch provenance: launched on-site at SCNA 2011 (November 18-19, 2011
+           at the Swissotel Chicago downtown on the Chicago River).
+         - Calibrated historical host positioning: recorded that Mike Hall was a Senior Software Developer
+           when recording the UGtastic archive (2009-2015), preserving authentic historical truth.
+         - Embedded full 37-episode 'The Sound Above' rewatch sequence and 12-item pre-curated Errata broadcast catalog
+           directly into master datalake schema.
+         - Updated MCP server `bin/career_datalake_mcp_server.rb` to expose `career://datalake/curriculum` resource.
+         - Expanded rewatch curriculum to 37 episodes and implemented zero-dependency canonical URL redirection
+           in `_plugins/generate_interviewees.rb` from `/interviews/people/anna-lear/` to `/interviews/people/adam-lear/`.
+         - Updated `bin/broadcast` CLI, manual pages (`broadcast.1`, `obs-livestream.1`), OBS documentation,
+           and automated test suites (`bin/validate_obs_setup.rb`, `spec/plugins/interviewee_generator_spec.rb`,
+           `spec/series/sound_above_series_spec.rb`).
+         - Maintained 100% em-dash-free compliance across all code, JSON/YAML schemas, and prose. All validation
+           gates passing cleanly: validate:fast, validate:obs (44/44 assertions), rspec (98/98), and benchmark:ats (88.2%).
+
        - ADAM LEAR NAME & GENDER AFFIRMATION & SCNA 2011 SWISSOTEL HISTORICAL VENUE (2026-10-07):
          Handled Adam Lear name transition with accuracy and respect, and recorded SCNA 2011 venue context:
          - Verified that interviewee Anna Lear transitioned to Adam Lear (software developer at Stack Overflow).

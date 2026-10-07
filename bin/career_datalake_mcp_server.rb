@@ -120,6 +120,12 @@ class CareerDatalakeMCPServer
               description: "402 nodes and 612 edges linking interviewees, conferences, user groups, and open source projects."
             },
             {
+              uri: "career://datalake/curriculum",
+              name: "The Sound Above Rewatch Curriculum & Errata Catalog",
+              mimeType: "application/json",
+              description: "37-episode oral history rewatch curriculum, SCNA 2011 launch provenance, host calibration, and Errata broadcast catalog."
+            },
+            {
               uri: "witc://archive/manifest",
               name: "WITC Local Corpus Manifest",
               mimeType: "application/json",
@@ -142,6 +148,8 @@ class CareerDatalakeMCPServer
         content = JSON.pretty_generate(@data["archetypes"] || {})
       when "career://datalake/narrative-synthesis"
         content = JSON.pretty_generate(@data["narrative_synthesis"] || {})
+      when "career://datalake/curriculum"
+        content = JSON.pretty_generate(@data["oral_history_curriculum"] || {})
       when "ugtastic://archive/intelligence"
         content = File.exist?(INTELLIGENCE_FILE) ? File.read(INTELLIGENCE_FILE) : "{}"
       when "ugtastic://archive/knowledge-graph"

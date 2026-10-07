@@ -94,7 +94,7 @@ def list_curated_catalog
   puts " 📚 CURATED BROADCAST CATALOG"
   puts "=================================================================="
   puts ""
-  puts "--- ARCHETYPE 1: THE SOUND ABOVE (31 EPISODES) ---"
+  puts "--- ARCHETYPE 1: THE SOUND ABOVE (37 EPISODES) ---"
   if seq && seq["episodes"]
     seq["episodes"].each do |ep|
       status_pill = ep["youtube_broadcast_id"] ? "[Live ID: #{ep['youtube_broadcast_id']}]" : "[Planned]"
@@ -250,12 +250,12 @@ opt_parser = OptionParser.new do |opts|
   opts.separator ""
   opts.separator "Unified live broadcast director for Mike Hall (Staff Software Engineer & SCMC Co-Founder)."
   opts.separator "Directs and cues three distinct broadcast archetypes:"
-  opts.separator "  1. --rewatch <N>   The Sound Above (oral history review series, 1 to 31)"
+  opts.separator "  1. --rewatch <N>   The Sound Above (oral history review series, 1 to 37)"
   opts.separator "  2. --errata        Errata (solo readings, concepts, live demos, artifacts, behind the scenes)"
   opts.separator "  3. --dialogue      The Room (invited guest conversations and peer inquiry)"
   opts.separator ""
   opts.separator "Archetype Selectors & Cues:"
-  opts.on("-r", "--rewatch [EPISODE]", Integer, "Cue oral history rewatch episode from sequence-manifest.json") do |ep|
+  opts.on("-r", "--rewatch [EPISODE]", Integer, "Cue oral history rewatch episode from sequence-manifest.json (1 to 37)") do |ep|
     options[:archetype] = "rewatch"
     options[:episode] = ep
   end
@@ -327,7 +327,7 @@ opt_parser = OptionParser.new do |opts|
     options[:status] = true
   end
 
-  opts.on("--list", "List all 31 rewatch episodes and pre-curated Errata entries") do
+  opts.on("--list", "List all 37 rewatch episodes and pre-curated Errata entries") do
     options[:list] = true
   end
 

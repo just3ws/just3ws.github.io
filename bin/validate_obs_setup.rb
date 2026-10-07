@@ -293,17 +293,17 @@ class ObsSetupValidator
       manifest = JSON.parse(File.read(manifest_path))
       episodes = manifest['episodes'] || []
 
-      if episodes.size == 31
-        pass("Manifest contains exactly 31 curated episodes across 6 movements")
+      if episodes.size == 37
+        pass("Manifest contains exactly 37 curated episodes across 6 movements")
       else
-        fail("Expected 31 episodes, found #{episodes.size}")
+        fail("Expected 37 episodes, found #{episodes.size}")
       end
 
       numbers = episodes.map { |e| e['number'] }
-      if numbers == (1..31).to_a
-        pass('Episode numbering is sequential and complete (1 to 31)')
+      if numbers == (1..37).to_a
+        pass('Episode numbering is sequential and complete (1 to 37)')
       else
-        fail('Episode numbers are not sequential 1 to 31')
+        fail('Episode numbers are not sequential 1 to 37')
       end
 
       sample_ep = episodes.first

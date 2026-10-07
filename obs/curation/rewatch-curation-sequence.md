@@ -37,7 +37,7 @@ This rewatch series is not passive nostalgia. It is an active forensic investiga
 
 The original UGtastic videos were recorded opportunistically in conference hallways, hotel lobbies, and meetup backrooms between 2010 and 2015. They were published across Vimeo, Tumblr, and early video platforms in the order they were edited, not in a coherent narrative arc.
 
-This curation reworks the archive into 31 curated sessions across six cohesive thematic movements:
+This curation reworks the archive into 37 curated sessions across six cohesive thematic movements:
 1. **Movement 1: The Chicago Crucible**: The pre-manifesto rooms, breaking out of corporate Microsoft monoliths, and founding grassroots communities.
 2. **Movement 2: The Practice and the Dojo**: Deliberate practice, code katas, browser automation roots, and the pursuit of sub-second feedback loops.
 3. **Movement 3: The Human Communication Layer and Inclusion**: Mentorship hospitality, overcoming developer shame, RailsBridge pipelines, and deliberate discovery.
@@ -388,7 +388,73 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Companion Video**: WebVisions Digital Preservation Panel
 - **Status**: planned
 
-#### Episode 30: Mike Hall (Host Monologue & Live Demonstration): Without zdots, There Was Nothing: Craftsmanship for Multi-Agent Fleets
+#### Episode 30: Adam Lear: Community Self-Governance: Meta Sites, Moderation & Developer Communities
+- **Interviewee**: Adam Lear
+- **Conference / Date**: UGtastic Archive (2013)
+- **Location**: Chicago, IL
+- **Slug**: `interview-with-anna-lear-general`
+- **The Sound Above Inquiry**: How do large-scale technical communities self-govern without authoritarian collapse? What role do meta feedback loops play in setting norms for millions of programmers?
+- **Chicago Context**: Recorded during Adam Lear's tenure as Community Manager at Stack Exchange, exploring community governance models that outlast individual maintainers.
+- **AI Era Parallel**: Autonomous multi-agent ecosystems require verifiable governance, clear moderation rules, and self-correcting mechanisms exactly like human communities.
+- **Companion Video**: Stack Exchange Community Architecture
+- **Status**: planned
+
+#### Episode 31: Robert 'Uncle Bob' Martin: The 'A' Word: Architecture, Clean Boundaries & Suburban Craftsmanship
+- **Interviewee**: Robert 'Uncle Bob' Martin
+- **Conference / Date**: SCMC 2011 (Follett Keynote) (2011)
+- **Location**: River Grove, IL
+- **Slug**: `robert-martin-the-a-word-architecture-scmc-2011`
+- **The Sound Above Inquiry**: What was the foundational architectural message Uncle Bob delivered at the Follett campus? Why must database and framework decisions be deferred boundaries rather than core identities?
+- **Chicago Context**: Presented at the Chicago Software Craftsmanship Community meeting hosted at Follett in 2011, establishing the clean architecture canon in the Midwest.
+- **AI Era Parallel**: LLMs want to couple everything directly to the prompt. Disciplined architects preserve boundaries, keeping models peripheral and business logic sovereign.
+- **Companion Video**: Uncle Bob Martin: 2011 SCMC Keynote (Follett)
+- **Status**: planned
+
+#### Episode 32: Chet Hendrickson & Ron Jeffries: Extreme Programming Pioneers: Visual Thinking & Agile Without Dogma
+- **Interviewee**: Chet Hendrickson & Ron Jeffries
+- **Conference / Date**: SCNA 2013 (2013)
+- **Location**: Chicago, IL
+- **Slug**: `chet-hendrickson-ron-jefferies-software-craftsmanship-north-america-2013`
+- **The Sound Above Inquiry**: What inspired the original XP signatories when they looked at the craftsmanship movement? How did Chet Hendrickson and Ron Jeffries maintain radical clarity amidst commercialization?
+- **Chicago Context**: Chet Hendrickson and Ron Jeffries brought first-generation Extreme Programming lineage directly into SCNA 2013 dialogue.
+- **AI Era Parallel**: XP practices (continuous integration, small releases, relentless refactoring) are the essential guardrails that prevent autonomous agent loops from running amok.
+- **Companion Video**: Visual Thinking in Agile (SCNA 2013)
+- **Status**: planned
+
+#### Episode 33: Stuart Halloway: Simplicity, Immutability & Datomic: Rethinking Information Architecture
+- **Interviewee**: Stuart Halloway
+- **Conference / Date**: SCNA 2013 (2013)
+- **Location**: Chicago, IL
+- **Slug**: `stuart-halloway-software-craftsmanship-north-america-2013`
+- **The Sound Above Inquiry**: Why did Clojure and Datomic capture the imagination of Midwest craftsmen seeking refuge from object-oriented ceremonies?
+- **Chicago Context**: Stuart Halloway's SCNA presence connected the Chicago craftsmanship community with the emerging functional programming renaissance.
+- **AI Era Parallel**: Immutable append-only facts and temporal event logs are the foundation of observable agent telemetries and memory layers.
+- **Companion Video**: Stuart Halloway: Simplicity in Practice
+- **Status**: planned
+
+#### Episode 34: Sandro Mancuso: Scaling Craftsmanship: The London Software Craftsmanship Community
+- **Interviewee**: Sandro Mancuso
+- **Conference / Date**: SCNA 2012 (2012)
+- **Location**: Chicago, IL
+- **Slug**: `sandro-mancuso-software-craftsmanship-north-america-2012`
+- **The Sound Above Inquiry**: How did the Chicago movement inspire transatlantic sister communities? What made the London Software Craftsmanship Community scale language-agnostically?
+- **Chicago Context**: Sandro traveled from London to Chicago for SCNA 2012, solidifying the global network of craftsmanship communities.
+- **AI Era Parallel**: Engineering craftsmanship is not an American or European idiom; it is a universal human discipline that crosses tool boundaries.
+- **Companion Video**: The Software Craftsman Keynote
+- **Status**: planned
+
+#### Episode 35: Amitai Schlair: The Legacy Code Whisperer: Agile Technical Coaching & Sustainable Systems
+- **Interviewee**: Amitai Schlair
+- **Conference / Date**: SCNA 2013 (2013)
+- **Location**: Chicago, IL
+- **Slug**: `amitai-schlair-software-craftsmanship-north-america-2013`
+- **The Sound Above Inquiry**: How do technical coaches help legacy enterprise teams safely refactor critical codebases without despair?
+- **Chicago Context**: Amitai was an integral voice across Chicago meetups and SCNA hallway conversations, championing gentle, persistent craftsmanship adoption.
+- **AI Era Parallel**: Modern AI engineering is fundamentally legacy engineering: making sense of existing complex codebases and wrapping them in automated safety nets.
+- **Companion Video**: Agile in 3 Minutes Retrospective
+- **Status**: planned
+
+#### Episode 36: Mike Hall (Host Monologue & Live Demonstration): Without zdots, There Was Nothing: Craftsmanship for Multi-Agent Fleets
 - **Interviewee**: Mike Hall (Host Monologue & Live Demonstration)
 - **Conference / Date**: SCMC 2026 Presentation (2026)
 - **Location**: Chicago, IL
@@ -399,7 +465,7 @@ This curation reworks the archive into 31 curated sessions across six cohesive t
 - **Companion Video**: The Observable Control Plane Technical Walkthrough
 - **Status**: planned
 
-#### Episode 31: Community Panel & Open Roundtable: The Sound Above Roundtable: What We Carry Forward
+#### Episode 37: Community Panel & Open Roundtable: The Sound Above Roundtable: What We Carry Forward
 - **Interviewee**: Community Panel & Open Roundtable
 - **Conference / Date**: Live Stream Roundtable (2026)
 - **Location**: Chicago, IL

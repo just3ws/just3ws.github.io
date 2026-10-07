@@ -49,5 +49,15 @@ RSpec.describe Jekyll::IntervieweeGenerator do
       subject.generate(site)
       expect(site.pages.size).to eq(2)
     end
+
+    it 'generates a historical alias redirect page when adam-lear is present' do
+      data['interviewees_index']['items'] << { 'slug' => 'adam-lear', 'name' => 'Adam Lear' }
+      subject.generate(site)
+      # 1 index + 2 interviewee detail pages + 1 alias redirect page = 4 pages
+      expect(site.pages.size).to eq(4)
+      redirect_page = site.pages.find { |p| p.is_a?(Jekyll::IntervieweeRedirectPage) }
+      expect(redirect_page).not_to be_nil
+      expect(redirect_page.instance_variable_get(:@dir)).to eq('interviews/people/anna-lear')
+    end
   end
 end

@@ -8,14 +8,14 @@ RSpec.describe "The Sound Above Rewatch Series Artifacts" do
   let(:schema_file) { File.expand_path("../../obs/schemas/sequence-manifest.schema.json", __dir__) }
   let(:episode_one_html) { File.expand_path("../../series/the-sound-above/episode-01.html", __dir__) }
 
-  it "verifies sequence-manifest.json exists and contains exactly 31 sequential episodes" do
+  it "verifies sequence-manifest.json exists and contains exactly 37 sequential episodes" do
     expect(File.exist?(manifest_file)).to be true
     manifest = JSON.parse(File.read(manifest_file))
-    expect(manifest["total_episodes"]).to eq(31)
-    expect(manifest["episodes"].size).to eq(31)
+    expect(manifest["total_episodes"]).to eq(37)
+    expect(manifest["episodes"].size).to eq(37)
 
     numbers = manifest["episodes"].map { |ep| ep["number"] }
-    expect(numbers).to eq((1..31).to_a)
+    expect(numbers).to eq((1..37).to_a)
   end
 
   it "verifies each manifest episode has required editorial inquiry and historical context" do

@@ -66,7 +66,7 @@ obs/
 │   ├── stream-brb.html               # Intermission card: "Holding the Thread"
 │   └── stream-outro.html             # Closing credits with archive links and summary
 ├── curation/
-│   ├── rewatch-curation-sequence.md  # 31-episode master curation guide & thematic movements
+│   ├── rewatch-curation-sequence.md  # 37-episode master curation guide & thematic movements
 │   ├── sequence-manifest.json        # Machine-readable episode roadmap and metadata
 │   └── errata-manifest.json          # Pre-curated catalog for Errata readings, concepts & artifacts
 ├── scripts/
@@ -198,7 +198,7 @@ file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third
 ## 7. Companion Documentation & Playbooks
 
 - **[Broadcast Operations Playbook](../docs/runbooks/broadcast-operations-playbook.md)**: Sequential pre-flight, live switching, and teardown runbook for all three broadcast archetypes.
-- **[Curation Sequence Guide](curation/rewatch-curation-sequence.md)**: Full 31-episode roadmap across six movements.
+- **[Curation Sequence Guide](curation/rewatch-curation-sequence.md)**: Full 37-episode roadmap across six movements.
 - **[Reaction and Coding Setup](docs/reaction-and-coding-setup.md)**: Window scaling, Retina ergonomics, and privacy boundaries.
 - **[macOS Audio Routing](docs/audio-routing-macos.md)**: ScreenCaptureKit audio setup, vocal processing, and multitrack recording.
 - **[Broadcast CLI Manual (`broadcast.1`)](../man/man1/broadcast.1)**: UNIX manual page for `bin/broadcast`.

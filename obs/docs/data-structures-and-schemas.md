@@ -13,7 +13,7 @@ All declarative data in this project is bounded by JSON Schema draft 2020-12 def
 | Schema File | Target Data File | Primary Purpose |
 | :--- | :--- | :--- |
 | `obs/schemas/overlay-state.schema.json` | `obs/overlays/overlay-state.json` | Real-time browser source HUD state |
-| `obs/schemas/sequence-manifest.schema.json` | `obs/curation/sequence-manifest.json` | Curated 31-episode historical roadmap |
+| `obs/schemas/sequence-manifest.schema.json` | `obs/curation/sequence-manifest.json` | Curated 37-episode historical roadmap |
 | `obs/schemas/obs-scene-collection.schema.json` | `obs/scenes/ugtastic-sound-above.json` | OBS Studio 32 production scene contract |
 
 ---
@@ -95,7 +95,7 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
 
 ## 3. Sequence Manifest Data Structure
 
-The file `obs/curation/sequence-manifest.json` defines the entire 31-episode curriculum across six chronological and thematic movements:
+The file `obs/curation/sequence-manifest.json` defines the entire 37-episode curriculum across six chronological and thematic movements:
 
 1. `chicago-crucible`: The Chicago Crucible
 2. `practice-and-dojo`: The Practice and the Dojo
