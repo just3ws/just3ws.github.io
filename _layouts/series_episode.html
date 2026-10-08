@@ -1,0 +1,184 @@
+---
+layout: minimal
+body_class: surface-editorial
+---
+{% assign ep = page.episode %}
+{% assign prev = page.prev_episode %}
+{% assign next = page.next_episode %}
+
+<article class="chicago-craftsmanship-page series-episode-page">
+  <div class="intel-hero">
+    <div class="intel-hero-inner">
+      <span class="intel-badge">The Sound Above · Oral History Rewatch Series · Episode {{ page.episode_number_formatted }}</span>
+      <h1 class="intel-title">{{ ep.title }}</h1>
+      <p class="intel-subtitle">
+        A revisit of UGtastic oral history with {{ ep.interviewee }} recorded on-site at {{ ep.conference }} ({{ ep.year }}) in {{ ep.location | default: "Chicago, IL" }}.
+      </p>
+    </div>
+  </div>
+
+  <div class="intel-container" style="max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem;">
+
+    <!-- Series wayfinding -->
+    <nav aria-label="Series navigation" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; font-size: 0.88rem; font-weight: 700;">
+      <div>
+        {% if prev %}
+          {% if prev.number == 1 %}
+            <a href="/series/the-sound-above/episode-01/" style="color: var(--color-primary, #0f766e); text-decoration: none;">&larr; Ep {{ prev.number }}: {{ prev.interviewee }}</a>
+          {% else %}
+            {% assign prev_fmt = prev.number | prepend: '00' | slice: -2, 2 %}
+            <a href="/series/the-sound-above/episode-{{ prev_fmt }}/" style="color: var(--color-primary, #0f766e); text-decoration: none;">&larr; Ep {{ prev.number }}: {{ prev.interviewee }}</a>
+          {% endif %}
+        {% else %}
+          <a href="/series/the-sound-above/" style="color: var(--color-primary, #0f766e); text-decoration: none;">&larr; Series Overview</a>
+        {% endif %}
+      </div>
+
+      <div style="color: var(--color-text-muted, #525866);">
+        <a href="/series/the-sound-above/" style="color: inherit; text-decoration: none;">Episode {{ ep.number }} of {{ page.total_episodes }}</a> · {{ ep.era_name }}
+      </div>
+
+      <div>
+        {% if next %}
+          {% assign next_fmt = next.number | prepend: '00' | slice: -2, 2 %}
+          <a href="/series/the-sound-above/episode-{{ next_fmt }}/" style="color: var(--color-primary, #0f766e); text-decoration: none;">Ep {{ next.number }}: {{ next.interviewee }} &rarr;</a>
+        {% else %}
+          <a href="/series/the-sound-above/#codas" style="color: var(--color-accent, #b45309); text-decoration: none;">Series Codas &rarr;</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Video Stage / Player Embed -->
+    <div style="margin-bottom: 2.5rem; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.18);">
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        {% if ep.youtube_broadcast_id %}
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/{{ ep.youtube_broadcast_id }}?enablejsapi=1"
+            title="{{ ep.title }} | The Sound Above Rewatch"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        {% elsif ep.resolved_youtube_id %}
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/{{ ep.resolved_youtube_id }}?enablejsapi=1"
+            title="{{ ep.title }} | UGtastic Historical Recording"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Episode Metadata & Series Context Card -->
+    <div class="editorial-archive-header" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); padding: 1.5rem; border-radius: 0 10px 10px 0; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));">
+      <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #0f766e); letter-spacing: 0.05em; margin-bottom: 0.5rem;">
+        Episode {{ page.episode_number_formatted }} Provenance &amp; Context
+      </div>
+      <div style="font-size: 0.95rem; color: var(--color-text-muted, #525866); line-height: 1.7;">
+        <strong>Featured Guest:</strong> {{ ep.interviewee }}<br>
+        <strong>Interviewer &amp; Curator:</strong> Mike Hall (Senior Software Developer when recorded; UGtastic Host)<br>
+        <strong>Event &amp; Venue:</strong> {{ ep.conference }} ({{ ep.year }}) · {{ ep.location | default: "Chicago, IL" }}<br>
+        {% if ep.recorded_date %}
+          <strong>Recorded Date:</strong> {{ ep.recorded_date }}<br>
+        {% endif %}
+        <strong>Movement:</strong> {{ ep.era_name }}<br>
+        <strong>Interactive Archive Transcript:</strong> <a href="/interviews/{{ ep.slug }}/">Read and search verified dialogue turns</a>
+      </div>
+    </div>
+
+    <!-- Editorial Inquiries & Historical Context -->
+    <section class="monograph-section" style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.7rem; font-weight: 800; color: var(--color-heading, #0f172a); border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
+        Core Inquiry: The Spoken Record
+      </h2>
+      <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
+        {{ ep.sound_above_inquiry }}
+      </p>
+
+      {% if ep.chicago_context %}
+        <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-heading, #0f172a); margin-top: 1.75rem; margin-bottom: 0.75rem;">
+          Historical Context &amp; Community Roots
+        </h3>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
+          {{ ep.chicago_context }}
+        </p>
+      {% endif %}
+
+      {% if ep.ai_era_parallel %}
+        <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-heading, #0f172a); margin-top: 1.75rem; margin-bottom: 0.75rem;">
+          The AI-Era Parallel
+        </h3>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
+          {{ ep.ai_era_parallel }}
+        </p>
+      {% endif %}
+    </section>
+
+    <!-- Why This Matters: Preserving Knowledge Across Software Eras -->
+    <section class="monograph-section" style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.7rem; font-weight: 800; color: var(--color-heading, #0f172a); border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
+        Carrying Knowledge Across the Transition
+      </h2>
+      <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
+        As engineering teams navigate rapid shifts toward automated synthesis, agentic assistants, and generative code pipelines, foundational muscle memory around debugging, system cohesion, and human peer review risks being eclipsed by sheer volume.
+      </p>
+      <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
+        Preserving these 2009 to 2015 dialogues is not an exercise in nostalgia. It is an empirical manual for how software practitioners held their craft accountable, questioned industry dogmas, and built self-sustaining community cultures.
+      </p>
+    </section>
+
+    <!-- Interactive Navigation to Transcript and Series -->
+    <section class="monograph-section" style="margin-bottom: 3rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 12px; padding: 2rem; box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));">
+      <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-heading, #0f172a); margin-bottom: 1rem;">
+        Explore the Archive &amp; Series
+      </h3>
+      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+        <li>
+          📖 <a href="/interviews/{{ ep.slug }}/" style="font-weight: 600; color: var(--color-primary, #0f766e);">Interactive Transcript for {{ ep.interviewee }}</a> (Seek into video directly from dialogue turns)
+        </li>
+        <li>
+          🏛️ <a href="/timeline/community/" style="font-weight: 600; color: var(--color-primary, #0f766e);">Chicago Community Timeline</a> (See where this recording sits within the 17-year community ledger)
+        </li>
+        <li>
+          📺 <a href="/series/the-sound-above/" style="font-weight: 600; color: var(--color-primary, #0f766e);">The Sound Above Series Curriculum Hub</a> (Browse all 35 rewatch episodes and 2 codas)
+        </li>
+        <li>
+          ▶️ <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener" style="font-weight: 600; color: var(--color-primary, #0f766e);">YouTube Rewatch Series Playlist</a> (Subscribe and watch live broadcasts)
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</article>
+
+<!-- Schema.org Linked Data for Series Video -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "uploadDate": {{ ep.recorded_date | default: "2013-01-01" | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  {% if ep.youtube_broadcast_id %}
+  "embedUrl": {{ ep.youtube_broadcast_id | prepend: "https://www.youtube-nocookie.com/embed/" | jsonify }},
+  "contentUrl": {{ ep.youtube_broadcast_id | prepend: "https://www.youtube.com/watch?v=" | jsonify }},
+  {% elsif ep.resolved_youtube_id %}
+  "embedUrl": {{ ep.resolved_youtube_id | prepend: "https://www.youtube-nocookie.com/embed/" | jsonify }},
+  "contentUrl": {{ ep.resolved_youtube_id | prepend: "https://www.youtube.com/watch?v=" | jsonify }},
+  {% endif %}
+  "transcript": {{ ep.slug | prepend: "/interviews/" | append: "/" | absolute_url | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": "Mike Hall",
+    "url": "https://www.just3ws.com/"
+  },
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "The Sound Above: UGtastic Oral History Rewatch Series",
+    "url": "https://www.youtube.com/playlist?list=PLVcmLmfz2uyA"
+  }
+}
+</script>

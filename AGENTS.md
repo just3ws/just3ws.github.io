@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - HISTORICAL RECORDING DATE RECONCILIATION & DYNAMIC EPISODE PAGES (2026-10-08):
+         Resolved historical date distortion across 79 conference/UGtastic interviews and completed episode rendering:
+         - Reconciled 79 interviews that defaulted to 2022 YouTube platform re-upload dates:
+           calibrated GOTO Chicago 2013 (April 23-26, 2013), GOTO Chicago 2014 (May 20-21, 2014),
+           GOTO Chicago 2015 (May 11-12, 2015), RailsConf 2014 (April 22-25, 2014), WebVisions 2013
+           (September 28, 2013), and SCNA 2011-2013 sessions in `_data/interviews.yml` and
+           `_data/interview_conferences.yml` with true historical provenance dates.
+         - Built dynamic Series Episode generator plugin (`_plugins/generate_series_episodes.rb`)
+           and shared layout (`_layouts/series_episode.html`) to render individual showcase pages
+           for all 35 interview episodes (`/series/the-sound-above/episode-02/` through `episode-35/`)
+           with Schema.org VideoObject, verified transcript cross-links, prev/next movement navigation,
+           and responsive video embed players.
+         - Updated series curriculum overview (`series/the-sound-above/index.html`) to link every episode
+           card directly to its dedicated showcase page.
+         - Regenerated master CareerOS datalake endpoints (`career_datalake.json`, `career_datalake.jsonl`).
+         - Maintained 100% em-dash-free compliance across all code, templates, and data files.
+         - All validation gates passing cleanly: validate:fast, validate:obs (46/46 assertions),
+           rspec (100/100 tests), and Jekyll build (1,013 pages generated).
+
        - THE SOUND ABOVE 37-EPISODE CURRICULUM HUB & ARCHIVE AUDIT (2026-10-07):
          Built dedicated series curriculum hub page and clarified exact archive counts:
          - Verified ground-truth archive metrics across the corpus: 201 total items (184 UGtastic interviews,

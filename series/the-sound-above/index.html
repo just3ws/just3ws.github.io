@@ -99,11 +99,8 @@ body_class: surface-editorial
                 </div>
 
                 <h3 style="font-size: 1.15rem; font-weight: 800; line-height: 1.35; margin: 0 0 0.5rem; color: var(--color-heading, #0f172a);">
-                  {% if ep.number == 1 %}
-                    <a href="/series/the-sound-above/episode-01/" style="color: inherit; text-decoration: none;">{{ ep.title }}</a>
-                  {% else %}
-                    {{ ep.title }}
-                  {% endif %}
+                  {% assign ep_num_fmt = ep.number | prepend: '00' | slice: -2, 2 %}
+                  <a href="/series/the-sound-above/episode-{{ ep_num_fmt }}/" style="color: inherit; text-decoration: none;">{{ ep.title }}</a>
                 </h3>
 
                 <div style="font-size: 0.88rem; font-weight: 600; color: var(--color-primary, #0f766e); margin-bottom: 0.75rem;">
@@ -120,19 +117,10 @@ body_class: surface-editorial
               </div>
 
               <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--color-border, #eeebe3); padding-top: 0.75rem; margin-top: auto;">
-                {% if ep.number == 1 %}
-                  <a href="/series/the-sound-above/episode-01/" style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #0f766e); text-decoration: none;">
-                    Watch Episode 1 &rarr;
-                  </a>
-                {% elsif ep.youtube_broadcast_id %}
-                  <a href="https://www.youtube.com/watch?v={{ ep.youtube_broadcast_id }}" target="_blank" rel="noopener" style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--color-accent, #b45309); text-decoration: none;">
-                    Broadcast Scheduled &rarr;
-                  </a>
-                {% else %}
-                  <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted, #64748b); text-transform: uppercase;">
-                    Curated in Catalog
-                  </span>
-                {% endif %}
+                {% assign ep_num_fmt = ep.number | prepend: '00' | slice: -2, 2 %}
+                <a href="/series/the-sound-above/episode-{{ ep_num_fmt }}/" style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #0f766e); text-decoration: none;">
+                  Episode {{ ep.number }} Details &rarr;
+                </a>
 
                 {% if ep.slug and ep.number < 36 %}
                   <a href="/interviews/{{ ep.slug }}/" style="font-size: 0.8rem; color: var(--color-text-muted, #525866); text-decoration: underline;" title="Read verified transcript">
