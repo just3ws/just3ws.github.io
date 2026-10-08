@@ -35,7 +35,19 @@
     iframe.loading = "lazy";
     iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share";
     iframe.allowFullscreen = true;
-    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.addEventListener("load", () => {
+      try {
+        iframe.contentWindow.postMessage(JSON.stringify({
+          event: "listening",
+          id: 1,
+          channel: "widget"
+        }), "*");
+        iframe.contentWindow.postMessage(JSON.stringify({
+          method: "addEventListener",
+          value: "timeupdate"
+        }), "*");
+      } catch (_) {}
+    });
     container.replaceChildren(iframe);
     return iframe;
   }

@@ -11,6 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - LIVE CC SYNCHRONIZATION & VIDEO PLAYER CONTROL BAR TIDY (2026-10-08):
+         Resolved real-time transcript progress tracking in the LIVE CC subtitle box and polished player controls:
+         - Diagnosed why the LIVE CC box did not update as video played: YouTube and Vimeo iframes require an active
+           postMessage listening handshake (`{"event": "listening"}` and `{"method": "addEventListener", "value": "timeupdate"}`)
+           to emit `infoDelivery` / `timeupdate` playback events to the parent window.
+         - Upgraded `_includes/video-asset-player.html` and `assets/js/deferred-embeds.js` to register the listening handshake
+           immediately upon iframe load and periodically during playback polling. Added multi-event support handling
+           `infoDelivery`, `initialDelivery`, `timeupdate`, and HTML5 native video time tracking.
+         - Polished messy player controls in `_sass/_p_main.scss`: converted `.video-details-bar` into a responsive flex layout
+           with discrete indicator and action groupings, replaced awkward solid-white/borderless buttons with digital patina
+           craftsman tokens, and refined `.sync-cc-overlay` with sumi ink background and craftsman teal accents.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly: validate:fast, validate:obs (46/46 assertions),
+           and rspec (100/100 tests).
+
        - CONFERENCE PRESENTATION MAPPING & SPEAKER TALK EMBED ENHANCEMENTS (2026-10-08):
          Connected interviewees directly to the conference presentations they delivered across GOTO Chicago, RailsConf 2014, and SCNA:
          - Resolved identifier fragmentation in `_data/interview_related_videos.yml`: normalized 46 legacy YouTube and slug

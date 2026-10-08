@@ -387,18 +387,22 @@
       function updateActiveTurnByTime(currentTime) {
         if (!stream) return;
         var turns = stream.querySelectorAll(".sync-turn");
-        var matched = null;
+        if (!turns || turns.length === 0) return;
 
-        turns.forEach(function(turn) {
+        var matched = null;
+        for (var i = 0; i < turns.length; i++) {
+          var turn = turns[i];
           var start = parseFloat(turn.getAttribute("data-start-sec"));
           var end = parseFloat(turn.getAttribute("data-end-sec"));
-          if (currentTime >= start && currentTime <= end) {
+          if (!isNaN(start) && !isNaN(end) && currentTime >= start && currentTime <= end) {
             matched = turn;
+            break;
           }
-        });
+        }
 
         if (!matched && turns.length > 0) {
-          if (currentTime < parseFloat(turns[0].getAttribute("data-start-sec"))) {
+          var firstStart = parseFloat(turns[0].getAttribute("data-start-sec"));
+          if (!isNaN(firstStart) && currentTime < firstStart) {
             matched = turns[0];
           } else {
             matched = turns[turns.length - 1];
@@ -427,22 +431,51 @@
         }
       }
 
-      // Polling Loop for Video Element or YouTube API
+      // Handshake and Polling Loop for Embedded Video (HTML5 Video, YouTube iframe, Vimeo iframe)
+      function initIframeHandshake(iframe) {
+        if (!iframe || !iframe.contentWindow) return;
+        try {
+          // YouTube API handshake
+          iframe.contentWindow.postMessage(JSON.stringify({
+            event: "listening",
+            id: 1,
+            channel: "widget"
+          }), "*");
+          // Vimeo API handshake
+          iframe.contentWindow.postMessage(JSON.stringify({
+            method: "addEventListener",
+            value: "timeupdate"
+          }), "*");
+        } catch (_) {}
+      }
+
       setInterval(function() {
         var el = getEmbed();
         if (!el) return;
-        var currTime = 0;
+
         if (el.tagName === "VIDEO" && !el.paused) {
-          currTime = el.currentTime;
-          updateActiveTurnByTime(currTime);
+          updateActiveTurnByTime(el.currentTime);
+        } else if (el.tagName === "IFRAME") {
+          initIframeHandshake(el);
         }
       }, 500);
 
       window.addEventListener("message", function(event) {
         try {
           var data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-          if (data && data.event === "infoDelivery" && data.info && typeof data.info.currentTime === "number") {
+          if (!data) return;
+
+          // YouTube infoDelivery currentTime
+          if (data.event === "infoDelivery" && data.info && typeof data.info.currentTime === "number") {
             updateActiveTurnByTime(data.info.currentTime);
+          }
+          // YouTube initialDelivery currentTime
+          else if (data.event === "initialDelivery" && data.info && typeof data.info.currentTime === "number") {
+            updateActiveTurnByTime(data.info.currentTime);
+          }
+          // Vimeo timeupdate event
+          else if (data.event === "timeupdate" && data.data && typeof data.data.seconds === "number") {
+            updateActiveTurnByTime(data.data.seconds);
           }
         } catch (_) {}
       });
