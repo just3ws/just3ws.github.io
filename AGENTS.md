@@ -11,6 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - TRANSCRIPT AUTOSCROLL STABILIZATION & PROGRESS RETENTION (2026-10-08):
+         Resolved aggressive turn switching and jumpy transcript scrolling:
+         - Diagnosed issue: high-frequency postMessage playback events (every 250ms) caused sub-second micro-turns
+           (such as 0.4s and 1.0s affirmatives) to flash instantaneously and trigger continuous scroll re-centering,
+           causing the reader to lose track of the conversation flow.
+         - Introduced transition stabilization in `_includes/video-asset-player.html`: added a 600ms debounce floor
+           (`MIN_TURN_DISPLAY_MS`) to prevent rapid flip-flopping during natural dialogue, strict half-open interval
+           matching (`start <= t < end`), boundary retention, and `forceImmediate` bypass for intentional user clicks.
+         - Added in-view viewport awareness: autoscroll now only triggers when the active turn drifts outside the
+           comfortable visible zone of the transcript pane, preventing unnecessary jitter while reading.
+         - Removed layout-shifting scale transform (`transform: scale(1.01)`) from `.is-speaking` in `_sass/_p_main.scss`.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly: validate:fast, validate:obs (46/46 assertions),
+           and rspec (100/100 tests).
+
        - TRANSCRIPT AUTOSCROLL CONTAINER BOUNDS & VIDEO PLAYER VIEWPORT ANCHOR (2026-10-08):
          Fixed transcript autoscroll scrolling the video player out of view:
          - Diagnosed issue: invoking `matched.scrollIntoView()` on an unconstrained document flow caused the whole browser

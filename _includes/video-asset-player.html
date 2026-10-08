@@ -377,14 +377,17 @@
             var sec = parseFloat(turnEl.getAttribute("data-seek"));
             if (!isNaN(sec)) {
               seekTo(sec);
-              updateActiveTurnByTime(sec + 0.5);
+              updateActiveTurnByTime(sec + 0.5, true);
             }
           }
         });
       }
 
-      // Active Turn Updater
-      function updateActiveTurnByTime(currentTime) {
+      // Active Turn Updater with Debounce and Viewport Awareness
+      var lastTurnChangeTime = 0;
+      var MIN_TURN_DISPLAY_MS = 600; // Stabilize rapid transitions between consecutive turns
+
+      function updateActiveTurnByTime(currentTime, forceImmediate) {
         if (!stream) return;
         var turns = stream.querySelectorAll(".sync-turn");
         if (!turns || turns.length === 0) return;
@@ -394,7 +397,7 @@
           var turn = turns[i];
           var start = parseFloat(turn.getAttribute("data-start-sec"));
           var end = parseFloat(turn.getAttribute("data-end-sec"));
-          if (!isNaN(start) && !isNaN(end) && currentTime >= start && currentTime <= end) {
+          if (!isNaN(start) && !isNaN(end) && currentTime >= start && currentTime < end) {
             matched = turn;
             break;
           }
@@ -402,14 +405,25 @@
 
         if (!matched && turns.length > 0) {
           var firstStart = parseFloat(turns[0].getAttribute("data-start-sec"));
+          var lastEnd = parseFloat(turns[turns.length - 1].getAttribute("data-end-sec"));
           if (!isNaN(firstStart) && currentTime < firstStart) {
             matched = turns[0];
-          } else {
+          } else if (!isNaN(lastEnd) && currentTime >= lastEnd) {
             matched = turns[turns.length - 1];
+          } else if (activeTurn) {
+            // Keep current active turn rather than abruptly jumping
+            matched = activeTurn;
           }
         }
 
         if (matched && matched !== activeTurn) {
+          var now = Date.now();
+          // Avoid rapid-fire flip-flopping unless forced by user seek action
+          if (!forceImmediate && (now - lastTurnChangeTime) < MIN_TURN_DISPLAY_MS) {
+            return;
+          }
+          lastTurnChangeTime = now;
+
           if (activeTurn) activeTurn.classList.remove("is-speaking");
           matched.classList.add("is-speaking");
           activeTurn = matched;
@@ -424,16 +438,25 @@
             ccSpeakerDisplay.textContent = speakerName;
           }
 
-          // Auto-scroll transcript stream within its container (keeps video player anchored in view)
-          if (autoScrollEnabled && matched && stream) {
+          // Auto-scroll transcript stream only if the matched turn is outside comfortable viewing area
+          if (autoScrollEnabled && stream) {
             var containerRect = stream.getBoundingClientRect();
             var matchedRect = matched.getBoundingClientRect();
-            var relativeOffset = matchedRect.top - containerRect.top + stream.scrollTop;
-            var targetTop = relativeOffset - (stream.clientHeight / 2) + (matched.clientHeight / 2);
-            stream.scrollTo({
-              top: Math.max(0, targetTop),
-              behavior: "smooth"
-            });
+
+            // Check if turn is already comfortably visible inside container
+            var isComfortablyVisible = (
+              matchedRect.top >= (containerRect.top + 40) &&
+              matchedRect.bottom <= (containerRect.bottom - 40)
+            );
+
+            if (!isComfortablyVisible) {
+              var relativeOffset = matchedRect.top - containerRect.top + stream.scrollTop;
+              var targetTop = relativeOffset - (stream.clientHeight / 2) + (matched.clientHeight / 2);
+              stream.scrollTo({
+                top: Math.max(0, targetTop),
+                behavior: "smooth"
+              });
+            }
           }
         }
       }
