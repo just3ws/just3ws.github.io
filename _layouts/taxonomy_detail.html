@@ -45,7 +45,7 @@ layout: minimal
 {% for contributor in page.notable_contributors %}
       <li>
         <strong>{{ contributor.name }}</strong>
-        {% if contributor.headline and contributor.headline != "" %} — {{ contributor.headline }}{% endif %}
+        {% if contributor.headline and contributor.headline != "" %} · {{ contributor.headline }}{% endif %}
         {% if contributor.focus and contributor.focus != "" %} Focus: {{ contributor.focus }}{% endif %}
         {% if contributor.interview_id and contributor.interview_id != "" %}
           <a href="/interviews/{{ contributor.interview_id }}/">Interview</a>

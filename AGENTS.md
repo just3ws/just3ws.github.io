@@ -11,6 +11,24 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - CONFERENCE PRESENTATION MAPPING & SPEAKER TALK EMBED ENHANCEMENTS (2026-10-08):
+         Connected interviewees directly to the conference presentations they delivered across GOTO Chicago, RailsConf 2014, and SCNA:
+         - Resolved identifier fragmentation in `_data/interview_related_videos.yml`: normalized 46 legacy YouTube and slug
+           records to canonical interview IDs and added presentation links for RailsConf 2014 (DHH's "Writing Software" keynote,
+           Joel Turnbull's Pry debugging, Alexander Dymo's memory optimization, Carlos Antonio da Silva's Rails tricks, Coraline Ada Ehmke's
+           apprenticeship talk) and SCNA 2012 (Gary Bernhardt's "Boundaries" debut).
+         - Upgraded `_layouts/interviewee_detail.html` with responsive presentation video embeds, presentation abstracts, and
+           outbound links for all conference-presentation-video and conference-presentation-page assets.
+         - Expanded interviewees index with verified presentation links from 4 to 40 speakers (including Corey Haines, Adrian Cockcroft,
+           Anita Sengupta, Camille Fournier, Chad Fowler, Charles Nutter, Dave Thomas, Dean Wampler, Gary Bernhardt, Kyle Kingsbury,
+           Rich Hickey, and David Heinemeier Hansson).
+         - Enriched `_data/interview_conferences.yml` with deep thematic context, exact calendar dates, and historical venues:
+           SCNA 2011 (Swissotel Chicago on Chicago River, Nov 18-19, 2011), SCNA 2012 (Mid-America Club on Aon Center 80th floor,
+           Nov 9-10, 2012), WindyCityRails 2012 (Sep 7-12, 2012), and RailsConf 2014 (Apr 22-25, 2014) documenting the TDD debate,
+           runtime maturation, and engineering apprenticeship.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly: validate:fast, validate:obs (46/46 assertions),
+           and rspec (100/100 tests).
+
        - HISTORICAL RECORDING DATE RECONCILIATION & DYNAMIC EPISODE PAGES (2026-10-08):
          Resolved historical date distortion across 79 conference/UGtastic interviews and completed episode rendering:
          - Reconciled 79 interviews that defaulted to 2022 YouTube platform re-upload dates:
