@@ -1313,6 +1313,36 @@
   }
 }
 
+/* Independent Scroll Container for Interactive Transcripts */
+.sync-transcript-stream {
+  max-height: 70vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.25rem 1rem;
+  border-radius: 12px;
+  background: var(--color-paper-subtle, #f4f0e8);
+  border: 1px solid var(--color-paper-border, #e2d9cc);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.04);
+  scroll-behavior: smooth;
+
+  /* Subtle Craftsman Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary, #0f766e) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-primary, #0f766e);
+    border-radius: 3px;
+  }
+}
+
 @keyframes pulse {
   0% { opacity: 0.7; }
   50% { opacity: 1; }

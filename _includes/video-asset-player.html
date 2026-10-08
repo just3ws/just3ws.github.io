@@ -424,9 +424,16 @@
             ccSpeakerDisplay.textContent = speakerName;
           }
 
-          // Auto-scroll transcript stream
-          if (autoScrollEnabled && matched) {
-            matched.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          // Auto-scroll transcript stream within its container (keeps video player anchored in view)
+          if (autoScrollEnabled && matched && stream) {
+            var containerRect = stream.getBoundingClientRect();
+            var matchedRect = matched.getBoundingClientRect();
+            var relativeOffset = matchedRect.top - containerRect.top + stream.scrollTop;
+            var targetTop = relativeOffset - (stream.clientHeight / 2) + (matched.clientHeight / 2);
+            stream.scrollTo({
+              top: Math.max(0, targetTop),
+              behavior: "smooth"
+            });
           }
         }
       }

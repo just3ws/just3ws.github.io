@@ -11,6 +11,17 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - TRANSCRIPT AUTOSCROLL CONTAINER BOUNDS & VIDEO PLAYER VIEWPORT ANCHOR (2026-10-08):
+         Fixed transcript autoscroll scrolling the video player out of view:
+         - Diagnosed issue: invoking `matched.scrollIntoView()` on an unconstrained document flow caused the whole browser
+           window to scroll down to the active turn, pushing the video player above the viewport.
+         - Encapsulated `.sync-transcript-stream` within an independent scroll container in `_sass/_p_main.scss` (`max-height: 70vh`,
+           `overflow-y: auto`, `overscroll-behavior: contain`) with subtle craftsman themed scrollbars and book paper palette.
+         - Updated autoscroll handler in `_includes/video-asset-player.html` to use scoped container scrolling (`stream.scrollTo()`),
+           centering the active turn smoothly within the transcript pane while keeping the video player firmly anchored in the viewport.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly: validate:fast, validate:obs (46/46 assertions),
+           and rspec (100/100 tests).
+
        - LIVE CC SYNCHRONIZATION & VIDEO PLAYER CONTROL BAR TIDY (2026-10-08):
          Resolved real-time transcript progress tracking in the LIVE CC subtitle box and polished player controls:
          - Diagnosed why the LIVE CC box did not update as video played: YouTube and Vimeo iframes require an active
