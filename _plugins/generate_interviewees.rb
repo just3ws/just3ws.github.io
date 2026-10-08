@@ -83,6 +83,9 @@ module Jekyll
       @dir = "interviews/people/#{slug}"
       @name = 'index.html'
 
+      site_url = (site.respond_to?(:config) && site.config && site.config['url']) ? site.config['url'] : 'https://www.just3ws.com'
+      canonical_url = target_url.start_with?('http') ? target_url : "#{site_url}#{target_url}"
+
       self.process(@name)
       self.data = {
         'layout' => nil,
@@ -95,7 +98,7 @@ module Jekyll
         <head>
           <meta charset="utf-8">
           <title>Redirecting...</title>
-          <link rel="canonical" href="#{target_url}">
+          <link rel="canonical" href="#{canonical_url}">
           <meta http-equiv="refresh" content="0; url=#{target_url}">
         </head>
         <body>

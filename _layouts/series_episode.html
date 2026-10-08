@@ -43,7 +43,7 @@ body_class: surface-editorial
           {% assign next_fmt = next.number | prepend: '00' | slice: -2, 2 %}
           <a href="/series/the-sound-above/episode-{{ next_fmt }}/" style="color: var(--color-primary, #0f766e); text-decoration: none;">Ep {{ next.number }}: {{ next.interviewee }} &rarr;</a>
         {% else %}
-          <a href="/series/the-sound-above/#codas" style="color: var(--color-accent, #b45309); text-decoration: none;">Series Codas &rarr;</a>
+          <a href="/series/the-sound-above/#series-codas" style="color: var(--color-accent, #b45309); text-decoration: none;">Series Codas &rarr;</a>
         {% endif %}
       </div>
     </nav>

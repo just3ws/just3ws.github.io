@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - CI GATE GREEN & CANONICAL LINK RECONCILIATION (2026-10-08):
+         Resolved GitHub Actions deployment pipeline failures across public index and HTML-Proofer gates:
+         - Diagnosed `validate_public_index_mode` failure: `IntervieweeRedirectPage` emitted a relative target URL
+           (`/interviews/people/adam-lear/`) in `<link rel="canonical">` instead of the fully-qualified canonical host.
+           Updated `_plugins/generate_interviewees.rb` to resolve the canonical site URL (`https://www.just3ws.com`)
+           safely while handling mock site objects in RSpec.
+         - Diagnosed HTML-Proofer internal link hash failure on `/series/the-sound-above/episode-35/`: episode template
+           linked to `#codas`, but the section anchor in `series/the-sound-above/index.html` was `#series-codas`.
+           Updated `_layouts/series_episode.html` to reference `#series-codas`.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly: validate:fast, validate:obs (46/46 assertions),
+           validate:rendered_site (HTML-Proofer, SEO, Resume, ATS 88.2%), and rspec (100/100 tests).
+
        - TRANSCRIPT AUTOSCROLL STABILIZATION & PROGRESS RETENTION (2026-10-08):
          Resolved aggressive turn switching and jumpy transcript scrolling:
          - Diagnosed issue: high-frequency postMessage playback events (every 250ms) caused sub-second micro-turns
