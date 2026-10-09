@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - RECORDING CHEATSHEET & SCENE OVERLAY CLARITY (2026-10-08):
+         Documented high-density recording cheatsheet and clarified OBS Scene 02 overlay architecture:
+         - Created `obs/docs/recording-cheatsheet.md` covering pre-flight CLI sequences, scene selector reference,
+           window ergonomics (1920x1080 canvas), lower-third behavior and cache refresh troubleshooting,
+           multi-track audio assignments (Tracks 1 to 4), and T-5 minute checkoff list.
+         - Indexed the new cheatsheet in `obs/README.md`.
+         - Clarified OBS Scene 02 (`Monologue / Full Camera`) overlay hierarchy: confirmed that Scene 02 intentionally
+           contains `Overlay: Lower Third` directly above the camera without the upper-right `Now Watching HUD`,
+           and documented how auto-hide timing and browser source scene caching influence overlay re-triggering.
+         - Maintained 100% em-dash-free compliance across all additions. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (100/100 tests).
+
        - OBS LOWER-THIRD AUTO-HIDE & FOOTPRINT COMPACTION (2026-10-08):
          Resolved OBS lower-third card persistence and reduced visual screen occlusion:
          - Diagnosed why the lower-third card remained visible indefinitely: `OverlayController.mergeOverrides()`
