@@ -11,6 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - OBS LOWER-THIRD AUTO-HIDE & FOOTPRINT COMPACTION (2026-10-08):
+         Resolved OBS lower-third card persistence and reduced visual screen occlusion:
+         - Diagnosed why the lower-third card remained visible indefinitely: `OverlayController.mergeOverrides()`
+           omitted `lower_third_autohide` and `lower_third_layout`, causing `scheduleAutoHide()` in `lower-third.html`
+           to receive `undefined` instead of the configured 10s timeout from `overlay-state.json`.
+         - Updated `obs/overlays/js/overlay-controller.js` to preserve `lower_third_autohide` and `lower_third_layout`
+           across merged URL overrides and JSON states, defaulting safely to a 12s auto-hide timeout.
+         - Updated `obs/overlays/lower-third.html` to establish reliable fallback auto-hide scheduling on initial load,
+           smooth fade-out transform (`translateY(20px) scale(0.98)`), and compact styling dimensions:
+           reduced container `max-width` from `900px` to `680px`, card padding to `12px 18px`, interviewee name font-size
+           to `22px`, and clamped Sound Above prompts to 2 lines max with ellipsis.
+         - Maintained 100% em-dash-free compliance. All validation gates passing cleanly: validate:fast, validate:obs
+           (46/46 assertions), and rspec (100/100 tests).
+
        - CI GATE GREEN & CANONICAL LINK RECONCILIATION (2026-10-08):
          Resolved GitHub Actions deployment pipeline failures across public index and HTML-Proofer gates:
          - Diagnosed `validate_public_index_mode` failure: `IntervieweeRedirectPage` emitted a relative target URL

@@ -94,7 +94,9 @@ class OverlayController {
         series_subtitle: stream.series_subtitle || (broadcastType === "errata" ? "Marginalia, Readings & Demonstrations" : (broadcastType === "dialogue" ? "Invitational Conversations & Peer Inquiry" : "UGtastic Rewatch & Craftsmanship in the Age of AI")),
         host: this.overrides.host || stream.host || "Mike Hall (Staff Software Engineer & SCMC Co-Founder)",
         topic: this.overrides.topic || stream.topic || ""
-      }
+      },
+      lower_third_autohide: this.overrides.autohide !== undefined ? parseInt(this.overrides.autohide, 10) : (state.lower_third_autohide !== undefined ? state.lower_third_autohide : 12),
+      lower_third_layout: this.overrides.layout || this.overrides.mode || state.lower_third_layout || "standard"
     };
   }
 }
