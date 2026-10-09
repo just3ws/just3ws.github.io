@@ -73,9 +73,12 @@ obs/
 │   ├── install-obs-config.sh         # Installs scenes & profile to ~/Library/Application Support/
 │   ├── update-overlay-state.sh       # CLI tool to cue episodes and update overlays in real time
 │   └── test-audio-routing.sh         # Audio diagnostic tool for CoreAudio and ScreenCaptureKit
-└── docs/
-    ├── reaction-and-coding-setup.md  # Display scaling, Orion browser, and window ergonomics
-    └── audio-routing-macos.md        # ScreenCaptureKit zero-driver audio & multitrack guide
+├── docs/
+│   ├── recording-cheatsheet.md       # Operator cheatsheet, pre-flight checklist & quick reference
+│   ├── reaction-and-coding-setup.md  # Display scaling, Orion browser, and window ergonomics
+│   ├── livestreaming-tutorial-and-guidelines.md # Operational tutorial and broadcast guidance
+│   ├── data-structures-and-schemas.md# JSON schema definitions and state contracts
+│   └── audio-routing-macos.md        # ScreenCaptureKit zero-driver audio & multitrack guide
 ```
 
 ---
