@@ -158,9 +158,9 @@ else
   echo "    - Profile Menu -> Select 'The Sound Above - Staging' (for testing/sandbox)"
   echo "    - Profile Menu -> Select 'The Sound Above' (for production broadcast)"
   echo "    - Scene Collection Menu -> Select 'The Sound Above - UGtastic Rewatch'"
-  echo " 2. In Scene 03/04, click 'Video Window (Orion)' to confirm your browser window."
+  echo " 2. In Scene 03/04, click 'Video Window (Chromium)' to confirm your browser window."
   echo " 3. In Scene 05, confirm 'Workbench Terminal' captures your iTerm2 window."
   echo " 4. In iTerm2, open a new window or tab with Profile -> 'The Sound Above'."
-  echo " 5. Verify 'Video Application Audio (Orion)' captures browser playback."
+  echo " 5. Verify 'Video Application Audio (Chromium)' captures browser playback."
 fi
 echo "=================================================================="

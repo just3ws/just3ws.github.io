@@ -167,8 +167,8 @@ All surfaces surfaced on stream, in presentation browsers, in terminals, and on 
    - Dark sumi ink background (`#1e232a`) with light canvas text (`#faf8f5`) and teal/amber borders.
    - Verified continuously by `bin/validate_obs_setup.rb` against the site's SCSS variables.
 
-3. **Orion Browser Profile ("The Sound Above")**:
-   - Custom stylesheet located at `obs/browser-themes/the-sound-above-orion.css`.
+3. **Chromium Browser Profile ("The Sound Above")**:
+   - Custom stylesheet located at `obs/browser-themes/the-sound-above-chromium.css`.
    - Injects antialiasing fixes, suppresses banners, and highlights text selection in craftsman amber (`rgba(180, 83, 9, 0.25)`).
 
 4. **iTerm2 Profile ("The Sound Above (Broadcast)")**:

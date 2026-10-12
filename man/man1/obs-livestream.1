@@ -30,10 +30,10 @@ Ambient slate title screen with live episode card, quote carousel, and animated 
 Full-screen host camera with lower-third HUD for framing historical context and opening thesis.
 .TP
 .B 03. Reaction \- Video Focus
-Large-format Orion browser window capture (80% canvas) paired with host camera picture-in-picture in the lower right, Now Watching HUD, and isolated application audio.
+Large-format Chromium browser window capture (80% canvas) paired with host camera picture-in-picture in the lower right, Now Watching HUD, and isolated application audio.
 .TP
 .B 04. Split Screen \- Video & Research
-Side-by-side comparison: Orion video playback on the left, secondary research browser or terminal on the right showing transcripts or timeline data on just3ws.localhost.
+Side-by-side comparison: Chromium video playback on the left, secondary research browser or terminal on the right showing transcripts or timeline data on just3ws.localhost.
 .TP
 .B 05. Workbench \- Code & Terminal
 Full-screen terminal window capture (18pt font minimum) with host camera inset for code analysis, git archaeology, and zdots platform tooling demonstrations.
@@ -50,13 +50,13 @@ Closing credits, archive resource links, and next episode preview.
 OBS on macOS Golden Gate (Darwin 27) utilizes native ScreenCaptureKit and CoreAudio capture:
 .IP \(bu 2
 .B Per-Application Audio (\fIsck_audio_capture\fR):
-Taps the digital PCM stream of the Orion browser directly. Completely isolates video playback while automatically filtering out Mail chimes, Slack dings, terminal bells, and Spotify.
+Taps the digital PCM stream of the Chromium browser directly. Completely isolates video playback while automatically filtering out Mail chimes, Slack dings, terminal bells, and Spotify.
 .IP \(bu 2
 .B Desktop Audio (\fIcoreaudio_output_capture\fR):
 Taps default system output at a locked 48,000 Hz sample rate without requiring third-party virtual audio loopback drivers (Soundflower and BlackHole are obsolete).
 .IP \(bu 2
 .B 4-Track Master Recording:
-Advanced recording captures four independent, synchronized audio tracks simultaneously into hybrid MOV containers: Track 1 (Composite Stream Mix), Track 2 (Host Mic Isolated), Track 3 (Orion Video Isolated), Track 4 (Guest Isolated).
+Advanced recording captures four independent, synchronized audio tracks simultaneously into hybrid MOV containers: Track 1 (Composite Stream Mix), Track 2 (Host Mic Isolated), Track 3 (Chromium Video Isolated), Track 4 (Guest Isolated).
 .SH OVERLAYS
 Browser overlays in \fIobs/overlays/\fR poll \fIobs/overlays/overlay-state.json\fR every 2.5 seconds:
 .TP

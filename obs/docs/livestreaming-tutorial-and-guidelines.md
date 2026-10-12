@@ -43,11 +43,11 @@ Verify that `obs/overlays/overlay-state.json` updates with the interviewee name,
 
 To keep stream text crisp and readable for viewers on 1080p displays or mobile devices:
 
-1. **Video Browser (Orion)**:
-   - Open Orion and navigate to the target interview on Vimeo, YouTube, or your local archive folder.
+1. **Video Browser (Chromium)**:
+   - Open Chromium and navigate to the target interview on Vimeo, YouTube, or your local archive folder.
    - Set window size to 16:9 ratio.
-   - Press `Cmd+Option+T` to hide the tab bar and reduce visual clutter.
-2. **Investigation Browser (Safari or Secondary Orion Window)**:
+   - Use a dedicated clean window or full-screen mode to reduce visual clutter.
+2. **Investigation Browser (Safari or Secondary Browser Window)**:
    - Open `https://just3ws.localhost/timeline/community/` and `https://just3ws.localhost/interviews/`.
    - Keep the interviewee's dossier, transcript, and signatory network graph ready for immediate reference.
 3. **Workbench Terminal (Ghostty or iTerm2)**:
@@ -57,7 +57,7 @@ To keep stream text crisp and readable for viewers on 1080p displays or mobile d
 4. **OBS Studio**:
    - Select Profile: **The Sound Above**.
    - Select Scene Collection: **The Sound Above - UGtastic Rewatch**.
-   - In Scene `03. Reaction - Video Focus`, click `Video Window (Orion)` in the Sources panel to confirm window attachment.
+   - In Scene `03. Reaction - Video Focus`, click `Video Window (Chromium)` in the Sources panel to confirm window attachment.
 
 ---
 
@@ -66,8 +66,8 @@ To keep stream text crisp and readable for viewers on 1080p displays or mobile d
 On macOS Golden Gate (Darwin 27), audio routing is fully digital:
 
 - **Mandatory Headphones**: Always wear headphones or in-ear monitors. If interview audio plays through your physical laptop speakers, your open microphone will capture room echo.
-- **Isolated App Audio**: ScreenCaptureKit (`sck_audio_capture`) taps the Orion process directly. It will never capture system alert chimes, Slack dings, or email notifications.
-- **Spacebar Control**: Pausing playback in Orion instantly silences the video audio stream, giving you a clean stage to comment without audio overlap.
+- **Isolated App Audio**: ScreenCaptureKit (`sck_audio_capture`) taps the Chromium process directly. It will never capture system alert chimes, Slack dings, or email notifications.
+- **Spacebar Control**: Pausing playback in Chromium instantly silences the video audio stream, giving you a clean stage to comment without audio overlap.
 - **Vocal Processing**: Your microphone channel already includes RNNoise neural suppression (filters keyboard typing), vocal compression (evens speech dynamics), and a safety brickwall limiter at -1.5 dB.
 
 ---

@@ -75,7 +75,7 @@ obs/
 │   └── test-audio-routing.sh         # Audio diagnostic tool for CoreAudio and ScreenCaptureKit
 ├── docs/
 │   ├── recording-cheatsheet.md       # Operator cheatsheet, pre-flight checklist & quick reference
-│   ├── reaction-and-coding-setup.md  # Display scaling, Orion browser, and window ergonomics
+│   ├── reaction-and-coding-setup.md  # Display scaling, Chromium browser, and window ergonomics
 │   ├── livestreaming-tutorial-and-guidelines.md # Operational tutorial and broadcast guidance
 │   ├── data-structures-and-schemas.md# JSON schema definitions and state contracts
 │   └── audio-routing-macos.md        # ScreenCaptureKit zero-driver audio & multitrack guide
@@ -91,8 +91,8 @@ The scene collection (`ugtastic-sound-above.json`) provides eight dedicated prod
 | :--- | :--- | :--- | :--- |
 | **01. Starting Soon** | Ambient slate background, pre-stream title, episode card, animated pulse | Off / Bumper | Pre-stream countdown and audience arrival |
 | **02. Monologue / Full Camera** | Host camera full screen with Lower-Third overlay | Mic/Aux only | Opening thesis, historical context, and concluding takeaways |
-| **03. Reaction - Video Focus** | Orion browser window (80% canvas) + Host Camera PiP (lower right) + Now Watching HUD | Mic/Aux + Orion Video Audio | Watching UGtastic interviews, pausing, and commenting |
-| **04. Split Screen - Video & Research** | Side-by-side: Orion video on left, `just3ws.localhost` on right, centered host cam | Mic/Aux + Orion Video Audio | Comparing interview moments directly against transcripts and timeline |
+| **03. Reaction - Video Focus** | Chromium browser window (80% canvas) + Host Camera PiP (lower right) + Now Watching HUD | Mic/Aux + Chromium Video Audio | Watching UGtastic interviews, pausing, and commenting |
+| **04. Split Screen - Video & Research** | Side-by-side: Chromium video on left, `just3ws.localhost` on right, centered host cam | Mic/Aux + Chromium Video Audio | Comparing interview moments directly against transcripts and timeline |
 | **05. Workbench - Code & Terminal** | Full terminal/editor window capture + Host Camera PiP (lower right) | Mic/Aux | Live code analysis, git archaeology, and zdots tool demos |
 | **06. Guest & Co-Host Discussion** | Two-up side-by-side camera boxes + shared screen inset | Mic/Aux + Guest Audio | Joint retrospectives with Chicago tech veterans |
 | **07. Intermission / BRB** | Clean pause card: "Holding the Thread" with current topic | Muted | Stepping away from the workbench during long streams |
@@ -107,12 +107,12 @@ This project is tailored specifically for macOS Golden Gate (Darwin 27) running 
 - **Zero-CPU Video Encoding**: Utilizes `apple_h264` (Apple VT H264 Hardware Encoder), routing video compression directly to the Apple M4 media engine. The machine runs completely silent and cool without dropping frames.
 - **True 1080p Unscaled Canvas**: Base canvas and output resolution are set to 1920x1080 at 60 fps. Eliminates downscaling blur, guaranteeing that terminal code, small font sizes, and browser text remain perfectly legible to viewers.
 - **macOS Golden Gate Native Sound Capture**: Leverages Golden Gate's built-in ScreenCaptureKit and CoreAudio output capture architecture. Eliminates the need for legacy virtual audio drivers (BlackHole, Soundflower, Loopback) entirely:
-  - **Isolated App Audio**: Captures Orion video sound directly via `sck_audio_capture` without catching Slack dings or notification sounds.
+  - **Isolated App Audio**: Captures Chromium video sound directly via `sck_audio_capture` without catching Slack dings or notification sounds.
   - **Desktop Audio**: Native `coreaudio_output_capture` routes system audio cleanly at 48,000 Hz.
 - **Multitrack Master Recording**: Advanced recording mode (`RecTracks=15`) captures 4 separate synchronized audio tracks into high-quality hybrid MOV files:
-  - **Track 1**: Stream composite mix (Host Mic + Orion Video Audio + Overlays)
+  - **Track 1**: Stream composite mix (Host Mic + Chromium Video Audio + Overlays)
   - **Track 2**: Host microphone isolated (Pristine speech for podcasting and Whisper transcripts)
-  - **Track 3**: Orion video audio isolated (Reference interview audio)
+  - **Track 3**: Chromium video audio isolated (Reference interview audio)
   - **Track 4**: Guest / Discord / Zoom isolated (Remote co-host voice)
 
 ---
@@ -141,7 +141,7 @@ Verify microphone permissions and audio device sample rates:
 ```
 
 ### Step 4: Window Management on macOS
-1. Open **Orion** browser and navigate to the cued UGtastic interview video (or local video archive file).
+1. Open **Chromium** browser and navigate to the cued UGtastic interview video (or local video archive file).
 2. Open a secondary browser window pointing to `https://just3ws.localhost/timeline/community/` and `https://just3ws.localhost/interviews/` for instant lookup.
 3. Open **Terminal** (Ghostty, iTerm2, or macOS Terminal) with font size set to at least 18pt.
 4. Launch **OBS Studio**, select Profile: `The Sound Above` and Scene Collection: `The Sound Above - UGtastic Rewatch`.
@@ -151,7 +151,7 @@ Verify microphone permissions and audio device sample rates:
 1. Select Scene: **01. Starting Soon**.
 2. Click **Start Streaming** and **Start Recording** in OBS.
 3. After 3 to 5 minutes, transition cleanly to Scene: **02. Monologue / Full Camera** to introduce the historical era and context.
-4. Transition to Scene: **03. Reaction - Video Focus** and press `Spacebar` in Orion to play the interview.
+4. Transition to Scene: **03. Reaction - Video Focus** and press `Spacebar` in Chromium to play the interview.
 5. Pause at key inflection points to reflect, comment, or switch to Scene: **04. Split Screen** and Scene: **05. Workbench**.
 6. When concluding, switch to Scene: **08. Outro & Next Stream** to share archive links and sign off.
 

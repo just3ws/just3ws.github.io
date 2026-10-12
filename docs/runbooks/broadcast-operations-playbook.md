@@ -33,7 +33,7 @@ Every broadcast belongs to one of three archetypes:
 * **Purpose**: Forensic rewatch and oral history commentary over 200+ UGtastic interviews (2009 to 2015).
 * **Curriculum**: Exactly 31 sequential episodes across 6 historical movements cataloged in `obs/curation/sequence-manifest.json`.
 * **Primary Scenes**: `01. Starting Soon`, `02. Monologue / Full Camera`, `03. Reaction - Video Focus`, `04. Split Screen - Video & Research`, `08. Outro & Next Stream`.
-* **Audio Routing**: Orion browser playback isolated via `sck_audio_capture` on Track 3.
+* **Audio Routing**: Chromium browser playback isolated via `sck_audio_capture` on Track 3.
 
 ### Archetype 2: Errata ("Errata")
 * **Purpose**: Personal reflections, book readings, live coding demonstrations, deep-dive concept breakdowns, and physical archival memorabilia showcases.
@@ -231,19 +231,19 @@ When an AI assistant or subagent (`oral-history-broadcaster`) is instructed to s
 
 ---
 
-## 7. Single-Monitor Operations, Hotkey Conventions & Orion Profile
+## 7. Single-Monitor Operations, Hotkey Conventions & Chromium Profile
 
 Operating a broadcast on a single monitor requires strict window-level targeting and muscle memory so OBS controls never leak onto the recorded canvas.
 
 ### 7.1 Single-Monitor Operating Principles
 
 1. **Target Window Buffers, Never Display Capture**:
-   - Scene 03 & 04 (`Research Window`) bind to the dedicated **Orion** window.
+   - Scene 03 & 04 (`Video Window` / `Research Window`) bind to the dedicated **Chromium** window.
    - Scene 05 (`Workbench Terminal`) binds directly to **iTerm2**.
    - macOS ScreenCaptureKit captures the application window buffer directly. You can keep OBS open beside, on top of, or behind your work without OBS ever showing up in the output.
 2. **Dual-Space Virtual Desktop Architecture**:
    - **macOS Space 1 (Studio Control)**: OBS Studio maximized. Monitor audio VU meters, elapsed recording time, and live scene status.
-   - **macOS Space 2 (Presentation & Workbench)**: Left half = Orion (125% zoom for viewer legibility); Right half = iTerm2 (or full-screen terminal for Scene 05).
+   - **macOS Space 2 (Presentation & Workbench)**: Left half = Chromium (125% zoom for viewer legibility); Right half = iTerm2 (or full-screen terminal for Scene 05).
    - Switch spaces instantly using `Control + Left/Right Arrow`.
 
 ### 7.2 Conflict-Free OBS Global Hotkey Map
@@ -257,26 +257,25 @@ To switch scenes and control recording without bringing OBS into keyboard focus,
 | **Scene 01 (Pre-Show)** | `Control + Option + 1` | Standard macOS app shortcuts rarely use `Control + Option` |
 | **Scene 02 (Monologue / Full Camera)** | `Control + Option + 2` | Instant return to host camera during discussions |
 | **Scene 03 (Interview Focus)** | `Control + Option + 3` | Switches to historical video with host PIP |
-| **Scene 04 (Split Screen Research)** | `Control + Option + 4` | Switches to dual video + Orion research window |
+| **Scene 04 (Split Screen Research)** | `Control + Option + 4` | Switches to dual video + Chromium research window |
 | **Scene 05 (Workbench Terminal)** | `Control + Option + 5` | Full terminal view (lower-third auto-hides after 10s) |
 | **Scene 06 (Guest Discussion)** | `Control + Option + 6` | Two-up camera layout for The Room dialogues |
 | **Scene 07 (BRB Intermission)** | `Control + Option + 7` | Clean break screen if stepping away |
 | **Scene 08 (Outro & Wrap Up)** | `Control + Option + 8` | Credits and next broadcast cues |
 
-### 7.3 Orion Profile: "The Sound Above" Configuration
+### 7.3 Chromium Profile: "The Sound Above" Configuration
 
-When presenting web archives, transcripts, and timeline pages during a broadcast, configure the dedicated Orion profile as follows:
+When presenting web archives, transcripts, and timeline pages during a broadcast, configure the dedicated Chromium profile as follows:
 
 1. **Window Resolution & Sizing**:
-   - Set Orion window bounds to **1280x720** (16:9 ratio) placed on the right side of Space 2.
+   - Set Chromium window bounds to **1280x720** (16:9 ratio) placed on the right side of Space 2.
    - In Scene 04 (Split Screen), OBS scales this window cleanly into the research frame.
 2. **View & Zoom Settings**:
    - Set default zoom to **125%** (`Command + Plus`). This ensures 14px and 16px body text renders crisp and readable on 1080p stream downscales and mobile video players.
-   - Hide Tab Bar when single tab: **View -> Hide Tab Bar**.
-   - Enable Compact Tabs or auto-hiding address bar for maximum vertical content area.
+   - Clean window presentation: use app-mode (`--app=URL`) or full-screen (`Cmd+Shift+F`) to eliminate tab bar distractions.
 3. **Craftsmanship UserStyle**:
-   - In Orion, open **Preferences -> Extensions -> Add User Scripts / Styles** (or use Stylus).
-   - Load `obs/browser-themes/the-sound-above-orion.css`:
+   - In Chromium, install Stylus or use user stylesheet extension.
+   - Load `obs/browser-themes/the-sound-above-chromium.css`:
      - Suppresses cookie banners and popups automatically.
      - Enforces antialiased typography optimized for video encoding.
      - Styles text selection with the warm craftsman amber highlight (`rgba(180, 83, 9, 0.25)`).

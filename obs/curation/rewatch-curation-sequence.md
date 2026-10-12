@@ -495,7 +495,7 @@ Each rewatch stream is calibrated for a 60 to 90 minute broadcast:
                  - What was "the sound above" for them?
 
 [15:00 - 45:00]  Scene 03 & 04: The Rewatch & Reaction
-                 Playing the archival video from Orion browser:
+                 Playing the archival video from Chromium browser:
                  - Listening closely to phrasing and unspoken context
                  - Pausing at inflection points
                  - Switching to Scene 04 (Split Screen) to cross-reference
@@ -525,8 +525,8 @@ Each rewatch stream is calibrated for a 60 to 90 minute broadcast:
 ## Technical Setup Notes for the Host
 
 1. **Browser Video Playback**:
-   - Use Orion (or dedicated clean browser profile) in full 1080p window.
-   - ScreenCaptureKit Application Audio capture automatically routes Orion's sound directly into OBS without desktop echo or mic bleed.
+   - Use Chromium (dedicated clean browser profile or app mode) in full 1080p window.
+   - ScreenCaptureKit Application Audio capture automatically routes Chromium's sound directly into OBS without desktop echo or mic bleed.
 2. **Local Archive Cross-Referencing**:
    - Keep `https://just3ws.localhost/timeline/community/` and `https://just3ws.localhost/interviews/` open in a second browser window for instant lookup.
 3. **Updating Stream Overlays**:

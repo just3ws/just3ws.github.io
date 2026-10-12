@@ -17,7 +17,7 @@ The project profile fixes the OBS canvas at **1920x1080 (Full HD, 16:9)**. Every
 ### The Two-Window Reaction Layout
 
 When reacting to an interview video while cross-referencing archival data:
-- **Left Pane (Video Playback)**: Orion browser playing the interview video.
+- **Left Pane (Video Playback)**: Chromium browser playing the interview video.
 - **Right Pane (Investigation & Research)**: Secondary browser or terminal showing `just3ws.localhost/timeline/community/` or `just3ws.localhost/interviews/`.
 
 ```
@@ -25,7 +25,7 @@ When reacting to an interview video while cross-referencing archival data:
 |                     1920x1080 OBS Canvas                    |
 | +-------------------------+ +-----------------------------+ |
 | |                         | |                             | |
-| |   Orion Browser         | |   Secondary Browser         | |
+| |   Chromium Browser      | |   Secondary Browser         | |
 | |   (UGtastic Interview)  | |   (just3ws.localhost)       | |
 | |                         | |   Transcripts & Timeline    | |
 | |   Width: 910px          | |   Width: 910px              | |
@@ -51,18 +51,18 @@ When switching to live terminal archaeology, git analysis, or multi-agent demos:
 
 ---
 
-## 3. Orion Browser Optimization for Video Reaction
+## 3. Chromium Browser Optimization for Video Reaction
 
-Orion is a fast, lightweight WebKit browser on macOS. When using Orion as the video source:
+When using Chromium as the video playback source:
 
-1. **Disable Toolbars in Full Screen**:
-   Press `Cmd+Shift+F` in Orion to enter clean full-screen mode, or press `Cmd+Option+T` to toggle the tab bar off when capturing a single window.
+1. **Clean Window Presentation**:
+   Open a clean dedicated profile window, or use app-mode (`--app=URL`) or full-screen (`Cmd+Shift+F`) to eliminate tab bar distractions when capturing a single window.
 2. **Native Video Audio Routing**:
-   OBS utilizes macOS ScreenCaptureKit application audio capture. It hooks directly into the Orion process (`com.kagi.kagimacOS`), capturing the interview audio stream digitally without routing through virtual audio drivers.
+   OBS utilizes macOS ScreenCaptureKit application audio capture. It hooks directly into the Chromium process (`org.chromium.Chromium`), capturing the interview audio stream digitally without routing through virtual audio drivers.
 3. **Pausing and Scrubbing**:
-   Keep keyboard focus on the Orion window so pressing `Spacebar` pauses the video immediately when you want to interject and comment.
+   Keep keyboard focus on the Chromium window so pressing `Spacebar` pauses the video immediately when you want to interject and comment.
 4. **Playback Speed**:
-   For slow-paced archival recordings, 1.1x or 1.2x playback speed in Orion can keep stream momentum high while remaining completely intelligible.
+   For slow-paced archival recordings, 1.1x or 1.2x playback speed in Chromium can keep stream momentum high while remaining completely intelligible.
 
 ---
 

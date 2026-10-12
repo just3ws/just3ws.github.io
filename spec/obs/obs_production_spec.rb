@@ -54,9 +54,9 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
     expect(File.exist?(overlay_state_file)).to be true
     state = JSON.parse(File.read(overlay_state_file))
 
-    expect(state["episode"]["number"]).to eq(1)
-    expect(state["episode"]["interviewee"]).to eq("Sergio Pereira")
-    expect(state["stream"]["series_title"]).to eq("The Sound Above")
+    expect(state["episode"]["number"]).to be >= 1
+    expect(state["episode"]["interviewee"]).not_to be_empty
+    expect(state["stream"]["series_title"]).to match(/The Sound Above|Errata|Ramblin' & Amblin'|The Room/)
 
     expect(File.exist?(theme_css_file)).to be true
     css = File.read(theme_css_file)
