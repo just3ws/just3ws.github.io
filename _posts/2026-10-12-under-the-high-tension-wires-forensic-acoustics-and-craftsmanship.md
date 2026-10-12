@@ -103,22 +103,22 @@ flowchart TD
 
 The container metadata showed an audio-video discrepancy that immediately pointed toward a common digital recording failure:
 
-$$\Delta t = 1303.608144\text{ s} - 1091.093333\text{ s} = 212.514811\text{ s}$$
+**Δt = 1303.608144 s − 1091.093333 s = 212.514811 s**
 
 Under strong electromagnetic radiation, it is well known that digital phase-locked loops (PLLs) and clock crystals can wander. The mathematical stretch factor seemed mathematically sound:
 
-$$\text{tempo} = \frac{1091.093333}{1303.608144} \approx 0.836979$$
+**tempo = 1091.093333 / 1303.608144 ≈ 0.836979**
 
-When we applied an `atempo=0.836979` filter, the speech sounded like a slurred caricature. More importantly, when verifying the video at $t=11.60\text{ s}$, word onsets lagged hundreds of milliseconds behind mouth articulation.
+When we applied an `atempo=0.836979` filter, the speech sounded like a slurred caricature. More importantly, when verifying the video at *t* = 11.60 s, word onsets lagged hundreds of milliseconds behind mouth articulation.
 
 ### The Ground Truth Discovery
-Rather than accepting the mathematical illusion, we used automated speech transcription to locate the true end of the vocal track. At exactly $18\text{m }11.09\text{s}$, the speech concluded naturally with:
+Rather than accepting the mathematical illusion, we used automated speech transcription to locate the true end of the vocal track. At exactly 18m 11.09s, the speech concluded naturally with:
 
 > _"I'll be publishing that in the next few days and I hope it's worthwhile. Thank you."_
 
 For the remaining 3 minutes and 32 seconds, the camera had simply continued rolling silently as I walked back down the path. The speech had been recorded at **natural 1.0x speed** all along. Stretching the audio was creating artificial desync where none existed.
 
-The solution was lossless padding: keep the audio at $1.0\times$ natural speed and pad the trailing silence using `apad=whole_dur=1303.608144`.
+The solution was lossless padding: keep the audio at 1.0× natural speed and pad the trailing silence using `apad=whole_dur=1303.608144`.
 
 ---
 
@@ -130,11 +130,11 @@ We split the stereo file into independent mono channels and measured root-mean-s
 
 | Objective Metric | Left Channel (Bottom Primary Mic) | Right Channel (Top Secondary Mic) | Hardware Delta |
 | :--- | :--- | :--- | :--- |
-| **Silence Noise Floor** | $176.31\text{ RMS}$ | $611.15\text{ RMS}$ | Right mic is **$3.5\times$ louder** |
-| **Speech Amplitude** | $659.78\text{ RMS}$ | $625.23\text{ RMS}$ | Right mic captures negligible voice gain |
-| **Dynamic Range** | **$11.46\text{ dB}$** | **$0.20\text{ dB}$** | Right mic voice is completely drowned out |
-| **Signal-to-Noise Ratio** | **$14.00$** | **$1.05$** | Right channel is mathematically unusable |
-| **Sub-$100\text{ Hz}$ Rumble** | $7.86 \times 10^{15}$ | $5.12 \times 10^{17}$ | Right mic captures **$65.2\times$ more drone** |
+| **Silence Noise Floor** | 176.31 RMS | 611.15 RMS | Right mic is **3.5× louder** |
+| **Speech Amplitude** | 659.78 RMS | 625.23 RMS | Right mic captures negligible voice gain |
+| **Dynamic Range** | **11.46 dB** | **0.20 dB** | Right mic voice is completely drowned out |
+| **Signal-to-Noise Ratio** | **14.00** | **1.05** | Right channel is mathematically unusable |
+| **Sub-100 Hz Rumble** | 7.86 × 10¹⁵ | 5.12 × 10¹⁷ | Right mic captures **65.2× more drone** |
 
 The Motorola Moto G uses an asymmetric microphone array: a primary talk microphone at the base of the chassis and a secondary ambient microphone at the top for noise suppression. 
 
@@ -165,12 +165,12 @@ The script runs at **18.8x real-time speed**, restoring the entire 21.7-minute v
 
 | Metric | Raw Corrupted Recording | Restored (`fix_video.sh`) | Objective Impact |
 | :--- | :--- | :--- | :--- |
-| **60 Hz Mains Hum** | $4.17 \times 10^{13}$ | **$2.95 \times 10^{12}$** | **92.9% Cut** |
-| **120 Hz Harmonic Buzz** | $1.73 \times 10^{14}$ | **$2.28 \times 10^{13}$** | **86.8% Cut** |
-| **180 Hz Harmonic Buzz** | $4.11 \times 10^{14}$ | **$5.20 \times 10^{13}$** | **87.3% Cut** |
-| **Pause Noise Floor** | $68.26\text{ RMS}$ | **$5.63\text{ RMS}$** | **91.8% Reduction** |
-| **Speech Clarity (SNR)**| $22.3\text{ dB}$ | **$43.2\text{ dB}$** | **+20.9 dB Gain** |
-| **Impulsive Corona Clicks**| $76\text{ / 10s}$ | **$0\text{ / 10s}$** | **100% Eliminated** |
+| **60 Hz Mains Hum** | 4.17 × 10¹³ | **2.95 × 10¹²** | **92.9% Cut** |
+| **120 Hz Harmonic Buzz** | 1.73 × 10¹⁴ | **2.28 × 10¹³** | **86.8% Cut** |
+| **180 Hz Harmonic Buzz** | 4.11 × 10¹⁴ | **5.20 × 10¹³** | **87.3% Cut** |
+| **Pause Noise Floor** | 68.26 RMS | **5.63 RMS** | **91.8% Reduction** |
+| **Speech Clarity (SNR)**| 22.3 dB | **43.2 dB** | **+20.9 dB Gain** |
+| **Impulsive Corona Clicks**| 76 / 10s | **0 / 10s** | **100% Eliminated** |
 | **Video Compression Loss** | Native 1080p | **Bit-for-Bit Identical** | **`-c:v copy` Passthrough** |
 
 ### Downstream Impact on Speech Recognition (`whisper.cpp`)
@@ -293,16 +293,16 @@ Let's do an honest accounting of the curriculum required to arrive at this resul
 1. **Acoustic Physics & Electromagnetic Induction**: Understanding Maxwell's equations and Faraday induction loops in high-impedance unbalanced smartphone microphone traces under multi-phase transmission lines.
 2. **Digital Signal Processing (DSP) & Filter Design**: 
    - Windowed Fast Fourier Transforms (FFTs) and spectral leakage.
-   - Butterworth IIR band-reject notch filters, calculating Q-factors ($Q = f_0 / \text{BW}$), phase distortion, and group delay.
+   - Butterworth IIR band-reject notch filters, calculating Q-factors (Q = f₀ / BW), phase distortion, and group delay.
    - Spectral noise subtraction matrices (`afftdn`) and managing artifactual "musical noise" (flutter/chirping).
-   - Time-domain transient derivatives ($|\Delta s| / \Delta t$) for impulsive de-clicking.
-   - Downward dynamic range expansion: knee smoothing, attack ($t_a$), release ($t_r$), and ratio curves.
+   - Time-domain transient derivatives (|Δs| / Δt) for impulsive de-clicking.
+   - Downward dynamic range expansion: knee smoothing, attack (t_a), release (t_r), and ratio curves.
 3. **Multimedia Container Forensics & Demuxing**:
    - ISO/IEC 14496-12 QuickTime/MP4 container architecture (moov/mdat atom layouts, timescale ticks, presentation vs. decoding timestamps).
    - Video track rotation matrices and container-level frame-rate variability (29.917 average fps).
    - Lossless stream passthrough (`-c:v copy`) vs. generational quantization loss in H.264 profiles.
 4. **Speech Acoustics & Acoustic Phonetics**:
-   - Human vocal formant preservation ($F_1, F_2, F_3$) across vowels vs. sibilant fricative consonants ($>4\text{ kHz}$).
+   - Human vocal formant preservation (F₁, F₂, F₃) across vowels vs. sibilant fricative consonants (> 4 kHz).
    - Downstream attention decoding in transformer-based acoustic models (`whisper.cpp`).
 5. **POSIX Systems Engineering**:
    - Shell scripting, standard streams, IEEE 754 floating-point precision via `bc`, and UNIX troff typesetting (`man ./fix_video.1`).
