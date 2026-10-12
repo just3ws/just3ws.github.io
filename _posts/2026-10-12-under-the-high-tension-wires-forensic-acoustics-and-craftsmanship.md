@@ -262,5 +262,12 @@ With that vigilance, a corrupted recording was restored to pristine clarity, an 
 - **Technical Forensics Document**: [`FORENSICS.md`](https://github.com/just3ws/dehum/blob/main/FORENSICS.md)
 - **Transcript Diff Telemetry**: [`TRANSCRIPT_DIFF.md`](https://github.com/just3ws/dehum/blob/main/TRANSCRIPT_DIFF.md)
 - **YouTube Video**: Watch the restored video on YouTube: [Under the High-Tension Wires (https://youtu.be/8LYHo1dOkMo)](https://youtu.be/8LYHo1dOkMo), part of the [Ramblin' & Amblin' Playlist](https://www.youtube.com/playlist?list=PLNtb969T2-l0)
+- **Key Restoration Timestamps**:
+  - `00:00` — [Initial High-Tension Power Line Noise & Background](https://youtu.be/8LYHo1dOkMo?t=0)
+  - `00:11` — [Clean Speech Baseline ("Here I am...")](https://youtu.be/8LYHo1dOkMo?t=11)
+  - `01:21` — [UGtastic Oral History Archive Background](https://youtu.be/8LYHo1dOkMo?t=81)
+  - `18:11` — [Speech Conclusion ("Thank you") & True Boundary](https://youtu.be/8LYHo1dOkMo?t=1091)
+- **Raw vs. Restored Mirror**: Both the unedited corrupted master (`VID_20261009_111445043.mp4`, 3.1 GB) and the restored output (`VID_20261009_111445043_fixed.mp4`, 3.3 GB) are archived in the shared Google Drive directory (`Google Drive / ai / dehum/`) for direct waveform and listening comparison.
 - **UGtastic Oral History Archive**: [UGtastic Interviews on just3ws](https://www.just3ws.com/ugtastic/)
+
 
