@@ -299,6 +299,32 @@ When you use an AI tool outside your core domain:
 
 This is the ultimate lesson of the high-tension field recording: AI gives you immense leverage to solve problems you could never solve alone, but it also creates a blinding halo of false confidence. True craftsmanship means publishing the compromises, documenting what you don't know, and never mistaking machine assistance for human mastery.
 
+### 5.5 The Wish-Granting Machine vs. The Monkey's Paw: The Impossible Reasoning Problem
+
+There is an even deeper psychological and organizational dilemma that sits at the center of this entire dynamic: **How do you reason with someone who only sees a wish-granting machine?**
+
+When someone encounters an AI system that solves a painful, multi-disciplinary engineering problem in an afternoon—restoring corrupted video, calculating multi-stage filter coefficients, generating shell harnesses, extracting transcripts, and scaffolding production environments—their immediate, natural reaction is awe:
+> *"Look at what this tool just did! It granted my wish in thirty seconds! Why are you complaining about edge cases or asking for caution?"*
+
+If you walk into the room and attempt to explain that the machine is *also* a Monkey's Paw—that it granted the wish by warping container timestamps, smearing phase frequencies, halving fricative acoustics, introducing hallucination loops, and bypassing platform security invariants—they don't hear your nuance. They don't hear your architectural critique.
+
+All they see is a miraculous wishing well, and all they hear from you is pedantic obstructionism or cynical gatekeeping:
+> *"The video sounds fine on my laptop speakers. The build passes. The ball didn't drop on my head. Why are you staring at the ceiling waiting for it to fall?"*
+
+This is the central paradox of modern AI adoption:
+1. **The Capability is Real**: The leverage is not an illusion. The video *is* saved. The workflow *did* collapse a three-day forensic mastering job into an afternoon.
+2. **The Mirage is Total**: The perceived competence of the operator is inflated beyond all proportion, creating unearned confidence and blind spots that compound silently.
+3. **The Warning Sounds Like Heresy**: Attempting to point out the hidden failure modes to someone intoxicated by immediate output makes you look detached from reality.
+
+How do you reason with that? 
+
+You cannot reason with it through abstract warnings or generic skepticism. The only defense is **radical transparency and craftsmanship in the open**:
+- You must **document the exact chain of borrowed expertise** so the boundaries of what you actually know versus what the machine supplied are unmistakable.
+- You must **admit what was done wrong**—the phase smearing, the 4 kHz brickwall, the silence artifacts—before a production failure exposes them for you.
+- You must **machine the output into inspectable, deterministic, human-auditable assets** (`fix_video.sh`, manual verification gates, automated test suites) rather than treating the AI conversation as an oracle.
+
+If you don't build that discipline into your craft, you will keep wishing on the paw. And sooner or later, the ball you threw into the clouds will come straight down when you aren't looking.
+
 ---
 
 - **Restoration Toolchain Repo**: [GitHub: `just3ws/dehum`](https://github.com/just3ws/dehum)
