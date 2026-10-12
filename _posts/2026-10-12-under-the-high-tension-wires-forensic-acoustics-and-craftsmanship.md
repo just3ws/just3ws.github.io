@@ -541,6 +541,57 @@ If you only fly with the rented eagle, you do not experience a true *Untergang* 
 
 True craftsmanship is building the mountain through lived failure, holding the eagle and the snake in sovereign equilibrium, and knowing how to empty your cup when you meet the physical world.
 
+### 5.11 "Wait! Don't Go. Just... Trust Me Bro": The Homer Simpson Car Problem
+
+At this point in the case study, any sensible reader is leaning back from the screen, squinting, and thinking:  
+> *"Wait. You wrote a 150-line Bash script to fix a buzzing YouTube video. How on earth did we get to 10-panel telemetry spectrograms, 64-credit accredited graduate curricula, Walter Kaufmann's translations of Nietzsche, and the tragic epistemology of Friedrich's eagle and serpent?"*
+
+And to that, the modern AI engineer holds up two trembling hands and says:  
+> **"Wait! Don't go! Just... trust me, bro! You don't understand—I need this! It has to have the accredited board exams! The eagle represents microsecond transients!"**
+
+This is the punchline. This is where the simulation collapses into pure, deliberate, glorious absurdity.
+
+#### What Did Homer Simpson Forget to Put on The Homer?
+
+In the classic 1991 *Simpsons* episode ("Oh Brother, Where Art Thou?"), Herb Powell gives Homer Simpson absolute, unconstrained blank-check authority to design the car for the average American: **The Homer**.
+
+Homer doesn't stop at cup holders. With zero friction and no one to say no, Homer adds:
+- Giant cup holders that fit novelty-sized sodas.
+- Two separate soundproof bubble domes for fighting children with optional restraints and muzzles.
+- Three horns that play "La Cucaracha".
+- Shag carpeting.
+- Tailfins the size of cathedral spires.
+
+The car costs $82,000, bankrupts the company in forty seconds, and destroys his brother’s life.
+
+**Generative AI is The Homer on an infinite credit card.**
+
+When you ask an LLM to design an audio filter, there is no physical resistance. There is no engineering manager saying *"We don't have budget for a second bubble dome."* There is no compiler saying *"Why does a shell script need an epistemic failure tree?"* 
+
+The model just looks at you with eager, unblinking eyes and asks:  
+> *"Would you like three horns that play La Cucaracha? I can also generate the musical notation in troff format. Shall I draft the warranty agreement under Delaware corporate law?"*
+
+And because prompting takes four seconds and costs forty cents, the human engineer succumbs to the madness:  
+> *"Yes! Give me the cathedral tailfins! Add the bubble dome! Give me a 15-year university syllabus! Add Walter Kaufmann's footnotes! Give me a ten-panel dashboard with heatmaps and crest gauges!"*
+
+#### The Anatomy of the Hype Machine
+
+Look at what we actually built around a 150-line shell script in forty-eight hours:
+1. **The Core Tool**: A 150-line POSIX script running five native `ffmpeg` filters in 40 milliseconds. Total cost: $0.00.
+2. **The Homer Attachments**:
+   - A 10-panel scientific forensic dashboard with dual-mic spatial curves and crest factor telemetry.
+   - An accredited 64-credit post-graduate curriculum specification (`PVL-SPEC-2026-CURR-01`) complete with prerequisite DAGs.
+   - A 41-turn chronological forensic execution timeline.
+   - Dual MIT/Creative Commons licensing with high-voltage liability indemnification clauses.
+   - A philosophical treatise reconciling dual MEMS smartphone antennas with 19th-century German existentialism.
+
+What did Homer forget to design into his car?  
+**He forgot to design a car that anyone actually needed to drive.**
+
+The 150-line shell script is the gold 2013 Toyota Sienna. The rest of this repository is The Homer: giant, absurd, magnificent, over-engineered to the stratosphere, and held together by a prompt engineer screaming: *"Wait! Don't go! Look at the Q-factor on the third horn!"*
+
+If we cannot laugh at the sheer, unhinged excess of what these tools tempt us to construct, we are doomed to buy our own press releases. Craftsmanship is having the courage to build The Homer—and then having the wisdom to walk out to the driveway, start the Sienna, and drive to the grocery store.
+
 <figure style="margin: 2rem 0; text-align: center;">
   <img src="/assets/images/forensic_telemetry_dashboard.png" alt="Panoramic View Labs Forensic Telemetry and Acoustic Verification Mega Dashboard" style="width: 100%; border-radius: 8px; border: 1px solid var(--color-border, #334155); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);" loading="lazy">
   <figcaption style="font-size: 0.85rem; color: var(--color-text-muted, #94a3b8); margin-top: 0.75rem;">
