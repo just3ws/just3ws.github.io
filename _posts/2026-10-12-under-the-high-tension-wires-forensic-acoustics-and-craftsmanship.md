@@ -54,23 +54,23 @@ In Hollywood police procedurals, the investigator sits in front of a fuzzy monit
 </div>
 
 <div class="audio-comparison-box" style="background: var(--color-surface, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
-  <h4 style="margin-top: 0; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+  <h3 style="margin-top: 0; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
     <span>🎧</span> Forensic Audio A/B Listening Test (15-Second Direct Comparison)
-  </h4>
+  </h3>
   <p style="font-size: 0.9rem; color: var(--color-text-muted, #64748b); margin-bottom: 1rem;">
     Listen to the physical contrast between the raw smartphone microphone (flooded with 60 Hz hum, corona discharge arcing, and 65x inductive rumble) versus the restored output:
   </p>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
     <div style="background: #fff; padding: 0.75rem; border-radius: 6px; border: 1px solid #e2e8f0;">
       <strong style="display: block; font-size: 0.85rem; color: #dc2626; margin-bottom: 0.25rem;">🔴 Raw Corrupted Baseline (Right Mic Antenna)</strong>
-      <audio controls style="width: 100%; height: 36px;" preload="none">
+      <audio controls style="width: 100%; height: 36px;" preload="none" aria-label="Raw Corrupted Audio Baseline Sample">
         <source src="/assets/audio/dehum_comparison_raw.mp4" type="audio/mp4">
         Your browser does not support audio playback.
       </audio>
     </div>
     <div style="background: #fff; padding: 0.75rem; border-radius: 6px; border: 1px solid #e2e8f0;">
       <strong style="display: block; font-size: 0.85rem; color: #0f766e; margin-bottom: 0.25rem;">🟢 Restored Master (Isolated Left + 7-Stage DSP)</strong>
-      <audio controls style="width: 100%; height: 36px;" preload="none">
+      <audio controls style="width: 100%; height: 36px;" preload="none" aria-label="Restored Master Audio Sample">
         <source src="/assets/audio/dehum_comparison_fixed.mp4" type="audio/mp4">
         Your browser does not support audio playback.
       </audio>
