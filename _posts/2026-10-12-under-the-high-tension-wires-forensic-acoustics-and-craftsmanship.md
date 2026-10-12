@@ -452,6 +452,7 @@ The true cost of "good enough" is not the $39.40 of model tokens. The true cost 
 - **Technical Forensics Document**: [`FORENSICS.md`](https://github.com/just3ws/dehum/blob/main/FORENSICS.md)
 - **Transcript Diff Telemetry**: [`TRANSCRIPT_DIFF.md`](https://github.com/just3ws/dehum/blob/main/TRANSCRIPT_DIFF.md)
 - **YouTube Video**: Watch the restored video on YouTube: [Under the High-Tension Wires (https://youtu.be/8LYHo1dOkMo)](https://youtu.be/8LYHo1dOkMo), part of the [Ramblin' & Amblin' Playlist](https://www.youtube.com/playlist?list=PLNtb969T2-l0)
+- **LinkedIn Article**: Read and discuss on LinkedIn: [Under the High-Tension Wires: The 250:1 AI Leverage Trap, Slop, and Real Mastery](https://www.linkedin.com/pulse/under-high-tension-wires-2501-ai-leverage-trap-slop-real-mike-hall-gbbtc)
 - **Key Restoration Timestamps**:
   - `00:00` — [Initial High-Tension Power Line Noise & Background](https://youtu.be/8LYHo1dOkMo?t=0)
   - `00:11` — [Clean Speech Baseline ("Here I am...")](https://youtu.be/8LYHo1dOkMo?t=11)
