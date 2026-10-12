@@ -17,7 +17,9 @@ JINGLE_REGEX = /User groups with lots to say.*?(?:UGtastic|uktastic|euketastic|u
 
 RULES = [
   # --- Brand: UGtastic ---
-  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget|ukt|yug|yuget|yuge|ugtasc)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
+  [/\b(?:you|yu|u|ub|eub|euba|eubot|uk|uke|uge|evo|e|ute|uget|ukt|yug|yuget|yuge|ugtasc)[ -]?g?[ -]?(?:tastic|astic)(?:\.com)?\b/i, "UGtastic"],
+  [/\beubot\s+astic\b/i, "UGtastic"],
+  [/\beubatastic\b/i, "UGtastic"],
   [/\bugtasc\b/i, "UGtastic"],
   [/\b[Uu]ktasek(?:\.com)?\b/i, "UGtastic"],
   [/\b[Uu]btastic(?:\.com)?\b/i, "UGtastic"],

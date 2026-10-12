@@ -6,7 +6,9 @@ TRANSCRIPTS_DIR = "_data/transcripts"
 
 RULES = [
   # --- Brand: UGtastic ---
-  [/\b(?:you|yu|u|ub|uk|uke|uge|evo|e|ute|uget)[ -]?g?[ -]?tastic(?:\.com)?\b/i, "UGtastic"],
+  [/\b(?:you|yu|u|ub|eub|euba|eubot|uk|uke|uge|evo|e|ute|uget)[ -]?g?[ -]?(?:tastic|astic)(?:\.com)?\b/i, "UGtastic"],
+  [/\beubot\s+astic\b/i, "UGtastic"],
+  [/\beubatastic\b/i, "UGtastic"],
   [/\b[Uu]g[ -]?l[ -]?st\b/i, "UGl.st"],
   
   # --- Conferences & Communities ---
