@@ -38,11 +38,14 @@ When I checked the footage back at my workstation, the recording appeared catast
 
 Conventional advice is simple: *trash the recording, rent a shotgun mic with RF shielding, and reshoot.* 
 
-Instead, I sat down at my terminal with **Gemini 3.8 Flash (medium tier)** via Google DeepMind’s **Antigravity CLI**. Not to let an AI hallucinate a solution or press a magical "enhance" button, but to use the model the way a machinist uses a 3D printer: as a high-speed synthesizer of ideas and prototypes, guided by human judgment to forge a **deterministic, permanent engineering asset** that remains entirely in my control.
+Instead, I sat down at my terminal with **Gemini 3.8 Flash (medium tier)** via Google DeepMind’s **Antigravity CLI**. 
+
+In Hollywood police procedurals, the investigator sits in front of a fuzzy monitor and shouts: *"Enhance. Enhance. Enhance!"* and a magical super-resolution algorithm invents pixels out of thin air. In real life, that kind of wishful thinking produces hallucinated AI slop. But here, we did the real-world engineering equivalent: we used the model the way a machinist uses a 3D printer—as a high-speed synthesizer of hypotheses, filtergraphs, and physics checks, guided by human judgment to forge a **deterministic, permanent engineering asset** that remains entirely in my control.
 
 <div class="video-embed">
   <iframe src="https://www.youtube.com/embed/8LYHo1dOkMo" title="Under the High-Tension Wires: Identity, Software Craftsmanship, and AI Forensics" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
 </div>
+
 
 ```mermaid
 
