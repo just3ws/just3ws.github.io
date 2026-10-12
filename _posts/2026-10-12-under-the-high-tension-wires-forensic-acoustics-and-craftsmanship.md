@@ -218,13 +218,13 @@ The terrifying question every craftsperson must ask themselves is:
 
 ```mermaid
 flowchart TD
-    A["Nondeterministic AI Output<br>(Authoritative Jargon • Fluent Polish)"] --> B{"The Critical Divergence"}
-    B -->|Uncritical Acceptance<br>(The Mirage)| C["Synthetic Competence<br>(Supercharged Dunning-Kruger • 'Look How Smart I Look!')"]
-    C --> D["Throwing the Ball Beyond Sight<br>(Operating far outside core professional competence)"]
-    D --> E["Catastrophic Failure<br>(The ball comes straight down on your head in production)"]
+    A["Nondeterministic AI Output<br/>(Authoritative Jargon • Fluent Polish)"] --> B{"The Critical Divergence"}
+    B -->|"Uncritical Acceptance<br/>(The Mirage)"| C["Synthetic Competence<br/>(Supercharged Dunning-Kruger • False Fluency)"]
+    C --> D["Throwing the Ball Beyond Sight<br/>(Operating far outside core professional competence)"]
+    D --> E["Catastrophic Failure<br/>(The ball comes straight down on your head in production)"]
     
-    B -->|Rigorous Human Craftspersonship<br>(Self-Aware Skepticism)| F["Empirical Boundary Testing<br>(Listening tests • Frame alignment • Admitting what you don't know)"]
-    F --> G["Machined Deterministic Asset<br>(Permanently verified • 100% in human control)"]
+    B -->|"Rigorous Human Craftspersonship<br/>(Self-Aware Skepticism)"| F["Empirical Boundary Testing<br/>(Listening tests • Frame alignment • Admitting what you do not know)"]
+    F --> G["Machined Deterministic Asset<br/>(Permanently verified • 100% in human control)"]
 ```
 
 When you use an AI tool to leap outside your domain, you are throwing that ball higher and higher into the air. If you are operating within your own discipline, your peripheral vision and muscle memory know where the ball is going. But when the tool propels you deep into unfamiliar territory—acoustics, cryptography, high-voltage physics, distributed consensus—you quickly lose sight of the ball. You cannot evaluate the edge cases. You cannot feel the subtle failure modes. You are riding on borrowed competence.
@@ -376,7 +376,8 @@ If you don't realize you are standing on rented scaffolding, you will make catas
 ---
 
 - **Restoration Toolchain Repo**: [GitHub: `just3ws/dehum`](https://github.com/just3ws/dehum)
-- **Comprehensive Audit Report**: [`ECONOMIC_AND_TECHNICAL_AUDIT.md`](https://github.com/just3ws/dehum/blob/main/ECONOMIC_AND_TECHNICAL_AUDIT.md) (Complete token telemetry, $40 vs $10,000 labor equivalence, and compromise breakdown)
+- **Chronological Forensic Timeline**: [`CONVERSATION_TIMELINE.md`](https://github.com/just3ws/dehum/blob/main/CONVERSATION_TIMELINE.md) (Complete 41-turn, 1,793-step execution audit across 64 hours)
+- **Comprehensive Audit Report**: [`ECONOMIC_AND_TECHNICAL_AUDIT.md`](https://github.com/just3ws/dehum/blob/main/ECONOMIC_AND_TECHNICAL_AUDIT.md) (Complete token telemetry, $40 vs $10,010 labor equivalence, and compromise breakdown)
 - **Technical Forensics Document**: [`FORENSICS.md`](https://github.com/just3ws/dehum/blob/main/FORENSICS.md)
 - **Transcript Diff Telemetry**: [`TRANSCRIPT_DIFF.md`](https://github.com/just3ws/dehum/blob/main/TRANSCRIPT_DIFF.md)
 - **YouTube Video**: Watch the restored video on YouTube: [Under the High-Tension Wires (https://youtu.be/8LYHo1dOkMo)](https://youtu.be/8LYHo1dOkMo), part of the [Ramblin' & Amblin' Playlist](https://www.youtube.com/playlist?list=PLNtb969T2-l0)
