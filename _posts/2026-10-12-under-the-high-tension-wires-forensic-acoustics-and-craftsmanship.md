@@ -398,6 +398,52 @@ You forget that you didn't *acquire* that competence—you *rented an approximat
 
 If you don't realize you are standing on rented scaffolding, you will make catastrophic architectural commitments based on the assumption that you can always "enhance" your way out of trouble. The ultimate test of engineering maturity in the age of AI is not how much leverage you can extract from the model, but whether you have the humility to calculate the ledger of what you borrowed and admit where your actual knowledge ends.
 
+### 5.7 The Seduction of "Good Enough": When Scaffolding Compounds Hidden Debt
+
+There is an even deeper trap lying past the individual video output: **the illusion of "good enough" across the entire surrounding system**.
+
+When people marvel at AI-assisted engineering, they focus obsessively on the primary artifact—the restored MP4 file. The 60 Hz hum is quieted, the speaker's voice is intelligible on an iPhone speaker, and the total turnaround was an afternoon. The verdict is almost always instantaneous: *"It's good enough! Ship it."*
+
+```
++-------------------------------------------------------------------------------+
+|              THE COMPOUNDING FRAGILITY OF "GOOD ENOUGH" SCAFFOLDING           |
++-------------------------------------------------------------------------------+
+|  Stage 1: Raw Artifact Restoration (85% fidelity - good enough for phone)     |
+|     ↓                                                                         |
+|  Stage 2: Automatic Transcription (85% fidelity - hallucinating on silence)   |
+|     ↓                                                                         |
+|  Stage 3: Ad-Hoc Shell Glue (85% reliability - brittle regex & POSIX traps)   |
+|     ↓                                                                         |
+|  Stage 4: Automated Publishing & Syndication (85% metadata integrity)         |
+|     ↓                                                                         |
+|  Stage 5: OBS Broadcast & Analytics Bindings (85% runtime determinism)        |
++-------------------------------------------------------------------------------+
+|  SYSTEM SURVIVAL PROBABILITY: 0.85 × 0.85 × 0.85 × 0.85 × 0.85 ≈ 44.3%         |
++-------------------------------------------------------------------------------+
+|  RESULT: A stack of five "good enough" tools yields a broken production loop. |
++-------------------------------------------------------------------------------+
+```
+
+Look at everything that had to exist *around* this 18-minute video:
+1. **The Transcription Pipeline (`whisper.cpp`)**:
+   - *The "Good Enough" View*: Whisper produced an English SRT transcript with a 93.3% lexical recovery rate without a human stenographer.
+   - *The Reality of the Scaffolding*: In zero-energy silent gaps, Whisper fell into an autoregressive hallucination loop, repeating nonsense syllables until forced to stop. A pipeline left unattended would publish phantom subtitles directly into production.
+2. **The Automation & Tooling Harness (`fix_video.sh`)**:
+   - *The "Good Enough" View*: A 200-line shell script wraps `ffmpeg` and runs in one command.
+   - *The Reality of the Scaffolding*: Bash 3.2 macOS compatibility, floating-point math delegation via `bc`, trapping temporary file descriptors, validating bit-depth preservation across MP4 atoms—every edge case that was glossed over is a production bomb waiting for a file with non-standard sample rates or variable frame rates.
+3. **The Publishing & Syndication Infrastructure**:
+   - *The "Good Enough" View*: Jekyll compiles markdown into static HTML; YouTube Data API uploads the video; Google Analytics tracks pageviews.
+   - *The Reality of the Scaffolding*: Static sites rot silently when Liquid templates break; YouTube API tokens expire; CDN caching masks desynced audio assets; Mermaid diagram syntax crashes the renderer on subtle quotes.
+4. **The Broadcast & Monitoring Environment (OBS Studio & Chromium)**:
+   - *The "Good Enough" View*: Point OBS at a browser window and stream.
+   - *The Reality of the Scaffolding*: macOS Gatekeeper disabling Chromium casks; browser engine color-management mismatches; GPU composite jitter; overlay webhooks losing state.
+
+When every subsystem is built with "good enough" borrowed competence, you haven't eliminated the cost of software engineering. **You have deferred it into ongoing operational triage.**
+
+If each piece of your toolchain operates at an 85% confidence threshold, the overall reliability of a five-stage system is not 85%—it is `0.85^5 ≈ 44%`. More than half the time, the automated system will fail silently, degrade data integrity, or require human intervention to untangle.
+
+The true cost of "good enough" is not the $39.40 of model tokens. The true cost is the silent, compounding tax of maintaining brittle scaffolding that no single human fully understands. True craftsmanship requires rejecting the easy temptation to call an unverified prototype "finished" just because the primary artifact looks acceptable at first glance.
+
 ---
 
 - **Restoration Toolchain Repo**: [GitHub: `just3ws/dehum`](https://github.com/just3ws/dehum)
