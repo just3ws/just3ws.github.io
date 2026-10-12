@@ -20,7 +20,7 @@ tags:
   - Engineering Ethics
 ---
 
-_Editorial note: Mike Hall supplied the primary field recording (`VID_20261009_111445043.mp4`), physical telemetry, lived context beneath high-voltage transmission right-of-ways, and philosophical framing for this article. The acoustic diagnostics, DSP pipeline implementation, and forensic transcript verification were developed collaboratively with Google DeepMind's Gemini 3.8 Flash via the Antigravity agentic pairing CLI._
+_Editorial note: Every line of code, DSP filtergraph, mathematical diagram, and analytical breakdown in this case study was synthesized by Google DeepMind's Gemini 3.8 Flash via the Antigravity agentic pairing CLI. The only human in this entire loop is Mike Hall: the guy yammering into a Motorola Moto G beneath 345 kV utility conductors, and the guy sitting at the terminal continually steering, interrogating, and prodding the model. Everything else is synthetic extrusion, documented with complete transparency._
 
 ---
 
