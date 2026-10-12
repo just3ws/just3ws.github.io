@@ -325,9 +325,58 @@ You cannot reason with it through abstract warnings or generic skepticism. The o
 
 If you don't build that discipline into your craft, you will keep wishing on the paw. And sooner or later, the ball you threw into the clouds will come straight down when you aren't looking.
 
+### 5.6 The Ledger of Borrowed Labor: Token Telemetry vs. Human Economic Equivalence
+
+To understand the true nature of this leverage—and why the illusion of competence is so intoxicating—we must look at the actual balance sheet. What did this effort cost in commodity AI compute, and what would it have cost in human talent, domain expertise, and coordination?
+
+#### 1. The Real Compute Telemetry (The Machine Side)
+Because this entire session ran instrumented through the Gemini CLI / Antigravity harness, every single token across the multi-day diagnostic and development loop is recorded in the project's system telemetry:
+
+| Metric | Measured Value | Economic Impact |
+| :--- | :--- | :--- |
+| **Model Turns & Reasoning Steps** | 818 agentic turns | Multi-step interactive execution loop |
+| **Total Prompt Input Tokens** | 4,615,676 tokens | ~$5.77 (at $1.25/1M input) |
+| **Context Cache Read Tokens** | 103,716,714 tokens | ~$32.41 (at $0.3125/1M cached read) |
+| **Output / Thinking Tokens** | 244,279 tokens | ~$1.22 (at $5.00/1M output) |
+| **Raw API Compute Spend** | **~$39.40** | Direct amortized model cost |
+| **Subscription Equivalence** | **~$20.00 / month** | Standard consumer pro plan ($0.67/day) |
+
+In raw compute dollars, **this entire investigation cost less than $40**. On a standard monthly developer subscription, it represents pennies of marginal spend on a flat $20/month tier.
+
+#### 2. The Human Economic Equivalence (The Talent Side)
+Now let's calculate what it would take for an engineering organization or production studio to assemble the cross-cutting human expertise required to achieve the exact same product outcome from scratch:
+
+| Role / Specialized Domain | Scope of Work Required | Market Rate & Time | Estimated Cost |
+| :--- | :--- | :--- | :--- |
+| **Senior Audio Mastering / Forensic Engineer** | Spectral noise analysis, Maxwell induction mitigation, filter pole design, group delay audit | 16 hours @ $175/hr | $2,800 |
+| **Video Codec & Container Specialist** | MP4 atom inspection, timestamp drift triage, lossless stream muxing, PTS validation | 8 hours @ $160/hr | $1,280 |
+| **Senior Systems / Automation Engineer** | POSIX CLI harness (`fix_video.sh`), error trapping, `bc` floating-point math, man page | 12 hours @ $150/hr | $1,800 |
+| **Speech ML / QA Engineer** | Whisper pipeline integration, JSON diff telemetry, word error rate quantification | 8 hours @ $140/hr | $1,120 |
+| **Technical Writer & Editorial Lead** | Deep-dive case study authorship, architectural diagrams, metadata curation | 16 hours @ $110/hr | $1,760 |
+| **Project Coordination & Context Switching** | Cross-functional meetings, brief handoffs, PR reviews, alignment syncs (5 people) | 10 hours @ $125/hr blended | $1,250 |
+| **Total Human Equivalent Effort** | **70 billable hours across 5 specialists** | **~2 calendar weeks** | **~$10,010** |
+
+#### 3. The 250:1 Leverage Ratio and the True Danger
+The economic ratio is staggering: **$40 of compute versus $10,000 of specialized human labor**—a **250:1 cost compression** and a **10:1 speed compression** (from two calendar weeks of inter-team scheduling down to an afternoon of continuous flow).
+
+This is why people are seduced by the wish-granting machine:
+- You didn't have to hire a forensic audio engineer.
+- You didn't have to write a contract for a video demuxing contractor.
+- You didn't have to coordinate five calendars or wait for PR reviews across four time zones.
+- You sat at your desk and watched the solution emerge in real time.
+
+**And that is precisely why the trap is so deadly.**
+
+When you save $10,000 and 70 hours with a $40 prompt loop, your subconscious immediately tricks you into believing that *you possess $10,000 worth of multi-disciplinary judgment*. You feel like an omnicompetent staff architect capable of simultaneously mastering Maxwellian physics, digital IIR filter topologies, H.264 container timing, and neural speech decoders.
+
+You forget that you didn't *acquire* that competence—you *rented an approximation of it* for forty bucks.
+
+If you don't realize you are standing on rented scaffolding, you will make catastrophic architectural commitments based on the assumption that you can always "enhance" your way out of trouble. The ultimate test of engineering maturity in the age of AI is not how much leverage you can extract from the model, but whether you have the humility to calculate the ledger of what you borrowed and admit where your actual knowledge ends.
+
 ---
 
 - **Restoration Toolchain Repo**: [GitHub: `just3ws/dehum`](https://github.com/just3ws/dehum)
+- **Comprehensive Audit Report**: [`ECONOMIC_AND_TECHNICAL_AUDIT.md`](https://github.com/just3ws/dehum/blob/main/ECONOMIC_AND_TECHNICAL_AUDIT.md) (Complete token telemetry, $40 vs $10,000 labor equivalence, and compromise breakdown)
 - **Technical Forensics Document**: [`FORENSICS.md`](https://github.com/just3ws/dehum/blob/main/FORENSICS.md)
 - **Transcript Diff Telemetry**: [`TRANSCRIPT_DIFF.md`](https://github.com/just3ws/dehum/blob/main/TRANSCRIPT_DIFF.md)
 - **YouTube Video**: Watch the restored video on YouTube: [Under the High-Tension Wires (https://youtu.be/8LYHo1dOkMo)](https://youtu.be/8LYHo1dOkMo), part of the [Ramblin' & Amblin' Playlist](https://www.youtube.com/playlist?list=PLNtb969T2-l0)
