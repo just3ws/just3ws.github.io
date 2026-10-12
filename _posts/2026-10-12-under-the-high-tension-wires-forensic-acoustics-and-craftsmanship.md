@@ -40,7 +40,12 @@ Conventional advice is simple: *trash the recording, rent a shotgun mic with RF 
 
 Instead, I sat down at my terminal with **Gemini 3.8 Flash (medium tier)** via Google DeepMind’s **Antigravity CLI**. Not to let an AI hallucinate a solution or press a magical "enhance" button, but to use the model the way a machinist uses a 3D printer: as a high-speed synthesizer of ideas and prototypes, guided by human judgment to forge a **deterministic, permanent engineering asset** that remains entirely in my control.
 
+<div class="video-embed">
+  <iframe src="https://www.youtube.com/embed/8LYHo1dOkMo" title="Under the High-Tension Wires: Identity, Software Craftsmanship, and AI Forensics" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+</div>
+
 ```mermaid
+
 flowchart TD
     A["Raw Field Recording<br>(VID_20261009_111445043.mp4 • ~3.28 GB)"] --> B["EXIF & Container Diagnostics<br>(Motorola Moto G • Android 16 • 1303s vs 1091s)"]
     B --> C{"Hypothesis 1: Linear Clock Drift?"}
