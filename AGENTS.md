@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-07
+     CURRENT FOCUS - last updated 2026-10-13
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,16 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - RAMBLIN & AMBLIN FIELD NOTES PIPELINE & AUTONOMOUS PUBLISHING (2026-10-13):
+         Built deterministic intake, transcription, captioning, and publishing toolchain for the Ramblin & Amblin playlist (PLNtb969T2-l0):
+         - Added standing autonomous polling CLI `bin/pipeline_ramblin_amblin.rb` cross-referencing live YouTube videos with postgres `media_sources` on `my.localhost`.
+         - Established strict privacy boundaries: unlisted videos are transcribed, enriched, and promoted to public once ingestion completes; private videos remain strictly private while being fully enriched.
+         - Automated multipart WebVTT human-verified caption uploads to YouTube Data API v3 (`English (Human Verified)`).
+         - Configured background macOS daemon `com.just3ws.ramblin-pipeline` running every 30 minutes.
+         - Enriched and published all field notes: Veteran Acres (`52dk-anGBe4`), CDG at CLPL (`0q1EAVJvBcU`), Shift (`DQFs9H3eal8`), and restored Dehum cockpit (`dashboard.html`).
+         - Maintained 100% em-dash-free compliance across all code, YAML datasets, and descriptions. All validation gates passing cleanly:
+           validate:fast, transcript:audit (215 assets / 0 orphans), and rspec (100/100 tests).
+
        - RECORDING CHEATSHEET & SCENE OVERLAY CLARITY (2026-10-08):
          Documented high-density recording cheatsheet and clarified OBS Scene 02 overlay architecture:
          - Created `obs/docs/recording-cheatsheet.md` covering pre-flight CLI sequences, scene selector reference,
