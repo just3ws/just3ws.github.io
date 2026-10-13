@@ -5,36 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Live Broadcast Workbench | The Sound Above: Under the High-Tension Wires</title>
   <meta name="description" content="Live broadcast operational workbench and teleprompter cockpit for Mike Hall during The Sound Above OBS recording.">
-  <link rel="canonical" href="https://www.just3ws.com/dehum/dashboard.html">
   <link rel="stylesheet" href="css/style.css">
   <style>
     :root {
-      --dash-bg: #faf8f5;
-      --dash-panel: #ffffff;
-      --dash-panel-header: #f4f0e8;
-      --dash-border: #e3dfd7;
-      --dash-border-subtle: #eeebe3;
-      --dash-active: #0f766e;
-      --dash-accent: #b45309;
-      --dash-green: #15803d;
-      --dash-red: #b91c1c;
-      --dash-ink: #1e232a;
-      --dash-heading: #0f172a;
-      --dash-muted: #525866;
-      --dash-meta: #64748b;
-      --font-display: "Charter", "Bitstream Charter", "Iowan Old Style", Georgia, serif;
-      --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-mono: "SF Mono", "Fira Code", Menlo, Consolas, monospace;
-    }
-
-    * {
-      box-sizing: border-box;
+      --dash-bg: #090d13;
+      --dash-panel: #131923;
+      --dash-panel-header: #1c2433;
+      --dash-border: #283347;
+      --dash-active: #58a6ff;
+      --dash-accent: #f2cc60;
+      --dash-green: #3fb950;
+      --dash-red: #ff7b72;
     }
 
     body {
       background-color: var(--dash-bg);
-      color: var(--dash-ink);
-      font-family: var(--font-sans);
+      color: var(--text-main);
       margin: 0;
       padding: 0;
       height: 100vh;
@@ -42,20 +28,18 @@
       flex-direction: column;
       overflow: hidden;
       font-size: 15px;
-      -webkit-font-smoothing: antialiased;
     }
 
     /* Top HUD Bar */
     .cockpit-hud {
-      background: var(--dash-panel);
-      border-bottom: 1px solid var(--dash-border);
+      background: var(--dash-panel-header);
+      border-bottom: 2px solid var(--dash-border);
       padding: 10px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       flex-shrink: 0;
-      box-shadow: 0 1px 3px rgba(45, 35, 20, 0.03);
     }
 
     .hud-title-group {
@@ -65,29 +49,26 @@
     }
 
     .hud-badge {
-      background: rgba(15, 118, 110, 0.1);
-      border: 1px solid rgba(15, 118, 110, 0.35);
+      background: rgba(88, 166, 255, 0.15);
+      border: 1px solid var(--dash-active);
       color: var(--dash-active);
       padding: 4px 10px;
       border-radius: 4px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      font-family: var(--font-mono);
     }
 
     .hud-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--dash-heading);
-      letter-spacing: -0.015em;
+      color: #fff;
     }
 
     .hud-subtitle {
       font-size: 0.85rem;
-      color: var(--dash-muted);
+      color: var(--text-muted);
     }
 
     .hud-telemetry {
@@ -131,18 +112,17 @@
 
     .telemetry-label {
       font-size: 0.72rem;
-      color: var(--dash-meta);
+      color: var(--text-dim);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      font-family: var(--font-mono);
     }
 
     /* Main Multi-Pane Cockpit */
     .cockpit-grid {
       display: grid;
-      grid-template-columns: 290px 1fr 380px;
-      gap: 14px;
-      padding: 14px;
+      grid-template-columns: 280px 1fr 380px;
+      gap: 12px;
+      padding: 12px;
       flex: 1;
       overflow: hidden;
       min-height: 0;
@@ -152,18 +132,17 @@
     .cockpit-panel {
       background: var(--dash-panel);
       border: 1px solid var(--dash-border);
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
       min-height: 0;
-      box-shadow: 0 4px 16px rgba(45, 35, 20, 0.03);
     }
 
     .panel-header {
       background: var(--dash-panel-header);
       border-bottom: 1px solid var(--dash-border);
-      padding: 9px 16px;
+      padding: 8px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -171,22 +150,20 @@
     }
 
     .panel-title {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--dash-heading);
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: var(--font-mono);
     }
 
     .panel-body {
-      padding: 16px;
+      padding: 14px;
       overflow-y: auto;
       flex: 1;
-      background: var(--dash-panel);
     }
 
     /* Left Pane: Scene Roadmap & Cue Tracker */
@@ -197,32 +174,30 @@
     }
 
     .scene-cue-card {
-      background: var(--dash-bg);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--dash-border);
-      border-radius: 8px;
+      border-radius: 6px;
       padding: 10px 12px;
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .scene-cue-card:hover {
-      background: #ffffff;
-      border-color: var(--dash-active);
-      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.1);
+      background: rgba(88, 166, 255, 0.08);
+      border-color: rgba(88, 166, 255, 0.4);
     }
 
     .scene-cue-card.active {
-      background: #ffffff;
+      background: rgba(88, 166, 255, 0.12);
       border-color: var(--dash-active);
       border-left: 4px solid var(--dash-active);
-      box-shadow: 0 3px 12px rgba(15, 118, 110, 0.12);
     }
 
     .scene-meta {
       display: flex;
       justify-content: space-between;
       font-size: 0.75rem;
-      color: var(--dash-meta);
+      color: var(--text-dim);
       font-family: var(--font-mono);
       margin-bottom: 4px;
     }
@@ -230,14 +205,14 @@
     .scene-name {
       font-weight: 700;
       font-size: 0.95rem;
-      color: var(--dash-heading);
+      color: #fff;
     }
 
     .scene-cue-desc {
-      font-size: 0.82rem;
-      color: var(--dash-muted);
+      font-size: 0.8rem;
+      color: var(--text-muted);
       margin-top: 4px;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     /* Center Pane: Active Script & Teleprompter Prompts */
@@ -248,11 +223,58 @@
     }
 
     .prompt-card {
-      background: var(--dash-bg);
+      background: rgba(0, 0, 0, 0.25);
       border: 1px solid var(--dash-border);
-      border-radius: 8px;
-      padding: 18px;
-      margin-bottom: 16px;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 14px;
+      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .prompt-card.dimmed {
+      opacity: 0.35;
+      border-color: rgba(40, 51, 71, 0.4);
+    }
+
+    .prompt-card.scene-focused {
+      border-color: var(--dash-active);
+      box-shadow: 0 0 16px rgba(88, 166, 255, 0.15);
+    }
+
+    .scene-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--dash-border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .filter-btn-toggle {
+      background: var(--dash-panel-header);
+      border: 1px solid var(--dash-border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn-toggle:hover {
+      color: #fff;
+      border-color: var(--dash-active);
+    }
+
+    .filter-btn-toggle.active {
+      background: rgba(88, 166, 255, 0.2);
+      border-color: var(--dash-active);
+      color: var(--dash-active);
+      font-weight: 700;
     }
 
     .prompt-phase {
@@ -260,50 +282,44 @@
       font-size: 0.78rem;
       color: var(--dash-accent);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
       margin-bottom: 6px;
-      font-weight: 700;
     }
 
     .prompt-lead {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      line-height: 1.35;
-      color: var(--dash-heading);
+      line-height: 1.4;
+      color: #fff;
       margin-bottom: 10px;
-      letter-spacing: -0.015em;
     }
 
     .prompt-body {
       font-size: 1.02rem;
-      line-height: 1.65;
-      color: var(--dash-ink);
+      line-height: 1.6;
+      color: #d0d7de;
     }
 
     .prompt-body strong {
-      color: var(--dash-heading);
+      color: #fff;
     }
 
     .prompt-quote {
       border-left: 3px solid var(--dash-accent);
-      padding-left: 14px;
-      margin: 14px 0;
-      font-family: var(--font-display);
+      padding-left: 12px;
+      margin: 12px 0;
       font-style: italic;
-      color: var(--dash-heading);
-      background: rgba(180, 83, 9, 0.06);
-      padding-top: 8px;
-      padding-bottom: 8px;
-      border-radius: 0 6px 6px 0;
-      font-size: 1.05rem;
+      color: #e6edf3;
+      background: rgba(242, 204, 96, 0.05);
+      padding-top: 6px;
+      padding-bottom: 6px;
+      border-radius: 0 4px 4px 0;
     }
 
     /* Right Pane: Quick Terminal & Forensic Tool Belt */
     .command-box {
-      background: var(--dash-panel-header);
+      background: #0d1117;
       border: 1px solid var(--dash-border);
-      border-radius: 8px;
+      border-radius: 6px;
       padding: 10px 12px;
       margin-bottom: 12px;
     }
@@ -319,16 +335,14 @@
       font-size: 0.72rem;
       text-transform: uppercase;
       font-family: var(--font-mono);
-      color: var(--dash-meta);
-      font-weight: 600;
+      color: var(--text-dim);
     }
 
     .copy-btn {
-      background: var(--dash-panel);
+      background: var(--dash-panel-header);
       border: 1px solid var(--dash-border);
-      color: var(--dash-ink);
+      color: var(--text-main);
       font-size: 0.72rem;
-      font-weight: 600;
       padding: 3px 8px;
       border-radius: 4px;
       cursor: pointer;
@@ -337,17 +351,15 @@
 
     .copy-btn:hover {
       background: var(--dash-active);
-      color: #ffffff;
-      border-color: var(--dash-active);
+      color: #000;
     }
 
     .command-code {
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      color: var(--dash-active);
+      color: #58a6ff;
       word-break: break-all;
       line-height: 1.4;
-      font-weight: 600;
     }
 
     .live-jump-list {
@@ -361,22 +373,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--dash-bg);
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--dash-border);
-      color: var(--dash-ink);
+      color: var(--text-main);
       padding: 8px 12px;
-      border-radius: 6px;
+      border-radius: 4px;
       font-size: 0.85rem;
       text-decoration: none;
       transition: all 0.2s ease;
     }
 
     .jump-btn:hover {
-      background: #ffffff;
+      background: rgba(88, 166, 255, 0.15);
       border-color: var(--dash-active);
-      color: var(--dash-active);
+      color: #fff;
       text-decoration: none;
-      box-shadow: 0 2px 6px rgba(15, 118, 110, 0.08);
     }
 
     .jump-timestamp {
@@ -387,15 +398,14 @@
 
     /* Key Callout Warning */
     .callout-warning {
-      background: rgba(180, 83, 9, 0.08);
-      border: 1px solid rgba(180, 83, 9, 0.25);
+      background: rgba(242, 204, 96, 0.08);
+      border: 1px solid rgba(242, 204, 96, 0.3);
       border-left: 4px solid var(--dash-accent);
-      border-radius: 6px;
-      padding: 12px 14px;
-      margin-bottom: 14px;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: var(--dash-heading);
+      border-radius: 4px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      line-height: 1.45;
     }
 
     .callout-warning strong {
@@ -469,7 +479,7 @@
               <span>00:00 – 05:00</span>
             </div>
             <div class="scene-name">Monologue / Full Camera</div>
-            <div class="scene-cue-desc">Cold open. The Strawberry Paradox, 250:1 economic trap, Caveat Emptor.</div>
+            <div class="scene-cue-desc">Cold open. The Strawberry Paradox, 1,000:1 economic leverage, Caveat Emptor.</div>
           </div>
 
           <div class="scene-cue-card" data-scene="03">
@@ -520,26 +530,57 @@
       <div class="panel-body">
         <div class="teleprompter-view">
 
-          <!-- Core Operating Axiom -->
+          <!-- Scene Filter Toolbar -->
+          <div class="scene-filter-bar">
+            <span style="color: var(--text-muted); font-size: 0.78rem;">Filter: <strong id="filter-scene-label" style="color: var(--dash-active);">All Phases</strong></span>
+            <div style="display: flex; gap: 6px;">
+              <button id="btn-filter-all" class="filter-btn-toggle active" type="button">ALL PHASES</button>
+              <button id="btn-filter-active" class="filter-btn-toggle" type="button">ACTIVE SCENE ONLY</button>
+            </div>
+          </div>
+
+          <!-- Core Operating Axiom & Prompt Genesis -->
+          <div class="callout-warning" style="border-left-color: var(--dash-active); background: rgba(88, 166, 255, 0.08); border-color: rgba(88, 166, 255, 0.3);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dash-active); font-weight: 700; margin-bottom: 4px;">The Genesis Prompt // 13 Words to Multi-Tier Architecture</div>
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: #fff; font-weight: 700; margin-bottom: 6px;">
+              "recording a video under high tension wires repair audio sync"
+            </div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">
+              <strong>The Premise:</strong> With generative AI, you go from <em>that exact vague Google search</em> to an entire DSP restoration fabric, MCP server, 44.3% compounding fragility calculus, and broadcast curriculum.
+            </div>
+          </div>
+
           <div class="callout-warning">
             <strong>The Central Operating Premise:</strong> "What's the difference between straight to legacy and AI slop? <em>Nothing, nobody really understood what went in there either way.</em>"
           </div>
 
           <!-- Section A: Cold Open -->
-          <div class="prompt-card">
-            <div class="prompt-phase">Phase 1 // The Seductive Trap</div>
+          <div class="prompt-card" data-scene="02">
+            <div class="prompt-phase">Phase 1 // Scene 02 // The Seductive Trap</div>
             <div class="prompt-lead">The Gap Between the Demo and the Dirt</div>
             <div class="prompt-body">
               "When people watch venture-backed commercial AI demos, they see miracles. They see a prompt turn into a Hollywood trailer in ten seconds. But what happens when you step out of the demo and walk under 345,000-volt transmission wires with a phone in a crosswind?"
               <div class="prompt-quote">
-                "I didn't prompt an acoustic model. I typed one vague Google search: 'recording a video under high tension wires repair audio sync'. And Google's AI generated an immaculate spec that told me to stretch my voice with atempo=0.837. Within 30 seconds, my voice was slurred into drunken slow-motion."
+                "I didn't prompt an acoustic model. I typed one vague Google search: 'recording a video under high tension wires repair audio sync'. And Google's AI generated an immaculate spec that told me to stretch my voice with atempo=0.837. Within 30 seconds, my voice was slurred into drunken slow-motion. Over the next 4 days, on a $5/month promotional Gemini Pro plan, I burned through half a billion tokens (501M tokens across 3,695 steps) navigating the mirage of competence."
+              </div>
+            </div>
+          </div>
+
+          <!-- Section A.2: The Hitchhiker's Paradox -->
+          <div class="prompt-card" data-scene="02">
+            <div class="prompt-phase">Phase 1.5 // Scene 02 // The Hitchhiker's Paradox</div>
+            <div class="prompt-lead">Deep Thought Answered 42: But What Was the Question?</div>
+            <div class="prompt-body">
+              "Like Deep Thought in The Hitchhiker's Guide to the Galaxy, the computer calculated for seven and a half million years and proudly answered: '42'. But nobody knew what the question was!"
+              <div class="prompt-quote">
+                "With generative AI, we got an answer to a question we don't even know how to comprehend, much less ask. We asked: 'fix the buzz and sync'. The machine answered '42' (atempo=0.837, 10 cascading notch filters, Butterworth pole placements). It answered with supreme mathematical certainty, but nobody in physical reality asked that question."
               </div>
             </div>
           </div>
 
           <!-- Section B: The Strawberry Paradox -->
-          <div class="prompt-card">
-            <div class="prompt-phase">Phase 2 // The Epistemic Razor</div>
+          <div class="prompt-card" data-scene="02">
+            <div class="prompt-phase">Phase 2 // Scene 02 // The Epistemic Razor</div>
             <div class="prompt-lead">The Strawberry Paradox & Passing Specs as Comforting Lies</div>
             <div class="prompt-body">
               "In legacy enterprise systems, we run test suites to reassure ourselves that code 'works.' But green tests often measure comforting lies rather than reality. We ship slop every day because someone completed a ticket in isolation without understanding the broader architecture."
@@ -549,9 +590,24 @@
             </div>
           </div>
 
+          <!-- Section Scene 03: Reaction / Video Focus -->
+          <div class="prompt-card" data-scene="03">
+            <div class="prompt-phase">Phase 2.2 // Scene 03 // Playback Scrub & Forensic Artifacts</div>
+            <div class="prompt-lead">Scrubbing YouTube 8LYHo1dOkMo: Speech Onset & The Acoustic Ghost</div>
+            <div class="prompt-body">
+              "Look closely at the raw YouTube master at 8LYHo1dOkMo. When we scrub to <strong>00:11</strong>, notice the precise moment speech begins: the 60 Hz hum creates massive low-end masking that obscures natural vocal timbre."
+              <div class="prompt-quote">
+                "Then scrub forward to <strong>04:08</strong>: a 25mph gust creates an acoustic ghost across the capsule diaphragm. An unguided AI model interprets wind turbulence as sustained low-frequency harmonic structure and attempts to notch out speech phonemes, completely degrading the audio envelope."
+              </div>
+              <div style="margin-top: 8px; font-size: 0.88rem; color: var(--dash-accent);">
+                Key verification points: 00:00 (baseline hum), 00:11 (speech onset lip-sync), 04:08 (acoustic ghost wind gust), 18:11 (trailing silence).
+              </div>
+            </div>
+          </div>
+
           <!-- Section B.2: Compounding Fragility of Good Enough -->
-          <div class="prompt-card">
-            <div class="prompt-phase">Phase 2.5 // The 0.85^n Trap</div>
+          <div class="prompt-card" data-scene="04">
+            <div class="prompt-phase">Phase 2.5 // Scene 04 // The 0.85^n Trap</div>
             <div class="prompt-lead">The Compounding Fragility of "Good Enough" Scaffolding</div>
             <div class="prompt-body">
               "Evaluating 'good enough' in isolation is a trap. When five 'good enough' components (each 85% reliable) are chained together, system determinism drops to <strong>44.3%</strong>:"
@@ -606,26 +662,26 @@
           </div>
 
           <!-- Section C: The Homer Car -->
-          <div class="prompt-card">
-            <div class="prompt-phase">Phase 3 // The Artifice Warning</div>
+          <div class="prompt-card" data-scene="05">
+            <div class="prompt-phase">Phase 3 // Scene 05 // The Artifice Warning</div>
             <div class="prompt-lead">The Homer Simpson Car ("Wait! Don't go! Just... trust me bro!")</div>
             <div class="prompt-body">
               "Look at what happened here. Herb Powell gave Homer unconstrained authority to build a car with no budget constraints. Homer added bubble domes, three horns that play La Cucaracha, and giant tailfins. What did Homer forget? <em>He forgot to design a car that anyone actually needed to drive.</em>"
               <div class="prompt-quote">
-                "The 150-line POSIX shell script is the minimal tool that actually hauls groceries in 14.8 seconds. The rest of this repository—the 10-panel dashboards, the 64-credit syllabus, the Groff man pages—is The Homer: magnificent, absurd, and held together by an engineer shouting 'Trust me bro!' into a microphone."
+                "The 150-line POSIX shell script is the minimal tool that actually hauls groceries in 14.8 seconds. The rest of this repository (the 10-panel dashboards, the 64-credit syllabus, the Groff man pages) is The Homer: magnificent, absurd, and held together by an engineer shouting 'Trust me bro!' into a microphone."
               </div>
             </div>
           </div>
 
           <!-- Section C.5: AI Psychosis & The Forest of Distraction -->
-          <div class="prompt-card" style="border-left: 4px solid var(--dash-red);">
-            <div class="prompt-phase" style="color: var(--dash-red);">Phase 3.5 // The Root Vulnerability</div>
+          <div class="prompt-card" data-scene="05" style="border-left: 4px solid var(--dash-red);">
+            <div class="prompt-phase" style="color: var(--dash-red);">Phase 3.5 // Scene 05 // The Root Vulnerability</div>
             <div class="prompt-lead">AI Psychosis: The Forest of Distraction & "Was It Even Fixed?"</div>
             <div class="prompt-body">
               "Think about the psychological spiral that just occurred: <em>I went from 'help fix this video' to 'what will it take to pivot this into a first round funding?'</em>"
               <div class="prompt-quote" style="border-left-color: var(--dash-red); background: rgba(255, 123, 114, 0.08);">
                 <strong>"But was the video even fixed to begin with?"</strong><br>
-                This is the root of the AI psychosis. We become intoxicated by what is <em>synthetically possible</em>, and the model is only too happy to lead us by the hand through the forest of distraction. We spin up venture valuations, pitch decks, and enterprise architectures—while losing track of the physical ground truth sitting on disk.
+                This is the root of the AI psychosis. We become intoxicated by what is <em>synthetically possible</em>, and the model is only too happy to lead us by the hand through the forest of distraction. We spin up venture valuations, pitch decks, and enterprise architectures, while losing track of the physical ground truth sitting on disk.
               </div>
               <p style="margin-top: 10px; font-size: 0.92rem; color: #d0d7de;">
                 The model never taps your shoulder to ask: <em>'Hey, did you actually check the original problem?'</em> It just generates more branches, deeper paths, and richer foliage in whatever direction you glance.
@@ -634,11 +690,11 @@
           </div>
 
           <!-- Section D: And Yet It Is Real -->
-          <div class="prompt-card">
-            <div class="prompt-phase">Phase 4 // Sovereign Grounding</div>
+          <div class="prompt-card" data-scene="08">
+            <div class="prompt-phase">Phase 4 // Scene 08 // Sovereign Grounding</div>
             <div class="prompt-lead">And Yet, It IS Real</div>
             <div class="prompt-body">
-              "The power lines are real. The 60 Hz hum was real. And the output master video sitting right here on my machine—with all 39,069 original 1080p camera frames preserved bit-for-bit without generational loss, and human speech restored to frame-accurate lip-sync—<strong>is real</strong>. Chicago Software Craftsmanship is learning how to walk that razor's edge: refusing the comforting lies of unverified hallucinations, while holding onto the empirical reality of the working tool."
+              "The power lines are real. The 60 Hz hum was real. And the output master video sitting right here on my machine, with all 39,069 original 1080p camera frames preserved bit-for-bit without generational loss, and human speech restored to frame-accurate lip-sync, <strong>is real</strong>. Chicago Software Craftsmanship is learning how to walk that razor's edge: refusing the comforting lies of unverified hallucinations, while holding onto the empirical reality of the working tool."
             </div>
           </div>
 
@@ -723,6 +779,14 @@
             <span>Companion Case Study</span>
             <span style="font-size: 0.75rem; color: var(--dash-active);">200 OK</span>
           </a>
+          <a href="https://www.linkedin.com/pulse/under-high-tension-wires-2501-ai-leverage-trap-slop-real-mike-hall-gbbtc" target="_blank" class="jump-btn">
+            <span>LinkedIn Pulse: Part 1</span>
+            <span style="font-size: 0.75rem; color: var(--dash-active);">Article 1</span>
+          </a>
+          <a href="https://www.linkedin.com/pulse/mirage-competence-experiment-public-ai-slop-false-confidence-hall-y8e9c" target="_blank" class="jump-btn">
+            <span>LinkedIn Pulse: Part 2</span>
+            <span style="font-size: 0.75rem; color: var(--dash-active);">Article 2</span>
+          </a>
         </div>
 
       </div>
@@ -764,9 +828,58 @@
       timerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
     }
 
-    // Scene card selector
+    // Scene card selector & Teleprompter phase synchronizer
     const sceneCards = document.querySelectorAll('.scene-cue-card');
     const sceneIndicator = document.getElementById('active-scene-indicator');
+    const promptCards = document.querySelectorAll('.prompt-card');
+    const filterSceneLabel = document.getElementById('filter-scene-label');
+    const btnFilterAll = document.getElementById('btn-filter-all');
+    const btnFilterActive = document.getElementById('btn-filter-active');
+    const teleprompterBody = document.querySelector('.panel-body');
+
+    let currentActiveScene = '02';
+    let filterMode = 'all'; // 'all' or 'active'
+
+    function applySceneSelection(sceneNum, sceneName) {
+      currentActiveScene = sceneNum;
+      sceneIndicator.textContent = `SCENE ${sceneNum}: ${sceneName.toUpperCase()}`;
+      filterSceneLabel.textContent = `Scene ${sceneNum} (${sceneName})`;
+
+      let firstTargetCard = null;
+
+      promptCards.forEach(card => {
+        const cardScene = card.getAttribute('data-scene');
+        const matches = (cardScene === sceneNum);
+
+        if (filterMode === 'active') {
+          if (matches) {
+            card.style.display = 'block';
+            card.classList.remove('dimmed');
+            card.classList.add('scene-focused');
+            if (!firstTargetCard) firstTargetCard = card;
+          } else {
+            card.style.display = 'none';
+            card.classList.remove('scene-focused');
+          }
+        } else {
+          // 'all' mode: keep all visible, spotlight the matching scene, dim others
+          card.style.display = 'block';
+          if (matches) {
+            card.classList.remove('dimmed');
+            card.classList.add('scene-focused');
+            if (!firstTargetCard) firstTargetCard = card;
+          } else {
+            card.classList.add('dimmed');
+            card.classList.remove('scene-focused');
+          }
+        }
+      });
+
+      // Smooth scroll the teleprompter to the first matching phase card
+      if (firstTargetCard) {
+        firstTargetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
 
     sceneCards.forEach(card => {
       card.addEventListener('click', () => {
@@ -774,9 +887,32 @@
         card.classList.add('active');
         const sceneNum = card.getAttribute('data-scene');
         const sceneName = card.querySelector('.scene-name').textContent;
-        sceneIndicator.textContent = `SCENE ${sceneNum}: ${sceneName.toUpperCase()}`;
+        applySceneSelection(sceneNum, sceneName);
       });
     });
+
+    btnFilterAll.addEventListener('click', () => {
+      filterMode = 'all';
+      btnFilterAll.classList.add('active');
+      btnFilterActive.classList.remove('active');
+      const activeCard = document.querySelector('.scene-cue-card.active');
+      const sceneNum = activeCard ? activeCard.getAttribute('data-scene') : '02';
+      const sceneName = activeCard ? activeCard.querySelector('.scene-name').textContent : 'Monologue';
+      applySceneSelection(sceneNum, sceneName);
+    });
+
+    btnFilterActive.addEventListener('click', () => {
+      filterMode = 'active';
+      btnFilterActive.classList.add('active');
+      btnFilterAll.classList.remove('active');
+      const activeCard = document.querySelector('.scene-cue-card.active');
+      const sceneNum = activeCard ? activeCard.getAttribute('data-scene') : '02';
+      const sceneName = activeCard ? activeCard.querySelector('.scene-name').textContent : 'Monologue';
+      applySceneSelection(sceneNum, sceneName);
+    });
+
+    // Initialize with active Scene 02 state on page load
+    applySceneSelection('02', 'Monologue / Full Camera');
   </script>
 </body>
 </html>
