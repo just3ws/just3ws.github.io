@@ -699,7 +699,8 @@ If we cannot laugh at the sheer, unhinged excess of what these tools tempt us to
 - **Technical Forensics Document**: [`FORENSICS.md`](https://github.com/just3ws/dehum/blob/main/FORENSICS.md)
 - **Transcript Diff Telemetry**: [`TRANSCRIPT_DIFF.md`](https://github.com/just3ws/dehum/blob/main/TRANSCRIPT_DIFF.md)
 - **YouTube Video**: Watch the restored video on YouTube: [Under the High-Tension Wires (https://youtu.be/8LYHo1dOkMo)](https://youtu.be/8LYHo1dOkMo), part of the [Ramblin' & Amblin' Playlist](https://www.youtube.com/playlist?list=PLNtb969T2-l0)
-- **LinkedIn Article**: Read and discuss on LinkedIn: [Under the High-Tension Wires: The 250:1 AI Leverage Trap, Slop, and Real Mastery](https://www.linkedin.com/pulse/under-high-tension-wires-2501-ai-leverage-trap-slop-real-mike-hall-gbbtc)
+- **LinkedIn Article (Part 1)**: [Under the High-Tension Wires: The 250:1 AI Leverage Trap, Slop, and Real Mastery](https://www.linkedin.com/pulse/under-high-tension-wires-2501-ai-leverage-trap-slop-real-mike-hall-gbbtc)
+- **LinkedIn Article (Part 2)**: [The Mirage of Competence: An Experiment in Public on AI Slop, False Confidence, and Domain Boundaries](https://www.linkedin.com/pulse/mirage-competence-experiment-public-ai-slop-false-confidence-hall-y8e9c)
 - **Key Restoration Timestamps**:
   - `00:00`: [Initial High-Tension Power Line Noise & Background](https://youtu.be/8LYHo1dOkMo?t=0)
   - `00:11`: [Clean Speech Baseline ("Here I am...")](https://youtu.be/8LYHo1dOkMo?t=11)
