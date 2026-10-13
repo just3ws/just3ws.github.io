@@ -37,8 +37,12 @@ tags:
     <strong>3. Should This Be in Rust? (The AI Said No)</strong>: When asked whether this should be rewritten in Rust to attract a venture-backed buyout, the AI pairing agent explicitly recommended <strong>against</strong> it. FFmpeg’s audio filters are already hand-optimized C and SIMD assembly; wrapping them in Rust adds zero throughput while ballooning dependencies. Rewriting a 150-line POSIX shell script in Rust purely for status is the essence of "Classic Loki" green-light artifice.
   </p>
 
-  <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #1e232a); margin: 0;">
+  <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #1e232a); margin: 0 0 0.75rem 0;">
     <strong>4. SO MANY FILES!</strong>: Look at the repository: there are <em>so many files</em>. We willed Groff UNIX man pages, Mermaid flowcharts, JSON-LD schemas, GitHub Actions CI workflows, issue templates, PR checklists, dual licenses, Ruby audit guards, telemetry diffs, and SVG vectors into existence in three days. The ease with which an AI pairing agent can metastasize a simple problem into an entire galaxy of files and infrastructure is both the superpower and the trap. Beware the artifice.
+  </p>
+
+  <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-main, #1e232a); margin: 0;">
+    <strong>5. The Hallucination Series (By Mike Hall)</strong>: This article is the exercise. It is the thing to consider as much as the thing being considered. I didn't write the Bash script. That was generated. I didn't design the 10 harmonic notch filters. That was extruded. This entire exploration is organized under the series banner <em>Hallucinations</em>—a play on my own name (Mike Hall) and the defining psychological condition of our industry in 2026. These are experimental artifacts: probing the line where human intent ends and synthetic hallucination begins.
   </p>
 </aside>
 
