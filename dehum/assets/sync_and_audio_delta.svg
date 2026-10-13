@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 780" width="1000" height="780" style="background:#0d1117; font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#388bfd"/>
+      <stop offset="100%" stop-color="#58a6ff"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f85149"/>
+      <stop offset="100%" stop-color="#da3633"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ea043"/>
+      <stop offset="100%" stop-color="#3fb950"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a371f7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#a371f7" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="50" y="45" font-size="22" font-weight="700" fill="#f0f6fc">Panoramic View Labs — Audio Drift &amp; Dehum Forensic Analysis</text>
+  <text x="50" y="70" font-size="13" fill="#8b949e">VID_20261009_111445043.mp4 · High-Tension EMI Restoration · Original vs Fixed Delta</text>
+
+  <!-- ================= SECTION 1: TIMELINE & DRIFT DELTA ================= -->
+  <g transform="translate(50, 95)">
+    <!-- Panel Background -->
+    <rect width="900" height="290" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+    <text x="25" y="32" font-size="15" font-weight="600" fill="#58a6ff">1. LINEAR ASYNCHRONOUS CLOCK DRIFT &amp; SILENCE GAP</text>
+
+    <!-- X Axis (Video Time) -->
+    <line x1="80" y1="210" x2="840" y2="210" stroke="#30363d" stroke-width="1.5"/>
+    <!-- Ticks -->
+    <text x="80" y="230" font-size="11" fill="#8b949e" text-anchor="middle">0m (0s)</text>
+    <text x="255" y="230" font-size="11" fill="#8b949e" text-anchor="middle">5m (300s)</text>
+    <text x="430" y="230" font-size="11" fill="#8b949e" text-anchor="middle">10m (600s)</text>
+    <text x="605" y="230" font-size="11" fill="#8b949e" text-anchor="middle">15m (900s)</text>
+    <text x="716" y="230" font-size="11" fill="#f85149" font-weight="600" text-anchor="middle">18.2m</text>
+    <text x="840" y="230" font-size="11" fill="#58a6ff" font-weight="600" text-anchor="middle">21.7m (1303.6s)</text>
+
+    <!-- Video Track Bar -->
+    <text x="25" y="75" font-size="12" font-weight="600" fill="#c9d1d9">Video Track</text>
+    <text x="25" y="90" font-size="10" fill="#8b949e">(-c:v copy, untouched)</text>
+    <rect x="80" y="65" width="760" height="24" rx="4" fill="url(#blueGrad)"/>
+    <text x="460" y="81" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">21m 43.6s (1303.61s) — 1080p @ 29.92 fps</text>
+
+    <!-- Original Audio Bar -->
+    <text x="25" y="125" font-size="12" font-weight="600" fill="#f85149">Original Audio</text>
+    <text x="25" y="140" font-size="10" fill="#8b949e">(Clock ran 16.3% fast)</text>
+    <rect x="80" y="115" width="636" height="24" rx="4" fill="url(#redGrad)"/>
+    <text x="398" y="131" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">18m 11.1s (1091.09s) Audio Playing</text>
+    <!-- Silence Gap -->
+    <rect x="716" y="115" width="124" height="24" rx="4" fill="#21262d" stroke="#f85149" stroke-dasharray="4,3"/>
+    <text x="778" y="131" font-size="10" font-weight="600" fill="#f85149" text-anchor="middle">3m 32.5s SILENCE</text>
+
+    <!-- Fixed Audio Bar -->
+    <text x="25" y="175" font-size="12" font-weight="600" fill="#3fb950">Fixed Audio</text>
+    <text x="25" y="190" font-size="10" fill="#8b949e">(atempo=0.836979)</text>
+    <rect x="80" y="165" width="759.9" height="24" rx="4" fill="url(#greenGrad)"/>
+    <text x="460" y="181" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">1303.59s (Aligned within 14 ms of Video) — Fully Synced</text>
+
+    <!-- Drift callout box -->
+    <g transform="translate(640, 248)">
+      <rect width="230" height="32" rx="4" fill="#21262d" stroke="#f85149" stroke-width="1"/>
+      <text x="115" y="20" font-size="11" font-weight="600" fill="#f85149" text-anchor="middle">Max Drift Gap: 212.51s (3.54 min)</text>
+    </g>
+    <g transform="translate(80, 248)">
+      <rect width="250" height="32" rx="4" fill="#21262d" stroke="#3fb950" stroke-width="1"/>
+      <text x="125" y="20" font-size="11" font-weight="600" fill="#3fb950" text-anchor="middle">Fixed Residual Drift: 0.014s (14 ms)</text>
+    </g>
+  </g>
+
+  <!-- ================= SECTION 2: AUDIO DSP & SPECTRUM DELTA ================= -->
+  <g transform="translate(50, 405)">
+    <!-- Panel Background -->
+    <rect width="900" height="340" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+    <text x="25" y="32" font-size="15" font-weight="600" fill="#3fb950">2. MULTI-STAGE DSP &amp; SPECTRUM ATTENUATION DELTA</text>
+
+    <!-- Left Box: Impulse Crackle Removal -->
+    <g transform="translate(25, 55)">
+      <rect width="405" height="260" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="20" y="28" font-size="13" font-weight="600" fill="#f0f6fc">Impulsive Corona Crackle (adeclick)</text>
+      
+      <!-- Waveform representation Before -->
+      <text x="20" y="55" font-size="11" fill="#f85149" font-weight="600">Original Waveform (Micro-arcing Spikes):</text>
+      <rect x="20" y="65" width="365" height="50" rx="3" fill="#161b22"/>
+      <!-- Spikes -->
+      <path d="M 25 90 L 40 90 L 42 70 L 44 110 L 46 90 L 65 90 L 68 68 L 71 112 L 74 90 L 95 90 L 97 72 L 100 108 L 103 90 L 130 90 L 132 66 L 135 114 L 138 90 L 165 90 L 168 70 L 171 110 L 174 90 L 205 90 L 208 67 L 211 113 L 214 90 L 245 90 L 248 71 L 251 109 L 254 90 L 280 90 L 282 66 L 285 114 L 288 90 L 315 90 L 318 69 L 321 111 L 324 90 L 350 90 L 353 67 L 356 113 L 359 90 L 380 90" stroke="#f85149" stroke-width="1.5" fill="none"/>
+
+      <!-- Waveform representation After -->
+      <text x="20" y="135" font-size="11" fill="#3fb950" font-weight="600">Restored Waveform (Reconstructed Signal):</text>
+      <rect x="20" y="145" width="365" height="50" rx="3" fill="#161b22"/>
+      <path d="M 25 170 Q 50 160, 75 170 T 125 170 T 175 170 T 225 170 T 275 170 T 325 170 T 380 170" stroke="#3fb950" stroke-width="2" fill="none"/>
+
+      <!-- Metric badge -->
+      <g transform="translate(20, 208)">
+        <rect width="365" height="38" rx="4" fill="#1c2128" stroke="#30363d"/>
+        <text x="15" y="24" font-size="11" fill="#c9d1d9">Clicks Removed: <tspan fill="#3fb950" font-weight="700">3,900,367</tspan> samples (<tspan fill="#3fb950" font-weight="700">3.72%</tspan> of audio)</text>
+      </g>
+    </g>
+
+    <!-- Right Box: 60Hz Harmonics Notching -->
+    <g transform="translate(460, 55)">
+      <rect width="415" height="260" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="20" y="28" font-size="13" font-weight="600" fill="#f0f6fc">60 Hz Harmonics Attenuation (bandreject Q=30)</text>
+      
+      <!-- Bar Chart comparison of harmonics -->
+      <!-- Bars container -->
+      <g transform="translate(20, 50)">
+        <!-- Gridlines -->
+        <line x1="40" y1="120" x2="380" y2="120" stroke="#21262d" stroke-width="1"/>
+        <line x1="40" y1="80" x2="380" y2="80" stroke="#21262d" stroke-width="1"/>
+        <line x1="40" y1="40" x2="380" y2="40" stroke="#21262d" stroke-width="1"/>
+        
+        <!-- Harmonics: 60, 120, 180, 240, 300, 360, 420, 480, 540, 600 -->
+        <!-- 60 Hz -->
+        <rect x="50" y="45" width="10" height="75" fill="#f85149" rx="1"/>
+        <rect x="62" y="85" width="10" height="35" fill="#3fb950" rx="1"/>
+        <text x="61" y="135" font-size="9" fill="#8b949e" text-anchor="middle">60</text>
+
+        <!-- 120 Hz -->
+        <rect x="80" y="30" width="10" height="90" fill="#f85149" rx="1"/>
+        <rect x="92" y="75" width="10" height="45" fill="#3fb950" rx="1"/>
+        <text x="91" y="135" font-size="9" fill="#8b949e" text-anchor="middle">120</text>
+
+        <!-- 180 Hz -->
+        <rect x="110" y="40" width="10" height="80" fill="#f85149" rx="1"/>
+        <rect x="122" y="80" width="10" height="40" fill="#3fb950" rx="1"/>
+        <text x="121" y="135" font-size="9" fill="#8b949e" text-anchor="middle">180</text>
+
+        <!-- 240 Hz -->
+        <rect x="140" y="25" width="10" height="95" fill="#f85149" rx="1"/>
+        <rect x="152" y="90" width="10" height="30" fill="#3fb950" rx="1"/>
+        <text x="151" y="135" font-size="9" fill="#8b949e" text-anchor="middle">240</text>
+
+        <!-- 300 Hz -->
+        <rect x="170" y="35" width="10" height="85" fill="#f85149" rx="1"/>
+        <rect x="182" y="82" width="10" height="38" fill="#3fb950" rx="1"/>
+        <text x="181" y="135" font-size="9" fill="#8b949e" text-anchor="middle">300</text>
+
+        <!-- 360 Hz -->
+        <rect x="200" y="55" width="10" height="65" fill="#f85149" rx="1"/>
+        <rect x="212" y="95" width="10" height="25" fill="#3fb950" rx="1"/>
+        <text x="211" y="135" font-size="9" fill="#8b949e" text-anchor="middle">360</text>
+
+        <!-- 420 Hz -->
+        <rect x="230" y="48" width="10" height="72" fill="#f85149" rx="1"/>
+        <rect x="242" y="98" width="10" height="22" fill="#3fb950" rx="1"/>
+        <text x="241" y="135" font-size="9" fill="#8b949e" text-anchor="middle">420</text>
+
+        <!-- 480 Hz -->
+        <rect x="260" y="52" width="10" height="68" fill="#f85149" rx="1"/>
+        <rect x="272" y="92" width="10" height="28" fill="#3fb950" rx="1"/>
+        <text x="271" y="135" font-size="9" fill="#8b949e" text-anchor="middle">480</text>
+
+        <!-- 540 Hz -->
+        <rect x="290" y="60" width="10" height="60" fill="#f85149" rx="1"/>
+        <rect x="302" y="96" width="10" height="24" fill="#3fb950" rx="1"/>
+        <text x="301" y="135" font-size="9" fill="#8b949e" text-anchor="middle">540</text>
+
+        <!-- 600 Hz -->
+        <rect x="320" y="70" width="10" height="50" fill="#f85149" rx="1"/>
+        <rect x="332" y="102" width="10" height="18" fill="#3fb950" rx="1"/>
+        <text x="331" y="135" font-size="9" fill="#8b949e" text-anchor="middle">600</text>
+        
+        <!-- Legend -->
+        <rect x="240" y="15" width="10" height="10" fill="#f85149" rx="1"/>
+        <text x="255" y="24" font-size="10" fill="#c9d1d9">Original Buzz</text>
+        <rect x="330" y="15" width="10" height="10" fill="#3fb950" rx="1"/>
+        <text x="345" y="24" font-size="10" fill="#c9d1d9">Notched</text>
+      </g>
+
+      <!-- Sub-rumble note -->
+      <g transform="translate(20, 208)">
+        <rect width="375" height="38" rx="4" fill="#1c2128" stroke="#30363d"/>
+        <text x="15" y="24" font-size="11" fill="#c9d1d9">Sub-Rumble &lt;80Hz: <tspan fill="#3fb950" font-weight="700">-8.4 dB</tspan> | Notches: <tspan fill="#3fb950" font-weight="700">Q=30</tspan> (preserving speech)</text>
+      </g>
+    </g>
+  </g>
+</svg>

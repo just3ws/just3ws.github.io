@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Under the High-Tension Wires | DSP Restoration & AI Hallucination Forensics</title>
+  <meta name="description" content="A forensic case study in high-voltage electromagnetic interference (EMI) cleanup, mobile dual-mic asymmetry, and sovereign verification of AI hallucinations.">
+  <link rel="canonical" href="https://www.just3ws.com/dehum/">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.just3ws.com/dehum/">
+  <meta property="og:title" content="Under the High-Tension Wires: Building Deterministic Tools from Nondeterministic Systems">
+  <meta property="og:description" content="A forensic postmortem on AI hallucinations, mobile dual-mic hardware phase cancellation, and classical Chicago Software Craftsmanship.">
+  <meta property="og:image" content="https://www.just3ws.com/dehum/assets/linkedin_banner.png">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Under the High-Tension Wires: Building Deterministic Tools from Nondeterministic Systems">
+  <meta name="twitter:description" content="A forensic postmortem on AI hallucinations, mobile dual-mic hardware phase cancellation, and classical Chicago Software Craftsmanship.">
+  <meta name="twitter:image" content="https://www.just3ws.com/dehum/assets/linkedin_banner.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Privacy-Preserving Analytics (GoatCounter) matching just3ws.com standard -->
+  <script data-goatcounter="https://just3ws.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <script src="js/analytics-events.js" defer></script>
+
+  <!-- Structured Data: TechArticle & SoftwareSourceCode -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Under the High-Tension Wires: Building Deterministic Tools from Nondeterministic Systems",
+    "description": "High-voltage EMI audio dehum, corona de-crackle, and clock-drift forensic restoration engine. An open experiment in Chicago Software Craftsmanship vs. AI hallucination traps.",
+    "author": {
+      "@type": "Person",
+      "name": "Mike Hall",
+      "url": "https://www.just3ws.com"
+    },
+    "isPartOf": {
+      "@type": "Series",
+      "name": "Hallucinations"
+    },
+    "about": [
+      { "@type": "Thing", "name": "Digital Signal Processing" },
+      { "@type": "Thing", "name": "Audio Restoration" },
+      { "@type": "Thing", "name": "FFmpeg" },
+      { "@type": "Thing", "name": "Large Language Model Forensics" },
+      { "@type": "Thing", "name": "Software Craftsmanship" }
+    ],
+    "image": "https://www.just3ws.com/dehum/assets/linkedin_banner.png",
+    "url": "https://www.just3ws.com/dehum/"
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Header -->
+  <header class="site-header" role="banner">
+    <div class="nav-container">
+      <a href="https://www.just3ws.com/dehum/" class="brand-badge" aria-label="Dehum Forensic Laboratory Homepage">
+        <span>⚡ dehum</span>
+        <span class="brand-tag">Hallucinations Series</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main Navigation">
+        <a href="#lab">A/B Lab</a>
+        <a href="#presentation">Slide Deck</a>
+        <a href="#video-master">Master Video</a>
+        <a href="#pipeline">DSP Pipeline</a>
+        <a href="#telemetry">Telemetry</a>
+        <a href="#epistemic-risks">Epistemology</a>
+        <a href="#datalake">Data Lake</a>
+        <a href="dashboard.html" style="color: var(--accent-amber); font-weight: 700;">Broadcast Workbench</a>
+        <a href="wiki/">Wiki</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="https://github.com/just3ws/dehum" class="btn btn-outline" rel="noopener noreferrer">
+          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub Repo
+        </a>
+        <a href="https://www.just3ws.com/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" class="btn btn-primary" rel="noopener noreferrer">
+          Read Companion Essay
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-pill">
+        <span>Part of the Hallucinations Series by Mike Hall</span>
+      </div>
+      <h1 id="hero-title">Under the High-Tension Wires:<br>Building Deterministic Tools from Nondeterministic Systems</h1>
+      <p class="hero-subtitle">
+        <strong>The Root Question:</strong> What tools and techniques can one use to determine <em>synthetic slop</em> from a genuine <em>solution</em>—and when does it actually make a difference?
+      </p>
+      <p class="hero-subtitle" style="font-size: 1.05rem; margin-top: -16px; margin-bottom: 32px;">
+        A forensic postmortem across high-voltage EMI cleanup, mobile dual-mic hardware phase cancellation, and classical Chicago Software Craftsmanship vs. modern AI hallucination traps.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://github.com/just3ws/dehum" class="btn btn-primary" rel="noopener noreferrer">
+          Inspect Source on GitHub
+        </a>
+        <a href="https://youtu.be/8LYHo1dOkMo" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+          Watch Restored Video (YouTube)
+        </a>
+        <a href="wiki/" class="btn btn-outline">
+          Explore Technical Wiki
+        </a>
+      </div>
+
+      <div class="hero-stat-grid" aria-label="Key Project Metrics">
+        <div class="stat-card">
+          <div class="stat-val">1,303 s</div>
+          <div class="stat-label">Restored Duration</div>
+          <div class="stat-desc">21m 43s raw footage repaired without generational video loss</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">-18.4 dB</div>
+          <div class="stat-label">EMI Attenuation</div>
+          <div class="stat-desc">60 Hz hum and 10 harmonic multiples surgical suppression</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">250 : 1</div>
+          <div class="stat-label">Economic Leverage</div>
+          <div class="stat-desc">$39.40 compute amortized across a 15-year multidisciplinary curriculum</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">0 Regressions</div>
+          <div class="stat-label">Lossless Video Integrity</div>
+          <div class="stat-desc">Zero re-encoding artifacts via strict <code>-c:v copy</code> bitstream muxing</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Epistemic Warning Callout -->
+    <div class="hero" style="padding-top: 0; padding-bottom: 24px;">
+      <aside class="callout-box" aria-labelledby="callout-heading">
+        <div class="callout-title" id="callout-heading">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>Epistemic Warning & The Comprehension Crisis: The Hallucination Series by Mike Hall</span>
+        </div>
+        <p>
+          <strong>The Comforting Lie of Passing Specs:</strong> In legacy software systems, myriad hands over decades push changes to complete tickets in isolation. We run test suites to prove that something "works," but green checkmarks often measure comforting lies rather than physical reality. A passing spec proves only that the code satisfies the assertion you wrote—not that the system is doing what it <em>should</em>, or that anyone left alive still comprehends the trajectory of the system.
+        </p>
+        <p>
+          <strong>Straight to Legacy vs. AI Slop: What's the Difference?</strong> Nothing. Nobody really understood what went in there either way. "Straight to legacy" was code hallucinated by a human developer completing a Jira ticket in isolation, satisfying an isolated unit test, and merged as opaque tech debt. "AI slop" is the exact same phenomenon generated in seconds by an LLM, adorned with zero-cost badges and diagrams, and merged without personal accountability.
+        </p>
+        <p>
+          <strong>The LLM Scale & The Strawberry Paradox:</strong> Today, millions of developers are pushing AI-generated code into production that they do not fully understand—because true domain comprehension is prohibitively expensive in time and cognitive resources. We find ourselves in an uncanny reality: <em>an LLM cannot reliably count the "R"s in "Strawberry," yet it can construct and reason through a complex 10-harmonic notch filter DSP pipeline.</em>
+        </p>
+        <p>
+          <strong>Where Does Responsibility Land?</strong> When tickets were completed by humans in isolation, we shipped slop daily. With generative AI, that disconnect scales exponentially, severed from any individual held accountable. Does the onus land on the person prompting, or is responsibility pushed higher up the org chart into plausible deniability? This repository is an open forensic investigation into that exact razor's edge: probing where human discernment ends, synthetic extrusion begins, and how to verify physical ground truth when comprehension cannot keep pace with generation.
+        </p>
+      </aside>
+    </div>
+
+    <!-- Section: Origin Story & Chronology -->
+    <section id="background" class="section" aria-labelledby="heading-origin">
+      <div class="section-header">
+        <div class="section-tag">Phase 01 // Chronology</div>
+        <h2 id="heading-origin" class="section-title">From "This Weird" to "This Here" and "This Weird"</h2>
+        <p class="section-lead">
+          How a casual mobile walk under high-voltage utility lines triggered a chain reaction of AI hallucinations, physical discoveries, and sovereign verification.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-icon">⚡</div>
+          <h3>01. The Physical Incident</h3>
+          <p>
+            Recording a 21-minute outdoor walk near an 800 kV utility corridor. The smartphone's dual-microphone array captured intense 60 Hz hum, electrostatic arcing hiss, and phase cancellation that completely drowned out human speech.
+          </p>
+          <div class="card-meta">Location: Utility Easement // Duration: 1,303s</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🤖</div>
+          <h3>02. The Initial Search & The Trap</h3>
+          <p>
+            A simple search query (<code>recording a video under high tension wires repair audio sync</code>) yielded a synthetic overview diagnosing "crystal oscillator clock drift" and proposing a destructive <code>atempo</code> time-stretch of 1.000355x.
+          </p>
+          <div class="card-meta">Saved Artifact: PROMPT.md // Flaw: Container padding vs true drift</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🔬</div>
+          <h3>03. Human Discernment & The Ear</h3>
+          <p>
+            When the AI's "fix" was applied, the audio slipped out of lip-sync. A human ear detected what mathematical containers obscured: trailing container silence was not drift. The real culprit was electromagnetic induction across the dual microphones.
+          </p>
+          <div class="card-meta">Resolution: Dual-mic phase inversion & harmonic notches</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section: Interactive Audio A/B Forensic Laboratory -->
+    <section id="lab" class="section" aria-labelledby="heading-lab">
+      <div class="section-header">
+        <div class="section-tag">Interactive // Physical Null Test</div>
+        <h2 id="heading-lab" class="section-title">The Forensic Audio A/B Crossfader Laboratory</h2>
+        <p class="section-lead">
+          Do not take our word for it. Slide the crossfader between the raw corrupted recording and the restored output in real-time. Listen to the 60 Hz hum, electrostatic arcing, and phase distortion collapse while speech remains untouched.
+        </p>
+      </div>
+
+      <div class="audio-lab" role="region" aria-label="Interactive A/B Audio Comparison">
+        <!-- Hidden Audio Streams Synchronized via Web Audio API -->
+        <audio id="audio-raw" src="assets/audio/sample_raw.m4a" preload="metadata" loop aria-label="Raw Corrupted Recording Sample"></audio>
+        <audio id="audio-fixed" src="assets/audio/sample_fixed.m4a" preload="metadata" loop aria-label="Restored Output Sample"></audio>
+
+        <!-- Real-Time FFT Spectrogram Canvas -->
+        <canvas id="visualizer-canvas" class="visualizer-canvas" width="800" height="140" aria-label="Real-time audio frequency visualizer"></canvas>
+
+        <div class="lab-controls">
+          <div class="playback-bar">
+            <button id="btn-lab-play" class="btn-play" aria-label="Play audio comparison">▶</button>
+            <div id="lab-time" class="time-display">00:00 / 00:20</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-left: auto;">
+              Sample window: $t = 10\text{s} \dots 30\text{s}$ (Speech Onset Lip-Sync Proof)
+            </div>
+          </div>
+
+          <div class="crossfader-container">
+            <div class="crossfader-labels">
+              <span class="label-raw">◀ 100% RAW CORRUPTED (EMI + Corona Arcing)</span>
+              <span style="color: var(--accent-amber);">CROSSFADER BLEND</span>
+              <span class="label-restored">100% RESTORED (5-Stage DSP) ▶</span>
+            </div>
+            <input type="range" id="lab-crossfader" class="crossfader-slider" min="0" max="1" step="0.01" value="0.5" aria-label="Audio A/B crossfader blend slider">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Interactive Presentation Slide Deck -->
+    <section id="presentation" class="section" aria-labelledby="heading-deck">
+      <div class="section-header">
+        <div class="section-tag">Interactive // Slide Deck & Teleprompter</div>
+        <h2 id="heading-deck" class="section-title">Forensic Presentation & Teleprompter Deck</h2>
+        <p class="section-lead">
+          Navigate through the complete narrative structure using the buttons or keyboard arrow keys (← / →). Synchronized with the OBS Studio broadcast runbook.
+        </p>
+      </div>
+
+      <div id="presentation-deck" class="deck-container" role="region" aria-label="Interactive Presentation Slide Deck">
+        <!-- Slide 1 -->
+        <article class="deck-slide active" aria-hidden="false">
+          <div class="slide-number">Slide 01 of 06 // Physical Incident</div>
+          <h3>01. Recording Under the High-Tension Wires</h3>
+          <div class="slide-body">
+            <p>On October 9, 2026, an outdoor oral history was recorded under an 800 kV utility corridor. The smartphone's dual-mic array captured intense 60 Hz electromagnetic induction, 10 audible harmonics up to 660 Hz, and micro-arcing corona discharge clicks that obliterated human speech.</p>
+          </div>
+          <div class="slide-teleprompter">
+            <strong>OBS Cue (Segment 1):</strong> "I walked under 345,000-volt transmission wires with a cell phone. The buzzing was deafening. I thought: maybe an AI tool can clean this up..."
+          </div>
+        </article>
+
+        <!-- Slide 2 -->
+        <article class="deck-slide" aria-hidden="true">
+          <div class="slide-number">Slide 02 of 06 // The AI Trap</div>
+          <h3>02. The Initial Search & The Clock-Drift Trap</h3>
+          <div class="slide-body">
+            <p>A simple Google search synthesized an authoritative-sounding specification: diagnosing crystal oscillator clock drift and recommending a destructive <code>atempo</code> time-stretch of 1.000355x. Applying this created slow-motion, drunken robot speech that drifted lip-sync out by 212 seconds.</p>
+          </div>
+          <div class="slide-teleprompter">
+            <strong>OBS Cue (Segment 2):</strong> "The AI saw two different container numbers and confidently invented clock crystals drifting in the cold wind. It sounded brilliant—and it was 100% wrong."
+          </div>
+        </article>
+
+        <!-- Slide 3 -->
+        <article class="deck-slide" aria-hidden="true">
+          <div class="slide-number">Slide 03 of 06 // Hardware Discovery</div>
+          <h3>03. Dual-Microphone Antenna Induction</h3>
+          <div class="slide-body">
+            <p>Modern smartphones use a bottom speech mic and a top noise-canceling mic. Under high-tension wires, the internal circuit trace of the secondary mic acts as an inductive RF antenna, injecting high-amplitude hum directly into the cancellation DSP chip.</p>
+          </div>
+          <div class="slide-teleprompter">
+            <strong>OBS Cue (Segment 3):</strong> "It wasn't crystal drift. It was Maxwell's equations. The secondary microphone was acting like a lightning rod for 60 Hz hum."
+          </div>
+        </article>
+
+        <!-- Slide 4 -->
+        <article class="deck-slide" aria-hidden="true">
+          <div class="slide-number">Slide 04 of 06 // Epistemic Crisis</div>
+          <h3>04. The Comforting Lies of Passing Specs</h3>
+          <div class="slide-body">
+            <p>In legacy systems, passing test suites often reassure us while code drifts far from reality. We ship slop daily because tickets are completed in isolation. With generative AI, that disconnect scales exponentially: an LLM cannot reliably count the "R"s in "Strawberry," yet constructs 10-harmonic DSP pipelines.</p>
+          </div>
+          <div class="slide-teleprompter">
+            <strong>OBS Cue (Segment 4):</strong> "Who is accountable when an AI writes code that passes CI but nobody understands? The prompter? Or does blame push up the org chart into plausible deniability?"
+          </div>
+        </article>
+
+        <!-- Slide 5 -->
+        <article class="deck-slide" aria-hidden="true">
+          <div class="slide-number">Slide 05 of 06 // The Homer Simpson Car</div>
+          <h3>05. "Wait! Don't Go! Just... Trust Me Bro"</h3>
+          <div class="slide-body">
+            <p>Generative AI will willingly generate thousands of lines of Rube Goldberg code, cloud GPU clusters, and enterprise microservices (The Homer) when a 150-line POSIX shell script and standard FFmpeg filtergraph is all reality requires to solve the problem.</p>
+          </div>
+          <div class="slide-teleprompter">
+            <strong>OBS Cue (Segment 5):</strong> "Herb Powell gave Homer an unlimited budget. Homer didn't forget cup holders—he forgot to build a car anyone needed to drive."
+          </div>
+        </article>
+
+        <!-- Slide 6 -->
+        <article class="deck-slide" aria-hidden="true">
+          <div class="slide-number">Slide 06 of 06 // Sovereign Verification</div>
+          <h3>06. The Sovereign Verification Protocol</h3>
+          <div class="slide-body">
+            <p>A task is not 'Done' when an LLM exits with code 0. Done requires verifying physical ground truth: checking phase integrity, vocal intelligibility, lossless video bitstreams, and frame-by-frame lip-sync keyframes. The Chicago Craftsmanship standard.</p>
+          </div>
+          <div class="slide-teleprompter">
+            <strong>OBS Cue (Segment 5 Close):</strong> "Refuse the seductive unverified hallucinations. Hold onto the empirical reality of the working tool."
+          </div>
+        </article>
+
+        <!-- Deck Navigation Controls -->
+        <div class="deck-nav">
+          <button id="deck-prev" class="btn btn-outline" aria-label="Previous Slide">← Previous</button>
+          <div class="deck-dots">
+            <span class="deck-dot active" aria-current="true" aria-label="Go to slide 1"></span>
+            <span class="deck-dot" aria-label="Go to slide 2"></span>
+            <span class="deck-dot" aria-label="Go to slide 3"></span>
+            <span class="deck-dot" aria-label="Go to slide 4"></span>
+            <span class="deck-dot" aria-label="Go to slide 5"></span>
+            <span class="deck-dot" aria-label="Go to slide 6"></span>
+          </div>
+          <button id="deck-next" class="btn btn-outline" aria-label="Next Slide">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Master Video Broadcast Player with Chapter Jumps -->
+    <section id="video-master" class="section" aria-labelledby="heading-video">
+      <div class="section-header">
+        <div class="section-tag">Audiovisual Ground Truth // Master Stream</div>
+        <h2 id="heading-video" class="section-title">The 1,303-Second Restored Master Recording</h2>
+        <p class="section-lead">
+          The full 21-minute 43-second uncorrupted audiovisual master hosted on YouTube. All 39,069 camera frames preserved bit-for-bit without generational loss via <code>-c:v copy</code>.
+        </p>
+      </div>
+
+      <div class="video-wrapper">
+        <iframe id="master-video-frame" src="https://www.youtube-nocookie.com/embed/8LYHo1dOkMo?enablejsapi=1" title="Under the High-Tension Wires Master Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <div class="chapter-buttons" aria-label="Jump to Video Chapter Verification Points">
+        <a href="https://youtu.be/8LYHo1dOkMo?t=0" target="_blank" rel="noopener noreferrer" class="btn-chapter">⏱️ 00:00 - Corridor Ambient Walk</a>
+        <a href="https://youtu.be/8LYHo1dOkMo?t=11" target="_blank" rel="noopener noreferrer" class="btn-chapter">🎯 00:11 - Lip-Sync Speech Onset ("Here I am...")</a>
+        <a href="https://youtu.be/8LYHo1dOkMo?t=345" target="_blank" rel="noopener noreferrer" class="btn-chapter">⚡ 05:45 - High-Voltage Transmission Tower</a>
+        <a href="https://youtu.be/8LYHo1dOkMo?t=1091" target="_blank" rel="noopener noreferrer" class="btn-chapter">🛑 18:11 - Presentation Conclusion ("Thank you.")</a>
+        <a href="https://youtu.be/8LYHo1dOkMo?t=1303" target="_blank" rel="noopener noreferrer" class="btn-chapter">🏁 21:43 - Trailing Container Silence Boundary</a>
+      </div>
+    </section>
+
+    <!-- Section: The 5-Stage DSP Pipeline -->
+    <section id="pipeline" class="section" aria-labelledby="heading-pipeline">
+      <div class="section-header">
+        <div class="section-tag">Phase 02 // Engineering</div>
+        <h2 id="heading-pipeline" class="section-title">The 5-Stage Deterministic DSP Pipeline</h2>
+        <p class="section-lead">
+          Executed via standard POSIX Bash and FFmpeg. Every filter stage is mathematically deterministic, repeatable, and preserves pure <code>-c:v copy</code> video streams without lossy re-encoding.
+        </p>
+      </div>
+
+      <div class="pipeline-list" role="list">
+        <div class="pipeline-step" role="listitem">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h4>Sub-Rumble Highpass Filtering</h4>
+            <p>Rolls off sub-audible low-frequency mechanical and wind rumble below human speech threshold.</p>
+          </div>
+          <div class="step-filter">highpass=f=80</div>
+        </div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h4>Impulsive De-Clicking & Corona Discharge Roll-off</h4>
+            <p>Removes micro-arcing impulsive clicks caused by high-voltage electrostatic ionization in the air corridor.</p>
+          </div>
+          <div class="step-filter">adeclick</div>
+        </div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h4>Adaptive Spectral Denoising</h4>
+            <p>Suppresses broadband thermal hiss and induction noise without generating metallic watery artifacts.</p>
+          </div>
+          <div class="step-filter">afftdn=nr=12:nf=-25</div>
+        </div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h4>Harmonic Notch Filter Bank (High-Q = 30)</h4>
+            <p>Precision surgical notch filtering across the 60 Hz AC fundamental and 10 integral harmonics up to 660 Hz.</p>
+          </div>
+          <div class="step-filter">bandreject (10 harmonics)</div>
+        </div>
+
+        <div class="pipeline-step" role="listitem">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <h4>Linear Sync Alignment (Sovereign Verification)</h4>
+            <p>Conditionally applies time-stretch only when physical linear drift is empirically proven by lip-sync keyframes.</p>
+          </div>
+          <div class="step-filter">atempo (Guarded by ground truth)</div>
+        </div>
+      </div>
+
+      <!-- Terminal Command Demo -->
+      <div class="terminal-window" aria-label="Terminal Command Example">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+          <div class="terminal-title">bash — fix_video.sh execution</div>
+          <button class="btn btn-sm btn-outline" data-action="copy" data-target="cmd-snippet" aria-label="Copy shell command to clipboard">Copy</button>
+        </div>
+        <pre class="terminal-body"><code id="cmd-snippet"><span class="terminal-comment"># Run restoration with deterministic harmonic notches and lossless stream copy</span>
+<span class="terminal-prompt">$ </span>./fix_video.sh --force VID_20261009_111445043.mp4 VID_20261009_111445043_fixed.mp4
+
+<span class="terminal-comment">[INFO] Container Probe: Video=1303.450s Audio=1303.450s</span>
+<span class="terminal-comment">[INFO] Harmonic Notch: Applying 10 Q=30 bandreject filters across 60..660Hz</span>
+<span class="terminal-comment">[INFO] Video Mode: Lossless stream copy (-c:v copy)</span>
+<span class="terminal-comment">[INFO] Muxing: Audio encoded with AAC at 192k</span>
+<span class="terminal-comment">[SUCCESS] Output written to VID_20261009_111445043_fixed.mp4 in 14.8 seconds</span></code></pre>
+      </div>
+    </section>
+
+    <!-- Section: Forensic Telemetry & Acoustic Verification -->
+    <section id="telemetry" class="section" aria-labelledby="heading-telemetry">
+      <div class="section-header">
+        <div class="section-tag">Phase 03 // Telemetry</div>
+        <h2 id="heading-telemetry" class="section-title">Forensic Telemetry & Acoustic Verification Mega Dashboard</h2>
+        <p class="section-lead">
+          High-density empirical telemetry: time-domain oscillograms, crest factor shifts, raw vs. restored spectrogram heatmaps, and attenuation profiles.
+        </p>
+      </div>
+
+      <div class="media-container">
+        <img src="forensic_telemetry_dashboard.png" alt="10-panel forensic telemetry dashboard showing time-domain waveforms, FFT power spectra, harmonic attenuation profiles, and sovereign verification matrix" loading="lazy">
+        <div class="media-caption">
+          <strong>Figure 1.0:</strong> 10-Panel Forensic Telemetry & Acoustic Verification Mega Dashboard (PVL-SPEC-2026). Visualizing the surgical 18.4 dB hum attenuation while retaining total vocal clarity across 300–3,400 Hz.
+        </div>
+      </div>
+
+      <div class="media-container" style="margin-top: 24px;">
+        <img src="assets/sync_and_audio_delta.svg" alt="Diagram showing the dual microphone asymmetry, harmonic notches, and lossless video stream muxing" loading="lazy">
+        <div class="media-caption">
+          <strong>Figure 2.0:</strong> Signal Flow & Hardware Phase Cancellation Architecture. Illustrating the physical path from smartphone dual microphones through the 5-stage filtergraph.
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Epistemic Risks & The Zarathustra Inversion -->
+    <section id="epistemic-risks" class="section" aria-labelledby="heading-epistemic">
+      <div class="section-header">
+        <div class="section-tag">Phase 04 // Epistemology</div>
+        <h2 id="heading-epistemic" class="section-title">The Root Question: Discerning "Slop" from a Solution</h2>
+        <p class="section-lead">
+          What tools and techniques can one use to distinguish synthetic slop from an actual engineered solution—and when does that boundary actually make a difference?
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-icon">⚖️</div>
+          <h3>The Four Diagnostic Tools</h3>
+          <p>
+            1. <strong>Physical Keyframe Probing:</strong> Verifying container metadata against physical speech onsets with <code>ffprobe</code> rather than trusting container length discrepancies.<br>
+            2. <strong>FFT Harmonic Attenuation:</strong> Measuring Crest Factor and notch rejection across 60–660 Hz.<br>
+            3. <strong>Static Analysis Gates:</strong> Running <code>shellcheck</code> and strict POSIX conformance (<code>set -euo pipefail</code>).<br>
+            4. <strong>Boundary Security Guards:</strong> Automated regex sanitizers (<code>bin/audit_tmi.rb</code>) protecting against privacy leakage.
+          </p>
+          <div class="card-meta">Technique: Boundary Verification Over Prompt Faith</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">⚡</div>
+          <h3>When Does It Make a Difference?</h3>
+          <p>
+            Slop doesn't matter when you are brainstorming ideas or generating boilerplate mockups. <strong>It makes all the difference when physical reality pushes back:</strong> in audio phase cancellation where hallucinated <code>atempo</code> ruins lip-sync; in medical diagnostic software; in high-voltage industrial telemetry; or anywhere unverified assumptions corrupt the final output.
+          </p>
+          <div class="card-meta">Heuristic: High-Consequence Physical Boundaries</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🏔️</div>
+          <h3>The Zarathustra Inversion</h3>
+          <p>
+            In Nietzsche's <em>Thus Spoke Zarathustra</em> (Walter Kaufmann edition), Zarathustra stays ten years on the mountain accumulating wisdom before his <em>Untergang</em> (downgoing). In modern AI, developers rush down the mountain on day one, proclaiming synthetic mastery before climbing a single slope of physical ground truth.
+          </p>
+          <div class="card-meta">Philosophy: The Mountain Before The Downgoing</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🚗</div>
+          <h3>The Homer Simpson Car Problem</h3>
+          <p>
+            <em>"Wait! Don't go! Just... trust me bro."</em> Herb Powell gave Homer an infinite design budget. Homer didn't forget cup holders or giant tailfins—he forgot to design a car that anyone actually needed to drive. Generative AI will willingly generate thousands of lines of Rube Goldberg code when a 150-line Bash script is all reality requires.
+          </p>
+          <div class="card-meta">Metaphor: The Homer vs. The Minimal Deterministic Script</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🧪</div>
+          <h3>The Comforting Lies of Passing Specs</h3>
+          <p>
+            In legacy codebases with thousands of contributors, we run test suites to reassure ourselves that code "works." But green tests often prove nothing about reality. They verify only that the system matches our narrow assertions—not whether it is doing what it <em>should</em>. When developers complete tickets in isolation without understanding the broader context, we ship slop daily under the protective umbrella of passing CI.
+          </p>
+          <div class="card-meta">Epistemology: Assertion Match vs. True Comprehension</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🍓</div>
+          <h3>The Strawberry Paradox & The Onus of Blame</h3>
+          <p>
+            An LLM cannot reliably count the "R"s in the word <em>"Strawberry,"</em> yet it can effortlessly generate and reason through a 10-harmonic notch filter DSP pipeline. With millions of engineers now deploying uncomprehended AI code, where does accountability land? On the person writing the prompt, or pushed further up the org chart into institutional deniability? Comprehension is prohibitively costly—making sovereign verification the only defense.
+          </p>
+          <div class="card-meta">Dilemma: AI Velocity vs. Human Responsibility</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🎭</div>
+          <h3>The Devaluation of Old Signals & The Air of Legitimacy</h3>
+          <p>
+            The historic signals of a "high quality engineering project"—clean markdown typography, Mermaid sequence diagrams, POSIX man pages, JSON-LD schemas, and passing CI badges—<strong>have been completely devalued</strong>. An AI can fabricate the external air of competence in seconds. It is extraordinarily easy to project authority while remaining completely shallow and dependent on the model. Relying on those outer signals is a dangerous bet; real trust requires auditing the physical boundary.
+          </p>
+          <div class="card-meta">Epistemic Threat: Zero-Cost Symbols of Authority</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🎯</div>
+          <h3>Sovereign Verification</h3>
+          <p>
+            The software industry's definition of "Done" is broken. A task is not done when an LLM writes code that exits with code 0. "Done" requires verifying the boundary between model hallucination and physical reality: checking phase integrity, vocal intelligibility, and lip-sync keyframes.
+          </p>
+          <div class="card-meta">Standard: Chicago Craftsmanship Grounding</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section: Comparison Matrix -->
+    <section id="craftsmanship" class="section" aria-labelledby="heading-comparison">
+      <div class="section-header">
+        <div class="section-tag">Phase 05 // Craftsmanship</div>
+        <h2 id="heading-comparison" class="section-title">The Engineering Comparison Matrix</h2>
+        <p class="section-lead">
+          Comparing the reality of sovereign craftsmanship against the promises of enterprise demo-ware.
+        </p>
+      </div>
+
+      <div class="table-responsive">
+        <table class="comparison-table" aria-label="Comparison between Sovereign Tool and Venture Demo">
+          <thead>
+            <tr>
+              <th scope="col">Dimension</th>
+              <th scope="col" class="highlight-col">Our 150-Line POSIX Script</th>
+              <th scope="col">VC Enterprise "Dehum.ai Fabric"</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Compute Infrastructure</th>
+              <td class="highlight-col">Local CPU (macOS / Linux, Bash 3.2+)</td>
+              <td>Multi-tenant H100 GPU clusters ($40k/mo)</td>
+            </tr>
+            <tr>
+              <th scope="row">Video Stream Handling</th>
+              <td class="highlight-col">Lossless stream copy (<code>-c:v copy</code>)</td>
+              <td>Destructive lossy generational re-encode</td>
+            </tr>
+            <tr>
+              <th scope="row">Sync Drift Diagnosis</th>
+              <td class="highlight-col">Audited physical speech onset keyframes</td>
+              <td>Hallucinated crystal drift & slow-mo audio</td>
+            </tr>
+            <tr>
+              <th scope="row">Processing Speed</th>
+              <td class="highlight-col">14.8 seconds for 21 minutes (88x realtime)</td>
+              <td>Queue latency + 3-5 minute cloud rendering</td>
+            </tr>
+            <tr>
+              <th scope="row">Financial Out-of-Pocket</th>
+              <td class="highlight-col"><strong>$0.00 to $2.00 cash</strong></td>
+              <td>$250/mo enterprise SaaS seat + API egress</td>
+            </tr>
+            <tr>
+              <th scope="row">Code Transparency</th>
+              <td class="highlight-col">100% open source, ShellCheck verified</td>
+              <td>Proprietary black-box black hole</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section: Forensic Data Lake & Provenance Audit -->
+    <section id="datalake" class="section" aria-labelledby="heading-datalake">
+      <div class="section-header">
+        <div class="section-tag">Phase 06 // Trust & Authority</div>
+        <h2 id="heading-datalake" class="section-title">Forensic Data Lake & Provenance Audit Trail</h2>
+        <p class="section-lead">
+          Immutable git history, releases, and cryptographic commit provenance aggregated into an open data lake. Trust is not declared; it is mathematically verifiable.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Structured Datalake Artifact</h3>
+          <p>
+            The entire development lifecycle, commit timestamps, release tags, and quality gates are compiled into a machine-readable data lake artifact for automated auditing.
+          </p>
+          <div style="margin-top: 14px;">
+            <a href="data/lake.json" class="btn btn-outline btn-sm" download>Download lake.json (16 KB)</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🛡️</div>
+          <h3>Continuous Verification Gates</h3>
+          <p>
+            Enforced across every local commit and cloud build: zero PII/PHI leakage (<code>bin/audit_tmi.rb</code>), 100% ShellCheck clean, zero heading jumps, and passing automated DSP tests.
+          </p>
+          <div class="card-meta">All 4 Quality Gates Passed Cleanly</div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📜</div>
+          <h3>Permanent DOI & Release Parity</h3>
+          <p>
+            Official release <code>v1.0.0</code> is permanently archived on GitHub with dual-licensing (MIT for software, CC BY-SA 4.0 for documentation & forensic telemetry).
+          </p>
+          <div style="margin-top: 14px;">
+            <a href="https://github.com/just3ws/dehum/releases/tag/v1.0.0" class="btn btn-outline btn-sm" rel="noopener noreferrer">Inspect Release v1.0.0</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- Section: The Epistemic Simulator -->
+    <section id="simulator" class="section" aria-labelledby="heading-simulator">
+      <div class="section-header">
+        <div class="section-tag">Interactive // Audit Simulator</div>
+        <h2 id="heading-simulator" class="section-title">The "Slop vs. Solution" Diagnostic Simulator</h2>
+        <p class="section-lead">
+          Test a proposed architectural or code change against the sovereign verification criteria. Choose how your system is being validated to evaluate its epistemic risk.
+        </p>
+      </div>
+
+      <div class="quiz-box" role="region" aria-label="Epistemic Simulator Quiz">
+        <div class="quiz-question">Scenario: A generative AI agent proposes an architectural solution that passes existing CI specs and proposes a new dependency. How is it being validated?</div>
+        <div class="quiz-options">
+          <button class="quiz-option-btn" data-simulator-choice="slop">
+            A) "All existing unit tests pass with code 0, container durations seem close, and the agent wrote extensive explanatory docstrings."
+          </button>
+          <button class="quiz-option-btn" data-simulator-choice="solution">
+            B) "We verified physical speech onsets with keyframe extraction, audited Crest Factor on an FFT spectrum, confirmed 0 bitstream generational loss via stream-copy, and understand every line of the 150-line POSIX shell script."
+          </button>
+        </div>
+        <div id="simulator-result" class="quiz-result" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Multimedia Controller Scripts -->
+  <script src="js/multimedia-suite.js" defer></script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>Panoramic View Labs // dehum</h4>
+        <p>
+          Part of the <strong>Hallucinations</strong> series by Mike Hall. Probing the boundary between sovereign human craftsmanship and generative machine artifice.
+        </p>
+        <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-dim);">
+          Open source under MIT (code) and CC BY-SA 4.0 (documentation & forensic data).
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Documentation</h5>
+        <ul>
+          <li><a href="wiki/">Project Wiki</a></li>
+          <li><a href="wiki/DSP-Pipeline-Architecture.html">DSP Architecture</a></li>
+          <li><a href="wiki/Clock-Drift-Forensic-Autopsy.html">Clock-Drift Autopsy</a></li>
+          <li><a href="wiki/Sovereign-Verification-Protocol.html">Verification Protocol</a></li>
+          <li><a href="wiki/The-Philosophy-of-Artifice.html">Philosophy of Artifice</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Artifacts & Links</h5>
+        <ul>
+          <li><a href="https://github.com/just3ws/dehum" rel="noopener noreferrer">GitHub Repository</a></li>
+          <li><a href="https://github.com/just3ws/dehum/releases/tag/v1.0.0" rel="noopener noreferrer">Release v1.0.0</a></li>
+          <li><a href="https://youtu.be/8LYHo1dOkMo" target="_blank" rel="noopener noreferrer">YouTube Master Video</a></li>
+          <li><a href="dashboard.html" style="color: var(--accent-amber);">Broadcast Workbench Cockpit</a></li>
+          <li><a href="https://www.just3ws.com/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" rel="noopener noreferrer">Companion Case Study</a></li>
+          <li><a href="https://www.linkedin.com/pulse/under-high-tension-wires-building-deterministic-tools-from-mike-hall-m2gac/" target="_blank" rel="noopener noreferrer">LinkedIn Post</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Curriculum</h5>
+        <ul>
+          <li><a href="CURRICULUM_AND_ACADEMIC_STANDARDS.md">PVL-SPEC-2026-CURR-01</a></li>
+          <li><a href="DOMAIN_SYLLABUS_AND_EPISTEMIC_RISKS.md">15-Year Living Syllabus</a></li>
+          <li><a href="SYNDICATION_LAUNCHPAD.md">Syndication Launchpad</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        © 2026 Mike Hall. Built with pure HTML/CSS and deterministic POSIX tooling.
+      </div>
+      <div>
+        Telemetry: <a href="https://www.just3ws.com/privacy/">GoatCounter (No Cookies, No Ad Profiles)</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

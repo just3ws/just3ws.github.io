@@ -147,6 +147,16 @@ if [[ -f "${ITERM2_PROFILE_SRC}" && -d "${ITERM2_SUPPORT_DIR}" ]]; then
   fi
 fi
 
+# 6. Verify and Synchronize Chromium Recording Environment
+SETUP_CHROMIUM_CLI="${OBS_PROJECT_DIR}/../bin/setup_recording_environment.py"
+if [[ -f "${SETUP_CHROMIUM_CLI}" ]]; then
+  if [[ "${DRY_RUN}" == "true" ]]; then
+    python3 "${SETUP_CHROMIUM_CLI}" --verify
+  else
+    python3 "${SETUP_CHROMIUM_CLI}" --sync --verify
+  fi
+fi
+
 echo "------------------------------------------------------------------"
 if [[ "${DRY_RUN}" == "true" ]]; then
   echo "✅ Dry-run check completed successfully! No files were modified."

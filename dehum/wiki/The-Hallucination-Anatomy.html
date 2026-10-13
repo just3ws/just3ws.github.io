@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Hallucination Anatomy | dehum Technical Documentation</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script data-goatcounter="https://just3ws.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <script src="../js/analytics-events.js" defer></script>
+  <link rel="canonical" href="https://www.just3ws.com/dehum/wiki/The-Hallucination-Anatomy.html">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="nav-container">
+      <a href="../" class="brand-badge">
+        <span>⚡ dehum</span>
+        <span class="brand-tag">Wiki</span>
+      </a>
+      <nav class="site-nav" aria-label="Wiki Navigation">
+        <a href="../">← Main Dashboard</a>
+        <a href="Home.html">Wiki Home</a>
+        <a href="Architecture-and-Signal-Flow.html">Signal Flow</a>
+        <a href="The-Hallucination-Anatomy.html">Hallucination Anatomy</a>
+        <a href="The-Sovereign-Verification-Protocol.html">Verification Protocol</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://github.com/just3ws/dehum" class="btn btn-outline" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="section" role="main" style="max-width: 860px; padding: 48px 24px;">
+    <p>---</p>
+<p>title: "The Hallucination Anatomy"</p>
+<p>description: "Forensic analysis and open knowledge documentation for just3ws/dehum"</p>
+<p>license: "CC-BY-SA-4.0"</p>
+<p>open_knowledge_foundation: "Open Definition 2.1 Conforming"</p>
+<p>maintainer: "Mike Hall"</p>
+<p>project: "just3ws/dehum"</p>
+<p>date: "2026-10-12"</p>
+<p>---</p>
+<h1 id="the-hallucination-anatomy-the-atempo-0-837-clock-drift-trap">The Hallucination Anatomy: The `atempo=0.837` Clock-Drift Trap</h1>
+<blockquote><p>*"The container reported a 212.5-second gap. The model reported a mathematical certainty. Both were completely wrong about physical reality."*</p></blockquote>
+<h2 id="1-the-trap">1. The Trap</h2>
+<p>When raw MP4 media recorded on mobile hardware is probed via container inspection tools (<code>ffprobe</code>), it reports stream durations:</p>
+<ul>
+  <li><strong>Video Stream Duration</strong>: <code>1303.608144</code> seconds (21m 43s)</li>
+  <li><strong>Audio Stream Duration</strong>: <code>1091.093333</code> seconds (18m 11s)</li>
+  <li><strong>Apparent Discrepancy ($\Delta$)</strong>: <code>212.514811</code> seconds</li>
+</ul>
+<p>Faced with this container header discrepancy and a prompt asking to *"fix sync drift"*, the model computed the mathematical ratio:</p>
+<p>$$\text{atempo} = \frac{1091.093333}{1303.608144} \approx 0.836979$$</p>
+<p>It produced an executable command applying <code>-filter:a "atempo=0.836979"</code>.</p>
+<p>---</p>
+<h2 id="2-the-failure-mode">2. The Failure Mode</h2>
+<p>In audio processing, <code>atempo=0.837</code> stretches the audio time domain by <strong>16.3%</strong>:</p>
+<p>1. Speech is slowed down into a slurred, robotic, drunken cadence.</p>
+<p>2. The speaker's syllables desynchronize completely from visual mouth articulation.</p>
+<p>3. Because speech ended naturally at minute 18, stretching the speech caused the speaker's closing remarks to be dragged out across 21 minutes over visual footage of empty trails.</p>
+<p>---</p>
+<h2 id="3-the-ground-truth-autopsy">3. The Ground Truth Autopsy</h2>
+<p>Why did the container have a 212.5-second gap if there was no clock drift?</p>
+<p>1. <strong>Hardware Recording Protocol</strong>: The user finished speaking, concluded with *"Thank you,"* and continued walking with the phone active while muting or cutting off the primary microphone track.</p>
+<p>2. <strong>Audio Stream Truncation</strong>: The camera application ceased writing audio packets when the microphone stream went idle, but continued capturing video frames.</p>
+<p>3. <strong>Physical Speech Cadence</strong>: Audio syllable rate was 1:1 with real-world time.</p>
+<h3 id="sovereign-lesson">Sovereign Lesson</h3>
+<p><strong>Never trust container headers to infer clock crystal drift.</strong>  </p>
+<p>Always verify physical ground truth:</p>
+<ul>
+  <li>Speech onset alignment at $t_0$</li>
+  <li>Speech conclusion timestamps</li>
+  <li>Frame-by-frame lip sync articulation</li>
+</ul>
+  </main>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-bottom" style="border: none; padding: 0;">
+      <div>© 2026 Mike Hall. Part of the Hallucinations Series.</div>
+      <div><a href="../">Return to Main Forensic Dashboard</a></div>
+    </div>
+  </footer>
+</body>
+</html>

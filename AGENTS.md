@@ -11,6 +11,16 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - RECORDING BROWSER ENVIRONMENT & BROADCAST THEME HARMONIZATION (2026-10-13):
+         Consolidated broadcast recording assets, browser environment toolchain, and theme harmonization:
+         - Built and verified automated recording browser toolchain `bin/setup_recording_environment.py` (v1.1.0) staging 12 extensions into `~/Library/Application Support/Chromium/UnpackedExtensions/`.
+         - Strictly quarantined LastPass, Complexity, and DeArrow across all catalogs, profiles, and sync scripts.
+         - Harmonized browser chrome, Stylus userstyles, Bonjourr start page cockpit, Hister portal, and the Dehum presentation cockpit (`https://www.just3ws.localhost/dehum/dashboard.html`) directly with the canonical `just3ws.com` design tokens (warm paper canvas `#faf8f5`, crisp cards `#ffffff`, sumi ink `#1e232a`, craftsman teal `#0f766e`, warm amber `#b45309`, Charter serif display, and Inter UI sans).
+         - Resolved `/dashboard.html` 404 by adding frontmatter redirect mapping directly to canonical control plane `/dashboard/`.
+         - Consolidated all browser theme and recording configuration assets into `obs/browser-themes/` (with version-controlled staged backups in `obs/browser-themes/staged-configs/`).
+         - Maintained 100% em-dash-free compliance across all code, YAML datasets, and documentation. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), validate:public_index_mode (892 indexable pages), and rspec (100/100 tests).
+
        - RAMBLIN & AMBLIN FIELD NOTES PIPELINE & AUTONOMOUS PUBLISHING (2026-10-13):
          Built deterministic intake, transcription, captioning, and publishing toolchain for the Ramblin & Amblin playlist (PLNtb969T2-l0):
          - Added standing autonomous polling CLI `bin/pipeline_ramblin_amblin.rb` cross-referencing live YouTube videos with postgres `media_sources` on `my.localhost`.

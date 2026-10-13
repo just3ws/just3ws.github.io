@@ -63,6 +63,14 @@ When using Chromium as the video playback source:
    Keep keyboard focus on the Chromium window so pressing `Spacebar` pauses the video immediately when you want to interject and comment.
 4. **Playback Speed**:
    For slow-paced archival recordings, 1.1x or 1.2x playback speed in Chromium can keep stream momentum high while remaining completely intelligible.
+5. **Craftsman Recording Environment & Staged Assets**:
+   Maintain and synchronize the dedicated browser profile using `bin/setup_recording_environment.py`:
+   - Run `python3 bin/setup_recording_environment.py --sync --verify` to automatically stage unpacked extensions to `~/Library/Application Support/Chromium/UnpackedExtensions/`.
+   - Staged configuration backups are version-controlled in `obs/browser-themes/staged-configs/`:
+     - `bonjourr-craftsman-settings.json`: Start page cockpit aligned to `#faf8f5` warm paper canvas, Charter display clock, and Inter quicklinks.
+     - `stylus-craftsman-theme.json`: Global declutter rules, video antialiasing, amber quote selection, and craftsman YouTube player skin.
+     - `ublock-origin-celenity-backup.txt`: Celenity advanced blocking profile paired with LocalCDN library emulation.
+   - Quarantined: LastPass, Complexity, and DeArrow are strictly excluded across all recording profiles.
 
 ---
 

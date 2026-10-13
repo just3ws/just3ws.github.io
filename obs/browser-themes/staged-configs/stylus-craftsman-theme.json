@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "The Sound Above: Craftsman Broadcast Style (Global)",
+    "enabled": true,
+    "sections": [
+      {
+        "code": "/* The Sound Above: Digital Patina & Editorial Craft (Global Web) */\n:root {\n  --tsa-paper: #faf8f5 !important;\n  --tsa-ink: #1e232a !important;\n  --tsa-heading: #0f172a !important;\n  --tsa-teal: #0f766e !important;\n  --tsa-amber: #b45309 !important;\n}\n\n/* Eliminate clutter, consent banners, and popovers on stream */\ndiv[class*=\"cookie-banner\"],\ndiv[class*=\"consent-banner\"],\ndiv[class*=\"newsletter-popup\"],\ndiv[id*=\"cookie-notice\"],\n#onetrust-banner-sdk {\n  display: none !important;\n}\n\n/* Smooth, high-legibility antialiasing for downscaled video */\nhtml, body {\n  -webkit-font-smoothing: antialiased !important;\n  text-rendering: optimizeLegibility !important;\n}\n\n/* Archival quotes selection in warm leather amber */\nmark, ::selection {\n  background: rgba(180, 83, 9, 0.28) !important;\n  color: inherit !important;\n}\n\n/* Subtle Craftsman scrollbars matching just3ws.localhost */\n::-webkit-scrollbar {\n  width: 7px !important;\n  height: 7px !important;\n}\n::-webkit-scrollbar-track {\n  background: #f4f0e8 !important;\n}\n::-webkit-scrollbar-thumb {\n  background: #0f766e !important;\n  border-radius: 4px !important;\n}\n::-webkit-scrollbar-thumb:hover {\n  background: #115e59 !important;\n}\n",
+        "urls": [],
+        "urlPrefixes": [],
+        "domains": [],
+        "regexps": []
+      }
+    ],
+    "updateUrl": null,
+    "md5Url": null,
+    "url": null
+  },
+  {
+    "id": 2,
+    "name": "The Sound Above: YouTube Craftsman Player",
+    "enabled": true,
+    "sections": [
+      {
+        "code": "/* The Sound Above: YouTube Craftsman Broadcast Skin */\n:root {\n  --yt-spec-brand-button-background: #0f766e !important;\n  --yt-spec-static-brand-red: #0f766e !important;\n}\n\n/* Scrubber bar and active playback progress in craftsman teal */\n.ytp-play-progress, .ytp-scrubber-button {\n  background: #0f766e !important;\n}\n\n/* Progress hover buffer */\n.ytp-load-progress {\n  background: rgba(15, 118, 110, 0.35) !important;\n}\n\n/* Video chapters & timestamps */\n.ytp-chapter-hover-bar {\n  background: #b45309 !important;\n}\n\n/* Hide distracting YouTube clutter during reaction broadcasts */\n#secondary #chat,\nytd-mealbar-promo-renderer,\nytd-statement-banner-renderer,\n.ytp-suggested-action-badge,\n.ytp-cards-teaser {\n  display: none !important;\n}\n",
+        "urls": [],
+        "urlPrefixes": [
+          "https://www.youtube.com/"
+        ],
+        "domains": [
+          "youtube.com"
+        ],
+        "regexps": []
+      }
+    ],
+    "updateUrl": null,
+    "md5Url": null,
+    "url": null
+  }
+]

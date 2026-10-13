@@ -79,6 +79,11 @@ obs/
 │   ├── livestreaming-tutorial-and-guidelines.md # Operational tutorial and broadcast guidance
 │   ├── data-structures-and-schemas.md# JSON schema definitions and state contracts
 │   └── audio-routing-macos.md        # ScreenCaptureKit zero-driver audio & multitrack guide
+├── browser-themes/
+│   ├── chromium-craftsman-theme/     # Unpacked native Chromium theme extension (warm paper & teal)
+│   ├── staged-configs/               # Version-controlled profile backups (Bonjourr, Stylus, uBlock)
+│   ├── the-sound-above-chromium.css  # Standalone broadcast stylesheet for Chromium
+│   └── the-sound-above-orion.css     # Standalone broadcast stylesheet for Orion
 ```
 
 ---

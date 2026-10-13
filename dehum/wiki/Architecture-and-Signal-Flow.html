@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture and Signal Flow | dehum Technical Documentation</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script data-goatcounter="https://just3ws.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <script src="../js/analytics-events.js" defer></script>
+  <link rel="canonical" href="https://www.just3ws.com/dehum/wiki/Architecture-and-Signal-Flow.html">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="nav-container">
+      <a href="../" class="brand-badge">
+        <span>⚡ dehum</span>
+        <span class="brand-tag">Wiki</span>
+      </a>
+      <nav class="site-nav" aria-label="Wiki Navigation">
+        <a href="../">← Main Dashboard</a>
+        <a href="Home.html">Wiki Home</a>
+        <a href="Architecture-and-Signal-Flow.html">Signal Flow</a>
+        <a href="The-Hallucination-Anatomy.html">Hallucination Anatomy</a>
+        <a href="The-Sovereign-Verification-Protocol.html">Verification Protocol</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://github.com/just3ws/dehum" class="btn btn-outline" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="section" role="main" style="max-width: 860px; padding: 48px 24px;">
+    <p>---</p>
+<p>title: "Architecture and Signal Flow"</p>
+<p>description: "Forensic analysis and open knowledge documentation for just3ws/dehum"</p>
+<p>license: "CC-BY-SA-4.0"</p>
+<p>open_knowledge_foundation: "Open Definition 2.1 Conforming"</p>
+<p>maintainer: "Mike Hall"</p>
+<p>project: "just3ws/dehum"</p>
+<p>date: "2026-10-12"</p>
+<p>---</p>
+<h1 id="mathematical-dsp-architecture-signal-flow">Mathematical DSP Architecture & Signal Flow</h1>
+<blockquote><p>*"Lossless video stream copy; surgical sequential audio filtering."*</p></blockquote>
+<pre><code>flowchart TD
+    subgraph Container["Source Media Container (VID_20261009_111445043.mp4)"]
+        V0["Video Track: H.264 (1080p, 1303.61s)"]
+        A0["Audio Track: AAC (Dual-mic EMI corrupted, 1091.09s)"]
+    end
+
+    subgraph VideoPipeline["Video Pipeline: Zero Loss"]
+        V0 --&gt;|"-c:v copy (Bit-for-bit passthrough)"| VMUX["Lossless Video Stream"]
+    end
+
+    subgraph AudioPipeline["5-Stage Sequential Audio DSP Pipeline"]
+        A0 --&gt; S1["Stage 1: Highpass Filter&lt;br/&gt;(f &lt; 80 Hz, 12 dB/oct roll-off)"]
+        S1 --&gt; S2["Stage 2: Impulsive De-clicking&lt;br/&gt;(adeclick: corona micro-arcing)"]
+        S2 --&gt; S3["Stage 3: Spectral Denoising&lt;br/&gt;(afftdn: nr=12, nf=-40dB)"]
+        S3 --&gt; S4["Stage 4: Harmonic Bandreject Notches&lt;br/&gt;(60 Hz, 120 Hz, 180 Hz, 240 Hz, Q=30)"]
+        S4 --&gt; S5["Stage 5: Trailing Padding&lt;br/&gt;(apad=whole_dur=1303.61s)"]
+    end
+
+    subgraph Master["Output Container (VID_20261009_111445043_fixed.mp4)"]
+        VMUX --&gt; OUT["Master File: 1303.61s Duration&lt;br/&gt;Audio &amp; Video Aligned to &lt; 33ms Frame"]
+        S5 --&gt; OUT
+    end
+
+    style VideoPipeline fill:#1a3a2a,stroke:#2ecc71,stroke-width:2px,color:#fff
+    style AudioPipeline fill:#2a1a3a,stroke:#9b59b6,stroke-width:2px,color:#fff
+    style Master fill:#1a2a3a,stroke:#3498db,stroke-width:2px,color:#fff</code></pre>
+<h2 id="filter-chain-mathematical-definition">Filter Chain Mathematical Definition</h2>
+<pre><code>-af "highpass=f=80,adeclick,afftdn=nr=12:nf=-40,bandreject=f=60:width_type=q:w=30,bandreject=f=120:width_type=q:w=30,bandreject=f=180:width_type=q:w=30,bandreject=f=240:width_type=q:w=30,apad=whole_dur=1303.608144"</code></pre>
+<p>1. <strong>Sub-rumble Highpass (<code>highpass=f=80</code>)</strong>: Eliminates wind turbulence and sub-audible electromagnetic oscillation below human speech fundamentals ($<80\text{ Hz}$).</p>
+<p>2. <strong>Impulsive De-clicking (<code>adeclick</code>)</strong>: Restores sample continuity damaged by corona discharge atmospheric micro-arcing.</p>
+<p>3. <strong>Spectral Denoising (<code>afftdn=nr=12:nf=-40</code>)</strong>: Attenuates continuous broadband induction hiss without degrading speech formant consonants.</p>
+<p>4. <strong>Harmonic Notch Rejection (<code>bandreject, Q=30</code>)</strong>: Surgical harmonic rejection targeting the 60 Hz AC fundamental and its 120 Hz, 180 Hz, and 240 Hz induction multiples with ultra-narrow bandwidth ($Q=30$).</p>
+<p>5. <strong>Lossless Video Mux (<code>-c:v copy</code>)</strong>: Copies all 39,069 camera frames bit-for-bit without recompression artifacts or generation loss.</p>
+  </main>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-bottom" style="border: none; padding: 0;">
+      <div>© 2026 Mike Hall. Part of the Hallucinations Series.</div>
+      <div><a href="../">Return to Main Forensic Dashboard</a></div>
+    </div>
+  </footer>
+</body>
+</html>

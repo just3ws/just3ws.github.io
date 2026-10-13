@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reproduction and Field Runbook | dehum Technical Documentation</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script data-goatcounter="https://just3ws.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <script src="../js/analytics-events.js" defer></script>
+  <link rel="canonical" href="https://www.just3ws.com/dehum/wiki/Reproduction-and-Field-Runbook.html">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="nav-container">
+      <a href="../" class="brand-badge">
+        <span>⚡ dehum</span>
+        <span class="brand-tag">Wiki</span>
+      </a>
+      <nav class="site-nav" aria-label="Wiki Navigation">
+        <a href="../">← Main Dashboard</a>
+        <a href="Home.html">Wiki Home</a>
+        <a href="Architecture-and-Signal-Flow.html">Signal Flow</a>
+        <a href="The-Hallucination-Anatomy.html">Hallucination Anatomy</a>
+        <a href="The-Sovereign-Verification-Protocol.html">Verification Protocol</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://github.com/just3ws/dehum" class="btn btn-outline" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="section" role="main" style="max-width: 860px; padding: 48px 24px;">
+    <p>---</p>
+<p>title: "Reproduction and Field Runbook"</p>
+<p>description: "Forensic analysis and open knowledge documentation for just3ws/dehum"</p>
+<p>license: "CC-BY-SA-4.0"</p>
+<p>open_knowledge_foundation: "Open Definition 2.1 Conforming"</p>
+<p>maintainer: "Mike Hall"</p>
+<p>project: "just3ws/dehum"</p>
+<p>date: "2026-10-12"</p>
+<p>---</p>
+<h1 id="reproduction-field-runbook">Reproduction & Field Runbook</h1>
+<p>This guide enables any engineer to reproduce the forensic restoration on macOS or Linux with zero proprietary software dependencies.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+  <li><strong>macOS</strong> (Golden Gate / Bash 3.2+) or <strong>Linux</strong></li>
+  <li><strong>FFmpeg 7.x+</strong> with <code>libshine</code>, <code>afftdn</code>, <code>adeclick</code></li>
+  <li><strong>bc</strong> (Arbitrary precision calculator)</li>
+</ul>
+<pre><code># macOS via Homebrew
+brew install ffmpeg bc</code></pre>
+<p>---</p>
+<h2 id="running-the-restoration-tool">Running the Restoration Tool</h2>
+<pre><code># Clone the repository
+git clone https://github.com/just3ws/dehum.git
+cd dehum
+
+# Inspect the UNIX manual page
+man ./fix_video.1
+
+# Execute the forensic restoration on an input file
+./fix_video.sh --verbose input_corrupted_recording.mp4</code></pre>
+<p>---</p>
+<h2 id="verifying-the-master-output">Verifying the Master Output</h2>
+<p>Run the automated verification test harness:</p>
+<pre><code># Run unit &amp; boundary test suite
+./test_fix_video.sh
+
+# Run TMI security boundary audit
+ruby bin/audit_tmi.rb</code></pre>
+<p>---</p>
+<h2 id="forensic-transcript-comparison-tool">Forensic Transcript Comparison Tool</h2>
+<p>To empirically compare speech-to-text transcript accuracy before and after restoration:</p>
+<pre><code>python3 compare_transcripts.py --raw raw_whisper.txt --fixed restored_whisper.txt</code></pre>
+  </main>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-bottom" style="border: none; padding: 0;">
+      <div>© 2026 Mike Hall. Part of the Hallucinations Series.</div>
+      <div><a href="../">Return to Main Forensic Dashboard</a></div>
+    </div>
+  </footer>
+</body>
+</html>

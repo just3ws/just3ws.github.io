@@ -263,28 +263,60 @@ To switch scenes and control recording without bringing OBS into keyboard focus,
 | **Scene 07 (BRB Intermission)** | `Control + Option + 7` | Clean break screen if stepping away |
 | **Scene 08 (Outro & Wrap Up)** | `Control + Option + 8` | Credits and next broadcast cues |
 
-### 7.3 Chromium Profile: "The Sound Above" Configuration
+### 7.3 Chromium Profile: "The Sound Above" Configuration & Environment Toolchain
 
-When presenting web archives, transcripts, and timeline pages during a broadcast, configure the dedicated Chromium profile as follows:
+When presenting web archives, transcripts, and telemetry dashboards (including the Dehum cockpit at `https://www.just3ws.localhost/dehum/dashboard.html`), maintain the dedicated Ungoogled Chromium recording environment via `bin/setup_recording_environment.py`.
 
-1. **Window Resolution & Sizing**:
-   - Set Chromium window bounds to **1280x720** (16:9 ratio) placed on the right side of Space 2.
-   - In Scene 04 (Split Screen), OBS scales this window cleanly into the research frame.
-2. **View & Zoom Settings**:
-   - Set default zoom to **125%** (`Command + Plus`). This ensures 14px and 16px body text renders crisp and readable on 1080p stream downscales and mobile video players.
-   - Clean window presentation: use app-mode (`--app=URL`) or full-screen (`Cmd+Shift+F`) to eliminate tab bar distractions.
-3. **Craftsmanship UserStyle**:
-   - In Chromium, install Stylus or use user stylesheet extension.
-   - Load `obs/browser-themes/the-sound-above-chromium.css`:
-     - Suppresses cookie banners and popups automatically.
-     - Enforces antialiased typography optimized for video encoding.
-     - Styles text selection with the warm craftsman amber highlight (`rgba(180, 83, 9, 0.25)`).
-4. **Primary Broadcast Bookmarks Bar**:
-   - `https://www.just3ws.localhost/timeline/community/` (Chicago Community Timeline)
-   - `https://www.just3ws.localhost/interviews/` (Oral History Archive index)
-   - `https://www.just3ws.localhost/series/the-sound-above/episode-01/` (Episode mirror)
-   - `https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home` (Chicago Alt.NET 2008 archive)
-   - `https://www.slideshare.net/chicagoaltnet` (Chicago Alt.NET slide decks)
+1. **Automated Toolchain & Sync**:
+   - Run `bin/setup_recording_environment.py --sync` to download, unpack, and verify all recording extensions and themes.
+   - Run `bin/setup_recording_environment.py --verify` to audit environment integrity and verify LastPass quarantine.
+   - Automatic execution: step 6 of `./obs/scripts/install-obs-config.sh` automatically runs `--sync` and `--verify`.
+
+2. **Extensions Inventory (Loaded Unpacked)**:
+   - Location: `~/Library/Application Support/Chromium/UnpackedExtensions/`.
+   - **Video & YouTube Suite**:
+     - `ambient-light-for-youtube`: Dynamic bias lighting surrounding video canvas.
+     - `youtube-high-definition`: Auto-locks playback to 1080p/4K resolution.
+     - `return-youtube-dislike`: Restores public community dislike counters.
+     - `sponsorblock`: Skips promotional segments automatically.
+     - `enhancer-for-youtube`: Playback speed, audio boost, and cinema deck.
+   - **Research & Session Suite**:
+     - `bonjourr-start-page`: Minimalist clean start tab without search portal ads.
+     - `clear-cache`: Single-click cache and session purge between recording takes.
+     - `dark-reader`: Universal high-contrast dark theme engine.
+     - `stylus`: Userstyle engine hosting the craftsman broadcast theme.
+     - `localcdn`: Local library emulation preventing third-party CDN tracking.
+     - `chromium-web-store`: Native Web Store installer and update helper.
+   - **Security & Clutter Exclusion**:
+     - LastPass, Complexity, and DeArrow are strictly prohibited and quarantined from all catalogs, profiles, and automated installers.
+
+3. **Digital Patina & Craftsman Theme**:
+   - **Chromium Native Theme Extension** (`obs/browser-themes/chromium-craftsman-theme/`):
+     - Frame: Deep sumi ink slate (`#1e232a`)
+     - Toolbar & Tabs: Warm book paper canvas (`#faf8f5`)
+     - Accents: Craftsman teal (`#0f766e`) and warm amber (`#b45309`)
+   - **Stylus Broadcast Userstyles** (`~/Downloads/stylus-craftsman-theme.json`):
+     - Global Rule: Suppresses cookie banners, consent modals, and newsletter overlays; enables `-webkit-font-smoothing` and `optimizeLegibility` for 1080p downscaling; styles selection text in warm leather amber (`rgba(180, 83, 9, 0.28)`); adds craftsman teal scrollbars.
+     - YouTube Rule: Restyles scrubber bar, load progress, and chapter markers in craftsman teal (`#0f766e`) and amber (`#b45309`); hides live chat and promo popovers.
+     - Import via Stylus: Manage -> Backup -> Import.
+   - **Bonjourr Craftsman Cockpit Theme** (`~/Downloads/bonjourr-craftsman-settings.json`):
+     - Background: Sumi ink paper (`#1e232a`) with subtle 18% analog grain texture.
+     - Typography: Editorial Charter serif clock with soft ink glow, Inter uppercase date and greetings in warm amber (`#b45309`).
+     - Quicklinks: Frosted glass craftsman tiles with teal borders (`rgba(15, 118, 110, 0.35)`) linking directly to Dehum Telemetry Cockpit, Chicago Community Timeline, Oral History Archive, Series Curriculum Hub, and YouTube Studio Live.
+     - Import via Bonjourr: Settings -> Settings Management -> Import file or paste JSON.
+   - **uBlock Origin Celenity Configuration** (`~/Downloads/ublock-origin-celenity-backup.txt`):
+     - Advanced user mode with prefetching disabled, hyperlink auditing disabled, and CSP reports blocked.
+     - Dynamic filtering rules paired with LocalCDN emulation.
+     - Import via uBlock Origin: Dashboard -> About -> Restore from file.
+
+4. **Window Ergonomics & Bookmarks**:
+   - Set window bounds to **1280x720** (16:9 ratio) placed cleanly on the right half of Space 2.
+   - Zoom level: **125%** (`Command + Plus`) for optimal legibility at 1080p.
+   - Essential Bookmarks:
+     - `https://www.just3ws.localhost/dehum/dashboard.html` (Dehum Acoustic Cockpit)
+     - `https://www.just3ws.localhost/timeline/community/` (Community Timeline)
+     - `https://www.just3ws.localhost/interviews/` (Oral History Archive Index)
+     - `https://www.just3ws.localhost/series/the-sound-above/` (Series Curriculum Hub)
 
 ### 7.4 iTerm2 Profile: "The Sound Above" Configuration & Dynamic Profiles
 
