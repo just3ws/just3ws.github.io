@@ -11,9 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SESSION TITLE CALIBRATION, DEHUM RESTRUCTURING & YOUTUBE SYNC (2026-10-13):
+         Calibrated broadcast session naming, reorganized dehum toolchain, synchronized YouTube metadata, and eliminated warrior rhetoric:
+         - Renamed session to "The Mirage of Competence" with subtitle "An Experiment in Public on AI Slop and Domain Boundaries" across `obs/curation/errata-manifest.json`, `obs/overlays/overlay-state.json`, and `bin/broadcast`.
+         - Synchronized YouTube Data API v3 live metadata via `bin/update_youtube_metadata.rb`: updated upcoming broadcast `XS7EZ1eWH4U` with full context, origin search premise, and accurate token economics (<$1.25 subscription cash); added prominent `[HEADPHONE / VOLUME WARNING: BAD AUDIO]` to the raw master `8LYHo1dOkMo`.
+         - Structured `~/ai/dehum/`: organized pre-git genesis artifacts into `archive/genesis/` (`PROMPT.md`, `gemini_transcript.md`), Whisper datasets and diff telemetry into `data/transcripts/`, and relocated tooling into `bin/` with backward-compatible root symlinks.
+         - Purged all "holds the line" rhetoric and calmed tone into grounded, reflective prose across LinkedIn articles, community posts, runbooks, and economic audits.
+         - Maintained 100% em-dash-free compliance across all code, YAML datasets, and documentation. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (100/100 tests).
+
        - OBS BROADCAST ORCHESTRATION & PREMISE ELEVATION (2026-10-13):
          Cued Errata broadcast and elevated the original search query as the primary premise across teleprompter and broadcast state:
-         - Cued broadcast topic "Under the High-Tension Wires" with subtitle "250:1 AI Economic Leverage vs. The Mirage of Competence" via `bin/broadcast cue --cue errata-concept-under-the-high-tension-wires --series "The Sound Above"`.
+         - Cued broadcast topic with subtitle via `bin/broadcast cue --cue errata-concept-under-the-high-tension-wires --series "The Sound Above"`.
          - Updated `obs/overlays/overlay-state.json` and synchronized state cleanly across the repository.
          - Elevated the original Google search prompt ("recording a video under high tension wires repair audio sync") to top-of-teleprompter hero callout on the Dehum cockpit (`https://www.just3ws.localhost/dehum/dashboard.html`).
          - Maintained 100% em-dash-free compliance across all code, YAML datasets, and documentation. All validation gates passing cleanly:
