@@ -430,25 +430,62 @@ There is an even deeper trap lying past the individual video output: **the illus
 
 When people marvel at AI-assisted engineering, they focus obsessively on the primary artifact—the restored MP4 file. The 60 Hz hum is quieted, the speaker's voice is intelligible on an iPhone speaker, and the total turnaround was an afternoon. The verdict is almost always instantaneous: *"It's good enough! Ship it."*
 
-```
-+-------------------------------------------------------------------------------+
-|              THE COMPOUNDING FRAGILITY OF "GOOD ENOUGH" SCAFFOLDING           |
-+-------------------------------------------------------------------------------+
-|  Stage 1: Raw Artifact Restoration (85% fidelity - good enough for phone)     |
-|     ↓                                                                         |
-|  Stage 2: Automatic Transcription (85% fidelity - hallucinating on silence)   |
-|     ↓                                                                         |
-|  Stage 3: Ad-Hoc Shell Glue (85% reliability - brittle regex & POSIX traps)   |
-|     ↓                                                                         |
-|  Stage 4: Automated Publishing & Syndication (85% metadata integrity)         |
-|     ↓                                                                         |
-|  Stage 5: OBS Broadcast & Analytics Bindings (85% runtime determinism)        |
-+-------------------------------------------------------------------------------+
-|  SYSTEM SURVIVAL PROBABILITY: 0.85 × 0.85 × 0.85 × 0.85 × 0.85 ≈ 44.3%         |
-+-------------------------------------------------------------------------------+
-|  RESULT: A stack of five "good enough" tools yields a broken production loop. |
-+-------------------------------------------------------------------------------+
-```
+<div class="compounding-fragility-wrapper" style="overflow-x: auto; margin: 2rem 0; border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; background: var(--color-bg-card, #ffffff); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+  <div style="background: var(--color-bg-subtle, #f8fafc); padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--color-border, #e3dfd7); font-weight: 800; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary, #0f766e);">
+    The Compounding Fragility of "Good Enough" Scaffolding
+  </div>
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; text-align: left;">
+    <thead>
+      <tr style="border-bottom: 2px solid var(--color-border, #e3dfd7); background: var(--color-bg-subtle, #f1f5f9);">
+        <th style="padding: 0.75rem 1rem; font-weight: 700; width: 22%;">Pipeline Stage</th>
+        <th style="padding: 0.75rem 1rem; font-weight: 700;">"Good Enough" Component</th>
+        <th style="padding: 0.75rem 1rem; font-weight: 700; width: 18%; text-align: right;">Component Reliability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid var(--color-border, #eeebe3);">
+        <td style="padding: 0.75rem 1rem; font-weight: 600;">Stage 1</td>
+        <td style="padding: 0.75rem 1rem;">Raw Artifact Restoration (Phone-grade audio pass)</td>
+        <td style="padding: 0.75rem 1rem; font-family: monospace; text-align: right; color: var(--color-primary, #0f766e); font-weight: 700;">85%</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--color-border, #eeebe3); background: rgba(0,0,0,0.015);">
+        <td style="padding: 0.75rem 1rem; font-weight: 600;">Stage 2</td>
+        <td style="padding: 0.75rem 1rem;">Automatic Transcription (Hallucinates on non-speech gaps)</td>
+        <td style="padding: 0.75rem 1rem; font-family: monospace; text-align: right; color: var(--color-primary, #0f766e); font-weight: 700;">85%</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--color-border, #eeebe3);">
+        <td style="padding: 0.75rem 1rem; font-weight: 600;">Stage 3</td>
+        <td style="padding: 0.75rem 1rem;">Ad-Hoc Shell Glue (Brittle regex &amp; POSIX userland traps)</td>
+        <td style="padding: 0.75rem 1rem; font-family: monospace; text-align: right; color: var(--color-primary, #0f766e); font-weight: 700;">85%</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--color-border, #eeebe3); background: rgba(0,0,0,0.015);">
+        <td style="padding: 0.75rem 1rem; font-weight: 600;">Stage 4</td>
+        <td style="padding: 0.75rem 1rem;">Automated Publishing &amp; Syndication (Metadata integrity)</td>
+        <td style="padding: 0.75rem 1rem; font-family: monospace; text-align: right; color: var(--color-primary, #0f766e); font-weight: 700;">85%</td>
+      </tr>
+      <tr style="border-bottom: 2px solid var(--color-border, #e3dfd7);">
+        <td style="padding: 0.75rem 1rem; font-weight: 600;">Stage 5</td>
+        <td style="padding: 0.75rem 1rem;">OBS Broadcast &amp; Analytics Bindings (Runtime determinism)</td>
+        <td style="padding: 0.75rem 1rem; font-family: monospace; text-align: right; color: var(--color-primary, #0f766e); font-weight: 700;">85%</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr style="background: var(--color-bg-subtle, #f8fafc); font-weight: 700;">
+        <td colspan="2" style="padding: 0.85rem 1rem; color: var(--color-heading, #0f172a);">
+          System Survival Probability ($0.85^5$):
+        </td>
+        <td style="padding: 0.85rem 1rem; font-family: monospace; text-align: right; color: #b91c1c; font-size: 1.05rem;">
+          ≈ 44.3%
+        </td>
+      </tr>
+      <tr style="background: rgba(185, 28, 28, 0.05); color: #991b1b; font-size: 0.85rem;">
+        <td colspan="3" style="padding: 0.65rem 1rem; font-style: italic;">
+          Operational Reality: A stack of five "good enough" tools fails more than half the time in continuous production.
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
 
 Look at everything that had to exist *around* this 18-minute video:
 1. **The Transcription Pipeline (`whisper.cpp`)**:
