@@ -11,6 +11,16 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - ERRATA PRACTICE RUN BROADCAST, DEHUM COCKPIT & YOUTUBE PIPELINE (2026-10-13):
+         Completed the live break-the-ice broadcast recording, harmonized the Dehum presentation cockpit, and published the practice run:
+         - Recorded and uploaded 32-minute live broadcast session (`7YeFpKn5FbU`) to YouTube Data API v3 as "[PRACTICE RUN] The Mirage of Competence: AI Slop & Domain Boundaries".
+         - Created and published dedicated Errata playlist `PLKPAHha6I990` ("The Sound Above: Marginalia, Readings & Demonstrations (Errata)").
+         - Built and committed deterministic upload and metadata calibration CLI tools `bin/upload_errata_broadcast.rb` and `bin/calibrate_uploaded_broadcast.rb`.
+         - Synchronized video metadata with explicit break-the-ice first take framing, audio settings learnings, direct reference link to the Forensic Audio A/B Listening Test, and the historical Dell Studio XPS PP35L OLED laptop story with the monkey typing sticker (sole Obtiva .NET project and Vim transition).
+         - Restored warm paper Craftsman light theme (`#faf8f5` canvas, `#ffffff` cards, `#1e232a` ink, `#0f766e` teal, `#b45309` amber) across the Dehum presentation cockpit and embedded the physical sticker photo (`assets/img/typing-is-not-the-bottleneck.jpg`).
+         - Maintained 100% em-dash-free compliance across all code, datasets, and documentation. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (100/100 tests).
+
        - SESSION TITLE CALIBRATION, DEHUM RESTRUCTURING & YOUTUBE SYNC (2026-10-13):
          Calibrated broadcast session naming, reorganized dehum toolchain, synchronized YouTube metadata, and eliminated warrior rhetoric:
          - Renamed session to "The Mirage of Competence" with subtitle "An Experiment in Public on AI Slop and Domain Boundaries" across `obs/curation/errata-manifest.json`, `obs/overlays/overlay-state.json`, and `bin/broadcast`.
