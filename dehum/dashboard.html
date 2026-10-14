@@ -9,39 +9,33 @@
   <style>
     :root {
       /* Canonical Craftsman Design Tokens */
-      --paper-canvas: #faf8f5;
-      --paper-subtle: #f4f0e8;
-      --card-pure: #ffffff;
-      --sumi-ink: #1e232a;
-      --ink-heading: #0f172a;
-      --ink-muted: #525866;
-      --ink-dim: #71717a;
-      --border-subtle: #e3dfd7;
-      --teal-craftsman: #0f766e;
-      --amber-accent: #b45309;
-      --copper-accent: #c2410c;
-      --green-accent: #15803d;
-      --red-accent: #b91c1c;
-
-      /* Cockpit Mapping */
-      --dash-bg: #13171d;
-      --dash-panel: #1a202c;
-      --dash-panel-header: #212836;
-      --dash-border: #2d3748;
-      --dash-active: var(--teal-craftsman);
-      --dash-accent: var(--amber-accent);
-      --dash-green: var(--green-accent);
-      --dash-red: var(--red-accent);
+      --dash-bg: #faf8f5;
+      --dash-panel: #ffffff;
+      --dash-panel-header: #f4f0e8;
+      --dash-border: #e3dfd7;
+      --dash-border-subtle: #eeebe3;
+      --dash-active: #0f766e;
+      --dash-accent: #b45309;
+      --dash-green: #15803d;
+      --dash-red: #b91c1c;
+      --dash-ink: #1e232a;
+      --dash-heading: #0f172a;
+      --dash-muted: #525866;
+      --dash-meta: #64748b;
 
       /* Typography Stacks */
       --font-display: "Charter", "Bitstream Charter", "Iowan Old Style", Georgia, serif;
-      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: "SF Mono", "Fira Code", Menlo, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       background-color: var(--dash-bg);
-      color: #e2e8f0;
+      color: var(--dash-ink);
       margin: 0;
       padding: 0;
       height: 100vh;
@@ -55,14 +49,15 @@
 
     /* Top HUD Bar */
     .cockpit-hud {
-      background: var(--dash-panel-header);
-      border-bottom: 2px solid var(--dash-border);
+      background: var(--dash-panel);
+      border-bottom: 1px solid var(--dash-border);
       padding: 10px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(45, 35, 20, 0.04);
     }
 
     .hud-title-group {
@@ -72,9 +67,9 @@
     }
 
     .hud-badge {
-      background: rgba(15, 118, 110, 0.18);
-      border: 1px solid var(--teal-craftsman);
-      color: #2dd4bf;
+      background: rgba(15, 118, 110, 0.1);
+      border: 1px solid rgba(15, 118, 110, 0.35);
+      color: var(--dash-active);
       padding: 4px 10px;
       border-radius: 4px;
       font-size: 0.8rem;
@@ -88,13 +83,13 @@
       font-family: var(--font-display);
       font-size: 1.25rem;
       font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.01em;
+      color: var(--dash-heading);
+      letter-spacing: -0.015em;
     }
 
     .hud-subtitle {
       font-size: 0.85rem;
-      color: #94a3b8;
+      color: var(--dash-muted);
     }
 
     .hud-telemetry {
@@ -113,11 +108,11 @@
       font-family: var(--font-mono);
       font-weight: 700;
       font-size: 1.1rem;
-      color: #fbbf24;
+      color: var(--dash-accent);
     }
 
     .telemetry-val.rec-time {
-      color: #f87171;
+      color: var(--dash-red);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -126,7 +121,7 @@
     .rec-dot {
       width: 10px;
       height: 10px;
-      background: #f87171;
+      background: var(--dash-red);
       border-radius: 50%;
       animation: rec-pulse 1.2s infinite;
     }
@@ -138,7 +133,7 @@
 
     .telemetry-label {
       font-size: 0.72rem;
-      color: #94a3b8;
+      color: var(--dash-meta);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-family: var(--font-mono);
@@ -160,6 +155,7 @@
       background: var(--dash-panel);
       border: 1px solid var(--dash-border);
       border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(45, 35, 20, 0.04);
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -181,7 +177,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: #cbd5e1;
+      color: var(--dash-heading);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -202,7 +198,7 @@
     }
 
     .scene-cue-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--dash-bg);
       border: 1px solid var(--dash-border);
       border-radius: 6px;
       padding: 10px 12px;
@@ -211,21 +207,23 @@
     }
 
     .scene-cue-card:hover {
-      background: rgba(15, 118, 110, 0.12);
-      border-color: rgba(15, 118, 110, 0.5);
+      background: #ffffff;
+      border-color: var(--dash-active);
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.1);
     }
 
     .scene-cue-card.active {
-      background: rgba(15, 118, 110, 0.2);
-      border-color: var(--teal-craftsman);
-      border-left: 4px solid var(--teal-craftsman);
+      background: #ffffff;
+      border-color: var(--dash-active);
+      border-left: 4px solid var(--dash-active);
+      box-shadow: 0 3px 12px rgba(15, 118, 110, 0.12);
     }
 
     .scene-meta {
       display: flex;
       justify-content: space-between;
       font-size: 0.75rem;
-      color: #94a3b8;
+      color: var(--dash-meta);
       font-family: var(--font-mono);
       margin-bottom: 4px;
     }
@@ -234,13 +232,13 @@
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 1.02rem;
-      color: #fff;
+      color: var(--dash-heading);
       letter-spacing: -0.01em;
     }
 
     .scene-cue-desc {
       font-size: 0.8rem;
-      color: #94a3b8;
+      color: var(--dash-muted);
       margin-top: 4px;
       line-height: 1.35;
     }
@@ -253,22 +251,23 @@
     }
 
     .prompt-card {
-      background: rgba(15, 23, 42, 0.6);
+      background: var(--dash-bg);
       border: 1px solid var(--dash-border);
-      border-radius: 6px;
-      padding: 16px;
-      margin-bottom: 14px;
-      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
+      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
     .prompt-card.dimmed {
       opacity: 0.35;
-      border-color: rgba(45, 55, 72, 0.4);
+      border-color: var(--dash-border-subtle);
     }
 
     .prompt-card.scene-focused {
-      border-color: var(--teal-craftsman);
-      box-shadow: 0 0 16px rgba(15, 118, 110, 0.25);
+      border-color: var(--dash-active);
+      box-shadow: 0 4px 16px rgba(15, 118, 110, 0.15);
+      background: #ffffff;
     }
 
     .scene-filter-bar {
@@ -277,16 +276,16 @@
       justify-content: space-between;
       margin-bottom: 12px;
       padding: 8px 12px;
-      background: rgba(15, 23, 42, 0.5);
+      background: var(--dash-panel-header);
       border: 1px solid var(--dash-border);
       border-radius: 6px;
       font-size: 0.8rem;
     }
 
     .filter-btn-toggle {
-      background: var(--dash-panel-header);
+      background: #ffffff;
       border: 1px solid var(--dash-border);
-      color: #94a3b8;
+      color: var(--dash-muted);
       font-size: 0.75rem;
       padding: 4px 10px;
       border-radius: 4px;
@@ -296,23 +295,25 @@
     }
 
     .filter-btn-toggle:hover {
-      color: #fff;
-      border-color: var(--teal-craftsman);
+      color: var(--dash-heading);
+      border-color: var(--dash-active);
     }
 
     .filter-btn-toggle.active {
-      background: rgba(15, 118, 110, 0.25);
-      border-color: var(--teal-craftsman);
-      color: #2dd4bf;
+      background: var(--dash-active);
+      border-color: var(--dash-active);
+      color: #ffffff;
       font-weight: 700;
     }
 
     .prompt-phase {
       font-family: var(--font-mono);
       font-size: 0.78rem;
-      color: #fbbf24;
+      color: var(--dash-accent);
       text-transform: uppercase;
+      letter-spacing: 0.05em;
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .prompt-lead {
@@ -320,41 +321,69 @@
       font-size: 1.35rem;
       font-weight: 700;
       line-height: 1.35;
-      color: #fff;
+      color: var(--dash-heading);
       margin-bottom: 10px;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
     }
 
     .prompt-body {
       font-size: 1.02rem;
-      line-height: 1.6;
-      color: #e2e8f0;
+      line-height: 1.65;
+      color: var(--dash-ink);
     }
 
     .prompt-body strong {
-      color: #fff;
+      color: var(--dash-heading);
     }
 
     .prompt-quote {
-      border-left: 3px solid var(--amber-accent);
+      border-left: 3px solid var(--dash-accent);
       padding-left: 14px;
-      margin: 12px 0;
+      margin: 14px 0;
       font-style: italic;
-      color: #f1f5f9;
-      background: rgba(180, 83, 9, 0.08);
-      padding-top: 8px;
-      padding-bottom: 8px;
-      border-radius: 0 4px 4px 0;
+      color: var(--dash-ink);
+      background: rgba(180, 83, 9, 0.05);
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 0 6px 6px 0;
       font-family: var(--font-display);
       font-size: 1.05rem;
-      line-height: 1.55;
+      line-height: 1.6;
+    }
+
+    /* Sticker Showcase Card */
+    .artifact-showcase {
+      margin: 14px 0 10px 0;
+      background: #ffffff;
+      border: 1px solid var(--dash-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(45, 35, 20, 0.06);
+    }
+
+    .artifact-showcase img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--dash-border);
+    }
+
+    .artifact-showcase-caption {
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: var(--dash-muted);
+      font-family: var(--font-mono);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--dash-panel-header);
     }
 
     /* Right Pane: Quick Terminal & Forensic Tool Belt */
     .command-box {
-      background: rgba(15, 23, 42, 0.7);
+      background: var(--dash-panel-header);
       border: 1px solid var(--dash-border);
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 10px 12px;
       margin-bottom: 12px;
     }
@@ -370,15 +399,17 @@
       font-size: 0.72rem;
       text-transform: uppercase;
       font-family: var(--font-mono);
-      color: #94a3b8;
+      color: var(--dash-meta);
+      font-weight: 600;
     }
 
     .copy-btn {
-      background: var(--dash-panel-header);
+      background: var(--dash-panel);
       border: 1px solid var(--dash-border);
-      color: #e2e8f0;
+      color: var(--dash-ink);
       font-size: 0.72rem;
-      padding: 3px 8px;
+      font-weight: 600;
+      padding: 4px 10px;
       border-radius: 4px;
       cursor: pointer;
       font-family: var(--font-mono);
@@ -386,17 +417,18 @@
     }
 
     .copy-btn:hover {
-      background: var(--teal-craftsman);
-      border-color: var(--teal-craftsman);
-      color: #fff;
+      background: var(--dash-active);
+      color: #ffffff;
+      border-color: var(--dash-active);
     }
 
     .command-code {
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      color: #2dd4bf;
+      color: var(--dash-active);
       word-break: break-all;
       line-height: 1.4;
+      font-weight: 600;
     }
 
     .live-jump-list {
@@ -410,43 +442,45 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.04);
+      background: #ffffff;
       border: 1px solid var(--dash-border);
-      color: #e2e8f0;
+      color: var(--dash-ink);
       padding: 8px 12px;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 0.85rem;
       text-decoration: none;
       transition: all 0.2s ease;
     }
 
     .jump-btn:hover {
-      background: rgba(15, 118, 110, 0.2);
-      border-color: var(--teal-craftsman);
-      color: #fff;
+      background: var(--dash-panel-header);
+      border-color: var(--dash-active);
+      color: var(--dash-heading);
       text-decoration: none;
+      box-shadow: 0 2px 6px rgba(15, 118, 110, 0.08);
     }
 
     .jump-timestamp {
       font-family: var(--font-mono);
-      color: #fbbf24;
+      color: var(--dash-accent);
       font-weight: 700;
     }
 
     /* Key Callout Warning */
     .callout-warning {
-      background: rgba(180, 83, 9, 0.08);
-      border: 1px solid rgba(180, 83, 9, 0.3);
-      border-left: 4px solid var(--amber-accent);
-      border-radius: 4px;
-      padding: 10px 12px;
+      background: rgba(180, 83, 9, 0.06);
+      border: 1px solid rgba(180, 83, 9, 0.25);
+      border-left: 4px solid var(--dash-accent);
+      border-radius: 6px;
+      padding: 10px 14px;
       margin-bottom: 12px;
       font-size: 0.88rem;
       line-height: 1.45;
+      color: var(--dash-ink);
     }
 
     .callout-warning strong {
-      color: #fbbf24;
+      color: var(--dash-heading);
     }
 
     /* Responsive adjustments for narrow/half-screen displays */
@@ -577,12 +611,12 @@
           </div>
 
           <!-- Core Operating Axiom & Prompt Genesis -->
-          <div class="callout-warning" style="border-left-color: var(--dash-active); background: rgba(88, 166, 255, 0.08); border-color: rgba(88, 166, 255, 0.3);">
+          <div class="callout-warning" style="border-left-color: var(--dash-active); background: rgba(15, 118, 110, 0.08); border-color: rgba(15, 118, 110, 0.3);">
             <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dash-active); font-weight: 700; margin-bottom: 4px;">The Genesis Prompt // 13 Words to Multi-Tier Architecture</div>
-            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: #fff; font-weight: 700; margin-bottom: 6px;">
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--dash-heading); font-weight: 700; margin-bottom: 6px;">
               "recording a video under high tension wires repair audio sync"
             </div>
-            <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">
+            <div style="font-size: 0.82rem; color: var(--dash-muted); line-height: 1.4;">
               <strong>The Premise:</strong> With generative AI, you go from <em>that exact vague Google search</em> to an entire DSP restoration fabric, MCP server, 44.3% compounding fragility calculus, and broadcast curriculum.
             </div>
           </div>
@@ -597,10 +631,20 @@
             <div class="prompt-lead">"Typing Is Not the Bottleneck": The Dell Studio XPS PP35L</div>
             <div class="prompt-body">
               "For thirty years, whenever a new abstraction arrived, the promise was always the same: <em>'Look how much faster you can produce code.'</em> But typing was never the bottleneck. Reading, comprehending, and verifying has always been the bottleneck."
+              
+              <!-- Physical Artifact Showcase -->
+              <div class="artifact-showcase">
+                <img src="assets/img/typing-is-not-the-bottleneck.jpg" alt="Physical artifact: Original 'Typing Is Not The Bottleneck' sticker on the Dell Studio XPS PP35L laptop showing two rows of monkeys typing on keyboards" loading="eager">
+                <div class="artifact-showcase-caption">
+                  <span>Dell Studio XPS PP35L 16" OLED (2009)</span>
+                  <span style="color: var(--dash-accent); font-weight: 700;">CONTEMPORARY ARTIFACT</span>
+                </div>
+              </div>
+
               <div class="prompt-quote">
                 "I am holding the physical proof right here: my Dell Studio XPS PP35L 16-inch OLED laptop. It still has the original 'TYPING IS NOT THE BOTTLENECK' sticker right on it, complete with the two rows of monkeys hammering away on keyboards. This machine carried me through my very last .NET enterprise project, and then right into my first project for Obtiva during the dawn of Chicago Software Craftsmanship. On this keyboard, we learned that generating syntax is cheap, but understanding the system boundaries is everything."
               </div>
-              <p style="margin-top: 10px; font-size: 0.95rem; color: #d0d7de;">
+              <p style="margin-top: 10px; font-size: 0.95rem; color: var(--dash-muted);">
                 "Fast forward to today: generative AI accelerates typing by a factor of ten thousand. But if typing wasn't the bottleneck in 2009 on an XPS, inflating the volume of unread code in 2026 doesn't solve software engineering. It just accelerates how quickly we construct the mirage of competence."
               </p>
             </div>
