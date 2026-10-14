@@ -8,26 +8,49 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     :root {
-      --dash-bg: #090d13;
-      --dash-panel: #131923;
-      --dash-panel-header: #1c2433;
-      --dash-border: #283347;
-      --dash-active: #58a6ff;
-      --dash-accent: #f2cc60;
-      --dash-green: #3fb950;
-      --dash-red: #ff7b72;
+      /* Canonical Craftsman Design Tokens */
+      --paper-canvas: #faf8f5;
+      --paper-subtle: #f4f0e8;
+      --card-pure: #ffffff;
+      --sumi-ink: #1e232a;
+      --ink-heading: #0f172a;
+      --ink-muted: #525866;
+      --ink-dim: #71717a;
+      --border-subtle: #e3dfd7;
+      --teal-craftsman: #0f766e;
+      --amber-accent: #b45309;
+      --copper-accent: #c2410c;
+      --green-accent: #15803d;
+      --red-accent: #b91c1c;
+
+      /* Cockpit Mapping */
+      --dash-bg: #13171d;
+      --dash-panel: #1a202c;
+      --dash-panel-header: #212836;
+      --dash-border: #2d3748;
+      --dash-active: var(--teal-craftsman);
+      --dash-accent: var(--amber-accent);
+      --dash-green: var(--green-accent);
+      --dash-red: var(--red-accent);
+
+      /* Typography Stacks */
+      --font-display: "Charter", "Bitstream Charter", "Iowan Old Style", Georgia, serif;
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "SF Mono", "Fira Code", Menlo, monospace;
     }
 
     body {
       background-color: var(--dash-bg);
-      color: var(--text-main);
+      color: #e2e8f0;
       margin: 0;
       padding: 0;
       height: 100vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      font-family: var(--font-sans);
       font-size: 15px;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* Top HUD Bar */
@@ -49,26 +72,29 @@
     }
 
     .hud-badge {
-      background: rgba(88, 166, 255, 0.15);
-      border: 1px solid var(--dash-active);
-      color: var(--dash-active);
+      background: rgba(15, 118, 110, 0.18);
+      border: 1px solid var(--teal-craftsman);
+      color: #2dd4bf;
       padding: 4px 10px;
       border-radius: 4px;
       font-size: 0.8rem;
       font-weight: 700;
+      font-family: var(--font-mono);
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
     .hud-title {
-      font-size: 1.15rem;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
+      letter-spacing: -0.01em;
     }
 
     .hud-subtitle {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: #94a3b8;
     }
 
     .hud-telemetry {
@@ -87,11 +113,11 @@
       font-family: var(--font-mono);
       font-weight: 700;
       font-size: 1.1rem;
-      color: var(--dash-accent);
+      color: #fbbf24;
     }
 
     .telemetry-val.rec-time {
-      color: var(--dash-red);
+      color: #f87171;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -100,7 +126,7 @@
     .rec-dot {
       width: 10px;
       height: 10px;
-      background: var(--dash-red);
+      background: #f87171;
       border-radius: 50%;
       animation: rec-pulse 1.2s infinite;
     }
@@ -112,9 +138,10 @@
 
     .telemetry-label {
       font-size: 0.72rem;
-      color: var(--text-dim);
+      color: #94a3b8;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      font-family: var(--font-mono);
     }
 
     /* Main Multi-Pane Cockpit */
@@ -154,10 +181,11 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--text-muted);
+      color: #cbd5e1;
       display: flex;
       align-items: center;
       gap: 8px;
+      font-family: var(--font-mono);
     }
 
     .panel-body {
@@ -174,7 +202,7 @@
     }
 
     .scene-cue-card {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--dash-border);
       border-radius: 6px;
       padding: 10px 12px;
@@ -183,34 +211,36 @@
     }
 
     .scene-cue-card:hover {
-      background: rgba(88, 166, 255, 0.08);
-      border-color: rgba(88, 166, 255, 0.4);
+      background: rgba(15, 118, 110, 0.12);
+      border-color: rgba(15, 118, 110, 0.5);
     }
 
     .scene-cue-card.active {
-      background: rgba(88, 166, 255, 0.12);
-      border-color: var(--dash-active);
-      border-left: 4px solid var(--dash-active);
+      background: rgba(15, 118, 110, 0.2);
+      border-color: var(--teal-craftsman);
+      border-left: 4px solid var(--teal-craftsman);
     }
 
     .scene-meta {
       display: flex;
       justify-content: space-between;
       font-size: 0.75rem;
-      color: var(--text-dim);
+      color: #94a3b8;
       font-family: var(--font-mono);
       margin-bottom: 4px;
     }
 
     .scene-name {
+      font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1.02rem;
       color: #fff;
+      letter-spacing: -0.01em;
     }
 
     .scene-cue-desc {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: #94a3b8;
       margin-top: 4px;
       line-height: 1.35;
     }
@@ -223,7 +253,7 @@
     }
 
     .prompt-card {
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(15, 23, 42, 0.6);
       border: 1px solid var(--dash-border);
       border-radius: 6px;
       padding: 16px;
@@ -233,12 +263,12 @@
 
     .prompt-card.dimmed {
       opacity: 0.35;
-      border-color: rgba(40, 51, 71, 0.4);
+      border-color: rgba(45, 55, 72, 0.4);
     }
 
     .prompt-card.scene-focused {
-      border-color: var(--dash-active);
-      box-shadow: 0 0 16px rgba(88, 166, 255, 0.15);
+      border-color: var(--teal-craftsman);
+      box-shadow: 0 0 16px rgba(15, 118, 110, 0.25);
     }
 
     .scene-filter-bar {
@@ -247,7 +277,7 @@
       justify-content: space-between;
       margin-bottom: 12px;
       padding: 8px 12px;
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(15, 23, 42, 0.5);
       border: 1px solid var(--dash-border);
       border-radius: 6px;
       font-size: 0.8rem;
@@ -256,7 +286,7 @@
     .filter-btn-toggle {
       background: var(--dash-panel-header);
       border: 1px solid var(--dash-border);
-      color: var(--text-muted);
+      color: #94a3b8;
       font-size: 0.75rem;
       padding: 4px 10px;
       border-radius: 4px;
@@ -267,36 +297,38 @@
 
     .filter-btn-toggle:hover {
       color: #fff;
-      border-color: var(--dash-active);
+      border-color: var(--teal-craftsman);
     }
 
     .filter-btn-toggle.active {
-      background: rgba(88, 166, 255, 0.2);
-      border-color: var(--dash-active);
-      color: var(--dash-active);
+      background: rgba(15, 118, 110, 0.25);
+      border-color: var(--teal-craftsman);
+      color: #2dd4bf;
       font-weight: 700;
     }
 
     .prompt-phase {
       font-family: var(--font-mono);
       font-size: 0.78rem;
-      color: var(--dash-accent);
+      color: #fbbf24;
       text-transform: uppercase;
       margin-bottom: 6px;
     }
 
     .prompt-lead {
-      font-size: 1.25rem;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
       font-weight: 700;
-      line-height: 1.4;
+      line-height: 1.35;
       color: #fff;
       margin-bottom: 10px;
+      letter-spacing: -0.01em;
     }
 
     .prompt-body {
       font-size: 1.02rem;
       line-height: 1.6;
-      color: #d0d7de;
+      color: #e2e8f0;
     }
 
     .prompt-body strong {
@@ -304,20 +336,23 @@
     }
 
     .prompt-quote {
-      border-left: 3px solid var(--dash-accent);
-      padding-left: 12px;
+      border-left: 3px solid var(--amber-accent);
+      padding-left: 14px;
       margin: 12px 0;
       font-style: italic;
-      color: #e6edf3;
-      background: rgba(242, 204, 96, 0.05);
-      padding-top: 6px;
-      padding-bottom: 6px;
+      color: #f1f5f9;
+      background: rgba(180, 83, 9, 0.08);
+      padding-top: 8px;
+      padding-bottom: 8px;
       border-radius: 0 4px 4px 0;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      line-height: 1.55;
     }
 
     /* Right Pane: Quick Terminal & Forensic Tool Belt */
     .command-box {
-      background: #0d1117;
+      background: rgba(15, 23, 42, 0.7);
       border: 1px solid var(--dash-border);
       border-radius: 6px;
       padding: 10px 12px;
@@ -335,29 +370,31 @@
       font-size: 0.72rem;
       text-transform: uppercase;
       font-family: var(--font-mono);
-      color: var(--text-dim);
+      color: #94a3b8;
     }
 
     .copy-btn {
       background: var(--dash-panel-header);
       border: 1px solid var(--dash-border);
-      color: var(--text-main);
+      color: #e2e8f0;
       font-size: 0.72rem;
       padding: 3px 8px;
       border-radius: 4px;
       cursor: pointer;
+      font-family: var(--font-mono);
       transition: all 0.2s ease;
     }
 
     .copy-btn:hover {
-      background: var(--dash-active);
-      color: #000;
+      background: var(--teal-craftsman);
+      border-color: var(--teal-craftsman);
+      color: #fff;
     }
 
     .command-code {
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      color: #58a6ff;
+      color: #2dd4bf;
       word-break: break-all;
       line-height: 1.4;
     }
@@ -375,7 +412,7 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--dash-border);
-      color: var(--text-main);
+      color: #e2e8f0;
       padding: 8px 12px;
       border-radius: 4px;
       font-size: 0.85rem;
@@ -384,23 +421,23 @@
     }
 
     .jump-btn:hover {
-      background: rgba(88, 166, 255, 0.15);
-      border-color: var(--dash-active);
+      background: rgba(15, 118, 110, 0.2);
+      border-color: var(--teal-craftsman);
       color: #fff;
       text-decoration: none;
     }
 
     .jump-timestamp {
       font-family: var(--font-mono);
-      color: var(--dash-accent);
+      color: #fbbf24;
       font-weight: 700;
     }
 
     /* Key Callout Warning */
     .callout-warning {
-      background: rgba(242, 204, 96, 0.08);
-      border: 1px solid rgba(242, 204, 96, 0.3);
-      border-left: 4px solid var(--dash-accent);
+      background: rgba(180, 83, 9, 0.08);
+      border: 1px solid rgba(180, 83, 9, 0.3);
+      border-left: 4px solid var(--amber-accent);
       border-radius: 4px;
       padding: 10px 12px;
       margin-bottom: 12px;
@@ -409,7 +446,7 @@
     }
 
     .callout-warning strong {
-      color: var(--dash-accent);
+      color: #fbbf24;
     }
 
     /* Responsive adjustments for narrow/half-screen displays */
