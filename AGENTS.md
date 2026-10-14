@@ -11,6 +11,16 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - TIM OTTINGER INTERVIEW ENRICHMENT & SCMC RECONCILIATION (2026-10-13):
+         Fixed and enriched Tim Ottinger interview page, transcript turns, and community attribution:
+         - Reconstructed 56 natural alternating speaker turns across all 221 whisper subtitle blocks in `_data/transcripts/tim-ottinger-general.yml`.
+         - Reconciled community attribution from General to Software Craftsmanship McHenry County (SCMC) in `_data/interviews.yml` and registered community metadata in `_data/interview_communities.yml`.
+         - Purged duplicated intro text and replaced 36 synthetic 15-second chapters with 10 verified thematic chapters in `_data/video_assets.yml` and `_data/youtube_metadata_staged.json`.
+         - Synchronized live YouTube Data API v3 metadata and uploaded calibrated WebVTT captions track to `GYpgcyIH_gc`.
+         - Re-exported captions manifest, verified WebVTT tracks, and regenerated CareerOS datalake exports.
+         - Maintained 100% em-dash-free compliance across all code, YAML datasets, and documentation. All validation gates passing cleanly:
+           validate:fast, transcript:audit (215 assets / 0 orphans), rspec (100/100 tests), and validate:obs (46/46 assertions).
+
        - ERRATA PRACTICE RUN BROADCAST, DEHUM COCKPIT & YOUTUBE PIPELINE (2026-10-13):
          Completed the live break-the-ice broadcast recording, harmonized the Dehum presentation cockpit, and published the practice run:
          - Recorded and uploaded 32-minute live broadcast session (`7YeFpKn5FbU`) to YouTube Data API v3 as "[PRACTICE RUN] The Mirage of Competence: AI Slop & Domain Boundaries".
