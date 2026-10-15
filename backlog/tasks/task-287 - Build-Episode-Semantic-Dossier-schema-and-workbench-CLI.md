@@ -1,11 +1,11 @@
 ---
 id: TASK-287
 title: Build Episode Semantic Dossier schema and workbench CLI
-status: In Progress
+status: Done
 assignee:
   - '@antigravity'
 created_date: '2026-10-15 01:45'
-updated_date: '2026-10-15 01:47'
+updated_date: '2026-10-15 01:50'
 labels: []
 dependencies: []
 ---
@@ -18,15 +18,15 @@ Episode planning currently relies on raw interview metadata and hardcoded telepr
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Define YAML dossier schema in _data/episodes/ supporting narrative metadata, semantic lexicon, human stories, and evidence attachments
-- [ ] #2 Create bin/episode_workbench.rb CLI supporting create, show, edit, compile, and validate commands
-- [ ] #3 Ensure compile merges automated transcript facts with human marginalia into 6-act teleprompter rundowns
-- [ ] #4 Verify zero em dashes in all generated dossiers and scripts
+- [x] #1 Define YAML dossier schema in _data/episodes/ supporting narrative metadata, semantic lexicon, human stories, and evidence attachments
+- [x] #2 Create bin/episode_workbench.rb CLI supporting create, show, edit, compile, and validate commands
+- [x] #3 Ensure compile merges automated transcript facts with human marginalia into 6-act teleprompter rundowns
+- [x] #4 Verify zero em dashes in all generated dossiers and scripts
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -39,3 +39,15 @@ Episode planning currently relies on raw interview metadata and hardcoded telepr
 5. Write unit and contract tests in spec/youtube/episode_workbench_spec.rb.
 6. Verify zero em dashes and ensure all validation gates pass.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Built bin/episode_workbench.rb CLI and scaffolded 35 episode dossiers in _data/episodes/. Verified with 10 RSpec examples in spec/youtube/episode_workbench_spec.rb and 46 OBS assertions.
+<!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented Episode Semantic Dossier YAML schema and episode_workbench.rb CLI. Verified with 128 RSpec unit and contract tests, validate:fast, and validate:obs.
+<!-- SECTION:FINAL_SUMMARY:END -->
