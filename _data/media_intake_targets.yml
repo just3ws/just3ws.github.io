@@ -1,0 +1,69 @@
+# _data/media_intake_targets.yml
+# Media Intake Pipeline Configuration
+# Maps Google Drive folder aliases to YouTube publishing targets and series dossiers.
+
+base_path: "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake"
+
+channels:
+  whoistechcmty:
+    channel_handle: "@whoistechcmty"
+    targets:
+      ramblin-amblin:
+        playlist_id: "PLNtb969T2-l0"
+        series_name: "Ramblin' & Amblin'"
+        default_privacy: "unlisted"
+        category_id: "28"
+        auto_title_from_speech: true
+        title_prefix: "Ramblin' & Amblin'"
+        tags:
+          - "Software Craftsmanship"
+          - "Ramblin and Amblin"
+          - "Field Notes"
+          - "Engineering Philosophy"
+          - "Chicago Tech"
+        description_template: |
+          Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer)
+          Recorded on the move: engineering observations, systems architecture, and software craftsmanship reflections.
+
+          • Series Playlist: https://www.youtube.com/playlist?list=PLNtb969T2-l0
+          • The Sound Above Curriculum: https://www.just3ws.com/series/the-sound-above/
+          • Canonical Profile: https://www.just3ws.com
+
+      the-sound-above:
+        playlist_id: "PLVcmLmfz2uyA"
+        series_name: "The Sound Above"
+        default_privacy: "unlisted"
+        category_id: "28"
+        dossier_lookup: true
+        tags:
+          - "The Sound Above"
+          - "Software Craftsmanship"
+          - "Oral History"
+          - "Chicago Software Craftsmanship"
+          - "Engineering Ethics"
+        description_template: |
+          The Sound Above: UGtastic Oral History Rewatch (Chicago Software Craftsmanship)
+          Hosted by Mike Hall (Staff Software Engineer & SCMC Co-Founder)
+
+          • Interactive Series Hub: https://www.just3ws.com/series/the-sound-above/
+          • Archive Index & Verified Transcripts: https://www.just3ws.com/interviews/
+          • Community & Patreon Support: https://www.patreon.com/whoistechcmty
+
+      errata:
+        playlist_id: "PLKPAHha6I990"
+        series_name: "The Sound Above: Errata"
+        default_privacy: "unlisted"
+        category_id: "28"
+        tags:
+          - "The Sound Above"
+          - "Errata"
+          - "Audio Forensics"
+          - "DSP"
+          - "Software Craftsmanship"
+        description_template: |
+          The Sound Above: Marginalia, Readings & Demonstrations (Errata Series)
+          Recorded with Mike Hall (Staff Software Engineer & SCMC Co-Founder)
+
+          • Errata Playlist: https://www.youtube.com/playlist?list=PLKPAHha6I990
+          • Interactive Cockpit: https://www.just3ws.com/dehum/
+          • Canonical Case Study: https://www.just3ws.com/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/

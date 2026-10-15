@@ -7,7 +7,7 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | resumes | youtube | help
+  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | resumes | youtube | episode | patreon | stage | intake | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
@@ -25,6 +25,9 @@ Commands:
   resumes   Regenerate PDF resumes to $HOME/Desktop/resumes.
   youtube   Run YouTube publishing pipeline CLI (status, audit, telemetry, schedule).
   episode   Run Episode Semantic Dossier & Workbench CLI (list, show, compile, validate, cue).
+  patreon   Run Patreon API v2 integration and credits CLI (status, members, credits, sync).
+  stage     Run 37-episode staging & rehearsal workflow harness across all 7 gates.
+  intake    Run Google Drive media intake pipeline (status, process, watch, dry-run).
   help      Show this help.
 USAGE
 }
@@ -84,6 +87,10 @@ case "${1:-help}" in
   stage|rehearse)
     shift
     ruby bin/stage_episode_workflow.rb "${@:---all}"
+    ;;
+  intake|drive-intake|media-intake)
+    shift
+    ruby bin/intake_drive_video.rb "${@:---status}"
     ;;
   help|-h|--help)
     usage

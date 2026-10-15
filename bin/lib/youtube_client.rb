@@ -238,6 +238,90 @@ class YouTubeClient
     end
   end
 
+  # Resumable Video Upload
+  def upload_video(file_path, payload, content_type: nil)
+    fetch_access_token! if @access_token.nil?
+    raise "File not found: #{file_path}" unless File.exist?(file_path)
+
+    file_size = File.size(file_path)
+    ct = content_type || (file_path.end_with?('.mov') ? 'video/quicktime' : 'video/mp4')
+
+    init_uri = URI("https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status")
+    http = Net::HTTP.new(init_uri.host, init_uri.port)
+    http.use_ssl = true
+
+    init_req = Net::HTTP::Post.new(init_uri)
+    init_req["Authorization"] = "Bearer #{@access_token}"
+    init_req["Content-Type"] = "application/json; charset=UTF-8"
+    init_req["X-Upload-Content-Length"] = file_size.to_s
+    init_req["X-Upload-Content-Type"] = ct
+    init_req.body = JSON.generate(payload)
+
+    init_res = http.request(init_req)
+    unless init_res.is_a?(Net::HTTPSuccess) || init_res.code == "200" || init_res.code == "201"
+      raise "Failed to initialize YouTube upload session (#{init_res.code}): #{init_res.body}"
+    end
+
+    location = init_res["Location"]
+    raise "No upload location returned by YouTube" unless location
+
+    upload_uri = URI(location)
+    upload_http = Net::HTTP.new(upload_uri.host, upload_uri.port)
+    upload_http.use_ssl = true
+    upload_http.open_timeout = 60
+    upload_http.read_timeout = 3600
+
+    upload_req = Net::HTTP::Put.new(upload_uri)
+    upload_req["Content-Type"] = ct
+    upload_req["Content-Length"] = file_size.to_s
+
+    File.open(file_path, 'rb') do |file|
+      upload_req.body_stream = file
+      upload_res = upload_http.request(upload_req)
+      if upload_res.is_a?(Net::HTTPSuccess) || upload_res.code == "200" || upload_res.code == "201"
+        return JSON.parse(upload_res.body)
+      else
+        raise "Failed streaming video payload (#{upload_res.code}): #{upload_res.body}"
+      end
+    end
+  end
+
+  # Upload Caption Track (WebVTT)
+  def upload_caption(video_id, vtt_content, language: "en", name: "English (Human Verified)")
+    fetch_access_token! if @access_token.nil?
+    require 'securerandom'
+
+    metadata = {
+      snippet: {
+        videoId: video_id,
+        language: language,
+        name: name,
+        isDraft: false
+      }
+    }
+
+    uri = URI("https://www.googleapis.com/upload/youtube/v3/captions?part=snippet&uploadType=multipart")
+    boundary = "----RubyMultipartBoundary#{SecureRandom.hex(8)}"
+    body = [
+      "--#{boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n#{metadata.to_json}\r\n",
+      "--#{boundary}\r\nContent-Type: text/vtt\r\n\r\n#{vtt_content}\r\n--#{boundary}--\r\n"
+    ].join
+
+    req = Net::HTTP::Post.new(uri)
+    req["Authorization"] = "Bearer #{@access_token}"
+    req["Content-Type"] = "multipart/related; boundary=#{boundary}"
+    req.body = body
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    res = http.request(req)
+    if res.is_a?(Net::HTTPSuccess) || res.code.to_i == 200
+      JSON.parse(res.body) rescue {}
+    else
+      raise "Failed uploading caption (#{res.code}): #{res.body}"
+    end
+  end
+
   # Generate Fingerprint for Fingerprint-Idempotent Diff Safety
   def self.fingerprint(snippet)
     return "" unless snippet

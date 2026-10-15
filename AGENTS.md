@@ -11,6 +11,15 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - GOOGLE DRIVE CLOUD INTAKE & YOUTUBE PUBLISHING PIPELINE (2026-10-15):
+         Architected and built zero-disk-waste cloud streaming intake pipeline from Google Drive to YouTube:
+         - Established Maildir-pattern queue directories inside Google Drive: `Media Intake/whoistechcmty/{ramblin-amblin,the-sound-above,errata}/{pending,processing,processed,failed}`.
+         - Created declarative mapping configuration `_data/media_intake_targets.yml` connecting Google Drive queue folders to YouTube playlists (`PLNtb969T2-l0`, `PLVcmLmfz2uyA`, `PLKPAHha6I990`), privacy rules, categories, and tags.
+         - Built end-to-end intake orchestrator `bin/intake_drive_video.rb` (`bin/pipeline intake`): extracts ephemeral audio to `/tmp/` without video duplication, executes local whisper.cpp speech recognition on Apple Silicon, synthesizes Craftsman metadata or binds episode dossiers, streams resumable uploads directly to YouTube Data API v3, uploads verified WebVTT captions, and archives cloud masters to `processed/YYYY-MM/` with zero permanent local SSD consumption.
+         - Upgraded `YouTubeClient` (`bin/lib/youtube_client.rb`) with reusable `upload_video` (chunked resumable PUT) and `upload_caption` (multipart WebVTT POST) endpoints.
+         - Maintained 100% em-dash-free compliance across all code, YAML datasets, and tests. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (159/159 tests).
+
        - 37-EPISODE PRIME CURRICULUM, STAGING HARNESS, PATREON PIPELINE & WORKBENCH (2026-10-15):
          Synthesized and verified the complete 37-episode prime number curriculum and end-to-end publishing pipeline:
          - Completed full 38-dossier corpus (`_data/episodes/episode-00.yml` through `episode-37.yml`), incorporating Coda 1 (Episode 36: "Without zdots, There Was Nothing") and Coda 2 (Episode 37: "The Sound Above Roundtable") alongside the 35 oral history rewatches and preparatory pilot (Episode 00).
