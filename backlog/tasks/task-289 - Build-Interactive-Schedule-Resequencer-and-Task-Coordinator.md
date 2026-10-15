@@ -1,9 +1,11 @@
 ---
 id: TASK-289
 title: Build Interactive Schedule Resequencer and Task Coordinator
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@antigravity'
 created_date: '2026-10-15 01:45'
+updated_date: '2026-10-15 01:55'
 labels: []
 dependencies:
   - TASK-287
