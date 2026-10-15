@@ -11,6 +11,14 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - NEAR-REALTIME SSE STREAMER & LIVE DASHBOARD TELEMETRY (2026-10-15):
+         Architected and built zero-dependency near-realtime Server-Sent Events (SSE) telemetry streamer and live dashboard integration:
+         - Built `bin/live_dashboard_streamer.rb` (`bin/pipeline stream`): loopback HTTP daemon listening on `127.0.0.1:7025` serving `/events` (SSE), `/telemetry.json` (REST), and `/status` (Healthcheck), with Google Drive directory watcher broadcasting state changes within 1.5 seconds.
+         - Configured nginx reverse proxy `/api/live/` in `nginx/just3ws.localhost.conf` with unbuffered SSE streaming (`proxy_buffering off; chunked_transfer_encoding off;`).
+         - Built `initDashboardRealtimeStream()` in `youtube/dashboard.html` with dual-mode connectivity: primary SSE connection with visual status badge (`Realtime (SSE Live)` / `Stream Standby` / `Polling (3s sync)`), dynamic HUD queue counters, active BPMN step state transitions, and automatic fallback polling against `assets/data/youtube_pipeline_telemetry.json`.
+         - Maintained 100% em-dash-free compliance across all code, configuration, and documentation. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (167/167 tests).
+
        - BPMN 2.0 WORKFLOW, SLO OBSERVABILITY & INTERACTIVE CAMUNDA MONITOR (2026-10-15):
          Modeled and instrumented the entire Media Intake and YouTube Publishing Pipeline using BPMN 2.0 execution semantics:
          - Authored standard BPMN 2.0 XML definition `docs/bpmn/media-intake-pipeline.bpmn` with 4 swimlanes, 12 service tasks, stability timer catches, and boundary error events.

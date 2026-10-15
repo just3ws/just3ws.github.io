@@ -175,4 +175,56 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(dash).to include('inspectBpmnNode')
     end
   end
+
+  describe 'Realtime SSE & Telemetry Streamer (bin/live_dashboard_streamer.rb)' do
+    let(:streamer_path) { File.join(root_dir, 'bin', 'live_dashboard_streamer.rb') }
+    let(:dashboard_path) { File.join(root_dir, 'youtube', 'dashboard.html') }
+
+    it 'exists and is executable' do
+      expect(File.exist?(streamer_path)).to be true
+      expect(File.executable?(streamer_path)).to be true
+    end
+
+    it 'contains zero em dashes across streamer source code' do
+      content = File.read(streamer_path)
+      expect(content).not_to include("\u2014")
+      expect(content).not_to match(/\s--\s/)
+      expect(content).not_to match(/\s-\s/)
+    end
+
+    it 'compiles current live state with queue counts cleanly' do
+      require_relative '../../bin/live_dashboard_streamer'
+      streamer = LiveDashboardStreamer.new(7099)
+      state = streamer.compile_current_state
+      expect(state).to be_a(Hash)
+      expect(state).to have_key('media_intake')
+      expect(state.dig('media_intake', 'targets')).to have_key('ramblin-amblin')
+    end
+
+    it 'detects active BPMN execution steps based on queue state' do
+      streamer = LiveDashboardStreamer.new(7099)
+      dummy_state = {
+        'media_intake' => {
+          'targets' => {
+            'ramblin-amblin' => {
+              'processing_count' => 1,
+              'processing_items' => [{ 'filename' => 'PXL_20261015.mp4' }]
+            }
+          }
+        }
+      }
+      active = streamer.detect_active_bpmn_step(dummy_state)
+      expect(active[:status]).to eq('processing')
+      expect(active[:target]).to eq('ramblin-amblin')
+      expect(active[:step]).to eq('step5')
+    end
+
+    it 'integrates realtime SSE listeners into youtube/dashboard.html' do
+      dash = File.read(dashboard_path)
+      expect(dash).to include('initDashboardRealtimeStream()')
+      expect(dash).to include('live-stream-badge')
+      expect(dash).to include('EventSource')
+      expect(dash).to include('applyRealtimeTelemetry')
+    end
+  end
 end

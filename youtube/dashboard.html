@@ -22,6 +22,10 @@ body_class: page-youtube-dashboard
         <span style="background: #dcfce7; color: #15803d; border: 1px solid rgba(21, 128, 61, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 9999px;">
           API v3 Authorized
         </span>
+        <span id="live-stream-badge" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #f8fafc; color: #64748b; border: 1px solid #cbd5e1; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 9999px;">
+          <span id="live-dot" style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #94a3b8;"></span>
+          <span id="live-stream-text">Stream Standby</span>
+        </span>
       </div>
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <a href="https://studio.youtube.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.825rem; font-weight: 700; color: #b45309; text-decoration: none; padding: 0.35rem 0.75rem; border: 1px solid rgba(180, 83, 9, 0.3); border-radius: 0.375rem; background: #fffdfa;">
@@ -1051,7 +1055,7 @@ body_class: page-youtube-dashboard
         <div style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1rem;">
           <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">Ramblin' &amp; Amblin' Queue</div>
           <div style="display: flex; align-items: baseline; gap: 0.5rem;">
-            <span style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['ramblin-amblin'].pending_count | default: 0 }}</span>
+            <span id="hud-ramblin-pending" style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['ramblin-amblin'].pending_count | default: 0 }}</span>
             <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
           </div>
           <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
@@ -1062,7 +1066,7 @@ body_class: page-youtube-dashboard
         <div style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1rem;">
           <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">The Sound Above Queue</div>
           <div style="display: flex; align-items: baseline; gap: 0.5rem;">
-            <span style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['the-sound-above'].pending_count | default: 0 }}</span>
+            <span id="hud-sound-above-pending" style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['the-sound-above'].pending_count | default: 0 }}</span>
             <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
           </div>
           <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
@@ -1073,7 +1077,7 @@ body_class: page-youtube-dashboard
         <div style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1rem;">
           <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">Errata &amp; Readings Queue</div>
           <div style="display: flex; align-items: baseline; gap: 0.5rem;">
-            <span style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['errata'].pending_count | default: 0 }}</span>
+            <span id="hud-errata-pending" style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['errata'].pending_count | default: 0 }}</span>
             <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
           </div>
           <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
@@ -1084,9 +1088,9 @@ body_class: page-youtube-dashboard
         <div style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1rem;">
           <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">Active Execution State</div>
           <div style="display: flex; align-items: baseline; gap: 0.5rem;">
-            <span style="font-size: 1.5rem; font-weight: 800; color: #15803d;">STANDBY</span>
+            <span id="hud-execution-state" style="font-size: 1.5rem; font-weight: 800; color: #15803d;">STANDBY</span>
           </div>
-          <div style="font-size: 0.75rem; color: #15803d; margin-top: 0.35rem; font-weight: 600;">
+          <div id="hud-execution-detail" style="font-size: 0.75rem; color: #15803d; margin-top: 0.35rem; font-weight: 600;">
             SLO Health: 100% nominal
           </div>
         </div>
@@ -2201,9 +2205,146 @@ body_class: page-youtube-dashboard
     }, 700);
   }
 
-  // Initial load of Episode 1
+  // Realtime SSE & Telemetry Client
+  let realtimeSource = null;
+  let fallbackPollTimer = null;
+
+  function updateRealtimeStatus(mode, label, color, bg, border) {
+    const badge = document.getElementById('live-stream-badge');
+    const dot = document.getElementById('live-dot');
+    const text = document.getElementById('live-stream-text');
+    if (!badge || !dot || !text) return;
+
+    badge.style.background = bg;
+    badge.style.color = color;
+    badge.style.borderColor = border;
+    dot.style.background = color;
+    text.innerText = label;
+  }
+
+  function applyRealtimeTelemetry(data) {
+    if (!data) return;
+    const intake = data.media_intake;
+    if (intake && intake.targets) {
+      const ramblin = intake.targets['ramblin-amblin'];
+      const soundAbove = intake.targets['the-sound-above'];
+      const errata = intake.targets['errata'];
+
+      if (ramblin) {
+        const el = document.getElementById('hud-ramblin-pending');
+        if (el) el.innerText = ramblin.pending_count || 0;
+      }
+      if (soundAbove) {
+        const el = document.getElementById('hud-sound-above-pending');
+        if (el) el.innerText = soundAbove.pending_count || 0;
+      }
+      if (errata) {
+        const el = document.getElementById('hud-errata-pending');
+        if (el) el.innerText = errata.pending_count || 0;
+      }
+
+      // Check active execution state
+      const totalProcessing = (ramblin?.processing_count || 0) + (soundAbove?.processing_count || 0) + (errata?.processing_count || 0);
+      const totalFailed = (ramblin?.failed_count || 0) + (soundAbove?.failed_count || 0) + (errata?.failed_count || 0);
+
+      const stateEl = document.getElementById('hud-execution-state');
+      const detailEl = document.getElementById('hud-execution-detail');
+
+      if (totalFailed > 0) {
+        if (stateEl) { stateEl.innerText = 'ALERT'; stateEl.style.color = '#dc2626'; }
+        if (detailEl) { detailEl.innerText = totalFailed + ' asset(s) in failed/ quarantine'; detailEl.style.color = '#dc2626'; }
+      } else if (totalProcessing > 0) {
+        if (stateEl) { stateEl.innerText = 'PROCESSING'; stateEl.style.color = '#b45309'; }
+        if (detailEl) { detailEl.innerText = 'Live pipeline execution in progress'; detailEl.style.color = '#b45309'; }
+      } else {
+        if (stateEl) { stateEl.innerText = 'STANDBY'; stateEl.style.color = '#15803d'; }
+        if (detailEl) { detailEl.innerText = 'SLO Health: 100% nominal'; detailEl.style.color = '#15803d'; }
+      }
+    }
+  }
+
+  function initDashboardRealtimeStream() {
+    const isHttps = window.location.protocol === 'https:';
+    const sseEndpoints = isHttps ? ['/api/live/events', 'http://127.0.0.1:7025/events'] : ['http://127.0.0.1:7025/events', '/api/live/events'];
+    let endpointIdx = 0;
+
+    function connectSSE() {
+      if (endpointIdx >= sseEndpoints.length) {
+        startFallbackPolling();
+        return;
+      }
+
+      const url = sseEndpoints[endpointIdx];
+      updateRealtimeStatus('connecting', 'Connecting stream...', '#64748b', '#f8fafc', '#cbd5e1');
+
+      try {
+        if (realtimeSource) realtimeSource.close();
+        realtimeSource = new EventSource(url);
+
+        realtimeSource.addEventListener('connected', () => {
+          updateRealtimeStatus('live', 'Realtime (SSE Live)', '#15803d', '#dcfce7', 'rgba(21, 128, 61, 0.25)');
+          if (fallbackPollTimer) { clearInterval(fallbackPollTimer); fallbackPollTimer = null; }
+        });
+
+        realtimeSource.addEventListener('telemetry', (e) => {
+          try {
+            const data = JSON.parse(e.data);
+            applyRealtimeTelemetry(data);
+          } catch (err) {}
+        });
+
+        realtimeSource.addEventListener('intake_update', (e) => {
+          try {
+            const data = JSON.parse(e.data);
+            applyRealtimeTelemetry(data);
+          } catch (err) {}
+        });
+
+        realtimeSource.addEventListener('bpmn_transition', (e) => {
+          try {
+            const stepInfo = JSON.parse(e.data);
+            if (stepInfo && stepInfo.step) {
+              inspectBpmnNode(stepInfo.step);
+            }
+          } catch (err) {}
+        });
+
+        realtimeSource.onerror = () => {
+          realtimeSource.close();
+          endpointIdx++;
+          setTimeout(connectSSE, 1000);
+        };
+      } catch (err) {
+        endpointIdx++;
+        setTimeout(connectSSE, 1000);
+      }
+    }
+
+    function startFallbackPolling() {
+      updateRealtimeStatus('polling', 'Polling (3s sync)', '#b45309', '#fef3c7', 'rgba(180, 83, 9, 0.25)');
+      if (fallbackPollTimer) clearInterval(fallbackPollTimer);
+
+      const fetchTelemetry = async () => {
+        try {
+          const res = await fetch('/assets/data/youtube_pipeline_telemetry.json?t=' + Date.now());
+          if (res.ok) {
+            const data = await res.json();
+            applyRealtimeTelemetry(data);
+          }
+        } catch (err) {}
+      };
+
+      fetchTelemetry();
+      fallbackPollTimer = setInterval(fetchTelemetry, 3000);
+    }
+
+    connectSSE();
+  }
+
+  // Initial load
   document.addEventListener('DOMContentLoaded', () => {
     loadTeleprompterEpisode(1);
     loadWorkshopEpisode(1);
+    initDashboardRealtimeStream();
   });
 </script>
