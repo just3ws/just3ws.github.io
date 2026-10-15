@@ -1,9 +1,11 @@
 ---
 id: TASK-287
 title: Build Episode Semantic Dossier schema and workbench CLI
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@antigravity'
 created_date: '2026-10-15 01:45'
+updated_date: '2026-10-15 01:47'
 labels: []
 dependencies: []
 ---
