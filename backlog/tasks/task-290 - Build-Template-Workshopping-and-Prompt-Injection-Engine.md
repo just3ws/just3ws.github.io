@@ -1,9 +1,11 @@
 ---
 id: TASK-290
 title: Build Template Workshopping and Prompt Injection Engine
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@antigravity'
 created_date: '2026-10-15 01:46'
+updated_date: '2026-10-15 02:04'
 labels: []
 dependencies:
   - TASK-287
