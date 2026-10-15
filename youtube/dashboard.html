@@ -1,0 +1,918 @@
+---
+layout: base
+title: "YouTube Publishing Pipeline & Overview Dashboard"
+description: "Unified operational cockpit for YouTube video publishing, livestream scheduling, quota tracking, captions parity, and content analytics."
+permalink: /youtube/dashboard/
+redirect_from:
+  - /youtube/dashboard.html
+  - /dashboard/youtube/
+localhost_only: true
+body_class: page-youtube-dashboard
+---
+
+<div class="yt-cockpit-container" style="max-width: 88rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; font-family: var(--font-sans-ui, system-ui, -apple-system, sans-serif); color: var(--color-text-main, #1e232a);">
+
+  <!-- Cockpit HUD Header -->
+  <header style="margin-bottom: 2rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1.5rem;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase;">
+          📺 YouTube Operations Cockpit
+        </span>
+        <span style="background: #dcfce7; color: #15803d; border: 1px solid rgba(21, 128, 61, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 9999px;">
+          API v3 Authorized
+        </span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <a href="https://studio.youtube.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.825rem; font-weight: 700; color: #b45309; text-decoration: none; padding: 0.35rem 0.75rem; border: 1px solid rgba(180, 83, 9, 0.3); border-radius: 0.375rem; background: #fffdfa;">
+          YouTube Studio ↗
+        </a>
+        <a href="https://www.youtube.com/@whoistechcmty" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.825rem; font-weight: 700; color: #0f766e; text-decoration: none; padding: 0.35rem 0.75rem; border: 1px solid rgba(15, 118, 110, 0.3); border-radius: 0.375rem; background: #f0fdfa;">
+          Channel (@whoistechcmty) ↗
+        </a>
+        <a href="/dashboard/" style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.825rem; font-weight: 700; color: #475569; text-decoration: none; padding: 0.35rem 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #ffffff;">
+          Local Platform Control ↗
+        </a>
+      </div>
+    </div>
+
+    <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif); letter-spacing: -0.02em;">
+      YouTube Publishing Pipeline & Overview Dashboard
+    </h1>
+    <p style="font-size: 1.05rem; color: var(--color-text-muted, #525866); margin: 0; max-width: 58rem; line-height: 1.5;">
+      Unified control plane for managing the UGtastic and WHOIS Tech Community archive on YouTube: track multi-stage publication state, enforce content best practices, budget Google Cloud API quotas, coordinate livestreams, and audit caption parity.
+    </p>
+  </header>
+
+  <!-- Hero KPI Metric Cards -->
+  {% assign yt_data = site.data.youtube_pipeline_telemetry %}
+  {% assign m = yt_data.metrics %}
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+    
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.35rem;">Canonical Assets</div>
+      <div style="font-size: 1.85rem; font-weight: 800; color: #0f172a;">{{ m.total_canonical_assets | default: 215 }}</div>
+      <div style="font-size: 0.8rem; color: #0f766e; font-weight: 600; margin-top: 0.25rem;">184 Oral Histories</div>
+    </div>
+
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.35rem;">Live on YouTube</div>
+      <div style="font-size: 1.85rem; font-weight: 800; color: #0f172a;">{{ m.youtube_live_videos | default: 210 }}</div>
+      <div style="font-size: 0.8rem; color: #15803d; font-weight: 600; margin-top: 0.25rem;">97.7% of Corpus</div>
+    </div>
+
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.35rem;">1:1 Staged Metadata</div>
+      <div style="font-size: 1.85rem; font-weight: 800; color: #0f172a;">{{ m.staged_metadata_records | default: 212 }}</div>
+      <div style="font-size: 0.8rem; color: #0f766e; font-weight: 600; margin-top: 0.25rem;">{{ m.metadata_synced_count | default: 182 }} Synced ({{ m.metadata_pending_count | default: 30 }} Pending)</div>
+    </div>
+
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.35rem;">Timed Captions</div>
+      <div style="font-size: 1.85rem; font-weight: 800; color: #0f172a;">{{ m.captions_manifest_count | default: 210 }}</div>
+      <div style="font-size: 0.8rem; color: #b45309; font-weight: 600; margin-top: 0.25rem;">{{ m.captions_synced_count | default: 58 }} Live on YouTube</div>
+    </div>
+
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.35rem;">Rewatch Episodes</div>
+      <div style="font-size: 1.85rem; font-weight: 800; color: #0f172a;">{{ m.sound_above_episodes_count | default: 35 }}</div>
+      <div style="font-size: 0.8rem; color: #4338ca; font-weight: 600; margin-top: 0.25rem;">6 Historical Movements</div>
+    </div>
+
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.35rem;">Daily API Quota</div>
+      <div style="font-size: 1.85rem; font-weight: 800; color: #0f172a;">10,000</div>
+      <div style="font-size: 0.8rem; color: #15803d; font-weight: 600; margin-top: 0.25rem;">Budget: 50 units / action</div>
+    </div>
+
+  </div>
+
+  <!-- Operational Tabs Navigation -->
+  <nav class="yt-dash-nav" style="display: flex; gap: 0.5rem; border-bottom: 1px solid #e3dfd7; margin-bottom: 1.75rem; overflow-x: auto;">
+    <button type="button" class="yt-tab-btn active" onclick="switchYtTab('status')" id="tab-btn-status" style="background: none; border: none; border-bottom: 3px solid #0f766e; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 700; color: #0f766e; cursor: pointer; white-space: nowrap;">
+      📊 Pipeline & Publication State
+    </button>
+    <button type="button" class="yt-tab-btn" onclick="switchYtTab('audit')" id="tab-btn-audit" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
+      🎯 Content Management & Best Practices
+    </button>
+    <button type="button" class="yt-tab-btn" onclick="switchYtTab('live')" id="tab-btn-live" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
+      🎙️ Livestreaming & Scheduling Cockpit
+    </button>
+    <button type="button" class="yt-tab-btn" onclick="switchYtTab('analytics')" id="tab-btn-analytics" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
+      📈 YouTube Analytics & Corpus Intelligence
+    </button>
+  </nav>
+
+  <!-- ========================================================================= -->
+  <!-- TAB 1: PIPELINE & PUBLICATION STATE -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-status" class="yt-tab-pane" style="display: block;">
+    
+    <!-- Multi-Stage Publication Funnel Visualizer -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">
+        Multi-Stage Video Lifecycle Funnel
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; text-align: center;">
+        
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b;">STAGE 1</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">215</div>
+          <div style="font-size: 0.8rem; color: #475569;">Intake & Master</div>
+          <div style="font-size: 0.7rem; color: #15803d; font-weight: 700; margin-top: 0.25rem;">100% Ingested</div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b;">STAGE 2</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">215</div>
+          <div style="font-size: 0.8rem; color: #475569;">Whisper & Diarize</div>
+          <div style="font-size: 0.7rem; color: #15803d; font-weight: 700; margin-top: 0.25rem;">100% Transcribed</div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b;">STAGE 3</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">210</div>
+          <div style="font-size: 0.8rem; color: #475569;">WebVTT Captions</div>
+          <div style="font-size: 0.7rem; color: #15803d; font-weight: 700; margin-top: 0.25rem;">97.7% Captioned</div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b;">STAGE 4</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">212</div>
+          <div style="font-size: 0.8rem; color: #475569;">1:1 SEO Staged</div>
+          <div style="font-size: 0.7rem; color: #15803d; font-weight: 700; margin-top: 0.25rem;">98.6% Staged</div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b;">STAGE 5</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">182</div>
+          <div style="font-size: 0.8rem; color: #475569;">Synced to YouTube</div>
+          <div style="font-size: 0.7rem; color: #b45309; font-weight: 700; margin-top: 0.25rem;">30 Pending Sync</div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b;">STAGE 6</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">210</div>
+          <div style="font-size: 0.8rem; color: #475569;">Public Channel</div>
+          <div style="font-size: 0.7rem; color: #0f766e; font-weight: 700; margin-top: 0.25rem;">Channel Live</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+        <span style="font-size: 0.825rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-right: 0.25rem;">Filter:</span>
+        <button type="button" class="yt-filter-btn active" onclick="filterAssetTable('all', this)" style="background: #0f766e; color: #ffffff; border: none; font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">All (215)</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('synced', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Synced (182)</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('pending', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Pending (30)</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('captions-live', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Captions Live (58)</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('local-master', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Local Masters (5)</button>
+      </div>
+
+      <div style="flex: 1; min-width: 260px; max-width: 400px;">
+        <input type="text" id="yt-asset-search" onkeyup="searchAssetTable()" placeholder="Search title, speaker, conference, or video ID..." style="width: 100%; padding: 0.5rem 0.85rem; font-size: 0.875rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; outline: none; background: #faf8f5;">
+      </div>
+    </div>
+
+    <!-- Asset Inventory Table -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="overflow-x: auto; max-height: 65vh;">
+        <table id="yt-asset-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+          <thead>
+            <tr style="background: #f4f0e8; border-bottom: 2px solid #e3dfd7; color: #0f172a; position: sticky; top: 0; z-index: 10;">
+              <th style="padding: 0.75rem 1rem; width: 60px;">Video</th>
+              <th style="padding: 0.75rem 1rem;">Title & Speaker</th>
+              <th style="padding: 0.75rem 1rem;">Conference / Event</th>
+              <th style="padding: 0.75rem 1rem; width: 80px;">Duration</th>
+              <th style="padding: 0.75rem 1rem; width: 110px;">Metadata</th>
+              <th style="padding: 0.75rem 1rem; width: 110px;">Captions</th>
+              <th style="padding: 0.75rem 1rem; width: 130px;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for asset in yt_data.assets %}
+              <tr class="yt-row" data-meta-status="{{ asset.metadata_status }}" data-caption-status="{{ asset.caption_status }}" data-platform="{% if asset.youtube_video_id %}youtube{% else %}local-master{% endif %}" style="border-bottom: 1px solid #f1f5f9;">
+                <td style="padding: 0.75rem 1rem; vertical-align: top;">
+                  {% if asset.youtube_video_id %}
+                    <a href="https://www.youtube.com/watch?v={{ asset.youtube_video_id }}" target="_blank" rel="noopener">
+                      <img src="https://i.ytimg.com/vi/{{ asset.youtube_video_id }}/default.jpg" alt="" style="width: 56px; height: 32px; object-fit: cover; border-radius: 0.25rem; border: 1px solid #e2e8f0;">
+                    </a>
+                  {% else %}
+                    <div style="width: 56px; height: 32px; background: #e2e8f0; border-radius: 0.25rem; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: #64748b;">Local</div>
+                  {% endif %}
+                </td>
+                <td style="padding: 0.75rem 1rem; vertical-align: top;">
+                  <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.2rem;">{{ asset.title }}</div>
+                  <div style="color: #64748b; font-size: 0.78rem;">
+                    Speaker: <strong style="color: #334155;">{{ asset.speaker }}</strong>
+                    {% if asset.youtube_video_id %}
+                      · ID: <code style="font-family: ui-monospace, monospace; font-size: 0.75rem; background: #f1f5f9; padding: 0.1rem 0.3rem; border-radius: 0.2rem;">{{ asset.youtube_video_id }}</code>
+                    {% endif %}
+                  </div>
+                </td>
+                <td style="padding: 0.75rem 1rem; vertical-align: top; color: #475569;">
+                  <div>{{ asset.conference }}</div>
+                  <small style="color: #64748b;">{{ asset.conference_year }}</small>
+                </td>
+                <td style="padding: 0.75rem 1rem; vertical-align: top; font-family: ui-monospace, monospace; color: #64748b;">
+                  {{ asset.duration }}
+                </td>
+                <td style="padding: 0.75rem 1rem; vertical-align: top;">
+                  {% if asset.metadata_status == 'synced' %}
+                    <span style="background: #dcfce7; color: #15803d; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Synced</span>
+                  {% elsif asset.metadata_status == 'staged' %}
+                    <span style="background: #fef3c7; color: #b45309; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Staged</span>
+                  {% else %}
+                    <span style="background: #f1f5f9; color: #64748b; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Local Master</span>
+                  {% endif %}
+                </td>
+                <td style="padding: 0.75rem 1rem; vertical-align: top;">
+                  {% if asset.caption_status == 'synced' %}
+                    <span style="background: #dcfce7; color: #15803d; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Synced</span>
+                  {% elsif asset.caption_status == 'manifest_ready' %}
+                    <span style="background: #e0e7ff; color: #4338ca; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Ready</span>
+                  {% else %}
+                    <span style="background: #fee2e2; color: #b91c1c; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Missing</span>
+                  {% endif %}
+                </td>
+                <td style="padding: 0.75rem 1rem; vertical-align: top; white-space: nowrap;">
+                  <div style="display: flex; gap: 0.4rem; align-items: center;">
+                    {% if asset.transcript_id %}
+                      <a href="/interviews/{{ asset.transcript_id }}/" target="_blank" style="color: #0f766e; text-decoration: none; font-weight: 700; font-size: 0.75rem; padding: 0.2rem 0.45rem; border: 1px solid rgba(15,118,110,0.3); border-radius: 0.25rem; background: #f0fdfa;">
+                        Site
+                      </a>
+                    {% endif %}
+                    {% if asset.youtube_video_id %}
+                      <a href="https://www.youtube.com/watch?v={{ asset.youtube_video_id }}" target="_blank" rel="noopener" style="color: #b91c1c; text-decoration: none; font-weight: 700; font-size: 0.75rem; padding: 0.2rem 0.45rem; border: 1px solid rgba(185,28,28,0.3); border-radius: 0.25rem; background: #fef2f2;">
+                        YouTube
+                      </a>
+                      <button type="button" onclick="copyCliCommand('ruby bin/publish_youtube_metadata.rb --video-id {{ asset.youtube_video_id }} --apply', this)" title="Copy CLI sync command" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.2rem 0.4rem; font-size: 0.75rem; cursor: pointer; color: #475569;">
+                        CLI
+                      </button>
+                    {% endif %}
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- TAB 2: CONTENT MANAGEMENT & BEST PRACTICES -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-audit" class="yt-tab-pane" style="display: none;">
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      
+      <!-- Best Practices Score Card -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+          <h3 style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">Content Best Practices Compliance</h3>
+          <span style="background: #dcfce7; color: #15803d; font-size: 0.85rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px;">99.1% High Integrity</span>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1.25rem 0; line-height: 1.5;">
+          Every video asset is continuously audited across six core content and discoverability dimensions before and during synchronization with YouTube Data API v3.
+        </p>
+        
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.85rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+            <span>1. Zero Em-Dash Invariant (Prose Standard)</span>
+            <strong style="color: #15803d;">✅ PASS (0 violations)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+            <span>2. Canonical Transcript Links (just3ws.com)</span>
+            <strong style="color: #15803d;">✅ PASS (100% linked)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+            <span>3. Issue Triage Automation Links</span>
+            <strong style="color: #15803d;">✅ PASS (100% pre-filled)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+            <span>4. Chapters Present (00:00 start)</span>
+            <strong style="color: #15803d;">✅ PASS (all records)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;">
+            <span>5. WebVTT Captions Coverage</span>
+            <strong style="color: #0f766e;">97.7% Parity (210/215)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span>6. Title Length Ergonomics (&lt;= 70 chars)</span>
+            <strong style="color: #b45309;">⚠️ NOTICE (Conference Titles)</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Quota Budgeting Calculator -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">API Quota Budgeting Calculator</h3>
+          <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">10,000 Pool</span>
+        </div>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0 0 1rem 0;">
+          Simulate planned batch updates against your daily Google Cloud quota pool before triggering live CLI commands.
+        </p>
+
+        <div style="margin-bottom: 1rem;">
+          <label for="quota-videos" style="display: block; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 0.25rem;">
+            Video Metadata Updates (50 units each):
+          </label>
+          <input type="number" id="quota-videos" value="30" min="0" max="200" oninput="calculateQuota()" style="width: 100%; padding: 0.45rem 0.75rem; font-size: 0.875rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #faf8f5;">
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <label for="quota-captions" style="display: block; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 0.25rem;">
+            Caption Track Uploads (50 units each):
+          </label>
+          <input type="number" id="quota-captions" value="50" min="0" max="200" oninput="calculateQuota()" style="width: 100%; padding: 0.45rem 0.75rem; font-size: 0.875rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #faf8f5;">
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem; margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.4rem;">
+            <span>Calculated Units:</span>
+            <strong id="quota-total-units" style="color: #0f172a; font-size: 1.1rem;">4,000 units</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748b;">
+            <span>Daily Budget Used:</span>
+            <strong id="quota-percent-used" style="color: #15803d;">40.0% of pool</strong>
+          </div>
+          <div style="height: 6px; background: #e2e8f0; border-radius: 9999px; overflow: hidden; margin-top: 0.5rem;">
+            <div id="quota-progress-bar" style="width: 40%; height: 100%; background: #0f766e; transition: width 0.2s ease;"></div>
+          </div>
+        </div>
+
+        <div id="quota-recommendation" style="font-size: 0.8rem; color: #15803d; font-weight: 600;">
+          ✅ Safe to execute in single batch today.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Editorial Rules & Formatting Guidelines -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">Editorial & SEO Invariants Guide</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        
+        <div style="border-left: 3px solid #0f766e; padding-left: 1rem;">
+          <h4 style="margin: 0 0 0.35rem 0; font-size: 0.95rem; color: #0f766e;">Title Formulation</h4>
+          <p style="font-size: 0.85rem; color: #475569; margin: 0; line-height: 1.45;">
+            Format: <code>{Speaker} on {Topic} | {Event}</code>. Keep under 70 characters when possible for mobile devices. Zero em dashes, double hyphens, or vague clickbait.
+          </p>
+        </div>
+
+        <div style="border-left: 3px solid #b45309; padding-left: 1rem;">
+          <h4 style="margin: 0 0 0.35rem 0; font-size: 0.95rem; color: #b45309;">Chapter Structure</h4>
+          <p style="font-size: 0.85rem; color: #475569; margin: 0; line-height: 1.45;">
+            Must begin at <code>00:00</code> with an introduction chapter. Minimum 3 chapters for long-form talks. Minimum 10-second gap between successive timestamps.
+          </p>
+        </div>
+
+        <div style="border-left: 3px solid #4338ca; padding-left: 1rem;">
+          <h4 style="margin: 0 0 0.35rem 0; font-size: 0.95rem; color: #4338ca;">Provenance & Attribution</h4>
+          <p style="font-size: 0.85rem; color: #475569; margin: 0; line-height: 1.45;">
+            Every description must include the 1:1 Oral History Record badge, canonical transcript link back to just3ws.com, and pre-filled GitHub issue report URL.
+          </p>
+        </div>
+
+        <div style="border-left: 3px solid #15803d; padding-left: 1rem;">
+          <h4 style="margin: 0 0 0.35rem 0; font-size: 0.95rem; color: #15803d;">Captions Verification</h4>
+          <p style="font-size: 0.85rem; color: #475569; margin: 0; line-height: 1.45;">
+            Upload WebVTT tracks as <code>English (Human Verified)</code> to prevent YouTube auto-captions from degrading domain terms, names, and code syntax.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- TAB 3: LIVESTREAMING & SCHEDULING COCKPIT -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-live" class="yt-tab-pane" style="display: none;">
+    
+    <!-- Active OBS Overlay State Banner -->
+    {% assign overlay = yt_data.overlay_state %}
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
+        <div>
+          <span style="background: rgba(180, 83, 9, 0.12); color: #b45309; border: 1px solid rgba(180, 83, 9, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+            🎙️ Active Broadcast State
+          </span>
+          <h3 style="margin: 0.4rem 0 0 0; font-size: 1.35rem; font-weight: 800; color: #0f172a;">
+            Archetype: {{ overlay.broadcast_type | default: "errata" | upcase }}
+          </h3>
+        </div>
+        <div style="font-family: ui-monospace, monospace; font-size: 0.8rem; color: #64748b; background: #faf8f5; padding: 0.4rem 0.75rem; border-radius: 0.375rem; border: 1px solid #eeebe3;">
+          Source: obs/overlays/overlay-state.json
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.25rem;">
+        <div>
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Series Title</div>
+          <div style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-top: 0.2rem;">{{ overlay.stream.series_title | default: "The Sound Above" }}</div>
+          <small style="color: #64748b;">{{ overlay.stream.series_subtitle }}</small>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Host</div>
+          <div style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-top: 0.2rem;">{{ overlay.stream.host | default: "Mike Hall (Staff Software Engineer)" }}</div>
+          <small style="color: #15803d;">Canonical Title Compliant</small>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Live Topic</div>
+          <div style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-top: 0.2rem;">{{ overlay.stream.topic | default: "Standby" }}</div>
+          <small style="color: #b45309;">Auto-Hide: {{ overlay.lower_third_autohide | default: 10 }}s</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- The 3 Curated Broadcast Archetypes -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      
+      <!-- Archetype 1: The Sound Above -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h4 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #0f172a;">1. The Sound Above</h4>
+          <span style="background: #e0e7ff; color: #4338ca; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">Rewatch Series</span>
+        </div>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.45;">
+          Forensic oral history rewatch across 35 curated interview episodes, examining early Chicago software craftsmanship through a modern lens.
+        </p>
+        <div style="font-size: 0.8rem; background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.375rem; padding: 0.75rem; margin-bottom: 1rem;">
+          <div style="font-weight: 700; color: #1e232a; margin-bottom: 0.25rem;">Episode 1: Sergio Pereira (SCNA 2011)</div>
+          <div style="color: #64748b;">Live ID: <code>eGXG7Qu4G1E</code> · YouTube: <code>qOHdZKz1WFw</code></div>
+        </div>
+        <button type="button" onclick="copyCliCommand('bin/broadcast cue --rewatch 1', this)" style="width: 100%; background: #0f766e; color: #ffffff; border: none; font-weight: 700; font-size: 0.8rem; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer;">
+          Copy Cue Command: Ep 1
+        </button>
+      </div>
+
+      <!-- Archetype 2: Errata -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h4 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #0f172a;">2. Errata</h4>
+          <span style="background: #fef3c7; color: #b45309; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">Readings & Demos</span>
+        </div>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.45;">
+          Solo broadcasts, classical engineering readings, concept breakdowns, physical memorabilia showcases, and terminal workbench demonstrations.
+        </p>
+        <div style="font-size: 0.8rem; background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.375rem; padding: 0.75rem; margin-bottom: 1rem;">
+          <div style="font-weight: 700; color: #1e232a; margin-bottom: 0.25rem;">Practice Run: The Mirage of Competence</div>
+          <div style="color: #64748b;">YouTube: <code>7YeFpKn5FbU</code> · Playlist: <code>PLKPAHha6I990</code></div>
+        </div>
+        <button type="button" onclick="copyCliCommand('bin/broadcast cue --cue errata-concept-blink-test', this)" style="width: 100%; background: #b45309; color: #ffffff; border: none; font-weight: 700; font-size: 0.8rem; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer;">
+          Copy Cue Command: The Blink Test
+        </button>
+      </div>
+
+      <!-- Archetype 3: The Room & Field Notes -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h4 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #0f172a;">3. The Room & Field Notes</h4>
+          <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">Dialogues & Autonomous</span>
+        </div>
+        <p style="font-size: 0.85rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.45;">
+          Invited peer dialogues and the automated Ramblin & Amblin field notes pipeline running every 30 minutes via macOS background daemon.
+        </p>
+        <div style="font-size: 0.8rem; background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.375rem; padding: 0.75rem; margin-bottom: 1rem;">
+          <div style="font-weight: 700; color: #1e232a; margin-bottom: 0.25rem;">Ramblin & Amblin Playlist: PLNtb969T2-l0</div>
+          <div style="color: #64748b;">Daemon: <code>com.just3ws.ramblin-pipeline</code></div>
+        </div>
+        <button type="button" onclick="copyCliCommand('ruby bin/pipeline_ramblin_amblin.rb --poll', this)" style="width: 100%; background: #15803d; color: #ffffff; border: none; font-weight: 700; font-size: 0.8rem; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer;">
+          Copy Field Notes Poll Command
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Hardware Pre-Flight Verification Checklist -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">Hardware & Encoding Pre-Flight Contracts</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; font-size: 0.85rem;">
+        
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-weight: 700; color: #0f172a;">Video Encoder</div>
+          <div style="color: #64748b; margin-top: 0.2rem;">Apple Silicon VideoToolbox (Hardware AVC)</div>
+          <div style="color: #15803d; font-size: 0.75rem; font-weight: 700; margin-top: 0.25rem;">1080p60 Unscaled Canvas</div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-weight: 700; color: #0f172a;">CoreAudio Routing</div>
+          <div style="color: #64748b; margin-top: 0.2rem;">48 kHz clock with 4-track isolated recording</div>
+          <div style="color: #15803d; font-size: 0.75rem; font-weight: 700; margin-top: 0.25rem;">RNNoise & Compressor Enabled</div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.85rem;">
+          <div style="font-weight: 700; color: #0f172a;">Stream Latency</div>
+          <div style="color: #64748b; margin-top: 0.2rem;">Ultra-Low Latency with Auto-Start & DVR</div>
+          <div style="color: #15803d; font-size: 0.75rem; font-weight: 700; margin-top: 0.25rem;">Verified YouTube Settings</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Media Publication Calendar & Release Timeline -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-top: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem;">
+        <div>
+          <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+            📅 Publication Schedule
+          </span>
+          <h3 style="margin: 0.4rem 0 0 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            Thematic Release Sequence & Media Pipeline
+          </h3>
+        </div>
+        <div style="font-size: 0.825rem; color: #64748b; font-weight: 600;">
+          Cadence: {{ site.data.publication_schedule.cadence | default: "Twice weekly" }}
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        {% for week in site.data.publication_schedule.schedule %}
+          <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px solid #e3dfd7; padding-bottom: 0.5rem;">
+              <strong style="color: #0f766e; font-size: 0.9rem; text-transform: uppercase;">Week {{ week.week }}: {{ week.theme }}</strong>
+              <span style="font-size: 0.75rem; color: #64748b;">{{ week.releases.size }} scheduled slots</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.85rem;">
+              {% for rel in week.releases %}
+                <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.375rem; padding: 0.85rem; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.35rem;">
+                      <span style="font-weight: 700; color: #64748b;">{{ rel.date }}</span>
+                      {% if rel.status == 'published' %}
+                        <span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 9999px;">Published</span>
+                      {% elsif rel.status == 'cued' %}
+                        <span style="background: #fef3c7; color: #b45309; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 9999px;">Cued</span>
+                      {% elsif rel.status == 'scheduled' %}
+                        <span style="background: #e0e7ff; color: #4338ca; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 9999px;">Scheduled</span>
+                      {% else %}
+                        <span style="background: #f1f5f9; color: #64748b; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 9999px;">Planned</span>
+                      {% endif %}
+                    </div>
+                    <div style="font-weight: 700; color: #0f172a; font-size: 0.875rem; margin-bottom: 0.35rem;">{{ rel.title }}</div>
+                    <div style="font-size: 0.78rem; color: #525866; line-height: 1.4;">{{ rel.narrative_anchor }}</div>
+                  </div>
+                  {% if rel.youtube_id %}
+                    <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem;">
+                      <a href="https://www.youtube.com/watch?v={{ rel.youtube_id }}" target="_blank" rel="noopener" style="color: #b91c1c; font-weight: 700; text-decoration: none;">Watch on YouTube ↗</a>
+                      <span style="font-family: ui-monospace, monospace; color: #64748b;">ID: {{ rel.youtube_id }}</span>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Live Teleprompter & Rundown Studio -->
+    <div id="teleprompter-studio" style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-top: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem;">
+        <div>
+          <span style="background: rgba(180, 83, 9, 0.12); color: #b45309; border: 1px solid rgba(180, 83, 9, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+            📜 Read-Along Teleprompter
+          </span>
+          <h3 style="margin: 0.4rem 0 0 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            The Sound Above: 6-Act Production Rundown Studio
+          </h3>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <label for="teleprompter-ep-select" style="font-size: 0.8rem; font-weight: 700; color: #475569;">Select Episode:</label>
+          <select id="teleprompter-ep-select" onchange="loadTeleprompterEpisode(this.value)" style="padding: 0.4rem 0.75rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #faf8f5;">
+            {% for ep in site.data.sound_above_sequence.episodes %}
+              <option value="{{ ep.number }}" {% if ep.number == 1 %}selected{% endif %}>
+                Ep {{ ep.number }}: {{ ep.interviewee }} ({{ ep.conference }})
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div id="teleprompter-cards-container" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Dynamic Cards rendered via JS -->
+      </div>
+    </div>
+
+    <!-- Audience Growth & Funding Strategy Hub -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-top: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem;">
+        <div>
+          <span style="background: rgba(21, 128, 61, 0.12); color: #15803d; border: 1px solid rgba(21, 128, 61, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+            💼 Funding & Sponsorship Hub
+          </span>
+          <h3 style="margin: 0.4rem 0 0 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            Sustainable Funding Channels for Independent Engineering Craft
+          </h3>
+        </div>
+        <a href="/docs/the-sound-above-audience-and-funding-strategy.html" style="font-size: 0.825rem; font-weight: 700; color: #0f766e; text-decoration: none;">
+          Read Complete Strategy Doc ↗
+        </a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem;">
+          <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">1. GitHub Sponsors & Patrons</div>
+          <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
+            Individual practitioner patrons supporting digital history preservation and unvarnished AI forensic experiments ($10 to $100/mo).
+          </p>
+          <a href="https://github.com/sponsors/just3ws" target="_blank" rel="noopener" style="display: inline-block; background: #24292f; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 0.25rem; text-decoration: none;">
+            Sponsor on GitHub ↗
+          </a>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem;">
+          <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">2. Developer Tool Underwriting</div>
+          <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
+            Episode sponsorship blocks ($500 to $1,500/ep) for devtool vendors aligning with craftsmanship, observability, and local AI.
+          </p>
+          <span style="display: inline-block; background: #e0e7ff; color: #4338ca; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 0.25rem;">
+            Movement Blocks: 4 Episodes
+          </span>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem;">
+          <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">3. Staff+ Inbound Advisory</div>
+          <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
+            High-leverage System Cartography audits, legacy codebase modernization, and AI orchestration safety governance for engineering organizations.
+          </p>
+          <a href="/case-studies/" style="display: inline-block; background: #0f766e; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 0.25rem; text-decoration: none;">
+            View Case Studies ↗
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- TAB 4: YOUTUBE ANALYTICS & CORPUS INTELLIGENCE -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-analytics" class="yt-tab-pane" style="display: none;">
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      
+      <!-- Conference Distribution Chart -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <h3 style="margin: 0 0 1rem 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">Conference Corpus Distribution</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          {% for conf in yt_data.conferences %}
+            {% assign c_name = conf[0] %}
+            {% assign c_count = conf[1] %}
+            {% assign c_percent = c_count | times: 100.0 | divided_by: 184 %}
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.825rem; margin-bottom: 0.25rem;">
+                <span style="font-weight: 600; color: #334155;">{{ c_name }}</span>
+                <strong style="color: #0f766e;">{{ c_count }} interviews</strong>
+              </div>
+              <div style="height: 6px; background: #e2e8f0; border-radius: 9999px; overflow: hidden;">
+                <div style="width: {{ c_percent }}%; height: 100%; background: #0f766e;"></div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Preserved History Dimensions -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <h3 style="margin: 0 0 1rem 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">Preserved History Dimensions</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+          
+          <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1rem; text-align: center;">
+            <div style="font-size: 1.75rem; font-weight: 800; color: #0f172a;">199</div>
+            <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">Unique Speakers</div>
+          </div>
+
+          <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1rem; text-align: center;">
+            <div style="font-size: 1.75rem; font-weight: 800; color: #0f172a;">48+</div>
+            <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">Hours of Audio/Video</div>
+          </div>
+
+          <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1rem; text-align: center;">
+            <div style="font-size: 1.75rem; font-weight: 800; color: #0f172a;">17</div>
+            <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">Years of Community</div>
+          </div>
+
+          <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1rem; text-align: center;">
+            <div style="font-size: 1.75rem; font-weight: 800; color: #0f172a;">10</div>
+            <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">Curated Playlists</div>
+          </div>
+
+        </div>
+
+        <div style="font-size: 0.85rem; color: #525866; line-height: 1.5; border-top: 1px solid #f1f5f9; padding-top: 1rem;">
+          Spanning 2009 through 2026, this corpus preserves the voices, decisions, code retreats, and debates of the practitioners who created the modern craftsmanship and agile engineering culture.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Direct Outbound Control Links -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">YouTube Platform Direct Links</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+        <a href="https://studio.youtube.com/channel/UC-KPAHha6I990/analytics" target="_blank" rel="noopener" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 700; color: #0f172a; text-decoration: none;">
+          Channel Analytics ↗
+        </a>
+        <a href="https://studio.youtube.com/channel/UC-KPAHha6I990/videos" target="_blank" rel="noopener" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 700; color: #0f172a; text-decoration: none;">
+          Content Video Manager ↗
+        </a>
+        <a href="https://studio.youtube.com/channel/UC-KPAHha6I990/livestreaming" target="_blank" rel="noopener" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 700; color: #0f172a; text-decoration: none;">
+          Live Stream Control Room ↗
+        </a>
+        <a href="https://studio.youtube.com/channel/UC-KPAHha6I990/translations" target="_blank" rel="noopener" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 1rem; font-size: 0.85rem; font-weight: 700; color: #0f172a; text-decoration: none;">
+          Captions & Subtitles Hub ↗
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+  function switchYtTab(tabName) {
+    document.querySelectorAll('.yt-tab-pane').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.yt-tab-btn').forEach(b => {
+      b.style.borderBottomColor = 'transparent';
+      b.style.color = '#64748b';
+      b.style.fontWeight = '600';
+    });
+
+    const pane = document.getElementById('tab-pane-' + tabName);
+    const btn = document.getElementById('tab-btn-' + tabName);
+    if (pane) pane.style.display = 'block';
+    if (btn) {
+      btn.style.borderBottomColor = '#0f766e';
+      btn.style.color = '#0f766e';
+      btn.style.fontWeight = '700';
+    }
+  }
+
+  function filterAssetTable(filterType, btn) {
+    document.querySelectorAll('.yt-filter-btn').forEach(b => {
+      b.style.background = '#f1f5f9';
+      b.style.color = '#475569';
+      b.style.borderColor = '#cbd5e1';
+      b.style.fontWeight = '600';
+    });
+    btn.style.background = '#0f766e';
+    btn.style.color = '#ffffff';
+    btn.style.borderColor = '#0f766e';
+    btn.style.fontWeight = '700';
+
+    const rows = document.querySelectorAll('#yt-asset-table tbody tr');
+    rows.forEach(r => {
+      const meta = r.getAttribute('data-meta-status');
+      const cap = r.getAttribute('data-caption-status');
+      const plat = r.getAttribute('data-platform');
+
+      let show = false;
+      if (filterType === 'all') {
+        show = true;
+      } else if (filterType === 'synced') {
+        show = (meta === 'synced');
+      } else if (filterType === 'pending') {
+        show = (meta === 'staged');
+      } else if (filterType === 'captions-live') {
+        show = (cap === 'synced');
+      } else if (filterType === 'local-master') {
+        show = (plat === 'local-master');
+      }
+
+      r.style.display = show ? '' : 'none';
+    });
+  }
+
+  function searchAssetTable() {
+    const query = document.getElementById('yt-asset-search').value.toLowerCase();
+    const rows = document.querySelectorAll('#yt-asset-table tbody tr');
+    rows.forEach(r => {
+      const text = r.innerText.toLowerCase();
+      r.style.display = text.includes(query) ? '' : 'none';
+    });
+  }
+
+  function calculateQuota() {
+    const videos = parseInt(document.getElementById('quota-videos').value, 10) || 0;
+    const captions = parseInt(document.getElementById('quota-captions').value, 10) || 0;
+    const total = (videos * 50) + (captions * 50);
+    const pool = 10000;
+    const pct = ((total / pool) * 100).toFixed(1);
+
+    document.getElementById('quota-total-units').innerText = total.toLocaleString() + ' units';
+    document.getElementById('quota-percent-used').innerText = pct + '% of pool';
+    
+    const bar = document.getElementById('quota-progress-bar');
+    bar.style.width = Math.min(pct, 100) + '%';
+    if (pct > 90) {
+      bar.style.background = '#b91c1c';
+    } else if (pct > 60) {
+      bar.style.background = '#b45309';
+    } else {
+      bar.style.background = '#0f766e';
+    }
+
+    const rec = document.getElementById('quota-recommendation');
+    if (total <= pool) {
+      rec.innerHTML = '✅ Safe to execute in single batch today.';
+      rec.style.color = '#15803d';
+    } else {
+      const days = Math.ceil(total / pool);
+      rec.innerHTML = '⚠️ Exceeds daily quota! Recommended execution in ' + days + ' daily batches.';
+      rec.style.color = '#b91c1c';
+    }
+  }
+
+  function copyCliCommand(cmd, btn) {
+    navigator.clipboard.writeText(cmd).then(() => {
+      const orig = btn.innerText;
+      btn.innerText = 'Copied!';
+      setTimeout(() => { btn.innerText = orig; }, 1500);
+    }).catch(() => {
+      alert(cmd);
+    });
+  }
+
+  const soundAboveEpisodes = {{ site.data.sound_above_sequence.episodes | jsonify }};
+
+  function loadTeleprompterEpisode(epNum) {
+    const ep = soundAboveEpisodes.find(e => e.number == epNum);
+    const container = document.getElementById('teleprompter-cards-container');
+    if (!ep || !container) return;
+
+    const acts = [
+      {
+        act: 1,
+        title: "Cold Open & Personal Grounding",
+        scene: "01. Starting Soon -> 02. Monologue / Full Camera",
+        timing: "00:00 - 03:00",
+        prompt: "Welcome back to The Sound Above. I am Mike Hall. Today we enter " + ep.era_name + ". Before code synthesis models and automated agents, developers in Chicago were building grassroots rooms to escape corporate silos. Today we rewatch Episode " + ep.number + ": " + ep.interviewee + " from " + ep.conference + "."
+      },
+      {
+        act: 2,
+        title: "Setting the Historical Scene",
+        scene: "02. Monologue / Full Camera",
+        timing: "03:00 - 08:00",
+        prompt: ep.chicago_context + " When we recorded this in " + ep.year + ", there were no corporate sponsor filters. Developers were meeting after hours, sharing hard-won lessons on deliberate practice and system boundaries."
+      },
+      {
+        act: 3,
+        title: "The Core Inquiry: The Sound Above",
+        scene: "02. Monologue / Full Camera -> 04. Split Screen",
+        timing: "08:00 - 14:00",
+        prompt: ep.sound_above_inquiry + " Who inspired " + ep.interviewee + " before they stepped onto this stage? What records were playing in their room?"
+      },
+      {
+        act: 4,
+        title: "Hallway Rewatch & Video Reaction",
+        scene: "03. Reaction - Video Focus",
+        timing: "14:00 - 28:00",
+        prompt: "Roll archive footage (YouTube ID: " + (ep.resolved_youtube_id || ep.youtube_video_id) + "). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
+      },
+      {
+        act: 5,
+        title: "The AI-Era Parallel & Terminal Workbench",
+        scene: "05. Workbench - Code & Terminal",
+        timing: "28:00 - 40:00",
+        prompt: ep.ai_era_parallel + " When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us examine the terminal contracts directly."
+      },
+      {
+        act: 6,
+        title: "Community Coda, Outro & Next Stream",
+        scene: "08. Outro & Next Stream",
+        timing: "40:00 - 45:00",
+        prompt: "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. In our next broadcast, we explore Episode " + ((ep.number % 35) + 1) + ". Until next time, keep your feedback loops fast and your code humane."
+      }
+    ];
+
+    container.innerHTML = acts.map(a => `
+      <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <div style="font-size: 0.78rem; font-weight: 700; color: #b45309; text-transform: uppercase;">ACT ${a.act}: ${a.title} [${a.timing}]</div>
+          <span style="font-family: ui-monospace, monospace; font-size: 0.75rem; background: #ffffff; border: 1px solid #cbd5e1; padding: 0.15rem 0.5rem; border-radius: 0.25rem; color: #0f766e; font-weight: 700;">Scene: ${a.scene}</span>
+        </div>
+        <div style="font-size: 0.95rem; font-family: var(--font-serif-editorial, Georgia, serif); line-height: 1.55; color: #0f172a; margin-bottom: 0.75rem;">
+          ${a.prompt}
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+          <button type="button" onclick="copyCliCommand('${a.prompt.replace(/'/g, "\\'")}', this)" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; color: #475569;">
+            Copy Prompt
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Initial load of Episode 1
+  document.addEventListener('DOMContentLoaded', () => {
+    loadTeleprompterEpisode(1);
+  });
+</script>

@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-13
+     CURRENT FOCUS - last updated 2026-10-14
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,17 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - YOUTUBE PUBLISHING PIPELINE, OPERATIONS COCKPIT & THE SOUND ABOVE TELEPROMPTER (2026-10-14):
+         Built unified YouTube publishing pipeline, operational overview dashboard, teleprompter rundowns, and funding architecture:
+         - Created unified pipeline orchestrator CLI `bin/youtube_pipeline.rb` supporting status, audit, telemetry, schedule, script, and quota commands.
+         - Integrated `youtube` and `youtube-pipeline` subcommands into `bin/pipeline`.
+         - Developed comprehensive Operations Dashboard at `youtube/dashboard.html` (`/youtube/dashboard/`, `/dashboard/youtube/`) with Craftsman tokens, multi-stage publication funnel, live search and filtering across 215 assets, 6-point best-practices auditor, interactive quota calculator, and direct control links.
+         - Built 6-act broadcast teleprompter and rundown generator `bin/generate_sound_above_teleprompter.rb` aligned directly with OBS scenes 01 to 08, embedded as an interactive studio widget in the dashboard.
+         - Structured `_data/publication_schedule.yml` connecting The Sound Above, Ramblin' & Amblin' field notes, and Errata broadcasts across a 4-week release arc.
+         - Authored comprehensive strategic roadmap `docs/the-sound-above-audience-and-funding-strategy.md` outlining the tri-format flywheel, 6-movement narrative progression, and sustainable funding channels (GitHub Sponsors, devtool underwriting, Staff+ advisory, and digital humanities grants).
+         - Maintained 100% em-dash-free compliance across all code, YAML datasets, and documentation. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (118/118 tests).
+
        - TIM OTTINGER INTERVIEW ENRICHMENT & SCMC RECONCILIATION (2026-10-13):
          Fixed and enriched Tim Ottinger interview page, transcript turns, and community attribution:
          - Reconstructed 56 natural alternating speaker turns across all 221 whisper subtitle blocks in `_data/transcripts/tim-ottinger-general.yml`.

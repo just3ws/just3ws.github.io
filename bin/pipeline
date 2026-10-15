@@ -7,7 +7,7 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | resumes | help
+  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | resumes | youtube | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
@@ -23,6 +23,7 @@ Commands:
   ci        Regenerate, build, test, and validate locally.
   verify    Build, test, and validate committed artifacts without regeneration.
   resumes   Regenerate PDF resumes to $HOME/Desktop/resumes.
+  youtube   Run YouTube publishing pipeline CLI (status, audit, telemetry, schedule).
   help      Show this help.
 USAGE
 }
@@ -66,6 +67,10 @@ case "${1:-help}" in
     ;;
   resumes|resume-pdfs)
     bundle exec rake resumes
+    ;;
+  youtube|youtube-pipeline)
+    shift
+    ruby bin/youtube_pipeline.rb "${@:-status}"
     ;;
   help|-h|--help)
     usage
