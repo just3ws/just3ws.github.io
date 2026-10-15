@@ -29,3 +29,13 @@ While headless scripts manage file data, creators need an intuitive visual studi
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Include episode dossiers in telemetry payload via bin/youtube_pipeline.rb.
+2. Build interactive Episode Workshop and Studio split-screen editor in youtube/dashboard.html.
+3. Provide live copy preview for 6-act teleprompter scripts, YouTube description, and copy-to-clipboard actions.
+4. Add RSpec tests in spec/youtube/youtube_pipeline_spec.rb covering the workshop studio.
+5. Verify 100% em-dash cleanliness and run all validation gates.
+<!-- SECTION:PLAN:END -->
