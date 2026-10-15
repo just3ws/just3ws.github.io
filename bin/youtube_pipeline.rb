@@ -34,6 +34,7 @@ OVERLAY_STATE_PATH = File.join(ROOT_DIR, 'obs', 'overlays', 'overlay-state.json'
 METADATA_SYNC_STATE_PATH = File.join(ROOT_DIR, 'tmp', 'youtube_metadata_sync_state.json')
 CAPTIONS_SYNC_STATE_PATH = File.join(ROOT_DIR, 'tmp', 'youtube_captions_sync_state.json')
 PUBLICATION_SCHEDULE_PATH = File.join(ROOT_DIR, '_data', 'publication_schedule.yml')
+EPISODES_DIR = File.join(ROOT_DIR, '_data', 'episodes')
 TELEMETRY_OUTPUT_PATH = File.join(ROOT_DIR, '_data', 'youtube_pipeline_telemetry.json')
 
 class YouTubePipeline
@@ -59,6 +60,8 @@ class YouTubePipeline
       print_schedule
     when 'script', 'teleprompter'
       run_teleprompter_script
+    when 'resequence'
+      run_resequence
     when 'quota'
       print_quota_assessment
     when 'help', '-h', '--help'
@@ -320,6 +323,12 @@ class YouTubePipeline
     pending_cap = [(@captions_manifest['items']&.size || 0) - @captions_sync.size, 0].max
     needed_quota = (pending_meta * COST_VIDEO_UPDATE) + (pending_cap * COST_CAPTION_INSERT)
 
+    episode_dossiers = []
+    Dir.glob(File.join(EPISODES_DIR, 'episode-*.yml')).sort.each do |f|
+      data = YAML.safe_load(File.read(f), permitted_classes: [Date, Time], aliases: true) rescue nil
+      episode_dossiers << data if data
+    end
+
     telemetry = {
       'generated_at' => Time.now.utc.iso8601,
       'channel' => {
@@ -350,6 +359,7 @@ class YouTubePipeline
       'publication_schedule' => @publication_schedule,
       'sound_above_sequence' => (@sequence_manifest['episodes'] || []).first(10),
       'errata_catalog' => (@errata_manifest['items'] || []).first(10),
+      'episode_dossiers' => episode_dossiers,
       'assets' => assets_payload
     }
 
@@ -423,6 +433,100 @@ class YouTubePipeline
     puts '=================================================================='
   end
 
+  def run_resequence
+    options = {}
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: bin/youtube_pipeline.rb resequence [options]'
+      opts.on('--shift DAYS', Integer, 'Shift unreleased schedule dates by N days') { |d| options[:shift] = d }
+      opts.on('--swap PAIR', 'Swap release dates of two episodes (e.g. 2,3)') { |pair| options[:swap] = pair.split(',').map(&:to_i) }
+      opts.on('--set SETTING', 'Set date for an episode (e.g. 2,2026-10-21)') { |pair| options[:set] = pair.split(',') }
+    end
+    parser.parse!(ARGV)
+
+    if options[:shift]
+      days = options[:shift]
+      count = 0
+      @publication_schedule['schedule']&.each do |week|
+        week['releases']&.each do |rel|
+          next if rel['status'] == 'published'
+          current_date = Date.parse(rel['date'].to_s) rescue nil
+          if current_date
+            new_date = (current_date + days).iso8601
+            rel['date'] = new_date
+            count += 1
+          end
+        end
+      end
+      File.write(PUBLICATION_SCHEDULE_PATH, YAML.dump(@publication_schedule))
+      puts "Successfully shifted #{count} future releases by #{days} days."
+    elsif options[:swap] && options[:swap].size == 2
+      ep_a, ep_b = options[:swap]
+      rel_a = nil
+      rel_b = nil
+      @publication_schedule['schedule']&.each do |week|
+        week['releases']&.each do |rel|
+          rel_a = rel if rel['episode'] == ep_a
+          rel_b = rel if rel['episode'] == ep_b
+        end
+      end
+      if rel_a && rel_b
+        date_a = rel_a['date']
+        date_b = rel_b['date']
+        rel_a['date'] = date_b
+        rel_b['date'] = date_a
+        File.write(PUBLICATION_SCHEDULE_PATH, YAML.dump(@publication_schedule))
+        puts "Successfully swapped dates between Episode #{ep_a} (#{date_b}) and Episode #{ep_b} (#{date_a})."
+      else
+        warn "Could not find both episodes #{ep_a} and #{ep_b} in publication schedule."
+        exit 1
+      end
+    elsif options[:set] && options[:set].size == 2
+      ep_num = options[:set][0].to_i
+      target_date = options[:set][1].to_s
+      found = false
+      @publication_schedule['schedule']&.each do |week|
+        week['releases']&.each do |rel|
+          if rel['episode'] == ep_num
+            rel['date'] = target_date
+            found = true
+          end
+        end
+      end
+      if found
+        File.write(PUBLICATION_SCHEDULE_PATH, YAML.dump(@publication_schedule))
+        puts "Successfully set Episode #{ep_num} date to #{target_date}."
+      else
+        warn "Episode #{ep_num} not found in publication schedule."
+        exit 1
+      end
+    else
+      warn "Please specify --shift DAYS, --swap A,B, or --set EP,DATE."
+      exit 1
+    end
+
+    sync_schedule_to_dossiers!
+    generate_telemetry
+  end
+
+  def sync_schedule_to_dossiers!
+    return unless File.directory?(EPISODES_DIR)
+    @publication_schedule['schedule']&.each do |week|
+      week['releases']&.each do |rel|
+        ep_num = rel['episode']
+        next unless ep_num
+        path = File.join(EPISODES_DIR, sprintf('episode-%02d.yml', ep_num))
+        if File.exist?(path)
+          dossier = YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true) rescue nil
+          if dossier
+            dossier['target_broadcast_date'] = rel['date']
+            dossier['status'] = rel['status'] if rel['status']
+            File.write(path, YAML.dump(dossier))
+          end
+        end
+      end
+    end
+  end
+
   def count_youtube_assets
     @assets.count do |a|
       (a['platforms'] || []).any? { |p| p['platform'] == 'youtube' && p['asset_id'] }
@@ -438,6 +542,7 @@ class YouTubePipeline
         audit       Run best practices audit across titles, descriptions, and chapters
         telemetry   Regenerate _data/youtube_pipeline_telemetry.json for dashboard
         schedule    List scheduled livestreams and cued broadcast topics
+        resequence  Resequence broadcast dates (--shift DAYS, --swap A,B, --set EP,DATE)
         quota       Assess Google Cloud quota budgeting and batch requirements
         help        Show this message
 

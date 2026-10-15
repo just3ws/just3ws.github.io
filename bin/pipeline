@@ -24,6 +24,7 @@ Commands:
   verify    Build, test, and validate committed artifacts without regeneration.
   resumes   Regenerate PDF resumes to $HOME/Desktop/resumes.
   youtube   Run YouTube publishing pipeline CLI (status, audit, telemetry, schedule).
+  episode   Run Episode Semantic Dossier & Workbench CLI (list, show, compile, validate, cue).
   help      Show this help.
 USAGE
 }
@@ -71,6 +72,10 @@ case "${1:-help}" in
   youtube|youtube-pipeline)
     shift
     ruby bin/youtube_pipeline.rb "${@:-status}"
+    ;;
+  episode|workbench|episode-workbench)
+    shift
+    ruby bin/episode_workbench.rb "${@:-list}"
     ;;
   help|-h|--help)
     usage

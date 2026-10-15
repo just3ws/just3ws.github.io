@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'json'
 require 'yaml'
+require 'open3'
 
 RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
   let(:root_dir) { File.expand_path('../..', __dir__) }
@@ -90,6 +91,8 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
       expect(telemetry).to have_key('publication_schedule')
       expect(telemetry).to have_key('sound_above_sequence')
       expect(telemetry).to have_key('errata_catalog')
+      expect(telemetry).to have_key('episode_dossiers')
+      expect(telemetry['episode_dossiers'].size).to eq(36)
       expect(telemetry).to have_key('assets')
     end
 
@@ -128,6 +131,19 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
       expect(content).to include('Sustainable Funding Channels for Independent Engineering Craft')
     end
 
+    it 'contains Episode Studio and Narrative Workshop controls' do
+      expect(content).to include('tab-btn-workshop')
+      expect(content).to include('tab-pane-workshop')
+      expect(content).to include('ws-input-title')
+      expect(content).to include('ws-input-theme')
+      expect(content).to include('ws-input-inquiry')
+      expect(content).to include('ws-input-parallel')
+      expect(content).to include('ws-story-act1')
+      expect(content).to include('ws-preview-pane-rundown')
+      expect(content).to include('ws-preview-pane-desc')
+      expect(content).to include('ws-preview-pane-yaml')
+    end
+
     it 'links to key YouTube and site control surfaces' do
       expect(content).to include('https://studio.youtube.com')
       expect(content).to include('https://www.youtube.com/@whoistechcmty')
@@ -156,6 +172,28 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
     it 'links directly to the YouTube Operations Cockpit' do
       expect(dashboard_content).to include('/youtube/dashboard/')
       expect(dashboard_content).to include('YouTube Publishing Cockpit')
+    end
+  end
+
+  describe 'Schedule Resequencer & Task Coordinator (TASK-289)' do
+    it 'classifies release milestones with human or autonomous executor' do
+      schedule = YAML.safe_load(File.read(schedule_path), permitted_classes: [Date, Time], aliases: true)
+      schedule['schedule'].each do |week|
+        week['releases'].each do |rel|
+          expect(rel).to have_key('executor')
+          expect(%w[human autonomous]).to include(rel['executor'])
+        end
+      end
+    end
+
+    it 'supports resequence --set command and syncs dates to episode dossiers' do
+      cmd = [cli_path, 'resequence', '--set', '2,2026-10-20']
+      stdout, stderr, status = Open3.capture3(*cmd)
+      expect(status.success?).to be true
+      expect(stdout).to include('Successfully set Episode 2 date to 2026-10-20')
+
+      ep2_dossier = YAML.safe_load(File.read(File.join(root_dir, '_data', 'episodes', 'episode-02.yml')), permitted_classes: [Date, Time], aliases: true)
+      expect(ep2_dossier['target_broadcast_date']).to eq('2026-10-20')
     end
   end
 end

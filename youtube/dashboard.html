@@ -98,6 +98,9 @@ body_class: page-youtube-dashboard
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('live')" id="tab-btn-live" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
       🎙️ Livestreaming & Scheduling Cockpit
     </button>
+    <button type="button" class="yt-tab-btn" onclick="switchYtTab('workshop')" id="tab-btn-workshop" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
+      🛠️ Episode Studio & Workshop
+    </button>
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('analytics')" id="tab-btn-analytics" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
       📈 YouTube Analytics & Corpus Intelligence
     </button>
@@ -528,8 +531,16 @@ body_class: page-youtube-dashboard
             Thematic Release Sequence & Media Pipeline
           </h3>
         </div>
-        <div style="font-size: 0.825rem; color: #64748b; font-weight: 600;">
-          Cadence: {{ site.data.publication_schedule.cadence | default: "Twice weekly" }}
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+          <div style="font-size: 0.825rem; color: #64748b; font-weight: 600;">
+            Cadence: {{ site.data.publication_schedule.cadence | default: "Twice weekly" }}
+          </div>
+          <button type="button" onclick="copyCliCommand('bin/youtube_pipeline.rb resequence --shift 7', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; color: #334155;">
+            +7d Shift
+          </button>
+          <button type="button" onclick="copyCliCommand('bin/youtube_pipeline.rb resequence --shift -7', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; color: #334155;">
+            -7d Shift
+          </button>
         </div>
       </div>
 
@@ -544,8 +555,15 @@ body_class: page-youtube-dashboard
               {% for rel in week.releases %}
                 <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.375rem; padding: 0.85rem; display: flex; flex-direction: column; justify-content: space-between;">
                   <div>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.35rem;">
-                      <span style="font-weight: 700; color: #64748b;">{{ rel.date }}</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; margin-bottom: 0.35rem;">
+                      <div style="display: flex; gap: 0.35rem; align-items: center;">
+                        {% if rel.executor == 'autonomous' %}
+                          <span style="background: #f1f5f9; color: #475569; font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.35rem; border-radius: 4px;">🤖 Auto</span>
+                        {% else %}
+                          <span style="background: rgba(15, 118, 110, 0.1); color: #0f766e; font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.35rem; border-radius: 4px;">👤 Human</span>
+                        {% endif %}
+                        <span style="font-weight: 700; color: #64748b;">{{ rel.date }}</span>
+                      </div>
                       {% if rel.status == 'published' %}
                         <span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 9999px;">Published</span>
                       {% elsif rel.status == 'cued' %}
@@ -587,6 +605,7 @@ body_class: page-youtube-dashboard
         <div style="display: flex; gap: 0.75rem; align-items: center;">
           <label for="teleprompter-ep-select" style="font-size: 0.8rem; font-weight: 700; color: #475569;">Select Episode:</label>
           <select id="teleprompter-ep-select" onchange="loadTeleprompterEpisode(this.value)" style="padding: 0.4rem 0.75rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #faf8f5;">
+            <option value="0">Ep 00: Pilot - The Mirage of Competence (Mike Hall)</option>
             {% for ep in site.data.sound_above_sequence.episodes %}
               <option value="{{ ep.number }}" {% if ep.number == 1 %}selected{% endif %}>
                 Ep {{ ep.number }}: {{ ep.interviewee }} ({{ ep.conference }})
@@ -617,33 +636,59 @@ body_class: page-youtube-dashboard
         </a>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
-        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem;">
-          <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">1. GitHub Sponsors & Patrons</div>
-          <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
-            Individual practitioner patrons supporting digital history preservation and unvarnished AI forensic experiments ($10 to $100/mo).
-          </p>
-          <a href="https://github.com/sponsors/just3ws" target="_blank" rel="noopener" style="display: inline-block; background: #24292f; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 0.25rem; text-decoration: none;">
-            Sponsor on GitHub ↗
-          </a>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <strong style="color: #0f172a; font-size: 0.95rem;">1. Patreon Membership & Community Underwriting</strong>
+              <span style="background: #fef3c7; color: #b45309; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">Primary</span>
+            </div>
+            <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
+              Independent practitioner underwriting for Whisper transcription compute, AI spectral diff tokens, and digital archive preservation ($7, $19, $97/mo).
+            </p>
+            <div style="margin-bottom: 0.75rem; border: 1px solid #e3dfd7; border-radius: 0.375rem; overflow: hidden; background: #ffffff;">
+              <img src="/assets/images/ugtastic-branding/creating-interviews-with-tech-community-leaders-preview.png" alt="UGtastic to WHOIS Tech Community" style="width: 100%; height: auto; display: block;" loading="lazy">
+              <div style="font-size: 0.68rem; color: #64748b; padding: 0.35rem 0.5rem; background: #faf8f5; border-top: 1px solid #eeebe3;">
+                Archival Provenance: UGtastic (2011) to WHOIS Tech Community (2026)
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <a href="https://patreon.com/whoistechcmty" target="_blank" rel="noopener" style="display: inline-block; background: #f96854; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 0.25rem; text-decoration: none;">
+              Join on Patreon ↗
+            </a>
+            <a href="https://github.com/sponsors/just3ws" target="_blank" rel="noopener" style="display: inline-block; background: #24292f; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 0.25rem; text-decoration: none;">
+              GitHub Sponsors ↗
+            </a>
+          </div>
         </div>
 
-        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem;">
-          <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">2. Developer Tool Underwriting</div>
-          <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
-            Episode sponsorship blocks ($500 to $1,500/ep) for devtool vendors aligning with craftsmanship, observability, and local AI.
-          </p>
-          <span style="display: inline-block; background: #e0e7ff; color: #4338ca; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 0.25rem;">
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.35rem; font-size: 0.95rem;">2. Developer Tool Underwriting</div>
+            <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
+              Episode sponsorship blocks ($500 to $1,500/ep) for devtool vendors aligning with craftsmanship, local-first computing, and deterministic verification.
+            </p>
+            <div style="font-size: 0.75rem; color: #64748b; margin-bottom: 0.75rem; line-height: 1.4;">
+              Includes 30s host-read segment in Act 6, lower-third overlay, and persistent description placement.
+            </div>
+          </div>
+          <span style="display: inline-block; background: #e0e7ff; color: #4338ca; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 0.25rem; text-align: center;">
             Movement Blocks: 4 Episodes
           </span>
         </div>
 
-        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem;">
-          <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.35rem;">3. Staff+ Inbound Advisory</div>
-          <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
-            High-leverage System Cartography audits, legacy codebase modernization, and AI orchestration safety governance for engineering organizations.
-          </p>
-          <a href="/case-studies/" style="display: inline-block; background: #0f766e; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 0.25rem; text-decoration: none;">
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.1rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="font-weight: 700; color: #0f172a; margin-bottom: 0.35rem; font-size: 0.95rem;">3. Staff+ Inbound Advisory</div>
+            <p style="font-size: 0.8rem; color: #475569; margin: 0 0 0.75rem 0; line-height: 1.45;">
+              High-leverage System Cartography audits, legacy codebase modernization, and AI orchestration safety governance for engineering organizations.
+            </p>
+            <div style="font-size: 0.75rem; color: #64748b; margin-bottom: 0.75rem; line-height: 1.4;">
+              Converts technical broadcast authority into direct principal-level engineering advisory contracts.
+            </div>
+          </div>
+          <a href="/case-studies/" style="display: inline-block; background: #0f766e; color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 0.25rem; text-decoration: none; text-align: center;">
             View Case Studies ↗
           </a>
         </div>
@@ -653,7 +698,239 @@ body_class: page-youtube-dashboard
   </section>
 
   <!-- ========================================================================= -->
-  <!-- TAB 4: YOUTUBE ANALYTICS & CORPUS INTELLIGENCE -->
+  <!-- TAB 4: EPISODE STUDIO & WORKSHOP -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-workshop" class="yt-tab-pane" style="display: none;">
+    
+    <!-- Workshop Header & Controls Toolbar -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem; margin-bottom: 1rem;">
+        <div>
+          <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+            🛠️ Headless Studio &amp; Dossier Workshop
+          </span>
+          <h2 style="margin: 0.4rem 0 0.2rem 0; font-size: 1.4rem; font-weight: 800; color: #0f172a;">
+            Episode Studio: Narrative Anatomy &amp; Live Copy Preview
+          </h2>
+          <p style="margin: 0; font-size: 0.85rem; color: #64748b;">
+            Decoupled semantic dossier editor. Workshop narrative plot, themes, human stories, and research attachments with real-time teleprompter preview.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+          <button type="button" onclick="cueWorkshopEpisodeInObs()" style="background: #0f766e; color: #ffffff; border: 1px solid #0f766e; border-radius: 0.375rem; padding: 0.45rem 0.85rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
+            🎬 Cue in OBS
+          </button>
+          <button type="button" onclick="copyWorkshopCopy('ws-preview-rundown-text', this)" style="background: #faf8f5; color: #1e232a; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.45rem 0.85rem; font-size: 0.825rem; font-weight: 600; cursor: pointer;">
+            📋 Copy Teleprompter
+          </button>
+          <button type="button" onclick="copyWorkshopCopy('ws-preview-desc-text', this)" style="background: #faf8f5; color: #1e232a; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.45rem 0.85rem; font-size: 0.825rem; font-weight: 600; cursor: pointer;">
+            📺 Copy Description
+          </button>
+          <button type="button" onclick="downloadYamlDossier()" style="background: #faf8f5; color: #1e232a; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.45rem 0.85rem; font-size: 0.825rem; font-weight: 600; cursor: pointer;">
+            💾 Download YAML Dossier
+          </button>
+        </div>
+      </div>
+
+      <!-- Episode Selector & Provenance Ribbon -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 0.75rem 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <label for="ws-episode-select" style="font-size: 0.825rem; font-weight: 700; color: #334155;">Active Episode:</label>
+          <select id="ws-episode-select" onchange="loadWorkshopEpisode(this.value)" style="padding: 0.4rem 0.75rem; font-size: 0.875rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #ffffff; font-weight: 600; color: #0f172a;">
+            <option value="0">Ep 00: Pilot - The Mirage of Competence (Mike Hall)</option>
+            {% for ep in site.data.sound_above_sequence.episodes %}
+              <option value="{{ ep.number }}" {% if ep.number == 1 %}selected{% endif %}>
+                Ep {{ ep.number }}: {{ ep.interviewee }} ({{ ep.conference }})
+              </option>
+            {% endfor %}
+          </select>
+          <span id="ws-movement-pill" style="font-size: 0.75rem; font-weight: 700; background: #fef3c7; color: #b45309; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+            The Chicago Crucible
+          </span>
+          <span id="ws-status-pill" style="font-size: 0.75rem; font-weight: 700; background: #dcfce7; color: #15803d; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+            Cued
+          </span>
+        </div>
+
+        <div style="display: flex; gap: 1rem; font-size: 0.8rem; color: #64748b;">
+          <span>Conference: <strong id="ws-conf-text" style="color: #0f172a;">SCNA 2011</strong></span>
+          <span>YouTube ID: <strong id="ws-ytid-text" style="font-family: ui-monospace, monospace; color: #0f766e;">eGXG7Qu4G1E</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Split-Screen Workspace: Left = Editor, Right = Live Preview -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 1.5rem; align-items: start;">
+      
+      <!-- ========================================== -->
+      <!-- LEFT COLUMN: SEMANTIC DOSSIER EDITOR       -->
+      <!-- ========================================== -->
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        
+        <!-- 1. Narrative Anatomy & Themes -->
+        <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+          <h4 style="margin: 0 0 0.85rem 0; font-size: 0.95rem; font-weight: 800; color: #0f766e; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem;">
+            1. Narrative Anatomy &amp; Thematic Tone
+          </h4>
+          
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Episode Title:</label>
+              <input type="text" id="ws-input-title" oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div>
+                <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Narrative Theme:</label>
+                <input type="text" id="ws-input-theme" oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Editorial Tone:</label>
+                <input type="text" id="ws-input-tone" oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem;">
+              </div>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Core Inquiry (The Sound Above Thesis):</label>
+              <textarea id="ws-input-inquiry" rows="3" oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem; font-family: inherit; line-height: 1.45;"></textarea>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Modern Echo &amp; AI-Era Parallel:</label>
+              <textarea id="ws-input-parallel" rows="3" oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem; font-family: inherit; line-height: 1.45;"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Human Marginalia & Host Story Workshop -->
+        <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem; margin-bottom: 0.85rem;">
+            <h4 style="margin: 0; font-size: 0.95rem; font-weight: 800; color: #b45309; text-transform: uppercase; letter-spacing: 0.05em;">
+              2. Human Marginalia &amp; Story Workshop
+            </h4>
+            <span style="font-size: 0.72rem; color: #64748b;">Injected directly into teleprompter acts</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Act 1 Cold Open Recollection:</label>
+              <textarea id="ws-story-act1" rows="2" placeholder="e.g. Walking into that first downtown meeting on a rainy Tuesday..." oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem; font-family: inherit;"></textarea>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Act 2 Historical Setting Observation:</label>
+              <textarea id="ws-story-act2" rows="2" placeholder="e.g. Before meetups were corporate recruiting events; developers paid for their own pizza..." oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem; font-family: inherit;"></textarea>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Act 5 Terminal Workbench &amp; AI-Era Story:</label>
+              <textarea id="ws-story-act5" rows="2" placeholder="e.g. Contrasting that early hunger for real code with today's generative AI copy-paste fatigue..." oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem; font-family: inherit;"></textarea>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Workshop Prompt Overrides (LLM Guidance):</label>
+              <input type="text" id="ws-input-prompts" placeholder="e.g. Sharpen contrast with vendor slide decks; ground critique in practitioner empathy" oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem;">
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Semantic Lexicon & Research Attachments -->
+        <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+          <h4 style="margin: 0 0 0.85rem 0; font-size: 0.95rem; font-weight: 800; color: #0f766e; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem;">
+            3. Lexicon &amp; Research Citations
+          </h4>
+
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Key Concepts (comma-separated):</label>
+              <input type="text" id="ws-input-concepts" oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 0.25rem;">Hashtags &amp; Tags:</label>
+              <input type="text" id="ws-input-hashtags" oninput="updateLivePreview()" style="width: 100%; box-sizing: border-box; padding: 0.45rem 0.65rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.25rem;">
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <label style="font-size: 0.75rem; font-weight: 700; color: #475569;">Research Attachments &amp; Links:</label>
+                <button type="button" onclick="addWorkshopAttachment()" style="background: #f1f5f9; border: 1px solid #cbd5e1; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 0.25rem; cursor: pointer;">
+                  + Add Link
+                </button>
+              </div>
+              <div id="ws-attachments-list" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- RIGHT COLUMN: LIVE COPY & SCRIPT PREVIEWER -->
+      <!-- ========================================== -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03); position: sticky; top: 1rem;">
+        
+        <!-- Preview Sub-Tabs -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e3dfd7; margin-bottom: 1rem; padding-bottom: 0.5rem;">
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" class="ws-subtab-btn" onclick="switchWorkshopSubtab('rundown')" id="ws-subtab-rundown" style="background: #0f766e; color: #ffffff; border: none; padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 700; border-radius: 0.25rem; cursor: pointer;">
+              📜 Teleprompter Rundown
+            </button>
+            <button type="button" class="ws-subtab-btn" onclick="switchWorkshopSubtab('desc')" id="ws-subtab-desc" style="background: #f1f5f9; color: #475569; border: none; padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 600; border-radius: 0.25rem; cursor: pointer;">
+              📺 YouTube Description
+            </button>
+            <button type="button" class="ws-subtab-btn" onclick="switchWorkshopSubtab('yaml')" id="ws-subtab-yaml" style="background: #f1f5f9; color: #475569; border: none; padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 600; border-radius: 0.25rem; cursor: pointer;">
+              📄 YAML Dossier
+            </button>
+          </div>
+          <span style="font-size: 0.72rem; color: #15803d; font-weight: 700;">● Live Reactive Compilation</span>
+        </div>
+
+        <!-- 1. Teleprompter Rundown Preview Pane -->
+        <div id="ws-preview-pane-rundown" class="ws-preview-pane" style="display: block;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <span style="font-size: 0.78rem; font-weight: 700; color: #64748b;">OBS Production Script (6 Acts)</span>
+            <button type="button" onclick="copyWorkshopCopy('ws-preview-rundown-text', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.2rem 0.5rem; font-size: 0.72rem; font-weight: 600; cursor: pointer;">
+              Copy Markdown
+            </button>
+          </div>
+          <div id="ws-preview-rundown-cards" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 65vh; overflow-y: auto; padding-right: 0.25rem;">
+            <!-- Generated live via updateLivePreview() -->
+          </div>
+          <div id="ws-preview-rundown-text" style="display: none;"></div>
+        </div>
+
+        <!-- 2. YouTube Description Preview Pane -->
+        <div id="ws-preview-pane-desc" class="ws-preview-pane" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.78rem; font-weight: 700; color: #64748b;">Staged YouTube Description</span>
+            <span id="ws-desc-char-meter" style="font-size: 0.75rem; font-weight: 700; color: #15803d;">0 / 5,000 chars</span>
+          </div>
+          <pre id="ws-preview-desc-text" style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.375rem; padding: 0.85rem; font-family: ui-monospace, monospace; font-size: 0.78rem; line-height: 1.45; color: #1e232a; max-height: 65vh; overflow-y: auto; white-space: pre-wrap; margin: 0;"></pre>
+        </div>
+
+        <!-- 3. YAML Dossier Preview Pane -->
+        <div id="ws-preview-pane-yaml" class="ws-preview-pane" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.78rem; font-weight: 700; color: #64748b;">Target Dossier: _data/episodes/episode-NN.yml</span>
+            <button type="button" onclick="copyWorkshopCopy('ws-preview-yaml-text', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.2rem 0.5rem; font-size: 0.72rem; font-weight: 600; cursor: pointer;">
+              Copy YAML
+            </button>
+          </div>
+          <pre id="ws-preview-yaml-text" style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.375rem; padding: 0.85rem; font-family: ui-monospace, monospace; font-size: 0.78rem; line-height: 1.45; color: #1e232a; max-height: 65vh; overflow-y: auto; white-space: pre-wrap; margin: 0;"></pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- TAB 5: YOUTUBE ANALYTICS & CORPUS INTELLIGENCE -->
   <!-- ========================================================================= -->
   <section id="tab-pane-analytics" class="yt-tab-pane" style="display: none;">
     
@@ -844,7 +1121,20 @@ body_class: page-youtube-dashboard
   const soundAboveEpisodes = {{ site.data.sound_above_sequence.episodes | jsonify }};
 
   function loadTeleprompterEpisode(epNum) {
-    const ep = soundAboveEpisodes.find(e => e.number == epNum);
+    let ep = soundAboveEpisodes.find(e => e.number == epNum);
+    if (!ep && epNum == 0) {
+      ep = {
+        number: 0,
+        interviewee: "Mike Hall",
+        conference: "Preparatory Pilot / Forensic Audio Experiment",
+        year: 2026,
+        era_name: "The AI Horizon",
+        chicago_context: "Echoes early Chicago craftsmanship: empirical, reproducible tests over vendor claims.",
+        sound_above_inquiry: "When AI models project effortless confidence, how does an engineer determine where competence ends and slop begins?",
+        resolved_youtube_id: "7YeFpKn5FbU",
+        ai_era_parallel: "Maintaining cognitive control over system boundaries rather than passively accepting synthetic code generation."
+      };
+    }
     const container = document.getElementById('teleprompter-cards-container');
     if (!ep || !container) return;
 
@@ -889,7 +1179,7 @@ body_class: page-youtube-dashboard
         title: "Community Coda, Outro & Next Stream",
         scene: "08. Outro & Next Stream",
         timing: "40:00 - 45:00",
-        prompt: "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. In our next broadcast, we explore Episode " + ((ep.number % 35) + 1) + ". Until next time, keep your feedback loops fast and your code humane."
+        prompt: "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode " + ((ep.number % 35) + 1) + ". Until next time, keep your feedback loops fast and your code humane."
       }
     ];
 
@@ -911,8 +1201,414 @@ body_class: page-youtube-dashboard
     `).join('');
   }
 
+  const episodeDossiers = {{ site.data.youtube_pipeline_telemetry.episode_dossiers | jsonify | default: "[]" }};
+  let currentWorkshopEp = 1;
+  let currentAttachments = [];
+
+  function loadWorkshopEpisode(epNum) {
+    currentWorkshopEp = parseInt(epNum, 10);
+    let baseEp = soundAboveEpisodes.find(e => e.number == currentWorkshopEp);
+    if (!baseEp && currentWorkshopEp === 0) {
+      baseEp = {
+        number: 0,
+        title: "The Mirage of Competence: AI Slop & Domain Boundaries",
+        interviewee: "Mike Hall",
+        conference: "Preparatory Pilot / Forensic Audio Experiment",
+        year: 2026,
+        location: "Crystal Lake / High-Tension Wires",
+        era_name: "The AI Horizon",
+        status: "scheduled",
+        resolved_youtube_id: "7YeFpKn5FbU",
+        sound_above_inquiry: "When AI models project effortless confidence, how does an engineer determine where competence ends and slop begins?",
+        ai_era_parallel: "Maintaining cognitive control over system boundaries rather than passively accepting synthetic code generation."
+      };
+    } else if (!baseEp) {
+      baseEp = {};
+    }
+    const dossier = episodeDossiers.find(d => d.episode == currentWorkshopEp) || {
+      episode: currentWorkshopEp,
+      title: baseEp.title || '',
+      interviewee: baseEp.interviewee || '',
+      conference: baseEp.conference || '',
+      year: baseEp.year || 2011,
+      era_name: baseEp.era_name || 'The Chicago Crucible',
+      status: baseEp.status || 'planned',
+      youtube_video_id: baseEp.resolved_youtube_id || baseEp.youtube_video_id || '',
+      narrative: {
+        theme: 'Software Craftsmanship & Deliberate Practice',
+        tone: 'Reflective, forensic, and empathetic with craftsman rigor',
+        topic: baseEp.title || '',
+        core_inquiry: baseEp.sound_above_inquiry || '',
+        ai_era_parallel: baseEp.ai_era_parallel || '',
+        chicago_context: baseEp.chicago_context || ''
+      },
+      lexicon: {
+        key_concepts: ['Software Craftsmanship', baseEp.era_name || 'The Chicago Crucible'],
+        trigger_words: [baseEp.interviewee ? baseEp.interviewee.split(' ').pop() : '', 'Craftsmanship'],
+        hashtags: ['#SoftwareCraftsmanship', '#TheSoundAbove', '#OralHistory']
+      },
+      human_marginalia: {
+        host_recollections: [],
+        workshop_prompts: ['Connect the historical lesson directly to 2026 engineering trade-offs.']
+      },
+      research_attachments: [
+        {
+          title: (baseEp.interviewee || 'Interviewee') + ' Archive Profile',
+          type: 'site_archive_page',
+          url: 'https://just3ws.com/interviews/' + (baseEp.slug || '') + '/'
+        }
+      ]
+    };
+
+    // Populate header ribbon
+    document.getElementById('ws-movement-pill').innerText = dossier.era_name || baseEp.era_name || 'The Chicago Crucible';
+    document.getElementById('ws-status-pill').innerText = (dossier.status || 'planned').toUpperCase();
+    document.getElementById('ws-conf-text').innerText = (dossier.conference || baseEp.conference) + ' (' + (dossier.year || baseEp.year) + ')';
+    document.getElementById('ws-ytid-text').innerText = dossier.youtube_video_id || baseEp.resolved_youtube_id || baseEp.youtube_video_id || 'Pending';
+
+    // Populate editor fields
+    document.getElementById('ws-input-title').value = dossier.title || baseEp.title || '';
+    document.getElementById('ws-input-theme').value = (dossier.narrative && dossier.narrative.theme) || '';
+    document.getElementById('ws-input-tone').value = (dossier.narrative && dossier.narrative.tone) || 'Reflective, forensic, and empathetic with craftsman rigor';
+    document.getElementById('ws-input-inquiry').value = (dossier.narrative && dossier.narrative.core_inquiry) || baseEp.sound_above_inquiry || '';
+    document.getElementById('ws-input-parallel').value = (dossier.narrative && dossier.narrative.ai_era_parallel) || baseEp.ai_era_parallel || '';
+
+    // Stories
+    const stories = (dossier.human_marginalia && dossier.human_marginalia.host_recollections) || [];
+    const s1 = stories.find(s => s.scene && (s.scene.includes('Act 1') || s.scene.includes('Cold Open')));
+    const s2 = stories.find(s => s.scene && (s.scene.includes('Act 2') || s.scene.includes('Setting')));
+    const s5 = stories.find(s => s.scene && (s.scene.includes('Act 5') || s.scene.includes('Workbench') || s.scene.includes('AI-Era')));
+    document.getElementById('ws-story-act1').value = s1 ? s1.story : '';
+    document.getElementById('ws-story-act2').value = s2 ? s2.story : '';
+    document.getElementById('ws-story-act5').value = s5 ? s5.story : '';
+
+    // Prompts
+    const prompts = (dossier.human_marginalia && dossier.human_marginalia.workshop_prompts) || [];
+    document.getElementById('ws-input-prompts').value = prompts.join('; ');
+
+    // Lexicon
+    const concepts = (dossier.lexicon && dossier.lexicon.key_concepts) || [];
+    document.getElementById('ws-input-concepts').value = concepts.join(', ');
+    const hashtags = (dossier.lexicon && dossier.lexicon.hashtags) || [];
+    document.getElementById('ws-input-hashtags').value = hashtags.join(' ');
+
+    // Attachments
+    currentAttachments = (dossier.research_attachments || []).map(a => Object.assign({}, a));
+    renderWorkshopAttachments();
+
+    // Trigger reactive compilation
+    updateLivePreview();
+  }
+
+  function renderWorkshopAttachments() {
+    const list = document.getElementById('ws-attachments-list');
+    if (!list) return;
+
+    if (currentAttachments.length === 0) {
+      list.innerHTML = '<div style="font-size: 0.75rem; color: #94a3b8; font-style: italic;">No research attachments linked yet. Click "+ Add Link" to add.</div>';
+      return;
+    }
+
+    list.innerHTML = currentAttachments.map((att, idx) => `
+      <div style="display: flex; gap: 0.5rem; align-items: center; background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.25rem; padding: 0.35rem 0.5rem; font-size: 0.75rem;">
+        <span style="font-weight: 700; color: #0f766e;">[${att.type || 'link'}]</span>
+        <span style="font-weight: 600; color: #0f172a; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${att.title}</span>
+        <a href="${att.url || att.path}" target="_blank" rel="noopener" style="color: #b45309; text-decoration: none; font-weight: 600;">Open ↗</a>
+        <button type="button" onclick="removeWorkshopAttachment(${idx})" style="background: none; border: none; color: #94a3b8; font-weight: bold; cursor: pointer; padding: 0 0.25rem;">✕</button>
+      </div>
+    `).join('');
+  }
+
+  function addWorkshopAttachment() {
+    const title = prompt('Enter Attachment Title (e.g. Willis Tower Badge Photo, Conference Slides, Paper Cite):');
+    if (!title) return;
+    const url = prompt('Enter URL or relative path (e.g. https://... or assets/img/...):');
+    if (!url) return;
+    const type = prompt('Enter Type (document, physical_artifact, transcript_cite, site_archive_page):', 'document') || 'document';
+
+    currentAttachments.push({ title: title.trim(), url: url.trim(), type: type.trim() });
+    renderWorkshopAttachments();
+    updateLivePreview();
+  }
+
+  function removeWorkshopAttachment(idx) {
+    currentAttachments.splice(idx, 1);
+    renderWorkshopAttachments();
+    updateLivePreview();
+  }
+
+  function switchWorkshopSubtab(subtab) {
+    document.querySelectorAll('.ws-preview-pane').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.ws-subtab-btn').forEach(b => {
+      b.style.background = '#f1f5f9';
+      b.style.color = '#475569';
+      b.style.fontWeight = '600';
+    });
+
+    const activePane = document.getElementById('ws-preview-pane-' + subtab);
+    const activeBtn = document.getElementById('ws-subtab-' + subtab);
+    if (activePane) activePane.style.display = 'block';
+    if (activeBtn) {
+      activeBtn.style.background = '#0f766e';
+      activeBtn.style.color = '#ffffff';
+      activeBtn.style.fontWeight = '700';
+    }
+  }
+
+  function updateLivePreview() {
+    let baseEp = soundAboveEpisodes.find(e => e.number == currentWorkshopEp);
+    if (!baseEp && currentWorkshopEp === 0) {
+      baseEp = {
+        number: 0,
+        title: "The Mirage of Competence: AI Slop & Domain Boundaries",
+        interviewee: "Mike Hall",
+        conference: "Preparatory Pilot / Forensic Audio Experiment",
+        year: 2026,
+        location: "Crystal Lake / High-Tension Wires",
+        era_name: "The AI Horizon",
+        status: "scheduled",
+        resolved_youtube_id: "7YeFpKn5FbU",
+        sound_above_inquiry: "When AI models project effortless confidence, how does an engineer determine where competence ends and slop begins?",
+        ai_era_parallel: "Maintaining cognitive control over system boundaries rather than passively accepting synthetic code generation."
+      };
+    } else if (!baseEp) {
+      baseEp = {};
+    }
+    const title = document.getElementById('ws-input-title').value || baseEp.title || '';
+    const theme = document.getElementById('ws-input-theme').value || 'Software Craftsmanship';
+    const inquiry = document.getElementById('ws-input-inquiry').value || baseEp.sound_above_inquiry || '';
+    const parallel = document.getElementById('ws-input-parallel').value || baseEp.ai_era_parallel || '';
+    const story1 = document.getElementById('ws-story-act1').value;
+    const story2 = document.getElementById('ws-story-act2').value;
+    const story5 = document.getElementById('ws-story-act5').value;
+    const prompts = document.getElementById('ws-input-prompts').value;
+    const concepts = document.getElementById('ws-input-concepts').value;
+    const hashtags = document.getElementById('ws-input-hashtags').value;
+
+    const interviewee = baseEp.interviewee || 'Speaker';
+    const conf = baseEp.conference || 'SCNA';
+    const year = baseEp.year || '2011';
+    const loc = baseEp.location || 'Chicago, IL';
+    const ytId = baseEp.resolved_youtube_id || baseEp.youtube_video_id || 'qOHdZKz1WFw';
+
+    // 1. Build Teleprompter Acts
+    let act1 = "Welcome back to The Sound Above. I am Mike Hall. Today we enter " + (baseEp.era_name || 'The Chicago Crucible') + ". Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode " + currentWorkshopEp + ": " + interviewee + " recorded at " + conf + ".";
+    if (story1.trim()) act1 += " [PERSONAL RECOLLECTION: " + story1.trim() + "]";
+
+    let act2 = (baseEp.chicago_context || '') + " When we recorded this in " + year + " at " + loc + ", practitioners were breaking out of vendor silos and defining the discipline for themselves.";
+    if (story2.trim()) act2 += " [SETTING RECOLLECTION: " + story2.trim() + "]";
+
+    let act3 = inquiry + " Who inspired " + interviewee + " before they stepped onto this stage? What records were playing in the background when this movement formed?";
+
+    let act4 = "Roll archive footage (YouTube ID: " + ytId + "). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software.";
+
+    let act5 = parallel + " When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us inspect the code contracts directly.";
+    if (story5.trim()) act5 += " [WORKBENCH STORY: " + story5.trim() + "]";
+    if (currentAttachments.length > 0) {
+      act5 += " Cited references: " + currentAttachments.map(a => a.title + " (" + (a.url || a.path) + ")").join('; ');
+    }
+
+    const nextEp = (currentWorkshopEp % 35) + 1;
+    let act6 = "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode " + nextEp + ". Until next time, keep your feedback loops fast and your code humane.";
+
+    const acts = [
+      { num: 1, title: 'Cold Open & Personal Grounding', scene: '01. Starting Soon -> 02. Monologue', timing: '00:00 - 03:00', text: act1 },
+      { num: 2, title: 'Setting the Historical Scene', scene: '02. Monologue / Full Camera', timing: '03:00 - 08:00', text: act2 },
+      { num: 3, title: 'The Core Inquiry: The Sound Above', scene: '02. Monologue -> 04. Split Screen', timing: '08:00 - 14:00', text: act3 },
+      { num: 4, title: 'Hallway Rewatch & Video Reaction', scene: '03. Reaction - Video Focus', timing: '14:00 - 28:00', text: act4 },
+      { num: 5, title: 'The AI-Era Parallel & Terminal Workbench', scene: '05. Workbench - Code & Terminal', timing: '28:00 - 40:00', text: act5 },
+      { num: 6, title: 'Community Coda, Outro & Next Stream', scene: '08. Outro & Next Stream', timing: '40:00 - 45:00', text: act6 }
+    ];
+
+    // Render rundown cards
+    const cardsContainer = document.getElementById('ws-preview-rundown-cards');
+    if (cardsContainer) {
+      cardsContainer.innerHTML = acts.map(a => `
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.375rem; padding: 0.85rem;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.35rem;">
+            <strong style="font-size: 0.75rem; color: #b45309; text-transform: uppercase;">ACT ${a.num}: ${a.title} [${a.timing}]</strong>
+            <span style="font-family: ui-monospace, monospace; font-size: 0.7rem; background: #ffffff; border: 1px solid #cbd5e1; padding: 0.1rem 0.4rem; border-radius: 0.2rem; color: #0f766e; font-weight: 700;">Scene: ${a.scene}</span>
+          </div>
+          <div style="font-size: 0.825rem; font-family: var(--font-serif-editorial, Georgia, serif); line-height: 1.5; color: #1e232a;">
+            ${a.text}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Markdown text representation
+    let md = "# Teleprompter Rundown: Episode " + currentWorkshopEp + "\n";
+    md += "## " + title + "\n";
+    md += "**Era:** " + (baseEp.era_name || '') + " | **Guest:** " + interviewee + " | **Provenance:** " + conf + " (" + year + ")\n\n";
+    md += "**Theme:** " + theme + "\n\n";
+    acts.forEach(a => {
+      md += "### Act " + a.num + ": " + a.title + " (" + a.timing + ")\n";
+      md += "*Target Scene:* `" + a.scene + "`\n";
+      md += a.text + "\n\n";
+    });
+    document.getElementById('ws-preview-rundown-text').innerText = md;
+
+    // 2. Build Staged YouTube Description
+    let desc = title + " | The Sound Above Ep " + currentWorkshopEp + "\n\n";
+    desc += "Live oral history rewatch and technical commentary with Mike Hall (Staff Software Engineer, UGtastic creator, and SCMC co-founder).\n\n";
+    desc += "THE SOUND ABOVE INQUIRY:\n" + inquiry + "\n\n";
+    desc += "THE 2026 AI-ERA PARALLEL:\n" + parallel + "\n\n";
+    desc += "CHAPTERS:\n";
+    desc += "00:00 - Cold Open & Personal Grounding\n";
+    desc += "03:00 - Setting the Historical Scene (" + conf + ", " + year + ")\n";
+    desc += "08:00 - Core Inquiry Thesis: The Sound Above\n";
+    desc += "14:00 - Archive Footage Rewatch (Guest: " + interviewee + ")\n";
+    desc += "28:00 - AI-Era Parallel & Terminal Workbench\n";
+    desc += "40:00 - Community Coda & Outro\n\n";
+    if (currentAttachments.length > 0) {
+      desc += "RESEARCH & PROVENANCE CITATIONS:\n";
+      currentAttachments.forEach(att => {
+        desc += "• " + att.title + ": " + (att.url || att.path) + "\n";
+      });
+      desc += "\n";
+    }
+    desc += "Interactive transcripts and companion analysis: https://www.just3ws.com/series/the-sound-above/\n";
+    desc += "Support independent compute, hosting, and oral history preservation on Patreon: https://patreon.com/whoistechcmty\n\n";
+    desc += (hashtags.trim() || "#SoftwareCraftsmanship #TheSoundAbove #OralHistory");
+
+    const descElem = document.getElementById('ws-preview-desc-text');
+    if (descElem) descElem.innerText = desc;
+
+    const charMeter = document.getElementById('ws-desc-char-meter');
+    if (charMeter) {
+      const len = desc.length;
+      charMeter.innerText = len + " / 5,000 chars";
+      charMeter.style.color = (len <= 5000) ? "#15803d" : "#b91c1c";
+    }
+
+    // 3. Build Raw YAML Dossier
+    const yamlObj = {
+      episode: currentWorkshopEp,
+      series: "The Sound Above",
+      title: title,
+      status: "workshop",
+      interviewee: interviewee,
+      conference: conf,
+      year: parseInt(year, 10),
+      location: loc,
+      slug: baseEp.slug || '',
+      era_id: baseEp.era_id || 'chicago-crucible',
+      era_name: baseEp.era_name || 'The Chicago Crucible',
+      youtube_broadcast_id: baseEp.youtube_broadcast_id || '',
+      youtube_video_id: ytId,
+      narrative: {
+        theme: theme,
+        tone: document.getElementById('ws-input-tone').value,
+        topic: title,
+        plot_arc: {
+          inciting_incident: "The technical context and friction in " + year,
+          rising_action: "The grassroots gathering or breakthrough hallway discussion",
+          climax: "The core insight or shift in engineering discipline",
+          resolution: "The lasting influence on software craft and practice"
+        },
+        core_inquiry: inquiry,
+        chicago_context: baseEp.chicago_context || '',
+        ai_era_parallel: parallel
+      },
+      lexicon: {
+        key_concepts: concepts.split(',').map(s => s.trim()).filter(Boolean),
+        trigger_words: [interviewee.split(' ').pop(), conf.split(' ')[0], 'Craftsmanship'],
+        hashtags: hashtags.split(' ').map(s => s.trim()).filter(Boolean)
+      },
+      human_marginalia: {
+        host_recollections: [
+          story1.trim() ? { scene: "Act 1: Cold Open", story: story1.trim() } : null,
+          story2.trim() ? { scene: "Act 2: Setting the Historical Scene", story: story2.trim() } : null,
+          story5.trim() ? { scene: "Act 5: Terminal Workbench", story: story5.trim() } : null
+        ].filter(Boolean),
+        workshop_prompts: prompts.split(';').map(s => s.trim()).filter(Boolean)
+      },
+      research_attachments: currentAttachments,
+      workflow_tasks: {
+        autonomous: [
+          { task: "Whisper transcript alignment", status: "done" },
+          { task: "Staged metadata generation", status: "done" },
+          { task: "YouTube caption synchronization", status: "pending" }
+        ],
+        human: [
+          { task: "Workshop personal recollections", status: "done" },
+          { task: "Pre-broadcast OBS audio rehearsal", status: "pending" },
+          { task: "Live rewatch broadcast", status: "pending" }
+        ]
+      }
+    };
+
+    // Serialize basic YAML
+    let yamlStr = "---\n";
+    yamlStr += "episode: " + yamlObj.episode + "\n";
+    yamlStr += "series: \"" + yamlObj.series + "\"\n";
+    yamlStr += "title: \"" + yamlObj.title.replace(/"/g, '\\"') + "\"\n";
+    yamlStr += "status: \"" + yamlObj.status + "\"\n";
+    yamlStr += "interviewee: \"" + yamlObj.interviewee + "\"\n";
+    yamlStr += "conference: \"" + yamlObj.conference + "\"\n";
+    yamlStr += "year: " + yamlObj.year + "\n";
+    yamlStr += "location: \"" + yamlObj.location + "\"\n";
+    yamlStr += "slug: \"" + yamlObj.slug + "\"\n";
+    yamlStr += "era_name: \"" + yamlObj.era_name + "\"\n";
+    yamlStr += "narrative:\n";
+    yamlStr += "  theme: \"" + yamlObj.narrative.theme.replace(/"/g, '\\"') + "\"\n";
+    yamlStr += "  tone: \"" + yamlObj.narrative.tone.replace(/"/g, '\\"') + "\"\n";
+    yamlStr += "  core_inquiry: >-\n    " + yamlObj.narrative.core_inquiry.replace(/\n/g, '\n    ') + "\n";
+    yamlStr += "  ai_era_parallel: >-\n    " + yamlObj.narrative.ai_era_parallel.replace(/\n/g, '\n    ') + "\n";
+    yamlStr += "human_marginalia:\n";
+    yamlStr += "  host_recollections:\n";
+    yamlObj.human_marginalia.host_recollections.forEach(hr => {
+      yamlStr += "    - scene: \"" + hr.scene + "\"\n      story: \"" + hr.story.replace(/"/g, '\\"') + "\"\n";
+    });
+    yamlStr += "research_attachments:\n";
+    yamlObj.research_attachments.forEach(ra => {
+      yamlStr += "  - title: \"" + ra.title.replace(/"/g, '\\"') + "\"\n    type: \"" + ra.type + "\"\n    url: \"" + (ra.url || ra.path) + "\"\n";
+    });
+
+    const yamlElem = document.getElementById('ws-preview-yaml-text');
+    if (yamlElem) yamlElem.innerText = yamlStr;
+  }
+
+  function downloadYamlDossier() {
+    const yamlText = document.getElementById('ws-preview-yaml-text').innerText;
+    const formattedNum = String(currentWorkshopEp).padStart(2, '0');
+    const filename = "episode-" + formattedNum + ".yml";
+    const blob = new Blob([yamlText], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function cueWorkshopEpisodeInObs() {
+    const cmd = "bin/broadcast cue --rewatch " + currentWorkshopEp;
+    navigator.clipboard.writeText(cmd).then(() => {
+      alert("✅ Episode " + currentWorkshopEp + " cue command copied to clipboard:\n\n" + cmd + "\n\nRun this in terminal to update live OBS overlays!");
+    }).catch(() => {
+      alert(cmd);
+    });
+  }
+
+  function copyWorkshopCopy(elementId, btn) {
+    const elem = document.getElementById(elementId);
+    if (!elem) return;
+    const text = elem.innerText || elem.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.innerText;
+      btn.innerText = 'Copied!';
+      setTimeout(() => { btn.innerText = orig; }, 1500);
+    }).catch(() => {
+      alert(text);
+    });
+  }
+
   // Initial load of Episode 1
   document.addEventListener('DOMContentLoaded', () => {
     loadTeleprompterEpisode(1);
+    loadWorkshopEpisode(1);
   });
 </script>

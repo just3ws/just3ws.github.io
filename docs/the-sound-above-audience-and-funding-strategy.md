@@ -134,13 +134,30 @@ The interactive web dashboard at `https://www.just3ws.localhost/youtube/dashboar
 
 To fund ongoing research, compute tokens, audio instrumentation, and archival preservation, the project leverages four complementary revenue streams suited to independent engineering craft:
 
-### Stream 1: GitHub Sponsors & Individual Patrons
-- **Platform**: [github.com/sponsors/just3ws](https://github.com/sponsors/just3ws)
-- **Positioning**: Digital preservation of technical oral history and independent, unvarnished forensic AI evaluation.
-- **Tiers**:
-  * **Practitioner Supporter ($10/month)**: Access to behind-the-scenes research notebooks and early transcripts.
-  * **Craftsmanship Patron ($25/month)**: Named attribution on the live broadcast stream outro card and in video descriptions.
-  * **Archival Research Sponsor ($100/month)**: Topic inquiry voting for Errata solo broadcasts and direct research consultation.
+### Stream 1: Patreon Membership & Community Underwriting
+- **Primary Membership Hub**: [patreon.com/whoistechcmty](https://patreon.com/whoistechcmty) (WHOIS Tech Community)
+- **Secondary Developer Portal**: [github.com/sponsors/just3ws](https://github.com/sponsors/just3ws)
+- **The Historical Provenance**:
+  The archive originated in 2011 as UGtastic, documenting grassroots leaders across Chicago Alt.NET, SCNA, GOTO, and RailsConf. It later matured into WHOIS Tech Community:
+
+  ![Creating Interviews with Tech Community Leaders](/assets/images/ugtastic-branding/creating-interviews-with-tech-community-leaders-preview.png)
+
+- **Audience Reality & Demographics**:
+  The audience for The Sound Above and Errata is not comprised of junior bootcamp learners looking for interview hacks. It is composed of Staff+ software engineers, systems architects, and community organizers. These engineers do not purchase merch or subscription badges; they invest in preserving unvarnished engineering history and independent forensic AI research that resists vendor marketing.
+
+- **Economic Reality of Sovereign Production**:
+  Maintaining sovereign audio transcription (Whisper), AI model tokens for spectral diffing and verification, high-availability Jekyll hosting, and professional recording gear requires real cash flow. Setting transparent patron tiers establishes a sustainable foundation without creating unsustainable content treadmill pressure.
+
+- **Calibrated Patron Tiers**:
+  1. **Archive Preservationist ($7/month)**
+     - *Purpose*: Directly underwrites raw compute costs, API token consumption, Whisper transcription runs, and static site hosting.
+     - *Deliverables*: Closing credits on broadcast outro cards; access to uncompressed WebVTT files, raw transcript JSONL datasets, and semantic YAML dossiers before YouTube staging.
+  2. **Workbench Craftsman ($19/month)**
+     - *Purpose*: Funds physical audio instrumentation, experimental audio DSP filters, and sovereign workstation tooling.
+     - *Deliverables*: Behind-the-scenes engineering marginalia (OBS RNNoise configurations, Python DSP notch filter scripts, spectral waterfalls); downloadable teleprompter rundowns; quarterly technical salon on system cartography and unbraiding legacy monoliths.
+  3. **Engineering Patron / Institutional Underwriter ($97/month)**
+     - *Purpose*: Underwrites complete 6-movement broadcast arcs and long-term digital humanities preservation.
+     - *Deliverables*: Named broadcast sponsorship credit in Act 6 ("Broadcast underwritten by the patrons of WHOIS Tech Community"); quarterly 45-minute 1-on-1 advisory session on system cartography, legacy modernization, or Staff+ career architecture; corporate learning budget reimbursement documentation.
 
 ### Stream 2: Developer Tool & Infrastructure Underwriting
 - **Target Partners**: Developer-focused companies whose products align with craft, local-first computing, developer ergonomics, and observability (e.g. OpenObserve, Sentry, Tailscale, Zed, JetBrains, local AI workstation providers).
@@ -154,7 +171,7 @@ To fund ongoing research, compute tokens, audio instrumentation, and archival pr
 - **Nature**: Using the YouTube broadcast series as top-of-funnel inbound authority.
 - **Offerings**:
   * **System Cartography Audits**: 2-week deep forensic mapping of legacy codebases, unbraiding technical debt, and defining bounded contexts.
-  * **AI Orchestration & Verification Governance**: Helping engineering organizations implement deterministic verification gates to prevent "AI slop" from degrading production repositories.
+  * **AI Orchestration & Verification Governance**: Helping engineering organizations implement deterministic verification gates to prevent synthetic code degradation.
   * **Apprenticeship & Senior Engineering Culture Advisory**: Modernizing internal developer practices based on the 17-year craftsmanship lineage.
 
 ### Stream 4: Digital Humanities & Open-Source Grants
