@@ -58,8 +58,8 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
     it 'supports validate command and passes cleanly' do
       stdout, stderr, status = Open3.capture3(workbench_bin, 'validate')
       expect(status.success?).to be true
-      expect(stdout).to include('[PASS] 100% em-dash clean across all 36 episode dossiers.')
-      expect(stdout).to include('[PASS] All 36 episode dossiers conform to semantic schema.')
+      expect(stdout).to include('[PASS] 100% em-dash clean across all 38 episode dossiers.')
+      expect(stdout).to include('[PASS] All 38 episode dossiers conform to semantic schema.')
     end
 
     it 'supports compile for Episode 0 (Pilot) with personal marginalia' do
@@ -82,13 +82,20 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
       expect(status.success?).to be true
       expect(stdout).to include('WORKSHOP REGENERATED: EPISODE 1 TELEPROMPTER RUNDOWN')
     end
+
+    it 'supports stage command to verify episode in staging mode' do
+      stdout, stderr, status = Open3.capture3(workbench_bin, 'stage', '0')
+      expect(status.success?).to be true
+      expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 0')
+      expect(stdout).to include('STAGING VERIFIED (READY TO BROADCAST)')
+    end
   end
 
   describe 'Dossier Schema & Invariants' do
     let(:dossier_files) { Dir.glob(File.join(episodes_dir, 'episode-*.yml')).sort }
 
-    it 'has 36 episodes scaffolded (pilot episode 00 and episodes 01 to 35)' do
-      expect(dossier_files.size).to eq(36)
+    it 'has 38 episodes scaffolded (pilot episode 00, 35 rewatches, and 2 codas)' do
+      expect(dossier_files.size).to eq(38)
     end
 
     it 'contains required fields across all dossiers' do

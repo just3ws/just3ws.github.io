@@ -92,7 +92,7 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
       expect(telemetry).to have_key('sound_above_sequence')
       expect(telemetry).to have_key('errata_catalog')
       expect(telemetry).to have_key('episode_dossiers')
-      expect(telemetry['episode_dossiers'].size).to eq(36)
+      expect(telemetry['episode_dossiers'].size).to eq(38)
       expect(telemetry).to have_key('assets')
     end
 

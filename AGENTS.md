@@ -11,18 +11,15 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - EPISODE WORKBENCH, STUDIO WORKSHOP, SCHEDULE RESEQUENCER & PATREON INTEGRATION (2026-10-14):
-         Built end-to-end decoupled Episode Workbench, Visual Studio, modular template workshopping engine, and funding architecture:
-         - Scaffolded and validated 36 episode semantic dossiers (`_data/episodes/episode-00.yml` through `episode-35.yml`) containing narrative anatomy, trigger lexicon, human marginalia (host recollections and workshop prompts), research attachments, and workflow tasks (TASK-287).
-         - Built standalone Episode Workbench CLI `bin/episode_workbench.rb` supporting list, show, init, compile, validate, cue, and workshop commands; integrated into `bin/pipeline episode` (TASK-287, TASK-290).
-         - Implemented modular ERB template engine under `bin/templates/teleprompter/` for 6-act teleprompter scripts with seamless fallbacks and Patreon archive callouts (TASK-290).
-         - Built dual-pane visual Episode Studio tab in `youtube/dashboard.html` with reactive live teleprompter preview, staged YouTube description with character counter, and raw YAML export (TASK-288).
-         - Added interactive release resequencer to `bin/youtube_pipeline.rb` supporting `--shift`, `--swap`, and `--set`, with executor classification (`👤 Human` vs `🤖 Auto`) and calendar badges (TASK-289).
-         - Integrated upcoming live pilot broadcast (Episode 00: "The Mirage of Competence: AI Slop & Domain Boundaries", `XS7EZ1eWH4U`, date 2026-10-18) into schedule, teleprompter, and studio dropdowns.
-         - Integrated Patreon community archive membership (`https://patreon.com/whoistechcmty`) with 3 calibrated tiers ($7, $19, $97/mo) across strategy documentation, teleprompter Act 6 outro, dashboard Funding Hub, and description generator.
-         - Incorporated recovered historical banner `assets/images/ugtastic-branding/creating-interviews-with-tech-community-leaders-preview.png` illustrating 15-year continuity from UGtastic to WHOIS Tech Community.
-         - Maintained 100% em-dash-free compliance across all code, YAML datasets, and documentation. All validation gates passing cleanly:
-           validate:fast, validate:obs (46/46 assertions), and rspec (134/134 tests).
+       - 37-EPISODE PRIME CURRICULUM, STAGING HARNESS, PATREON PIPELINE & WORKBENCH (2026-10-15):
+         Synthesized and verified the complete 37-episode prime number curriculum and end-to-end publishing pipeline:
+         - Completed full 38-dossier corpus (`_data/episodes/episode-00.yml` through `episode-37.yml`), incorporating Coda 1 (Episode 36: "Without zdots, There Was Nothing") and Coda 2 (Episode 37: "The Sound Above Roundtable") alongside the 35 oral history rewatches and preparatory pilot (Episode 00).
+         - Built end-to-end non-destructive Staging and Rehearsal Workflow Harness `bin/stage_episode_workflow.rb` (`bin/pipeline stage`), verifying all 38 episodes cleanly across 7 gates (schema, em-dash audit, YouTube title/desc character budgets, transcript parity, OBS overlay state, 6-act teleprompter compilation, quota simulation, and patron credits).
+         - Built Patreon API v2 client and credit automation CLI `bin/patreon_pipeline.rb` (`bin/pipeline patreon`) with live JSON:API integration and local sandbox fallback, tracking monthly compute funds and formatting outro attribution.
+         - Created dedicated agent skill `.agents/skills/patreon-integrator/SKILL.md` and updated `.agents/skills/oral-history-broadcaster/SKILL.md` with the 37-episode prime sequence and staging harness workflows.
+         - Calibrated titles for Episodes 13 and 28 to strictly respect YouTube's 100-character limit with episode suffix.
+         - Maintained 100% em-dash-free compliance across all code, YAML datasets, JSON, and documentation. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (147/147 tests).
 
        - YOUTUBE PUBLISHING PIPELINE, OPERATIONS COCKPIT & THE SOUND ABOVE TELEPROMPTER (2026-10-14):
          Built unified YouTube publishing pipeline, operational overview dashboard, teleprompter rundowns, and funding architecture:

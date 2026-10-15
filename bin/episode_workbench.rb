@@ -45,6 +45,8 @@ class EpisodeWorkbench
       validate_dossiers
     when 'workshop'
       workshop_episode(args)
+    when 'stage', 'rehearse'
+      stage_episode(args)
     when 'cue'
       cue_episode(args.first)
     when 'help', '--help', '-h'
@@ -113,10 +115,40 @@ class EpisodeWorkbench
              "#{stories_count} note#{stories_count == 1 ? '' : 's'}",
              "#{attach_count} link#{attach_count == 1 ? '' : 's'}"
     end
+
+    codas = @sequence_data['codas'] || []
+    codas.each_with_index do |coda, idx|
+      num = 35 + idx + 1
+      dossier = load_dossier(num)
+      status = dossier ? dossier['status'] : coda['status'] || 'planned'
+      stories_count = dossier && dossier.dig('human_marginalia', 'host_recollections') ? dossier['human_marginalia']['host_recollections'].size : 0
+      attach_count = dossier && dossier['research_attachments'] ? dossier['research_attachments'].size : 0
+
+      interviewee = coda['interviewee'].to_s[0..22]
+      conf = "#{coda['conference']} (#{coda['year']})"[0..26]
+
+      status_badge = case status
+                     when 'published' then '[PUB]'
+                     when 'cued' then '[CUED]'
+                     when 'scheduled' then '[SCHED]'
+                     when 'workshop' then '[WORK]'
+                     else '[PLAN]'
+                     end
+
+      printf "%02d   %-24s %-28s %-10s %-8s %s\n",
+             num,
+             interviewee,
+             conf,
+             status_badge,
+             "#{stories_count} note#{stories_count == 1 ? '' : 's'}",
+             "#{attach_count} link#{attach_count == 1 ? '' : 's'}"
+    end
     puts '=================================================================='
-    puts "Total: #{episodes.size} episodes across 6 historical movements."
+    total_numbered = episodes.size + codas.size
+    puts "Total: #{total_numbered} numbered curriculum episodes (prime number 37: #{episodes.size} rewatches + #{codas.size} codas) plus Episode 00 pilot."
     puts "Run `bin/episode_workbench.rb show <ep>` to inspect an episode dossier."
     puts "Run `bin/episode_workbench.rb compile <ep>` to generate a teleprompter rundown."
+    puts "Run `bin/episode_workbench.rb stage <ep>` to verify in staging mode."
     puts '=================================================================='
   end
 
@@ -354,6 +386,12 @@ class EpisodeWorkbench
     output_text_rundown(rundown)
   end
 
+  # Exercises the staging and rehearsal workflow for an episode
+  def stage_episode(args)
+    require_relative 'stage_episode_workflow'
+    StageEpisodeWorkflow.new.run(args)
+  end
+
   private
 
   def load_sequence
@@ -524,7 +562,7 @@ class EpisodeWorkbench
       act5_default += " Cited references: " + attachments.map { |a| "#{a['title']} (#{a['url'] || a['path']})" }.join('; ')
     end
 
-    next_num = (ep_num % 35) + 1
+    next_num = (ep_num % 37) + 1
     act6_default = "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode #{next_num}. Until next time, keep your feedback loops fast and your code humane."
 
     b = binding
@@ -646,12 +684,13 @@ class EpisodeWorkbench
       Usage: bin/episode_workbench.rb <command> [options]
 
       Commands:
-        list        List all 35 episodes with narrative completeness and story counts
+        list        List all curriculum episodes with narrative completeness and story counts
         show <N>    Display semantic dossier for episode N
         compile <N> Compile 6-act teleprompter script (--markdown, --json)
         workshop <N> Workshop episode prompts and regenerate copy (--prompt "...")
+        stage <N>   Exercise end-to-end publishing pipeline in non-destructive staging mode
         init        Scaffold missing episode dossiers from sequence manifest
-        validate    Validate all 35 dossiers against schema and zero em-dash rules
+        validate    Validate all dossiers against schema and zero em-dash rules
         cue <N>     Cue episode into live OBS overlay state
         help        Show this message
     HELP

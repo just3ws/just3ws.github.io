@@ -77,6 +77,14 @@ case "${1:-help}" in
     shift
     ruby bin/episode_workbench.rb "${@:-list}"
     ;;
+  patreon|patreon-pipeline)
+    shift
+    ruby bin/patreon_pipeline.rb "${@:-status}"
+    ;;
+  stage|rehearse)
+    shift
+    ruby bin/stage_episode_workflow.rb "${@:---all}"
+    ;;
   help|-h|--help)
     usage
     ;;
