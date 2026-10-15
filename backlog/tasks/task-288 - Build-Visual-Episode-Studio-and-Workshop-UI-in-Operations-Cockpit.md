@@ -1,0 +1,29 @@
+---
+id: TASK-288
+title: Build Visual Episode Studio and Workshop UI in Operations Cockpit
+status: To Do
+assignee: []
+created_date: '2026-10-15 01:45'
+labels: []
+dependencies:
+  - TASK-287
+---
+
+## Description
+
+<!-- SECTION:DESCRIPTION:BEGIN -->
+While headless scripts manage file data, creators need an intuitive visual studio to workshop episode narrative arcs, preview script copy, edit host recollections, and attach research links without manually editing raw YAML files.
+<!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Embed interactive Episode Workshop tab into youtube/dashboard.html with split-screen editor and script previewer
+- [ ] #2 Provide dedicated input sections for plot, theme, tone, key concepts, human story marginalia, and research attachments
+- [ ] #3 Provide live copy preview of the compiled 6-act teleprompter script and YouTube description
+- [ ] #4 Support direct export of modified episode dossier to local files and clipboard
+<!-- AC:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 AC criteria is completed and the change has been verified
+<!-- DOD:END -->
