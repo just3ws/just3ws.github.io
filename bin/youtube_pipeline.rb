@@ -34,6 +34,7 @@ OVERLAY_STATE_PATH = File.join(ROOT_DIR, 'obs', 'overlays', 'overlay-state.json'
 METADATA_SYNC_STATE_PATH = File.join(ROOT_DIR, 'tmp', 'youtube_metadata_sync_state.json')
 CAPTIONS_SYNC_STATE_PATH = File.join(ROOT_DIR, 'tmp', 'youtube_captions_sync_state.json')
 PUBLICATION_SCHEDULE_PATH = File.join(ROOT_DIR, '_data', 'publication_schedule.yml')
+MEDIA_INTAKE_TARGETS_PATH = File.join(ROOT_DIR, '_data', 'media_intake_targets.yml')
 EPISODES_DIR = File.join(ROOT_DIR, '_data', 'episodes')
 TELEMETRY_OUTPUT_PATH = File.join(ROOT_DIR, '_data', 'youtube_pipeline_telemetry.json')
 
@@ -360,6 +361,7 @@ class YouTubePipeline
       'sound_above_sequence' => (@sequence_manifest['episodes'] || []).first(10),
       'errata_catalog' => (@errata_manifest['items'] || []).first(10),
       'episode_dossiers' => episode_dossiers,
+      'media_intake' => compile_media_intake_telemetry,
       'assets' => assets_payload
     }
 
@@ -531,6 +533,43 @@ class YouTubePipeline
     @assets.count do |a|
       (a['platforms'] || []).any? { |p| p['platform'] == 'youtube' && p['asset_id'] }
     end
+  end
+
+  def compile_media_intake_telemetry
+    return {} unless File.exist?(MEDIA_INTAKE_TARGETS_PATH)
+    config = YAML.safe_load(File.read(MEDIA_INTAKE_TARGETS_PATH)) rescue {}
+    base_p = config['base_path']
+    channel = 'whoistechcmty'
+    targets = config.dig('channels', channel, 'targets') || {}
+
+    target_stats = {}
+    targets.each do |target_name, target_info|
+      target_dir = File.join(base_p, channel, target_name)
+      pending_files = Dir.glob(File.join(target_dir, 'pending', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+      processing_files = Dir.glob(File.join(target_dir, 'processing', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+      processed_count = Dir.glob(File.join(target_dir, 'processed', '**', '*')).count { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+      failed_files = Dir.glob(File.join(target_dir, 'failed', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+
+      target_stats[target_name] = {
+        'series_name' => target_info['series_name'],
+        'playlist_id' => target_info['playlist_id'],
+        'default_privacy' => target_info['default_privacy'],
+        'pending_count' => pending_files.size,
+        'pending_items' => pending_files.map { |f| { 'filename' => File.basename(f), 'size_bytes' => File.size(f) } },
+        'processing_count' => processing_files.size,
+        'processing_items' => processing_files.map { |f| { 'filename' => File.basename(f) } },
+        'processed_count' => processed_count,
+        'failed_count' => failed_files.size
+      }
+    end
+
+    {
+      'base_path' => base_p,
+      'channel' => channel,
+      'targets' => target_stats,
+      'bpmn_spec_path' => 'docs/bpmn/media-intake-pipeline.bpmn',
+      'slo_spec_path' => 'docs/bpmn/README.md'
+    }
   end
 
   def print_help

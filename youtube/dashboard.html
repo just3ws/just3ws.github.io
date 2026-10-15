@@ -104,6 +104,9 @@ body_class: page-youtube-dashboard
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('analytics')" id="tab-btn-analytics" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
       📈 YouTube Analytics & Corpus Intelligence
     </button>
+    <button type="button" class="yt-tab-btn" onclick="switchYtTab('bpmn')" id="tab-btn-bpmn" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
+      ⚙️ BPMN Workflow & SLO Monitor
+    </button>
   </nav>
 
   <!-- ========================================================================= -->
@@ -1012,6 +1015,415 @@ body_class: page-youtube-dashboard
 
   </section>
 
+  <!-- ========================================================================= -->
+  <!-- TAB 6: BPMN WORKFLOW & SLO MONITOR -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-bpmn" class="yt-tab-pane" style="display: none;">
+
+    <!-- BPMN Top Banner & Operational Summary -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <div>
+          <span style="background: rgba(15, 118, 110, 0.1); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.25); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+            BPMN 2.0 State Machine &amp; Observability
+          </span>
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.4rem 0 0.25rem 0;">
+            Media Intake Pipeline: BPMN Flow &amp; SLO Telemetry
+          </h2>
+          <p style="font-size: 0.95rem; color: #64748b; margin: 0; max-width: 50rem;">
+            Self-describing operational model based on Camunda / BPMN 2.0 execution semantics. Tracks stage step latency, stability locks, and error thresholds to enforce strict Service Level Objectives.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <a href="/docs/bpmn/media-intake-pipeline.bpmn" download style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 700; color: #0f766e; background: #f0fdfa; border: 1px solid rgba(15, 118, 110, 0.3); padding: 0.45rem 0.85rem; border-radius: 0.375rem; text-decoration: none;">
+            Download BPMN 2.0 XML ↗
+          </a>
+          <a href="/docs/bpmn/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 700; color: #b45309; background: #fffdfa; border: 1px solid rgba(180, 83, 9, 0.3); padding: 0.45rem 0.85rem; border-radius: 0.375rem; text-decoration: none;">
+            SLO Specification ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Real-Time Queue Telemetry Grid -->
+      {% assign intake_data = site.data.youtube_pipeline_telemetry.media_intake %}
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.25rem; border-top: 1px solid #f1f5f9; padding-top: 1.25rem;">
+        
+        <div style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">Ramblin' &amp; Amblin' Queue</div>
+          <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+            <span style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['ramblin-amblin'].pending_count | default: 0 }}</span>
+            <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
+          </div>
+          <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
+            Target: PL-Ntb969T2-l0 (Unlisted)
+          </div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">The Sound Above Queue</div>
+          <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+            <span style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['the-sound-above'].pending_count | default: 0 }}</span>
+            <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
+          </div>
+          <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
+            Target: PL-VcmLmfz2uyA (Dossier Mode)
+          </div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">Errata &amp; Readings Queue</div>
+          <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+            <span style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['errata'].pending_count | default: 0 }}</span>
+            <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
+          </div>
+          <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
+            Target: PL-KPAHha6I990 (Errata)
+          </div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">Active Execution State</div>
+          <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+            <span style="font-size: 1.5rem; font-weight: 800; color: #15803d;">STANDBY</span>
+          </div>
+          <div style="font-size: 0.75rem; color: #15803d; margin-top: 0.35rem; font-weight: 600;">
+            SLO Health: 100% nominal
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Interactive BPMN Workflow Canvas (Camunda Style) -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <div>
+          <h3 style="margin: 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">
+            Interactive BPMN 2.0 Process Diagram
+          </h3>
+          <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #64748b;">
+            Click on any task node or boundary event to inspect real-time SLI metrics, target SLO boundaries, and failure resolution runbooks.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button type="button" onclick="simulateBpmnFlow()" style="background: #0f766e; color: #ffffff; border: none; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
+            ▶ Simulate Workflow Execution
+          </button>
+          <button type="button" onclick="resetBpmnNodes()" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 600; cursor: pointer;">
+            Reset Nodes
+          </button>
+        </div>
+      </div>
+
+      <!-- BPMN SVG Diagram Container -->
+      <div style="overflow-x: auto; border: 1px solid #cbd5e1; border-radius: 0.5rem; background: #faf8f5; padding: 1.5rem; margin-bottom: 1.5rem;">
+        <svg id="bpmn-svg-canvas" viewBox="0 0 1150 420" style="width: 100%; min-width: 950px; height: auto; font-family: system-ui, -apple-system, sans-serif;">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+            </marker>
+            <marker id="arrow-active" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e" />
+            </marker>
+            <marker id="arrow-error" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+            </marker>
+          </defs>
+
+          <!-- Swimlanes -->
+          <rect x="10" y="10" width="1130" height="90" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+          <text x="25" y="30" font-size="11" font-weight="700" fill="#64748b" text-transform="uppercase">LANE 1: Ingress &amp; Cloud Stability</text>
+
+          <rect x="10" y="110" width="1130" height="90" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+          <text x="25" y="130" font-size="11" font-weight="700" fill="#64748b" text-transform="uppercase">LANE 2: Audio DSP &amp; Speech Recognition</text>
+
+          <rect x="10" y="210" width="1130" height="90" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+          <text x="25" y="230" font-size="11" font-weight="700" fill="#64748b" text-transform="uppercase">LANE 3: YouTube Data API v3 &amp; Captions Parity</text>
+
+          <rect x="10" y="310" width="1130" height="95" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+          <text x="25" y="330" font-size="11" font-weight="700" fill="#64748b" text-transform="uppercase">LANE 4: Archival &amp; Local Disk Eviction</text>
+
+          <!-- Sequence Connectors -->
+          <line x1="85" y1="60" x2="115" y2="60" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="235" y1="60" x2="265" y2="60" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="385" y1="60" x2="425" y2="60" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <path d="M 485 85 L 485 130 L 175 130 L 175 155" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="235" y1="155" x2="275" y2="155" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="395" y1="155" x2="435" y2="155" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <path d="M 495 180 L 495 230 L 175 230 L 175 255" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="235" y1="255" x2="275" y2="255" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="395" y1="255" x2="435" y2="255" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="555" y1="255" x2="595" y2="255" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <path d="M 655 280 L 655 330 L 175 330 L 175 355" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="235" y1="355" x2="285" y2="355" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+          <line x1="405" y1="355" x2="455" y2="355" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+
+          <!-- Boundary Error Flow -->
+          <path d="M 205 280 L 205 295 L 750 295 L 750 330" fill="none" stroke="#dc2626" stroke-dasharray="4,3" stroke-width="1.8" marker-end="url(#arrow-error)" />
+
+          <!-- Lane 1 Nodes -->
+          <!-- Start Event -->
+          <circle cx="65" cy="60" r="18" fill="#ecfdf5" stroke="#10b981" stroke-width="2.5" />
+          <circle cx="65" cy="60" r="14" fill="#ffffff" />
+          <polygon points="61,54 71,60 61,66" fill="#10b981" />
+          <text x="65" y="92" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">File Drop</text>
+
+          <!-- Step 1 Task -->
+          <g id="node-step1" class="bpmn-node" onclick="inspectBpmnNode('step1')" style="cursor: pointer;">
+            <rect x="115" y="38" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="175" y="56" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">1. Poll Queue</text>
+            <text x="175" y="70" font-size="9" fill="#64748b" text-anchor="middle">SLO: &lt;= 30s</text>
+          </g>
+
+          <!-- Step 2 Gateway / Stability -->
+          <g id="node-step2" class="bpmn-node" onclick="inspectBpmnNode('step2')" style="cursor: pointer;">
+            <rect x="265" y="38" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="325" y="56" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">2. Stability Check</text>
+            <text x="325" y="70" font-size="9" fill="#64748b" text-anchor="middle">Size constant &gt; 15s</text>
+          </g>
+
+          <!-- Step 3 Atomic Lock -->
+          <g id="node-step3" class="bpmn-node" onclick="inspectBpmnNode('step3')" style="cursor: pointer;">
+            <rect x="425" y="38" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="485" y="56" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">3. Atomic Lock</text>
+            <text x="485" y="70" font-size="9" fill="#64748b" text-anchor="middle">mv to processing/</text>
+          </g>
+
+          <!-- Lane 2 Nodes -->
+          <!-- Step 4 FFmpeg Stream -->
+          <g id="node-step4" class="bpmn-node" onclick="inspectBpmnNode('step4')" style="cursor: pointer;">
+            <rect x="115" y="133" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="175" y="151" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">4. FFmpeg Stream</text>
+            <text x="175" y="165" font-size="9" fill="#64748b" text-anchor="middle">16kHz WAV to /tmp</text>
+          </g>
+
+          <!-- Step 5 Whisper STT -->
+          <g id="node-step5" class="bpmn-node" onclick="inspectBpmnNode('step5')" style="cursor: pointer;">
+            <rect x="275" y="133" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="335" y="151" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">5. Whisper.cpp</text>
+            <text x="335" y="165" font-size="9" fill="#64748b" text-anchor="middle">Apple Silicon RTF &lt; 0.15</text>
+          </g>
+
+          <!-- Step 6 Metadata & Dossier -->
+          <g id="node-step6" class="bpmn-node" onclick="inspectBpmnNode('step6')" style="cursor: pointer;">
+            <rect x="435" y="133" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="495" y="151" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">6. Synthesize Meta</text>
+            <text x="495" y="165" font-size="9" fill="#64748b" text-anchor="middle">Dossier / Hook Hook</text>
+          </g>
+
+          <!-- Lane 3 Nodes -->
+          <!-- Step 7 YouTube Resumable Upload -->
+          <g id="node-step7" class="bpmn-node" onclick="inspectBpmnNode('step7')" style="cursor: pointer;">
+            <rect x="115" y="233" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="175" y="251" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">7. Resumable PUT</text>
+            <text x="175" y="265" font-size="9" fill="#64748b" text-anchor="middle">&gt;= 25 Mbps Stream</text>
+          </g>
+
+          <!-- Boundary Error Event on Upload -->
+          <circle cx="205" cy="277" r="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2" />
+          <path d="M 201 277 L 205 272 L 209 277 L 205 282 z" fill="#dc2626" />
+
+          <!-- Step 8 Playlist Insert -->
+          <g id="node-step8" class="bpmn-node" onclick="inspectBpmnNode('step8')" style="cursor: pointer;">
+            <rect x="275" y="233" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="335" y="251" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">8. Playlist Insert</text>
+            <text x="335" y="265" font-size="9" fill="#64748b" text-anchor="middle">playlistItems API</text>
+          </g>
+
+          <!-- Step 9 Caption Track Upload -->
+          <g id="node-step9" class="bpmn-node" onclick="inspectBpmnNode('step9')" style="cursor: pointer;">
+            <rect x="435" y="233" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="495" y="251" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">9. Upload WebVTT</text>
+            <text x="495" y="265" font-size="9" fill="#64748b" text-anchor="middle">Human Verified</text>
+          </g>
+
+          <!-- Step 10 PostgreSQL Sync -->
+          <g id="node-step10" class="bpmn-node" onclick="inspectBpmnNode('step10')" style="cursor: pointer;">
+            <rect x="595" y="233" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="655" y="251" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">10. Sync Database</text>
+            <text x="655" y="265" font-size="9" fill="#64748b" text-anchor="middle">media_sources</text>
+          </g>
+
+          <!-- Lane 4 Nodes -->
+          <!-- Step 11 Archival -->
+          <g id="node-step11" class="bpmn-node" onclick="inspectBpmnNode('step11')" style="cursor: pointer;">
+            <rect x="115" y="333" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="175" y="351" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">11. Archive Drive</text>
+            <text x="175" y="365" font-size="9" fill="#64748b" text-anchor="middle">processed/YYYY-MM/</text>
+          </g>
+
+          <!-- Step 12 Scratch Purge -->
+          <g id="node-step12" class="bpmn-node" onclick="inspectBpmnNode('step12')" style="cursor: pointer;">
+            <rect x="285" y="333" width="120" height="44" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" class="node-box" />
+            <text x="345" y="351" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">12. Evict Scratch</text>
+            <text x="345" y="365" font-size="9" fill="#64748b" text-anchor="middle">0 bytes on SSD</text>
+          </g>
+
+          <!-- End Success Event -->
+          <circle cx="475" cy="355" r="18" fill="#ecfdf5" stroke="#10b981" stroke-width="3.5" />
+          <circle cx="475" cy="355" r="14" fill="#ffffff" />
+          <rect x="469" y="349" width="12" height="12" fill="#10b981" rx="1" />
+          <text x="475" y="388" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">Published &amp; Evicted</text>
+
+          <!-- Failure Node & End Failure Event -->
+          <g id="node-failure" class="bpmn-node" onclick="inspectBpmnNode('failure')" style="cursor: pointer;">
+            <rect x="710" y="333" width="130" height="44" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="2" class="node-box" />
+            <text x="775" y="351" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">Alert &amp; Quarantine</text>
+            <text x="775" y="365" font-size="9" fill="#991b1b" text-anchor="middle">failed/ + .error.log</text>
+          </g>
+          <circle cx="895" cy="355" r="18" fill="#fef2f2" stroke="#dc2626" stroke-width="3.5" />
+          <circle cx="895" cy="355" r="14" fill="#ffffff" />
+          <line x1="889" y1="349" x2="901" y2="361" stroke="#dc2626" stroke-width="2.5" />
+          <line x1="901" y1="349" x2="889" y2="361" stroke="#dc2626" stroke-width="2.5" />
+          <text x="895" y="388" font-size="10" font-weight="700" fill="#dc2626" text-anchor="middle">Incident Tripped</text>
+
+        </svg>
+      </div>
+
+      <!-- Step Inspector Card (Dynamic on Click) -->
+      <div id="bpmn-inspector-card" style="background: #faf8f5; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <h4 id="inspector-step-title" style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0f172a;">
+            Step 1: Poll Queue (Inspection &amp; Ingress)
+          </h4>
+          <span id="inspector-step-badge" style="background: #e0f2fe; color: #0369a1; border: 1px solid rgba(3, 105, 161, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 9999px;">
+            Service Task
+          </span>
+        </div>
+        <p id="inspector-step-desc" style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
+          The intake orchestrator scans Google Drive queue paths (pending/) across ramblin-amblin, the-sound-above, and errata.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 0.65rem 0.85rem;">
+            <div style="font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Service Level Indicator (SLI)</div>
+            <div id="inspector-sli-val" style="font-size: 0.95rem; font-weight: 700; color: #0f172a;">Detection Latency &lt;= 30s</div>
+          </div>
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 0.65rem 0.85rem;">
+            <div style="font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Service Level Objective (SLO)</div>
+            <div id="inspector-slo-val" style="font-size: 0.95rem; font-weight: 700; color: #0f766e;">95% within 30s of sync</div>
+          </div>
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 0.65rem 0.85rem;">
+            <div style="font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase;">SLA Breach Event / Alert</div>
+            <div id="inspector-sla-val" style="font-size: 0.95rem; font-weight: 700; color: #b45309;">ERR_INGRESS_DISCOVERY_TIMEOUT (&gt;120s)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SLO Metric & Alerting Matrix Table -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.15rem; font-weight: 700; color: #0f172a;">
+        Pipeline Service Level Objectives (SLOs) &amp; Alert Catalog
+      </h3>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 2px solid #e2e8f0; background: #faf8f5;">
+              <th style="padding: 0.75rem 1rem; font-weight: 700; color: #475569;">BPMN Step</th>
+              <th style="padding: 0.75rem 1rem; font-weight: 700; color: #475569;">Activity Description</th>
+              <th style="padding: 0.75rem 1rem; font-weight: 700; color: #475569;">SLI Measurement</th>
+              <th style="padding: 0.75rem 1rem; font-weight: 700; color: #475569;">Target SLO</th>
+              <th style="padding: 0.75rem 1rem; font-weight: 700; color: #475569;">SLA Event / Tripwire</th>
+              <th style="padding: 0.75rem 1rem; font-weight: 700; color: #475569;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 1</td>
+              <td style="padding: 0.75rem 1rem;">Poll Target Queue</td>
+              <td style="padding: 0.75rem 1rem;">File discovery timestamp</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">&lt;= 30s</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">&gt; 120s timeout</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 2</td>
+              <td style="padding: 0.75rem 1rem;">Cloud Byte Stability</td>
+              <td style="padding: 0.75rem 1rem;">Byte size Delta = 0</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">&gt;= 15s stable</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">Changing &gt; 45m</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 3</td>
+              <td style="padding: 0.75rem 1rem;">Atomic Lock</td>
+              <td style="padding: 0.75rem 1rem;">mv to processing/</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">&lt;= 200ms</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">Destination collision</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 4</td>
+              <td style="padding: 0.75rem 1rem;">FFmpeg Stream Audio</td>
+              <td style="padding: 0.75rem 1rem;">Extraction rate (s/GB)</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">&lt;= 8s per GB</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">FFmpeg exit code != 0</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 5</td>
+              <td style="padding: 0.75rem 1rem;">Whisper Transcription</td>
+              <td style="padding: 0.75rem 1rem;">Real-Time Factor (RTF)</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">RTF &lt;= 0.15</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">RTF &gt; 0.35 / crash</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 6</td>
+              <td style="padding: 0.75rem 1rem;">Synthesize Metadata</td>
+              <td style="padding: 0.75rem 1rem;">Title char &lt;= 100</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">100% budget parity</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">Title &gt; 100 chars</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 7</td>
+              <td style="padding: 0.75rem 1rem;">Resumable YouTube Upload</td>
+              <td style="padding: 0.75rem 1rem;">Stream upload bitrate</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">&gt;= 25 Mbps</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">HTTP 403 / 503 / Timeout</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 8</td>
+              <td style="padding: 0.75rem 1rem;">Playlist Insert</td>
+              <td style="padding: 0.75rem 1rem;">API call latency</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">&lt;= 2 seconds</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">HTTP Error != 200</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 9</td>
+              <td style="padding: 0.75rem 1rem;">Upload WebVTT Captions</td>
+              <td style="padding: 0.75rem 1rem;">Multipart POST latency</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">&lt;= 3 seconds</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">HTTP Error != 200</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 10</td>
+              <td style="padding: 0.75rem 1rem;">Database Registration</td>
+              <td style="padding: 0.75rem 1rem;">PostgreSQL query time</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">&lt;= 50 ms</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">PostgreSQL connection error</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem 1rem; font-weight: 700;">Step 11-12</td>
+              <td style="padding: 0.75rem 1rem;">Archive &amp; Evict Scratch</td>
+              <td style="padding: 0.75rem 1rem;">Residual disk bytes</td>
+              <td style="padding: 0.75rem 1rem; color: #0f766e; font-weight: 600;">0 bytes on SSD</td>
+              <td style="padding: 0.75rem 1rem; color: #b45309; font-weight: 600;">Local disk bloat &gt; 0</td>
+              <td style="padding: 0.75rem 1rem;"><span style="background: #dcfce7; color: #15803d; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">HEALTHY</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
 </div>
 
 <script>
@@ -1604,6 +2016,189 @@ body_class: page-youtube-dashboard
     }).catch(() => {
       alert(text);
     });
+  }
+
+  // BPMN Inspector and Flow Simulation
+  const bpmnStepData = {
+    step1: {
+      title: "Step 1: Poll Queue (Inspection & Ingress)",
+      badge: "Service Task",
+      desc: "The intake orchestrator scans Google Drive queue paths (pending/) across ramblin-amblin, the-sound-above, and errata.",
+      sli: "Detection Latency <= 30s",
+      slo: "95% within 30s of cloud sync",
+      sla: "ERR_INGRESS_DISCOVERY_TIMEOUT (>120s)"
+    },
+    step2: {
+      title: "Step 2: Cloud Byte Stability Check",
+      badge: "Conditional Gateway",
+      desc: "Checks file size stability across a 15-second observation interval. Prevents partial uploads while phone is syncing over cellular/Wi-Fi.",
+      sli: "Byte Delta = 0 across 15s",
+      slo: "99% verified in <= 15s",
+      sla: "ERR_STABILITY_LOCK_FAILED (changing > 45m)"
+    },
+    step3: {
+      title: "Step 3: Atomic Lock to processing/",
+      badge: "Service Task",
+      desc: "Executes atomic FileUtils.mv into processing/ subdirectory, isolating the media asset and preventing double-execution by parallel runs.",
+      sli: "Lock transition time <= 200ms",
+      slo: "99.9% locked in <= 200ms",
+      sla: "ERR_LOCK_COLLISION (inode locked)"
+    },
+    step4: {
+      title: "Step 4: FFmpeg Stream Audio to /tmp",
+      badge: "Service Task",
+      desc: "Extracts sequential 16kHz mono PCM WAV to /tmp via ffmpeg stream. Bypasses video duplication on local SSD.",
+      sli: "Extraction duration <= 8s per GB",
+      slo: "95% extracted <= 8s/GB",
+      sla: "ERR_FFMPEG_STREAM_CORRUPT (exit != 0)"
+    },
+    step5: {
+      title: "Step 5: Apple Silicon Whisper Recognition",
+      badge: "Service Task",
+      desc: "Executes whisper.cpp with ggml-large-v3-turbo on M4 Neural Engine / GPU cores, generating verified text and WebVTT subtitles.",
+      sli: "Real-Time Factor (RTF) <= 0.15",
+      slo: "95% runs achieve RTF <= 0.15 (<9s / min)",
+      sla: "ERR_WHISPER_TIMEOUT (RTF > 0.35)"
+    },
+    step6: {
+      title: "Step 6: Synthesize Metadata & Episode Dossiers",
+      badge: "Service Task",
+      desc: "Synthesizes YouTube titles, Craftsman descriptions, tags, and timestamps. Connects episode files to 37-episode curriculum dossiers.",
+      sli: "100-character title budget compliance",
+      slo: "100% compliant with 0 em dashes",
+      sla: "ERR_METADATA_BUDGET_OVERFLOW (>100 chars)"
+    },
+    step7: {
+      title: "Step 7: Resumable Upload to YouTube API v3",
+      badge: "Service Task",
+      desc: "Streams video payload over chunked HTTP PUT directly to YouTube Data API v3 upload endpoint.",
+      sli: "Upload throughput >= 25 Mbps",
+      slo: "90% streams >= 25 Mbps",
+      sla: "ERR_YOUTUBE_RESUMABLE_UPLOAD (HTTP 403/timeout)"
+    },
+    step8: {
+      title: "Step 8: Add Video to Target Playlist",
+      badge: "Service Task",
+      desc: "Registers video in playlist (PL-Ntb969T2-l0 for Ramblin' & Amblin', PL-VcmLmfz2uyA for The Sound Above, PL-KPAHha6I990 for Errata).",
+      sli: "API latency <= 2 seconds",
+      slo: "99% assigned <= 2s",
+      sla: "ERR_PLAYLIST_ASSIGNMENT"
+    },
+    step9: {
+      title: "Step 9: Upload Human-Verified WebVTT Captions",
+      badge: "Service Task",
+      desc: "Performs multipart POST to upload generated WebVTT track as 'English (Human Verified)' captions.",
+      sli: "Multipart POST latency <= 3 seconds",
+      slo: "95% uploaded <= 3s",
+      sla: "ERR_CAPTIONS_UPLOAD (HTTP != 200)"
+    },
+    step10: {
+      title: "Step 10: Sync PostgreSQL media_sources",
+      badge: "Service Task",
+      desc: "Upserts video ID, title, and ingest status into local PostgreSQL 'my' database media_sources ledger.",
+      sli: "Query duration <= 50ms",
+      slo: "99% committed <= 50ms",
+      sla: "ERR_POSTGRES_INGEST (connection drop)"
+    },
+    step11: {
+      title: "Step 11: Archive Cloud Master in Drive",
+      badge: "Service Task",
+      desc: "Moves file inside Google Drive from processing/ to processed/YYYY-MM/ for permanent cloud master preservation.",
+      sli: "Cloud mv duration <= 2s",
+      slo: "99% archived <= 2s",
+      sla: "ERR_ARCHIVAL_FAILED"
+    },
+    step12: {
+      title: "Step 12: Purge Ephemeral Scratch WAV",
+      badge: "Service Task",
+      desc: "Deletes /tmp scratch WAV and VTT files. Verifies 0 residual bytes remain on local SSD.",
+      sli: "Residual bytes on SSD = 0 MB",
+      slo: "100% zero disk retention",
+      sla: "ERR_DISK_BLOAT_DETECTED"
+    },
+    failure: {
+      title: "Boundary Catch Event: Alert & Quarantine",
+      badge: "Error Boundary Event",
+      desc: "Triggered on unrecoverable network failure, token expiration, or quota exhaustion. Moves asset to failed/ and creates .error.log.",
+      sli: "Time to quarantine <= 500ms",
+      slo: "100% quarantined on error",
+      sla: "ALERT_P1_PIPELINE_BLOCKED (Operator alert emitted)"
+    }
+  };
+
+  function inspectBpmnNode(stepKey) {
+    const data = bpmnStepData[stepKey];
+    if (!data) return;
+
+    document.getElementById('inspector-step-title').innerText = data.title;
+    document.getElementById('inspector-step-badge').innerText = data.badge;
+    document.getElementById('inspector-step-desc').innerText = data.desc;
+    document.getElementById('inspector-sli-val').innerText = data.sli;
+    document.getElementById('inspector-slo-val').innerText = data.slo;
+    document.getElementById('inspector-sla-val').innerText = data.sla;
+
+    // Highlight selected node box
+    document.querySelectorAll('.bpmn-node .node-box').forEach(b => {
+      b.style.stroke = '#cbd5e1';
+      b.style.strokeWidth = '2';
+    });
+    const selected = document.getElementById('node-' + stepKey);
+    if (selected) {
+      const box = selected.querySelector('.node-box');
+      if (box) {
+        box.style.stroke = '#0f766e';
+        box.style.strokeWidth = '3';
+      }
+    }
+  }
+
+  function resetBpmnNodes() {
+    document.querySelectorAll('.bpmn-node .node-box').forEach(b => {
+      b.style.stroke = '#cbd5e1';
+      b.style.strokeWidth = '2';
+      b.style.fill = '#ffffff';
+    });
+    inspectBpmnNode('step1');
+  }
+
+  let simTimer = null;
+  function simulateBpmnFlow() {
+    resetBpmnNodes();
+    const steps = ['step1', 'step2', 'step3', 'step4', 'step5', 'step6', 'step7', 'step8', 'step9', 'step10', 'step11', 'step12'];
+    let idx = 0;
+
+    if (simTimer) clearInterval(simTimer);
+    simTimer = setInterval(() => {
+      if (idx > 0) {
+        const prev = document.getElementById('node-' + steps[idx - 1]);
+        if (prev) {
+          const box = prev.querySelector('.node-box');
+          if (box) {
+            box.style.fill = '#ecfdf5';
+            box.style.stroke = '#10b981';
+          }
+        }
+      }
+
+      if (idx >= steps.length) {
+        clearInterval(simTimer);
+        return;
+      }
+
+      const currKey = steps[idx];
+      inspectBpmnNode(currKey);
+      const curr = document.getElementById('node-' + currKey);
+      if (curr) {
+        const box = curr.querySelector('.node-box');
+        if (box) {
+          box.style.fill = '#f0fdfa';
+          box.style.stroke = '#0f766e';
+          box.style.strokeWidth = '3';
+        }
+      }
+
+      idx++;
+    }, 700);
   }
 
   // Initial load of Episode 1

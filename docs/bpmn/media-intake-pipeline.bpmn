@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  id="Definitions_MediaIntakePipeline"
+                  targetNamespace="http://just3ws.com/bpmn/media-intake"
+                  exporter="Camunda Modeler"
+                  exporterVersion="5.20.0">
+
+  <bpmn:collaboration id="Collaboration_MediaPublishing">
+    <bpmn:participant id="Participant_MediaIntakePipeline" name="Media Intake and YouTube Publishing Pipeline" processRef="Process_MediaIntakePipeline" />
+  </bpmn:collaboration>
+
+  <bpmn:process id="Process_MediaIntakePipeline" name="Media Intake Pipeline" isExecutable="true">
+    
+    <!-- Lane Set: Ingress, Processing & Audio, Publishing, Eviction -->
+    <bpmn:laneSet id="LaneSet_Intake">
+      <bpmn:lane id="Lane_Ingress" name="Ingress &amp; Stability Verification">
+        <bpmn:flowNodeRef>StartEvent_MediaDrop</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_DetectDrop</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_StabilityCheck</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_WaitSync</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_AtomicLock</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Processing" name="Audio DSP &amp; Speech Recognition">
+        <bpmn:flowNodeRef>Task_ExtractAudio</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_WhisperTranscription</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SynthesizeMetadata</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Publishing" name="YouTube API &amp; Captions Parity">
+        <bpmn:flowNodeRef>Task_ResumableUpload</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_AssignPlaylist</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_UploadCaptions</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_RegisterDatabase</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Eviction" name="Archival &amp; Eviction">
+        <bpmn:flowNodeRef>Task_EvictProcessed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_PurgeScratch</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Success</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>BoundaryEvent_UploadError</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_HandleFailure</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Failure</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+
+    <!-- Sequence Flow -->
+    <bpmn:startEvent id="StartEvent_MediaDrop" name="Media Arrives in pending/">
+      <bpmn:outgoing>Flow_01</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:serviceTask id="Task_DetectDrop" name="1. Poll &amp; Inspect Target Queue" camunda:type="external" camunda:topic="intake-poll">
+      <bpmn:documentation>SLI: Detection Latency. Target &lt;= 30s.</bpmn:documentation>
+      <bpmn:incoming>Flow_01</bpmn:incoming>
+      <bpmn:outgoing>Flow_02</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:exclusiveGateway id="Gateway_StabilityCheck" name="File Size Stable &gt; 15s?">
+      <bpmn:incoming>Flow_02</bpmn:incoming>
+      <bpmn:incoming>Flow_RetrySync</bpmn:incoming>
+      <bpmn:outgoing>Flow_StableYes</bpmn:outgoing>
+      <bpmn:outgoing>Flow_StableNo</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:intermediateCatchEvent id="Task_WaitSync" name="Wait 15s Cloud Sync">
+      <bpmn:incoming>Flow_StableNo</bpmn:incoming>
+      <bpmn:outgoing>Flow_RetrySync</bpmn:outgoing>
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT15S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+
+    <bpmn:serviceTask id="Task_AtomicLock" name="2. Atomic Lock to processing/" camunda:type="external" camunda:topic="intake-lock">
+      <bpmn:documentation>SLI: Lock transition time. Target &lt;= 200ms.</bpmn:documentation>
+      <bpmn:incoming>Flow_StableYes</bpmn:incoming>
+      <bpmn:outgoing>Flow_03</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_ExtractAudio" name="3. Stream FFmpeg Audio to /tmp" camunda:type="external" camunda:topic="intake-ffmpeg">
+      <bpmn:documentation>SLI: 16kHz mono WAV extraction. Target &lt;= 8s per GB.</bpmn:documentation>
+      <bpmn:incoming>Flow_03</bpmn:incoming>
+      <bpmn:outgoing>Flow_04</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_WhisperTranscription" name="4. Apple Silicon Whisper Recognition" camunda:type="external" camunda:topic="intake-whisper">
+      <bpmn:documentation>SLI: Real-time factor (RTF) &lt;= 0.15 on Apple Silicon M4.</bpmn:documentation>
+      <bpmn:incoming>Flow_04</bpmn:incoming>
+      <bpmn:outgoing>Flow_05</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_SynthesizeMetadata" name="5. Synthesize Metadata &amp; Dossiers" camunda:type="external" camunda:topic="intake-metadata">
+      <bpmn:documentation>SLI: Hook extraction and 100-character title budget compliance.</bpmn:documentation>
+      <bpmn:incoming>Flow_05</bpmn:incoming>
+      <bpmn:outgoing>Flow_06</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_ResumableUpload" name="6. Resumable Upload to YouTube API v3" camunda:type="external" camunda:topic="youtube-upload">
+      <bpmn:documentation>SLI: Upload throughput &gt;= 25 Mbps. SLA Timeout: 1800s.</bpmn:documentation>
+      <bpmn:incoming>Flow_06</bpmn:incoming>
+      <bpmn:outgoing>Flow_07</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:boundaryEvent id="BoundaryEvent_UploadError" name="Network or Quota Exception" attachedToRef="Task_ResumableUpload">
+      <bpmn:outgoing>Flow_Error</bpmn:outgoing>
+      <bpmn:errorEventDefinition errorRef="Error_UploadFailed" />
+    </bpmn:boundaryEvent>
+
+    <bpmn:serviceTask id="Task_AssignPlaylist" name="7. Add Video to Target Playlist" camunda:type="external" camunda:topic="youtube-playlist">
+      <bpmn:incoming>Flow_07</bpmn:incoming>
+      <bpmn:outgoing>Flow_08</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_UploadCaptions" name="8. Upload Human-Verified WebVTT" camunda:type="external" camunda:topic="youtube-captions">
+      <bpmn:incoming>Flow_08</bpmn:incoming>
+      <bpmn:outgoing>Flow_09</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_RegisterDatabase" name="9. Sync PostgreSQL media_sources" camunda:type="external" camunda:topic="postgres-sync">
+      <bpmn:incoming>Flow_09</bpmn:incoming>
+      <bpmn:outgoing>Flow_10</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_EvictProcessed" name="10. Archive Drive File to processed/" camunda:type="external" camunda:topic="intake-evict">
+      <bpmn:documentation>SLI: Cloud storage eviction and local disk zero-waste verification.</bpmn:documentation>
+      <bpmn:incoming>Flow_10</bpmn:incoming>
+      <bpmn:outgoing>Flow_11</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:serviceTask id="Task_PurgeScratch" name="11. Purge Ephemeral Scratch WAV" camunda:type="external" camunda:topic="scratch-purge">
+      <bpmn:incoming>Flow_11</bpmn:incoming>
+      <bpmn:outgoing>Flow_12</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:endEvent id="EndEvent_Success" name="Publication &amp; Archival Complete">
+      <bpmn:incoming>Flow_12</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:serviceTask id="Task_HandleFailure" name="Move to failed/ and Emit Incident Alert" camunda:type="external" camunda:topic="intake-alert">
+      <bpmn:incoming>Flow_Error</bpmn:incoming>
+      <bpmn:outgoing>Flow_FailedEnd</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:endEvent id="EndEvent_Failure" name="Pipeline Alert Tripped">
+      <bpmn:incoming>Flow_FailedEnd</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- Sequence Flow Connections -->
+    <bpmn:sequenceFlow id="Flow_01" sourceRef="StartEvent_MediaDrop" targetRef="Task_DetectDrop" />
+    <bpmn:sequenceFlow id="Flow_02" sourceRef="Task_DetectDrop" targetRef="Gateway_StabilityCheck" />
+    <bpmn:sequenceFlow id="Flow_StableYes" name="Stable" sourceRef="Gateway_StabilityCheck" targetRef="Task_AtomicLock" />
+    <bpmn:sequenceFlow id="Flow_StableNo" name="Syncing" sourceRef="Gateway_StabilityCheck" targetRef="Task_WaitSync" />
+    <bpmn:sequenceFlow id="Flow_RetrySync" sourceRef="Task_WaitSync" targetRef="Gateway_StabilityCheck" />
+    <bpmn:sequenceFlow id="Flow_03" sourceRef="Task_AtomicLock" targetRef="Task_ExtractAudio" />
+    <bpmn:sequenceFlow id="Flow_04" sourceRef="Task_ExtractAudio" targetRef="Task_WhisperTranscription" />
+    <bpmn:sequenceFlow id="Flow_05" sourceRef="Task_WhisperTranscription" targetRef="Task_SynthesizeMetadata" />
+    <bpmn:sequenceFlow id="Flow_06" sourceRef="Task_SynthesizeMetadata" targetRef="Task_ResumableUpload" />
+    <bpmn:sequenceFlow id="Flow_07" sourceRef="Task_ResumableUpload" targetRef="Task_AssignPlaylist" />
+    <bpmn:sequenceFlow id="Flow_08" sourceRef="Task_AssignPlaylist" targetRef="Task_UploadCaptions" />
+    <bpmn:sequenceFlow id="Flow_09" sourceRef="Task_UploadCaptions" targetRef="Task_RegisterDatabase" />
+    <bpmn:sequenceFlow id="Flow_10" sourceRef="Task_RegisterDatabase" targetRef="Task_EvictProcessed" />
+    <bpmn:sequenceFlow id="Flow_11" sourceRef="Task_EvictProcessed" targetRef="Task_PurgeScratch" />
+    <bpmn:sequenceFlow id="Flow_12" sourceRef="Task_PurgeScratch" targetRef="EndEvent_Success" />
+    <bpmn:sequenceFlow id="Flow_Error" sourceRef="BoundaryEvent_UploadError" targetRef="Task_HandleFailure" />
+    <bpmn:sequenceFlow id="Flow_FailedEnd" sourceRef="Task_HandleFailure" targetRef="EndEvent_Failure" />
+
+  </bpmn:process>
+
+  <bpmn:error id="Error_UploadFailed" name="UploadFailed" errorCode="ERR_YOUTUBE_UPLOAD" />
+
+</bpmn:definitions>

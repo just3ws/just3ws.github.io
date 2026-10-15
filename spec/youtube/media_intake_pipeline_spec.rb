@@ -139,4 +139,40 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(meta[:description]).to include("Reflecting on high latency network links")
     end
   end
+
+  describe 'BPMN 2.0 Specification & SLO Architecture' do
+    let(:bpmn_xml_path) { File.join(root_dir, 'docs', 'bpmn', 'media-intake-pipeline.bpmn') }
+    let(:slo_doc_path) { File.join(root_dir, 'docs', 'bpmn', 'README.md') }
+    let(:dashboard_path) { File.join(root_dir, 'youtube', 'dashboard.html') }
+
+    it 'defines valid BPMN 2.0 XML with process and service task definitions' do
+      expect(File.exist?(bpmn_xml_path)).to be true
+      xml_content = File.read(bpmn_xml_path)
+      expect(xml_content).to include('<bpmn:definitions')
+      expect(xml_content).to include('id="Process_MediaIntakePipeline"')
+      expect(xml_content).to include('Task_DetectDrop')
+      expect(xml_content).to include('Task_WhisperTranscription')
+      expect(xml_content).to include('Task_ResumableUpload')
+      expect(xml_content).to include('BoundaryEvent_UploadError')
+    end
+
+    it 'provides comprehensive SLO, SLI, and alert specifications' do
+      expect(File.exist?(slo_doc_path)).to be true
+      doc = File.read(slo_doc_path)
+      expect(doc).to include('Service Level Indicators (SLIs)')
+      expect(doc).to include('ERR_INGRESS_DISCOVERY_TIMEOUT')
+      expect(doc).to include('ERR_WHISPER_TIMEOUT')
+      expect(doc).to include('ERR_YOUTUBE_RESUMABLE_UPLOAD')
+      expect(doc).not_to include("\u2014")
+    end
+
+    it 'integrates interactive BPMN workflow canvas into youtube/dashboard.html' do
+      expect(File.exist?(dashboard_path)).to be true
+      dash = File.read(dashboard_path)
+      expect(dash).to include('tab-pane-bpmn')
+      expect(dash).to include('bpmn-svg-canvas')
+      expect(dash).to include('simulateBpmnFlow()')
+      expect(dash).to include('inspectBpmnNode')
+    end
+  end
 end
