@@ -28,3 +28,14 @@ Episode planning currently relies on raw interview metadata and hardcoded telepr
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Research existing sequence and transcript data structures in _data/sound_above_sequence.json, _data/transcripts/, and _data/interviews.yml.
+2. Define the Episode Semantic Dossier YAML schema and generate baseline dossiers in _data/episodes/ seeded from _data/sound_above_sequence.json.
+3. Build bin/episode_workbench.rb CLI supporting list, show, init, compile, and validate commands.
+4. Hook bin/episode_workbench.rb into bin/pipeline as 'episode' subcommand.
+5. Write unit and contract tests in spec/youtube/episode_workbench_spec.rb.
+6. Verify zero em dashes and ensure all validation gates pass.
+<!-- SECTION:PLAN:END -->
