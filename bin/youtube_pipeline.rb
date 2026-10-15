@@ -293,9 +293,24 @@ class YouTubePipeline
       staged_rec = @staged_by_video_id[v_id] || @staged_by_transcript_id[tid]
       v_id ||= staged_rec ? staged_rec['youtube_video_id'] : nil
 
-      meta_status = @metadata_sync[v_id] || (staged_rec ? 'staged' : 'local_only')
+      meta_val = @metadata_sync[v_id]
+      meta_status = if meta_val.is_a?(Hash)
+                      meta_val['status'] || 'synced'
+                    elsif meta_val.is_a?(String)
+                      meta_val
+                    else
+                      staged_rec ? 'staged' : 'local_only'
+                    end
+
       cap_rec = @captions_by_video_id[v_id] || @captions_by_transcript_id[tid]
-      cap_status = @captions_sync[v_id] || (cap_rec ? 'manifest_ready' : 'missing')
+      cap_val = @captions_sync[v_id]
+      cap_status = if cap_val.is_a?(Hash)
+                     cap_val['status'] || 'synced'
+                   elsif cap_val.is_a?(String)
+                     cap_val
+                   else
+                     cap_rec ? 'manifest_ready' : 'missing'
+                   end
 
       title = staged_rec ? staged_rec['title'] : asset['title']
       chapters_count = staged_rec ? (staged_rec['chapters'] || []).size : (asset['chapters'] || []).size

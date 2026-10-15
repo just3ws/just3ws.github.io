@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'open3'
 require 'yaml'
+require 'json'
 
 RSpec.describe 'SwiftBar Integration & Localhost Navigation' do
   let(:root_dir) { File.expand_path('../..', __dir__) }
@@ -104,6 +105,18 @@ RSpec.describe 'SwiftBar Integration & Localhost Navigation' do
       expect(content).to include('/youtube/dashboard/#tab-bpmn')
       expect(content).to include('/youtube/dashboard/#tab-teleprompter')
       expect(content).to include('/youtube/dashboard/#tab-funnel')
+    end
+
+    it 'normalizes metadata_status and caption_status to strings across all assets in telemetry' do
+      telemetry_path = File.join(root_dir, '_data', 'youtube_pipeline_telemetry.json')
+      telemetry = JSON.parse(File.read(telemetry_path))
+      assets = telemetry['assets'] || []
+      expect(assets).not_to be_empty
+
+      assets.each do |asset|
+        expect(asset['metadata_status']).to be_a(String)
+        expect(asset['caption_status']).to be_a(String)
+      end
     end
   end
 end

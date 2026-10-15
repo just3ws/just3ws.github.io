@@ -203,7 +203,9 @@ body_class: page-youtube-dashboard
           </thead>
           <tbody>
             {% for asset in yt_data.assets %}
-              <tr class="yt-row" data-meta-status="{{ asset.metadata_status }}" data-caption-status="{{ asset.caption_status }}" data-platform="{% if asset.youtube_video_id %}youtube{% else %}local-master{% endif %}" style="border-bottom: 1px solid #f1f5f9;">
+              {% assign m_status = asset.metadata_status.status | default: asset.metadata_status %}
+              {% assign c_status = asset.caption_status.status | default: asset.caption_status %}
+              <tr class="yt-row" data-meta-status="{{ m_status }}" data-caption-status="{{ c_status }}" data-platform="{% if asset.youtube_video_id %}youtube{% else %}local-master{% endif %}" style="border-bottom: 1px solid #f1f5f9;">
                 <td style="padding: 0.75rem 1rem; vertical-align: top;">
                   {% if asset.youtube_video_id %}
                     <a href="https://www.youtube.com/watch?v={{ asset.youtube_video_id }}" target="_blank" rel="noopener">
@@ -230,18 +232,18 @@ body_class: page-youtube-dashboard
                   {{ asset.duration }}
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: top;">
-                  {% if asset.metadata_status == 'synced' %}
+                  {% if m_status == 'synced' %}
                     <span style="background: #dcfce7; color: #15803d; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Synced</span>
-                  {% elsif asset.metadata_status == 'staged' %}
+                  {% elsif m_status == 'staged' %}
                     <span style="background: #fef3c7; color: #b45309; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Staged</span>
                   {% else %}
                     <span style="background: #f1f5f9; color: #64748b; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Local Master</span>
                   {% endif %}
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: top;">
-                  {% if asset.caption_status == 'synced' %}
+                  {% if c_status == 'synced' %}
                     <span style="background: #dcfce7; color: #15803d; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Synced</span>
-                  {% elsif asset.caption_status == 'manifest_ready' %}
+                  {% elsif c_status == 'manifest_ready' %}
                     <span style="background: #e0e7ff; color: #4338ca; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Ready</span>
                   {% else %}
                     <span style="background: #fee2e2; color: #b91c1c; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 9999px;">Missing</span>
