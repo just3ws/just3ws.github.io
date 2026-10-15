@@ -1,9 +1,11 @@
 ---
 id: TASK-288
 title: Build Visual Episode Studio and Workshop UI in Operations Cockpit
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@antigravity'
 created_date: '2026-10-15 01:45'
+updated_date: '2026-10-15 01:51'
 labels: []
 dependencies:
   - TASK-287
