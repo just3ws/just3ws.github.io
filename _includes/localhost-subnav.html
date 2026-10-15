@@ -25,10 +25,37 @@
     </div>
 
     <div class="localhost-nav-links">
-      <!-- Localhost Hub Link: Executive Pitch Briefs -->
-      <a href="/dashboard/" class="lh-dropdown-btn{% if page.url contains '/dashboard/' %} is-active{% endif %}" style="text-decoration: none;">
-        <span>⚡ Dashboard</span>
-      </a>
+      <!-- Localhost Hub Dropdown: Dashboards & Cockpits -->
+      <div class="lh-dropdown">
+        <a href="/dashboard/" class="lh-dropdown-btn{% if page.url contains '/dashboard/' or page.url contains '/youtube/dashboard/' or page.url contains '/dehum/dashboard' %} is-active{% endif %}" style="text-decoration: none;" aria-haspopup="true" aria-expanded="false">
+          <span>⚡ Dashboards</span>
+          <span class="lh-caret">▾</span>
+        </a>
+        <div class="lh-dropdown-menu" role="menu">
+          <div class="lh-menu-header">Control Planes & Cockpits</div>
+          <a href="/dashboard/" class="lh-menu-item{% if page.url == '/dashboard/' or page.url == '/dashboard.html' %} is-active{% endif %}" role="menuitem">
+            <strong>Platform Link Hub</strong> (Localhost Services)
+          </a>
+          <a href="/youtube/dashboard/" class="lh-menu-item{% if page.url contains '/youtube/dashboard/' %} is-active{% endif %}" role="menuitem">
+            <strong>YouTube Operations Cockpit</strong> (215 Assets)
+          </a>
+          <a href="/youtube/dashboard/#tab-bpmn" class="lh-menu-item" role="menuitem">
+            <strong>BPMN 2.0 & SLO Monitor</strong> (Camunda Flow)
+          </a>
+          <a href="/youtube/dashboard/#tab-teleprompter" class="lh-menu-item" role="menuitem">
+            <strong>Broadcast Teleprompter</strong> (6 Acts & Rundown)
+          </a>
+          <a href="/youtube/dashboard/#tab-funnel" class="lh-menu-item" role="menuitem">
+            <strong>Quota & Funnel Auditor</strong> (API Budgets)
+          </a>
+          <div class="lh-menu-divider"></div>
+          <div class="lh-menu-header">Audio & Experimental Cockpits</div>
+          <a href="/dehum/dashboard.html" class="lh-menu-item{% if page.url contains '/dehum/' %} is-active{% endif %}" role="menuitem">
+            <strong>Errata Dehum Audio Workbench</strong> (Forensics)
+          </a>
+        </div>
+      </div>
+
       <!-- Rewatch Broadcast Direct Link -->
       <div class="lh-dropdown">
         <a href="/series/the-sound-above/" class="lh-dropdown-btn{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" style="text-decoration: none;" aria-haspopup="true" aria-expanded="false">
@@ -40,6 +67,9 @@
           <a href="/series/the-sound-above/" class="lh-menu-item" role="menuitem"><strong>All 37 Episodes</strong> (curriculum hub)</a>
           <a href="/series/the-sound-above/episode-01/" class="lh-menu-item{% if page.url contains '/episode-01/' %} is-active{% endif %}" role="menuitem"><strong>Episode 1:</strong> Sergio Pereira</a>
           <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" class="lh-menu-item" role="menuitem"><strong>Episode 1 Transcript</strong> with chapters</a>
+          <a href="/youtube/dashboard/" class="lh-menu-item" role="menuitem"><strong>Operations Cockpit & BPMN</strong> 🚀</a>
+          <a href="/youtube/dashboard/#tab-teleprompter" class="lh-menu-item" role="menuitem"><strong>Teleprompter Rundown</strong> 🎙️</a>
+          <a href="/dehum/dashboard.html" class="lh-menu-item" role="menuitem"><strong>Errata Audio Workbench</strong> 🎛️</a>
           <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener" class="lh-menu-item" role="menuitem"><strong>YouTube Playlist</strong> ↗</a>
           <div class="lh-menu-divider"></div>
           <div class="lh-menu-header">Read Along Context</div>

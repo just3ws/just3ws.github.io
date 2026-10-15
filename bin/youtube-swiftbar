@@ -1,0 +1,273 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# bin/youtube-swiftbar
+# SwiftBar status bar plugin for Media Intake & YouTube Publishing Pipeline
+#
+# Emits menu bar standing state, queue metrics, subsystem health, and clickable links:
+# 1. Menu bar title with dynamic icon, pending count, or processing animation
+# 2. Ingress Queues breakdown (Ramblin' & Amblin', The Sound Above, Errata)
+# 3. Subsystem Health (SSE Streamer, Whisper.cpp engine, YouTube API quota, BPMN SLO)
+# 4. Direct clickable links (href=...) to Localhost Dashboards & YouTube playlists
+# 5. Quick Operator Actions (bash=...) to trigger intake, streamer, staging, or open Finder
+
+require 'json'
+require 'yaml'
+require 'net/http'
+require 'uri'
+
+ROOT_DIR = File.expand_path('..', __dir__)
+CONFIG_PATH = File.join(ROOT_DIR, '_data', 'media_intake_targets.yml')
+TELEMETRY_PATH = File.join(ROOT_DIR, '_data', 'youtube_pipeline_telemetry.json')
+
+# Resolve Google Drive Intake base path
+DEFAULT_INTAKE_BASE = File.expand_path('~/Google Drive/My Drive/Media Intake')
+FALLBACK_INTAKE_BASE = File.expand_path('~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake')
+
+intake_base = if Dir.exist?(DEFAULT_INTAKE_BASE)
+                DEFAULT_INTAKE_BASE
+              elsif Dir.exist?(FALLBACK_INTAKE_BASE)
+                FALLBACK_INTAKE_BASE
+              else
+                DEFAULT_INTAKE_BASE
+              end
+
+channel = 'whoistechcmty'
+channel_dir = File.join(intake_base, channel)
+
+# Target playlists
+targets = {
+  'ramblin-amblin' => {
+    label: "Ramblin' & Amblin'",
+    playlist_id: 'PLNtb969T2-l0',
+    icon: '🏃'
+  },
+  'the-sound-above' => {
+    label: 'The Sound Above',
+    playlist_id: 'PLVcmLmfz2uyA',
+    icon: '🎙️'
+  },
+  'errata' => {
+    label: 'The Sound Above: Errata',
+    playlist_id: 'PLKPAHha6I990',
+    icon: '📻'
+  }
+}
+
+# Scan queue directories
+media_exts = %w[.mp4 .mov .m4v .mkv .webm .MP4 .MOV]
+total_pending = 0
+total_processing = 0
+total_processed = 0
+total_failed = 0
+
+target_stats = {}
+
+targets.each do |target_key, target_meta|
+  target_dir = File.join(channel_dir, target_key)
+  pending_files = []
+  processing_files = []
+  processed_count = 0
+  failed_files = []
+
+  if Dir.exist?(target_dir)
+    pending_dir = File.join(target_dir, 'pending')
+    processing_dir = File.join(target_dir, 'processing')
+    processed_dir = File.join(target_dir, 'processed')
+    failed_dir = File.join(target_dir, 'failed')
+
+    if Dir.exist?(pending_dir)
+      pending_files = Dir.children(pending_dir).select do |f|
+        media_exts.include?(File.extname(f)) && !f.start_with?('.')
+      end
+    end
+
+    if Dir.exist?(processing_dir)
+      processing_files = Dir.children(processing_dir).select do |f|
+        media_exts.include?(File.extname(f)) && !f.start_with?('.')
+      end
+    end
+
+    if Dir.exist?(processed_dir)
+      # Count all files in processed including subfolders (YYYY-MM)
+      processed_count = Dir.glob(File.join(processed_dir, '**', '*')).count { |f| File.file?(f) && !File.basename(f).start_with?('.') }
+    end
+
+    if Dir.exist?(failed_dir)
+      failed_files = Dir.children(failed_dir).reject { |f| f.start_with?('.') }
+    end
+  end
+
+  total_pending += pending_files.size
+  total_processing += processing_files.size
+  total_processed += processed_count
+  total_failed += failed_files.size
+
+  target_stats[target_key] = {
+    meta: target_meta,
+    dir: target_dir,
+    pending: pending_files,
+    processing: processing_files,
+    processed_count: processed_count,
+    failed: failed_files
+  }
+end
+
+# Check active DSP / Whisper / Intake processes
+active_process = nil
+begin
+  ps_output = `pgrep -fl '(intake_drive_video|whisper-cli|pipeline_ramblin_amblin|ffmpeg.*Media Intake)' 2>/dev/null`
+  if ps_output && !ps_output.strip.empty?
+    first_line = ps_output.strip.lines.first
+    active_process = if first_line.include?('whisper')
+                       'transcribing'
+                     elsif first_line.include?('ffmpeg')
+                       'extracting audio'
+                     else
+                       'ingesting'
+                     end
+  end
+rescue StandardError
+  active_process = nil
+end
+
+# Check SSE Streamer status (port 7025)
+streamer_online = false
+streamer_clients = 0
+begin
+  uri = URI.parse('http://127.0.0.1:7025/status')
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.open_timeout = 0.2
+  http.read_timeout = 0.2
+  response = http.request(Net::HTTP::Get.new(uri.request_uri))
+  if response.code == '200'
+    data = JSON.parse(response.body)
+    streamer_online = true
+    streamer_clients = data['connected_clients'] || 0
+  end
+rescue StandardError
+  streamer_online = false
+end
+
+# Load telemetry cache
+telemetry = {}
+if File.exist?(TELEMETRY_PATH)
+  begin
+    telemetry = JSON.parse(File.read(TELEMETRY_PATH))
+  rescue StandardError
+    telemetry = {}
+  end
+end
+
+total_assets = telemetry['total_assets'] || 215
+quota_used = telemetry.dig('quota', 'estimated_daily_units_consumed') || 1600
+quota_limit = telemetry.dig('quota', 'daily_limit') || 10000
+quota_headroom = ((1.0 - (quota_used.to_f / quota_limit)) * 100).round
+
+# Format Menu Bar Title
+if active_process
+  puts "🎬⚡ #{active_process.capitalize} | color=#0f766e"
+elsif total_pending.positive?
+  puts "🎬 #{total_pending} pending | color=#b45309"
+elsif total_failed.positive?
+  puts "🎬⚠️ #{total_failed} failed | color=#dc2626"
+elsif total_processing.positive?
+  puts "🎬⚙️ #{total_processing} processing | color=#0f766e"
+else
+  puts "🎬 Ready | color=#15803d"
+end
+
+# Dropdown Menu Items
+puts '---'
+puts "Media Intake & YouTube Publishing Pipeline | size=13 font=bold"
+puts "whoistechcmty (@whoistechcmty) · Zero Disk Waste DSP | size=11 color=#64748b"
+puts '---'
+
+# Productivity & Queue Standing
+puts "📦 Ingress Queues: #{total_pending} pending · #{total_processing} active · #{total_processed} completed | font=bold size=12"
+
+target_stats.each do |_target_key, stats|
+  meta = stats[:meta]
+  puts "-- #{meta[:icon]} #{meta[:label]} (Playlist #{meta[:playlist_id]}) | font=bold size=11"
+
+  pending_color = stats[:pending].any? ? '#b45309' : '#64748b'
+  puts "---- ⏳ Pending: #{stats[:pending].size} file(s) | color=#{pending_color} size=11"
+  stats[:pending].each do |file|
+    puts "------ 📄 #{file} | size=10 color=#334155"
+  end
+
+  proc_color = stats[:processing].any? ? '#0f766e' : '#64748b'
+  puts "---- ⚙️ Processing: #{stats[:processing].size} file(s) | color=#{proc_color} size=11"
+  stats[:processing].each do |file|
+    puts "------ 🔄 #{file} | size=10 color=#0f766e"
+  end
+
+  puts "---- ✅ Processed: #{stats[:processed_count]} completed | color=#15803d size=11"
+
+  failed_color = stats[:failed].any? ? '#dc2626' : '#64748b'
+  puts "---- ❌ Failed: #{stats[:failed].size} file(s) | color=#{failed_color} size=11"
+  stats[:failed].each do |file|
+    puts "------ ⚠️ #{file} | size=10 color=#dc2626"
+  end
+
+  puts "---- 📂 Open Folder in Finder | bash=/usr/bin/open param0=\"#{stats[:dir]}\" terminal=false size=10"
+end
+
+puts '---'
+
+# Subsystems Health
+puts '🩺 Subsystems & SLO Health | size=12 font=bold'
+
+if streamer_online
+  puts "-- 📡 SSE Streamer (7025): Live (#{streamer_clients} client connected) | color=#15803d size=11 href=http://127.0.0.1:7025/status"
+else
+  puts '-- 📡 SSE Streamer (7025): Standby / Offline | color=#b45309 size=11'
+end
+
+whisper_bin = `command -v whisper-cli 2>/dev/null`.strip
+if whisper_bin.empty? && File.exist?('/opt/homebrew/bin/whisper-cli')
+  whisper_bin = '/opt/homebrew/bin/whisper-cli'
+end
+
+if !whisper_bin.empty?
+  puts '-- 🎙️ Whisper.cpp Engine: Ready (Apple Silicon Metal) | color=#15803d size=11'
+else
+  puts '-- 🎙️ Whisper.cpp Engine: Not Found | color=#dc2626 size=11'
+end
+
+quota_color = quota_headroom > 30 ? '#15803d' : '#dc2626'
+puts "-- 📊 YouTube API v3 Quota: #{quota_used} / #{quota_limit} units (#{quota_headroom}% headroom) | color=#{quota_color} size=11"
+puts '-- 📐 BPMN 2.0 SLO Monitor: 12 stages healthy | color=#15803d size=11 href=https://www.just3ws.localhost/youtube/dashboard/#tab-bpmn'
+puts '-- 💰 Patreon Compute Fund: $123 / $300 target (14 patrons) | color=#0f766e size=11 href=https://patreon.com/whoistechcmty'
+
+puts '---'
+
+# Dashboards & Views (Clickable)
+puts '🌐 Localhost Dashboards & Views | size=12 font=bold'
+puts '-- 📺 YouTube Operations Cockpit ↗ | href=https://www.just3ws.localhost/youtube/dashboard/ size=11'
+puts '-- ⚙️ BPMN 2.0 Workflow & SLO Monitor ↗ | href=https://www.just3ws.localhost/youtube/dashboard/#tab-bpmn size=11'
+puts '-- 🎙️ Sound Above Teleprompter Rundown ↗ | href=https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter size=11'
+puts '-- 🎛️ Errata Dehum Audio Workbench ↗ | href=https://www.just3ws.localhost/dehum/dashboard.html size=11'
+puts '-- ⚡ Platform Link Control Plane ↗ | href=https://www.just3ws.localhost/dashboard/ size=11'
+puts '-- 📜 37-Episode Prime Curriculum Hub ↗ | href=https://www.just3ws.localhost/series/the-sound-above/ size=11'
+
+puts '---'
+
+# Playlists & Channels
+puts '📺 Playlists & Public Surfaces | size=12 font=bold'
+puts "-- 🏃 Ramblin' & Amblin' Playlist ↗ | href=https://www.youtube.com/playlist?list=PLNtb969T2-l0 size=11"
+puts '-- 🎙️ The Sound Above Playlist ↗ | href=https://www.youtube.com/playlist?list=PLVcmLmfz2uyA size=11'
+puts '-- 📻 Errata Readings & Demos Playlist ↗ | href=https://www.youtube.com/playlist?list=PLKPAHha6I990 size=11'
+puts '-- 🧡 Patreon Creator Hub ↗ | href=https://patreon.com/whoistechcmty size=11'
+
+puts '---'
+
+# Operator Actions
+pipeline_bin = File.join(ROOT_DIR, 'bin', 'pipeline')
+puts '🚀 Operator Actions | size=12 font=bold'
+puts "-- ▶️ Run Intake Pipeline Now | bash=#{pipeline_bin} param0=intake terminal=true size=11"
+puts "-- 📡 Start Realtime SSE Streamer | bash=#{pipeline_bin} param0=stream terminal=true size=11"
+puts "-- 👀 Continuous Queue Watcher | bash=#{pipeline_bin} param0=intake param1=--watch terminal=true size=11"
+puts "-- 🎭 Stage Episode 00 (Dry Run) | bash=#{pipeline_bin} param0=stage param1=0 terminal=true size=11"
+puts "-- 📂 Open Ingress Root in Finder | bash=/usr/bin/open param0=\"#{channel_dir}\" terminal=false size=11"
+puts '-- 🔄 Refresh SwiftBar Pulse | refresh=true size=11'

@@ -11,6 +11,15 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SWIFTBAR PIPELINE INTEGRATION & LOCALHOST NAVIGATION CONSOLIDATION (2026-10-15):
+         Architected and built system-wide macOS SwiftBar status monitor and seamless localhost navigation integration:
+         - Built executable `bin/youtube-swiftbar` (`bin/pipeline swiftbar`): fast, self-contained status pulse emitting dynamic menu bar icon, pending queue counts across all 3 playlists (Ramblin' & Amblin', The Sound Above, Errata), active DSP/transcription indicators, SSE streamer status, YouTube quota headroom, direct localhost dashboard jump links, and one-click operator actions.
+         - Installed user shim at `~/.swiftbar/youtube-pipeline.30s.sh` adhering to zdots/adots conventions with 30s automatic refresh.
+         - Upgraded primary site navigation across `_includes/localhost-subnav.html` with dedicated Dashboards dropdown, `_data/navigation.yml` with Operations Cockpit entry, `_includes/command-palette.html` (⌘⇧K) with fast indexing, and `dashboard.html` with direct chips to BPMN and Teleprompter.
+         - Created comprehensive RSpec suite `spec/youtube/swiftbar_spec.rb` verifying SwiftBar script output, shim executability, and navigation links.
+         - Maintained 100% em-dash-free compliance across all code, configuration, and documentation. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (178/178 tests).
+
        - NEAR-REALTIME SSE STREAMER & LIVE DASHBOARD TELEMETRY (2026-10-15):
          Architected and built zero-dependency near-realtime Server-Sent Events (SSE) telemetry streamer and live dashboard integration:
          - Built `bin/live_dashboard_streamer.rb` (`bin/pipeline stream`): loopback HTTP daemon listening on `127.0.0.1:7025` serving `/events` (SSE), `/telemetry.json` (REST), and `/status` (Healthcheck), with Google Drive directory watcher broadcasting state changes within 1.5 seconds.

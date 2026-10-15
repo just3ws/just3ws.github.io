@@ -7,7 +7,7 @@ usage() {
 Usage: ./bin/pipeline <command>
 
 Command grammar:
-  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | resumes | youtube | episode | patreon | stage | intake | stream | help
+  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | resumes | youtube | episode | patreon | stage | intake | stream | swiftbar | help
 
 Commands:
   generate  Regenerate data-driven interview/video pages.
@@ -29,6 +29,7 @@ Commands:
   stage     Run 37-episode staging & rehearsal workflow harness across all 7 gates.
   intake    Run Google Drive media intake pipeline (status, process, watch, dry-run).
   stream    Run near-realtime SSE & telemetry streaming server on port 7025.
+  swiftbar  Run YouTube pipeline status and menu bar pulse for SwiftBar.
   help      Show this help.
 USAGE
 }
@@ -96,6 +97,10 @@ case "${1:-help}" in
   stream|live-stream|dashboard-stream)
     shift
     ruby bin/live_dashboard_streamer.rb "$@"
+    ;;
+  swiftbar|youtube-swiftbar)
+    shift
+    ruby bin/youtube-swiftbar "$@"
     ;;
   help|-h|--help)
     usage
