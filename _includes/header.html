@@ -53,11 +53,13 @@
                 </a>
                 <div class="nav-dropdown-menu" role="menu">
                   {% for child in item.children %}
-                    {% assign child_active = false %}
-                    {% if current_url == child.href or current_url contains child.href and child.href != "/" %}
-                      {% assign child_active = true %}
-                    {% endif %}
-                    <a href="{{ child.href }}" class="dropdown-item{% if child_active %} is-active{% endif %}" role="menuitem">{{ child.label }}</a>
+                    {% unless child.localhost_only and jekyll.environment == "production" %}
+                      {% assign child_active = false %}
+                      {% if current_url == child.href or current_url contains child.href and child.href != "/" %}
+                        {% assign child_active = true %}
+                      {% endif %}
+                      <a href="{{ child.href }}" class="dropdown-item{% if child_active %} is-active{% endif %}" role="menuitem">{{ child.label }}</a>
+                    {% endunless %}
                   {% endfor %}
                 </div>
               </div>

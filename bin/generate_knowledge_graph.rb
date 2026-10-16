@@ -228,7 +228,7 @@ class KnowledgeGraphGenerator
       ep_num = format("%02d", raw_num.to_i)
       ep_id = "episode-#{ep_num}"
       ep_label = "Ep #{ep_num}: #{ep['title']} (#{ep['interviewee']})"
-      ep_url = raw_num.to_i == 0 ? "/youtube/dashboard/#tab-workshop" : "/series/the-sound-above/episode-#{ep_num}/"
+      ep_url = raw_num.to_i == 0 ? "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" : "/series/the-sound-above/episode-#{ep_num}/"
       ep_desc = ep.dig("narrative", "theme") || ep.dig("narrative_plot", "theme") || ep["era_name"] || ""
       add_node(nodes, node_ids, ep_id, ep_label, "Episode", 9, ep_url, val: 16, description: ep_desc.to_s)
 
