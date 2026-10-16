@@ -21,6 +21,8 @@ require 'time'
 require 'open3'
 require 'shellwords'
 require_relative 'lib/youtube_client'
+require_relative 'lib/job_substate_tracker'
+require_relative 'lib/pipeline_classifier'
 
 ROOT_DIR = File.expand_path('..', __dir__)
 CONFIG_PATH = File.join(ROOT_DIR, '_data', 'media_intake_targets.yml')
@@ -34,7 +36,7 @@ TRANSCRIPTS_DATA_DIR = File.join(ROOT_DIR, '_data', 'transcripts')
 VIDEO_ASSETS_PATH = File.join(ROOT_DIR, '_data', 'video_assets.yml')
 
 class MediaIntakePipeline
-  attr_reader :config, :client, :options
+  attr_reader :config, :client, :options, :state_dir
   attr_accessor :halt_requested, :stop_requested
 
   def self.log_activity(stage, message, level: 'info', details: {})
@@ -125,6 +127,7 @@ class MediaIntakePipeline
     @options = options
     @config = load_config
     @client = nil unless @options[:dry_run]
+    @state_dir = options[:state_dir] || STATE_DIR
     @halt_requested = false
     @stop_requested = false
     @current_processing_path = nil
@@ -322,9 +325,27 @@ class MediaIntakePipeline
 
   # Scan and process queued items with cross-channel 1-at-a-time serialization and FIFO ordering
   def run(channel = nil, target_filter = nil)
-    FileUtils.mkdir_p(STATE_DIR)
+    FileUtils.mkdir_p(@state_dir)
     self_heal_orphaned_state!
-    File.write(PID_FILE, Process.pid.to_s)
+
+    # Concurrency Guard: Check if another worker process is already alive
+    if File.exist?(PID_FILE)
+      existing_pid = File.read(PID_FILE).strip.to_i
+      if existing_pid > 0 && existing_pid != Process.pid
+        is_alive = begin
+          Process.kill(0, existing_pid)
+          true
+        rescue StandardError
+          false
+        end
+        if is_alive
+          puts "⏳ Another worker (PID #{existing_pid}) is currently active. Aborting."
+          return 0
+        end
+      end
+    end
+
+    File.write(PID_FILE, Process.pid.to_s) unless options[:dry_run]
 
     begin
       # 1. Global Concurrency Guard: Ensure zero active processing files across ALL channels
@@ -392,7 +413,9 @@ class MediaIntakePipeline
 
       total_processed
     ensure
-      FileUtils.rm_f(PID_FILE) if File.exist?(PID_FILE) && File.read(PID_FILE).strip.to_i == Process.pid
+      unless options[:dry_run]
+        FileUtils.rm_f(PID_FILE) if File.exist?(PID_FILE) && File.read(PID_FILE).strip.to_i == Process.pid
+      end
     end
   end
 
@@ -438,6 +461,7 @@ class MediaIntakePipeline
   # Single File Ingestion & State Machine
   def process_file(file_path, target_name, target_info, channel = 'whoistechcmty')
     filename = File.basename(file_path)
+    tracker = JobSubstateTracker.load(filename, file_path, @state_dir)
     target_dir = File.join(base_path, channel, target_name)
     staged_dir = File.join(target_dir, 'staged')
     processing_dir = File.join(target_dir, 'processing')
@@ -484,12 +508,14 @@ class MediaIntakePipeline
       processing_path = file_path
     else
       FileUtils.mv(file_path, processing_path)
+      tracker.relocate_file_path!(processing_path)
+      tracker.meta_phase = 'processing'
       puts "🔒 Locked: #{filename} moved to processing/"
       log_activity('lock', "Acquired concurrency lock for #{filename} (Target: #{target_name})", level: 'info', details: { 'filename' => filename, 'target' => target_name })
     end
 
-    scratch_wav = "/tmp/intake_scratch_#{$$}_#{Time.now.to_i}.wav"
-    scratch_prefix = "/tmp/intake_transcribe_#{$$}_#{Time.now.to_i}"
+    scratch_wav = tracker.scratch_wav_path
+    scratch_prefix = tracker.scratch_prefix
     @current_processing_path = processing_path
     @current_original_path = file_path
     @current_scratch_files = [scratch_wav, "#{scratch_prefix}.txt", "#{scratch_prefix}.vtt"]
@@ -509,11 +535,18 @@ class MediaIntakePipeline
       end
 
       # 3. Audio Extraction via ffmpeg stream
-      puts "🎙 Extracting audio track to transient scratch WAV..."
-      t_dsp_start = Time.now
-      extract_audio(processing_path, scratch_wav)
-      duration_dsp = (Time.now.-(t_dsp_start)).round(2)
-      log_activity('dsp', "Extracted 16kHz audio from #{filename} in #{duration_dsp}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_dsp })
+      if tracker.can_skip_audio_dsp?
+        duration_dsp = tracker.step_data(:audio_dsp)['duration_seconds'] || 0.0
+        puts "⏭️ [Substate: audio_dsp] Step already completed (#{duration_dsp}s). Reusing scratch audio: #{File.basename(scratch_wav)}"
+      else
+        tracker.start_step(:audio_dsp)
+        puts "🎙 Extracting audio track to transient scratch WAV..."
+        t_dsp_start = Time.now
+        extract_audio(processing_path, scratch_wav)
+        duration_dsp = (Time.now.-(t_dsp_start)).round(2)
+        tracker.complete_step(:audio_dsp, 'wav_path' => scratch_wav, 'duration_seconds' => duration_dsp)
+        log_activity('dsp', "Extracted 16kHz audio from #{filename} in #{duration_dsp}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_dsp })
+      end
 
       if self.class.stopped? || @stop_requested
         puts "🛑 Stop detected after audio extraction. Aborting #{filename}..."
@@ -524,11 +557,21 @@ class MediaIntakePipeline
       # 4. Local Transcription via zdots ztranscribe
       transcript_data = { text: "", vtt: "" }
       if target_info['auto_title_from_speech'] || target_info['transcribe_with_whisper']
-        puts "🧠 Running local ztranscribe speech recognition from zdots on Apple Silicon..."
-        t_whisper_start = Time.now
-        transcript_data = transcribe_audio(scratch_wav, scratch_prefix)
-        duration_whisper = (Time.now.-(t_whisper_start)).round(2)
-        log_activity('whisper', "ztranscribe STT completed for #{filename} in #{duration_whisper}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_whisper })
+        if tracker.can_skip_transcription?
+          stt_info = tracker.step_data(:transcription)
+          transcript_data[:text] = stt_info['text'] || (File.read("#{scratch_prefix}.txt") rescue "")
+          transcript_data[:vtt] = stt_info['vtt'] || (File.read("#{scratch_prefix}.vtt") rescue "")
+          duration_whisper = stt_info['duration_seconds'] || 0.0
+          puts "⏭️ [Substate: transcription] Step already completed (#{duration_whisper}s). Reusing cached transcript."
+        else
+          tracker.start_step(:transcription)
+          puts "🧠 Running local ztranscribe speech recognition from zdots on Apple Silicon..."
+          t_whisper_start = Time.now
+          transcript_data = transcribe_audio(scratch_wav, scratch_prefix)
+          duration_whisper = (Time.now.-(t_whisper_start)).round(2)
+          tracker.complete_step(:transcription, 'text' => transcript_data[:text], 'vtt' => transcript_data[:vtt], 'duration_seconds' => duration_whisper)
+          log_activity('whisper', "ztranscribe STT completed for #{filename} in #{duration_whisper}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_whisper })
+        end
       end
 
       if self.class.stopped? || @stop_requested
@@ -538,9 +581,11 @@ class MediaIntakePipeline
       end
 
       # 5. Metadata Synthesis & Dossier Resolution
+      tracker.start_step(:metadata_synthesis)
       t_meta_start = Time.now
       metadata = synthesize_metadata(processing_path, target_name, target_info, transcript_data, sidecar_data)
       duration_meta = (Time.now.-(t_meta_start)).round(2)
+      tracker.complete_step(:metadata_synthesis, 'title' => metadata[:title], 'privacy' => metadata[:privacy], 'tags' => metadata[:tags], 'duration_seconds' => duration_meta)
       log_activity('metadata', "Synthesized title: \"#{metadata[:title]}\" (#{duration_meta}s)", level: 'info', details: { 'filename' => filename, 'title' => metadata[:title], 'duration_seconds' => duration_meta })
       puts "\n📋 Synthesized Metadata:"
       puts "   Title:    #{metadata[:title]}"
@@ -556,81 +601,103 @@ class MediaIntakePipeline
         video_id = "DRY_RUN_#{Time.now.to_i}"
       else
         ensure_client!
-        puts "🚀 Streaming #{format_size(File.size(processing_path))} to YouTube Data API v3..."
-        payload = {
-          "snippet" => {
-            "title" => metadata[:title],
-            "description" => metadata[:description],
-            "tags" => metadata[:tags],
-            "categoryId" => target_info['category_id'] || "28",
-            "defaultLanguage" => "en"
-          },
-          "status" => {
-            "privacyStatus" => metadata[:privacy],
-            "selfDeclaredMadeForKids" => false,
-            "embeddable" => true
+        if tracker.can_skip_youtube_upload?(client)
+          video_id = tracker.step_data(:youtube_upload)['video_id']
+          duration_upload = tracker.step_data(:youtube_upload)['duration_seconds'] || 0.0
+          puts "⏭️ [Substate: youtube_upload] Video #{video_id} already uploaded and verified on YouTube. Skipping upload."
+        else
+          tracker.start_step(:youtube_upload)
+          puts "🚀 Streaming #{format_size(File.size(processing_path))} to YouTube Data API v3..."
+          payload = {
+            "snippet" => {
+              "title" => metadata[:title],
+              "description" => metadata[:description],
+              "tags" => metadata[:tags],
+              "categoryId" => target_info['category_id'] || "28",
+              "defaultLanguage" => "en"
+            },
+            "status" => {
+              "privacyStatus" => metadata[:privacy],
+              "selfDeclaredMadeForKids" => false,
+              "embeddable" => true
+            }
           }
-        }
-        upload_res = nil
-        t_upload_start = Time.now
-        3.times do |attempt|
-          begin
-            upload_res = client.upload_video(processing_path, payload)
-            break
-          rescue StandardError => err
-            if attempt < 2
-              backoff = 2 * (attempt + 1)
-              warn "⚠️ [Self-Healing] Upload attempt #{attempt + 1} hit error: #{err.message}. Retrying in #{backoff}s..."
-              log_activity('self_healing', "Upload attempt #{attempt + 1} retrying after error: #{err.message}", level: 'warning')
-              sleep backoff
-            else
-              raise err
+          upload_res = nil
+          t_upload_start = Time.now
+          3.times do |attempt|
+            begin
+              upload_res = client.upload_video(processing_path, payload)
+              break
+            rescue StandardError => err
+              if attempt < 2
+                backoff = 2 * (attempt + 1)
+                warn "⚠️ [Self-Healing] Upload attempt #{attempt + 1} hit error: #{err.message}. Retrying in #{backoff}s..."
+                log_activity('self_healing', "Upload attempt #{attempt + 1} retrying after error: #{err.message}", level: 'warning')
+                sleep backoff
+              else
+                raise err
+              end
             end
           end
+          duration_upload = (Time.now.-(t_upload_start)).round(2)
+          video_id = upload_res["id"]
+          tracker.complete_step(:youtube_upload, 'video_id' => video_id, 'youtube_url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload)
+          puts "✅ Video uploaded successfully in #{duration_upload}s! Video ID: #{video_id}"
+          puts "   Link: https://youtu.be/#{video_id}"
+          log_activity('youtube', "Uploaded #{filename} to YouTube as #{video_id} in #{duration_upload}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload })
         end
-        duration_upload = (Time.now.-(t_upload_start)).round(2)
-        video_id = upload_res["id"]
-        puts "✅ Video uploaded successfully in #{duration_upload}s! Video ID: #{video_id}"
-        puts "   Link: https://youtu.be/#{video_id}"
-        log_activity('youtube', "Uploaded #{filename} to YouTube as #{video_id} in #{duration_upload}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload })
 
         # 7. Add to Playlist
         if target_info['playlist_id']
-          puts "📋 Adding video #{video_id} to playlist #{target_info['playlist_id']}..."
-          playlist_added = false
-          3.times do |attempt|
-            begin
-              client.add_playlist_item(target_info['playlist_id'], video_id)
-              puts "   ✅ Video #{video_id} added to playlist #{target_info['playlist_id']}."
-              log_activity('playlist', "Added #{video_id} to playlist #{target_info['playlist_id']}", level: 'info', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'] })
-              playlist_added = true
-              break
-            rescue StandardError => pl_err
-              if attempt < 2
-                sleep (2 ** attempt)
-              else
-                puts "   ⚠️ Could not add to playlist #{target_info['playlist_id']}: #{pl_err.message}"
-                log_activity('warning', "Failed adding #{video_id} to playlist #{target_info['playlist_id']}: #{pl_err.message}", level: 'warning', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'], 'error' => pl_err.message })
+          if tracker.step_completed?(:playlist_assignment)
+            puts "⏭️ [Substate: playlist_assignment] Video #{video_id} already in playlist #{target_info['playlist_id']}."
+          else
+            tracker.start_step(:playlist_assignment)
+            puts "📋 Adding video #{video_id} to playlist #{target_info['playlist_id']}..."
+            playlist_added = false
+            3.times do |attempt|
+              begin
+                client.add_playlist_item(target_info['playlist_id'], video_id)
+                puts "   ✅ Video #{video_id} added to playlist #{target_info['playlist_id']}."
+                log_activity('playlist', "Added #{video_id} to playlist #{target_info['playlist_id']}", level: 'info', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'] })
+                playlist_added = true
+                break
+              rescue StandardError => pl_err
+                if attempt < 2
+                  sleep (2 ** attempt)
+                else
+                  puts "   ⚠️ Could not add to playlist #{target_info['playlist_id']}: #{pl_err.message}"
+                  log_activity('warning', "Failed adding #{video_id} to playlist #{target_info['playlist_id']}: #{pl_err.message}", level: 'warning', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'], 'error' => pl_err.message })
+                end
               end
+            end
+            if playlist_added
+              tracker.complete_step(:playlist_assignment, 'playlist_id' => target_info['playlist_id'])
             end
           end
         end
 
         # 8. Attach Captions Track (WebVTT)
         if transcript_data[:vtt] && !transcript_data[:vtt].strip.empty?
-          puts "📝 Uploading verified WebVTT caption track to YouTube..."
-          t_cap_start = Time.now
-          3.times do |attempt|
-            begin
-              client.upload_caption(video_id, transcript_data[:vtt])
-              duration_captions = (Time.now.-(t_cap_start)).round(2)
-              log_activity('captions', "Uploaded WebVTT captions track to video #{video_id} in #{duration_captions}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'duration_seconds' => duration_captions })
-              break
-            rescue StandardError => cap_err
-              if attempt < 2
-                sleep 2
-              else
-                warn "⚠️ [Captions Warning] Could not upload captions track: #{cap_err.message}"
+          if tracker.step_completed?(:captions_upload)
+            puts "⏭️ [Substate: captions_upload] Captions track already uploaded for #{video_id}."
+          else
+            tracker.start_step(:captions_upload)
+            puts "📝 Uploading verified WebVTT caption track to YouTube..."
+            t_cap_start = Time.now
+            3.times do |attempt|
+              begin
+                client.upload_caption(video_id, transcript_data[:vtt])
+                duration_captions = (Time.now.-(t_cap_start)).round(2)
+                tracker.complete_step(:captions_upload, 'duration_seconds' => duration_captions)
+                log_activity('captions', "Uploaded WebVTT captions track to video #{video_id} in #{duration_captions}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'duration_seconds' => duration_captions })
+                break
+              rescue StandardError => cap_err
+                if attempt < 2
+                  sleep 2
+                else
+                  warn "⚠️ [Captions Warning] Could not upload captions track: #{cap_err.message}"
+                end
               end
             end
           end
@@ -640,14 +707,23 @@ class MediaIntakePipeline
         record_in_postgres(video_id, metadata, target_name)
 
         # 10. Persist Transcript & Register in Local Knowledge System
-        if transcript_data[:text] && !transcript_data[:text].strip.empty?
-          metadata[:video_id] = video_id
-          save_transcript_dossier(target_name, filename, metadata, transcript_data)
-          update_local_knowledge_system!
+        if tracker.step_completed?(:datalake_sync)
+          puts "⏭️ [Substate: datalake_sync] Already synced to local knowledge system."
+        else
+          tracker.start_step(:datalake_sync)
+          if transcript_data[:text] && !transcript_data[:text].strip.empty?
+            metadata[:video_id] = video_id
+            save_transcript_dossier(target_name, filename, metadata, transcript_data)
+            update_local_knowledge_system!
+            tracker.complete_step(:datalake_sync, 'transcript_saved' => true)
+          else
+            tracker.complete_step(:datalake_sync, 'transcript_saved' => false, 'note' => 'no_speech')
+          end
         end
       end
 
       # 11. Archival & Eviction to processed/
+      tracker.start_step(:archival)
       month_dir = File.join(processed_dir, Time.now.strftime('%Y-%m'))
       FileUtils.mkdir_p(month_dir) unless options[:dry_run]
       final_dest = File.join(month_dir, filename)
@@ -687,12 +763,14 @@ class MediaIntakePipeline
           'performance_metrics' => perf_metrics
         }
         File.write(receipt_path, JSON.pretty_generate(receipt_data))
+        tracker.complete_step(:archival, 'final_dest' => final_dest, 'receipt_path' => receipt_path)
+        tracker.cleanup_on_success!
         puts "📦 Archived: Moved to processed/#{Time.now.strftime('%Y-%m')}/#{filename}"
         puts "📄 Ingress Receipt written: #{File.basename(receipt_path)}"
         puts "⏱️ Execution Telemetry: Total #{duration_total}s (DSP: #{duration_dsp}s, Whisper: #{duration_whisper}s, Upload: #{duration_upload}s at #{upload_mb_s} MB/s)"
 
         begin
-          hist_file = File.join(state_dir, 'pipeline_execution_history.jsonl')
+          hist_file = File.join(@state_dir, 'pipeline_execution_history.jsonl')
           File.open(hist_file, 'a') do |hf|
             hf.puts(JSON.dump({
               'timestamp' => Time.now.utc.iso8601,
@@ -715,10 +793,20 @@ class MediaIntakePipeline
       warn "❌ [Error] Failed processing #{filename}: #{e.message}"
       warn e.backtrace.first(5).join("\n")
       log_activity('error', "Failed processing #{filename}: #{e.message}", level: 'error', details: { 'filename' => filename, 'error' => e.message })
+      tracker.fail_step(tracker.current_step || 'unknown', e.message, e.backtrace)
+
+      begin
+        triage = PipelineClassifier.new.classify_error_triage(e.message, backtrace: e.backtrace)
+        puts "🧠 [Classifier Triage] Recommended action: #{triage[:decision]} (Confidence: #{(triage[:confidence] * 100).round}%)"
+        log_activity('triage', "Classifier evaluated failure on #{filename}: #{triage[:decision]} (#{(triage[:confidence] * 100).round}%)", details: triage)
+      rescue StandardError => triage_err
+        warn "⚠️ Could not run classifier error triage: #{triage_err.message}"
+      end
 
       unless options[:dry_run]
         failed_dest = File.join(failed_dir, filename)
         FileUtils.mv(processing_path, failed_dest) if File.exist?(processing_path)
+        tracker.relocate_file_path!(failed_dest)
         FileUtils.mv(sidecar_path, File.join(failed_dir, File.basename(sidecar_path))) if sidecar_path && File.exist?(sidecar_path)
         err_log = File.join(failed_dir, "#{filename}.error.log")
         File.write(err_log, "Failed at: #{Time.now.utc.iso8601}\nError: #{e.message}\n\n#{e.backtrace.join("\n")}\n")
@@ -727,9 +815,6 @@ class MediaIntakePipeline
 
       false
     ensure
-      FileUtils.rm_f(scratch_wav) if File.exist?(scratch_wav)
-      FileUtils.rm_f("#{scratch_prefix}.txt") if File.exist?("#{scratch_prefix}.txt")
-      FileUtils.rm_f("#{scratch_prefix}.vtt") if File.exist?("#{scratch_prefix}.vtt")
       @current_processing_path = nil
       @current_original_path = nil
     end
@@ -811,11 +896,17 @@ class MediaIntakePipeline
 
     privacy = sidecar_data['privacy'] || target_info['default_privacy'] || 'unlisted'
 
+    classifier = PipelineClassifier.new
+    archetype_res = classifier.classify_archetype(transcript_data[:text], metadata: { filename: File.basename(video_path) })
+    puts "   🧠 [Classifier Archetype] Inferred: #{archetype_res[:decision]} (Confidence: #{(archetype_res[:confidence] * 100).round}%)"
+
     {
       title: title,
       description: description,
       tags: tags.uniq,
-      privacy: privacy
+      privacy: privacy,
+      inferred_archetype: archetype_res[:decision],
+      archetype_confidence: archetype_res[:confidence]
     }
   end
 
@@ -1020,10 +1111,16 @@ class MediaIntakePipeline
 
   # Register newly published asset into _data/video_assets.yml
   def register_in_video_assets(slug, metadata, target_name)
-    assets = File.exist?(VIDEO_ASSETS_PATH) ? YAML.safe_load(File.read(VIDEO_ASSETS_PATH)) : []
-    assets = [] unless assets.is_a?(Array)
+    raw = File.exist?(VIDEO_ASSETS_PATH) ? YAML.safe_load(File.read(VIDEO_ASSETS_PATH), permitted_classes: [Date, Time], aliases: true) : nil
+    assets = if raw.is_a?(Hash) && raw['items'].is_a?(Array)
+               raw['items']
+             elsif raw.is_a?(Array)
+               raw
+             else
+               []
+             end
 
-    return if assets.any? { |a| a["transcript_id"] == slug || (a["platforms"] || []).any? { |p| p["asset_id"] == metadata[:video_id] } }
+    return if assets.any? { |a| a["id"] == slug || a["transcript_id"] == slug || (a["platforms"] || []).any? { |p| p["asset_id"] == metadata[:video_id] } }
 
     asset_entry = {
       "id" => slug,

@@ -11,6 +11,60 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - DASHBOARD QUEUE SYNTAX RESTORATION & SHORT RAMBLIN' TOPICS DRIVE SYNC (2026-10-16):
+         Restored `#tab-queue` Kanban card and list rendering by fixing unclosed function in dashboard script, and expanded Ramblin' & Amblin' with 12 short-format dispatches rooted in 20-year CareerOS war stories, synced directly to Google Drive:
+         - Dashboard Queue Script Syntax Fix (`youtube/dashboard.html`):
+           - Isolated root cause of empty lists on `https://www.just3ws.localhost/youtube/dashboard/#tab-queue`: `triggerPipelineAction` was missing its closing brace `}`, causing subsequent rendering functions to nest inside it and triggering `SyntaxError: Unexpected end of input`.
+           - Closed the function, validated entire script syntax via Node, and redeployed localhost.
+         - Short-Format Ramblin' & Amblin' Topics & Google Drive Sync (`bin/sync_topic_prompts.rb`, `docs/prompts/`):
+           - Curated 12 fresh, punchy 3 to 6 minute short-format topics rooted in CareerOS history, incidents, and practitioner reflections:
+             * TicketsNow 3:00 AM Ticket Lock (inventory reservation race conditions & cache drift).
+             * Groupon 4KB Cookie Storm (session bloat & Nginx 400 Bad Request drops).
+             * ActiveCampaign Online MySQL Alteration (10k writes/sec zero-downtime migration).
+             * OneMain Financial 2:00 AM Alert Deluge (OpenTelemetry noise reduction & user-symptom alerts).
+             * C.H. Robinson AS/400 Logistics Mainframe (respecting 30-year boring reliability).
+             * 8th Light & Tandem Pairing Confessional (dropping the mask of invulnerability).
+             * BP Energy Trading Desk (high-stakes latency & fail-safe design).
+             * Synthetic Slop vs. The Blink Test (why reading code and characterization tests matter more than generation).
+             * Single-Operator Platform Leverage (why small Unix/Maildir tools beat 14-person architecture committees).
+             * Imposter Syndrome & Creative Burnout (UGtastic & Fluffle scope fatigue & compassionate recovery).
+             * The Lost Art of the Stack Trace (listening to the machine from UI to system call).
+             * Boring Technology Pays the Rent (Dan McKinley's innovation tokens in real life).
+           - Synchronized Markdown sheets and JSON specifications directly to Google Drive intake (`whoistechcmty/ramblin-amblin/TOPIC_PROMPTS.md`, `topic_prompts.json`) and local docs (`docs/prompts/ramblin-amblin-topics.md`).
+           - Site built across 1,035 pages and deployed to localhost; 115/115 YouTube specs passing; 0 em-dashes.
+
+       - LOCAL JEV CLASSIFIER, FLUFFLE RETROSPECTIVE & ORAL HISTORY SCALING PRECURSOR (2026-10-16):
+         Engineered local Jev-style decision classifier engine, authored the Fluffle precursor retrospective article and teleprompter rundown, integrated April 2023 distributed whisper.cpp history into the timeline and knowledge graph, and verified zero-egress decisioning:
+         - Local Jev-Style Pipeline Classifier (`bin/lib/pipeline_classifier.rb`, `spec/youtube/pipeline_classifier_spec.rb`):
+           - Implemented System One decision model emitting strictly typed JSON probability distributions over discrete options with zero cloud egress.
+           - Ingress Archetype Classifier: routes candidate transcripts into `freeform_field_notes`, `structured_errata`, or `technical_rewatch`.
+           - Self-Healing Error Triage: routes pipeline step exceptions into `transient_network_retry`, `audio_codec_resample`, `credential_refresh`, or `quarantine_operator_review`.
+           - Integrated into `bin/intake_drive_video.rb` for metadata archetype inference and failure triage.
+           - Comprehensive test coverage: 9/9 classifier specs and 115/115 YouTube specs passing cleanly.
+         - The Fluffle Precursor Retrospective & Errata Broadcast Curation (`_posts/`, `docs/prompts/`, `_data/episodes/`, `obs/teleprompter/`):
+           - Authored long-form technical article `_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md`: documenting the 2013 pre-Whisper transcription wall, April 2023 whisper.cpp breakthrough, 5-node Raspberry Pi cluster, Jason Carpenter's Dead Rabbit Radio dataset, 2,034 generated transcripts, imposter syndrome, and the lineage leading to modern local AI media automation.
+           - Curated Prompt 6 in `docs/prompts/errata-topics.md` and synced directly to Google Drive intake (`whoistechcmty/errata/TOPIC_PROMPTS.md`).
+           - Authored 6-act spoken teleprompter script and semantic episode dossier (`_data/episodes/errata-fluffle-precursor.yml`, `obs/teleprompter/errata-fluffle-precursor.textream`).
+         - Knowledge Graph & Datalake Synchronization:
+           - Ingested new article into `career_datalake.json` and `.jsonl`.
+           - Added April 2023 `fluffle-distributed-whisper-experiment` to `_data/community_timeline.yml`.
+           - Regenerated global knowledge graph (`_data/knowledge_graph.json`: 469 nodes, 742 edges, 0 orphans, 0 duplicate IDs) and AST cartography (`graphify`: 9,734 nodes, 12,688 edges, 1,195 communities).
+           - Localhost site built across 1,034 pages and deployed with HTTP 200 verification.
+
+       - NESTED COMPOSITE STATECHART & DISCRETE JOB SUBSTATE CHECKPOINTING (2026-10-16):
+         Engineered discrete checkpointing and idempotency substate tracking across all 8 ingestion phases (`audio_dsp`, `transcription`, `metadata_synthesis`, `youtube_upload`, `playlist_assignment`, `captions_upload`, `datalake_sync`, `archival`):
+         - Job Substate Tracker (`bin/lib/job_substate_tracker.rb`, `spec/youtube/job_substate_tracker_spec.rb`):
+           - Checkpoints every step in atomic JSON sidecars (`~/.local/state/just3ws/jobs/<filename>.state.json`).
+           - Rerun idempotency: automatically skips completed steps, verifies YouTube Data API v3 video ID liveness to prevent duplicate uploads, and preserves scratch WAV and transcription caches in dedicated scratch directories (`~/.local/state/just3ws/scratch/<filename>/`).
+           - Comprehensive test coverage: 10/10 unit tests passing.
+         - Streamer Telemetry & Operations Cockpit (`bin/live_dashboard_streamer.rb`, `youtube/dashboard.html`):
+           - Ingress funnel enriches all pending, processing, and quarantined cards with discrete substate badge indicators (`✓`, `🔄`, `❌`, `⏳`).
+           - Real-time BPMN mapping: maps active worker substate to corresponding BPMN stage.
+           - Tab 8 Architecture updated with Mermaid composite statechart diagram and documented schema contract in `docs/architecture/pipeline-contracts-and-schemas.md`.
+         - Single-Worker Concurrency Lock Hardening (`bin/intake_drive_video.rb`):
+           - Guarded worker PID locking against dry-run and stale process collisions.
+           - Playlist `PLNtb969T2-l0` verified with all 8 Ramblin' & Amblin' videos attached and synchronized.
+
        - SOFTWARE CRAFTSMANSHIP ENGINEERING PRINCIPLES, SCMC 2-YEAR TRANSITION & KNOWLEDGE GRAPH MEMORY (2026-10-16):
          Eliminated remaining "crucible" terminology in favor of Software Craftsmanship principles, calibrated SCMC co-founding and 2-year anniversary transition across all surfaces, integrated persistent code/knowledge graphing for context retention, and achieved 100% clean end-to-end validation across the site:
          - Software Craftsmanship Framing & "Crucible" Elimination:

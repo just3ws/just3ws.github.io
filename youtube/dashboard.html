@@ -2007,24 +2007,36 @@ body_class: page-youtube-dashboard
     IdleReady --> CandidateDiscovered: File detected in pending/
     CandidateDiscovered --> VerifyingStability: Sample file size
     VerifyingStability --> CandidateDiscovered: Size changing (wait next cycle)
-    VerifyingStability --> ConcurrencyLocked: Size stable across 5 seconds
+    VerifyingStability --> Processing: Size stable across 5 seconds (lock acquired)
 
-    ConcurrencyLocked --> AudioExtraction: Move to processing/, acquire lock
-    AudioExtraction --> Transcribing: Scratch audio written to /tmp
-    Transcribing --> MetadataSynthesis: Captions & plain text emitted
-    MetadataSynthesis --> YouTubeUploading: Staged description & tags prepared
-    YouTubeUploading --> CaptionInsertion: Video uploaded, Video ID received
-    CaptionInsertion --> ArchivingAndEviction: WebVTT captions uploaded
-    ArchivingAndEviction --> IdleReady: Move to processed/, purge /tmp, release lock
+    state "Processing (Internal Sequential Substates)" as Processing {
+        [*] --> EvaluateResumption: Load companion .state.json
 
-    AudioExtraction --> Quarantined: Error / Exception tripped
-    Transcribing --> Quarantined: Transcription failure
-    YouTubeUploading --> Quarantined: Upload rejected / Auth error
-    CaptionInsertion --> Quarantined: Caption format rejected
+        EvaluateResumption --> Step1_AudioDSP: audio_dsp not completed
+        EvaluateResumption --> Step2_Transcription: audio_dsp completed, scratch WAV present
+        EvaluateResumption --> Step3_Metadata: transcription completed, VTT cached
+        EvaluateResumption --> Step4_YouTubeUpload: metadata completed
+        EvaluateResumption --> Step5_Playlist: upload completed, video_id verified on YouTube
+        EvaluateResumption --> Step6_Captions: playlist completed
+        EvaluateResumption --> Step7_Datalake: captions completed
+        EvaluateResumption --> Step8_Archival: datalake synced
+
+        Step1_AudioDSP --> Step2_Transcription: 16kHz mono audio extracted
+        Step2_Transcription --> Step3_Metadata: ztranscribe speech recognized
+        Step3_Metadata --> Step4_YouTubeUpload: Title and tags synthesized
+        Step4_YouTubeUpload --> Step5_Playlist: Video uploaded and Video ID received
+        Step5_Playlist --> Step6_Captions: Added to playlist
+        Step6_Captions --> Step7_Datalake: WebVTT captions uploaded
+        Step7_Datalake --> Step8_Archival: Knowledge lake synced
+        Step8_Archival --> [*]: Master archived in processed/YYYY-MM/
+    }
+
+    Processing --> Quarantined: Step failure / Network timeout / API error
+    Processing --> IdleReady: Archival complete, scratch cleaned, lock released
 
     Quarantined --> PendingQueue: Operator clicks Re-queue in Funnel UI
     Quarantined --> PendingQueue: Operator runs bin/pipeline retry
-    PendingQueue --> CandidateDiscovered: File moved back to pending/
+    PendingQueue --> CandidateDiscovered: File moved back to pending/ with .state.json preserved
 
     state "Self-Healing Watcher" as SelfHealing {
         [*] --> AuditProcessLiveness: Every poll cycle
@@ -2623,6 +2635,33 @@ teleprompter_script:
     }
   }
 
+  function renderSubstateBadges(badges) {
+    if (!badges || !badges.length) return '';
+    return '<div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.45rem 0;">' + badges.map(b => {
+      let bg = '#f1f5f9';
+      let color = '#64748b';
+      let icon = '⏳';
+      let border = '#cbd5e1';
+      if (b.status === 'completed') {
+        bg = '#f0fdf4';
+        color = '#15803d';
+        icon = '✓';
+        border = '#86efac';
+      } else if (b.status === 'in_progress') {
+        bg = '#eff6ff';
+        color = '#1d4ed8';
+        icon = '🔄';
+        border = '#93c5fd';
+      } else if (b.status === 'failed') {
+        bg = '#fef2f2';
+        color = '#b91c1c';
+        icon = '❌';
+        border = '#fca5a5';
+      }
+      return '<span title="' + b.id + ': ' + b.status + '" style="font-family: ui-monospace, monospace; font-size: 0.68rem; font-weight: 700; background: ' + bg + '; color: ' + color + '; border: 1px solid ' + border + '; padding: 0.1rem 0.35rem; border-radius: 0.25rem;">' + icon + ' ' + b.label + '</span>';
+    }).join('') + '</div>';
+  }
+
   function renderIngressFunnel(telemetry) {
     lastFunnelTelemetry = telemetry;
     const intake = telemetry.media_intake || {};
@@ -2732,6 +2771,7 @@ teleprompter_script:
               <span>${formatBytes(item.size_bytes)}</span>
               <span style="background: #f1f5f9; padding: 0.1rem 0.4rem; border-radius: 0.2rem; font-weight: 600;">${item.seriesName || item.targetKey}</span>
             </div>
+            ${renderSubstateBadges(item.summary_badges)}
           </div>
         `).join('');
       }
@@ -2763,17 +2803,13 @@ teleprompter_script:
               </span>
               <span style="font-size: 0.72rem; color: #1e40af; font-weight: 600;">Active Slot</span>
             </div>
-            <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #1e3a8a; word-break: break-all; margin-bottom: 0.5rem;">${item.filename}</div>
+            <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #1e3a8a; word-break: break-all; margin-bottom: 0.4rem;">${item.filename}</div>
             
-            <div style="background: #ffffff; border: 1px solid #dbeafe; border-radius: 0.25rem; padding: 0.5rem; margin-bottom: 0.75rem; font-size: 0.75rem; color: #334155;">
-              <div style="font-weight: 700; margin-bottom: 0.25rem; color: #1e40af;">Execution Stages:</div>
-              <div style="color: #15803d; font-weight: 600;">✓ Ephemeral Audio Extraction</div>
-              <div style="color: #2563eb; font-weight: 700;">⚙️ Apple Silicon Whisper Diarization</div>
-              <div style="color: #64748b;">· Craftsman Metadata Synthesis</div>
-              <div style="color: #64748b;">· YouTube API v3 Resumable Upload</div>
-              <div style="color: #64748b;">· Multipart WebVTT Captions</div>
-              <div style="color: #64748b;">· Relocate to processed/YYYY-MM/</div>
+            <div style="font-size: 0.72rem; color: #1e40af; font-weight: 700; margin-bottom: 0.35rem;">
+              Active Step: <code style="background: #ffffff; padding: 0.1rem 0.35rem; border-radius: 0.2rem; border: 1px solid #bfdbfe;">${item.current_step || 'processing'}</code>
             </div>
+
+            ${renderSubstateBadges(item.summary_badges)}
 
             <div style="display: flex; gap: 0.4rem;">
               <button type="button" onclick="triggerPipelineAction('halt')" style="flex: 1; background: #fffbeb; color: #b45309; border: 1px solid #fde68a; padding: 0.3rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; cursor: pointer;">
@@ -2867,8 +2903,10 @@ teleprompter_script:
               <span style="font-size: 0.7rem; color: #991b1b;">${formatTimeAgo(item.failed_at)}</span>
             </div>
             <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #991b1b; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
-            <div style="font-size: 0.75rem; color: #7f1d1d; margin-bottom: 0.5rem; line-height: 1.4;">${item.diagnostic || 'Quarantined for operator review.'}</div>
-            <button type="button" onclick="triggerPipelineAction('retry', 'target=${item.targetKey}&file=' + encodeURIComponent('${item.filename}'))" style="width: 100%; background: #ffffff; border: 1px solid #dc2626; color: #dc2626; padding: 0.35rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+            <div style="font-size: 0.75rem; color: #7f1d1d; margin-bottom: 0.4rem; line-height: 1.4;">${item.diagnostic || 'Quarantined for operator review.'}</div>
+            ${item.current_step ? `<div style="font-size: 0.72rem; color: #991b1b; font-weight: 700; margin-bottom: 0.35rem;">Failed at Step: <code style="background: #ffffff; padding: 0.1rem 0.35rem; border-radius: 0.2rem; border: 1px solid #fecaca;">${item.current_step}</code></div>` : ''}
+            ${renderSubstateBadges(item.summary_badges)}
+            <button type="button" onclick="triggerPipelineAction('retry', 'target=${item.targetKey}&file=' + encodeURIComponent('${item.filename}'))" style="width: 100%; margin-top: 0.4rem; background: #ffffff; border: 1px solid #dc2626; color: #dc2626; padding: 0.35rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
               🔄 Re-queue to Pending
             </button>
           </div>

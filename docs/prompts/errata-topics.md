@@ -1,7 +1,7 @@
 # The Sound Above (Errata) Proposed Topics & Deep-Dive Prompts
 
 > **Channel**: The Sound Above: Errata (@whoistechcmty)
-> **Updated**: 2026-10-16 16:32 UTC
+> **Updated**: 2026-10-16 19:58 UTC
 > **Source**: Derived from Mike Hall's 20-year archive, writings, and interviews
 
 ## Overview & Purpose
@@ -9,11 +9,11 @@ Solo technical demonstrations, deep-dive forensic walkthroughs, audio restoratio
 
 ## Broadcast Intro & Outro Structure
 
-### Grounded Intro Structure (0:00 - 1:00)
+### Grounded Intro Structure (0:00 to 1:00)
 - **The Problem / AI Hallucination**: State the exact failure mode, vendor myth, or LLM hallucination being investigated within the first 60 seconds.
 - **Scope of Inspection**: Define the exact artifacts, data boundaries, and code interfaces being inspected today.
 
-### Clear Takeaway Outro Structure (Closing 1 - 2 minutes)
+### Clear Takeaway Outro Structure (Closing 1 to 2 minutes)
 - **Deterministic Solution**: Demonstrate the verified, working solution or filter with exact reproducible steps.
 - **Defensive Rule of Thumb**: Provide the core engineering takeaway to prevent this failure in production, with direct links to repository code on just3ws.com.
 
@@ -98,5 +98,23 @@ Solo technical demonstrations, deep-dive forensic walkthroughs, audio restoratio
 1. Connecting live Server-Sent Events (SSE) telemetry to animated BPMN step transitions.
 
 - **Demonstration Artifacts**: docs/bpmn/media-intake-pipeline.bpmn, docs/bpmn/README.md, youtube/dashboard.html (#tab-bpmn)
+
+---
+
+### Prompt 6: Errata: The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & Scaling Oral History
+
+- **ID**: `errata-fluffle-distributed-whisper`
+- **Location / Setting**: Distributed Systems, Historical Precursors & Open Source Vulnerability
+- **Core Inquiry**: How a 5-node Raspberry Pi cluster transcribing 1,000 episodes of Dead Rabbit Radio in 2023 unlocked the skills and painful lessons that made modern local media automation possible.
+
+#### Talking Points & Narrative Arcs:
+1. The pre-Whisper wall: why 200+ UGtastic interviews sat untranscribed for a decade and why cloud API economics made scaling impossible.
+1. The April 2023 breakthrough: early ChatGPT assistance and Georgi Gerganov's whisper.cpp opening the door to local speech recognition.
+1. The Dead Rabbit Radio laboratory: why Jason Carpenter's solo daily podcast was the ideal testbed for single-speaker cadence and endurance.
+1. The 5-node Raspberry Pi cluster: bin-packing audio files by size across node01 through node05, Net::SSH rsync distribution, and mandatory 120-second thermal cooldowns.
+1. Reaching out to Jason Carpenter: working in the open, gracious creator response, and CC BY-NC-ND attribution across 2,034 generated transcript files.
+1. The wall of imposter syndrome: attempting to aggregate fragmented RSS/ATOM feeds, cognitive overload from enterprise Observability work, the shame of stepping away, and honoring the debt today.
+
+- **Demonstration Artifacts**: github.com/just3ws/fluffle (bin/distribution, bin/distribute, bin/transcribe), _posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md, MacBook Air DRR sticker artifact
 
 ---

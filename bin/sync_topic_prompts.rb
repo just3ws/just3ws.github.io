@@ -131,6 +131,202 @@ RAMBLIN_TOPICS = [
       "Why sustainable engineering requires humane empathy, honest vulnerability, and dropping the mask of invulnerability."
     ],
     concepts: ["Greg Baugues", "Mental Health in Tech", "RailsConf 2014", "Empathy", "Vulnerability"]
+  },
+  {
+    id: "ticketsnow-3am-inventory-lock",
+    title: "The 3:00 AM Ticket Lock: Race Conditions in Secondary Markets",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Brisk suburban sidewalk walk",
+    historical_anchor: "TicketsNow (Crystal Lake, IL) and the Ticketmaster integration handling real-time ticket inventory reservation race conditions during high-demand concert on-sales.",
+    core_inquiry: "When two buyers click the exact same seat at the exact same millisecond, how do you prevent phantom sales without choking your checkout pipeline?",
+    talking_points: [
+      "The reality of secondary ticket markets: inventory is non-fungible, so you cannot backfill a sold front-row seat.",
+      "The failure of cache-based optimism: why distributed Redis/Memcached keys drift under heavy write contention and give false positives.",
+      "Pessimistic database locking vs short-lived reservation tokens with deterministic expiration.",
+      "The architectural lesson: push concurrency checks to the absolute boundary of authoritative storage."
+    ],
+    concepts: ["TicketsNow", "Ticketmaster", "Inventory Reservation", "Race Conditions", "Concurrency"]
+  },
+  {
+    id: "groupon-4kb-cookie-storm",
+    title: "The 4KB Cookie Storm: When Innocent Convenience Breaks Production",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Park loop or neighborhood walk",
+    historical_anchor: "Groupon (Chicago, IL) hypergrowth Rails monolith and the cascading session logout incidents caused by bloated HTTP headers.",
+    core_inquiry: "Why do client-side session cookies quietly turn into production landmines as engineering teams grow?",
+    talking_points: [
+      "The temptation: five different feature teams each adding 'just one small ID' to the encrypted session cookie.",
+      "Crossing the 4096-byte threshold: Nginx suddenly dropping requests with silent HTTP 400 Bad Request errors.",
+      "The user experience nightmare: thousands of shoppers repeatedly logged out at checkout with zero application error logs.",
+      "The rule of thumb: cookies are transport tokens, not your database dumping ground."
+    ],
+    concepts: ["Groupon", "Rails Monolith", "Session Bloat", "Nginx Limits", "Production Outages"]
+  },
+  {
+    id: "activecampaign-zero-downtime-migration",
+    title: "Open-Heart Surgery on MySQL: Altering Tables Under 10k Writes per Second",
+    format: "Short Dispatch (4 to 6 minutes)",
+    location_suggestion: "Quiet neighborhood street",
+    historical_anchor: "ActiveCampaign (Chicago, IL) scaling high-volume marketing automation dispatch queues across MySQL without scheduled maintenance windows.",
+    core_inquiry: "How do you add indexes and columns to a 500-million-row database table when writes cannot pause for even a second?",
+    talking_points: [
+      "The dread of the table lock: running naive ALTER TABLE in production and immediately freezing application connection pools.",
+      "The expand and contract pattern: adding new nullable columns, dual-writing in background workers, and backfilling in small batches.",
+      "Shadow tables, replication triggers, and automated cutover tools like pt-online-schema-change and gh-ost.",
+      "The mindset shift: zero-downtime migrations are an organizational discipline, not a database trick."
+    ],
+    concepts: ["ActiveCampaign", "MySQL", "Online Schema Change", "Zero-Downtime", "Database Reliability"]
+  },
+  {
+    id: "onemain-observability-calm-leadership",
+    title: "The 2:00 AM Alert Deluge: Building Calm Systems Observability",
+    format: "Short Dispatch (4 to 6 minutes)",
+    location_suggestion: "Trail walk or wooded path",
+    historical_anchor: "OneMain Financial Associate Director, Staff Engineer architecting OpenTelemetry, distributed tracing, and incident triage across enterprise microservices.",
+    core_inquiry: "Why does adding more metrics and dashboards often lead to less operational clarity during a live outage?",
+    talking_points: [
+      "The alert explosion: forty-five PagerDuty alarms firing simultaneously because one downstream queue backed up.",
+      "Engineers paralyzed by noisy dashboards filled with red graphs that indicate symptoms rather than root causes.",
+      "Filtering the signal: alerting strictly on user impact (latency, error rate, saturation) rather than internal machinery.",
+      "Calm systems leadership: turning down the volume so on-call engineers can think clearly instead of panicking."
+    ],
+    concepts: ["OneMain Financial", "OpenTelemetry", "Distributed Tracing", "Calm Engineering", "Alert Fatigue"]
+  },
+  {
+    id: "ch-robinson-as400-green-screen",
+    title: "The Green Screen in the Corner: Respecting 30-Year Enterprise Systems",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Industrial corridor or commuter road",
+    historical_anchor: "C.H. Robinson (Oakbrook, IL) system administration and EDI integrations connecting web frontends to IBM AS/400 (iSeries) logistics backends.",
+    core_inquiry: "Why do software engineers reflexively dismiss legacy systems, and what can decades-old mainframes teach us about boring reliability?",
+    talking_points: [
+      "The junior developer instinct: looking at a 5250 green-screen terminal and assuming the technology is obsolete and broken.",
+      "The reality check: that system had been moving billions of dollars in freight across North America with 99.999% uptime for a quarter century.",
+      "Understanding the economic engine before proposing a total rewrite in the framework of the month.",
+      "The craft of building reliable bridge adapters that respect the operational guarantees of legacy core platforms."
+    ],
+    concepts: ["C.H. Robinson", "IBM AS400", "Legacy Modernization", "Boring Technology", "Freight Logistics"]
+  },
+  {
+    id: "pairing-vulnerability-libertyville",
+    title: "Pairing Confessional: Dropping the Mask of Knowing Everything",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Coffee shop exterior or quiet sidewalk",
+    historical_anchor: "Pairing sessions at 8th Light in Libertyville and consulting engagements at Tandem (DevMynd) in Chicago.",
+    core_inquiry: "Why is pair programming primarily an exercise in emotional vulnerability rather than raw typing speed?",
+    talking_points: [
+      "The initial terror: sitting side-by-side with an experienced practitioner while your hands stumble over terminal keys.",
+      "The breakthrough moment: when the senior engineer looks at the broken test and says, 'I have no idea why that failed, let's investigate together.'",
+      "Replacing defensive ego with shared curiosity and collective ownership of the codebase.",
+      "Why solo developers often get stuck in rabbit holes that a two-minute pairing conversation would instantly resolve."
+    ],
+    concepts: ["8th Light", "Tandem", "Pair Programming", "Vulnerability", "Craftsmanship"]
+  },
+  {
+    id: "bp-trading-desk-seconds",
+    title: "Seconds on the Trading Floor: High-Stakes Pricing Feeds",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Urban train station or busy downtown sidewalk",
+    historical_anchor: "BP (Naperville, IL) commodity trading desk software delivering real-time pricing and deal capture for physical energy contracts.",
+    core_inquiry: "What happens to your engineering priorities when a 400-millisecond latency spike translates to hundred-thousand-dollar market swings?",
+    talking_points: [
+      "The physical intensity of the energy trading floor: traders shouting across desks while pricing ticks update in sub-second intervals.",
+      "The cost of silent failure: why an application that crashes loudly is ten times safer than one that serves stale pricing data.",
+      "Aggressive defensive programming: circuit breakers, heartbeat monitors, and immediate operator alarms on data staleness.",
+      "Designing systems where correctness and determinism take absolute priority over clever optimizations."
+    ],
+    concepts: ["BP", "Commodity Trading", "Real-Time Pricing", "Fail-Safe Design", "High Stakes"]
+  },
+  {
+    id: "synthetic-slop-and-the-blink-test",
+    title: "Synthetic Slop vs. The Blink Test: Why Reading Code Is the Only Skill Left",
+    format: "Short Dispatch (4 to 6 minutes)",
+    location_suggestion: "Open meadow or quiet park trail",
+    historical_anchor: "Reflections on modern AI coding assistants, prompt-generated pull requests, and Kent Beck's Red-Green-Refactor discipline.",
+    core_inquiry: "When generating 500 lines of syntactically valid code takes three seconds, why has discernment become the only scarce commodity in software?",
+    talking_points: [
+      "The mirage of velocity: merging massive AI-generated pull requests that look polished but contain subtle boundary errors and hallucinations.",
+      "The Blink Test: experienced practitioners spotting architectural rot in seconds because the seams and responsibilities are tangled.",
+      "Why characterization tests and deterministic test suites are the only real safeguard against synthetic slop.",
+      "The future belongs not to the fastest code generator, but to the engineer who can read, verify, and prune with ruthless clarity."
+    ],
+    concepts: ["Synthetic Slop", "The Blink Test", "Simple Design", "Code Verification", "Kent Beck"]
+  },
+  {
+    id: "single-operator-leverage",
+    title: "The Single-Operator Platform: Why Small Tools Beat Architecture Committees",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Neighborhood street or walking trail",
+    historical_anchor: "Building the just3ws media, knowledge graph, and CareerOS platform using Unix pipes, Maildir queues, and local models.",
+    core_inquiry: "Why does a single focused engineer with local tools often outship a fourteen-person enterprise architecture committee?",
+    talking_points: [
+      "The enterprise trap: three months of meetings, slide decks, and vendor RFPs to decide on an asynchronous queue broker.",
+      "The local alternative: using the Maildir directory pattern and simple shell scripts that run with zero network overhead and zero cloud bills.",
+      "The compounding leverage of personal tooling: scripts written ten years ago that still run flawlessly today.",
+      "Minimizing coordination overhead: building systems that fit in one person's head."
+    ],
+    concepts: ["Single Operator", "Maildir Pattern", "Compounding Tooling", "Local-First", "High Leverage"]
+  },
+  {
+    id: "imposter-syndrome-when-to-pause",
+    title: "The Wall of Imposter Syndrome: Why We Shut Down When Projects Balloon",
+    format: "Short Dispatch (4 to 6 minutes)",
+    location_suggestion: "Quiet woods or secluded park path",
+    historical_anchor: "Stepping back from the UGtastic archive in 2015 and the Fluffle distributed transcription experiment in 2023.",
+    core_inquiry: "Why do passion projects often trigger paralyzing shame, and how do we recover our footing when the scope becomes overwhelming?",
+    talking_points: [
+      "The excitement of building: starting an experiment with boundless energy and watching it solve the initial technical hurdle.",
+      "The sudden wall: when expanding scope, dirty real-world data, and day-job pressures combine to create cognitive paralysis.",
+      "The imposter trap: feeling like a failure because you could not sustain an unsustainable pace, and hiding rather than communicating.",
+      "Giving yourself permission to pause: recognizing that stepping away is not failure, and that the lessons will wait for you when you return."
+    ],
+    concepts: ["Imposter Syndrome", "Creative Burnout", "UGtastic", "Fluffle", "Self-Compassion"]
+  },
+  {
+    id: "the-lost-art-of-the-stack-trace",
+    title: "The Lost Art of the Stack Trace: Listening to the Machine",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Commuter walking route",
+    historical_anchor: "Debugging distributed systems and mobile device communications across Motorola, BDI, and enterprise services.",
+    core_inquiry: "Why do modern developers frequently panic when an exception fires instead of reading the three lines that explain everything?",
+    talking_points: [
+      "The common habit: immediately copying a stack trace into a search box or chat prompt without reading the first frame.",
+      "The machine is not lying: the file path, the exact line number, and the method call tell you precisely where reality diverged from assumption.",
+      "Cultivating runtime intuition: understanding how call frames stack and unwind during execution.",
+      "The confidence that comes from knowing how to trace an error from user interface down to system call."
+    ],
+    concepts: ["Stack Traces", "Debugging Discipline", "Runtime Intuition", "Root Cause Analysis"]
+  },
+  {
+    id: "boring-technology-pays-the-rent",
+    title: "Boring Technology Pays the Rent: Dan McKinley's Innovation Tokens in Real Life",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Residential sidewalk or local park",
+    historical_anchor: "Twenty-year retrospective across enterprise .NET, Ruby on Rails, PHP, Node.js, Go, and Python environments.",
+    core_inquiry: "How do you distinguish between genuine technical innovation and shiny-object resume-driven development?",
+    talking_points: [
+      "Dan McKinley's classic rule: every company gets three innovation tokens, and spending them on your database or queue is usually a waste.",
+      "Watching teams burn years of engineering capacity fighting unproven distributed databases when PostgreSQL would have worked effortlessly.",
+      "Boring tools have boring failure modes: mature documentation, known edge cases, and decades of Stack Overflow answers.",
+      "Spend your innovation tokens on your business domain and customer value, not your plumbing."
+    ],
+    concepts: ["Boring Technology", "Dan McKinley", "Innovation Tokens", "Pragmatism", "Architecture"]
+  },
+  {
+    id: "photo-booth-vimeo-jungle-gym-constraints",
+    title: "Constraints Are Like a Jungle Gym: Photo Booth at SCNA 2011",
+    format: "Short Dispatch (3 to 5 minutes)",
+    location_suggestion: "Park bench or quiet neighborhood walk",
+    historical_anchor: "Recording the very first UGtastic interviews at SCNA 2011 using only a MacBook laptop camera and Apple Photo Booth, publishing to Vimeo due to YouTube 15-minute limits and licensing uncertainty, and turning bare-minimum hardware into durable oral history.",
+    core_inquiry: "Why does the absence of luxury resources define the creative space, and how do physical constraints force you to be relentlessly resourceful?",
+    talking_points: [
+      "The humble inception: no RED cameras, no lavalier kits, just an open MacBook on a conference table running Apple Photo Booth.",
+      "Publishing to Vimeo in 2011: navigating early YouTube 15-minute length caps and copyright ambiguities before content IDs existed.",
+      "The jungle gym of constraints: Charles Eames noted design depends largely on constraints, and having no budget forces clarity.",
+      "From RPi thumbdrives to base-spec MacBook Air: why single-operator systems built under tight constraints outlast bloated architectures.",
+      "Relentless resourcefulness: building tools that run within the machine you have right now instead of waiting for ideal conditions."
+    ],
+    concepts: ["SCNA 2011", "Photo Booth", "Vimeo", "Jungle Gym of Constraints", "Relentlessly Resourceful"]
   }
 ].freeze
 
@@ -218,6 +414,25 @@ ERRATA_TOPICS = [
       "docs/bpmn/README.md",
       "youtube/dashboard.html (#tab-bpmn)"
     ]
+  },
+  {
+    id: "errata-fluffle-distributed-whisper",
+    title: "Errata: The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & Scaling Oral History",
+    focus: "Distributed Systems, Historical Precursors & Open Source Vulnerability",
+    core_inquiry: "How a 5-node Raspberry Pi cluster transcribing 1,000 episodes of Dead Rabbit Radio in 2023 unlocked the skills and painful lessons that made modern local media automation possible.",
+    talking_points: [
+      "The pre-Whisper wall: why 200+ UGtastic interviews sat untranscribed for a decade and why cloud API economics made scaling impossible.",
+      "The April 2023 breakthrough: early ChatGPT assistance and Georgi Gerganov's whisper.cpp opening the door to local speech recognition.",
+      "The Dead Rabbit Radio laboratory: why Jason Carpenter's solo daily podcast was the ideal testbed for single-speaker cadence and endurance.",
+      "The 5-node Raspberry Pi cluster: bin-packing audio files by size across node01 through node05, Net::SSH rsync distribution, and mandatory 120-second thermal cooldowns.",
+      "Reaching out to Jason Carpenter: working in the open, gracious creator response, and CC BY-NC-ND attribution across 2,034 generated transcript files.",
+      "The wall of imposter syndrome: attempting to aggregate fragmented RSS/ATOM feeds, cognitive overload from enterprise Observability work, the shame of stepping away, and honoring the debt today."
+    ],
+    demonstration_assets: [
+      "github.com/just3ws/fluffle (bin/distribution, bin/distribute, bin/transcribe)",
+      "_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md",
+      "MacBook Air DRR sticker artifact"
+    ]
   }
 ].freeze
 
@@ -235,10 +450,10 @@ def compile_markdown_sheet(title, channel_name, description, topics, structure_g
   if structure_guide
     lines << "## Broadcast Intro & Outro Structure"
     lines << ""
-    lines << "### Grounded Intro Structure (0:00 - 1:00)"
+    lines << "### Grounded Intro Structure (0:00 to 1:00)"
     lines << structure_guide[:intro]
     lines << ""
-    lines << "### Clear Takeaway Outro Structure (Closing 1 - 2 minutes)"
+    lines << "### Clear Takeaway Outro Structure (Closing 1 to 2 minutes)"
     lines << structure_guide[:outro]
     lines << ""
   end
@@ -251,6 +466,7 @@ def compile_markdown_sheet(title, channel_name, description, topics, structure_g
     lines << "### Prompt #{idx + 1}: #{t[:title]}"
     lines << ""
     lines << "- **ID**: `#{t[:id]}`"
+    lines << "- **Format**: #{t[:format]}" if t[:format]
     lines << "- **Location / Setting**: #{t[:location_suggestion] || t[:focus]}"
     lines << "- **Historical Anchor**: #{t[:historical_anchor]}" if t[:historical_anchor]
     lines << "- **Core Inquiry**: #{t[:core_inquiry]}"

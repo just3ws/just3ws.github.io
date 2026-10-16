@@ -153,7 +153,7 @@ sequenceDiagram
 
 ## Operational State Machine & Recovery Flows
 
-The state machine diagram below models all system states, transitions, self-healing branches, and operator interventions.
+The state machine diagram below models all system states, transitions, self-healing branches, and operator interventions. Crucially, the **Processing** phase functions as a nested composite statechart where each discrete substate tracks its completion checkpoint in `<filename>.state.json`. If a job is interrupted, paused, or restarted from quarantine, execution resumes strictly at the first incomplete substate without repeating completed audio extraction, transcription, or YouTube video uploads.
 
 ```mermaid
 stateDiagram-v2
@@ -162,24 +162,36 @@ stateDiagram-v2
     IdleReady --> CandidateDiscovered: File detected in pending/
     CandidateDiscovered --> VerifyingStability: Sample file size
     VerifyingStability --> CandidateDiscovered: Size changing (wait next cycle)
-    VerifyingStability --> ConcurrencyLocked: Size stable across 5 seconds
+    VerifyingStability --> Processing: Size stable across 5 seconds (lock acquired)
 
-    ConcurrencyLocked --> AudioExtraction: Move to processing/, acquire lock
-    AudioExtraction --> Transcribing: Scratch audio written to /tmp
-    Transcribing --> MetadataSynthesis: Captions & plain text emitted
-    MetadataSynthesis --> YouTubeUploading: Staged description & tags prepared
-    YouTubeUploading --> CaptionInsertion: Video uploaded, Video ID received
-    CaptionInsertion --> ArchivingAndEviction: WebVTT captions uploaded
-    ArchivingAndEviction --> IdleReady: Move to processed/, purge /tmp, release lock
+    state "Processing (Internal Sequential Substates)" as Processing {
+        [*] --> EvaluateResumption: Load companion .state.json
 
-    AudioExtraction --> Quarantined: Error / Exception tripped
-    Transcribing --> Quarantined: Transcription failure
-    YouTubeUploading --> Quarantined: Upload rejected / Auth error
-    CaptionInsertion --> Quarantined: Caption format rejected
+        EvaluateResumption --> Step1_AudioDSP: audio_dsp not completed
+        EvaluateResumption --> Step2_Transcription: audio_dsp completed, scratch WAV present
+        EvaluateResumption --> Step3_Metadata: transcription completed, VTT cached
+        EvaluateResumption --> Step4_YouTubeUpload: metadata completed
+        EvaluateResumption --> Step5_Playlist: upload completed, video_id verified on YouTube
+        EvaluateResumption --> Step6_Captions: playlist completed
+        EvaluateResumption --> Step7_Datalake: captions completed
+        EvaluateResumption --> Step8_Archival: datalake synced
+
+        Step1_AudioDSP --> Step2_Transcription: 16kHz mono audio extracted
+        Step2_Transcription --> Step3_Metadata: ztranscribe speech recognized
+        Step3_Metadata --> Step4_YouTubeUpload: Title and tags synthesized
+        Step4_YouTubeUpload --> Step5_Playlist: Video uploaded and Video ID received
+        Step5_Playlist --> Step6_Captions: Added to playlist
+        Step6_Captions --> Step7_Datalake: WebVTT captions uploaded
+        Step7_Datalake --> Step8_Archival: Knowledge lake synced
+        Step8_Archival --> [*]: Master archived in processed/YYYY-MM/
+    }
+
+    Processing --> Quarantined: Step failure / Network timeout / API error
+    Processing --> IdleReady: Archival complete, scratch cleaned, lock released
 
     Quarantined --> PendingQueue: Operator clicks Re-queue in Funnel UI
     Quarantined --> PendingQueue: Operator runs bin/pipeline retry
-    PendingQueue --> CandidateDiscovered: File moved back to pending/
+    PendingQueue --> CandidateDiscovered: File moved back to pending/ with .state.json preserved
 
     state "Self-Healing Watcher" as SelfHealing {
         [*] --> AuditProcessLiveness: Every poll cycle
@@ -422,6 +434,71 @@ Appended at every significant state change. Read by the streamer daemon to suppl
 {"timestamp":"2026-10-16T17:56:02Z","stage":"transcribe","level":"info","message":"Invoking ztranscribe pipeline with Apple Silicon Metal acceleration","details":{"model":"large-v3-turbo"}}
 {"timestamp":"2026-10-16T17:59:05Z","stage":"upload","level":"info","message":"Uploading video to YouTube API v3 (Resumable chunked)","details":{"size_bytes":4156016521}}
 {"timestamp":"2026-10-16T18:00:10Z","stage":"publish","level":"info","message":"Published video 7YeFpKn5FbU to playlist PLxxxxxxxxxxxx","details":{"video_id":"7YeFpKn5FbU"}}
+```
+
+---
+
+### 7. Job Substate Checkpoint Schema (`<filename>.state.json`)
+
+Stored in `~/.local/state/just3ws/jobs/<filename>.state.json` and mirrored as a companion sidecar alongside the media file (`<filename>.state.json`). Governed by `JobSubstateTracker` (`bin/lib/job_substate_tracker.rb`). Tracks the meta publication phase and internal step completions to enable idempotent, safe reruns.
+
+```json
+{
+  "version": "1.0",
+  "filename": "VID_20261015_095414134.mp4",
+  "file_path": "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processing/VID_20261015_095414134.mp4",
+  "created_at": "2026-10-16T18:42:16Z",
+  "updated_at": "2026-10-16T18:44:37Z",
+  "meta_phase": "processing",
+  "current_step": "archival",
+  "substates": {
+    "audio_dsp": {
+      "status": "completed",
+      "started_at": "2026-10-16T18:42:16Z",
+      "completed_at": "2026-10-16T18:42:17Z",
+      "duration_seconds": 1.25,
+      "wav_path": "/Users/mike/.local/state/just3ws/scratch/VID_20261015_095414134.mp4/VID_20261015_095414134.mp4.16k.wav"
+    },
+    "transcription": {
+      "status": "completed",
+      "started_at": "2026-10-16T18:42:17Z",
+      "completed_at": "2026-10-16T18:43:48Z",
+      "duration_seconds": 91.46,
+      "text": "I talked about a lesser man who had...",
+      "vtt": "WEBVTT\n..."
+    },
+    "metadata_synthesis": {
+      "status": "completed",
+      "started_at": "2026-10-16T18:43:48Z",
+      "completed_at": "2026-10-16T18:43:48Z",
+      "duration_seconds": 0.14,
+      "title": "Ramblin' & Amblin' (2026-10-15): I talked about a lesser man who had"
+    },
+    "youtube_upload": {
+      "status": "completed",
+      "started_at": "2026-10-16T18:43:48Z",
+      "completed_at": "2026-10-16T18:44:33Z",
+      "duration_seconds": 530.06,
+      "video_id": "sulnC44HySc",
+      "youtube_url": "https://youtu.be/sulnC44HySc"
+    },
+    "playlist_assignment": {
+      "status": "completed",
+      "playlist_id": "PLNtb969T2-l0"
+    },
+    "captions_upload": {
+      "status": "completed",
+      "duration_seconds": 0.92
+    },
+    "datalake_sync": {
+      "status": "completed",
+      "transcript_saved": true
+    },
+    "archival": {
+      "status": "pending"
+    }
+  }
+}
 ```
 
 ---

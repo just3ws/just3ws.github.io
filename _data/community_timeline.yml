@@ -345,6 +345,33 @@ events:
         url: "/ai/2026/08/17/software-craftsmanship-mchenry-county-a-retrospective/"
         kind: "article"
 
+  - id: "fluffle-distributed-whisper-experiment"
+    year: "2023"
+    date_display: "April 2023"
+    era: "continuous-room"
+    title: "The Fluffle Laboratory: Distributed whisper.cpp on a 5-Node Raspberry Pi Cluster"
+    resume_anchor: "sk-holdings"
+    location: "Crystal Lake, IL & GitHub"
+    communities:
+      - "Dead Rabbit Radio (The Fluffle)"
+      - "whisper.cpp Community"
+    unsung_heroes:
+      - name: "Jason Carpenter"
+        role: "Host & Creator, Dead Rabbit Radio"
+        note: "Graciously embraced the open-source transcript experiment across 1,000+ daily episodes under Creative Commons CC BY-NC-ND."
+      - name: "Georgi Gerganov"
+        role: "Creator, whisper.cpp"
+        note: "Brought OpenAI Whisper out of heavy GPU cloud data centers onto consumer edge silicon."
+    narrative: >
+      Faced with a decade-long backlog of over 200 untranscribed UGtastic oral histories and prohibitively expensive cloud transcription rates, Mike launched the open-source fluffle experiment in April 2023 using early ChatGPT coding assistance and whisper.cpp. To test what was possible for massive audio archives on modest local hardware, Mike chose Dead Rabbit Radio (DRR), a daily paranormal and historical podcast hosted solo by Jason Carpenter, whose rhythmic pacing matched Mike's cadence. Orchestrating a distributed 5-node Raspberry Pi cluster (node01 through node05) with bin-packing size balancing, Net::SSH rsync pipelines, and mandatory 120-second thermal cooldowns, the cluster transcribed over 1,000 episodes into 2,034 text and subtitle files. When expanding to fragmented RSS feeds collided with the crushing cognitive load of high-stakes enterprise Observability work, Mike stepped back. That skunkworks laboratory proved local AI speech recognition was viable, directly unlocking today's Apple Silicon Metal-accelerated transcription engine.
+    primary_sources:
+      - title: "The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & The Hard Lessons of Scaling Oral History"
+        url: "/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html"
+        kind: "article"
+      - title: "GitHub: just3ws/fluffle Repository"
+        url: "https://github.com/just3ws/fluffle"
+        kind: "artifact"
+
   - id: "phalanx-duel-and-the-rewatch"
     year: "2026"
     date_display: "September – October 2026"

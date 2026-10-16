@@ -77,7 +77,7 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
     it 'executes --dry-run cleanly when queue is empty or in progress' do
       stdout, stderr, status = Open3.capture3("ruby #{cli_path} --dry-run")
       expect(status.success?).to be true
-      expect(stdout).to match(/(Intake queue is clear|Active processing in progress|\[Dry Run\])/)
+      expect(stdout).to match(/(Intake queue is clear|Active processing in progress|Another worker|\[Dry Run\])/)
     end
 
     it 'integrates with bin/pipeline intake command' do
@@ -200,30 +200,34 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
     end
 
     it 'compiles current live state with queue counts cleanly' do
-      require_relative '../../bin/live_dashboard_streamer'
-      streamer = LiveDashboardStreamer.new(7099)
-      state = streamer.compile_current_state
-      expect(state).to be_a(Hash)
-      expect(state).to have_key('media_intake')
-      expect(state.dig('media_intake', 'targets')).to have_key('ramblin-amblin')
+      Dir.mktmpdir do |tmp_state|
+        require_relative '../../bin/live_dashboard_streamer'
+        streamer = LiveDashboardStreamer.new(7099, tmp_state)
+        state = streamer.compile_current_state
+        expect(state).to be_a(Hash)
+        expect(state).to have_key('media_intake')
+        expect(state.dig('media_intake', 'targets')).to have_key('ramblin-amblin')
+      end
     end
 
     it 'detects active BPMN execution steps based on queue state' do
-      streamer = LiveDashboardStreamer.new(7099)
-      dummy_state = {
-        'media_intake' => {
-          'targets' => {
-            'ramblin-amblin' => {
-              'processing_count' => 1,
-              'processing_items' => [{ 'filename' => 'PXL_20261015.mp4' }]
+      Dir.mktmpdir do |tmp_state|
+        streamer = LiveDashboardStreamer.new(7099, tmp_state)
+        dummy_state = {
+          'media_intake' => {
+            'targets' => {
+              'ramblin-amblin' => {
+                'processing_count' => 1,
+                'processing_items' => [{ 'filename' => 'PXL_20261015.mp4' }]
+              }
             }
           }
         }
-      }
-      active = streamer.detect_active_bpmn_step(dummy_state)
-      expect(active[:status]).to eq('processing')
-      expect(active[:target]).to eq('ramblin-amblin')
-      expect(active[:step]).to eq('step5')
+        active = streamer.detect_active_bpmn_step(dummy_state)
+        expect(active[:status]).to eq('processing')
+        expect(active[:target]).to eq('ramblin-amblin')
+        expect(active[:step]).to eq('step5')
+      end
     end
 
     it 'integrates realtime SSE listeners into youtube/dashboard.html' do

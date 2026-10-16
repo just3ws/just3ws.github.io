@@ -20,6 +20,7 @@ require 'optparse'
 require 'uri'
 require 'digest'
 require 'open3'
+require_relative 'lib/job_substate_tracker'
 
 ROOT_DIR ||= File.expand_path('..', __dir__)
 TELEMETRY_PATH = File.join(ROOT_DIR, '_data', 'youtube_pipeline_telemetry.json')
@@ -444,20 +445,33 @@ class LiveDashboardStreamer
 
       pending_items = pending_sorted.each_with_index.map do |f, idx|
         age_ts = begin; File.birthtime(f); rescue StandardError; File.mtime(f); end
+        fn = File.basename(f)
+        trk = JobSubstateTracker.load(fn, f, state_dir)
         {
-          'filename' => File.basename(f),
+          'filename' => fn,
           'size_bytes' => (File.size(f) rescue 0),
           'queue_position' => idx + 1,
-          'ingress_at' => age_ts.utc.iso8601
+          'ingress_at' => age_ts.utc.iso8601,
+          'meta_phase' => trk.meta_phase,
+          'current_step' => trk.current_step,
+          'substates' => trk.substates,
+          'summary_badges' => trk.summary_badges
         }
       end
 
       failed_items = failed_files.map do |f|
+        fn = File.basename(f)
+        trk = JobSubstateTracker.load(fn, f, state_dir)
+        err_msg = trk.step_data(trk.current_step)['error'] if trk.current_step
         {
-          'filename' => File.basename(f),
+          'filename' => fn,
           'size_bytes' => (File.size(f) rescue 0),
           'failed_at' => (File.mtime(f).utc.iso8601 rescue nil),
-          'diagnostic' => 'Quarantined for operator review. Click Re-queue to return file to pending.'
+          'diagnostic' => err_msg || 'Quarantined for operator review. Click Re-queue to return file to pending.',
+          'meta_phase' => trk.meta_phase,
+          'current_step' => trk.current_step,
+          'substates' => trk.substates,
+          'summary_badges' => trk.summary_badges
         }
       end
 
@@ -478,6 +492,19 @@ class LiveDashboardStreamer
         }
       end
 
+      processing_items = processing_files.map do |f|
+        fn = File.basename(f)
+        trk = JobSubstateTracker.load(fn, f, state_dir)
+        {
+          'filename' => fn,
+          'size_bytes' => (File.size(f) rescue 0),
+          'meta_phase' => trk.meta_phase,
+          'current_step' => trk.current_step,
+          'substates' => trk.substates,
+          'summary_badges' => trk.summary_badges
+        }
+      end
+
       target_stats[target_name] = {
         'series_name' => target_info['series_name'],
         'playlist_id' => target_info['playlist_id'],
@@ -491,7 +518,7 @@ class LiveDashboardStreamer
         'pending_count' => pending_files.size,
         'pending_items' => pending_items,
         'processing_count' => processing_files.size,
-        'processing_items' => processing_files.map { |f| { 'filename' => File.basename(f) } },
+        'processing_items' => processing_items,
         'processed_count' => processed_files.size,
         'recent_processed' => recent_processed,
         'failed_count' => failed_files.size,
@@ -682,22 +709,37 @@ class LiveDashboardStreamer
     active_target = nil
     active_file = nil
 
+    active_step_id = nil
+
     targets.each do |tname, tdata|
       if tdata['processing_count'].to_i > 0
         any_processing = true
         active_target = tname
-        active_file = tdata.dig('processing_items', 0, 'filename')
+        first_proc = tdata.dig('processing_items', 0)
+        active_file = first_proc['filename'] if first_proc
+        active_step_id = first_proc['current_step'] if first_proc
         break
       end
     end
 
     if any_processing
+      bpmn_step = case active_step_id
+                  when 'audio_dsp' then 'step3'
+                  when 'transcription' then 'step5'
+                  when 'metadata_synthesis' then 'step6'
+                  when 'youtube_upload' then 'step7'
+                  when 'playlist_assignment' then 'step8'
+                  when 'captions_upload' then 'step9'
+                  when 'datalake_sync' then 'step10'
+                  when 'archival' then 'step11'
+                  else 'step5'
+                  end
       {
-        step: "step5",
+        step: bpmn_step,
         status: "processing",
         target: active_target,
         file: active_file,
-        label: "Apple Silicon Whisper Recognition"
+        label: "Active Step: #{active_step_id || 'processing'}"
       }
     else
       {
