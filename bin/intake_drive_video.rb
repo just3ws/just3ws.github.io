@@ -597,7 +597,23 @@ class MediaIntakePipeline
         # 7. Add to Playlist
         if target_info['playlist_id']
           puts "📋 Adding video #{video_id} to playlist #{target_info['playlist_id']}..."
-          client.add_playlist_item(target_info['playlist_id'], video_id) rescue puts "   (Item already in playlist or warning ignored)"
+          playlist_added = false
+          3.times do |attempt|
+            begin
+              client.add_playlist_item(target_info['playlist_id'], video_id)
+              puts "   ✅ Video #{video_id} added to playlist #{target_info['playlist_id']}."
+              log_activity('playlist', "Added #{video_id} to playlist #{target_info['playlist_id']}", level: 'info', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'] })
+              playlist_added = true
+              break
+            rescue StandardError => pl_err
+              if attempt < 2
+                sleep (2 ** attempt)
+              else
+                puts "   ⚠️ Could not add to playlist #{target_info['playlist_id']}: #{pl_err.message}"
+                log_activity('warning', "Failed adding #{video_id} to playlist #{target_info['playlist_id']}: #{pl_err.message}", level: 'warning', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'], 'error' => pl_err.message })
+              end
+            end
+          end
         end
 
         # 8. Attach Captions Track (WebVTT)
