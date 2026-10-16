@@ -11,6 +11,17 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - EPISODE 00 GROUNDED FIELD RECORDING & SHOW-OPENER BIT ELIMINATION (2026-10-16):
+         Eliminated the scripted "Northern Illinois Field Dispatch" show formula and bit from Episode 00 in favor of unpretentious, grounded practitioner speech ("Field Recording"):
+         - Spoken Script Calibration (`_data/episodes/episode-00.yml`, `obs/teleprompter/episode-00.textream`, `bin/templates/teleprompter/act_01_cold_open.erb`):
+           - Stripped the formulaic radio greeting ("This is our Northern Illinois Field Dispatch under the high-tension wires...") in favor of direct, honest phrasing ("In October 2026, I walked out underneath 345,000-volt transmission lines in Northern Illinois with a smartphone to record some thoughts on software craftsmanship and identity...").
+           - Updated episode conference metadata from "Northern Illinois Field Dispatch" to clean "Field Recording".
+         - Dashboard Cockpit & Telemetry Alignment (`youtube/dashboard.html`, `_data/publication_schedule.yml`, `dehum/dashboard.html`):
+           - Aligned fallback conference descriptors and Act 1 templates in `#tab-teleprompter` and `#tab-workshop` to "Field Recording".
+           - Updated `spec/youtube/textream_teleprompter_spec.rb` to assert genuine spoken prose ('345,000-volt transmission lines').
+         - Verification & Localhost Deployment:
+           - 138/138 YouTube specs passing, `./bin/pipeline validate fast` passing cleanly, Jekyll rebuilt across 1,037 pages, deployed to localhost. Zero em dashes.
+
        - ALT.NET MANIFESTO PROVENANCE, CONVENTION OVER CONFIGURATION & TELEPROMPTER INTEGRATION (2026-10-16):
          Linked and displayed the Alt.NET Manifesto with full provenance and 4 tenets directly in the Episode 1 spoken script and teleprompter cockpit (`#tab-teleprompter`), documented the release of ASP.NET MVC as the decisive victory of the Ruby community (Rails, Sinatra, Merb) and convention over configuration in Microsoft's strategic pivot, and corrected all remaining mentions across site dossiers, monographs, and archives to reflect that Chicago Alt.NET was the first user group where Mike gave a presentation (not the first attended):
          - Alt.NET Manifesto in Spoken Script & Teleprompter Dossier (`_data/episodes/episode-01.yml`, `obs/teleprompter/episode-01.textream`, `youtube/dashboard.html`):
