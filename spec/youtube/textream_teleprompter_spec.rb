@@ -21,14 +21,14 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
       pages = JSON.parse(stdout)
       expect(pages).to be_an(Array)
       expect(pages.size).to eq(6)
-      expect(pages.all? { |p| p.is_a?(String) && !p.strip.empty? }).to be true
-      expect(pages[0]).to include('ACT 1: COLD OPEN & PERSONAL GROUNDING')
       expect(pages[0]).to include('Sergio Pereira')
-      expect(pages[1]).to include('ACT 2: SETTING THE HISTORICAL SCENE')
-      expect(pages[2]).to include('ACT 3: THE CORE INQUIRY: THE SOUND ABOVE')
-      expect(pages[3]).to include('ACT 4: HALLWAY REWATCH & VIDEO REACTION')
-      expect(pages[4]).to include('ACT 5: THE AI-ERA PARALLEL & TERMINAL WORKBENCH')
-      expect(pages[5]).to include('ACT 6: COMMUNITY CODA, OUTRO & NEXT STREAM')
+      expect(pages[0]).not_to include('ACT 1:')
+      expect(pages[0]).not_to include('Scene:')
+      expect(pages[1]).not_to include('ACT 2:')
+      expect(pages[2]).not_to include('ACT 3:')
+      expect(pages[3]).not_to include('ACT 4:')
+      expect(pages[4]).not_to include('ACT 5:')
+      expect(pages[5]).not_to include('ACT 6:')
     end
 
     it 'outputs valid 6-act Textream pages for Episode 00 (Preparatory Pilot)' do
@@ -40,15 +40,18 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
       expect(pages.size).to eq(6)
       expect(pages[0]).to include('Episode 0: Mike Hall')
       expect(pages[0]).to include('Northern Illinois Field Dispatch')
+      expect(pages[0]).not_to include('ACT 1:')
       expect(pages[3]).to include('YouTube ID: 7YeFpKn5FbU')
+      expect(pages[3]).not_to include('ACT 4:')
     end
 
-    it 'generates valid textream://read deep link URLs' do
+    it 'generates valid textream://read deep link URLs with only spoken words' do
       stdout, stderr, status = Open3.capture3('ruby', generator_script, '-e', '1', '-u')
       expect(status.success?).to be true
       expect(stderr).to be_empty
       expect(stdout.strip).to start_with('textream://read?text=')
       expect(stdout).to include('Sergio%20Pereira')
+      expect(stdout).not_to include('ACT%201')
     end
 
     it 'saves .textream files to obs/teleprompter with zero em dashes' do

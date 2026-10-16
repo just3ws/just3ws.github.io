@@ -3283,15 +3283,14 @@ teleprompter_script:
     if (!ep) return;
     const acts = buildTeleprompterActs(ep);
     const act1 = acts[0];
-    const text = "ACT 1: " + act1.title + "\n\n" + act1.prompt;
-    window.location.href = "textream://read?text=" + encodeURIComponent(text);
+    window.location.href = "textream://read?text=" + encodeURIComponent(act1.prompt);
   }
 
   function downloadTextream(epNum) {
     const ep = getSelectedPrompterEp(epNum);
     if (!ep) return;
     const acts = buildTeleprompterActs(ep);
-    const pages = acts.map(a => "ACT " + a.act + ": " + a.title.toUpperCase() + " [" + a.timing + "]\nScene: " + a.scene + "\n\n" + a.prompt);
+    const pages = acts.map(a => a.prompt);
     const blob = new Blob([JSON.stringify(pages, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -3321,7 +3320,7 @@ teleprompter_script:
           ${a.prompt}
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-          <a href="textream://read?text=${encodeURIComponent('ACT ' + a.act + ': ' + a.title + '\n\n' + a.prompt)}" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #0f766e; color: #ffffff; border-radius: 0.25rem; padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 700; text-decoration: none;">
+          <a href="textream://read?text=${encodeURIComponent(a.prompt)}" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #0f766e; color: #ffffff; border-radius: 0.25rem; padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 700; text-decoration: none;">
             🎙️ Read in Textream
           </a>
           <button type="button" onclick="copyCliCommand('${a.prompt.replace(/'/g, "\\'")}', this)" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; color: #475569;">

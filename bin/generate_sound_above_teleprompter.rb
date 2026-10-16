@@ -24,9 +24,13 @@ TELEPROMPTER_DIR = File.join(ROOT_DIR, 'obs', 'teleprompter')
 
 # Resolve episode metadata across episode dossiers (00-37) and sequence manifest
 def resolve_episode(ep_num)
-  # Check for episode YAML dossier first (_data/episodes/episode-XX.yml)
-  slug_num = format('%02d', ep_num)
-  dossier_path = File.join(EPISODES_DIR, "episode-#{slug_num}.yml")
+  # Check for episode YAML dossier first (_data/episodes/episode-XX.yml or _data/episodes/<slug>.yml)
+  dossier_path = if ep_num.to_s.start_with?('errata-')
+                   File.join(EPISODES_DIR, "#{ep_num}.yml")
+                 else
+                   slug_num = format('%02d', ep_num.to_i)
+                   File.join(EPISODES_DIR, "episode-#{slug_num}.yml")
+                 end
 
   if File.exist?(dossier_path)
     dossier = YAML.safe_load(File.read(dossier_path), permitted_classes: [Date, Time], aliases: true) || {}
@@ -77,7 +81,7 @@ end
 # Construct standardized 6-act rundown
 def build_rundown(episode)
   ep_num = episode['number']
-  next_ep_num = ep_num >= 37 ? 0 : ep_num + 1
+  next_ep_num = ep_num.is_a?(Numeric) && ep_num >= 37 ? 0 : (ep_num.is_a?(Numeric) ? ep_num + 1 : 0)
   custom = episode['teleprompter_script'] || {}
 
   act1 = custom['act_1'] || "Welcome back to The Sound Above. I am Mike Hall. Today we enter #{episode['era_name']}. Before code synthesis models and automated agents, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode #{ep_num}: #{episode['interviewee']} from #{episode['conference']}."
@@ -149,14 +153,11 @@ end
 
 # Build native Textream document pages: JSON Array of Strings [String]
 # Each page in the array corresponds to an act in the teleprompter presentation.
+# Per Textream speech tracking specifications, only spoken words are included
+# so the speech follower tracks cleanly without reading metadata aloud.
 def build_textream_pages(rundown)
   rundown[:acts].map do |act|
-    [
-      "ACT #{act[:act_number]}: #{act[:name].upcase} [#{act[:timing]}]",
-      "Scene: #{act[:scene_target]}",
-      "",
-      act[:teleprompter_script]
-    ].join("\n")
+    act[:teleprompter_script]
   end
 end
 
@@ -184,7 +185,9 @@ options = {
 
 OptionParser.new do |opts|
   opts.banner = 'Usage: bin/generate_sound_above_teleprompter.rb [options]'
-  opts.on('-e', '--episode NUM', Integer, 'Episode number (0-37)') { |n| options[:episode] = n }
+  opts.on('-e', '--episode ID', 'Episode number (0-37) or semantic slug') do |n|
+    options[:episode] = n.to_s =~ /^\d+$/ ? n.to_i : n.to_s
+  end
   opts.on('-j', '--json', 'Output script payload as JSON') { options[:format] = :json }
   opts.on('-m', '--markdown', 'Output script as Markdown') { options[:format] = :markdown }
   opts.on('-t', '--textream', 'Output native Textream document JSON [String] to stdout') { options[:format] = :textream }
@@ -194,7 +197,7 @@ OptionParser.new do |opts|
   opts.on('-o', '--open', 'Open generated .textream document in /Applications/Textream.app') { options[:open_app] = true }
   opts.on('-u', '--url', 'Print textream://read deep link URL for speech tracking') { options[:format] = :url }
   opts.on('-a', '--act NUM', Integer, 'Specific act for deep link or single view (1-6)') { |a| options[:act] = a }
-  opts.on('--all-textream', 'Generate native .textream documents for all 38 episodes into obs/teleprompter/') do
+  opts.on('--all-textream', 'Generate native .textream documents for all episodes into obs/teleprompter/') do
     options[:all_episodes] = true
   end
   opts.on('-h', '--help', 'Show help') do
@@ -203,10 +206,10 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-# Batch generation for all 38 episodes
+# Batch generation for all episodes
 if options[:all_episodes]
   FileUtils.mkdir_p(TELEPROMPTER_DIR)
-  puts "📜 Generating native .textream documents for all 38 episodes in #{TELEPROMPTER_DIR}..."
+  puts "📜 Generating native .textream documents for all episodes in #{TELEPROMPTER_DIR}..."
   (0..37).each do |ep_num|
     ep_data = resolve_episode(ep_num)
     rd = build_rundown(ep_data)
@@ -214,6 +217,15 @@ if options[:all_episodes]
     file_path = File.join(TELEPROMPTER_DIR, format('episode-%02d.textream', ep_num))
     save_textream_file(file_path, pages)
     puts "  [PASS] Episode #{format('%02d', ep_num)}: #{file_path} (6 pages)"
+  end
+  Dir.glob(File.join(EPISODES_DIR, 'errata-*.yml')).sort.each do |errata_yml|
+    slug = File.basename(errata_yml, '.yml')
+    ep_data = resolve_episode(slug)
+    rd = build_rundown(ep_data)
+    pages = build_textream_pages(rd)
+    file_path = File.join(TELEPROMPTER_DIR, "#{slug}.textream")
+    save_textream_file(file_path, pages)
+    puts "  [PASS] Errata #{slug}: #{file_path} (6 pages)"
   end
   puts "✅ All 38 .textream documents compiled cleanly!"
   exit 0
@@ -224,19 +236,25 @@ rundown = build_rundown(episode)
 textream_pages = build_textream_pages(rundown)
 
 # Save .textream file if requested or if opening
+target_slug = if rundown[:episode_number].is_a?(String)
+                "#{rundown[:episode_number]}.textream"
+              else
+                format('episode-%02d.textream', rundown[:episode_number].to_i)
+              end
+
 target_save_path = nil
 if options[:save_path] || options[:open_app]
   target_save_path = if options[:save_path] && options[:save_path] != :default
                        options[:save_path]
                      else
-                       File.join(TELEPROMPTER_DIR, format('episode-%02d.textream', rundown[:episode_number]))
+                       File.join(TELEPROMPTER_DIR, target_slug)
                      end
   save_textream_file(target_save_path, textream_pages)
   warn "💾 Saved native Textream document to #{target_save_path}" unless options[:format] == :textream
 end
 
 if options[:open_app]
-  target_save_path ||= File.join(TELEPROMPTER_DIR, format('episode-%02d.textream', rundown[:episode_number]))
+  target_save_path ||= File.join(TELEPROMPTER_DIR, target_slug)
   save_textream_file(target_save_path, textream_pages) unless File.exist?(target_save_path)
   app_path = '/Applications/Textream.app'
   if File.exist?(app_path)
@@ -253,11 +271,7 @@ when :textream
   puts JSON.pretty_generate(textream_pages)
 when :url
   target_act = rundown[:acts].find { |a| a[:act_number] == options[:act] } || rundown[:acts].first
-  full_prompt = [
-    "ACT #{target_act[:act_number]}: #{target_act[:name].upcase}",
-    target_act[:teleprompter_script]
-  ].join("\n\n")
-  puts build_textream_url(full_prompt)
+  puts build_textream_url(target_act[:teleprompter_script])
 when :json
   puts JSON.pretty_generate(rundown)
 when :markdown
