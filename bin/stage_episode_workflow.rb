@@ -38,7 +38,7 @@ class StageEpisodeWorkflow
     if target == '--all'
       stage_all_episodes(json_mode: json_mode)
     else
-      ep_num = target.to_i
+      ep_num = (target == 'errata-fluffle-precursor' || target == '-1') ? target : target.to_i
       result = stage_single_episode(ep_num)
 
       if json_mode
@@ -95,7 +95,8 @@ class StageEpisodeWorkflow
     report[:passed] = false if report[:checks][:required_fields][:status] == 'FAIL'
 
     # Step 2: YouTube Metadata Staging & Invariants
-    title = "#{dossier['title']} | The Sound Above Ep #{ep_num}"
+    ep_display = (ep_num.to_s == 'errata-fluffle-precursor' || ep_num.to_i == -1) ? -1 : ep_num
+    title = "#{dossier['title']} | The Sound Above Ep #{ep_display}"
     title_ok = title.length <= 100
     report[:checks][:title_length] = {
       status: title_ok ? 'PASS' : 'FAIL',
@@ -209,8 +210,9 @@ class StageEpisodeWorkflow
     inquiry = dossier.dig('narrative', 'core_inquiry')
     parallel = dossier.dig('narrative', 'ai_era_parallel')
 
-    desc = "#{dossier['title']} | The Sound Above Ep #{ep_num}\n\n"
-    desc += "Live oral history rewatch and technical commentary with Mike Hall (Staff Software Engineer, UGtastic creator, and SCMC co-founder).\n\n"
+    ep_display = (ep_num.to_s == 'errata-fluffle-precursor' || ep_num.to_i == -1) ? -1 : ep_num
+    desc = "#{dossier['title']} | The Sound Above Ep #{ep_display}\n\n"
+    desc += "Live technical commentary and rewatch with Mike Hall (Staff Software Engineer, UGtastic creator, and SCMC co-founder).\n\n"
     desc += "THE SOUND ABOVE INQUIRY:\n#{inquiry}\n\n"
     desc += "THE 2026 AI-ERA PARALLEL:\n#{parallel}\n\n"
     desc += "CHAPTERS:\n"
@@ -231,9 +233,9 @@ class StageEpisodeWorkflow
     end
 
     desc += "Interactive transcripts and companion analysis: https://www.just3ws.com/series/the-sound-above/\n"
-    desc += "Support independent compute, hosting, and oral history preservation on Patreon: https://patreon.com/whoistechcmty\n\n"
+    desc += "Support independent compute, hosting, and digital archive preservation on Patreon: https://patreon.com/whoistechcmty\n\n"
     hashtags = (dossier.dig('lexicon', 'hashtags') || []).join(' ')
-    desc += (hashtags.empty? ? '#SoftwareCraftsmanship #TheSoundAbove #OralHistory' : hashtags)
+    desc += (hashtags.empty? ? '#SoftwareCraftsmanship #TheSoundAbove #TechnicalRewatch' : hashtags)
     desc
   end
 
