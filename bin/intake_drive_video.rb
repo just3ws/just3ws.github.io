@@ -734,6 +734,11 @@ class MediaIntakePipeline
         FileUtils.mv(processing_path, final_dest)
         FileUtils.mv(sidecar_path, File.join(month_dir, File.basename(sidecar_path))) if sidecar_path && File.exist?(sidecar_path)
 
+        # Prune any previous failed artifacts from prior transient attempts
+        FileUtils.rm_f(File.join(failed_dir, filename))
+        FileUtils.rm_f(File.join(failed_dir, "#{filename}.error.log"))
+        FileUtils.rm_f(File.join(failed_dir, "#{filename}.state.json"))
+
         t_end = Time.now
         duration_total = (t_end.-(t_start)).round(2)
         final_size_bytes = (File.size(final_dest) rescue 0)
