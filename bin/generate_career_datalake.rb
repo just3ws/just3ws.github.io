@@ -1,6 +1,16 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_career_datalake.rb
+# domain: data
+# purpose: CareerOS unified knowledge datalake synthesizer (JSON and JSONL)
+# usage: bin/pipeline data generate OR ruby bin/generate_career_datalake.rb
+# description: Compiles the comprehensive CareerOS datalake across 29 positions,
+#   136 technical skills, 156 writings, and 218 video interview transcripts
+#   into career_datalake.json and career_datalake.jsonl for fast local querying.
+# ---
+
 require 'yaml'
 require 'json'
 require 'time'
@@ -102,27 +112,138 @@ Dir.glob(File.join(ROOT, '_posts', '*.*')).sort.each do |f|
   }
 end
 
-# 6. Oral History & Interviews (211 videos/transcripts)
+# 6. Oral History, Video Assets & Interactive Transcripts (218 transcripts, 217 video assets)
+transcripts_by_id = {}
+Dir.glob(File.join(ROOT, '_data', 'transcripts', '*.yml')).each do |f|
+  slug = File.basename(f, '.yml')
+  raw = safe_yaml_load(File.read(f))
+  next unless raw.is_a?(Hash)
+
+  text = if raw["turns"].is_a?(Array)
+    raw["turns"].map { |t| t["text"] }.compact.join(" ")
+  elsif raw["content"]
+    raw["content"].to_s
+  elsif raw["text"]
+    raw["text"].to_s
+  else
+    ""
+  end
+
+  transcripts_by_id[slug] = {
+    "text" => text.strip,
+    "turns_count" => raw["turns"].is_a?(Array) ? raw["turns"].size : 0,
+    "speaker_map" => raw["speaker_map"] || {}
+  }
+end
+
+# Load canonical video assets (superset including Ramblin' & Amblin', Errata, and conference interviews)
+video_assets_file = File.join(ROOT, '_data', 'video_assets.yml')
+video_assets_raw = File.exist?(video_assets_file) ? safe_yaml_load(File.read(video_assets_file)) : {}
+video_assets_items = video_assets_raw.is_a?(Hash) ? (video_assets_raw["items"] || video_assets_raw.values.first) : video_assets_raw
+
 interviews_file = File.join(ROOT, '_data', 'interviews.yml')
 interviews_raw = File.exist?(interviews_file) ? safe_yaml_load(File.read(interviews_file)) : {}
 interviews_items = interviews_raw.is_a?(Hash) ? (interviews_raw["items"] || interviews_raw.values.first) : interviews_raw
-interviews_list = Array(interviews_items).map do |item|
+
+# Index interviews by id for enrichment
+interviews_by_id = {}
+Array(interviews_items).each do |item|
   next unless item.is_a?(Hash)
+  id = item["id"] || item["slug"]
+  interviews_by_id[id] = item if id
+end
+
+seen_ids = {}
+interviews_list = []
+
+Array(video_assets_items).each do |item|
+  next unless item.is_a?(Hash)
+  id = item["id"] || item["slug"]
+  next unless id
+  next if seen_ids[id]
+  seen_ids[id] = true
+
+  t_id = item["transcript_id"] || id
+  t_data = transcripts_by_id[t_id] || transcripts_by_id[id]
+  int_enrich = interviews_by_id[id] || {}
+
+  conf = item["event"] || int_enrich["conference"] || item["conference_slug"] || item["category"]
+  conf_name = conf.is_a?(Hash) ? conf["name"] : conf.to_s
+  conf_year = conf.is_a?(Hash) ? conf["year"] : (item["recorded_at"] || item["published_date"] || int_enrich["year"]).to_s[0..3].to_i
+  conf_year = 2011 if conf_year == 0
+
+  yt_platform = Array(item["platforms"]).find { |p| p["platform"] == "youtube" }
+  yt_url = yt_platform ? (yt_platform["url"] || "https://youtu.be/#{yt_platform['asset_id']}") : (item["youtube_url"] || (item["youtube_video_id"] ? "https://youtu.be/#{item['youtube_video_id']}" : nil))
+  yt_id = yt_platform ? yt_platform["asset_id"] : (item["youtube_video_id"] || (item["youtube_url"] ? item["youtube_url"][/(?:watch\?v=|youtu\.be\/)([\w-]{11})/, 1] : nil))
+
+  playlist_id = item["playlist_id"] || int_enrich["playlist_id"]
+  series_name = item["series"] || item["series_name"] || int_enrich["series"]
+  if playlist_id.nil?
+    if item["category"] == "field_notes" || id.to_s.start_with?("ramblin") || item["title"].to_s.include?("Ramblin")
+      playlist_id = "PLNtb969T2-l0"
+      series_name ||= "Ramblin' & Amblin'"
+    elsif item["category"] == "errata" || id.to_s.start_with?("errata") || item["title"].to_s.include?("Errata")
+      playlist_id = "PLKPAHha6I990"
+      series_name ||= "The Sound Above: Errata"
+    elsif item["series"] == "The Sound Above" || item["category"] == "rewatch"
+      playlist_id = "PLVcmLmfz2uyA"
+      series_name ||= "The Sound Above"
+    end
+  end
+
+  interviews_list << {
+    "id" => id,
+    "title" => item["title"] || int_enrich["title"] || id.tr('-', ' ').capitalize,
+    "interviewee" => item["speaker"] || int_enrich["interviewee"] || (int_enrich["interviewees"].is_a?(Array) ? int_enrich["interviewees"].first : int_enrich["interviewees"]),
+    "speaker" => item["speaker"] || int_enrich["interviewee"],
+    "conference" => conf_name,
+    "year" => conf_year,
+    "category" => item["category"] || (item["speaker"] == "Mike Hall" ? "field_notes" : "conference"),
+    "primary_platform" => item["primary_platform"] || int_enrich["primary_platform"] || "youtube",
+    "transcript_id" => t_id,
+    "page_url" => item["page_url"] || int_enrich["page_url"] || "/interviews/#{id}/",
+    "youtube_url" => yt_url,
+    "youtube_video_id" => yt_id,
+    "playlist_id" => playlist_id,
+    "playlist_title" => series_name,
+    "series" => series_name,
+    "description" => item["description"] || int_enrich["description"] || "",
+    "tags" => Array(item["tags"] || int_enrich["tags"]),
+    "chapters" => Array(item["chapters"]),
+    "transcript_text" => t_data ? t_data["text"] : "",
+    "transcript_turns_count" => t_data ? t_data["turns_count"] : 0
+  }
+end
+
+# Fallback: any items in interviews.yml not in video_assets
+Array(interviews_items).each do |item|
+  next unless item.is_a?(Hash)
+  id = item["id"] || item["slug"]
+  next unless id
+  next if seen_ids[id]
+  seen_ids[id] = true
+
+  t_id = item["transcript_id"] || id
+  t_data = transcripts_by_id[t_id] || transcripts_by_id[id]
   conf = item["conference"]
   conf_name = conf.is_a?(Hash) ? conf["name"] : conf.to_s
   conf_year = conf.is_a?(Hash) ? conf["year"] : item["year"]
 
-  {
-    "id" => item["id"] || item["slug"],
+  interviews_list << {
+    "id" => id,
     "title" => item["title"],
     "interviewee" => item["interviewee"] || (item["interviewees"].is_a?(Array) ? item["interviewees"].first : item["interviewees"]),
+    "speaker" => item["interviewee"],
     "conference" => conf_name,
     "year" => conf_year,
+    "category" => "conference",
     "primary_platform" => item["primary_platform"],
-    "transcript_id" => item["transcript_id"],
-    "page_url" => item["page_url"] || "/interviews/#{item['id']}/"
+    "transcript_id" => t_id,
+    "page_url" => item["page_url"] || "/interviews/#{id}/",
+    "transcript_text" => t_data ? t_data["text"] : "",
+    "transcript_turns_count" => t_data ? t_data["turns_count"] : 0
   }
-end.compact
+end
 
 # 7. Knowledge Graph
 kg_file = File.join(ROOT, '_data', 'knowledge_graph.json')
@@ -239,6 +360,7 @@ datalake = {
       "total_archetypes" => archetypes_data.size,
       "total_articles" => posts.size,
       "total_interviews" => interviews_list.size,
+      "total_transcripts_indexed" => transcripts_by_id.size,
       "total_knowledge_graph_nodes" => kg_data["nodes"]&.size || 0,
       "total_technologies_tracked" => tech_provenance.size
     }

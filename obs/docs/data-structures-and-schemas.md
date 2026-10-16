@@ -35,7 +35,7 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
     "conference": "SCNA 2011",
     "location": "Chicago, IL",
     "year": "2011",
-    "era": "The Chicago Crucible",
+    "era": "The Chicago Workshop",
     "sound_above_prompt": "Who inspired the engineers breaking free from enterprise Microsoft silos? How did grassroots peer groups form before commercial developer platforms existed?",
     "companion_links": [
       "https://just3ws.localhost/timeline/community/",
@@ -97,11 +97,11 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
 
 The file `obs/curation/sequence-manifest.json` defines the entire 37-episode curriculum across six chronological and thematic movements:
 
-1. `chicago-crucible`: The Chicago Crucible
+1. `the-chicago-workshop`: The Chicago Workshop
 2. `practice-and-dojo`: The Practice and the Dojo
 3. `human-communication-layer`: The Human Communication Layer & Inclusion
 4. `philosophy-and-empathy`: Philosophy, Empathy & Craftsmanship
-5. `architecture-reckoning`: The Architecture and Testing Reckoning
+5. `architecture-testing-discipline`: The Architecture & Testing Discipline
 6. `observable-control-plane`: The AI Horizon & The Observable Control Plane
 
 ### Episode Record Schema
@@ -109,8 +109,8 @@ The file `obs/curation/sequence-manifest.json` defines the entire 37-episode cur
 ```json
 {
   "number": 1,
-  "era_id": "chicago-crucible",
-  "era_name": "The Chicago Crucible",
+  "era_id": "the-chicago-workshop",
+  "era_name": "The Chicago Workshop",
   "interviewee": "Sergio Pereira",
   "slug": "sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011",
   "conference": "SCNA 2011",

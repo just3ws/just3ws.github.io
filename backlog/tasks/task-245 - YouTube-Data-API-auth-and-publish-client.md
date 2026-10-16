@@ -1,10 +1,11 @@
 ---
 id: TASK-245
 title: YouTube Data API auth and publish client
-status: To Do
-assignee: []
+status: Done
+assignee:
+  - '@antigravity'
 created_date: '2026-07-04 03:23'
-updated_date: '2026-07-04 14:27'
+updated_date: '2026-10-15 15:00'
 labels:
   - pipeline
   - youtube
@@ -22,10 +23,10 @@ Stand up OAuth credentials and a thin YouTube Data API client, exposed as zdots 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 OAuth flow completes and refresh credentials for the channel are stored securely
-- [ ] #2 A thin client wraps the captions/videos/playlists endpoints
-- [ ] #3 Publish actions run as zdots jobs (retry/idempotent)
-- [ ] #4 An authenticated dry-run (read channel + quota) is verified; no live writes in this task
+- [x] #1 OAuth flow completes and refresh credentials for the channel are stored securely
+- [x] #2 A thin client wraps the captions/videos/playlists endpoints
+- [x] #3 Publish actions run as zdots jobs (retry/idempotent)
+- [x] #4 An authenticated dry-run (read channel + quota) is verified; no live writes in this task
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -76,5 +77,5 @@ Per-call: videos.list 1 · videos.update 50 · videos.insert 1600 · captions.li
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->

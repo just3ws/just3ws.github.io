@@ -1,10 +1,11 @@
 ---
 id: TASK-248
 title: Push generated YouTube metadata to the channel
-status: To Do
-assignee: []
+status: Done
+assignee:
+  - '@antigravity'
 created_date: '2026-07-04 03:24'
-updated_date: '2026-07-04 14:27'
+updated_date: '2026-10-15 15:30'
 labels:
   - pipeline
   - youtube
@@ -22,10 +23,10 @@ The audit skill already generates youtube title/description/tags/chapters into _
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Reads title/description/tags/chapters from _data
-- [ ] #2 Diffs against live YouTube state and produces a dry-run report of changes
-- [ ] #3 Applies updates only after explicit human approval of the diff
-- [ ] #4 Idempotent — re-running with no changes is a no-op
+- [x] #1 Reads title/description/tags/chapters from _data
+- [x] #2 Diffs against live YouTube state and produces a dry-run report of changes
+- [x] #3 Applies updates only after explicit human approval of the diff
+- [x] #4 Idempotent — re-running with no changes is a no-op
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -63,5 +64,5 @@ Reads: `_data/transcripts/*.yml`, `_data/video_assets.yml`. Uses `bin/lib/youtub
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->

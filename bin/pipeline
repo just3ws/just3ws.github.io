@@ -1,112 +1,328 @@
 #!/usr/bin/env sh
-# Unified pipeline runner using Rake
+# ---
+# name: pipeline
+# domain: root
+# purpose: Unified platform operational pipeline router across media, validate, data, and site
+# usage: bin/pipeline <domain> <action> [options] OR bin/pipeline <legacy-command> [options]
+# description: Central operational gateway for just3ws. Coordinates video intake,
+#   near-realtime streaming, OBS validation, datalake compilation, and site builds.
+# ---
+# ponytail: clean shell router with flat backward compatibility;
+# upgrade trigger: migrate to Thor/Commander CLI if complex argument flag parsing is required.
 set -eu
 
 usage() {
   cat <<'USAGE'
-Usage: ./bin/pipeline <command>
+Usage: ./bin/pipeline <domain> <action> [options]
+       ./bin/pipeline <legacy-command> [options]
 
-Command grammar:
-  <command> ::= generate | build | test | validate | verify | knowledge-graph | semantic-graph | semantic-audit | semantic-snapshot | smoke | sitemap | ci | resumes | youtube | episode | patreon | stage | intake | stream | swiftbar | help
+Namespaces:
+  media     Media intake, streaming telemetry, SwiftBar, and YouTube publishing.
+            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, status.
+  validate  Repository hygiene, OBS assertions, rendered site checks.
+            Actions: fast, obs, site, all.
+  data      Interview data generation, archive graph, semantic artifacts, sitemap.
+            Actions: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap.
+  site      Jekyll site lifecycle, testing, CI verification, local deployment.
+            Actions: build, test, ci, verify, smoke, resumes, install, server.
 
-Commands:
-  generate  Regenerate data-driven interview/video pages.
-  build     Run generate and build _site with Jekyll.
-  test      Run RSpec unit tests.
-  validate  Run data/SEO/semantic/link checks against _site.
-  knowledge-graph Audit the canonical archive relationship graph.
-  semantic-graph Generate JSON-LD semantic graph artifacts from rendered _site.
-  semantic-audit Generate consolidated semantic quality report from validator artifacts.
-  semantic-snapshot Generate backlog/docs/architecture/semantic-graph.md from semantic artifacts.
-  smoke     Run Playwright smoke checks against built _site.
-  sitemap   Print sitemap coverage summary from built _site.
-  ci        Regenerate, build, test, and validate locally.
-  verify    Build, test, and validate committed artifacts without regeneration.
-  resumes   Regenerate PDF resumes to $HOME/Desktop/resumes.
-  youtube   Run YouTube publishing pipeline CLI (status, audit, telemetry, schedule).
-  episode   Run Episode Semantic Dossier & Workbench CLI (list, show, compile, validate, cue).
-  patreon   Run Patreon API v2 integration and credits CLI (status, members, credits, sync).
-  stage     Run 37-episode staging & rehearsal workflow harness across all 7 gates.
-  intake    Run Google Drive media intake pipeline (status, process, watch, dry-run).
-  stream    Run near-realtime SSE & telemetry streaming server on port 7025.
-  swiftbar  Run YouTube pipeline status and menu bar pulse for SwiftBar.
-  help      Show this help.
+Flat / Legacy Commands (Backward Compatible):
+  generate, build, test, validate, verify, knowledge-graph, semantic-graph,
+  semantic-audit, semantic-snapshot, smoke, sitemap, ci, resumes, youtube,
+  episode, patreon, stage, intake, stream, swiftbar, teleprompter, textream, help.
 USAGE
 }
 
-case "${1:-help}" in
-  generate)
-    bundle exec rake generate
-    ;;
-  build)
-    bundle exec rake build
-    ;;
-  test)
-    bundle exec rake test
+run_media() {
+  action="${1:-status}"
+  shift || true
+  case "$action" in
+    intake|drive-intake)
+      if [ $# -eq 0 ]; then
+        ruby bin/intake_drive_video.rb --status
+      else
+        ruby bin/intake_drive_video.rb "$@"
+      fi
+      ;;
+    stream|live-stream)
+      ruby bin/live_dashboard_streamer.rb "$@"
+      ;;
+    swiftbar|bar)
+      ruby bin/youtube-swiftbar "$@"
+      ;;
+    stage|rehearse)
+      if [ $# -eq 0 ]; then
+        ruby bin/stage_episode_workflow.rb --all
+      else
+        ruby bin/stage_episode_workflow.rb "$@"
+      fi
+      ;;
+    patreon)
+      if [ $# -eq 0 ]; then
+        ruby bin/patreon_pipeline.rb status
+      else
+        ruby bin/patreon_pipeline.rb "$@"
+      fi
+      ;;
+    episode|workbench)
+      if [ $# -eq 0 ]; then
+        ruby bin/episode_workbench.rb list
+      else
+        ruby bin/episode_workbench.rb "$@"
+      fi
+      ;;
+    youtube|ops|cockpit|status)
+      if [ $# -eq 0 ]; then
+        ruby bin/youtube_pipeline.rb status
+      else
+        ruby bin/youtube_pipeline.rb "$@"
+      fi
+      ;;
+    teleprompter|prompter)
+      ruby bin/generate_sound_above_teleprompter.rb "$@"
+      ;;
+    textream)
+      if [ $# -eq 0 ]; then
+        ruby bin/generate_sound_above_teleprompter.rb -e 1 --open
+      elif [ "$1" = "all" ] || [ "$1" = "--all" ]; then
+        ruby bin/generate_sound_above_teleprompter.rb --all-textream
+      else
+        ruby bin/generate_sound_above_teleprompter.rb "$@"
+      fi
+      ;;
+    halt|pause)
+      ruby bin/intake_drive_video.rb --halt
+      ;;
+    stop)
+      ruby bin/intake_drive_video.rb --stop
+      ;;
+    resume)
+      ruby bin/intake_drive_video.rb --resume
+      ;;
+    help|-h|--help)
+      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|halt|stop|resume|status> [options]"
+      ;;
+    *)
+      echo "Unknown media action: $action" >&2
+      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, halt, stop, resume, status" >&2
+      exit 1
+      ;;
+  esac
+}
+
+run_validate() {
+  action="${1:-all}"
+  shift || true
+  case "$action" in
+    fast)
+      bundle exec rake validate:fast
+      ;;
+    obs)
+      bundle exec rake validate:obs
+      ;;
+    site|rendered)
+      bundle exec rake validate:rendered_site
+      ;;
+    all)
+      bundle exec rake validate
+      ;;
+    help|-h|--help)
+      echo "Usage: ./bin/pipeline validate <fast|obs|site|all>"
+      ;;
+    *)
+      echo "Unknown validate action: $action" >&2
+      echo "Available: fast, obs, site, all" >&2
+      exit 1
+      ;;
+  esac
+}
+
+run_data() {
+  action="${1:-generate}"
+  shift || true
+  case "$action" in
+    generate)
+      bundle exec rake generate
+      ;;
+    graph|knowledge-graph)
+      bundle exec rake knowledge_graph
+      ;;
+    semantic-graph)
+      bundle exec rake semantic:graph
+      ;;
+    semantic-audit)
+      bundle exec rake semantic:audit
+      ;;
+    semantic-snapshot)
+      bundle exec rake semantic:snapshot
+      ;;
+    sitemap)
+      bundle exec rake sitemap
+      ;;
+    help|-h|--help)
+      echo "Usage: ./bin/pipeline data <generate|graph|semantic-graph|semantic-audit|semantic-snapshot|sitemap>"
+      ;;
+    *)
+      echo "Unknown data action: $action" >&2
+      echo "Available: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap" >&2
+      exit 1
+      ;;
+  esac
+}
+
+run_site() {
+  action="${1:-build}"
+  shift || true
+  case "$action" in
+    build)
+      bundle exec rake build
+      ;;
+    test)
+      bundle exec rake test
+      ;;
+    ci)
+      bundle exec rake ci
+      ;;
+    verify)
+      bundle exec rake verify
+      ;;
+    smoke)
+      bundle exec rake smoke
+      ;;
+    resumes|resume-pdfs)
+      bundle exec rake resumes
+      ;;
+    install)
+      bin/install-localhost
+      ;;
+    server)
+      bin/server
+      ;;
+    help|-h|--help)
+      echo "Usage: ./bin/pipeline site <build|test|ci|verify|smoke|resumes|install|server>"
+      ;;
+    *)
+      echo "Unknown site action: $action" >&2
+      echo "Available: build, test, ci, verify, smoke, resumes, install, server" >&2
+      exit 1
+      ;;
+  esac
+}
+
+cmd="${1:-help}"
+case "$cmd" in
+  # Namespaces
+  media)
+    shift
+    run_media "$@"
     ;;
   validate)
-    bundle exec rake validate
+    shift
+    if [ $# -eq 0 ]; then
+      bundle exec rake validate
+    else
+      run_validate "$@"
+    fi
+    ;;
+  data)
+    shift
+    run_data "$@"
+    ;;
+  site)
+    shift
+    run_site "$@"
+    ;;
+
+  # Flat / Backward-Compatible Aliases
+  generate)
+    run_data generate
+    ;;
+  build)
+    run_site build
+    ;;
+  test)
+    run_site test
     ;;
   verify)
-    bundle exec rake verify
-    ;;
-  knowledge-graph)
-    bundle exec rake knowledge_graph
-    ;;
-  semantic-graph)
-    bundle exec rake semantic:graph
-    ;;
-  semantic-audit)
-    bundle exec rake semantic:audit
-    ;;
-  semantic-snapshot)
-    bundle exec rake semantic:snapshot
-    ;;
-  smoke)
-    bundle exec rake smoke
-    ;;
-  sitemap)
-    bundle exec rake sitemap
+    run_site verify
     ;;
   ci)
-    bundle exec rake ci
+    run_site ci
+    ;;
+  smoke)
+    run_site smoke
+    ;;
+  sitemap)
+    run_data sitemap
+    ;;
+  knowledge-graph)
+    run_data graph
+    ;;
+  semantic-graph)
+    run_data semantic-graph
+    ;;
+  semantic-audit)
+    run_data semantic-audit
+    ;;
+  semantic-snapshot)
+    run_data semantic-snapshot
     ;;
   resumes|resume-pdfs)
-    bundle exec rake resumes
+    run_site resumes
     ;;
   youtube|youtube-pipeline)
     shift
-    ruby bin/youtube_pipeline.rb "${@:-status}"
+    run_media youtube "$@"
     ;;
   episode|workbench|episode-workbench)
     shift
-    ruby bin/episode_workbench.rb "${@:-list}"
+    run_media episode "$@"
     ;;
   patreon|patreon-pipeline)
     shift
-    ruby bin/patreon_pipeline.rb "${@:-status}"
+    run_media patreon "$@"
     ;;
   stage|rehearse)
     shift
-    ruby bin/stage_episode_workflow.rb "${@:---all}"
+    run_media stage "$@"
     ;;
   intake|drive-intake|media-intake)
     shift
-    ruby bin/intake_drive_video.rb "${@:---status}"
+    run_media intake "$@"
     ;;
   stream|live-stream|dashboard-stream)
     shift
-    ruby bin/live_dashboard_streamer.rb "$@"
+    run_media stream "$@"
     ;;
   swiftbar|youtube-swiftbar)
     shift
-    ruby bin/youtube-swiftbar "$@"
+    run_media swiftbar "$@"
+    ;;
+  teleprompter|prompter)
+    shift
+    run_media teleprompter "$@"
+    ;;
+  textream)
+    shift
+    run_media textream "$@"
+    ;;
+  pause|halt)
+    shift
+    run_media halt "$@"
+    ;;
+  stop)
+    shift
+    run_media stop "$@"
+    ;;
+  resume)
+    shift
+    run_media resume "$@"
     ;;
   help|-h|--help)
     usage
     ;;
   *)
-    echo "Unknown command: $1" >&2
+    echo "Unknown command: $cmd" >&2
     usage >&2
     exit 1
     ;;

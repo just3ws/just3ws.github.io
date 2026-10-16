@@ -10,7 +10,7 @@ localhost_only: true
 body_class: page-youtube-dashboard
 ---
 
-<div class="yt-cockpit-container" style="max-width: 88rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; font-family: var(--font-sans-ui, system-ui, -apple-system, sans-serif); color: var(--color-text-main, #1e232a);">
+<div class="yt-cockpit-container" style="max-width: 100%; width: 100%; box-sizing: border-box; margin: 0; padding: 1.5rem 2rem 4rem; font-family: var(--font-sans-ui, system-ui, -apple-system, sans-serif); color: var(--color-text-main, #1e232a);">
 
   <!-- Cockpit HUD Header -->
   <header style="margin-bottom: 2rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1.5rem;">
@@ -25,6 +25,10 @@ body_class: page-youtube-dashboard
         <span id="live-stream-badge" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #f8fafc; color: #64748b; border: 1px solid #cbd5e1; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 9999px;">
           <span id="live-dot" style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #94a3b8;"></span>
           <span id="live-stream-text">Stream Standby</span>
+        </span>
+        <span id="bg-processor-badge" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 9999px;">
+          <span id="bg-processor-dot" style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22c55e;"></span>
+          <span id="bg-processor-text">Processor: Idle (FIFO Ready)</span>
         </span>
       </div>
       <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -93,30 +97,313 @@ body_class: page-youtube-dashboard
 
   <!-- Operational Tabs Navigation -->
   <nav class="yt-dash-nav" style="display: flex; gap: 0.5rem; border-bottom: 1px solid #e3dfd7; margin-bottom: 1.75rem; overflow-x: auto;">
-    <button type="button" class="yt-tab-btn active" onclick="switchYtTab('status')" id="tab-btn-status" style="background: none; border: none; border-bottom: 3px solid #0f766e; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 700; color: #0f766e; cursor: pointer; white-space: nowrap;">
-      📊 Pipeline & Publication State
+    <button type="button" class="yt-tab-btn active" onclick="switchYtTab('queue')" id="tab-btn-queue" style="background: none; border: none; border-bottom: 3px solid #0f766e; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 700; color: #0f766e; cursor: pointer; white-space: nowrap;">
+      🎬 Live Ingress &amp; Publishing Funnel
+    </button>
+    <button type="button" class="yt-tab-btn" onclick="switchYtTab('teleprompter')" id="tab-btn-teleprompter" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
+      📜 Broadcast Teleprompter Studio
+    </button>
+    <button type="button" class="yt-tab-btn" onclick="switchYtTab('status')" id="tab-btn-status" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
+      📊 Archive &amp; Sync Catalog
     </button>
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('audit')" id="tab-btn-audit" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
-      🎯 Content Management & Best Practices
+      🎯 Content Management &amp; Best Practices
     </button>
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('live')" id="tab-btn-live" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
-      🎙️ Livestreaming & Scheduling Cockpit
+      🎙️ Livestreaming &amp; Scheduling Cockpit
     </button>
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('workshop')" id="tab-btn-workshop" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
-      🛠️ Episode Studio & Workshop
+      🛠️ Episode Studio &amp; Workshop
     </button>
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('analytics')" id="tab-btn-analytics" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
-      📈 YouTube Analytics & Corpus Intelligence
+      📈 YouTube Analytics &amp; Corpus Intelligence
     </button>
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('bpmn')" id="tab-btn-bpmn" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
-      ⚙️ BPMN Workflow & SLO Monitor
+      ⚙️ BPMN Workflow &amp; SLO Monitor
     </button>
   </nav>
 
   <!-- ========================================================================= -->
-  <!-- TAB 1: PIPELINE & PUBLICATION STATE -->
+  <!-- TAB 0: LIVE INGRESS & PUBLISHING FUNNEL -->
   <!-- ========================================================================= -->
-  <section id="tab-pane-status" class="yt-tab-pane" style="display: block;">
+  <section id="tab-pane-queue" class="yt-tab-pane" style="display: block;">
+    <!-- Operator Cockpit Banner -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.35rem;">
+            <span id="funnel-stream-pill" style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 700; background: #dcfce7; color: #15803d; border: 1px solid rgba(21,128,61,0.25); padding: 0.2rem 0.6rem; border-radius: 9999px;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #15803d; display: inline-block;"></span>
+              Realtime (SSE Live)
+            </span>
+            <span id="funnel-lock-pill" style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 700; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+              🟢 Concurrency Lock: Free (Idle)
+            </span>
+            <span id="funnel-state-pill" style="display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 700; background: #faf8f5; color: #475569; border: 1px solid #cbd5e1; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+              ⚡ Strict FIFO by Age
+            </span>
+          </div>
+          <h2 style="margin: 0; font-size: 1.35rem; font-weight: 800; color: #0f172a;">
+            Live Media Ingress &amp; Publishing Funnel
+          </h2>
+          <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #64748b;">
+            Zero permanent local SSD waste. Single video cross-channel serialization protects CPU, RAM, and Apple Silicon Neural Engine.
+          </p>
+        </div>
+
+        <!-- Quick Operator Pipeline Controls -->
+        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+          <button type="button" onclick="triggerPipelineAction('halt')" id="btn-pipeline-halt" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #fffbeb; border: 1px solid #fde68a; color: #b45309; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
+            ⏸️ Halt Queue
+          </button>
+          <button type="button" onclick="triggerPipelineAction('stop')" id="btn-pipeline-stop" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
+            🛑 Immediate Stop
+          </button>
+          <button type="button" onclick="triggerPipelineAction('resume')" id="btn-pipeline-resume" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
+            ▶️ Resume
+          </button>
+        </div>
+      </div>
+
+      <div id="pipeline-action-toast" style="display: none; margin-top: 0.75rem; padding: 0.5rem 0.75rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 600;"></div>
+    </div>
+
+    <!-- Channel Filter Chips -->
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; align-items: center; flex-wrap: wrap;">
+      <span style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">View Target:</span>
+      <button type="button" class="funnel-filter-btn active" onclick="setFunnelFilter('all', this)" style="background: #0f766e; color: #ffffff; border: none; font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">All Targets</button>
+      <button type="button" class="funnel-filter-btn" onclick="setFunnelFilter('ramblin-amblin', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">🏃 Ramblin' &amp; Amblin'</button>
+      <button type="button" class="funnel-filter-btn" onclick="setFunnelFilter('the-sound-above', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">🎙️ The Sound Above</button>
+      <button type="button" class="funnel-filter-btn" onclick="setFunnelFilter('errata', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">📻 Errata</button>
+    </div>
+
+    <!-- BPMN-Style Linear Pipeline Step Bar & Introspection Strip -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <span style="background: rgba(15, 118, 110, 0.1); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.25); font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px; text-transform: uppercase;">
+            BPMN 2.0 Pipeline Steps
+          </span>
+          <h3 style="margin: 0.35rem 0 0 0; font-size: 1.1rem; font-weight: 800; color: #0f172a;">
+            End-to-End Media Processing Stages &amp; Task Introspection
+          </h3>
+        </div>
+        <div style="font-size: 0.78rem; color: #64748b;">
+          Click any step to inspect active task state, SLI metrics, and self-healing controls
+        </div>
+      </div>
+
+      <!-- Linear Step Chain -->
+      <div id="bpmn-funnel-step-chain" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.6rem; margin-bottom: 0.75rem;">
+        
+        <div class="bpmn-funnel-step active" onclick="inspectFunnelStep('detect', this)" style="background: #faf8f5; border: 1px solid #0f766e; border-radius: 0.375rem; padding: 0.6rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.15s ease;">
+          <div style="font-size: 0.68rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">1. Ingress</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">Drive Watch</div>
+          <div style="font-size: 0.68rem; color: #15803d; font-weight: 600;">SLO: &lt; 1.5s</div>
+        </div>
+
+        <div class="bpmn-funnel-step" onclick="inspectFunnelStep('lock', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.15s ease;">
+          <div style="font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase;">2. Lock &amp; FIFO</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">Serialize (1-at-a-time)</div>
+          <div style="font-size: 0.68rem; color: #15803d; font-weight: 600;">SLO: Oldest first</div>
+        </div>
+
+        <div class="bpmn-funnel-step" onclick="inspectFunnelStep('audio', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.15s ease;">
+          <div style="font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase;">3. Ephemeral DSP</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">ffmpeg /tmp/</div>
+          <div style="font-size: 0.68rem; color: #15803d; font-weight: 600;">SLO: 0 SSD waste</div>
+        </div>
+
+        <div class="bpmn-funnel-step" onclick="inspectFunnelStep('whisper', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.15s ease;">
+          <div style="font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase;">4. Whisper STT</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">Apple Silicon</div>
+          <div style="font-size: 0.68rem; color: #15803d; font-weight: 600;">SLO: &lt; 0.3x RT</div>
+        </div>
+
+        <div class="bpmn-funnel-step" onclick="inspectFunnelStep('metadata', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.15s ease;">
+          <div style="font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase;">5. Metadata</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">Dossier / Speech</div>
+          <div style="font-size: 0.68rem; color: #15803d; font-weight: 600;">SLO: 0 em-dash</div>
+        </div>
+
+        <div class="bpmn-funnel-step" onclick="inspectFunnelStep('upload', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.15s ease;">
+          <div style="font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase;">6. YouTube API</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">Resumable Stream</div>
+          <div style="font-size: 0.68rem; color: #15803d; font-weight: 600;">SLO: 1600 units/vid</div>
+        </div>
+
+        <div class="bpmn-funnel-step" onclick="inspectFunnelStep('captions', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.15s ease;">
+          <div style="font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase;">7. Captions</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">WebVTT Sync</div>
+          <div style="font-size: 0.68rem; color: #15803d; font-weight: 600;">SLO: 100% parity</div>
+        </div>
+
+        <div class="bpmn-funnel-step" onclick="inspectFunnelStep('archive', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.6rem 0.5rem; cursor: pointer; text-align: center; transition: all 0.15s ease;">
+          <div style="font-size: 0.68rem; font-weight: 700; color: #64748b; text-transform: uppercase;">8. Receipt &amp; Archival</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">.receipt.json</div>
+          <div style="font-size: 0.68rem; color: #15803d; font-weight: 600;">SLO: Atomic commit</div>
+        </div>
+
+      </div>
+
+      <!-- Introspection Detail Drawer -->
+      <div id="funnel-step-introspection" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 1rem 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="font-weight: 800; font-size: 0.95rem; color: #0f172a;" id="introspect-step-title">
+            Step 1: Cloud Ingress Detection (Google Drive Watcher)
+          </div>
+          <span style="background: #dcfce7; color: #15803d; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;" id="introspect-step-badge">
+            State: Nominal / Active
+          </span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; font-size: 0.8rem; color: #475569;" id="introspect-step-content">
+          <div>
+            <strong>Service Task:</strong> <code>bin/live_dashboard_streamer.rb</code><br>
+            <strong>Watch Path:</strong> <code>Media Intake/whoistechcmty/*/pending/</code><br>
+            <strong>Polling Interval:</strong> 1.5s directory scan
+          </div>
+          <div>
+            <strong>SLI Latency:</strong> &lt; 1500ms from Drive sync to SSE event<br>
+            <strong>Lock Requirement:</strong> None (read-only scan)<br>
+            <strong>Disk Overhead:</strong> 0 bytes (in-memory diff)
+          </div>
+          <div>
+            <strong>Self-Healing Runbook:</strong><br>
+            If watcher disconnects, client automatically falls back to 3s sync polling against <code>telemetry.json</code>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Pipeline Activity & Event Stream -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 0.75rem;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+            <span style="background: rgba(15, 118, 110, 0.1); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.25); font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px; text-transform: uppercase;">
+              Live Pipeline Telemetry &amp; Audit Log
+            </span>
+            <span id="auto-intake-badge" style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">
+              🤖 Autonomous Mode: Active
+            </span>
+          </div>
+          <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #0f172a;">
+            Pipeline Activity &amp; Execution Stream
+          </h3>
+          <p style="margin: 0.2rem 0 0 0; font-size: 0.8rem; color: #64748b;">
+            Live audit of file ingress, stability verification, DSP audio extraction, Apple Silicon Whisper transcription, and YouTube publishing.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.45rem; align-items: center; flex-wrap: wrap;">
+          <button type="button" onclick="triggerPipelineRun()" id="btn-pipeline-run" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #0f766e; color: #ffffff; border: none; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
+            ⚡ Run Intake Now
+          </button>
+          <button type="button" onclick="toggleAutoIntake()" id="btn-auto-intake-toggle" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #f8fafc; border: 1px solid #cbd5e1; color: #334155; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
+            🤖 Auto-Intake: Active
+          </button>
+          <button type="button" onclick="refreshDashboardTelemetry()" style="display: inline-flex; align-items: center; gap: 0.3rem; background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569; padding: 0.45rem 0.75rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 600; cursor: pointer;">
+            🔄 Refresh
+          </button>
+        </div>
+      </div>
+
+      <!-- Activity Filter Chips -->
+      <div style="display: flex; gap: 0.4rem; margin-bottom: 0.75rem; flex-wrap: wrap; align-items: center;">
+        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Filter:</span>
+        <button type="button" class="activity-filter-btn active" onclick="setActivityFilter('all', this)" style="background: #0f766e; color: #fff; border: none; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 0.25rem; cursor: pointer;">All Events</button>
+        <button type="button" class="activity-filter-btn" onclick="setActivityFilter('youtube', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 0.25rem; cursor: pointer;">🎬 YouTube Uploads</button>
+        <button type="button" class="activity-filter-btn" onclick="setActivityFilter('whisper', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 0.25rem; cursor: pointer;">🧠 Whisper STT</button>
+        <button type="button" class="activity-filter-btn" onclick="setActivityFilter('dsp', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 0.25rem; cursor: pointer;">🎙️ Audio DSP</button>
+        <button type="button" class="activity-filter-btn" onclick="setActivityFilter('lock', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 0.25rem; cursor: pointer;">🔒 Locks &amp; FIFO</button>
+        <button type="button" class="activity-filter-btn" onclick="setActivityFilter('archive', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 0.25rem; cursor: pointer;">📦 Archival</button>
+      </div>
+
+      <!-- Activity Events Scroll Stream -->
+      <div id="pipeline-activity-stream" style="max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 0.75rem;">
+        <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0.5rem;">Connecting to live pipeline activity stream...</div>
+      </div>
+    </div>
+
+    <!-- 5-Column Kanban Funnel Grid -->
+    <div style="display: grid; grid-template-columns: repeat(5, minmax(240px, 1fr)); gap: 1rem; align-items: start; overflow-x: auto; padding-bottom: 1rem;">
+      
+      <!-- Col 1: Staged (Hold) -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="background: #f8fafc; border-bottom: 2px solid #cbd5e1; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 800; font-size: 0.875rem; color: #334155;">1. Staged (Hold)</div>
+            <div style="font-size: 0.72rem; color: #64748b;">Cloud parking, not yet queued</div>
+          </div>
+          <span id="col-count-staged" style="background: #e2e8f0; color: #334155; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">0</span>
+        </div>
+        <div id="col-cards-staged" style="padding: 0.85rem; display: flex; flex-direction: column; gap: 0.75rem; min-height: 200px;">
+          <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0.5rem;">No files on hold in staged/</div>
+        </div>
+      </div>
+
+      <!-- Col 2: Pending (FIFO) -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="background: #fffbeb; border-bottom: 2px solid #fde68a; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 800; font-size: 0.875rem; color: #92400e;">2. Pending (FIFO)</div>
+            <div style="font-size: 0.72rem; color: #b45309;">Oldest first arrival order</div>
+          </div>
+          <span id="col-count-pending" style="background: #fef3c7; color: #92400e; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">0</span>
+        </div>
+        <div id="col-cards-pending" style="padding: 0.85rem; display: flex; flex-direction: column; gap: 0.75rem; min-height: 200px;">
+          <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0.5rem;">Queue empty. Drop .mp4 into pending/</div>
+        </div>
+      </div>
+
+      <!-- Col 3: Processing (Active) -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="background: #eff6ff; border-bottom: 2px solid #bfdbfe; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 800; font-size: 0.875rem; color: #1e40af;">3. Processing (In Flight)</div>
+            <div style="font-size: 0.72rem; color: #2563eb;">Max 1 video serialized</div>
+          </div>
+          <span id="col-count-processing" style="background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">0</span>
+        </div>
+        <div id="col-cards-processing" style="padding: 0.85rem; display: flex; flex-direction: column; gap: 0.75rem; min-height: 200px;">
+          <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0.5rem;">Ingress slot idle. Ready for next FIFO candidate.</div>
+        </div>
+      </div>
+
+      <!-- Col 4: Processed (Deployed) -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="background: #f0fdf4; border-bottom: 2px solid #bbf7d0; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 800; font-size: 0.875rem; color: #166534;">4. Processed (Deployed)</div>
+            <div style="font-size: 0.72rem; color: #15803d;">YouTube published &amp; archived</div>
+          </div>
+          <span id="col-count-processed" style="background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">0</span>
+        </div>
+        <div id="col-cards-processed" style="padding: 0.85rem; display: flex; flex-direction: column; gap: 0.75rem; min-height: 200px;">
+          <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0.5rem;">Loading archive history...</div>
+        </div>
+      </div>
+
+      <!-- Col 5: Failed (Quarantine) -->
+      <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+        <div style="background: #fef2f2; border-bottom: 2px solid #fecaca; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 800; font-size: 0.875rem; color: #991b1b;">5. Failed (Quarantine)</div>
+            <div style="font-size: 0.72rem; color: #dc2626;">Isolated for operator review</div>
+          </div>
+          <span id="col-count-failed" style="background: #fee2e2; color: #991b1b; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 9999px;">0</span>
+        </div>
+        <div id="col-cards-failed" style="padding: 0.85rem; display: flex; flex-direction: column; gap: 0.75rem; min-height: 200px;">
+          <div style="text-align: center; color: #166534; font-size: 0.8rem; padding: 2rem 0.5rem;">Zero failures quarantined. Healthy.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- TAB 1: ARCHIVE & SYNC CATALOG (WAS PIPELINE & PUBLICATION STATE) -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-status" class="yt-tab-pane" style="display: none;">
     
     <!-- Multi-Stage Publication Funnel Visualizer -->
     <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
@@ -174,11 +461,13 @@ body_class: page-youtube-dashboard
     <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
       <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
         <span style="font-size: 0.825rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-right: 0.25rem;">Filter:</span>
-        <button type="button" class="yt-filter-btn active" onclick="filterAssetTable('all', this)" style="background: #0f766e; color: #ffffff; border: none; font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">All (215)</button>
-        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('synced', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Synced (182)</button>
-        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('pending', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Pending (30)</button>
-        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('captions-live', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Captions Live (58)</button>
-        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('local-master', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Local Masters (5)</button>
+        <button type="button" class="yt-filter-btn active" onclick="filterAssetTable('all', this)" style="background: #0f766e; color: #ffffff; border: none; font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">All</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('ramblin', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">🏃 Ramblin' &amp; Amblin'</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('errata', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">📻 Errata</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('interviews', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">🎙️ Developer Interviews</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('synced', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Synced</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('pending', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Pending</button>
+        <button type="button" class="yt-filter-btn" onclick="filterAssetTable('captions-live', this)" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 0.25rem; cursor: pointer;">Captions Live</button>
       </div>
 
       <div style="flex: 1; min-width: 260px; max-width: 400px;">
@@ -193,8 +482,8 @@ body_class: page-youtube-dashboard
           <thead>
             <tr style="background: #f4f0e8; border-bottom: 2px solid #e3dfd7; color: #0f172a; position: sticky; top: 0; z-index: 10;">
               <th style="padding: 0.75rem 1rem; width: 60px;">Video</th>
-              <th style="padding: 0.75rem 1rem;">Title & Speaker</th>
-              <th style="padding: 0.75rem 1rem;">Conference / Event</th>
+              <th style="padding: 0.75rem 1rem;">Title &amp; Speaker</th>
+              <th style="padding: 0.75rem 1rem;">Conference / Series</th>
               <th style="padding: 0.75rem 1rem; width: 80px;">Duration</th>
               <th style="padding: 0.75rem 1rem; width: 110px;">Metadata</th>
               <th style="padding: 0.75rem 1rem; width: 110px;">Captions</th>
@@ -205,7 +494,14 @@ body_class: page-youtube-dashboard
             {% for asset in yt_data.assets %}
               {% assign m_status = asset.metadata_status.status | default: asset.metadata_status %}
               {% assign c_status = asset.caption_status.status | default: asset.caption_status %}
-              <tr class="yt-row" data-meta-status="{{ m_status }}" data-caption-status="{{ c_status }}" data-platform="{% if asset.youtube_video_id %}youtube{% else %}local-master{% endif %}" style="border-bottom: 1px solid #f1f5f9;">
+              {% assign is_ramblin = false %}
+              {% assign is_errata = false %}
+              {% if asset.category == 'field_notes' or asset.title contains 'Ramblin' or asset.id contains 'ramblin' %}
+                {% assign is_ramblin = true %}
+              {% elsif asset.category == 'errata' or asset.title contains 'Errata' or asset.id contains 'errata' %}
+                {% assign is_errata = true %}
+              {% endif %}
+              <tr class="yt-row" data-meta-status="{{ m_status }}" data-caption-status="{{ c_status }}" data-platform="{% if asset.youtube_video_id %}youtube{% else %}local-master{% endif %}" data-series="{% if is_ramblin %}ramblin{% elsif is_errata %}errata{% else %}interviews{% endif %}" style="border-bottom: 1px solid #f1f5f9;">
                 <td style="padding: 0.75rem 1rem; vertical-align: top;">
                   {% if asset.youtube_video_id %}
                     <a href="https://www.youtube.com/watch?v={{ asset.youtube_video_id }}" target="_blank" rel="noopener">
@@ -225,8 +521,16 @@ body_class: page-youtube-dashboard
                   </div>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: top; color: #475569;">
-                  <div>{{ asset.conference }}</div>
-                  <small style="color: #64748b;">{{ asset.conference_year }}</small>
+                  <div>
+                    {% if is_ramblin %}
+                      <span style="background: #fef3c7; color: #92400e; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 0.25rem;">🏃 Ramblin' &amp; Amblin'</span>
+                    {% elsif is_errata %}
+                      <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 0.25rem;">📻 Errata Reading</span>
+                    {% else %}
+                      {{ asset.conference | default: "UGtastic Interview Archive" }}
+                    {% endif %}
+                  </div>
+                  <small style="color: #64748b;">{{ asset.conference_year | default: asset.published_date }}</small>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: top; font-family: ui-monospace, monospace; color: #64748b;">
                   {{ asset.duration }}
@@ -273,6 +577,48 @@ body_class: page-youtube-dashboard
       </div>
     </div>
 
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- TAB: BROADCAST TELEPROMPTER STUDIO -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-teleprompter" class="yt-tab-pane" style="display: none;">
+    <!-- Live Teleprompter & Rundown Studio -->
+    <div id="teleprompter-studio" style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem;">
+        <div>
+          <span style="background: rgba(180, 83, 9, 0.12); color: #b45309; border: 1px solid rgba(180, 83, 9, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+            📜 Read-Along Teleprompter
+          </span>
+          <h3 style="margin: 0.4rem 0 0 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            The Sound Above: 6-Act Production Rundown Studio
+          </h3>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <label for="teleprompter-ep-select" style="font-size: 0.8rem; font-weight: 700; color: #475569;">Select Episode:</label>
+            <select id="teleprompter-ep-select" onchange="loadTeleprompterEpisode(this.value)" style="padding: 0.4rem 0.75rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #faf8f5;">
+              <option value="0">Ep 00: Pilot - The Mirage of Competence (Mike Hall)</option>
+              {% for ep in site.data.sound_above_sequence.episodes %}
+                <option value="{{ ep.number }}" {% if ep.number == 1 %}selected{% endif %}>
+                  Ep {{ ep.number }}: {{ ep.interviewee }} ({{ ep.conference }})
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <button type="button" onclick="launchInTextream(document.getElementById('teleprompter-ep-select').value)" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #0f766e; color: #ffffff; border: none; padding: 0.4rem 0.75rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
+            🎙️ Launch in Textream
+          </button>
+          <button type="button" onclick="downloadTextream(document.getElementById('teleprompter-ep-select').value)" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; padding: 0.4rem 0.75rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
+            💾 Export .textream
+          </button>
+        </div>
+      </div>
+
+      <div id="teleprompter-cards-container" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Dynamic Cards rendered via JS -->
+      </div>
+    </div>
   </section>
 
   <!-- ========================================================================= -->
@@ -387,7 +733,7 @@ body_class: page-youtube-dashboard
         <div style="border-left: 3px solid #4338ca; padding-left: 1rem;">
           <h4 style="margin: 0 0 0.35rem 0; font-size: 0.95rem; color: #4338ca;">Provenance & Attribution</h4>
           <p style="font-size: 0.85rem; color: #475569; margin: 0; line-height: 1.45;">
-            Every description must include the 1:1 Oral History Record badge, canonical transcript link back to just3ws.com, and pre-filled GitHub issue report URL.
+            Every description must include the 1:1 Developer Interview Record badge, canonical transcript link back to just3ws.com, and pre-filled GitHub issue report URL.
           </p>
         </div>
 
@@ -600,33 +946,15 @@ body_class: page-youtube-dashboard
       </div>
     </div>
 
-    <!-- Live Teleprompter & Rundown Studio -->
-    <div id="teleprompter-studio" style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-top: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
-      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem;">
-        <div>
-          <span style="background: rgba(180, 83, 9, 0.12); color: #b45309; border: 1px solid rgba(180, 83, 9, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
-            📜 Read-Along Teleprompter
-          </span>
-          <h3 style="margin: 0.4rem 0 0 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
-            The Sound Above: 6-Act Production Rundown Studio
-          </h3>
-        </div>
-        <div style="display: flex; gap: 0.75rem; align-items: center;">
-          <label for="teleprompter-ep-select" style="font-size: 0.8rem; font-weight: 700; color: #475569;">Select Episode:</label>
-          <select id="teleprompter-ep-select" onchange="loadTeleprompterEpisode(this.value)" style="padding: 0.4rem 0.75rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #faf8f5;">
-            <option value="0">Ep 00: Pilot - The Mirage of Competence (Mike Hall)</option>
-            {% for ep in site.data.sound_above_sequence.episodes %}
-              <option value="{{ ep.number }}" {% if ep.number == 1 %}selected{% endif %}>
-                Ep {{ ep.number }}: {{ ep.interviewee }} ({{ ep.conference }})
-              </option>
-            {% endfor %}
-          </select>
-        </div>
+    <!-- Dedicated Teleprompter Studio Callout -->
+    <div style="background: #faf8f5; border: 1px dashed #cbd5e1; border-radius: 0.625rem; padding: 1.25rem 1.5rem; margin-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <div style="font-weight: 800; font-size: 1rem; color: #0f172a;">📜 The Sound Above Teleprompter Studio</div>
+        <div style="font-size: 0.85rem; color: #64748b;">Read-along 6-act teleprompter with direct Textream integration and .textream export.</div>
       </div>
-
-      <div id="teleprompter-cards-container" style="display: flex; flex-direction: column; gap: 1rem;">
-        <!-- Dynamic Cards rendered via JS -->
-      </div>
+      <button type="button" onclick="switchYtTab('teleprompter')" style="background: #0f766e; color: #ffffff; border: none; font-size: 0.85rem; font-weight: 700; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer;">
+        Open Teleprompter Studio ↗
+      </button>
     </div>
 
     <!-- Audience Growth & Funding Strategy Hub -->
@@ -747,18 +1075,18 @@ body_class: page-youtube-dashboard
         <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
           <label for="ws-episode-select" style="font-size: 0.825rem; font-weight: 700; color: #334155;">Active Episode:</label>
           <select id="ws-episode-select" onchange="loadWorkshopEpisode(this.value)" style="padding: 0.4rem 0.75rem; font-size: 0.875rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #ffffff; font-weight: 600; color: #0f172a;">
-            <option value="0">Ep 00: Pilot - The Mirage of Competence (Mike Hall)</option>
+            <option value="0" selected>Ep 00: Pilot - The Mirage of Competence (Mike Hall)</option>
             {% for ep in site.data.sound_above_sequence.episodes %}
-              <option value="{{ ep.number }}" {% if ep.number == 1 %}selected{% endif %}>
+              <option value="{{ ep.number }}">
                 Ep {{ ep.number }}: {{ ep.interviewee }} ({{ ep.conference }})
               </option>
             {% endfor %}
           </select>
-          <span id="ws-movement-pill" style="font-size: 0.75rem; font-weight: 700; background: #fef3c7; color: #b45309; padding: 0.2rem 0.6rem; border-radius: 9999px;">
-            The Chicago Crucible
+          <span id="ws-movement-pill" style="font-size: 0.75rem; font-weight: 700; background: #ede9fe; color: #6d28d9; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+            The AI Horizon
           </span>
           <span id="ws-status-pill" style="font-size: 0.75rem; font-weight: 700; background: #dcfce7; color: #15803d; padding: 0.2rem 0.6rem; border-radius: 9999px;">
-            Cued
+            SCHEDULED
           </span>
         </div>
 
@@ -1058,7 +1386,10 @@ body_class: page-youtube-dashboard
           <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">Ramblin' &amp; Amblin' Queue</div>
           <div style="display: flex; align-items: baseline; gap: 0.5rem;">
             <span id="hud-ramblin-pending" style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['ramblin-amblin'].pending_count | default: 0 }}</span>
-            <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
+            <span style="font-size: 0.75rem; color: #64748b;">pending</span>
+            <span style="font-size: 0.75rem; color: #cbd5e1;">·</span>
+            <span id="hud-ramblin-staged" style="font-size: 0.85rem; font-weight: 700; color: #4338ca;">{{ intake_data.targets['ramblin-amblin'].staged_count | default: 0 }}</span>
+            <span style="font-size: 0.75rem; color: #64748b;">staged</span>
           </div>
           <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
             Target: PL-Ntb969T2-l0 (Unlisted)
@@ -1069,7 +1400,10 @@ body_class: page-youtube-dashboard
           <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">The Sound Above Queue</div>
           <div style="display: flex; align-items: baseline; gap: 0.5rem;">
             <span id="hud-sound-above-pending" style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['the-sound-above'].pending_count | default: 0 }}</span>
-            <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
+            <span style="font-size: 0.75rem; color: #64748b;">pending</span>
+            <span style="font-size: 0.75rem; color: #cbd5e1;">·</span>
+            <span id="hud-sound-above-staged" style="font-size: 0.85rem; font-weight: 700; color: #4338ca;">{{ intake_data.targets['the-sound-above'].staged_count | default: 0 }}</span>
+            <span style="font-size: 0.75rem; color: #64748b;">staged</span>
           </div>
           <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
             Target: PL-VcmLmfz2uyA (Dossier Mode)
@@ -1080,7 +1414,10 @@ body_class: page-youtube-dashboard
           <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.25rem;">Errata &amp; Readings Queue</div>
           <div style="display: flex; align-items: baseline; gap: 0.5rem;">
             <span id="hud-errata-pending" style="font-size: 1.5rem; font-weight: 800; color: #0f172a;">{{ intake_data.targets['errata'].pending_count | default: 0 }}</span>
-            <span style="font-size: 0.75rem; color: #64748b;">pending in Drive</span>
+            <span style="font-size: 0.75rem; color: #64748b;">pending</span>
+            <span style="font-size: 0.75rem; color: #cbd5e1;">·</span>
+            <span id="hud-errata-staged" style="font-size: 0.85rem; font-weight: 700; color: #4338ca;">{{ intake_data.targets['errata'].staged_count | default: 0 }}</span>
+            <span style="font-size: 0.75rem; color: #64748b;">staged</span>
           </div>
           <div style="font-size: 0.75rem; color: #0f766e; margin-top: 0.35rem; font-weight: 600;">
             Target: PL-KPAHha6I990 (Errata)
@@ -1433,7 +1770,11 @@ body_class: page-youtube-dashboard
 </div>
 
 <script>
+  let currentFunnelFilter = 'all';
+  let lastFunnelTelemetry = null;
+
   function switchYtTab(tabName) {
+    if (tabName === 'funnel') tabName = 'queue';
     document.querySelectorAll('.yt-tab-pane').forEach(p => p.style.display = 'none');
     document.querySelectorAll('.yt-tab-btn').forEach(b => {
       b.style.borderBottomColor = 'transparent';
@@ -1448,6 +1789,621 @@ body_class: page-youtube-dashboard
       btn.style.borderBottomColor = '#0f766e';
       btn.style.color = '#0f766e';
       btn.style.fontWeight = '700';
+    }
+
+    if (window.location.hash !== '#tab-' + tabName) {
+      if (history.replaceState) {
+        history.replaceState(null, null, '#tab-' + tabName);
+      } else {
+        window.location.hash = 'tab-' + tabName;
+      }
+    }
+  }
+
+  function handleHashTab() {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (!hash) return;
+    const tabName = hash.replace(/^tab-/, '');
+    if (tabName === 'teleprompter') {
+      switchYtTab('teleprompter');
+    } else if (tabName === 'queue' || tabName === 'funnel') {
+      switchYtTab('queue');
+    } else if (['status', 'audit', 'live', 'workshop', 'analytics', 'bpmn'].includes(tabName)) {
+      switchYtTab(tabName);
+    }
+  }
+
+  window.addEventListener('hashchange', handleHashTab);
+
+  const stepIntrospectionData = {
+    detect: {
+      title: 'Step 1: Cloud Ingress Detection (Google Drive Watcher)',
+      badge: 'State: Active / Polling 1.5s',
+      badgeColor: '#15803d',
+      badgeBg: '#dcfce7',
+      col1: '<strong>Service Task:</strong> <code>bin/live_dashboard_streamer.rb</code><br><strong>Watch Target:</strong> <code>Media Intake/whoistechcmty/*/pending/</code><br><strong>Transport:</strong> SSE EventStream (port 7025)',
+      col2: '<strong>SLI Latency:</strong> &lt; 1500ms from Drive sync to SSE event<br><strong>Lock Status:</strong> Unlocked (read-only)<br><strong>Storage:</strong> 0 bytes local disk footprint',
+      col3: '<strong>Self-Healing Runbook:</strong><br>Client automatically falls back to 3s REST sync polling if SSE socket drops.'
+    },
+    lock: {
+      title: 'Step 2: Cross-Channel Concurrency Lock &amp; FIFO Selection',
+      badge: 'State: Strict FIFO Enforced',
+      badgeColor: '#15803d',
+      badgeBg: '#dcfce7',
+      col1: '<strong>Service Task:</strong> <code>bin/intake_drive_video.rb</code><br><strong>Lock Invariant:</strong> Exactly 1 video active across all channels<br><strong>Ordering Policy:</strong> APFS birthtime / file creation age ascending',
+      col2: '<strong>Resource Protection:</strong> CPU, RAM, Apple Silicon Neural Engine headroom<br><strong>Lock File:</strong> <code>~/.local/state/just3ws/pipeline.lock</code><br><strong>Operator Sentinels:</strong> <code>pipeline.halt</code> (graceful finish)',
+      col3: '<strong>Self-Healing Runbook:</strong><br>Run <code>bin/pipeline intake halt</code> to pause queue, or <code>bin/pipeline intake resume</code> to release.'
+    },
+    audio: {
+      title: 'Step 3: Ephemeral Audio Extraction &amp; Zero-Disk-Waste DSP',
+      badge: 'State: Ephemeral /tmp/',
+      badgeColor: '#15803d',
+      badgeBg: '#dcfce7',
+      col1: '<strong>Service Task:</strong> <code>ffmpeg -vn -ar 16000 -ac 1 -c:a pcm_s16le</code><br><strong>Input Stream:</strong> Direct from mounted cloud volume<br><strong>Output Artifact:</strong> <code>/tmp/intake_&lt;pid&gt;.wav</code>',
+      col2: '<strong>Disk Waste Invariant:</strong> Zero permanent video duplication on local SSD<br><strong>Cleanup Policy:</strong> Trapped atomic unlink upon task success or abort<br><strong>Format:</strong> 16kHz mono WAV for whisper.cpp',
+      col3: '<strong>Self-Healing Runbook:</strong><br>Immediate stop (SIGINT/SIGTERM) automatically unlinks all scratch files in <code>/tmp/intake_*</code>.'
+    },
+    whisper: {
+      title: 'Step 4: Local Speech-to-Text &amp; Diarization (whisper.cpp)',
+      badge: 'State: Neural Engine Optimized',
+      badgeColor: '#15803d',
+      badgeBg: '#dcfce7',
+      col1: '<strong>Engine:</strong> <code>whisper-cli -m ggml-medium.en.bin</code><br><strong>Hardware:</strong> Apple Silicon Metal / Neural Engine<br><strong>Speedup Factor:</strong> ~0.2x real-time (10m audio in 2m)',
+      col2: '<strong>Diarization:</strong> Automatic speaker turn segmentation<br><strong>Phonetics Cleaner:</strong> Calibrates "UGtastic", "SCMC", and domain jargon<br><strong>Zero Cloud Egress:</strong> 100% on-device inference',
+      col3: '<strong>Self-Healing Runbook:</strong><br>If speech recognition encounters non-zero exit, file moves to <code>failed/</code> with diagnostic reason.'
+    },
+    metadata: {
+      title: 'Step 5: SEO Metadata Synthesis &amp; Dossier Binding',
+      badge: 'State: Schema Calibrated',
+      badgeColor: '#15803d',
+      badgeBg: '#dcfce7',
+      col1: '<strong>Target Resolution:</strong> <code>_data/media_intake_targets.yml</code><br><strong>Title Generation:</strong> Title prefix + date + speech summary (&lt; 100 chars)<br><strong>Description:</strong> Craftsman attribution, playlist link, chapter list',
+      col2: '<strong>Dossier Binding:</strong> Automatically pairs with <code>_data/episodes/episode-XX.yml</code> for The Sound Above<br><strong>Zero Em Dash Invariant:</strong> 100% audited<br><strong>YouTube Playlist:</strong> Target assigned automatically',
+      col3: '<strong>Self-Healing Runbook:</strong><br>Edit episode dossier or run <code>bin/pipeline stage &lt;ep&gt;</code> to verify schema.'
+    },
+    upload: {
+      title: 'Step 6: YouTube Data API v3 Resumable Video Upload',
+      badge: 'State: Chunked Resumable PUT',
+      badgeColor: '#15803d',
+      badgeBg: '#dcfce7',
+      col1: '<strong>API Endpoint:</strong> <code>/upload/youtube/v3/videos?uploadType=resumable</code><br><strong>Chunk Size:</strong> 4 MB streaming buffer<br><strong>OAuth Scope:</strong> <code>https://www.googleapis.com/auth/youtube.upload</code>',
+      col2: '<strong>Quota Consumption:</strong> 1600 units per video insert<br><strong>Headroom Budget:</strong> 10,000 daily units (up to 6 videos/day)<br><strong>Privacy Status:</strong> Unlisted by default for operator sign-off',
+      col3: '<strong>Self-Healing Runbook:</strong><br>Network interruptions resume automatically at byte offset without restarting upload.'
+    },
+    captions: {
+      title: 'Step 7: WebVTT Captions Synchronization',
+      badge: 'State: Human-Verified Track',
+      badgeColor: '#15803d',
+      badgeBg: '#dcfce7',
+      col1: '<strong>API Endpoint:</strong> <code>/youtube/v3/captions</code><br><strong>Track Type:</strong> <code>English (Human Verified)</code><br><strong>Format:</strong> WebVTT with sentence-level timestamps',
+      col2: '<strong>Parity Check:</strong> 100% transcript-to-captions alignment<br><strong>Anti-Degradation:</strong> Overrides YouTube automated speech models<br><strong>Archive Path:</strong> <code>assets/subtitles/&lt;slug&gt;.vtt</code>',
+      col3: '<strong>Self-Healing Runbook:</strong><br>Upload captions anytime via <code>bin/intake_drive_video.rb --video-id &lt;id&gt; --caption-file &lt;file&gt;</code>.'
+    },
+    archive: {
+      title: 'Step 8: Cloud Master Archival &amp; Atomic Receipt Sidecar',
+      badge: 'State: Atomic Commit',
+      badgeColor: '#15803d',
+      badgeBg: '#dcfce7',
+      col1: '<strong>Archival Destination:</strong> <code>processed/YYYY-MM/&lt;filename&gt;.mp4</code><br><strong>Sidecar Receipt:</strong> <code>&lt;filename&gt;.mp4.receipt.json</code><br><strong>Payload:</strong> video_id, youtube_url, title, playlist_id, timestamp',
+      col2: '<strong>Telemetry Ingestion:</strong> Streamer reads receipt to render direct YouTube link<br><strong>Lock Release:</strong> Concurrency Lock returned to <code>idle</code> state<br><strong>History Persistence:</strong> Retained for datalake queries',
+      col3: '<strong>Self-Healing Runbook:</strong><br>Sidecars are plain JSON files. If missing, generate receipt or re-read from <code>video_assets.yml</code>.'
+    }
+  };
+
+  function inspectFunnelStep(stepKey, el) {
+    document.querySelectorAll('.bpmn-funnel-step').forEach(s => {
+      s.style.borderColor = '#cbd5e1';
+      s.classList.remove('active');
+    });
+    if (el) {
+      el.style.borderColor = '#0f766e';
+      el.classList.add('active');
+    }
+    const data = stepIntrospectionData[stepKey];
+    if (!data) return;
+
+    const titleEl = document.getElementById('introspect-step-title');
+    if (titleEl) titleEl.innerHTML = data.title;
+    const badge = document.getElementById('introspect-step-badge');
+    if (badge) {
+      badge.innerText = data.badge;
+      badge.style.color = data.badgeColor;
+      badge.style.background = data.badgeBg;
+    }
+
+    const contentEl = document.getElementById('introspect-step-content');
+    if (contentEl) {
+      contentEl.innerHTML = `
+        <div>${data.col1}</div>
+        <div>${data.col2}</div>
+        <div>${data.col3}</div>
+      `;
+    }
+  }
+
+  function setFunnelFilter(targetKey, btn) {
+    document.querySelectorAll('.funnel-filter-btn').forEach(b => {
+      b.style.background = '#f1f5f9';
+      b.style.color = '#475569';
+      b.style.border = '1px solid #cbd5e1';
+      b.style.fontWeight = '600';
+    });
+    btn.style.background = '#0f766e';
+    btn.style.color = '#ffffff';
+    btn.style.border = 'none';
+    btn.style.fontWeight = '700';
+
+    currentFunnelFilter = targetKey;
+    if (lastFunnelTelemetry) {
+      renderIngressFunnel(lastFunnelTelemetry);
+    }
+  }
+
+  function formatBytes(bytes) {
+    if (!bytes || bytes === 0) return '0 B';
+    const mb = bytes / (1024 * 1024);
+    if (mb > 1024) return (mb / 1024).toFixed(2) + ' GB';
+    return mb.toFixed(1) + ' MB';
+  }
+
+  function formatTimeAgo(isoString) {
+    if (!isoString) return 'recently';
+    const diff = Math.floor((Date.now() - new Date(isoString).getTime()) / 1000);
+    if (diff < 60) return diff + 's ago';
+    if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+    if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+    return Math.floor(diff / 86400) + 'd ago';
+  }
+
+  async function triggerPipelineAction(action, params) {
+    const toast = document.getElementById('pipeline-action-toast');
+    if (toast) {
+      toast.style.display = 'block';
+      toast.style.background = '#eff6ff';
+      toast.style.color = '#1e40af';
+      toast.style.border = '1px solid #bfdbfe';
+      toast.innerText = 'Dispatching ' + action + ' to pipeline daemon...';
+    }
+
+    try {
+      const url = '/api/live/pipeline/' + action + (params ? '?' + params : '');
+      const res = await fetch(url, { method: 'POST' });
+      const data = await res.json().catch(() => ({}));
+      if (toast) {
+        toast.style.background = '#f0fdf4';
+        toast.style.color = '#166534';
+        toast.style.border = '1px solid #bbf7d0';
+        toast.innerText = 'Action ' + action + ' dispatched: ' + (data.message || data.status || 'OK');
+        setTimeout(() => { toast.style.display = 'none'; }, 4000);
+      }
+    } catch (err) {
+      if (toast) {
+        toast.style.background = '#fef2f2';
+        toast.style.color = '#991b1b';
+        toast.style.border = '1px solid #fecaca';
+        toast.innerText = 'Error dispatching action: ' + err.message;
+        setTimeout(() => { toast.style.display = 'none'; }, 4000);
+      }
+    }
+  }
+
+  function renderIngressFunnel(telemetry) {
+    lastFunnelTelemetry = telemetry;
+    const intake = telemetry.media_intake || {};
+    const targets = intake.targets || {};
+
+    const lockPill = document.getElementById('funnel-lock-pill');
+    const statePill = document.getElementById('funnel-state-pill');
+
+    if (lockPill) {
+      if (intake.locked) {
+        lockPill.innerHTML = '🟡 Concurrency Lock: Active (PID ' + (intake.active_pid || 'in flight') + ')';
+        lockPill.style.background = '#fffbeb';
+        lockPill.style.color = '#92400e';
+        lockPill.style.borderColor = '#fde68a';
+      } else {
+        lockPill.innerHTML = '🟢 Concurrency Lock: Free (Idle)';
+        lockPill.style.background = '#f0fdf4';
+        lockPill.style.color = '#166534';
+        lockPill.style.borderColor = '#bbf7d0';
+      }
+    }
+
+    if (statePill) {
+      if (intake.stopped) {
+        statePill.innerHTML = '🛑 Pipeline Stopped (Forced)';
+        statePill.style.background = '#fef2f2';
+        statePill.style.color = '#991b1b';
+        statePill.style.borderColor = '#fecaca';
+      } else if (intake.halted) {
+        statePill.innerHTML = '⏸️ Pipeline Halted (Finishing Active)';
+        statePill.style.background = '#fffbeb';
+        statePill.style.color = '#92400e';
+        statePill.style.borderColor = '#fde68a';
+      } else {
+        statePill.innerHTML = '⚡ Strict FIFO by Age';
+        statePill.style.background = '#faf8f5';
+        statePill.style.color = '#475569';
+        statePill.style.borderColor = '#cbd5e1';
+      }
+    }
+
+    const targetKeys = currentFunnelFilter === 'all' ? Object.keys(targets) : [currentFunnelFilter].filter(k => targets[k]);
+
+    let stagedItems = [];
+    targetKeys.forEach(k => {
+      const t = targets[k];
+      if (t && t.staged_items) {
+        t.staged_items.forEach(item => {
+          stagedItems.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name }));
+        });
+      }
+    });
+
+    const stagedCountEl = document.getElementById('col-count-staged');
+    if (stagedCountEl) stagedCountEl.innerText = stagedItems.length;
+
+    const stagedCardsEl = document.getElementById('col-cards-staged');
+    if (stagedCardsEl) {
+      if (stagedItems.length === 0) {
+        stagedCardsEl.innerHTML = '<div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0.5rem;">No files on hold in staged/</div>';
+      } else {
+        stagedCardsEl.innerHTML = stagedItems.map(item => `
+          <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem;">
+            <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #0f172a; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.75rem; color: #64748b;">
+              <span>${formatBytes(item.size_bytes)}</span>
+              <span style="background: #e2e8f0; padding: 0.1rem 0.4rem; border-radius: 0.2rem; font-weight: 600;">${item.seriesName || item.targetKey}</span>
+            </div>
+            <button type="button" onclick="triggerPipelineAction('stage_to_pending', 'target=${item.targetKey}&file=' + encodeURIComponent('${item.filename}'))" style="width: 100%; background: #0f766e; color: #ffffff; border: none; padding: 0.35rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+              ➡️ Move to Pending
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+
+    let pendingItems = [];
+    targetKeys.forEach(k => {
+      const t = targets[k];
+      if (t && t.pending_items) {
+        t.pending_items.forEach(item => {
+          pendingItems.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name }));
+        });
+      }
+    });
+
+    pendingItems.sort((a, b) => new Date(a.ingress_at || 0) - new Date(b.ingress_at || 0));
+
+    const pendingCountEl = document.getElementById('col-count-pending');
+    if (pendingCountEl) pendingCountEl.innerText = pendingItems.length;
+
+    const pendingCardsEl = document.getElementById('col-cards-pending');
+    if (pendingCardsEl) {
+      if (pendingItems.length === 0) {
+        pendingCardsEl.innerHTML = '<div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0.5rem;">Queue empty. Drop .mp4 into pending/</div>';
+      } else {
+        pendingCardsEl.innerHTML = pendingItems.map((item, idx) => `
+          <div style="background: #faf8f5; border: 1px solid #fde68a; border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <span style="background: #fef3c7; color: #92400e; font-size: 0.7rem; font-weight: 800; padding: 0.1rem 0.45rem; border-radius: 9999px;">
+                #${idx + 1} ${idx === 0 ? 'NEXT IN LINE' : 'FIFO'}
+              </span>
+              <span style="font-size: 0.72rem; color: #64748b;">${formatTimeAgo(item.ingress_at)}</span>
+            </div>
+            <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #0f172a; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #64748b;">
+              <span>${formatBytes(item.size_bytes)}</span>
+              <span style="background: #f1f5f9; padding: 0.1rem 0.4rem; border-radius: 0.2rem; font-weight: 600;">${item.seriesName || item.targetKey}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    let processingItems = [];
+    targetKeys.forEach(k => {
+      const t = targets[k];
+      if (t && t.processing_items) {
+        t.processing_items.forEach(item => {
+          processingItems.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name }));
+        });
+      }
+    });
+
+    const procCountEl = document.getElementById('col-count-processing');
+    if (procCountEl) procCountEl.innerText = processingItems.length;
+
+    const procCardsEl = document.getElementById('col-cards-processing');
+    if (procCardsEl) {
+      if (processingItems.length === 0) {
+        procCardsEl.innerHTML = '<div style="text-align: center; color: #15803d; font-size: 0.8rem; padding: 2rem 0.5rem; background: #f0fdf4; border-radius: 0.375rem; border: 1px dashed #bbf7d0;">🟢 Ingress slot idle. Concurrency Lock released. Ready for next FIFO candidate.</div>';
+      } else {
+        procCardsEl.innerHTML = processingItems.map(item => `
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 0.375rem; padding: 0.85rem; font-size: 0.8rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <span style="background: #2563eb; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 9999px;">
+                ⚡ IN FLIGHT (1 of 1)
+              </span>
+              <span style="font-size: 0.72rem; color: #1e40af; font-weight: 600;">Active Slot</span>
+            </div>
+            <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #1e3a8a; word-break: break-all; margin-bottom: 0.5rem;">${item.filename}</div>
+            
+            <div style="background: #ffffff; border: 1px solid #dbeafe; border-radius: 0.25rem; padding: 0.5rem; margin-bottom: 0.75rem; font-size: 0.75rem; color: #334155;">
+              <div style="font-weight: 700; margin-bottom: 0.25rem; color: #1e40af;">Execution Stages:</div>
+              <div style="color: #15803d; font-weight: 600;">✓ Ephemeral Audio Extraction</div>
+              <div style="color: #2563eb; font-weight: 700;">⚙️ Apple Silicon Whisper Diarization</div>
+              <div style="color: #64748b;">· Craftsman Metadata Synthesis</div>
+              <div style="color: #64748b;">· YouTube API v3 Resumable Upload</div>
+              <div style="color: #64748b;">· Multipart WebVTT Captions</div>
+              <div style="color: #64748b;">· Relocate to processed/YYYY-MM/</div>
+            </div>
+
+            <div style="display: flex; gap: 0.4rem;">
+              <button type="button" onclick="triggerPipelineAction('halt')" style="flex: 1; background: #fffbeb; color: #b45309; border: 1px solid #fde68a; padding: 0.3rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; cursor: pointer;">
+                ⏸️ Pause After
+              </button>
+              <button type="button" onclick="triggerPipelineAction('stop')" style="flex: 1; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 0.3rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; cursor: pointer;">
+                🛑 Abort Task
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    let processedTotal = 0;
+    let recentProcessed = [];
+    targetKeys.forEach(k => {
+      const t = targets[k];
+      if (t) {
+        processedTotal += (t.processed_count || 0);
+        if (t.recent_processed) {
+          t.recent_processed.forEach(item => {
+            recentProcessed.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name }));
+          });
+        }
+      }
+    });
+
+    const procDoneEl = document.getElementById('col-count-processed');
+    if (procDoneEl) procDoneEl.innerText = processedTotal;
+
+    const procDoneCardsEl = document.getElementById('col-cards-processed');
+    if (procDoneCardsEl) {
+      if (recentProcessed.length === 0) {
+        procDoneCardsEl.innerHTML = '<div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0.5rem;">' + processedTotal + ' files archived.</div>';
+      } else {
+        procDoneCardsEl.innerHTML = recentProcessed.slice(0, 8).map(item => `
+          <div style="background: #faf8f5; border: 1px solid #bbf7d0; border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <span style="background: #dcfce7; color: #15803d; font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 9999px;">✓ Deployed</span>
+              <span style="font-size: 0.7rem; color: #64748b;">${formatTimeAgo(item.archived_at)}</span>
+            </div>
+            ${item.title ? `<div style="font-size: 0.825rem; font-weight: 700; color: #0f172a; margin-bottom: 0.25rem; line-height: 1.3;">${item.title}</div>` : ''}
+            <div style="font-family: ui-monospace, monospace; font-size: 0.72rem; color: #64748b; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
+            <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 0.4rem;">
+              Archived: <code style="font-family: ui-monospace, monospace; background: #e2e8f0; padding: 0.1rem 0.3rem; border-radius: 0.2rem;">${item.archive_path || 'processed/'}</code>
+            </div>
+            ${item.video_id ? `
+              <div style="margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid #dcfce7; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
+                <a href="${item.youtube_url || ('https://youtu.be/' + item.video_id)}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.3rem; background: #ef4444; color: #ffffff; padding: 0.3rem 0.6rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; text-decoration: none;">
+                  ▶️ Watch on YouTube (${item.video_id}) ↗
+                </a>
+                <span style="font-size: 0.7rem; color: #0f766e; font-weight: 600;">${item.seriesName || item.targetKey}</span>
+              </div>
+            ` : ''}
+          </div>
+        `).join('');
+      }
+    }
+
+    let failedItems = [];
+    targetKeys.forEach(k => {
+      const t = targets[k];
+      if (t && t.failed_items) {
+        t.failed_items.forEach(item => {
+          failedItems.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name }));
+        });
+      }
+    });
+
+    const failedCountEl = document.getElementById('col-count-failed');
+    if (failedCountEl) failedCountEl.innerText = failedItems.length;
+
+    const failedCardsEl = document.getElementById('col-cards-failed');
+    if (failedCardsEl) {
+      if (failedItems.length === 0) {
+        failedCardsEl.innerHTML = '<div style="text-align: center; color: #15803d; font-size: 0.8rem; padding: 2rem 0.5rem; background: #f0fdf4; border-radius: 0.375rem; border: 1px dashed #bbf7d0;">Zero failures quarantined. Healthy.</div>';
+      } else {
+        failedCardsEl.innerHTML = failedItems.map(item => `
+          <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+              <span style="background: #ef4444; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 9999px;">⚠️ QUARANTINED</span>
+              <span style="font-size: 0.7rem; color: #991b1b;">${formatTimeAgo(item.failed_at)}</span>
+            </div>
+            <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #991b1b; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
+            <div style="font-size: 0.75rem; color: #7f1d1d; margin-bottom: 0.5rem; line-height: 1.4;">${item.diagnostic || 'Quarantined for operator review.'}</div>
+            <button type="button" onclick="triggerPipelineAction('retry', 'target=${item.targetKey}&file=' + encodeURIComponent('${item.filename}'))" style="width: 100%; background: #ffffff; border: 1px solid #dc2626; color: #dc2626; padding: 0.35rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+              🔄 Re-queue to Pending
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  let currentActivityFilter = 'all';
+  let allActivities = [];
+
+  function setActivityFilter(filter, btn) {
+    currentActivityFilter = filter;
+    document.querySelectorAll('.activity-filter-btn').forEach(b => {
+      b.style.background = '#f1f5f9';
+      b.style.color = '#475569';
+      b.style.borderColor = '#cbd5e1';
+      b.style.fontWeight = '600';
+    });
+    btn.style.background = '#0f766e';
+    btn.style.color = '#ffffff';
+    btn.style.borderColor = '#0f766e';
+    btn.style.fontWeight = '700';
+
+    renderActivityStream(allActivities);
+  }
+
+  function renderActivityStream(activities, autoIntake) {
+    if (activities && activities.length > 0) allActivities = activities;
+    const container = document.getElementById('pipeline-activity-stream');
+    if (!container) return;
+
+    if (autoIntake !== undefined) {
+      const badge = document.getElementById('auto-intake-badge');
+      const btn = document.getElementById('btn-auto-intake-toggle');
+      if (badge) {
+        if (autoIntake) {
+          badge.style.background = '#f0fdf4';
+          badge.style.color = '#166534';
+          badge.style.borderColor = '#bbf7d0';
+          badge.innerText = '🤖 Autonomous Mode: Active';
+        } else {
+          badge.style.background = '#fef2f2';
+          badge.style.color = '#991b1b';
+          badge.style.borderColor = '#fecaca';
+          badge.innerText = '⏸️ Autonomous Mode: Paused';
+        }
+      }
+      if (btn) {
+        btn.innerText = autoIntake ? '🤖 Auto: Active' : '🤖 Auto: Paused';
+      }
+    }
+
+    let filtered = allActivities || [];
+    if (currentActivityFilter !== 'all') {
+      filtered = filtered.filter(a => (a.stage || '').toLowerCase() === currentActivityFilter.toLowerCase());
+    }
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 1.5rem 0.5rem;">No activity events matching filter.</div>';
+      return;
+    }
+
+    container.innerHTML = filtered.map(item => {
+      const stage = (item.stage || 'system').toLowerCase();
+      let stageBadge = '⚙️ ' + stage.toUpperCase();
+      let badgeBg = '#f1f5f9';
+      let badgeColor = '#475569';
+
+      if (stage === 'youtube') {
+        stageBadge = '🎬 YOUTUBE';
+        badgeBg = '#fef2f2';
+        badgeColor = '#dc2626';
+      } else if (stage === 'whisper') {
+        stageBadge = '🧠 WHISPER STT';
+        badgeBg = '#eff6ff';
+        badgeColor = '#2563eb';
+      } else if (stage === 'lock') {
+        stageBadge = '🔒 LOCK';
+        badgeBg = '#fffbeb';
+        badgeColor = '#b45309';
+      } else if (stage === 'dsp') {
+        stageBadge = '🎙️ DSP';
+        badgeBg = '#f5f3ff';
+        badgeColor = '#7c3aed';
+      } else if (stage === 'archive') {
+        stageBadge = '📦 ARCHIVE';
+        badgeBg = '#f0fdf4';
+        badgeColor = '#15803d';
+      } else if (stage === 'autonomous') {
+        stageBadge = '🤖 AUTO';
+        badgeBg = '#ecfdf5';
+        badgeColor = '#059669';
+      } else if (stage === 'control') {
+        stageBadge = '⏸️ CONTROL';
+        badgeBg = '#fffbeb';
+        badgeColor = '#d97706';
+      } else if (stage === 'error') {
+        stageBadge = '❌ ERROR';
+        badgeBg = '#fef2f2';
+        badgeColor = '#b91c1c';
+      }
+
+      const timeAgo = formatTimeAgo(item.timestamp);
+      const videoId = (item.details && item.details.video_id) || null;
+      const ytUrl = (item.details && item.details.url) || (videoId ? ('https://youtu.be/' + videoId) : null);
+
+      return `
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 0.6rem 0.85rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem;">
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+              <span style="font-size: 0.68rem; font-weight: 800; background: ${badgeBg}; color: ${badgeColor}; padding: 0.1rem 0.4rem; border-radius: 4px; text-transform: uppercase;">
+                ${stageBadge}
+              </span>
+              <span style="font-size: 0.72rem; color: #94a3b8;">${timeAgo}</span>
+            </div>
+            <div style="font-size: 0.825rem; font-weight: 600; color: #0f172a; line-height: 1.35;">
+              ${item.message}
+            </div>
+            ${item.details && item.details.filename ? `
+              <div style="font-family: ui-monospace, monospace; font-size: 0.7rem; color: #64748b; margin-top: 0.2rem;">
+                File: ${item.details.filename}
+              </div>
+            ` : ''}
+          </div>
+          ${ytUrl ? `
+            <a href="${ytUrl}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.25rem; background: #ef4444; color: #ffffff; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.7rem; font-weight: 700; text-decoration: none; white-space: nowrap; margin-top: 0.15rem;">
+              ▶️ Watch (${videoId}) ↗
+            </a>
+          ` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  async function triggerPipelineRun() {
+    const btn = document.getElementById('btn-pipeline-run');
+    if (btn) btn.disabled = true;
+    try {
+      const res = await fetch('/api/live/pipeline/run');
+      const data = await res.json();
+      const toast = document.getElementById('pipeline-action-toast');
+      if (toast) {
+        toast.style.display = 'block';
+        if (data.status === 'started') {
+          toast.style.background = '#f0fdf4';
+          toast.style.color = '#15803d';
+          toast.style.border = '1px solid #bbf7d0';
+          toast.innerText = '⚡ Intake worker spawned successfully (PID ' + (data.pid || 'active') + ')';
+        } else {
+          toast.style.background = '#fffbeb';
+          toast.style.color = '#92400e';
+          toast.style.border = '1px solid #fde68a';
+          toast.innerText = '⚠️ ' + (data.message || 'Could not spawn worker');
+        }
+        setTimeout(() => { toast.style.display = 'none'; }, 4000);
+      }
+    } catch (err) {
+      alert('Error triggering intake: ' + err.message);
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  async function toggleAutoIntake() {
+    try {
+      const res = await fetch('/api/live/pipeline/auto_toggle');
+      const data = await res.json();
+      const toast = document.getElementById('pipeline-action-toast');
+      if (toast) {
+        toast.style.display = 'block';
+        toast.style.background = '#f0fdf4';
+        toast.style.color = '#15803d';
+        toast.style.border = '1px solid #bbf7d0';
+        toast.innerText = data.message || 'Auto-intake updated';
+        setTimeout(() => { toast.style.display = 'none'; }, 3000);
+      }
+    } catch (err) {
+      alert('Error toggling auto-intake: ' + err.message);
     }
   }
 
@@ -1468,6 +2424,7 @@ body_class: page-youtube-dashboard
       const meta = r.getAttribute('data-meta-status');
       const cap = r.getAttribute('data-caption-status');
       const plat = r.getAttribute('data-platform');
+      const series = r.getAttribute('data-series');
 
       let show = false;
       if (filterType === 'all') {
@@ -1480,6 +2437,12 @@ body_class: page-youtube-dashboard
         show = (cap === 'synced');
       } else if (filterType === 'local-master') {
         show = (plat === 'local-master');
+      } else if (filterType === 'ramblin') {
+        show = (series === 'ramblin');
+      } else if (filterType === 'errata') {
+        show = (series === 'errata');
+      } else if (filterType === 'interviews' || filterType === 'oral-history') {
+        show = (series === 'interviews' || series === 'oral-history');
       }
 
       r.style.display = show ? '' : 'none';
@@ -1538,7 +2501,7 @@ body_class: page-youtube-dashboard
 
   const soundAboveEpisodes = {{ site.data.sound_above_sequence.episodes | jsonify }};
 
-  function loadTeleprompterEpisode(epNum) {
+  function getSelectedPrompterEp(epNum) {
     let ep = soundAboveEpisodes.find(e => e.number == epNum);
     if (!ep && epNum == 0) {
       ep = {
@@ -1553,10 +2516,11 @@ body_class: page-youtube-dashboard
         ai_era_parallel: "Maintaining cognitive control over system boundaries rather than passively accepting synthetic code generation."
       };
     }
-    const container = document.getElementById('teleprompter-cards-container');
-    if (!ep || !container) return;
+    return ep;
+  }
 
-    const acts = [
+  function buildTeleprompterActs(ep) {
+    return [
       {
         act: 1,
         title: "Cold Open & Personal Grounding",
@@ -1600,17 +2564,54 @@ body_class: page-youtube-dashboard
         prompt: "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode " + ((ep.number % 35) + 1) + ". Until next time, keep your feedback loops fast and your code humane."
       }
     ];
+  }
+
+  function launchInTextream(epNum) {
+    const ep = getSelectedPrompterEp(epNum);
+    if (!ep) return;
+    const acts = buildTeleprompterActs(ep);
+    const act1 = acts[0];
+    const text = "ACT 1: " + act1.title + "\n\n" + act1.prompt;
+    window.location.href = "textream://read?text=" + encodeURIComponent(text);
+  }
+
+  function downloadTextream(epNum) {
+    const ep = getSelectedPrompterEp(epNum);
+    if (!ep) return;
+    const acts = buildTeleprompterActs(ep);
+    const pages = acts.map(a => "ACT " + a.act + ": " + a.title.toUpperCase() + " [" + a.timing + "]\nScene: " + a.scene + "\n\n" + a.prompt);
+    const blob = new Blob([JSON.stringify(pages, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const numStr = String(ep.number).padStart(2, '0');
+    a.href = url;
+    a.download = "episode-" + numStr + ".textream";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function loadTeleprompterEpisode(epNum) {
+    const ep = getSelectedPrompterEp(epNum);
+    const container = document.getElementById('teleprompter-cards-container');
+    if (!ep || !container) return;
+
+    const acts = buildTeleprompterActs(ep);
 
     container.innerHTML = acts.map(a => `
       <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.25rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
           <div style="font-size: 0.78rem; font-weight: 700; color: #b45309; text-transform: uppercase;">ACT ${a.act}: ${a.title} [${a.timing}]</div>
           <span style="font-family: ui-monospace, monospace; font-size: 0.75rem; background: #ffffff; border: 1px solid #cbd5e1; padding: 0.15rem 0.5rem; border-radius: 0.25rem; color: #0f766e; font-weight: 700;">Scene: ${a.scene}</span>
         </div>
         <div style="font-size: 0.95rem; font-family: var(--font-serif-editorial, Georgia, serif); line-height: 1.55; color: #0f172a; margin-bottom: 0.75rem;">
           ${a.prompt}
         </div>
-        <div style="display: flex; justify-content: flex-end;">
+        <div style="display: flex; justify-content: flex-end; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+          <a href="textream://read?text=${encodeURIComponent('ACT ' + a.act + ': ' + a.title + '\n\n' + a.prompt)}" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #0f766e; color: #ffffff; border-radius: 0.25rem; padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 700; text-decoration: none;">
+            🎙️ Read in Textream
+          </a>
           <button type="button" onclick="copyCliCommand('${a.prompt.replace(/'/g, "\\'")}', this)" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; color: #475569;">
             Copy Prompt
           </button>
@@ -1620,11 +2621,16 @@ body_class: page-youtube-dashboard
   }
 
   const episodeDossiers = {{ site.data.youtube_pipeline_telemetry.episode_dossiers | jsonify | default: "[]" }};
-  let currentWorkshopEp = 1;
+  let currentWorkshopEp = 0;
   let currentAttachments = [];
 
   function loadWorkshopEpisode(epNum) {
     currentWorkshopEp = parseInt(epNum, 10);
+    const sel = document.getElementById('ws-episode-select');
+    if (sel && sel.value !== String(currentWorkshopEp)) {
+      sel.value = String(currentWorkshopEp);
+    }
+
     let baseEp = soundAboveEpisodes.find(e => e.number == currentWorkshopEp);
     if (!baseEp && currentWorkshopEp === 0) {
       baseEp = {
@@ -1637,7 +2643,7 @@ body_class: page-youtube-dashboard
         era_name: "The AI Horizon",
         status: "scheduled",
         resolved_youtube_id: "7YeFpKn5FbU",
-        sound_above_inquiry: "When AI models project effortless confidence, how does an engineer determine where competence ends and slop begins?",
+        sound_above_inquiry: "When AI models project effortless confidence across specialized technical domains, how does an experienced engineer determine where competence ends and plausible falsehood begins?",
         ai_era_parallel: "Maintaining cognitive control over system boundaries rather than passively accepting synthetic code generation."
       };
     } else if (!baseEp) {
@@ -1648,20 +2654,20 @@ body_class: page-youtube-dashboard
       title: baseEp.title || '',
       interviewee: baseEp.interviewee || '',
       conference: baseEp.conference || '',
-      year: baseEp.year || 2011,
-      era_name: baseEp.era_name || 'The Chicago Crucible',
-      status: baseEp.status || 'planned',
+      year: baseEp.year || 2026,
+      era_name: baseEp.era_name || (currentWorkshopEp === 0 ? 'The AI Horizon' : 'The Chicago Workshop'),
+      status: baseEp.status || 'scheduled',
       youtube_video_id: baseEp.resolved_youtube_id || baseEp.youtube_video_id || '',
       narrative: {
         theme: 'Software Craftsmanship & Deliberate Practice',
-        tone: 'Reflective, forensic, and empathetic with craftsman rigor',
+        tone: 'Reflective, unvarnished, forensic, and grounded',
         topic: baseEp.title || '',
         core_inquiry: baseEp.sound_above_inquiry || '',
         ai_era_parallel: baseEp.ai_era_parallel || '',
         chicago_context: baseEp.chicago_context || ''
       },
       lexicon: {
-        key_concepts: ['Software Craftsmanship', baseEp.era_name || 'The Chicago Crucible'],
+        key_concepts: ['Software Craftsmanship', baseEp.era_name || 'The AI Horizon'],
         trigger_words: [baseEp.interviewee ? baseEp.interviewee.split(' ').pop() : '', 'Craftsmanship'],
         hashtags: ['#SoftwareCraftsmanship', '#TheSoundAbove', '#OralHistory']
       },
@@ -1679,8 +2685,32 @@ body_class: page-youtube-dashboard
     };
 
     // Populate header ribbon
-    document.getElementById('ws-movement-pill').innerText = dossier.era_name || baseEp.era_name || 'The Chicago Crucible';
-    document.getElementById('ws-status-pill').innerText = (dossier.status || 'planned').toUpperCase();
+    const movPill = document.getElementById('ws-movement-pill');
+    const era = dossier.era_name || baseEp.era_name || (currentWorkshopEp === 0 ? 'The AI Horizon' : 'The Chicago Workshop');
+    if (movPill) {
+      movPill.innerText = era;
+      if (era === 'The AI Horizon') {
+        movPill.style.background = '#ede9fe';
+        movPill.style.color = '#6d28d9';
+      } else {
+        movPill.style.background = '#fef3c7';
+        movPill.style.color = '#b45309';
+      }
+    }
+
+    const statusPill = document.getElementById('ws-status-pill');
+    const st = (dossier.status || 'planned').toUpperCase();
+    if (statusPill) {
+      statusPill.innerText = st;
+      if (st === 'CUED' || st === 'SCHEDULED') {
+        statusPill.style.background = '#dcfce7';
+        statusPill.style.color = '#15803d';
+      } else {
+        statusPill.style.background = '#f1f5f9';
+        statusPill.style.color = '#475569';
+      }
+    }
+
     document.getElementById('ws-conf-text').innerText = (dossier.conference || baseEp.conference) + ' (' + (dossier.year || baseEp.year) + ')';
     document.getElementById('ws-ytid-text').innerText = dossier.youtube_video_id || baseEp.resolved_youtube_id || baseEp.youtube_video_id || 'Pending';
 
@@ -1809,11 +2839,18 @@ body_class: page-youtube-dashboard
     const loc = baseEp.location || 'Chicago, IL';
     const ytId = baseEp.resolved_youtube_id || baseEp.youtube_video_id || 'qOHdZKz1WFw';
 
+    const dossier = episodeDossiers.find(d => d.episode == currentWorkshopEp) || {};
+    const chicagoContext = (dossier.narrative && dossier.narrative.chicago_context) || baseEp.chicago_context || '';
+    const eraName = dossier.era_name || baseEp.era_name || (currentWorkshopEp === 0 ? 'The AI Horizon' : 'The Chicago Workshop');
+
     // 1. Build Teleprompter Acts
-    let act1 = "Welcome back to The Sound Above. I am Mike Hall. Today we enter " + (baseEp.era_name || 'The Chicago Crucible') + ". Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode " + currentWorkshopEp + ": " + interviewee + " recorded at " + conf + ".";
+    let epTitle = currentWorkshopEp === 0
+      ? "Pilot Episode 0: " + title
+      : "Episode " + currentWorkshopEp + ": " + interviewee + " recorded at " + conf;
+    let act1 = "Welcome back to The Sound Above. I am Mike Hall. Today we enter " + eraName + ". Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we examine " + epTitle + ".";
     if (story1.trim()) act1 += " [PERSONAL RECOLLECTION: " + story1.trim() + "]";
 
-    let act2 = (baseEp.chicago_context || '') + " When we recorded this in " + year + " at " + loc + ", practitioners were breaking out of vendor silos and defining the discipline for themselves.";
+    let act2 = (chicagoContext ? chicagoContext + " " : "") + "When we recorded this in " + year + " at " + loc + ", practitioners were breaking out of vendor silos and defining the discipline for themselves.";
     if (story2.trim()) act2 += " [SETTING RECOLLECTION: " + story2.trim() + "]";
 
     let act3 = inquiry + " Who inspired " + interviewee + " before they stepped onto this stage? What records were playing in the background when this movement formed?";
@@ -1826,7 +2863,7 @@ body_class: page-youtube-dashboard
       act5 += " Cited references: " + currentAttachments.map(a => a.title + " (" + (a.url || a.path) + ")").join('; ');
     }
 
-    const nextEp = (currentWorkshopEp % 35) + 1;
+    const nextEp = currentWorkshopEp === 0 ? 1 : ((currentWorkshopEp % 37) + 1);
     let act6 = "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode " + nextEp + ". Until next time, keep your feedback loops fast and your code humane.";
 
     const acts = [
@@ -1910,8 +2947,8 @@ body_class: page-youtube-dashboard
       year: parseInt(year, 10),
       location: loc,
       slug: baseEp.slug || '',
-      era_id: baseEp.era_id || 'chicago-crucible',
-      era_name: baseEp.era_name || 'The Chicago Crucible',
+      era_id: baseEp.era_id || 'the-chicago-workshop',
+      era_name: baseEp.era_name || 'The Chicago Workshop',
       youtube_broadcast_id: baseEp.youtube_broadcast_id || '',
       youtube_video_id: ytId,
       narrative: {
@@ -2004,6 +3041,22 @@ body_class: page-youtube-dashboard
 
   function cueWorkshopEpisodeInObs() {
     const cmd = "bin/broadcast cue --rewatch " + currentWorkshopEp;
+    fetch('/api/live/pipeline/cue_obs?episode=' + currentWorkshopEp, { method: 'POST' })
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === 'cued') {
+          navigator.clipboard.writeText(cmd).catch(() => {});
+          alert("✅ Episode " + currentWorkshopEp + " cued directly into live OBS overlays!\n\nCommand: " + cmd);
+        } else {
+          fallbackClipboardCue(cmd);
+        }
+      })
+      .catch(() => {
+        fallbackClipboardCue(cmd);
+      });
+  }
+
+  function fallbackClipboardCue(cmd) {
     navigator.clipboard.writeText(cmd).then(() => {
       alert("✅ Episode " + currentWorkshopEp + " cue command copied to clipboard:\n\n" + cmd + "\n\nRun this in terminal to update live OBS overlays!");
     }).catch(() => {
@@ -2235,14 +3288,20 @@ body_class: page-youtube-dashboard
       if (ramblin) {
         const el = document.getElementById('hud-ramblin-pending');
         if (el) el.innerText = ramblin.pending_count || 0;
+        const stagedEl = document.getElementById('hud-ramblin-staged');
+        if (stagedEl) stagedEl.innerText = ramblin.staged_count || 0;
       }
       if (soundAbove) {
         const el = document.getElementById('hud-sound-above-pending');
         if (el) el.innerText = soundAbove.pending_count || 0;
+        const stagedEl = document.getElementById('hud-sound-above-staged');
+        if (stagedEl) stagedEl.innerText = soundAbove.staged_count || 0;
       }
       if (errata) {
         const el = document.getElementById('hud-errata-pending');
         if (el) el.innerText = errata.pending_count || 0;
+        const stagedEl = document.getElementById('hud-errata-staged');
+        if (stagedEl) stagedEl.innerText = errata.staged_count || 0;
       }
 
       // Check active execution state
@@ -2262,6 +3321,47 @@ body_class: page-youtube-dashboard
         if (stateEl) { stateEl.innerText = 'STANDBY'; stateEl.style.color = '#15803d'; }
         if (detailEl) { detailEl.innerText = 'SLO Health: 100% nominal'; detailEl.style.color = '#15803d'; }
       }
+
+      // Update Hero Header Processor Pulse Badge
+      const bgBadge = document.getElementById('bg-processor-badge');
+      const bgDot = document.getElementById('bg-processor-dot');
+      const bgText = document.getElementById('bg-processor-text');
+      const totalPending = (ramblin?.pending_count || 0) + (soundAbove?.pending_count || 0) + (errata?.pending_count || 0);
+
+      if (bgBadge && bgDot && bgText) {
+        if (totalFailed > 0) {
+          bgBadge.style.background = '#fef2f2';
+          bgBadge.style.color = '#991b1b';
+          bgBadge.style.borderColor = '#fecaca';
+          bgDot.style.background = '#ef4444';
+          bgText.innerText = 'Processor: ' + totalFailed + ' Failed';
+        } else if (totalProcessing > 0) {
+          bgBadge.style.background = '#eff6ff';
+          bgBadge.style.color = '#1e40af';
+          bgBadge.style.borderColor = '#bfdbfe';
+          bgDot.style.background = '#2563eb';
+          bgText.innerText = 'Processor: Ingesting (1 active)';
+        } else if (totalPending > 0) {
+          bgBadge.style.background = '#fffbeb';
+          bgBadge.style.color = '#92400e';
+          bgBadge.style.borderColor = '#fde68a';
+          bgDot.style.background = '#f59e0b';
+          bgText.innerText = 'Processor: ' + totalPending + ' Queued (FIFO)';
+        } else {
+          bgBadge.style.background = '#f0fdf4';
+          bgBadge.style.color = '#166534';
+          bgBadge.style.borderColor = '#bbf7d0';
+          bgDot.style.background = '#22c55e';
+          bgText.innerText = 'Processor: Idle (FIFO Ready)';
+        }
+      }
+
+      // Render the 5-column Ingress & Publishing Funnel
+      renderIngressFunnel(telemetry);
+
+      // Render Live Pipeline Activity & Event Stream
+      const intake = telemetry.media_intake || {};
+      renderActivityStream(intake.activity_stream || [], intake.auto_intake);
     }
   }
 
@@ -2345,8 +3445,9 @@ body_class: page-youtube-dashboard
 
   // Initial load
   document.addEventListener('DOMContentLoaded', () => {
+    handleHashTab();
     loadTeleprompterEpisode(1);
-    loadWorkshopEpisode(1);
+    loadWorkshopEpisode(0);
     initDashboardRealtimeStream();
   });
 </script>

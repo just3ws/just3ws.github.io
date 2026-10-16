@@ -1,14 +1,16 @@
 ---
 name: oral-history-broadcaster
-description: Directs, validates, cues, and audits live video broadcasts across all three archetypes (The Sound Above oral history rewatches, Errata solo readings and demos, and The Room invited guest dialogues).
+aliases:
+  - technical-rewatch-broadcaster
+description: Directs, validates, cues, and audits live video broadcasts across all three archetypes (The Sound Above interview rewatches, Errata solo readings and demos, and The Room invited peer dialogues).
 ---
 
-# Oral History Broadcaster Skill
+# Technical Rewatch & Broadcast Director Skill
 
-Use this skill when preparing, curating, validating, or directing livestreams for Mike Hall (Staff Software Engineer and UGtastic Host).
+Use this skill when preparing, curating, validating, or directing livestreams for Mike Hall (Staff Software Engineer, UGtastic Creator, and SCMC Co-Founder).
 This covers the entire tri-archetype broadcast architecture:
-1. **The Sound Above**: Forensic oral history rewatch series across 37 numbered curriculum broadcasts (35 curated interview episodes plus 2 closing codas: Coda 1 Host Demonstration and Coda 2 Community Roundtable). 37 is a prime number reflecting an indivisible, sovereign curriculum.
-2. **Errata**: Solo broadcasts including the series pilot ("The Mirage of Competence: AI Slop & Domain Boundaries", Episode 00), book readings, concept breakdowns, live terminal workbench demonstrations, oral memoirs, physical memorabilia showcases, and behind the scenes engineering walkthroughs.
+1. **The Sound Above**: UGtastic interview rewatch series across 37 numbered curriculum broadcasts (35 curated practitioner interviews plus 2 closing codas: Coda 1 Host Demonstration and Coda 2 Community Roundtable).
+2. **Errata**: Solo broadcasts including the series pilot ("The Mirage of Competence: AI Slop & Domain Boundaries", Episode 00), book readings, concept breakdowns, live terminal workbench demonstrations, physical memorabilia showcases, and behind the scenes engineering walkthroughs.
 3. **The Room**: Invited peer dialogues, collegial pair programming, and community roundtables.
 
 ---
@@ -38,7 +40,15 @@ This covers the entire tri-archetype broadcast architecture:
      * YouTube Data API quota safety
      * Patreon patron credit formatting
 
-3. **Patreon Archive Integration & Patron Credits (`bin/patreon_pipeline.rb`)**:
+3. **Textream Teleprompter Integration (`bin/generate_sound_above_teleprompter.rb`)**:
+   - Compile native Textream JSON documents (`obs/teleprompter/episode-XX.textream`) for on-device speech recognition word tracking and prompter glass mirroring in `/Applications/Textream.app`:
+     `bin/pipeline media textream <N> --open`
+     `bin/pipeline media textream --all`
+   - Generate instant speech-tracking deep links:
+     `bin/pipeline media textream <N> -u`
+   - Integrated with the YouTube Operations Cockpit teleprompter studio (`https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter`) with direct 1-click launch and `.textream` export.
+
+4. **Patreon Archive Integration & Patron Credits (`bin/patreon_pipeline.rb`)**:
    - Track monthly recurring compute funding for Whisper and AI model tokens:
      `bin/patreon_pipeline.rb status`
    - Format closing credit acknowledgments for Act 6 teleprompter and YouTube descriptions:
@@ -46,12 +56,12 @@ This covers the entire tri-archetype broadcast architecture:
    - Sync live members from Patreon API v2:
      `bin/patreon_pipeline.rb sync`
 
-4. **Unified Broadcast Orchestration (`bin/broadcast`)**:
+5. **Unified Broadcast Orchestration (`bin/broadcast`)**:
    - Inspect active live state and overlay HUD configuration:
      `bin/broadcast --status`
    - List complete sequence and Errata entries:
      `bin/broadcast --list`
-   - Cue oral history rewatches (Episodes 1 to 37):
+   - Cue technical interview rewatches (Episodes 1 to 37):
      `bin/broadcast --rewatch <N>`
    - Cue pre-curated or custom Errata solo broadcasts:
      `bin/broadcast --cue <ID>`
@@ -87,3 +97,4 @@ This covers the entire tri-archetype broadcast architecture:
 - **Zero Secrets**: Never commit or broadcast stream keys, OAuth refresh tokens, or private credentials.
 - **True Title Compliance**: Maintain **Staff Software Engineer** as Mike Hall's canonical title.
 - **Hardware Portability**: Ensure all paths in OBS configurations use dynamic project roots rather than static assumptions.
+- **Media Ingestion & Publishing**: Refer to `.agents/skills/media-pipeline-operator/SKILL.md` for the zero-disk-waste cloud intake pipeline, Concurrency Lock, FIFO queues, and YouTube publication details.

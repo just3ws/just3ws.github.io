@@ -1,20 +1,19 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# ==============================================================================
-# bin/youtube_pipeline.rb
-#
-# Unified YouTube Publishing Pipeline CLI & Operational Orchestrator.
-# Tracks state, audits best practices, manages scheduling, and compiles
-# telemetry for the YouTube Publishing & Operations Dashboard.
-#
-# Commands:
-#   status    : High-density CLI status report of the publication pipeline
-#   audit     : Run comprehensive best practices audit on metadata and captions
-#   telemetry : Regenerate _data/youtube_pipeline_telemetry.json for dashboards
-#   schedule  : Inspect and manage scheduled livestreams and cued broadcasts
-#   quota     : Calculate quota consumption and budgeting for planned jobs
-# ==============================================================================
+# ---
+# name: youtube_pipeline.rb
+# domain: media
+# role: Unified YouTube Publishing Pipeline CLI & Telemetry Orchestrator
+# description: State tracking, 6-point best-practices auditing, quota budgeting, and dashboard telemetry
+# commands:
+#   status: High-density CLI status report of publication pipeline
+#   audit: Comprehensive best-practices audit on metadata and captions
+#   telemetry: Regenerate _data/youtube_pipeline_telemetry.json for dashboards
+#   schedule: Inspect and manage scheduled livestreams and cued broadcasts
+#   quota: Calculate quota consumption and budgeting for planned jobs
+# usage: bin/pipeline media <command>
+# ---
 
 require 'json'
 require 'yaml'
@@ -557,30 +556,89 @@ class YouTubePipeline
     channel = 'whoistechcmty'
     targets = config.dig('channels', channel, 'targets') || {}
 
+    state_dir = File.expand_path('~/.local/state/just3ws')
+    halted = File.exist?(File.join(state_dir, 'pipeline.halt'))
+    stopped = File.exist?(File.join(state_dir, 'pipeline.stop'))
+    lock_file = File.join(state_dir, 'pipeline.lock')
+    locked = File.exist?(lock_file)
+    active_pid = locked ? (File.read(lock_file).strip rescue nil) : nil
+
     target_stats = {}
     targets.each do |target_name, target_info|
       target_dir = File.join(base_p, channel, target_name)
+      staged_files = Dir.glob(File.join(target_dir, 'staged', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
       pending_files = Dir.glob(File.join(target_dir, 'pending', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
       processing_files = Dir.glob(File.join(target_dir, 'processing', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
-      processed_count = Dir.glob(File.join(target_dir, 'processed', '**', '*')).count { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+      processed_files = Dir.glob(File.join(target_dir, 'processed', '**', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
       failed_files = Dir.glob(File.join(target_dir, 'failed', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+
+      pending_sorted = pending_files.sort_by do |f|
+        begin
+          File.birthtime(f)
+        rescue StandardError
+          File.mtime(f)
+        end
+      end
+
+      pending_items = pending_sorted.each_with_index.map do |f, idx|
+        age_ts = begin; File.birthtime(f); rescue StandardError; File.mtime(f); end
+        {
+          'filename' => File.basename(f),
+          'size_bytes' => (File.size(f) rescue 0),
+          'queue_position' => idx + 1,
+          'ingress_at' => age_ts.utc.iso8601
+        }
+      end
+
+      failed_items = failed_files.map do |f|
+        {
+          'filename' => File.basename(f),
+          'size_bytes' => (File.size(f) rescue 0),
+          'failed_at' => (File.mtime(f).utc.iso8601 rescue nil),
+          'diagnostic' => 'Quarantined for operator review. Click Re-queue to return file to pending.'
+        }
+      end
+
+      recent_processed = processed_files.sort_by { |f| File.mtime(f) rescue Time.at(0) }.reverse.first(6).map do |f|
+        receipt_file = "#{f}.receipt.json"
+        receipt = File.exist?(receipt_file) ? (JSON.parse(File.read(receipt_file)) rescue {}) : {}
+        {
+          'filename' => File.basename(f),
+          'size_bytes' => (File.size(f) rescue 0),
+          'archived_at' => (File.mtime(f).utc.iso8601 rescue nil),
+          'archive_path' => f.sub("#{target_dir}/", ''),
+          'video_id' => receipt['video_id'],
+          'youtube_url' => receipt['youtube_url'] || (receipt['video_id'] ? "https://youtu.be/#{receipt['video_id']}" : nil),
+          'title' => receipt['title'],
+          'playlist_id' => receipt['playlist_id'] || target_info['playlist_id'],
+          'privacy' => receipt['privacy'] || target_info['default_privacy']
+        }
+      end
 
       target_stats[target_name] = {
         'series_name' => target_info['series_name'],
         'playlist_id' => target_info['playlist_id'],
         'default_privacy' => target_info['default_privacy'],
+        'staged_count' => staged_files.size,
+        'staged_items' => staged_files.map { |f| { 'filename' => File.basename(f), 'size_bytes' => (File.size(f) rescue 0) } },
         'pending_count' => pending_files.size,
-        'pending_items' => pending_files.map { |f| { 'filename' => File.basename(f), 'size_bytes' => File.size(f) } },
+        'pending_items' => pending_items,
         'processing_count' => processing_files.size,
         'processing_items' => processing_files.map { |f| { 'filename' => File.basename(f) } },
-        'processed_count' => processed_count,
-        'failed_count' => failed_files.size
+        'processed_count' => processed_files.size,
+        'recent_processed' => recent_processed,
+        'failed_count' => failed_files.size,
+        'failed_items' => failed_items
       }
     end
 
     {
       'base_path' => base_p,
       'channel' => channel,
+      'halted' => halted,
+      'stopped' => stopped,
+      'locked' => locked,
+      'active_pid' => active_pid,
       'targets' => target_stats,
       'bpmn_spec_path' => 'docs/bpmn/media-intake-pipeline.bpmn',
       'slo_spec_path' => 'docs/bpmn/README.md'

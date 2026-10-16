@@ -1,24 +1,15 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# ==============================================================================
-# bin/stage_episode_workflow.rb
-# Staging & Rehearsal Workflow Harness for The Sound Above & Errata
-#
-# Simulates and verifies the complete end-to-end publishing pipeline for an
-# episode in a non-destructive staging environment:
-#   1. Semantic Dossier & Marginalia Invariant Check
-#   2. YouTube Metadata & Description Generation (Title < 100 chars, chapters, tags)
-#   3. Transcript Parity & WebVTT Caption Verification
-#   4. OBS Broadcast Overlay Cues & Scene State Simulation
-#   5. 6-Act Broadcast Teleprompter Rundown Compilation
-#   6. Google Cloud YouTube Data API Quota Budget Calculation
-#   7. Patreon Archive Patron Attribution Formatting
-#
-# Usage:
-#   bin/stage_episode_workflow.rb <episode_num> [--json]
-#   bin/stage_episode_workflow.rb --all
-# ==============================================================================
+# ---
+# name: stage_episode_workflow.rb
+# domain: media
+# purpose: Pre-broadcast staging and non-destructive rehearsal workflow harness
+# usage: bin/pipeline stage <episode_num> [--json] OR bin/pipeline stage --all
+# description: Simulates and validates the complete publishing pipeline across 7 gates:
+#   dossier invariants, metadata budgets, transcript parity, OBS overlay states,
+#   6-act teleprompter compilation, quota simulation, and Patreon patron credits.
+# ---
 
 require 'json'
 require 'yaml'
@@ -289,10 +280,33 @@ class StageEpisodeWorkflow
     stories = dossier.dig('human_marginalia', 'host_recollections') || []
     prompts = dossier.dig('human_marginalia', 'workshop_prompts') || []
 
+    slug_num = format('%02d', ep_num)
+    textream_path = File.join(ROOT_DIR, 'obs', 'teleprompter', "episode-#{slug_num}.textream")
+
+    # Compile or verify native Textream document
+    unless File.exist?(textream_path)
+      system('ruby', File.join(ROOT_DIR, 'bin', 'generate_sound_above_teleprompter.rb'), '-e', ep_num.to_s, '-s', textream_path)
+    end
+
+    textream_ok = false
+    if File.exist?(textream_path)
+      content = File.read(textream_path)
+      begin
+        pages = JSON.parse(content)
+        textream_ok = pages.is_a?(Array) && pages.size == 6 && !content.include?("\u2014")
+      rescue JSON::ParserError
+        textream_ok = false
+      end
+    end
+
+    status = textream_ok ? 'PASS' : 'WARN'
+    message = "6 acts compiled (#{stories.size} recollections, #{prompts.size} prompts); Textream document verified (obs/teleprompter/episode-#{slug_num}.textream)"
+
     {
-      status: 'PASS',
-      message: "6 acts compiled with #{stories.size} personal recollections and #{prompts.size} workshop prompts",
-      acts_count: 6
+      status: status,
+      message: message,
+      acts_count: 6,
+      textream_path: textream_path
     }
   end
 

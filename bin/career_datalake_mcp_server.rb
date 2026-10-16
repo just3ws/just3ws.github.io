@@ -375,7 +375,11 @@ class CareerDatalakeMCPServer
       when "query_oral_history"
         q = arguments["query"].to_s.downcase
         matches = @data["oral_history_corpus"].select do |item|
-          (item["title"] || "").downcase.include?(q) || (item["interviewee"] || "").downcase.include?(q)
+          (item["title"] || "").downcase.include?(q) ||
+            (item["interviewee"] || "").downcase.include?(q) ||
+            (item["speaker"] || "").downcase.include?(q) ||
+            (item["description"] || "").downcase.include?(q) ||
+            (item["transcript_text"] || "").downcase.include?(q)
         end
         result_text = JSON.pretty_generate({ query: arguments["query"], total_matches: matches.size, interviews: matches.first(15) })
 

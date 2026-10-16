@@ -1,21 +1,14 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# ==============================================================================
-# bin/patreon_pipeline.rb
-# Patreon API v2 Integration & Patron Credit Automation for The Sound Above
-#
-# Connects to Patreon API v2 to fetch campaign statistics, active memberships,
-# calculate monthly recurring archive compute funding, and generate on-screen
-# closing credits for Act 6 teleprompter scripts and video descriptions.
-#
-# Supported commands:
-#   bin/patreon_pipeline.rb status      # Show campaign stats, member count, and compute funding
-#   bin/patreon_pipeline.rb members     # List active patrons and tier classifications
-#   bin/patreon_pipeline.rb credits     # Format broadcast outro closing credits
-#   bin/patreon_pipeline.rb sync        # Cache patron roster to _data/patreon_roster.json
-#   bin/patreon_pipeline.rb help        # Show usage help
-# ==============================================================================
+# ---
+# name: patreon_pipeline.rb
+# domain: media
+# purpose: Patreon API v2 integration, campaign compute funds, and credit automation
+# usage: bin/pipeline media patreon [status|members|credits|sync]
+# description: Connects to Patreon API v2 to retrieve membership rosters, calculate
+#   recurring compute funding, and format broadcast outro attribution for The Sound Above.
+# ---
 
 require 'json'
 require 'yaml'

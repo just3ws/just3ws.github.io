@@ -134,8 +134,29 @@ def cue_rewatch(episode_num, overrides = {})
   end
 
   ep = seq["episodes"].find { |e| e["number"].to_i == episode_num.to_i }
+  if ep.nil?
+    dossier_path = File.join(ROOT_DIR, "_data", "episodes", format("episode-%02d.yml", episode_num.to_i))
+    if File.exist?(dossier_path)
+      require "yaml"
+      dossier = YAML.safe_load(File.read(dossier_path)) rescue nil
+      if dossier
+        ep = {
+          "number" => dossier["episode"] || episode_num.to_i,
+          "title" => dossier["title"],
+          "interviewee" => dossier["interviewee"],
+          "conference" => dossier["conference"],
+          "location" => dossier["location"] || "Crystal Lake / Chicago",
+          "year" => dossier["year"],
+          "era_name" => dossier["era_name"] || "The AI Horizon",
+          "sound_above_inquiry" => (dossier.dig("narrative", "core_inquiry") || dossier["sound_above_inquiry"]),
+          "role" => dossier["role"] || "Host and Curator"
+        }
+      end
+    end
+  end
+
   unless ep
-    warn "Episode ##{episode_num} not found in sequence manifest (1 to #{seq['episodes'].size})."
+    warn "Episode ##{episode_num} not found in sequence manifest or episode dossiers."
     exit 1
   end
 

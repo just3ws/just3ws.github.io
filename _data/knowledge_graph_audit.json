@@ -1,15 +1,15 @@
 {
   "schema_version": "knowledge-graph-audit.v1",
   "graph_source": "_data/knowledge_graph.json",
-  "graph_generated_at": "2026-09-02T20:25:31-05:00",
-  "node_count": 423,
-  "edge_count": 676,
+  "graph_generated_at": "2026-10-15T23:26:40-05:00",
+  "node_count": 426,
+  "edge_count": 677,
   "node_counts_by_type": {
     "Archive Article": 7,
-    "Concept": 13,
+    "Concept": 12,
     "Conference": 5,
-    "Interview": 184,
-    "Interviewee": 191,
+    "Interview": 187,
+    "Interviewee": 192,
     "Open Source Project": 10,
     "Technical Topic": 6,
     "User Group": 7
@@ -17,18 +17,18 @@
   "expected_counts_by_type": {
     "Case Study": 2,
     "Engagement": 4,
-    "Interview": 184,
-    "Interviewee": 191,
+    "Interview": 187,
+    "Interviewee": 192,
     "Position": 28,
     "Post": 185,
     "Technical Topic": 73,
-    "Transcript": 215
+    "Transcript": 217
   },
   "coverage_gaps": {
     "Transcript": {
-      "expected": 215,
+      "expected": 217,
       "actual": 0,
-      "missing": 215
+      "missing": 217
     },
     "Post": {
       "expected": 185,
@@ -58,6 +58,10 @@
   },
   "duplicate_node_ids": {},
   "missing_edge_endpoints": [],
-  "orphan_node_ids": [],
+  "orphan_node_ids": [
+    "article-2026-09-02-the-shortcut-that-shifts-toward-knowledge",
+    "ug-denver-sc",
+    "ug-pittsburgh-sc"
+  ],
   "status": "ok"
 }

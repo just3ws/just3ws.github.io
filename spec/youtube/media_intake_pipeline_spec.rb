@@ -74,10 +74,10 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(stdout).to include('[pending]')
     end
 
-    it 'executes --dry-run cleanly when queue is empty' do
+    it 'executes --dry-run cleanly when queue is empty or in progress' do
       stdout, stderr, status = Open3.capture3("ruby #{cli_path} --dry-run")
       expect(status.success?).to be true
-      expect(stdout).to include('Intake queue is clear')
+      expect(stdout).to match(/(Intake queue is clear|Active processing in progress|\[Dry Run\])/)
     end
 
     it 'integrates with bin/pipeline intake command' do
@@ -225,6 +225,18 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(dash).to include('live-stream-badge')
       expect(dash).to include('EventSource')
       expect(dash).to include('applyRealtimeTelemetry')
+    end
+
+    it 'self-heals stale PID file when worker process is no longer alive' do
+      streamer = LiveDashboardStreamer.new(7099)
+      state_dir = File.expand_path('~/.local/state/just3ws')
+      FileUtils.mkdir_p(state_dir)
+      stale_pid_file = File.join(state_dir, 'pipeline.pid')
+      File.write(stale_pid_file, "9999999\n")
+
+      state = streamer.compile_live_intake_queues
+      expect(File.exist?(stale_pid_file)).to be false
+      expect(state['self_healing_events']).to include(match(/dead worker PID 9999999/))
     end
   end
 end

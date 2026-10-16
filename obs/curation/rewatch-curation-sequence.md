@@ -38,18 +38,18 @@ This rewatch series is not passive nostalgia. It is an active forensic investiga
 The original UGtastic videos were recorded opportunistically in conference hallways, hotel lobbies, and meetup backrooms between 2010 and 2015. They were published across Vimeo, Tumblr, and early video platforms in the order they were edited, not in a coherent narrative arc.
 
 This curation reworks the archive into 37 curated sessions across six cohesive thematic movements:
-1. **Movement 1: The Chicago Crucible**: The pre-manifesto rooms, breaking out of corporate Microsoft monoliths, and founding grassroots communities.
+1. **Movement 1: The Chicago Workshop**: The pre-manifesto rooms, breaking out of corporate Microsoft monoliths, and founding grassroots communities.
 2. **Movement 2: The Practice and the Dojo**: Deliberate practice, code katas, browser automation roots, and the pursuit of sub-second feedback loops.
 3. **Movement 3: The Human Communication Layer and Inclusion**: Mentorship hospitality, overcoming developer shame, RailsBridge pipelines, and deliberate discovery.
 4. **Movement 4: Philosophy, Empathy and Craftsmanship**: Humility, mental health in tech, social contracts, and passing the torch.
-5. **Movement 5: The Architecture and Testing Reckoning**: The "TDD is Dead" corridor debates, client-side frameworks, and deconstructing complexity.
+5. **Movement 5: The Architecture & Testing Discipline**: The "TDD is Dead" corridor debates, client-side frameworks, and deconstructing complexity.
 6. **Movement 6: The AI Horizon and The Observable Control Plane**: Applying seventeen years of craftsmanship disciplines to multi-agent fleets, sovereign inference, and deterministic system cartography.
 
 ---
 
 ## The Six Curated Movements
 
-### The Chicago Crucible
+### The Chicago Workshop
 
 #### Episode 01: Sergio Pereira: The First Room: Chicago Alt.NET & Escaping Corporate Monoliths
 - **Interviewee**: Sergio Pereira
@@ -317,7 +317,7 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 - **Status**: planned
 
 
-### The Architecture and Testing Reckoning
+### The Architecture & Testing Discipline
 
 #### Episode 24: David Heinemeier Hansson (DHH): The Chicago Corridor: Software as Writing & The TDD Reckoning
 - **Interviewee**: David Heinemeier Hansson (DHH)

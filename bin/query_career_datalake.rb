@@ -1,9 +1,14 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# bin/query_career_datalake.rb
-# Fast CLI query interface for CareerOS Datalake.
-# Supports querying positions, technology provenance, oral history, case studies, and writings.
+# ---
+# name: query_career_datalake.rb
+# domain: data
+# purpose: Fast CLI query and search engine for CareerOS Datalake
+# usage: bin/query_career_datalake.rb [-s query | -t tech | -c company | -i guest | --stats]
+# description: Searches positions, 136 skills, 156 writings, and 218 video interview transcripts
+#   with contextual text quotes, dates, and direct YouTube playback links.
+# ---
 
 require 'json'
 require_relative '../lib/date_display'
@@ -202,8 +207,28 @@ elsif options[:search]
   pub_matches = data["publications_and_writings"].select do |p|
     (p["title"] || "").downcase.include?(q) || (p["excerpt"] || "").downcase.include?(q)
   end
-  int_matches = data["oral_history_corpus"].select do |i|
-    (i["title"] || "").downcase.include?(q) || (i["interviewee"] || "").downcase.include?(q)
+  int_matches = []
+  Array(data["oral_history_corpus"]).each do |i|
+    title_hit = (i["title"] || "").downcase.include?(q)
+    speaker_hit = (i["interviewee"] || i["speaker"] || "").downcase.include?(q)
+    desc_hit = (i["description"] || "").downcase.include?(q)
+    transcript_hit = (i["transcript_text"] || "").downcase.include?(q)
+
+    if title_hit || speaker_hit || desc_hit || transcript_hit
+      item_copy = i.dup
+      if transcript_hit
+        txt = i["transcript_text"] || ""
+        idx = txt.downcase.index(q)
+        if idx
+          start_idx = [0, idx - 80].max
+          end_idx = [txt.length, idx + q.length + 80].min
+          item_copy["snippet"] = txt[start_idx..end_idx].gsub(/\s+/, ' ').strip
+        end
+      elsif desc_hit
+        item_copy["snippet"] = (i["description"] || "")[0..160]
+      end
+      int_matches << item_copy
+    end
   end
   cs_matches = data["case_studies"].select do |k, v|
     JSON.generate(v).downcase.include?(q)
@@ -311,8 +336,12 @@ else
       results["publications"].first(5).each { |p| puts "  * [#{p['date']}] #{p['title']}" }
     end
     if results["interviews"].any?
-      puts "\nInterviews (Top 5):"
-      results["interviews"].first(5).each { |i| puts "  * [#{i['year']}] #{i['title']}" }
+      puts "\nVideos & Transcripts (Top 6):"
+      results["interviews"].first(6).each do |i|
+        puts "  * [#{i['year']}] #{i['title']} (#{i['speaker'] || i['interviewee']})"
+        puts "    Link : #{i['youtube_url']}" if i["youtube_url"]
+        puts "    Quote: \"...#{i['snippet']}...\"" if i["snippet"]
+      end
     end
   else
     puts JSON.pretty_generate(results)

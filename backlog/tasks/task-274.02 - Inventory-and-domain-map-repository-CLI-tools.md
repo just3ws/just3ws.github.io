@@ -1,9 +1,11 @@
 ---
 id: TASK-274.02
 title: Inventory and domain-map repository CLI tools
-status: To Do
-assignee: []
+status: Done
+assignee:
+  - '@antigravity'
 created_date: '2026-09-02 16:49'
+updated_date: '2026-10-15 20:30'
 labels:
   - tooling
   - architecture
@@ -30,13 +32,13 @@ Produce a complete inventory of every bin tool with domain, runtime, lifecycle, 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Every tracked bin file is represented in the inventory.
-- [ ] #2 The inventory identifies duplicate, legacy, generated, library, and primary-driver tools.
-- [ ] #3 A domain command map defines stable entry points and compatibility behavior for existing invocations.
-- [ ] #4 Repository checks detect undocumented or newly added bin tools.
+- [x] #1 Every tracked bin file is represented in the inventory.
+- [x] #2 The inventory identifies duplicate, legacy, generated, library, and primary-driver tools.
+- [x] #3 A domain command map defines stable entry points and compatibility behavior for existing invocations.
+- [x] #4 Repository checks detect undocumented or newly added bin tools.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->

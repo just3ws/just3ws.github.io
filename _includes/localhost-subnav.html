@@ -22,6 +22,11 @@
         <span class="scope-domain-label">[just3ws.com]</span>
         <span class="scope-desc-label">Public Deployment Surface</span>
       {% endif %}
+
+      <a href="/youtube/dashboard/#tab-funnel" class="lh-processor-pulse" id="lh-processor-pulse" title="Media Intake Background Job Processor: Click to inspect Live Ingress Funnel &amp; Queues">
+        <span class="lh-pulse-dot" id="lh-pulse-dot"></span>
+        <span class="lh-pulse-label" id="lh-pulse-label">Processor: Idle (FIFO Ready)</span>
+      </a>
     </div>
 
     <div class="localhost-nav-links">
@@ -32,21 +37,21 @@
           <span class="lh-caret">▾</span>
         </a>
         <div class="lh-dropdown-menu" role="menu">
-          <div class="lh-menu-header">Control Planes & Cockpits</div>
+          <div class="lh-menu-header">Control Planes &amp; Cockpits</div>
           <a href="/dashboard/" class="lh-menu-item{% if page.url == '/dashboard/' or page.url == '/dashboard.html' %} is-active{% endif %}" role="menuitem">
             <strong>Platform Link Hub</strong> (Localhost Services)
           </a>
-          <a href="/youtube/dashboard/" class="lh-menu-item{% if page.url contains '/youtube/dashboard/' %} is-active{% endif %}" role="menuitem">
-            <strong>YouTube Operations Cockpit</strong> (215 Assets)
+          <a href="/youtube/dashboard/#tab-funnel" class="lh-menu-item" role="menuitem">
+            <strong>Live Ingress Funnel</strong> (Drive Maildir)
           </a>
-          <a href="/youtube/dashboard/#tab-bpmn" class="lh-menu-item" role="menuitem">
-            <strong>BPMN 2.0 & SLO Monitor</strong> (Camunda Flow)
+          <a href="/youtube/dashboard/" class="lh-menu-item{% if page.url contains '/youtube/dashboard/' %} is-active{% endif %}" role="menuitem">
+            <strong>YouTube Operations Cockpit</strong> (217 Assets)
           </a>
           <a href="/youtube/dashboard/#tab-teleprompter" class="lh-menu-item" role="menuitem">
-            <strong>Broadcast Teleprompter</strong> (6 Acts & Rundown)
+            <strong>Broadcast Teleprompter</strong> (6 Acts &amp; Textream)
           </a>
-          <a href="/youtube/dashboard/#tab-funnel" class="lh-menu-item" role="menuitem">
-            <strong>Quota & Funnel Auditor</strong> (API Budgets)
+          <a href="/youtube/dashboard/#tab-bpmn" class="lh-menu-item" role="menuitem">
+            <strong>BPMN 2.0 &amp; SLO Monitor</strong> (Camunda Flow)
           </a>
           <div class="lh-menu-divider"></div>
           <div class="lh-menu-header">Audio & Experimental Cockpits</div>
@@ -167,7 +172,7 @@
           <div class="lh-menu-divider"></div>
           <div class="lh-menu-header">Rewatch Series &amp; Monographs</div>
           <a href="/series/the-sound-above/" class="lh-menu-item{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" role="menuitem">
-            <strong>The Sound Above (Oral History Rewatch)</strong> 📺
+            <strong>The Sound Above (Technical Rewatch)</strong> 📺
           </a>
           <a href="/chicago-craftsmanship/" class="lh-menu-item{% if page.url contains '/chicago-craftsmanship/' and page.url != '/interviews/chicago-craftsmanship/' %} is-active{% endif %}" role="menuitem">
             <strong>Chicago History Monograph (2006–2015)</strong>
@@ -202,7 +207,7 @@
           <a href="/series/the-sound-above/" class="lh-menu-item" role="menuitem">📺 <strong>The Sound Above (Rewatch)</strong></a>
           <a href="/case-studies/" class="lh-menu-item" role="menuitem">🗺️ <strong>Case Studies</strong></a>
           <a href="/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html" class="lh-menu-item" role="menuitem">✍️ <strong>System Cartography Essay</strong></a>
-          <a href="/interviews/" class="lh-menu-item" role="menuitem">🎙️ <strong>Oral History Archive</strong></a>
+          <a href="/interviews/" class="lh-menu-item" role="menuitem">🎙️ <strong>Developer Interview Archive</strong></a>
           <a href="/engagements/" class="lh-menu-item" role="menuitem">💼 <strong>Advisory Engagements</strong></a>
         </div>
       </div>
@@ -225,8 +230,11 @@
 }
 
 .localhost-nav-container {
-  max-width: 80rem;
-  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0 2rem;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -290,6 +298,87 @@
   color: var(--color-text-muted, #64748b);
 }
 
+.lh-processor-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid var(--color-border, #e3dfd7);
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: var(--color-text-main, #1e232a);
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  margin-left: 0.25rem;
+}
+
+.lh-processor-pulse:hover {
+  border-color: var(--color-primary, #0f766e);
+  color: var(--color-primary, #0f766e);
+  box-shadow: 0 1px 4px rgba(15, 118, 110, 0.15);
+}
+
+.lh-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+.lh-pulse-dot.is-processing {
+  background: #2563eb;
+  animation: pulse-blue 1s infinite;
+}
+
+.lh-pulse-dot.is-pending {
+  background: #f59e0b;
+  animation: pulse-amber 1.8s infinite;
+}
+
+.lh-pulse-dot.is-error {
+  background: #ef4444;
+  animation: pulse-red 1.5s infinite;
+}
+
+.lh-pulse-dot.is-halted {
+  background: #b45309;
+  animation: pulse-amber 2.5s infinite;
+}
+
+.lh-pulse-dot.is-stopped {
+  background: #dc2626;
+  animation: pulse-red 2.5s infinite;
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes pulse-blue {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+@keyframes pulse-amber {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+@keyframes pulse-red {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
 .localhost-nav-links {
   display: flex;
   align-items: center;
@@ -326,20 +415,44 @@
 .lh-caret {
   font-size: 0.65rem;
   opacity: 0.7;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.lh-dropdown:hover .lh-caret,
+.lh-dropdown:focus-within .lh-caret,
+.lh-dropdown.is-open .lh-caret {
+  transform: rotate(180deg);
 }
 
 .lh-dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 4px);
-  right: 0;
+  top: 100%;
+  left: 0;
+  right: auto;
   min-width: 17.5rem;
   background: #ffffff;
   border: 1px solid var(--color-border, #e3dfd7);
   border-radius: 8px;
   padding: 0.4rem 0;
-  box-shadow: 0 10px 25px rgba(30, 35, 42, 0.08);
+  box-shadow: 0 10px 25px rgba(30, 35, 42, 0.12);
   z-index: 1000;
+  margin-top: 2px;
+}
+
+.lh-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+.lh-dropdown:last-child .lh-dropdown-menu {
+  left: auto;
+  right: 0;
 }
 
 .lh-dropdown:hover .lh-dropdown-menu,
@@ -406,6 +519,140 @@
     const domainLabel = document.querySelector(".scope-domain-label");
     if (domainLabel && isLocalhost) {
       domainLabel.textContent = "[" + window.location.host + "]";
+    }
+
+    const dropdowns = document.querySelectorAll(".lh-dropdown");
+    dropdowns.forEach(function(dd) {
+      const btn = dd.querySelector(".lh-dropdown-btn");
+      if (!btn) return;
+
+      btn.addEventListener("click", function(e) {
+        const isAnchor = btn.tagName.toLowerCase() === "a";
+        const clickedCaret = e.target.classList.contains("lh-caret");
+
+        if (!isAnchor || clickedCaret) {
+          e.preventDefault();
+          const isOpen = dd.classList.contains("is-open");
+          dropdowns.forEach(function(d) { d.classList.remove("is-open"); });
+          if (!isOpen) {
+            dd.classList.add("is-open");
+            btn.setAttribute("aria-expanded", "true");
+          } else {
+            btn.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+    });
+
+    document.addEventListener("click", function(e) {
+      if (!e.target.closest(".lh-dropdown")) {
+        dropdowns.forEach(function(dd) {
+          dd.classList.remove("is-open");
+          const btn = dd.querySelector(".lh-dropdown-btn");
+          if (btn) btn.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        dropdowns.forEach(function(dd) {
+          dd.classList.remove("is-open");
+          const btn = dd.querySelector(".lh-dropdown-btn");
+          if (btn) btn.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+
+    // Live pulse for background job processor
+    const pulseBadge = document.getElementById("lh-processor-pulse");
+    const pulseDot = document.getElementById("lh-pulse-dot");
+    const pulseLabel = document.getElementById("lh-pulse-label");
+
+    function updateProcessorPulse(telemetry) {
+      if (!pulseBadge || !pulseDot || !pulseLabel) return;
+      const targets = telemetry.media_intake && telemetry.media_intake.targets ? telemetry.media_intake.targets : (telemetry.targets || {});
+      const isStopped = telemetry.media_intake && telemetry.media_intake.stopped !== undefined ? telemetry.media_intake.stopped : (telemetry.stopped || false);
+      const isHalted = telemetry.media_intake && telemetry.media_intake.halted !== undefined ? telemetry.media_intake.halted : (telemetry.halted || false);
+      let totalPending = 0;
+      let totalProcessing = 0;
+      let totalFailed = 0;
+      let activeFilename = null;
+
+      Object.values(targets).forEach(function(t) {
+        totalPending += (t.pending_count || 0);
+        totalProcessing += (t.processing_count || 0);
+        totalFailed += (t.failed_count || 0);
+        if (t.processing_items && t.processing_items.length > 0 && !activeFilename) {
+          activeFilename = t.processing_items[0].filename;
+        }
+      });
+
+      pulseDot.className = "lh-pulse-dot";
+
+      if (isStopped) {
+        pulseDot.classList.add("is-stopped");
+        pulseLabel.textContent = "Processor: Stopped";
+        pulseBadge.title = "Background Job Processor: Pipeline stopped (immediate abort armed). Click to resume or inspect.";
+      } else if (isHalted) {
+        pulseDot.classList.add("is-halted");
+        pulseLabel.textContent = "Processor: Halted" + (totalProcessing > 0 ? " (finishing task)" : "");
+        pulseBadge.title = "Background Job Processor: Pipeline halted (will pause after current task). Click to resume or inspect.";
+      } else if (totalProcessing > 0) {
+        pulseDot.classList.add("is-processing");
+        const fileDesc = activeFilename ? " (" + (activeFilename.length > 20 ? activeFilename.slice(0, 18) + "..." : activeFilename) + ")" : "";
+        pulseLabel.textContent = "Processor: Ingesting" + fileDesc;
+        pulseBadge.title = "Background Job Processor: Actively ingesting video " + (activeFilename || "") + ". Serialized to 1 file across all channels.";
+      } else if (totalFailed > 0) {
+        pulseDot.classList.add("is-error");
+        pulseLabel.textContent = "Processor: " + totalFailed + " Failed";
+        pulseBadge.title = "Background Job Processor: " + totalFailed + " file(s) quarantined in failed/. Click to inspect.";
+      } else if (totalPending > 0) {
+        pulseDot.classList.add("is-pending");
+        pulseLabel.textContent = "Processor: " + totalPending + " Queued (FIFO)";
+        pulseBadge.title = "Background Job Processor: " + totalPending + " file(s) waiting in pending/ (processed in oldest-first FIFO order).";
+      } else {
+        pulseLabel.textContent = "Processor: Idle (FIFO Ready)";
+        pulseBadge.title = "Background Job Processor: Idle. Concurrency Lock ready for next FIFO video.";
+      }
+    }
+
+    if (isLocalhost) {
+      // 1. Connect to near-realtime SSE stream if available
+      let sseConnected = false;
+      try {
+        const evtSource = new EventSource("/api/live/events");
+        evtSource.addEventListener("telemetry", function(e) {
+          try {
+            const data = JSON.parse(e.data);
+            sseConnected = true;
+            updateProcessorPulse(data);
+          } catch(err) {}
+        });
+        evtSource.addEventListener("pipeline_step", function(e) {
+          try {
+            const step = JSON.parse(e.data);
+            if (step.status === "processing") {
+              pulseDot.className = "lh-pulse-dot is-processing";
+              pulseLabel.textContent = "Processor: Step " + step.step + " (" + (step.name || "ingesting") + ")";
+            }
+          } catch(err) {}
+        });
+        evtSource.onerror = function() {
+          sseConnected = false;
+        };
+      } catch(err) {}
+
+      // 2. Continuous fallback polling
+      function pollTelemetry() {
+        if (sseConnected) return;
+        fetch("/assets/data/youtube_pipeline_telemetry.json?t=" + Date.now())
+          .then(function(res) { return res.json(); })
+          .then(function(data) { updateProcessorPulse(data); })
+          .catch(function() {});
+      }
+      pollTelemetry();
+      setInterval(pollTelemetry, 5000);
     }
   });
 })();

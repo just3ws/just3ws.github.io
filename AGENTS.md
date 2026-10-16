@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-14
+     CURRENT FOCUS - last updated 2026-10-16
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,84 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SELF-HEALING ARCHITECTURE, RICH STATUS TELEMETRY & GROUNDED CURRICULUM HARMONIZATION (2026-10-16):
+         Architected automated self-healing, rich diagnostic self-reporting, and grounded curriculum naming:
+         - Engineered Self-Healing Ingress & Daemon Watcher (`bin/live_dashboard_streamer.rb` and `bin/intake_drive_video.rb`):
+           - In `compile_live_intake_queues`: background watcher audits worker PID liveness; if a worker crashes or reboots, the stale `pipeline.pid` is automatically unlinked and logged to activity telemetry.
+           - Automatic stranded file recovery: if no active worker process is alive, files stranded in `processing/` are safely restored to `pending/` and broadcast via SSE.
+           - Network & API resilience: added 3-attempt exponential backoff retry to video and caption uploads against transient network hiccups or rate limits.
+           - Upgraded `/status` endpoint: emits rich diagnostic telemetry including discrete health status (`idle_ready`, `pending`, `processing`, `degraded_quarantine`, `halted`, `stopped`), queue counts, worker lock status, and self-healing audit logs.
+         - Grounded Curriculum & Melodrama Elimination:
+           - Eliminated theatrical framing in favor of practitioner-honest history across `_data/sound_above_sequence.json`, `obs/curation/sequence-manifest.json`, and all 38 episode dossiers:
+             - Movement 1: "The Chicago Crucible" calibrated to **"The Chicago Workshop"**.
+             - Movement 5: "The Architecture and Testing Reckoning" calibrated to **"The Architecture & Testing Discipline"**.
+             - Episode 24 Title: calibrated to "The Chicago Corridor: Software as Writing & The TDD Debate".
+             - Series Canon: "Oral History Rewatch" calibrated to **"UGtastic Technical Rewatch Series"**.
+         - Agent Skills & Career Datalake Integration:
+           - Established `.agents/skills/career-datalake-researcher/SKILL.md` for CLI and MCP access across 218 transcribed interviews, 28 roles, and 185 writings.
+           - Refactored `.agents/skills/oral-history-broadcaster/` to `.agents/skills/technical-rewatch-broadcaster/` framing.
+         - All validation gates passing cleanly: `validate:fast`, `validate:obs` (46/46 assertions), and `rspec` (211/211 tests). Zero em-dash compliance maintained.
+       - EPISODE STUDIO DOSSIER WORKSHOP, DIRECT OBS CUEING & AUTONOMOUS MEDIA PIPELINE (2026-10-16):
+         Audited, harmonized, and verified Episode Studio, live broadcast cueing, and autonomous intake:
+         - Harmonized Episode Studio (`youtube/dashboard.html` / `#tab-workshop`) with active default Episode 00 ("The Mirage of Competence: AI Slop & Domain Boundaries", The AI Horizon movement):
+           - Decoupled semantic dossier editor fully reactive: Narrative Anatomy (theme, tone, core inquiry, AI-era parallel), Human Marginalia (recollections for Acts 1, 2, and 5), Prompts, Lexicon concepts, and Research Attachments (case studies, practice run 7YeFpKn5FbU, listening tests, Patreon).
+           - Live preview automatically compiles 6 teleprompter acts, staged YouTube description (<5000 chars), and downloadable `episode-00.yml` schema.
+           - Implemented direct-to-OBS overlay cueing (`🎬 Cue in OBS`): invokes `/api/live/pipeline/cue_obs?episode=0` on loopback daemon to cue live overlays immediately, with graceful clipboard copy fallback.
+           - Upgraded `bin/broadcast` (`cue_rewatch`): added YAML dossier fallback supporting Episode 0 (Preparatory Pilot) and non-sequence dossiers cleanly.
+         - Hardened Autonomous Media Intake Pipeline (`bin/intake_drive_video.rb`):
+           - Upgraded `stable_file?` to multi-sample 5-second interval verification (`sleep 3` then `sleep 2`), guaranteeing files uploading in-flight from mobile devices over cellular/Wi-Fi to Google Drive pending queues are not read prematurely.
+           - Streamer daemon (`bin/live_dashboard_streamer.rb`) running on loopback port 7025 with autonomous intake armed via `auto_intake.enabled`, reverse proxied at `https://www.just3ws.localhost/api/live/`.
+         - All validation gates passing cleanly: `validate:fast`, `validate:obs` (46/46 assertions), and `rspec` (210/210 tests). Zero em-dash compliance maintained.
+       - PAUSABLE MEDIA PIPELINE, FULL-TEXT VIDEO KNOWLEDGE SYSTEM & LIVE INGRESS FUNNEL (2026-10-15):
+         Architected and built pause/stop signal controls, comprehensive video datalake search, live ingress funnel, and teleprompter studio:
+         - Engineered dual-level pause and stop controls in `bin/intake_drive_video.rb` (`bin/pipeline pause` / `halt`, `stop`, `resume`):
+           - *Halt*: arms graceful sentinel (`~/.local/state/just3ws/pipeline.halt`) to complete current task then pause queue.
+           - *Stop*: immediate abort signaling worker PID, cleaning `/tmp/intake_*` scratch files, restoring files from `processing/` back to `pending/`, and releasing Concurrency Lock.
+           - *Signal Handling*: first `SIGINT` (Ctrl+C) / `SIGTSTP` initiates graceful halt; second `SIGINT` / `SIGTERM` initiates immediate task abort.
+         - Built Full-Text Video Datalake Knowledge System:
+           - Automatically persists speech-to-text transcripts into `_data/transcripts/<slug>.yml` and registers in `_data/video_assets.yml` upon intake completion.
+           - Upgraded `bin/generate_career_datalake.rb` to ingest full plain-text transcripts across all 218 transcript files into `career_datalake.json` and `.jsonl`.
+           - Upgraded `bin/query_career_datalake.rb` and `bin/career_datalake_mcp_server.rb` with full-text search across all video transcripts with contextual quotes and direct YouTube links.
+           - Reconciled and enriched legacy video `YOsPY8Bn8RQ` ("Ogilvie lost and found") and `dN--7I0FRvY` ("Production Incidents & SRE").
+         - Re-architected Operations Cockpit (`youtube/dashboard.html`):
+           - Added Tab 0: Live Ingress & Publishing Funnel (`#tab-funnel` / `#tab-queue`) with 5-column Kanban layout (Staged, Pending FIFO, Processing In-Flight, Processed Deployed, Quarantined Failures with 1-click re-queue).
+           - Added live operator controls: Halt Queue, Immediate Stop, Resume, Move to Pending, Re-queue.
+           - Added client-side hash routing supporting deep links (`#tab-funnel`, `#tab-teleprompter`, `#tab-bpmn`).
+           - Added series filter chips across Asset Catalog for Ramblin' & Amblin', Errata, and Oral History.
+         - Upgraded Localhost Subnav (`_includes/localhost-subnav.html`) and SwiftBar (`bin/youtube-swiftbar`):
+           - Processor pulse dot reflects realtime states: Stopped (red pulse), Halted (amber pulse), Ingesting (blue pulse), Queued (amber), Idle (green).
+           - Integrated direct links to Live Ingress Funnel and operator controls.
+         - All validation gates passing cleanly: `validate:fast`, `validate:obs` (46/46 assertions), and `rspec` (210/210 tests). Zero em-dash compliance maintained.
+
+       - END-TO-END SYSTEM OPERATIONAL VERIFICATION & CLOUD STREAMING INTAKE SUCCESS (2026-10-15):
+         Verified complete end-to-end autonomous ingestion, live diagnostics, and system health:
+         - Completed end-to-end cloud streaming intake of `VID_20261015_144836712.mp4` (1.63 GB) to YouTube Data API v3 (`dN--7I0FRvY`), assigned to playlist `PLNtb969T2-l0` (Ramblin' & Amblin'), uploaded WebVTT captions, and safely archived master to `processed/2026-10/` with zero permanent local SSD waste.
+         - Concurrency Lock released to `idle` state, ready for subsequent FIFO candidates across all channels.
+         - Realtime SSE streamer (`bin/pipeline stream`) daemon active on loopback port 7025 and reverse proxy verified through nginx at `https://www.just3ws.localhost/api/live/status` (HTTP 200 OK, active connection).
+         - macOS SwiftBar monitor (`bin/pipeline swiftbar`) updated to dynamic `🎬 Ready` pulse with live queue counts and green subsystem health.
+         - All validation gates passing cleanly: `validate:fast`, `validate:obs` (46/46 assertions), and `rspec` (210/210 tests). Zero em-dash compliance maintained.
+
+       - TEXTREAM TELEPROMPTER INTEGRATION & THE SOUND ABOVE BROADCAST PROCESS (2026-10-15):
+         Integrated native Textream (/Applications/Textream.app, dev.fka.textream) teleprompter compatibility into The Sound Above broadcast workflow:
+         - Upgraded `bin/generate_sound_above_teleprompter.rb` to compile native `.textream` documents (JSON Array of Strings conforming to Textream multi-page specification) across all 38 episodes (0 to 37), with `--textream` (`-t`), `--save-textream`, `--open`, `--url`, and `--all-textream` flags.
+         - Integrated `media teleprompter` and `media textream` into unified pipeline router `bin/pipeline` with full backward-compatible flat aliases.
+         - Enhanced pre-broadcast staging harness `bin/stage_episode_workflow.rb` (`bin/pipeline stage <ep>`): Gate 5 now compiles and validates the native `.textream` document for schema, 6-act page count, and zero em dashes.
+         - Upgraded Web Teleprompter Studio in `youtube/dashboard.html` (`/youtube/dashboard/#tab-teleprompter`) with "Launch in Textream" (textream:// deep link), "Export .textream" (JSON document download), and per-act "Read in Textream" action buttons.
+         - Documented Textream setup and desktop ergonomics in `obs/docs/recording-cheatsheet.md` and updated `oral-history-broadcaster` skill.
+         - Created comprehensive RSpec suite `spec/youtube/textream_teleprompter_spec.rb` (11 assertions). All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), validate:public_index_mode (895 indexable pages), and rspec (210/210 tests).
+
+       - CROSS-CHANNEL 1-AT-A-TIME SERIALIZATION, FIFO QUEUES, PONYTAIL DISCIPLINE & SUBNAV OFFSET REPAIR (2026-10-15):
+         Implemented cross-channel serialized intake, FIFO ordering, Ponytail complexity discipline, tool namespacing, and fixed subnav dropdown ergonomics:
+         - Resolved subnav dropdown horizontal offset and mouse-glide hover collapse bug in `_includes/localhost-subnav.html`: replaced `right: 0` with `left: 0` alignment, created seamless `::before` invisible hover bridge (8px high), and added click toggle plus keyboard Escape dismissal.
+         - Architected and implemented cross-channel 1-at-a-time serialized media processing in `bin/intake_drive_video.rb`: global `active_processing_files` Concurrency Lock prevents concurrent video ingestion across all channels and targets to preserve localhost CPU, RAM, and Apple Silicon Neural Engine headroom.
+         - Implemented strict FIFO queue ordering: `collect_pending_candidates` sorts candidates across all channels ascending by filesystem ingress age (`file_age_timestamp` using APFS birthtime falling back to mtime). Added `-1` / `--one` / `--single` flag for step-by-step ingestion.
+         - Loaded and established Ponytail skill (`.agents/skills/ponytail/SKILL.md`) and optimized `GEMINI.md` with the 4-rung complexity ladder and `# ponytail:` seam markers.
+         - Re-architected unified pipeline driver `bin/pipeline` with four clean domain namespaces (`media`, `validate`, `data`, `site`) with full backward-compatible flat aliases, documented in `bin/README.md`.
+         - Authored comprehensive RSpec suite `spec/pipeline/namespacing_and_ponytail_spec.rb` (20 assertions) verifying Ponytail discipline, namespaced pipeline grammar, staged directories, and cross-channel Concurrency Lock.
+         - Maintained 100% em-dash-free compliance across all additions. All validation gates passing cleanly:
+           validate:fast, validate:obs (46/46 assertions), and rspec (200/200 tests).
+
        - SWIFTBAR PIPELINE INTEGRATION & LOCALHOST NAVIGATION CONSOLIDATION (2026-10-15):
          Architected and built system-wide macOS SwiftBar status monitor and seamless localhost navigation integration:
          - Built executable `bin/youtube-swiftbar` (`bin/pipeline swiftbar`): fast, self-contained status pulse emitting dynamic menu bar icon, pending queue counts across all 3 playlists (Ramblin' & Amblin', The Sound Above, Errata), active DSP/transcription indicators, SSE streamer status, YouTube quota headroom, direct localhost dashboard jump links, and one-click operator actions.
@@ -586,6 +664,10 @@ a hold, not an invitation to invent a smoother explanation.
 20. `tmi-auditor` ✓ - Audit public-facing content for oversharing, discrimination-vector signals, and PII/PHI exposure.
 21. `canonical-surface-steward` ✓ - Keep canonical identity, shorthand, agents, skills, documentation, CLI help, validators, and generated surfaces synchronized.
 22. `oral-history-broadcaster` ✓ - Direct, validate, cue, and audit live oral history rewatch broadcasts, OBS Studio production scene contracts, dynamic HTML overlays, and "Sound Above" commentary arcs across the UGtastic and Chicago Software Craftsmanship corpus.
+23. `patreon-integrator` ✓ - Connect to Patreon API v2, manage campaign tiers, track recurring compute funding, and format closing credit attributions for The Sound Above broadcasts.
+24. `ponytail` ✓ - Audit code, designs, and architectural proposals against premature technical debt, cutting speculative abstractions and enforcing explicit "# ponytail:" markers.
+25. `media-pipeline-operator` ✓ - Operate, monitor, and audit the zero-disk-waste media intake and YouTube publishing pipeline across all channels and playlists, managing Maildir queues, Concurrency Locks, FIFO order, SSE telemetry, SwiftBar status, and BPMN SLO compliance.
+
 
 ## Career Datalake & MCP Server Interface
 

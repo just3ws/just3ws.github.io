@@ -101,4 +101,24 @@ Native macOS Golden Gate routing:
 4. [ ] **Episode cued**: `bin/broadcast --episode <N>` executed; check interviewee name in OBS preview.
 5. [ ] **Window capture attached**: Verify Chromium in Scene 03 and iTerm2 in Scene 05.
 6. [ ] **Start in Scene 01 or 02**: Click Scene `01. Starting Soon` or `02. Monologue`.
-7. [ ] **Hit "Start Recording"** (or "Start Streaming").
+7. [ ] **Textream prompter ready**: Launch `bin/pipeline media textream <ep> --open` or click "Launch in Textream" on localhost dashboard.
+8. [ ] **Hit "Start Recording"** (or "Start Streaming").
+
+---
+
+## 7. Textream Teleprompter Integration (/Applications/Textream.app)
+
+* **What it is**: Native macOS teleprompter (`dev.fka.textream`) with on-device speech recognition word tracking, Dynamic Island overlay, and prompter glass mirroring.
+* **CLI Commands**:
+  * Launch episode: `bin/pipeline media textream <ep> --open` (or `./bin/pipeline textream <ep> --open`)
+  * Compile all episodes: `bin/pipeline media textream --all` (generates all 38 files into `obs/teleprompter/`)
+  * Speech deep link URI: `bin/pipeline media textream <ep> -u` (generates `textream://read?text=...`)
+* **Localhost Dashboard Studio**:
+  * Open `https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter`.
+  * Click **🎙️ Launch in Textream** to start full episode prompter with speech tracking.
+  * Click **💾 Export .textream** to download the 6-act document (`episode-XX.textream`).
+  * Click **🎙️ Read in Textream** on any individual act card for quick rehearsal.
+* **Desktop Ergonomics**:
+  * Position the Dynamic Island or prompter window directly beneath your camera lens for natural eye contact.
+  * Multi-page support: all 6 acts are mapped 1:1 with auto-advance as you speak.
+

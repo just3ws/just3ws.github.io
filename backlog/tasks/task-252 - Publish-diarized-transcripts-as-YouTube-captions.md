@@ -1,10 +1,11 @@
 ---
 id: TASK-252
 title: Publish diarized transcripts as YouTube captions
-status: To Do
-assignee: []
+status: Done
+assignee:
+  - '@antigravity'
 created_date: '2026-07-04 09:24'
-updated_date: '2026-07-04 14:28'
+updated_date: '2026-10-15 16:00'
 labels:
   - pipeline
   - youtube
@@ -23,10 +24,10 @@ Convert diarized transcripts to .vtt (speaker turns + timestamps) and publish th
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Diarized transcript converts to .vtt with speaker turns and timestamps
-- [ ] #2 The caption track uploads to the matching youtube asset id
-- [ ] #3 A dry-run diff is produced and requires explicit human approval before publishing
-- [ ] #4 Idempotent — replaces the existing track without creating duplicates
+- [x] #1 Diarized transcript converts to .vtt with speaker turns and timestamps
+- [x] #2 The caption track uploads to the matching youtube asset id
+- [x] #3 A dry-run diff is produced and requires explicit human approval before publishing
+- [x] #4 Idempotent — replaces the existing track without creating duplicates
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -65,5 +66,5 @@ Reads: diarized `_data/transcripts/*.yml` (post TASK-247), `_data/video_assets.y
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->

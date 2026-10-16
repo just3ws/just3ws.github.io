@@ -1,15 +1,14 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# bin/youtube-swiftbar
-# SwiftBar status bar plugin for Media Intake & YouTube Publishing Pipeline
-#
-# Emits menu bar standing state, queue metrics, subsystem health, and clickable links:
-# 1. Menu bar title with dynamic icon, pending count, or processing animation
-# 2. Ingress Queues breakdown (Ramblin' & Amblin', The Sound Above, Errata)
-# 3. Subsystem Health (SSE Streamer, Whisper.cpp engine, YouTube API quota, BPMN SLO)
-# 4. Direct clickable links (href=...) to Localhost Dashboards & YouTube playlists
-# 5. Quick Operator Actions (bash=...) to trigger intake, streamer, staging, or open Finder
+# ---
+# name: youtube-swiftbar
+# domain: media
+# purpose: macOS SwiftBar menu bar monitor for media intake and publishing pipeline
+# usage: bin/pipeline swiftbar OR ~/.swiftbar/youtube-pipeline.30s.sh
+# description: Emits real-time menu bar state, queue metrics across all 3 playlists,
+#   subsystem health (SSE, whisper.cpp, API quota), and one-click operator actions.
+# ---
 
 require 'json'
 require 'yaml'
@@ -56,6 +55,7 @@ targets = {
 
 # Scan queue directories
 media_exts = %w[.mp4 .mov .m4v .mkv .webm .MP4 .MOV]
+total_staged = 0
 total_pending = 0
 total_processing = 0
 total_processed = 0
@@ -65,16 +65,24 @@ target_stats = {}
 
 targets.each do |target_key, target_meta|
   target_dir = File.join(channel_dir, target_key)
+  staged_files = []
   pending_files = []
   processing_files = []
   processed_count = 0
   failed_files = []
 
   if Dir.exist?(target_dir)
+    staged_dir = File.join(target_dir, 'staged')
     pending_dir = File.join(target_dir, 'pending')
     processing_dir = File.join(target_dir, 'processing')
     processed_dir = File.join(target_dir, 'processed')
     failed_dir = File.join(target_dir, 'failed')
+
+    if Dir.exist?(staged_dir)
+      staged_files = Dir.children(staged_dir).select do |f|
+        media_exts.include?(File.extname(f)) && !f.start_with?('.')
+      end
+    end
 
     if Dir.exist?(pending_dir)
       pending_files = Dir.children(pending_dir).select do |f|
@@ -98,6 +106,7 @@ targets.each do |target_key, target_meta|
     end
   end
 
+  total_staged += staged_files.size
   total_pending += pending_files.size
   total_processing += processing_files.size
   total_processed += processed_count
@@ -106,6 +115,7 @@ targets.each do |target_key, target_meta|
   target_stats[target_key] = {
     meta: target_meta,
     dir: target_dir,
+    staged: staged_files,
     pending: pending_files,
     processing: processing_files,
     processed_count: processed_count,
@@ -164,11 +174,22 @@ quota_used = telemetry.dig('quota', 'estimated_daily_units_consumed') || 1600
 quota_limit = telemetry.dig('quota', 'daily_limit') || 10000
 quota_headroom = ((1.0 - (quota_used.to_f / quota_limit)) * 100).round
 
+# Check Sentinel States (Halt / Stop)
+state_dir = File.expand_path('~/.local/state/just3ws')
+pipeline_halted = File.exist?(File.join(state_dir, 'pipeline.halt'))
+pipeline_stopped = File.exist?(File.join(state_dir, 'pipeline.stop'))
+
 # Format Menu Bar Title
-if active_process
+if pipeline_stopped
+  puts "🎬🛑 Stopped | color=#dc2626"
+elsif pipeline_halted
+  puts "🎬⏸️ Halted | color=#b45309"
+elsif active_process
   puts "🎬⚡ #{active_process.capitalize} | color=#0f766e"
 elsif total_pending.positive?
   puts "🎬 #{total_pending} pending | color=#b45309"
+elsif total_staged.positive?
+  puts "🎬 #{total_staged} staged (idle) | color=#4338ca"
 elsif total_failed.positive?
   puts "🎬⚠️ #{total_failed} failed | color=#dc2626"
 elsif total_processing.positive?
@@ -184,11 +205,17 @@ puts "whoistechcmty (@whoistechcmty) · Zero Disk Waste DSP | size=11 color=#647
 puts '---'
 
 # Productivity & Queue Standing
-puts "📦 Ingress Queues: #{total_pending} pending · #{total_processing} active · #{total_processed} completed | font=bold size=12"
+puts "📦 Ingress Queues: #{total_staged} staged · #{total_pending} pending · #{total_processing} active · #{total_processed} completed | font=bold size=12"
 
 target_stats.each do |_target_key, stats|
   meta = stats[:meta]
   puts "-- #{meta[:icon]} #{meta[:label]} (Playlist #{meta[:playlist_id]}) | font=bold size=11"
+
+  staged_color = stats[:staged].any? ? '#4338ca' : '#64748b'
+  puts "---- 📦 Staged: #{stats[:staged].size} file(s) (pre-queue hold) | color=#{staged_color} size=11"
+  stats[:staged].each do |file|
+    puts "------ 📄 #{file} (held) | size=10 color=#4338ca"
+  end
 
   pending_color = stats[:pending].any? ? '#b45309' : '#64748b'
   puts "---- ⏳ Pending: #{stats[:pending].size} file(s) | color=#{pending_color} size=11"
@@ -244,9 +271,10 @@ puts '---'
 
 # Dashboards & Views (Clickable)
 puts '🌐 Localhost Dashboards & Views | size=12 font=bold'
+puts '-- 🎬 Live Ingress & Publishing Funnel ↗ | href=https://www.just3ws.localhost/youtube/dashboard/#tab-funnel size=11'
 puts '-- 📺 YouTube Operations Cockpit ↗ | href=https://www.just3ws.localhost/youtube/dashboard/ size=11'
+puts '-- 📜 Sound Above Teleprompter Studio ↗ | href=https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter size=11'
 puts '-- ⚙️ BPMN 2.0 Workflow & SLO Monitor ↗ | href=https://www.just3ws.localhost/youtube/dashboard/#tab-bpmn size=11'
-puts '-- 🎙️ Sound Above Teleprompter Rundown ↗ | href=https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter size=11'
 puts '-- 🎛️ Errata Dehum Audio Workbench ↗ | href=https://www.just3ws.localhost/dehum/dashboard.html size=11'
 puts '-- ⚡ Platform Link Control Plane ↗ | href=https://www.just3ws.localhost/dashboard/ size=11'
 puts '-- 📜 37-Episode Prime Curriculum Hub ↗ | href=https://www.just3ws.localhost/series/the-sound-above/ size=11'
@@ -265,7 +293,11 @@ puts '---'
 # Operator Actions
 pipeline_bin = File.join(ROOT_DIR, 'bin', 'pipeline')
 puts '🚀 Operator Actions | size=12 font=bold'
-puts "-- ▶️ Run Intake Pipeline Now | bash=#{pipeline_bin} param0=intake terminal=true size=11"
+puts "-- ⏸️ Halt Pipeline (Finish Active) | bash=#{pipeline_bin} param0=pause terminal=false refresh=true size=11"
+puts "-- 🛑 Stop Active Task Immediately | bash=#{pipeline_bin} param0=stop terminal=false refresh=true size=11"
+puts "-- ▶️ Resume Pipeline | bash=#{pipeline_bin} param0=resume terminal=false refresh=true size=11"
+puts "-- ⚡ Process Single Oldest (FIFO -1) | bash=#{pipeline_bin} param0=intake param1=-1 terminal=true size=11"
+puts "-- ▶️ Run Intake Pipeline Batch | bash=#{pipeline_bin} param0=intake terminal=true size=11"
 puts "-- 📡 Start Realtime SSE Streamer | bash=#{pipeline_bin} param0=stream terminal=true size=11"
 puts "-- 👀 Continuous Queue Watcher | bash=#{pipeline_bin} param0=intake param1=--watch terminal=true size=11"
 puts "-- 🎭 Stage Episode 00 (Dry Run) | bash=#{pipeline_bin} param0=stage param1=0 terminal=true size=11"

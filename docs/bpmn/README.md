@@ -18,6 +18,12 @@ The executable BPMN definition is maintained canonically at:
 [`docs/bpmn/media-intake-pipeline.bpmn`](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/bpmn/media-intake-pipeline.bpmn)
 
 ### Process Topology & Swimlanes
+The ingress queue supports a staged hold directory (`staged/`) alongside the execution queues (`pending/`, `processing/`, `processed/`, `failed/`). Files backed up to `staged/` are safely preserved on Google Drive without triggering automated ingestion until explicitly moved into `pending/`.
+
+#### Concurrency & Serialization Policy (Localhost Resource Protection)
+To protect localhost CPU, RAM, and Apple Silicon Neural Engine headroom, intake execution is strictly serialized:
+1. **One Video at a Time Across All Channels**: The `processing/` directory across all channels and targets admits exactly one video at any given moment. If any video is actively processing anywhere, the pipeline refuses to begin another file until the active run finishes and archives or quarantines.
+2. **Oldest-First FIFO Discipline**: When multiple pending files exist, candidates across all channels are ordered by filesystem ingress age (APFS creation time / birthtime, falling back to modification time). The single oldest file is always processed first.
 
 ```mermaid
 sequenceDiagram
