@@ -1,11 +1,23 @@
 # Ramblin' & Amblin' Proposed Topics & Field Prompts
 
 > **Channel**: Ramblin' & Amblin' (@whoistechcmty)
-> **Updated**: 2026-10-16 06:05 UTC
+> **Updated**: 2026-10-16 06:20 UTC
 > **Source**: Derived from Mike Hall's 20-year archive, writings, and interviews
 
-## Overview
+## Overview & Purpose
 Conversations on the move: engineering observations, personal history, systems architecture, and practitioner reflections recorded during walks, train rides, and field dispatches.
+
+## Broadcast Intro & Outro Structure
+
+### Grounded Intro Structure (0:00 - 1:00)
+- **Setting & Atmosphere**: Ground the listener immediately in where you are (trail, commuter platform, downtown corridor).
+- **The Inciting Spark**: Introduce the specific real-world event, observation, or question that prompted this reflection within the first 60 seconds.
+- **Core Inquiry**: State the guiding inquiry directly so the premise and focus are crystal clear right away.
+
+### Clear Takeaway Outro Structure (Closing 1 - 2 minutes)
+- **Grounded Synthesis**: Bring the freeform observation back to a durable engineering principle.
+- **Actionable Takeaway**: Provide one concrete takeaway the viewer can apply to their daily engineering craft, team architecture, or career sustainability.
+- **Grounded Sign-off**: Warm, unvarnished parting thought ('Keep your feedback loops fast, keep walking, and verify your code').
 
 ---
 

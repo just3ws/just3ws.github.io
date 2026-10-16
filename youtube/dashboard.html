@@ -2185,6 +2185,14 @@ body_class: page-youtube-dashboard
             <div style="font-size: 0.72rem; color: #64748b; margin-bottom: 0.4rem;">
               Archived: <code style="font-family: ui-monospace, monospace; background: #e2e8f0; padding: 0.1rem 0.3rem; border-radius: 0.2rem;">${item.archive_path || 'processed/'}</code>
             </div>
+            ${item.performance_metrics && item.performance_metrics.duration_total_seconds ? `
+              <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 0.25rem; padding: 0.35rem 0.5rem; margin-top: 0.35rem; margin-bottom: 0.4rem; font-size: 0.68rem; color: #334155; display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: space-between;">
+                <span>⏱️ <strong>${item.performance_metrics.duration_total_seconds}s</strong></span>
+                <span>🎙️ DSP: ${item.performance_metrics.duration_audio_extract_seconds || 0}s</span>
+                <span>🧠 STT: ${item.performance_metrics.duration_transcription_seconds || 0}s</span>
+                <span>🚀 Upload: ${item.performance_metrics.duration_upload_seconds || 0}s (${item.performance_metrics.upload_throughput_mb_s || 0} MB/s)</span>
+              </div>
+            ` : ''}
             ${item.video_id ? `
               <div style="margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid #dcfce7; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
                 <a href="${item.youtube_url || ('https://youtu.be/' + item.video_id)}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.3rem; background: #ef4444; color: #ffffff; padding: 0.3rem 0.6rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; text-decoration: none;">
@@ -2507,7 +2515,7 @@ body_class: page-youtube-dashboard
       ep = {
         number: 0,
         interviewee: "Mike Hall",
-        conference: "Preparatory Pilot / Forensic Audio Experiment",
+        conference: "Northern Illinois Field Dispatch",
         year: 2026,
         era_name: "The AI Horizon",
         chicago_context: "Echoes early Chicago craftsmanship: empirical, reproducible tests over vendor claims.",
@@ -2652,7 +2660,7 @@ body_class: page-youtube-dashboard
         number: 0,
         title: "The Mirage of Competence: AI Slop & Domain Boundaries",
         interviewee: "Mike Hall",
-        conference: "Preparatory Pilot / Forensic Audio Experiment",
+        conference: "Northern Illinois Field Dispatch",
         year: 2026,
         location: "Crystal Lake / High-Tension Wires",
         era_name: "The AI Horizon",
@@ -2825,7 +2833,7 @@ body_class: page-youtube-dashboard
         number: 0,
         title: "The Mirage of Competence: AI Slop & Domain Boundaries",
         interviewee: "Mike Hall",
-        conference: "Preparatory Pilot / Forensic Audio Experiment",
+        conference: "Northern Illinois Field Dispatch",
         year: 2026,
         location: "Crystal Lake / High-Tension Wires",
         era_name: "The AI Horizon",

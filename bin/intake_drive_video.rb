@@ -495,6 +495,13 @@ class MediaIntakePipeline
     @current_original_path = file_path
     @current_scratch_files = [scratch_wav, "#{scratch_prefix}.txt", "#{scratch_prefix}.vtt"]
 
+    t_start = Time.now
+    duration_dsp = 0.0
+    duration_whisper = 0.0
+    duration_meta = 0.0
+    duration_upload = 0.0
+    duration_captions = 0.0
+
     begin
       if self.class.stopped? || @stop_requested
         puts "🛑 Stop detected before audio extraction. Aborting #{filename}..."
@@ -504,8 +511,10 @@ class MediaIntakePipeline
 
       # 3. Audio Extraction via ffmpeg stream
       puts "🎙 Extracting audio track to transient scratch WAV..."
+      t_dsp_start = Time.now
       extract_audio(processing_path, scratch_wav)
-      log_activity('dsp', "Extracted 16kHz audio from #{filename} to transient scratch", level: 'info', details: { 'filename' => filename })
+      duration_dsp = (Time.now.-(t_dsp_start)).round(2)
+      log_activity('dsp', "Extracted 16kHz audio from #{filename} in #{duration_dsp}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_dsp })
 
       if self.class.stopped? || @stop_requested
         puts "🛑 Stop detected after audio extraction. Aborting #{filename}..."
@@ -517,8 +526,10 @@ class MediaIntakePipeline
       transcript_data = { text: "", vtt: "" }
       if target_info['auto_title_from_speech'] || target_info['transcribe_with_whisper']
         puts "🧠 Running local whisper.cpp speech recognition on Apple Silicon..."
+        t_whisper_start = Time.now
         transcript_data = transcribe_audio(scratch_wav, scratch_prefix)
-        log_activity('whisper', "Whisper STT completed for #{filename} on Apple Silicon", level: 'info', details: { 'filename' => filename })
+        duration_whisper = (Time.now.-(t_whisper_start)).round(2)
+        log_activity('whisper', "Whisper STT completed for #{filename} in #{duration_whisper}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_whisper })
       end
 
       if self.class.stopped? || @stop_requested
@@ -528,8 +539,10 @@ class MediaIntakePipeline
       end
 
       # 5. Metadata Synthesis & Dossier Resolution
+      t_meta_start = Time.now
       metadata = synthesize_metadata(processing_path, target_name, target_info, transcript_data, sidecar_data)
-      log_activity('metadata', "Synthesized title: \"#{metadata[:title]}\"", level: 'info', details: { 'filename' => filename, 'title' => metadata[:title] })
+      duration_meta = (Time.now.-(t_meta_start)).round(2)
+      log_activity('metadata', "Synthesized title: \"#{metadata[:title]}\" (#{duration_meta}s)", level: 'info', details: { 'filename' => filename, 'title' => metadata[:title], 'duration_seconds' => duration_meta })
       puts "\n📋 Synthesized Metadata:"
       puts "   Title:    #{metadata[:title]}"
       puts "   Privacy:  #{metadata[:privacy]}"
@@ -560,6 +573,7 @@ class MediaIntakePipeline
           }
         }
         upload_res = nil
+        t_upload_start = Time.now
         3.times do |attempt|
           begin
             upload_res = client.upload_video(processing_path, payload)
@@ -575,10 +589,11 @@ class MediaIntakePipeline
             end
           end
         end
+        duration_upload = (Time.now.-(t_upload_start)).round(2)
         video_id = upload_res["id"]
-        puts "✅ Video uploaded successfully! Video ID: #{video_id}"
+        puts "✅ Video uploaded successfully in #{duration_upload}s! Video ID: #{video_id}"
         puts "   Link: https://youtu.be/#{video_id}"
-        log_activity('youtube', "Uploaded #{filename} to YouTube as #{video_id}", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'url' => "https://youtu.be/#{video_id}" })
+        log_activity('youtube', "Uploaded #{filename} to YouTube as #{video_id} in #{duration_upload}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload })
 
         # 7. Add to Playlist
         if target_info['playlist_id']
@@ -589,10 +604,12 @@ class MediaIntakePipeline
         # 8. Attach Captions Track (WebVTT)
         if transcript_data[:vtt] && !transcript_data[:vtt].strip.empty?
           puts "📝 Uploading verified WebVTT caption track to YouTube..."
+          t_cap_start = Time.now
           3.times do |attempt|
             begin
               client.upload_caption(video_id, transcript_data[:vtt])
-              log_activity('captions', "Uploaded WebVTT captions track to video #{video_id}", level: 'info', details: { 'filename' => filename, 'video_id' => video_id })
+              duration_captions = (Time.now.-(t_cap_start)).round(2)
+              log_activity('captions', "Uploaded WebVTT captions track to video #{video_id} in #{duration_captions}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'duration_seconds' => duration_captions })
               break
             rescue StandardError => cap_err
               if attempt < 2
@@ -626,6 +643,21 @@ class MediaIntakePipeline
         FileUtils.mv(processing_path, final_dest)
         FileUtils.mv(sidecar_path, File.join(month_dir, File.basename(sidecar_path))) if sidecar_path && File.exist?(sidecar_path)
 
+        t_end = Time.now
+        duration_total = (t_end.-(t_start)).round(2)
+        final_size_bytes = (File.size(final_dest) rescue 0)
+        upload_mb_s = (duration_upload > 0 && final_size_bytes > 0) ? ((final_size_bytes.to_f / 1024 / 1024) / duration_upload).round(2) : 0.0
+
+        perf_metrics = {
+          'duration_total_seconds' => duration_total,
+          'duration_audio_extract_seconds' => duration_dsp,
+          'duration_transcription_seconds' => duration_whisper,
+          'duration_metadata_seconds' => duration_meta,
+          'duration_upload_seconds' => duration_upload,
+          'duration_captions_seconds' => duration_captions,
+          'upload_throughput_mb_s' => upload_mb_s
+        }
+
         receipt_path = "#{final_dest}.receipt.json"
         receipt_data = {
           'filename' => filename,
@@ -636,12 +668,31 @@ class MediaIntakePipeline
           'series_name' => target_info['series_name'],
           'privacy' => target_info['default_privacy'],
           'archived_at' => Time.now.utc.iso8601,
-          'size_bytes' => (File.size(final_dest) rescue 0)
+          'size_bytes' => final_size_bytes,
+          'performance_metrics' => perf_metrics
         }
         File.write(receipt_path, JSON.pretty_generate(receipt_data))
         puts "📦 Archived: Moved to processed/#{Time.now.strftime('%Y-%m')}/#{filename}"
         puts "📄 Ingress Receipt written: #{File.basename(receipt_path)}"
-        log_activity('archive', "Successfully deployed #{filename} to YouTube (#{video_id}) and archived master", level: 'success', details: { 'filename' => filename, 'video_id' => video_id, 'playlist' => target_info['playlist_id'], 'url' => "https://youtu.be/#{video_id}" })
+        puts "⏱️ Execution Telemetry: Total #{duration_total}s (DSP: #{duration_dsp}s, Whisper: #{duration_whisper}s, Upload: #{duration_upload}s at #{upload_mb_s} MB/s)"
+
+        begin
+          hist_file = File.join(state_dir, 'pipeline_execution_history.jsonl')
+          File.open(hist_file, 'a') do |hf|
+            hf.puts(JSON.dump({
+              'timestamp' => Time.now.utc.iso8601,
+              'filename' => filename,
+              'video_id' => video_id,
+              'target' => target_name,
+              'size_bytes' => final_size_bytes,
+              'performance_metrics' => perf_metrics
+            }))
+          end
+        rescue StandardError => hist_err
+          warn "⚠️ Could not record execution history: #{hist_err.message}"
+        end
+
+        log_activity('archive', "Successfully deployed #{filename} to YouTube (#{video_id}) and archived master in #{duration_total}s", level: 'success', details: { 'filename' => filename, 'video_id' => video_id, 'playlist' => target_info['playlist_id'], 'url' => "https://youtu.be/#{video_id}", 'performance_metrics' => perf_metrics })
       end
 
       true
@@ -696,7 +747,7 @@ class MediaIntakePipeline
           tags << dossier['conference'] if dossier['conference']
 
           desc_lines = []
-          desc_lines << "The Sound Above: UGtastic Oral History Rewatch (Episode #{ep_num})"
+          desc_lines << "The Sound Above: UGtastic Technical Rewatch Series (Episode #{ep_num})"
           desc_lines << "Featuring #{guest_name} at #{dossier['conference']} (#{dossier['year']})" if guest_name
           desc_lines << ""
           desc_lines << dossier.dig('narrative', 'core_inquiry') if dossier.dig('narrative', 'core_inquiry')

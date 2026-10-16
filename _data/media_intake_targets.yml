@@ -17,10 +17,14 @@ channels:
       ramblin-amblin:
         playlist_id: "PLNtb969T2-l0"
         series_name: "Ramblin' & Amblin'"
+        archetype: "freeform_field_notes"
+        purpose: "Freeform field notes recorded on the move: engineering observations, systems architecture, career longevity, and practitioner reflections."
         default_privacy: "unlisted"
         category_id: "28"
         auto_title_from_speech: true
         title_prefix: "Ramblin' & Amblin'"
+        intro_structure: "State setting and location immediately; introduce the spark or observation that triggered the reflection within 60 seconds; frame the core inquiry."
+        outro_structure: "Synthesize the freeform reflection back to a durable engineering principle; provide an actionable takeaway for daily craft or career resilience; grounded sign-off."
         tags:
           - "Software Craftsmanship"
           - "Ramblin and Amblin"
@@ -38,17 +42,21 @@ channels:
       the-sound-above:
         playlist_id: "PLVcmLmfz2uyA"
         series_name: "The Sound Above"
+        archetype: "technical_rewatch"
+        purpose: "Structured 6-act rewatch broadcasts where Mike Hall revisits the 15-year UGtastic interview archive through the lens of modern Staff/Principal engineering, domain boundaries, and sovereign verification."
         default_privacy: "unlisted"
         category_id: "28"
         dossier_lookup: true
+        intro_structure: "Act 1 Cold Open & Personal Grounding: State the era and movement, introduce the guest, and share an unvarnished personal recollection from the room. Act 2: Historical scene setting."
+        outro_structure: "Act 6 Community Coda & Outro: Synthesize the enduring technical lesson for today's practitioner; provide independent compute underwriting Patreon callout (patreon.com/whoistechcmty); preview next episode; signature sign-off ('Keep your feedback loops fast, and your code humane')."
         tags:
           - "The Sound Above"
           - "Software Craftsmanship"
-          - "Oral History"
+          - "UGtastic Technical Rewatch Series"
           - "Chicago Software Craftsmanship"
           - "Engineering Ethics"
         description_template: |
-          The Sound Above: UGtastic Oral History Rewatch (Chicago Software Craftsmanship)
+          The Sound Above: UGtastic Technical Rewatch Series (Chicago Software Craftsmanship)
           Hosted by Mike Hall (Staff Software Engineer & SCMC Co-Founder)
 
           • Interactive Series Hub: https://www.just3ws.com/series/the-sound-above/
@@ -58,12 +66,16 @@ channels:
       errata:
         playlist_id: "PLKPAHha6I990"
         series_name: "The Sound Above: Errata"
+        archetype: "structured_errata"
+        purpose: "Solo technical demonstrations, forensic audio/DSP deep dives, code reviews, BPMN workflow walkthroughs, and edge-case postmortems exploring the mechanics behind the systems."
         default_privacy: "unlisted"
         category_id: "28"
+        intro_structure: "State the specific failure, vendor myth, or AI hallucination being examined; define the target objective and scope of inspection."
+        outro_structure: "Demonstrate the deterministic solution; provide verifiable test or code repository references; state the defensive rule of thumb to prevent the issue in production."
         tags:
           - "The Sound Above"
           - "Errata"
-          - "Audio Forensics"
+          - "Audio Recovery"
           - "DSP"
           - "Software Craftsmanship"
         description_template: |

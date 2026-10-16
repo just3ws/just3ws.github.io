@@ -470,13 +470,18 @@ class LiveDashboardStreamer
           'youtube_url' => receipt['youtube_url'] || (receipt['video_id'] ? "https://youtu.be/#{receipt['video_id']}" : nil),
           'title' => receipt['title'],
           'playlist_id' => receipt['playlist_id'] || target_info['playlist_id'],
-          'privacy' => receipt['privacy'] || target_info['default_privacy']
+          'privacy' => receipt['privacy'] || target_info['default_privacy'],
+          'performance_metrics' => receipt['performance_metrics'] || {}
         }
       end
 
       target_stats[target_name] = {
         'series_name' => target_info['series_name'],
         'playlist_id' => target_info['playlist_id'],
+        'archetype' => target_info['archetype'],
+        'purpose' => target_info['purpose'],
+        'intro_structure' => target_info['intro_structure'],
+        'outro_structure' => target_info['outro_structure'],
         'default_privacy' => target_info['default_privacy'],
         'staged_count' => staged_files.size,
         'staged_items' => staged_files.map { |f| { 'filename' => File.basename(f), 'size_bytes' => (File.size(f) rescue 0) } },

@@ -11,6 +11,22 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - ARCHETYPE-MAPPED SCRIPT STRUCTURES, EXECUTION PERFORMANCE TELEMETRY & EDITORIAL SKILLS (2026-10-16):
+         Mapped media pipelines to distinct purpose-driven archetypes, instrumented high-resolution performance telemetry, and established dedicated scriptwriting and editorial skills:
+         - Purpose-Driven Archetype Mapping (`_data/media_intake_targets.yml`, `bin/intake_drive_video.rb`, `bin/sync_topic_prompts.rb`):
+           - Defined four distinct video archetypes: `freeform_field_notes` (Ramblin' & Amblin'), `technical_rewatch` (The Sound Above 6-act curriculum), `structured_errata` (solo technical deep dives), and historical interviews.
+           - Codified grounded Intro structures (setting, inciting spark, and core inquiry within 0:00 - 1:00) and Outro structures (durable principle synthesis, actionable practitioner takeaway, and sign-off).
+           - Replaced stilted "Forensic Audio Experiment" with practitioner-honest **"Northern Illinois Field Dispatch"** across dossiers, overlays, schedules, and dashboard states.
+         - High-Resolution Pipeline Performance Telemetry:
+           - Instrumented `bin/intake_drive_video.rb` with stage duration timers: audio DSP extraction, whisper.cpp speech recognition, metadata synthesis, resumable YouTube upload, and WebVTT caption insertion.
+           - Computed upload throughput in MB/s, recorded metrics in `.receipt.json` files and `~/.local/state/just3ws/pipeline_execution_history.jsonl`.
+           - Exposed live performance metrics via streamer daemon (`/telemetry.json`, `/status`) and rendered real-time performance breakdown badges on processed cards in `youtube/dashboard.html`.
+         - Dedicated Media Production Skills:
+           - Established `.agents/skills/technical-scriptwriter/SKILL.md`: authoring cadenced spoken teleprompter rundowns, narrative plotting, intro hooks, and takeaways in Mike Hall's authentic voice.
+           - Established `.agents/skills/editorial-fact-checker/SKILL.md`: verifying technical claims, conference dates, software names, and audio/DSP contracts against ground truth and CareerOS datalake.
+           - Registered skills in `AGENTS.md`.
+         - All validation gates passing cleanly: `validate:fast`, `validate:obs` (46/46 assertions), `stage:all` (38/38 episodes), and `rspec` (211/211 tests). Zero em-dash compliance maintained.
+
        - NATURAL VOICE TELEPROMPTER SCRIPTS, EPISODE CALIBRATION & TOPIC PROMPT SYNC (2026-10-16):
          Crafted authentic, practitioner-honest spoken teleprompter scripts, calibrated episode titles, and automated Google Drive topic prompt synchronization:
          - Grounded Teleprompter Voice Architecture (`bin/generate_sound_above_teleprompter.rb`, `bin/episode_workbench.rb`, `youtube/dashboard.html`):
@@ -678,10 +694,13 @@ a hold, not an invitation to invent a smoother explanation.
 19. `public-surface-auditor` ✓ - Audit the rendered public boundary for privacy, provenance, quarantine, and internal topology leaks before publication.
 20. `tmi-auditor` ✓ - Audit public-facing content for oversharing, discrimination-vector signals, and PII/PHI exposure.
 21. `canonical-surface-steward` ✓ - Keep canonical identity, shorthand, agents, skills, documentation, CLI help, validators, and generated surfaces synchronized.
-22. `oral-history-broadcaster` ✓ - Direct, validate, cue, and audit live oral history rewatch broadcasts, OBS Studio production scene contracts, dynamic HTML overlays, and "Sound Above" commentary arcs across the UGtastic and Chicago Software Craftsmanship corpus.
+22: `oral-history-broadcaster` / `technical-rewatch-broadcaster` ✓ - Direct, validate, cue, and audit live UGtastic technical rewatch broadcasts, OBS Studio production scene contracts, dynamic HTML overlays, and commentary arcs across the UGtastic and Chicago Software Craftsmanship corpus.
 23. `patreon-integrator` ✓ - Connect to Patreon API v2, manage campaign tiers, track recurring compute funding, and format closing credit attributions for The Sound Above broadcasts.
 24. `ponytail` ✓ - Audit code, designs, and architectural proposals against premature technical debt, cutting speculative abstractions and enforcing explicit "# ponytail:" markers.
 25. `media-pipeline-operator` ✓ - Operate, monitor, and audit the zero-disk-waste media intake and YouTube publishing pipeline across all channels and playlists, managing Maildir queues, Concurrency Locks, FIFO order, SSE telemetry, SwiftBar status, and BPMN SLO compliance.
+26. `technical-scriptwriter` ✓ - Author and structure authentic spoken teleprompter rundowns, narrative plotting, intro hooks, and actionable outro takeaways across all media archetypes.
+27. `editorial-fact-checker` ✓ - Audit and verify technical claims, historical dates, conference venues, software names, and audio/DSP contracts against ground truth across video scripts, dossiers, and site documentation.
+28. `career-datalake-researcher` ✓ - Query the local knowledge system, video transcripts, and CareerOS datalake across 218 transcribed interviews, 28 engineering roles, 185 writings, and 132 technologies.
 
 
 ## Career Datalake & MCP Server Interface

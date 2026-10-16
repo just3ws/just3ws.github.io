@@ -1,11 +1,21 @@
 # The Sound Above (Errata) Proposed Topics & Deep-Dive Prompts
 
 > **Channel**: The Sound Above: Errata (@whoistechcmty)
-> **Updated**: 2026-10-16 06:05 UTC
+> **Updated**: 2026-10-16 06:20 UTC
 > **Source**: Derived from Mike Hall's 20-year archive, writings, and interviews
 
-## Overview
+## Overview & Purpose
 Solo technical demonstrations, deep-dive forensic walkthroughs, audio restoration experiments, code reviews, and edge-case postmortems exploring the mechanics behind the systems.
+
+## Broadcast Intro & Outro Structure
+
+### Grounded Intro Structure (0:00 - 1:00)
+- **The Problem / AI Hallucination**: State the exact failure mode, vendor myth, or LLM hallucination being investigated within the first 60 seconds.
+- **Scope of Inspection**: Define the exact artifacts, data boundaries, and code interfaces being inspected today.
+
+### Clear Takeaway Outro Structure (Closing 1 - 2 minutes)
+- **Deterministic Solution**: Demonstrate the verified, working solution or filter with exact reproducible steps.
+- **Defensive Rule of Thumb**: Provide the core engineering takeaway to prevent this failure in production, with direct links to repository code on just3ws.com.
 
 ---
 
