@@ -1,7 +1,7 @@
 # The Sound Above (Errata) Proposed Topics & Deep-Dive Prompts
 
 > **Channel**: The Sound Above: Errata (@whoistechcmty)
-> **Updated**: 2026-10-16 06:20 UTC
+> **Updated**: 2026-10-16 13:45 UTC
 > **Source**: Derived from Mike Hall's 20-year archive, writings, and interviews
 
 ## Overview & Purpose
@@ -69,19 +69,19 @@ Solo technical demonstrations, deep-dive forensic walkthroughs, audio restoratio
 
 ---
 
-### Prompt 4: Errata: Debugging Unbuffered Server-Sent Events (SSE) Through Nginx
+### Prompt 4: Errata: The Maildir Pattern for Video Intake: Preventing File Corruption & Stale Locks
 
-- **ID**: `errata-nginx-unbuffered-sse-daemon`
-- **Location / Setting**: Systems Networking & Realtime Web Telemetry
-- **Core Inquiry**: Building zero-dependency near-realtime telemetry daemons without WebSockets or heavy framework overhead.
+- **ID**: `errata-maildir-queue-resilience`
+- **Location / Setting**: Systems Architecture & File-Based State Machines
+- **Core Inquiry**: Why complex message brokers fail for single-operator media production, and how Maildir directories guarantee crash recovery.
 
 #### Talking Points & Narrative Arcs:
-1. Why WebSockets are often overkill for one-way server-to-client telemetry.
-1. The nginx buffering trap: proxy_buffering off and chunked_transfer_encoding off requirements.
-1. Writing a pure Ruby SSE server using TCPServer and Thread.new in under 300 lines.
-1. Handling client disconnects, broadcast keepalives, and instant queue state updates.
+1. The Maildir architecture: staged, pending, processing, processed, and failed queues.
+1. Multi-sample interval verification to detect files still uploading over cellular or Wi-Fi.
+1. FIFO ordering using filesystem birthtime (btime) to prevent queue starvation.
+1. Automated crash recovery: daemon background watchers auditing worker PID liveness and restoring stranded processing files to pending.
 
-- **Demonstration Artifacts**: bin/live_dashboard_streamer.rb, nginx/just3ws.localhost.conf
+- **Demonstration Artifacts**: bin/intake_drive_video.rb, bin/live_dashboard_streamer.rb, ~/.local/state/just3ws/pipeline.pid
 
 ---
 
@@ -92,10 +92,10 @@ Solo technical demonstrations, deep-dive forensic walkthroughs, audio restoratio
 - **Core Inquiry**: Using formal BPMN 2.0 swimlanes, boundary error events, and SLO tripwires for single-operator pipelines.
 
 #### Talking Points & Narrative Arcs:
-1. The Maildir pattern: staged, pending, processing, processed, and failed directories.
 1. Modeling 12 discrete service tasks from stability check to YouTube caption upload.
 1. Defining strict Service Level Objectives (SLOs) and incident tripwires for audio DSP and cloud streaming.
 1. Embedding interactive BPMN execution monitors in localhost dashboards.
+1. Connecting live Server-Sent Events (SSE) telemetry to animated BPMN step transitions.
 
 - **Demonstration Artifacts**: docs/bpmn/media-intake-pipeline.bpmn, docs/bpmn/README.md, youtube/dashboard.html (#tab-bpmn)
 

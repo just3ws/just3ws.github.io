@@ -20,117 +20,117 @@ PROMPTS_DOCS_DIR = File.join(ROOT_DIR, 'docs', 'prompts')
 
 RAMBLIN_TOPICS = [
   {
-    id: "ogilvie-lost-and-found",
-    title: "The Ogilvie Lost & Found: Physical Tools vs. Digital Resilience",
-    location_suggestion: "Ogilvie Transportation Center / Metra Train Platform, Chicago",
-    historical_anchor: "Losing the original UGtastic recording bag, camera, tripod, and microphone on the train; checking the station lost and found daily for weeks.",
-    core_inquiry: "What happens when your physical tools vanish overnight? How do you distinguish between disposable gear and permanent discipline?",
+    id: "the-unspoken-debt-patreon-and-support",
+    title: "The Unspoken Debt: Early Patreon Backers & The Burden of Support",
+    location_suggestion: "Quiet wooded path or suburban neighborhood walk",
+    historical_anchor: "The 2014-2015 UGtastic Patreon campaign and GoFundMe for Final Cut Pro X (ugtastic-patreon, ugtastic-fcp), where community members stepped up to fund the work, but personal burnout and mental health struggles made the operational weight overwhelming before having the chance to thank them properly.",
+    core_inquiry: "What happens when community goodwill meets personal burnout? How do you carry the emotional weight of support when you are struggling to keep your head above water, and how do you honor that debt ten years later?",
     talking_points: [
-      "The panic of realizing the camera bag was left on the train seat after a long recording day.",
-      "Visiting the Ogilvie lost and found counter every morning during the morning commute.",
-      "The realization that footage without backups is fragile, leading to the Maildir-style ingestion pattern.",
-      "Tools come and go: what endures is the network of relationships and the habit of showing up."
+      "The vulnerability of launching the Patreon and GoFundMe in 2014 to cover camera gear, travel, and editing licenses.",
+      "The immediate generosity: community members, conference attendees, and peers stepping up to pledge monthly support per episode.",
+      "The psychological weight: how receiving financial support can feel like an impossible promise when navigating deep personal struggles, depression, and neurodivergent burnout.",
+      "Stepping away from the microphone without having the emotional bandwidth to say a proper thank you or explain why the lights went out.",
+      "Returning to the archive now: recognizing that those patrons were not asking for perfection, they just believed in preserving the community's story."
     ],
-    concepts: ["Resilience", "Physical Tools", "Backup Habits", "Metra Commute", "UGtastic Lineage"]
+    concepts: ["Patreon Support", "Community Debt", "Burnout", "Vulnerability", "Unspoken Gratitude"]
   },
   {
-    id: "production-incidents-sre-window",
-    title: "Production Incidents & The Fleeting SRE Window",
-    location_suggestion: "Downtown Chicago Loop or urban transit corridor",
-    historical_anchor: "Reflections on acute production outages across high-traffic consumer systems and SaaS platforms.",
-    core_inquiry: "Why does acute production crisis unite engineering teams, and why does that architectural window slam shut so quickly?",
+    id: "carrying-the-camera-alone",
+    title: "Carrying the Camera Alone: The Solitary Listener in Crowded Hallways",
+    location_suggestion: "Metra platform or urban conference district walkway",
+    historical_anchor: "Hauling heavy camera bags, wireless lavaliers, tripods, and laptops alone through GOTO Chicago, SCNA, and RailsConf hallways from 2011 to 2015 to record over 200 technical interviews without an assistant or production crew.",
+    core_inquiry: "What is the physical and emotional reality of being the sole documentarian at technical conferences, and why is listening often the loneliest job in the room?",
     talking_points: [
-      "The psychological shift during an active Sev-1 incident: all political posturing evaporates.",
-      "Leadership suddenly pays attention to database connection pools, queue depths, and circuit breakers.",
-      "The 72-hour golden window: how experienced Staff engineers use post-incident reviews to secure permanent architectural fixes.",
-      "The danger of returning to business as usual before systemic friction is eliminated."
+      "The physical toll: hauling 35 pounds of recording equipment between crowded conference rooms on zero sleep.",
+      "The sharp contrast: being surrounded by 800 animated engineers while operating as a solitary, detached observer behind the lens.",
+      "The discipline of active listening: suppressing your own ego to help the guest articulate what made their work meaningful.",
+      "Why grassroots oral history matters more than commercial marketing: catching developers in their authentic, unvarnished state."
     ],
-    concepts: ["Production Incidents", "SRE", "Architectural Windows", "Staff Leadership", "Blameless Postmortems"]
+    concepts: ["Grassroots Documentation", "Solitary Observer", "Conference Hallways", "Active Listening", "Physical Toll"]
   },
   {
-    id: "diesel-mechanics-to-distributed-systems",
-    title: "From Diesel Mechanics to Distributed Systems: Sensory Troubleshooting",
-    location_suggestion: "Industrial corridor, rail yard, or highway overpass",
-    historical_anchor: "Early trade background working on heavy equipment, engines, and mechanical systems before entering software.",
-    core_inquiry: "How does wrenching on diesel engines and hydraulic systems train your mind for distributed software architecture?",
+    id: "founding-cdg-suburban-void",
+    title: "The Suburban Void & The SCNA Table: Launching CDG in 2009",
+    location_suggestion: "Duke's Alehouse exterior or quiet park, Crystal Lake",
+    historical_anchor: "Living 50 miles outside Chicago in McHenry County with zero technical groups; walking up to Ryan Gerry at an SCNA 2009 table and discovering they lived 15 minutes apart in the northwest suburbs.",
+    core_inquiry: "How does physical geography isolate suburban software developers, and what does it take to create a technical gravity well from scratch without corporate backing?",
     talking_points: [
-      "Listening to an engine under load: you hear bearing knock and vacuum leaks before diagnostic codes throw.",
-      "Distributed systems exhibit the exact same physical dynamics: backpressure, bottlenecks, and heat.",
-      "Why sensory, intuitive systems debugging beats abstract ivory-tower theory every time.",
-      "Respecting the trade crafts: why software development is closer to skilled trades than academic computer science."
+      "The isolation of being an enterprise developer in the outer suburbs before remote work existed.",
+      "The chance encounter at SCNA 2009: asking Ryan Gerry where he lived and discovering a neighbor in McHenry County.",
+      "The scrappy inception: gathering for Cloud Developers Group in Panera Bread backrooms, public libraries, and upstairs at Duke's Alehouse.",
+      "The lesson for organizers: you do not wait for permission or corporate sponsorship to create the room you need."
     ],
-    concepts: ["Trades Lineage", "Mechanical Empathy", "Backpressure", "Troubleshooting", "Grounded Craft"]
+    concepts: ["Suburban Isolation", "Ryan Gerry", "CDG", "Grassroots Inception", "Duke's Alehouse"]
   },
   {
-    id: "typing-is-not-the-bottleneck",
-    title: "The Dell Studio XPS Laptop & 'Typing is Not the Bottleneck'",
-    location_suggestion: "Suburban park path or coffee shop patio",
-    historical_anchor: "The 2009 Obtiva .NET client engagement carrying the Dell Studio XPS PP35L OLED laptop with the monkey typing sticker.",
-    core_inquiry: "Why has typing never been the bottleneck in software development, and what does that mean in the generative AI era?",
+    id: "8th-light-pair-friday-libertyville",
+    title: "Carl Sagan in Libertyville: The Cultural Shock of Pair Friday (2008)",
+    location_suggestion: "Quiet street or office park, Lake County",
+    historical_anchor: "Stepping into 8th Light's second-floor Libertyville office in late 2008 for Pair Friday, pairing with Micah Martin, Colin Jones, Eric Smith, and Eric Meyer on open-source code.",
+    core_inquiry: "What happened when an enterprise .NET developer walked into a room where craftsmen paired in Vim to Carl Sagan remixes, and how did that redefine software as a craft?",
     talking_points: [
-      "The physical artifact: that heavy Studio XPS laptop running early .NET and Vim.",
-      "The iconic sticker: a cartoon monkey hammering a keyboard, reminding everyone that keystrokes are cheap.",
-      "If typing was not the bottleneck in 2009, generating tokens is certainly not the bottleneck in 2026.",
-      "The real work is reading, framing the boundary, validating assumptions, and deleting unnecessary lines."
+      "The stark culture shock between enterprise IT compliance cubicles and the open communal tables of Libertyville.",
+      "MelodySheep's Carl Sagan remixes playing in the background while developers wrote RSpec tests in terminal windows.",
+      "Seeing the apprenticeship model live: experienced craftsmen guiding apprentices through deliberate practice and immediate feedback.",
+      "The realization that software development was not a bureaucratic compliance exercise, but an honorable, disciplined trade."
     ],
-    concepts: ["Obtiva Era", "Typing Bottleneck", "Token Generation", "Software as Writing", "Discipline"]
+    concepts: ["8th Light", "Pair Friday", "Libertyville", "Apprenticeship", "Cultural Shift"]
   },
   {
-    id: "the-ponytail-principle",
-    title: "The Ponytail Principle: Climbing the Complexity Ladder from the Ground",
-    location_suggestion: "Woodland trail, Veteran Acres, or nature preserve",
-    historical_anchor: "Developing the 4-rung complexity ladder to prevent premature technical debt across local-first platforms.",
-    core_inquiry: "How do you protect your codebase from over-engineering without sacrificing long-term extensibility?",
+    id: "ray-hightower-suburban-diner",
+    title: "Ray Hightower at the Suburban Diner: The Generosity of an Ambassador (2008)",
+    location_suggestion: "Roadside diner, commuter stop, or coffee counter",
+    historical_anchor: "Meeting ChicagoRuby founder Ray Hightower at Midway Restaurant between offices while working as remote Principal Developer at BDI.",
+    core_inquiry: "What makes a true community ambassador, and how can a single 30-minute act of unconditional generosity alter an engineer's career trajectory?",
     talking_points: [
-      "Rung 1 (Omission): If you do not write the speculative feature, it carries zero maintenance taxes.",
-      "Rung 2 (Inlining): Constants over dynamic configs. Sane defaults directly in place.",
-      "Rung 3 (Standard Library): Language built-ins before reaching for heavy third-party gems or frameworks.",
-      "Rung 4 (Annotated Seam): Mark deliberate shortcuts with '# ponytail:' so trade-offs remain visible.",
-      "Why solo operators and high-performing small teams rely on Rung 1 and 2 to outpace funded startups."
+      "Sitting down with Ray Hightower: zero sales pitch, zero corporate posturing, just pure technical generosity.",
+      "Ray opening his laptop to run Cucumber tests, showing how human and readable automated acceptance testing could be.",
+      "Ray pointing the way to 8th Light's open doors in Libertyville rather than trying to hoard or gatekeep knowledge.",
+      "The responsibility of senior practitioners: opening doors for newcomers without expecting anything in return."
     ],
-    concepts: ["Ponytail Principle", "YAGNI", "Simplicity", "Technical Debt", "Architecture Discipline"]
+    concepts: ["Ray Hightower", "ChicagoRuby", "Ambassadorship", "Cucumber", "Open Doors"]
   },
   {
-    id: "metra-commuter-geometry",
-    title: "The Metra Commuter Geometry: How Train Lines Built Chicago Craftsmanship",
-    location_suggestion: "Metra train car or suburban commuter platform (UP-NW line)",
-    historical_anchor: "Decades of daily commuting from McHenry County into downtown Chicago, reading technical books on the train.",
-    core_inquiry: "How did Chicago's radial commuter rail system shape the geography and culture of local software communities?",
+    id: "the-zero-dollar-conference",
+    title: "The Zero-Dollar Conference: Chicago Code Camp & Anonymized Merit (2010-2012)",
+    location_suggestion: "College campus courtyard or academic hallway",
+    historical_anchor: "Co-organizing Chicago Code Camp for 500+ attendees across 6 tracks on a $0 software budget; authoring the custom anonymized blind-review engine.",
+    core_inquiry: "Can high-caliber technical discourse flourish without corporate gatekeepers, expensive tickets, and speaker celebrity culture?",
     talking_points: [
-      "The 75-minute train ride: an uninterrupted cognitive sanctuary for reading SICP, Fowler, and Evans.",
-      "Connecting suburban practitioners in Crystal Lake, Barrington, and Libertyville with downtown Loop consultancies.",
-      "The contrast between West Coast suburban campus sprawl and Chicago's walkable, transit-linked community.",
-      "Why physical geography and commute geometry influence the durability of technical user groups."
+      "Delivering a 500-person multi-track Saturday conference on volunteer labor, static websites, and spotty university Wi-Fi.",
+      "Why blind review matters: stripping speaker names and corporate sponsors so talks were selected purely on merit.",
+      "Giving first-time speakers from local user groups the exact same platform as published keynote authors.",
+      "The contrast between an authentic practitioner gathering and a commercial vendor trade show."
     ],
-    concepts: ["Metra Commute", "Chicago Geography", "Focus Time", "Community Geometry", "Sovereign Time"]
+    concepts: ["Chicago Code Camp", "Blind Review", "Zero-Dollar Infrastructure", "Meritocracy", "Volunteer Organizing"]
   },
   {
-    id: "scmc-and-community-burnout",
-    title: "Co-Founding SCMC & The Reality of Community Burnout",
-    location_suggestion: "Quiet suburban neighborhood or park bench",
-    historical_anchor: "Co-founding Software Craftsmanship McHenry County (SCMC) with Tim Ottinger, coordinating monthly meetings and coding dojos.",
-    core_inquiry: "What does it really take to sustain a grassroots user group for years, and when is it time to let it transform?",
+    id: "scmc-17-year-torch",
+    title: "Handing Over the Torch: Ryan Gerry & The 17-Year Continuous Room",
+    location_suggestion: "Follett Software exterior or quiet suburban park",
+    historical_anchor: "Co-founding SCMC in 2010 with Ryan Gerry and Jim Suchy, stepping back when capacity waned, and watching Ryan sustain the group monthly for over 15 years.",
+    core_inquiry: "What does true community longevity look like, and how do you build a local institution that thrives long after the co-founder steps aside?",
     talking_points: [
-      "The early excitement of packing 25 developers into a suburban library room for hands-on kata exercises.",
-      "The invisible labor: buying pizza, setting up projectors, reminding speakers, and balancing family load.",
-      "The heartbreak of seeing attendance fluctuate and realizing you cannot carry a community alone.",
-      "Community leadership lessons: build self-sustaining rituals, distribute ownership early, and avoid savior complexes."
+      "The early momentum of SCMC: securing the meeting room at Follett Software Company and establishing the monthly kata habit.",
+      "The difficult personal realization: acknowledging when your own energy is depleted and trusting your partner to carry the mission forward.",
+      "Watching Ryan Gerry sustain the monthly cadence through corporate shifts, venue reconfigurations, and the COVID-19 pandemic.",
+      "The profound lesson of stewardship: the best things you build are the ones that continue to thrive without you."
     ],
-    concepts: ["SCMC", "Grassroots Organizing", "Burnout", "Community Health", "Tim Ottinger"]
+    concepts: ["SCMC", "Ryan Gerry", "Community Longevity", "Stewardship", "Letting Go"]
   },
   {
-    id: "without-zdots-there-was-nothing",
-    title: "Without zdots, There Was Nothing: Thirty Years of Personal Tooling",
-    location_suggestion: "Workstation desk or quiet outdoor setting",
-    historical_anchor: "The three-decade evolution of personal dotfiles, bare git worktrees, and shell automation powering the Panoramic View platform.",
-    core_inquiry: "Why is a disciplined personal OS the most durable career investment an engineer can make?",
+    id: "greg-baugues-mental-health",
+    title: "Greg Baugues & The Listener's Burden: Mental Health in Engineering (RailsConf 2014)",
+    location_suggestion: "Quiet walkway or conference center courtyard",
+    historical_anchor: "Interviewing Greg Baugues at RailsConf 2014 following his pioneering keynote talk on developer depression and bipolar disorder.",
+    core_inquiry: "Why was mental health tech's most closely guarded secret in 2014, and what is the emotional cost of holding space for others when struggling yourself?",
     talking_points: [
-      "The realization that companies, employers, and laptops change, but your mental models and terminal stay with you.",
-      "Structuring dotfiles into zdots, adots, vdots, and my: separating work-tenant secrets from personal platform.",
-      "Why keyboard ergonomics, tmux sessions, and shell aliases compound over decades of daily practice.",
-      "Maintaining cognitive sovereignty: never letting an enterprise IT vendor dictate your local environment."
+      "The electrified atmosphere at RailsConf 2014 when Greg Baugues stepped onto the stage to speak openly about depression and bipolar disorder.",
+      "The hallway interview: standing with the camera rolling, listening to the shared reality of struggle that so many engineers kept hidden.",
+      "The burden of the listener: absorbing the vulnerability of 200 interviewees while carrying undiagnosed neurodivergent and emotional strain.",
+      "Why sustainable engineering requires humane empathy, honest vulnerability, and dropping the mask of invulnerability."
     ],
-    concepts: ["zdots", "Personal OS", "Dotfiles", "Cognitive Sovereignty", "Long-Term Tooling"]
+    concepts: ["Greg Baugues", "Mental Health in Tech", "RailsConf 2014", "Empathy", "Vulnerability"]
   }
 ].freeze
 
@@ -186,19 +186,20 @@ ERRATA_TOPICS = [
     ]
   },
   {
-    id: "errata-nginx-unbuffered-sse-daemon",
-    title: "Errata: Debugging Unbuffered Server-Sent Events (SSE) Through Nginx",
-    focus: "Systems Networking & Realtime Web Telemetry",
-    core_inquiry: "Building zero-dependency near-realtime telemetry daemons without WebSockets or heavy framework overhead.",
+    id: "errata-maildir-queue-resilience",
+    title: "Errata: The Maildir Pattern for Video Intake: Preventing File Corruption & Stale Locks",
+    focus: "Systems Architecture & File-Based State Machines",
+    core_inquiry: "Why complex message brokers fail for single-operator media production, and how Maildir directories guarantee crash recovery.",
     talking_points: [
-      "Why WebSockets are often overkill for one-way server-to-client telemetry.",
-      "The nginx buffering trap: proxy_buffering off and chunked_transfer_encoding off requirements.",
-      "Writing a pure Ruby SSE server using TCPServer and Thread.new in under 300 lines.",
-      "Handling client disconnects, broadcast keepalives, and instant queue state updates."
+      "The Maildir architecture: staged, pending, processing, processed, and failed queues.",
+      "Multi-sample interval verification to detect files still uploading over cellular or Wi-Fi.",
+      "FIFO ordering using filesystem birthtime (btime) to prevent queue starvation.",
+      "Automated crash recovery: daemon background watchers auditing worker PID liveness and restoring stranded processing files to pending."
     ],
     demonstration_assets: [
+      "bin/intake_drive_video.rb",
       "bin/live_dashboard_streamer.rb",
-      "nginx/just3ws.localhost.conf"
+      "~/.local/state/just3ws/pipeline.pid"
     ]
   },
   {
@@ -207,10 +208,10 @@ ERRATA_TOPICS = [
     focus: "Enterprise Workflow Architecture & Observability",
     core_inquiry: "Using formal BPMN 2.0 swimlanes, boundary error events, and SLO tripwires for single-operator pipelines.",
     talking_points: [
-      "The Maildir pattern: staged, pending, processing, processed, and failed directories.",
       "Modeling 12 discrete service tasks from stability check to YouTube caption upload.",
       "Defining strict Service Level Objectives (SLOs) and incident tripwires for audio DSP and cloud streaming.",
-      "Embedding interactive BPMN execution monitors in localhost dashboards."
+      "Embedding interactive BPMN execution monitors in localhost dashboards.",
+      "Connecting live Server-Sent Events (SSE) telemetry to animated BPMN step transitions."
     ],
     demonstration_assets: [
       "docs/bpmn/media-intake-pipeline.bpmn",

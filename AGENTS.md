@@ -11,6 +11,24 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - REAL TIMELINE MEMORY PROMPTS, PATREON HISTORY & ARCHIVE RECOVERY (2026-10-16):
+         Re-anchored conversation topic prompts directly into authentic historical timeline events and emotional memory prompts across Google Drive intake targets:
+         - Grounded Timeline Memory Prompts (`bin/sync_topic_prompts.rb`, `docs/prompts/`, Google Drive):
+           - Curated 8 deeply grounded memory prompts for *Ramblin' & Amblin'*:
+             1. *The Unspoken Debt: Early Patreon Backers & The Burden of Support* (the 2014-2015 UGtastic Patreon campaign and GoFundMe for FCPX, community members stepping up to fund the series, the crushing weight of navigating depression/burnout while accepting support, and honoring that debt ten years later).
+             2. *Carrying the Camera Alone: The Solitary Listener in Crowded Hallways* (hauling 35 pounds of camera gear through SCNA, GOTO Chicago, and RailsConf alone; the contrast between 800 animated engineers and the quiet solitude behind the lens).
+             3. *The Suburban Void & The SCNA Table: Launching CDG in 2009* (living 50 miles outside the Loop in McHenry County, meeting Ryan Gerry at an SCNA table, gathering at Panera and Duke's Alehouse).
+             4. *Carl Sagan in Libertyville: The Cultural Shock of Pair Friday (2008)* (walking into 8th Light's second-floor tables, Vim, RSpec, and Carl Sagan remixes redefining software as craft).
+             5. *Ray Hightower at the Suburban Diner: The Generosity of an Ambassador (2008)* (sitting down at Midway Restaurant, running Cucumber, opening doors without gatekeeping).
+             6. *The Zero-Dollar Conference: Chicago Code Camp & Anonymized Merit (2010-2012)* (delivering 6 tracks for 500 developers on a $0 budget, authoring the custom blind-review engine).
+             7. *Handing Over the Torch: Ryan Gerry & The 17-Year Continuous Room* (founding SCMC in 2010, recognizing personal capacity limits, trusting Ryan Gerry to sustain the monthly cadence for over 15 years).
+             8. *Greg Baugues & The Listener's Burden: Mental Health in Engineering (RailsConf 2014)* (the electrifying keynote on depression/bipolar disorder, hallway discussions, and the emotional toll of holding space for 200 interviewees).
+           - Curated 5 structured technical Errata demonstration prompts: 345kV audio DSP vs. Gemini clock drift hallucination, smartphone noise-cancellation RF loop antenna physics, local Metal-accelerated whisper.cpp, Maildir queue pattern crash recovery, and executable BPMN 2.0 state machines.
+           - Synchronized markdown and JSON specifications directly to Google Drive intake directories and local documentation.
+         - Data Integrity & Validation Gates:
+           - Resolved `video_asset_id` binding for Gary Bernhardt SCNA 2013 in `_data/interviews.yml`.
+           - All validation gates passing cleanly: `validate:fast`, `validate:obs` (46/46 assertions), and `rspec` (211/211 tests). Zero em-dash compliance maintained.
+
        - ARCHETYPE-MAPPED SCRIPT STRUCTURES, EXECUTION PERFORMANCE TELEMETRY & EDITORIAL SKILLS (2026-10-16):
          Mapped media pipelines to distinct purpose-driven archetypes, instrumented high-resolution performance telemetry, and established dedicated scriptwriting and editorial skills:
          - Purpose-Driven Archetype Mapping (`_data/media_intake_targets.yml`, `bin/intake_drive_video.rb`, `bin/sync_topic_prompts.rb`):
