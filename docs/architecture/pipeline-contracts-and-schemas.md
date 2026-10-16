@@ -538,3 +538,103 @@ tail -n 20 ~/.local/state/just3ws/pipeline_activity.jsonl | jq .
 | File remains in `pending/` and is not processed | File is currently being uploaded from mobile device and fails `stable_file?` 5-second check. | Allow mobile upload to finish. Once file size stabilizes across 5 seconds, intake begins automatically. |
 | Ingestion stops after current file completes | Graceful halt sentinel is armed (`pipeline.halt`). | Click `Resume Queue` in dashboard or run `rm ~/.local/state/just3ws/pipeline.halt`. |
 | `ztranscribe` binary not found | Missing symlink `~/.config/zsh/bin/ztranscribe -> ../recipes/yt-transcribe`. | Run `ln -s ~/.config/zsh/recipes/yt-transcribe ~/.config/zsh/bin/ztranscribe`. |
+
+---
+
+## Dashboard Queue Interface & SSE Integration Contracts (`#tab-queue`)
+
+The operator interface at `https://www.just3ws.localhost/youtube/dashboard/#tab-queue` provides the primary operations cockpit for real-time media ingestion, substate progression, and queue control.
+
+### 1. DOM Architecture & Component Contracts
+
+The queue interface is bound to specific DOM container IDs required for real-time rendering:
+
+```html
+<!-- Primary View Container -->
+<div id="tab-pane-queue" class="tab-pane">
+
+  <!-- Interactive 8-Step BPMN Ribbon -->
+  <div id="bpmn-funnel-step-chain" class="bpmn-step-chain">
+    <!-- Steps 1 through 8 with status classes (.active, .completed, .pending) -->
+  </div>
+
+  <!-- Operator Controls & Channel Filter Chips -->
+  <div class="funnel-controls">
+    <button id="btn-pipeline-halt" onclick="triggerPipelineAction('halt')">Pause / Halt</button>
+    <button id="btn-pipeline-resume" onclick="triggerPipelineAction('resume')">Resume Queue</button>
+    <button id="btn-pipeline-kill" onclick="triggerPipelineAction('stop')">Emergency Stop</button>
+    <span id="auto-intake-badge" class="badge">Auto-Intake Active</span>
+  </div>
+
+  <!-- 5-Column Kanban Funnel -->
+  <div class="funnel-board">
+    <div class="funnel-col" id="col-staged">
+      <span class="badge" id="col-count-staged">0</span>
+      <div id="col-cards-staged" class="cards-container"></div>
+    </div>
+    <div class="funnel-col" id="col-pending">
+      <span class="badge" id="col-count-pending">0</span>
+      <div id="col-cards-pending" class="cards-container"></div>
+    </div>
+    <div class="funnel-col" id="col-processing">
+      <span class="badge" id="col-count-processing">0</span>
+      <div id="col-cards-processing" class="cards-container"></div>
+    </div>
+    <div class="funnel-col" id="col-processed">
+      <span class="badge" id="col-count-processed">0</span>
+      <div id="col-cards-processed" class="cards-container"></div>
+    </div>
+    <div class="funnel-col" id="col-failed">
+      <span class="badge" id="col-count-failed">0</span>
+      <div id="col-cards-failed" class="cards-container"></div>
+    </div>
+  </div>
+
+  <!-- Activity Event Stream Console -->
+  <div id="pipeline-activity-stream" class="activity-log"></div>
+</div>
+```
+
+### 2. Client-Side Rendering & Real-Time Wire Protocol
+
+The dashboard consumes real-time telemetry from `http://127.0.0.1:7025/api/live/stream` via `EventSource`:
+
+1. **`intake_update` Event**:
+   Carries current card arrays across all 5 columns (`staged`, `pending`, `processing`, `processed`, `failed`), along with target metrics and worker lock state.
+   Rendered via `renderIngressFunnel(data)`.
+
+2. **`telemetry` Event**:
+   Carries live CPU usage, memory allocation, upload throughput in MB/s, and queue latencies.
+   Rendered via `applyRealtimeTelemetry(data)`.
+
+3. **`bpmn_transition` Event**:
+   Emitted when an active worker advances between pipeline stages.
+   Highlights the corresponding stage indicator in `#bpmn-funnel-step-chain`.
+
+4. **3-Second Fallback Polling**:
+   If the SSE connection drops or is unavailable, the dashboard automatically falls back to 3-second polling against `/api/live/pipeline/activity` and `/status`.
+
+### 3. Discrete Substate Badge Mapping
+
+Each active or quarantined job card displays discrete substate indicators synthesized by `renderSubstateBadges(substates)`:
+
+| Stage Key | Label | Completed Icon | In Progress Icon | Failed Icon | Pending Icon |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `audio_dsp` | DSP | `✓` (green) | `🔄` (pulse blue) | `❌` (red) | `⏳` (gray) |
+| `transcription` | STT | `✓` (green) | `🔄` (pulse blue) | `❌` (red) | `⏳` (gray) |
+| `metadata_synthesis` | Meta | `✓` (green) | `🔄` (pulse blue) | `❌` (red) | `⏳` (gray) |
+| `youtube_upload` | Upload | `✓` (green) | `🔄` (pulse blue) | `❌` (red) | `⏳` (gray) |
+| `playlist_assignment` | List | `✓` (green) | `🔄` (pulse blue) | `❌` (red) | `⏳` (gray) |
+| `captions_upload` | VTT | `✓` (green) | `🔄` (pulse blue) | `❌` (red) | `⏳` (gray) |
+| `datalake_sync` | Lake | `✓` (green) | `🔄` (pulse blue) | `❌` (red) | `⏳` (gray) |
+| `archival` | Archive | `✓` (green) | `🔄` (pulse blue) | `❌` (red) | `⏳` (gray) |
+
+### 4. Automated Interface Regression Guard
+
+The `#tab-queue` interface and client script contracts are pinned and guarded by automated tests in `spec/youtube/dashboard_queue_spec.rb`:
+
+- **DOM Contract Verification**: Ensures all column containers, count badges, control buttons, filter chips, and activity log nodes exist in `youtube/dashboard.html`.
+- **Node.js Syntax Gate (`node --check`)**: Strips Liquid tags and parses all embedded `<script>` blocks with Node to verify zero syntax errors, unclosed function braces, or missing semicolons.
+- **Function Contract Enforcement**: Verifies existence and signatures of `triggerPipelineAction`, `renderSubstateBadges`, `renderIngressFunnel`, `applyRealtimeTelemetry`, `initDashboardRealtimeStream`, `setFunnelFilter`, and `inspectFunnelStep`.
+- **Substate Icon Mapping Verification**: Asserts consistent visual state transitions across all 8 pipeline phases.
+

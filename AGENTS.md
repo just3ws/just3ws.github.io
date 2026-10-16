@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - DASHBOARD QUEUE CONTRACT GUARD & ARCHITECTURE SPECIFICATION (2026-10-16):
+         Pinned and guarded the `#tab-queue` operations cockpit interface and real-time SSE contracts with automated regression suites, documented DOM architecture and EventSource wire protocol, and verified pipeline operational health:
+         - Operations Cockpit Guard Suite (`spec/youtube/dashboard_queue_spec.rb`):
+           - Authored 10-test automated regression suite verifying `#tab-pane-queue` DOM container presence, 5-column Kanban board IDs and badges (`staged`, `pending`, `processing`, `processed`, `failed`), 8-step BPMN funnel indicators, operator control buttons (`halt`, `resume`, `stop`), and channel filter chips.
+           - Integrated automated Node.js syntax gate (`node --check`) ensuring embedded dashboard JavaScript parses cleanly with 0 syntax errors or unclosed blocks.
+           - Verified existence and signatures of key client-side rendering handlers: `triggerPipelineAction`, `renderSubstateBadges`, `renderIngressFunnel`, `applyRealtimeTelemetry`, `initDashboardRealtimeStream`, `setFunnelFilter`, and `inspectFunnelStep`.
+           - 125/125 YouTube specs and 10/10 queue interface specs passing cleanly.
+         - Architecture Documentation & Wire Protocol (`docs/architecture/pipeline-contracts-and-schemas.md`):
+           - Codified Section "Dashboard Queue Interface & SSE Integration Contracts (`#tab-queue`)" documenting DOM architecture, EventSource wire format (`intake_update`, `telemetry`, `bpmn_transition`, 3-second fallback polling), and discrete substate badge mappings.
+         - Pipeline Liveness & Operational Status Verification:
+           - Verified media pipeline is not stuck: live streamer daemon active on loopback port 7025 (`task-6997`), single-worker concurrency lock unblocked, self-healing PID watchdog operational, and base-spec MacBook Air scratch lifecycle enforced.
+
        - DASHBOARD QUEUE SYNTAX RESTORATION & SHORT RAMBLIN' TOPICS DRIVE SYNC (2026-10-16):
          Restored `#tab-queue` Kanban card and list rendering by fixing unclosed function in dashboard script, and expanded Ramblin' & Amblin' with 12 short-format dispatches rooted in 20-year CareerOS war stories, synced directly to Google Drive:
          - Dashboard Queue Script Syntax Fix (`youtube/dashboard.html`):
