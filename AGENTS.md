@@ -12,7 +12,7 @@
 
        In flight: verify against Backlog (`backlog/tasks/`).
        - SOFTWARE CRAFTSMANSHIP ENGINEERING PRINCIPLES, SCMC 2-YEAR TRANSITION & KNOWLEDGE GRAPH MEMORY (2026-10-16):
-         Eliminated remaining "crucible" terminology in favor of Software Craftsmanship principles, calibrated SCMC co-founding and 2-year anniversary transition across all surfaces, and integrated persistent code/knowledge graphing for context retention:
+         Eliminated remaining "crucible" terminology in favor of Software Craftsmanship principles, calibrated SCMC co-founding and 2-year anniversary transition across all surfaces, integrated persistent code/knowledge graphing for context retention, and achieved 100% clean end-to-end validation across the site:
          - Software Craftsmanship Framing & "Crucible" Elimination:
            - Codified Kent Beck's Four Rules of Simple Design, Michael Feathers' legacy seams and characterization tests, Red-Green-Refactor / The Blink Test, and Apprenticeship -> Journeyman Practice -> Stewardship in `GEMINI.md`.
            - Calibrated the 3-Act Career Narrative across `bin/generate_career_datalake.rb`, `bin/career_datalake_mcp_server.rb`, `.agents/skills/executive-brief-generator/SKILL.md`, `docs/executive-brief-generator-protocol.md`, and `docs/resume-narrative-and-storytelling-guide.md` from "The Crucible" to **"Journeyman Practice & Architecture"**.
@@ -22,6 +22,9 @@
          - Code Mapping, Knowledge Graph & Context Retention (`graphify` + `_data/knowledge_graph.json`):
            - Upgraded `bin/generate_knowledge_graph.rb` and `_data/concepts.yml` to include all 38 Episode Dossiers (`episode-00`..`episode-37`), `SCMC (McHenry County)`, `software-craftsmanship`, `command-palette`, `knowledge-work`, and `orientation`, resolving all orphan nodes (`Nodes: 469, Edges: 742, Orphans: 0, Duplicate IDs: 0`).
            - Updated `graphify-out/graph.json` (`9,613 nodes, 12,562 edges`), registered `just3ws` in `~/.graphify/global-graph.json`, installed `.githooks/post-commit` and `.githooks/post-checkout`, and wired `graphify update .` into `rake knowledge_graph` (`./bin/pipeline data graph`).
+         - End-to-End Validation Suite & HTML-Proofer Resolution:
+           - Guarded localhost navigation and palette links in production builds and corrected relative wiki and curriculum links in `dehum/index.html`.
+           - Full validation suite passing with 0 errors: `./bin/pipeline validate fast`, `./bin/pipeline validate all`, and HTML-Proofer across 1,019 HTML pages, 1,329 internal links, and 978 hash files; 211 RSpec examples passing; 26 MCP skills passing; localhost deployed and verified.
 
        - ARGON MEDIUM SYSTEM AUDIT, MOVEMENT 1 TELEPROMPTER SCRIPTS & FULL-SITE VALIDATION REMEDIATION (2026-10-16):
          Conducted a comprehensive system-wide audit across skills, subagent personas, episode dossiers, `bin/` tooling, and full-site HTML/SEO/taxonomy validators:
