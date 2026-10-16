@@ -2520,48 +2520,63 @@ body_class: page-youtube-dashboard
   }
 
   function buildTeleprompterActs(ep) {
+    const epNum = ep.number !== undefined ? ep.number : currentWorkshopEp;
+    const dossier = episodeDossiers.find(d => d.episode == epNum) || {};
+    const custom = dossier.teleprompter_script || {};
+
+    const act1 = custom.act_1 || (epNum === 0
+      ? "Welcome to The Sound Above. I am Mike Hall, and this is our preparatory pilot. In October 2026, I walked out underneath 345,000-volt transmission lines in Northern Illinois with a smartphone to record a field dispatch on software craftsmanship and identity. When I checked the footage back at my desk, the audio sounded completely destroyed: deafening 60 Hz electromagnetic hum, corona arcing, and an apparent three-and-a-half-minute clock drift. Trashing the footage and reshooting is the standard advice. But working through that recording became a living case study in what happens when we lean on modern AI models, and why the bottleneck in engineering is never generation: it is verification."
+      : "Welcome back to The Sound Above. I am Mike Hall. Today we enter " + ep.era_name + ". Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode " + epNum + ": " + ep.interviewee + " from " + ep.conference + ".");
+
+    const act2 = custom.act_2 || (ep.chicago_context || '');
+    const act3 = custom.act_3 || (ep.sound_above_inquiry + " What principles guided " + ep.interviewee + " when this conversation was recorded? How do those lessons inform the software systems we design today?");
+    const act4 = custom.act_4 || ("Roll archive footage (YouTube ID: " + (ep.resolved_youtube_id || ep.youtube_video_id || '') + "). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software.");
+    const act5 = custom.act_5 || (ep.ai_era_parallel + " When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us examine the terminal contracts directly.");
+    const nextEp = epNum === 0 ? 1 : ((epNum % 37) + 1);
+    const act6 = custom.act_6 || ("Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode " + nextEp + ". Until next time, keep your feedback loops fast and your code humane.");
+
     return [
       {
         act: 1,
         title: "Cold Open & Personal Grounding",
         scene: "01. Starting Soon -> 02. Monologue / Full Camera",
         timing: "00:00 - 03:00",
-        prompt: "Welcome back to The Sound Above. I am Mike Hall. Today we enter " + ep.era_name + ". Before code synthesis models and automated agents, developers in Chicago were building grassroots rooms to escape corporate silos. Today we rewatch Episode " + ep.number + ": " + ep.interviewee + " from " + ep.conference + "."
+        prompt: act1
       },
       {
         act: 2,
         title: "Setting the Historical Scene",
         scene: "02. Monologue / Full Camera",
         timing: "03:00 - 08:00",
-        prompt: ep.chicago_context + " When we recorded this in " + ep.year + ", there were no corporate sponsor filters. Developers were meeting after hours, sharing hard-won lessons on deliberate practice and system boundaries."
+        prompt: act2
       },
       {
         act: 3,
         title: "The Core Inquiry: The Sound Above",
         scene: "02. Monologue / Full Camera -> 04. Split Screen",
         timing: "08:00 - 14:00",
-        prompt: ep.sound_above_inquiry + " Who inspired " + ep.interviewee + " before they stepped onto this stage? What records were playing in their room?"
+        prompt: act3
       },
       {
         act: 4,
         title: "Hallway Rewatch & Video Reaction",
         scene: "03. Reaction - Video Focus",
         timing: "14:00 - 28:00",
-        prompt: "Roll archive footage (YouTube ID: " + (ep.resolved_youtube_id || ep.youtube_video_id) + "). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
+        prompt: act4
       },
       {
         act: 5,
         title: "The AI-Era Parallel & Terminal Workbench",
         scene: "05. Workbench - Code & Terminal",
         timing: "28:00 - 40:00",
-        prompt: ep.ai_era_parallel + " When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us examine the terminal contracts directly."
+        prompt: act5
       },
       {
         act: 6,
         title: "Community Coda, Outro & Next Stream",
         scene: "08. Outro & Next Stream",
         timing: "40:00 - 45:00",
-        prompt: "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode " + ((ep.number % 35) + 1) + ". Until next time, keep your feedback loops fast and your code humane."
+        prompt: act6
       }
     ];
   }
@@ -2843,28 +2858,33 @@ body_class: page-youtube-dashboard
     const chicagoContext = (dossier.narrative && dossier.narrative.chicago_context) || baseEp.chicago_context || '';
     const eraName = dossier.era_name || baseEp.era_name || (currentWorkshopEp === 0 ? 'The AI Horizon' : 'The Chicago Workshop');
 
+    const custom = dossier.teleprompter_script || {};
+
     // 1. Build Teleprompter Acts
     let epTitle = currentWorkshopEp === 0
       ? "Pilot Episode 0: " + title
       : "Episode " + currentWorkshopEp + ": " + interviewee + " recorded at " + conf;
-    let act1 = "Welcome back to The Sound Above. I am Mike Hall. Today we enter " + eraName + ". Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we examine " + epTitle + ".";
-    if (story1.trim()) act1 += " [PERSONAL RECOLLECTION: " + story1.trim() + "]";
 
-    let act2 = (chicagoContext ? chicagoContext + " " : "") + "When we recorded this in " + year + " at " + loc + ", practitioners were breaking out of vendor silos and defining the discipline for themselves.";
-    if (story2.trim()) act2 += " [SETTING RECOLLECTION: " + story2.trim() + "]";
+    let act1 = custom.act_1 || (currentWorkshopEp === 0
+      ? "Welcome to The Sound Above. I am Mike Hall, and this is our preparatory pilot. In October 2026, I walked out underneath 345,000-volt transmission lines in Northern Illinois with a smartphone to record a field dispatch on software craftsmanship and identity. When I checked the footage back at my desk, the audio sounded completely destroyed: deafening 60 Hz electromagnetic hum, corona arcing, and an apparent three-and-a-half-minute clock drift. Trashing the footage and reshooting is the standard advice. But working through that recording became a living case study in what happens when we lean on modern AI models, and why the bottleneck in engineering is never generation: it is verification."
+      : "Welcome back to The Sound Above. I am Mike Hall. Today we enter " + eraName + ". Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we examine " + epTitle + ".");
+    if (story1.trim() && !custom.act_1) act1 += " [PERSONAL RECOLLECTION: " + story1.trim() + "]";
 
-    let act3 = inquiry + " Who inspired " + interviewee + " before they stepped onto this stage? What records were playing in the background when this movement formed?";
+    let act2 = custom.act_2 || chicagoContext;
+    if (story2.trim() && !custom.act_2) act2 += " [SETTING RECOLLECTION: " + story2.trim() + "]";
 
-    let act4 = "Roll archive footage (YouTube ID: " + ytId + "). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software.";
+    let act3 = custom.act_3 || (inquiry + " What principles guided " + interviewee + " when this conversation was recorded? How do those lessons inform the software systems we design today?");
 
-    let act5 = parallel + " When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us inspect the code contracts directly.";
-    if (story5.trim()) act5 += " [WORKBENCH STORY: " + story5.trim() + "]";
-    if (currentAttachments.length > 0) {
+    let act4 = custom.act_4 || ("Roll archive footage (YouTube ID: " + ytId + "). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software.");
+
+    let act5 = custom.act_5 || (parallel + " When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us inspect the code contracts directly.");
+    if (story5.trim() && !custom.act_5) act5 += " [WORKBENCH STORY: " + story5.trim() + "]";
+    if (currentAttachments.length > 0 && !custom.act_5) {
       act5 += " Cited references: " + currentAttachments.map(a => a.title + " (" + (a.url || a.path) + ")").join('; ');
     }
 
     const nextEp = currentWorkshopEp === 0 ? 1 : ((currentWorkshopEp % 37) + 1);
-    let act6 = "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode " + nextEp + ". Until next time, keep your feedback loops fast and your code humane.";
+    let act6 = custom.act_6 || ("Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode " + nextEp + ". Until next time, keep your feedback loops fast and your code humane.");
 
     const acts = [
       { num: 1, title: 'Cold Open & Personal Grounding', scene: '01. Starting Soon -> 02. Monologue', timing: '00:00 - 03:00', text: act1 },

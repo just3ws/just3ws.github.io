@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Under the High-Tension Wires: Building Deterministic Tools from Nondeterministic Systems"
+title: "The Mirage of Competence: AI Slop & Domain Boundaries"
 date: 2026-10-12
-description: "A forensic journey into recovering a field recording ruined by high-voltage electromagnetic induction, dual-mic phone asymmetry, and clock drift illusions, and what it means to practice human craftspersonship by using AI like a 3D printer to forge deterministic assets you control."
+description: "A practitioner inquiry into AI slop, domain boundaries, and forensic audio recovery under 345kV power lines, examining what it means to practice human craftsmanship when AI tools project effortless confidence."
 permalink: /ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
 ai_generated: true
 human_led: true

@@ -11,6 +11,21 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - NATURAL VOICE TELEPROMPTER SCRIPTS, EPISODE CALIBRATION & TOPIC PROMPT SYNC (2026-10-16):
+         Crafted authentic, practitioner-honest spoken teleprompter scripts, calibrated episode titles, and automated Google Drive topic prompt synchronization:
+         - Grounded Teleprompter Voice Architecture (`bin/generate_sound_above_teleprompter.rb`, `bin/episode_workbench.rb`, `youtube/dashboard.html`):
+           - Decoupled teleprompter generation to seamlessly prioritize explicit 6-act spoken scripts (`teleprompter_script:`) while preserving dynamic human marginalia (`human_stories:`) and reference citations (`research_attachments:`).
+           - Rewrote Episode 00 ("The Mirage of Competence: AI Slop & Domain Boundaries") teleprompter script across all 6 acts, replacing generic template text with authentic narrative grounded in the 345kV field recording, the prompt-based DSP hallucination of 20% clock drift, the ground-truth listening test failure, the dual-mic inductive antenna hardware asymmetry, and the 40ms deterministic scipy/bash filter.
+           - Regenerated all 38 native `.textream` documents in `obs/teleprompter/` with zero em-dash compliance.
+         - Title & Narrative Calibration:
+           - Updated article title in `_posts/2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship.md` to "The Mirage of Competence: AI Slop & Domain Boundaries".
+           - Calibrated Episode 01 title across manifests, dossiers, overlay states, and thumbnails to "The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET", honoring the true spirit of open-source tooling, agile testing, and domain modeling inside corporate environments.
+         - Automated Google Drive Topic Prompt Synchronization (`bin/sync_topic_prompts.rb`):
+           - Built and executed topic prompt synthesizer generating 8 curated Ramblin' & Amblin' field prompts and 5 Errata deep dives derived from 20 years of writings and interviews.
+           - Automatically synced prompts directly into Google Drive directories (`ramblin-amblin/TOPIC_PROMPTS.md` and `errata/TOPIC_PROMPTS.md`) and local `docs/prompts/`.
+           - Integrated `sync-prompts` into unified pipeline router (`bin/pipeline media sync-prompts`).
+         - All validation gates passing cleanly: `validate:fast`, `validate:obs` (46/46 assertions), `stage:all` (38/38 episodes), and `rspec` (211/211 tests). Zero em-dash compliance maintained.
+
        - SELF-HEALING ARCHITECTURE, RICH STATUS TELEMETRY & GROUNDED CURRICULUM HARMONIZATION (2026-10-16):
          Architected automated self-healing, rich diagnostic self-reporting, and grounded curriculum naming:
          - Engineered Self-Healing Ingress & Daemon Watcher (`bin/live_dashboard_streamer.rb` and `bin/intake_drive_video.rb`):

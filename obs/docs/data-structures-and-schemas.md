@@ -29,7 +29,7 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
   "broadcast_type": "rewatch",
   "episode": {
     "number": 1,
-    "title": "The First Room: Chicago Alt.NET & Escaping Corporate Monoliths",
+    "title": "The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET",
     "interviewee": "Sergio Pereira",
     "role": "Chicago Alt.NET Organizer",
     "conference": "SCNA 2011",
@@ -47,7 +47,7 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
     "series_subtitle": "UGtastic Rewatch: Learning About People in Tech (2009–2026)",
     "host": "Mike Hall (Software Craftsmanship #106)",
     "status": "live",
-    "topic": "Rewatching Sergio Pereira (SCNA 2011): The First Room: Chicago Alt.NET & Escaping Corporate Monoliths"
+    "topic": "Rewatching Sergio Pereira (SCNA 2011): The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET"
   },
   "errata": {
     "mode": "reading",
@@ -116,7 +116,7 @@ The file `obs/curation/sequence-manifest.json` defines the entire 37-episode cur
   "conference": "SCNA 2011",
   "year": 2011,
   "location": "Chicago, IL",
-  "title": "The First Room: Chicago Alt.NET & Escaping Corporate Monoliths",
+  "title": "The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET",
   "sound_above_inquiry": "Who inspired the engineers breaking free from enterprise Microsoft silos? How did grassroots peer groups form before commercial developer platforms existed?",
   "chicago_context": "Chicago Alt.NET was the precursor room for dozens of Chicago developers who later founded startups, consultancy practices, and user groups.",
   "ai_era_parallel": "Just as Alt.NET questioned monolithic enterprise frameworks, modern engineers must question monolithic cloud AI abstractions and reclaim local control.",

@@ -44,7 +44,8 @@ def resolve_episode(ep_num)
       'chicago_context' => narrative['chicago_context'] || 'Grassroots practitioner reflections from the Chicago software craftsmanship movement.',
       'sound_above_inquiry' => narrative['core_inquiry'] || 'What records were playing in the room when this technical movement formed?',
       'ai_era_parallel' => narrative['ai_era_parallel'] || 'Maintaining cognitive control and deterministic verification over system boundaries.',
-      'resolved_youtube_id' => dossier['resolved_youtube_id'] || dossier['youtube_video_id'] || ''
+      'resolved_youtube_id' => dossier['resolved_youtube_id'] || dossier['youtube_video_id'] || '',
+      'teleprompter_script' => dossier['teleprompter_script'] || {}
     }
   end
 
@@ -77,6 +78,14 @@ end
 def build_rundown(episode)
   ep_num = episode['number']
   next_ep_num = ep_num >= 37 ? 0 : ep_num + 1
+  custom = episode['teleprompter_script'] || {}
+
+  act1 = custom['act_1'] || "Welcome back to The Sound Above. I am Mike Hall. Today we enter #{episode['era_name']}. Before code synthesis models and automated agents, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode #{ep_num}: #{episode['interviewee']} from #{episode['conference']}."
+  act2 = custom['act_2'] || episode['chicago_context'].to_s
+  act3 = custom['act_3'] || "#{episode['sound_above_inquiry']} What principles guided #{episode['interviewee']} when this conversation was recorded? How do those lessons inform the software systems we design today?"
+  act4 = custom['act_4'] || "Roll archive footage (YouTube ID: #{episode['resolved_youtube_id'] || episode['youtube_video_id'] || 'archive'}). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
+  act5 = custom['act_5'] || "#{episode['ai_era_parallel']} When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us examine the terminal contracts directly."
+  act6 = custom['act_6'] || "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. In our next broadcast, we explore Episode #{next_ep_num}. Until next time, keep your feedback loops fast and your code humane."
 
   {
     episode_number: ep_num,
@@ -92,7 +101,7 @@ def build_rundown(episode)
         scene_target: '01. Starting Soon -> 02. Monologue / Full Camera',
         timing: '00:00 - 03:00',
         host_lead: 'Welcome to The Sound Above. I am Mike Hall.',
-        teleprompter_script: "Welcome back to The Sound Above. I am Mike Hall. Today we enter #{episode['era_name']}. Before code synthesis models and automated agents, developers in Chicago were building grassroots rooms to escape corporate silos. Today we rewatch Episode #{ep_num}: #{episode['interviewee']} from #{episode['conference']}."
+        teleprompter_script: act1
       },
       {
         act_number: 2,
@@ -100,7 +109,7 @@ def build_rundown(episode)
         scene_target: '02. Monologue / Full Camera',
         timing: '03:00 - 08:00',
         host_lead: "Let us return to #{episode['year']} in #{episode['location']}.",
-        teleprompter_script: "#{episode['chicago_context']} When we recorded this in #{episode['year']}, there were no corporate sponsor filters. Developers were meeting after hours, sharing hard-won lessons on deliberate practice and system boundaries."
+        teleprompter_script: act2
       },
       {
         act_number: 3,
@@ -108,7 +117,7 @@ def build_rundown(episode)
         scene_target: '02. Monologue / Full Camera -> 04. Split Screen',
         timing: '08:00 - 14:00',
         host_lead: 'The question that guides our rewatch today:',
-        teleprompter_script: "#{episode['sound_above_inquiry']} Who inspired #{episode['interviewee']} before they stepped onto this stage? What records were playing in the background when this movement formed?"
+        teleprompter_script: act3
       },
       {
         act_number: 4,
@@ -116,7 +125,7 @@ def build_rundown(episode)
         scene_target: '03. Reaction - Video Focus',
         timing: '14:00 - 28:00',
         host_lead: 'Let us roll the archive tape.',
-        teleprompter_script: "Roll archive footage (YouTube ID: #{episode['resolved_youtube_id'] || episode['youtube_video_id'] || 'archive'}). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
+        teleprompter_script: act4
       },
       {
         act_number: 5,
@@ -124,7 +133,7 @@ def build_rundown(episode)
         scene_target: '05. Workbench - Code & Terminal',
         timing: '28:00 - 40:00',
         host_lead: 'How does this lesson apply to software engineering in 2026?',
-        teleprompter_script: "#{episode['ai_era_parallel']} When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us examine the terminal contracts directly."
+        teleprompter_script: act5
       },
       {
         act_number: 6,
@@ -132,7 +141,7 @@ def build_rundown(episode)
         scene_target: '08. Outro & Next Stream',
         timing: '40:00 - 45:00',
         host_lead: 'Thank you for listening to the sound above.',
-        teleprompter_script: "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. In our next broadcast, we explore Episode #{next_ep_num}. Until next time, keep your feedback loops fast and your code humane."
+        teleprompter_script: act6
       }
     ]
   }

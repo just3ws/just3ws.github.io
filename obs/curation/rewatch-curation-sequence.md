@@ -51,7 +51,7 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 
 ### The Chicago Workshop
 
-#### Episode 01: Sergio Pereira: The First Room: Chicago Alt.NET & Escaping Corporate Monoliths
+#### Episode 01: Sergio Pereira: The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET
 - **Interviewee**: Sergio Pereira
 - **Conference / Date**: SCNA 2011 (2011)
 - **Location**: Chicago, IL

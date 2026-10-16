@@ -539,31 +539,32 @@ class EpisodeWorkbench
     ep_num = dossier['episode']
     stories = dossier.dig('human_marginalia', 'host_recollections') || []
     attachments = dossier['research_attachments'] || []
+    custom_scripts = dossier['teleprompter_script'] || {}
 
     act1_story = stories.find { |s| s['scene']&.include?('Act 1') || s['scene']&.include?('Cold Open') }
     act2_story = stories.find { |s| s['scene']&.include?('Act 2') || s['scene']&.include?('Setting') }
     act4_story = stories.find { |s| s['scene']&.include?('Act 4') || s['scene']&.include?('Hallway') }
     act5_story = stories.find { |s| s['scene']&.include?('Act 5') || s['scene']&.include?('AI-Era') || s['scene']&.include?('Workbench') }
 
-    act1_default = "Welcome back to The Sound Above. I am Mike Hall. Today we enter #{dossier['era_name']}. Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode #{ep_num}: #{dossier['interviewee']} recorded at #{dossier['conference']}."
-    act1_default += " [PERSONAL RECOLLECTION: #{act1_story['story']}]" if act1_story
+    act1_default = custom_scripts['act_1'] || "Welcome back to The Sound Above. I am Mike Hall. Today we enter #{dossier['era_name']}. Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode #{ep_num}: #{dossier['interviewee']} from #{dossier['conference']}."
+    act1_default += " [PERSONAL RECOLLECTION: #{act1_story['story']}]" if act1_story && !custom_scripts['act_1']
 
-    act2_default = "#{dossier.dig('narrative', 'chicago_context')} When we recorded this in #{dossier['year']} at #{dossier['location']}, practitioners were breaking out of vendor silos and defining the discipline for themselves."
-    act2_default += " [SETTING RECOLLECTION: #{act2_story['story']}]" if act2_story
+    act2_default = custom_scripts['act_2'] || dossier.dig('narrative', 'chicago_context').to_s
+    act2_default += " [SETTING RECOLLECTION: #{act2_story['story']}]" if act2_story && !custom_scripts['act_2']
 
-    act3_default = "#{dossier.dig('narrative', 'core_inquiry')} Who inspired #{dossier['interviewee']} before they stepped onto this stage? What records were playing in the background when this movement formed?"
+    act3_default = custom_scripts['act_3'] || "#{dossier.dig('narrative', 'core_inquiry')} What principles guided #{dossier['interviewee']} when this conversation was recorded? How do those lessons inform the software systems we design today?"
 
-    act4_default = "Roll archive footage (YouTube ID: #{dossier['youtube_video_id']}). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
-    act4_default += " [ARCHIVE OBSERVATION: #{act4_story['story']}]" if act4_story
+    act4_default = custom_scripts['act_4'] || "Roll archive footage (YouTube ID: #{dossier['youtube_video_id']}). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
+    act4_default += " [ARCHIVE OBSERVATION: #{act4_story['story']}]" if act4_story && !custom_scripts['act_4']
 
-    act5_default = "#{dossier.dig('narrative', 'ai_era_parallel')} When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us inspect the code contracts directly."
-    act5_default += " [WORKBENCH STORY: #{act5_story['story']}]" if act5_story
-    if attachments.any?
+    act5_default = custom_scripts['act_5'] || "#{dossier.dig('narrative', 'ai_era_parallel')} When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us inspect the code contracts directly."
+    act5_default += " [WORKBENCH STORY: #{act5_story['story']}]" if act5_story && !custom_scripts['act_5']
+    if attachments.any? && !custom_scripts['act_5']
       act5_default += " Cited references: " + attachments.map { |a| "#{a['title']} (#{a['url'] || a['path']})" }.join('; ')
     end
 
     next_num = (ep_num % 37) + 1
-    act6_default = "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode #{next_num}. Until next time, keep your feedback loops fast and your code humane."
+    act6_default = custom_scripts['act_6'] || "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode #{next_num}. Until next time, keep your feedback loops fast and your code humane."
 
     b = binding
     act1_script = render_template_act('act_01_cold_open.erb', b, act1_default)

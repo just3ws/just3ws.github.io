@@ -35,6 +35,63 @@ narrative:
   ai_era_parallel: 'The defining challenge of Staff+ engineering in 2026: maintaining
     cognitive control over system boundaries rather than passively accepting synthetic
     code generation.'
+teleprompter_script:
+  act_1: 'Welcome to The Sound Above. I am Mike Hall. This is Episode 0: Mike Hall
+    on our Preparatory Pilot / Forensic Audio Experiment. In October 2026, I walked
+    out under the high-tension wires in Northern Illinois underneath 345,000-volt
+    transmission lines with a smartphone to record a field dispatch on software craftsmanship
+    and identity. When I checked the footage back at my desk, the audio sounded completely
+    destroyed: deafening 60 Hz electromagnetic hum, corona arcing, and an apparent
+    three-and-a-half-minute clock drift. Trashing the footage and reshooting is the
+    standard advice. But working through that recording became a living case study
+    in what happens when we lean on modern AI models, and why the bottleneck in engineering
+    is never generation: it is verification.'
+  act_2: 'I started with a simple thirteen-word query in a browser, then brought it
+    into Gemini Flash through the terminal. The model immediately leapt into action:
+    generating cascaded Butterworth filter equations, calculating exact duration ratios,
+    and asserting with supreme, effortless confidence that the audio clock had drifted
+    by twenty percent. It gave me shell scripts, math, and complete DSP pipelines.
+    And it was all totally wrong. In Hollywood, investigators yell ''Enhance!'' and
+    pixels appear out of thin air. In software, that wishful thinking produces hallucinated
+    AI slop. It reminds me of the Dell Studio XPS laptop I carried during the 2009
+    Obtiva days, with the sticker that read: ''Typing is not the bottleneck.'' In
+    2026, generating code is not the bottleneck either. The bottleneck is domain understanding.'
+  act_3: 'The container reported 21 minutes of video and only 18 minutes of audio.
+    The model assumed linear drift and handed me atempo=0.837. When I tested the audio
+    in my headphones, it was slurred and completely out of sync. So we went back to
+    ground truth: high-FPS frame extraction, Whisper subtitle alignment, and audio
+    waveforms. What actually happened? At 18 minutes, I said ''Thank you'' and wrapped
+    the talk. The remaining three and a half minutes was just me walking with the
+    camera running in silence. The speech was at 1.0x normal speed all along. When
+    AI models project effortless competence, how do you verify where competence ends
+    and plausible falsehood begins? You verify with empirical tests, not conversational
+    trust.'
+  act_4: 'Let us look at the raw recording from the phone (YouTube ID: 7YeFpKn5FbU).
+    Notice the stereo separation. Modern smartphones have dual microphones for noise
+    suppression. The secondary microphone at the top was an unshielded inductive loop
+    antenna, picking up 65 times more electromagnetic rumble from the overhead transmission
+    towers than the bottom microphone. The bottom left mic had clean speech buried
+    under the noise. Once we split the stereo channels and discarded the antenna track,
+    we had clean speech. We did not need exotic neural de-reverberation models. We
+    needed basic hardware acoustics.'
+  act_5: Here is the lesson for engineering in the AI era. We took the output of the
+    model, threw away the hallucinations, and machined the working parts into a deterministic
+    seven-stage filter in shell and Python. It runs in 40 milliseconds. It muxes the
+    audio back into the master container with zero generational video re-encoding
+    loss. We spent less than a dollar and twenty-five cents in subscription compute,
+    instead of hiring an audio post-production house. Generative models are fantastic
+    at rapid hypothesis synthesis, like a 3D printer in a machine shop. But you cannot
+    leave your software inside a chat window. You have to machine it into deterministic,
+    testable code you own and control.
+  act_6: 'That is the spirit of The Sound Above. Across this 37-episode series, we
+    are going to rewatch fifteen years of conversations from the Software Craftsmanship
+    movement, from the early Chicago user groups to the AI horizon, examining how
+    developers tackled architecture, testing, and autonomy before commercial platforms
+    took over. Full transcripts, telemetry, and companion code are open at just3ws.com.
+    If you want to help support our independent hosting and archive preservation,
+    check out patreon.com/whoistechcmty. In Episode 1, we dive into the very first
+    room: Sergio Pereira and Chicago Alt.NET. Until next time: keep your feedback
+    loops fast, and verify your code.'
 lexicon:
   key_concepts:
   - The Mirage of Competence
@@ -71,13 +128,13 @@ human_marginalia:
   - Keep tone calm, reflective, and unvarnished; avoid all combative warrior rhetoric.
   - Emphasize that the entire exercise cost less than $1.25 in subscription compute.
 research_attachments:
-- title: Under the High-Tension Wires Case Study
+- title: 'The Mirage of Competence: AI Slop & Domain Boundaries (Case Study)'
   type: case_study
   url: https://just3ws.com/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
 - title: Practice Run Recording (YouTube 7YeFpKn5FbU)
   type: video_asset
   url: https://www.youtube.com/watch?v=7YeFpKn5FbU
-- title: Forensic Audio A/B Listening Test
+- title: Audio Restoration A/B Listening Test
   type: audio_test
   url: https://just3ws.com/dehum/dashboard.html
 - title: Patreon Community Archive Support

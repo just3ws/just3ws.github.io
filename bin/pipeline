@@ -18,18 +18,19 @@ Usage: ./bin/pipeline <domain> <action> [options]
 
 Namespaces:
   media     Media intake, streaming telemetry, SwiftBar, and YouTube publishing.
-            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, status.
+            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, status.
   validate  Repository hygiene, OBS assertions, rendered site checks.
             Actions: fast, obs, site, all.
   data      Interview data generation, archive graph, semantic artifacts, sitemap.
-            Actions: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap.
+            Actions: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, sync-prompts.
   site      Jekyll site lifecycle, testing, CI verification, local deployment.
             Actions: build, test, ci, verify, smoke, resumes, install, server.
 
 Flat / Legacy Commands (Backward Compatible):
   generate, build, test, validate, verify, knowledge-graph, semantic-graph,
   semantic-audit, semantic-snapshot, smoke, sitemap, ci, resumes, youtube,
-  episode, patreon, stage, intake, stream, swiftbar, teleprompter, textream, help.
+  episode, patreon, stage, intake, stream, swiftbar, teleprompter, textream,
+  sync-prompts, help.
 USAGE
 }
 
@@ -99,12 +100,15 @@ run_media() {
     resume)
       ruby bin/intake_drive_video.rb --resume
       ;;
+    sync-prompts|prompts)
+      ruby bin/sync_topic_prompts.rb "$@"
+      ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|halt|stop|resume|status> [options]"
+      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|halt|stop|resume|status> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, halt, stop, resume, status" >&2
+      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, halt, stop, resume, status" >&2
       exit 1
       ;;
   esac
@@ -159,12 +163,15 @@ run_data() {
     sitemap)
       bundle exec rake sitemap
       ;;
+    sync-prompts|prompts)
+      ruby bin/sync_topic_prompts.rb "$@"
+      ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline data <generate|graph|semantic-graph|semantic-audit|semantic-snapshot|sitemap>"
+      echo "Usage: ./bin/pipeline data <generate|graph|semantic-graph|semantic-audit|semantic-snapshot|sitemap|sync-prompts>"
       ;;
     *)
       echo "Unknown data action: $action" >&2
-      echo "Available: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap" >&2
+      echo "Available: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, sync-prompts" >&2
       exit 1
       ;;
   esac
@@ -317,6 +324,10 @@ case "$cmd" in
   resume)
     shift
     run_media resume "$@"
+    ;;
+  sync-prompts|prompts)
+    shift
+    run_media sync-prompts "$@"
     ;;
   help|-h|--help)
     usage

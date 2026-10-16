@@ -25,6 +25,7 @@ All operations are grouped under four cohesive domain verbs while preserving fla
 ./bin/pipeline media patreon      # Run Patreon API v2 integration & credits CLI
 ./bin/pipeline media episode      # Run Episode Semantic Dossier & Workbench CLI
 ./bin/pipeline media youtube      # Run YouTube publishing pipeline CLI
+./bin/pipeline media sync-prompts # Sync topic prompts to Google Drive for Ramblin' and Errata
 ./bin/pipeline media status       # Aggregate media pipeline status
 
 ./bin/pipeline validate fast      # Fast repository hygiene & em-dash audit
