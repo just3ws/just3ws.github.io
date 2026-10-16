@@ -256,10 +256,18 @@ if whisper_bin.empty? && File.exist?('/opt/homebrew/bin/whisper-cli')
   whisper_bin = '/opt/homebrew/bin/whisper-cli'
 end
 
-if !whisper_bin.empty?
+ztranscribe_bin = `command -v ztranscribe 2>/dev/null`.strip
+if ztranscribe_bin.empty?
+  zt_candidates = [File.expand_path('~/.config/zsh/bin/ztranscribe'), File.expand_path('~/.config/zsh/recipes/yt-transcribe')]
+  ztranscribe_bin = zt_candidates.find { |p| File.exist?(p) } || ''
+end
+
+if !ztranscribe_bin.empty?
+  puts '-- 🎙️ ztranscribe Pipeline: Ready (zdots / Apple Silicon Metal) | color=#15803d size=11'
+elsif !whisper_bin.empty?
   puts '-- 🎙️ Whisper.cpp Engine: Ready (Apple Silicon Metal) | color=#15803d size=11'
 else
-  puts '-- 🎙️ Whisper.cpp Engine: Not Found | color=#dc2626 size=11'
+  puts '-- 🎙️ Transcription Engine: Not Found | color=#dc2626 size=11'
 end
 
 quota_color = quota_headroom > 30 ? '#15803d' : '#dc2626'

@@ -138,6 +138,13 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(meta[:title]).to eq("Special Field Note on Latency")
       expect(meta[:description]).to include("Reflecting on high latency network links")
     end
+
+    it 'discovers ztranscribe binary from zdots platform' do
+      ztranscribe_bin = pipeline.find_ztranscribe_binary
+      expect(ztranscribe_bin).not_to be_nil
+      expect(File.exist?(ztranscribe_bin)).to be true
+      expect(File.executable?(ztranscribe_bin)).to be true
+    end
   end
 
   describe 'BPMN 2.0 Specification & SLO Architecture' do

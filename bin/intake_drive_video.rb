@@ -522,14 +522,14 @@ class MediaIntakePipeline
         return false
       end
 
-      # 4. Local Transcription via whisper.cpp
+      # 4. Local Transcription via zdots ztranscribe
       transcript_data = { text: "", vtt: "" }
       if target_info['auto_title_from_speech'] || target_info['transcribe_with_whisper']
-        puts "🧠 Running local whisper.cpp speech recognition on Apple Silicon..."
+        puts "🧠 Running local ztranscribe speech recognition from zdots on Apple Silicon..."
         t_whisper_start = Time.now
         transcript_data = transcribe_audio(scratch_wav, scratch_prefix)
         duration_whisper = (Time.now.-(t_whisper_start)).round(2)
-        log_activity('whisper', "Whisper STT completed for #{filename} in #{duration_whisper}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_whisper })
+        log_activity('whisper', "ztranscribe STT completed for #{filename} in #{duration_whisper}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_whisper })
       end
 
       if self.class.stopped? || @stop_requested
@@ -842,13 +842,69 @@ class MediaIntakePipeline
     raise "ffmpeg failed to extract audio from #{input_path}" unless success && File.exist?(output_wav)
   end
 
-  # Transcribe with whisper-cli
+  # Transcribe using zdots ztranscribe pipeline with graceful whisper-cli fallback
   def transcribe_audio(wav_path, output_prefix)
+    ztranscribe_bin = find_ztranscribe_binary
+
+    if ztranscribe_bin && !ztranscribe_bin.empty? && File.exist?(ztranscribe_bin)
+      transcribe_with_ztranscribe(ztranscribe_bin, wav_path, output_prefix)
+    else
+      transcribe_with_whisper_fallback(wav_path, output_prefix)
+    end
+  end
+
+  def find_ztranscribe_binary
+    candidates = [
+      File.expand_path('~/.config/zsh/bin/ztranscribe'),
+      File.expand_path('~/.config/zsh/recipes/yt-transcribe'),
+      '/Users/mike/.config/zsh/recipes/yt-transcribe'
+    ]
+    candidates.find { |p| File.exist?(p) && File.executable?(p) } || `which ztranscribe 2>/dev/null`.strip
+  end
+
+  def transcribe_with_ztranscribe(ztranscribe_bin, wav_path, output_prefix)
+    out_dir = File.dirname(output_prefix)
+    FileUtils.mkdir_p(out_dir)
+    stem = File.basename(wav_path, '.*')
+
+    prompt = "UGtastic, Software Craftsmanship, Chicago Alt.NET, NUnit, NHibernate, StructureMap, Ruby, Rails, RSpec, Obtiva"
+
+    puts "🧠 Running local ztranscribe pipeline from zdots on Apple Silicon..."
+    cmd = "#{ztranscribe_bin.shellescape} #{wav_path.shellescape} --out-dir #{out_dir.shellescape} --profile standard --prompt #{prompt.shellescape} 2>&1"
+    output = `#{cmd}`
+    exit_code = $?.exitstatus
+
+    expected_dir = File.join(out_dir, stem)
+    zt_txt = File.join(expected_dir, "#{stem}.txt")
+    zt_vtt = File.join(expected_dir, "#{stem}.vtt")
+
+    FileUtils.cp(zt_txt, "#{output_prefix}.txt") if File.exist?(zt_txt)
+    FileUtils.cp(zt_vtt, "#{output_prefix}.vtt") if File.exist?(zt_vtt)
+    FileUtils.rm_rf(expected_dir) if Dir.exist?(expected_dir)
+
+    txt_file = "#{output_prefix}.txt"
+    vtt_file = "#{output_prefix}.vtt"
+
+    raw_text = File.exist?(txt_file) ? File.read(txt_file).strip : ""
+    raw_vtt = File.exist?(vtt_file) ? File.read(vtt_file).strip : ""
+
+    if raw_text.empty? && raw_vtt.empty?
+      warn "⚠️ ztranscribe produced empty output (exit #{exit_code}). Falling back to whisper-cli."
+      return transcribe_with_whisper_fallback(wav_path, output_prefix)
+    end
+
+    text = clean_transcript_text(raw_text)
+    vtt = clean_transcript_text(raw_vtt)
+
+    { text: text, vtt: vtt }
+  end
+
+  def transcribe_with_whisper_fallback(wav_path, output_prefix)
     whisper_bin = find_whisper_binary
     model_path = find_whisper_model
 
     unless whisper_bin && File.exist?(whisper_bin) && model_path && File.exist?(model_path)
-      puts "⚠️ whisper-cli or model not available; skipping transcription."
+      puts "⚠️ Neither ztranscribe nor whisper-cli model available; skipping transcription."
       return { text: "", vtt: "" }
     end
 
