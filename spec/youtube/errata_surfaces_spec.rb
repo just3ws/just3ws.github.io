@@ -12,14 +12,14 @@ RSpec.describe 'Errata episode surfaces' do
   let(:article_path) { '/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html' }
   let(:read) { ->(rel) { File.read(File.join(root_dir, rel)) } }
 
-  it 'has a ready Errata 06 dossier and teleprompter file' do
+  it 'has a ready Errata dossier and teleprompter file' do
     dossier = YAML.safe_load_file(File.join(root_dir, '_data/episodes/errata-fluffle-precursor.yml'), permitted_classes: [Date, Time])
-    expect(dossier['episode']).to eq('errata-06')
+    expect(dossier['episode']).to eq('errata-fluffle-precursor')
     expect(dossier['teleprompter_script'].keys).to include('act_1', 'act_6')
     expect(File.exist?(File.join(root_dir, 'obs/teleprompter/errata-fluffle-precursor.textream'))).to be true
   end
 
-  it 'backs the Errata 06 article with a real post at the linked permalink' do
+  it 'backs the Errata article with a real post at the linked permalink' do
     post = Dir.glob(File.join(root_dir, '_posts/2026-10-16-the-fluffle-precursor-*.md'))
     expect(post.size).to eq(1)
   end
@@ -27,12 +27,12 @@ RSpec.describe 'Errata episode surfaces' do
   it 'exposes errata dossiers in telemetry without changing the 38 numeric dossiers' do
     telemetry = JSON.parse(read.call('_data/youtube_pipeline_telemetry.json'))
     expect(telemetry['episode_dossiers'].size).to eq(38)
-    expect(telemetry['errata_dossiers'].map { |d| d['episode'] }).to include('errata-06')
+    expect(telemetry['errata_dossiers'].map { |d| d['episode'] }).to include('errata-fluffle-precursor')
   end
 
-  it 'offers Errata 06 in the teleprompter selector and resolves it client side' do
+  it 'offers Errata in the teleprompter selector and resolves it client side' do
     html = read.call('youtube/dashboard.html')
-    expect(html).to include('<option value="errata-06">')
+    expect(html).to include('<option value="errata-fluffle-precursor">')
     expect(html).to include("epNum.indexOf('errata-') === 0")
     expect(html).to include('errata_dossiers')
   end

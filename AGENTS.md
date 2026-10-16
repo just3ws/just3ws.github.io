@@ -11,6 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SEMANTIC ERRATA NAMING, TELEPROMPTER SELECTION & STUDIO RECORDING READINESS (2026-10-16):
+         Replaced arbitrary ordinal "Errata 06" with semantic slug `errata-fluffle-precursor` across episode dossiers, navigation, series index, pipeline telemetry schemas, and client-side teleprompter selector:
+         - Semantic Addressing & Teleprompter Selector (`_data/episodes/errata-fluffle-precursor.yml`, `youtube/dashboard.html`):
+           - Updated episode identifier to `errata-fluffle-precursor`, updated command palette to `/errata/fluffle`, and updated series index and localhost subnavigation to clean semantic labels.
+           - Updated teleprompter selector dropdown in `#tab-workshop` / `#tab-teleprompter` to `<option value="errata-fluffle-precursor">`, dynamically resolving spoken acts from `errata_dossiers` in telemetry.
+           - Authored automated regression specs in `spec/youtube/errata_surfaces_spec.rb` (23/23 specs passing).
+         - Localhost Topology Isolation:
+           - Replaced hardcoded `.com` links in `series/the-sound-above/index.html` and `dehum/dashboard.html` with root-relative paths (`/dehum/dashboard.html`, `/2026/10/16/...`), ensuring recording sessions remain isolated on `https://www.just3ws.localhost` without jumping to production.
+           - HTML-Proofer verified on production build: 1,025 files and 1,335 internal links passing with 0 failures (`PROOFER: PASS`).
+         - Season & Syllabus Decoupling Architecture (TASK-300):
+           - Filed backlog task `backlog/tasks/task-300 - Decouple-Season-Syllabus-and-Episode-Composition-Architecture.md` to establish declarative season and syllabus manifests, separate track selectors, and decouple episode identity from numeric sequence ordinals.
+         - Studio Recording Verification:
+           - Jekyll built across 1,037 pages and installed to localhost. Verified HTTP 200 on all 4 studio recording hubs: Audio Workbench (`/dehum/dashboard.html`), Fluffle Precursor article, YouTube Dashboard, and Episode 01 Rewatch Hub (`/series/the-sound-above/episode-01/`).
+
        - DEHUM REPO RELOCATION, GDRIVE SYNC & SWIFTBAR FAILED LOG RESILIENCE (2026-10-16):
          Resolved Google Drive sync errors, relocated dehum workspace, diagnosed large file download loops, and hardened SwiftBar failure counters:
          - Dehum Repo Relocation (`/Users/mike/github.com/just3ws/dehum`):
