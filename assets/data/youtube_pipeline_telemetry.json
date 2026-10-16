@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T17:47:12Z",
+  "generated_at": "2026-10-16T18:11:30Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -4247,8 +4247,8 @@
     "channel": "whoistechcmty",
     "halted": false,
     "stopped": false,
-    "locked": false,
-    "active_pid": null,
+    "locked": true,
+    "active_pid": "20746",
     "auto_intake": true,
     "self_healing_events": [],
     "targets": {
@@ -4262,10 +4262,39 @@
         "default_privacy": "unlisted",
         "staged_count": 0,
         "staged_items": [],
-        "pending_count": 0,
-        "pending_items": [],
-        "processing_count": 0,
-        "processing_items": [],
+        "pending_count": 4,
+        "pending_items": [
+          {
+            "filename": "VID_20261015_095414134.mp4",
+            "size_bytes": 2046391770,
+            "queue_position": 1,
+            "ingress_at": "2026-10-15T20:13:20Z"
+          },
+          {
+            "filename": "VID_20261015_090419012.mp4",
+            "size_bytes": 5229134035,
+            "queue_position": 2,
+            "ingress_at": "2026-10-15T20:13:43Z"
+          },
+          {
+            "filename": "VID_20261015_085435964.mp4",
+            "size_bytes": 1183808836,
+            "queue_position": 3,
+            "ingress_at": "2026-10-15T20:14:52Z"
+          },
+          {
+            "filename": "VID_20261015_082025363.mp4",
+            "size_bytes": 1306954992,
+            "queue_position": 4,
+            "ingress_at": "2026-10-15T20:15:32Z"
+          }
+        ],
+        "processing_count": 1,
+        "processing_items": [
+          {
+            "filename": "VID_20261015_101120773.mp4"
+          }
+        ],
         "processed_count": 1,
         "recent_processed": [
           {
@@ -4332,6 +4361,228 @@
       }
     },
     "activity_stream": [
+      {
+        "timestamp": "2026-10-16T18:11:30Z",
+        "stage": "dsp",
+        "level": "info",
+        "message": "Extracted 16kHz audio from VID_20261015_101120773.mp4 in 2.67s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 2.67
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:27Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261015_101120773.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:22Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 20746)",
+        "details": {
+          "pid": 20746
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:21Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
+        "details": {
+          "stale_pid": "9999999"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:21Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed stranded file VID_20261015_101120773.mp4: restored from processing/ to pending/ in ramblin-amblin",
+        "details": {
+          "target": "ramblin-amblin",
+          "file": "VID_20261015_101120773.mp4"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:08Z",
+        "stage": "dsp",
+        "level": "info",
+        "message": "Extracted 16kHz audio from VID_20261015_101120773.mp4 in 1.15s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 1.15
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:07Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261015_101120773.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:02Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 19159)",
+        "details": {
+          "pid": 19159
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:02Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
+        "details": {
+          "stale_pid": "9999999"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:11:02Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed stranded file VID_20261015_101120773.mp4: restored from processing/ to pending/ in ramblin-amblin",
+        "details": {
+          "target": "ramblin-amblin",
+          "file": "VID_20261015_101120773.mp4"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:10:17Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-15): Going to be wearing a hood because mosquitoes\" (0.09s)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-15): Going to be wearing a hood because mosquitoes",
+          "duration_seconds": 0.09
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:10:17Z",
+        "stage": "whisper",
+        "level": "info",
+        "message": "ztranscribe STT completed for VID_20261015_101120773.mp4 in 149.56s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 149.56
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:07:47Z",
+        "stage": "dsp",
+        "level": "info",
+        "message": "Extracted 16kHz audio from VID_20261015_101120773.mp4 in 752.32s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 752.32
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:55:15Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261015_101120773.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:55:10Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 50144)",
+        "details": {
+          "pid": 50144
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:52:24Z",
+        "stage": "error",
+        "level": "error",
+        "message": "Failed processing VID_20261015_095414134.mp4: undefined method 'shellescape' for an instance of String",
+        "details": {
+          "filename": "VID_20261015_095414134.mp4",
+          "error": "undefined method 'shellescape' for an instance of String"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:52:24Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261015_095414134.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261015_095414134.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:52:18Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 38675)",
+        "details": {
+          "pid": 38675
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:52:17Z",
+        "stage": "error",
+        "level": "error",
+        "message": "Failed processing VID_20261015_101120773.mp4: undefined method 'shellescape' for an instance of String",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "error": "undefined method 'shellescape' for an instance of String"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:52:17Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261015_101120773.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:52:12Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 38443)",
+        "details": {
+          "pid": 38443
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:50:19Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
+        "details": {
+          "stale_pid": "9999999"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T17:50:04Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
+        "details": {
+          "stale_pid": "9999999"
+        }
+      },
       {
         "timestamp": "2026-10-16T17:47:07Z",
         "stage": "self_healing",
@@ -4484,129 +4735,9 @@
         "details": {
           "stale_pid": "9999999"
         }
-      },
-      {
-        "timestamp": "2026-10-16T05:14:50Z",
-        "stage": "control",
-        "level": "success",
-        "message": "Cued Episode 0 directly into live OBS overlays",
-        "details": {
-          "episode": 0
-        }
-      },
-      {
-        "timestamp": "2026-10-16T05:14:42Z",
-        "stage": "control",
-        "level": "success",
-        "message": "Cued Episode 0 directly into live OBS overlays",
-        "details": {
-          "episode": 0
-        }
-      },
-      {
-        "timestamp": "2026-10-16T04:38:46Z",
-        "stage": "autonomous",
-        "level": "info",
-        "message": "Autonomous intake watcher online. Concurrency lock free (Idle). Strict FIFO queue active.",
-        "details": {
-          "mode": "autonomous",
-          "status": "nominal"
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:12:34Z",
-        "stage": "archive",
-        "level": "success",
-        "message": "Successfully deployed VID_20261015_144836712.mp4 to YouTube (dN--7I0FRvY) and archived master",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4",
-          "video_id": "dN--7I0FRvY",
-          "playlist": "PLNtb969T2-l0",
-          "url": "https://youtu.be/dN--7I0FRvY"
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:12:15Z",
-        "stage": "captions",
-        "level": "info",
-        "message": "Uploaded WebVTT captions track to video dN--7I0FRvY",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4",
-          "video_id": "dN--7I0FRvY"
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:11:58Z",
-        "stage": "youtube",
-        "level": "info",
-        "message": "Uploaded VID_20261015_144836712.mp4 to YouTube as dN--7I0FRvY",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4",
-          "video_id": "dN--7I0FRvY",
-          "url": "https://youtu.be/dN--7I0FRvY"
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:07:45Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Production Incidents: One of My Favorite Things | Ramblin' & Amblin'\"",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4",
-          "title": "Production Incidents: One of My Favorite Things | Ramblin' & Amblin'"
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:07:42Z",
-        "stage": "whisper",
-        "level": "info",
-        "message": "Whisper STT completed for VID_20261015_144836712.mp4 on Apple Silicon",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4",
-          "turns": 14
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:06:15Z",
-        "stage": "dsp",
-        "level": "info",
-        "message": "Extracted 16kHz audio from VID_20261015_144836712.mp4 to transient scratch",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4"
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:05:31Z",
-        "stage": "lock",
-        "level": "info",
-        "message": "Acquired concurrency lock for VID_20261015_144836712.mp4 (Target: ramblin-amblin)",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4",
-          "target": "ramblin-amblin"
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:05:30Z",
-        "stage": "stability",
-        "level": "info",
-        "message": "File size stability verified across 15s observation interval (Delta: 0 B)",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4"
-        }
-      },
-      {
-        "timestamp": "2026-10-15T20:05:12Z",
-        "stage": "ingress",
-        "level": "info",
-        "message": "Detected VID_20261015_144836712.mp4 in ramblin-amblin/pending/ (1.63 GB)",
-        "details": {
-          "filename": "VID_20261015_144836712.mp4",
-          "target": "ramblin-amblin",
-          "size_bytes": 1752243038
-        }
       }
     ],
-    "polled_at": "2026-10-16T17:47:48Z"
+    "polled_at": "2026-10-16T18:13:52Z"
   },
   "assets": [
     {
@@ -8299,5 +8430,5 @@
       "title_length": 34
     }
   ],
-  "updated_at": "2026-10-16T17:47:48Z"
+  "updated_at": "2026-10-16T18:13:52Z"
 }

@@ -1,0 +1,463 @@
+# Media Pipeline Architecture, Contracts, and Schemas
+
+## Executive Summary & Core Design Tenets
+
+The media publishing system automates video ingestion, speech recognition, metadata synthesis, and YouTube publishing across all channels and series: *Ramblin' & Amblin'*, *The Sound Above*, and technical *Errata*. The architecture adheres to six core operational tenets:
+
+1. **Zero Permanent Local SSD Footprint**: Raw multi-gigabyte video files reside in cloud storage (Google Drive). Scratch audio files created during processing (`/tmp/intake_scratch_*`) are automatically evicted on task completion or failure.
+2. **Strict Serial Concurrency**: Exactly one video is processed at any given moment. Processing is governed by an atomic file lock (`~/.local/state/just3ws/pipeline.lock`) storing the active worker PID, target name, and filename. This guarantees thermal, CPU, memory, and Apple Silicon Neural Engine stability.
+3. **Strict FIFO by File Age with Ingress Stability Verification**: Videos within `pending/` are ingested oldest first based on file modification timestamp. In-flight mobile uploads over cellular or Wi-Fi are protected by a multi-sample stability check (`stable_file?` with 5-second interval verification) preventing premature processing.
+4. **Shared zdots Platform Service for Transcription**: Speech-to-text is routed strictly through the shared zdots tool `ztranscribe` (`~/.config/zsh/bin/ztranscribe -> ~/.config/zsh/recipes/yt-transcribe`). This executes `whisper-cpp` with native Apple Silicon Metal GPU acceleration and domain vocabulary priming, outputting WebVTT captions, SRT subtitles, and plain text transcripts.
+5. **Autonomous Self-Healing Ingress Watcher**: The streamer daemon continuously monitors worker PID liveness. If a worker process exits abruptly or the host restarts, stale PID lock files are unlinked automatically and any files stranded in `processing/` are safely restored to `pending/`.
+6. **Unified Observability Triad**: Realtime state is broadcast via Server-Sent Events (SSE) at `/events`, queryable via REST at `/status` and `/telemetry.json`, appended to structured JSONL logs, and surfaced directly in both the macOS SwiftBar menu bar and the localhost operations dashboard.
+
+---
+
+## Component Cartography & Dependency Graph
+
+The diagram below maps all actors, background processes, file systems, network boundaries, and user interfaces across the media publishing lifecycle.
+
+```mermaid
+graph TD
+    classDef mobile fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e;
+    classDef storage fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#075985;
+    classDef pipeline fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#166534;
+    classDef zdots fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#6b21a8;
+    classDef google fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#991b1b;
+    classDef ui fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a;
+
+    subgraph Field Ingress
+        Mobile["📱 Mobile Field Recording<br/>(Google Pixel / Camera)"]:::mobile
+        GDriveApp["☁️ Google Drive Sync Client<br/>(Background Daemon)"]:::mobile
+    end
+
+    subgraph Storage & Queues
+        QueuePending["📁 pending/<br/>(FIFO Queue by File Age)"]:::storage
+        QueueProcessing["⚙️ processing/<br/>(Active In-Flight Lock)"]:::storage
+        QueueProcessed["📦 processed/YYYY-MM/<br/>(Permanent Cloud Archive)"]:::storage
+        QueueFailed["🚨 failed/<br/>(Quarantine + Error Log)"]:::storage
+    end
+
+    subgraph Local Runtime & Orchestration
+        IntakeWorker["🛠️ bin/intake_drive_video.rb<br/>(Worker CLI / Lock Guard)"]:::pipeline
+        FFmpegEngine["🎧 FFmpeg Audio Extractor<br/>(16kHz Mono PCM in /tmp)"]:::pipeline
+        Daemon["📡 bin/live_dashboard_streamer.rb<br/>(Loopback Port 7025)"]:::pipeline
+        StateDir["💾 ~/.local/state/just3ws/<br/>(Locks, Activity, History)"]:::pipeline
+    end
+
+    subgraph Shared Platform Services
+        ZTranscribe["⚡ ztranscribe (zdots)<br/>(recipes/yt-transcribe)"]:::zdots
+        WhisperMetal["🧠 whisper-cpp + Metal GPU<br/>(Apple Silicon Acceleration)"]:::zdots
+        VocabPrimer["📖 Domain Lexicon Priming<br/>(SCMC, Obtiva, 8th Light)"]:::zdots
+    end
+
+    subgraph Publishing Targets & Data Lake
+        YouTubeAPI["▶️ YouTube Data API v3<br/>(Videos, Playlists, Captions)"]:::google
+        DataLake["🗄️ Career Datalake & Assets<br/>(_data/transcripts, video_assets)"]:::pipeline
+    end
+
+    subgraph Cockpit & Telemetry Surfaces
+        DashFunnel["📊 Operations Dashboard<br/>(Live Ingress Kanban Funnel)"]:::ui
+        DashBPMN["⚙️ BPMN 2.0 Monitor<br/>(SLO Tracking & Simulation)"]:::ui
+        DashTeleprompter["📜 Teleprompter Studio<br/>(38 Native Textream Scripts)"]:::ui
+        SwiftBar["🍏 SwiftBar Menu Monitor<br/>(Processor State & Queue Counts)"]:::ui
+        OBSOverlays["🎬 OBS Studio Broadcast<br/>(Scene Overlays & Cue API)"]:::ui
+    end
+
+    Mobile -->|Uploads Video| GDriveApp
+    GDriveApp -->|Syncs File| QueuePending
+    Daemon -->|Autonomous Scan| QueuePending
+    Daemon -->|Spawns Worker| IntakeWorker
+    IntakeWorker -->|Validates Stability| QueuePending
+    IntakeWorker -->|Acquires Lock| StateDir
+    IntakeWorker -->|Moves File| QueueProcessing
+    IntakeWorker -->|Extracts Audio| FFmpegEngine
+    FFmpegEngine -->|16kHz WAV| ZTranscribe
+    ZTranscribe -->|Inference via Metal| WhisperMetal
+    VocabPrimer -->|Domain Prompts| ZTranscribe
+    ZTranscribe -->|VTT Captions + Text| IntakeWorker
+    IntakeWorker -->|Synthesizes Metadata| DataLake
+    IntakeWorker -->|Uploads Video & Captions| YouTubeAPI
+    IntakeWorker -->|Archives on Success| QueueProcessed
+    IntakeWorker -->|Quarantines on Error| QueueFailed
+    IntakeWorker -->|Releases Lock & Emits JSONL| StateDir
+    StateDir -->|Reads History & Activity| Daemon
+    Daemon -->|SSE Event Stream :7025| DashFunnel
+    Daemon -->|SSE Status| SwiftBar
+    DashFunnel -->|Halt / Stop / Retry API| Daemon
+    DashTeleprompter -->|Cue Broadcast Overlay| OBSOverlays
+```
+
+---
+
+## End-to-End Workflow Sequence
+
+The sequence diagram below illustrates the exact chronological interactions, token exchanges, lock lifecycles, and error handling branches from mobile capture to YouTube delivery.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Creator as 📱 Field Creator
+    participant Drive as ☁️ Google Drive
+    participant Daemon as 📡 Streamer Daemon (:7025)
+    participant Worker as 🛠️ intake_drive_video.rb
+    participant Lock as 🔒 Lock Sentinel
+    participant FFmpeg as 🎧 FFmpeg Audio
+    participant ZTrans as ⚡ zdots ztranscribe
+    participant YouTube as ▶️ YouTube API v3
+    participant Cockpit as 💻 Dashboard & SwiftBar
+
+    Creator->>Drive: Upload raw video to target pending/
+    Note over Drive: Syncs to local filesystem path
+    loop Autonomous Ingress Check (Every 15s)
+        Daemon->>Drive: Scan pending/ for candidates
+    end
+    Daemon->>Worker: Spawn worker process (ruby bin/intake_drive_video.rb -1)
+    Worker->>Drive: Inspect candidate file
+    Worker->>Worker: Run stable_file? check (sample 1, wait 3s, sample 2, wait 2s)
+    alt File Size Changed (Upload In-Flight)
+        Worker-->>Daemon: Skip file until upload completes
+    else File Stable
+        Worker->>Lock: Acquire pipeline.lock (worker PID, target, filename)
+        Lock-->>Cockpit: SSE broadcast (is_locked: true, active_pid)
+        Worker->>Drive: Atomic move pending/ -> processing/
+        Worker->>FFmpeg: Extract 16kHz mono PCM audio to /tmp/intake_scratch.wav
+        FFmpeg-->>Worker: Audio extraction complete
+        Worker->>ZTrans: Invoke ztranscribe --engine whisper-cpp --output-format vtt,srt,txt
+        Note over ZTrans: Apple Silicon Metal acceleration + domain vocabulary priming
+        ZTrans-->>Worker: Output VTT captions and plain text transcript
+        Worker->>Worker: Synthesize title, tags, description, playlist from targets YAML
+        Worker->>YouTube: Resumable chunked upload video (3-attempt exponential backoff)
+        YouTube-->>Worker: Return YouTube Video ID
+        Worker->>YouTube: Upload WebVTT captions track (language: en)
+        Worker->>YouTube: Insert into target playlist
+        Worker->>Worker: Persist transcript to _data/transcripts/ and update video_assets.yml
+        Worker->>Drive: Move processing/ -> processed/YYYY-MM/
+        Worker->>Drive: Write companion <filename>.receipt.json
+        Worker->>Worker: Delete scratch audio from /tmp (0 bytes permanent waste)
+        Worker->>Lock: Release pipeline.lock and record execution telemetry
+        Lock-->>Cockpit: SSE broadcast (is_locked: false, health: idle_ready)
+    end
+
+    rect rgb(254, 242, 242)
+        Note over Worker,Lock: Failure Handling & Quarantine Branch
+        Worker->>Drive: Move processing/ -> failed/<filename>
+        Worker->>Drive: Write companion <filename>.error.log with backtrace
+        Worker->>Lock: Release pipeline.lock and mark quarantine state
+        Lock-->>Cockpit: SSE broadcast (health: degraded_quarantine)
+        Cockpit-->>Creator: Renders Red Alert Card in Funnel Column 5 with 1-click Re-queue
+    end
+```
+
+---
+
+## Operational State Machine & Recovery Flows
+
+The state machine diagram below models all system states, transitions, self-healing branches, and operator interventions.
+
+```mermaid
+stateDiagram-v2
+    [*] --> IdleReady: Daemon and Worker Idle
+
+    IdleReady --> CandidateDiscovered: File detected in pending/
+    CandidateDiscovered --> VerifyingStability: Sample file size
+    VerifyingStability --> CandidateDiscovered: Size changing (wait next cycle)
+    VerifyingStability --> ConcurrencyLocked: Size stable across 5 seconds
+
+    ConcurrencyLocked --> AudioExtraction: Move to processing/, acquire lock
+    AudioExtraction --> Transcribing: Scratch audio written to /tmp
+    Transcribing --> MetadataSynthesis: Captions & plain text emitted
+    MetadataSynthesis --> YouTubeUploading: Staged description & tags prepared
+    YouTubeUploading --> CaptionInsertion: Video uploaded, Video ID received
+    CaptionInsertion --> ArchivingAndEviction: WebVTT captions uploaded
+    ArchivingAndEviction --> IdleReady: Move to processed/, purge /tmp, release lock
+
+    AudioExtraction --> Quarantined: Error / Exception tripped
+    Transcribing --> Quarantined: Transcription failure
+    YouTubeUploading --> Quarantined: Upload rejected / Auth error
+    CaptionInsertion --> Quarantined: Caption format rejected
+
+    Quarantined --> PendingQueue: Operator clicks Re-queue in Funnel UI
+    Quarantined --> PendingQueue: Operator runs bin/pipeline retry
+    PendingQueue --> CandidateDiscovered: File moved back to pending/
+
+    state "Self-Healing Watcher" as SelfHealing {
+        [*] --> AuditProcessLiveness: Every poll cycle
+        AuditProcessLiveness --> StaleLockDetected: Lock exists but PID is dead
+        StaleLockDetected --> UnlinkStaleLock: Remove pipeline.pid / pipeline.lock
+        UnlinkStaleLock --> RecoverStrandedFiles: Scan processing/ for stranded media
+        RecoverStrandedFiles --> RestoreToPending: Move stranded files to pending/
+        RestoreToPending --> [*]: Log self-healing event & emit SSE
+    }
+```
+
+---
+
+## Concrete Schemas & API Contracts
+
+### 1. Target Intake Configuration Schema (`_data/media_intake_targets.yml`)
+
+Each intake target defines channel ownership, Google Drive folder paths, default YouTube publishing parameters, and content categorization.
+
+```yaml
+# Schema Definition for media_intake_targets.yml
+targets:
+  <target_key>:
+    name: string                    # Human readable title of the intake track
+    slug: string                    # URL safe identifier
+    channel_id: string              # YouTube Channel ID (e.g., UCxxxxxxxx)
+    channel_name: string            # YouTube Channel display name
+    drive_path: string              # Relative path within Google Drive root
+    playlist_id: string             # YouTube Playlist ID for automatic addition
+    default_privacy: string         # unlisted | public | private
+    category_id: string             # YouTube Category ID (27 = Education, 28 = Science & Tech)
+    default_tags: list[string]      # Canonical keyword tags applied to video
+    transcription:
+      engine: string                # ztranscribe (canonical)
+      model: string                 # large-v3-turbo | base.en | medium.en
+      language: string              # en
+      prompt: string                # Priming vocabulary context
+    naming_convention:
+      title_template: string        # Pattern for generated video title
+      slug_prefix: string           # Prefix for transcript files
+    archetype: string               # freeform_field_notes | technical_rewatch | structured_errata
+```
+
+#### Example Target Configuration:
+```yaml
+targets:
+  ramblin-amblin:
+    name: "Ramblin' & Amblin'"
+    slug: "ramblin-amblin"
+    channel_id: "UCxxxxxxxx"
+    channel_name: "@whoistechcmty"
+    drive_path: "Media Intake/whoistechcmty/ramblin-amblin"
+    playlist_id: "PLxxxxxxxxxxxx"
+    default_privacy: "unlisted"
+    category_id: "27"
+    default_tags:
+      - "Ramblin & Amblin"
+      - "Software Craftsmanship"
+      - "Engineering Leadership"
+      - "Field Dispatch"
+    transcription:
+      engine: "ztranscribe"
+      model: "large-v3-turbo"
+      language: "en"
+      prompt: "Software craftsmanship, Chicago Alt.NET, SCMC, McHenry County, 8th Light, Obtiva."
+    naming_convention:
+      title_template: "Northern Illinois Field Dispatch: {date} - {topic}"
+      slug_prefix: "field-dispatch"
+    archetype: "freeform_field_notes"
+```
+
+---
+
+### 2. Semantic Dossier Schema (`_data/episodes/episode-XX.yml`)
+
+Used by Episode Studio (`#tab-workshop`) and live broadcast cueing.
+
+```yaml
+# Schema Definition for Episode Semantic Dossiers
+episode:
+  number: integer                   # Episode index (00..37)
+  slug: string                      # Canonical episode slug
+  title: string                     # Practitioner title
+  status: string                    # staged | published | draft
+  movement:
+    number: integer                 # Movement index (1..6)
+    name: string                    # Movement title (e.g., "The Chicago Workshop")
+  interview_id: string              # Reference ID in _data/interviews.yml
+  youtube_id: string                # Published YouTube Video ID (empty if staged)
+  video_asset_id: string            # Reference ID in _data/video_assets.yml
+
+narrative_anatomy:
+  theme: string                     # Core theme
+  tone: string                      # Practitioner tone (e.g., "reflective, authentic")
+  core_inquiry: string              # Central engineering question
+  ai_era_parallel: string           # Contemporary lesson for AI-assisted programming
+
+human_stories:
+  act_1_recollection: string        # Spoken reflection for Act 1
+  act_2_recollection: string        # Spoken reflection for Act 2
+  act_5_recollection: string        # Spoken reflection for Act 5
+
+teleprompter_script:
+  act_1_cold_open: string           # Act 1 spoken rundown
+  act_2_historical_context: string  # Act 2 spoken rundown
+  act_3_interview_excerpt: string   # Act 3 spoken rundown
+  act_4_audio_forensics: string     # Act 4 spoken rundown
+  act_5_contemporary_lesson: string # Act 5 spoken rundown
+  act_6_closing_credits: string     # Act 6 spoken rundown
+
+research_attachments:
+  case_studies: list[string]        # Related case study paths
+  patreon_backers: list[string]     # Historical attribution list
+  lexicon_concepts: list[string]    # Concepts registered in _data/concepts.yml
+```
+
+---
+
+### 3. Daemon Telemetry & Status API Contract
+
+Served by `bin/live_dashboard_streamer.rb` on loopback port 7025.
+
+#### `GET /status` (HTTP 200)
+```json
+{
+  "status": "ok",
+  "health": "idle_ready",
+  "connected_clients": 2,
+  "time": "2026-10-16T18:00:55Z",
+  "worker": {
+    "active_pid": "50144",
+    "is_locked": true,
+    "auto_intake_enabled": true
+  },
+  "queue_summary": {
+    "staged": 0,
+    "pending": 3,
+    "processing": 1,
+    "processed": 1,
+    "quarantined": 0
+  },
+  "self_healing": {
+    "last_events": [
+      {
+        "timestamp": "2026-10-16T17:45:00Z",
+        "action": "recovered_stranded_file",
+        "filename": "VID_example.mp4",
+        "source": "processing/",
+        "destination": "pending/"
+      }
+    ]
+  },
+  "recent_activity": [
+    {
+      "timestamp": "2026-10-16T17:55:15Z",
+      "stage": "lock",
+      "level": "info",
+      "message": "Acquired concurrency lock for VID_20261015_101120773.mp4 (Target: ramblin-amblin)",
+      "details": {
+        "filename": "VID_20261015_101120773.mp4",
+        "target": "ramblin-amblin"
+      }
+    }
+  ]
+}
+```
+
+#### Health Status Enum Values:
+- `idle_ready`: No active worker, queues clean or empty, lock free.
+- `pending`: Files present in `pending/`, worker awaiting launch or next cycle.
+- `processing`: Worker PID active, file actively undergoing audio extraction, transcription, or upload.
+- `degraded_quarantine`: One or more files have failed and reside in `failed/` awaiting operator retry.
+- `halted`: Graceful halt sentinel active (`~/.local/state/just3ws/pipeline.halt`). Worker finishes current file and stops.
+- `stopped`: Immediate abort sentinel active or worker terminated.
+
+---
+
+### 4. Operator Control Endpoints Contract
+
+All operator actions are POST endpoints routed through loopback port 7025 or reverse-proxied via `https://www.just3ws.localhost/api/live/*`.
+
+| Endpoint | Method | Parameters | Description |
+| :--- | :--- | :--- | :--- |
+| `/api/live/pipeline/halt` | `POST` | None | Sets graceful halt sentinel. Ingests current file then pauses queue. |
+| `/api/live/pipeline/stop` | `POST` | None | Signals worker PID with `SIGINT`, purges `/tmp`, restores processing file to `pending/`. |
+| `/api/live/pipeline/resume` | `POST` | None | Clears halt sentinel, triggers immediate autonomous queue scan. |
+| `/api/live/pipeline/retry` | `POST` | `filename=<name>&target=<target>` | Relocates quarantined file from `failed/` back to `pending/` and clears error log. |
+| `/api/live/pipeline/queue_pending` | `POST` | `filename=<name>&target=<target>` | Moves staged file from `staged/` to `pending/` for immediate FIFO execution. |
+| `/api/live/pipeline/cue_obs` | `POST` | `episode=<num>` | Synchronizes OBS Studio overlay state with requested episode dossier. |
+
+---
+
+### 5. Post-Intake Receipt Schema (`<filename>.receipt.json`)
+
+Written alongside every video in `processed/YYYY-MM/` upon successful publication.
+
+```json
+{
+  "receipt_version": "1.0",
+  "source_filename": "VID_20261015_101120773.mp4",
+  "processed_at": "2026-10-16T18:15:22Z",
+  "target_channel": "@whoistechcmty",
+  "target_track": "ramblin-amblin",
+  "youtube_id": "7YeFpKn5FbU",
+  "youtube_url": "https://youtu.be/7YeFpKn5FbU",
+  "playlist_id": "PLxxxxxxxxxxxx",
+  "privacy_status": "unlisted",
+  "duration_seconds": 1645.78,
+  "transcription": {
+    "engine": "ztranscribe",
+    "binary": "/Users/mike/.config/zsh/bin/ztranscribe",
+    "recipe": "yt-transcribe",
+    "model": "large-v3-turbo",
+    "word_count": 4218,
+    "captions_file": "VID_20261015_101120773.vtt",
+    "transcript_file": "_data/transcripts/field-dispatch-20261015.yml"
+  },
+  "execution_telemetry": {
+    "audio_extraction_seconds": 45.2,
+    "transcription_seconds": 182.4,
+    "metadata_synthesis_seconds": 1.1,
+    "youtube_upload_seconds": 64.3,
+    "captions_upload_seconds": 2.8,
+    "total_elapsed_seconds": 295.8,
+    "upload_throughput_mb_s": 64.6
+  }
+}
+```
+
+---
+
+### 6. Activity Stream JSONL Contract (`~/.local/state/just3ws/pipeline_activity.jsonl`)
+
+Appended at every significant state change. Read by the streamer daemon to supply the Live Ingress Funnel event log.
+
+```json
+{"timestamp":"2026-10-16T17:55:10Z","stage":"autonomous","level":"info","message":"Autonomous intake triggered single-worker ingestion (PID 50144)","details":{"pid":50144}}
+{"timestamp":"2026-10-16T17:55:15Z","stage":"lock","level":"info","message":"Acquired concurrency lock for VID_20261015_101120773.mp4 (Target: ramblin-amblin)","details":{"filename":"VID_20261015_101120773.mp4","target":"ramblin-amblin"}}
+{"timestamp":"2026-10-16T17:55:16Z","stage":"audio","level":"info","message":"Extracting 16kHz mono PCM scratch audio via FFmpeg","details":{"scratch":"/tmp/intake_scratch_50144_1792173315.wav"}}
+{"timestamp":"2026-10-16T17:56:02Z","stage":"transcribe","level":"info","message":"Invoking ztranscribe pipeline with Apple Silicon Metal acceleration","details":{"model":"large-v3-turbo"}}
+{"timestamp":"2026-10-16T17:59:05Z","stage":"upload","level":"info","message":"Uploading video to YouTube API v3 (Resumable chunked)","details":{"size_bytes":4156016521}}
+{"timestamp":"2026-10-16T18:00:10Z","stage":"publish","level":"info","message":"Published video 7YeFpKn5FbU to playlist PLxxxxxxxxxxxx","details":{"video_id":"7YeFpKn5FbU"}}
+```
+
+---
+
+## Operator & AI Agent Verification Matrix
+
+When verifying system health, diagnosing incidents, or writing automated tests, execute these deterministic inspection commands:
+
+### Quick Diagnostic One-Liners
+
+```bash
+# 1. Check live health status, queue counts, and worker lock
+curl -s http://127.0.0.1:7025/status | jq .
+
+# 2. Inspect active ingestion worker and child processes (FFmpeg, ztranscribe)
+ps aux | grep -E "intake_drive_video|ztranscribe|ffmpeg" | grep -v grep
+
+# 3. Check scratch audio file footprint in /tmp
+ls -lh /tmp/intake_scratch_* 2>/dev/null || echo "Scratch empty (Clean)"
+
+# 4. Check active concurrency lock file contents
+cat ~/.local/state/just3ws/pipeline.lock 2>/dev/null || echo "Unlocked (Idle)"
+
+# 5. Tail live activity stream
+tail -n 20 ~/.local/state/just3ws/pipeline_activity.jsonl | jq .
+
+# 6. Verify ztranscribe shared tool discovery
+~/.config/zsh/bin/ztranscribe --help | head -n 5
+```
+
+### Incident Tripping Conditions & Remediation Playbook
+
+| Symptom | Root Cause | Remediation Procedure |
+| :--- | :--- | :--- |
+| Red card in Funnel Column 5 (`failed/`) | Execution failure during extraction, transcription, or YouTube upload. Error logged in `<filename>.error.log`. | Click `🔄 Re-queue to Pending` on card in dashboard, or run `curl -X POST "http://127.0.0.1:7025/api/live/pipeline/retry?filename=<name>&target=<target>"`. |
+| Concurrency lock stuck while no process is alive | Stale PID lock file left after reboot or hard crash. | Self-healing watcher cleans automatically within 15 seconds. Or run `rm ~/.local/state/just3ws/pipeline.lock`. |
+| File remains in `pending/` and is not processed | File is currently being uploaded from mobile device and fails `stable_file?` 5-second check. | Allow mobile upload to finish. Once file size stabilizes across 5 seconds, intake begins automatically. |
+| Ingestion stops after current file completes | Graceful halt sentinel is armed (`pipeline.halt`). | Click `Resume Queue` in dashboard or run `rm ~/.local/state/just3ws/pipeline.halt`. |
+| `ztranscribe` binary not found | Missing symlink `~/.config/zsh/bin/ztranscribe -> ../recipes/yt-transcribe`. | Run `ln -s ~/.config/zsh/recipes/yt-transcribe ~/.config/zsh/bin/ztranscribe`. |

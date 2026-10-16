@@ -121,6 +121,9 @@ body_class: page-youtube-dashboard
     <button type="button" class="yt-tab-btn" onclick="switchYtTab('bpmn')" id="tab-btn-bpmn" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
       ⚙️ BPMN Workflow &amp; SLO Monitor
     </button>
+    <button type="button" class="yt-tab-btn" onclick="switchYtTab('architecture')" id="tab-btn-architecture" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 0.75rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: #64748b; cursor: pointer; white-space: nowrap;">
+      📐 System Architecture &amp; Contracts
+    </button>
   </nav>
 
   <!-- ========================================================================= -->
@@ -161,6 +164,9 @@ body_class: page-youtube-dashboard
           </button>
           <button type="button" onclick="triggerPipelineAction('resume')" id="btn-pipeline-resume" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
             ▶️ Resume
+          </button>
+          <button type="button" onclick="switchYtTab('architecture')" id="btn-pipeline-arch" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #f0fdfa; border: 1px solid #ccfbf1; color: #0f766e; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
+            📐 System Contracts &amp; Schemas
           </button>
         </div>
       </div>
@@ -1448,7 +1454,10 @@ body_class: page-youtube-dashboard
             Click on any task node or boundary event to inspect real-time SLI metrics, target SLO boundaries, and failure resolution runbooks.
           </p>
         </div>
-        <div style="display: flex; gap: 0.5rem;">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button type="button" onclick="switchYtTab('architecture')" style="background: #f0fdfa; color: #0f766e; border: 1px solid #ccfbf1; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
+            📐 View Full Contracts &amp; Schemas ↗
+          </button>
           <button type="button" onclick="simulateBpmnFlow()" style="background: #0f766e; color: #ffffff; border: none; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
             ▶ Simulate Workflow Execution
           </button>
@@ -1767,11 +1776,634 @@ body_class: page-youtube-dashboard
 
   </section>
 
+  <!-- ========================================================================= -->
+  <!-- TAB 8: SYSTEM ARCHITECTURE, SCHEMAS & CONTRACTS -->
+  <!-- ========================================================================= -->
+  <section id="tab-pane-architecture" class="yt-tab-pane" style="display: none;">
+
+    <!-- Architecture Header Banner -->
+    <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 9999px; text-transform: uppercase;">
+            📐 System Architecture &amp; Contracts
+          </span>
+          <span style="background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 9999px;">
+            Zero Permanent Local SSD
+          </span>
+          <span style="background: #e0f2fe; color: #0369a1; border: 1px solid rgba(3, 105, 161, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 9999px;">
+            Strict FIFO by Age
+          </span>
+          <span style="background: #f3e8ff; color: #7e22ce; border: 1px solid rgba(126, 34, 206, 0.25); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 9999px;">
+            Shared zdots Platform Pipeline
+          </span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button type="button" onclick="copyCliCommand('docs/architecture/pipeline-contracts-and-schemas.md', this)" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #faf8f5; border: 1px solid #cbd5e1; color: #475569; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700; cursor: pointer;">
+            📋 Copy Spec Path
+          </button>
+          <a href="/api/live/status" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #f0fdfa; border: 1px solid #ccfbf1; color: #0f766e; text-decoration: none; padding: 0.45rem 0.85rem; border-radius: 0.375rem; font-size: 0.825rem; font-weight: 700;">
+            📡 Live Status JSON ↗
+          </a>
+        </div>
+      </div>
+
+      <h2 style="font-size: 1.65rem; font-weight: 800; color: #0f172a; margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif); letter-spacing: -0.01em;">
+        System Cartography, Data Contracts &amp; Operational Schemas
+      </h2>
+      <p style="font-size: 0.95rem; color: #475569; margin: 0; max-width: 65rem; line-height: 1.6;">
+        Authoritative architectural reference and operational manual for humans and AI agents. Inspect end-to-end component dependencies, sequence lifecycles, self-healing state transitions, concrete YAML and JSON schemas, and live diagnostic commands.
+      </p>
+
+      <!-- Architecture Section Quick Links -->
+      <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem; flex-wrap: wrap;">
+        <a href="#arch-topology" style="font-size: 0.8rem; font-weight: 700; color: #0f766e; background: #f0fdfa; border: 1px solid #ccfbf1; padding: 0.3rem 0.65rem; border-radius: 0.25rem; text-decoration: none;">1. Component Topology</a>
+        <a href="#arch-sequence" style="font-size: 0.8rem; font-weight: 700; color: #0f766e; background: #f0fdfa; border: 1px solid #ccfbf1; padding: 0.3rem 0.65rem; border-radius: 0.25rem; text-decoration: none;">2. Workflow Sequence</a>
+        <a href="#arch-state" style="font-size: 0.8rem; font-weight: 700; color: #0f766e; background: #f0fdfa; border: 1px solid #ccfbf1; padding: 0.3rem 0.65rem; border-radius: 0.25rem; text-decoration: none;">3. State Machine &amp; Recovery</a>
+        <a href="#arch-schemas" style="font-size: 0.8rem; font-weight: 700; color: #0f766e; background: #f0fdfa; border: 1px solid #ccfbf1; padding: 0.3rem 0.65rem; border-radius: 0.25rem; text-decoration: none;">4. Schemas &amp; Data Contracts</a>
+        <a href="#arch-diagnostics" style="font-size: 0.8rem; font-weight: 700; color: #0f766e; background: #f0fdfa; border: 1px solid #ccfbf1; padding: 0.3rem 0.65rem; border-radius: 0.25rem; text-decoration: none;">5. Diagnostic Matrix &amp; Playbook</a>
+      </div>
+    </div>
+
+    <!-- 1. Component Topology & Dependency Graph -->
+    <div id="arch-topology" style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            1. Component Cartography &amp; Dependency Graph
+          </h3>
+          <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #64748b;">
+            Physical devices, cloud sync paths, background daemons, shared zdots platform services, YouTube APIs, and telemetry surfaces.
+          </p>
+        </div>
+        <button type="button" onclick="copyMermaidBlock('mermaid-topology-code', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; color: #475569; padding: 0.35rem 0.75rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+          📋 Copy Mermaid Code
+        </button>
+      </div>
+
+      <div style="border: 1px solid #e2e8f0; border-radius: 0.5rem; background: #faf8f5; padding: 1.25rem; overflow-x: auto;">
+        <pre style="margin: 0;"><code class="language-mermaid" id="mermaid-topology-code">graph TD
+    classDef mobile fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e;
+    classDef storage fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#075985;
+    classDef pipeline fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#166534;
+    classDef zdots fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#6b21a8;
+    classDef google fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#991b1b;
+    classDef ui fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a;
+
+    subgraph Field Ingress
+        Mobile["📱 Mobile Field Recording<br/>(Google Pixel / Camera)"]:::mobile
+        GDriveApp["☁️ Google Drive Sync Client<br/>(Background Daemon)"]:::mobile
+    end
+
+    subgraph Storage & Queues
+        QueuePending["📁 pending/<br/>(FIFO Queue by File Age)"]:::storage
+        QueueProcessing["⚙️ processing/<br/>(Active In-Flight Lock)"]:::storage
+        QueueProcessed["📦 processed/YYYY-MM/<br/>(Permanent Cloud Archive)"]:::storage
+        QueueFailed["🚨 failed/<br/>(Quarantine + Error Log)"]:::storage
+    end
+
+    subgraph Local Runtime & Orchestration
+        IntakeWorker["🛠️ bin/intake_drive_video.rb<br/>(Worker CLI / Lock Guard)"]:::pipeline
+        FFmpegEngine["🎧 FFmpeg Audio Extractor<br/>(16kHz Mono PCM in /tmp)"]:::pipeline
+        Daemon["📡 bin/live_dashboard_streamer.rb<br/>(Loopback Port 7025)"]:::pipeline
+        StateDir["💾 ~/.local/state/just3ws/<br/>(Locks, Activity, History)"]:::pipeline
+    end
+
+    subgraph Shared Platform Services
+        ZTranscribe["⚡ ztranscribe (zdots)<br/>(recipes/yt-transcribe)"]:::zdots
+        WhisperMetal["🧠 whisper-cpp + Metal GPU<br/>(Apple Silicon Acceleration)"]:::zdots
+        VocabPrimer["📖 Domain Lexicon Priming<br/>(SCMC, Obtiva, 8th Light)"]:::zdots
+    end
+
+    subgraph Publishing Targets & Data Lake
+        YouTubeAPI["▶️ YouTube Data API v3<br/>(Videos, Playlists, Captions)"]:::google
+        DataLake["🗄️ Career Datalake & Assets<br/>(_data/transcripts, video_assets)"]:::pipeline
+    end
+
+    subgraph Cockpit & Telemetry Surfaces
+        DashFunnel["📊 Operations Dashboard<br/>(Live Ingress Kanban Funnel)"]:::ui
+        DashBPMN["⚙️ BPMN 2.0 Monitor<br/>(SLO Tracking & Simulation)"]:::ui
+        DashTeleprompter["📜 Teleprompter Studio<br/>(38 Native Textream Scripts)"]:::ui
+        SwiftBar["🍏 SwiftBar Menu Monitor<br/>(Processor State & Queue Counts)"]:::ui
+        OBSOverlays["🎬 OBS Studio Broadcast<br/>(Scene Overlays & Cue API)"]:::ui
+    end
+
+    Mobile -->|Uploads Video| GDriveApp
+    GDriveApp -->|Syncs File| QueuePending
+    Daemon -->|Autonomous Scan| QueuePending
+    Daemon -->|Spawns Worker| IntakeWorker
+    IntakeWorker -->|Validates Stability| QueuePending
+    IntakeWorker -->|Acquires Lock| StateDir
+    IntakeWorker -->|Moves File| QueueProcessing
+    IntakeWorker -->|Extracts Audio| FFmpegEngine
+    FFmpegEngine -->|16kHz WAV| ZTranscribe
+    ZTranscribe -->|Inference via Metal| WhisperMetal
+    VocabPrimer -->|Domain Prompts| ZTranscribe
+    ZTranscribe -->|VTT Captions + Text| IntakeWorker
+    IntakeWorker -->|Synthesizes Metadata| DataLake
+    IntakeWorker -->|Uploads Video & Captions| YouTubeAPI
+    IntakeWorker -->|Archives on Success| QueueProcessed
+    IntakeWorker -->|Quarantines on Error| QueueFailed
+    IntakeWorker -->|Releases Lock & Emits JSONL| StateDir
+    StateDir -->|Reads History & Activity| Daemon
+    Daemon -->|SSE Event Stream :7025| DashFunnel
+    Daemon -->|SSE Status| SwiftBar
+    DashFunnel -->|Halt / Stop / Retry API| Daemon
+    DashTeleprompter -->|Cue Broadcast Overlay| OBSOverlays</code></pre>
+      </div>
+    </div>
+
+    <!-- 2. End-to-End Workflow Sequence -->
+    <div id="arch-sequence" style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            2. End-to-End Workflow Sequence
+          </h3>
+          <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #64748b;">
+            Chronological message flow from field recording to YouTube upload, captions parity, archival, and quarantine.
+          </p>
+        </div>
+        <button type="button" onclick="copyMermaidBlock('mermaid-sequence-code', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; color: #475569; padding: 0.35rem 0.75rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+          📋 Copy Mermaid Code
+        </button>
+      </div>
+
+      <div style="border: 1px solid #e2e8f0; border-radius: 0.5rem; background: #faf8f5; padding: 1.25rem; overflow-x: auto;">
+        <pre style="margin: 0;"><code class="language-mermaid" id="mermaid-sequence-code">sequenceDiagram
+    autonumber
+    actor Creator as 📱 Field Creator
+    participant Drive as ☁️ Google Drive
+    participant Daemon as 📡 Streamer Daemon (:7025)
+    participant Worker as 🛠️ intake_drive_video.rb
+    participant Lock as 🔒 Lock Sentinel
+    participant FFmpeg as 🎧 FFmpeg Audio
+    participant ZTrans as ⚡ zdots ztranscribe
+    participant YouTube as ▶️ YouTube API v3
+    participant Cockpit as 💻 Dashboard & SwiftBar
+
+    Creator->>Drive: Upload raw video to target pending/
+    loop Autonomous Ingress Check (Every 15s)
+        Daemon->>Drive: Scan pending/ for candidates
+    end
+    Daemon->>Worker: Spawn worker process (ruby bin/intake_drive_video.rb -1)
+    Worker->>Drive: Inspect candidate file
+    Worker->>Worker: Run stable_file? check (sample 1, wait 3s, sample 2, wait 2s)
+    alt File Size Changed (Upload In-Flight)
+        Worker-->>Daemon: Skip file until upload completes
+    else File Stable
+        Worker->>Lock: Acquire pipeline.lock (worker PID, target, filename)
+        Lock-->>Cockpit: SSE broadcast (is_locked: true, active_pid)
+        Worker->>Drive: Atomic move pending/ -> processing/
+        Worker->>FFmpeg: Extract 16kHz mono PCM audio to /tmp/intake_scratch.wav
+        FFmpeg-->>Worker: Audio extraction complete
+        Worker->>ZTrans: Invoke ztranscribe --engine whisper-cpp --output-format vtt,srt,txt
+        Note over ZTrans: Apple Silicon Metal acceleration + domain vocabulary priming
+        ZTrans-->>Worker: Output VTT captions and plain text transcript
+        Worker->>Worker: Synthesize title, tags, description, playlist from targets YAML
+        Worker->>YouTube: Resumable chunked upload video (3-attempt exponential backoff)
+        YouTube-->>Worker: Return YouTube Video ID
+        Worker->>YouTube: Upload WebVTT captions track (language: en)
+        Worker->>YouTube: Insert into target playlist
+        Worker->>Worker: Persist transcript to _data/transcripts/ and update video_assets.yml
+        Worker->>Drive: Move processing/ -> processed/YYYY-MM/
+        Worker->>Drive: Write companion <filename>.receipt.json
+        Worker->>Worker: Delete scratch audio from /tmp (0 bytes permanent waste)
+        Worker->>Lock: Release pipeline.lock and record execution telemetry
+        Lock-->>Cockpit: SSE broadcast (is_locked: false, health: idle_ready)
+    end
+
+    rect rgb(254, 242, 242)
+        Note over Worker,Lock: Failure Handling & Quarantine Branch
+        Worker->>Drive: Move processing/ -> failed/<filename>
+        Worker->>Drive: Write companion <filename>.error.log with backtrace
+        Worker->>Lock: Release pipeline.lock and mark quarantine state
+        Lock-->>Cockpit: SSE broadcast (health: degraded_quarantine)
+        Cockpit-->>Creator: Renders Red Alert Card in Funnel Column 5 with 1-click Re-queue
+    end</code></pre>
+      </div>
+    </div>
+
+    <!-- 3. Operational State Machine & Recovery Flows -->
+    <div id="arch-state" style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            3. Operational State Machine &amp; Recovery Flows
+          </h3>
+          <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #64748b;">
+            Ingress states, quarantine transitions, autonomous self-healing, and operator interventions.
+          </p>
+        </div>
+        <button type="button" onclick="copyMermaidBlock('mermaid-state-code', this)" style="background: #faf8f5; border: 1px solid #cbd5e1; color: #475569; padding: 0.35rem 0.75rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+          📋 Copy Mermaid Code
+        </button>
+      </div>
+
+      <div style="border: 1px solid #e2e8f0; border-radius: 0.5rem; background: #faf8f5; padding: 1.25rem; overflow-x: auto;">
+        <pre style="margin: 0;"><code class="language-mermaid" id="mermaid-state-code">stateDiagram-v2
+    [*] --> IdleReady: Daemon and Worker Idle
+
+    IdleReady --> CandidateDiscovered: File detected in pending/
+    CandidateDiscovered --> VerifyingStability: Sample file size
+    VerifyingStability --> CandidateDiscovered: Size changing (wait next cycle)
+    VerifyingStability --> ConcurrencyLocked: Size stable across 5 seconds
+
+    ConcurrencyLocked --> AudioExtraction: Move to processing/, acquire lock
+    AudioExtraction --> Transcribing: Scratch audio written to /tmp
+    Transcribing --> MetadataSynthesis: Captions & plain text emitted
+    MetadataSynthesis --> YouTubeUploading: Staged description & tags prepared
+    YouTubeUploading --> CaptionInsertion: Video uploaded, Video ID received
+    CaptionInsertion --> ArchivingAndEviction: WebVTT captions uploaded
+    ArchivingAndEviction --> IdleReady: Move to processed/, purge /tmp, release lock
+
+    AudioExtraction --> Quarantined: Error / Exception tripped
+    Transcribing --> Quarantined: Transcription failure
+    YouTubeUploading --> Quarantined: Upload rejected / Auth error
+    CaptionInsertion --> Quarantined: Caption format rejected
+
+    Quarantined --> PendingQueue: Operator clicks Re-queue in Funnel UI
+    Quarantined --> PendingQueue: Operator runs bin/pipeline retry
+    PendingQueue --> CandidateDiscovered: File moved back to pending/
+
+    state "Self-Healing Watcher" as SelfHealing {
+        [*] --> AuditProcessLiveness: Every poll cycle
+        AuditProcessLiveness --> StaleLockDetected: Lock exists but PID is dead
+        StaleLockDetected --> UnlinkStaleLock: Remove pipeline.pid / pipeline.lock
+        UnlinkStaleLock --> RecoverStrandedFiles: Scan processing/ for stranded media
+        RecoverStrandedFiles --> RestoreToPending: Move stranded files to pending/
+        RestoreToPending --> [*]: Log self-healing event & emit SSE
+    }</code></pre>
+      </div>
+    </div>
+
+    <!-- 4. Schemas & Data Contracts -->
+    <div id="arch-schemas" style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+        4. Concrete Data Schemas &amp; API Contracts
+      </h3>
+      <p style="margin: 0 0 1.5rem 0; font-size: 0.85rem; color: #64748b;">
+        Authoritative field specifications, type requirements, and sample payloads across all system interfaces.
+      </p>
+
+      <!-- Schema Accordions Grid -->
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+
+        <!-- Schema 1: Targets YAML -->
+        <details style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;" open>
+          <summary style="font-weight: 700; color: #0f172a; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+            <span>📁 Target Intake Configuration Schema (<code>_data/media_intake_targets.yml</code>)</span>
+            <span style="font-size: 0.75rem; color: #0f766e; background: #f0fdfa; border: 1px solid #ccfbf1; padding: 0.2rem 0.5rem; border-radius: 4px;">YAML Data</span>
+          </summary>
+          <div style="margin-top: 1rem;">
+            <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.75rem 0;">
+              Defines channel ownership, Google Drive folder paths, YouTube playlist IDs, privacy states, and speech recognition models per track.
+            </p>
+            <pre style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 1rem; font-size: 0.8rem; overflow-x: auto; margin: 0;"><code>targets:
+  ramblin-amblin:
+    name: "Ramblin' &amp; Amblin'"
+    slug: "ramblin-amblin"
+    channel_id: "UCxxxxxxxx"
+    channel_name: "@whoistechcmty"
+    drive_path: "Media Intake/whoistechcmty/ramblin-amblin"
+    playlist_id: "PLxxxxxxxxxxxx"
+    default_privacy: "unlisted"
+    category_id: "27"
+    default_tags:
+      - "Ramblin &amp; Amblin"
+      - "Software Craftsmanship"
+      - "Engineering Leadership"
+      - "Field Dispatch"
+    transcription:
+      engine: "ztranscribe"
+      model: "large-v3-turbo"
+      language: "en"
+      prompt: "Software craftsmanship, Chicago Alt.NET, SCMC, McHenry County, 8th Light, Obtiva."
+    naming_convention:
+      title_template: "Northern Illinois Field Dispatch: {date} - {topic}"
+      slug_prefix: "field-dispatch"
+    archetype: "freeform_field_notes"</code></pre>
+          </div>
+        </details>
+
+        <!-- Schema 2: Semantic Dossiers -->
+        <details style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;">
+          <summary style="font-weight: 700; color: #0f172a; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+            <span>📜 Semantic Dossier Schema (<code>_data/episodes/episode-XX.yml</code>)</span>
+            <span style="font-size: 0.75rem; color: #0f766e; background: #f0fdfa; border: 1px solid #ccfbf1; padding: 0.2rem 0.5rem; border-radius: 4px;">YAML Data</span>
+          </summary>
+          <div style="margin-top: 1rem;">
+            <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.75rem 0;">
+              Dossier powering Episode Studio (#tab-workshop), live broadcast overlays, and teleprompter scripts across 38 episodes.
+            </p>
+            <pre style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 1rem; font-size: 0.8rem; overflow-x: auto; margin: 0;"><code>episode:
+  number: 0
+  slug: "mirage-of-competence-high-tension-wires"
+  title: "The Mirage of Competence: AI Slop &amp; Domain Boundaries"
+  status: "staged"
+  movement:
+    number: 6
+    name: "The AI Horizon"
+  interview_id: "mike-hall-high-tension-wires-2026"
+  youtube_id: "7YeFpKn5FbU"
+  video_asset_id: "video-7YeFpKn5FbU"
+
+narrative_anatomy:
+  theme: "Forensic acoustics, physical reality, and domain boundaries in the age of generative slop."
+  tone: "Reflective, practitioner-honest, grounded in concrete field experimentation."
+  core_inquiry: "What happens when an engineer trusts an LLM DSP algorithm over physical acoustic measurement under a 345kV transmission line?"
+  ai_era_parallel: "Demonstrates that LLMs hallucinate plausible algorithms that violate physical conservation laws."
+
+teleprompter_script:
+  act_1_cold_open: "Standing in the field beneath 345 kilovolt transmission lines..."
+  act_2_historical_context: "Twenty years ago in Chicago, craftsmanship was forged in practical autonomy..."
+  act_3_interview_excerpt: "Listening to the dual microphone phase difference..."
+  act_4_audio_forensics: "The LLM claimed twenty percent clock drift; ground truth revealed RF inductive loop coupling..."
+  act_5_contemporary_lesson: "Verification cannot be outsourced to the generator..."
+  act_6_closing_credits: "Produced for UGtastic and WHOIS Tech Community."</code></pre>
+          </div>
+        </details>
+
+        <!-- Schema 3: REST Telemetry & Status API Contract -->
+        <details style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;">
+          <summary style="font-weight: 700; color: #0f172a; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+            <span>📡 Streamer Telemetry &amp; Status API (<code>GET /status</code> &amp; <code>GET /telemetry.json</code>)</span>
+            <span style="font-size: 0.75rem; color: #15803d; background: #dcfce7; border: 1px solid rgba(21,128,61,0.25); padding: 0.2rem 0.5rem; border-radius: 4px;">REST API</span>
+          </summary>
+          <div style="margin-top: 1rem;">
+            <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.75rem 0;">
+              High-resolution status emitted by <code>bin/live_dashboard_streamer.rb</code> on loopback port 7025.
+            </p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 1rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid #e2e8f0; background: #ffffff;">
+                  <th style="padding: 0.5rem; text-align: left;">Health Status Enum</th>
+                  <th style="padding: 0.5rem; text-align: left;">Worker State</th>
+                  <th style="padding: 0.5rem; text-align: left;">System Condition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700; color: #166534;"><code>idle_ready</code></td>
+                  <td style="padding: 0.5rem;">Worker idle, lock free</td>
+                  <td style="padding: 0.5rem;">Queues clean or empty, waiting for new ingress</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700; color: #0369a1;"><code>pending</code></td>
+                  <td style="padding: 0.5rem;">Worker awaiting launch</td>
+                  <td style="padding: 0.5rem;">Files detected in pending/, awaiting FIFO turn</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700; color: #0f766e;"><code>processing</code></td>
+                  <td style="padding: 0.5rem;">Worker PID active, lock held</td>
+                  <td style="padding: 0.5rem;">Video undergoing extraction, Metal transcription, or upload</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700; color: #dc2626;"><code>degraded_quarantine</code></td>
+                  <td style="padding: 0.5rem;">Failure caught, lock released</td>
+                  <td style="padding: 0.5rem;">File in failed/ with companion .error.log awaiting retry</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700; color: #b45309;"><code>halted</code></td>
+                  <td style="padding: 0.5rem;">Halt sentinel active</td>
+                  <td style="padding: 0.5rem;">Queue paused gracefully; active file finishes then stops</td>
+                </tr>
+              </tbody>
+            </table>
+            <pre style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 1rem; font-size: 0.8rem; overflow-x: auto; margin: 0;"><code>{
+  "status": "ok",
+  "health": "processing",
+  "connected_clients": 2,
+  "time": "2026-10-16T18:00:55Z",
+  "worker": {
+    "active_pid": "50144",
+    "is_locked": true,
+    "auto_intake_enabled": true
+  },
+  "queue_summary": {
+    "staged": 0,
+    "pending": 3,
+    "processing": 1,
+    "processed": 1,
+    "quarantined": 0
+  },
+  "self_healing": {
+    "last_events": []
+  }
+}</code></pre>
+          </div>
+        </details>
+
+        <!-- Schema 4: Operator Control Endpoints -->
+        <details style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;">
+          <summary style="font-weight: 700; color: #0f172a; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+            <span>🎛️ Operator Control Endpoints Contract (<code>/api/live/pipeline/*</code>)</span>
+            <span style="font-size: 0.75rem; color: #4338ca; background: #e0e7ff; border: 1px solid rgba(67,56,202,0.25); padding: 0.2rem 0.5rem; border-radius: 4px;">POST API</span>
+          </summary>
+          <div style="margin-top: 1rem;">
+            <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.75rem 0;">
+              HTTP POST actions executed by dashboard buttons or AI agent curl commands.
+            </p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid #e2e8f0; background: #ffffff;">
+                  <th style="padding: 0.5rem; text-align: left;">Endpoint</th>
+                  <th style="padding: 0.5rem; text-align: left;">Parameters</th>
+                  <th style="padding: 0.5rem; text-align: left;">Operation Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700;"><code>/api/live/pipeline/halt</code></td>
+                  <td style="padding: 0.5rem;">None</td>
+                  <td style="padding: 0.5rem;">Arms graceful halt sentinel. Finishes current file then pauses queue.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700;"><code>/api/live/pipeline/stop</code></td>
+                  <td style="padding: 0.5rem;">None</td>
+                  <td style="padding: 0.5rem;">Signals worker PID with SIGINT, purges /tmp, restores processing file to pending/.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700;"><code>/api/live/pipeline/resume</code></td>
+                  <td style="padding: 0.5rem;">None</td>
+                  <td style="padding: 0.5rem;">Clears halt sentinel, triggers immediate autonomous queue scan.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700;"><code>/api/live/pipeline/retry</code></td>
+                  <td style="padding: 0.5rem;"><code>filename, target</code></td>
+                  <td style="padding: 0.5rem;">Relocates quarantined file from failed/ back to pending/ and clears error log.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700;"><code>/api/live/pipeline/queue_pending</code></td>
+                  <td style="padding: 0.5rem;"><code>filename, target</code></td>
+                  <td style="padding: 0.5rem;">Moves staged file from staged/ to pending/ for immediate FIFO execution.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 0.5rem; font-weight: 700;"><code>/api/live/pipeline/cue_obs</code></td>
+                  <td style="padding: 0.5rem;"><code>episode=&lt;num&gt;</code></td>
+                  <td style="padding: 0.5rem;">Synchronizes OBS Studio overlay state with requested episode dossier.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- Schema 5: Post-Intake Receipt -->
+        <details style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;">
+          <summary style="font-weight: 700; color: #0f172a; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+            <span>🧾 Post-Intake Receipt Schema (<code>&lt;filename&gt;.receipt.json</code>)</span>
+            <span style="font-size: 0.75rem; color: #0f766e; background: #f0fdfa; border: 1px solid #ccfbf1; padding: 0.2rem 0.5rem; border-radius: 4px;">JSON Artifact</span>
+          </summary>
+          <div style="margin-top: 1rem;">
+            <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.75rem 0;">
+              Companion receipt written alongside every deployed video in <code>processed/YYYY-MM/</code>.
+            </p>
+            <pre style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 1rem; font-size: 0.8rem; overflow-x: auto; margin: 0;"><code>{
+  "receipt_version": "1.0",
+  "source_filename": "VID_20261015_101120773.mp4",
+  "processed_at": "2026-10-16T18:15:22Z",
+  "target_channel": "@whoistechcmty",
+  "target_track": "ramblin-amblin",
+  "youtube_id": "7YeFpKn5FbU",
+  "youtube_url": "https://youtu.be/7YeFpKn5FbU",
+  "playlist_id": "PLxxxxxxxxxxxx",
+  "privacy_status": "unlisted",
+  "duration_seconds": 1645.78,
+  "transcription": {
+    "engine": "ztranscribe",
+    "binary": "/Users/mike/.config/zsh/bin/ztranscribe",
+    "recipe": "yt-transcribe",
+    "model": "large-v3-turbo",
+    "word_count": 4218,
+    "captions_file": "VID_20261015_101120773.vtt",
+    "transcript_file": "_data/transcripts/field-dispatch-20261015.yml"
+  },
+  "execution_telemetry": {
+    "audio_extraction_seconds": 45.2,
+    "transcription_seconds": 182.4,
+    "metadata_synthesis_seconds": 1.1,
+    "youtube_upload_seconds": 64.3,
+    "captions_upload_seconds": 2.8,
+    "total_elapsed_seconds": 295.8,
+    "upload_throughput_mb_s": 64.6
+  }
+}</code></pre>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- 5. Diagnostic Matrix & Operator Playbook -->
+    <div id="arch-diagnostics" style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.625rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
+      <h3 style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+        5. Operator &amp; AI Agent Diagnostic Matrix
+      </h3>
+      <p style="margin: 0 0 1.5rem 0; font-size: 0.85rem; color: #64748b;">
+        Deterministic commands for verifying system health and actionable remediation procedures for tripped incident conditions.
+      </p>
+
+      <!-- Diagnostic One-Liners Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin-bottom: 1.75rem;">
+        
+        <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Health &amp; Queue Status</span>
+            <button type="button" onclick="copyCliCommand('curl -s http://127.0.0.1:7025/status | jq .', this)" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; cursor: pointer;">Copy</button>
+          </div>
+          <code style="display: block; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.5rem; font-size: 0.75rem; color: #0f172a; word-break: break-all;">curl -s http://127.0.0.1:7025/status | jq .</code>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Worker Liveness Check</span>
+            <button type="button" onclick="copyCliCommand('ps aux | grep -E &quot;intake_drive_video|ztranscribe|whisper&quot; | grep -v grep', this)" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; cursor: pointer;">Copy</button>
+          </div>
+          <code style="display: block; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.5rem; font-size: 0.75rem; color: #0f172a; word-break: break-all;">ps aux | grep -E "intake_drive_video|ztranscribe|whisper" | grep -v grep</code>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Concurrency Lock State</span>
+            <button type="button" onclick="copyCliCommand('cat ~/.local/state/just3ws/pipeline.lock 2>/dev/null || echo &quot;Unlocked (Idle)&quot;', this)" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; cursor: pointer;">Copy</button>
+          </div>
+          <code style="display: block; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.5rem; font-size: 0.75rem; color: #0f172a; word-break: break-all;">cat ~/.local/state/just3ws/pipeline.lock 2>/dev/null || echo "Unlocked (Idle)"</code>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: #0f766e; text-transform: uppercase;">Scratch Storage Footprint</span>
+            <button type="button" onclick="copyCliCommand('ls -lh /tmp/intake_scratch_* 2>/dev/null || echo &quot;Scratch empty (0 bytes)&quot;', this)" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; cursor: pointer;">Copy</button>
+          </div>
+          <code style="display: block; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.5rem; font-size: 0.75rem; color: #0f172a; word-break: break-all;">ls -lh /tmp/intake_scratch_* 2>/dev/null || echo "Scratch empty (0 bytes)"</code>
+        </div>
+
+      </div>
+
+      <!-- Incident Remediation Playbook Table -->
+      <h4 style="margin: 0 0 0.75rem 0; font-size: 1rem; font-weight: 700; color: #0f172a;">
+        Incident Remediation Playbook
+      </h4>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 2px solid #e2e8f0; background: #faf8f5;">
+              <th style="padding: 0.65rem 0.85rem; font-weight: 700; color: #475569;">Incident Condition</th>
+              <th style="padding: 0.65rem 0.85rem; font-weight: 700; color: #475569;">Probable Root Cause</th>
+              <th style="padding: 0.65rem 0.85rem; font-weight: 700; color: #475569;">Actionable Remediation Procedure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.65rem 0.85rem; font-weight: 700; color: #dc2626;">Red Card in Funnel Column 5 (failed/)</td>
+              <td style="padding: 0.65rem 0.85rem;">Ingress exception caught during extraction, transcription, or YouTube upload. Log in <code>&lt;filename&gt;.error.log</code>.</td>
+              <td style="padding: 0.65rem 0.85rem;">Click <code>🔄 Re-queue to Pending</code> on card in dashboard, or run <code>curl -X POST "http://127.0.0.1:7025/api/live/pipeline/retry?filename=&lt;name&gt;&amp;target=&lt;target&gt;"</code>.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.65rem 0.85rem; font-weight: 700; color: #b45309;">Lock stuck while no process is alive</td>
+              <td style="padding: 0.65rem 0.85rem;">Host restart or hard kill left stale <code>pipeline.lock</code> file.</td>
+              <td style="padding: 0.65rem 0.85rem;">Autonomous watcher unlinks automatically within 15 seconds. Or manually run <code>rm ~/.local/state/just3ws/pipeline.lock</code>.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.65rem 0.85rem; font-weight: 700; color: #0369a1;">File in pending/ not processing</td>
+              <td style="padding: 0.65rem 0.85rem;">File actively syncing from mobile device; <code>stable_file?</code> 5-second check is waiting for upload completion.</td>
+              <td style="padding: 0.65rem 0.85rem;">Allow mobile upload to finish. Processing begins automatically once file size stabilizes across 5 seconds.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+              <td style="padding: 0.65rem 0.85rem; font-weight: 700; color: #4338ca;">Queue stops after active file finishes</td>
+              <td style="padding: 0.65rem 0.85rem;">Operator armed graceful halt sentinel (<code>pipeline.halt</code>).</td>
+              <td style="padding: 0.65rem 0.85rem;">Click <code>▶️ Resume</code> in dashboard header or run <code>rm ~/.local/state/just3ws/pipeline.halt</code>.</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.65rem 0.85rem; font-weight: 700; color: #7e22ce;">ztranscribe binary not found</td>
+              <td style="padding: 0.65rem 0.85rem;">Missing symlink from zdots tools directory.</td>
+              <td style="padding: 0.65rem 0.85rem;">Run <code>ln -s ~/.config/zsh/recipes/yt-transcribe ~/.config/zsh/bin/ztranscribe</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
 </div>
 
 <script>
   let currentFunnelFilter = 'all';
   let lastFunnelTelemetry = null;
+
+  function copyMermaidBlock(blockId, btn) {
+    const el = document.getElementById(blockId);
+    if (!el) return;
+    const text = el.innerText || el.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.innerText;
+      btn.innerText = 'Copied!';
+      setTimeout(() => { btn.innerText = orig; }, 1500);
+    }).catch(() => {
+      alert(text);
+    });
+  }
 
   function switchYtTab(tabName) {
     if (tabName === 'funnel') tabName = 'queue';
@@ -1791,6 +2423,10 @@ body_class: page-youtube-dashboard
       btn.style.fontWeight = '700';
     }
 
+    if (tabName === 'architecture') {
+      window.dispatchEvent(new Event('resize'));
+    }
+
     if (window.location.hash !== '#tab-' + tabName) {
       if (history.replaceState) {
         history.replaceState(null, null, '#tab-' + tabName);
@@ -1808,7 +2444,7 @@ body_class: page-youtube-dashboard
       switchYtTab('teleprompter');
     } else if (tabName === 'queue' || tabName === 'funnel') {
       switchYtTab('queue');
-    } else if (['status', 'audit', 'live', 'workshop', 'analytics', 'bpmn'].includes(tabName)) {
+    } else if (['status', 'audit', 'live', 'workshop', 'analytics', 'bpmn', 'architecture'].includes(tabName)) {
       switchYtTab(tabName);
     }
   }
