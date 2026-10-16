@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: validate_exports.rb
+# domain: validate
+# purpose: Validate Exports utility for the just3ws platform
+# usage: ruby bin/validate_exports.rb
+# ---
+
 require 'json'
 require 'yaml'
 

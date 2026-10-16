@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: split_forensic_dialogue.rb
+# domain: site
+# purpose: bin/split_forensic_dialogue.rb - Forensic Turn Splitter for Remaining Backlog Transcripts
+# usage: ruby bin/split_forensic_dialogue.rb
+# ---
+
 # bin/split_forensic_dialogue.rb — Forensic Turn Splitter for Remaining Backlog Transcripts
 
 require 'yaml'

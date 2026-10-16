@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: audit_knowledge_graph.rb
+# domain: validate
+# purpose: Audit Knowledge Graph utility for the just3ws platform
+# usage: ruby bin/audit_knowledge_graph.rb
+# ---
+
 require "json"
 require "set"
 require "yaml"

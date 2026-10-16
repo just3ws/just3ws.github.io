@@ -1,5 +1,12 @@
 #!/usr/bin/env node
 
+// ---
+// name: generate_pdf_resume.js
+// domain: data
+// purpose: Generate Pdf Resume utility for the just3ws platform
+// usage: node bin/generate_pdf_resume.js
+// ---
+
 /**
  * bin/generate_pdf_resume.js
  * Generates print-optimized vector PDF resume packages for all archetypes

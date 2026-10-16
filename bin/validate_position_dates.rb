@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_position_dates.rb
+# domain: validate
+# purpose: Validate Position Dates utility for the just3ws platform
+# usage: ruby bin/validate_position_dates.rb
+# ---
+
 require 'date'
 require 'yaml'
 

@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: batch_ztranscribe_other.rb
+# domain: site
+# purpose: Batch Ztranscribe Other utility for the just3ws platform
+# usage: ruby bin/batch_ztranscribe_other.rb
+# ---
+
 require 'yaml'
 
 interviews = YAML.load_file("_data/interviews.yml")["items"].map { |i| i["video_asset_id"] }

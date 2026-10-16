@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: semantic_audit.rb
+# domain: site
+# purpose: Semantic Audit utility for the just3ws platform
+# usage: ruby bin/semantic_audit.rb
+# ---
+
 require "json"
 require "time"
 require "fileutils"

@@ -1,3 +1,10 @@
+# ---
+# name: migrate_youtube_slugs.rb
+# domain: media
+# purpose: Migrate Youtube Slugs utility for the just3ws platform
+# usage: ruby bin/migrate_youtube_slugs.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

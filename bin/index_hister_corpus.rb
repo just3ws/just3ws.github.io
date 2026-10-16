@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: index_hister_corpus.rb
+# domain: data
+# purpose: bin/index_hister_corpus.rb - Index Core Craftsmanship, Agile & Conference Corpus into Hister
+# usage: ruby bin/index_hister_corpus.rb
+# ---
+
 # bin/index_hister_corpus.rb — Index Core Craftsmanship, Agile & Conference Corpus into Hister
 #
 # Feeds foundational primary sources, conference hubs, user group communities, and

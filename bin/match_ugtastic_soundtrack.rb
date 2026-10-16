@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: match_ugtastic_soundtrack.rb
+# domain: media
+# purpose: Compare a known soundtrack with short opening and closing windows from
+# usage: ruby bin/match_ugtastic_soundtrack.rb
+# ---
+
 # Compare a known soundtrack with short opening and closing windows from
 # finished videos. Chromaprint similarity is a candidate signal only.
 

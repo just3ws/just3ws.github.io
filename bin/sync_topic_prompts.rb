@@ -288,7 +288,7 @@ def sync_prompts
   # 1. Compile Ramblin' & Amblin'
   ramblin_desc = "Conversations on the move: engineering observations, personal history, systems architecture, and practitioner reflections recorded during walks, train rides, and field dispatches."
   ramblin_structure = {
-    intro: "- **Setting & Atmosphere**: Ground the listener immediately in where you are (trail, commuter platform, downtown corridor).\n- **The Inciting Spark**: Introduce the specific real-world event, observation, or question that prompted this reflection within the first 60 seconds.\n- **Core Inquiry**: State the guiding inquiry directly so the premise and focus are crystal clear right away.",
+    intro: "- **Setting & Atmosphere**: Ground the listener immediately in where you are (trail, commuter platform, downtown corridor).\n- **The Inciting Spark**: Introduce the specific real-world event, observation, or question that prompted this reflection within the first 60 seconds.\n- **Core Inquiry**: State the guiding inquiry directly so the premise and focus are unmistakable right away.",
     outro: "- **Grounded Synthesis**: Bring the freeform observation back to a durable engineering principle.\n- **Actionable Takeaway**: Provide one concrete takeaway the viewer can apply to their daily engineering craft, team architecture, or career sustainability.\n- **Grounded Sign-off**: Warm, unvarnished parting thought ('Keep your feedback loops fast, keep walking, and verify your code')."
   }
   ramblin_md = compile_markdown_sheet("Ramblin' & Amblin' Proposed Topics & Field Prompts", "Ramblin' & Amblin' (@whoistechcmty)", ramblin_desc, RAMBLIN_TOPICS, ramblin_structure)

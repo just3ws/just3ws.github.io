@@ -1,3 +1,10 @@
+// ---
+// name: verify_mcp_spec.js
+// domain: validate
+// purpose: Verify Mcp Spec utility for the just3ws platform
+// usage: node bin/verify_mcp_spec.js
+// ---
+
 const { Client } = require("@modelcontextprotocol/sdk/client/index.js");
 const { StdioClientTransport } = require("@modelcontextprotocol/sdk/client/stdio.js");
 const path = require("path");

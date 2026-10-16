@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: query_witc_corpus.rb
+# domain: data
+# purpose: Query the local WITC SQLite corpus built by bin/build_witc_corpus.rb.
+# usage: ruby bin/query_witc_corpus.rb
+# ---
+
 # Query the local WITC SQLite corpus built by bin/build_witc_corpus.rb.
 
 require "json"

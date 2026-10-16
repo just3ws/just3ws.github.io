@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_last_modified_output.rb
+# domain: validate
+# purpose: Validate Last Modified Output utility for the just3ws platform
+# usage: ruby bin/validate_last_modified_output.rb
+# ---
+
 require 'yaml'
 require 'time'
 

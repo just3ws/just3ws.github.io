@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: report_transcript_loops.rb
+# domain: data
+# purpose: Report Transcript Loops utility for the just3ws platform
+# usage: ruby bin/report_transcript_loops.rb
+# ---
+
 require 'yaml'
 require 'date'
 require 'time'

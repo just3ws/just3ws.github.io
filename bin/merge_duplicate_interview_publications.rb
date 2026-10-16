@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: merge_duplicate_interview_publications.rb
+# domain: site
+# purpose: Merge Duplicate Interview Publications utility for the just3ws platform
+# usage: ruby bin/merge_duplicate_interview_publications.rb
+# ---
+
 require "yaml"
 require "date"
 require "optparse"

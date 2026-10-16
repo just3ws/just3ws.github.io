@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_knowledge_graph.rb
+# domain: data
+# purpose: bin/generate_knowledge_graph.rb - Taxonomical Entity & Knowledge Graph Generator
+# usage: ruby bin/generate_knowledge_graph.rb
+# ---
+
 # bin/generate_knowledge_graph.rb — Taxonomical Entity & Knowledge Graph Generator
 #
 # Extracts entities (Interviewees, Conferences, User Groups, Open Source Projects, Topics)

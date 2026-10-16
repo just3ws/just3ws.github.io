@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_youtube_metadata.rb
+# domain: media
+# purpose: Generates 1:1 parity metadata for YouTube and local site video pages:
+# usage: ruby bin/generate_youtube_metadata.rb
+# ---
+
 # bin/generate_youtube_metadata.rb
 # Generates 1:1 parity metadata for YouTube and local site video pages:
 # 1. Enriches _data/video_assets.yml with canonical titles, descriptions, chapters, and tags.

@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: validate_data_uniqueness.rb
+# domain: validate
+# purpose: Validate Data Uniqueness utility for the just3ws platform
+# usage: ruby bin/validate_data_uniqueness.rb
+# ---
+
 require 'yaml'
 require 'date'
 

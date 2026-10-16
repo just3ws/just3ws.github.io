@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: local_perfect_transcript.rb
+# domain: data
+# purpose: Local Perfect Transcript utility for the just3ws platform
+# usage: ruby bin/local_perfect_transcript.rb
+# ---
+
 require 'yaml'
 require 'json'
 require 'net/http'

@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: generate_video_metadata_completeness.rb
+# domain: media
+# purpose: Generate Video Metadata Completeness utility for the just3ws platform
+# usage: ruby bin/generate_video_metadata_completeness.rb
+# ---
+
 require "time"
 require_relative "../src/generators/core/yaml_io"
 require_relative "../src/generators/archive_state"

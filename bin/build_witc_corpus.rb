@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: build_witc_corpus.rb
+# domain: data
+# purpose: Build a local, provenance-preserving SQLite corpus from the WITC archive.
+# usage: ruby bin/build_witc_corpus.rb
+# ---
+
 # Build a local, provenance-preserving SQLite corpus from the WITC archive.
 # The database follows ~/my/lib/archive_search.py's documents + FTS5 contract.
 

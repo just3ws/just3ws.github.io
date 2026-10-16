@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: discover_wayback_posts_from_cdx.rb
+# domain: data
+# purpose: Discover Wayback Posts From Cdx utility for the just3ws platform
+# usage: ruby bin/discover_wayback_posts_from_cdx.rb
+# ---
+
 require "json"
 require "open3"
 require "pathname"

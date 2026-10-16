@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: audit_surface_exposure.rb
+# domain: validate
+# purpose: Audit Surface Exposure utility for the just3ws platform
+# usage: ruby bin/audit_surface_exposure.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 require 'pathname'

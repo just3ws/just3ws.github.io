@@ -1,3 +1,10 @@
+# ---
+# name: direct_audit.rb
+# domain: site
+# purpose: Direct Audit utility for the just3ws platform
+# usage: ruby bin/direct_audit.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

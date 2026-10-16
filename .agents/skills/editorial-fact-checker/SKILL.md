@@ -17,9 +17,10 @@ Use this skill when auditing video scripts, episode dossiers, presentation slide
 1. **Ground-Truth Historical Verification**:
    - Verify all conference dates, venue names, user group histories, and interviewee names against primary source archives:
      * SCNA (Software Craftsmanship North America): Chicago, 2009 to 2016.
-     * SCMC (Software Craftsmanship McHenry County): Founded by Mike Hall and Jason R. Jolly in 2008.
+     * SCMC (Software Craftsmanship McHenry County): Originated in October 2009 when Mike Hall and Ryan Gerry met at an SCNA table to launch CDG (Cloud Developers Group) in McHenry County (libraries, Panera Bread, Duke's Alehouse), then partnered with Jim Suchy (8th Light) in 2010 to formalize SCMC (#106) at Follett Software Company in McHenry, IL.
+     * Chicago Code Camp: Grassroots zero-dollar-budget developer conference (2009 to 2013) at College of Lake County in Grayslake, IL, co-organized by Mike Hall with a custom blind-review speaker engine.
      * Chicago Alt.NET: Grassroots enterprise .NET community formed in 2007-2008, inspired by the 2007 Austin Alt.NET conference.
-     * Obtiva: Chicago-area software craftsmanship consultancy founded by Dave Hoover (2005 to 2011).
+     * Obtiva: Chicago-area software craftsmanship consultancy founded by Dave Hoover (2005 to 2011; acquired by Groupon in 2011).
    - Use the CareerOS datalake to query exact historical transcripts and dates:
      `ruby bin/query_career_datalake.rb "Search term"`
 

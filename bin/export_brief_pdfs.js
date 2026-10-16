@@ -1,5 +1,12 @@
 #!/usr/bin/env node
 
+// ---
+// name: export_brief_pdfs.js
+// domain: site
+// purpose: Export Brief Pdfs utility for the just3ws platform
+// usage: node bin/export_brief_pdfs.js
+// ---
+
 /**
  * bin/export_brief_pdfs.js
  * Generates print-optimized 1-page PDF documents for all executive pitch briefs in exports/briefs/

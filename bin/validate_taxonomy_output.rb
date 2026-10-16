@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: validate_taxonomy_output.rb
+# domain: validate
+# purpose: Validate Taxonomy Output utility for the just3ws platform
+# usage: ruby bin/validate_taxonomy_output.rb
+# ---
+
 require "yaml"
 require "json"
 require "date"

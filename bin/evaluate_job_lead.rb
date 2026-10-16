@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: evaluate_job_lead.rb
+# domain: site
+# purpose: CLI tool to evaluate job leads/postings from wwworkremote.localhost. Fit scoring is delegated to
+# usage: ruby bin/evaluate_job_lead.rb
+# ---
+
 # bin/evaluate_job_lead.rb
 # CLI tool to evaluate job leads/postings from wwworkremote.localhost. Fit scoring is delegated to
 # `bin/wwwr match` in wwworkremote/core (LLM::ProfileMatcher, the same scorer the web UI uses) --

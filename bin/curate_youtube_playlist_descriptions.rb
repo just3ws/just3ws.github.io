@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: curate_youtube_playlist_descriptions.rb
+# domain: media
+# purpose: bin/curate_youtube_playlist_descriptions.rb - Curate high-signal titles & descriptions for public playlists
+# usage: ruby bin/curate_youtube_playlist_descriptions.rb
+# ---
+
 # bin/curate_youtube_playlist_descriptions.rb — Curate high-signal titles & descriptions for public playlists
 #
 # Updates YouTube playlist snippet metadata (title, description) via YouTube Data API v3.

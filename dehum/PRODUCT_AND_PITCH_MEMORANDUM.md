@@ -82,5 +82,5 @@ For interviewers operating at the intersection of AI venture economics, distribu
    - In crypto-capitalism, true value accrues exclusively to assets backed by unforgeable physical constraint. In software, that unforgeable constraint is the **Physical Ground Truth**: does the audio notch filter cancel the 60 Hz hum without destroying vocal sibilance? Do the lips match the frame at 29.97 fps?
    - `dehum` represents the ultimate deflationary asset: it took $39.40 of inflationary synthetic compute and crystallized it into a deterministic, local-first, zero-runtime-cost utility.
 3. **The 250:1 Sovereign Arbitrage**:
-   - While competitors seek $50M seed valuations to pay cloud GPU providers for lossy cloud transcoding, `dehum` captures the entire value wedge locally at zero marginal cost. That is not just craftsmanship—that is the highest-margin economic moat in software.
+   - While competitors seek $50M seed valuations to pay cloud GPU providers for lossy cloud transcoding, `dehum` captures the entire value wedge locally at zero marginal cost. That is not just craftsmanship, that is the highest-margin economic moat in software.
 

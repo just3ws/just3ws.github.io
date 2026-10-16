@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: analyze_ugtastic_audio.rb
+# domain: media
+# purpose: Build a public-safe technical inventory of recovered UGtastic audio.
+# usage: ruby bin/analyze_ugtastic_audio.rb
+# ---
+
 # Build a public-safe technical inventory of recovered UGtastic audio.
 # This intentionally measures media boundaries without transcribing speech.
 

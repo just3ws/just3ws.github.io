@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_archive_intelligence.rb
+# domain: data
+# purpose: bin/generate_archive_intelligence.rb - Archive Intelligence & Pattern Generator
+# usage: ruby bin/generate_archive_intelligence.rb
+# ---
+
 # bin/generate_archive_intelligence.rb — Archive Intelligence & Pattern Generator
 #
 # Analyzes all transcripts to extract:

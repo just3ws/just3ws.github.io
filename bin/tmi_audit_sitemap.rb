@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: tmi_audit_sitemap.rb
+# domain: validate
+# purpose: Walk the published sitemap.xml and run TMI / PII / PHI / *ism guard checks
+# usage: ruby bin/tmi_audit_sitemap.rb
+# ---
+
 # bin/tmi_audit_sitemap.rb
 #
 # Walk the published sitemap.xml and run TMI / PII / PHI / *ism guard checks

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: charlottes_web_spider.rb
+# domain: site
+# purpose: bin/charlottes_web_spider.rb - Exhaustive Charlotte's Web of Wisdom & Tributes Engine
+# usage: ruby bin/charlottes_web_spider.rb
+# ---
+
 # bin/charlottes_web_spider.rb — Exhaustive Charlotte's Web of Wisdom & Tributes Engine
 #
 # "Spidering the web in the spirit of Charlotte's Web" — dynamically scans all 207

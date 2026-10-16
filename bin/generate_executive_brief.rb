@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_executive_brief.rb
+# domain: data
+# purpose: Generates a tailored 1-page executive pitch brief and interview prep sheet
+# usage: ruby bin/generate_executive_brief.rb
+# ---
+
 # bin/generate_executive_brief.rb
 # Generates a tailored 1-page executive pitch brief and interview prep sheet
 # using the 3-Act Narrative Architecture, Progressive Disclosure, and canonical datalake.

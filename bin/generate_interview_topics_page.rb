@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: generate_interview_topics_page.rb
+# domain: data
+# purpose: Generate Interview Topics Page utility for the just3ws platform
+# usage: ruby bin/generate_interview_topics_page.rb
+# ---
+
 require "yaml"
 require "date"
 require "time"

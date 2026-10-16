@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: structure_transcript_heuristics.rb
+# domain: data
+# purpose: Structure Transcript Heuristics utility for the just3ws platform
+# usage: ruby bin/structure_transcript_heuristics.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

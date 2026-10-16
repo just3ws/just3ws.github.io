@@ -1,10 +1,17 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# bin/career_datalake_mcp_server.rb
-# Model Context Protocol (MCP) Server for CareerOS Datalake & Oral History Archive.
-# Exposes resources and tools over the career archive, 29 positions,
-# 156 technical articles, 211 developer interviews, and 402-node knowledge graph.
+# ---
+# name: career_datalake_mcp_server.rb
+# domain: data
+# role: Model Context Protocol (MCP) Server for CareerOS Datalake & Video Transcript Archive
+# description: >
+#   Exposes self-describing MCP resources and tools over the career archive,
+#   28 positions, 185 technical writings, 218 developer interviews with full
+#   spoken transcripts, and the 426-node knowledge graph.
+# usage:
+#   ruby bin/career_datalake_mcp_server.rb
+# ---
 
 require 'json'
 require 'yaml'
@@ -341,11 +348,16 @@ class CareerDatalakeMCPServer
           ]
         })
 
-      when "query_career_history"
+      when "query_career_history", "query_career_datalake"
         q = arguments["query"].to_s.downcase
-        pos_hits = @data["positions"].select { |k, v| JSON.generate(v).downcase.include?(q) }
-        pub_hits = @data["publications_and_writings"].select { |p| (p["title"] || "").downcase.include?(q) || (p["excerpt"] || "").downcase.include?(q) }
-        cs_hits = @data["case_studies"].select { |k, v| JSON.generate(v).downcase.include?(q) }
+        pos_hits = (@data["positions"] || {}).select { |_k, v| JSON.generate(v).downcase.include?(q) }
+        pub_hits = (@data["publications_and_writings"] || []).select { |p| (p["title"] || "").downcase.include?(q) || (p["excerpt"] || "").downcase.include?(q) }
+        cs_hits = (@data["case_studies"] || {}).select { |_k, v| JSON.generate(v).downcase.include?(q) }
+        interview_hits = (@data["oral_history_corpus"] || []).select do |item|
+          (item["title"] || "").downcase.include?(q) ||
+            (item["interviewee"] || "").downcase.include?(q) ||
+            (item["transcript_text"] || "").downcase.include?(q)
+        end
 
         result_text = JSON.pretty_generate({
           query: arguments["query"],
@@ -354,27 +366,29 @@ class CareerDatalakeMCPServer
           total_case_study_matches: cs_hits.size,
           case_studies: cs_hits,
           total_publication_matches: pub_hits.size,
-          publications: pub_hits.first(10)
+          publications: pub_hits.first(10),
+          total_interview_matches: interview_hits.size,
+          interviews: interview_hits.first(10).map { |i| i.reject { |k, _| k == "transcript_text" } }
         })
 
       when "get_technology_provenance"
         tech = arguments["technology"].to_s.downcase
-        matches = @data["technology_provenance"].select { |k, v| k.downcase.include?(tech) }
+        matches = (@data["technology_provenance"] || {}).select { |k, _v| k.downcase.include?(tech) }
         result_text = JSON.pretty_generate({ query: arguments["technology"], matches: matches })
 
-      when "get_position_dossier"
-        comp = arguments["company"].to_s.downcase
-        matches = @data["positions"].select { |k, v| k.downcase.include?(comp) || (v.dig("company", "name") || "").downcase.include?(comp) }
-        result_text = JSON.pretty_generate({ company: arguments["company"], matches: matches })
+      when "get_position_dossier", "get_position_details"
+        comp = (arguments["company"] || arguments["position"] || "").to_s.downcase
+        matches = (@data["positions"] || {}).select { |k, v| k.downcase.include?(comp) || (v.dig("company", "name") || "").downcase.include?(comp) }
+        result_text = JSON.pretty_generate({ company: comp, matches: matches })
 
       when "get_archetype_strategy"
         arch = arguments["archetype_slug"].to_s.downcase
-        matches = @data["archetypes"].select { |k, v| k.downcase.include?(arch) || (v["file_slug"] || "").downcase.include?(arch) }
+        matches = (@data["archetypes"] || {}).select { |k, v| k.downcase.include?(arch) || (v["file_slug"] || "").downcase.include?(arch) }
         result_text = JSON.pretty_generate({ archetype: arguments["archetype_slug"], matches: matches })
 
       when "query_oral_history"
         q = arguments["query"].to_s.downcase
-        matches = @data["oral_history_corpus"].select do |item|
+        matches = (@data["oral_history_corpus"] || []).select do |item|
           (item["title"] || "").downcase.include?(q) ||
             (item["interviewee"] || "").downcase.include?(q) ||
             (item["speaker"] || "").downcase.include?(q) ||
@@ -383,8 +397,8 @@ class CareerDatalakeMCPServer
         end
         result_text = JSON.pretty_generate({ query: arguments["query"], total_matches: matches.size, interviews: matches.first(15) })
 
-      when "query_transcript"
-        t_id = arguments["transcript_id"].to_s
+      when "query_transcript", "get_interview_transcript"
+        t_id = (arguments["transcript_id"] || arguments["slug"] || arguments["video_id"] || "").to_s.sub(/\.yml\z/, "")
         path = File.join(TRANSCRIPTS_DIR, "#{t_id}.yml")
         if File.exist?(path)
           t_data = YAML.load_file(path, permitted_classes: [Date, Time], aliases: true) rescue {}

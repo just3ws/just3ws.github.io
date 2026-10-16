@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: audit_prose_humanity.rb
+# domain: validate
+# purpose: Grammarly for just3ws: Audits prose for plain language, neuroinclusive readability,
+# usage: ruby bin/audit_prose_humanity.rb
+# ---
+
 # bin/audit_prose_humanity.rb
 # Grammarly for just3ws: Audits prose for plain language, neuroinclusive readability,
 # cognitive load, and AI jargon density across site Markdown and YAML data files.

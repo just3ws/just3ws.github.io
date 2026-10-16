@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: upload_errata_broadcast.rb
+# domain: media
+# purpose: Upload Errata Broadcast utility for the just3ws platform
+# usage: ruby bin/upload_errata_broadcast.rb
+# ---
+
 require 'json'
 require 'net/http'
 require 'uri'

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: corpus_metrics.rb
+# domain: data
+# purpose: Corpus Metrics utility for the just3ws platform
+# usage: ruby bin/corpus_metrics.rb
+# ---
+
 require "json"
 require "optparse"
 require_relative "lib/corpus_metrics"

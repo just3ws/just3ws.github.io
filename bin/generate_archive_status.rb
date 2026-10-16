@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: generate_archive_status.rb
+# domain: data
+# purpose: Generate Archive Status utility for the just3ws platform
+# usage: ruby bin/generate_archive_status.rb
+# ---
+
 require "yaml"
 require "date"
 require "time"

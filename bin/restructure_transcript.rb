@@ -1,5 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
+# ---
+# name: restructure_transcript.rb
+# domain: data
+# purpose: restructure_transcript.rb - refresh an already-structured transcript from the
+# usage: ruby bin/restructure_transcript.rb
+# ---
+
 #
 # restructure_transcript.rb — refresh an already-structured transcript from the
 # reprocessed (loop-free, name-corrected) ASR WITHOUT the destructive flat

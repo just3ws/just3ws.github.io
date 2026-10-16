@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: visualize_semantic_graph.rb
+# domain: data
+# purpose: Visualize Semantic Graph utility for the just3ws platform
+# usage: ruby bin/visualize_semantic_graph.rb
+# ---
+
 require "json"
 require "fileutils"
 require "time"

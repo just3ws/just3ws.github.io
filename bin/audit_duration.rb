@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: audit_duration.rb
+# domain: validate
+# purpose: Audit Duration utility for the just3ws platform
+# usage: ruby bin/audit_duration.rb
+# ---
+
 require 'yaml'
 
 assets = YAML.load_file("_data/video_assets.yml")["items"]

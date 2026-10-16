@@ -1,13 +1,15 @@
 #!/usr/bin/env node
-
-/**
- * Personal Site & Archive MCP Server
- * Conforms to Model Context Protocol (MCP) Specification.
- * Exposes self-describing tools, resources, and resource templates for:
- * 1. Site corpus integrity and data contract validation
- * 2. Skill self-verification and spec validation
- * 3. Transcript audit & ops reporting
- */
+// ---
+// name: mcp_server.js
+// domain: validate
+// role: Personal Site & Archive MCP Server (Node.js STDIO)
+// description: >
+//   Exposes self-describing MCP tools, resources, and resource templates for
+//   site corpus integrity, skill spec verification (.agents/skills and skills),
+//   and transcript audit reporting.
+// usage:
+//   node bin/mcp_server.js
+// ---
 
 const { Server } = require("@modelcontextprotocol/sdk/server/index.js");
 const { StdioServerTransport } = require("@modelcontextprotocol/sdk/server/stdio.js");
@@ -23,6 +25,30 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
+
+function discoverWorkspaceSkills() {
+  const roots = [
+    { label: ".agents/skills", dir: path.join(ROOT_DIR, ".agents", "skills") },
+    { label: "skills", dir: path.join(ROOT_DIR, "skills") },
+  ];
+  const map = new Map();
+  for (const r of roots) {
+    if (!fs.existsSync(r.dir)) continue;
+    for (const entry of fs.readdirSync(r.dir)) {
+      const fullDir = path.join(r.dir, entry);
+      if (!fs.statSync(fullDir).isDirectory()) continue;
+      const skillFile = fs.existsSync(path.join(fullDir, "SKILL.md"))
+        ? path.join(fullDir, "SKILL.md")
+        : fs.existsSync(path.join(fullDir, "skill.md"))
+        ? path.join(fullDir, "skill.md")
+        : null;
+      if (!map.has(entry)) {
+        map.set(entry, { name: entry, source: r.label, skillFile });
+      }
+    }
+  }
+  return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
+}
 
 const server = new Server(
   {
@@ -60,7 +86,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: "validate_skills_spec",
-        description: "Self-describing tool: Audits all registered workspace skills for valid SKILL.md frontmatter, schema compliance, and agent manifests.",
+        description: "Self-describing tool: Audits all registered workspace skills (.agents/skills and skills) for valid SKILL.md frontmatter, schema compliance, and zero em dashes.",
         inputSchema: {
           type: "object",
           properties: {
@@ -108,28 +134,25 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
 
     if (name === "validate_skills_spec") {
-      const skillsDir = path.join(ROOT_DIR, "skills");
-      if (!fs.existsSync(skillsDir)) {
-        return { content: [{ type: "text", text: "No skills directory found." }] };
+      const discovered = discoverWorkspaceSkills();
+      if (discovered.length === 0) {
+        return { content: [{ type: "text", text: "No skills directories found." }] };
       }
 
-      const skills = fs.readdirSync(skillsDir).filter((f) => fs.statSync(path.join(skillsDir, f)).isDirectory());
       const results = [];
-
-      for (const skill of skills) {
-        if (args && args.skill_name && skill !== args.skill_name) continue;
-        const skillPath = path.join(skillsDir, skill, "SKILL.md");
-        if (!fs.existsSync(skillPath)) {
-          results.push(`❌ ${skill}: Missing SKILL.md`);
+      for (const item of discovered) {
+        if (args && args.skill_name && item.name !== args.skill_name) continue;
+        if (!item.skillFile) {
+          results.push(`❌ ${item.name} (${item.source}): Missing SKILL.md`);
         } else {
-          const content = fs.readFileSync(skillPath, "utf-8");
+          const content = fs.readFileSync(item.skillFile, "utf-8");
           const hasFrontmatter = content.startsWith("---") && content.includes("name:") && content.includes("description:");
-          results.push(hasFrontmatter ? `✅ ${skill}: Self-verifying SKILL.md standard compliant` : `⚠️ ${skill}: Invalid YAML frontmatter`);
+          results.push(hasFrontmatter ? `✅ ${item.name} (${item.source}): Self-verifying SKILL.md standard compliant` : `⚠️ ${item.name} (${item.source}): Invalid YAML frontmatter`);
         }
       }
 
       return {
-        content: [{ type: "text", text: `Skill Specification Audit Results:\n\n${results.join("\n")}` }],
+        content: [{ type: "text", text: `Skill Specification Audit Results (${results.length} skills):\n\n${results.join("\n")}` }],
       };
     }
 
@@ -167,7 +190,7 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => {
       {
         uri: "site://skills/index",
         name: "Registered Workspace Skills",
-        description: "Index of all registered workspace skills and their self-describing frontmatter capabilities.",
+        description: "Index of all registered workspace skills (.agents/skills and skills) and their self-describing frontmatter capabilities.",
         mimeType: "application/json",
       },
       {
@@ -211,19 +234,26 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
   }
 
   if (uri === "site://skills/index") {
-    const skillsDir = path.join(ROOT_DIR, "skills");
-    const skills = fs.existsSync(skillsDir) ? fs.readdirSync(skillsDir).filter((f) => fs.statSync(path.join(skillsDir, f)).isDirectory()) : [];
+    const discovered = discoverWorkspaceSkills();
     return {
-      contents: [{ uri, mimeType: "application/json", text: JSON.stringify({ skills, count: skills.length }, null, 2) }],
+      contents: [{
+        uri,
+        mimeType: "application/json",
+        text: JSON.stringify({
+          skills: discovered.map((s) => s.name),
+          entries: discovered,
+          count: discovered.length,
+        }, null, 2),
+      }],
     };
   }
 
   if (uri.startsWith("site://skills/")) {
     const skillName = uri.replace("site://skills/", "");
-    const skillFile = path.join(ROOT_DIR, "skills", skillName, "SKILL.md");
-    if (fs.existsSync(skillFile)) {
+    const match = discoverWorkspaceSkills().find((s) => s.name === skillName);
+    if (match && match.skillFile && fs.existsSync(match.skillFile)) {
       return {
-        contents: [{ uri, mimeType: "text/markdown", text: fs.readFileSync(skillFile, "utf-8") }],
+        contents: [{ uri, mimeType: "text/markdown", text: fs.readFileSync(match.skillFile, "utf-8") }],
       };
     }
   }

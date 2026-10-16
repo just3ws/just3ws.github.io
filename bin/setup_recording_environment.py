@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+# ---
+# name: setup_recording_environment.py
+# domain: media
+# purpose: Setup Recording Environment utility for the just3ws platform
+# usage: python3 bin/setup_recording_environment.py
+# ---
+
 """
 Toolchain for setting up, verifying, and updating the recording browser environment.
 Ensures Ungoogled Chromium is equipped with essential recording extensions, themes,

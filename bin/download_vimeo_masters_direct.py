@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+# ---
+# name: download_vimeo_masters_direct.py
+# domain: media
+# purpose: Download Vimeo Masters Direct utility for the just3ws platform
+# usage: python3 bin/download_vimeo_masters_direct.py
+# ---
+
 """
 bin/download_vimeo_masters_direct.py
 

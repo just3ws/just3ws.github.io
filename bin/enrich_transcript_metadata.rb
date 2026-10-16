@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: enrich_transcript_metadata.rb
+# domain: data
+# purpose: Enrich Transcript Metadata utility for the just3ws platform
+# usage: ruby bin/enrich_transcript_metadata.rb
+# ---
+
 require "yaml"
 require "date"
 require "optparse"

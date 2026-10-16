@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_data.rb
+# domain: validate
+# purpose: Validate Data utility for the just3ws platform
+# usage: ruby bin/validate_data.rb
+# ---
+
 require 'yaml'
 require 'date'
 require_relative '../src/validators/site_schema'

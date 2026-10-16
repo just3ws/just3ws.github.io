@@ -59,22 +59,67 @@ human_marginalia:
   - Ground the technical critique in practitioner empathy.
   - Analyze the shift from vendor toolchain dependence to open source autonomy.
   - Examine how grassroots open spaces foster durable engineering practices.
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
-  - Test workshop prompt
+teleprompter_script:
+  act_1: 'Welcome to The Sound Above. I am Mike Hall, and this is Episode 1 of our
+    technical rewatch series. Today we are going back to November 19, 2011, on-site
+    at Software Craftsmanship North America at the Swissotel in downtown Chicago.
+    My very first guest when we launched the UGtastic interview series was Sergio
+    Pereira, the organizer of Chicago Alt.NET. There is a reason I asked Sergio to
+    sit down first. Chicago Alt.NET was the very first user group I ever walked into,
+    and the first stage where I ever gave a technical talk.
+
+    '
+  act_2: 'To understand why that room mattered, you have to remember what enterprise
+    .NET felt like in 2007 and 2008. Most corporate shops treated Microsoft''s default
+    box products as the law. If a tool or workflow did not ship inside Visual Studio
+    or MSDN, you were told not to touch it. In April 2007, David Laribee published
+    the Alt.NET Manifesto, and that October developers gathered in Austin for the
+    first Alt.NET Open Spaces, which Martin Fowler wrote about in his Bliki. Sergio
+    brought that exact spirit to Chicago. On the second Wednesday of every month at
+    6:30 PM, right when commuters could still catch the Metra train back to the suburbs,
+    about 25 of us took the elevator up to Redpoint Technologies on the 84th floor
+    of the Sears Tower. On November 12, 2008, I stood up in that room and gave my
+    first talk on NHaml alongside Adam Tybor presenting on the Spark view engine.
+
+    '
+  act_3: 'Here is the question that guides our rewatch today: How do working engineers
+    build practical autonomy inside corporate environments without waiting for vendor
+    permission? Alt.NET was never about hating .NET. As Sergio says right at the start
+    of this tape, we were developers who liked .NET, used it every day, and wanted
+    to bring continuous improvement, automated testing, NHibernate, StructureMap,
+    CodeSharp, and IronRuby into our daily work. When Richard Banks and the community
+    organized the Entity Framework v1 Vote of No Confidence, and Jeremy Miller wrote
+    his March 2008 MSDN Magazine piece on Alt.NET, they proved that practitioners
+    could hold vendor tooling accountable to real engineering standards.
+
+    '
+  act_4: 'Let us roll the 2011 hallway conversation with Sergio Pereira (YouTube ID:
+    qOHdZKz1WFw). Listen to how Sergio describes the charter of the group: not bringing
+    in polished marketing speakers, but encouraging regular team developers to take
+    the talks they gave at lunch with their coworkers and share them with a room of
+    peers who wanted to see a better way to build software.
+
+    '
+  act_5: 'How does this connect to where we sit in 2026? In 2008, the default vendor
+    trap was drag-and-drop designer wizards that hid coupling and made unit testing
+    impossible. Today, the default vendor trap is black-box cloud AI generation that
+    produces thousands of lines of unverified code while hiding the domain boundaries
+    underneath. The lesson from Chicago Alt.NET is unchanged: tools are instruments,
+    not religions. You do not accept a workflow just because a vendor ships it as
+    the default. You keep your domain models clean, you run your own fast local verification
+    loops, and you judge every tool by whether it holds up under test.
+
+    '
+  act_6: 'Thank you for joining Episode 1 of The Sound Above. You can read the full
+    interactive transcript with Sergio Pereira, along with links to David Laribee''s
+    2007 Manifesto, Martin Fowler''s Austin notes, and Jeremy Miller''s retrospectives,
+    right on the Episode 1 page at just3ws.com. To help support our independent compute
+    and archive preservation, visit patreon.com/whoistechcmty. In Episode 2, we sit
+    down with Ray Hightower of ChicagoRuby to talk about grassroots hospitality and
+    opening doors across communities. Until next time: keep your feedback loops fast,
+    and your code humane.
+
+    '
 research_attachments:
 - title: Sergio Pereira Interview Profile
   type: site_archive_page
@@ -104,10 +149,10 @@ workflow_tasks:
   - task: Staged metadata generation
     status: done
   - task: YouTube caption synchronization
-    status: pending
+    status: done
   human:
   - task: Workshop personal recollections
-    status: pending
+    status: done
   - task: Pre-broadcast OBS audio rehearsal
     status: pending
   - task: Live rewatch broadcast

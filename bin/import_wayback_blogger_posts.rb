@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: import_wayback_blogger_posts.rb
+# domain: data
+# purpose: Import Wayback Blogger Posts utility for the just3ws platform
+# usage: ruby bin/import_wayback_blogger_posts.rb
+# ---
+
 require "json"
 require "nokogiri"
 require "optparse"

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: monitor_deployment.rb
+# domain: site
+# purpose: Monitor Deployment utility for the just3ws platform
+# usage: ruby bin/monitor_deployment.rb
+# ---
+
 require 'json'
 require 'open3'
 require 'time'

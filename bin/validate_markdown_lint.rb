@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_markdown_lint.rb
+# domain: validate
+# purpose: Validates markdown files across docs/ and root markdown files for formatting integrity.
+# usage: ruby bin/validate_markdown_lint.rb
+# ---
+
 # Validates markdown files across docs/ and root markdown files for formatting integrity.
 puts "🔍 [Validate] Checking Markdown formatting and structure..."
 

@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: validate_seo_output.rb
+# domain: validate
+# purpose: Validate Seo Output utility for the just3ws platform
+# usage: ruby bin/validate_seo_output.rb
+# ---
+
 require 'set'
 
 ROOT = File.expand_path('..', __dir__)

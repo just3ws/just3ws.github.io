@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: ping_search_engines.rb
+# domain: site
+# purpose: Ping Search Engines utility for the just3ws platform
+# usage: ruby bin/ping_search_engines.rb
+# ---
+
 require 'net/http'
 require 'uri'
 require 'json'

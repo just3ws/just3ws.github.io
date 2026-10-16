@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: visualize_sitemap.rb
+# domain: site
+# purpose: Visualize Sitemap utility for the just3ws platform
+# usage: ruby bin/visualize_sitemap.rb
+# ---
+
 require 'rexml/document'
 
 ROOT = File.expand_path('..', __dir__)

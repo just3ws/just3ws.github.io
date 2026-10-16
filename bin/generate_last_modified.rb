@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_last_modified.rb
+# domain: data
+# purpose: Generate Last Modified utility for the just3ws platform
+# usage: ruby bin/generate_last_modified.rb
+# ---
+
 require 'yaml'
 require 'open3'
 require 'fileutils'

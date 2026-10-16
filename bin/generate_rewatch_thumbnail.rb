@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_rewatch_thumbnail.rb
+# domain: media
+# purpose: Deterministic thumbnail generator for "The Sound Above" oral history rewatch series.
+# usage: ruby bin/generate_rewatch_thumbnail.rb
+# ---
+
 # bin/generate_rewatch_thumbnail.rb
 #
 # Deterministic thumbnail generator for "The Sound Above" oral history rewatch series.

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: authorize_youtube_oauth.rb
+# domain: media
+# purpose: Authorize Youtube Oauth utility for the just3ws platform
+# usage: ruby bin/authorize_youtube_oauth.rb
+# ---
+
 require 'json'
 require 'fileutils'
 require 'net/http'

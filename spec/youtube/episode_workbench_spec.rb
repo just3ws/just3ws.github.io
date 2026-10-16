@@ -78,9 +78,14 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
     end
 
     it 'supports workshop command to add prompts and recompile' do
-      stdout, stderr, status = Open3.capture3(workbench_bin, 'workshop', '1', '--prompt', 'Test workshop prompt')
-      expect(status.success?).to be true
-      expect(stdout).to include('WORKSHOP REGENERATED: EPISODE 1 TELEPROMPTER RUNDOWN')
+      original_content = File.read(ep1_path)
+      begin
+        stdout, _stderr, status = Open3.capture3(workbench_bin, 'workshop', '1', '--prompt', 'Test workshop prompt')
+        expect(status.success?).to be true
+        expect(stdout).to include('WORKSHOP REGENERATED: EPISODE 1 TELEPROMPTER RUNDOWN')
+      ensure
+        File.write(ep1_path, original_content)
+      end
     end
 
     it 'supports stage command to verify episode in staging mode' do

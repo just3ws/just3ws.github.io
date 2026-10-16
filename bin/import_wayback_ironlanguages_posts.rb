@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: import_wayback_ironlanguages_posts.rb
+# domain: data
+# purpose: Import Wayback Ironlanguages Posts utility for the just3ws platform
+# usage: ruby bin/import_wayback_ironlanguages_posts.rb
+# ---
+
 require "nokogiri"
 require "open3"
 require "optparse"

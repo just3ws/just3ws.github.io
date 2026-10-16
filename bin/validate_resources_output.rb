@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: validate_resources_output.rb
+# domain: validate
+# purpose: Validate Resources Output utility for the just3ws platform
+# usage: ruby bin/validate_resources_output.rb
+# ---
+
 require "yaml"
 require "uri"
 require "set"

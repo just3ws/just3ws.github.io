@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: autonomous_virtuous_loop.rb
+# domain: site
+# purpose: bin/autonomous_virtuous_loop.rb - Continuous Autonomous Archive Pipeline Loop
+# usage: ruby bin/autonomous_virtuous_loop.rb
+# ---
+
 # bin/autonomous_virtuous_loop.rb — Continuous Autonomous Archive Pipeline Loop
 #
 # Runs the full virtuous loop hands-free:

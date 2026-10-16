@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_linkedin_series.rb
+# domain: data
+# purpose: bin/generate_linkedin_series.rb - 'Durable Wisdom' LinkedIn Content Generator
+# usage: ruby bin/generate_linkedin_series.rb
+# ---
+
 # bin/generate_linkedin_series.rb — 'Durable Wisdom' LinkedIn Content Generator
 #
 # Implements TASK-238:

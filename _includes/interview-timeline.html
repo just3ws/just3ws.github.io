@@ -1,8 +1,8 @@
 {% comment %}
-  interview-timeline.html — scrubber bar over the video player.
+  interview-timeline.html: scrubber bar over the video player.
   Renders from transcript_data.recording (see bin/import_recording_metadata.rb):
   intro/outro regions, the interview span, and bookmarkable key-moment chapters.
-  Seeking reloads the embed with a start offset (universal — no YouTube/Vimeo JS
+  Seeking reloads the embed with a start offset (universal: no YouTube/Vimeo JS
   API, no enablejsapi/origin config); HTML5 <video> seeks via currentTime.
   Inputs: include.recording, include.asset, include.embed_id.
 {% endcomment %}
@@ -30,7 +30,7 @@
       {% if rec.outro %}<span class="timeline-note">theme song plays at the {% if rec.intro %}start &amp; {% endif %}end</span>{% endif %}
     </figcaption>
 
-    <div class="timeline-track" role="group" aria-label="Interview timeline — click to jump">
+    <div class="timeline-track" role="group" aria-label="Interview timeline: click to jump">
       {% if rec.intro %}
         <span class="timeline-region is-intro" style="left:0;width:{{ start_pct }}%" title="Intro / theme song ({{ rec.intro.has_lyrics }})" aria-hidden="true"></span>
       {% endif %}
@@ -146,7 +146,7 @@
         var sec = parseFloat(el.getAttribute("data-seek"));
         if (isNaN(sec)) return;
         seek(sec);
-        // Shareable deep link — #t=SEC restores the position on reload.
+        // Shareable deep link: #t=SEC restores the position on reload.
         if (history.replaceState) { history.replaceState(null, "", "#t=" + Math.floor(sec)); }
       });
 

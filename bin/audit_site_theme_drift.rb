@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: audit_site_theme_drift.rb
+# domain: validate
+# purpose: bin/audit_site_theme_drift.rb - Audit Site Theme & Layout Consistency across all pages
+# usage: ruby bin/audit_site_theme_drift.rb
+# ---
+
 # bin/audit_site_theme_drift.rb — Audit Site Theme & Layout Consistency across all pages
 #
 # Scans built HTML pages to detect:

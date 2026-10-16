@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: deep_research_interview.rb
+# domain: site
+# purpose: bin/deep_research_interview.rb - Deep Research & Historical Context Tooling
+# usage: ruby bin/deep_research_interview.rb
+# ---
+
 # bin/deep_research_interview.rb — Deep Research & Historical Context Tooling
 #
 # Analyzes interview transcripts across 6 deep historical vectors:

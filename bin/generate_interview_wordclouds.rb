@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: generate_interview_wordclouds.rb
+# domain: data
+# purpose: Generate Interview Wordclouds utility for the just3ws platform
+# usage: ruby bin/generate_interview_wordclouds.rb
+# ---
+
 require "date"
 require "fileutils"
 require "yaml"

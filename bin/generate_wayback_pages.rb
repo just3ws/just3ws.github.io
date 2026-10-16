@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_wayback_pages.rb
+# domain: data
+# purpose: Generate Wayback Pages utility for the just3ws platform
+# usage: ruby bin/generate_wayback_pages.rb
+# ---
+
 require "json"
 require "optparse"
 require "pathname"

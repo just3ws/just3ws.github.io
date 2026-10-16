@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: clean_and_sync_youtube_playlists.rb
+# domain: media
+# purpose: bin/clean_and_sync_youtube_playlists.rb - YouTube Playlist Deduplication & Organization Tool
+# usage: ruby bin/clean_and_sync_youtube_playlists.rb
+# ---
+
 # bin/clean_and_sync_youtube_playlists.rb — YouTube Playlist Deduplication & Organization Tool
 #
 # Audits, deduplicates, and organizes playlists on the live YouTube channel via YouTube Data API v3.

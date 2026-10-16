@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: report_seo_metadata.rb
+# domain: site
+# purpose: Report Seo Metadata utility for the just3ws platform
+# usage: ruby bin/report_seo_metadata.rb
+# ---
+
 require 'json'
 require 'fileutils'
 require 'time'

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: forensic_repair.rb
+# domain: site
+# purpose: bin/forensic_repair.rb - Automated Forensic Repair for Transcript Validation Failures
+# usage: ruby bin/forensic_repair.rb
+# ---
+
 # bin/forensic_repair.rb — Automated Forensic Repair for Transcript Validation Failures
 
 require 'yaml'

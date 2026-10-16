@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: generate_pivotal_metadata.rb
+# domain: data
+# purpose: Generate Pivotal Metadata utility for the just3ws platform
+# usage: ruby bin/generate_pivotal_metadata.rb
+# ---
+
 require 'yaml'
 require 'json'
 require 'net/http'

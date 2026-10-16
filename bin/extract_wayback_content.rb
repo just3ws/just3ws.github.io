@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: extract_wayback_content.rb
+# domain: data
+# purpose: Extract Wayback Content utility for the just3ws platform
+# usage: ruby bin/extract_wayback_content.rb
+# ---
+
 require "json"
 require "fileutils"
 require "nokogiri"

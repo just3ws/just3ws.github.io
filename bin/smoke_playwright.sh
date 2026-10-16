@@ -1,4 +1,12 @@
 #!/usr/bin/env sh
+
+# ---
+# name: smoke_playwright.sh
+# domain: validate
+# purpose: Smoke Playwright utility for the just3ws platform
+# usage: bin/smoke_playwright.sh
+# ---
+
 set -e
 
 if ! command -v npx >/dev/null 2>&1; then

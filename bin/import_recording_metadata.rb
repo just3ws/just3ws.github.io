@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: import_recording_metadata.rb
+# domain: media
+# purpose: Phase-1 scrubber bridge: fold zdots pipeline sidecars into per-interview
+# usage: ruby bin/import_recording_metadata.rb
+# ---
+
 # Phase-1 scrubber bridge: fold zdots pipeline sidecars into per-interview
 # transcript metadata so the front-end has data to render a timeline bar.
 #

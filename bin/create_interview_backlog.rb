@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: create_interview_backlog.rb
+# domain: site
+# purpose: Create Interview Backlog utility for the just3ws platform
+# usage: ruby bin/create_interview_backlog.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

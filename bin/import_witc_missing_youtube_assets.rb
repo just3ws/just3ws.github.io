@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: import_witc_missing_youtube_assets.rb
+# domain: media
+# purpose: Import Witc Missing Youtube Assets utility for the just3ws platform
+# usage: ruby bin/import_witc_missing_youtube_assets.rb
+# ---
+
 require "json"
 require "pathname"
 require "time"

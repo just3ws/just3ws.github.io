@@ -1,3 +1,10 @@
+# ---
+# name: audit_loop.rb
+# domain: validate
+# purpose: Audit Loop utility for the just3ws platform
+# usage: ruby bin/audit_loop.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: sync_career_peer.rb
+# domain: data
+# purpose: Atomic synchronization and heartbeat manager between just3ws and wwworkremote.
+# usage: ruby bin/sync_career_peer.rb
+# ---
+
 # bin/sync_career_peer.rb
 # Atomic synchronization and heartbeat manager between just3ws and wwworkremote.
 

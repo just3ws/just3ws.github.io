@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_speakers_data.rb
+# domain: data
+# purpose: bin/generate_speakers_data.rb - Speaker Directory & Voice Matrix Generator
+# usage: ruby bin/generate_speakers_data.rb
+# ---
+
 # bin/generate_speakers_data.rb — Speaker Directory & Voice Matrix Generator
 
 require 'yaml'

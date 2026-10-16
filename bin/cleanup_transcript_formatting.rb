@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: cleanup_transcript_formatting.rb
+# domain: data
+# purpose: Cleanup Transcript Formatting utility for the just3ws platform
+# usage: ruby bin/cleanup_transcript_formatting.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

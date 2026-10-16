@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T14:05:19Z",
+  "generated_at": "2026-10-16T14:39:22Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -763,25 +763,16 @@
           "Connect the 2011 conversation directly to current engineering challenges.",
           "Ground the technical critique in practitioner empathy.",
           "Analyze the shift from vendor toolchain dependence to open source autonomy.",
-          "Examine how grassroots open spaces foster durable engineering practices.",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt",
-          "Test workshop prompt"
+          "Examine how grassroots open spaces foster durable engineering practices."
         ]
+      },
+      "teleprompter_script": {
+        "act_1": "Welcome to The Sound Above. I am Mike Hall, and this is Episode 1 of our technical rewatch series. Today we are going back to November 19, 2011, on-site at Software Craftsmanship North America at the Swissotel in downtown Chicago. My very first guest when we launched the UGtastic interview series was Sergio Pereira, the organizer of Chicago Alt.NET. There is a reason I asked Sergio to sit down first. Chicago Alt.NET was the very first user group I ever walked into, and the first stage where I ever gave a technical talk.\n",
+        "act_2": "To understand why that room mattered, you have to remember what enterprise .NET felt like in 2007 and 2008. Most corporate shops treated Microsoft's default box products as the law. If a tool or workflow did not ship inside Visual Studio or MSDN, you were told not to touch it. In April 2007, David Laribee published the Alt.NET Manifesto, and that October developers gathered in Austin for the first Alt.NET Open Spaces, which Martin Fowler wrote about in his Bliki. Sergio brought that exact spirit to Chicago. On the second Wednesday of every month at 6:30 PM, right when commuters could still catch the Metra train back to the suburbs, about 25 of us took the elevator up to Redpoint Technologies on the 84th floor of the Sears Tower. On November 12, 2008, I stood up in that room and gave my first talk on NHaml alongside Adam Tybor presenting on the Spark view engine.\n",
+        "act_3": "Here is the question that guides our rewatch today: How do working engineers build practical autonomy inside corporate environments without waiting for vendor permission? Alt.NET was never about hating .NET. As Sergio says right at the start of this tape, we were developers who liked .NET, used it every day, and wanted to bring continuous improvement, automated testing, NHibernate, StructureMap, CodeSharp, and IronRuby into our daily work. When Richard Banks and the community organized the Entity Framework v1 Vote of No Confidence, and Jeremy Miller wrote his March 2008 MSDN Magazine piece on Alt.NET, they proved that practitioners could hold vendor tooling accountable to real engineering standards.\n",
+        "act_4": "Let us roll the 2011 hallway conversation with Sergio Pereira (YouTube ID: qOHdZKz1WFw). Listen to how Sergio describes the charter of the group: not bringing in polished marketing speakers, but encouraging regular team developers to take the talks they gave at lunch with their coworkers and share them with a room of peers who wanted to see a better way to build software.\n",
+        "act_5": "How does this connect to where we sit in 2026? In 2008, the default vendor trap was drag-and-drop designer wizards that hid coupling and made unit testing impossible. Today, the default vendor trap is black-box cloud AI generation that produces thousands of lines of unverified code while hiding the domain boundaries underneath. The lesson from Chicago Alt.NET is unchanged: tools are instruments, not religions. You do not accept a workflow just because a vendor ships it as the default. You keep your domain models clean, you run your own fast local verification loops, and you judge every tool by whether it holds up under test.\n",
+        "act_6": "Thank you for joining Episode 1 of The Sound Above. You can read the full interactive transcript with Sergio Pereira, along with links to David Laribee's 2007 Manifesto, Martin Fowler's Austin notes, and Jeremy Miller's retrospectives, right on the Episode 1 page at just3ws.com. To help support our independent compute and archive preservation, visit patreon.com/whoistechcmty. In Episode 2, we sit down with Ray Hightower of ChicagoRuby to talk about grassroots hospitality and opening doors across communities. Until next time: keep your feedback loops fast, and your code humane.\n"
       },
       "research_attachments": [
         {
@@ -832,13 +823,13 @@
           },
           {
             "task": "YouTube caption synchronization",
-            "status": "pending"
+            "status": "done"
           }
         ],
         "human": [
           {
             "task": "Workshop personal recollections",
-            "status": "pending"
+            "status": "done"
           },
           {
             "task": "Pre-broadcast OBS audio rehearsal",
@@ -899,17 +890,39 @@
         ]
       },
       "human_marginalia": {
-        "host_recollections": [],
+        "host_recollections": [
+          {
+            "scene": "Act 1: Cold Open",
+            "story": "Meeting Ray Hightower at Midway Restaurant in late 2008 while working remotely at Business Decisions, Inc., where Ray opened his MacBook and demonstrated Cucumber live at the table."
+          },
+          {
+            "scene": "Act 2: Setting the Historical Scene",
+            "story": "Ray never treated technology communities like gated clubs; he actively introduced .NET developers, suburban commuters, and downtown consultants to each other and pointed me directly to 8th Light's Pair Friday in Libertyville."
+          }
+        ],
         "workshop_prompts": [
           "Connect the 2011 conversation directly to current engineering challenges.",
           "Ground the technical critique in practitioner empathy."
         ]
+      },
+      "teleprompter_script": {
+        "act_1": "Welcome back to The Sound Above. I am Mike Hall, and this is Episode 2. Today we return to SCNA 2011 at the Swissotel in Chicago for my conversation with Ray Hightower, the founder of WisdomGroup and organizer of ChicagoRuby and WindyCityRails. If Sergio Pereira gave me my first user group room in the Sears Tower, Ray Hightower was the ambassador who opened the door to the entire Chicago Ruby and software craftsmanship community.\n",
+        "act_2": "In late 2008, I was working remotely as Principal Developer at Business Decisions, Inc., maintaining a multi-tenant HR platform and coordinating with developers in Uruguay. I reached out to Ray, and we met up halfway at Midway Restaurant. I was still a Microsoft .NET developer at the time. Ray did not gatekeep or lecture me about platforms. He just opened his MacBook right there at the diner table, fired up his terminal, and showed me Cucumber running plain-English acceptance tests. Before we left, he invited me to ChicagoRuby and told me about an open Friday pairing session happening up in Libertyville at a small consultancy called 8th Light.\n",
+        "act_3": "Our core inquiry for Episode 2 is simple: What makes a technical community endure across decades, and why does hospitality matter so much when engineers are crossing paradigm boundaries? When you are spending forty hours a week in a legacy stack, walking into a room full of people using a different operating system, a different editor, and a different language is intimidating. Ray understood that hospitality is not a soft extra. It is the bridge that lets working engineers cross over and learn new disciplines without feeling like outsiders.\n",
+        "act_4": "Let us roll the SCNA 2011 conversation with Ray Hightower (YouTube ID: XZqGbf5C76E). Pay attention to how intentionally Ray thinks about structure, venue logistics, and linking downtown city developers with suburban user groups across Chicagoland.\n",
+        "act_5": "In 2026, when so much engineering work happens in isolated remote home offices behind AI chat prompts, the risk of professional isolation is higher than it was in 2008. Autonomous code generation can synthesize boilerplate in seconds, but it cannot sit across from you at a diner table, show you a better testing workflow, or introduce you to the peers who will change the trajectory of your career. We still need human ambassadors and open rooms where engineers share their actual workbenches.\n",
+        "act_6": "Thank you for watching Episode 2 of The Sound Above. The full interactive transcript with Ray Hightower and our Chicago Community Timeline notes are live at just3ws.com. You can help underwrite our independent compute and archive work at patreon.com/whoistechcmty. Next time, in Episode 3, we follow Ray's introduction up to Libertyville for Pair Friday with Micah Martin and Mike Jansen of 8th Light. Until next time: keep your feedback loops fast, and your code humane.\n"
       },
       "research_attachments": [
         {
           "title": "Ray Hightower Interview Profile",
           "type": "site_archive_page",
           "url": "https://just3ws.com/interviews/ray-hightower-chicagoruby-software-craftsmanship-north-america-2011/"
+        },
+        {
+          "title": "The Long Way Back to Here (Ray Hightower as Community Ambassador)",
+          "type": "article",
+          "url": "https://just3ws.com/ai/2026/09/02/the-long-way-back-to-here/"
         }
       ],
       "workflow_tasks": {
@@ -930,7 +943,7 @@
         "human": [
           {
             "task": "Workshop personal recollections",
-            "status": "pending"
+            "status": "done"
           },
           {
             "task": "Pre-broadcast OBS audio rehearsal",
@@ -991,17 +1004,39 @@
         ]
       },
       "human_marginalia": {
-        "host_recollections": [],
+        "host_recollections": [
+          {
+            "scene": "Act 1: Cold Open",
+            "story": "Walking up the stairs into 8th Light's Libertyville office in winter 2008 and seeing developers pairing in Vim and RSpec while MelodySheep's Carl Sagan remixes played in the room."
+          },
+          {
+            "scene": "Act 2: Setting the Historical Scene",
+            "story": "Sitting down at the pairing tables with Micah Martin, Eric Smith, Eric Meyer, Colin Jones, and Jim Suchy showed me that software development could be practiced as a disciplined studio craft."
+          }
+        ],
         "workshop_prompts": [
           "Connect the 2012 conversation directly to current engineering challenges.",
           "Ground the technical critique in practitioner empathy."
         ]
+      },
+      "teleprompter_script": {
+        "act_1": "Welcome to The Sound Above. I am Mike Hall, and this is Episode 3. In our last episode, Ray Hightower told me over lunch at Midway Restaurant that I needed to drive up to Libertyville on a Friday and visit a group of developers at 8th Light. Today we revisit my SCNA conversations with 8th Light co-founder Micah Martin and craftsman Mike Jansen on Pair Friday, 8th Light University, and the apprenticeship model that helped spark the Software Craftsmanship movement.\n",
+        "act_2": "I still remember the cultural shock of walking up the stairs into 8th Light's second-floor office in downtown Libertyville in the winter of 2008. Coming from enterprise Windows shops with heavy Visual Studio builds and isolated cubicles, that room looked like another world. Long tables were set up with dual keyboards and monitors. Developers like Micah Martin, Eric Smith, Eric Meyer, Colin Jones, and Jim Suchy were pairing in Vim and tmux, running RSpec suites that finished in milliseconds, while MelodySheep's Symphony of Science Carl Sagan remixes played across the room. Anyone from the community could walk in on a Friday, sit down at a keyboard, and write test-driven code side by side with a working craftsman.\n",
+        "act_3": "Here is our core inquiry for Episode 3: How is real engineering judgment transmitted from one practitioner to another? You cannot learn software design purely from a textbook or a vendor certification. At 8th Light, apprenticeship meant sitting next to someone who held the code to a rigorous standard, writing the failing test first, keeping the feedback loop under a second, and explaining the trade-offs out loud at 8th Light University.\n",
+        "act_4": "Let us roll the archive conversations with Micah Martin and Mike Jansen (YouTube ID: GwYGODSJWgM). Listen to how they describe the origins of their apprenticeship program, the transition from Libertyville into downtown Chicago, and why opening their doors to the community every week was central to how they built their engineering culture.\n",
+        "act_5": "Think about what Pair Friday teaches us about working with AI coding agents in 2026. Pairing with an LLM agent requires the exact same discipline as pairing with an eager apprentice at those Libertyville tables. If you let an apprentice write five hundred lines of untested code without a clear boundary, you get a tangle you cannot maintain. If you work in small, verifiable steps, keep your terminal feedback loop fast, and enforce clean interfaces at every seam, both human and machine stay aligned with the architecture.\n",
+        "act_6": "Thank you for joining Episode 3 of The Sound Above. Full transcripts, chapter markers, and links to our Libertyville timeline notes are available at just3ws.com. To support our independent compute and archive preservation, visit patreon.com/whoistechcmty. In Episode 4, we sit down with Dave Hoover of Obtiva to explore Geekfest and the psychology behind Apprenticeship Patterns. Until next time: keep your feedback loops fast, and your code humane.\n"
       },
       "research_attachments": [
         {
           "title": "Micah Martin & Mike Jansen Interview Profile",
           "type": "site_archive_page",
           "url": "https://just3ws.com/interviews/micah-martin-software-craftsmanship-north-america-2013/"
+        },
+        {
+          "title": "Mike Jansen on 8th Light University (SCNA 2012)",
+          "type": "site_archive_page",
+          "url": "https://just3ws.com/interviews/mike-jansen-software-craftsmanship-north-america-2012/"
         }
       ],
       "workflow_tasks": {
@@ -1022,7 +1057,7 @@
         "human": [
           {
             "task": "Workshop personal recollections",
-            "status": "pending"
+            "status": "done"
           },
           {
             "task": "Pre-broadcast OBS audio rehearsal",
@@ -1083,11 +1118,28 @@
         ]
       },
       "human_marginalia": {
-        "host_recollections": [],
+        "host_recollections": [
+          {
+            "scene": "Act 1: Cold Open",
+            "story": "Meeting Dave Hoover at SCNA 2009 and joining Obtiva in August 2009, where I worked on Obtiva's sole .NET project on a Dell Studio XPS PP35L laptop with the 'Typing is not the bottleneck' sticker while transitioning into Ruby and Vim."
+          },
+          {
+            "scene": "Act 2: Setting the Historical Scene",
+            "story": "Obtiva's Geekfest sessions turned internal Tuesday evening study groups into an open workshop where anyone in Chicagoland could practice TDD and refactoring."
+          }
+        ],
         "workshop_prompts": [
           "Connect the 2011 conversation directly to current engineering challenges.",
           "Ground the technical critique in practitioner empathy."
         ]
+      },
+      "teleprompter_script": {
+        "act_1": "Welcome back to The Sound Above. I am Mike Hall, and this is Episode 4. Today we revisit my conversation with Dave Hoover, co-founder of Obtiva, co-author of O'Reilly's Apprenticeship Patterns with Adewale Oshineye, and later co-founder of Dev Bootcamp. I met Dave at the inaugural Software Craftsmanship North America conference in 2009, and joining Obtiva that August was one of the defining turning points of my engineering career.\n",
+        "act_2": "Before Dave entered software engineering, he trained in psychology and family therapy. You could feel that background in everything Obtiva built. Starting in 2007, Dave and Kevin Taylor opened up Obtiva's internal study groups into Geekfest, a weekly hands-on coding evening where developers across Chicagoland practiced test-driven development and refactoring together. When I joined Obtiva in August 2009, they put me on their sole .NET consulting project first, carrying that Dell Studio XPS laptop with the monkey typing sticker that reminded us typing is not the bottleneck, while pairing me into Ruby, Rails, and Vim on engagements at Leapfrog Online, Sears, and Groupon.\n",
+        "act_3": "Our core inquiry today comes straight out of Dave and Adewale's book Apprenticeship Patterns: What happens to an engineering team when it becomes mathematically and psychologically safe to expose your ignorance? In corporate hierarchies, engineers are often rewarded for bluffing certainty. In a real workshop, growth only starts when you can say 'I do not know how this works yet, show me how to test it,' and then record what you learn for the next person coming up the ladder.\n",
+        "act_4": "Let us roll the archive interview with Dave Hoover (YouTube ID: MytNNjBsBBk). Listen to how Dave connects Geekfest, the patterns of software apprenticeship, and the human dynamics of building software teams that learn continuously on the job.\n",
+        "act_5": "Why do the patterns in Dave Hoover's book matter so much in 2026? Because generative AI makes it dangerously easy to fake competence without understanding the underlying system. Patterns like 'Expose Your Ignorance', 'Breakable Toys', 'Read Constantly', and 'Record What You Learn' are the exact antidotes to copy-paste AI slop. When you build small breakable toys and document your actual verification steps, you turn black-box outputs into durable engineering knowledge.\n",
+        "act_6": "Thank you for joining Episode 4 of The Sound Above. You can explore the full transcript with Dave Hoover and our Obtiva timeline history at just3ws.com. To help underwrite our independent compute and archive preservation, support us at patreon.com/whoistechcmty. In Episode 5, we close Movement 1 with Ryan Gerry and Jim Suchy on how we brought that workshop spirit 50 miles northwest to found Software Craftsmanship McHenry County. Until next time: keep your feedback loops fast, and your code humane.\n"
       },
       "research_attachments": [
         {
@@ -1114,7 +1166,7 @@
         "human": [
           {
             "task": "Workshop personal recollections",
-            "status": "pending"
+            "status": "done"
           },
           {
             "task": "Pre-broadcast OBS audio rehearsal",
@@ -1153,7 +1205,7 @@
           "resolution": "The lasting influence on software craft and practice"
         },
         "core_inquiry": "What sustained a monthly practitioner meetup in McHenry County for seventeen straight years without corporate sponsorship or speaker fees?",
-        "chicago_context": "Mike Hall, Jim Suchy, and Ryan Gerry founded SCMC in spring 2009 following the Software Craftsmanship Manifesto, hosted at Follett and Panera Bread.",
+        "chicago_context": "Mike Hall and Ryan Gerry met at an SCNA table in October 2009 to launch CDG in McHenry County libraries and Panera Bread, partnering with Jim Suchy in 2010 to formalize Software Craftsmanship McHenry County (SCMC) at Follett Software Company.",
         "ai_era_parallel": "Grassroots community rooms provide psychological safety to test ideas, fail safely, and evaluate AI tooling with skeptical peer review."
       },
       "lexicon": {
@@ -1174,17 +1226,39 @@
         ]
       },
       "human_marginalia": {
-        "host_recollections": [],
+        "host_recollections": [
+          {
+            "scene": "Act 1: Cold Open",
+            "story": "Walking up to Ryan Gerry's table at SCNA 2009, introducing myself, and discovering we lived 15 minutes apart in McHenry County 50 miles outside downtown Chicago."
+          },
+          {
+            "scene": "Act 2: Setting the Historical Scene",
+            "story": "Starting CDG in public library rooms, Panera Bread backrooms, and upstairs at Duke's Alehouse in Crystal Lake before Jim Suchy joined us to launch SCMC at Follett Software Company."
+          }
+        ],
         "workshop_prompts": [
           "Connect the 2014 conversation directly to current engineering challenges.",
           "Ground the technical critique in practitioner empathy."
         ]
+      },
+      "teleprompter_script": {
+        "act_1": "Welcome back to The Sound Above. I am Mike Hall, and this is Episode 5, the closing chapter of Movement 1: The Chicago Workshop. Today we revisit my GOTO Chicago 2014 conversation with Ryan Gerry, alongside our earlier SCMC reflections with Jim Suchy. This episode is deeply personal for me, because it is the story of how we built a technical community fifty miles outside downtown Chicago in McHenry County, and how Ryan Gerry kept that room alive every single month for seventeen years.\n",
+        "act_2": "In October 2009, at the first Software Craftsmanship North America conference, I walked up to a table at lunch and introduced myself to Ryan Gerry: 'Hi, I am Mike, where are you from?' It turned out we lived fifteen minutes apart in far northwest McHenry County, where there were zero developer user groups. Right at that table, we decided to start one. We launched CDG, the Cloud Developers Group, meeting in public library rooms, Panera Bread backrooms, and upstairs at Duke's Alehouse in Crystal Lake. In 2010, after eighteen months, we partnered with Jim Suchy from 8th Light to focus on hands-on coding katas and rebranded as Software Craftsmanship McHenry County. Ryan secured a permanent home for us at Follett Software Company, and attendance jumped fifty percent overnight.\n",
+        "act_3": "Here is our core inquiry for Episode 5: What sustains a local engineering community for seventeen straight years without corporate marketing budgets or paid speakers, and what does it take to hand over the torch when your own bandwidth hits a wall? A real community is not built on one founder's ego. When my travel and conference schedule made it impossible to show up every month, Ryan Gerry carried SCMC forward year after year without missing a beat.\n",
+        "act_4": "Let us roll the GOTO Chicago 2014 conversation with Ryan Gerry (YouTube ID: gBQfB84aqW4). Listen to how Ryan describes the rhythm of those monthly kata sessions, the partnership with Follett and 8th Light, and what happens when suburban developers have a dedicated room to practice their craft together.\n",
+        "act_5": "What does a seventeen-year continuous room teach us in 2026? Hype cycles come and go. When Ryan and I first met in 2009, cloud computing was the brand-new wave; today it is agentic AI. The tools change every five years, but the need for a high-trust room where working engineers can sit down, test ideas against reality, and learn from peers without posturing never changes.\n",
+        "act_6": "Thank you for joining Episode 5 and completing Movement 1 of The Sound Above. Full transcripts, SCMC archive recordings, and our 17-year community hub are online at just3ws.com/scmc/. To help underwrite our independent compute and archive preservation, visit patreon.com/whoistechcmty. In Episode 6, we begin Movement 2: The Practice and the Dojo, starting with Corey Haines on Coderetreat and deliberate practice. Until next time: keep your feedback loops fast, and your code humane.\n"
       },
       "research_attachments": [
         {
           "title": "Ryan Gerry & Jim Suchy Interview Profile",
           "type": "site_archive_page",
           "url": "https://just3ws.com/interviews/ryan-gerry-goto-conference-2014/"
+        },
+        {
+          "title": "Software Craftsmanship McHenry County (SCMC) 17-Year Community Hub",
+          "type": "site_archive_page",
+          "url": "https://just3ws.com/scmc/"
         }
       ],
       "workflow_tasks": {
@@ -1205,7 +1279,7 @@
         "human": [
           {
             "task": "Workshop personal recollections",
-            "status": "pending"
+            "status": "done"
           },
           {
             "task": "Pre-broadcast OBS audio rehearsal",

@@ -1,6 +1,6 @@
 # The 15-Year Living Syllabus & Epistemic Risk Assessment: The Cross-Disciplinary Anatomy of Physical Ground Truth
 
-> *"To solve this problem without an AI, you need fifteen years of lived failure across five distinct disciplines that almost never coexist in the same engineer. With an AI, you can borrow that expertise in forty seconds—and walk into a catastrophic trap in thirty."*
+> *"To solve this problem without an AI, you need fifteen years of lived failure across five distinct disciplines that almost never coexist in the same engineer. With an AI, you can borrow that expertise in forty seconds, and walk into a catastrophic trap in thirty."*
 
 **Project**: *Under the High-Tension Wires*  
 **Repository**: [`just3ws/dehum`](https://github.com/just3ws/dehum)  

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: enrich_speaker_profiles.rb
+# domain: data
+# purpose: bin/enrich_speaker_profiles.rb - Rich Speaker Profile Annotator & Context Synthesizer
+# usage: ruby bin/enrich_speaker_profiles.rb
+# ---
+
 # bin/enrich_speaker_profiles.rb — Rich Speaker Profile Annotator & Context Synthesizer
 
 require 'yaml'

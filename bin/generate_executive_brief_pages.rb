@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_executive_brief_pages.rb
+# domain: data
+# purpose: Generate Executive Brief Pages utility for the just3ws platform
+# usage: ruby bin/generate_executive_brief_pages.rb
+# ---
+
 require "fileutils"
 require_relative "../src/generators/core/meta"
 require_relative "../src/generators/core/text"

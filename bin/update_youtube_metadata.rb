@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: update_youtube_metadata.rb
+# domain: media
+# purpose: Update Youtube Metadata utility for the just3ws platform
+# usage: ruby bin/update_youtube_metadata.rb
+# ---
+
 require_relative "lib/youtube_client"
 require "json"
 

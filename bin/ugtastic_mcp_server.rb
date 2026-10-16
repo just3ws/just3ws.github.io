@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: ugtastic_mcp_server.rb
+# domain: media
+# purpose: bin/ugtastic_mcp_server.rb - Model Context Protocol (MCP) Server for UGtastic Archive
+# usage: ruby bin/ugtastic_mcp_server.rb
+# ---
+
 # bin/ugtastic_mcp_server.rb — Model Context Protocol (MCP) Server for UGtastic Archive
 #
 # Implements a standard JSON-RPC 2.0 STDIO MCP server exposing resources and tools

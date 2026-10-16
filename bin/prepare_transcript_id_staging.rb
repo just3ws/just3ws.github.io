@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: prepare_transcript_id_staging.rb
+# domain: data
+# purpose: Prepare Transcript Id Staging utility for the just3ws platform
+# usage: ruby bin/prepare_transcript_id_staging.rb
+# ---
+
 require "yaml"
 require "json"
 require "fileutils"

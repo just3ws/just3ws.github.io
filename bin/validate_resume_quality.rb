@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_resume_quality.rb
+# domain: validate
+# purpose: Automated Resume Quality, ATS Parser Emulation, and Competency Coverage Validator.
+# usage: ruby bin/validate_resume_quality.rb
+# ---
+
 # bin/validate_resume_quality.rb
 # Automated Resume Quality, ATS Parser Emulation, and Competency Coverage Validator.
 

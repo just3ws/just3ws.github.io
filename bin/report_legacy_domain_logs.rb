@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: report_legacy_domain_logs.rb
+# domain: site
+# purpose: Report Legacy Domain Logs utility for the just3ws platform
+# usage: ruby bin/report_legacy_domain_logs.rb
+# ---
+
 require "csv"
 require "json"
 

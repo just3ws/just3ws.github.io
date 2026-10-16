@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: benchmark_ats_keywords.rb
+# domain: site
+# purpose: Benchmarks resume exports against target Staff-level job profiles,
+# usage: ruby bin/benchmark_ats_keywords.rb
+# ---
+
 # bin/benchmark_ats_keywords.rb
 # Benchmarks resume exports against target Staff-level job profiles,
 # measuring ATS section extraction, keyword density, and leadership impact.

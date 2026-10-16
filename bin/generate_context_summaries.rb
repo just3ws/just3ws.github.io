@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: generate_context_summaries.rb
+# domain: data
+# purpose: Generate Context Summaries utility for the just3ws platform
+# usage: ruby bin/generate_context_summaries.rb
+# ---
+
 require "set"
 require "time"
 require_relative "../src/generators/core/yaml_io"

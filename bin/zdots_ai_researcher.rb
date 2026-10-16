@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: zdots_ai_researcher.rb
+# domain: site
+# purpose: bin/zdots_ai_researcher.rb - zdots AI Platform Research Automator
+# usage: ruby bin/zdots_ai_researcher.rb
+# ---
+
 # bin/zdots_ai_researcher.rb — zdots AI Platform Research Automator
 #
 # Leverages zdots-ask, zdots-ctx, and zdots-search to perform AI-augmented

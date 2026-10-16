@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_books_bibliography.rb
+# domain: data
+# purpose: bin/generate_books_bibliography.rb - Archival Bibliography & Reading List Generator
+# usage: ruby bin/generate_books_bibliography.rb
+# ---
+
 # bin/generate_books_bibliography.rb — Archival Bibliography & Reading List Generator
 #
 # Extracts books written or recommended by interviewees across the UGtastic canon.

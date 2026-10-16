@@ -1,3 +1,10 @@
+// ---
+// name: capture_portfolio_evolution.js
+// domain: site
+// purpose: Capture Portfolio Evolution utility for the just3ws platform
+// usage: node bin/capture_portfolio_evolution.js
+// ---
+
 const { chromium } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');

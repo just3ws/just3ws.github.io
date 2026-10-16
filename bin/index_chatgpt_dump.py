@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+# ---
+# name: index_chatgpt_dump.py
+# domain: data
+# purpose: Index Chatgpt Dump utility for the just3ws platform
+# usage: python3 bin/index_chatgpt_dump.py
+# ---
+
 """
 index_chatgpt_dump.py — Index ChatGPT conversation JSON exports into a SQLite FTS5 database.
 

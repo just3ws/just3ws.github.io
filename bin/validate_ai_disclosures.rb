@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_ai_disclosures.rb
+# domain: validate
+# purpose: Validate Ai Disclosures utility for the just3ws platform
+# usage: ruby bin/validate_ai_disclosures.rb
+# ---
+
 require "date"
 require "yaml"
 

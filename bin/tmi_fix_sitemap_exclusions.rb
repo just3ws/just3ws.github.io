@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: tmi_fix_sitemap_exclusions.rb
+# domain: validate
+# purpose: Deterministically finds source files that have `noindex` or `nofollow` in
+# usage: ruby bin/tmi_fix_sitemap_exclusions.rb
+# ---
+
 # bin/tmi_fix_sitemap_exclusions.rb
 #
 # Deterministically finds source files that have `noindex` or `nofollow` in

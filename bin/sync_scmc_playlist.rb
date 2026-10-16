@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: sync_scmc_playlist.rb
+# domain: media
+# purpose: Creates and populates the Software Craftsmanship McHenry County (SCMC)
+# usage: ruby bin/sync_scmc_playlist.rb
+# ---
+
 # bin/sync_scmc_playlist.rb
 #
 # Creates and populates the Software Craftsmanship McHenry County (SCMC)

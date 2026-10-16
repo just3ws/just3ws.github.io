@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: import_linkedin_articles.rb
+# domain: data
+# purpose: Import Linkedin Articles utility for the just3ws platform
+# usage: ruby bin/import_linkedin_articles.rb
+# ---
+
 require "json"
 require "nokogiri"
 require "optparse"

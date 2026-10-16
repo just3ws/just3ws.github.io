@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: restore_greg_baugues_interview.rb
+# domain: site
+# purpose: Re-uploads the accidentally deleted RailsConf 2014 interview with Greg Baugues
+# usage: ruby bin/restore_greg_baugues_interview.rb
+# ---
+
 # bin/restore_greg_baugues_interview.rb
 #
 # Re-uploads the accidentally deleted RailsConf 2014 interview with Greg Baugues

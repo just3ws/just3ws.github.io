@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: stage_completed_transcripts.rb
+# domain: data
+# purpose: Stage Completed Transcripts utility for the just3ws platform
+# usage: ruby bin/stage_completed_transcripts.rb
+# ---
+
 require 'yaml'
 require 'json'
 require 'fileutils'

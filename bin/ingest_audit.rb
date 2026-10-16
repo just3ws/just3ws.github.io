@@ -1,3 +1,10 @@
+# ---
+# name: ingest_audit.rb
+# domain: site
+# purpose: Ingest Audit utility for the just3ws platform
+# usage: ruby bin/ingest_audit.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

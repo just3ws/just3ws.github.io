@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: import_ironlanguages_local_snapshots.rb
+# domain: data
+# purpose: Import Ironlanguages Local Snapshots utility for the just3ws platform
+# usage: ruby bin/import_ironlanguages_local_snapshots.rb
+# ---
+
 require "nokogiri"
 require "optparse"
 require "pathname"

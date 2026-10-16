@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: validate_metadata_completeness_budget.rb
+# domain: validate
+# purpose: Validate Metadata Completeness Budget utility for the just3ws platform
+# usage: ruby bin/validate_metadata_completeness_budget.rb
+# ---
+
 require "yaml"
 require "time"
 require "date"

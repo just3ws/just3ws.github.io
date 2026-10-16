@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_generated_freshness.rb
+# domain: validate
+# purpose: Validate Generated Freshness utility for the just3ws platform
+# usage: ruby bin/validate_generated_freshness.rb
+# ---
+
 require 'open3'
 
 ROOT = File.expand_path('..', __dir__)
@@ -48,7 +55,7 @@ warn '  Run `bundle exec rake build` and commit regenerated tracked artifacts.'
 changed.each { |path| warn "  - #{path}" }
 
 # Print the actual drift, not just filenames. Without this the gate is a black
-# box — you see WHICH files differ but not HOW, which turns a CI-only reproduction
+# box: you see WHICH files differ but not HOW, which turns a CI-only reproduction
 # into guesswork. --no-color keeps the log diff-clean.
 diff, = Open3.capture2('git', '--no-pager', 'diff', '--no-color', '--', *changed, chdir: ROOT)
 warn "\n--- drift diff ---\n#{diff}"

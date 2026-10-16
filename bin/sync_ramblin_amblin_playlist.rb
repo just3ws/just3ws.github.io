@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: sync_ramblin_amblin_playlist.rb
+# domain: media
+# purpose: Sync Ramblin Amblin Playlist utility for the just3ws platform
+# usage: ruby bin/sync_ramblin_amblin_playlist.rb
+# ---
+
 require_relative "lib/youtube_client"
 require "json"
 

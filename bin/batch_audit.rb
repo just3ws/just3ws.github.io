@@ -1,3 +1,10 @@
+# ---
+# name: batch_audit.rb
+# domain: site
+# purpose: Batch Audit utility for the just3ws platform
+# usage: ruby bin/batch_audit.rb
+# ---
+
 require 'yaml'
 
 batch = {

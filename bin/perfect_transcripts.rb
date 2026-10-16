@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: perfect_transcripts.rb
+# domain: data
+# purpose: Perfect Transcripts utility for the just3ws platform
+# usage: ruby bin/perfect_transcripts.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

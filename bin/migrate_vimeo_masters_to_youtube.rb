@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: migrate_vimeo_masters_to_youtube.rb
+# domain: media
+# purpose: bin/migrate_vimeo_masters_to_youtube.rb - Vimeo Master MP4 -> YouTube Uploader
+# usage: ruby bin/migrate_vimeo_masters_to_youtube.rb
+# ---
+
 # bin/migrate_vimeo_masters_to_youtube.rb — Vimeo Master MP4 -> YouTube Uploader
 #
 # Reads _data/vimeo_migration_manifest.yml and matches master MP4s in the configured Vimeo directory,

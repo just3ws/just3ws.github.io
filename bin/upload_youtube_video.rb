@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: upload_youtube_video.rb
+# domain: media
+# purpose: Upload Youtube Video utility for the just3ws platform
+# usage: ruby bin/upload_youtube_video.rb
+# ---
+
 require 'json'
 require 'net/http'
 require 'uri'

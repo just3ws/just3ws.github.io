@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: batch_ztranscribe.rb
+# domain: site
+# purpose: Batch Ztranscribe utility for the just3ws platform
+# usage: ruby bin/batch_ztranscribe.rb
+# ---
+
 require 'yaml'
 
 interviews = YAML.load_file("_data/interviews.yml")["items"]

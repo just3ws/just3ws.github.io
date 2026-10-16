@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: validate_repo_hygiene.rb
+# domain: validate
+# purpose: Validate Repo Hygiene utility for the just3ws platform
+# usage: ruby bin/validate_repo_hygiene.rb
+# ---
+
 require "yaml"
 require "pathname"
 

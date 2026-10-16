@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_errata_thumbnail.rb
+# domain: media
+# purpose: ==============================================================================
+# usage: ruby bin/generate_errata_thumbnail.rb
+# ---
+
 # ==============================================================================
 # bin/generate_errata_thumbnail.rb
 #

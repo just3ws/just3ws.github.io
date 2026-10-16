@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: generate_interviewees_page.rb
+# domain: data
+# purpose: Generate Interviewees Page utility for the just3ws platform
+# usage: ruby bin/generate_interviewees_page.rb
+# ---
+
 require "time"
 require "set"
 require_relative "../src/generators/core/yaml_io"

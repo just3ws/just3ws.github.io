@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_archetype_resumes.rb
+# domain: data
+# purpose: Generate Archetype Resumes utility for the just3ws platform
+# usage: ruby bin/generate_archetype_resumes.rb
+# ---
+
 require 'yaml'
 require 'json'
 require 'fileutils'

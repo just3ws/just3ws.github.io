@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: build_witc_atlas.rb
+# domain: data
+# purpose: Build an interactive-friendly, evidence-linked atlas from the local WITC corpus.
+# usage: ruby bin/build_witc_atlas.rb
+# ---
+
 # Build an interactive-friendly, evidence-linked atlas from the local WITC corpus.
 
 require "json"

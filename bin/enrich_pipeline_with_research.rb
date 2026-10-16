@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: enrich_pipeline_with_research.rb
+# domain: data
+# purpose: bin/enrich_pipeline_with_research.rb - Pipeline Feedback & Vocabulary Priming Generator
+# usage: ruby bin/enrich_pipeline_with_research.rb
+# ---
+
 # bin/enrich_pipeline_with_research.rb — Pipeline Feedback & Vocabulary Priming Generator
 #
 # Consolidates deep research sidecars from _data/research/*.json into a master domain

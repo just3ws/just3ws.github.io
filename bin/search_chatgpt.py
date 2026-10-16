@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+# ---
+# name: search_chatgpt.py
+# domain: site
+# purpose: Search Chatgpt utility for the just3ws platform
+# usage: python3 bin/search_chatgpt.py
+# ---
+
 """
 search_chatgpt.py — Fast FTS5 search across the indexed ChatGPT corpus.
 

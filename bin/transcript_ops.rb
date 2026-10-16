@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: transcript_ops.rb
+# domain: data
+# purpose: bin/transcript_ops.rb - Unified Transcript Operations & Automation CLI
+# usage: ruby bin/transcript_ops.rb
+# ---
+
 # bin/transcript_ops.rb — Unified Transcript Operations & Automation CLI
 #
 # Provides end-to-end automation for archive transcripts:

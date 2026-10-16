@@ -63,9 +63,14 @@ ruby bin/generate_career_datalake.rb
 The repository equips a dedicated Model Context Protocol (MCP) server for agents:
 - Executable: `bin/career_datalake_mcp_server.rb`
 - Tools exposed:
-  * `query_career_datalake`: Full-text searches across positions, skills, and transcripts.
-  * `get_interview_transcript`: Retrieves full speaker turns and text for a given slug or video ID.
-  * `get_position_details`: Deep dive into specific company tenures and deliverables.
+  * `query_career_history` (alias `query_career_datalake`): Full-text searches across positions, case studies, technical articles, and transcripts.
+  * `query_oral_history`: Searches across all 218 software engineering interviews and full spoken transcripts.
+  * `query_transcript` (alias `get_interview_transcript`): Retrieves full structured dialogue turns and speaker map for a specific transcript ID (`_data/transcripts/<slug>.yml`).
+  * `get_technology_provenance`: Retrieves complete timeline, active era, and specific roles where a technology or skill was used.
+  * `get_position_dossier` (alias `get_position_details`): Deep dive into specific company tenures, deliverables, and skills.
+  * `get_archetype_strategy`: Retrieves tailored pitch strategy, target tier, and cover letter empathy anchors.
+  * `query_witc_corpus` & `get_witc_corpus_stats`: Bounded FTS5 search and corpus statistics over the local WITC/UGtastic SQLite database.
+  * `get_narrative_synthesis_baseline` & `generate_executive_brief`: Canonical 3-Act narrative baseline and automated 1-page executive brief generator.
 
 ---
 

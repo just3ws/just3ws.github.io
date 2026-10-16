@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_seo_metadata_budget.rb
+# domain: validate
+# purpose: Validate Seo Metadata Budget utility for the just3ws platform
+# usage: ruby bin/validate_seo_metadata_budget.rb
+# ---
+
 require 'json'
 
 ROOT = File.expand_path('..', __dir__)

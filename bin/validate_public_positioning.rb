@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_public_positioning.rb
+# domain: validate
+# purpose: Deterministic guard for the reader-facing positioning surface. This is not a
+# usage: ruby bin/validate_public_positioning.rb
+# ---
+
 # Deterministic guard for the reader-facing positioning surface. This is not a
 # general prose or privacy auditor. It prevents safe curation decisions from
 # regressing when generated resumes, briefs, or machine-readable catalogs are

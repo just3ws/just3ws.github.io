@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: publish_youtube_metadata.rb
+# domain: media
+# purpose: bin/publish_youtube_metadata.rb - YouTube Data API Metadata Sync & Shorts Publisher
+# usage: ruby bin/publish_youtube_metadata.rb
+# ---
+
 # bin/publish_youtube_metadata.rb — YouTube Data API Metadata Sync & Shorts Publisher
 #
 # Implements TASK-245 and TASK-248:

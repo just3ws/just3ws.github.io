@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: prepare_audit_prompt.rb
+# domain: validate
+# purpose: Prepare Audit Prompt utility for the just3ws platform
+# usage: ruby bin/prepare_audit_prompt.rb
+# ---
+
 require 'yaml'
 require 'fileutils'
 

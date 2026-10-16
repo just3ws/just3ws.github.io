@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: sync_zdots_ctx.rb
+# domain: data
+# purpose: bin/sync_zdots_ctx.rb - Comprehensive zdots-ctx Knowledge Layer & Research Vector Synchronizer
+# usage: ruby bin/sync_zdots_ctx.rb
+# ---
+
 # bin/sync_zdots_ctx.rb — Comprehensive zdots-ctx Knowledge Layer & Research Vector Synchronizer
 #
 # Synchronizes 100% of:

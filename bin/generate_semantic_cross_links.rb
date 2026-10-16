@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_semantic_cross_links.rb
+# domain: data
+# purpose: bin/generate_semantic_cross_links.rb - Cross-Interview Semantic Linking Engine
+# usage: ruby bin/generate_semantic_cross_links.rb
+# ---
+
 # bin/generate_semantic_cross_links.rb — Cross-Interview Semantic Linking Engine
 #
 # Implements TASK-254:

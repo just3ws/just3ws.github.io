@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: extract_ugtastic_context.rb
+# domain: media
+# purpose: Extract Ugtastic Context utility for the just3ws platform
+# usage: ruby bin/extract_ugtastic_context.rb
+# ---
+
 require "cgi"
 require "json"
 require "nokogiri"

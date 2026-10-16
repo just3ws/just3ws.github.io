@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: build_manifesto_network.rb
+# domain: data
+# purpose: Generates the multi-ecosystem research dataset intersecting:
+# usage: ruby bin/build_manifesto_network.rb
+# ---
+
 # bin/build_manifesto_network.rb
 #
 # Generates the multi-ecosystem research dataset intersecting:

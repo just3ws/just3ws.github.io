@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: audit_public_surface.rb
+# domain: validate
+# purpose: Review aid for publishable content. It deliberately scans a small public
+# usage: ruby bin/audit_public_surface.rb
+# ---
+
 # Review aid for publishable content. It deliberately scans a small public
 # surface manifest and never reads secrets, environment files, private
 # handoffs, credentials, or arbitrary repository files.

@@ -44,14 +44,76 @@ lexicon:
   - "#TechnicalRewatch"
   - "#SystemCartography"
 human_marginalia:
-  host_recollections: []
+  host_recollections:
+  - scene: 'Act 1: Cold Open'
+    story: Meeting Ray Hightower at Midway Restaurant in late 2008 while working remotely
+      at Business Decisions, Inc., where Ray opened his MacBook and demonstrated Cucumber
+      live at the table.
+  - scene: 'Act 2: Setting the Historical Scene'
+    story: Ray never treated technology communities like gated clubs; he actively
+      introduced .NET developers, suburban commuters, and downtown consultants to
+      each other and pointed me directly to 8th Light's Pair Friday in Libertyville.
   workshop_prompts:
   - Connect the 2011 conversation directly to current engineering challenges.
   - Ground the technical critique in practitioner empathy.
+teleprompter_script:
+  act_1: 'Welcome back to The Sound Above. I am Mike Hall, and this is Episode 2.
+    Today we return to SCNA 2011 at the Swissotel in Chicago for my conversation with
+    Ray Hightower, the founder of WisdomGroup and organizer of ChicagoRuby and WindyCityRails.
+    If Sergio Pereira gave me my first user group room in the Sears Tower, Ray Hightower
+    was the ambassador who opened the door to the entire Chicago Ruby and software
+    craftsmanship community.
+
+    '
+  act_2: 'In late 2008, I was working remotely as Principal Developer at Business
+    Decisions, Inc., maintaining a multi-tenant HR platform and coordinating with
+    developers in Uruguay. I reached out to Ray, and we met up halfway at Midway Restaurant.
+    I was still a Microsoft .NET developer at the time. Ray did not gatekeep or lecture
+    me about platforms. He just opened his MacBook right there at the diner table,
+    fired up his terminal, and showed me Cucumber running plain-English acceptance
+    tests. Before we left, he invited me to ChicagoRuby and told me about an open
+    Friday pairing session happening up in Libertyville at a small consultancy called
+    8th Light.
+
+    '
+  act_3: 'Our core inquiry for Episode 2 is simple: What makes a technical community
+    endure across decades, and why does hospitality matter so much when engineers
+    are crossing paradigm boundaries? When you are spending forty hours a week in
+    a legacy stack, walking into a room full of people using a different operating
+    system, a different editor, and a different language is intimidating. Ray understood
+    that hospitality is not a soft extra. It is the bridge that lets working engineers
+    cross over and learn new disciplines without feeling like outsiders.
+
+    '
+  act_4: 'Let us roll the SCNA 2011 conversation with Ray Hightower (YouTube ID: XZqGbf5C76E).
+    Pay attention to how intentionally Ray thinks about structure, venue logistics,
+    and linking downtown city developers with suburban user groups across Chicagoland.
+
+    '
+  act_5: 'In 2026, when so much engineering work happens in isolated remote home offices
+    behind AI chat prompts, the risk of professional isolation is higher than it was
+    in 2008. Autonomous code generation can synthesize boilerplate in seconds, but
+    it cannot sit across from you at a diner table, show you a better testing workflow,
+    or introduce you to the peers who will change the trajectory of your career. We
+    still need human ambassadors and open rooms where engineers share their actual
+    workbenches.
+
+    '
+  act_6: 'Thank you for watching Episode 2 of The Sound Above. The full interactive
+    transcript with Ray Hightower and our Chicago Community Timeline notes are live
+    at just3ws.com. You can help underwrite our independent compute and archive work
+    at patreon.com/whoistechcmty. Next time, in Episode 3, we follow Ray''s introduction
+    up to Libertyville for Pair Friday with Micah Martin and Mike Jansen of 8th Light.
+    Until next time: keep your feedback loops fast, and your code humane.
+
+    '
 research_attachments:
 - title: Ray Hightower Interview Profile
   type: site_archive_page
   url: https://just3ws.com/interviews/ray-hightower-chicagoruby-software-craftsmanship-north-america-2011/
+- title: The Long Way Back to Here (Ray Hightower as Community Ambassador)
+  type: article
+  url: https://just3ws.com/ai/2026/09/02/the-long-way-back-to-here/
 workflow_tasks:
   autonomous:
   - task: Whisper transcript alignment
@@ -62,7 +124,7 @@ workflow_tasks:
     status: pending
   human:
   - task: Workshop personal recollections
-    status: pending
+    status: done
   - task: Pre-broadcast OBS audio rehearsal
     status: pending
   - task: Live rewatch broadcast

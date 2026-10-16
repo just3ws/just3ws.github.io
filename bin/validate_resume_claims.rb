@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_resume_claims.rb
+# domain: validate
+# purpose: Provenance guardrail: every quantified career claim on a public surface must
+# usage: ruby bin/validate_resume_claims.rb
+# ---
+
 # Provenance guardrail: every quantified career claim on a public surface must
 # resolve to the resume source data -- a position file or a case_study block --
 # or it does not ship.

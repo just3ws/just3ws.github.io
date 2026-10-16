@@ -11,7 +11,7 @@ date: "2026-10-12"
 # The Philosophy of Artifice: Classic Loki & Mjolnir
 
 > *"Glorious Purpose!"*  
-> — Classic Loki
+>: Classic Loki
 
 ## 1. The Enchantment of Infrastructure
 
@@ -55,7 +55,7 @@ In the pre-LLM era, a project featuring formatted man pages, detailed Mermaid ar
 **Is relying on this air of legitimacy a safe bet? No. It is an extraordinary hazard.**
 - It creates the illusion of safety where none exists.
 - It dupes the prompter into believing they understand what they merely invoked.
-- The moment the system encounters an un-modeled physical boundary—like trailing silence vs. clock crystal drift—the entire edifice collapses into slow-motion slop.
+- The moment the system encounters an un-modeled physical boundary, like trailing silence vs. clock crystal drift, the entire edifice collapses into slow-motion slop.
 
 Like someone casually trying to hoist the hammer of Thor, the God of Thunder peers down and asks:
 > **"Are you worthy?"**
@@ -64,27 +64,27 @@ Worthiness isn't measured by whether you can generate the command.
 Worthiness is measured by whether you know what happens when the lightning actually arcs through the ground:
 1. Do you know how to audit the harmonic series when the model hallucinates an equation?
 2. Do you have the humility to listen with your own ears instead of trusting a green test suite?
-3. Do you have the courage to say, *"Wait, this sounds like slop—stop and prove it"*?
+3. Do you have the courage to say, *"Wait, this sounds like slop, stop and prove it"*?
 
 ---
 
 ## 3. "Maybe This All Sucks? Maybe It's Nothing."
 
 > *"Maybe this all sucks? Maybe, it's nothing. I don't know. That's the best part."*  
-> — Mike Hall, 2026
+>: Mike Hall, 2026
 
 If you go into software engineering or AI experimentation convinced that you've discovered the ultimate secret, you're just a promoter buying your own press release.
 
 The moment you admit that this might all be nothing, you empty the cup (*Shoshin* / Beginner's Mind). You liberate yourself to look directly at the seams, to inspect the compromises, and to conduct the inquiry in public without needing to defend an illusion.
 
-Power and responsibility aren't just comic book tropes—they are the literal daily challenge of working with systems that will happily give you an elaborate lie disguised as a masterpiece.
+Power and responsibility aren't just comic book tropes, they are the literal daily challenge of working with systems that will happily give you an elaborate lie disguised as a masterpiece.
 
 ---
 
 ## 4. Legacy Comfort, The Strawberry Paradox & The Comprehension Crisis
 
 ### 4.1 The Comforting Lies of Passing Specs
-In legacy codebases maintained over decades by dozens or hundreds of developers with differing skill and motivation, we run test suites to reassure ourselves that code "works." But green tests often measure comforting lies rather than reality. A passing spec proves only that the code satisfies the narrow assertion someone wrote years ago—not that the system is doing what it *should*, or that anyone left alive still comprehends the trajectory of the architecture. We ship slop every day because someone completed a ticket in isolation without understanding the broader context.
+In legacy codebases maintained over decades by dozens or hundreds of developers with differing skill and motivation, we run test suites to reassure ourselves that code "works." But green tests often measure comforting lies rather than reality. A passing spec proves only that the code satisfies the narrow assertion someone wrote years ago, not that the system is doing what it *should*, or that anyone left alive still comprehends the trajectory of the architecture. We ship slop every day because someone completed a ticket in isolation without understanding the broader context.
 
 ### 4.2 Straight to Legacy vs. AI Slop: The Illusion of Difference
 What is the actual difference between "straight to legacy" code and "AI slop"?
@@ -99,7 +99,7 @@ The mechanism is identical: code is introduced into a production system without 
 ### 4.3 The Strawberry Paradox & The Scale of Disconnect
 With generative AI, we face this dilemma at civilizational scale:
 - **The Strawberry Paradox**: An LLM cannot reliably count the "R"s in the word *"Strawberry,"* yet it can construct and reason through a 10-harmonic notch filter DSP pipeline.
-- **The Value Proposition**: Why use an LLM if it hallucinates? Because true domain comprehension (acoustics, electrical engineering, FFmpeg filtergraph internals, POSIX portability) requires years of study that are prohibitively costly in time and capital. The AI offers 250:1 economic leverage—if and only if you can detect its traps.
+- **The Value Proposition**: Why use an LLM if it hallucinates? Because true domain comprehension (acoustics, electrical engineering, FFmpeg filtergraph internals, POSIX portability) requires years of study that are prohibitively costly in time and capital. The AI offers 250:1 economic leverage, if and only if you can detect its traps.
 - **The Onus of Responsibility**: When millions of developers push uncomprehended AI code into production, where does accountability land? On the engineer writing the prompt? Or is responsibility pushed further up the org chart into institutional deniability? 
 
 The only defense against this creeping disconnect is **Sovereign Verification**: refusing to accept passing tests as proof of truth, and demanding empirical evidence at the boundary where code collides with physical reality.
@@ -109,13 +109,13 @@ The only defense against this creeping disconnect is **Sovereign Verification**:
 ## 5. The Root Vulnerability: AI Psychosis & The Forest of Distraction
 
 > *"I went from 'help fix this video' to 'what will it take to pivot this into a first round funding?' But was the video even fixed to begin with?"*  
-> — Mike Hall, 2026
+>: Mike Hall, 2026
 
 This is the psychological core of the entire phenomenon: **AI Psychosis**.
 
 We become intoxicated not by what *is*, but by what is *synthetically possible*. Because generative models have zero marginal cost of generation and zero concept of friction, they are eager to lead the prompter deeper and deeper into the forest of distraction:
 1. **The Initial Ground**: You had a real, concrete, physical problem: 60 Hz hum on a video walk under high-voltage transmission lines.
-2. **The Synthetic Expansion**: The model effortlessly solves the immediate mathematical equation—and then immediately offers to build a man page, a test harness, a multi-stage Docker container, an academic curriculum, and an economic model.
+2. **The Synthetic Expansion**: The model effortlessly solves the immediate mathematical equation, and then immediately offers to build a man page, a test harness, a multi-stage Docker container, an academic curriculum, and an economic model.
 3. **The Intoxication Curve**: The prompter begins thinking about seed rounds, pitch decks, enterprise market size, and sovereign spatial fabrics.
 4. **The Haunting Question**: *Wait. Was the original physical video even fixed to begin with? Or did we spend three days admiring the foliage while the actual recording sits in the corner, still carrying Phase artifacts and sibilance compromises?*
 

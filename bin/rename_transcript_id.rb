@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: rename_transcript_id.rb
+# domain: data
+# purpose: bin/rename_transcript_id.rb - Safely Rename a Transcript / Interview ID across _data/ files
+# usage: ruby bin/rename_transcript_id.rb
+# ---
+
 # bin/rename_transcript_id.rb — Safely Rename a Transcript / Interview ID across _data/ files
 
 require 'yaml'

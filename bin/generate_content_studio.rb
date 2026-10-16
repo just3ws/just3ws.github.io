@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_content_studio.rb
+# domain: data
+# purpose: bin/generate_content_studio.rb - Content Engine, Supercuts, Shorts & YouTube Data API Generator
+# usage: ruby bin/generate_content_studio.rb
+# ---
+
 # bin/generate_content_studio.rb — Content Engine, Supercuts, Shorts & YouTube Data API Generator
 #
 # Processes the 207 transcript canon into derivative content formats:

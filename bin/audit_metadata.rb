@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: audit_metadata.rb
+# domain: validate
+# purpose: Audit Metadata utility for the just3ws platform
+# usage: ruby bin/audit_metadata.rb
+# ---
+
 require 'yaml'
 
 def audit

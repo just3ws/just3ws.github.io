@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_timeline_data.rb
+# domain: data
+# purpose: bin/generate_timeline_data.rb - Historical Era & Archive Timeline Generator
+# usage: ruby bin/generate_timeline_data.rb
+# ---
+
 # bin/generate_timeline_data.rb — Historical Era & Archive Timeline Generator
 
 require 'yaml'

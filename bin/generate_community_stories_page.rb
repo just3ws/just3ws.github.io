@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: generate_community_stories_page.rb
+# domain: data
+# purpose: Generate Community Stories Page utility for the just3ws platform
+# usage: ruby bin/generate_community_stories_page.rb
+# ---
+
 require "time"
 require "fileutils"
 require_relative "../src/generators/core/yaml_io"

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: sync_youtube_captions.rb
+# domain: media
+# purpose: bin/sync_youtube_captions.rb - YouTube Data API v3 Captions Uploader & Sync CLI
+# usage: ruby bin/sync_youtube_captions.rb
+# ---
+
 # bin/sync_youtube_captions.rb — YouTube Data API v3 Captions Uploader & Sync CLI
 #
 # Reads _data/youtube_captions_manifest.json and syncs WebVTT (.vtt) caption tracks

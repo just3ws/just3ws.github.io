@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_curiosities_data.rb
+# domain: data
+# purpose: bin/generate_curiosities_data.rb - Archive Curiosities & Hidden Gems Generator
+# usage: ruby bin/generate_curiosities_data.rb
+# ---
+
 # bin/generate_curiosities_data.rb — Archive Curiosities & Hidden Gems Generator
 
 require 'yaml'

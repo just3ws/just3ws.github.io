@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_blog_import_inventory.rb
+# domain: data
+# purpose: Generate Blog Import Inventory utility for the just3ws platform
+# usage: ruby bin/generate_blog_import_inventory.rb
+# ---
+
 require "pathname"
 require "time"
 require "uri"

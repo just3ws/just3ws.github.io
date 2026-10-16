@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: final_quality_audit.rb
+# domain: site
+# purpose: Final Quality Audit utility for the just3ws platform
+# usage: ruby bin/final_quality_audit.rb
+# ---
+
 require 'yaml'
 
 TRANSCRIPTS_DIR = "_data/transcripts"

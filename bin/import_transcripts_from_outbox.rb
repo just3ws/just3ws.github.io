@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: import_transcripts_from_outbox.rb
+# domain: data
+# purpose: Import flat transcript text from an outbox/staging dir into
+# usage: ruby bin/import_transcripts_from_outbox.rb
+# ---
+
 #
 # Import flat transcript text from an outbox/staging dir into
 # _data/transcripts/<id>.yml as `{ content: <text> }`.

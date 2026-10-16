@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_wbm_asset_backlog.rb
+# domain: data
+# purpose: Generate Wbm Asset Backlog utility for the just3ws platform
+# usage: ruby bin/generate_wbm_asset_backlog.rb
+# ---
+
 require "date"
 require "json"
 require "nokogiri"

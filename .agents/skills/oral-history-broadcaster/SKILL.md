@@ -93,7 +93,7 @@ This covers the entire tri-archetype broadcast architecture:
 
 ## 🛑 Guardrails & Boundaries
 
-- **Zero Em Dashes**: Never use em dashes (`—`), double hyphens (`--`), or spaced hyphens (` - `) in prose, overlays, or metadata. Use colons, commas, semicolons, or distinct sentences instead.
+- **Zero Em Dashes**: Never use em dashes (`\u2014`), double hyphens (`--`), or spaced hyphens (` - `) in prose, overlays, or metadata. Use colons, commas, semicolons, or distinct sentences instead.
 - **Zero Secrets**: Never commit or broadcast stream keys, OAuth refresh tokens, or private credentials.
 - **True Title Compliance**: Maintain **Staff Software Engineer** as Mike Hall's canonical title.
 - **Hardware Portability**: Ensure all paths in OBS configurations use dynamic project roots rather than static assumptions.

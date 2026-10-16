@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: validate_public_index_mode.rb
+# domain: validate
+# purpose: Validate Public Index Mode utility for the just3ws platform
+# usage: ruby bin/validate_public_index_mode.rb
+# ---
+
 ROOT = File.expand_path('..', __dir__)
 SITE_DIR = File.join(ROOT, '_site')
 CANONICAL_ROOT = 'https://www.just3ws.com/'

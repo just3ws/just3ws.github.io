@@ -45,7 +45,7 @@ When switching to live terminal archaeology, git analysis, or multi-agent demos:
 - Switch to **Scene 05 (Workbench - Code & Terminal)**.
 - Use a dedicated terminal profile (Ghostty, iTerm2, or macOS Terminal) configured with:
   - Font: JetBrains Mono, SF Mono, or Menlo
-  - Font Size: 18pt minimum (ensures crystal clear readability on mobile streams)
+  - Font Size: 18pt minimum (ensures crisp readability on mobile streams)
   - Color Palette: High contrast dark theme matching the craftsmanship slate palette (`#0d1117`)
   - Window Size: Clean 16:9 ratio or maximized full screen
 

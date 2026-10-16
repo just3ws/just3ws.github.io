@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: ingest_missing_transcripts.rb
+# domain: data
+# purpose: bin/ingest_missing_transcripts.rb - Ingests structured transcript records for 11 missing video assets.
+# usage: ruby bin/ingest_missing_transcripts.rb
+# ---
+
 # bin/ingest_missing_transcripts.rb — Ingests structured transcript records for 11 missing video assets.
 
 require 'yaml'

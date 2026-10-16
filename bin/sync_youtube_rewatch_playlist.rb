@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: sync_youtube_rewatch_playlist.rb
+# domain: media
+# purpose: ==============================================================================
+# usage: ruby bin/sync_youtube_rewatch_playlist.rb
+# ---
+
 # ==============================================================================
 # bin/sync_youtube_rewatch_playlist.rb
 #

@@ -1,4 +1,12 @@
 #!/usr/bin/env sh
+
+# ---
+# name: transcripts
+# domain: data
+# purpose: Transcripts utility for the just3ws platform
+# usage: bin/transcripts
+# ---
+
 set -eu
 
 if [ -n "${AI_OUTBOX_DIR:-}" ]; then

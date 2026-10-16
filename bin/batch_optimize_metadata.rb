@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: batch_optimize_metadata.rb
+# domain: site
+# purpose: Batch Optimize Metadata utility for the just3ws platform
+# usage: ruby bin/batch_optimize_metadata.rb
+# ---
+
 require 'yaml'
 
 interviews = YAML.load_file("_data/interviews.yml")["items"]

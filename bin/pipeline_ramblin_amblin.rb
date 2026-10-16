@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: pipeline_ramblin_amblin.rb
+# domain: media
+# purpose: Pipeline Ramblin Amblin utility for the just3ws platform
+# usage: ruby bin/pipeline_ramblin_amblin.rb
+# ---
+
 require_relative "lib/youtube_client"
 require "json"
 require "yaml"

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_obs_setup.rb
+# domain: validate
+# purpose: ==============================================================================
+# usage: ruby bin/validate_obs_setup.rb
+# ---
+
 # ==============================================================================
 # Automated OBS Setup & Hardware Contract Validator
 # Validates repository artifacts, macOS Golden Gate capabilities, and OBS runtime

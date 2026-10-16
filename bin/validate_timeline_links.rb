@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: validate_timeline_links.rb
+# domain: validate
+# purpose: Validate Timeline Links utility for the just3ws platform
+# usage: ruby bin/validate_timeline_links.rb
+# ---
+
 ROOT = File.expand_path('..', __dir__)
 PUBLIC_LINK_SOURCES = [
   File.join(ROOT, 'timeline', 'index.html'),

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: promote_content_opportunities.rb
+# domain: site
+# purpose: Scans _data/content_opportunities.yml for human-approved candidates (status: approved)
+# usage: ruby bin/promote_content_opportunities.rb
+# ---
+
 # bin/promote_content_opportunities.rb
 # Scans _data/content_opportunities.yml for human-approved candidates (status: approved)
 # and promotes them into draft backlog tasks / downstream documentation.

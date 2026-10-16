@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: generate_semantic_snapshot_page.rb
+# domain: data
+# purpose: Generate Semantic Snapshot Page utility for the just3ws platform
+# usage: ruby bin/generate_semantic_snapshot_page.rb
+# ---
+
 require "json"
 require "time"
 

@@ -11,6 +11,29 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - ARGON MEDIUM SYSTEM AUDIT, MOVEMENT 1 TELEPROMPTER SCRIPTS & FULL-SITE VALIDATION REMEDIATION (2026-10-16):
+         Conducted a comprehensive system-wide audit across skills, subagent personas, episode dossiers, `bin/` tooling, and full-site HTML/SEO/taxonomy validators:
+         - Movement 1 Spoken Teleprompter Scripts & Dossier Grounding (`_data/episodes/episode-01.yml` .. `episode-05.yml`, `bin/episode_workbench.rb`, `bin/templates/teleprompter/*.erb`):
+           - Authored authentic, practitioner-honest 6-act spoken teleprompter scripts (`teleprompter_script:`) for all 5 episodes of Movement 1 ("The Chicago Workshop"):
+             * Episode 01 (Sergio Pereira): Chicago Alt.NET & Practical Autonomy in Enterprise .NET (NUnit, NHibernate, StructureMap, ReSharper, and the Nov 2009 ThoughtWorks Chicago conversation).
+             * Episode 02 (Ray Hightower): The Ambassador, ChicagoRuby, WindyCityRails, and the 2008 Midway Restaurant diner conversation running Cucumber.
+             * Episode 03 (Micah Martin & Mike Jansen): Pair Friday in Libertyville, 8th Light's second-floor open tables, Vim/RSpec, and structured apprenticeship.
+             * Episode 04 (Dave Hoover): Obtiva, *Apprenticeship Patterns* (O'Reilly 2009), and the 2011 Groupon acquisition.
+             * Episode 05 (Ryan Gerry & Jim Suchy): Verified SCMC (#106) founding timeline (Oct 2009 SCNA table meeting with Ryan Gerry -> Cloud Developers Group in McHenry County libraries, Panera Bread, and Duke's Alehouse -> 2010 SCMC formalization with Jim Suchy at Follett Software Company) and 17 years of continuous monthly practice.
+           - Fixed `spec/youtube/episode_workbench_spec.rb` test isolation so `workshop 1` restores `episode-01.yml` cleanly instead of polluting `workshop_prompts` on test runs.
+           - Updated `bin/episode_workbench.rb` and ERB templates so `human_stories` marginalia and `Cited references:` are preserved alongside bespoke `teleprompter_script:` acts; recompiled all 38 `.textream` documents in `obs/teleprompter/`.
+         - Skill, Subagent & MCP Verification Calibration (`.agents/skills/`, `.claude/agents/`, `bin/mcp_server.js`, `bin/career_datalake_mcp_server.rb`):
+           - Corrected SCMC founding history in `.agents/skills/editorial-fact-checker/SKILL.md` to verified ground truth (Mike Hall, Ryan Gerry, and Jim Suchy; Oct 2009 CDG -> 2010 SCMC at Follett).
+           - Synchronized MCP tool names in `.agents/skills/career-datalake-researcher/SKILL.md` and added backward-compatible tool aliases (`query_career_datalake`, `get_interview_transcript`, `get_position_details`) in `bin/career_datalake_mcp_server.rb`.
+           - Created 6 `.claude/agents/*.md` subagent persona definitions (`technical-scriptwriter`, `editorial-fact-checker`, `career-datalake-researcher`, `media-pipeline-operator`, `patreon-integrator`, `ponytail`) and calibrated `oral-history-broadcaster.md`, achieving 1:1 coverage across all 28 registered personas.
+           - Upgraded `bin/mcp_server.js` (`validate_skills_spec` and `site://skills/index`) to discover and validate all 26 workspace skills across both `.agents/skills/` and `skills/`.
+         - Full-Site Validation Gate Remediation & 100% `bin/` Frontmatter Coverage:
+           - Resolved `validate:taxonomy_output` by registering `Ramblin' & Amblin'` and `Software Craftsmanship` in `_data/taxonomy.yml` and `_data/interview_communities.yml`.
+           - Resolved `validate:semantic_output` and `validate:seo_output` across `dehum/dashboard.html`, `dehum/wiki/index.html`, and `youtube/dashboard.html` (`<h1>`, `<main id="main-content">`, `.skip-link`, `aria-label`, and `noindex` redirect meta).
+           - Fixed root-cause `interview_id` linking for `gary-bernhardt-programmer-jokes-scna-2013` in `_data/video_assets.yml` and `bin/sync_interview_asset_links.rb`.
+           - Added structured `# ---` / `// ---` frontmatter headers across all 193 scripts in `bin/` (`Missing: 0`).
+           - All validation gates passing cleanly: `validate:fast`, `validate:taxonomy_output`, `validate:semantic_output` (973 pages), `validate:seo_output` (912 indexable, 102 noindex), `validate:resources_output`, `validate:obs` (46/46), `stage:all` (38/38), `verify_mcp_spec.js` (26/26 skills), and `rspec` (211/211).
+
        - REAL TIMELINE MEMORY PROMPTS, PATREON HISTORY & ARCHIVE RECOVERY (2026-10-16):
          Re-anchored conversation topic prompts directly into authentic historical timeline events and emotional memory prompts across Google Drive intake targets:
          - Grounded Timeline Memory Prompts (`bin/sync_topic_prompts.rb`, `docs/prompts/`, Google Drive):
@@ -623,22 +646,22 @@ surface for user-facing changes.
 
 ## System Identity
 
-You are operating in `just3ws.github.io` — Mike Hall's public resume/
+You are operating in `just3ws.github.io`: Mike Hall's public resume and
 portfolio Jekyll site, the public-facing half of a two-repo CareerOS
-platform. Peer system: `wwworkremote.localhost` (career intelligence / job
+platform. Peer system: `wwworkremote.localhost` (career intelligence and job
 search side), synchronized via `src/collaboration/peer_mutex.rb`
 (`CareerOS::PeerMutex`) and `bin/sync_career_peer.rb`.
 
 Cross-session and cross-repo comms run on the zdots message bus. This
 repo's registered identity is `agent-just3ws`:
 
-- `zdots-ctx bus-whoami` — confirm identity resolves; if not,
+- `zdots-ctx bus-whoami`: confirm identity resolves; if not,
   `zdots-ctx bus-register agent-just3ws --kind agent` then
   `export ZDOTS_BUS_PARTICIPANT=agent-just3ws`.
-- `job-leads` channel — just3ws <-> wwworkremote coordination.
-- `general` channel — cross-cutting platform ops; also reaches Mike
+- `job-leads` channel: just3ws <-> wwworkremote coordination.
+- `general` channel: cross-cutting platform ops; also reaches Mike
   (`mike`) and `zdots` (formerly `claude-code-main`).
-- Bus problems get filed as a `zdots-issue` — this repo's agents don't
+- Bus problems get filed as a `zdots-issue`; this repo's agents do not
   patch zdots infrastructure directly.
 
 Every persona under `.claude/agents/` operates inside this same identity
@@ -671,12 +694,11 @@ Single-context layout (root-level CONTEXT.md + docs/adr/). See `docs/agents/doma
 Cross-persona task ownership, review obligations, and decision authority are defined in `docs/agents/agent-raci-matrix.md`. Mike Hall's SME working group delegation strategy (proven at OneMain Financial) and the multi-archive claim verification playbook are codified in `docs/sme-delegation-and-multi-archive-playbook.md`.
 
 ## Registered Skills
-Use these skills by default for this repository. **Status**: 9 of the 22
-below have real `SKILL.md` content in `.agents/skills/` (marked ✓; see
-`docs/tooling-user-guide.md` §6) — the other 13 have no skill file anywhere.
-All 22 also have `.claude/agents/*.md` subagent persona coverage (TASK-262),
-which is a separate mechanism (a spawned subagent, not a loaded skill) and
-does not require a `.agents/skills/` file to exist.
+Use these skills by default for this repository. **Status**: 15 of the 28
+below have active `SKILL.md` specifications in `.agents/skills/` (marked ✓; see
+`docs/tooling-user-guide.md` §6), and 10 additional domain skills live in `skills/`
+(26 verified workspace skills total via `validate_skills_spec`).
+All 28 also have `.claude/agents/*.md` subagent persona coverage.
 
 ## Persona Review Council
 

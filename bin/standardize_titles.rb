@@ -1,3 +1,10 @@
+# ---
+# name: standardize_titles.rb
+# domain: site
+# purpose: Standardize Titles utility for the just3ws platform
+# usage: ruby bin/standardize_titles.rb
+# ---
+
 require 'yaml'
 
 interviews_path = '_data/interviews.yml'

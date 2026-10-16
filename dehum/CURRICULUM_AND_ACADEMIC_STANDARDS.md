@@ -15,7 +15,7 @@
 
 The modern expansion of generative artificial intelligence creates an unprecedented asymmetry: **the mechanical generation of complex technical artifacts has become nearly instantaneous ($39.40), while the empirical verification of physical truth remains demanding ($10,000+)**.
 
-To prevent automated systems from producing catastrophic hallucinations—such as misidentifying container duration anomalies as crystal clock drift or introducing phase-smeared notch distortion into archival recordings—the engineer must operate across five historically disjoint technical domains:
+To prevent automated systems from producing catastrophic hallucinations, such as misidentifying container duration anomalies as crystal clock drift or introducing phase-smeared notch distortion into archival recordings, the engineer must operate across five historically disjoint technical domains:
 1. Classical Electrodynamics & Atmospheric High-Voltage Physics
 2. Discrete-Time Signal Processing (DSP) & Linear Filter Theory
 3. Mobile Transducer Micro-Electromechanical Systems (MEMS) & RF Immunity
@@ -65,7 +65,7 @@ flowchart TD
 
 ## 3. Official Course Catalog & Course Descriptions
 
-### Course 1: ELEC 610 — Classical Electrodynamics & Near-Field Utility Coupling
+### Course 1: ELEC 610: Classical Electrodynamics & Near-Field Utility Coupling
 - **Credits**: 4.0 Graduate Credits (Lecture: 3 hrs / Lab: 3 hrs)
 - **Prerequisites**: Multivariable Vector Calculus, Differential Equations.
 - **Course Description**:
@@ -75,7 +75,7 @@ flowchart TD
 
 ---
 
-### Course 2: SIGP 620 — Advanced Discrete-Time Signal Processing & Filter Topologies
+### Course 2: SIGP 620: Advanced Discrete-Time Signal Processing & Filter Topologies
 - **Credits**: 4.0 Graduate Credits (Lecture: 3 hrs / Lab: 3 hrs)
 - **Prerequisites**: ELEC 610, Linear Time-Invariant Systems.
 - **Course Description**:
@@ -85,7 +85,7 @@ flowchart TD
 
 ---
 
-### Course 3: MEMS 630 — Transducer Arrays & Mobile Audio Hardware Asymmetry
+### Course 3: MEMS 630: Transducer Arrays & Mobile Audio Hardware Asymmetry
 - **Credits**: 4.0 Graduate Credits (Lecture: 3 hrs / Lab: 3 hrs)
 - **Prerequisites**: SIGP 620.
 - **Course Description**:
@@ -93,7 +93,7 @@ flowchart TD
 
 ---
 
-### Course 4: CSYS 710 — ISO Base Media File Formats & Clock Jitter Forensics
+### Course 4: CSYS 710: ISO Base Media File Formats & Clock Jitter Forensics
 - **Credits**: 4.0 Graduate Credits (Lecture: 3 hrs / Lab: 3 hrs)
 - **Prerequisites**: Data Structures & Systems Architecture.
 - **Course Description**:
@@ -101,7 +101,7 @@ flowchart TD
 
 ---
 
-### Course 5: ACOU 720 — Psychoacoustics & Speech Formant Phase Integrity
+### Course 5: ACOU 720: Psychoacoustics & Speech Formant Phase Integrity
 - **Credits**: 4.0 Graduate Credits (Lecture: 3 hrs / Lab: 3 hrs)
 - **Prerequisites**: SIGP 620.
 - **Course Description**:
@@ -109,7 +109,7 @@ flowchart TD
 
 ---
 
-### Course 6: EPIST 810 — Autonomous Agent Epistemics & The Hallucination Anatomy
+### Course 6: EPIST 810: Autonomous Agent Epistemics & The Hallucination Anatomy
 - **Credits**: 6.0 Graduate Credits (Seminar & Residency: 6 hrs)
 - **Prerequisites**: All Year 1 & Year 2 courses.
 - **Course Description**:

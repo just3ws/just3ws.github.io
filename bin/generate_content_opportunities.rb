@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: generate_content_opportunities.rb
+# domain: data
+# purpose: Generates the content-opportunity backlog from enriched transcripts and insights.
+# usage: ruby bin/generate_content_opportunities.rb
+# ---
+
 # bin/generate_content_opportunities.rb
 # Generates the content-opportunity backlog from enriched transcripts and insights.
 # Derives candidate articles, playlists, shorts, durable wisdom, and research threads.

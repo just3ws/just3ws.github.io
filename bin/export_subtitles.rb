@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: export_subtitles.rb
+# domain: media
+# purpose: bin/export_subtitles.rb - WebVTT / SRT Subtitle Exporter for YouTube Captions Sync
+# usage: ruby bin/export_subtitles.rb
+# ---
+
 # bin/export_subtitles.rb — WebVTT / SRT Subtitle Exporter for YouTube Captions Sync
 #
 # Exports structured transcript turns into standard WebVTT (.vtt) caption files

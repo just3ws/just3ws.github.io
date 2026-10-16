@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: validate_semantic_output.rb
+# domain: validate
+# purpose: Validate Semantic Output utility for the just3ws platform
+# usage: ruby bin/validate_semantic_output.rb
+# ---
+
 require 'json'
 require 'fileutils'
 require 'time'

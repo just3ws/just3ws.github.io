@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: generate_resume_position_pages.rb
+# domain: data
+# purpose: Generate Resume Position Pages utility for the just3ws platform
+# usage: ruby bin/generate_resume_position_pages.rb
+# ---
+
 require "fileutils"
 require "json"
 require_relative "../src/generators/core/meta"

@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: calibrate_uploaded_broadcast.rb
+# domain: media
+# purpose: Calibrate Uploaded Broadcast utility for the just3ws platform
+# usage: ruby bin/calibrate_uploaded_broadcast.rb
+# ---
+
 require 'json'
 require_relative 'lib/youtube_client'
 

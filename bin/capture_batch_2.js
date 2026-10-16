@@ -1,3 +1,10 @@
+// ---
+// name: capture_batch_2.js
+// domain: site
+// purpose: Capture Batch 2 utility for the just3ws platform
+// usage: node bin/capture_batch_2.js
+// ---
+
 const { chromium } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');

@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: enqueue_missing_content.rb
+# domain: site
+# purpose: Enqueue Missing Content utility for the just3ws platform
+# usage: ruby bin/enqueue_missing_content.rb
+# ---
+
 require 'yaml'
 
 assets = YAML.load_file("_data/video_assets.yml")["items"]

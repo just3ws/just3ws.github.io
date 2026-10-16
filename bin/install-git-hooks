@@ -1,4 +1,12 @@
 #!/usr/bin/env sh
+
+# ---
+# name: install-git-hooks
+# domain: site
+# purpose: Install Git Hooks utility for the just3ws platform
+# usage: bin/install-git-hooks
+# ---
+
 set -eu
 
 git config core.hooksPath .githooks

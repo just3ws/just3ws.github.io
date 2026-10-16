@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+# ---
+# name: duck_search.py
+# domain: site
+# purpose: Duck Search utility for the just3ws platform
+# usage: python3 bin/duck_search.py
+# ---
+
 """
 duck_search.py — Analytical & BM25 Full-Text Search across ChatGPT corpus using DuckDB.
 

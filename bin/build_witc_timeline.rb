@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: build_witc_timeline.rb
+# domain: data
+# purpose: Turn the WITC corpus metadata into a compact, temporal, human-readable map.
+# usage: ruby bin/build_witc_timeline.rb
+# ---
+
 # Turn the WITC corpus metadata into a compact, temporal, human-readable map.
 
 require "fileutils"

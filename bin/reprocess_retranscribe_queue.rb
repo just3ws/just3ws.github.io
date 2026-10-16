@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: reprocess_retranscribe_queue.rb
+# domain: site
+# purpose: Reverse feed: take the site's re-transcription queue and enqueue each video
+# usage: ruby bin/reprocess_retranscribe_queue.rb
+# ---
+
 # Reverse feed: take the site's re-transcription queue and enqueue each video
 # into the zdots transcription pipeline, reusing the idempotent
 # `zdots-ingest-media` path (skip-existing on media_sources.source_uri +

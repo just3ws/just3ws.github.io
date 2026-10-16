@@ -43,10 +43,69 @@ lexicon:
   - "#TechnicalRewatch"
   - "#SystemCartography"
 human_marginalia:
-  host_recollections: []
+  host_recollections:
+  - scene: 'Act 1: Cold Open'
+    story: Meeting Dave Hoover at SCNA 2009 and joining Obtiva in August 2009, where
+      I worked on Obtiva's sole .NET project on a Dell Studio XPS PP35L laptop with
+      the 'Typing is not the bottleneck' sticker while transitioning into Ruby and
+      Vim.
+  - scene: 'Act 2: Setting the Historical Scene'
+    story: Obtiva's Geekfest sessions turned internal Tuesday evening study groups
+      into an open workshop where anyone in Chicagoland could practice TDD and refactoring.
   workshop_prompts:
   - Connect the 2011 conversation directly to current engineering challenges.
   - Ground the technical critique in practitioner empathy.
+teleprompter_script:
+  act_1: 'Welcome back to The Sound Above. I am Mike Hall, and this is Episode 4.
+    Today we revisit my conversation with Dave Hoover, co-founder of Obtiva, co-author
+    of O''Reilly''s Apprenticeship Patterns with Adewale Oshineye, and later co-founder
+    of Dev Bootcamp. I met Dave at the inaugural Software Craftsmanship North America
+    conference in 2009, and joining Obtiva that August was one of the defining turning
+    points of my engineering career.
+
+    '
+  act_2: 'Before Dave entered software engineering, he trained in psychology and family
+    therapy. You could feel that background in everything Obtiva built. Starting in
+    2007, Dave and Kevin Taylor opened up Obtiva''s internal study groups into Geekfest,
+    a weekly hands-on coding evening where developers across Chicagoland practiced
+    test-driven development and refactoring together. When I joined Obtiva in August
+    2009, they put me on their sole .NET consulting project first, carrying that Dell
+    Studio XPS laptop with the monkey typing sticker that reminded us typing is not
+    the bottleneck, while pairing me into Ruby, Rails, and Vim on engagements at Leapfrog
+    Online, Sears, and Groupon.
+
+    '
+  act_3: 'Our core inquiry today comes straight out of Dave and Adewale''s book Apprenticeship
+    Patterns: What happens to an engineering team when it becomes mathematically and
+    psychologically safe to expose your ignorance? In corporate hierarchies, engineers
+    are often rewarded for bluffing certainty. In a real workshop, growth only starts
+    when you can say ''I do not know how this works yet, show me how to test it,''
+    and then record what you learn for the next person coming up the ladder.
+
+    '
+  act_4: 'Let us roll the archive interview with Dave Hoover (YouTube ID: MytNNjBsBBk).
+    Listen to how Dave connects Geekfest, the patterns of software apprenticeship,
+    and the human dynamics of building software teams that learn continuously on the
+    job.
+
+    '
+  act_5: 'Why do the patterns in Dave Hoover''s book matter so much in 2026? Because
+    generative AI makes it dangerously easy to fake competence without understanding
+    the underlying system. Patterns like ''Expose Your Ignorance'', ''Breakable Toys'',
+    ''Read Constantly'', and ''Record What You Learn'' are the exact antidotes to
+    copy-paste AI slop. When you build small breakable toys and document your actual
+    verification steps, you turn black-box outputs into durable engineering knowledge.
+
+    '
+  act_6: 'Thank you for joining Episode 4 of The Sound Above. You can explore the
+    full transcript with Dave Hoover and our Obtiva timeline history at just3ws.com.
+    To help underwrite our independent compute and archive preservation, support us
+    at patreon.com/whoistechcmty. In Episode 5, we close Movement 1 with Ryan Gerry
+    and Jim Suchy on how we brought that workshop spirit 50 miles northwest to found
+    Software Craftsmanship McHenry County. Until next time: keep your feedback loops
+    fast, and your code humane.
+
+    '
 research_attachments:
 - title: Dave Hoover Interview Profile
   type: site_archive_page
@@ -61,7 +120,7 @@ workflow_tasks:
     status: pending
   human:
   - task: Workshop personal recollections
-    status: pending
+    status: done
   - task: Pre-broadcast OBS audio rehearsal
     status: pending
   - task: Live rewatch broadcast

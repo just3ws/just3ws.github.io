@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: sync_interview_asset_links.rb
+# domain: data
+# purpose: Sync Interview Asset Links utility for the just3ws platform
+# usage: ruby bin/sync_interview_asset_links.rb
+# ---
+
 require 'yaml'
 require 'date'
 require 'fileutils'
@@ -19,8 +27,9 @@ end
 
 assets_by_interview = Hash.new { |h, k| h[k] = [] }
 assets.each do |asset|
-  next unless asset['interview_id']
-  assets_by_interview[asset['interview_id']] << asset['id']
+  key = asset['interview_id'] || asset['id']
+  next unless key
+  assets_by_interview[key] << asset['id']
 end
 
 interviews.each do |interview|

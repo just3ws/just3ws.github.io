@@ -1,14 +1,15 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# ==============================================================================
-# bin/episode_workbench.rb
-#
-# Episode Semantic Dossier & Production Workbench CLI for "The Sound Above".
-# Manages structured episode dossiers (narrative, lexicon, human stories,
-# research attachments, workflow tasks) and compiles blended teleprompter
-# rundowns for live OBS broadcasting and YouTube syndication.
-# ==============================================================================
+# ---
+# name: episode_workbench.rb
+# domain: media
+# role: Episode Semantic Dossier & Production Workbench CLI
+# description: Manages structured episode dossiers (narrative, lexicon, human stories,
+#   research attachments, workflow tasks) and compiles blended teleprompter
+#   rundowns for live OBS broadcasting and YouTube syndication.
+# usage: bin/pipeline media episode <list|show|compile|workshop|stage|validate|cue> [options]
+# ---
 
 require 'json'
 require 'yaml'
@@ -369,7 +370,9 @@ class EpisodeWorkbench
       new_prompt = args[prompt_idx + 1]
       dossier['human_marginalia'] ||= {}
       dossier['human_marginalia']['workshop_prompts'] ||= []
-      dossier['human_marginalia']['workshop_prompts'] << new_prompt
+      unless dossier['human_marginalia']['workshop_prompts'].include?(new_prompt)
+        dossier['human_marginalia']['workshop_prompts'] << new_prompt
+      end
       puts "Added workshop prompt to Episode #{num}: \"#{new_prompt}\""
     end
 
@@ -461,7 +464,7 @@ class EpisodeWorkbench
       'lexicon' => {
         'key_concepts' => derive_concepts(ep),
         'trigger_words' => [ep['interviewee'].split.last, ep['conference'].split.first, 'Craftsmanship'].compact,
-        'hashtags' => ['#SoftwareCraftsmanship', '#TheSoundAbove', '#OralHistory', '#SystemCartography']
+        'hashtags' => ['#SoftwareCraftsmanship', '#TheSoundAbove', '#TechnicalRewatch', '#SystemCartography']
       },
       'human_marginalia' => {
         'host_recollections' => [],
@@ -495,7 +498,7 @@ class EpisodeWorkbench
   def derive_theme(ep)
     inquiry = ep['sound_above_inquiry'].to_s
     if inquiry.include?('monolith') || inquiry.include?('enterprise')
-      'Escaping Enterprise Monoliths & Grassroots Autonomy'
+      'Practical Autonomy, Open Tools & Grassroots Craftsmanship'
     elsif inquiry.include?('apprenticeship') || inquiry.include?('mentor')
       'Apprenticeship, Deliberate Practice & Engineering Lineage'
     elsif inquiry.include?('hospitality') || inquiry.include?('community')
@@ -547,19 +550,19 @@ class EpisodeWorkbench
     act5_story = stories.find { |s| s['scene']&.include?('Act 5') || s['scene']&.include?('AI-Era') || s['scene']&.include?('Workbench') }
 
     act1_default = custom_scripts['act_1'] || "Welcome back to The Sound Above. I am Mike Hall. Today we enter #{dossier['era_name']}. Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode #{ep_num}: #{dossier['interviewee']} from #{dossier['conference']}."
-    act1_default += " [PERSONAL RECOLLECTION: #{act1_story['story']}]" if act1_story && !custom_scripts['act_1']
+    act1_default += " [PERSONAL RECOLLECTION: #{act1_story['story']}]" if act1_story && !act1_default.include?(act1_story['story'].to_s)
 
     act2_default = custom_scripts['act_2'] || dossier.dig('narrative', 'chicago_context').to_s
-    act2_default += " [SETTING RECOLLECTION: #{act2_story['story']}]" if act2_story && !custom_scripts['act_2']
+    act2_default += " [SETTING RECOLLECTION: #{act2_story['story']}]" if act2_story && !act2_default.include?(act2_story['story'].to_s)
 
     act3_default = custom_scripts['act_3'] || "#{dossier.dig('narrative', 'core_inquiry')} What principles guided #{dossier['interviewee']} when this conversation was recorded? How do those lessons inform the software systems we design today?"
 
     act4_default = custom_scripts['act_4'] || "Roll archive footage (YouTube ID: #{dossier['youtube_video_id']}). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
-    act4_default += " [ARCHIVE OBSERVATION: #{act4_story['story']}]" if act4_story && !custom_scripts['act_4']
+    act4_default += " [ARCHIVE OBSERVATION: #{act4_story['story']}]" if act4_story && !act4_default.include?(act4_story['story'].to_s)
 
     act5_default = custom_scripts['act_5'] || "#{dossier.dig('narrative', 'ai_era_parallel')} When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us inspect the code contracts directly."
-    act5_default += " [WORKBENCH STORY: #{act5_story['story']}]" if act5_story && !custom_scripts['act_5']
-    if attachments.any? && !custom_scripts['act_5']
+    act5_default += " [WORKBENCH STORY: #{act5_story['story']}]" if act5_story && !act5_default.include?(act5_story['story'].to_s)
+    if attachments.any? && !act5_default.include?('Cited references:')
       act5_default += " Cited references: " + attachments.map { |a| "#{a['title']} (#{a['url'] || a['path']})" }.join('; ')
     end
 

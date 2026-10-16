@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: analyze_ugtastic_production.rb
+# domain: media
+# purpose: Compare recovered UGtastic audio exports with finished-video exports and
+# usage: ruby bin/analyze_ugtastic_production.rb
+# ---
+
 # Compare recovered UGtastic audio exports with finished-video exports and
 # Final Cut event references. This reads media metadata and marker names only.
 

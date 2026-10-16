@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# ---
+# name: validate_archive_surfaces.rb
+# domain: validate
+# purpose: Validate Archive Surfaces utility for the just3ws platform
+# usage: ruby bin/validate_archive_surfaces.rb
+# ---
+
 require "yaml"
 require "date"
 require "set"

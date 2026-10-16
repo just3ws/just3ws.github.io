@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# ---
+# name: audit_youtube_metadata.rb
+# domain: validate
+# purpose: Audit Youtube Metadata utility for the just3ws platform
+# usage: ruby bin/audit_youtube_metadata.rb
+# ---
+
 require 'yaml'
 
 interviews = YAML.load_file("_data/interviews.yml")["items"]

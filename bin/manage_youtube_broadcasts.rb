@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: manage_youtube_broadcasts.rb
+# domain: media
+# purpose: ==============================================================================
+# usage: ruby bin/manage_youtube_broadcasts.rb
+# ---
+
 # ==============================================================================
 # bin/manage_youtube_broadcasts.rb
 #

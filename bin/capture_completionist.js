@@ -1,3 +1,10 @@
+// ---
+// name: capture_completionist.js
+// domain: site
+// purpose: Capture Completionist utility for the just3ws platform
+// usage: node bin/capture_completionist.js
+// ---
+
 const { chromium } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');

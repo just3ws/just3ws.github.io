@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# ---
+# name: apply_ugtastic_context_to_video_assets.rb
+# domain: media
+# purpose: Apply Ugtastic Context To Video Assets utility for the just3ws platform
+# usage: ruby bin/apply_ugtastic_context_to_video_assets.rb
+# ---
+
 require "date"
 require "optparse"
 require "pathname"
