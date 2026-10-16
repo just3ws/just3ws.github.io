@@ -3385,10 +3385,9 @@ body_class: page-youtube-dashboard
       }
 
       // Render the 5-column Ingress & Publishing Funnel
-      renderIngressFunnel(telemetry);
+      renderIngressFunnel(data);
 
       // Render Live Pipeline Activity & Event Stream
-      const intake = telemetry.media_intake || {};
       renderActivityStream(intake.activity_stream || [], intake.auto_intake);
     }
   }
@@ -3476,6 +3475,9 @@ body_class: page-youtube-dashboard
     handleHashTab();
     loadTeleprompterEpisode(1);
     loadWorkshopEpisode(0);
+    if (typeof telemetry !== 'undefined' && telemetry) {
+      applyRealtimeTelemetry(telemetry);
+    }
     initDashboardRealtimeStream();
   });
 </script>
