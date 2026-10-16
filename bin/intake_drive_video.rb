@@ -24,8 +24,6 @@ require_relative 'lib/youtube_client'
 ROOT_DIR = File.expand_path('..', __dir__)
 CONFIG_PATH = File.join(ROOT_DIR, '_data', 'media_intake_targets.yml')
 EPISODES_DIR = File.join(ROOT_DIR, '_data', 'episodes')
-WHISPER_MODELS_DIR = File.expand_path('~/.local/share/whisper-cpp/models')
-DEFAULT_MODEL = 'ggml-large-v3-turbo.bin'
 STATE_DIR = File.expand_path('~/.local/state/just3ws')
 HALT_SENTINEL = File.join(STATE_DIR, 'pipeline.halt')
 STOP_SENTINEL = File.join(STATE_DIR, 'pipeline.stop')
@@ -842,34 +840,18 @@ class MediaIntakePipeline
     raise "ffmpeg failed to extract audio from #{input_path}" unless success && File.exist?(output_wav)
   end
 
-  # Transcribe using zdots ztranscribe pipeline with graceful whisper-cli fallback
+  # Transcribe using canonical zdots ztranscribe pipeline
   def transcribe_audio(wav_path, output_prefix)
     ztranscribe_bin = find_ztranscribe_binary
+    raise "ztranscribe pipeline executable not found in PATH or zdots" unless ztranscribe_bin && !ztranscribe_bin.empty? && File.exist?(ztranscribe_bin)
 
-    if ztranscribe_bin && !ztranscribe_bin.empty? && File.exist?(ztranscribe_bin)
-      transcribe_with_ztranscribe(ztranscribe_bin, wav_path, output_prefix)
-    else
-      transcribe_with_whisper_fallback(wav_path, output_prefix)
-    end
-  end
-
-  def find_ztranscribe_binary
-    candidates = [
-      File.expand_path('~/.config/zsh/bin/ztranscribe'),
-      File.expand_path('~/.config/zsh/recipes/yt-transcribe'),
-      '/Users/mike/.config/zsh/recipes/yt-transcribe'
-    ]
-    candidates.find { |p| File.exist?(p) && File.executable?(p) } || `which ztranscribe 2>/dev/null`.strip
-  end
-
-  def transcribe_with_ztranscribe(ztranscribe_bin, wav_path, output_prefix)
     out_dir = File.dirname(output_prefix)
     FileUtils.mkdir_p(out_dir)
     stem = File.basename(wav_path, '.*')
 
     prompt = "UGtastic, Software Craftsmanship, Chicago Alt.NET, NUnit, NHibernate, StructureMap, Ruby, Rails, RSpec, Obtiva"
 
-    puts "🧠 Running local ztranscribe pipeline from zdots on Apple Silicon..."
+    puts "🧠 Running canonical ztranscribe pipeline from zdots on Apple Silicon..."
     cmd = "#{ztranscribe_bin.shellescape} #{wav_path.shellescape} --out-dir #{out_dir.shellescape} --profile standard --prompt #{prompt.shellescape} 2>&1"
     output = `#{cmd}`
     exit_code = $?.exitstatus
@@ -889,8 +871,7 @@ class MediaIntakePipeline
     raw_vtt = File.exist?(vtt_file) ? File.read(vtt_file).strip : ""
 
     if raw_text.empty? && raw_vtt.empty?
-      warn "⚠️ ztranscribe produced empty output (exit #{exit_code}). Falling back to whisper-cli."
-      return transcribe_with_whisper_fallback(wav_path, output_prefix)
+      warn "⚠️ ztranscribe produced empty output (exit #{exit_code}). Output: #{output.slice(0, 300)}"
     end
 
     text = clean_transcript_text(raw_text)
@@ -899,28 +880,13 @@ class MediaIntakePipeline
     { text: text, vtt: vtt }
   end
 
-  def transcribe_with_whisper_fallback(wav_path, output_prefix)
-    whisper_bin = find_whisper_binary
-    model_path = find_whisper_model
-
-    unless whisper_bin && File.exist?(whisper_bin) && model_path && File.exist?(model_path)
-      puts "⚠️ Neither ztranscribe nor whisper-cli model available; skipping transcription."
-      return { text: "", vtt: "" }
-    end
-
-    cmd = "#{whisper_bin.shellescape} --model #{model_path.shellescape} --file #{wav_path.shellescape} --max-context 0 --output-vtt --output-txt -of #{output_prefix.shellescape} 2>/dev/null"
-    system(cmd)
-
-    txt_file = "#{output_prefix}.txt"
-    vtt_file = "#{output_prefix}.vtt"
-
-    raw_text = File.exist?(txt_file) ? File.read(txt_file).strip : ""
-    raw_vtt = File.exist?(vtt_file) ? File.read(vtt_file).strip : ""
-
-    text = clean_transcript_text(raw_text)
-    vtt = clean_transcript_text(raw_vtt)
-
-    { text: text, vtt: vtt }
+  def find_ztranscribe_binary
+    candidates = [
+      File.expand_path('~/.config/zsh/bin/ztranscribe'),
+      File.expand_path('~/.config/zsh/recipes/yt-transcribe'),
+      '/Users/mike/.config/zsh/recipes/yt-transcribe'
+    ]
+    candidates.find { |p| File.exist?(p) && File.executable?(p) } || `which ztranscribe 2>/dev/null`.strip
   end
 
   # Phonetic corrections for speech-to-text misrecognitions
@@ -932,19 +898,6 @@ class MediaIntakePipeline
     cleaned.gsub!(/\byou fantastic\b/i, 'UGtastic')
     cleaned.gsub!(/\bug tastic\b/i, 'UGtastic')
     cleaned
-  end
-
-  def find_whisper_binary
-    ['/opt/homebrew/bin/whisper-cli', '/usr/local/bin/whisper-cli'].find { |p| File.exist?(p) } || `which whisper-cli 2>/dev/null`.strip
-  end
-
-  def find_whisper_model
-    candidates = [
-      File.join(WHISPER_MODELS_DIR, 'ggml-large-v3-turbo.bin'),
-      File.join(WHISPER_MODELS_DIR, 'ggml-large-v3.bin'),
-      File.join(WHISPER_MODELS_DIR, 'ggml-base.bin')
-    ]
-    candidates.find { |p| File.exist?(p) }
   end
 
   # PostgreSQL Registration
