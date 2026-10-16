@@ -4248,7 +4248,7 @@
     "halted": false,
     "stopped": false,
     "locked": true,
-    "active_pid": "20746",
+    "active_pid": "50144",
     "auto_intake": true,
     "self_healing_events": [],
     "targets": {
@@ -4361,6 +4361,156 @@
       }
     },
     "activity_stream": [
+      {
+        "timestamp": "2026-10-16T18:22:37Z",
+        "stage": "dsp",
+        "level": "info",
+        "message": "Extracted 16kHz audio from VID_20261015_101120773.mp4 in 1.05s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 1.05
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:22:36Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261015_101120773.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:22:31Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 65297)",
+        "details": {
+          "pid": 65297
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:22:30Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed stranded file VID_20261015_101120773.mp4: restored from processing/ to pending/ in ramblin-amblin",
+        "details": {
+          "target": "ramblin-amblin",
+          "file": "VID_20261015_101120773.mp4"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:22:23Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-15): Going to be wearing a hood because mosquitoes\" (0.09s)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-15): Going to be wearing a hood because mosquitoes",
+          "duration_seconds": 0.09
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:22:23Z",
+        "stage": "whisper",
+        "level": "info",
+        "message": "ztranscribe STT completed for VID_20261015_101120773.mp4 in 191.92s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 191.92
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:19:11Z",
+        "stage": "dsp",
+        "level": "info",
+        "message": "Extracted 16kHz audio from VID_20261015_101120773.mp4 in 1.61s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 1.61
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:19:09Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261015_101120773.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:19:04Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 51541)",
+        "details": {
+          "pid": 51541
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:19:04Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed stranded file VID_20261015_101120773.mp4: restored from processing/ to pending/ in ramblin-amblin",
+        "details": {
+          "target": "ramblin-amblin",
+          "file": "VID_20261015_101120773.mp4"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:19:04Z",
+        "stage": "self_healing",
+        "level": "warning",
+        "message": "Self-healed dead worker PID 20746: unlinked stale PID lock",
+        "details": {
+          "stale_pid": "20746"
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:17:39Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-15): Going to be wearing a hood because mosquitoes\" (0.13s)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-15): Going to be wearing a hood because mosquitoes",
+          "duration_seconds": 0.13
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:17:39Z",
+        "stage": "whisper",
+        "level": "info",
+        "message": "ztranscribe STT completed for VID_20261015_101120773.mp4 in 368.98s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 368.98
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:17:05Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-15): Going to be wearing a hood because mosquitoes\" (0.11s)",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-15): Going to be wearing a hood because mosquitoes",
+          "duration_seconds": 0.11
+        }
+      },
+      {
+        "timestamp": "2026-10-16T18:17:05Z",
+        "stage": "whisper",
+        "level": "info",
+        "message": "ztranscribe STT completed for VID_20261015_101120773.mp4 in 356.59s",
+        "details": {
+          "filename": "VID_20261015_101120773.mp4",
+          "duration_seconds": 356.59
+        }
+      },
       {
         "timestamp": "2026-10-16T18:11:30Z",
         "stage": "dsp",
@@ -4600,144 +4750,9 @@
         "details": {
           "stale_pid": "9999999"
         }
-      },
-      {
-        "timestamp": "2026-10-16T17:46:12Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T17:44:50Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T16:46:42Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T16:33:37Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T14:39:18Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T14:05:15Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T13:45:33Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T12:55:28Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T12:55:17Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T06:24:16Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T06:16:11Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T06:08:23Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T06:06:03Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T05:49:19Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T05:45:34Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Self-healed dead worker PID 9999999: unlinked stale PID lock",
-        "details": {
-          "stale_pid": "9999999"
-        }
       }
     ],
-    "polled_at": "2026-10-16T18:13:52Z"
+    "polled_at": "2026-10-16T18:24:38Z"
   },
   "assets": [
     {
@@ -8430,5 +8445,5 @@
       "title_length": 34
     }
   ],
-  "updated_at": "2026-10-16T18:13:52Z"
+  "updated_at": "2026-10-16T18:24:38Z"
 }

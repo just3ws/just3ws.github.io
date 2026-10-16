@@ -235,15 +235,15 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
     end
 
     it 'self-heals stale PID file when worker process is no longer alive' do
-      streamer = LiveDashboardStreamer.new(7099)
-      state_dir = File.expand_path('~/.local/state/just3ws')
-      FileUtils.mkdir_p(state_dir)
-      stale_pid_file = File.join(state_dir, 'pipeline.pid')
-      File.write(stale_pid_file, "9999999\n")
+      Dir.mktmpdir do |tmp_state|
+        streamer = LiveDashboardStreamer.new(7099, tmp_state)
+        stale_pid_file = File.join(tmp_state, 'pipeline.pid')
+        File.write(stale_pid_file, "9999999\n")
 
-      state = streamer.compile_live_intake_queues
-      expect(File.exist?(stale_pid_file)).to be false
-      expect(state['self_healing_events']).to include(match(/dead worker PID 9999999/))
+        state = streamer.compile_live_intake_queues
+        expect(File.exist?(stale_pid_file)).to be false
+        expect(state['self_healing_events']).to include(match(/dead worker PID 9999999/))
+      end
     end
   end
 end

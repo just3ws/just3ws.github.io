@@ -28,10 +28,11 @@ INTAKE_CONFIG_PATH = File.join(ROOT_DIR, '_data', 'media_intake_targets.yml')
 PORT = (ENV['LIVE_STREAM_PORT'] || 7025).to_i
 
 class LiveDashboardStreamer
-  attr_reader :port, :clients, :mutex, :last_state_hash
+  attr_reader :port, :clients, :mutex, :last_state_hash, :state_dir
 
-  def initialize(port = PORT)
+  def initialize(port = PORT, state_dir = nil)
     @port = port
+    @state_dir = state_dir || File.expand_path('~/.local/state/just3ws')
     @clients = []
     @mutex = Mutex.new
     @last_state_hash = ""
@@ -267,7 +268,7 @@ class LiveDashboardStreamer
   end
 
   def worker_running?
-    state_dir = File.expand_path('~/.local/state/just3ws')
+    state_dir = @state_dir
     pid_file = File.join(state_dir, 'pipeline.pid')
     return false unless File.exist?(pid_file)
     pid = File.read(pid_file).strip.to_i
@@ -279,9 +280,10 @@ class LiveDashboardStreamer
   end
 
   def spawn_intake_worker!
-    state_dir = File.expand_path('~/.local/state/just3ws')
+    state_dir = @state_dir
     FileUtils.mkdir_p(state_dir)
     worker_log = File.join(state_dir, 'pipeline_worker.log')
+    pid_file = File.join(state_dir, 'pipeline.pid')
 
     pid = Process.spawn(
       RbConfig.ruby, File.join(ROOT_DIR, 'bin', 'intake_drive_video.rb'), '-1',
@@ -289,6 +291,7 @@ class LiveDashboardStreamer
       out: [worker_log, 'a'],
       err: [:child, :out]
     )
+    File.write(pid_file, pid.to_s)
     Process.detach(pid)
     log_activity('autonomous', "Autonomous intake triggered single-worker ingestion (PID #{pid})", level: 'info', details: { 'pid' => pid })
     broadcast_state!
@@ -297,7 +300,7 @@ class LiveDashboardStreamer
   end
 
   def log_activity(stage, message, level: 'info', details: {})
-    state_dir = File.expand_path('~/.local/state/just3ws')
+    state_dir = @state_dir
     FileUtils.mkdir_p(state_dir)
     log_file = File.join(state_dir, 'pipeline_activity.jsonl')
     entry = {
@@ -363,7 +366,7 @@ class LiveDashboardStreamer
     channel = 'whoistechcmty'
     targets = config.dig('channels', channel, 'targets') || {}
 
-    state_dir = File.expand_path('~/.local/state/just3ws')
+    state_dir = @state_dir
     halted = File.exist?(File.join(state_dir, 'pipeline.halt'))
     stopped = File.exist?(File.join(state_dir, 'pipeline.stop'))
     pid_file = File.join(state_dir, 'pipeline.pid')
@@ -526,7 +529,7 @@ class LiveDashboardStreamer
   end
 
   def handle_pipeline_halt(client)
-    state_dir = File.expand_path('~/.local/state/just3ws')
+    state_dir = @state_dir
     FileUtils.mkdir_p(state_dir)
     FileUtils.touch(File.join(state_dir, 'pipeline.halt'))
     FileUtils.rm_f(File.join(state_dir, 'pipeline.stop'))
@@ -535,7 +538,7 @@ class LiveDashboardStreamer
   end
 
   def handle_pipeline_stop(client)
-    state_dir = File.expand_path('~/.local/state/just3ws')
+    state_dir = @state_dir
     FileUtils.mkdir_p(state_dir)
     FileUtils.touch(File.join(state_dir, 'pipeline.stop'))
     pid_file = File.join(state_dir, 'pipeline.pid')
@@ -549,7 +552,7 @@ class LiveDashboardStreamer
   end
 
   def handle_pipeline_resume(client)
-    state_dir = File.expand_path('~/.local/state/just3ws')
+    state_dir = @state_dir
     FileUtils.rm_f(File.join(state_dir, 'pipeline.halt'))
     FileUtils.rm_f(File.join(state_dir, 'pipeline.stop'))
     broadcast_state!
@@ -606,7 +609,7 @@ class LiveDashboardStreamer
   end
 
   def handle_pipeline_auto_toggle(client)
-    state_dir = File.expand_path('~/.local/state/just3ws')
+    state_dir = @state_dir
     FileUtils.mkdir_p(state_dir)
     sentinel = File.join(state_dir, 'auto_intake.enabled')
     now_enabled = false
