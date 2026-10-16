@@ -668,6 +668,7 @@ class MediaIntakePipeline
                 else
                   puts "   ⚠️ Could not add to playlist #{target_info['playlist_id']}: #{pl_err.message}"
                   log_activity('warning', "Failed adding #{video_id} to playlist #{target_info['playlist_id']}: #{pl_err.message}", level: 'warning', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'], 'error' => pl_err.message })
+                  raise pl_err
                 end
               end
             end
@@ -697,6 +698,8 @@ class MediaIntakePipeline
                   sleep 2
                 else
                   warn "⚠️ [Captions Warning] Could not upload captions track: #{cap_err.message}"
+                  log_activity('warning', "Failed uploading captions for #{video_id}: #{cap_err.message}", level: 'warning', details: { 'video_id' => video_id, 'error' => cap_err.message })
+                  raise cap_err
                 end
               end
             end

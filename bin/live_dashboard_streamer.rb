@@ -597,6 +597,11 @@ class LiveDashboardStreamer
       dst = File.join(base_p, 'whoistechcmty', target, 'pending', filename)
       if File.exist?(src)
         FileUtils.mv(src, dst)
+        Dir.glob("#{src}.*").each do |companion|
+          next if companion.end_with?('.error.log')
+          companion_dst = File.join(base_p, 'whoistechcmty', target, 'pending', File.basename(companion))
+          FileUtils.mv(companion, companion_dst) rescue nil
+        end
         broadcast_state!
         return respond_json(client, { status: "retried", file: filename, target: target })
       end

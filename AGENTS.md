@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - PIPELINE STEP FAILURE QUARANTINE & SAFE REPROCESSING CONTRACT (2026-10-16):
+         Hardened media intake pipeline so step failures (such as YouTube API playlist or caption quota exhaustion) fail immediately into Column 5 (Failed / Quarantine) instead of swallowing errors, enabling idempotent reprocessing without re-uploading:
+         - Strict Step Failure & Quarantine (`bin/intake_drive_video.rb`):
+           - In `add_playlist_item` and `upload_caption`, replaced swallowed warnings with `raise pl_err` and `raise cap_err` once retry loops exhaust.
+           - Outer rescue block cleanly marks `tracker.fail_step`, logs activity, records `.error.log`, and relocates the media file and companion `.state.json` sidecar to `failed/`.
+           - In the operations cockpit (`youtube/dashboard.html`), the card accurately surfaces in Column 5: Failed (Quarantine) with exact substate badges (e.g. `[✓ DSP] [✓ STT] [✓ Meta] [✓ Upload] [❌ Playlist] [⏳ Captions]`).
+         - Companion State Preservation on Re-queue (`bin/live_dashboard_streamer.rb`):
+           - Updated `handle_pipeline_retry` (POST `/api/live/pipeline/retry`) to move all companion sidecars (e.g., `VID_*.mp4.state.json`) alongside the media file back to `pending/`, pruning stale `.error.log` files.
+           - Idempotency verified: `JobSubstateTracker#can_skip_youtube_upload?` verifies existing YouTube video ID on rerun, safely skipping DSP, STT, and YouTube upload to resume directly at the failed step with zero duplicate uploads or wasted quota.
+         - Verification & Operational Health:
+           - 138/138 YouTube specs passing, fast validation passing cleanly. Streamer daemon restarted and active on port 7025. Zero em dashes.
+
        - EPISODE 00 GROUNDED FIELD RECORDING & SHOW-OPENER BIT ELIMINATION (2026-10-16):
          Eliminated the scripted "Northern Illinois Field Dispatch" show formula and bit from Episode 00 in favor of unpretentious, grounded practitioner speech ("Field Recording"):
          - Spoken Script Calibration (`_data/episodes/episode-00.yml`, `obs/teleprompter/episode-00.textream`, `bin/templates/teleprompter/act_01_cold_open.erb`):
