@@ -19,6 +19,7 @@ require 'optparse'
 require 'fileutils'
 require 'time'
 require 'open3'
+require 'shellwords'
 require_relative 'lib/youtube_client'
 
 ROOT_DIR = File.expand_path('..', __dir__)
