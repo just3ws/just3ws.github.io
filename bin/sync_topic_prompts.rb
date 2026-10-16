@@ -108,15 +108,15 @@ RAMBLIN_TOPICS = [
     id: "scmc-17-year-torch",
     title: "Handing Over the Torch: Ryan Gerry & The 17-Year Continuous Room",
     location_suggestion: "Follett Software exterior or quiet suburban park",
-    historical_anchor: "Co-founding SCMC in 2010 with Ryan Gerry and Jim Suchy, stepping back when capacity waned, and watching Ryan sustain the group monthly for over 15 years.",
-    core_inquiry: "What does true community longevity look like, and how do you build a local institution that thrives long after the co-founder steps aside?",
+    historical_anchor: "Co-founding SCMC with Ryan Gerry and Jim Suchy, stepping away after the two-year anniversary, and watching Ryan continue running the group monthly for over 15 years.",
+    core_inquiry: "What does true community longevity look like, and how do you build a local institution that thrives long after a co-founder steps aside?",
     talking_points: [
-      "The early momentum of SCMC: securing the meeting room at Follett Software Company and establishing the monthly kata habit.",
-      "The difficult personal realization: acknowledging when your own energy is depleted and trusting your partner to carry the mission forward.",
-      "Watching Ryan Gerry sustain the monthly cadence through corporate shifts, venue reconfigurations, and the COVID-19 pandemic.",
-      "The profound lesson of stewardship: the best things you build are the ones that continue to thrive without you."
+      "Co-founding SCMC with Ryan Gerry and Jim Suchy: securing the meeting room at Follett Software Company and establishing the monthly kata habit.",
+      "Stepping away after the two-year anniversary: recognizing personal capacity limits and trusting Ryan Gerry to carry the mission forward.",
+      "Watching Ryan Gerry sustain the monthly cadence for 17 years through corporate shifts, venue reconfigurations, and the COVID-19 pandemic.",
+      "The profound lesson of stewardship: the best things you help build are the ones that continue to thrive after you step away."
     ],
-    concepts: ["SCMC", "Ryan Gerry", "Community Longevity", "Stewardship", "Letting Go"]
+    concepts: ["SCMC", "Ryan Gerry", "Jim Suchy", "Community Longevity", "Stewardship"]
   },
   {
     id: "greg-baugues-mental-health",

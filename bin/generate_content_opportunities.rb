@@ -203,7 +203,7 @@ key_article_themes = [
   },
   {
     topic: "architecture",
-    title: "The Distributed Systems Crucible: Monolith Modernization in Practice",
+    title: "The Distributed Systems Workshop: Monolith Modernization in Practice",
     rationale: "Synthesizes architecture lessons from GOTO Conference and RailsConf veterans",
     feeds: "TASK-237"
   },

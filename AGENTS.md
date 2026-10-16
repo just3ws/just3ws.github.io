@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SOFTWARE CRAFTSMANSHIP ENGINEERING PRINCIPLES, SCMC 2-YEAR TRANSITION & KNOWLEDGE GRAPH MEMORY (2026-10-16):
+         Eliminated remaining "crucible" terminology in favor of Software Craftsmanship principles, calibrated SCMC co-founding and 2-year anniversary transition across all surfaces, and integrated persistent code/knowledge graphing for context retention:
+         - Software Craftsmanship Framing & "Crucible" Elimination:
+           - Codified Kent Beck's Four Rules of Simple Design, Michael Feathers' legacy seams and characterization tests, Red-Green-Refactor / The Blink Test, and Apprenticeship -> Journeyman Practice -> Stewardship in `GEMINI.md`.
+           - Calibrated the 3-Act Career Narrative across `bin/generate_career_datalake.rb`, `bin/career_datalake_mcp_server.rb`, `.agents/skills/executive-brief-generator/SKILL.md`, `docs/executive-brief-generator-protocol.md`, and `docs/resume-narrative-and-storytelling-guide.md` from "The Crucible" to **"Journeyman Practice & Architecture"**.
+           - Updated `_posts/2026-10-02-the-chicago-crucible-why-craftsmanship-happened-here.md` ("The Chicago Workshop: Why Software Craftsmanship Happened in the City of Broad Shoulders", replacing "Prison Break" with "Practical Autonomy in Enterprise .NET"), `_posts/2026-10-02-without-zdots-there-was-nothing.md`, `bin/generate_rewatch_thumbnail.rb`, `bin/generate_content_opportunities.rb`, `docs/phased-approach-rewatch-broadcast-rollout.md`, and `docs/the-sound-above-audience-and-funding-strategy.md`.
+         - Verified SCMC Co-Founding & 2-Year Anniversary Transition:
+           - Updated `_data/episodes/episode-05.yml`, `obs/teleprompter/episode-05.textream`, `bin/sync_topic_prompts.rb` (`scmc-17-year-torch`, synced to Google Drive), `scmc/index.html`, `_posts/2026-08-17-software-craftsmanship-mchenry-county-a-retrospective.md`, `_data/community_timeline.yml`, `obs/curation/rewatch-curation-sequence.md`, `.agents/skills/editorial-fact-checker/SKILL.md`, `.claude/agents/editorial-fact-checker.md`, and `.claude/agents/technical-scriptwriter.md` to accurately reflect that **Mike Hall co-founded SCMC with Ryan Gerry and Jim Suchy in 2010 at Follett Software Company, and Ryan Gerry continued running SCMC after Mike stepped away after the 2-year anniversary**.
+         - Code Mapping, Knowledge Graph & Context Retention (`graphify` + `_data/knowledge_graph.json`):
+           - Upgraded `bin/generate_knowledge_graph.rb` and `_data/concepts.yml` to include all 38 Episode Dossiers (`episode-00`..`episode-37`), `SCMC (McHenry County)`, `software-craftsmanship`, `command-palette`, `knowledge-work`, and `orientation`, resolving all orphan nodes (`Nodes: 469, Edges: 742, Orphans: 0, Duplicate IDs: 0`).
+           - Updated `graphify-out/graph.json` (`9,613 nodes, 12,562 edges`), registered `just3ws` in `~/.graphify/global-graph.json`, installed `.githooks/post-commit` and `.githooks/post-checkout`, and wired `graphify update .` into `rake knowledge_graph` (`./bin/pipeline data graph`).
+
        - ARGON MEDIUM SYSTEM AUDIT, MOVEMENT 1 TELEPROMPTER SCRIPTS & FULL-SITE VALIDATION REMEDIATION (2026-10-16):
          Conducted a comprehensive system-wide audit across skills, subagent personas, episode dossiers, `bin/` tooling, and full-site HTML/SEO/taxonomy validators:
          - Movement 1 Spoken Teleprompter Scripts & Dossier Grounding (`_data/episodes/episode-01.yml` .. `episode-05.yml`, `bin/episode_workbench.rb`, `bin/templates/teleprompter/*.erb`):
@@ -19,7 +31,7 @@
              * Episode 02 (Ray Hightower): The Ambassador, ChicagoRuby, WindyCityRails, and the 2008 Midway Restaurant diner conversation running Cucumber.
              * Episode 03 (Micah Martin & Mike Jansen): Pair Friday in Libertyville, 8th Light's second-floor open tables, Vim/RSpec, and structured apprenticeship.
              * Episode 04 (Dave Hoover): Obtiva, *Apprenticeship Patterns* (O'Reilly 2009), and the 2011 Groupon acquisition.
-             * Episode 05 (Ryan Gerry & Jim Suchy): Verified SCMC (#106) founding timeline (Oct 2009 SCNA table meeting with Ryan Gerry -> Cloud Developers Group in McHenry County libraries, Panera Bread, and Duke's Alehouse -> 2010 SCMC formalization with Jim Suchy at Follett Software Company) and 17 years of continuous monthly practice.
+             * Episode 05 (Ryan Gerry & Jim Suchy): Verified SCMC (#106) founding timeline (Oct 2009 SCNA table meeting with Ryan Gerry -> Cloud Developers Group in McHenry County libraries, Panera Bread, and Duke's Alehouse -> 2010 SCMC formalization with Jim Suchy at Follett Software Company, and Ryan Gerry continuing to run SCMC after Mike stepped away after the 2-year anniversary) and 17 years of continuous monthly practice.
            - Fixed `spec/youtube/episode_workbench_spec.rb` test isolation so `workshop 1` restores `episode-01.yml` cleanly instead of polluting `workshop_prompts` on test runs.
            - Updated `bin/episode_workbench.rb` and ERB templates so `human_stories` marginalia and `Cited references:` are preserved alongside bespoke `teleprompter_script:` acts; recompiled all 38 `.textream` documents in `obs/teleprompter/`.
          - Skill, Subagent & MCP Verification Calibration (`.agents/skills/`, `.claude/agents/`, `bin/mcp_server.js`, `bin/career_datalake_mcp_server.rb`):

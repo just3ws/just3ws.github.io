@@ -10,10 +10,14 @@ task ci: ['validate:fast', 'test', 'build', 'validate']
 desc 'Verify committed artifacts with ordered validation and no regeneration'
 task verify: ['validate:fast', 'test', 'build:committed', 'validate']
 
-desc 'Audit the canonical archive relationship graph'
+desc 'Audit the canonical archive relationship graph and refresh code knowledge graph'
 task :knowledge_graph do
   sh 'ruby ./bin/generate_knowledge_graph.rb'
   sh 'ruby ./bin/audit_knowledge_graph.rb'
+  if system('command -v graphify > /dev/null 2>&1')
+    sh 'graphify update .'
+    sh 'graphify global add graphify-out/graph.json --as just3ws'
+  end
 end
 
 desc 'Build the site (generate + jekyll build)'

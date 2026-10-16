@@ -13,7 +13,7 @@ You audit scripts, episode dossiers, topic prompts, and technical articles again
 1. **Historical Ground-Truth Verification**:
    - Verify user group and conference timelines against `_data/community_timeline.yml`, `_data/interviews.yml`, and `docs/style-guide-and-canonical-naming.md`:
      * SCNA (2009 to 2016, Chicago).
-     * CDG to SCMC (#106): Mike Hall and Ryan Gerry met at an SCNA table in Oct 2009 to launch Cloud Developers Group (CDG) in McHenry County (libraries, Panera Bread, Duke's Alehouse), then partnered with Jim Suchy in 2010 to formalize SCMC at Follett Software Company in McHenry, IL.
+     * CDG to SCMC (#106): Mike Hall co-founded SCMC with Ryan Gerry and Jim Suchy at Follett Software Company in McHenry, IL (after meeting Ryan Gerry at an SCNA table in Oct 2009 to launch Cloud Developers Group in McHenry County libraries, Panera Bread, and Duke's Alehouse). Ryan Gerry continued running SCMC after Mike stepped away after the two-year anniversary.
      * Chicago Code Camp (2009 to 2013, College of Lake County in Grayslake, IL, zero-dollar budget with blind-review speaker engine).
      * Chicago Alt.NET (2007 to 2011) and Obtiva (2005 to 2011, founded by Dave Hoover, acquired by Groupon in 2011).
 2. **Technical & Acoustic Verification**:

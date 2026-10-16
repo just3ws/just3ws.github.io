@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-15T23:26:40-05:00",
-  "total_nodes": 426,
-  "total_links": 677,
+  "generated_at": "2026-10-16T10:19:55-05:00",
+  "total_nodes": 469,
+  "total_links": 742,
   "clusters": {
     "Conference": {
       "color": "#0284c7",
@@ -34,6 +34,10 @@
     "Archive Article": {
       "color": "#b45309",
       "group": 8
+    },
+    "Episode": {
+      "color": "#dc2626",
+      "group": 9
     }
   },
   "nodes": [
@@ -103,6 +107,15 @@
     {
       "id": "ug-chicago-alt-net",
       "label": "Chicago ALT.NET",
+      "type": "User Group",
+      "group": 2,
+      "url": "/archive-status/",
+      "val": 20,
+      "description": "Regional developer community group"
+    },
+    {
+      "id": "ug-scmc--mchenry-county-",
+      "label": "SCMC (McHenry County)",
       "type": "User Group",
       "group": 2,
       "url": "/archive-status/",
@@ -396,6 +409,42 @@
       "url": "/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html",
       "val": 14,
       "description": "A disciplined way to map a living system across code, runtime behavior, ownership, and organizational context before changing it."
+    },
+    {
+      "id": "concept-software-craftsmanship",
+      "label": "Software Craftsmanship",
+      "type": "Concept",
+      "group": 7,
+      "url": "/chicago-craftsmanship/",
+      "val": 14,
+      "description": "A practitioner discipline grounded in simple design, test-driven feedback loops, apprenticeship, and care for how software is built and maintained."
+    },
+    {
+      "id": "concept-command-palette",
+      "label": "command palette",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/09/02/the-shortcut-that-shifts-toward-knowledge/",
+      "val": 14,
+      "description": "A keyboard-driven interface for navigating pages, searching concepts, and inspecting relationships without leaving the keyboard."
+    },
+    {
+      "id": "concept-knowledge-work",
+      "label": "knowledge work",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/09/02/the-shortcut-that-shifts-toward-knowledge/",
+      "val": 14,
+      "description": "Deliberate technical investigation that preserves context, provenance, and shared understanding across tools and time."
+    },
+    {
+      "id": "concept-orientation",
+      "label": "orientation",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/09/02/the-shortcut-that-shifts-toward-knowledge/",
+      "val": 14,
+      "description": "Establishing where you are in a system and what evidence is trustworthy before choosing an intervention."
     },
     {
       "id": "article-2026-09-02-aop-opentelemetry-strangler-fig",
@@ -1033,6 +1082,33 @@
       "type": "Interview",
       "group": 6,
       "url": "/interviews/scott-seely-lake-county-net-user-group-lcnug-lake-county-net-user-group-lcnug/",
+      "val": 12,
+      "description": "UGtastic oral history recording"
+    },
+    {
+      "id": "person-mike-hall",
+      "label": "Mike Hall",
+      "type": "Interviewee",
+      "group": 5,
+      "url": "/interviews/ramblin-amblin-ogilvie-lost-and-found/",
+      "val": 15,
+      "description": "Featured speaker & practitioner"
+    },
+    {
+      "id": "ramblin-amblin-ogilvie-lost-and-found",
+      "label": "Ogilvie Station Lost and Found: The Lost UGtastic Camera Bag",
+      "type": "Interview",
+      "group": 6,
+      "url": "/interviews/ramblin-amblin-ogilvie-lost-and-found/",
+      "val": 12,
+      "description": "UGtastic oral history recording"
+    },
+    {
+      "id": "ramblin-amblin-production-incidents",
+      "label": "Production Incidents: One of My Favorite Things | Ramblin' & Amblin'",
+      "type": "Interview",
+      "group": 6,
+      "url": "/interviews/ramblin-amblin-production-incidents/",
       "val": 12,
       "description": "UGtastic oral history recording"
     },
@@ -1861,15 +1937,6 @@
       "type": "Interview",
       "group": 6,
       "url": "/interviews/gary-bernhardt-software-craftsmanship-north-america-2012/",
-      "val": 12,
-      "description": "UGtastic oral history recording"
-    },
-    {
-      "id": "gary-bernhardt-programmer-jokes-scna-2013",
-      "label": "Programmer Jokes: Gary Bernhardt | SCNA 2013",
-      "type": "Interview",
-      "group": 6,
-      "url": "/interviews/gary-bernhardt-programmer-jokes-scna-2013/",
       "val": 12,
       "description": "UGtastic oral history recording"
     },
@@ -2716,6 +2783,15 @@
       "type": "Interview",
       "group": 6,
       "url": "/interviews/amitai-schlair-software-craftsmanship-north-america-2013/",
+      "val": 12,
+      "description": "UGtastic oral history recording"
+    },
+    {
+      "id": "gary-bernhardt-programmer-jokes-scna-2013",
+      "label": "Programmer Jokes: Gary Bernhardt | SCNA 2013",
+      "type": "Interview",
+      "group": 6,
+      "url": "/interviews/gary-bernhardt-programmer-jokes-scna-2013/",
       "val": 12,
       "description": "UGtastic oral history recording"
     },
@@ -3845,31 +3921,346 @@
       "description": "UGtastic oral history recording"
     },
     {
-      "id": "person-mike-hall",
-      "label": "Mike Hall",
-      "type": "Interviewee",
-      "group": 5,
-      "url": "/interviews/ramblin-amblin-ogilvie-lost-and-found/",
-      "val": 15,
-      "description": "Featured speaker & practitioner"
+      "id": "episode-00",
+      "label": "Ep 00: The Mirage of Competence: AI Slop & Domain Boundaries (Mike Hall)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/youtube/dashboard/#tab-workshop",
+      "val": 16,
+      "description": "Sovereign Developer Verification & The Limits of Generative AI"
     },
     {
-      "id": "ramblin-amblin-ogilvie-lost-and-found",
-      "label": "Ogilvie Station Lost and Found: The Lost UGtastic Camera Bag",
-      "type": "Interview",
-      "group": 6,
-      "url": "/interviews/ramblin-amblin-ogilvie-lost-and-found/",
-      "val": 12,
-      "description": "UGtastic oral history recording"
+      "id": "episode-01",
+      "label": "Ep 01: The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET (Sergio Pereira)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-01/",
+      "val": 16,
+      "description": "Practical Autonomy, Open Tools & Craftsmanship in Enterprise .NET"
     },
     {
-      "id": "ramblin-amblin-production-incidents",
-      "label": "One of My Favorite Things About Production Incidents",
-      "type": "Interview",
-      "group": 6,
-      "url": "/interviews/ramblin-amblin-production-incidents/",
-      "val": 12,
-      "description": "UGtastic oral history recording"
+      "id": "episode-02",
+      "label": "Ep 02: The Ambassador: ChicagoRuby & Grassroots Hospitality (Ray Hightower)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-02/",
+      "val": 16,
+      "description": "Community Hospitality & Radical Practitioner Inclusion"
+    },
+    {
+      "id": "episode-03",
+      "label": "Ep 03: Pair Friday in Libertyville: Apprenticeship & Terminal Workbenches (Micah Martin & Mike Jansen)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-03/",
+      "val": 16,
+      "description": "Apprenticeship, Deliberate Practice & Engineering Lineage"
+    },
+    {
+      "id": "episode-04",
+      "label": "Ep 04: The Apprenticeship Move: From Psychology to Craftsmanship (Dave Hoover)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-04/",
+      "val": 16,
+      "description": "Apprenticeship, Deliberate Practice & Engineering Lineage"
+    },
+    {
+      "id": "episode-05",
+      "label": "Ep 05: The 17-Year Continuous Room: Founding SCMC & Suburban Craftsmanship (Ryan Gerry & Jim Suchy)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-05/",
+      "val": 16,
+      "description": "The 17-Year Continuous Room: Founding SCMC & Suburban Craftsmanship"
+    },
+    {
+      "id": "episode-06",
+      "label": "Ep 06: Cranking Design to 11: Deliberate Practice & The Four Rules (Corey Haines)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-06/",
+      "val": 16,
+      "description": "Community Hospitality & Radical Practitioner Inclusion"
+    },
+    {
+      "id": "episode-07",
+      "label": "Ep 07: The Toolmakers: Watir, WatiN & Automating the Browser (Charley Baker)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-07/",
+      "val": 16,
+      "description": "Escaping Enterprise Monoliths & Grassroots Autonomy"
+    },
+    {
+      "id": "episode-08",
+      "label": "Ep 08: Clean Code in the Wild: Daily Practice & Object Mentor Wisdom (Tim Ottinger)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-08/",
+      "val": 16,
+      "description": "Clean Code in the Wild: Daily Practice & Object Mentor Wisdom"
+    },
+    {
+      "id": "episode-09",
+      "label": "Ep 09: Cross-Pollination: Game Jams, Functional Code & Alt.NET (Andrea Magnorsky)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-09/",
+      "val": 16,
+      "description": "Cross-Pollination: Game Jams, Functional Code & Alt.NET"
+    },
+    {
+      "id": "episode-10",
+      "label": "Ep 10: The Fast Feedback Loop: Destroy All Software & Unix Workbenches (Gary Bernhardt)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-10/",
+      "val": 16,
+      "description": "Sub-Second Feedback Loops & The Discipline of Testing"
+    },
+    {
+      "id": "episode-11",
+      "label": "Ep 11: Questioning Orthodoxy: Tooling Empathy, Mocking & Human Consulting (Justin Searls)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-11/",
+      "val": 16,
+      "description": "Questioning Orthodoxy: Tooling Empathy, Mocking & Human Consulting"
+    },
+    {
+      "id": "episode-12",
+      "label": "Ep 12: A Legacy of Learning: Community Hospitality, RailsBridge & In Memoriam (Ginny Hendry)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-12/",
+      "val": 16,
+      "description": "Community Hospitality & Radical Practitioner Inclusion"
+    },
+    {
+      "id": "episode-13",
+      "label": "Ep 13: Standards and Joy: Overcoming Developer Shame (Leon Gersing)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-13/",
+      "val": 16,
+      "description": "Hold Yourself to a Standard, But Let There Be Joy: Overcoming Developer Shame"
+    },
+    {
+      "id": "episode-14",
+      "label": "Ep 14: Architecting the Open Door: RailsBridge & DevChix (Sarah Allen & Desi McAdam)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-14/",
+      "val": 16,
+      "description": "Architecting the Open Door: RailsBridge & DevChix"
+    },
+    {
+      "id": "episode-15",
+      "label": "Ep 15: The Bridge Between Design and Craft: Girl Develop It Chicago (Jen Myers)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-15/",
+      "val": 16,
+      "description": "The Bridge Between Design and Craft: Girl Develop It Chicago"
+    },
+    {
+      "id": "episode-16",
+      "label": "Ep 16: Software as Communication: BDD, Humility & Deliberate Discovery (Dan North)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-16/",
+      "val": 16,
+      "description": "Software as Communication: BDD, Humility & Deliberate Discovery"
+    },
+    {
+      "id": "episode-17",
+      "label": "Ep 17: Unlearning Dogma: From Snowbird 2001 to Elixir & Modern Craft (Dave 'pragdave' Thomas)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-17/",
+      "val": 16,
+      "description": "Unlearning Dogma: From Snowbird 2001 to Elixir & Modern Craft"
+    },
+    {
+      "id": "episode-18",
+      "label": "Ep 18: The Truck Driver's Wisdom: Developer Humility & Tooling Craft (Hadi Hariri)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-18/",
+      "val": 16,
+      "description": "The Truck Driver's Wisdom: Developer Humility & Tooling Craft"
+    },
+    {
+      "id": "episode-19",
+      "label": "Ep 19: Speaking as Service: First-Time Speakers & Community Growth (Sarah Gray)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-19/",
+      "val": 16,
+      "description": "Speaking as Service: First-Time Speakers & Community Growth"
+    },
+    {
+      "id": "episode-20",
+      "label": "Ep 20: Deliberate Code Practice: Exercism, Feedback Loops & Refactoring (Katrina Owen)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-20/",
+      "val": 16,
+      "description": "Apprenticeship, Deliberate Practice & Engineering Lineage"
+    },
+    {
+      "id": "episode-21",
+      "label": "Ep 21: Developers and Depression: Mental Health in the Hallway Track (Greg Baugues)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-21/",
+      "val": 16,
+      "description": "Developers and Depression: Mental Health in the Hallway Track"
+    },
+    {
+      "id": "episode-22",
+      "label": "Ep 22: The Craftsman's Social Contract: Artis & Inclusive Engineering (Coraline Ada Ehmke)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-22/",
+      "val": 16,
+      "description": "The Craftsman's Social Contract: Artis & Inclusive Engineering"
+    },
+    {
+      "id": "episode-23",
+      "label": "Ep 23: The Apprenticeship Lineage: Co-Authoring Apprenticeship Patterns (Adewale Oshineye)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-23/",
+      "val": 16,
+      "description": "Apprenticeship, Deliberate Practice & Engineering Lineage"
+    },
+    {
+      "id": "episode-24",
+      "label": "Ep 24: The Chicago Corridor: Software as Writing & The TDD Debate (David Heinemeier Hansson (DHH))",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-24/",
+      "val": 16,
+      "description": "The Chicago Corridor: Software as Writing & The TDD Debate"
+    },
+    {
+      "id": "episode-25",
+      "label": "Ep 25: Joy, Levity, and Systems Engineering: The Core Team Perspective (Aaron Patterson)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-25/",
+      "val": 16,
+      "description": "Joy, Levity, and Systems Engineering: The Core Team Perspective"
+    },
+    {
+      "id": "episode-26",
+      "label": "Ep 26: Client-Side Architecture: Conventions, Shared State & The Ember Move (Yehuda Katz & Tom Dale)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-26/",
+      "val": 16,
+      "description": "Deconstructing Complexity & Architectures of Simplicity"
+    },
+    {
+      "id": "episode-27",
+      "label": "Ep 27: Simple Made Easy: State, Time & Deconstructing Complexity (Rich Hickey)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-27/",
+      "val": 16,
+      "description": "Simple Made Easy: State, Time & Deconstructing Complexity"
+    },
+    {
+      "id": "episode-28",
+      "label": "Ep 28: The Reality of Legacy: Rewriting Software & Pragmatic Leadership (Camille Fournier)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-28/",
+      "val": 16,
+      "description": "The Reality of Legacy: Rewriting Software & Real-World Engineering Leadership"
+    },
+    {
+      "id": "episode-29",
+      "label": "Ep 29: The Living Document: Authorship, Provenance & Tech Media Evolution (Jason Cranford Teague)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-29/",
+      "val": 16,
+      "description": "The Living Document: Authorship, Provenance & Tech Media Evolution"
+    },
+    {
+      "id": "episode-30",
+      "label": "Ep 30: Community Self-Governance: Meta Sites, Moderation & Developer Communities (Adam Lear)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-30/",
+      "val": 16,
+      "description": "Sub-Second Feedback Loops & The Discipline of Testing"
+    },
+    {
+      "id": "episode-31",
+      "label": "Ep 31: Filling the Vessel: Performance, Craft & Clean Coders (Robert \"Uncle Bob\" Martin)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-31/",
+      "val": 16,
+      "description": "Filling the Vessel: Performance, Craft & Clean Coders"
+    },
+    {
+      "id": "episode-32",
+      "label": "Ep 32: Extreme Programming Pioneers: Visual Thinking & Agile Without Dogma (Chet Hendrickson & Ron Jeffries)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-32/",
+      "val": 16,
+      "description": "Extreme Programming Pioneers: Visual Thinking & Agile Without Dogma"
+    },
+    {
+      "id": "episode-33",
+      "label": "Ep 33: Simplicity, Immutability & Datomic: Rethinking Information Architecture (Stuart Halloway)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-33/",
+      "val": 16,
+      "description": "Simplicity, Immutability & Datomic: Rethinking Information Architecture"
+    },
+    {
+      "id": "episode-34",
+      "label": "Ep 34: Scaling Craftsmanship: The London Software Craftsmanship Community (Sandro Mancuso)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-34/",
+      "val": 16,
+      "description": "Scaling Craftsmanship: The London Software Craftsmanship Community"
+    },
+    {
+      "id": "episode-35",
+      "label": "Ep 35: The Legacy Code Whisperer: Agile Technical Coaching & Sustainable Systems (Amitai Schlair)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-35/",
+      "val": 16,
+      "description": "Escaping Enterprise Monoliths & Grassroots Autonomy"
+    },
+    {
+      "id": "episode-36",
+      "label": "Ep 36: Without zdots, There Was Nothing: Craftsmanship for Multi-Agent Fleets (Mike Hall (Host Monologue & Live Demonstration))",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-36/",
+      "val": 16,
+      "description": "Craftsmanship for Multi-Agent Fleets & Observable Control Planes"
+    },
+    {
+      "id": "episode-37",
+      "label": "Ep 37: The Sound Above Roundtable: What We Carry Forward (Community Panel & Open Roundtable)",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/episode-37/",
+      "val": 16,
+      "description": "The Permanent Legacy of Software Craftsmanship & What We Carry Forward"
     }
   ],
   "links": [
@@ -4084,6 +4475,84 @@
       "weight": 2
     },
     {
+      "source": "topic-system-cartography",
+      "target": "concept-software-craftsmanship",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-software-craftsmanship",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-software-craftsmanship",
+      "target": "concept-knowledge-work",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-command-palette",
+      "target": "concept-knowledge-work",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-command-palette",
+      "target": "concept-orientation",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-command-palette",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-knowledge-work",
+      "target": "concept-command-palette",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-knowledge-work",
+      "target": "concept-orientation",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-knowledge-work",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-knowledge-work",
+      "target": "concept-software-craftsmanship",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-orientation",
+      "target": "concept-command-palette",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-orientation",
+      "target": "concept-knowledge-work",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-orientation",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
       "source": "article-2026-09-02-aop-opentelemetry-strangler-fig",
       "target": "topic-aspect-oriented-programming",
       "relationship": "explains",
@@ -4186,6 +4655,24 @@
       "weight": 3
     },
     {
+      "source": "article-2026-09-02-the-shortcut-that-shifts-toward-knowledge",
+      "target": "concept-command-palette",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-the-shortcut-that-shifts-toward-knowledge",
+      "target": "concept-knowledge-work",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-09-02-the-shortcut-that-shifts-toward-knowledge",
+      "target": "concept-orientation",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
       "source": "article-2026-09-02-what-aspect-oriented-programming-is",
       "target": "concept-pointcut",
       "relationship": "explains",
@@ -4235,6 +4722,12 @@
     },
     {
       "source": "aaron-holbrook-general",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "discusses_community",
+      "weight": 2
+    },
+    {
+      "source": "aaron-holbrook-general",
       "target": "topic-software-craftsmanship",
       "relationship": "covers_topic",
       "weight": 1
@@ -4261,6 +4754,12 @@
       "source": "person-jim-suchy",
       "target": "steve-kim-jim-suchy-chicago-software-craftsmanship-chicago-software-craftsmanship",
       "relationship": "featured_in",
+      "weight": 2
+    },
+    {
+      "source": "steve-kim-jim-suchy-chicago-software-craftsmanship-chicago-software-craftsmanship",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "discusses_community",
       "weight": 2
     },
     {
@@ -4702,6 +5201,18 @@
       "weight": 2
     },
     {
+      "source": "person-mike-hall",
+      "target": "ramblin-amblin-ogilvie-lost-and-found",
+      "relationship": "featured_in",
+      "weight": 2
+    },
+    {
+      "source": "person-mike-hall",
+      "target": "ramblin-amblin-production-incidents",
+      "relationship": "featured_in",
+      "weight": 2
+    },
+    {
       "source": "person-john",
       "target": "john-shay-tony-refresh-chicago-refresh-chicago",
       "relationship": "featured_in",
@@ -4795,6 +5306,12 @@
       "source": "person-tim-ottinger",
       "target": "tim-ottinger-general",
       "relationship": "featured_in",
+      "weight": 2
+    },
+    {
+      "source": "tim-ottinger-general",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "discusses_community",
       "weight": 2
     },
     {
@@ -4961,6 +5478,12 @@
     },
     {
       "source": "michael-norton-cleveland-pittsburgh-community-software-craftsmanship-north-america-2011",
+      "target": "ug-pittsburgh-sc",
+      "relationship": "discusses_community",
+      "weight": 2
+    },
+    {
+      "source": "michael-norton-cleveland-pittsburgh-community-software-craftsmanship-north-america-2011",
       "target": "proj-ember-js",
       "relationship": "discusses_project",
       "weight": 2
@@ -5017,6 +5540,12 @@
       "source": "person-charler-baker",
       "target": "charler-baker-denver-community-software-craftsmanship-north-america-2011",
       "relationship": "featured_in",
+      "weight": 2
+    },
+    {
+      "source": "charler-baker-denver-community-software-craftsmanship-north-america-2011",
+      "target": "ug-denver-sc",
+      "relationship": "discusses_community",
       "weight": 2
     },
     {
@@ -5113,6 +5642,12 @@
       "source": "person-dustin-updyke",
       "target": "dustin-updyke-pittsburgh-sc-software-craftsmanship-north-america-2011",
       "relationship": "featured_in",
+      "weight": 2
+    },
+    {
+      "source": "dustin-updyke-pittsburgh-sc-software-craftsmanship-north-america-2011",
+      "target": "ug-pittsburgh-sc",
+      "relationship": "discusses_community",
       "weight": 2
     },
     {
@@ -5267,6 +5802,12 @@
     },
     {
       "source": "martin-atkins-chicagowebconf-2012",
+      "target": "ug-pittsburgh-sc",
+      "relationship": "discusses_community",
+      "weight": 2
+    },
+    {
+      "source": "martin-atkins-chicagowebconf-2012",
       "target": "proj-ruby-on-rails",
       "relationship": "discusses_project",
       "weight": 2
@@ -5282,6 +5823,12 @@
       "target": "conf-chicagowebconf",
       "relationship": "recorded_at",
       "weight": 3
+    },
+    {
+      "source": "andy-lester-chicagowebconf-2012",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "discusses_community",
+      "weight": 2
     },
     {
       "source": "andy-lester-chicagowebconf-2012",
@@ -5512,24 +6059,6 @@
       "weight": 2
     },
     {
-      "source": "person-gary-bernhardt",
-      "target": "gary-bernhardt-programmer-jokes-scna-2013",
-      "relationship": "featured_in",
-      "weight": 2
-    },
-    {
-      "source": "gary-bernhardt-programmer-jokes-scna-2013",
-      "target": "conf-scna--software-craftsmanship-",
-      "relationship": "recorded_at",
-      "weight": 3
-    },
-    {
-      "source": "gary-bernhardt-programmer-jokes-scna-2013",
-      "target": "proj-ember-js",
-      "relationship": "discusses_project",
-      "weight": 2
-    },
-    {
       "source": "person-leon-gersing",
       "target": "leon-gersing-software-craftsmanship-north-america-2012",
       "relationship": "featured_in",
@@ -5576,6 +6105,12 @@
       "target": "conf-scna--software-craftsmanship-",
       "relationship": "recorded_at",
       "weight": 3
+    },
+    {
+      "source": "colin-jones-software-craftsmanship-north-america-2012",
+      "target": "ug-pittsburgh-sc",
+      "relationship": "discusses_community",
+      "weight": 2
     },
     {
       "source": "colin-jones-software-craftsmanship-north-america-2012",
@@ -6042,6 +6577,12 @@
     {
       "source": "justin-love-windycityrails-2012",
       "target": "ug-chicagoruby",
+      "relationship": "discusses_community",
+      "weight": 2
+    },
+    {
+      "source": "justin-love-windycityrails-2012",
+      "target": "ug-scmc--mchenry-county-",
       "relationship": "discusses_community",
       "weight": 2
     },
@@ -6616,6 +7157,24 @@
       "weight": 1
     },
     {
+      "source": "person-gary-bernhardt",
+      "target": "gary-bernhardt-programmer-jokes-scna-2013",
+      "relationship": "featured_in",
+      "weight": 2
+    },
+    {
+      "source": "gary-bernhardt-programmer-jokes-scna-2013",
+      "target": "conf-scna--software-craftsmanship-",
+      "relationship": "recorded_at",
+      "weight": 3
+    },
+    {
+      "source": "gary-bernhardt-programmer-jokes-scna-2013",
+      "target": "proj-ember-js",
+      "relationship": "discusses_project",
+      "weight": 2
+    },
+    {
       "source": "person-dave--pragdave--thomas",
       "target": "dave-thomas-software-craftsmanship-north-america-2013",
       "relationship": "featured_in",
@@ -6776,6 +7335,12 @@
       "target": "conf-goto-chicago",
       "relationship": "recorded_at",
       "weight": 3
+    },
+    {
+      "source": "ryan-gerry-goto-conference-2014",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "discusses_community",
+      "weight": 2
     },
     {
       "source": "ryan-gerry-goto-conference-2014",
@@ -7924,15 +8489,231 @@
       "weight": 1
     },
     {
-      "source": "person-mike-hall",
-      "target": "ramblin-amblin-ogilvie-lost-and-found",
-      "relationship": "featured_in",
+      "source": "episode-00",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explores_concept",
       "weight": 2
     },
     {
-      "source": "person-mike-hall",
-      "target": "ramblin-amblin-production-incidents",
-      "relationship": "featured_in",
+      "source": "episode-01",
+      "target": "sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-02",
+      "target": "ray-hightower-chicagoruby-software-craftsmanship-north-america-2011",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-03",
+      "target": "micah-martin-software-craftsmanship-north-america-2013",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-04",
+      "target": "dave-hoover-geekfest-geekfest",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-05",
+      "target": "ryan-gerry-goto-conference-2014",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-06",
+      "target": "corey-haines-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-07",
+      "target": "charler-baker-denver-community-software-craftsmanship-north-america-2011",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-08",
+      "target": "tim-ottinger-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-09",
+      "target": "andrea-magnorsky-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-10",
+      "target": "gary-bernhardt-software-craftsmanship-north-america-2012",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-11",
+      "target": "justin-searls-software-craftsmanship-north-america-2012",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-12",
+      "target": "ginny-hendry-windycityrails-2012",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-13",
+      "target": "leon-gersing-software-craftsmanship-north-america-2012",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-14",
+      "target": "sarah-allen-desi-mcadam-software-craftsmanship-north-america-2012",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-15",
+      "target": "jen-meyers-software-craftsmanship-north-america-2012",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-16",
+      "target": "interview-with-dan-north-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-17",
+      "target": "dave-thomas-software-craftsmanship-north-america-2013",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-18",
+      "target": "interview-with-hadi-hariri-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-19",
+      "target": "sarah-gray-software-craftsmanship-north-america-2013",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-20",
+      "target": "interview-with-katrina-owen-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-21",
+      "target": "interview-with-greg-baugues-on-mental-health-in-tech-at-railsconf-2014",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-22",
+      "target": "coraline-ada-ehmke-artis-railsconf-2014",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-23",
+      "target": "adewale-oshineye-software-craftsmanship-north-america-2013",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-24",
+      "target": "david-heinemeier-hansson-dhh-railsconf-2014",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-25",
+      "target": "aaron-patterson-ruby-rails-core-team-member-keynote-speaker-railsconf-2014",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-26",
+      "target": "yehuda-katz-tom-dale-creators-of-ember-js-railsconf-2014",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-27",
+      "target": "rich-hickey-creator-of-clojure-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-28",
+      "target": "camille-fournier-goto-conference-2014",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-29",
+      "target": "interview-with-jason-cranford-teague-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-30",
+      "target": "interview-with-anna-lear-general",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-31",
+      "target": "robert-martin-software-craftsmanship-north-america-2012",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-32",
+      "target": "chet-hendrickson-ron-jefferies-software-craftsmanship-north-america-2013",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-33",
+      "target": "stuart-halloway-software-craftsmanship-north-america-2013",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-34",
+      "target": "sandro-mancuso-software-craftsmanship-north-america-2012",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-35",
+      "target": "amitai-schlair-software-craftsmanship-north-america-2013",
+      "relationship": "rewatches_interview",
+      "weight": 3
+    },
+    {
+      "source": "episode-36",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explores_concept",
+      "weight": 2
+    },
+    {
+      "source": "episode-37",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explores_concept",
       "weight": 2
     }
   ]

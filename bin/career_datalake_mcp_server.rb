@@ -112,7 +112,7 @@ class CareerDatalakeMCPServer
               uri: "career://datalake/narrative-synthesis",
               name: "CareerOS 3-Act Narrative & Cover Letter Synthesis Baseline",
               mimeType: "application/json",
-              description: "Canonical 3-Act Career Narrative (Foundation, Crucible, Offering) and Cover Letter Synthesis Blueprint."
+              description: "Canonical 3-Act Career Narrative (Foundation, Practice, Offering) and Cover Letter Synthesis Blueprint."
             },
             {
               uri: "ugtastic://archive/intelligence",
@@ -273,7 +273,7 @@ class CareerDatalakeMCPServer
             },
             {
               name: "get_narrative_synthesis_baseline",
-              description: "Retrieves the canonical 3-Act Career Narrative (Foundation, Crucible, Offering) and Cover Letter Synthesis Blueprint for synthesizing custom pitch memos and cover letters against target job leads.",
+              description: "Retrieves the canonical 3-Act Career Narrative (Foundation, Practice, Offering) and Cover Letter Synthesis Blueprint for synthesizing custom pitch memos and cover letters against target job leads.",
               inputSchema: {
                 type: "object",
                 properties: {

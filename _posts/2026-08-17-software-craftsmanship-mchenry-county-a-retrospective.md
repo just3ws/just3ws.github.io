@@ -35,9 +35,9 @@ The earliest meetings were roving and informal, held in public library meeting r
 
 After six months of cloud-focused topics, the organizers realized the local community needed broader, hands-on engineering topics: object-oriented design, refactoring, automated testing, and dynamic language runtimes.
 
-In mid-2010, the group rebranded to **Software Craftsmanship McHenry County (SCMC)** and established its web presence at `mchenry.softwarecraftsmanship.org`. 
+In mid-2010, Mike Hall co-founded **Software Craftsmanship McHenry County (SCMC)** with **Ryan Gerry** and **Jim Suchy**, rebranding the group and establishing its web presence at `mchenry.softwarecraftsmanship.org`.
 
-To support the growing community, **Follett Software Company** in Woodstock/McHenry, IL provided a permanent meeting home with projector facilities and guest Wi-Fi. Additional corporate support for food and beverages came from **8th Light** and **Groupon**. Transitioning meeting coordination to **Meetup.com** resulted in a ~50% surge in discoverability and member attendance.
+To support the growing community, Ryan Gerry secured a permanent meeting home at **Follett Software Company** in Woodstock/McHenry, IL with projector facilities and guest Wi-Fi. Additional corporate support for food and beverages came from **8th Light** and **Groupon**. Transitioning meeting coordination to **Meetup.com** resulted in a ~50% surge in discoverability and member attendance.
 
 
 *Primary Archival Artifact (July 2010): An early technical session covering relational database design, ORMs, and persistence boundaries.*
@@ -70,7 +70,7 @@ In September 2012, SCMC published its core educational philosophy, known as **"3
 
 ### Leadership Continuity, Active Meetings & Modern Archives
 
-Ryan Gerry and his team have sustained and guided SCMC for over a decade, keeping the community active and vibrant. In his [GOTO Conference oral history interview](/interviews/ryan-gerry-goto-conference-2014/), Ryan discussed managing user group topic backlogs, fostering local developer community, and expanding into morning coffee-shop co-working sessions. 
+Ryan Gerry continued running SCMC after Mike Hall stepped away after the two-year anniversary, sustaining and guiding the group for over a decade and a half to keep the community active and vibrant. In his [GOTO Conference oral history interview](/interviews/ryan-gerry-goto-conference-2014/), Ryan discussed managing user group topic backlogs, fostering local developer community, and expanding into morning coffee-shop co-working sessions. 
 
 Today, Software Craftsmanship McHenry County **continues to be an active, thriving developer community**, hosting regular technical meetings, hands-on sessions, and peer networking:
 

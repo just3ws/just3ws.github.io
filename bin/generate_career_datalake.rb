@@ -301,7 +301,7 @@ narrative_synthesis = {
   "framework" => "3-Act Career Narrative & Cover Letter Synthesis",
   "narrative_acts" => {
     "act_1_foundation" => {
-      "title" => "The Autodidact & Craftsman (First Principles)",
+      "title" => "The Autodidact & Craftsman (First Principles & Apprenticeship)",
       "theme" => "Curiosity, testing discipline, and community leadership",
       "summary" => "Built an engineering foundation from first principles through self-directed learning, software craftsmanship, and community organizing. Grounded in test-driven development, deterministic state transitions, and clear documentation.",
       "anchors" => [
@@ -310,8 +310,8 @@ narrative_synthesis = {
         "WindyCityRails / GOTO Conferences (Oral History & Tech Archive)"
       ]
     },
-    "act_2_crucible" => {
-      "title" => "The High-Consequence Stabilizer (The Crucible)",
+    "act_2_practice" => {
+      "title" => "The High-Consequence Stabilizer (Journeyman Practice & Architecture)",
       "theme" => "Untangling complexity, eliminating dark failure modes, and building team enablement",
       "summary" => "Appointed Software Architect for the Acquisition Lane at OneMain Financial. Mapped the entire loan acquisition and origination pipeline end-to-end from visit to booked loan using longitudinal and latitudinal analysis from desktop browser to mainframe and the Affiliate API, eliminated 4% silent traffic loss at e-signing, and built an automated 5-phase PII deletion engine across 30+ tables, while founding Geekfest and leading the OpenTelemetry Working Group across a 3-year enablement arc transitioned to SRE.",
       "anchors" => [
@@ -322,7 +322,7 @@ narrative_synthesis = {
       ]
     },
     "act_3_offering" => {
-      "title" => "The Present Offering (Calm Systems Leadership)",
+      "title" => "The Present Offering (Calm Systems Leadership & Stewardship)",
       "theme" => "Deterministic engineering, local-first AI orchestration, and platform resilience",
       "summary" => "Delivers calm, deterministic engineering leadership to organizations tackling legacy modernization, distributed telemetry, and complex state machines. Bridges human developers with AI-augmented workflows and property-based verification gates.",
       "anchors" => [

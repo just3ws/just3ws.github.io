@@ -43,10 +43,13 @@ That is what zdots is. That is what it took seventeen years to build.
 ## Software Craftsmanship, 2009
 
 In March 2009, Mike was the 106th signatory of the Software Craftsmanship
-Manifesto.[^scm-signatory] That same spring, he founded the Software Craftsmanship McHenry
-County user group, a practitioner community in the northern Illinois suburbs.
+Manifesto.[^scm-signatory] After meeting Ryan Gerry at a Software Craftsmanship North America
+(SCNA) table that October, they launched the Cloud Developers Group (CDG) in McHenry County,
+and in 2010 Mike co-founded the Software Craftsmanship McHenry County (SCMC) user group with
+Ryan Gerry and Jim Suchy at Follett Software Company, with Ryan continuing to run the group after
+Mike stepped away following the two-year anniversary.
 
-He was working at 8th Light and Obtiva during that period. The manifesto was
+He was attending 8th Light's Pair Friday in Libertyville and later working at Obtiva during that period. The manifesto was
 not a credential; it was a commitment: to well-crafted software, to steadily
 adding value, to productive partnerships, to a community of professionals.
 
@@ -80,7 +83,7 @@ That real-world mass is what drove zdots to grow the tools it grew.
 
 ```mermaid
 flowchart TD
-    A["UGtastic interviews recorded\n(2010–present)"] --> B["Raw media: video + audio"]
+    A["UGtastic interviews recorded\n(2010 to present)"] --> B["Raw media: video + audio"]
     B --> C["zdots-ingest-media\naudio extraction"]
     C --> D["Whisper transcription\nlocal inference via whisper-ctl"]
     D --> E["Diarization\nM1 / S1 / S2 speaker normalization"]
@@ -104,12 +107,12 @@ to demonstrate what the platform had become.
 
 The demonstration covered three things:
 
-- **just3ws.localhost** — the fully preserved, diarized UGtastic archive, now
+- **just3ws.localhost**: the fully preserved, diarized UGtastic archive, now
   queryable and navigable as a static Jekyll site served over local HTTPS.
-- **phalanxduel.com** — a real-time multiplayer tactical game engine that drove
+- **phalanxduel.com**: a real-time multiplayer tactical game engine that drove
   live tournament telemetry, OpenObserve dashboards, and full observability
   tooling into the zdots core.
-- **The local control plane itself** — OpenTelemetry traces flowing from shell
+- **The local control plane itself**: OpenTelemetry traces flowing from shell
   commands into a local Jaeger and OpenObserve backend, live in the browser,
   during the demonstration.
 
@@ -161,15 +164,15 @@ zdots holds the seams between all of them together.
 The platform story is being documented in a five-part technical screencast
 series. The arc:
 
-1. **The Bedrock** — Pre-LLM personal OS and the UGtastic ingest forge.
+1. **The Bedrock**: Pre-LLM personal OS and the UGtastic ingest pipeline.
    How the machine was built before the machines arrived.
-2. **The Real-Time Crucible** — Phalanx Duel, tournament operations, and OTel
-   telemetry. How a game pushed observability into the platform core.
-3. **Sovereign Inference** — llama.cpp on loopback and the PHI fortress.
+2. **Real-Time Verification & Telemetry**: Phalanx Duel, tournament operations, and OTel
+   telemetry. How a deterministic game pushed observability into the platform core.
+3. **Sovereign Inference**: llama.cpp on loopback and the PHI boundary.
    How local inference works without touching cloud infrastructure.
-4. **The Agentic Highway** — Message bus, transit driver, and cross-tool
+4. **The Agentic Highway**: Message bus, transit driver, and cross-tool
    handoffs. How agents communicate and coordinate on the platform.
-5. **The Blink Test in Action** — Refactoring, gate defense, and multi-agent
+5. **The Blink Test in Action**: Refactoring, gate defense, and multi-agent
    pairing. How to verify a claim is actually true, not just plausible.
 
 Each episode starts from a real problem. UGtastic produced the ingest pipeline.

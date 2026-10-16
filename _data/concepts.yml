@@ -97,4 +97,36 @@
   definition: A disciplined way to map a living system across code, runtime behavior, ownership, and organizational context before changing it.
   url: /2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html
   graph_id: topic-system-cartography
-  related: [conways-law, strangler-fig, opentelemetry]
+  related: [conways-law, strangler-fig, opentelemetry, software-craftsmanship]
+
+- slug: software-craftsmanship
+  label: Software Craftsmanship
+  aliases: [Software Craftsmanship, craftsmanship]
+  definition: A practitioner discipline grounded in simple design, test-driven feedback loops, apprenticeship, and care for how software is built and maintained.
+  url: /chicago-craftsmanship/
+  graph_id: concept-software-craftsmanship
+  related: [system-cartography, knowledge-work]
+
+- slug: command-palette
+  label: command palette
+  aliases: [command palette, Cmd+K]
+  definition: A keyboard-driven interface for navigating pages, searching concepts, and inspecting relationships without leaving the keyboard.
+  url: /ai/2026/09/02/the-shortcut-that-shifts-toward-knowledge/
+  graph_id: concept-command-palette
+  related: [knowledge-work, orientation, system-cartography]
+
+- slug: knowledge-work
+  label: knowledge work
+  aliases: [knowledge work]
+  definition: Deliberate technical investigation that preserves context, provenance, and shared understanding across tools and time.
+  url: /ai/2026/09/02/the-shortcut-that-shifts-toward-knowledge/
+  graph_id: concept-knowledge-work
+  related: [command-palette, orientation, system-cartography, software-craftsmanship]
+
+- slug: orientation
+  label: orientation
+  aliases: [orientation]
+  definition: Establishing where you are in a system and what evidence is trustworthy before choosing an intervention.
+  url: /ai/2026/09/02/the-shortcut-that-shifts-toward-knowledge/
+  graph_id: concept-orientation
+  related: [command-palette, knowledge-work, system-cartography]

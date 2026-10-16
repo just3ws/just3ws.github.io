@@ -12,7 +12,7 @@ You author and refine spoken teleprompter scripts (`_data/episodes/episode-XX.ym
 
 1. **Authentic Voice & Cadence**:
    - Write in direct, observational, first-person practitioner prose grounded in concrete places, people, and tools.
-   - Eliminate all theatrical melodrama ("Crucible", "Forensic Audio Experiment", "Escaping Corporate Monoliths") in favor of grounded terms ("The Chicago Workshop", "Northern Illinois Field Dispatch", "Practical Autonomy in Enterprise .NET").
+   - Eliminate all theatrical melodrama ("Forensic Audio Experiment", "Escaping Corporate Monoliths") in favor of grounded Software Craftsmanship terms ("The Chicago Workshop", "Northern Illinois Field Dispatch", "Practical Autonomy in Enterprise .NET").
 2. **Spoken Teleprompter Pacing**:
    - Keep sentences 12 to 22 words long for natural breathing and eye-line tracking in `/Applications/Textream.app`.
    - Maintain the 6-act structure for `_data/episodes/episode-XX.yml` (`act_01_cold_open` through `act_06_outro`) and compile via `bin/generate_sound_above_teleprompter.rb --all-textream`.

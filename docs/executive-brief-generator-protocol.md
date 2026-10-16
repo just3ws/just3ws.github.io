@@ -153,7 +153,7 @@ Every generated executive brief must strictly uphold the following standards:
 
 1. **The 3-Act Narrative Alignment:**
    * **Act 1 (Foundation):** Autodidact roots, Software Craftsmanship, TDD rigor, Chicago community leadership.
-   * **Act 2 (Crucible):** High-Consequence Stabilizer (OneMain Acquisition Lane Architect, 7 ingress channels, 5-phase PII remediation engine across 30+ tables, 4% traffic loss elimination, 3-year Geekfest/OTel WG community arc).
+   * **Act 2 (Practice):** High-Consequence Stabilizer (OneMain Acquisition Lane Architect, 7 ingress channels, 5-phase PII remediation engine across 30+ tables, 4% traffic loss elimination, 3-year Geekfest/OTel WG community arc).
    * **Act 3 (Offering):** Calm, deterministic platform leadership, local AI orchestration, and production resilience.
 2. **Progressive Disclosure & The "Answer, Frame, and Pause" Rule:**
    * Includes a self-contained 30-to-45-second spoken calibration script for live interviews.

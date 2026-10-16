@@ -44,8 +44,9 @@ class KnowledgeGraphGenerator
     "ChiPy (Chicago Python)" => [/chipy\b|chicago\s+python/i],
     "ChicagoRuby" => [/chicagoruby\b|chicago\s+ruby/i],
     "Chicago ALT.NET" => [/chicago\s+alt\.net|alt\.net/i],
-    "Denver SC" => [/denver\s+community|denver\s+sc/i],
-    "Pittsburgh SC" => [/pittsburgh\s+sc/i],
+    "SCMC (McHenry County)" => [/\bscmc\b|software\s+craftsmanship\s+mchenry|mchenry[\s-]+county|follett/i],
+    "Denver SC" => [/denver[\s-]+community|denver\s+sc/i],
+    "Pittsburgh SC" => [/pittsburgh[\s-]+sc|pittsburgh|colin-jones|roy-singham/i],
     "Lake County .NET" => [/lake\s+county\s+\.net|lcnug/i],
     "London SC" => [/london\s+software\s+craftsmanship/i]
   }.freeze
@@ -209,12 +210,33 @@ class KnowledgeGraphGenerator
         end
       end
 
-      # Check Topics
+        # Check Topics
       TOPICS.each do |topic_name, regexes|
         if regexes.any? { |r| full_text.match?(r) }
           topic_node_id = "topic-#{topic_name.downcase.tr('^a-z0-9', '-')}"
           add_link(links, id, topic_node_id, "covers_topic", 1)
         end
+      end
+    end
+
+    # 3. Process Episode Dossiers (The Sound Above Curriculum)
+    Dir[File.join("_data/episodes", "episode-*.yml")].sort.each do |ep_path|
+      ep = YAML.load_file(ep_path, permitted_classes: [Date, Time], aliases: true) rescue next
+      raw_num = ep["episode"] || ep["number"]
+      next unless ep.is_a?(Hash) && !raw_num.nil?
+
+      ep_num = format("%02d", raw_num.to_i)
+      ep_id = "episode-#{ep_num}"
+      ep_label = "Ep #{ep_num}: #{ep['title']} (#{ep['interviewee']})"
+      ep_url = raw_num.to_i == 0 ? "/youtube/dashboard/#tab-workshop" : "/series/the-sound-above/episode-#{ep_num}/"
+      ep_desc = ep.dig("narrative", "theme") || ep.dig("narrative_plot", "theme") || ep["era_name"] || ""
+      add_node(nodes, node_ids, ep_id, ep_label, "Episode", 9, ep_url, val: 16, description: ep_desc.to_s)
+
+      src_int = (ep["slug"] || ep["source_interview_id"]).to_s
+      if !src_int.empty? && node_ids.include?(src_int)
+        add_link(links, ep_id, src_int, "rewatches_interview", 3)
+      elsif node_ids.include?("concept-software-craftsmanship")
+        add_link(links, ep_id, "concept-software-craftsmanship", "explores_concept", 2)
       end
     end
 
@@ -230,7 +252,8 @@ class KnowledgeGraphGenerator
         "Interviewee" => { color: "#ec4899", group: 5 },
         "Interview" => { color: "#64748b", group: 6 },
         "Concept" => { color: "#0f766e", group: 7 },
-        "Archive Article" => { color: "#b45309", group: 8 }
+        "Archive Article" => { color: "#b45309", group: 8 },
+        "Episode" => { color: "#dc2626", group: 9 }
       },
       nodes: nodes,
       links: links

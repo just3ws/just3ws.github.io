@@ -59,6 +59,43 @@ To maintain sanity, modularity, and cohesive structure across `bin/`:
 
 ---
 
+## Software Craftsmanship Engineering Principles
+
+All planning, evaluation, design decisions, and narrative framing in this repository follow core **Software Craftsmanship** principles:
+
+1. **Kent Beck's Four Rules of Simple Design** (in priority order):
+   - **Passes the tests**: Behavior is verified by deterministic, fast-running automated tests and validators (`./bin/pipeline validate fast`, `bundle exec rspec`).
+   - **Reveals intention**: Names of files, classes, methods, and YAML keys state their exact domain responsibility in plain practitioner language without theatrical metaphors (avoid words like "crucible", "prison break", or "insurgent").
+   - **No duplication of authoritative knowledge**: Canonical facts (career dates, SCMC founding history, episode manifests, taxonomy) live in structured `_data/` sources and propagate deterministically.
+   - **Fewest elements**: Governed by the Ponytail Principle above; remove speculative indirection.
+2. **Michael Feathers' Legacy Seams & Characterization Tests**:
+   - Before modifying complex generators, pipelines, or external integrations, identify clean seams and pin existing behavior with characterization tests so refactors preserve working contracts.
+3. **Red-Green-Refactor & The Blink Test**:
+   - A claim of "fixed" or "verified" requires observing the test or validator fail when the contract is broken and pass when the change is applied.
+4. **Apprenticeship, Journeyman Practice & Stewardship**:
+   - Frame career and community narratives around practical engineering autonomy, deliberate practice, mentorship, and long-term stewardship (Foundation & Apprenticeship -> Journeyman Practice & Architecture -> Calm Systems Leadership & Stewardship).
+
+---
+
+## Code Mapping, Knowledge Graph & Context Retention
+
+To retain architectural and historical context across sessions and avoid blind, repetitive `grep` searches:
+
+1. **Query the Code & Knowledge Graphs First**:
+   - **Code & Architecture Graph (`graphify`)**: Query `graphify-out/graph.json` (9,600+ AST and doc nodes, also registered in `~/.graphify/global-graph.json` as `just3ws`) before scanning raw files:
+     ```bash
+     graphify query "<topic or symbol>" --graph graphify-out/graph.json --budget 800
+     graphify explain "<node>" --graph graphify-out/graph.json
+     graphify path "<source>" "<target>" --graph graphify-out/graph.json
+     ```
+   - **Archive & Concept Knowledge Graph (`_data/knowledge_graph.json`)**: Inspect curated entity relationships (interviews, interviewees, episodes, concepts, user groups, conferences, and articles) via `bin/pi-ctx-just3ws` or `_data/knowledge_graph.json`.
+   - **CareerOS Datalake (`bin/query_career_datalake.rb`)**: Query across 218 full-text transcripts, 28 positions, and 185 writings via `ruby bin/query_career_datalake.rb -s "<query>"`.
+2. **Keep Graphs Synchronized**:
+   - Run `./bin/pipeline data graph` (`bundle exec rake knowledge_graph`) to regenerate `_data/knowledge_graph.json`, verify zero orphans/duplicates via `bin/audit_knowledge_graph.rb`, and incrementally update `graphify-out/graph.json` + `~/.graphify/global-graph.json`.
+   - `.githooks/post-commit` and `.githooks/post-checkout` automatically keep `graphify-out/graph.json` current on every commit.
+
+---
+
 <!-- BACKLOG.MD MCP GUIDELINES START -->
 
 <CRITICAL_SAFETY_ADVISORY>

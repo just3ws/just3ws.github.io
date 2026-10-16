@@ -1,7 +1,7 @@
 # Ramblin' & Amblin' Proposed Topics & Field Prompts
 
 > **Channel**: Ramblin' & Amblin' (@whoistechcmty)
-> **Updated**: 2026-10-16 14:42 UTC
+> **Updated**: 2026-10-16 16:32 UTC
 > **Source**: Derived from Mike Hall's 20-year archive, writings, and interviews
 
 ## Overview & Purpose
@@ -130,16 +130,16 @@ Conversations on the move: engineering observations, personal history, systems a
 
 - **ID**: `scmc-17-year-torch`
 - **Location / Setting**: Follett Software exterior or quiet suburban park
-- **Historical Anchor**: Co-founding SCMC in 2010 with Ryan Gerry and Jim Suchy, stepping back when capacity waned, and watching Ryan sustain the group monthly for over 15 years.
-- **Core Inquiry**: What does true community longevity look like, and how do you build a local institution that thrives long after the co-founder steps aside?
+- **Historical Anchor**: Co-founding SCMC with Ryan Gerry and Jim Suchy, stepping away after the two-year anniversary, and watching Ryan continue running the group monthly for over 15 years.
+- **Core Inquiry**: What does true community longevity look like, and how do you build a local institution that thrives long after a co-founder steps aside?
 
 #### Talking Points & Narrative Arcs:
-1. The early momentum of SCMC: securing the meeting room at Follett Software Company and establishing the monthly kata habit.
-1. The difficult personal realization: acknowledging when your own energy is depleted and trusting your partner to carry the mission forward.
-1. Watching Ryan Gerry sustain the monthly cadence through corporate shifts, venue reconfigurations, and the COVID-19 pandemic.
-1. The profound lesson of stewardship: the best things you build are the ones that continue to thrive without you.
+1. Co-founding SCMC with Ryan Gerry and Jim Suchy: securing the meeting room at Follett Software Company and establishing the monthly kata habit.
+1. Stepping away after the two-year anniversary: recognizing personal capacity limits and trusting Ryan Gerry to carry the mission forward.
+1. Watching Ryan Gerry sustain the monthly cadence for 17 years through corporate shifts, venue reconfigurations, and the COVID-19 pandemic.
+1. The profound lesson of stewardship: the best things you help build are the ones that continue to thrive after you step away.
 
-- **Key Concepts**: SCMC, Ryan Gerry, Community Longevity, Stewardship, Letting Go
+- **Key Concepts**: SCMC, Ryan Gerry, Jim Suchy, Community Longevity, Stewardship
 
 ---
 

@@ -21,7 +21,7 @@ In software engineering, the same truth applies. The industry is currently under
 The Software Craftsmanship movement became global, but its deepest roots are planted firmly in Chicago:
 - The 2008 Libertyville Summit that drafted the Software Craftsmanship Manifesto
 - Mike Hall signing the Manifesto as Signatory #106 on March 6, 2009
-- The founding of Software Craftsmanship McHenry County (SCMC) in spring 2009
+- The co-founding of Software Craftsmanship McHenry County (SCMC) by Mike Hall, Ryan Gerry, and Jim Suchy (following the late 2009 CDG inception), with Ryan Gerry continuing to run SCMC after Mike stepped away after the two-year anniversary
 - The emergence of 8th Light, Obtiva, Chicago Alt.NET, and ChicagoRuby
 - Over 200 video interviews recorded under the UGtastic banner at conferences including SCNA, RailsConf, GOTO Chicago, and regional user groups
 
@@ -38,7 +38,7 @@ This rewatch series is not passive nostalgia. It is an active forensic investiga
 The original UGtastic videos were recorded opportunistically in conference hallways, hotel lobbies, and meetup backrooms between 2010 and 2015. They were published across Vimeo, Tumblr, and early video platforms in the order they were edited, not in a coherent narrative arc.
 
 This curation reworks the archive into 37 curated sessions across six cohesive thematic movements:
-1. **Movement 1: The Chicago Workshop**: The pre-manifesto rooms, breaking out of corporate Microsoft monoliths, and founding grassroots communities.
+1. **Movement 1: The Chicago Workshop**: The pre-manifesto rooms, practical autonomy in enterprise .NET, and founding grassroots communities.
 2. **Movement 2: The Practice and the Dojo**: Deliberate practice, code katas, browser automation roots, and the pursuit of sub-second feedback loops.
 3. **Movement 3: The Human Communication Layer and Inclusion**: Mentorship hospitality, overcoming developer shame, RailsBridge pipelines, and deliberate discovery.
 4. **Movement 4: Philosophy, Empathy and Craftsmanship**: Humility, mental health in tech, social contracts, and passing the torch.
@@ -56,7 +56,7 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 - **Conference / Date**: SCNA 2011 (2011)
 - **Location**: Chicago, IL
 - **Slug**: `sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011`
-- **The Sound Above Inquiry**: Who inspired the engineers breaking free from enterprise Microsoft silos? How did grassroots peer groups form before commercial developer platforms existed?
+- **The Sound Above Inquiry**: Who inspired the engineers adopting open tools and agile testing inside enterprise Microsoft environments? How did grassroots peer groups form before commercial developer platforms existed?
 - **Chicago Context**: Chicago Alt.NET was the precursor room for dozens of Chicago developers who later founded startups, consultancy practices, and user groups.
 - **Forensic Primary Sources**:
   - [November 12, 2008 Meeting Archive (Wayback Machine)](https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home): Mike Hall presenting NHaml alongside Adam Tybor on Spark at Redpoint Technologies (Sears Tower).
@@ -104,7 +104,7 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 - **Location**: Chicago, IL
 - **Slug**: `ryan-gerry-goto-conference-2014`
 - **The Sound Above Inquiry**: What sustained a monthly practitioner meetup in McHenry County for seventeen straight years without corporate sponsorship or speaker fees?
-- **Chicago Context**: Mike Hall, Jim Suchy, and Ryan Gerry founded SCMC in spring 2009 following the Software Craftsmanship Manifesto, hosted at Follett and Panera Bread.
+- **Chicago Context**: Mike Hall co-founded Software Craftsmanship McHenry County (SCMC) with Ryan Gerry and Jim Suchy, hosted at Follett Software Company after initial CDG gatherings in libraries and Panera Bread. Ryan Gerry continued running SCMC after Mike stepped away after the two-year anniversary.
 - **AI Era Parallel**: Grassroots community rooms provide psychological safety to test ideas, fail safely, and evaluate AI tooling with skeptical peer review.
 - **Companion Video**: Uncle Bob Martin: 2011 SCMC Keynote (Follett)
 - **Status**: planned

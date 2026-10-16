@@ -18,7 +18,7 @@ Use this skill when preparing tailored application briefs, pitch documents, or c
 1. **Query Canonical 3-Act Narrative & Datalake via MCP or CLI**:
    - Query CareerOS MCP tool `get_narrative_synthesis_baseline` (or `ruby bin/query_career_datalake.rb --narrative --json`) to retrieve the baseline 3-act narrative and proof points:
      * **Act 1 (The Foundation):** Autodidact, Software Craftsmanship, TDD, Community Leadership (Groupon, Obtiva, WindyCityRails).
-     * **Act 2 (The Crucible):** High-Consequence Stabilizer (OneMain Acquisition Lane Architect, Speedfunds, 5-phase PII remediation engine, 4% traffic loss fix, 3-year OTel WG enablement arc).
+     * **Act 2 (Journeyman Practice & Architecture):** High-Consequence Stabilizer (OneMain Acquisition Lane Architect, Speedfunds, 5-phase PII remediation engine, 4% traffic loss fix, 3-year OTel WG enablement arc).
      * **Act 3 (The Offering):** Calm, deterministic systems leadership for modern distributed platforms (local AI orchestration, pgvector search, property-based verification gates).
 
 2. **Get Match Analysis & Company Pain from wwworkremote**:
@@ -32,7 +32,7 @@ Use this skill when preparing tailored application briefs, pitch documents, or c
 
 4. **Synthesize Tailored 1-Page Executive Pitch Brief or Cover Memo**:
    - **Hook (Act 3 Offering):** Anchor Mike as a Staff Software Engineer, then calibrate the scope to the target role, including Principal Software Engineer when that is the employer's level.
-   - **Proven Proof Points (Act 2 Crucible):** Select 2 to 3 matching historical outcomes (OneMain Acquisition lane, 5-phase PII engine, 4% traffic loss fix, enterprise OTel trace).
+   - **Proven Proof Points (Act 2 Practice):** Select 2 to 3 matching historical outcomes (OneMain Acquisition lane, 5-phase PII engine, 4% traffic loss fix, enterprise OTel trace).
    - **Operating Philosophy (Act 1 Foundation):** Ground in System Cartography (mapping state before code changes), automated verification gates, and team enablement.
    - **Direct Call to Action:** Offer a 20-minute peer-level technical conversation on architecture and platform stability.
 

@@ -42,16 +42,16 @@ Break the seal. Overcome pre-flight hesitation by conducting a clean, unpretenti
 
 ---
 
-## Phase 2: The Chicago Crucible Cadence (Episodes 02 to 05)
+## Phase 2: The Chicago Workshop Cadence (Episodes 02 to 05)
 
 ### Primary Mandate
-Build a steady, comfortable operating rhythm around the roots of the Chicago craftsmanship renaissance.
+Build a steady, comfortable operating rhythm around the roots of the Chicago craftsmanship movement.
 
 ### Sequence & Focus
 - **Episode 02: Ray Hightower (ChicagoRuby):** The ambassador of grassroots hospitality and sustaining monthly gatherings for two decades.
 - **Episode 03: Micah Martin and Mike Jansen (8th Light):** Pair Friday, early Libertyville origins, and the craft apprenticeship model.
 - **Episode 04: Dave Hoover (Obtiva):** From clinical psychology to *Apprenticeship Patterns* and the Geekfest learning circle.
-- **Episode 05: Ryan Gerry and Jim Suchy (SCMC):** The 17-year continuous user group in McHenry County and suburban self-reliance.
+- **Episode 05: Ryan Gerry and Jim Suchy (SCMC):** Co-founding SCMC with Mike Hall in McHenry County in 2010, and Ryan Gerry sustaining the monthly practice for 17 years after Mike stepped away after the two-year anniversary.
 
 ### Operational Adjustments
 - Establish a consistent bi-weekly broadcast slot (such as Tuesday or Thursday evenings).

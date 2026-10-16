@@ -52,18 +52,18 @@ To build an audience over time, the release sequence follows a deliberate emotio
 
 ```mermaid
 flowchart LR
-    M1["Movement 1: Chicago Crucible"] --> M2["Movement 2: Practice & Dojo"]
+    M1["Movement 1: Chicago Workshop"] --> M2["Movement 2: Practice & Dojo"]
     M2 --> M3["Movement 3: Human Inclusion"]
     M3 --> M4["Movement 4: Empathy & Craft"]
-    M4 --> M5["Movement 5: Architecture Reckoning"]
+    M4 --> M5["Movement 5: Architecture & Testing"]
     M5 --> M6["Movement 6: AI Horizon & Control Plane"]
 ```
 
-### Movement 1: The Chicago Crucible (Episodes 1 to 5)
-- **Theme**: Escaping corporate monoliths and founding grassroots developer rooms.
+### Movement 1: The Chicago Workshop (Episodes 1 to 5)
+- **Theme**: Practical engineering autonomy in enterprise ecosystems and founding grassroots developer rooms.
 - **Featured Voices**: Sergio Pereira (Chicago Alt.NET), Ray Hightower (ChicagoRuby), Micah Martin & Mike Jansen (8th Light), Dave Hoover (Obtiva), Ryan Gerry & Jim Suchy (SCMC).
 - **Audience Target**: Community organizers, senior engineers who remember early meetups, and practitioners seeking authentic origin stories.
-- **Core Hook**: How developers met in the Sears Tower and suburban basements before commercial developer relations or cloud platforms existed.
+- **Core Hook**: How developers met in the Sears Tower, suburban diners, and libraries before commercial developer relations or cloud platforms existed.
 
 ### Movement 2: The Practice and the Dojo (Episodes 6 to 11)
 - **Theme**: Deliberate practice, code katas, and sub-second feedback loops.
