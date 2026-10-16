@@ -3311,7 +3311,59 @@ teleprompter_script:
 
     const acts = buildTeleprompterActs(ep);
 
-    container.innerHTML = acts.map(a => `
+    let ep1ManifestoHtml = '';
+    if (epNum == 1 || epNum === '1') {
+      const manifestoSpokenText = "An Alt.NET Manifesto, by David Laribee, April 27, 2007. Tenet 1: You are the type of developer who uses what works while keeping an eye out for a better way. Tenet 2: You reach outside the mainstream to adopt the best of any community: Open Source, Agile, Java, Ruby, and beyond. Tenet 3: You are not content with the status quo. Things can always be better expressed, more elegant, simpler, more mutable, and higher quality. Tenet 4: You know tools are great, but they only take you so far. It is the principles and knowledge that really matter. When ASP.NET MVC was released, it marked the victory of the Ruby community. Frameworks like Rails, Sinatra, and Merb had proved to the entire industry that convention over configuration, lightweight routing, and testable controllers were vastly superior for web development. Microsoft's pivot to MVC was a watershed moment: it proved that when developers look outside the approved corporate checklist and insist on better architecture, even the largest software vendor in the world has to adapt.";
+
+      ep1ManifestoHtml = `
+      <div style="background: #ffffff; border: 2px solid #0f766e; border-radius: 0.5rem; padding: 1.25rem; margin-bottom: 0.5rem; box-shadow: 0 2px 4px rgba(15,118,110,0.08);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="background: #0f766e; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase;">
+              📜 Historical Document &amp; Provenance
+            </span>
+            <strong style="color: #0f172a; font-size: 1rem;">The Alt.NET Manifesto &amp; Convention Over Configuration</strong>
+          </div>
+          <div style="display: flex; gap: 0.4rem; align-items: center;">
+            <a href="textream://read?text=${encodeURIComponent(manifestoSpokenText)}" style="display: inline-flex; align-items: center; gap: 0.35rem; background: #0f766e; color: #ffffff; border-radius: 0.25rem; padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 700; text-decoration: none;">
+              🎙️ Read Manifesto in Textream
+            </a>
+            <button type="button" onclick="copyCliCommand('${manifestoSpokenText.replace(/'/g, "\\'")}', this)" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.25rem; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 600; cursor: pointer; color: #475569;">
+              Copy Manifesto Text
+            </button>
+          </div>
+        </div>
+
+        <div style="background: #faf8f5; border: 1px solid #eeebe3; border-left: 4px solid #0f766e; padding: 1rem 1.25rem; border-radius: 0 0.375rem 0.375rem 0; margin-bottom: 1rem;">
+          <div style="font-weight: 800; font-size: 0.85rem; color: #0f766e; margin-bottom: 0.5rem; text-transform: uppercase;">
+            David Laribee: An ALT.NET Manifesto (April 27, 2007)
+          </div>
+          <ol style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.6; color: #1e293b;">
+            <li style="margin-bottom: 0.4rem;"><strong>Pragmatism:</strong> "You're the type of developer who uses what works while keeping an eye out for a better way."</li>
+            <li style="margin-bottom: 0.4rem;"><strong>Cross-Community Adoption:</strong> "You reach outside the mainstream to adopt the best of any community: Open Source, Agile, Java, Ruby, etc."</li>
+            <li style="margin-bottom: 0.4rem;"><strong>Dissatisfaction with the Status Quo:</strong> "You're not content with the status quo. Things can always be better expressed, more elegant and simple, more mutable, higher quality, etc."</li>
+            <li><strong>Principles Over Tools:</strong> "You know tools are great, but they only take you so far. It's the principles and knowledge that really matter."</li>
+          </ol>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.375rem; padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.5; color: #334155;">
+          <strong style="color: #0f172a;">The Ruby Community Victory &amp; Microsoft Strategic Pivot:</strong>
+          When ASP.NET MVC was released, it marked the victory of the Ruby community (Rails, Sinatra, Merb) pioneering convention over configuration, lightweight REST routing, and testable controllers over monolithic corporate WebForms. This was one of the biggest turns in Microsoft strategy, directly catalyzed by Alt.NET practitioners refusing the corporate-approved checklist.
+        </div>
+
+        <div style="font-size: 0.8rem; color: #64748b; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+          <span style="font-weight: 700; color: #475569;">Verified Linked Provenance:</span>
+          <a href="https://web.archive.org/web/20070509013054/http://laribee.com/blog/2007/04/27/altnet-manifesto/" target="_blank" rel="noopener" style="color: #0f766e; text-decoration: underline; font-weight: 600;">Original Manifesto Post (2007)</a> ·
+          <a href="https://martinfowler.com/bliki/AltNetConf.html" target="_blank" rel="noopener" style="color: #0f766e; text-decoration: underline; font-weight: 600;">Martin Fowler: AltNetConf Bliki (2007)</a> ·
+          <a href="https://learn.microsoft.com/en-us/archive/msdn-magazine/2008/march/%7B-end-bracket-%7D-what-is-alt-net" target="_blank" rel="noopener" style="color: #0f766e; text-decoration: underline; font-weight: 600;">Jeremy D. Miller: What is Alt.NET? (MSDN 2008)</a> ·
+          <a href="https://web.archive.org/web/20071016142750/http://weblogs.asp.net/scottgu/archive/2007/10/14/asp-net-mvc-framework.aspx" target="_blank" rel="noopener" style="color: #0f766e; text-decoration: underline; font-weight: 600;">Scott Guthrie: ASP.NET MVC Preview (2007)</a> ·
+          <a href="/series/the-sound-above/episode-01.html" style="color: #0f766e; text-decoration: underline; font-weight: 600;">Episode 01 Monograph</a>
+        </div>
+      </div>
+      `;
+    }
+
+    container.innerHTML = ep1ManifestoHtml + acts.map(a => `
       <div style="background: #faf8f5; border: 1px solid #eeebe3; border-radius: 0.5rem; padding: 1.25rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
           <div style="font-size: 0.78rem; font-weight: 700; color: #b45309; text-transform: uppercase;">ACT ${a.act}: ${a.title} [${a.timing}]</div>

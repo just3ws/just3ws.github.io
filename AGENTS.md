@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - ALT.NET MANIFESTO PROVENANCE, CONVENTION OVER CONFIGURATION & TELEPROMPTER INTEGRATION (2026-10-16):
+         Linked and displayed the Alt.NET Manifesto with full provenance and 4 tenets directly in the Episode 1 spoken script and teleprompter cockpit (`#tab-teleprompter`), documented the release of ASP.NET MVC as the decisive victory of the Ruby community (Rails, Sinatra, Merb) and convention over configuration in Microsoft's strategic pivot, and corrected all remaining mentions across site dossiers, monographs, and archives to reflect that Chicago Alt.NET was the first user group where Mike gave a presentation (not the first attended):
+         - Alt.NET Manifesto in Spoken Script & Teleprompter Dossier (`_data/episodes/episode-01.yml`, `obs/teleprompter/episode-01.textream`, `youtube/dashboard.html`):
+           - Injected David Laribee's 4 core tenets (Pragmatism, Cross-Community Adoption, Dissatisfaction with Status Quo, Principles Over Tools) into Act 2 spoken prose and rendered a dedicated Alt.NET Manifesto & Historical Provenance card in `#tab-teleprompter` with 1-click "Read Manifesto in Textream" and "Copy Manifesto Text" buttons.
+           - Linked citations with verified external provenance: David Laribee (April 27, 2007), Martin Fowler (AltNetConf Austin Open Spaces Bliki, October 2007), Jeremy D. Miller (MSDN Magazine, March 2008), Scott Guthrie (ASP.NET MVC Preview, October 2007), Richard Banks (2015), and Jeremy D. Miller (2019).
+         - Ruby Community Victory & Convention Over Configuration (`_data/episodes/episode-01.yml`, `youtube/dashboard.html`):
+           - Documented in Act 3 how the release of ASP.NET MVC was one of the largest strategic turns in Microsoft history: Redmond conceding that the Ruby community (Rails, Sinatra, Merb) had won the architectural argument on convention over configuration, lightweight routing, and testable controllers over monolithic WebForms.
+         - Factual Clarification Across All Surfaces (`series/the-sound-above/episode-01.html`, `_data/video_assets.yml`, `_data/episodes/episode-01.yml`):
+           - Corrected monograph, video asset descriptions, and spoken scripts to state unambiguously that Chicago Alt.NET was the first user group where Mike gave a presentation, eliminating historical conflation with first attended.
+         - Verification & Deployment:
+           - 138/138 YouTube specs passing, `./bin/pipeline validate fast` passing cleanly, Jekyll rebuilt across 1,037 pages, deployed to localhost. Zero em dashes.
+
        - GODZILLA MINUS ONE / MINUS ZERO FRAMING, TEXTREAM SPOKEN PURITY & FACT CHECK (2026-10-16):
          Calibrated Episode -1 and Episode 00 into the Godzilla Minus One / Minus Zero lineage, stripped all non-spoken metadata headers from Textream documents and URLs to fix the Ron Burgundy issue, calibrated Episode 01 fact-checking (first presentation vs first attended), and dropped academic "oral history" phrasing:
          - Godzilla Minus One & Minus Zero Lineage (`_data/episodes/errata-fluffle-precursor.yml`, `_data/episodes/episode-00.yml`, `series/the-sound-above/index.html`):
