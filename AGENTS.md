@@ -11,6 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - DEHUM REPO RELOCATION, GDRIVE SYNC & SWIFTBAR FAILED LOG RESILIENCE (2026-10-16):
+         Resolved Google Drive sync errors, relocated dehum workspace, diagnosed large file download loops, and hardened SwiftBar failure counters:
+         - Dehum Repo Relocation (`/Users/mike/github.com/just3ws/dehum`):
+           - Moved git repository out of Google Drive mirror tree into canonical GitHub workspace alongside sibling repos; verified 14/14 automated tests passing in `./bin/test_fix_video.sh`.
+           - Pruned git artifacts and unsupported POSIX symlinks (`TRANSCRIPT_DIFF.md`, `PROMPT.md`, `compare_transcripts.py`, `gemini_transcript.md`) from `/Users/mike/ai/dehum/`, leaving only master recordings (`VID_20261009_111445043.mp4`, `VID_20261009_111445043_fixed.mp4`) and a pointer `README.md`.
+           - Google Drive upload error list completely resolved as unsupported symlink objects were cleared.
+         - FileProvider Download Loop Diagnosis (`1IreeuojC7I308LFD-0t4RFRvwG4axyOp`):
+           - Identified as `VID_20261015_082025363.mp4` (1.31 GB), already published to YouTube (`9_SpcjsmehI`) and archived in `processed/2026-10/`; download loop is an Apple FileProvider chunk abort resolved by selecting "Remove Download" / "Keep Online-only".
+         - SwiftBar Failure Counter Hardening (`bin/youtube-swiftbar`, `bin/intake_drive_video.rb`):
+           - Isolated root cause of "7 failed" badge: raw sidecar `.error.log` and `.state.json` files in `failed/` from previous transient attempts were counted as separate failed jobs, despite all 4 underlying videos being successfully processed and published to YouTube.
+           - Hardened `bin/youtube-swiftbar` to count unique media files (or unique failed job bases) instead of raw sidecars.
+           - Enhanced `bin/intake_drive_video.rb` to automatically prune prior transient failure logs in `failed/` upon successful archival.
+           - SwiftBar status restored to `🎬 Ready (Green)` with 0 failed and 12 completed.
+
        - DASHBOARD QUEUE CONTRACT GUARD & ARCHITECTURE SPECIFICATION (2026-10-16):
          Pinned and guarded the `#tab-queue` operations cockpit interface and real-time SSE contracts with automated regression suites, documented DOM architecture and EventSource wire protocol, and verified pipeline operational health:
          - Operations Cockpit Guard Suite (`spec/youtube/dashboard_queue_spec.rb`):
