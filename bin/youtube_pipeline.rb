@@ -344,6 +344,13 @@ class YouTubePipeline
       episode_dossiers << data if data
     end
 
+    # Errata dossiers (errata-*.yml) sit beside the 38 numeric curriculum dossiers.
+    errata_dossiers = []
+    Dir.glob(File.join(EPISODES_DIR, 'errata-*.yml')).sort.each do |f|
+      data = YAML.safe_load(File.read(f), permitted_classes: [Date, Time], aliases: true) rescue nil
+      errata_dossiers << data if data
+    end
+
     telemetry = {
       'generated_at' => Time.now.utc.iso8601,
       'channel' => {
@@ -375,6 +382,7 @@ class YouTubePipeline
       'sound_above_sequence' => (@sequence_manifest['episodes'] || []).first(10),
       'errata_catalog' => (@errata_manifest['items'] || []).first(10),
       'episode_dossiers' => episode_dossiers,
+      'errata_dossiers' => errata_dossiers,
       'media_intake' => compile_media_intake_telemetry,
       'assets' => assets_payload
     }

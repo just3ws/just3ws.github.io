@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T20:25:51Z",
+  "generated_at": "2026-10-16T21:33:26Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -8,9 +8,9 @@
     "status": "authorized"
   },
   "metrics": {
-    "total_canonical_assets": 221,
+    "total_canonical_assets": 222,
     "total_interviews": 187,
-    "youtube_live_videos": 216,
+    "youtube_live_videos": 217,
     "staged_metadata_records": 214,
     "metadata_synced_count": 182,
     "metadata_pending_count": 32,
@@ -4242,6 +4242,80 @@
       }
     }
   ],
+  "errata_dossiers": [
+    {
+      "episode": "errata-06",
+      "series": "The Sound Above: Errata",
+      "title": "The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & The Hard Lessons of Scaling Oral History",
+      "status": "ready",
+      "interviewee": "Mike Hall",
+      "conference": "Errata Studio Walkthrough",
+      "year": 2026,
+      "location": "Crystal Lake, IL",
+      "slug": "the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster",
+      "era_id": "the-ai-horizon",
+      "era_name": "The AI Horizon",
+      "narrative": {
+        "theme": "Distributed Systems, Skunkworks Prototyping & Overcoming Imposter Syndrome",
+        "tone": "Reflective, technically rigorous, humble, and vulnerable",
+        "topic": "The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & Scaling Oral History",
+        "plot_arc": {
+          "inciting_incident": "Facing a decade of silent hard drives holding 200+ UGtastic interviews because commercial transcription was economically impossible.",
+          "rising_action": "In April 2023, pairing with early ChatGPT to build a 5-node Raspberry Pi cluster transcribing 1,000 episodes of Dead Rabbit Radio with whisper.cpp.",
+          "climax": "Generating 2,034 transcripts, gaining Jason Carpenter's gracious blessing, and then hitting the wall of cognitive overload and imposter syndrome when trying to scale to all podcasts.",
+          "resolution": "Realizing that the skunkworks experiment was the critical foundation that taught the deterministic DSP and state machine principles powering today's sovereign pipeline."
+        },
+        "core_inquiry": "When an ambitious grassroots project collides with working memory exhaustion and imposter syndrome, how do you recover the valuable lessons and honor the debt years later?",
+        "chicago_context": "Echoes the software craftsmanship ethos of building your own tools, working in the open, and learning through deliberate, unglamorous practice.",
+        "ai_era_parallel": "Moving beyond naive cloud generation toward local hardware sovereignty and deterministic pre-processing."
+      },
+      "teleprompter_script": {
+        "act_1": "Welcome to The Sound Above: Errata. I am Mike Hall. On the aluminum lid of the MacBook Air sitting on my desk right now, directly beside the Apple logo, is a circular Dead Rabbit Radio sticker. Most people who see it assume it is ordinary podcast merch. To me, it is a permanent physical artifact of one of the most intense, ambitious, and humbling technical experiments I ever ran. It is the story of how five Raspberry Pis, over one thousand daily podcast episodes, early ChatGPT pairing, and an independent creator named Jason Carpenter taught me how to transcribe audio at scale. And it is the story of how imposter syndrome and cognitive overload caused me to freeze up and walk away, and why those painful lessons directly enabled the automated pipeline running on this machine today.",
+        "act_2": "To understand why this experiment happened, you have to go back to 2013. For four years, I hauled thirty-five pounds of camera gear through conference hallways across the country, recording more than two hundred technical interviews for UGtastic. When the recording finished, I hit an impassable wall: transcription. In 2013, human transcription services cost one to two dollars per minute. For a catalog of two hundred conversations, transcription was a four-figure impossibility for an unfunded grassroots project. Early cloud speech APIs produced phonetic gibberish on words like NHibernate, StructureMap, and NUnit. For nearly ten years, those tapes sat dormant on hard drives. The knowledge was trapped in digital amber.",
+        "act_3": "In late 2022 and early 2023, the world shifted. OpenAI open-sourced Whisper, and Georgi Gerganov released whisper.cpp. Suddenly, the marginal cost of transcription dropped to zero. You did not need a corporate cloud budget. You just needed electricity and CPU cycles. At the time, modern agentic coding tools did not exist. ChatGPT had just introduced GPT-4. I wanted to see if an engineer pairing with an LLM in a browser window could architect a distributed media pipeline from scratch. But I needed a massive dataset. I did not want to risk the precious UGtastic tapes on unverified tools. I needed a single, consistent speaker with hundreds of hours of contiguous audio. That is how I found Dead Rabbit Radio.",
+        "act_4": "Dead Rabbit Radio is a daily podcast hosted, researched, and produced entirely by Jason Carpenter, covering paranormal folklore, conspiracy theories, and historical oddities. Jason is the sole host. There was zero crosstalk, no volume jumps between mics, and Jason spoke with a rhythmic cadence and pacing remarkably similar to my own speaking voice. I had five Raspberry Pi single-board computers in my home lab: node01 through node05. I wrote bin/distribution in Ruby to bin-pack audio files across the nodes by total byte size. I wrote bin/distribute to deploy files via Net::SSH and rsync. And on each Pi, bin/transcribe ran whisper.cpp with a mandatory 120-second thermal cooldown between episodes so the quad-core ARM chips did not melt.",
+        "act_5": "Over several weeks, the cluster hummed quietly in my basement. It chewed through the catalog, generating 2,034 distinct transcript files: text files and subtitle tracks for over one thousand episodes. I reached out to Jason Carpenter to ask his blessing, and he was exceptionally gracious, kind, and supportive. But then I hit the cliff. I tried to generalize the tool into a universal podcast aggregator. Immediately, broken RSS feeds, corrupted ID3 tags, and erratic audio formats wrecked my assumptions. At the exact same time, high-severity production incidents and intense Observability architecture at my day job overwhelmed my working memory. I told myself I was an imposter playing with toy scripts. I felt so embarrassed about being unable to sustain the pace that I froze. I stopped updating the repo. I ghosted Jason out of sheer shame, and for months I could not even bring myself to listen to the show.",
+        "act_6": "For a long time, I carried fluffle as a private regret. But craftsmanship teaches us to inspect our scars honestly. That experiment was not a failure; it was the essential skunkworks laboratory that made today possible. It taught me that raw audio must be normalized deterministically before running AI inference. It taught me the Maildir queue architecture that prevents file corruption. It taught me lexical priming to repair proper nouns. And it proved that local hardware sovereignty works. Today, five Raspberry Pis taking two hours per episode have been replaced by Apple Silicon running ztranscribe in ninety seconds. All 218 UGtastic interviews are transcribed and searchable. To Jason Carpenter: thank you for your stories, your generosity, and your craft. The sticker remains on this laptop, and the lessons live in every line of code this system runs today."
+      },
+      "human_stories": {
+        "act_1": "Pointing to the circular Dead Rabbit Radio sticker on the aluminum MacBook Air casing as the catalyst for the episode.",
+        "act_2": "Remembering the physical weight of hauling thirty-five pounds of camera gear through SCNA 2011 hallways, and the frustration of knowing the audio was trapped without searchable transcripts.",
+        "act_5": "The visceral memory of feeling overwhelmed by enterprise day-job production incidents, staring at broken podcast XML feeds, and feeling too embarrassed to email Jason back."
+      },
+      "research_attachments": [
+        {
+          "id": "fluffle-repo",
+          "title": "GitHub: just3ws/fluffle Repository",
+          "url": "https://github.com/just3ws/fluffle",
+          "kind": "code",
+          "takeaway": "Distributed Ruby orchestration, Net::SSH rsync pipelines, and whisper.cpp thermal cooldown scripts."
+        },
+        {
+          "id": "drr-show",
+          "title": "Dead Rabbit Radio Daily Paranormal Podcast",
+          "url": "https://deadrabbitradio.com",
+          "kind": "podcast",
+          "takeaway": "Jason Carpenter's daily solo oral history catalog serving as the foundation dataset."
+        },
+        {
+          "id": "fluffle-article",
+          "title": "The Fluffle Precursor Long-Form Retrospective",
+          "url": "/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html",
+          "kind": "article",
+          "takeaway": "Comprehensive engineering retrospective on distributed whisper.cpp and overcoming imposter syndrome."
+        }
+      ],
+      "tags": [
+        "Software Craftsmanship",
+        "whisper.cpp",
+        "Distributed Systems",
+        "Raspberry Pi",
+        "Dead Rabbit Radio",
+        "Errata",
+        "Imposter Syndrome"
+      ]
+    }
+  ],
   "media_intake": {
     "base_path": "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake",
     "channel": "whoistechcmty",
@@ -4260,19 +4334,32 @@
         "default_privacy": "unlisted",
         "staged_count": 0,
         "staged_items": [],
-        "pending_count": 1,
-        "pending_items": [
+        "pending_count": 0,
+        "pending_items": [],
+        "processing_count": 0,
+        "processing_items": [],
+        "processed_count": 6,
+        "recent_processed": [
           {
             "filename": "VID_20261015_082025363.mp4",
             "size_bytes": 1306954992,
-            "queue_position": 1,
-            "ingress_at": "2026-10-15T20:15:32Z"
-          }
-        ],
-        "processing_count": 0,
-        "processing_items": [],
-        "processed_count": 5,
-        "recent_processed": [
+            "archived_at": "2026-10-15T20:16:15Z",
+            "archive_path": "processed/2026-10/VID_20261015_082025363.mp4",
+            "video_id": "9_SpcjsmehI",
+            "youtube_url": "https://youtu.be/9_SpcjsmehI",
+            "title": "Ramblin' & Amblin' (2026-10-15): Good morning, I'm going to do, I think",
+            "playlist_id": "PLNtb969T2-l0",
+            "privacy": "unlisted",
+            "performance_metrics": {
+              "duration_total_seconds": 1060.78,
+              "duration_audio_extract_seconds": 63.56,
+              "duration_transcription_seconds": 39.24,
+              "duration_metadata_seconds": 1.49,
+              "duration_upload_seconds": 1049.32,
+              "duration_captions_seconds": 0.0,
+              "upload_throughput_mb_s": 1.19
+            }
+          },
           {
             "filename": "VID_20261015_085435964.mp4",
             "size_bytes": 1183808836,
@@ -8176,6 +8263,23 @@
       "tags_count": 6,
       "has_em_dash": false,
       "title_length": 75
+    },
+    {
+      "id": "ramblin-amblin-ramblin-amblin-2026-10-15-good-morning-im-going-to-do-i-think",
+      "transcript_id": "ramblin-amblin-ramblin-amblin-2026-10-15-good-morning-im-going-to-do-i-think",
+      "youtube_video_id": "9_SpcjsmehI",
+      "title": "Ramblin' & Amblin' (2026-10-15): Good morning, I'm going to do, I think",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 71
     }
   ]
 }

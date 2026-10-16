@@ -605,6 +605,7 @@ body_class: page-youtube-dashboard
             <label for="teleprompter-ep-select" style="font-size: 0.8rem; font-weight: 700; color: #475569;">Select Episode:</label>
             <select id="teleprompter-ep-select" onchange="loadTeleprompterEpisode(this.value)" style="padding: 0.4rem 0.75rem; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 0.375rem; background: #faf8f5;">
               <option value="0">Ep 00: Pilot - The Mirage of Competence (Mike Hall)</option>
+              <option value="errata-06">Errata 06: The Fluffle Precursor &amp; Dead Rabbit Radio (Mike Hall)</option>
               {% for ep in site.data.sound_above_sequence.episodes %}
                 <option value="{{ ep.number }}" {% if ep.number == 1 %}selected{% endif %}>
                   Ep {{ ep.number }}: {{ ep.interviewee }} ({{ ep.conference }})
@@ -3184,6 +3185,20 @@ teleprompter_script:
   const soundAboveEpisodes = {{ site.data.sound_above_sequence.episodes | jsonify }};
 
   function getSelectedPrompterEp(epNum) {
+    if (typeof epNum === 'string' && epNum.indexOf('errata-') === 0) {
+      const errata = episodeDossiers.find(d => d.episode === epNum);
+      if (!errata) return null;
+      return {
+        number: epNum,
+        interviewee: errata.interviewee || "Mike Hall",
+        conference: errata.conference || "Errata Studio Walkthrough",
+        year: errata.year,
+        era_name: errata.era_name || "The AI Horizon",
+        chicago_context: (errata.narrative && errata.narrative.chicago_context) || "",
+        sound_above_inquiry: (errata.narrative && errata.narrative.core_inquiry) || "",
+        ai_era_parallel: (errata.narrative && errata.narrative.ai_era_parallel) || ""
+      };
+    }
     let ep = soundAboveEpisodes.find(e => e.number == epNum);
     if (!ep && epNum == 0) {
       ep = {
@@ -3280,9 +3295,9 @@ teleprompter_script:
     const blob = new Blob([JSON.stringify(pages, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    const numStr = String(ep.number).padStart(2, '0');
+    const numStr = (typeof ep.number === 'string') ? ep.number : String(ep.number).padStart(2, '0');
     a.href = url;
-    a.download = "episode-" + numStr + ".textream";
+    a.download = (typeof ep.number === 'string' ? "errata-fluffle-precursor" : "episode-" + numStr) + ".textream";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -3317,7 +3332,7 @@ teleprompter_script:
     `).join('');
   }
 
-  const episodeDossiers = {{ site.data.youtube_pipeline_telemetry.episode_dossiers | jsonify | default: "[]" }};
+  const episodeDossiers = {{ site.data.youtube_pipeline_telemetry.episode_dossiers | concat: site.data.youtube_pipeline_telemetry.errata_dossiers | jsonify | default: "[]" }};
   let currentWorkshopEp = 0;
   let currentAttachments = [];
 
