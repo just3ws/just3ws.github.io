@@ -22,6 +22,12 @@
          - Verification & Localhost Deployment:
            - 138/138 YouTube specs passing, `./bin/pipeline validate fast` passing cleanly, Jekyll rebuilt across 1,037 pages, deployed to localhost. Zero em dashes.
 
+       - CONTEMPORARY PROVENANCE: ANTONIO CANGIANO WROX CITATION ON ALT.NET & ASP.NET MVC (2026-10-16):
+         Integrated contemporary 2009 evidence from Antonio Cangiano's *Ruby on Rails for Microsoft Developers* (Wrox, April 2009, page 52) explicitly connecting the Alt.NET movement to Castle MonoRail, the Rails victory, and Microsoft's defensive creation of ASP.NET MVC:
+         - Added citation and direct quotation to Episode 01 monograph (`series/the-sound-above/episode-01.html`).
+         - Added primary source link to `#tab-teleprompter` provenance list on `youtube/dashboard.html`.
+         - Attached Wrox book specification to `_data/episodes/episode-01.yml` research attachments and telemetry.
+
        - ALT.NET MANIFESTO PROVENANCE, CONVENTION OVER CONFIGURATION & TELEPROMPTER INTEGRATION (2026-10-16):
          Linked and displayed the Alt.NET Manifesto with full provenance and 4 tenets directly in the Episode 1 spoken script and teleprompter cockpit (`#tab-teleprompter`), documented the release of ASP.NET MVC as the decisive victory of the Ruby community (Rails, Sinatra, Merb) and convention over configuration in Microsoft's strategic pivot, and corrected all remaining mentions across site dossiers, monographs, and archives to reflect that Chicago Alt.NET was the first user group where Mike gave a presentation (not the first attended):
          - Alt.NET Manifesto in Spoken Script & Teleprompter Dossier (`_data/episodes/episode-01.yml`, `obs/teleprompter/episode-01.textream`, `youtube/dashboard.html`):
