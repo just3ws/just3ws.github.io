@@ -84,7 +84,7 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 - **The Sound Above Inquiry**: Who taught the 8th Light founders the discipline of apprenticeship? How did Carl Sagan and cosmic perspective shape their company philosophy?
 - **Chicago Context**: 8th Light was founded in the Chicago suburbs, pioneering paid resident apprenticeships long before bootcamp pipelines existed.
 - **AI Era Parallel**: Pair programming with an AI agent requires the exact same discipline as pairing with a junior apprentice: legible contracts, small steps, and continuous review.
-- **Companion Video**: 8th Light University Archives (2010–2012)
+- **Companion Video**: 8th Light University Archives (2010-2012)
 - **Status**: planned
 
 #### Episode 04: Dave Hoover: The Apprenticeship Move: From Psychology to Craftsmanship

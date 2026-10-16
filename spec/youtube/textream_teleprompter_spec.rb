@@ -38,11 +38,11 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
 
       pages = JSON.parse(stdout)
       expect(pages.size).to eq(6)
-      expect(pages[0]).to include('Episode 0: Mike Hall')
+      expect(pages[0]).to include('Welcome to The Sound Above: Minus Zero')
       expect(pages[0]).to include('Northern Illinois Field Dispatch')
       expect(pages[0]).not_to include('ACT 1:')
-      expect(pages[3]).to include('YouTube ID: 7YeFpKn5FbU')
       expect(pages[3]).not_to include('ACT 4:')
+      expect(pages[3]).not_to include('YouTube ID:')
     end
 
     it 'generates valid textream://read deep link URLs with only spoken words' do

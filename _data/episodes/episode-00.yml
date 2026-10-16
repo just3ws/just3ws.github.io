@@ -1,6 +1,6 @@
 ---
 episode: 0
-series: The Sound Above
+series: 'The Sound Above: Minus Zero'
 title: 'The Mirage of Competence: AI Slop & Domain Boundaries'
 status: scheduled
 interviewee: Mike Hall
@@ -36,12 +36,12 @@ narrative:
     cognitive control over system boundaries rather than passively accepting synthetic
     code generation.'
 teleprompter_script:
-  act_1: 'Welcome to The Sound Above. I am Mike Hall. This is Episode 0: Mike Hall
-    on our Northern Illinois Field Dispatch under the high-tension wires. In October
-    2026, I walked out underneath 345,000-volt transmission lines in Northern Illinois
-    with a smartphone to record a field dispatch on software craftsmanship and identity.
-    When I checked the footage back at my desk, the audio sounded completely destroyed:
-    deafening 60 Hz electromagnetic hum, corona arcing, and an apparent three-and-a-half-minute
+  act_1: 'Welcome to The Sound Above: Minus Zero. I am Mike Hall. This is our Northern
+    Illinois Field Dispatch under the high-tension wires. In October 2026, I walked
+    out underneath 345,000-volt transmission lines in Northern Illinois with a smartphone
+    to record a field dispatch on software craftsmanship and identity. When I checked
+    the footage back at my desk, the audio sounded completely destroyed: deafening
+    60 Hz electromagnetic hum, corona arcing, and an apparent three-and-a-half-minute
     clock drift. Trashing the footage and reshooting is the standard advice. But working
     through that recording became a living case study in what happens when we lean
     on modern AI models, and why the bottleneck in engineering is never generation:
@@ -66,14 +66,14 @@ teleprompter_script:
     AI models project effortless competence, how do you verify where competence ends
     and plausible falsehood begins? You verify with empirical tests, not conversational
     trust.'
-  act_4: 'Let us look at the raw recording from the phone (YouTube ID: 7YeFpKn5FbU).
-    Notice the stereo separation. Modern smartphones have dual microphones for noise
-    suppression. The secondary microphone at the top was an unshielded inductive loop
-    antenna, picking up 65 times more electromagnetic rumble from the overhead transmission
-    towers than the bottom microphone. The bottom left mic had clean speech buried
-    under the noise. Once we split the stereo channels and discarded the antenna track,
-    we had clean speech. We did not need exotic neural de-reverberation models. We
-    needed basic hardware acoustics.'
+  act_4: Let us look at the raw recording from the phone. Notice the stereo separation.
+    Modern smartphones have dual microphones for noise suppression. The secondary
+    microphone at the top was an unshielded inductive loop antenna, picking up 65
+    times more electromagnetic rumble from the overhead transmission towers than the
+    bottom microphone. The bottom left mic had clean speech buried under the noise.
+    Once we split the stereo channels and discarded the antenna track, we had clean
+    speech. We did not need exotic neural de-reverberation models. We needed basic
+    hardware acoustics.
   act_5: Here is the lesson for engineering in the AI era. We took the output of the
     model, threw away the hallucinations, and machined the working parts into a deterministic
     seven-stage filter in shell and Python. It runs in 40 milliseconds. It muxes the

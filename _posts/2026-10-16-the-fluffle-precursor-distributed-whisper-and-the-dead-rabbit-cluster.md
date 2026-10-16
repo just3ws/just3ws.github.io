@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & The Hard Lessons of Scaling Oral History"
+title: "The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & Transcribing at Scale"
 date: 2026-10-16 14:00:00 -0500
 categories: [ai, audio, craftsmanship]
-tags: [whisper, raspberry-pi, distributed-systems, dead-rabbit-radio, oral-history, imposter-syndrome]
+tags: [whisper, raspberry-pi, distributed-systems, dead-rabbit-radio, audio-transcription, imposter-syndrome]
 description: "How a 5-node Raspberry Pi cluster transcribing 1,000 episodes of Dead Rabbit Radio in April 2023 unlocked the distributed audio pipelines, whisper.cpp mechanics, and painful lessons that made modern autonomous media publication possible."
 ---
 

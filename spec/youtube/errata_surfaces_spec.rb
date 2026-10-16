@@ -14,7 +14,7 @@ RSpec.describe 'Errata episode surfaces' do
 
   it 'has a ready Errata dossier and teleprompter file' do
     dossier = YAML.safe_load_file(File.join(root_dir, '_data/episodes/errata-fluffle-precursor.yml'), permitted_classes: [Date, Time])
-    expect(dossier['episode']).to eq('errata-fluffle-precursor')
+    expect([-1, 'errata-fluffle-precursor'].include?(dossier['episode']) || dossier['errata_slug'] == 'errata-fluffle-precursor').to be true
     expect(dossier['teleprompter_script'].keys).to include('act_1', 'act_6')
     expect(File.exist?(File.join(root_dir, 'obs/teleprompter/errata-fluffle-precursor.textream'))).to be true
   end
@@ -27,7 +27,8 @@ RSpec.describe 'Errata episode surfaces' do
   it 'exposes errata dossiers in telemetry without changing the 38 numeric dossiers' do
     telemetry = JSON.parse(read.call('_data/youtube_pipeline_telemetry.json'))
     expect(telemetry['episode_dossiers'].size).to eq(38)
-    expect(telemetry['errata_dossiers'].map { |d| d['episode'] }).to include('errata-fluffle-precursor')
+    errata_ids = telemetry['errata_dossiers'].map { |d| d['errata_slug'] || d['episode'] }
+    expect(errata_ids).to include('errata-fluffle-precursor')
   end
 
   it 'offers Errata in the teleprompter selector and resolves it client side' do

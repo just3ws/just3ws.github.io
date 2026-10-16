@@ -11,6 +11,23 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - GODZILLA MINUS ONE / MINUS ZERO FRAMING, TEXTREAM SPOKEN PURITY & FACT CHECK (2026-10-16):
+         Calibrated Episode -1 and Episode 00 into the Godzilla Minus One / Minus Zero lineage, stripped all non-spoken metadata headers from Textream documents and URLs to fix the Ron Burgundy issue, calibrated Episode 01 fact-checking (first presentation vs first attended), and dropped academic "oral history" phrasing:
+         - Godzilla Minus One & Minus Zero Lineage (`_data/episodes/errata-fluffle-precursor.yml`, `_data/episodes/episode-00.yml`, `series/the-sound-above/index.html`):
+           - Episode -1: "The Sound Above: Minus One" ("The Fluffle Precursor: Distributed whisper.cpp & Dead Rabbit Radio", Groundwork / Skunkworks Lab).
+           - Episode 00: "The Sound Above: Minus Zero" ("The Mirage of Competence: AI Slop & Domain Boundaries", High-Tension Wires Pilot).
+           - Episode 01: "The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET" (Sergio Pereira).
+           - Updated series navigation pills on localhost with clean Minus One and Minus Zero badges.
+         - Textream Pure Spoken Text Architecture (`bin/generate_sound_above_teleprompter.rb`, `youtube/dashboard.html`, `obs/teleprompter/`):
+           - Stripped metadata headers (`ACT 1: COLD OPEN...`, `Scene: ...`, `YouTube ID: ...`) from Textream JSON documents and deep link URLs (`textream://read?text=`). Prompter surfaces now contain 100% pure spoken prose so Textream speech-tracking scrolls naturally without forcing the speaker to read stage cues aloud Ron Burgundy style.
+           - Visual dashboard cards in `#tab-teleprompter` continue rendering full acts, timings, and scene targets for the operator.
+         - Fact-Checking & Academic Phrasing Elimination (`_data/episodes/episode-01.yml`, `bin/broadcast`):
+           - Fact-check: Corrected Chicago Alt.NET description to "first user group where I ever gave a presentation" (not the first user group ever attended).
+           - Eliminated academic "Oral History" wording from series titles, options, and prompt descriptors.
+         - Verification & Localhost Deployment:
+           - Full test suites passing: 138/138 YouTube specs, `./bin/pipeline validate fast`, and `./bin/pipeline media stage` for episodes -1, 0, and 1.
+           - Site rebuilt across 1,037 pages and verified on `https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter`. Zero em dashes.
+
        - SEMANTIC ERRATA NAMING, TELEPROMPTER SELECTION & STUDIO RECORDING READINESS (2026-10-16):
          Replaced arbitrary ordinal "Errata 06" with semantic slug `errata-fluffle-precursor` across episode dossiers, navigation, series index, pipeline telemetry schemas, and client-side teleprompter selector:
          - Semantic Addressing & Teleprompter Selector (`_data/episodes/errata-fluffle-precursor.yml`, `youtube/dashboard.html`):

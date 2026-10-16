@@ -52,8 +52,12 @@ class StageEpisodeWorkflow
   end
 
   def stage_single_episode(ep_num)
-    formatted = sprintf('%02d', ep_num)
-    dossier_file = File.join(EPISODES_DIR, "episode-#{formatted}.yml")
+    dossier_file = if ep_num.to_i == -1 || ep_num.to_s == 'errata-fluffle-precursor'
+                     File.join(EPISODES_DIR, 'errata-fluffle-precursor.yml')
+                   else
+                     formatted = sprintf('%02d', ep_num.to_i)
+                     File.join(EPISODES_DIR, "episode-#{formatted}.yml")
+                   end
 
     report = {
       episode: ep_num,
@@ -280,8 +284,13 @@ class StageEpisodeWorkflow
     stories = dossier.dig('human_marginalia', 'host_recollections') || []
     prompts = dossier.dig('human_marginalia', 'workshop_prompts') || []
 
-    slug_num = format('%02d', ep_num)
-    textream_path = File.join(ROOT_DIR, 'obs', 'teleprompter', "episode-#{slug_num}.textream")
+    textream_filename = if ep_num.to_i == -1 || ep_num.to_s == 'errata-fluffle-precursor'
+                          'errata-fluffle-precursor.textream'
+                        else
+                          slug_num = format('%02d', ep_num.to_i)
+                          "episode-#{slug_num}.textream"
+                        end
+    textream_path = File.join(ROOT_DIR, 'obs', 'teleprompter', textream_filename)
 
     # Compile or verify native Textream document
     unless File.exist?(textream_path)
@@ -300,7 +309,7 @@ class StageEpisodeWorkflow
     end
 
     status = textream_ok ? 'PASS' : 'WARN'
-    message = "6 acts compiled (#{stories.size} recollections, #{prompts.size} prompts); Textream document verified (obs/teleprompter/episode-#{slug_num}.textream)"
+    message = "6 acts compiled (#{stories.size} recollections, #{prompts.size} prompts); Textream document verified (obs/teleprompter/#{textream_filename})"
 
     {
       status: status,

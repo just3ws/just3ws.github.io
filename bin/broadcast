@@ -142,7 +142,11 @@ def cue_rewatch(episode_num, overrides = {})
 
   ep = seq["episodes"].find { |e| e["number"].to_i == episode_num.to_i }
   if ep.nil?
-    dossier_path = File.join(ROOT_DIR, "_data", "episodes", format("episode-%02d.yml", episode_num.to_i))
+    dossier_path = if episode_num.to_i == -1 || episode_num.to_s == "errata-fluffle-precursor"
+                     File.join(ROOT_DIR, "_data", "episodes", "errata-fluffle-precursor.yml")
+                   else
+                     File.join(ROOT_DIR, "_data", "episodes", format("episode-%02d.yml", episode_num.to_i))
+                   end
     if File.exist?(dossier_path)
       require "yaml"
       dossier = YAML.safe_load(File.read(dossier_path)) rescue nil
@@ -150,10 +154,10 @@ def cue_rewatch(episode_num, overrides = {})
         ep = {
           "number" => dossier["episode"] || episode_num.to_i,
           "title" => dossier["title"],
-          "interviewee" => dossier["interviewee"],
-          "conference" => dossier["conference"],
-          "location" => dossier["location"] || "Crystal Lake / Chicago",
-          "year" => dossier["year"],
+          "interviewee" => dossier["interviewee"] || "Mike Hall",
+          "conference" => dossier["conference"] || "Errata Studio Walkthrough",
+          "location" => dossier["location"] || "Crystal Lake, IL",
+          "year" => dossier["year"] || 2026,
           "era_name" => dossier["era_name"] || "The AI Horizon",
           "sound_above_inquiry" => (dossier.dig("narrative", "core_inquiry") || dossier["sound_above_inquiry"]),
           "role" => dossier["role"] || "Host and Curator"
@@ -278,14 +282,13 @@ opt_parser = OptionParser.new do |opts|
   opts.separator ""
   opts.separator "Unified live broadcast director for Mike Hall (Staff Software Engineer & SCMC Co-Founder)."
   opts.separator "Directs and cues three distinct broadcast archetypes:"
-  opts.separator "  1. --rewatch <N>   The Sound Above (oral history review series, 1 to 37)"
+  opts.separator "  1. --rewatch <N>   The Sound Above (interview review series, -1 to 37)"
   opts.separator "  2. --errata        Errata (solo readings, concepts, live demos, artifacts, behind the scenes)"
   opts.separator "  3. --dialogue      The Room (invited guest conversations and peer inquiry)"
   opts.separator ""
-  opts.separator "Archetype Selectors & Cues:"
-  opts.on("-r", "--rewatch [EPISODE]", Integer, "Cue oral history rewatch episode from sequence-manifest.json (1 to 37)") do |ep|
+  opts.on("-r", "--rewatch EPISODE", "Cue rewatch episode (-1, 0, 1 to 37)") do |ep|
     options[:archetype] = "rewatch"
-    options[:episode] = ep
+    options[:episode] = ep.to_s =~ /^-?\d+$/ ? ep.to_i : ep.to_s
   end
 
   opts.on("-e", "--errata", "Direct an Errata solo broadcast (reading, concept, demo, artifact, bts)") do
