@@ -11,6 +11,23 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - IDEMPOTENT MEDIA INTAKE & YOUTUBE PLAYLIST/VIDEO DEDUPLICATION ENGINE (2026-10-17):
+         Engineered end-to-end idempotency gates across media intake and built a comprehensive YouTube video and playlist deduplication engine:
+         - Root Cause Diagnosis & Quota Preservation:
+           - Diagnosed historical duplicate uploads from the 2026-10-15 batch (e.g. 3 copies of "Hello", 4 copies of "Going to be wearing a hood", 4 copies of "Somebody I care about").
+           - Fixed critical flaw in `JobSubstateTracker#can_skip_youtube_upload?`: previously, catching 403 `quotaExceeded` during live verification returned `false`, triggering redundant upload attempts. Now treats quota limits and network timeouts as non-fatal, safely preserving the recorded `video_id`.
+         - Ingress & Pre-Upload Idempotency Gates (`bin/intake_drive_video.rb`):
+           - Ingress Gate: Inspects `processed/**/#{filename}.receipt.json` before locking. If already processed, prunes redundant pending files and skips re-ingestion.
+           - Pre-Upload Gate: Cross-references `_data/video_assets.yml` for existing YouTube video IDs by title or slug before calling `client.upload_video`, ensuring registered videos are never re-uploaded.
+           - Playlist Item Gate: Checks `client.get_playlist_video_ids` before calling `add_playlist_item` to prevent duplicate playlist entries and save quota.
+         - YouTube Deduplicator Engine (`bin/lib/youtube_deduplicator.rb`, `bin/clean_and_sync_youtube_playlists.rb`, `bin/pipeline media dedupe`):
+           - Normalizes video titles to detect both duplicate playlist items (same video ID repeated) and duplicate video uploads (multiple video IDs for the same recording).
+           - Identifies canonical video IDs matching `_data/video_assets.yml` and receipts, marking other uploads as redundant.
+           - Supports `--audit`, `--target PLAYLIST`, `--dedupe` (removes redundant items from playlist), `--retire-duplicates` (sets redundant videos to private), and `--delete-duplicates` (requires `--apply --confirm`).
+         - Verification:
+           - 145/145 YouTube specs passing (`spec/youtube/`), including `spec/youtube/playlist_dedupe_spec.rb` and hardened `job_substate_tracker_spec.rb`.
+           - `./bin/pipeline validate fast` passing cleanly. Zero em dashes.
+
        - YOUTUBE UPLOAD PROGRESS STREAMING, QUOTA RESET COUNTDOWN & DIAGNOSTIC SANITIZATION (2026-10-17):
          Hardened the YouTube publishing workflow, operations cockpit, and telemetry contracts:
          - Canonical Casing ("UGtastic"): Corrected residual `Ugtastic` occurrences across `_data/video_assets.yml`, `_data/video_metadata_completeness.yml`, telemetry caches, and extraction scripts.

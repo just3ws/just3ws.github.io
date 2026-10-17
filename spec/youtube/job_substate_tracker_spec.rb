@@ -148,9 +148,16 @@ RSpec.describe JobSubstateTracker do
       allow(mock_client).to receive(:get_video).with('abc123xyz').and_return({ 'id' => 'abc123xyz', 'snippet' => { 'title' => 'Test' } })
       expect(tracker.can_skip_youtube_upload?(mock_client)).to be true
 
-      # If client reports video does not exist
+      # If client reports video does not exist (nil or 404)
       allow(mock_client).to receive(:get_video).with('abc123xyz').and_return(nil)
       expect(tracker.can_skip_youtube_upload?(mock_client)).to be false
+
+      allow(mock_client).to receive(:get_video).with('abc123xyz').and_raise(RuntimeError, 'YouTube API Error getting video abc123xyz (404): notFound')
+      expect(tracker.can_skip_youtube_upload?(mock_client)).to be false
+
+      # If client throws 403 quotaExceeded error, preserve video_id and do NOT re-upload
+      allow(mock_client).to receive(:get_video).with('abc123xyz').and_raise(RuntimeError, 'YouTube API Error getting video abc123xyz (403): quotaExceeded')
+      expect(tracker.can_skip_youtube_upload?(mock_client)).to be true
     end
   end
 

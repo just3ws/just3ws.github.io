@@ -98,6 +98,38 @@ class YouTubeClient
     end
   end
 
+  # Delete Video Permanently from YouTube
+  def delete_video(video_id)
+    fetch_access_token! if @access_token.nil?
+
+    uri = URI("#{API_BASE}/videos?id=#{video_id}")
+    res = make_request(uri, method: :delete)
+
+    if res.is_a?(Net::HTTPSuccess) || res.code.to_i == 204
+      true
+    else
+      raise "YouTube API Error deleting video #{video_id} (#{res.code}): #{res.body}"
+    end
+  end
+
+  # Update Video Privacy Status ('private', 'unlisted', 'public')
+  def set_video_privacy(video_id, privacy_status)
+    fetch_access_token! if @access_token.nil?
+
+    video = get_video(video_id)
+    return false unless video
+
+    payload = {
+      "snippet" => {
+        "title" => video.dig("snippet", "title"),
+        "description" => video.dig("snippet", "description"),
+        "categoryId" => video.dig("snippet", "categoryId") || "28"
+      },
+      "status" => (video["status"] || {}).merge("privacyStatus" => privacy_status)
+    }
+    update_video(video_id, payload)
+  end
+
   # Create Playlist
   def create_playlist(title, description, privacy_status = "public")
     fetch_access_token! if @access_token.nil?

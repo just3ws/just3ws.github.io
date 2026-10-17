@@ -18,7 +18,7 @@ Usage: ./bin/pipeline <domain> <action> [options]
 
 Namespaces:
   media     Media intake, streaming telemetry, SwiftBar, and YouTube publishing.
-            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, status.
+            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, status.
   validate  Repository hygiene, OBS assertions, rendered site checks.
             Actions: fast, obs, site, all.
   data      Interview data generation, archive graph, semantic artifacts, sitemap.
@@ -103,12 +103,15 @@ run_media() {
     sync-prompts|prompts)
       ruby bin/sync_topic_prompts.rb "$@"
       ;;
+    dedupe|clean-playlists)
+      ruby bin/clean_and_sync_youtube_playlists.rb "$@"
+      ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|halt|stop|resume|status> [options]"
+      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|halt|stop|resume|status> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, halt, stop, resume, status" >&2
+      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, halt, stop, resume, status" >&2
       exit 1
       ;;
   esac

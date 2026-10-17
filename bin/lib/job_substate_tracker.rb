@@ -248,17 +248,24 @@ class JobSubstateTracker
   end
 
   def can_skip_youtube_upload?(client = nil)
-    return false unless step_completed?(:youtube_upload)
-
-    vid = step_data(:youtube_upload)['video_id']
+    vid = step_data(:youtube_upload)['video_id'] || substates.dig('youtube_upload', 'video_id')
     return false if vid.nil? || vid.to_s.strip.empty? || vid.to_s.start_with?('DRY_RUN')
 
     if client
       begin
         video = client.get_video(vid)
         return !video.nil? && video['id'] == vid
-      rescue StandardError
-        return false
+      rescue StandardError => err
+        # If API error is quotaExceeded (403) or rate limit or transient network error:
+        # Never return false when we already have the recorded video_id. Returning false
+        # causes caller to re-upload, burning quota and producing duplicate video records.
+        msg = err.message.to_s
+        if msg.include?('quotaExceeded') || msg.include?('403') || msg.include?('rateLimit') || msg.include?('timeout')
+          warn "⚠️ [Idempotency] Could not verify #{vid} live due to API quota/rate limit: #{msg}. Preserving recorded video_id to prevent duplicate upload."
+          return true
+        end
+        return false if msg.include?('404') || msg.include?('notFound')
+        return true
       end
     end
 

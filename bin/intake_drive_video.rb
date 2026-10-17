@@ -483,6 +483,24 @@ class MediaIntakePipeline
       return false
     end
 
+    # Ingress Idempotency Gate: Check if this file was already processed and archived
+    existing_receipt = find_archived_receipt(filename, processed_dir)
+    if existing_receipt && existing_receipt['video_id']
+      vid = existing_receipt['video_id']
+      puts "⏭️ [Idempotency] #{filename} was already archived (#{existing_receipt['archived_at']}) with YouTube ID #{vid}."
+      puts "   Skipping re-processing to prevent duplicate uploads."
+      log_activity('idempotency', "Skipped #{filename}: already archived as #{vid}", level: 'info', details: { 'filename' => filename, 'video_id' => vid })
+      unless options[:dry_run]
+        # Prune redundant pending file and companion state/error files
+        FileUtils.rm_f(file_path)
+        sidecar = find_sidecar(file_path)
+        FileUtils.rm_f(sidecar) if sidecar
+        FileUtils.rm_f("#{file_path}.state.json")
+        FileUtils.rm_f("#{file_path}.error.log")
+      end
+      return true
+    end
+
     if self.class.stopped? || @stop_requested
       puts "🛑 Stop detected before locking #{filename}."
       return false
@@ -606,53 +624,65 @@ class MediaIntakePipeline
           duration_upload = tracker.step_data(:youtube_upload)['duration_seconds'] || 0.0
           puts "⏭️ [Substate: youtube_upload] Video #{video_id} already uploaded and verified on YouTube. Skipping upload."
         else
-          tracker.start_step(:youtube_upload)
-          puts "🚀 Streaming #{format_size(File.size(processing_path))} to YouTube Data API v3..."
-          payload = {
-            "snippet" => {
-              "title" => metadata[:title],
-              "description" => metadata[:description],
-              "tags" => metadata[:tags],
-              "categoryId" => target_info['category_id'] || "28",
-              "defaultLanguage" => "en"
-            },
-            "status" => {
-              "privacyStatus" => metadata[:privacy],
-              "selfDeclaredMadeForKids" => false,
-              "embeddable" => true
+          # Cross-reference with _data/video_assets.yml before attempting live upload
+          slug_candidate = generate_slug(filename, metadata[:title])
+          existing_asset = find_registered_asset(metadata[:title], slug_candidate)
+          existing_yt_id = existing_asset && (existing_asset["platforms"] || []).find { |p| p["platform"] == "youtube" && p["asset_id"] }&.dig("asset_id")
+
+          if existing_yt_id && !existing_yt_id.to_s.strip.empty?
+            video_id = existing_yt_id
+            puts "⏭️ [Idempotency] Video already registered in _data/video_assets.yml as #{video_id}. Reusing to prevent duplicate upload."
+            tracker.complete_step(:youtube_upload, 'video_id' => video_id, 'youtube_url' => "https://youtu.be/#{video_id}", 'progress_percent' => 100.0)
+            log_activity('idempotency', "Reused existing YouTube ID #{video_id} from _data/video_assets.yml for #{filename}", level: 'info', details: { 'filename' => filename, 'video_id' => video_id })
+          else
+            tracker.start_step(:youtube_upload)
+            puts "🚀 Streaming #{format_size(File.size(processing_path))} to YouTube Data API v3..."
+            payload = {
+              "snippet" => {
+                "title" => metadata[:title],
+                "description" => metadata[:description],
+                "tags" => metadata[:tags],
+                "categoryId" => target_info['category_id'] || "28",
+                "defaultLanguage" => "en"
+              },
+              "status" => {
+                "privacyStatus" => metadata[:privacy],
+                "selfDeclaredMadeForKids" => false,
+                "embeddable" => true
+              }
             }
-          }
-          upload_res = nil
-          t_upload_start = Time.now
-          total_file_bytes = File.size(processing_path)
-          tracker.update_step(:youtube_upload, 'progress_percent' => 0.0, 'bytes_uploaded' => 0, 'total_bytes' => total_file_bytes)
-          3.times do |attempt|
-            begin
-              upload_res = client.upload_video(processing_path, payload) do |bytes_up, total_b, pct|
-                tracker.update_step(:youtube_upload, 'progress_percent' => pct, 'bytes_uploaded' => bytes_up, 'total_bytes' => total_b)
-                print "\r   🚀 Uploading: #{pct}% (#{format_size(bytes_up)} / #{format_size(total_b)})"
-                $stdout.flush
-              end
-              puts ""
-              break
-            rescue StandardError => err
-              puts ""
-              if attempt < 2
-                backoff = 2 * (attempt + 1)
-                warn "⚠️ [Self-Healing] Upload attempt #{attempt + 1} hit error: #{err.message}. Retrying in #{backoff}s..."
-                log_activity('self_healing', "Upload attempt #{attempt + 1} retrying after error: #{err.message}", level: 'warning')
-                sleep backoff
-              else
-                raise err
+            upload_res = nil
+            t_upload_start = Time.now
+            total_file_bytes = File.size(processing_path)
+            tracker.update_step(:youtube_upload, 'progress_percent' => 0.0, 'bytes_uploaded' => 0, 'total_bytes' => total_file_bytes)
+            3.times do |attempt|
+              begin
+                upload_res = client.upload_video(processing_path, payload) do |bytes_up, total_b, pct|
+                  tracker.update_step(:youtube_upload, 'progress_percent' => pct, 'bytes_uploaded' => bytes_up, 'total_bytes' => total_b)
+                  print "\r   🚀 Uploading: #{pct}% (#{format_size(bytes_up)} / #{format_size(total_b)})"
+                  $stdout.flush
+                end
+                puts ""
+                break
+              rescue StandardError => err
+                puts ""
+                if attempt < 2
+                  backoff = 2 * (attempt + 1)
+                  warn "⚠️ [Self-Healing] Upload attempt #{attempt + 1} hit error: #{err.message}. Retrying in #{backoff}s..."
+                  log_activity('self_healing', "Upload attempt #{attempt + 1} retrying after error: #{err.message}", level: 'warning')
+                  sleep backoff
+                else
+                  raise err
+                end
               end
             end
+            duration_upload = (Time.now.-(t_upload_start)).round(2)
+            video_id = upload_res["id"]
+            tracker.complete_step(:youtube_upload, 'video_id' => video_id, 'youtube_url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload, 'progress_percent' => 100.0)
+            puts "✅ Video uploaded successfully in #{duration_upload}s! Video ID: #{video_id}"
+            puts "   Link: https://youtu.be/#{video_id}"
+            log_activity('youtube', "Uploaded #{filename} to YouTube as #{video_id} in #{duration_upload}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload })
           end
-          duration_upload = (Time.now.-(t_upload_start)).round(2)
-          video_id = upload_res["id"]
-          tracker.complete_step(:youtube_upload, 'video_id' => video_id, 'youtube_url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload, 'progress_percent' => 100.0)
-          puts "✅ Video uploaded successfully in #{duration_upload}s! Video ID: #{video_id}"
-          puts "   Link: https://youtu.be/#{video_id}"
-          log_activity('youtube', "Uploaded #{filename} to YouTube as #{video_id} in #{duration_upload}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload })
         end
 
         # 7. Add to Playlist
@@ -662,26 +692,41 @@ class MediaIntakePipeline
           else
             tracker.start_step(:playlist_assignment)
             puts "📋 Adding video #{video_id} to playlist #{target_info['playlist_id']}..."
-            playlist_added = false
-            3.times do |attempt|
-              begin
-                client.add_playlist_item(target_info['playlist_id'], video_id)
-                puts "   ✅ Video #{video_id} added to playlist #{target_info['playlist_id']}."
-                log_activity('playlist', "Added #{video_id} to playlist #{target_info['playlist_id']}", level: 'info', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'] })
-                playlist_added = true
-                break
-              rescue StandardError => pl_err
-                if attempt < 2
-                  sleep (2 ** attempt)
-                else
-                  puts "   ⚠️ Could not add to playlist #{target_info['playlist_id']}: #{pl_err.message}"
-                  log_activity('warning', "Failed adding #{video_id} to playlist #{target_info['playlist_id']}: #{pl_err.message}", level: 'warning', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'], 'error' => pl_err.message })
-                  raise pl_err
+
+            # Check if video is already in playlist to prevent duplicate items
+            already_in_pl = false
+            begin
+              existing_pl_vids = client.get_playlist_video_ids(target_info['playlist_id'])
+              already_in_pl = existing_pl_vids.include?(video_id)
+            rescue StandardError
+              # Ignore read check errors (e.g. quota or network)
+            end
+
+            if already_in_pl
+              puts "   ⏭️ [Idempotency] Video #{video_id} is already in playlist #{target_info['playlist_id']}. Skipping addition."
+              tracker.complete_step(:playlist_assignment, 'playlist_id' => target_info['playlist_id'])
+            else
+              playlist_added = false
+              3.times do |attempt|
+                begin
+                  client.add_playlist_item(target_info['playlist_id'], video_id)
+                  puts "   ✅ Video #{video_id} added to playlist #{target_info['playlist_id']}."
+                  log_activity('playlist', "Added #{video_id} to playlist #{target_info['playlist_id']}", level: 'info', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'] })
+                  playlist_added = true
+                  break
+                rescue StandardError => pl_err
+                  if attempt < 2
+                    sleep (2 ** attempt)
+                  else
+                    puts "   ⚠️ Could not add to playlist #{target_info['playlist_id']}: #{pl_err.message}"
+                    log_activity('warning', "Failed adding #{video_id} to playlist #{target_info['playlist_id']}: #{pl_err.message}", level: 'warning', details: { 'video_id' => video_id, 'playlist_id' => target_info['playlist_id'], 'error' => pl_err.message })
+                    raise pl_err
+                  end
                 end
               end
-            end
-            if playlist_added
-              tracker.complete_step(:playlist_assignment, 'playlist_id' => target_info['playlist_id'])
+              if playlist_added
+                tracker.complete_step(:playlist_assignment, 'playlist_id' => target_info['playlist_id'])
+              end
             end
           end
         end
@@ -1167,6 +1212,34 @@ class MediaIntakePipeline
       f.write("\n" + YAML.dump([asset_entry]).sub(/\A---\s*\n/, ''))
     end
     puts "📚 Registered asset in _data/video_assets.yml"
+  end
+
+  # Check if a video was already archived with a completed receipt
+  def find_archived_receipt(filename, processed_dir)
+    pattern = File.join(processed_dir, '**', "#{filename}.receipt.json")
+    receipt_files = Dir.glob(pattern)
+    return nil if receipt_files.empty?
+
+    receipt_path = receipt_files.sort_by { |p| File.mtime(p) }.last
+    JSON.parse(File.read(receipt_path)) rescue nil
+  end
+
+  # Find registered asset in _data/video_assets.yml by title or slug
+  def find_registered_asset(title, slug = nil)
+    raw = File.exist?(VIDEO_ASSETS_PATH) ? YAML.safe_load(File.read(VIDEO_ASSETS_PATH), permitted_classes: [Date, Time], aliases: true) : nil
+    assets = if raw.is_a?(Hash) && raw['items'].is_a?(Array)
+               raw['items']
+             elsif raw.is_a?(Array)
+               raw
+             else
+               []
+             end
+
+    norm_title = title.to_s.downcase.gsub(/[^a-z0-9]/, '')
+    assets.find do |a|
+      (slug && (a["id"] == slug || a["transcript_id"] == slug)) ||
+        (a["title"] && a["title"].to_s.downcase.gsub(/[^a-z0-9]/, '') == norm_title)
+    end
   end
 
   # Regenerate local knowledge datalake
