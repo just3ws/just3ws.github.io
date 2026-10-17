@@ -21,7 +21,7 @@ id: doc-031
 <pre>
 Users&#39; Groups matter. Let&#39;s learn more about the people who create and cultivate their communities.
 ugtastic Learn how to start a UG Ask me anything Archive Would you like to have your user-group
-featured on Ugtastic? About Brian Ray (@brianray) took the time to sit down before the April 2012
+featured on UGtastic? About Brian Ray (@brianray) took the time to sit down before the April 2012
 ChiPy (pronounced Chippy) and chat about the Chicago Python community.(Source: vimeo.com) Apr 12
 2012 #chicago#python Scott Seely runs a .NET users’ group up in Grayslake, IL. He’s also extremely
 active in the Chicago-land Microsoft Developer community that Microsoft recognized him as a Regional

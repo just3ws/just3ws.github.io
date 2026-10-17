@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-16
+     CURRENT FOCUS - last updated 2026-10-17
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,22 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - YOUTUBE UPLOAD PROGRESS STREAMING, QUOTA RESET COUNTDOWN & DIAGNOSTIC SANITIZATION (2026-10-17):
+         Hardened the YouTube publishing workflow, operations cockpit, and telemetry contracts:
+         - Canonical Casing ("UGtastic"): Corrected residual `Ugtastic` occurrences across `_data/video_assets.yml`, `_data/video_metadata_completeness.yml`, telemetry caches, and extraction scripts.
+         - Chunked Resumable Upload & In-Flight Progress (`bin/lib/youtube_client.rb`, `bin/intake_drive_video.rb`, `bin/lib/job_substate_tracker.rb`, `youtube/dashboard.html`):
+           - Implemented 8MB chunked resumable upload in `YouTubeClient#upload_video` yielding progress callbacks (`bytes_uploaded`, `total_bytes`, `percent`).
+           - Added `JobSubstateTracker#update_step` for atomic checkpointing of in-flight progress without resetting step start timestamps.
+           - Enhanced Column 3 (In Flight / Processing) on `youtube/dashboard.html` with real-time gradient progress bar, percentage indicator, and byte progress metrics.
+         - Diagnostic Error Sanitization & Unicode Unescaping (`bin/live_dashboard_streamer.rb`, `youtube/dashboard.html`):
+           - In `bin/live_dashboard_streamer.rb`, added regex JSON parser to extract human-readable error reasons and messages from raw YouTube API error payloads, unescaping unicode sequences (`\u003c` -> `<`).
+           - Added client-side `sanitizeDiagnostic()` in `youtube/dashboard.html` to cleanly format quarantine cards and eliminate raw JSON dumps.
+         - Daily API Quota Cooldown Countdown (`youtube/dashboard.html`):
+           - Enhanced the Daily API Quota card with dynamic live countdown (`updateQuotaCountdown()`) calculating exact hours, minutes, and seconds until 00:00 PT quota reset.
+         - Verification & Deployment:
+           - 141/141 YouTube specs passing (`spec/youtube/`), `./bin/pipeline validate fast` passing cleanly.
+           - Jekyll built across 1,038 pages and deployed to localhost (`https://www.just3ws.localhost/youtube/dashboard/`). Zero em dashes.
+
        - PIPELINE STEP FAILURE QUARANTINE & SAFE REPROCESSING CONTRACT (2026-10-16):
          Hardened media intake pipeline so step failures (such as YouTube API playlist or caption quota exhaustion) fail immediately into Column 5 (Failed / Quarantine) instead of swallowing errors, enabling idempotent reprocessing without re-uploading:
          - Strict Step Failure & Quarantine (`bin/intake_drive_video.rb`):

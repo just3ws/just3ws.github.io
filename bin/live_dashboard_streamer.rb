@@ -462,12 +462,33 @@ class LiveDashboardStreamer
       failed_items = failed_files.map do |f|
         fn = File.basename(f)
         trk = JobSubstateTracker.load(fn, f, state_dir)
-        err_msg = trk.step_data(trk.current_step)['error'] if trk.current_step
+        raw_err = trk.step_data(trk.current_step)['error'] if trk.current_step
+        clean_diagnostic = if raw_err
+          # Clean raw JSON quota and API errors
+          json_match = raw_err[/\{[\s\S]*"error"[\s\S]*\}/]
+          if json_match
+            parsed = JSON.parse(json_match) rescue nil
+            if parsed && parsed.dig('error', 'message')
+              msg = parsed.dig('error', 'message').gsub(/<[^>]+>/, '').strip
+              reason = parsed.dig('error', 'errors', 0, 'reason')
+              reason_str = reason ? " (#{reason})" : ""
+              prefix = raw_err.split(':').first || 'Error'
+              "#{prefix}: #{msg}#{reason_str}"
+            else
+              raw_err.gsub(/\\u([0-9a-fA-F]{4})/) { [$1.hex].pack('U*') }.gsub(/<[^>]+>/, '').strip
+            end
+          else
+            raw_err.gsub(/\\u([0-9a-fA-F]{4})/) { [$1.hex].pack('U*') }.gsub(/<[^>]+>/, '').strip
+          end
+        else
+          'Quarantined for operator review. Click Re-queue to return file to pending.'
+        end
+
         {
           'filename' => fn,
           'size_bytes' => (File.size(f) rescue 0),
           'failed_at' => (File.mtime(f).utc.iso8601 rescue nil),
-          'diagnostic' => err_msg || 'Quarantined for operator review. Click Re-queue to return file to pending.',
+          'diagnostic' => clean_diagnostic,
           'meta_phase' => trk.meta_phase,
           'current_step' => trk.current_step,
           'substates' => trk.substates,

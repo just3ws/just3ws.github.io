@@ -624,11 +624,19 @@ class MediaIntakePipeline
           }
           upload_res = nil
           t_upload_start = Time.now
+          total_file_bytes = File.size(processing_path)
+          tracker.update_step(:youtube_upload, 'progress_percent' => 0.0, 'bytes_uploaded' => 0, 'total_bytes' => total_file_bytes)
           3.times do |attempt|
             begin
-              upload_res = client.upload_video(processing_path, payload)
+              upload_res = client.upload_video(processing_path, payload) do |bytes_up, total_b, pct|
+                tracker.update_step(:youtube_upload, 'progress_percent' => pct, 'bytes_uploaded' => bytes_up, 'total_bytes' => total_b)
+                print "\r   🚀 Uploading: #{pct}% (#{format_size(bytes_up)} / #{format_size(total_b)})"
+                $stdout.flush
+              end
+              puts ""
               break
             rescue StandardError => err
+              puts ""
               if attempt < 2
                 backoff = 2 * (attempt + 1)
                 warn "⚠️ [Self-Healing] Upload attempt #{attempt + 1} hit error: #{err.message}. Retrying in #{backoff}s..."
@@ -641,7 +649,7 @@ class MediaIntakePipeline
           end
           duration_upload = (Time.now.-(t_upload_start)).round(2)
           video_id = upload_res["id"]
-          tracker.complete_step(:youtube_upload, 'video_id' => video_id, 'youtube_url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload)
+          tracker.complete_step(:youtube_upload, 'video_id' => video_id, 'youtube_url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload, 'progress_percent' => 100.0)
           puts "✅ Video uploaded successfully in #{duration_upload}s! Video ID: #{video_id}"
           puts "   Link: https://youtu.be/#{video_id}"
           log_activity('youtube', "Uploaded #{filename} to YouTube as #{video_id} in #{duration_upload}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload })

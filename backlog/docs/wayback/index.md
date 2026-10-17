@@ -64,7 +64,7 @@ HOMESPEAKERSSCHEDULEVENUESPONSORSMEDIAFAQCONTACTRegistration is closed.Learnlear
 - Original: [https://www.ugtastic.com/](https://www.ugtastic.com/)
 - Wayback: [https://web.archive.org/web/20120414040704/https://www.ugtastic.com/](https://web.archive.org/web/20120414040704/https://www.ugtastic.com/)
 
-Users' Groups matter. Let's learn more about the people who create and cultivate their communities. ugtastic Learn how to start a UG Ask me anything Archive Would you like to have your user-group featured on Ugtastic? About Brian Ray (@brianray) took the time to sit down before the April 2012 ChiPy (pronounced Chippy) and chat about the Chicago Python commun...
+Users' Groups matter. Let's learn more about the people who create and cultivate their communities. ugtastic Learn how to start a UG Ask me anything Archive Would you like to have your user-group featured on UGtastic? About Brian Ray (@brianray) took the time to sit down before the April 2012 ChiPy (pronounced Chippy) and chat about the Chicago Python commun...
 
 ## [Software Craftsmanship North America 2011](/backlog/docs/wayback/snapshots/20111229061750-http-scna-softwarecraftsmanship-org/)
 

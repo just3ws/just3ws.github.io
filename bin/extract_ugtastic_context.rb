@@ -4,7 +4,7 @@
 # ---
 # name: extract_ugtastic_context.rb
 # domain: media
-# purpose: Extract Ugtastic Context utility for the just3ws platform
+# purpose: Extract UGtastic Context utility for the just3ws platform
 # usage: ruby bin/extract_ugtastic_context.rb
 # ---
 

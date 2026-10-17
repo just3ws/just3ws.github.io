@@ -92,6 +92,8 @@ RSpec.describe 'YouTube Operations Dashboard Queue Interface & Integration' do
       expect(dashboard_content).to include('function initDashboardRealtimeStream(')
       expect(dashboard_content).to include('function setFunnelFilter(')
       expect(dashboard_content).to include('function inspectFunnelStep(')
+      expect(dashboard_content).to include('function sanitizeDiagnostic(')
+      expect(dashboard_content).to include('function updateQuotaCountdown(')
     end
   end
 
@@ -104,6 +106,12 @@ RSpec.describe 'YouTube Operations Dashboard Queue Interface & Integration' do
       expect(dashboard_content).to include("icon = '🔄'")
       expect(dashboard_content).to include("icon = '❌'")
       expect(dashboard_content).to include("icon = '⏳'")
+    end
+
+    it 'renders upload progress bar and sanitizeDiagnostic in cards' do
+      expect(dashboard_content).to include('linear-gradient(90deg, #3b82f6, #1d4ed8)')
+      expect(dashboard_content).to include('sanitizeDiagnostic(item.diagnostic)')
+      expect(dashboard_content).to include('id="quota-reset-pill"')
     end
   end
 end

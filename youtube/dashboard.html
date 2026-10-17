@@ -88,9 +88,14 @@ body_class: page-youtube-dashboard
     </div>
 
     <div style="background: #ffffff; border: 1px solid #e3dfd7; border-radius: 0.5rem; padding: 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
-      <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 0.35rem;">Daily API Quota</div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Daily API Quota</span>
+        <span id="quota-reset-pill" style="font-size: 0.68rem; font-weight: 700; background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; padding: 0.1rem 0.35rem; border-radius: 9999px;">Reset in --</span>
+      </div>
       <div style="font-size: 1.85rem; font-weight: 800; color: #0f172a;">10,000</div>
-      <div style="font-size: 0.8rem; color: #15803d; font-weight: 600; margin-top: 0.25rem;">Budget: 50 units / action</div>
+      <div id="quota-cooldown-text" style="font-size: 0.78rem; color: #0f766e; font-weight: 600; margin-top: 0.25rem;">
+        Budget: 50 units / action · Midnight PT Reset
+      </div>
     </div>
 
   </div>
@@ -2664,6 +2669,54 @@ teleprompter_script:
     }).join('') + '</div>';
   }
 
+  function sanitizeDiagnostic(msg) {
+    if (!msg) return 'Quarantined for operator review.';
+    try {
+      const jsonMatch = msg.match(/\{[\s\S]*"error"[\s\S]*\}/);
+      if (jsonMatch) {
+        const parsed = JSON.parse(jsonMatch[0]);
+        if (parsed.error && parsed.error.message) {
+          const cleanMsg = parsed.error.message.replace(/<[^>]+>/g, '').trim();
+          const reason = parsed.error.errors && parsed.error.errors[0] && parsed.error.errors[0].reason ? ' (' + parsed.error.errors[0].reason + ')' : '';
+          const prefix = msg.split(':')[0] || 'Error';
+          return prefix + ': ' + cleanMsg + reason;
+        }
+      }
+    } catch (e) {}
+    return msg
+      .replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+      .replace(/<[^>]+>/g, '')
+      .trim();
+  }
+
+  function updateQuotaCountdown() {
+    const pill = document.getElementById('quota-reset-pill');
+    const text = document.getElementById('quota-cooldown-text');
+    if (!pill && !text) return;
+
+    const now = new Date();
+    const ptDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+    const utcDate = new Date(now.toLocaleString('en-US', { timeZone: 'UTC' }));
+    const offsetDiffMs = utcDate.getTime() - ptDate.getTime();
+
+    const ptYear = ptDate.getFullYear();
+    const ptMonth = ptDate.getMonth();
+    const ptDay = ptDate.getDate();
+
+    const ptMidnightMs = Date.UTC(ptYear, ptMonth, ptDay + 1, 0, 0, 0) + offsetDiffMs;
+    const msRemaining = Math.max(0, ptMidnightMs - now.getTime());
+
+    const hours = Math.floor(msRemaining / (1000 * 60 * 60));
+    const mins = Math.floor((msRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((msRemaining % (1000 * 60)) / 1000);
+
+    const formatted = hours + 'h ' + mins + 'm ' + secs + 's';
+    if (pill) pill.innerText = 'Reset in ' + formatted;
+    if (text) text.innerHTML = 'Budget: 50 units / action · Reset at <strong>00:00 PT</strong> (' + formatted + ')';
+  }
+  setInterval(updateQuotaCountdown, 1000);
+  updateQuotaCountdown();
+
   function renderIngressFunnel(telemetry) {
     lastFunnelTelemetry = telemetry;
     const intake = telemetry.media_intake || {};
@@ -2797,32 +2850,55 @@ teleprompter_script:
       if (processingItems.length === 0) {
         procCardsEl.innerHTML = '<div style="text-align: center; color: #15803d; font-size: 0.8rem; padding: 2rem 0.5rem; background: #f0fdf4; border-radius: 0.375rem; border: 1px dashed #bbf7d0;">🟢 Ingress slot idle. Concurrency Lock released. Ready for next FIFO candidate.</div>';
       } else {
-        procCardsEl.innerHTML = processingItems.map(item => `
-          <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 0.375rem; padding: 0.85rem; font-size: 0.8rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
-              <span style="background: #2563eb; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 9999px;">
-                ⚡ IN FLIGHT (1 of 1)
-              </span>
-              <span style="font-size: 0.72rem; color: #1e40af; font-weight: 600;">Active Slot</span>
-            </div>
-            <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #1e3a8a; word-break: break-all; margin-bottom: 0.4rem;">${item.filename}</div>
-            
-            <div style="font-size: 0.72rem; color: #1e40af; font-weight: 700; margin-bottom: 0.35rem;">
-              Active Step: <code style="background: #ffffff; padding: 0.1rem 0.35rem; border-radius: 0.2rem; border: 1px solid #bfdbfe;">${item.current_step || 'processing'}</code>
-            </div>
+        procCardsEl.innerHTML = processingItems.map(item => {
+          const uploadData = (item.substates && item.substates.youtube_upload) || {};
+          const isUploading = item.current_step === 'youtube_upload' || uploadData.status === 'in_progress';
+          const percent = typeof uploadData.progress_percent === 'number' ? Math.min(100, Math.max(0, uploadData.progress_percent)) : null;
+          const bytesUploaded = uploadData.bytes_uploaded;
+          const totalBytes = uploadData.total_bytes || item.size_bytes;
 
-            ${renderSubstateBadges(item.summary_badges)}
+          return `
+            <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 0.375rem; padding: 0.85rem; font-size: 0.8rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                <span style="background: #2563eb; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 9999px;">
+                  ⚡ IN FLIGHT (1 of 1)
+                </span>
+                <span style="font-size: 0.72rem; color: #1e40af; font-weight: 600;">Active Slot</span>
+              </div>
+              <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #1e3a8a; word-break: break-all; margin-bottom: 0.4rem;">${item.filename}</div>
+              
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: #1e40af; font-weight: 700; margin-bottom: 0.35rem;">
+                <span>Active Step: <code style="background: #ffffff; padding: 0.1rem 0.35rem; border-radius: 0.2rem; border: 1px solid #bfdbfe;">${item.current_step || 'processing'}</code></span>
+                ${isUploading && percent !== null ? `<span style="color: #2563eb; font-family: ui-monospace, monospace; font-weight: 800;">${percent.toFixed(1)}%</span>` : ''}
+              </div>
 
-            <div style="display: flex; gap: 0.4rem;">
-              <button type="button" onclick="triggerPipelineAction('halt')" style="flex: 1; background: #fffbeb; color: #b45309; border: 1px solid #fde68a; padding: 0.3rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; cursor: pointer;">
-                ⏸️ Pause After
-              </button>
-              <button type="button" onclick="triggerPipelineAction('stop')" style="flex: 1; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 0.3rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; cursor: pointer;">
-                🛑 Abort Task
-              </button>
+              ${isUploading && percent !== null ? `
+                <div style="margin: 0.45rem 0 0.55rem 0;">
+                  <div style="width: 100%; height: 7px; background: #dbeafe; border-radius: 4px; overflow: hidden; border: 1px solid #bfdbfe;">
+                    <div style="width: ${percent}%; height: 100%; background: linear-gradient(90deg, #3b82f6, #1d4ed8); transition: width 0.3s ease;"></div>
+                  </div>
+                  ${bytesUploaded && totalBytes ? `
+                    <div style="display: flex; justify-content: space-between; font-size: 0.68rem; color: #64748b; margin-top: 0.25rem;">
+                      <span>${formatBytes(bytesUploaded)} uploaded</span>
+                      <span>${formatBytes(totalBytes)} total</span>
+                    </div>
+                  ` : ''}
+                </div>
+              ` : ''}
+
+              ${renderSubstateBadges(item.summary_badges)}
+
+              <div style="display: flex; gap: 0.4rem; margin-top: 0.4rem;">
+                <button type="button" onclick="triggerPipelineAction('halt')" style="flex: 1; background: #fffbeb; color: #b45309; border: 1px solid #fde68a; padding: 0.3rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; cursor: pointer;">
+                  ⏸️ Pause After
+                </button>
+                <button type="button" onclick="triggerPipelineAction('stop')" style="flex: 1; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 0.3rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; cursor: pointer;">
+                  🛑 Abort Task
+                </button>
+              </div>
             </div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
       }
     }
 
@@ -2905,7 +2981,7 @@ teleprompter_script:
               <span style="font-size: 0.7rem; color: #991b1b;">${formatTimeAgo(item.failed_at)}</span>
             </div>
             <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #991b1b; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
-            <div style="font-size: 0.75rem; color: #7f1d1d; margin-bottom: 0.4rem; line-height: 1.4;">${item.diagnostic || 'Quarantined for operator review.'}</div>
+            <div style="font-size: 0.75rem; color: #7f1d1d; margin-bottom: 0.4rem; line-height: 1.4;">${sanitizeDiagnostic(item.diagnostic)}</div>
             ${item.current_step ? `<div style="font-size: 0.72rem; color: #991b1b; font-weight: 700; margin-bottom: 0.35rem;">Failed at Step: <code style="background: #ffffff; padding: 0.1rem 0.35rem; border-radius: 0.2rem; border: 1px solid #fecaca;">${item.current_step}</code></div>` : ''}
             ${renderSubstateBadges(item.summary_badges)}
             <button type="button" onclick="triggerPipelineAction('retry', 'target=${item.targetKey}&file=' + encodeURIComponent('${item.filename}'))" style="width: 100%; margin-top: 0.4rem; background: #ffffff; border: 1px solid #dc2626; color: #dc2626; padding: 0.35rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">

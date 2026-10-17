@@ -271,19 +271,41 @@ class YouTubeClient
     upload_http.open_timeout = 60
     upload_http.read_timeout = 3600
 
-    upload_req = Net::HTTP::Put.new(upload_uri)
-    upload_req["Content-Type"] = ct
-    upload_req["Content-Length"] = file_size.to_s
+    chunk_size = 8 * 1024 * 1024 # 8 MB chunks (multiple of 256KB required by YouTube)
+    bytes_uploaded = 0
+    final_response = nil
 
     File.open(file_path, 'rb') do |file|
-      upload_req.body_stream = file
-      upload_res = upload_http.request(upload_req)
-      if upload_res.is_a?(Net::HTTPSuccess) || upload_res.code == "200" || upload_res.code == "201"
-        return JSON.parse(upload_res.body)
-      else
-        raise "Failed streaming video payload (#{upload_res.code}): #{upload_res.body}"
+      while bytes_uploaded < file_size
+        bytes_to_read = [chunk_size, file_size - bytes_uploaded].min
+        chunk_data = file.read(bytes_to_read)
+        range_end = bytes_uploaded + chunk_data.bytesize - 1
+
+        chunk_req = Net::HTTP::Put.new(upload_uri)
+        chunk_req["Content-Type"] = ct
+        chunk_req["Content-Length"] = chunk_data.bytesize.to_s
+        chunk_req["Content-Range"] = "bytes #{bytes_uploaded}-#{range_end}/#{file_size}"
+        chunk_req.body = chunk_data
+
+        chunk_res = upload_http.request(chunk_req)
+        bytes_uploaded += chunk_data.bytesize
+
+        percent = ((bytes_uploaded.to_f / file_size) * 100).round(1)
+        yield(bytes_uploaded, file_size, percent) if block_given?
+
+        if chunk_res.code == "308" # Resume Incomplete
+          # Continue next chunk
+          next
+        elsif chunk_res.is_a?(Net::HTTPSuccess) || chunk_res.code == "200" || chunk_res.code == "201"
+          final_response = JSON.parse(chunk_res.body)
+          break
+        else
+          raise "Failed streaming video chunk (#{chunk_res.code}): #{chunk_res.body}"
+        end
       end
     end
+
+    final_response || raise("Upload finished without completion confirmation from YouTube")
   end
 
   # Upload Caption Track (WebVTT)

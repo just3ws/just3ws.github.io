@@ -89,6 +89,14 @@ class JobSubstateTracker
     save!
   end
 
+  def update_step(step_name, progress_data = {})
+    s_name = step_name.to_s
+    substates[s_name] ||= {}
+    progress_data.each { |k, v| substates[s_name][k.to_s] = v }
+    @data['updated_at'] = Time.now.utc.iso8601
+    save!
+  end
+
   def complete_step(step_name, step_outputs = {})
     s_name = step_name.to_s
     substates[s_name] ||= {}

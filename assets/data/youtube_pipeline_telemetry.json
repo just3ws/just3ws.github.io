@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T23:09:14Z",
+  "generated_at": "2026-10-17T14:03:57Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -8,9 +8,9 @@
     "status": "authorized"
   },
   "metrics": {
-    "total_canonical_assets": 222,
+    "total_canonical_assets": 223,
     "total_interviews": 187,
-    "youtube_live_videos": 217,
+    "youtube_live_videos": 218,
     "staged_metadata_records": 214,
     "metadata_synced_count": 182,
     "metadata_pending_count": 32,
@@ -4351,8 +4351,28 @@
         "pending_items": [],
         "processing_count": 0,
         "processing_items": [],
-        "processed_count": 6,
+        "processed_count": 7,
         "recent_processed": [
+          {
+            "filename": "VID_20261016_182811743.mp4",
+            "size_bytes": 598595357,
+            "archived_at": "2026-10-16T23:51:57Z",
+            "archive_path": "processed/2026-10/VID_20261016_182811743.mp4",
+            "video_id": "SLvKYSwUcRc",
+            "youtube_url": "https://youtu.be/SLvKYSwUcRc",
+            "title": "Ramblin' & Amblin' (2026-10-16): Recording this video and the way you're going",
+            "playlist_id": "PLNtb969T2-l0",
+            "privacy": "unlisted",
+            "performance_metrics": {
+              "duration_total_seconds": 3.94,
+              "duration_audio_extract_seconds": 114.29,
+              "duration_transcription_seconds": 23.94,
+              "duration_metadata_seconds": 2.55,
+              "duration_upload_seconds": 821.85,
+              "duration_captions_seconds": 0.63,
+              "upload_throughput_mb_s": 0.69
+            }
+          },
           {
             "filename": "VID_20261015_082025363.mp4",
             "size_bytes": 1306954992,
@@ -4452,26 +4472,6 @@
               "duration_captions_seconds": 0.69,
               "upload_throughput_mb_s": 3.69
             }
-          },
-          {
-            "filename": "VID_20261015_144836712.mp4",
-            "size_bytes": 1752243038,
-            "archived_at": "2026-10-15T20:12:34Z",
-            "archive_path": "processed/2026-10/VID_20261015_144836712.mp4",
-            "video_id": "dN--7I0FRvY",
-            "youtube_url": "https://youtu.be/dN--7I0FRvY",
-            "title": "Ramblin' & Amblin' (2026-10-15): One of my favorite things about production incidents",
-            "playlist_id": "PLNtb969T2-l0",
-            "privacy": "unlisted",
-            "performance_metrics": {
-              "duration_total_seconds": 124.5,
-              "duration_audio_extract_seconds": 4.2,
-              "duration_transcription_seconds": 68.3,
-              "duration_metadata_seconds": 0.1,
-              "duration_upload_seconds": 48.6,
-              "duration_captions_seconds": 2.1,
-              "upload_throughput_mb_s": 34.3
-            }
           }
         ],
         "failed_count": 0,
@@ -4517,6 +4517,265 @@
       }
     },
     "activity_stream": [
+      {
+        "timestamp": "2026-10-17T10:17:16Z",
+        "stage": "archive",
+        "level": "success",
+        "message": "Successfully deployed VID_20261016_182811743.mp4 to YouTube (SLvKYSwUcRc) and archived master in 3.94s",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "video_id": "SLvKYSwUcRc",
+          "playlist": "PLNtb969T2-l0",
+          "url": "https://youtu.be/SLvKYSwUcRc",
+          "performance_metrics": {
+            "duration_total_seconds": 3.94,
+            "duration_audio_extract_seconds": 114.29,
+            "duration_transcription_seconds": 23.94,
+            "duration_metadata_seconds": 2.55,
+            "duration_upload_seconds": 821.85,
+            "duration_captions_seconds": 0.63,
+            "upload_throughput_mb_s": 0.69
+          }
+        }
+      },
+      {
+        "timestamp": "2026-10-17T10:17:16Z",
+        "stage": "captions",
+        "level": "info",
+        "message": "Uploaded WebVTT captions track to video SLvKYSwUcRc in 0.63s",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "video_id": "SLvKYSwUcRc",
+          "duration_seconds": 0.63
+        }
+      },
+      {
+        "timestamp": "2026-10-17T10:17:15Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-16): Recording this video and the way you're going\" (2.55s)",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-16): Recording this video and the way you're going",
+          "duration_seconds": 2.55
+        }
+      },
+      {
+        "timestamp": "2026-10-17T10:17:12Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261016_182811743.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T10:17:07Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 56199)",
+        "details": {
+          "pid": 56199
+        }
+      },
+      {
+        "timestamp": "2026-10-17T01:50:15Z",
+        "stage": "triage",
+        "level": "info",
+        "message": "Classifier evaluated failure on VID_20261016_182811743.mp4: quarantine_operator_review (71%)",
+        "details": {
+          "decision": "quarantine_operator_review",
+          "confidence": 0.7112,
+          "probabilities": {
+            "transient_network_retry": 0.0963,
+            "audio_codec_resample": 0.0963,
+            "credential_refresh": 0.0963,
+            "quarantine_operator_review": 0.7112
+          },
+          "diagnostic": "Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T01:50:15Z",
+        "stage": "error",
+        "level": "error",
+        "message": "Failed processing VID_20261016_182811743.mp4: Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "error": "Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T01:50:15Z",
+        "stage": "warning",
+        "level": "warning",
+        "message": "Failed uploading captions for SLvKYSwUcRc: Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
+        "details": {
+          "video_id": "SLvKYSwUcRc",
+          "error": "Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T01:50:10Z",
+        "stage": "youtube",
+        "level": "info",
+        "message": "Uploaded VID_20261016_182811743.mp4 to YouTube as SLvKYSwUcRc in 821.85s",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "video_id": "SLvKYSwUcRc",
+          "url": "https://youtu.be/SLvKYSwUcRc",
+          "duration_seconds": 821.85
+        }
+      },
+      {
+        "timestamp": "2026-10-17T01:36:28Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-16): Recording this video and the way you're going\" (0.12s)",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-16): Recording this video and the way you're going",
+          "duration_seconds": 0.12
+        }
+      },
+      {
+        "timestamp": "2026-10-17T01:36:28Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261016_182811743.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T01:36:23Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 65459)",
+        "details": {
+          "pid": 65459
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:27:53Z",
+        "stage": "triage",
+        "level": "info",
+        "message": "Classifier evaluated failure on VID_20261016_182811743.mp4: quarantine_operator_review (71%)",
+        "details": {
+          "decision": "quarantine_operator_review",
+          "confidence": 0.7112,
+          "probabilities": {
+            "transient_network_retry": 0.0963,
+            "audio_codec_resample": 0.0963,
+            "credential_refresh": 0.0963,
+            "quarantine_operator_review": 0.7112
+          },
+          "diagnostic": "Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:27:53Z",
+        "stage": "error",
+        "level": "error",
+        "message": "Failed processing VID_20261016_182811743.mp4: Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "error": "Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:27:53Z",
+        "stage": "warning",
+        "level": "warning",
+        "message": "Failed uploading captions for QTpYkViNnZc: Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
+        "details": {
+          "video_id": "QTpYkViNnZc",
+          "error": "Failed uploading caption (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:27:48Z",
+        "stage": "playlist",
+        "level": "info",
+        "message": "Added QTpYkViNnZc to playlist PLNtb969T2-l0",
+        "details": {
+          "video_id": "QTpYkViNnZc",
+          "playlist_id": "PLNtb969T2-l0"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:27:44Z",
+        "stage": "youtube",
+        "level": "info",
+        "message": "Uploaded VID_20261016_182811743.mp4 to YouTube as QTpYkViNnZc in 1110.31s",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "video_id": "QTpYkViNnZc",
+          "url": "https://youtu.be/QTpYkViNnZc",
+          "duration_seconds": 1110.31
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:09:40Z",
+        "stage": "control",
+        "level": "success",
+        "message": "Cued Episode 0 directly into live OBS overlays",
+        "details": {
+          "episode": 0
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:09:14Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-16): Recording this video and the way you're going\" (0.1s)",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-16): Recording this video and the way you're going",
+          "duration_seconds": 0.1
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:09:14Z",
+        "stage": "whisper",
+        "level": "info",
+        "message": "ztranscribe STT completed for VID_20261016_182811743.mp4 in 23.94s",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "duration_seconds": 23.94
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:08:50Z",
+        "stage": "dsp",
+        "level": "info",
+        "message": "Extracted 16kHz audio from VID_20261016_182811743.mp4 in 114.29s",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "duration_seconds": 114.29
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:06:55Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261016_182811743.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261016_182811743.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-17T00:06:50Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 6719)",
+        "details": {
+          "pid": 6719
+        }
+      },
       {
         "timestamp": "2026-10-16T20:43:35Z",
         "stage": "archive",
@@ -4713,269 +4972,9 @@
           "playlist_id": "PLNtb969T2-l0",
           "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
         }
-      },
-      {
-        "timestamp": "2026-10-16T20:23:42Z",
-        "stage": "youtube",
-        "level": "info",
-        "message": "Uploaded VID_20261015_085435964.mp4 to YouTube as zVe27W-IE28 in 91.34s",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "video_id": "zVe27W-IE28",
-          "url": "https://youtu.be/zVe27W-IE28",
-          "duration_seconds": 91.34
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:22:10Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-15): Somebody I care about, you know, they told\" (0.17s)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "title": "Ramblin' & Amblin' (2026-10-15): Somebody I care about, you know, they told",
-          "duration_seconds": 0.17
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:22:10Z",
-        "stage": "lock",
-        "level": "info",
-        "message": "Acquired concurrency lock for VID_20261015_085435964.mp4 (Target: ramblin-amblin)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "target": "ramblin-amblin"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:22:04Z",
-        "stage": "autonomous",
-        "level": "info",
-        "message": "Autonomous intake triggered single-worker ingestion (PID 1463)",
-        "details": {
-          "pid": 1463
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:22:03Z",
-        "stage": "triage",
-        "level": "info",
-        "message": "Classifier evaluated failure on VID_20261015_085435964.mp4: quarantine_operator_review (71%)",
-        "details": {
-          "decision": "quarantine_operator_review",
-          "confidence": 0.7112,
-          "probabilities": {
-            "transient_network_retry": 0.0963,
-            "audio_codec_resample": 0.0963,
-            "credential_refresh": 0.0963,
-            "quarantine_operator_review": 0.7112
-          },
-          "diagnostic": "incompatible character encodings: UTF-8 and BINARY (ASCII-8BIT)"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:22:03Z",
-        "stage": "error",
-        "level": "error",
-        "message": "Failed processing VID_20261015_085435964.mp4: incompatible character encodings: UTF-8 and BINARY (ASCII-8BIT)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "error": "incompatible character encodings: UTF-8 and BINARY (ASCII-8BIT)"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:13:33Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-15): Somebody I care about, you know, they told\" (0.13s)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "title": "Ramblin' & Amblin' (2026-10-15): Somebody I care about, you know, they told",
-          "duration_seconds": 0.13
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:13:33Z",
-        "stage": "lock",
-        "level": "info",
-        "message": "Acquired concurrency lock for VID_20261015_085435964.mp4 (Target: ramblin-amblin)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "target": "ramblin-amblin"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:13:27Z",
-        "stage": "autonomous",
-        "level": "info",
-        "message": "Autonomous intake triggered single-worker ingestion (PID 67914)",
-        "details": {
-          "pid": 67914
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:13:27Z",
-        "stage": "triage",
-        "level": "info",
-        "message": "Classifier evaluated failure on VID_20261015_085435964.mp4: quarantine_operator_review (80%)",
-        "details": {
-          "decision": "quarantine_operator_review",
-          "confidence": 0.8024,
-          "probabilities": {
-            "transient_network_retry": 0.0659,
-            "audio_codec_resample": 0.0659,
-            "credential_refresh": 0.0659,
-            "quarantine_operator_review": 0.8024
-          },
-          "diagnostic": "No such file or directory @ rb_file_s_rename - (/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processing/VID_20261015_085435964.mp4, /Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processed/2026-10/VID_20261015_085435964.mp4)"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:13:27Z",
-        "stage": "error",
-        "level": "error",
-        "message": "Failed processing VID_20261015_085435964.mp4: No such file or directory @ rb_file_s_rename - (/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processing/VID_20261015_085435964.mp4, /Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processed/2026-10/VID_20261015_085435964.mp4)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "error": "No such file or directory @ rb_file_s_rename - (/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processing/VID_20261015_085435964.mp4, /Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processed/2026-10/VID_20261015_085435964.mp4)"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:13:21Z",
-        "stage": "warning",
-        "level": "warning",
-        "message": "Failed adding BSH9Q6-sVIk to playlist PLNtb969T2-l0: YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
-        "details": {
-          "video_id": "BSH9Q6-sVIk",
-          "playlist_id": "PLNtb969T2-l0",
-          "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:13:18Z",
-        "stage": "youtube",
-        "level": "info",
-        "message": "Uploaded VID_20261015_085435964.mp4 to YouTube as BSH9Q6-sVIk in 87.2s",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "video_id": "BSH9Q6-sVIk",
-          "url": "https://youtu.be/BSH9Q6-sVIk",
-          "duration_seconds": 87.2
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:11:50Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-15): Somebody I care about, you know, they told\" (0.13s)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "title": "Ramblin' & Amblin' (2026-10-15): Somebody I care about, you know, they told",
-          "duration_seconds": 0.13
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:11:50Z",
-        "stage": "lock",
-        "level": "info",
-        "message": "Acquired concurrency lock for VID_20261015_085435964.mp4 (Target: ramblin-amblin)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "target": "ramblin-amblin"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:11:45Z",
-        "stage": "autonomous",
-        "level": "info",
-        "message": "Autonomous intake triggered single-worker ingestion (PID 61056)",
-        "details": {
-          "pid": 61056
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:11:44Z",
-        "stage": "triage",
-        "level": "info",
-        "message": "Classifier evaluated failure on VID_20261015_085435964.mp4: quarantine_operator_review (80%)",
-        "details": {
-          "decision": "quarantine_operator_review",
-          "confidence": 0.8024,
-          "probabilities": {
-            "transient_network_retry": 0.0659,
-            "audio_codec_resample": 0.0659,
-            "credential_refresh": 0.0659,
-            "quarantine_operator_review": 0.8024
-          },
-          "diagnostic": "No such file or directory @ rb_file_s_rename - (/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processing/VID_20261015_085435964.mp4, /Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processed/2026-10/VID_20261015_085435964.mp4)"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:11:44Z",
-        "stage": "error",
-        "level": "error",
-        "message": "Failed processing VID_20261015_085435964.mp4: No such file or directory @ rb_file_s_rename - (/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processing/VID_20261015_085435964.mp4, /Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processed/2026-10/VID_20261015_085435964.mp4)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "error": "No such file or directory @ rb_file_s_rename - (/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processing/VID_20261015_085435964.mp4, /Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/processed/2026-10/VID_20261015_085435964.mp4)"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:11:39Z",
-        "stage": "warning",
-        "level": "warning",
-        "message": "Failed adding RHU-_kfi4PE to playlist PLNtb969T2-l0: YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
-        "details": {
-          "video_id": "RHU-_kfi4PE",
-          "playlist_id": "PLNtb969T2-l0",
-          "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:11:35Z",
-        "stage": "youtube",
-        "level": "info",
-        "message": "Uploaded VID_20261015_085435964.mp4 to YouTube as RHU-_kfi4PE in 320.76s",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "video_id": "RHU-_kfi4PE",
-          "url": "https://youtu.be/RHU-_kfi4PE",
-          "duration_seconds": 320.76
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:06:14Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-15): Somebody I care about, you know, they told\" (0.11s)",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "title": "Ramblin' & Amblin' (2026-10-15): Somebody I care about, you know, they told",
-          "duration_seconds": 0.11
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:06:14Z",
-        "stage": "whisper",
-        "level": "info",
-        "message": "ztranscribe STT completed for VID_20261015_085435964.mp4 in 41.97s",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "duration_seconds": 41.97
-        }
-      },
-      {
-        "timestamp": "2026-10-16T20:05:32Z",
-        "stage": "dsp",
-        "level": "info",
-        "message": "Extracted 16kHz audio from VID_20261015_085435964.mp4 in 222.92s",
-        "details": {
-          "filename": "VID_20261015_085435964.mp4",
-          "duration_seconds": 222.92
-        }
       }
     ],
-    "polled_at": "2026-10-16T23:10:24Z"
+    "polled_at": "2026-10-17T14:15:38Z"
   },
   "assets": [
     {
@@ -4999,7 +4998,7 @@
       "id": "ugtastic-update-1-returning-to-production-and-scna-2013-sponsorship",
       "transcript_id": "ugtastic-update-1-returning-to-production-and-scna-2013-sponsorship",
       "youtube_video_id": null,
-      "title": "Mike Hall on Founder & Host, Ugtastic | SCNA 2013",
+      "title": "Mike Hall on Founder & Host, UGtastic | SCNA 2013",
       "speaker": "Mike Hall",
       "event": "UGtastic Behind the Scenes",
       "conference": "Independent / General",
@@ -5016,7 +5015,7 @@
       "id": "ugtastic-update-2-community-stickers-and-eve-of-scna-2013",
       "transcript_id": "ugtastic-update-2-community-stickers-and-eve-of-scna-2013",
       "youtube_video_id": null,
-      "title": "Mike Hall on Founder & Host, Ugtastic | SCNA 2013",
+      "title": "Mike Hall on Founder & Host, UGtastic | SCNA 2013",
       "speaker": "Mike Hall",
       "event": "UGtastic Behind the Scenes",
       "conference": "Independent / General",
@@ -8751,7 +8750,24 @@
       "tags_count": 6,
       "has_em_dash": false,
       "title_length": 71
+    },
+    {
+      "id": "ramblin-amblin-ramblin-amblin-2026-10-16-recording-this-video-and-the-way-youre-",
+      "transcript_id": "ramblin-amblin-ramblin-amblin-2026-10-16-recording-this-video-and-the-way-youre-",
+      "youtube_video_id": "SLvKYSwUcRc",
+      "title": "Ramblin' & Amblin' (2026-10-16): Recording this video and the way you're going",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 78
     }
   ],
-  "updated_at": "2026-10-16T23:10:24Z"
+  "updated_at": "2026-10-17T14:15:38Z"
 }

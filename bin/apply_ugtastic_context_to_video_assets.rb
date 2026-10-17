@@ -4,7 +4,7 @@
 # ---
 # name: apply_ugtastic_context_to_video_assets.rb
 # domain: media
-# purpose: Apply Ugtastic Context To Video Assets utility for the just3ws platform
+# purpose: Apply UGtastic Context To Video Assets utility for the just3ws platform
 # usage: ruby bin/apply_ugtastic_context_to_video_assets.rb
 # ---
 
