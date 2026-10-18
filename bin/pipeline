@@ -169,15 +169,21 @@ run_data() {
     legacy-routes|routes)
       ruby bin/generate_legacy_route_map.rb
       ;;
+    ecosystem-lake|ecosystem|lake)
+      ruby bin/build_ecosystem_datalake.rb "$@"
+      ;;
+    query-lake|query-ecosystem)
+      ruby bin/query_ecosystem_datalake.rb "$@"
+      ;;
     sync-prompts|prompts)
       ruby bin/sync_topic_prompts.rb "$@"
       ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline data <generate|graph|semantic-graph|semantic-audit|semantic-snapshot|sitemap|legacy-routes|sync-prompts>"
+      echo "Usage: ./bin/pipeline data <generate|graph|semantic-graph|semantic-audit|semantic-snapshot|sitemap|legacy-routes|ecosystem-lake|query-lake|sync-prompts>"
       ;;
     *)
       echo "Unknown data action: $action" >&2
-      echo "Available: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, legacy-routes, sync-prompts" >&2
+      echo "Available: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, legacy-routes, ecosystem-lake, query-lake, sync-prompts" >&2
       exit 1
       ;;
   esac
