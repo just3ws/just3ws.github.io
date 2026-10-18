@@ -37,6 +37,7 @@ class EcosystemDatalakeQuery
   end
 
   def search(term, limit = 20)
+    fts_query = sanitize_fts_query(term)
     query = <<-SQL
       SELECT entity_type, entity_id, title, repo_or_initiative, snippet(ecosystem_fts, 3, '[', ']', '...', 15) as snippet
       FROM ecosystem_fts
@@ -44,7 +45,17 @@ class EcosystemDatalakeQuery
       ORDER BY rank
       LIMIT ?;
     SQL
-    @lake.db.execute(query, [term, limit])
+    @lake.db.execute(query, [fts_query, limit])
+  end
+
+  def sanitize_fts_query(term)
+    str = term.to_s.strip
+    return str if str.start_with?('"') && str.end_with?('"')
+    if str =~ /[^a-zA-Z0-9_\s]/
+      "\"#{str.gsub('"', '""')}\""
+    else
+      str
+    end
   end
 
   def execute_sql(sql)

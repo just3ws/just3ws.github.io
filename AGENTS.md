@@ -18,10 +18,14 @@
            - Primary source: `https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home`
          - Chicago Code Camp Role Calibration:
            - Corrected attribution across all data, portfolio, and datalake surfaces: Chicago Code Camp was an existing regional conference; Mike Hall volunteered and assisted for a couple years and built the conference website (`just3ws/ccs`) for at least three conferences (2010-2012), authoring the custom speaker management and printable 9-track Haml schedule matrix.
+         - Twatio.com & UGl.st Provenance Grounding:
+           - Ingested 2009 `twatio.com` ASP.NET MVC experiment engineered by Mike Hall to prove Twitter audience overlap following a debate with Sergio Pereira (Wayback capture `https://web.archive.org/web/20090201000000*/http://twatio.com/`, later redirected to `ugtastic.com`).
+           - Grounded `ugl.st` ownership timeline throughout 2014: first capture on January 11, 2014 featuring the signature heart glyph in user-group registration (`https://web.archive.org/web/20140111160057/https://ugl.st/`) and final snapshot under Mike Hall ownership on December 22, 2014 (`https://web.archive.org/web/20141222063128/https://ugl.st/`).
          - Ecosystem & Career Datalake Synchronization:
-           - Rebuilt `lake/ecosystem/` (SQLite3, DuckDB, JSONL, manifest) and regenerated `career_datalake.json` and `exports/portfolio.md` to reflect verified facts.
+           - Rebuilt `lake/ecosystem/` (SQLite3, DuckDB, JSONL, manifest) with 88 timeline events and 5 historical artifacts.
+           - Enhanced `bin/query_ecosystem_datalake.rb` with FTS5 query sanitization handling punctuation and domains cleanly.
          - Verification:
-           - 290/290 specs passing, fast validation passing cleanly, zero em dashes.
+           - 291/291 specs passing, fast validation passing cleanly, zero em dashes.
 
        - ECOSYSTEM CHRONOLOGY, DUCKDB LAKE & KUBECTL-INSPIRED CONTROL PLANE (2026-10-18):
          Synthesized 18 years of engineering history, refactored datalake architecture into a DRY shared library, compiled a chronological timeline, generated native DuckDB analytical views, and created a kubectl/zdots-inspired root CLI control plane:

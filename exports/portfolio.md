@@ -44,6 +44,8 @@ DevOps and Craftsmanship movements.
 **Role:** Creator
 **Years:** 2014
 
-The User-Group List. I built this project to help User-Group organizers promote their
+The User-Group List. I built this project to help user-group organizers promote their
 communities and bridge the gap between physical conference interactions and digital
-discovery.
+discovery. Features the signature heart glyph in the user-group registration interface,
+with the initial capture on January 11, 2014 and the final snapshot under my ownership
+on December 22, 2014.

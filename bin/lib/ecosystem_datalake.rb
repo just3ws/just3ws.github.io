@@ -105,6 +105,22 @@ class EcosystemDatalake
         'tagline' => 'Tools for everything',
         'channel' => '@whoistechcmty'
       }
+    },
+    {
+      'id' => 'twatio-audience-overlap-experiment',
+      'initiative' => 'twatio.com / UGtastic',
+      'title' => 'Twatio Twitter Audience Overlap Experiment & Redirect',
+      'era' => '2009 - 2014',
+      'artifact_type' => 'web_service',
+      'source_repo' => 'just3ws/just3ws.github.io',
+      'file_path' => '_data/domain_migration.yml',
+      'description' => 'ASP.NET MVC site engineered by Mike Hall to prove that retweeting popular accounts (like Scott Hanselman) reached unique audience against Sergio Pereira counterargument; later redirected to ugtastic.com.',
+      'canonical_url' => 'https://web.archive.org/web/20090201000000*/http://twatio.com/',
+      'provenance_details' => {
+        'stack' => 'ASP.NET MVC',
+        'debate_partner' => 'Sergio Pereira',
+        'target_redirect' => 'ugtastic.com'
+      }
     }
   ].freeze
 
@@ -141,6 +157,23 @@ class EcosystemDatalake
       'details_json' => { 'founder' => 'Mike Hall', 'handle' => '@scmchenry', 'focus' => 'Coding Katas & Peer Review' }.to_json
     },
     {
+      'id' => 'milestone-2009-twatio-experiment',
+      'event_date' => '2009-02-01',
+      'year' => 2009,
+      'era' => 'Craftsmanship Genesis (2008-2012)',
+      'initiative' => 'twatio.com',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Twatio Twitter Audience Overlap Experiment (twatio.com)',
+      'description' => 'Mike Hall builds twatio.com on ASP.NET MVC following a technical debate with Sergio Pereira to prove empirically that retweets from high-follower accounts reach unique audiences; later redirected to ugtastic.com.',
+      'details_json' => {
+        'stack' => 'ASP.NET MVC',
+        'debate_partner' => 'Sergio Pereira',
+        'hypothesis' => 'Retweeting popular accounts reaches unique audience segments',
+        'citation_wayback' => 'https://web.archive.org/web/20090201000000*/http://twatio.com/'
+      }.to_json
+    },
+    {
       'id' => 'milestone-2010-chicago-code-camp',
       'event_date' => '2010-05-15',
       'year' => 2010,
@@ -168,6 +201,24 @@ class EcosystemDatalake
       'title' => 'Launch of UGtastic Video Oral History Archive',
       'description' => 'Mike Hall begins conducting on-camera interviews with technology community leaders, speakers, and organizers using Flip video cameras.',
       'details_json' => { 'equipment' => 'Flip Video Cameras', 'total_interviews' => 218, 'channel' => '@ugtastic' }.to_json
+    },
+    {
+      'id' => 'milestone-2014-uglst-launch',
+      'event_date' => '2014-01-11',
+      'year' => 2014,
+      'era' => 'Distributed Services & Micro-Apps (2012-2015)',
+      'initiative' => 'UGl.st',
+      'repo_full_name' => 'just3ws/uglst-geosrv',
+      'event_type' => 'community_milestone',
+      'title' => 'UGl.st User-Group List Launch & Heart Glyph Interface',
+      'description' => 'Mike Hall launches UGl.st (User-Group List) to map developer meetups and communities, featuring the heart glyph in the registration interface; initial capture 2014-01-11 and final snapshot under Mike ownership on 2014-12-22.',
+      'details_json' => {
+        'domain' => 'ugl.st',
+        'first_capture' => 'https://web.archive.org/web/20140111160057/https://ugl.st/',
+        'last_ownership_snapshot' => 'https://web.archive.org/web/20141222063128/https://ugl.st/',
+        'ui_signature' => 'heart glyph registration interface',
+        'creator' => 'Mike Hall'
+      }.to_json
     },
     {
       'id' => 'milestone-2014-patreon-whoistechcmty',

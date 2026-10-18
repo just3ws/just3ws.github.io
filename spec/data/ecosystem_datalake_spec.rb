@@ -65,6 +65,16 @@ RSpec.describe 'Ecosystem Datalake (GitHub Orgs, Repos, Commits, Artifacts, Time
       expect(repo_names.any? { |n| n.include?('ccs') || n.include?('Chicago Code Camp') }).to be true
     end
 
+    it 'finds UGl.st and twatio.com via sanitized FTS queries with punctuation' do
+      uglst_results = query_tool.search('UGl.st', 5)
+      expect(uglst_results).not_to be_empty
+      expect(uglst_results.first['title']).to include('UGl.st')
+
+      twatio_results = query_tool.search('twatio.com', 5)
+      expect(twatio_results).not_to be_empty
+      expect(twatio_results.any? { |r| r['title'].include?('Twatio') }).to be true
+    end
+
     it 'queries chronological timeline events' do
       events = query_tool.timeline(limit: 20)
       expect(events).not_to be_empty
