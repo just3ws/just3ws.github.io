@@ -1,9 +1,21 @@
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
 
-const renderMermaid = async () => {
-  const sourceBlocks = document.querySelectorAll("pre > code.language-mermaid");
+const isElementHidden = (el) => {
+  if (!el) return false;
+  if (el.closest('[hidden], details:not([open])')) return true;
+  let curr = el;
+  while (curr && curr !== document.body) {
+    if (curr.style && curr.style.display === "none") return true;
+    curr = curr.parentElement;
+  }
+  return false;
+};
 
-  if (!sourceBlocks.length) return;
+const renderMermaid = async (root = document) => {
+  const container = typeof root === "string" ? document.querySelector(root) : root;
+  if (!container) return;
+
+  const sourceBlocks = container.querySelectorAll("pre > code.language-mermaid");
 
   mermaid.initialize({
     startOnLoad: false,
@@ -46,28 +58,42 @@ const renderMermaid = async () => {
   });
 
   sourceBlocks.forEach((source) => {
+    const rawText = source.textContent.trim();
+    const sourceId = source.id;
     const diagram = document.createElement("div");
     diagram.className = "mermaid-diagram";
+    if (sourceId) diagram.id = sourceId;
+    diagram.dataset.mermaidSource = rawText;
     diagram.setAttribute("role", "img");
     diagram.setAttribute("aria-label", "Engineering process diagram");
-    diagram.textContent = source.textContent.trim();
+    diagram.textContent = rawText;
     source.parentElement.replaceWith(diagram);
   });
 
-  try {
-    await mermaid.run({ querySelector: ".mermaid-diagram" });
-  } catch (error) {
-    document.querySelectorAll(".mermaid-diagram").forEach((diagram) => {
+  const allDiagrams = Array.from(container.querySelectorAll(".mermaid-diagram:not([data-processed='true'])"));
+  const visibleDiagrams = allDiagrams.filter((diag) => !isElementHidden(diag));
+
+  if (!visibleDiagrams.length) return;
+
+  for (const diagram of visibleDiagrams) {
+    try {
+      await mermaid.run({ nodes: [diagram] });
+    } catch (error) {
       diagram.classList.add("mermaid-diagram-error");
       diagram.setAttribute("role", "region");
       diagram.setAttribute("aria-label", "Diagram source, rendering unavailable");
-    });
-    console.warn("Mermaid diagram rendering failed; source remains available.", error);
+      console.warn("Mermaid diagram rendering failed; source remains available.", error);
+    }
   }
 };
 
+window.renderMermaid = renderMermaid;
+window.addEventListener("render-mermaid", (e) => {
+  renderMermaid(e.detail && e.detail.root ? e.detail.root : document);
+});
+
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", renderMermaid, { once: true });
+  document.addEventListener("DOMContentLoaded", () => renderMermaid(), { once: true });
 } else {
   renderMermaid();
 }

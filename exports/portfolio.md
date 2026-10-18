@@ -28,9 +28,10 @@ triaging, and advancing job leads through applications and interview preparation
 **Role:** Volunteer & Web Developer
 **Years:** 2010 - 2012
 
-An established community conference in the Chicago area. I volunteered and assisted
-for a couple years, designing and developing the official event websites and speaker
-management systems for at least three conferences.
+An established community conference in the Chicago area. I volunteered and assisted for
+a couple years, designing and developing the official event websites, speaker management
+systems, and custom schedule generation tools (including the printable 9-track
+conference matrix) for at least three conferences.
 
 ## UGtastic
 **Role:** Founder & Host

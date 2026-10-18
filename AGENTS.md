@@ -11,6 +11,26 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - YOUTUBE SWEEPER TOOLING, DASHBOARD MERMAID LAZY RENDERING & UGTASTIC PROVENANCE (2026-10-18):
+         Built autonomous sweeper tooling, fixed dashboard architecture tab Mermaid rendering and syntax errors, and grounded UGtastic domain provenance:
+         - Autonomous YouTube Sweeper Tooling (`bin/youtube_sweeper.rb`, `bin/pipeline`, `bin/just3ws media sweep`, `spec/youtube/youtube_sweeper_spec.rb`):
+           - Authored dedicated sweeper and health auditor CLI: audits live channel playlists, Maildir queues (`pending/`, `processing/`, `blocked/`, `failed/`), and Pacific Time quota cooldown.
+           - Detects duplicate playlist items (same video ID repeated), redundant video uploads (identical content under multiple IDs), missing canonical videos, and quarantined files.
+           - Employs transparent fallback to `yt-dlp` flat-playlist metadata extraction when API is in quota cooldown.
+           - Supports `--audit` (with exit code 0 on healthy, 1 on warnings), `--sweep` (reconciles playlists live or dry-run), `--target`, `--retire-duplicates`, and `--json`.
+         - Dashboard Architecture Tab & Mermaid Lazy Rendering Fix (`assets/js/mermaid-init.js`, `youtube/dashboard.html`):
+           - Fixed text overlapping and "Syntax error in text mermaid version 11.17.2" on `#tab-architecture`:
+             - Sanitized sequence diagram labels: converted `pending/ -> processing/` to `pending/ to processing/` to avoid arrow syntax collision and escaped `<filename>` tags to `[filename]` to eliminate DOM parser mangling.
+             - Added visibility detection in `assets/js/mermaid-init.js`: skips hidden diagrams inside `display: none` tab containers during initial load to prevent 0x0 bounding box SVG calculation crashes (`Could not find a suitable point for the given distance`).
+             - Integrated dynamic rendering in `switchYtTab('architecture')` upon tab visibility and preserved raw source in `copyMermaidBlock` via `data-mermaid-source`.
+         - UGtastic & WHOIS Tech Community Provenance Grounding:
+           - Grounded `ugtastic.com` first capture on April 14, 2012 (`https://web.archive.org/web/20120414040704/http://www.ugtastic.com/`), WHOIS Tech Community rename and rebrand transition first capture on November 17, 2017 (`https://web.archive.org/web/20171117114045/https://www.ugtastic.com/`), and recent capture on August 31, 2025 (`https://web.archive.org/web/20250831080513/http://www.ugtastic.com/`).
+           - Updated `_data/domain_migration.yml`, `_data/portfolio.yml`, `timeline/index.html`, `bin/lib/ecosystem_datalake.rb`, and `docs/ecosystem-history-and-datalake-chronology.md`.
+           - Ingested provenance into Episode -1 (`_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md`) and Episode 01 research attachments (`_data/episodes/episode-01.yml`).
+           - Rebuilt ecosystem datalake: 90 timeline events across SQLite3 FTS5, DuckDB, JSONL, and manifest.
+         - Verification:
+           - 295/295 specs passing, fast validation passing cleanly, zero em dashes.
+
        - FACTUAL CITATION GROUNDING & ATTRIBUTION AUDIT (2026-10-18):
          Audited historical attributions and grounded claims against primary sources and verified evidence:
          - Chicago Alt.NET Presentation Citation:

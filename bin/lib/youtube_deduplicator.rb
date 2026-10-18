@@ -25,8 +25,9 @@ class YouTubeDeduplicator
     return '' if title.nil?
 
     cleaned = title.to_s.strip
-    # Strip series prefixes like: Ramblin' & Amblin' (2026-10-15):
-    cleaned = cleaned.gsub(/\A[A-Za-z0-9'\s&]+(\(\d{4}-\d{2}-\d{2}\))?:?\s*/i, '')
+    # Strip series prefixes with date or colon like: Ramblin' & Amblin' (2026-10-15):
+    cleaned = cleaned.gsub(/\A[A-Za-z0-9'\s&]*\(\d{4}-\d{2}-\d{2}\):?\s*/i, '')
+    cleaned = cleaned.gsub(/\A[A-Za-z0-9'\s&]+:\s*/i, '') if cleaned.include?(':')
     # Strip non-alphanumeric characters and lowercase
     cleaned.downcase.gsub(/[^a-z0-9]/, '')
   end

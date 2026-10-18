@@ -108,12 +108,15 @@ run_media() {
     dedupe|clean-playlists)
       ruby bin/clean_and_sync_youtube_playlists.rb "$@"
       ;;
+    sweep|sweeper)
+      ruby bin/youtube_sweeper.rb "$@"
+      ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|halt|stop|resume|status> [options]"
+      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|halt|stop|resume|status> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, halt, stop, resume, status" >&2
+      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, halt, stop, resume, status" >&2
       exit 1
       ;;
   esac

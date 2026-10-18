@@ -203,6 +203,38 @@ class EcosystemDatalake
       'details_json' => { 'equipment' => 'Flip Video Cameras', 'total_interviews' => 218, 'channel' => '@ugtastic' }.to_json
     },
     {
+      'id' => 'milestone-2012-ugtastic-first-capture',
+      'event_date' => '2012-04-14',
+      'year' => 2012,
+      'era' => 'Craftsmanship Genesis (2008-2012)',
+      'initiative' => 'UGtastic',
+      'repo_full_name' => 'ugtastic/.github',
+      'event_type' => 'community_milestone',
+      'title' => 'First Internet Archive Capture of ugtastic.com',
+      'description' => 'First recorded Wayback Machine capture of ugtastic.com documenting the community video interview platform.',
+      'details_json' => {
+        'domain' => 'ugtastic.com',
+        'first_capture' => 'https://web.archive.org/web/20120414040704/http://www.ugtastic.com/',
+        'latest_capture' => 'https://web.archive.org/web/20250831080513/http://www.ugtastic.com/'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2017-whois-transition',
+      'event_date' => '2017-11-17',
+      'year' => 2017,
+      'era' => 'Autonomous Microservices & Kubernetes (2015-2020)',
+      'initiative' => 'WHOIS Tech Community',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'First Capture of UGtastic Transition to WHOIS Tech Community',
+      'description' => 'First Internet Archive capture documenting the rename and rebrand transition from UGtastic to WHOIS Tech Community on ugtastic.com.',
+      'details_json' => {
+        'domain' => 'ugtastic.com',
+        'transition_capture' => 'https://web.archive.org/web/20171117114045/https://www.ugtastic.com/',
+        'brand_transition' => 'UGtastic to WHOIS Tech Community'
+      }.to_json
+    },
+    {
       'id' => 'milestone-2014-uglst-launch',
       'event_date' => '2014-01-11',
       'year' => 2014,

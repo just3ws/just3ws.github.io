@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T05:40:53Z",
+  "generated_at": "2026-10-18T13:41:30Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -771,6 +771,10 @@
             "story": "Remembering walking into that first downtown meeting on a rainy Tuesday in 2008 with a ThinkPad and seeing people arguing passionately about IoC containers and testing."
           },
           {
+            "scene": "Act 1: The Pereira Twitter Debate & Twatio.com",
+            "story": "Remembering a 2009 technical debate with Sergio Pereira where Sergio joked that retweeting Scott Hanselman was pointless because anyone following Mike already followed Scott. Mike disagreed, arguing that retweets still reached unique audiences. To prove the point empirically, Mike built twatio.com on ASP.NET MVC; twatio.com later redirected to ugtastic.com."
+          },
+          {
             "scene": "Act 2: Setting the Historical Scene",
             "story": "That was the era before meetups were corporate sponsored recruiting events; developers paid for their own pizza and gathered purely to learn from each other."
           }
@@ -835,6 +839,21 @@
           "title": "Antonio Cangiano: Ruby on Rails for Microsoft Developers (Wrox, April 2009, p. 52)",
           "type": "book_reference",
           "url": "https://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Ruby/Wrox.Ruby.on.Rails.for.Microsoft.Developers.Apr.2009.pdf"
+        },
+        {
+          "title": "Twatio.com Twitter Audience Overlap Experiment (Wayback Machine 2009)",
+          "type": "archive_document",
+          "url": "https://web.archive.org/web/20090201000000*/http://twatio.com/"
+        },
+        {
+          "title": "UGtastic Oral History Archive First Capture (Wayback Machine 2012)",
+          "type": "archive_document",
+          "url": "https://web.archive.org/web/20120414040704/http://www.ugtastic.com/"
+        },
+        {
+          "title": "WHOIS Tech Community Rebrand Transition Capture (Wayback Machine 2017)",
+          "type": "archive_document",
+          "url": "https://web.archive.org/web/20171117114045/https://www.ugtastic.com/"
         }
       ],
       "workflow_tasks": {
@@ -4490,18 +4509,15 @@
             }
           }
         ],
-        "failed_count": 0,
-        "failed_items": [],
-        "blocked_count": 7,
-        "blocked_items": [
+        "failed_count": 1,
+        "failed_items": [
           {
             "filename": "VID_20261017_094346214.mp4",
             "size_bytes": 584076411,
-            "blocked_at": "2026-10-17T20:18:48Z",
-            "diagnostic": "The request cannot be completed because you have exceeded your quota.",
-            "cooldown_resets_at": "00:00 PT",
-            "meta_phase": "blocked",
-            "current_step": "playlist_assignment",
+            "failed_at": "2026-10-17T16:33:43Z",
+            "diagnostic": "undefined local variable or method 'filename' for an instance of MediaIntakePipeline",
+            "meta_phase": "quarantined",
+            "current_step": "datalake_sync",
             "substates": {
               "audio_dsp": {
                 "status": "completed",
@@ -4521,9 +4537,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-17T16:50:42Z",
-                "completed_at": "2026-10-17T20:01:22Z",
-                "duration_seconds": 2.95,
-                "title": "Ramblin' & Amblin' (2026-10-17): Blindsight by Peter Watts",
+                "completed_at": "2026-10-18T13:04:04Z",
+                "duration_seconds": 2.59,
+                "title": "Ramblin' & Amblin' (2026-10-17): Blindsight by Peter Watts is a book that",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -4546,26 +4562,38 @@
                 "youtube_url": "https://youtu.be/jHDlgO92bvU"
               },
               "playlist_assignment": {
-                "status": "blocked",
+                "status": "completed",
                 "started_at": "2026-10-17T20:18:44Z",
-                "completed_at": null,
-                "duration_seconds": null,
+                "completed_at": "2026-10-18T12:11:14Z",
+                "duration_seconds": 57150.27,
                 "blocked_at": "2026-10-17T20:18:48Z",
                 "block_reason": "YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
                 "resets_at": "00:00 PT",
-                "decision": "upstream_quota_blocked"
+                "decision": "upstream_quota_blocked",
+                "playlist_id": "PLNtb969T2-l0"
               },
               "captions_upload": {
-                "status": "pending",
-                "started_at": null,
-                "completed_at": null,
-                "duration_seconds": null
+                "status": "completed",
+                "started_at": "2026-10-18T12:11:14Z",
+                "completed_at": "2026-10-18T12:11:14Z",
+                "duration_seconds": 0.72
               },
               "datalake_sync": {
-                "status": "pending",
-                "started_at": null,
+                "status": "failed",
+                "started_at": "2026-10-18T12:11:15Z",
                 "completed_at": null,
-                "duration_seconds": null
+                "duration_seconds": null,
+                "failed_at": "2026-10-18T13:04:05Z",
+                "error": "undefined local variable or method 'filename' for an instance of MediaIntakePipeline",
+                "backtrace": [
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:1255:in 'MediaIntakePipeline#register_in_video_assets'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:1237:in 'MediaIntakePipeline#save_transcript_dossier'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:804:in 'MediaIntakePipeline#process_file'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:401:in 'block in MediaIntakePipeline#run'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:368:in 'Kernel#loop'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:368:in 'MediaIntakePipeline#run'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:1410:in '<main>'"
+                ]
               },
               "archival": {
                 "status": "pending",
@@ -4598,17 +4626,17 @@
               {
                 "id": "playlist_assignment",
                 "label": "Playlist",
-                "status": "blocked"
+                "status": "completed"
               },
               {
                 "id": "captions_upload",
                 "label": "Captions",
-                "status": "pending"
+                "status": "completed"
               },
               {
                 "id": "datalake_sync",
                 "label": "Datalake",
-                "status": "pending"
+                "status": "failed"
               },
               {
                 "id": "archival",
@@ -4616,7 +4644,10 @@
                 "status": "pending"
               }
             ]
-          },
+          }
+        ],
+        "blocked_count": 6,
+        "blocked_items": [
           {
             "filename": "VID_20261017_094828700.mp4",
             "size_bytes": 657386804,
@@ -5412,6 +5443,201 @@
     },
     "activity_stream": [
       {
+        "timestamp": "2026-10-18T13:04:05Z",
+        "stage": "triage",
+        "level": "info",
+        "message": "Classifier evaluated failure on VID_20261017_094346214.mp4: quarantine_operator_review (65%)",
+        "details": {
+          "decision": "quarantine_operator_review",
+          "confidence": 0.6488,
+          "probabilities": {
+            "upstream_quota_blocked": 0.0878,
+            "transient_network_retry": 0.0878,
+            "audio_codec_resample": 0.0878,
+            "credential_refresh": 0.0878,
+            "quarantine_operator_review": 0.6488
+          },
+          "diagnostic": "undefined local variable or method 'filename' for an instance of MediaIntakePipeline"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T13:04:05Z",
+        "stage": "error",
+        "level": "error",
+        "message": "Failed processing VID_20261017_094346214.mp4: undefined local variable or method 'filename' for an instance of MediaIntakePipeline",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "error": "undefined local variable or method 'filename' for an instance of MediaIntakePipeline"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T13:04:04Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-17): Blindsight by Peter Watts is a book that\" (2.59s)",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-17): Blindsight by Peter Watts is a book that",
+          "duration_seconds": 2.59
+        }
+      },
+      {
+        "timestamp": "2026-10-18T13:04:02Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261017_094346214.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T13:03:57Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 27899)",
+        "details": {
+          "pid": 27899
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:45Z",
+        "stage": "triage",
+        "level": "info",
+        "message": "Classifier evaluated failure on VID_20261017_094346214.mp4: quarantine_operator_review (65%)",
+        "details": {
+          "decision": "quarantine_operator_review",
+          "confidence": 0.6488,
+          "probabilities": {
+            "upstream_quota_blocked": 0.0878,
+            "transient_network_retry": 0.0878,
+            "audio_codec_resample": 0.0878,
+            "credential_refresh": 0.0878,
+            "quarantine_operator_review": 0.6488
+          },
+          "diagnostic": "undefined local variable or method 'filename' for an instance of MediaIntakePipeline"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:45Z",
+        "stage": "error",
+        "level": "error",
+        "message": "Failed processing VID_20261017_094346214.mp4: undefined local variable or method 'filename' for an instance of MediaIntakePipeline",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "error": "undefined local variable or method 'filename' for an instance of MediaIntakePipeline"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:44Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-17): Blindsight by Peter Watts is a book that\" (0.12s)",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-17): Blindsight by Peter Watts is a book that",
+          "duration_seconds": 0.12
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:44Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261017_094346214.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:38Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 22019)",
+        "details": {
+          "pid": 22019
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:15Z",
+        "stage": "triage",
+        "level": "info",
+        "message": "Classifier evaluated failure on VID_20261017_094346214.mp4: quarantine_operator_review (65%)",
+        "details": {
+          "decision": "quarantine_operator_review",
+          "confidence": 0.6488,
+          "probabilities": {
+            "upstream_quota_blocked": 0.0878,
+            "transient_network_retry": 0.0878,
+            "audio_codec_resample": 0.0878,
+            "credential_refresh": 0.0878,
+            "quarantine_operator_review": 0.6488
+          },
+          "diagnostic": "undefined local variable or method 'filename' for an instance of MediaIntakePipeline"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:15Z",
+        "stage": "error",
+        "level": "error",
+        "message": "Failed processing VID_20261017_094346214.mp4: undefined local variable or method 'filename' for an instance of MediaIntakePipeline",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "error": "undefined local variable or method 'filename' for an instance of MediaIntakePipeline"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:14Z",
+        "stage": "captions",
+        "level": "info",
+        "message": "Uploaded WebVTT captions track to video jHDlgO92bvU in 0.72s",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "video_id": "jHDlgO92bvU",
+          "duration_seconds": 0.72
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:14Z",
+        "stage": "playlist",
+        "level": "info",
+        "message": "Added jHDlgO92bvU to playlist PLNtb969T2-l0",
+        "details": {
+          "video_id": "jHDlgO92bvU",
+          "playlist_id": "PLNtb969T2-l0"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:12Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-17): Blindsight by Peter Watts is a book that\" (2.9s)",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "title": "Ramblin' & Amblin' (2026-10-17): Blindsight by Peter Watts is a book that",
+          "duration_seconds": 2.9
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:09Z",
+        "stage": "lock",
+        "level": "info",
+        "message": "Acquired concurrency lock for VID_20261017_094346214.mp4 (Target: ramblin-amblin)",
+        "details": {
+          "filename": "VID_20261017_094346214.mp4",
+          "target": "ramblin-amblin"
+        }
+      },
+      {
+        "timestamp": "2026-10-18T12:11:03Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 19336)",
+        "details": {
+          "pid": 19336
+        }
+      },
+      {
         "timestamp": "2026-10-18T04:04:14Z",
         "stage": "blocked",
         "level": "warning",
@@ -5668,202 +5894,9 @@
           },
           "diagnostic": "YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}"
         }
-      },
-      {
-        "timestamp": "2026-10-18T03:14:18Z",
-        "stage": "warning",
-        "level": "warning",
-        "message": "Failed adding RNu430nMKgg to playlist PLNtb969T2-l0: YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
-        "details": {
-          "video_id": "RNu430nMKgg",
-          "playlist_id": "PLNtb969T2-l0",
-          "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/v3/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T03:14:14Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-17): I just hope Scott, I think his name\" (2.84s)",
-        "details": {
-          "filename": "VID_20261017_103810539.mp4",
-          "title": "Ramblin' & Amblin' (2026-10-17): I just hope Scott, I think his name",
-          "duration_seconds": 2.84
-        }
-      },
-      {
-        "timestamp": "2026-10-18T03:14:11Z",
-        "stage": "lock",
-        "level": "info",
-        "message": "Acquired concurrency lock for VID_20261017_103810539.mp4 (Target: ramblin-amblin)",
-        "details": {
-          "filename": "VID_20261017_103810539.mp4",
-          "target": "ramblin-amblin"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T03:14:04Z",
-        "stage": "autonomous",
-        "level": "info",
-        "message": "Autonomous intake triggered single-worker ingestion (PID 25018)",
-        "details": {
-          "pid": 25018
-        }
-      },
-      {
-        "timestamp": "2026-10-18T03:13:45Z",
-        "stage": "triage",
-        "level": "info",
-        "message": "Classifier evaluated failure on VID_20261017_161728409.mp4: credential_refresh (89%)",
-        "details": {
-          "decision": "credential_refresh",
-          "confidence": 0.8922,
-          "probabilities": {
-            "upstream_quota_blocked": 0.0269,
-            "transient_network_retry": 0.0269,
-            "audio_codec_resample": 0.0269,
-            "credential_refresh": 0.8922,
-            "quarantine_operator_review": 0.0269
-          },
-          "diagnostic": "YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T03:13:45Z",
-        "stage": "error",
-        "level": "error",
-        "message": "Failed processing VID_20261017_161728409.mp4: YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}\n",
-        "details": {
-          "filename": "VID_20261017_161728409.mp4",
-          "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}\n"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T03:13:45Z",
-        "stage": "warning",
-        "level": "warning",
-        "message": "Failed adding 533FSvfDIUE to playlist PLNtb969T2-l0: YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}\n",
-        "details": {
-          "video_id": "533FSvfDIUE",
-          "playlist_id": "PLNtb969T2-l0",
-          "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}\n"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T03:13:41Z",
-        "stage": "youtube",
-        "level": "info",
-        "message": "Uploaded VID_20261017_161728409.mp4 to YouTube as 533FSvfDIUE in 4924.1s",
-        "details": {
-          "filename": "VID_20261017_161728409.mp4",
-          "video_id": "533FSvfDIUE",
-          "url": "https://youtu.be/533FSvfDIUE",
-          "duration_seconds": 4924.1
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:51:37Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-17): Around when Facebook and Twitter started shutting off\" (0.09s)",
-        "details": {
-          "filename": "VID_20261017_161728409.mp4",
-          "title": "Ramblin' & Amblin' (2026-10-17): Around when Facebook and Twitter started shutting off",
-          "duration_seconds": 0.09
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:51:37Z",
-        "stage": "whisper",
-        "level": "info",
-        "message": "ztranscribe STT completed for VID_20261017_161728409.mp4 in 74.8s",
-        "details": {
-          "filename": "VID_20261017_161728409.mp4",
-          "duration_seconds": 74.8
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:50:22Z",
-        "stage": "dsp",
-        "level": "info",
-        "message": "Extracted 16kHz audio from VID_20261017_161728409.mp4 in 462.01s",
-        "details": {
-          "filename": "VID_20261017_161728409.mp4",
-          "duration_seconds": 462.01
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:42:40Z",
-        "stage": "lock",
-        "level": "info",
-        "message": "Acquired concurrency lock for VID_20261017_161728409.mp4 (Target: ramblin-amblin)",
-        "details": {
-          "filename": "VID_20261017_161728409.mp4",
-          "target": "ramblin-amblin"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:42:34Z",
-        "stage": "autonomous",
-        "level": "info",
-        "message": "Autonomous intake triggered single-worker ingestion (PID 46552)",
-        "details": {
-          "pid": 46552
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:18:39Z",
-        "stage": "triage",
-        "level": "info",
-        "message": "Classifier evaluated failure on VID_20261017_103810539.mp4: credential_refresh (89%)",
-        "details": {
-          "decision": "credential_refresh",
-          "confidence": 0.8922,
-          "probabilities": {
-            "upstream_quota_blocked": 0.0269,
-            "transient_network_retry": 0.0269,
-            "audio_codec_resample": 0.0269,
-            "credential_refresh": 0.8922,
-            "quarantine_operator_review": 0.0269
-          },
-          "diagnostic": "YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:18:39Z",
-        "stage": "error",
-        "level": "error",
-        "message": "Failed processing VID_20261017_103810539.mp4: YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}\n",
-        "details": {
-          "filename": "VID_20261017_103810539.mp4",
-          "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}\n"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:18:39Z",
-        "stage": "warning",
-        "level": "warning",
-        "message": "Failed adding RNu430nMKgg to playlist PLNtb969T2-l0: YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}\n",
-        "details": {
-          "video_id": "RNu430nMKgg",
-          "playlist_id": "PLNtb969T2-l0",
-          "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (401): {\n  \"error\": {\n    \"code\": 401,\n    \"message\": \"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.\",\n    \"errors\": [\n      {\n        \"message\": \"Invalid Credentials\",\n        \"domain\": \"global\",\n        \"reason\": \"authError\",\n        \"location\": \"Authorization\",\n        \"locationType\": \"header\"\n      }\n    ],\n    \"status\": \"UNAUTHENTICATED\"\n  }\n}\n"
-        }
-      },
-      {
-        "timestamp": "2026-10-18T01:18:35Z",
-        "stage": "youtube",
-        "level": "info",
-        "message": "Uploaded VID_20261017_103810539.mp4 to YouTube as RNu430nMKgg in 3893.86s",
-        "details": {
-          "filename": "VID_20261017_103810539.mp4",
-          "video_id": "RNu430nMKgg",
-          "url": "https://youtu.be/RNu430nMKgg",
-          "duration_seconds": 3893.86
-        }
       }
     ],
-    "polled_at": "2026-10-18T05:42:57Z"
+    "polled_at": "2026-10-18T13:43:57Z"
   },
   "assets": [
     {
@@ -9658,5 +9691,5 @@
       "title_length": 34
     }
   ],
-  "updated_at": "2026-10-18T05:42:57Z"
+  "updated_at": "2026-10-18T13:43:57Z"
 }

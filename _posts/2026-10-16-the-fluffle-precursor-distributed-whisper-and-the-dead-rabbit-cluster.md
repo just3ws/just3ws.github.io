@@ -17,7 +17,7 @@ It is also the story of how imposter syndrome and cognitive overload caused me t
 
 ### The Pre-Whisper Wall: A Decade of Silent Hard Drives
 
-Between 2011 and 2015, I hauled 35 pounds of camera gear, wireless lavalier microphones, and laptops through conference hallways across North America. From SCNA to RailsConf and GOTO Chicago, I recorded over 200 technical interviews for UGtastic. I sat with language creators, framework maintainers, community organizers, and frontline practitioners.
+Between 2011 and 2015, I hauled 35 pounds of camera gear, wireless lavalier microphones, and laptops through conference hallways across North America. From SCNA to RailsConf and GOTO Chicago, I recorded over 200 technical interviews for UGtastic (first captured on the Internet Archive on April 14, 2012, prior to our 2017 transition to WHOIS Tech Community). I sat with language creators, framework maintainers, community organizers, and frontline practitioners.
 
 When the camera stopped rolling, I hit an impassable operational wall: transcription.
 

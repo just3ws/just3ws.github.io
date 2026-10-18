@@ -112,12 +112,14 @@ Between 2023 and 2026, the various historical threads converged:
 | **2010-05-15** | Craftsmanship Genesis | Chicago Code Camp | `just3ws/ccs` | `community_milestone` | Volunteer and website developer for existing regional conference |
 | **2011-05-13** | Craftsmanship Genesis | Chicago Code Camp | `just3ws/ccs` (`9a7d7035`) | `turning_point` | Added print-friendly Haml schedule generator for 9-track matrix |
 | **2011-06-01** | Craftsmanship Genesis | UGtastic | `ugtastic/.github` | `community_milestone` | Launch of UGtastic oral history interviews with Flip video cameras |
+| **2012-04-14** | Craftsmanship Genesis | UGtastic | `ugtastic.com` | `community_milestone` | First recorded Internet Archive capture of ugtastic.com |
 | **2012-06-12** | Distributed Services | uglst | `just3ws/uglst-geosrv` | `repo_creation` | Geospatial microservice for user group mapping |
 | **2014-01-11** | Distributed Services | UGl.st | `just3ws/uglst-geosrv` | `community_milestone` | Public launch of UGl.st User-Group List with heart glyph interface |
 | **2014-04-01** | Distributed Services | WHOIS Tech Cmty | `just3ws.github.io` | `community_milestone` | Launch of Patreon campaign under the 'Tools for everything' vision |
 | **2016-12-05** | Control Plane Genesis | just3ws | `just3ws.github.io` (`adcc35b0`) | `turning_point` | Initial commit of canonical engineering web presence and resume |
 | **2017-05-26** | Control Plane Genesis | zdots | `just3ws/zdots` | `turning_point` | Founding of the observable Zsh personal control plane |
 | **2017-06-02** | Control Plane Genesis | vdots | `just3ws/vdots` | `turning_point` | Founding of native-first Neovim configuration in Lua |
+| **2017-11-17** | Control Plane Genesis | WHOIS Tech Cmty | `ugtastic.com` | `community_milestone` | First Wayback capture of UGtastic to WHOIS Tech Community rebrand transition |
 | **2018-07-17** | Calm Systems | Chicago Code Camp | `just3ws/ccs` | `repo_creation` | Historical Rails conference platform archived open source |
 | **2018-12-26** | Calm Systems | Coderwall | `just3ws/coderwall-legacy`| `repo_creation` | Coderwall open-source transition, security hardening, and database migration |
 | **2021-09-25** | Calm Systems | WwworkRemote | `wwworkremote/wwworkremote`| `turning_point` | Genesis of calm, local-first career search and triage platform |

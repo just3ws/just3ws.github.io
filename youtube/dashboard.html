@@ -1961,7 +1961,7 @@ body_class: page-youtube-dashboard
     else File Stable
         Worker->>Lock: Acquire pipeline.lock (worker PID, target, filename)
         Lock-->>Cockpit: SSE broadcast (is_locked: true, active_pid)
-        Worker->>Drive: Atomic move pending/ -> processing/
+        Worker->>Drive: Atomic move pending/ to processing/
         Worker->>FFmpeg: Extract 16kHz mono PCM audio to /tmp/intake_scratch.wav
         FFmpeg-->>Worker: Audio extraction complete
         Worker->>ZTrans: Invoke ztranscribe --engine whisper-cpp --output-format vtt,srt,txt
@@ -1973,8 +1973,8 @@ body_class: page-youtube-dashboard
         Worker->>YouTube: Upload WebVTT captions track (language: en)
         Worker->>YouTube: Insert into target playlist
         Worker->>Worker: Persist transcript to _data/transcripts/ and update video_assets.yml
-        Worker->>Drive: Move processing/ -> processed/YYYY-MM/
-        Worker->>Drive: Write companion <filename>.receipt.json
+        Worker->>Drive: Move processing/ to processed/YYYY-MM/
+        Worker->>Drive: Write companion [filename].receipt.json
         Worker->>Worker: Delete scratch audio from /tmp (0 bytes permanent waste)
         Worker->>Lock: Release pipeline.lock and record execution telemetry
         Lock-->>Cockpit: SSE broadcast (is_locked: false, health: idle_ready)
@@ -1982,8 +1982,8 @@ body_class: page-youtube-dashboard
 
     rect rgb(254, 242, 242)
         Note over Worker,Lock: Failure Handling & Quarantine Branch
-        Worker->>Drive: Move processing/ -> failed/<filename>
-        Worker->>Drive: Write companion <filename>.error.log with backtrace
+        Worker->>Drive: Move processing/ to failed/[filename]
+        Worker->>Drive: Write companion [filename].error.log with backtrace
         Worker->>Lock: Release pipeline.lock and mark quarantine state
         Lock-->>Cockpit: SSE broadcast (health: degraded_quarantine)
         Cockpit-->>Creator: Renders Red Alert Card in Funnel Column 5 with 1-click Re-queue
@@ -2414,7 +2414,7 @@ teleprompter_script:
   function copyMermaidBlock(blockId, btn) {
     const el = document.getElementById(blockId);
     if (!el) return;
-    const text = el.innerText || el.textContent;
+    const text = el.dataset.mermaidSource || el.innerText || el.textContent;
     navigator.clipboard.writeText(text).then(() => {
       const orig = btn.innerText;
       btn.innerText = 'Copied!';
@@ -2442,7 +2442,12 @@ teleprompter_script:
       btn.style.fontWeight = '700';
     }
 
-    if (tabName === 'architecture') {
+    if (tabName === 'architecture' && pane) {
+      if (typeof window.renderMermaid === 'function') {
+        window.renderMermaid(pane);
+      } else {
+        window.dispatchEvent(new CustomEvent('render-mermaid', { detail: { root: pane } }));
+      }
       window.dispatchEvent(new Event('resize'));
     }
 
