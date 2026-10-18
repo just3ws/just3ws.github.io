@@ -23,6 +23,13 @@
          - In-Browser Smart 404 Recovery (`404.html`):
            - Added real-time client-side route recovery card: detects legacy routes, displays target title, provides countdown auto-redirection, and offers fuzzy conversation suggestions.
            - Added GoatCounter telemetry events for `/event/legacy-route-recovered`, `/event/legacy-route-suggested`, and `/event/legacy-route-unmapped` alongside existing `/event/missed-path`.
+         - Chicago Code Camp Printable Schedule Tool Artifact (`assets/images/portfolio/chicago-code-camp-print-schedule.jpg`, `_data/portfolio.yml`, `_data/social_provenance.yml`):
+           - Preserved high-resolution artifact of Mike Hall custom schedule print generator producing the 9-track conference schedule matrix across 5 session blocks.
+           - Linked Sotwe hashtag archive (`https://www.sotwe.com/hashtag/ChicagoCodeCamp`) and Twitter media source.
+         - Git Hooks, Hygiene & Graphify Visualizations (`.gitattributes`, `graphify-out/GRAPH_TREE.html`, `graphify-out/callflow.html`):
+           - Confirmed active git hooks (`.githooks/post-commit`, `pre-commit`, `pre-push`) with full merge driver registration in `.gitattributes`.
+           - Emitted D3 collapsible tree visualization (`graphify-out/GRAPH_TREE.html`, 807KB) and Mermaid architecture call-flow (`graphify-out/callflow.html`, 17 sections).
+           - Synced 9,807 AST and doc nodes into global graph (`~/.graphify/global-graph.json`).
          - CLI Route Remapper (`bin/remap_legacy_routes.rb`):
            - Provided CLI inspection and testing tool to resolve URLs, query strings, and log batches against the route map.
          - Verification:

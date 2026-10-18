@@ -38,6 +38,8 @@ RSpec.describe 'Legacy Routes, Social Provenance and 404 Recovery' do
       expect(ccc).not_to be_nil
       expect(ccc['era']).to eq('2010 - 2012')
       expect(ccc['role']).to include('Co-organizer')
+      expect(ccc['connected_services']['schedule_tool_artifact']).to eq('/assets/images/portfolio/chicago-code-camp-print-schedule.jpg')
+      expect(File.exist?(File.join(root_dir, 'assets/images/portfolio/chicago-code-camp-print-schedule.jpg'))).to be true
     end
 
     it 'contains zero em dashes' do
