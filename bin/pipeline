@@ -22,9 +22,9 @@ Namespaces:
   validate  Repository hygiene, OBS assertions, rendered site checks.
             Actions: fast, obs, site, all.
   data      Interview data generation, archive graph, semantic artifacts, sitemap.
-            Actions: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, sync-prompts.
+            Actions: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, legacy-routes, sync-prompts.
   site      Jekyll site lifecycle, testing, CI verification, local deployment.
-            Actions: build, test, ci, verify, smoke, resumes, install, server.
+            Actions: build, test, ci, verify, smoke, remap, resumes, install, server.
 
 Flat / Legacy Commands (Backward Compatible):
   generate, build, test, validate, verify, knowledge-graph, semantic-graph,
@@ -166,15 +166,18 @@ run_data() {
     sitemap)
       bundle exec rake sitemap
       ;;
+    legacy-routes|routes)
+      ruby bin/generate_legacy_route_map.rb
+      ;;
     sync-prompts|prompts)
       ruby bin/sync_topic_prompts.rb "$@"
       ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline data <generate|graph|semantic-graph|semantic-audit|semantic-snapshot|sitemap|sync-prompts>"
+      echo "Usage: ./bin/pipeline data <generate|graph|semantic-graph|semantic-audit|semantic-snapshot|sitemap|legacy-routes|sync-prompts>"
       ;;
     *)
       echo "Unknown data action: $action" >&2
-      echo "Available: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, sync-prompts" >&2
+      echo "Available: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, legacy-routes, sync-prompts" >&2
       exit 1
       ;;
   esac
@@ -199,6 +202,9 @@ run_site() {
     smoke)
       bundle exec rake smoke
       ;;
+    remap|routes)
+      ruby bin/remap_legacy_routes.rb "$@"
+      ;;
     resumes|resume-pdfs)
       bundle exec rake resumes
       ;;
@@ -209,11 +215,11 @@ run_site() {
       bin/server
       ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline site <build|test|ci|verify|smoke|resumes|install|server>"
+      echo "Usage: ./bin/pipeline site <build|test|ci|verify|smoke|remap|resumes|install|server>"
       ;;
     *)
       echo "Unknown site action: $action" >&2
-      echo "Available: build, test, ci, verify, smoke, resumes, install, server" >&2
+      echo "Available: build, test, ci, verify, smoke, remap, resumes, install, server" >&2
       exit 1
       ;;
   esac

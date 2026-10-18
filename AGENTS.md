@@ -11,6 +11,23 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - LEGACY ROUTE REMAPPING ENGINE, SOCIAL PROVENANCE & SMART 404 RECOVERY (2026-10-17):
+         Built an automated legacy route recovery engine and documented canonical social identities across historical eras:
+         - Verified Social Provenance (`_data/social_provenance.yml`):
+           - Recorded and verified handles across @WHOISTechCmty (active channel/broadcasts), @ugtastic (historical brand account verified from ugtastic-web Rails codebase footer), @scmchenry (Software Craftsmanship McHenry County user group), @just3ws (personal/platform dating back to August 2008), and @chicagocodecamp (2010 to 2012 co-organizer and web lead era).
+         - Expanded Domain Migration (`_data/domain_migration.yml`):
+           - Configured observe-only ingress tracking for ugtastic.com, whoistech.com, whoistechcmty.com, chicagocodecamp.com, scmchenry.org/com, ugl.st, and ironlanguages.net.
+         - Declarative Route Mapping & Generator (`_data/legacy_routes.yml`, `bin/generate_legacy_route_map.rb`, `assets/data/legacy_route_map.json`):
+           - Compiled unified lookup table indexing 379 interview slug keys, 666 video platform keys (YouTube and Vimeo), 192 people keys, and 1,303 post keys.
+           - Integrated generator into `Rakefile` (`generate:all`), `bin/pipeline data legacy-routes`, and `bin/pipeline site remap`.
+         - In-Browser Smart 404 Recovery (`404.html`):
+           - Added real-time client-side route recovery card: detects legacy routes, displays target title, provides countdown auto-redirection, and offers fuzzy conversation suggestions.
+           - Added GoatCounter telemetry events for `/event/legacy-route-recovered`, `/event/legacy-route-suggested`, and `/event/legacy-route-unmapped` alongside existing `/event/missed-path`.
+         - CLI Route Remapper (`bin/remap_legacy_routes.rb`):
+           - Provided CLI inspection and testing tool to resolve URLs, query strings, and log batches against the route map.
+         - Verification:
+           - 15/15 legacy route specs passing (`spec/data/legacy_routes_spec.rb`), 280/280 full RSpec suite passing, `./bin/pipeline validate fast` passing cleanly. Zero em dashes.
+
        - PLAYLIST RECONCILIATION, CROSS-REFERENCE DEDUPLICATION & ZERO RE-UPLOAD HARDENING (2026-10-17):
          Audited and reconciled live YouTube playlist `PLNtb969T2-l0` ("Ramblin' & Amblin'"), identified and planned cleanup for 3 redundant duplicate uploads (`jgrg7hPbdc8`, `n6VWVy_NdSw`, `QTpYkViNnZc`) and 1 missing canonical asset (`SLvKYSwUcRc`), hardened the deduplication tool with autonomous `yt-dlp` fallback and cross-reference reconciliation, and eliminated all re-upload vectors in the intake pipeline through state scoring, receipt cross-checking, and automatic OAuth token refresh on 401:
          - Live Playlist Audit & Deduplication (`bin/clean_and_sync_youtube_playlists.rb`, `bin/lib/youtube_deduplicator.rb`, `spec/youtube/playlist_dedupe_spec.rb`):

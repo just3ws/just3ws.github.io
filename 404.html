@@ -1,58 +1,395 @@
 ---
 layout: minimal
 title: "Page not found"
-description: "The page you requested could not be found."
+description: "The page you requested could not be found or has been relocated in the preserved archive."
 robots: noindex,nofollow
 ---
-<section>
+
+<style>
+.legacy-recovery-container {
+  max-width: 48rem;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+.legacy-recovery-card {
+  background: var(--color-bg-card, #2a2a37);
+  border: 1px solid var(--color-border, #363646);
+  border-left: 4px solid var(--color-primary, #7e9cd8);
+  border-radius: var(--radius-md, 8px);
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.legacy-recovery-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm, 4px);
+  background: rgba(126, 156, 216, 0.15);
+  color: var(--color-primary, #7e9cd8);
+  margin-bottom: 0.75rem;
+}
+.legacy-recovery-card h1,
+.legacy-recovery-card h2 {
+  font-size: 1.35rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--color-heading, #dcd7ba);
+}
+.legacy-recovery-card p {
+  margin: 0.5rem 0;
+  color: var(--color-text-main, #dcd7ba);
+  line-height: 1.5;
+}
+.legacy-recovery-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+.legacy-btn-primary {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--color-primary, #7e9cd8);
+  color: #16161d !important;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-sm, 4px);
+  transition: opacity 0.2s ease;
+}
+.legacy-btn-primary:hover {
+  opacity: 0.9;
+}
+.recovery-suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.recovery-suggestions-list li {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border, #363646);
+  border-radius: var(--radius-sm, 4px);
+}
+.recovery-suggestions-list a {
+  font-weight: 600;
+  color: var(--color-primary, #7e9cd8);
+  text-decoration: none;
+}
+.recovery-suggestions-list a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<section id="not-found-default">
   <h1>Page not found</h1>
-  <p>The URL you requested does not exist.</p>
+  <p id="not-found-message">The URL you requested does not exist or has moved.</p>
   <p><a href="/">Go to the homepage</a></p>
 </section>
+
+<section id="legacy-recovery-banner" class="legacy-recovery-container" style="display: none;" aria-live="polite">
+  <div class="legacy-recovery-card">
+    <span class="legacy-recovery-badge">Archived Link Recovered</span>
+    <h1 id="recovery-headline">Connecting to Canonical Archive</h1>
+    <p>You followed an archived link to <strong id="recovery-target-title">the preserved resource</strong>.</p>
+    <p>Connecting you to the canonical modern page in <strong id="recovery-countdown">3</strong> seconds...</p>
+    <div class="legacy-recovery-actions">
+      <a id="recovery-target-link" href="#" class="legacy-btn-primary">Proceed to page now &rarr;</a>
+      <a href="/" style="color: var(--color-text-muted, #c8c093); font-size: 0.9rem;">Cancel and go to homepage</a>
+    </div>
+  </div>
+</section>
+
+<section id="legacy-suggestions-banner" class="legacy-suggestions-container" style="display: none;">
+  <div class="legacy-recovery-card">
+    <span class="legacy-recovery-badge">Archived Content Suggestions</span>
+    <h2>Did you mean one of these preserved conversations?</h2>
+    <p>The legacy address you requested has moved. We found these matching archived conversations:</p>
+    <ul id="recovery-suggestions-list" class="recovery-suggestions-list"></ul>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+      <a href="/interviews/">Browse all conversations</a> | <a href="/">Go to homepage</a>
+    </p>
+  </div>
+</section>
+
 <script>
 (function () {
   var missedPath = window.location.pathname + window.location.search;
   var dedupeKey = 'gc-missed-path:' + missedPath;
 
-  try {
-    if (window.sessionStorage && window.sessionStorage.getItem(dedupeKey)) {
-      return;
-    }
-  } catch (error) {
-    // Ignore storage access issues and continue.
-  }
-
   function withGoatCounter(callback, attempts) {
     var retries = typeof attempts === 'number' ? attempts : 20;
-
     if (window.goatcounter && typeof window.goatcounter.count === 'function') {
       callback();
       return;
     }
-
     if (retries <= 0) {
       return;
     }
-
     window.setTimeout(function () {
       withGoatCounter(callback, retries - 1);
     }, 250);
   }
 
-  withGoatCounter(function () {
-    window.goatcounter.count({
-      path: '/event/missed-path',
-      title: missedPath,
-      event: true,
+  // 1. Emit base missed path telemetry
+  try {
+    if (!window.sessionStorage || !window.sessionStorage.getItem(dedupeKey)) {
+      withGoatCounter(function () {
+        window.goatcounter.count({
+          path: '/event/missed-path',
+          title: missedPath,
+          event: true
+        });
+        try {
+          if (window.sessionStorage) {
+            window.sessionStorage.setItem(dedupeKey, '1');
+          }
+        } catch (e) {}
+      });
+    }
+  } catch (e) {}
+
+  // 2. Immediate static fallback rules before network map loads
+  var path = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/';
+  var search = window.location.search || '';
+
+  var immediateTarget = null;
+  var immediateTitle = null;
+
+  if (path.indexOf('/chicagocodecamp') === 0 || path === '/sessions' || path === '/speakers' || path === '/schedule' || path === '/sponsors') {
+    immediateTarget = '/backlog/docs/wayback/snapshots/20121228074319-https-chicagocodecamp-com-80/';
+    immediateTitle = 'Chicago Code Camp 2012 Archive Snapshot';
+  } else if (path.indexOf('/scmc') === 0 || path.indexOf('/scmchenry') === 0 || path === '/meetings' || path === '/dojo') {
+    immediateTarget = '/scmc/';
+    immediateTitle = 'Software Craftsmanship McHenry County (SCMC)';
+  } else if (path === '/ugtastic' || path.indexOf('/ugtastic/') === 0) {
+    immediateTarget = '/ugtastic/';
+    immediateTitle = 'UGtastic Archive Artifacts';
+  } else if (path === '/interviewees' || path.indexOf('/interviewees/') === 0) {
+    immediateTarget = '/interviews/people/';
+    immediateTitle = 'Archive Interviewees Directory';
+  } else if (path === '/interviews' || path === '/interview') {
+    immediateTarget = '/interviews/';
+    immediateTitle = 'Technical Conversation Archive';
+  } else if (path === '/groups' || path === '/calendar') {
+    immediateTarget = '/timeline/community/';
+    immediateTitle = 'Community Timeline & User Groups';
+  } else if (path === '/channels') {
+    immediateTarget = '/series/the-sound-above/';
+    immediateTitle = 'The Sound Above Series';
+  }
+
+  function renderRecovery(targetUrl, targetTitle) {
+    var defaultSec = document.getElementById('not-found-default');
+    var recoverySec = document.getElementById('legacy-recovery-banner');
+    var titleEl = document.getElementById('recovery-target-title');
+    var linkEl = document.getElementById('recovery-target-link');
+    var countdownEl = document.getElementById('recovery-countdown');
+
+    if (defaultSec) defaultSec.style.display = 'none';
+    if (recoverySec) recoverySec.style.display = 'block';
+    if (titleEl) titleEl.textContent = targetTitle || targetUrl;
+    if (linkEl) linkEl.href = targetUrl;
+
+    withGoatCounter(function () {
+      window.goatcounter.count({
+        path: '/event/legacy-route-recovered',
+        title: missedPath + ' -> ' + targetUrl,
+        event: true
+      });
     });
 
-    try {
-      if (window.sessionStorage) {
-        window.sessionStorage.setItem(dedupeKey, '1');
+    var count = 3;
+    var timer = window.setInterval(function () {
+      count -= 1;
+      if (countdownEl) countdownEl.textContent = count;
+      if (count <= 0) {
+        window.clearInterval(timer);
+        window.location.href = targetUrl;
       }
-    } catch (error) {
-      // Ignore storage access issues.
+    }, 1000);
+  }
+
+  function renderSuggestions(suggestions) {
+    var defaultSec = document.getElementById('not-found-default');
+    var suggSec = document.getElementById('legacy-suggestions-banner');
+    var listEl = document.getElementById('recovery-suggestions-list');
+
+    if (defaultSec) defaultSec.style.display = 'none';
+    if (suggSec) suggSec.style.display = 'block';
+    if (listEl) {
+      listEl.innerHTML = '';
+      suggestions.forEach(function (s) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = s.url;
+        a.textContent = s.title;
+        li.appendChild(a);
+        listEl.appendChild(li);
+      });
     }
-  });
+
+    withGoatCounter(function () {
+      window.goatcounter.count({
+        path: '/event/legacy-route-suggested',
+        title: missedPath,
+        event: true
+      });
+    });
+  }
+
+  if (immediateTarget) {
+    renderRecovery(immediateTarget, immediateTitle);
+    return;
+  }
+
+  // 3. Asynchronously load the compiled legacy route map
+  var mapUrl = "{{ '/assets/data/legacy_route_map.json' | relative_url }}";
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', mapUrl, true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState !== 4) return;
+    if (xhr.status !== 200) {
+      // Map failed to load, record unmapped event
+      withGoatCounter(function () {
+        window.goatcounter.count({
+          path: '/event/legacy-route-unmapped',
+          title: missedPath,
+          event: true
+        });
+      });
+      return;
+    }
+
+    var mapData;
+    try {
+      mapData = JSON.parse(xhr.responseText);
+    } catch (e) {
+      return;
+    }
+
+    // A. Check Video Asset Query Param (?v=... or &v=...)
+    if (search) {
+      var vMatch = search.match(/[?&]v=([^&#]+)/);
+      if (vMatch && vMatch[1]) {
+        var vid = decodeURIComponent(vMatch[1]);
+        if (mapData.video_assets && mapData.video_assets[vid]) {
+          var va = mapData.video_assets[vid];
+          renderRecovery(va.url, va.title);
+          return;
+        }
+      }
+    }
+
+    // B. Check Exact Routes
+    var exactMap = mapData.exact_routes || {};
+    if (exactMap[path]) {
+      renderRecovery(exactMap[path], exactMap[path]);
+      return;
+    }
+    if (exactMap[path + '/']) {
+      renderRecovery(exactMap[path + '/'], exactMap[path + '/']);
+      return;
+    }
+
+    // C. Check Pattern Rules
+    var patterns = mapData.pattern_rules || [];
+    for (var i = 0; i < patterns.length; i++) {
+      var rule = patterns[i];
+      var rx = new RegExp(rule.pattern, 'i');
+      var match = path.match(rx);
+      if (match) {
+        var slug = (match[1] || '').toLowerCase();
+        if (rule.target_template) {
+          if (mapData.interviews && mapData.interviews[slug]) {
+            var item = mapData.interviews[slug];
+            renderRecovery(item.url, item.title);
+            return;
+          } else if (mapData.interviewees && mapData.interviewees[slug]) {
+            var person = mapData.interviewees[slug];
+            renderRecovery(person.url, person.name);
+            return;
+          } else {
+            var target = rule.target_template.replace('%{slug}', slug);
+            renderRecovery(target, target);
+            return;
+          }
+        } else if (rule.lookup === 'posts' && mapData.posts) {
+          if (mapData.posts[slug]) {
+            var p = mapData.posts[slug];
+            renderRecovery(p.url, p.title);
+            return;
+          }
+        }
+      }
+    }
+
+    // D. Check Direct Interview Slug / Title Match
+    var slugCand = path.replace(/^\/+/, '').replace(/\/+$/, '').replace(/\.[^.]+$/, '');
+    if (mapData.interviews && mapData.interviews[slugCand]) {
+      var directInt = mapData.interviews[slugCand];
+      renderRecovery(directInt.url, directInt.title);
+      return;
+    }
+
+    // E. Check Direct Post Slug Match
+    if (mapData.posts && mapData.posts[slugCand]) {
+      var directPost = mapData.posts[slugCand];
+      renderRecovery(directPost.url, directPost.title);
+      return;
+    }
+
+    // F. Fuzzy Search Suggestions across Interviews
+    if (slugCand && slugCand.length >= 3) {
+      var tokens = slugCand.split(/[-_+ ]+/).filter(function (t) { return t.length >= 3; });
+      var suggestions = [];
+      var seenUrls = {};
+
+      if (tokens.length > 0 && mapData.interviews) {
+        var interviewKeys = Object.keys(mapData.interviews);
+        for (var k = 0; k < interviewKeys.length; k++) {
+          var ik = interviewKeys[k];
+          var iv = mapData.interviews[ik];
+          if (seenUrls[iv.url]) continue;
+
+          var matchCount = 0;
+          for (var t = 0; t < tokens.length; t++) {
+            if (ik.indexOf(tokens[t]) !== -1) {
+              matchCount++;
+            }
+          }
+
+          if (matchCount > 0) {
+            seenUrls[iv.url] = true;
+            suggestions.push({
+              title: iv.title,
+              url: iv.url,
+              matches: matchCount
+            });
+            if (suggestions.length >= 4) break;
+          }
+        }
+      }
+
+      if (suggestions.length > 0) {
+        renderSuggestions(suggestions);
+        return;
+      }
+    }
+
+    // G. Fallback to Host Fallback or Unmapped Telemetry
+    withGoatCounter(function () {
+      window.goatcounter.count({
+        path: '/event/legacy-route-unmapped',
+        title: missedPath,
+        event: true
+      });
+    });
+  };
+  xhr.send();
 })();
 </script>

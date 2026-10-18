@@ -113,10 +113,15 @@ namespace :generate do
     :resume_positions,
     :archetype_resumes,
     :career_datalake,
+    :legacy_routes,
     :executive_briefs,
     :brief_pdfs,
     :content_opportunities
   ]
+
+  task :legacy_routes do
+    sh 'ruby ./bin/generate_legacy_route_map.rb'
+  end
 
   task :career_datalake do
     sh 'ruby ./bin/generate_career_datalake.rb'
@@ -874,7 +879,7 @@ namespace :audit do
     puts 'Report written to tmp/tmi_audit.json'
   end
 
-  desc 'TMI audit — hiring surfaces only (strictest gate, all severities)'
+  desc 'TMI audit: hiring surfaces only (strictest gate, all severities)'
   task :tmi_hiring do
     sh 'ruby bin/tmi_audit_sitemap.rb --url-filter "/(resume|resumes|exports|history)/" --severity low'
   end
@@ -915,7 +920,7 @@ namespace :audit do
     if quars.empty?
       puts "TMI gate: PASS (0 quarantine findings on hiring surfaces)"
     else
-      warn "TMI gate: FAIL — #{quars.size} quarantine finding(s) on hiring surfaces:"
+      warn "TMI gate: FAIL: #{quars.size} quarantine finding(s) on hiring surfaces:"
       quars.each do |r|
         guards = r['findings'].map { |f| f['guard'] }.uniq.join(',')
         warn "  [#{guards}] #{r['url'].sub('https://www.just3ws.com', '')}"
