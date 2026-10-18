@@ -225,6 +225,24 @@ class EcosystemDatalake
         'badges_repo' => 'https://github.com/assemblymade/coderwall-badges',
         'rails_enum_pr' => 'https://github.com/rails/rails/pull/17990'
       }
+    },
+    {
+      'id' => 'github-arctic-code-vault-2020',
+      'initiative' => 'GitHub Archive Program / Arctic Code Vault (Svalbard, Norway)',
+      'title' => '2020 GitHub Arctic Code Vault Contributor (02/02/2020 Snapshot)',
+      'era' => '2014 - 2020',
+      'artifact_type' => 'archive_record',
+      'source_repo' => 'coderwall/coderwall-legacy',
+      'file_path' => '_data/portfolio.yml',
+      'description' => 'Preserved on piqlFilm silver-halide polyester reels 250 meters deep in the Svalbard permafrost in the 2020-02-02 GitHub Arctic Code Vault snapshot. Officially cited repositories on github.com/just3ws include countries/countries (commit ec5d33ea, 2014-06-18), coderwall/coderwall-legacy (634 commits by just3ws, #1 contributor), asm-helpful/helpful-web (commits eda66bf9, 528cf37f, c7b7a269, 503275cf, a99642b1 in May-June 2014), alongside just3ws/nerd-font-cheatsheets, just3ws/biscotti, just3ws/zdots, just3ws/vdots, and just3ws/just3ws.github.io.',
+      'canonical_url' => 'https://github.com/users/just3ws/achievements/arctic-code-vault-contributor/detail',
+      'provenance_details' => {
+        'unlocked_at' => '2020-02-02T08:00:00Z',
+        'countries_commit' => 'https://github.com/countries/countries/commit/ec5d33ea',
+        'coderwall_legacy' => 'https://github.com/coderwall/coderwall-legacy (634 commits)',
+        'helpful_web' => 'https://github.com/asm-helpful/helpful-web (7+ commits in May-June 2014)',
+        'nerd_font_cheatsheets' => 'https://github.com/just3ws/nerd-font-cheatsheets (Starstruck x2, 129 stars)'
+      }
     }
   ].freeze
 
@@ -468,6 +486,22 @@ class EcosystemDatalake
       'title' => 'Launch of WHOIS Tech Community Patreon ("Tools for everything")',
       'description' => 'Patreon launch to fund independent equipment, production improvements, and deep profiles of community volunteers without sponsor bias.',
       'details_json' => { 'platform' => 'Patreon', 'tagline' => 'Tools for everything' }.to_json
+    },
+    {
+      'id' => 'milestone-2020-arctic-code-vault',
+      'event_date' => '2020-02-02',
+      'year' => 2020,
+      'era' => 'Autonomous Microservices & Kubernetes (2015-2020)',
+      'initiative' => 'GitHub Arctic Code Vault (Svalbard, Norway)',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => '2020 GitHub Arctic Code Vault Snapshot (countries, coderwall-legacy, helpful-web & just3ws Repos)',
+      'description' => 'On February 2, 2020 (08:00 UTC), Mike Hall contributions across countries/countries (commit ec5d33ea), coderwall/coderwall-legacy (634 commits), asm-helpful/helpful-web (commits eda66bf9, 528cf37f, c7b7a269, 503275cf, a99642b1), just3ws/nerd-font-cheatsheets, just3ws/biscotti, just3ws/zdots, just3ws/vdots, and just3ws/just3ws.github.io are archived in the GitHub Arctic Code Vault in Svalbard, Norway.',
+      'details_json' => {
+        'snapshot_date' => '2020-02-02T08:00:00Z',
+        'achievement_url' => 'https://github.com/just3ws?achievement=arctic-code-vault-contributor&tab=achievements',
+        'cited_repos' => ['countries/countries', 'coderwall/coderwall-legacy', 'asm-helpful/helpful-web', 'just3ws/nerd-font-cheatsheets', 'just3ws/biscotti']
+      }.to_json
     }
   ].freeze
 

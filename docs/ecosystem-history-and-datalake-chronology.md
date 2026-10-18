@@ -90,7 +90,7 @@ On **December 5, 2016**, commit `adcc35b0` established `just3ws.github.io`. Star
 In May 2017, Mike formalized his personal operating system with **zdots** (`~/.config/zsh`), followed a week later by **vdots** (`~/.config/nvim`). Rather than relying on fragile dotfile symlinks, `zdots` was engineered as an observable control plane with health checks, local background services, and strict isolation.
 
 ### Epoch 3: Calm Systems, Local-First Platforms & Game Engines (2018 - 2022)
-From 2018 to 2020, Mike archived `coderwall-legacy` and `just3ws/ccs` and built developer utilities like `nerd-font-cheatsheets` (129 GitHub stars, 25 forks), `biscotti`, and `slowa`.
+From 2018 to 2020, Mike archived `coderwall-legacy` and `just3ws/ccs` and built developer utilities like `nerd-font-cheatsheets` (129 GitHub stars, 25 forks), `biscotti`, and `slowa`. On **February 2, 2020**, Mike's open-source code across `countries/countries` ([commit `ec5d33ea`](https://github.com/countries/countries/commit/ec5d33ea)), `coderwall/coderwall-legacy` (634 commits), `asm-helpful/helpful-web` (7+ commits), `just3ws/nerd-font-cheatsheets`, `just3ws/biscotti`, `just3ws/zdots`, `just3ws/vdots`, and `just3ws/just3ws.github.io` was captured in the **2020 GitHub Arctic Code Vault** snapshot and preserved on piqlFilm 250 meters deep inside the Svalbard permafrost.
 
 In September 2021, Mike founded **WwworkRemote** (`@wwworkremote`), building a calm, local-first search system to triage, rank, and track engineering opportunities without algorithmic feed manipulation or engagement traps.
 
@@ -103,7 +103,7 @@ Between 2023 and 2026, the various historical threads converged:
 - **October 12, 2026 (`dehum`)**: Engineered forensic audio filters to eliminate 345,000-volt high-voltage transmission line hum, corona decrackle, and clock drift from field recordings.
 - **October 15, 2026**: Autonomous media intake pipeline with Maildir queue architecture (`incoming/`, `pending/`, `processing/`, `blocked/`, `processed/`, `quarantine/`), BPMN state machines, resumable 8MB chunked YouTube uploads, and real-time SSE telemetry streaming.
 - **October 17, 2026**: Smart legacy route remapping engine in `404.html` recovering historical links for `ugtastic.com`, `whoistechcmty.com`, and `chicagocodecamp.com`.
-- **October 18, 2026**: The Unified Ecosystem Datalake (`lake/ecosystem/`), synthesizing 66 repositories, 3,081 commits, 11 historical artifacts, and 96 timeline events into SQLite3 FTS5, DuckDB, and a unified control plane CLI (`bin/just3ws`).
+- **October 18, 2026**: The Unified Ecosystem Datalake (`lake/ecosystem/`), synthesizing 66 repositories, 3,082 commits, 12 historical artifacts, and 97 timeline events into SQLite3 FTS5, DuckDB, and a unified control plane CLI (`bin/just3ws`).
 
 ---
 
@@ -133,6 +133,7 @@ Between 2023 and 2026, the various historical threads converged:
 | **2017-11-17** | Control Plane Genesis | WHOIS Tech Cmty | `ugtastic.com` | `community_milestone` | First Wayback capture of UGtastic to WHOIS Tech Community rebrand transition |
 | **2018-07-17** | Calm Systems | Chicago Code Camp | `just3ws/ccs` | `repo_creation` | Historical Rails conference platform archived open source |
 | **2018-12-26** | Calm Systems | Coderwall | `just3ws/coderwall-legacy`| `repo_creation` | Coderwall open-source transition, security hardening, and database migration |
+| **2020-02-02** | Calm Systems | Arctic Code Vault | `coderwall/coderwall-legacy`| `community_milestone` | Preserved in Svalbard Arctic Code Vault (`countries`, `coderwall-legacy`, `helpful-web`) |
 | **2021-09-25** | Calm Systems | WwworkRemote | `wwworkremote/wwworkremote`| `turning_point` | Genesis of calm, local-first career search and triage platform |
 | **2022-07-10** | Calm Systems | Phalanx Duel | `phalanxduel/phalanxduel` | `turning_point` | Genesis of deterministic tactical card game engine and Go CLI |
 | **2023-04-06** | Oral History Renaissance | fluffle | `just3ws/fluffle` | `turning_point` | Local Whisper transcription pipeline for oral history archives |
