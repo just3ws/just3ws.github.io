@@ -1029,6 +1029,7 @@ a hold, not an invitation to invent a smoother explanation.
 26. `technical-scriptwriter` ✓ - Author and structure authentic spoken teleprompter rundowns, narrative plotting, intro hooks, and actionable outro takeaways across all media archetypes.
 27. `editorial-fact-checker` ✓ - Audit and verify technical claims, historical dates, conference venues, software names, and audio/DSP contracts against ground truth across video scripts, dossiers, and site documentation.
 28. `career-datalake-researcher` ✓ - Query the local knowledge system, video transcripts, and CareerOS datalake across 218 transcribed interviews, 28 engineering roles, 185 writings, and 132 technologies.
+29. `ecosystem-datalake-steward` ✓ - Manage, query, and maintain the ecosystem datalake across SQLite3 FTS5, DuckDB analytical views, JSONL streams, and timeline events spanning all 4 GitHub organizations (@just3ws, @ugtastic, @wwworkremote, @phalanxduel).
 
 
 ## Career Datalake & MCP Server Interface

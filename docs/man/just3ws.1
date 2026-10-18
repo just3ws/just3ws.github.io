@@ -1,0 +1,161 @@
+.TH JUST3WS 1 "October 2026" "just3ws Platform" "User Commands"
+.SH NAME
+just3ws \- Unified root control plane for the just3ws platform and ecosystem
+.SH SYNOPSIS
+.B just3ws
+\fIdomain\fR \fIaction\fR [\fIoptions\fR]
+.br
+.B just3ws
+\fIlegacy-command\fR [\fIoptions\fR]
+.SH DESCRIPTION
+.B just3ws
+is the central control plane CLI driver for the just3ws engineering platform,
+autonomous media intake toolchain, and ecosystem datalake. Inspired by
+.B kubectl
+and the
+.B zdots-*
+personal operating system control planes, it provides a cohesive, namespaced
+interface across five primary operational domains:
+.TP
+.B lake
+Ecosystem datalake synthesis across GitHub organizations (@just3ws, @ugtastic,
+@wwworkremote, @phalanxduel), local git commits, historical artifacts, and
+chronological timeline events. Backed by SQLite3 FTS5, DuckDB, and JSONL streams.
+.TP
+.B media
+Autonomous video intake, Maildir queues (incoming, pending, processing, blocked,
+processed, quarantine), BPMN state tracking, resumable chunked YouTube uploads,
+DSP audio filtering (dehum), and real-time SSE telemetry streaming.
+.TP
+.B validate
+Repository hygiene gates, Markdown linting, data uniqueness, OBS scene collection
+assertions, rendered link integrity, and fast pre-commit verification.
+.TP
+.B data
+Archive data generation, interview transcripts, knowledge graph synthesis,
+semantic graph audits, and smart legacy route remapping for historical domains.
+.TP
+.B site
+Jekyll site lifecycle management, local test execution, resume PDF generation,
+Playwright smoke testing, and localhost server deployment.
+.SH DOMAINS AND ACTIONS
+.SS lake
+.TP
+.B build \fR[\fB--commit-limit \fIN\fR] [\fB--verbose\fR]
+Harvests repositories, local git commits, and artifacts across organizations
+and builds \fIlake/ecosystem/ecosystem.db\fR, \fIlake/ecosystem/ecosystem.duckdb\fR,
+and \fIlake/ecosystem/ecosystem.jsonl\fR.
+.TP
+.B query \fR[\fB--search \fITERM\fR] [\fB--limit \fIN\fR] [\fB--json\fR]
+Executes full-text search with BM25 snippet ranking across repositories, commits,
+artifacts, and timeline events using SQLite3 FTS5.
+.TP
+.B timeline \fR[\fIera\fR] [\fB--limit \fIN\fR] [\fB--json\fR]
+Displays the chronological milestone timeline from 2008 to the present.
+.TP
+.B stats \fR[\fB--json\fR]
+Displays aggregate datalake metrics, repository counts by organization, and
+top repositories by commit volume.
+.TP
+.B duckdb \fISQL\fR
+Executes analytical SQL queries against native DuckDB views (\fIv_timeline\fR,
+\fIv_yearly_activity\fR, \fIv_org_summary\fR, \fIv_language_distribution\fR).
+.TP
+.B sql \fISQL\fR
+Executes raw SQL queries directly against the SQLite3 database.
+.SS media
+.TP
+.B intake \fR[\fB--status\fR|\fB--reprocess\fR]
+Inspects Maildir intake queues, locks incoming media files, runs DSP filters,
+generates Whisper transcripts, and performs YouTube uploads.
+.TP
+.B stream
+Starts or connects to the near-realtime Server-Sent Events (SSE) telemetry
+streamer daemon on localhost port 7025.
+.TP
+.B swiftbar
+Emits structured menu bar telemetry for macOS SwiftBar monitoring.
+.TP
+.B dedupe \fR[\fB--audit\fR|\fB--target \fIPLAYLIST\fR|\fB--retire-duplicates\fR]
+Audits and reconciles YouTube uploads and playlist items, preventing duplicate
+byte uploads and repairing non-canonical links.
+.TP
+.B teleprompter \fIepisode\fR [\fB--textream\fR] [\fB--open\fR]
+Compiles 6-act broadcast teleprompter rundowns and native Textream documents.
+.TP
+.B status
+Displays real-time operational status across media intake queues, daemons,
+and YouTube quota limits.
+.SS validate
+.TP
+.B fast
+Runs fast pre-commit gates: repo hygiene allowlist, Markdown linting, data
+uniqueness, and declarative data structure checks.
+.TP
+.B obs
+Validates OBS scene collections, browser source URLs, and overlay states.
+.TP
+.B all
+Runs the complete test and validation suite across RSpec and Jekyll checks.
+.SS site
+.TP
+.B build
+Builds the Jekyll static site across all pages and archives.
+.TP
+.B test
+Runs the full RSpec test suite.
+.TP
+.B verify
+Runs smoke verification tests against the local build.
+.TP
+.B remap \fIurl_or_path\fR
+Tests legacy URL paths against the declarative route remapping table.
+.TP
+.B resumes
+Compiles structured YAML resume data into HTML, Markdown, text, and PDF surfaces.
+.SH EXAMPLES
+.B ./bin/just3ws lake timeline --limit 10
+.br
+Displays the 10 earliest milestones in the ecosystem timeline.
+.PP
+.B ./bin/just3ws lake duckdb "SELECT * FROM v_org_summary;"
+.br
+Executes an analytical summary query across all indexed GitHub organizations.
+.PP
+.B ./bin/just3ws media status
+.br
+Checks the Maildir queues, running streamer daemons, and YouTube quota cooldowns.
+.PP
+.B ./bin/just3ws validate fast
+.br
+Executes pre-commit fast validation checks in under 4 seconds.
+.SH FILES
+.TP
+.I lake/ecosystem/ecosystem.db
+SQLite3 database with FTS5 search table \fIecosystem_fts\fR.
+.TP
+.I lake/ecosystem/ecosystem.duckdb
+DuckDB analytical database with pre-compiled views.
+.TP
+.I lake/ecosystem/ecosystem.jsonl
+JSONL streaming dataset of all organizations, repositories, commits, and events.
+.TP
+.I lake/ecosystem/ecosystem_manifest.json
+Summary manifest with timestamp, counts, and file sizes.
+.TP
+.I _data/episodes/
+YAML manifests for The Sound Above and Errata broadcast episodes.
+.TP
+.I obs/teleprompter/
+Compiled 6-act Textream scripts for teleprompter displays.
+.TP
+.I assets/subtitles/
+Archival and broadcast WebVTT closed-caption tracks.
+.SH SEE ALSO
+.BR man (1),
+.BR mandoc (1),
+.BR duckdb (1),
+.BR sqlite3 (1)
+.SH AUTHORS
+Engineered by Mike Hall (@just3ws) as part of the Chicago Software Craftsmanship
+and The Sound Above initiative.
