@@ -21,6 +21,8 @@ Namespaces:
             Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, status.
   validate  Repository hygiene, OBS assertions, rendered site checks.
             Actions: fast, obs, site, all.
+  lake      Ecosystem datalake across GitHub orgs, git commits, artifacts, timeline.
+            Actions: build, query, timeline, stats, duckdb, sql.
   data      Interview data generation, archive graph, semantic artifacts, sitemap.
             Actions: generate, graph, semantic-graph, semantic-audit, semantic-snapshot, sitemap, legacy-routes, sync-prompts.
   site      Jekyll site lifecycle, testing, CI verification, local deployment.
@@ -189,6 +191,37 @@ run_data() {
   esac
 }
 
+run_lake() {
+  action="${1:-stats}"
+  shift || true
+  case "$action" in
+    build|sync|rebuild)
+      ruby bin/build_ecosystem_datalake.rb "$@"
+      ;;
+    query|search|find)
+      ruby bin/query_ecosystem_datalake.rb --search "$@"
+      ;;
+    timeline|history|chronology)
+      ruby bin/query_ecosystem_datalake.rb --timeline "$@"
+      ;;
+    stats|status|summary)
+      ruby bin/query_ecosystem_datalake.rb --stats "$@"
+      ;;
+    duckdb|duck)
+      ruby bin/query_ecosystem_datalake.rb --duckdb "$@"
+      ;;
+    sql)
+      ruby bin/query_ecosystem_datalake.rb --sql "$@"
+      ;;
+    help|-h|--help)
+      echo "Usage: ./bin/pipeline lake <build|query|timeline|stats|duckdb|sql> [options]"
+      ;;
+    *)
+      ruby bin/query_ecosystem_datalake.rb "$action" "$@"
+      ;;
+  esac
+}
+
 run_site() {
   action="${1:-build}"
   shift || true
@@ -246,6 +279,10 @@ case "$cmd" in
       run_validate "$@"
     fi
     ;;
+  lake)
+    shift
+    run_lake "$@"
+    ;;
   data)
     shift
     run_data "$@"
@@ -256,6 +293,18 @@ case "$cmd" in
     ;;
 
   # Flat / Backward-Compatible Aliases
+  lake-timeline|timeline)
+    shift
+    run_lake timeline "$@"
+    ;;
+  lake-stats)
+    shift
+    run_lake stats "$@"
+    ;;
+  lake-duckdb|duckdb)
+    shift
+    run_lake duckdb "$@"
+    ;;
   generate)
     run_data generate
     ;;

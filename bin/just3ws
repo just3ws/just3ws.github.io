@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+# ---
+# name: just3ws
+# domain: root
+# purpose: Root control plane CLI for just3ws platform inspired by kubectl and zdots control planes
+# usage: bin/just3ws <domain> <action> [options]
+# ---
+set -eu
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+exec "$SCRIPT_DIR/pipeline" "$@"
