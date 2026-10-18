@@ -32,12 +32,12 @@ RSpec.describe 'Legacy Routes, Social Provenance and 404 Recovery' do
       expect(handles).to include('@chicagocodecamp')
     end
 
-    it 'records the co-organizer and web lead era for Chicago Code Camp' do
+    it 'records the volunteer and website developer era for Chicago Code Camp' do
       data = YAML.safe_load(File.read(social_path))
       ccc = data['accounts'].find { |a| a['handle'] == '@chicagocodecamp' }
       expect(ccc).not_to be_nil
       expect(ccc['era']).to eq('2010 - 2012')
-      expect(ccc['role']).to include('Co-organizer')
+      expect(ccc['role']).to include('Volunteer')
       expect(ccc['connected_services']['schedule_tool_artifact']).to eq('/assets/images/portfolio/chicago-code-camp-print-schedule.jpg')
       expect(File.exist?(File.join(root_dir, 'assets/images/portfolio/chicago-code-camp-print-schedule.jpg'))).to be true
     end

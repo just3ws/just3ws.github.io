@@ -111,15 +111,22 @@ class EcosystemDatalake
   COMMUNITY_MILESTONES = [
     {
       'id' => 'milestone-2008-chicago-altnet',
-      'event_date' => '2008-08-01',
+      'event_date' => '2008-11-12',
       'year' => 2008,
       'era' => 'Craftsmanship Genesis (2008-2012)',
       'initiative' => 'Chicago Alt.NET',
       'repo_full_name' => 'just3ws/just3ws.github.io',
       'event_type' => 'community_milestone',
-      'title' => 'First User Group Presentation at Chicago Alt.NET',
-      'description' => 'Mike Hall delivers his first user group presentation at Chicago Alt.NET on Castle Project, MonoRail, Windsor, and ActiveRecord.',
-      'details_json' => { 'speaker' => 'Mike Hall', 'topic' => 'Castle MonoRail & IoC', 'venue' => 'Chicago Alt.NET' }.to_json
+      'title' => 'First User Group Presentation at Chicago Alt.NET (NHaml View Engine)',
+      'description' => 'Mike Hall delivers his first user group presentation at Chicago Alt.NET on NHaml alongside Adam Tybor on Spark at Redpoint Technologies in the Sears Tower.',
+      'details_json' => {
+        'speaker' => 'Mike Hall',
+        'topic' => 'NHaml Alternative View Engine for ASP.NET MVC',
+        'co_presenter' => 'Adam Tybor on Spark',
+        'venue' => 'Redpoint Technologies, 84th Floor Sears Tower',
+        'citation_meeting_archive' => 'https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home',
+        'citation_slides' => 'https://www.slideshare.net/chicagoaltnet'
+      }.to_json
     },
     {
       'id' => 'milestone-2009-scmc-founding',
@@ -141,9 +148,14 @@ class EcosystemDatalake
       'initiative' => 'Chicago Code Camp',
       'repo_full_name' => 'just3ws/ccs',
       'event_type' => 'community_milestone',
-      'title' => 'Chicago Code Camp Co-Organizer & Web Lead Era',
-      'description' => 'Mike Hall co-organizes Chicago Code Camp and engineers the open-source Rails conference engine powering the zero-dollar event.',
-      'details_json' => { 'role' => 'Co-Organizer & Web Lead', 'engine' => 'Rails ccs platform' }.to_json
+      'title' => 'Chicago Code Camp Volunteer & Conference Website Developer',
+      'description' => 'Chicago Code Camp was an existing conference; Mike Hall volunteered and assisted for a couple years and built the conference website (just3ws/ccs) for at least three years of conferences.',
+      'details_json' => {
+        'role' => 'Volunteer & Website Developer',
+        'conference' => 'Chicago Code Camp (Existing community conference)',
+        'tenure' => 'Volunteered for a couple years, built website for at least 3 conferences',
+        'engine' => 'Rails ccs platform, speaker management, and printable schedule generator'
+      }.to_json
     },
     {
       'id' => 'milestone-2011-ugtastic-interviews',

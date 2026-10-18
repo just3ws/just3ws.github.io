@@ -259,7 +259,7 @@ git_epochs = [
   {
     "epoch" => "2009 - 2015",
     "theme" => "Software Craftsmanship, Community Infrastructure & Ruby on Rails",
-    "description" => "Co-founded Chicago Code Camp, recorded 200+ UGtastic interviews across RailsConf, GOTO, and SCNA (launched at SCNA 2011 at Swissotel Chicago) as a Senior Software Developer, engineered high-velocity Rails, PHP, Java, and Vertica systems at Groupon and Obtiva."
+    "description" => "Volunteered and built conference websites for Chicago Code Camp, recorded 200+ UGtastic interviews across RailsConf, GOTO, and SCNA (launched at SCNA 2011 at Swissotel Chicago) as a Senior Software Developer, engineered high-velocity Rails, PHP, Java, and Vertica systems at Groupon and Obtiva."
   },
   {
     "epoch" => "2016 - 2020",

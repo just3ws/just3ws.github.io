@@ -66,9 +66,9 @@ xychart-beta
 ## 3. The Five Epochs of Evolution
 
 ### Epoch 0: The Alt.NET & Software Craftsmanship Era (2008 - 2012)
-The root philosophy began in August 2008 when Mike Hall delivered his first user group presentation at **Chicago Alt.NET**. The topic was the Castle Project stack: Castle MonoRail, Windsor Inversion of Control, and ActiveRecord. It was a pivotal moment in Midwestern developer culture, arguing that convention over configuration, test-driven design, and lightweight routing (pioneered in Ruby on Rails) were fundamentally superior to Microsoft's monolithic WebForms model.
+The root philosophy began in November 2008 when Mike Hall delivered his first user group presentation at **Chicago Alt.NET** on November 12, 2008 at Redpoint Technologies on the 84th floor of the Sears Tower (primary citation: `https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home`). The topic was the NHaml alternative view engine for ASP.NET MVC, presented alongside Adam Tybor on Spark. It was a formative moment in Midwestern developer culture, demonstrating how convention over configuration, lightweight templating, and testable controllers (pioneered in Ruby on Rails) were reshaping modern web architecture.
 
-In January 2009, Mike founded **Software Craftsmanship McHenry County (SCMC)**, bringing coding katas, deliberate practice, and journeyman pair programming to the northwest suburbs. From 2010 to 2012, Mike co-organized **Chicago Code Camp** and engineered its open-source Rails platform (`just3ws/ccs`). On May 13, 2011, Mike authored commit `9a7d7035` (`app/views/schedules/printable.html.haml`), generating the 9-track conference grid across 5 session blocks.
+In January 2009, Mike founded **Software Craftsmanship McHenry County (SCMC)**, bringing coding katas, deliberate practice, and journeyman pair programming to the northwest suburbs. Chicago Code Camp was an existing regional conference where Mike volunteered and assisted for a couple years, engineering the conference website (`just3ws/ccs`) for at least three years of conferences. On May 13, 2011, Mike authored commit `9a7d7035` (`app/views/schedules/printable.html.haml`), generating the 9-track conference grid across 5 session blocks.
 
 Simultaneously in June 2011, Mike carried a Flip video camera into conference hallways to launch **UGtastic**, filming conversations with community organizers, open-source maintainers, and working programmers. Over the next decade, this grew into an irreplaceable 218-interview oral history archive.
 
@@ -104,9 +104,9 @@ Between 2023 and 2026, the various historical threads converged:
 
 | Date | Epoch / Era | Initiative | Repo / Reference | Event Type | Milestone & Turning Point |
 |:---|:---|:---|:---|:---|:---|
-| **2008-08-01** | Craftsmanship Genesis | Chicago Alt.NET | `just3ws.github.io` | `community_milestone` | First user group presentation on Castle MonoRail, IoC, and ActiveRecord |
+| **2008-11-12** | Craftsmanship Genesis | Chicago Alt.NET | `just3ws.github.io` | `community_milestone` | First user group presentation on NHaml alternative view engine at Sears Tower |
 | **2009-01-15** | Craftsmanship Genesis | SCMC | `just3ws.github.io` | `community_milestone` | Founding of Software Craftsmanship McHenry County |
-| **2010-05-15** | Craftsmanship Genesis | Chicago Code Camp | `just3ws/ccs` | `community_milestone` | Co-organizer and web lead for the zero-dollar community conference |
+| **2010-05-15** | Craftsmanship Genesis | Chicago Code Camp | `just3ws/ccs` | `community_milestone` | Volunteer and website developer for existing regional conference |
 | **2011-05-13** | Craftsmanship Genesis | Chicago Code Camp | `just3ws/ccs` (`9a7d7035`) | `turning_point` | Added print-friendly Haml schedule generator for 9-track matrix |
 | **2011-06-01** | Craftsmanship Genesis | UGtastic | `ugtastic/.github` | `community_milestone` | Launch of UGtastic oral history interviews with Flip video cameras |
 | **2012-06-12** | Distributed Services | uglst | `just3ws/uglst-geosrv` | `repo_creation` | Geospatial microservice for user group mapping |

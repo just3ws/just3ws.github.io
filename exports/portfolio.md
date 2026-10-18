@@ -25,12 +25,12 @@ A local-first, human-supervised job search system for ingesting, searching, rank
 triaging, and advancing job leads through applications and interview preparation.
 
 ## Chicago Code Camp
-**Role:** Co-Organizer & Web Lead
+**Role:** Volunteer & Web Developer
 **Years:** 2010 - 2012
 
-A community-focused code camp in the Chicago area. I served as a co-organizer and
-designed and developed the official event websites and speaker management systems for
-the 2010-2012 seasons.
+An established community conference in the Chicago area. I volunteered and assisted
+for a couple years, designing and developing the official event websites and speaker
+management systems for at least three conferences.
 
 ## UGtastic
 **Role:** Founder & Host

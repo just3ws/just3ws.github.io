@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-17
+     CURRENT FOCUS - last updated 2026-10-18
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - FACTUAL CITATION GROUNDING & ATTRIBUTION AUDIT (2026-10-18):
+         Audited historical attributions and grounded claims against primary sources and verified evidence:
+         - Chicago Alt.NET Presentation Citation:
+           - Grounded Mike Hall's first user group presentation at Chicago Alt.NET on November 12, 2008 at Redpoint Technologies (84th Floor Sears Tower) on the NHaml alternative view engine for ASP.NET MVC, presenting alongside Adam Tybor on Spark.
+           - Primary source: `https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home`
+         - Chicago Code Camp Role Calibration:
+           - Corrected attribution across all data, portfolio, and datalake surfaces: Chicago Code Camp was an existing regional conference; Mike Hall volunteered and assisted for a couple years and built the conference website (`just3ws/ccs`) for at least three conferences (2010-2012), authoring the custom speaker management and printable 9-track Haml schedule matrix.
+         - Ecosystem & Career Datalake Synchronization:
+           - Rebuilt `lake/ecosystem/` (SQLite3, DuckDB, JSONL, manifest) and regenerated `career_datalake.json` and `exports/portfolio.md` to reflect verified facts.
+         - Verification:
+           - 290/290 specs passing, fast validation passing cleanly, zero em dashes.
+
        - ECOSYSTEM CHRONOLOGY, DUCKDB LAKE & KUBECTL-INSPIRED CONTROL PLANE (2026-10-18):
          Synthesized 18 years of engineering history, refactored datalake architecture into a DRY shared library, compiled a chronological timeline, generated native DuckDB analytical views, and created a kubectl/zdots-inspired root CLI control plane:
          - Datalake Core Library & DuckDB Integration (`bin/lib/ecosystem_datalake.rb`, `lake/ecosystem/ecosystem.duckdb`):
@@ -31,7 +43,7 @@
        - LEGACY ROUTE REMAPPING ENGINE, SOCIAL PROVENANCE & SMART 404 RECOVERY (2026-10-17):
          Built an automated legacy route recovery engine and documented canonical social identities across historical eras:
          - Verified Social Provenance (`_data/social_provenance.yml`):
-           - Recorded and verified handles across @WHOISTechCmty (active channel/broadcasts), @ugtastic (historical brand account verified from ugtastic-web Rails codebase footer), @scmchenry (Software Craftsmanship McHenry County user group), @just3ws (personal/platform dating back to August 2008), and @chicagocodecamp (2010 to 2012 co-organizer and web lead era).
+           - Recorded and verified handles across @WHOISTechCmty (active channel/broadcasts), @ugtastic (historical brand account verified from ugtastic-web Rails codebase footer), @scmchenry (Software Craftsmanship McHenry County user group), @just3ws (personal/platform dating back to August 2008), and @chicagocodecamp (2010 to 2012 volunteer and conference website developer era).
          - Expanded Domain Migration (`_data/domain_migration.yml`):
            - Configured observe-only ingress tracking for ugtastic.com, whoistech.com, whoistechcmty.com, chicagocodecamp.com, scmchenry.org/com, ugl.st, and ironlanguages.net.
          - Declarative Route Mapping & Generator (`_data/legacy_routes.yml`, `bin/generate_legacy_route_map.rb`, `assets/data/legacy_route_map.json`):
