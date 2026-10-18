@@ -4,22 +4,25 @@
 # ---
 # name: youtube_sweeper.rb
 # domain: media
-# purpose: Autonomous YouTube Playlist Sweeper, Deduplication & Health Auditor
+# purpose: Autonomous YouTube Playlist Sweeper, Cooldown Unblocker & Health Auditor
 # usage: ruby bin/youtube_sweeper.rb [options]
 # ---
 
-# bin/youtube_sweeper.rb: Autonomous YouTube Playlist Sweeper & Health Auditor
+# bin/youtube_sweeper.rb: Autonomous YouTube Playlist Sweeper, Cooldown Unblocker & Health Auditor
 #
-# Audits, sweeps, and alerts on YouTube channel state:
+# Audits, sweeps, unblocks, and alerts on YouTube channel and pipeline state:
 # 1. Duplicate playlist items (same video ID repeated in a playlist).
 # 2. Redundant video uploads (different video IDs for identical content).
 # 3. Missing canonical video assets in target playlists.
 # 4. Pipeline Maildir queue health (blocked cooldowns, quarantined failures).
-# 5. Captions parity across registered uploads.
+# 5. Automatic cooldown unblocking: moves blocked/ jobs back to pending/ once API quota is ready.
+# 6. Quarantine recovery: re-queues recoverable failed/ jobs back to pending/ preserving substate.
 #
 # Supports:
 #   --audit                     Audit YouTube state and report warnings (default)
 #   --sweep                     Reconcile playlists by removing duplicate items and adding missing canonicals
+#   --unblock-expired           Unblock jobs in blocked/ when API quota cooldown has expired
+#   --requeue-quarantine        Move failed/ jobs back to pending/ preserving .state.json sidecars
 #   --target PLAYLIST           Filter to specific playlist ID or title keyword (e.g. PLNtb969T2-l0)
 #   --retire-duplicates         Mark redundant duplicate video uploads as private on YouTube
 #   --json                      Emit machine-readable JSON status summary
@@ -30,6 +33,7 @@ require 'optparse'
 require 'yaml'
 require 'json'
 require 'time'
+require 'fileutils'
 require_relative 'lib/youtube_client'
 require_relative 'lib/youtube_deduplicator'
 
@@ -46,7 +50,20 @@ class YouTubeSweeper
   end
 
   def run
+    unblocked = []
+    requeued = []
+
+    if options[:unblock_expired] || (options[:mode] == :sweep && options[:apply])
+      unblocked = unblock_expired_cooldown_jobs(live: options[:apply])
+    end
+
+    if options[:requeue_quarantine]
+      requeued = requeue_quarantined_jobs(live: options[:apply])
+    end
+
     report = audit_all
+    report[:unblocked_jobs] = unblocked
+    report[:requeued_jobs] = requeued
 
     if options[:json]
       puts JSON.pretty_generate(report)
@@ -60,6 +77,115 @@ class YouTubeSweeper
     end
 
     exit(report[:warnings_count].zero? ? 0 : 1)
+  end
+
+  def each_target_directory
+    return unless File.exist?(@targets_path)
+
+    cfg = YAML.safe_load(File.read(@targets_path), permitted_classes: [Date, Time], aliases: true) rescue {}
+    root_base = cfg['base_path'] ? File.expand_path(cfg['base_path']) : nil
+    channels = cfg['channels'] || {}
+
+    channels.each do |chan_key, chan_data|
+      (chan_data['targets'] || {}).each do |tgt_key, tgt_data|
+        target_dir = if tgt_data['base_path']
+                       File.expand_path(tgt_data['base_path'])
+                     elsif root_base
+                       File.join(root_base, chan_key, tgt_key)
+                     end
+        next unless target_dir && Dir.exist?(target_dir)
+
+        yield(chan_key, tgt_key, tgt_data, target_dir)
+      end
+    end
+  end
+
+  def unblock_expired_cooldown_jobs(live: false)
+    quota = calculate_quota_status
+    if quota[:in_cooldown]
+      puts "⏳ Quota cooldown still active (#{quota[:hours_until_reset]}h #{quota[:minutes_until_reset]}m remaining). Skipping unblock." unless options[:quiet] || options[:json]
+      return []
+    end
+
+    unblocked_files = []
+
+    each_target_directory do |_chan_key, tgt_key, _tgt_data, target_dir|
+      blocked_dir = File.join(target_dir, 'blocked')
+      pending_dir = File.join(target_dir, 'pending')
+      next unless Dir.exist?(blocked_dir)
+
+      media_files = Dir.glob(File.join(blocked_dir, '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.sort
+      media_files.each do |f|
+        fn = File.basename(f)
+        if live
+          FileUtils.mkdir_p(pending_dir)
+          dest = File.join(pending_dir, fn)
+          FileUtils.mv(f, dest)
+          Dir.glob("#{f}.*").each do |companion|
+            next if companion.end_with?('.blocked.json') || companion.end_with?('.error.log')
+
+            companion_dest = File.join(pending_dir, File.basename(companion))
+            if companion.end_with?('.state.json')
+              state_data = JSON.parse(File.read(companion)) rescue nil
+              if state_data
+                state_data['file_path'] = dest
+                state_data['meta_phase'] = 'pending' if state_data['meta_phase'] == 'blocked'
+                File.write(companion, JSON.pretty_generate(state_data)) rescue nil
+              end
+            end
+            FileUtils.mv(companion, companion_dest) rescue nil
+          end
+          FileUtils.rm_f("#{f}.blocked.json")
+          puts "🔓 Unblocked expired cooldown job: #{tgt_key}/#{fn} -> pending/" unless options[:quiet] || options[:json]
+        else
+          puts "🔍 [DRY RUN] Would unblock expired cooldown job: #{tgt_key}/#{fn} -> pending/" unless options[:quiet] || options[:json]
+        end
+        unblocked_files << { target: tgt_key, filename: fn, applied: live }
+      end
+    end
+
+    unblocked_files
+  end
+
+  def requeue_quarantined_jobs(live: false)
+    requeued_files = []
+
+    each_target_directory do |_chan_key, tgt_key, _tgt_data, target_dir|
+      failed_dir = File.join(target_dir, 'failed')
+      pending_dir = File.join(target_dir, 'pending')
+      next unless Dir.exist?(failed_dir)
+
+      media_files = Dir.glob(File.join(failed_dir, '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.sort
+      media_files.each do |f|
+        fn = File.basename(f)
+        if live
+          FileUtils.mkdir_p(pending_dir)
+          dest = File.join(pending_dir, fn)
+          FileUtils.mv(f, dest)
+          Dir.glob("#{f}.*").each do |companion|
+            next if companion.end_with?('.error.log') || companion.end_with?('.blocked.json')
+
+            companion_dest = File.join(pending_dir, File.basename(companion))
+            if companion.end_with?('.state.json')
+              state_data = JSON.parse(File.read(companion)) rescue nil
+              if state_data
+                state_data['file_path'] = dest
+                state_data['meta_phase'] = 'pending' if state_data['meta_phase'] == 'failed'
+                File.write(companion, JSON.pretty_generate(state_data)) rescue nil
+              end
+            end
+            FileUtils.mv(companion, companion_dest) rescue nil
+          end
+          FileUtils.rm_f("#{f}.error.log")
+          puts "🔄 Re-queued quarantined job: #{tgt_key}/#{fn} -> pending/" unless options[:quiet] || options[:json]
+        else
+          puts "🔍 [DRY RUN] Would re-queue quarantined job: #{tgt_key}/#{fn} -> pending/" unless options[:quiet] || options[:json]
+        end
+        requeued_files << { target: tgt_key, filename: fn, applied: live }
+      end
+    end
+
+    requeued_files
   end
 
   def audit_all
@@ -92,6 +218,11 @@ class YouTubeSweeper
     # Global pipeline queue warnings
     if report[:queue_health][:failed_count] > 0
       report[:warnings] << "Pipeline quarantine active: #{report[:queue_health][:failed_count]} job(s) in failed/ directory"
+      report[:warnings_count] += 1
+    end
+
+    if report[:queue_health][:blocked_count] > 0 && !report[:quota_status][:in_cooldown]
+      report[:warnings] << "Expired cooldown jobs waiting: #{report[:queue_health][:blocked_count]} job(s) in blocked/ while API is ready"
       report[:warnings_count] += 1
     end
 
@@ -248,19 +379,42 @@ class YouTubeSweeper
     now_utc = Time.now.utc
     # Pacific Time is UTC - 7 in daylight saving time (PDT)
     now_pt = now_utc.getlocal('-07:00')
-    # Reset is at 00:00 PT tomorrow
-    next_reset_pt = Time.new(now_pt.year, now_pt.month, now_pt.day, 0, 0, 0, '-07:00') + 86400
+    # Today's 00:00 PT reset and tomorrow's 00:00 PT reset
+    last_reset_pt = Time.new(now_pt.year, now_pt.month, now_pt.day, 0, 0, 0, '-07:00')
+    next_reset_pt = last_reset_pt + 86400
     seconds_until_reset = (next_reset_pt - now_pt).to_i
 
     hours = seconds_until_reset / 3600
     minutes = (seconds_until_reset % 3600) / 60
 
     in_cooldown = false
-    begin
-      playlists = client.get_channel_playlists
-      in_cooldown = playlists.nil? || playlists.empty?
-    rescue StandardError => e
-      in_cooldown = true if e.message.include?('403') || e.message.include?('quota')
+
+    # 1. Check if any job in blocked/ was blocked after today's 00:00 PT reset
+    each_target_directory do |_chan_key, _tgt_key, _tgt_data, target_dir|
+      blocked_dir = File.join(target_dir, 'blocked')
+      next unless Dir.exist?(blocked_dir)
+
+      Dir.glob(File.join(blocked_dir, '*.blocked.json')).each do |bf|
+        bdata = JSON.parse(File.read(bf)) rescue {}
+        blocked_at_str = bdata['blocked_at']
+        if blocked_at_str
+          blocked_at = Time.parse(blocked_at_str) rescue nil
+          if blocked_at && blocked_at >= last_reset_pt
+            in_cooldown = true
+            break
+          end
+        end
+      end
+    end
+
+    # 2. If not already flagged by recent write-quota exhaustion, test API connectivity
+    unless in_cooldown
+      begin
+        playlists = client.get_channel_playlists
+        in_cooldown = playlists.nil? || playlists.empty?
+      rescue StandardError => e
+        in_cooldown = true if e.message.include?('403') || e.message.include?('quota')
+      end
     end
 
     {
@@ -268,6 +422,7 @@ class YouTubeSweeper
       seconds_until_reset: seconds_until_reset,
       hours_until_reset: hours,
       minutes_until_reset: minutes,
+      last_reset_pt: last_reset_pt.iso8601,
       reset_time_pt: next_reset_pt.iso8601
     }
   end
@@ -275,22 +430,11 @@ class YouTubeSweeper
   def audit_queue_health
     result = { pending_count: 0, processing_count: 0, blocked_count: 0, failed_count: 0 }
 
-    return result unless File.exist?(@targets_path)
-
-    cfg = YAML.safe_load(File.read(@targets_path), permitted_classes: [Date, Time], aliases: true) rescue {}
-    channels = cfg['channels'] || {}
-
-    channels.each do |_chan, chan_data|
-      (chan_data['targets'] || {}).each do |_tgt_key, tgt_data|
-        base = tgt_data['base_path']
-        expanded_base = base ? File.expand_path(base) : nil
-        next unless expanded_base && Dir.exist?(expanded_base)
-
-        result[:pending_count] += Dir.glob(File.join(expanded_base, 'pending', '*')).reject { |f| f.end_with?('.json', '.log') }.size
-        result[:processing_count] += Dir.glob(File.join(expanded_base, 'processing', '*')).reject { |f| f.end_with?('.json', '.log') }.size
-        result[:blocked_count] += Dir.glob(File.join(expanded_base, 'blocked', '*')).reject { |f| f.end_with?('.json', '.log') }.size
-        result[:failed_count] += Dir.glob(File.join(expanded_base, 'failed', '*')).reject { |f| f.end_with?('.json', '.log') }.size
-      end
+    each_target_directory do |_chan_key, _tgt_key, _tgt_data, target_dir|
+      result[:pending_count] += Dir.glob(File.join(target_dir, 'pending', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
+      result[:processing_count] += Dir.glob(File.join(target_dir, 'processing', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
+      result[:blocked_count] += Dir.glob(File.join(target_dir, 'blocked', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
+      result[:failed_count] += Dir.glob(File.join(target_dir, 'failed', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
     end
 
     result
@@ -363,9 +507,9 @@ class YouTubeSweeper
     raw = `yt-dlp --flat-playlist -J "#{url}" 2>/dev/null`
     return [] if raw.nil? || raw.strip.empty?
 
-    data = JSON.parse(raw) rescue {}
+    data = (JSON.parse(raw) rescue nil) || {}
     entries = data['entries'] || []
-    entries.each_with_index.map do |entry, idx|
+    entries.compact.each_with_index.map do |entry, idx|
       v_id = entry['id']
       {
         'id' => "ytdlp_#{playlist_id}_#{idx}_#{v_id}",
@@ -390,6 +534,8 @@ if __FILE__ == $PROGRAM_NAME
     mode: :audit,
     apply: false,
     retire_duplicates: false,
+    unblock_expired: false,
+    requeue_quarantine: false,
     json: false,
     quiet: false,
     target_playlist: nil
@@ -402,8 +548,16 @@ if __FILE__ == $PROGRAM_NAME
       options[:mode] = :audit
     end
 
-    opts.on("--sweep", "Reconcile playlists and deduplicate") do
+    opts.on("--sweep", "Reconcile playlists, unblock expired cooldowns, and deduplicate") do
       options[:mode] = :sweep
+    end
+
+    opts.on("--unblock-expired", "Unblock jobs in blocked/ when API quota is ready") do
+      options[:unblock_expired] = true
+    end
+
+    opts.on("--requeue-quarantine", "Move quarantined jobs in failed/ back to pending/ preserving substate") do
+      options[:requeue_quarantine] = true
     end
 
     opts.on("--target PLAYLIST", "Filter to playlist ID or title substring") do |t|

@@ -694,26 +694,29 @@ class MediaIntakePipeline
           end
         end
 
-        # Metadata Sync Gate: If reusing existing upload, sync revised title/description snippet
+        # Metadata Sync Gate: Only call update_video if snippet changed since upload
         if video_id && !options[:dry_run]
-          begin
-            client.update_video(video_id, {
-              "snippet" => {
-                "title" => metadata[:title],
-                "description" => metadata[:description],
-                "tags" => metadata[:tags],
-                "categoryId" => target_info['category_id'] || "28",
-                "defaultLanguage" => "en"
-              },
-              "status" => {
-                "privacyStatus" => metadata[:privacy],
-                "selfDeclaredMadeForKids" => false,
-                "embeddable" => true
-              }
-            })
-            puts "📝 [Metadata Sync] Verified and synchronized snippet for #{video_id} on YouTube."
-          rescue StandardError => sync_err
-            warn "⚠️ [Metadata Sync] Notice: Could not sync snippet for #{video_id}: #{sync_err.message}"
+          recorded_title = tracker.step_data(:metadata_synthesis)['title']
+          if recorded_title && recorded_title != metadata[:title]
+            begin
+              client.update_video(video_id, {
+                "snippet" => {
+                  "title" => metadata[:title],
+                  "description" => metadata[:description],
+                  "tags" => metadata[:tags],
+                  "categoryId" => target_info['category_id'] || "28",
+                  "defaultLanguage" => "en"
+                },
+                "status" => {
+                  "privacyStatus" => metadata[:privacy],
+                  "selfDeclaredMadeForKids" => false,
+                  "embeddable" => true
+                }
+              })
+              puts "📝 [Metadata Sync] Verified and synchronized revised snippet for #{video_id} on YouTube."
+            rescue StandardError => sync_err
+              warn "⚠️ [Metadata Sync] Notice: Could not sync snippet for #{video_id}: #{sync_err.message}"
+            end
           end
         end
 
@@ -747,7 +750,7 @@ class MediaIntakePipeline
                   playlist_added = true
                   break
                 rescue StandardError => pl_err
-                  if attempt < 2
+                  if attempt < 2 && !(pl_err.message.include?('403') || pl_err.message.include?('quotaExceeded'))
                     sleep (2 ** attempt)
                   else
                     puts "   ⚠️ Could not add to playlist #{target_info['playlist_id']}: #{pl_err.message}"
@@ -779,7 +782,7 @@ class MediaIntakePipeline
                 log_activity('captions', "Uploaded WebVTT captions track to video #{video_id} in #{duration_captions}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'duration_seconds' => duration_captions })
                 break
               rescue StandardError => cap_err
-                if attempt < 2
+                if attempt < 2 && !(cap_err.message.include?('403') || cap_err.message.include?('quotaExceeded'))
                   sleep 2
                 else
                   warn "⚠️ [Captions Warning] Could not upload captions track: #{cap_err.message}"
@@ -1234,11 +1237,11 @@ class MediaIntakePipeline
     File.write(transcript_file, YAML.dump(payload))
     puts "📝 Saved interactive transcript to _data/transcripts/#{slug}.yml"
 
-    register_in_video_assets(slug, metadata, target_name)
+    register_in_video_assets(slug, metadata, target_name, filename)
   end
 
   # Register newly published asset into _data/video_assets.yml
-  def register_in_video_assets(slug, metadata, target_name)
+  def register_in_video_assets(slug, metadata, target_name, filename = nil)
     raw = File.exist?(VIDEO_ASSETS_PATH) ? YAML.safe_load(File.read(VIDEO_ASSETS_PATH), permitted_classes: [Date, Time], aliases: true) : nil
     assets = if raw.is_a?(Hash) && raw['items'].is_a?(Array)
                raw['items']

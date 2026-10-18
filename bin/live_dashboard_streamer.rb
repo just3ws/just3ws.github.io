@@ -51,6 +51,9 @@ class LiveDashboardStreamer
     # Thread 2: Heartbeat Keep-Alive (every 15s)
     heartbeat_thread = Thread.new { run_heartbeat }
 
+    # Thread 3: Autonomous Compliance Sweeper & Cooldown Unblocker (every 15m)
+    sweeper_thread = Thread.new { run_compliance_sweeper }
+
     # Main Accept Loop
     while @running
       begin
@@ -64,6 +67,7 @@ class LiveDashboardStreamer
     server&.close
     watcher_thread&.kill
     heartbeat_thread&.kill
+    sweeper_thread&.kill
   end
 
   def handle_request(client)
@@ -682,8 +686,8 @@ class LiveDashboardStreamer
     base_p = config['base_path']
     return 0 unless base_p && Dir.exist?(base_p)
 
-    targets = config['targets'] || {}
     channel = config['channel'] || 'whoistechcmty'
+    targets = config.dig('channels', channel, 'targets') || config['targets'] || {}
 
     resumed_count = 0
     targets.each_key do |target_name|
@@ -697,6 +701,14 @@ class LiveDashboardStreamer
         FileUtils.mv(f, dest)
         Dir.glob("#{f}.*").each do |companion|
           next if companion.end_with?('.blocked.json')
+          if companion.end_with?('.state.json')
+            state_data = JSON.parse(File.read(companion)) rescue nil
+            if state_data
+              state_data['file_path'] = dest
+              state_data['meta_phase'] = 'pending' if state_data['meta_phase'] == 'blocked'
+              File.write(companion, JSON.pretty_generate(state_data)) rescue nil
+            end
+          end
           FileUtils.mv(companion, File.join(pending_dir, File.basename(companion))) rescue nil
         end
         FileUtils.rm_f("#{f}.blocked.json")
@@ -704,6 +716,27 @@ class LiveDashboardStreamer
       end
     end
     resumed_count
+  end
+
+  def run_compliance_sweeper
+    sweeper_script = File.join(ROOT_DIR, 'bin', 'youtube_sweeper.rb')
+    loop do
+      sleep 900 # Run compliance sweep and cooldown unblocking every 15 minutes
+      next unless File.exist?(sweeper_script)
+
+      begin
+        cmd = "#{RbConfig.ruby} #{sweeper_script} --sweep --retire-duplicates --unblock-expired --apply --quiet"
+        out, status = Open3.capture2e(cmd)
+        if status.success?
+          log_activity('sweeper', 'Scheduled compliance sweeper verified playlists and queue health (0 warnings)', level: 'info')
+        else
+          log_activity('sweeper', "Scheduled compliance sweeper reconciled playlist/queue findings: #{out.lines.first(3).map(&:strip).join(' | ')}", level: 'warning')
+        end
+        broadcast_state!
+      rescue StandardError => e
+        warn "⚠️ Scheduled sweeper error: #{e.message}"
+      end
+    end
   end
 
   def handle_pipeline_stage_to_pending(client, path)

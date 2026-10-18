@@ -85,4 +85,24 @@ RSpec.describe YouTubeSweeper do
       end
     end
   end
+
+  describe '#unblock_expired_cooldown_jobs' do
+    it 'returns an empty array without mutating files when quota cooldown is still active' do
+      allow(sweeper).to receive(:calculate_quota_status).and_return({
+        in_cooldown: true,
+        hours_until_reset: 10,
+        minutes_until_reset: 30
+      })
+      result = sweeper.unblock_expired_cooldown_jobs(live: false)
+      expect(result).to eq([])
+    end
+  end
+
+  describe '#requeue_quarantined_jobs' do
+    it 'returns an array of quarantined job candidates in dry-run mode' do
+      result = sweeper.requeue_quarantined_jobs(live: false)
+      expect(result).to be_an(Array)
+    end
+  end
 end
+

@@ -121,10 +121,78 @@ class EcosystemDatalake
         'debate_partner' => 'Sergio Pereira',
         'target_redirect' => 'ugtastic.com'
       }
+    },
+    {
+      'id' => 'codeplex-sharpresume-library',
+      'initiative' => '#Resume (SharpResume)',
+      'title' => 'Just3Ws.SharpResume C# HR-XML 2.5 Implementation (CodePlex & Google Code)',
+      'era' => '2006 - 2009',
+      'artifact_type' => 'code',
+      'source_repo' => 'codeplex/sharpresume',
+      'file_path' => '_data/portfolio.yml',
+      'description' => 'C# implementation of the HR-XML Consortium 2.5 standardized Resume and CV structure (Just3Ws.SharpResume, SharpResume.Builder, SharpResume.Test), licensed under MIT (Copyright 2006-2009 Just3Ws, Inc.).',
+      'canonical_url' => 'https://codeplexarchive.org/project/sharpresume',
+      'provenance_details' => {
+        'codeplex_url' => 'https://codeplexarchive.org/project/sharpresume',
+        'wayback_2007' => 'https://web.archive.org/web/20070510045718/http://www.codeplex.com:80/sharpresume',
+        'google_code_svn' => 'https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/sharpresume/source-archive.zip',
+        'handles' => 'frogsbrain, just3ws, zalewhol',
+        'copyright' => 'Copyright (c) 2006-2009 Just3Ws, Inc.'
+      }
+    },
+    {
+      'id' => 'codeplex-nstun-library',
+      'initiative' => 'NStun (FrogsBrain.NStun)',
+      'title' => 'FrogsBrain.NStun Native C# RFC 3489 STUN Protocol Library',
+      'era' => '2006 - 2009',
+      'artifact_type' => 'code',
+      'source_repo' => 'codeplex/nstun',
+      'file_path' => '_posts/2006-11-06-nstun.html',
+      'description' => 'Native C# implementation of the RFC 3489 STUN (Simple Traversal Underneath Network Address Translators) UDP protocol, published on CodePlex and FrogsBrain.net under the MIT License.',
+      'canonical_url' => 'https://codeplexarchive.org/project/nstun',
+      'provenance_details' => {
+        'codeplex_url' => 'https://codeplexarchive.org/project/nstun',
+        'frogsbrain_url' => 'https://web.archive.org/web/20081010042552/http://www.frogsbrain.net:80/content/nstun/default.aspx',
+        'copyright' => 'Copyright (c) 2007 FrogsBrain.net / 2009 Just3Ws, Inc.'
+      }
     }
   ].freeze
 
   COMMUNITY_MILESTONES = [
+    {
+      'id' => 'milestone-2006-codeplex-frogsbrain',
+      'event_date' => '2006-10-29',
+      'year' => 2006,
+      'era' => 'Pre-GitHub Open Source & .NET Foundations (2006-2008)',
+      'initiative' => "Frog's Brain / CodePlex",
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'CodePlex Membership (frogsbrain) & NStun RFC 3489 C# Library',
+      'description' => 'Mike Hall joins Microsoft CodePlex under handle frogsbrain (October 29, 2006) and publishes NStun (FrogsBrain.NStun), a native C# implementation of the RFC 3489 STUN UDP NAT traversal protocol.',
+      'details_json' => {
+        'handle' => 'frogsbrain',
+        'profile_wayback' => 'https://web.archive.org/web/20081009115645/http://www.codeplex.com:80/site/users/view/frogsbrain',
+        'nstun_archive' => 'https://codeplexarchive.org/project/nstun',
+        'blog_post' => '_posts/2006-11-06-nstun.html'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2007-schemainsight-sharpresume',
+      'event_date' => '2007-05-10',
+      'year' => 2007,
+      'era' => 'Pre-GitHub Open Source & .NET Foundations (2006-2008)',
+      'initiative' => '#Resume (SharpResume) & SchemaInSight',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => '#Resume (SharpResume) HR-XML 2.5 C# API & SchemaInSight on CodePlex',
+      'description' => 'Mike Hall coordinates #Resume (Just3Ws.SharpResume, C# implementation of the HR-XML Consortium 2.5 Resume specification) and SchemaInSight (.NET 2.0 SQL Server schema inspection API) on CodePlex, Google Code, and FrogsBrain.net.',
+      'details_json' => {
+        'sharpresume_codeplex' => 'https://codeplexarchive.org/project/sharpresume',
+        'sharpresume_wayback_2007' => 'https://web.archive.org/web/20070510045718/http://www.codeplex.com:80/sharpresume',
+        'frogsbrain_net_2008' => 'https://web.archive.org/web/20081009033456/http://www.frogsbrain.net:80/',
+        'copyright' => 'Copyright (c) 2006-2009 Just3Ws, Inc.'
+      }.to_json
+    },
     {
       'id' => 'milestone-2008-chicago-altnet',
       'event_date' => '2008-11-12',

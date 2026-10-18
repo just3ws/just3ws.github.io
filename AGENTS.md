@@ -11,6 +11,22 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - CODEPLEX ARCHIVE PROVENANCE (#RESUME, NSTUN, SCHEMAIN-SIGHT), SCHEDULED SWEEPER AUTOMATION & QUEUE RECONCILIATION (2026-10-18):
+         Grounded early open-source .NET libraries (`#Resume` / `sharpresume`, `NStun`, `SchemaInSight`) and historical handles (`frogsbrain`, `just3ws`, `zalewhol`), resolved the `datalake_sync` `filename` bug, reconciled live YouTube playlists to 0 duplicates, and automated recurring compliance sweeps:
+         - CodePlex & Google Code Archive Provenance (`_data/social_provenance.yml`, `_data/portfolio.yml`, `timeline/index.html`, `bin/lib/ecosystem_datalake.rb`, `docs/ecosystem-history-and-datalake-chronology.md`):
+           - Grounded `#Resume` (`sharpresume` / `Just3Ws.SharpResume`, 2006-2009), a strongly typed C# implementation of the HR-XML Consortium 2.5 standardized Resume and CV specification (`SharpResume`, `SharpResume.Builder` ASP.NET web interface, and `SharpResume.Test` unit test suite), licensed under MIT (`Copyright (c) 2006-2009 Just3Ws, Inc.`), preserved on CodePlex Archive (`https://codeplexarchive.org/project/sharpresume`), Wayback Machine (`https://web.archive.org/web/20070510045718/http://www.codeplex.com:80/sharpresume`), and Google Code Archive SVN (`just3ws`).
+           - Grounded `NStun` (`FrogsBrain.NStun`, 2006-2009), a native C# implementation of the RFC 3489 STUN UDP NAT traversal protocol (`https://codeplexarchive.org/project/nstun`), and `SchemaInSight` (2007-2008), a .NET 2.0 SQL Server schema inspection API (`https://web.archive.org/web/20081010042556/http://www.frogsbrain.net:80/content/schemainsight/default.aspx`).
+           - Recorded historical handles `frogsbrain` (CodePlex Project Coordinator since October 29, 2006; `frogsbrain.net` and `frogsbrain.blogspot.com`), `just3ws`, and `zalewhol`.
+           - Rebuilt ecosystem datalake: 66 repositories, 3,080 commits, 7 historical artifacts, and 92 timeline events across SQLite3 FTS5, DuckDB, JSONL, and manifest.
+         - Scheduled Compliance Sweeper & Cooldown Unblocker (`bin/youtube_sweeper.rb`, `bin/live_dashboard_streamer.rb`, `bin/intake_drive_video.rb`, `spec/youtube/youtube_sweeper_spec.rb`):
+           - Fixed `NameError` (`undefined local variable or method 'filename'`) in `MediaIntakePipeline#register_in_video_assets` during `datalake_sync`.
+           - Re-queued quarantined `VID_20261017_094346214.mp4` (`jHDlgO92bvU`) and unblocked `VID_20261017_161728409.mp4` (`533FSvfDIUE`); both completed `datalake_sync` and `archival` into `processed/2026-10/` with zero byte re-uploads.
+           - Added `unblock_expired_cooldown_jobs` (`--unblock-expired`) and `requeue_quarantined_jobs` (`--requeue-quarantine`) to `YouTubeSweeper`, resolving target directories from root `base_path` and checking `.blocked.json` timestamps against the latest 00:00 PT quota reset.
+           - Executed live playlist sweep across `PLNtb969T2-l0` ("Ramblin' & Amblin'") and `PLMieFbUNB3hM` ("Developer Community, User Groups & Meetup Interviews"): removed all 4 duplicate playlist items, added missing canonical videos (`SLvKYSwUcRc`, `UfwEOPJc6dI`), retired redundant duplicate uploads (`jgrg7hPbdc8`, `n6VWVy_NdSw`, `QTpYkViNnZc`, `WKsVPciUrkM`) to private, and added 3 unblocked videos (`12yuw3lfZ7s`, `fej808b1VRg`, `RNu430nMKgg`) to `PLNtb969T2-l0` (now 16 unique items, 0 duplicates).
+           - Integrated a 15-minute recurring compliance sweeper thread in `LiveDashboardStreamer` (`run_compliance_sweeper`) and a standing background cron schedule.
+         - Verification:
+           - 297/297 specs passing, fast validation passing cleanly, zero em dashes.
+
        - YOUTUBE SWEEPER TOOLING, DASHBOARD MERMAID LAZY RENDERING & UGTASTIC PROVENANCE (2026-10-18):
          Built autonomous sweeper tooling, fixed dashboard architecture tab Mermaid rendering and syntax errors, and grounded UGtastic domain provenance:
          - Autonomous YouTube Sweeper Tooling (`bin/youtube_sweeper.rb`, `bin/pipeline`, `bin/just3ws media sweep`, `spec/youtube/youtube_sweeper_spec.rb`):

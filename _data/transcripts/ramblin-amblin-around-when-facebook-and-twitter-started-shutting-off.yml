@@ -1,0 +1,202 @@
+---
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Host, ramblin-amblin
+turns:
+- speaker: M1
+  text: |-
+    So, around when Facebook and Twitter started shutting off
+    access to their firehose, I was working on a project where
+    I was building out some sentiment analysis and social media
+    coaching tools. Pretty cool, pretty interesting stuff, but
+    they started to shut down access to the APIs and it just,
+    you know, it didn't... We couldn't get enough air underneath our wings and it was
+    complicated, but that's not the point. That's just a scene
+    for a predicament of sentiment analysis, aligning different
+    time zones, all of that, to do like-for-like comparisons
+    between a competitor or an archetype
+    that you're following in your social media to help balance
+    your account against and then giving the users, the
+    customers, guidance on what they should do in their social
+    media feeds.
+- speaker: M1
+  text: |-
+    It was pretty cool, but sentiment analysis was really
+    difficult, especially with the Twitter form, it was really
+    short, and so you'd have to bundle up a couple different
+    feeds. And it was, anyway, it was, one of those things was a
+    little bit beyond where I was with the tools and time to
+    learn a new technology and a new concept. And this is all putting it in 2015 or so, somewhere like
+    that, 2015 going into 2016. So, sentiment analysis was very difficult to do, unless you
+    really knew that space.
+- speaker: M1
+  text: |-
+    There were tools out there, but like I'm talking about with
+    the AI Competence Boost or Illusion,
+    it wasn't easy to just spin up on it out of the blue,
+    especially given what my workload was at the time. But now that's almost a joke. Like, sentiment analysis, we do it, it's embedded in our
+    emails, it's probably going to be running on, well, it's
+    probably running on somebody's smartphone. I mean, a smartwatch or whatever.
+- speaker: M1
+  text: |-
+    Just because of this kind of glue, this amorphous ability
+    to deal with vast amounts of text that became ChatGPT, and
+    LLMs, I should say, before that. So, thinking back to that time, and how much of a pain in
+    the butt doing this kind of work was, and how specialized
+    it was. It was kind of like the level of specialization, as I
+    described in my talk about the audio fix. That you had to really know what you're doing to get in
+    there and figure out how to set temperature, and what does
+    that even mean, and different terminology for clustering,
+    and being able to make inferences based on that cluster.
+- speaker: M1
+  text: |-
+    None of it was easy. And I don't think if people had a general comm-sci
+    background, that they would have necessarily gotten that
+    information, even through traditional, general computer
+    science, you know, to be machine learning especially. So, all of that is just, again, to frame that the stuff we
+    got with the LLMs makes some of the things that were a real
+    pain in the butt that you had to know a lot how to do,
+    almost trivial to do. But, again, do you know whether it's right or wrong?
+- speaker: M1
+  text: |-
+    Do you know if it's giving you the correct sentiment at
+    scale? You know, maybe one or two times you run the test, and it
+    seems to be about right, but it's not deterministic. Maybe it'll change. Maybe there's too many maybes.
+- speaker: M1
+  text: |-
+    You know, maybe one word just becomes a trigger word for it
+    , and not to use a charged word, but it causes it to have
+    some kind of invalid outcome. And there's no way of knowing ahead of time what that
+    exactly is going to be, because it's non-deterministic. And I'm not saying, you know, end of the world. I'm just saying, like, not knowing is the problem.
+- speaker: M1
+  text: |-
+    Because it's so easy now, it gives a false sense of
+    confidence in the outcome that we're seeing from these
+    tools, because it's its own best height machine. But, again, they are really useful. I have been able to leverage them. But, anyway, I digress.
+- speaker: M1
+  text: |-
+    The point was, this was a real pain in the butt to do. And it ended up being kind of a sticking point as far as
+    technology was, going back to that startup. It was just a bridge too far for where it was at the time,
+    and, again, resources and what the tooling was in the
+    moment. And now that stuff is trivial.
+- speaker: M1
+  text: |-
+    And what does that mean? Like, that startup was doomed for, like, best case scenario
+    , no matter what. Because everything that we were doing is trivial to a tool
+    like JGPT. Pulling together, or, you know, any of the coding
+    assistants.
+- speaker: M1
+  text: |-
+    The graded automating, pulling downstream, structuring a
+    feed, aggregating, ensuring the windows of ID ranges are
+    closed. Correlating the time zones across different feeds. Building a SQLite DuckDB database that becomes portable. Like, you can do things, like, at a rate that is an
+    incredible clip, and they'll be real.
+- speaker: M1
+  text: |-
+    And when you have a tool that is that flexible, it's kind
+    of like a magic box. You know, you just kind of will things into existence. I don't know. Like, I don't know.
+- speaker: M1
+  text: Like, is that a universal experience? And I'm sure there's people that sit
+    down. I look at some of the stuff people sit down and create. And I'm like, I
+    don't know how much of the surface level.
+- speaker: M1
+  text: |-
+    It's been really impressive looking. But I digress from a digression back to the stuff used to
+    be hard. And then, so, again, all of that history about where I got
+    to with that startup and trying to do sentiment analysis
+    across Twitter and Facebook feeds,
+    was to express, like, how impressed I was with the
+    capabilities of the LLM tools when the LLM was first
+    released. There was the big rush to get a download, the LLM, and then
+    , you know, I was drinking from the fire hose, too, at this
+    time.
+- speaker: M1
+  text: |-
+    I grabbed this tool called Dolly, which is a Ruby gem that
+    allowed you to run, pull down, and basically compile the LL
+    M locally. And I got it running on my MacBook Pro Intel i7. So, the thing would basically catch on fire every single
+    time I would run the tool. And, like, later when Codex and anti-gravity and stuff like
+    that started to come out, I couldn't even, it would just,
+    it might, my computer would get so hot, it would just shut
+    down.
+- speaker: M1
+  text: |-
+    So, the thing was, though, is that just running a few
+    prompts, it became apparent that I could ask it about the
+    meaning of some text and whether or not it was happy text
+    or sad text. And I just thought, just was, like, floored. This was something that, like, I was going to have to learn
+    this whole domain of machine learning and text and natural
+    language processing and all these kinds of things just in
+    order to do, you know, how are people feeling across a
+    thread. And where are the hot spots, you know, the happy spots,
+    whatever, for engagement.
+- speaker: M1
+  text: |-
+    So, yeah, the impact of just these tools also, I don't know
+    , I've been talking for 10 minutes here now. I think that's enough, because that's, I also did the
+    machine learning for the humanities course. And, like, it was, like, an eight-hour course. And I still highly recommend doing something like that, if
+    not that, maybe use AI to update it so that way it uses
+    updated versions or something.
+- speaker: M1
+  text: Maybe that's something I'll play with. I don't know, I'm not committing to
+    anything. Don't hold me to anything. And I'm going to shut up now.
+- speaker: M1
+  text: |-
+    The point was, is that doing those exercises, you know,
+    check them out. Like, everybody's talking about these LLM courses. I haven't tried them yet, but I think Stanford released
+    some. I think it was Stanford.
+- speaker: M1
+  text: |-
+    Anyway, you look it up, you probably not be able to find it
+    . But the point is, is that having done those prior to ChatGP
+    T, at least, kind of inoculated me, I think, a little bit
+    from some of the magic of what the tool was. And I also recognize just how powerful and actually
+    dangerous this darn thing really is. But dangerous like a chainsaw or a lawnmower or a scythe,
+    you know, like, it's in the wielder.
+- speaker: M1
+  text: |-
+    But, yes, it is a powerful tool. So, anywho, yep, this stuff used to be really hard. This stuff meaning, like, sentiment analysis and similarity
+    comparisons between bodies of text to find. Heck, I remember a Groupon doing, at the early fraud team,
+    there was some work on the Levenstein distance algorithm to
+    detect fraud.
+- speaker: M1
+  text: |-
+    I don't remember where that went, but that was so long ago,
+    back a very, very long time ago. None of that infrastructure is the way it is, was then. So, just saying that, um, that was a big deal for the folks
+    that were working on that stuff. Because it was a real pain in the butt.
+- speaker: M1
+  text: |-
+    They were using Clojure because, cool people. Um, but, uh, we can wield these tools, though, in a way
+    that's, it's not like just, you have to know how to plug
+    everything together, but that you can kind of just throw a
+    problem at it and it'll appear to solve it. But, uh, it's, I don't know, like, was that the right
+    answer, you know, um, and sometimes when you're seeing it
+    hallucinate on text or asking it a question about something
+    very niche but that you have a lot of deep knowledge of. Like, maybe something, a show you watched that was, like, a
+    weird Saturday morning thing when you were real little.
+- speaker: M1
+  text: |-
+    Um, and then asking it questions about that and it's just
+    making stuff up just completely whole cloth. You know, like, those characters didn't exist, that
+    storyline never happened. That's a total mischaracterization, and then you ask it and
+    tell it that that happened, and it says, oh, yes, you're
+    right, I, oh, my bad. Um, but when it's doing something as simple as that, the
+    sentiment, like, it's still a magic box.
+- speaker: M1
+  text: |-
+    You don't know where the, you have no control over, over
+    the controls for the sentiment analysis or how to infer, I
+    mean, make valid assertions as to whether or not, um, it
+    was tuned correctly. So, that way, when you're letting that processor run, that,
+    that thing run, um, that it's, uh, is actually doing the
+    thing it says it's doing. Uh-huh. I know there's people out there that know way more than me,
+    and that's the dangerous part, is that I know where my
+    limits are.
+- speaker: M1
+  text: |-
+    And, um, um, I've seen folks who don't know where their
+    limits are, and, uh, sometimes that's good, and sometimes
+    that's a little bit reckless. Um, but, um, in this case, um, it's something we've got to
+    deal with. The tools make stuff a little bit too easy sometimes, that
+    used to be hard, and probably should have just stayed hard. All right, thanks, bye.
