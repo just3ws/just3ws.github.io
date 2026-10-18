@@ -50,3 +50,30 @@ communities and bridge the gap between physical conference interactions and digi
 discovery. Features the signature heart glyph in the user-group registration interface,
 with the initial capture on January 11, 2014 and the final snapshot under my ownership
 on December 22, 2014.
+
+## #Resume (SharpResume), NStun & Frog's Brain Open-Source Suite
+**Role:** Creator & Project Coordinator
+**Years:** 2006 - 2009
+
+Early open-source C# / .NET Framework 2.0 (v2.0.50727, Visual Studio 2005) libraries
+published on CodePlex, Google Code, and FrogsBrain.net under the MIT License (Copyright
+2006-2009 Just3Ws, Inc. / FrogsBrain.net). Includes NStun (FrogsBrain.NStun, native C#
+RFC 3489 STUN UDP NAT traversal protocol engineered while solving real-time distributed
+ticket broker connectivity at TicketsNow), #Resume (Just3Ws.SharpResume, strongly typed
+C# object model, XML serialization engine, and ASP.NET Builder implementing the HR-XML
+Consortium 2.5 Resume specification), and SchemaInSight (programmatic SQL Server schema
+inspection API).
+
+## RubyGems (60,304 Downloads), Clojars semantic-csv & Chocolatey Launch CTA
+**Role:** Open-Source Author & Collaborator
+**Years:** 2012 - 2019
+
+Published three production RubyGems under handle just3ws totaling 60,304 downloads
+(express_pigeon v2.4.1 with 30,267 downloads, biscuit-monitor v0.0.4 with 18,026
+downloads for CLEAR Spot 4G+ hotspot telemetry, and biscotti v0.1.4 with 12,011
+downloads). Built the top-of-site Kickstarter launch CTA banner on chocolatey.org
+(commit fa6a43b0, GH-124) for Rob Reynolds (ferventcoder) in November 2014. Catalyzed
+the Clojars 0.2.0 release of metasoarous/semantic-csv (Issue #49) while building the
+plik Clojure multi-delimiter CSV service, and served as #1 all-time contributor to
+coderwall/coderwall-legacy (634 commits, 856 stars) and creator of
+assemblymade/coderwall-badges.

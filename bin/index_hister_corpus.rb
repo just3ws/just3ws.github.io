@@ -15,6 +15,9 @@
 
 require 'open3'
 require 'uri'
+require 'json'
+
+HISTER_CONFIG = '/opt/homebrew/var/hister/config.yml'
 
 CORPUS = {
   "Software Craftsmanship Movement" => [
@@ -85,7 +88,10 @@ CORPUS = {
     "https://www.just3ws.localhost/interviews/communities/",
     "https://www.just3ws.localhost/scmc/",
     "https://www.just3ws.localhost/ugtastic/",
+    "https://www.just3ws.localhost/timeline/",
     "https://www.just3ws.localhost/timeline/community/",
+    "https://www.just3ws.localhost/portfolio/",
+    "https://www.just3ws.localhost/history/",
     "https://www.just3ws.localhost/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/",
     "https://www.just3ws.localhost/interviews/scott-seely-lake-county-net-user-group-lcnug-lake-county-net-user-group-lcnug/",
     "https://www.just3ws.localhost/interviews/people/",
@@ -93,24 +99,79 @@ CORPUS = {
     "https://www.meetup.com/Chicago-Alt-Net/",
     "https://www.chipy.org/",
     "https://www.meetup.com/ChicagoRuby/"
+  ],
+  "Open-Source & Archival Provenance (CodePlex, RubyGems, Clojars, Coderwall, Chocolatey)" => [
+    "https://codeplexarchive.org/project/sharpresume",
+    "https://codeplexarchive.org/project/nstun",
+    "https://rubygems.org/profiles/just3ws",
+    "https://rubygems.org/gems/express_pigeon",
+    "https://rubygems.org/gems/biscuit-monitor",
+    "https://rubygems.org/gems/biscotti",
+    "https://github.com/ferventcoder/chocolatey.org-archive/commit/fa6a43b0268178417d4f2420a66964b72ee3bd09",
+    "https://github.com/metasoarous/semantic-csv/issues/49",
+    "https://clojars.org/semantic-csv",
+    "https://github.com/coderwall/coderwall-legacy",
+    "https://github.com/assemblymade/coderwall-badges",
+    "https://github.com/rails/rails/pull/17990",
+    "https://github.com/just3ws/nerd-font-cheatsheets",
+    "https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home",
+    "https://web.archive.org/web/20081009033456/http://www.frogsbrain.net:80/",
+    "https://web.archive.org/web/20120414040704/http://www.ugtastic.com/",
+    "https://web.archive.org/web/20171117114045/https://www.ugtastic.com/",
+    "https://web.archive.org/web/20140111160057/https://ugl.st/",
+    "https://web.archive.org/web/20141222063128/https://ugl.st/"
   ]
 }.freeze
 
-puts "🔍 Hister Corpus Ingestion Engine"
+def extract_datalake_urls
+  jsonl_path = File.expand_path('../lake/ecosystem/ecosystem.jsonl', __dir__)
+  return [] unless File.exist?(jsonl_path)
+
+  urls = []
+  File.foreach(jsonl_path) do |line|
+    rec = JSON.parse(line) rescue next
+    case rec['record_type']
+    when 'historical_artifact'
+      u = rec.dig('data', 'canonical_url')
+      urls << u if u && u.start_with?('http')
+      (rec.dig('data', 'provenance_details') || {}).each_value do |val|
+        val.to_s.scan(%r{https?://[^\s)\]"',]+}) { |m| urls << m }
+      end
+    when 'timeline_event'
+      details = JSON.parse(rec.dig('data', 'details_json').to_s) rescue {}
+      details.each_value do |val|
+        val.to_s.scan(%r{https?://[^\s)\]"',]+}) { |m| urls << m }
+      end
+    end
+  end
+  urls.uniq.reject { |u| u.include?('*') || u.end_with?('.zip') }
+end
+
+puts "🔍 Hister Corpus & Ecosystem Datalake Ingestion Engine"
 puts "======================================================="
+
+sections = CORPUS.dup
+datalake_urls = extract_datalake_urls - sections.values.flatten
+sections["Ecosystem Datalake Discovered Provenance"] = datalake_urls if datalake_urls.any?
+
+only_category = ARGV.find { |a| !a.start_with?('--') }
 
 total_indexed = 0
 total_failed = 0
 total_skipped = 0
 
-CORPUS.each do |section, urls|
+sections.each do |section, urls|
+  next if only_category && !section.downcase.include?(only_category.downcase)
+
   puts "\n📂 Category: #{section} (#{urls.size} target URLs)"
   puts "-------------------------------------------------------"
-  
+
   urls.each_with_index do |url, idx|
-    cmd = ["hister", "index", url, "--force"]
+    cmd = ["hister", "index", "--config", HISTER_CONFIG, "--ignore-rules", "--force"]
+    cmd += ["--header", "Authorization=Basic Y29kZXBsZXg6bWljcm9zb2Z0"] if url.include?("codeplexarchive.org")
+    cmd << url
     stdout, stderr, status = Open3.capture3(*cmd)
-    
+
     if status.success?
       if stdout.include?("already indexed")
         puts "  [#{idx + 1}/#{urls.size}] ⏭️  SKIP: #{url} (already indexed)"
@@ -124,9 +185,9 @@ CORPUS.each do |section, urls|
       puts "  [#{idx + 1}/#{urls.size}] ⚠️  FAILED: #{url} - #{err_msg}"
       total_failed += 1
     end
-    
+
     # Polite pacing
-    sleep 0.2
+    sleep 0.15
   end
 end
 

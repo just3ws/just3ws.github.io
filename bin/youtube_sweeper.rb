@@ -189,8 +189,10 @@ class YouTubeSweeper
   end
 
   def audit_all
+    now_ct = ENV['TZ'] == 'America/Chicago' ? Time.now : Time.now.getlocal('-05:00')
     report = {
       audited_at: Time.now.utc.iso8601,
+      audited_at_ct: now_ct.strftime('%Y-%m-%d %I:%M:%S %p CT'),
       quota_status: calculate_quota_status,
       queue_health: audit_queue_health,
       playlists: [],
@@ -323,7 +325,7 @@ class YouTubeSweeper
 
     puts "=" * 80
     puts "🎬 YOUTUBE PLAYLIST SWEEPER & HEALTH AUDITOR"
-    puts "   Timestamp: #{report[:audited_at]} | Mode: #{options[:mode].to_s.upcase}"
+    puts "   Timestamp: #{report[:audited_at_ct] || report[:audited_at]} | Mode: #{options[:mode].to_s.upcase}"
     puts "   Target Filter: #{options[:target_playlist] || 'All Target Playlists'}"
     puts "=" * 80
 
@@ -331,10 +333,10 @@ class YouTubeSweeper
     q = report[:quota_status]
     puts "\n📊 API QUOTA STATUS:"
     if q[:in_cooldown]
-      puts "   ⏳ QUOTA EXHAUSTED: Resets in #{q[:hours_until_reset]}h #{q[:minutes_until_reset]}m (at 00:00 PT / 02:00 CT)"
+      puts "   ⏳ QUOTA EXHAUSTED: Resets in #{q[:hours_until_reset]}h #{q[:minutes_until_reset]}m (at 2:00 AM CT / 00:00 PT)"
       puts "   Transparent fallback: yt-dlp flat-playlist metadata engine active"
     else
-      puts "   ✅ API READY: YouTube Data API v3 authenticated and active"
+      puts "   ✅ API READY: YouTube Data API v3 authenticated and active (Next reset in #{q[:hours_until_reset]}h #{q[:minutes_until_reset]}m at 2:00 AM CT)"
     end
 
     # Queue Card
@@ -379,9 +381,11 @@ class YouTubeSweeper
     now_utc = Time.now.utc
     # Pacific Time is UTC - 7 in daylight saving time (PDT)
     now_pt = now_utc.getlocal('-07:00')
-    # Today's 00:00 PT reset and tomorrow's 00:00 PT reset
+    # Today's 00:00 PT (2:00 AM CT) reset and tomorrow's 00:00 PT (2:00 AM CT) reset
     last_reset_pt = Time.new(now_pt.year, now_pt.month, now_pt.day, 0, 0, 0, '-07:00')
     next_reset_pt = last_reset_pt + 86400
+    last_reset_ct = last_reset_pt.getlocal('-05:00')
+    next_reset_ct = next_reset_pt.getlocal('-05:00')
     seconds_until_reset = (next_reset_pt - now_pt).to_i
 
     hours = seconds_until_reset / 3600
@@ -389,7 +393,7 @@ class YouTubeSweeper
 
     in_cooldown = false
 
-    # 1. Check if any job in blocked/ was blocked after today's 00:00 PT reset
+    # 1. Check if any job in blocked/ was blocked after today's 2:00 AM CT (00:00 PT) reset
     each_target_directory do |_chan_key, _tgt_key, _tgt_data, target_dir|
       blocked_dir = File.join(target_dir, 'blocked')
       next unless Dir.exist?(blocked_dir)
@@ -422,6 +426,8 @@ class YouTubeSweeper
       seconds_until_reset: seconds_until_reset,
       hours_until_reset: hours,
       minutes_until_reset: minutes,
+      last_reset_ct: last_reset_ct.iso8601,
+      reset_time_ct: next_reset_ct.iso8601,
       last_reset_pt: last_reset_pt.iso8601,
       reset_time_pt: next_reset_pt.iso8601
     }

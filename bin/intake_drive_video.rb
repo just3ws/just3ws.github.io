@@ -734,7 +734,14 @@ class MediaIntakePipeline
               existing_pl_vids = client.get_playlist_video_ids(target_info['playlist_id'])
               already_in_pl = existing_pl_vids.include?(video_id)
             rescue StandardError
-              # Ignore read check errors (e.g. quota or network)
+              # Fallback to zero-quota yt-dlp check when API read check hits quota/network error
+              begin
+                ytdlp_cmd = ['yt-dlp', '--flat-playlist', '--print', 'id', "https://www.youtube.com/playlist?list=#{target_info['playlist_id']}"]
+                out, status = Open3.capture2(*ytdlp_cmd)
+                already_in_pl = out.lines.map(&:strip).include?(video_id) if status.success?
+              rescue StandardError
+                # Ignore fallback errors
+              end
             end
 
             if already_in_pl
@@ -767,6 +774,11 @@ class MediaIntakePipeline
         end
 
         # 8. Attach Captions Track (WebVTT)
+        # Note: captions.insert costs 400 API quota units (25% of a video upload).
+        # Because the full Whisper transcript is embedded in the video description,
+        # saved to the local datalake, and auto-captioned by YouTube for 0 units,
+        # quota exhaustion on captions_upload defers the 400-unit WebVTT track
+        # and immediately completes datalake_sync and archival.
         if transcript_data[:vtt] && !transcript_data[:vtt].strip.empty?
           if tracker.step_completed?(:captions_upload)
             puts "⏭️ [Substate: captions_upload] Captions track already uploaded for #{video_id}."
@@ -784,6 +796,11 @@ class MediaIntakePipeline
               rescue StandardError => cap_err
                 if attempt < 2 && !(cap_err.message.include?('403') || cap_err.message.include?('quotaExceeded'))
                   sleep 2
+                elsif cap_err.message.include?('403') || cap_err.message.include?('quotaExceeded')
+                  warn "⚡ [Quota Conservation] Deferring 400-unit WebVTT caption upload for #{video_id} (YouTube auto-captions + description transcript active). Proceeding to datalake sync & archival."
+                  tracker.complete_step(:captions_upload, 'duration_seconds' => 0.0, 'note' => 'deferred_quota_conservation')
+                  log_activity('captions', "Deferred 400-unit WebVTT caption upload for #{video_id} to conserve quota; proceeding to datalake sync & archival", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'deferred' => true })
+                  break
                 else
                   warn "⚠️ [Captions Warning] Could not upload captions track: #{cap_err.message}"
                   log_activity('warning', "Failed uploading captions for #{video_id}: #{cap_err.message}", level: 'warning', details: { 'video_id' => video_id, 'error' => cap_err.message })
@@ -825,10 +842,13 @@ class MediaIntakePipeline
         FileUtils.mv(processing_path, final_dest)
         FileUtils.mv(sidecar_path, File.join(month_dir, File.basename(sidecar_path))) if sidecar_path && File.exist?(sidecar_path)
 
-        # Prune any previous failed artifacts from prior transient attempts
+        # Prune any previous failed or blocked artifacts from prior transient attempts
         FileUtils.rm_f(File.join(failed_dir, filename))
         FileUtils.rm_f(File.join(failed_dir, "#{filename}.error.log"))
         FileUtils.rm_f(File.join(failed_dir, "#{filename}.state.json"))
+        FileUtils.rm_f(File.join(blocked_dir, filename))
+        FileUtils.rm_f(File.join(blocked_dir, "#{filename}.blocked.json"))
+        FileUtils.rm_f(File.join(blocked_dir, "#{filename}.state.json"))
 
         t_end = Time.now
         duration_total = (t_end.-(t_start)).round(2)
@@ -894,9 +914,9 @@ class MediaIntakePipeline
                end
 
       if triage[:decision] == 'upstream_quota_blocked'
-        warn "⏳ [Blocked] Upstream rate limit or quota exceeded for #{filename}: #{e.message}. Cooldown active until 00:00 PT."
-        log_activity('blocked', "Pipeline temporarily blocked on #{filename} due to upstream quota/rate limit: #{e.message}. Resumes upon cooldown reset.", level: 'warning', details: triage)
-        tracker.block_step(tracker.current_step || 'unknown', e.message, 'resets_at' => '00:00 PT', 'decision' => 'upstream_quota_blocked')
+        warn "⏳ [Blocked] Upstream rate limit or quota exceeded for #{filename}: #{e.message}. Cooldown active until 2:00 AM CT (00:00 PT)."
+        log_activity('blocked', "Pipeline temporarily blocked on #{filename} due to upstream quota/rate limit: #{e.message}. Resumes upon 2:00 AM CT cooldown reset.", level: 'warning', details: triage)
+        tracker.block_step(tracker.current_step || 'unknown', e.message, 'resets_at' => '2:00 AM CT (00:00 PT)', 'decision' => 'upstream_quota_blocked')
 
         unless options[:dry_run]
           blocked_dest = File.join(blocked_dir, filename)
@@ -907,11 +927,11 @@ class MediaIntakePipeline
           File.write(blocked_info, JSON.pretty_generate({
             'blocked_at' => Time.now.utc.iso8601,
             'reason' => 'upstream_quota_blocked',
-            'cooldown_resets_at' => '00:00 PT',
+            'cooldown_resets_at' => '2:00 AM CT (00:00 PT)',
             'step' => tracker.current_step,
             'diagnostic' => e.message
           }))
-          puts "⏳ Moved to blocked/#{filename} (Waiting for 00:00 PT quota cooldown)."
+          puts "⏳ Moved to blocked/#{filename} (Waiting for 2:00 AM CT / 00:00 PT quota cooldown)."
         end
       else
         warn "❌ [Error] Failed processing #{filename}: #{e.message}"

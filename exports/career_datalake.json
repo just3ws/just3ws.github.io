@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-10-18T14:01:44Z",
+    "generated_at": "2026-10-18T18:58:35Z",
     "system": "CareerOS Master Datalake",
     "canonical_url": "https://www.just3ws.com/career_datalake.json",
     "endpoints": {
@@ -16,10 +16,10 @@
       "total_positions": 28,
       "total_archetypes": 5,
       "total_articles": 186,
-      "total_interviews": 225,
-      "total_transcripts_indexed": 225,
+      "total_interviews": 229,
+      "total_transcripts_indexed": 229,
       "total_knowledge_graph_nodes": 474,
-      "total_technologies_tracked": 132
+      "total_technologies_tracked": 133
     }
   },
   "candidate_profile": {
@@ -1281,11 +1281,13 @@
       "id": "ticketsnow",
       "summary": "Owned real-time inventory systems, leading transactional integrity and iterative delivery for revenue-critical operations.",
       "highlights": [
-        "Architected a real-time inventory locking and transaction reconciliation service, preventing race conditions on concurrent ticket sales and generating $2M+ in protected revenue.",
+        "Architected a real-time inventory locking and transaction reconciliation service on .NET Framework 2.0, preventing race conditions on concurrent ticket sales across distributed brokers and generating $2M+ in protected revenue.",
+        "Engineered UDP NAT traversal (RFC 3489 STUN) to reach distributed ticket brokers across firewalls, releasing the core protocol implementation as the open-source NStun (FrogsBrain.NStun) C# library on CodePlex.",
         "Introduced and led Scrum agile practices for the core transaction engineering team, improving sprint delivery predictability."
       ],
       "skills": [
         "C#",
+        ".NET Framework 2.0",
         "ASP.NET",
         "Microsoft BizTalk Server",
         "Microsoft SQL Server",
@@ -1594,74 +1596,6 @@
     }
   },
   "technology_provenance": {
-    "Ruby on Rails": {
-      "skill": "Ruby on Rails",
-      "first_seen_year": 2009,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "BenchPrep",
-          "title": "Senior Software Developer",
-          "start_date": "2017-03-01",
-          "end_date": "2018-02-01"
-        },
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        },
-        {
-          "company": "KloboMedia",
-          "title": "CTO",
-          "start_date": "2014-03-01",
-          "end_date": "2016-09-01"
-        },
-        {
-          "company": "Obtiva",
-          "title": "Software Engineer",
-          "start_date": "2009-08-01",
-          "end_date": "2011-07-01"
-        },
-        {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
-          "start_date": "2021-01-01",
-          "end_date": "2026-02-01"
-        },
-        {
-          "company": "ReachLocal",
-          "title": "Senior Software Developer",
-          "start_date": "2015-03-01",
-          "end_date": "2016-11-01"
-        },
-        {
-          "company": "SK Holdings, Inc.",
-          "title": "Senior Backend Developer",
-          "start_date": "2019-01-01",
-          "end_date": "2020-12-01"
-        },
-        {
-          "company": "Upcity",
-          "title": "Senior Software Developer",
-          "start_date": "2013-10-01",
-          "end_date": "2014-02-01"
-        },
-        {
-          "company": "Viewpoints",
-          "title": "Senior Software Developer",
-          "start_date": "2013-05-01",
-          "end_date": "2013-10-01"
-        },
-        {
-          "company": "WWWorkRemote",
-          "title": "Principal Architect",
-          "start_date": "2021-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 10
-    },
     "JavaScript": {
       "skill": "JavaScript",
       "first_seen_year": 2000,
@@ -1726,6 +1660,74 @@
           "title": "Senior .NET Developer",
           "start_date": "2005-11-01",
           "end_date": "2007-03-01"
+        }
+      ],
+      "total_occurrences": 10
+    },
+    "Ruby on Rails": {
+      "skill": "Ruby on Rails",
+      "first_seen_year": 2009,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "BenchPrep",
+          "title": "Senior Software Developer",
+          "start_date": "2017-03-01",
+          "end_date": "2018-02-01"
+        },
+        {
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        },
+        {
+          "company": "KloboMedia",
+          "title": "CTO",
+          "start_date": "2014-03-01",
+          "end_date": "2016-09-01"
+        },
+        {
+          "company": "Obtiva",
+          "title": "Software Engineer",
+          "start_date": "2009-08-01",
+          "end_date": "2011-07-01"
+        },
+        {
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "2021-01-01",
+          "end_date": "2026-02-01"
+        },
+        {
+          "company": "ReachLocal",
+          "title": "Senior Software Developer",
+          "start_date": "2015-03-01",
+          "end_date": "2016-11-01"
+        },
+        {
+          "company": "SK Holdings, Inc.",
+          "title": "Senior Backend Developer",
+          "start_date": "2019-01-01",
+          "end_date": "2020-12-01"
+        },
+        {
+          "company": "Upcity",
+          "title": "Senior Software Developer",
+          "start_date": "2013-10-01",
+          "end_date": "2014-02-01"
+        },
+        {
+          "company": "Viewpoints",
+          "title": "Senior Software Developer",
+          "start_date": "2013-05-01",
+          "end_date": "2013-10-01"
+        },
+        {
+          "company": "WWWorkRemote",
+          "title": "Principal Architect",
+          "start_date": "2021-01-01",
+          "end_date": null
         }
       ],
       "total_occurrences": 10
@@ -2172,70 +2174,6 @@
       ],
       "total_occurrences": 5
     },
-    "MySQL": {
-      "skill": "MySQL",
-      "first_seen_year": 2009,
-      "last_seen_year": 2020,
-      "roles_used": [
-        {
-          "company": "ActiveCampaign",
-          "title": "Senior Software Developer",
-          "start_date": "2018-09-01",
-          "end_date": "2018-12-01"
-        },
-        {
-          "company": "Groupon",
-          "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
-          "start_date": "2011-07-01",
-          "end_date": "2013-05-01"
-        },
-        {
-          "company": "Obtiva",
-          "title": "Software Engineer",
-          "start_date": "2009-08-01",
-          "end_date": "2011-07-01"
-        },
-        {
-          "company": "SK Holdings, Inc.",
-          "title": "Senior Backend Developer",
-          "start_date": "2019-01-01",
-          "end_date": "2020-12-01"
-        }
-      ],
-      "total_occurrences": 4
-    },
-    "JSON": {
-      "skill": "JSON",
-      "first_seen_year": 2003,
-      "last_seen_year": 2009,
-      "roles_used": [
-        {
-          "company": "Business Decisions, Inc.",
-          "title": "Principal Developer",
-          "start_date": "2008-10-01",
-          "end_date": "2009-08-01"
-        },
-        {
-          "company": "Integrated Performance Solutions, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "2003-11-01",
-          "end_date": "2004-07-01"
-        },
-        {
-          "company": "JPMorgan Chase & Co.",
-          "title": "Assistant Vice President, Application Developer",
-          "start_date": "2008-04-01",
-          "end_date": "2008-10-01"
-        },
-        {
-          "company": "TicketsNow",
-          "title": "Senior .NET Developer",
-          "start_date": "2005-11-01",
-          "end_date": "2007-03-01"
-        }
-      ],
-      "total_occurrences": 4
-    },
     "CSS": {
       "skill": "CSS",
       "first_seen_year": 2000,
@@ -2300,42 +2238,22 @@
       ],
       "total_occurrences": 4
     },
-    "HTML": {
-      "skill": "HTML",
-      "first_seen_year": 2000,
-      "last_seen_year": 2004,
+    "JSON": {
+      "skill": "JSON",
+      "first_seen_year": 2003,
+      "last_seen_year": 2009,
       "roles_used": [
         {
-          "company": "New Labor Strategies, Inc.",
+          "company": "Business Decisions, Inc.",
+          "title": "Principal Developer",
+          "start_date": "2008-10-01",
+          "end_date": "2009-08-01"
+        },
+        {
+          "company": "Integrated Performance Solutions, Inc.",
           "title": "Programmer Analyst",
-          "start_date": "2002-06-01",
-          "end_date": "2003-11-01"
-        },
-        {
-          "company": "Riverpoint Group",
-          "title": "Software Developer",
-          "start_date": "2004-07-01",
-          "end_date": "2004-08-01"
-        },
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
-        }
-      ],
-      "total_occurrences": 3
-    },
-    "XML": {
-      "skill": "XML",
-      "first_seen_year": 2004,
-      "last_seen_year": 2008,
-      "roles_used": [
-        {
-          "company": "Brightstar Corporation",
-          "title": "Senior .NET Developer",
-          "start_date": "2007-03-01",
-          "end_date": "2008-04-01"
+          "start_date": "2003-11-01",
+          "end_date": "2004-07-01"
         },
         {
           "company": "JPMorgan Chase & Co.",
@@ -2344,39 +2262,45 @@
           "end_date": "2008-10-01"
         },
         {
-          "company": "Motorola",
-          "title": "Senior Software Developer",
-          "start_date": "2004-08-01",
-          "end_date": "2005-05-01"
+          "company": "TicketsNow",
+          "title": "Senior .NET Developer",
+          "start_date": "2005-11-01",
+          "end_date": "2007-03-01"
         }
       ],
-      "total_occurrences": 3
+      "total_occurrences": 4
     },
-    "Active Server Pages (ASP)": {
-      "skill": "Active Server Pages (ASP)",
-      "first_seen_year": 2000,
-      "last_seen_year": 2004,
+    "MySQL": {
+      "skill": "MySQL",
+      "first_seen_year": 2009,
+      "last_seen_year": 2020,
       "roles_used": [
         {
-          "company": "Integrated Performance Solutions, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "2003-11-01",
-          "end_date": "2004-07-01"
+          "company": "ActiveCampaign",
+          "title": "Senior Software Developer",
+          "start_date": "2018-09-01",
+          "end_date": "2018-12-01"
         },
         {
-          "company": "New Labor Strategies, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "2002-06-01",
-          "end_date": "2003-11-01"
+          "company": "Groupon",
+          "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
+          "start_date": "2011-07-01",
+          "end_date": "2013-05-01"
         },
         {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
+          "company": "Obtiva",
+          "title": "Software Engineer",
+          "start_date": "2009-08-01",
+          "end_date": "2011-07-01"
+        },
+        {
+          "company": "SK Holdings, Inc.",
+          "title": "Senior Backend Developer",
+          "start_date": "2019-01-01",
+          "end_date": "2020-12-01"
         }
       ],
-      "total_occurrences": 3
+      "total_occurrences": 4
     },
     "OpenTelemetry": {
       "skill": "OpenTelemetry",
@@ -2430,28 +2354,28 @@
       ],
       "total_occurrences": 3
     },
-    "Platform Architecture": {
-      "skill": "Platform Architecture",
-      "first_seen_year": 2015,
-      "last_seen_year": 2026,
+    "XML": {
+      "skill": "XML",
+      "first_seen_year": 2004,
+      "last_seen_year": 2008,
       "roles_used": [
         {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
-          "start_date": "2021-01-01",
-          "end_date": "2026-02-01"
+          "company": "Brightstar Corporation",
+          "title": "Senior .NET Developer",
+          "start_date": "2007-03-01",
+          "end_date": "2008-04-01"
         },
         {
-          "company": "ReachLocal",
+          "company": "JPMorgan Chase & Co.",
+          "title": "Assistant Vice President, Application Developer",
+          "start_date": "2008-04-01",
+          "end_date": "2008-10-01"
+        },
+        {
+          "company": "Motorola",
           "title": "Senior Software Developer",
-          "start_date": "2015-03-01",
-          "end_date": "2016-11-01"
-        },
-        {
-          "company": "Tandem",
-          "title": "Principal Consultant",
-          "start_date": "2018-08-01",
-          "end_date": "2018-08-01"
+          "start_date": "2004-08-01",
+          "end_date": "2005-05-01"
         }
       ],
       "total_occurrences": 3
@@ -2482,165 +2406,83 @@
       ],
       "total_occurrences": 3
     },
-    "Microsoft BizTalk Server": {
-      "skill": "Microsoft BizTalk Server",
-      "first_seen_year": 2005,
-      "last_seen_year": 2008,
-      "roles_used": [
-        {
-          "company": "Brightstar Corporation",
-          "title": "Senior .NET Developer",
-          "start_date": "2007-03-01",
-          "end_date": "2008-04-01"
-        },
-        {
-          "company": "TicketsNow",
-          "title": "Senior .NET Developer",
-          "start_date": "2005-11-01",
-          "end_date": "2007-03-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Bash": {
-      "skill": "Bash",
-      "first_seen_year": 2011,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Groupon",
-          "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
-          "start_date": "2011-07-01",
-          "end_date": "2013-05-01"
-        },
-        {
-          "company": "Upcity",
-          "title": "Senior Software Developer",
-          "start_date": "2013-10-01",
-          "end_date": "2014-02-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Microsoft Access": {
-      "skill": "Microsoft Access",
-      "first_seen_year": 2000,
-      "last_seen_year": 2001,
-      "roles_used": [
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
-        },
-        {
-          "company": "Trippe Manufacturing, Inc.",
-          "title": "Software Developer",
-          "start_date": "2001-10-01",
-          "end_date": "2001-12-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Heroku": {
-      "skill": "Heroku",
-      "first_seen_year": 2014,
-      "last_seen_year": 2016,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        },
-        {
-          "company": "KloboMedia",
-          "title": "CTO",
-          "start_date": "2014-03-01",
-          "end_date": "2016-09-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Visual Basic .NET (VB.NET)": {
-      "skill": "Visual Basic .NET (VB.NET)",
-      "first_seen_year": 2005,
-      "last_seen_year": 2008,
-      "roles_used": [
-        {
-          "company": "BP",
-          "title": "Senior Software Developer",
-          "start_date": "2005-06-01",
-          "end_date": "2005-11-01"
-        },
-        {
-          "company": "JPMorgan Chase & Co.",
-          "title": "Assistant Vice President, Application Developer",
-          "start_date": "2008-04-01",
-          "end_date": "2008-10-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Visual SourceSafe": {
-      "skill": "Visual SourceSafe",
-      "first_seen_year": 2000,
-      "last_seen_year": 2001,
-      "roles_used": [
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
-        },
-        {
-          "company": "Trippe Manufacturing, Inc.",
-          "title": "Software Developer",
-          "start_date": "2001-10-01",
-          "end_date": "2001-12-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Vagrant": {
-      "skill": "Vagrant",
-      "first_seen_year": 2013,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        },
-        {
-          "company": "Upcity",
-          "title": "Senior Software Developer",
-          "start_date": "2013-10-01",
-          "end_date": "2014-02-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Secure API Design": {
-      "skill": "Secure API Design",
+    "Platform Architecture": {
+      "skill": "Platform Architecture",
       "first_seen_year": 2015,
-      "last_seen_year": 2018,
+      "last_seen_year": 2026,
       "roles_used": [
         {
-          "company": "BenchPrep",
-          "title": "Senior Software Developer",
-          "start_date": "2017-03-01",
-          "end_date": "2018-02-01"
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "2021-01-01",
+          "end_date": "2026-02-01"
         },
         {
           "company": "ReachLocal",
           "title": "Senior Software Developer",
           "start_date": "2015-03-01",
           "end_date": "2016-11-01"
+        },
+        {
+          "company": "Tandem",
+          "title": "Principal Consultant",
+          "start_date": "2018-08-01",
+          "end_date": "2018-08-01"
         }
       ],
-      "total_occurrences": 2
+      "total_occurrences": 3
+    },
+    "HTML": {
+      "skill": "HTML",
+      "first_seen_year": 2000,
+      "last_seen_year": 2004,
+      "roles_used": [
+        {
+          "company": "New Labor Strategies, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "2002-06-01",
+          "end_date": "2003-11-01"
+        },
+        {
+          "company": "Riverpoint Group",
+          "title": "Software Developer",
+          "start_date": "2004-07-01",
+          "end_date": "2004-08-01"
+        },
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
+        }
+      ],
+      "total_occurrences": 3
+    },
+    "Active Server Pages (ASP)": {
+      "skill": "Active Server Pages (ASP)",
+      "first_seen_year": 2000,
+      "last_seen_year": 2004,
+      "roles_used": [
+        {
+          "company": "Integrated Performance Solutions, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "2003-11-01",
+          "end_date": "2004-07-01"
+        },
+        {
+          "company": "New Labor Strategies, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "2002-06-01",
+          "end_date": "2003-11-01"
+        },
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
+        }
+      ],
+      "total_occurrences": 3
     },
     "Java": {
       "skill": "Java",
@@ -2682,16 +2524,16 @@
       ],
       "total_occurrences": 2
     },
-    "Legacy System Modernization": {
-      "skill": "Legacy System Modernization",
+    "Secure API Design": {
+      "skill": "Secure API Design",
       "first_seen_year": 2015,
       "last_seen_year": 2018,
       "roles_used": [
         {
-          "company": "ActiveCampaign",
+          "company": "BenchPrep",
           "title": "Senior Software Developer",
-          "start_date": "2018-09-01",
-          "end_date": "2018-12-01"
+          "start_date": "2017-03-01",
+          "end_date": "2018-02-01"
         },
         {
           "company": "ReachLocal",
@@ -2702,42 +2544,22 @@
       ],
       "total_occurrences": 2
     },
-    "VBScript": {
-      "skill": "VBScript",
-      "first_seen_year": 2000,
-      "last_seen_year": 2003,
+    "Bash": {
+      "skill": "Bash",
+      "first_seen_year": 2011,
+      "last_seen_year": 2014,
       "roles_used": [
         {
-          "company": "New Labor Strategies, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "2002-06-01",
-          "end_date": "2003-11-01"
+          "company": "Groupon",
+          "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
+          "start_date": "2011-07-01",
+          "end_date": "2013-05-01"
         },
         {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "CI/CD": {
-      "skill": "CI/CD",
-      "first_seen_year": 2019,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        },
-        {
-          "company": "SK Holdings, Inc.",
-          "title": "Senior Backend Developer",
-          "start_date": "2019-01-01",
-          "end_date": "2020-12-01"
+          "company": "Upcity",
+          "title": "Senior Software Developer",
+          "start_date": "2013-10-01",
+          "end_date": "2014-02-01"
         }
       ],
       "total_occurrences": 2
@@ -2762,6 +2584,86 @@
       ],
       "total_occurrences": 2
     },
+    "Visual Basic .NET (VB.NET)": {
+      "skill": "Visual Basic .NET (VB.NET)",
+      "first_seen_year": 2005,
+      "last_seen_year": 2008,
+      "roles_used": [
+        {
+          "company": "BP",
+          "title": "Senior Software Developer",
+          "start_date": "2005-06-01",
+          "end_date": "2005-11-01"
+        },
+        {
+          "company": "JPMorgan Chase & Co.",
+          "title": "Assistant Vice President, Application Developer",
+          "start_date": "2008-04-01",
+          "end_date": "2008-10-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Legacy System Modernization": {
+      "skill": "Legacy System Modernization",
+      "first_seen_year": 2015,
+      "last_seen_year": 2018,
+      "roles_used": [
+        {
+          "company": "ActiveCampaign",
+          "title": "Senior Software Developer",
+          "start_date": "2018-09-01",
+          "end_date": "2018-12-01"
+        },
+        {
+          "company": "ReachLocal",
+          "title": "Senior Software Developer",
+          "start_date": "2015-03-01",
+          "end_date": "2016-11-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Microsoft BizTalk Server": {
+      "skill": "Microsoft BizTalk Server",
+      "first_seen_year": 2005,
+      "last_seen_year": 2008,
+      "roles_used": [
+        {
+          "company": "Brightstar Corporation",
+          "title": "Senior .NET Developer",
+          "start_date": "2007-03-01",
+          "end_date": "2008-04-01"
+        },
+        {
+          "company": "TicketsNow",
+          "title": "Senior .NET Developer",
+          "start_date": "2005-11-01",
+          "end_date": "2007-03-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Microsoft Access": {
+      "skill": "Microsoft Access",
+      "first_seen_year": 2000,
+      "last_seen_year": 2001,
+      "roles_used": [
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
+        },
+        {
+          "company": "Trippe Manufacturing, Inc.",
+          "title": "Software Developer",
+          "start_date": "2001-10-01",
+          "end_date": "2001-12-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
     "System Resilience": {
       "skill": "System Resilience",
       "first_seen_year": 2018,
@@ -2778,6 +2680,106 @@
           "title": "Principal Consultant",
           "start_date": "2018-08-01",
           "end_date": "2018-08-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "VBScript": {
+      "skill": "VBScript",
+      "first_seen_year": 2000,
+      "last_seen_year": 2003,
+      "roles_used": [
+        {
+          "company": "New Labor Strategies, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "2002-06-01",
+          "end_date": "2003-11-01"
+        },
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Heroku": {
+      "skill": "Heroku",
+      "first_seen_year": 2014,
+      "last_seen_year": 2016,
+      "roles_used": [
+        {
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        },
+        {
+          "company": "KloboMedia",
+          "title": "CTO",
+          "start_date": "2014-03-01",
+          "end_date": "2016-09-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "CI/CD": {
+      "skill": "CI/CD",
+      "first_seen_year": 2019,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        },
+        {
+          "company": "SK Holdings, Inc.",
+          "title": "Senior Backend Developer",
+          "start_date": "2019-01-01",
+          "end_date": "2020-12-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Vagrant": {
+      "skill": "Vagrant",
+      "first_seen_year": 2013,
+      "last_seen_year": 2014,
+      "roles_used": [
+        {
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        },
+        {
+          "company": "Upcity",
+          "title": "Senior Software Developer",
+          "start_date": "2013-10-01",
+          "end_date": "2014-02-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Visual SourceSafe": {
+      "skill": "Visual SourceSafe",
+      "first_seen_year": 2000,
+      "last_seen_year": 2001,
+      "roles_used": [
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
+        },
+        {
+          "company": "Trippe Manufacturing, Inc.",
+          "title": "Software Developer",
+          "start_date": "2001-10-01",
+          "end_date": "2001-12-01"
         }
       ],
       "total_occurrences": 2
@@ -2822,26 +2824,6 @@
       ],
       "total_occurrences": 2
     },
-    "API Design": {
-      "skill": "API Design",
-      "first_seen_year": 2021,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        },
-        {
-          "company": "WWWorkRemote",
-          "title": "Principal Architect",
-          "start_date": "2021-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 2
-    },
     "Resque": {
       "skill": "Resque",
       "first_seen_year": 2009,
@@ -2862,19 +2844,25 @@
       ],
       "total_occurrences": 2
     },
-    "Observability": {
-      "skill": "Observability",
+    "API Design": {
+      "skill": "API Design",
       "first_seen_year": 2021,
       "last_seen_year": 2026,
       "roles_used": [
         {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        },
+        {
+          "company": "WWWorkRemote",
+          "title": "Principal Architect",
           "start_date": "2021-01-01",
-          "end_date": "2026-02-01"
+          "end_date": null
         }
       ],
-      "total_occurrences": 1
+      "total_occurrences": 2
     },
     "SendGrid Async Pipelines": {
       "skill": "SendGrid Async Pipelines",
@@ -2904,57 +2892,15 @@
       ],
       "total_occurrences": 1
     },
-    "AWS": {
-      "skill": "AWS",
+    "System Design": {
+      "skill": "System Design",
       "first_seen_year": 2021,
       "last_seen_year": 2026,
       "roles_used": [
         {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
+          "company": "WWWorkRemote",
+          "title": "Principal Architect",
           "start_date": "2021-01-01",
-          "end_date": "2026-02-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "TypeScript": {
-      "skill": "TypeScript",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Node.js": {
-      "skill": "Node.js",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "WebSockets": {
-      "skill": "WebSockets",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
           "end_date": null
         }
       ],
@@ -2984,20 +2930,6 @@
           "title": "Senior Software Developer",
           "start_date": "2015-03-01",
           "end_date": "2016-11-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Deterministic Simulation": {
-      "skill": "Deterministic Simulation",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
         }
       ],
       "total_occurrences": 1
@@ -3058,16 +2990,86 @@
       ],
       "total_occurrences": 1
     },
-    "System Design": {
-      "skill": "System Design",
+    "Deterministic Simulation": {
+      "skill": "Deterministic Simulation",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "WebSockets": {
+      "skill": "WebSockets",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Node.js": {
+      "skill": "Node.js",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "TypeScript": {
+      "skill": "TypeScript",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "AWS": {
+      "skill": "AWS",
       "first_seen_year": 2021,
       "last_seen_year": 2026,
       "roles_used": [
         {
-          "company": "WWWorkRemote",
-          "title": "Principal Architect",
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
           "start_date": "2021-01-01",
-          "end_date": null
+          "end_date": "2026-02-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Windows 98": {
+      "skill": "Windows 98",
+      "first_seen_year": 1999,
+      "last_seen_year": 2000,
+      "roles_used": [
+        {
+          "company": "C.H. Robinson",
+          "title": "System Administrator",
+          "start_date": "1999-12-01",
+          "end_date": "2000-07-01"
         }
       ],
       "total_occurrences": 1
@@ -3256,6 +3258,20 @@
     },
     "CodeSmith API": {
       "skill": "CodeSmith API",
+      "first_seen_year": 2005,
+      "last_seen_year": 2007,
+      "roles_used": [
+        {
+          "company": "TicketsNow",
+          "title": "Senior .NET Developer",
+          "start_date": "2005-11-01",
+          "end_date": "2007-03-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    ".NET Framework 2.0": {
+      "skill": ".NET Framework 2.0",
       "first_seen_year": 2005,
       "last_seen_year": 2007,
       "roles_used": [
@@ -3460,20 +3476,6 @@
           "title": "Senior Backend Developer",
           "start_date": "2019-01-01",
           "end_date": "2020-12-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "DynamoDB": {
-      "skill": "DynamoDB",
-      "first_seen_year": 2021,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
-          "start_date": "2021-01-01",
-          "end_date": "2026-02-01"
         }
       ],
       "total_occurrences": 1
@@ -3814,6 +3816,34 @@
       ],
       "total_occurrences": 1
     },
+    "Observability": {
+      "skill": "Observability",
+      "first_seen_year": 2021,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "2021-01-01",
+          "end_date": "2026-02-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "DynamoDB": {
+      "skill": "DynamoDB",
+      "first_seen_year": 2021,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "2021-01-01",
+          "end_date": "2026-02-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
     "Incident Leadership": {
       "skill": "Incident Leadership",
       "first_seen_year": 2021,
@@ -4132,20 +4162,6 @@
           "title": "Open-Source Transition Lead",
           "start_date": "2014-01-01",
           "end_date": "2014-12-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Windows 98": {
-      "skill": "Windows 98",
-      "first_seen_year": 1999,
-      "last_seen_year": 2000,
-      "roles_used": [
-        {
-          "company": "C.H. Robinson",
-          "title": "System Administrator",
-          "start_date": "1999-12-01",
-          "end_date": "2000-07-01"
         }
       ],
       "total_occurrences": 1
@@ -15286,6 +15302,142 @@
       ],
       "transcript_text": "So, around when Facebook and Twitter started shutting off\naccess to their firehose, I was working on a project where\nI was building out some sentiment analysis and social media\ncoaching tools. Pretty cool, pretty interesting stuff, but\nthey started to shut down access to the APIs and it just,\nyou know, it didn't... We couldn't get enough air underneath our wings and it was\ncomplicated, but that's not the point. That's just a scene\nfor a predicament of sentiment analysis, aligning different\ntime zones, all of that, to do like-for-like comparisons\nbetween a competitor or an archetype\nthat you're following in your social media to help balance\nyour account against and then giving the users, the\ncustomers, guidance on what they should do in their social\nmedia feeds. It was pretty cool, but sentiment analysis was really\ndifficult, especially with the Twitter form, it was really\nshort, and so you'd have to bundle up a couple different\nfeeds. And it was, anyway, it was, one of those things was a\nlittle bit beyond where I was with the tools and time to\nlearn a new technology and a new concept. And this is all putting it in 2015 or so, somewhere like\nthat, 2015 going into 2016. So, sentiment analysis was very difficult to do, unless you\nreally knew that space. There were tools out there, but like I'm talking about with\nthe AI Competence Boost or Illusion,\nit wasn't easy to just spin up on it out of the blue,\nespecially given what my workload was at the time. But now that's almost a joke. Like, sentiment analysis, we do it, it's embedded in our\nemails, it's probably going to be running on, well, it's\nprobably running on somebody's smartphone. I mean, a smartwatch or whatever. Just because of this kind of glue, this amorphous ability\nto deal with vast amounts of text that became ChatGPT, and\nLLMs, I should say, before that. So, thinking back to that time, and how much of a pain in\nthe butt doing this kind of work was, and how specialized\nit was. It was kind of like the level of specialization, as I\ndescribed in my talk about the audio fix. That you had to really know what you're doing to get in\nthere and figure out how to set temperature, and what does\nthat even mean, and different terminology for clustering,\nand being able to make inferences based on that cluster. None of it was easy. And I don't think if people had a general comm-sci\nbackground, that they would have necessarily gotten that\ninformation, even through traditional, general computer\nscience, you know, to be machine learning especially. So, all of that is just, again, to frame that the stuff we\ngot with the LLMs makes some of the things that were a real\npain in the butt that you had to know a lot how to do,\nalmost trivial to do. But, again, do you know whether it's right or wrong? Do you know if it's giving you the correct sentiment at\nscale? You know, maybe one or two times you run the test, and it\nseems to be about right, but it's not deterministic. Maybe it'll change. Maybe there's too many maybes. You know, maybe one word just becomes a trigger word for it\n, and not to use a charged word, but it causes it to have\nsome kind of invalid outcome. And there's no way of knowing ahead of time what that\nexactly is going to be, because it's non-deterministic. And I'm not saying, you know, end of the world. I'm just saying, like, not knowing is the problem. Because it's so easy now, it gives a false sense of\nconfidence in the outcome that we're seeing from these\ntools, because it's its own best height machine. But, again, they are really useful. I have been able to leverage them. But, anyway, I digress. The point was, this was a real pain in the butt to do. And it ended up being kind of a sticking point as far as\ntechnology was, going back to that startup. It was just a bridge too far for where it was at the time,\nand, again, resources and what the tooling was in the\nmoment. And now that stuff is trivial. And what does that mean? Like, that startup was doomed for, like, best case scenario\n, no matter what. Because everything that we were doing is trivial to a tool\nlike JGPT. Pulling together, or, you know, any of the coding\nassistants. The graded automating, pulling downstream, structuring a\nfeed, aggregating, ensuring the windows of ID ranges are\nclosed. Correlating the time zones across different feeds. Building a SQLite DuckDB database that becomes portable. Like, you can do things, like, at a rate that is an\nincredible clip, and they'll be real. And when you have a tool that is that flexible, it's kind\nof like a magic box. You know, you just kind of will things into existence. I don't know. Like, I don't know. Like, is that a universal experience? And I'm sure there's people that sit down. I look at some of the stuff people sit down and create. And I'm like, I don't know how much of the surface level. It's been really impressive looking. But I digress from a digression back to the stuff used to\nbe hard. And then, so, again, all of that history about where I got\nto with that startup and trying to do sentiment analysis\nacross Twitter and Facebook feeds,\nwas to express, like, how impressed I was with the\ncapabilities of the LLM tools when the LLM was first\nreleased. There was the big rush to get a download, the LLM, and then\n, you know, I was drinking from the fire hose, too, at this\ntime. I grabbed this tool called Dolly, which is a Ruby gem that\nallowed you to run, pull down, and basically compile the LL\nM locally. And I got it running on my MacBook Pro Intel i7. So, the thing would basically catch on fire every single\ntime I would run the tool. And, like, later when Codex and anti-gravity and stuff like\nthat started to come out, I couldn't even, it would just,\nit might, my computer would get so hot, it would just shut\ndown. So, the thing was, though, is that just running a few\nprompts, it became apparent that I could ask it about the\nmeaning of some text and whether or not it was happy text\nor sad text. And I just thought, just was, like, floored. This was something that, like, I was going to have to learn\nthis whole domain of machine learning and text and natural\nlanguage processing and all these kinds of things just in\norder to do, you know, how are people feeling across a\nthread. And where are the hot spots, you know, the happy spots,\nwhatever, for engagement. So, yeah, the impact of just these tools also, I don't know\n, I've been talking for 10 minutes here now. I think that's enough, because that's, I also did the\nmachine learning for the humanities course. And, like, it was, like, an eight-hour course. And I still highly recommend doing something like that, if\nnot that, maybe use AI to update it so that way it uses\nupdated versions or something. Maybe that's something I'll play with. I don't know, I'm not committing to anything. Don't hold me to anything. And I'm going to shut up now. The point was, is that doing those exercises, you know,\ncheck them out. Like, everybody's talking about these LLM courses. I haven't tried them yet, but I think Stanford released\nsome. I think it was Stanford. Anyway, you look it up, you probably not be able to find it\n. But the point is, is that having done those prior to ChatGP\nT, at least, kind of inoculated me, I think, a little bit\nfrom some of the magic of what the tool was. And I also recognize just how powerful and actually\ndangerous this darn thing really is. But dangerous like a chainsaw or a lawnmower or a scythe,\nyou know, like, it's in the wielder. But, yes, it is a powerful tool. So, anywho, yep, this stuff used to be really hard. This stuff meaning, like, sentiment analysis and similarity\ncomparisons between bodies of text to find. Heck, I remember a Groupon doing, at the early fraud team,\nthere was some work on the Levenstein distance algorithm to\ndetect fraud. I don't remember where that went, but that was so long ago,\nback a very, very long time ago. None of that infrastructure is the way it is, was then. So, just saying that, um, that was a big deal for the folks\nthat were working on that stuff. Because it was a real pain in the butt. They were using Clojure because, cool people. Um, but, uh, we can wield these tools, though, in a way\nthat's, it's not like just, you have to know how to plug\neverything together, but that you can kind of just throw a\nproblem at it and it'll appear to solve it. But, uh, it's, I don't know, like, was that the right\nanswer, you know, um, and sometimes when you're seeing it\nhallucinate on text or asking it a question about something\nvery niche but that you have a lot of deep knowledge of. Like, maybe something, a show you watched that was, like, a\nweird Saturday morning thing when you were real little. Um, and then asking it questions about that and it's just\nmaking stuff up just completely whole cloth. You know, like, those characters didn't exist, that\nstoryline never happened. That's a total mischaracterization, and then you ask it and\ntell it that that happened, and it says, oh, yes, you're\nright, I, oh, my bad. Um, but when it's doing something as simple as that, the\nsentiment, like, it's still a magic box. You don't know where the, you have no control over, over\nthe controls for the sentiment analysis or how to infer, I\nmean, make valid assertions as to whether or not, um, it\nwas tuned correctly. So, that way, when you're letting that processor run, that,\nthat thing run, um, that it's, uh, is actually doing the\nthing it says it's doing. Uh-huh. I know there's people out there that know way more than me,\nand that's the dangerous part, is that I know where my\nlimits are. And, um, um, I've seen folks who don't know where their\nlimits are, and, uh, sometimes that's good, and sometimes\nthat's a little bit reckless. Um, but, um, in this case, um, it's something we've got to\ndeal with. The tools make stuff a little bit too easy sometimes, that\nused to be hard, and probably should have just stayed hard. All right, thanks, bye.",
       "transcript_turns_count": 26
+    },
+    {
+      "id": "ramblin-amblin-i-guess-i-cant-switch-apps-while-im",
+      "title": "Ramblin' & Amblin' (2026-10-17): I guess I can't switch apps while I'm",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "ramblin-amblin-i-guess-i-cant-switch-apps-while-im",
+      "page_url": "/interviews/ramblin-amblin-i-guess-i-cant-switch-apps-while-im/",
+      "youtube_url": "https://youtu.be/V-2uR4xIxaQ",
+      "youtube_video_id": "V-2uR4xIxaQ",
+      "playlist_id": "PLNtb969T2-l0",
+      "playlist_title": "Ramblin' & Amblin'",
+      "series": "Ramblin' & Amblin'",
+      "description": "Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer) Recorded on the move: engineering observations, systems architecture, and software craftsmanship reflections. ",
+      "tags": [
+        "Software Craftsmanship",
+        "Ramblin and Amblin",
+        "Field Notes",
+        "Engineering Philosophy",
+        "Chicago Tech",
+        "Ramblin' & Amblin'"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "I guess I can't switch apps while I'm running the camera,\nbut I opened up Gemini and ended up with a quote from Gem\nini apologizing to me for hallucinating the text that it so\ndutifully presented to me that fortunately I knew the\npassage I was looking for and I knew that what it gave me\nwas total garbage, but it gave me the total garbage, but it\nwould seem like knowledge. I could have dropped that into a paper, could have quoted\nit here on the camera, but then you ask it to prove it,\nprove it, and it can't because it doesn't know what you're\ntalking about, it doesn't know what it's supposed to prove,\nit is a machine that follows instructions, it is a machine\nthat follows instructions because it follows the shape and\nthe pressures of the environment that it's in. It is not aware of what it's saying or what any of it means\n, and it's just a Chinese room that is very sophisticated\nand has lots of guardrails and has lots of controls in\nplace to ensure that it gets steered in the right direction\n, but it's still,\nit's like, imagine water flowing downhill and we build all\nkinds of guardrails and hoses and tunnels and bridges to\nensure that the water goes in the direction we want it to\ngo, but still water just flows downhill really without a\nlot of effort. I think that this book here, pre-AI, presented this concept\nof a Rorschach alien, and that's what they call, the alien\nis called Rorschach, and it's kind of on the nose, I think. I mean, Peter Watts isn't subtle in some of his\nstorytelling, it's very blunt, and it's amazing, but yeah,\nit's a Rorschach test. When we look at the AI tools now, that's much a Rorschach\ntest of our own relationship to the difference between\nmechanical capabilities and physics and just the nature of\nthings, how they work,\nand that they have some kind of intelligence, you know, I'm\nnot getting into panpsychism or anything like that, but I'm\ntalking about the simple, doesn't even know what it's doing\n. And, you know, we think about humans and our own ability to\ncargo cults and just join cults and just be in\norganizations where we don't really have to think too much\nand our thinking is delegated to somebody else. We just are cogs in the machine, and it's not terrible to\ndo that, this isn't an indictment, but it's just mapping\nthis vision of decoupling consciousness from an\nunderstanding,\nfrom the ability to execute and survive and adapt, and what\nis intelligence, are not necessarily related, and that\nmaybe one is a little bit easier than the other, so it's\nmore efficient, and therefore it wins, right? We think about the jokes about politicians who say\nthemselves, you know, the less you know, the higher you go. I don't know. There's something in there. Blindsight. High\nly recommended book. I actually think it should be required\nreading. If you can stomach a few of the adult themes, but it doesn\n't really go into, I mean, there's violence. It's got a\nfreaking vampire in it, and it's, but it's, it's a book for\nadults, by adults, not children play acting. So, I recommend it, and I encourage everybody to seek it\nout. Alright, thanks. Bye.",
+      "transcript_turns_count": 5
+    },
+    {
+      "id": "ramblin-amblin-the-other-video-that-ill-be-making-is",
+      "title": "Ramblin' & Amblin' (2026-10-17): The other video that I'll be making is",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "ramblin-amblin-the-other-video-that-ill-be-making-is",
+      "page_url": "/interviews/ramblin-amblin-the-other-video-that-ill-be-making-is/",
+      "youtube_url": "https://youtu.be/12yuw3lfZ7s",
+      "youtube_video_id": "12yuw3lfZ7s",
+      "playlist_id": "PLNtb969T2-l0",
+      "playlist_title": "Ramblin' & Amblin'",
+      "series": "Ramblin' & Amblin'",
+      "description": "Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer) Recorded on the move: engineering observations, systems architecture, and software craftsmanship reflections. ",
+      "tags": [
+        "Software Craftsmanship",
+        "Ramblin and Amblin",
+        "Field Notes",
+        "Engineering Philosophy",
+        "Chicago Tech",
+        "Ramblin' & Amblin'"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "The other video that I'll be making is a precursor to the\nSound Above series, the rewatch of UGtastic interviews, and\nrecovery of the context and conversations that we were\ndiscussing in that 2009-2015 era and prior to that. I just wanted to take a moment to talk about how... Actually, that's good enough.",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "ramblin-amblin-when-i-started-doing-ugtastic-the-way-i",
+      "title": "Ramblin' & Amblin' (2026-10-17): When I started doing UGtastic, the way I",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "ramblin-amblin-when-i-started-doing-ugtastic-the-way-i",
+      "page_url": "/interviews/ramblin-amblin-when-i-started-doing-ugtastic-the-way-i/",
+      "youtube_url": "https://youtu.be/fej808b1VRg",
+      "youtube_video_id": "fej808b1VRg",
+      "playlist_id": "PLNtb969T2-l0",
+      "playlist_title": "Ramblin' & Amblin'",
+      "series": "Ramblin' & Amblin'",
+      "description": "Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer) Recorded on the move: engineering observations, systems architecture, and software craftsmanship reflections. ",
+      "tags": [
+        "Software Craftsmanship",
+        "Ramblin and Amblin",
+        "Field Notes",
+        "Engineering Philosophy",
+        "Chicago Tech",
+        "Ramblin' & Amblin'"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "So, when I started doing Ucastic, the way I started was\njust opening up a laptop, my MacBook Air, I mean, no, Air\nwasn't a thing, my MacBook Pro, and using the built-in\ncamera and microphone and photo booth, and then, yeah, at\nthe time I wasn't, I think there were some, like,\nrestrictions about YouTube, so I didn't go with YouTube at\nfirst because I, there was something about their licensing\nat the time. And, but, yeah, the first series of videos at SCNA 2011\nwere simply sitting down wherever an open space could be\nfound that I could lay down my laptop, crack it open, and\nthen start photo booth, and then record from there. It was, uh, very rudimentary, and, uh, the trick, though,\nwasn't the, uh, wasn't the, um, the recording, though,\nwhere it got complex as the processing pipeline, because I\ndidn't really have many tools available to me at the time,\nand I don't think I knew iMovie even at the time. Um, and I wanted everything to be open source and scripted,\num, so I used FFmpeg and, uh, learned about doing overlays\nand making graphics, so that's how those little overlays\nappear inside of the, uh, inside of the scripts there. I'm, I'm trying to make sure I'm not going to block any rac\ners. Um, the, uh, um, yeah, it was, it was all done by hand, uh,\nusing, uh, shell scripts and, um, FFmpeg and a couple\ndifferent tools for overlays, so, okay, I'm going to get\nout of the way of a racer. Thanks, bye.",
+      "transcript_turns_count": 2
+    },
+    {
+      "id": "ramblin-amblin-i-just-hope-scott-i-think-his-name",
+      "title": "Ramblin' & Amblin' (2026-10-17): I just hope Scott, I think his name",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "ramblin-amblin-i-just-hope-scott-i-think-his-name",
+      "page_url": "/interviews/ramblin-amblin-i-just-hope-scott-i-think-his-name/",
+      "youtube_url": "https://youtu.be/RNu430nMKgg",
+      "youtube_video_id": "RNu430nMKgg",
+      "playlist_id": "PLNtb969T2-l0",
+      "playlist_title": "Ramblin' & Amblin'",
+      "series": "Ramblin' & Amblin'",
+      "description": "Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer) Recorded on the move: engineering observations, systems architecture, and software craftsmanship reflections. ",
+      "tags": [
+        "Software Craftsmanship",
+        "Ramblin and Amblin",
+        "Field Notes",
+        "Engineering Philosophy",
+        "Chicago Tech",
+        "Ramblin' & Amblin'"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "So I just hope Scott, I think his name is Scott, Scott from\nScotland, you know, he's visiting the area and they were a\nlittle lost on the trail with him and his daughter and his\nmom, his mom from the area, she's local, but they're\nvisiting from Scotland, which is lovely. And as I was walking with him a little bit, this is a talk\nabout, about, you know, me being this great socialized,\nthat's actually, I tried to avoid a conversation twice on\nthe trail, but we intercepted again after the first time\nthey asked for directions and I, you know, I told him to\njust keep this particular landmark to their back. And as long as they're moving away from that landmark and\nup a little bit to their right, they'll be, they'll be fine\n. And, uh, I said, you know, I'm trying to tell you left,\nright, whatever on the trails, I don't know, but, um, I, I\nhaven't been paying attention. Uh, I've just been walking, um, and, uh, cause I was kind\nof out in the further trails and, uh, when we come back and\nwe intersect again,\nUh, it's right where I told him, like one, like what you\ncould say, uh, one turn or one, you know, equivalent of\nblock of intersections in the trail, um, before the place I\ntold him to look for. And I said, it's a big clearing that, uh, as long as you\nfollow the tree line, we'll, uh, take it to the nature\ncenter. And you just follow that up to your left and it, it, head\ntowards the pond and that'll, the nature center will appear\non your left. Um, you know, and, and that's, I met him, we, we, we\nreconnected less than, you know, one turn, one turn away\nfrom, from, uh, where the clearing was. So I said, all right, you know, I'll, I'll walk with you\nguys a little bit and, um, and, uh, somebody passed us and,\nuh, they were, um, clearly autistic. And, uh, they kind of made like a shooing gesture because,\nuh, he was still in the, in the, um, in the, in the, in the\npath and, um, in, in the way that sometimes neurodivergent\npeople do. And, um, if he, he was just bewildered, he, I don't know if\nthey have autism in Scotland, but, uh, the, uh, I just, not\nthink, I didn't even explain it. We didn't just let it go, but, um, cause it wasn't\naggressive. It was just direct. Um, and, uh, I'm coming through, move, but not in a sassy\nway. Um, kind of just like how I was trying to avoid this whole\ninteraction and even why I did the eugtastic videos\nthemselves. But as I'm walking, I'm just a little bit ahead of where I\ntold him to be. And we come across the path and now you can look down and\nsee where the opening in the field was. And he can, and I can tell that he trusts me more because I\njust showed him that the thing that I told you back when,\nlast time you saw me, it's true. There it is. And, and, and he saw that and we were talking and his\ndaughter was talking about how they learn languages with\ngrandma. And, uh, um, it was adorable, you know, I don't, maybe 12,\n13 year old kid, but, you know, an age, uh, where they\nasked adorable questions, but are more sophisticated in\ntheir questions than simply, uh, just because the answer\nwill suffice. And so the grandma was kind of contemplating with her and I\nlistened to a bit, you know, we, we didn't walk too long. Um, and I, uh, the dad told me about visiting from Scotland\nand, uh, that they kind of got lost in the trail. And I said, yeah, I said, yeah, if you follow the racers,\nthey'll, they'll, you'll walk with them. And, and they loop back into the, uh, into the open area. And then that's exactly what you're hearing all the hooting\nand hollering for is the people at the top of the hill, man\n. They make them walk, they make them run up a hill at the\nvery end. I hope I'm doing that right. Yeah. The, oh man, that's brutal. That's brutal. You just ran this whole race up and down, up and down. And then they, that's a long hill. Like just walking up that hill will get you, uh, winded. But, uh, uh, that's also where we sled during the winter\nand it's a lot of fun to come down, but walking back up, I\nknow about that. Uh, the, uh, I, so, so the illusion of competence, this is\na perfect time. I couldn't imagine a better conversation to be, uh, um,\nseated there is with the dad. You know, he, clearly they have the accent and, uh, he's\ntelling me about their return. And I said, you know, it's funny. I said, I'm walking out here and I'm thinking about how AI\nand, um, these tools are, are learning. And not that I'm, um, a researcher, just, uh, looking at it\nfrom a professional perspective. And, uh, that's, you know, yeah, they do create these tools\nand, and you can use them to good effect. But they also will make up a story about George Washington\n's birthday. And, uh, with a straight face, because they have no faith. Um, and then I asked him, again, the appearance of\ncompetence. I, I was able to just use a little anecdote that I've been\nmulling over to sound like I was out here, you know, sp\nouting wisdom. Because this daughter is talking about how do you learn\nlanguage. And I said, well, you know, like, I didn't directly address\nthe daughter. I was talking with the father. I said, you know, I'm funny, I'm thinking about these,\nthese, this topic. And I asked him, I said, why does a bee make hexagonal\nhoneycombs? And he's thinking, he's like, and then he tries to come up\nwith an answer, as humans do. And he's, but he poses this question, hmm, you know, is it,\nI, I think it, you know, like, clearly he's doubting the,\nhis own understanding here, which is a healthy human\nresponse, if you're uncertain. And then he makes kind of a guess, um, about, you know,\nthat they just found it to be the most efficient. And then I, sounding like I'm super wise, and I'm actually\njust quoting Peter Watts' book, um, I think it was Cunning\nham, the character Cunningham was talking about why bees\nform honeycombs. And it's that they, that they don't, just forces of the\nenvironment, uh, physics makes it so. They just stand in a circle. I mean, they just puke in a circle. Um, I didn't see it. I said a little bit more delicately than that. And I said that they spin in a circle and they emit the wax\n, uh, for the honeycomb. And as layer upon layer is built, it weighs down the honey\ncomb and it forms into the most efficient distribution of\nweight. And, uh, it happens to be hexagonal. And he's like, whoa. And then now we're at the, uh, parting of ways. And I, I use this as my moment to, to step away. And it sounds so profound. Um, you know, you guys, you're going to go this way. I'm going to go that way. And, you know, it's actually funny even before that. And we shook hands and wish everybody a good day and a\nhappy, uh, uh, trip here in, in my hometown. Uh, happy visit. Um, but, uh, the first time we met, it was kind of funny\nbecause, uh, there was a fork in the trail and I told them\nto take one way because that'll take them where they want\nto go. Um, but when I stumbled upon them, they were looking down\nthe other path and they were so confused because in the\nmiddle of the path is a sign that says wrong way. And I just walked up to him and I said, I think that's for\nthe runners. We're okay. And then when we departed, I said, I'm going to go the\nwrong way. I just, I don't know. I'm, uh, just having fun out here. And, um, and then again, as we're looking at the AI stuff\nthat, it is a Rorschach test. It's going to tell us about who we are and there's going to\nbe a lot of people trying to control what that sounds like. But, um, all of that in due time, just right now, coming\nout here, listening to people clap and run, people get lost\n. And hearing a kid having a existential contemplation about\nwhere does this all come from, uh, is just part of a\nSaturday morning in Crystal Lake. All right, thanks. Bye.",
+      "transcript_turns_count": 22
     }
   ],
   "oral_history_curriculum": {

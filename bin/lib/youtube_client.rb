@@ -66,7 +66,7 @@ class YouTubeClient
   def get_video(video_id)
     fetch_access_token! if @access_token.nil?
 
-    uri = URI("#{API_BASE}/videos?part=snippet,status&id=#{video_id}")
+    uri = URI("#{API_BASE}/videos?part=snippet,status&id=#{video_id}&fields=items(id,snippet(title,description,categoryId,tags),status(privacyStatus,embeddable,selfDeclaredMadeForKids))")
     res = make_request(uri)
 
     if res.is_a?(Net::HTTPSuccess)
@@ -213,7 +213,7 @@ class YouTubeClient
     page_token = nil
 
     loop do
-      url = "#{API_BASE}/playlistItems?part=snippet,contentDetails&playlistId=#{playlist_id}&maxResults=50"
+      url = "#{API_BASE}/playlistItems?part=contentDetails&playlistId=#{playlist_id}&maxResults=50&fields=nextPageToken,items/contentDetails/videoId"
       url += "&pageToken=#{page_token}" if page_token
       uri = URI(url)
       res = make_request(uri)

@@ -94,7 +94,7 @@ body_class: page-youtube-dashboard
       </div>
       <div style="font-size: 1.85rem; font-weight: 800; color: #0f172a;">10,000</div>
       <div id="quota-cooldown-text" style="font-size: 0.78rem; color: #0f766e; font-weight: 600; margin-top: 0.25rem;">
-        Budget: 50 units / action · Midnight PT Reset
+        Budget: 50 units / action · 2:00 AM CT Reset (00:00 PT)
       </div>
     </div>
 
@@ -2606,13 +2606,35 @@ teleprompter_script:
     return mb.toFixed(1) + ' MB';
   }
 
+  function formatCentralTime(isoString) {
+    if (!isoString) return '';
+    try {
+      const d = new Date(isoString);
+      if (isNaN(d.getTime())) return '';
+      return d.toLocaleTimeString('en-US', {
+        timeZone: 'America/Chicago',
+        hour: 'numeric',
+        minute: '2-digit',
+        timeZoneName: 'short'
+      });
+    } catch (e) {
+      return '';
+    }
+  }
+
   function formatTimeAgo(isoString) {
     if (!isoString) return 'recently';
-    const diff = Math.floor((Date.now() - new Date(isoString).getTime()) / 1000);
-    if (diff < 60) return diff + 's ago';
-    if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
-    if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
-    return Math.floor(diff / 86400) + 'd ago';
+    const d = new Date(isoString);
+    if (isNaN(d.getTime())) return 'recently';
+    const diff = Math.max(0, Math.floor((Date.now() - d.getTime()) / 1000));
+    let rel = '';
+    if (diff < 60) rel = diff + 's ago';
+    else if (diff < 3600) rel = Math.floor(diff / 60) + 'm ago';
+    else if (diff < 86400) rel = Math.floor(diff / 3600) + 'h ago';
+    else rel = Math.floor(diff / 86400) + 'd ago';
+
+    const ct = formatCentralTime(isoString);
+    return ct ? (rel + ' · ' + ct) : rel;
   }
 
   async function triggerPipelineAction(action, params) {
@@ -2722,7 +2744,7 @@ teleprompter_script:
 
     const formatted = hours + 'h ' + mins + 'm ' + secs + 's';
     if (pill) pill.innerText = 'Reset in ' + formatted;
-    if (text) text.innerHTML = 'Budget: 50 units / action · Reset at <strong>00:00 PT</strong> (' + formatted + ')';
+    if (text) text.innerHTML = 'Budget: 50 units / action · Resets at <strong>2:00 AM CT</strong> / 00:00 PT (' + formatted + ')';
   }
   setInterval(updateQuotaCountdown, 1000);
   updateQuotaCountdown();
@@ -3014,7 +3036,7 @@ teleprompter_script:
             <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
                 <span style="background: #d97706; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 9999px;">⏳ BLOCKED (COOLDOWN)</span>
-                <span style="font-size: 0.7rem; color: #b45309; font-weight: 600;">${item.cooldown_resets_at ? 'Resets ' + item.cooldown_resets_at : 'Quota Paused'}</span>
+                <span style="font-size: 0.7rem; color: #b45309; font-weight: 600;">Resets 2:00 AM CT${item.blocked_at ? ' · ' + formatTimeAgo(item.blocked_at) : ''}</span>
               </div>
               <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #92400e; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
               <div style="font-size: 0.75rem; color: #78350f; margin-bottom: 0.4rem; line-height: 1.4;">${sanitizeDiagnostic(item.diagnostic)}</div>

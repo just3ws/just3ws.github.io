@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - CENTRAL TIME UX, YOUTUBE QUOTA CONSERVATION, RUBYGEMS/CLOJARS/CHOCOLATEY PROVENANCE & HISTER DISCOVERY (2026-10-18):
+         Unified all operator surfaces on Central Time (`America/Chicago` / `2:00 AM CT`) backed by UTC state, optimized YouTube Data API v3 quota conservation (deferring 400-unit caption uploads to complete `datalake_sync` and `archival` for 4 blocked videos immediately), grounded `NStun` `.NET 2.0` correlation with TicketsNow, recovered RubyGems, Clojars (`semantic-csv#49`), Chocolatey Kickstarter (`fa6a43b0`), and Coderwall (`coderwall-badges`) provenance, and indexed all provenance into `hister.localhost`:
+         - Central Time (`America/Chicago`) UX & UTC Internal State (`youtube/dashboard.html`, `bin/intake_drive_video.rb`, `bin/live_dashboard_streamer.rb`, `bin/youtube_sweeper.rb`):
+           - Converted all user-facing timestamps, relative time badges, and quota reset countdowns to Central Time (`2:00 AM CT (00:00 PT)`) while storing UTC ISO-8601 timestamps internally.
+         - YouTube Data API v3 Quota Conservation & Immediate Queue Archival (`bin/intake_drive_video.rb`, `bin/lib/youtube_client.rb`):
+           - Added partial response `fields=` masks to `YouTubeClient#get_video` and `YouTubeClient#get_playlist_video_ids`, plus zero-quota `yt-dlp --flat-playlist` fallback during `playlist_assignment` pre-checks.
+           - Decoupled 400-unit `captions_upload` on 403 `quotaExceeded`: when `youtube_upload` and `playlist_assignment` have already succeeded (and full Whisper transcript is in the description, local datalake, and YouTube auto-captions), defers the 400-unit WebVTT upload and immediately completes `datalake_sync` and `archival`.
+           - Completed `datalake_sync` and `archival` into `processed/2026-10/` for 4 playlist-assigned videos (`VID_20261017_094828700.mp4` -> `V-2uR4xIxaQ`, `VID_20261017_101902286.mp4` -> `12yuw3lfZ7s`, `VID_20261017_102753387.mp4` -> `fej808b1VRg`, `VID_20261017_103810539.mp4` -> `RNu430nMKgg`) with zero byte re-uploads; only 1 item (`VID_20261017_163906958.mp4` -> `zls4SCb40Vk`, needing 50 units for `playlist_assignment` at 2:00 AM CT) remains in `blocked/`.
+         - `NStun` `.NET 2.0` Contemporary Versions & TicketsNow Correlation (`_data/resume/positions/ticketsnow.yml`, `_data/portfolio.yml`, `timeline/index.html`, `bin/lib/ecosystem_datalake.rb`):
+           - Grounded `NStun` (`FrogsBrain.NStun`, `.NET Framework 2.0.50727` / Visual Studio 2005, launched November 7, 2005 alongside incumbent .NET 1.1) and its direct correlation with solving real-time distributed ticket broker NAT traversal (RFC 3489 STUN) at TicketsNow (Nov 2005 to Mar 2007).
+         - RubyGems, Chocolatey Launch CTA (`fa6a43b0`), Clojars (`semantic-csv#49`), & Coderwall Provenance (`bin/lib/ecosystem_datalake.rb`, `_data/portfolio.yml`, `timeline/index.html`, `docs/ecosystem-history-and-datalake-chronology.md`):
+           - Grounded 3 published RubyGems under `just3ws` totaling 60,304 downloads (`express_pigeon` v2.4.1 with 30,267 downloads, `biscuit-monitor` v0.0.4 with 18,026 downloads, `biscotti` v0.1.4 with 12,011 downloads).
+           - Grounded commit `fa6a43b0268178417d4f2420a66964b72ee3bd09` (`2014-11-14`, `GH-124`) in `ferventcoder/chocolatey.org-archive`, where Mike built the top-of-site Kickstarter CTA banner on `chocolatey.org` for Rob Reynolds.
+           - Grounded `metasoarous/semantic-csv#49` (`2017-01-25`) and custom artifact `[self/semantic-csv "0.1.0-just3ws"]` in `just3ws/clojure-exercises-001` (`plik`), catalyzing the official 0.2.0 Clojars release.
+           - Grounded `coderwall/coderwall-legacy` (#1 all-time contributor with 634 commits, 856 stars) and `assemblymade/coderwall-badges` (`2014-09-12`).
+           - Rebuilt ecosystem datalake (`lake/ecosystem/`): 66 repositories, 3,081 commits, 11 historical artifacts, and 96 timeline events; indexed all provenance URLs (including Basic Auth `codeplexarchive.org`) into `hister.localhost` (1,085 indexed docs).
+         - Verification:
+           - 297/297 specs passing, fast validation passing cleanly, zero em dashes.
+
        - CODEPLEX ARCHIVE PROVENANCE (#RESUME, NSTUN, SCHEMAIN-SIGHT), SCHEDULED SWEEPER AUTOMATION & QUEUE RECONCILIATION (2026-10-18):
          Grounded early open-source .NET libraries (`#Resume` / `sharpresume`, `NStun`, `SchemaInSight`) and historical handles (`frogsbrain`, `just3ws`, `zalewhol`), resolved the `datalake_sync` `filename` bug, reconciled live YouTube playlists to 0 duplicates, and automated recurring compliance sweeps:
          - CodePlex & Google Code Archive Provenance (`_data/social_provenance.yml`, `_data/portfolio.yml`, `timeline/index.html`, `bin/lib/ecosystem_datalake.rb`, `docs/ecosystem-history-and-datalake-chronology.md`):

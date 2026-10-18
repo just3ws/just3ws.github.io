@@ -512,7 +512,8 @@ class LiveDashboardStreamer
         trk = JobSubstateTracker.load(fn, f, state_dir)
         blocked_json = "#{f}.blocked.json"
         blocked_info = File.exist?(blocked_json) ? (JSON.parse(File.read(blocked_json)) rescue {}) : {}
-        resets_at = blocked_info['cooldown_resets_at'] || trk.step_data(trk.current_step)['resets_at'] || '00:00 PT'
+        raw_resets = blocked_info['cooldown_resets_at'] || trk.step_data(trk.current_step)['resets_at'] || '2:00 AM CT (00:00 PT)'
+        resets_at = raw_resets == '00:00 PT' ? '2:00 AM CT (00:00 PT)' : raw_resets
         raw_diagnostic = blocked_info['diagnostic'] || trk.step_data(trk.current_step)['error'] || 'YouTube API Quota limit reached'
 
         clean_diagnostic = if raw_diagnostic =~ /\{[\s\S]*"error"[\s\S]*\}/

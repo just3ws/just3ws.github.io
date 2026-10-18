@@ -80,17 +80,17 @@ Chicago Code Camp was an existing regional conference where Mike volunteered and
 Simultaneously in June 2011, Mike carried a Flip video camera into conference hallways to launch **UGtastic**, filming conversations with community organizers, open-source maintainers, and working programmers. Over the next decade, this grew into an irreplaceable 218-interview oral history archive.
 
 ### Epoch 1: Distributed Services & Micro-App Experiments (2012 - 2015)
-As the user group movement grew, Mike explored microservices to map and connect communities. In 2012, `uglst-dtsrv` and `uglst-geosrv` were built to calculate geospatial proximity between developer meetups. On January 11, 2014, Mike launched **UGl.st** (`ugl.st`), the User-Group List, featuring the signature heart glyph in its user-group registration interface (`https://web.archive.org/web/20140111160057/https://ugl.st/`). Mike owned and operated `ugl.st` throughout 2014, with the final snapshot under his ownership captured on December 22, 2014 (`https://web.archive.org/web/20141222063128/https://ugl.st/`). Command-line utilities like `biscuit-monitor` (monitoring Clear Spot 4G mobile devices) and `Cleeks` (capturing automated desktop screenshots to Dropbox via `launchctl`) established an early pattern: treating the local operating system as a programmable platform.
+As the user group movement grew, Mike explored microservices to map and connect communities. In 2012, `uglst-dtsrv` and `uglst-geosrv` were built to calculate geospatial proximity between developer meetups. On January 11, 2014, Mike launched **UGl.st** (`ugl.st`), the User-Group List, featuring the signature heart glyph in its user-group registration interface (`https://web.archive.org/web/20140111160057/https://ugl.st/`). Mike owned and operated `ugl.st` throughout 2014, with the final snapshot under his ownership captured on December 22, 2014 (`https://web.archive.org/web/20141222063128/https://ugl.st/`). Command-line utilities and published RubyGems under `just3ws` (**60,304 total downloads** across `express_pigeon` with 30,267 downloads, `biscuit-monitor` with 18,026 downloads for CLEAR Spot 4G+ hotspot telemetry, and `biscotti` with 12,011 downloads) alongside `Cleeks` (capturing automated desktop screenshots to Dropbox via `launchctl`) established an early pattern: treating the local operating system as a programmable platform.
 
-In April 2014, Mike launched the **WHOIS Tech Community Patreon** under the motto *"Tools for everything"*. The goal was deliberate: keep technical oral history 100% independent of corporate sponsors and vendor influence while funding better field audio and video equipment.
+In April 2014, Mike launched the **WHOIS Tech Community Patreon** under the motto *"Tools for everything"*. In September 2014, at Assembly Made, Mike led the open-sourcing of **Coderwall** (`coderwall/coderwall-legacy`, where he is the #1 all-time contributor with 634 commits across 856 stars), created `assemblymade/coderwall-badges` preserving 60+ original DrawIt vector badge artworks, executed the zero-downtime MongoDB-to-PostgreSQL migration, and contributed upstream to Ruby on Rails ([PR #17990](https://github.com/rails/rails/pull/17990)). On **November 14, 2014**, continuing a friendship with Rob Reynolds (`@ferventcoder`) that began on the 2010 Iron Languages Podcast (*"That 'nu' Thing"*) and their 2012 UGtastic interview on Chocolatey, Mike built the top-of-site Kickstarter launch CTA banner on `chocolatey.org` ([commit `fa6a43b0`](https://github.com/ferventcoder/chocolatey.org-archive/commit/fa6a43b0268178417d4f2420a66964b72ee3bd09), `GH-124`) to help propel the Chocolatey Kickstarter past its $51,071 finish line.
 
 ### Epoch 2: The Canonical GitHub Pages Genesis & Personal Control Plane (2016 - 2017)
-On **December 5, 2016**, commit `adcc35b0` established `just3ws.github.io`. Starting with a minimal HTML resume and structured schema microdata, the repository was designed to be a permanent, indexable engineering home.
+On **December 5, 2016**, commit `adcc35b0` established `just3ws.github.io`. Starting with a minimal HTML resume and structured schema microdata, the repository was designed to be a permanent, indexable engineering home. On **January 25, 2017**, while building `plik` (`just3ws/clojure-exercises-001`), a Clojure Compojure/Ring service consuming multi-delimiter CSV files with `clojure-csv` and `metasoarous/semantic-csv`, Mike packaged custom artifact `[self/semantic-csv "0.1.0-just3ws"]` for `:transform-header` support and opened [`metasoarous/semantic-csv#49`](https://github.com/metasoarous/semantic-csv/issues/49), catalyzing the official `0.2.0` release to Clojars.
 
 In May 2017, Mike formalized his personal operating system with **zdots** (`~/.config/zsh`), followed a week later by **vdots** (`~/.config/nvim`). Rather than relying on fragile dotfile symlinks, `zdots` was engineered as an observable control plane with health checks, local background services, and strict isolation.
 
 ### Epoch 3: Calm Systems, Local-First Platforms & Game Engines (2018 - 2022)
-From 2018 to 2020, Mike led open-source migrations such as `coderwall-legacy` (hardening security and migrating MongoDB to PostgreSQL) and built algorithmic aids like `nerd-font-cheatsheets`, `biscotti`, and `slowa`.
+From 2018 to 2020, Mike archived `coderwall-legacy` and `just3ws/ccs` and built developer utilities like `nerd-font-cheatsheets` (129 GitHub stars, 25 forks), `biscotti`, and `slowa`.
 
 In September 2021, Mike founded **WwworkRemote** (`@wwworkremote`), building a calm, local-first search system to triage, rank, and track engineering opportunities without algorithmic feed manipulation or engagement traps.
 
@@ -103,7 +103,7 @@ Between 2023 and 2026, the various historical threads converged:
 - **October 12, 2026 (`dehum`)**: Engineered forensic audio filters to eliminate 345,000-volt high-voltage transmission line hum, corona decrackle, and clock drift from field recordings.
 - **October 15, 2026**: Autonomous media intake pipeline with Maildir queue architecture (`incoming/`, `pending/`, `processing/`, `blocked/`, `processed/`, `quarantine/`), BPMN state machines, resumable 8MB chunked YouTube uploads, and real-time SSE telemetry streaming.
 - **October 17, 2026**: Smart legacy route remapping engine in `404.html` recovering historical links for `ugtastic.com`, `whoistechcmty.com`, and `chicagocodecamp.com`.
-- **October 18, 2026**: The Unified Ecosystem Datalake (`lake/ecosystem/`), synthesizing 66 repositories, 3,071 commits, and timeline events into SQLite3 FTS5, DuckDB, and a unified control plane CLI (`bin/just3ws`).
+- **October 18, 2026**: The Unified Ecosystem Datalake (`lake/ecosystem/`), synthesizing 66 repositories, 3,081 commits, 11 historical artifacts, and 96 timeline events into SQLite3 FTS5, DuckDB, and a unified control plane CLI (`bin/just3ws`).
 
 ---
 
@@ -111,7 +111,7 @@ Between 2023 and 2026, the various historical threads converged:
 
 | Date | Epoch / Era | Initiative | Repo / Reference | Event Type | Milestone & Turning Point |
 |:---|:---|:---|:---|:---|:---|
-| **2006-10-29** | Pre-GitHub Open Source | Frog's Brain / CodePlex | `codeplex/nstun` | `community_milestone` | Joined CodePlex (`frogsbrain`) and published `NStun` native C# RFC 3489 STUN library |
+| **2006-10-29** | Pre-GitHub Open Source | Frog's Brain / TicketsNow | `codeplex/nstun` | `community_milestone` | Joined CodePlex (`frogsbrain`) and published `NStun` (.NET 2.0 C# RFC 3489 STUN library) |
 | **2007-05-10** | Pre-GitHub Open Source | `#Resume` & `SchemaInSight` | `codeplex/sharpresume` | `community_milestone` | Coordinated `#Resume` (`Just3Ws.SharpResume` HR-XML 2.5 C# API) and `SchemaInSight` |
 | **2008-11-12** | Craftsmanship Genesis | Chicago Alt.NET | `just3ws.github.io` | `community_milestone` | First user group presentation on NHaml alternative view engine at Sears Tower |
 | **2009-01-15** | Craftsmanship Genesis | SCMC | `just3ws.github.io` | `community_milestone` | Founding of Software Craftsmanship McHenry County |
@@ -121,9 +121,13 @@ Between 2023 and 2026, the various historical threads converged:
 | **2011-06-01** | Craftsmanship Genesis | UGtastic | `ugtastic/.github` | `community_milestone` | Launch of UGtastic oral history interviews with Flip video cameras |
 | **2012-04-14** | Craftsmanship Genesis | UGtastic | `ugtastic.com` | `community_milestone` | First recorded Internet Archive capture of ugtastic.com |
 | **2012-06-12** | Distributed Services | uglst | `just3ws/uglst-geosrv` | `repo_creation` | Geospatial microservice for user group mapping |
+| **2012-07-31** | Distributed Services | RubyGems | `just3ws/biscuit-monitor` | `community_milestone` | Published `biscuit-monitor` (18,026 downloads) & `express_pigeon` (30,267 downloads) |
 | **2014-01-11** | Distributed Services | UGl.st | `just3ws/uglst-geosrv` | `community_milestone` | Public launch of UGl.st User-Group List with heart glyph interface |
 | **2014-04-01** | Distributed Services | WHOIS Tech Cmty | `just3ws.github.io` | `community_milestone` | Launch of Patreon campaign under the 'Tools for everything' vision |
+| **2014-09-12** | Distributed Services | Coderwall | `coderwall/coderwall-legacy` | `community_milestone` | Led Coderwall open-sourcing (#1 contributor, 634 commits) & `coderwall-badges` |
+| **2014-11-14** | Distributed Services | Chocolatey | `chocolatey.org` (`fa6a43b0`) | `community_milestone` | Built top-of-site Kickstarter launch CTA banner (`GH-124`) for Rob Reynolds |
 | **2016-12-05** | Control Plane Genesis | just3ws | `just3ws.github.io` (`adcc35b0`) | `turning_point` | Initial commit of canonical engineering web presence and resume |
+| **2017-01-25** | Control Plane Genesis | Clojars / Clojure | `semantic-csv#49` | `community_milestone` | Packaged `[self/semantic-csv "0.1.0-just3ws"]` in `plik` & catalyzed Clojars 0.2.0 release |
 | **2017-05-26** | Control Plane Genesis | zdots | `just3ws/zdots` | `turning_point` | Founding of the observable Zsh personal control plane |
 | **2017-06-02** | Control Plane Genesis | vdots | `just3ws/vdots` | `turning_point` | Founding of native-first Neovim configuration in Lua |
 | **2017-11-17** | Control Plane Genesis | WHOIS Tech Cmty | `ugtastic.com` | `community_milestone` | First Wayback capture of UGtastic to WHOIS Tech Community rebrand transition |

@@ -33,15 +33,15 @@ eras:
     summary: "Chicago Code Camp on static Rails and blind CFPs, UGl.st open directory, scaling user groups without corporate gatekeepers, and conference hallway archives."
   - id: "continuous-room"
     name: "The 17-Year Continuous Room & The Age of AI"
-    years: "2014–2026"
+    years: "2014-2026"
     summary: "Ryan Gerry's enduring stewardship of SCMC, GOTO retrospectives, Phalanx Duel deterministic rules, and rewatching the archive to anchor software craft in the era of generative AI."
 
 events:
   - id: "ticketsnow-watin-watir"
-    year: "2005–2007"
-    date_display: "Nov 2005 – Mar 2007"
+    year: "2005-2007"
+    date_display: "Nov 2005 to Mar 2007"
     era: "precursor"
-    title: "TicketsNow: WatiN, WatiR & Real-Time Distributed Inventory"
+    title: "TicketsNow: NStun NAT Traversal, WatiN, WatiR & Real-Time Distributed Inventory"
     resume_anchor: "ticketsnow"
     location: "Crystal Lake, IL"
     communities:
@@ -52,15 +52,18 @@ events:
         role: "ThoughtWorks Consultant at TicketsNow"
         note: "Consulting on site and experimenting with Ruby before founding Coderwall. Exposed Mike to the emerging Ruby ecosystem."
     narrative: >
-      While leading the Real-Time Inventory Locking service at TicketsNow to prevent concurrency race conditions across EventInventory broker clients, Mike built out continuous integration using NAnt, CruiseControl.NET, and NUnit. While the .NET ecosystem had long leaned on Java ports (NUnit for JUnit, NAnt for Ant, CruiseControl.NET for CruiseControl) that remained aligned with corporate enterprise paradigms, evaluating WatiN (Web Application Testing in .NET) led directly to its parent Ruby project, Watir. The emerging Ruby ecosystem was fundamentally different: it operated completely outside corporate monolithic thinking, offering developer-centric idioms and radically faster feedback loops.
+      Joining TicketsNow in November 2005 (the exact month Microsoft shipped .NET Framework 2.0.50727 and Visual Studio 2005 alongside the incumbent .NET 1.1 baseline), Mike led the Real-Time Inventory Locking service to prevent concurrency race conditions across distributed EventInventory ticket broker clients behind firewalls. Solving UDP NAT traversal to reach distributed brokers inspired NStun (FrogsBrain.NStun), his open-source .NET 2.0 C# implementation of the RFC 3489 STUN protocol published on CodePlex in November 2006. Concurrently, while building continuous integration with NAnt, CruiseControl.NET, and NUnit, evaluating WatiN (Web Application Testing in .NET) led directly to its parent Ruby project, Watir, opening the door to developer-centric idioms outside corporate enterprise monoliths.
     primary_sources:
       - title: "The Skunkworks Lab: From .NET Teasing to Real-Time Inventory"
         url: "/ai/2026/09/02/the-skunkworks-lab-real-time-inventory/"
         kind: "article"
+      - title: "NStun (FrogsBrain.NStun) RFC 3489 STUN Protocol Archive"
+        url: "https://codeplexarchive.org/project/nstun"
+        kind: "archive"
 
   - id: "chicago-altnet-sergio"
-    year: "2007–2008"
-    date_display: "2007 – 2008"
+    year: "2007-2008"
+    date_display: "2007 to 2008"
     era: "precursor"
     title: "Chicago Alt.NET: The First Room and First Stage"
     resume_anchor: "brightstar"

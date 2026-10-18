@@ -11,10 +11,12 @@ id: ticketsnow
 summary: Owned real-time inventory systems, leading transactional integrity and iterative
   delivery for revenue-critical operations.
 highlights:
-- Architected a real-time inventory locking and transaction reconciliation service, preventing race conditions on concurrent ticket sales and generating $2M+ in protected revenue.
+- Architected a real-time inventory locking and transaction reconciliation service on .NET Framework 2.0, preventing race conditions on concurrent ticket sales across distributed brokers and generating $2M+ in protected revenue.
+- Engineered UDP NAT traversal (RFC 3489 STUN) to reach distributed ticket brokers across firewalls, releasing the core protocol implementation as the open-source NStun (FrogsBrain.NStun) C# library on CodePlex.
 - Introduced and led Scrum agile practices for the core transaction engineering team, improving sprint delivery predictability.
 skills:
 - C#
+- .NET Framework 2.0
 - ASP.NET
 - Microsoft BizTalk Server
 - Microsoft SQL Server

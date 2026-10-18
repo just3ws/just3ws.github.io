@@ -142,18 +142,88 @@ class EcosystemDatalake
     },
     {
       'id' => 'codeplex-nstun-library',
-      'initiative' => 'NStun (FrogsBrain.NStun)',
-      'title' => 'FrogsBrain.NStun Native C# RFC 3489 STUN Protocol Library',
+      'initiative' => 'NStun (FrogsBrain.NStun) / TicketsNow',
+      'title' => 'FrogsBrain.NStun Native .NET 2.0 C# RFC 3489 STUN Protocol Library',
       'era' => '2006 - 2009',
       'artifact_type' => 'code',
       'source_repo' => 'codeplex/nstun',
       'file_path' => '_posts/2006-11-06-nstun.html',
-      'description' => 'Native C# implementation of the RFC 3489 STUN (Simple Traversal Underneath Network Address Translators) UDP protocol, published on CodePlex and FrogsBrain.net under the MIT License.',
+      'description' => 'Native C# (.NET Framework 2.0.50727 / Visual Studio 2005) implementation of the RFC 3489 STUN UDP NAT traversal protocol, directly correlated with solving real-time distributed ticket broker connectivity at TicketsNow (Nov 2005 to Mar 2007). Published on CodePlex and FrogsBrain.net under the MIT License.',
       'canonical_url' => 'https://codeplexarchive.org/project/nstun',
       'provenance_details' => {
         'codeplex_url' => 'https://codeplexarchive.org/project/nstun',
         'frogsbrain_url' => 'https://web.archive.org/web/20081010042552/http://www.frogsbrain.net:80/content/nstun/default.aspx',
+        'runtime' => '.NET Framework 2.0 (v2.0.50727, Visual Studio 2005)',
+        'career_correlation' => 'TicketsNow real-time distributed broker NAT traversal (2005-2007)',
         'copyright' => 'Copyright (c) 2007 FrogsBrain.net / 2009 Just3Ws, Inc.'
+      }
+    },
+    {
+      'id' => 'rubygems-published-packages',
+      'initiative' => 'RubyGems (@just3ws)',
+      'title' => 'Published RubyGems Packages: express_pigeon, biscuit-monitor, biscotti (60,304 Downloads)',
+      'era' => '2012 - 2019',
+      'artifact_type' => 'package',
+      'source_repo' => 'just3ws/express_pigeon',
+      'file_path' => '_data/portfolio.yml',
+      'description' => 'Three production RubyGems authored and published under handle just3ws totaling 60,304 downloads: express_pigeon (v2.4.1, 30,267 downloads, MIT), biscuit-monitor (v0.0.4, 18,026 downloads, CLEAR Spot 4G+ hotspot telemetry), and biscotti (v0.1.4, 12,011 downloads, word-permutation engine).',
+      'canonical_url' => 'https://rubygems.org/profiles/just3ws',
+      'provenance_details' => {
+        'express_pigeon' => 'https://rubygems.org/gems/express_pigeon (30,267 downloads)',
+        'biscuit_monitor' => 'https://rubygems.org/gems/biscuit-monitor (18,026 downloads)',
+        'biscotti' => 'https://rubygems.org/gems/biscotti (12,011 downloads)',
+        'total_downloads' => 60304
+      }
+    },
+    {
+      'id' => 'chocolatey-kickstarter-cta-panel',
+      'initiative' => 'Chocolatey (ferventcoder/chocolatey.org-archive)',
+      'title' => 'Chocolatey.org Top-of-Site Kickstarter Launch CTA Panel (Commit fa6a43b0)',
+      'era' => '2010 - 2014',
+      'artifact_type' => 'code',
+      'source_repo' => 'ferventcoder/chocolatey.org-archive',
+      'file_path' => 'chocolatey/Website/Views/Shared/Layout.cshtml',
+      'description' => 'Top-of-site Kickstarter widget and call-to-action banner (commit fa6a43b0268178417d4f2420a66964b72ee3bd09, GH-124, featuring the humorous <!-- END KICKSTARTER ANNOY-O-TRON --> comment) built by Mike Hall for friend Rob Reynolds (ferventcoder) on November 14, 2014 to help propel the Chocolatey Kickstarter past its $51,071 funding goal.',
+      'canonical_url' => 'https://github.com/ferventcoder/chocolatey.org-archive/commit/fa6a43b0268178417d4f2420a66964b72ee3bd09',
+      'provenance_details' => {
+        'commit_sha' => 'fa6a43b0268178417d4f2420a66964b72ee3bd09',
+        'merge_sha' => 'f5685ed976c026ab9392732944732820ebdc9108',
+        'issue' => 'GH-124',
+        'collaborator' => 'Rob Reynolds (@ferventcoder)',
+        'prior_history' => '2010 Iron Languages Podcast ("That nu Thing" on NuGet) & 2012 UGtastic Interview (https://www.youtube.com/watch?v=fLgdVVPCWZ8)'
+      }
+    },
+    {
+      'id' => 'clojars-semantic-csv-release',
+      'initiative' => 'Clojure & Clojars (metasoarous/semantic-csv & plik)',
+      'title' => 'Clojure Multi-Delimiter CSV Ingestion & metasoarous/semantic-csv Clojars Release Catalyst',
+      'era' => '2017',
+      'artifact_type' => 'code',
+      'source_repo' => 'just3ws/clojure-exercises-001',
+      'file_path' => 'plik/project.clj',
+      'description' => 'While building plik (a Clojure Compojure/Ring service consuming pipe, comma, and space-delimited files with clojure-csv and semantic-csv), Mike Hall discovered :transform-header was unreleased on Clojars, packaged [self/semantic-csv "0.1.0-just3ws"] in a local Maven repository (commit 6fb2d789), and filed metasoarous/semantic-csv#49 on January 25, 2017, catalyzing the official 0.2.0 Clojars release.',
+      'canonical_url' => 'https://github.com/metasoarous/semantic-csv/issues/49',
+      'provenance_details' => {
+        'upstream_issue' => 'https://github.com/metasoarous/semantic-csv/issues/49',
+        'custom_artifact' => '[self/semantic-csv "0.1.0-just3ws"]',
+        'local_commit' => 'https://github.com/just3ws/clojure-exercises-001/commit/6fb2d78971a9cf66d745a11a0841523f631fc6b7',
+        'maintainer' => 'Christopher Small (@metasoarous)'
+      }
+    },
+    {
+      'id' => 'coderwall-open-source-and-badges',
+      'initiative' => 'Coderwall & Assembly Made',
+      'title' => 'Coderwall Open-Source Steward (#1 Contributor, 634 Commits) & coderwall-badges Archive',
+      'era' => '2014 - 2015',
+      'artifact_type' => 'code',
+      'source_repo' => 'coderwall/coderwall-legacy',
+      'file_path' => '_data/resume/positions/assembly.yml',
+      'description' => 'As #1 all-time contributor to coderwall/coderwall-legacy (634 commits, 856 GitHub stars), Mike Hall led the open-source security audit, zero-downtime MongoDB-to-PostgreSQL migration (PR #227), badge achievement logic fixes (octopussy.rb), and created assemblymade/coderwall-badges (commits b5ff7796, 0fc8fb01) preserving 60+ original DrawIt vector badge artworks.',
+      'canonical_url' => 'https://github.com/coderwall/coderwall-legacy',
+      'provenance_details' => {
+        'coderwall_repo' => 'https://github.com/coderwall/coderwall-legacy (856 stars, 301 forks, 634 commits by just3ws)',
+        'badges_repo' => 'https://github.com/assemblymade/coderwall-badges',
+        'rails_enum_pr' => 'https://github.com/rails/rails/pull/17990'
       }
     }
   ].freeze
@@ -164,13 +234,15 @@ class EcosystemDatalake
       'event_date' => '2006-10-29',
       'year' => 2006,
       'era' => 'Pre-GitHub Open Source & .NET Foundations (2006-2008)',
-      'initiative' => "Frog's Brain / CodePlex",
+      'initiative' => "Frog's Brain / CodePlex / TicketsNow",
       'repo_full_name' => 'just3ws/just3ws.github.io',
       'event_type' => 'community_milestone',
-      'title' => 'CodePlex Membership (frogsbrain) & NStun RFC 3489 C# Library',
-      'description' => 'Mike Hall joins Microsoft CodePlex under handle frogsbrain (October 29, 2006) and publishes NStun (FrogsBrain.NStun), a native C# implementation of the RFC 3489 STUN UDP NAT traversal protocol.',
+      'title' => 'CodePlex Membership (frogsbrain) & NStun .NET 2.0 RFC 3489 STUN Library',
+      'description' => 'While engineering real-time distributed broker connectivity at TicketsNow on .NET Framework 2.0 (v2.0.50727, Visual Studio 2005), Mike Hall joins Microsoft CodePlex under handle frogsbrain (October 29, 2006) and publishes NStun (FrogsBrain.NStun), a native C# implementation of the RFC 3489 STUN UDP NAT traversal protocol.',
       'details_json' => {
         'handle' => 'frogsbrain',
+        'runtime' => '.NET Framework 2.0.50727 (Visual Studio 2005)',
+        'career_correlation' => 'TicketsNow real-time distributed broker NAT traversal',
         'profile_wayback' => 'https://web.archive.org/web/20081009115645/http://www.codeplex.com:80/site/users/view/frogsbrain',
         'nstun_archive' => 'https://codeplexarchive.org/project/nstun',
         'blog_post' => '_posts/2006-11-06-nstun.html'
@@ -284,6 +356,71 @@ class EcosystemDatalake
         'domain' => 'ugtastic.com',
         'first_capture' => 'https://web.archive.org/web/20120414040704/http://www.ugtastic.com/',
         'latest_capture' => 'https://web.archive.org/web/20250831080513/http://www.ugtastic.com/'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2012-rubygems-biscuit-monitor',
+      'event_date' => '2012-07-31',
+      'year' => 2012,
+      'era' => 'Distributed Services & Micro-Apps (2012-2015)',
+      'initiative' => 'RubyGems (@just3ws)',
+      'repo_full_name' => 'just3ws/biscuit-monitor',
+      'event_type' => 'community_milestone',
+      'title' => 'Published biscuit-monitor RubyGem (18,026 Downloads) & express_pigeon (30,267 Downloads)',
+      'description' => 'Mike Hall publishes biscuit-monitor (monitoring CLEAR Spot 4G+ personal hotspots for field interviews) and maintains express_pigeon (transactional email and list automation Ruby SDK, 30,267 downloads) on RubyGems.org.',
+      'details_json' => {
+        'rubygems_profile' => 'https://rubygems.org/profiles/just3ws',
+        'biscuit_monitor' => 'https://rubygems.org/gems/biscuit-monitor',
+        'express_pigeon' => 'https://rubygems.org/gems/express_pigeon',
+        'biscotti' => 'https://rubygems.org/gems/biscotti'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2014-coderwall-open-source',
+      'event_date' => '2014-09-12',
+      'year' => 2014,
+      'era' => 'Distributed Services & Micro-Apps (2012-2015)',
+      'initiative' => 'Coderwall / Assembly Made',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Coderwall Open-Source Transition (#1 Contributor, 634 Commits) & coderwall-badges',
+      'description' => 'At Assembly Made, Mike Hall leads the open-sourcing of Coderwall (coderwall/coderwall-legacy, 856 stars, 634 commits by just3ws), creates assemblymade/coderwall-badges preserving 60+ original DrawIt vector badges, executes the zero-downtime MongoDB-to-PostgreSQL migration, and contributes upstream to Ruby on Rails (PR #17990).',
+      'details_json' => {
+        'coderwall_legacy' => 'https://github.com/coderwall/coderwall-legacy',
+        'coderwall_badges' => 'https://github.com/assemblymade/coderwall-badges',
+        'rails_pr' => 'https://github.com/rails/rails/pull/17990'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2014-chocolatey-kickstarter-cta',
+      'event_date' => '2014-11-14',
+      'year' => 2014,
+      'era' => 'Distributed Services & Micro-Apps (2012-2015)',
+      'initiative' => 'Chocolatey (Rob Reynolds / ferventcoder)',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Chocolatey.org Top-of-Site Kickstarter Launch CTA Panel (Commit fa6a43b0)',
+      'description' => 'Continuing a friendship with Rob Reynolds (@ferventcoder) spanning the 2010 Iron Languages Podcast on NuGet and 2012 UGtastic interview on Chocolatey, Mike Hall authors the top-of-site Kickstarter CTA header banner on chocolatey.org (commit fa6a43b0, GH-124) during the final week of the campaign.',
+      'details_json' => {
+        'commit_url' => 'https://github.com/ferventcoder/chocolatey.org-archive/commit/fa6a43b0268178417d4f2420a66964b72ee3bd09',
+        'interview_2012' => 'https://www.youtube.com/watch?v=fLgdVVPCWZ8',
+        'podcast_2010' => '_posts/2010-08-09-upcoming-iron-languages-podcast-episodes.html'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2017-clojars-semantic-csv',
+      'event_date' => '2017-01-25',
+      'year' => 2017,
+      'era' => 'Autonomous Microservices & Kubernetes (2015-2020)',
+      'initiative' => 'Clojure & Clojars (semantic-csv / plik)',
+      'repo_full_name' => 'just3ws/clojure-exercises-001',
+      'event_type' => 'community_milestone',
+      'title' => 'Clojure CSV Ingestion (plik) & metasoarous/semantic-csv#49 Clojars Release',
+      'description' => 'While building the plik Clojure multi-delimiter CSV service, Mike Hall vendors custom artifact [self/semantic-csv "0.1.0-just3ws"] for :transform-header support and opens metasoarous/semantic-csv#49, catalyzing the official 0.2.0 release to Clojars.',
+      'details_json' => {
+        'issue_url' => 'https://github.com/metasoarous/semantic-csv/issues/49',
+        'commit_url' => 'https://github.com/just3ws/clojure-exercises-001/commit/6fb2d78971a9cf66d745a11a0841523f631fc6b7',
+        'clojars_package' => 'https://clojars.org/semantic-csv'
       }.to_json
     },
     {
