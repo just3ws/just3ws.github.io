@@ -411,6 +411,8 @@ class YouTubeClient
   end
 
   def make_request(uri, method: :get, body: nil, retry_auth: true)
+    fetch_access_token! if @access_token.nil? && authenticated?
+
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
 
