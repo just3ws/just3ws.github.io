@@ -11,7 +11,7 @@ require 'json'
 
 class PipelineClassifier
   ARCHETYPES = %w[freeform_field_notes structured_errata technical_rewatch].freeze
-  ERROR_ACTIONS = %w[transient_network_retry audio_codec_resample credential_refresh quarantine_operator_review].freeze
+  ERROR_ACTIONS = %w[upstream_quota_blocked transient_network_retry audio_codec_resample credential_refresh quarantine_operator_review].freeze
 
   ARCHETYPE_MARKERS = {
     'freeform_field_notes' => {
@@ -29,6 +29,18 @@ class PipelineClassifier
   }.freeze
 
   ERROR_MARKERS = {
+    'upstream_quota_blocked' => {
+      patterns: [
+        /quotaExceeded/i,
+        /exceeded.*quota/i,
+        /dailyLimitExceeded/i,
+        /userRateLimitExceeded/i,
+        /rateLimitExceeded/i,
+        /quota.*limit/i,
+        /quota.*error/i
+      ],
+      weight: 4.5
+    },
     'transient_network_retry' => {
       patterns: [
         /connection reset/i,

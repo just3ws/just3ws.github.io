@@ -69,11 +69,47 @@ class YouTubeDeduplicator
       }
     end
 
+    # 3. Check for items whose video ID does not match canonical asset in _data/video_assets.yml
+    missing_canonicals = []
+    @registered_assets.each do |asset|
+      canon_id = extract_youtube_id(asset)
+      next unless canon_id
+
+      asset_norm = normalize_title(asset['title'])
+      next if asset_norm.empty?
+
+      matching_items = by_title[asset_norm] || []
+      next if matching_items.empty?
+
+      unique_vids = matching_items.map { |it| it.dig('contentDetails', 'videoId') || it.dig('snippet', 'resourceId', 'videoId') }.uniq
+      redundant_vids = unique_vids.reject { |v| v == canon_id }
+      next if redundant_vids.empty?
+
+      duplicate_video_groups[asset_norm] ||= {
+        title: asset['title'],
+        canonical_id: canon_id,
+        redundant_ids: [],
+        items: []
+      }
+      duplicate_video_groups[asset_norm][:canonical_id] = canon_id
+      duplicate_video_groups[asset_norm][:redundant_ids] = (duplicate_video_groups[asset_norm][:redundant_ids] + redundant_vids).uniq
+      duplicate_video_groups[asset_norm][:items] = (duplicate_video_groups[asset_norm][:items] + matching_items).uniq
+
+      unless unique_vids.include?(canon_id)
+        missing_canonicals << {
+          title: asset['title'],
+          canonical_id: canon_id,
+          redundant_ids: redundant_vids
+        }
+      end
+    end
+
     {
       total_items: items.size,
       unique_videos: by_vid.size,
       duplicate_item_groups: duplicate_item_groups,
-      duplicate_video_groups: duplicate_video_groups
+      duplicate_video_groups: duplicate_video_groups,
+      missing_canonicals: missing_canonicals
     }
   end
 
@@ -120,6 +156,18 @@ class YouTubeDeduplicator
     items_to_delete
   end
 
+  # Plan playlist additions to restore missing canonical videos
+  def plan_playlist_reconciliation(audit_result, playlist_id)
+    (audit_result[:missing_canonicals] || []).map do |m|
+      {
+        playlist_id: playlist_id,
+        video_id: m[:canonical_id],
+        title: m[:title],
+        reason: 'missing_canonical_replacement'
+      }
+    end
+  end
+
   # Select which video ID should be considered canonical among multiple duplicate uploads
   def select_canonical_video_id(candidate_vids, items)
     # Priority 1: Video ID explicitly recorded in _data/video_assets.yml
@@ -142,6 +190,10 @@ class YouTubeDeduplicator
     platforms = asset['platforms'] || []
     yt = platforms.find { |p| p['platform'] == 'youtube' }
     return yt['asset_id'] if yt && yt['asset_id']
+    return yt['video_id'] if yt && yt['video_id']
+    if yt && yt['url'] =~ /v=([a-zA-Z0-9_-]{11})/
+      return $1
+    end
 
     asset['asset_id']
   end
@@ -162,9 +214,11 @@ class YouTubeDeduplicator
   end
 
   def load_receipt_video_ids
-    return [] unless @receipts_dir && Dir.exist?(@receipts_dir)
+    default_dir = "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake"
+    dir = @receipts_dir || (Dir.exist?(default_dir) ? default_dir : nil)
+    return [] unless dir && Dir.exist?(dir)
 
-    receipt_paths = Dir.glob(File.join(@receipts_dir, '**', '*.receipt.json'))
+    receipt_paths = Dir.glob(File.join(dir, '**', '*.receipt.json'))
     receipt_paths.map do |path|
       data = JSON.parse(File.read(path)) rescue {}
       data['video_id']

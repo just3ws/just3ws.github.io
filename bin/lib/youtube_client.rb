@@ -369,6 +369,13 @@ class YouTubeClient
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     res = http.request(req)
+
+    if res.code.to_i == 401 && authenticated?
+      fetch_access_token!
+      req["Authorization"] = "Bearer #{@access_token}"
+      res = http.request(req)
+    end
+
     if res.is_a?(Net::HTTPSuccess) || res.code.to_i == 200
       JSON.parse(res.body) rescue {}
     else
@@ -403,7 +410,7 @@ class YouTubeClient
     end
   end
 
-  def make_request(uri, method: :get, body: nil)
+  def make_request(uri, method: :get, body: nil, retry_auth: true)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
 
@@ -422,6 +429,11 @@ class YouTubeClient
     req["Content-Type"] = "application/json"
     req.body = JSON.generate(body) if body
 
-    http.request(req)
+    res = http.request(req)
+    if res.code.to_i == 401 && retry_auth && authenticated?
+      fetch_access_token!
+      return make_request(uri, method: method, body: body, retry_auth: false)
+    end
+    res
   end
 end

@@ -56,7 +56,15 @@ RSpec.describe PipelineClassifier do
       expect(result[:confidence]).to be >= 0.70
     end
 
-    it 'routes YouTube API rate limits and 503 errors to transient_network_retry' do
+    it 'routes YouTube API quota exhaustion to upstream_quota_blocked' do
+      msg = 'YouTube API Error adding item to playlist PLNtb969T2-l0 (403): { "error": { "code": 403, "message": "The request cannot be completed because you have exceeded your quota.", "errors": [ { "reason": "quotaExceeded" } ] } }'
+      result = classifier.classify_error_triage(msg)
+
+      expect(result[:decision]).to eq('upstream_quota_blocked')
+      expect(result[:confidence]).to be >= 0.80
+    end
+
+    it 'routes YouTube API 503 and network errors to transient_network_retry' do
       msg = 'Google::Apis::ServerError: 503 Service Unavailable Backend Error'
       result = classifier.classify_error_triage(msg)
 

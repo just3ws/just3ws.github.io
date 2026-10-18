@@ -93,6 +93,8 @@ class LiveDashboardStreamer
       handle_pipeline_resume(client)
     when "/pipeline/retry", "/api/live/pipeline/retry"
       handle_pipeline_retry(client, path)
+    when "/pipeline/resume_blocked", "/api/live/pipeline/resume_blocked"
+      handle_pipeline_resume_blocked(client)
     when "/pipeline/run", "/api/live/pipeline/run"
       handle_pipeline_run(client)
     when "/pipeline/auto_toggle", "/api/live/pipeline/auto_toggle"
@@ -173,6 +175,7 @@ class LiveDashboardStreamer
     total_processing = targets.values.sum { |t| t['processing_count'] || 0 }
     total_processed = targets.values.sum { |t| t['processed_count'] || 0 }
     total_failed = targets.values.sum { |t| t['failed_count'] || 0 }
+    total_blocked = targets.values.sum { |t| t['blocked_count'] || 0 }
 
     health_status = if state['stopped']
       'stopped'
@@ -180,6 +183,8 @@ class LiveDashboardStreamer
       'halted'
     elsif total_failed > 0
       'degraded_quarantine'
+    elsif total_blocked > 0
+      'quota_cooldown_blocked'
     elsif total_processing > 0
       'processing'
     elsif total_pending > 0
@@ -203,7 +208,8 @@ class LiveDashboardStreamer
         pending: total_pending,
         processing: total_processing,
         processed: total_processed,
-        quarantined: total_failed
+        quarantined: total_failed,
+        blocked: total_blocked
       },
       self_healing: {
         last_events: state['self_healing_events'] || []
@@ -434,6 +440,7 @@ class LiveDashboardStreamer
       processing_files = Dir.glob(File.join(target_dir, 'processing', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
       processed_files = Dir.glob(File.join(target_dir, 'processed', '**', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
       failed_files = Dir.glob(File.join(target_dir, 'failed', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+      blocked_files = Dir.glob(File.join(target_dir, 'blocked', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
 
       pending_sorted = pending_files.sort_by do |f|
         begin
@@ -496,6 +503,34 @@ class LiveDashboardStreamer
         }
       end
 
+      blocked_items = blocked_files.map do |f|
+        fn = File.basename(f)
+        trk = JobSubstateTracker.load(fn, f, state_dir)
+        blocked_json = "#{f}.blocked.json"
+        blocked_info = File.exist?(blocked_json) ? (JSON.parse(File.read(blocked_json)) rescue {}) : {}
+        resets_at = blocked_info['cooldown_resets_at'] || trk.step_data(trk.current_step)['resets_at'] || '00:00 PT'
+        raw_diagnostic = blocked_info['diagnostic'] || trk.step_data(trk.current_step)['error'] || 'YouTube API Quota limit reached'
+
+        clean_diagnostic = if raw_diagnostic =~ /\{[\s\S]*"error"[\s\S]*\}/
+                             parsed = JSON.parse(raw_diagnostic[/\{[\s\S]*"error"[\s\S]*\}/]) rescue nil
+                             parsed && parsed.dig('error', 'message') ? parsed.dig('error', 'message').gsub(/<[^>]+>/, '').strip : raw_diagnostic
+                           else
+                             raw_diagnostic.to_s.gsub(/\\u([0-9a-fA-F]{4})/) { [$1.hex].pack('U*') }.gsub(/<[^>]+>/, '').strip
+                           end
+
+        {
+          'filename' => fn,
+          'size_bytes' => (File.size(f) rescue 0),
+          'blocked_at' => (blocked_info['blocked_at'] || File.mtime(f).utc.iso8601 rescue nil),
+          'diagnostic' => clean_diagnostic,
+          'cooldown_resets_at' => resets_at,
+          'meta_phase' => 'blocked',
+          'current_step' => trk.current_step,
+          'substates' => trk.substates,
+          'summary_badges' => trk.summary_badges
+        }
+      end
+
       recent_processed = processed_files.sort_by { |f| File.mtime(f) rescue Time.at(0) }.reverse.first(6).map do |f|
         receipt_file = "#{f}.receipt.json"
         receipt = File.exist?(receipt_file) ? (JSON.parse(File.read(receipt_file)) rescue {}) : {}
@@ -543,7 +578,9 @@ class LiveDashboardStreamer
         'processed_count' => processed_files.size,
         'recent_processed' => recent_processed,
         'failed_count' => failed_files.size,
-        'failed_items' => failed_items
+        'failed_items' => failed_items,
+        'blocked_count' => blocked_files.size,
+        'blocked_items' => blocked_items
       }
     end
 
@@ -614,20 +651,59 @@ class LiveDashboardStreamer
     if target && filename
       config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
       base_p = config['base_path']
-      src = File.join(base_p, 'whoistechcmty', target, 'failed', filename)
+      src_failed = File.join(base_p, 'whoistechcmty', target, 'failed', filename)
+      src_blocked = File.join(base_p, 'whoistechcmty', target, 'blocked', filename)
+      src = File.exist?(src_failed) ? src_failed : (File.exist?(src_blocked) ? src_blocked : nil)
       dst = File.join(base_p, 'whoistechcmty', target, 'pending', filename)
-      if File.exist?(src)
+      if src && File.exist?(src)
         FileUtils.mv(src, dst)
         Dir.glob("#{src}.*").each do |companion|
-          next if companion.end_with?('.error.log')
+          next if companion.end_with?('.error.log') || companion.end_with?('.blocked.json')
           companion_dst = File.join(base_p, 'whoistechcmty', target, 'pending', File.basename(companion))
           FileUtils.mv(companion, companion_dst) rescue nil
         end
+        FileUtils.rm_f("#{src}.error.log")
+        FileUtils.rm_f("#{src}.blocked.json")
         broadcast_state!
         return respond_json(client, { status: "retried", file: filename, target: target })
       end
     end
-    respond_json(client, { error: "File not found in failed" }, status: "400 Bad Request")
+    respond_json(client, { error: "File not found in failed or blocked" }, status: "400 Bad Request")
+  end
+
+  def handle_pipeline_resume_blocked(client)
+    resumed = resume_all_blocked!
+    broadcast_state!
+    respond_json(client, { status: "resumed", count: resumed, message: "Resumed #{resumed} blocked asset(s) to pending" })
+  end
+
+  def resume_all_blocked!
+    config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
+    base_p = config['base_path']
+    return 0 unless base_p && Dir.exist?(base_p)
+
+    targets = config['targets'] || {}
+    channel = config['channel'] || 'whoistechcmty'
+
+    resumed_count = 0
+    targets.each_key do |target_name|
+      blocked_dir = File.join(base_p, channel, target_name, 'blocked')
+      pending_dir = File.join(base_p, channel, target_name, 'pending')
+      next unless Dir.exist?(blocked_dir)
+
+      Dir.glob(File.join(blocked_dir, '*')).select { |f| f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.each do |f|
+        fn = File.basename(f)
+        dest = File.join(pending_dir, fn)
+        FileUtils.mv(f, dest)
+        Dir.glob("#{f}.*").each do |companion|
+          next if companion.end_with?('.blocked.json')
+          FileUtils.mv(companion, File.join(pending_dir, File.basename(companion))) rescue nil
+        end
+        FileUtils.rm_f("#{f}.blocked.json")
+        resumed_count += 1
+      end
+    end
+    resumed_count
   end
 
   def handle_pipeline_stage_to_pending(client, path)

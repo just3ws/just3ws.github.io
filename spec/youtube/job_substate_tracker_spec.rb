@@ -73,6 +73,19 @@ RSpec.describe JobSubstateTracker do
     end
   end
 
+  describe '#block_step' do
+    it 'marks step blocked and transitions meta_phase to blocked with cooldown details' do
+      tracker = described_class.load(filename, media_file, state_dir)
+      tracker.start_step(:captions)
+      tracker.block_step(:captions, 'quota_cooldown', 'resets_at' => '00:00 PT')
+
+      expect(tracker.step_status(:captions)).to eq('blocked')
+      expect(tracker.meta_phase).to eq('blocked')
+      expect(tracker.step_data(:captions)['block_reason']).to eq('quota_cooldown')
+      expect(tracker.step_data(:captions)['resets_at']).to eq('00:00 PT')
+    end
+  end
+
   describe '#summary_badges' do
     it 'emits structured badges for dashboard HUD rendering' do
       tracker = described_class.load(filename, media_file, state_dir)

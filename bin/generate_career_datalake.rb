@@ -296,6 +296,10 @@ oral_history_curriculum = {
   "errata_catalog" => errata_data["items"] || []
 }
 
+# 10. Patreon Campaign & Community Compute Mission
+patreon_file = File.join(ROOT, '_data', 'patreon_campaign.yml')
+patreon_campaign = File.exist?(patreon_file) ? safe_yaml_load(File.read(patreon_file)) : {}
+
 # 6. Narrative Synthesis Baseline (3-Act Story & Cover Letter Engine)
 narrative_synthesis = {
   "framework" => "3-Act Career Narrative & Cover Letter Synthesis",
@@ -381,7 +385,8 @@ datalake = {
     "nodes" => kg_data["nodes"] || [],
     "links" => kg_data["links"] || []
   },
-  "git_chronology_and_milestones" => git_epochs
+  "git_chronology_and_milestones" => git_epochs,
+  "patreon_campaign" => patreon_campaign
 }
 
 # Write master JSON files
@@ -404,6 +409,7 @@ File.open(jsonl_out, 'w') do |f|
   datalake["case_studies"].each { |k, v| f.puts JSON.generate({ "type" => "case_study", "id" => k, "data" => v }) }
   f.puts JSON.generate({ "type" => "narrative_synthesis", "data" => datalake["narrative_synthesis"] })
   f.puts JSON.generate({ "type" => "oral_history_curriculum", "data" => datalake["oral_history_curriculum"] })
+  f.puts JSON.generate({ "type" => "patreon_campaign", "data" => datalake["patreon_campaign"] }) if datalake["patreon_campaign"]&.any?
   datalake["technology_provenance"].each { |k, v| f.puts JSON.generate({ "type" => "technology", "name" => k, "data" => v }) }
   datalake["publications_and_writings"].each { |p| f.puts JSON.generate({ "type" => "publication", "id" => p["slug"], "data" => p }) }
   datalake["oral_history_corpus"].each { |i| f.puts JSON.generate({ "type" => "interview", "id" => i["id"], "data" => i }) }

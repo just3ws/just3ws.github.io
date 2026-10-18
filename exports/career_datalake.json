@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-10-17T14:04:35Z",
+    "generated_at": "2026-10-18T03:58:51Z",
     "system": "CareerOS Master Datalake",
     "canonical_url": "https://www.just3ws.com/career_datalake.json",
     "endpoints": {
@@ -18,7 +18,7 @@
       "total_articles": 186,
       "total_interviews": 223,
       "total_transcripts_indexed": 223,
-      "total_knowledge_graph_nodes": 469,
+      "total_knowledge_graph_nodes": 474,
       "total_technologies_tracked": 132
     }
   },
@@ -13169,8 +13169,8 @@
       "primary_platform": "youtube",
       "transcript_id": "ramblin-amblin-ramblin-amblin-2026-10-15-hello",
       "page_url": "/interviews/ramblin-amblin-ramblin-amblin-2026-10-15-hello/",
-      "youtube_url": "https://youtu.be/jgrg7hPbdc8",
-      "youtube_video_id": "jgrg7hPbdc8",
+      "youtube_url": "https://youtu.be/5eE2i3GBIaE",
+      "youtube_video_id": "5eE2i3GBIaE",
       "playlist_id": "PLNtb969T2-l0",
       "playlist_title": "Ramblin' & Amblin'",
       "series": "Ramblin' & Amblin'",
@@ -16008,8 +16008,8 @@
     ]
   },
   "knowledge_graph": {
-    "node_count": 469,
-    "link_count": 742,
+    "node_count": 474,
+    "link_count": 769,
     "nodes": [
       {
         "id": "conf-scna--software-craftsmanship-",
@@ -16417,6 +16417,42 @@
         "description": "Establishing where you are in a system and what evidence is trustworthy before choosing an intervention."
       },
       {
+        "id": "concept-blindsight",
+        "label": "Blindsight (Peter Watts)",
+        "type": "Concept",
+        "group": 7,
+        "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+        "val": 14,
+        "description": "Peter Watts' 2006 exploration of intelligence without consciousness and the Chinese Room thought experiment, illustrating the illusion of competence where complex symbol mapping operates without comprehension."
+      },
+      {
+        "id": "concept-looking-through-the-net",
+        "label": "Looking Through the Net (Alan Watts)",
+        "type": "Concept",
+        "group": 7,
+        "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+        "val": 14,
+        "description": "Alan Watts' 1969 presentation to IBM systems engineers warning against mistaking conceptual nets, coordinate systems, and discrete tokens for the continuous reality they measure, contrasting mechanisms with living organisms and balancing analytical precision ('prickles') with organic holism ('goo')."
+      },
+      {
+        "id": "concept-chinese-room",
+        "label": "Chinese Room thought experiment",
+        "type": "Concept",
+        "group": 7,
+        "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+        "val": 14,
+        "description": "John Searle's 1980 thought experiment demonstrating that syntactic symbol manipulation, no matter how sophisticated or convincing, does not constitute semantic understanding or consciousness."
+      },
+      {
+        "id": "concept-synthetic-competence",
+        "label": "The Mirage of Competence",
+        "type": "Concept",
+        "group": 7,
+        "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+        "val": 14,
+        "description": "The deceptive perception of understanding produced when a statistical model generates fluent, authoritative domain artifacts without causal grounding or sovereign verification."
+      },
+      {
         "id": "article-2026-09-02-aop-opentelemetry-strangler-fig",
         "label": "AOP as the Bridge Between OpenTelemetry and the Strangler Fig",
         "type": "Archive Article",
@@ -16478,6 +16514,15 @@
         "url": "/ai/2026/09/02/what-aspect-oriented-programming-is/",
         "val": 16,
         "description": "A plain-language introduction to aspects, join points, pointcuts, advice, and cross-cutting concerns, grounded in Mike Hall's PostSharp work."
+      },
+      {
+        "id": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+        "label": "The Mirage of Competence: AI Slop & Domain Boundaries",
+        "type": "Archive Article",
+        "group": 8,
+        "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+        "val": 16,
+        "description": "A practitioner inquiry into AI slop, domain boundaries, and forensic audio recovery under 345kV power lines, examining what it means to practice human craftsmanship when AI tools project effortless confidence."
       },
       {
         "id": "person-pat-paasch",
@@ -20451,6 +20496,18 @@
         "weight": 2
       },
       {
+        "source": "topic-system-cartography",
+        "target": "concept-looking-through-the-net",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "topic-system-cartography",
+        "target": "concept-blindsight",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
         "source": "concept-software-craftsmanship",
         "target": "topic-system-cartography",
         "relationship": "related_concept",
@@ -20459,6 +20516,18 @@
       {
         "source": "concept-software-craftsmanship",
         "target": "concept-knowledge-work",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-software-craftsmanship",
+        "target": "concept-blindsight",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-software-craftsmanship",
+        "target": "concept-looking-through-the-net",
         "relationship": "related_concept",
         "weight": 2
       },
@@ -20519,6 +20588,108 @@
       {
         "source": "concept-orientation",
         "target": "topic-system-cartography",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-blindsight",
+        "target": "concept-looking-through-the-net",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-blindsight",
+        "target": "concept-chinese-room",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-blindsight",
+        "target": "concept-synthetic-competence",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-blindsight",
+        "target": "concept-software-craftsmanship",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-blindsight",
+        "target": "topic-system-cartography",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-looking-through-the-net",
+        "target": "concept-blindsight",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-looking-through-the-net",
+        "target": "concept-chinese-room",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-looking-through-the-net",
+        "target": "concept-synthetic-competence",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-looking-through-the-net",
+        "target": "topic-system-cartography",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-looking-through-the-net",
+        "target": "concept-software-craftsmanship",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-chinese-room",
+        "target": "concept-blindsight",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-chinese-room",
+        "target": "concept-looking-through-the-net",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-chinese-room",
+        "target": "concept-synthetic-competence",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-synthetic-competence",
+        "target": "concept-blindsight",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-synthetic-competence",
+        "target": "concept-looking-through-the-net",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-synthetic-competence",
+        "target": "concept-chinese-room",
+        "relationship": "related_concept",
+        "weight": 2
+      },
+      {
+        "source": "concept-synthetic-competence",
+        "target": "concept-software-craftsmanship",
         "relationship": "related_concept",
         "weight": 2
       },
@@ -20669,6 +20840,42 @@
       {
         "source": "article-2026-09-02-what-aspect-oriented-programming-is",
         "target": "proj-opentelemetry",
+        "relationship": "explains",
+        "weight": 3
+      },
+      {
+        "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+        "target": "concept-blindsight",
+        "relationship": "explains",
+        "weight": 3
+      },
+      {
+        "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+        "target": "concept-looking-through-the-net",
+        "relationship": "explains",
+        "weight": 3
+      },
+      {
+        "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+        "target": "concept-chinese-room",
+        "relationship": "explains",
+        "weight": 3
+      },
+      {
+        "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+        "target": "concept-synthetic-competence",
+        "relationship": "explains",
+        "weight": 3
+      },
+      {
+        "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+        "target": "concept-software-craftsmanship",
+        "relationship": "explains",
+        "weight": 3
+      },
+      {
+        "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+        "target": "topic-system-cartography",
         "relationship": "explains",
         "weight": 3
       },
@@ -24714,5 +24921,33 @@
       "theme": "Local AI Orchestration, Deterministic Runtimes & CareerOS",
       "description": "Architected Phalanx Duel (deterministic rules engine, append-only ledger), WWWorkRemote (pgvector, 4-stage prompt defense), and local AI runtime with llama.cpp and whisper.cpp."
     }
-  ]
+  ],
+  "patreon_campaign": {
+    "campaign_url": "https://www.patreon.com/whoistechcmty",
+    "channel_handle": "@whoistechcmty",
+    "initiative": "WHOIS Tech Community",
+    "historical_website": "WHOISTechCmty.com",
+    "founder": "Mike Hall",
+    "era": "2011 - Present",
+    "tagline": "Tools for everything",
+    "purpose": "Independent compute underwriting, oral history preservation, and humanizing the people who make tech communities, user groups, and open-source software possible.",
+    "manifesto": "Supporting WHOIS Tech Community will bring you more interviews with fascinating people with higher production quality. I'll be able to spread the interviews across a larger swathe of communities and bring you a better understanding and awareness of the cool people in tech. I believe in the life changing value of tech community and know how much work goes into even small user-groups and conferences as well as OSS projects. Most of the people creating and coordinating these works are working behind the scenes and often go unrecognized. I seek these people out and put them in front of a camera to learn more about what they are doing and why they are doing it. My goal is to help with humanizing and increasing awareness of the cool people who make tech community possible. Since 2011 I've conducted over 200 interviews with tech leaders both famous and not so famous. I've learned a lot about the equipment and interviewing techniques and the interviews have slowly been improving both technically and content-wise. I need help though to grow past the current state. Going to conferences and collecting the equipment has been quite expensive and I want to avoid advertising entanglements. I want WHOIS Tech Community to be 100% focused on people doing cool stuff without worrying about which tool or vendor I need to please. If you support WHOIS Tech Community then you will help me to purchase better equipment that will lead to higher production values for interviews. I will be able to spend more time on developing the WHOISTechCmty.com website to build better profiles and interesting ways to promote individuals in tech community. And most importantly I'll be able to dedicate more time to seeking out and interviewing fascinating people in tech. This will help you to learn about the people who are in your community that you might not even be aware of.\n",
+    "core_pillars": [
+      {
+        "id": "unrecognized_organizers",
+        "label": "Humanizing Unrecognized Organizers",
+        "description": "Most of the people creating and coordinating user groups, conferences, and OSS projects work behind the scenes and often go unrecognized. We put them in front of a camera to learn what they are doing and why."
+      },
+      {
+        "id": "avoid_advertising_entanglements",
+        "label": "Zero Advertising Entanglements",
+        "description": "100% focused on people doing meaningful engineering without worrying about which vendor or tool must be pleased."
+      },
+      {
+        "id": "independent_compute_and_equipment",
+        "label": "Independent Compute & Craftsmanship",
+        "description": "Community-backed audio DSP, sovereign transcription, equipment acquisition, and open digital humanities archiving."
+      }
+    ]
+  }
 }

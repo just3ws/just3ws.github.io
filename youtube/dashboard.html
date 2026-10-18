@@ -2664,6 +2664,11 @@ teleprompter_script:
         color = '#b91c1c';
         icon = '❌';
         border = '#fca5a5';
+      } else if (b.status === 'blocked') {
+        bg = '#fffbeb';
+        color = '#b45309';
+        icon = '⏳';
+        border = '#fde68a';
       }
       return '<span title="' + b.id + ': ' + b.status + '" style="font-family: ui-monospace, monospace; font-size: 0.68rem; font-weight: 700; background: ' + bg + '; color: ' + color + '; border: 1px solid ' + border + '; padding: 0.1rem 0.35rem; border-radius: 0.25rem;">' + icon + ' ' + b.label + '</span>';
     }).join('') + '</div>';
@@ -2957,38 +2962,83 @@ teleprompter_script:
     }
 
     let failedItems = [];
+    let blockedItems = [];
     targetKeys.forEach(k => {
       const t = targets[k];
+      if (t && t.blocked_items) {
+        t.blocked_items.forEach(item => {
+          blockedItems.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name }));
+        });
+      }
       if (t && t.failed_items) {
         t.failed_items.forEach(item => {
-          failedItems.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name }));
+          if (item.meta_phase === 'blocked' || (item.diagnostic && /quotaExceeded|exceeded.*quota/i.test(item.diagnostic))) {
+            blockedItems.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name, is_blocked: true }));
+          } else {
+            failedItems.push(Object.assign({}, item, { targetKey: k, seriesName: t.series_name }));
+          }
         });
       }
     });
 
     const failedCountEl = document.getElementById('col-count-failed');
-    if (failedCountEl) failedCountEl.innerText = failedItems.length;
+    if (failedCountEl) {
+      if (blockedItems.length > 0 && failedItems.length > 0) {
+        failedCountEl.innerText = failedItems.length + ' / ' + blockedItems.length + ' wait';
+        failedCountEl.style.background = '#fef3c7';
+        failedCountEl.style.color = '#92400e';
+      } else if (blockedItems.length > 0) {
+        failedCountEl.innerText = blockedItems.length + ' waiting';
+        failedCountEl.style.background = '#fef3c7';
+        failedCountEl.style.color = '#92400e';
+      } else {
+        failedCountEl.innerText = failedItems.length;
+        failedCountEl.style.background = failedItems.length > 0 ? '#fee2e2' : '#dcfce7';
+        failedCountEl.style.color = failedItems.length > 0 ? '#991b1b' : '#166534';
+      }
+    }
 
     const failedCardsEl = document.getElementById('col-cards-failed');
     if (failedCardsEl) {
-      if (failedItems.length === 0) {
+      if (failedItems.length === 0 && blockedItems.length === 0) {
         failedCardsEl.innerHTML = '<div style="text-align: center; color: #15803d; font-size: 0.8rem; padding: 2rem 0.5rem; background: #f0fdf4; border-radius: 0.375rem; border: 1px dashed #bbf7d0;">Zero failures quarantined. Healthy.</div>';
       } else {
-        failedCardsEl.innerHTML = failedItems.map(item => `
-          <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
-              <span style="background: #ef4444; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 9999px;">⚠️ QUARANTINED</span>
-              <span style="font-size: 0.7rem; color: #991b1b;">${formatTimeAgo(item.failed_at)}</span>
+        let cardsHtml = '';
+        if (blockedItems.length > 0) {
+          cardsHtml += blockedItems.map(item => `
+            <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+                <span style="background: #d97706; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 9999px;">⏳ BLOCKED (COOLDOWN)</span>
+                <span style="font-size: 0.7rem; color: #b45309; font-weight: 600;">${item.cooldown_resets_at ? 'Resets ' + item.cooldown_resets_at : 'Quota Paused'}</span>
+              </div>
+              <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #92400e; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
+              <div style="font-size: 0.75rem; color: #78350f; margin-bottom: 0.4rem; line-height: 1.4;">${sanitizeDiagnostic(item.diagnostic)}</div>
+              ${item.current_step ? `<div style="font-size: 0.72rem; color: #b45309; font-weight: 700; margin-bottom: 0.35rem;">Paused at Step: <code style="background: #ffffff; padding: 0.1rem 0.35rem; border-radius: 0.2rem; border: 1px solid #fde68a;">${item.current_step}</code></div>` : ''}
+              ${renderSubstateBadges(item.summary_badges)}
+              <button type="button" onclick="triggerPipelineAction('retry', 'target=${item.targetKey}&file=' + encodeURIComponent('${item.filename}'))" style="width: 100%; margin-top: 0.4rem; background: #ffffff; border: 1px solid #d97706; color: #d97706; padding: 0.35rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+                🔄 Resume Processing (Bypass Wait)
+              </button>
             </div>
-            <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #991b1b; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
-            <div style="font-size: 0.75rem; color: #7f1d1d; margin-bottom: 0.4rem; line-height: 1.4;">${sanitizeDiagnostic(item.diagnostic)}</div>
-            ${item.current_step ? `<div style="font-size: 0.72rem; color: #991b1b; font-weight: 700; margin-bottom: 0.35rem;">Failed at Step: <code style="background: #ffffff; padding: 0.1rem 0.35rem; border-radius: 0.2rem; border: 1px solid #fecaca;">${item.current_step}</code></div>` : ''}
-            ${renderSubstateBadges(item.summary_badges)}
-            <button type="button" onclick="triggerPipelineAction('retry', 'target=${item.targetKey}&file=' + encodeURIComponent('${item.filename}'))" style="width: 100%; margin-top: 0.4rem; background: #ffffff; border: 1px solid #dc2626; color: #dc2626; padding: 0.35rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
-              🔄 Re-queue to Pending
-            </button>
-          </div>
-        `).join('');
+          `).join('');
+        }
+        if (failedItems.length > 0) {
+          cardsHtml += failedItems.map(item => `
+            <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 0.375rem; padding: 0.75rem; font-size: 0.8rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+                <span style="background: #ef4444; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 9999px;">⚠️ QUARANTINED</span>
+                <span style="font-size: 0.7rem; color: #991b1b;">${formatTimeAgo(item.failed_at)}</span>
+              </div>
+              <div style="font-family: ui-monospace, monospace; font-weight: 700; color: #991b1b; word-break: break-all; margin-bottom: 0.35rem;">${item.filename}</div>
+              <div style="font-size: 0.75rem; color: #7f1d1d; margin-bottom: 0.4rem; line-height: 1.4;">${sanitizeDiagnostic(item.diagnostic)}</div>
+              ${item.current_step ? `<div style="font-size: 0.72rem; color: #991b1b; font-weight: 700; margin-bottom: 0.35rem;">Failed at Step: <code style="background: #ffffff; padding: 0.1rem 0.35rem; border-radius: 0.2rem; border: 1px solid #fecaca;">${item.current_step}</code></div>` : ''}
+              ${renderSubstateBadges(item.summary_badges)}
+              <button type="button" onclick="triggerPipelineAction('retry', 'target=${item.targetKey}&file=' + encodeURIComponent('${item.filename}'))" style="width: 100%; margin-top: 0.4rem; background: #ffffff; border: 1px solid #dc2626; color: #dc2626; padding: 0.35rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+                🔄 Re-queue to Pending
+              </button>
+            </div>
+          `).join('');
+        }
+        failedCardsEl.innerHTML = cardsHtml;
       }
     }
   }

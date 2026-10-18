@@ -102,29 +102,96 @@ puts "   Mode: #{options[:mode].to_s.upcase} | Execution: #{options[:apply] ? '�
 puts "   Target Filter: #{options[:target_playlist] || 'All Playlists'}"
 puts "=" * 80
 
+def fetch_all_playlist_items_ytdlp(playlist_id)
+  url = "https://www.youtube.com/playlist?list=#{playlist_id}"
+  raw = `yt-dlp --flat-playlist -J "#{url}" 2>/dev/null`
+  return [] if raw.nil? || raw.strip.empty?
+
+  data = JSON.parse(raw) rescue {}
+  entries = data["entries"] || []
+  entries.each_with_index.map do |entry, idx|
+    v_id = entry["id"]
+    {
+      "id" => "ytdlp_#{playlist_id}_#{idx}_#{v_id}",
+      "snippet" => {
+        "title" => entry["title"],
+        "resourceId" => {
+          "kind" => "youtube#video",
+          "videoId" => v_id
+        },
+        "position" => idx
+      },
+      "contentDetails" => {
+        "videoId" => v_id
+      }
+    }
+  end
+end
+
 def fetch_all_playlist_items(client, playlist_id)
   items = []
   page_token = nil
 
-  loop do
-    url = "#{YouTubeClient::API_BASE}/playlistItems?part=snippet,contentDetails&playlistId=#{playlist_id}&maxResults=50"
-    url += "&pageToken=#{page_token}" if page_token
-    uri = URI(url)
-    res = client.send(:make_request, uri)
-    data = JSON.parse(res.body) rescue {}
-    items.concat(data["items"] || [])
-    page_token = data["nextPageToken"]
-    break unless page_token
+  begin
+    loop do
+      url = "#{YouTubeClient::API_BASE}/playlistItems?part=snippet,contentDetails&playlistId=#{playlist_id}&maxResults=50"
+      url += "&pageToken=#{page_token}" if page_token
+      uri = URI(url)
+      res = client.send(:make_request, uri)
+      break unless res.is_a?(Net::HTTPSuccess)
+
+      data = JSON.parse(res.body) rescue {}
+      items.concat(data["items"] || [])
+      page_token = data["nextPageToken"]
+      break unless page_token
+    end
+  rescue StandardError
+    # Fall back to yt-dlp below
+  end
+
+  if items.empty?
+    items = fetch_all_playlist_items_ytdlp(playlist_id)
   end
 
   items
 end
 
-playlists = client.get_channel_playlists
+playlists = client.get_channel_playlists rescue []
+if playlists.empty?
+  intake_targets_path = File.expand_path("../_data/media_intake_targets.yml", __dir__)
+  if File.exist?(intake_targets_path)
+    intake_cfg = YAML.safe_load(File.read(intake_targets_path), permitted_classes: [Date, Time], aliases: true) rescue {}
+    (intake_cfg["channels"] || {}).each do |_chan, chan_data|
+      (chan_data["targets"] || {}).each do |tgt_key, tgt_data|
+        if tgt_data["playlist_id"]
+          playlists << {
+            "id" => tgt_data["playlist_id"],
+            "snippet" => {
+              "title" => tgt_data["series_name"] || tgt_key
+            },
+            "status" => {
+              "privacyStatus" => tgt_data["default_privacy"] || "unlisted"
+            }
+          }
+        end
+      end
+    end
+  end
+end
+
 if options[:target_playlist]
   target_kw = options[:target_playlist].downcase
-  playlists = playlists.select do |p|
+  matched = playlists.select do |p|
     p["id"].downcase == target_kw || p.dig("snippet", "title").to_s.downcase.include?(target_kw)
+  end
+  if matched.any?
+    playlists = matched
+  else
+    playlists = [{
+      "id" => options[:target_playlist],
+      "snippet" => { "title" => "Target Playlist (#{options[:target_playlist]})" },
+      "status" => { "privacyStatus" => "unlisted" }
+    }]
   end
 end
 puts "Inspecting #{playlists.size} playlists.\n\n"
@@ -141,6 +208,7 @@ playlists.each do |pl|
   items = fetch_all_playlist_items(client, pl_id)
   audit = deduplicator.audit_playlist_items(items)
   plan = deduplicator.plan_playlist_deletions(audit)
+  r_plan = deduplicator.plan_playlist_reconciliation(audit, pl_id)
 
   audit_entry = {
     id: pl_id,
@@ -151,7 +219,9 @@ playlists.each do |pl|
     dup_item_count: audit[:duplicate_item_groups].values.map { |v| v.size - 1 }.sum,
     duplicate_item_groups: audit[:duplicate_item_groups],
     duplicate_video_groups: audit[:duplicate_video_groups],
-    deletion_plan: plan
+    missing_canonicals: audit[:missing_canonicals],
+    deletion_plan: plan,
+    reconciliation_plan: r_plan
   }
   playlist_audits << audit_entry
 
@@ -175,6 +245,15 @@ playlists.each do |pl|
       puts "        Canonical Video: #{group[:canonical_id]}"
       puts "        Redundant Video(s): #{group[:redundant_ids].join(', ')}"
       all_redundant_vids.concat(group[:redundant_ids])
+    end
+  end
+
+  if audit[:missing_canonicals]&.any?
+    puts "   ⚡ Missing Canonical Video(s) in Playlist:"
+    audit[:missing_canonicals].each do |m|
+      puts "      • Topic: \"#{m[:title]}\""
+      puts "        Missing Canonical: #{m[:canonical_id]}"
+      puts "        Replaces Redundant: #{m[:redundant_ids].join(', ')}"
     end
   end
   puts
@@ -202,13 +281,17 @@ if options[:mode] == :dedupe || options[:mode] == :all
       puts "  • [#{vid}] (#{reason}) Item: #{item_id} (pos #{d[:position]}): #{d[:title]}"
 
       if options[:apply]
-        begin
-          client.delete_playlist_item(item_id)
-          total_deleted += 1
-          print "    ✓ Deleted live from playlist\n"
-          sleep 0.1 # quota & rate safety
-        rescue => e
-          warn "    ❌ Failed to delete playlist item #{item_id}: #{e.message}"
+        if item_id.to_s.start_with?('ytdlp_')
+          warn "    ⚠️ Cannot delete item #{item_id} using YouTube API during quota cooldown (requires live playlistItemId)."
+        else
+          begin
+            client.delete_playlist_item(item_id)
+            total_deleted += 1
+            print "    ✓ Deleted live from playlist\n"
+            sleep 0.1 # quota & rate safety
+          rescue StandardError => e
+            warn "    ❌ Failed to delete playlist item #{item_id}: #{e.message}"
+          end
         end
       else
         puts "    [DRY RUN] Would delete item #{item_id} from playlist"
@@ -218,6 +301,40 @@ if options[:mode] == :dedupe || options[:mode] == :all
   end
 
   puts "\n🎉 Playlist Deduplication complete: #{total_deleted} items #{options[:apply] ? 'deleted live' : 'identified for deletion'}."
+end
+
+# ── 2b. Reconcile Missing Canonical Videos in Playlists ───────────────────────
+if options[:reconcile] || options[:mode] == :all
+  puts "\n" + "=" * 80
+  puts "🔄 RECONCILING CANONICAL PLAYLIST VIDEOS"
+  puts "=" * 80
+
+  total_reconciled = 0
+  playlist_audits.each do |audit|
+    r_plan = audit[:reconciliation_plan] || []
+    next if r_plan.empty?
+
+    puts "\nReconciling \"#{audit[:title]}\" (#{audit[:id]}): adding #{r_plan.size} missing canonical videos..."
+    r_plan.each do |r|
+      vid = r[:video_id]
+      puts "  • [#{vid}] Adding canonical asset: #{r[:title]}"
+      if options[:apply]
+        begin
+          client.add_playlist_item(audit[:id], vid)
+          total_reconciled += 1
+          puts "    ✓ Added live to playlist"
+          sleep 0.1
+        rescue StandardError => e
+          warn "    ❌ Failed adding #{vid} to playlist: #{e.message}"
+        end
+      else
+        puts "    [DRY RUN] Would add video #{vid} to playlist #{audit[:id]}"
+        total_reconciled += 1
+      end
+    end
+  end
+
+  puts "\n🎉 Playlist Reconciliation complete: #{total_reconciled} items #{options[:apply] ? 'reconciled live' : 'identified for reconciliation'}."
 end
 
 # ── 3. Retire / Delete Redundant Duplicate Video Uploads ───────────────────────

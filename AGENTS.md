@@ -11,6 +11,53 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - PLAYLIST RECONCILIATION, CROSS-REFERENCE DEDUPLICATION & ZERO RE-UPLOAD HARDENING (2026-10-17):
+         Audited and reconciled live YouTube playlist `PLNtb969T2-l0` ("Ramblin' & Amblin'"), identified and planned cleanup for 3 redundant duplicate uploads (`jgrg7hPbdc8`, `n6VWVy_NdSw`, `QTpYkViNnZc`) and 1 missing canonical asset (`SLvKYSwUcRc`), hardened the deduplication tool with autonomous `yt-dlp` fallback and cross-reference reconciliation, and eliminated all re-upload vectors in the intake pipeline through state scoring, receipt cross-checking, and automatic OAuth token refresh on 401:
+         - Live Playlist Audit & Deduplication (`bin/clean_and_sync_youtube_playlists.rb`, `bin/lib/youtube_deduplicator.rb`, `spec/youtube/playlist_dedupe_spec.rb`):
+           - In `YouTubeDeduplicator`, added cross-reference checking against `_data/video_assets.yml`: detects when playlist items point to non-canonical video uploads even if only a single copy exists in the playlist.
+           - Added `#plan_playlist_reconciliation` returning missing canonical assets to add to playlists.
+           - In `clean_and_sync_youtube_playlists.rb`, added `fetch_all_playlist_items_ytdlp(playlist_id)` as transparent fallback when YouTube Data API is in 403 quota cooldown.
+           - Added fallback target resolution from `_data/media_intake_targets.yml` so `--target <playlist>` executes cleanly even when channel API calls return empty during cooldown.
+           - Added missing canonical reporting in `--audit` and added `--reconcile` execution loop: stages or adds missing canonical replacement videos to target playlists.
+           - Guarded live playlist deletion against synthetic `ytdlp_` IDs while enabling video deletion and privating by real video ID (`--retire-duplicates`, `--delete-duplicates`).
+         - Pipeline Pre-Upload & Reprocessing Idempotency Gates (`bin/intake_drive_video.rb`, `bin/lib/job_substate_tracker.rb`, `bin/lib/youtube_client.rb`):
+           - Added `source_filename` persistence in `register_in_video_assets` and enhanced `find_registered_asset` to match by `filename` in addition to title and slug.
+           - Enhanced `find_archived_receipt` to scan both `processed_dir` and `base_path`.
+           - In pre-upload gate, checks both `find_registered_asset` and `find_archived_receipt` before upload. If a `video_id` is found anywhere, reuses it and skips byte uploading.
+           - In `JobSubstateTracker#load_existing_state!`, scans all candidate paths (`companion_state_path`, `local_state_path`, `find_state_in_queue_dirs`), preserves any recorded `video_id`, and scores candidates to load the most progressed state.
+           - In `can_skip_youtube_upload?`, treats 401, UNAUTHENTICATED, and authError as non-fatal check errors to prevent token expiration from triggering re-uploads.
+           - In `YouTubeClient#make_request` and `upload_caption`, added automatic OAuth token refresh and retry on 401, preventing token expiry failures during long multi-gigabyte uploads.
+         - Queue & State Alignment:
+           - Terminated redundant re-upload of `VID_20261017_161728409.mp4`, preserved its canonical YouTube upload `533FSvfDIUE`, and relocated it to `blocked/` with `.blocked.json` awaiting playlist insertion at 00:00 PT quota reset.
+           - Cleared `failed/` (0 failed jobs).
+           - All 6 videos uploaded today are verified, unique, and preserved in `blocked/` with zero byte re-uploads needed (`jHDlgO92bvU`, `V-2uR4xIxaQ`, `12yuw3lfZ7s`, `fej808b1VRg`, `RNu430nMKgg`, `533FSvfDIUE`).
+         - Verification:
+           - 149/149 YouTube specs passing (`bundle exec rspec spec/youtube/`).
+           - Fast validation passing cleanly (`./bin/pipeline validate fast`).
+           - Zero em dashes across all edits.
+
+       - BLOCKED VS. FAILED COOLDOWN ARCHITECTURE & THE WATTS DUAL SYNTHESIS (2026-10-17):
+         Differentiated ephemeral rate/quota limits from hard pipeline errors, resolved Blindsight canonical nomenclature, and synthesized the Alan Watts and Peter Watts dual lineage into the knowledge graph and site essays:
+         - Upstream Quota Blocked vs. Quarantine Failure (`bin/lib/pipeline_classifier.rb`, `bin/lib/job_substate_tracker.rb`, `bin/intake_drive_video.rb`, `bin/live_dashboard_streamer.rb`, `youtube/dashboard.html`):
+           - In `PipelineClassifier`, added `upstream_quota_blocked` decision classifier matching `quotaExceeded`, `dailyLimitExceeded`, and rate limit exceptions with 99.95% confidence.
+           - In `JobSubstateTracker`, added `#block_step` tracking `meta_phase: blocked` and saving quota reset cooldown markers (`resets_at => 00:00 PT`).
+           - In `MediaIntakePipeline`, routed 403 quota exhaustion into `blocked/` queues with `.blocked.json` sidecars rather than failing into quarantine, preserving 100% of uploaded YouTube `video_id`s (`jHDlgO92bvU`, `V-2uR4xIxaQ`, `12yuw3lfZ7s`, `fej808b1VRg`).
+           - Added pre-upload and reprocessing gate calling `client.update_video` for title/description changes when `video_id` already exists, ensuring zero re-uploading of bytes.
+           - In operations cockpit (`youtube/dashboard.html`), rendered amber `⏳ BLOCKED (COOLDOWN)` status card with live PT countdown and bypass action.
+         - Peter Watts *Blindsight* Typo Correction & Literature Ingestion (`bin/intake_drive_video.rb`, `_data/concepts.yml`, `_data/research/peter-watts-blindsight.json`):
+           - Corrected all phonetic Whisper transcriptions and titles from "Blind Sight" to "Blindsight" for Peter Watts' 2006 book (`https://www.rifters.com/real/Blindsight.htm`).
+           - Added automated phonetic replacement in `clean_transcript_text` and `extract_hook_from_text`.
+           - Ingested *Blindsight* and the *Chinese Room thought experiment* into `_data/concepts.yml` and authored research dossier in `_data/research/`.
+         - Alan Watts "Looking Through the Net" Knowledge Synthesis (`_data/concepts.yml`, `_data/episodes/episode-00.yml`, `_posts/2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship.md`):
+           - Ingested Alan Watts' 1969 presentation to the IBM Systems Group ("Looking Through the Net", Being in the Way Ep. 36) into `_data/concepts.yml` (`looking-through-the-net`, `prickles and goo`, `mechanism vs organism`, `gallbladder specialist fallacy`).
+           - Authored research dossier `_data/research/alan-watts-looking-through-the-net-ibm-1969.json`.
+           - Attached research documents and key concepts to Episode 00 (`_data/episodes/episode-00.yml`).
+           - Authored comprehensive essay section "The Watts Synthesis: Looking Through the Net & Blindsight" in `_posts/2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship.md`.
+         - Verification & Deployment:
+           - Knowledge graph regenerated and audited cleanly: 474 nodes, 769 edges, 0 orphans, 0 duplicate IDs.
+           - 147/147 YouTube specs passing, fast validation passing cleanly, 0 em dashes.
+           - Site built across 1,038 pages and deployed to localhost (`https://www.just3ws.localhost`).
+
        - IDEMPOTENT MEDIA INTAKE & YOUTUBE PLAYLIST/VIDEO DEDUPLICATION ENGINE (2026-10-17):
          Engineered end-to-end idempotency gates across media intake and built a comprehensive YouTube video and playlist deduplication engine:
          - Root Cause Diagnosis & Quota Preservation:

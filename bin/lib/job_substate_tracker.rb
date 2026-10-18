@@ -125,6 +125,19 @@ class JobSubstateTracker
     save!
   end
 
+  def block_step(step_name, reason, details = {})
+    s_name = step_name.to_s
+    substates[s_name] ||= {}
+    substates[s_name]['status'] = 'blocked'
+    substates[s_name]['blocked_at'] = Time.now.utc.iso8601
+    substates[s_name]['block_reason'] = reason.to_s
+    details.each { |k, v| substates[s_name][k.to_s] = v }
+    @data['meta_phase'] = 'blocked'
+    @data['current_step'] = s_name
+    @data['updated_at'] = Time.now.utc.iso8601
+    save!
+  end
+
   def next_pending_step
     STEPS.find { |s| substates.dig(s, 'status') != 'completed' }
   end
@@ -160,19 +173,45 @@ class JobSubstateTracker
       companion_state_path,
       local_state_path,
       find_state_in_queue_dirs
-    ].compact
+    ].compact.uniq
+
+    best_candidate = nil
+    best_score = -1
+    discovered_vid = nil
 
     candidate_paths.each do |p|
       next unless p && File.exist?(p)
       begin
         raw = JSON.parse(File.read(p))
-        if raw.is_a?(Hash) && raw['version']
-          @data = raw
-          return true
+        next unless raw.is_a?(Hash) && raw['version']
+
+        # Check for recorded video_id
+        cand_vid = raw.dig('substates', 'youtube_upload', 'video_id') || raw['video_id']
+        discovered_vid ||= cand_vid if cand_vid && !cand_vid.to_s.strip.empty?
+
+        # Progress scoring: completed steps count + video_id weight + updated recency
+        completed_count = (raw['substates'] || {}).values.count { |s| s['status'] == 'completed' }
+        has_vid_bonus = cand_vid ? 100 : 0
+        score = (completed_count * 10) + has_vid_bonus
+
+        if score > best_score
+          best_score = score
+          best_candidate = raw
         end
       rescue StandardError
         next
       end
+    end
+
+    if best_candidate
+      @data = best_candidate
+      if discovered_vid && !(@data.dig('substates', 'youtube_upload', 'video_id'))
+        @data['substates'] ||= {}
+        @data['substates']['youtube_upload'] ||= {}
+        @data['substates']['youtube_upload']['video_id'] = discovered_vid
+        @data['substates']['youtube_upload']['status'] = 'completed'
+      end
+      return true
     end
 
     false
@@ -248,7 +287,7 @@ class JobSubstateTracker
   end
 
   def can_skip_youtube_upload?(client = nil)
-    vid = step_data(:youtube_upload)['video_id'] || substates.dig('youtube_upload', 'video_id')
+    vid = step_data(:youtube_upload)['video_id'] || substates.dig('youtube_upload', 'video_id') || @data['video_id']
     return false if vid.nil? || vid.to_s.strip.empty? || vid.to_s.start_with?('DRY_RUN')
 
     if client
@@ -260,8 +299,8 @@ class JobSubstateTracker
         # Never return false when we already have the recorded video_id. Returning false
         # causes caller to re-upload, burning quota and producing duplicate video records.
         msg = err.message.to_s
-        if msg.include?('quotaExceeded') || msg.include?('403') || msg.include?('rateLimit') || msg.include?('timeout')
-          warn "⚠️ [Idempotency] Could not verify #{vid} live due to API quota/rate limit: #{msg}. Preserving recorded video_id to prevent duplicate upload."
+        if msg.include?('quotaExceeded') || msg.include?('403') || msg.include?('rateLimit') || msg.include?('timeout') || msg.include?('401') || msg.include?('UNAUTHENTICATED') || msg.include?('authError')
+          warn "⚠️ [Idempotency] Could not verify #{vid} live due to API quota/rate limit/auth: #{msg}. Preserving recorded video_id to prevent duplicate upload."
           return true
         end
         return false if msg.include?('404') || msg.include?('notFound')
@@ -314,8 +353,13 @@ class JobSubstateTracker
     parent_target_dir = File.expand_path('..', File.dirname(@file_path))
     return nil unless Dir.exist?(parent_target_dir)
 
-    %w[pending processing failed staged].each do |sub|
+    %w[pending processing failed blocked staged processed].each do |sub|
       cand = File.join(parent_target_dir, sub, "#{@filename}.state.json")
+      return cand if File.exist?(cand)
+    end
+
+    # Also search processed recursive subdirectories for state
+    Dir.glob(File.join(parent_target_dir, 'processed', '**', "#{@filename}.state.json")).each do |cand|
       return cand if File.exist?(cand)
     end
 

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-16T14:39:42-05:00",
-  "total_nodes": 469,
-  "total_links": 742,
+  "generated_at": "2026-10-17T22:02:20-05:00",
+  "total_nodes": 474,
+  "total_links": 769,
   "clusters": {
     "Conference": {
       "color": "#0284c7",
@@ -447,6 +447,42 @@
       "description": "Establishing where you are in a system and what evidence is trustworthy before choosing an intervention."
     },
     {
+      "id": "concept-blindsight",
+      "label": "Blindsight (Peter Watts)",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+      "val": 14,
+      "description": "Peter Watts' 2006 exploration of intelligence without consciousness and the Chinese Room thought experiment, illustrating the illusion of competence where complex symbol mapping operates without comprehension."
+    },
+    {
+      "id": "concept-looking-through-the-net",
+      "label": "Looking Through the Net (Alan Watts)",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+      "val": 14,
+      "description": "Alan Watts' 1969 presentation to IBM systems engineers warning against mistaking conceptual nets, coordinate systems, and discrete tokens for the continuous reality they measure, contrasting mechanisms with living organisms and balancing analytical precision ('prickles') with organic holism ('goo')."
+    },
+    {
+      "id": "concept-chinese-room",
+      "label": "Chinese Room thought experiment",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+      "val": 14,
+      "description": "John Searle's 1980 thought experiment demonstrating that syntactic symbol manipulation, no matter how sophisticated or convincing, does not constitute semantic understanding or consciousness."
+    },
+    {
+      "id": "concept-synthetic-competence",
+      "label": "The Mirage of Competence",
+      "type": "Concept",
+      "group": 7,
+      "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+      "val": 14,
+      "description": "The deceptive perception of understanding produced when a statistical model generates fluent, authoritative domain artifacts without causal grounding or sovereign verification."
+    },
+    {
       "id": "article-2026-09-02-aop-opentelemetry-strangler-fig",
       "label": "AOP as the Bridge Between OpenTelemetry and the Strangler Fig",
       "type": "Archive Article",
@@ -508,6 +544,15 @@
       "url": "/ai/2026/09/02/what-aspect-oriented-programming-is/",
       "val": 16,
       "description": "A plain-language introduction to aspects, join points, pointcuts, advice, and cross-cutting concerns, grounded in Mike Hall's PostSharp work."
+    },
+    {
+      "id": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+      "label": "The Mirage of Competence: AI Slop & Domain Boundaries",
+      "type": "Archive Article",
+      "group": 8,
+      "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
+      "val": 16,
+      "description": "A practitioner inquiry into AI slop, domain boundaries, and forensic audio recovery under 345kV power lines, examining what it means to practice human craftsmanship when AI tools project effortless confidence."
     },
     {
       "id": "person-pat-paasch",
@@ -4481,6 +4526,18 @@
       "weight": 2
     },
     {
+      "source": "topic-system-cartography",
+      "target": "concept-looking-through-the-net",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-system-cartography",
+      "target": "concept-blindsight",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
       "source": "concept-software-craftsmanship",
       "target": "topic-system-cartography",
       "relationship": "related_concept",
@@ -4489,6 +4546,18 @@
     {
       "source": "concept-software-craftsmanship",
       "target": "concept-knowledge-work",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-software-craftsmanship",
+      "target": "concept-blindsight",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-software-craftsmanship",
+      "target": "concept-looking-through-the-net",
       "relationship": "related_concept",
       "weight": 2
     },
@@ -4549,6 +4618,108 @@
     {
       "source": "concept-orientation",
       "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-blindsight",
+      "target": "concept-looking-through-the-net",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-blindsight",
+      "target": "concept-chinese-room",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-blindsight",
+      "target": "concept-synthetic-competence",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-blindsight",
+      "target": "concept-software-craftsmanship",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-blindsight",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-looking-through-the-net",
+      "target": "concept-blindsight",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-looking-through-the-net",
+      "target": "concept-chinese-room",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-looking-through-the-net",
+      "target": "concept-synthetic-competence",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-looking-through-the-net",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-looking-through-the-net",
+      "target": "concept-software-craftsmanship",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-chinese-room",
+      "target": "concept-blindsight",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-chinese-room",
+      "target": "concept-looking-through-the-net",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-chinese-room",
+      "target": "concept-synthetic-competence",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-synthetic-competence",
+      "target": "concept-blindsight",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-synthetic-competence",
+      "target": "concept-looking-through-the-net",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-synthetic-competence",
+      "target": "concept-chinese-room",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-synthetic-competence",
+      "target": "concept-software-craftsmanship",
       "relationship": "related_concept",
       "weight": 2
     },
@@ -4699,6 +4870,42 @@
     {
       "source": "article-2026-09-02-what-aspect-oriented-programming-is",
       "target": "proj-opentelemetry",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+      "target": "concept-blindsight",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+      "target": "concept-looking-through-the-net",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+      "target": "concept-chinese-room",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+      "target": "concept-synthetic-competence",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explains",
+      "weight": 3
+    },
+    {
+      "source": "article-2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship",
+      "target": "topic-system-cartography",
       "relationship": "explains",
       "weight": 3
     },

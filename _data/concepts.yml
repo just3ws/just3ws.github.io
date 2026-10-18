@@ -97,7 +97,7 @@
   definition: A disciplined way to map a living system across code, runtime behavior, ownership, and organizational context before changing it.
   url: /2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html
   graph_id: topic-system-cartography
-  related: [conways-law, strangler-fig, opentelemetry, software-craftsmanship]
+  related: [conways-law, strangler-fig, opentelemetry, software-craftsmanship, looking-through-the-net, blindsight]
 
 - slug: software-craftsmanship
   label: Software Craftsmanship
@@ -105,7 +105,7 @@
   definition: A practitioner discipline grounded in simple design, test-driven feedback loops, apprenticeship, and care for how software is built and maintained.
   url: /chicago-craftsmanship/
   graph_id: concept-software-craftsmanship
-  related: [system-cartography, knowledge-work]
+  related: [system-cartography, knowledge-work, blindsight, looking-through-the-net]
 
 - slug: command-palette
   label: command palette
@@ -130,3 +130,36 @@
   url: /ai/2026/09/02/the-shortcut-that-shifts-toward-knowledge/
   graph_id: concept-orientation
   related: [command-palette, knowledge-work, system-cartography]
+
+- slug: blindsight
+  label: Blindsight (Peter Watts)
+  aliases: [Blindsight, Peter Watts, Chinese Room, illusion of competence]
+  definition: "Peter Watts' 2006 exploration of intelligence without consciousness and the Chinese Room thought experiment, illustrating the illusion of competence where complex symbol mapping operates without comprehension."
+  url: /ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
+  graph_id: concept-blindsight
+  related: [looking-through-the-net, chinese-room, synthetic-competence, software-craftsmanship, system-cartography]
+
+- slug: looking-through-the-net
+  label: Looking Through the Net (Alan Watts)
+  aliases: [Looking Through the Net, Seeing Through the Net, Alan Watts, prickles and goo, mechanism vs organism]
+  definition: "Alan Watts' 1969 presentation to IBM systems engineers warning against mistaking conceptual nets, coordinate systems, and discrete tokens for the continuous reality they measure, contrasting mechanisms with living organisms and balancing analytical precision ('prickles') with organic holism ('goo')."
+  url: /ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
+  graph_id: concept-looking-through-the-net
+  related: [blindsight, chinese-room, synthetic-competence, system-cartography, software-craftsmanship]
+
+- slug: chinese-room
+  label: Chinese Room thought experiment
+  aliases: [Chinese Room, Chinese Room thought experiment, John Searle]
+  definition: John Searle's 1980 thought experiment demonstrating that syntactic symbol manipulation, no matter how sophisticated or convincing, does not constitute semantic understanding or consciousness.
+  url: /ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
+  graph_id: concept-chinese-room
+  related: [blindsight, looking-through-the-net, synthetic-competence]
+
+- slug: synthetic-competence
+  label: The Mirage of Competence
+  aliases: [The Mirage of Competence, synthetic competence, appearance of competence]
+  definition: The deceptive perception of understanding produced when a statistical model generates fluent, authoritative domain artifacts without causal grounding or sovereign verification.
+  url: /ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
+  graph_id: concept-synthetic-competence
+  related: [blindsight, looking-through-the-net, chinese-room, software-craftsmanship]
+

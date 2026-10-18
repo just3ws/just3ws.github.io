@@ -128,4 +128,35 @@ RSpec.describe YouTubeDeduplicator do
       expect(deleted_item_ids).not_to include('item_1')
     end
   end
+
+  describe 'Cross-reference reconciliation with _data/video_assets.yml' do
+    let(:single_mismatched_item) do
+      [
+        {
+          'id' => 'item_mismatch',
+          'snippet' => { 'title' => "Ramblin' & Amblin' (2026-10-15): Hello", 'position' => 0 },
+          'contentDetails' => { 'videoId' => 'unregistered_hello_id' }
+        }
+      ]
+    end
+
+    it 'detects single items that point to non-canonical video uploads' do
+      audit = deduplicator.audit_playlist_items(single_mismatched_item)
+
+      expect(audit[:duplicate_video_groups]).to have_key('hello')
+      group = audit[:duplicate_video_groups]['hello']
+      expect(group[:canonical_id]).to eq('canonical_hello_id')
+      expect(group[:redundant_ids]).to eq(['unregistered_hello_id'])
+      expect(audit[:missing_canonicals].first[:canonical_id]).to eq('canonical_hello_id')
+    end
+
+    it 'plans playlist reconciliation to add missing canonical videos' do
+      audit = deduplicator.audit_playlist_items(single_mismatched_item)
+      reconciliation = deduplicator.plan_playlist_reconciliation(audit, 'PL_TARGET_ID')
+
+      expect(reconciliation.size).to eq(1)
+      expect(reconciliation.first[:video_id]).to eq('canonical_hello_id')
+      expect(reconciliation.first[:playlist_id]).to eq('PL_TARGET_ID')
+    end
+  end
 end

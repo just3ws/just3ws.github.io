@@ -464,14 +464,18 @@ class MediaIntakePipeline
     tracker = JobSubstateTracker.load(filename, file_path, @state_dir)
     target_dir = File.join(base_path, channel, target_name)
     staged_dir = File.join(target_dir, 'staged')
+    pending_dir = File.join(target_dir, 'pending')
     processing_dir = File.join(target_dir, 'processing')
     processed_dir = File.join(target_dir, 'processed')
     failed_dir = File.join(target_dir, 'failed')
+    blocked_dir = File.join(target_dir, 'blocked')
 
     FileUtils.mkdir_p(staged_dir)
+    FileUtils.mkdir_p(pending_dir)
     FileUtils.mkdir_p(processing_dir)
     FileUtils.mkdir_p(processed_dir)
     FileUtils.mkdir_p(failed_dir)
+    FileUtils.mkdir_p(blocked_dir)
 
     puts "\n" + ("-" * 60)
     puts "▶ Processing: #{filename} -> #{target_name}"
@@ -620,20 +624,25 @@ class MediaIntakePipeline
       else
         ensure_client!
         if tracker.can_skip_youtube_upload?(client)
-          video_id = tracker.step_data(:youtube_upload)['video_id']
+          video_id = tracker.step_data(:youtube_upload)['video_id'] || tracker.data['video_id']
           duration_upload = tracker.step_data(:youtube_upload)['duration_seconds'] || 0.0
           puts "⏭️ [Substate: youtube_upload] Video #{video_id} already uploaded and verified on YouTube. Skipping upload."
         else
-          # Cross-reference with _data/video_assets.yml before attempting live upload
-          slug_candidate = generate_slug(filename, metadata[:title])
-          existing_asset = find_registered_asset(metadata[:title], slug_candidate)
+          # Cross-reference with _data/video_assets.yml and receipts before attempting live upload
+          slug_candidate = generate_slug(target_name, metadata[:title])
+          existing_asset = find_registered_asset(metadata[:title], slug_candidate, filename)
           existing_yt_id = existing_asset && (existing_asset["platforms"] || []).find { |p| p["platform"] == "youtube" && p["asset_id"] }&.dig("asset_id")
+
+          if existing_yt_id.nil? || existing_yt_id.to_s.strip.empty?
+            receipt = find_archived_receipt(filename)
+            existing_yt_id = receipt['video_id'] if receipt && receipt['video_id']
+          end
 
           if existing_yt_id && !existing_yt_id.to_s.strip.empty?
             video_id = existing_yt_id
-            puts "⏭️ [Idempotency] Video already registered in _data/video_assets.yml as #{video_id}. Reusing to prevent duplicate upload."
+            puts "⏭️ [Idempotency] Video already registered/archived as #{video_id}. Reusing to prevent duplicate upload."
             tracker.complete_step(:youtube_upload, 'video_id' => video_id, 'youtube_url' => "https://youtu.be/#{video_id}", 'progress_percent' => 100.0)
-            log_activity('idempotency', "Reused existing YouTube ID #{video_id} from _data/video_assets.yml for #{filename}", level: 'info', details: { 'filename' => filename, 'video_id' => video_id })
+            log_activity('idempotency', "Reused existing YouTube ID #{video_id} for #{filename}", level: 'info', details: { 'filename' => filename, 'video_id' => video_id })
           else
             tracker.start_step(:youtube_upload)
             puts "🚀 Streaming #{format_size(File.size(processing_path))} to YouTube Data API v3..."
@@ -682,6 +691,29 @@ class MediaIntakePipeline
             puts "✅ Video uploaded successfully in #{duration_upload}s! Video ID: #{video_id}"
             puts "   Link: https://youtu.be/#{video_id}"
             log_activity('youtube', "Uploaded #{filename} to YouTube as #{video_id} in #{duration_upload}s", level: 'info', details: { 'filename' => filename, 'video_id' => video_id, 'url' => "https://youtu.be/#{video_id}", 'duration_seconds' => duration_upload })
+          end
+        end
+
+        # Metadata Sync Gate: If reusing existing upload, sync revised title/description snippet
+        if video_id && !options[:dry_run]
+          begin
+            client.update_video(video_id, {
+              "snippet" => {
+                "title" => metadata[:title],
+                "description" => metadata[:description],
+                "tags" => metadata[:tags],
+                "categoryId" => target_info['category_id'] || "28",
+                "defaultLanguage" => "en"
+              },
+              "status" => {
+                "privacyStatus" => metadata[:privacy],
+                "selfDeclaredMadeForKids" => false,
+                "embeddable" => true
+              }
+            })
+            puts "📝 [Metadata Sync] Verified and synchronized snippet for #{video_id} on YouTube."
+          rescue StandardError => sync_err
+            warn "⚠️ [Metadata Sync] Notice: Could not sync snippet for #{video_id}: #{sync_err.message}"
           end
         end
 
@@ -851,27 +883,51 @@ class MediaIntakePipeline
 
       true
     rescue StandardError => e
-      warn "❌ [Error] Failed processing #{filename}: #{e.message}"
-      warn e.backtrace.first(5).join("\n")
-      log_activity('error', "Failed processing #{filename}: #{e.message}", level: 'error', details: { 'filename' => filename, 'error' => e.message })
-      tracker.fail_step(tracker.current_step || 'unknown', e.message, e.backtrace)
+      triage = begin
+                 PipelineClassifier.new.classify_error_triage(e.message, backtrace: e.backtrace)
+               rescue StandardError => triage_err
+                 warn "⚠️ Could not run classifier error triage: #{triage_err.message}"
+                 { decision: 'quarantine_operator_review', confidence: 0.5 }
+               end
 
-      begin
-        triage = PipelineClassifier.new.classify_error_triage(e.message, backtrace: e.backtrace)
+      if triage[:decision] == 'upstream_quota_blocked'
+        warn "⏳ [Blocked] Upstream rate limit or quota exceeded for #{filename}: #{e.message}. Cooldown active until 00:00 PT."
+        log_activity('blocked', "Pipeline temporarily blocked on #{filename} due to upstream quota/rate limit: #{e.message}. Resumes upon cooldown reset.", level: 'warning', details: triage)
+        tracker.block_step(tracker.current_step || 'unknown', e.message, 'resets_at' => '00:00 PT', 'decision' => 'upstream_quota_blocked')
+
+        unless options[:dry_run]
+          blocked_dest = File.join(blocked_dir, filename)
+          FileUtils.mv(processing_path, blocked_dest) if File.exist?(processing_path)
+          tracker.relocate_file_path!(blocked_dest)
+          FileUtils.mv(sidecar_path, File.join(blocked_dir, File.basename(sidecar_path))) if sidecar_path && File.exist?(sidecar_path)
+          blocked_info = File.join(blocked_dir, "#{filename}.blocked.json")
+          File.write(blocked_info, JSON.pretty_generate({
+            'blocked_at' => Time.now.utc.iso8601,
+            'reason' => 'upstream_quota_blocked',
+            'cooldown_resets_at' => '00:00 PT',
+            'step' => tracker.current_step,
+            'diagnostic' => e.message
+          }))
+          puts "⏳ Moved to blocked/#{filename} (Waiting for 00:00 PT quota cooldown)."
+        end
+      else
+        warn "❌ [Error] Failed processing #{filename}: #{e.message}"
+        warn e.backtrace.first(5).join("\n")
+        log_activity('error', "Failed processing #{filename}: #{e.message}", level: 'error', details: { 'filename' => filename, 'error' => e.message })
+        tracker.fail_step(tracker.current_step || 'unknown', e.message, e.backtrace)
+
         puts "🧠 [Classifier Triage] Recommended action: #{triage[:decision]} (Confidence: #{(triage[:confidence] * 100).round}%)"
         log_activity('triage', "Classifier evaluated failure on #{filename}: #{triage[:decision]} (#{(triage[:confidence] * 100).round}%)", details: triage)
-      rescue StandardError => triage_err
-        warn "⚠️ Could not run classifier error triage: #{triage_err.message}"
-      end
 
-      unless options[:dry_run]
-        failed_dest = File.join(failed_dir, filename)
-        FileUtils.mv(processing_path, failed_dest) if File.exist?(processing_path)
-        tracker.relocate_file_path!(failed_dest)
-        FileUtils.mv(sidecar_path, File.join(failed_dir, File.basename(sidecar_path))) if sidecar_path && File.exist?(sidecar_path)
-        err_log = File.join(failed_dir, "#{filename}.error.log")
-        File.write(err_log, "Failed at: #{Time.now.utc.iso8601}\nError: #{e.message}\n\n#{e.backtrace.join("\n")}\n")
-        puts "⚠️ Moved to failed/#{filename} with diagnostic error log."
+        unless options[:dry_run]
+          failed_dest = File.join(failed_dir, filename)
+          FileUtils.mv(processing_path, failed_dest) if File.exist?(processing_path)
+          tracker.relocate_file_path!(failed_dest)
+          FileUtils.mv(sidecar_path, File.join(failed_dir, File.basename(sidecar_path))) if sidecar_path && File.exist?(sidecar_path)
+          err_log = File.join(failed_dir, "#{filename}.error.log")
+          File.write(err_log, "Failed at: #{Time.now.utc.iso8601}\nError: #{e.message}\n\n#{e.backtrace.join("\n")}\n")
+          puts "⚠️ Moved to failed/#{filename} with diagnostic error log."
+        end
       end
 
       false
@@ -985,6 +1041,9 @@ class MediaIntakePipeline
 
     words = trimmed.split
     summary = words.take(8).join(' ')
+    summary = summary.gsub(/\b(?:ucastic|ugtastic)\b/i, 'UGtastic')
+    summary = summary.gsub(/\bblind\s+sight\b/i, 'Blindsight')
+    summary = summary.sub(/\s+is a book$/i, '')
     summary[0] = summary[0].upcase if summary[0]
     summary.empty? ? "Field Reflections" : summary
   end
@@ -1066,6 +1125,7 @@ class MediaIntakePipeline
     cleaned.gsub!(/\bfantastic interviews\b/i, 'UGtastic interviews')
     cleaned.gsub!(/\byou fantastic\b/i, 'UGtastic')
     cleaned.gsub!(/\bug tastic\b/i, 'UGtastic')
+    cleaned.gsub!(/\bblind\s+sight\b/i, 'Blindsight')
     cleaned
   end
 
@@ -1134,11 +1194,18 @@ class MediaIntakePipeline
     end
   end
 
+  # Generate canonical slug for asset and transcript
+  def generate_slug(target_name, title)
+    clean_title = title.to_s.sub(/^(?:Episode \d+|Ramblin' & Amblin' \(\d{4}-\d{2}-\d{2}\)|Errata \d+):\s*/i, '').strip
+    clean_title = title if clean_title.empty?
+    clean_title = clean_title.gsub(/[^\w\s-]/, '').strip
+    slug_base = clean_title.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/^-|-$/, '')
+    "#{target_name}-#{slug_base}".slice(0, 80)
+  end
+
   # Persist structured transcript to _data/transcripts/
   def save_transcript_dossier(target_name, filename, metadata, transcript_data)
-    clean_title = metadata[:title].to_s.gsub(/[^\w\s-]/, '').strip
-    slug_base = clean_title.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/^-|-$/, '')
-    slug = "#{target_name}-#{slug_base}".slice(0, 80)
+    slug = generate_slug(target_name, metadata[:title])
     transcript_file = File.join(TRANSCRIPTS_DATA_DIR, "#{slug}.yml")
 
     # Split into clean conversational turns
@@ -1185,6 +1252,7 @@ class MediaIntakePipeline
 
     asset_entry = {
       "id" => slug,
+      "source_filename" => filename,
       "title" => metadata[:title].gsub("\u2014", ': '),
       "speaker" => "Mike Hall",
       "role" => "Host, UGtastic",
@@ -1215,17 +1283,22 @@ class MediaIntakePipeline
   end
 
   # Check if a video was already archived with a completed receipt
-  def find_archived_receipt(filename, processed_dir)
-    pattern = File.join(processed_dir, '**', "#{filename}.receipt.json")
-    receipt_files = Dir.glob(pattern)
+  def find_archived_receipt(filename, processed_dir = nil)
+    search_dirs = [processed_dir, base_path].compact.uniq
+    receipt_files = []
+    search_dirs.each do |dir|
+      next unless dir && Dir.exist?(dir)
+      pattern = File.join(dir, '**', "#{filename}.receipt.json")
+      receipt_files.concat(Dir.glob(pattern))
+    end
     return nil if receipt_files.empty?
 
     receipt_path = receipt_files.sort_by { |p| File.mtime(p) }.last
     JSON.parse(File.read(receipt_path)) rescue nil
   end
 
-  # Find registered asset in _data/video_assets.yml by title or slug
-  def find_registered_asset(title, slug = nil)
+  # Find registered asset in _data/video_assets.yml by title, slug, or source filename
+  def find_registered_asset(title, slug = nil, filename = nil)
     raw = File.exist?(VIDEO_ASSETS_PATH) ? YAML.safe_load(File.read(VIDEO_ASSETS_PATH), permitted_classes: [Date, Time], aliases: true) : nil
     assets = if raw.is_a?(Hash) && raw['items'].is_a?(Array)
                raw['items']
@@ -1237,7 +1310,8 @@ class MediaIntakePipeline
 
     norm_title = title.to_s.downcase.gsub(/[^a-z0-9]/, '')
     assets.find do |a|
-      (slug && (a["id"] == slug || a["transcript_id"] == slug)) ||
+      (filename && a["source_filename"] == filename) ||
+        (slug && (a["id"] == slug || a["transcript_id"] == slug)) ||
         (a["title"] && a["title"].to_s.downcase.gsub(/[^a-z0-9]/, '') == norm_title)
     end
   end
