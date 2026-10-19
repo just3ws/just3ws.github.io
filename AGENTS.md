@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-18
+     CURRENT FOCUS - last updated 2026-10-19
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,26 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - FOG GEM T-SHIRT (#1562), EXPANDED ARCTIC CODE VAULT, GEEKFEST/OTEL WG CHRONOLOGY & MEMOIR BOUNDARY (2026-10-19):
+         Grounded fog/fog#1562 contribution and contributor t-shirt, expanded 2020 GitHub Arctic Code Vault provenance, chronologized Geekfest@OMF (49+ sessions) / Corporate Hackathons (March 2022 Rasa & Feb 2024 Buckaroo Bonsais) / OTel WG (122 members) through to the Sept 12, 2025 executive handoff, audited and enforced Aneta and TMI privacy boundaries across public surfaces, established local-only memoir structural spine in `~/my/book/README.md`, verified overnight quota unblocking, and confirmed 0 playlist warnings across 21 live playlists:
+         - fog Gem Upstream Contribution & Contributor T-Shirt (`fog/fog#1562`, `fecbf150`):
+           - Located commit `fecbf150a4574a0080d5d454807a248f0b71d31a` (`2013-02-13`) in `fog/fog#1562` upgrading `net-scp` after v1.0.6 was yanked from RubyGems.org. Merged by Wesley Beary (`@geemus`) in `2fccaa27`, credited in the `fog` v1.10.0 `CHANGELOG.md` ("*thanks Michael D. Hall*"), earning the official `fog` contributor t-shirt.
+           - Grounded in `bin/lib/ecosystem_datalake.rb`, `_data/portfolio.yml`, `timeline/index.html`, and `docs/ecosystem-history-and-datalake-chronology.md`.
+         - Expanded 2020 GitHub Arctic Code Vault Provenance (`2020-02-02` Snapshot):
+           - Preserved in Svalbard permafrost across `countries/countries` (`ec5d33ea`), `coderwall/coderwall-legacy` (634 commits, #1 contributor), `asm-helpful/helpful-web` (7+ commits), `fog/fog` (`fecbf150`), `carlhuda/janus` (`01b31564`, PRs #70, #159, #160), `cdnjs/cdnjs` (`559fdedb`, PRs #703, #712), `just3ws/nerd-font-cheatsheets` (129 stars), `just3ws/biscotti`, `just3ws/zdots`, `just3ws/vdots`, and `just3ws.github.io`.
+         - Geekfest@OMF, Hackathons & OpenTelemetry Working Group (2022 to 2025):
+           - Ingested verified chronology from `/Volumes/Dock_1TB` ChatGPT corpus and project code: March 2022 Hackathon #1 (conversational AI with Rasa 3.0, 8 months prior to ChatGPT); June 2022 Open Tech Talks to November 2022 Geekfest@OMF launch (49+ recorded Tuesday sessions across SOLID, Legacy Code, April 2023 early LLMs, Cynefin, and Sept 2023 OpenTelemetry live demos); Feb 2024 Hackathon #2 leading *The Buckaroo Bonsais* (JSON Schema inference + OpenTelemetry batch tracing); April 2024 evolution into OTel WG (first Community of Practice at OMF, 122 invited members, 40+ active cross-lane engineers); and September 12, 2025 formal stewardship handoff to newly funded full-time observability leadership.
+           - Added practice thread and contextual gates to `timeline/index.html`, updated Chapter 5 of `docs/retrospectives/onemain-financial-system-cartography-and-architecture-retrospective.md`, and enriched datalake milestones.
+         - Aneta & TMI Protocols Enacted:
+           - Generalized unconsented internal director name in retrospective to `"engineering leadership"`. Zero unconsented corporate peer names or proprietary codenames across all public surfaces.
+           - Created local-only memoir and autobiography structural guide in `~/my/book/README.md` documenting the phase-offset structural thread, literary nonfiction naming rules, and Homer CCSD 33C elementary school fact-checking ledger.
+         - Overnight Quota Unblocking & Sweeper Verification:
+           - Final blocked video (`VID_20261017_163906958.mp4` -> `zls4SCb40Vk`) was automatically unblocked, added to playlist, synced to datalake, and archived into `processed/2026-10/` with new transcript `_data/transcripts/ramblin-amblin-ok-next-experiment.yml`.
+           - Channel audit via `./bin/just3ws media sweep --audit --json` confirmed 0 duplicate items, 0 duplicate video groups, and 0 warnings across all 21 playlists.
+         - Verification:
+           - 66 repos, 3,083 commits, 14 artifacts, 104 timeline events in SQLite3 FTS5 and DuckDB.
+           - 11/11 datalake RSpec tests passing, fast validation passing across 495 Markdown files, TMI audit passing 930/930 URLs (0 reconcile/quarantine/hold), 67 attested resume claims verified, site installed to `just3ws.localhost`, and commit `c006a5cc` pushed to `origin/master`. Zero em dashes.
+
        - CENTRAL TIME UX, YOUTUBE QUOTA CONSERVATION, RUBYGEMS/CLOJARS/CHOCOLATEY PROVENANCE & HISTER DISCOVERY (2026-10-18):
          Unified all operator surfaces on Central Time (`America/Chicago` / `2:00 AM CT`) backed by UTC state, optimized YouTube Data API v3 quota conservation (deferring 400-unit caption uploads to complete `datalake_sync` and `archival` for 4 blocked videos immediately), grounded `NStun` `.NET 2.0` correlation with TicketsNow, recovered RubyGems, Clojars (`semantic-csv#49`), Chocolatey Kickstarter (`fa6a43b0`), and Coderwall (`coderwall-badges`) provenance, and indexed all provenance into `hister.localhost`:
          - Central Time (`America/Chicago`) UX & UTC Internal State (`youtube/dashboard.html`, `bin/intake_drive_video.rb`, `bin/live_dashboard_streamer.rb`, `bin/youtube_sweeper.rb`):
