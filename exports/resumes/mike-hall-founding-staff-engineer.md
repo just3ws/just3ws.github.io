@@ -85,34 +85,6 @@ property-based Truth Gate verification gates across the full state lifecycle.
 - Uses controlled agent workflows with bounded tasks, acceptance criteria, automated
   checks, and human-reviewed outputs rather than treating model output as authority.
 
-### Principal Architect at WWWorkRemote
-
-**January 2021 - Present** | Independent Project
-
-**Target Focus:** Architected multi-source Rails ingestion pipeline, pgvector semantic
-search, local-first YAML model registry, 4-stage prompt injection defense, and
-16-adapter MV3 Chrome extension.
-
-**Key Outcomes:**
-- Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline and
-  PostgreSQL storage schema, unifying fragmented job market datasets for structured
-  downstream analysis.
-- Semantic Search & Embeddings: Implemented vector search embeddings via pgvector,
-  enabling high-precision semantic matching between complex candidate profiles and job
-  requirements.
-- Local-First AI Orchestration: Designed provider-agnostic LLM orchestration layer
-  (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first inference for
-  sensitive data with per-call model routing.
-- Prompt Injection Defense: Built a 4-stage guardrails pipeline screening untrusted
-  scraped text via weighted heuristics and instruction-density scoring before model
-  ingestion.
-- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider
-  adapters that extracts postings from live ATS pages and captures full application
-  lifecycles.
-- Architectural Constraint Injection: Injected static analysis rules and architectural
-  constraints into model context windows, preventing drift between generated outputs and
-  security contracts.
-
 ### Principal Engineer & Curator at Technical Conversation Archive
 
 **January 2011 - Present** | Independent Project
@@ -140,6 +112,26 @@ media corpus.
   web archives, reconciling incomplete metadata across sources to restore provenance for
   recordings that would otherwise have been lost.
 
+### Principal Architect at Local AI Orchestration & Developer Runtime
+
+**January 2026 - Present** | Independent Project
+
+**Target Focus:** Built local-first MCP servers (ctx-mcp, o2-mcp) exposing database
+knowledge and OpenObserve distributed telemetry directly to autonomous agent runtimes.
+
+**Key Outcomes:**
+- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
+  knowledge suite that agents both query and write back to, so methodologies and lessons
+  learned in one session are retrievable in the next rather than re-derived.
+- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
+  (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an
+  agent diagnoses a running system from observed behavior instead of inferring from
+  source.
+- Context as a Budgeted Resource: Designed context-isolated subagents that keep
+  high-volume audit work out of the main conversation's context window, with per-client
+  registration tooling and pre-commit hooks that reject any agent asset that isn't
+  self-describing.
+
 ---
 
 ## Selected Production Projects
@@ -163,6 +155,20 @@ reviewable.
   high-volume audit work out of the main conversation's context window, with per-client
   registration tooling and pre-commit hooks that reject any agent asset that isn't
   self-describing.
+
+### Principal Architect (Phalanx Duel)
+**January 2022 - Present**
+
+Designing and building a real-time tactical game platform as a current hands-on
+laboratory for deterministic systems, product architecture, and controlled AI-assisted
+engineering.
+
+- Designed a deterministic engine with replayable action logs and server-authoritative
+  state transitions, making complex outcomes reproducible and independently verifiable.
+- Built replay validation, adversarial coverage, and CI verification gates so state
+  transitions can be checked across the complete lifecycle.
+- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated
+  checks, and human-reviewed outputs rather than treating model output as authority.
 
 ---
 

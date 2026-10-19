@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-18T12:05:51Z",
+    "generated_at": "2026-10-19T20:40:48Z",
     "archetype": "founding_staff_fullstack",
     "slug": "mike-hall-founding-staff-engineer",
     "target_tier": "Early-Stage / High Agency / 0-to-1 Product & AI Engineering"
@@ -57,22 +57,6 @@
       ]
     },
     {
-      "id": "wwworkremote",
-      "title": "Principal Architect",
-      "company": "WWWorkRemote",
-      "location": "Independent Project",
-      "dates": "January 2021 - Present",
-      "focus": "Architected multi-source Rails ingestion pipeline, pgvector semantic search, local-first YAML model registry, 4-stage prompt injection defense, and 16-adapter MV3 Chrome extension.",
-      "highlights": [
-        "Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline and PostgreSQL storage schema, unifying fragmented job market datasets for structured downstream analysis.\n",
-        "Semantic Search & Embeddings: Implemented vector search embeddings via pgvector, enabling high-precision semantic matching between complex candidate profiles and job requirements.\n",
-        "Local-First AI Orchestration: Designed provider-agnostic LLM orchestration layer (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first inference for sensitive data with per-call model routing.\n",
-        "Prompt Injection Defense: Built a 4-stage guardrails pipeline screening untrusted scraped text via weighted heuristics and instruction-density scoring before model ingestion.\n",
-        "Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider adapters that extracts postings from live ATS pages and captures full application lifecycles.\n",
-        "Architectural Constraint Injection: Injected static analysis rules and architectural constraints into model context windows, preventing drift between generated outputs and security contracts.\n"
-      ]
-    },
-    {
       "id": "technical-conversation-archive",
       "title": "Principal Engineer & Curator",
       "company": "Technical Conversation Archive",
@@ -86,6 +70,19 @@
         "Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference, Software Craftsmanship North America, RailsConf, and WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso, and Micah Martin.\n",
         "Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.\n"
       ]
+    },
+    {
+      "id": "agent-tooling",
+      "title": "Principal Architect",
+      "company": "Local AI Orchestration & Developer Runtime",
+      "location": "Independent Project",
+      "dates": "January 2026 - Present",
+      "focus": "Built local-first MCP servers (ctx-mcp, o2-mcp) exposing database knowledge and OpenObserve distributed telemetry directly to autonomous agent runtimes.",
+      "highlights": [
+        "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n",
+        "Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.\n",
+        "Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.\n"
+      ]
     }
   ],
   "projects": [
@@ -98,6 +95,17 @@
         "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n",
         "Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.\n",
         "Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.\n"
+      ]
+    },
+    {
+      "id": "phalanx-duel",
+      "title": "Principal Architect",
+      "dates": "January 2022 - Present",
+      "summary": "Designing and building a real-time tactical game platform as a current hands-on laboratory for deterministic systems, product architecture, and controlled AI-assisted engineering.\n",
+      "highlights": [
+        "Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.\n",
+        "Built replay validation, adversarial coverage, and CI verification gates so state transitions can be checked across the complete lifecycle.\n",
+        "Uses controlled agent workflows with bounded tasks, acceptance criteria, automated checks, and human-reviewed outputs rather than treating model output as authority.\n"
       ]
     }
   ],

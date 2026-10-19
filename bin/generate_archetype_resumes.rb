@@ -321,6 +321,23 @@ archetypes.each do |key, config|
     txt_lines << ""
   end
 
+  unless selected_projects_data.empty?
+    txt_lines << dash
+    txt_lines << "SELECTED PRODUCTION PROJECTS"
+    txt_lines << dash
+    selected_projects_data.each do |proj|
+      txt_lines << wrap.call("* #{proj['title']} (#{proj['dates']})", 80)
+      txt_lines << "  #{wrap.call(proj['summary'], 76).gsub("\n", "\n  ")}" unless proj['summary'].to_s.empty?
+      if proj['highlights'] && !proj['highlights'].empty?
+        proj['highlights'].each do |h|
+          txt_lines << "  - #{wrap.call(h, 74).gsub("\n", "\n    ")}"
+        end
+      end
+      txt_lines << ""
+    end
+    txt_lines << ""
+  end
+
   unless additional_experience_data.empty?
     txt_lines << dash
     txt_lines << "ADDITIONAL EXPERIENCE"
@@ -384,6 +401,34 @@ systems_config['featured_positions'].each do |entry|
       <div class="job-title">#{pos['title'].upcase}</div>
       <div class="job-company">#{comp_name}</div>
       <div class="job-meta">#{loc ? "#{loc} | " : ""}#{dates}</div>
+      #{summary_p ? "<p class=\"job-summary\">#{summary_p}</p>" : ""}
+      <ul class="job-bullets">
+        #{bullets}
+      </ul>
+    </div>
+  HTML
+end
+
+# Build selected projects for ATS
+ats_projects_html = []
+(systems_config['selected_projects'] || []).each do |entry|
+  proj = positions[entry['id']]
+  next unless proj
+
+  comp_name = proj.dig('company', 'name') || proj['company'] || proj['title']
+  dates = "#{human_date(proj['start_date'])} - #{human_date(proj['end_date'])}"
+  bullets = (proj['highlights'] || []).map do |h|
+    text = h.is_a?(Hash) ? h['text'] : h.to_s
+    "<li>#{text}</li>"
+  end.join("\n      ")
+
+  summary_p = proj['summary']
+
+  ats_projects_html << <<~HTML
+    <div class="job-entry">
+      <div class="job-title">#{proj['title'].upcase}</div>
+      <div class="job-company">#{comp_name}</div>
+      <div class="job-meta">#{dates}</div>
       #{summary_p ? "<p class=\"job-summary\">#{summary_p}</p>" : ""}
       <ul class="job-bullets">
         #{bullets}
@@ -556,6 +601,11 @@ ats_document_html = <<~HTML
   <section>
     <h2 class="section-heading">EXPERIENCE</h2>
     #{ats_positions_html.join("\n")}
+  </section>
+
+  <section>
+    <h2 class="section-heading">SELECTED PRODUCTION PROJECTS</h2>
+    #{ats_projects_html.join("\n")}
   </section>
 
   <section>

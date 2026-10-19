@@ -114,17 +114,19 @@ architecture, and carefully bounded AI-assisted engineering.
 **Skills:** TypeScript, Node.js, PostgreSQL, WebSockets, API Design, Distributed
 Systems, Deterministic Simulation, CI/CD, System Verification, AI-Augmented Development
 
-### Principal Architect at WWWorkRemote
-**January 2021 - Present**
+### Principal Engineer & Curator at Technical Conversation Archive
+**Selected project**
 
-Building a Rails platform for structured research, semantic search, and human-directed
-automation.
+Restored and published an oral history archive of 214 technical interviews with Software
+Craftsmanship practitioners, backed by an on-device AI transcription pipeline and
+contract-validated knowledge graph.
 
 **Key Outcomes:**
-- Unified fragmented sources into a searchable data model for downstream analysis.
-- Designed local-first AI workflows with explicit safety boundaries around untrusted
-  input and sensitive context.
+- Built a local-first Whisper and LLM pipeline that structures long-form audio entirely
+  on-device with zero external inference egress.
+- Enforced build-time schema contracts and referential integrity checks across all media
+  assets, transcripts, and semantic taxonomy graphs.
 
-**Skills:** Ruby on Rails, PostgreSQL, pgvector, Vector Search & Embeddings, LLM
-Orchestration, Prompt Injection Defense, Local Inference, Chrome Extensions (MV3), API
-Design, Data Pipelines, System Design, OpenTelemetry, Distributed Systems
+**Skills:** Local-First AI Inference, Whisper & Speech-to-Text, LLM-Assisted Content
+Structuring, Knowledge Graph Construction, Semantic Search & Taxonomy, Schema Validation
+& Data Contracts, Digital Preservation, Ruby, Jekyll, SEO & Information Architecture

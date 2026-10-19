@@ -64,16 +64,22 @@ C# object model, XML serialization engine, and ASP.NET Builder implementing the 
 Consortium 2.5 Resume specification), and SchemaInSight (programmatic SQL Server schema
 inspection API).
 
-## RubyGems (60,304 Downloads), Clojars semantic-csv & Chocolatey Launch CTA
-**Role:** Open-Source Author & Collaborator
-**Years:** 2012 - 2019
+## RubyGems (60,304 Downloads), fog Gem, Clojars, Chocolatey CTA & GitHub Arctic Code Vault
+**Role:** Open-Source Author & Arctic Code Vault Contributor
+**Years:** 2011 - 2020
 
 Published three production RubyGems under handle just3ws totaling 60,304 downloads
 (express_pigeon v2.4.1 with 30,267 downloads, biscuit-monitor v0.0.4 with 18,026
 downloads for CLEAR Spot 4G+ hotspot telemetry, and biscotti v0.1.4 with 12,011
-downloads). Built the top-of-site Kickstarter launch CTA banner on chocolatey.org
-(commit fa6a43b0, GH-124) for Rob Reynolds (ferventcoder) in November 2014. Catalyzed
-the Clojars 0.2.0 release of metasoarous/semantic-csv (Issue #49) while building the
-plik Clojure multi-delimiter CSV service, and served as #1 all-time contributor to
-coderwall/coderwall-legacy (634 commits, 856 stars) and creator of
-assemblymade/coderwall-badges.
+downloads). Contributed upstream to the Ruby cloud library fog/fog (PR #1562, commit
+fecbf150 on February 13, 2013, upgrading net-scp after v1.0.6 was yanked from
+RubyGems.org; merged by Wesley Beary @geemus and credited in the v1.10.0 CHANGELOG,
+earning the official fog contributor t-shirt). Built the top-of-site Kickstarter launch
+CTA banner on chocolatey.org (commit fa6a43b0, GH-124) for Rob Reynolds (ferventcoder)
+in November 2014. Catalyzed the Clojars 0.2.0 release of metasoarous/semantic-csv (Issue
+#49) while building the plik Clojure multi-delimiter CSV service, served as #1 all-time
+contributor to coderwall/coderwall-legacy (634 commits, 856 stars) and creator of
+assemblymade/coderwall-badges, and was archived in the 2020-02-02 GitHub Arctic Code
+Vault (Svalbard, Norway) across countries/countries (commit ec5d33ea),
+coderwall/coderwall-legacy, asm-helpful/helpful-web, fog/fog (commit fecbf150),
+carlhuda/janus, cdnjs/cdnjs, and just3ws repositories.

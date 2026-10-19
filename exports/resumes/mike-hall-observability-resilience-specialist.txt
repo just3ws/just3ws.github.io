@@ -104,36 +104,24 @@ Key Outcomes:
 
 --------------------------------------------------------------------------------
 PRINCIPAL ARCHITECT
-WWWorkRemote | Independent Project
-January 2021 - Present
+Phalanx Duel | Independent Project
+January 2022 - Present
 
-Built comprehensive error tracking and validation guardrails for continuous
-document ingestion and model inference.
+Instrumented distributed WebSocket match transitions with OpenTelemetry trace
+context, Sentry error telemetry, and property-based verification gates across
+client-server boundaries.
 
 Key Outcomes:
-  * Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline
-    and PostgreSQL storage schema, unifying fragmented job market datasets for
-    structured downstream analysis.
+  * Designed a deterministic engine with replayable action logs and
+    server-authoritative state transitions, making complex outcomes reproducible
+    and independently verifiable.
 
-  * Semantic Search & Embeddings: Implemented vector search embeddings via
-    pgvector, enabling high-precision semantic matching between complex
-    candidate profiles and job requirements.
+  * Built replay validation, adversarial coverage, and CI verification gates so
+    state transitions can be checked across the complete lifecycle.
 
-  * Local-First AI Orchestration: Designed provider-agnostic LLM orchestration
-    layer (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first
-    inference for sensitive data with per-call model routing.
-
-  * Prompt Injection Defense: Built a 4-stage guardrails pipeline screening
-    untrusted scraped text via weighted heuristics and instruction-density
-    scoring before model ingestion.
-
-  * Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16
-    provider adapters that extracts postings from live ATS pages and captures
-    full application lifecycles.
-
-  * Architectural Constraint Injection: Injected static analysis rules and
-    architectural constraints into model context windows, preventing drift
-    between generated outputs and security contracts.
+  * Uses controlled agent workflows with bounded tasks, acceptance criteria,
+    automated checks, and human-reviewed outputs rather than treating model
+    output as authority.
 
 
 --------------------------------------------------------------------------------
@@ -178,6 +166,53 @@ Key Outcomes:
   * Global Engineering Enablement: Redesigned technical onboarding curricula,
     standardizing engineering practices and shortening time-to-first-commit for
     100+ global engineering hires.
+
+
+--------------------------------------------------------------------------------
+SELECTED PRODUCTION PROJECTS
+--------------------------------------------------------------------------------
+* Principal Architect (January 2026 - Present)
+  Built and operate three MCP (Model Context Protocol) servers that expose
+  live system state as callable tools to any MCP client, alongside the Claude
+  Code skills, context-isolated subagents, and commit-time checks that keep
+  agent work bounded and reviewable.
+  - Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a
+    PostgreSQL knowledge suite that agents both query and write back to, so
+    methodologies and lessons learned in one session are retrievable in the
+    next rather than re-derived.
+  - Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve
+    telemetry (errors, slow spans, failed jobs, distributed traces) as
+    agent-callable tools, so an agent diagnoses a running system from observed
+    behavior instead of inferring from source.
+  - Context as a Budgeted Resource: Designed context-isolated subagents that
+    keep high-volume audit work out of the main conversation's context window,
+    with per-client registration tooling and pre-commit hooks that reject any
+    agent asset that isn't self-describing.
+
+* Principal Engineer & Curator (January 2011 - Present)
+  Recorded, and later restored, an archive of 214 technical interviews with
+  practitioners from the Ruby, JVM, and Software Craftsmanship movements,
+  using a local-only AI pipeline to transcribe, structure, and cross-link a
+  longitudinal record of primary-source material into a searchable knowledge
+  graph.
+  - Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline
+    that transcribes, diarizes, and structures long-form interview audio
+    entirely on-device, keeping a large private media corpus off third-party
+    inference services.
+  - Schema-Validated Content Platform: Runs on a contract-validated data
+    layer: every interview, asset, and transcript is checked against an
+    explicit schema at build time, with referential-integrity checks that fail
+    the build rather than publishing broken data.
+  - Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy,
+    knowledge graph, and semantic cross-links across the corpus, turning an
+    unstructured media archive into navigable, individually indexed pages.
+  - Primary-Source Capture: Conducted the original interviews on-site at GOTO
+    Conference, Software Craftsmanship North America, RailsConf, and
+    WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway,
+    Corey Haines, Sandro Mancuso, and Micah Martin.
+  - Digital Archaeology: Recovered and reconstructed material from defunct
+    platforms and web archives, reconciling incomplete metadata across sources
+    to restore provenance for recordings that would otherwise have been lost.
 
 
 --------------------------------------------------------------------------------

@@ -132,32 +132,6 @@ deployment pipelines for high-traffic consumer web products.
 
 ## Selected Production Projects
 
-### Principal Architect (WWWorkRemote)
-**January 2021 - Present**
-
-Rails 8 platform for multi-source job ingestion, semantic matching, and application
-automation, built as a working laboratory for local-first LLM orchestration and treating
-scraped third-party text as hostile input.
-
-- Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline and
-  PostgreSQL storage schema, unifying fragmented job market datasets for structured
-  downstream analysis.
-- Semantic Search & Embeddings: Implemented vector search embeddings via pgvector,
-  enabling high-precision semantic matching between complex candidate profiles and job
-  requirements.
-- Local-First AI Orchestration: Designed provider-agnostic LLM orchestration layer
-  (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first inference for
-  sensitive data with per-call model routing.
-- Prompt Injection Defense: Built a 4-stage guardrails pipeline screening untrusted
-  scraped text via weighted heuristics and instruction-density scoring before model
-  ingestion.
-- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider
-  adapters that extracts postings from live ATS pages and captures full application
-  lifecycles.
-- Architectural Constraint Injection: Injected static analysis rules and architectural
-  constraints into model context windows, preventing drift between generated outputs and
-  security contracts.
-
 ### Principal Architect (Phalanx Duel)
 **January 2022 - Present**
 
@@ -171,6 +145,32 @@ engineering.
   transitions can be checked across the complete lifecycle.
 - Uses controlled agent workflows with bounded tasks, acceptance criteria, automated
   checks, and human-reviewed outputs rather than treating model output as authority.
+
+### Principal Engineer & Curator (Technical Conversation Archive)
+**January 2011 - Present**
+
+Recorded, and later restored, an archive of 214 technical interviews with practitioners
+from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline
+to transcribe, structure, and cross-link a longitudinal record of primary-source
+material into a searchable knowledge graph.
+
+- Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that
+  transcribes, diarizes, and structures long-form interview audio entirely on-device,
+  keeping a large private media corpus off third-party inference services.
+- Schema-Validated Content Platform: Runs on a contract-validated data layer: every
+  interview, asset, and transcript is checked against an explicit schema at build time,
+  with referential-integrity checks that fail the build rather than publishing broken
+  data.
+- Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge
+  graph, and semantic cross-links across the corpus, turning an unstructured media
+  archive into navigable, individually indexed pages.
+- Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference,
+  Software Craftsmanship North America, RailsConf, and WindyCityRails, with
+  practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso,
+  and Micah Martin.
+- Digital Archaeology: Recovered and reconstructed material from defunct platforms and
+  web archives, reconciling incomplete metadata across sources to restore provenance for
+  recordings that would otherwise have been lost.
 
 ### Principal Architect (Local AI Orchestration & Developer Runtime)
 **January 2026 - Present**

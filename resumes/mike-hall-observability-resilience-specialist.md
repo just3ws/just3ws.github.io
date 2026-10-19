@@ -101,32 +101,21 @@ traces and error budgets directly to AI agent runtimes.
   registration tooling and pre-commit hooks that reject any agent asset that isn't
   self-describing.
 
-### Principal Architect at WWWorkRemote
+### Principal Architect at Phalanx Duel
 
-**January 2021 - Present** | Independent Project
+**January 2022 - Present** | Independent Project
 
-**Target Focus:** Built comprehensive error tracking and validation guardrails for
-continuous document ingestion and model inference.
+**Target Focus:** Instrumented distributed WebSocket match transitions with
+OpenTelemetry trace context, Sentry error telemetry, and property-based verification
+gates across client-server boundaries.
 
 **Key Outcomes:**
-- Multi-Source Data Ingestion: Built a multi-source Rails ingestion pipeline and
-  PostgreSQL storage schema, unifying fragmented job market datasets for structured
-  downstream analysis.
-- Semantic Search & Embeddings: Implemented vector search embeddings via pgvector,
-  enabling high-precision semantic matching between complex candidate profiles and job
-  requirements.
-- Local-First AI Orchestration: Designed provider-agnostic LLM orchestration layer
-  (llama.cpp/Ollama with hosted Claude fallback), enforcing local-first inference for
-  sensitive data with per-call model routing.
-- Prompt Injection Defense: Built a 4-stage guardrails pipeline screening untrusted
-  scraped text via weighted heuristics and instruction-density scoring before model
-  ingestion.
-- Browser Extension & Lifecycle Capture: Built an MV3 Chrome extension with 16 provider
-  adapters that extracts postings from live ATS pages and captures full application
-  lifecycles.
-- Architectural Constraint Injection: Injected static analysis rules and architectural
-  constraints into model context windows, preventing drift between generated outputs and
-  security contracts.
+- Designed a deterministic engine with replayable action logs and server-authoritative
+  state transitions, making complex outcomes reproducible and independently verifiable.
+- Built replay validation, adversarial coverage, and CI verification gates so state
+  transitions can be checked across the complete lifecycle.
+- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated
+  checks, and human-reviewed outputs rather than treating model output as authority.
 
 ### Senior Software Developer at ActiveCampaign
 

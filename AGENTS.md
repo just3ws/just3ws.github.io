@@ -11,6 +11,19 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - RESUME PROJECTS REPRIORITIZATION: TECHNICAL ARCHIVE & PHALANX DUEL ELEVATION (2026-10-19):
+         Reprioritized canonical resume, ATS configuration, and tailored archetype surfaces to front **Technical Conversation Archive** and **Phalanx: Duel**, deprioritizing WWWorkRemote:
+         - ATS Configuration & Declarative Alignment (`_data/resume/ats.yml`):
+           - Updated `selected_projects` from `[agent-tooling, phalanx-duel, wwworkremote]` to `[agent-tooling, phalanx-duel, technical-conversation-archive]`.
+         - Technical Conversation Archive Public Contract (`_data/resume/positions/technical-conversation-archive.yml`):
+           - Added explicit `public_summary` and `public_highlights` blocks emphasizing on-device Whisper audio processing, contract-tested knowledge graph construction, and software craftsmanship stewardship.
+         - Archetypes & Generator Elevation (`_data/resume/archetypes.yml`, `bin/generate_archetype_resumes.rb`):
+           - Elevated `phalanx-duel` and `technical-conversation-archive` across all five resume archetypes (`staff_systems_architect`, `staff_platform_enablement`, `senior_ruby_rails_contractor`, `founding_staff_fullstack`, `observability_resilience_specialist`).
+           - Added dedicated `SELECTED PRODUCTION PROJECTS` section to ATS plaintext export (`exports/resumes/ats-import-resume.txt`) and semantic HTML import template (`exports/resumes/ats-import-resume.html`).
+         - Verification:
+           - 187/187 rspec tests passing cleanly across `spec/youtube/` and `spec/data/`.
+           - Fast validation passing cleanly across 496 Markdown files, 67 attested resume claims verified (0 unattested), Jekyll site build passing across 1,045 pages, zero em dashes.
+
        - DIGITAL EPHEMERALITY WITH SOVEREIGN ARCHIVING & COGNITIVE CADENCE DRIFT (2026-10-19):
          Implemented configurable rolling horizon playlist management with anchor-and-gravitational-tail mechanics and built local cognitive cadence / sentiment analyzer across Whisper transcripts:
          - Declarative Ephemerality Architecture (`_data/media_intake_targets.yml`):
