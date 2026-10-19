@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - BIOGRAPHICAL, MILITARY SERVICE, SSA WORK SPAN & MINISTERIAL PROVENANCE (2026-10-19):
+         Grounded verified personal and service history from primary records across `$HOME/ai/inbox/` (DD Form 214s, Universal Life Church ordination records, SSA earnings statement, AFJROTC, Eagle Scout, Order of the Arrow Brotherhood, and OPFOR training):
+         - Military Service Provenance (`docs/biographical-and-service-provenance.md`, `~/my/book/military-service-and-ordination-provenance.md`):
+           - Illinois Army National Guard (ILARNG): Enlisted at age 16 with parental permission in 1993; Basic Combat Training at Fort Leonard Wood, MO (Summer 1993, age 17), selected as OPFOR (Opposing Force) during final bivouac; endurance runner assigned as road guard / crossing guard during PT runs and marching.
+           - Advanced Individual Training (AIT): Medical Specialist Course at Fort Sam Houston, TX (completed August 1994 with 92.7 academic average); earned civilian EMT-A (Emergency Medical Technician, Ambulance) certification; MOS 91B10 Medical Specialist (Combat Medic); 108th Medical Battalion.
+           - Regular Army Active Duty (RA): May 18, 1996 to May 21, 1997; Rear Detachment, 1st Battalion, 77th Armor Regiment (1-77 AR) in Schweinfurt, Germany; honorable discharge as Specialist (SPC E-4); National Defense Service Medal, Army Service Ribbon, Expert Marksmanship Badge (Grenade), Marksman Badge (Rifle M-16).
+           - High School & Scouting Foundations: Lockport Township High School (LTHS) AFJROTC throughout high school (promoted to cadet officer rank, concurrent senior-year Guard duties); Eagle Scout attained between Basic and AIT; Order of the Arrow (Brotherhood member).
+         - Ministerial Ordination Provenance:
+           - Universal Life Church Monastery: Ordained October 9, 2013 by Brother Martin (Seattle, WA); Minister / Reverend Michael Daniel Hall.
+           - Formal State Credentialing & Letter of Good Standing: Ordered September 1, 2017 (Order #1096919, Customer ID: 3849779, registered in Illinois).
+         - Continuous SSA Work Record (1981 to 2025):
+           - Ingested continuous four-decade earnings span from SSA statement (`~/ai/inbox/ssa/social-security-statement.pdf`): childhood odd jobs and paper routes (1981-1990), adolescent labor and service (1991-2000), dotcom and enterprise systems (2001-2005), and senior/staff engineering leadership (2006-2025).
+         - Datalake & CI Integration:
+           - Ingested 4 new milestones into `bin/lib/ecosystem_datalake.rb` (`milestone-1994-army-ait-combat-medic`, `milestone-1997-regular-army-honorable-discharge`, `milestone-2013-ulc-ordination`, `milestone-2017-ulc-credentials`). Datalake timeline expanded to 108 events across SQLite3 FTS5 and DuckDB (2.51 MB).
+           - Updated HTMLProofer options in `Rakefile` to ignore local-only operator dashboard fragments and API endpoints; resolved dashboard video asset links to canonical `/videos/{{ asset.id }}/`.
+         - Verification:
+           - 300/300 rspec tests passing cleanly across all suites.
+           - Fast validation passing cleanly across 497 Markdown files, 0 errors in `validate:artifacts` and `validate:content`, HTMLProofer passing across all 1,033 rendered files with 0 errors. Zero em dashes.
+
        - RESUME PROJECTS REPRIORITIZATION: TECHNICAL ARCHIVE & PHALANX DUEL ELEVATION (2026-10-19):
          Reprioritized canonical resume, ATS configuration, and tailored archetype surfaces to front **Technical Conversation Archive** and **Phalanx: Duel**, deprioritizing WWWorkRemote:
          - ATS Configuration & Declarative Alignment (`_data/resume/ats.yml`):

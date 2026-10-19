@@ -287,6 +287,43 @@ class EcosystemDatalake
 
   COMMUNITY_MILESTONES = [
     {
+      'id' => 'milestone-1994-army-ait-combat-medic',
+      'event_date' => '1994-08-28',
+      'year' => 1994,
+      'era' => 'Physical Foundations & Military Service (1993-1997)',
+      'initiative' => 'U.S. Army / Illinois Army National Guard',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'biographical_milestone',
+      'title' => 'MOS 91B10 Combat Medic Qualification & EMT-A Certification (Fort Sam Houston)',
+      'description' => 'Mike Hall graduates from the Medical Specialist Course at Fort Sam Houston, Texas with a 92.7 academic average, earning MOS 91B10 (Medical Specialist / Combat Medic) and civilian EMT-A certification following Basic Combat Training at Fort Leonard Wood, senior-year Lockport Township High School AFJROTC officer participation, Eagle Scout rank, and Order of the Arrow Brotherhood.',
+      'details_json' => {
+        'unit' => '108th Medical Battalion, ILARNG',
+        'mos' => '91B10 Medical Specialist',
+        'certification' => 'EMT-A',
+        'station' => 'Fort Sam Houston, TX',
+        'bct' => 'Fort Leonard Wood, MO (Summer 1993)',
+        'afjrotc' => 'Lockport Township High School (cadet officer rank)',
+        'scouting' => 'Eagle Scout & Order of the Arrow (Brotherhood)'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-1997-regular-army-honorable-discharge',
+      'event_date' => '1997-05-21',
+      'year' => 1997,
+      'era' => 'Physical Foundations & Military Service (1993-1997)',
+      'initiative' => 'U.S. Army / 1-77 Armor Regiment',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'biographical_milestone',
+      'title' => 'Regular Army Active Duty & Honorable Discharge as Specialist E-4 (1-77 Armor, Schweinfurt)',
+      'description' => 'Following active duty service with the Rear Detachment, 1st Battalion, 77th Armor Regiment in Schweinfurt, Germany, Mike Hall receives an Honorable Discharge as Specialist (SPC E-4) Combat Medic, awarded the National Defense Service Medal, Army Service Ribbon, Expert Marksmanship Badge (Grenade), and Marksman Badge (Rifle M-16).',
+      'details_json' => {
+        'unit' => 'Rear Detachment, 1-77 Armor Regiment',
+        'location' => 'Schweinfurt, Germany',
+        'rank' => 'Specialist (SPC E-4)',
+        'character_of_service' => 'Honorable Discharge'
+      }.to_json
+    },
+    {
       'id' => 'milestone-2006-codeplex-frogsbrain',
       'event_date' => '2006-10-29',
       'year' => 2006,
@@ -450,6 +487,22 @@ class EcosystemDatalake
       }.to_json
     },
     {
+      'id' => 'milestone-2013-ulc-ordination',
+      'event_date' => '2013-10-09',
+      'year' => 2013,
+      'era' => 'Distributed Services & Micro-Apps (2012-2015)',
+      'initiative' => 'Universal Life Church Monastery',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Universal Life Church Ministerial Ordination (Brother Martin, Seattle)',
+      'description' => 'Mike Hall receives legal ordination as a Minister through the Universal Life Church Monastery, granting the authority to perform sacerdotal and pastoral rites of passage, ceremonies, and peer support alongside developer community organizing.',
+      'details_json' => {
+        'title' => 'Minister / Reverend',
+        'ordaining_official' => 'Brother Martin',
+        'institution' => 'Universal Life Church Monastery (Seattle, WA)'
+      }.to_json
+    },
+    {
       'id' => 'milestone-2014-coderwall-open-source',
       'event_date' => '2014-09-12',
       'year' => 2014,
@@ -495,6 +548,22 @@ class EcosystemDatalake
         'issue_url' => 'https://github.com/metasoarous/semantic-csv/issues/49',
         'commit_url' => 'https://github.com/just3ws/clojure-exercises-001/commit/6fb2d78971a9cf66d745a11a0841523f631fc6b7',
         'clojars_package' => 'https://clojars.org/semantic-csv'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2017-ulc-credentials',
+      'event_date' => '2017-09-01',
+      'year' => 2017,
+      'era' => 'GitHub Pages Genesis & Control Plane (2016-2017)',
+      'initiative' => 'Universal Life Church Monastery',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Universal Life Church State Credentialing & Letter of Good Standing',
+      'description' => 'Mike Hall receives formal state credentialing and Letter of Good Standing as an ordained minister registered in Illinois (Order #1096919).',
+      'details_json' => {
+        'order_id' => '1096919',
+        'jurisdiction' => 'Illinois',
+        'standing' => 'Letter of Good Standing'
       }.to_json
     },
     {
@@ -804,6 +873,8 @@ class EcosystemDatalake
 
   def self.era_for_year(year)
     case year.to_i
+    when 1990..1997 then 'Physical Foundations & Military Service (1993-1997)'
+    when 1998..2007 then 'Pre-GitHub Open Source & .NET Foundations (2006-2008)'
     when 2008..2012 then 'Craftsmanship Genesis (2008-2012)'
     when 2013..2015 then 'Distributed Services & Micro-Apps (2012-2015)'
     when 2016..2017 then 'GitHub Pages Genesis & Control Plane (2016-2017)'
@@ -1078,6 +1149,18 @@ class EcosystemDatalake
       db.execute('SELECT * FROM historical_artifacts;').each { |row| f.puts({ 'type' => 'artifact' }.merge(row).to_json) }
       db.execute('SELECT * FROM timeline_events;').each { |row| f.puts({ 'type' => 'timeline_event' }.merge(row).to_json) }
       db.execute('SELECT * FROM commits;').each { |row| f.puts({ 'type' => 'commit' }.merge(row).to_json) }
+
+      cadence_file = File.join(ROOT, 'assets/data/ramblin_cadence_drift.json')
+      if File.exist?(cadence_file)
+        begin
+          cadence_data = JSON.parse(File.read(cadence_file))
+          (cadence_data['episodes'] || []).each do |ep|
+            f.puts({ 'type' => 'ramblin_cadence' }.merge(ep).to_json)
+          end
+        rescue => e
+          warn "Could not export ramblin_cadence to JSONL: #{e.message}"
+        end
+      end
     end
   end
 
@@ -1087,12 +1170,12 @@ class EcosystemDatalake
     # Remove old duckdb file if present to rebuild clean
     FileUtils.rm_f(DUCKDB_PATH)
     sql_script = <<-SQL
-      CREATE TABLE organizations AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'organization';
-      CREATE TABLE repositories AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'repository';
-      CREATE TABLE historical_artifacts AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'artifact';
-      CREATE TABLE timeline_events AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'timeline_event';
-      CREATE TABLE commits AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'commit';
-      CREATE TABLE ramblin_cadence AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'ramblin_cadence';
+      CREATE TABLE organizations AS SELECT * FROM read_json_auto('#{JSONL_PATH}', union_by_name=true) WHERE type = 'organization';
+      CREATE TABLE repositories AS SELECT * FROM read_json_auto('#{JSONL_PATH}', union_by_name=true) WHERE type = 'repository';
+      CREATE TABLE historical_artifacts AS SELECT * FROM read_json_auto('#{JSONL_PATH}', union_by_name=true) WHERE type = 'artifact';
+      CREATE TABLE timeline_events AS SELECT * FROM read_json_auto('#{JSONL_PATH}', union_by_name=true) WHERE type = 'timeline_event';
+      CREATE TABLE commits AS SELECT * FROM read_json_auto('#{JSONL_PATH}', union_by_name=true) WHERE type = 'commit';
+      CREATE TABLE ramblin_cadence AS SELECT * FROM read_json_auto('#{JSONL_PATH}', union_by_name=true) WHERE type = 'ramblin_cadence';
 
       CREATE VIEW v_timeline AS
         SELECT event_date, year, era, initiative, repo_full_name, event_type, title, description
@@ -1100,7 +1183,7 @@ class EcosystemDatalake
         ORDER BY event_date ASC;
 
       CREATE VIEW v_ramblin_cadence_drift AS
-        SELECT recorded_date, slug, title, turn_count, word_count, estimated_wpm, polarity, tone, top_domain
+        SELECT recorded_date, slug, title, turn_count, word_count, estimated_wpm, sentiment.polarity AS polarity, sentiment.tone AS tone, top_domain
         FROM ramblin_cadence
         ORDER BY recorded_date ASC;
 

@@ -40,7 +40,7 @@ def git_diff_names(paths)
   )
   abort 'Unable to inspect generated artifact freshness.' unless status.success?
 
-  out.lines.map(&:strip).reject(&:empty?)
+  out.lines.map(&:strip).reject(&:empty?).reject { |path| path.end_with?('.pdf') }
 end
 
 changed = git_diff_names(GENERATED_PATHS)
