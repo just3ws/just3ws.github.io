@@ -199,6 +199,82 @@ class YouTubeDeduplicator
     asset['asset_id']
   end
 
+  # Plan rolling horizon retirement based on anchor and gravitational tail policy
+  # items: array of playlist items (with snippet.publishedAt, contentDetails.videoId)
+  # policy: hash containing :window_days, :carry_tail_count, :mode
+  # now: Time object for age calculations (default Time.now)
+  def plan_rolling_horizon_retirement(items, policy = {}, now = Time.now)
+    return { active: [], retired: [], anchor: nil } if items.nil? || items.empty?
+
+    window_days = policy[:window_days] || 3
+    carry_tail_count = policy[:carry_tail_count] || 2
+    window_seconds = window_days * 86_400
+
+    # Sort items by publishedAt descending (newest first)
+    sorted_items = items.sort_by do |it|
+      published_str = it.dig('contentDetails', 'videoPublishedAt') || it.dig('snippet', 'publishedAt')
+      published_str ? Time.parse(published_str).to_i : 0
+    end.reverse
+
+    anchor_item = sorted_items.first
+    anchor_published_str = anchor_item.dig('contentDetails', 'videoPublishedAt') || anchor_item.dig('snippet', 'publishedAt')
+    anchor_time = anchor_published_str ? Time.parse(anchor_published_str) : now
+    anchor_age_seconds = now - anchor_time
+
+    active_items = []
+    retired_items = []
+
+    # Map registered assets to check evergreen / pinned flags
+    evergreen_ids = @registered_assets.select do |a|
+      a['evergreen'] == true || a['pinned'] == true
+    end.map { |a| extract_youtube_id(a) }.compact
+
+    if anchor_age_seconds > window_seconds
+      # Anchor itself has expired: all unpinned videos roll out
+      sorted_items.each do |it|
+        v_id = it.dig('contentDetails', 'videoId') || it.dig('snippet', 'resourceId', 'videoId')
+        if evergreen_ids.include?(v_id)
+          active_items << it
+        else
+          retired_items << it
+        end
+      end
+    else
+      # Anchor is still live: videos within window_days of anchor are retained
+      # plus up to carry_tail_count older videos carried along by gravity
+      tail_count = 0
+
+      sorted_items.each do |it|
+        v_id = it.dig('contentDetails', 'videoId') || it.dig('snippet', 'resourceId', 'videoId')
+
+        if evergreen_ids.include?(v_id)
+          active_items << it
+          next
+        end
+
+        it_published_str = it.dig('contentDetails', 'videoPublishedAt') || it.dig('snippet', 'publishedAt')
+        it_time = it_published_str ? Time.parse(it_published_str) : anchor_time
+        age_from_anchor = anchor_time - it_time
+
+        if age_from_anchor <= window_seconds
+          active_items << it
+        elsif tail_count < carry_tail_count
+          active_items << it
+          tail_count += 1
+        else
+          retired_items << it
+        end
+      end
+    end
+
+    {
+      anchor: anchor_item,
+      anchor_age_days: (anchor_age_seconds / 86_400.0).round(2),
+      active: active_items,
+      retired: retired_items
+    }
+  end
+
   private
 
   def load_video_assets

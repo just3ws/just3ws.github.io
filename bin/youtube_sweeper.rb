@@ -254,6 +254,22 @@ class YouTubeSweeper
       warnings << "#{missing_count} canonical video(s) registered locally but missing from playlist"
     end
 
+    ephemerality_plan = nil
+    ephemerality_policy = find_ephemerality_policy(pl[:id])
+
+    if ephemerality_policy && ephemerality_policy['enabled']
+      policy_opts = {
+        window_days: ephemerality_policy['window_days'] || 3,
+        carry_tail_count: ephemerality_policy['carry_tail_count'] || 2,
+        mode: ephemerality_policy['mode'] || 'anchor_gravitational_tail'
+      }
+      ephemerality_plan = deduplicator.plan_rolling_horizon_retirement(items, policy_opts)
+
+      if ephemerality_plan[:retired].any?
+        warnings << "Ephemerality Horizon: #{ephemerality_plan[:retired].size} video(s) rolled out of #{policy_opts[:window_days]}-day window (eligible for #{ephemerality_policy['vault_playlist_id'] || 'vault'})"
+      end
+    end
+
     {
       id: pl[:id],
       title: pl[:title],
@@ -265,8 +281,24 @@ class YouTubeSweeper
       deletions_plan: deletions_plan,
       removable_item_ids: deletions_plan.map { |d| d[:playlist_item_id] },
       redundant_video_ids: deletions_plan.select { |d| d[:reason] == 'redundant_duplicate_upload' }.map { |d| d[:video_id] }.uniq,
+      ephemerality_plan: ephemerality_plan,
       warnings: warnings
     }
+  end
+
+  def find_ephemerality_policy(playlist_id)
+    return nil unless File.exist?(@targets_path)
+
+    cfg = YAML.safe_load(File.read(@targets_path), permitted_classes: [Date, Time], aliases: true) rescue {}
+    channels = cfg['channels'] || {}
+    channels.each do |_chan_key, chan_data|
+      (chan_data['targets'] || {}).each do |_tgt_key, tgt_data|
+        if tgt_data['playlist_id'] == playlist_id && tgt_data['ephemerality']
+          return tgt_data['ephemerality']
+        end
+      end
+    end
+    nil
   end
 
   def execute_sweep(report)
@@ -312,6 +344,41 @@ class YouTubeSweeper
             client.update_video(vid, privacy_status: 'private')
           else
             puts "  🔍 [DRY RUN] Would set redundant video #{vid} to private"
+          end
+        end
+      end
+
+      # 4. Enforce rolling horizon ephemerality (Digital Ephemerality with Sovereign Archiving)
+      if options[:sweep_ephemerality] && pl[:ephemerality_plan] && pl[:ephemerality_plan][:retired].any?
+        policy = find_ephemerality_policy(pl[:id]) || {}
+        vault_id = policy['vault_playlist_id']
+        retired_privacy = policy['retired_privacy'] || 'private'
+
+        puts "  ⏳ Rolling Horizon: #{pl[:ephemerality_plan][:retired].size} video(s) rolled out of active window"
+
+        pl[:ephemerality_plan][:retired].each do |it|
+          v_id = it.dig('contentDetails', 'videoId') || it.dig('snippet', 'resourceId', 'videoId')
+          pl_item_id = it['id']
+          title = it.dig('snippet', 'title')
+
+          if live
+            # 4a. Mark video private on YouTube
+            puts "  🔒 Setting video #{v_id} ('#{title}') to #{retired_privacy}..."
+            client.set_video_privacy(v_id, retired_privacy) rescue nil
+
+            # 4b. Remove from public rolling playlist
+            unless pl_item_id.to_s.start_with?('ytdlp_')
+              puts "  🗑️ Removing video #{v_id} from #{pl[:title]}..."
+              client.delete_playlist_item(pl_item_id) rescue nil
+            end
+
+            # 4c. Add to private vault playlist if configured
+            if vault_id && !vault_id.empty?
+              puts "  🏛️ Moving video #{v_id} to Sovereign Vault (#{vault_id})..."
+              client.add_playlist_item(vault_id, v_id) rescue nil
+            end
+          else
+            puts "  🔍 [DRY RUN] Would set video #{v_id} to #{retired_privacy}, remove from #{pl[:title]}, and add to vault (#{vault_id || 'none'})"
           end
         end
       end
@@ -540,6 +607,7 @@ if __FILE__ == $PROGRAM_NAME
     mode: :audit,
     apply: false,
     retire_duplicates: false,
+    sweep_ephemerality: false,
     unblock_expired: false,
     requeue_quarantine: false,
     json: false,
@@ -556,6 +624,10 @@ if __FILE__ == $PROGRAM_NAME
 
     opts.on("--sweep", "Reconcile playlists, unblock expired cooldowns, and deduplicate") do
       options[:mode] = :sweep
+    end
+
+    opts.on("--sweep-ephemerality", "Retire rolling-window expired videos to vault and mark private") do
+      options[:sweep_ephemerality] = true
     end
 
     opts.on("--unblock-expired", "Unblock jobs in blocked/ when API quota is ready") do

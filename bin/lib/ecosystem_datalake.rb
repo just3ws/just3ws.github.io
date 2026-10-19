@@ -1092,11 +1092,17 @@ class EcosystemDatalake
       CREATE TABLE historical_artifacts AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'artifact';
       CREATE TABLE timeline_events AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'timeline_event';
       CREATE TABLE commits AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'commit';
+      CREATE TABLE ramblin_cadence AS SELECT * FROM read_json_auto('#{JSONL_PATH}') WHERE type = 'ramblin_cadence';
 
       CREATE VIEW v_timeline AS
         SELECT event_date, year, era, initiative, repo_full_name, event_type, title, description
         FROM timeline_events
         ORDER BY event_date ASC;
+
+      CREATE VIEW v_ramblin_cadence_drift AS
+        SELECT recorded_date, slug, title, turn_count, word_count, estimated_wpm, polarity, tone, top_domain
+        FROM ramblin_cadence
+        ORDER BY recorded_date ASC;
 
       CREATE VIEW v_yearly_activity AS
         SELECT strftime('%Y', committed_at::TIMESTAMP) AS year, repo_name, count(*) AS commit_count

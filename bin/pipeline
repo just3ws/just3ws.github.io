@@ -111,12 +111,15 @@ run_media() {
     sweep|sweeper)
       ruby bin/youtube_sweeper.rb "$@"
       ;;
+    cadence|drift)
+      ruby bin/analyze_ramblin_cadence.rb "$@"
+      ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|halt|stop|resume|status> [options]"
+      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|cadence|halt|stop|resume|status> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, halt, stop, resume, status" >&2
+      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, cadence, halt, stop, resume, status" >&2
       exit 1
       ;;
   esac

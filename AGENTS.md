@@ -11,6 +11,21 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - DIGITAL EPHEMERALITY WITH SOVEREIGN ARCHIVING & COGNITIVE CADENCE DRIFT (2026-10-19):
+         Implemented configurable rolling horizon playlist management with anchor-and-gravitational-tail mechanics and built local cognitive cadence / sentiment analyzer across Whisper transcripts:
+         - Declarative Ephemerality Architecture (`_data/media_intake_targets.yml`):
+           - Configured `ephemerality` block under `ramblin-amblin`: `window_days: 3`, `carry_tail_count: 2`, `mode: anchor_gravitational_tail`, `retired_privacy: private`, `vault_playlist_id: PLNtb969T2-l0-vault` ("Ramblin' & Amblin' (Sovereign Vault)").
+         - Anchor-and-Gravitational-Tail Deduplication & Sweeper Automation (`bin/lib/youtube_deduplicator.rb`, `bin/youtube_sweeper.rb`):
+           - Added `YouTubeDeduplicator#plan_rolling_horizon_retirement`: evaluates newest video as anchor ($T_{anchor}$). If anchor is active ($\le N$ days), keeps window plus up to $K$ preceding tail videos; when anchor expires ($> N$ days), rolls out entire playlist to sovereign vault unless tagged `evergreen: true` or `pinned: true`.
+           - Integrated rolling horizon audit findings into `YouTubeSweeper#audit_single_playlist` and automated retirement under `--sweep-ephemerality` (sets private, unlinks from public playlist, adds to vault).
+         - Cognitive Cadence & Lexical Drift Analyzer (`bin/analyze_ramblin_cadence.rb`, `lake/ecosystem/ecosystem.duckdb`):
+           - Analyzes all Whisper transcripts in `_data/transcripts/ramblin-amblin-*.yml`: computes WPM (overall 142.0 WPM), turn density, polarity, emotional tone (`reflective_contemplative`, `optimistic_constructive`, `balanced_pragmatic`), and domain themes (`craftsmanship`, `ai_cognition`, `autobiographical`, `systems`).
+           - Emits structured report to `assets/data/ramblin_cadence_drift.json`, appends `ramblin_cadence` records to ecosystem datalake (`lake/ecosystem/ecosystem.jsonl`), and compiles DuckDB analytical view `v_ramblin_cadence_drift`.
+           - Wired `cadence` / `drift` subcommand into `bin/pipeline media`.
+         - Verification:
+           - 187/187 rspec tests passing cleanly across `spec/youtube/` and `spec/data/`.
+           - Fast validation passing cleanly across 496 Markdown files, zero em dashes.
+
        - FOG GEM T-SHIRT (#1562), EXPANDED ARCTIC CODE VAULT, GEEKFEST/OTEL WG CHRONOLOGY & MEMOIR BOUNDARY (2026-10-19):
          Grounded fog/fog#1562 contribution and contributor t-shirt, expanded 2020 GitHub Arctic Code Vault provenance, chronologized Geekfest@OMF (49+ sessions) / Corporate Hackathons (March 2022 Rasa & Feb 2024 Buckaroo Bonsais) / OTel WG (122 members) through to the Sept 12, 2025 executive handoff, audited and enforced Aneta and TMI privacy boundaries across public surfaces, established local-only memoir structural spine in `~/my/book/README.md`, verified overnight quota unblocking, and confirmed 0 playlist warnings across 21 live playlists:
          - fog Gem Upstream Contribution & Contributor T-Shirt (`fog/fog#1562`, `fecbf150`):

@@ -159,4 +159,175 @@ RSpec.describe YouTubeDeduplicator do
       expect(reconciliation.first[:playlist_id]).to eq('PL_TARGET_ID')
     end
   end
+
+  describe '#plan_rolling_horizon_retirement' do
+    let(:now) { Time.parse('2026-10-19T12:00:00Z') }
+
+    let(:items) do
+      [
+        # Item 0: Brand new today (Anchor)
+        {
+          'id' => 'pl_item_0',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-19): Today Video",
+            'publishedAt' => '2026-10-19T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_today' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_today' }
+        },
+        # Item 1: 1 day old (within 3-day window)
+        {
+          'id' => 'pl_item_1',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-18): Yesterday Video",
+            'publishedAt' => '2026-10-18T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_yesterday' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_yesterday' }
+        },
+        # Item 2: 2 days old (within 3-day window)
+        {
+          'id' => 'pl_item_2',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-17): 2 Days Ago Video",
+            'publishedAt' => '2026-10-17T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_2days' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_2days' }
+        },
+        # Item 3: 4 days old (outside 3-day window, but should be caught by carry_tail_count=2)
+        {
+          'id' => 'pl_item_3',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-15): 4 Days Ago Tail 1",
+            'publishedAt' => '2026-10-15T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_tail_1' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_tail_1' }
+        },
+        # Item 4: 5 days old (outside 3-day window, second carry tail video)
+        {
+          'id' => 'pl_item_4',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-14): 5 Days Ago Tail 2",
+            'publishedAt' => '2026-10-14T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_tail_2' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_tail_2' }
+        },
+        # Item 5: 6 days old (beyond window + carry tail, eligible for retirement)
+        {
+          'id' => 'pl_item_5',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-13): 6 Days Ago Retired",
+            'publishedAt' => '2026-10-13T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_retired' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_retired' }
+        }
+      ]
+    end
+
+    it 'keeps window videos plus carry tail, retiring older videos' do
+      plan = deduplicator.plan_rolling_horizon_retirement(
+        items,
+        window_days: 3,
+        carry_tail_count: 2,
+        mode: 'anchor_gravitational_tail',
+        now: now
+      )
+
+      expect(plan[:active].map { |i| i.dig('contentDetails', 'videoId') }).to eq(
+        ['vid_today', 'vid_yesterday', 'vid_2days', 'vid_tail_1', 'vid_tail_2']
+      )
+      expect(plan[:retired].map { |i| i.dig('contentDetails', 'videoId') }).to eq(['vid_retired'])
+    end
+
+    it 'retires everything if anchor video is older than window_days and no evergreen videos exist' do
+      old_items = [
+        {
+          'id' => 'pl_item_old1',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-01): Ancient 1",
+            'publishedAt' => '2026-10-01T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_ancient_1' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_ancient_1' }
+        },
+        {
+          'id' => 'pl_item_old2',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-02): Ancient 2",
+            'publishedAt' => '2026-10-02T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_ancient_2' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_ancient_2' }
+        }
+      ]
+
+      plan = deduplicator.plan_rolling_horizon_retirement(
+        old_items,
+        window_days: 3,
+        carry_tail_count: 2,
+        mode: 'anchor_gravitational_tail',
+        now: now
+      )
+
+      expect(plan[:active]).to be_empty
+      expect(plan[:retired].map { |i| i.dig('contentDetails', 'videoId') }).to eq(['vid_ancient_2', 'vid_ancient_1'])
+    end
+
+    it 'preserves evergreen videos in active set regardless of age' do
+      assets_with_evergreen = [
+        {
+          'id' => 'ramblin-amblin-ancient-pinned',
+          'title' => "Ramblin' & Amblin' (2026-10-01): Ancient Pinned",
+          'evergreen' => true,
+          'platforms' => [
+            { 'platform' => 'youtube', 'asset_id' => 'vid_ancient_pinned' }
+          ]
+        }
+      ]
+
+      file = Tempfile.new(['video_assets_evergreen', '.yml'])
+      file.write(YAML.dump(assets_with_evergreen))
+      file.close
+
+      custom_dedup = described_class.new(video_assets_path: file.path)
+
+      items_with_pinned = [
+        {
+          'id' => 'pl_item_pinned',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-01): Ancient Pinned",
+            'publishedAt' => '2026-10-01T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_ancient_pinned' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_ancient_pinned' }
+        },
+        {
+          'id' => 'pl_item_regular',
+          'snippet' => {
+            'title' => "Ramblin' & Amblin' (2026-10-01): Regular Old",
+            'publishedAt' => '2026-10-01T10:00:00Z',
+            'resourceId' => { 'videoId' => 'vid_regular' }
+          },
+          'contentDetails' => { 'videoId' => 'vid_regular' }
+        }
+      ]
+
+      plan = custom_dedup.plan_rolling_horizon_retirement(
+        items_with_pinned,
+        window_days: 3,
+        carry_tail_count: 2,
+        mode: 'anchor_gravitational_tail',
+        now: now
+      )
+
+      expect(plan[:active].map { |i| i.dig('contentDetails', 'videoId') }).to eq(['vid_ancient_pinned'])
+      expect(plan[:retired].map { |i| i.dig('contentDetails', 'videoId') }).to eq(['vid_regular'])
+
+      File.unlink(file.path) if File.exist?(file.path)
+    end
+  end
 end
